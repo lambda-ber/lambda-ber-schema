@@ -1,0 +1,3518 @@
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:CryoEMInstrument a owl:Class ;
+    rdfs:label "CryoEMInstrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:DetectorTypeEnum ;
+            owl:onProperty lambdaber:detector_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty lambdaber:phase_plate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:phase_plate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:pixel_size_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:pixel_size_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( [ a rdfs:Datatype ;
+                                owl:unionOf ( [ a rdfs:Datatype ;
+                                            owl:intersectionOf ( [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:minInclusive 120 ] ) ] [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:maxInclusive 120 ] ) ] ) ] [ a rdfs:Datatype ;
+                                            owl:intersectionOf ( [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:minInclusive 200 ] ) ] [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:maxInclusive 200 ] ) ] ) ] [ a rdfs:Datatype ;
+                                            owl:intersectionOf ( [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:minInclusive 300 ] ) ] [ a rdfs:Datatype ;
+                                                        owl:onDatatype xsd:integer ;
+                                                        owl:withRestrictions ( [ xsd:maxInclusive 300 ] ) ] ) ] ) ] xsd:integer ) ] ;
+            owl:onProperty lambdaber:accelerating_voltage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:pixel_size_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:detector_dimensions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:autoloader_capacity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:accelerating_voltage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:pixel_size_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:autoloader_capacity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:autoloader_capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:accelerating_voltage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cs_corrector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:phase_plate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:pixel_size_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:detector_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:detector_dimensions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:pixel_size_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cs_corrector ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:detector_dimensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty lambdaber:cs_corrector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:detector_type ],
+        lambdaber:Instrument ;
+    skos:definition "Cryo-EM microscope specifications" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:CryoEMPreparation a owl:Class ;
+    rdfs:label "CryoEMPreparation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:chamber_temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:chamber_temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
+            owl:onProperty lambdaber:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:support_film ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:support_film ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:hole_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:grid_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:minInclusive 5e-01 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 1e+01 ] ) ] ) ] ;
+            owl:onProperty lambdaber:blot_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:minInclusive 5e-01 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 5e+00 ] ) ] ) ] ;
+            owl:onProperty lambdaber:hole_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:plasma_treatment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:hole_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:blot_force ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:blot_force ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:blot_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:blot_force ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:vitrification_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:VitrificationMethodEnum ;
+            owl:onProperty lambdaber:vitrification_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:blot_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:plasma_treatment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:grid_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:support_film ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:vitrification_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:GridTypeEnum ;
+            owl:onProperty lambdaber:grid_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:chamber_temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:plasma_treatment ],
+        lambdaber:TechniqueSpecificPreparation ;
+    skos:definition "Cryo-EM specific sample preparation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:Dataset a owl:Class ;
+    rdfs:label "Dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:keywords ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Instrument ;
+            owl:onProperty lambdaber:instruments ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:instruments ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:studies ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:keywords ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Study ;
+            owl:onProperty lambdaber:studies ],
+        lambdaber:NamedThing ;
+    skos:definition "A collection of studies" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:FTIRImage a owl:Class ;
+    rdfs:label "FTIRImage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:number_of_scans ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:apodization_function ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:wavenumber_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:wavenumber_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:background_correction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:apodization_function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:molecular_signatures ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:wavenumber_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:number_of_scans ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:spectral_resolution ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:spectral_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:molecular_signatures ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:number_of_scans ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:spectral_resolution ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:wavenumber_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:apodization_function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:background_correction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:background_correction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:wavenumber_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:wavenumber_max ],
+        lambdaber:Image ;
+    skos:definition "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:FluorescenceImage a owl:Class ;
+    rdfs:label "FluorescenceImage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:laser_power ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:excitation_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:emission_filter ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:pinhole_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:excitation_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:channel_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:channel_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:laser_power ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:emission_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:pinhole_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:channel_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:excitation_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:laser_power ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:fluorophore ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:pinhole_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:emission_filter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:excitation_wavelength ],
+        lambdaber:Image2D ;
+    skos:definition "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:Image3D a owl:Class ;
+    rdfs:label "Image3D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:reconstruction_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dimensions_z ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:reconstruction_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dimensions_z ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:voxel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:voxel_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:voxel_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:reconstruction_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:dimensions_z ],
+        lambdaber:Image ;
+    skos:definition "A 3D volume or tomogram" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ImageFeature a owl:Class ;
+    rdfs:label "ImageFeature" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:OntologyTerm ;
+            owl:onProperty lambdaber:terms ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:terms ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:terms ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Semantic annotations describing features identified in images using controlled vocabulary terms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:OpticalImage a owl:Class ;
+    rdfs:label "OpticalImage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:illumination_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:illumination_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:contrast_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:color_channels ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:white_balance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:white_balance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:magnification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:color_channels ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:white_balance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:magnification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:IlluminationTypeEnum ;
+            owl:onProperty lambdaber:illumination_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:contrast_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:contrast_method ],
+        lambdaber:Image2D ;
+    skos:definition "Visible light optical microscopy or photography image" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:SAXSInstrument a owl:Class ;
+    rdfs:label "SAXSInstrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:q_range_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:detector_distance_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:detector_distance_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:q_range_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:q_range_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:q_range_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:temperature_control_range ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:q_range_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:temperature_control_range ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:detector_distance_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:sample_changer_capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:sample_changer_capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:detector_distance_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_changer_capacity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:detector_distance_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:temperature_control_range ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:q_range_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:detector_distance_min ],
+        lambdaber:Instrument ;
+    skos:definition "SAXS/WAXS instrument specifications" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:SAXSPreparation a owl:Class ;
+    rdfs:label "SAXSPreparation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:cell_path_length ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cell_path_length ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cell_path_length ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:buffer_matching_protocol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:temperature_control ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:concentration_series ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:temperature_control ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:temperature_control ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:concentration_series ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:buffer_matching_protocol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:buffer_matching_protocol ],
+        lambdaber:TechniqueSpecificPreparation ;
+    skos:definition "SAXS/WAXS specific preparation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:XRFImage a owl:Class ;
+    rdfs:label "XRFImage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:detector_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:flux ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:beam_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:XRaySourceTypeEnum ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:elements_measured ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:flux ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:elements_measured ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:beam_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:detector_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dwell_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:detector_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:beam_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:flux ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:dwell_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dwell_time ],
+        lambdaber:Image2D ;
+    skos:definition "X-ray fluorescence (XRF) image showing elemental distribution" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:XRayInstrument a owl:Class ;
+    rdfs:label "XRayInstrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:flux_density ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:beam_size_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:energy_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:energy_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:beam_size_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:energy_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:goniometer_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:XRaySourceTypeEnum ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:beam_size_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:beam_size_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:goniometer_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:beam_size_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:flux_density ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty lambdaber:crystal_cooling_capability ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:energy_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:crystal_cooling_capability ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:monochromator_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:energy_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:beam_size_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:monochromator_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:source_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:energy_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:flux_density ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:crystal_cooling_capability ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:goniometer_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:monochromator_type ],
+        lambdaber:Instrument ;
+    skos:definition "X-ray diffractometer or synchrotron beamline specifications" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:XRayPreparation a owl:Class ;
+    rdfs:label "XRayPreparation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:flash_cooling_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:crystal_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:CrystallizationMethodEnum ;
+            owl:onProperty lambdaber:crystallization_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:mounting_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:mounting_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:crystal_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:crystallization_conditions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cryoprotectant ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:crystallization_conditions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:crystallization_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:crystallization_conditions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:flash_cooling_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:mounting_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:crystal_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cryoprotectant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:cryoprotectant ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:crystallization_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:flash_cooling_method ],
+        lambdaber:TechniqueSpecificPreparation ;
+    skos:definition "X-ray crystallography specific preparation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:BufferComposition a owl:Class ;
+    rdfs:label "BufferComposition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:additives ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:ph ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:components ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:ph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 14 ] ) ] ) ] ;
+            owl:onProperty lambdaber:ph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:components ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:additives ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Buffer composition for sample storage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ComputeResources a owl:Class ;
+    rdfs:label "ComputeResources" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:gpu_hours ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:gpu_hours ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:storage_gb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:storage_gb ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:memory_gb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:memory_gb ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:memory_gb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:cpu_hours ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cpu_hours ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:storage_gb ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cpu_hours ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:gpu_hours ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Computational resources used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:DataCollectionStrategy a owl:Class ;
+    rdfs:label "DataCollectionStrategy" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dose_per_frame ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:dose_per_frame ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:frame_rate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dose_per_frame ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:total_frames ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:total_dose ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:total_frames ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:total_dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:collection_mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:frame_rate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:CollectionModeEnum ;
+            owl:onProperty lambdaber:collection_mode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:frame_rate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:total_frames ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:total_dose ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:collection_mode ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Strategy for data collection" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ExperimentRun a owl:Class ;
+    rdfs:label "ExperimentRun" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:experiment_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:technique ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:raw_data_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:experiment_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:sample_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:experiment_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:data_collection_strategy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Instrument ;
+            owl:onProperty lambdaber:instrument_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:data_collection_strategy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:experiment_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:experiment_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:raw_data_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:raw_data_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:instrument_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:processing_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:instrument_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:QualityMetrics ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:DataCollectionStrategy ;
+            owl:onProperty lambdaber:data_collection_strategy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:experimental_conditions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:processing_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:ProcessingStatusEnum ;
+            owl:onProperty lambdaber:processing_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:sample_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:TechniqueEnum ;
+            owl:onProperty lambdaber:technique ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:ExperimentalConditions ;
+            owl:onProperty lambdaber:experimental_conditions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:experimental_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:experiment_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:technique ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_id ],
+        lambdaber:NamedThing ;
+    skos:definition "An experimental data collection session" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ExperimentalConditions a owl:Class ;
+    rdfs:label "ExperimentalConditions" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:pressure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:pressure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:pressure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:humidity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:humidity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:humidity ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Environmental and experimental conditions" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:MolecularComposition a owl:Class ;
+    rdfs:label "MolecularComposition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:sequences ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:modifications ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:ligands ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:modifications ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:sequences ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:ligands ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Molecular composition of a sample" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:QualityMetrics a owl:Class ;
+    rdfs:label "QualityMetrics" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:rg ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:completeness ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:completeness ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:signal_to_noise ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:r_factor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:i_zero ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:r_factor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:rg ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:rg ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:signal_to_noise ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:r_factor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:signal_to_noise ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:completeness ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:i_zero ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:i_zero ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Quality metrics for experiments" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:SamplePreparation a owl:Class ;
+    rdfs:label "SamplePreparation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:protocol_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:preparation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:preparation_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:preparation_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:preparation_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:sample_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:sample_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:preparation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:PreparationTypeEnum ;
+            owl:onProperty lambdaber:preparation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:protocol_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:operator_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:protocol_description ],
+        lambdaber:NamedThing ;
+    skos:definition "A process that prepares a sample for imaging" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:StorageConditions a owl:Class ;
+    rdfs:label "StorageConditions" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:duration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:temperature_unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:atmosphere ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:duration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:temperature_unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:TemperatureUnitEnum ;
+            owl:onProperty lambdaber:temperature_unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:duration ],
+        lambdaber:AttributeGroup ;
+    skos:definition "Storage conditions for samples" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:Study a owl:Class ;
+    rdfs:label "Study" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:sample_preparations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:SamplePreparation ;
+            owl:onProperty lambdaber:sample_preparations ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:samples ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:workflow_runs ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:images ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:WorkflowRun ;
+            owl:onProperty lambdaber:workflow_runs ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:DataFile ;
+            owl:onProperty lambdaber:data_files ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:data_files ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:ExperimentRun ;
+            owl:onProperty lambdaber:instrument_runs ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Sample ;
+            owl:onProperty lambdaber:samples ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:instrument_runs ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Image ;
+            owl:onProperty lambdaber:images ],
+        lambdaber:NamedThing ;
+    skos:definition "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:WorkflowRun a owl:Class ;
+    rdfs:label "WorkflowRun" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:workflow_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:started_at ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:started_at ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:processing_parameters ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:output_files ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:WorkflowTypeEnum ;
+            owl:onProperty lambdaber:workflow_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:processing_parameters ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:DataFile ;
+            owl:onProperty lambdaber:output_files ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:software_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:processing_level ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:started_at ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:experiment_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:completed_at ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:experiment_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:processing_parameters ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:workflow_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:software_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:workflow_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:ComputeResources ;
+            owl:onProperty lambdaber:compute_resources ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:workflow_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 4 ] ) ] ) ] ;
+            owl:onProperty lambdaber:processing_level ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:experiment_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:compute_resources ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:software_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:completed_at ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:compute_resources ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:workflow_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:completed_at ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:software_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:software_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:software_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:processing_level ],
+        lambdaber:NamedThing ;
+    skos:definition "A computational processing workflow execution" ;
+    skos:inScheme lambdaber: .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#batch> a owl:Class ;
+    rdfs:label "batch" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#continuous> a owl:Class ;
+    rdfs:label "continuous" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#counting> a owl:Class ;
+    rdfs:label "counting" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#oscillation> a owl:Class ;
+    rdfs:label "oscillation" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#sec_saxs> a owl:Class ;
+    rdfs:label "sec_saxs" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#single_particle> a owl:Class ;
+    rdfs:label "single_particle" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#still> a owl:Class ;
+    rdfs:label "still" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CollectionModeEnum#super_resolution> a owl:Class ;
+    rdfs:label "super_resolution" ;
+    rdfs:subClassOf lambdaber:CollectionModeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml> a owl:Class ;
+    rdfs:label "mg_per_ml" ;
+    rdfs:subClassOf lambdaber:ConcentrationUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar> a owl:Class ;
+    rdfs:label "micromolar" ;
+    rdfs:subClassOf lambdaber:ConcentrationUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar> a owl:Class ;
+    rdfs:label "millimolar" ;
+    rdfs:subClassOf lambdaber:ConcentrationUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#nanomolar> a owl:Class ;
+    rdfs:label "nanomolar" ;
+    rdfs:subClassOf lambdaber:ConcentrationUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis> a owl:Class ;
+    rdfs:label "dialysis" ;
+    rdfs:subClassOf lambdaber:CrystallizationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> a owl:Class ;
+    rdfs:label "free_interface_diffusion" ;
+    rdfs:subClassOf lambdaber:CrystallizationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch> a owl:Class ;
+    rdfs:label "microbatch" ;
+    rdfs:subClassOf lambdaber:CrystallizationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging> a owl:Class ;
+    rdfs:label "vapor_diffusion_hanging" ;
+    rdfs:subClassOf lambdaber:CrystallizationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting> a owl:Class ;
+    rdfs:label "vapor_diffusion_sitting" ;
+    rdfs:subClassOf lambdaber:CrystallizationMethodEnum,
+        linkml:PermissibleValue .
+
+lambdaber:DataFile a owl:Class ;
+    rdfs:label "DataFile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:creation_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:creation_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:checksum ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:file_format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:DataTypeEnum ;
+            owl:onProperty lambdaber:data_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:checksum ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:data_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:file_format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:FileFormatEnum ;
+            owl:onProperty lambdaber:file_format ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:creation_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:checksum ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:file_size_bytes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:file_size_bytes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:data_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:file_path ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:file_path ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:file_size_bytes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:file_path ],
+        lambdaber:NamedThing ;
+    skos:definition "A data file generated or used in the study" ;
+    skos:inScheme lambdaber: .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#diffraction> a owl:Class ;
+    rdfs:label "diffraction" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata> a owl:Class ;
+    rdfs:label "metadata" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#micrograph> a owl:Class ;
+    rdfs:label "micrograph" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#model> a owl:Class ;
+    rdfs:label "model" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#particles> a owl:Class ;
+    rdfs:label "particles" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data> a owl:Class ;
+    rdfs:label "processed_data" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data> a owl:Class ;
+    rdfs:label "raw_data" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#scattering> a owl:Class ;
+    rdfs:label "scattering" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DataTypeEnum#volume> a owl:Class ;
+    rdfs:label "volume" ;
+    rdfs:subClassOf lambdaber:DataTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> a owl:Class ;
+    rdfs:label "ccd" ;
+    rdfs:subClassOf lambdaber:DetectorTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos> a owl:Class ;
+    rdfs:label "cmos" ;
+    rdfs:subClassOf lambdaber:DetectorTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron> a owl:Class ;
+    rdfs:label "direct_electron" ;
+    rdfs:subClassOf lambdaber:DetectorTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel> a owl:Class ;
+    rdfs:label "hybrid_pixel" ;
+    rdfs:subClassOf lambdaber:DetectorTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii> a owl:Class ;
+    rdfs:label "ascii" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> a owl:Class ;
+    rdfs:label "cbf" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5> a owl:Class ;
+    rdfs:label "hdf5" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif> a owl:Class ;
+    rdfs:label "mmcif" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#mrc> a owl:Class ;
+    rdfs:label "mrc" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz> a owl:Class ;
+    rdfs:label "mtz" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb> a owl:Class ;
+    rdfs:label "pdb" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#star> a owl:Class ;
+    rdfs:label "star" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> a owl:Class ;
+    rdfs:label "thermo_raw" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff> a owl:Class ;
+    rdfs:label "tiff" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/FileFormatEnum#zip> a owl:Class ;
+    rdfs:label "zip" ;
+    rdfs:subClassOf lambdaber:FileFormatEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/GridTypeEnum#c_flat> a owl:Class ;
+    rdfs:label "c_flat" ;
+    rdfs:subClassOf lambdaber:GridTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/GridTypeEnum#gold> a owl:Class ;
+    rdfs:label "gold" ;
+    rdfs:subClassOf lambdaber:GridTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/GridTypeEnum#lacey_carbon> a owl:Class ;
+    rdfs:label "lacey_carbon" ;
+    rdfs:subClassOf lambdaber:GridTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/GridTypeEnum#quantifoil> a owl:Class ;
+    rdfs:label "quantifoil" ;
+    rdfs:subClassOf lambdaber:GridTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon> a owl:Class ;
+    rdfs:label "ultrathin_carbon" ;
+    rdfs:subClassOf lambdaber:GridTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#brightfield> a owl:Class ;
+    rdfs:label "brightfield" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal> a owl:Class ;
+    rdfs:label "confocal" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#darkfield> a owl:Class ;
+    rdfs:label "darkfield" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#dic> a owl:Class ;
+    rdfs:label "dic" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#fluorescence> a owl:Class ;
+    rdfs:label "fluorescence" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique> a owl:Class ;
+    rdfs:label "oblique" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#phase_contrast> a owl:Class ;
+    rdfs:label "phase_contrast" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized> a owl:Class ;
+    rdfs:label "polarized" ;
+    rdfs:subClassOf lambdaber:IlluminationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#commissioning> a owl:Class ;
+    rdfs:label "commissioning" ;
+    rdfs:subClassOf lambdaber:InstrumentStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#maintenance> a owl:Class ;
+    rdfs:label "maintenance" ;
+    rdfs:subClassOf lambdaber:InstrumentStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#offline> a owl:Class ;
+    rdfs:label "offline" ;
+    rdfs:subClassOf lambdaber:InstrumentStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#operational> a owl:Class ;
+    rdfs:label "operational" ;
+    rdfs:subClassOf lambdaber:InstrumentStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#cryo_em> a owl:Class ;
+    rdfs:label "cryo_em" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#negative_stain> a owl:Class ;
+    rdfs:label "negative_stain" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_expression> a owl:Class ;
+    rdfs:label "protein_expression" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_purification> a owl:Class ;
+    rdfs:label "protein_purification" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#sans> a owl:Class ;
+    rdfs:label "sans" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#saxs> a owl:Class ;
+    rdfs:label "saxs" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/PreparationTypeEnum#xray_crystallography> a owl:Class ;
+    rdfs:label "xray_crystallography" ;
+    rdfs:subClassOf lambdaber:PreparationTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed> a owl:Class ;
+    rdfs:label "completed" ;
+    rdfs:subClassOf lambdaber:ProcessingStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> a owl:Class ;
+    rdfs:label "failed" ;
+    rdfs:subClassOf lambdaber:ProcessingStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing> a owl:Class ;
+    rdfs:label "preprocessing" ;
+    rdfs:subClassOf lambdaber:ProcessingStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing> a owl:Class ;
+    rdfs:label "processing" ;
+    rdfs:subClassOf lambdaber:ProcessingStatusEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#raw> a owl:Class ;
+    rdfs:label "raw" ;
+    rdfs:subClassOf lambdaber:ProcessingStatusEnum,
+        linkml:PermissibleValue .
+
+lambdaber:Sample a owl:Class ;
+    rdfs:label "Sample" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:OntologyTerm ;
+            owl:onProperty lambdaber:organism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
+            owl:onProperty lambdaber:purity_percentage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:sample_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:organism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:SampleTypeEnum ;
+            owl:onProperty lambdaber:sample_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:OntologyTerm ;
+            owl:onProperty lambdaber:anatomy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:Sample ;
+            owl:onProperty lambdaber:parent_sample_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:concentration_unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:sample_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:parent_sample_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:cell_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:preparation_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:purity_percentage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:preparation_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:BufferComposition ;
+            owl:onProperty lambdaber:buffer_composition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:ConcentrationUnitEnum ;
+            owl:onProperty lambdaber:concentration_unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:molecular_composition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:buffer_composition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:organism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:concentration_unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:sample_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:sample_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:OntologyTerm ;
+            owl:onProperty lambdaber:cell_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:preparation_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:cell_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:MolecularComposition ;
+            owl:onProperty lambdaber:molecular_composition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:anatomy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:buffer_composition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:StorageConditions ;
+            owl:onProperty lambdaber:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:purity_percentage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:molecular_composition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:anatomy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:parent_sample_id ],
+        lambdaber:NamedThing ;
+    skos:definition "A biological sample used in structural biology experiments" ;
+    skos:inScheme lambdaber: .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#complex> a owl:Class ;
+    rdfs:label "complex" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#membrane_protein> a owl:Class ;
+    rdfs:label "membrane_protein" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#nucleic_acid> a owl:Class ;
+    rdfs:label "nucleic_acid" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> a owl:Class ;
+    rdfs:label "organelle" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#protein> a owl:Class ;
+    rdfs:label "protein" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus> a owl:Class ;
+    rdfs:label "virus" ;
+    rdfs:subClassOf lambdaber:SampleTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_em> a owl:Class ;
+    rdfs:label "cryo_em" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_et> a owl:Class ;
+    rdfs:label "cryo_et" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#electron_microscopy> a owl:Class ;
+    rdfs:label "electron_microscopy" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#mass_spectrometry> a owl:Class ;
+    rdfs:label "mass_spectrometry" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#sans> a owl:Class ;
+    rdfs:label "sans" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#saxs> a owl:Class ;
+    rdfs:label "saxs" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#waxs> a owl:Class ;
+    rdfs:label "waxs" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TechniqueEnum#xray_crystallography> a owl:Class ;
+    rdfs:label "xray_crystallography" ;
+    rdfs:subClassOf lambdaber:TechniqueEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius> a owl:Class ;
+    rdfs:label "celsius" ;
+    rdfs:subClassOf lambdaber:TemperatureUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit> a owl:Class ;
+    rdfs:label "fahrenheit" ;
+    rdfs:subClassOf lambdaber:TemperatureUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin> a owl:Class ;
+    rdfs:label "kelvin" ;
+    rdfs:subClassOf lambdaber:TemperatureUnitEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing> a owl:Class ;
+    rdfs:label "high_pressure_freezing" ;
+    rdfs:subClassOf lambdaber:VitrificationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing> a owl:Class ;
+    rdfs:label "plunge_freezing" ;
+    rdfs:subClassOf lambdaber:VitrificationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> a owl:Class ;
+    rdfs:label "slam_freezing" ;
+    rdfs:subClassOf lambdaber:VitrificationMethodEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_2d> a owl:Class ;
+    rdfs:label "classification_2d" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_3d> a owl:Class ;
+    rdfs:label "classification_3d" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ctf_estimation> a owl:Class ;
+    rdfs:label "ctf_estimation" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification> a owl:Class ;
+    rdfs:label "em_2d_classification" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration> a owl:Class ;
+    rdfs:label "integration" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution> a owl:Class ;
+    rdfs:label "mass_spec_deconvolution" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_building> a owl:Class ;
+    rdfs:label "model_building" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#motion_correction> a owl:Class ;
+    rdfs:label "motion_correction" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_picking> a owl:Class ;
+    rdfs:label "particle_picking" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#phasing> a owl:Class ;
+    rdfs:label "phasing" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#refinement> a owl:Class ;
+    rdfs:label "refinement" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis> a owl:Class ;
+    rdfs:label "saxs_analysis" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling> a owl:Class ;
+    rdfs:label "scaling" ;
+    rdfs:subClassOf lambdaber:WorkflowTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> a owl:Class ;
+    rdfs:label "metal_jet" ;
+    rdfs:subClassOf lambdaber:XRaySourceTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus> a owl:Class ;
+    rdfs:label "microfocus" ;
+    rdfs:subClassOf lambdaber:XRaySourceTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode> a owl:Class ;
+    rdfs:label "rotating_anode" ;
+    rdfs:subClassOf lambdaber:XRaySourceTypeEnum,
+        linkml:PermissibleValue .
+
+<https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron> a owl:Class ;
+    rdfs:label "synchrotron" ;
+    rdfs:subClassOf lambdaber:XRaySourceTypeEnum,
+        linkml:PermissibleValue .
+
+lambdaber:additives a owl:DatatypeProperty ;
+    rdfs:label "additives" ;
+    skos:definition "Additional additives in the buffer" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:color_channels a owl:DatatypeProperty ;
+    rdfs:label "color_channels" ;
+    skos:definition "Color channels present (e.g., RGB, grayscale)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:components a owl:DatatypeProperty ;
+    rdfs:label "components" ;
+    skos:definition "Buffer components and their concentrations" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:concentration_series a owl:DatatypeProperty ;
+    rdfs:label "concentration_series" ;
+    skos:definition "Concentration values for series measurements" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:data_files a owl:ObjectProperty ;
+    rdfs:label "data_files" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:elements_measured a owl:DatatypeProperty ;
+    rdfs:label "elements_measured" ;
+    skos:definition "Elements detected and measured" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:images a owl:ObjectProperty ;
+    rdfs:label "images" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:instrument_runs a owl:ObjectProperty ;
+    rdfs:label "instrument_runs" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:instruments a owl:ObjectProperty ;
+    rdfs:label "instruments" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:keywords a owl:DatatypeProperty ;
+    rdfs:label "keywords" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ligands a owl:DatatypeProperty ;
+    rdfs:label "ligands" ;
+    skos:definition "Bound ligands or cofactors" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:modifications a owl:DatatypeProperty ;
+    rdfs:label "modifications" ;
+    skos:definition "Post-translational modifications or chemical modifications" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:molecular_signatures a owl:DatatypeProperty ;
+    rdfs:label "molecular_signatures" ;
+    skos:definition "Identified molecular signatures or peaks" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:output_files a owl:ObjectProperty ;
+    rdfs:label "output_files" ;
+    skos:definition "Output files generated" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sample_preparations a owl:ObjectProperty ;
+    rdfs:label "sample_preparations" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:samples a owl:ObjectProperty ;
+    rdfs:label "samples" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sequences a owl:DatatypeProperty ;
+    rdfs:label "sequences" ;
+    skos:definition "Amino acid or nucleotide sequences" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:studies a owl:ObjectProperty ;
+    rdfs:label "studies" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:workflow_runs a owl:ObjectProperty ;
+    rdfs:label "workflow_runs" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:Image2D a owl:Class ;
+    rdfs:label "Image2D" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:defocus ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:astigmatism ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:astigmatism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:defocus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:astigmatism ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:defocus ],
+        lambdaber:Image ;
+    skos:definition "A 2D image (micrograph, diffraction pattern)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:TechniqueSpecificPreparation a owl:Class ;
+    rdfs:label "TechniqueSpecificPreparation" ;
+    rdfs:subClassOf lambdaber:AttributeGroup ;
+    skos:definition "Base class for technique-specific preparation details" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:accelerating_voltage a owl:DatatypeProperty ;
+    rdfs:label "accelerating_voltage" ;
+    skos:definition "Accelerating voltage in kV" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:acquisition_date a owl:DatatypeProperty ;
+    rdfs:label "acquisition_date" ;
+    skos:definition "Date image was acquired" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:anatomy a owl:ObjectProperty ;
+    rdfs:label "anatomy" ;
+    skos:definition "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:apodization_function a owl:DatatypeProperty ;
+    rdfs:label "apodization_function" ;
+    skos:definition "Mathematical function used for apodization" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:astigmatism a owl:DatatypeProperty ;
+    rdfs:label "astigmatism" ;
+    skos:definition "Astigmatism value" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:autoloader_capacity a owl:DatatypeProperty ;
+    rdfs:label "autoloader_capacity" ;
+    skos:definition "Number of grids the autoloader can hold" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:background_correction a owl:DatatypeProperty ;
+    rdfs:label "background_correction" ;
+    skos:definition "Method used for background correction" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:beam_size a owl:DatatypeProperty ;
+    rdfs:label "beam_size" ;
+    skos:definition "X-ray beam size in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:beam_size_max a owl:DatatypeProperty ;
+    rdfs:label "beam_size_max" ;
+    skos:definition "Maximum beam size in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:beam_size_min a owl:DatatypeProperty ;
+    rdfs:label "beam_size_min" ;
+    skos:definition "Minimum beam size in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:blot_force a owl:DatatypeProperty ;
+    rdfs:label "blot_force" ;
+    skos:definition "Blotting force setting" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:blot_time a owl:DatatypeProperty ;
+    rdfs:label "blot_time" ;
+    skos:definition "Blotting time in seconds" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:buffer_composition a owl:ObjectProperty ;
+    rdfs:label "buffer_composition" ;
+    skos:definition "Buffer composition including pH, salts, additives" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:buffer_matching_protocol a owl:DatatypeProperty ;
+    rdfs:label "buffer_matching_protocol" ;
+    skos:definition "Protocol for buffer matching" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:calibration_standard a owl:DatatypeProperty ;
+    rdfs:label "calibration_standard" ;
+    skos:definition "Reference standard used for calibration" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cell_path_length a owl:DatatypeProperty ;
+    rdfs:label "cell_path_length" ;
+    skos:definition "Path length in mm" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cell_type a owl:ObjectProperty ;
+    rdfs:label "cell_type" ;
+    skos:definition "Cell type if applicable (e.g., CL:0000057 for fibroblast)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:chamber_temperature a owl:DatatypeProperty ;
+    rdfs:label "chamber_temperature" ;
+    skos:definition "Chamber temperature in Celsius" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:channel_name a owl:DatatypeProperty ;
+    rdfs:label "channel_name" ;
+    skos:definition "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:checksum a owl:DatatypeProperty ;
+    rdfs:label "checksum" ;
+    skos:definition "SHA-256 checksum for data integrity" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:collection_mode a owl:ObjectProperty ;
+    rdfs:label "collection_mode" ;
+    skos:definition "Mode of data collection" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:completed_at a owl:DatatypeProperty ;
+    rdfs:label "completed_at" ;
+    skos:definition "Workflow completion time" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:completeness a owl:DatatypeProperty ;
+    rdfs:label "completeness" ;
+    skos:definition "Data completeness percentage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:compute_resources a owl:ObjectProperty ;
+    rdfs:label "compute_resources" ;
+    skos:definition "Computational resources used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:concentration a owl:DatatypeProperty ;
+    rdfs:label "concentration" ;
+    skos:definition "Sample concentration in mg/mL or µM" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:concentration_unit a owl:ObjectProperty ;
+    rdfs:label "concentration_unit" ;
+    skos:definition "Unit of concentration measurement" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:contrast_method a owl:DatatypeProperty ;
+    rdfs:label "contrast_method" ;
+    skos:definition "Contrast enhancement method used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cpu_hours a owl:DatatypeProperty ;
+    rdfs:label "cpu_hours" ;
+    skos:definition "CPU hours used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:creation_date a owl:DatatypeProperty ;
+    rdfs:label "creation_date" ;
+    skos:definition "File creation date" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cryoprotectant a owl:DatatypeProperty ;
+    rdfs:label "cryoprotectant" ;
+    skos:definition "Cryoprotectant used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cryoprotectant_concentration a owl:DatatypeProperty ;
+    rdfs:label "cryoprotectant_concentration" ;
+    skos:definition "Cryoprotectant concentration percentage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:crystal_cooling_capability a owl:DatatypeProperty ;
+    rdfs:label "crystal_cooling_capability" ;
+    skos:definition "Crystal cooling system available" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:crystal_size a owl:DatatypeProperty ;
+    rdfs:label "crystal_size" ;
+    skos:definition "Crystal dimensions in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:crystallization_conditions a owl:DatatypeProperty ;
+    rdfs:label "crystallization_conditions" ;
+    skos:definition "Detailed crystallization conditions" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:crystallization_method a owl:ObjectProperty ;
+    rdfs:label "crystallization_method" ;
+    skos:definition "Method used for crystallization" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:cs_corrector a owl:DatatypeProperty ;
+    rdfs:label "cs_corrector" ;
+    skos:definition "Spherical aberration corrector present" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:current_status a owl:ObjectProperty ;
+    rdfs:label "current_status" ;
+    skos:definition "Current operational status" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:data_collection_strategy a owl:ObjectProperty ;
+    rdfs:label "data_collection_strategy" ;
+    skos:definition "Strategy for data collection" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:data_type a owl:ObjectProperty ;
+    rdfs:label "data_type" ;
+    skos:definition "Type of data in the file" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:definition a owl:DatatypeProperty ;
+    rdfs:label "definition" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:defocus a owl:DatatypeProperty ;
+    rdfs:label "defocus" ;
+    skos:definition "Defocus value in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:detector_dimensions a owl:DatatypeProperty ;
+    rdfs:label "detector_dimensions" ;
+    skos:definition "Detector dimensions in pixels (e.g., 4096x4096)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:detector_distance_max a owl:DatatypeProperty ;
+    rdfs:label "detector_distance_max" ;
+    skos:definition "Maximum detector distance in mm" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:detector_distance_min a owl:DatatypeProperty ;
+    rdfs:label "detector_distance_min" ;
+    skos:definition "Minimum detector distance in mm" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dimensions_x a owl:DatatypeProperty ;
+    rdfs:label "dimensions_x" ;
+    skos:definition "Image width in pixels" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dimensions_y a owl:DatatypeProperty ;
+    rdfs:label "dimensions_y" ;
+    skos:definition "Image height in pixels" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dimensions_z a owl:DatatypeProperty ;
+    rdfs:label "dimensions_z" ;
+    skos:definition "Image depth in pixels/slices" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dose a owl:DatatypeProperty ;
+    rdfs:label "dose" ;
+    skos:definition "Electron dose in e-/Å²" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dose_per_frame a owl:DatatypeProperty ;
+    rdfs:label "dose_per_frame" ;
+    skos:definition "Dose per frame" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:duration a owl:DatatypeProperty ;
+    rdfs:label "duration" ;
+    skos:definition "Storage duration" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:dwell_time a owl:DatatypeProperty ;
+    rdfs:label "dwell_time" ;
+    skos:definition "Dwell time per pixel in milliseconds" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:emission_filter a owl:DatatypeProperty ;
+    rdfs:label "emission_filter" ;
+    skos:definition "Specifications of the emission filter" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:emission_wavelength a owl:DatatypeProperty ;
+    rdfs:label "emission_wavelength" ;
+    skos:definition "Emission wavelength in nanometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:energy_max a owl:DatatypeProperty ;
+    rdfs:label "energy_max" ;
+    skos:definition "Maximum X-ray energy in keV" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:energy_min a owl:DatatypeProperty ;
+    rdfs:label "energy_min" ;
+    skos:definition "Minimum X-ray energy in keV" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:excitation_filter a owl:DatatypeProperty ;
+    rdfs:label "excitation_filter" ;
+    skos:definition "Specifications of the excitation filter" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:excitation_wavelength a owl:DatatypeProperty ;
+    rdfs:label "excitation_wavelength" ;
+    skos:definition "Excitation wavelength in nanometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:experiment_code a owl:DatatypeProperty ;
+    rdfs:label "experiment_code" ;
+    skos:definition "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems." ;
+    skos:inScheme lambdaber: .
+
+lambdaber:experiment_date a owl:DatatypeProperty ;
+    rdfs:label "experiment_date" ;
+    skos:definition "Date of the experiment" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:experiment_id a owl:DatatypeProperty ;
+    rdfs:label "experiment_id" ;
+    skos:definition "Reference to the source experiment" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:experimental_conditions a owl:ObjectProperty ;
+    rdfs:label "experimental_conditions" ;
+    skos:definition "Environmental and experimental conditions" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:file_format a owl:ObjectProperty ;
+    rdfs:label "file_format" ;
+    skos:definition "File format" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:file_path a owl:DatatypeProperty ;
+    rdfs:label "file_path" ;
+    skos:definition "Path to the file" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:file_size_bytes a owl:DatatypeProperty ;
+    rdfs:label "file_size_bytes" ;
+    skos:definition "File size in bytes" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:flash_cooling_method a owl:DatatypeProperty ;
+    rdfs:label "flash_cooling_method" ;
+    skos:definition "Flash cooling protocol" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:fluorophore a owl:DatatypeProperty ;
+    rdfs:label "fluorophore" ;
+    skos:definition "Name or type of fluorophore used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:flux a owl:DatatypeProperty ;
+    rdfs:label "flux" ;
+    skos:definition "Photon flux in photons/second" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:flux_density a owl:DatatypeProperty ;
+    rdfs:label "flux_density" ;
+    skos:definition "Photon flux density in photons/s/mm²" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:frame_rate a owl:DatatypeProperty ;
+    rdfs:label "frame_rate" ;
+    skos:definition "Frames per second" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:goniometer_type a owl:DatatypeProperty ;
+    rdfs:label "goniometer_type" ;
+    skos:definition "Type of goniometer" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:gpu_hours a owl:DatatypeProperty ;
+    rdfs:label "gpu_hours" ;
+    skos:definition "GPU hours used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:grid_type a owl:ObjectProperty ;
+    rdfs:label "grid_type" ;
+    skos:definition "Type of EM grid used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:hole_size a owl:DatatypeProperty ;
+    rdfs:label "hole_size" ;
+    skos:definition "Hole size in micrometers" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:humidity a owl:DatatypeProperty ;
+    rdfs:label "humidity" ;
+    skos:definition "Humidity percentage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:humidity_percentage a owl:DatatypeProperty ;
+    rdfs:label "humidity_percentage" ;
+    skos:definition "Chamber humidity during vitrification" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:i_zero a owl:DatatypeProperty ;
+    rdfs:label "i_zero" ;
+    skos:definition "Forward scattering intensity I(0)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:id a owl:DatatypeProperty ;
+    rdfs:label "id" ;
+    skos:definition "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+    skos:inScheme lambdaber: .
+
+lambdaber:illumination_type a owl:ObjectProperty ;
+    rdfs:label "illumination_type" ;
+    skos:definition "Type of illumination (brightfield, darkfield, phase contrast, DIC)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:installation_date a owl:DatatypeProperty ;
+    rdfs:label "installation_date" ;
+    skos:definition "Date of instrument installation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:instrument_code a owl:DatatypeProperty ;
+    rdfs:label "instrument_code" ;
+    skos:definition "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking." ;
+    skos:inScheme lambdaber: .
+
+lambdaber:instrument_id a owl:ObjectProperty ;
+    rdfs:label "instrument_id" ;
+    skos:definition "Reference to the instrument used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:label a owl:DatatypeProperty ;
+    rdfs:label "label" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:laser_power a owl:DatatypeProperty ;
+    rdfs:label "laser_power" ;
+    skos:definition "Laser power in milliwatts or percentage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:magnification a owl:DatatypeProperty ;
+    rdfs:label "magnification" ;
+    skos:definition "Optical magnification factor" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:manufacturer a owl:DatatypeProperty ;
+    rdfs:label "manufacturer" ;
+    skos:definition "Instrument manufacturer" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:memory_gb a owl:DatatypeProperty ;
+    rdfs:label "memory_gb" ;
+    skos:definition "Maximum memory used in GB" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:model a owl:DatatypeProperty ;
+    rdfs:label "model" ;
+    skos:definition "Instrument model" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:molecular_composition a owl:ObjectProperty ;
+    rdfs:label "molecular_composition" ;
+    skos:definition "Description of molecular composition including sequences, modifications, ligands" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:molecular_weight a owl:DatatypeProperty ;
+    rdfs:label "molecular_weight" ;
+    skos:definition "Molecular weight in kDa" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:monochromator_type a owl:DatatypeProperty ;
+    rdfs:label "monochromator_type" ;
+    skos:definition "Type of monochromator" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:mounting_method a owl:DatatypeProperty ;
+    rdfs:label "mounting_method" ;
+    skos:definition "Crystal mounting method" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:number_of_scans a owl:DatatypeProperty ;
+    rdfs:label "number_of_scans" ;
+    skos:definition "Number of scans averaged for the spectrum" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:numerical_aperture a owl:DatatypeProperty ;
+    rdfs:label "numerical_aperture" ;
+    skos:definition "Numerical aperture of the objective lens" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ontology a owl:DatatypeProperty ;
+    rdfs:label "ontology" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:organism a owl:ObjectProperty ;
+    rdfs:label "organism" ;
+    skos:definition "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:parent_sample_id a owl:ObjectProperty ;
+    rdfs:label "parent_sample_id" ;
+    skos:definition "Reference to parent sample for derivation tracking" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:ph a owl:DatatypeProperty ;
+    rdfs:label "ph" ;
+    skos:definition "pH of the buffer" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:phase_plate a owl:DatatypeProperty ;
+    rdfs:label "phase_plate" ;
+    skos:definition "Phase plate available" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:pinhole_size a owl:DatatypeProperty ;
+    rdfs:label "pinhole_size" ;
+    skos:definition "Pinhole size in Airy units for confocal microscopy" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:pixel_size a owl:DatatypeProperty ;
+    rdfs:label "pixel_size" ;
+    skos:definition "Pixel size in Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:pixel_size_max a owl:DatatypeProperty ;
+    rdfs:label "pixel_size_max" ;
+    skos:definition "Maximum pixel size in Angstroms per pixel" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:pixel_size_min a owl:DatatypeProperty ;
+    rdfs:label "pixel_size_min" ;
+    skos:definition "Minimum pixel size in Angstroms per pixel" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:plasma_treatment a owl:DatatypeProperty ;
+    rdfs:label "plasma_treatment" ;
+    skos:definition "Plasma treatment details" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:preparation_date a owl:DatatypeProperty ;
+    rdfs:label "preparation_date" ;
+    skos:definition "Date of sample preparation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:preparation_method a owl:DatatypeProperty ;
+    rdfs:label "preparation_method" ;
+    skos:definition "Method used to prepare the sample" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:preparation_type a owl:ObjectProperty ;
+    rdfs:label "preparation_type" ;
+    skos:definition "Type of sample preparation" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:pressure a owl:DatatypeProperty ;
+    rdfs:label "pressure" ;
+    skos:definition "Pressure in kPa" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:processing_level a owl:DatatypeProperty ;
+    rdfs:label "processing_level" ;
+    skos:definition "Processing level (0=raw, 1=corrected, 2=derived, 3=model)" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:processing_parameters a owl:DatatypeProperty ;
+    rdfs:label "processing_parameters" ;
+    skos:definition "Parameters used in processing" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:processing_status a owl:ObjectProperty ;
+    rdfs:label "processing_status" ;
+    skos:definition "Current processing status" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:protocol_description a owl:DatatypeProperty ;
+    rdfs:label "protocol_description" ;
+    skos:definition "Detailed protocol description" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:purity_percentage a owl:DatatypeProperty ;
+    rdfs:label "purity_percentage" ;
+    skos:definition "Sample purity as percentage" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:q_range_max a owl:DatatypeProperty ;
+    rdfs:label "q_range_max" ;
+    skos:definition "Maximum q value in inverse Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:q_range_min a owl:DatatypeProperty ;
+    rdfs:label "q_range_min" ;
+    skos:definition "Minimum q value in inverse Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:quantum_yield a owl:DatatypeProperty ;
+    rdfs:label "quantum_yield" ;
+    skos:definition "Quantum yield of the fluorophore" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:r_factor a owl:DatatypeProperty ;
+    rdfs:label "r_factor" ;
+    skos:definition "R-factor for crystallography" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:raw_data_location a owl:DatatypeProperty ;
+    rdfs:label "raw_data_location" ;
+    skos:definition "Location of raw data files" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:reconstruction_method a owl:DatatypeProperty ;
+    rdfs:label "reconstruction_method" ;
+    skos:definition "Method used for 3D reconstruction" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:resolution a owl:DatatypeProperty ;
+    rdfs:label "resolution" ;
+    skos:definition "Resolution in Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:rg a owl:DatatypeProperty ;
+    rdfs:label "rg" ;
+    skos:definition "Radius of gyration in Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sample_cell_type a owl:DatatypeProperty ;
+    rdfs:label "sample_cell_type" ;
+    skos:definition "Type of sample cell used" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sample_changer_capacity a owl:DatatypeProperty ;
+    rdfs:label "sample_changer_capacity" ;
+    skos:definition "Number of samples in automatic sample changer" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sample_code a owl:DatatypeProperty ;
+    rdfs:label "sample_code" ;
+    skos:definition "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows." ;
+    skos:inScheme lambdaber: .
+
+lambdaber:sample_type a owl:ObjectProperty ;
+    rdfs:label "sample_type" ;
+    skos:definition "Type of biological sample" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:signal_to_noise a owl:DatatypeProperty ;
+    rdfs:label "signal_to_noise" ;
+    skos:definition "Signal to noise ratio" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:software_name a owl:DatatypeProperty ;
+    rdfs:label "software_name" ;
+    skos:definition "Software used for processing" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:software_version a owl:DatatypeProperty ;
+    rdfs:label "software_version" ;
+    skos:definition "Software version" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:spectral_resolution a owl:DatatypeProperty ;
+    rdfs:label "spectral_resolution" ;
+    skos:definition "Spectral resolution in cm⁻¹" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:started_at a owl:DatatypeProperty ;
+    rdfs:label "started_at" ;
+    skos:definition "Workflow start time" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:storage_conditions a owl:ObjectProperty ;
+    rdfs:label "storage_conditions" ;
+    skos:definition "Storage conditions for the sample" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:storage_gb a owl:DatatypeProperty ;
+    rdfs:label "storage_gb" ;
+    skos:definition "Storage used in GB" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:support_film a owl:DatatypeProperty ;
+    rdfs:label "support_film" ;
+    skos:definition "Support film type" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:technique a owl:ObjectProperty ;
+    rdfs:label "technique" ;
+    skos:definition "Technique used for data collection" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:temperature_control a owl:DatatypeProperty ;
+    rdfs:label "temperature_control" ;
+    skos:definition "Temperature control settings" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:temperature_control_range a owl:DatatypeProperty ;
+    rdfs:label "temperature_control_range" ;
+    skos:definition "Temperature control range in Celsius" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:temperature_unit a owl:ObjectProperty ;
+    rdfs:label "temperature_unit" ;
+    skos:definition "Temperature unit" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:terms a owl:ObjectProperty ;
+    rdfs:label "terms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:title a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:total_dose a owl:DatatypeProperty ;
+    rdfs:label "total_dose" ;
+    skos:definition "Total electron dose for cryo-EM" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:total_frames a owl:DatatypeProperty ;
+    rdfs:label "total_frames" ;
+    skos:definition "Total number of frames/images" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:vitrification_method a owl:ObjectProperty ;
+    rdfs:label "vitrification_method" ;
+    skos:definition "Method used for vitrification" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:voxel_size a owl:DatatypeProperty ;
+    rdfs:label "voxel_size" ;
+    skos:definition "Voxel size in Angstroms" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:wavenumber_max a owl:DatatypeProperty ;
+    rdfs:label "wavenumber_max" ;
+    skos:definition "Maximum wavenumber in cm⁻¹" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:wavenumber_min a owl:DatatypeProperty ;
+    rdfs:label "wavenumber_min" ;
+    skos:definition "Minimum wavenumber in cm⁻¹" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:white_balance a owl:DatatypeProperty ;
+    rdfs:label "white_balance" ;
+    skos:definition "White balance settings" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:workflow_code a owl:DatatypeProperty ;
+    rdfs:label "workflow_code" ;
+    skos:definition "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance." ;
+    skos:inScheme lambdaber: .
+
+lambdaber:workflow_type a owl:ObjectProperty ;
+    rdfs:label "workflow_type" ;
+    skos:definition "Type of processing workflow" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:Image a owl:Class ;
+    rdfs:label "Image" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dose ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:dimensions_y ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty lambdaber:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty lambdaber:dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:file_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dimensions_y ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:dimensions_y ],
+        lambdaber:NamedThing ;
+    skos:definition "An image file from structural biology experiments" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:OntologyTerm a owl:Class ;
+    rdfs:label "OntologyTerm" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:ontology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:label ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:ontology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:ontology ],
+        lambdaber:NamedThing ;
+    skos:inScheme lambdaber: .
+
+lambdaber:TemperatureUnitEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius> <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin> <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius>,
+        <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit>,
+        <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin> .
+
+lambdaber:VitrificationMethodEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing> <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing> <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing>,
+        <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing>,
+        <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> .
+
+lambdaber:ConcentrationUnitEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml> <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar> <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar> <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#nanomolar> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml>,
+        <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar>,
+        <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar>,
+        <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#nanomolar> .
+
+lambdaber:DetectorTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd>,
+        <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>,
+        <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>,
+        <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel> .
+
+lambdaber:Instrument a owl:Class ;
+    rdfs:label "Instrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:installation_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:instrument_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:installation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom lambdaber:InstrumentStatusEnum ;
+            owl:onProperty lambdaber:current_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:current_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:instrument_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:manufacturer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:manufacturer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:instrument_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:model ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:installation_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:manufacturer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:current_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:model ],
+        lambdaber:NamedThing ;
+    skos:definition "An instrument used to collect data" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:InstrumentStatusEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#operational> <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#maintenance> <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#offline> <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#commissioning> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#commissioning>,
+        <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#maintenance>,
+        <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#offline>,
+        <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#operational> .
+
+lambdaber:CrystallizationMethodEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging> <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting> <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch> <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis> <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>,
+        <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion>,
+        <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch>,
+        <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging>,
+        <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting> .
+
+lambdaber:GridTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/GridTypeEnum#c_flat> <https://w3id.org/lambda-ber-schema/GridTypeEnum#quantifoil> <https://w3id.org/lambda-ber-schema/GridTypeEnum#lacey_carbon> <https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon> <https://w3id.org/lambda-ber-schema/GridTypeEnum#gold> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/GridTypeEnum#c_flat>,
+        <https://w3id.org/lambda-ber-schema/GridTypeEnum#gold>,
+        <https://w3id.org/lambda-ber-schema/GridTypeEnum#lacey_carbon>,
+        <https://w3id.org/lambda-ber-schema/GridTypeEnum#quantifoil>,
+        <https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon> .
+
+lambdaber:ProcessingStatusEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#raw> <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing> <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing> <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed> <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>,
+        <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed>,
+        <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing>,
+        <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>,
+        <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#raw> .
+
+lambdaber:XRaySourceTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron> <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode> <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus> <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet>,
+        <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>,
+        <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>,
+        <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron> .
+
+lambdaber:atmosphere a owl:DatatypeProperty .
+
+lambdaber:beam_energy a owl:DatatypeProperty .
+
+lambdaber:description a owl:DatatypeProperty .
+
+lambdaber:detector_type a owl:DatatypeProperty,
+        owl:ObjectProperty .
+
+lambdaber:exposure_time a owl:DatatypeProperty .
+
+lambdaber:file_name a owl:DatatypeProperty .
+
+lambdaber:operator_id a owl:DatatypeProperty .
+
+lambdaber:quality_metrics a owl:DatatypeProperty,
+        owl:ObjectProperty .
+
+lambdaber:sample_id a owl:DatatypeProperty .
+
+lambdaber:source_type a owl:ObjectProperty .
+
+lambdaber:temperature a owl:DatatypeProperty .
+
+lambdaber:SampleTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/SampleTypeEnum#protein> <https://w3id.org/lambda-ber-schema/SampleTypeEnum#nucleic_acid> <https://w3id.org/lambda-ber-schema/SampleTypeEnum#complex> <https://w3id.org/lambda-ber-schema/SampleTypeEnum#membrane_protein> <https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus> <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/SampleTypeEnum#complex>,
+        <https://w3id.org/lambda-ber-schema/SampleTypeEnum#membrane_protein>,
+        <https://w3id.org/lambda-ber-schema/SampleTypeEnum#nucleic_acid>,
+        <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle>,
+        <https://w3id.org/lambda-ber-schema/SampleTypeEnum#protein>,
+        <https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus> .
+
+lambdaber:PreparationTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#cryo_em> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#xray_crystallography> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#saxs> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#sans> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_expression> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_purification> <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#negative_stain> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#cryo_em>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#negative_stain>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_expression>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_purification>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#sans>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#saxs>,
+        <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#xray_crystallography> .
+
+lambdaber:AttributeGroup a owl:Class ;
+    rdfs:label "AttributeGroup" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:description ],
+        linkml:ClassDefinition ;
+    skos:definition "A grouping of related data attributes that form a logical unit" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:CollectionModeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/CollectionModeEnum#counting> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#super_resolution> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#continuous> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#oscillation> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#still> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#batch> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#sec_saxs> <https://w3id.org/lambda-ber-schema/CollectionModeEnum#single_particle> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/CollectionModeEnum#batch>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#continuous>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#counting>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#oscillation>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#sec_saxs>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#single_particle>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#still>,
+        <https://w3id.org/lambda-ber-schema/CollectionModeEnum#super_resolution> .
+
+lambdaber:IlluminationTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#brightfield> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#darkfield> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#phase_contrast> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#dic> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#fluorescence> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized> <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#brightfield>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#darkfield>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#dic>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#fluorescence>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#phase_contrast>,
+        <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized> .
+
+lambdaber:TechniqueEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_em> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xray_crystallography> <https://w3id.org/lambda-ber-schema/TechniqueEnum#saxs> <https://w3id.org/lambda-ber-schema/TechniqueEnum#waxs> <https://w3id.org/lambda-ber-schema/TechniqueEnum#sans> <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_et> <https://w3id.org/lambda-ber-schema/TechniqueEnum#electron_microscopy> <https://w3id.org/lambda-ber-schema/TechniqueEnum#mass_spectrometry> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_em>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_et>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#electron_microscopy>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#mass_spectrometry>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#sans>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#saxs>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#waxs>,
+        <https://w3id.org/lambda-ber-schema/TechniqueEnum#xray_crystallography> .
+
+lambdaber:DataTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/DataTypeEnum#micrograph> <https://w3id.org/lambda-ber-schema/DataTypeEnum#diffraction> <https://w3id.org/lambda-ber-schema/DataTypeEnum#scattering> <https://w3id.org/lambda-ber-schema/DataTypeEnum#particles> <https://w3id.org/lambda-ber-schema/DataTypeEnum#volume> <https://w3id.org/lambda-ber-schema/DataTypeEnum#model> <https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata> <https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data> <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/DataTypeEnum#diffraction>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#micrograph>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#model>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#particles>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#scattering>,
+        <https://w3id.org/lambda-ber-schema/DataTypeEnum#volume> .
+
+lambdaber:NamedThing a owl:Class ;
+    rdfs:label "NamedThing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty lambdaber:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty lambdaber:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty lambdaber:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty lambdaber:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty lambdaber:title ],
+        linkml:ClassDefinition ;
+    skos:definition "A named thing" ;
+    skos:inScheme lambdaber: .
+
+lambdaber:FileFormatEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrc> <https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff> <https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5> <https://w3id.org/lambda-ber-schema/FileFormatEnum#star> <https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb> <https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif> <https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz> <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii> <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrc>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#star>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff>,
+        <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip> .
+
+lambdaber:WorkflowTypeEnum a owl:Class ;
+    rdfs:subClassOf linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#motion_correction> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ctf_estimation> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_picking> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_2d> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_3d> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#refinement> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_building> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#phasing> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification> <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution> ) ;
+    linkml:permissible_values <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_2d>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_3d>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ctf_estimation>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_building>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#motion_correction>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_picking>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#phasing>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#refinement>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis>,
+        <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling> .
+
+lambdaber: a owl:Ontology ;
+    rdfs:label "lambda-ber-schema" ;
+    skos:definition """lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
+from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
+techniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and 
+spectroscopic imaging.
+
+## Schema Organization
+
+The schema follows a hierarchical structure that mirrors how structural biology research is organized:
+
+The top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.
+A dataset might represent all data from a specific grant, collaboration, or publication.
+
+Each dataset contains one or more [Studies](Study.md), which are focused investigations of specific
+biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+or "Structure of the human ribosome under different conditions."
+
+Within each study, you'll find:
+
+### Biological Materials
+- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, 
+  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and 
+  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+
+- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
+  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
+  X-ray studies, or staining protocols for fluorescence microscopy.
+
+### Data Collection
+- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron 
+  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), 
+  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
+  like accelerating voltage, detector type, or beam energy.
+
+- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to 
+  instruments. An experiment run captures when, how, and under what conditions data was collected,
+  including quality metrics like resolution and completeness.
+
+### Data Processing
+- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes
+  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
+  for crystallography. Each workflow tracks the software used, parameters, and computational resources.
+
+### Data Products
+- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file
+  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).
+
+- [Images](Image.md): Specialized classes for different imaging modalities:
+  - [Image2D](Image2D.md): Micrographs, diffraction patterns
+  - [Image3D](Image3D.md): 3D reconstructions, tomograms
+  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy
+  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components
+  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy
+  - [XRFImage](XRFImage.md): Elemental distribution maps
+
+## Example Usage
+
+A typical cryo-EM study of a protein complex would include:
+1. Sample records for the purified complex with molecular weight and buffer composition
+2. Grid preparation details with vitrification parameters
+3. Microscope specifications and data collection parameters
+4. Processing workflows from motion correction through 3D refinement
+5. Final reconstructed volumes and fitted atomic models
+
+A multimodal plant imaging study might combine:
+1. Whole plant optical imaging for morphology
+2. XRF imaging to map nutrient distribution
+3. FTIR spectroscopy to identify stress-related molecular changes
+4. Fluorescence microscopy to track specific protein responses
+5. Cryo-EM of isolated organelles for ultrastructural details
+
+## Key Features
+
+- **Technique-agnostic core**: The same schema handles data from any structural biology method
+- **Rich metadata**: Comprehensive tracking from sample to structure
+- **Workflow provenance**: Complete computational reproducibility
+- **Multimodal support**: Seamlessly integrate data across scales and techniques
+- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
+""" .
+

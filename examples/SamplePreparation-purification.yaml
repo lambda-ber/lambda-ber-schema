@@ -1,0 +1,8 @@
+id: https://example.org/kibler2024/prep/purification
+preparation_type: protein_purification
+sample_id: https://example.org/kibler2024/sample/hetBGL03-15-18
+preparation_date: '2024-01-16'
+protocol_description: "Cell pellets lysed with PMSF. Proteins purified by immobilized\
+  \ metal \naffinity chromatography (IMAC) using Ni-NTA resin, followed by TEV \n\
+  protease cleavage to remove His-tag, and final size-exclusion \nchromatography in\
+  \ 25 mM Tris, 300 mM NaCl, pH 8.0."

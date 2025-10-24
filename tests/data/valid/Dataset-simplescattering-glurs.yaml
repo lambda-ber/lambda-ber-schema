@@ -1,0 +1,202 @@
+# lambda-ber-schema Annotation of SimpleScattering Dataset
+# SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS
+# Dataset ID: xsbhevph
+# URL: https://simplescattering.com/open_dataset/xsbhevph
+
+id: "https://simplescattering.com/dataset/xsbhevph"
+title: "SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS"
+description: |
+  Size exclusion chromatography coupled with small angle X-ray scattering 
+  and multi-angle light scattering to determine the oligomerization state 
+  of Glutamyl tRNA synthetase (GluRS) from Pseudomonas aeruginosa in solution.
+  Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
+keywords:
+  - SEC-SAXS
+  - MALS
+  - GluRS
+  - Glutamyl-tRNA synthetase
+  - Pseudomonas aeruginosa
+  - oligomerization
+  - SIBYLS
+
+instruments:
+  - id: SIBYLS-BL12.3.1
+    title: "SIBYLS Beamline 12.3.1"
+    description: "SAXS/WAXS beamline at Advanced Light Source for biological samples"
+    instrument_code: "SIBYLS-BL12.3.1"
+    manufacturer: "Lawrence Berkeley National Laboratory"
+    model: "SIBYLS Beamline 12.3.1"
+    current_status: operational
+
+studies:
+  - id: "https://simplescattering.com/study/glurs-oligomerization"
+    title: "Determination of GluRS oligomerization state in solution"
+    description: |
+      Structural characterization of P. aeruginosa GluRS using SEC-SAXS-MALS
+      to determine oligomeric state in solution conditions. Crystal structure
+      (PDB: 8VC5) shows zinc-bound form.
+    
+    # Sample definitions
+    samples:
+      # GluRS protein sample
+      - id: "https://simplescattering.com/sample/glurs-pa"
+        sample_code: "PA-GluRS"
+        sample_type: protein
+        description: "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa"
+        molecular_composition:
+          sequences:
+            - "Uniprot:Q9XCL6"  # Full sequence from UniProt
+        molecular_weight: 54.8  # kDa for monomer, actual MW depends on oligomer
+        concentration: 5.0  # Typical for SEC-SAXS
+        concentration_unit: mg_per_ml
+        buffer_composition:
+          ph: 7.5  # Typical for tRNA synthetases
+          components:
+            - "20 mM Tris-HCl"
+            - "150 mM NaCl"
+            - "5 mM MgCl2"  # Often required for synthetase activity
+            - "1 mM DTT"
+        preparation_method: "Expressed in E. coli BL21(DE3)"
+        
+    # Sample preparation
+    sample_preparations:
+      # Expression and purification
+      - id: "https://simplescattering.com/prep/glurs-expression"
+        preparation_type: protein_expression
+        sample_id: "https://simplescattering.com/sample/glurs-pa"
+        preparation_date: "2023-10-01"
+        protocol_description: |
+          GluRS expressed in Escherichia coli BL21(DE3) cells.
+          Standard IPTG induction protocol.
+          
+      - id: "https://simplescattering.com/prep/glurs-purification"
+        preparation_type: protein_purification
+        sample_id: "https://simplescattering.com/sample/glurs-pa"
+        preparation_date: "2023-10-15"
+        protocol_description: |
+          Purified using Ni-NTA affinity chromatography followed by
+          size exclusion chromatography. Final buffer: 20 mM Tris pH 7.5,
+          150 mM NaCl, 5 mM MgCl2, 1 mM DTT.
+          
+      # SEC-SAXS preparation
+      - id: "https://simplescattering.com/prep/sec-saxs"
+        preparation_type: saxs
+        sample_id: "https://simplescattering.com/sample/glurs-pa"
+        preparation_date: "2023-10-24"
+        protocol_description: |
+          Sample prepared for SEC-SAXS-MALS analysis. Concentrated to 
+          approximately 5 mg/mL, filtered through 0.22 μm filter.
+          
+    # Experimental data collection
+    instrument_runs:
+      # SEC-SAXS-MALS run
+      - id: "https://simplescattering.com/experiment/glurs-sec-saxs"
+        experiment_code: "SIBYLS-2023-10-24-GluRS"
+        sample_id: "https://simplescattering.com/sample/glurs-pa"
+        instrument_id: "SIBYLS-BL12.3.1"
+        experiment_date: "2023-10-24"
+        operator_id: "S. Tsutakawa"
+        technique: saxs
+        experimental_conditions:
+          temperature: 20  # Celsius, typical for SEC-SAXS
+          beam_energy: 11.0  # keV (1.127 Å wavelength)
+          exposure_time: 1.0  # seconds per frame
+        data_collection_strategy:
+          collection_mode: sec_saxs
+          total_frames: 660  # Number of SAXS frames during elution
+          frame_rate: 1  # Hz, typical for SEC-SAXS
+        quality_metrics:
+          signal_to_noise: 50  # Estimated from data quality
+          i_zero: 45.0  # Approximate from first data points
+          rg: 32.5  # Radius of gyration in Angstroms (estimated)
+          resolution: 25  # Approximate resolution in Angstroms
+        raw_data_location: "SIBYLS data archive"
+        processing_status: completed
+        
+    # Data processing workflows
+    workflow_runs:
+      # SAXS data processing
+      - id: "https://simplescattering.com/workflow/saxs-processing"
+        workflow_code: "GluRS-SAXS-processing-2023"
+        workflow_type: saxs_analysis
+        experiment_id: "https://simplescattering.com/experiment/glurs-sec-saxs"
+        processing_level: 2
+        software_name: "SAXS FrameSlice"
+        software_version: "2023"
+        processing_parameters: |
+          q_range=0.0109-0.4729;
+          sample_detector_distance=2.1m;
+          detector=Pilatus3_2M;
+          buffer_subtraction=automated;
+          frame_averaging=enabled
+        compute_resources:
+          cpu_hours: 1.0
+          memory_gb: 16
+        started_at: "2023-10-24T12:00:00Z"
+        completed_at: "2023-10-24T14:00:00Z"
+        
+      # MALS data processing
+      - id: "https://simplescattering.com/workflow/mals-processing"
+        workflow_code: "GluRS-MALS-processing-2023"
+        workflow_type: saxs_analysis  # Using saxs_analysis for MALS too
+        experiment_id: "https://simplescattering.com/experiment/glurs-sec-saxs"
+        processing_level: 2
+        software_name: "MALS Analysis Software"
+        software_version: "2023"
+        processing_parameters: |
+          molecular_weight_determination=enabled;
+          polydispersity_analysis=enabled
+        
+    # Data files
+    data_files:
+      # Individual frame example
+      - id: "https://simplescattering.com/file/glurs-frame-001"
+        file_name: "GluRS_1_00001.dat"
+        file_format: ascii
+        file_size_bytes: 35739
+        data_type: scattering
+        creation_date: "2023-10-20"
+        description: "First SEC-SAXS frame"
+        
+      # Averaged/merged data
+      - id: "https://simplescattering.com/file/glurs-averaged"
+        file_name: "A_S_GluRS_1_5.dat"
+        file_format: ascii
+        file_size_bytes: 107834
+        data_type: processed_data
+        creation_date: "2023-10-24"
+        description: "Averaged SAXS profile from peak fractions"
+        
+      # Crystal structure
+      - id: "https://simplescattering.com/file/glurs-structure"
+        file_name: "8vc5.pdb"
+        file_format: pdb
+        file_size_bytes: 1310256
+        data_type: model
+        creation_date: "2023-12-13"
+        description: "Crystal structure of P. aeruginosa GluRS (zinc-bound form)"
+        
+      # Complete dataset
+      - id: "https://simplescattering.com/file/glurs-complete"
+        file_name: "GluRS_Results.zip"
+        file_format: zip  # Need to add to enum
+        file_size_bytes: 10840982
+        data_type: raw_data
+        creation_date: "2023-10-24"
+        description: "Complete SEC-SAXS dataset with all 660 frames"
+        
+    # Images/plots (if generated)
+    images:
+      # SEC-SAXS chromatogram
+      - id: "https://simplescattering.com/img/sec-chromatogram"
+        file_name: "GluRS_SEC_chromatogram.png"
+        dimensions_x: 1200
+        dimensions_y: 800
+        description: "SEC elution profile with SAXS intensity"
+        
+      # Guinier plot
+      - id: "https://simplescattering.com/img/guinier-plot"
+        file_name: "GluRS_Guinier_plot.png"
+        dimensions_x: 800
+        dimensions_y: 600
+        description: "Guinier analysis for Rg determination"

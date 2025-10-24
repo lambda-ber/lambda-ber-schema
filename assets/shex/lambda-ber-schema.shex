@@ -1,0 +1,595 @@
+# metamodel_version: 1.7.0
+BASE <https://w3id.org/lambda-ber-schema/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<AttributeGroup>  (
+    @<BufferComposition> OR @<ComputeResources> OR @<DataCollectionStrategy> OR @<ExperimentalConditions> OR @<ImageFeature> OR
+    @<MolecularComposition> OR @<QualityMetrics> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
+)
+
+<AttributeGroup_struct> {
+    (  $<AttributeGroup_tes> <description> @linkml:String ? ;
+       rdf:type [ <AttributeGroup> ] ?
+    )
+}
+
+<BufferComposition> CLOSED {
+    (  $<BufferComposition_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <ph> @linkml:Float ? ;
+          <components> @linkml:String * ;
+          <additives> @linkml:String *
+       ) ;
+       rdf:type [ <BufferComposition> ] ?
+    )
+}
+
+<ComputeResources> CLOSED {
+    (  $<ComputeResources_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <cpu_hours> @linkml:Float ? ;
+          <gpu_hours> @linkml:Float ? ;
+          <memory_gb> @linkml:Float ? ;
+          <storage_gb> @linkml:Float ?
+       ) ;
+       rdf:type [ <ComputeResources> ] ?
+    )
+}
+
+<CryoEMInstrument> CLOSED {
+    (  $<CryoEMInstrument_tes> (  &<Instrument_tes> ;
+          rdf:type [ <Instrument> ] ? ;
+          <accelerating_voltage> @linkml:Integer ? ;
+          <cs_corrector> @linkml:Boolean ? ;
+          <phase_plate> @linkml:Boolean ? ;
+          <detector_type> [ <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel> ] ? ;
+          <detector_dimensions> @linkml:String ? ;
+          <pixel_size_min> @linkml:Float ? ;
+          <pixel_size_max> @linkml:Float ? ;
+          <autoloader_capacity> @linkml:Integer ?
+       ) ;
+       rdf:type [ <CryoEMInstrument> ]
+    )
+}
+
+<CryoEMPreparation> CLOSED {
+    (  $<CryoEMPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
+          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+          <grid_type> [ <https://w3id.org/lambda-ber-schema/GridTypeEnum#c_flat>
+             <https://w3id.org/lambda-ber-schema/GridTypeEnum#quantifoil>
+             <https://w3id.org/lambda-ber-schema/GridTypeEnum#lacey_carbon>
+             <https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon>
+             <https://w3id.org/lambda-ber-schema/GridTypeEnum#gold> ] ? ;
+          <support_film> @linkml:String ? ;
+          <hole_size> @linkml:Float ? ;
+          <vitrification_method> [ <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing>
+             <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing>
+             <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> ] ? ;
+          <blot_time> @linkml:Float ? ;
+          <blot_force> @linkml:Integer ? ;
+          <humidity_percentage> @linkml:Float ? ;
+          <chamber_temperature> @linkml:Float ? ;
+          <plasma_treatment> @linkml:String ?
+       ) ;
+       rdf:type [ <CryoEMPreparation> ] ?
+    )
+}
+
+<DataCollectionStrategy> CLOSED {
+    (  $<DataCollectionStrategy_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <collection_mode> [ <https://w3id.org/lambda-ber-schema/CollectionModeEnum#counting>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#super_resolution>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#continuous>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#oscillation>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#still>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#batch>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#sec_saxs>
+             <https://w3id.org/lambda-ber-schema/CollectionModeEnum#single_particle> ] ? ;
+          <total_frames> @linkml:Integer ? ;
+          <frame_rate> @linkml:Float ? ;
+          <total_dose> @linkml:Float ? ;
+          <dose_per_frame> @linkml:Float ?
+       ) ;
+       rdf:type [ <DataCollectionStrategy> ] ?
+    )
+}
+
+<DataFile> CLOSED {
+    (  $<DataFile_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <file_name> @linkml:String ;
+          <file_path> @linkml:String ? ;
+          <file_format> [ <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrc>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff> <https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#star> <https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif> <https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip>
+             ] ;
+          <file_size_bytes> @linkml:Integer ? ;
+          <checksum> @linkml:String ? ;
+          <creation_date> @linkml:String ? ;
+          <data_type> [ <https://w3id.org/lambda-ber-schema/DataTypeEnum#micrograph>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#diffraction>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#scattering>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#particles> <https://w3id.org/lambda-ber-schema/DataTypeEnum#volume>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#model> <https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data> ] ?
+       ) ;
+       rdf:type [ <DataFile> ]
+    )
+}
+
+<Dataset> CLOSED {
+    (  $<Dataset_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <keywords> @linkml:String * ;
+          <instruments> @<Instrument> * ;
+          <studies> @<Study> *
+       ) ;
+       rdf:type [ <Dataset> ]
+    )
+}
+
+<ExperimentalConditions> CLOSED {
+    (  $<ExperimentalConditions_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <temperature> @linkml:Float ? ;
+          <humidity> @linkml:Float ? ;
+          <pressure> @linkml:Float ? ;
+          <atmosphere> @linkml:String ? ;
+          <beam_energy> @linkml:Float ? ;
+          <exposure_time> @linkml:Float ?
+       ) ;
+       rdf:type [ <ExperimentalConditions> ] ?
+    )
+}
+
+<ExperimentRun> CLOSED {
+    (  $<ExperimentRun_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <experiment_code> @linkml:String ;
+          <sample_id> @linkml:String ;
+          <instrument_id> @<Instrument> ;
+          <experiment_date> @linkml:String ? ;
+          <operator_id> @linkml:String ? ;
+          <technique> [ <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_em>
+             <https://w3id.org/lambda-ber-schema/TechniqueEnum#xray_crystallography>
+             <https://w3id.org/lambda-ber-schema/TechniqueEnum#saxs> <https://w3id.org/lambda-ber-schema/TechniqueEnum#waxs>
+             <https://w3id.org/lambda-ber-schema/TechniqueEnum#sans> <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_et>
+             <https://w3id.org/lambda-ber-schema/TechniqueEnum#electron_microscopy>
+             <https://w3id.org/lambda-ber-schema/TechniqueEnum#mass_spectrometry> ] ;
+          <experimental_conditions> @<ExperimentalConditions> ? ;
+          <data_collection_strategy> @<DataCollectionStrategy> ? ;
+          <quality_metrics> @<QualityMetrics> ? ;
+          <raw_data_location> @linkml:String ? ;
+          <processing_status> [ <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#raw>
+             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing>
+             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
+             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
+             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ?
+       ) ;
+       rdf:type [ <ExperimentRun> ]
+    )
+}
+
+<FluorescenceImage> CLOSED {
+    (  $<FluorescenceImage_tes> (  &<Image2D_tes> ;
+          rdf:type [ <Image2D> ] ? ;
+          <excitation_wavelength> @linkml:Float ? ;
+          <emission_wavelength> @linkml:Float ? ;
+          <excitation_filter> @linkml:String ? ;
+          <emission_filter> @linkml:String ? ;
+          <fluorophore> @linkml:String ? ;
+          <channel_name> @linkml:String ? ;
+          <laser_power> @linkml:Float ? ;
+          <pinhole_size> @linkml:Float ? ;
+          <quantum_yield> @linkml:Float ?
+       ) ;
+       rdf:type [ <FluorescenceImage> ]
+    )
+}
+
+<FTIRImage> CLOSED {
+    (  $<FTIRImage_tes> (  &<Image_tes> ;
+          rdf:type [ <Image> ] ? ;
+          <wavenumber_min> @linkml:Float ? ;
+          <wavenumber_max> @linkml:Float ? ;
+          <spectral_resolution> @linkml:Float ? ;
+          <number_of_scans> @linkml:Integer ? ;
+          <apodization_function> @linkml:String ? ;
+          <molecular_signatures> @linkml:String * ;
+          <background_correction> @linkml:String ?
+       ) ;
+       rdf:type [ <FTIRImage> ]
+    )
+}
+
+<Image>  (
+    CLOSED {
+       (  $<Image_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ? ;
+             <file_name> @linkml:String ;
+             <acquisition_date> @linkml:String ? ;
+             <pixel_size> @linkml:Float ? ;
+             <dimensions_x> @linkml:Integer ? ;
+             <dimensions_y> @linkml:Integer ? ;
+             <exposure_time> @linkml:Float ? ;
+             <dose> @linkml:Float ?
+          ) ;
+          rdf:type [ <Image> ]
+       )
+    } OR @<FTIRImage> OR @<Image2D> OR @<Image3D>
+)
+
+<Image2D>  (
+    CLOSED {
+       (  $<Image2D_tes> (  &<Image_tes> ;
+             rdf:type [ <Image> ] ? ;
+             <defocus> @linkml:Float ? ;
+             <astigmatism> @linkml:Float ?
+          ) ;
+          rdf:type [ <Image2D> ]
+       )
+    } OR @<FluorescenceImage> OR @<OpticalImage> OR @<XRFImage>
+)
+
+<Image3D> CLOSED {
+    (  $<Image3D_tes> (  &<Image_tes> ;
+          rdf:type [ <Image> ] ? ;
+          <dimensions_z> @linkml:Integer ? ;
+          <voxel_size> @linkml:Float ? ;
+          <reconstruction_method> @linkml:String ?
+       ) ;
+       rdf:type [ <Image3D> ]
+    )
+}
+
+<ImageFeature> CLOSED {
+    (  $<ImageFeature_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <terms> @<OntologyTerm> ?
+       ) ;
+       rdf:type [ <ImageFeature> ] ?
+    )
+}
+
+<Instrument>  (
+    CLOSED {
+       (  $<Instrument_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ? ;
+             <instrument_code> @linkml:String ;
+             <manufacturer> @linkml:String ? ;
+             <model> @linkml:String ? ;
+             <installation_date> @linkml:String ? ;
+             <current_status> [ <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#operational>
+                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#maintenance>
+                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#offline>
+                <https://w3id.org/lambda-ber-schema/InstrumentStatusEnum#commissioning> ] ?
+          ) ;
+          rdf:type [ <Instrument> ]
+       )
+    } OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
+)
+
+<MolecularComposition> CLOSED {
+    (  $<MolecularComposition_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <sequences> @linkml:String * ;
+          <modifications> @linkml:String * ;
+          <ligands> @linkml:String *
+       ) ;
+       rdf:type [ <MolecularComposition> ] ?
+    )
+}
+
+<NamedThing>  (
+    @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR @<Sample> OR
+    @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
+)
+
+<NamedThing_struct> {
+    (  $<NamedThing_tes> (  dcterms:title @linkml:String ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <NamedThing> ]
+    )
+}
+
+<OntologyTerm> CLOSED {
+    (  $<OntologyTerm_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <label> @linkml:String ? ;
+          <definition> @linkml:String ? ;
+          <ontology> @linkml:String ?
+       ) ;
+       rdf:type [ <OntologyTerm> ]
+    )
+}
+
+<OpticalImage> CLOSED {
+    (  $<OpticalImage_tes> (  &<Image2D_tes> ;
+          rdf:type [ <Image2D> ] ? ;
+          <illumination_type> [ <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#brightfield>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#darkfield>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#phase_contrast>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#dic>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#fluorescence>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized>
+             <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique> ] ? ;
+          <magnification> @linkml:Float ? ;
+          <numerical_aperture> @linkml:Float ? ;
+          <color_channels> @linkml:String * ;
+          <white_balance> @linkml:String ? ;
+          <contrast_method> @linkml:String ?
+       ) ;
+       rdf:type [ <OpticalImage> ]
+    )
+}
+
+<QualityMetrics> CLOSED {
+    (  $<QualityMetrics_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <resolution> @linkml:Float ? ;
+          <completeness> @linkml:Float ? ;
+          <signal_to_noise> @linkml:Float ? ;
+          <r_factor> @linkml:Float ? ;
+          <i_zero> @linkml:Float ? ;
+          <rg> @linkml:Float ?
+       ) ;
+       rdf:type [ <QualityMetrics> ] ?
+    )
+}
+
+<Sample> CLOSED {
+    (  $<Sample_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <sample_code> @linkml:String ;
+          <sample_type> [ <https://w3id.org/lambda-ber-schema/SampleTypeEnum#protein>
+             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#nucleic_acid>
+             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#complex>
+             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#membrane_protein>
+             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus>
+             <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> ] ;
+          <molecular_composition> @<MolecularComposition> ? ;
+          <molecular_weight> @linkml:Float ? ;
+          <concentration> @linkml:Float ? ;
+          <concentration_unit> [ <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml>
+             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar>
+             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar>
+             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#nanomolar> ] ? ;
+          <buffer_composition> @<BufferComposition> ? ;
+          <preparation_method> @linkml:String ? ;
+          <storage_conditions> @<StorageConditions> ? ;
+          <organism> @<OntologyTerm> ? ;
+          <anatomy> @<OntologyTerm> ? ;
+          <cell_type> @<OntologyTerm> ? ;
+          <parent_sample_id> @<Sample> ? ;
+          <purity_percentage> @linkml:Float ? ;
+          <quality_metrics> @linkml:String ?
+       ) ;
+       rdf:type [ <Sample> ]
+    )
+}
+
+<SamplePreparation> CLOSED {
+    (  $<SamplePreparation_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <preparation_type> [ <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#cryo_em>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#xray_crystallography>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#saxs>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#sans>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_expression>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#protein_purification>
+             <https://w3id.org/lambda-ber-schema/PreparationTypeEnum#negative_stain> ] ;
+          <sample_id> @linkml:String ;
+          <preparation_date> @linkml:String ? ;
+          <operator_id> @linkml:String ? ;
+          <protocol_description> @linkml:String ?
+       ) ;
+       rdf:type [ <SamplePreparation> ]
+    )
+}
+
+<SAXSInstrument> CLOSED {
+    (  $<SAXSInstrument_tes> (  &<Instrument_tes> ;
+          rdf:type [ <Instrument> ] ? ;
+          <q_range_min> @linkml:Float ? ;
+          <q_range_max> @linkml:Float ? ;
+          <detector_distance_min> @linkml:Float ? ;
+          <detector_distance_max> @linkml:Float ? ;
+          <sample_changer_capacity> @linkml:Integer ? ;
+          <temperature_control_range> @linkml:String ?
+       ) ;
+       rdf:type [ <SAXSInstrument> ]
+    )
+}
+
+<SAXSPreparation> CLOSED {
+    (  $<SAXSPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
+          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+          <concentration_series> @linkml:Float * ;
+          <buffer_matching_protocol> @linkml:String ? ;
+          <sample_cell_type> @linkml:String ? ;
+          <cell_path_length> @linkml:Float ? ;
+          <temperature_control> @linkml:String ?
+       ) ;
+       rdf:type [ <SAXSPreparation> ] ?
+    )
+}
+
+<StorageConditions> CLOSED {
+    (  $<StorageConditions_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <temperature> @linkml:Float ? ;
+          <temperature_unit> [ <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius>
+             <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin>
+             <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit> ] ? ;
+          <duration> @linkml:String ? ;
+          <atmosphere> @linkml:String ?
+       ) ;
+       rdf:type [ <StorageConditions> ] ?
+    )
+}
+
+<Study> CLOSED {
+    (  $<Study_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <samples> @<Sample> * ;
+          <sample_preparations> @<SamplePreparation> * ;
+          <instrument_runs> @<ExperimentRun> * ;
+          <workflow_runs> @<WorkflowRun> * ;
+          <data_files> @<DataFile> * ;
+          <images> @<Image> *
+       ) ;
+       rdf:type [ <Study> ]
+    )
+}
+
+<TechniqueSpecificPreparation>  (
+    @<CryoEMPreparation> OR @<SAXSPreparation> OR @<XRayPreparation>
+)
+
+<TechniqueSpecificPreparation_struct> {
+    (  $<TechniqueSpecificPreparation_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ?
+       ) ;
+       rdf:type [ <TechniqueSpecificPreparation> ] ?
+    )
+}
+
+<WorkflowRun> CLOSED {
+    (  $<WorkflowRun_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <workflow_code> @linkml:String ;
+          <workflow_type> [ <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#motion_correction>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ctf_estimation>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_picking>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_2d>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#classification_3d>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#refinement>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_building>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#phasing>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution> ] ;
+          <experiment_id> @linkml:String ;
+          <processing_level> @linkml:Integer ? ;
+          <software_name> @linkml:String ;
+          <software_version> @linkml:String ? ;
+          <processing_parameters> @linkml:String ? ;
+          <compute_resources> @<ComputeResources> ? ;
+          <started_at> @linkml:String ? ;
+          <completed_at> @linkml:String ? ;
+          <output_files> @<DataFile> *
+       ) ;
+       rdf:type [ <WorkflowRun> ]
+    )
+}
+
+<XRayInstrument> CLOSED {
+    (  $<XRayInstrument_tes> (  &<Instrument_tes> ;
+          rdf:type [ <Instrument> ] ? ;
+          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
+          <energy_min> @linkml:Float ? ;
+          <energy_max> @linkml:Float ? ;
+          <beam_size_min> @linkml:Float ? ;
+          <beam_size_max> @linkml:Float ? ;
+          <flux_density> @linkml:Float ? ;
+          <monochromator_type> @linkml:String ? ;
+          <goniometer_type> @linkml:String ? ;
+          <crystal_cooling_capability> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <XRayInstrument> ]
+    )
+}
+
+<XRayPreparation> CLOSED {
+    (  $<XRayPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
+          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+          <crystallization_method> [ <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          <crystallization_conditions> @linkml:String ? ;
+          <crystal_size> @linkml:String ? ;
+          <cryoprotectant> @linkml:String ? ;
+          <cryoprotectant_concentration> @linkml:Float ? ;
+          <mounting_method> @linkml:String ? ;
+          <flash_cooling_method> @linkml:String ?
+       ) ;
+       rdf:type [ <XRayPreparation> ] ?
+    )
+}
+
+<XRFImage> CLOSED {
+    (  $<XRFImage_tes> (  &<Image2D_tes> ;
+          rdf:type [ <Image2D> ] ? ;
+          <beam_energy> @linkml:Float ? ;
+          <beam_size> @linkml:Float ? ;
+          <dwell_time> @linkml:Float ? ;
+          <elements_measured> @linkml:String * ;
+          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
+          <detector_type> @linkml:String ? ;
+          <flux> @linkml:Float ? ;
+          <calibration_standard> @linkml:String ?
+       ) ;
+       rdf:type [ <XRFImage> ]
+    )
+}

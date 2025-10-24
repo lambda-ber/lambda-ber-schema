@@ -1,0 +1,191 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:study_integrative_nucleosome a lambdaber:Study ;
+    dcterms:title "Integrative structural analysis of nucleosome remodeling" ;
+    lambdaber:description "Multi-technique study combining cryo-EM, SAXS, and X-ray crystallography to study chromatin remodeler-nucleosome complexes" ;
+    lambdaber:instrument_runs lambdaber:exp_chd1_saxs_001,
+        lambdaber:exp_complex_cryoem_001,
+        lambdaber:exp_ncp_cryoem_001 ;
+    lambdaber:sample_preparations lambdaber:prep_chd1_saxs_001,
+        lambdaber:prep_complex_cryo_001,
+        lambdaber:prep_ncp_grid_001 ;
+    lambdaber:samples lambdaber:sample_chd1_001,
+        lambdaber:sample_chd1_ncp_complex_001,
+        lambdaber:sample_nucleosome_001 .
+
+lambdaber:exp_chd1_saxs_001 a lambdaber:ExperimentRun ;
+    dcterms:title "CHD1 SAXS analysis" ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "continuous" ;
+            lambdaber:frame_rate "1.0"^^xsd:float ;
+            lambdaber:total_frames 20 ] ;
+    lambdaber:description "Solution scattering of CHD1" ;
+    lambdaber:experiment_code "EXP-CHD1-SAXS-001" ;
+    lambdaber:experiment_date "2024-05-16T10:00:00" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:humidity "50.0"^^xsd:float ;
+            lambdaber:pressure "101.325"^^xsd:float ;
+            lambdaber:temperature "20.0"^^xsd:float ] ;
+    lambdaber:instrument_id lambdaber:instrument_sibyls_1231 ;
+    lambdaber:operator_id "saxs_operator_001" ;
+    lambdaber:processing_status "completed" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness "100.0"^^xsd:float ;
+            lambdaber:resolution "30.0"^^xsd:float ;
+            lambdaber:signal_to_noise "45.0"^^xsd:float ] ;
+    lambdaber:sample_id "lambdaber:sample_chd1_001" ;
+    lambdaber:technique "saxs" .
+
+lambdaber:exp_complex_cryoem_001 a lambdaber:ExperimentRun ;
+    dcterms:title "CHD1-nucleosome complex structure" ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "super_resolution" ;
+            lambdaber:dose_per_frame "1.25"^^xsd:float ;
+            lambdaber:frame_rate "40.0"^^xsd:float ;
+            lambdaber:total_dose "50.0"^^xsd:float ;
+            lambdaber:total_frames 10000 ] ;
+    lambdaber:description "Cryo-EM of chromatin remodeler bound to nucleosome" ;
+    lambdaber:experiment_code "EXP-COMPLEX-001" ;
+    lambdaber:experiment_date "2024-05-17T09:00:00" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:humidity "0.0"^^xsd:float ;
+            lambdaber:pressure "1e-06"^^xsd:float ;
+            lambdaber:temperature "-180.0"^^xsd:float ] ;
+    lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
+    lambdaber:operator_id "cryoem_operator_001" ;
+    lambdaber:processing_status "processing" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness "98.5"^^xsd:float ;
+            lambdaber:resolution "3.2"^^xsd:float ;
+            lambdaber:signal_to_noise "3.8"^^xsd:float ] ;
+    lambdaber:sample_id "lambdaber:sample_chd1_ncp_complex_001" ;
+    lambdaber:technique "cryo_em" .
+
+lambdaber:exp_ncp_cryoem_001 a lambdaber:ExperimentRun ;
+    dcterms:title "Nucleosome cryo-EM collection" ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "counting" ;
+            lambdaber:dose_per_frame "1.125"^^xsd:float ;
+            lambdaber:frame_rate "40.0"^^xsd:float ;
+            lambdaber:total_dose "45.0"^^xsd:float ;
+            lambdaber:total_frames 5000 ] ;
+    lambdaber:description "High-resolution data collection of nucleosome" ;
+    lambdaber:experiment_code "EXP-NCP-CRYOEM-001" ;
+    lambdaber:experiment_date "2024-05-15T08:00:00" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:humidity "0.0"^^xsd:float ;
+            lambdaber:pressure "1e-06"^^xsd:float ;
+            lambdaber:temperature "-180.0"^^xsd:float ] ;
+    lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
+    lambdaber:operator_id "cryoem_operator_001" ;
+    lambdaber:processing_status "completed" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness "99.9"^^xsd:float ;
+            lambdaber:resolution "2.5"^^xsd:float ;
+            lambdaber:signal_to_noise "5.2"^^xsd:float ] ;
+    lambdaber:sample_id "lambdaber:sample_nucleosome_001" ;
+    lambdaber:technique "cryo_em" .
+
+lambdaber:prep_chd1_saxs_001 a lambdaber:SamplePreparation ;
+    dcterms:title "CHD1 SAXS sample preparation" ;
+    lambdaber:description "Preparation for SAXS analysis of CHD1" ;
+    lambdaber:operator_id "saxs_specialist_001" ;
+    lambdaber:preparation_date "2024-05-11" ;
+    lambdaber:preparation_type "saxs" ;
+    lambdaber:protocol_description "Concentration series 0.5, 1.0, 2.0 mg/mL prepared" ;
+    lambdaber:sample_id "lambdaber:sample_chd1_001" .
+
+lambdaber:prep_complex_cryo_001 a lambdaber:SamplePreparation ;
+    dcterms:title "CHD1-nucleosome complex grid preparation" ;
+    lambdaber:description "Cryo-EM grid preparation for complex" ;
+    lambdaber:operator_id "chromatin_lab_member_001" ;
+    lambdaber:preparation_date "2024-05-12" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:protocol_description "UltrAuFoil grids to reduce preferred orientation" ;
+    lambdaber:sample_id "lambdaber:sample_chd1_ncp_complex_001" .
+
+lambdaber:prep_ncp_grid_001 a lambdaber:SamplePreparation ;
+    dcterms:title "Nucleosome grid preparation for cryo-EM" ;
+    lambdaber:description "Grid preparation for nucleosome imaging" ;
+    lambdaber:operator_id "chromatin_lab_member_001" ;
+    lambdaber:preparation_date "2024-05-10" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:protocol_description "Quantifoil R2/2 grids, glow discharged, 3µL sample applied, blotted 3s" ;
+    lambdaber:sample_id "lambdaber:sample_nucleosome_001" .
+
+lambdaber:sample_chd1_001 a lambdaber:Sample ;
+    dcterms:title "Chromodomain helicase CHD1" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "1 mM ATP",
+                "1 mM DTT" ;
+            lambdaber:components "150 mM KCl",
+                "2 mM MgCl2",
+                "25 mM HEPES" ;
+            lambdaber:ph "7.8"^^xsd:float ] ;
+    lambdaber:concentration "2.0"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:description "Full-length yeast CHD1 protein" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:ligands "ATP" ;
+            lambdaber:modifications "ATP binding domain" ;
+            lambdaber:sequences "MSQKYFDKLKQLIEPWLCGDDNVSEIVQGDFNLDSIVQNLKNAVEKGQKEVFGLVKDNKLPFWVDPTNNHGIVIQNDGKCFYINRPSTGKFLTQDDVDAIILPNFISDPISANRITFAEVTSNLQNFFTKQDLANLGVQALNHLAEAGLLPPELAKQLDAYQKAIEKNFGAGGVVIAACHDIDHTRDHVMVDLADGHTRAVLELAHQFNPALLKTLEEPPEALKKQLELAEKLEVAITGPVGSGKSTLAAQLCQLLNWQSKKVIFLTGDKGQCGDVIEKYRGQLGLAQKCILFIDEIHYLSQYDGPNALRSLLSAGVTDRKVTILSATLDKANFQRALGVSHVIVGTQGIFNQPYLDQLKAKFPDLILLCRDPYFSQLKQHFENLENLISQHNLGFSLQQILTGVSRDIAKQVNSNKQNIQNLMSRFEVQNQLIVIANQLLSQINFGELNQMAIKLGFEPIPVDDLFIKRLQLMEQALRKEDAVKAFLNDQSTQTQELLDNNREQISSLRNLINTYINQFPKPYNPVSEYFRAQVSNLLSLNHDDFAQIEQVMHGHIEPFVINLCKQFGLNVPGGRIAVGDVFTPHENSIAVFLEYLNLVKKWLDSRGQRTGTIPGAMYTLPRFCFLRVDSPIVDPVSNQYISHSIVTMAKEGRISGDDIVDALKIMKQTDISQAIFDRMLSRTPSECRQMMLSSVSPLSRTTKSLHGLFKQRCGNVHEAMAQVVSEAKPLSTVQIFSQSTKHWFVLTGAPQYFKGQDIQAMLHQICQGLGFSPKSGKTGIIDGGVAGCALYQAFLKATKGVQMFVDEVHTLADIDIKRHNRGIRVVAFVCHDLEISTIIRRDRIKFVTYAEVSSGKFRALCKSPILGSRWYFANCDPETHAIAQQALRGLGGCTVLITAPLQDWWPDAQRTPLAEAEKALALLPYVLHQKMNPGSGPGIYDAIRLRGTAERKVVLTPLKQGLMQSIKDLSAKEKEFGNKVRTSMTEEGLEAVNKAKEEGISATNQDLLNLFLKQNPELLNRLTPQILQAVGRREEPVSAANLVQFGLKPVGPNVTDPGMVKATLKYIAETFGDFQPGDMKVITVKQNIQMTSKKVELAKAAANVMYHLVKTKLAEQEQQRELEQKQQELEHLQVNLAKSESTVSSSEEGVGDGDDEPDFKETLKLTTQKQFARDLRDLEKQFRRLEEDKPKPVYSQDDEDEAAGVEVEDDNDLELELDMKDEDEQKLQNLLIDKEETDSILSDITNVDSELSNALVDRDDDVIPQEEEEEEKEEDEEEEEEEEDDELLGDLL" ] ;
+    lambdaber:molecular_weight "168.5"^^xsd:float ;
+    lambdaber:organism NCBITaxon:4932 ;
+    lambdaber:preparation_method "Sf9 insect cell expression with FLAG purification" ;
+    lambdaber:purity_percentage "95.0"^^xsd:float ;
+    lambdaber:sample_code "CHD1-FL-2024-001" ;
+    lambdaber:sample_type "protein" .
+
+lambdaber:sample_chd1_ncp_complex_001 a lambdaber:Sample ;
+    dcterms:title "CHD1-nucleosome complex" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "1 mM ADP",
+                "1 mM BeCl2",
+                "5 mM NaF" ;
+            lambdaber:components "100 mM KCl",
+                "2 mM MgCl2",
+                "20 mM HEPES" ;
+            lambdaber:ph "7.5"^^xsd:float ] ;
+    lambdaber:concentration "0.5"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:description "CHD1 bound to nucleosome core particle" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:ligands "ADP-BeF3",
+                "CHD1",
+                "Nucleosome" ] ;
+    lambdaber:molecular_weight "374.5"^^xsd:float ;
+    lambdaber:parent_sample_id lambdaber:sample_nucleosome_001 ;
+    lambdaber:preparation_method "In vitro reconstitution by mixing CHD1 with nucleosome" ;
+    lambdaber:purity_percentage "90.0"^^xsd:float ;
+    lambdaber:sample_code "CHD1-NCP-2024-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:sample_nucleosome_001 a lambdaber:Sample ;
+    dcterms:title "Reconstituted nucleosome core particle" ;
+    lambdaber:anatomy UBERON:0000922 ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "1 mM DTT" ;
+            lambdaber:components "1 mM EDTA",
+                "10 mM Tris-HCl",
+                "50 mM NaCl" ;
+            lambdaber:ph "7.5"^^xsd:float ] ;
+    lambdaber:concentration "5.0"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:description "Nucleosome with 147bp Widom 601 DNA" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:ligands "Histone octamer" ;
+            lambdaber:modifications "H3K36me3",
+                "H4K20me1" ;
+            lambdaber:sequences "ATCAATATCCACCTGCAGATTCTACCAAAAGTGTATTTGGAAACTGCTCCATCAAAAGGCATGTTCAGCTGGAATCCAGCTGAACATGCCTTTTGATGGAGCAGTTTCCAAATACACTTTTGGTAGAATCTGCAGGTGGATATTGATAT" ] ;
+    lambdaber:molecular_weight "206.0"^^xsd:float ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:preparation_method "Salt gradient dialysis reconstitution" ;
+    lambdaber:purity_percentage "99.0"^^xsd:float ;
+    lambdaber:sample_code "NCP-601-2024-001" ;
+    lambdaber:sample_type "complex" .
+

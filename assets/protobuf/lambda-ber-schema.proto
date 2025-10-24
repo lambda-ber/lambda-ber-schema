@@ -1,0 +1,437 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// Buffer composition for sample storage
+message BufferComposition
+ {
+  string description = 0
+  float ph = 0
+ repeated  string components = 0
+ repeated  string additives = 0
+ }
+// Computational resources used
+message ComputeResources
+ {
+  string description = 0
+  float cpuHours = 0
+  float gpuHours = 0
+  float memoryGb = 0
+  float storageGb = 0
+ }
+// Cryo-EM microscope specifications
+message CryoEMInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  integer acceleratingVoltage = 0
+  boolean csCorrector = 0
+  boolean phasePlate = 0
+  detectorTypeEnum detectorType = 0
+  string detectorDimensions = 0
+  float pixelSizeMin = 0
+  float pixelSizeMax = 0
+  integer autoloaderCapacity = 0
+ }
+// Cryo-EM specific sample preparation
+message CryoEMPreparation
+ {
+  string description = 0
+  gridTypeEnum gridType = 0
+  string supportFilm = 0
+  float holeSize = 0
+  vitrificationMethodEnum vitrificationMethod = 0
+  float blotTime = 0
+  integer blotForce = 0
+  float humidityPercentage = 0
+  float chamberTemperature = 0
+  string plasmaTreatment = 0
+ }
+// Strategy for data collection
+message DataCollectionStrategy
+ {
+  string description = 0
+  collectionModeEnum collectionMode = 0
+  integer totalFrames = 0
+  float frameRate = 0
+  float totalDose = 0
+  float dosePerFrame = 0
+ }
+// A data file generated or used in the study
+message DataFile
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string filePath = 0
+  fileFormatEnum fileFormat = 0
+  integer fileSizeBytes = 0
+  string checksum = 0
+  string creationDate = 0
+  dataTypeEnum dataType = 0
+ }
+// A collection of studies
+message Dataset
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  string keywords = 0
+ repeated  instrument instruments = 0
+ repeated  study studies = 0
+ }
+// Environmental and experimental conditions
+message ExperimentalConditions
+ {
+  string description = 0
+  float temperature = 0
+  float humidity = 0
+  float pressure = 0
+  string atmosphere = 0
+  float beamEnergy = 0
+  float exposureTime = 0
+ }
+// An experimental data collection session
+message ExperimentRun
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string experimentCode = 0
+  string sampleId = 0
+  instrument instrumentId = 0
+  string experimentDate = 0
+  string operatorId = 0
+  techniqueEnum technique = 0
+  experimentalConditions experimentalConditions = 0
+  dataCollectionStrategy dataCollectionStrategy = 0
+  qualityMetrics qualityMetrics = 0
+  string rawDataLocation = 0
+  processingStatusEnum processingStatus = 0
+ }
+// Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
+message FluorescenceImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float defocus = 0
+  float astigmatism = 0
+  float excitationWavelength = 0
+  float emissionWavelength = 0
+  string excitationFilter = 0
+  string emissionFilter = 0
+  string fluorophore = 0
+  string channelName = 0
+  float laserPower = 0
+  float pinholeSize = 0
+  float quantumYield = 0
+ }
+// Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
+message FTIRImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float wavenumberMin = 0
+  float wavenumberMax = 0
+  float spectralResolution = 0
+  integer numberOfScans = 0
+  string apodizationFunction = 0
+ repeated  string molecularSignatures = 0
+  string backgroundCorrection = 0
+ }
+// An image file from structural biology experiments
+message Image
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+ }
+// A 2D image (micrograph, diffraction pattern)
+message Image2D
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float defocus = 0
+  float astigmatism = 0
+ }
+// A 3D volume or tomogram
+message Image3D
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  integer dimensionsZ = 0
+  float voxelSize = 0
+  string reconstructionMethod = 0
+ }
+// Semantic annotations describing features identified in images using controlled vocabulary terms
+message ImageFeature
+ {
+  string description = 0
+  ontologyTerm terms = 0
+ }
+// An instrument used to collect data
+message Instrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+ }
+// Molecular composition of a sample
+message MolecularComposition
+ {
+  string description = 0
+ repeated  string sequences = 0
+ repeated  string modifications = 0
+ repeated  string ligands = 0
+ }
+message OntologyTerm
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string label = 0
+  string definition = 0
+  string ontology = 0
+ }
+// Visible light optical microscopy or photography image
+message OpticalImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float defocus = 0
+  float astigmatism = 0
+  illuminationTypeEnum illuminationType = 0
+  float magnification = 0
+  float numericalAperture = 0
+ repeated  string colorChannels = 0
+  string whiteBalance = 0
+  string contrastMethod = 0
+ }
+// Quality metrics for experiments
+message QualityMetrics
+ {
+  string description = 0
+  float resolution = 0
+  float completeness = 0
+  float signalToNoise = 0
+  float rFactor = 0
+  float iZero = 0
+  float rg = 0
+ }
+// A biological sample used in structural biology experiments
+message Sample
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string sampleCode = 0
+  sampleTypeEnum sampleType = 0
+  molecularComposition molecularComposition = 0
+  float molecularWeight = 0
+  float concentration = 0
+  concentrationUnitEnum concentrationUnit = 0
+  bufferComposition bufferComposition = 0
+  string preparationMethod = 0
+  storageConditions storageConditions = 0
+  ontologyTerm organism = 0
+  ontologyTerm anatomy = 0
+  ontologyTerm cellType = 0
+  sample parentSampleId = 0
+  float purityPercentage = 0
+  string qualityMetrics = 0
+ }
+// A process that prepares a sample for imaging
+message SamplePreparation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  preparationTypeEnum preparationType = 0
+  string sampleId = 0
+  string preparationDate = 0
+  string operatorId = 0
+  string protocolDescription = 0
+ }
+// SAXS/WAXS instrument specifications
+message SAXSInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  float qRangeMin = 0
+  float qRangeMax = 0
+  float detectorDistanceMin = 0
+  float detectorDistanceMax = 0
+  integer sampleChangerCapacity = 0
+  string temperatureControlRange = 0
+ }
+// SAXS/WAXS specific preparation
+message SAXSPreparation
+ {
+  string description = 0
+ repeated  float concentrationSeries = 0
+  string bufferMatchingProtocol = 0
+  string sampleCellType = 0
+  float cellPathLength = 0
+  string temperatureControl = 0
+ }
+// Storage conditions for samples
+message StorageConditions
+ {
+  string description = 0
+  float temperature = 0
+  temperatureUnitEnum temperatureUnit = 0
+  string duration = 0
+  string atmosphere = 0
+ }
+// A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
+message Study
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  sample samples = 0
+ repeated  samplePreparation samplePreparations = 0
+ repeated  experimentRun instrumentRuns = 0
+ repeated  workflowRun workflowRuns = 0
+ repeated  dataFile dataFiles = 0
+ repeated  image images = 0
+ }
+// A computational processing workflow execution
+message WorkflowRun
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string workflowCode = 0
+  workflowTypeEnum workflowType = 0
+  string experimentId = 0
+  integer processingLevel = 0
+  string softwareName = 0
+  string softwareVersion = 0
+  string processingParameters = 0
+  computeResources computeResources = 0
+  string startedAt = 0
+  string completedAt = 0
+ repeated  dataFile outputFiles = 0
+ }
+// X-ray diffractometer or synchrotron beamline specifications
+message XRayInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  xRaySourceTypeEnum sourceType = 0
+  float energyMin = 0
+  float energyMax = 0
+  float beamSizeMin = 0
+  float beamSizeMax = 0
+  float fluxDensity = 0
+  string monochromatorType = 0
+  string goniometerType = 0
+  boolean crystalCoolingCapability = 0
+ }
+// X-ray crystallography specific preparation
+message XRayPreparation
+ {
+  string description = 0
+  crystallizationMethodEnum crystallizationMethod = 0
+  string crystallizationConditions = 0
+  string crystalSize = 0
+  string cryoprotectant = 0
+  float cryoprotectantConcentration = 0
+  string mountingMethod = 0
+  string flashCoolingMethod = 0
+ }
+// X-ray fluorescence (XRF) image showing elemental distribution
+message XRFImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float defocus = 0
+  float astigmatism = 0
+  float beamEnergy = 0
+  float beamSize = 0
+  float dwellTime = 0
+ repeated  string elementsMeasured = 0
+  xRaySourceTypeEnum sourceType = 0
+  string detectorType = 0
+  float flux = 0
+  string calibrationStandard = 0
+ }

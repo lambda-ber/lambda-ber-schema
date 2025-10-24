@@ -1,0 +1,2072 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:AttributeGroup a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A grouping of related data attributes that form a logical unit" ;
+    sh:ignoredProperties ( lambdaber:cell_path_length lambdaber:total_frames lambdaber:crystal_size lambdaber:grid_type lambdaber:pressure lambdaber:concentration_series lambdaber:buffer_matching_protocol lambdaber:blot_force lambdaber:humidity lambdaber:frame_rate lambdaber:flash_cooling_method lambdaber:total_dose lambdaber:vitrification_method lambdaber:completeness lambdaber:exposure_time lambdaber:terms lambdaber:signal_to_noise lambdaber:components lambdaber:temperature lambdaber:r_factor lambdaber:cpu_hours lambdaber:memory_gb lambdaber:ligands lambdaber:chamber_temperature lambdaber:cryoprotectant_concentration rdf:type lambdaber:modifications lambdaber:cryoprotectant lambdaber:collection_mode lambdaber:plasma_treatment lambdaber:sequences lambdaber:beam_energy lambdaber:crystallization_conditions lambdaber:additives lambdaber:i_zero lambdaber:crystallization_method lambdaber:humidity_percentage lambdaber:temperature_unit lambdaber:rg lambdaber:gpu_hours lambdaber:hole_size lambdaber:support_film lambdaber:sample_cell_type lambdaber:mounting_method lambdaber:storage_gb lambdaber:duration lambdaber:blot_time lambdaber:resolution lambdaber:ph lambdaber:atmosphere lambdaber:temperature_control lambdaber:dose_per_frame ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:AttributeGroup .
+
+lambdaber:CryoEMInstrument a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Cryo-EM microscope specifications" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 12 ;
+            sh:path lambdaber:current_status ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Spherical aberration corrector present" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:cs_corrector ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:installation_date ],
+        [ sh:datatype xsd:string ;
+            sh:description "Detector dimensions in pixels (e.g., 4096x4096)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:detector_dimensions ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of grids the autoloader can hold" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:autoloader_capacity ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:model ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Phase plate available" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:phase_plate ],
+        [ sh:description "Accelerating voltage in kV" ;
+            sh:maxCount 1 ;
+            sh:or ( [ ] [ ] [ ] ) ;
+            sh:order 0 ;
+            sh:path lambdaber:accelerating_voltage ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:instrument_code ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum pixel size in Angstroms per pixel" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:pixel_size_max ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum pixel size in Angstroms per pixel" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:pixel_size_min ],
+        [ sh:description "Type of detector" ;
+            sh:in ( "direct_electron" "ccd" "cmos" "hybrid_pixel" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path lambdaber:detector_type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:manufacturer ] ;
+    sh:targetClass lambdaber:CryoEMInstrument .
+
+lambdaber:CryoEMPreparation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Cryo-EM specific sample preparation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Support film type" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:support_film ],
+        [ sh:datatype xsd:float ;
+            sh:description "Blotting time in seconds" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 1e+01 ;
+            sh:minInclusive 5e-01 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:blot_time ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Blotting force setting" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:blot_force ],
+        [ sh:datatype xsd:float ;
+            sh:description "Chamber temperature in Celsius" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:chamber_temperature ],
+        [ sh:datatype xsd:float ;
+            sh:description "Chamber humidity during vitrification" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 100 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:humidity_percentage ],
+        [ sh:description "Type of EM grid used" ;
+            sh:in ( "c_flat" "quantifoil" "lacey_carbon" "ultrathin_carbon" "gold" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:grid_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Hole size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 5e+00 ;
+            sh:minInclusive 5e-01 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:hole_size ],
+        [ sh:description "Method used for vitrification" ;
+            sh:in ( "plunge_freezing" "high_pressure_freezing" "slam_freezing" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path lambdaber:vitrification_method ],
+        [ sh:datatype xsd:string ;
+            sh:description "Plasma treatment details" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:plasma_treatment ] ;
+    sh:targetClass lambdaber:CryoEMPreparation .
+
+lambdaber:Dataset a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A collection of studies" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:keywords ],
+        [ sh:class lambdaber:Instrument ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path lambdaber:instruments ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:title ],
+        [ sh:class lambdaber:Study ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path lambdaber:studies ] ;
+    sh:targetClass lambdaber:Dataset .
+
+lambdaber:FTIRImage a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:string ;
+            sh:description "Mathematical function used for apodization" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:apodization_function ],
+        [ sh:datatype xsd:string ;
+            sh:description "Identified molecular signatures or peaks" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:molecular_signatures ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of scans averaged for the spectrum" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:number_of_scans ],
+        [ sh:datatype xsd:string ;
+            sh:description "Method used for background correction" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:background_correction ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:float ;
+            sh:description "Spectral resolution in cm⁻¹" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:spectral_resolution ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum wavenumber in cm⁻¹" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:wavenumber_min ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum wavenumber in cm⁻¹" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:wavenumber_max ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path dcterms:title ] ;
+    sh:targetClass lambdaber:FTIRImage .
+
+lambdaber:FluorescenceImage a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:channel_name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specifications of the emission filter" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:emission_filter ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pinhole size in Airy units for confocal microscopy" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:pinhole_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name or type of fluorophore used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:fluorophore ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:float ;
+            sh:description "Emission wavelength in nanometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:emission_wavelength ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specifications of the excitation filter" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:excitation_filter ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:float ;
+            sh:description "Laser power in milliwatts or percentage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:laser_power ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:defocus ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:astigmatism ],
+        [ sh:datatype xsd:float ;
+            sh:description "Quantum yield of the fluorophore" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:quantum_yield ],
+        [ sh:datatype xsd:float ;
+            sh:description "Excitation wavelength in nanometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:excitation_wavelength ] ;
+    sh:targetClass lambdaber:FluorescenceImage .
+
+lambdaber:Image2D a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 2D image (micrograph, diffraction pattern)" ;
+    sh:ignoredProperties ( lambdaber:flux lambdaber:emission_filter lambdaber:calibration_standard lambdaber:detector_type lambdaber:emission_wavelength lambdaber:fluorophore lambdaber:color_channels lambdaber:pinhole_size rdf:type lambdaber:magnification lambdaber:laser_power lambdaber:beam_energy lambdaber:illumination_type lambdaber:excitation_filter lambdaber:quantum_yield lambdaber:source_type lambdaber:contrast_method lambdaber:numerical_aperture lambdaber:white_balance lambdaber:excitation_wavelength lambdaber:elements_measured lambdaber:channel_name lambdaber:dwell_time lambdaber:beam_size ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:astigmatism ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:defocus ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:Image2D .
+
+lambdaber:Image3D a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A 3D volume or tomogram" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image depth in pixels/slices" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:dimensions_z ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Voxel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:voxel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:description "Method used for 3D reconstruction" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:reconstruction_method ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:dimensions_y ] ;
+    sh:targetClass lambdaber:Image3D .
+
+lambdaber:ImageFeature a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Semantic annotations describing features identified in images using controlled vocabulary terms" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:description ],
+        [ sh:class lambdaber:OntologyTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path lambdaber:terms ] ;
+    sh:targetClass lambdaber:ImageFeature .
+
+lambdaber:NamedThing a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A named thing" ;
+    sh:ignoredProperties ( lambdaber:molecular_signatures lambdaber:file_format lambdaber:acquisition_date lambdaber:emission_filter lambdaber:experiment_code lambdaber:sample_type lambdaber:instrument_code lambdaber:beam_size_min lambdaber:data_files lambdaber:dimensions_x rdf:type lambdaber:detector_distance_max lambdaber:completed_at lambdaber:laser_power lambdaber:definition lambdaber:phase_plate lambdaber:processing_status lambdaber:contrast_method lambdaber:numerical_aperture lambdaber:ontology lambdaber:excitation_wavelength lambdaber:energy_max lambdaber:images lambdaber:workflow_type lambdaber:preparation_type lambdaber:model lambdaber:molecular_weight lambdaber:wavenumber_min lambdaber:cs_corrector lambdaber:background_correction lambdaber:pixel_size_max lambdaber:reconstruction_method lambdaber:organism lambdaber:number_of_scans lambdaber:installation_date lambdaber:raw_data_location lambdaber:calibration_standard lambdaber:anatomy lambdaber:beam_size_max lambdaber:detector_distance_min lambdaber:processing_parameters lambdaber:compute_resources lambdaber:beam_energy lambdaber:astigmatism lambdaber:experiment_date lambdaber:experiment_id lambdaber:molecular_composition lambdaber:apodization_function lambdaber:q_range_min lambdaber:voxel_size lambdaber:technique lambdaber:dimensions_z lambdaber:file_path lambdaber:pixel_size_min lambdaber:concentration lambdaber:autoloader_capacity lambdaber:energy_min lambdaber:instruments lambdaber:emission_wavelength lambdaber:sample_preparations lambdaber:fluorophore lambdaber:sample_code lambdaber:workflow_runs lambdaber:protocol_description lambdaber:operator_id lambdaber:quantum_yield lambdaber:source_type lambdaber:data_collection_strategy lambdaber:defocus lambdaber:monochromator_type lambdaber:instrument_id lambdaber:white_balance lambdaber:temperature_control_range lambdaber:creation_date lambdaber:elements_measured lambdaber:goniometer_type lambdaber:channel_name lambdaber:workflow_code lambdaber:samples lambdaber:buffer_composition lambdaber:dwell_time lambdaber:software_name lambdaber:preparation_date lambdaber:data_type lambdaber:output_files lambdaber:file_name lambdaber:current_status lambdaber:flux lambdaber:sample_changer_capacity lambdaber:concentration_unit lambdaber:exposure_time lambdaber:detector_type lambdaber:color_channels lambdaber:sample_id lambdaber:pinhole_size lambdaber:instrument_runs lambdaber:quality_metrics lambdaber:dose lambdaber:studies lambdaber:cell_type lambdaber:dimensions_y lambdaber:experimental_conditions lambdaber:magnification lambdaber:parent_sample_id lambdaber:illumination_type lambdaber:excitation_filter lambdaber:keywords lambdaber:pixel_size lambdaber:preparation_method lambdaber:q_range_max lambdaber:file_size_bytes lambdaber:detector_dimensions lambdaber:flux_density lambdaber:manufacturer lambdaber:label lambdaber:storage_conditions lambdaber:checksum lambdaber:wavenumber_max lambdaber:accelerating_voltage lambdaber:software_version lambdaber:purity_percentage lambdaber:spectral_resolution lambdaber:crystal_cooling_capability lambdaber:processing_level lambdaber:started_at lambdaber:beam_size ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:id ] ;
+    sh:targetClass lambdaber:NamedThing .
+
+lambdaber:OpticalImage a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Visible light optical microscopy or photography image" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Numerical aperture of the objective lens" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:numerical_aperture ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path dcterms:title ],
+        [ sh:description "Type of illumination (brightfield, darkfield, phase contrast, DIC)" ;
+            sh:in ( "brightfield" "darkfield" "phase_contrast" "dic" "fluorescence" "confocal" "polarized" "oblique" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:illumination_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Contrast enhancement method used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:contrast_method ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Color channels present (e.g., RGB, grayscale)" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:color_channels ],
+        [ sh:datatype xsd:string ;
+            sh:description "White balance settings" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:white_balance ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:astigmatism ],
+        [ sh:datatype xsd:float ;
+            sh:description "Optical magnification factor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:magnification ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:defocus ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:dimensions_x ] ;
+    sh:targetClass lambdaber:OpticalImage .
+
+lambdaber:SAXSInstrument a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "SAXS/WAXS instrument specifications" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:manufacturer ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:model ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:installation_date ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of samples in automatic sample changer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:sample_changer_capacity ],
+        [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path lambdaber:current_status ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum detector distance in mm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:detector_distance_max ],
+        [ sh:datatype xsd:string ;
+            sh:description "Temperature control range in Celsius" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:temperature_control_range ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum q value in inverse Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:q_range_min ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:instrument_code ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum detector distance in mm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:detector_distance_min ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum q value in inverse Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:q_range_max ] ;
+    sh:targetClass lambdaber:SAXSInstrument .
+
+lambdaber:SAXSPreparation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "SAXS/WAXS specific preparation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Temperature control settings" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:temperature_control ],
+        [ sh:datatype xsd:float ;
+            sh:description "Path length in mm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:cell_path_length ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of sample cell used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:sample_cell_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Protocol for buffer matching" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:buffer_matching_protocol ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Concentration values for series measurements" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:concentration_series ] ;
+    sh:targetClass lambdaber:SAXSPreparation .
+
+lambdaber:TechniqueSpecificPreparation a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Base class for technique-specific preparation details" ;
+    sh:ignoredProperties ( lambdaber:crystallization_conditions lambdaber:cell_path_length lambdaber:crystallization_method lambdaber:humidity_percentage lambdaber:crystal_size lambdaber:grid_type lambdaber:concentration_series lambdaber:buffer_matching_protocol lambdaber:blot_force lambdaber:hole_size lambdaber:flash_cooling_method lambdaber:support_film lambdaber:vitrification_method lambdaber:sample_cell_type lambdaber:mounting_method lambdaber:blot_time lambdaber:chamber_temperature lambdaber:cryoprotectant_concentration rdf:type lambdaber:cryoprotectant lambdaber:temperature_control lambdaber:plasma_treatment ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:TechniqueSpecificPreparation .
+
+lambdaber:XRFImage a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "X-ray fluorescence (XRF) image showing elemental distribution" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Reference standard used for calibration" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:calibration_standard ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:astigmatism ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Dwell time per pixel in milliseconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:dwell_time ],
+        [ sh:datatype xsd:float ;
+            sh:description "X-ray beam size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:beam_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "X-ray beam energy in keV" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:beam_energy ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of X-ray detector used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:detector_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:defocus ],
+        [ sh:description "X-ray source type (synchrotron or lab-source)" ;
+            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path lambdaber:source_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Photon flux in photons/second" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:flux ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:string ;
+            sh:description "Elements detected and measured" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:elements_measured ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:XRFImage .
+
+lambdaber:XRayInstrument a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "X-ray diffractometer or synchrotron beamline specifications" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Crystal cooling system available" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:crystal_cooling_capability ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path lambdaber:manufacturer ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum beam size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:beam_size_min ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path dcterms:title ],
+        [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 13 ;
+            sh:path lambdaber:current_status ],
+        [ sh:description "Type of X-ray source" ;
+            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:source_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum X-ray energy in keV" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:energy_max ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:model ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum beam size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:beam_size_max ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path lambdaber:installation_date ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of monochromator" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:monochromator_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Photon flux density in photons/s/mm²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:flux_density ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:instrument_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of goniometer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:goniometer_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum X-ray energy in keV" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:energy_min ] ;
+    sh:targetClass lambdaber:XRayInstrument .
+
+lambdaber:XRayPreparation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "X-ray crystallography specific preparation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Crystal mounting method" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:mounting_method ],
+        [ sh:datatype xsd:string ;
+            sh:description "Detailed crystallization conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:crystallization_conditions ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Cryoprotectant concentration percentage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:cryoprotectant_concentration ],
+        [ sh:datatype xsd:string ;
+            sh:description "Flash cooling protocol" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:flash_cooling_method ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryoprotectant used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:cryoprotectant ],
+        [ sh:datatype xsd:string ;
+            sh:description "Crystal dimensions in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:crystal_size ],
+        [ sh:description "Method used for crystallization" ;
+            sh:in ( "vapor_diffusion_hanging" "vapor_diffusion_sitting" "microbatch" "dialysis" "free_interface_diffusion" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:crystallization_method ] ;
+    sh:targetClass lambdaber:XRayPreparation .
+
+lambdaber:BufferComposition a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Buffer composition for sample storage" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Additional additives in the buffer" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:additives ],
+        [ sh:datatype xsd:float ;
+            sh:description "pH of the buffer" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 14 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:ph ],
+        [ sh:datatype xsd:string ;
+            sh:description "Buffer components and their concentrations" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:components ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:BufferComposition .
+
+lambdaber:ComputeResources a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Computational resources used" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum memory used in GB" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:memory_gb ],
+        [ sh:datatype xsd:float ;
+            sh:description "Storage used in GB" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:storage_gb ],
+        [ sh:datatype xsd:float ;
+            sh:description "GPU hours used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:gpu_hours ],
+        [ sh:datatype xsd:float ;
+            sh:description "CPU hours used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:cpu_hours ] ;
+    sh:targetClass lambdaber:ComputeResources .
+
+lambdaber:DataCollectionStrategy a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Strategy for data collection" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Dose per frame" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:dose_per_frame ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Total number of frames/images" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:total_frames ],
+        [ sh:datatype xsd:float ;
+            sh:description "Frames per second" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:frame_rate ],
+        [ sh:datatype xsd:float ;
+            sh:description "Total electron dose for cryo-EM" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:total_dose ],
+        [ sh:description "Mode of data collection" ;
+            sh:in ( "counting" "super_resolution" "continuous" "oscillation" "still" "batch" "sec_saxs" "single_particle" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:collection_mode ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:DataCollectionStrategy .
+
+lambdaber:ExperimentRun a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An experimental data collection session" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class lambdaber:Instrument ;
+            sh:description "Reference to the instrument used" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path lambdaber:instrument_id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Location of raw data files" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:raw_data_location ],
+        [ sh:datatype xsd:string ;
+            sh:description "Reference to the sample being analyzed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:sample_id ],
+        [ sh:description "Current processing status" ;
+            sh:in ( "raw" "preprocessing" "processing" "completed" "failed" ) ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path lambdaber:processing_status ],
+        [ sh:class lambdaber:ExperimentalConditions ;
+            sh:description "Environmental and experimental conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path lambdaber:experimental_conditions ],
+        [ sh:datatype xsd:string ;
+            sh:description "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:operator_id ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:description ],
+        [ sh:class lambdaber:QualityMetrics ;
+            sh:description "Quality metrics for the experiment" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path lambdaber:quality_metrics ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:experiment_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of the experiment" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:experiment_date ],
+        [ sh:description "Technique used for data collection" ;
+            sh:in ( "cryo_em" "xray_crystallography" "saxs" "waxs" "sans" "cryo_et" "electron_microscopy" "mass_spectrometry" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path lambdaber:technique ],
+        [ sh:class lambdaber:DataCollectionStrategy ;
+            sh:description "Strategy for data collection" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path lambdaber:data_collection_strategy ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path dcterms:title ] ;
+    sh:targetClass lambdaber:ExperimentRun .
+
+lambdaber:ExperimentalConditions a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Environmental and experimental conditions" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Beam energy in keV" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:beam_energy ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:string ;
+            sh:description "Atmosphere composition" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:atmosphere ],
+        [ sh:datatype xsd:float ;
+            sh:description "Temperature in Celsius" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:temperature ],
+        [ sh:datatype xsd:float ;
+            sh:description "Humidity percentage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:humidity ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pressure in kPa" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:pressure ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:ExperimentalConditions .
+
+lambdaber:Image a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An image file from structural biology experiments" ;
+    sh:ignoredProperties ( lambdaber:background_correction lambdaber:reconstruction_method lambdaber:molecular_signatures lambdaber:number_of_scans lambdaber:flux lambdaber:emission_filter lambdaber:calibration_standard lambdaber:detector_type lambdaber:emission_wavelength lambdaber:fluorophore lambdaber:color_channels lambdaber:pinhole_size rdf:type lambdaber:laser_power lambdaber:magnification lambdaber:illumination_type lambdaber:beam_energy lambdaber:excitation_filter lambdaber:quantum_yield lambdaber:source_type lambdaber:astigmatism lambdaber:contrast_method lambdaber:defocus lambdaber:numerical_aperture lambdaber:white_balance lambdaber:wavenumber_min lambdaber:excitation_wavelength lambdaber:elements_measured lambdaber:channel_name lambdaber:wavenumber_max lambdaber:apodization_function lambdaber:voxel_size lambdaber:spectral_resolution lambdaber:dwell_time lambdaber:dimensions_z lambdaber:beam_size ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:exposure_time ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:dimensions_y ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:acquisition_date ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:file_name ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:dimensions_x ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:dose ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:description ] ;
+    sh:targetClass lambdaber:Image .
+
+lambdaber:MolecularComposition a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Molecular composition of a sample" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Bound ligands or cofactors" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:ligands ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Post-translational modifications or chemical modifications" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:modifications ],
+        [ sh:datatype xsd:string ;
+            sh:description "Amino acid or nucleotide sequences" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:sequences ] ;
+    sh:targetClass lambdaber:MolecularComposition .
+
+lambdaber:QualityMetrics a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Quality metrics for experiments" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "R-factor for crystallography" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:r_factor ],
+        [ sh:datatype xsd:float ;
+            sh:description "Signal to noise ratio" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:signal_to_noise ],
+        [ sh:datatype xsd:float ;
+            sh:description "Resolution in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:resolution ],
+        [ sh:datatype xsd:float ;
+            sh:description "Radius of gyration in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:rg ],
+        [ sh:datatype xsd:float ;
+            sh:description "Forward scattering intensity I(0)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:i_zero ],
+        [ sh:datatype xsd:float ;
+            sh:description "Data completeness percentage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:completeness ] ;
+    sh:targetClass lambdaber:QualityMetrics .
+
+lambdaber:SamplePreparation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A process that prepares a sample for imaging" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:operator_id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Detailed protocol description" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:protocol_description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of sample preparation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:preparation_date ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Reference to the sample being prepared" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:sample_id ],
+        [ sh:description "Type of sample preparation" ;
+            sh:in ( "cryo_em" "xray_crystallography" "saxs" "sans" "protein_expression" "protein_purification" "negative_stain" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path lambdaber:preparation_type ] ;
+    sh:targetClass lambdaber:SamplePreparation .
+
+lambdaber:StorageConditions a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Storage conditions for samples" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Temperature unit" ;
+            sh:in ( "celsius" "kelvin" "fahrenheit" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path lambdaber:temperature_unit ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Storage temperature in Celsius" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:temperature ],
+        [ sh:datatype xsd:string ;
+            sh:description "Storage atmosphere conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:atmosphere ],
+        [ sh:datatype xsd:string ;
+            sh:description "Storage duration" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:duration ] ;
+    sh:targetClass lambdaber:StorageConditions .
+
+lambdaber:Study a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class lambdaber:Image ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path lambdaber:images ],
+        [ sh:class lambdaber:DataFile ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path lambdaber:data_files ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:id ],
+        [ sh:class lambdaber:WorkflowRun ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path lambdaber:workflow_runs ],
+        [ sh:class lambdaber:ExperimentRun ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path lambdaber:instrument_runs ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:description ],
+        [ sh:class lambdaber:Sample ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path lambdaber:samples ],
+        [ sh:class lambdaber:SamplePreparation ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path lambdaber:sample_preparations ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path dcterms:title ] ;
+    sh:targetClass lambdaber:Study .
+
+lambdaber:WorkflowRun a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A computational processing workflow execution" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Workflow completion time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:completed_at ],
+        [ sh:class lambdaber:DataFile ;
+            sh:description "Output files generated" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path lambdaber:output_files ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Workflow start time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path lambdaber:started_at ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:workflow_code ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path lambdaber:id ],
+        [ sh:description "Type of processing workflow" ;
+            sh:in ( "motion_correction" "ctf_estimation" "particle_picking" "classification_2d" "classification_3d" "refinement" "model_building" "phasing" "integration" "scaling" "saxs_analysis" "em_2d_classification" "mass_spec_deconvolution" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path lambdaber:workflow_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software version" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:software_version ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Processing level (0=raw, 1=corrected, 2=derived, 3=model)" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 4 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:processing_level ],
+        [ sh:datatype xsd:string ;
+            sh:description "Software used for processing" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:software_name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Reference to the source experiment" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:experiment_id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path dcterms:title ],
+        [ sh:class lambdaber:ComputeResources ;
+            sh:description "Computational resources used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path lambdaber:compute_resources ],
+        [ sh:datatype xsd:string ;
+            sh:description "Parameters used in processing" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path lambdaber:processing_parameters ] ;
+    sh:targetClass lambdaber:WorkflowRun .
+
+lambdaber:DataFile a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A data file generated or used in the study" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "File creation date" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:creation_date ],
+        [ sh:datatype xsd:integer ;
+            sh:description "File size in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:file_size_bytes ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the file" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:file_name ],
+        [ sh:description "File format" ;
+            sh:in ( "mrc" "tiff" "hdf5" "star" "pdb" "mmcif" "mtz" "cbf" "ascii" "thermo_raw" "zip" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path lambdaber:file_format ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path dcterms:title ],
+        [ sh:description "Type of data in the file" ;
+            sh:in ( "micrograph" "diffraction" "scattering" "particles" "volume" "model" "metadata" "raw_data" "processed_data" ) ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path lambdaber:data_type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Path to the file" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:file_path ],
+        [ sh:datatype xsd:string ;
+            sh:description "SHA-256 checksum for data integrity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:checksum ] ;
+    sh:targetClass lambdaber:DataFile .
+
+lambdaber:Instrument a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An instrument used to collect data" ;
+    sh:ignoredProperties ( lambdaber:pixel_size_max lambdaber:autoloader_capacity lambdaber:energy_min lambdaber:sample_changer_capacity lambdaber:beam_size_max lambdaber:detector_type lambdaber:detector_distance_min lambdaber:beam_size_min rdf:type lambdaber:detector_distance_max lambdaber:phase_plate lambdaber:source_type lambdaber:monochromator_type lambdaber:q_range_max lambdaber:temperature_control_range lambdaber:detector_dimensions lambdaber:energy_max lambdaber:goniometer_type lambdaber:accelerating_voltage lambdaber:q_range_min lambdaber:crystal_cooling_capability lambdaber:flux_density lambdaber:cs_corrector lambdaber:pixel_size_min ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:instrument_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:manufacturer ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:id ],
+        [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path lambdaber:current_status ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:model ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:installation_date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:title ] ;
+    sh:targetClass lambdaber:Instrument .
+
+lambdaber:Sample a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A biological sample used in structural biology experiments" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class lambdaber:OntologyTerm ;
+            sh:description "Cell type if applicable (e.g., CL:0000057 for fibroblast)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path lambdaber:cell_type ],
+        [ sh:description "Unit of concentration measurement" ;
+            sh:in ( "mg_per_ml" "micromolar" "millimolar" "nanomolar" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path lambdaber:concentration_unit ],
+        [ sh:datatype xsd:float ;
+            sh:description "Sample concentration in mg/mL or µM" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path lambdaber:concentration ],
+        [ sh:class lambdaber:StorageConditions ;
+            sh:description "Storage conditions for the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path lambdaber:storage_conditions ],
+        [ sh:class lambdaber:MolecularComposition ;
+            sh:description "Description of molecular composition including sequences, modifications, ligands" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path lambdaber:molecular_composition ],
+        [ sh:datatype xsd:string ;
+            sh:description "Quality control metrics for the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path lambdaber:quality_metrics ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Method used to prepare the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path lambdaber:preparation_method ],
+        [ sh:datatype xsd:float ;
+            sh:description "Molecular weight in kDa" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:molecular_weight ],
+        [ sh:class lambdaber:OntologyTerm ;
+            sh:description "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path lambdaber:anatomy ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path lambdaber:id ],
+        [ sh:description "Type of biological sample" ;
+            sh:in ( "protein" "nucleic_acid" "complex" "membrane_protein" "virus" "organelle" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path lambdaber:sample_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Sample purity as percentage" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 100 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path lambdaber:purity_percentage ],
+        [ sh:class lambdaber:BufferComposition ;
+            sh:description "Buffer composition including pH, salts, additives" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path lambdaber:buffer_composition ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:sample_code ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path dcterms:title ],
+        [ sh:class lambdaber:OntologyTerm ;
+            sh:description "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path lambdaber:organism ],
+        [ sh:class lambdaber:Sample ;
+            sh:description "Reference to parent sample for derivation tracking" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path lambdaber:parent_sample_id ] ;
+    sh:targetClass lambdaber:Sample .
+
+lambdaber:OntologyTerm a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path lambdaber:label ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path lambdaber:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path lambdaber:definition ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path lambdaber:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path lambdaber:ontology ] ;
+    sh:targetClass lambdaber:OntologyTerm .
+

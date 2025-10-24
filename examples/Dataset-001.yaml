@@ -1,0 +1,33 @@
+id: lambdaber:ds001
+instruments:
+- id: lambdaber:instrument_test_001
+  title: Test Cryo-EM Instrument
+  description: Test cryo-EM microscope for validation
+  instrument_code: TEST-EM-001
+  manufacturer: Test Manufacturer
+  model: Test Model
+  current_status: operational
+studies:
+- id: lambdaber:sty001
+  title: Test Study
+  description: Test Study Description
+  samples:
+  - id: lambdaber:sam001
+    title: Test Sample
+    description: Test Sample Description
+    sample_code: TEST-001
+    sample_type: protein
+  sample_preparations:
+  - id: lambdaber:spr001
+    title: Test Sample Preparation
+    description: Test Sample Preparation Description
+    preparation_type: cryo_em
+    sample_id: lambdaber:sam001
+  instrument_runs:
+  - id: lambdaber:irr001
+    title: Test Instrument Run
+    description: Test Instrument Run Description
+    experiment_code: EXP-TEST-001
+    sample_id: lambdaber:sam001
+    instrument_id: lambdaber:instrument_test_001
+    technique: cryo_em

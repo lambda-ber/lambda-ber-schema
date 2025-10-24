@@ -1,0 +1,23 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:workflow_phasing_selmet_001 a lambdaber:WorkflowRun ;
+    dcterms:title "SAD phasing of selenomethionine derivative" ;
+    lambdaber:completed_at "2024-05-02T22:00:00" ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:cpu_hours "24.0"^^xsd:float ;
+            lambdaber:gpu_hours "0.0"^^xsd:float ;
+            lambdaber:memory_gb "32.0"^^xsd:float ;
+            lambdaber:storage_gb "100.0"^^xsd:float ] ;
+    lambdaber:description "Single-wavelength anomalous dispersion phasing" ;
+    lambdaber:experiment_id "lambdaber:exp_xray_selmet_001" ;
+    lambdaber:processing_level 2 ;
+    lambdaber:processing_parameters "autosol wavelength=0.9792 sites=12" ;
+    lambdaber:software_name "PHENIX" ;
+    lambdaber:software_version "1.21" ;
+    lambdaber:started_at "2024-05-02T10:00:00" ;
+    lambdaber:workflow_code "WF-PHASE-SAD-001" ;
+    lambdaber:workflow_type "phasing" .
+

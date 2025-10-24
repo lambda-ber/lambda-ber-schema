@@ -1,0 +1,5446 @@
+{
+  "name": "lambda-ber-schema",
+  "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a hierarchical structure that mirrors how structural biology research is organized:\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\nEach dataset contains one or more [Studies](Study.md), which are focused investigations of specific\nbiological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\nor \"Structure of the human ribosome under different conditions.\"\n\nWithin each study, you'll find:\n\n### Biological Materials\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, \n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and \n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n### Data Collection\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron \n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), \n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to \n  instruments. An experiment run captures when, how, and under what conditions data was collected,\n  including quality metrics like resolution and completeness.\n\n### Data Processing\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n### Data Products\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
+  "id": "https://w3id.org/lambda-ber-schema/",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "lambdaber",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/"
+    },
+    {
+      "prefix_prefix": "dataset",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/dataset/"
+    },
+    {
+      "prefix_prefix": "study",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/study/"
+    },
+    {
+      "prefix_prefix": "sample",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/sample/"
+    },
+    {
+      "prefix_prefix": "prep",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/sample_preparation/"
+    },
+    {
+      "prefix_prefix": "wf",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/workflow_run/"
+    },
+    {
+      "prefix_prefix": "df",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/data_file/"
+    },
+    {
+      "prefix_prefix": "img",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/image/"
+    },
+    {
+      "prefix_prefix": "instrument",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/instrument/"
+    },
+    {
+      "prefix_prefix": "experiment",
+      "prefix_reference": "https://w3id.org/lambda-ber-schema/experiment_run/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "dcterms",
+      "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    {
+      "prefix_prefix": "skos",
+      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
+    },
+    {
+      "prefix_prefix": "rdfs",
+      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
+    {
+      "prefix_prefix": "sio",
+      "prefix_reference": "http://semanticscience.org/resource/"
+    },
+    {
+      "prefix_prefix": "nmdc",
+      "prefix_reference": "https://w3id.org/nmdc/"
+    },
+    {
+      "prefix_prefix": "NCBITaxon",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "prefix_prefix": "UBERON",
+      "prefix_reference": "http://purl.obolibrary.org/obo/UBERON_"
+    },
+    {
+      "prefix_prefix": "CL",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CL_"
+    }
+  ],
+  "default_prefix": "lambdaber",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "SampleTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SampleTypeEnum",
+      "description": "Types of biological samples",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "protein",
+          "description": "Protein sample"
+        },
+        {
+          "text": "nucleic_acid",
+          "description": "Nucleic acid sample (DNA or RNA)"
+        },
+        {
+          "text": "complex",
+          "description": "Protein-protein or protein-nucleic acid complex"
+        },
+        {
+          "text": "membrane_protein",
+          "description": "Membrane protein sample"
+        },
+        {
+          "text": "virus",
+          "description": "Viral particle"
+        },
+        {
+          "text": "organelle",
+          "description": "Cellular organelle"
+        }
+      ]
+    },
+    {
+      "name": "ConcentrationUnitEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum",
+      "description": "Units for concentration measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "mg_per_ml",
+          "description": "Milligrams per milliliter"
+        },
+        {
+          "text": "micromolar",
+          "description": "Micromolar"
+        },
+        {
+          "text": "millimolar",
+          "description": "Millimolar"
+        },
+        {
+          "text": "nanomolar",
+          "description": "Nanomolar"
+        }
+      ]
+    },
+    {
+      "name": "TemperatureUnitEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/TemperatureUnitEnum",
+      "description": "Units for temperature measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "celsius",
+          "description": "Degrees Celsius"
+        },
+        {
+          "text": "kelvin",
+          "description": "Kelvin"
+        },
+        {
+          "text": "fahrenheit",
+          "description": "Degrees Fahrenheit"
+        }
+      ]
+    },
+    {
+      "name": "PreparationTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/PreparationTypeEnum",
+      "description": "Types of sample preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "cryo_em",
+          "description": "Cryo-EM preparation"
+        },
+        {
+          "text": "xray_crystallography",
+          "description": "X-ray crystallography preparation"
+        },
+        {
+          "text": "saxs",
+          "description": "SAXS/WAXS preparation"
+        },
+        {
+          "text": "sans",
+          "description": "SANS preparation"
+        },
+        {
+          "text": "protein_expression",
+          "description": "Protein expression in host cells"
+        },
+        {
+          "text": "protein_purification",
+          "description": "Protein purification"
+        },
+        {
+          "text": "negative_stain",
+          "description": "Negative stain EM preparation"
+        }
+      ]
+    },
+    {
+      "name": "GridTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/GridTypeEnum",
+      "description": "Types of EM grids",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "c_flat",
+          "description": "C-flat holey carbon grid"
+        },
+        {
+          "text": "quantifoil",
+          "description": "Quantifoil holey carbon grid"
+        },
+        {
+          "text": "lacey_carbon",
+          "description": "Lacey carbon grid"
+        },
+        {
+          "text": "ultrathin_carbon",
+          "description": "Ultrathin carbon film"
+        },
+        {
+          "text": "gold",
+          "description": "Gold grid"
+        }
+      ]
+    },
+    {
+      "name": "VitrificationMethodEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/VitrificationMethodEnum",
+      "description": "Methods for vitrification",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "plunge_freezing",
+          "description": "Plunge freezing in liquid ethane"
+        },
+        {
+          "text": "high_pressure_freezing",
+          "description": "High pressure freezing"
+        },
+        {
+          "text": "slam_freezing",
+          "description": "Slam freezing"
+        }
+      ]
+    },
+    {
+      "name": "CrystallizationMethodEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum",
+      "description": "Methods for protein crystallization",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "vapor_diffusion_hanging",
+          "description": "Vapor diffusion hanging drop"
+        },
+        {
+          "text": "vapor_diffusion_sitting",
+          "description": "Vapor diffusion sitting drop"
+        },
+        {
+          "text": "microbatch",
+          "description": "Microbatch under oil"
+        },
+        {
+          "text": "dialysis",
+          "description": "Dialysis method"
+        },
+        {
+          "text": "free_interface_diffusion",
+          "description": "Free interface diffusion"
+        }
+      ]
+    },
+    {
+      "name": "InstrumentStatusEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/InstrumentStatusEnum",
+      "description": "Operational status of instruments",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "operational",
+          "description": "Instrument is operational"
+        },
+        {
+          "text": "maintenance",
+          "description": "Instrument under maintenance"
+        },
+        {
+          "text": "offline",
+          "description": "Instrument is offline"
+        },
+        {
+          "text": "commissioning",
+          "description": "Instrument being commissioned"
+        }
+      ]
+    },
+    {
+      "name": "DetectorTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DetectorTypeEnum",
+      "description": "Types of detectors for cryo-EM",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "direct_electron",
+          "description": "Direct electron detector"
+        },
+        {
+          "text": "ccd",
+          "description": "CCD camera"
+        },
+        {
+          "text": "cmos",
+          "description": "CMOS detector"
+        },
+        {
+          "text": "hybrid_pixel",
+          "description": "Hybrid pixel detector"
+        }
+      ]
+    },
+    {
+      "name": "XRaySourceTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum",
+      "description": "Types of X-ray sources",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "synchrotron",
+          "description": "Synchrotron radiation source"
+        },
+        {
+          "text": "rotating_anode",
+          "description": "Rotating anode generator"
+        },
+        {
+          "text": "microfocus",
+          "description": "Microfocus sealed tube"
+        },
+        {
+          "text": "metal_jet",
+          "description": "Liquid metal jet source"
+        }
+      ]
+    },
+    {
+      "name": "TechniqueEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/TechniqueEnum",
+      "description": "Structural biology techniques",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "cryo_em",
+          "description": "Cryo-electron microscopy"
+        },
+        {
+          "text": "xray_crystallography",
+          "description": "X-ray crystallography"
+        },
+        {
+          "text": "saxs",
+          "description": "Small-angle X-ray scattering"
+        },
+        {
+          "text": "waxs",
+          "description": "Wide-angle X-ray scattering"
+        },
+        {
+          "text": "sans",
+          "description": "Small-angle neutron scattering"
+        },
+        {
+          "text": "cryo_et",
+          "description": "Cryo-electron tomography"
+        },
+        {
+          "text": "electron_microscopy",
+          "description": "General electron microscopy"
+        },
+        {
+          "text": "mass_spectrometry",
+          "description": "Mass spectrometry"
+        }
+      ]
+    },
+    {
+      "name": "ProcessingStatusEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ProcessingStatusEnum",
+      "description": "Processing status",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "raw",
+          "description": "Raw data"
+        },
+        {
+          "text": "preprocessing",
+          "description": "Being preprocessed"
+        },
+        {
+          "text": "processing",
+          "description": "Being processed"
+        },
+        {
+          "text": "completed",
+          "description": "Processing completed"
+        },
+        {
+          "text": "failed",
+          "description": "Processing failed"
+        }
+      ]
+    },
+    {
+      "name": "WorkflowTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/WorkflowTypeEnum",
+      "description": "Types of processing workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "motion_correction",
+          "description": "Motion correction for cryo-EM"
+        },
+        {
+          "text": "ctf_estimation",
+          "description": "CTF estimation"
+        },
+        {
+          "text": "particle_picking",
+          "description": "Particle picking"
+        },
+        {
+          "text": "classification_2d",
+          "description": "2D classification"
+        },
+        {
+          "text": "classification_3d",
+          "description": "3D classification"
+        },
+        {
+          "text": "refinement",
+          "description": "3D refinement"
+        },
+        {
+          "text": "model_building",
+          "description": "Atomic model building"
+        },
+        {
+          "text": "phasing",
+          "description": "Phase determination"
+        },
+        {
+          "text": "integration",
+          "description": "Data integration"
+        },
+        {
+          "text": "scaling",
+          "description": "Data scaling"
+        },
+        {
+          "text": "saxs_analysis",
+          "description": "SAXS data analysis"
+        },
+        {
+          "text": "em_2d_classification",
+          "description": "EM 2D classification"
+        },
+        {
+          "text": "mass_spec_deconvolution",
+          "description": "Mass spectrometry deconvolution"
+        }
+      ]
+    },
+    {
+      "name": "FileFormatEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FileFormatEnum",
+      "description": "File formats",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "mrc",
+          "description": "MRC format for EM data"
+        },
+        {
+          "text": "tiff",
+          "description": "TIFF image format"
+        },
+        {
+          "text": "hdf5",
+          "description": "HDF5 hierarchical data format"
+        },
+        {
+          "text": "star",
+          "description": "STAR format for metadata"
+        },
+        {
+          "text": "pdb",
+          "description": "PDB coordinate format"
+        },
+        {
+          "text": "mmcif",
+          "description": "mmCIF format"
+        },
+        {
+          "text": "mtz",
+          "description": "MTZ reflection format"
+        },
+        {
+          "text": "cbf",
+          "description": "Crystallographic Binary Format"
+        },
+        {
+          "text": "ascii",
+          "description": "ASCII text format"
+        },
+        {
+          "text": "thermo_raw",
+          "description": "Thermo Fisher RAW format"
+        },
+        {
+          "text": "zip",
+          "description": "ZIP compressed archive"
+        }
+      ]
+    },
+    {
+      "name": "DataTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DataTypeEnum",
+      "description": "Types of data",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "micrograph",
+          "description": "Electron micrograph"
+        },
+        {
+          "text": "diffraction",
+          "description": "Diffraction pattern"
+        },
+        {
+          "text": "scattering",
+          "description": "Scattering data"
+        },
+        {
+          "text": "particles",
+          "description": "Particle stack"
+        },
+        {
+          "text": "volume",
+          "description": "3D volume"
+        },
+        {
+          "text": "model",
+          "description": "Atomic model"
+        },
+        {
+          "text": "metadata",
+          "description": "Metadata file"
+        },
+        {
+          "text": "raw_data",
+          "description": "Raw experimental data"
+        },
+        {
+          "text": "processed_data",
+          "description": "Processed data"
+        }
+      ]
+    },
+    {
+      "name": "CollectionModeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CollectionModeEnum",
+      "description": "Data collection modes",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "counting",
+          "description": "Counting mode"
+        },
+        {
+          "text": "super_resolution",
+          "description": "Super-resolution mode"
+        },
+        {
+          "text": "continuous",
+          "description": "Continuous collection"
+        },
+        {
+          "text": "oscillation",
+          "description": "Oscillation method"
+        },
+        {
+          "text": "still",
+          "description": "Still images"
+        },
+        {
+          "text": "batch",
+          "description": "Batch mode collection"
+        },
+        {
+          "text": "sec_saxs",
+          "description": "SEC-SAXS collection mode"
+        },
+        {
+          "text": "single_particle",
+          "description": "Single particle analysis mode"
+        }
+      ]
+    },
+    {
+      "name": "IlluminationTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/IlluminationTypeEnum",
+      "description": "Types of illumination for optical microscopy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "brightfield",
+          "description": "Brightfield illumination"
+        },
+        {
+          "text": "darkfield",
+          "description": "Darkfield illumination"
+        },
+        {
+          "text": "phase_contrast",
+          "description": "Phase contrast microscopy"
+        },
+        {
+          "text": "dic",
+          "description": "Differential interference contrast (DIC/Nomarski)"
+        },
+        {
+          "text": "fluorescence",
+          "description": "Fluorescence illumination"
+        },
+        {
+          "text": "confocal",
+          "description": "Confocal laser scanning"
+        },
+        {
+          "text": "polarized",
+          "description": "Polarized light microscopy"
+        },
+        {
+          "text": "oblique",
+          "description": "Oblique illumination"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "namedThing__id",
+      "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "NamedThing",
+      "domain_of": [
+        "NamedThing"
+      ],
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "namedThing__title",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "alias": "title",
+      "owner": "NamedThing",
+      "domain_of": [
+        "NamedThing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "namedThing__description",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/description",
+      "alias": "description",
+      "owner": "NamedThing",
+      "domain_of": [
+        "NamedThing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attributeGroup__description",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/description",
+      "alias": "description",
+      "owner": "AttributeGroup",
+      "domain_of": [
+        "AttributeGroup"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__keywords",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/keywords",
+      "alias": "keywords",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__instruments",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instruments",
+      "alias": "instruments",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Instrument",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__studies",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/studies",
+      "alias": "studies",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Study",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__samples",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/samples",
+      "alias": "samples",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "Sample",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__sample_preparations",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_preparations",
+      "alias": "sample_preparations",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "SamplePreparation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__instrument_runs",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_runs",
+      "alias": "instrument_runs",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "ExperimentRun",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__workflow_runs",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_runs",
+      "alias": "workflow_runs",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "WorkflowRun",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__data_files",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/data_files",
+      "alias": "data_files",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "DataFile",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__images",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/images",
+      "alias": "images",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "Image",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__sample_code",
+      "description": "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_code",
+      "alias": "sample_code",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__sample_type",
+      "description": "Type of biological sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_type",
+      "alias": "sample_type",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "SampleTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__molecular_composition",
+      "description": "Description of molecular composition including sequences, modifications, ligands",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/molecular_composition",
+      "alias": "molecular_composition",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "MolecularComposition",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__molecular_weight",
+      "description": "Molecular weight in kDa",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/molecular_weight",
+      "alias": "molecular_weight",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "kDa",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__concentration",
+      "description": "Sample concentration in mg/mL or \u00b5M",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/concentration",
+      "alias": "concentration",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__concentration_unit",
+      "description": "Unit of concentration measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/concentration_unit",
+      "alias": "concentration_unit",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "ConcentrationUnitEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__buffer_composition",
+      "description": "Buffer composition including pH, salts, additives",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/buffer_composition",
+      "alias": "buffer_composition",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "BufferComposition",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__preparation_method",
+      "description": "Method used to prepare the sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/preparation_method",
+      "alias": "preparation_method",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__storage_conditions",
+      "description": "Storage conditions for the sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/storage_conditions",
+      "alias": "storage_conditions",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "StorageConditions",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__organism",
+      "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/organism",
+      "alias": "organism",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__anatomy",
+      "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/anatomy",
+      "alias": "anatomy",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__cell_type",
+      "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cell_type",
+      "alias": "cell_type",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__parent_sample_id",
+      "description": "Reference to parent sample for derivation tracking",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/parent_sample_id",
+      "alias": "parent_sample_id",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "Sample",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__purity_percentage",
+      "description": "Sample purity as percentage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/purity_percentage",
+      "alias": "purity_percentage",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 100,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__quality_metrics",
+      "description": "Quality control metrics for the sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/quality_metrics",
+      "alias": "quality_metrics",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__preparation_type",
+      "description": "Type of sample preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/preparation_type",
+      "alias": "preparation_type",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "PreparationTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__sample_id",
+      "description": "Reference to the sample being prepared",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_id",
+      "alias": "sample_id",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__preparation_date",
+      "description": "Date of sample preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/preparation_date",
+      "alias": "preparation_date",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__operator_id",
+      "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/operator_id",
+      "alias": "operator_id",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__protocol_description",
+      "description": "Detailed protocol description",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/protocol_description",
+      "alias": "protocol_description",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__instrument_code",
+      "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_code",
+      "alias": "instrument_code",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__manufacturer",
+      "description": "Instrument manufacturer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/manufacturer",
+      "alias": "manufacturer",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__model",
+      "description": "Instrument model",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/model",
+      "alias": "model",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__installation_date",
+      "description": "Date of instrument installation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/installation_date",
+      "alias": "installation_date",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__current_status",
+      "description": "Current operational status",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/current_status",
+      "alias": "current_status",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "InstrumentStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__accelerating_voltage",
+      "description": "Accelerating voltage in kV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/accelerating_voltage",
+      "alias": "accelerating_voltage",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "integer",
+      "any_of": [
+        {
+          "equals_number": 120,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "equals_number": 200,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "equals_number": 300,
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__cs_corrector",
+      "description": "Spherical aberration corrector present",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cs_corrector",
+      "alias": "cs_corrector",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__phase_plate",
+      "description": "Phase plate available",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/phase_plate",
+      "alias": "phase_plate",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_type",
+      "description": "Type of detector",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_type",
+      "alias": "detector_type",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "DetectorTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_dimensions",
+      "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_dimensions",
+      "alias": "detector_dimensions",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__pixel_size_min",
+      "description": "Minimum pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_min",
+      "alias": "pixel_size_min",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__pixel_size_max",
+      "description": "Maximum pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_max",
+      "alias": "pixel_size_max",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__autoloader_capacity",
+      "description": "Number of grids the autoloader can hold",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/autoloader_capacity",
+      "alias": "autoloader_capacity",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__source_type",
+      "description": "Type of X-ray source",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/source_type",
+      "alias": "source_type",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "XRaySourceTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__energy_min",
+      "description": "Minimum X-ray energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_min",
+      "alias": "energy_min",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__energy_max",
+      "description": "Maximum X-ray energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_max",
+      "alias": "energy_max",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__beam_size_min",
+      "description": "Minimum beam size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_size_min",
+      "alias": "beam_size_min",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__beam_size_max",
+      "description": "Maximum beam size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_size_max",
+      "alias": "beam_size_max",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__flux_density",
+      "description": "Photon flux density in photons/s/mm\u00b2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/flux_density",
+      "alias": "flux_density",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__monochromator_type",
+      "description": "Type of monochromator",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/monochromator_type",
+      "alias": "monochromator_type",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__goniometer_type",
+      "description": "Type of goniometer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/goniometer_type",
+      "alias": "goniometer_type",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__crystal_cooling_capability",
+      "description": "Crystal cooling system available",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/crystal_cooling_capability",
+      "alias": "crystal_cooling_capability",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__q_range_min",
+      "description": "Minimum q value in inverse Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/q_range_min",
+      "alias": "q_range_min",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__q_range_max",
+      "description": "Maximum q value in inverse Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/q_range_max",
+      "alias": "q_range_max",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__detector_distance_min",
+      "description": "Minimum detector distance in mm",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_distance_min",
+      "alias": "detector_distance_min",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__detector_distance_max",
+      "description": "Maximum detector distance in mm",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_distance_max",
+      "alias": "detector_distance_max",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__sample_changer_capacity",
+      "description": "Number of samples in automatic sample changer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_changer_capacity",
+      "alias": "sample_changer_capacity",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSInstrument__temperature_control_range",
+      "description": "Temperature control range in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_control_range",
+      "alias": "temperature_control_range",
+      "owner": "SAXSInstrument",
+      "domain_of": [
+        "SAXSInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__experiment_code",
+      "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_code",
+      "alias": "experiment_code",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__sample_id",
+      "description": "Reference to the sample being analyzed",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_id",
+      "alias": "sample_id",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__instrument_id",
+      "description": "Reference to the instrument used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_id",
+      "alias": "instrument_id",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "Instrument",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__experiment_date",
+      "description": "Date of the experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_date",
+      "alias": "experiment_date",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__operator_id",
+      "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/operator_id",
+      "alias": "operator_id",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__technique",
+      "description": "Technique used for data collection",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/technique",
+      "alias": "technique",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "TechniqueEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__experimental_conditions",
+      "description": "Environmental and experimental conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experimental_conditions",
+      "alias": "experimental_conditions",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "ExperimentalConditions",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__data_collection_strategy",
+      "description": "Strategy for data collection",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/data_collection_strategy",
+      "alias": "data_collection_strategy",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "DataCollectionStrategy",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__quality_metrics",
+      "description": "Quality metrics for the experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/quality_metrics",
+      "alias": "quality_metrics",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "QualityMetrics",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__raw_data_location",
+      "description": "Location of raw data files",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/raw_data_location",
+      "alias": "raw_data_location",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__processing_status",
+      "description": "Current processing status",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/processing_status",
+      "alias": "processing_status",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "ProcessingStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__workflow_code",
+      "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_code",
+      "alias": "workflow_code",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__workflow_type",
+      "description": "Type of processing workflow",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_type",
+      "alias": "workflow_type",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "WorkflowTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__experiment_id",
+      "description": "Reference to the source experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
+      "alias": "experiment_id",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__processing_level",
+      "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/processing_level",
+      "alias": "processing_level",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "minimum_value": 0,
+      "maximum_value": 4,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__software_name",
+      "description": "Software used for processing",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/software_name",
+      "alias": "software_name",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__software_version",
+      "description": "Software version",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/software_version",
+      "alias": "software_version",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__processing_parameters",
+      "description": "Parameters used in processing",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/processing_parameters",
+      "alias": "processing_parameters",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__compute_resources",
+      "description": "Computational resources used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/compute_resources",
+      "alias": "compute_resources",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "ComputeResources",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__started_at",
+      "description": "Workflow start time",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/started_at",
+      "alias": "started_at",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__completed_at",
+      "description": "Workflow completion time",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/completed_at",
+      "alias": "completed_at",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__output_files",
+      "description": "Output files generated",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/output_files",
+      "alias": "output_files",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "DataFile",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__file_name",
+      "description": "Name of the file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_name",
+      "alias": "file_name",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__file_path",
+      "description": "Path to the file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_path",
+      "alias": "file_path",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__file_format",
+      "description": "File format",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_format",
+      "alias": "file_format",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "FileFormatEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__file_size_bytes",
+      "description": "File size in bytes",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_size_bytes",
+      "alias": "file_size_bytes",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__checksum",
+      "description": "SHA-256 checksum for data integrity",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/checksum",
+      "alias": "checksum",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__creation_date",
+      "description": "File creation date",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/creation_date",
+      "alias": "creation_date",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__data_type",
+      "description": "Type of data in the file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/data_type",
+      "alias": "data_type",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "DataTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__file_name",
+      "description": "Image file name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_name",
+      "alias": "file_name",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__acquisition_date",
+      "description": "Date image was acquired",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/acquisition_date",
+      "alias": "acquisition_date",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__pixel_size",
+      "description": "Pixel size in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "alias": "pixel_size",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__dimensions_x",
+      "description": "Image width in pixels",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_x",
+      "alias": "dimensions_x",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__dimensions_y",
+      "description": "Image height in pixels",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_y",
+      "alias": "dimensions_y",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__exposure_time",
+      "description": "Exposure time in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time",
+      "alias": "exposure_time",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image__dose",
+      "description": "Electron dose in e-/\u00c5\u00b2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose",
+      "alias": "dose",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image2D__defocus",
+      "description": "Defocus value in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
+      "alias": "defocus",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image2D__astigmatism",
+      "description": "Astigmatism value",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
+      "alias": "astigmatism",
+      "owner": "Image2D",
+      "domain_of": [
+        "Image2D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image3D__dimensions_z",
+      "description": "Image depth in pixels/slices",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_z",
+      "alias": "dimensions_z",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image3D"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image3D__voxel_size",
+      "description": "Voxel size in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/voxel_size",
+      "alias": "voxel_size",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image3D"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image3D__reconstruction_method",
+      "description": "Method used for 3D reconstruction",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/reconstruction_method",
+      "alias": "reconstruction_method",
+      "owner": "Image3D",
+      "domain_of": [
+        "Image3D"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__wavenumber_min",
+      "description": "Minimum wavenumber in cm\u207b\u00b9",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/wavenumber_min",
+      "alias": "wavenumber_min",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__wavenumber_max",
+      "description": "Maximum wavenumber in cm\u207b\u00b9",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/wavenumber_max",
+      "alias": "wavenumber_max",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__spectral_resolution",
+      "description": "Spectral resolution in cm\u207b\u00b9",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/spectral_resolution",
+      "alias": "spectral_resolution",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__number_of_scans",
+      "description": "Number of scans averaged for the spectrum",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/number_of_scans",
+      "alias": "number_of_scans",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__apodization_function",
+      "description": "Mathematical function used for apodization",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/apodization_function",
+      "alias": "apodization_function",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__molecular_signatures",
+      "description": "Identified molecular signatures or peaks",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/molecular_signatures",
+      "alias": "molecular_signatures",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fTIRImage__background_correction",
+      "description": "Method used for background correction",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/background_correction",
+      "alias": "background_correction",
+      "owner": "FTIRImage",
+      "domain_of": [
+        "FTIRImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__excitation_wavelength",
+      "description": "Excitation wavelength in nanometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/excitation_wavelength",
+      "alias": "excitation_wavelength",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__emission_wavelength",
+      "description": "Emission wavelength in nanometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/emission_wavelength",
+      "alias": "emission_wavelength",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__excitation_filter",
+      "description": "Specifications of the excitation filter",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/excitation_filter",
+      "alias": "excitation_filter",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__emission_filter",
+      "description": "Specifications of the emission filter",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/emission_filter",
+      "alias": "emission_filter",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__fluorophore",
+      "description": "Name or type of fluorophore used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/fluorophore",
+      "alias": "fluorophore",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__channel_name",
+      "description": "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/channel_name",
+      "alias": "channel_name",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__laser_power",
+      "description": "Laser power in milliwatts or percentage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/laser_power",
+      "alias": "laser_power",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__pinhole_size",
+      "description": "Pinhole size in Airy units for confocal microscopy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pinhole_size",
+      "alias": "pinhole_size",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fluorescenceImage__quantum_yield",
+      "description": "Quantum yield of the fluorophore",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/quantum_yield",
+      "alias": "quantum_yield",
+      "owner": "FluorescenceImage",
+      "domain_of": [
+        "FluorescenceImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__illumination_type",
+      "description": "Type of illumination (brightfield, darkfield, phase contrast, DIC)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/illumination_type",
+      "alias": "illumination_type",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "IlluminationTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__magnification",
+      "description": "Optical magnification factor",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/magnification",
+      "alias": "magnification",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__numerical_aperture",
+      "description": "Numerical aperture of the objective lens",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/numerical_aperture",
+      "alias": "numerical_aperture",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__color_channels",
+      "description": "Color channels present (e.g., RGB, grayscale)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/color_channels",
+      "alias": "color_channels",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__white_balance",
+      "description": "White balance settings",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/white_balance",
+      "alias": "white_balance",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opticalImage__contrast_method",
+      "description": "Contrast enhancement method used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/contrast_method",
+      "alias": "contrast_method",
+      "owner": "OpticalImage",
+      "domain_of": [
+        "OpticalImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__beam_energy",
+      "description": "X-ray beam energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_energy",
+      "alias": "beam_energy",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__beam_size",
+      "description": "X-ray beam size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_size",
+      "alias": "beam_size",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__dwell_time",
+      "description": "Dwell time per pixel in milliseconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dwell_time",
+      "alias": "dwell_time",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__elements_measured",
+      "description": "Elements detected and measured",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/elements_measured",
+      "alias": "elements_measured",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__source_type",
+      "description": "X-ray source type (synchrotron or lab-source)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/source_type",
+      "alias": "source_type",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "XRaySourceTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__detector_type",
+      "description": "Type of X-ray detector used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_type",
+      "alias": "detector_type",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__flux",
+      "description": "Photon flux in photons/second",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/flux",
+      "alias": "flux",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__calibration_standard",
+      "description": "Reference standard used for calibration",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/calibration_standard",
+      "alias": "calibration_standard",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "imageFeature__terms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/terms",
+      "alias": "terms",
+      "owner": "ImageFeature",
+      "domain_of": [
+        "ImageFeature"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontologyTerm__label",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/label",
+      "alias": "label",
+      "owner": "OntologyTerm",
+      "domain_of": [
+        "OntologyTerm"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontologyTerm__definition",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/definition",
+      "alias": "definition",
+      "owner": "OntologyTerm",
+      "domain_of": [
+        "OntologyTerm"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontologyTerm__ontology",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ontology",
+      "alias": "ontology",
+      "owner": "OntologyTerm",
+      "domain_of": [
+        "OntologyTerm"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecularComposition__sequences",
+      "description": "Amino acid or nucleotide sequences",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sequences",
+      "alias": "sequences",
+      "owner": "MolecularComposition",
+      "domain_of": [
+        "MolecularComposition"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecularComposition__modifications",
+      "description": "Post-translational modifications or chemical modifications",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/modifications",
+      "alias": "modifications",
+      "owner": "MolecularComposition",
+      "domain_of": [
+        "MolecularComposition"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "molecularComposition__ligands",
+      "description": "Bound ligands or cofactors",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ligands",
+      "alias": "ligands",
+      "owner": "MolecularComposition",
+      "domain_of": [
+        "MolecularComposition"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__ph",
+      "description": "pH of the buffer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ph",
+      "alias": "ph",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 14,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__components",
+      "description": "Buffer components and their concentrations",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/components",
+      "alias": "components",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__additives",
+      "description": "Additional additives in the buffer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/additives",
+      "alias": "additives",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "storageConditions__temperature",
+      "description": "Storage temperature in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature",
+      "alias": "temperature",
+      "owner": "StorageConditions",
+      "domain_of": [
+        "StorageConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "storageConditions__temperature_unit",
+      "description": "Temperature unit",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_unit",
+      "alias": "temperature_unit",
+      "owner": "StorageConditions",
+      "domain_of": [
+        "StorageConditions"
+      ],
+      "range": "TemperatureUnitEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "storageConditions__duration",
+      "description": "Storage duration",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/duration",
+      "alias": "duration",
+      "owner": "StorageConditions",
+      "domain_of": [
+        "StorageConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "storageConditions__atmosphere",
+      "description": "Storage atmosphere conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/atmosphere",
+      "alias": "atmosphere",
+      "owner": "StorageConditions",
+      "domain_of": [
+        "StorageConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__grid_type",
+      "description": "Type of EM grid used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/grid_type",
+      "alias": "grid_type",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "GridTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__support_film",
+      "description": "Support film type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/support_film",
+      "alias": "support_film",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__hole_size",
+      "description": "Hole size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/hole_size",
+      "alias": "hole_size",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0.5,
+      "maximum_value": 5.0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__vitrification_method",
+      "description": "Method used for vitrification",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/vitrification_method",
+      "alias": "vitrification_method",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "VitrificationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__blot_time",
+      "description": "Blotting time in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/blot_time",
+      "alias": "blot_time",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0.5,
+      "maximum_value": 10.0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__blot_force",
+      "description": "Blotting force setting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/blot_force",
+      "alias": "blot_force",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__humidity_percentage",
+      "description": "Chamber humidity during vitrification",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/humidity_percentage",
+      "alias": "humidity_percentage",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 100,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__chamber_temperature",
+      "description": "Chamber temperature in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/chamber_temperature",
+      "alias": "chamber_temperature",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__plasma_treatment",
+      "description": "Plasma treatment details",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/plasma_treatment",
+      "alias": "plasma_treatment",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystallization_method",
+      "description": "Method used for crystallization",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/crystallization_method",
+      "alias": "crystallization_method",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "CrystallizationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystallization_conditions",
+      "description": "Detailed crystallization conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/crystallization_conditions",
+      "alias": "crystallization_conditions",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystal_size",
+      "description": "Crystal dimensions in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/crystal_size",
+      "alias": "crystal_size",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__cryoprotectant",
+      "description": "Cryoprotectant used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cryoprotectant",
+      "alias": "cryoprotectant",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__cryoprotectant_concentration",
+      "description": "Cryoprotectant concentration percentage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cryoprotectant_concentration",
+      "alias": "cryoprotectant_concentration",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__mounting_method",
+      "description": "Crystal mounting method",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/mounting_method",
+      "alias": "mounting_method",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__flash_cooling_method",
+      "description": "Flash cooling protocol",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/flash_cooling_method",
+      "alias": "flash_cooling_method",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSPreparation__concentration_series",
+      "description": "Concentration values for series measurements",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/concentration_series",
+      "alias": "concentration_series",
+      "owner": "SAXSPreparation",
+      "domain_of": [
+        "SAXSPreparation"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSPreparation__buffer_matching_protocol",
+      "description": "Protocol for buffer matching",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/buffer_matching_protocol",
+      "alias": "buffer_matching_protocol",
+      "owner": "SAXSPreparation",
+      "domain_of": [
+        "SAXSPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSPreparation__sample_cell_type",
+      "description": "Type of sample cell used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_cell_type",
+      "alias": "sample_cell_type",
+      "owner": "SAXSPreparation",
+      "domain_of": [
+        "SAXSPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSPreparation__cell_path_length",
+      "description": "Path length in mm",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cell_path_length",
+      "alias": "cell_path_length",
+      "owner": "SAXSPreparation",
+      "domain_of": [
+        "SAXSPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sAXSPreparation__temperature_control",
+      "description": "Temperature control settings",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_control",
+      "alias": "temperature_control",
+      "owner": "SAXSPreparation",
+      "domain_of": [
+        "SAXSPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__temperature",
+      "description": "Temperature in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature",
+      "alias": "temperature",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__humidity",
+      "description": "Humidity percentage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/humidity",
+      "alias": "humidity",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__pressure",
+      "description": "Pressure in kPa",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pressure",
+      "alias": "pressure",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__atmosphere",
+      "description": "Atmosphere composition",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/atmosphere",
+      "alias": "atmosphere",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__beam_energy",
+      "description": "Beam energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_energy",
+      "alias": "beam_energy",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__exposure_time",
+      "description": "Exposure time in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time",
+      "alias": "exposure_time",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__collection_mode",
+      "description": "Mode of data collection",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/collection_mode",
+      "alias": "collection_mode",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "CollectionModeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__total_frames",
+      "description": "Total number of frames/images",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/total_frames",
+      "alias": "total_frames",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__frame_rate",
+      "description": "Frames per second",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/frame_rate",
+      "alias": "frame_rate",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__total_dose",
+      "description": "Total electron dose for cryo-EM",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/total_dose",
+      "alias": "total_dose",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__dose_per_frame",
+      "description": "Dose per frame",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose_per_frame",
+      "alias": "dose_per_frame",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__resolution",
+      "description": "Resolution in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution",
+      "alias": "resolution",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__completeness",
+      "description": "Data completeness percentage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/completeness",
+      "alias": "completeness",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__signal_to_noise",
+      "description": "Signal to noise ratio",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/signal_to_noise",
+      "alias": "signal_to_noise",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_factor",
+      "description": "R-factor for crystallography",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/r_factor",
+      "alias": "r_factor",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__i_zero",
+      "description": "Forward scattering intensity I(0)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/i_zero",
+      "alias": "i_zero",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__rg",
+      "description": "Radius of gyration in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rg",
+      "alias": "rg",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "computeResources__cpu_hours",
+      "description": "CPU hours used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cpu_hours",
+      "alias": "cpu_hours",
+      "owner": "ComputeResources",
+      "domain_of": [
+        "ComputeResources"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "computeResources__gpu_hours",
+      "description": "GPU hours used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/gpu_hours",
+      "alias": "gpu_hours",
+      "owner": "ComputeResources",
+      "domain_of": [
+        "ComputeResources"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "computeResources__memory_gb",
+      "description": "Maximum memory used in GB",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/memory_gb",
+      "alias": "memory_gb",
+      "owner": "ComputeResources",
+      "domain_of": [
+        "ComputeResources"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "computeResources__storage_gb",
+      "description": "Storage used in GB",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/storage_gb",
+      "alias": "storage_gb",
+      "owner": "ComputeResources",
+      "domain_of": [
+        "ComputeResources"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "NamedThing",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/NamedThing",
+      "description": "A named thing",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "abstract": true,
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+          "identifier": true,
+          "range": "uriorcurie",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "title",
+          "slot_uri": "dcterms:title",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "description",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/NamedThing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AttributeGroup",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/AttributeGroup",
+      "description": "A grouping of related data attributes that form a logical unit",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "abstract": true,
+      "slots": [
+        "attributeGroup__description"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "description",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/AttributeGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Dataset",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Dataset",
+      "description": "A collection of studies",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "dataset__keywords",
+        "dataset__instruments",
+        "dataset__studies"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "keywords",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instruments",
+          "range": "Instrument",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "studies",
+          "range": "Study",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Dataset",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Study",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Study",
+      "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "study__samples",
+        "study__sample_preparations",
+        "study__instrument_runs",
+        "study__workflow_runs",
+        "study__data_files",
+        "study__images"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "samples",
+          "range": "Sample",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_preparations",
+          "range": "SamplePreparation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instrument_runs",
+          "range": "ExperimentRun",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_runs",
+          "range": "WorkflowRun",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "data_files",
+          "range": "DataFile",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "images",
+          "range": "Image",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Study",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sample",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Sample",
+      "description": "A biological sample used in structural biology experiments",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "sample__sample_code",
+        "sample__sample_type",
+        "sample__molecular_composition",
+        "sample__molecular_weight",
+        "sample__concentration",
+        "sample__concentration_unit",
+        "sample__buffer_composition",
+        "sample__preparation_method",
+        "sample__storage_conditions",
+        "sample__organism",
+        "sample__anatomy",
+        "sample__cell_type",
+        "sample__parent_sample_id",
+        "sample__purity_percentage",
+        "sample__quality_metrics"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sample_code",
+          "description": "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_type",
+          "description": "Type of biological sample",
+          "range": "SampleTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_composition",
+          "description": "Description of molecular composition including sequences, modifications, ligands",
+          "range": "MolecularComposition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_weight",
+          "description": "Molecular weight in kDa",
+          "range": "float",
+          "unit": {
+            "ucum_code": "kDa",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "concentration",
+          "description": "Sample concentration in mg/mL or \u00b5M",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "concentration_unit",
+          "description": "Unit of concentration measurement",
+          "range": "ConcentrationUnitEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "buffer_composition",
+          "description": "Buffer composition including pH, salts, additives",
+          "range": "BufferComposition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "preparation_method",
+          "description": "Method used to prepare the sample",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "storage_conditions",
+          "description": "Storage conditions for the sample",
+          "range": "StorageConditions",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "organism",
+          "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anatomy",
+          "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cell_type",
+          "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "parent_sample_id",
+          "description": "Reference to parent sample for derivation tracking",
+          "range": "Sample",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "purity_percentage",
+          "description": "Sample purity as percentage",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 100,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "quality_metrics",
+          "description": "Quality control metrics for the sample",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Sample",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SamplePreparation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SamplePreparation",
+      "description": "A process that prepares a sample for imaging",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "samplePreparation__preparation_type",
+        "samplePreparation__sample_id",
+        "samplePreparation__preparation_date",
+        "samplePreparation__operator_id",
+        "samplePreparation__protocol_description"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "preparation_type",
+          "description": "Type of sample preparation",
+          "range": "PreparationTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_id",
+          "description": "Reference to the sample being prepared",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "preparation_date",
+          "description": "Date of sample preparation",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "operator_id",
+          "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protocol_description",
+          "description": "Detailed protocol description",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/SamplePreparation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Instrument",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Instrument",
+      "description": "An instrument used to collect data",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "instrument_code",
+          "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "manufacturer",
+          "description": "Instrument manufacturer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "model",
+          "description": "Instrument model",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "installation_date",
+          "description": "Date of instrument installation",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "current_status",
+          "description": "Current operational status",
+          "range": "InstrumentStatusEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Instrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CryoEMInstrument",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CryoEMInstrument",
+      "description": "Cryo-EM microscope specifications",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "cryoEMInstrument__accelerating_voltage",
+        "cryoEMInstrument__cs_corrector",
+        "cryoEMInstrument__phase_plate",
+        "cryoEMInstrument__detector_type",
+        "cryoEMInstrument__detector_dimensions",
+        "cryoEMInstrument__pixel_size_min",
+        "cryoEMInstrument__pixel_size_max",
+        "cryoEMInstrument__autoloader_capacity"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "accelerating_voltage",
+          "description": "Accelerating voltage in kV",
+          "range": "integer",
+          "any_of": [
+            {
+              "equals_number": 120,
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "equals_number": 200,
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "equals_number": 300,
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs_corrector",
+          "description": "Spherical aberration corrector present",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_plate",
+          "description": "Phase plate available",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_type",
+          "description": "Type of detector",
+          "range": "DetectorTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_dimensions",
+          "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_min",
+          "description": "Minimum pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_max",
+          "description": "Maximum pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "autoloader_capacity",
+          "description": "Number of grids the autoloader can hold",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/CryoEMInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XRayInstrument",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/XRayInstrument",
+      "description": "X-ray diffractometer or synchrotron beamline specifications",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "xRayInstrument__source_type",
+        "xRayInstrument__energy_min",
+        "xRayInstrument__energy_max",
+        "xRayInstrument__beam_size_min",
+        "xRayInstrument__beam_size_max",
+        "xRayInstrument__flux_density",
+        "xRayInstrument__monochromator_type",
+        "xRayInstrument__goniometer_type",
+        "xRayInstrument__crystal_cooling_capability"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "source_type",
+          "description": "Type of X-ray source",
+          "range": "XRaySourceTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_min",
+          "description": "Minimum X-ray energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_max",
+          "description": "Maximum X-ray energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_size_min",
+          "description": "Minimum beam size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_size_max",
+          "description": "Maximum beam size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux_density",
+          "description": "Photon flux density in photons/s/mm\u00b2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "monochromator_type",
+          "description": "Type of monochromator",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "goniometer_type",
+          "description": "Type of goniometer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_cooling_capability",
+          "description": "Crystal cooling system available",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/XRayInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SAXSInstrument",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SAXSInstrument",
+      "description": "SAXS/WAXS instrument specifications",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "sAXSInstrument__q_range_min",
+        "sAXSInstrument__q_range_max",
+        "sAXSInstrument__detector_distance_min",
+        "sAXSInstrument__detector_distance_max",
+        "sAXSInstrument__sample_changer_capacity",
+        "sAXSInstrument__temperature_control_range"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "q_range_min",
+          "description": "Minimum q value in inverse Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_range_max",
+          "description": "Maximum q value in inverse Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_distance_min",
+          "description": "Minimum detector distance in mm",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_distance_max",
+          "description": "Maximum detector distance in mm",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_changer_capacity",
+          "description": "Number of samples in automatic sample changer",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_control_range",
+          "description": "Temperature control range in Celsius",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/SAXSInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExperimentRun",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ExperimentRun",
+      "description": "An experimental data collection session",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "experimentRun__experiment_code",
+        "experimentRun__sample_id",
+        "experimentRun__instrument_id",
+        "experimentRun__experiment_date",
+        "experimentRun__operator_id",
+        "experimentRun__technique",
+        "experimentRun__experimental_conditions",
+        "experimentRun__data_collection_strategy",
+        "experimentRun__quality_metrics",
+        "experimentRun__raw_data_location",
+        "experimentRun__processing_status"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "experiment_code",
+          "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_id",
+          "description": "Reference to the sample being analyzed",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instrument_id",
+          "description": "Reference to the instrument used",
+          "range": "Instrument",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_date",
+          "description": "Date of the experiment",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "operator_id",
+          "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "technique",
+          "description": "Technique used for data collection",
+          "range": "TechniqueEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experimental_conditions",
+          "description": "Environmental and experimental conditions",
+          "range": "ExperimentalConditions",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "data_collection_strategy",
+          "description": "Strategy for data collection",
+          "range": "DataCollectionStrategy",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "quality_metrics",
+          "description": "Quality metrics for the experiment",
+          "range": "QualityMetrics",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "raw_data_location",
+          "description": "Location of raw data files",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "processing_status",
+          "description": "Current processing status",
+          "range": "ProcessingStatusEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ExperimentRun",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "WorkflowRun",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/WorkflowRun",
+      "description": "A computational processing workflow execution",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "workflowRun__workflow_code",
+        "workflowRun__workflow_type",
+        "workflowRun__experiment_id",
+        "workflowRun__processing_level",
+        "workflowRun__software_name",
+        "workflowRun__software_version",
+        "workflowRun__processing_parameters",
+        "workflowRun__compute_resources",
+        "workflowRun__started_at",
+        "workflowRun__completed_at",
+        "workflowRun__output_files"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "workflow_code",
+          "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_type",
+          "description": "Type of processing workflow",
+          "range": "WorkflowTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_id",
+          "description": "Reference to the source experiment",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "processing_level",
+          "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)",
+          "range": "integer",
+          "minimum_value": 0,
+          "maximum_value": 4,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "software_name",
+          "description": "Software used for processing",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "software_version",
+          "description": "Software version",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "processing_parameters",
+          "description": "Parameters used in processing",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "compute_resources",
+          "description": "Computational resources used",
+          "range": "ComputeResources",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "started_at",
+          "description": "Workflow start time",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "completed_at",
+          "description": "Workflow completion time",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "output_files",
+          "description": "Output files generated",
+          "range": "DataFile",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/WorkflowRun",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DataFile",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DataFile",
+      "description": "A data file generated or used in the study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "dataFile__file_name",
+        "dataFile__file_path",
+        "dataFile__file_format",
+        "dataFile__file_size_bytes",
+        "dataFile__checksum",
+        "dataFile__creation_date",
+        "dataFile__data_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "file_name",
+          "description": "Name of the file",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_path",
+          "description": "Path to the file",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_format",
+          "description": "File format",
+          "range": "FileFormatEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_size_bytes",
+          "description": "File size in bytes",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "checksum",
+          "description": "SHA-256 checksum for data integrity",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "creation_date",
+          "description": "File creation date",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "data_type",
+          "description": "Type of data in the file",
+          "range": "DataTypeEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/DataFile",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Image",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Image",
+      "description": "An image file from structural biology experiments",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "file_name",
+          "description": "Image file name",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acquisition_date",
+          "description": "Date image was acquired",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size",
+          "description": "Pixel size in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dimensions_x",
+          "description": "Image width in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dimensions_y",
+          "description": "Image height in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "exposure_time",
+          "description": "Exposure time in seconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose",
+          "description": "Electron dose in e-/\u00c5\u00b2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Image",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Image2D",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Image2D",
+      "description": "A 2D image (micrograph, diffraction pattern)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "defocus",
+          "description": "Defocus value in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "astigmatism",
+          "description": "Astigmatism value",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Image2D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Image3D",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Image3D",
+      "description": "A 3D volume or tomogram",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image3D__dimensions_z",
+        "image3D__voxel_size",
+        "image3D__reconstruction_method"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dimensions_z",
+          "description": "Image depth in pixels/slices",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "voxel_size",
+          "description": "Voxel size in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "reconstruction_method",
+          "description": "Method used for 3D reconstruction",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Image3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FTIRImage",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FTIRImage",
+      "description": "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "fTIRImage__wavenumber_min",
+        "fTIRImage__wavenumber_max",
+        "fTIRImage__spectral_resolution",
+        "fTIRImage__number_of_scans",
+        "fTIRImage__apodization_function",
+        "fTIRImage__molecular_signatures",
+        "fTIRImage__background_correction"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "wavenumber_min",
+          "description": "Minimum wavenumber in cm\u207b\u00b9",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavenumber_max",
+          "description": "Maximum wavenumber in cm\u207b\u00b9",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "spectral_resolution",
+          "description": "Spectral resolution in cm\u207b\u00b9",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_scans",
+          "description": "Number of scans averaged for the spectrum",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "apodization_function",
+          "description": "Mathematical function used for apodization",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molecular_signatures",
+          "description": "Identified molecular signatures or peaks",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "background_correction",
+          "description": "Method used for background correction",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/FTIRImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FluorescenceImage",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FluorescenceImage",
+      "description": "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image2D",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism",
+        "fluorescenceImage__excitation_wavelength",
+        "fluorescenceImage__emission_wavelength",
+        "fluorescenceImage__excitation_filter",
+        "fluorescenceImage__emission_filter",
+        "fluorescenceImage__fluorophore",
+        "fluorescenceImage__channel_name",
+        "fluorescenceImage__laser_power",
+        "fluorescenceImage__pinhole_size",
+        "fluorescenceImage__quantum_yield"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "excitation_wavelength",
+          "description": "Excitation wavelength in nanometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "emission_wavelength",
+          "description": "Emission wavelength in nanometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "excitation_filter",
+          "description": "Specifications of the excitation filter",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "emission_filter",
+          "description": "Specifications of the emission filter",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "fluorophore",
+          "description": "Name or type of fluorophore used",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "channel_name",
+          "description": "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "laser_power",
+          "description": "Laser power in milliwatts or percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pinhole_size",
+          "description": "Pinhole size in Airy units for confocal microscopy",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "quantum_yield",
+          "description": "Quantum yield of the fluorophore",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/FluorescenceImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OpticalImage",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/OpticalImage",
+      "description": "Visible light optical microscopy or photography image",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image2D",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism",
+        "opticalImage__illumination_type",
+        "opticalImage__magnification",
+        "opticalImage__numerical_aperture",
+        "opticalImage__color_channels",
+        "opticalImage__white_balance",
+        "opticalImage__contrast_method"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "illumination_type",
+          "description": "Type of illumination (brightfield, darkfield, phase contrast, DIC)",
+          "range": "IlluminationTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "magnification",
+          "description": "Optical magnification factor",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "numerical_aperture",
+          "description": "Numerical aperture of the objective lens",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "color_channels",
+          "description": "Color channels present (e.g., RGB, grayscale)",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "white_balance",
+          "description": "White balance settings",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "contrast_method",
+          "description": "Contrast enhancement method used",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/OpticalImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XRFImage",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/XRFImage",
+      "description": "X-ray fluorescence (XRF) image showing elemental distribution",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image2D",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism",
+        "xRFImage__beam_energy",
+        "xRFImage__beam_size",
+        "xRFImage__dwell_time",
+        "xRFImage__elements_measured",
+        "xRFImage__source_type",
+        "xRFImage__detector_type",
+        "xRFImage__flux",
+        "xRFImage__calibration_standard"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "beam_energy",
+          "description": "X-ray beam energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_size",
+          "description": "X-ray beam size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dwell_time",
+          "description": "Dwell time per pixel in milliseconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "elements_measured",
+          "description": "Elements detected and measured",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_type",
+          "description": "X-ray source type (synchrotron or lab-source)",
+          "range": "XRaySourceTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_type",
+          "description": "Type of X-ray detector used",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux",
+          "description": "Photon flux in photons/second",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "calibration_standard",
+          "description": "Reference standard used for calibration",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/XRFImage",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImageFeature",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ImageFeature",
+      "description": "Semantic annotations describing features identified in images using controlled vocabulary terms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "imageFeature__terms"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "terms",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ImageFeature",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyTerm",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/OntologyTerm",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "ontologyTerm__label",
+        "ontologyTerm__definition",
+        "ontologyTerm__ontology"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "label",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "definition",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ontology",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/OntologyTerm",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MolecularComposition",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/MolecularComposition",
+      "description": "Molecular composition of a sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "molecularComposition__sequences",
+        "molecularComposition__modifications",
+        "molecularComposition__ligands"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sequences",
+          "description": "Amino acid or nucleotide sequences",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "modifications",
+          "description": "Post-translational modifications or chemical modifications",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligands",
+          "description": "Bound ligands or cofactors",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/MolecularComposition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BufferComposition",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/BufferComposition",
+      "description": "Buffer composition for sample storage",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "bufferComposition__ph",
+        "bufferComposition__components",
+        "bufferComposition__additives"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "ph",
+          "description": "pH of the buffer",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 14,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "components",
+          "description": "Buffer components and their concentrations",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "additives",
+          "description": "Additional additives in the buffer",
+          "range": "string",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/BufferComposition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StorageConditions",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/StorageConditions",
+      "description": "Storage conditions for samples",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "storageConditions__temperature",
+        "storageConditions__temperature_unit",
+        "storageConditions__duration",
+        "storageConditions__atmosphere"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "temperature",
+          "description": "Storage temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_unit",
+          "description": "Temperature unit",
+          "range": "TemperatureUnitEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "duration",
+          "description": "Storage duration",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "atmosphere",
+          "description": "Storage atmosphere conditions",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/StorageConditions",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TechniqueSpecificPreparation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/TechniqueSpecificPreparation",
+      "description": "Base class for technique-specific preparation details",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "abstract": true,
+      "slots": [
+        "attributeGroup__description"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/lambda-ber-schema/TechniqueSpecificPreparation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CryoEMPreparation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CryoEMPreparation",
+      "description": "Cryo-EM specific sample preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "TechniqueSpecificPreparation",
+      "slots": [
+        "attributeGroup__description",
+        "cryoEMPreparation__grid_type",
+        "cryoEMPreparation__support_film",
+        "cryoEMPreparation__hole_size",
+        "cryoEMPreparation__vitrification_method",
+        "cryoEMPreparation__blot_time",
+        "cryoEMPreparation__blot_force",
+        "cryoEMPreparation__humidity_percentage",
+        "cryoEMPreparation__chamber_temperature",
+        "cryoEMPreparation__plasma_treatment"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "grid_type",
+          "description": "Type of EM grid used",
+          "range": "GridTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "support_film",
+          "description": "Support film type",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hole_size",
+          "description": "Hole size in micrometers",
+          "range": "float",
+          "minimum_value": 0.5,
+          "maximum_value": 5.0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "vitrification_method",
+          "description": "Method used for vitrification",
+          "range": "VitrificationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blot_time",
+          "description": "Blotting time in seconds",
+          "range": "float",
+          "minimum_value": 0.5,
+          "maximum_value": 10.0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blot_force",
+          "description": "Blotting force setting",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "humidity_percentage",
+          "description": "Chamber humidity during vitrification",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 100,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "chamber_temperature",
+          "description": "Chamber temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "plasma_treatment",
+          "description": "Plasma treatment details",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/CryoEMPreparation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XRayPreparation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/XRayPreparation",
+      "description": "X-ray crystallography specific preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "TechniqueSpecificPreparation",
+      "slots": [
+        "attributeGroup__description",
+        "xRayPreparation__crystallization_method",
+        "xRayPreparation__crystallization_conditions",
+        "xRayPreparation__crystal_size",
+        "xRayPreparation__cryoprotectant",
+        "xRayPreparation__cryoprotectant_concentration",
+        "xRayPreparation__mounting_method",
+        "xRayPreparation__flash_cooling_method"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "crystallization_method",
+          "description": "Method used for crystallization",
+          "range": "CrystallizationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_conditions",
+          "description": "Detailed crystallization conditions",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_size",
+          "description": "Crystal dimensions in micrometers",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryoprotectant",
+          "description": "Cryoprotectant used",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryoprotectant_concentration",
+          "description": "Cryoprotectant concentration percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mounting_method",
+          "description": "Crystal mounting method",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flash_cooling_method",
+          "description": "Flash cooling protocol",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/XRayPreparation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SAXSPreparation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SAXSPreparation",
+      "description": "SAXS/WAXS specific preparation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "TechniqueSpecificPreparation",
+      "slots": [
+        "attributeGroup__description",
+        "sAXSPreparation__concentration_series",
+        "sAXSPreparation__buffer_matching_protocol",
+        "sAXSPreparation__sample_cell_type",
+        "sAXSPreparation__cell_path_length",
+        "sAXSPreparation__temperature_control"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "concentration_series",
+          "description": "Concentration values for series measurements",
+          "range": "float",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "buffer_matching_protocol",
+          "description": "Protocol for buffer matching",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_cell_type",
+          "description": "Type of sample cell used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cell_path_length",
+          "description": "Path length in mm",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_control",
+          "description": "Temperature control settings",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/SAXSPreparation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExperimentalConditions",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ExperimentalConditions",
+      "description": "Environmental and experimental conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "experimentalConditions__temperature",
+        "experimentalConditions__humidity",
+        "experimentalConditions__pressure",
+        "experimentalConditions__atmosphere",
+        "experimentalConditions__beam_energy",
+        "experimentalConditions__exposure_time"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "temperature",
+          "description": "Temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "humidity",
+          "description": "Humidity percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pressure",
+          "description": "Pressure in kPa",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "atmosphere",
+          "description": "Atmosphere composition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_energy",
+          "description": "Beam energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "exposure_time",
+          "description": "Exposure time in seconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ExperimentalConditions",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DataCollectionStrategy",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DataCollectionStrategy",
+      "description": "Strategy for data collection",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "dataCollectionStrategy__collection_mode",
+        "dataCollectionStrategy__total_frames",
+        "dataCollectionStrategy__frame_rate",
+        "dataCollectionStrategy__total_dose",
+        "dataCollectionStrategy__dose_per_frame"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "collection_mode",
+          "description": "Mode of data collection",
+          "range": "CollectionModeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_frames",
+          "description": "Total number of frames/images",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "frame_rate",
+          "description": "Frames per second",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_dose",
+          "description": "Total electron dose for cryo-EM",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose_per_frame",
+          "description": "Dose per frame",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/DataCollectionStrategy",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QualityMetrics",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/QualityMetrics",
+      "description": "Quality metrics for experiments",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "qualityMetrics__resolution",
+        "qualityMetrics__completeness",
+        "qualityMetrics__signal_to_noise",
+        "qualityMetrics__r_factor",
+        "qualityMetrics__i_zero",
+        "qualityMetrics__rg"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "resolution",
+          "description": "Resolution in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "completeness",
+          "description": "Data completeness percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "signal_to_noise",
+          "description": "Signal to noise ratio",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_factor",
+          "description": "R-factor for crystallography",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "i_zero",
+          "description": "Forward scattering intensity I(0)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rg",
+          "description": "Radius of gyration in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/QualityMetrics",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ComputeResources",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ComputeResources",
+      "description": "Computational resources used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "computeResources__cpu_hours",
+        "computeResources__gpu_hours",
+        "computeResources__memory_gb",
+        "computeResources__storage_gb"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "cpu_hours",
+          "description": "CPU hours used",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gpu_hours",
+          "description": "GPU hours used",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "memory_gb",
+          "description": "Maximum memory used in GB",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "storage_gb",
+          "description": "Storage used in GB",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ComputeResources",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "lambda-ber-schema.yaml",
+  "source_file_date": "2025-10-24T11:48:29",
+  "source_file_size": 37765,
+  "generation_date": "2025-10-24T11:48:33",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "assets/jsonld/lambda-ber-schema.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://w3id.org/lambda-ber-schema/"
+    }
+  ]
+}

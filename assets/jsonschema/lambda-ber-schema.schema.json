@@ -1,0 +1,2685 @@
+{
+    "$defs": {
+        "BufferComposition": {
+            "additionalProperties": false,
+            "description": "Buffer composition for sample storage",
+            "properties": {
+                "additives": {
+                    "description": "Additional additives in the buffer",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "components": {
+                    "description": "Buffer components and their concentrations",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ph": {
+                    "description": "pH of the buffer",
+                    "maximum": 14,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "BufferComposition",
+            "type": "object"
+        },
+        "CollectionModeEnum": {
+            "description": "Data collection modes",
+            "enum": [
+                "counting",
+                "super_resolution",
+                "continuous",
+                "oscillation",
+                "still",
+                "batch",
+                "sec_saxs",
+                "single_particle"
+            ],
+            "title": "CollectionModeEnum",
+            "type": "string"
+        },
+        "ComputeResources": {
+            "additionalProperties": false,
+            "description": "Computational resources used",
+            "properties": {
+                "cpu_hours": {
+                    "description": "CPU hours used",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gpu_hours": {
+                    "description": "GPU hours used",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "memory_gb": {
+                    "description": "Maximum memory used in GB",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "storage_gb": {
+                    "description": "Storage used in GB",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ComputeResources",
+            "type": "object"
+        },
+        "ConcentrationUnitEnum": {
+            "description": "Units for concentration measurement",
+            "enum": [
+                "mg_per_ml",
+                "micromolar",
+                "millimolar",
+                "nanomolar"
+            ],
+            "title": "ConcentrationUnitEnum",
+            "type": "string"
+        },
+        "CryoEMInstrument": {
+            "additionalProperties": false,
+            "description": "Cryo-EM microscope specifications",
+            "properties": {
+                "accelerating_voltage": {
+                    "anyOf": [
+                        {
+                            "const": 120
+                        },
+                        {
+                            "const": 200
+                        },
+                        {
+                            "const": 300
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage in kV",
+                    "type": "integer"
+                },
+                "autoloader_capacity": {
+                    "description": "Number of grids the autoloader can hold",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cs_corrector": {
+                    "description": "Spherical aberration corrector present",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_dimensions": {
+                    "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_type": {
+                    "$ref": "#/$defs/DetectorTypeEnum",
+                    "description": "Type of detector"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "phase_plate": {
+                    "description": "Phase plate available",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "pixel_size_max": {
+                    "description": "Maximum pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_min": {
+                    "description": "Minimum pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "CryoEMInstrument",
+            "type": "object"
+        },
+        "CryoEMPreparation": {
+            "additionalProperties": false,
+            "description": "Cryo-EM specific sample preparation",
+            "properties": {
+                "blot_force": {
+                    "description": "Blotting force setting",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "blot_time": {
+                    "description": "Blotting time in seconds",
+                    "maximum": 10.0,
+                    "minimum": 0.5,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "chamber_temperature": {
+                    "description": "Chamber temperature in Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grid_type": {
+                    "$ref": "#/$defs/GridTypeEnum",
+                    "description": "Type of EM grid used"
+                },
+                "hole_size": {
+                    "description": "Hole size in micrometers",
+                    "maximum": 5.0,
+                    "minimum": 0.5,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "humidity_percentage": {
+                    "description": "Chamber humidity during vitrification",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "plasma_treatment": {
+                    "description": "Plasma treatment details",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "support_film": {
+                    "description": "Support film type",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vitrification_method": {
+                    "$ref": "#/$defs/VitrificationMethodEnum",
+                    "description": "Method used for vitrification"
+                }
+            },
+            "title": "CryoEMPreparation",
+            "type": "object"
+        },
+        "CrystallizationMethodEnum": {
+            "description": "Methods for protein crystallization",
+            "enum": [
+                "vapor_diffusion_hanging",
+                "vapor_diffusion_sitting",
+                "microbatch",
+                "dialysis",
+                "free_interface_diffusion"
+            ],
+            "title": "CrystallizationMethodEnum",
+            "type": "string"
+        },
+        "DataCollectionStrategy": {
+            "additionalProperties": false,
+            "description": "Strategy for data collection",
+            "properties": {
+                "collection_mode": {
+                    "$ref": "#/$defs/CollectionModeEnum",
+                    "description": "Mode of data collection"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dose_per_frame": {
+                    "description": "Dose per frame",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "frame_rate": {
+                    "description": "Frames per second",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "total_dose": {
+                    "description": "Total electron dose for cryo-EM",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "total_frames": {
+                    "description": "Total number of frames/images",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "DataCollectionStrategy",
+            "type": "object"
+        },
+        "DataFile": {
+            "additionalProperties": false,
+            "description": "A data file generated or used in the study",
+            "properties": {
+                "checksum": {
+                    "description": "SHA-256 checksum for data integrity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "creation_date": {
+                    "description": "File creation date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_type": {
+                    "$ref": "#/$defs/DataTypeEnum",
+                    "description": "Type of data in the file"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "file_format": {
+                    "$ref": "#/$defs/FileFormatEnum",
+                    "description": "File format"
+                },
+                "file_name": {
+                    "description": "Name of the file",
+                    "type": "string"
+                },
+                "file_path": {
+                    "description": "Path to the file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "file_size_bytes": {
+                    "description": "File size in bytes",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "file_format",
+                "id"
+            ],
+            "title": "DataFile",
+            "type": "object"
+        },
+        "DataTypeEnum": {
+            "description": "Types of data",
+            "enum": [
+                "micrograph",
+                "diffraction",
+                "scattering",
+                "particles",
+                "volume",
+                "model",
+                "metadata",
+                "raw_data",
+                "processed_data"
+            ],
+            "title": "DataTypeEnum",
+            "type": "string"
+        },
+        "Dataset": {
+            "additionalProperties": false,
+            "description": "A collection of studies",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instruments": {
+                    "items": {
+                        "$ref": "#/$defs/Instrument"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "keywords": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "studies": {
+                    "items": {
+                        "$ref": "#/$defs/Study"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Dataset",
+            "type": "object"
+        },
+        "DetectorTypeEnum": {
+            "description": "Types of detectors for cryo-EM",
+            "enum": [
+                "direct_electron",
+                "ccd",
+                "cmos",
+                "hybrid_pixel"
+            ],
+            "title": "DetectorTypeEnum",
+            "type": "string"
+        },
+        "ExperimentRun": {
+            "additionalProperties": false,
+            "description": "An experimental data collection session",
+            "properties": {
+                "data_collection_strategy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DataCollectionStrategy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Strategy for data collection"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experiment_code": {
+                    "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
+                    "type": "string"
+                },
+                "experiment_date": {
+                    "description": "Date of the experiment",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experimental_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ExperimentalConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental and experimental conditions"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "instrument_id": {
+                    "description": "Reference to the instrument used",
+                    "type": "string"
+                },
+                "operator_id": {
+                    "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_status": {
+                    "$ref": "#/$defs/ProcessingStatusEnum",
+                    "description": "Current processing status"
+                },
+                "quality_metrics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QualityMetrics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Quality metrics for the experiment"
+                },
+                "raw_data_location": {
+                    "description": "Location of raw data files",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "Reference to the sample being analyzed",
+                    "type": "string"
+                },
+                "technique": {
+                    "$ref": "#/$defs/TechniqueEnum",
+                    "description": "Technique used for data collection"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "experiment_code",
+                "sample_id",
+                "instrument_id",
+                "technique",
+                "id"
+            ],
+            "title": "ExperimentRun",
+            "type": "object"
+        },
+        "ExperimentalConditions": {
+            "additionalProperties": false,
+            "description": "Environmental and experimental conditions",
+            "properties": {
+                "atmosphere": {
+                    "description": "Atmosphere composition",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "beam_energy": {
+                    "description": "Beam energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "humidity": {
+                    "description": "Humidity percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pressure": {
+                    "description": "Pressure in kPa",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temperature": {
+                    "description": "Temperature in Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ExperimentalConditions",
+            "type": "object"
+        },
+        "FTIRImage": {
+            "additionalProperties": false,
+            "description": "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "apodization_function": {
+                    "description": "Mathematical function used for apodization",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "background_correction": {
+                    "description": "Method used for background correction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "molecular_signatures": {
+                    "description": "Identified molecular signatures or peaks",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "number_of_scans": {
+                    "description": "Number of scans averaged for the spectrum",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "spectral_resolution": {
+                    "description": "Spectral resolution in cm\u207b\u00b9",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wavenumber_max": {
+                    "description": "Maximum wavenumber in cm\u207b\u00b9",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "wavenumber_min": {
+                    "description": "Minimum wavenumber in cm\u207b\u00b9",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "FTIRImage",
+            "type": "object"
+        },
+        "FileFormatEnum": {
+            "description": "File formats",
+            "enum": [
+                "mrc",
+                "tiff",
+                "hdf5",
+                "star",
+                "pdb",
+                "mmcif",
+                "mtz",
+                "cbf",
+                "ascii",
+                "thermo_raw",
+                "zip"
+            ],
+            "title": "FileFormatEnum",
+            "type": "string"
+        },
+        "FluorescenceImage": {
+            "additionalProperties": false,
+            "description": "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "channel_name": {
+                    "description": "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "emission_filter": {
+                    "description": "Specifications of the emission filter",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "emission_wavelength": {
+                    "description": "Emission wavelength in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "excitation_filter": {
+                    "description": "Specifications of the excitation filter",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "excitation_wavelength": {
+                    "description": "Excitation wavelength in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "fluorophore": {
+                    "description": "Name or type of fluorophore used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "laser_power": {
+                    "description": "Laser power in milliwatts or percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pinhole_size": {
+                    "description": "Pinhole size in Airy units for confocal microscopy",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "quantum_yield": {
+                    "description": "Quantum yield of the fluorophore",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "FluorescenceImage",
+            "type": "object"
+        },
+        "GridTypeEnum": {
+            "description": "Types of EM grids",
+            "enum": [
+                "c_flat",
+                "quantifoil",
+                "lacey_carbon",
+                "ultrathin_carbon",
+                "gold"
+            ],
+            "title": "GridTypeEnum",
+            "type": "string"
+        },
+        "IlluminationTypeEnum": {
+            "description": "Types of illumination for optical microscopy",
+            "enum": [
+                "brightfield",
+                "darkfield",
+                "phase_contrast",
+                "dic",
+                "fluorescence",
+                "confocal",
+                "polarized",
+                "oblique"
+            ],
+            "title": "IlluminationTypeEnum",
+            "type": "string"
+        },
+        "Image": {
+            "additionalProperties": false,
+            "description": "An image file from structural biology experiments",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "Image",
+            "type": "object"
+        },
+        "Image2D": {
+            "additionalProperties": false,
+            "description": "A 2D image (micrograph, diffraction pattern)",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "Image2D",
+            "type": "object"
+        },
+        "Image3D": {
+            "additionalProperties": false,
+            "description": "A 3D volume or tomogram",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_z": {
+                    "description": "Image depth in pixels/slices",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "reconstruction_method": {
+                    "description": "Method used for 3D reconstruction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "voxel_size": {
+                    "description": "Voxel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "Image3D",
+            "type": "object"
+        },
+        "ImageFeature": {
+            "additionalProperties": false,
+            "description": "Semantic annotations describing features identified in images using controlled vocabulary terms",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "terms": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImageFeature",
+            "type": "object"
+        },
+        "Instrument": {
+            "additionalProperties": false,
+            "description": "An instrument used to collect data",
+            "properties": {
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "Instrument",
+            "type": "object"
+        },
+        "InstrumentStatusEnum": {
+            "description": "Operational status of instruments",
+            "enum": [
+                "operational",
+                "maintenance",
+                "offline",
+                "commissioning"
+            ],
+            "title": "InstrumentStatusEnum",
+            "type": "string"
+        },
+        "MolecularComposition": {
+            "additionalProperties": false,
+            "description": "Molecular composition of a sample",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ligands": {
+                    "description": "Bound ligands or cofactors",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modifications": {
+                    "description": "Post-translational modifications or chemical modifications",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sequences": {
+                    "description": "Amino acid or nucleotide sequences",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MolecularComposition",
+            "type": "object"
+        },
+        "OntologyTerm": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "definition": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "label": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ontology": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "OntologyTerm",
+            "type": "object"
+        },
+        "OpticalImage": {
+            "additionalProperties": false,
+            "description": "Visible light optical microscopy or photography image",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "color_channels": {
+                    "description": "Color channels present (e.g., RGB, grayscale)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contrast_method": {
+                    "description": "Contrast enhancement method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "illumination_type": {
+                    "$ref": "#/$defs/IlluminationTypeEnum",
+                    "description": "Type of illumination (brightfield, darkfield, phase contrast, DIC)"
+                },
+                "magnification": {
+                    "description": "Optical magnification factor",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "numerical_aperture": {
+                    "description": "Numerical aperture of the objective lens",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "white_balance": {
+                    "description": "White balance settings",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "OpticalImage",
+            "type": "object"
+        },
+        "PreparationTypeEnum": {
+            "description": "Types of sample preparation",
+            "enum": [
+                "cryo_em",
+                "xray_crystallography",
+                "saxs",
+                "sans",
+                "protein_expression",
+                "protein_purification",
+                "negative_stain"
+            ],
+            "title": "PreparationTypeEnum",
+            "type": "string"
+        },
+        "ProcessingStatusEnum": {
+            "description": "Processing status",
+            "enum": [
+                "raw",
+                "preprocessing",
+                "processing",
+                "completed",
+                "failed"
+            ],
+            "title": "ProcessingStatusEnum",
+            "type": "string"
+        },
+        "QualityMetrics": {
+            "additionalProperties": false,
+            "description": "Quality metrics for experiments",
+            "properties": {
+                "completeness": {
+                    "description": "Data completeness percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "i_zero": {
+                    "description": "Forward scattering intensity I(0)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "r_factor": {
+                    "description": "R-factor for crystallography",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution": {
+                    "description": "Resolution in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rg": {
+                    "description": "Radius of gyration in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "signal_to_noise": {
+                    "description": "Signal to noise ratio",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "QualityMetrics",
+            "type": "object"
+        },
+        "SAXSInstrument": {
+            "additionalProperties": false,
+            "description": "SAXS/WAXS instrument specifications",
+            "properties": {
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_distance_max": {
+                    "description": "Maximum detector distance in mm",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "detector_distance_min": {
+                    "description": "Minimum detector distance in mm",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "q_range_max": {
+                    "description": "Maximum q value in inverse Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "q_range_min": {
+                    "description": "Minimum q value in inverse Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "sample_changer_capacity": {
+                    "description": "Number of samples in automatic sample changer",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "temperature_control_range": {
+                    "description": "Temperature control range in Celsius",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "SAXSInstrument",
+            "type": "object"
+        },
+        "SAXSPreparation": {
+            "additionalProperties": false,
+            "description": "SAXS/WAXS specific preparation",
+            "properties": {
+                "buffer_matching_protocol": {
+                    "description": "Protocol for buffer matching",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cell_path_length": {
+                    "description": "Path length in mm",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "concentration_series": {
+                    "description": "Concentration values for series measurements",
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_cell_type": {
+                    "description": "Type of sample cell used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature_control": {
+                    "description": "Temperature control settings",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "SAXSPreparation",
+            "type": "object"
+        },
+        "Sample": {
+            "additionalProperties": false,
+            "description": "A biological sample used in structural biology experiments",
+            "properties": {
+                "anatomy": {
+                    "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "buffer_composition": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BufferComposition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Buffer composition including pH, salts, additives"
+                },
+                "cell_type": {
+                    "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "concentration": {
+                    "description": "Sample concentration in mg/mL or \u00b5M",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "concentration_unit": {
+                    "$ref": "#/$defs/ConcentrationUnitEnum",
+                    "description": "Unit of concentration measurement"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "molecular_composition": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MolecularComposition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Description of molecular composition including sequences, modifications, ligands"
+                },
+                "molecular_weight": {
+                    "description": "Molecular weight in kDa",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parent_sample_id": {
+                    "description": "Reference to parent sample for derivation tracking",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preparation_method": {
+                    "description": "Method used to prepare the sample",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "purity_percentage": {
+                    "description": "Sample purity as percentage",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "quality_metrics": {
+                    "description": "Quality control metrics for the sample",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_code": {
+                    "description": "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.",
+                    "type": "string"
+                },
+                "sample_type": {
+                    "$ref": "#/$defs/SampleTypeEnum",
+                    "description": "Type of biological sample"
+                },
+                "storage_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StorageConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Storage conditions for the sample"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sample_code",
+                "sample_type",
+                "id"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
+        "SamplePreparation": {
+            "additionalProperties": false,
+            "description": "A process that prepares a sample for imaging",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "operator_id": {
+                    "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preparation_date": {
+                    "description": "Date of sample preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preparation_type": {
+                    "$ref": "#/$defs/PreparationTypeEnum",
+                    "description": "Type of sample preparation"
+                },
+                "protocol_description": {
+                    "description": "Detailed protocol description",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "Reference to the sample being prepared",
+                    "type": "string"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "preparation_type",
+                "sample_id",
+                "id"
+            ],
+            "title": "SamplePreparation",
+            "type": "object"
+        },
+        "SampleTypeEnum": {
+            "description": "Types of biological samples",
+            "enum": [
+                "protein",
+                "nucleic_acid",
+                "complex",
+                "membrane_protein",
+                "virus",
+                "organelle"
+            ],
+            "title": "SampleTypeEnum",
+            "type": "string"
+        },
+        "StorageConditions": {
+            "additionalProperties": false,
+            "description": "Storage conditions for samples",
+            "properties": {
+                "atmosphere": {
+                    "description": "Storage atmosphere conditions",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "duration": {
+                    "description": "Storage duration",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature": {
+                    "description": "Storage temperature in Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temperature_unit": {
+                    "$ref": "#/$defs/TemperatureUnitEnum",
+                    "description": "Temperature unit"
+                }
+            },
+            "title": "StorageConditions",
+            "type": "object"
+        },
+        "Study": {
+            "additionalProperties": false,
+            "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
+            "properties": {
+                "data_files": {
+                    "items": {
+                        "$ref": "#/$defs/DataFile"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "images": {
+                    "items": {
+                        "$ref": "#/$defs/Image"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "instrument_runs": {
+                    "items": {
+                        "$ref": "#/$defs/ExperimentRun"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sample_preparations": {
+                    "items": {
+                        "$ref": "#/$defs/SamplePreparation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "samples": {
+                    "items": {
+                        "$ref": "#/$defs/Sample"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "workflow_runs": {
+                    "items": {
+                        "$ref": "#/$defs/WorkflowRun"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Study",
+            "type": "object"
+        },
+        "TechniqueEnum": {
+            "description": "Structural biology techniques",
+            "enum": [
+                "cryo_em",
+                "xray_crystallography",
+                "saxs",
+                "waxs",
+                "sans",
+                "cryo_et",
+                "electron_microscopy",
+                "mass_spectrometry"
+            ],
+            "title": "TechniqueEnum",
+            "type": "string"
+        },
+        "TemperatureUnitEnum": {
+            "description": "Units for temperature measurement",
+            "enum": [
+                "celsius",
+                "kelvin",
+                "fahrenheit"
+            ],
+            "title": "TemperatureUnitEnum",
+            "type": "string"
+        },
+        "VitrificationMethodEnum": {
+            "description": "Methods for vitrification",
+            "enum": [
+                "plunge_freezing",
+                "high_pressure_freezing",
+                "slam_freezing"
+            ],
+            "title": "VitrificationMethodEnum",
+            "type": "string"
+        },
+        "WorkflowRun": {
+            "additionalProperties": false,
+            "description": "A computational processing workflow execution",
+            "properties": {
+                "completed_at": {
+                    "description": "Workflow completion time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "compute_resources": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ComputeResources"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Computational resources used"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experiment_id": {
+                    "description": "Reference to the source experiment",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "output_files": {
+                    "description": "Output files generated",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "processing_level": {
+                    "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)",
+                    "maximum": 4,
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "processing_parameters": {
+                    "description": "Parameters used in processing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "software_name": {
+                    "description": "Software used for processing",
+                    "type": "string"
+                },
+                "software_version": {
+                    "description": "Software version",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "started_at": {
+                    "description": "Workflow start time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "workflow_code": {
+                    "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
+                    "type": "string"
+                },
+                "workflow_type": {
+                    "$ref": "#/$defs/WorkflowTypeEnum",
+                    "description": "Type of processing workflow"
+                }
+            },
+            "required": [
+                "workflow_code",
+                "workflow_type",
+                "experiment_id",
+                "software_name",
+                "id"
+            ],
+            "title": "WorkflowRun",
+            "type": "object"
+        },
+        "WorkflowTypeEnum": {
+            "description": "Types of processing workflows",
+            "enum": [
+                "motion_correction",
+                "ctf_estimation",
+                "particle_picking",
+                "classification_2d",
+                "classification_3d",
+                "refinement",
+                "model_building",
+                "phasing",
+                "integration",
+                "scaling",
+                "saxs_analysis",
+                "em_2d_classification",
+                "mass_spec_deconvolution"
+            ],
+            "title": "WorkflowTypeEnum",
+            "type": "string"
+        },
+        "XRFImage": {
+            "additionalProperties": false,
+            "description": "X-ray fluorescence (XRF) image showing elemental distribution",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_energy": {
+                    "description": "X-ray beam energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_size": {
+                    "description": "X-ray beam size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "calibration_standard": {
+                    "description": "Reference standard used for calibration",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_type": {
+                    "description": "Type of X-ray detector used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "dwell_time": {
+                    "description": "Dwell time per pixel in milliseconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "elements_measured": {
+                    "description": "Elements detected and measured",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "flux": {
+                    "description": "Photon flux in photons/second",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "source_type": {
+                    "$ref": "#/$defs/XRaySourceTypeEnum",
+                    "description": "X-ray source type (synchrotron or lab-source)"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "XRFImage",
+            "type": "object"
+        },
+        "XRayInstrument": {
+            "additionalProperties": false,
+            "description": "X-ray diffractometer or synchrotron beamline specifications",
+            "properties": {
+                "beam_size_max": {
+                    "description": "Maximum beam size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_size_min": {
+                    "description": "Minimum beam size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "crystal_cooling_capability": {
+                    "description": "Crystal cooling system available",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy_max": {
+                    "description": "Maximum X-ray energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "energy_min": {
+                    "description": "Minimum X-ray energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "flux_density": {
+                    "description": "Photon flux density in photons/s/mm\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "goniometer_type": {
+                    "description": "Type of goniometer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "monochromator_type": {
+                    "description": "Type of monochromator",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_type": {
+                    "$ref": "#/$defs/XRaySourceTypeEnum",
+                    "description": "Type of X-ray source"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "XRayInstrument",
+            "type": "object"
+        },
+        "XRayPreparation": {
+            "additionalProperties": false,
+            "description": "X-ray crystallography specific preparation",
+            "properties": {
+                "cryoprotectant": {
+                    "description": "Cryoprotectant used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cryoprotectant_concentration": {
+                    "description": "Cryoprotectant concentration percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "crystal_size": {
+                    "description": "Crystal dimensions in micrometers",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystallization_conditions": {
+                    "description": "Detailed crystallization conditions",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystallization_method": {
+                    "$ref": "#/$defs/CrystallizationMethodEnum",
+                    "description": "Method used for crystallization"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "flash_cooling_method": {
+                    "description": "Flash cooling protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mounting_method": {
+                    "description": "Crystal mounting method",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "XRayPreparation",
+            "type": "object"
+        },
+        "XRaySourceTypeEnum": {
+            "description": "Types of X-ray sources",
+            "enum": [
+                "synchrotron",
+                "rotating_anode",
+                "microfocus",
+                "metal_jet"
+            ],
+            "title": "XRaySourceTypeEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/lambda-ber-schema/",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "A collection of studies",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "instruments": {
+            "items": {
+                "$ref": "#/$defs/Instrument"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "keywords": {
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "studies": {
+            "items": {
+                "$ref": "#/$defs/Study"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "title": {
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "id"
+    ],
+    "title": "lambda-ber-schema",
+    "type": "object",
+    "version": null
+}

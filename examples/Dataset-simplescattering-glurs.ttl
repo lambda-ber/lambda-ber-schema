@@ -1,0 +1,190 @@
+@base <http://example.org/> .
+@prefix @base: <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://simplescattering.com/dataset/xsbhevph> a lambdaber:Dataset ;
+    dcterms:title "SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS" ;
+    lambdaber:description """Size exclusion chromatography coupled with small angle X-ray scattering 
+and multi-angle light scattering to determine the oligomerization state 
+of Glutamyl tRNA synthetase (GluRS) from Pseudomonas aeruginosa in solution.
+Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
+""" ;
+    lambdaber:instruments <SIBYLS-BL12.3.1> ;
+    lambdaber:keywords "GluRS",
+        "Glutamyl-tRNA synthetase",
+        "MALS",
+        "Pseudomonas aeruginosa",
+        "SEC-SAXS",
+        "SIBYLS",
+        "oligomerization" ;
+    lambdaber:studies <https://simplescattering.com/study/glurs-oligomerization> .
+
+<https://simplescattering.com/experiment/glurs-sec-saxs> a lambdaber:ExperimentRun ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "sec_saxs" ;
+            lambdaber:frame_rate "1.0"^^xsd:float ;
+            lambdaber:total_frames 660 ] ;
+    lambdaber:experiment_code "SIBYLS-2023-10-24-GluRS" ;
+    lambdaber:experiment_date "2023-10-24" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:beam_energy "11.0"^^xsd:float ;
+            lambdaber:exposure_time "1.0"^^xsd:float ;
+            lambdaber:temperature "20.0"^^xsd:float ] ;
+    lambdaber:instrument_id <SIBYLS-BL12.3.1> ;
+    lambdaber:operator_id "S. Tsutakawa" ;
+    lambdaber:processing_status "completed" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:i_zero "45.0"^^xsd:float ;
+            lambdaber:resolution "25.0"^^xsd:float ;
+            lambdaber:rg "32.5"^^xsd:float ;
+            lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
+    lambdaber:raw_data_location "SIBYLS data archive" ;
+    lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" ;
+    lambdaber:technique "saxs" .
+
+<https://simplescattering.com/file/glurs-averaged> a lambdaber:DataFile ;
+    lambdaber:creation_date "2023-10-24" ;
+    lambdaber:data_type "processed_data" ;
+    lambdaber:description "Averaged SAXS profile from peak fractions" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "A_S_GluRS_1_5.dat" ;
+    lambdaber:file_size_bytes 107834 .
+
+<https://simplescattering.com/file/glurs-complete> a lambdaber:DataFile ;
+    lambdaber:creation_date "2023-10-24" ;
+    lambdaber:data_type "raw_data" ;
+    lambdaber:description "Complete SEC-SAXS dataset with all 660 frames" ;
+    lambdaber:file_format "zip" ;
+    lambdaber:file_name "GluRS_Results.zip" ;
+    lambdaber:file_size_bytes 10840982 .
+
+<https://simplescattering.com/file/glurs-frame-001> a lambdaber:DataFile ;
+    lambdaber:creation_date "2023-10-20" ;
+    lambdaber:data_type "scattering" ;
+    lambdaber:description "First SEC-SAXS frame" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "GluRS_1_00001.dat" ;
+    lambdaber:file_size_bytes 35739 .
+
+<https://simplescattering.com/file/glurs-structure> a lambdaber:DataFile ;
+    lambdaber:creation_date "2023-12-13" ;
+    lambdaber:data_type "model" ;
+    lambdaber:description "Crystal structure of P. aeruginosa GluRS (zinc-bound form)" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "8vc5.pdb" ;
+    lambdaber:file_size_bytes 1310256 .
+
+<https://simplescattering.com/img/guinier-plot> a lambdaber:Image ;
+    lambdaber:description "Guinier analysis for Rg determination" ;
+    lambdaber:dimensions_x 800 ;
+    lambdaber:dimensions_y 600 ;
+    lambdaber:file_name "GluRS_Guinier_plot.png" .
+
+<https://simplescattering.com/img/sec-chromatogram> a lambdaber:Image ;
+    lambdaber:description "SEC elution profile with SAXS intensity" ;
+    lambdaber:dimensions_x 1200 ;
+    lambdaber:dimensions_y 800 ;
+    lambdaber:file_name "GluRS_SEC_chromatogram.png" .
+
+<https://simplescattering.com/prep/glurs-expression> a lambdaber:SamplePreparation ;
+    lambdaber:preparation_date "2023-10-01" ;
+    lambdaber:preparation_type "protein_expression" ;
+    lambdaber:protocol_description """GluRS expressed in Escherichia coli BL21(DE3) cells.
+Standard IPTG induction protocol.
+""" ;
+    lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/prep/glurs-purification> a lambdaber:SamplePreparation ;
+    lambdaber:preparation_date "2023-10-15" ;
+    lambdaber:preparation_type "protein_purification" ;
+    lambdaber:protocol_description """Purified using Ni-NTA affinity chromatography followed by
+size exclusion chromatography. Final buffer: 20 mM Tris pH 7.5,
+150 mM NaCl, 5 mM MgCl2, 1 mM DTT.
+""" ;
+    lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/prep/sec-saxs> a lambdaber:SamplePreparation ;
+    lambdaber:preparation_date "2023-10-24" ;
+    lambdaber:preparation_type "saxs" ;
+    lambdaber:protocol_description """Sample prepared for SEC-SAXS-MALS analysis. Concentrated to 
+approximately 5 mg/mL, filtered through 0.22 μm filter.
+""" ;
+    lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/sample/glurs-pa> a lambdaber:Sample ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "1 mM DTT",
+                "150 mM NaCl",
+                "20 mM Tris-HCl",
+                "5 mM MgCl2" ;
+            lambdaber:ph "7.5"^^xsd:float ] ;
+    lambdaber:concentration "5.0"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:sequences "Uniprot:Q9XCL6" ] ;
+    lambdaber:molecular_weight "54.8"^^xsd:float ;
+    lambdaber:preparation_method "Expressed in E. coli BL21(DE3)" ;
+    lambdaber:sample_code "PA-GluRS" ;
+    lambdaber:sample_type "protein" .
+
+<https://simplescattering.com/study/glurs-oligomerization> a lambdaber:Study ;
+    dcterms:title "Determination of GluRS oligomerization state in solution" ;
+    lambdaber:data_files <https://simplescattering.com/file/glurs-averaged>,
+        <https://simplescattering.com/file/glurs-complete>,
+        <https://simplescattering.com/file/glurs-frame-001>,
+        <https://simplescattering.com/file/glurs-structure> ;
+    lambdaber:description """Structural characterization of P. aeruginosa GluRS using SEC-SAXS-MALS
+to determine oligomeric state in solution conditions. Crystal structure
+(PDB: 8VC5) shows zinc-bound form.
+""" ;
+    lambdaber:images <https://simplescattering.com/img/guinier-plot>,
+        <https://simplescattering.com/img/sec-chromatogram> ;
+    lambdaber:instrument_runs <https://simplescattering.com/experiment/glurs-sec-saxs> ;
+    lambdaber:sample_preparations <https://simplescattering.com/prep/glurs-expression>,
+        <https://simplescattering.com/prep/glurs-purification>,
+        <https://simplescattering.com/prep/sec-saxs> ;
+    lambdaber:samples <https://simplescattering.com/sample/glurs-pa> ;
+    lambdaber:workflow_runs <https://simplescattering.com/workflow/mals-processing>,
+        <https://simplescattering.com/workflow/saxs-processing> .
+
+<https://simplescattering.com/workflow/mals-processing> a lambdaber:WorkflowRun ;
+    lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
+    lambdaber:processing_level 2 ;
+    lambdaber:processing_parameters """molecular_weight_determination=enabled;
+polydispersity_analysis=enabled
+""" ;
+    lambdaber:software_name "MALS Analysis Software" ;
+    lambdaber:software_version "2023" ;
+    lambdaber:workflow_code "GluRS-MALS-processing-2023" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://simplescattering.com/workflow/saxs-processing> a lambdaber:WorkflowRun ;
+    lambdaber:completed_at "2023-10-24T14:00:00Z" ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:cpu_hours "1.0"^^xsd:float ;
+            lambdaber:memory_gb "16.0"^^xsd:float ] ;
+    lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
+    lambdaber:processing_level 2 ;
+    lambdaber:processing_parameters """q_range=0.0109-0.4729;
+sample_detector_distance=2.1m;
+detector=Pilatus3_2M;
+buffer_subtraction=automated;
+frame_averaging=enabled
+""" ;
+    lambdaber:software_name "SAXS FrameSlice" ;
+    lambdaber:software_version "2023" ;
+    lambdaber:started_at "2023-10-24T12:00:00Z" ;
+    lambdaber:workflow_code "GluRS-SAXS-processing-2023" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<SIBYLS-BL12.3.1> a lambdaber:Instrument ;
+    dcterms:title "SIBYLS Beamline 12.3.1" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "SAXS/WAXS beamline at Advanced Light Source for biological samples" ;
+    lambdaber:instrument_code "SIBYLS-BL12.3.1" ;
+    lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
+    lambdaber:model "SIBYLS Beamline 12.3.1" .
+

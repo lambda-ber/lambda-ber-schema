@@ -1,0 +1,16 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:datafile_particles_001 a lambdaber:DataFile ;
+    dcterms:title "TFIID refined particles" ;
+    lambdaber:checksum "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5" ;
+    lambdaber:creation_date "2024-03-23T16:45:00" ;
+    lambdaber:data_type "metadata" ;
+    lambdaber:description "STAR file containing refined particle coordinates and orientations" ;
+    lambdaber:file_format "star" ;
+    lambdaber:file_name "run_data.star" ;
+    lambdaber:file_path "/data/berkeley/2024/tfiid/relion/Refine3D/job042/run_data.star" ;
+    lambdaber:file_size_bytes 128974623 .
+

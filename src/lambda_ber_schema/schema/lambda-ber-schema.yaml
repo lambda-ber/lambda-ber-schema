@@ -1,0 +1,1143 @@
+id: https://w3id.org/lambda-ber-schema/
+name: lambda-ber-schema
+description: |
+  lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
+  from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
+  techniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and 
+  spectroscopic imaging.
+
+  ## Schema Organization
+
+  The schema follows a hierarchical structure that mirrors how structural biology research is organized:
+
+  The top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.
+  A dataset might represent all data from a specific grant, collaboration, or publication.
+
+  Each dataset contains one or more [Studies](Study.md), which are focused investigations of specific
+  biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+  or "Structure of the human ribosome under different conditions."
+
+  Within each study, you'll find:
+
+  ### Biological Materials
+  - [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, 
+    cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and 
+    storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
+  
+  - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
+    This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
+    X-ray studies, or staining protocols for fluorescence microscopy.
+
+  ### Data Collection
+  - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron 
+    beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), 
+    [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
+    like accelerating voltage, detector type, or beam energy.
+
+  - [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to 
+    instruments. An experiment run captures when, how, and under what conditions data was collected,
+    including quality metrics like resolution and completeness.
+
+  ### Data Processing
+  - [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes
+    motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
+    for crystallography. Each workflow tracks the software used, parameters, and computational resources.
+
+  ### Data Products
+  - [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file
+    is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).
+
+  - [Images](Image.md): Specialized classes for different imaging modalities:
+    - [Image2D](Image2D.md): Micrographs, diffraction patterns
+    - [Image3D](Image3D.md): 3D reconstructions, tomograms
+    - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy
+    - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components
+    - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy
+    - [XRFImage](XRFImage.md): Elemental distribution maps
+
+  ## Example Usage
+
+  A typical cryo-EM study of a protein complex would include:
+  1. Sample records for the purified complex with molecular weight and buffer composition
+  2. Grid preparation details with vitrification parameters
+  3. Microscope specifications and data collection parameters
+  4. Processing workflows from motion correction through 3D refinement
+  5. Final reconstructed volumes and fitted atomic models
+
+  A multimodal plant imaging study might combine:
+  1. Whole plant optical imaging for morphology
+  2. XRF imaging to map nutrient distribution
+  3. FTIR spectroscopy to identify stress-related molecular changes
+  4. Fluorescence microscopy to track specific protein responses
+  5. Cryo-EM of isolated organelles for ultrastructural details
+
+  ## Key Features
+
+  - **Technique-agnostic core**: The same schema handles data from any structural biology method
+  - **Rich metadata**: Comprehensive tracking from sample to structure
+  - **Workflow provenance**: Complete computational reproducibility
+  - **Multimodal support**: Seamlessly integrate data across scales and techniques
+  - **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
+
+prefixes:
+  lambdaber: https://w3id.org/lambda-ber-schema/
+  dataset: https://w3id.org/lambda-ber-schema/dataset/
+  study: https://w3id.org/lambda-ber-schema/study/
+  sample: https://w3id.org/lambda-ber-schema/sample/
+  prep: https://w3id.org/lambda-ber-schema/sample_preparation/
+  wf: https://w3id.org/lambda-ber-schema/workflow_run/
+  df: https://w3id.org/lambda-ber-schema/data_file/
+  img: https://w3id.org/lambda-ber-schema/image/
+  instrument: https://w3id.org/lambda-ber-schema/instrument/
+  experiment: https://w3id.org/lambda-ber-schema/experiment_run/
+  linkml: https://w3id.org/linkml/
+  dcterms: http://purl.org/dc/terms/
+  skos: http://www.w3.org/2004/02/skos/core#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  prov: http://www.w3.org/ns/prov#
+  sio: http://semanticscience.org/resource/
+  nmdc: https://w3id.org/nmdc/
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  CL: http://purl.obolibrary.org/obo/CL_
+
+imports:
+  - linkml:types
+
+default_range: string
+default_prefix: lambdaber
+
+types:
+
+
+classes:
+
+  NamedThing:
+    description: "A named thing"
+    abstract: true
+    attributes:
+      id:
+        description: "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration."
+        identifier: true
+        range: uriorcurie
+      title:
+        slot_uri: dcterms:title
+      description:
+        range: string
+
+  AttributeGroup:
+    description: "A grouping of related data attributes that form a logical unit"
+    abstract: true
+    attributes:
+      description:
+        range: string
+
+  Dataset:
+    is_a: NamedThing
+    tree_root: true
+    description: "A collection of studies"
+    attributes:
+      keywords:
+        range: string
+        multivalued: true
+      instruments:
+        range: Instrument
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      studies:
+        range: Study
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  Study:
+    is_a: NamedThing
+    description: "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis"
+    attributes:
+      samples:
+        range: Sample
+        multivalued: true
+        inlined_as_list: true
+      sample_preparations:
+        range: SamplePreparation
+        multivalued: true
+        inlined_as_list: true
+      instrument_runs:
+        range: ExperimentRun
+        multivalued: true
+        inlined_as_list: true
+      workflow_runs:
+        range: WorkflowRun
+        multivalued: true
+        inlined_as_list: true
+      data_files:
+        range: DataFile
+        multivalued: true
+        inlined_as_list: true
+      images:
+        range: Image
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  Sample:
+    is_a: NamedThing
+    description: "A biological sample used in structural biology experiments"
+    attributes:
+      sample_code:
+        description: "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows."
+        required: true
+      sample_type:
+        description: "Type of biological sample"
+        range: SampleTypeEnum
+        required: true
+      molecular_composition:
+        description: "Description of molecular composition including sequences, modifications, ligands"
+        range: MolecularComposition
+      molecular_weight:
+        description: "Molecular weight in kDa"
+        range: float
+        unit:
+          ucum_code: kDa
+      concentration:
+        description: "Sample concentration in mg/mL or µM"
+        range: float
+      concentration_unit:
+        description: "Unit of concentration measurement"
+        range: ConcentrationUnitEnum
+      buffer_composition:
+        description: "Buffer composition including pH, salts, additives"
+        range: BufferComposition
+      preparation_method:
+        description: "Method used to prepare the sample"
+      storage_conditions:
+        description: "Storage conditions for the sample"
+        range: StorageConditions
+      organism:
+        description: "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)"
+        range: OntologyTerm
+      anatomy:
+        description: "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)"
+        range: OntologyTerm
+      cell_type:
+        description: "Cell type if applicable (e.g., CL:0000057 for fibroblast)"
+        range: OntologyTerm
+      parent_sample_id:
+        description: "Reference to parent sample for derivation tracking"
+        range: Sample
+      purity_percentage:
+        description: "Sample purity as percentage"
+        range: float
+        minimum_value: 0
+        maximum_value: 100
+      quality_metrics:
+        description: "Quality control metrics for the sample"
+
+  SamplePreparation:
+    is_a: NamedThing
+    description: "A process that prepares a sample for imaging"
+    attributes:
+      preparation_type:
+        description: "Type of sample preparation"
+        range: PreparationTypeEnum
+        required: true
+      sample_id:
+        description: "Reference to the sample being prepared"
+        range: string
+        required: true
+      preparation_date:
+        description: "Date of sample preparation"
+        range: string
+      operator_id:
+        description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
+        range: string
+      protocol_description:
+        description: "Detailed protocol description"
+
+  Instrument:
+    is_a: NamedThing
+    description: "An instrument used to collect data"
+    attributes:
+      instrument_code:
+        description: "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking."
+        required: true
+      manufacturer:
+        description: "Instrument manufacturer"
+      model:
+        description: "Instrument model"
+      installation_date:
+        description: "Date of instrument installation"
+        range: string
+      current_status:
+        description: "Current operational status"
+        range: InstrumentStatusEnum
+
+  CryoEMInstrument:
+    is_a: Instrument
+    description: "Cryo-EM microscope specifications"
+    attributes:
+      accelerating_voltage:
+        description: "Accelerating voltage in kV"
+        range: integer
+        any_of:
+          - equals_number: 120
+          - equals_number: 200
+          - equals_number: 300
+      cs_corrector:
+        description: "Spherical aberration corrector present"
+        range: boolean
+      phase_plate:
+        description: "Phase plate available"
+        range: boolean
+      detector_type:
+        description: "Type of detector"
+        range: DetectorTypeEnum
+      detector_dimensions:
+        description: "Detector dimensions in pixels (e.g., 4096x4096)"
+      pixel_size_min:
+        description: "Minimum pixel size in Angstroms per pixel"
+        range: float
+      pixel_size_max:
+        description: "Maximum pixel size in Angstroms per pixel"
+        range: float
+      autoloader_capacity:
+        description: "Number of grids the autoloader can hold"
+        range: integer
+
+  XRayInstrument:
+    is_a: Instrument
+    description: "X-ray diffractometer or synchrotron beamline specifications"
+    attributes:
+      source_type:
+        description: "Type of X-ray source"
+        range: XRaySourceTypeEnum
+      energy_min:
+        description: "Minimum X-ray energy in keV"
+        range: float
+      energy_max:
+        description: "Maximum X-ray energy in keV"
+        range: float
+      beam_size_min:
+        description: "Minimum beam size in micrometers"
+        range: float
+      beam_size_max:
+        description: "Maximum beam size in micrometers"
+        range: float
+      flux_density:
+        description: "Photon flux density in photons/s/mm²"
+        range: float
+      monochromator_type:
+        description: "Type of monochromator"
+      goniometer_type:
+        description: "Type of goniometer"
+      crystal_cooling_capability:
+        description: "Crystal cooling system available"
+        range: boolean
+
+  SAXSInstrument:
+    is_a: Instrument
+    description: "SAXS/WAXS instrument specifications"
+    attributes:
+      q_range_min:
+        description: "Minimum q value in inverse Angstroms"
+        range: float
+      q_range_max:
+        description: "Maximum q value in inverse Angstroms"
+        range: float
+      detector_distance_min:
+        description: "Minimum detector distance in mm"
+        range: float
+      detector_distance_max:
+        description: "Maximum detector distance in mm"
+        range: float
+      sample_changer_capacity:
+        description: "Number of samples in automatic sample changer"
+        range: integer
+      temperature_control_range:
+        description: "Temperature control range in Celsius"
+
+  ExperimentRun:
+    is_a: NamedThing
+    description: "An experimental data collection session"
+    attributes:
+      experiment_code:
+        description: "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems."
+        required: true
+      sample_id:
+        description: "Reference to the sample being analyzed"
+        range: string
+        required: true
+      instrument_id:
+        description: "Reference to the instrument used"
+        range: Instrument
+        required: true
+      experiment_date:
+        description: "Date of the experiment"
+        range: string
+      operator_id:
+        description: "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)"
+        range: string
+      technique:
+        description: "Technique used for data collection"
+        range: TechniqueEnum
+        required: true
+      experimental_conditions:
+        description: "Environmental and experimental conditions"
+        range: ExperimentalConditions
+      data_collection_strategy:
+        description: "Strategy for data collection"
+        range: DataCollectionStrategy
+      quality_metrics:
+        description: "Quality metrics for the experiment"
+        range: QualityMetrics
+      raw_data_location:
+        description: "Location of raw data files"
+      processing_status:
+        description: "Current processing status"
+        range: ProcessingStatusEnum
+
+  WorkflowRun:
+    is_a: NamedThing
+    description: "A computational processing workflow execution"
+    attributes:
+      workflow_code:
+        description: "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance."
+        required: true
+      workflow_type:
+        description: "Type of processing workflow"
+        range: WorkflowTypeEnum
+        required: true
+      experiment_id:
+        description: "Reference to the source experiment"
+        range: string
+        required: true
+      processing_level:
+        description: "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
+        range: integer
+        minimum_value: 0
+        maximum_value: 4
+      software_name:
+        description: "Software used for processing"
+        required: true
+      software_version:
+        description: "Software version"
+      processing_parameters:
+        description: "Parameters used in processing"
+      compute_resources:
+        description: "Computational resources used"
+        range: ComputeResources
+      started_at:
+        description: "Workflow start time"
+        range: string
+      completed_at:
+        description: "Workflow completion time"
+        range: string
+      output_files:
+        description: "Output files generated"
+        range: DataFile
+        multivalued: true
+
+  DataFile:
+    is_a: NamedThing
+    description: "A data file generated or used in the study"
+    attributes:
+      file_name:
+        description: "Name of the file"
+        required: true
+      file_path:
+        description: "Path to the file"
+      file_format:
+        description: "File format"
+        range: FileFormatEnum
+        required: true
+      file_size_bytes:
+        description: "File size in bytes"
+        range: integer
+      checksum:
+        description: "SHA-256 checksum for data integrity"
+      creation_date:
+        description: "File creation date"
+        range: string
+      data_type:
+        description: "Type of data in the file"
+        range: DataTypeEnum
+
+  Image:
+    is_a: NamedThing
+    description: "An image file from structural biology experiments"
+    attributes:
+      file_name:
+        description: "Image file name"
+        required: true
+      acquisition_date:
+        description: "Date image was acquired"
+        range: string
+      pixel_size:
+        description: "Pixel size in Angstroms"
+        range: float
+      dimensions_x:
+        description: "Image width in pixels"
+        range: integer
+      dimensions_y:
+        description: "Image height in pixels"
+        range: integer
+      exposure_time:
+        description: "Exposure time in seconds"
+        range: float
+      dose:
+        description: "Electron dose in e-/Å²"
+        range: float
+      
+  Image2D:
+    is_a: Image
+    description: "A 2D image (micrograph, diffraction pattern)"
+    attributes:
+      defocus:
+        description: "Defocus value in micrometers"
+        range: float
+      astigmatism:
+        description: "Astigmatism value"
+        range: float
+
+  Image3D:
+    is_a: Image
+    description: "A 3D volume or tomogram"
+    attributes:
+      dimensions_z:
+        description: "Image depth in pixels/slices"
+        range: integer
+      voxel_size:
+        description: "Voxel size in Angstroms"
+        range: float
+      reconstruction_method:
+        description: "Method used for 3D reconstruction"
+
+  FTIRImage:
+    is_a: Image
+    description: "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy"
+    attributes:
+      wavenumber_min:
+        description: "Minimum wavenumber in cm⁻¹"
+        range: float
+      wavenumber_max:
+        description: "Maximum wavenumber in cm⁻¹"
+        range: float
+      spectral_resolution:
+        description: "Spectral resolution in cm⁻¹"
+        range: float
+      number_of_scans:
+        description: "Number of scans averaged for the spectrum"
+        range: integer
+      apodization_function:
+        description: "Mathematical function used for apodization"
+        range: string
+      molecular_signatures:
+        description: "Identified molecular signatures or peaks"
+        range: string
+        multivalued: true
+      background_correction:
+        description: "Method used for background correction"
+        range: string
+
+  FluorescenceImage:
+    is_a: Image2D
+    description: "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling"
+    attributes:
+      excitation_wavelength:
+        description: "Excitation wavelength in nanometers"
+        range: float
+      emission_wavelength:
+        description: "Emission wavelength in nanometers"
+        range: float
+      excitation_filter:
+        description: "Specifications of the excitation filter"
+        range: string
+      emission_filter:
+        description: "Specifications of the emission filter"
+        range: string
+      fluorophore:
+        description: "Name or type of fluorophore used"
+        range: string
+      channel_name:
+        description: "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)"
+        range: string
+      laser_power:
+        description: "Laser power in milliwatts or percentage"
+        range: float
+      pinhole_size:
+        description: "Pinhole size in Airy units for confocal microscopy"
+        range: float
+      quantum_yield:
+        description: "Quantum yield of the fluorophore"
+        range: float
+
+  OpticalImage:
+    is_a: Image2D
+    description: "Visible light optical microscopy or photography image"
+    attributes:
+      illumination_type:
+        description: "Type of illumination (brightfield, darkfield, phase contrast, DIC)"
+        range: IlluminationTypeEnum
+      magnification:
+        description: "Optical magnification factor"
+        range: float
+      numerical_aperture:
+        description: "Numerical aperture of the objective lens"
+        range: float
+      color_channels:
+        description: "Color channels present (e.g., RGB, grayscale)"
+        range: string
+        multivalued: true
+      white_balance:
+        description: "White balance settings"
+        range: string
+      contrast_method:
+        description: "Contrast enhancement method used"
+        range: string
+
+  XRFImage:
+    is_a: Image2D
+    description: "X-ray fluorescence (XRF) image showing elemental distribution"
+    attributes:
+      beam_energy:
+        description: "X-ray beam energy in keV"
+        range: float
+      beam_size:
+        description: "X-ray beam size in micrometers"
+        range: float
+      dwell_time:
+        description: "Dwell time per pixel in milliseconds"
+        range: float
+      elements_measured:
+        description: "Elements detected and measured"
+        range: string
+        multivalued: true
+      source_type:
+        description: "X-ray source type (synchrotron or lab-source)"
+        range: XRaySourceTypeEnum
+      detector_type:
+        description: "Type of X-ray detector used"
+        range: string
+      flux:
+        description: "Photon flux in photons/second"
+        range: float
+      calibration_standard:
+        description: "Reference standard used for calibration"
+        range: string
+
+  ImageFeature:
+    is_a: AttributeGroup
+    description: "Semantic annotations describing features identified in images using controlled vocabulary terms"
+    attributes:
+      terms:
+        range: OntologyTerm
+
+  OntologyTerm:
+    is_a: NamedThing
+    attributes:
+      label:
+        range: string
+      definition:
+        range: string
+      ontology:
+        range: string
+
+  MolecularComposition:
+    is_a: AttributeGroup
+    description: "Molecular composition of a sample"
+    attributes:
+      sequences:
+        description: "Amino acid or nucleotide sequences"
+        range: string
+        multivalued: true
+      modifications:
+        description: "Post-translational modifications or chemical modifications"
+        range: string
+        multivalued: true
+      ligands:
+        description: "Bound ligands or cofactors"
+        range: string
+        multivalued: true
+
+  BufferComposition:
+    is_a: AttributeGroup
+    description: "Buffer composition for sample storage"
+    attributes:
+      ph:
+        description: "pH of the buffer"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      components:
+        description: "Buffer components and their concentrations"
+        range: string
+        multivalued: true
+      additives:
+        description: "Additional additives in the buffer"
+        range: string
+        multivalued: true
+
+  StorageConditions:
+    is_a: AttributeGroup
+    description: "Storage conditions for samples"
+    attributes:
+      temperature:
+        description: "Storage temperature in Celsius"
+        range: float
+      temperature_unit:
+        description: "Temperature unit"
+        range: TemperatureUnitEnum
+      duration:
+        description: "Storage duration"
+        range: string
+      atmosphere:
+        description: "Storage atmosphere conditions"
+        range: string
+
+  TechniqueSpecificPreparation:
+    is_a: AttributeGroup
+    description: "Base class for technique-specific preparation details"
+    abstract: true
+
+  CryoEMPreparation:
+    is_a: TechniqueSpecificPreparation
+    description: "Cryo-EM specific sample preparation"
+    attributes:
+      grid_type:
+        description: "Type of EM grid used"
+        range: GridTypeEnum
+      support_film:
+        description: "Support film type"
+        range: string
+      hole_size:
+        description: "Hole size in micrometers"
+        range: float
+        minimum_value: 0.5
+        maximum_value: 5.0
+      vitrification_method:
+        description: "Method used for vitrification"
+        range: VitrificationMethodEnum
+      blot_time:
+        description: "Blotting time in seconds"
+        range: float
+        minimum_value: 0.5
+        maximum_value: 10.0
+      blot_force:
+        description: "Blotting force setting"
+        range: integer
+      humidity_percentage:
+        description: "Chamber humidity during vitrification"
+        range: float
+        minimum_value: 0
+        maximum_value: 100
+      chamber_temperature:
+        description: "Chamber temperature in Celsius"
+        range: float
+      plasma_treatment:
+        description: "Plasma treatment details"
+
+  XRayPreparation:
+    is_a: TechniqueSpecificPreparation
+    description: "X-ray crystallography specific preparation"
+    attributes:
+      crystallization_method:
+        description: "Method used for crystallization"
+        range: CrystallizationMethodEnum
+      crystallization_conditions:
+        description: "Detailed crystallization conditions"
+      crystal_size:
+        description: "Crystal dimensions in micrometers"
+      cryoprotectant:
+        description: "Cryoprotectant used"
+        range: string
+      cryoprotectant_concentration:
+        description: "Cryoprotectant concentration percentage"
+        range: float
+      mounting_method:
+        description: "Crystal mounting method"
+      flash_cooling_method:
+        description: "Flash cooling protocol"
+
+  SAXSPreparation:
+    is_a: TechniqueSpecificPreparation
+    description: "SAXS/WAXS specific preparation"
+    attributes:
+      concentration_series:
+        description: "Concentration values for series measurements"
+        range: float
+        multivalued: true
+      buffer_matching_protocol:
+        description: "Protocol for buffer matching"
+      sample_cell_type:
+        description: "Type of sample cell used"
+      cell_path_length:
+        description: "Path length in mm"
+        range: float
+      temperature_control:
+        description: "Temperature control settings"
+
+  ExperimentalConditions:
+    is_a: AttributeGroup
+    description: "Environmental and experimental conditions"
+    attributes:
+      temperature:
+        description: "Temperature in Celsius"
+        range: float
+      humidity:
+        description: "Humidity percentage"
+        range: float
+      pressure:
+        description: "Pressure in kPa"
+        range: float
+      atmosphere:
+        description: "Atmosphere composition"
+      beam_energy:
+        description: "Beam energy in keV"
+        range: float
+      exposure_time:
+        description: "Exposure time in seconds"
+        range: float
+
+  DataCollectionStrategy:
+    is_a: AttributeGroup
+    description: "Strategy for data collection"
+    attributes:
+      collection_mode:
+        description: "Mode of data collection"
+        range: CollectionModeEnum
+      total_frames:
+        description: "Total number of frames/images"
+        range: integer
+      frame_rate:
+        description: "Frames per second"
+        range: float
+      total_dose:
+        description: "Total electron dose for cryo-EM"
+        range: float
+      dose_per_frame:
+        description: "Dose per frame"
+        range: float
+
+  QualityMetrics:
+    is_a: AttributeGroup
+    description: "Quality metrics for experiments"
+    attributes:
+      resolution:
+        description: "Resolution in Angstroms"
+        range: float
+      completeness:
+        description: "Data completeness percentage"
+        range: float
+      signal_to_noise:
+        description: "Signal to noise ratio"
+        range: float
+      r_factor:
+        description: "R-factor for crystallography"
+        range: float
+      i_zero:
+        description: "Forward scattering intensity I(0)"
+        range: float
+      rg:
+        description: "Radius of gyration in Angstroms"
+        range: float
+
+  ComputeResources:
+    is_a: AttributeGroup
+    description: "Computational resources used"
+    attributes:
+      cpu_hours:
+        description: "CPU hours used"
+        range: float
+      gpu_hours:
+        description: "GPU hours used"
+        range: float
+      memory_gb:
+        description: "Maximum memory used in GB"
+        range: float
+      storage_gb:
+        description: "Storage used in GB"
+        range: float
+
+enums:
+  SampleTypeEnum:
+    description: "Types of biological samples"
+    permissible_values:
+      protein:
+        description: "Protein sample"
+      nucleic_acid:
+        description: "Nucleic acid sample (DNA or RNA)"
+      complex:
+        description: "Protein-protein or protein-nucleic acid complex"
+      membrane_protein:
+        description: "Membrane protein sample"
+      virus:
+        description: "Viral particle"
+      organelle:
+        description: "Cellular organelle"
+
+  ConcentrationUnitEnum:
+    description: "Units for concentration measurement"
+    permissible_values:
+      mg_per_ml:
+        description: "Milligrams per milliliter"
+      micromolar:
+        description: "Micromolar"
+      millimolar:
+        description: "Millimolar"
+      nanomolar:
+        description: "Nanomolar"
+
+  TemperatureUnitEnum:
+    description: "Units for temperature measurement"
+    permissible_values:
+      celsius:
+        description: "Degrees Celsius"
+      kelvin:
+        description: "Kelvin"
+      fahrenheit:
+        description: "Degrees Fahrenheit"
+
+  PreparationTypeEnum:
+    description: "Types of sample preparation"
+    permissible_values:
+      cryo_em:
+        description: "Cryo-EM preparation"
+      xray_crystallography:
+        description: "X-ray crystallography preparation"
+      saxs:
+        description: "SAXS/WAXS preparation"
+      sans:
+        description: "SANS preparation"
+      protein_expression:
+        description: "Protein expression in host cells"
+      protein_purification:
+        description: "Protein purification"
+      negative_stain:
+        description: "Negative stain EM preparation"
+
+  GridTypeEnum:
+    description: "Types of EM grids"
+    permissible_values:
+      c_flat:
+        description: "C-flat holey carbon grid"
+      quantifoil:
+        description: "Quantifoil holey carbon grid"
+      lacey_carbon:
+        description: "Lacey carbon grid"
+      ultrathin_carbon:
+        description: "Ultrathin carbon film"
+      gold:
+        description: "Gold grid"
+
+  VitrificationMethodEnum:
+    description: "Methods for vitrification"
+    permissible_values:
+      plunge_freezing:
+        description: "Plunge freezing in liquid ethane"
+      high_pressure_freezing:
+        description: "High pressure freezing"
+      slam_freezing:
+        description: "Slam freezing"
+
+  CrystallizationMethodEnum:
+    description: "Methods for protein crystallization"
+    permissible_values:
+      vapor_diffusion_hanging:
+        description: "Vapor diffusion hanging drop"
+      vapor_diffusion_sitting:
+        description: "Vapor diffusion sitting drop"
+      microbatch:
+        description: "Microbatch under oil"
+      dialysis:
+        description: "Dialysis method"
+      free_interface_diffusion:
+        description: "Free interface diffusion"
+
+  InstrumentStatusEnum:
+    description: "Operational status of instruments"
+    permissible_values:
+      operational:
+        description: "Instrument is operational"
+      maintenance:
+        description: "Instrument under maintenance"
+      offline:
+        description: "Instrument is offline"
+      commissioning:
+        description: "Instrument being commissioned"
+
+  DetectorTypeEnum:
+    description: "Types of detectors for cryo-EM"
+    permissible_values:
+      direct_electron:
+        description: "Direct electron detector"
+      ccd:
+        description: "CCD camera"
+      cmos:
+        description: "CMOS detector"
+      hybrid_pixel:
+        description: "Hybrid pixel detector"
+
+  XRaySourceTypeEnum:
+    description: "Types of X-ray sources"
+    permissible_values:
+      synchrotron:
+        description: "Synchrotron radiation source"
+      rotating_anode:
+        description: "Rotating anode generator"
+      microfocus:
+        description: "Microfocus sealed tube"
+      metal_jet:
+        description: "Liquid metal jet source"
+
+  TechniqueEnum:
+    description: "Structural biology techniques"
+    permissible_values:
+      cryo_em:
+        description: "Cryo-electron microscopy"
+      xray_crystallography:
+        description: "X-ray crystallography"
+      saxs:
+        description: "Small-angle X-ray scattering"
+      waxs:
+        description: "Wide-angle X-ray scattering"
+      sans:
+        description: "Small-angle neutron scattering"
+      cryo_et:
+        description: "Cryo-electron tomography"
+      electron_microscopy:
+        description: "General electron microscopy"
+      mass_spectrometry:
+        description: "Mass spectrometry"
+
+  ProcessingStatusEnum:
+    description: "Processing status"
+    permissible_values:
+      raw:
+        description: "Raw data"
+      preprocessing:
+        description: "Being preprocessed"
+      processing:
+        description: "Being processed"
+      completed:
+        description: "Processing completed"
+      failed:
+        description: "Processing failed"
+
+  WorkflowTypeEnum:
+    description: "Types of processing workflows"
+    permissible_values:
+      motion_correction:
+        description: "Motion correction for cryo-EM"
+      ctf_estimation:
+        description: "CTF estimation"
+      particle_picking:
+        description: "Particle picking"
+      classification_2d:
+        description: "2D classification"
+      classification_3d:
+        description: "3D classification"
+      refinement:
+        description: "3D refinement"
+      model_building:
+        description: "Atomic model building"
+      phasing:
+        description: "Phase determination"
+      integration:
+        description: "Data integration"
+      scaling:
+        description: "Data scaling"
+      saxs_analysis:
+        description: "SAXS data analysis"
+      em_2d_classification:
+        description: "EM 2D classification"
+      mass_spec_deconvolution:
+        description: "Mass spectrometry deconvolution"
+
+  FileFormatEnum:
+    description: "File formats"
+    permissible_values:
+      mrc:
+        description: "MRC format for EM data"
+      tiff:
+        description: "TIFF image format"
+      hdf5:
+        description: "HDF5 hierarchical data format"
+      star:
+        description: "STAR format for metadata"
+      pdb:
+        description: "PDB coordinate format"
+      mmcif:
+        description: "mmCIF format"
+      mtz:
+        description: "MTZ reflection format"
+      cbf:
+        description: "Crystallographic Binary Format"
+      ascii:
+        description: "ASCII text format"
+      thermo_raw:
+        description: "Thermo Fisher RAW format"
+      zip:
+        description: "ZIP compressed archive"
+
+  DataTypeEnum:
+    description: "Types of data"
+    permissible_values:
+      micrograph:
+        description: "Electron micrograph"
+      diffraction:
+        description: "Diffraction pattern"
+      scattering:
+        description: "Scattering data"
+      particles:
+        description: "Particle stack"
+      volume:
+        description: "3D volume"
+      model:
+        description: "Atomic model"
+      metadata:
+        description: "Metadata file"
+      raw_data:
+        description: "Raw experimental data"
+      processed_data:
+        description: "Processed data"
+
+  CollectionModeEnum:
+    description: "Data collection modes"
+    permissible_values:
+      counting:
+        description: "Counting mode"
+      super_resolution:
+        description: "Super-resolution mode"
+      continuous:
+        description: "Continuous collection"
+      oscillation:
+        description: "Oscillation method"
+      still:
+        description: "Still images"
+      batch:
+        description: "Batch mode collection"
+      sec_saxs:
+        description: "SEC-SAXS collection mode"
+      single_particle:
+        description: "Single particle analysis mode"
+
+  IlluminationTypeEnum:
+    description: "Types of illumination for optical microscopy"
+    permissible_values:
+      brightfield:
+        description: "Brightfield illumination"
+      darkfield:
+        description: "Darkfield illumination"
+      phase_contrast:
+        description: "Phase contrast microscopy"
+      dic:
+        description: "Differential interference contrast (DIC/Nomarski)"
+      fluorescence:
+        description: "Fluorescence illumination"
+      confocal:
+        description: "Confocal laser scanning"
+      polarized:
+        description: "Polarized light microscopy"
+      oblique:
+        description: "Oblique illumination"

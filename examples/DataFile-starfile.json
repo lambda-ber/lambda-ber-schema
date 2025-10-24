@@ -1,0 +1,13 @@
+{
+  "id": "lambdaber:datafile_particles_001",
+  "title": "TFIID refined particles",
+  "description": "STAR file containing refined particle coordinates and orientations",
+  "file_name": "run_data.star",
+  "file_format": "star",
+  "file_path": "/data/berkeley/2024/tfiid/relion/Refine3D/job042/run_data.star",
+  "file_size_bytes": 128974623,
+  "checksum": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+  "creation_date": "2024-03-23T16:45:00",
+  "data_type": "metadata",
+  "@type": "DataFile"
+}

@@ -1,0 +1,27 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
+    dcterms:title "GFP fluorescence image of stress response proteins" ;
+    lambdaber:acquisition_date "2024-05-22T09:15:00" ;
+    lambdaber:astigmatism "0.0"^^xsd:float ;
+    lambdaber:channel_name "GFP" ;
+    lambdaber:defocus "0.0"^^xsd:float ;
+    lambdaber:description "Confocal fluorescence image showing GFP-tagged heat shock proteins" ;
+    lambdaber:dimensions_x 2048 ;
+    lambdaber:dimensions_y 2048 ;
+    lambdaber:dose "0.0"^^xsd:float ;
+    lambdaber:emission_filter "525/50 nm bandpass" ;
+    lambdaber:emission_wavelength "509.0"^^xsd:float ;
+    lambdaber:excitation_filter "488/10 nm bandpass" ;
+    lambdaber:excitation_wavelength "488.0"^^xsd:float ;
+    lambdaber:exposure_time "0.2"^^xsd:float ;
+    lambdaber:file_name "hsp70_gfp_z042.tif" ;
+    lambdaber:fluorophore "Enhanced GFP (EGFP)" ;
+    lambdaber:laser_power "2.5"^^xsd:float ;
+    lambdaber:pinhole_size "1.0"^^xsd:float ;
+    lambdaber:pixel_size "0.065"^^xsd:float ;
+    lambdaber:quantum_yield "0.6"^^xsd:float .
+

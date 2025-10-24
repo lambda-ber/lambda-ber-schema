@@ -1,0 +1,627 @@
+# metamodel_version: 1.7.0
+enum CollectionModeEnum
+  {
+    counting
+    super_resolution
+    continuous
+    oscillation
+    still
+    batch
+    sec_saxs
+    single_particle
+  }
+
+enum ConcentrationUnitEnum
+  {
+    mg_per_ml
+    micromolar
+    millimolar
+    nanomolar
+  }
+
+enum CrystallizationMethodEnum
+  {
+    vapor_diffusion_hanging
+    vapor_diffusion_sitting
+    microbatch
+    dialysis
+    free_interface_diffusion
+  }
+
+enum DataTypeEnum
+  {
+    micrograph
+    diffraction
+    scattering
+    particles
+    volume
+    model
+    metadata
+    raw_data
+    processed_data
+  }
+
+enum DetectorTypeEnum
+  {
+    direct_electron
+    ccd
+    cmos
+    hybrid_pixel
+  }
+
+enum FileFormatEnum
+  {
+    mrc
+    tiff
+    hdf5
+    star
+    pdb
+    mmcif
+    mtz
+    cbf
+    ascii
+    thermo_raw
+    zip
+  }
+
+enum GridTypeEnum
+  {
+    c_flat
+    quantifoil
+    lacey_carbon
+    ultrathin_carbon
+    gold
+  }
+
+enum IlluminationTypeEnum
+  {
+    brightfield
+    darkfield
+    phase_contrast
+    dic
+    fluorescence
+    confocal
+    polarized
+    oblique
+  }
+
+enum InstrumentStatusEnum
+  {
+    operational
+    maintenance
+    offline
+    commissioning
+  }
+
+enum PreparationTypeEnum
+  {
+    cryo_em
+    xray_crystallography
+    saxs
+    sans
+    protein_expression
+    protein_purification
+    negative_stain
+  }
+
+enum ProcessingStatusEnum
+  {
+    raw
+    preprocessing
+    processing
+    completed
+    failed
+  }
+
+enum SampleTypeEnum
+  {
+    protein
+    nucleic_acid
+    complex
+    membrane_protein
+    virus
+    organelle
+  }
+
+enum TechniqueEnum
+  {
+    cryo_em
+    xray_crystallography
+    saxs
+    waxs
+    sans
+    cryo_et
+    electron_microscopy
+    mass_spectrometry
+  }
+
+enum TemperatureUnitEnum
+  {
+    celsius
+    kelvin
+    fahrenheit
+  }
+
+enum VitrificationMethodEnum
+  {
+    plunge_freezing
+    high_pressure_freezing
+    slam_freezing
+  }
+
+enum WorkflowTypeEnum
+  {
+    motion_correction
+    ctf_estimation
+    particle_picking
+    classification_2d
+    classification_3d
+    refinement
+    model_building
+    phasing
+    integration
+    scaling
+    saxs_analysis
+    em_2d_classification
+    mass_spec_deconvolution
+  }
+
+enum XRaySourceTypeEnum
+  {
+    synchrotron
+    rotating_anode
+    microfocus
+    metal_jet
+  }
+
+interface AttributeGroup
+  {
+    description: String
+  }
+
+type BufferComposition
+  {
+    description: String
+    ph: Float
+    components: [String]
+    additives: [String]
+  }
+
+type ComputeResources
+  {
+    description: String
+    cpuHours: Float
+    gpuHours: Float
+    memoryGb: Float
+    storageGb: Float
+  }
+
+type CryoEMInstrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+    acceleratingVoltage: Integer
+    csCorrector: Boolean
+    phasePlate: Boolean
+    detectorType: DetectorTypeEnum
+    detectorDimensions: String
+    pixelSizeMin: Float
+    pixelSizeMax: Float
+    autoloaderCapacity: Integer
+  }
+
+type CryoEMPreparation
+  {
+    description: String
+    gridType: GridTypeEnum
+    supportFilm: String
+    holeSize: Float
+    vitrificationMethod: VitrificationMethodEnum
+    blotTime: Float
+    blotForce: Integer
+    humidityPercentage: Float
+    chamberTemperature: Float
+    plasmaTreatment: String
+  }
+
+type DataCollectionStrategy
+  {
+    description: String
+    collectionMode: CollectionModeEnum
+    totalFrames: Integer
+    frameRate: Float
+    totalDose: Float
+    dosePerFrame: Float
+  }
+
+type DataFile
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    filePath: String
+    fileFormat: FileFormatEnum!
+    fileSizeBytes: Integer
+    checksum: String
+    creationDate: String
+    dataType: DataTypeEnum
+  }
+
+type Dataset
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    keywords: [String]
+    instruments: [Instrument]
+    studies: [Study]
+  }
+
+type ExperimentalConditions
+  {
+    description: String
+    temperature: Float
+    humidity: Float
+    pressure: Float
+    atmosphere: String
+    beamEnergy: Float
+    exposureTime: Float
+  }
+
+type ExperimentRun
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    experimentCode: String!
+    sampleId: String!
+    instrumentId: Instrument!
+    experimentDate: String
+    operatorId: String
+    technique: TechniqueEnum!
+    experimentalConditions: ExperimentalConditions
+    dataCollectionStrategy: DataCollectionStrategy
+    qualityMetrics: QualityMetrics
+    rawDataLocation: String
+    processingStatus: ProcessingStatusEnum
+  }
+
+type FluorescenceImage
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    defocus: Float
+    astigmatism: Float
+    excitationWavelength: Float
+    emissionWavelength: Float
+    excitationFilter: String
+    emissionFilter: String
+    fluorophore: String
+    channelName: String
+    laserPower: Float
+    pinholeSize: Float
+    quantumYield: Float
+  }
+
+type FTIRImage
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    wavenumberMin: Float
+    wavenumberMax: Float
+    spectralResolution: Float
+    numberOfScans: Integer
+    apodizationFunction: String
+    molecularSignatures: [String]
+    backgroundCorrection: String
+  }
+
+type Image
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+  }
+
+type Image2D
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    defocus: Float
+    astigmatism: Float
+  }
+
+type Image3D
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    dimensionsZ: Integer
+    voxelSize: Float
+    reconstructionMethod: String
+  }
+
+type ImageFeature
+  {
+    description: String
+    terms: OntologyTerm
+  }
+
+type Instrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+  }
+
+type MolecularComposition
+  {
+    description: String
+    sequences: [String]
+    modifications: [String]
+    ligands: [String]
+  }
+
+interface NamedThing
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+  }
+
+type OntologyTerm
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    label: String
+    definition: String
+    ontology: String
+  }
+
+type OpticalImage
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    defocus: Float
+    astigmatism: Float
+    illuminationType: IlluminationTypeEnum
+    magnification: Float
+    numericalAperture: Float
+    colorChannels: [String]
+    whiteBalance: String
+    contrastMethod: String
+  }
+
+type QualityMetrics
+  {
+    description: String
+    resolution: Float
+    completeness: Float
+    signalToNoise: Float
+    rFactor: Float
+    iZero: Float
+    rg: Float
+  }
+
+type Sample
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    sampleCode: String!
+    sampleType: SampleTypeEnum!
+    molecularComposition: MolecularComposition
+    molecularWeight: Float
+    concentration: Float
+    concentrationUnit: ConcentrationUnitEnum
+    bufferComposition: BufferComposition
+    preparationMethod: String
+    storageConditions: StorageConditions
+    organism: OntologyTerm
+    anatomy: OntologyTerm
+    cellType: OntologyTerm
+    parentSampleId: Sample
+    purityPercentage: Float
+    qualityMetrics: String
+  }
+
+type SamplePreparation
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    preparationType: PreparationTypeEnum!
+    sampleId: String!
+    preparationDate: String
+    operatorId: String
+    protocolDescription: String
+  }
+
+type SAXSInstrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+    qRangeMin: Float
+    qRangeMax: Float
+    detectorDistanceMin: Float
+    detectorDistanceMax: Float
+    sampleChangerCapacity: Integer
+    temperatureControlRange: String
+  }
+
+type SAXSPreparation
+  {
+    description: String
+    concentrationSeries: [Float]
+    bufferMatchingProtocol: String
+    sampleCellType: String
+    cellPathLength: Float
+    temperatureControl: String
+  }
+
+type StorageConditions
+  {
+    description: String
+    temperature: Float
+    temperatureUnit: TemperatureUnitEnum
+    duration: String
+    atmosphere: String
+  }
+
+type Study
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    samples: [Sample]
+    samplePreparations: [SamplePreparation]
+    instrumentRuns: [ExperimentRun]
+    workflowRuns: [WorkflowRun]
+    dataFiles: [DataFile]
+    images: [Image]
+  }
+
+interface TechniqueSpecificPreparation
+  {
+    description: String
+  }
+
+type WorkflowRun
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    workflowCode: String!
+    workflowType: WorkflowTypeEnum!
+    experimentId: String!
+    processingLevel: Integer
+    softwareName: String!
+    softwareVersion: String
+    processingParameters: String
+    computeResources: ComputeResources
+    startedAt: String
+    completedAt: String
+    outputFiles: [DataFile]
+  }
+
+type XRayInstrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+    sourceType: XRaySourceTypeEnum
+    energyMin: Float
+    energyMax: Float
+    beamSizeMin: Float
+    beamSizeMax: Float
+    fluxDensity: Float
+    monochromatorType: String
+    goniometerType: String
+    crystalCoolingCapability: Boolean
+  }
+
+type XRayPreparation
+  {
+    description: String
+    crystallizationMethod: CrystallizationMethodEnum
+    crystallizationConditions: String
+    crystalSize: String
+    cryoprotectant: String
+    cryoprotectantConcentration: Float
+    mountingMethod: String
+    flashCoolingMethod: String
+  }
+
+type XRFImage
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    defocus: Float
+    astigmatism: Float
+    beamEnergy: Float
+    beamSize: Float
+    dwellTime: Float
+    elementsMeasured: [String]
+    sourceType: XRaySourceTypeEnum
+    detectorType: String
+    flux: Float
+    calibrationStandard: String
+  }

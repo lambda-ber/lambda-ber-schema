@@ -1,0 +1,32 @@
+@base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:sample001 a lambdaber:Sample ;
+    dcterms:title "HIV-1 capsid protein CA" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "5% glycerol" ;
+            lambdaber:components "1 mM DTT",
+                "150 mM NaCl",
+                "50 mM Tris-HCl" ;
+            lambdaber:ph "8.0"^^xsd:float ] ;
+    lambdaber:concentration "2.5"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:description "Purified HIV-1 capsid protein for cryo-EM structural analysis" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:modifications "N-terminal His6 tag" ;
+            lambdaber:sequences "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP" ] ;
+    lambdaber:molecular_weight "25.6"^^xsd:float ;
+    lambdaber:organism NCBITaxon:9606 ;
+    lambdaber:preparation_method "E. coli expression followed by Ni-NTA and size exclusion chromatography" ;
+    lambdaber:purity_percentage "98.5"^^xsd:float ;
+    lambdaber:sample_code "HIV1-CA-2024-001" ;
+    lambdaber:sample_type "protein" ;
+    lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
+            lambdaber:atmosphere "Flash frozen in liquid nitrogen" ;
+            lambdaber:duration "3 months" ;
+            lambdaber:temperature "-80.0"^^xsd:float ;
+            lambdaber:temperature_unit "celsius" ] .
+

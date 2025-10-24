@@ -1,0 +1,26 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:optical_img_001 a lambdaber:OpticalImage ;
+    dcterms:title "Brightfield microscopy of tissue section" ;
+    lambdaber:acquisition_date "2024-05-18T11:45:00" ;
+    lambdaber:astigmatism "0.0"^^xsd:float ;
+    lambdaber:color_channels "Blue",
+        "Green",
+        "Red" ;
+    lambdaber:contrast_method "Köhler illumination with optimized condenser aperture" ;
+    lambdaber:defocus "0.0"^^xsd:float ;
+    lambdaber:description "High-resolution brightfield image of stained tissue cross-section" ;
+    lambdaber:dimensions_x 4096 ;
+    lambdaber:dimensions_y 3072 ;
+    lambdaber:dose "0.0"^^xsd:float ;
+    lambdaber:exposure_time "0.05"^^xsd:float ;
+    lambdaber:file_name "tissue_section_h&e_10x.tif" ;
+    lambdaber:illumination_type "brightfield" ;
+    lambdaber:magnification "10.0"^^xsd:float ;
+    lambdaber:numerical_aperture "0.25"^^xsd:float ;
+    lambdaber:pixel_size "0.65"^^xsd:float ;
+    lambdaber:white_balance "Auto white balance on reference slide" .
+
