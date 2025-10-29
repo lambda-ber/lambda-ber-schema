@@ -1,0 +1,348 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
+    dcterms:title "Aggregated structural and functional data for human p53" ;
+    lambdaber:description "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases" ;
+    ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
+            ns1:measurement_conditions "Predicted for unfolded state" ;
+            ns1:property_type "aggregation_propensity" ;
+            ns1:unit "probability" ;
+            ns1:value "0.68"^^xsd:float ],
+        [ a ns1:BiophysicalProperty ;
+            ns1:error "1.2"^^xsd:float ;
+            ns1:experimental_method "circular_dichroism" ;
+            ns1:measurement_conditions "Full-length protein" ;
+            ns1:ph "7.4"^^xsd:float ;
+            ns1:property_type "melting_temperature" ;
+            ns1:unit "K" ;
+            ns1:value "315.8"^^xsd:float ],
+        [ a ns1:BiophysicalProperty ;
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions "DNA-binding domain, pH 7.0, 20°C" ;
+            ns1:property_type "stability" ;
+            ns1:unit "kcal/mol" ;
+            ns1:value "42.5"^^xsd:float ] ;
+    ns1:conformational_ensemble lambdaber:p53-confens-001 ;
+    ns1:cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "191170" ;
+            ns1:database_name "omim" ;
+            ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P04637" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ;
+            ns1:last_updated "2024-01-15" ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00870" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "COSM10662" ;
+            ns1:database_name "cosmic" ;
+            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "CHEMBL4096" ;
+            ns1:database_name "chembl" ;
+            ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ] ;
+    ns1:evolutionary_conservation lambdaber:p53-evol-001 ;
+    ns1:functional_sites lambdaber:p53-func-001,
+        lambdaber:p53-func-002,
+        lambdaber:p53-func-003 ;
+    ns1:ligand_interactions [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.09"^^xsd:float ;
+            ns1:binding_affinity_type "ki" ;
+            ns1:binding_affinity_unit "micromolar" ;
+            ns1:binding_site_residues "19",
+                "23",
+                "26" ;
+            ns1:druggability_score "0.75"^^xsd:float ;
+            ns1:interaction_type "hydrophobic" ;
+            ns1:is_drug_like true ;
+            ns1:ligand_id "CHEMBL3545110" ;
+            ns1:ligand_name "Nutlin-3a" ],
+        [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.001"^^xsd:float ;
+            ns1:binding_affinity_type "kd" ;
+            ns1:binding_affinity_unit "micromolar" ;
+            ns1:binding_site_residues "176",
+                "179",
+                "238",
+                "242" ;
+            ns1:interaction_type "metal_coordination" ;
+            ns1:is_cofactor true ;
+            ns1:is_drug_like false ;
+            ns1:ligand_id "CHEBI:30413" ;
+            ns1:ligand_name "Zinc ion" ] ;
+    ns1:mutations lambdaber:p53-mut-001,
+        lambdaber:p53-mut-002,
+        lambdaber:p53-mut-003 ;
+    ns1:organism "Homo sapiens" ;
+    ns1:organism_id 9606 ;
+    ns1:pdb_entries "1TSR",
+        "1TUP",
+        "2AC0",
+        "2ADY",
+        "2AHI",
+        "2ATA",
+        "2B3G",
+        "2BIM",
+        "2FOJ",
+        "2GEQ" ;
+    ns1:protein_interactions lambdaber:p53-ppi-001,
+        lambdaber:p53-ppi-002 ;
+    ns1:protein_name "Cellular tumor antigen p53" ;
+    ns1:ptms lambdaber:p53-ptm-001,
+        lambdaber:p53-ptm-002,
+        lambdaber:p53-ptm-003 ;
+    ns1:structural_features lambdaber:p53-struct-001,
+        lambdaber:p53-struct-002,
+        lambdaber:p53-struct-003,
+        lambdaber:p53-struct-004 ;
+    ns1:uniprot_id "P04637" .
+
+lambdaber:p53-confens-001 a ns1:ConformationalEnsemble ;
+    ns1:clustering_method "Structure-based clustering of DNA-binding domain" ;
+    ns1:conformational_states [ a ns1:ConformationalState ;
+            ns1:characteristic_features "DNA-binding surface exposed",
+                "L1 loop flexible" ;
+            ns1:free_energy "0.0"^^xsd:float ;
+            ns1:pdb_entries "2AC0",
+                "2ADY" ;
+            ns1:population "0.4"^^xsd:float ;
+            ns1:state_id "dna_free" ;
+            ns1:state_name "DNA-free" ],
+        [ a ns1:ConformationalState ;
+            ns1:characteristic_features "DNA contacts formed",
+                "L1 loop ordered" ;
+            ns1:free_energy "-2.3"^^xsd:float ;
+            ns1:pdb_entries "1TSR",
+                "1TUP" ;
+            ns1:population "0.6"^^xsd:float ;
+            ns1:rmsd_from_reference "2.1"^^xsd:float ;
+            ns1:state_id "dna_bound" ;
+            ns1:state_name "DNA-bound" ] ;
+    ns1:protein_id "P04637" ;
+    ns1:rmsd_threshold "1.5"^^xsd:float ;
+    ns1:transition_pathways "DNA-free <-> DNA-bound conformations" .
+
+lambdaber:p53-evol-001 a ns1:EvolutionaryConservation ;
+    ns1:alignment_depth 250 ;
+    ns1:coevolved_residues "175-238",
+        "179-242" ;
+    ns1:conservation_method "ConSurf" ;
+    ns1:conservation_score "0.78"^^xsd:float ;
+    ns1:conserved_residues "120",
+        "175",
+        "176",
+        "179",
+        "238",
+        "241",
+        "242",
+        "248",
+        "273",
+        "276",
+        "277",
+        "280",
+        "283" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" ;
+    ns1:taxonomic_range "Vertebrata" ;
+    ns1:variable_residues "1-40",
+        "360-393" .
+
+lambdaber:p53-func-001 a ns1:FunctionalSite ;
+    ns1:chain_id "A" ;
+    ns1:confidence_score "1.0"^^xsd:float ;
+    ns1:conservation_score "0.95"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "Sequence-specific DNA binding for transcriptional regulation" ;
+    ns1:go_terms "GO:0003677"^^xsd:anyURI,
+        "GO:0003700"^^xsd:anyURI ;
+    ns1:pdb_entry "1TUP" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "94-292" ;
+    ns1:residues "120",
+        "241",
+        "248",
+        "273",
+        "276",
+        "277",
+        "280",
+        "283" ;
+    ns1:site_name "DNA-binding domain" ;
+    ns1:site_type "dna_binding" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:p53-func-002 a ns1:FunctionalSite ;
+    ns1:confidence_score "0.98"^^xsd:float ;
+    ns1:conservation_score "0.88"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "Negative regulation through MDM2 interaction" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "17-29" ;
+    ns1:residues "19",
+        "23",
+        "26" ;
+    ns1:site_name "MDM2 binding site" ;
+    ns1:site_type "protein_binding" ;
+    ns1:source_database "intact" .
+
+lambdaber:p53-func-003 a ns1:FunctionalSite ;
+    ns1:conservation_score "1.0"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "Structural stability of DNA-binding domain" ;
+    ns1:protein_id "P04637" ;
+    ns1:residues "176",
+        "179",
+        "238",
+        "242" ;
+    ns1:site_name "Zinc coordination site" ;
+    ns1:site_type "metal_binding" ;
+    ns1:source_database "pdbe" .
+
+lambdaber:p53-mut-001 a ns1:MutationEffect ;
+    ns1:allele_frequency "1e-05"^^xsd:float ;
+    ns1:clinical_significance "pathogenic" ;
+    ns1:delta_delta_g "3.8"^^xsd:float ;
+    ns1:disease_association "Li-Fraumeni syndrome, various cancers" ;
+    ns1:effect_on_function "loss_of_function" ;
+    ns1:effect_on_stability "highly_destabilizing" ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_impact_description "Loss of DNA binding ability" ;
+    ns1:mutation "R175H" ;
+    ns1:mutation_type "missense" ;
+    ns1:omim_id "191170" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:p53-mut-002 a ns1:MutationEffect ;
+    ns1:clinical_significance "pathogenic" ;
+    ns1:delta_delta_g "2.1"^^xsd:float ;
+    ns1:disease_association "Various cancers" ;
+    ns1:effect_on_function "loss_of_function" ;
+    ns1:effect_on_stability "destabilizing" ;
+    ns1:functional_impact_description "Impaired DNA binding and transcriptional activation" ;
+    ns1:mutation "R248Q" ;
+    ns1:mutation_type "missense" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:p53-mut-003 a ns1:MutationEffect ;
+    ns1:clinical_significance "pathogenic" ;
+    ns1:delta_delta_g "0.3"^^xsd:float ;
+    ns1:disease_association "Various cancers" ;
+    ns1:effect_on_function "altered_function" ;
+    ns1:effect_on_stability "neutral" ;
+    ns1:functional_impact_description "Altered DNA binding specificity" ;
+    ns1:mutation "R273H" ;
+    ns1:mutation_type "missense" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:p53-ppi-001 a ns1:ProteinProteinInteraction ;
+    ns1:binding_energy "-8.7"^^xsd:float ;
+    ns1:biological_assembly true ;
+    ns1:complex_stability "stable" ;
+    ns1:dissociation_constant "0.0001"^^xsd:float ;
+    ns1:interaction_evidence "experimental",
+        "physical" ;
+    ns1:interface_area "723.4"^^xsd:float ;
+    ns1:interface_residues "19",
+        "23",
+        "26",
+        "27" ;
+    ns1:partner_chain_id "B" ;
+    ns1:partner_interface_residues "54",
+        "56",
+        "58",
+        "62" ;
+    ns1:partner_protein_id "Q00987" ;
+    ns1:pdb_entry "1YCR" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "intact" .
+
+lambdaber:p53-ppi-002 a ns1:ProteinProteinInteraction ;
+    ns1:complex_stability "transient" ;
+    ns1:interaction_evidence "coexpression",
+        "experimental" ;
+    ns1:interface_area "456.2"^^xsd:float ;
+    ns1:interface_residues "183",
+        "184",
+        "185",
+        "186" ;
+    ns1:partner_protein_id "Q04206" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:p53-ptm-001 a ns1:PostTranslationalModification ;
+    ns1:enzyme "ATM, ATR" ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_effect "Stabilization, reduced MDM2 binding" ;
+    ns1:mass_shift "79.966"^^xsd:float ;
+    ns1:modification_group "phosphate" ;
+    ns1:modification_type "phosphorylation" ;
+    ns1:modified_residue "S15" ;
+    ns1:protein_id "P04637" ;
+    ns1:regulatory_role "DNA damage response activation" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:p53-ptm-002 a ns1:PostTranslationalModification ;
+    ns1:enzyme "p300/CBP" ;
+    ns1:functional_effect "Enhanced DNA binding and transcriptional activity" ;
+    ns1:mass_shift "42.011"^^xsd:float ;
+    ns1:modification_group "acetyl" ;
+    ns1:modification_type "acetylation" ;
+    ns1:modified_residue "K382" ;
+    ns1:protein_id "P04637" ;
+    ns1:removal_enzyme "HDAC1" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:p53-ptm-003 a ns1:PostTranslationalModification ;
+    ns1:enzyme "MDM2" ;
+    ns1:functional_effect "Proteasomal degradation signal" ;
+    ns1:modification_type "ubiquitination" ;
+    ns1:modified_residue "K370" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:p53-struct-001 a ns1:StructuralFeature ;
+    ns1:disorder_probability "0.75"^^xsd:float ;
+    ns1:domain_assignment "Pfam" ;
+    ns1:domain_id "PF00870" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "1-93" ;
+    ns1:source_database "pfam" ;
+    ns1:structural_motif "Transactivation domain" .
+
+lambdaber:p53-struct-002 a ns1:StructuralFeature ;
+    ns1:domain_assignment "Pfam" ;
+    ns1:domain_id "PF00870" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "94-292" ;
+    ns1:secondary_structure "sheet" ;
+    ns1:solvent_accessibility "0.35"^^xsd:float ;
+    ns1:source_database "pfam" ;
+    ns1:structural_motif "DNA-binding domain" .
+
+lambdaber:p53-struct-003 a ns1:StructuralFeature ;
+    ns1:conformational_state "disordered" ;
+    ns1:disorder_probability "0.82"^^xsd:float ;
+    ns1:feature_type "disordered_region" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "1-61" ;
+    ns1:source_database "mobi" .
+
+lambdaber:p53-struct-004 a ns1:StructuralFeature ;
+    ns1:backbone_flexibility "18.5"^^xsd:float ;
+    ns1:feature_type "beta_sheet" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "110-124" ;
+    ns1:secondary_structure "sheet" ;
+    ns1:source_database "pdbe" .
+

@@ -1,0 +1,279 @@
+@base <http://example.org/> .
+@prefix @base: <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:study-p53-interactions a lambdaber:Study ;
+    dcterms:title "Structural basis of p53 tumor suppressor interactions" ;
+    lambdaber:aggregated_protein_views lambdaber:protein-view-mdm2,
+        lambdaber:protein-view-p53 ;
+    lambdaber:data_files lambdaber:data-file-001 ;
+    lambdaber:description "Comprehensive structural and functional study of p53 and its interaction partners combining cryo-EM, crystallography, and knowledge base annotations" ;
+    lambdaber:instrument_runs lambdaber:exp-run-001 ;
+    lambdaber:sample_preparations lambdaber:prep-001 ;
+    lambdaber:samples lambdaber:sample-P53-MDM2-001 ;
+    lambdaber:workflow_runs lambdaber:wf-run-001 .
+
+lambdaber:data-file-001 a lambdaber:DataFile ;
+    dcterms:title "Final 3D reconstruction" ;
+    lambdaber:data_type "volume" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "p53_mdm2_reconstruction.mrc" ;
+    lambdaber:file_path "/data/structures/p53_mdm2.mrc" .
+
+lambdaber:evol-cons-p53 a ns1:EvolutionaryConservation ;
+    ns1:alignment_depth 250 ;
+    ns1:conservation_method "ConSurf" ;
+    ns1:conservation_score "0.78"^^xsd:float ;
+    ns1:conserved_residues "120",
+        "175",
+        "176",
+        "179",
+        "238",
+        "241",
+        "242",
+        "248" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:exp-run-001 a lambdaber:ExperimentRun ;
+    dcterms:title "Cryo-EM data collection of p53-MDM2" ;
+    lambdaber:experiment_code "EXP-P53-001" ;
+    lambdaber:instrument_id <TITAN-001> ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness "99.5"^^xsd:float ;
+            lambdaber:resolution "3.2"^^xsd:float ] ;
+    lambdaber:sample_id "lambdaber:sample-P53-MDM2-001" ;
+    lambdaber:technique "cryo_em" .
+
+lambdaber:func-site-001 a ns1:FunctionalSite ;
+    ns1:conservation_score "0.92"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:protein_id "P04637" ;
+    ns1:residues "19",
+        "23",
+        "26" ;
+    ns1:site_name "MDM2 binding interface" ;
+    ns1:site_type "protein_binding" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:func-site-mdm2-001 a ns1:FunctionalSite ;
+    ns1:conservation_score "0.89"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "p53 negative regulation" ;
+    ns1:protein_id "Q00987" ;
+    ns1:residue_range "25-108" ;
+    ns1:residues "54",
+        "56",
+        "58",
+        "62",
+        "67" ;
+    ns1:site_name "p53 binding pocket" ;
+    ns1:site_type "protein_binding" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:func-site-mdm2-002 a ns1:FunctionalSite ;
+    ns1:conservation_score "0.95"^^xsd:float ;
+    ns1:functional_importance "E3 ligase activity" ;
+    ns1:protein_id "Q00987" ;
+    ns1:residue_range "438-479" ;
+    ns1:residues "440",
+        "443",
+        "460",
+        "463" ;
+    ns1:site_name "RING finger domain" ;
+    ns1:site_type "metal_binding" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:func-site-p53-001 a ns1:FunctionalSite ;
+    ns1:conservation_score "0.96"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "Sequence-specific DNA binding" ;
+    ns1:go_terms "GO:0003677"^^xsd:anyURI ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "94-292" ;
+    ns1:residues "120",
+        "241",
+        "248",
+        "273",
+        "276" ;
+    ns1:site_name "Core DNA-binding domain" ;
+    ns1:site_type "dna_binding" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:func-site-p53-002 a ns1:FunctionalSite ;
+    ns1:conservation_score "1.0"^^xsd:float ;
+    ns1:functional_importance "Structural zinc coordination" ;
+    ns1:protein_id "P04637" ;
+    ns1:residues "176",
+        "179",
+        "238",
+        "242" ;
+    ns1:site_type "metal_binding" ;
+    ns1:source_database "pdbe" .
+
+lambdaber:mut-eff-001 a ns1:MutationEffect ;
+    ns1:effect_on_function "altered_function" ;
+    ns1:effect_on_stability "neutral" ;
+    ns1:functional_impact_description "Phosphomimetic - reduces MDM2 binding" ;
+    ns1:mutation "S15D" ;
+    ns1:mutation_type "missense" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "foldx" .
+
+lambdaber:mut-p53-001 a ns1:MutationEffect ;
+    ns1:clinical_significance "pathogenic" ;
+    ns1:delta_delta_g "3.8"^^xsd:float ;
+    ns1:disease_association "Li-Fraumeni syndrome" ;
+    ns1:effect_on_function "loss_of_function" ;
+    ns1:effect_on_stability "highly_destabilizing" ;
+    ns1:mutation "R175H" ;
+    ns1:mutation_type "missense" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "cosmic" .
+
+lambdaber:ppi-p53-001 a ns1:ProteinProteinInteraction ;
+    ns1:binding_energy "-8.7"^^xsd:float ;
+    ns1:biological_assembly true ;
+    ns1:complex_stability "stable" ;
+    ns1:interface_area "723.4"^^xsd:float ;
+    ns1:interface_residues "19",
+        "23",
+        "26",
+        "27" ;
+    ns1:partner_chain_id "B" ;
+    ns1:partner_protein_id "Q00987" ;
+    ns1:protein_id "P04637" ;
+    ns1:source_database "intact" .
+
+lambdaber:prep-001 a lambdaber:SamplePreparation ;
+    dcterms:title "Cryo-EM grid preparation of p53-MDM2 complex" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:sample_id "lambdaber:sample-P53-MDM2-001" .
+
+lambdaber:protein-view-mdm2 a ns1:AggregatedProteinView ;
+    dcterms:title "MDM2 functional profile" ;
+    ns1:cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "Q00987" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/Q00987"^^xsd:anyURI ] ;
+    ns1:functional_sites lambdaber:func-site-mdm2-001,
+        lambdaber:func-site-mdm2-002 ;
+    ns1:organism "Homo sapiens" ;
+    ns1:organism_id 9606 ;
+    ns1:pdb_entries "1YCR",
+        "1Z1M",
+        "4HG7" ;
+    ns1:protein_name "E3 ubiquitin-protein ligase MDM2" ;
+    ns1:structural_features lambdaber:struct-feat-mdm2-001,
+        lambdaber:struct-feat-mdm2-002 ;
+    ns1:uniprot_id "Q00987" .
+
+lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
+    dcterms:title "Complete p53 functional profile" ;
+    ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:property_type "melting_temperature" ;
+            ns1:unit "K" ;
+            ns1:value "315.8"^^xsd:float ] ;
+    ns1:cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "COSM10662" ;
+            ns1:database_name "cosmic" ;
+            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P04637" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ] ;
+    ns1:evolutionary_conservation lambdaber:evol-cons-p53 ;
+    ns1:functional_sites lambdaber:func-site-p53-001,
+        lambdaber:func-site-p53-002 ;
+    ns1:ligand_interactions [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.001"^^xsd:float ;
+            ns1:binding_affinity_type "kd" ;
+            ns1:binding_affinity_unit "micromolar" ;
+            ns1:binding_site_residues "176",
+                "179",
+                "238",
+                "242" ;
+            ns1:interaction_type "metal_coordination" ;
+            ns1:is_cofactor true ;
+            ns1:ligand_id "CHEBI:30413" ;
+            ns1:ligand_name "Zinc" ] ;
+    ns1:mutations lambdaber:mut-p53-001 ;
+    ns1:organism "Homo sapiens" ;
+    ns1:organism_id 9606 ;
+    ns1:pdb_entries "1TUP",
+        "1YCR",
+        "2AC0" ;
+    ns1:protein_interactions lambdaber:ppi-p53-001 ;
+    ns1:protein_name "Cellular tumor antigen p53" ;
+    ns1:ptms lambdaber:ptm-p53-001 ;
+    ns1:structural_features lambdaber:struct-feat-p53-001,
+        lambdaber:struct-feat-p53-002 ;
+    ns1:uniprot_id "P04637" .
+
+lambdaber:ptm-p53-001 a ns1:PostTranslationalModification ;
+    ns1:enzyme "ATM" ;
+    ns1:functional_effect "Stabilization" ;
+    ns1:modification_type "phosphorylation" ;
+    ns1:modified_residue "S15" ;
+    ns1:protein_id "P04637" ;
+    ns1:regulatory_role "DNA damage response" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:sample-P53-MDM2-001 a lambdaber:Sample ;
+    dcterms:title "p53-MDM2 complex for structural studies" ;
+    lambdaber:concentration "8.0"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:functional_sites lambdaber:func-site-001 ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:description "Human p53 N-terminal domain with MDM2" ] ;
+    lambdaber:molecular_weight "45.5"^^xsd:float ;
+    lambdaber:mutation_effects lambdaber:mut-eff-001 ;
+    lambdaber:sample_code "P53-MDM2-001" ;
+    lambdaber:sample_type "complex" .
+
+lambdaber:struct-feat-mdm2-001 a ns1:StructuralFeature ;
+    ns1:domain_assignment "Pfam" ;
+    ns1:domain_id "PF02201" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "Q00987" ;
+    ns1:residue_range "25-108" ;
+    ns1:source_database "pfam" ;
+    ns1:structural_motif "SWIB/MDM2 domain" .
+
+lambdaber:struct-feat-mdm2-002 a ns1:StructuralFeature ;
+    ns1:domain_assignment "Pfam" ;
+    ns1:domain_id "PF13923" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "Q00987" ;
+    ns1:residue_range "438-479" ;
+    ns1:source_database "pfam" ;
+    ns1:structural_motif "RING finger domain" .
+
+lambdaber:struct-feat-p53-001 a ns1:StructuralFeature ;
+    ns1:disorder_probability "0.85"^^xsd:float ;
+    ns1:feature_type "disordered_region" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "1-61" ;
+    ns1:source_database "mobi" .
+
+lambdaber:struct-feat-p53-002 a ns1:StructuralFeature ;
+    ns1:domain_assignment "CATH" ;
+    ns1:domain_id "1.10.220.10" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "P04637" ;
+    ns1:residue_range "94-292" ;
+    ns1:source_database "cath" ;
+    ns1:structural_motif "Immunoglobulin-like beta-sandwich" .
+
+lambdaber:wf-run-001 a lambdaber:WorkflowRun ;
+    dcterms:title "3D reconstruction of p53-MDM2 complex" ;
+    lambdaber:experiment_id "lambdaber:exp-run-001" ;
+    lambdaber:software_name "RELION" ;
+    lambdaber:software_version "4.0" ;
+    lambdaber:workflow_code "WF-P53-001" ;
+    lambdaber:workflow_type "refinement" .
+

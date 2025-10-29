@@ -124,6 +124,7 @@ attributes:
     domain_of:
     - StorageConditions
     - ExperimentalConditions
+    - BiophysicalProperty
     range: float
   humidity:
     name: humidity
@@ -186,6 +187,7 @@ attributes:
     domain_of:
     - StorageConditions
     - ExperimentalConditions
+    - BiophysicalProperty
     range: float
   humidity:
     name: humidity

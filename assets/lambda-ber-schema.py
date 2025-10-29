@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-24T11:48:34
+# Generation date: 2025-10-29T12:53:46
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -133,8 +133,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
 version = None
@@ -143,23 +143,14 @@ version = None
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
-DATASET = CurieNamespace('dataset', 'https://w3id.org/lambda-ber-schema/dataset/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
-DF = CurieNamespace('df', 'https://w3id.org/lambda-ber-schema/data_file/')
-EXPERIMENT = CurieNamespace('experiment', 'https://w3id.org/lambda-ber-schema/experiment_run/')
-IMG = CurieNamespace('img', 'https://w3id.org/lambda-ber-schema/image/')
-INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/lambda-ber-schema/instrument/')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
-PREP = CurieNamespace('prep', 'https://w3id.org/lambda-ber-schema/sample_preparation/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
-SAMPLE = CurieNamespace('sample', 'https://w3id.org/lambda-ber-schema/sample/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
-STUDY = CurieNamespace('study', 'https://w3id.org/lambda-ber-schema/study/')
-WF = CurieNamespace('wf', 'https://w3id.org/lambda-ber-schema/workflow_run/')
 DEFAULT_ = LAMBDABER
 
 
@@ -179,6 +170,10 @@ class StudyId(NamedThingId):
 
 
 class SampleId(NamedThingId):
+    pass
+
+
+class ProteinConstructId(NamedThingId):
     pass
 
 
@@ -243,6 +238,42 @@ class XRFImageId(Image2DId):
 
 
 class OntologyTermId(NamedThingId):
+    pass
+
+
+class ProteinAnnotationId(NamedThingId):
+    pass
+
+
+class FunctionalSiteId(ProteinAnnotationId):
+    pass
+
+
+class StructuralFeatureId(ProteinAnnotationId):
+    pass
+
+
+class ProteinProteinInteractionId(ProteinAnnotationId):
+    pass
+
+
+class MutationEffectId(ProteinAnnotationId):
+    pass
+
+
+class ConformationalEnsembleId(NamedThingId):
+    pass
+
+
+class PostTranslationalModificationId(ProteinAnnotationId):
+    pass
+
+
+class EvolutionaryConservationId(ProteinAnnotationId):
+    pass
+
+
+class AggregatedProteinViewId(NamedThingId):
     pass
 
 
@@ -346,18 +377,22 @@ class Study(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.Study
 
     id: Union[str, StudyId] = None
+    protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
     sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
     instrument_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
     workflow_runs: Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, "WorkflowRun"]], list[Union[dict, "WorkflowRun"]]]] = empty_dict()
     data_files: Optional[Union[dict[Union[str, DataFileId], Union[dict, "DataFile"]], list[Union[dict, "DataFile"]]]] = empty_dict()
     images: Optional[Union[dict[Union[str, ImageId], Union[dict, "Image"]], list[Union[dict, "Image"]]]] = empty_dict()
+    aggregated_protein_views: Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, "AggregatedProteinView"]], list[Union[dict, "AggregatedProteinView"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
+
+        self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
 
@@ -370,6 +405,8 @@ class Study(NamedThing):
         self._normalize_inlined_as_list(slot_name="data_files", slot_type=DataFile, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="images", slot_type=Image, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aggregated_protein_views", slot_type=AggregatedProteinView, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -402,6 +439,16 @@ class Sample(NamedThing):
     parent_sample_id: Optional[Union[str, SampleId]] = None
     purity_percentage: Optional[float] = None
     quality_metrics: Optional[str] = None
+    functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, "FunctionalSite"]], list[Union[dict, "FunctionalSite"]]]] = empty_dict()
+    structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, "StructuralFeature"]], list[Union[dict, "StructuralFeature"]]]] = empty_dict()
+    protein_interactions: Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, "ProteinProteinInteraction"]], list[Union[dict, "ProteinProteinInteraction"]]]] = empty_dict()
+    ligand_interactions: Optional[Union[Union[dict, "LigandInteraction"], list[Union[dict, "LigandInteraction"]]]] = empty_list()
+    mutation_effects: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, "MutationEffect"]], list[Union[dict, "MutationEffect"]]]] = empty_dict()
+    ptm_annotations: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, "PostTranslationalModification"]], list[Union[dict, "PostTranslationalModification"]]]] = empty_dict()
+    biophysical_properties: Optional[Union[Union[dict, "BiophysicalProperty"], list[Union[dict, "BiophysicalProperty"]]]] = empty_list()
+    evolutionary_conservation: Optional[Union[dict, "EvolutionaryConservation"]] = None
+    conformational_ensemble: Optional[Union[dict, "ConformationalEnsemble"]] = None
+    database_cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -458,6 +505,143 @@ class Sample(NamedThing):
         if self.quality_metrics is not None and not isinstance(self.quality_metrics, str):
             self.quality_metrics = str(self.quality_metrics)
 
+        self._normalize_inlined_as_list(slot_name="functional_sites", slot_type=FunctionalSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="structural_features", slot_type=StructuralFeature, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="protein_interactions", slot_type=ProteinProteinInteraction, key_name="id", keyed=True)
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        self._normalize_inlined_as_list(slot_name="mutation_effects", slot_type=MutationEffect, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="ptm_annotations", slot_type=PostTranslationalModification, key_name="id", keyed=True)
+
+        if not isinstance(self.biophysical_properties, list):
+            self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
+        self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
+
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
+
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
+
+        if not isinstance(self.database_cross_references, list):
+            self.database_cross_references = [self.database_cross_references] if self.database_cross_references is not None else []
+        self.database_cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.database_cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinConstruct(NamedThing):
+    """
+    Detailed information about a protein construct including cloning and sequence design
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["ProteinConstruct"]
+    class_class_curie: ClassVar[str] = "lambdaber:ProteinConstruct"
+    class_name: ClassVar[str] = "ProteinConstruct"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinConstruct
+
+    id: Union[str, ProteinConstructId] = None
+    construct_id: str = None
+    uniprot_id: Optional[str] = None
+    gene_name: Optional[str] = None
+    ncbi_taxid: Optional[str] = None
+    sequence_length_aa: Optional[int] = None
+    construct_description: Optional[str] = None
+    gene_synthesis_provider: Optional[str] = None
+    codon_optimization_organism: Optional[str] = None
+    vector_backbone: Optional[str] = None
+    vector_name: Optional[str] = None
+    promoter: Optional[str] = None
+    tag_nterm: Optional[str] = None
+    tag_cterm: Optional[str] = None
+    cleavage_site: Optional[str] = None
+    signal_peptide: Optional[str] = None
+    selectable_marker: Optional[str] = None
+    cloning_method: Optional[str] = None
+    insert_boundaries: Optional[str] = None
+    sequence_file_path: Optional[str] = None
+    sequence_verified_by: Optional[str] = None
+    verification_notes: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinConstructId):
+            self.id = ProteinConstructId(self.id)
+
+        if self._is_empty(self.construct_id):
+            self.MissingRequiredField("construct_id")
+        if not isinstance(self.construct_id, str):
+            self.construct_id = str(self.construct_id)
+
+        if self.uniprot_id is not None and not isinstance(self.uniprot_id, str):
+            self.uniprot_id = str(self.uniprot_id)
+
+        if self.gene_name is not None and not isinstance(self.gene_name, str):
+            self.gene_name = str(self.gene_name)
+
+        if self.ncbi_taxid is not None and not isinstance(self.ncbi_taxid, str):
+            self.ncbi_taxid = str(self.ncbi_taxid)
+
+        if self.sequence_length_aa is not None and not isinstance(self.sequence_length_aa, int):
+            self.sequence_length_aa = int(self.sequence_length_aa)
+
+        if self.construct_description is not None and not isinstance(self.construct_description, str):
+            self.construct_description = str(self.construct_description)
+
+        if self.gene_synthesis_provider is not None and not isinstance(self.gene_synthesis_provider, str):
+            self.gene_synthesis_provider = str(self.gene_synthesis_provider)
+
+        if self.codon_optimization_organism is not None and not isinstance(self.codon_optimization_organism, str):
+            self.codon_optimization_organism = str(self.codon_optimization_organism)
+
+        if self.vector_backbone is not None and not isinstance(self.vector_backbone, str):
+            self.vector_backbone = str(self.vector_backbone)
+
+        if self.vector_name is not None and not isinstance(self.vector_name, str):
+            self.vector_name = str(self.vector_name)
+
+        if self.promoter is not None and not isinstance(self.promoter, str):
+            self.promoter = str(self.promoter)
+
+        if self.tag_nterm is not None and not isinstance(self.tag_nterm, str):
+            self.tag_nterm = str(self.tag_nterm)
+
+        if self.tag_cterm is not None and not isinstance(self.tag_cterm, str):
+            self.tag_cterm = str(self.tag_cterm)
+
+        if self.cleavage_site is not None and not isinstance(self.cleavage_site, str):
+            self.cleavage_site = str(self.cleavage_site)
+
+        if self.signal_peptide is not None and not isinstance(self.signal_peptide, str):
+            self.signal_peptide = str(self.signal_peptide)
+
+        if self.selectable_marker is not None and not isinstance(self.selectable_marker, str):
+            self.selectable_marker = str(self.selectable_marker)
+
+        if self.cloning_method is not None and not isinstance(self.cloning_method, str):
+            self.cloning_method = str(self.cloning_method)
+
+        if self.insert_boundaries is not None and not isinstance(self.insert_boundaries, str):
+            self.insert_boundaries = str(self.insert_boundaries)
+
+        if self.sequence_file_path is not None and not isinstance(self.sequence_file_path, str):
+            self.sequence_file_path = str(self.sequence_file_path)
+
+        if self.sequence_verified_by is not None and not isinstance(self.sequence_verified_by, str):
+            self.sequence_verified_by = str(self.sequence_verified_by)
+
+        if self.verification_notes is not None and not isinstance(self.verification_notes, str):
+            self.verification_notes = str(self.verification_notes)
+
         super().__post_init__(**kwargs)
 
 
@@ -479,6 +663,43 @@ class SamplePreparation(NamedThing):
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
     protocol_description: Optional[str] = None
+    expression_system: Optional[Union[str, "ExpressionSystemEnum"]] = None
+    host_strain_or_cell_line: Optional[str] = None
+    culture_volume_l: Optional[float] = None
+    medium: Optional[str] = None
+    antibiotic_selection: Optional[str] = None
+    growth_temperature_c: Optional[float] = None
+    induction_agent: Optional[str] = None
+    inducer_concentration: Optional[str] = None
+    induction_temperature_c: Optional[float] = None
+    induction_time_h: Optional[float] = None
+    od600_at_induction: Optional[float] = None
+    harvest_timepoint: Optional[str] = None
+    lysis_method: Optional[str] = None
+    protease_inhibitors: Optional[str] = None
+    purification_steps: Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]] = empty_list()
+    affinity_type: Optional[str] = None
+    affinity_column: Optional[str] = None
+    lysis_buffer: Optional[str] = None
+    wash_buffer: Optional[str] = None
+    elution_buffer: Optional[str] = None
+    tag_removal: Optional[Union[bool, Bool]] = None
+    protease: Optional[str] = None
+    protease_ratio: Optional[str] = None
+    cleavage_time_h: Optional[float] = None
+    cleavage_temperature_c: Optional[float] = None
+    second_affinity_reverse: Optional[str] = None
+    iex_column: Optional[str] = None
+    hic_column: Optional[str] = None
+    sec_column: Optional[str] = None
+    sec_buffer: Optional[str] = None
+    concentration_method: Optional[str] = None
+    final_buffer: Optional[str] = None
+    final_concentration_mg_per_ml: Optional[float] = None
+    yield_mg: Optional[float] = None
+    purity_by_sds_page_percent: Optional[float] = None
+    aggregation_assessment: Optional[str] = None
+    aliquoting: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -504,6 +725,118 @@ class SamplePreparation(NamedThing):
 
         if self.protocol_description is not None and not isinstance(self.protocol_description, str):
             self.protocol_description = str(self.protocol_description)
+
+        if self.expression_system is not None and not isinstance(self.expression_system, ExpressionSystemEnum):
+            self.expression_system = ExpressionSystemEnum(self.expression_system)
+
+        if self.host_strain_or_cell_line is not None and not isinstance(self.host_strain_or_cell_line, str):
+            self.host_strain_or_cell_line = str(self.host_strain_or_cell_line)
+
+        if self.culture_volume_l is not None and not isinstance(self.culture_volume_l, float):
+            self.culture_volume_l = float(self.culture_volume_l)
+
+        if self.medium is not None and not isinstance(self.medium, str):
+            self.medium = str(self.medium)
+
+        if self.antibiotic_selection is not None and not isinstance(self.antibiotic_selection, str):
+            self.antibiotic_selection = str(self.antibiotic_selection)
+
+        if self.growth_temperature_c is not None and not isinstance(self.growth_temperature_c, float):
+            self.growth_temperature_c = float(self.growth_temperature_c)
+
+        if self.induction_agent is not None and not isinstance(self.induction_agent, str):
+            self.induction_agent = str(self.induction_agent)
+
+        if self.inducer_concentration is not None and not isinstance(self.inducer_concentration, str):
+            self.inducer_concentration = str(self.inducer_concentration)
+
+        if self.induction_temperature_c is not None and not isinstance(self.induction_temperature_c, float):
+            self.induction_temperature_c = float(self.induction_temperature_c)
+
+        if self.induction_time_h is not None and not isinstance(self.induction_time_h, float):
+            self.induction_time_h = float(self.induction_time_h)
+
+        if self.od600_at_induction is not None and not isinstance(self.od600_at_induction, float):
+            self.od600_at_induction = float(self.od600_at_induction)
+
+        if self.harvest_timepoint is not None and not isinstance(self.harvest_timepoint, str):
+            self.harvest_timepoint = str(self.harvest_timepoint)
+
+        if self.lysis_method is not None and not isinstance(self.lysis_method, str):
+            self.lysis_method = str(self.lysis_method)
+
+        if self.protease_inhibitors is not None and not isinstance(self.protease_inhibitors, str):
+            self.protease_inhibitors = str(self.protease_inhibitors)
+
+        if not isinstance(self.purification_steps, list):
+            self.purification_steps = [self.purification_steps] if self.purification_steps is not None else []
+        self.purification_steps = [v if isinstance(v, PurificationStepEnum) else PurificationStepEnum(v) for v in self.purification_steps]
+
+        if self.affinity_type is not None and not isinstance(self.affinity_type, str):
+            self.affinity_type = str(self.affinity_type)
+
+        if self.affinity_column is not None and not isinstance(self.affinity_column, str):
+            self.affinity_column = str(self.affinity_column)
+
+        if self.lysis_buffer is not None and not isinstance(self.lysis_buffer, str):
+            self.lysis_buffer = str(self.lysis_buffer)
+
+        if self.wash_buffer is not None and not isinstance(self.wash_buffer, str):
+            self.wash_buffer = str(self.wash_buffer)
+
+        if self.elution_buffer is not None and not isinstance(self.elution_buffer, str):
+            self.elution_buffer = str(self.elution_buffer)
+
+        if self.tag_removal is not None and not isinstance(self.tag_removal, Bool):
+            self.tag_removal = Bool(self.tag_removal)
+
+        if self.protease is not None and not isinstance(self.protease, str):
+            self.protease = str(self.protease)
+
+        if self.protease_ratio is not None and not isinstance(self.protease_ratio, str):
+            self.protease_ratio = str(self.protease_ratio)
+
+        if self.cleavage_time_h is not None and not isinstance(self.cleavage_time_h, float):
+            self.cleavage_time_h = float(self.cleavage_time_h)
+
+        if self.cleavage_temperature_c is not None and not isinstance(self.cleavage_temperature_c, float):
+            self.cleavage_temperature_c = float(self.cleavage_temperature_c)
+
+        if self.second_affinity_reverse is not None and not isinstance(self.second_affinity_reverse, str):
+            self.second_affinity_reverse = str(self.second_affinity_reverse)
+
+        if self.iex_column is not None and not isinstance(self.iex_column, str):
+            self.iex_column = str(self.iex_column)
+
+        if self.hic_column is not None and not isinstance(self.hic_column, str):
+            self.hic_column = str(self.hic_column)
+
+        if self.sec_column is not None and not isinstance(self.sec_column, str):
+            self.sec_column = str(self.sec_column)
+
+        if self.sec_buffer is not None and not isinstance(self.sec_buffer, str):
+            self.sec_buffer = str(self.sec_buffer)
+
+        if self.concentration_method is not None and not isinstance(self.concentration_method, str):
+            self.concentration_method = str(self.concentration_method)
+
+        if self.final_buffer is not None and not isinstance(self.final_buffer, str):
+            self.final_buffer = str(self.final_buffer)
+
+        if self.final_concentration_mg_per_ml is not None and not isinstance(self.final_concentration_mg_per_ml, float):
+            self.final_concentration_mg_per_ml = float(self.final_concentration_mg_per_ml)
+
+        if self.yield_mg is not None and not isinstance(self.yield_mg, float):
+            self.yield_mg = float(self.yield_mg)
+
+        if self.purity_by_sds_page_percent is not None and not isinstance(self.purity_by_sds_page_percent, float):
+            self.purity_by_sds_page_percent = float(self.purity_by_sds_page_percent)
+
+        if self.aggregation_assessment is not None and not isinstance(self.aggregation_assessment, str):
+            self.aggregation_assessment = str(self.aggregation_assessment)
+
+        if self.aliquoting is not None and not isinstance(self.aliquoting, str):
+            self.aliquoting = str(self.aliquoting)
 
         super().__post_init__(**kwargs)
 
@@ -736,6 +1069,7 @@ class ExperimentRun(NamedThing):
     technique: Union[str, "TechniqueEnum"] = None
     experiment_date: Optional[str] = None
     operator_id: Optional[str] = None
+    experimental_method: Optional[Union[str, "ExperimentalMethodEnum"]] = None
     experimental_conditions: Optional[Union[dict, "ExperimentalConditions"]] = None
     data_collection_strategy: Optional[Union[dict, "DataCollectionStrategy"]] = None
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
@@ -774,6 +1108,9 @@ class ExperimentRun(NamedThing):
         if self.operator_id is not None and not isinstance(self.operator_id, str):
             self.operator_id = str(self.operator_id)
 
+        if self.experimental_method is not None and not isinstance(self.experimental_method, ExperimentalMethodEnum):
+            self.experimental_method = ExperimentalMethodEnum(self.experimental_method)
+
         if self.experimental_conditions is not None and not isinstance(self.experimental_conditions, ExperimentalConditions):
             self.experimental_conditions = ExperimentalConditions(**as_dict(self.experimental_conditions))
 
@@ -811,7 +1148,25 @@ class WorkflowRun(NamedThing):
     software_name: str = None
     processing_level: Optional[int] = None
     software_version: Optional[str] = None
+    additional_software: Optional[str] = None
     processing_parameters: Optional[str] = None
+    parameters_file_path: Optional[str] = None
+    indexer_module: Optional[str] = None
+    integrator_module: Optional[str] = None
+    scaler_module: Optional[str] = None
+    outlier_rejection_method: Optional[str] = None
+    phasing_method: Optional[Union[str, "PhasingMethodEnum"]] = None
+    search_model_pdb_id: Optional[str] = None
+    tls_used: Optional[Union[bool, Bool]] = None
+    ncs_used: Optional[Union[bool, Bool]] = None
+    restraints_other: Optional[str] = None
+    ligands_cofactors: Optional[str] = None
+    number_of_waters: Optional[int] = None
+    refinement_resolution_a: Optional[float] = None
+    deposited_to_pdb: Optional[Union[bool, Bool]] = None
+    pdb_id: Optional[str] = None
+    validation_report_path: Optional[str] = None
+    processing_notes: Optional[str] = None
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
     started_at: Optional[str] = None
     completed_at: Optional[str] = None
@@ -849,8 +1204,62 @@ class WorkflowRun(NamedThing):
         if self.software_version is not None and not isinstance(self.software_version, str):
             self.software_version = str(self.software_version)
 
+        if self.additional_software is not None and not isinstance(self.additional_software, str):
+            self.additional_software = str(self.additional_software)
+
         if self.processing_parameters is not None and not isinstance(self.processing_parameters, str):
             self.processing_parameters = str(self.processing_parameters)
+
+        if self.parameters_file_path is not None and not isinstance(self.parameters_file_path, str):
+            self.parameters_file_path = str(self.parameters_file_path)
+
+        if self.indexer_module is not None and not isinstance(self.indexer_module, str):
+            self.indexer_module = str(self.indexer_module)
+
+        if self.integrator_module is not None and not isinstance(self.integrator_module, str):
+            self.integrator_module = str(self.integrator_module)
+
+        if self.scaler_module is not None and not isinstance(self.scaler_module, str):
+            self.scaler_module = str(self.scaler_module)
+
+        if self.outlier_rejection_method is not None and not isinstance(self.outlier_rejection_method, str):
+            self.outlier_rejection_method = str(self.outlier_rejection_method)
+
+        if self.phasing_method is not None and not isinstance(self.phasing_method, PhasingMethodEnum):
+            self.phasing_method = PhasingMethodEnum(self.phasing_method)
+
+        if self.search_model_pdb_id is not None and not isinstance(self.search_model_pdb_id, str):
+            self.search_model_pdb_id = str(self.search_model_pdb_id)
+
+        if self.tls_used is not None and not isinstance(self.tls_used, Bool):
+            self.tls_used = Bool(self.tls_used)
+
+        if self.ncs_used is not None and not isinstance(self.ncs_used, Bool):
+            self.ncs_used = Bool(self.ncs_used)
+
+        if self.restraints_other is not None and not isinstance(self.restraints_other, str):
+            self.restraints_other = str(self.restraints_other)
+
+        if self.ligands_cofactors is not None and not isinstance(self.ligands_cofactors, str):
+            self.ligands_cofactors = str(self.ligands_cofactors)
+
+        if self.number_of_waters is not None and not isinstance(self.number_of_waters, int):
+            self.number_of_waters = int(self.number_of_waters)
+
+        if self.refinement_resolution_a is not None and not isinstance(self.refinement_resolution_a, float):
+            self.refinement_resolution_a = float(self.refinement_resolution_a)
+
+        if self.deposited_to_pdb is not None and not isinstance(self.deposited_to_pdb, Bool):
+            self.deposited_to_pdb = Bool(self.deposited_to_pdb)
+
+        if self.pdb_id is not None and not isinstance(self.pdb_id, str):
+            self.pdb_id = str(self.pdb_id)
+
+        if self.validation_report_path is not None and not isinstance(self.validation_report_path, str):
+            self.validation_report_path = str(self.validation_report_path)
+
+        if self.processing_notes is not None and not isinstance(self.processing_notes, str):
+            self.processing_notes = str(self.processing_notes)
 
         if self.compute_resources is not None and not isinstance(self.compute_resources, ComputeResources):
             self.compute_resources = ComputeResources(**as_dict(self.compute_resources))
@@ -1490,23 +1899,78 @@ class XRayPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "XRayPreparation"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.XRayPreparation
 
+    protein_concentration_mg_per_ml: Optional[float] = None
+    protein_buffer: Optional[str] = None
+    additives: Optional[str] = None
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
+    screen_name: Optional[str] = None
+    temperature_c: Optional[float] = None
+    drop_ratio_protein_to_reservoir: Optional[str] = None
+    drop_volume_nl: Optional[float] = None
+    reservoir_volume_ul: Optional[float] = None
+    seeding_type: Optional[str] = None
+    seed_stock_dilution: Optional[str] = None
+    initial_hit_condition: Optional[str] = None
+    optimization_strategy: Optional[str] = None
+    optimized_condition: Optional[str] = None
     crystallization_conditions: Optional[str] = None
-    crystal_size: Optional[str] = None
+    crystal_size_um: Optional[str] = None
     cryoprotectant: Optional[str] = None
     cryoprotectant_concentration: Optional[float] = None
+    soak_compound: Optional[str] = None
+    soak_conditions: Optional[str] = None
     mounting_method: Optional[str] = None
     flash_cooling_method: Optional[str] = None
+    crystal_notes: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, float):
+            self.protein_concentration_mg_per_ml = float(self.protein_concentration_mg_per_ml)
+
+        if self.protein_buffer is not None and not isinstance(self.protein_buffer, str):
+            self.protein_buffer = str(self.protein_buffer)
+
+        if self.additives is not None and not isinstance(self.additives, str):
+            self.additives = str(self.additives)
+
         if self.crystallization_method is not None and not isinstance(self.crystallization_method, CrystallizationMethodEnum):
             self.crystallization_method = CrystallizationMethodEnum(self.crystallization_method)
+
+        if self.screen_name is not None and not isinstance(self.screen_name, str):
+            self.screen_name = str(self.screen_name)
+
+        if self.temperature_c is not None and not isinstance(self.temperature_c, float):
+            self.temperature_c = float(self.temperature_c)
+
+        if self.drop_ratio_protein_to_reservoir is not None and not isinstance(self.drop_ratio_protein_to_reservoir, str):
+            self.drop_ratio_protein_to_reservoir = str(self.drop_ratio_protein_to_reservoir)
+
+        if self.drop_volume_nl is not None and not isinstance(self.drop_volume_nl, float):
+            self.drop_volume_nl = float(self.drop_volume_nl)
+
+        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, float):
+            self.reservoir_volume_ul = float(self.reservoir_volume_ul)
+
+        if self.seeding_type is not None and not isinstance(self.seeding_type, str):
+            self.seeding_type = str(self.seeding_type)
+
+        if self.seed_stock_dilution is not None and not isinstance(self.seed_stock_dilution, str):
+            self.seed_stock_dilution = str(self.seed_stock_dilution)
+
+        if self.initial_hit_condition is not None and not isinstance(self.initial_hit_condition, str):
+            self.initial_hit_condition = str(self.initial_hit_condition)
+
+        if self.optimization_strategy is not None and not isinstance(self.optimization_strategy, str):
+            self.optimization_strategy = str(self.optimization_strategy)
+
+        if self.optimized_condition is not None and not isinstance(self.optimized_condition, str):
+            self.optimized_condition = str(self.optimized_condition)
 
         if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
             self.crystallization_conditions = str(self.crystallization_conditions)
 
-        if self.crystal_size is not None and not isinstance(self.crystal_size, str):
-            self.crystal_size = str(self.crystal_size)
+        if self.crystal_size_um is not None and not isinstance(self.crystal_size_um, str):
+            self.crystal_size_um = str(self.crystal_size_um)
 
         if self.cryoprotectant is not None and not isinstance(self.cryoprotectant, str):
             self.cryoprotectant = str(self.cryoprotectant)
@@ -1514,11 +1978,20 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.cryoprotectant_concentration is not None and not isinstance(self.cryoprotectant_concentration, float):
             self.cryoprotectant_concentration = float(self.cryoprotectant_concentration)
 
+        if self.soak_compound is not None and not isinstance(self.soak_compound, str):
+            self.soak_compound = str(self.soak_compound)
+
+        if self.soak_conditions is not None and not isinstance(self.soak_conditions, str):
+            self.soak_conditions = str(self.soak_conditions)
+
         if self.mounting_method is not None and not isinstance(self.mounting_method, str):
             self.mounting_method = str(self.mounting_method)
 
         if self.flash_cooling_method is not None and not isinstance(self.flash_cooling_method, str):
             self.flash_cooling_method = str(self.flash_cooling_method)
+
+        if self.crystal_notes is not None and not isinstance(self.crystal_notes, str):
+            self.crystal_notes = str(self.crystal_notes)
 
         super().__post_init__(**kwargs)
 
@@ -1619,6 +2092,19 @@ class DataCollectionStrategy(AttributeGroup):
     frame_rate: Optional[float] = None
     total_dose: Optional[float] = None
     dose_per_frame: Optional[float] = None
+    wavelength_a: Optional[float] = None
+    detector: Optional[str] = None
+    detector_distance_mm: Optional[float] = None
+    beam_center_x_px: Optional[int] = None
+    beam_center_y_px: Optional[int] = None
+    beam_size_um: Optional[float] = None
+    flux_photons_per_s: Optional[float] = None
+    transmission_percent: Optional[float] = None
+    attenuator: Optional[str] = None
+    temperature_k: Optional[float] = None
+    oscillation_per_image_deg: Optional[float] = None
+    total_rotation_deg: Optional[float] = None
+    strategy_notes: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.collection_mode is not None and not isinstance(self.collection_mode, CollectionModeEnum):
@@ -1636,6 +2122,45 @@ class DataCollectionStrategy(AttributeGroup):
         if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, float):
             self.dose_per_frame = float(self.dose_per_frame)
 
+        if self.wavelength_a is not None and not isinstance(self.wavelength_a, float):
+            self.wavelength_a = float(self.wavelength_a)
+
+        if self.detector is not None and not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self.detector_distance_mm is not None and not isinstance(self.detector_distance_mm, float):
+            self.detector_distance_mm = float(self.detector_distance_mm)
+
+        if self.beam_center_x_px is not None and not isinstance(self.beam_center_x_px, int):
+            self.beam_center_x_px = int(self.beam_center_x_px)
+
+        if self.beam_center_y_px is not None and not isinstance(self.beam_center_y_px, int):
+            self.beam_center_y_px = int(self.beam_center_y_px)
+
+        if self.beam_size_um is not None and not isinstance(self.beam_size_um, float):
+            self.beam_size_um = float(self.beam_size_um)
+
+        if self.flux_photons_per_s is not None and not isinstance(self.flux_photons_per_s, float):
+            self.flux_photons_per_s = float(self.flux_photons_per_s)
+
+        if self.transmission_percent is not None and not isinstance(self.transmission_percent, float):
+            self.transmission_percent = float(self.transmission_percent)
+
+        if self.attenuator is not None and not isinstance(self.attenuator, str):
+            self.attenuator = str(self.attenuator)
+
+        if self.temperature_k is not None and not isinstance(self.temperature_k, float):
+            self.temperature_k = float(self.temperature_k)
+
+        if self.oscillation_per_image_deg is not None and not isinstance(self.oscillation_per_image_deg, float):
+            self.oscillation_per_image_deg = float(self.oscillation_per_image_deg)
+
+        if self.total_rotation_deg is not None and not isinstance(self.total_rotation_deg, float):
+            self.total_rotation_deg = float(self.total_rotation_deg)
+
+        if self.strategy_notes is not None and not isinstance(self.strategy_notes, str):
+            self.strategy_notes = str(self.strategy_notes)
+
         super().__post_init__(**kwargs)
 
 
@@ -1652,30 +2177,134 @@ class QualityMetrics(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.QualityMetrics
 
     resolution: Optional[float] = None
+    resolution_high_shell_a: Optional[float] = None
+    resolution_low_a: Optional[float] = None
     completeness: Optional[float] = None
+    completeness_high_res_shell_percent: Optional[float] = None
     signal_to_noise: Optional[float] = None
-    r_factor: Optional[float] = None
+    mean_i_over_sigma_i: Optional[float] = None
+    space_group: Optional[str] = None
+    unit_cell_a: Optional[float] = None
+    unit_cell_b: Optional[float] = None
+    unit_cell_c: Optional[float] = None
+    unit_cell_alpha: Optional[float] = None
+    unit_cell_beta: Optional[float] = None
+    unit_cell_gamma: Optional[float] = None
+    multiplicity: Optional[float] = None
+    cc_half: Optional[float] = None
+    r_merge: Optional[float] = None
+    r_pim: Optional[float] = None
+    wilson_b_factor_a2: Optional[float] = None
+    anomalous_used: Optional[Union[bool, Bool]] = None
+    anom_corr: Optional[float] = None
+    anom_sig_ano: Optional[float] = None
+    r_work: Optional[float] = None
+    r_free: Optional[float] = None
+    ramachandran_favored_percent: Optional[float] = None
+    ramachandran_outliers_percent: Optional[float] = None
+    clashscore: Optional[float] = None
+    molprobity_score: Optional[float] = None
+    average_b_factor_a2: Optional[float] = None
     i_zero: Optional[float] = None
     rg: Optional[float] = None
+    r_factor: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.resolution is not None and not isinstance(self.resolution, float):
             self.resolution = float(self.resolution)
 
+        if self.resolution_high_shell_a is not None and not isinstance(self.resolution_high_shell_a, float):
+            self.resolution_high_shell_a = float(self.resolution_high_shell_a)
+
+        if self.resolution_low_a is not None and not isinstance(self.resolution_low_a, float):
+            self.resolution_low_a = float(self.resolution_low_a)
+
         if self.completeness is not None and not isinstance(self.completeness, float):
             self.completeness = float(self.completeness)
+
+        if self.completeness_high_res_shell_percent is not None and not isinstance(self.completeness_high_res_shell_percent, float):
+            self.completeness_high_res_shell_percent = float(self.completeness_high_res_shell_percent)
 
         if self.signal_to_noise is not None and not isinstance(self.signal_to_noise, float):
             self.signal_to_noise = float(self.signal_to_noise)
 
-        if self.r_factor is not None and not isinstance(self.r_factor, float):
-            self.r_factor = float(self.r_factor)
+        if self.mean_i_over_sigma_i is not None and not isinstance(self.mean_i_over_sigma_i, float):
+            self.mean_i_over_sigma_i = float(self.mean_i_over_sigma_i)
+
+        if self.space_group is not None and not isinstance(self.space_group, str):
+            self.space_group = str(self.space_group)
+
+        if self.unit_cell_a is not None and not isinstance(self.unit_cell_a, float):
+            self.unit_cell_a = float(self.unit_cell_a)
+
+        if self.unit_cell_b is not None and not isinstance(self.unit_cell_b, float):
+            self.unit_cell_b = float(self.unit_cell_b)
+
+        if self.unit_cell_c is not None and not isinstance(self.unit_cell_c, float):
+            self.unit_cell_c = float(self.unit_cell_c)
+
+        if self.unit_cell_alpha is not None and not isinstance(self.unit_cell_alpha, float):
+            self.unit_cell_alpha = float(self.unit_cell_alpha)
+
+        if self.unit_cell_beta is not None and not isinstance(self.unit_cell_beta, float):
+            self.unit_cell_beta = float(self.unit_cell_beta)
+
+        if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, float):
+            self.unit_cell_gamma = float(self.unit_cell_gamma)
+
+        if self.multiplicity is not None and not isinstance(self.multiplicity, float):
+            self.multiplicity = float(self.multiplicity)
+
+        if self.cc_half is not None and not isinstance(self.cc_half, float):
+            self.cc_half = float(self.cc_half)
+
+        if self.r_merge is not None and not isinstance(self.r_merge, float):
+            self.r_merge = float(self.r_merge)
+
+        if self.r_pim is not None and not isinstance(self.r_pim, float):
+            self.r_pim = float(self.r_pim)
+
+        if self.wilson_b_factor_a2 is not None and not isinstance(self.wilson_b_factor_a2, float):
+            self.wilson_b_factor_a2 = float(self.wilson_b_factor_a2)
+
+        if self.anomalous_used is not None and not isinstance(self.anomalous_used, Bool):
+            self.anomalous_used = Bool(self.anomalous_used)
+
+        if self.anom_corr is not None and not isinstance(self.anom_corr, float):
+            self.anom_corr = float(self.anom_corr)
+
+        if self.anom_sig_ano is not None and not isinstance(self.anom_sig_ano, float):
+            self.anom_sig_ano = float(self.anom_sig_ano)
+
+        if self.r_work is not None and not isinstance(self.r_work, float):
+            self.r_work = float(self.r_work)
+
+        if self.r_free is not None and not isinstance(self.r_free, float):
+            self.r_free = float(self.r_free)
+
+        if self.ramachandran_favored_percent is not None and not isinstance(self.ramachandran_favored_percent, float):
+            self.ramachandran_favored_percent = float(self.ramachandran_favored_percent)
+
+        if self.ramachandran_outliers_percent is not None and not isinstance(self.ramachandran_outliers_percent, float):
+            self.ramachandran_outliers_percent = float(self.ramachandran_outliers_percent)
+
+        if self.clashscore is not None and not isinstance(self.clashscore, float):
+            self.clashscore = float(self.clashscore)
+
+        if self.molprobity_score is not None and not isinstance(self.molprobity_score, float):
+            self.molprobity_score = float(self.molprobity_score)
+
+        if self.average_b_factor_a2 is not None and not isinstance(self.average_b_factor_a2, float):
+            self.average_b_factor_a2 = float(self.average_b_factor_a2)
 
         if self.i_zero is not None and not isinstance(self.i_zero, float):
             self.i_zero = float(self.i_zero)
 
         if self.rg is not None and not isinstance(self.rg, float):
             self.rg = float(self.rg)
+
+        if self.r_factor is not None and not isinstance(self.r_factor, float):
+            self.r_factor = float(self.r_factor)
 
         super().__post_init__(**kwargs)
 
@@ -1709,6 +2338,801 @@ class ComputeResources(AttributeGroup):
 
         if self.storage_gb is not None and not isinstance(self.storage_gb, float):
             self.storage_gb = float(self.storage_gb)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinAnnotation(NamedThing):
+    """
+    Base class for all protein-related functional and structural annotations
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinAnnotation"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinAnnotation"
+    class_name: ClassVar[str] = "ProteinAnnotation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinAnnotation
+
+    id: Union[str, ProteinAnnotationId] = None
+    protein_id: str = None
+    pdb_entry: Optional[str] = None
+    chain_id: Optional[str] = None
+    residue_range: Optional[str] = None
+    confidence_score: Optional[float] = None
+    evidence_type: Optional[Union[str, "EvidenceTypeEnum"]] = None
+    evidence_code: Optional[Union[str, URIorCURIE]] = None
+    source_database: Optional[Union[str, "AnnotationSourceEnum"]] = None
+    annotation_method: Optional[str] = None
+    publication_ids: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinAnnotationId):
+            self.id = ProteinAnnotationId(self.id)
+
+        if self._is_empty(self.protein_id):
+            self.MissingRequiredField("protein_id")
+        if not isinstance(self.protein_id, str):
+            self.protein_id = str(self.protein_id)
+
+        if self.pdb_entry is not None and not isinstance(self.pdb_entry, str):
+            self.pdb_entry = str(self.pdb_entry)
+
+        if self.chain_id is not None and not isinstance(self.chain_id, str):
+            self.chain_id = str(self.chain_id)
+
+        if self.residue_range is not None and not isinstance(self.residue_range, str):
+            self.residue_range = str(self.residue_range)
+
+        if self.confidence_score is not None and not isinstance(self.confidence_score, float):
+            self.confidence_score = float(self.confidence_score)
+
+        if self.evidence_type is not None and not isinstance(self.evidence_type, EvidenceTypeEnum):
+            self.evidence_type = EvidenceTypeEnum(self.evidence_type)
+
+        if self.evidence_code is not None and not isinstance(self.evidence_code, URIorCURIE):
+            self.evidence_code = URIorCURIE(self.evidence_code)
+
+        if self.source_database is not None and not isinstance(self.source_database, AnnotationSourceEnum):
+            self.source_database = AnnotationSourceEnum(self.source_database)
+
+        if self.annotation_method is not None and not isinstance(self.annotation_method, str):
+            self.annotation_method = str(self.annotation_method)
+
+        if not isinstance(self.publication_ids, list):
+            self.publication_ids = [self.publication_ids] if self.publication_ids is not None else []
+        self.publication_ids = [v if isinstance(v, str) else str(v) for v in self.publication_ids]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class FunctionalSite(ProteinAnnotation):
+    """
+    Functional sites including catalytic, binding, and regulatory sites
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/FunctionalSite"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/FunctionalSite"
+    class_name: ClassVar[str] = "FunctionalSite"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.FunctionalSite
+
+    id: Union[str, FunctionalSiteId] = None
+    protein_id: str = None
+    site_type: Union[str, "FunctionalSiteTypeEnum"] = None
+    site_name: Optional[str] = None
+    residues: Optional[Union[str, list[str]]] = empty_list()
+    ligand_interactions: Optional[Union[Union[dict, "LigandInteraction"], list[Union[dict, "LigandInteraction"]]]] = empty_list()
+    conservation_score: Optional[float] = None
+    functional_importance: Optional[str] = None
+    go_terms: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    ec_number: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FunctionalSiteId):
+            self.id = FunctionalSiteId(self.id)
+
+        if self._is_empty(self.site_type):
+            self.MissingRequiredField("site_type")
+        if not isinstance(self.site_type, FunctionalSiteTypeEnum):
+            self.site_type = FunctionalSiteTypeEnum(self.site_type)
+
+        if self.site_name is not None and not isinstance(self.site_name, str):
+            self.site_name = str(self.site_name)
+
+        if not isinstance(self.residues, list):
+            self.residues = [self.residues] if self.residues is not None else []
+        self.residues = [v if isinstance(v, str) else str(v) for v in self.residues]
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        if self.conservation_score is not None and not isinstance(self.conservation_score, float):
+            self.conservation_score = float(self.conservation_score)
+
+        if self.functional_importance is not None and not isinstance(self.functional_importance, str):
+            self.functional_importance = str(self.functional_importance)
+
+        if not isinstance(self.go_terms, list):
+            self.go_terms = [self.go_terms] if self.go_terms is not None else []
+        self.go_terms = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.go_terms]
+
+        if self.ec_number is not None and not isinstance(self.ec_number, str):
+            self.ec_number = str(self.ec_number)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StructuralFeature(ProteinAnnotation):
+    """
+    Structural features and properties of protein regions
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/StructuralFeature"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/StructuralFeature"
+    class_name: ClassVar[str] = "StructuralFeature"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.StructuralFeature
+
+    id: Union[str, StructuralFeatureId] = None
+    protein_id: str = None
+    feature_type: Union[str, "StructuralFeatureTypeEnum"] = None
+    secondary_structure: Optional[Union[str, "SecondaryStructureEnum"]] = None
+    solvent_accessibility: Optional[float] = None
+    backbone_flexibility: Optional[float] = None
+    disorder_probability: Optional[float] = None
+    conformational_state: Optional[Union[str, "ConformationalStateEnum"]] = None
+    structural_motif: Optional[str] = None
+    domain_assignment: Optional[str] = None
+    domain_id: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StructuralFeatureId):
+            self.id = StructuralFeatureId(self.id)
+
+        if self._is_empty(self.feature_type):
+            self.MissingRequiredField("feature_type")
+        if not isinstance(self.feature_type, StructuralFeatureTypeEnum):
+            self.feature_type = StructuralFeatureTypeEnum(self.feature_type)
+
+        if self.secondary_structure is not None and not isinstance(self.secondary_structure, SecondaryStructureEnum):
+            self.secondary_structure = SecondaryStructureEnum(self.secondary_structure)
+
+        if self.solvent_accessibility is not None and not isinstance(self.solvent_accessibility, float):
+            self.solvent_accessibility = float(self.solvent_accessibility)
+
+        if self.backbone_flexibility is not None and not isinstance(self.backbone_flexibility, float):
+            self.backbone_flexibility = float(self.backbone_flexibility)
+
+        if self.disorder_probability is not None and not isinstance(self.disorder_probability, float):
+            self.disorder_probability = float(self.disorder_probability)
+
+        if self.conformational_state is not None and not isinstance(self.conformational_state, ConformationalStateEnum):
+            self.conformational_state = ConformationalStateEnum(self.conformational_state)
+
+        if self.structural_motif is not None and not isinstance(self.structural_motif, str):
+            self.structural_motif = str(self.structural_motif)
+
+        if self.domain_assignment is not None and not isinstance(self.domain_assignment, str):
+            self.domain_assignment = str(self.domain_assignment)
+
+        if self.domain_id is not None and not isinstance(self.domain_id, str):
+            self.domain_id = str(self.domain_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class LigandInteraction(AttributeGroup):
+    """
+    Small molecule/ligand interactions with proteins
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/LigandInteraction"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/LigandInteraction"
+    class_name: ClassVar[str] = "LigandInteraction"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.LigandInteraction
+
+    ligand_id: str = None
+    ligand_name: str = None
+    ligand_smiles: Optional[str] = None
+    binding_affinity: Optional[float] = None
+    binding_affinity_type: Optional[Union[str, "BindingAffinityTypeEnum"]] = None
+    binding_affinity_unit: Optional[Union[str, "AffinityUnitEnum"]] = None
+    interaction_type: Optional[Union[str, "InteractionTypeEnum"]] = None
+    binding_site_residues: Optional[Union[str, list[str]]] = empty_list()
+    is_cofactor: Optional[Union[bool, Bool]] = None
+    is_drug_like: Optional[Union[bool, Bool]] = None
+    druggability_score: Optional[float] = None
+    interaction_distance: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.ligand_id):
+            self.MissingRequiredField("ligand_id")
+        if not isinstance(self.ligand_id, str):
+            self.ligand_id = str(self.ligand_id)
+
+        if self._is_empty(self.ligand_name):
+            self.MissingRequiredField("ligand_name")
+        if not isinstance(self.ligand_name, str):
+            self.ligand_name = str(self.ligand_name)
+
+        if self.ligand_smiles is not None and not isinstance(self.ligand_smiles, str):
+            self.ligand_smiles = str(self.ligand_smiles)
+
+        if self.binding_affinity is not None and not isinstance(self.binding_affinity, float):
+            self.binding_affinity = float(self.binding_affinity)
+
+        if self.binding_affinity_type is not None and not isinstance(self.binding_affinity_type, BindingAffinityTypeEnum):
+            self.binding_affinity_type = BindingAffinityTypeEnum(self.binding_affinity_type)
+
+        if self.binding_affinity_unit is not None and not isinstance(self.binding_affinity_unit, AffinityUnitEnum):
+            self.binding_affinity_unit = AffinityUnitEnum(self.binding_affinity_unit)
+
+        if self.interaction_type is not None and not isinstance(self.interaction_type, InteractionTypeEnum):
+            self.interaction_type = InteractionTypeEnum(self.interaction_type)
+
+        if not isinstance(self.binding_site_residues, list):
+            self.binding_site_residues = [self.binding_site_residues] if self.binding_site_residues is not None else []
+        self.binding_site_residues = [v if isinstance(v, str) else str(v) for v in self.binding_site_residues]
+
+        if self.is_cofactor is not None and not isinstance(self.is_cofactor, Bool):
+            self.is_cofactor = Bool(self.is_cofactor)
+
+        if self.is_drug_like is not None and not isinstance(self.is_drug_like, Bool):
+            self.is_drug_like = Bool(self.is_drug_like)
+
+        if self.druggability_score is not None and not isinstance(self.druggability_score, float):
+            self.druggability_score = float(self.druggability_score)
+
+        if self.interaction_distance is not None and not isinstance(self.interaction_distance, float):
+            self.interaction_distance = float(self.interaction_distance)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinProteinInteraction(ProteinAnnotation):
+    """
+    Protein-protein interactions and interfaces
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinProteinInteraction"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinProteinInteraction"
+    class_name: ClassVar[str] = "ProteinProteinInteraction"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinProteinInteraction
+
+    id: Union[str, ProteinProteinInteractionId] = None
+    protein_id: str = None
+    partner_protein_id: str = None
+    partner_chain_id: Optional[str] = None
+    interface_residues: Optional[Union[str, list[str]]] = empty_list()
+    partner_interface_residues: Optional[Union[str, list[str]]] = empty_list()
+    interface_area: Optional[float] = None
+    binding_energy: Optional[float] = None
+    dissociation_constant: Optional[float] = None
+    complex_stability: Optional[Union[str, "ComplexStabilityEnum"]] = None
+    biological_assembly: Optional[Union[bool, Bool]] = None
+    interaction_evidence: Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinProteinInteractionId):
+            self.id = ProteinProteinInteractionId(self.id)
+
+        if self._is_empty(self.partner_protein_id):
+            self.MissingRequiredField("partner_protein_id")
+        if not isinstance(self.partner_protein_id, str):
+            self.partner_protein_id = str(self.partner_protein_id)
+
+        if self.partner_chain_id is not None and not isinstance(self.partner_chain_id, str):
+            self.partner_chain_id = str(self.partner_chain_id)
+
+        if not isinstance(self.interface_residues, list):
+            self.interface_residues = [self.interface_residues] if self.interface_residues is not None else []
+        self.interface_residues = [v if isinstance(v, str) else str(v) for v in self.interface_residues]
+
+        if not isinstance(self.partner_interface_residues, list):
+            self.partner_interface_residues = [self.partner_interface_residues] if self.partner_interface_residues is not None else []
+        self.partner_interface_residues = [v if isinstance(v, str) else str(v) for v in self.partner_interface_residues]
+
+        if self.interface_area is not None and not isinstance(self.interface_area, float):
+            self.interface_area = float(self.interface_area)
+
+        if self.binding_energy is not None and not isinstance(self.binding_energy, float):
+            self.binding_energy = float(self.binding_energy)
+
+        if self.dissociation_constant is not None and not isinstance(self.dissociation_constant, float):
+            self.dissociation_constant = float(self.dissociation_constant)
+
+        if self.complex_stability is not None and not isinstance(self.complex_stability, ComplexStabilityEnum):
+            self.complex_stability = ComplexStabilityEnum(self.complex_stability)
+
+        if self.biological_assembly is not None and not isinstance(self.biological_assembly, Bool):
+            self.biological_assembly = Bool(self.biological_assembly)
+
+        if not isinstance(self.interaction_evidence, list):
+            self.interaction_evidence = [self.interaction_evidence] if self.interaction_evidence is not None else []
+        self.interaction_evidence = [v if isinstance(v, InteractionEvidenceEnum) else InteractionEvidenceEnum(v) for v in self.interaction_evidence]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MutationEffect(ProteinAnnotation):
+    """
+    Effects of mutations and variants on protein structure and function
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/MutationEffect"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/MutationEffect"
+    class_name: ClassVar[str] = "MutationEffect"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.MutationEffect
+
+    id: Union[str, MutationEffectId] = None
+    protein_id: str = None
+    mutation: str = None
+    mutation_type: Optional[Union[str, "MutationTypeEnum"]] = None
+    effect_on_stability: Optional[Union[str, "StabilityEffectEnum"]] = None
+    delta_delta_g: Optional[float] = None
+    effect_on_function: Optional[Union[str, "FunctionalEffectEnum"]] = None
+    functional_impact_description: Optional[str] = None
+    disease_association: Optional[str] = None
+    omim_id: Optional[str] = None
+    clinical_significance: Optional[Union[str, "ClinicalSignificanceEnum"]] = None
+    allele_frequency: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MutationEffectId):
+            self.id = MutationEffectId(self.id)
+
+        if self._is_empty(self.mutation):
+            self.MissingRequiredField("mutation")
+        if not isinstance(self.mutation, str):
+            self.mutation = str(self.mutation)
+
+        if self.mutation_type is not None and not isinstance(self.mutation_type, MutationTypeEnum):
+            self.mutation_type = MutationTypeEnum(self.mutation_type)
+
+        if self.effect_on_stability is not None and not isinstance(self.effect_on_stability, StabilityEffectEnum):
+            self.effect_on_stability = StabilityEffectEnum(self.effect_on_stability)
+
+        if self.delta_delta_g is not None and not isinstance(self.delta_delta_g, float):
+            self.delta_delta_g = float(self.delta_delta_g)
+
+        if self.effect_on_function is not None and not isinstance(self.effect_on_function, FunctionalEffectEnum):
+            self.effect_on_function = FunctionalEffectEnum(self.effect_on_function)
+
+        if self.functional_impact_description is not None and not isinstance(self.functional_impact_description, str):
+            self.functional_impact_description = str(self.functional_impact_description)
+
+        if self.disease_association is not None and not isinstance(self.disease_association, str):
+            self.disease_association = str(self.disease_association)
+
+        if self.omim_id is not None and not isinstance(self.omim_id, str):
+            self.omim_id = str(self.omim_id)
+
+        if self.clinical_significance is not None and not isinstance(self.clinical_significance, ClinicalSignificanceEnum):
+            self.clinical_significance = ClinicalSignificanceEnum(self.clinical_significance)
+
+        if self.allele_frequency is not None and not isinstance(self.allele_frequency, float):
+            self.allele_frequency = float(self.allele_frequency)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BiophysicalProperty(AttributeGroup):
+    """
+    Measured or calculated biophysical properties
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/BiophysicalProperty"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/BiophysicalProperty"
+    class_name: ClassVar[str] = "BiophysicalProperty"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.BiophysicalProperty
+
+    property_type: Union[str, "BiophysicalPropertyEnum"] = None
+    value: float = None
+    unit: str = None
+    error: Optional[float] = None
+    measurement_conditions: Optional[str] = None
+    temperature: Optional[float] = None
+    ph: Optional[float] = None
+    ionic_strength: Optional[float] = None
+    experimental_method: Optional[Union[str, "BiophysicalMethodEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.property_type):
+            self.MissingRequiredField("property_type")
+        if not isinstance(self.property_type, BiophysicalPropertyEnum):
+            self.property_type = BiophysicalPropertyEnum(self.property_type)
+
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, float):
+            self.value = float(self.value)
+
+        if self._is_empty(self.unit):
+            self.MissingRequiredField("unit")
+        if not isinstance(self.unit, str):
+            self.unit = str(self.unit)
+
+        if self.error is not None and not isinstance(self.error, float):
+            self.error = float(self.error)
+
+        if self.measurement_conditions is not None and not isinstance(self.measurement_conditions, str):
+            self.measurement_conditions = str(self.measurement_conditions)
+
+        if self.temperature is not None and not isinstance(self.temperature, float):
+            self.temperature = float(self.temperature)
+
+        if self.ph is not None and not isinstance(self.ph, float):
+            self.ph = float(self.ph)
+
+        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
+            self.ionic_strength = float(self.ionic_strength)
+
+        if self.experimental_method is not None and not isinstance(self.experimental_method, BiophysicalMethodEnum):
+            self.experimental_method = BiophysicalMethodEnum(self.experimental_method)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ConformationalEnsemble(NamedThing):
+    """
+    Ensemble of conformational states for a protein
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalEnsemble"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalEnsemble"
+    class_name: ClassVar[str] = "ConformationalEnsemble"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalEnsemble
+
+    id: Union[str, ConformationalEnsembleId] = None
+    protein_id: str = None
+    conformational_states: Optional[Union[Union[dict, "ConformationalState"], list[Union[dict, "ConformationalState"]]]] = empty_list()
+    clustering_method: Optional[str] = None
+    rmsd_threshold: Optional[float] = None
+    transition_pathways: Optional[str] = None
+    energy_landscape: Optional[str] = None
+    principal_motions: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ConformationalEnsembleId):
+            self.id = ConformationalEnsembleId(self.id)
+
+        if self._is_empty(self.protein_id):
+            self.MissingRequiredField("protein_id")
+        if not isinstance(self.protein_id, str):
+            self.protein_id = str(self.protein_id)
+
+        if not isinstance(self.conformational_states, list):
+            self.conformational_states = [self.conformational_states] if self.conformational_states is not None else []
+        self.conformational_states = [v if isinstance(v, ConformationalState) else ConformationalState(**as_dict(v)) for v in self.conformational_states]
+
+        if self.clustering_method is not None and not isinstance(self.clustering_method, str):
+            self.clustering_method = str(self.clustering_method)
+
+        if self.rmsd_threshold is not None and not isinstance(self.rmsd_threshold, float):
+            self.rmsd_threshold = float(self.rmsd_threshold)
+
+        if self.transition_pathways is not None and not isinstance(self.transition_pathways, str):
+            self.transition_pathways = str(self.transition_pathways)
+
+        if self.energy_landscape is not None and not isinstance(self.energy_landscape, str):
+            self.energy_landscape = str(self.energy_landscape)
+
+        if not isinstance(self.principal_motions, list):
+            self.principal_motions = [self.principal_motions] if self.principal_motions is not None else []
+        self.principal_motions = [v if isinstance(v, str) else str(v) for v in self.principal_motions]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ConformationalState(AttributeGroup):
+    """
+    Individual conformational state
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalState"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalState"
+    class_name: ClassVar[str] = "ConformationalState"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalState
+
+    state_id: str = None
+    state_name: Optional[str] = None
+    pdb_entries: Optional[Union[str, list[str]]] = empty_list()
+    population: Optional[float] = None
+    free_energy: Optional[float] = None
+    rmsd_from_reference: Optional[float] = None
+    characteristic_features: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.state_id):
+            self.MissingRequiredField("state_id")
+        if not isinstance(self.state_id, str):
+            self.state_id = str(self.state_id)
+
+        if self.state_name is not None and not isinstance(self.state_name, str):
+            self.state_name = str(self.state_name)
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, str) else str(v) for v in self.pdb_entries]
+
+        if self.population is not None and not isinstance(self.population, float):
+            self.population = float(self.population)
+
+        if self.free_energy is not None and not isinstance(self.free_energy, float):
+            self.free_energy = float(self.free_energy)
+
+        if self.rmsd_from_reference is not None and not isinstance(self.rmsd_from_reference, float):
+            self.rmsd_from_reference = float(self.rmsd_from_reference)
+
+        if not isinstance(self.characteristic_features, list):
+            self.characteristic_features = [self.characteristic_features] if self.characteristic_features is not None else []
+        self.characteristic_features = [v if isinstance(v, str) else str(v) for v in self.characteristic_features]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PostTranslationalModification(ProteinAnnotation):
+    """
+    Post-translational modifications observed or predicted
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/PostTranslationalModification"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/PostTranslationalModification"
+    class_name: ClassVar[str] = "PostTranslationalModification"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.PostTranslationalModification
+
+    id: Union[str, PostTranslationalModificationId] = None
+    protein_id: str = None
+    modification_type: Union[str, "PTMTypeEnum"] = None
+    modified_residue: str = None
+    modification_group: Optional[str] = None
+    mass_shift: Optional[float] = None
+    functional_effect: Optional[str] = None
+    regulatory_role: Optional[str] = None
+    enzyme: Optional[str] = None
+    removal_enzyme: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PostTranslationalModificationId):
+            self.id = PostTranslationalModificationId(self.id)
+
+        if self._is_empty(self.modification_type):
+            self.MissingRequiredField("modification_type")
+        if not isinstance(self.modification_type, PTMTypeEnum):
+            self.modification_type = PTMTypeEnum(self.modification_type)
+
+        if self._is_empty(self.modified_residue):
+            self.MissingRequiredField("modified_residue")
+        if not isinstance(self.modified_residue, str):
+            self.modified_residue = str(self.modified_residue)
+
+        if self.modification_group is not None and not isinstance(self.modification_group, str):
+            self.modification_group = str(self.modification_group)
+
+        if self.mass_shift is not None and not isinstance(self.mass_shift, float):
+            self.mass_shift = float(self.mass_shift)
+
+        if self.functional_effect is not None and not isinstance(self.functional_effect, str):
+            self.functional_effect = str(self.functional_effect)
+
+        if self.regulatory_role is not None and not isinstance(self.regulatory_role, str):
+            self.regulatory_role = str(self.regulatory_role)
+
+        if self.enzyme is not None and not isinstance(self.enzyme, str):
+            self.enzyme = str(self.enzyme)
+
+        if self.removal_enzyme is not None and not isinstance(self.removal_enzyme, str):
+            self.removal_enzyme = str(self.removal_enzyme)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DatabaseCrossReference(AttributeGroup):
+    """
+    Cross-references to external databases
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/DatabaseCrossReference"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/DatabaseCrossReference"
+    class_name: ClassVar[str] = "DatabaseCrossReference"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.DatabaseCrossReference
+
+    database_name: Union[str, "DatabaseNameEnum"] = None
+    database_id: str = None
+    database_url: Optional[Union[str, URI]] = None
+    last_updated: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.database_name):
+            self.MissingRequiredField("database_name")
+        if not isinstance(self.database_name, DatabaseNameEnum):
+            self.database_name = DatabaseNameEnum(self.database_name)
+
+        if self._is_empty(self.database_id):
+            self.MissingRequiredField("database_id")
+        if not isinstance(self.database_id, str):
+            self.database_id = str(self.database_id)
+
+        if self.database_url is not None and not isinstance(self.database_url, URI):
+            self.database_url = URI(self.database_url)
+
+        if self.last_updated is not None and not isinstance(self.last_updated, str):
+            self.last_updated = str(self.last_updated)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class EvolutionaryConservation(ProteinAnnotation):
+    """
+    Evolutionary conservation information
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/EvolutionaryConservation"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/EvolutionaryConservation"
+    class_name: ClassVar[str] = "EvolutionaryConservation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.EvolutionaryConservation
+
+    id: Union[str, EvolutionaryConservationId] = None
+    protein_id: str = None
+    conservation_score: Optional[float] = None
+    conserved_residues: Optional[Union[str, list[str]]] = empty_list()
+    variable_residues: Optional[Union[str, list[str]]] = empty_list()
+    conservation_method: Optional[str] = None
+    alignment_depth: Optional[int] = None
+    taxonomic_range: Optional[str] = None
+    coevolved_residues: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EvolutionaryConservationId):
+            self.id = EvolutionaryConservationId(self.id)
+
+        if self.conservation_score is not None and not isinstance(self.conservation_score, float):
+            self.conservation_score = float(self.conservation_score)
+
+        if not isinstance(self.conserved_residues, list):
+            self.conserved_residues = [self.conserved_residues] if self.conserved_residues is not None else []
+        self.conserved_residues = [v if isinstance(v, str) else str(v) for v in self.conserved_residues]
+
+        if not isinstance(self.variable_residues, list):
+            self.variable_residues = [self.variable_residues] if self.variable_residues is not None else []
+        self.variable_residues = [v if isinstance(v, str) else str(v) for v in self.variable_residues]
+
+        if self.conservation_method is not None and not isinstance(self.conservation_method, str):
+            self.conservation_method = str(self.conservation_method)
+
+        if self.alignment_depth is not None and not isinstance(self.alignment_depth, int):
+            self.alignment_depth = int(self.alignment_depth)
+
+        if self.taxonomic_range is not None and not isinstance(self.taxonomic_range, str):
+            self.taxonomic_range = str(self.taxonomic_range)
+
+        if not isinstance(self.coevolved_residues, list):
+            self.coevolved_residues = [self.coevolved_residues] if self.coevolved_residues is not None else []
+        self.coevolved_residues = [v if isinstance(v, str) else str(v) for v in self.coevolved_residues]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AggregatedProteinView(NamedThing):
+    """
+    Aggregated view of all structural and functional data for a protein
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/AggregatedProteinView"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/AggregatedProteinView"
+    class_name: ClassVar[str] = "AggregatedProteinView"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.AggregatedProteinView
+
+    id: Union[str, AggregatedProteinViewId] = None
+    uniprot_id: str = None
+    protein_name: str = None
+    organism: Optional[str] = None
+    organism_id: Optional[int] = None
+    pdb_entries: Optional[Union[str, list[str]]] = empty_list()
+    functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]] = empty_dict()
+    structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]] = empty_dict()
+    protein_interactions: Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]] = empty_dict()
+    ligand_interactions: Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]] = empty_list()
+    mutations: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]] = empty_dict()
+    ptms: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]] = empty_dict()
+    biophysical_properties: Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]] = empty_list()
+    conformational_ensemble: Optional[Union[dict, ConformationalEnsemble]] = None
+    evolutionary_conservation: Optional[Union[dict, EvolutionaryConservation]] = None
+    cross_references: Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AggregatedProteinViewId):
+            self.id = AggregatedProteinViewId(self.id)
+
+        if self._is_empty(self.uniprot_id):
+            self.MissingRequiredField("uniprot_id")
+        if not isinstance(self.uniprot_id, str):
+            self.uniprot_id = str(self.uniprot_id)
+
+        if self._is_empty(self.protein_name):
+            self.MissingRequiredField("protein_name")
+        if not isinstance(self.protein_name, str):
+            self.protein_name = str(self.protein_name)
+
+        if self.organism is not None and not isinstance(self.organism, str):
+            self.organism = str(self.organism)
+
+        if self.organism_id is not None and not isinstance(self.organism_id, int):
+            self.organism_id = int(self.organism_id)
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, str) else str(v) for v in self.pdb_entries]
+
+        self._normalize_inlined_as_list(slot_name="functional_sites", slot_type=FunctionalSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="structural_features", slot_type=StructuralFeature, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="protein_interactions", slot_type=ProteinProteinInteraction, key_name="id", keyed=True)
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        self._normalize_inlined_as_list(slot_name="mutations", slot_type=MutationEffect, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="ptms", slot_type=PostTranslationalModification, key_name="id", keyed=True)
+
+        if not isinstance(self.biophysical_properties, list):
+            self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
+        self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
+
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
+
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
+
+        if not isinstance(self.cross_references, list):
+            self.cross_references = [self.cross_references] if self.cross_references is not None else []
+        self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
 
         super().__post_init__(**kwargs)
 
@@ -1868,9 +3292,15 @@ class CrystallizationMethodEnum(EnumDefinitionImpl):
     vapor_diffusion_sitting = PermissibleValue(
         text="vapor_diffusion_sitting",
         description="Vapor diffusion sitting drop")
+    batch = PermissibleValue(
+        text="batch",
+        description="Batch crystallization")
     microbatch = PermissibleValue(
         text="microbatch",
         description="Microbatch under oil")
+    lcp = PermissibleValue(
+        text="lcp",
+        description="Lipidic cubic phase (LCP)")
     dialysis = PermissibleValue(
         text="dialysis",
         description="Dialysis method")
@@ -2205,6 +3635,988 @@ class IlluminationTypeEnum(EnumDefinitionImpl):
         description="Types of illumination for optical microscopy",
     )
 
+class ExpressionSystemEnum(EnumDefinitionImpl):
+    """
+    Expression systems for recombinant protein production
+    """
+    bacteria = PermissibleValue(
+        text="bacteria",
+        description="Bacterial expression (e.g., E. coli)")
+    yeast = PermissibleValue(
+        text="yeast",
+        description="Yeast expression (e.g., S. cerevisiae, P. pastoris)")
+    insect = PermissibleValue(
+        text="insect",
+        description="Insect cell expression (e.g., Sf9, High Five)")
+    mammalian = PermissibleValue(
+        text="mammalian",
+        description="Mammalian cell expression (e.g., HEK293, CHO)")
+    cell_free = PermissibleValue(
+        text="cell_free",
+        description="Cell-free expression system")
+
+    _defn = EnumDefinition(
+        name="ExpressionSystemEnum",
+        description="Expression systems for recombinant protein production",
+    )
+
+class PurificationStepEnum(EnumDefinitionImpl):
+    """
+    Protein purification steps and methods
+    """
+    affinity_ni_nta = PermissibleValue(
+        text="affinity_ni_nta",
+        description="Affinity chromatography using Ni-NTA resin")
+    affinity_co_nta = PermissibleValue(
+        text="affinity_co_nta",
+        description="Affinity chromatography using Co-NTA resin")
+    affinity_strep = PermissibleValue(
+        text="affinity_strep",
+        description="Affinity chromatography using Strep-tag")
+    affinity_mbp = PermissibleValue(
+        text="affinity_mbp",
+        description="Affinity chromatography using maltose-binding protein (MBP)")
+    affinity_gst = PermissibleValue(
+        text="affinity_gst",
+        description="Affinity chromatography using glutathione S-transferase (GST)")
+    tag_cleavage = PermissibleValue(
+        text="tag_cleavage",
+        description="Proteolytic cleavage of purification tags")
+    ion_exchange = PermissibleValue(
+        text="ion_exchange",
+        description="Ion-exchange chromatography (IEX)")
+    hydrophobic_interaction = PermissibleValue(
+        text="hydrophobic_interaction",
+        description="Hydrophobic interaction chromatography (HIC)")
+    size_exclusion = PermissibleValue(
+        text="size_exclusion",
+        description="Size-exclusion chromatography (SEC)")
+    dialysis = PermissibleValue(
+        text="dialysis",
+        description="Dialysis or buffer exchange")
+
+    _defn = EnumDefinition(
+        name="PurificationStepEnum",
+        description="Protein purification steps and methods",
+    )
+
+class PhasingMethodEnum(EnumDefinitionImpl):
+    """
+    Methods for phase determination in X-ray crystallography
+    """
+    molecular_replacement = PermissibleValue(
+        text="molecular_replacement",
+        description="Molecular replacement (MR)")
+    sad = PermissibleValue(
+        text="sad",
+        description="Single-wavelength anomalous diffraction (SAD)")
+    mad = PermissibleValue(
+        text="mad",
+        description="Multi-wavelength anomalous diffraction (MAD)")
+    sir = PermissibleValue(
+        text="sir",
+        description="Single isomorphous replacement (SIR)")
+    mir = PermissibleValue(
+        text="mir",
+        description="Multiple isomorphous replacement (MIR)")
+    siras = PermissibleValue(
+        text="siras",
+        description="Single isomorphous replacement with anomalous scattering (SIRAS)")
+    miras = PermissibleValue(
+        text="miras",
+        description="Multiple isomorphous replacement with anomalous scattering (MIRAS)")
+    fragile_mr = PermissibleValue(
+        text="fragile_mr",
+        description="Fragile molecular replacement or ensemble-based MR")
+
+    _defn = EnumDefinition(
+        name="PhasingMethodEnum",
+        description="Methods for phase determination in X-ray crystallography",
+    )
+
+class ExperimentalMethodEnum(EnumDefinitionImpl):
+    """
+    Experimental methods for structure determination
+    """
+    x_ray_diffraction = PermissibleValue(
+        text="x_ray_diffraction",
+        description="X-ray diffraction")
+    neutron_diffraction = PermissibleValue(
+        text="neutron_diffraction",
+        description="Neutron diffraction")
+    electron_diffraction = PermissibleValue(
+        text="electron_diffraction",
+        description="Electron diffraction (e.g., microED)")
+    fiber_diffraction = PermissibleValue(
+        text="fiber_diffraction",
+        description="Fiber diffraction")
+
+    _defn = EnumDefinition(
+        name="ExperimentalMethodEnum",
+        description="Experimental methods for structure determination",
+    )
+
+class FunctionalSiteTypeEnum(EnumDefinitionImpl):
+    """
+    Types of functional sites in proteins
+    """
+    active_site = PermissibleValue(
+        text="active_site",
+        description="Enzyme active site")
+    catalytic_site = PermissibleValue(
+        text="catalytic_site",
+        description="Catalytic residues")
+    binding_site = PermissibleValue(
+        text="binding_site",
+        description="General binding site")
+    allosteric_site = PermissibleValue(
+        text="allosteric_site",
+        description="Allosteric regulation site")
+    substrate_binding = PermissibleValue(
+        text="substrate_binding",
+        description="Substrate binding site")
+    cofactor_binding = PermissibleValue(
+        text="cofactor_binding",
+        description="Cofactor binding site")
+    inhibitor_binding = PermissibleValue(
+        text="inhibitor_binding",
+        description="Inhibitor binding site")
+    metal_binding = PermissibleValue(
+        text="metal_binding",
+        description="Metal ion binding site")
+    nucleotide_binding = PermissibleValue(
+        text="nucleotide_binding",
+        description="Nucleotide binding site")
+    phosphorylation_site = PermissibleValue(
+        text="phosphorylation_site",
+        description="Phosphorylation site")
+    glycosylation_site = PermissibleValue(
+        text="glycosylation_site",
+        description="Glycosylation site")
+    ubiquitination_site = PermissibleValue(
+        text="ubiquitination_site",
+        description="Ubiquitination site")
+    sumoylation_site = PermissibleValue(
+        text="sumoylation_site",
+        description="SUMOylation site")
+    acetylation_site = PermissibleValue(
+        text="acetylation_site",
+        description="Acetylation site")
+    methylation_site = PermissibleValue(
+        text="methylation_site",
+        description="Methylation site")
+    protein_binding = PermissibleValue(
+        text="protein_binding",
+        description="Protein-protein interaction site")
+    dna_binding = PermissibleValue(
+        text="dna_binding",
+        description="DNA binding site")
+    rna_binding = PermissibleValue(
+        text="rna_binding",
+        description="RNA binding site")
+    lipid_binding = PermissibleValue(
+        text="lipid_binding",
+        description="Lipid binding site")
+
+    _defn = EnumDefinition(
+        name="FunctionalSiteTypeEnum",
+        description="Types of functional sites in proteins",
+    )
+
+class StructuralFeatureTypeEnum(EnumDefinitionImpl):
+    """
+    Types of structural features
+    """
+    alpha_helix = PermissibleValue(
+        text="alpha_helix",
+        description="Alpha helix")
+    beta_sheet = PermissibleValue(
+        text="beta_sheet",
+        description="Beta sheet")
+    beta_strand = PermissibleValue(
+        text="beta_strand",
+        description="Beta strand")
+    turn = PermissibleValue(
+        text="turn",
+        description="Turn structure")
+    coil = PermissibleValue(
+        text="coil",
+        description="Random coil")
+    disordered_region = PermissibleValue(
+        text="disordered_region",
+        description="Intrinsically disordered region")
+    transmembrane_helix = PermissibleValue(
+        text="transmembrane_helix",
+        description="Transmembrane helix")
+    signal_peptide = PermissibleValue(
+        text="signal_peptide",
+        description="Signal peptide")
+    transit_peptide = PermissibleValue(
+        text="transit_peptide",
+        description="Transit peptide")
+    domain = PermissibleValue(
+        text="domain",
+        description="Protein domain")
+    repeat = PermissibleValue(
+        text="repeat",
+        description="Sequence repeat")
+    zinc_finger = PermissibleValue(
+        text="zinc_finger",
+        description="Zinc finger motif")
+    zinc_binding = PermissibleValue(
+        text="zinc_binding",
+        description="Zinc binding site")
+    coiled_coil = PermissibleValue(
+        text="coiled_coil",
+        description="Coiled coil")
+    motif = PermissibleValue(
+        text="motif",
+        description="Structural motif")
+    cavity = PermissibleValue(
+        text="cavity",
+        description="Structural cavity")
+    channel = PermissibleValue(
+        text="channel",
+        description="Molecular channel")
+    pore = PermissibleValue(
+        text="pore",
+        description="Molecular pore")
+    hinge = PermissibleValue(
+        text="hinge",
+        description="Hinge region")
+    linker = PermissibleValue(
+        text="linker",
+        description="Linker region")
+
+    _defn = EnumDefinition(
+        name="StructuralFeatureTypeEnum",
+        description="Types of structural features",
+    )
+
+class SecondaryStructureEnum(EnumDefinitionImpl):
+    """
+    Secondary structure types
+    """
+    helix = PermissibleValue(
+        text="helix",
+        description="Helix structure")
+    sheet = PermissibleValue(
+        text="sheet",
+        description="Beta sheet")
+    turn = PermissibleValue(
+        text="turn",
+        description="Turn")
+    coil = PermissibleValue(
+        text="coil",
+        description="Random coil")
+    helix_310 = PermissibleValue(
+        text="helix_310",
+        description="3-10 helix")
+    helix_pi = PermissibleValue(
+        text="helix_pi",
+        description="Pi helix")
+    bend = PermissibleValue(
+        text="bend",
+        description="Bend")
+    bridge = PermissibleValue(
+        text="bridge",
+        description="Beta bridge")
+
+    _defn = EnumDefinition(
+        name="SecondaryStructureEnum",
+        description="Secondary structure types",
+    )
+
+class ConformationalStateEnum(EnumDefinitionImpl):
+    """
+    Conformational states
+    """
+    open = PermissibleValue(
+        text="open",
+        description="Open conformation")
+    closed = PermissibleValue(
+        text="closed",
+        description="Closed conformation")
+    intermediate = PermissibleValue(
+        text="intermediate",
+        description="Intermediate state")
+    active = PermissibleValue(
+        text="active",
+        description="Active conformation")
+    inactive = PermissibleValue(
+        text="inactive",
+        description="Inactive conformation")
+    apo = PermissibleValue(
+        text="apo",
+        description="Apo form")
+    holo = PermissibleValue(
+        text="holo",
+        description="Holo form")
+    substrate_bound = PermissibleValue(
+        text="substrate_bound",
+        description="Substrate-bound")
+    product_bound = PermissibleValue(
+        text="product_bound",
+        description="Product-bound")
+    inhibitor_bound = PermissibleValue(
+        text="inhibitor_bound",
+        description="Inhibitor-bound")
+    partially_open = PermissibleValue(
+        text="partially_open",
+        description="Partially open")
+    partially_closed = PermissibleValue(
+        text="partially_closed",
+        description="Partially closed")
+    disordered = PermissibleValue(
+        text="disordered",
+        description="Disordered state")
+
+    _defn = EnumDefinition(
+        name="ConformationalStateEnum",
+        description="Conformational states",
+    )
+
+class InteractionTypeEnum(EnumDefinitionImpl):
+    """
+    Types of molecular interactions
+    """
+    covalent = PermissibleValue(
+        text="covalent",
+        description="Covalent bond")
+    hydrogen_bond = PermissibleValue(
+        text="hydrogen_bond",
+        description="Hydrogen bond")
+    ionic = PermissibleValue(
+        text="ionic",
+        description="Ionic interaction")
+    van_der_waals = PermissibleValue(
+        text="van_der_waals",
+        description="Van der Waals interaction")
+    hydrophobic = PermissibleValue(
+        text="hydrophobic",
+        description="Hydrophobic interaction")
+    aromatic = PermissibleValue(
+        text="aromatic",
+        description="Aromatic interaction")
+    pi_stacking = PermissibleValue(
+        text="pi_stacking",
+        description="Pi-pi stacking")
+    cation_pi = PermissibleValue(
+        text="cation_pi",
+        description="Cation-pi interaction")
+    metal_coordination = PermissibleValue(
+        text="metal_coordination",
+        description="Metal coordination")
+    disulfide = PermissibleValue(
+        text="disulfide",
+        description="Disulfide bond")
+
+    _defn = EnumDefinition(
+        name="InteractionTypeEnum",
+        description="Types of molecular interactions",
+    )
+
+class BindingAffinityTypeEnum(EnumDefinitionImpl):
+    """
+    Types of binding affinity measurements
+    """
+    kd = PermissibleValue(
+        text="kd",
+        description="Dissociation constant")
+    ki = PermissibleValue(
+        text="ki",
+        description="Inhibition constant")
+    ic50 = PermissibleValue(
+        text="ic50",
+        description="Half maximal inhibitory concentration")
+    ec50 = PermissibleValue(
+        text="ec50",
+        description="Half maximal effective concentration")
+    ka = PermissibleValue(
+        text="ka",
+        description="Association constant")
+    km = PermissibleValue(
+        text="km",
+        description="Michaelis constant")
+
+    _defn = EnumDefinition(
+        name="BindingAffinityTypeEnum",
+        description="Types of binding affinity measurements",
+    )
+
+class AffinityUnitEnum(EnumDefinitionImpl):
+    """
+    Units for affinity measurements
+    """
+    molar = PermissibleValue(
+        text="molar",
+        description="Molar (M)")
+    millimolar = PermissibleValue(
+        text="millimolar",
+        description="Millimolar (mM)")
+    micromolar = PermissibleValue(
+        text="micromolar",
+        description="Micromolar (µM)")
+    nanomolar = PermissibleValue(
+        text="nanomolar",
+        description="Nanomolar (nM)")
+    picomolar = PermissibleValue(
+        text="picomolar",
+        description="Picomolar (pM)")
+
+    _defn = EnumDefinition(
+        name="AffinityUnitEnum",
+        description="Units for affinity measurements",
+    )
+
+class ComplexStabilityEnum(EnumDefinitionImpl):
+    """
+    Stability of protein complexes
+    """
+    stable = PermissibleValue(
+        text="stable",
+        description="Stable complex")
+    transient = PermissibleValue(
+        text="transient",
+        description="Transient interaction")
+    weak = PermissibleValue(
+        text="weak",
+        description="Weak interaction")
+    strong = PermissibleValue(
+        text="strong",
+        description="Strong interaction")
+    obligate = PermissibleValue(
+        text="obligate",
+        description="Obligate complex")
+    non_obligate = PermissibleValue(
+        text="non_obligate",
+        description="Non-obligate complex")
+
+    _defn = EnumDefinition(
+        name="ComplexStabilityEnum",
+        description="Stability of protein complexes",
+    )
+
+class InteractionEvidenceEnum(EnumDefinitionImpl):
+    """
+    Evidence for interactions
+    """
+    experimental = PermissibleValue(
+        text="experimental",
+        description="Experimental evidence")
+    predicted = PermissibleValue(
+        text="predicted",
+        description="Computational prediction")
+    homology = PermissibleValue(
+        text="homology",
+        description="Homology-based")
+    coexpression = PermissibleValue(
+        text="coexpression",
+        description="Co-expression data")
+    colocalization = PermissibleValue(
+        text="colocalization",
+        description="Co-localization")
+    genetic = PermissibleValue(
+        text="genetic",
+        description="Genetic evidence")
+    physical = PermissibleValue(
+        text="physical",
+        description="Physical interaction")
+    functional = PermissibleValue(
+        text="functional",
+        description="Functional association")
+
+    _defn = EnumDefinition(
+        name="InteractionEvidenceEnum",
+        description="Evidence for interactions",
+    )
+
+class MutationTypeEnum(EnumDefinitionImpl):
+    """
+    Types of mutations
+    """
+    missense = PermissibleValue(
+        text="missense",
+        description="Missense mutation")
+    nonsense = PermissibleValue(
+        text="nonsense",
+        description="Nonsense mutation")
+    frameshift = PermissibleValue(
+        text="frameshift",
+        description="Frameshift mutation")
+    deletion = PermissibleValue(
+        text="deletion",
+        description="Deletion")
+    insertion = PermissibleValue(
+        text="insertion",
+        description="Insertion")
+    duplication = PermissibleValue(
+        text="duplication",
+        description="Duplication")
+    substitution = PermissibleValue(
+        text="substitution",
+        description="Substitution")
+
+    _defn = EnumDefinition(
+        name="MutationTypeEnum",
+        description="Types of mutations",
+    )
+
+class StabilityEffectEnum(EnumDefinitionImpl):
+    """
+    Effect on protein stability
+    """
+    stabilizing = PermissibleValue(
+        text="stabilizing",
+        description="Increases stability")
+    destabilizing = PermissibleValue(
+        text="destabilizing",
+        description="Decreases stability")
+    neutral = PermissibleValue(
+        text="neutral",
+        description="No significant effect")
+    highly_stabilizing = PermissibleValue(
+        text="highly_stabilizing",
+        description="Strongly increases stability")
+    highly_destabilizing = PermissibleValue(
+        text="highly_destabilizing",
+        description="Strongly decreases stability")
+
+    _defn = EnumDefinition(
+        name="StabilityEffectEnum",
+        description="Effect on protein stability",
+    )
+
+class FunctionalEffectEnum(EnumDefinitionImpl):
+    """
+    Effect on protein function
+    """
+    loss_of_function = PermissibleValue(
+        text="loss_of_function",
+        description="Loss of function")
+    gain_of_function = PermissibleValue(
+        text="gain_of_function",
+        description="Gain of function")
+    altered_function = PermissibleValue(
+        text="altered_function",
+        description="Altered function")
+    no_effect = PermissibleValue(
+        text="no_effect",
+        description="No functional effect")
+    partial_loss = PermissibleValue(
+        text="partial_loss",
+        description="Partial loss of function")
+    enhanced_function = PermissibleValue(
+        text="enhanced_function",
+        description="Enhanced function")
+
+    _defn = EnumDefinition(
+        name="FunctionalEffectEnum",
+        description="Effect on protein function",
+    )
+
+class ClinicalSignificanceEnum(EnumDefinitionImpl):
+    """
+    Clinical significance of variants
+    """
+    pathogenic = PermissibleValue(
+        text="pathogenic",
+        description="Pathogenic")
+    likely_pathogenic = PermissibleValue(
+        text="likely_pathogenic",
+        description="Likely pathogenic")
+    benign = PermissibleValue(
+        text="benign",
+        description="Benign")
+    likely_benign = PermissibleValue(
+        text="likely_benign",
+        description="Likely benign")
+    uncertain_significance = PermissibleValue(
+        text="uncertain_significance",
+        description="Uncertain significance")
+
+    _defn = EnumDefinition(
+        name="ClinicalSignificanceEnum",
+        description="Clinical significance of variants",
+    )
+
+class BiophysicalPropertyEnum(EnumDefinitionImpl):
+    """
+    Types of biophysical properties
+    """
+    melting_temperature = PermissibleValue(
+        text="melting_temperature",
+        description="Melting temperature (Tm)")
+    stability = PermissibleValue(
+        text="stability",
+        description="Thermodynamic stability")
+    folding_rate = PermissibleValue(
+        text="folding_rate",
+        description="Folding rate")
+    unfolding_rate = PermissibleValue(
+        text="unfolding_rate",
+        description="Unfolding rate")
+    aggregation_propensity = PermissibleValue(
+        text="aggregation_propensity",
+        description="Aggregation propensity")
+    solubility = PermissibleValue(
+        text="solubility",
+        description="Solubility")
+    hydrophobicity = PermissibleValue(
+        text="hydrophobicity",
+        description="Hydrophobicity")
+    isoelectric_point = PermissibleValue(
+        text="isoelectric_point",
+        description="Isoelectric point (pI)")
+    extinction_coefficient = PermissibleValue(
+        text="extinction_coefficient",
+        description="Extinction coefficient")
+    molecular_weight = PermissibleValue(
+        text="molecular_weight",
+        description="Molecular weight")
+    diffusion_coefficient = PermissibleValue(
+        text="diffusion_coefficient",
+        description="Diffusion coefficient")
+    sedimentation_coefficient = PermissibleValue(
+        text="sedimentation_coefficient",
+        description="Sedimentation coefficient")
+    radius_of_gyration = PermissibleValue(
+        text="radius_of_gyration",
+        description="Radius of gyration")
+    hydrodynamic_radius = PermissibleValue(
+        text="hydrodynamic_radius",
+        description="Hydrodynamic radius")
+
+    _defn = EnumDefinition(
+        name="BiophysicalPropertyEnum",
+        description="Types of biophysical properties",
+    )
+
+class BiophysicalMethodEnum(EnumDefinitionImpl):
+    """
+    Methods for biophysical measurements
+    """
+    differential_scanning_calorimetry = PermissibleValue(
+        text="differential_scanning_calorimetry",
+        description="DSC")
+    isothermal_titration_calorimetry = PermissibleValue(
+        text="isothermal_titration_calorimetry",
+        description="ITC")
+    circular_dichroism = PermissibleValue(
+        text="circular_dichroism",
+        description="CD spectroscopy")
+    fluorescence_spectroscopy = PermissibleValue(
+        text="fluorescence_spectroscopy",
+        description="Fluorescence")
+    surface_plasmon_resonance = PermissibleValue(
+        text="surface_plasmon_resonance",
+        description="SPR")
+    dynamic_light_scattering = PermissibleValue(
+        text="dynamic_light_scattering",
+        description="DLS")
+    analytical_ultracentrifugation = PermissibleValue(
+        text="analytical_ultracentrifugation",
+        description="AUC")
+    nuclear_magnetic_resonance = PermissibleValue(
+        text="nuclear_magnetic_resonance",
+        description="NMR")
+    mass_spectrometry = PermissibleValue(
+        text="mass_spectrometry",
+        description="MS")
+
+    _defn = EnumDefinition(
+        name="BiophysicalMethodEnum",
+        description="Methods for biophysical measurements",
+    )
+
+class PTMTypeEnum(EnumDefinitionImpl):
+    """
+    Types of post-translational modifications
+    """
+    phosphorylation = PermissibleValue(
+        text="phosphorylation",
+        description="Phosphorylation")
+    acetylation = PermissibleValue(
+        text="acetylation",
+        description="Acetylation")
+    methylation = PermissibleValue(
+        text="methylation",
+        description="Methylation")
+    ubiquitination = PermissibleValue(
+        text="ubiquitination",
+        description="Ubiquitination")
+    sumoylation = PermissibleValue(
+        text="sumoylation",
+        description="SUMOylation")
+    glycosylation = PermissibleValue(
+        text="glycosylation",
+        description="Glycosylation")
+    palmitoylation = PermissibleValue(
+        text="palmitoylation",
+        description="Palmitoylation")
+    myristoylation = PermissibleValue(
+        text="myristoylation",
+        description="Myristoylation")
+    prenylation = PermissibleValue(
+        text="prenylation",
+        description="Prenylation")
+    nitrosylation = PermissibleValue(
+        text="nitrosylation",
+        description="Nitrosylation")
+    oxidation = PermissibleValue(
+        text="oxidation",
+        description="Oxidation")
+    hydroxylation = PermissibleValue(
+        text="hydroxylation",
+        description="Hydroxylation")
+    proteolysis = PermissibleValue(
+        text="proteolysis",
+        description="Proteolytic cleavage")
+    deamidation = PermissibleValue(
+        text="deamidation",
+        description="Deamidation")
+    adp_ribosylation = PermissibleValue(
+        text="adp_ribosylation",
+        description="ADP-ribosylation")
+
+    _defn = EnumDefinition(
+        name="PTMTypeEnum",
+        description="Types of post-translational modifications",
+    )
+
+class EvidenceTypeEnum(EnumDefinitionImpl):
+    """
+    Types of evidence
+    """
+    experimental = PermissibleValue(
+        text="experimental",
+        description="Direct experimental evidence")
+    predicted = PermissibleValue(
+        text="predicted",
+        description="Computational prediction")
+    inferred = PermissibleValue(
+        text="inferred",
+        description="Inferred from homology")
+    literature = PermissibleValue(
+        text="literature",
+        description="Literature curation")
+    author_statement = PermissibleValue(
+        text="author_statement",
+        description="Author statement")
+    curator_inference = PermissibleValue(
+        text="curator_inference",
+        description="Curator inference")
+
+    _defn = EnumDefinition(
+        name="EvidenceTypeEnum",
+        description="Types of evidence",
+    )
+
+class AnnotationSourceEnum(EnumDefinitionImpl):
+    """
+    Sources of functional annotations
+    """
+    pdbe = PermissibleValue(
+        text="pdbe",
+        description="PDBe")
+    pdbe_kb = PermissibleValue(
+        text="pdbe_kb",
+        description="PDBe-KB")
+    uniprot = PermissibleValue(
+        text="uniprot",
+        description="UniProt")
+    pfam = PermissibleValue(
+        text="pfam",
+        description="Pfam")
+    cath = PermissibleValue(
+        text="cath",
+        description="CATH")
+    scop = PermissibleValue(
+        text="scop",
+        description="SCOP")
+    interpro = PermissibleValue(
+        text="interpro",
+        description="InterPro")
+    channelsdb = PermissibleValue(
+        text="channelsdb",
+        description="ChannelsDB")
+    dynamine = PermissibleValue(
+        text="dynamine",
+        description="DynaMine")
+    foldx = PermissibleValue(
+        text="foldx",
+        description="FoldX")
+    p2rank = PermissibleValue(
+        text="p2rank",
+        description="P2rank")
+    arpeggio = PermissibleValue(
+        text="arpeggio",
+        description="Arpeggio")
+    covalentizer = PermissibleValue(
+        text="covalentizer",
+        description="Covalentizer")
+    depth = PermissibleValue(
+        text="depth",
+        description="DEPTH")
+    elmpdb = PermissibleValue(
+        text="elmpdb",
+        description="ELM-PDB")
+    frustration = PermissibleValue(
+        text="frustration",
+        description="Frustration")
+    kincore = PermissibleValue(
+        text="kincore",
+        description="KinCore")
+    membranome = PermissibleValue(
+        text="membranome",
+        description="Membranome")
+    missense3d = PermissibleValue(
+        text="missense3d",
+        description="Missense3D")
+    mobi = PermissibleValue(
+        text="mobi",
+        description="MobiDB")
+    nucleos = PermissibleValue(
+        text="nucleos",
+        description="Nucleos")
+    akid = PermissibleValue(
+        text="akid",
+        description="AKID")
+    camkinet = PermissibleValue(
+        text="camkinet",
+        description="CamKiNet")
+    cansar = PermissibleValue(
+        text="cansar",
+        description="canSAR")
+    credo = PermissibleValue(
+        text="credo",
+        description="CREDO")
+    klifs = PermissibleValue(
+        text="klifs",
+        description="KLIFS")
+    m_csm = PermissibleValue(
+        text="m_csm",
+        description="mCSM")
+    moondb = PermissibleValue(
+        text="moondb",
+        description="MoonDB")
+    pocketome = PermissibleValue(
+        text="pocketome",
+        description="Pocketome")
+    propka = PermissibleValue(
+        text="propka",
+        description="PROPKA")
+    proteins_api = PermissibleValue(
+        text="proteins_api",
+        description="Proteins API")
+    validation = PermissibleValue(
+        text="validation",
+        description="Validation")
+    alphafold = PermissibleValue(
+        text="alphafold",
+        description="AlphaFold")
+    modbase = PermissibleValue(
+        text="modbase",
+        description="ModBase")
+    swiss_model = PermissibleValue(
+        text="swiss_model",
+        description="SWISS-MODEL")
+    intact = PermissibleValue(
+        text="intact",
+        description="IntAct")
+    cosmic = PermissibleValue(
+        text="cosmic",
+        description="COSMIC")
+    clinvar = PermissibleValue(
+        text="clinvar",
+        description="ClinVar")
+
+    _defn = EnumDefinition(
+        name="AnnotationSourceEnum",
+        description="Sources of functional annotations",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "3dligandsite",
+            PermissibleValue(
+                text="3dligandsite",
+                description="3D-LigandSite"))
+        setattr(cls, "14_3_3_pred",
+            PermissibleValue(
+                text="14_3_3_pred",
+                description="14-3-3-Pred"))
+
+class DatabaseNameEnum(EnumDefinitionImpl):
+    """
+    External database names
+    """
+    uniprot = PermissibleValue(
+        text="uniprot",
+        description="UniProt")
+    pdb = PermissibleValue(
+        text="pdb",
+        description="Protein Data Bank")
+    pfam = PermissibleValue(
+        text="pfam",
+        description="Pfam")
+    cath = PermissibleValue(
+        text="cath",
+        description="CATH")
+    scop = PermissibleValue(
+        text="scop",
+        description="SCOP")
+    interpro = PermissibleValue(
+        text="interpro",
+        description="InterPro")
+    chembl = PermissibleValue(
+        text="chembl",
+        description="ChEMBL")
+    chebi = PermissibleValue(
+        text="chebi",
+        description="ChEBI")
+    pubchem = PermissibleValue(
+        text="pubchem",
+        description="PubChem")
+    drugbank = PermissibleValue(
+        text="drugbank",
+        description="DrugBank")
+    omim = PermissibleValue(
+        text="omim",
+        description="OMIM")
+    clinvar = PermissibleValue(
+        text="clinvar",
+        description="ClinVar")
+    cosmic = PermissibleValue(
+        text="cosmic",
+        description="COSMIC")
+    gnomad = PermissibleValue(
+        text="gnomad",
+        description="gnomAD")
+    intact = PermissibleValue(
+        text="intact",
+        description="IntAct")
+    string = PermissibleValue(
+        text="string",
+        description="STRING")
+    biogrid = PermissibleValue(
+        text="biogrid",
+        description="BioGRID")
+    reactome = PermissibleValue(
+        text="reactome",
+        description="Reactome")
+    kegg = PermissibleValue(
+        text="kegg",
+        description="KEGG")
+    go = PermissibleValue(
+        text="go",
+        description="Gene Ontology")
+
+    _defn = EnumDefinition(
+        name="DatabaseNameEnum",
+        description="External database names",
+    )
+
 # Slots
 class slots:
     pass
@@ -2230,6 +4642,9 @@ slots.dataset__instruments = Slot(uri=LAMBDABER.instruments, name="dataset__inst
 slots.dataset__studies = Slot(uri=LAMBDABER.studies, name="dataset__studies", curie=LAMBDABER.curie('studies'),
                    model_uri=LAMBDABER.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
+slots.study__protein_constructs = Slot(uri=LAMBDABER.protein_constructs, name="study__protein_constructs", curie=LAMBDABER.curie('protein_constructs'),
+                   model_uri=LAMBDABER.study__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
+
 slots.study__samples = Slot(uri=LAMBDABER.samples, name="study__samples", curie=LAMBDABER.curie('samples'),
                    model_uri=LAMBDABER.study__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
 
@@ -2247,6 +4662,9 @@ slots.study__data_files = Slot(uri=LAMBDABER.data_files, name="study__data_files
 
 slots.study__images = Slot(uri=LAMBDABER.images, name="study__images", curie=LAMBDABER.curie('images'),
                    model_uri=LAMBDABER.study__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
+
+slots.study__aggregated_protein_views = Slot(uri=LAMBDABER.aggregated_protein_views, name="study__aggregated_protein_views", curie=LAMBDABER.curie('aggregated_protein_views'),
+                   model_uri=LAMBDABER.study__aggregated_protein_views, domain=None, range=Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, AggregatedProteinView]], list[Union[dict, AggregatedProteinView]]]])
 
 slots.sample__sample_code = Slot(uri=LAMBDABER.sample_code, name="sample__sample_code", curie=LAMBDABER.curie('sample_code'),
                    model_uri=LAMBDABER.sample__sample_code, domain=None, range=str)
@@ -2293,6 +4711,99 @@ slots.sample__purity_percentage = Slot(uri=LAMBDABER.purity_percentage, name="sa
 slots.sample__quality_metrics = Slot(uri=LAMBDABER.quality_metrics, name="sample__quality_metrics", curie=LAMBDABER.curie('quality_metrics'),
                    model_uri=LAMBDABER.sample__quality_metrics, domain=None, range=Optional[str])
 
+slots.sample__functional_sites = Slot(uri=LAMBDABER.functional_sites, name="sample__functional_sites", curie=LAMBDABER.curie('functional_sites'),
+                   model_uri=LAMBDABER.sample__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+
+slots.sample__structural_features = Slot(uri=LAMBDABER.structural_features, name="sample__structural_features", curie=LAMBDABER.curie('structural_features'),
+                   model_uri=LAMBDABER.sample__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+
+slots.sample__protein_interactions = Slot(uri=LAMBDABER.protein_interactions, name="sample__protein_interactions", curie=LAMBDABER.curie('protein_interactions'),
+                   model_uri=LAMBDABER.sample__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+
+slots.sample__ligand_interactions = Slot(uri=LAMBDABER.ligand_interactions, name="sample__ligand_interactions", curie=LAMBDABER.curie('ligand_interactions'),
+                   model_uri=LAMBDABER.sample__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.sample__mutation_effects = Slot(uri=LAMBDABER.mutation_effects, name="sample__mutation_effects", curie=LAMBDABER.curie('mutation_effects'),
+                   model_uri=LAMBDABER.sample__mutation_effects, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+
+slots.sample__ptm_annotations = Slot(uri=LAMBDABER.ptm_annotations, name="sample__ptm_annotations", curie=LAMBDABER.curie('ptm_annotations'),
+                   model_uri=LAMBDABER.sample__ptm_annotations, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+
+slots.sample__biophysical_properties = Slot(uri=LAMBDABER.biophysical_properties, name="sample__biophysical_properties", curie=LAMBDABER.curie('biophysical_properties'),
+                   model_uri=LAMBDABER.sample__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+
+slots.sample__evolutionary_conservation = Slot(uri=LAMBDABER.evolutionary_conservation, name="sample__evolutionary_conservation", curie=LAMBDABER.curie('evolutionary_conservation'),
+                   model_uri=LAMBDABER.sample__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+
+slots.sample__conformational_ensemble = Slot(uri=LAMBDABER.conformational_ensemble, name="sample__conformational_ensemble", curie=LAMBDABER.curie('conformational_ensemble'),
+                   model_uri=LAMBDABER.sample__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+
+slots.sample__database_cross_references = Slot(uri=LAMBDABER.database_cross_references, name="sample__database_cross_references", curie=LAMBDABER.curie('database_cross_references'),
+                   model_uri=LAMBDABER.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.proteinConstruct__construct_id = Slot(uri=LAMBDABER.construct_id, name="proteinConstruct__construct_id", curie=LAMBDABER.curie('construct_id'),
+                   model_uri=LAMBDABER.proteinConstruct__construct_id, domain=None, range=str)
+
+slots.proteinConstruct__uniprot_id = Slot(uri=LAMBDABER.uniprot_id, name="proteinConstruct__uniprot_id", curie=LAMBDABER.curie('uniprot_id'),
+                   model_uri=LAMBDABER.proteinConstruct__uniprot_id, domain=None, range=Optional[str])
+
+slots.proteinConstruct__gene_name = Slot(uri=LAMBDABER.gene_name, name="proteinConstruct__gene_name", curie=LAMBDABER.curie('gene_name'),
+                   model_uri=LAMBDABER.proteinConstruct__gene_name, domain=None, range=Optional[str])
+
+slots.proteinConstruct__ncbi_taxid = Slot(uri=LAMBDABER.ncbi_taxid, name="proteinConstruct__ncbi_taxid", curie=LAMBDABER.curie('ncbi_taxid'),
+                   model_uri=LAMBDABER.proteinConstruct__ncbi_taxid, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_length_aa = Slot(uri=LAMBDABER.sequence_length_aa, name="proteinConstruct__sequence_length_aa", curie=LAMBDABER.curie('sequence_length_aa'),
+                   model_uri=LAMBDABER.proteinConstruct__sequence_length_aa, domain=None, range=Optional[int])
+
+slots.proteinConstruct__construct_description = Slot(uri=LAMBDABER.construct_description, name="proteinConstruct__construct_description", curie=LAMBDABER.curie('construct_description'),
+                   model_uri=LAMBDABER.proteinConstruct__construct_description, domain=None, range=Optional[str])
+
+slots.proteinConstruct__gene_synthesis_provider = Slot(uri=LAMBDABER.gene_synthesis_provider, name="proteinConstruct__gene_synthesis_provider", curie=LAMBDABER.curie('gene_synthesis_provider'),
+                   model_uri=LAMBDABER.proteinConstruct__gene_synthesis_provider, domain=None, range=Optional[str])
+
+slots.proteinConstruct__codon_optimization_organism = Slot(uri=LAMBDABER.codon_optimization_organism, name="proteinConstruct__codon_optimization_organism", curie=LAMBDABER.curie('codon_optimization_organism'),
+                   model_uri=LAMBDABER.proteinConstruct__codon_optimization_organism, domain=None, range=Optional[str])
+
+slots.proteinConstruct__vector_backbone = Slot(uri=LAMBDABER.vector_backbone, name="proteinConstruct__vector_backbone", curie=LAMBDABER.curie('vector_backbone'),
+                   model_uri=LAMBDABER.proteinConstruct__vector_backbone, domain=None, range=Optional[str])
+
+slots.proteinConstruct__vector_name = Slot(uri=LAMBDABER.vector_name, name="proteinConstruct__vector_name", curie=LAMBDABER.curie('vector_name'),
+                   model_uri=LAMBDABER.proteinConstruct__vector_name, domain=None, range=Optional[str])
+
+slots.proteinConstruct__promoter = Slot(uri=LAMBDABER.promoter, name="proteinConstruct__promoter", curie=LAMBDABER.curie('promoter'),
+                   model_uri=LAMBDABER.proteinConstruct__promoter, domain=None, range=Optional[str])
+
+slots.proteinConstruct__tag_nterm = Slot(uri=LAMBDABER.tag_nterm, name="proteinConstruct__tag_nterm", curie=LAMBDABER.curie('tag_nterm'),
+                   model_uri=LAMBDABER.proteinConstruct__tag_nterm, domain=None, range=Optional[str])
+
+slots.proteinConstruct__tag_cterm = Slot(uri=LAMBDABER.tag_cterm, name="proteinConstruct__tag_cterm", curie=LAMBDABER.curie('tag_cterm'),
+                   model_uri=LAMBDABER.proteinConstruct__tag_cterm, domain=None, range=Optional[str])
+
+slots.proteinConstruct__cleavage_site = Slot(uri=LAMBDABER.cleavage_site, name="proteinConstruct__cleavage_site", curie=LAMBDABER.curie('cleavage_site'),
+                   model_uri=LAMBDABER.proteinConstruct__cleavage_site, domain=None, range=Optional[str])
+
+slots.proteinConstruct__signal_peptide = Slot(uri=LAMBDABER.signal_peptide, name="proteinConstruct__signal_peptide", curie=LAMBDABER.curie('signal_peptide'),
+                   model_uri=LAMBDABER.proteinConstruct__signal_peptide, domain=None, range=Optional[str])
+
+slots.proteinConstruct__selectable_marker = Slot(uri=LAMBDABER.selectable_marker, name="proteinConstruct__selectable_marker", curie=LAMBDABER.curie('selectable_marker'),
+                   model_uri=LAMBDABER.proteinConstruct__selectable_marker, domain=None, range=Optional[str])
+
+slots.proteinConstruct__cloning_method = Slot(uri=LAMBDABER.cloning_method, name="proteinConstruct__cloning_method", curie=LAMBDABER.curie('cloning_method'),
+                   model_uri=LAMBDABER.proteinConstruct__cloning_method, domain=None, range=Optional[str])
+
+slots.proteinConstruct__insert_boundaries = Slot(uri=LAMBDABER.insert_boundaries, name="proteinConstruct__insert_boundaries", curie=LAMBDABER.curie('insert_boundaries'),
+                   model_uri=LAMBDABER.proteinConstruct__insert_boundaries, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_file_path = Slot(uri=LAMBDABER.sequence_file_path, name="proteinConstruct__sequence_file_path", curie=LAMBDABER.curie('sequence_file_path'),
+                   model_uri=LAMBDABER.proteinConstruct__sequence_file_path, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_verified_by = Slot(uri=LAMBDABER.sequence_verified_by, name="proteinConstruct__sequence_verified_by", curie=LAMBDABER.curie('sequence_verified_by'),
+                   model_uri=LAMBDABER.proteinConstruct__sequence_verified_by, domain=None, range=Optional[str])
+
+slots.proteinConstruct__verification_notes = Slot(uri=LAMBDABER.verification_notes, name="proteinConstruct__verification_notes", curie=LAMBDABER.curie('verification_notes'),
+                   model_uri=LAMBDABER.proteinConstruct__verification_notes, domain=None, range=Optional[str])
+
 slots.samplePreparation__preparation_type = Slot(uri=LAMBDABER.preparation_type, name="samplePreparation__preparation_type", curie=LAMBDABER.curie('preparation_type'),
                    model_uri=LAMBDABER.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
 
@@ -2307,6 +4818,117 @@ slots.samplePreparation__operator_id = Slot(uri=LAMBDABER.operator_id, name="sam
 
 slots.samplePreparation__protocol_description = Slot(uri=LAMBDABER.protocol_description, name="samplePreparation__protocol_description", curie=LAMBDABER.curie('protocol_description'),
                    model_uri=LAMBDABER.samplePreparation__protocol_description, domain=None, range=Optional[str])
+
+slots.samplePreparation__expression_system = Slot(uri=LAMBDABER.expression_system, name="samplePreparation__expression_system", curie=LAMBDABER.curie('expression_system'),
+                   model_uri=LAMBDABER.samplePreparation__expression_system, domain=None, range=Optional[Union[str, "ExpressionSystemEnum"]])
+
+slots.samplePreparation__host_strain_or_cell_line = Slot(uri=LAMBDABER.host_strain_or_cell_line, name="samplePreparation__host_strain_or_cell_line", curie=LAMBDABER.curie('host_strain_or_cell_line'),
+                   model_uri=LAMBDABER.samplePreparation__host_strain_or_cell_line, domain=None, range=Optional[str])
+
+slots.samplePreparation__culture_volume_l = Slot(uri=LAMBDABER.culture_volume_l, name="samplePreparation__culture_volume_l", curie=LAMBDABER.curie('culture_volume_l'),
+                   model_uri=LAMBDABER.samplePreparation__culture_volume_l, domain=None, range=Optional[float])
+
+slots.samplePreparation__medium = Slot(uri=LAMBDABER.medium, name="samplePreparation__medium", curie=LAMBDABER.curie('medium'),
+                   model_uri=LAMBDABER.samplePreparation__medium, domain=None, range=Optional[str])
+
+slots.samplePreparation__antibiotic_selection = Slot(uri=LAMBDABER.antibiotic_selection, name="samplePreparation__antibiotic_selection", curie=LAMBDABER.curie('antibiotic_selection'),
+                   model_uri=LAMBDABER.samplePreparation__antibiotic_selection, domain=None, range=Optional[str])
+
+slots.samplePreparation__growth_temperature_c = Slot(uri=LAMBDABER.growth_temperature_c, name="samplePreparation__growth_temperature_c", curie=LAMBDABER.curie('growth_temperature_c'),
+                   model_uri=LAMBDABER.samplePreparation__growth_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__induction_agent = Slot(uri=LAMBDABER.induction_agent, name="samplePreparation__induction_agent", curie=LAMBDABER.curie('induction_agent'),
+                   model_uri=LAMBDABER.samplePreparation__induction_agent, domain=None, range=Optional[str])
+
+slots.samplePreparation__inducer_concentration = Slot(uri=LAMBDABER.inducer_concentration, name="samplePreparation__inducer_concentration", curie=LAMBDABER.curie('inducer_concentration'),
+                   model_uri=LAMBDABER.samplePreparation__inducer_concentration, domain=None, range=Optional[str])
+
+slots.samplePreparation__induction_temperature_c = Slot(uri=LAMBDABER.induction_temperature_c, name="samplePreparation__induction_temperature_c", curie=LAMBDABER.curie('induction_temperature_c'),
+                   model_uri=LAMBDABER.samplePreparation__induction_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__induction_time_h = Slot(uri=LAMBDABER.induction_time_h, name="samplePreparation__induction_time_h", curie=LAMBDABER.curie('induction_time_h'),
+                   model_uri=LAMBDABER.samplePreparation__induction_time_h, domain=None, range=Optional[float])
+
+slots.samplePreparation__od600_at_induction = Slot(uri=LAMBDABER.od600_at_induction, name="samplePreparation__od600_at_induction", curie=LAMBDABER.curie('od600_at_induction'),
+                   model_uri=LAMBDABER.samplePreparation__od600_at_induction, domain=None, range=Optional[float])
+
+slots.samplePreparation__harvest_timepoint = Slot(uri=LAMBDABER.harvest_timepoint, name="samplePreparation__harvest_timepoint", curie=LAMBDABER.curie('harvest_timepoint'),
+                   model_uri=LAMBDABER.samplePreparation__harvest_timepoint, domain=None, range=Optional[str])
+
+slots.samplePreparation__lysis_method = Slot(uri=LAMBDABER.lysis_method, name="samplePreparation__lysis_method", curie=LAMBDABER.curie('lysis_method'),
+                   model_uri=LAMBDABER.samplePreparation__lysis_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__protease_inhibitors = Slot(uri=LAMBDABER.protease_inhibitors, name="samplePreparation__protease_inhibitors", curie=LAMBDABER.curie('protease_inhibitors'),
+                   model_uri=LAMBDABER.samplePreparation__protease_inhibitors, domain=None, range=Optional[str])
+
+slots.samplePreparation__purification_steps = Slot(uri=LAMBDABER.purification_steps, name="samplePreparation__purification_steps", curie=LAMBDABER.curie('purification_steps'),
+                   model_uri=LAMBDABER.samplePreparation__purification_steps, domain=None, range=Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]])
+
+slots.samplePreparation__affinity_type = Slot(uri=LAMBDABER.affinity_type, name="samplePreparation__affinity_type", curie=LAMBDABER.curie('affinity_type'),
+                   model_uri=LAMBDABER.samplePreparation__affinity_type, domain=None, range=Optional[str])
+
+slots.samplePreparation__affinity_column = Slot(uri=LAMBDABER.affinity_column, name="samplePreparation__affinity_column", curie=LAMBDABER.curie('affinity_column'),
+                   model_uri=LAMBDABER.samplePreparation__affinity_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__lysis_buffer = Slot(uri=LAMBDABER.lysis_buffer, name="samplePreparation__lysis_buffer", curie=LAMBDABER.curie('lysis_buffer'),
+                   model_uri=LAMBDABER.samplePreparation__lysis_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__wash_buffer = Slot(uri=LAMBDABER.wash_buffer, name="samplePreparation__wash_buffer", curie=LAMBDABER.curie('wash_buffer'),
+                   model_uri=LAMBDABER.samplePreparation__wash_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__elution_buffer = Slot(uri=LAMBDABER.elution_buffer, name="samplePreparation__elution_buffer", curie=LAMBDABER.curie('elution_buffer'),
+                   model_uri=LAMBDABER.samplePreparation__elution_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__tag_removal = Slot(uri=LAMBDABER.tag_removal, name="samplePreparation__tag_removal", curie=LAMBDABER.curie('tag_removal'),
+                   model_uri=LAMBDABER.samplePreparation__tag_removal, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.samplePreparation__protease = Slot(uri=LAMBDABER.protease, name="samplePreparation__protease", curie=LAMBDABER.curie('protease'),
+                   model_uri=LAMBDABER.samplePreparation__protease, domain=None, range=Optional[str])
+
+slots.samplePreparation__protease_ratio = Slot(uri=LAMBDABER.protease_ratio, name="samplePreparation__protease_ratio", curie=LAMBDABER.curie('protease_ratio'),
+                   model_uri=LAMBDABER.samplePreparation__protease_ratio, domain=None, range=Optional[str])
+
+slots.samplePreparation__cleavage_time_h = Slot(uri=LAMBDABER.cleavage_time_h, name="samplePreparation__cleavage_time_h", curie=LAMBDABER.curie('cleavage_time_h'),
+                   model_uri=LAMBDABER.samplePreparation__cleavage_time_h, domain=None, range=Optional[float])
+
+slots.samplePreparation__cleavage_temperature_c = Slot(uri=LAMBDABER.cleavage_temperature_c, name="samplePreparation__cleavage_temperature_c", curie=LAMBDABER.curie('cleavage_temperature_c'),
+                   model_uri=LAMBDABER.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__second_affinity_reverse = Slot(uri=LAMBDABER.second_affinity_reverse, name="samplePreparation__second_affinity_reverse", curie=LAMBDABER.curie('second_affinity_reverse'),
+                   model_uri=LAMBDABER.samplePreparation__second_affinity_reverse, domain=None, range=Optional[str])
+
+slots.samplePreparation__iex_column = Slot(uri=LAMBDABER.iex_column, name="samplePreparation__iex_column", curie=LAMBDABER.curie('iex_column'),
+                   model_uri=LAMBDABER.samplePreparation__iex_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__hic_column = Slot(uri=LAMBDABER.hic_column, name="samplePreparation__hic_column", curie=LAMBDABER.curie('hic_column'),
+                   model_uri=LAMBDABER.samplePreparation__hic_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__sec_column = Slot(uri=LAMBDABER.sec_column, name="samplePreparation__sec_column", curie=LAMBDABER.curie('sec_column'),
+                   model_uri=LAMBDABER.samplePreparation__sec_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__sec_buffer = Slot(uri=LAMBDABER.sec_buffer, name="samplePreparation__sec_buffer", curie=LAMBDABER.curie('sec_buffer'),
+                   model_uri=LAMBDABER.samplePreparation__sec_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__concentration_method = Slot(uri=LAMBDABER.concentration_method, name="samplePreparation__concentration_method", curie=LAMBDABER.curie('concentration_method'),
+                   model_uri=LAMBDABER.samplePreparation__concentration_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__final_buffer = Slot(uri=LAMBDABER.final_buffer, name="samplePreparation__final_buffer", curie=LAMBDABER.curie('final_buffer'),
+                   model_uri=LAMBDABER.samplePreparation__final_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__final_concentration_mg_per_ml = Slot(uri=LAMBDABER.final_concentration_mg_per_ml, name="samplePreparation__final_concentration_mg_per_ml", curie=LAMBDABER.curie('final_concentration_mg_per_ml'),
+                   model_uri=LAMBDABER.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.samplePreparation__yield_mg = Slot(uri=LAMBDABER.yield_mg, name="samplePreparation__yield_mg", curie=LAMBDABER.curie('yield_mg'),
+                   model_uri=LAMBDABER.samplePreparation__yield_mg, domain=None, range=Optional[float])
+
+slots.samplePreparation__purity_by_sds_page_percent = Slot(uri=LAMBDABER.purity_by_sds_page_percent, name="samplePreparation__purity_by_sds_page_percent", curie=LAMBDABER.curie('purity_by_sds_page_percent'),
+                   model_uri=LAMBDABER.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[float])
+
+slots.samplePreparation__aggregation_assessment = Slot(uri=LAMBDABER.aggregation_assessment, name="samplePreparation__aggregation_assessment", curie=LAMBDABER.curie('aggregation_assessment'),
+                   model_uri=LAMBDABER.samplePreparation__aggregation_assessment, domain=None, range=Optional[str])
+
+slots.samplePreparation__aliquoting = Slot(uri=LAMBDABER.aliquoting, name="samplePreparation__aliquoting", curie=LAMBDABER.curie('aliquoting'),
+                   model_uri=LAMBDABER.samplePreparation__aliquoting, domain=None, range=Optional[str])
 
 slots.instrument__instrument_code = Slot(uri=LAMBDABER.instrument_code, name="instrument__instrument_code", curie=LAMBDABER.curie('instrument_code'),
                    model_uri=LAMBDABER.instrument__instrument_code, domain=None, range=str)
@@ -2410,6 +5032,9 @@ slots.experimentRun__operator_id = Slot(uri=LAMBDABER.operator_id, name="experim
 slots.experimentRun__technique = Slot(uri=LAMBDABER.technique, name="experimentRun__technique", curie=LAMBDABER.curie('technique'),
                    model_uri=LAMBDABER.experimentRun__technique, domain=None, range=Union[str, "TechniqueEnum"])
 
+slots.experimentRun__experimental_method = Slot(uri=LAMBDABER.experimental_method, name="experimentRun__experimental_method", curie=LAMBDABER.curie('experimental_method'),
+                   model_uri=LAMBDABER.experimentRun__experimental_method, domain=None, range=Optional[Union[str, "ExperimentalMethodEnum"]])
+
 slots.experimentRun__experimental_conditions = Slot(uri=LAMBDABER.experimental_conditions, name="experimentRun__experimental_conditions", curie=LAMBDABER.curie('experimental_conditions'),
                    model_uri=LAMBDABER.experimentRun__experimental_conditions, domain=None, range=Optional[Union[dict, ExperimentalConditions]])
 
@@ -2443,8 +5068,62 @@ slots.workflowRun__software_name = Slot(uri=LAMBDABER.software_name, name="workf
 slots.workflowRun__software_version = Slot(uri=LAMBDABER.software_version, name="workflowRun__software_version", curie=LAMBDABER.curie('software_version'),
                    model_uri=LAMBDABER.workflowRun__software_version, domain=None, range=Optional[str])
 
+slots.workflowRun__additional_software = Slot(uri=LAMBDABER.additional_software, name="workflowRun__additional_software", curie=LAMBDABER.curie('additional_software'),
+                   model_uri=LAMBDABER.workflowRun__additional_software, domain=None, range=Optional[str])
+
 slots.workflowRun__processing_parameters = Slot(uri=LAMBDABER.processing_parameters, name="workflowRun__processing_parameters", curie=LAMBDABER.curie('processing_parameters'),
                    model_uri=LAMBDABER.workflowRun__processing_parameters, domain=None, range=Optional[str])
+
+slots.workflowRun__parameters_file_path = Slot(uri=LAMBDABER.parameters_file_path, name="workflowRun__parameters_file_path", curie=LAMBDABER.curie('parameters_file_path'),
+                   model_uri=LAMBDABER.workflowRun__parameters_file_path, domain=None, range=Optional[str])
+
+slots.workflowRun__indexer_module = Slot(uri=LAMBDABER.indexer_module, name="workflowRun__indexer_module", curie=LAMBDABER.curie('indexer_module'),
+                   model_uri=LAMBDABER.workflowRun__indexer_module, domain=None, range=Optional[str])
+
+slots.workflowRun__integrator_module = Slot(uri=LAMBDABER.integrator_module, name="workflowRun__integrator_module", curie=LAMBDABER.curie('integrator_module'),
+                   model_uri=LAMBDABER.workflowRun__integrator_module, domain=None, range=Optional[str])
+
+slots.workflowRun__scaler_module = Slot(uri=LAMBDABER.scaler_module, name="workflowRun__scaler_module", curie=LAMBDABER.curie('scaler_module'),
+                   model_uri=LAMBDABER.workflowRun__scaler_module, domain=None, range=Optional[str])
+
+slots.workflowRun__outlier_rejection_method = Slot(uri=LAMBDABER.outlier_rejection_method, name="workflowRun__outlier_rejection_method", curie=LAMBDABER.curie('outlier_rejection_method'),
+                   model_uri=LAMBDABER.workflowRun__outlier_rejection_method, domain=None, range=Optional[str])
+
+slots.workflowRun__phasing_method = Slot(uri=LAMBDABER.phasing_method, name="workflowRun__phasing_method", curie=LAMBDABER.curie('phasing_method'),
+                   model_uri=LAMBDABER.workflowRun__phasing_method, domain=None, range=Optional[Union[str, "PhasingMethodEnum"]])
+
+slots.workflowRun__search_model_pdb_id = Slot(uri=LAMBDABER.search_model_pdb_id, name="workflowRun__search_model_pdb_id", curie=LAMBDABER.curie('search_model_pdb_id'),
+                   model_uri=LAMBDABER.workflowRun__search_model_pdb_id, domain=None, range=Optional[str])
+
+slots.workflowRun__tls_used = Slot(uri=LAMBDABER.tls_used, name="workflowRun__tls_used", curie=LAMBDABER.curie('tls_used'),
+                   model_uri=LAMBDABER.workflowRun__tls_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__ncs_used = Slot(uri=LAMBDABER.ncs_used, name="workflowRun__ncs_used", curie=LAMBDABER.curie('ncs_used'),
+                   model_uri=LAMBDABER.workflowRun__ncs_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__restraints_other = Slot(uri=LAMBDABER.restraints_other, name="workflowRun__restraints_other", curie=LAMBDABER.curie('restraints_other'),
+                   model_uri=LAMBDABER.workflowRun__restraints_other, domain=None, range=Optional[str])
+
+slots.workflowRun__ligands_cofactors = Slot(uri=LAMBDABER.ligands_cofactors, name="workflowRun__ligands_cofactors", curie=LAMBDABER.curie('ligands_cofactors'),
+                   model_uri=LAMBDABER.workflowRun__ligands_cofactors, domain=None, range=Optional[str])
+
+slots.workflowRun__number_of_waters = Slot(uri=LAMBDABER.number_of_waters, name="workflowRun__number_of_waters", curie=LAMBDABER.curie('number_of_waters'),
+                   model_uri=LAMBDABER.workflowRun__number_of_waters, domain=None, range=Optional[int])
+
+slots.workflowRun__refinement_resolution_a = Slot(uri=LAMBDABER.refinement_resolution_a, name="workflowRun__refinement_resolution_a", curie=LAMBDABER.curie('refinement_resolution_a'),
+                   model_uri=LAMBDABER.workflowRun__refinement_resolution_a, domain=None, range=Optional[float])
+
+slots.workflowRun__deposited_to_pdb = Slot(uri=LAMBDABER.deposited_to_pdb, name="workflowRun__deposited_to_pdb", curie=LAMBDABER.curie('deposited_to_pdb'),
+                   model_uri=LAMBDABER.workflowRun__deposited_to_pdb, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__pdb_id = Slot(uri=LAMBDABER.pdb_id, name="workflowRun__pdb_id", curie=LAMBDABER.curie('pdb_id'),
+                   model_uri=LAMBDABER.workflowRun__pdb_id, domain=None, range=Optional[str])
+
+slots.workflowRun__validation_report_path = Slot(uri=LAMBDABER.validation_report_path, name="workflowRun__validation_report_path", curie=LAMBDABER.curie('validation_report_path'),
+                   model_uri=LAMBDABER.workflowRun__validation_report_path, domain=None, range=Optional[str])
+
+slots.workflowRun__processing_notes = Slot(uri=LAMBDABER.processing_notes, name="workflowRun__processing_notes", curie=LAMBDABER.curie('processing_notes'),
+                   model_uri=LAMBDABER.workflowRun__processing_notes, domain=None, range=Optional[str])
 
 slots.workflowRun__compute_resources = Slot(uri=LAMBDABER.compute_resources, name="workflowRun__compute_resources", curie=LAMBDABER.curie('compute_resources'),
                    model_uri=LAMBDABER.workflowRun__compute_resources, domain=None, range=Optional[Union[dict, ComputeResources]])
@@ -2674,14 +5353,53 @@ slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temper
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDABER.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDABER.curie('plasma_treatment'),
                    model_uri=LAMBDABER.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
+slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=LAMBDABER.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=LAMBDABER.curie('protein_concentration_mg_per_ml'),
+                   model_uri=LAMBDABER.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.xRayPreparation__protein_buffer = Slot(uri=LAMBDABER.protein_buffer, name="xRayPreparation__protein_buffer", curie=LAMBDABER.curie('protein_buffer'),
+                   model_uri=LAMBDABER.xRayPreparation__protein_buffer, domain=None, range=Optional[str])
+
+slots.xRayPreparation__additives = Slot(uri=LAMBDABER.additives, name="xRayPreparation__additives", curie=LAMBDABER.curie('additives'),
+                   model_uri=LAMBDABER.xRayPreparation__additives, domain=None, range=Optional[str])
+
 slots.xRayPreparation__crystallization_method = Slot(uri=LAMBDABER.crystallization_method, name="xRayPreparation__crystallization_method", curie=LAMBDABER.curie('crystallization_method'),
                    model_uri=LAMBDABER.xRayPreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+
+slots.xRayPreparation__screen_name = Slot(uri=LAMBDABER.screen_name, name="xRayPreparation__screen_name", curie=LAMBDABER.curie('screen_name'),
+                   model_uri=LAMBDABER.xRayPreparation__screen_name, domain=None, range=Optional[str])
+
+slots.xRayPreparation__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="xRayPreparation__temperature_c", curie=LAMBDABER.curie('temperature_c'),
+                   model_uri=LAMBDABER.xRayPreparation__temperature_c, domain=None, range=Optional[float])
+
+slots.xRayPreparation__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="xRayPreparation__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
+                   model_uri=LAMBDABER.xRayPreparation__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
+
+slots.xRayPreparation__drop_volume_nl = Slot(uri=LAMBDABER.drop_volume_nl, name="xRayPreparation__drop_volume_nl", curie=LAMBDABER.curie('drop_volume_nl'),
+                   model_uri=LAMBDABER.xRayPreparation__drop_volume_nl, domain=None, range=Optional[float])
+
+slots.xRayPreparation__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="xRayPreparation__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
+                   model_uri=LAMBDABER.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[float])
+
+slots.xRayPreparation__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="xRayPreparation__seeding_type", curie=LAMBDABER.curie('seeding_type'),
+                   model_uri=LAMBDABER.xRayPreparation__seeding_type, domain=None, range=Optional[str])
+
+slots.xRayPreparation__seed_stock_dilution = Slot(uri=LAMBDABER.seed_stock_dilution, name="xRayPreparation__seed_stock_dilution", curie=LAMBDABER.curie('seed_stock_dilution'),
+                   model_uri=LAMBDABER.xRayPreparation__seed_stock_dilution, domain=None, range=Optional[str])
+
+slots.xRayPreparation__initial_hit_condition = Slot(uri=LAMBDABER.initial_hit_condition, name="xRayPreparation__initial_hit_condition", curie=LAMBDABER.curie('initial_hit_condition'),
+                   model_uri=LAMBDABER.xRayPreparation__initial_hit_condition, domain=None, range=Optional[str])
+
+slots.xRayPreparation__optimization_strategy = Slot(uri=LAMBDABER.optimization_strategy, name="xRayPreparation__optimization_strategy", curie=LAMBDABER.curie('optimization_strategy'),
+                   model_uri=LAMBDABER.xRayPreparation__optimization_strategy, domain=None, range=Optional[str])
+
+slots.xRayPreparation__optimized_condition = Slot(uri=LAMBDABER.optimized_condition, name="xRayPreparation__optimized_condition", curie=LAMBDABER.curie('optimized_condition'),
+                   model_uri=LAMBDABER.xRayPreparation__optimized_condition, domain=None, range=Optional[str])
 
 slots.xRayPreparation__crystallization_conditions = Slot(uri=LAMBDABER.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=LAMBDABER.curie('crystallization_conditions'),
                    model_uri=LAMBDABER.xRayPreparation__crystallization_conditions, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystal_size = Slot(uri=LAMBDABER.crystal_size, name="xRayPreparation__crystal_size", curie=LAMBDABER.curie('crystal_size'),
-                   model_uri=LAMBDABER.xRayPreparation__crystal_size, domain=None, range=Optional[str])
+slots.xRayPreparation__crystal_size_um = Slot(uri=LAMBDABER.crystal_size_um, name="xRayPreparation__crystal_size_um", curie=LAMBDABER.curie('crystal_size_um'),
+                   model_uri=LAMBDABER.xRayPreparation__crystal_size_um, domain=None, range=Optional[str])
 
 slots.xRayPreparation__cryoprotectant = Slot(uri=LAMBDABER.cryoprotectant, name="xRayPreparation__cryoprotectant", curie=LAMBDABER.curie('cryoprotectant'),
                    model_uri=LAMBDABER.xRayPreparation__cryoprotectant, domain=None, range=Optional[str])
@@ -2689,11 +5407,20 @@ slots.xRayPreparation__cryoprotectant = Slot(uri=LAMBDABER.cryoprotectant, name=
 slots.xRayPreparation__cryoprotectant_concentration = Slot(uri=LAMBDABER.cryoprotectant_concentration, name="xRayPreparation__cryoprotectant_concentration", curie=LAMBDABER.curie('cryoprotectant_concentration'),
                    model_uri=LAMBDABER.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[float])
 
+slots.xRayPreparation__soak_compound = Slot(uri=LAMBDABER.soak_compound, name="xRayPreparation__soak_compound", curie=LAMBDABER.curie('soak_compound'),
+                   model_uri=LAMBDABER.xRayPreparation__soak_compound, domain=None, range=Optional[str])
+
+slots.xRayPreparation__soak_conditions = Slot(uri=LAMBDABER.soak_conditions, name="xRayPreparation__soak_conditions", curie=LAMBDABER.curie('soak_conditions'),
+                   model_uri=LAMBDABER.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
+
 slots.xRayPreparation__mounting_method = Slot(uri=LAMBDABER.mounting_method, name="xRayPreparation__mounting_method", curie=LAMBDABER.curie('mounting_method'),
                    model_uri=LAMBDABER.xRayPreparation__mounting_method, domain=None, range=Optional[str])
 
 slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDABER.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=LAMBDABER.curie('flash_cooling_method'),
                    model_uri=LAMBDABER.xRayPreparation__flash_cooling_method, domain=None, range=Optional[str])
+
+slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDABER.crystal_notes, name="xRayPreparation__crystal_notes", curie=LAMBDABER.curie('crystal_notes'),
+                   model_uri=LAMBDABER.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDABER.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDABER.curie('concentration_series'),
                    model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])
@@ -2743,23 +5470,140 @@ slots.dataCollectionStrategy__total_dose = Slot(uri=LAMBDABER.total_dose, name="
 slots.dataCollectionStrategy__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="dataCollectionStrategy__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
                    model_uri=LAMBDABER.dataCollectionStrategy__dose_per_frame, domain=None, range=Optional[float])
 
+slots.dataCollectionStrategy__wavelength_a = Slot(uri=LAMBDABER.wavelength_a, name="dataCollectionStrategy__wavelength_a", curie=LAMBDABER.curie('wavelength_a'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__wavelength_a, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__detector = Slot(uri=LAMBDABER.detector, name="dataCollectionStrategy__detector", curie=LAMBDABER.curie('detector'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__detector, domain=None, range=Optional[str])
+
+slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDABER.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=LAMBDABER.curie('detector_distance_mm'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=LAMBDABER.beam_center_x_px, name="dataCollectionStrategy__beam_center_x_px", curie=LAMBDABER.curie('beam_center_x_px'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[int])
+
+slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=LAMBDABER.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=LAMBDABER.curie('beam_center_y_px'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[int])
+
+slots.dataCollectionStrategy__beam_size_um = Slot(uri=LAMBDABER.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=LAMBDABER.curie('beam_size_um'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__flux_photons_per_s = Slot(uri=LAMBDABER.flux_photons_per_s, name="dataCollectionStrategy__flux_photons_per_s", curie=LAMBDABER.curie('flux_photons_per_s'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__flux_photons_per_s, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__transmission_percent = Slot(uri=LAMBDABER.transmission_percent, name="dataCollectionStrategy__transmission_percent", curie=LAMBDABER.curie('transmission_percent'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__transmission_percent, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__attenuator = Slot(uri=LAMBDABER.attenuator, name="dataCollectionStrategy__attenuator", curie=LAMBDABER.curie('attenuator'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__attenuator, domain=None, range=Optional[str])
+
+slots.dataCollectionStrategy__temperature_k = Slot(uri=LAMBDABER.temperature_k, name="dataCollectionStrategy__temperature_k", curie=LAMBDABER.curie('temperature_k'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__temperature_k, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__oscillation_per_image_deg = Slot(uri=LAMBDABER.oscillation_per_image_deg, name="dataCollectionStrategy__oscillation_per_image_deg", curie=LAMBDABER.curie('oscillation_per_image_deg'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__oscillation_per_image_deg, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__total_rotation_deg = Slot(uri=LAMBDABER.total_rotation_deg, name="dataCollectionStrategy__total_rotation_deg", curie=LAMBDABER.curie('total_rotation_deg'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__total_rotation_deg, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__strategy_notes = Slot(uri=LAMBDABER.strategy_notes, name="dataCollectionStrategy__strategy_notes", curie=LAMBDABER.curie('strategy_notes'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
+
 slots.qualityMetrics__resolution = Slot(uri=LAMBDABER.resolution, name="qualityMetrics__resolution", curie=LAMBDABER.curie('resolution'),
                    model_uri=LAMBDABER.qualityMetrics__resolution, domain=None, range=Optional[float])
+
+slots.qualityMetrics__resolution_high_shell_a = Slot(uri=LAMBDABER.resolution_high_shell_a, name="qualityMetrics__resolution_high_shell_a", curie=LAMBDABER.curie('resolution_high_shell_a'),
+                   model_uri=LAMBDABER.qualityMetrics__resolution_high_shell_a, domain=None, range=Optional[float])
+
+slots.qualityMetrics__resolution_low_a = Slot(uri=LAMBDABER.resolution_low_a, name="qualityMetrics__resolution_low_a", curie=LAMBDABER.curie('resolution_low_a'),
+                   model_uri=LAMBDABER.qualityMetrics__resolution_low_a, domain=None, range=Optional[float])
 
 slots.qualityMetrics__completeness = Slot(uri=LAMBDABER.completeness, name="qualityMetrics__completeness", curie=LAMBDABER.curie('completeness'),
                    model_uri=LAMBDABER.qualityMetrics__completeness, domain=None, range=Optional[float])
 
+slots.qualityMetrics__completeness_high_res_shell_percent = Slot(uri=LAMBDABER.completeness_high_res_shell_percent, name="qualityMetrics__completeness_high_res_shell_percent", curie=LAMBDABER.curie('completeness_high_res_shell_percent'),
+                   model_uri=LAMBDABER.qualityMetrics__completeness_high_res_shell_percent, domain=None, range=Optional[float])
+
 slots.qualityMetrics__signal_to_noise = Slot(uri=LAMBDABER.signal_to_noise, name="qualityMetrics__signal_to_noise", curie=LAMBDABER.curie('signal_to_noise'),
                    model_uri=LAMBDABER.qualityMetrics__signal_to_noise, domain=None, range=Optional[float])
 
-slots.qualityMetrics__r_factor = Slot(uri=LAMBDABER.r_factor, name="qualityMetrics__r_factor", curie=LAMBDABER.curie('r_factor'),
-                   model_uri=LAMBDABER.qualityMetrics__r_factor, domain=None, range=Optional[float])
+slots.qualityMetrics__mean_i_over_sigma_i = Slot(uri=LAMBDABER.mean_i_over_sigma_i, name="qualityMetrics__mean_i_over_sigma_i", curie=LAMBDABER.curie('mean_i_over_sigma_i'),
+                   model_uri=LAMBDABER.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[float])
+
+slots.qualityMetrics__space_group = Slot(uri=LAMBDABER.space_group, name="qualityMetrics__space_group", curie=LAMBDABER.curie('space_group'),
+                   model_uri=LAMBDABER.qualityMetrics__space_group, domain=None, range=Optional[str])
+
+slots.qualityMetrics__unit_cell_a = Slot(uri=LAMBDABER.unit_cell_a, name="qualityMetrics__unit_cell_a", curie=LAMBDABER.curie('unit_cell_a'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_a, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_b = Slot(uri=LAMBDABER.unit_cell_b, name="qualityMetrics__unit_cell_b", curie=LAMBDABER.curie('unit_cell_b'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_b, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_c = Slot(uri=LAMBDABER.unit_cell_c, name="qualityMetrics__unit_cell_c", curie=LAMBDABER.curie('unit_cell_c'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_c, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_alpha = Slot(uri=LAMBDABER.unit_cell_alpha, name="qualityMetrics__unit_cell_alpha", curie=LAMBDABER.curie('unit_cell_alpha'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_alpha, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_beta = Slot(uri=LAMBDABER.unit_cell_beta, name="qualityMetrics__unit_cell_beta", curie=LAMBDABER.curie('unit_cell_beta'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_beta, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name="qualityMetrics__unit_cell_gamma", curie=LAMBDABER.curie('unit_cell_gamma'),
+                   model_uri=LAMBDABER.qualityMetrics__unit_cell_gamma, domain=None, range=Optional[float])
+
+slots.qualityMetrics__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="qualityMetrics__multiplicity", curie=LAMBDABER.curie('multiplicity'),
+                   model_uri=LAMBDABER.qualityMetrics__multiplicity, domain=None, range=Optional[float])
+
+slots.qualityMetrics__cc_half = Slot(uri=LAMBDABER.cc_half, name="qualityMetrics__cc_half", curie=LAMBDABER.curie('cc_half'),
+                   model_uri=LAMBDABER.qualityMetrics__cc_half, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_merge = Slot(uri=LAMBDABER.r_merge, name="qualityMetrics__r_merge", curie=LAMBDABER.curie('r_merge'),
+                   model_uri=LAMBDABER.qualityMetrics__r_merge, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_pim = Slot(uri=LAMBDABER.r_pim, name="qualityMetrics__r_pim", curie=LAMBDABER.curie('r_pim'),
+                   model_uri=LAMBDABER.qualityMetrics__r_pim, domain=None, range=Optional[float])
+
+slots.qualityMetrics__wilson_b_factor_a2 = Slot(uri=LAMBDABER.wilson_b_factor_a2, name="qualityMetrics__wilson_b_factor_a2", curie=LAMBDABER.curie('wilson_b_factor_a2'),
+                   model_uri=LAMBDABER.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[float])
+
+slots.qualityMetrics__anomalous_used = Slot(uri=LAMBDABER.anomalous_used, name="qualityMetrics__anomalous_used", curie=LAMBDABER.curie('anomalous_used'),
+                   model_uri=LAMBDABER.qualityMetrics__anomalous_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.qualityMetrics__anom_corr = Slot(uri=LAMBDABER.anom_corr, name="qualityMetrics__anom_corr", curie=LAMBDABER.curie('anom_corr'),
+                   model_uri=LAMBDABER.qualityMetrics__anom_corr, domain=None, range=Optional[float])
+
+slots.qualityMetrics__anom_sig_ano = Slot(uri=LAMBDABER.anom_sig_ano, name="qualityMetrics__anom_sig_ano", curie=LAMBDABER.curie('anom_sig_ano'),
+                   model_uri=LAMBDABER.qualityMetrics__anom_sig_ano, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_work = Slot(uri=LAMBDABER.r_work, name="qualityMetrics__r_work", curie=LAMBDABER.curie('r_work'),
+                   model_uri=LAMBDABER.qualityMetrics__r_work, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_free = Slot(uri=LAMBDABER.r_free, name="qualityMetrics__r_free", curie=LAMBDABER.curie('r_free'),
+                   model_uri=LAMBDABER.qualityMetrics__r_free, domain=None, range=Optional[float])
+
+slots.qualityMetrics__ramachandran_favored_percent = Slot(uri=LAMBDABER.ramachandran_favored_percent, name="qualityMetrics__ramachandran_favored_percent", curie=LAMBDABER.curie('ramachandran_favored_percent'),
+                   model_uri=LAMBDABER.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[float])
+
+slots.qualityMetrics__ramachandran_outliers_percent = Slot(uri=LAMBDABER.ramachandran_outliers_percent, name="qualityMetrics__ramachandran_outliers_percent", curie=LAMBDABER.curie('ramachandran_outliers_percent'),
+                   model_uri=LAMBDABER.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[float])
+
+slots.qualityMetrics__clashscore = Slot(uri=LAMBDABER.clashscore, name="qualityMetrics__clashscore", curie=LAMBDABER.curie('clashscore'),
+                   model_uri=LAMBDABER.qualityMetrics__clashscore, domain=None, range=Optional[float])
+
+slots.qualityMetrics__molprobity_score = Slot(uri=LAMBDABER.molprobity_score, name="qualityMetrics__molprobity_score", curie=LAMBDABER.curie('molprobity_score'),
+                   model_uri=LAMBDABER.qualityMetrics__molprobity_score, domain=None, range=Optional[float])
+
+slots.qualityMetrics__average_b_factor_a2 = Slot(uri=LAMBDABER.average_b_factor_a2, name="qualityMetrics__average_b_factor_a2", curie=LAMBDABER.curie('average_b_factor_a2'),
+                   model_uri=LAMBDABER.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[float])
 
 slots.qualityMetrics__i_zero = Slot(uri=LAMBDABER.i_zero, name="qualityMetrics__i_zero", curie=LAMBDABER.curie('i_zero'),
                    model_uri=LAMBDABER.qualityMetrics__i_zero, domain=None, range=Optional[float])
 
 slots.qualityMetrics__rg = Slot(uri=LAMBDABER.rg, name="qualityMetrics__rg", curie=LAMBDABER.curie('rg'),
                    model_uri=LAMBDABER.qualityMetrics__rg, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_factor = Slot(uri=LAMBDABER.r_factor, name="qualityMetrics__r_factor", curie=LAMBDABER.curie('r_factor'),
+                   model_uri=LAMBDABER.qualityMetrics__r_factor, domain=None, range=Optional[float])
 
 slots.computeResources__cpu_hours = Slot(uri=LAMBDABER.cpu_hours, name="computeResources__cpu_hours", curie=LAMBDABER.curie('cpu_hours'),
                    model_uri=LAMBDABER.computeResources__cpu_hours, domain=None, range=Optional[float])
@@ -2772,3 +5616,358 @@ slots.computeResources__memory_gb = Slot(uri=LAMBDABER.memory_gb, name="computeR
 
 slots.computeResources__storage_gb = Slot(uri=LAMBDABER.storage_gb, name="computeResources__storage_gb", curie=LAMBDABER.curie('storage_gb'),
                    model_uri=LAMBDABER.computeResources__storage_gb, domain=None, range=Optional[float])
+
+slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
+                   model_uri=LAMBDABER.proteinAnnotation__protein_id, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$'))
+
+slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDABER['functional_annotation/pdb_entry'], name="proteinAnnotation__pdb_entry", curie=LAMBDABER.curie('functional_annotation/pdb_entry'),
+                   model_uri=LAMBDABER.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9][A-Za-z0-9]{3}$'))
+
+slots.proteinAnnotation__chain_id = Slot(uri=LAMBDABER['functional_annotation/chain_id'], name="proteinAnnotation__chain_id", curie=LAMBDABER.curie('functional_annotation/chain_id'),
+                   model_uri=LAMBDABER.proteinAnnotation__chain_id, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-Za-z0-9]+$'))
+
+slots.proteinAnnotation__residue_range = Slot(uri=LAMBDABER['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDABER.curie('functional_annotation/residue_range'),
+                   model_uri=LAMBDABER.proteinAnnotation__residue_range, domain=None, range=Optional[str])
+
+slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDABER['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDABER.curie('functional_annotation/confidence_score'),
+                   model_uri=LAMBDABER.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
+
+slots.proteinAnnotation__evidence_type = Slot(uri=LAMBDABER['functional_annotation/evidence_type'], name="proteinAnnotation__evidence_type", curie=LAMBDABER.curie('functional_annotation/evidence_type'),
+                   model_uri=LAMBDABER.proteinAnnotation__evidence_type, domain=None, range=Optional[Union[str, "EvidenceTypeEnum"]])
+
+slots.proteinAnnotation__evidence_code = Slot(uri=LAMBDABER['functional_annotation/evidence_code'], name="proteinAnnotation__evidence_code", curie=LAMBDABER.curie('functional_annotation/evidence_code'),
+                   model_uri=LAMBDABER.proteinAnnotation__evidence_code, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.proteinAnnotation__source_database = Slot(uri=LAMBDABER['functional_annotation/source_database'], name="proteinAnnotation__source_database", curie=LAMBDABER.curie('functional_annotation/source_database'),
+                   model_uri=LAMBDABER.proteinAnnotation__source_database, domain=None, range=Optional[Union[str, "AnnotationSourceEnum"]])
+
+slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDABER['functional_annotation/annotation_method'], name="proteinAnnotation__annotation_method", curie=LAMBDABER.curie('functional_annotation/annotation_method'),
+                   model_uri=LAMBDABER.proteinAnnotation__annotation_method, domain=None, range=Optional[str])
+
+slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDABER['functional_annotation/publication_ids'], name="proteinAnnotation__publication_ids", curie=LAMBDABER.curie('functional_annotation/publication_ids'),
+                   model_uri=LAMBDABER.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^PMID:[0-9]+$'))
+
+slots.functionalSite__site_type = Slot(uri=LAMBDABER['functional_annotation/site_type'], name="functionalSite__site_type", curie=LAMBDABER.curie('functional_annotation/site_type'),
+                   model_uri=LAMBDABER.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
+
+slots.functionalSite__site_name = Slot(uri=LAMBDABER['functional_annotation/site_name'], name="functionalSite__site_name", curie=LAMBDABER.curie('functional_annotation/site_name'),
+                   model_uri=LAMBDABER.functionalSite__site_name, domain=None, range=Optional[str])
+
+slots.functionalSite__residues = Slot(uri=LAMBDABER['functional_annotation/residues'], name="functionalSite__residues", curie=LAMBDABER.curie('functional_annotation/residues'),
+                   model_uri=LAMBDABER.functionalSite__residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.functionalSite__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="functionalSite__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
+                   model_uri=LAMBDABER.functionalSite__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.functionalSite__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="functionalSite__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
+                   model_uri=LAMBDABER.functionalSite__conservation_score, domain=None, range=Optional[float])
+
+slots.functionalSite__functional_importance = Slot(uri=LAMBDABER['functional_annotation/functional_importance'], name="functionalSite__functional_importance", curie=LAMBDABER.curie('functional_annotation/functional_importance'),
+                   model_uri=LAMBDABER.functionalSite__functional_importance, domain=None, range=Optional[str])
+
+slots.functionalSite__go_terms = Slot(uri=LAMBDABER['functional_annotation/go_terms'], name="functionalSite__go_terms", curie=LAMBDABER.curie('functional_annotation/go_terms'),
+                   model_uri=LAMBDABER.functionalSite__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.functionalSite__ec_number = Slot(uri=LAMBDABER['functional_annotation/ec_number'], name="functionalSite__ec_number", curie=LAMBDABER.curie('functional_annotation/ec_number'),
+                   model_uri=LAMBDABER.functionalSite__ec_number, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'))
+
+slots.structuralFeature__feature_type = Slot(uri=LAMBDABER['functional_annotation/feature_type'], name="structuralFeature__feature_type", curie=LAMBDABER.curie('functional_annotation/feature_type'),
+                   model_uri=LAMBDABER.structuralFeature__feature_type, domain=None, range=Union[str, "StructuralFeatureTypeEnum"])
+
+slots.structuralFeature__secondary_structure = Slot(uri=LAMBDABER['functional_annotation/secondary_structure'], name="structuralFeature__secondary_structure", curie=LAMBDABER.curie('functional_annotation/secondary_structure'),
+                   model_uri=LAMBDABER.structuralFeature__secondary_structure, domain=None, range=Optional[Union[str, "SecondaryStructureEnum"]])
+
+slots.structuralFeature__solvent_accessibility = Slot(uri=LAMBDABER['functional_annotation/solvent_accessibility'], name="structuralFeature__solvent_accessibility", curie=LAMBDABER.curie('functional_annotation/solvent_accessibility'),
+                   model_uri=LAMBDABER.structuralFeature__solvent_accessibility, domain=None, range=Optional[float])
+
+slots.structuralFeature__backbone_flexibility = Slot(uri=LAMBDABER['functional_annotation/backbone_flexibility'], name="structuralFeature__backbone_flexibility", curie=LAMBDABER.curie('functional_annotation/backbone_flexibility'),
+                   model_uri=LAMBDABER.structuralFeature__backbone_flexibility, domain=None, range=Optional[float])
+
+slots.structuralFeature__disorder_probability = Slot(uri=LAMBDABER['functional_annotation/disorder_probability'], name="structuralFeature__disorder_probability", curie=LAMBDABER.curie('functional_annotation/disorder_probability'),
+                   model_uri=LAMBDABER.structuralFeature__disorder_probability, domain=None, range=Optional[float])
+
+slots.structuralFeature__conformational_state = Slot(uri=LAMBDABER['functional_annotation/conformational_state'], name="structuralFeature__conformational_state", curie=LAMBDABER.curie('functional_annotation/conformational_state'),
+                   model_uri=LAMBDABER.structuralFeature__conformational_state, domain=None, range=Optional[Union[str, "ConformationalStateEnum"]])
+
+slots.structuralFeature__structural_motif = Slot(uri=LAMBDABER['functional_annotation/structural_motif'], name="structuralFeature__structural_motif", curie=LAMBDABER.curie('functional_annotation/structural_motif'),
+                   model_uri=LAMBDABER.structuralFeature__structural_motif, domain=None, range=Optional[str])
+
+slots.structuralFeature__domain_assignment = Slot(uri=LAMBDABER['functional_annotation/domain_assignment'], name="structuralFeature__domain_assignment", curie=LAMBDABER.curie('functional_annotation/domain_assignment'),
+                   model_uri=LAMBDABER.structuralFeature__domain_assignment, domain=None, range=Optional[str])
+
+slots.structuralFeature__domain_id = Slot(uri=LAMBDABER['functional_annotation/domain_id'], name="structuralFeature__domain_id", curie=LAMBDABER.curie('functional_annotation/domain_id'),
+                   model_uri=LAMBDABER.structuralFeature__domain_id, domain=None, range=Optional[str])
+
+slots.ligandInteraction__ligand_id = Slot(uri=LAMBDABER['functional_annotation/ligand_id'], name="ligandInteraction__ligand_id", curie=LAMBDABER.curie('functional_annotation/ligand_id'),
+                   model_uri=LAMBDABER.ligandInteraction__ligand_id, domain=None, range=str)
+
+slots.ligandInteraction__ligand_name = Slot(uri=LAMBDABER['functional_annotation/ligand_name'], name="ligandInteraction__ligand_name", curie=LAMBDABER.curie('functional_annotation/ligand_name'),
+                   model_uri=LAMBDABER.ligandInteraction__ligand_name, domain=None, range=str)
+
+slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDABER['functional_annotation/ligand_smiles'], name="ligandInteraction__ligand_smiles", curie=LAMBDABER.curie('functional_annotation/ligand_smiles'),
+                   model_uri=LAMBDABER.ligandInteraction__ligand_smiles, domain=None, range=Optional[str])
+
+slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDABER['functional_annotation/binding_affinity'], name="ligandInteraction__binding_affinity", curie=LAMBDABER.curie('functional_annotation/binding_affinity'),
+                   model_uri=LAMBDABER.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
+
+slots.ligandInteraction__binding_affinity_type = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_type'], name="ligandInteraction__binding_affinity_type", curie=LAMBDABER.curie('functional_annotation/binding_affinity_type'),
+                   model_uri=LAMBDABER.ligandInteraction__binding_affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
+
+slots.ligandInteraction__binding_affinity_unit = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_unit'], name="ligandInteraction__binding_affinity_unit", curie=LAMBDABER.curie('functional_annotation/binding_affinity_unit'),
+                   model_uri=LAMBDABER.ligandInteraction__binding_affinity_unit, domain=None, range=Optional[Union[str, "AffinityUnitEnum"]])
+
+slots.ligandInteraction__interaction_type = Slot(uri=LAMBDABER['functional_annotation/interaction_type'], name="ligandInteraction__interaction_type", curie=LAMBDABER.curie('functional_annotation/interaction_type'),
+                   model_uri=LAMBDABER.ligandInteraction__interaction_type, domain=None, range=Optional[Union[str, "InteractionTypeEnum"]])
+
+slots.ligandInteraction__binding_site_residues = Slot(uri=LAMBDABER['functional_annotation/binding_site_residues'], name="ligandInteraction__binding_site_residues", curie=LAMBDABER.curie('functional_annotation/binding_site_residues'),
+                   model_uri=LAMBDABER.ligandInteraction__binding_site_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.ligandInteraction__is_cofactor = Slot(uri=LAMBDABER['functional_annotation/is_cofactor'], name="ligandInteraction__is_cofactor", curie=LAMBDABER.curie('functional_annotation/is_cofactor'),
+                   model_uri=LAMBDABER.ligandInteraction__is_cofactor, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.ligandInteraction__is_drug_like = Slot(uri=LAMBDABER['functional_annotation/is_drug_like'], name="ligandInteraction__is_drug_like", curie=LAMBDABER.curie('functional_annotation/is_drug_like'),
+                   model_uri=LAMBDABER.ligandInteraction__is_drug_like, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.ligandInteraction__druggability_score = Slot(uri=LAMBDABER['functional_annotation/druggability_score'], name="ligandInteraction__druggability_score", curie=LAMBDABER.curie('functional_annotation/druggability_score'),
+                   model_uri=LAMBDABER.ligandInteraction__druggability_score, domain=None, range=Optional[float])
+
+slots.ligandInteraction__interaction_distance = Slot(uri=LAMBDABER['functional_annotation/interaction_distance'], name="ligandInteraction__interaction_distance", curie=LAMBDABER.curie('functional_annotation/interaction_distance'),
+                   model_uri=LAMBDABER.ligandInteraction__interaction_distance, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__partner_protein_id = Slot(uri=LAMBDABER['functional_annotation/partner_protein_id'], name="proteinProteinInteraction__partner_protein_id", curie=LAMBDABER.curie('functional_annotation/partner_protein_id'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__partner_protein_id, domain=None, range=str)
+
+slots.proteinProteinInteraction__partner_chain_id = Slot(uri=LAMBDABER['functional_annotation/partner_chain_id'], name="proteinProteinInteraction__partner_chain_id", curie=LAMBDABER.curie('functional_annotation/partner_chain_id'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__partner_chain_id, domain=None, range=Optional[str])
+
+slots.proteinProteinInteraction__interface_residues = Slot(uri=LAMBDABER['functional_annotation/interface_residues'], name="proteinProteinInteraction__interface_residues", curie=LAMBDABER.curie('functional_annotation/interface_residues'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=LAMBDABER['functional_annotation/partner_interface_residues'], name="proteinProteinInteraction__partner_interface_residues", curie=LAMBDABER.curie('functional_annotation/partner_interface_residues'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__partner_interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.proteinProteinInteraction__interface_area = Slot(uri=LAMBDABER['functional_annotation/interface_area'], name="proteinProteinInteraction__interface_area", curie=LAMBDABER.curie('functional_annotation/interface_area'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__interface_area, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__binding_energy = Slot(uri=LAMBDABER['functional_annotation/binding_energy'], name="proteinProteinInteraction__binding_energy", curie=LAMBDABER.curie('functional_annotation/binding_energy'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__binding_energy, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__dissociation_constant = Slot(uri=LAMBDABER['functional_annotation/dissociation_constant'], name="proteinProteinInteraction__dissociation_constant", curie=LAMBDABER.curie('functional_annotation/dissociation_constant'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__dissociation_constant, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__complex_stability = Slot(uri=LAMBDABER['functional_annotation/complex_stability'], name="proteinProteinInteraction__complex_stability", curie=LAMBDABER.curie('functional_annotation/complex_stability'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__complex_stability, domain=None, range=Optional[Union[str, "ComplexStabilityEnum"]])
+
+slots.proteinProteinInteraction__biological_assembly = Slot(uri=LAMBDABER['functional_annotation/biological_assembly'], name="proteinProteinInteraction__biological_assembly", curie=LAMBDABER.curie('functional_annotation/biological_assembly'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__biological_assembly, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.proteinProteinInteraction__interaction_evidence = Slot(uri=LAMBDABER['functional_annotation/interaction_evidence'], name="proteinProteinInteraction__interaction_evidence", curie=LAMBDABER.curie('functional_annotation/interaction_evidence'),
+                   model_uri=LAMBDABER.proteinProteinInteraction__interaction_evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
+
+slots.mutationEffect__mutation = Slot(uri=LAMBDABER['functional_annotation/mutation'], name="mutationEffect__mutation", curie=LAMBDABER.curie('functional_annotation/mutation'),
+                   model_uri=LAMBDABER.mutationEffect__mutation, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Z][0-9]+[A-Z]$'))
+
+slots.mutationEffect__mutation_type = Slot(uri=LAMBDABER['functional_annotation/mutation_type'], name="mutationEffect__mutation_type", curie=LAMBDABER.curie('functional_annotation/mutation_type'),
+                   model_uri=LAMBDABER.mutationEffect__mutation_type, domain=None, range=Optional[Union[str, "MutationTypeEnum"]])
+
+slots.mutationEffect__effect_on_stability = Slot(uri=LAMBDABER['functional_annotation/effect_on_stability'], name="mutationEffect__effect_on_stability", curie=LAMBDABER.curie('functional_annotation/effect_on_stability'),
+                   model_uri=LAMBDABER.mutationEffect__effect_on_stability, domain=None, range=Optional[Union[str, "StabilityEffectEnum"]])
+
+slots.mutationEffect__delta_delta_g = Slot(uri=LAMBDABER['functional_annotation/delta_delta_g'], name="mutationEffect__delta_delta_g", curie=LAMBDABER.curie('functional_annotation/delta_delta_g'),
+                   model_uri=LAMBDABER.mutationEffect__delta_delta_g, domain=None, range=Optional[float])
+
+slots.mutationEffect__effect_on_function = Slot(uri=LAMBDABER['functional_annotation/effect_on_function'], name="mutationEffect__effect_on_function", curie=LAMBDABER.curie('functional_annotation/effect_on_function'),
+                   model_uri=LAMBDABER.mutationEffect__effect_on_function, domain=None, range=Optional[Union[str, "FunctionalEffectEnum"]])
+
+slots.mutationEffect__functional_impact_description = Slot(uri=LAMBDABER['functional_annotation/functional_impact_description'], name="mutationEffect__functional_impact_description", curie=LAMBDABER.curie('functional_annotation/functional_impact_description'),
+                   model_uri=LAMBDABER.mutationEffect__functional_impact_description, domain=None, range=Optional[str])
+
+slots.mutationEffect__disease_association = Slot(uri=LAMBDABER['functional_annotation/disease_association'], name="mutationEffect__disease_association", curie=LAMBDABER.curie('functional_annotation/disease_association'),
+                   model_uri=LAMBDABER.mutationEffect__disease_association, domain=None, range=Optional[str])
+
+slots.mutationEffect__omim_id = Slot(uri=LAMBDABER['functional_annotation/omim_id'], name="mutationEffect__omim_id", curie=LAMBDABER.curie('functional_annotation/omim_id'),
+                   model_uri=LAMBDABER.mutationEffect__omim_id, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]{6}$'))
+
+slots.mutationEffect__clinical_significance = Slot(uri=LAMBDABER['functional_annotation/clinical_significance'], name="mutationEffect__clinical_significance", curie=LAMBDABER.curie('functional_annotation/clinical_significance'),
+                   model_uri=LAMBDABER.mutationEffect__clinical_significance, domain=None, range=Optional[Union[str, "ClinicalSignificanceEnum"]])
+
+slots.mutationEffect__allele_frequency = Slot(uri=LAMBDABER['functional_annotation/allele_frequency'], name="mutationEffect__allele_frequency", curie=LAMBDABER.curie('functional_annotation/allele_frequency'),
+                   model_uri=LAMBDABER.mutationEffect__allele_frequency, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__property_type = Slot(uri=LAMBDABER['functional_annotation/property_type'], name="biophysicalProperty__property_type", curie=LAMBDABER.curie('functional_annotation/property_type'),
+                   model_uri=LAMBDABER.biophysicalProperty__property_type, domain=None, range=Union[str, "BiophysicalPropertyEnum"])
+
+slots.biophysicalProperty__value = Slot(uri=LAMBDABER['functional_annotation/value'], name="biophysicalProperty__value", curie=LAMBDABER.curie('functional_annotation/value'),
+                   model_uri=LAMBDABER.biophysicalProperty__value, domain=None, range=float)
+
+slots.biophysicalProperty__unit = Slot(uri=LAMBDABER['functional_annotation/unit'], name="biophysicalProperty__unit", curie=LAMBDABER.curie('functional_annotation/unit'),
+                   model_uri=LAMBDABER.biophysicalProperty__unit, domain=None, range=str)
+
+slots.biophysicalProperty__error = Slot(uri=LAMBDABER['functional_annotation/error'], name="biophysicalProperty__error", curie=LAMBDABER.curie('functional_annotation/error'),
+                   model_uri=LAMBDABER.biophysicalProperty__error, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDABER['functional_annotation/measurement_conditions'], name="biophysicalProperty__measurement_conditions", curie=LAMBDABER.curie('functional_annotation/measurement_conditions'),
+                   model_uri=LAMBDABER.biophysicalProperty__measurement_conditions, domain=None, range=Optional[str])
+
+slots.biophysicalProperty__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="biophysicalProperty__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
+                   model_uri=LAMBDABER.biophysicalProperty__temperature, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="biophysicalProperty__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
+                   model_uri=LAMBDABER.biophysicalProperty__ph, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="biophysicalProperty__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
+                   model_uri=LAMBDABER.biophysicalProperty__ionic_strength, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDABER['functional_annotation/experimental_method'], name="biophysicalProperty__experimental_method", curie=LAMBDABER.curie('functional_annotation/experimental_method'),
+                   model_uri=LAMBDABER.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
+
+slots.conformationalEnsemble__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="conformationalEnsemble__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
+                   model_uri=LAMBDABER.conformationalEnsemble__protein_id, domain=None, range=str)
+
+slots.conformationalEnsemble__conformational_states = Slot(uri=LAMBDABER['functional_annotation/conformational_states'], name="conformationalEnsemble__conformational_states", curie=LAMBDABER.curie('functional_annotation/conformational_states'),
+                   model_uri=LAMBDABER.conformationalEnsemble__conformational_states, domain=None, range=Optional[Union[Union[dict, ConformationalState], list[Union[dict, ConformationalState]]]])
+
+slots.conformationalEnsemble__clustering_method = Slot(uri=LAMBDABER['functional_annotation/clustering_method'], name="conformationalEnsemble__clustering_method", curie=LAMBDABER.curie('functional_annotation/clustering_method'),
+                   model_uri=LAMBDABER.conformationalEnsemble__clustering_method, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__rmsd_threshold = Slot(uri=LAMBDABER['functional_annotation/rmsd_threshold'], name="conformationalEnsemble__rmsd_threshold", curie=LAMBDABER.curie('functional_annotation/rmsd_threshold'),
+                   model_uri=LAMBDABER.conformationalEnsemble__rmsd_threshold, domain=None, range=Optional[float])
+
+slots.conformationalEnsemble__transition_pathways = Slot(uri=LAMBDABER['functional_annotation/transition_pathways'], name="conformationalEnsemble__transition_pathways", curie=LAMBDABER.curie('functional_annotation/transition_pathways'),
+                   model_uri=LAMBDABER.conformationalEnsemble__transition_pathways, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__energy_landscape = Slot(uri=LAMBDABER['functional_annotation/energy_landscape'], name="conformationalEnsemble__energy_landscape", curie=LAMBDABER.curie('functional_annotation/energy_landscape'),
+                   model_uri=LAMBDABER.conformationalEnsemble__energy_landscape, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__principal_motions = Slot(uri=LAMBDABER['functional_annotation/principal_motions'], name="conformationalEnsemble__principal_motions", curie=LAMBDABER.curie('functional_annotation/principal_motions'),
+                   model_uri=LAMBDABER.conformationalEnsemble__principal_motions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.conformationalState__state_id = Slot(uri=LAMBDABER['functional_annotation/state_id'], name="conformationalState__state_id", curie=LAMBDABER.curie('functional_annotation/state_id'),
+                   model_uri=LAMBDABER.conformationalState__state_id, domain=None, range=str)
+
+slots.conformationalState__state_name = Slot(uri=LAMBDABER['functional_annotation/state_name'], name="conformationalState__state_name", curie=LAMBDABER.curie('functional_annotation/state_name'),
+                   model_uri=LAMBDABER.conformationalState__state_name, domain=None, range=Optional[str])
+
+slots.conformationalState__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="conformationalState__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
+                   model_uri=LAMBDABER.conformationalState__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.conformationalState__population = Slot(uri=LAMBDABER['functional_annotation/population'], name="conformationalState__population", curie=LAMBDABER.curie('functional_annotation/population'),
+                   model_uri=LAMBDABER.conformationalState__population, domain=None, range=Optional[float])
+
+slots.conformationalState__free_energy = Slot(uri=LAMBDABER['functional_annotation/free_energy'], name="conformationalState__free_energy", curie=LAMBDABER.curie('functional_annotation/free_energy'),
+                   model_uri=LAMBDABER.conformationalState__free_energy, domain=None, range=Optional[float])
+
+slots.conformationalState__rmsd_from_reference = Slot(uri=LAMBDABER['functional_annotation/rmsd_from_reference'], name="conformationalState__rmsd_from_reference", curie=LAMBDABER.curie('functional_annotation/rmsd_from_reference'),
+                   model_uri=LAMBDABER.conformationalState__rmsd_from_reference, domain=None, range=Optional[float])
+
+slots.conformationalState__characteristic_features = Slot(uri=LAMBDABER['functional_annotation/characteristic_features'], name="conformationalState__characteristic_features", curie=LAMBDABER.curie('functional_annotation/characteristic_features'),
+                   model_uri=LAMBDABER.conformationalState__characteristic_features, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.postTranslationalModification__modification_type = Slot(uri=LAMBDABER['functional_annotation/modification_type'], name="postTranslationalModification__modification_type", curie=LAMBDABER.curie('functional_annotation/modification_type'),
+                   model_uri=LAMBDABER.postTranslationalModification__modification_type, domain=None, range=Union[str, "PTMTypeEnum"])
+
+slots.postTranslationalModification__modified_residue = Slot(uri=LAMBDABER['functional_annotation/modified_residue'], name="postTranslationalModification__modified_residue", curie=LAMBDABER.curie('functional_annotation/modified_residue'),
+                   model_uri=LAMBDABER.postTranslationalModification__modified_residue, domain=None, range=str)
+
+slots.postTranslationalModification__modification_group = Slot(uri=LAMBDABER['functional_annotation/modification_group'], name="postTranslationalModification__modification_group", curie=LAMBDABER.curie('functional_annotation/modification_group'),
+                   model_uri=LAMBDABER.postTranslationalModification__modification_group, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__mass_shift = Slot(uri=LAMBDABER['functional_annotation/mass_shift'], name="postTranslationalModification__mass_shift", curie=LAMBDABER.curie('functional_annotation/mass_shift'),
+                   model_uri=LAMBDABER.postTranslationalModification__mass_shift, domain=None, range=Optional[float])
+
+slots.postTranslationalModification__functional_effect = Slot(uri=LAMBDABER['functional_annotation/functional_effect'], name="postTranslationalModification__functional_effect", curie=LAMBDABER.curie('functional_annotation/functional_effect'),
+                   model_uri=LAMBDABER.postTranslationalModification__functional_effect, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__regulatory_role = Slot(uri=LAMBDABER['functional_annotation/regulatory_role'], name="postTranslationalModification__regulatory_role", curie=LAMBDABER.curie('functional_annotation/regulatory_role'),
+                   model_uri=LAMBDABER.postTranslationalModification__regulatory_role, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__enzyme = Slot(uri=LAMBDABER['functional_annotation/enzyme'], name="postTranslationalModification__enzyme", curie=LAMBDABER.curie('functional_annotation/enzyme'),
+                   model_uri=LAMBDABER.postTranslationalModification__enzyme, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__removal_enzyme = Slot(uri=LAMBDABER['functional_annotation/removal_enzyme'], name="postTranslationalModification__removal_enzyme", curie=LAMBDABER.curie('functional_annotation/removal_enzyme'),
+                   model_uri=LAMBDABER.postTranslationalModification__removal_enzyme, domain=None, range=Optional[str])
+
+slots.databaseCrossReference__database_name = Slot(uri=LAMBDABER['functional_annotation/database_name'], name="databaseCrossReference__database_name", curie=LAMBDABER.curie('functional_annotation/database_name'),
+                   model_uri=LAMBDABER.databaseCrossReference__database_name, domain=None, range=Union[str, "DatabaseNameEnum"])
+
+slots.databaseCrossReference__database_id = Slot(uri=LAMBDABER['functional_annotation/database_id'], name="databaseCrossReference__database_id", curie=LAMBDABER.curie('functional_annotation/database_id'),
+                   model_uri=LAMBDABER.databaseCrossReference__database_id, domain=None, range=str)
+
+slots.databaseCrossReference__database_url = Slot(uri=LAMBDABER['functional_annotation/database_url'], name="databaseCrossReference__database_url", curie=LAMBDABER.curie('functional_annotation/database_url'),
+                   model_uri=LAMBDABER.databaseCrossReference__database_url, domain=None, range=Optional[Union[str, URI]])
+
+slots.databaseCrossReference__last_updated = Slot(uri=LAMBDABER['functional_annotation/last_updated'], name="databaseCrossReference__last_updated", curie=LAMBDABER.curie('functional_annotation/last_updated'),
+                   model_uri=LAMBDABER.databaseCrossReference__last_updated, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="evolutionaryConservation__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
+                   model_uri=LAMBDABER.evolutionaryConservation__conservation_score, domain=None, range=Optional[float])
+
+slots.evolutionaryConservation__conserved_residues = Slot(uri=LAMBDABER['functional_annotation/conserved_residues'], name="evolutionaryConservation__conserved_residues", curie=LAMBDABER.curie('functional_annotation/conserved_residues'),
+                   model_uri=LAMBDABER.evolutionaryConservation__conserved_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.evolutionaryConservation__variable_residues = Slot(uri=LAMBDABER['functional_annotation/variable_residues'], name="evolutionaryConservation__variable_residues", curie=LAMBDABER.curie('functional_annotation/variable_residues'),
+                   model_uri=LAMBDABER.evolutionaryConservation__variable_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.evolutionaryConservation__conservation_method = Slot(uri=LAMBDABER['functional_annotation/conservation_method'], name="evolutionaryConservation__conservation_method", curie=LAMBDABER.curie('functional_annotation/conservation_method'),
+                   model_uri=LAMBDABER.evolutionaryConservation__conservation_method, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__alignment_depth = Slot(uri=LAMBDABER['functional_annotation/alignment_depth'], name="evolutionaryConservation__alignment_depth", curie=LAMBDABER.curie('functional_annotation/alignment_depth'),
+                   model_uri=LAMBDABER.evolutionaryConservation__alignment_depth, domain=None, range=Optional[int])
+
+slots.evolutionaryConservation__taxonomic_range = Slot(uri=LAMBDABER['functional_annotation/taxonomic_range'], name="evolutionaryConservation__taxonomic_range", curie=LAMBDABER.curie('functional_annotation/taxonomic_range'),
+                   model_uri=LAMBDABER.evolutionaryConservation__taxonomic_range, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__coevolved_residues = Slot(uri=LAMBDABER['functional_annotation/coevolved_residues'], name="evolutionaryConservation__coevolved_residues", curie=LAMBDABER.curie('functional_annotation/coevolved_residues'),
+                   model_uri=LAMBDABER.evolutionaryConservation__coevolved_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aggregatedProteinView__uniprot_id = Slot(uri=LAMBDABER['functional_annotation/uniprot_id'], name="aggregatedProteinView__uniprot_id", curie=LAMBDABER.curie('functional_annotation/uniprot_id'),
+                   model_uri=LAMBDABER.aggregatedProteinView__uniprot_id, domain=None, range=str)
+
+slots.aggregatedProteinView__protein_name = Slot(uri=LAMBDABER['functional_annotation/protein_name'], name="aggregatedProteinView__protein_name", curie=LAMBDABER.curie('functional_annotation/protein_name'),
+                   model_uri=LAMBDABER.aggregatedProteinView__protein_name, domain=None, range=str)
+
+slots.aggregatedProteinView__organism = Slot(uri=LAMBDABER['functional_annotation/organism'], name="aggregatedProteinView__organism", curie=LAMBDABER.curie('functional_annotation/organism'),
+                   model_uri=LAMBDABER.aggregatedProteinView__organism, domain=None, range=Optional[str])
+
+slots.aggregatedProteinView__organism_id = Slot(uri=LAMBDABER['functional_annotation/organism_id'], name="aggregatedProteinView__organism_id", curie=LAMBDABER.curie('functional_annotation/organism_id'),
+                   model_uri=LAMBDABER.aggregatedProteinView__organism_id, domain=None, range=Optional[int])
+
+slots.aggregatedProteinView__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="aggregatedProteinView__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
+                   model_uri=LAMBDABER.aggregatedProteinView__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aggregatedProteinView__functional_sites = Slot(uri=LAMBDABER['functional_annotation/functional_sites'], name="aggregatedProteinView__functional_sites", curie=LAMBDABER.curie('functional_annotation/functional_sites'),
+                   model_uri=LAMBDABER.aggregatedProteinView__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+
+slots.aggregatedProteinView__structural_features = Slot(uri=LAMBDABER['functional_annotation/structural_features'], name="aggregatedProteinView__structural_features", curie=LAMBDABER.curie('functional_annotation/structural_features'),
+                   model_uri=LAMBDABER.aggregatedProteinView__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+
+slots.aggregatedProteinView__protein_interactions = Slot(uri=LAMBDABER['functional_annotation/protein_interactions'], name="aggregatedProteinView__protein_interactions", curie=LAMBDABER.curie('functional_annotation/protein_interactions'),
+                   model_uri=LAMBDABER.aggregatedProteinView__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+
+slots.aggregatedProteinView__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="aggregatedProteinView__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
+                   model_uri=LAMBDABER.aggregatedProteinView__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.aggregatedProteinView__mutations = Slot(uri=LAMBDABER['functional_annotation/mutations'], name="aggregatedProteinView__mutations", curie=LAMBDABER.curie('functional_annotation/mutations'),
+                   model_uri=LAMBDABER.aggregatedProteinView__mutations, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+
+slots.aggregatedProteinView__ptms = Slot(uri=LAMBDABER['functional_annotation/ptms'], name="aggregatedProteinView__ptms", curie=LAMBDABER.curie('functional_annotation/ptms'),
+                   model_uri=LAMBDABER.aggregatedProteinView__ptms, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+
+slots.aggregatedProteinView__biophysical_properties = Slot(uri=LAMBDABER['functional_annotation/biophysical_properties'], name="aggregatedProteinView__biophysical_properties", curie=LAMBDABER.curie('functional_annotation/biophysical_properties'),
+                   model_uri=LAMBDABER.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+
+slots.aggregatedProteinView__conformational_ensemble = Slot(uri=LAMBDABER['functional_annotation/conformational_ensemble'], name="aggregatedProteinView__conformational_ensemble", curie=LAMBDABER.curie('functional_annotation/conformational_ensemble'),
+                   model_uri=LAMBDABER.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+
+slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDABER['functional_annotation/evolutionary_conservation'], name="aggregatedProteinView__evolutionary_conservation", curie=LAMBDABER.curie('functional_annotation/evolutionary_conservation'),
+                   model_uri=LAMBDABER.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+
+slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER['functional_annotation/cross_references'], name="aggregatedProteinView__cross_references", curie=LAMBDABER.curie('functional_annotation/cross_references'),
+                   model_uri=LAMBDABER.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])

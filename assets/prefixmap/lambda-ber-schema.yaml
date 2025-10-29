@@ -2,21 +2,12 @@
    "CL": "http://purl.obolibrary.org/obo/CL_",
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
-   "dataset": "https://w3id.org/lambda-ber-schema/dataset/",
    "dcterms": "http://purl.org/dc/terms/",
-   "df": "https://w3id.org/lambda-ber-schema/data_file/",
-   "experiment": "https://w3id.org/lambda-ber-schema/experiment_run/",
-   "img": "https://w3id.org/lambda-ber-schema/image/",
-   "instrument": "https://w3id.org/lambda-ber-schema/instrument/",
    "lambdaber": "https://w3id.org/lambda-ber-schema/",
    "linkml": "https://w3id.org/linkml/",
    "nmdc": "https://w3id.org/nmdc/",
-   "prep": "https://w3id.org/lambda-ber-schema/sample_preparation/",
    "prov": "http://www.w3.org/ns/prov#",
    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-   "sample": "https://w3id.org/lambda-ber-schema/sample/",
    "sio": "http://semanticscience.org/resource/",
-   "skos": "http://www.w3.org/2004/02/skos/core#",
-   "study": "https://w3id.org/lambda-ber-schema/study/",
-   "wf": "https://w3id.org/lambda-ber-schema/workflow_run/"
+   "skos": "http://www.w3.org/2004/02/skos/core#"
 }

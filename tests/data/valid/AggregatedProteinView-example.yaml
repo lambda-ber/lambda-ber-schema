@@ -1,0 +1,292 @@
+# Example of an aggregated protein view combining data from multiple PDB entries
+id: "lambdaber:protein-p53-view"
+uniprot_id: "P04637"
+protein_name: "Cellular tumor antigen p53"
+title: "Aggregated structural and functional data for human p53"
+description: "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases"
+
+organism: "Homo sapiens"
+organism_id: 9606
+
+# All PDB entries for this protein
+pdb_entries: ["1TUP", "1TSR", "2AC0", "2ADY", "2AHI", "2ATA", "2B3G", "2BIM", "2FOJ", "2GEQ"]
+
+# Functional sites aggregated across structures
+functional_sites:
+  - id: "lambdaber:p53-func-001"
+    protein_id: "P04637"
+    pdb_entry: "1TUP"
+    chain_id: "A"
+    site_type: dna_binding
+    site_name: "DNA-binding domain"
+    residue_range: "94-292"
+    residues: ["120", "241", "248", "273", "276", "277", "280", "283"]
+    conservation_score: 0.95
+    functional_importance: "Sequence-specific DNA binding for transcriptional regulation"
+    go_terms: ["GO:0003677", "GO:0003700"]
+    source_database: pdbe_kb
+    confidence_score: 1.0
+    evidence_type: experimental
+
+  - id: "lambdaber:p53-func-002"
+    protein_id: "P04637"
+    site_type: protein_binding
+    site_name: "MDM2 binding site"
+    residue_range: "17-29"
+    residues: ["19", "23", "26"]
+    conservation_score: 0.88
+    functional_importance: "Negative regulation through MDM2 interaction"
+    source_database: intact
+    confidence_score: 0.98
+    evidence_type: experimental
+
+  - id: "lambdaber:p53-func-003"
+    protein_id: "P04637"
+    site_type: metal_binding
+    site_name: "Zinc coordination site"
+    residues: ["176", "179", "238", "242"]
+    conservation_score: 1.0
+    functional_importance: "Structural stability of DNA-binding domain"
+    source_database: pdbe
+    evidence_type: experimental
+
+# Structural features
+structural_features:
+  - id: "lambdaber:p53-struct-001"
+    protein_id: "P04637"
+    feature_type: domain
+    residue_range: "1-93"
+    domain_assignment: "Pfam"
+    domain_id: "PF00870"
+    structural_motif: "Transactivation domain"
+    disorder_probability: 0.75
+    source_database: pfam
+
+  - id: "lambdaber:p53-struct-002"
+    protein_id: "P04637"
+    feature_type: domain
+    residue_range: "94-292"
+    domain_assignment: "Pfam"
+    domain_id: "PF00870"
+    structural_motif: "DNA-binding domain"
+    secondary_structure: sheet
+    solvent_accessibility: 0.35
+    source_database: pfam
+
+  - id: "lambdaber:p53-struct-003"
+    protein_id: "P04637"
+    feature_type: disordered_region
+    residue_range: "1-61"
+    disorder_probability: 0.82
+    conformational_state: disordered
+    source_database: mobi
+
+  - id: "lambdaber:p53-struct-004"
+    protein_id: "P04637"
+    feature_type: beta_sheet
+    residue_range: "110-124"
+    secondary_structure: sheet
+    backbone_flexibility: 18.5
+    source_database: pdbe
+
+# Protein-protein interactions
+protein_interactions:
+  - id: "lambdaber:p53-ppi-001"
+    protein_id: "P04637"
+    pdb_entry: "1YCR"
+    partner_protein_id: "Q00987"
+    partner_chain_id: "B"
+    interface_residues: ["19", "23", "26", "27"]
+    partner_interface_residues: ["54", "56", "58", "62"]
+    interface_area: 723.4
+    binding_energy: -8.7
+    dissociation_constant: 0.0001
+    complex_stability: stable
+    biological_assembly: true
+    interaction_evidence: [experimental, physical]
+    source_database: intact
+
+  - id: "lambdaber:p53-ppi-002"
+    protein_id: "P04637"
+    partner_protein_id: "Q04206"
+    interface_residues: ["183", "184", "185", "186"]
+    interface_area: 456.2
+    complex_stability: transient
+    interaction_evidence: [experimental, coexpression]
+    source_database: pdbe_kb
+
+# Ligand interactions
+ligand_interactions:
+  - ligand_id: "CHEBI:30413"
+    ligand_name: "Zinc ion"
+    binding_affinity: 0.001
+    binding_affinity_type: kd
+    binding_affinity_unit: micromolar
+    interaction_type: metal_coordination
+    binding_site_residues: ["176", "179", "238", "242"]
+    is_cofactor: true
+    is_drug_like: false
+
+  - ligand_id: "CHEMBL3545110"
+    ligand_name: "Nutlin-3a"
+    binding_affinity: 0.09
+    binding_affinity_type: ki
+    binding_affinity_unit: micromolar
+    interaction_type: hydrophobic
+    binding_site_residues: ["19", "23", "26"]
+    is_drug_like: true
+    druggability_score: 0.75
+
+# Important mutations
+mutations:
+  - id: "lambdaber:p53-mut-001"
+    protein_id: "P04637"
+    mutation: "R175H"
+    mutation_type: missense
+    effect_on_stability: highly_destabilizing
+    delta_delta_g: 3.8
+    effect_on_function: loss_of_function
+    functional_impact_description: "Loss of DNA binding ability"
+    disease_association: "Li-Fraumeni syndrome, various cancers"
+    omim_id: "191170"
+    clinical_significance: pathogenic
+    allele_frequency: 0.00001
+    source_database: pdbe_kb
+    evidence_type: experimental
+
+  - id: "lambdaber:p53-mut-002"
+    protein_id: "P04637"
+    mutation: "R248Q"
+    mutation_type: missense
+    effect_on_stability: destabilizing
+    delta_delta_g: 2.1
+    effect_on_function: loss_of_function
+    functional_impact_description: "Impaired DNA binding and transcriptional activation"
+    disease_association: "Various cancers"
+    clinical_significance: pathogenic
+    source_database: pdbe_kb
+
+  - id: "lambdaber:p53-mut-003"
+    protein_id: "P04637"
+    mutation: "R273H"
+    mutation_type: missense
+    effect_on_stability: neutral
+    delta_delta_g: 0.3
+    effect_on_function: altered_function
+    functional_impact_description: "Altered DNA binding specificity"
+    disease_association: "Various cancers"
+    clinical_significance: pathogenic
+    source_database: pdbe_kb
+
+# Post-translational modifications
+ptms:
+  - id: "lambdaber:p53-ptm-001"
+    protein_id: "P04637"
+    modification_type: phosphorylation
+    modified_residue: "S15"
+    modification_group: "phosphate"
+    mass_shift: 79.966
+    functional_effect: "Stabilization, reduced MDM2 binding"
+    regulatory_role: "DNA damage response activation"
+    enzyme: "ATM, ATR"
+    source_database: uniprot
+    evidence_type: experimental
+
+  - id: "lambdaber:p53-ptm-002"
+    protein_id: "P04637"
+    modification_type: acetylation
+    modified_residue: "K382"
+    modification_group: "acetyl"
+    mass_shift: 42.011
+    functional_effect: "Enhanced DNA binding and transcriptional activity"
+    enzyme: "p300/CBP"
+    removal_enzyme: "HDAC1"
+    source_database: uniprot
+
+  - id: "lambdaber:p53-ptm-003"
+    protein_id: "P04637"
+    modification_type: ubiquitination
+    modified_residue: "K370"
+    functional_effect: "Proteasomal degradation signal"
+    enzyme: "MDM2"
+    source_database: uniprot
+
+# Biophysical properties
+biophysical_properties:
+  - property_type: stability
+    value: 42.5
+    unit: "kcal/mol"
+    measurement_conditions: "DNA-binding domain, pH 7.0, 20°C"
+    experimental_method: differential_scanning_calorimetry
+
+  - property_type: melting_temperature
+    value: 315.8
+    unit: "K"
+    error: 1.2
+    measurement_conditions: "Full-length protein"
+    ph: 7.4
+    experimental_method: circular_dichroism
+
+  - property_type: aggregation_propensity
+    value: 0.68
+    unit: "probability"
+    measurement_conditions: "Predicted for unfolded state"
+
+# Conformational ensemble data
+conformational_ensemble:
+  id: "lambdaber:p53-confens-001"
+  protein_id: "P04637"
+  clustering_method: "Structure-based clustering of DNA-binding domain"
+  rmsd_threshold: 1.5
+  transition_pathways: "DNA-free <-> DNA-bound conformations"
+  conformational_states:
+    - state_id: "dna_free"
+      state_name: "DNA-free"
+      pdb_entries: ["2AC0", "2ADY"]
+      population: 0.4
+      free_energy: 0.0
+      characteristic_features: ["L1 loop flexible", "DNA-binding surface exposed"]
+
+    - state_id: "dna_bound"
+      state_name: "DNA-bound"
+      pdb_entries: ["1TUP", "1TSR"]
+      population: 0.6
+      free_energy: -2.3
+      rmsd_from_reference: 2.1
+      characteristic_features: ["L1 loop ordered", "DNA contacts formed"]
+
+# Evolutionary conservation
+evolutionary_conservation:
+  id: "lambdaber:p53-evol-001"
+  protein_id: "P04637"
+  conservation_score: 0.78
+  conserved_residues: ["120", "175", "176", "179", "238", "241", "242", "248", "273", "276", "277", "280", "283"]
+  variable_residues: ["1-40", "360-393"]
+  conservation_method: "ConSurf"
+  alignment_depth: 250
+  taxonomic_range: "Vertebrata"
+  coevolved_residues: ["175-238", "179-242"]
+  source_database: pdbe_kb
+
+# Database cross-references
+cross_references:
+  - database_name: uniprot
+    database_id: "P04637"
+    database_url: "https://www.uniprot.org/uniprot/P04637"
+    last_updated: "2024-01-15"
+
+  - database_name: pfam
+    database_id: "PF00870"
+    database_url: "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"
+
+  - database_name: cosmic
+    database_id: "COSM10662"
+    database_url: "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"
+
+  - database_name: omim
+    database_id: "191170"
+    database_url: "https://omim.org/entry/191170"
+
+  - database_name: chembl
+    database_id: "CHEMBL4096"
+    database_url: "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"

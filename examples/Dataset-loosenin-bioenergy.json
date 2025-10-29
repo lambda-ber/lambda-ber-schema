@@ -1,13 +1,13 @@
 {
-  "id": "dataset:loosenin-bioenergy",
+  "id": "lambdaber:dataset-loosenin-bioenergy",
   "title": "Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology Investigation",
   "studies": [
     {
-      "id": "study:loosenin-2025",
+      "id": "lambdaber:study-loosenin-2025",
       "title": "Structural and functional characterization of fungal loosenins",
       "samples": [
         {
-          "id": "sample:LOOS-001",
+          "id": "lambdaber:sample-LOOS-001",
           "title": "PcaLOOL12 wild-type protein",
           "sample_code": "LOOS-001",
           "sample_type": "protein",
@@ -41,7 +41,7 @@
           }
         },
         {
-          "id": "sample:LOOS-002",
+          "id": "lambdaber:sample-LOOS-002",
           "title": "PcaLOOL12 pH stress series",
           "sample_code": "LOOS-002",
           "sample_type": "protein",
@@ -66,7 +66,7 @@
           }
         },
         {
-          "id": "sample:LOOS-003",
+          "id": "lambdaber:sample-LOOS-003",
           "title": "TrLOOL1 from Trichoderma reesei",
           "sample_code": "LOOS-003",
           "sample_type": "protein",
@@ -91,7 +91,7 @@
           }
         },
         {
-          "id": "sample:LOOS-004",
+          "id": "lambdaber:sample-LOOS-004",
           "title": "PcaLOOL12-cellulose complex",
           "sample_code": "LOOS-004",
           "sample_type": "complex",
@@ -121,67 +121,67 @@
       ],
       "sample_preparations": [
         {
-          "id": "prep:saxs-001",
+          "id": "lambdaber:prep-saxs-001",
           "title": "SAXS sample preparation",
           "preparation_type": "saxs",
-          "sample_id": "sample:LOOS-001"
+          "sample_id": "lambdaber:sample-LOOS-001"
         },
         {
-          "id": "prep:sans-001",
+          "id": "lambdaber:prep-sans-001",
           "title": "SANS contrast matching preparation",
           "preparation_type": "sans",
-          "sample_id": "sample:LOOS-001"
+          "sample_id": "lambdaber:sample-LOOS-001"
         },
         {
-          "id": "prep:crystal-001",
+          "id": "lambdaber:prep-crystal-001",
           "title": "Crystal preparation for X-ray diffraction",
           "preparation_type": "xray_crystallography",
-          "sample_id": "sample:LOOS-001"
+          "sample_id": "lambdaber:sample-LOOS-001"
         },
         {
-          "id": "prep:cryoem-001",
+          "id": "lambdaber:prep-cryoem-001",
           "title": "CryoEM grid preparation of complex",
           "preparation_type": "cryo_em",
-          "sample_id": "sample:LOOS-004"
+          "sample_id": "lambdaber:sample-LOOS-004"
         }
       ],
       "workflow_runs": [
         {
-          "id": "wf:saxs-001",
+          "id": "lambdaber:wf-saxs-001",
           "title": "SAXS pH series analysis",
           "workflow_code": "SAXS-pH-analysis",
           "workflow_type": "saxs_analysis",
-          "experiment_id": "exp:saxs-001",
+          "experiment_id": "lambdaber:exp-saxs-001",
           "software_name": "ATSAS",
           "processing_level": 2,
           "software_version": "3.2.1"
         },
         {
-          "id": "wf:mx-001",
+          "id": "lambdaber:wf-mx-001",
           "title": "Crystal structure determination",
           "workflow_code": "MX-structure",
           "workflow_type": "phasing",
-          "experiment_id": "exp:mx-001",
+          "experiment_id": "lambdaber:exp-mx-001",
           "software_name": "PHENIX",
           "processing_level": 3,
           "software_version": "1.20.1"
         },
         {
-          "id": "wf:cryoem-001",
+          "id": "lambdaber:wf-cryoem-001",
           "title": "Single particle reconstruction",
           "workflow_code": "CryoEM-SPA",
           "workflow_type": "refinement",
-          "experiment_id": "exp:cryoem-001",
+          "experiment_id": "lambdaber:exp-cryoem-001",
           "software_name": "RELION",
           "processing_level": 3,
           "software_version": "4.0"
         },
         {
-          "id": "wf:integrative-001",
+          "id": "lambdaber:wf-integrative-001",
           "title": "Integrative modeling",
           "workflow_code": "IMP-modeling",
           "workflow_type": "model_building",
-          "experiment_id": "exp:saxs-001",
+          "experiment_id": "lambdaber:exp-saxs-001",
           "software_name": "IMP",
           "processing_level": 2,
           "software_version": "2.18"
@@ -189,7 +189,7 @@
       ],
       "data_files": [
         {
-          "id": "df:saxs-001",
+          "id": "lambdaber:df-saxs-001",
           "title": "SAXS pH series data",
           "file_name": "loosenin_ph_series.dat",
           "file_format": "ascii",
@@ -198,7 +198,7 @@
           "data_type": "scattering"
         },
         {
-          "id": "df:sans-001",
+          "id": "lambdaber:df-sans-001",
           "title": "SANS complex data",
           "file_name": "biosans_complex.dat",
           "file_format": "ascii",
@@ -207,7 +207,7 @@
           "data_type": "scattering"
         },
         {
-          "id": "df:mx-001",
+          "id": "lambdaber:df-mx-001",
           "title": "X-ray diffraction data",
           "file_name": "loosenin_native.mtz",
           "file_format": "mtz",
@@ -216,7 +216,7 @@
           "data_type": "diffraction"
         },
         {
-          "id": "df:pdb-001",
+          "id": "lambdaber:df-pdb-001",
           "title": "Refined crystal structure",
           "file_name": "loosenin_refined.pdb",
           "file_format": "pdb",
@@ -225,7 +225,7 @@
           "data_type": "model"
         },
         {
-          "id": "df:cryoem-001",
+          "id": "lambdaber:df-cryoem-001",
           "title": "CryoEM particle stack",
           "file_name": "loosenin_cellulose.star",
           "file_format": "star",
@@ -234,7 +234,7 @@
           "data_type": "particles"
         },
         {
-          "id": "df:map-001",
+          "id": "lambdaber:df-map-001",
           "title": "CryoEM density map",
           "file_name": "loosenin_cellulose_map.mrc",
           "file_format": "mrc",
@@ -245,13 +245,13 @@
       ],
       "images": [
         {
-          "id": "img:saxs-001",
+          "id": "lambdaber:img-saxs-001",
           "title": "SAXS Guinier plots",
           "file_name": "saxs_guinier_plots.png",
           "acquisition_date": "2025-02-12"
         },
         {
-          "id": "img:sans-001",
+          "id": "lambdaber:img-sans-001",
           "title": "SANS model fit",
           "file_name": "sans_model_fit.png",
           "acquisition_date": "2025-02-25"

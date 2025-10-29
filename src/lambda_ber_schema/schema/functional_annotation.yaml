@@ -1,0 +1,1013 @@
+id: https://w3id.org/lambda-ber-schema/functional_annotation
+name: functional_annotation
+description: |
+  Extension to lambda-ber-schema for comprehensive functional and structural annotations.
+  This extension adds support for protein functional sites, structural features, molecular interactions,
+  biophysical properties, evolutionary conservation, and mutation effects derived from various
+  knowledge bases including PDBe-KB and other structural annotation resources.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  pdbe: https://www.ebi.ac.uk/pdbe/
+  uniprot: http://purl.uniprot.org/uniprot/
+  chebi: http://purl.obolibrary.org/obo/CHEBI_
+  go: http://purl.obolibrary.org/obo/GO_
+  so: http://purl.obolibrary.org/obo/SO_
+  eco: http://purl.obolibrary.org/obo/ECO_
+
+default_range: string
+
+classes:
+
+  # Base annotation class
+  ProteinAnnotation:
+    is_a: NamedThing
+    description: "Base class for all protein-related functional and structural annotations"
+    attributes:
+      protein_id:
+        description: "UniProt accession number"
+        pattern: "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$"
+        required: true
+      pdb_entry:
+        description: "PDB identifier"
+        pattern: "^[0-9][A-Za-z0-9]{3}$"
+      chain_id:
+        description: "Chain identifier in the PDB structure"
+        pattern: "^[A-Za-z0-9]+$"
+      residue_range:
+        description: "Range of residues (e.g., '1-100', '25,27,30-35')"
+      confidence_score:
+        description: "Confidence score for the annotation (0-1)"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      evidence_type:
+        description: "Type of evidence supporting this annotation"
+        range: EvidenceTypeEnum
+      evidence_code:
+        description: "Evidence and Conclusion Ontology (ECO) code"
+        range: uriorcurie
+      source_database:
+        description: "Source database or resource that provided this annotation"
+        range: AnnotationSourceEnum
+      annotation_method:
+        description: "Computational or experimental method used"
+      publication_ids:
+        description: "PubMed IDs supporting this annotation"
+        multivalued: true
+        pattern: "^PMID:[0-9]+$"
+
+  # Functional annotations
+  FunctionalSite:
+    is_a: ProteinAnnotation
+    description: "Functional sites including catalytic, binding, and regulatory sites"
+    attributes:
+      site_type:
+        description: "Type of functional site"
+        range: FunctionalSiteTypeEnum
+        required: true
+      site_name:
+        description: "Common name for this site"
+      residues:
+        description: "List of residues forming the functional site"
+        multivalued: true
+      ligand_interactions:
+        description: "Ligands that interact with this site"
+        range: LigandInteraction
+        multivalued: true
+        inlined_as_list: true
+      conservation_score:
+        description: "Evolutionary conservation score"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      functional_importance:
+        description: "Description of functional importance"
+      go_terms:
+        description: "Associated Gene Ontology terms"
+        multivalued: true
+        range: uriorcurie
+      ec_number:
+        description: "Enzyme Commission number for catalytic sites"
+        pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$"
+
+  # Structural features
+  StructuralFeature:
+    is_a: ProteinAnnotation
+    description: "Structural features and properties of protein regions"
+    attributes:
+      feature_type:
+        description: "Type of structural feature"
+        range: StructuralFeatureTypeEnum
+        required: true
+      secondary_structure:
+        description: "Secondary structure assignment"
+        range: SecondaryStructureEnum
+      solvent_accessibility:
+        description: "Relative solvent accessible surface area"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      backbone_flexibility:
+        description: "B-factor or flexibility measure"
+        range: float
+      disorder_probability:
+        description: "Probability of disorder (0-1)"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      conformational_state:
+        description: "Conformational state descriptor"
+        range: ConformationalStateEnum
+      structural_motif:
+        description: "Known structural motif"
+      domain_assignment:
+        description: "Domain database assignment (CATH, SCOP, Pfam)"
+      domain_id:
+        description: "Domain identifier from domain database"
+
+  # Molecular interactions
+  LigandInteraction:
+    is_a: AttributeGroup
+    description: "Small molecule/ligand interactions with proteins"
+    attributes:
+      ligand_id:
+        description: "Ligand identifier (ChEMBL, ChEBI, PubChem)"
+        required: true
+      ligand_name:
+        description: "Common name of the ligand"
+        required: true
+      ligand_smiles:
+        description: "SMILES representation of the ligand"
+      binding_affinity:
+        description: "Binding affinity value"
+        range: float
+      binding_affinity_type:
+        description: "Type of binding measurement (Kd, Ki, IC50)"
+        range: BindingAffinityTypeEnum
+      binding_affinity_unit:
+        description: "Unit of binding affinity"
+        range: AffinityUnitEnum
+      interaction_type:
+        description: "Type of interaction"
+        range: InteractionTypeEnum
+      binding_site_residues:
+        description: "Residues involved in ligand binding"
+        multivalued: true
+      is_cofactor:
+        description: "Whether the ligand is a cofactor"
+        range: boolean
+      is_drug_like:
+        description: "Whether the ligand has drug-like properties"
+        range: boolean
+      druggability_score:
+        description: "Druggability score of the binding site"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      interaction_distance:
+        description: "Distance criteria for interaction (Angstroms)"
+        range: float
+        unit:
+          ucum_code: Angstrom
+
+  ProteinProteinInteraction:
+    is_a: ProteinAnnotation
+    description: "Protein-protein interactions and interfaces"
+    attributes:
+      partner_protein_id:
+        description: "UniProt ID of interacting partner"
+        required: true
+      partner_chain_id:
+        description: "Chain ID of interacting partner"
+      interface_residues:
+        description: "Residues at the interaction interface"
+        multivalued: true
+      partner_interface_residues:
+        description: "Partner residues at the interaction interface"
+        multivalued: true
+      interface_area:
+        description: "Buried surface area at interface (Ų)"
+        range: float
+        unit:
+          ucum_code: Angstrom2
+      binding_energy:
+        description: "Calculated binding energy (kcal/mol)"
+        range: float
+        unit:
+          ucum_code: kcal/mol
+      dissociation_constant:
+        description: "Experimental Kd if available"
+        range: float
+      complex_stability:
+        description: "Stability assessment of the complex"
+        range: ComplexStabilityEnum
+      biological_assembly:
+        description: "Whether this represents a biological assembly"
+        range: boolean
+      interaction_evidence:
+        description: "Evidence for this interaction"
+        range: InteractionEvidenceEnum
+        multivalued: true
+
+  # Mutations and variants
+  MutationEffect:
+    is_a: ProteinAnnotation
+    description: "Effects of mutations and variants on protein structure and function"
+    attributes:
+      mutation:
+        description: "Mutation in standard notation (e.g., 'A123V')"
+        pattern: "^[A-Z][0-9]+[A-Z]$"
+        required: true
+      mutation_type:
+        description: "Type of mutation"
+        range: MutationTypeEnum
+      effect_on_stability:
+        description: "Effect on protein stability"
+        range: StabilityEffectEnum
+      delta_delta_g:
+        description: "Change in folding free energy (kcal/mol)"
+        range: float
+        unit:
+          ucum_code: kcal/mol
+      effect_on_function:
+        description: "Effect on protein function"
+        range: FunctionalEffectEnum
+      functional_impact_description:
+        description: "Description of functional impact"
+      disease_association:
+        description: "Associated disease or phenotype"
+      omim_id:
+        description: "OMIM database identifier"
+        pattern: "^[0-9]{6}$"
+      clinical_significance:
+        description: "Clinical significance"
+        range: ClinicalSignificanceEnum
+      allele_frequency:
+        description: "Population allele frequency"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+
+  # Biophysical properties
+  BiophysicalProperty:
+    is_a: AttributeGroup
+    description: "Measured or calculated biophysical properties"
+    attributes:
+      property_type:
+        description: "Type of biophysical property"
+        range: BiophysicalPropertyEnum
+        required: true
+      value:
+        description: "Numerical value of the property"
+        range: float
+        required: true
+      unit:
+        description: "Unit of measurement"
+        required: true
+      error:
+        description: "Experimental error or uncertainty"
+        range: float
+      measurement_conditions:
+        description: "Conditions under which measurement was made"
+      temperature:
+        description: "Temperature in Kelvin"
+        range: float
+        unit:
+          ucum_code: K
+      ph:
+        description: "pH value"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      ionic_strength:
+        description: "Ionic strength in molar"
+        range: float
+        unit:
+          ucum_code: mol/L
+      experimental_method:
+        description: "Method used for measurement"
+        range: BiophysicalMethodEnum
+
+  # Conformational dynamics
+  ConformationalEnsemble:
+    is_a: NamedThing
+    description: "Ensemble of conformational states for a protein"
+    attributes:
+      protein_id:
+        description: "UniProt accession"
+        required: true
+      conformational_states:
+        description: "Individual conformational states"
+        range: ConformationalState
+        multivalued: true
+        inlined_as_list: true
+      clustering_method:
+        description: "Method used for conformational clustering"
+      rmsd_threshold:
+        description: "RMSD threshold for clustering (Angstroms)"
+        range: float
+        unit:
+          ucum_code: Angstrom
+      transition_pathways:
+        description: "Description of transition pathways between states"
+      energy_landscape:
+        description: "Description of the energy landscape"
+      principal_motions:
+        description: "Description of principal motions"
+        multivalued: true
+
+  ConformationalState:
+    is_a: AttributeGroup
+    description: "Individual conformational state"
+    attributes:
+      state_id:
+        description: "Identifier for this state"
+        required: true
+      state_name:
+        description: "Descriptive name (e.g., 'open', 'closed')"
+      pdb_entries:
+        description: "PDB entries representing this state"
+        multivalued: true
+      population:
+        description: "Relative population of this state"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      free_energy:
+        description: "Relative free energy (kcal/mol)"
+        range: float
+        unit:
+          ucum_code: kcal/mol
+      rmsd_from_reference:
+        description: "RMSD from reference structure"
+        range: float
+        unit:
+          ucum_code: Angstrom
+      characteristic_features:
+        description: "Key features of this conformation"
+        multivalued: true
+
+  # Post-translational modifications
+  PostTranslationalModification:
+    is_a: ProteinAnnotation
+    description: "Post-translational modifications observed or predicted"
+    attributes:
+      modification_type:
+        description: "Type of PTM"
+        range: PTMTypeEnum
+        required: true
+      modified_residue:
+        description: "Residue that is modified"
+        required: true
+      modification_group:
+        description: "Chemical group added (e.g., 'phosphate', 'methyl')"
+      mass_shift:
+        description: "Mass change due to modification (Da)"
+        range: float
+        unit:
+          ucum_code: Da
+      functional_effect:
+        description: "Known functional effect of this PTM"
+      regulatory_role:
+        description: "Role in regulation"
+      enzyme:
+        description: "Enzyme responsible for modification"
+      removal_enzyme:
+        description: "Enzyme that removes modification"
+
+  # Database cross-references
+  DatabaseCrossReference:
+    is_a: AttributeGroup
+    description: "Cross-references to external databases"
+    attributes:
+      database_name:
+        description: "Name of the external database"
+        range: DatabaseNameEnum
+        required: true
+      database_id:
+        description: "Identifier in the external database"
+        required: true
+      database_url:
+        description: "URL to the database entry"
+        range: uri
+      last_updated:
+        description: "Date of last update"
+        range: string
+
+  # Evolutionary information
+  EvolutionaryConservation:
+    is_a: ProteinAnnotation
+    description: "Evolutionary conservation information"
+    attributes:
+      conservation_score:
+        description: "Overall conservation score"
+        range: float
+        minimum_value: 0
+        maximum_value: 1
+      conserved_residues:
+        description: "Highly conserved residues"
+        multivalued: true
+      variable_residues:
+        description: "Highly variable residues"
+        multivalued: true
+      conservation_method:
+        description: "Method used for conservation analysis"
+      alignment_depth:
+        description: "Number of sequences in alignment"
+        range: integer
+      taxonomic_range:
+        description: "Taxonomic range of conservation"
+      coevolved_residues:
+        description: "Pairs of coevolved residues"
+        multivalued: true
+
+  # Aggregated protein view
+  AggregatedProteinView:
+    is_a: NamedThing
+    description: "Aggregated view of all structural and functional data for a protein"
+    attributes:
+      uniprot_id:
+        description: "UniProt accession"
+        required: true
+      protein_name:
+        description: "Protein name"
+        required: true
+      organism:
+        description: "Source organism"
+      organism_id:
+        description: "NCBI taxonomy ID"
+        range: integer
+      pdb_entries:
+        description: "All PDB entries for this protein"
+        multivalued: true
+      functional_sites:
+        description: "All functional site annotations"
+        range: FunctionalSite
+        multivalued: true
+        inlined_as_list: true
+      structural_features:
+        description: "All structural feature annotations"
+        range: StructuralFeature
+        multivalued: true
+        inlined_as_list: true
+      protein_interactions:
+        description: "All protein-protein interactions"
+        range: ProteinProteinInteraction
+        multivalued: true
+        inlined_as_list: true
+      ligand_interactions:
+        description: "All ligand interactions"
+        range: LigandInteraction
+        multivalued: true
+        inlined_as_list: true
+      mutations:
+        description: "All mutation annotations"
+        range: MutationEffect
+        multivalued: true
+        inlined_as_list: true
+      ptms:
+        description: "All post-translational modifications"
+        range: PostTranslationalModification
+        multivalued: true
+        inlined_as_list: true
+      biophysical_properties:
+        description: "All biophysical properties"
+        range: BiophysicalProperty
+        multivalued: true
+        inlined_as_list: true
+      conformational_ensemble:
+        description: "Conformational ensemble data"
+        range: ConformationalEnsemble
+        inlined: true
+      evolutionary_conservation:
+        description: "Conservation analysis"
+        range: EvolutionaryConservation
+        inlined: true
+      cross_references:
+        description: "Database cross-references"
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
+
+# Enumerations
+enums:
+
+  FunctionalSiteTypeEnum:
+    description: "Types of functional sites in proteins"
+    permissible_values:
+      active_site:
+        description: "Enzyme active site"
+      catalytic_site:
+        description: "Catalytic residues"
+      binding_site:
+        description: "General binding site"
+      allosteric_site:
+        description: "Allosteric regulation site"
+      substrate_binding:
+        description: "Substrate binding site"
+      cofactor_binding:
+        description: "Cofactor binding site"
+      inhibitor_binding:
+        description: "Inhibitor binding site"
+      metal_binding:
+        description: "Metal ion binding site"
+      nucleotide_binding:
+        description: "Nucleotide binding site"
+      phosphorylation_site:
+        description: "Phosphorylation site"
+      glycosylation_site:
+        description: "Glycosylation site"
+      ubiquitination_site:
+        description: "Ubiquitination site"
+      sumoylation_site:
+        description: "SUMOylation site"
+      acetylation_site:
+        description: "Acetylation site"
+      methylation_site:
+        description: "Methylation site"
+      protein_binding:
+        description: "Protein-protein interaction site"
+      dna_binding:
+        description: "DNA binding site"
+      rna_binding:
+        description: "RNA binding site"
+      lipid_binding:
+        description: "Lipid binding site"
+
+  StructuralFeatureTypeEnum:
+    description: "Types of structural features"
+    permissible_values:
+      alpha_helix:
+        description: "Alpha helix"
+      beta_sheet:
+        description: "Beta sheet"
+      beta_strand:
+        description: "Beta strand"
+      turn:
+        description: "Turn structure"
+      coil:
+        description: "Random coil"
+      disordered_region:
+        description: "Intrinsically disordered region"
+      transmembrane_helix:
+        description: "Transmembrane helix"
+      signal_peptide:
+        description: "Signal peptide"
+      transit_peptide:
+        description: "Transit peptide"
+      domain:
+        description: "Protein domain"
+      repeat:
+        description: "Sequence repeat"
+      zinc_finger:
+        description: "Zinc finger motif"
+      zinc_binding:
+        description: "Zinc binding site"
+      coiled_coil:
+        description: "Coiled coil"
+      motif:
+        description: "Structural motif"
+      cavity:
+        description: "Structural cavity"
+      channel:
+        description: "Molecular channel"
+      pore:
+        description: "Molecular pore"
+      hinge:
+        description: "Hinge region"
+      linker:
+        description: "Linker region"
+
+  SecondaryStructureEnum:
+    description: "Secondary structure types"
+    permissible_values:
+      helix:
+        description: "Helix structure"
+      sheet:
+        description: "Beta sheet"
+      turn:
+        description: "Turn"
+      coil:
+        description: "Random coil"
+      helix_310:
+        description: "3-10 helix"
+      helix_pi:
+        description: "Pi helix"
+      bend:
+        description: "Bend"
+      bridge:
+        description: "Beta bridge"
+
+  ConformationalStateEnum:
+    description: "Conformational states"
+    permissible_values:
+      open:
+        description: "Open conformation"
+      closed:
+        description: "Closed conformation"
+      intermediate:
+        description: "Intermediate state"
+      active:
+        description: "Active conformation"
+      inactive:
+        description: "Inactive conformation"
+      apo:
+        description: "Apo form"
+      holo:
+        description: "Holo form"
+      substrate_bound:
+        description: "Substrate-bound"
+      product_bound:
+        description: "Product-bound"
+      inhibitor_bound:
+        description: "Inhibitor-bound"
+      partially_open:
+        description: "Partially open"
+      partially_closed:
+        description: "Partially closed"
+      disordered:
+        description: "Disordered state"
+
+  InteractionTypeEnum:
+    description: "Types of molecular interactions"
+    permissible_values:
+      covalent:
+        description: "Covalent bond"
+      hydrogen_bond:
+        description: "Hydrogen bond"
+      ionic:
+        description: "Ionic interaction"
+      van_der_waals:
+        description: "Van der Waals interaction"
+      hydrophobic:
+        description: "Hydrophobic interaction"
+      aromatic:
+        description: "Aromatic interaction"
+      pi_stacking:
+        description: "Pi-pi stacking"
+      cation_pi:
+        description: "Cation-pi interaction"
+      metal_coordination:
+        description: "Metal coordination"
+      disulfide:
+        description: "Disulfide bond"
+
+  BindingAffinityTypeEnum:
+    description: "Types of binding affinity measurements"
+    permissible_values:
+      kd:
+        description: "Dissociation constant"
+      ki:
+        description: "Inhibition constant"
+      ic50:
+        description: "Half maximal inhibitory concentration"
+      ec50:
+        description: "Half maximal effective concentration"
+      ka:
+        description: "Association constant"
+      km:
+        description: "Michaelis constant"
+
+  AffinityUnitEnum:
+    description: "Units for affinity measurements"
+    permissible_values:
+      molar:
+        description: "Molar (M)"
+      millimolar:
+        description: "Millimolar (mM)"
+      micromolar:
+        description: "Micromolar (µM)"
+      nanomolar:
+        description: "Nanomolar (nM)"
+      picomolar:
+        description: "Picomolar (pM)"
+
+  ComplexStabilityEnum:
+    description: "Stability of protein complexes"
+    permissible_values:
+      stable:
+        description: "Stable complex"
+      transient:
+        description: "Transient interaction"
+      weak:
+        description: "Weak interaction"
+      strong:
+        description: "Strong interaction"
+      obligate:
+        description: "Obligate complex"
+      non_obligate:
+        description: "Non-obligate complex"
+
+  InteractionEvidenceEnum:
+    description: "Evidence for interactions"
+    permissible_values:
+      experimental:
+        description: "Experimental evidence"
+      predicted:
+        description: "Computational prediction"
+      homology:
+        description: "Homology-based"
+      coexpression:
+        description: "Co-expression data"
+      colocalization:
+        description: "Co-localization"
+      genetic:
+        description: "Genetic evidence"
+      physical:
+        description: "Physical interaction"
+      functional:
+        description: "Functional association"
+
+  MutationTypeEnum:
+    description: "Types of mutations"
+    permissible_values:
+      missense:
+        description: "Missense mutation"
+      nonsense:
+        description: "Nonsense mutation"
+      frameshift:
+        description: "Frameshift mutation"
+      deletion:
+        description: "Deletion"
+      insertion:
+        description: "Insertion"
+      duplication:
+        description: "Duplication"
+      substitution:
+        description: "Substitution"
+
+  StabilityEffectEnum:
+    description: "Effect on protein stability"
+    permissible_values:
+      stabilizing:
+        description: "Increases stability"
+      destabilizing:
+        description: "Decreases stability"
+      neutral:
+        description: "No significant effect"
+      highly_stabilizing:
+        description: "Strongly increases stability"
+      highly_destabilizing:
+        description: "Strongly decreases stability"
+
+  FunctionalEffectEnum:
+    description: "Effect on protein function"
+    permissible_values:
+      loss_of_function:
+        description: "Loss of function"
+      gain_of_function:
+        description: "Gain of function"
+      altered_function:
+        description: "Altered function"
+      no_effect:
+        description: "No functional effect"
+      partial_loss:
+        description: "Partial loss of function"
+      enhanced_function:
+        description: "Enhanced function"
+
+  ClinicalSignificanceEnum:
+    description: "Clinical significance of variants"
+    permissible_values:
+      pathogenic:
+        description: "Pathogenic"
+      likely_pathogenic:
+        description: "Likely pathogenic"
+      benign:
+        description: "Benign"
+      likely_benign:
+        description: "Likely benign"
+      uncertain_significance:
+        description: "Uncertain significance"
+
+  BiophysicalPropertyEnum:
+    description: "Types of biophysical properties"
+    permissible_values:
+      melting_temperature:
+        description: "Melting temperature (Tm)"
+      stability:
+        description: "Thermodynamic stability"
+      folding_rate:
+        description: "Folding rate"
+      unfolding_rate:
+        description: "Unfolding rate"
+      aggregation_propensity:
+        description: "Aggregation propensity"
+      solubility:
+        description: "Solubility"
+      hydrophobicity:
+        description: "Hydrophobicity"
+      isoelectric_point:
+        description: "Isoelectric point (pI)"
+      extinction_coefficient:
+        description: "Extinction coefficient"
+      molecular_weight:
+        description: "Molecular weight"
+      diffusion_coefficient:
+        description: "Diffusion coefficient"
+      sedimentation_coefficient:
+        description: "Sedimentation coefficient"
+      radius_of_gyration:
+        description: "Radius of gyration"
+      hydrodynamic_radius:
+        description: "Hydrodynamic radius"
+
+  BiophysicalMethodEnum:
+    description: "Methods for biophysical measurements"
+    permissible_values:
+      differential_scanning_calorimetry:
+        description: "DSC"
+      isothermal_titration_calorimetry:
+        description: "ITC"
+      circular_dichroism:
+        description: "CD spectroscopy"
+      fluorescence_spectroscopy:
+        description: "Fluorescence"
+      surface_plasmon_resonance:
+        description: "SPR"
+      dynamic_light_scattering:
+        description: "DLS"
+      analytical_ultracentrifugation:
+        description: "AUC"
+      nuclear_magnetic_resonance:
+        description: "NMR"
+      mass_spectrometry:
+        description: "MS"
+
+  PTMTypeEnum:
+    description: "Types of post-translational modifications"
+    permissible_values:
+      phosphorylation:
+        description: "Phosphorylation"
+      acetylation:
+        description: "Acetylation"
+      methylation:
+        description: "Methylation"
+      ubiquitination:
+        description: "Ubiquitination"
+      sumoylation:
+        description: "SUMOylation"
+      glycosylation:
+        description: "Glycosylation"
+      palmitoylation:
+        description: "Palmitoylation"
+      myristoylation:
+        description: "Myristoylation"
+      prenylation:
+        description: "Prenylation"
+      nitrosylation:
+        description: "Nitrosylation"
+      oxidation:
+        description: "Oxidation"
+      hydroxylation:
+        description: "Hydroxylation"
+      proteolysis:
+        description: "Proteolytic cleavage"
+      deamidation:
+        description: "Deamidation"
+      adp_ribosylation:
+        description: "ADP-ribosylation"
+
+  EvidenceTypeEnum:
+    description: "Types of evidence"
+    permissible_values:
+      experimental:
+        description: "Direct experimental evidence"
+      predicted:
+        description: "Computational prediction"
+      inferred:
+        description: "Inferred from homology"
+      literature:
+        description: "Literature curation"
+      author_statement:
+        description: "Author statement"
+      curator_inference:
+        description: "Curator inference"
+
+  AnnotationSourceEnum:
+    description: "Sources of functional annotations"
+    permissible_values:
+      pdbe:
+        description: "PDBe"
+      pdbe_kb:
+        description: "PDBe-KB"
+      uniprot:
+        description: "UniProt"
+      pfam:
+        description: "Pfam"
+      cath:
+        description: "CATH"
+      scop:
+        description: "SCOP"
+      interpro:
+        description: "InterPro"
+      channelsdb:
+        description: "ChannelsDB"
+      dynamine:
+        description: "DynaMine"
+      foldx:
+        description: "FoldX"
+      p2rank:
+        description: "P2rank"
+      3dligandsite:
+        description: "3D-LigandSite"
+      arpeggio:
+        description: "Arpeggio"
+      covalentizer:
+        description: "Covalentizer"
+      depth:
+        description: "DEPTH"
+      elmpdb:
+        description: "ELM-PDB"
+      frustration:
+        description: "Frustration"
+      kincore:
+        description: "KinCore"
+      membranome:
+        description: "Membranome"
+      missense3d:
+        description: "Missense3D"
+      mobi:
+        description: "MobiDB"
+      nucleos:
+        description: "Nucleos"
+      14_3_3_pred:
+        description: "14-3-3-Pred"
+      akid:
+        description: "AKID"
+      camkinet:
+        description: "CamKiNet"
+      cansar:
+        description: "canSAR"
+      credo:
+        description: "CREDO"
+      klifs:
+        description: "KLIFS"
+      m_csm:
+        description: "mCSM"
+      moondb:
+        description: "MoonDB"
+      pocketome:
+        description: "Pocketome"
+      propka:
+        description: "PROPKA"
+      proteins_api:
+        description: "Proteins API"
+      validation:
+        description: "Validation"
+      alphafold:
+        description: "AlphaFold"
+      modbase:
+        description: "ModBase"
+      swiss_model:
+        description: "SWISS-MODEL"
+      intact:
+        description: "IntAct"
+      cosmic:
+        description: "COSMIC"
+      clinvar:
+        description: "ClinVar"
+
+  DatabaseNameEnum:
+    description: "External database names"
+    permissible_values:
+      uniprot:
+        description: "UniProt"
+      pdb:
+        description: "Protein Data Bank"
+      pfam:
+        description: "Pfam"
+      cath:
+        description: "CATH"
+      scop:
+        description: "SCOP"
+      interpro:
+        description: "InterPro"
+      chembl:
+        description: "ChEMBL"
+      chebi:
+        description: "ChEBI"
+      pubchem:
+        description: "PubChem"
+      drugbank:
+        description: "DrugBank"
+      omim:
+        description: "OMIM"
+      clinvar:
+        description: "ClinVar"
+      cosmic:
+        description: "COSMIC"
+      gnomad:
+        description: "gnomAD"
+      intact:
+        description: "IntAct"
+      string:
+        description: "STRING"
+      biogrid:
+        description: "BioGRID"
+      reactome:
+        description: "Reactome"
+      kegg:
+        description: "KEGG"
+      go:
+        description: "Gene Ontology"

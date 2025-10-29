@@ -3,11 +3,6 @@
 # Slot: ph 
 
 
-_pH of the buffer_
-
-
-
-
 
 URI: [lambdaber:ph](https://w3id.org/lambda-ber-schema/ph)
 Alias: ph
@@ -22,6 +17,7 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
 
 
@@ -31,11 +27,7 @@ Alias: ph
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 14
+* Range: [String](String.md)
 
 
 
@@ -44,13 +36,6 @@ Alias: ph
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -70,16 +55,11 @@ Alias: ph
 <details>
 ```yaml
 name: ph
-description: pH of the buffer
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: ph
-owner: BufferComposition
 domain_of:
 - BufferComposition
-range: float
-minimum_value: 0
-maximum_value: 14
+- BiophysicalProperty
+range: string
 
 ```
 </details>

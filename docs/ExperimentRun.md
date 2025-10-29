@@ -50,6 +50,17 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
     
 
         
+      ExperimentRun : experimental_method
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" ExperimentalMethodEnum : experimental_method
+        click ExperimentalMethodEnum href "../ExperimentalMethodEnum/"
+    
+
+        
       ExperimentRun : id
         
       ExperimentRun : instrument_id
@@ -127,6 +138,7 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 | [experiment_date](experiment_date.md) | 0..1 <br/> [String](String.md) | Date of the experiment | direct |
 | [operator_id](operator_id.md) | 0..1 <br/> [String](String.md) | Identifier or name of the person who performed the experiment data collection... | direct |
 | [technique](technique.md) | 1 <br/> [TechniqueEnum](TechniqueEnum.md) | Technique used for data collection | direct |
+| [experimental_method](experimental_method.md) | 0..1 <br/> [ExperimentalMethodEnum](ExperimentalMethodEnum.md) | Specific experimental method for structure determination (particularly for di... | direct |
 | [experimental_conditions](experimental_conditions.md) | 0..1 <br/> [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions | direct |
 | [data_collection_strategy](data_collection_strategy.md) | 0..1 <br/> [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection | direct |
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [QualityMetrics](QualityMetrics.md) | Quality metrics for the experiment | direct |
@@ -246,6 +258,16 @@ attributes:
     - ExperimentRun
     range: TechniqueEnum
     required: true
+  experimental_method:
+    name: experimental_method
+    description: Specific experimental method for structure determination (particularly
+      for diffraction techniques)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - BiophysicalProperty
+    range: ExperimentalMethodEnum
   experimental_conditions:
     name: experimental_conditions
     description: Environmental and experimental conditions
@@ -365,6 +387,18 @@ attributes:
     - ExperimentRun
     range: TechniqueEnum
     required: true
+  experimental_method:
+    name: experimental_method
+    description: Specific experimental method for structure determination (particularly
+      for diffraction techniques)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: experimental_method
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - BiophysicalProperty
+    range: ExperimentalMethodEnum
   experimental_conditions:
     name: experimental_conditions
     description: Environmental and experimental conditions

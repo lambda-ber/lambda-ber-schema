@@ -17,14 +17,14 @@ Alias: file_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 
 
 
