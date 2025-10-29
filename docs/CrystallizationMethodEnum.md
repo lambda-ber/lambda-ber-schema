@@ -15,7 +15,9 @@ URI: [lambdaber:CrystallizationMethodEnum](https://w3id.org/lambda-ber-schema/Cr
 | --- | --- | --- |
 | vapor_diffusion_hanging | None | Vapor diffusion hanging drop |
 | vapor_diffusion_sitting | None | Vapor diffusion sitting drop |
+| batch | None | Batch crystallization |
 | microbatch | None | Microbatch under oil |
+| lcp | None | Lipidic cubic phase (LCP) |
 | dialysis | None | Dialysis method |
 | free_interface_diffusion | None | Free interface diffusion |
 
@@ -64,9 +66,15 @@ permissible_values:
   vapor_diffusion_sitting:
     text: vapor_diffusion_sitting
     description: Vapor diffusion sitting drop
+  batch:
+    text: batch
+    description: Batch crystallization
   microbatch:
     text: microbatch
     description: Microbatch under oil
+  lcp:
+    text: lcp
+    description: Lipidic cubic phase (LCP)
   dialysis:
     text: dialysis
     description: Dialysis method

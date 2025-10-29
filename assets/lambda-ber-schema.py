@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-29T09:28:39
+# Generation date: 2025-10-29T12:53:46
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -143,23 +143,14 @@ version = None
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
-DATASET = CurieNamespace('dataset', 'https://w3id.org/lambda-ber-schema/dataset/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
-DF = CurieNamespace('df', 'https://w3id.org/lambda-ber-schema/data_file/')
-EXPERIMENT = CurieNamespace('experiment', 'https://w3id.org/lambda-ber-schema/experiment_run/')
-IMG = CurieNamespace('img', 'https://w3id.org/lambda-ber-schema/image/')
-INSTRUMENT = CurieNamespace('instrument', 'https://w3id.org/lambda-ber-schema/instrument/')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
-PREP = CurieNamespace('prep', 'https://w3id.org/lambda-ber-schema/sample_preparation/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
-SAMPLE = CurieNamespace('sample', 'https://w3id.org/lambda-ber-schema/sample/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
-STUDY = CurieNamespace('study', 'https://w3id.org/lambda-ber-schema/study/')
-WF = CurieNamespace('wf', 'https://w3id.org/lambda-ber-schema/workflow_run/')
 DEFAULT_ = LAMBDABER
 
 
@@ -2358,8 +2349,8 @@ class ProteinAnnotation(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ProteinAnnotation"]
-    class_class_curie: ClassVar[str] = "lambdaber:ProteinAnnotation"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinAnnotation"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinAnnotation"
     class_name: ClassVar[str] = "ProteinAnnotation"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinAnnotation
 
@@ -2424,8 +2415,8 @@ class FunctionalSite(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["FunctionalSite"]
-    class_class_curie: ClassVar[str] = "lambdaber:FunctionalSite"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/FunctionalSite"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/FunctionalSite"
     class_name: ClassVar[str] = "FunctionalSite"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.FunctionalSite
 
@@ -2485,8 +2476,8 @@ class StructuralFeature(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["StructuralFeature"]
-    class_class_curie: ClassVar[str] = "lambdaber:StructuralFeature"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/StructuralFeature"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/StructuralFeature"
     class_name: ClassVar[str] = "StructuralFeature"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.StructuralFeature
 
@@ -2547,8 +2538,8 @@ class LigandInteraction(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["LigandInteraction"]
-    class_class_curie: ClassVar[str] = "lambdaber:LigandInteraction"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/LigandInteraction"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/LigandInteraction"
     class_name: ClassVar[str] = "LigandInteraction"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.LigandInteraction
 
@@ -2617,8 +2608,8 @@ class ProteinProteinInteraction(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ProteinProteinInteraction"]
-    class_class_curie: ClassVar[str] = "lambdaber:ProteinProteinInteraction"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinProteinInteraction"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinProteinInteraction"
     class_name: ClassVar[str] = "ProteinProteinInteraction"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinProteinInteraction
 
@@ -2686,8 +2677,8 @@ class MutationEffect(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["MutationEffect"]
-    class_class_curie: ClassVar[str] = "lambdaber:MutationEffect"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/MutationEffect"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/MutationEffect"
     class_name: ClassVar[str] = "MutationEffect"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.MutationEffect
 
@@ -2752,8 +2743,8 @@ class BiophysicalProperty(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["BiophysicalProperty"]
-    class_class_curie: ClassVar[str] = "lambdaber:BiophysicalProperty"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/BiophysicalProperty"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/BiophysicalProperty"
     class_name: ClassVar[str] = "BiophysicalProperty"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.BiophysicalProperty
 
@@ -2811,8 +2802,8 @@ class ConformationalEnsemble(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ConformationalEnsemble"]
-    class_class_curie: ClassVar[str] = "lambdaber:ConformationalEnsemble"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalEnsemble"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalEnsemble"
     class_name: ClassVar[str] = "ConformationalEnsemble"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalEnsemble
 
@@ -2866,8 +2857,8 @@ class ConformationalState(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ConformationalState"]
-    class_class_curie: ClassVar[str] = "lambdaber:ConformationalState"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalState"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalState"
     class_name: ClassVar[str] = "ConformationalState"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalState
 
@@ -2915,8 +2906,8 @@ class PostTranslationalModification(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["PostTranslationalModification"]
-    class_class_curie: ClassVar[str] = "lambdaber:PostTranslationalModification"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/PostTranslationalModification"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/PostTranslationalModification"
     class_name: ClassVar[str] = "PostTranslationalModification"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.PostTranslationalModification
 
@@ -2975,8 +2966,8 @@ class DatabaseCrossReference(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["DatabaseCrossReference"]
-    class_class_curie: ClassVar[str] = "lambdaber:DatabaseCrossReference"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/DatabaseCrossReference"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/DatabaseCrossReference"
     class_name: ClassVar[str] = "DatabaseCrossReference"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.DatabaseCrossReference
 
@@ -3012,8 +3003,8 @@ class EvolutionaryConservation(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["EvolutionaryConservation"]
-    class_class_curie: ClassVar[str] = "lambdaber:EvolutionaryConservation"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/EvolutionaryConservation"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/EvolutionaryConservation"
     class_name: ClassVar[str] = "EvolutionaryConservation"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.EvolutionaryConservation
 
@@ -3067,8 +3058,8 @@ class AggregatedProteinView(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["AggregatedProteinView"]
-    class_class_curie: ClassVar[str] = "lambdaber:AggregatedProteinView"
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/AggregatedProteinView"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/AggregatedProteinView"
     class_name: ClassVar[str] = "AggregatedProteinView"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.AggregatedProteinView
 
@@ -5626,357 +5617,357 @@ slots.computeResources__memory_gb = Slot(uri=LAMBDABER.memory_gb, name="computeR
 slots.computeResources__storage_gb = Slot(uri=LAMBDABER.storage_gb, name="computeResources__storage_gb", curie=LAMBDABER.curie('storage_gb'),
                    model_uri=LAMBDABER.computeResources__storage_gb, domain=None, range=Optional[float])
 
-slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER.protein_id, name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('protein_id'),
+slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
                    model_uri=LAMBDABER.proteinAnnotation__protein_id, domain=None, range=str,
                    pattern=re.compile(r'^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$'))
 
-slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDABER.pdb_entry, name="proteinAnnotation__pdb_entry", curie=LAMBDABER.curie('pdb_entry'),
+slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDABER['functional_annotation/pdb_entry'], name="proteinAnnotation__pdb_entry", curie=LAMBDABER.curie('functional_annotation/pdb_entry'),
                    model_uri=LAMBDABER.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9][A-Za-z0-9]{3}$'))
 
-slots.proteinAnnotation__chain_id = Slot(uri=LAMBDABER.chain_id, name="proteinAnnotation__chain_id", curie=LAMBDABER.curie('chain_id'),
+slots.proteinAnnotation__chain_id = Slot(uri=LAMBDABER['functional_annotation/chain_id'], name="proteinAnnotation__chain_id", curie=LAMBDABER.curie('functional_annotation/chain_id'),
                    model_uri=LAMBDABER.proteinAnnotation__chain_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-Za-z0-9]+$'))
 
-slots.proteinAnnotation__residue_range = Slot(uri=LAMBDABER.residue_range, name="proteinAnnotation__residue_range", curie=LAMBDABER.curie('residue_range'),
+slots.proteinAnnotation__residue_range = Slot(uri=LAMBDABER['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDABER.curie('functional_annotation/residue_range'),
                    model_uri=LAMBDABER.proteinAnnotation__residue_range, domain=None, range=Optional[str])
 
-slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDABER.confidence_score, name="proteinAnnotation__confidence_score", curie=LAMBDABER.curie('confidence_score'),
+slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDABER['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDABER.curie('functional_annotation/confidence_score'),
                    model_uri=LAMBDABER.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
 
-slots.proteinAnnotation__evidence_type = Slot(uri=LAMBDABER.evidence_type, name="proteinAnnotation__evidence_type", curie=LAMBDABER.curie('evidence_type'),
+slots.proteinAnnotation__evidence_type = Slot(uri=LAMBDABER['functional_annotation/evidence_type'], name="proteinAnnotation__evidence_type", curie=LAMBDABER.curie('functional_annotation/evidence_type'),
                    model_uri=LAMBDABER.proteinAnnotation__evidence_type, domain=None, range=Optional[Union[str, "EvidenceTypeEnum"]])
 
-slots.proteinAnnotation__evidence_code = Slot(uri=LAMBDABER.evidence_code, name="proteinAnnotation__evidence_code", curie=LAMBDABER.curie('evidence_code'),
+slots.proteinAnnotation__evidence_code = Slot(uri=LAMBDABER['functional_annotation/evidence_code'], name="proteinAnnotation__evidence_code", curie=LAMBDABER.curie('functional_annotation/evidence_code'),
                    model_uri=LAMBDABER.proteinAnnotation__evidence_code, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.proteinAnnotation__source_database = Slot(uri=LAMBDABER.source_database, name="proteinAnnotation__source_database", curie=LAMBDABER.curie('source_database'),
+slots.proteinAnnotation__source_database = Slot(uri=LAMBDABER['functional_annotation/source_database'], name="proteinAnnotation__source_database", curie=LAMBDABER.curie('functional_annotation/source_database'),
                    model_uri=LAMBDABER.proteinAnnotation__source_database, domain=None, range=Optional[Union[str, "AnnotationSourceEnum"]])
 
-slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDABER.annotation_method, name="proteinAnnotation__annotation_method", curie=LAMBDABER.curie('annotation_method'),
+slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDABER['functional_annotation/annotation_method'], name="proteinAnnotation__annotation_method", curie=LAMBDABER.curie('functional_annotation/annotation_method'),
                    model_uri=LAMBDABER.proteinAnnotation__annotation_method, domain=None, range=Optional[str])
 
-slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDABER.publication_ids, name="proteinAnnotation__publication_ids", curie=LAMBDABER.curie('publication_ids'),
+slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDABER['functional_annotation/publication_ids'], name="proteinAnnotation__publication_ids", curie=LAMBDABER.curie('functional_annotation/publication_ids'),
                    model_uri=LAMBDABER.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^PMID:[0-9]+$'))
 
-slots.functionalSite__site_type = Slot(uri=LAMBDABER.site_type, name="functionalSite__site_type", curie=LAMBDABER.curie('site_type'),
+slots.functionalSite__site_type = Slot(uri=LAMBDABER['functional_annotation/site_type'], name="functionalSite__site_type", curie=LAMBDABER.curie('functional_annotation/site_type'),
                    model_uri=LAMBDABER.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
 
-slots.functionalSite__site_name = Slot(uri=LAMBDABER.site_name, name="functionalSite__site_name", curie=LAMBDABER.curie('site_name'),
+slots.functionalSite__site_name = Slot(uri=LAMBDABER['functional_annotation/site_name'], name="functionalSite__site_name", curie=LAMBDABER.curie('functional_annotation/site_name'),
                    model_uri=LAMBDABER.functionalSite__site_name, domain=None, range=Optional[str])
 
-slots.functionalSite__residues = Slot(uri=LAMBDABER.residues, name="functionalSite__residues", curie=LAMBDABER.curie('residues'),
+slots.functionalSite__residues = Slot(uri=LAMBDABER['functional_annotation/residues'], name="functionalSite__residues", curie=LAMBDABER.curie('functional_annotation/residues'),
                    model_uri=LAMBDABER.functionalSite__residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.functionalSite__ligand_interactions = Slot(uri=LAMBDABER.ligand_interactions, name="functionalSite__ligand_interactions", curie=LAMBDABER.curie('ligand_interactions'),
+slots.functionalSite__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="functionalSite__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
                    model_uri=LAMBDABER.functionalSite__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
 
-slots.functionalSite__conservation_score = Slot(uri=LAMBDABER.conservation_score, name="functionalSite__conservation_score", curie=LAMBDABER.curie('conservation_score'),
+slots.functionalSite__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="functionalSite__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
                    model_uri=LAMBDABER.functionalSite__conservation_score, domain=None, range=Optional[float])
 
-slots.functionalSite__functional_importance = Slot(uri=LAMBDABER.functional_importance, name="functionalSite__functional_importance", curie=LAMBDABER.curie('functional_importance'),
+slots.functionalSite__functional_importance = Slot(uri=LAMBDABER['functional_annotation/functional_importance'], name="functionalSite__functional_importance", curie=LAMBDABER.curie('functional_annotation/functional_importance'),
                    model_uri=LAMBDABER.functionalSite__functional_importance, domain=None, range=Optional[str])
 
-slots.functionalSite__go_terms = Slot(uri=LAMBDABER.go_terms, name="functionalSite__go_terms", curie=LAMBDABER.curie('go_terms'),
+slots.functionalSite__go_terms = Slot(uri=LAMBDABER['functional_annotation/go_terms'], name="functionalSite__go_terms", curie=LAMBDABER.curie('functional_annotation/go_terms'),
                    model_uri=LAMBDABER.functionalSite__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
-slots.functionalSite__ec_number = Slot(uri=LAMBDABER.ec_number, name="functionalSite__ec_number", curie=LAMBDABER.curie('ec_number'),
+slots.functionalSite__ec_number = Slot(uri=LAMBDABER['functional_annotation/ec_number'], name="functionalSite__ec_number", curie=LAMBDABER.curie('functional_annotation/ec_number'),
                    model_uri=LAMBDABER.functionalSite__ec_number, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'))
 
-slots.structuralFeature__feature_type = Slot(uri=LAMBDABER.feature_type, name="structuralFeature__feature_type", curie=LAMBDABER.curie('feature_type'),
+slots.structuralFeature__feature_type = Slot(uri=LAMBDABER['functional_annotation/feature_type'], name="structuralFeature__feature_type", curie=LAMBDABER.curie('functional_annotation/feature_type'),
                    model_uri=LAMBDABER.structuralFeature__feature_type, domain=None, range=Union[str, "StructuralFeatureTypeEnum"])
 
-slots.structuralFeature__secondary_structure = Slot(uri=LAMBDABER.secondary_structure, name="structuralFeature__secondary_structure", curie=LAMBDABER.curie('secondary_structure'),
+slots.structuralFeature__secondary_structure = Slot(uri=LAMBDABER['functional_annotation/secondary_structure'], name="structuralFeature__secondary_structure", curie=LAMBDABER.curie('functional_annotation/secondary_structure'),
                    model_uri=LAMBDABER.structuralFeature__secondary_structure, domain=None, range=Optional[Union[str, "SecondaryStructureEnum"]])
 
-slots.structuralFeature__solvent_accessibility = Slot(uri=LAMBDABER.solvent_accessibility, name="structuralFeature__solvent_accessibility", curie=LAMBDABER.curie('solvent_accessibility'),
+slots.structuralFeature__solvent_accessibility = Slot(uri=LAMBDABER['functional_annotation/solvent_accessibility'], name="structuralFeature__solvent_accessibility", curie=LAMBDABER.curie('functional_annotation/solvent_accessibility'),
                    model_uri=LAMBDABER.structuralFeature__solvent_accessibility, domain=None, range=Optional[float])
 
-slots.structuralFeature__backbone_flexibility = Slot(uri=LAMBDABER.backbone_flexibility, name="structuralFeature__backbone_flexibility", curie=LAMBDABER.curie('backbone_flexibility'),
+slots.structuralFeature__backbone_flexibility = Slot(uri=LAMBDABER['functional_annotation/backbone_flexibility'], name="structuralFeature__backbone_flexibility", curie=LAMBDABER.curie('functional_annotation/backbone_flexibility'),
                    model_uri=LAMBDABER.structuralFeature__backbone_flexibility, domain=None, range=Optional[float])
 
-slots.structuralFeature__disorder_probability = Slot(uri=LAMBDABER.disorder_probability, name="structuralFeature__disorder_probability", curie=LAMBDABER.curie('disorder_probability'),
+slots.structuralFeature__disorder_probability = Slot(uri=LAMBDABER['functional_annotation/disorder_probability'], name="structuralFeature__disorder_probability", curie=LAMBDABER.curie('functional_annotation/disorder_probability'),
                    model_uri=LAMBDABER.structuralFeature__disorder_probability, domain=None, range=Optional[float])
 
-slots.structuralFeature__conformational_state = Slot(uri=LAMBDABER.conformational_state, name="structuralFeature__conformational_state", curie=LAMBDABER.curie('conformational_state'),
+slots.structuralFeature__conformational_state = Slot(uri=LAMBDABER['functional_annotation/conformational_state'], name="structuralFeature__conformational_state", curie=LAMBDABER.curie('functional_annotation/conformational_state'),
                    model_uri=LAMBDABER.structuralFeature__conformational_state, domain=None, range=Optional[Union[str, "ConformationalStateEnum"]])
 
-slots.structuralFeature__structural_motif = Slot(uri=LAMBDABER.structural_motif, name="structuralFeature__structural_motif", curie=LAMBDABER.curie('structural_motif'),
+slots.structuralFeature__structural_motif = Slot(uri=LAMBDABER['functional_annotation/structural_motif'], name="structuralFeature__structural_motif", curie=LAMBDABER.curie('functional_annotation/structural_motif'),
                    model_uri=LAMBDABER.structuralFeature__structural_motif, domain=None, range=Optional[str])
 
-slots.structuralFeature__domain_assignment = Slot(uri=LAMBDABER.domain_assignment, name="structuralFeature__domain_assignment", curie=LAMBDABER.curie('domain_assignment'),
+slots.structuralFeature__domain_assignment = Slot(uri=LAMBDABER['functional_annotation/domain_assignment'], name="structuralFeature__domain_assignment", curie=LAMBDABER.curie('functional_annotation/domain_assignment'),
                    model_uri=LAMBDABER.structuralFeature__domain_assignment, domain=None, range=Optional[str])
 
-slots.structuralFeature__domain_id = Slot(uri=LAMBDABER.domain_id, name="structuralFeature__domain_id", curie=LAMBDABER.curie('domain_id'),
+slots.structuralFeature__domain_id = Slot(uri=LAMBDABER['functional_annotation/domain_id'], name="structuralFeature__domain_id", curie=LAMBDABER.curie('functional_annotation/domain_id'),
                    model_uri=LAMBDABER.structuralFeature__domain_id, domain=None, range=Optional[str])
 
-slots.ligandInteraction__ligand_id = Slot(uri=LAMBDABER.ligand_id, name="ligandInteraction__ligand_id", curie=LAMBDABER.curie('ligand_id'),
+slots.ligandInteraction__ligand_id = Slot(uri=LAMBDABER['functional_annotation/ligand_id'], name="ligandInteraction__ligand_id", curie=LAMBDABER.curie('functional_annotation/ligand_id'),
                    model_uri=LAMBDABER.ligandInteraction__ligand_id, domain=None, range=str)
 
-slots.ligandInteraction__ligand_name = Slot(uri=LAMBDABER.ligand_name, name="ligandInteraction__ligand_name", curie=LAMBDABER.curie('ligand_name'),
+slots.ligandInteraction__ligand_name = Slot(uri=LAMBDABER['functional_annotation/ligand_name'], name="ligandInteraction__ligand_name", curie=LAMBDABER.curie('functional_annotation/ligand_name'),
                    model_uri=LAMBDABER.ligandInteraction__ligand_name, domain=None, range=str)
 
-slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDABER.ligand_smiles, name="ligandInteraction__ligand_smiles", curie=LAMBDABER.curie('ligand_smiles'),
+slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDABER['functional_annotation/ligand_smiles'], name="ligandInteraction__ligand_smiles", curie=LAMBDABER.curie('functional_annotation/ligand_smiles'),
                    model_uri=LAMBDABER.ligandInteraction__ligand_smiles, domain=None, range=Optional[str])
 
-slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDABER.binding_affinity, name="ligandInteraction__binding_affinity", curie=LAMBDABER.curie('binding_affinity'),
+slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDABER['functional_annotation/binding_affinity'], name="ligandInteraction__binding_affinity", curie=LAMBDABER.curie('functional_annotation/binding_affinity'),
                    model_uri=LAMBDABER.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
 
-slots.ligandInteraction__binding_affinity_type = Slot(uri=LAMBDABER.binding_affinity_type, name="ligandInteraction__binding_affinity_type", curie=LAMBDABER.curie('binding_affinity_type'),
+slots.ligandInteraction__binding_affinity_type = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_type'], name="ligandInteraction__binding_affinity_type", curie=LAMBDABER.curie('functional_annotation/binding_affinity_type'),
                    model_uri=LAMBDABER.ligandInteraction__binding_affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
 
-slots.ligandInteraction__binding_affinity_unit = Slot(uri=LAMBDABER.binding_affinity_unit, name="ligandInteraction__binding_affinity_unit", curie=LAMBDABER.curie('binding_affinity_unit'),
+slots.ligandInteraction__binding_affinity_unit = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_unit'], name="ligandInteraction__binding_affinity_unit", curie=LAMBDABER.curie('functional_annotation/binding_affinity_unit'),
                    model_uri=LAMBDABER.ligandInteraction__binding_affinity_unit, domain=None, range=Optional[Union[str, "AffinityUnitEnum"]])
 
-slots.ligandInteraction__interaction_type = Slot(uri=LAMBDABER.interaction_type, name="ligandInteraction__interaction_type", curie=LAMBDABER.curie('interaction_type'),
+slots.ligandInteraction__interaction_type = Slot(uri=LAMBDABER['functional_annotation/interaction_type'], name="ligandInteraction__interaction_type", curie=LAMBDABER.curie('functional_annotation/interaction_type'),
                    model_uri=LAMBDABER.ligandInteraction__interaction_type, domain=None, range=Optional[Union[str, "InteractionTypeEnum"]])
 
-slots.ligandInteraction__binding_site_residues = Slot(uri=LAMBDABER.binding_site_residues, name="ligandInteraction__binding_site_residues", curie=LAMBDABER.curie('binding_site_residues'),
+slots.ligandInteraction__binding_site_residues = Slot(uri=LAMBDABER['functional_annotation/binding_site_residues'], name="ligandInteraction__binding_site_residues", curie=LAMBDABER.curie('functional_annotation/binding_site_residues'),
                    model_uri=LAMBDABER.ligandInteraction__binding_site_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ligandInteraction__is_cofactor = Slot(uri=LAMBDABER.is_cofactor, name="ligandInteraction__is_cofactor", curie=LAMBDABER.curie('is_cofactor'),
+slots.ligandInteraction__is_cofactor = Slot(uri=LAMBDABER['functional_annotation/is_cofactor'], name="ligandInteraction__is_cofactor", curie=LAMBDABER.curie('functional_annotation/is_cofactor'),
                    model_uri=LAMBDABER.ligandInteraction__is_cofactor, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ligandInteraction__is_drug_like = Slot(uri=LAMBDABER.is_drug_like, name="ligandInteraction__is_drug_like", curie=LAMBDABER.curie('is_drug_like'),
+slots.ligandInteraction__is_drug_like = Slot(uri=LAMBDABER['functional_annotation/is_drug_like'], name="ligandInteraction__is_drug_like", curie=LAMBDABER.curie('functional_annotation/is_drug_like'),
                    model_uri=LAMBDABER.ligandInteraction__is_drug_like, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ligandInteraction__druggability_score = Slot(uri=LAMBDABER.druggability_score, name="ligandInteraction__druggability_score", curie=LAMBDABER.curie('druggability_score'),
+slots.ligandInteraction__druggability_score = Slot(uri=LAMBDABER['functional_annotation/druggability_score'], name="ligandInteraction__druggability_score", curie=LAMBDABER.curie('functional_annotation/druggability_score'),
                    model_uri=LAMBDABER.ligandInteraction__druggability_score, domain=None, range=Optional[float])
 
-slots.ligandInteraction__interaction_distance = Slot(uri=LAMBDABER.interaction_distance, name="ligandInteraction__interaction_distance", curie=LAMBDABER.curie('interaction_distance'),
+slots.ligandInteraction__interaction_distance = Slot(uri=LAMBDABER['functional_annotation/interaction_distance'], name="ligandInteraction__interaction_distance", curie=LAMBDABER.curie('functional_annotation/interaction_distance'),
                    model_uri=LAMBDABER.ligandInteraction__interaction_distance, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__partner_protein_id = Slot(uri=LAMBDABER.partner_protein_id, name="proteinProteinInteraction__partner_protein_id", curie=LAMBDABER.curie('partner_protein_id'),
+slots.proteinProteinInteraction__partner_protein_id = Slot(uri=LAMBDABER['functional_annotation/partner_protein_id'], name="proteinProteinInteraction__partner_protein_id", curie=LAMBDABER.curie('functional_annotation/partner_protein_id'),
                    model_uri=LAMBDABER.proteinProteinInteraction__partner_protein_id, domain=None, range=str)
 
-slots.proteinProteinInteraction__partner_chain_id = Slot(uri=LAMBDABER.partner_chain_id, name="proteinProteinInteraction__partner_chain_id", curie=LAMBDABER.curie('partner_chain_id'),
+slots.proteinProteinInteraction__partner_chain_id = Slot(uri=LAMBDABER['functional_annotation/partner_chain_id'], name="proteinProteinInteraction__partner_chain_id", curie=LAMBDABER.curie('functional_annotation/partner_chain_id'),
                    model_uri=LAMBDABER.proteinProteinInteraction__partner_chain_id, domain=None, range=Optional[str])
 
-slots.proteinProteinInteraction__interface_residues = Slot(uri=LAMBDABER.interface_residues, name="proteinProteinInteraction__interface_residues", curie=LAMBDABER.curie('interface_residues'),
+slots.proteinProteinInteraction__interface_residues = Slot(uri=LAMBDABER['functional_annotation/interface_residues'], name="proteinProteinInteraction__interface_residues", curie=LAMBDABER.curie('functional_annotation/interface_residues'),
                    model_uri=LAMBDABER.proteinProteinInteraction__interface_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=LAMBDABER.partner_interface_residues, name="proteinProteinInteraction__partner_interface_residues", curie=LAMBDABER.curie('partner_interface_residues'),
+slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=LAMBDABER['functional_annotation/partner_interface_residues'], name="proteinProteinInteraction__partner_interface_residues", curie=LAMBDABER.curie('functional_annotation/partner_interface_residues'),
                    model_uri=LAMBDABER.proteinProteinInteraction__partner_interface_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.proteinProteinInteraction__interface_area = Slot(uri=LAMBDABER.interface_area, name="proteinProteinInteraction__interface_area", curie=LAMBDABER.curie('interface_area'),
+slots.proteinProteinInteraction__interface_area = Slot(uri=LAMBDABER['functional_annotation/interface_area'], name="proteinProteinInteraction__interface_area", curie=LAMBDABER.curie('functional_annotation/interface_area'),
                    model_uri=LAMBDABER.proteinProteinInteraction__interface_area, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__binding_energy = Slot(uri=LAMBDABER.binding_energy, name="proteinProteinInteraction__binding_energy", curie=LAMBDABER.curie('binding_energy'),
+slots.proteinProteinInteraction__binding_energy = Slot(uri=LAMBDABER['functional_annotation/binding_energy'], name="proteinProteinInteraction__binding_energy", curie=LAMBDABER.curie('functional_annotation/binding_energy'),
                    model_uri=LAMBDABER.proteinProteinInteraction__binding_energy, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__dissociation_constant = Slot(uri=LAMBDABER.dissociation_constant, name="proteinProteinInteraction__dissociation_constant", curie=LAMBDABER.curie('dissociation_constant'),
+slots.proteinProteinInteraction__dissociation_constant = Slot(uri=LAMBDABER['functional_annotation/dissociation_constant'], name="proteinProteinInteraction__dissociation_constant", curie=LAMBDABER.curie('functional_annotation/dissociation_constant'),
                    model_uri=LAMBDABER.proteinProteinInteraction__dissociation_constant, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__complex_stability = Slot(uri=LAMBDABER.complex_stability, name="proteinProteinInteraction__complex_stability", curie=LAMBDABER.curie('complex_stability'),
+slots.proteinProteinInteraction__complex_stability = Slot(uri=LAMBDABER['functional_annotation/complex_stability'], name="proteinProteinInteraction__complex_stability", curie=LAMBDABER.curie('functional_annotation/complex_stability'),
                    model_uri=LAMBDABER.proteinProteinInteraction__complex_stability, domain=None, range=Optional[Union[str, "ComplexStabilityEnum"]])
 
-slots.proteinProteinInteraction__biological_assembly = Slot(uri=LAMBDABER.biological_assembly, name="proteinProteinInteraction__biological_assembly", curie=LAMBDABER.curie('biological_assembly'),
+slots.proteinProteinInteraction__biological_assembly = Slot(uri=LAMBDABER['functional_annotation/biological_assembly'], name="proteinProteinInteraction__biological_assembly", curie=LAMBDABER.curie('functional_annotation/biological_assembly'),
                    model_uri=LAMBDABER.proteinProteinInteraction__biological_assembly, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.proteinProteinInteraction__interaction_evidence = Slot(uri=LAMBDABER.interaction_evidence, name="proteinProteinInteraction__interaction_evidence", curie=LAMBDABER.curie('interaction_evidence'),
+slots.proteinProteinInteraction__interaction_evidence = Slot(uri=LAMBDABER['functional_annotation/interaction_evidence'], name="proteinProteinInteraction__interaction_evidence", curie=LAMBDABER.curie('functional_annotation/interaction_evidence'),
                    model_uri=LAMBDABER.proteinProteinInteraction__interaction_evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
 
-slots.mutationEffect__mutation = Slot(uri=LAMBDABER.mutation, name="mutationEffect__mutation", curie=LAMBDABER.curie('mutation'),
+slots.mutationEffect__mutation = Slot(uri=LAMBDABER['functional_annotation/mutation'], name="mutationEffect__mutation", curie=LAMBDABER.curie('functional_annotation/mutation'),
                    model_uri=LAMBDABER.mutationEffect__mutation, domain=None, range=str,
                    pattern=re.compile(r'^[A-Z][0-9]+[A-Z]$'))
 
-slots.mutationEffect__mutation_type = Slot(uri=LAMBDABER.mutation_type, name="mutationEffect__mutation_type", curie=LAMBDABER.curie('mutation_type'),
+slots.mutationEffect__mutation_type = Slot(uri=LAMBDABER['functional_annotation/mutation_type'], name="mutationEffect__mutation_type", curie=LAMBDABER.curie('functional_annotation/mutation_type'),
                    model_uri=LAMBDABER.mutationEffect__mutation_type, domain=None, range=Optional[Union[str, "MutationTypeEnum"]])
 
-slots.mutationEffect__effect_on_stability = Slot(uri=LAMBDABER.effect_on_stability, name="mutationEffect__effect_on_stability", curie=LAMBDABER.curie('effect_on_stability'),
+slots.mutationEffect__effect_on_stability = Slot(uri=LAMBDABER['functional_annotation/effect_on_stability'], name="mutationEffect__effect_on_stability", curie=LAMBDABER.curie('functional_annotation/effect_on_stability'),
                    model_uri=LAMBDABER.mutationEffect__effect_on_stability, domain=None, range=Optional[Union[str, "StabilityEffectEnum"]])
 
-slots.mutationEffect__delta_delta_g = Slot(uri=LAMBDABER.delta_delta_g, name="mutationEffect__delta_delta_g", curie=LAMBDABER.curie('delta_delta_g'),
+slots.mutationEffect__delta_delta_g = Slot(uri=LAMBDABER['functional_annotation/delta_delta_g'], name="mutationEffect__delta_delta_g", curie=LAMBDABER.curie('functional_annotation/delta_delta_g'),
                    model_uri=LAMBDABER.mutationEffect__delta_delta_g, domain=None, range=Optional[float])
 
-slots.mutationEffect__effect_on_function = Slot(uri=LAMBDABER.effect_on_function, name="mutationEffect__effect_on_function", curie=LAMBDABER.curie('effect_on_function'),
+slots.mutationEffect__effect_on_function = Slot(uri=LAMBDABER['functional_annotation/effect_on_function'], name="mutationEffect__effect_on_function", curie=LAMBDABER.curie('functional_annotation/effect_on_function'),
                    model_uri=LAMBDABER.mutationEffect__effect_on_function, domain=None, range=Optional[Union[str, "FunctionalEffectEnum"]])
 
-slots.mutationEffect__functional_impact_description = Slot(uri=LAMBDABER.functional_impact_description, name="mutationEffect__functional_impact_description", curie=LAMBDABER.curie('functional_impact_description'),
+slots.mutationEffect__functional_impact_description = Slot(uri=LAMBDABER['functional_annotation/functional_impact_description'], name="mutationEffect__functional_impact_description", curie=LAMBDABER.curie('functional_annotation/functional_impact_description'),
                    model_uri=LAMBDABER.mutationEffect__functional_impact_description, domain=None, range=Optional[str])
 
-slots.mutationEffect__disease_association = Slot(uri=LAMBDABER.disease_association, name="mutationEffect__disease_association", curie=LAMBDABER.curie('disease_association'),
+slots.mutationEffect__disease_association = Slot(uri=LAMBDABER['functional_annotation/disease_association'], name="mutationEffect__disease_association", curie=LAMBDABER.curie('functional_annotation/disease_association'),
                    model_uri=LAMBDABER.mutationEffect__disease_association, domain=None, range=Optional[str])
 
-slots.mutationEffect__omim_id = Slot(uri=LAMBDABER.omim_id, name="mutationEffect__omim_id", curie=LAMBDABER.curie('omim_id'),
+slots.mutationEffect__omim_id = Slot(uri=LAMBDABER['functional_annotation/omim_id'], name="mutationEffect__omim_id", curie=LAMBDABER.curie('functional_annotation/omim_id'),
                    model_uri=LAMBDABER.mutationEffect__omim_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9]{6}$'))
 
-slots.mutationEffect__clinical_significance = Slot(uri=LAMBDABER.clinical_significance, name="mutationEffect__clinical_significance", curie=LAMBDABER.curie('clinical_significance'),
+slots.mutationEffect__clinical_significance = Slot(uri=LAMBDABER['functional_annotation/clinical_significance'], name="mutationEffect__clinical_significance", curie=LAMBDABER.curie('functional_annotation/clinical_significance'),
                    model_uri=LAMBDABER.mutationEffect__clinical_significance, domain=None, range=Optional[Union[str, "ClinicalSignificanceEnum"]])
 
-slots.mutationEffect__allele_frequency = Slot(uri=LAMBDABER.allele_frequency, name="mutationEffect__allele_frequency", curie=LAMBDABER.curie('allele_frequency'),
+slots.mutationEffect__allele_frequency = Slot(uri=LAMBDABER['functional_annotation/allele_frequency'], name="mutationEffect__allele_frequency", curie=LAMBDABER.curie('functional_annotation/allele_frequency'),
                    model_uri=LAMBDABER.mutationEffect__allele_frequency, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__property_type = Slot(uri=LAMBDABER.property_type, name="biophysicalProperty__property_type", curie=LAMBDABER.curie('property_type'),
+slots.biophysicalProperty__property_type = Slot(uri=LAMBDABER['functional_annotation/property_type'], name="biophysicalProperty__property_type", curie=LAMBDABER.curie('functional_annotation/property_type'),
                    model_uri=LAMBDABER.biophysicalProperty__property_type, domain=None, range=Union[str, "BiophysicalPropertyEnum"])
 
-slots.biophysicalProperty__value = Slot(uri=LAMBDABER.value, name="biophysicalProperty__value", curie=LAMBDABER.curie('value'),
+slots.biophysicalProperty__value = Slot(uri=LAMBDABER['functional_annotation/value'], name="biophysicalProperty__value", curie=LAMBDABER.curie('functional_annotation/value'),
                    model_uri=LAMBDABER.biophysicalProperty__value, domain=None, range=float)
 
-slots.biophysicalProperty__unit = Slot(uri=LAMBDABER.unit, name="biophysicalProperty__unit", curie=LAMBDABER.curie('unit'),
+slots.biophysicalProperty__unit = Slot(uri=LAMBDABER['functional_annotation/unit'], name="biophysicalProperty__unit", curie=LAMBDABER.curie('functional_annotation/unit'),
                    model_uri=LAMBDABER.biophysicalProperty__unit, domain=None, range=str)
 
-slots.biophysicalProperty__error = Slot(uri=LAMBDABER.error, name="biophysicalProperty__error", curie=LAMBDABER.curie('error'),
+slots.biophysicalProperty__error = Slot(uri=LAMBDABER['functional_annotation/error'], name="biophysicalProperty__error", curie=LAMBDABER.curie('functional_annotation/error'),
                    model_uri=LAMBDABER.biophysicalProperty__error, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDABER.measurement_conditions, name="biophysicalProperty__measurement_conditions", curie=LAMBDABER.curie('measurement_conditions'),
+slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDABER['functional_annotation/measurement_conditions'], name="biophysicalProperty__measurement_conditions", curie=LAMBDABER.curie('functional_annotation/measurement_conditions'),
                    model_uri=LAMBDABER.biophysicalProperty__measurement_conditions, domain=None, range=Optional[str])
 
-slots.biophysicalProperty__temperature = Slot(uri=LAMBDABER.temperature, name="biophysicalProperty__temperature", curie=LAMBDABER.curie('temperature'),
+slots.biophysicalProperty__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="biophysicalProperty__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
                    model_uri=LAMBDABER.biophysicalProperty__temperature, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__ph = Slot(uri=LAMBDABER.ph, name="biophysicalProperty__ph", curie=LAMBDABER.curie('ph'),
+slots.biophysicalProperty__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="biophysicalProperty__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
                    model_uri=LAMBDABER.biophysicalProperty__ph, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__ionic_strength = Slot(uri=LAMBDABER.ionic_strength, name="biophysicalProperty__ionic_strength", curie=LAMBDABER.curie('ionic_strength'),
+slots.biophysicalProperty__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="biophysicalProperty__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
                    model_uri=LAMBDABER.biophysicalProperty__ionic_strength, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDABER.experimental_method, name="biophysicalProperty__experimental_method", curie=LAMBDABER.curie('experimental_method'),
+slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDABER['functional_annotation/experimental_method'], name="biophysicalProperty__experimental_method", curie=LAMBDABER.curie('functional_annotation/experimental_method'),
                    model_uri=LAMBDABER.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
 
-slots.conformationalEnsemble__protein_id = Slot(uri=LAMBDABER.protein_id, name="conformationalEnsemble__protein_id", curie=LAMBDABER.curie('protein_id'),
+slots.conformationalEnsemble__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="conformationalEnsemble__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
                    model_uri=LAMBDABER.conformationalEnsemble__protein_id, domain=None, range=str)
 
-slots.conformationalEnsemble__conformational_states = Slot(uri=LAMBDABER.conformational_states, name="conformationalEnsemble__conformational_states", curie=LAMBDABER.curie('conformational_states'),
+slots.conformationalEnsemble__conformational_states = Slot(uri=LAMBDABER['functional_annotation/conformational_states'], name="conformationalEnsemble__conformational_states", curie=LAMBDABER.curie('functional_annotation/conformational_states'),
                    model_uri=LAMBDABER.conformationalEnsemble__conformational_states, domain=None, range=Optional[Union[Union[dict, ConformationalState], list[Union[dict, ConformationalState]]]])
 
-slots.conformationalEnsemble__clustering_method = Slot(uri=LAMBDABER.clustering_method, name="conformationalEnsemble__clustering_method", curie=LAMBDABER.curie('clustering_method'),
+slots.conformationalEnsemble__clustering_method = Slot(uri=LAMBDABER['functional_annotation/clustering_method'], name="conformationalEnsemble__clustering_method", curie=LAMBDABER.curie('functional_annotation/clustering_method'),
                    model_uri=LAMBDABER.conformationalEnsemble__clustering_method, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__rmsd_threshold = Slot(uri=LAMBDABER.rmsd_threshold, name="conformationalEnsemble__rmsd_threshold", curie=LAMBDABER.curie('rmsd_threshold'),
+slots.conformationalEnsemble__rmsd_threshold = Slot(uri=LAMBDABER['functional_annotation/rmsd_threshold'], name="conformationalEnsemble__rmsd_threshold", curie=LAMBDABER.curie('functional_annotation/rmsd_threshold'),
                    model_uri=LAMBDABER.conformationalEnsemble__rmsd_threshold, domain=None, range=Optional[float])
 
-slots.conformationalEnsemble__transition_pathways = Slot(uri=LAMBDABER.transition_pathways, name="conformationalEnsemble__transition_pathways", curie=LAMBDABER.curie('transition_pathways'),
+slots.conformationalEnsemble__transition_pathways = Slot(uri=LAMBDABER['functional_annotation/transition_pathways'], name="conformationalEnsemble__transition_pathways", curie=LAMBDABER.curie('functional_annotation/transition_pathways'),
                    model_uri=LAMBDABER.conformationalEnsemble__transition_pathways, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__energy_landscape = Slot(uri=LAMBDABER.energy_landscape, name="conformationalEnsemble__energy_landscape", curie=LAMBDABER.curie('energy_landscape'),
+slots.conformationalEnsemble__energy_landscape = Slot(uri=LAMBDABER['functional_annotation/energy_landscape'], name="conformationalEnsemble__energy_landscape", curie=LAMBDABER.curie('functional_annotation/energy_landscape'),
                    model_uri=LAMBDABER.conformationalEnsemble__energy_landscape, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__principal_motions = Slot(uri=LAMBDABER.principal_motions, name="conformationalEnsemble__principal_motions", curie=LAMBDABER.curie('principal_motions'),
+slots.conformationalEnsemble__principal_motions = Slot(uri=LAMBDABER['functional_annotation/principal_motions'], name="conformationalEnsemble__principal_motions", curie=LAMBDABER.curie('functional_annotation/principal_motions'),
                    model_uri=LAMBDABER.conformationalEnsemble__principal_motions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.conformationalState__state_id = Slot(uri=LAMBDABER.state_id, name="conformationalState__state_id", curie=LAMBDABER.curie('state_id'),
+slots.conformationalState__state_id = Slot(uri=LAMBDABER['functional_annotation/state_id'], name="conformationalState__state_id", curie=LAMBDABER.curie('functional_annotation/state_id'),
                    model_uri=LAMBDABER.conformationalState__state_id, domain=None, range=str)
 
-slots.conformationalState__state_name = Slot(uri=LAMBDABER.state_name, name="conformationalState__state_name", curie=LAMBDABER.curie('state_name'),
+slots.conformationalState__state_name = Slot(uri=LAMBDABER['functional_annotation/state_name'], name="conformationalState__state_name", curie=LAMBDABER.curie('functional_annotation/state_name'),
                    model_uri=LAMBDABER.conformationalState__state_name, domain=None, range=Optional[str])
 
-slots.conformationalState__pdb_entries = Slot(uri=LAMBDABER.pdb_entries, name="conformationalState__pdb_entries", curie=LAMBDABER.curie('pdb_entries'),
+slots.conformationalState__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="conformationalState__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
                    model_uri=LAMBDABER.conformationalState__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.conformationalState__population = Slot(uri=LAMBDABER.population, name="conformationalState__population", curie=LAMBDABER.curie('population'),
+slots.conformationalState__population = Slot(uri=LAMBDABER['functional_annotation/population'], name="conformationalState__population", curie=LAMBDABER.curie('functional_annotation/population'),
                    model_uri=LAMBDABER.conformationalState__population, domain=None, range=Optional[float])
 
-slots.conformationalState__free_energy = Slot(uri=LAMBDABER.free_energy, name="conformationalState__free_energy", curie=LAMBDABER.curie('free_energy'),
+slots.conformationalState__free_energy = Slot(uri=LAMBDABER['functional_annotation/free_energy'], name="conformationalState__free_energy", curie=LAMBDABER.curie('functional_annotation/free_energy'),
                    model_uri=LAMBDABER.conformationalState__free_energy, domain=None, range=Optional[float])
 
-slots.conformationalState__rmsd_from_reference = Slot(uri=LAMBDABER.rmsd_from_reference, name="conformationalState__rmsd_from_reference", curie=LAMBDABER.curie('rmsd_from_reference'),
+slots.conformationalState__rmsd_from_reference = Slot(uri=LAMBDABER['functional_annotation/rmsd_from_reference'], name="conformationalState__rmsd_from_reference", curie=LAMBDABER.curie('functional_annotation/rmsd_from_reference'),
                    model_uri=LAMBDABER.conformationalState__rmsd_from_reference, domain=None, range=Optional[float])
 
-slots.conformationalState__characteristic_features = Slot(uri=LAMBDABER.characteristic_features, name="conformationalState__characteristic_features", curie=LAMBDABER.curie('characteristic_features'),
+slots.conformationalState__characteristic_features = Slot(uri=LAMBDABER['functional_annotation/characteristic_features'], name="conformationalState__characteristic_features", curie=LAMBDABER.curie('functional_annotation/characteristic_features'),
                    model_uri=LAMBDABER.conformationalState__characteristic_features, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.postTranslationalModification__modification_type = Slot(uri=LAMBDABER.modification_type, name="postTranslationalModification__modification_type", curie=LAMBDABER.curie('modification_type'),
+slots.postTranslationalModification__modification_type = Slot(uri=LAMBDABER['functional_annotation/modification_type'], name="postTranslationalModification__modification_type", curie=LAMBDABER.curie('functional_annotation/modification_type'),
                    model_uri=LAMBDABER.postTranslationalModification__modification_type, domain=None, range=Union[str, "PTMTypeEnum"])
 
-slots.postTranslationalModification__modified_residue = Slot(uri=LAMBDABER.modified_residue, name="postTranslationalModification__modified_residue", curie=LAMBDABER.curie('modified_residue'),
+slots.postTranslationalModification__modified_residue = Slot(uri=LAMBDABER['functional_annotation/modified_residue'], name="postTranslationalModification__modified_residue", curie=LAMBDABER.curie('functional_annotation/modified_residue'),
                    model_uri=LAMBDABER.postTranslationalModification__modified_residue, domain=None, range=str)
 
-slots.postTranslationalModification__modification_group = Slot(uri=LAMBDABER.modification_group, name="postTranslationalModification__modification_group", curie=LAMBDABER.curie('modification_group'),
+slots.postTranslationalModification__modification_group = Slot(uri=LAMBDABER['functional_annotation/modification_group'], name="postTranslationalModification__modification_group", curie=LAMBDABER.curie('functional_annotation/modification_group'),
                    model_uri=LAMBDABER.postTranslationalModification__modification_group, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__mass_shift = Slot(uri=LAMBDABER.mass_shift, name="postTranslationalModification__mass_shift", curie=LAMBDABER.curie('mass_shift'),
+slots.postTranslationalModification__mass_shift = Slot(uri=LAMBDABER['functional_annotation/mass_shift'], name="postTranslationalModification__mass_shift", curie=LAMBDABER.curie('functional_annotation/mass_shift'),
                    model_uri=LAMBDABER.postTranslationalModification__mass_shift, domain=None, range=Optional[float])
 
-slots.postTranslationalModification__functional_effect = Slot(uri=LAMBDABER.functional_effect, name="postTranslationalModification__functional_effect", curie=LAMBDABER.curie('functional_effect'),
+slots.postTranslationalModification__functional_effect = Slot(uri=LAMBDABER['functional_annotation/functional_effect'], name="postTranslationalModification__functional_effect", curie=LAMBDABER.curie('functional_annotation/functional_effect'),
                    model_uri=LAMBDABER.postTranslationalModification__functional_effect, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__regulatory_role = Slot(uri=LAMBDABER.regulatory_role, name="postTranslationalModification__regulatory_role", curie=LAMBDABER.curie('regulatory_role'),
+slots.postTranslationalModification__regulatory_role = Slot(uri=LAMBDABER['functional_annotation/regulatory_role'], name="postTranslationalModification__regulatory_role", curie=LAMBDABER.curie('functional_annotation/regulatory_role'),
                    model_uri=LAMBDABER.postTranslationalModification__regulatory_role, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__enzyme = Slot(uri=LAMBDABER.enzyme, name="postTranslationalModification__enzyme", curie=LAMBDABER.curie('enzyme'),
+slots.postTranslationalModification__enzyme = Slot(uri=LAMBDABER['functional_annotation/enzyme'], name="postTranslationalModification__enzyme", curie=LAMBDABER.curie('functional_annotation/enzyme'),
                    model_uri=LAMBDABER.postTranslationalModification__enzyme, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__removal_enzyme = Slot(uri=LAMBDABER.removal_enzyme, name="postTranslationalModification__removal_enzyme", curie=LAMBDABER.curie('removal_enzyme'),
+slots.postTranslationalModification__removal_enzyme = Slot(uri=LAMBDABER['functional_annotation/removal_enzyme'], name="postTranslationalModification__removal_enzyme", curie=LAMBDABER.curie('functional_annotation/removal_enzyme'),
                    model_uri=LAMBDABER.postTranslationalModification__removal_enzyme, domain=None, range=Optional[str])
 
-slots.databaseCrossReference__database_name = Slot(uri=LAMBDABER.database_name, name="databaseCrossReference__database_name", curie=LAMBDABER.curie('database_name'),
+slots.databaseCrossReference__database_name = Slot(uri=LAMBDABER['functional_annotation/database_name'], name="databaseCrossReference__database_name", curie=LAMBDABER.curie('functional_annotation/database_name'),
                    model_uri=LAMBDABER.databaseCrossReference__database_name, domain=None, range=Union[str, "DatabaseNameEnum"])
 
-slots.databaseCrossReference__database_id = Slot(uri=LAMBDABER.database_id, name="databaseCrossReference__database_id", curie=LAMBDABER.curie('database_id'),
+slots.databaseCrossReference__database_id = Slot(uri=LAMBDABER['functional_annotation/database_id'], name="databaseCrossReference__database_id", curie=LAMBDABER.curie('functional_annotation/database_id'),
                    model_uri=LAMBDABER.databaseCrossReference__database_id, domain=None, range=str)
 
-slots.databaseCrossReference__database_url = Slot(uri=LAMBDABER.database_url, name="databaseCrossReference__database_url", curie=LAMBDABER.curie('database_url'),
+slots.databaseCrossReference__database_url = Slot(uri=LAMBDABER['functional_annotation/database_url'], name="databaseCrossReference__database_url", curie=LAMBDABER.curie('functional_annotation/database_url'),
                    model_uri=LAMBDABER.databaseCrossReference__database_url, domain=None, range=Optional[Union[str, URI]])
 
-slots.databaseCrossReference__last_updated = Slot(uri=LAMBDABER.last_updated, name="databaseCrossReference__last_updated", curie=LAMBDABER.curie('last_updated'),
+slots.databaseCrossReference__last_updated = Slot(uri=LAMBDABER['functional_annotation/last_updated'], name="databaseCrossReference__last_updated", curie=LAMBDABER.curie('functional_annotation/last_updated'),
                    model_uri=LAMBDABER.databaseCrossReference__last_updated, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__conservation_score = Slot(uri=LAMBDABER.conservation_score, name="evolutionaryConservation__conservation_score", curie=LAMBDABER.curie('conservation_score'),
+slots.evolutionaryConservation__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="evolutionaryConservation__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
                    model_uri=LAMBDABER.evolutionaryConservation__conservation_score, domain=None, range=Optional[float])
 
-slots.evolutionaryConservation__conserved_residues = Slot(uri=LAMBDABER.conserved_residues, name="evolutionaryConservation__conserved_residues", curie=LAMBDABER.curie('conserved_residues'),
+slots.evolutionaryConservation__conserved_residues = Slot(uri=LAMBDABER['functional_annotation/conserved_residues'], name="evolutionaryConservation__conserved_residues", curie=LAMBDABER.curie('functional_annotation/conserved_residues'),
                    model_uri=LAMBDABER.evolutionaryConservation__conserved_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.evolutionaryConservation__variable_residues = Slot(uri=LAMBDABER.variable_residues, name="evolutionaryConservation__variable_residues", curie=LAMBDABER.curie('variable_residues'),
+slots.evolutionaryConservation__variable_residues = Slot(uri=LAMBDABER['functional_annotation/variable_residues'], name="evolutionaryConservation__variable_residues", curie=LAMBDABER.curie('functional_annotation/variable_residues'),
                    model_uri=LAMBDABER.evolutionaryConservation__variable_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.evolutionaryConservation__conservation_method = Slot(uri=LAMBDABER.conservation_method, name="evolutionaryConservation__conservation_method", curie=LAMBDABER.curie('conservation_method'),
+slots.evolutionaryConservation__conservation_method = Slot(uri=LAMBDABER['functional_annotation/conservation_method'], name="evolutionaryConservation__conservation_method", curie=LAMBDABER.curie('functional_annotation/conservation_method'),
                    model_uri=LAMBDABER.evolutionaryConservation__conservation_method, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__alignment_depth = Slot(uri=LAMBDABER.alignment_depth, name="evolutionaryConservation__alignment_depth", curie=LAMBDABER.curie('alignment_depth'),
+slots.evolutionaryConservation__alignment_depth = Slot(uri=LAMBDABER['functional_annotation/alignment_depth'], name="evolutionaryConservation__alignment_depth", curie=LAMBDABER.curie('functional_annotation/alignment_depth'),
                    model_uri=LAMBDABER.evolutionaryConservation__alignment_depth, domain=None, range=Optional[int])
 
-slots.evolutionaryConservation__taxonomic_range = Slot(uri=LAMBDABER.taxonomic_range, name="evolutionaryConservation__taxonomic_range", curie=LAMBDABER.curie('taxonomic_range'),
+slots.evolutionaryConservation__taxonomic_range = Slot(uri=LAMBDABER['functional_annotation/taxonomic_range'], name="evolutionaryConservation__taxonomic_range", curie=LAMBDABER.curie('functional_annotation/taxonomic_range'),
                    model_uri=LAMBDABER.evolutionaryConservation__taxonomic_range, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__coevolved_residues = Slot(uri=LAMBDABER.coevolved_residues, name="evolutionaryConservation__coevolved_residues", curie=LAMBDABER.curie('coevolved_residues'),
+slots.evolutionaryConservation__coevolved_residues = Slot(uri=LAMBDABER['functional_annotation/coevolved_residues'], name="evolutionaryConservation__coevolved_residues", curie=LAMBDABER.curie('functional_annotation/coevolved_residues'),
                    model_uri=LAMBDABER.evolutionaryConservation__coevolved_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.aggregatedProteinView__uniprot_id = Slot(uri=LAMBDABER.uniprot_id, name="aggregatedProteinView__uniprot_id", curie=LAMBDABER.curie('uniprot_id'),
+slots.aggregatedProteinView__uniprot_id = Slot(uri=LAMBDABER['functional_annotation/uniprot_id'], name="aggregatedProteinView__uniprot_id", curie=LAMBDABER.curie('functional_annotation/uniprot_id'),
                    model_uri=LAMBDABER.aggregatedProteinView__uniprot_id, domain=None, range=str)
 
-slots.aggregatedProteinView__protein_name = Slot(uri=LAMBDABER.protein_name, name="aggregatedProteinView__protein_name", curie=LAMBDABER.curie('protein_name'),
+slots.aggregatedProteinView__protein_name = Slot(uri=LAMBDABER['functional_annotation/protein_name'], name="aggregatedProteinView__protein_name", curie=LAMBDABER.curie('functional_annotation/protein_name'),
                    model_uri=LAMBDABER.aggregatedProteinView__protein_name, domain=None, range=str)
 
-slots.aggregatedProteinView__organism = Slot(uri=LAMBDABER.organism, name="aggregatedProteinView__organism", curie=LAMBDABER.curie('organism'),
+slots.aggregatedProteinView__organism = Slot(uri=LAMBDABER['functional_annotation/organism'], name="aggregatedProteinView__organism", curie=LAMBDABER.curie('functional_annotation/organism'),
                    model_uri=LAMBDABER.aggregatedProteinView__organism, domain=None, range=Optional[str])
 
-slots.aggregatedProteinView__organism_id = Slot(uri=LAMBDABER.organism_id, name="aggregatedProteinView__organism_id", curie=LAMBDABER.curie('organism_id'),
+slots.aggregatedProteinView__organism_id = Slot(uri=LAMBDABER['functional_annotation/organism_id'], name="aggregatedProteinView__organism_id", curie=LAMBDABER.curie('functional_annotation/organism_id'),
                    model_uri=LAMBDABER.aggregatedProteinView__organism_id, domain=None, range=Optional[int])
 
-slots.aggregatedProteinView__pdb_entries = Slot(uri=LAMBDABER.pdb_entries, name="aggregatedProteinView__pdb_entries", curie=LAMBDABER.curie('pdb_entries'),
+slots.aggregatedProteinView__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="aggregatedProteinView__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
                    model_uri=LAMBDABER.aggregatedProteinView__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.aggregatedProteinView__functional_sites = Slot(uri=LAMBDABER.functional_sites, name="aggregatedProteinView__functional_sites", curie=LAMBDABER.curie('functional_sites'),
+slots.aggregatedProteinView__functional_sites = Slot(uri=LAMBDABER['functional_annotation/functional_sites'], name="aggregatedProteinView__functional_sites", curie=LAMBDABER.curie('functional_annotation/functional_sites'),
                    model_uri=LAMBDABER.aggregatedProteinView__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
 
-slots.aggregatedProteinView__structural_features = Slot(uri=LAMBDABER.structural_features, name="aggregatedProteinView__structural_features", curie=LAMBDABER.curie('structural_features'),
+slots.aggregatedProteinView__structural_features = Slot(uri=LAMBDABER['functional_annotation/structural_features'], name="aggregatedProteinView__structural_features", curie=LAMBDABER.curie('functional_annotation/structural_features'),
                    model_uri=LAMBDABER.aggregatedProteinView__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
 
-slots.aggregatedProteinView__protein_interactions = Slot(uri=LAMBDABER.protein_interactions, name="aggregatedProteinView__protein_interactions", curie=LAMBDABER.curie('protein_interactions'),
+slots.aggregatedProteinView__protein_interactions = Slot(uri=LAMBDABER['functional_annotation/protein_interactions'], name="aggregatedProteinView__protein_interactions", curie=LAMBDABER.curie('functional_annotation/protein_interactions'),
                    model_uri=LAMBDABER.aggregatedProteinView__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
 
-slots.aggregatedProteinView__ligand_interactions = Slot(uri=LAMBDABER.ligand_interactions, name="aggregatedProteinView__ligand_interactions", curie=LAMBDABER.curie('ligand_interactions'),
+slots.aggregatedProteinView__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="aggregatedProteinView__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
                    model_uri=LAMBDABER.aggregatedProteinView__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
 
-slots.aggregatedProteinView__mutations = Slot(uri=LAMBDABER.mutations, name="aggregatedProteinView__mutations", curie=LAMBDABER.curie('mutations'),
+slots.aggregatedProteinView__mutations = Slot(uri=LAMBDABER['functional_annotation/mutations'], name="aggregatedProteinView__mutations", curie=LAMBDABER.curie('functional_annotation/mutations'),
                    model_uri=LAMBDABER.aggregatedProteinView__mutations, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
 
-slots.aggregatedProteinView__ptms = Slot(uri=LAMBDABER.ptms, name="aggregatedProteinView__ptms", curie=LAMBDABER.curie('ptms'),
+slots.aggregatedProteinView__ptms = Slot(uri=LAMBDABER['functional_annotation/ptms'], name="aggregatedProteinView__ptms", curie=LAMBDABER.curie('functional_annotation/ptms'),
                    model_uri=LAMBDABER.aggregatedProteinView__ptms, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
 
-slots.aggregatedProteinView__biophysical_properties = Slot(uri=LAMBDABER.biophysical_properties, name="aggregatedProteinView__biophysical_properties", curie=LAMBDABER.curie('biophysical_properties'),
+slots.aggregatedProteinView__biophysical_properties = Slot(uri=LAMBDABER['functional_annotation/biophysical_properties'], name="aggregatedProteinView__biophysical_properties", curie=LAMBDABER.curie('functional_annotation/biophysical_properties'),
                    model_uri=LAMBDABER.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
 
-slots.aggregatedProteinView__conformational_ensemble = Slot(uri=LAMBDABER.conformational_ensemble, name="aggregatedProteinView__conformational_ensemble", curie=LAMBDABER.curie('conformational_ensemble'),
+slots.aggregatedProteinView__conformational_ensemble = Slot(uri=LAMBDABER['functional_annotation/conformational_ensemble'], name="aggregatedProteinView__conformational_ensemble", curie=LAMBDABER.curie('functional_annotation/conformational_ensemble'),
                    model_uri=LAMBDABER.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
 
-slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDABER.evolutionary_conservation, name="aggregatedProteinView__evolutionary_conservation", curie=LAMBDABER.curie('evolutionary_conservation'),
+slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDABER['functional_annotation/evolutionary_conservation'], name="aggregatedProteinView__evolutionary_conservation", curie=LAMBDABER.curie('functional_annotation/evolutionary_conservation'),
                    model_uri=LAMBDABER.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
 
-slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER.cross_references, name="aggregatedProteinView__cross_references", curie=LAMBDABER.curie('cross_references'),
+slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER['functional_annotation/cross_references'], name="aggregatedProteinView__cross_references", curie=LAMBDABER.curie('functional_annotation/cross_references'),
                    model_uri=LAMBDABER.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])

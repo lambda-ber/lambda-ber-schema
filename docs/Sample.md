@@ -33,6 +33,17 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : biophysical_properties
+        
+          
+    
+        
+        
+        Sample --> "*" BiophysicalProperty : biophysical_properties
+        click BiophysicalProperty href "../BiophysicalProperty/"
+    
+
+        
       Sample : buffer_composition
         
           
@@ -68,9 +79,64 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : conformational_ensemble
+        
+          
+    
+        
+        
+        Sample --> "0..1" ConformationalEnsemble : conformational_ensemble
+        click ConformationalEnsemble href "../ConformationalEnsemble/"
+    
+
+        
+      Sample : database_cross_references
+        
+          
+    
+        
+        
+        Sample --> "*" DatabaseCrossReference : database_cross_references
+        click DatabaseCrossReference href "../DatabaseCrossReference/"
+    
+
+        
       Sample : description
         
+      Sample : evolutionary_conservation
+        
+          
+    
+        
+        
+        Sample --> "0..1" EvolutionaryConservation : evolutionary_conservation
+        click EvolutionaryConservation href "../EvolutionaryConservation/"
+    
+
+        
+      Sample : functional_sites
+        
+          
+    
+        
+        
+        Sample --> "*" FunctionalSite : functional_sites
+        click FunctionalSite href "../FunctionalSite/"
+    
+
+        
       Sample : id
+        
+      Sample : ligand_interactions
+        
+          
+    
+        
+        
+        Sample --> "*" LigandInteraction : ligand_interactions
+        click LigandInteraction href "../LigandInteraction/"
+    
+
         
       Sample : molecular_composition
         
@@ -84,6 +150,17 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
         
       Sample : molecular_weight
+        
+      Sample : mutation_effects
+        
+          
+    
+        
+        
+        Sample --> "*" MutationEffect : mutation_effects
+        click MutationEffect href "../MutationEffect/"
+    
+
         
       Sample : organism
         
@@ -108,6 +185,28 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
         
       Sample : preparation_method
+        
+      Sample : protein_interactions
+        
+          
+    
+        
+        
+        Sample --> "*" ProteinProteinInteraction : protein_interactions
+        click ProteinProteinInteraction href "../ProteinProteinInteraction/"
+    
+
+        
+      Sample : ptm_annotations
+        
+          
+    
+        
+        
+        Sample --> "*" PostTranslationalModification : ptm_annotations
+        click PostTranslationalModification href "../PostTranslationalModification/"
+    
+
         
       Sample : purity_percentage
         
@@ -134,6 +233,17 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         
         Sample --> "0..1" StorageConditions : storage_conditions
         click StorageConditions href "../StorageConditions/"
+    
+
+        
+      Sample : structural_features
+        
+          
+    
+        
+        
+        Sample --> "*" StructuralFeature : structural_features
+        click StructuralFeature href "../StructuralFeature/"
     
 
         
@@ -171,6 +281,16 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [parent_sample_id](parent_sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Reference to parent sample for derivation tracking | direct |
 | [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage | direct |
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [String](String.md) | Quality control metrics for the sample | direct |
+| [functional_sites](functional_sites.md) | * <br/> [FunctionalSite](FunctionalSite.md) | Functional site annotations for proteins in the sample | direct |
+| [structural_features](structural_features.md) | * <br/> [StructuralFeature](StructuralFeature.md) | Structural feature annotations | direct |
+| [protein_interactions](protein_interactions.md) | * <br/> [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interaction annotations | direct |
+| [ligand_interactions](ligand_interactions.md) | * <br/> [LigandInteraction](LigandInteraction.md) | Small molecule interaction annotations | direct |
+| [mutation_effects](mutation_effects.md) | * <br/> [MutationEffect](MutationEffect.md) | Effects of mutations present in the sample | direct |
+| [ptm_annotations](ptm_annotations.md) | * <br/> [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modification annotations | direct |
+| [biophysical_properties](biophysical_properties.md) | * <br/> [BiophysicalProperty](BiophysicalProperty.md) | Measured or predicted biophysical properties | direct |
+| [evolutionary_conservation](evolutionary_conservation.md) | 0..1 <br/> [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation data | direct |
+| [conformational_ensemble](conformational_ensemble.md) | 0..1 <br/> [ConformationalEnsemble](ConformationalEnsemble.md) | Conformational states and dynamics | direct |
+| [database_cross_references](database_cross_references.md) | * <br/> [DatabaseCrossReference](DatabaseCrossReference.md) | Cross-references to external databases | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
@@ -317,6 +437,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - AggregatedProteinView
     range: OntologyTerm
   anatomy:
     name: anatomy
@@ -360,6 +481,120 @@ attributes:
     domain_of:
     - Sample
     - ExperimentRun
+  functional_sites:
+    name: functional_sites
+    description: Functional site annotations for proteins in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: FunctionalSite
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  structural_features:
+    name: structural_features
+    description: Structural feature annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: StructuralFeature
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_interactions:
+    name: protein_interactions
+    description: Protein-protein interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ProteinProteinInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ligand_interactions:
+    name: ligand_interactions
+    description: Small molecule interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - FunctionalSite
+    - AggregatedProteinView
+    range: LigandInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  mutation_effects:
+    name: mutation_effects
+    description: Effects of mutations present in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: MutationEffect
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ptm_annotations:
+    name: ptm_annotations
+    description: Post-translational modification annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: PostTranslationalModification
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  biophysical_properties:
+    name: biophysical_properties
+    description: Measured or predicted biophysical properties
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: BiophysicalProperty
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evolutionary_conservation:
+    name: evolutionary_conservation
+    description: Evolutionary conservation data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: EvolutionaryConservation
+    inlined: true
+  conformational_ensemble:
+    name: conformational_ensemble
+    description: Conformational states and dynamics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ConformationalEnsemble
+    inlined: true
+  database_cross_references:
+    name: database_cross_references
+    description: Cross-references to external databases
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: DatabaseCrossReference
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
 ```
 </details>
@@ -480,6 +715,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - AggregatedProteinView
     range: OntologyTerm
   anatomy:
     name: anatomy
@@ -534,6 +770,140 @@ attributes:
     - Sample
     - ExperimentRun
     range: string
+  functional_sites:
+    name: functional_sites
+    description: Functional site annotations for proteins in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: functional_sites
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: FunctionalSite
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  structural_features:
+    name: structural_features
+    description: Structural feature annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: structural_features
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: StructuralFeature
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_interactions:
+    name: protein_interactions
+    description: Protein-protein interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protein_interactions
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ProteinProteinInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ligand_interactions:
+    name: ligand_interactions
+    description: Small molecule interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ligand_interactions
+    owner: Sample
+    domain_of:
+    - Sample
+    - FunctionalSite
+    - AggregatedProteinView
+    range: LigandInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  mutation_effects:
+    name: mutation_effects
+    description: Effects of mutations present in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: mutation_effects
+    owner: Sample
+    domain_of:
+    - Sample
+    range: MutationEffect
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ptm_annotations:
+    name: ptm_annotations
+    description: Post-translational modification annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ptm_annotations
+    owner: Sample
+    domain_of:
+    - Sample
+    range: PostTranslationalModification
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  biophysical_properties:
+    name: biophysical_properties
+    description: Measured or predicted biophysical properties
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: biophysical_properties
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: BiophysicalProperty
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evolutionary_conservation:
+    name: evolutionary_conservation
+    description: Evolutionary conservation data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: evolutionary_conservation
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: EvolutionaryConservation
+    inlined: true
+  conformational_ensemble:
+    name: conformational_ensemble
+    description: Conformational states and dynamics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: conformational_ensemble
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ConformationalEnsemble
+    inlined: true
+  database_cross_references:
+    name: database_cross_references
+    description: Cross-references to external databases
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: database_cross_references
+    owner: Sample
+    domain_of:
+    - Sample
+    range: DatabaseCrossReference
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing

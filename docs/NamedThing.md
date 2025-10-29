@@ -27,6 +27,8 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
         click Study href "../Study/"
       NamedThing <|-- Sample
         click Sample href "../Sample/"
+      NamedThing <|-- ProteinConstruct
+        click ProteinConstruct href "../ProteinConstruct/"
       NamedThing <|-- SamplePreparation
         click SamplePreparation href "../SamplePreparation/"
       NamedThing <|-- Instrument
@@ -41,6 +43,12 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
         click Image href "../Image/"
       NamedThing <|-- OntologyTerm
         click OntologyTerm href "../OntologyTerm/"
+      NamedThing <|-- ProteinAnnotation
+        click ProteinAnnotation href "../ProteinAnnotation/"
+      NamedThing <|-- ConformationalEnsemble
+        click ConformationalEnsemble href "../ConformationalEnsemble/"
+      NamedThing <|-- AggregatedProteinView
+        click AggregatedProteinView href "../AggregatedProteinView/"
       
       NamedThing : description
         
@@ -60,6 +68,7 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
     * [Dataset](Dataset.md)
     * [Study](Study.md)
     * [Sample](Sample.md)
+    * [ProteinConstruct](ProteinConstruct.md)
     * [SamplePreparation](SamplePreparation.md)
     * [Instrument](Instrument.md)
     * [ExperimentRun](ExperimentRun.md)
@@ -67,6 +76,9 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
     * [DataFile](DataFile.md)
     * [Image](Image.md)
     * [OntologyTerm](OntologyTerm.md)
+    * [ProteinAnnotation](ProteinAnnotation.md)
+    * [ConformationalEnsemble](ConformationalEnsemble.md)
+    * [AggregatedProteinView](AggregatedProteinView.md)
 
 
 

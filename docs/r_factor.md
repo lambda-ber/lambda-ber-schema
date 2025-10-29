@@ -3,7 +3,7 @@
 # Slot: r_factor 
 
 
-_R-factor for crystallography_
+_R-factor for crystallography (deprecated, use r_work)_
 
 
 
@@ -66,7 +66,7 @@ Alias: r_factor
 <details>
 ```yaml
 name: r_factor
-description: R-factor for crystallography
+description: R-factor for crystallography (deprecated, use r_work)
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: r_factor

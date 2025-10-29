@@ -4,50 +4,13 @@
   "id": "https://w3id.org/lambda-ber-schema/",
   "imports": [
     "linkml:types",
-    "functional_annotation",
-    "lambda-ber-schema"
+    "functional_annotation"
   ],
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
     {
       "prefix_prefix": "lambdaber",
       "prefix_reference": "https://w3id.org/lambda-ber-schema/"
-    },
-    {
-      "prefix_prefix": "dataset",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/dataset/"
-    },
-    {
-      "prefix_prefix": "study",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/study/"
-    },
-    {
-      "prefix_prefix": "sample",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/sample/"
-    },
-    {
-      "prefix_prefix": "prep",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/sample_preparation/"
-    },
-    {
-      "prefix_prefix": "wf",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/workflow_run/"
-    },
-    {
-      "prefix_prefix": "df",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/data_file/"
-    },
-    {
-      "prefix_prefix": "img",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/image/"
-    },
-    {
-      "prefix_prefix": "instrument",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/instrument/"
-    },
-    {
-      "prefix_prefix": "experiment",
-      "prefix_reference": "https://w3id.org/lambda-ber-schema/experiment_run/"
     },
     {
       "prefix_prefix": "linkml",
@@ -1117,9 +1080,9 @@
     },
     {
       "name": "FunctionalSiteTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/FunctionalSiteTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum",
       "description": "Types of functional sites in proteins",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "active_site",
@@ -1201,9 +1164,9 @@
     },
     {
       "name": "StructuralFeatureTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/StructuralFeatureTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeatureTypeEnum",
       "description": "Types of structural features",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "alpha_helix",
@@ -1289,9 +1252,9 @@
     },
     {
       "name": "SecondaryStructureEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/SecondaryStructureEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/SecondaryStructureEnum",
       "description": "Secondary structure types",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "helix",
@@ -1329,9 +1292,9 @@
     },
     {
       "name": "ConformationalStateEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ConformationalStateEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalStateEnum",
       "description": "Conformational states",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "open",
@@ -1389,9 +1352,9 @@
     },
     {
       "name": "InteractionTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/InteractionTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/InteractionTypeEnum",
       "description": "Types of molecular interactions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "covalent",
@@ -1437,9 +1400,9 @@
     },
     {
       "name": "BindingAffinityTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/BindingAffinityTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum",
       "description": "Types of binding affinity measurements",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "kd",
@@ -1469,9 +1432,9 @@
     },
     {
       "name": "AffinityUnitEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/AffinityUnitEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AffinityUnitEnum",
       "description": "Units for affinity measurements",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "molar",
@@ -1497,9 +1460,9 @@
     },
     {
       "name": "ComplexStabilityEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ComplexStabilityEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ComplexStabilityEnum",
       "description": "Stability of protein complexes",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "stable",
@@ -1529,9 +1492,9 @@
     },
     {
       "name": "InteractionEvidenceEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/InteractionEvidenceEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/InteractionEvidenceEnum",
       "description": "Evidence for interactions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "experimental",
@@ -1569,9 +1532,9 @@
     },
     {
       "name": "MutationTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/MutationTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MutationTypeEnum",
       "description": "Types of mutations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "missense",
@@ -1605,9 +1568,9 @@
     },
     {
       "name": "StabilityEffectEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/StabilityEffectEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/StabilityEffectEnum",
       "description": "Effect on protein stability",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "stabilizing",
@@ -1633,9 +1596,9 @@
     },
     {
       "name": "FunctionalEffectEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/FunctionalEffectEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalEffectEnum",
       "description": "Effect on protein function",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "loss_of_function",
@@ -1665,9 +1628,9 @@
     },
     {
       "name": "ClinicalSignificanceEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ClinicalSignificanceEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ClinicalSignificanceEnum",
       "description": "Clinical significance of variants",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "pathogenic",
@@ -1693,9 +1656,9 @@
     },
     {
       "name": "BiophysicalPropertyEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/BiophysicalPropertyEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalPropertyEnum",
       "description": "Types of biophysical properties",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "melting_temperature",
@@ -1757,9 +1720,9 @@
     },
     {
       "name": "BiophysicalMethodEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/BiophysicalMethodEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum",
       "description": "Methods for biophysical measurements",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "differential_scanning_calorimetry",
@@ -1801,9 +1764,9 @@
     },
     {
       "name": "PTMTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/PTMTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum",
       "description": "Types of post-translational modifications",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "phosphorylation",
@@ -1869,9 +1832,9 @@
     },
     {
       "name": "EvidenceTypeEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/EvidenceTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/EvidenceTypeEnum",
       "description": "Types of evidence",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "experimental",
@@ -1901,9 +1864,9 @@
     },
     {
       "name": "AnnotationSourceEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/AnnotationSourceEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AnnotationSourceEnum",
       "description": "Sources of functional annotations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "pdbe",
@@ -2069,9 +2032,9 @@
     },
     {
       "name": "DatabaseNameEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/DatabaseNameEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseNameEnum",
       "description": "External database names",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
           "text": "uniprot",
@@ -6587,8 +6550,8 @@
     {
       "name": "proteinAnnotation__protein_id",
       "description": "UniProt accession number",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/protein_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/protein_id",
       "alias": "protein_id",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6602,8 +6565,8 @@
     {
       "name": "proteinAnnotation__pdb_entry",
       "description": "PDB identifier",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pdb_entry",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entry",
       "alias": "pdb_entry",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6616,8 +6579,8 @@
     {
       "name": "proteinAnnotation__chain_id",
       "description": "Chain identifier in the PDB structure",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/chain_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/chain_id",
       "alias": "chain_id",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6630,8 +6593,8 @@
     {
       "name": "proteinAnnotation__residue_range",
       "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/residue_range",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/residue_range",
       "alias": "residue_range",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6643,8 +6606,8 @@
     {
       "name": "proteinAnnotation__confidence_score",
       "description": "Confidence score for the annotation (0-1)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/confidence_score",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/confidence_score",
       "alias": "confidence_score",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6658,8 +6621,8 @@
     {
       "name": "proteinAnnotation__evidence_type",
       "description": "Type of evidence supporting this annotation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/evidence_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/evidence_type",
       "alias": "evidence_type",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6671,8 +6634,8 @@
     {
       "name": "proteinAnnotation__evidence_code",
       "description": "Evidence and Conclusion Ontology (ECO) code",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/evidence_code",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/evidence_code",
       "alias": "evidence_code",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6684,8 +6647,8 @@
     {
       "name": "proteinAnnotation__source_database",
       "description": "Source database or resource that provided this annotation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/source_database",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/source_database",
       "alias": "source_database",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6697,8 +6660,8 @@
     {
       "name": "proteinAnnotation__annotation_method",
       "description": "Computational or experimental method used",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/annotation_method",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/annotation_method",
       "alias": "annotation_method",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6710,8 +6673,8 @@
     {
       "name": "proteinAnnotation__publication_ids",
       "description": "PubMed IDs supporting this annotation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/publication_ids",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/publication_ids",
       "alias": "publication_ids",
       "owner": "ProteinAnnotation",
       "domain_of": [
@@ -6725,8 +6688,8 @@
     {
       "name": "functionalSite__site_type",
       "description": "Type of functional site",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/site_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/site_type",
       "alias": "site_type",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6739,8 +6702,8 @@
     {
       "name": "functionalSite__site_name",
       "description": "Common name for this site",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/site_name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/site_name",
       "alias": "site_name",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6752,8 +6715,8 @@
     {
       "name": "functionalSite__residues",
       "description": "List of residues forming the functional site",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/residues",
       "alias": "residues",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6766,8 +6729,8 @@
     {
       "name": "functionalSite__ligand_interactions",
       "description": "Ligands that interact with this site",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ligand_interactions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ligand_interactions",
       "alias": "ligand_interactions",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6782,8 +6745,8 @@
     {
       "name": "functionalSite__conservation_score",
       "description": "Evolutionary conservation score",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conservation_score",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6797,8 +6760,8 @@
     {
       "name": "functionalSite__functional_importance",
       "description": "Description of functional importance",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_importance",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/functional_importance",
       "alias": "functional_importance",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6810,8 +6773,8 @@
     {
       "name": "functionalSite__go_terms",
       "description": "Associated Gene Ontology terms",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/go_terms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/go_terms",
       "alias": "go_terms",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6824,8 +6787,8 @@
     {
       "name": "functionalSite__ec_number",
       "description": "Enzyme Commission number for catalytic sites",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ec_number",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ec_number",
       "alias": "ec_number",
       "owner": "FunctionalSite",
       "domain_of": [
@@ -6838,8 +6801,8 @@
     {
       "name": "structuralFeature__feature_type",
       "description": "Type of structural feature",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/feature_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/feature_type",
       "alias": "feature_type",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6852,8 +6815,8 @@
     {
       "name": "structuralFeature__secondary_structure",
       "description": "Secondary structure assignment",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/secondary_structure",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/secondary_structure",
       "alias": "secondary_structure",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6865,8 +6828,8 @@
     {
       "name": "structuralFeature__solvent_accessibility",
       "description": "Relative solvent accessible surface area",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/solvent_accessibility",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/solvent_accessibility",
       "alias": "solvent_accessibility",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6880,8 +6843,8 @@
     {
       "name": "structuralFeature__backbone_flexibility",
       "description": "B-factor or flexibility measure",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/backbone_flexibility",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/backbone_flexibility",
       "alias": "backbone_flexibility",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6893,8 +6856,8 @@
     {
       "name": "structuralFeature__disorder_probability",
       "description": "Probability of disorder (0-1)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/disorder_probability",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/disorder_probability",
       "alias": "disorder_probability",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6908,8 +6871,8 @@
     {
       "name": "structuralFeature__conformational_state",
       "description": "Conformational state descriptor",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conformational_state",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conformational_state",
       "alias": "conformational_state",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6921,8 +6884,8 @@
     {
       "name": "structuralFeature__structural_motif",
       "description": "Known structural motif",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/structural_motif",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/structural_motif",
       "alias": "structural_motif",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6934,8 +6897,8 @@
     {
       "name": "structuralFeature__domain_assignment",
       "description": "Domain database assignment (CATH, SCOP, Pfam)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/domain_assignment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/domain_assignment",
       "alias": "domain_assignment",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6947,8 +6910,8 @@
     {
       "name": "structuralFeature__domain_id",
       "description": "Domain identifier from domain database",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/domain_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/domain_id",
       "alias": "domain_id",
       "owner": "StructuralFeature",
       "domain_of": [
@@ -6960,8 +6923,8 @@
     {
       "name": "ligandInteraction__ligand_id",
       "description": "Ligand identifier (ChEMBL, ChEBI, PubChem)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ligand_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ligand_id",
       "alias": "ligand_id",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -6974,8 +6937,8 @@
     {
       "name": "ligandInteraction__ligand_name",
       "description": "Common name of the ligand",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ligand_name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ligand_name",
       "alias": "ligand_name",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -6988,8 +6951,8 @@
     {
       "name": "ligandInteraction__ligand_smiles",
       "description": "SMILES representation of the ligand",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ligand_smiles",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ligand_smiles",
       "alias": "ligand_smiles",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7001,8 +6964,8 @@
     {
       "name": "ligandInteraction__binding_affinity",
       "description": "Binding affinity value",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/binding_affinity",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity",
       "alias": "binding_affinity",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7014,8 +6977,8 @@
     {
       "name": "ligandInteraction__binding_affinity_type",
       "description": "Type of binding measurement (Kd, Ki, IC50)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/binding_affinity_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity_type",
       "alias": "binding_affinity_type",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7027,8 +6990,8 @@
     {
       "name": "ligandInteraction__binding_affinity_unit",
       "description": "Unit of binding affinity",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/binding_affinity_unit",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity_unit",
       "alias": "binding_affinity_unit",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7040,8 +7003,8 @@
     {
       "name": "ligandInteraction__interaction_type",
       "description": "Type of interaction",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/interaction_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/interaction_type",
       "alias": "interaction_type",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7053,8 +7016,8 @@
     {
       "name": "ligandInteraction__binding_site_residues",
       "description": "Residues involved in ligand binding",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/binding_site_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/binding_site_residues",
       "alias": "binding_site_residues",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7067,8 +7030,8 @@
     {
       "name": "ligandInteraction__is_cofactor",
       "description": "Whether the ligand is a cofactor",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/is_cofactor",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/is_cofactor",
       "alias": "is_cofactor",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7080,8 +7043,8 @@
     {
       "name": "ligandInteraction__is_drug_like",
       "description": "Whether the ligand has drug-like properties",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/is_drug_like",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/is_drug_like",
       "alias": "is_drug_like",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7093,8 +7056,8 @@
     {
       "name": "ligandInteraction__druggability_score",
       "description": "Druggability score of the binding site",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/druggability_score",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/druggability_score",
       "alias": "druggability_score",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7108,8 +7071,8 @@
     {
       "name": "ligandInteraction__interaction_distance",
       "description": "Distance criteria for interaction (Angstroms)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/interaction_distance",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/interaction_distance",
       "alias": "interaction_distance",
       "owner": "LigandInteraction",
       "domain_of": [
@@ -7125,8 +7088,8 @@
     {
       "name": "proteinProteinInteraction__partner_protein_id",
       "description": "UniProt ID of interacting partner",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/partner_protein_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/partner_protein_id",
       "alias": "partner_protein_id",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7139,8 +7102,8 @@
     {
       "name": "proteinProteinInteraction__partner_chain_id",
       "description": "Chain ID of interacting partner",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/partner_chain_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/partner_chain_id",
       "alias": "partner_chain_id",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7152,8 +7115,8 @@
     {
       "name": "proteinProteinInteraction__interface_residues",
       "description": "Residues at the interaction interface",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/interface_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/interface_residues",
       "alias": "interface_residues",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7166,8 +7129,8 @@
     {
       "name": "proteinProteinInteraction__partner_interface_residues",
       "description": "Partner residues at the interaction interface",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/partner_interface_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/partner_interface_residues",
       "alias": "partner_interface_residues",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7180,8 +7143,8 @@
     {
       "name": "proteinProteinInteraction__interface_area",
       "description": "Buried surface area at interface (\u0172)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/interface_area",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/interface_area",
       "alias": "interface_area",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7197,8 +7160,8 @@
     {
       "name": "proteinProteinInteraction__binding_energy",
       "description": "Calculated binding energy (kcal/mol)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/binding_energy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/binding_energy",
       "alias": "binding_energy",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7214,8 +7177,8 @@
     {
       "name": "proteinProteinInteraction__dissociation_constant",
       "description": "Experimental Kd if available",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/dissociation_constant",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/dissociation_constant",
       "alias": "dissociation_constant",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7227,8 +7190,8 @@
     {
       "name": "proteinProteinInteraction__complex_stability",
       "description": "Stability assessment of the complex",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/complex_stability",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/complex_stability",
       "alias": "complex_stability",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7240,8 +7203,8 @@
     {
       "name": "proteinProteinInteraction__biological_assembly",
       "description": "Whether this represents a biological assembly",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/biological_assembly",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/biological_assembly",
       "alias": "biological_assembly",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7253,8 +7216,8 @@
     {
       "name": "proteinProteinInteraction__interaction_evidence",
       "description": "Evidence for this interaction",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/interaction_evidence",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/interaction_evidence",
       "alias": "interaction_evidence",
       "owner": "ProteinProteinInteraction",
       "domain_of": [
@@ -7267,8 +7230,8 @@
     {
       "name": "mutationEffect__mutation",
       "description": "Mutation in standard notation (e.g., 'A123V')",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/mutation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/mutation",
       "alias": "mutation",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7282,8 +7245,8 @@
     {
       "name": "mutationEffect__mutation_type",
       "description": "Type of mutation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/mutation_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/mutation_type",
       "alias": "mutation_type",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7295,8 +7258,8 @@
     {
       "name": "mutationEffect__effect_on_stability",
       "description": "Effect on protein stability",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/effect_on_stability",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/effect_on_stability",
       "alias": "effect_on_stability",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7308,8 +7271,8 @@
     {
       "name": "mutationEffect__delta_delta_g",
       "description": "Change in folding free energy (kcal/mol)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/delta_delta_g",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/delta_delta_g",
       "alias": "delta_delta_g",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7325,8 +7288,8 @@
     {
       "name": "mutationEffect__effect_on_function",
       "description": "Effect on protein function",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/effect_on_function",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/effect_on_function",
       "alias": "effect_on_function",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7338,8 +7301,8 @@
     {
       "name": "mutationEffect__functional_impact_description",
       "description": "Description of functional impact",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_impact_description",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/functional_impact_description",
       "alias": "functional_impact_description",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7351,8 +7314,8 @@
     {
       "name": "mutationEffect__disease_association",
       "description": "Associated disease or phenotype",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/disease_association",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/disease_association",
       "alias": "disease_association",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7364,8 +7327,8 @@
     {
       "name": "mutationEffect__omim_id",
       "description": "OMIM database identifier",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/omim_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/omim_id",
       "alias": "omim_id",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7378,8 +7341,8 @@
     {
       "name": "mutationEffect__clinical_significance",
       "description": "Clinical significance",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/clinical_significance",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/clinical_significance",
       "alias": "clinical_significance",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7391,8 +7354,8 @@
     {
       "name": "mutationEffect__allele_frequency",
       "description": "Population allele frequency",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/allele_frequency",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/allele_frequency",
       "alias": "allele_frequency",
       "owner": "MutationEffect",
       "domain_of": [
@@ -7406,8 +7369,8 @@
     {
       "name": "biophysicalProperty__property_type",
       "description": "Type of biophysical property",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/property_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/property_type",
       "alias": "property_type",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7420,8 +7383,8 @@
     {
       "name": "biophysicalProperty__value",
       "description": "Numerical value of the property",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/value",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/value",
       "alias": "value",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7434,8 +7397,8 @@
     {
       "name": "biophysicalProperty__unit",
       "description": "Unit of measurement",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/unit",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/unit",
       "alias": "unit",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7448,8 +7411,8 @@
     {
       "name": "biophysicalProperty__error",
       "description": "Experimental error or uncertainty",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/error",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/error",
       "alias": "error",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7461,8 +7424,8 @@
     {
       "name": "biophysicalProperty__measurement_conditions",
       "description": "Conditions under which measurement was made",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/measurement_conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions",
       "alias": "measurement_conditions",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7474,8 +7437,8 @@
     {
       "name": "biophysicalProperty__temperature",
       "description": "Temperature in Kelvin",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
       "alias": "temperature",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7491,8 +7454,8 @@
     {
       "name": "biophysicalProperty__ph",
       "description": "pH value",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ph",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
       "alias": "ph",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7506,8 +7469,8 @@
     {
       "name": "biophysicalProperty__ionic_strength",
       "description": "Ionic strength in molar",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ionic_strength",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
       "alias": "ionic_strength",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7523,8 +7486,8 @@
     {
       "name": "biophysicalProperty__experimental_method",
       "description": "Method used for measurement",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/experimental_method",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/experimental_method",
       "alias": "experimental_method",
       "owner": "BiophysicalProperty",
       "domain_of": [
@@ -7536,8 +7499,8 @@
     {
       "name": "conformationalEnsemble__protein_id",
       "description": "UniProt accession",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/protein_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/protein_id",
       "alias": "protein_id",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7550,8 +7513,8 @@
     {
       "name": "conformationalEnsemble__conformational_states",
       "description": "Individual conformational states",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conformational_states",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conformational_states",
       "alias": "conformational_states",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7566,8 +7529,8 @@
     {
       "name": "conformationalEnsemble__clustering_method",
       "description": "Method used for conformational clustering",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/clustering_method",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/clustering_method",
       "alias": "clustering_method",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7579,8 +7542,8 @@
     {
       "name": "conformationalEnsemble__rmsd_threshold",
       "description": "RMSD threshold for clustering (Angstroms)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/rmsd_threshold",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/rmsd_threshold",
       "alias": "rmsd_threshold",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7596,8 +7559,8 @@
     {
       "name": "conformationalEnsemble__transition_pathways",
       "description": "Description of transition pathways between states",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/transition_pathways",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/transition_pathways",
       "alias": "transition_pathways",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7609,8 +7572,8 @@
     {
       "name": "conformationalEnsemble__energy_landscape",
       "description": "Description of the energy landscape",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_landscape",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/energy_landscape",
       "alias": "energy_landscape",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7622,8 +7585,8 @@
     {
       "name": "conformationalEnsemble__principal_motions",
       "description": "Description of principal motions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/principal_motions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/principal_motions",
       "alias": "principal_motions",
       "owner": "ConformationalEnsemble",
       "domain_of": [
@@ -7636,8 +7599,8 @@
     {
       "name": "conformationalState__state_id",
       "description": "Identifier for this state",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/state_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/state_id",
       "alias": "state_id",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7650,8 +7613,8 @@
     {
       "name": "conformationalState__state_name",
       "description": "Descriptive name (e.g., 'open', 'closed')",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/state_name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/state_name",
       "alias": "state_name",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7663,8 +7626,8 @@
     {
       "name": "conformationalState__pdb_entries",
       "description": "PDB entries representing this state",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pdb_entries",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entries",
       "alias": "pdb_entries",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7677,8 +7640,8 @@
     {
       "name": "conformationalState__population",
       "description": "Relative population of this state",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/population",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/population",
       "alias": "population",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7692,8 +7655,8 @@
     {
       "name": "conformationalState__free_energy",
       "description": "Relative free energy (kcal/mol)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/free_energy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/free_energy",
       "alias": "free_energy",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7709,8 +7672,8 @@
     {
       "name": "conformationalState__rmsd_from_reference",
       "description": "RMSD from reference structure",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/rmsd_from_reference",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/rmsd_from_reference",
       "alias": "rmsd_from_reference",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7726,8 +7689,8 @@
     {
       "name": "conformationalState__characteristic_features",
       "description": "Key features of this conformation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/characteristic_features",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/characteristic_features",
       "alias": "characteristic_features",
       "owner": "ConformationalState",
       "domain_of": [
@@ -7740,8 +7703,8 @@
     {
       "name": "postTranslationalModification__modification_type",
       "description": "Type of PTM",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/modification_type",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/modification_type",
       "alias": "modification_type",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7754,8 +7717,8 @@
     {
       "name": "postTranslationalModification__modified_residue",
       "description": "Residue that is modified",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/modified_residue",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/modified_residue",
       "alias": "modified_residue",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7768,8 +7731,8 @@
     {
       "name": "postTranslationalModification__modification_group",
       "description": "Chemical group added (e.g., 'phosphate', 'methyl')",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/modification_group",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/modification_group",
       "alias": "modification_group",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7781,8 +7744,8 @@
     {
       "name": "postTranslationalModification__mass_shift",
       "description": "Mass change due to modification (Da)",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/mass_shift",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/mass_shift",
       "alias": "mass_shift",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7798,8 +7761,8 @@
     {
       "name": "postTranslationalModification__functional_effect",
       "description": "Known functional effect of this PTM",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_effect",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/functional_effect",
       "alias": "functional_effect",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7811,8 +7774,8 @@
     {
       "name": "postTranslationalModification__regulatory_role",
       "description": "Role in regulation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/regulatory_role",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/regulatory_role",
       "alias": "regulatory_role",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7824,8 +7787,8 @@
     {
       "name": "postTranslationalModification__enzyme",
       "description": "Enzyme responsible for modification",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/enzyme",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/enzyme",
       "alias": "enzyme",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7837,8 +7800,8 @@
     {
       "name": "postTranslationalModification__removal_enzyme",
       "description": "Enzyme that removes modification",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/removal_enzyme",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/removal_enzyme",
       "alias": "removal_enzyme",
       "owner": "PostTranslationalModification",
       "domain_of": [
@@ -7850,8 +7813,8 @@
     {
       "name": "databaseCrossReference__database_name",
       "description": "Name of the external database",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/database_name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/database_name",
       "alias": "database_name",
       "owner": "DatabaseCrossReference",
       "domain_of": [
@@ -7864,8 +7827,8 @@
     {
       "name": "databaseCrossReference__database_id",
       "description": "Identifier in the external database",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/database_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/database_id",
       "alias": "database_id",
       "owner": "DatabaseCrossReference",
       "domain_of": [
@@ -7878,8 +7841,8 @@
     {
       "name": "databaseCrossReference__database_url",
       "description": "URL to the database entry",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/database_url",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/database_url",
       "alias": "database_url",
       "owner": "DatabaseCrossReference",
       "domain_of": [
@@ -7891,8 +7854,8 @@
     {
       "name": "databaseCrossReference__last_updated",
       "description": "Date of last update",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/last_updated",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/last_updated",
       "alias": "last_updated",
       "owner": "DatabaseCrossReference",
       "domain_of": [
@@ -7904,8 +7867,8 @@
     {
       "name": "evolutionaryConservation__conservation_score",
       "description": "Overall conservation score",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conservation_score",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7919,8 +7882,8 @@
     {
       "name": "evolutionaryConservation__conserved_residues",
       "description": "Highly conserved residues",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conserved_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conserved_residues",
       "alias": "conserved_residues",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7933,8 +7896,8 @@
     {
       "name": "evolutionaryConservation__variable_residues",
       "description": "Highly variable residues",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/variable_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/variable_residues",
       "alias": "variable_residues",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7947,8 +7910,8 @@
     {
       "name": "evolutionaryConservation__conservation_method",
       "description": "Method used for conservation analysis",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conservation_method",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_method",
       "alias": "conservation_method",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7960,8 +7923,8 @@
     {
       "name": "evolutionaryConservation__alignment_depth",
       "description": "Number of sequences in alignment",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/alignment_depth",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/alignment_depth",
       "alias": "alignment_depth",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7973,8 +7936,8 @@
     {
       "name": "evolutionaryConservation__taxonomic_range",
       "description": "Taxonomic range of conservation",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/taxonomic_range",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/taxonomic_range",
       "alias": "taxonomic_range",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -7986,8 +7949,8 @@
     {
       "name": "evolutionaryConservation__coevolved_residues",
       "description": "Pairs of coevolved residues",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/coevolved_residues",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/coevolved_residues",
       "alias": "coevolved_residues",
       "owner": "EvolutionaryConservation",
       "domain_of": [
@@ -8000,8 +7963,8 @@
     {
       "name": "aggregatedProteinView__uniprot_id",
       "description": "UniProt accession",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/uniprot_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/uniprot_id",
       "alias": "uniprot_id",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8014,8 +7977,8 @@
     {
       "name": "aggregatedProteinView__protein_name",
       "description": "Protein name",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/protein_name",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/protein_name",
       "alias": "protein_name",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8028,8 +7991,8 @@
     {
       "name": "aggregatedProteinView__organism",
       "description": "Source organism",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/organism",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/organism",
       "alias": "organism",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8041,8 +8004,8 @@
     {
       "name": "aggregatedProteinView__organism_id",
       "description": "NCBI taxonomy ID",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/organism_id",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/organism_id",
       "alias": "organism_id",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8054,8 +8017,8 @@
     {
       "name": "aggregatedProteinView__pdb_entries",
       "description": "All PDB entries for this protein",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pdb_entries",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/pdb_entries",
       "alias": "pdb_entries",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8068,8 +8031,8 @@
     {
       "name": "aggregatedProteinView__functional_sites",
       "description": "All functional site annotations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_sites",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/functional_sites",
       "alias": "functional_sites",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8084,8 +8047,8 @@
     {
       "name": "aggregatedProteinView__structural_features",
       "description": "All structural feature annotations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/structural_features",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/structural_features",
       "alias": "structural_features",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8100,8 +8063,8 @@
     {
       "name": "aggregatedProteinView__protein_interactions",
       "description": "All protein-protein interactions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/protein_interactions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/protein_interactions",
       "alias": "protein_interactions",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8116,8 +8079,8 @@
     {
       "name": "aggregatedProteinView__ligand_interactions",
       "description": "All ligand interactions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ligand_interactions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ligand_interactions",
       "alias": "ligand_interactions",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8132,8 +8095,8 @@
     {
       "name": "aggregatedProteinView__mutations",
       "description": "All mutation annotations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/mutations",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/mutations",
       "alias": "mutations",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8148,8 +8111,8 @@
     {
       "name": "aggregatedProteinView__ptms",
       "description": "All post-translational modifications",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/ptms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ptms",
       "alias": "ptms",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8164,8 +8127,8 @@
     {
       "name": "aggregatedProteinView__biophysical_properties",
       "description": "All biophysical properties",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/biophysical_properties",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/biophysical_properties",
       "alias": "biophysical_properties",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8180,8 +8143,8 @@
     {
       "name": "aggregatedProteinView__conformational_ensemble",
       "description": "Conformational ensemble data",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/conformational_ensemble",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conformational_ensemble",
       "alias": "conformational_ensemble",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8194,8 +8157,8 @@
     {
       "name": "aggregatedProteinView__evolutionary_conservation",
       "description": "Conservation analysis",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/evolutionary_conservation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/evolutionary_conservation",
       "alias": "evolutionary_conservation",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -8208,8 +8171,8 @@
     {
       "name": "aggregatedProteinView__cross_references",
       "description": "Database cross-references",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/cross_references",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/cross_references",
       "alias": "cross_references",
       "owner": "AggregatedProteinView",
       "domain_of": [
@@ -11141,9 +11104,9 @@
     },
     {
       "name": "ProteinAnnotation",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ProteinAnnotation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation",
       "description": "Base class for all protein-related functional and structural annotations",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -11225,14 +11188,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/ProteinAnnotation",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation",
       "@type": "ClassDefinition"
     },
     {
       "name": "FunctionalSite",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/FunctionalSite",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite",
       "description": "Functional sites including catalytic, binding, and regulatory sites",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -11312,14 +11275,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/FunctionalSite",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite",
       "@type": "ClassDefinition"
     },
     {
       "name": "StructuralFeature",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/StructuralFeature",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature",
       "description": "Structural features and properties of protein regions",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -11404,14 +11367,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/StructuralFeature",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature",
       "@type": "ClassDefinition"
     },
     {
       "name": "LigandInteraction",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/LigandInteraction",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction",
       "description": "Small molecule/ligand interactions with proteins",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -11508,14 +11471,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/LigandInteraction",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction",
       "@type": "ClassDefinition"
     },
     {
       "name": "ProteinProteinInteraction",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ProteinProteinInteraction",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction",
       "description": "Protein-protein interactions and interfaces",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -11613,14 +11576,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/ProteinProteinInteraction",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ProteinProteinInteraction",
       "@type": "ClassDefinition"
     },
     {
       "name": "MutationEffect",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/MutationEffect",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect",
       "description": "Effects of mutations and variants on protein structure and function",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -11715,14 +11678,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/MutationEffect",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MutationEffect",
       "@type": "ClassDefinition"
     },
     {
       "name": "BiophysicalProperty",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/BiophysicalProperty",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty",
       "description": "Measured or calculated biophysical properties",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -11804,14 +11767,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/BiophysicalProperty",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty",
       "@type": "ClassDefinition"
     },
     {
       "name": "ConformationalEnsemble",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ConformationalEnsemble",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble",
       "description": "Ensemble of conformational states for a protein",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -11873,14 +11836,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/ConformationalEnsemble",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble",
       "@type": "ClassDefinition"
     },
     {
       "name": "ConformationalState",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ConformationalState",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState",
       "description": "Individual conformational state",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -11946,14 +11909,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/ConformationalState",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState",
       "@type": "ClassDefinition"
     },
     {
       "name": "PostTranslationalModification",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/PostTranslationalModification",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification",
       "description": "Post-translational modifications observed or predicted",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -12029,14 +11992,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/PostTranslationalModification",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/PostTranslationalModification",
       "@type": "ClassDefinition"
     },
     {
       "name": "DatabaseCrossReference",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/DatabaseCrossReference",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference",
       "description": "Cross-references to external databases",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
@@ -12073,14 +12036,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/DatabaseCrossReference",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference",
       "@type": "ClassDefinition"
     },
     {
       "name": "EvolutionaryConservation",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/EvolutionaryConservation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation",
       "description": "Evolutionary conservation information",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "ProteinAnnotation",
       "slots": [
         "namedThing__id",
@@ -12149,14 +12112,14 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/EvolutionaryConservation",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation",
       "@type": "ClassDefinition"
     },
     {
       "name": "AggregatedProteinView",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/AggregatedProteinView",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView",
       "description": "Aggregated view of all structural and functional data for a protein",
-      "from_schema": "https://w3id.org/biostride/functional_annotation",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
@@ -12288,15 +12251,15 @@
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/lambda-ber-schema/AggregatedProteinView",
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-10-29T09:28:34",
-  "source_file_size": 55960,
-  "generation_date": "2025-10-29T09:28:37",
+  "source_file_date": "2025-10-29T12:47:56",
+  "source_file_size": 55456,
+  "generation_date": "2025-10-29T12:53:43",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

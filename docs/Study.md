@@ -22,6 +22,17 @@ URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
       NamedThing <|-- Study
         click NamedThing href "../NamedThing/"
       
+      Study : aggregated_protein_views
+        
+          
+    
+        
+        
+        Study --> "*" AggregatedProteinView : aggregated_protein_views
+        click AggregatedProteinView href "../AggregatedProteinView/"
+    
+
+        
       Study : data_files
         
           
@@ -56,6 +67,17 @@ URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
         
         Study --> "*" ExperimentRun : instrument_runs
         click ExperimentRun href "../ExperimentRun/"
+    
+
+        
+      Study : protein_constructs
+        
+          
+    
+        
+        
+        Study --> "*" ProteinConstruct : protein_constructs
+        click ProteinConstruct href "../ProteinConstruct/"
     
 
         
@@ -111,12 +133,14 @@ URI: [lambdaber:Study](https://w3id.org/lambda-ber-schema/Study)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [protein_constructs](protein_constructs.md) | * <br/> [ProteinConstruct](ProteinConstruct.md) | Protein constructs and cloning information | direct |
 | [samples](samples.md) | * <br/> [Sample](Sample.md) |  | direct |
 | [sample_preparations](sample_preparations.md) | * <br/> [SamplePreparation](SamplePreparation.md) |  | direct |
 | [instrument_runs](instrument_runs.md) | * <br/> [ExperimentRun](ExperimentRun.md) |  | direct |
 | [workflow_runs](workflow_runs.md) | * <br/> [WorkflowRun](WorkflowRun.md) |  | direct |
 | [data_files](data_files.md) | * <br/> [DataFile](DataFile.md) |  | direct |
 | [images](images.md) | * <br/> [Image](Image.md) |  | direct |
+| [aggregated_protein_views](aggregated_protein_views.md) | * <br/> [AggregatedProteinView](AggregatedProteinView.md) | Aggregated functional and structural annotations for proteins in this study | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
@@ -178,6 +202,17 @@ description: A focused research investigation that groups related samples, exper
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
+  protein_constructs:
+    name: protein_constructs
+    description: Protein constructs and cloning information
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Study
+    range: ProteinConstruct
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -238,6 +273,18 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  aggregated_protein_views:
+    name: aggregated_protein_views
+    description: Aggregated functional and structural annotations for proteins in
+      this study
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Study
+    range: AggregatedProteinView
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
 ```
 </details>
@@ -252,6 +299,19 @@ description: A focused research investigation that groups related samples, exper
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
+  protein_constructs:
+    name: protein_constructs
+    description: Protein constructs and cloning information
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protein_constructs
+    owner: Study
+    domain_of:
+    - Study
+    range: ProteinConstruct
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   samples:
     name: samples
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -321,6 +381,20 @@ attributes:
     domain_of:
     - Study
     range: Image
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  aggregated_protein_views:
+    name: aggregated_protein_views
+    description: Aggregated functional and structural annotations for proteins in
+      this study
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: aggregated_protein_views
+    owner: Study
+    domain_of:
+    - Study
+    range: AggregatedProteinView
     multivalued: true
     inlined: true
     inlined_as_list: true

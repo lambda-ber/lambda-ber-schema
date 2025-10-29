@@ -1164,10 +1164,7 @@
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "instruments": {
                     "items": {
@@ -3224,7 +3221,10 @@
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "pdb_entry": {
                     "description": "PDB identifier",
@@ -5689,10 +5689,7 @@
         },
         "id": {
             "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
-            "type": [
-                "string",
-                "null"
-            ]
+            "type": "string"
         },
         "instruments": {
             "items": {

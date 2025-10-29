@@ -17,8 +17,9 @@ Alias: temperature
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
 | [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
+| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
 
 
 
@@ -59,6 +60,7 @@ alias: temperature
 domain_of:
 - StorageConditions
 - ExperimentalConditions
+- BiophysicalProperty
 range: string
 
 ```

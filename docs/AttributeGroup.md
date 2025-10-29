@@ -39,6 +39,14 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
         click QualityMetrics href "../QualityMetrics/"
       AttributeGroup <|-- ComputeResources
         click ComputeResources href "../ComputeResources/"
+      AttributeGroup <|-- LigandInteraction
+        click LigandInteraction href "../LigandInteraction/"
+      AttributeGroup <|-- BiophysicalProperty
+        click BiophysicalProperty href "../BiophysicalProperty/"
+      AttributeGroup <|-- ConformationalState
+        click ConformationalState href "../ConformationalState/"
+      AttributeGroup <|-- DatabaseCrossReference
+        click DatabaseCrossReference href "../DatabaseCrossReference/"
       
       AttributeGroup : description
         
@@ -60,6 +68,10 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
     * [DataCollectionStrategy](DataCollectionStrategy.md)
     * [QualityMetrics](QualityMetrics.md)
     * [ComputeResources](ComputeResources.md)
+    * [LigandInteraction](LigandInteraction.md)
+    * [BiophysicalProperty](BiophysicalProperty.md)
+    * [ConformationalState](ConformationalState.md)
+    * [DatabaseCrossReference](DatabaseCrossReference.md)
 
 
 

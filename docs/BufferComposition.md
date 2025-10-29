@@ -115,6 +115,7 @@ attributes:
     rank: 1000
     domain_of:
     - BufferComposition
+    - BiophysicalProperty
     range: float
     minimum_value: 0
     maximum_value: 14
@@ -134,6 +135,7 @@ attributes:
     rank: 1000
     domain_of:
     - BufferComposition
+    - XRayPreparation
     range: string
     multivalued: true
 
@@ -158,6 +160,7 @@ attributes:
     owner: BufferComposition
     domain_of:
     - BufferComposition
+    - BiophysicalProperty
     range: float
     minimum_value: 0
     maximum_value: 14
@@ -181,6 +184,7 @@ attributes:
     owner: BufferComposition
     domain_of:
     - BufferComposition
+    - XRayPreparation
     range: string
     multivalued: true
   description:

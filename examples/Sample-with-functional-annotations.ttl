@@ -1,0 +1,219 @@
+@base <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
+    dcterms:title "Human ATP synthase F1 complex with functional annotations" ;
+    lambdaber:biophysical_properties [ a ns1:BiophysicalProperty ;
+            ns1:error "0.5"^^xsd:float ;
+            ns1:experimental_method "circular_dichroism" ;
+            ns1:ionic_strength "0.15"^^xsd:float ;
+            ns1:ph "7.4"^^xsd:float ;
+            ns1:property_type "melting_temperature" ;
+            ns1:unit "K" ;
+            ns1:value "338.2"^^xsd:float ],
+        [ a ns1:BiophysicalProperty ;
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions "pH 7.4, 25°C, 150 mM NaCl" ;
+            ns1:property_type "stability" ;
+            ns1:unit "kcal/mol" ;
+            ns1:value "65.5"^^xsd:float ] ;
+    lambdaber:concentration "10.0"^^xsd:float ;
+    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:conformational_ensemble lambdaber:confens-001 ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "GO:0005524" ;
+            ns1:database_name "go" ;
+            ns1:database_url "http://amigo.geneontology.org/amigo/term/GO:0005524"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "6ZPO" ;
+            ns1:database_name "pdb" ;
+            ns1:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00006" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P25705" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P25705"^^xsd:anyURI ] ;
+    lambdaber:description "ATP synthase F1 complex with detailed functional site and structural annotations from PDBe-KB" ;
+    lambdaber:evolutionary_conservation lambdaber:evol-001 ;
+    lambdaber:functional_sites lambdaber:funcsite-001,
+        lambdaber:funcsite-002 ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:description "Human ATP synthase F1 complex - catalytic core" ;
+            lambdaber:sequences "MAAAKFERQHMDSSTE...KVLDSGAPIKIPVGPETLGRIMNVIGEPIDERGPIKTKQFAPIH",
+                "MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA" ] ;
+    lambdaber:molecular_weight "380.5"^^xsd:float ;
+    lambdaber:mutation_effects lambdaber:mut-001 ;
+    lambdaber:protein_interactions lambdaber:ppi-001 ;
+    lambdaber:ptm_annotations lambdaber:ptm-001 ;
+    lambdaber:sample_code "ALS-FUNC-001" ;
+    lambdaber:sample_type "complex" ;
+    lambdaber:structural_features lambdaber:structfeat-001,
+        lambdaber:structfeat-002 .
+
+lambdaber:confens-001 a ns1:ConformationalEnsemble ;
+    ns1:clustering_method "RMSD-based hierarchical clustering" ;
+    ns1:conformational_states [ a ns1:ConformationalState ;
+            ns1:characteristic_features "ATP binding site exposed",
+                "Wide nucleotide channel" ;
+            ns1:free_energy "0.0"^^xsd:float ;
+            ns1:pdb_entries "6ZPN",
+                "6ZPO" ;
+            ns1:population "0.3"^^xsd:float ;
+            ns1:state_id "state_1" ;
+            ns1:state_name "open" ],
+        [ a ns1:ConformationalState ;
+            ns1:characteristic_features "ADP + Pi bound",
+                "Transitioning conformation" ;
+            ns1:free_energy "0.8"^^xsd:float ;
+            ns1:pdb_entries "6ZPR" ;
+            ns1:population "0.2"^^xsd:float ;
+            ns1:rmsd_from_reference "1.8"^^xsd:float ;
+            ns1:state_id "state_3" ;
+            ns1:state_name "intermediate" ],
+        [ a ns1:ConformationalState ;
+            ns1:characteristic_features "ATP bound",
+                "Catalytic residues positioned" ;
+            ns1:free_energy "-1.2"^^xsd:float ;
+            ns1:pdb_entries "6ZPP",
+                "6ZPQ" ;
+            ns1:population "0.5"^^xsd:float ;
+            ns1:rmsd_from_reference "3.4"^^xsd:float ;
+            ns1:state_id "state_2" ;
+            ns1:state_name "closed" ] ;
+    ns1:protein_id "P25705" ;
+    ns1:rmsd_threshold "2.5"^^xsd:float ;
+    ns1:transition_pathways "Open <-> Intermediate <-> Closed conformations during catalytic cycle" .
+
+lambdaber:evol-001 a ns1:EvolutionaryConservation ;
+    ns1:alignment_depth 500 ;
+    ns1:conservation_method "ConSurf" ;
+    ns1:conservation_score "0.92"^^xsd:float ;
+    ns1:conserved_residues "168",
+        "169",
+        "170",
+        "188",
+        "256",
+        "340",
+        "341" ;
+    ns1:protein_id "P25705" ;
+    ns1:source_database "pdbe_kb" ;
+    ns1:taxonomic_range "Eukaryota" ;
+    ns1:variable_residues "123",
+        "234",
+        "45",
+        "67" .
+
+lambdaber:funcsite-001 a ns1:FunctionalSite ;
+    ns1:confidence_score "0.95"^^xsd:float ;
+    ns1:conservation_score "0.98"^^xsd:float ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "Essential for ATP synthesis/hydrolysis" ;
+    ns1:go_terms "GO:0005524"^^xsd:anyURI,
+        "GO:0046933"^^xsd:anyURI ;
+    ns1:protein_id "P25705" ;
+    ns1:residues "168",
+        "169",
+        "170",
+        "340",
+        "341",
+        "373" ;
+    ns1:site_name "ATP binding site" ;
+    ns1:site_type "nucleotide_binding" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:funcsite-002 a ns1:FunctionalSite ;
+    ns1:confidence_score "1.0"^^xsd:float ;
+    ns1:conservation_score "1.0"^^xsd:float ;
+    ns1:ec_number "7.1.2.2" ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_importance "ATP synthesis active site" ;
+    ns1:ligand_interactions [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.015"^^xsd:float ;
+            ns1:binding_affinity_type "km" ;
+            ns1:binding_affinity_unit "millimolar" ;
+            ns1:binding_site_residues "188",
+                "189",
+                "256" ;
+            ns1:interaction_type "hydrogen_bond" ;
+            ns1:is_cofactor false ;
+            ns1:ligand_id "CHEBI:30616" ;
+            ns1:ligand_name "ATP" ;
+            ns1:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" ] ;
+    ns1:protein_id "P06576" ;
+    ns1:residues "188",
+        "189",
+        "256",
+        "337" ;
+    ns1:site_name "Catalytic site" ;
+    ns1:site_type "catalytic_site" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:mut-001 a ns1:MutationEffect ;
+    ns1:delta_delta_g "0.2"^^xsd:float ;
+    ns1:effect_on_function "partial_loss" ;
+    ns1:effect_on_stability "neutral" ;
+    ns1:evidence_type "predicted" ;
+    ns1:functional_impact_description "Reduced ATP synthesis rate by 40%" ;
+    ns1:mutation "R341K" ;
+    ns1:mutation_type "missense" ;
+    ns1:protein_id "P25705" ;
+    ns1:source_database "missense3d" .
+
+lambdaber:ppi-001 a ns1:ProteinProteinInteraction ;
+    ns1:binding_energy "-12.5"^^xsd:float ;
+    ns1:biological_assembly true ;
+    ns1:complex_stability "stable" ;
+    ns1:interaction_evidence "experimental",
+        "physical" ;
+    ns1:interface_area "856.3"^^xsd:float ;
+    ns1:interface_residues "234",
+        "235",
+        "236",
+        "301",
+        "302" ;
+    ns1:partner_chain_id "B" ;
+    ns1:partner_interface_residues "112",
+        "113",
+        "178",
+        "179" ;
+    ns1:partner_protein_id "P06576" ;
+    ns1:protein_id "P25705" ;
+    ns1:source_database "pdbe_kb" .
+
+lambdaber:ptm-001 a ns1:PostTranslationalModification ;
+    ns1:enzyme "PKA" ;
+    ns1:evidence_type "experimental" ;
+    ns1:functional_effect "Regulates ATP synthesis activity" ;
+    ns1:mass_shift "79.966"^^xsd:float ;
+    ns1:modification_group "phosphate" ;
+    ns1:modification_type "phosphorylation" ;
+    ns1:modified_residue "S65" ;
+    ns1:protein_id "P25705" ;
+    ns1:regulatory_role "Activity regulation in response to cellular energy state" ;
+    ns1:source_database "uniprot" .
+
+lambdaber:structfeat-001 a ns1:StructuralFeature ;
+    ns1:backbone_flexibility "25.3"^^xsd:float ;
+    ns1:conformational_state "active" ;
+    ns1:feature_type "alpha_helix" ;
+    ns1:protein_id "P25705" ;
+    ns1:residue_range "120-145" ;
+    ns1:secondary_structure "helix" ;
+    ns1:solvent_accessibility "0.15"^^xsd:float ;
+    ns1:source_database "pdbe" .
+
+lambdaber:structfeat-002 a ns1:StructuralFeature ;
+    ns1:domain_assignment "Pfam" ;
+    ns1:domain_id "PF00006" ;
+    ns1:feature_type "domain" ;
+    ns1:protein_id "P25705" ;
+    ns1:residue_range "100-380" ;
+    ns1:source_database "pfam" ;
+    ns1:structural_motif "Walker motif" .
+
