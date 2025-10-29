@@ -34,3 +34,8 @@ gendoc:
 [group('schema development')]
 serve:
   {{RUN}} mkdocs serve
+
+# Deploy documentation to GitHub Pages
+[group('schema development')]
+deploy:
+  {{RUN}} mkdocs gh-deploy
