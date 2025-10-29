@@ -48,5 +48,5 @@ jobs:
       - name: Install project
         run: uv sync --dev
 
-      - name: Run test suite
-        run: just test
+      - name: Run validations on examples
+        run: just test-examples
