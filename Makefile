@@ -15,6 +15,5 @@ gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
 	$(RUN) gen-doc ${GEN_DARGS} -d $(DOCDIR) $(SCHEMA)
 
-
 serve:
 	$(RUN) mkdocs serve
