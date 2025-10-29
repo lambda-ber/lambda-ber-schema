@@ -2,18 +2,27 @@
 site_name: "lambda-ber-schema"
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      primary: amber
+      accent: green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: amber
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
   features:
     - content.tabs.link
 plugins:
   - search
   - mermaid2
 nav:
-  # - Home: home.md
   - Index: index.md
-  - About: about.md
   - Background:
     - Overview: background/index.md
     - NEXUS: background/nexus.md
@@ -25,7 +34,10 @@ nav:
     - REMBI: background/rembi-alignment.md
     - Data Lakehouse Strategy: background/lambda-ber-schema-data-lakehouse-strategy.md
     - Integration with BER: background/ber-doe-facilities.md
-    - Vision: background/vision.md
     - Data Quality Challenges: background/data-quality-challenges.md
-site_url: https://cmungall.github.io/lambda-ber-schema
-repo_url: https://github.com/cmungall/lambda-ber-schema
+  - Examples:
+    - Simple Scattering GluRS Dataset: examples/simplescattering-glurs-analysis.md
+  - Technical:
+    - Mapping to OME: technical/ome-mapping.md
+site_url: https://lambda-ber.github.io/lambda-ber-schema
+repo_url: https://github.com/lambda-ber/lambda-ber-schema
