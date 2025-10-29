@@ -81,15 +81,6 @@ description: |
 
 prefixes:
   lambdaber: https://w3id.org/lambda-ber-schema/
-  dataset: https://w3id.org/lambda-ber-schema/dataset/
-  study: https://w3id.org/lambda-ber-schema/study/
-  sample: https://w3id.org/lambda-ber-schema/sample/
-  prep: https://w3id.org/lambda-ber-schema/sample_preparation/
-  wf: https://w3id.org/lambda-ber-schema/workflow_run/
-  df: https://w3id.org/lambda-ber-schema/data_file/
-  img: https://w3id.org/lambda-ber-schema/image/
-  instrument: https://w3id.org/lambda-ber-schema/instrument/
-  experiment: https://w3id.org/lambda-ber-schema/experiment_run/
   linkml: https://w3id.org/linkml/
   dcterms: http://purl.org/dc/terms/
   skos: http://www.w3.org/2004/02/skos/core#
