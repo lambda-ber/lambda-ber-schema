@@ -1,0 +1,2017 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/technical/ome-mapping/">
+      
+      
+        <link rel="prev" href="../../examples/simplescattering-glurs-analysis/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Mapping to OME - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#technical-mapping-ome-to-lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mapping to OME
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-entity-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Entity Mappings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Entity Mappings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Entities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-image-lambda-ber-schema-image-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Image → lambda-ber-schema Image Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instrument-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrument Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instrument Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-instrument-lambda-ber-schema-instrument" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Instrument → lambda-ber-schema Instrument
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-and-experiment-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Experiment Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample and Experiment Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-experiment-lambda-ber-schema-studyexperimentrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Experiment → lambda-ber-schema Study/ExperimentRun
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Mappings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Mappings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimensional-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Dimensional Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Dimensional Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-5d-data-xyzct-lambda-ber-schema-multi-frame-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME 5D Data (XYZCT) → lambda-ber-schema Multi-Frame Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roi-regions-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROI (Regions of Interest)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ROI (Regions of Interest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-roi-lambda-ber-schema-annotation-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME ROI → lambda-ber-schema Annotation Extension
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Conversions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format Conversions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-tiff-lambda-ber-schema-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME-TIFF ↔ lambda-ber-schema Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bio-formats-reader-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bio-Formats Reader Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-harmonization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Harmonization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Harmonization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-fields-mapping-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Fields Mapping Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-biology-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Biology Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creating-ome-compatible-lambda-ber-schema-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creating OME-Compatible lambda-ber-schema Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-omero-integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OMERO Integration Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Validation Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-correlative-light-and-electron-microscopy-clem" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Correlative Light and Electron Microscopy (CLEM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-high-content-screening-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High-Content Screening Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposed-schema-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Schema Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-entity-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Entity Mappings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Entity Mappings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Entities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-image-lambda-ber-schema-image-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Image → lambda-ber-schema Image Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instrument-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrument Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instrument Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-instrument-lambda-ber-schema-instrument" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Instrument → lambda-ber-schema Instrument
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-and-experiment-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Experiment Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample and Experiment Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-experiment-lambda-ber-schema-studyexperimentrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME Experiment → lambda-ber-schema Study/ExperimentRun
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Mappings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Mappings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimensional-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Dimensional Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Dimensional Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-5d-data-xyzct-lambda-ber-schema-multi-frame-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME 5D Data (XYZCT) → lambda-ber-schema Multi-Frame Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roi-regions-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROI (Regions of Interest)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ROI (Regions of Interest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-roi-lambda-ber-schema-annotation-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME ROI → lambda-ber-schema Annotation Extension
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Conversions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format Conversions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ome-tiff-lambda-ber-schema-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OME-TIFF ↔ lambda-ber-schema Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bio-formats-reader-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bio-Formats Reader Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-harmonization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Harmonization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Harmonization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-fields-mapping-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Fields Mapping Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-biology-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Biology Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creating-ome-compatible-lambda-ber-schema-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creating OME-Compatible lambda-ber-schema Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-omero-integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OMERO Integration Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Validation Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-correlative-light-and-electron-microscopy-clem" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Correlative Light and Electron Microscopy (CLEM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-high-content-screening-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High-Content Screening Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposed-schema-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Schema Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="technical-mapping-ome-to-lambda-ber-schema">Technical Mapping: OME to lambda-ber-schema</h1>
+<h2 id="overview">Overview</h2>
+<p>This document provides detailed technical mappings between OME (Open Microscopy Environment) data model elements and corresponding lambda-ber-schema schema components, with code examples and implementation guidance.</p>
+<h2 id="core-entity-mappings">Core Entity Mappings</h2>
+<h3 id="image-entities">Image Entities</h3>
+<h4 id="ome-image-lambda-ber-schema-image-classes">OME Image → lambda-ber-schema Image Classes</h4>
+<p><strong>OME XML:</strong></p>
+<pre><code class="language-xml">&lt;Image ID=&quot;Image:0&quot; Name=&quot;example.tif&quot;&gt;
+  &lt;AcquisitionDate&gt;2024-01-15T10:30:00&lt;/AcquisitionDate&gt;
+  &lt;Description&gt;Sample fluorescence image&lt;/Description&gt;
+  &lt;Pixels ID=&quot;Pixels:0&quot; Type=&quot;uint16&quot; SizeX=&quot;1024&quot; SizeY=&quot;1024&quot; SizeZ=&quot;1&quot; SizeC=&quot;2&quot; SizeT=&quot;1&quot;&gt;
+    &lt;Channel ID=&quot;Channel:0:0&quot; Name=&quot;GFP&quot; ExcitationWavelength=&quot;488&quot; EmissionWavelength=&quot;520&quot;/&gt;
+    &lt;Channel ID=&quot;Channel:0:1&quot; Name=&quot;DAPI&quot; ExcitationWavelength=&quot;358&quot; EmissionWavelength=&quot;461&quot;/&gt;
+  &lt;/Pixels&gt;
+&lt;/Image&gt;
+</code></pre>
+<p><strong>lambda-ber-schema YAML:</strong></p>
+<pre><code class="language-yaml">images:
+  - id: img:fluor-001
+    _type: FluorescenceImage
+    title: &quot;Sample fluorescence image&quot;
+    file_name: &quot;example.tif&quot;
+    acquisition_date: &quot;2024-01-15T10:30:00&quot;
+    dimensions_x: 1024
+    dimensions_y: 1024
+    pixel_type: uint16
+    excitation_wavelength: 488  # Primary channel
+    emission_wavelength: 520
+    fluorophore: &quot;GFP&quot;
+    channels:  # Extension for multi-channel
+      - name: &quot;GFP&quot;
+        excitation: 488
+        emission: 520
+      - name: &quot;DAPI&quot;
+        excitation: 358
+        emission: 461
+</code></pre>
+<h3 id="instrument-specifications">Instrument Specifications</h3>
+<h4 id="ome-instrument-lambda-ber-schema-instrument">OME Instrument → lambda-ber-schema Instrument</h4>
+<p><strong>OME XML:</strong></p>
+<pre><code class="language-xml">&lt;Instrument ID=&quot;Instrument:0&quot;&gt;
+  &lt;Microscope Type=&quot;Inverted&quot; Model=&quot;Nikon Ti-E&quot;/&gt;
+  &lt;Objective ID=&quot;Objective:0&quot; Model=&quot;Plan Apo&quot; NominalMagnification=&quot;60&quot; LensNA=&quot;1.4&quot;/&gt;
+  &lt;Detector ID=&quot;Detector:0&quot; Type=&quot;sCMOS&quot; Model=&quot;Hamamatsu ORCA-Flash4.0&quot;/&gt;
+  &lt;LightSource ID=&quot;LightSource:0&quot; Type=&quot;Laser&quot; Model=&quot;Coherent Obis&quot; Power=&quot;100&quot; PowerUnit=&quot;mW&quot;&gt;
+    &lt;Laser Wavelength=&quot;488&quot;/&gt;
+  &lt;/LightSource&gt;
+&lt;/Instrument&gt;
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent (extending for compatibility):</strong></p>
+<pre><code class="language-yaml">instruments:
+  - id: instrument:microscope-001
+    _type: OpticalMicroscope  # New subclass for OME compatibility
+    instrument_code: &quot;Nikon-Ti-E-001&quot;
+    manufacturer: &quot;Nikon&quot;
+    model: &quot;Ti-E&quot;
+    microscope_type: &quot;Inverted&quot;
+    objective:
+      model: &quot;Plan Apo&quot;
+      magnification: 60
+      numerical_aperture: 1.4
+    detector_type: cmos  # Maps to OME sCMOS
+    detector_model: &quot;Hamamatsu ORCA-Flash4.0&quot;
+    light_source:
+      type: &quot;Laser&quot;
+      model: &quot;Coherent Obis&quot;
+      power: 100
+      power_unit: &quot;mW&quot;
+      wavelength: 488
+</code></pre>
+<h3 id="sample-and-experiment-context">Sample and Experiment Context</h3>
+<h4 id="ome-experiment-lambda-ber-schema-studyexperimentrun">OME Experiment → lambda-ber-schema Study/ExperimentRun</h4>
+<p><strong>OME XML:</strong></p>
+<pre><code class="language-xml">&lt;Experiment ID=&quot;Experiment:0&quot; Type=&quot;FluorescenceLifetime&quot;&gt;
+  &lt;Description&gt;Time-resolved fluorescence study&lt;/Description&gt;
+  &lt;Experimenter ID=&quot;Experimenter:0&quot; FirstName=&quot;Jane&quot; LastName=&quot;Doe&quot; Email=&quot;jane.doe@example.org&quot;/&gt;
+&lt;/Experiment&gt;
+</code></pre>
+<p><strong>lambda-ber-schema YAML:</strong></p>
+<pre><code class="language-yaml">studies:
+  - id: study:fluorescence-001
+    title: &quot;Time-resolved fluorescence study&quot;
+    principal_investigator: &quot;Jane Doe&quot;
+    contact_email: &quot;jane.doe@example.org&quot;
+
+    experiment_runs:
+      - id: exp:fluor-lifetime-001
+        experiment_code: &quot;FLIM-2024-001&quot;
+        technique: fluorescence_lifetime  # Extended enum
+        experimenter: &quot;Jane Doe&quot;
+        experimental_conditions:
+          temperature: 37
+          temperature_unit: celsius
+</code></pre>
+<h2 id="advanced-mappings">Advanced Mappings</h2>
+<h3 id="multi-dimensional-data">Multi-Dimensional Data</h3>
+<h4 id="ome-5d-data-xyzct-lambda-ber-schema-multi-frame-images">OME 5D Data (XYZCT) → lambda-ber-schema Multi-Frame Images</h4>
+<p><strong>OME Representation:</strong></p>
+<pre><code class="language-xml">&lt;Pixels SizeX=&quot;512&quot; SizeY=&quot;512&quot; SizeZ=&quot;30&quot; SizeC=&quot;3&quot; SizeT=&quot;100&quot; Type=&quot;uint16&quot;&gt;
+  &lt;Plane TheZ=&quot;0&quot; TheC=&quot;0&quot; TheT=&quot;0&quot; ExposureTime=&quot;100&quot; ExposureTimeUnit=&quot;ms&quot;/&gt;
+  &lt;!-- ... more planes ... --&gt;
+&lt;/Pixels&gt;
+</code></pre>
+<p><strong>lambda-ber-schema Extension:</strong></p>
+<pre><code class="language-yaml">images:
+  - id: img:timelapse-001
+    _type: Image3D  # Or new Image4D/Image5D classes
+    dimensions_x: 512
+    dimensions_y: 512
+    dimensions_z: 30
+    dimensions_t: 100  # Time points
+    dimensions_c: 3    # Channels
+    pixel_type: uint16
+    temporal_resolution: 0.1  # seconds between frames
+    z_step: 0.5  # micrometers
+    channels:
+      - {name: &quot;GFP&quot;, wavelength: 520}
+      - {name: &quot;RFP&quot;, wavelength: 580}
+      - {name: &quot;DAPI&quot;, wavelength: 461}
+</code></pre>
+<h3 id="roi-regions-of-interest">ROI (Regions of Interest)</h3>
+<h4 id="ome-roi-lambda-ber-schema-annotation-extension">OME ROI → lambda-ber-schema Annotation Extension</h4>
+<p><strong>OME XML:</strong></p>
+<pre><code class="language-xml">&lt;ROI ID=&quot;ROI:0&quot;&gt;
+  &lt;Union&gt;
+    &lt;Shape ID=&quot;Shape:0&quot; Type=&quot;Rectangle&quot; X=&quot;100&quot; Y=&quot;100&quot; Width=&quot;50&quot; Height=&quot;50&quot;/&gt;
+    &lt;Shape ID=&quot;Shape:1&quot; Type=&quot;Polygon&quot; Points=&quot;200,200 250,200 225,250&quot;/&gt;
+  &lt;/Union&gt;
+&lt;/ROI&gt;
+</code></pre>
+<p><strong>lambda-ber-schema Proposed Extension:</strong></p>
+<pre><code class="language-yaml">annotations:  # New field for Study or Image
+  - id: roi:001
+    type: rectangle
+    coordinates: {x: 100, y: 100, width: 50, height: 50}
+    label: &quot;Cell nucleus&quot;
+  - id: roi:002
+    type: polygon
+    points: [[200,200], [250,200], [225,250]]
+    label: &quot;Mitochondria&quot;
+</code></pre>
+<h2 id="format-conversions">Format Conversions</h2>
+<h3 id="ome-tiff-lambda-ber-schema-integration">OME-TIFF ↔ lambda-ber-schema Integration</h3>
+<pre><code class="language-python"># Pseudo-code for conversion
+from bioformats import load_image_metadata
+from lambda-ber-schema import FluorescenceImage
+
+def ome_to_lambda-ber-schema(ome_tiff_path):
+    &quot;&quot;&quot;Convert OME-TIFF to lambda-ber-schema data model&quot;&quot;&quot;
+
+    # Read OME-XML from TIFF header
+    ome_xml = load_image_metadata(ome_tiff_path)
+
+    # Create lambda-ber-schema image
+    image = FluorescenceImage(
+        id=f&quot;img:{ome_xml.image_id}&quot;,
+        file_name=ome_tiff_path,
+        acquisition_date=ome_xml.acquisition_date,
+        dimensions_x=ome_xml.size_x,
+        dimensions_y=ome_xml.size_y,
+        pixel_type=ome_xml.pixel_type
+    )
+
+    # Map channels
+    if ome_xml.channels:
+        primary = ome_xml.channels[0]
+        image.excitation_wavelength = primary.excitation
+        image.emission_wavelength = primary.emission
+        image.fluorophore = primary.name
+
+    return image
+</code></pre>
+<h3 id="bio-formats-reader-integration">Bio-Formats Reader Integration</h3>
+<pre><code class="language-python">def create_bioformats_reader():
+    &quot;&quot;&quot;Create Bio-Formats reader for lambda-ber-schema images&quot;&quot;&quot;
+
+    class lambda-ber-schemaReader:
+        def read_fluorescence_image(self, lambda-ber-schema_image):
+            # Convert to OME model
+            ome_image = {
+                'ID': lambda-ber-schema_image.id,
+                'Name': lambda-ber-schema_image.file_name,
+                'AcquisitionDate': lambda-ber-schema_image.acquisition_date,
+                'Pixels': {
+                    'SizeX': lambda-ber-schema_image.dimensions_x,
+                    'SizeY': lambda-ber-schema_image.dimensions_y,
+                    'Channels': [{
+                        'ExcitationWavelength': lambda-ber-schema_image.excitation_wavelength,
+                        'EmissionWavelength': lambda-ber-schema_image.emission_wavelength,
+                        'Name': lambda-ber-schema_image.fluorophore
+                    }]
+                }
+            }
+            return ome_image
+</code></pre>
+<h2 id="metadata-harmonization">Metadata Harmonization</h2>
+<h3 id="common-fields-mapping-table">Common Fields Mapping Table</h3>
+<table>
+<thead>
+<tr>
+<th>OME Path</th>
+<th>lambda-ber-schema Path</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image/@ID</td>
+<td>Image/id</td>
+<td>string</td>
+<td>Identifier</td>
+</tr>
+<tr>
+<td>Image/@Name</td>
+<td>Image/title</td>
+<td>string</td>
+<td>Human-readable name</td>
+</tr>
+<tr>
+<td>Image/AcquisitionDate</td>
+<td>Image/acquisition_date</td>
+<td>datetime</td>
+<td>ISO 8601 format</td>
+</tr>
+<tr>
+<td>Pixels/@SizeX</td>
+<td>Image/dimensions_x</td>
+<td>integer</td>
+<td>Width in pixels</td>
+</tr>
+<tr>
+<td>Pixels/@SizeY</td>
+<td>Image/dimensions_y</td>
+<td>integer</td>
+<td>Height in pixels</td>
+</tr>
+<tr>
+<td>Pixels/@SizeZ</td>
+<td>Image3D/dimensions_z</td>
+<td>integer</td>
+<td>Depth/slices</td>
+</tr>
+<tr>
+<td>Pixels/@Type</td>
+<td>Image/pixel_type</td>
+<td>enum</td>
+<td>uint8/uint16/float32</td>
+</tr>
+<tr>
+<td>Channel/@ExcitationWavelength</td>
+<td>FluorescenceImage/excitation_wavelength</td>
+<td>float</td>
+<td>Nanometers</td>
+</tr>
+<tr>
+<td>Channel/@EmissionWavelength</td>
+<td>FluorescenceImage/emission_wavelength</td>
+<td>float</td>
+<td>Nanometers</td>
+</tr>
+<tr>
+<td>Objective/@NominalMagnification</td>
+<td>OpticalImage/magnification</td>
+<td>float</td>
+<td>Magnification factor</td>
+</tr>
+<tr>
+<td>Detector/@Type</td>
+<td>Instrument/detector_type</td>
+<td>enum</td>
+<td>CCD/CMOS/PMT</td>
+</tr>
+<tr>
+<td>Plane/@ExposureTime</td>
+<td>ExperimentalConditions/exposure_time</td>
+<td>float</td>
+<td>With unit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="structural-biology-extensions">Structural Biology Extensions</h3>
+<p>lambda-ber-schema extends beyond OME for structural biology:</p>
+<table>
+<thead>
+<tr>
+<th>lambda-ber-schema Path</th>
+<th>Purpose</th>
+<th>No OME Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CryoEMInstrument/voltage</td>
+<td>Electron beam voltage</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Image2D/defocus</td>
+<td>CTF correction parameter</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>SAXSInstrument/q_range_*</td>
+<td>Scattering vector range</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>WorkflowRun/processing_level</td>
+<td>Data processing stage</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>MolecularComposition/sequences</td>
+<td>Protein/DNA sequences</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Sample/sample_code</td>
+<td>Laboratory identifier</td>
+<td>Partial (via annotations)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-guidelines">Implementation Guidelines</h2>
+<h3 id="1-creating-ome-compatible-lambda-ber-schema-data">1. Creating OME-Compatible lambda-ber-schema Data</h3>
+<pre><code class="language-yaml"># Template for OME-compatible fluorescence microscopy in lambda-ber-schema
+studies:
+  - id: study:ome-compatible
+    samples:
+      - id: sample:cells-001
+        sample_code: &quot;HeLa-GFP-001&quot;
+        sample_type: complex  # Cell line
+        molecular_composition:
+          ligands: [&quot;GFP-tagged protein X&quot;]
+
+    images:
+      - id: img:fluor-001
+        _type: FluorescenceImage
+        file_name: &quot;hela_gfp_timelapse.ome.tiff&quot;  # OME-TIFF format
+        acquisition_date: &quot;2024-01-15T10:30:00Z&quot;
+        dimensions_x: 2048
+        dimensions_y: 2048
+        pixel_type: uint16
+        pixel_size: 0.065  # micrometers, maps to OME PhysicalSizeX
+        excitation_wavelength: 488
+        emission_wavelength: 520
+        fluorophore: &quot;eGFP&quot;
+        exposure_time: 100  # milliseconds
+</code></pre>
+<h3 id="2-omero-integration-strategy">2. OMERO Integration Strategy</h3>
+<pre><code class="language-python"># Upload lambda-ber-schema images to OMERO
+def upload_to_omero(lambda-ber-schema_study):
+    import omero.gateway
+
+    conn = omero.gateway.BlitzGateway(...)
+
+    for image in lambda-ber-schema_study.images:
+        if isinstance(image, FluorescenceImage):
+            # Direct upload for OME-compatible types
+            omero_image = conn.createImageFromFile(image.file_path)
+
+            # Add lambda-ber-schema-specific metadata as key-value pairs
+            map_ann = omero.gateway.MapAnnotationWrapper()
+            map_ann.setValue([
+                [&quot;lambda-ber-schema:study_id&quot;, lambda-ber-schema_study.id],
+                [&quot;lambda-ber-schema:sample_code&quot;, image.sample.sample_code],
+                [&quot;lambda-ber-schema:technique&quot;, &quot;fluorescence&quot;]
+            ])
+            omero_image.linkAnnotation(map_ann)
+</code></pre>
+<h3 id="3-validation-rules">3. Validation Rules</h3>
+<pre><code class="language-python"># Ensure OME compatibility
+def validate_ome_compatibility(image):
+    &quot;&quot;&quot;Check if lambda-ber-schema image can be exported to OME&quot;&quot;&quot;
+
+    compatible = True
+    issues = []
+
+    # Required OME fields
+    if not image.dimensions_x or not image.dimensions_y:
+        compatible = False
+        issues.append(&quot;Missing pixel dimensions&quot;)
+
+    if isinstance(image, FluorescenceImage):
+        if not image.excitation_wavelength:
+            issues.append(&quot;Missing excitation wavelength for fluorescence&quot;)
+
+    # Pixel type must be OME-compatible
+    ome_types = ['uint8', 'uint16', 'uint32', 'float32', 'float64']
+    if image.pixel_type not in ome_types:
+        compatible = False
+        issues.append(f&quot;Pixel type {image.pixel_type} not OME-compatible&quot;)
+
+    return compatible, issues
+</code></pre>
+<h2 id="use-cases">Use Cases</h2>
+<h3 id="1-correlative-light-and-electron-microscopy-clem">1. Correlative Light and Electron Microscopy (CLEM)</h3>
+<pre><code class="language-yaml">studies:
+  - id: study:clem-001
+    title: &quot;Correlative fluorescence and cryo-EM study&quot;
+
+    samples:
+      - id: sample:protein-complex
+        sample_code: &quot;RuBisCO-AF488&quot;
+        sample_type: complex
+
+    images:
+      # Fluorescence (OME-compatible)
+      - id: img:fluor-rubisco
+        _type: FluorescenceImage
+        file_name: &quot;rubisco_af488.ome.tiff&quot;
+        excitation_wavelength: 488
+        emission_wavelength: 520
+        fluorophore: &quot;Alexa Fluor 488&quot;
+
+      # Cryo-EM (lambda-ber-schema-specific)
+      - id: img:cryoem-rubisco
+        _type: Image2D
+        file_name: &quot;rubisco_micrograph.mrc&quot;
+        defocus: -2.5
+        pixel_size: 1.06
+
+    # Cross-reference between modalities
+    correlations:
+      - fluorescence_image: img:fluor-rubisco
+        cryoem_image: img:cryoem-rubisco
+        registration_matrix: [[1,0,0],[0,1,0],[0,0,1]]
+</code></pre>
+<h3 id="2-high-content-screening-integration">2. High-Content Screening Integration</h3>
+<pre><code class="language-yaml"># OME-style plate/well structure in lambda-ber-schema
+studies:
+  - id: study:hcs-001
+    title: &quot;High-content drug screening&quot;
+
+    plates:  # Extension for OME Plate/Well model
+      - id: plate:001
+        rows: 8
+        columns: 12
+        wells:
+          - id: well:A01
+            sample_id: sample:compound-001
+            images: [img:A01-t00, img:A01-t01, ...]
+</code></pre>
+<h2 id="future-development">Future Development</h2>
+<h3 id="proposed-schema-extensions">Proposed Schema Extensions</h3>
+<ol>
+<li><strong>Add OME-specific image subclass:</strong></li>
+</ol>
+<pre><code class="language-yaml">classes:
+  OMEImage:
+    is_a: Image
+    description: &quot;OME-compatible microscopy image&quot;
+    attributes:
+      ome_xml: string  # Embedded OME-XML metadata
+      bio_formats_version: string
+</code></pre>
+<ol>
+<li><strong>Channel collection for multi-channel imaging:</strong></li>
+</ol>
+<pre><code class="language-yaml">attributes:
+  channels:
+    range: Channel
+    multivalued: true
+    description: &quot;Multiple acquisition channels&quot;
+
+classes:
+  Channel:
+    attributes:
+      name: string
+      excitation_wavelength: float
+      emission_wavelength: float
+      exposure_time: float
+</code></pre>
+<ol>
+<li><strong>Time series support:</strong></li>
+</ol>
+<pre><code class="language-yaml">attributes:
+  time_points:
+    range: TimePoint
+    multivalued: true
+
+classes:
+  TimePoint:
+    attributes:
+      index: integer
+      timestamp: datetime
+      delta_t: float  # Seconds from start
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>This technical mapping demonstrates that lambda-ber-schema can achieve strong interoperability with OME while extending the model for structural biology needs. Key implementation priorities include:</p>
+<ol>
+<li>Ensuring base compatibility for shared concepts</li>
+<li>Creating translation layers for format conversion</li>
+<li>Developing validation tools for OME compliance</li>
+<li>Building OMERO integration adapters</li>
+<li>Contributing structural biology extensions back to OME community</li>
+</ol>
+<p>The alignment enables researchers to use familiar OME tools while benefiting from lambda-ber-schema's structural biology capabilities.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

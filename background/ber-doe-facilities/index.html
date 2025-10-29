@@ -1,0 +1,3015 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/ber-doe-facilities/">
+      
+      
+        <link rel="prev" href="../lambda-ber-schema-data-lakehouse-strategy/">
+      
+      
+        <link rel="next" href="../data-quality-challenges/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Integration with BER - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ber-doe-user-facilities-alignment-with-lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integration with BER
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-of-ber-structural-biology-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview of BER Structural Biology Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Overview of BER Structural Biology Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-mission-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Mission and Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-facility-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Facility Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-major-ber-facilities-and-their-lambda-ber-schema-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Major BER Facilities and Their lambda-ber-schema Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Major BER Facilities and Their lambda-ber-schema Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-advanced-light-source-als-lawrence-berkeley-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Advanced Light Source (ALS) - Lawrence Berkeley National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Advanced Light Source (ALS) - Lawrence Berkeley National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#berkeley-synchrotron-infrared-structural-biology-bsisb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Berkeley Synchrotron Infrared Structural Biology (BSISB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#national-center-for-x-ray-tomography-ncxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      National Center for X-ray Tomography (NCXT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structurally-integrated-biology-for-life-sciences-sibyls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structurally Integrated Biology for Life Sciences (SIBYLS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-advanced-photon-source-aps-argonne-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Advanced Photon Source (APS) - Argonne National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Advanced Photon Source (APS) - Argonne National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eberlight-initiative" class="md-nav__link">
+    <span class="md-ellipsis">
+      eBERlight Initiative
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-national-synchrotron-light-source-ii-nsls-ii-brookhaven-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 National Synchrotron Light Source II (NSLS-II) - Brookhaven National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 National Synchrotron Light Source II (NSLS-II) - Brookhaven National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-for-biomolecular-structure-cbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Center for BioMolecular Structure (CBMS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laboratory-for-biomolecular-structure-lbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laboratory for BioMolecular Structure (LBMS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-oak-ridge-national-laboratory-neutron-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Oak Ridge National Laboratory - Neutron Facilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Oak Ridge National Laboratory - Neutron Facilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-for-structural-molecular-biology-csmb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Center for Structural Molecular Biology (CSMB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-slac-national-accelerator-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 SLAC National Accelerator Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 SLAC National Accelerator Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stanford-slac-cryo-em-center-s2c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stanford-SLAC Cryo-EM Center (S2C2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-molecular-biology-smb-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Molecular Biology (SMB) Resource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-pacific-northwest-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Pacific Northwest National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6 Pacific Northwest National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environmental-molecular-sciences-laboratory-emsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environmental Molecular Sciences Laboratory (EMSL)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cross-facility-data-integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Cross-Facility Data Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Cross-Facility Data Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-unified-experiment-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Unified Experiment Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-workflow-orchestration-across-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Workflow Orchestration Across Facilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-data-harmonization-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Data Harmonization Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-advanced-integration-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Advanced Integration Capabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Advanced Integration Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-real-time-data-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Real-Time Data Streaming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ai-driven-experiment-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 AI-Driven Experiment Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-federated-learning-across-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Federated Learning Across Facilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-quality-control-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Quality Control and Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Quality Control and Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-cross-facility-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Cross-Facility Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-automated-validation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Automated Validation Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-implementation-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Implementation Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Implementation Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phased-deployment-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Phased Deployment Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-technical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Technical Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-governance-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Governance Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-use-cases-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Use Cases and Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Use Cases and Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-climate-change-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Climate Change Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bioenergy-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Bioenergy Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-environmental-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Environmental Remediation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-performance-metrics-and-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Performance Metrics and Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Performance Metrics and Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-data-volume-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Data Volume Projections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-query-performance-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Query Performance Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-challenges-and-mitigation-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Challenges and Mitigation Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Challenges and Mitigation Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-technical-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Technical Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-organizational-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Organizational Challenges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-emerging-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Emerging Technologies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-expanded-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Expanded Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-of-ber-structural-biology-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview of BER Structural Biology Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Overview of BER Structural Biology Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-mission-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Mission and Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-facility-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Facility Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-major-ber-facilities-and-their-lambda-ber-schema-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Major BER Facilities and Their lambda-ber-schema Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Major BER Facilities and Their lambda-ber-schema Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-advanced-light-source-als-lawrence-berkeley-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Advanced Light Source (ALS) - Lawrence Berkeley National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Advanced Light Source (ALS) - Lawrence Berkeley National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#berkeley-synchrotron-infrared-structural-biology-bsisb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Berkeley Synchrotron Infrared Structural Biology (BSISB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#national-center-for-x-ray-tomography-ncxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      National Center for X-ray Tomography (NCXT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structurally-integrated-biology-for-life-sciences-sibyls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structurally Integrated Biology for Life Sciences (SIBYLS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-advanced-photon-source-aps-argonne-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Advanced Photon Source (APS) - Argonne National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Advanced Photon Source (APS) - Argonne National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eberlight-initiative" class="md-nav__link">
+    <span class="md-ellipsis">
+      eBERlight Initiative
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-national-synchrotron-light-source-ii-nsls-ii-brookhaven-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 National Synchrotron Light Source II (NSLS-II) - Brookhaven National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 National Synchrotron Light Source II (NSLS-II) - Brookhaven National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-for-biomolecular-structure-cbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Center for BioMolecular Structure (CBMS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laboratory-for-biomolecular-structure-lbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laboratory for BioMolecular Structure (LBMS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-oak-ridge-national-laboratory-neutron-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Oak Ridge National Laboratory - Neutron Facilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Oak Ridge National Laboratory - Neutron Facilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-for-structural-molecular-biology-csmb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Center for Structural Molecular Biology (CSMB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-slac-national-accelerator-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 SLAC National Accelerator Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 SLAC National Accelerator Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stanford-slac-cryo-em-center-s2c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stanford-SLAC Cryo-EM Center (S2C2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-molecular-biology-smb-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Molecular Biology (SMB) Resource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-pacific-northwest-national-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Pacific Northwest National Laboratory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6 Pacific Northwest National Laboratory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environmental-molecular-sciences-laboratory-emsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environmental Molecular Sciences Laboratory (EMSL)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cross-facility-data-integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Cross-Facility Data Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Cross-Facility Data Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-unified-experiment-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Unified Experiment Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-workflow-orchestration-across-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Workflow Orchestration Across Facilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-data-harmonization-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Data Harmonization Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-advanced-integration-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Advanced Integration Capabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Advanced Integration Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-real-time-data-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Real-Time Data Streaming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ai-driven-experiment-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 AI-Driven Experiment Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-federated-learning-across-facilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Federated Learning Across Facilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-quality-control-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Quality Control and Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Quality Control and Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-cross-facility-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Cross-Facility Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-automated-validation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Automated Validation Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-implementation-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Implementation Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Implementation Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phased-deployment-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Phased Deployment Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-technical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Technical Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-governance-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Governance Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-use-cases-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Use Cases and Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Use Cases and Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-climate-change-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Climate Change Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bioenergy-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Bioenergy Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-environmental-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Environmental Remediation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-performance-metrics-and-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Performance Metrics and Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Performance Metrics and Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-data-volume-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Data Volume Projections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-query-performance-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Query Performance Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-challenges-and-mitigation-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Challenges and Mitigation Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Challenges and Mitigation Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-technical-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Technical Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-organizational-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Organizational Challenges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-emerging-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Emerging Technologies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-expanded-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Expanded Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ber-doe-user-facilities-alignment-with-lambda-ber-schema">BER DOE User Facilities Alignment with lambda-ber-schema</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The U.S. Department of Energy's Biological and Environmental Research (BER) program operates a comprehensive network of structural biology and imaging resources at national user facilities. These resources, spanning synchrotron light sources, neutron facilities, and cryo-electron microscopy centers, generate vast amounts of multi-modal data that require sophisticated data management and integration strategies. lambda-ber-schema provides an ideal schema framework for harmonizing data across these diverse facilities, enabling cross-facility data integration, workflow tracking, and AI-driven discovery in biological and environmental research.</p>
+<p>This document analyzes the alignment between BER DOE user facilities and the lambda-ber-schema schema, demonstrating how lambda-ber-schema can serve as a unifying data model for the entire BER structural biology ecosystem.</p>
+<h2 id="1-overview-of-ber-structural-biology-resources">1. Overview of BER Structural Biology Resources</h2>
+<h3 id="11-mission-and-scope">1.1 Mission and Scope</h3>
+<p>The BER program supports fundamental research and scientific user facilities advancing DOE missions in:
+- Scientific discovery and innovation
+- Energy security and bioeconomy development
+- Environmental responsibility and climate research
+- Understanding biological systems from molecules to ecosystems</p>
+<p>BER supports 10+ specialized structural biology and imaging resources across 6 major DOE national laboratories, providing free access to the scientific community for non-proprietary research.</p>
+<h3 id="12-facility-network">1.2 Facility Network</h3>
+<p>The BER structural biology network encompasses:</p>
+<ul>
+<li><strong>6 Synchrotron Light Sources</strong> with dedicated BER beamlines</li>
+<li><strong>2 Neutron Sources</strong> for biological scattering and imaging</li>
+<li><strong>3 Cryo-EM Centers</strong> with state-of-the-art microscopes</li>
+<li><strong>Multiple Specialized Imaging Facilities</strong> for multi-scale biology</li>
+</ul>
+<p>These facilities generate petabytes of data annually across diverse experimental techniques, creating significant challenges for data integration and cross-facility research.</p>
+<h2 id="2-major-ber-facilities-and-their-lambda-ber-schema-alignment">2. Major BER Facilities and Their lambda-ber-schema Alignment</h2>
+<h3 id="21-advanced-light-source-als-lawrence-berkeley-national-laboratory">2.1 Advanced Light Source (ALS) - Lawrence Berkeley National Laboratory</h3>
+<h4 id="berkeley-synchrotron-infrared-structural-biology-bsisb">Berkeley Synchrotron Infrared Structural Biology (BSISB)</h4>
+<p><strong>Capabilities:</strong>
+- Synchrotron radiation-based Fourier transform infrared (SR-FTIR) spectromicroscopy
+- Time-resolved sFTIR for dynamic studies
+- Synchrotron Infrared Nano-Spectroscopy (SINS) with ~20 nm resolution
+- 3D synchrotron FTIR micro-tomography</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">FTIRImage:
+  is_a: Image2D
+  attributes:
+    # BSISB-specific metadata
+    beamline_id: &quot;ALS-5.4&quot;  # or &quot;ALS-1.4&quot;
+    spatial_resolution: 2.0  # micrometers (standard SR-FTIR)
+    # or 0.02 for SINS mode (20 nm)
+
+    # Spectral parameters from BSISB
+    wavenumber_min: 650   # cm⁻¹
+    wavenumber_max: 4000  # cm⁻¹
+    spectral_resolution: 4  # cm⁻¹
+
+    # Time-resolved capabilities
+    acquisition_mode: &quot;time_resolved&quot;
+    time_points: [0, 10, 20, 30, 60, 120]  # seconds
+
+    # 3D tomography extension
+    tomography_angles: 180
+    reconstruction_method: &quot;filtered_back_projection&quot;
+</code></pre>
+<p><strong>Data Integration Pattern:</strong></p>
+<pre><code class="language-python">class BSISBDataIngester:
+    def ingest_bsisb_data(self, raw_data_path):
+        # Map BSISB output to lambda-ber-schema schema
+        ftir_image = FTIRImage(
+            file_name=raw_data_path,
+            beamline_id=&quot;ALS-BSISB-5.4&quot;,
+            wavenumber_range=(650, 4000),
+            spatial_resolution=self.extract_pixel_size(raw_data_path),
+            molecular_signatures=self.identify_peaks(raw_data_path)
+        )
+
+        # Link to experimental context
+        experiment = ExperimentRun(
+            technique=&quot;ftir_spectroscopy&quot;,
+            instrument_id=&quot;ALS-BSISB&quot;,
+            experimental_conditions=self.parse_metadata(raw_data_path)
+        )
+
+        return ftir_image, experiment
+</code></pre>
+<h4 id="national-center-for-x-ray-tomography-ncxt">National Center for X-ray Tomography (NCXT)</h4>
+<p><strong>Capabilities:</strong>
+- Soft X-ray tomography (SXT) of intact, hydrated cells
+- Resolution: 35-50 nm
+- Sample thickness: up to 15 µm
+- Correlated cryogenic fluorescence tomography (CFT)</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">Image3D:
+  is_a: Image
+  attributes:
+    # NCXT-specific parameters
+    beamline_id: &quot;ALS-XM2&quot;
+    imaging_mode: &quot;soft_xray_tomography&quot;
+
+    dimensions_x: 1024
+    dimensions_y: 1024
+    dimensions_z: 180  # number of projections
+
+    voxel_size: 0.035  # micrometers (35 nm)
+
+    # Soft X-ray specific
+    photon_energy: 520  # eV (water window)
+    dose_per_projection: 1e5  # Gray
+
+    # Correlated imaging
+    correlated_fluorescence:
+      channel: &quot;GFP&quot;
+      colocalization_accuracy: 0.1  # micrometers
+</code></pre>
+<h4 id="structurally-integrated-biology-for-life-sciences-sibyls">Structurally Integrated Biology for Life Sciences (SIBYLS)</h4>
+<p><strong>Capabilities:</strong>
+- High-throughput SAXS (HT-SAXS)
+- SEC-SAXS (Size Exclusion Chromatography coupled SAXS)
+- Mail-in and remote data collection
+- Integrated crystallography and SAXS</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">SAXSInstrument:
+  is_a: Instrument
+  attributes:
+    beamline_id: &quot;ALS-12.3.1&quot;
+
+    # SIBYLS specifications
+    q_range_min: 0.01   # Å⁻¹
+    q_range_max: 0.60   # Å⁻¹
+
+    # High-throughput capabilities
+    sample_changer_capacity: 96
+    exposure_time_per_sample: 10  # seconds
+
+    # SEC-SAXS mode
+    sec_saxs_enabled: true
+    flow_rate: 0.5  # mL/min
+    frame_rate: 2   # Hz
+</code></pre>
+<h3 id="22-advanced-photon-source-aps-argonne-national-laboratory">2.2 Advanced Photon Source (APS) - Argonne National Laboratory</h3>
+<h4 id="eberlight-initiative">eBERlight Initiative</h4>
+<p><strong>Capabilities:</strong>
+- Access to 13 APS beamlines after APS-U upgrade
+- 500× brighter X-rays than pre-upgrade
+- Integrated with Advanced Protein Characterization Facility (APCF)
+- Environmental sample handling laboratories</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">Study:
+  title: &quot;Environmental Metal Cycling in Wetland Sediments&quot;
+
+  # eBERlight multi-beamline experiment
+  instrument_runs:
+    - experiment_code: &quot;eBER-2024-001-XRF&quot;
+      instrument_id: &quot;APS-2-ID-E&quot;  # Microprobe
+      technique: &quot;xrf_imaging&quot;
+
+    - experiment_code: &quot;eBER-2024-001-XRD&quot;
+      instrument_id: &quot;APS-11-ID-B&quot;  # High-energy diffraction
+      technique: &quot;x_ray_diffraction&quot;
+
+    - experiment_code: &quot;eBER-2024-001-XANES&quot;
+      instrument_id: &quot;APS-20-ID&quot;  # X-ray spectroscopy
+      technique: &quot;x_ray_spectroscopy&quot;
+
+  # Integration with APCF
+  sample_preparations:
+    - preparation_type: &quot;protein_expression&quot;
+      facility: &quot;APCF&quot;
+      protocol: &quot;high_throughput_pipeline&quot;
+</code></pre>
+<p><strong>Cross-Beamline Data Integration:</strong></p>
+<pre><code class="language-python">class eBERlightOrchestrator:
+    def coordinate_multi_beamline_experiment(self, study_id):
+        # Coordinate data collection across multiple beamlines
+        beamline_schedule = self.optimize_beamline_allocation(study_id)
+
+        results = []
+        for beamline in beamline_schedule:
+            experiment = ExperimentRun(
+                experiment_code=f&quot;eBER-{study_id}-{beamline.id}&quot;,
+                instrument_id=beamline.id,
+                technique=beamline.technique,
+                experimental_conditions=self.get_conditions(beamline)
+            )
+
+            # Real-time data streaming to lambda-ber-schema
+            data = self.collect_data(beamline, experiment)
+            validated_data = self.validate_with_lambda-ber-schema(data)
+            results.append(validated_data)
+
+        # Integrate multi-modal results
+        return self.integrate_results(results)
+</code></pre>
+<h3 id="23-national-synchrotron-light-source-ii-nsls-ii-brookhaven-national-laboratory">2.3 National Synchrotron Light Source II (NSLS-II) - Brookhaven National Laboratory</h3>
+<h4 id="center-for-biomolecular-structure-cbms">Center for BioMolecular Structure (CBMS)</h4>
+<p><strong>Capabilities:</strong>
+- Macromolecular crystallography (AMX/FMX beamlines)
+- Life Science X-ray Scattering (LiX beamline)
+- X-ray Footprinting (XFP)
+- Microfocus capabilities for crystals &lt;10 µm</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">XRayInstrument:
+  is_a: Instrument
+  attributes:
+    # AMX/FMX beamlines
+    beamline_id: &quot;NSLS-II-17-ID-1&quot;  # AMX
+
+    # Micro-crystallography capabilities
+    beam_size_min: 1    # micrometers
+    beam_size_max: 100  # micrometers
+
+    # Energy range for MAD/SAD
+    energy_min: 5    # keV
+    energy_max: 18   # keV
+
+    # High-throughput capabilities
+    sample_changer_capacity: 384  # UniPuck system
+    automated_screening: true
+
+ExperimentRun:
+  technique: &quot;x_ray_crystallography&quot;
+
+  # Serial crystallography mode
+  collection_mode: &quot;serial&quot;
+  number_of_crystals: 1000
+
+  quality_metrics:
+    resolution: 1.8  # Angstroms
+    completeness: 99.8  # percent
+    r_factor: 0.18
+</code></pre>
+<h4 id="laboratory-for-biomolecular-structure-lbms">Laboratory for BioMolecular Structure (LBMS)</h4>
+<p><strong>Capabilities:</strong>
+- Two Titan Krios microscopes (300 kV)
+- Talos Arctica (200 kV) for screening
+- Sample preparation laboratory
+- Remote access capabilities</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">CryoEMInstrument:
+  is_a: Instrument
+  attributes:
+    facility: &quot;LBMS&quot;
+    instrument_code: &quot;LBMS-Krios-1&quot;
+
+    accelerating_voltage: 300  # kV
+    cs_corrector: true
+
+    # Detectors
+    detector_type: &quot;K3&quot;
+    detector_dimensions: &quot;5760x4092&quot;
+
+    # Automation
+    autoloader_capacity: 12
+    automated_data_collection: true
+
+WorkflowRun:
+  workflow_type: &quot;cryoem_spa&quot;
+
+  # LBMS processing pipeline
+  software_name: &quot;cryoSPARC&quot;
+  processing_parameters:
+    motion_correction: &quot;patch_motion&quot;
+    ctf_estimation: &quot;patch_ctf&quot;
+    particle_picking: &quot;template_matching&quot;
+
+  # Real-time processing
+  processing_mode: &quot;on_the_fly&quot;
+  streaming_enabled: true
+</code></pre>
+<h3 id="24-oak-ridge-national-laboratory-neutron-facilities">2.4 Oak Ridge National Laboratory - Neutron Facilities</h3>
+<h4 id="center-for-structural-molecular-biology-csmb">Center for Structural Molecular Biology (CSMB)</h4>
+<p><strong>Capabilities:</strong>
+- Bio-SANS at High Flux Isotope Reactor (HFIR)
+- Bio-Deuteration Laboratory at SNS
+- Complementary SAXS and light scattering
+- Computational modeling support</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">SAXSInstrument:  # Extended for SANS
+  is_a: Instrument
+  attributes:
+    instrument_code: &quot;HFIR-Bio-SANS&quot;
+    instrument_type: &quot;neutron_scattering&quot;
+
+    # Neutron-specific parameters
+    neutron_wavelength: 6.0  # Angstroms
+    wavelength_spread: 0.13  # Δλ/λ
+
+    # Q-range for Bio-SANS
+    q_range_min: 0.003  # Å⁻¹
+    q_range_max: 0.70   # Å⁻¹
+
+    # Sample environment
+    temperature_control_range: &quot;4-80&quot;  # Celsius
+    sample_changer_capacity: 18
+
+SamplePreparation:
+  preparation_type: &quot;deuteration&quot;
+
+  # Bio-Deuteration Lab parameters
+  deuteration_level: 75  # percent
+  growth_medium: &quot;D2O-adapted_minimal_media&quot;
+  expression_host: &quot;E_coli_BL21&quot;
+
+  # Contrast matching
+  d2o_percentage: 42  # for protein contrast matching
+  buffer_exchange_cycles: 3
+</code></pre>
+<p><strong>Contrast Variation Analysis:</strong></p>
+<pre><code class="language-python">class SANSContrastVariation:
+    def setup_contrast_series(self, sample: lambda-ber-schemaSample):
+        # Generate contrast variation series
+        d2o_percentages = [0, 20, 42, 65, 85, 100]
+
+        experiments = []
+        for d2o_pct in d2o_percentages:
+            exp = ExperimentRun(
+                technique=&quot;sans&quot;,
+                instrument_id=&quot;HFIR-Bio-SANS&quot;,
+                sample_id=sample.id,
+                experimental_conditions={
+                    &quot;d2o_percentage&quot;: d2o_pct,
+                    &quot;temperature&quot;: 25,
+                    &quot;contrast_match_point&quot;: self.calculate_cmp(sample, d2o_pct)
+                }
+            )
+            experiments.append(exp)
+
+        return experiments
+</code></pre>
+<h3 id="25-slac-national-accelerator-laboratory">2.5 SLAC National Accelerator Laboratory</h3>
+<h4 id="stanford-slac-cryo-em-center-s2c2">Stanford-SLAC Cryo-EM Center (S2C2)</h4>
+<p><strong>Capabilities:</strong>
+- Four Titan Krios microscopes (300 kV)
+- Glacios 2 (200 kV) and Tundra (100 kV)
+- Automated data collection and processing
+- National service center with free access</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">CryoEMInstrument:
+  is_a: Instrument
+  attributes:
+    facility: &quot;S2C2&quot;
+    instrument_code: &quot;S2C2-Krios-Alpha&quot;
+
+    # S2C2 specifications
+    accelerating_voltage: 300
+    energy_filter: &quot;BioQuantum&quot;
+    phase_plate: true
+
+    # Automated pipeline
+    automated_collection: true
+    epu_version: &quot;2.14&quot;
+
+DataFile:
+  file_format: &quot;mrc&quot;
+
+  # S2C2 data management
+  storage_location: &quot;s2c2_cluster&quot;
+  retention_period_days: 60  # on disk
+  archive_location: &quot;tape_library&quot;
+  archive_retention_months: 24
+
+  # Automated processing results
+  motion_corrected: true
+  ctf_estimated: true
+
+WorkflowRun:
+  # S2C2 on-the-fly processing
+  workflow_type: &quot;cryoem_otf&quot;
+  software_name: &quot;Relion&quot;
+
+  processing_parameters:
+    auto_picking: true
+    2d_classification: true
+    initial_model: &quot;ab_initio&quot;
+</code></pre>
+<h4 id="structural-molecular-biology-smb-resource">Structural Molecular Biology (SMB) Resource</h4>
+<p><strong>Capabilities:</strong>
+- Biological SAXS beamline (BL4-2)
+- X-ray crystallography beamlines
+- X-ray fluorescence imaging
+- Integrated structural biology approaches</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">Study:
+  title: &quot;Integrated Structural Analysis of Metalloprotein&quot;
+
+  # Multi-technique at SSRL-SMB
+  instrument_runs:
+    - technique: &quot;saxs&quot;
+      instrument_id: &quot;SSRL-BL4-2&quot;
+
+    - technique: &quot;x_ray_crystallography&quot;
+      instrument_id: &quot;SSRL-BL12-2&quot;
+
+    - technique: &quot;xrf_imaging&quot;
+      instrument_id: &quot;SSRL-BL2-3&quot;
+
+  # Integrated analysis
+  integrated_model:
+    crystal_structure: &quot;pdb_8abc&quot;
+    saxs_envelope: &quot;sasbdb_entry&quot;
+    metal_locations: &quot;xrf_map&quot;
+    validation_score: 0.95
+</code></pre>
+<h3 id="26-pacific-northwest-national-laboratory">2.6 Pacific Northwest National Laboratory</h3>
+<h4 id="environmental-molecular-sciences-laboratory-emsl">Environmental Molecular Sciences Laboratory (EMSL)</h4>
+<p><strong>Capabilities:</strong>
+- Cryogenic Transmission Electron Microscopy
+- Multi-scale imaging platforms
+- Integration with proteomics and metabolomics
+- Environmental sample handling</p>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">CryoEMInstrument:
+  is_a: Instrument
+  attributes:
+    facility: &quot;EMSL&quot;
+    instrument_code: &quot;EMSL-Titan-Themis&quot;
+
+    # Environmental TEM capabilities
+    environmental_holder: true
+    temperature_range: &quot;-180 to 1000&quot;  # Celsius
+    atmosphere_control: [&quot;vacuum&quot;, &quot;N2&quot;, &quot;O2&quot;, &quot;H2O&quot;]
+
+    # In-situ capabilities
+    liquid_cell_tem: true
+    gas_reaction_cell: true
+
+Sample:
+  sample_type: &quot;environmental&quot;
+
+  # EMSL environmental samples
+  sample_origin: &quot;soil_microbiome&quot;
+  collection_site: &quot;Hanford_100H&quot;
+  gps_coordinates: [46.7, -119.5]
+
+  # Multi-omics integration
+  proteomics_data: &quot;EMSL-proteomics-2024-001&quot;
+  metabolomics_data: &quot;EMSL-metabolomics-2024-001&quot;
+</code></pre>
+<h2 id="3-cross-facility-data-integration-patterns">3. Cross-Facility Data Integration Patterns</h2>
+<h3 id="31-unified-experiment-tracking">3.1 Unified Experiment Tracking</h3>
+<p>lambda-ber-schema enables seamless tracking of experiments across multiple BER facilities:</p>
+<pre><code class="language-yaml">Dataset:
+  title: &quot;Multi-Facility Study of Plant-Microbe Interactions&quot;
+  keywords: [&quot;rhizosphere&quot;, &quot;symbiosis&quot;, &quot;climate_adaptation&quot;]
+
+  studies:
+    - id: &quot;BER-2024-PlantMicrobe-001&quot;
+
+      # Samples shared across facilities
+      samples:
+        - sample_code: &quot;PM-ROOT-001&quot;
+          sample_type: &quot;plant_tissue&quot;
+
+      # Experiments at different facilities
+      instrument_runs:
+        # NCXT at ALS
+        - experiment_code: &quot;NCXT-2024-001&quot;
+          instrument_id: &quot;ALS-XM2&quot;
+          technique: &quot;soft_xray_tomography&quot;
+
+        # BSISB at ALS
+        - experiment_code: &quot;BSISB-2024-001&quot;
+          instrument_id: &quot;ALS-5.4&quot;
+          technique: &quot;ftir_spectroscopy&quot;
+
+        # eBERlight at APS
+        - experiment_code: &quot;eBER-2024-001&quot;
+          instrument_id: &quot;APS-2-ID-E&quot;
+          technique: &quot;xrf_imaging&quot;
+
+        # Bio-SANS at ORNL
+        - experiment_code: &quot;SANS-2024-001&quot;
+          instrument_id: &quot;HFIR-Bio-SANS&quot;
+          technique: &quot;sans&quot;
+
+        # Cryo-EM at S2C2
+        - experiment_code: &quot;S2C2-2024-001&quot;
+          instrument_id: &quot;S2C2-Krios-Beta&quot;
+          technique: &quot;cryo_em&quot;
+</code></pre>
+<h3 id="32-workflow-orchestration-across-facilities">3.2 Workflow Orchestration Across Facilities</h3>
+<pre><code class="language-python">class BERFacilityOrchestrator:
+    def __init__(self):
+        self.facilities = {
+            'ALS': ALSConnector(),
+            'APS': APSConnector(),
+            'NSLS-II': NSLSConnector(),
+            'ORNL': ORNLConnector(),
+            'SLAC': SLACConnector(),
+            'EMSL': EMSLConnector()
+        }
+        self.lambda-ber-schema_validator = lambda-ber-schemaValidator()
+
+    def orchestrate_multi_facility_study(self, study_plan):
+        &quot;&quot;&quot;
+        Coordinate data collection across multiple BER facilities
+        &quot;&quot;&quot;
+        study = Study(
+            id=study_plan.id,
+            title=study_plan.title
+        )
+
+        # Schedule experiments based on facility availability
+        schedule = self.optimize_facility_schedule(study_plan)
+
+        for facility_exp in schedule:
+            # Connect to facility
+            facility = self.facilities[facility_exp.facility]
+
+            # Submit experiment
+            exp_id = facility.submit_experiment(
+                facility_exp.parameters,
+                callback=self.handle_data_ready
+            )
+
+            # Track in lambda-ber-schema
+            experiment = ExperimentRun(
+                experiment_code=exp_id,
+                instrument_id=facility_exp.instrument,
+                technique=facility_exp.technique
+            )
+            study.instrument_runs.append(experiment)
+
+        return study
+
+    def handle_data_ready(self, facility, experiment_id, data_path):
+        &quot;&quot;&quot;
+        Handle data availability from any facility
+        &quot;&quot;&quot;
+        # Ingest into lambda-ber-schema schema
+        data = self.ingest_facility_data(facility, data_path)
+
+        # Validate against schema
+        validated = self.lambda-ber-schema_validator.validate(data)
+
+        # Trigger downstream processing
+        self.trigger_workflows(validated)
+
+        # Update cross-facility dashboard
+        self.update_dashboard(facility, experiment_id, validated)
+</code></pre>
+<h3 id="33-data-harmonization-pipeline">3.3 Data Harmonization Pipeline</h3>
+<pre><code class="language-python">class BERDataHarmonizer:
+    def __init__(self):
+        self.schema = lambda-ber-schemaSchema()
+        self.converters = self.init_facility_converters()
+
+    def harmonize_facility_data(self, facility_type, raw_data):
+        &quot;&quot;&quot;
+        Convert facility-specific formats to lambda-ber-schema
+        &quot;&quot;&quot;
+        converter = self.converters[facility_type]
+
+        # Extract metadata
+        metadata = converter.extract_metadata(raw_data)
+
+        # Map to lambda-ber-schema schema
+        lambda-ber-schema_data = self.map_to_schema(facility_type, metadata)
+
+        # Handle facility-specific extensions
+        lambda-ber-schema_data = self.add_facility_extensions(
+            facility_type, 
+            lambda-ber-schema_data, 
+            raw_data
+        )
+
+        return lambda-ber-schema_data
+
+    def map_to_schema(self, facility_type, metadata):
+        &quot;&quot;&quot;
+        Map facility metadata to lambda-ber-schema schema
+        &quot;&quot;&quot;
+        mapping_rules = {
+            'ALS': {
+                'beamline': 'instrument_id',
+                'ring_current': 'experimental_conditions.beam_current',
+                'user_id': 'operator_id'
+            },
+            'APS': {
+                'sector': 'instrument_id',
+                'bunch_mode': 'experimental_conditions.bunch_pattern',
+                'proposal_id': 'study.id'
+            },
+            'NSLS-II': {
+                'beamline': 'instrument_id',
+                'scan_id': 'experiment_code',
+                'sample_id': 'sample.sample_code'
+            }
+            # ... more mappings
+        }
+
+        return self.apply_mapping(
+            metadata, 
+            mapping_rules[facility_type]
+        )
+</code></pre>
+<h2 id="4-advanced-integration-capabilities">4. Advanced Integration Capabilities</h2>
+<h3 id="41-real-time-data-streaming">4.1 Real-Time Data Streaming</h3>
+<p>lambda-ber-schema supports real-time data streaming from BER facilities:</p>
+<pre><code class="language-python">class BERDataStreamer:
+    def __init__(self):
+        self.kafka_client = KafkaClient()
+        self.schema_registry = SchemaRegistry()
+
+    async def stream_from_facility(self, facility, experiment_id):
+        &quot;&quot;&quot;
+        Stream data in real-time from BER facility
+        &quot;&quot;&quot;
+        # Register lambda-ber-schema schema
+        schema_id = self.schema_registry.register(
+            f&quot;lambda-ber-schema-{facility}-v1&quot;,
+            lambda-ber-schemaSchema.to_avro()
+        )
+
+        # Create streaming pipeline
+        async for data_chunk in facility.stream_data(experiment_id):
+            # Convert to lambda-ber-schema format
+            lambda-ber-schema_chunk = self.convert_chunk(data_chunk)
+
+            # Validate against schema
+            validated = self.validate_streaming(lambda-ber-schema_chunk)
+
+            # Publish to Kafka
+            await self.kafka_client.produce(
+                topic=f&quot;ber.{facility}.data&quot;,
+                key=experiment_id,
+                value=validated,
+                schema_id=schema_id
+            )
+
+            # Trigger real-time processing
+            await self.trigger_streaming_workflows(validated)
+</code></pre>
+<h3 id="42-ai-driven-experiment-optimization">4.2 AI-Driven Experiment Optimization</h3>
+<pre><code class="language-python">class BERAIOptimizer:
+    def __init__(self):
+        self.ml_model = ExperimentOptimizationModel()
+        self.facility_predictor = FacilityAvailabilityPredictor()
+
+    def optimize_multi_facility_campaign(self, research_goal):
+        &quot;&quot;&quot;
+        AI-driven optimization of multi-facility experiments
+        &quot;&quot;&quot;
+        # Analyze historical data from lambda-ber-schema
+        historical = self.query_lambda-ber-schema_history(research_goal)
+
+        # Predict optimal facility sequence
+        facility_sequence = self.ml_model.predict_sequence(
+            goal=research_goal,
+            history=historical,
+            constraints=self.get_facility_constraints()
+        )
+
+        # Generate experiment parameters
+        optimized_params = {}
+        for facility in facility_sequence:
+            params = self.ml_model.optimize_parameters(
+                facility=facility,
+                goal=research_goal,
+                previous_results=optimized_params
+            )
+            optimized_params[facility] = params
+
+        # Create lambda-ber-schema study plan
+        study = self.create_study_plan(
+            facility_sequence,
+            optimized_params
+        )
+
+        return study
+</code></pre>
+<h3 id="43-federated-learning-across-facilities">4.3 Federated Learning Across Facilities</h3>
+<pre><code class="language-python">class BERFederatedLearning:
+    def __init__(self):
+        self.facilities = self.init_facility_nodes()
+        self.central_model = StructurePredictionModel()
+
+    async def train_federated_model(self, training_config):
+        &quot;&quot;&quot;
+        Train ML models across BER facilities without moving data
+        &quot;&quot;&quot;
+        # Initialize local models at each facility
+        local_models = {}
+        for facility in self.facilities:
+            local_models[facility] = await facility.init_local_model(
+                self.central_model.get_architecture()
+            )
+
+        # Federated training rounds
+        for round in range(training_config.rounds):
+            # Local training at each facility
+            for facility in self.facilities:
+                # Train on local lambda-ber-schema data
+                local_data = facility.get_lambda-ber-schema_data(
+                    training_config.data_filter
+                )
+
+                await facility.train_local(
+                    local_models[facility],
+                    local_data,
+                    training_config
+                )
+
+            # Aggregate model updates
+            model_updates = await self.collect_updates(local_models)
+            self.central_model = self.federated_average(model_updates)
+
+            # Distribute updated model
+            for facility in self.facilities:
+                local_models[facility] = self.central_model.copy()
+
+        return self.central_model
+</code></pre>
+<h2 id="5-quality-control-and-validation">5. Quality Control and Validation</h2>
+<h3 id="51-cross-facility-quality-metrics">5.1 Cross-Facility Quality Metrics</h3>
+<pre><code class="language-yaml">QualityMetrics:
+  description: &quot;Unified quality metrics across BER facilities&quot;
+  attributes:
+    # Common metrics
+    signal_to_noise:
+      range: float
+      minimum_value: 0
+
+    resolution:
+      range: float
+      unit: &quot;angstrom_or_nanometer&quot;
+
+    completeness:
+      range: float
+      minimum_value: 0
+      maximum_value: 100
+
+    # Facility-specific extensions
+    facility_metrics:
+      ALS_BSISB:
+        water_vapor_correction: float
+        atmospheric_compensation: boolean
+
+      APS_eBERlight:
+        beam_stability: float
+        flux_variation: float
+
+      ORNL_BioSANS:
+        d2o_purity: float
+        neutron_flux_stability: float
+
+      S2C2_CryoEM:
+        ice_thickness: float
+        drift_rate: float
+</code></pre>
+<h3 id="52-automated-validation-pipeline">5.2 Automated Validation Pipeline</h3>
+<pre><code class="language-python">class BERQualityValidator:
+    def __init__(self):
+        self.validators = self.init_facility_validators()
+        self.ml_validator = MLAnomalyDetector()
+
+    def validate_experiment(self, experiment: ExperimentRun):
+        &quot;&quot;&quot;
+        Comprehensive validation for BER facility data
+        &quot;&quot;&quot;
+        # Schema validation
+        schema_valid = self.validate_schema(experiment)
+
+        # Facility-specific validation
+        facility = self.get_facility_from_instrument(
+            experiment.instrument_id
+        )
+        facility_valid = self.validators[facility].validate(experiment)
+
+        # Cross-facility consistency
+        if experiment.is_multi_facility():
+            consistency = self.check_cross_facility_consistency(
+                experiment
+            )
+        else:
+            consistency = True
+
+        # ML-based anomaly detection
+        anomalies = self.ml_validator.detect_anomalies(
+            experiment,
+            reference_set=self.get_reference_data(facility)
+        )
+
+        return ValidationReport(
+            schema_valid=schema_valid,
+            facility_valid=facility_valid,
+            consistency=consistency,
+            anomalies=anomalies,
+            overall_score=self.compute_score(
+                schema_valid, 
+                facility_valid, 
+                consistency, 
+                anomalies
+            )
+        )
+</code></pre>
+<h2 id="6-implementation-recommendations">6. Implementation Recommendations</h2>
+<h3 id="61-phased-deployment-strategy">6.1 Phased Deployment Strategy</h3>
+<p><strong>Phase 1: Pilot Implementation (Months 1-6)</strong>
+- Deploy at 2-3 facilities (recommended: ALS, APS, S2C2)
+- Focus on most common techniques (crystallography, SAXS, cryo-EM)
+- Establish core schema mappings
+- Develop facility-specific adapters</p>
+<p><strong>Phase 2: Expansion (Months 7-12)</strong>
+- Extend to all BER facilities
+- Add specialized techniques (neutron scattering, FTIR, XRF)
+- Implement real-time data streaming
+- Deploy federated learning infrastructure</p>
+<p><strong>Phase 3: Full Integration (Months 13-18)</strong>
+- Complete cross-facility orchestration
+- Launch AI-driven optimization
+- Implement automated quality control
+- Deploy user-facing dashboards</p>
+<h3 id="62-technical-architecture">6.2 Technical Architecture</h3>
+<pre><code class="language-yaml">architecture:
+  data_layer:
+    - facility_adapters: &quot;Custom for each facility&quot;
+    - streaming: &quot;Apache Kafka&quot;
+    - storage: &quot;S3-compatible object store&quot;
+    - lakehouse: &quot;Delta Lake&quot;
+
+  schema_layer:
+    - definition: &quot;LinkML (lambda-ber-schema)&quot;
+    - validation: &quot;linkml-validator&quot;
+    - registry: &quot;Confluent Schema Registry&quot;
+    - versioning: &quot;Git + semantic versioning&quot;
+
+  processing_layer:
+    - orchestration: &quot;Apache Airflow&quot;
+    - compute: &quot;Ray/Dask clusters&quot;
+    - ml_platform: &quot;Kubeflow&quot;
+    - monitoring: &quot;Prometheus + Grafana&quot;
+
+  api_layer:
+    - graphql: &quot;Facility queries&quot;
+    - rest: &quot;Data submission&quot;
+    - grpc: &quot;High-performance streaming&quot;
+    - websocket: &quot;Real-time updates&quot;
+</code></pre>
+<h3 id="63-governance-structure">6.3 Governance Structure</h3>
+<pre><code class="language-python">class BERDataGovernance:
+    def __init__(self):
+        self.steering_committee = [
+            &quot;BER Program Manager&quot;,
+            &quot;Facility Directors&quot;,
+            &quot;User Representatives&quot;,
+            &quot;Data Scientists&quot;
+        ]
+
+        self.working_groups = {
+            &quot;schema_evolution&quot;: SchemaWorkingGroup(),
+            &quot;quality_standards&quot;: QualityWorkingGroup(),
+            &quot;ai_ethics&quot;: AIEthicsWorkingGroup(),
+            &quot;user_access&quot;: AccessWorkingGroup()
+        }
+
+    def propose_schema_change(self, change_request):
+        &quot;&quot;&quot;
+        Democratic process for schema evolution
+        &quot;&quot;&quot;
+        # Technical review
+        technical_review = self.working_groups[
+            &quot;schema_evolution&quot;
+        ].review(change_request)
+
+        # Impact assessment
+        impact = self.assess_facility_impact(change_request)
+
+        # User consultation
+        user_feedback = self.collect_user_feedback(change_request)
+
+        # Vote by steering committee
+        decision = self.steering_committee.vote(
+            change_request,
+            technical_review,
+            impact,
+            user_feedback
+        )
+
+        return decision
+</code></pre>
+<h2 id="7-use-cases-and-applications">7. Use Cases and Applications</h2>
+<h3 id="71-climate-change-research">7.1 Climate Change Research</h3>
+<pre><code class="language-yaml">Study:
+  title: &quot;Multi-Scale Analysis of Plant Stress Response to Elevated CO2&quot;
+
+  # Coordinated experiments across facilities
+  experiments:
+    # Whole plant imaging at ALS
+    - facility: &quot;ALS-BSISB&quot;
+      technique: &quot;ftir_imaging&quot;
+      purpose: &quot;Map metabolic changes in leaves&quot;
+
+    # Cellular structure at NCXT
+    - facility: &quot;ALS-NCXT&quot;
+      technique: &quot;soft_xray_tomography&quot;
+      purpose: &quot;Visualize chloroplast reorganization&quot;
+
+    # Protein structure at S2C2
+    - facility: &quot;S2C2&quot;
+      technique: &quot;cryo_em&quot;
+      purpose: &quot;Determine RuBisCO structural changes&quot;
+
+    # Element distribution at eBERlight
+    - facility: &quot;APS-eBERlight&quot;
+      technique: &quot;xrf_imaging&quot;
+      purpose: &quot;Track nutrient redistribution&quot;
+</code></pre>
+<h3 id="72-bioenergy-research">7.2 Bioenergy Research</h3>
+<pre><code class="language-yaml">Study:
+  title: &quot;Structural Basis of Lignocellulose Degradation&quot;
+
+  experiments:
+    # Enzyme structure at CBMS
+    - facility: &quot;NSLS-II-CBMS&quot;
+      technique: &quot;x_ray_crystallography&quot;
+      purpose: &quot;Cellulase active site structure&quot;
+
+    # Enzyme dynamics at Bio-SANS
+    - facility: &quot;ORNL-BioSANS&quot;
+      technique: &quot;sans&quot;
+      purpose: &quot;Solution dynamics of enzyme complex&quot;
+
+    # Substrate interaction at SSRL
+    - facility: &quot;SLAC-SMB&quot;
+      technique: &quot;saxs&quot;
+      purpose: &quot;Enzyme-substrate complex formation&quot;
+</code></pre>
+<h3 id="73-environmental-remediation">7.3 Environmental Remediation</h3>
+<pre><code class="language-yaml">Study:
+  title: &quot;Microbial Metal Reduction in Contaminated Sediments&quot;
+
+  experiments:
+    # Metal speciation at eBERlight
+    - facility: &quot;APS-eBERlight&quot;
+      technique: &quot;xanes&quot;
+      purpose: &quot;Determine uranium oxidation states&quot;
+
+    # Biofilm structure at EMSL
+    - facility: &quot;EMSL&quot;
+      technique: &quot;cryo_tem&quot;
+      purpose: &quot;Image biofilm architecture&quot;
+
+    # Protein-metal interaction at LBMS
+    - facility: &quot;NSLS-II-LBMS&quot;
+      technique: &quot;cryo_em&quot;
+      purpose: &quot;Structure of metal reductase&quot;
+</code></pre>
+<h2 id="8-performance-metrics-and-benchmarks">8. Performance Metrics and Benchmarks</h2>
+<h3 id="81-data-volume-projections">8.1 Data Volume Projections</h3>
+<pre><code class="language-python">class BERDataMetrics:
+    def calculate_annual_data_volume(self):
+        &quot;&quot;&quot;
+        Estimate annual data generation across BER facilities
+        &quot;&quot;&quot;
+        facility_rates = {
+            'ALS': {
+                'BSISB': 50,  # TB/year
+                'NCXT': 100,   # TB/year
+                'SIBYLS': 30   # TB/year
+            },
+            'APS': {
+                'eBERlight': 200  # TB/year (13 beamlines)
+            },
+            'NSLS-II': {
+                'CBMS': 80,    # TB/year
+                'LBMS': 500    # TB/year (cryo-EM)
+            },
+            'ORNL': {
+                'BioSANS': 20  # TB/year
+            },
+            'SLAC': {
+                'S2C2': 1000,  # TB/year (4 Krios)
+                'SMB': 40      # TB/year
+            },
+            'EMSL': {
+                'CryoTEM': 150 # TB/year
+            }
+        }
+
+        total = sum(
+            sum(beamline_data.values()) 
+            for beamline_data in facility_rates.values()
+        )
+
+        return total  # ~2.2 PB/year
+</code></pre>
+<h3 id="82-query-performance-targets">8.2 Query Performance Targets</h3>
+<pre><code class="language-python">performance_targets = {
+    'metadata_query': {
+        'simple_filter': '&lt; 100ms',
+        'complex_join': '&lt; 1s',
+        'facility_aggregation': '&lt; 5s'
+    },
+    'data_retrieval': {
+        'single_file': '&lt; 10s',
+        'dataset': '&lt; 1min',
+        'study': '&lt; 10min'
+    },
+    'cross_facility_search': {
+        'keyword': '&lt; 500ms',
+        'structure_similarity': '&lt; 5s',
+        'sequence_blast': '&lt; 30s'
+    },
+    'real_time_streaming': {
+        'latency': '&lt; 1s',
+        'throughput': '&gt; 1GB/s'
+    }
+}
+</code></pre>
+<h2 id="9-challenges-and-mitigation-strategies">9. Challenges and Mitigation Strategies</h2>
+<h3 id="91-technical-challenges">9.1 Technical Challenges</h3>
+<p><strong>Challenge</strong>: Heterogeneous data formats across facilities
+<strong>Mitigation</strong>: 
+- Develop comprehensive adapter library
+- Use schema-on-read approach for flexibility
+- Implement automated format detection</p>
+<p><strong>Challenge</strong>: Real-time processing of high-volume data
+<strong>Mitigation</strong>:
+- Deploy edge computing at facilities
+- Use streaming architectures (Kafka, Flink)
+- Implement intelligent data reduction</p>
+<p><strong>Challenge</strong>: Network bandwidth limitations
+<strong>Mitigation</strong>:
+- Implement data compression and deduplication
+- Use content delivery networks (CDN)
+- Deploy regional data caches</p>
+<h3 id="92-organizational-challenges">9.2 Organizational Challenges</h3>
+<p><strong>Challenge</strong>: Coordination across multiple facilities
+<strong>Mitigation</strong>:
+- Establish clear governance structure
+- Regular cross-facility meetings
+- Shared development roadmap</p>
+<p><strong>Challenge</strong>: User adoption and training
+<strong>Mitigation</strong>:
+- Comprehensive training programs
+- User-friendly interfaces
+- Dedicated support team</p>
+<p><strong>Challenge</strong>: Funding sustainability
+<strong>Mitigation</strong>:
+- Demonstrate clear value proposition
+- Seek multi-year commitments
+- Explore cost-sharing models</p>
+<h2 id="10-future-directions">10. Future Directions</h2>
+<h3 id="101-emerging-technologies">10.1 Emerging Technologies</h3>
+<p><strong>Quantum Computing Integration</strong>
+- Quantum algorithms for structure prediction
+- Hybrid classical-quantum workflows
+- Quantum machine learning for pattern recognition</p>
+<p><strong>Digital Twins</strong>
+- Virtual replicas of experiments
+- Predictive modeling of outcomes
+- Optimization before physical experiments</p>
+<p><strong>Autonomous Experimentation</strong>
+- AI-driven experiment design
+- Robotic sample handling
+- Self-optimizing data collection</p>
+<h3 id="102-expanded-capabilities">10.2 Expanded Capabilities</h3>
+<p><strong>Multi-Modal Data Fusion</strong>
+- Integration with genomics data (JGI)
+- Proteomics and metabolomics (EMSL)
+- Environmental sensors (NEON)</p>
+<p><strong>Global Collaboration</strong>
+- Integration with European facilities (ESRF, Diamond)
+- Asia-Pacific partnerships (Spring-8, Australian Synchrotron)
+- Standardization with wwPDB and EMDB</p>
+<p><strong>Advanced Analytics</strong>
+- Graph neural networks for structure prediction
+- Transformer models for sequence-structure relationships
+- Reinforcement learning for experiment optimization</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The integration of BER DOE User Facilities with the lambda-ber-schema schema represents a transformative opportunity for biological and environmental research. By providing a unified data model that spans the diverse experimental capabilities of these world-class facilities, lambda-ber-schema enables:</p>
+<ol>
+<li><strong>Seamless Data Integration</strong>: Harmonized data from 10+ facilities and dozens of beamlines</li>
+<li><strong>Enhanced Scientific Discovery</strong>: AI-driven insights from integrated multi-modal data</li>
+<li><strong>Improved Efficiency</strong>: Reduced time from experiment to insight</li>
+<li><strong>Broader Access</strong>: Democratized access to complex structural biology data</li>
+<li><strong>Reproducible Science</strong>: Complete provenance and workflow tracking</li>
+</ol>
+<p>The comprehensive alignment between BER facilities and lambda-ber-schema demonstrates that the schema is well-suited to handle the complexity and scale of modern structural biology research. With proper implementation, this integration will accelerate scientific discovery in critical areas including climate change, bioenergy, and environmental remediation.</p>
+<p>The phased deployment strategy, combined with robust governance and continuous evolution of the schema, ensures that lambda-ber-schema can adapt to emerging technologies and evolving scientific needs while maintaining compatibility with existing facility operations.</p>
+<p>As BER facilities continue to upgrade their capabilities—such as the APS-U upgrade providing 500× brighter X-rays—lambda-ber-schema provides the flexible, extensible framework needed to manage and integrate the resulting exponential growth in data volume and complexity. This positions the BER structural biology community at the forefront of data-driven discovery in the biological and environmental sciences.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

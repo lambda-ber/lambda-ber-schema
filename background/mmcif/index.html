@@ -1,0 +1,2082 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/mmcif/">
+      
+      
+        <link rel="prev" href="../nexus/">
+      
+      
+        <link rel="next" href="../empiar/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>mmCIF - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema-and-mmcif-alignment-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              mmCIF
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to mmCIF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to mmCIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is mmCIF?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-differences-in-scope-and-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Differences in Scope and Purpose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Differences in Scope and Purpose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-category-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Category Mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Category Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampleentity-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample/Entity Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-and-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing and Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Differences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Granularity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-temporal-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Temporal Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multi-modal-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Multi-modal Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-format-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Format Philosophy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-mmcif-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → mmCIF Export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complementary-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complementary Strengths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complementary Strengths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF Strengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Strengths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-and-related-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions and Related Standards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions and Related Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF Extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alignment-with-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alignment with Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-integration-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Integration Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Integration Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-structure-determination" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Structure Determination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-deposition-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Deposition Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-archive-and-dissemination" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Archive and Dissemination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-conversion-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Conversion Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Preservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifier-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier Mapping
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convergence-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence Opportunities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposed-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to mmCIF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to mmCIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is mmCIF?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamental-differences-in-scope-and-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fundamental Differences in Scope and Purpose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamental Differences in Scope and Purpose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-category-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Category Mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Category Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampleentity-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample/Entity Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-and-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing and Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Differences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Granularity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-temporal-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Temporal Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multi-modal-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Multi-modal Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-format-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Format Philosophy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-mmcif-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → mmCIF Export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complementary-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complementary Strengths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complementary Strengths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF Strengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Strengths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-and-related-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions and Related Standards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions and Related Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmcif-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      mmCIF Extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alignment-with-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alignment with Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-integration-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Integration Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Integration Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-structure-determination" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Structure Determination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-deposition-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Deposition Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-archive-and-dissemination" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Archive and Dissemination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-conversion-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Conversion Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Preservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifier-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier Mapping
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convergence-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence Opportunities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposed-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema-and-mmcif-alignment-analysis">lambda-ber-schema and mmCIF Alignment Analysis</h1>
+<blockquote>
+<p><strong>Note</strong>: This document was generated using Claude (Anthropic's AI assistant) through automated analysis of documentation and web sources. While efforts have been made to ensure accuracy, there may be errors or outdated information. Please verify critical details with official wwPDB/mmCIF documentation.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>This document analyzes the alignment between the lambda-ber-schema schema and mmCIF (macromolecular Crystallographic Information File), the standard format for structural biology data. We examine compatibility, complementary features, and integration strategies between these two important data standards.</p>
+<h2 id="introduction-to-mmcif">Introduction to mmCIF</h2>
+<h3 id="what-is-mmcif">What is mmCIF?</h3>
+<p>mmCIF (also known as PDBx/mmCIF) is the international standard for representing macromolecular structure data. Key characteristics:</p>
+<ul>
+<li><strong>Purpose</strong>: Archive and exchange format for 3D structural data of biological macromolecules</li>
+<li><strong>Governance</strong>: Maintained by the Worldwide Protein Data Bank (wwPDB) and IUCr</li>
+<li><strong>Adoption</strong>: Mandatory for PDB depositions since July 2019</li>
+<li><strong>Format</strong>: Text-based, self-describing format with data dictionary</li>
+<li><strong>Extensions</strong>: IHMCIF (integrative methods), ModelCIF (computational models), EM dictionary</li>
+</ul>
+<h3 id="current-status-2024">Current Status (2024)</h3>
+<ul>
+<li><strong>Primary format</strong> for over 220,000 structures in the PDB</li>
+<li><strong>No limitations</strong> on atoms, residues, or chains (unlike legacy PDB format)</li>
+<li><strong>Extended PDB IDs</strong> coming in 2028 (12-character IDs will require mmCIF)</li>
+<li><strong>Universal support</strong> across major structural biology software</li>
+</ul>
+<h2 id="fundamental-differences-in-scope-and-purpose">Fundamental Differences in Scope and Purpose</h2>
+<h3 id="mmcif">mmCIF</h3>
+<ul>
+<li><strong>Primary domain</strong>: 3D atomic structures from experimental determination</li>
+<li><strong>Data model</strong>: Self-describing text format with rigid data dictionary</li>
+<li><strong>Focus</strong>: Final structural models and associated experimental data</li>
+<li><strong>Standardization</strong>: International standard (wwPDB/IUCr governance)</li>
+<li><strong>Target users</strong>: Structural biologists, crystallographers, cryo-EM practitioners</li>
+</ul>
+<h3 id="lambda-ber-schema">lambda-ber-schema</h3>
+<ul>
+<li><strong>Primary domain</strong>: Multi-modal structural biology workflows</li>
+<li><strong>Data model</strong>: LinkML semantic schema (generates multiple formats)</li>
+<li><strong>Focus</strong>: End-to-end tracking from sample to structure</li>
+<li><strong>Standardization</strong>: Research schema for data integration</li>
+<li><strong>Target users</strong>: Integrative structural biology researchers</li>
+</ul>
+<h2 id="structural-alignment">Structural Alignment</h2>
+<table>
+<thead>
+<tr>
+<th>mmCIF Category</th>
+<th>lambda-ber-schema Equivalent</th>
+<th>Alignment Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>_entry</strong></td>
+<td><strong>Dataset/Study</strong></td>
+<td>Both serve as top-level containers for related data</td>
+</tr>
+<tr>
+<td><strong>_entity</strong></td>
+<td><strong>Sample</strong> (molecular level)</td>
+<td>✅ Strong conceptual alignment for molecular entities</td>
+</tr>
+<tr>
+<td><strong>_entity_src_gen</strong></td>
+<td><strong>Sample.preparation_method</strong></td>
+<td>Both track sample production methods</td>
+</tr>
+<tr>
+<td><strong>_exptl</strong></td>
+<td><strong>ExperimentRun</strong></td>
+<td>✅ Experimental method and conditions</td>
+</tr>
+<tr>
+<td><strong>_exptl_crystal</strong></td>
+<td><strong>XRayPreparation</strong></td>
+<td>Crystallization conditions and methods</td>
+</tr>
+<tr>
+<td><strong>_em_imaging</strong></td>
+<td><strong>CryoEMInstrument</strong></td>
+<td>Electron microscopy parameters</td>
+</tr>
+<tr>
+<td><strong>_diffrn</strong></td>
+<td><strong>ExperimentRun</strong> (XRay)</td>
+<td>Diffraction experiment details</td>
+</tr>
+<tr>
+<td><strong>_reflns</strong></td>
+<td><strong>QualityMetrics</strong></td>
+<td>Data quality statistics</td>
+</tr>
+<tr>
+<td><strong>_software</strong></td>
+<td><strong>WorkflowRun.software_name</strong></td>
+<td>✅ Software tracking for processing</td>
+</tr>
+<tr>
+<td><strong>_atom_site</strong></td>
+<td>Not directly modeled</td>
+<td>lambda-ber-schema doesn't store atomic coordinates</td>
+</tr>
+<tr>
+<td><strong>_struct</strong></td>
+<td><strong>DataFile</strong> (type: model)</td>
+<td>Structure-level information as file metadata</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-category-mapping">Detailed Category Mapping</h2>
+<h3 id="sampleentity-information">Sample/Entity Information</h3>
+<p><strong>mmCIF Categories:</strong></p>
+<pre><code>_entity (molecular entities)
+├── _entity_poly (polymer entities)
+├── _entity_src_gen (recombinant expression)
+├── _entity_src_nat (natural source)
+└── _pdbx_entity_src_syn (synthetic)
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">Sample:
+  molecular_composition:
+    sequences: [...]  # Maps to _entity_poly_seq
+    modifications: [...] # Maps to various _entity fields
+  preparation_method: # Maps to _entity_src_* categories
+  sample_type: # Maps to _entity.type
+</code></pre>
+<h3 id="experimental-data">Experimental Data</h3>
+<p><strong>mmCIF Categories:</strong></p>
+<pre><code>_exptl (experimental methods)
+├── _diffrn (diffraction experiment)
+├── _em_imaging (EM data collection)
+├── _nmr_experiment (NMR parameters)
+└── _saxs_experiment (SAXS data)
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: # Maps to _exptl.method
+  experimental_conditions: # Maps to various _exptl fields
+  data_collection_strategy: # Maps to technique-specific categories
+  instrument_id: # Links to instrument details
+</code></pre>
+<h3 id="processing-and-software">Processing and Software</h3>
+<p><strong>mmCIF Categories:</strong></p>
+<pre><code>_software (programs used)
+_refine (refinement statistics)
+_em_3d_reconstruction (EM processing)
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">WorkflowRun:
+  software_name: # Maps to _software.name
+  software_version: # Maps to _software.version
+  workflow_type: # Maps to processing method
+  processing_parameters: # Maps to method-specific fields
+</code></pre>
+<h2 id="key-differences">Key Differences</h2>
+<h3 id="1-data-granularity">1. Data Granularity</h3>
+<p><strong>mmCIF</strong>: Atomic-level detail
+- Every atom position (<code>_atom_site</code>)
+- Bond information (<code>_struct_conn</code>)
+- Secondary structure (<code>_struct_sheet</code>, <code>_struct_helix</code>)</p>
+<p><strong>lambda-ber-schema</strong>: Workflow-level tracking
+- File references rather than coordinates
+- Processing steps and parameters
+- Sample preparation details</p>
+<h3 id="2-temporal-scope">2. Temporal Scope</h3>
+<p><strong>mmCIF</strong>: Snapshot of final structure
+- Final refined coordinates
+- Deposition-ready data
+- Publication-associated metadata</p>
+<p><strong>lambda-ber-schema</strong>: Complete experimental timeline
+- Sample preparation history
+- Multiple processing attempts
+- Intermediate data products</p>
+<h3 id="3-multi-modal-support">3. Multi-modal Support</h3>
+<p><strong>mmCIF</strong>: Method-specific extensions
+- EM dictionary for cryo-EM
+- NMR-specific categories
+- X-ray diffraction focus</p>
+<p><strong>lambda-ber-schema</strong>: Unified multi-modal schema
+- FTIR, fluorescence, optical imaging
+- Integrated workflow across techniques
+- Cross-technique sample tracking</p>
+<h3 id="4-format-philosophy">4. Format Philosophy</h3>
+<p><strong>mmCIF</strong>: Rigid, validated structure
+- Strict data dictionary
+- Controlled vocabularies
+- Fixed relationships</p>
+<p><strong>lambda-ber-schema</strong>: Flexible semantic model
+- Extensible via LinkML
+- Multiple serialization formats
+- Adaptable to new techniques</p>
+<h2 id="integration-strategies">Integration Strategies</h2>
+<h3 id="lambda-ber-schema-mmcif-export">lambda-ber-schema → mmCIF Export</h3>
+<pre><code class="language-python"># Conceptual mapping for structure deposition
+def lambda-ber-schema_to_mmcif(study):
+    mmcif_data = {
+        '_entry.id': study.id,
+        '_exptl.method': study.experiment_runs[0].technique,
+        '_entity': extract_entities(study.samples),
+        '_software': extract_software(study.workflow_runs),
+        # Link to coordinates from DataFile
+        '_atom_site': load_from_datafile(study.data_files)
+    }
+    return mmcif_data
+</code></pre>
+<p>Key considerations:
+- Extract molecular information from Sample → _entity
+- Map ExperimentRun parameters → _exptl categories
+- Convert WorkflowRun details → _software and _refine
+- Reference final coordinates from DataFile</p>
+<h3 id="mmcif-lambda-ber-schema-import">mmCIF → lambda-ber-schema Import</h3>
+<pre><code class="language-yaml"># lambda-ber-schema representation of mmCIF data
+Study:
+  title: &quot;Imported from PDB entry 7XYZ&quot;
+  samples:
+    - molecular_composition:
+        sequences: # From _entity_poly_seq
+        modifications: # From _struct_mod_residue
+  experiment_runs:
+    - technique: # From _exptl.method
+      quality_metrics:
+        resolution: # From _reflns.d_resolution_high
+  data_files:
+    - file_name: &quot;7xyz.cif&quot;
+      data_type: model
+      file_format: mmcif
+</code></pre>
+<h3 id="hybrid-approach">Hybrid Approach</h3>
+<p>Use both standards complementarily:</p>
+<ol>
+<li><strong>lambda-ber-schema</strong> for:</li>
+<li>Sample preparation and tracking</li>
+<li>Multi-technique experiments</li>
+<li>Processing workflow management</li>
+<li>
+<p>Pre-deposition data organization</p>
+</li>
+<li>
+<p><strong>mmCIF</strong> for:</p>
+</li>
+<li>Final structure deposition to PDB</li>
+<li>Atomic coordinate representation</li>
+<li>Structure validation</li>
+<li>Publication and dissemination</li>
+</ol>
+<h2 id="complementary-strengths">Complementary Strengths</h2>
+<h3 id="mmcif-strengths">mmCIF Strengths</h3>
+<ul>
+<li><strong>Atomic precision</strong>: Complete coordinate and B-factor data</li>
+<li><strong>Validation tools</strong>: Extensive validation pipelines (OneDep)</li>
+<li><strong>Universal acceptance</strong>: Required for PDB deposition</li>
+<li><strong>Rich annotations</strong>: Biological assembly, ligand interactions</li>
+<li><strong>Standardized vocabularies</strong>: Controlled terms for methods</li>
+</ul>
+<h3 id="lambda-ber-schema-strengths">lambda-ber-schema Strengths</h3>
+<ul>
+<li><strong>Workflow tracking</strong>: Complete experimental history</li>
+<li><strong>Multi-modal integration</strong>: Unified schema across techniques</li>
+<li><strong>Sample lineage</strong>: Parent-child sample relationships</li>
+<li><strong>Flexible metadata</strong>: Extensible for new techniques</li>
+<li><strong>Processing provenance</strong>: Detailed computational tracking</li>
+</ul>
+<h2 id="extensions-and-related-standards">Extensions and Related Standards</h2>
+<h3 id="mmcif-extensions">mmCIF Extensions</h3>
+<ol>
+<li><strong>IHMCIF</strong> (2024): Integrative/hybrid methods</li>
+<li>Multiple experimental inputs</li>
+<li>Spatial restraints</li>
+<li>
+<p>Model confidence metrics</p>
+</li>
+<li>
+<p><strong>ModelCIF</strong>: Computational models</p>
+</li>
+<li>AlphaFold structures</li>
+<li>Template information</li>
+<li>
+<p>Prediction confidence</p>
+</li>
+<li>
+<p><strong>EM Dictionary</strong>: Cryo-EM specific</p>
+</li>
+<li>Microscope parameters</li>
+<li>Image processing details</li>
+<li>Reconstruction methods</li>
+</ol>
+<h3 id="alignment-with-extensions">Alignment with Extensions</h3>
+<p>lambda-ber-schema concepts map well to these extensions:
+- Multi-technique support → IHMCIF integrative approach
+- WorkflowRun → ModelCIF computational methods
+- CryoEMInstrument → EM dictionary fields</p>
+<h2 id="recommended-integration-workflow">Recommended Integration Workflow</h2>
+<h3 id="1-data-collection-phase">1. Data Collection Phase</h3>
+<pre><code>lambda-ber-schema: Track samples, instruments, experimental runs
+         ↓
+   Store raw data with metadata
+</code></pre>
+<h3 id="2-processing-phase">2. Processing Phase</h3>
+<pre><code>lambda-ber-schema: Document workflows, software, parameters
+         ↓
+   Generate processed data and models
+</code></pre>
+<h3 id="3-structure-determination">3. Structure Determination</h3>
+<pre><code>External tools: Solve structure, refine model
+         ↓
+   Create mmCIF file with coordinates
+</code></pre>
+<h3 id="4-deposition-preparation">4. Deposition Preparation</h3>
+<pre><code>lambda-ber-schema + mmCIF: Combine metadata and coordinates
+         ↓
+   Validate and prepare for PDB submission
+</code></pre>
+<h3 id="5-archive-and-dissemination">5. Archive and Dissemination</h3>
+<pre><code>PDB: Store mmCIF with structure
+lambda-ber-schema: Maintain complete experimental record
+</code></pre>
+<h2 id="implementation-considerations">Implementation Considerations</h2>
+<h3 id="data-conversion-tools">Data Conversion Tools</h3>
+<p>Needed utilities:
+- <code>lambda-ber-schema2mmcif</code>: Export lambda-ber-schema metadata to mmCIF categories
+- <code>mmcif2lambda-ber-schema</code>: Import PDB entries as lambda-ber-schema studies
+- <code>validate_alignment</code>: Check consistency between formats</p>
+<h3 id="metadata-preservation">Metadata Preservation</h3>
+<p>Critical metadata to maintain:
+- Sample source and preparation
+- Experimental conditions
+- Processing parameters
+- Quality metrics
+- Software versions</p>
+<h3 id="identifier-mapping">Identifier Mapping</h3>
+<pre><code class="language-yaml"># Maintain relationships between systems
+DataFile:
+  file_name: &quot;7xyz.cif&quot;
+  external_ids:
+    pdb_id: &quot;7XYZ&quot;
+    emdb_id: &quot;EMD-12345&quot;
+    bmrb_id: &quot;30789&quot;
+</code></pre>
+<h2 id="future-directions">Future Directions</h2>
+<h3 id="convergence-opportunities">Convergence Opportunities</h3>
+<ol>
+<li><strong>Semantic Integration</strong>: Align vocabularies and ontologies</li>
+<li><strong>Workflow Standards</strong>: Common processing pipeline descriptions</li>
+<li><strong>Multi-modal Templates</strong>: Shared patterns for integrative studies</li>
+<li><strong>Validation Frameworks</strong>: Cross-format validation tools</li>
+</ol>
+<h3 id="proposed-enhancements">Proposed Enhancements</h3>
+<p>For lambda-ber-schema:
+- Add mmCIF export module
+- Include PDB validation checks
+- Support IHMCIF restraints</p>
+<p>For mmCIF:
+- Expand workflow tracking
+- Enhanced sample history
+- Multi-technique experiments</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>lambda-ber-schema and mmCIF serve <strong>complementary roles</strong> in the structural biology data ecosystem:</p>
+<ul>
+<li><strong>mmCIF</strong> is the definitive standard for atomic structure representation and PDB deposition</li>
+<li><strong>lambda-ber-schema</strong> provides comprehensive workflow and multi-modal experiment tracking</li>
+</ul>
+<p>The optimal strategy involves:
+1. Using lambda-ber-schema for experiment management and data integration
+2. Generating mmCIF for structure deposition and dissemination
+3. Maintaining bidirectional links between the formats
+4. Leveraging each format's strengths for different phases of research</p>
+<p>Together, they enable:
+- Complete experimental reproducibility
+- Seamless data flow from bench to PDB
+- Integration of diverse structural biology techniques
+- FAIR data principles throughout the research lifecycle</p>
+<p>This complementary relationship ensures that both the journey (lambda-ber-schema) and destination (mmCIF) of structural biology research are properly documented and preserved.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2252 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/dials/">
+      
+      
+        <link rel="prev" href="../emdb/">
+      
+      
+        <link rel="next" href="../sasdb/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>DIALS - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema-and-dials-alignment-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DIALS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-dials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to DIALS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to DIALS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-dials" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is DIALS?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024-2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dials-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Data Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DIALS Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiments-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments File Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflections-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflections Data Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-ber-schema-dials-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema-DIALS Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda-ber-schema-DIALS Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-workflow-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Workflow Tracking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Integration Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Integration Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-experimental-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Experimental Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complementary-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complementary Strengths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complementary Strengths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Strengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Strengths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-dials-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → DIALS Export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dials-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-serial-crystallography-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Serial Crystallography Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-electron-diffraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Electron Diffraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-time-resolved-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Time-Resolved Studies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-other-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with Other Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison with Other Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-vs-xds-vs-crystfel" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS vs XDS vs CrystFEL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-structure-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Structure Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-deposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Deposition
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-crystallographers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Crystallographers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Developers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Opportunities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Opportunities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-developments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Developments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emerging Techniques
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-dials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to DIALS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to DIALS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-dials" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is DIALS?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024-2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dials-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Data Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DIALS Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiments-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments File Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflections-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflections Data Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-ber-schema-dials-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema-DIALS Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda-ber-schema-DIALS Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-workflow-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Workflow Tracking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Integration Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Integration Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-experimental-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Experimental Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complementary-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complementary Strengths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complementary Strengths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS Strengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Strengths
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-dials-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → DIALS Export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dials-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-serial-crystallography-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Serial Crystallography Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-electron-diffraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Electron Diffraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-time-resolved-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Time-Resolved Studies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-other-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with Other Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison with Other Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dials-vs-xds-vs-crystfel" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIALS vs XDS vs CrystFEL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-structure-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Structure Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-deposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Deposition
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-crystallographers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Crystallographers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Developers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Opportunities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Opportunities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-developments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Developments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emerging Techniques
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema-and-dials-alignment-analysis">lambda-ber-schema and DIALS Alignment Analysis</h1>
+<blockquote>
+<p><strong>Note</strong>: This document was generated using Claude (Anthropic's AI assistant) through automated analysis of documentation and web sources. While efforts have been made to ensure accuracy, there may be errors or outdated information. Please verify critical details with official DIALS documentation.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>This document analyzes the alignment between the lambda-ber-schema schema and DIALS (Diffraction Integration for Advanced Light Sources), examining how lambda-ber-schema can integrate with and complement this modern crystallography data processing framework.</p>
+<h2 id="introduction-to-dials">Introduction to DIALS</h2>
+<h3 id="what-is-dials">What is DIALS?</h3>
+<p>DIALS is an open-source software framework for processing X-ray diffraction data. Key characteristics:</p>
+<ul>
+<li><strong>Purpose</strong>: Automated processing of crystallographic diffraction data</li>
+<li><strong>Architecture</strong>: Modular toolkit written in Python and C++</li>
+<li><strong>Scope</strong>: Supports synchrotron, XFEL, electron, neutron diffraction</li>
+<li><strong>Philosophy</strong>: Extensible framework allowing algorithm development</li>
+<li><strong>Integration</strong>: Built on cctbx crystallographic libraries</li>
+</ul>
+<h3 id="core-components">Core Components</h3>
+<ol>
+<li><strong>dxtbx</strong> (Diffraction Experiment Toolbox)</li>
+<li>Handles experimental geometry</li>
+<li>Reads diverse detector formats</li>
+<li>
+<p>Manages experimental models</p>
+</li>
+<li>
+<p><strong>Processing Pipeline</strong></p>
+</li>
+<li><code>dials.import</code>: Import raw images</li>
+<li><code>dials.find_spots</code>: Spot finding</li>
+<li><code>dials.index</code>: Lattice determination</li>
+<li><code>dials.refine</code>: Geometry refinement</li>
+<li><code>dials.integrate</code>: Intensity extraction</li>
+<li>
+<p><code>dials.scale</code>: Data scaling/merging</p>
+</li>
+<li>
+<p><strong>Data Model</strong></p>
+</li>
+<li>Experiments (.expt): JSON format experimental geometry</li>
+<li>Reflections (.refl): MessagePack format reflection data</li>
+<li>Supports any detector/beamline configuration</li>
+</ol>
+<h3 id="current-status-2024-2025">Current Status (2024-2025)</h3>
+<ul>
+<li><strong>Adoption</strong>: Standard at many synchrotrons worldwide</li>
+<li><strong>Extensions</strong>: Laue-DIALS for polychromatic data</li>
+<li><strong>Electron Diffraction</strong>: 3D ED support for chemical crystallography</li>
+<li><strong>Serial Crystallography</strong>: SSX and XFEL data processing</li>
+<li><strong>Integration</strong>: Part of CCP4, conda-forge distributions</li>
+</ul>
+<h2 id="dials-data-model">DIALS Data Model</h2>
+<h3 id="experiments-file-structure">Experiments File Structure</h3>
+<p>The <code>.expt</code> file contains experimental metadata in JSON:</p>
+<pre><code class="language-json">{
+  &quot;experiment&quot;: [{
+    &quot;identifier&quot;: &quot;unique_id&quot;,
+    &quot;beam&quot;: {
+      &quot;wavelength&quot;: 0.9795,
+      &quot;direction&quot;: [0.0, 0.0, 1.0]
+    },
+    &quot;detector&quot;: {
+      &quot;panels&quot;: [{
+        &quot;origin&quot;: [-100.0, -100.0, -100.0],
+        &quot;fast_axis&quot;: [1.0, 0.0, 0.0],
+        &quot;slow_axis&quot;: [0.0, 1.0, 0.0],
+        &quot;pixel_size&quot;: [0.172, 0.172]
+      }]
+    },
+    &quot;goniometer&quot;: {
+      &quot;rotation_axis&quot;: [1.0, 0.0, 0.0]
+    },
+    &quot;scan&quot;: {
+      &quot;oscillation&quot;: [0.0, 1.0],
+      &quot;image_range&quot;: [1, 360]
+    },
+    &quot;crystal&quot;: {
+      &quot;unit_cell&quot;: [78.84, 78.84, 38.29, 90.0, 90.0, 90.0],
+      &quot;space_group&quot;: &quot;P43212&quot;
+    }
+  }],
+  &quot;imageset&quot;: [{
+    &quot;template&quot;: &quot;/data/images/image_####.cbf&quot;
+  }]
+}
+</code></pre>
+<h3 id="reflections-data-structure">Reflections Data Structure</h3>
+<p>The <code>.refl</code> file contains reflection data in MessagePack format with columns:</p>
+<ul>
+<li><strong>miller_index</strong>: HKL indices</li>
+<li><strong>xyzobs.px.value</strong>: Observed pixel coordinates</li>
+<li><strong>intensity.sum.value</strong>: Integrated intensity</li>
+<li><strong>intensity.sum.variance</strong>: Intensity variance</li>
+<li><strong>flags</strong>: Processing status flags</li>
+</ul>
+<h2 id="lambda-ber-schema-dials-alignment">lambda-ber-schema-DIALS Alignment</h2>
+<h3 id="structural-mapping">Structural Mapping</h3>
+<table>
+<thead>
+<tr>
+<th>DIALS Concept</th>
+<th>lambda-ber-schema Equivalent</th>
+<th>Alignment Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Experiment</strong></td>
+<td><strong>ExperimentRun</strong></td>
+<td>✅ Single data collection session</td>
+</tr>
+<tr>
+<td><strong>Beam</strong></td>
+<td><strong>XRayInstrument.beam_energy</strong></td>
+<td>Wavelength/energy parameters</td>
+</tr>
+<tr>
+<td><strong>Detector</strong></td>
+<td><strong>XRayInstrument.detector_type</strong></td>
+<td>Detector specifications</td>
+</tr>
+<tr>
+<td><strong>Goniometer</strong></td>
+<td><strong>XRayInstrument.goniometer_type</strong></td>
+<td>Rotation apparatus</td>
+</tr>
+<tr>
+<td><strong>Crystal</strong></td>
+<td><strong>Sample + XRayPreparation</strong></td>
+<td>✅ Crystal properties and preparation</td>
+</tr>
+<tr>
+<td><strong>Scan</strong></td>
+<td><strong>DataCollectionStrategy</strong></td>
+<td>✅ Oscillation parameters</td>
+</tr>
+<tr>
+<td><strong>Reflections</strong></td>
+<td><strong>DataFile</strong> (type: reflections)</td>
+<td>Processed reflection data</td>
+</tr>
+<tr>
+<td><strong>ImageSet</strong></td>
+<td><strong>DataFile</strong> (type: diffraction)</td>
+<td>Raw diffraction images</td>
+</tr>
+</tbody>
+</table>
+<h3 id="workflow-alignment">Workflow Alignment</h3>
+<h4 id="dials-processing-pipeline">DIALS Processing Pipeline</h4>
+<pre><code class="language-bash"># DIALS workflow
+dials.import /data/*.cbf
+dials.find_spots imported.expt
+dials.index imported.expt strong.refl
+dials.refine indexed.expt indexed.refl
+dials.integrate refined.expt refined.refl
+dials.scale integrated.expt integrated.refl
+</code></pre>
+<h4 id="lambda-ber-schema-workflow-tracking">lambda-ber-schema Workflow Tracking</h4>
+<pre><code class="language-yaml">WorkflowRun:
+  - workflow_type: import
+    software_name: &quot;DIALS&quot;
+    software_version: &quot;3.18.0&quot;
+    processing_parameters: &quot;template=/data/*.cbf&quot;
+    output_files:
+      - file_name: &quot;imported.expt&quot;
+        data_type: metadata
+
+  - workflow_type: spot_finding
+    processing_parameters: &quot;threshold=5 min_spot_size=3&quot;
+    output_files:
+      - file_name: &quot;strong.refl&quot;
+        data_type: spots
+
+  - workflow_type: indexing
+    processing_parameters: &quot;method=fft3d space_group=P43212&quot;
+    output_files:
+      - file_name: &quot;indexed.expt&quot;
+      - file_name: &quot;indexed.refl&quot;
+</code></pre>
+<h2 id="key-integration-points">Key Integration Points</h2>
+<h3 id="1-experimental-metadata">1. Experimental Metadata</h3>
+<p><strong>DIALS Experiment:</strong></p>
+<pre><code class="language-python">from dxtbx.model.experiment_list import ExperimentList
+experiments = ExperimentList.from_file(&quot;indexed.expt&quot;)
+exp = experiments[0]
+wavelength = exp.beam.get_wavelength()
+unit_cell = exp.crystal.get_unit_cell()
+</code></pre>
+<p><strong>lambda-ber-schema Mapping:</strong></p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: xray_crystallography
+  instrument_id: &quot;beamline_i04&quot;
+  experimental_conditions:
+    wavelength: 0.9795  # From exp.beam
+
+Sample:
+  molecular_composition:
+    crystal_parameters:
+      unit_cell: [78.84, 78.84, 38.29, 90.0, 90.0, 90.0]
+      space_group: &quot;P43212&quot;
+</code></pre>
+<h3 id="2-processing-parameters">2. Processing Parameters</h3>
+<p><strong>DIALS Commands with Options:</strong></p>
+<pre><code class="language-bash">dials.index imported.expt strong.refl \
+  method=fft3d \
+  space_group=P43212 \
+  unit_cell=78,78,38,90,90,90
+</code></pre>
+<p><strong>lambda-ber-schema Capture:</strong></p>
+<pre><code class="language-yaml">WorkflowRun:
+  workflow_type: indexing
+  software_name: &quot;DIALS&quot;
+  processing_parameters: |
+    method: fft3d
+    space_group: P43212
+    unit_cell: 78,78,38,90,90,90
+  quality_metrics:
+    indexed_reflections: 45892
+    indexing_rate: 0.92
+</code></pre>
+<h3 id="3-quality-metrics">3. Quality Metrics</h3>
+<p><strong>DIALS Output:</strong>
+- Resolution estimates
+- Completeness statistics
+- R-merge values
+- CC1/2 correlation</p>
+<p><strong>lambda-ber-schema Tracking:</strong></p>
+<pre><code class="language-yaml">QualityMetrics:
+  resolution: 1.85
+  completeness: 98.5
+  r_factor: 0.065  # R-merge
+  signal_to_noise: 12.4  # I/sigma
+</code></pre>
+<h2 id="complementary-strengths">Complementary Strengths</h2>
+<h3 id="dials-strengths">DIALS Strengths</h3>
+<ul>
+<li><strong>Algorithm Development</strong>: Extensible Python/C++ framework</li>
+<li><strong>Format Support</strong>: Handles any detector format via dxtbx</li>
+<li><strong>Modern Architecture</strong>: Clean separation of concerns</li>
+<li><strong>Active Development</strong>: Regular updates and new features</li>
+<li><strong>Community Tools</strong>: Integration with CCP4, PHENIX</li>
+</ul>
+<h3 id="lambda-ber-schema-strengths">lambda-ber-schema Strengths</h3>
+<ul>
+<li><strong>Workflow Context</strong>: Complete experimental history</li>
+<li><strong>Sample Tracking</strong>: From preparation to structure</li>
+<li><strong>Multi-technique</strong>: Beyond just crystallography</li>
+<li><strong>Processing History</strong>: Multiple attempts and optimizations</li>
+<li><strong>Semantic Integration</strong>: Knowledge graph compatibility</li>
+</ul>
+<h2 id="integration-strategies">Integration Strategies</h2>
+<h3 id="lambda-ber-schema-dials-export">lambda-ber-schema → DIALS Export</h3>
+<pre><code class="language-python">def export_to_dials(experiment_run):
+    &quot;&quot;&quot;Generate DIALS experiment from lambda-ber-schema&quot;&quot;&quot;
+    from dxtbx.model import Beam, Detector, Goniometer
+
+    # Create DIALS models from lambda-ber-schema
+    beam = Beam()
+    beam.set_wavelength(experiment_run.wavelength)
+
+    detector = Detector()
+    # Map lambda-ber-schema instrument to detector parameters
+
+    experiment = {
+        &quot;beam&quot;: beam.to_dict(),
+        &quot;detector&quot;: detector.to_dict(),
+        &quot;imageset&quot;: {
+            &quot;template&quot;: experiment_run.raw_data_location
+        }
+    }
+
+    return experiment
+</code></pre>
+<h3 id="dials-lambda-ber-schema-import">DIALS → lambda-ber-schema Import</h3>
+<pre><code class="language-python">def import_dials_results(expt_file, refl_file):
+    &quot;&quot;&quot;Import DIALS processing into lambda-ber-schema&quot;&quot;&quot;
+    from dxtbx.model.experiment_list import ExperimentList
+    from dials.array_family import flex
+
+    experiments = ExperimentList.from_file(expt_file)
+    reflections = flex.reflection_table.from_file(refl_file)
+
+    workflow_run = {
+        &quot;software_name&quot;: &quot;DIALS&quot;,
+        &quot;workflow_type&quot;: &quot;integration&quot;,
+        &quot;processing_parameters&quot;: {
+            &quot;n_reflections&quot;: len(reflections),
+            &quot;unit_cell&quot;: experiments[0].crystal.get_unit_cell().parameters()
+        },
+        &quot;output_files&quot;: [
+            {&quot;file_name&quot;: expt_file, &quot;data_type&quot;: &quot;metadata&quot;},
+            {&quot;file_name&quot;: refl_file, &quot;data_type&quot;: &quot;reflections&quot;}
+        ]
+    }
+
+    return workflow_run
+</code></pre>
+<h2 id="advanced-integration-features">Advanced Integration Features</h2>
+<h3 id="1-serial-crystallography-support">1. Serial Crystallography Support</h3>
+<p>Both DIALS and lambda-ber-schema handle serial data:</p>
+<pre><code class="language-yaml"># lambda-ber-schema serial crystallography
+ExperimentRun:
+  technique: serial_crystallography
+  data_collection_strategy:
+    collection_mode: still
+    total_frames: 10000
+
+WorkflowRun:
+  software_name: &quot;DIALS&quot;
+  workflow_type: &quot;ssx_processing&quot;
+  processing_parameters:
+    indexing_method: &quot;sequences&quot;
+    multi_lattice: true
+</code></pre>
+<h3 id="2-electron-diffraction">2. Electron Diffraction</h3>
+<p>3D ED support in both systems:</p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: electron_diffraction
+  instrument_id: &quot;tem_instrument&quot;
+
+WorkflowRun:
+  software_name: &quot;DIALS&quot;
+  processing_parameters:
+    electron_diffraction: true
+    thickness_correction: true
+</code></pre>
+<h3 id="3-time-resolved-studies">3. Time-Resolved Studies</h3>
+<p>Track time-resolved experiments:</p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: time_resolved_crystallography
+  metadata:
+    pump_probe_delay: &quot;100ps&quot;
+    laser_wavelength: 532
+
+WorkflowRun:
+  processing_parameters:
+    reference_dataset: &quot;dark_state.expt&quot;
+    difference_maps: true
+</code></pre>
+<h2 id="comparison-with-other-packages">Comparison with Other Packages</h2>
+<h3 id="dials-vs-xds-vs-crystfel">DIALS vs XDS vs CrystFEL</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>DIALS</th>
+<th>XDS</th>
+<th>CrystFEL</th>
+<th>lambda-ber-schema Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Modular toolkit</td>
+<td>Monolithic</td>
+<td>Serial-focused</td>
+<td>Workflow tracking</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Python/C++</td>
+<td>Fortran</td>
+<td>C</td>
+<td>Schema/metadata</td>
+</tr>
+<tr>
+<td><strong>Extensibility</strong></td>
+<td>High</td>
+<td>Limited</td>
+<td>Moderate</td>
+<td>Integration layer</td>
+</tr>
+<tr>
+<td><strong>Serial Data</strong></td>
+<td>Yes</td>
+<td>Limited</td>
+<td>Optimized</td>
+<td>Unified tracking</td>
+</tr>
+<tr>
+<td><strong>Format Support</strong></td>
+<td>Extensive</td>
+<td>Standard</td>
+<td>Serial formats</td>
+<td>Format-agnostic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="integration-strategy">Integration Strategy</h3>
+<p>lambda-ber-schema can track processing with any package:</p>
+<pre><code class="language-yaml">WorkflowRun:
+  - software_name: &quot;XDS&quot;
+    workflow_type: &quot;integration&quot;
+  - software_name: &quot;DIALS&quot;  
+    workflow_type: &quot;integration&quot;
+  - software_name: &quot;CrystFEL&quot;
+    workflow_type: &quot;serial_merge&quot;
+</code></pre>
+<h2 id="recommended-workflow">Recommended Workflow</h2>
+<h3 id="1-data-collection">1. Data Collection</h3>
+<pre><code>lambda-ber-schema: Track sample, crystal preparation, mounting
+         ↓
+Collect diffraction data at beamline
+         ↓
+Store metadata in lambda-ber-schema
+</code></pre>
+<h3 id="2-processing-pipeline">2. Processing Pipeline</h3>
+<pre><code>DIALS: Process diffraction data
+         ↓
+Track each step in lambda-ber-schema WorkflowRun
+         ↓
+Capture quality metrics
+</code></pre>
+<h3 id="3-structure-solution">3. Structure Solution</h3>
+<pre><code>External tools: Phasing, model building
+         ↓
+Track in lambda-ber-schema WorkflowRun
+         ↓
+Link to final coordinates
+</code></pre>
+<h3 id="4-deposition">4. Deposition</h3>
+<pre><code>Generate mmCIF from DIALS + lambda-ber-schema metadata
+         ↓
+Deposit to PDB
+         ↓
+Update lambda-ber-schema with PDB ID
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="for-crystallographers">For Crystallographers</h3>
+<ol>
+<li><strong>Track Everything</strong>: Use lambda-ber-schema for complete experimental record</li>
+<li><strong>Parameter Exploration</strong>: Document multiple processing attempts</li>
+<li><strong>Quality Metrics</strong>: Capture resolution, completeness at each stage</li>
+<li><strong>Version Control</strong>: Track DIALS version for reproducibility</li>
+</ol>
+<h3 id="for-developers">For Developers</h3>
+<ol>
+<li><strong>Use dxtbx Models</strong>: Leverage DIALS geometry descriptions</li>
+<li><strong>MessagePack Integration</strong>: Read/write reflection tables</li>
+<li><strong>JSON Experiments</strong>: Parse and generate experiment files</li>
+<li><strong>Pipeline Automation</strong>: Script DIALS commands with lambda-ber-schema tracking</li>
+</ol>
+<h2 id="future-opportunities">Future Opportunities</h2>
+<h3 id="technical-developments">Technical Developments</h3>
+<ol>
+<li><strong>Direct Integration</strong></li>
+<li>DIALS plugin for lambda-ber-schema export</li>
+<li>Automatic workflow capture</li>
+<li>
+<p>Real-time metric tracking</p>
+</li>
+<li>
+<p><strong>Enhanced Metadata</strong></p>
+</li>
+<li>Richer processing provenance</li>
+<li>Algorithm parameter tracking</li>
+<li>
+<p>Decision point documentation</p>
+</li>
+<li>
+<p><strong>Machine Learning</strong></p>
+</li>
+<li>Processing parameter prediction</li>
+<li>Quality assessment</li>
+<li>Automated optimization</li>
+</ol>
+<h3 id="emerging-techniques">Emerging Techniques</h3>
+<ul>
+<li><strong>Pink-beam Laue</strong>: Laue-DIALS integration</li>
+<li><strong>MicroED</strong>: Enhanced electron diffraction support</li>
+<li><strong>Multi-crystal</strong>: Complex merging strategies</li>
+<li><strong>XFEL</strong>: Improved serial processing</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>lambda-ber-schema and DIALS form a <strong>complementary ecosystem</strong> for crystallography data management:</p>
+<ul>
+<li><strong>DIALS</strong> provides state-of-the-art diffraction data processing with:</li>
+<li>Modern, extensible architecture</li>
+<li>Comprehensive format support</li>
+<li>Active algorithm development</li>
+<li>
+<p>Community integration</p>
+</li>
+<li>
+<p><strong>lambda-ber-schema</strong> adds comprehensive experimental context through:</p>
+</li>
+<li>Sample-to-structure tracking</li>
+<li>Multi-technique integration</li>
+<li>Processing provenance</li>
+<li>Semantic metadata</li>
+</ul>
+<p>The optimal strategy involves:
+1. Using DIALS for crystallographic data processing
+2. Tracking complete workflows in lambda-ber-schema
+3. Maintaining processing parameter history
+4. Enabling reproducibility through comprehensive documentation</p>
+<p>This integration ensures both the processing pipeline (DIALS) and the experimental context (lambda-ber-schema) are properly captured, enabling reproducible crystallographic research and facilitating method development in structural biology.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

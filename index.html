@@ -1,0 +1,3326 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/">
+      
+      
+      
+        <link rel="next" href="background/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Organization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#biological-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Biological Materials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Products
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Organization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#biological-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Biological Materials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Products
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema">lambda-ber-schema</h1>
+<p>lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
+from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
+techniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and 
+spectroscopic imaging.</p>
+<h2 id="schema-organization">Schema Organization</h2>
+<p>The schema follows a hierarchical structure that mirrors how structural biology research is organized:</p>
+<p>The top-level entity is a <a href="Dataset/">Dataset</a>, which serves as a container for related research.
+A dataset might represent all data from a specific grant, collaboration, or publication.</p>
+<p>Each dataset contains one or more <a href="Study/">Studies</a>, which are focused investigations of specific
+biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+or "Structure of the human ribosome under different conditions."</p>
+<p>Within each study, you'll find:</p>
+<h3 id="biological-materials">Biological Materials</h3>
+<ul>
+<li>
+<p><a href="Sample/">Samples</a>: The biological specimens being studied (proteins, nucleic acids, complexes, 
+  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and 
+  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.</p>
+</li>
+<li>
+<p><a href="SamplePreparation/">Sample Preparations</a>: How samples were prepared for specific techniques.
+  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
+  X-ray studies, or staining protocols for fluorescence microscopy.</p>
+</li>
+</ul>
+<h3 id="data-collection">Data Collection</h3>
+<ul>
+<li>
+<p><a href="Instrument/">Instruments</a>: The equipment used, from Titan Krios microscopes to synchrotron 
+  beamlines. Each instrument type (<a href="CryoEMInstrument/">CryoEMInstrument</a>, 
+  <a href="XRayInstrument/">XRayInstrument</a>, <a href="SAXSInstrument/">SAXSInstrument</a>) has specific parameters
+  like accelerating voltage, detector type, or beam energy.</p>
+</li>
+<li>
+<p><a href="ExperimentRun/">Experiment Runs</a>: Individual data collection sessions that link samples to 
+  instruments. An experiment run captures when, how, and under what conditions data was collected,
+  including quality metrics like resolution and completeness.</p>
+</li>
+</ul>
+<h3 id="data-processing">Data Processing</h3>
+<ul>
+<li><a href="WorkflowRun/">Workflow Runs</a>: Computational processing steps applied to raw data. This includes
+  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
+  for crystallography. Each workflow tracks the software used, parameters, and computational resources.</li>
+</ul>
+<h3 id="data-products">Data Products</h3>
+<ul>
+<li>
+<p><a href="DataFile/">Data Files</a>: Any files generated or used, from raw data to final models. Each file
+  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).</p>
+</li>
+<li>
+<p><a href="Image/">Images</a>: Specialized classes for different imaging modalities:</p>
+</li>
+<li><a href="Image2D/">Image2D</a>: Micrographs, diffraction patterns</li>
+<li><a href="Image3D/">Image3D</a>: 3D reconstructions, tomograms</li>
+<li><a href="FTIRImage/">FTIRImage</a>: Molecular composition maps from infrared spectroscopy</li>
+<li><a href="FluorescenceImage/">FluorescenceImage</a>: Fluorophore-labeled cellular components</li>
+<li><a href="OpticalImage/">OpticalImage</a>: Brightfield/phase contrast microscopy</li>
+<li><a href="XRFImage/">XRFImage</a>: Elemental distribution maps</li>
+</ul>
+<h2 id="example-usage">Example Usage</h2>
+<p>A typical cryo-EM study of a protein complex would include:
+1. Sample records for the purified complex with molecular weight and buffer composition
+2. Grid preparation details with vitrification parameters
+3. Microscope specifications and data collection parameters
+4. Processing workflows from motion correction through 3D refinement
+5. Final reconstructed volumes and fitted atomic models</p>
+<p>A multimodal plant imaging study might combine:
+1. Whole plant optical imaging for morphology
+2. XRF imaging to map nutrient distribution
+3. FTIR spectroscopy to identify stress-related molecular changes
+4. Fluorescence microscopy to track specific protein responses
+5. Cryo-EM of isolated organelles for ultrastructural details</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Technique-agnostic core</strong>: The same schema handles data from any structural biology method</li>
+<li><strong>Rich metadata</strong>: Comprehensive tracking from sample to structure</li>
+<li><strong>Workflow provenance</strong>: Complete computational reproducibility</li>
+<li><strong>Multimodal support</strong>: Seamlessly integrate data across scales and techniques</li>
+<li><strong>Standards-compliant</strong>: Follows FAIR principles and integrates with existing ontologies</li>
+</ul>
+<p>URI: https://w3id.org/lambda-ber-schema/</p>
+<p>Name: lambda-ber-schema</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AttributeGroup/">AttributeGroup</a></td>
+<td>A grouping of related data attributes that form a logical unit</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiophysicalProperty/">BiophysicalProperty</a></td>
+<td>Measured or calculated biophysical properties</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BufferComposition/">BufferComposition</a></td>
+<td>Buffer composition for sample storage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ComputeResources/">ComputeResources</a></td>
+<td>Computational resources used</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ConformationalState/">ConformationalState</a></td>
+<td>Individual conformational state</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DatabaseCrossReference/">DatabaseCrossReference</a></td>
+<td>Cross-references to external databases</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataCollectionStrategy/">DataCollectionStrategy</a></td>
+<td>Strategy for data collection</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentalConditions/">ExperimentalConditions</a></td>
+<td>Environmental and experimental conditions</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImageFeature/">ImageFeature</a></td>
+<td>Semantic annotations describing features identified in images using controlle...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LigandInteraction/">LigandInteraction</a></td>
+<td>Small molecule/ligand interactions with proteins</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularComposition/">MolecularComposition</a></td>
+<td>Molecular composition of a sample</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QualityMetrics/">QualityMetrics</a></td>
+<td>Quality metrics for experiments</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StorageConditions/">StorageConditions</a></td>
+<td>Storage conditions for samples</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TechniqueSpecificPreparation/">TechniqueSpecificPreparation</a></td>
+<td>Base class for technique-specific preparation details</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CryoEMPreparation/">CryoEMPreparation</a></td>
+<td>Cryo-EM specific sample preparation</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SAXSPreparation/">SAXSPreparation</a></td>
+<td>SAXS/WAXS specific preparation</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayPreparation/">XRayPreparation</a></td>
+<td>X-ray crystallography specific preparation</td>
+</tr>
+<tr>
+<td><a href="NamedThing/">NamedThing</a></td>
+<td>A named thing</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AggregatedProteinView/">AggregatedProteinView</a></td>
+<td>Aggregated view of all structural and functional data for a protein</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ConformationalEnsemble/">ConformationalEnsemble</a></td>
+<td>Ensemble of conformational states for a protein</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataFile/">DataFile</a></td>
+<td>A data file generated or used in the study</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Dataset/">Dataset</a></td>
+<td>A collection of studies</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentRun/">ExperimentRun</a></td>
+<td>An experimental data collection session</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Image/">Image</a></td>
+<td>An image file from structural biology experiments</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FTIRImage/">FTIRImage</a></td>
+<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Image2D/">Image2D</a></td>
+<td>A 2D image (micrograph, diffraction pattern)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FluorescenceImage/">FluorescenceImage</a></td>
+<td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OpticalImage/">OpticalImage</a></td>
+<td>Visible light optical microscopy or photography image</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRFImage/">XRFImage</a></td>
+<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Image3D/">Image3D</a></td>
+<td>A 3D volume or tomogram</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Instrument/">Instrument</a></td>
+<td>An instrument used to collect data</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CryoEMInstrument/">CryoEMInstrument</a></td>
+<td>Cryo-EM microscope specifications</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SAXSInstrument/">SAXSInstrument</a></td>
+<td>SAXS/WAXS instrument specifications</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="XRayInstrument/">XRayInstrument</a></td>
+<td>X-ray diffractometer or synchrotron beamline specifications</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OntologyTerm/">OntologyTerm</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinAnnotation/">ProteinAnnotation</a></td>
+<td>Base class for all protein-related functional and structural annotations</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EvolutionaryConservation/">EvolutionaryConservation</a></td>
+<td>Evolutionary conservation information</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MutationEffect/">MutationEffect</a></td>
+<td>Effects of mutations and variants on protein structure and function</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PostTranslationalModification/">PostTranslationalModification</a></td>
+<td>Post-translational modifications observed or predicted</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
+<td>Protein-protein interactions and interfaces</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StructuralFeature/">StructuralFeature</a></td>
+<td>Structural features and properties of protein regions</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinConstruct/">ProteinConstruct</a></td>
+<td>Detailed information about a protein construct including cloning and sequence...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
+<td>A biological sample used in structural biology experiments</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SamplePreparation/">SamplePreparation</a></td>
+<td>A process that prepares a sample for imaging</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Study/">Study</a></td>
+<td>A focused research investigation that groups related samples, experiments, an...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="WorkflowRun/">WorkflowRun</a></td>
+<td>A computational processing workflow execution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="accelerating_voltage/">accelerating_voltage</a></td>
+<td>Accelerating voltage in kV</td>
+</tr>
+<tr>
+<td><a href="acquisition_date/">acquisition_date</a></td>
+<td>Date image was acquired</td>
+</tr>
+<tr>
+<td><a href="additional_software/">additional_software</a></td>
+<td>Additional software used in pipeline</td>
+</tr>
+<tr>
+<td><a href="additives/">additives</a></td>
+<td>Additional additives in the buffer</td>
+</tr>
+<tr>
+<td><a href="affinity_column/">affinity_column</a></td>
+<td>Affinity column specifications</td>
+</tr>
+<tr>
+<td><a href="affinity_type/">affinity_type</a></td>
+<td>Type of affinity chromatography</td>
+</tr>
+<tr>
+<td><a href="aggregated_protein_views/">aggregated_protein_views</a></td>
+<td>Aggregated functional and structural annotations for proteins in this study</td>
+</tr>
+<tr>
+<td><a href="aggregation_assessment/">aggregation_assessment</a></td>
+<td>Assessment of protein aggregation state</td>
+</tr>
+<tr>
+<td><a href="alignment_depth/">alignment_depth</a></td>
+<td>Number of sequences in alignment</td>
+</tr>
+<tr>
+<td><a href="aliquoting/">aliquoting</a></td>
+<td>How the protein was aliquoted for storage</td>
+</tr>
+<tr>
+<td><a href="allele_frequency/">allele_frequency</a></td>
+<td>Population allele frequency</td>
+</tr>
+<tr>
+<td><a href="anatomy/">anatomy</a></td>
+<td>Anatomical part or tissue (e</td>
+</tr>
+<tr>
+<td><a href="annotation_method/">annotation_method</a></td>
+<td>Computational or experimental method used</td>
+</tr>
+<tr>
+<td><a href="anom_corr/">anom_corr</a></td>
+<td>Anomalous correlation</td>
+</tr>
+<tr>
+<td><a href="anom_sig_ano/">anom_sig_ano</a></td>
+<td>Anomalous signal strength</td>
+</tr>
+<tr>
+<td><a href="anomalous_used/">anomalous_used</a></td>
+<td>Whether anomalous signal was used</td>
+</tr>
+<tr>
+<td><a href="antibiotic_selection/">antibiotic_selection</a></td>
+<td>Antibiotic or selection agent used</td>
+</tr>
+<tr>
+<td><a href="apodization_function/">apodization_function</a></td>
+<td>Mathematical function used for apodization</td>
+</tr>
+<tr>
+<td><a href="astigmatism/">astigmatism</a></td>
+<td>Astigmatism value</td>
+</tr>
+<tr>
+<td><a href="atmosphere/">atmosphere</a></td>
+<td>Storage atmosphere conditions</td>
+</tr>
+<tr>
+<td><a href="attenuator/">attenuator</a></td>
+<td>Attenuator setting used</td>
+</tr>
+<tr>
+<td><a href="autoloader_capacity/">autoloader_capacity</a></td>
+<td>Number of grids the autoloader can hold</td>
+</tr>
+<tr>
+<td><a href="average_b_factor_a2/">average_b_factor_a2</a></td>
+<td>Average B-factor in Angstroms squared</td>
+</tr>
+<tr>
+<td><a href="backbone_flexibility/">backbone_flexibility</a></td>
+<td>B-factor or flexibility measure</td>
+</tr>
+<tr>
+<td><a href="background_correction/">background_correction</a></td>
+<td>Method used for background correction</td>
+</tr>
+<tr>
+<td><a href="beam_center_x_px/">beam_center_x_px</a></td>
+<td>Beam center X coordinate in pixels</td>
+</tr>
+<tr>
+<td><a href="beam_center_y_px/">beam_center_y_px</a></td>
+<td>Beam center Y coordinate in pixels</td>
+</tr>
+<tr>
+<td><a href="beam_energy/">beam_energy</a></td>
+<td>X-ray beam energy in keV</td>
+</tr>
+<tr>
+<td><a href="beam_size/">beam_size</a></td>
+<td>X-ray beam size in micrometers</td>
+</tr>
+<tr>
+<td><a href="beam_size_max/">beam_size_max</a></td>
+<td>Maximum beam size in micrometers</td>
+</tr>
+<tr>
+<td><a href="beam_size_min/">beam_size_min</a></td>
+<td>Minimum beam size in micrometers</td>
+</tr>
+<tr>
+<td><a href="beam_size_um/">beam_size_um</a></td>
+<td>Beam size in micrometers</td>
+</tr>
+<tr>
+<td><a href="binding_affinity/">binding_affinity</a></td>
+<td>Binding affinity value</td>
+</tr>
+<tr>
+<td><a href="binding_affinity_type/">binding_affinity_type</a></td>
+<td>Type of binding measurement (Kd, Ki, IC50)</td>
+</tr>
+<tr>
+<td><a href="binding_affinity_unit/">binding_affinity_unit</a></td>
+<td>Unit of binding affinity</td>
+</tr>
+<tr>
+<td><a href="binding_energy/">binding_energy</a></td>
+<td>Calculated binding energy (kcal/mol)</td>
+</tr>
+<tr>
+<td><a href="binding_site_residues/">binding_site_residues</a></td>
+<td>Residues involved in ligand binding</td>
+</tr>
+<tr>
+<td><a href="biological_assembly/">biological_assembly</a></td>
+<td>Whether this represents a biological assembly</td>
+</tr>
+<tr>
+<td><a href="biophysical_properties/">biophysical_properties</a></td>
+<td>Measured or predicted biophysical properties</td>
+</tr>
+<tr>
+<td><a href="blot_force/">blot_force</a></td>
+<td>Blotting force setting</td>
+</tr>
+<tr>
+<td><a href="blot_time/">blot_time</a></td>
+<td>Blotting time in seconds</td>
+</tr>
+<tr>
+<td><a href="buffer_composition/">buffer_composition</a></td>
+<td>Buffer composition including pH, salts, additives</td>
+</tr>
+<tr>
+<td><a href="buffer_matching_protocol/">buffer_matching_protocol</a></td>
+<td>Protocol for buffer matching</td>
+</tr>
+<tr>
+<td><a href="calibration_standard/">calibration_standard</a></td>
+<td>Reference standard used for calibration</td>
+</tr>
+<tr>
+<td><a href="cc_half/">cc_half</a></td>
+<td>Half-set correlation coefficient CC(1/2)</td>
+</tr>
+<tr>
+<td><a href="cell_path_length/">cell_path_length</a></td>
+<td>Path length in mm</td>
+</tr>
+<tr>
+<td><a href="cell_type/">cell_type</a></td>
+<td>Cell type if applicable (e</td>
+</tr>
+<tr>
+<td><a href="chain_id/">chain_id</a></td>
+<td>Chain identifier in the PDB structure</td>
+</tr>
+<tr>
+<td><a href="chamber_temperature/">chamber_temperature</a></td>
+<td>Chamber temperature in Celsius</td>
+</tr>
+<tr>
+<td><a href="channel_name/">channel_name</a></td>
+<td>Name of the fluorescence channel (e</td>
+</tr>
+<tr>
+<td><a href="characteristic_features/">characteristic_features</a></td>
+<td>Key features of this conformation</td>
+</tr>
+<tr>
+<td><a href="checksum/">checksum</a></td>
+<td>SHA-256 checksum for data integrity</td>
+</tr>
+<tr>
+<td><a href="clashscore/">clashscore</a></td>
+<td>MolProbity clashscore</td>
+</tr>
+<tr>
+<td><a href="cleavage_site/">cleavage_site</a></td>
+<td>Protease cleavage site sequence</td>
+</tr>
+<tr>
+<td><a href="cleavage_temperature_c/">cleavage_temperature_c</a></td>
+<td>Temperature during cleavage in Celsius</td>
+</tr>
+<tr>
+<td><a href="cleavage_time_h/">cleavage_time_h</a></td>
+<td>Duration of protease cleavage in hours</td>
+</tr>
+<tr>
+<td><a href="clinical_significance/">clinical_significance</a></td>
+<td>Clinical significance</td>
+</tr>
+<tr>
+<td><a href="cloning_method/">cloning_method</a></td>
+<td>Method used for cloning (e</td>
+</tr>
+<tr>
+<td><a href="clustering_method/">clustering_method</a></td>
+<td>Method used for conformational clustering</td>
+</tr>
+<tr>
+<td><a href="codon_optimization_organism/">codon_optimization_organism</a></td>
+<td>Organism for which codons were optimized</td>
+</tr>
+<tr>
+<td><a href="coevolved_residues/">coevolved_residues</a></td>
+<td>Pairs of coevolved residues</td>
+</tr>
+<tr>
+<td><a href="collection_mode/">collection_mode</a></td>
+<td>Mode of data collection</td>
+</tr>
+<tr>
+<td><a href="color_channels/">color_channels</a></td>
+<td>Color channels present (e</td>
+</tr>
+<tr>
+<td><a href="completed_at/">completed_at</a></td>
+<td>Workflow completion time</td>
+</tr>
+<tr>
+<td><a href="completeness/">completeness</a></td>
+<td>Data completeness percentage</td>
+</tr>
+<tr>
+<td><a href="completeness_high_res_shell_percent/">completeness_high_res_shell_percent</a></td>
+<td>Completeness in highest resolution shell</td>
+</tr>
+<tr>
+<td><a href="complex_stability/">complex_stability</a></td>
+<td>Stability assessment of the complex</td>
+</tr>
+<tr>
+<td><a href="components/">components</a></td>
+<td>Buffer components and their concentrations</td>
+</tr>
+<tr>
+<td><a href="compute_resources/">compute_resources</a></td>
+<td>Computational resources used</td>
+</tr>
+<tr>
+<td><a href="concentration/">concentration</a></td>
+<td>Sample concentration in mg/mL or µM</td>
+</tr>
+<tr>
+<td><a href="concentration_method/">concentration_method</a></td>
+<td>Method used to concentrate protein</td>
+</tr>
+<tr>
+<td><a href="concentration_series/">concentration_series</a></td>
+<td>Concentration values for series measurements</td>
+</tr>
+<tr>
+<td><a href="concentration_unit/">concentration_unit</a></td>
+<td>Unit of concentration measurement</td>
+</tr>
+<tr>
+<td><a href="confidence_score/">confidence_score</a></td>
+<td>Confidence score for the annotation (0-1)</td>
+</tr>
+<tr>
+<td><a href="conformational_ensemble/">conformational_ensemble</a></td>
+<td>Conformational states and dynamics</td>
+</tr>
+<tr>
+<td><a href="conformational_state/">conformational_state</a></td>
+<td>Conformational state descriptor</td>
+</tr>
+<tr>
+<td><a href="conformational_states/">conformational_states</a></td>
+<td>Individual conformational states</td>
+</tr>
+<tr>
+<td><a href="conservation_method/">conservation_method</a></td>
+<td>Method used for conservation analysis</td>
+</tr>
+<tr>
+<td><a href="conservation_score/">conservation_score</a></td>
+<td>Evolutionary conservation score</td>
+</tr>
+<tr>
+<td><a href="conserved_residues/">conserved_residues</a></td>
+<td>Highly conserved residues</td>
+</tr>
+<tr>
+<td><a href="construct_description/">construct_description</a></td>
+<td>Human-readable description of the construct</td>
+</tr>
+<tr>
+<td><a href="construct_id/">construct_id</a></td>
+<td>Unique identifier for this construct</td>
+</tr>
+<tr>
+<td><a href="contrast_method/">contrast_method</a></td>
+<td>Contrast enhancement method used</td>
+</tr>
+<tr>
+<td><a href="cpu_hours/">cpu_hours</a></td>
+<td>CPU hours used</td>
+</tr>
+<tr>
+<td><a href="creation_date/">creation_date</a></td>
+<td>File creation date</td>
+</tr>
+<tr>
+<td><a href="cross_references/">cross_references</a></td>
+<td>Database cross-references</td>
+</tr>
+<tr>
+<td><a href="cryoprotectant/">cryoprotectant</a></td>
+<td>Cryoprotectant used</td>
+</tr>
+<tr>
+<td><a href="cryoprotectant_concentration/">cryoprotectant_concentration</a></td>
+<td>Cryoprotectant concentration percentage</td>
+</tr>
+<tr>
+<td><a href="crystal_cooling_capability/">crystal_cooling_capability</a></td>
+<td>Crystal cooling system available</td>
+</tr>
+<tr>
+<td><a href="crystal_notes/">crystal_notes</a></td>
+<td>Additional notes about crystal quality and handling</td>
+</tr>
+<tr>
+<td><a href="crystal_size_um/">crystal_size_um</a></td>
+<td>Crystal dimensions in micrometers</td>
+</tr>
+<tr>
+<td><a href="crystallization_conditions/">crystallization_conditions</a></td>
+<td>Detailed crystallization conditions</td>
+</tr>
+<tr>
+<td><a href="crystallization_method/">crystallization_method</a></td>
+<td>Method used for crystallization</td>
+</tr>
+<tr>
+<td><a href="cs_corrector/">cs_corrector</a></td>
+<td>Spherical aberration corrector present</td>
+</tr>
+<tr>
+<td><a href="culture_volume_l/">culture_volume_l</a></td>
+<td>Culture volume in liters</td>
+</tr>
+<tr>
+<td><a href="current_status/">current_status</a></td>
+<td>Current operational status</td>
+</tr>
+<tr>
+<td><a href="data_collection_strategy/">data_collection_strategy</a></td>
+<td>Strategy for data collection</td>
+</tr>
+<tr>
+<td><a href="data_files/">data_files</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="data_type/">data_type</a></td>
+<td>Type of data in the file</td>
+</tr>
+<tr>
+<td><a href="database_cross_references/">database_cross_references</a></td>
+<td>Cross-references to external databases</td>
+</tr>
+<tr>
+<td><a href="database_id/">database_id</a></td>
+<td>Identifier in the external database</td>
+</tr>
+<tr>
+<td><a href="database_name/">database_name</a></td>
+<td>Name of the external database</td>
+</tr>
+<tr>
+<td><a href="database_url/">database_url</a></td>
+<td>URL to the database entry</td>
+</tr>
+<tr>
+<td><a href="definition/">definition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="defocus/">defocus</a></td>
+<td>Defocus value in micrometers</td>
+</tr>
+<tr>
+<td><a href="delta_delta_g/">delta_delta_g</a></td>
+<td>Change in folding free energy (kcal/mol)</td>
+</tr>
+<tr>
+<td><a href="deposited_to_pdb/">deposited_to_pdb</a></td>
+<td>Whether structure was deposited to PDB</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="detector/">detector</a></td>
+<td>Detector model/type</td>
+</tr>
+<tr>
+<td><a href="detector_dimensions/">detector_dimensions</a></td>
+<td>Detector dimensions in pixels (e</td>
+</tr>
+<tr>
+<td><a href="detector_distance_max/">detector_distance_max</a></td>
+<td>Maximum detector distance in mm</td>
+</tr>
+<tr>
+<td><a href="detector_distance_min/">detector_distance_min</a></td>
+<td>Minimum detector distance in mm</td>
+</tr>
+<tr>
+<td><a href="detector_distance_mm/">detector_distance_mm</a></td>
+<td>Detector distance in millimeters</td>
+</tr>
+<tr>
+<td><a href="detector_type/">detector_type</a></td>
+<td>Type of detector</td>
+</tr>
+<tr>
+<td><a href="dimensions_x/">dimensions_x</a></td>
+<td>Image width in pixels</td>
+</tr>
+<tr>
+<td><a href="dimensions_y/">dimensions_y</a></td>
+<td>Image height in pixels</td>
+</tr>
+<tr>
+<td><a href="dimensions_z/">dimensions_z</a></td>
+<td>Image depth in pixels/slices</td>
+</tr>
+<tr>
+<td><a href="disease_association/">disease_association</a></td>
+<td>Associated disease or phenotype</td>
+</tr>
+<tr>
+<td><a href="disorder_probability/">disorder_probability</a></td>
+<td>Probability of disorder (0-1)</td>
+</tr>
+<tr>
+<td><a href="dissociation_constant/">dissociation_constant</a></td>
+<td>Experimental Kd if available</td>
+</tr>
+<tr>
+<td><a href="domain_assignment/">domain_assignment</a></td>
+<td>Domain database assignment (CATH, SCOP, Pfam)</td>
+</tr>
+<tr>
+<td><a href="domain_id/">domain_id</a></td>
+<td>Domain identifier from domain database</td>
+</tr>
+<tr>
+<td><a href="dose/">dose</a></td>
+<td>Electron dose in e-/Å²</td>
+</tr>
+<tr>
+<td><a href="dose_per_frame/">dose_per_frame</a></td>
+<td>Dose per frame</td>
+</tr>
+<tr>
+<td><a href="drop_ratio_protein_to_reservoir/">drop_ratio_protein_to_reservoir</a></td>
+<td>Ratio of protein to reservoir solution in drop (e</td>
+</tr>
+<tr>
+<td><a href="drop_volume_nl/">drop_volume_nl</a></td>
+<td>Total drop volume in nanoliters</td>
+</tr>
+<tr>
+<td><a href="druggability_score/">druggability_score</a></td>
+<td>Druggability score of the binding site</td>
+</tr>
+<tr>
+<td><a href="duration/">duration</a></td>
+<td>Storage duration</td>
+</tr>
+<tr>
+<td><a href="dwell_time/">dwell_time</a></td>
+<td>Dwell time per pixel in milliseconds</td>
+</tr>
+<tr>
+<td><a href="ec_number/">ec_number</a></td>
+<td>Enzyme Commission number for catalytic sites</td>
+</tr>
+<tr>
+<td><a href="effect_on_function/">effect_on_function</a></td>
+<td>Effect on protein function</td>
+</tr>
+<tr>
+<td><a href="effect_on_stability/">effect_on_stability</a></td>
+<td>Effect on protein stability</td>
+</tr>
+<tr>
+<td><a href="elements_measured/">elements_measured</a></td>
+<td>Elements detected and measured</td>
+</tr>
+<tr>
+<td><a href="elution_buffer/">elution_buffer</a></td>
+<td>Buffer composition for elution</td>
+</tr>
+<tr>
+<td><a href="emission_filter/">emission_filter</a></td>
+<td>Specifications of the emission filter</td>
+</tr>
+<tr>
+<td><a href="emission_wavelength/">emission_wavelength</a></td>
+<td>Emission wavelength in nanometers</td>
+</tr>
+<tr>
+<td><a href="energy_landscape/">energy_landscape</a></td>
+<td>Description of the energy landscape</td>
+</tr>
+<tr>
+<td><a href="energy_max/">energy_max</a></td>
+<td>Maximum X-ray energy in keV</td>
+</tr>
+<tr>
+<td><a href="energy_min/">energy_min</a></td>
+<td>Minimum X-ray energy in keV</td>
+</tr>
+<tr>
+<td><a href="enzyme/">enzyme</a></td>
+<td>Enzyme responsible for modification</td>
+</tr>
+<tr>
+<td><a href="error/">error</a></td>
+<td>Experimental error or uncertainty</td>
+</tr>
+<tr>
+<td><a href="evidence_code/">evidence_code</a></td>
+<td>Evidence and Conclusion Ontology (ECO) code</td>
+</tr>
+<tr>
+<td><a href="evidence_type/">evidence_type</a></td>
+<td>Type of evidence supporting this annotation</td>
+</tr>
+<tr>
+<td><a href="evolutionary_conservation/">evolutionary_conservation</a></td>
+<td>Evolutionary conservation data</td>
+</tr>
+<tr>
+<td><a href="excitation_filter/">excitation_filter</a></td>
+<td>Specifications of the excitation filter</td>
+</tr>
+<tr>
+<td><a href="excitation_wavelength/">excitation_wavelength</a></td>
+<td>Excitation wavelength in nanometers</td>
+</tr>
+<tr>
+<td><a href="experiment_code/">experiment_code</a></td>
+<td>Human-friendly laboratory or facility identifier for the experiment (e</td>
+</tr>
+<tr>
+<td><a href="experiment_date/">experiment_date</a></td>
+<td>Date of the experiment</td>
+</tr>
+<tr>
+<td><a href="experiment_id/">experiment_id</a></td>
+<td>Reference to the source experiment</td>
+</tr>
+<tr>
+<td><a href="experimental_conditions/">experimental_conditions</a></td>
+<td>Environmental and experimental conditions</td>
+</tr>
+<tr>
+<td><a href="experimental_method/">experimental_method</a></td>
+<td>Specific experimental method for structure determination (particularly for di...</td>
+</tr>
+<tr>
+<td><a href="exposure_time/">exposure_time</a></td>
+<td>Exposure time in seconds</td>
+</tr>
+<tr>
+<td><a href="expression_system/">expression_system</a></td>
+<td>Expression system used for recombinant protein production</td>
+</tr>
+<tr>
+<td><a href="feature_type/">feature_type</a></td>
+<td>Type of structural feature</td>
+</tr>
+<tr>
+<td><a href="file_format/">file_format</a></td>
+<td>File format</td>
+</tr>
+<tr>
+<td><a href="file_name/">file_name</a></td>
+<td>Name of the file</td>
+</tr>
+<tr>
+<td><a href="file_path/">file_path</a></td>
+<td>Path to the file</td>
+</tr>
+<tr>
+<td><a href="file_size_bytes/">file_size_bytes</a></td>
+<td>File size in bytes</td>
+</tr>
+<tr>
+<td><a href="final_buffer/">final_buffer</a></td>
+<td>Final buffer composition after purification</td>
+</tr>
+<tr>
+<td><a href="final_concentration_mg_per_ml/">final_concentration_mg_per_ml</a></td>
+<td>Final protein concentration in mg/mL</td>
+</tr>
+<tr>
+<td><a href="flash_cooling_method/">flash_cooling_method</a></td>
+<td>Flash cooling protocol</td>
+</tr>
+<tr>
+<td><a href="fluorophore/">fluorophore</a></td>
+<td>Name or type of fluorophore used</td>
+</tr>
+<tr>
+<td><a href="flux/">flux</a></td>
+<td>Photon flux in photons/second</td>
+</tr>
+<tr>
+<td><a href="flux_density/">flux_density</a></td>
+<td>Photon flux density in photons/s/mm²</td>
+</tr>
+<tr>
+<td><a href="flux_photons_per_s/">flux_photons_per_s</a></td>
+<td>Photon flux in photons per second</td>
+</tr>
+<tr>
+<td><a href="frame_rate/">frame_rate</a></td>
+<td>Frames per second</td>
+</tr>
+<tr>
+<td><a href="free_energy/">free_energy</a></td>
+<td>Relative free energy (kcal/mol)</td>
+</tr>
+<tr>
+<td><a href="functional_effect/">functional_effect</a></td>
+<td>Known functional effect of this PTM</td>
+</tr>
+<tr>
+<td><a href="functional_impact_description/">functional_impact_description</a></td>
+<td>Description of functional impact</td>
+</tr>
+<tr>
+<td><a href="functional_importance/">functional_importance</a></td>
+<td>Description of functional importance</td>
+</tr>
+<tr>
+<td><a href="functional_sites/">functional_sites</a></td>
+<td>Functional site annotations for proteins in the sample</td>
+</tr>
+<tr>
+<td><a href="gene_name/">gene_name</a></td>
+<td>Gene name</td>
+</tr>
+<tr>
+<td><a href="gene_synthesis_provider/">gene_synthesis_provider</a></td>
+<td>Company or facility that synthesized the gene</td>
+</tr>
+<tr>
+<td><a href="go_terms/">go_terms</a></td>
+<td>Associated Gene Ontology terms</td>
+</tr>
+<tr>
+<td><a href="goniometer_type/">goniometer_type</a></td>
+<td>Type of goniometer</td>
+</tr>
+<tr>
+<td><a href="gpu_hours/">gpu_hours</a></td>
+<td>GPU hours used</td>
+</tr>
+<tr>
+<td><a href="grid_type/">grid_type</a></td>
+<td>Type of EM grid used</td>
+</tr>
+<tr>
+<td><a href="growth_temperature_c/">growth_temperature_c</a></td>
+<td>Growth temperature in Celsius</td>
+</tr>
+<tr>
+<td><a href="harvest_timepoint/">harvest_timepoint</a></td>
+<td>Time point when cells were harvested</td>
+</tr>
+<tr>
+<td><a href="hic_column/">hic_column</a></td>
+<td>Hydrophobic interaction column used</td>
+</tr>
+<tr>
+<td><a href="hole_size/">hole_size</a></td>
+<td>Hole size in micrometers</td>
+</tr>
+<tr>
+<td><a href="host_strain_or_cell_line/">host_strain_or_cell_line</a></td>
+<td>Specific strain or cell line used (e</td>
+</tr>
+<tr>
+<td><a href="humidity/">humidity</a></td>
+<td>Humidity percentage</td>
+</tr>
+<tr>
+<td><a href="humidity_percentage/">humidity_percentage</a></td>
+<td>Chamber humidity during vitrification</td>
+</tr>
+<tr>
+<td><a href="i_zero/">i_zero</a></td>
+<td>Forward scattering intensity I(0)</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>Globally unique identifier as an IRI or CURIE for machine processing and exte...</td>
+</tr>
+<tr>
+<td><a href="iex_column/">iex_column</a></td>
+<td>Ion-exchange column used</td>
+</tr>
+<tr>
+<td><a href="illumination_type/">illumination_type</a></td>
+<td>Type of illumination (brightfield, darkfield, phase contrast, DIC)</td>
+</tr>
+<tr>
+<td><a href="images/">images</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="indexer_module/">indexer_module</a></td>
+<td>Indexing module used (e</td>
+</tr>
+<tr>
+<td><a href="inducer_concentration/">inducer_concentration</a></td>
+<td>Concentration of induction agent</td>
+</tr>
+<tr>
+<td><a href="induction_agent/">induction_agent</a></td>
+<td>Agent used to induce expression (e</td>
+</tr>
+<tr>
+<td><a href="induction_temperature_c/">induction_temperature_c</a></td>
+<td>Temperature during induction in Celsius</td>
+</tr>
+<tr>
+<td><a href="induction_time_h/">induction_time_h</a></td>
+<td>Duration of induction in hours</td>
+</tr>
+<tr>
+<td><a href="initial_hit_condition/">initial_hit_condition</a></td>
+<td>Description of initial crystallization hit condition</td>
+</tr>
+<tr>
+<td><a href="insert_boundaries/">insert_boundaries</a></td>
+<td>Start and end positions of insert in vector</td>
+</tr>
+<tr>
+<td><a href="installation_date/">installation_date</a></td>
+<td>Date of instrument installation</td>
+</tr>
+<tr>
+<td><a href="instrument_code/">instrument_code</a></td>
+<td>Human-friendly facility or laboratory identifier for the instrument (e</td>
+</tr>
+<tr>
+<td><a href="instrument_id/">instrument_id</a></td>
+<td>Reference to the instrument used</td>
+</tr>
+<tr>
+<td><a href="instrument_runs/">instrument_runs</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="instruments/">instruments</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="integrator_module/">integrator_module</a></td>
+<td>Integration module used</td>
+</tr>
+<tr>
+<td><a href="interaction_distance/">interaction_distance</a></td>
+<td>Distance criteria for interaction (Angstroms)</td>
+</tr>
+<tr>
+<td><a href="interaction_evidence/">interaction_evidence</a></td>
+<td>Evidence for this interaction</td>
+</tr>
+<tr>
+<td><a href="interaction_type/">interaction_type</a></td>
+<td>Type of interaction</td>
+</tr>
+<tr>
+<td><a href="interface_area/">interface_area</a></td>
+<td>Buried surface area at interface (Ų)</td>
+</tr>
+<tr>
+<td><a href="interface_residues/">interface_residues</a></td>
+<td>Residues at the interaction interface</td>
+</tr>
+<tr>
+<td><a href="ionic_strength/">ionic_strength</a></td>
+<td>Ionic strength in molar</td>
+</tr>
+<tr>
+<td><a href="is_cofactor/">is_cofactor</a></td>
+<td>Whether the ligand is a cofactor</td>
+</tr>
+<tr>
+<td><a href="is_drug_like/">is_drug_like</a></td>
+<td>Whether the ligand has drug-like properties</td>
+</tr>
+<tr>
+<td><a href="keywords/">keywords</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="laser_power/">laser_power</a></td>
+<td>Laser power in milliwatts or percentage</td>
+</tr>
+<tr>
+<td><a href="last_updated/">last_updated</a></td>
+<td>Date of last update</td>
+</tr>
+<tr>
+<td><a href="ligand_id/">ligand_id</a></td>
+<td>Ligand identifier (ChEMBL, ChEBI, PubChem)</td>
+</tr>
+<tr>
+<td><a href="ligand_interactions/">ligand_interactions</a></td>
+<td>Small molecule interaction annotations</td>
+</tr>
+<tr>
+<td><a href="ligand_name/">ligand_name</a></td>
+<td>Common name of the ligand</td>
+</tr>
+<tr>
+<td><a href="ligand_smiles/">ligand_smiles</a></td>
+<td>SMILES representation of the ligand</td>
+</tr>
+<tr>
+<td><a href="ligands/">ligands</a></td>
+<td>Bound ligands or cofactors</td>
+</tr>
+<tr>
+<td><a href="ligands_cofactors/">ligands_cofactors</a></td>
+<td>Ligands or cofactors modeled in the structure</td>
+</tr>
+<tr>
+<td><a href="lysis_buffer/">lysis_buffer</a></td>
+<td>Buffer composition for lysis</td>
+</tr>
+<tr>
+<td><a href="lysis_method/">lysis_method</a></td>
+<td>Method used for cell lysis</td>
+</tr>
+<tr>
+<td><a href="magnification/">magnification</a></td>
+<td>Optical magnification factor</td>
+</tr>
+<tr>
+<td><a href="manufacturer/">manufacturer</a></td>
+<td>Instrument manufacturer</td>
+</tr>
+<tr>
+<td><a href="mass_shift/">mass_shift</a></td>
+<td>Mass change due to modification (Da)</td>
+</tr>
+<tr>
+<td><a href="mean_i_over_sigma_i/">mean_i_over_sigma_i</a></td>
+<td>Mean I/sigma(I)</td>
+</tr>
+<tr>
+<td><a href="measurement_conditions/">measurement_conditions</a></td>
+<td>Conditions under which measurement was made</td>
+</tr>
+<tr>
+<td><a href="medium/">medium</a></td>
+<td>Growth medium used</td>
+</tr>
+<tr>
+<td><a href="memory_gb/">memory_gb</a></td>
+<td>Maximum memory used in GB</td>
+</tr>
+<tr>
+<td><a href="model/">model</a></td>
+<td>Instrument model</td>
+</tr>
+<tr>
+<td><a href="modification_group/">modification_group</a></td>
+<td>Chemical group added (e</td>
+</tr>
+<tr>
+<td><a href="modification_type/">modification_type</a></td>
+<td>Type of PTM</td>
+</tr>
+<tr>
+<td><a href="modifications/">modifications</a></td>
+<td>Post-translational modifications or chemical modifications</td>
+</tr>
+<tr>
+<td><a href="modified_residue/">modified_residue</a></td>
+<td>Residue that is modified</td>
+</tr>
+<tr>
+<td><a href="molecular_composition/">molecular_composition</a></td>
+<td>Description of molecular composition including sequences, modifications, liga...</td>
+</tr>
+<tr>
+<td><a href="molecular_signatures/">molecular_signatures</a></td>
+<td>Identified molecular signatures or peaks</td>
+</tr>
+<tr>
+<td><a href="molecular_weight/">molecular_weight</a></td>
+<td>Molecular weight in kDa</td>
+</tr>
+<tr>
+<td><a href="molprobity_score/">molprobity_score</a></td>
+<td>Overall MolProbity score</td>
+</tr>
+<tr>
+<td><a href="monochromator_type/">monochromator_type</a></td>
+<td>Type of monochromator</td>
+</tr>
+<tr>
+<td><a href="mounting_method/">mounting_method</a></td>
+<td>Crystal mounting method</td>
+</tr>
+<tr>
+<td><a href="multiplicity/">multiplicity</a></td>
+<td>Data multiplicity (redundancy)</td>
+</tr>
+<tr>
+<td><a href="mutation/">mutation</a></td>
+<td>Mutation in standard notation (e</td>
+</tr>
+<tr>
+<td><a href="mutation_effects/">mutation_effects</a></td>
+<td>Effects of mutations present in the sample</td>
+</tr>
+<tr>
+<td><a href="mutation_type/">mutation_type</a></td>
+<td>Type of mutation</td>
+</tr>
+<tr>
+<td><a href="mutations/">mutations</a></td>
+<td>All mutation annotations</td>
+</tr>
+<tr>
+<td><a href="ncbi_taxid/">ncbi_taxid</a></td>
+<td>NCBI Taxonomy ID for source organism</td>
+</tr>
+<tr>
+<td><a href="ncs_used/">ncs_used</a></td>
+<td>Whether Non-Crystallographic Symmetry restraints were used</td>
+</tr>
+<tr>
+<td><a href="number_of_scans/">number_of_scans</a></td>
+<td>Number of scans averaged for the spectrum</td>
+</tr>
+<tr>
+<td><a href="number_of_waters/">number_of_waters</a></td>
+<td>Number of water molecules modeled</td>
+</tr>
+<tr>
+<td><a href="numerical_aperture/">numerical_aperture</a></td>
+<td>Numerical aperture of the objective lens</td>
+</tr>
+<tr>
+<td><a href="od600_at_induction/">od600_at_induction</a></td>
+<td>Optical density at 600nm when induction was started</td>
+</tr>
+<tr>
+<td><a href="omim_id/">omim_id</a></td>
+<td>OMIM database identifier</td>
+</tr>
+<tr>
+<td><a href="ontology/">ontology</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="operator_id/">operator_id</a></td>
+<td>Identifier or name of the person who performed the sample preparation (e</td>
+</tr>
+<tr>
+<td><a href="optimization_strategy/">optimization_strategy</a></td>
+<td>Strategy used to optimize crystals</td>
+</tr>
+<tr>
+<td><a href="optimized_condition/">optimized_condition</a></td>
+<td>Final optimized crystallization condition</td>
+</tr>
+<tr>
+<td><a href="organism/">organism</a></td>
+<td>Source organism for the sample (e</td>
+</tr>
+<tr>
+<td><a href="organism_id/">organism_id</a></td>
+<td>NCBI taxonomy ID</td>
+</tr>
+<tr>
+<td><a href="oscillation_per_image_deg/">oscillation_per_image_deg</a></td>
+<td>Oscillation angle per image in degrees</td>
+</tr>
+<tr>
+<td><a href="outlier_rejection_method/">outlier_rejection_method</a></td>
+<td>Method for rejecting outlier reflections</td>
+</tr>
+<tr>
+<td><a href="output_files/">output_files</a></td>
+<td>Output files generated</td>
+</tr>
+<tr>
+<td><a href="parameters_file_path/">parameters_file_path</a></td>
+<td>Path to parameters file or text of key parameters</td>
+</tr>
+<tr>
+<td><a href="parent_sample_id/">parent_sample_id</a></td>
+<td>Reference to parent sample for derivation tracking</td>
+</tr>
+<tr>
+<td><a href="partner_chain_id/">partner_chain_id</a></td>
+<td>Chain ID of interacting partner</td>
+</tr>
+<tr>
+<td><a href="partner_interface_residues/">partner_interface_residues</a></td>
+<td>Partner residues at the interaction interface</td>
+</tr>
+<tr>
+<td><a href="partner_protein_id/">partner_protein_id</a></td>
+<td>UniProt ID of interacting partner</td>
+</tr>
+<tr>
+<td><a href="pdb_entries/">pdb_entries</a></td>
+<td>PDB entries representing this state</td>
+</tr>
+<tr>
+<td><a href="pdb_entry/">pdb_entry</a></td>
+<td>PDB identifier</td>
+</tr>
+<tr>
+<td><a href="pdb_id/">pdb_id</a></td>
+<td>PDB accession code if deposited</td>
+</tr>
+<tr>
+<td><a href="ph/">ph</a></td>
+<td>pH of the buffer</td>
+</tr>
+<tr>
+<td><a href="phase_plate/">phase_plate</a></td>
+<td>Phase plate available</td>
+</tr>
+<tr>
+<td><a href="phasing_method/">phasing_method</a></td>
+<td>Phasing method used for X-ray crystallography structure determination</td>
+</tr>
+<tr>
+<td><a href="pinhole_size/">pinhole_size</a></td>
+<td>Pinhole size in Airy units for confocal microscopy</td>
+</tr>
+<tr>
+<td><a href="pixel_size/">pixel_size</a></td>
+<td>Pixel size in Angstroms</td>
+</tr>
+<tr>
+<td><a href="pixel_size_max/">pixel_size_max</a></td>
+<td>Maximum pixel size in Angstroms per pixel</td>
+</tr>
+<tr>
+<td><a href="pixel_size_min/">pixel_size_min</a></td>
+<td>Minimum pixel size in Angstroms per pixel</td>
+</tr>
+<tr>
+<td><a href="plasma_treatment/">plasma_treatment</a></td>
+<td>Plasma treatment details</td>
+</tr>
+<tr>
+<td><a href="population/">population</a></td>
+<td>Relative population of this state</td>
+</tr>
+<tr>
+<td><a href="preparation_date/">preparation_date</a></td>
+<td>Date of sample preparation</td>
+</tr>
+<tr>
+<td><a href="preparation_method/">preparation_method</a></td>
+<td>Method used to prepare the sample</td>
+</tr>
+<tr>
+<td><a href="preparation_type/">preparation_type</a></td>
+<td>Type of sample preparation</td>
+</tr>
+<tr>
+<td><a href="pressure/">pressure</a></td>
+<td>Pressure in kPa</td>
+</tr>
+<tr>
+<td><a href="principal_motions/">principal_motions</a></td>
+<td>Description of principal motions</td>
+</tr>
+<tr>
+<td><a href="processing_level/">processing_level</a></td>
+<td>Processing level (0=raw, 1=corrected, 2=derived, 3=model)</td>
+</tr>
+<tr>
+<td><a href="processing_notes/">processing_notes</a></td>
+<td>Additional notes about processing</td>
+</tr>
+<tr>
+<td><a href="processing_parameters/">processing_parameters</a></td>
+<td>Parameters used in processing</td>
+</tr>
+<tr>
+<td><a href="processing_status/">processing_status</a></td>
+<td>Current processing status</td>
+</tr>
+<tr>
+<td><a href="promoter/">promoter</a></td>
+<td>Promoter used for expression</td>
+</tr>
+<tr>
+<td><a href="property_type/">property_type</a></td>
+<td>Type of biophysical property</td>
+</tr>
+<tr>
+<td><a href="protease/">protease</a></td>
+<td>Protease used for tag cleavage</td>
+</tr>
+<tr>
+<td><a href="protease_inhibitors/">protease_inhibitors</a></td>
+<td>Protease inhibitors added</td>
+</tr>
+<tr>
+<td><a href="protease_ratio/">protease_ratio</a></td>
+<td>Ratio of protease to protein</td>
+</tr>
+<tr>
+<td><a href="protein_buffer/">protein_buffer</a></td>
+<td>Buffer composition for protein solution</td>
+</tr>
+<tr>
+<td><a href="protein_concentration_mg_per_ml/">protein_concentration_mg_per_ml</a></td>
+<td>Protein concentration for crystallization in mg/mL</td>
+</tr>
+<tr>
+<td><a href="protein_constructs/">protein_constructs</a></td>
+<td>Protein constructs and cloning information</td>
+</tr>
+<tr>
+<td><a href="protein_id/">protein_id</a></td>
+<td>UniProt accession number</td>
+</tr>
+<tr>
+<td><a href="protein_interactions/">protein_interactions</a></td>
+<td>Protein-protein interaction annotations</td>
+</tr>
+<tr>
+<td><a href="protein_name/">protein_name</a></td>
+<td>Protein name</td>
+</tr>
+<tr>
+<td><a href="protocol_description/">protocol_description</a></td>
+<td>Detailed protocol description</td>
+</tr>
+<tr>
+<td><a href="ptm_annotations/">ptm_annotations</a></td>
+<td>Post-translational modification annotations</td>
+</tr>
+<tr>
+<td><a href="ptms/">ptms</a></td>
+<td>All post-translational modifications</td>
+</tr>
+<tr>
+<td><a href="publication_ids/">publication_ids</a></td>
+<td>PubMed IDs supporting this annotation</td>
+</tr>
+<tr>
+<td><a href="purification_steps/">purification_steps</a></td>
+<td>Ordered list of purification steps performed</td>
+</tr>
+<tr>
+<td><a href="purity_by_sds_page_percent/">purity_by_sds_page_percent</a></td>
+<td>Purity percentage by SDS-PAGE</td>
+</tr>
+<tr>
+<td><a href="purity_percentage/">purity_percentage</a></td>
+<td>Sample purity as percentage</td>
+</tr>
+<tr>
+<td><a href="q_range_max/">q_range_max</a></td>
+<td>Maximum q value in inverse Angstroms</td>
+</tr>
+<tr>
+<td><a href="q_range_min/">q_range_min</a></td>
+<td>Minimum q value in inverse Angstroms</td>
+</tr>
+<tr>
+<td><a href="quality_metrics/">quality_metrics</a></td>
+<td>Quality control metrics for the sample</td>
+</tr>
+<tr>
+<td><a href="quantum_yield/">quantum_yield</a></td>
+<td>Quantum yield of the fluorophore</td>
+</tr>
+<tr>
+<td><a href="r_factor/">r_factor</a></td>
+<td>R-factor for crystallography (deprecated, use r_work)</td>
+</tr>
+<tr>
+<td><a href="r_free/">r_free</a></td>
+<td>R-free (test set)</td>
+</tr>
+<tr>
+<td><a href="r_merge/">r_merge</a></td>
+<td>Rmerge - merge R-factor</td>
+</tr>
+<tr>
+<td><a href="r_pim/">r_pim</a></td>
+<td>Rpim - precision-indicating merging R-factor</td>
+</tr>
+<tr>
+<td><a href="r_work/">r_work</a></td>
+<td>Refinement R-factor (working set)</td>
+</tr>
+<tr>
+<td><a href="ramachandran_favored_percent/">ramachandran_favored_percent</a></td>
+<td>Percentage of residues in favored Ramachandran regions</td>
+</tr>
+<tr>
+<td><a href="ramachandran_outliers_percent/">ramachandran_outliers_percent</a></td>
+<td>Percentage of Ramachandran outliers</td>
+</tr>
+<tr>
+<td><a href="raw_data_location/">raw_data_location</a></td>
+<td>Location of raw data files</td>
+</tr>
+<tr>
+<td><a href="reconstruction_method/">reconstruction_method</a></td>
+<td>Method used for 3D reconstruction</td>
+</tr>
+<tr>
+<td><a href="refinement_resolution_a/">refinement_resolution_a</a></td>
+<td>Resolution cutoff used for refinement in Angstroms</td>
+</tr>
+<tr>
+<td><a href="regulatory_role/">regulatory_role</a></td>
+<td>Role in regulation</td>
+</tr>
+<tr>
+<td><a href="removal_enzyme/">removal_enzyme</a></td>
+<td>Enzyme that removes modification</td>
+</tr>
+<tr>
+<td><a href="reservoir_volume_ul/">reservoir_volume_ul</a></td>
+<td>Reservoir volume in microliters</td>
+</tr>
+<tr>
+<td><a href="residue_range/">residue_range</a></td>
+<td>Range of residues (e</td>
+</tr>
+<tr>
+<td><a href="residues/">residues</a></td>
+<td>List of residues forming the functional site</td>
+</tr>
+<tr>
+<td><a href="resolution/">resolution</a></td>
+<td>Resolution in Angstroms</td>
+</tr>
+<tr>
+<td><a href="resolution_high_shell_a/">resolution_high_shell_a</a></td>
+<td>High resolution shell limit in Angstroms</td>
+</tr>
+<tr>
+<td><a href="resolution_low_a/">resolution_low_a</a></td>
+<td>Low resolution limit in Angstroms</td>
+</tr>
+<tr>
+<td><a href="restraints_other/">restraints_other</a></td>
+<td>Other restraints applied during refinement</td>
+</tr>
+<tr>
+<td><a href="rg/">rg</a></td>
+<td>Radius of gyration in Angstroms</td>
+</tr>
+<tr>
+<td><a href="rmsd_from_reference/">rmsd_from_reference</a></td>
+<td>RMSD from reference structure</td>
+</tr>
+<tr>
+<td><a href="rmsd_threshold/">rmsd_threshold</a></td>
+<td>RMSD threshold for clustering (Angstroms)</td>
+</tr>
+<tr>
+<td><a href="sample_cell_type/">sample_cell_type</a></td>
+<td>Type of sample cell used</td>
+</tr>
+<tr>
+<td><a href="sample_changer_capacity/">sample_changer_capacity</a></td>
+<td>Number of samples in automatic sample changer</td>
+</tr>
+<tr>
+<td><a href="sample_code/">sample_code</a></td>
+<td>Human-friendly laboratory identifier or facility code for the sample (e</td>
+</tr>
+<tr>
+<td><a href="sample_id/">sample_id</a></td>
+<td>Reference to the sample being prepared</td>
+</tr>
+<tr>
+<td><a href="sample_preparations/">sample_preparations</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sample_type/">sample_type</a></td>
+<td>Type of biological sample</td>
+</tr>
+<tr>
+<td><a href="samples/">samples</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="scaler_module/">scaler_module</a></td>
+<td>Scaling module used (e</td>
+</tr>
+<tr>
+<td><a href="screen_name/">screen_name</a></td>
+<td>Name of crystallization screen used</td>
+</tr>
+<tr>
+<td><a href="search_model_pdb_id/">search_model_pdb_id</a></td>
+<td>PDB ID of search model for molecular replacement</td>
+</tr>
+<tr>
+<td><a href="sec_buffer/">sec_buffer</a></td>
+<td>Buffer for size-exclusion chromatography</td>
+</tr>
+<tr>
+<td><a href="sec_column/">sec_column</a></td>
+<td>Size-exclusion column used</td>
+</tr>
+<tr>
+<td><a href="second_affinity_reverse/">second_affinity_reverse</a></td>
+<td>Second affinity or reverse affinity step</td>
+</tr>
+<tr>
+<td><a href="secondary_structure/">secondary_structure</a></td>
+<td>Secondary structure assignment</td>
+</tr>
+<tr>
+<td><a href="seed_stock_dilution/">seed_stock_dilution</a></td>
+<td>Dilution factor for seed stock</td>
+</tr>
+<tr>
+<td><a href="seeding_type/">seeding_type</a></td>
+<td>Type of seeding used (micro, macro, streak)</td>
+</tr>
+<tr>
+<td><a href="selectable_marker/">selectable_marker</a></td>
+<td>Antibiotic resistance or other selectable marker</td>
+</tr>
+<tr>
+<td><a href="sequence_file_path/">sequence_file_path</a></td>
+<td>Path to sequence file</td>
+</tr>
+<tr>
+<td><a href="sequence_length_aa/">sequence_length_aa</a></td>
+<td>Length of the protein sequence in amino acids</td>
+</tr>
+<tr>
+<td><a href="sequence_verified_by/">sequence_verified_by</a></td>
+<td>Method or person who verified the sequence</td>
+</tr>
+<tr>
+<td><a href="sequences/">sequences</a></td>
+<td>Amino acid or nucleotide sequences</td>
+</tr>
+<tr>
+<td><a href="signal_peptide/">signal_peptide</a></td>
+<td>Signal peptide sequence if present</td>
+</tr>
+<tr>
+<td><a href="signal_to_noise/">signal_to_noise</a></td>
+<td>Signal to noise ratio</td>
+</tr>
+<tr>
+<td><a href="site_name/">site_name</a></td>
+<td>Common name for this site</td>
+</tr>
+<tr>
+<td><a href="site_type/">site_type</a></td>
+<td>Type of functional site</td>
+</tr>
+<tr>
+<td><a href="soak_compound/">soak_compound</a></td>
+<td>Compound used for soaking (ligand, heavy atom)</td>
+</tr>
+<tr>
+<td><a href="soak_conditions/">soak_conditions</a></td>
+<td>Conditions for crystal soaking</td>
+</tr>
+<tr>
+<td><a href="software_name/">software_name</a></td>
+<td>Software used for processing</td>
+</tr>
+<tr>
+<td><a href="software_version/">software_version</a></td>
+<td>Software version</td>
+</tr>
+<tr>
+<td><a href="solvent_accessibility/">solvent_accessibility</a></td>
+<td>Relative solvent accessible surface area</td>
+</tr>
+<tr>
+<td><a href="source_database/">source_database</a></td>
+<td>Source database or resource that provided this annotation</td>
+</tr>
+<tr>
+<td><a href="source_type/">source_type</a></td>
+<td>Type of X-ray source</td>
+</tr>
+<tr>
+<td><a href="space_group/">space_group</a></td>
+<td>Crystallographic space group</td>
+</tr>
+<tr>
+<td><a href="spectral_resolution/">spectral_resolution</a></td>
+<td>Spectral resolution in cm⁻¹</td>
+</tr>
+<tr>
+<td><a href="started_at/">started_at</a></td>
+<td>Workflow start time</td>
+</tr>
+<tr>
+<td><a href="state_id/">state_id</a></td>
+<td>Identifier for this state</td>
+</tr>
+<tr>
+<td><a href="state_name/">state_name</a></td>
+<td>Descriptive name (e</td>
+</tr>
+<tr>
+<td><a href="storage_conditions/">storage_conditions</a></td>
+<td>Storage conditions for the sample</td>
+</tr>
+<tr>
+<td><a href="storage_gb/">storage_gb</a></td>
+<td>Storage used in GB</td>
+</tr>
+<tr>
+<td><a href="strategy_notes/">strategy_notes</a></td>
+<td>Notes about data collection strategy</td>
+</tr>
+<tr>
+<td><a href="structural_features/">structural_features</a></td>
+<td>Structural feature annotations</td>
+</tr>
+<tr>
+<td><a href="structural_motif/">structural_motif</a></td>
+<td>Known structural motif</td>
+</tr>
+<tr>
+<td><a href="studies/">studies</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="support_film/">support_film</a></td>
+<td>Support film type</td>
+</tr>
+<tr>
+<td><a href="tag_cterm/">tag_cterm</a></td>
+<td>C-terminal tag</td>
+</tr>
+<tr>
+<td><a href="tag_nterm/">tag_nterm</a></td>
+<td>N-terminal tag (e</td>
+</tr>
+<tr>
+<td><a href="tag_removal/">tag_removal</a></td>
+<td>Whether and how affinity tag was removed</td>
+</tr>
+<tr>
+<td><a href="taxonomic_range/">taxonomic_range</a></td>
+<td>Taxonomic range of conservation</td>
+</tr>
+<tr>
+<td><a href="technique/">technique</a></td>
+<td>Technique used for data collection</td>
+</tr>
+<tr>
+<td><a href="temperature/">temperature</a></td>
+<td>Storage temperature in Celsius</td>
+</tr>
+<tr>
+<td><a href="temperature_c/">temperature_c</a></td>
+<td>Crystallization temperature in Celsius</td>
+</tr>
+<tr>
+<td><a href="temperature_control/">temperature_control</a></td>
+<td>Temperature control settings</td>
+</tr>
+<tr>
+<td><a href="temperature_control_range/">temperature_control_range</a></td>
+<td>Temperature control range in Celsius</td>
+</tr>
+<tr>
+<td><a href="temperature_k/">temperature_k</a></td>
+<td>Data collection temperature in Kelvin</td>
+</tr>
+<tr>
+<td><a href="temperature_unit/">temperature_unit</a></td>
+<td>Temperature unit</td>
+</tr>
+<tr>
+<td><a href="terms/">terms</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="title/">title</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="tls_used/">tls_used</a></td>
+<td>Whether TLS (Translation/Libration/Screw) refinement was used</td>
+</tr>
+<tr>
+<td><a href="total_dose/">total_dose</a></td>
+<td>Total electron dose for cryo-EM</td>
+</tr>
+<tr>
+<td><a href="total_frames/">total_frames</a></td>
+<td>Total number of frames/images</td>
+</tr>
+<tr>
+<td><a href="total_rotation_deg/">total_rotation_deg</a></td>
+<td>Total rotation range in degrees</td>
+</tr>
+<tr>
+<td><a href="transition_pathways/">transition_pathways</a></td>
+<td>Description of transition pathways between states</td>
+</tr>
+<tr>
+<td><a href="transmission_percent/">transmission_percent</a></td>
+<td>Beam transmission percentage</td>
+</tr>
+<tr>
+<td><a href="uniprot_id/">uniprot_id</a></td>
+<td>UniProt accession for the target protein</td>
+</tr>
+<tr>
+<td><a href="unit/">unit</a></td>
+<td>Unit of measurement</td>
+</tr>
+<tr>
+<td><a href="unit_cell_a/">unit_cell_a</a></td>
+<td>Unit cell parameter a in Angstroms</td>
+</tr>
+<tr>
+<td><a href="unit_cell_alpha/">unit_cell_alpha</a></td>
+<td>Unit cell angle alpha in degrees</td>
+</tr>
+<tr>
+<td><a href="unit_cell_b/">unit_cell_b</a></td>
+<td>Unit cell parameter b in Angstroms</td>
+</tr>
+<tr>
+<td><a href="unit_cell_beta/">unit_cell_beta</a></td>
+<td>Unit cell angle beta in degrees</td>
+</tr>
+<tr>
+<td><a href="unit_cell_c/">unit_cell_c</a></td>
+<td>Unit cell parameter c in Angstroms</td>
+</tr>
+<tr>
+<td><a href="unit_cell_gamma/">unit_cell_gamma</a></td>
+<td>Unit cell angle gamma in degrees</td>
+</tr>
+<tr>
+<td><a href="validation_report_path/">validation_report_path</a></td>
+<td>Path to validation report</td>
+</tr>
+<tr>
+<td><a href="value/">value</a></td>
+<td>Numerical value of the property</td>
+</tr>
+<tr>
+<td><a href="variable_residues/">variable_residues</a></td>
+<td>Highly variable residues</td>
+</tr>
+<tr>
+<td><a href="vector_backbone/">vector_backbone</a></td>
+<td>Base plasmid backbone used</td>
+</tr>
+<tr>
+<td><a href="vector_name/">vector_name</a></td>
+<td>Complete vector name</td>
+</tr>
+<tr>
+<td><a href="verification_notes/">verification_notes</a></td>
+<td>Notes from sequence verification</td>
+</tr>
+<tr>
+<td><a href="vitrification_method/">vitrification_method</a></td>
+<td>Method used for vitrification</td>
+</tr>
+<tr>
+<td><a href="voxel_size/">voxel_size</a></td>
+<td>Voxel size in Angstroms</td>
+</tr>
+<tr>
+<td><a href="wash_buffer/">wash_buffer</a></td>
+<td>Buffer composition for washing</td>
+</tr>
+<tr>
+<td><a href="wavelength_a/">wavelength_a</a></td>
+<td>X-ray wavelength in Angstroms</td>
+</tr>
+<tr>
+<td><a href="wavenumber_max/">wavenumber_max</a></td>
+<td>Maximum wavenumber in cm⁻¹</td>
+</tr>
+<tr>
+<td><a href="wavenumber_min/">wavenumber_min</a></td>
+<td>Minimum wavenumber in cm⁻¹</td>
+</tr>
+<tr>
+<td><a href="white_balance/">white_balance</a></td>
+<td>White balance settings</td>
+</tr>
+<tr>
+<td><a href="wilson_b_factor_a2/">wilson_b_factor_a2</a></td>
+<td>Wilson B-factor in Angstroms squared</td>
+</tr>
+<tr>
+<td><a href="workflow_code/">workflow_code</a></td>
+<td>Human-friendly identifier for the computational workflow run (e</td>
+</tr>
+<tr>
+<td><a href="workflow_runs/">workflow_runs</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="workflow_type/">workflow_type</a></td>
+<td>Type of processing workflow</td>
+</tr>
+<tr>
+<td><a href="yield_mg/">yield_mg</a></td>
+<td>Total yield in milligrams</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AffinityUnitEnum/">AffinityUnitEnum</a></td>
+<td>Units for affinity measurements</td>
+</tr>
+<tr>
+<td><a href="AnnotationSourceEnum/">AnnotationSourceEnum</a></td>
+<td>Sources of functional annotations</td>
+</tr>
+<tr>
+<td><a href="BindingAffinityTypeEnum/">BindingAffinityTypeEnum</a></td>
+<td>Types of binding affinity measurements</td>
+</tr>
+<tr>
+<td><a href="BiophysicalMethodEnum/">BiophysicalMethodEnum</a></td>
+<td>Methods for biophysical measurements</td>
+</tr>
+<tr>
+<td><a href="BiophysicalPropertyEnum/">BiophysicalPropertyEnum</a></td>
+<td>Types of biophysical properties</td>
+</tr>
+<tr>
+<td><a href="ClinicalSignificanceEnum/">ClinicalSignificanceEnum</a></td>
+<td>Clinical significance of variants</td>
+</tr>
+<tr>
+<td><a href="CollectionModeEnum/">CollectionModeEnum</a></td>
+<td>Data collection modes</td>
+</tr>
+<tr>
+<td><a href="ComplexStabilityEnum/">ComplexStabilityEnum</a></td>
+<td>Stability of protein complexes</td>
+</tr>
+<tr>
+<td><a href="ConcentrationUnitEnum/">ConcentrationUnitEnum</a></td>
+<td>Units for concentration measurement</td>
+</tr>
+<tr>
+<td><a href="ConformationalStateEnum/">ConformationalStateEnum</a></td>
+<td>Conformational states</td>
+</tr>
+<tr>
+<td><a href="CrystallizationMethodEnum/">CrystallizationMethodEnum</a></td>
+<td>Methods for protein crystallization</td>
+</tr>
+<tr>
+<td><a href="DatabaseNameEnum/">DatabaseNameEnum</a></td>
+<td>External database names</td>
+</tr>
+<tr>
+<td><a href="DataTypeEnum/">DataTypeEnum</a></td>
+<td>Types of data</td>
+</tr>
+<tr>
+<td><a href="DetectorTypeEnum/">DetectorTypeEnum</a></td>
+<td>Types of detectors for cryo-EM</td>
+</tr>
+<tr>
+<td><a href="EvidenceTypeEnum/">EvidenceTypeEnum</a></td>
+<td>Types of evidence</td>
+</tr>
+<tr>
+<td><a href="ExperimentalMethodEnum/">ExperimentalMethodEnum</a></td>
+<td>Experimental methods for structure determination</td>
+</tr>
+<tr>
+<td><a href="ExpressionSystemEnum/">ExpressionSystemEnum</a></td>
+<td>Expression systems for recombinant protein production</td>
+</tr>
+<tr>
+<td><a href="FileFormatEnum/">FileFormatEnum</a></td>
+<td>File formats</td>
+</tr>
+<tr>
+<td><a href="FunctionalEffectEnum/">FunctionalEffectEnum</a></td>
+<td>Effect on protein function</td>
+</tr>
+<tr>
+<td><a href="FunctionalSiteTypeEnum/">FunctionalSiteTypeEnum</a></td>
+<td>Types of functional sites in proteins</td>
+</tr>
+<tr>
+<td><a href="GridTypeEnum/">GridTypeEnum</a></td>
+<td>Types of EM grids</td>
+</tr>
+<tr>
+<td><a href="IlluminationTypeEnum/">IlluminationTypeEnum</a></td>
+<td>Types of illumination for optical microscopy</td>
+</tr>
+<tr>
+<td><a href="InstrumentStatusEnum/">InstrumentStatusEnum</a></td>
+<td>Operational status of instruments</td>
+</tr>
+<tr>
+<td><a href="InteractionEvidenceEnum/">InteractionEvidenceEnum</a></td>
+<td>Evidence for interactions</td>
+</tr>
+<tr>
+<td><a href="InteractionTypeEnum/">InteractionTypeEnum</a></td>
+<td>Types of molecular interactions</td>
+</tr>
+<tr>
+<td><a href="MutationTypeEnum/">MutationTypeEnum</a></td>
+<td>Types of mutations</td>
+</tr>
+<tr>
+<td><a href="PhasingMethodEnum/">PhasingMethodEnum</a></td>
+<td>Methods for phase determination in X-ray crystallography</td>
+</tr>
+<tr>
+<td><a href="PreparationTypeEnum/">PreparationTypeEnum</a></td>
+<td>Types of sample preparation</td>
+</tr>
+<tr>
+<td><a href="ProcessingStatusEnum/">ProcessingStatusEnum</a></td>
+<td>Processing status</td>
+</tr>
+<tr>
+<td><a href="PTMTypeEnum/">PTMTypeEnum</a></td>
+<td>Types of post-translational modifications</td>
+</tr>
+<tr>
+<td><a href="PurificationStepEnum/">PurificationStepEnum</a></td>
+<td>Protein purification steps and methods</td>
+</tr>
+<tr>
+<td><a href="SampleTypeEnum/">SampleTypeEnum</a></td>
+<td>Types of biological samples</td>
+</tr>
+<tr>
+<td><a href="SecondaryStructureEnum/">SecondaryStructureEnum</a></td>
+<td>Secondary structure types</td>
+</tr>
+<tr>
+<td><a href="StabilityEffectEnum/">StabilityEffectEnum</a></td>
+<td>Effect on protein stability</td>
+</tr>
+<tr>
+<td><a href="StructuralFeatureTypeEnum/">StructuralFeatureTypeEnum</a></td>
+<td>Types of structural features</td>
+</tr>
+<tr>
+<td><a href="TechniqueEnum/">TechniqueEnum</a></td>
+<td>Structural biology techniques</td>
+</tr>
+<tr>
+<td><a href="TemperatureUnitEnum/">TemperatureUnitEnum</a></td>
+<td>Units for temperature measurement</td>
+</tr>
+<tr>
+<td><a href="VitrificationMethodEnum/">VitrificationMethodEnum</a></td>
+<td>Methods for vitrification</td>
+</tr>
+<tr>
+<td><a href="WorkflowTypeEnum/">WorkflowTypeEnum</a></td>
+<td>Types of processing workflows</td>
+</tr>
+<tr>
+<td><a href="XRaySourceTypeEnum/">XRaySourceTypeEnum</a></td>
+<td>Types of X-ray sources</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path</td>
+</tr>
+<tr>
+<td><a href="Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path</td>
+</tr>
+<tr>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.tabs.link"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

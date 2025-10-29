@@ -1,0 +1,2264 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/empiar/">
+      
+      
+        <link rel="prev" href="../mmcif/">
+      
+      
+        <link rel="next" href="../emdb/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>EMPIAR - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema-and-empiar-alignment-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EMPIAR
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-empiar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to EMPIAR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to EMPIAR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-empiar" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is EMPIAR?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types Supported
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024-2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empiar-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR Data Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EMPIAR Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-schema-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Schema Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Categories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-ber-schema-empiar-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema-EMPIAR Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda-ber-schema-EMPIAR Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-and-specimen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Specimen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageset-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imageset Organization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-differences-and-complementarities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences and Complementarities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Differences and Complementarities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raw-data-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Raw Data Focus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-multi-modal-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Multi-modal Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Access Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-empiar-deposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → EMPIAR Deposition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empiar-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-volume-em-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Volume EM Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-correlative-microscopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Correlative Microscopy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-x-ray-tomography" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. X-ray Tomography
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rest-api-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST API Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="REST API Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-empiar-from-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing EMPIAR from lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deposition-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Deposition Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-archive-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Archive Submission
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-public-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Public Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Opportunities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Opportunities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-developments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Developments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-modalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emerging Modalities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-data-producers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Producers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-data-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-and-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation and Quality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation and Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#empiar-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-empiar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to EMPIAR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to EMPIAR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-empiar" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is EMPIAR?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types Supported
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024-2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empiar-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR Data Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EMPIAR Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-schema-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Schema Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Categories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-ber-schema-empiar-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema-EMPIAR Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda-ber-schema-EMPIAR Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-and-specimen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample and Specimen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageset-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imageset Organization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-differences-and-complementarities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences and Complementarities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Differences and Complementarities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raw-data-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Raw Data Focus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-multi-modal-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Multi-modal Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Access Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-empiar-deposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema → EMPIAR Deposition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empiar-lambda-ber-schema-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR → lambda-ber-schema Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-volume-em-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Volume EM Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-correlative-microscopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Correlative Microscopy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-x-ray-tomography" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. X-ray Tomography
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rest-api-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST API Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="REST API Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-empiar-from-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing EMPIAR from lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deposition-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Deposition Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-archive-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Archive Submission
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-public-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Public Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Opportunities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Opportunities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-developments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Developments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-modalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emerging Modalities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-data-producers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Producers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-data-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-and-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation and Quality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation and Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#empiar-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMPIAR Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema-and-empiar-alignment-analysis">lambda-ber-schema and EMPIAR Alignment Analysis</h1>
+<blockquote>
+<p><strong>Note</strong>: This document was generated using Claude (Anthropic's AI assistant) through automated analysis of documentation and web sources. While efforts have been made to ensure accuracy, there may be errors or outdated information. Please verify critical details with official EMPIAR documentation.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>This document provides a detailed analysis of the alignment between the lambda-ber-schema schema and EMPIAR (Electron Microscopy Public Image Archive), examining how lambda-ber-schema can integrate with and complement EMPIAR's role as the global repository for raw electron microscopy and related imaging data.</p>
+<h2 id="introduction-to-empiar">Introduction to EMPIAR</h2>
+<h3 id="what-is-empiar">What is EMPIAR?</h3>
+<p>EMPIAR is the global public archive for raw electron microscopy images and related imaging data. Key characteristics:</p>
+<ul>
+<li><strong>Purpose</strong>: Archive raw EM images underpinning 3D reconstructions</li>
+<li><strong>Content</strong>: 2,385 entries, &gt;6.24 PiB of data (as of 2025)</li>
+<li><strong>Scope</strong>: Beyond EM - includes volume EM, X-ray tomography, CLEM</li>
+<li><strong>Access</strong>: REST API, Aspera/Globus downloads, CC0 licensing</li>
+<li><strong>Integration</strong>: Cross-references with EMDB, PDB, BioImage Archive</li>
+</ul>
+<h3 id="data-types-supported">Data Types Supported</h3>
+<p>EMPIAR has evolved beyond traditional cryo-EM to support:</p>
+<ol>
+<li><strong>Single Particle Cryo-EM</strong></li>
+<li>Movie stacks (multiframe micrographs)</li>
+<li>Single frame micrographs</li>
+<li>Particle stacks</li>
+<li>
+<p>Class averages</p>
+</li>
+<li>
+<p><strong>Electron Tomography</strong></p>
+</li>
+<li>Tilt series</li>
+<li>Tomograms</li>
+<li>
+<p>Subtomograms</p>
+</li>
+<li>
+<p><strong>Volume EM Techniques</strong></p>
+</li>
+<li>FIB-SEM (Focused Ion Beam SEM)</li>
+<li>SBF-SEM (Serial Block Face SEM)</li>
+<li>
+<p>Array tomography datasets</p>
+</li>
+<li>
+<p><strong>X-ray Microscopy</strong></p>
+</li>
+<li>Soft X-ray tomography</li>
+<li>Hard X-ray tomography</li>
+<li>
+<p>Cryo-soft X-ray data</p>
+</li>
+<li>
+<p><strong>Correlative Microscopy</strong></p>
+</li>
+<li>CLEM (Correlative Light and Electron Microscopy)</li>
+<li>Multimodal datasets</li>
+<li>Aligned image stacks</li>
+</ol>
+<h3 id="current-status-2024-2025">Current Status (2024-2025)</h3>
+<ul>
+<li><strong>Growth</strong>: Exponential data growth reaching petabyte scale</li>
+<li><strong>Expansion</strong>: Support for volume EM and X-ray techniques</li>
+<li><strong>Integration</strong>: Improved workflow uploads from Scipion</li>
+<li><strong>Standards</strong>: JSON schema-based metadata model</li>
+<li><strong>Automation</strong>: Header extraction from common formats</li>
+</ul>
+<h2 id="empiar-data-model">EMPIAR Data Model</h2>
+<h3 id="json-schema-structure">JSON Schema Structure</h3>
+<p>EMPIAR uses a structured JSON schema for deposition metadata:</p>
+<pre><code class="language-json">{
+  &quot;admin&quot;: {
+    &quot;title&quot;: &quot;Dataset title&quot;,
+    &quot;authors&quot;: [...],
+    &quot;references&quot;: [...]
+  },
+  &quot;imagesets&quot;: [
+    {
+      &quot;name&quot;: &quot;Micrographs&quot;,
+      &quot;category&quot;: &quot;T1&quot;,  // T1=single frame, T2=multiframe
+      &quot;format&quot;: &quot;MRC&quot;,
+      &quot;dimensions&quot;: {
+        &quot;width&quot;: 5760,
+        &quot;height&quot;: 4092
+      },
+      &quot;pixel_spacing&quot;: 0.85,
+      &quot;num_images&quot;: 8500
+    }
+  ],
+  &quot;specimen&quot;: {
+    &quot;cs&quot;: 2.7,
+    &quot;electron_dose&quot;: 40.0,
+    &quot;gain_reference&quot;: &quot;...&quot;
+  }
+}
+</code></pre>
+<h3 id="image-categories">Image Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Category</th>
+<th>lambda-ber-schema Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Micrographs - single frame</td>
+<td>Image2D (single exposure)</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Micrographs - multiframe</td>
+<td>DataFile (movie stack)</td>
+</tr>
+<tr>
+<td>T9</td>
+<td>Tilt series</td>
+<td>DataFile (collection)</td>
+</tr>
+<tr>
+<td>T10</td>
+<td>Class averages</td>
+<td>DataFile (processed)</td>
+</tr>
+<tr>
+<td>T13</td>
+<td>Reconstructed volumes</td>
+<td>Image3D</td>
+</tr>
+<tr>
+<td>T14</td>
+<td>Subtomograms</td>
+<td>DataFile (extracted)</td>
+</tr>
+<tr>
+<td>OT</td>
+<td>Other</td>
+<td>DataFile (generic)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lambda-ber-schema-empiar-alignment">lambda-ber-schema-EMPIAR Alignment</h2>
+<h3 id="structural-mapping">Structural Mapping</h3>
+<table>
+<thead>
+<tr>
+<th>EMPIAR Concept</th>
+<th>lambda-ber-schema Equivalent</th>
+<th>Alignment Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entry</strong></td>
+<td><strong>Study/Dataset</strong></td>
+<td>Complete experimental dataset</td>
+</tr>
+<tr>
+<td><strong>Imagesets</strong></td>
+<td><strong>DataFile collections</strong></td>
+<td>✅ Groups of related images</td>
+</tr>
+<tr>
+<td><strong>Admin metadata</strong></td>
+<td><strong>Dataset attributes</strong></td>
+<td>Title, authors, references</td>
+</tr>
+<tr>
+<td><strong>Specimen info</strong></td>
+<td><strong>Sample + ExperimentRun</strong></td>
+<td>✅ Sample and collection parameters</td>
+</tr>
+<tr>
+<td><strong>Image metadata</strong></td>
+<td><strong>Image attributes</strong></td>
+<td>Dimensions, pixel size, format</td>
+</tr>
+<tr>
+<td><strong>File hierarchy</strong></td>
+<td><strong>DataFile.file_path</strong></td>
+<td>Directory structure preservation</td>
+</tr>
+<tr>
+<td><strong>Cross-references</strong></td>
+<td><strong>external_ids</strong></td>
+<td>✅ EMDB, PDB, BioStudies links</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-alignment">Metadata Alignment</h3>
+<h4 id="sample-and-specimen">Sample and Specimen</h4>
+<p><strong>EMPIAR Specimen:</strong></p>
+<pre><code class="language-json">{
+  &quot;specimen&quot;: {
+    &quot;cs&quot;: 2.7,
+    &quot;electron_dose&quot;: 40.0,
+    &quot;gain_reference&quot;: &quot;gain.mrc&quot;
+  }
+}
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">CryoEMInstrument:
+  cs_corrector: true  # Cs value implies corrector
+
+ExperimentRun:
+  data_collection_strategy:
+    total_dose: 40.0
+
+DataFile:
+  file_name: &quot;gain.mrc&quot;
+  data_type: calibration
+</code></pre>
+<h4 id="imageset-organization">Imageset Organization</h4>
+<p><strong>EMPIAR Imagesets:</strong></p>
+<pre><code class="language-json">{
+  &quot;imagesets&quot;: [{
+    &quot;name&quot;: &quot;Movies&quot;,
+    &quot;category&quot;: &quot;T2&quot;,
+    &quot;format&quot;: &quot;MRC&quot;,
+    &quot;num_images&quot;: 8500,
+    &quot;frames_per_image&quot;: 40
+  }]
+}
+</code></pre>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">DataFile:
+  file_name: &quot;movies.tar&quot;
+  file_format: mrc
+  data_type: micrograph
+  metadata:
+    empiar_category: &quot;T2&quot;
+    image_count: 8500
+    frames_per_image: 40
+</code></pre>
+<h2 id="key-differences-and-complementarities">Key Differences and Complementarities</h2>
+<h3 id="1-raw-data-focus">1. Raw Data Focus</h3>
+<p><strong>EMPIAR</strong>: Specialized for raw data
+- Optimized for large file storage
+- Direct download infrastructure
+- Minimal processing metadata</p>
+<p><strong>lambda-ber-schema</strong>: Workflow context
+- Tracks processing history
+- Links raw to processed data
+- Captures parameter evolution</p>
+<h3 id="2-multi-modal-support">2. Multi-modal Support</h3>
+<p><strong>EMPIAR</strong>: Expanding modality coverage
+- Volume EM (FIB-SEM, SBF-SEM)
+- X-ray tomography
+- CLEM datasets</p>
+<p><strong>lambda-ber-schema</strong>: Unified multi-modal schema
+- Native support for FTIR, fluorescence
+- Integrated workflow across techniques
+- Common metadata model</p>
+<h3 id="3-access-patterns">3. Access Patterns</h3>
+<p><strong>EMPIAR</strong>: Bulk data access
+- Aspera/Globus for large transfers
+- REST API for metadata
+- Volume Browser for visualization</p>
+<p><strong>lambda-ber-schema</strong>: Metadata-centric access
+- Query by workflow stage
+- Sample lineage tracking
+- Processing parameter search</p>
+<h2 id="integration-strategies">Integration Strategies</h2>
+<h3 id="lambda-ber-schema-empiar-deposition">lambda-ber-schema → EMPIAR Deposition</h3>
+<pre><code class="language-python">def prepare_empiar_deposition(study):
+    &quot;&quot;&quot;Generate EMPIAR JSON from lambda-ber-schema study&quot;&quot;&quot;
+    empiar_json = {
+        &quot;admin&quot;: {
+            &quot;title&quot;: study.title,
+            &quot;authors&quot;: extract_authors(study),
+            &quot;references&quot;: extract_publications(study)
+        },
+        &quot;imagesets&quot;: [],
+        &quot;specimen&quot;: {}
+    }
+
+    # Map DataFiles to imagesets
+    for data_file in study.data_files:
+        if data_file.data_type in ['micrograph', 'tilt_series']:
+            imageset = {
+                &quot;name&quot;: data_file.file_name,
+                &quot;category&quot;: map_to_empiar_category(data_file),
+                &quot;format&quot;: data_file.file_format.upper(),
+                &quot;num_images&quot;: data_file.metadata.get('image_count')
+            }
+            empiar_json[&quot;imagesets&quot;].append(imageset)
+
+    # Extract specimen parameters
+    for exp_run in study.experiment_runs:
+        if exp_run.technique == 'cryo_em':
+            empiar_json[&quot;specimen&quot;][&quot;electron_dose&quot;] = exp_run.data_collection_strategy.total_dose
+
+    return empiar_json
+</code></pre>
+<h3 id="empiar-lambda-ber-schema-import">EMPIAR → lambda-ber-schema Import</h3>
+<pre><code class="language-yaml"># lambda-ber-schema representation of EMPIAR entry
+Study:
+  title: &quot;Imported from EMPIAR-12345&quot;
+
+  data_files:
+    - file_name: &quot;micrographs/&quot;
+      file_format: mrc
+      data_type: micrograph
+      file_size_bytes: 5400000000000
+      external_ids:
+        empiar_id: &quot;EMPIAR-12345&quot;
+      metadata:
+        empiar_category: &quot;T2&quot;
+        image_count: 8500
+        download_method: &quot;aspera&quot;
+
+  experiment_runs:
+    - technique: cryo_em
+      quality_metrics:
+        completeness: 100  # All raw data present
+</code></pre>
+<h2 id="advanced-integration-features">Advanced Integration Features</h2>
+<h3 id="1-volume-em-support">1. Volume EM Support</h3>
+<p>lambda-ber-schema can track volume EM workflows:</p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: volume_em
+  metadata:
+    modality: &quot;FIB-SEM&quot;
+    slice_thickness: 5.0  # nm
+    volume_dimensions: [1000, 1000, 500]  # voxels
+
+DataFile:
+  data_type: volume_em_stack
+  external_ids:
+    empiar_id: &quot;EMPIAR-11000&quot;
+</code></pre>
+<h3 id="2-correlative-microscopy">2. Correlative Microscopy</h3>
+<p>Track CLEM experiments:</p>
+<pre><code class="language-yaml">Study:
+  title: &quot;Correlative light and electron microscopy&quot;
+
+  experiment_runs:
+    - technique: fluorescence
+      instrument_id: &quot;light_microscope_001&quot;
+    - technique: cryo_em
+      instrument_id: &quot;titan_krios_001&quot;
+
+  data_files:
+    - data_type: clem_registration
+      metadata:
+        alignment_method: &quot;CLEM-Reg&quot;
+        modalities: [&quot;fluorescence&quot;, &quot;cryo_em&quot;]
+</code></pre>
+<h3 id="3-x-ray-tomography">3. X-ray Tomography</h3>
+<p>Support for soft X-ray data:</p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: soft_xray_tomography
+  instrument_id: &quot;synchrotron_beamline&quot;
+
+DataFile:
+  data_type: xray_tomogram
+  external_ids:
+    empiar_id: &quot;EMPIAR-11500&quot;
+</code></pre>
+<h2 id="rest-api-integration">REST API Integration</h2>
+<h3 id="accessing-empiar-from-lambda-ber-schema">Accessing EMPIAR from lambda-ber-schema</h3>
+<pre><code class="language-python">import requests
+
+class EMPIARConnector:
+    &quot;&quot;&quot;Connect lambda-ber-schema to EMPIAR REST API&quot;&quot;&quot;
+
+    BASE_URL = &quot;https://www.ebi.ac.uk/empiar/api&quot;
+
+    def get_entry_metadata(self, empiar_id):
+        &quot;&quot;&quot;Retrieve EMPIAR entry metadata&quot;&quot;&quot;
+        response = requests.get(f&quot;{self.BASE_URL}/entry/{empiar_id}&quot;)
+        return response.json()
+
+    def check_entry_status(self, empiar_id):
+        &quot;&quot;&quot;Verify entry release status&quot;&quot;&quot;
+        response = requests.get(
+            f&quot;{self.BASE_URL}/entry_status/{empiar_id}&quot;
+        )
+        return response.json()
+
+    def get_emdb_linked_entries(self, emdb_id):
+        &quot;&quot;&quot;Find EMPIAR entries for EMDB map&quot;&quot;&quot;
+        response = requests.get(
+            f&quot;{self.BASE_URL}/search/emdb_id/{emdb_id}&quot;
+        )
+        return response.json()
+</code></pre>
+<h2 id="recommended-workflow">Recommended Workflow</h2>
+<h3 id="1-data-collection-phase">1. Data Collection Phase</h3>
+<pre><code>lambda-ber-schema: Track samples, instruments, parameters
+         ↓
+   Collect raw data (movies, micrographs)
+         ↓
+   Store locally with lambda-ber-schema metadata
+</code></pre>
+<h3 id="2-processing-phase">2. Processing Phase</h3>
+<pre><code>lambda-ber-schema: Document processing workflows
+         ↓
+   Generate processed data
+         ↓
+   Track quality metrics
+</code></pre>
+<h3 id="3-deposition-preparation">3. Deposition Preparation</h3>
+<pre><code>lambda-ber-schema: Organize raw data for EMPIAR
+         ↓
+   Generate EMPIAR JSON metadata
+         ↓
+   Prepare data hierarchy
+</code></pre>
+<h3 id="4-archive-submission">4. Archive Submission</h3>
+<pre><code>EMPIAR: Deposit raw data
+EMDB: Deposit 3D maps
+PDB: Deposit atomic models
+         ↓
+   Update lambda-ber-schema with accession IDs
+</code></pre>
+<h3 id="5-public-access">5. Public Access</h3>
+<pre><code>lambda-ber-schema: Maintain complete workflow record
+EMPIAR: Serve raw data to community
+         ↓
+   Enable reprocessing and validation
+</code></pre>
+<h2 id="future-opportunities">Future Opportunities</h2>
+<h3 id="technical-developments">Technical Developments</h3>
+<ol>
+<li><strong>Automated Deposition</strong></li>
+<li>Direct EMPIAR submission from lambda-ber-schema</li>
+<li>Metadata validation before submission</li>
+<li>
+<p>Status tracking integration</p>
+</li>
+<li>
+<p><strong>Enhanced Metadata</strong></p>
+</li>
+<li>Richer processing provenance</li>
+<li>Multi-modal experiment description</li>
+<li>
+<p>Sample preparation details</p>
+</li>
+<li>
+<p><strong>Data Mining</strong></p>
+</li>
+<li>Cross-archive queries</li>
+<li>Workflow pattern analysis</li>
+<li>Quality metric aggregation</li>
+</ol>
+<h3 id="emerging-modalities">Emerging Modalities</h3>
+<p>Support for new EMPIAR data types:
+- Time-resolved EM
+- In situ structural biology
+- Microcrystal electron diffraction
+- Correlative super-resolution data</p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="for-data-producers">For Data Producers</h3>
+<ol>
+<li><strong>Plan Early</strong>: Structure data for EMPIAR compatibility</li>
+<li><strong>Track Metadata</strong>: Use lambda-ber-schema for comprehensive documentation</li>
+<li><strong>Organize Hierarchically</strong>: Maintain logical file organization</li>
+<li><strong>Include Calibration</strong>: Don't forget gain references, defects</li>
+</ol>
+<h3 id="for-data-consumers">For Data Consumers</h3>
+<ol>
+<li><strong>Check References</strong>: Verify EMPIAR-EMDB-PDB links</li>
+<li><strong>Review Metadata</strong>: Understand collection parameters</li>
+<li><strong>Use APIs</strong>: Programmatic access for large studies</li>
+<li><strong>Cite Properly</strong>: Acknowledge data sources</li>
+</ol>
+<h2 id="validation-and-quality">Validation and Quality</h2>
+<h3 id="empiar-requirements">EMPIAR Requirements</h3>
+<ul>
+<li>Minimum metadata for reprocessing</li>
+<li>Standard file formats (MRC, TIFF, DM4)</li>
+<li>Organized directory structure</li>
+<li>Clear imageset categorization</li>
+</ul>
+<h3 id="lambda-ber-schema-enhancements">lambda-ber-schema Enhancements</h3>
+<pre><code class="language-yaml">DataFile:
+  validation:
+    empiar_compliant: true
+    format_valid: true
+    metadata_complete: true
+  quality_checks:
+    - image_integrity
+    - header_consistency
+    - gain_reference_present
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>lambda-ber-schema and EMPIAR form a <strong>powerful complementary ecosystem</strong> for electron microscopy data management:</p>
+<ul>
+<li><strong>EMPIAR</strong> provides the definitive archive for raw EM data with:</li>
+<li>Petabyte-scale storage infrastructure</li>
+<li>Global accessibility</li>
+<li>Expanding modality support</li>
+<li>
+<p>Community standard compliance</p>
+</li>
+<li>
+<p><strong>lambda-ber-schema</strong> adds comprehensive workflow context through:</p>
+</li>
+<li>Sample-to-structure tracking</li>
+<li>Multi-technique integration</li>
+<li>Processing provenance</li>
+<li>Flexible metadata capture</li>
+</ul>
+<p>The optimal strategy involves:
+1. Using lambda-ber-schema for active research and workflow management
+2. Depositing raw data to EMPIAR for long-term preservation
+3. Maintaining bidirectional links for complete provenance
+4. Leveraging both systems' strengths throughout the research lifecycle</p>
+<p>This integration ensures that both the experimental process (lambda-ber-schema) and the raw data products (EMPIAR) are properly documented, preserved, and made accessible to the global scientific community, enabling reproducibility, reanalysis, and methodological advancement in structural biology.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
