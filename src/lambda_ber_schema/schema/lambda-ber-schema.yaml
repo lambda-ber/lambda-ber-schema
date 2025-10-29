@@ -103,6 +103,7 @@ prefixes:
 
 imports:
   - linkml:types
+  - functional_annotation
 
 default_range: string
 default_prefix: lambdaber
@@ -155,6 +156,11 @@ classes:
     is_a: NamedThing
     description: "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis"
     attributes:
+      protein_constructs:
+        description: "Protein constructs and cloning information"
+        range: ProteinConstruct
+        multivalued: true
+        inlined_as_list: true
       samples:
         range: Sample
         multivalued: true
@@ -179,6 +185,11 @@ classes:
         range: Image
         multivalued: true
         inlined: true
+        inlined_as_list: true
+      aggregated_protein_views:
+        description: "Aggregated functional and structural annotations for proteins in this study"
+        range: AggregatedProteinView
+        multivalued: true
         inlined_as_list: true
 
   Sample:
@@ -233,6 +244,104 @@ classes:
         maximum_value: 100
       quality_metrics:
         description: "Quality control metrics for the sample"
+      # Functional annotations from knowledge bases
+      functional_sites:
+        description: "Functional site annotations for proteins in the sample"
+        range: FunctionalSite
+        multivalued: true
+        inlined_as_list: true
+      structural_features:
+        description: "Structural feature annotations"
+        range: StructuralFeature
+        multivalued: true
+        inlined_as_list: true
+      protein_interactions:
+        description: "Protein-protein interaction annotations"
+        range: ProteinProteinInteraction
+        multivalued: true
+        inlined_as_list: true
+      ligand_interactions:
+        description: "Small molecule interaction annotations"
+        range: LigandInteraction
+        multivalued: true
+        inlined_as_list: true
+      mutation_effects:
+        description: "Effects of mutations present in the sample"
+        range: MutationEffect
+        multivalued: true
+        inlined_as_list: true
+      ptm_annotations:
+        description: "Post-translational modification annotations"
+        range: PostTranslationalModification
+        multivalued: true
+        inlined_as_list: true
+      biophysical_properties:
+        description: "Measured or predicted biophysical properties"
+        range: BiophysicalProperty
+        multivalued: true
+        inlined_as_list: true
+      evolutionary_conservation:
+        description: "Evolutionary conservation data"
+        range: EvolutionaryConservation
+        inlined: true
+      conformational_ensemble:
+        description: "Conformational states and dynamics"
+        range: ConformationalEnsemble
+        inlined: true
+      database_cross_references:
+        description: "Cross-references to external databases"
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
+
+  ProteinConstruct:
+    is_a: NamedThing
+    description: "Detailed information about a protein construct including cloning and sequence design"
+    attributes:
+      construct_id:
+        description: "Unique identifier for this construct"
+        required: true
+      uniprot_id:
+        description: "UniProt accession for the target protein"
+      gene_name:
+        description: "Gene name"
+      ncbi_taxid:
+        description: "NCBI Taxonomy ID for source organism"
+      sequence_length_aa:
+        description: "Length of the protein sequence in amino acids"
+        range: integer
+      construct_description:
+        description: "Human-readable description of the construct"
+      gene_synthesis_provider:
+        description: "Company or facility that synthesized the gene"
+      codon_optimization_organism:
+        description: "Organism for which codons were optimized"
+      vector_backbone:
+        description: "Base plasmid backbone used"
+      vector_name:
+        description: "Complete vector name"
+      promoter:
+        description: "Promoter used for expression"
+      tag_nterm:
+        description: "N-terminal tag (e.g., His6, MBP, GST)"
+      tag_cterm:
+        description: "C-terminal tag"
+      cleavage_site:
+        description: "Protease cleavage site sequence"
+      signal_peptide:
+        description: "Signal peptide sequence if present"
+      selectable_marker:
+        description: "Antibiotic resistance or other selectable marker"
+      cloning_method:
+        description: "Method used for cloning (e.g., restriction digest, Gibson, InFusion)"
+      insert_boundaries:
+        description: "Start and end positions of insert in vector"
+      sequence_file_path:
+        description: "Path to sequence file"
+      sequence_verified_by:
+        description: "Method or person who verified the sequence"
+      verification_notes:
+        description: "Notes from sequence verification"
 
   SamplePreparation:
     is_a: NamedThing
@@ -254,6 +363,96 @@ classes:
         range: string
       protocol_description:
         description: "Detailed protocol description"
+      # Expression parameters
+      expression_system:
+        description: "Expression system used for recombinant protein production"
+        range: ExpressionSystemEnum
+      host_strain_or_cell_line:
+        description: "Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)"
+      culture_volume_l:
+        description: "Culture volume in liters"
+        range: float
+      medium:
+        description: "Growth medium used"
+      antibiotic_selection:
+        description: "Antibiotic or selection agent used"
+      growth_temperature_c:
+        description: "Growth temperature in Celsius"
+        range: float
+      induction_agent:
+        description: "Agent used to induce expression (e.g., IPTG, tetracycline)"
+      inducer_concentration:
+        description: "Concentration of induction agent"
+      induction_temperature_c:
+        description: "Temperature during induction in Celsius"
+        range: float
+      induction_time_h:
+        description: "Duration of induction in hours"
+        range: float
+      od600_at_induction:
+        description: "Optical density at 600nm when induction was started"
+        range: float
+      harvest_timepoint:
+        description: "Time point when cells were harvested"
+      lysis_method:
+        description: "Method used for cell lysis"
+      protease_inhibitors:
+        description: "Protease inhibitors added"
+      # Purification parameters
+      purification_steps:
+        description: "Ordered list of purification steps performed"
+        range: PurificationStepEnum
+        multivalued: true
+      affinity_type:
+        description: "Type of affinity chromatography"
+      affinity_column:
+        description: "Affinity column specifications"
+      lysis_buffer:
+        description: "Buffer composition for lysis"
+      wash_buffer:
+        description: "Buffer composition for washing"
+      elution_buffer:
+        description: "Buffer composition for elution"
+      tag_removal:
+        description: "Whether and how affinity tag was removed"
+        range: boolean
+      protease:
+        description: "Protease used for tag cleavage"
+      protease_ratio:
+        description: "Ratio of protease to protein"
+      cleavage_time_h:
+        description: "Duration of protease cleavage in hours"
+        range: float
+      cleavage_temperature_c:
+        description: "Temperature during cleavage in Celsius"
+        range: float
+      second_affinity_reverse:
+        description: "Second affinity or reverse affinity step"
+      iex_column:
+        description: "Ion-exchange column used"
+      hic_column:
+        description: "Hydrophobic interaction column used"
+      sec_column:
+        description: "Size-exclusion column used"
+      sec_buffer:
+        description: "Buffer for size-exclusion chromatography"
+      concentration_method:
+        description: "Method used to concentrate protein"
+      final_buffer:
+        description: "Final buffer composition after purification"
+      final_concentration_mg_per_ml:
+        description: "Final protein concentration in mg/mL"
+        range: float
+      yield_mg:
+        description: "Total yield in milligrams"
+        range: float
+      purity_by_sds_page_percent:
+        description: "Purity percentage by SDS-PAGE"
+        range: float
+      aggregation_assessment:
+        description: "Assessment of protein aggregation state"
+      aliquoting:
+        description: "How the protein was aliquoted for storage"
 
   Instrument:
     is_a: NamedThing
@@ -382,6 +581,9 @@ classes:
         description: "Technique used for data collection"
         range: TechniqueEnum
         required: true
+      experimental_method:
+        description: "Specific experimental method for structure determination (particularly for diffraction techniques)"
+        range: ExperimentalMethodEnum
       experimental_conditions:
         description: "Environmental and experimental conditions"
         range: ExperimentalConditions
@@ -422,8 +624,53 @@ classes:
         required: true
       software_version:
         description: "Software version"
+      additional_software:
+        description: "Additional software used in pipeline"
       processing_parameters:
         description: "Parameters used in processing"
+      parameters_file_path:
+        description: "Path to parameters file or text of key parameters"
+      # Crystallographic processing modules
+      indexer_module:
+        description: "Indexing module used (e.g., MOSFLM, XDS)"
+      integrator_module:
+        description: "Integration module used"
+      scaler_module:
+        description: "Scaling module used (e.g., AIMLESS, SCALA)"
+      outlier_rejection_method:
+        description: "Method for rejecting outlier reflections"
+      # Phasing and refinement
+      phasing_method:
+        description: "Phasing method used for X-ray crystallography structure determination"
+        range: PhasingMethodEnum
+      search_model_pdb_id:
+        description: "PDB ID of search model for molecular replacement"
+      tls_used:
+        description: "Whether TLS (Translation/Libration/Screw) refinement was used"
+        range: boolean
+      ncs_used:
+        description: "Whether Non-Crystallographic Symmetry restraints were used"
+        range: boolean
+      restraints_other:
+        description: "Other restraints applied during refinement"
+      ligands_cofactors:
+        description: "Ligands or cofactors modeled in the structure"
+      number_of_waters:
+        description: "Number of water molecules modeled"
+        range: integer
+      refinement_resolution_a:
+        description: "Resolution cutoff used for refinement in Angstroms"
+        range: float
+      deposited_to_pdb:
+        description: "Whether structure was deposited to PDB"
+        range: boolean
+      pdb_id:
+        description: "PDB accession code if deposited"
+      validation_report_path:
+        description: "Path to validation report"
+      # Processing notes and metadata
+      processing_notes:
+        description: "Additional notes about processing"
       compute_resources:
         description: "Computational resources used"
         range: ComputeResources
@@ -741,12 +988,46 @@ classes:
     is_a: TechniqueSpecificPreparation
     description: "X-ray crystallography specific preparation"
     attributes:
+      # Pre-crystallization
+      protein_concentration_mg_per_ml:
+        description: "Protein concentration for crystallization in mg/mL"
+        range: float
+      protein_buffer:
+        description: "Buffer composition for protein solution"
+      additives:
+        description: "Additives mixed with protein before crystallization"
+      # Crystallization setup
       crystallization_method:
         description: "Method used for crystallization"
         range: CrystallizationMethodEnum
+      screen_name:
+        description: "Name of crystallization screen used"
+      temperature_c:
+        description: "Crystallization temperature in Celsius"
+        range: float
+      drop_ratio_protein_to_reservoir:
+        description: "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)"
+      drop_volume_nl:
+        description: "Total drop volume in nanoliters"
+        range: float
+      reservoir_volume_ul:
+        description: "Reservoir volume in microliters"
+        range: float
+      seeding_type:
+        description: "Type of seeding used (micro, macro, streak)"
+      seed_stock_dilution:
+        description: "Dilution factor for seed stock"
+      # Optimization
+      initial_hit_condition:
+        description: "Description of initial crystallization hit condition"
+      optimization_strategy:
+        description: "Strategy used to optimize crystals"
+      optimized_condition:
+        description: "Final optimized crystallization condition"
       crystallization_conditions:
         description: "Detailed crystallization conditions"
-      crystal_size:
+      # Crystal handling
+      crystal_size_um:
         description: "Crystal dimensions in micrometers"
       cryoprotectant:
         description: "Cryoprotectant used"
@@ -754,10 +1035,16 @@ classes:
       cryoprotectant_concentration:
         description: "Cryoprotectant concentration percentage"
         range: float
+      soak_compound:
+        description: "Compound used for soaking (ligand, heavy atom)"
+      soak_conditions:
+        description: "Conditions for crystal soaking"
       mounting_method:
         description: "Crystal mounting method"
       flash_cooling_method:
         description: "Flash cooling protocol"
+      crystal_notes:
+        description: "Additional notes about crystal quality and handling"
 
   SAXSPreparation:
     is_a: TechniqueSpecificPreparation
@@ -818,28 +1105,147 @@ classes:
       dose_per_frame:
         description: "Dose per frame"
         range: float
+      # X-ray specific parameters
+      wavelength_a:
+        description: "X-ray wavelength in Angstroms"
+        range: float
+      detector:
+        description: "Detector model/type"
+      detector_distance_mm:
+        description: "Detector distance in millimeters"
+        range: float
+      beam_center_x_px:
+        description: "Beam center X coordinate in pixels"
+        range: integer
+      beam_center_y_px:
+        description: "Beam center Y coordinate in pixels"
+        range: integer
+      beam_size_um:
+        description: "Beam size in micrometers"
+        range: float
+      flux_photons_per_s:
+        description: "Photon flux in photons per second"
+        range: float
+      transmission_percent:
+        description: "Beam transmission percentage"
+        range: float
+      attenuator:
+        description: "Attenuator setting used"
+      temperature_k:
+        description: "Data collection temperature in Kelvin"
+        range: float
+      oscillation_per_image_deg:
+        description: "Oscillation angle per image in degrees"
+        range: float
+      total_rotation_deg:
+        description: "Total rotation range in degrees"
+        range: float
+      strategy_notes:
+        description: "Notes about data collection strategy"
 
   QualityMetrics:
     is_a: AttributeGroup
     description: "Quality metrics for experiments"
     attributes:
+      # General metrics
       resolution:
         description: "Resolution in Angstroms"
+        range: float
+      resolution_high_shell_a:
+        description: "High resolution shell limit in Angstroms"
+        range: float
+      resolution_low_a:
+        description: "Low resolution limit in Angstroms"
         range: float
       completeness:
         description: "Data completeness percentage"
         range: float
+      completeness_high_res_shell_percent:
+        description: "Completeness in highest resolution shell"
+        range: float
       signal_to_noise:
         description: "Signal to noise ratio"
         range: float
-      r_factor:
-        description: "R-factor for crystallography"
+      mean_i_over_sigma_i:
+        description: "Mean I/sigma(I)"
         range: float
+      # Crystallographic processing metrics
+      space_group:
+        description: "Crystallographic space group"
+      unit_cell_a:
+        description: "Unit cell parameter a in Angstroms"
+        range: float
+      unit_cell_b:
+        description: "Unit cell parameter b in Angstroms"
+        range: float
+      unit_cell_c:
+        description: "Unit cell parameter c in Angstroms"
+        range: float
+      unit_cell_alpha:
+        description: "Unit cell angle alpha in degrees"
+        range: float
+      unit_cell_beta:
+        description: "Unit cell angle beta in degrees"
+        range: float
+      unit_cell_gamma:
+        description: "Unit cell angle gamma in degrees"
+        range: float
+      multiplicity:
+        description: "Data multiplicity (redundancy)"
+        range: float
+      cc_half:
+        description: "Half-set correlation coefficient CC(1/2)"
+        range: float
+      r_merge:
+        description: "Rmerge - merge R-factor"
+        range: float
+      r_pim:
+        description: "Rpim - precision-indicating merging R-factor"
+        range: float
+      wilson_b_factor_a2:
+        description: "Wilson B-factor in Angstroms squared"
+        range: float
+      anomalous_used:
+        description: "Whether anomalous signal was used"
+        range: boolean
+      anom_corr:
+        description: "Anomalous correlation"
+        range: float
+      anom_sig_ano:
+        description: "Anomalous signal strength"
+        range: float
+      # Refinement metrics
+      r_work:
+        description: "Refinement R-factor (working set)"
+        range: float
+      r_free:
+        description: "R-free (test set)"
+        range: float
+      ramachandran_favored_percent:
+        description: "Percentage of residues in favored Ramachandran regions"
+        range: float
+      ramachandran_outliers_percent:
+        description: "Percentage of Ramachandran outliers"
+        range: float
+      clashscore:
+        description: "MolProbity clashscore"
+        range: float
+      molprobity_score:
+        description: "Overall MolProbity score"
+        range: float
+      average_b_factor_a2:
+        description: "Average B-factor in Angstroms squared"
+        range: float
+      # SAXS metrics
       i_zero:
         description: "Forward scattering intensity I(0)"
         range: float
       rg:
         description: "Radius of gyration in Angstroms"
+        range: float
+      # Legacy/deprecated
+      r_factor:
+        description: "R-factor for crystallography (deprecated, use r_work)"
         range: float
 
   ComputeResources:
@@ -947,8 +1353,12 @@ enums:
         description: "Vapor diffusion hanging drop"
       vapor_diffusion_sitting:
         description: "Vapor diffusion sitting drop"
+      batch:
+        description: "Batch crystallization"
       microbatch:
         description: "Microbatch under oil"
+      lcp:
+        description: "Lipidic cubic phase (LCP)"
       dialysis:
         description: "Dialysis method"
       free_interface_diffusion:
@@ -1141,3 +1551,73 @@ enums:
         description: "Polarized light microscopy"
       oblique:
         description: "Oblique illumination"
+
+  ExpressionSystemEnum:
+    description: "Expression systems for recombinant protein production"
+    permissible_values:
+      bacteria:
+        description: "Bacterial expression (e.g., E. coli)"
+      yeast:
+        description: "Yeast expression (e.g., S. cerevisiae, P. pastoris)"
+      insect:
+        description: "Insect cell expression (e.g., Sf9, High Five)"
+      mammalian:
+        description: "Mammalian cell expression (e.g., HEK293, CHO)"
+      cell_free:
+        description: "Cell-free expression system"
+
+  PurificationStepEnum:
+    description: "Protein purification steps and methods"
+    permissible_values:
+      affinity_ni_nta:
+        description: "Affinity chromatography using Ni-NTA resin"
+      affinity_co_nta:
+        description: "Affinity chromatography using Co-NTA resin"
+      affinity_strep:
+        description: "Affinity chromatography using Strep-tag"
+      affinity_mbp:
+        description: "Affinity chromatography using maltose-binding protein (MBP)"
+      affinity_gst:
+        description: "Affinity chromatography using glutathione S-transferase (GST)"
+      tag_cleavage:
+        description: "Proteolytic cleavage of purification tags"
+      ion_exchange:
+        description: "Ion-exchange chromatography (IEX)"
+      hydrophobic_interaction:
+        description: "Hydrophobic interaction chromatography (HIC)"
+      size_exclusion:
+        description: "Size-exclusion chromatography (SEC)"
+      dialysis:
+        description: "Dialysis or buffer exchange"
+
+  PhasingMethodEnum:
+    description: "Methods for phase determination in X-ray crystallography"
+    permissible_values:
+      molecular_replacement:
+        description: "Molecular replacement (MR)"
+      sad:
+        description: "Single-wavelength anomalous diffraction (SAD)"
+      mad:
+        description: "Multi-wavelength anomalous diffraction (MAD)"
+      sir:
+        description: "Single isomorphous replacement (SIR)"
+      mir:
+        description: "Multiple isomorphous replacement (MIR)"
+      siras:
+        description: "Single isomorphous replacement with anomalous scattering (SIRAS)"
+      miras:
+        description: "Multiple isomorphous replacement with anomalous scattering (MIRAS)"
+      fragile_mr:
+        description: "Fragile molecular replacement or ensemble-based MR"
+
+  ExperimentalMethodEnum:
+    description: "Experimental methods for structure determination"
+    permissible_values:
+      x_ray_diffraction:
+        description: "X-ray diffraction"
+      neutron_diffraction:
+        description: "Neutron diffraction"
+      electron_diffraction:
+        description: "Electron diffraction (e.g., microED)"
+      fiber_diffraction:
+        description: "Fiber diffraction"

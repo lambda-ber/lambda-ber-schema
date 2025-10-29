@@ -1,20 +1,13 @@
 @base <http://example.org/> .
-@prefix dataset: <https://w3id.org/lambda-ber-schema/dataset/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix df: <https://w3id.org/lambda-ber-schema/data_file/> .
-@prefix img: <https://w3id.org/lambda-ber-schema/image/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
-@prefix prep: <https://w3id.org/lambda-ber-schema/sample_preparation/> .
-@prefix sample: <https://w3id.org/lambda-ber-schema/sample/> .
-@prefix study: <https://w3id.org/lambda-ber-schema/study/> .
-@prefix wf: <https://w3id.org/lambda-ber-schema/workflow_run/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dataset:loosenin-bioenergy a lambdaber:Dataset ;
+lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
     dcterms:title "Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology Investigation" ;
-    lambdaber:studies study:loosenin-2025 .
+    lambdaber:studies lambdaber:study-loosenin-2025 .
 
-df:cryoem-001 a lambdaber:DataFile ;
+lambdaber:df-cryoem-001 a lambdaber:DataFile ;
     dcterms:title "CryoEM particle stack" ;
     lambdaber:data_type "particles" ;
     lambdaber:file_format "star" ;
@@ -22,7 +15,7 @@ df:cryoem-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/cryoem/2025/loosenin/" ;
     lambdaber:file_size_bytes 125000000000 .
 
-df:map-001 a lambdaber:DataFile ;
+lambdaber:df-map-001 a lambdaber:DataFile ;
     dcterms:title "CryoEM density map" ;
     lambdaber:data_type "volume" ;
     lambdaber:file_format "mrc" ;
@@ -30,7 +23,7 @@ df:map-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/cryoem/2025/loosenin/" ;
     lambdaber:file_size_bytes 512000000 .
 
-df:mx-001 a lambdaber:DataFile ;
+lambdaber:df-mx-001 a lambdaber:DataFile ;
     dcterms:title "X-ray diffraction data" ;
     lambdaber:data_type "diffraction" ;
     lambdaber:file_format "mtz" ;
@@ -38,7 +31,7 @@ df:mx-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/mx/2025/loosenin/" ;
     lambdaber:file_size_bytes 45000000 .
 
-df:pdb-001 a lambdaber:DataFile ;
+lambdaber:df-pdb-001 a lambdaber:DataFile ;
     dcterms:title "Refined crystal structure" ;
     lambdaber:data_type "model" ;
     lambdaber:file_format "pdb" ;
@@ -46,7 +39,7 @@ df:pdb-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/mx/2025/loosenin/" ;
     lambdaber:file_size_bytes 800000 .
 
-df:sans-001 a lambdaber:DataFile ;
+lambdaber:df-sans-001 a lambdaber:DataFile ;
     dcterms:title "SANS complex data" ;
     lambdaber:data_type "scattering" ;
     lambdaber:file_format "ascii" ;
@@ -54,7 +47,7 @@ df:sans-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/sans/2025/loosenin/" ;
     lambdaber:file_size_bytes 1800000 .
 
-df:saxs-001 a lambdaber:DataFile ;
+lambdaber:df-saxs-001 a lambdaber:DataFile ;
     dcterms:title "SAXS pH series data" ;
     lambdaber:data_type "scattering" ;
     lambdaber:file_format "ascii" ;
@@ -62,17 +55,37 @@ df:saxs-001 a lambdaber:DataFile ;
     lambdaber:file_path "/data/saxs/2025/loosenin/" ;
     lambdaber:file_size_bytes 2500000 .
 
-img:sans-001 a lambdaber:Image ;
+lambdaber:img-sans-001 a lambdaber:Image ;
     dcterms:title "SANS model fit" ;
     lambdaber:acquisition_date "2025-02-25" ;
     lambdaber:file_name "sans_model_fit.png" .
 
-img:saxs-001 a lambdaber:Image ;
+lambdaber:img-saxs-001 a lambdaber:Image ;
     dcterms:title "SAXS Guinier plots" ;
     lambdaber:acquisition_date "2025-02-12" ;
     lambdaber:file_name "saxs_guinier_plots.png" .
 
-sample:LOOS-001 a lambdaber:Sample ;
+lambdaber:prep-cryoem-001 a lambdaber:SamplePreparation ;
+    dcterms:title "CryoEM grid preparation of complex" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:sample_id "lambdaber:sample-LOOS-004" .
+
+lambdaber:prep-crystal-001 a lambdaber:SamplePreparation ;
+    dcterms:title "Crystal preparation for X-ray diffraction" ;
+    lambdaber:preparation_type "xray_crystallography" ;
+    lambdaber:sample_id "lambdaber:sample-LOOS-001" .
+
+lambdaber:prep-sans-001 a lambdaber:SamplePreparation ;
+    dcterms:title "SANS contrast matching preparation" ;
+    lambdaber:preparation_type "sans" ;
+    lambdaber:sample_id "lambdaber:sample-LOOS-001" .
+
+lambdaber:prep-saxs-001 a lambdaber:SamplePreparation ;
+    dcterms:title "SAXS sample preparation" ;
+    lambdaber:preparation_type "saxs" ;
+    lambdaber:sample_id "lambdaber:sample-LOOS-001" .
+
+lambdaber:sample-LOOS-001 a lambdaber:Sample ;
     dcterms:title "PcaLOOL12 wild-type protein" ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:additives "1mM DTT",
@@ -93,7 +106,7 @@ sample:LOOS-001 a lambdaber:Sample ;
             lambdaber:temperature "4.0"^^xsd:float ;
             lambdaber:temperature_unit "celsius" ] .
 
-sample:LOOS-002 a lambdaber:Sample ;
+lambdaber:sample-LOOS-002 a lambdaber:Sample ;
     dcterms:title "PcaLOOL12 pH stress series" ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "100mM NaCl",
@@ -108,7 +121,7 @@ sample:LOOS-002 a lambdaber:Sample ;
             lambdaber:temperature "4.0"^^xsd:float ;
             lambdaber:temperature_unit "celsius" ] .
 
-sample:LOOS-003 a lambdaber:Sample ;
+lambdaber:sample-LOOS-003 a lambdaber:Sample ;
     dcterms:title "TrLOOL1 from Trichoderma reesei" ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "200mM NaCl",
@@ -123,7 +136,7 @@ sample:LOOS-003 a lambdaber:Sample ;
             lambdaber:temperature "4.0"^^xsd:float ;
             lambdaber:temperature_unit "celsius" ] .
 
-sample:LOOS-004 a lambdaber:Sample ;
+lambdaber:sample-LOOS-004 a lambdaber:Sample ;
     dcterms:title "PcaLOOL12-cellulose complex" ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:additives "10mg/mL Avicel cellulose" ;
@@ -139,79 +152,59 @@ sample:LOOS-004 a lambdaber:Sample ;
             lambdaber:temperature "4.0"^^xsd:float ;
             lambdaber:temperature_unit "celsius" ] .
 
-prep:cryoem-001 a lambdaber:SamplePreparation ;
-    dcterms:title "CryoEM grid preparation of complex" ;
-    lambdaber:preparation_type "cryo_em" ;
-    lambdaber:sample_id "sample:LOOS-004" .
-
-prep:crystal-001 a lambdaber:SamplePreparation ;
-    dcterms:title "Crystal preparation for X-ray diffraction" ;
-    lambdaber:preparation_type "xray_crystallography" ;
-    lambdaber:sample_id "sample:LOOS-001" .
-
-prep:sans-001 a lambdaber:SamplePreparation ;
-    dcterms:title "SANS contrast matching preparation" ;
-    lambdaber:preparation_type "sans" ;
-    lambdaber:sample_id "sample:LOOS-001" .
-
-prep:saxs-001 a lambdaber:SamplePreparation ;
-    dcterms:title "SAXS sample preparation" ;
-    lambdaber:preparation_type "saxs" ;
-    lambdaber:sample_id "sample:LOOS-001" .
-
-study:loosenin-2025 a lambdaber:Study ;
+lambdaber:study-loosenin-2025 a lambdaber:Study ;
     dcterms:title "Structural and functional characterization of fungal loosenins" ;
-    lambdaber:data_files df:cryoem-001,
-        df:map-001,
-        df:mx-001,
-        df:pdb-001,
-        df:sans-001,
-        df:saxs-001 ;
-    lambdaber:images img:sans-001,
-        img:saxs-001 ;
-    lambdaber:sample_preparations prep:cryoem-001,
-        prep:crystal-001,
-        prep:sans-001,
-        prep:saxs-001 ;
-    lambdaber:samples sample:LOOS-001,
-        sample:LOOS-002,
-        sample:LOOS-003,
-        sample:LOOS-004 ;
-    lambdaber:workflow_runs wf:cryoem-001,
-        wf:integrative-001,
-        wf:mx-001,
-        wf:saxs-001 .
+    lambdaber:data_files lambdaber:df-cryoem-001,
+        lambdaber:df-map-001,
+        lambdaber:df-mx-001,
+        lambdaber:df-pdb-001,
+        lambdaber:df-sans-001,
+        lambdaber:df-saxs-001 ;
+    lambdaber:images lambdaber:img-sans-001,
+        lambdaber:img-saxs-001 ;
+    lambdaber:sample_preparations lambdaber:prep-cryoem-001,
+        lambdaber:prep-crystal-001,
+        lambdaber:prep-sans-001,
+        lambdaber:prep-saxs-001 ;
+    lambdaber:samples lambdaber:sample-LOOS-001,
+        lambdaber:sample-LOOS-002,
+        lambdaber:sample-LOOS-003,
+        lambdaber:sample-LOOS-004 ;
+    lambdaber:workflow_runs lambdaber:wf-cryoem-001,
+        lambdaber:wf-integrative-001,
+        lambdaber:wf-mx-001,
+        lambdaber:wf-saxs-001 .
 
-wf:cryoem-001 a lambdaber:WorkflowRun ;
+lambdaber:wf-cryoem-001 a lambdaber:WorkflowRun ;
     dcterms:title "Single particle reconstruction" ;
-    lambdaber:experiment_id "exp:cryoem-001" ;
+    lambdaber:experiment_id "lambdaber:exp-cryoem-001" ;
     lambdaber:processing_level 3 ;
     lambdaber:software_name "RELION" ;
     lambdaber:software_version "4.0" ;
     lambdaber:workflow_code "CryoEM-SPA" ;
     lambdaber:workflow_type "refinement" .
 
-wf:integrative-001 a lambdaber:WorkflowRun ;
+lambdaber:wf-integrative-001 a lambdaber:WorkflowRun ;
     dcterms:title "Integrative modeling" ;
-    lambdaber:experiment_id "exp:saxs-001" ;
+    lambdaber:experiment_id "lambdaber:exp-saxs-001" ;
     lambdaber:processing_level 2 ;
     lambdaber:software_name "IMP" ;
     lambdaber:software_version "2.18" ;
     lambdaber:workflow_code "IMP-modeling" ;
     lambdaber:workflow_type "model_building" .
 
-wf:mx-001 a lambdaber:WorkflowRun ;
+lambdaber:wf-mx-001 a lambdaber:WorkflowRun ;
     dcterms:title "Crystal structure determination" ;
-    lambdaber:experiment_id "exp:mx-001" ;
+    lambdaber:experiment_id "lambdaber:exp-mx-001" ;
     lambdaber:processing_level 3 ;
     lambdaber:software_name "PHENIX" ;
     lambdaber:software_version "1.20.1" ;
     lambdaber:workflow_code "MX-structure" ;
     lambdaber:workflow_type "phasing" .
 
-wf:saxs-001 a lambdaber:WorkflowRun ;
+lambdaber:wf-saxs-001 a lambdaber:WorkflowRun ;
     dcterms:title "SAXS pH series analysis" ;
-    lambdaber:experiment_id "exp:saxs-001" ;
+    lambdaber:experiment_id "lambdaber:exp-saxs-001" ;
     lambdaber:processing_level 2 ;
     lambdaber:software_name "ATSAS" ;
     lambdaber:software_version "3.2.1" ;

@@ -1,6 +1,42 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// Aggregated view of all structural and functional data for a protein
+message AggregatedProteinView
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string uniprotId = 0
+  string proteinName = 0
+  string organism = 0
+  integer organismId = 0
+ repeated  string pdbEntries = 0
+ repeated  functionalSite functionalSites = 0
+ repeated  structuralFeature structuralFeatures = 0
+ repeated  proteinProteinInteraction proteinInteractions = 0
+ repeated  ligandInteraction ligandInteractions = 0
+ repeated  mutationEffect mutations = 0
+ repeated  postTranslationalModification ptms = 0
+ repeated  biophysicalProperty biophysicalProperties = 0
+  conformationalEnsemble conformationalEnsemble = 0
+  evolutionaryConservation evolutionaryConservation = 0
+ repeated  databaseCrossReference crossReferences = 0
+ }
+// Measured or calculated biophysical properties
+message BiophysicalProperty
+ {
+  string description = 0
+  biophysicalPropertyEnum propertyType = 0
+  float value = 0
+  string unit = 0
+  float error = 0
+  string measurementConditions = 0
+  float temperature = 0
+  float ph = 0
+  float ionicStrength = 0
+  biophysicalMethodEnum experimentalMethod = 0
+ }
 // Buffer composition for sample storage
 message BufferComposition
  {
@@ -17,6 +53,32 @@ message ComputeResources
   float gpuHours = 0
   float memoryGb = 0
   float storageGb = 0
+ }
+// Ensemble of conformational states for a protein
+message ConformationalEnsemble
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+ repeated  conformationalState conformationalStates = 0
+  string clusteringMethod = 0
+  float rmsdThreshold = 0
+  string transitionPathways = 0
+  string energyLandscape = 0
+ repeated  string principalMotions = 0
+ }
+// Individual conformational state
+message ConformationalState
+ {
+  string description = 0
+  string stateId = 0
+  string stateName = 0
+ repeated  string pdbEntries = 0
+  float population = 0
+  float freeEnergy = 0
+  float rmsdFromReference = 0
+ repeated  string characteristicFeatures = 0
  }
 // Cryo-EM microscope specifications
 message CryoEMInstrument
@@ -52,6 +114,15 @@ message CryoEMPreparation
   float chamberTemperature = 0
   string plasmaTreatment = 0
  }
+// Cross-references to external databases
+message DatabaseCrossReference
+ {
+  string description = 0
+  databaseNameEnum databaseName = 0
+  string databaseId = 0
+  uri databaseUrl = 0
+  string lastUpdated = 0
+ }
 // Strategy for data collection
 message DataCollectionStrategy
  {
@@ -61,6 +132,19 @@ message DataCollectionStrategy
   float frameRate = 0
   float totalDose = 0
   float dosePerFrame = 0
+  float wavelengthA = 0
+  string detector = 0
+  float detectorDistanceMm = 0
+  integer beamCenterXPx = 0
+  integer beamCenterYPx = 0
+  float beamSizeUm = 0
+  float fluxPhotonsPerS = 0
+  float transmissionPercent = 0
+  string attenuator = 0
+  float temperatureK = 0
+  float oscillationPerImageDeg = 0
+  float totalRotationDeg = 0
+  string strategyNotes = 0
  }
 // A data file generated or used in the study
 message DataFile
@@ -86,6 +170,30 @@ message Dataset
  repeated  instrument instruments = 0
  repeated  study studies = 0
  }
+// Evolutionary conservation information
+message EvolutionaryConservation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  float conservationScore = 0
+ repeated  string conservedResidues = 0
+ repeated  string variableResidues = 0
+  string conservationMethod = 0
+  integer alignmentDepth = 0
+  string taxonomicRange = 0
+ repeated  string coevolvedResidues = 0
+ }
 // Environmental and experimental conditions
 message ExperimentalConditions
  {
@@ -109,6 +217,7 @@ message ExperimentRun
   string experimentDate = 0
   string operatorId = 0
   techniqueEnum technique = 0
+  experimentalMethodEnum experimentalMethod = 0
   experimentalConditions experimentalConditions = 0
   dataCollectionStrategy dataCollectionStrategy = 0
   qualityMetrics qualityMetrics = 0
@@ -160,6 +269,31 @@ message FTIRImage
   string apodizationFunction = 0
  repeated  string molecularSignatures = 0
   string backgroundCorrection = 0
+ }
+// Functional sites including catalytic, binding, and regulatory sites
+message FunctionalSite
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  functionalSiteTypeEnum siteType = 0
+  string siteName = 0
+ repeated  string residues = 0
+ repeated  ligandInteraction ligandInteractions = 0
+  float conservationScore = 0
+  string functionalImportance = 0
+ repeated  uriorcurie goTerms = 0
+  string ecNumber = 0
  }
 // An image file from structural biology experiments
 message Image
@@ -226,6 +360,23 @@ message Instrument
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
  }
+// Small molecule/ligand interactions with proteins
+message LigandInteraction
+ {
+  string description = 0
+  string ligandId = 0
+  string ligandName = 0
+  string ligandSmiles = 0
+  float bindingAffinity = 0
+  bindingAffinityTypeEnum bindingAffinityType = 0
+  affinityUnitEnum bindingAffinityUnit = 0
+  interactionTypeEnum interactionType = 0
+ repeated  string bindingSiteResidues = 0
+  boolean isCofactor = 0
+  boolean isDrugLike = 0
+  float druggabilityScore = 0
+  float interactionDistance = 0
+ }
 // Molecular composition of a sample
 message MolecularComposition
  {
@@ -233,6 +384,33 @@ message MolecularComposition
  repeated  string sequences = 0
  repeated  string modifications = 0
  repeated  string ligands = 0
+ }
+// Effects of mutations and variants on protein structure and function
+message MutationEffect
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  string mutation = 0
+  mutationTypeEnum mutationType = 0
+  stabilityEffectEnum effectOnStability = 0
+  float deltaDeltaG = 0
+  functionalEffectEnum effectOnFunction = 0
+  string functionalImpactDescription = 0
+  string diseaseAssociation = 0
+  string omimId = 0
+  clinicalSignificanceEnum clinicalSignificance = 0
+  float alleleFrequency = 0
  }
 message OntologyTerm
  {
@@ -265,16 +443,139 @@ message OpticalImage
   string whiteBalance = 0
   string contrastMethod = 0
  }
+// Post-translational modifications observed or predicted
+message PostTranslationalModification
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  pTMTypeEnum modificationType = 0
+  string modifiedResidue = 0
+  string modificationGroup = 0
+  float massShift = 0
+  string functionalEffect = 0
+  string regulatoryRole = 0
+  string enzyme = 0
+  string removalEnzyme = 0
+ }
+// Base class for all protein-related functional and structural annotations
+message ProteinAnnotation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+ }
+// Detailed information about a protein construct including cloning and sequence design
+message ProteinConstruct
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string constructId = 0
+  string uniprotId = 0
+  string geneName = 0
+  string ncbiTaxid = 0
+  integer sequenceLengthAa = 0
+  string constructDescription = 0
+  string geneSynthesisProvider = 0
+  string codonOptimizationOrganism = 0
+  string vectorBackbone = 0
+  string vectorName = 0
+  string promoter = 0
+  string tagNterm = 0
+  string tagCterm = 0
+  string cleavageSite = 0
+  string signalPeptide = 0
+  string selectableMarker = 0
+  string cloningMethod = 0
+  string insertBoundaries = 0
+  string sequenceFilePath = 0
+  string sequenceVerifiedBy = 0
+  string verificationNotes = 0
+ }
+// Protein-protein interactions and interfaces
+message ProteinProteinInteraction
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  string partnerProteinId = 0
+  string partnerChainId = 0
+ repeated  string interfaceResidues = 0
+ repeated  string partnerInterfaceResidues = 0
+  float interfaceArea = 0
+  float bindingEnergy = 0
+  float dissociationConstant = 0
+  complexStabilityEnum complexStability = 0
+  boolean biologicalAssembly = 0
+ repeated  interactionEvidenceEnum interactionEvidence = 0
+ }
 // Quality metrics for experiments
 message QualityMetrics
  {
   string description = 0
   float resolution = 0
+  float resolutionHighShellA = 0
+  float resolutionLowA = 0
   float completeness = 0
+  float completenessHighResShellPercent = 0
   float signalToNoise = 0
-  float rFactor = 0
+  float meanIOverSigmaI = 0
+  string spaceGroup = 0
+  float unitCellA = 0
+  float unitCellB = 0
+  float unitCellC = 0
+  float unitCellAlpha = 0
+  float unitCellBeta = 0
+  float unitCellGamma = 0
+  float multiplicity = 0
+  float ccHalf = 0
+  float rMerge = 0
+  float rPim = 0
+  float wilsonBFactorA2 = 0
+  boolean anomalousUsed = 0
+  float anomCorr = 0
+  float anomSigAno = 0
+  float rWork = 0
+  float rFree = 0
+  float ramachandranFavoredPercent = 0
+  float ramachandranOutliersPercent = 0
+  float clashscore = 0
+  float molprobityScore = 0
+  float averageBFactorA2 = 0
   float iZero = 0
   float rg = 0
+  float rFactor = 0
  }
 // A biological sample used in structural biology experiments
 message Sample
@@ -297,6 +598,16 @@ message Sample
   sample parentSampleId = 0
   float purityPercentage = 0
   string qualityMetrics = 0
+ repeated  functionalSite functionalSites = 0
+ repeated  structuralFeature structuralFeatures = 0
+ repeated  proteinProteinInteraction proteinInteractions = 0
+ repeated  ligandInteraction ligandInteractions = 0
+ repeated  mutationEffect mutationEffects = 0
+ repeated  postTranslationalModification ptmAnnotations = 0
+ repeated  biophysicalProperty biophysicalProperties = 0
+  evolutionaryConservation evolutionaryConservation = 0
+  conformationalEnsemble conformationalEnsemble = 0
+ repeated  databaseCrossReference databaseCrossReferences = 0
  }
 // A process that prepares a sample for imaging
 message SamplePreparation
@@ -309,6 +620,43 @@ message SamplePreparation
   string preparationDate = 0
   string operatorId = 0
   string protocolDescription = 0
+  expressionSystemEnum expressionSystem = 0
+  string hostStrainOrCellLine = 0
+  float cultureVolumeL = 0
+  string medium = 0
+  string antibioticSelection = 0
+  float growthTemperatureC = 0
+  string inductionAgent = 0
+  string inducerConcentration = 0
+  float inductionTemperatureC = 0
+  float inductionTimeH = 0
+  float od600AtInduction = 0
+  string harvestTimepoint = 0
+  string lysisMethod = 0
+  string proteaseInhibitors = 0
+ repeated  purificationStepEnum purificationSteps = 0
+  string affinityType = 0
+  string affinityColumn = 0
+  string lysisBuffer = 0
+  string washBuffer = 0
+  string elutionBuffer = 0
+  boolean tagRemoval = 0
+  string protease = 0
+  string proteaseRatio = 0
+  float cleavageTimeH = 0
+  float cleavageTemperatureC = 0
+  string secondAffinityReverse = 0
+  string iexColumn = 0
+  string hicColumn = 0
+  string secColumn = 0
+  string secBuffer = 0
+  string concentrationMethod = 0
+  string finalBuffer = 0
+  float finalConcentrationMgPerMl = 0
+  float yieldMg = 0
+  float purityBySdsPagePercent = 0
+  string aggregationAssessment = 0
+  string aliquoting = 0
  }
 // SAXS/WAXS instrument specifications
 message SAXSInstrument
@@ -347,18 +695,46 @@ message StorageConditions
   string duration = 0
   string atmosphere = 0
  }
+// Structural features and properties of protein regions
+message StructuralFeature
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  structuralFeatureTypeEnum featureType = 0
+  secondaryStructureEnum secondaryStructure = 0
+  float solventAccessibility = 0
+  float backboneFlexibility = 0
+  float disorderProbability = 0
+  conformationalStateEnum conformationalState = 0
+  string structuralMotif = 0
+  string domainAssignment = 0
+  string domainId = 0
+ }
 // A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
 message Study
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  proteinConstruct proteinConstructs = 0
  repeated  sample samples = 0
  repeated  samplePreparation samplePreparations = 0
  repeated  experimentRun instrumentRuns = 0
  repeated  workflowRun workflowRuns = 0
  repeated  dataFile dataFiles = 0
  repeated  image images = 0
+ repeated  aggregatedProteinView aggregatedProteinViews = 0
  }
 // A computational processing workflow execution
 message WorkflowRun
@@ -372,7 +748,25 @@ message WorkflowRun
   integer processingLevel = 0
   string softwareName = 0
   string softwareVersion = 0
+  string additionalSoftware = 0
   string processingParameters = 0
+  string parametersFilePath = 0
+  string indexerModule = 0
+  string integratorModule = 0
+  string scalerModule = 0
+  string outlierRejectionMethod = 0
+  phasingMethodEnum phasingMethod = 0
+  string searchModelPdbId = 0
+  boolean tlsUsed = 0
+  boolean ncsUsed = 0
+  string restraintsOther = 0
+  string ligandsCofactors = 0
+  integer numberOfWaters = 0
+  float refinementResolutionA = 0
+  boolean depositedToPdb = 0
+  string pdbId = 0
+  string validationReportPath = 0
+  string processingNotes = 0
   computeResources computeResources = 0
   string startedAt = 0
   string completedAt = 0
@@ -403,13 +797,29 @@ message XRayInstrument
 message XRayPreparation
  {
   string description = 0
+  float proteinConcentrationMgPerMl = 0
+  string proteinBuffer = 0
+  string additives = 0
   crystallizationMethodEnum crystallizationMethod = 0
+  string screenName = 0
+  float temperatureC = 0
+  string dropRatioProteinToReservoir = 0
+  float dropVolumeNl = 0
+  float reservoirVolumeUl = 0
+  string seedingType = 0
+  string seedStockDilution = 0
+  string initialHitCondition = 0
+  string optimizationStrategy = 0
+  string optimizedCondition = 0
   string crystallizationConditions = 0
-  string crystalSize = 0
+  string crystalSizeUm = 0
   string cryoprotectant = 0
   float cryoprotectantConcentration = 0
+  string soakCompound = 0
+  string soakConditions = 0
   string mountingMethod = 0
   string flashCoolingMethod = 0
+  string crystalNotes = 0
  }
 // X-ray fluorescence (XRF) image showing elemental distribution
 message XRFImage
