@@ -2,4 +2,5 @@
 
 ## Schema
 
- - [Schema Docs](https://cmungall.github.io/lambda-ber-schema/)
+ - [Schema Docs](https://lambda-ber.github.io/lambda-ber-schema/)
+
