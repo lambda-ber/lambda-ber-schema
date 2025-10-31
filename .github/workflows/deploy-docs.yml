@@ -1,0 +1,42 @@
+name: Deploy Documentation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+    paths:
+    - 'docs/*/*.md'
+
+jobs:
+  build-docs:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # to let mkdocs write the new docs
+      pages: write     # to deploy to Pages
+      id-token: write  # to verify the deployment originates from an appropriate source
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 
+
+    - name: Set up Python3
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+
+    - name: Install uv
+      run: pip install uv
+
+    - name: Setup Just
+      uses: extractions/setup-just@v3
+
+    - name: Create local docs and deploy to GitHub Pages
+      run: |
+        touch docs/.nojekyll
+        just gendoc
+        just deploy
