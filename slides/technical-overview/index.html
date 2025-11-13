@@ -1,0 +1,1771 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/slides/technical-overview/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Lambda BER Schema - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lambda BER Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#technical-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Deep Dive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agenda
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema">Lambda BER Schema</h1>
+<h2 id="technical-deep-dive">Technical Deep Dive</h2>
+<p>LinkML Schema Development and Repository Architecture</p>
+<hr />
+<h2 id="agenda">Agenda</h2>
+<ol>
+<li>LinkML Schema Architecture</li>
+<li>Schema Structure and Design</li>
+<li>Code Generation and Compilation</li>
+<li>Repository Structure</li>
+<li>Development Workflow</li>
+<li>Contributing to the Repository</li>
+<li>Testing and Validation</li>
+<li>Advanced Topics</li>
+</ol>
+<hr />
+<h1 id="part-1-linkml-architecture">Part 1: LinkML Architecture</h1>
+<hr />
+<h2 id="what-is-linkml">What is LinkML?</h2>
+<p><strong>Linked Data Modeling Language</strong> - A framework for defining data models:</p>
+<ul>
+<li><strong>Human-readable</strong>: YAML-based schema definitions</li>
+<li><strong>Machine-actionable</strong>: Generates code in multiple languages</li>
+<li><strong>Interoperable</strong>: Bridges JSON, RDF, and relational models</li>
+<li><strong>Extensible</strong>: Plugin architecture for custom generators</li>
+</ul>
+<p>Think of it as "schema definition as code"</p>
+<hr />
+<h2 id="linkml-metamodel">LinkML Metamodel</h2>
+<p>Every LinkML schema is itself an instance of the LinkML metamodel:</p>
+<pre><code class="language-yaml">classes:
+  Sample:
+    description: A biological sample
+    attributes:
+      sample_code:
+        range: string
+        required: true
+      sample_type:
+        range: SampleTypeEnum
+        required: true
+</code></pre>
+<p>Metamodel concepts: <code>classes</code>, <code>slots</code>, <code>types</code>, <code>enums</code></p>
+<hr />
+<h2 id="why-linkml-for-structural-biology">Why LinkML for Structural Biology?</h2>
+<ul>
+<li><strong>Multi-format support</strong>: YAML, JSON, RDF/TTL all from one schema</li>
+<li><strong>Rich semantics</strong>: Links to ontologies (GO, ChEBI, UniProt)</li>
+<li><strong>Validation</strong>: Built-in constraints and validation rules</li>
+<li><strong>Documentation</strong>: Auto-generated docs in multiple formats</li>
+<li><strong>Python integration</strong>: Native dataclasses for easy coding</li>
+<li><strong>Tooling ecosystem</strong>: Validators, converters, visualizers</li>
+</ul>
+<hr />
+<h2 id="linkml-vs-other-approaches">LinkML vs Other Approaches</h2>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JSON Schema</strong></td>
+<td>Simple, widely adopted</td>
+<td>Limited semantics, manual docs</td>
+</tr>
+<tr>
+<td><strong>OWL/RDF</strong></td>
+<td>Rich semantics</td>
+<td>Complex, steep learning curve</td>
+</tr>
+<tr>
+<td><strong>Protocol Buffers</strong></td>
+<td>Fast serialization</td>
+<td>Limited to specific languages</td>
+</tr>
+<tr>
+<td><strong>LinkML</strong></td>
+<td>Best of all worlds</td>
+<td>Newer, smaller ecosystem</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="part-2-schema-structure">Part 2: Schema Structure</h1>
+<hr />
+<h2 id="lambda-ber-schema-architecture">lambda-ber-schema Architecture</h2>
+<p>Located at: <code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></p>
+<pre><code class="language-yaml">id: https://w3id.org/lambda-ber/lambda-ber-schema
+name: lambda-ber-schema
+description: Schema for structural biology imaging data
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+imports:
+  - linkml:types
+
+classes:
+  # Core classes defined here...
+</code></pre>
+<hr />
+<h2 id="core-class-hierarchy">Core Class Hierarchy</h2>
+<p><strong>Container Classes</strong>:
+- <code>Dataset</code> (root) → contains <code>Study</code> objects
+- <code>Study</code> → contains all experimental data</p>
+<p><strong>Entity Classes</strong>:
+- <code>Sample</code>, <code>SamplePreparation</code>
+- <code>Instrument</code> (+ subclasses for each technique)
+- <code>ExperimentRun</code>, <code>WorkflowRun</code>
+- <code>DataFile</code>, <code>Image</code> (+ specialized image types)</p>
+<p><strong>Supporting Classes</strong>:
+- <code>MolecularComposition</code>, <code>BufferComposition</code>
+- <code>StorageConditions</code>, <code>ExperimentalConditions</code></p>
+<hr />
+<h2 id="slot-definitions">Slot Definitions</h2>
+<p>Slots are reusable attributes defined separately:</p>
+<pre><code class="language-yaml">slots:
+  sample_code:
+    description: Unique identifier for the sample
+    range: string
+    required: true
+    identifier: true
+
+  temperature:
+    description: Temperature in Kelvin
+    range: float
+    unit:
+      ucum_code: K
+</code></pre>
+<p>Slots can be inherited and reused across classes.</p>
+<hr />
+<h2 id="enumerations-controlled-vocabularies">Enumerations (Controlled Vocabularies)</h2>
+<pre><code class="language-yaml">enums:
+  TechniqueEnum:
+    permissible_values:
+      cryoem:
+        description: Cryo-electron microscopy
+      xray:
+        description: X-ray crystallography
+      saxs:
+        description: Small angle X-ray scattering
+      waxs:
+        description: Wide angle X-ray scattering
+      sans:
+        description: Small angle neutron scattering
+</code></pre>
+<p>Provides controlled vocabularies throughout the schema.</p>
+<hr />
+<h2 id="design-pattern-inlined-collections">Design Pattern: Inlined Collections</h2>
+<pre><code class="language-yaml">classes:
+  Study:
+    attributes:
+      samples:
+        range: Sample
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+</code></pre>
+<ul>
+<li><code>multivalued: true</code> → array/list</li>
+<li><code>inlined: true</code> → embed objects directly</li>
+<li><code>inlined_as_list: true</code> → JSON/YAML array format</li>
+</ul>
+<hr />
+<h2 id="design-pattern-identifiers-and-references">Design Pattern: Identifiers and References</h2>
+<pre><code class="language-yaml">classes:
+  Sample:
+    attributes:
+      sample_code:
+        identifier: true  # Primary key
+
+  ExperimentRun:
+    attributes:
+      sample_id:
+        range: Sample  # Foreign key reference
+        required: true
+</code></pre>
+<p>Supports both embedding and referencing.</p>
+<hr />
+<h2 id="design-decision-datetime-handling">Design Decision: Date/Time Handling</h2>
+<p><strong>Problem</strong>: Different systems use different datetime formats</p>
+<p><strong>Solution</strong>: Use <code>string</code> type with ISO 8601 recommendation</p>
+<pre><code class="language-yaml">slots:
+  collection_date:
+    range: string  # Not 'date' type
+    description: Date in ISO 8601 format (YYYY-MM-DD)
+</code></pre>
+<p>More forgiving for real-world data integration.</p>
+<hr />
+<h2 id="design-decision-scientific-notation">Design Decision: Scientific Notation</h2>
+<p><strong>Problem</strong>: YAML scientific notation (2.0e12) causes JSON Schema issues</p>
+<p><strong>Solution</strong>: Document that numbers should be written out fully</p>
+<pre><code class="language-yaml"># Avoid:
+particle_count: 2.0e12
+
+# Use instead:
+particle_count: 2000000000000
+</code></pre>
+<hr />
+<h1 id="part-3-code-generation">Part 3: Code Generation</h1>
+<hr />
+<h2 id="the-gen-project-command">The gen-project Command</h2>
+<p>Core compilation command:</p>
+<pre><code class="language-bash">uv run gen-project \
+  --config-file config.yaml \
+  src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -d assets
+</code></pre>
+<p>Generates all downstream artifacts from the schema.</p>
+<hr />
+<h2 id="what-gets-generated">What Gets Generated?</h2>
+<p>From a single YAML schema:</p>
+<ol>
+<li><strong>Python</strong>: Dataclasses (<code>assets/lambda-ber-schema.py</code>)</li>
+<li><strong>JSON Schema</strong>: Validators (<code>assets/jsonschema/</code>)</li>
+<li><strong>Documentation</strong>: HTML/Markdown (<code>assets/docs/</code>)</li>
+<li><strong>GraphQL</strong>: API schema (<code>assets/graphql/</code>)</li>
+<li><strong>OWL</strong>: Ontology (<code>assets/owl/</code>)</li>
+<li><strong>SHACL</strong>: RDF shapes (<code>assets/shacl/</code>)</li>
+<li><strong>JSON-LD Context</strong>: Linked data (<code>assets/jsonld/</code>)</li>
+<li><strong>SQL DDL</strong>: Database schema (<code>assets/sqlschema/</code>)</li>
+</ol>
+<hr />
+<h2 id="generation-configuration">Generation Configuration</h2>
+<p><code>config.yaml</code> controls what gets generated:</p>
+<pre><code class="language-yaml">generators:
+  - python
+  - json_schema
+  - owl
+  - graphql
+  - shacl
+  - markdown_docs
+
+generator_args:
+  python:
+    package: lambda_ber_schema
+
+  markdown_docs:
+    directory: docs
+</code></pre>
+<hr />
+<h2 id="python-dataclasses-example">Python Dataclasses Example</h2>
+<p>Generated from schema:</p>
+<pre><code class="language-python">from dataclasses import dataclass
+from typing import Optional, List
+
+@dataclass
+class Sample:
+    sample_code: str
+    sample_type: str
+    sample_name: Optional[str] = None
+    molecular_composition: Optional[MolecularComposition] = None
+    # ... more fields
+</code></pre>
+<p>Ready to use in Python code!</p>
+<hr />
+<h2 id="using-generated-python-classes">Using Generated Python Classes</h2>
+<pre><code class="language-python">from lambda_ber_schema import Sample, MolecularComposition
+
+# Create a sample
+sample = Sample(
+    sample_code=&quot;sample-001&quot;,
+    sample_type=&quot;protein&quot;,
+    sample_name=&quot;My Protein&quot;,
+    molecular_composition=MolecularComposition(
+        proteins=[&quot;UniProt:P12345&quot;]
+    )
+)
+
+# Serialize to dict
+sample_dict = asdict(sample)
+
+# Write to YAML/JSON
+import yaml
+with open('sample.yaml', 'w') as f:
+    yaml.dump(sample_dict, f)
+</code></pre>
+<hr />
+<h2 id="json-schema-validation">JSON Schema Validation</h2>
+<p>Generated JSON Schema can validate data:</p>
+<pre><code class="language-bash"># Using linkml-validate
+uv run linkml-validate \
+  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  tests/data/valid/Sample-protein.yaml
+
+# Or using JSON Schema directly
+jsonschema -i data.json assets/jsonschema/lambda-ber-schema.json
+</code></pre>
+<hr />
+<h2 id="auto-generated-documentation">Auto-Generated Documentation</h2>
+<p>Schema docs generated at <code>assets/docs/</code>:</p>
+<ul>
+<li><strong>Index</strong>: Overview of all classes</li>
+<li><strong>Class pages</strong>: Detailed documentation per class</li>
+<li><strong>Enum pages</strong>: Controlled vocabulary definitions</li>
+<li><strong>Type pages</strong>: Type definitions and constraints</li>
+</ul>
+<p>Formatted as markdown and/or HTML.</p>
+<hr />
+<h1 id="part-4-repository-structure">Part 4: Repository Structure</h1>
+<hr />
+<h2 id="directory-layout">Directory Layout</h2>
+<pre><code>lambda-ber-schema/
+├── src/lambda_ber_schema/
+│   ├── schema/
+│   │   └── lambda-ber-schema.yaml    # Source schema
+│   └── datamodel/
+├── assets/                           # Generated outputs
+├── tests/data/valid/                 # Example data files
+├── docs/                             # Documentation
+│   ├── slides/                       # Presentation slides
+│   ├── spec.md                       # Specification
+│   └── background/                   # Research docs
+├── config.yaml                       # Generation config
+├── pyproject.toml                    # Python project config
+└── justfile / project.justfile       # Build automation
+</code></pre>
+<hr />
+<h2 id="source-schema-location">Source Schema Location</h2>
+<p><strong>Primary source of truth</strong>:
+<code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></p>
+<p>All other files are generated from this schema.</p>
+<p><strong>Never edit generated files directly!</strong></p>
+<p>Edit the schema, then regenerate.</p>
+<hr />
+<h2 id="assets-directory">Assets Directory</h2>
+<p>Auto-generated, do not edit:</p>
+<pre><code>assets/
+├── lambda-ber-schema.py              # Python dataclasses
+├── jsonschema/
+│   └── lambda-ber-schema.json
+├── docs/                             # Generated documentation
+├── graphql/
+│   └── lambda-ber-schema.graphql
+├── owl/
+│   └── lambda-ber-schema.owl.ttl
+└── ... more formats
+</code></pre>
+<hr />
+<h2 id="test-data-organization">Test Data Organization</h2>
+<pre><code>tests/data/valid/
+├── Sample-protein.yaml
+├── Sample-hetBGL.yaml
+├── ExperimentRun-cryoet.yaml
+├── WorkflowRun-3dclass.yaml
+├── Dataset-berkeley-tfiid.yaml
+└── ... more examples
+</code></pre>
+<p>Each file is:
+1. A valid instance of the schema
+2. Used for automated validation testing
+3. Documentation by example</p>
+<hr />
+<h2 id="documentation-structure">Documentation Structure</h2>
+<pre><code>docs/
+├── spec.md                    # Complete specification
+├── background/                # Research and context
+│   ├── nexus.md
+│   ├── mmcif.md
+│   ├── empiar.md
+│   └── ... more
+├── slides/                    # Presentations
+│   ├── overview.md
+│   └── technical-overview.md
+└── examples/                  # Analyzed examples
+</code></pre>
+<hr />
+<h1 id="part-5-development-workflow">Part 5: Development Workflow</h1>
+<hr />
+<h2 id="setting-up-development-environment">Setting Up Development Environment</h2>
+<pre><code class="language-bash"># Clone the repository
+git clone https://github.com/lambda-ber/lambda-ber-schema.git
+cd lambda-ber-schema
+
+# Install dependencies using uv
+just install
+# or directly:
+uv sync --group dev
+
+# Verify installation
+uv run linkml-lint --version
+</code></pre>
+<p>Requires: Python 3.9+, uv, just (optional but recommended)</p>
+<hr />
+<h2 id="the-development-cycle">The Development Cycle</h2>
+<ol>
+<li><strong>Edit schema</strong>: Modify <code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></li>
+<li><strong>Generate artifacts</strong>: Run <code>just gen-project</code></li>
+<li><strong>Create/update examples</strong>: Add test data to <code>tests/data/valid/</code></li>
+<li><strong>Validate</strong>: Run <code>just test-examples</code></li>
+<li><strong>Test</strong>: Run <code>just test</code> (pytest, mypy, formatting)</li>
+<li><strong>Document</strong>: Update docs as needed</li>
+<li><strong>Commit</strong>: Commit both schema and regenerated artifacts</li>
+</ol>
+<hr />
+<h2 id="key-justfile-targets">Key justfile Targets</h2>
+<pre><code class="language-bash"># Install dependencies
+just install
+
+# Generate all artifacts from schema
+just gen-project
+
+# Validate all example files
+just test-examples
+
+# Run full test suite
+just test
+
+# Generate documentation
+just gendoc
+
+# Serve docs locally
+just serve
+</code></pre>
+<hr />
+<h2 id="schema-modification-example">Schema Modification Example</h2>
+<p><strong>Task</strong>: Add a new field to Sample class</p>
+<pre><code class="language-yaml">classes:
+  Sample:
+    attributes:
+      # Existing fields...
+      ph_value:  # NEW FIELD
+        range: float
+        description: pH of the sample buffer
+        minimum_value: 0
+        maximum_value: 14
+</code></pre>
+<p>Then: <code>just gen-project</code> to regenerate all artifacts</p>
+<hr />
+<h2 id="adding-a-new-class">Adding a New Class</h2>
+<pre><code class="language-yaml">classes:
+  CryoGridPreparation:  # NEW CLASS
+    is_a: SamplePreparation
+    description: Details of cryo-EM grid preparation
+    attributes:
+      grid_type:
+        range: GridTypeEnum
+      blot_time:
+        range: float
+        unit:
+          ucum_code: s
+      blot_force:
+        range: integer
+</code></pre>
+<p>Inheritance via <code>is_a</code> reuses parent class attributes.</p>
+<hr />
+<h2 id="adding-an-enumeration">Adding an Enumeration</h2>
+<pre><code class="language-yaml">enums:
+  GridTypeEnum:  # NEW ENUM
+    permissible_values:
+      quantifoil_r1.2_1.3:
+        description: Quantifoil R1.2/1.3 holey carbon grids
+      c_flat_1.2_1.3:
+        description: C-flat 1.2/1.3 holey carbon grids
+      ultrathin_carbon:
+        description: Ultrathin continuous carbon grids
+      graphene_oxide:
+        description: Graphene oxide grids
+</code></pre>
+<hr />
+<h2 id="validation-rules">Validation Rules</h2>
+<p>LinkML supports sophisticated validation:</p>
+<pre><code class="language-yaml">classes:
+  Sample:
+    attributes:
+      concentration_value:
+        range: float
+        minimum_value: 0  # Must be non-negative
+
+    rules:
+      - preconditions:
+          slot_conditions:
+            concentration_value:
+              required: true
+        postconditions:
+          slot_conditions:
+            concentration_unit:
+              required: true
+        description: If concentration_value is provided, unit is required
+</code></pre>
+<hr />
+<h2 id="creating-example-data">Creating Example Data</h2>
+<p>Start with minimal required fields:</p>
+<pre><code class="language-yaml"># tests/data/valid/Sample-minimal.yaml
+sample_code: &quot;sample-min-001&quot;
+sample_type: &quot;protein&quot;
+</code></pre>
+<p>Then expand with optional fields for richer examples:</p>
+<pre><code class="language-yaml">sample_code: &quot;sample-full-001&quot;
+sample_type: &quot;protein_complex&quot;
+sample_name: &quot;TFIID Complex&quot;
+molecular_composition:
+  proteins:
+    - &quot;UniProt:P12345&quot;
+    - &quot;UniProt:P67890&quot;
+buffer_composition:
+  components:
+    - name: &quot;Tris-HCl&quot;
+      concentration_value: 50
+      concentration_unit: &quot;mM&quot;
+</code></pre>
+<hr />
+<h1 id="part-6-contributing">Part 6: Contributing</h1>
+<hr />
+<h2 id="contribution-workflow">Contribution Workflow</h2>
+<ol>
+<li><strong>Fork</strong> the repository on GitHub</li>
+<li><strong>Clone</strong> your fork locally</li>
+<li><strong>Create a branch</strong> for your feature: <code>git checkout -b add-feature-x</code></li>
+<li><strong>Make changes</strong> to the schema</li>
+<li><strong>Regenerate</strong>: <code>just gen-project</code></li>
+<li><strong>Test</strong>: <code>just test</code></li>
+<li><strong>Commit</strong> with descriptive message</li>
+<li><strong>Push</strong> to your fork</li>
+<li><strong>Open a Pull Request</strong></li>
+</ol>
+<hr />
+<h2 id="what-to-contribute">What to Contribute</h2>
+<p><strong>Schema Enhancements</strong>:
+- New classes for additional techniques
+- Additional attributes for existing classes
+- Enhanced enumerations/vocabularies
+- Validation rules and constraints</p>
+<p><strong>Examples</strong>:
+- Real-world datasets
+- Edge cases and variations
+- Multi-technique integrative examples</p>
+<p><strong>Documentation</strong>:
+- Tutorials and guides
+- Use case descriptions
+- Background research</p>
+<hr />
+<h2 id="best-practices-for-schema-changes">Best Practices for Schema Changes</h2>
+<ol>
+<li><strong>Start small</strong>: Incremental changes are easier to review</li>
+<li><strong>Add examples</strong>: Include test data demonstrating new features</li>
+<li><strong>Document thoroughly</strong>: Use <code>description</code> fields extensively</li>
+<li><strong>Follow conventions</strong>: Match existing naming patterns</li>
+<li><strong>Test thoroughly</strong>: Ensure all tests pass</li>
+<li><strong>Explain the why</strong>: PR description should explain motivation</li>
+</ol>
+<hr />
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p><strong>Classes</strong>: <code>PascalCase</code> (e.g., <code>SamplePreparation</code>)</p>
+<p><strong>Slots</strong>: <code>snake_case</code> (e.g., <code>sample_code</code>)</p>
+<p><strong>Enums</strong>: <code>PascalCaseEnum</code> (e.g., <code>TechniqueEnum</code>)</p>
+<p><strong>Enum values</strong>: <code>snake_case</code> (e.g., <code>protein_complex</code>)</p>
+<p><strong>Files</strong>: <code>kebab-case</code> (e.g., <code>lambda-ber-schema.yaml</code>)</p>
+<hr />
+<h2 id="code-review-process">Code Review Process</h2>
+<p>Pull requests are reviewed for:</p>
+<ul>
+<li><strong>Schema validity</strong>: Does it compile without errors?</li>
+<li><strong>Semantic correctness</strong>: Do the definitions make sense?</li>
+<li><strong>Consistency</strong>: Does it follow existing patterns?</li>
+<li><strong>Documentation</strong>: Are descriptions clear and complete?</li>
+<li><strong>Examples</strong>: Are there test cases?</li>
+<li><strong>Breaking changes</strong>: Is backwards compatibility maintained?</li>
+</ul>
+<hr />
+<h2 id="semantic-versioning">Semantic Versioning</h2>
+<p>Schema versions follow semver (MAJOR.MINOR.PATCH):</p>
+<ul>
+<li><strong>PATCH</strong>: Bug fixes, documentation improvements</li>
+<li><strong>MINOR</strong>: New classes, attributes (backwards compatible)</li>
+<li><strong>MAJOR</strong>: Breaking changes (renamed/removed elements)</li>
+</ul>
+<p>Incremented in schema <code>version</code> field:</p>
+<pre><code class="language-yaml">version: &quot;1.2.0&quot;
+</code></pre>
+<hr />
+<h1 id="part-7-testing-and-validation">Part 7: Testing and Validation</h1>
+<hr />
+<h2 id="testing-strategy">Testing Strategy</h2>
+<p>Multiple layers of testing:</p>
+<ol>
+<li><strong>Schema validation</strong>: LinkML lints the schema itself</li>
+<li><strong>Example validation</strong>: Test data validates against schema</li>
+<li><strong>Unit tests</strong>: Python tests for custom logic</li>
+<li><strong>Type checking</strong>: mypy for Python type safety</li>
+<li><strong>Format checking</strong>: ruff for code style</li>
+</ol>
+<p>All run via: <code>just test</code></p>
+<hr />
+<h2 id="schema-linting">Schema Linting</h2>
+<p>Validate the schema against LinkML metamodel:</p>
+<pre><code class="language-bash">uv run linkml-lint \
+  src/lambda_ber_schema/schema/lambda-ber-schema.yaml
+</code></pre>
+<p>Checks for:
+- Syntax errors
+- Invalid metamodel usage
+- Dangling references
+- Type mismatches</p>
+<hr />
+<h2 id="example-validation">Example Validation</h2>
+<p><code>linkml-run-examples</code> validates and converts example data:</p>
+<pre><code class="language-bash">uv run linkml-run-examples \
+  -t yaml -t json -t ttl \
+  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -e tests/data/valid \
+  -d examples
+</code></pre>
+<p>For each example:
+1. Validates against schema
+2. Converts to multiple formats (YAML, JSON, RDF/TTL)
+3. Outputs to <code>examples/</code> directory</p>
+<hr />
+<h2 id="manual-validation">Manual Validation</h2>
+<p>Validate individual files:</p>
+<pre><code class="language-bash">uv run linkml-validate \
+  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  tests/data/valid/Sample-protein.yaml
+</code></pre>
+<p>Useful for debugging specific instances.</p>
+<hr />
+<h2 id="python-testing">Python Testing</h2>
+<p>pytest tests in <code>tests/</code> directory:</p>
+<pre><code class="language-python">import pytest
+from lambda_ber_schema import Sample
+
+def test_sample_creation():
+    &quot;&quot;&quot;Test creating a Sample instance.&quot;&quot;&quot;
+    sample = Sample(
+        sample_code=&quot;test-001&quot;,
+        sample_type=&quot;protein&quot;
+    )
+    assert sample.sample_code == &quot;test-001&quot;
+    assert sample.sample_type == &quot;protein&quot;
+</code></pre>
+<p>Run with: <code>just pytest</code></p>
+<hr />
+<h2 id="type-checking">Type Checking</h2>
+<p>mypy ensures type safety in Python code:</p>
+<pre><code class="language-bash">just mypy
+# or directly:
+uv run mypy src tests
+</code></pre>
+<p>Catches type errors before runtime.</p>
+<hr />
+<h2 id="continuous-integration">Continuous Integration</h2>
+<p>GitHub Actions runs on every PR:</p>
+<pre><code class="language-yaml"># .github/workflows/test.yml
+- name: Run tests
+  run: |
+    uv sync --group dev
+    just gen-project
+    just test-examples
+    just test
+</code></pre>
+<p>Ensures all contributions pass tests.</p>
+<hr />
+<h1 id="part-8-advanced-topics">Part 8: Advanced Topics</h1>
+<hr />
+<h2 id="linking-to-external-ontologies">Linking to External Ontologies</h2>
+<pre><code class="language-yaml">classes:
+  MolecularComposition:
+    attributes:
+      proteins:
+        range: uriorcurie
+        description: UniProt identifiers
+        pattern: &quot;^UniProt:\\w+$&quot;
+        multivalued: true
+</code></pre>
+<p>Enables semantic integration with external resources.</p>
+<hr />
+<h2 id="units-and-measurements">Units and Measurements</h2>
+<p>Using UCUM (Unified Code for Units of Measure):</p>
+<pre><code class="language-yaml">slots:
+  temperature:
+    range: float
+    unit:
+      ucum_code: K
+
+  wavelength:
+    range: float
+    unit:
+      ucum_code: nm
+</code></pre>
+<hr />
+<h2 id="mixins-for-reusable-patterns">Mixins for Reusable Patterns</h2>
+<pre><code class="language-yaml">classes:
+  Timestamped:  # Mixin
+    mixin: true
+    attributes:
+      created_at:
+        range: string
+      updated_at:
+        range: string
+
+  Sample:
+    mixins:
+      - Timestamped  # Inherits timestamp attributes
+</code></pre>
+<hr />
+<h2 id="slot-usage-vs-definition">Slot Usage vs Definition</h2>
+<p><strong>Define once, use many times</strong>:</p>
+<pre><code class="language-yaml">slots:
+  sample_id:  # Slot definition
+    range: Sample
+
+classes:
+  ExperimentRun:
+    slot_usage:
+      sample_id:  # Customize for this class
+        required: true
+        description: Sample used in this experiment
+</code></pre>
+<hr />
+<h2 id="conditional-validation-rules">Conditional Validation Rules</h2>
+<pre><code class="language-yaml">classes:
+  ExperimentRun:
+    rules:
+      - preconditions:
+          slot_conditions:
+            technique:
+              equals_string: &quot;cryoem&quot;
+        postconditions:
+          slot_conditions:
+            instrument_id:
+              range: CryoEMInstrument
+</code></pre>
+<p>Technique-specific validation.</p>
+<hr />
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>For large datasets:</p>
+<ul>
+<li><strong>Use references</strong> instead of inlining for large collections</li>
+<li><strong>Lazy loading</strong>: Load objects on demand</li>
+<li><strong>Streaming validation</strong>: Validate incrementally</li>
+<li><strong>Database backends</strong>: Use SQL schema generation for persistence</li>
+</ul>
+<hr />
+<h2 id="working-with-rdflinked-data">Working with RDF/Linked Data</h2>
+<pre><code class="language-bash"># Generate RDF from YAML instance
+uv run linkml-convert \
+  -s schema.yaml \
+  -t rdf \
+  input.yaml -o output.ttl
+
+# Query with SPARQL
+# Load into triple store (e.g., Apache Jena)
+</code></pre>
+<p>Bridge to semantic web ecosystem.</p>
+<hr />
+<h2 id="schema-evolution-strategies">Schema Evolution Strategies</h2>
+<p><strong>Adding fields</strong>: Always backwards compatible</p>
+<p><strong>Renaming fields</strong>: Use <code>deprecated</code> and <code>aliases</code></p>
+<pre><code class="language-yaml">slots:
+  sample_id:
+    aliases:
+      - sample_identifier  # Old name
+    deprecated: &quot;Use sample_id instead&quot;
+</code></pre>
+<p><strong>Removing fields</strong>: Deprecate first, remove in major version</p>
+<hr />
+<h2 id="custom-generators">Custom Generators</h2>
+<p>Extend LinkML with custom generators:</p>
+<pre><code class="language-python">from linkml.generators import Generator
+
+class CustomGenerator(Generator):
+    def serialize(self):
+        # Your custom output format
+        pass
+</code></pre>
+<p>Or use Python scripts to post-process generated artifacts.</p>
+<hr />
+<h2 id="integration-patterns">Integration Patterns</h2>
+<p><strong>API Integration</strong>:
+- Generate JSON Schema → OpenAPI spec
+- Use GraphQL schema for API</p>
+<p><strong>Database Integration</strong>:
+- Generate SQL DDL
+- ORM mapping with generated Python classes</p>
+<p><strong>Data Lake Integration</strong>:
+- Validate incoming data
+- Schema-on-read with LinkML</p>
+<hr />
+<h2 id="documentation-best-practices">Documentation Best Practices</h2>
+<p>Every class and slot should have:</p>
+<pre><code class="language-yaml">classes:
+  Sample:
+    description: &gt;
+      A biological sample that is the subject of study.
+      This could be a purified protein, protein complex,
+      nucleic acid, or other biological material.
+    comments:
+      - Samples should have unique identifiers within a study
+    see_also:
+      - https://example.org/sample-preparation-guide
+</code></pre>
+<hr />
+<h2 id="future-linkml-features">Future LinkML Features</h2>
+<p>Upcoming capabilities:</p>
+<ul>
+<li><strong>Conditional logic</strong>: More sophisticated rules engine</li>
+<li><strong>Computed fields</strong>: Derived attributes</li>
+<li><strong>Multi-schema imports</strong>: Compose from multiple schemas</li>
+<li><strong>Enhanced validation</strong>: Custom validators</li>
+<li><strong>Performance</strong>: Faster generation and validation</li>
+</ul>
+<hr />
+<h2 id="resources-and-community">Resources and Community</h2>
+<p><strong>LinkML Resources</strong>:
+- Documentation: https://linkml.io
+- GitHub: https://github.com/linkml
+- Slack: linkml.slack.com</p>
+<p><strong>This Project</strong>:
+- GitHub: https://github.com/lambda-ber/lambda-ber-schema
+- Issues: Report bugs and request features
+- Discussions: Ask questions and share ideas</p>
+<hr />
+<h2 id="getting-help">Getting Help</h2>
+<p><strong>Schema Questions</strong>:
+- Open a GitHub issue
+- Check existing examples
+- Review LinkML documentation</p>
+<p><strong>LinkML Questions</strong>:
+- LinkML Slack channel
+- LinkML GitHub discussions
+- Stack Overflow (tag: linkml)</p>
+<hr />
+<h2 id="recap-key-takeaways">Recap: Key Takeaways</h2>
+<ol>
+<li><strong>LinkML</strong>: Powerful schema framework for biomedical data</li>
+<li><strong>Single source</strong>: One YAML schema → many formats</li>
+<li><strong>Validation</strong>: Built-in data quality checks</li>
+<li><strong>Generation</strong>: Automated code and documentation</li>
+<li><strong>Testing</strong>: Multi-layered validation strategy</li>
+<li><strong>Contributing</strong>: Fork, modify, test, PR</li>
+<li><strong>Community</strong>: Open and collaborative</li>
+</ol>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p><strong>For Users</strong>:
+1. Explore examples in <code>tests/data/valid/</code>
+2. Validate your own data
+3. Provide feedback on schema coverage</p>
+<p><strong>For Contributors</strong>:
+1. Read CONTRIBUTING.md (if exists)
+2. Join GitHub discussions
+3. Start with documentation improvements
+4. Progress to schema enhancements</p>
+<hr />
+<h2 id="thank-you">Thank You!</h2>
+<p><strong>lambda-ber-schema</strong>: Structured metadata for structural biology</p>
+<p><strong>Questions?</strong> Open a GitHub issue or discussion</p>
+<p><strong>Want to contribute?</strong> Fork and submit a PR</p>
+<p>Let's build better data standards together!</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
