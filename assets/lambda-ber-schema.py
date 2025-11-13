@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-12T18:14:05
+# Generation date: 2025-11-13T18:54:41
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -219,6 +219,14 @@ class Image2DId(ImageId):
 
 
 class Image3DId(ImageId):
+    pass
+
+
+class MovieId(Image2DId):
+    pass
+
+
+class MicrographId(Image2DId):
     pass
 
 
@@ -933,6 +941,23 @@ class CryoEMInstrument(Instrument):
     pixel_size_min: Optional[float] = None
     pixel_size_max: Optional[float] = None
     autoloader_capacity: Optional[int] = None
+    cs: Optional[float] = None
+    c2_aperture: Optional[float] = None
+    objective_aperture: Optional[float] = None
+    phase_plate_type: Optional[str] = None
+    energy_filter_present: Optional[Union[bool, Bool]] = None
+    energy_filter_make: Optional[str] = None
+    energy_filter_model: Optional[str] = None
+    energy_filter_slit_width: Optional[float] = None
+    detector_position: Optional[str] = None
+    detector_mode: Optional[str] = None
+    pixel_size_physical: Optional[float] = None
+    microscope_software: Optional[str] = None
+    microscope_software_version: Optional[str] = None
+    spotsize: Optional[int] = None
+    gunlens: Optional[int] = None
+    imaging_mode: Optional[str] = None
+    tem_beam_diameter: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -963,6 +988,57 @@ class CryoEMInstrument(Instrument):
 
         if self.autoloader_capacity is not None and not isinstance(self.autoloader_capacity, int):
             self.autoloader_capacity = int(self.autoloader_capacity)
+
+        if self.cs is not None and not isinstance(self.cs, float):
+            self.cs = float(self.cs)
+
+        if self.c2_aperture is not None and not isinstance(self.c2_aperture, float):
+            self.c2_aperture = float(self.c2_aperture)
+
+        if self.objective_aperture is not None and not isinstance(self.objective_aperture, float):
+            self.objective_aperture = float(self.objective_aperture)
+
+        if self.phase_plate_type is not None and not isinstance(self.phase_plate_type, str):
+            self.phase_plate_type = str(self.phase_plate_type)
+
+        if self.energy_filter_present is not None and not isinstance(self.energy_filter_present, Bool):
+            self.energy_filter_present = Bool(self.energy_filter_present)
+
+        if self.energy_filter_make is not None and not isinstance(self.energy_filter_make, str):
+            self.energy_filter_make = str(self.energy_filter_make)
+
+        if self.energy_filter_model is not None and not isinstance(self.energy_filter_model, str):
+            self.energy_filter_model = str(self.energy_filter_model)
+
+        if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, float):
+            self.energy_filter_slit_width = float(self.energy_filter_slit_width)
+
+        if self.detector_position is not None and not isinstance(self.detector_position, str):
+            self.detector_position = str(self.detector_position)
+
+        if self.detector_mode is not None and not isinstance(self.detector_mode, str):
+            self.detector_mode = str(self.detector_mode)
+
+        if self.pixel_size_physical is not None and not isinstance(self.pixel_size_physical, float):
+            self.pixel_size_physical = float(self.pixel_size_physical)
+
+        if self.microscope_software is not None and not isinstance(self.microscope_software, str):
+            self.microscope_software = str(self.microscope_software)
+
+        if self.microscope_software_version is not None and not isinstance(self.microscope_software_version, str):
+            self.microscope_software_version = str(self.microscope_software_version)
+
+        if self.spotsize is not None and not isinstance(self.spotsize, int):
+            self.spotsize = int(self.spotsize)
+
+        if self.gunlens is not None and not isinstance(self.gunlens, int):
+            self.gunlens = int(self.gunlens)
+
+        if self.imaging_mode is not None and not isinstance(self.imaging_mode, str):
+            self.imaging_mode = str(self.imaging_mode)
+
+        if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, float):
+            self.tem_beam_diameter = float(self.tem_beam_diameter)
 
         super().__post_init__(**kwargs)
 
@@ -1108,6 +1184,26 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
+    magnification: Optional[int] = None
+    calibrated_pixel_size: Optional[float] = None
+    camera_binning: Optional[int] = None
+    exposure_time_per_frame: Optional[float] = None
+    frames_per_movie: Optional[int] = None
+    total_exposure_time: Optional[float] = None
+    total_dose: Optional[float] = None
+    dose_rate: Optional[float] = None
+    defocus_target: Optional[float] = None
+    defocus_range_min: Optional[float] = None
+    defocus_range_max: Optional[float] = None
+    defocus_range_increment: Optional[float] = None
+    astigmatism_target: Optional[float] = None
+    coma: Optional[float] = None
+    stage_tilt: Optional[float] = None
+    autoloader_slot: Optional[str] = None
+    shots_per_hole: Optional[int] = None
+    holes_per_group: Optional[int] = None
+    acquisition_software: Optional[str] = None
+    acquisition_software_version: Optional[str] = None
     wavelength: Optional[float] = None
     oscillation_angle: Optional[float] = None
     start_angle: Optional[float] = None
@@ -1169,6 +1265,66 @@ class ExperimentRun(NamedThing):
 
         if self.processing_status is not None and not isinstance(self.processing_status, ProcessingStatusEnum):
             self.processing_status = ProcessingStatusEnum(self.processing_status)
+
+        if self.magnification is not None and not isinstance(self.magnification, int):
+            self.magnification = int(self.magnification)
+
+        if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, float):
+            self.calibrated_pixel_size = float(self.calibrated_pixel_size)
+
+        if self.camera_binning is not None and not isinstance(self.camera_binning, int):
+            self.camera_binning = int(self.camera_binning)
+
+        if self.exposure_time_per_frame is not None and not isinstance(self.exposure_time_per_frame, float):
+            self.exposure_time_per_frame = float(self.exposure_time_per_frame)
+
+        if self.frames_per_movie is not None and not isinstance(self.frames_per_movie, int):
+            self.frames_per_movie = int(self.frames_per_movie)
+
+        if self.total_exposure_time is not None and not isinstance(self.total_exposure_time, float):
+            self.total_exposure_time = float(self.total_exposure_time)
+
+        if self.total_dose is not None and not isinstance(self.total_dose, float):
+            self.total_dose = float(self.total_dose)
+
+        if self.dose_rate is not None and not isinstance(self.dose_rate, float):
+            self.dose_rate = float(self.dose_rate)
+
+        if self.defocus_target is not None and not isinstance(self.defocus_target, float):
+            self.defocus_target = float(self.defocus_target)
+
+        if self.defocus_range_min is not None and not isinstance(self.defocus_range_min, float):
+            self.defocus_range_min = float(self.defocus_range_min)
+
+        if self.defocus_range_max is not None and not isinstance(self.defocus_range_max, float):
+            self.defocus_range_max = float(self.defocus_range_max)
+
+        if self.defocus_range_increment is not None and not isinstance(self.defocus_range_increment, float):
+            self.defocus_range_increment = float(self.defocus_range_increment)
+
+        if self.astigmatism_target is not None and not isinstance(self.astigmatism_target, float):
+            self.astigmatism_target = float(self.astigmatism_target)
+
+        if self.coma is not None and not isinstance(self.coma, float):
+            self.coma = float(self.coma)
+
+        if self.stage_tilt is not None and not isinstance(self.stage_tilt, float):
+            self.stage_tilt = float(self.stage_tilt)
+
+        if self.autoloader_slot is not None and not isinstance(self.autoloader_slot, str):
+            self.autoloader_slot = str(self.autoloader_slot)
+
+        if self.shots_per_hole is not None and not isinstance(self.shots_per_hole, int):
+            self.shots_per_hole = int(self.shots_per_hole)
+
+        if self.holes_per_group is not None and not isinstance(self.holes_per_group, int):
+            self.holes_per_group = int(self.holes_per_group)
+
+        if self.acquisition_software is not None and not isinstance(self.acquisition_software, str):
+            self.acquisition_software = str(self.acquisition_software)
+
+        if self.acquisition_software_version is not None and not isinstance(self.acquisition_software_version, str):
+            self.acquisition_software_version = str(self.acquisition_software_version)
 
         if self.wavelength is not None and not isinstance(self.wavelength, float):
             self.wavelength = float(self.wavelength)
@@ -1270,6 +1426,11 @@ class WorkflowRun(NamedThing):
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
     started_at: Optional[str] = None
     completed_at: Optional[str] = None
+    motion_correction_params: Optional[Union[dict, "MotionCorrectionParameters"]] = None
+    ctf_estimation_params: Optional[Union[dict, "CTFEstimationParameters"]] = None
+    particle_picking_params: Optional[Union[dict, "ParticlePickingParameters"]] = None
+    refinement_params: Optional[Union[dict, "RefinementParameters"]] = None
+    fsc_curve: Optional[Union[dict, "FSCCurve"]] = None
     output_files: Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1439,6 +1600,21 @@ class WorkflowRun(NamedThing):
         if self.completed_at is not None and not isinstance(self.completed_at, str):
             self.completed_at = str(self.completed_at)
 
+        if self.motion_correction_params is not None and not isinstance(self.motion_correction_params, MotionCorrectionParameters):
+            self.motion_correction_params = MotionCorrectionParameters(**as_dict(self.motion_correction_params))
+
+        if self.ctf_estimation_params is not None and not isinstance(self.ctf_estimation_params, CTFEstimationParameters):
+            self.ctf_estimation_params = CTFEstimationParameters(**as_dict(self.ctf_estimation_params))
+
+        if self.particle_picking_params is not None and not isinstance(self.particle_picking_params, ParticlePickingParameters):
+            self.particle_picking_params = ParticlePickingParameters(**as_dict(self.particle_picking_params))
+
+        if self.refinement_params is not None and not isinstance(self.refinement_params, RefinementParameters):
+            self.refinement_params = RefinementParameters(**as_dict(self.refinement_params))
+
+        if self.fsc_curve is not None and not isinstance(self.fsc_curve, FSCCurve):
+            self.fsc_curve = FSCCurve(**as_dict(self.fsc_curve))
+
         if not isinstance(self.output_files, list):
             self.output_files = [self.output_files] if self.output_files is not None else []
         self.output_files = [v if isinstance(v, DataFileId) else DataFileId(v) for v in self.output_files]
@@ -1466,6 +1642,9 @@ class DataFile(NamedThing):
     checksum: Optional[str] = None
     creation_date: Optional[str] = None
     data_type: Optional[Union[str, "DataTypeEnum"]] = None
+    storage_uri: Optional[str] = None
+    related_entity: Optional[str] = None
+    file_role: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1497,6 +1676,15 @@ class DataFile(NamedThing):
 
         if self.data_type is not None and not isinstance(self.data_type, DataTypeEnum):
             self.data_type = DataTypeEnum(self.data_type)
+
+        if self.storage_uri is not None and not isinstance(self.storage_uri, str):
+            self.storage_uri = str(self.storage_uri)
+
+        if self.related_entity is not None and not isinstance(self.related_entity, str):
+            self.related_entity = str(self.related_entity)
+
+        if self.file_role is not None and not isinstance(self.file_role, str):
+            self.file_role = str(self.file_role)
 
         super().__post_init__(**kwargs)
 
@@ -1618,6 +1806,138 @@ class Image3D(Image):
 
         if self.reconstruction_method is not None and not isinstance(self.reconstruction_method, str):
             self.reconstruction_method = str(self.reconstruction_method)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Movie(Image2D):
+    """
+    Raw cryo-EM movie with frame-by-frame metadata for motion correction
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["Movie"]
+    class_class_curie: ClassVar[str] = "lambdaber:Movie"
+    class_name: ClassVar[str] = "Movie"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.Movie
+
+    id: Union[str, MovieId] = None
+    file_name: str = None
+    frames: Optional[int] = None
+    super_resolution: Optional[Union[bool, Bool]] = None
+    pixel_size_unbinned: Optional[float] = None
+    timestamp: Optional[str] = None
+    stage_position_x: Optional[float] = None
+    stage_position_y: Optional[float] = None
+    stage_position_z: Optional[float] = None
+    nominal_defocus: Optional[float] = None
+    dose_per_frame: Optional[float] = None
+    beam_shift_x: Optional[float] = None
+    beam_shift_y: Optional[float] = None
+    ice_thickness_estimate: Optional[float] = None
+    grid_square_id: Optional[str] = None
+    hole_id: Optional[str] = None
+    acquisition_group: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MovieId):
+            self.id = MovieId(self.id)
+
+        if self.frames is not None and not isinstance(self.frames, int):
+            self.frames = int(self.frames)
+
+        if self.super_resolution is not None and not isinstance(self.super_resolution, Bool):
+            self.super_resolution = Bool(self.super_resolution)
+
+        if self.pixel_size_unbinned is not None and not isinstance(self.pixel_size_unbinned, float):
+            self.pixel_size_unbinned = float(self.pixel_size_unbinned)
+
+        if self.timestamp is not None and not isinstance(self.timestamp, str):
+            self.timestamp = str(self.timestamp)
+
+        if self.stage_position_x is not None and not isinstance(self.stage_position_x, float):
+            self.stage_position_x = float(self.stage_position_x)
+
+        if self.stage_position_y is not None and not isinstance(self.stage_position_y, float):
+            self.stage_position_y = float(self.stage_position_y)
+
+        if self.stage_position_z is not None and not isinstance(self.stage_position_z, float):
+            self.stage_position_z = float(self.stage_position_z)
+
+        if self.nominal_defocus is not None and not isinstance(self.nominal_defocus, float):
+            self.nominal_defocus = float(self.nominal_defocus)
+
+        if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, float):
+            self.dose_per_frame = float(self.dose_per_frame)
+
+        if self.beam_shift_x is not None and not isinstance(self.beam_shift_x, float):
+            self.beam_shift_x = float(self.beam_shift_x)
+
+        if self.beam_shift_y is not None and not isinstance(self.beam_shift_y, float):
+            self.beam_shift_y = float(self.beam_shift_y)
+
+        if self.ice_thickness_estimate is not None and not isinstance(self.ice_thickness_estimate, float):
+            self.ice_thickness_estimate = float(self.ice_thickness_estimate)
+
+        if self.grid_square_id is not None and not isinstance(self.grid_square_id, str):
+            self.grid_square_id = str(self.grid_square_id)
+
+        if self.hole_id is not None and not isinstance(self.hole_id, str):
+            self.hole_id = str(self.hole_id)
+
+        if self.acquisition_group is not None and not isinstance(self.acquisition_group, str):
+            self.acquisition_group = str(self.acquisition_group)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Micrograph(Image2D):
+    """
+    Motion-corrected micrograph derived from movie
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["Micrograph"]
+    class_class_curie: ClassVar[str] = "lambdaber:Micrograph"
+    class_name: ClassVar[str] = "Micrograph"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.Micrograph
+
+    id: Union[str, MicrographId] = None
+    file_name: str = None
+    origin_movie_id: Optional[str] = None
+    defocus_u: Optional[float] = None
+    defocus_v: Optional[float] = None
+    astigmatism_angle: Optional[float] = None
+    resolution_fit_limit: Optional[float] = None
+    ctf_quality_score: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MicrographId):
+            self.id = MicrographId(self.id)
+
+        if self.origin_movie_id is not None and not isinstance(self.origin_movie_id, str):
+            self.origin_movie_id = str(self.origin_movie_id)
+
+        if self.defocus_u is not None and not isinstance(self.defocus_u, float):
+            self.defocus_u = float(self.defocus_u)
+
+        if self.defocus_v is not None and not isinstance(self.defocus_v, float):
+            self.defocus_v = float(self.defocus_v)
+
+        if self.astigmatism_angle is not None and not isinstance(self.astigmatism_angle, float):
+            self.astigmatism_angle = float(self.astigmatism_angle)
+
+        if self.resolution_fit_limit is not None and not isinstance(self.resolution_fit_limit, float):
+            self.resolution_fit_limit = float(self.resolution_fit_limit)
+
+        if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, float):
+            self.ctf_quality_score = float(self.ctf_quality_score)
 
         super().__post_init__(**kwargs)
 
@@ -2023,6 +2343,19 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     blot_force: Optional[int] = None
     humidity_percentage: Optional[float] = None
     chamber_temperature: Optional[float] = None
+    grid_material: Optional[str] = None
+    glow_discharge_applied: Optional[Union[bool, Bool]] = None
+    glow_discharge_time: Optional[float] = None
+    glow_discharge_current: Optional[float] = None
+    glow_discharge_atmosphere: Optional[str] = None
+    glow_discharge_pressure: Optional[float] = None
+    vitrification_instrument: Optional[str] = None
+    blot_number: Optional[int] = None
+    wait_time: Optional[float] = None
+    blotter_height: Optional[float] = None
+    blotter_setting: Optional[float] = None
+    sample_applied_volume: Optional[float] = None
+    ethane_temperature: Optional[float] = None
     plasma_treatment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2049,6 +2382,45 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
 
         if self.chamber_temperature is not None and not isinstance(self.chamber_temperature, float):
             self.chamber_temperature = float(self.chamber_temperature)
+
+        if self.grid_material is not None and not isinstance(self.grid_material, str):
+            self.grid_material = str(self.grid_material)
+
+        if self.glow_discharge_applied is not None and not isinstance(self.glow_discharge_applied, Bool):
+            self.glow_discharge_applied = Bool(self.glow_discharge_applied)
+
+        if self.glow_discharge_time is not None and not isinstance(self.glow_discharge_time, float):
+            self.glow_discharge_time = float(self.glow_discharge_time)
+
+        if self.glow_discharge_current is not None and not isinstance(self.glow_discharge_current, float):
+            self.glow_discharge_current = float(self.glow_discharge_current)
+
+        if self.glow_discharge_atmosphere is not None and not isinstance(self.glow_discharge_atmosphere, str):
+            self.glow_discharge_atmosphere = str(self.glow_discharge_atmosphere)
+
+        if self.glow_discharge_pressure is not None and not isinstance(self.glow_discharge_pressure, float):
+            self.glow_discharge_pressure = float(self.glow_discharge_pressure)
+
+        if self.vitrification_instrument is not None and not isinstance(self.vitrification_instrument, str):
+            self.vitrification_instrument = str(self.vitrification_instrument)
+
+        if self.blot_number is not None and not isinstance(self.blot_number, int):
+            self.blot_number = int(self.blot_number)
+
+        if self.wait_time is not None and not isinstance(self.wait_time, float):
+            self.wait_time = float(self.wait_time)
+
+        if self.blotter_height is not None and not isinstance(self.blotter_height, float):
+            self.blotter_height = float(self.blotter_height)
+
+        if self.blotter_setting is not None and not isinstance(self.blotter_setting, float):
+            self.blotter_setting = float(self.blotter_setting)
+
+        if self.sample_applied_volume is not None and not isinstance(self.sample_applied_volume, float):
+            self.sample_applied_volume = float(self.sample_applied_volume)
+
+        if self.ethane_temperature is not None and not isinstance(self.ethane_temperature, float):
+            self.ethane_temperature = float(self.ethane_temperature)
 
         if self.plasma_treatment is not None and not isinstance(self.plasma_treatment, str):
             self.plasma_treatment = str(self.plasma_treatment)
@@ -2584,6 +2956,217 @@ class ComputeResources(AttributeGroup):
 
         if self.storage_gb is not None and not isinstance(self.storage_gb, float):
             self.storage_gb = float(self.storage_gb)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MotionCorrectionParameters(AttributeGroup):
+    """
+    Parameters specific to motion correction workflows
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["MotionCorrectionParameters"]
+    class_class_curie: ClassVar[str] = "lambdaber:MotionCorrectionParameters"
+    class_name: ClassVar[str] = "MotionCorrectionParameters"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.MotionCorrectionParameters
+
+    patch_size: Optional[int] = None
+    binning: Optional[int] = None
+    dose_weighting: Optional[Union[bool, Bool]] = None
+    bfactor_dose_weighting: Optional[float] = None
+    anisotropic_correction: Optional[Union[bool, Bool]] = None
+    frame_grouping: Optional[int] = None
+    output_binning: Optional[int] = None
+    drift_total: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.patch_size is not None and not isinstance(self.patch_size, int):
+            self.patch_size = int(self.patch_size)
+
+        if self.binning is not None and not isinstance(self.binning, int):
+            self.binning = int(self.binning)
+
+        if self.dose_weighting is not None and not isinstance(self.dose_weighting, Bool):
+            self.dose_weighting = Bool(self.dose_weighting)
+
+        if self.bfactor_dose_weighting is not None and not isinstance(self.bfactor_dose_weighting, float):
+            self.bfactor_dose_weighting = float(self.bfactor_dose_weighting)
+
+        if self.anisotropic_correction is not None and not isinstance(self.anisotropic_correction, Bool):
+            self.anisotropic_correction = Bool(self.anisotropic_correction)
+
+        if self.frame_grouping is not None and not isinstance(self.frame_grouping, int):
+            self.frame_grouping = int(self.frame_grouping)
+
+        if self.output_binning is not None and not isinstance(self.output_binning, int):
+            self.output_binning = int(self.output_binning)
+
+        if self.drift_total is not None and not isinstance(self.drift_total, float):
+            self.drift_total = float(self.drift_total)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CTFEstimationParameters(AttributeGroup):
+    """
+    Parameters specific to CTF estimation workflows
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["CTFEstimationParameters"]
+    class_class_curie: ClassVar[str] = "lambdaber:CTFEstimationParameters"
+    class_name: ClassVar[str] = "CTFEstimationParameters"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.CTFEstimationParameters
+
+    defocus_search_min: Optional[float] = None
+    defocus_search_max: Optional[float] = None
+    defocus_step: Optional[float] = None
+    amplitude_contrast: Optional[float] = None
+    cs: Optional[float] = None
+    voltage: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.defocus_search_min is not None and not isinstance(self.defocus_search_min, float):
+            self.defocus_search_min = float(self.defocus_search_min)
+
+        if self.defocus_search_max is not None and not isinstance(self.defocus_search_max, float):
+            self.defocus_search_max = float(self.defocus_search_max)
+
+        if self.defocus_step is not None and not isinstance(self.defocus_step, float):
+            self.defocus_step = float(self.defocus_step)
+
+        if self.amplitude_contrast is not None and not isinstance(self.amplitude_contrast, float):
+            self.amplitude_contrast = float(self.amplitude_contrast)
+
+        if self.cs is not None and not isinstance(self.cs, float):
+            self.cs = float(self.cs)
+
+        if self.voltage is not None and not isinstance(self.voltage, float):
+            self.voltage = float(self.voltage)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ParticlePickingParameters(AttributeGroup):
+    """
+    Parameters specific to particle picking workflows
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["ParticlePickingParameters"]
+    class_class_curie: ClassVar[str] = "lambdaber:ParticlePickingParameters"
+    class_name: ClassVar[str] = "ParticlePickingParameters"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ParticlePickingParameters
+
+    picking_method: Optional[str] = None
+    box_size: Optional[int] = None
+    threshold: Optional[float] = None
+    power_score: Optional[float] = None
+    ncc_score: Optional[float] = None
+    model_file: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.picking_method is not None and not isinstance(self.picking_method, str):
+            self.picking_method = str(self.picking_method)
+
+        if self.box_size is not None and not isinstance(self.box_size, int):
+            self.box_size = int(self.box_size)
+
+        if self.threshold is not None and not isinstance(self.threshold, float):
+            self.threshold = float(self.threshold)
+
+        if self.power_score is not None and not isinstance(self.power_score, float):
+            self.power_score = float(self.power_score)
+
+        if self.ncc_score is not None and not isinstance(self.ncc_score, float):
+            self.ncc_score = float(self.ncc_score)
+
+        if self.model_file is not None and not isinstance(self.model_file, str):
+            self.model_file = str(self.model_file)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class RefinementParameters(AttributeGroup):
+    """
+    Parameters specific to 3D refinement workflows
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["RefinementParameters"]
+    class_class_curie: ClassVar[str] = "lambdaber:RefinementParameters"
+    class_name: ClassVar[str] = "RefinementParameters"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.RefinementParameters
+
+    symmetry: Optional[str] = None
+    pixel_size: Optional[float] = None
+    box_size: Optional[int] = None
+    gold_standard: Optional[Union[bool, Bool]] = None
+    split_strategy: Optional[str] = None
+    resolution_0_143: Optional[float] = None
+    resolution_0_5: Optional[float] = None
+    map_sharpening_bfactor: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.symmetry is not None and not isinstance(self.symmetry, str):
+            self.symmetry = str(self.symmetry)
+
+        if self.pixel_size is not None and not isinstance(self.pixel_size, float):
+            self.pixel_size = float(self.pixel_size)
+
+        if self.box_size is not None and not isinstance(self.box_size, int):
+            self.box_size = int(self.box_size)
+
+        if self.gold_standard is not None and not isinstance(self.gold_standard, Bool):
+            self.gold_standard = Bool(self.gold_standard)
+
+        if self.split_strategy is not None and not isinstance(self.split_strategy, str):
+            self.split_strategy = str(self.split_strategy)
+
+        if self.resolution_0_143 is not None and not isinstance(self.resolution_0_143, float):
+            self.resolution_0_143 = float(self.resolution_0_143)
+
+        if self.resolution_0_5 is not None and not isinstance(self.resolution_0_5, float):
+            self.resolution_0_5 = float(self.resolution_0_5)
+
+        if self.map_sharpening_bfactor is not None and not isinstance(self.map_sharpening_bfactor, float):
+            self.map_sharpening_bfactor = float(self.map_sharpening_bfactor)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class FSCCurve(AttributeGroup):
+    """
+    Fourier Shell Correlation curve data.
+
+    The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in
+    `resolution_angstrom`
+    corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["FSCCurve"]
+    class_class_curie: ClassVar[str] = "lambdaber:FSCCurve"
+    class_name: ClassVar[str] = "FSCCurve"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.FSCCurve
+
+    resolution_angstrom: Optional[Union[float, list[float]]] = empty_list()
+    fsc_value: Optional[Union[float, list[float]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if not isinstance(self.resolution_angstrom, list):
+            self.resolution_angstrom = [self.resolution_angstrom] if self.resolution_angstrom is not None else []
+        self.resolution_angstrom = [v if isinstance(v, float) else float(v) for v in self.resolution_angstrom]
+
+        if not isinstance(self.fsc_value, list):
+            self.fsc_value = [self.fsc_value] if self.fsc_value is not None else []
+        self.fsc_value = [v if isinstance(v, float) else float(v) for v in self.fsc_value]
 
         super().__post_init__(**kwargs)
 
@@ -3742,6 +4325,24 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     mass_spec_deconvolution = PermissibleValue(
         text="mass_spec_deconvolution",
         description="Mass spectrometry deconvolution")
+    particle_extraction = PermissibleValue(
+        text="particle_extraction",
+        description="Particle extraction from micrographs")
+    ab_initio = PermissibleValue(
+        text="ab_initio",
+        description="Ab initio 3D reconstruction")
+    postprocessing = PermissibleValue(
+        text="postprocessing",
+        description="Map post-processing and sharpening")
+    map_validation = PermissibleValue(
+        text="map_validation",
+        description="3D map validation")
+    model_refinement = PermissibleValue(
+        text="model_refinement",
+        description="Atomic model refinement")
+    model_validation = PermissibleValue(
+        text="model_validation",
+        description="Model validation and quality assessment")
 
     _defn = EnumDefinition(
         name="WorkflowTypeEnum",
@@ -3794,6 +4395,24 @@ class FileFormatEnum(EnumDefinitionImpl):
     zip = PermissibleValue(
         text="zip",
         description="ZIP compressed archive")
+    mrcs = PermissibleValue(
+        text="mrcs",
+        description="MRC stack format for particle stacks")
+    eer = PermissibleValue(
+        text="eer",
+        description="EER format for electron counting")
+    cs = PermissibleValue(
+        text="cs",
+        description="CryoSPARC format")
+    json = PermissibleValue(
+        text="json",
+        description="JSON data format")
+    csv = PermissibleValue(
+        text="csv",
+        description="Comma-separated values format")
+    ccp4 = PermissibleValue(
+        text="ccp4",
+        description="CCP4 map format")
     gz = PermissibleValue(
         text="gz",
         description="Gzip compressed format")
@@ -3834,6 +4453,30 @@ class DataTypeEnum(EnumDefinitionImpl):
     processed_data = PermissibleValue(
         text="processed_data",
         description="Processed data")
+    movie = PermissibleValue(
+        text="movie",
+        description="Raw cryo-EM movie")
+    motion_corrected = PermissibleValue(
+        text="motion_corrected",
+        description="Motion-corrected micrograph")
+    ctf_estimation = PermissibleValue(
+        text="ctf_estimation",
+        description="CTF estimation results")
+    particle_coordinates = PermissibleValue(
+        text="particle_coordinates",
+        description="Particle picking coordinates")
+    class_averages = PermissibleValue(
+        text="class_averages",
+        description="2D or 3D class averages")
+    fsc_curve = PermissibleValue(
+        text="fsc_curve",
+        description="Fourier Shell Correlation data")
+    map_half = PermissibleValue(
+        text="map_half",
+        description="Half-map for gold-standard refinement")
+    validation_report = PermissibleValue(
+        text="validation_report",
+        description="Validation report")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -5260,6 +5903,57 @@ slots.cryoEMInstrument__pixel_size_max = Slot(uri=LAMBDABER.pixel_size_max, name
 slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDABER.autoloader_capacity, name="cryoEMInstrument__autoloader_capacity", curie=LAMBDABER.curie('autoloader_capacity'),
                    model_uri=LAMBDABER.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[int])
 
+slots.cryoEMInstrument__cs = Slot(uri=LAMBDABER.cs, name="cryoEMInstrument__cs", curie=LAMBDABER.curie('cs'),
+                   model_uri=LAMBDABER.cryoEMInstrument__cs, domain=None, range=Optional[float])
+
+slots.cryoEMInstrument__c2_aperture = Slot(uri=LAMBDABER.c2_aperture, name="cryoEMInstrument__c2_aperture", curie=LAMBDABER.curie('c2_aperture'),
+                   model_uri=LAMBDABER.cryoEMInstrument__c2_aperture, domain=None, range=Optional[float])
+
+slots.cryoEMInstrument__objective_aperture = Slot(uri=LAMBDABER.objective_aperture, name="cryoEMInstrument__objective_aperture", curie=LAMBDABER.curie('objective_aperture'),
+                   model_uri=LAMBDABER.cryoEMInstrument__objective_aperture, domain=None, range=Optional[float])
+
+slots.cryoEMInstrument__phase_plate_type = Slot(uri=LAMBDABER.phase_plate_type, name="cryoEMInstrument__phase_plate_type", curie=LAMBDABER.curie('phase_plate_type'),
+                   model_uri=LAMBDABER.cryoEMInstrument__phase_plate_type, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__energy_filter_present = Slot(uri=LAMBDABER.energy_filter_present, name="cryoEMInstrument__energy_filter_present", curie=LAMBDABER.curie('energy_filter_present'),
+                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_present, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.cryoEMInstrument__energy_filter_make = Slot(uri=LAMBDABER.energy_filter_make, name="cryoEMInstrument__energy_filter_make", curie=LAMBDABER.curie('energy_filter_make'),
+                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_make, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__energy_filter_model = Slot(uri=LAMBDABER.energy_filter_model, name="cryoEMInstrument__energy_filter_model", curie=LAMBDABER.curie('energy_filter_model'),
+                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_model, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__energy_filter_slit_width = Slot(uri=LAMBDABER.energy_filter_slit_width, name="cryoEMInstrument__energy_filter_slit_width", curie=LAMBDABER.curie('energy_filter_slit_width'),
+                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[float])
+
+slots.cryoEMInstrument__detector_position = Slot(uri=LAMBDABER.detector_position, name="cryoEMInstrument__detector_position", curie=LAMBDABER.curie('detector_position'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_position, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="cryoEMInstrument__detector_mode", curie=LAMBDABER.curie('detector_mode'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_mode, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__pixel_size_physical = Slot(uri=LAMBDABER.pixel_size_physical, name="cryoEMInstrument__pixel_size_physical", curie=LAMBDABER.curie('pixel_size_physical'),
+                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[float])
+
+slots.cryoEMInstrument__microscope_software = Slot(uri=LAMBDABER.microscope_software, name="cryoEMInstrument__microscope_software", curie=LAMBDABER.curie('microscope_software'),
+                   model_uri=LAMBDABER.cryoEMInstrument__microscope_software, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__microscope_software_version = Slot(uri=LAMBDABER.microscope_software_version, name="cryoEMInstrument__microscope_software_version", curie=LAMBDABER.curie('microscope_software_version'),
+                   model_uri=LAMBDABER.cryoEMInstrument__microscope_software_version, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__spotsize = Slot(uri=LAMBDABER.spotsize, name="cryoEMInstrument__spotsize", curie=LAMBDABER.curie('spotsize'),
+                   model_uri=LAMBDABER.cryoEMInstrument__spotsize, domain=None, range=Optional[int])
+
+slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDABER.gunlens, name="cryoEMInstrument__gunlens", curie=LAMBDABER.curie('gunlens'),
+                   model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[int])
+
+slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDABER.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDABER.curie('imaging_mode'),
+                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDABER.curie('tem_beam_diameter'),
+                   model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[float])
+
 slots.xRayInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="xRayInstrument__source_type", curie=LAMBDABER.curie('source_type'),
                    model_uri=LAMBDABER.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
@@ -5346,6 +6040,66 @@ slots.experimentRun__raw_data_location = Slot(uri=LAMBDABER.raw_data_location, n
 
 slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, name="experimentRun__processing_status", curie=LAMBDABER.curie('processing_status'),
                    model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
+
+slots.experimentRun__magnification = Slot(uri=LAMBDABER.magnification, name="experimentRun__magnification", curie=LAMBDABER.curie('magnification'),
+                   model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[int])
+
+slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDABER.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDABER.curie('calibrated_pixel_size'),
+                   model_uri=LAMBDABER.experimentRun__calibrated_pixel_size, domain=None, range=Optional[float])
+
+slots.experimentRun__camera_binning = Slot(uri=LAMBDABER.camera_binning, name="experimentRun__camera_binning", curie=LAMBDABER.curie('camera_binning'),
+                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[int])
+
+slots.experimentRun__exposure_time_per_frame = Slot(uri=LAMBDABER.exposure_time_per_frame, name="experimentRun__exposure_time_per_frame", curie=LAMBDABER.curie('exposure_time_per_frame'),
+                   model_uri=LAMBDABER.experimentRun__exposure_time_per_frame, domain=None, range=Optional[float])
+
+slots.experimentRun__frames_per_movie = Slot(uri=LAMBDABER.frames_per_movie, name="experimentRun__frames_per_movie", curie=LAMBDABER.curie('frames_per_movie'),
+                   model_uri=LAMBDABER.experimentRun__frames_per_movie, domain=None, range=Optional[int])
+
+slots.experimentRun__total_exposure_time = Slot(uri=LAMBDABER.total_exposure_time, name="experimentRun__total_exposure_time", curie=LAMBDABER.curie('total_exposure_time'),
+                   model_uri=LAMBDABER.experimentRun__total_exposure_time, domain=None, range=Optional[float])
+
+slots.experimentRun__total_dose = Slot(uri=LAMBDABER.total_dose, name="experimentRun__total_dose", curie=LAMBDABER.curie('total_dose'),
+                   model_uri=LAMBDABER.experimentRun__total_dose, domain=None, range=Optional[float])
+
+slots.experimentRun__dose_rate = Slot(uri=LAMBDABER.dose_rate, name="experimentRun__dose_rate", curie=LAMBDABER.curie('dose_rate'),
+                   model_uri=LAMBDABER.experimentRun__dose_rate, domain=None, range=Optional[float])
+
+slots.experimentRun__defocus_target = Slot(uri=LAMBDABER.defocus_target, name="experimentRun__defocus_target", curie=LAMBDABER.curie('defocus_target'),
+                   model_uri=LAMBDABER.experimentRun__defocus_target, domain=None, range=Optional[float])
+
+slots.experimentRun__defocus_range_min = Slot(uri=LAMBDABER.defocus_range_min, name="experimentRun__defocus_range_min", curie=LAMBDABER.curie('defocus_range_min'),
+                   model_uri=LAMBDABER.experimentRun__defocus_range_min, domain=None, range=Optional[float])
+
+slots.experimentRun__defocus_range_max = Slot(uri=LAMBDABER.defocus_range_max, name="experimentRun__defocus_range_max", curie=LAMBDABER.curie('defocus_range_max'),
+                   model_uri=LAMBDABER.experimentRun__defocus_range_max, domain=None, range=Optional[float])
+
+slots.experimentRun__defocus_range_increment = Slot(uri=LAMBDABER.defocus_range_increment, name="experimentRun__defocus_range_increment", curie=LAMBDABER.curie('defocus_range_increment'),
+                   model_uri=LAMBDABER.experimentRun__defocus_range_increment, domain=None, range=Optional[float])
+
+slots.experimentRun__astigmatism_target = Slot(uri=LAMBDABER.astigmatism_target, name="experimentRun__astigmatism_target", curie=LAMBDABER.curie('astigmatism_target'),
+                   model_uri=LAMBDABER.experimentRun__astigmatism_target, domain=None, range=Optional[float])
+
+slots.experimentRun__coma = Slot(uri=LAMBDABER.coma, name="experimentRun__coma", curie=LAMBDABER.curie('coma'),
+                   model_uri=LAMBDABER.experimentRun__coma, domain=None, range=Optional[float])
+
+slots.experimentRun__stage_tilt = Slot(uri=LAMBDABER.stage_tilt, name="experimentRun__stage_tilt", curie=LAMBDABER.curie('stage_tilt'),
+                   model_uri=LAMBDABER.experimentRun__stage_tilt, domain=None, range=Optional[float])
+
+slots.experimentRun__autoloader_slot = Slot(uri=LAMBDABER.autoloader_slot, name="experimentRun__autoloader_slot", curie=LAMBDABER.curie('autoloader_slot'),
+                   model_uri=LAMBDABER.experimentRun__autoloader_slot, domain=None, range=Optional[str])
+
+slots.experimentRun__shots_per_hole = Slot(uri=LAMBDABER.shots_per_hole, name="experimentRun__shots_per_hole", curie=LAMBDABER.curie('shots_per_hole'),
+                   model_uri=LAMBDABER.experimentRun__shots_per_hole, domain=None, range=Optional[int])
+
+slots.experimentRun__holes_per_group = Slot(uri=LAMBDABER.holes_per_group, name="experimentRun__holes_per_group", curie=LAMBDABER.curie('holes_per_group'),
+                   model_uri=LAMBDABER.experimentRun__holes_per_group, domain=None, range=Optional[int])
+
+slots.experimentRun__acquisition_software = Slot(uri=LAMBDABER.acquisition_software, name="experimentRun__acquisition_software", curie=LAMBDABER.curie('acquisition_software'),
+                   model_uri=LAMBDABER.experimentRun__acquisition_software, domain=None, range=Optional[str])
+
+slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDABER.acquisition_software_version, name="experimentRun__acquisition_software_version", curie=LAMBDABER.curie('acquisition_software_version'),
+                   model_uri=LAMBDABER.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
 
 slots.experimentRun__wavelength = Slot(uri=NSLS2.Wavelength, name="experimentRun__wavelength", curie=NSLS2.curie('Wavelength'),
                    model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[float])
@@ -5533,6 +6287,21 @@ slots.workflowRun__started_at = Slot(uri=LAMBDABER.started_at, name="workflowRun
 slots.workflowRun__completed_at = Slot(uri=LAMBDABER.completed_at, name="workflowRun__completed_at", curie=LAMBDABER.curie('completed_at'),
                    model_uri=LAMBDABER.workflowRun__completed_at, domain=None, range=Optional[str])
 
+slots.workflowRun__motion_correction_params = Slot(uri=LAMBDABER.motion_correction_params, name="workflowRun__motion_correction_params", curie=LAMBDABER.curie('motion_correction_params'),
+                   model_uri=LAMBDABER.workflowRun__motion_correction_params, domain=None, range=Optional[Union[dict, MotionCorrectionParameters]])
+
+slots.workflowRun__ctf_estimation_params = Slot(uri=LAMBDABER.ctf_estimation_params, name="workflowRun__ctf_estimation_params", curie=LAMBDABER.curie('ctf_estimation_params'),
+                   model_uri=LAMBDABER.workflowRun__ctf_estimation_params, domain=None, range=Optional[Union[dict, CTFEstimationParameters]])
+
+slots.workflowRun__particle_picking_params = Slot(uri=LAMBDABER.particle_picking_params, name="workflowRun__particle_picking_params", curie=LAMBDABER.curie('particle_picking_params'),
+                   model_uri=LAMBDABER.workflowRun__particle_picking_params, domain=None, range=Optional[Union[dict, ParticlePickingParameters]])
+
+slots.workflowRun__refinement_params = Slot(uri=LAMBDABER.refinement_params, name="workflowRun__refinement_params", curie=LAMBDABER.curie('refinement_params'),
+                   model_uri=LAMBDABER.workflowRun__refinement_params, domain=None, range=Optional[Union[dict, RefinementParameters]])
+
+slots.workflowRun__fsc_curve = Slot(uri=LAMBDABER.fsc_curve, name="workflowRun__fsc_curve", curie=LAMBDABER.curie('fsc_curve'),
+                   model_uri=LAMBDABER.workflowRun__fsc_curve, domain=None, range=Optional[Union[dict, FSCCurve]])
+
 slots.workflowRun__output_files = Slot(uri=LAMBDABER.output_files, name="workflowRun__output_files", curie=LAMBDABER.curie('output_files'),
                    model_uri=LAMBDABER.workflowRun__output_files, domain=None, range=Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]])
 
@@ -5556,6 +6325,15 @@ slots.dataFile__creation_date = Slot(uri=LAMBDABER.creation_date, name="dataFile
 
 slots.dataFile__data_type = Slot(uri=LAMBDABER.data_type, name="dataFile__data_type", curie=LAMBDABER.curie('data_type'),
                    model_uri=LAMBDABER.dataFile__data_type, domain=None, range=Optional[Union[str, "DataTypeEnum"]])
+
+slots.dataFile__storage_uri = Slot(uri=LAMBDABER.storage_uri, name="dataFile__storage_uri", curie=LAMBDABER.curie('storage_uri'),
+                   model_uri=LAMBDABER.dataFile__storage_uri, domain=None, range=Optional[str])
+
+slots.dataFile__related_entity = Slot(uri=LAMBDABER.related_entity, name="dataFile__related_entity", curie=LAMBDABER.curie('related_entity'),
+                   model_uri=LAMBDABER.dataFile__related_entity, domain=None, range=Optional[str])
+
+slots.dataFile__file_role = Slot(uri=LAMBDABER.file_role, name="dataFile__file_role", curie=LAMBDABER.curie('file_role'),
+                   model_uri=LAMBDABER.dataFile__file_role, domain=None, range=Optional[str])
 
 slots.image__file_name = Slot(uri=LAMBDABER.file_name, name="image__file_name", curie=LAMBDABER.curie('file_name'),
                    model_uri=LAMBDABER.image__file_name, domain=None, range=str)
@@ -5592,6 +6370,69 @@ slots.image3D__voxel_size = Slot(uri=LAMBDABER.voxel_size, name="image3D__voxel_
 
 slots.image3D__reconstruction_method = Slot(uri=LAMBDABER.reconstruction_method, name="image3D__reconstruction_method", curie=LAMBDABER.curie('reconstruction_method'),
                    model_uri=LAMBDABER.image3D__reconstruction_method, domain=None, range=Optional[str])
+
+slots.movie__frames = Slot(uri=LAMBDABER.frames, name="movie__frames", curie=LAMBDABER.curie('frames'),
+                   model_uri=LAMBDABER.movie__frames, domain=None, range=Optional[int])
+
+slots.movie__super_resolution = Slot(uri=LAMBDABER.super_resolution, name="movie__super_resolution", curie=LAMBDABER.curie('super_resolution'),
+                   model_uri=LAMBDABER.movie__super_resolution, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.movie__pixel_size_unbinned = Slot(uri=LAMBDABER.pixel_size_unbinned, name="movie__pixel_size_unbinned", curie=LAMBDABER.curie('pixel_size_unbinned'),
+                   model_uri=LAMBDABER.movie__pixel_size_unbinned, domain=None, range=Optional[float])
+
+slots.movie__timestamp = Slot(uri=LAMBDABER.timestamp, name="movie__timestamp", curie=LAMBDABER.curie('timestamp'),
+                   model_uri=LAMBDABER.movie__timestamp, domain=None, range=Optional[str])
+
+slots.movie__stage_position_x = Slot(uri=LAMBDABER.stage_position_x, name="movie__stage_position_x", curie=LAMBDABER.curie('stage_position_x'),
+                   model_uri=LAMBDABER.movie__stage_position_x, domain=None, range=Optional[float])
+
+slots.movie__stage_position_y = Slot(uri=LAMBDABER.stage_position_y, name="movie__stage_position_y", curie=LAMBDABER.curie('stage_position_y'),
+                   model_uri=LAMBDABER.movie__stage_position_y, domain=None, range=Optional[float])
+
+slots.movie__stage_position_z = Slot(uri=LAMBDABER.stage_position_z, name="movie__stage_position_z", curie=LAMBDABER.curie('stage_position_z'),
+                   model_uri=LAMBDABER.movie__stage_position_z, domain=None, range=Optional[float])
+
+slots.movie__nominal_defocus = Slot(uri=LAMBDABER.nominal_defocus, name="movie__nominal_defocus", curie=LAMBDABER.curie('nominal_defocus'),
+                   model_uri=LAMBDABER.movie__nominal_defocus, domain=None, range=Optional[float])
+
+slots.movie__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="movie__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
+                   model_uri=LAMBDABER.movie__dose_per_frame, domain=None, range=Optional[float])
+
+slots.movie__beam_shift_x = Slot(uri=LAMBDABER.beam_shift_x, name="movie__beam_shift_x", curie=LAMBDABER.curie('beam_shift_x'),
+                   model_uri=LAMBDABER.movie__beam_shift_x, domain=None, range=Optional[float])
+
+slots.movie__beam_shift_y = Slot(uri=LAMBDABER.beam_shift_y, name="movie__beam_shift_y", curie=LAMBDABER.curie('beam_shift_y'),
+                   model_uri=LAMBDABER.movie__beam_shift_y, domain=None, range=Optional[float])
+
+slots.movie__ice_thickness_estimate = Slot(uri=LAMBDABER.ice_thickness_estimate, name="movie__ice_thickness_estimate", curie=LAMBDABER.curie('ice_thickness_estimate'),
+                   model_uri=LAMBDABER.movie__ice_thickness_estimate, domain=None, range=Optional[float])
+
+slots.movie__grid_square_id = Slot(uri=LAMBDABER.grid_square_id, name="movie__grid_square_id", curie=LAMBDABER.curie('grid_square_id'),
+                   model_uri=LAMBDABER.movie__grid_square_id, domain=None, range=Optional[str])
+
+slots.movie__hole_id = Slot(uri=LAMBDABER.hole_id, name="movie__hole_id", curie=LAMBDABER.curie('hole_id'),
+                   model_uri=LAMBDABER.movie__hole_id, domain=None, range=Optional[str])
+
+slots.movie__acquisition_group = Slot(uri=LAMBDABER.acquisition_group, name="movie__acquisition_group", curie=LAMBDABER.curie('acquisition_group'),
+                   model_uri=LAMBDABER.movie__acquisition_group, domain=None, range=Optional[str])
+
+slots.micrograph__origin_movie_id = Slot(uri=LAMBDABER.origin_movie_id, name="micrograph__origin_movie_id", curie=LAMBDABER.curie('origin_movie_id'),
+                   model_uri=LAMBDABER.micrograph__origin_movie_id, domain=None, range=Optional[str])
+
+slots.micrograph__defocus_u = Slot(uri=LAMBDABER.defocus_u, name="micrograph__defocus_u", curie=LAMBDABER.curie('defocus_u'),
+                   model_uri=LAMBDABER.micrograph__defocus_u, domain=None, range=Optional[float])
+
+slots.micrograph__defocus_v = Slot(uri=LAMBDABER.defocus_v, name="micrograph__defocus_v", curie=LAMBDABER.curie('defocus_v'),
+                   model_uri=LAMBDABER.micrograph__defocus_v, domain=None, range=Optional[float])
+
+slots.micrograph__astigmatism_angle = Slot(uri=LAMBDABER.astigmatism_angle, name="micrograph__astigmatism_angle", curie=LAMBDABER.curie('astigmatism_angle'),
+                   model_uri=LAMBDABER.micrograph__astigmatism_angle, domain=None, range=Optional[float])
+
+slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDABER.resolution_fit_limit, name="micrograph__resolution_fit_limit", curie=LAMBDABER.curie('resolution_fit_limit'),
+                   model_uri=LAMBDABER.micrograph__resolution_fit_limit, domain=None, range=Optional[float])
+
+slots.micrograph__ctf_quality_score = Slot(uri=LAMBDABER.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDABER.curie('ctf_quality_score'),
+                   model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[float])
 
 slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDABER.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDABER.curie('wavenumber_min'),
                    model_uri=LAMBDABER.fTIRImage__wavenumber_min, domain=None, range=Optional[float])
@@ -5748,6 +6589,45 @@ slots.cryoEMPreparation__humidity_percentage = Slot(uri=LAMBDABER.humidity_perce
 
 slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temperature, name="cryoEMPreparation__chamber_temperature", curie=LAMBDABER.curie('chamber_temperature'),
                    model_uri=LAMBDABER.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__grid_material = Slot(uri=LAMBDABER.grid_material, name="cryoEMPreparation__grid_material", curie=LAMBDABER.curie('grid_material'),
+                   model_uri=LAMBDABER.cryoEMPreparation__grid_material, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__glow_discharge_applied = Slot(uri=LAMBDABER.glow_discharge_applied, name="cryoEMPreparation__glow_discharge_applied", curie=LAMBDABER.curie('glow_discharge_applied'),
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_applied, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.cryoEMPreparation__glow_discharge_time = Slot(uri=LAMBDABER.glow_discharge_time, name="cryoEMPreparation__glow_discharge_time", curie=LAMBDABER.curie('glow_discharge_time'),
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_time, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__glow_discharge_current = Slot(uri=LAMBDABER.glow_discharge_current, name="cryoEMPreparation__glow_discharge_current", curie=LAMBDABER.curie('glow_discharge_current'),
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_current, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__glow_discharge_atmosphere = Slot(uri=LAMBDABER.glow_discharge_atmosphere, name="cryoEMPreparation__glow_discharge_atmosphere", curie=LAMBDABER.curie('glow_discharge_atmosphere'),
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_atmosphere, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__glow_discharge_pressure = Slot(uri=LAMBDABER.glow_discharge_pressure, name="cryoEMPreparation__glow_discharge_pressure", curie=LAMBDABER.curie('glow_discharge_pressure'),
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_pressure, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__vitrification_instrument = Slot(uri=LAMBDABER.vitrification_instrument, name="cryoEMPreparation__vitrification_instrument", curie=LAMBDABER.curie('vitrification_instrument'),
+                   model_uri=LAMBDABER.cryoEMPreparation__vitrification_instrument, domain=None, range=Optional[str])
+
+slots.cryoEMPreparation__blot_number = Slot(uri=LAMBDABER.blot_number, name="cryoEMPreparation__blot_number", curie=LAMBDABER.curie('blot_number'),
+                   model_uri=LAMBDABER.cryoEMPreparation__blot_number, domain=None, range=Optional[int])
+
+slots.cryoEMPreparation__wait_time = Slot(uri=LAMBDABER.wait_time, name="cryoEMPreparation__wait_time", curie=LAMBDABER.curie('wait_time'),
+                   model_uri=LAMBDABER.cryoEMPreparation__wait_time, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__blotter_height = Slot(uri=LAMBDABER.blotter_height, name="cryoEMPreparation__blotter_height", curie=LAMBDABER.curie('blotter_height'),
+                   model_uri=LAMBDABER.cryoEMPreparation__blotter_height, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__blotter_setting = Slot(uri=LAMBDABER.blotter_setting, name="cryoEMPreparation__blotter_setting", curie=LAMBDABER.curie('blotter_setting'),
+                   model_uri=LAMBDABER.cryoEMPreparation__blotter_setting, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__sample_applied_volume = Slot(uri=LAMBDABER.sample_applied_volume, name="cryoEMPreparation__sample_applied_volume", curie=LAMBDABER.curie('sample_applied_volume'),
+                   model_uri=LAMBDABER.cryoEMPreparation__sample_applied_volume, domain=None, range=Optional[float])
+
+slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDABER.ethane_temperature, name="cryoEMPreparation__ethane_temperature", curie=LAMBDABER.curie('ethane_temperature'),
+                   model_uri=LAMBDABER.cryoEMPreparation__ethane_temperature, domain=None, range=Optional[float])
 
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDABER.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDABER.curie('plasma_treatment'),
                    model_uri=LAMBDABER.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
@@ -6060,6 +6940,96 @@ slots.computeResources__memory_gb = Slot(uri=LAMBDABER.memory_gb, name="computeR
 
 slots.computeResources__storage_gb = Slot(uri=LAMBDABER.storage_gb, name="computeResources__storage_gb", curie=LAMBDABER.curie('storage_gb'),
                    model_uri=LAMBDABER.computeResources__storage_gb, domain=None, range=Optional[float])
+
+slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDABER.patch_size, name="motionCorrectionParameters__patch_size", curie=LAMBDABER.curie('patch_size'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__patch_size, domain=None, range=Optional[int])
+
+slots.motionCorrectionParameters__binning = Slot(uri=LAMBDABER.binning, name="motionCorrectionParameters__binning", curie=LAMBDABER.curie('binning'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[int])
+
+slots.motionCorrectionParameters__dose_weighting = Slot(uri=LAMBDABER.dose_weighting, name="motionCorrectionParameters__dose_weighting", curie=LAMBDABER.curie('dose_weighting'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__dose_weighting, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.motionCorrectionParameters__bfactor_dose_weighting = Slot(uri=LAMBDABER.bfactor_dose_weighting, name="motionCorrectionParameters__bfactor_dose_weighting", curie=LAMBDABER.curie('bfactor_dose_weighting'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__bfactor_dose_weighting, domain=None, range=Optional[float])
+
+slots.motionCorrectionParameters__anisotropic_correction = Slot(uri=LAMBDABER.anisotropic_correction, name="motionCorrectionParameters__anisotropic_correction", curie=LAMBDABER.curie('anisotropic_correction'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__anisotropic_correction, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.motionCorrectionParameters__frame_grouping = Slot(uri=LAMBDABER.frame_grouping, name="motionCorrectionParameters__frame_grouping", curie=LAMBDABER.curie('frame_grouping'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[int])
+
+slots.motionCorrectionParameters__output_binning = Slot(uri=LAMBDABER.output_binning, name="motionCorrectionParameters__output_binning", curie=LAMBDABER.curie('output_binning'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[int])
+
+slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDABER.drift_total, name="motionCorrectionParameters__drift_total", curie=LAMBDABER.curie('drift_total'),
+                   model_uri=LAMBDABER.motionCorrectionParameters__drift_total, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__defocus_search_min = Slot(uri=LAMBDABER.defocus_search_min, name="cTFEstimationParameters__defocus_search_min", curie=LAMBDABER.curie('defocus_search_min'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_min, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__defocus_search_max = Slot(uri=LAMBDABER.defocus_search_max, name="cTFEstimationParameters__defocus_search_max", curie=LAMBDABER.curie('defocus_search_max'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_max, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__defocus_step = Slot(uri=LAMBDABER.defocus_step, name="cTFEstimationParameters__defocus_step", curie=LAMBDABER.curie('defocus_step'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_step, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__amplitude_contrast = Slot(uri=LAMBDABER.amplitude_contrast, name="cTFEstimationParameters__amplitude_contrast", curie=LAMBDABER.curie('amplitude_contrast'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__cs = Slot(uri=LAMBDABER.cs, name="cTFEstimationParameters__cs", curie=LAMBDABER.curie('cs'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__cs, domain=None, range=Optional[float])
+
+slots.cTFEstimationParameters__voltage = Slot(uri=LAMBDABER.voltage, name="cTFEstimationParameters__voltage", curie=LAMBDABER.curie('voltage'),
+                   model_uri=LAMBDABER.cTFEstimationParameters__voltage, domain=None, range=Optional[float])
+
+slots.particlePickingParameters__picking_method = Slot(uri=LAMBDABER.picking_method, name="particlePickingParameters__picking_method", curie=LAMBDABER.curie('picking_method'),
+                   model_uri=LAMBDABER.particlePickingParameters__picking_method, domain=None, range=Optional[str])
+
+slots.particlePickingParameters__box_size = Slot(uri=LAMBDABER.box_size, name="particlePickingParameters__box_size", curie=LAMBDABER.curie('box_size'),
+                   model_uri=LAMBDABER.particlePickingParameters__box_size, domain=None, range=Optional[int])
+
+slots.particlePickingParameters__threshold = Slot(uri=LAMBDABER.threshold, name="particlePickingParameters__threshold", curie=LAMBDABER.curie('threshold'),
+                   model_uri=LAMBDABER.particlePickingParameters__threshold, domain=None, range=Optional[float])
+
+slots.particlePickingParameters__power_score = Slot(uri=LAMBDABER.power_score, name="particlePickingParameters__power_score", curie=LAMBDABER.curie('power_score'),
+                   model_uri=LAMBDABER.particlePickingParameters__power_score, domain=None, range=Optional[float])
+
+slots.particlePickingParameters__ncc_score = Slot(uri=LAMBDABER.ncc_score, name="particlePickingParameters__ncc_score", curie=LAMBDABER.curie('ncc_score'),
+                   model_uri=LAMBDABER.particlePickingParameters__ncc_score, domain=None, range=Optional[float])
+
+slots.particlePickingParameters__model_file = Slot(uri=LAMBDABER.model_file, name="particlePickingParameters__model_file", curie=LAMBDABER.curie('model_file'),
+                   model_uri=LAMBDABER.particlePickingParameters__model_file, domain=None, range=Optional[str])
+
+slots.refinementParameters__symmetry = Slot(uri=LAMBDABER.symmetry, name="refinementParameters__symmetry", curie=LAMBDABER.curie('symmetry'),
+                   model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[str])
+
+slots.refinementParameters__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="refinementParameters__pixel_size", curie=LAMBDABER.curie('pixel_size'),
+                   model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[float])
+
+slots.refinementParameters__box_size = Slot(uri=LAMBDABER.box_size, name="refinementParameters__box_size", curie=LAMBDABER.curie('box_size'),
+                   model_uri=LAMBDABER.refinementParameters__box_size, domain=None, range=Optional[int])
+
+slots.refinementParameters__gold_standard = Slot(uri=LAMBDABER.gold_standard, name="refinementParameters__gold_standard", curie=LAMBDABER.curie('gold_standard'),
+                   model_uri=LAMBDABER.refinementParameters__gold_standard, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.refinementParameters__split_strategy = Slot(uri=LAMBDABER.split_strategy, name="refinementParameters__split_strategy", curie=LAMBDABER.curie('split_strategy'),
+                   model_uri=LAMBDABER.refinementParameters__split_strategy, domain=None, range=Optional[str])
+
+slots.refinementParameters__resolution_0_143 = Slot(uri=LAMBDABER.resolution_0_143, name="refinementParameters__resolution_0_143", curie=LAMBDABER.curie('resolution_0_143'),
+                   model_uri=LAMBDABER.refinementParameters__resolution_0_143, domain=None, range=Optional[float])
+
+slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDABER.resolution_0_5, name="refinementParameters__resolution_0_5", curie=LAMBDABER.curie('resolution_0_5'),
+                   model_uri=LAMBDABER.refinementParameters__resolution_0_5, domain=None, range=Optional[float])
+
+slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDABER.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDABER.curie('map_sharpening_bfactor'),
+                   model_uri=LAMBDABER.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[float])
+
+slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDABER.curie('resolution_angstrom'),
+                   model_uri=LAMBDABER.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[float, list[float]]])
+
+slots.fSCCurve__fsc_value = Slot(uri=LAMBDABER.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDABER.curie('fsc_value'),
+                   model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
                    model_uri=LAMBDABER.proteinAnnotation__protein_id, domain=None, range=str,

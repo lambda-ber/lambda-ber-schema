@@ -1198,15 +1198,6 @@ classes:
     is_a: Image2D
     description: "Motion-corrected micrograph derived from movie"
     attributes:
-      pixel_size:
-        description: "Final pixel size in Angstroms per pixel"
-        range: float
-      defocus:
-        description: "Measured defocus in micrometers"
-        range: float
-      dose:
-        description: "Total electron dose in e-/Angstrom^2"
-        range: float
       origin_movie_id:
         description: "Reference to original movie file"
         range: string
@@ -1216,9 +1207,6 @@ classes:
         range: float
       defocus_v:
         description: "Defocus V in micrometers"
-        range: float
-      astigmatism:
-        description: "Astigmatism in Angstroms"
         range: float
       astigmatism_angle:
         description: "Astigmatism angle in degrees"

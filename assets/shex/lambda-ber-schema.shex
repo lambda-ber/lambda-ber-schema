@@ -79,11 +79,14 @@ linkml:Sparqlpath xsd:string
 }
 
 <AttributeGroup>  (
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR @<ComputeResources>
-    OR @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> OR @<CrystallizationConditions> OR
+    @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR
+    @<CTFEstimationParameters> OR @<ComputeResources> OR
+    @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> OR @<CrystallizationConditions> OR
     @<DataCollectionStrategy> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> OR
-    @<ExperimentalConditions> OR @<ImageFeature> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction>
-    OR @<MolecularComposition> OR @<QualityMetrics> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
+    @<ExperimentalConditions> OR @<FSCCurve> OR @<ImageFeature> OR
+    @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> OR @<MolecularComposition> OR
+    @<MotionCorrectionParameters> OR @<ParticlePickingParameters> OR @<QualityMetrics> OR @<RefinementParameters> OR
+    @<StorageConditions> OR @<TechniqueSpecificPreparation>
 )
 
 <AttributeGroup_struct> {
@@ -203,7 +206,24 @@ linkml:Sparqlpath xsd:string
           <detector_dimensions> @linkml:String ? ;
           <pixel_size_min> @linkml:Float ? ;
           <pixel_size_max> @linkml:Float ? ;
-          <autoloader_capacity> @linkml:Integer ?
+          <autoloader_capacity> @linkml:Integer ? ;
+          <cs> @linkml:Float ? ;
+          <c2_aperture> @linkml:Float ? ;
+          <objective_aperture> @linkml:Float ? ;
+          <phase_plate_type> @linkml:String ? ;
+          <energy_filter_present> @linkml:Boolean ? ;
+          <energy_filter_make> @linkml:String ? ;
+          <energy_filter_model> @linkml:String ? ;
+          <energy_filter_slit_width> @linkml:Float ? ;
+          <detector_position> @linkml:String ? ;
+          <detector_mode> @linkml:String ? ;
+          <pixel_size_physical> @linkml:Float ? ;
+          <microscope_software> @linkml:String ? ;
+          <microscope_software_version> @linkml:String ? ;
+          <spotsize> @linkml:Integer ? ;
+          <gunlens> @linkml:Integer ? ;
+          <imaging_mode> @linkml:String ? ;
+          <tem_beam_diameter> @linkml:Float ?
        ) ;
        rdf:type [ <CryoEMInstrument> ]
     )
@@ -226,6 +246,19 @@ linkml:Sparqlpath xsd:string
           <blot_force> @linkml:Integer ? ;
           <humidity_percentage> @linkml:Float ? ;
           <chamber_temperature> @linkml:Float ? ;
+          <grid_material> @linkml:String ? ;
+          <glow_discharge_applied> @linkml:Boolean ? ;
+          <glow_discharge_time> @linkml:Float ? ;
+          <glow_discharge_current> @linkml:Float ? ;
+          <glow_discharge_atmosphere> @linkml:String ? ;
+          <glow_discharge_pressure> @linkml:Float ? ;
+          <vitrification_instrument> @linkml:String ? ;
+          <blot_number> @linkml:Integer ? ;
+          <wait_time> @linkml:Float ? ;
+          <blotter_height> @linkml:Float ? ;
+          <blotter_setting> @linkml:Float ? ;
+          <sample_applied_volume> @linkml:Float ? ;
+          <ethane_temperature> @linkml:Float ? ;
           <plasma_treatment> @linkml:String ?
        ) ;
        rdf:type [ <CryoEMPreparation> ] ?
@@ -256,6 +289,20 @@ linkml:Sparqlpath xsd:string
           <seed_stock_dilution> @linkml:String ?
        ) ;
        rdf:type [ <CrystallizationConditions> ] ?
+    )
+}
+
+<CTFEstimationParameters> CLOSED {
+    (  $<CTFEstimationParameters_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <defocus_search_min> @linkml:Float ? ;
+          <defocus_search_max> @linkml:Float ? ;
+          <defocus_step> @linkml:Float ? ;
+          <amplitude_contrast> @linkml:Float ? ;
+          <cs> @linkml:Float ? ;
+          <voltage> @linkml:Float ?
+       ) ;
+       rdf:type [ <CTFEstimationParameters> ] ?
     )
 }
 
@@ -337,6 +384,9 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#img> <https://w3id.org/lambda-ber-schema/FileFormatEnum#h5>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#mrcs> <https://w3id.org/lambda-ber-schema/FileFormatEnum#eer>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cs> <https://w3id.org/lambda-ber-schema/FileFormatEnum#json>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#csv> <https://w3id.org/lambda-ber-schema/FileFormatEnum#ccp4>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#gz> ] ;
           <file_size_bytes> @linkml:Integer ? ;
           <checksum> @linkml:String ? ;
@@ -347,7 +397,17 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/DataTypeEnum#particles> <https://w3id.org/lambda-ber-schema/DataTypeEnum#volume>
              <https://w3id.org/lambda-ber-schema/DataTypeEnum#model> <https://w3id.org/lambda-ber-schema/DataTypeEnum#metadata>
              <https://w3id.org/lambda-ber-schema/DataTypeEnum#raw_data>
-             <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data> ] ?
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#processed_data>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#movie>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#motion_corrected>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#ctf_estimation>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#particle_coordinates>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#class_averages>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#fsc_curve> <https://w3id.org/lambda-ber-schema/DataTypeEnum#map_half>
+             <https://w3id.org/lambda-ber-schema/DataTypeEnum#validation_report> ] ? ;
+          <storage_uri> @linkml:String ? ;
+          <related_entity> @linkml:String ? ;
+          <file_role> @linkml:String ?
        ) ;
        rdf:type [ <DataFile> ]
     )
@@ -421,6 +481,26 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
+          <magnification> @linkml:Integer ? ;
+          <calibrated_pixel_size> @linkml:Float ? ;
+          <camera_binning> @linkml:Integer ? ;
+          <exposure_time_per_frame> @linkml:Float ? ;
+          <frames_per_movie> @linkml:Integer ? ;
+          <total_exposure_time> @linkml:Float ? ;
+          <total_dose> @linkml:Float ? ;
+          <dose_rate> @linkml:Float ? ;
+          <defocus_target> @linkml:Float ? ;
+          <defocus_range_min> @linkml:Float ? ;
+          <defocus_range_max> @linkml:Float ? ;
+          <defocus_range_increment> @linkml:Float ? ;
+          <astigmatism_target> @linkml:Float ? ;
+          <coma> @linkml:Float ? ;
+          <stage_tilt> @linkml:Float ? ;
+          <autoloader_slot> @linkml:String ? ;
+          <shots_per_hole> @linkml:Integer ? ;
+          <holes_per_group> @linkml:Integer ? ;
+          <acquisition_software> @linkml:String ? ;
+          <acquisition_software_version> @linkml:String ? ;
           nsls2:Wavelength @linkml:Float ? ;
           nsls2:Angle_increment @linkml:Float ? ;
           nsls2:Start_angle @linkml:Float ? ;
@@ -451,6 +531,16 @@ linkml:Sparqlpath xsd:string
           <quantum_yield> @linkml:Float ?
        ) ;
        rdf:type [ <FluorescenceImage> ]
+    )
+}
+
+<FSCCurve> CLOSED {
+    (  $<FSCCurve_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <resolution_angstrom> @linkml:Float * ;
+          <fsc_value> @linkml:Float *
+       ) ;
+       rdf:type [ <FSCCurve> ] ?
     )
 }
 
@@ -532,7 +622,7 @@ linkml:Sparqlpath xsd:string
           ) ;
           rdf:type [ <Image2D> ]
        )
-    } OR @<FluorescenceImage> OR @<OpticalImage> OR @<XRFImage>
+    } OR @<FluorescenceImage> OR @<Micrograph> OR @<Movie> OR @<OpticalImage> OR @<XRFImage>
 )
 
 <Image3D> CLOSED {
@@ -614,6 +704,20 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<Micrograph> CLOSED {
+    (  $<Micrograph_tes> (  &<Image2D_tes> ;
+          rdf:type [ <Image2D> ] ? ;
+          <origin_movie_id> @linkml:String ? ;
+          <defocus_u> @linkml:Float ? ;
+          <defocus_v> @linkml:Float ? ;
+          <astigmatism_angle> @linkml:Float ? ;
+          <resolution_fit_limit> @linkml:Float ? ;
+          <ctf_quality_score> @linkml:Float ?
+       ) ;
+       rdf:type [ <Micrograph> ]
+    )
+}
+
 <MolecularComposition> CLOSED {
     (  $<MolecularComposition_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
@@ -622,6 +726,45 @@ linkml:Sparqlpath xsd:string
           <ligands> @linkml:String *
        ) ;
        rdf:type [ <MolecularComposition> ] ?
+    )
+}
+
+<MotionCorrectionParameters> CLOSED {
+    (  $<MotionCorrectionParameters_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <patch_size> @linkml:Integer ? ;
+          <binning> @linkml:Integer ? ;
+          <dose_weighting> @linkml:Boolean ? ;
+          <bfactor_dose_weighting> @linkml:Float ? ;
+          <anisotropic_correction> @linkml:Boolean ? ;
+          <frame_grouping> @linkml:Integer ? ;
+          <output_binning> @linkml:Integer ? ;
+          <drift_total> @linkml:Float ?
+       ) ;
+       rdf:type [ <MotionCorrectionParameters> ] ?
+    )
+}
+
+<Movie> CLOSED {
+    (  $<Movie_tes> (  &<Image2D_tes> ;
+          rdf:type [ <Image2D> ] ? ;
+          <frames> @linkml:Integer ? ;
+          <super_resolution> @linkml:Boolean ? ;
+          <pixel_size_unbinned> @linkml:Float ? ;
+          <timestamp> @linkml:String ? ;
+          <stage_position_x> @linkml:Float ? ;
+          <stage_position_y> @linkml:Float ? ;
+          <stage_position_z> @linkml:Float ? ;
+          <nominal_defocus> @linkml:Float ? ;
+          <dose_per_frame> @linkml:Float ? ;
+          <beam_shift_x> @linkml:Float ? ;
+          <beam_shift_y> @linkml:Float ? ;
+          <ice_thickness_estimate> @linkml:Float ? ;
+          <grid_square_id> @linkml:String ? ;
+          <hole_id> @linkml:String ? ;
+          <acquisition_group> @linkml:String ?
+       ) ;
+       rdf:type [ <Movie> ]
     )
 }
 
@@ -712,6 +855,20 @@ linkml:Sparqlpath xsd:string
           <contrast_method> @linkml:String ?
        ) ;
        rdf:type [ <OpticalImage> ]
+    )
+}
+
+<ParticlePickingParameters> CLOSED {
+    (  $<ParticlePickingParameters_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <picking_method> @linkml:String ? ;
+          <box_size> @linkml:Integer ? ;
+          <threshold> @linkml:Float ? ;
+          <power_score> @linkml:Float ? ;
+          <ncc_score> @linkml:Float ? ;
+          <model_file> @linkml:String ?
+       ) ;
+       rdf:type [ <ParticlePickingParameters> ] ?
     )
 }
 
@@ -917,6 +1074,22 @@ linkml:Sparqlpath xsd:string
           <r_factor> @linkml:Float ?
        ) ;
        rdf:type [ <QualityMetrics> ] ?
+    )
+}
+
+<RefinementParameters> CLOSED {
+    (  $<RefinementParameters_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <symmetry> @linkml:String ? ;
+          <pixel_size> @linkml:Float ? ;
+          <box_size> @linkml:Integer ? ;
+          <gold_standard> @linkml:Boolean ? ;
+          <split_strategy> @linkml:String ? ;
+          <resolution_0_143> @linkml:Float ? ;
+          <resolution_0_5> @linkml:Float ? ;
+          <map_sharpening_bfactor> @linkml:Float ?
+       ) ;
+       rdf:type [ <RefinementParameters> ] ?
     )
 }
 
@@ -1180,7 +1353,13 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification>
-             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution> ] ;
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_extraction>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#ab_initio>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#postprocessing>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#map_validation>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_refinement>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_validation> ] ;
           <experiment_id> @linkml:String ;
           <processing_level> @linkml:Integer ? ;
           <software_name> @linkml:String ;
@@ -1235,6 +1414,11 @@ linkml:Sparqlpath xsd:string
           <compute_resources> @<ComputeResources> ? ;
           <started_at> @linkml:String ? ;
           <completed_at> @linkml:String ? ;
+          <motion_correction_params> @<MotionCorrectionParameters> ? ;
+          <ctf_estimation_params> @<CTFEstimationParameters> ? ;
+          <particle_picking_params> @<ParticlePickingParameters> ? ;
+          <refinement_params> @<RefinementParameters> ? ;
+          <fsc_curve> @<FSCCurve> ? ;
           <output_files> @<DataFile> *
        ) ;
        rdf:type [ <WorkflowRun> ]

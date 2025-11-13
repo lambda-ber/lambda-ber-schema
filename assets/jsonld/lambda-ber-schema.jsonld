@@ -783,6 +783,30 @@
         {
           "text": "mass_spec_deconvolution",
           "description": "Mass spectrometry deconvolution"
+        },
+        {
+          "text": "particle_extraction",
+          "description": "Particle extraction from micrographs"
+        },
+        {
+          "text": "ab_initio",
+          "description": "Ab initio 3D reconstruction"
+        },
+        {
+          "text": "postprocessing",
+          "description": "Map post-processing and sharpening"
+        },
+        {
+          "text": "map_validation",
+          "description": "3D map validation"
+        },
+        {
+          "text": "model_refinement",
+          "description": "Atomic model refinement"
+        },
+        {
+          "text": "model_validation",
+          "description": "Model validation and quality assessment"
         }
       ]
     },
@@ -849,6 +873,30 @@
           "description": "ZIP compressed archive"
         },
         {
+          "text": "mrcs",
+          "description": "MRC stack format for particle stacks"
+        },
+        {
+          "text": "eer",
+          "description": "EER format for electron counting"
+        },
+        {
+          "text": "cs",
+          "description": "CryoSPARC format"
+        },
+        {
+          "text": "json",
+          "description": "JSON data format"
+        },
+        {
+          "text": "csv",
+          "description": "Comma-separated values format"
+        },
+        {
+          "text": "ccp4",
+          "description": "CCP4 map format"
+        },
+        {
           "text": "gz",
           "description": "Gzip compressed format"
         }
@@ -895,6 +943,38 @@
         {
           "text": "processed_data",
           "description": "Processed data"
+        },
+        {
+          "text": "movie",
+          "description": "Raw cryo-EM movie"
+        },
+        {
+          "text": "motion_corrected",
+          "description": "Motion-corrected micrograph"
+        },
+        {
+          "text": "ctf_estimation",
+          "description": "CTF estimation results"
+        },
+        {
+          "text": "particle_coordinates",
+          "description": "Particle picking coordinates"
+        },
+        {
+          "text": "class_averages",
+          "description": "2D or 3D class averages"
+        },
+        {
+          "text": "fsc_curve",
+          "description": "Fourier Shell Correlation data"
+        },
+        {
+          "text": "map_half",
+          "description": "Half-map for gold-standard refinement"
+        },
+        {
+          "text": "validation_report",
+          "description": "Validation report"
         }
       ]
     },
@@ -3863,6 +3943,227 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "cryoEMInstrument__cs",
+      "description": "Spherical aberration (Cs) in millimeters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cs",
+      "alias": "cs",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__c2_aperture",
+      "description": "C2 aperture size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/c2_aperture",
+      "alias": "c2_aperture",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__objective_aperture",
+      "description": "Objective aperture size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/objective_aperture",
+      "alias": "objective_aperture",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__phase_plate_type",
+      "description": "Type of phase plate if present",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/phase_plate_type",
+      "alias": "phase_plate_type",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__energy_filter_present",
+      "description": "Whether energy filter is present",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_filter_present",
+      "alias": "energy_filter_present",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__energy_filter_make",
+      "description": "Energy filter manufacturer",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_filter_make",
+      "alias": "energy_filter_make",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__energy_filter_model",
+      "description": "Energy filter model",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_filter_model",
+      "alias": "energy_filter_model",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__energy_filter_slit_width",
+      "description": "Energy filter slit width in eV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_filter_slit_width",
+      "alias": "energy_filter_slit_width",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_position",
+      "description": "Detector position",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_position",
+      "alias": "detector_position",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_mode",
+      "description": "Detector mode (counting, integrating, super_resolution)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_mode",
+      "alias": "detector_mode",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__pixel_size_physical",
+      "description": "Physical pixel size in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_physical",
+      "alias": "pixel_size_physical",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__microscope_software",
+      "description": "Microscope control software (e.g., SerialEM, EPU, Leginon)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/microscope_software",
+      "alias": "microscope_software",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__microscope_software_version",
+      "description": "Software version",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/microscope_software_version",
+      "alias": "microscope_software_version",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__spotsize",
+      "description": "Electron beam spot size setting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/spotsize",
+      "alias": "spotsize",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__gunlens",
+      "description": "Gun lens setting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/gunlens",
+      "alias": "gunlens",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__imaging_mode",
+      "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/imaging_mode",
+      "alias": "imaging_mode",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__tem_beam_diameter",
+      "description": "TEM beam diameter in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/tem_beam_diameter",
+      "alias": "tem_beam_diameter",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "xRayInstrument__source_type",
       "description": "Type of X-ray source",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -4254,6 +4555,266 @@
         "ExperimentRun"
       ],
       "range": "ProcessingStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__magnification",
+      "description": "Magnification used during data collection",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/magnification",
+      "alias": "magnification",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__calibrated_pixel_size",
+      "description": "Calibrated pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/calibrated_pixel_size",
+      "alias": "calibrated_pixel_size",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__camera_binning",
+      "description": "Camera binning factor",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/camera_binning",
+      "alias": "camera_binning",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__exposure_time_per_frame",
+      "description": "Exposure time per frame in milliseconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time_per_frame",
+      "alias": "exposure_time_per_frame",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__frames_per_movie",
+      "description": "Number of frames per movie",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/frames_per_movie",
+      "alias": "frames_per_movie",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__total_exposure_time",
+      "description": "Total exposure time in milliseconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/total_exposure_time",
+      "alias": "total_exposure_time",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__total_dose",
+      "description": "Total electron dose in e-/Angstrom^2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/total_dose",
+      "alias": "total_dose",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__dose_rate",
+      "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose_rate",
+      "alias": "dose_rate",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__defocus_target",
+      "description": "Target defocus value in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_target",
+      "alias": "defocus_target",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__defocus_range_min",
+      "description": "Minimum defocus range in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_range_min",
+      "alias": "defocus_range_min",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__defocus_range_max",
+      "description": "Maximum defocus range in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_range_max",
+      "alias": "defocus_range_max",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__defocus_range_increment",
+      "description": "Defocus range increment in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_range_increment",
+      "alias": "defocus_range_increment",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__astigmatism_target",
+      "description": "Target astigmatism in nanometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism_target",
+      "alias": "astigmatism_target",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__coma",
+      "description": "Coma aberration in nanometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/coma",
+      "alias": "coma",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__stage_tilt",
+      "description": "Stage tilt angle in degrees",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/stage_tilt",
+      "alias": "stage_tilt",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__autoloader_slot",
+      "description": "Autoloader slot identifier",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/autoloader_slot",
+      "alias": "autoloader_slot",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__shots_per_hole",
+      "description": "Number of shots taken per hole",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/shots_per_hole",
+      "alias": "shots_per_hole",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__holes_per_group",
+      "description": "Number of holes per group",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/holes_per_group",
+      "alias": "holes_per_group",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__acquisition_software",
+      "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/acquisition_software",
+      "alias": "acquisition_software",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__acquisition_software_version",
+      "description": "Version of acquisition software",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/acquisition_software_version",
+      "alias": "acquisition_software_version",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -5270,6 +5831,76 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "workflowRun__motion_correction_params",
+      "description": "Motion correction specific parameters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/motion_correction_params",
+      "alias": "motion_correction_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "MotionCorrectionParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ctf_estimation_params",
+      "description": "CTF estimation specific parameters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ctf_estimation_params",
+      "alias": "ctf_estimation_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "CTFEstimationParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__particle_picking_params",
+      "description": "Particle picking specific parameters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/particle_picking_params",
+      "alias": "particle_picking_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "ParticlePickingParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__refinement_params",
+      "description": "3D refinement specific parameters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/refinement_params",
+      "alias": "refinement_params",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "RefinementParameters",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__fsc_curve",
+      "description": "Fourier Shell Correlation curve data",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/fsc_curve",
+      "alias": "fsc_curve",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "FSCCurve",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "workflowRun__output_files",
       "description": "Output files generated",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -5374,6 +6005,45 @@
         "DataFile"
       ],
       "range": "DataTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__storage_uri",
+      "description": "Storage URI (S3, Globus, etc.)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/storage_uri",
+      "alias": "storage_uri",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__related_entity",
+      "description": "ID of the entity that owns this file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/related_entity",
+      "alias": "related_entity",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataFile__file_role",
+      "description": "Role of the file (raw, intermediate, final, diagnostic, metadata)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_role",
+      "alias": "file_role",
+      "owner": "DataFile",
+      "domain_of": [
+        "DataFile"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -5531,6 +6201,279 @@
         "Image3D"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__frames",
+      "description": "Number of frames in the movie",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/frames",
+      "alias": "frames",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__super_resolution",
+      "description": "Whether super-resolution mode was used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/super_resolution",
+      "alias": "super_resolution",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__pixel_size_unbinned",
+      "description": "Unbinned pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_unbinned",
+      "alias": "pixel_size_unbinned",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__timestamp",
+      "description": "Acquisition timestamp",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/timestamp",
+      "alias": "timestamp",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__stage_position_x",
+      "description": "Stage X position in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_x",
+      "alias": "stage_position_x",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__stage_position_y",
+      "description": "Stage Y position in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_y",
+      "alias": "stage_position_y",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__stage_position_z",
+      "description": "Stage Z position in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_z",
+      "alias": "stage_position_z",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__nominal_defocus",
+      "description": "Nominal defocus value in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/nominal_defocus",
+      "alias": "nominal_defocus",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__dose_per_frame",
+      "description": "Electron dose per frame in e-/Angstrom^2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose_per_frame",
+      "alias": "dose_per_frame",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__beam_shift_x",
+      "description": "Beam shift X in microradians",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_shift_x",
+      "alias": "beam_shift_x",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__beam_shift_y",
+      "description": "Beam shift Y in microradians",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_shift_y",
+      "alias": "beam_shift_y",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__ice_thickness_estimate",
+      "description": "Estimated ice thickness in nanometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ice_thickness_estimate",
+      "alias": "ice_thickness_estimate",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__grid_square_id",
+      "description": "Grid square identifier",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/grid_square_id",
+      "alias": "grid_square_id",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__hole_id",
+      "description": "Hole identifier within grid square",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/hole_id",
+      "alias": "hole_id",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "movie__acquisition_group",
+      "description": "Acquisition group identifier (e.g., template or area)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/acquisition_group",
+      "alias": "acquisition_group",
+      "owner": "Movie",
+      "domain_of": [
+        "Movie"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__origin_movie_id",
+      "description": "Reference to original movie file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/origin_movie_id",
+      "alias": "origin_movie_id",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__defocus_u",
+      "description": "Defocus U in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_u",
+      "alias": "defocus_u",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__defocus_v",
+      "description": "Defocus V in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_v",
+      "alias": "defocus_v",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__astigmatism_angle",
+      "description": "Astigmatism angle in degrees",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism_angle",
+      "alias": "astigmatism_angle",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__resolution_fit_limit",
+      "description": "Resolution fit limit in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_fit_limit",
+      "alias": "resolution_fit_limit",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__ctf_quality_score",
+      "description": "CTF estimation quality score",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ctf_quality_score",
+      "alias": "ctf_quality_score",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
@@ -6214,6 +7157,175 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/chamber_temperature",
       "alias": "chamber_temperature",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__grid_material",
+      "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/grid_material",
+      "alias": "grid_material",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__glow_discharge_applied",
+      "description": "Whether glow discharge treatment was applied",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_applied",
+      "alias": "glow_discharge_applied",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__glow_discharge_time",
+      "description": "Glow discharge time in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_time",
+      "alias": "glow_discharge_time",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__glow_discharge_current",
+      "description": "Glow discharge current in milliamperes",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_current",
+      "alias": "glow_discharge_current",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__glow_discharge_atmosphere",
+      "description": "Glow discharge atmosphere (air, amylamine)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_atmosphere",
+      "alias": "glow_discharge_atmosphere",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__glow_discharge_pressure",
+      "description": "Glow discharge pressure in millibar",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_pressure",
+      "alias": "glow_discharge_pressure",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__vitrification_instrument",
+      "description": "Vitrification instrument used (e.g., Vitrobot)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/vitrification_instrument",
+      "alias": "vitrification_instrument",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__blot_number",
+      "description": "Number of blots applied",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/blot_number",
+      "alias": "blot_number",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__wait_time",
+      "description": "Wait time before blotting in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/wait_time",
+      "alias": "wait_time",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__blotter_height",
+      "description": "Blotter height setting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/blotter_height",
+      "alias": "blotter_height",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__blotter_setting",
+      "description": "Blotter setting value",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/blotter_setting",
+      "alias": "blotter_setting",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__sample_applied_volume",
+      "description": "Volume of sample applied in microliters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_applied_volume",
+      "alias": "sample_applied_volume",
+      "owner": "CryoEMPreparation",
+      "domain_of": [
+        "CryoEMPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMPreparation__ethane_temperature",
+      "description": "Ethane temperature in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ethane_temperature",
+      "alias": "ethane_temperature",
       "owner": "CryoEMPreparation",
       "domain_of": [
         "CryoEMPreparation"
@@ -7633,6 +8745,400 @@
         "ComputeResources"
       ],
       "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__patch_size",
+      "description": "Patch size for local motion correction",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/patch_size",
+      "alias": "patch_size",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__binning",
+      "description": "Binning factor applied during motion correction",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/binning",
+      "alias": "binning",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__dose_weighting",
+      "description": "Whether dose weighting was applied",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose_weighting",
+      "alias": "dose_weighting",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__bfactor_dose_weighting",
+      "description": "B-factor for dose weighting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/bfactor_dose_weighting",
+      "alias": "bfactor_dose_weighting",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__anisotropic_correction",
+      "description": "Whether anisotropic motion correction was applied",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/anisotropic_correction",
+      "alias": "anisotropic_correction",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__frame_grouping",
+      "description": "Number of frames grouped together",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/frame_grouping",
+      "alias": "frame_grouping",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__output_binning",
+      "description": "Output binning factor",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/output_binning",
+      "alias": "output_binning",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "motionCorrectionParameters__drift_total",
+      "description": "Total drift in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/drift_total",
+      "alias": "drift_total",
+      "owner": "MotionCorrectionParameters",
+      "domain_of": [
+        "MotionCorrectionParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__defocus_search_min",
+      "description": "Minimum defocus search range in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_search_min",
+      "alias": "defocus_search_min",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__defocus_search_max",
+      "description": "Maximum defocus search range in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_search_max",
+      "alias": "defocus_search_max",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__defocus_step",
+      "description": "Defocus search step in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_step",
+      "alias": "defocus_step",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__amplitude_contrast",
+      "description": "Amplitude contrast value",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/amplitude_contrast",
+      "alias": "amplitude_contrast",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__cs",
+      "description": "Spherical aberration (Cs) in millimeters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cs",
+      "alias": "cs",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cTFEstimationParameters__voltage",
+      "description": "Accelerating voltage in kV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/voltage",
+      "alias": "voltage",
+      "owner": "CTFEstimationParameters",
+      "domain_of": [
+        "CTFEstimationParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__picking_method",
+      "description": "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/picking_method",
+      "alias": "picking_method",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__box_size",
+      "description": "Particle box size in pixels",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/box_size",
+      "alias": "box_size",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__threshold",
+      "description": "Picking threshold",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/threshold",
+      "alias": "threshold",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__power_score",
+      "description": "Power score threshold",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/power_score",
+      "alias": "power_score",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__ncc_score",
+      "description": "Normalized cross-correlation score threshold",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ncc_score",
+      "alias": "ncc_score",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__model_file",
+      "description": "Path to deep learning model file if used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/model_file",
+      "alias": "model_file",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__symmetry",
+      "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/symmetry",
+      "alias": "symmetry",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__pixel_size",
+      "description": "Pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "alias": "pixel_size",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__box_size",
+      "description": "Box size in pixels",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/box_size",
+      "alias": "box_size",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__gold_standard",
+      "description": "Whether gold-standard refinement was used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/gold_standard",
+      "alias": "gold_standard",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__split_strategy",
+      "description": "Strategy for data splitting",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/split_strategy",
+      "alias": "split_strategy",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__resolution_0_143",
+      "description": "Resolution at FSC=0.143 in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_0_143",
+      "alias": "resolution_0_143",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__resolution_0_5",
+      "description": "Resolution at FSC=0.5 in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_0_5",
+      "alias": "resolution_0_5",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "refinementParameters__map_sharpening_bfactor",
+      "description": "B-factor used for map sharpening in Angstroms^2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/map_sharpening_bfactor",
+      "alias": "map_sharpening_bfactor",
+      "owner": "RefinementParameters",
+      "domain_of": [
+        "RefinementParameters"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fSCCurve__resolution_angstrom",
+      "description": "Resolution values in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_angstrom",
+      "alias": "resolution_angstrom",
+      "owner": "FSCCurve",
+      "domain_of": [
+        "FSCCurve"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "maximum_cardinality": 10000,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fSCCurve__fsc_value",
+      "description": "FSC values corresponding to each resolution",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/fsc_value",
+      "alias": "fsc_value",
+      "owner": "FSCCurve",
+      "domain_of": [
+        "FSCCurve"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "maximum_cardinality": 10000,
       "@type": "SlotDefinition"
     },
     {
@@ -10242,7 +11748,24 @@
         "cryoEMInstrument__detector_dimensions",
         "cryoEMInstrument__pixel_size_min",
         "cryoEMInstrument__pixel_size_max",
-        "cryoEMInstrument__autoloader_capacity"
+        "cryoEMInstrument__autoloader_capacity",
+        "cryoEMInstrument__cs",
+        "cryoEMInstrument__c2_aperture",
+        "cryoEMInstrument__objective_aperture",
+        "cryoEMInstrument__phase_plate_type",
+        "cryoEMInstrument__energy_filter_present",
+        "cryoEMInstrument__energy_filter_make",
+        "cryoEMInstrument__energy_filter_model",
+        "cryoEMInstrument__energy_filter_slit_width",
+        "cryoEMInstrument__detector_position",
+        "cryoEMInstrument__detector_mode",
+        "cryoEMInstrument__pixel_size_physical",
+        "cryoEMInstrument__microscope_software",
+        "cryoEMInstrument__microscope_software_version",
+        "cryoEMInstrument__spotsize",
+        "cryoEMInstrument__gunlens",
+        "cryoEMInstrument__imaging_mode",
+        "cryoEMInstrument__tem_beam_diameter"
       ],
       "slot_usage": {},
       "attributes": [
@@ -10305,6 +11828,108 @@
           "name": "autoloader_capacity",
           "description": "Number of grids the autoloader can hold",
           "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs",
+          "description": "Spherical aberration (Cs) in millimeters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "c2_aperture",
+          "description": "C2 aperture size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "objective_aperture",
+          "description": "Objective aperture size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phase_plate_type",
+          "description": "Type of phase plate if present",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_present",
+          "description": "Whether energy filter is present",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_make",
+          "description": "Energy filter manufacturer",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_model",
+          "description": "Energy filter model",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_filter_slit_width",
+          "description": "Energy filter slit width in eV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_position",
+          "description": "Detector position",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_mode",
+          "description": "Detector mode (counting, integrating, super_resolution)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_physical",
+          "description": "Physical pixel size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "microscope_software",
+          "description": "Microscope control software (e.g., SerialEM, EPU, Leginon)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "microscope_software_version",
+          "description": "Software version",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "spotsize",
+          "description": "Electron beam spot size setting",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gunlens",
+          "description": "Gun lens setting",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "imaging_mode",
+          "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tem_beam_diameter",
+          "description": "TEM beam diameter in micrometers",
+          "range": "float",
           "@type": "SlotDefinition"
         }
       ],
@@ -10499,6 +12124,26 @@
         "experimentRun__quality_metrics",
         "experimentRun__raw_data_location",
         "experimentRun__processing_status",
+        "experimentRun__magnification",
+        "experimentRun__calibrated_pixel_size",
+        "experimentRun__camera_binning",
+        "experimentRun__exposure_time_per_frame",
+        "experimentRun__frames_per_movie",
+        "experimentRun__total_exposure_time",
+        "experimentRun__total_dose",
+        "experimentRun__dose_rate",
+        "experimentRun__defocus_target",
+        "experimentRun__defocus_range_min",
+        "experimentRun__defocus_range_max",
+        "experimentRun__defocus_range_increment",
+        "experimentRun__astigmatism_target",
+        "experimentRun__coma",
+        "experimentRun__stage_tilt",
+        "experimentRun__autoloader_slot",
+        "experimentRun__shots_per_hole",
+        "experimentRun__holes_per_group",
+        "experimentRun__acquisition_software",
+        "experimentRun__acquisition_software_version",
         "experimentRun__wavelength",
         "experimentRun__oscillation_angle",
         "experimentRun__start_angle",
@@ -10585,6 +12230,126 @@
           "name": "processing_status",
           "description": "Current processing status",
           "range": "ProcessingStatusEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "magnification",
+          "description": "Magnification used during data collection",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "calibrated_pixel_size",
+          "description": "Calibrated pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "camera_binning",
+          "description": "Camera binning factor",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "exposure_time_per_frame",
+          "description": "Exposure time per frame in milliseconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "frames_per_movie",
+          "description": "Number of frames per movie",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_exposure_time",
+          "description": "Total exposure time in milliseconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_dose",
+          "description": "Total electron dose in e-/Angstrom^2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose_rate",
+          "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_target",
+          "description": "Target defocus value in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_range_min",
+          "description": "Minimum defocus range in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_range_max",
+          "description": "Maximum defocus range in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_range_increment",
+          "description": "Defocus range increment in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "astigmatism_target",
+          "description": "Target astigmatism in nanometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "coma",
+          "description": "Coma aberration in nanometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stage_tilt",
+          "description": "Stage tilt angle in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "autoloader_slot",
+          "description": "Autoloader slot identifier",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "shots_per_hole",
+          "description": "Number of shots taken per hole",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "holes_per_group",
+          "description": "Number of holes per group",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acquisition_software",
+          "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acquisition_software_version",
+          "description": "Version of acquisition software",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -10758,6 +12523,11 @@
         "workflowRun__compute_resources",
         "workflowRun__started_at",
         "workflowRun__completed_at",
+        "workflowRun__motion_correction_params",
+        "workflowRun__ctf_estimation_params",
+        "workflowRun__particle_picking_params",
+        "workflowRun__refinement_params",
+        "workflowRun__fsc_curve",
         "workflowRun__output_files"
       ],
       "slot_usage": {},
@@ -11151,6 +12921,36 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "motion_correction_params",
+          "description": "Motion correction specific parameters",
+          "range": "MotionCorrectionParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ctf_estimation_params",
+          "description": "CTF estimation specific parameters",
+          "range": "CTFEstimationParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "particle_picking_params",
+          "description": "Particle picking specific parameters",
+          "range": "ParticlePickingParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "refinement_params",
+          "description": "3D refinement specific parameters",
+          "range": "RefinementParameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "fsc_curve",
+          "description": "Fourier Shell Correlation curve data",
+          "range": "FSCCurve",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "output_files",
           "description": "Output files generated",
           "range": "DataFile",
@@ -11177,7 +12977,10 @@
         "dataFile__file_size_bytes",
         "dataFile__checksum",
         "dataFile__creation_date",
-        "dataFile__data_type"
+        "dataFile__data_type",
+        "dataFile__storage_uri",
+        "dataFile__related_entity",
+        "dataFile__file_role"
       ],
       "slot_usage": {},
       "attributes": [
@@ -11220,6 +13023,24 @@
           "name": "data_type",
           "description": "Type of data in the file",
           "range": "DataTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "storage_uri",
+          "description": "Storage URI (S3, Globus, etc.)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "related_entity",
+          "description": "ID of the entity that owns this file",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_role",
+          "description": "Role of the file (raw, intermediate, final, diagnostic, metadata)",
+          "range": "string",
           "@type": "SlotDefinition"
         }
       ],
@@ -11372,6 +13193,205 @@
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/Image3D",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Movie",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Movie",
+      "description": "Raw cryo-EM movie with frame-by-frame metadata for motion correction",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image2D",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism",
+        "movie__frames",
+        "movie__super_resolution",
+        "movie__pixel_size_unbinned",
+        "movie__timestamp",
+        "movie__stage_position_x",
+        "movie__stage_position_y",
+        "movie__stage_position_z",
+        "movie__nominal_defocus",
+        "movie__dose_per_frame",
+        "movie__beam_shift_x",
+        "movie__beam_shift_y",
+        "movie__ice_thickness_estimate",
+        "movie__grid_square_id",
+        "movie__hole_id",
+        "movie__acquisition_group"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "frames",
+          "description": "Number of frames in the movie",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "super_resolution",
+          "description": "Whether super-resolution mode was used",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_unbinned",
+          "description": "Unbinned pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "timestamp",
+          "description": "Acquisition timestamp",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stage_position_x",
+          "description": "Stage X position in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stage_position_y",
+          "description": "Stage Y position in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "stage_position_z",
+          "description": "Stage Z position in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "nominal_defocus",
+          "description": "Nominal defocus value in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose_per_frame",
+          "description": "Electron dose per frame in e-/Angstrom^2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_shift_x",
+          "description": "Beam shift X in microradians",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_shift_y",
+          "description": "Beam shift Y in microradians",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ice_thickness_estimate",
+          "description": "Estimated ice thickness in nanometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "grid_square_id",
+          "description": "Grid square identifier",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hole_id",
+          "description": "Hole identifier within grid square",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acquisition_group",
+          "description": "Acquisition group identifier (e.g., template or area)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Movie",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Micrograph",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Micrograph",
+      "description": "Motion-corrected micrograph derived from movie",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Image2D",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "image__file_name",
+        "image__acquisition_date",
+        "image__pixel_size",
+        "image__dimensions_x",
+        "image__dimensions_y",
+        "image__exposure_time",
+        "image__dose",
+        "image2D__defocus",
+        "image2D__astigmatism",
+        "micrograph__origin_movie_id",
+        "micrograph__defocus_u",
+        "micrograph__defocus_v",
+        "micrograph__astigmatism_angle",
+        "micrograph__resolution_fit_limit",
+        "micrograph__ctf_quality_score"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "origin_movie_id",
+          "description": "Reference to original movie file",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_u",
+          "description": "Defocus U in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_v",
+          "description": "Defocus V in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "astigmatism_angle",
+          "description": "Astigmatism angle in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_fit_limit",
+          "description": "Resolution fit limit in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ctf_quality_score",
+          "description": "CTF estimation quality score",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Micrograph",
       "@type": "ClassDefinition"
     },
     {
@@ -11896,6 +13916,19 @@
         "cryoEMPreparation__blot_force",
         "cryoEMPreparation__humidity_percentage",
         "cryoEMPreparation__chamber_temperature",
+        "cryoEMPreparation__grid_material",
+        "cryoEMPreparation__glow_discharge_applied",
+        "cryoEMPreparation__glow_discharge_time",
+        "cryoEMPreparation__glow_discharge_current",
+        "cryoEMPreparation__glow_discharge_atmosphere",
+        "cryoEMPreparation__glow_discharge_pressure",
+        "cryoEMPreparation__vitrification_instrument",
+        "cryoEMPreparation__blot_number",
+        "cryoEMPreparation__wait_time",
+        "cryoEMPreparation__blotter_height",
+        "cryoEMPreparation__blotter_setting",
+        "cryoEMPreparation__sample_applied_volume",
+        "cryoEMPreparation__ethane_temperature",
         "cryoEMPreparation__plasma_treatment"
       ],
       "slot_usage": {},
@@ -11951,6 +13984,84 @@
         {
           "name": "chamber_temperature",
           "description": "Chamber temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "grid_material",
+          "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "glow_discharge_applied",
+          "description": "Whether glow discharge treatment was applied",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "glow_discharge_time",
+          "description": "Glow discharge time in seconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "glow_discharge_current",
+          "description": "Glow discharge current in milliamperes",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "glow_discharge_atmosphere",
+          "description": "Glow discharge atmosphere (air, amylamine)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "glow_discharge_pressure",
+          "description": "Glow discharge pressure in millibar",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "vitrification_instrument",
+          "description": "Vitrification instrument used (e.g., Vitrobot)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blot_number",
+          "description": "Number of blots applied",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wait_time",
+          "description": "Wait time before blotting in seconds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blotter_height",
+          "description": "Blotter height setting",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blotter_setting",
+          "description": "Blotter setting value",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_applied_volume",
+          "description": "Volume of sample applied in microliters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ethane_temperature",
+          "description": "Ethane temperature in Celsius",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -12801,6 +14912,295 @@
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/ComputeResources",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MotionCorrectionParameters",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/MotionCorrectionParameters",
+      "description": "Parameters specific to motion correction workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "motionCorrectionParameters__patch_size",
+        "motionCorrectionParameters__binning",
+        "motionCorrectionParameters__dose_weighting",
+        "motionCorrectionParameters__bfactor_dose_weighting",
+        "motionCorrectionParameters__anisotropic_correction",
+        "motionCorrectionParameters__frame_grouping",
+        "motionCorrectionParameters__output_binning",
+        "motionCorrectionParameters__drift_total"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "patch_size",
+          "description": "Patch size for local motion correction",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "binning",
+          "description": "Binning factor applied during motion correction",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose_weighting",
+          "description": "Whether dose weighting was applied",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "bfactor_dose_weighting",
+          "description": "B-factor for dose weighting",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anisotropic_correction",
+          "description": "Whether anisotropic motion correction was applied",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "frame_grouping",
+          "description": "Number of frames grouped together",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "output_binning",
+          "description": "Output binning factor",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drift_total",
+          "description": "Total drift in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/MotionCorrectionParameters",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CTFEstimationParameters",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CTFEstimationParameters",
+      "description": "Parameters specific to CTF estimation workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "cTFEstimationParameters__defocus_search_min",
+        "cTFEstimationParameters__defocus_search_max",
+        "cTFEstimationParameters__defocus_step",
+        "cTFEstimationParameters__amplitude_contrast",
+        "cTFEstimationParameters__cs",
+        "cTFEstimationParameters__voltage"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "defocus_search_min",
+          "description": "Minimum defocus search range in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_search_max",
+          "description": "Maximum defocus search range in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus_step",
+          "description": "Defocus search step in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "amplitude_contrast",
+          "description": "Amplitude contrast value",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cs",
+          "description": "Spherical aberration (Cs) in millimeters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "voltage",
+          "description": "Accelerating voltage in kV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/CTFEstimationParameters",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ParticlePickingParameters",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ParticlePickingParameters",
+      "description": "Parameters specific to particle picking workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "particlePickingParameters__picking_method",
+        "particlePickingParameters__box_size",
+        "particlePickingParameters__threshold",
+        "particlePickingParameters__power_score",
+        "particlePickingParameters__ncc_score",
+        "particlePickingParameters__model_file"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "picking_method",
+          "description": "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_size",
+          "description": "Particle box size in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "threshold",
+          "description": "Picking threshold",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "power_score",
+          "description": "Power score threshold",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ncc_score",
+          "description": "Normalized cross-correlation score threshold",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "model_file",
+          "description": "Path to deep learning model file if used",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ParticlePickingParameters",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RefinementParameters",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/RefinementParameters",
+      "description": "Parameters specific to 3D refinement workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "refinementParameters__symmetry",
+        "refinementParameters__pixel_size",
+        "refinementParameters__box_size",
+        "refinementParameters__gold_standard",
+        "refinementParameters__split_strategy",
+        "refinementParameters__resolution_0_143",
+        "refinementParameters__resolution_0_5",
+        "refinementParameters__map_sharpening_bfactor"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "symmetry",
+          "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size",
+          "description": "Pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "box_size",
+          "description": "Box size in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gold_standard",
+          "description": "Whether gold-standard refinement was used",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "split_strategy",
+          "description": "Strategy for data splitting",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_0_143",
+          "description": "Resolution at FSC=0.143 in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_0_5",
+          "description": "Resolution at FSC=0.5 in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "map_sharpening_bfactor",
+          "description": "B-factor used for map sharpening in Angstroms^2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/RefinementParameters",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FSCCurve",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FSCCurve",
+      "description": "Fourier Shell Correlation curve data.\n\nThe `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`\ncorresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.\n",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "fSCCurve__resolution_angstrom",
+        "fSCCurve__fsc_value"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "resolution_angstrom",
+          "description": "Resolution values in Angstroms",
+          "range": "float",
+          "multivalued": true,
+          "maximum_cardinality": 10000,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "fsc_value",
+          "description": "FSC values corresponding to each resolution",
+          "range": "float",
+          "multivalued": true,
+          "maximum_cardinality": 10000,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/FSCCurve",
       "@type": "ClassDefinition"
     },
     {
@@ -13958,9 +16358,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-12T17:06:39",
-  "source_file_size": 67916,
-  "generation_date": "2025-11-12T18:14:03",
+  "source_file_date": "2025-11-13T18:54:21",
+  "source_file_size": 82153,
+  "generation_date": "2025-11-13T18:54:37",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
