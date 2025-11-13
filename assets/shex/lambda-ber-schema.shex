@@ -4,6 +4,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX nsls2: <https://github.com/NSLS2/BER-LAMBDA/>
 
 
 linkml:String xsd:string
@@ -79,10 +80,10 @@ linkml:Sparqlpath xsd:string
 
 <AttributeGroup>  (
     @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR @<ComputeResources>
-    OR @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> OR @<DataCollectionStrategy> OR
-    @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> OR @<ExperimentalConditions> OR
-    @<ImageFeature> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> OR @<MolecularComposition> OR
-    @<QualityMetrics> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
+    OR @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalState> OR @<CrystallizationConditions> OR
+    @<DataCollectionStrategy> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> OR
+    @<ExperimentalConditions> OR @<ImageFeature> OR @<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction>
+    OR @<MolecularComposition> OR @<QualityMetrics> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
 )
 
 <AttributeGroup_struct> {
@@ -193,7 +194,12 @@ linkml:Sparqlpath xsd:string
           <phase_plate> @linkml:Boolean ? ;
           <detector_type> [ <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>
              <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel> ] ? ;
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#eiger>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#pilatus>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#rayonix>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#adsc> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#mar> ]
+          ? ;
           <detector_dimensions> @linkml:String ? ;
           <pixel_size_min> @linkml:Float ? ;
           <pixel_size_max> @linkml:Float ? ;
@@ -223,6 +229,33 @@ linkml:Sparqlpath xsd:string
           <plasma_treatment> @linkml:String ?
        ) ;
        rdf:type [ <CryoEMPreparation> ] ?
+    )
+}
+
+<CrystallizationConditions> CLOSED {
+    (  $<CrystallizationConditions_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          nsls2:Method [ <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#batch>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#microbatch>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#lcp>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
+             <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          nsls2:Conditions @linkml:String ? ;
+          nsls2:Drop_Volume @linkml:Float ? ;
+          nsls2:Protein_Concentration @linkml:Float ? ;
+          nsls2:Crystal_Size @linkml:String ? ;
+          nsls2:Cryo_Protectant @linkml:String ? ;
+          nsls2:Crystal_ID @linkml:String ? ;
+          <screen_name> @linkml:String ? ;
+          <temperature_c> @linkml:Float ? ;
+          <drop_ratio_protein_to_reservoir> @linkml:String ? ;
+          <reservoir_volume_ul> @linkml:Float ? ;
+          <seeding_type> @linkml:String ? ;
+          <seed_stock_dilution> @linkml:String ?
+       ) ;
+       rdf:type [ <CrystallizationConditions> ] ?
     )
 }
 
@@ -300,9 +333,11 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#tiff> <https://w3id.org/lambda-ber-schema/FileFormatEnum#hdf5>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#star> <https://w3id.org/lambda-ber-schema/FileFormatEnum#pdb>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#mmcif> <https://w3id.org/lambda-ber-schema/FileFormatEnum#mtz>
-             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf> <https://w3id.org/lambda-ber-schema/FileFormatEnum#cbf_zst>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#img> <https://w3id.org/lambda-ber-schema/FileFormatEnum#h5>
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#ascii>
              <https://w3id.org/lambda-ber-schema/FileFormatEnum#thermo_raw> <https://w3id.org/lambda-ber-schema/FileFormatEnum#zip>
-             ] ;
+             <https://w3id.org/lambda-ber-schema/FileFormatEnum#gz> ] ;
           <file_size_bytes> @linkml:Integer ? ;
           <checksum> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
@@ -385,7 +420,18 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#preprocessing>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
-             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ?
+             <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
+          nsls2:Wavelength @linkml:Float ? ;
+          nsls2:Angle_increment @linkml:Float ? ;
+          nsls2:Start_angle @linkml:Float ? ;
+          nsls2:Number_of_images @linkml:Integer ? ;
+          nsls2:Beam_xy_x @linkml:Float ? ;
+          nsls2:Beam_xy_y @linkml:Float ? ;
+          nsls2:Detector_distance @linkml:Float ? ;
+          nsls2:Pixel_size_x @linkml:Float ? ;
+          nsls2:Pixel_size_y @linkml:Float ? ;
+          nsls2:Total_rotation_deg @linkml:Float ? ;
+          nsls2:Beamline @linkml:String ?
        ) ;
        rdf:type [ <ExperimentRun> ]
     )
@@ -909,7 +955,13 @@ linkml:Sparqlpath xsd:string
           <biophysical_properties> @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> * ;
           <evolutionary_conservation> @<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> ? ;
           <conformational_ensemble> @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> ? ;
-          <database_cross_references> @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> *
+          <database_cross_references> @<https://w3id.org/lambda-ber-schema/functional_annotation/DatabaseCrossReference> * ;
+          nsls2:Protein_Name @linkml:String ? ;
+          nsls2:Construct @linkml:String ? ;
+          nsls2:Tag @linkml:String ? ;
+          nsls2:Mutations @linkml:String ? ;
+          nsls2:Expression_System @linkml:String ? ;
+          nsls2:Ligand @linkml:String ?
        ) ;
        rdf:type [ <Sample> ]
     )
@@ -1156,6 +1208,29 @@ linkml:Sparqlpath xsd:string
           <deposited_to_pdb> @linkml:Boolean ? ;
           <pdb_id> @linkml:String ? ;
           <validation_report_path> @linkml:String ? ;
+          nsls2:Space_Group @linkml:String ? ;
+          nsls2:Unit_Cell_a @linkml:Float ? ;
+          nsls2:Unit_Cell_b @linkml:Float ? ;
+          nsls2:Unit_Cell_c @linkml:Float ? ;
+          nsls2:Unit_Cell_alpha @linkml:Float ? ;
+          nsls2:Unit_Cell_beta @linkml:Float ? ;
+          nsls2:Unit_Cell_gamma @linkml:Float ? ;
+          nsls2:Resolution_High_A @linkml:Float ? ;
+          nsls2:Resolution_Low_A @linkml:Float ? ;
+          nsls2:Rmerge @linkml:Float ? ;
+          nsls2:Rpim @linkml:Float ? ;
+          nsls2:CC_half @linkml:Float ? ;
+          nsls2:Completeness @linkml:Float ? ;
+          nsls2:I_over_sigma @linkml:Float ? ;
+          nsls2:Wilson_B @linkml:Float ? ;
+          nsls2:Multiplicity @linkml:Float ? ;
+          nsls2:Rwork @linkml:Float ? ;
+          nsls2:Rfree @linkml:Float ? ;
+          nsls2:RMSD_bonds @linkml:Float ? ;
+          nsls2:RMSD_angles @linkml:Float ? ;
+          nsls2:Ramachandran_Favored @linkml:Float ? ;
+          nsls2:Ramachandran_Outliers @linkml:Float ? ;
+          nsls2:Clashscore @linkml:Float ? ;
           <processing_notes> @linkml:String ? ;
           <compute_resources> @<ComputeResources> ? ;
           <started_at> @linkml:String ? ;
@@ -1173,6 +1248,15 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
+          nsls2:Detector [ <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#eiger>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#pilatus>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#rayonix>
+             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#adsc> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#mar> ]
+          ? ;
+          nsls2:Beamline @linkml:String ? ;
           <energy_min> @linkml:Float ? ;
           <energy_max> @linkml:Float ? ;
           <beam_size_min> @linkml:Float ? ;
@@ -1199,6 +1283,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#lcp>
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          <crystallization_conditions> @<CrystallizationConditions> ? ;
           <screen_name> @linkml:String ? ;
           <temperature_c> @linkml:Float ? ;
           <drop_ratio_protein_to_reservoir> @linkml:String ? ;
@@ -1209,15 +1294,16 @@ linkml:Sparqlpath xsd:string
           <initial_hit_condition> @linkml:String ? ;
           <optimization_strategy> @linkml:String ? ;
           <optimized_condition> @linkml:String ? ;
-          <crystallization_conditions> @linkml:String ? ;
           <crystal_size_um> @linkml:String ? ;
           <cryoprotectant> @linkml:String ? ;
           <cryoprotectant_concentration> @linkml:Float ? ;
           <soak_compound> @linkml:String ? ;
           <soak_conditions> @linkml:String ? ;
-          <mounting_method> @linkml:String ? ;
+          nsls2:Mount_Type @linkml:String ? ;
           <flash_cooling_method> @linkml:String ? ;
-          <crystal_notes> @linkml:String ?
+          <crystal_notes> @linkml:String ? ;
+          nsls2:Loop_Size @linkml:Float ? ;
+          nsls2:Temperature @linkml:Float ?
        ) ;
        rdf:type [ <XRayPreparation> ] ?
     )

@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-29T12:53:46
+# Generation date: 2025-11-12T18:14:05
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -147,6 +147,7 @@ DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
+NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
@@ -449,6 +450,12 @@ class Sample(NamedThing):
     evolutionary_conservation: Optional[Union[dict, "EvolutionaryConservation"]] = None
     conformational_ensemble: Optional[Union[dict, "ConformationalEnsemble"]] = None
     database_cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
+    protein_name: Optional[str] = None
+    construct: Optional[str] = None
+    tag: Optional[str] = None
+    mutations: Optional[str] = None
+    expression_system: Optional[str] = None
+    ligand: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -532,6 +539,24 @@ class Sample(NamedThing):
         if not isinstance(self.database_cross_references, list):
             self.database_cross_references = [self.database_cross_references] if self.database_cross_references is not None else []
         self.database_cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.database_cross_references]
+
+        if self.protein_name is not None and not isinstance(self.protein_name, str):
+            self.protein_name = str(self.protein_name)
+
+        if self.construct is not None and not isinstance(self.construct, str):
+            self.construct = str(self.construct)
+
+        if self.tag is not None and not isinstance(self.tag, str):
+            self.tag = str(self.tag)
+
+        if self.mutations is not None and not isinstance(self.mutations, str):
+            self.mutations = str(self.mutations)
+
+        if self.expression_system is not None and not isinstance(self.expression_system, str):
+            self.expression_system = str(self.expression_system)
+
+        if self.ligand is not None and not isinstance(self.ligand, str):
+            self.ligand = str(self.ligand)
 
         super().__post_init__(**kwargs)
 
@@ -957,6 +982,8 @@ class XRayInstrument(Instrument):
     id: Union[str, XRayInstrumentId] = None
     instrument_code: str = None
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
+    detector_type: Optional[Union[str, "DetectorTypeEnum"]] = None
+    beamline_id: Optional[str] = None
     energy_min: Optional[float] = None
     energy_max: Optional[float] = None
     beam_size_min: Optional[float] = None
@@ -974,6 +1001,12 @@ class XRayInstrument(Instrument):
 
         if self.source_type is not None and not isinstance(self.source_type, XRaySourceTypeEnum):
             self.source_type = XRaySourceTypeEnum(self.source_type)
+
+        if self.detector_type is not None and not isinstance(self.detector_type, DetectorTypeEnum):
+            self.detector_type = DetectorTypeEnum(self.detector_type)
+
+        if self.beamline_id is not None and not isinstance(self.beamline_id, str):
+            self.beamline_id = str(self.beamline_id)
 
         if self.energy_min is not None and not isinstance(self.energy_min, float):
             self.energy_min = float(self.energy_min)
@@ -1075,6 +1108,17 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
+    wavelength: Optional[float] = None
+    oscillation_angle: Optional[float] = None
+    start_angle: Optional[float] = None
+    number_of_images: Optional[int] = None
+    beam_center_x: Optional[float] = None
+    beam_center_y: Optional[float] = None
+    detector_distance: Optional[float] = None
+    pixel_size_x: Optional[float] = None
+    pixel_size_y: Optional[float] = None
+    total_rotation: Optional[float] = None
+    beamline: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1126,6 +1170,39 @@ class ExperimentRun(NamedThing):
         if self.processing_status is not None and not isinstance(self.processing_status, ProcessingStatusEnum):
             self.processing_status = ProcessingStatusEnum(self.processing_status)
 
+        if self.wavelength is not None and not isinstance(self.wavelength, float):
+            self.wavelength = float(self.wavelength)
+
+        if self.oscillation_angle is not None and not isinstance(self.oscillation_angle, float):
+            self.oscillation_angle = float(self.oscillation_angle)
+
+        if self.start_angle is not None and not isinstance(self.start_angle, float):
+            self.start_angle = float(self.start_angle)
+
+        if self.number_of_images is not None and not isinstance(self.number_of_images, int):
+            self.number_of_images = int(self.number_of_images)
+
+        if self.beam_center_x is not None and not isinstance(self.beam_center_x, float):
+            self.beam_center_x = float(self.beam_center_x)
+
+        if self.beam_center_y is not None and not isinstance(self.beam_center_y, float):
+            self.beam_center_y = float(self.beam_center_y)
+
+        if self.detector_distance is not None and not isinstance(self.detector_distance, float):
+            self.detector_distance = float(self.detector_distance)
+
+        if self.pixel_size_x is not None and not isinstance(self.pixel_size_x, float):
+            self.pixel_size_x = float(self.pixel_size_x)
+
+        if self.pixel_size_y is not None and not isinstance(self.pixel_size_y, float):
+            self.pixel_size_y = float(self.pixel_size_y)
+
+        if self.total_rotation is not None and not isinstance(self.total_rotation, float):
+            self.total_rotation = float(self.total_rotation)
+
+        if self.beamline is not None and not isinstance(self.beamline, str):
+            self.beamline = str(self.beamline)
+
         super().__post_init__(**kwargs)
 
 
@@ -1166,6 +1243,29 @@ class WorkflowRun(NamedThing):
     deposited_to_pdb: Optional[Union[bool, Bool]] = None
     pdb_id: Optional[str] = None
     validation_report_path: Optional[str] = None
+    space_group: Optional[str] = None
+    unit_cell_a: Optional[float] = None
+    unit_cell_b: Optional[float] = None
+    unit_cell_c: Optional[float] = None
+    unit_cell_alpha: Optional[float] = None
+    unit_cell_beta: Optional[float] = None
+    unit_cell_gamma: Optional[float] = None
+    resolution_high: Optional[float] = None
+    resolution_low: Optional[float] = None
+    rmerge: Optional[float] = None
+    rpim: Optional[float] = None
+    cc_half: Optional[float] = None
+    completeness_percent: Optional[float] = None
+    i_over_sigma: Optional[float] = None
+    wilson_b_factor: Optional[float] = None
+    multiplicity: Optional[float] = None
+    rwork: Optional[float] = None
+    rfree: Optional[float] = None
+    rmsd_bonds: Optional[float] = None
+    rmsd_angles: Optional[float] = None
+    ramachandran_favored: Optional[float] = None
+    ramachandran_outliers: Optional[float] = None
+    clashscore: Optional[float] = None
     processing_notes: Optional[str] = None
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
     started_at: Optional[str] = None
@@ -1257,6 +1357,75 @@ class WorkflowRun(NamedThing):
 
         if self.validation_report_path is not None and not isinstance(self.validation_report_path, str):
             self.validation_report_path = str(self.validation_report_path)
+
+        if self.space_group is not None and not isinstance(self.space_group, str):
+            self.space_group = str(self.space_group)
+
+        if self.unit_cell_a is not None and not isinstance(self.unit_cell_a, float):
+            self.unit_cell_a = float(self.unit_cell_a)
+
+        if self.unit_cell_b is not None and not isinstance(self.unit_cell_b, float):
+            self.unit_cell_b = float(self.unit_cell_b)
+
+        if self.unit_cell_c is not None and not isinstance(self.unit_cell_c, float):
+            self.unit_cell_c = float(self.unit_cell_c)
+
+        if self.unit_cell_alpha is not None and not isinstance(self.unit_cell_alpha, float):
+            self.unit_cell_alpha = float(self.unit_cell_alpha)
+
+        if self.unit_cell_beta is not None and not isinstance(self.unit_cell_beta, float):
+            self.unit_cell_beta = float(self.unit_cell_beta)
+
+        if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, float):
+            self.unit_cell_gamma = float(self.unit_cell_gamma)
+
+        if self.resolution_high is not None and not isinstance(self.resolution_high, float):
+            self.resolution_high = float(self.resolution_high)
+
+        if self.resolution_low is not None and not isinstance(self.resolution_low, float):
+            self.resolution_low = float(self.resolution_low)
+
+        if self.rmerge is not None and not isinstance(self.rmerge, float):
+            self.rmerge = float(self.rmerge)
+
+        if self.rpim is not None and not isinstance(self.rpim, float):
+            self.rpim = float(self.rpim)
+
+        if self.cc_half is not None and not isinstance(self.cc_half, float):
+            self.cc_half = float(self.cc_half)
+
+        if self.completeness_percent is not None and not isinstance(self.completeness_percent, float):
+            self.completeness_percent = float(self.completeness_percent)
+
+        if self.i_over_sigma is not None and not isinstance(self.i_over_sigma, float):
+            self.i_over_sigma = float(self.i_over_sigma)
+
+        if self.wilson_b_factor is not None and not isinstance(self.wilson_b_factor, float):
+            self.wilson_b_factor = float(self.wilson_b_factor)
+
+        if self.multiplicity is not None and not isinstance(self.multiplicity, float):
+            self.multiplicity = float(self.multiplicity)
+
+        if self.rwork is not None and not isinstance(self.rwork, float):
+            self.rwork = float(self.rwork)
+
+        if self.rfree is not None and not isinstance(self.rfree, float):
+            self.rfree = float(self.rfree)
+
+        if self.rmsd_bonds is not None and not isinstance(self.rmsd_bonds, float):
+            self.rmsd_bonds = float(self.rmsd_bonds)
+
+        if self.rmsd_angles is not None and not isinstance(self.rmsd_angles, float):
+            self.rmsd_angles = float(self.rmsd_angles)
+
+        if self.ramachandran_favored is not None and not isinstance(self.ramachandran_favored, float):
+            self.ramachandran_favored = float(self.ramachandran_favored)
+
+        if self.ramachandran_outliers is not None and not isinstance(self.ramachandran_outliers, float):
+            self.ramachandran_outliers = float(self.ramachandran_outliers)
+
+        if self.clashscore is not None and not isinstance(self.clashscore, float):
+            self.clashscore = float(self.clashscore)
 
         if self.processing_notes is not None and not isinstance(self.processing_notes, str):
             self.processing_notes = str(self.processing_notes)
@@ -1888,6 +2057,75 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
 
 
 @dataclass(repr=False)
+class CrystallizationConditions(AttributeGroup):
+    """
+    Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["CrystallizationConditions"]
+    class_class_curie: ClassVar[str] = "lambdaber:CrystallizationConditions"
+    class_name: ClassVar[str] = "CrystallizationConditions"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.CrystallizationConditions
+
+    method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
+    crystallization_conditions: Optional[str] = None
+    drop_volume: Optional[float] = None
+    protein_concentration: Optional[float] = None
+    crystal_size_um: Optional[str] = None
+    cryo_protectant: Optional[str] = None
+    crystal_id: Optional[str] = None
+    screen_name: Optional[str] = None
+    temperature_c: Optional[float] = None
+    drop_ratio_protein_to_reservoir: Optional[str] = None
+    reservoir_volume_ul: Optional[float] = None
+    seeding_type: Optional[str] = None
+    seed_stock_dilution: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.method is not None and not isinstance(self.method, CrystallizationMethodEnum):
+            self.method = CrystallizationMethodEnum(self.method)
+
+        if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
+            self.crystallization_conditions = str(self.crystallization_conditions)
+
+        if self.drop_volume is not None and not isinstance(self.drop_volume, float):
+            self.drop_volume = float(self.drop_volume)
+
+        if self.protein_concentration is not None and not isinstance(self.protein_concentration, float):
+            self.protein_concentration = float(self.protein_concentration)
+
+        if self.crystal_size_um is not None and not isinstance(self.crystal_size_um, str):
+            self.crystal_size_um = str(self.crystal_size_um)
+
+        if self.cryo_protectant is not None and not isinstance(self.cryo_protectant, str):
+            self.cryo_protectant = str(self.cryo_protectant)
+
+        if self.crystal_id is not None and not isinstance(self.crystal_id, str):
+            self.crystal_id = str(self.crystal_id)
+
+        if self.screen_name is not None and not isinstance(self.screen_name, str):
+            self.screen_name = str(self.screen_name)
+
+        if self.temperature_c is not None and not isinstance(self.temperature_c, float):
+            self.temperature_c = float(self.temperature_c)
+
+        if self.drop_ratio_protein_to_reservoir is not None and not isinstance(self.drop_ratio_protein_to_reservoir, str):
+            self.drop_ratio_protein_to_reservoir = str(self.drop_ratio_protein_to_reservoir)
+
+        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, float):
+            self.reservoir_volume_ul = float(self.reservoir_volume_ul)
+
+        if self.seeding_type is not None and not isinstance(self.seeding_type, str):
+            self.seeding_type = str(self.seeding_type)
+
+        if self.seed_stock_dilution is not None and not isinstance(self.seed_stock_dilution, str):
+            self.seed_stock_dilution = str(self.seed_stock_dilution)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class XRayPreparation(TechniqueSpecificPreparation):
     """
     X-ray crystallography specific preparation
@@ -1903,6 +2141,7 @@ class XRayPreparation(TechniqueSpecificPreparation):
     protein_buffer: Optional[str] = None
     additives: Optional[str] = None
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
+    crystallization_conditions: Optional[Union[dict, CrystallizationConditions]] = None
     screen_name: Optional[str] = None
     temperature_c: Optional[float] = None
     drop_ratio_protein_to_reservoir: Optional[str] = None
@@ -1913,7 +2152,6 @@ class XRayPreparation(TechniqueSpecificPreparation):
     initial_hit_condition: Optional[str] = None
     optimization_strategy: Optional[str] = None
     optimized_condition: Optional[str] = None
-    crystallization_conditions: Optional[str] = None
     crystal_size_um: Optional[str] = None
     cryoprotectant: Optional[str] = None
     cryoprotectant_concentration: Optional[float] = None
@@ -1922,6 +2160,8 @@ class XRayPreparation(TechniqueSpecificPreparation):
     mounting_method: Optional[str] = None
     flash_cooling_method: Optional[str] = None
     crystal_notes: Optional[str] = None
+    loop_size: Optional[float] = None
+    mounting_temperature: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, float):
@@ -1935,6 +2175,9 @@ class XRayPreparation(TechniqueSpecificPreparation):
 
         if self.crystallization_method is not None and not isinstance(self.crystallization_method, CrystallizationMethodEnum):
             self.crystallization_method = CrystallizationMethodEnum(self.crystallization_method)
+
+        if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, CrystallizationConditions):
+            self.crystallization_conditions = CrystallizationConditions(**as_dict(self.crystallization_conditions))
 
         if self.screen_name is not None and not isinstance(self.screen_name, str):
             self.screen_name = str(self.screen_name)
@@ -1966,9 +2209,6 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.optimized_condition is not None and not isinstance(self.optimized_condition, str):
             self.optimized_condition = str(self.optimized_condition)
 
-        if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
-            self.crystallization_conditions = str(self.crystallization_conditions)
-
         if self.crystal_size_um is not None and not isinstance(self.crystal_size_um, str):
             self.crystal_size_um = str(self.crystal_size_um)
 
@@ -1992,6 +2232,12 @@ class XRayPreparation(TechniqueSpecificPreparation):
 
         if self.crystal_notes is not None and not isinstance(self.crystal_notes, str):
             self.crystal_notes = str(self.crystal_notes)
+
+        if self.loop_size is not None and not isinstance(self.loop_size, float):
+            self.loop_size = float(self.loop_size)
+
+        if self.mounting_temperature is not None and not isinstance(self.mounting_temperature, float):
+            self.mounting_temperature = float(self.mounting_temperature)
 
         super().__post_init__(**kwargs)
 
@@ -3337,7 +3583,7 @@ class InstrumentStatusEnum(EnumDefinitionImpl):
 
 class DetectorTypeEnum(EnumDefinitionImpl):
     """
-    Types of detectors for cryo-EM
+    Types of detectors for cryo-EM and X-ray crystallography
     """
     direct_electron = PermissibleValue(
         text="direct_electron",
@@ -3351,10 +3597,25 @@ class DetectorTypeEnum(EnumDefinitionImpl):
     hybrid_pixel = PermissibleValue(
         text="hybrid_pixel",
         description="Hybrid pixel detector")
+    eiger = PermissibleValue(
+        text="eiger",
+        description="Dectris EIGER detector (hybrid photon counting)")
+    pilatus = PermissibleValue(
+        text="pilatus",
+        description="Dectris PILATUS detector")
+    rayonix = PermissibleValue(
+        text="rayonix",
+        description="Rayonix CCD detector")
+    adsc = PermissibleValue(
+        text="adsc",
+        description="ADSC CCD detector")
+    mar = PermissibleValue(
+        text="mar",
+        description="MAR CCD or imaging plate detector")
 
     _defn = EnumDefinition(
         name="DetectorTypeEnum",
-        description="Types of detectors for cryo-EM",
+        description="Types of detectors for cryo-EM and X-ray crystallography",
     )
 
 class XRaySourceTypeEnum(EnumDefinitionImpl):
@@ -3515,6 +3776,15 @@ class FileFormatEnum(EnumDefinitionImpl):
     cbf = PermissibleValue(
         text="cbf",
         description="Crystallographic Binary Format")
+    cbf_zst = PermissibleValue(
+        text="cbf_zst",
+        description="Zstandard-compressed CBF format")
+    img = PermissibleValue(
+        text="img",
+        description="Generic diffraction image format")
+    h5 = PermissibleValue(
+        text="h5",
+        description="HDF5 format (alternative extension)")
     ascii = PermissibleValue(
         text="ascii",
         description="ASCII text format")
@@ -3524,6 +3794,9 @@ class FileFormatEnum(EnumDefinitionImpl):
     zip = PermissibleValue(
         text="zip",
         description="ZIP compressed archive")
+    gz = PermissibleValue(
+        text="gz",
+        description="Gzip compressed format")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -4741,6 +5014,24 @@ slots.sample__conformational_ensemble = Slot(uri=LAMBDABER.conformational_ensemb
 slots.sample__database_cross_references = Slot(uri=LAMBDABER.database_cross_references, name="sample__database_cross_references", curie=LAMBDABER.curie('database_cross_references'),
                    model_uri=LAMBDABER.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
+slots.sample__protein_name = Slot(uri=NSLS2.Protein_Name, name="sample__protein_name", curie=NSLS2.curie('Protein_Name'),
+                   model_uri=LAMBDABER.sample__protein_name, domain=None, range=Optional[str])
+
+slots.sample__construct = Slot(uri=NSLS2.Construct, name="sample__construct", curie=NSLS2.curie('Construct'),
+                   model_uri=LAMBDABER.sample__construct, domain=None, range=Optional[str])
+
+slots.sample__tag = Slot(uri=NSLS2.Tag, name="sample__tag", curie=NSLS2.curie('Tag'),
+                   model_uri=LAMBDABER.sample__tag, domain=None, range=Optional[str])
+
+slots.sample__mutations = Slot(uri=NSLS2.Mutations, name="sample__mutations", curie=NSLS2.curie('Mutations'),
+                   model_uri=LAMBDABER.sample__mutations, domain=None, range=Optional[str])
+
+slots.sample__expression_system = Slot(uri=NSLS2.Expression_System, name="sample__expression_system", curie=NSLS2.curie('Expression_System'),
+                   model_uri=LAMBDABER.sample__expression_system, domain=None, range=Optional[str])
+
+slots.sample__ligand = Slot(uri=NSLS2.Ligand, name="sample__ligand", curie=NSLS2.curie('Ligand'),
+                   model_uri=LAMBDABER.sample__ligand, domain=None, range=Optional[str])
+
 slots.proteinConstruct__construct_id = Slot(uri=LAMBDABER.construct_id, name="proteinConstruct__construct_id", curie=LAMBDABER.curie('construct_id'),
                    model_uri=LAMBDABER.proteinConstruct__construct_id, domain=None, range=str)
 
@@ -4972,6 +5263,12 @@ slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDABER.autoloader_capa
 slots.xRayInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="xRayInstrument__source_type", curie=LAMBDABER.curie('source_type'),
                    model_uri=LAMBDABER.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
+slots.xRayInstrument__detector_type = Slot(uri=NSLS2.Detector, name="xRayInstrument__detector_type", curie=NSLS2.curie('Detector'),
+                   model_uri=LAMBDABER.xRayInstrument__detector_type, domain=None, range=Optional[Union[str, "DetectorTypeEnum"]])
+
+slots.xRayInstrument__beamline_id = Slot(uri=NSLS2.Beamline, name="xRayInstrument__beamline_id", curie=NSLS2.curie('Beamline'),
+                   model_uri=LAMBDABER.xRayInstrument__beamline_id, domain=None, range=Optional[str])
+
 slots.xRayInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="xRayInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
                    model_uri=LAMBDABER.xRayInstrument__energy_min, domain=None, range=Optional[float])
 
@@ -5050,6 +5347,39 @@ slots.experimentRun__raw_data_location = Slot(uri=LAMBDABER.raw_data_location, n
 slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, name="experimentRun__processing_status", curie=LAMBDABER.curie('processing_status'),
                    model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
 
+slots.experimentRun__wavelength = Slot(uri=NSLS2.Wavelength, name="experimentRun__wavelength", curie=NSLS2.curie('Wavelength'),
+                   model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[float])
+
+slots.experimentRun__oscillation_angle = Slot(uri=NSLS2.Angle_increment, name="experimentRun__oscillation_angle", curie=NSLS2.curie('Angle_increment'),
+                   model_uri=LAMBDABER.experimentRun__oscillation_angle, domain=None, range=Optional[float])
+
+slots.experimentRun__start_angle = Slot(uri=NSLS2.Start_angle, name="experimentRun__start_angle", curie=NSLS2.curie('Start_angle'),
+                   model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[float])
+
+slots.experimentRun__number_of_images = Slot(uri=NSLS2.Number_of_images, name="experimentRun__number_of_images", curie=NSLS2.curie('Number_of_images'),
+                   model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[int])
+
+slots.experimentRun__beam_center_x = Slot(uri=NSLS2.Beam_xy_x, name="experimentRun__beam_center_x", curie=NSLS2.curie('Beam_xy_x'),
+                   model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[float])
+
+slots.experimentRun__beam_center_y = Slot(uri=NSLS2.Beam_xy_y, name="experimentRun__beam_center_y", curie=NSLS2.curie('Beam_xy_y'),
+                   model_uri=LAMBDABER.experimentRun__beam_center_y, domain=None, range=Optional[float])
+
+slots.experimentRun__detector_distance = Slot(uri=NSLS2.Detector_distance, name="experimentRun__detector_distance", curie=NSLS2.curie('Detector_distance'),
+                   model_uri=LAMBDABER.experimentRun__detector_distance, domain=None, range=Optional[float])
+
+slots.experimentRun__pixel_size_x = Slot(uri=NSLS2.Pixel_size_x, name="experimentRun__pixel_size_x", curie=NSLS2.curie('Pixel_size_x'),
+                   model_uri=LAMBDABER.experimentRun__pixel_size_x, domain=None, range=Optional[float])
+
+slots.experimentRun__pixel_size_y = Slot(uri=NSLS2.Pixel_size_y, name="experimentRun__pixel_size_y", curie=NSLS2.curie('Pixel_size_y'),
+                   model_uri=LAMBDABER.experimentRun__pixel_size_y, domain=None, range=Optional[float])
+
+slots.experimentRun__total_rotation = Slot(uri=NSLS2.Total_rotation_deg, name="experimentRun__total_rotation", curie=NSLS2.curie('Total_rotation_deg'),
+                   model_uri=LAMBDABER.experimentRun__total_rotation, domain=None, range=Optional[float])
+
+slots.experimentRun__beamline = Slot(uri=NSLS2.Beamline, name="experimentRun__beamline", curie=NSLS2.curie('Beamline'),
+                   model_uri=LAMBDABER.experimentRun__beamline, domain=None, range=Optional[str])
+
 slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workflowRun__workflow_code", curie=LAMBDABER.curie('workflow_code'),
                    model_uri=LAMBDABER.workflowRun__workflow_code, domain=None, range=str)
 
@@ -5121,6 +5451,75 @@ slots.workflowRun__pdb_id = Slot(uri=LAMBDABER.pdb_id, name="workflowRun__pdb_id
 
 slots.workflowRun__validation_report_path = Slot(uri=LAMBDABER.validation_report_path, name="workflowRun__validation_report_path", curie=LAMBDABER.curie('validation_report_path'),
                    model_uri=LAMBDABER.workflowRun__validation_report_path, domain=None, range=Optional[str])
+
+slots.workflowRun__space_group = Slot(uri=NSLS2.Space_Group, name="workflowRun__space_group", curie=NSLS2.curie('Space_Group'),
+                   model_uri=LAMBDABER.workflowRun__space_group, domain=None, range=Optional[str])
+
+slots.workflowRun__unit_cell_a = Slot(uri=NSLS2.Unit_Cell_a, name="workflowRun__unit_cell_a", curie=NSLS2.curie('Unit_Cell_a'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_a, domain=None, range=Optional[float])
+
+slots.workflowRun__unit_cell_b = Slot(uri=NSLS2.Unit_Cell_b, name="workflowRun__unit_cell_b", curie=NSLS2.curie('Unit_Cell_b'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_b, domain=None, range=Optional[float])
+
+slots.workflowRun__unit_cell_c = Slot(uri=NSLS2.Unit_Cell_c, name="workflowRun__unit_cell_c", curie=NSLS2.curie('Unit_Cell_c'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_c, domain=None, range=Optional[float])
+
+slots.workflowRun__unit_cell_alpha = Slot(uri=NSLS2.Unit_Cell_alpha, name="workflowRun__unit_cell_alpha", curie=NSLS2.curie('Unit_Cell_alpha'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_alpha, domain=None, range=Optional[float])
+
+slots.workflowRun__unit_cell_beta = Slot(uri=NSLS2.Unit_Cell_beta, name="workflowRun__unit_cell_beta", curie=NSLS2.curie('Unit_Cell_beta'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_beta, domain=None, range=Optional[float])
+
+slots.workflowRun__unit_cell_gamma = Slot(uri=NSLS2.Unit_Cell_gamma, name="workflowRun__unit_cell_gamma", curie=NSLS2.curie('Unit_Cell_gamma'),
+                   model_uri=LAMBDABER.workflowRun__unit_cell_gamma, domain=None, range=Optional[float])
+
+slots.workflowRun__resolution_high = Slot(uri=NSLS2.Resolution_High_A, name="workflowRun__resolution_high", curie=NSLS2.curie('Resolution_High_A'),
+                   model_uri=LAMBDABER.workflowRun__resolution_high, domain=None, range=Optional[float])
+
+slots.workflowRun__resolution_low = Slot(uri=NSLS2.Resolution_Low_A, name="workflowRun__resolution_low", curie=NSLS2.curie('Resolution_Low_A'),
+                   model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[float])
+
+slots.workflowRun__rmerge = Slot(uri=NSLS2.Rmerge, name="workflowRun__rmerge", curie=NSLS2.curie('Rmerge'),
+                   model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[float])
+
+slots.workflowRun__rpim = Slot(uri=NSLS2.Rpim, name="workflowRun__rpim", curie=NSLS2.curie('Rpim'),
+                   model_uri=LAMBDABER.workflowRun__rpim, domain=None, range=Optional[float])
+
+slots.workflowRun__cc_half = Slot(uri=NSLS2.CC_half, name="workflowRun__cc_half", curie=NSLS2.curie('CC_half'),
+                   model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[float])
+
+slots.workflowRun__completeness_percent = Slot(uri=NSLS2.Completeness, name="workflowRun__completeness_percent", curie=NSLS2.curie('Completeness'),
+                   model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[float])
+
+slots.workflowRun__i_over_sigma = Slot(uri=NSLS2.I_over_sigma, name="workflowRun__i_over_sigma", curie=NSLS2.curie('I_over_sigma'),
+                   model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[float])
+
+slots.workflowRun__wilson_b_factor = Slot(uri=NSLS2.Wilson_B, name="workflowRun__wilson_b_factor", curie=NSLS2.curie('Wilson_B'),
+                   model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[float])
+
+slots.workflowRun__multiplicity = Slot(uri=NSLS2.Multiplicity, name="workflowRun__multiplicity", curie=NSLS2.curie('Multiplicity'),
+                   model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[float])
+
+slots.workflowRun__rwork = Slot(uri=NSLS2.Rwork, name="workflowRun__rwork", curie=NSLS2.curie('Rwork'),
+                   model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[float])
+
+slots.workflowRun__rfree = Slot(uri=NSLS2.Rfree, name="workflowRun__rfree", curie=NSLS2.curie('Rfree'),
+                   model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[float])
+
+slots.workflowRun__rmsd_bonds = Slot(uri=NSLS2.RMSD_bonds, name="workflowRun__rmsd_bonds", curie=NSLS2.curie('RMSD_bonds'),
+                   model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[float])
+
+slots.workflowRun__rmsd_angles = Slot(uri=NSLS2.RMSD_angles, name="workflowRun__rmsd_angles", curie=NSLS2.curie('RMSD_angles'),
+                   model_uri=LAMBDABER.workflowRun__rmsd_angles, domain=None, range=Optional[float])
+
+slots.workflowRun__ramachandran_favored = Slot(uri=NSLS2.Ramachandran_Favored, name="workflowRun__ramachandran_favored", curie=NSLS2.curie('Ramachandran_Favored'),
+                   model_uri=LAMBDABER.workflowRun__ramachandran_favored, domain=None, range=Optional[float])
+
+slots.workflowRun__ramachandran_outliers = Slot(uri=NSLS2.Ramachandran_Outliers, name="workflowRun__ramachandran_outliers", curie=NSLS2.curie('Ramachandran_Outliers'),
+                   model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[float])
+
+slots.workflowRun__clashscore = Slot(uri=NSLS2.Clashscore, name="workflowRun__clashscore", curie=NSLS2.curie('Clashscore'),
+                   model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[float])
 
 slots.workflowRun__processing_notes = Slot(uri=LAMBDABER.processing_notes, name="workflowRun__processing_notes", curie=LAMBDABER.curie('processing_notes'),
                    model_uri=LAMBDABER.workflowRun__processing_notes, domain=None, range=Optional[str])
@@ -5353,6 +5752,45 @@ slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temper
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDABER.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDABER.curie('plasma_treatment'),
                    model_uri=LAMBDABER.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
+slots.crystallizationConditions__method = Slot(uri=NSLS2.Method, name="crystallizationConditions__method", curie=NSLS2.curie('Method'),
+                   model_uri=LAMBDABER.crystallizationConditions__method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+
+slots.crystallizationConditions__crystallization_conditions = Slot(uri=NSLS2.Conditions, name="crystallizationConditions__crystallization_conditions", curie=NSLS2.curie('Conditions'),
+                   model_uri=LAMBDABER.crystallizationConditions__crystallization_conditions, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__drop_volume = Slot(uri=NSLS2.Drop_Volume, name="crystallizationConditions__drop_volume", curie=NSLS2.curie('Drop_Volume'),
+                   model_uri=LAMBDABER.crystallizationConditions__drop_volume, domain=None, range=Optional[float])
+
+slots.crystallizationConditions__protein_concentration = Slot(uri=NSLS2.Protein_Concentration, name="crystallizationConditions__protein_concentration", curie=NSLS2.curie('Protein_Concentration'),
+                   model_uri=LAMBDABER.crystallizationConditions__protein_concentration, domain=None, range=Optional[float])
+
+slots.crystallizationConditions__crystal_size_um = Slot(uri=NSLS2.Crystal_Size, name="crystallizationConditions__crystal_size_um", curie=NSLS2.curie('Crystal_Size'),
+                   model_uri=LAMBDABER.crystallizationConditions__crystal_size_um, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__cryo_protectant = Slot(uri=NSLS2.Cryo_Protectant, name="crystallizationConditions__cryo_protectant", curie=NSLS2.curie('Cryo_Protectant'),
+                   model_uri=LAMBDABER.crystallizationConditions__cryo_protectant, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__crystal_id = Slot(uri=NSLS2.Crystal_ID, name="crystallizationConditions__crystal_id", curie=NSLS2.curie('Crystal_ID'),
+                   model_uri=LAMBDABER.crystallizationConditions__crystal_id, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__screen_name = Slot(uri=LAMBDABER.screen_name, name="crystallizationConditions__screen_name", curie=LAMBDABER.curie('screen_name'),
+                   model_uri=LAMBDABER.crystallizationConditions__screen_name, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="crystallizationConditions__temperature_c", curie=LAMBDABER.curie('temperature_c'),
+                   model_uri=LAMBDABER.crystallizationConditions__temperature_c, domain=None, range=Optional[float])
+
+slots.crystallizationConditions__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="crystallizationConditions__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
+                   model_uri=LAMBDABER.crystallizationConditions__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="crystallizationConditions__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
+                   model_uri=LAMBDABER.crystallizationConditions__reservoir_volume_ul, domain=None, range=Optional[float])
+
+slots.crystallizationConditions__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="crystallizationConditions__seeding_type", curie=LAMBDABER.curie('seeding_type'),
+                   model_uri=LAMBDABER.crystallizationConditions__seeding_type, domain=None, range=Optional[str])
+
+slots.crystallizationConditions__seed_stock_dilution = Slot(uri=LAMBDABER.seed_stock_dilution, name="crystallizationConditions__seed_stock_dilution", curie=LAMBDABER.curie('seed_stock_dilution'),
+                   model_uri=LAMBDABER.crystallizationConditions__seed_stock_dilution, domain=None, range=Optional[str])
+
 slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=LAMBDABER.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=LAMBDABER.curie('protein_concentration_mg_per_ml'),
                    model_uri=LAMBDABER.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[float])
 
@@ -5364,6 +5802,9 @@ slots.xRayPreparation__additives = Slot(uri=LAMBDABER.additives, name="xRayPrepa
 
 slots.xRayPreparation__crystallization_method = Slot(uri=LAMBDABER.crystallization_method, name="xRayPreparation__crystallization_method", curie=LAMBDABER.curie('crystallization_method'),
                    model_uri=LAMBDABER.xRayPreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+
+slots.xRayPreparation__crystallization_conditions = Slot(uri=LAMBDABER.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=LAMBDABER.curie('crystallization_conditions'),
+                   model_uri=LAMBDABER.xRayPreparation__crystallization_conditions, domain=None, range=Optional[Union[dict, CrystallizationConditions]])
 
 slots.xRayPreparation__screen_name = Slot(uri=LAMBDABER.screen_name, name="xRayPreparation__screen_name", curie=LAMBDABER.curie('screen_name'),
                    model_uri=LAMBDABER.xRayPreparation__screen_name, domain=None, range=Optional[str])
@@ -5395,9 +5836,6 @@ slots.xRayPreparation__optimization_strategy = Slot(uri=LAMBDABER.optimization_s
 slots.xRayPreparation__optimized_condition = Slot(uri=LAMBDABER.optimized_condition, name="xRayPreparation__optimized_condition", curie=LAMBDABER.curie('optimized_condition'),
                    model_uri=LAMBDABER.xRayPreparation__optimized_condition, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystallization_conditions = Slot(uri=LAMBDABER.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=LAMBDABER.curie('crystallization_conditions'),
-                   model_uri=LAMBDABER.xRayPreparation__crystallization_conditions, domain=None, range=Optional[str])
-
 slots.xRayPreparation__crystal_size_um = Slot(uri=LAMBDABER.crystal_size_um, name="xRayPreparation__crystal_size_um", curie=LAMBDABER.curie('crystal_size_um'),
                    model_uri=LAMBDABER.xRayPreparation__crystal_size_um, domain=None, range=Optional[str])
 
@@ -5413,7 +5851,7 @@ slots.xRayPreparation__soak_compound = Slot(uri=LAMBDABER.soak_compound, name="x
 slots.xRayPreparation__soak_conditions = Slot(uri=LAMBDABER.soak_conditions, name="xRayPreparation__soak_conditions", curie=LAMBDABER.curie('soak_conditions'),
                    model_uri=LAMBDABER.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
 
-slots.xRayPreparation__mounting_method = Slot(uri=LAMBDABER.mounting_method, name="xRayPreparation__mounting_method", curie=LAMBDABER.curie('mounting_method'),
+slots.xRayPreparation__mounting_method = Slot(uri=NSLS2.Mount_Type, name="xRayPreparation__mounting_method", curie=NSLS2.curie('Mount_Type'),
                    model_uri=LAMBDABER.xRayPreparation__mounting_method, domain=None, range=Optional[str])
 
 slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDABER.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=LAMBDABER.curie('flash_cooling_method'),
@@ -5421,6 +5859,12 @@ slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDABER.flash_cooling_m
 
 slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDABER.crystal_notes, name="xRayPreparation__crystal_notes", curie=LAMBDABER.curie('crystal_notes'),
                    model_uri=LAMBDABER.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
+
+slots.xRayPreparation__loop_size = Slot(uri=NSLS2.Loop_Size, name="xRayPreparation__loop_size", curie=NSLS2.curie('Loop_Size'),
+                   model_uri=LAMBDABER.xRayPreparation__loop_size, domain=None, range=Optional[float])
+
+slots.xRayPreparation__mounting_temperature = Slot(uri=NSLS2.Temperature, name="xRayPreparation__mounting_temperature", curie=NSLS2.curie('Temperature'),
+                   model_uri=LAMBDABER.xRayPreparation__mounting_temperature, domain=None, range=Optional[float])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDABER.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDABER.curie('concentration_series'),
                    model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])

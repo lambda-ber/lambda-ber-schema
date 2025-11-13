@@ -59,6 +59,7 @@ Within each study, you'll find:
 ## Example Usage
 
 A typical cryo-EM study of a protein complex would include:
+
 1. Sample records for the purified complex with molecular weight and buffer composition
 2. Grid preparation details with vitrification parameters
 3. Microscope specifications and data collection parameters
@@ -66,6 +67,7 @@ A typical cryo-EM study of a protein complex would include:
 5. Final reconstructed volumes and fitted atomic models
 
 A multimodal plant imaging study might combine:
+
 1. Whole plant optical imaging for morphology
 2. XRF imaging to map nutrient distribution
 3. FTIR spectroscopy to identify stress-related molecular changes

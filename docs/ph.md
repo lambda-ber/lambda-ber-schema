@@ -17,8 +17,8 @@ Alias: ph
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
+| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 
 
 

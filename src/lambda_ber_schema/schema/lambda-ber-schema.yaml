@@ -91,6 +91,7 @@ prefixes:
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
+  nsls2: https://github.com/NSLS2/BER-LAMBDA/
 
 imports:
   - linkml:types
@@ -284,6 +285,43 @@ classes:
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
+      # NSLS2 Sample mapping
+      protein_name:
+        description: "Name of the protein"
+        range: string
+        slot_uri: nsls2:Protein_Name
+        comments:
+          - "Maps to NSLS2 spreadsheet: Protein_Name"
+      construct:
+        description: "Construct description (e.g., domain boundaries, truncations)"
+        range: string
+        slot_uri: nsls2:Construct
+        comments:
+          - "Maps to NSLS2 spreadsheet: Construct"
+      tag:
+        description: "Affinity tag (e.g., His6, GST, MBP)"
+        range: string
+        slot_uri: nsls2:Tag
+        comments:
+          - "Maps to NSLS2 spreadsheet: Tag"
+      mutations:
+        description: "Mutations present in the sample"
+        range: string
+        slot_uri: nsls2:Mutations
+        comments:
+          - "Maps to NSLS2 spreadsheet: Mutations"
+      expression_system:
+        description: "Expression system used"
+        range: string
+        slot_uri: nsls2:Expression_System
+        comments:
+          - "Maps to NSLS2 spreadsheet: Expression_System"
+      ligand:
+        description: "Ligand or small molecule bound to sample"
+        range: string
+        slot_uri: nsls2:Ligand
+        comments:
+          - "Maps to NSLS2 spreadsheet: Ligand"
 
   ProteinConstruct:
     is_a: NamedThing
@@ -502,6 +540,17 @@ classes:
       source_type:
         description: "Type of X-ray source"
         range: XRaySourceTypeEnum
+      detector_type:
+        description: "Type of X-ray detector"
+        range: DetectorTypeEnum
+        slot_uri: nsls2:Detector
+        comments:
+          - "Maps to CBF: Detector"
+          - "Maps to PDB: _diffrn_detector.type"
+      beamline_id:
+        description: "Beamline identifier at synchrotron facility"
+        range: string
+        slot_uri: nsls2:Beamline
       energy_min:
         description: "Minimum X-ray energy in keV"
         range: float
@@ -589,6 +638,72 @@ classes:
       processing_status:
         description: "Current processing status"
         range: ProcessingStatusEnum
+      # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
+      wavelength:
+        description: "X-ray wavelength in Angstroms"
+        range: float
+        slot_uri: nsls2:Wavelength
+        comments:
+          - "Maps to CBF: Wavelength"
+          - "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
+      oscillation_angle:
+        description: "Oscillation angle per image in degrees"
+        range: float
+        slot_uri: nsls2:Angle_increment
+        comments:
+          - "Maps to CBF: Angle_increment"
+          - "Maps to PDB: _diffrn_scan.angle_increment"
+      start_angle:
+        description: "Starting rotation angle in degrees"
+        range: float
+        slot_uri: nsls2:Start_angle
+        comments:
+          - "Maps to CBF: Start_angle"
+      number_of_images:
+        description: "Total number of diffraction images collected"
+        range: integer
+        slot_uri: nsls2:Number_of_images
+      beam_center_x:
+        description: "Beam center X coordinate in pixels"
+        range: float
+        slot_uri: nsls2:Beam_xy_x
+        comments:
+          - "Maps to CBF: Beam_xy (first value)"
+          - "Maps to PDB: _diffrn_detector.beam_center_x"
+      beam_center_y:
+        description: "Beam center Y coordinate in pixels"
+        range: float
+        slot_uri: nsls2:Beam_xy_y
+        comments:
+          - "Maps to CBF: Beam_xy (second value)"
+          - "Maps to PDB: _diffrn_detector.beam_center_y"
+      detector_distance:
+        description: "Distance from sample to detector in millimeters"
+        range: float
+        slot_uri: nsls2:Detector_distance
+        comments:
+          - "Maps to CBF: Detector_distance"
+          - "Maps to PDB: _diffrn_detector.distance"
+      pixel_size_x:
+        description: "Pixel size X dimension in micrometers"
+        range: float
+        slot_uri: nsls2:Pixel_size_x
+        comments:
+          - "Maps to CBF: Pixel_size"
+      pixel_size_y:
+        description: "Pixel size Y dimension in micrometers"
+        range: float
+        slot_uri: nsls2:Pixel_size_y
+      total_rotation:
+        description: "Total rotation range collected in degrees"
+        range: float
+        slot_uri: nsls2:Total_rotation_deg
+      beamline:
+        description: "Beamline identifier (e.g., FMX, AMX, 12.3.1)"
+        range: string
+        slot_uri: nsls2:Beamline
+        comments:
+          - "Maps to PDB: _diffrn_source.beamline"
 
   WorkflowRun:
     is_a: NamedThing
@@ -659,6 +774,146 @@ classes:
         description: "PDB accession code if deposited"
       validation_report_path:
         description: "Path to validation report"
+      # Crystallographic processing fields (NSLS2 Data_Processing mapping)
+      space_group:
+        description: "Crystallographic space group"
+        range: string
+        slot_uri: nsls2:Space_Group
+        comments:
+          - "Maps to PDB: _symmetry.space_group_name_h-m"
+      unit_cell_a:
+        description: "Unit cell parameter a in Angstroms"
+        range: float
+        slot_uri: nsls2:Unit_Cell_a
+        comments:
+          - "Maps to PDB: _cell.length_a"
+      unit_cell_b:
+        description: "Unit cell parameter b in Angstroms"
+        range: float
+        slot_uri: nsls2:Unit_Cell_b
+        comments:
+          - "Maps to PDB: _cell.length_b"
+      unit_cell_c:
+        description: "Unit cell parameter c in Angstroms"
+        range: float
+        slot_uri: nsls2:Unit_Cell_c
+        comments:
+          - "Maps to PDB: _cell.length_c"
+      unit_cell_alpha:
+        description: "Unit cell angle alpha in degrees"
+        range: float
+        slot_uri: nsls2:Unit_Cell_alpha
+        comments:
+          - "Maps to PDB: _cell.angle_alpha"
+      unit_cell_beta:
+        description: "Unit cell angle beta in degrees"
+        range: float
+        slot_uri: nsls2:Unit_Cell_beta
+        comments:
+          - "Maps to PDB: _cell.angle_beta"
+      unit_cell_gamma:
+        description: "Unit cell angle gamma in degrees"
+        range: float
+        slot_uri: nsls2:Unit_Cell_gamma
+        comments:
+          - "Maps to PDB: _cell.angle_gamma"
+      resolution_high:
+        description: "High resolution limit in Angstroms"
+        range: float
+        slot_uri: nsls2:Resolution_High_A
+        comments:
+          - "Maps to PDB: _reflns.d_resolution_high"
+      resolution_low:
+        description: "Low resolution limit in Angstroms"
+        range: float
+        slot_uri: nsls2:Resolution_Low_A
+        comments:
+          - "Maps to PDB: _reflns.d_resolution_low"
+      rmerge:
+        description: "Rmerge - merge R-factor"
+        range: float
+        slot_uri: nsls2:Rmerge
+        comments:
+          - "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
+      rpim:
+        description: "Rpim - precision-indicating merging R-factor"
+        range: float
+        slot_uri: nsls2:Rpim
+        comments:
+          - "Maps to PDB: _reflns.pdbx_Rpim_I_all"
+      cc_half:
+        description: "Half-set correlation coefficient CC(1/2)"
+        range: float
+        slot_uri: nsls2:CC_half
+        comments:
+          - "Maps to PDB: _reflns.pdbx_CC_half"
+      completeness_percent:
+        description: "Data completeness percentage"
+        range: float
+        slot_uri: nsls2:Completeness
+        comments:
+          - "Maps to PDB: _reflns.percent_possible_obs"
+      i_over_sigma:
+        description: "Mean I/sigma(I) - signal to noise ratio"
+        range: float
+        slot_uri: nsls2:I_over_sigma
+        comments:
+          - "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
+      wilson_b_factor:
+        description: "Wilson B-factor in Angstroms squared"
+        range: float
+        slot_uri: nsls2:Wilson_B
+        comments:
+          - "Maps to PDB: _reflns.B_iso_Wilson_estimate"
+      multiplicity:
+        description: "Data multiplicity (redundancy)"
+        range: float
+        slot_uri: nsls2:Multiplicity
+        comments:
+          - "Maps to PDB: _reflns.pdbx_redundancy"
+      # Refinement metrics (NSLS2 Refinement mapping)
+      rwork:
+        description: "Refinement R-factor (working set)"
+        range: float
+        slot_uri: nsls2:Rwork
+        comments:
+          - "Maps to PDB: _refine.ls_R_factor_R_work"
+      rfree:
+        description: "R-free (test set)"
+        range: float
+        slot_uri: nsls2:Rfree
+        comments:
+          - "Maps to PDB: _refine.ls_R_factor_R_free"
+      rmsd_bonds:
+        description: "RMSD from ideal bond lengths in Angstroms"
+        range: float
+        slot_uri: nsls2:RMSD_bonds
+        comments:
+          - "Maps to PDB: _refine.ls_d_res_high"
+      rmsd_angles:
+        description: "RMSD from ideal bond angles in degrees"
+        range: float
+        slot_uri: nsls2:RMSD_angles
+        comments:
+          - "Maps to PDB: _refine.ls_d_res_low"
+      ramachandran_favored:
+        description: "Percentage of residues in favored Ramachandran regions"
+        range: float
+        slot_uri: nsls2:Ramachandran_Favored
+        comments:
+          - "Maps to PDB: _refine.pdbx_overall_ESU_R"
+      ramachandran_outliers:
+        description: "Percentage of Ramachandran outliers"
+        range: float
+        slot_uri: nsls2:Ramachandran_Outliers
+        comments:
+          - "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
+      clashscore:
+        description: "MolProbity clashscore"
+        range: float
+        slot_uri: nsls2:Clashscore
+        comments:
+          - "Maps to validation report metrics"
       # Processing notes and metadata
       processing_notes:
         description: "Additional notes about processing"
@@ -975,6 +1230,67 @@ classes:
       plasma_treatment:
         description: "Plasma treatment details"
 
+  CrystallizationConditions:
+    is_a: AttributeGroup
+    description: "Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)"
+    attributes:
+      method:
+        description: "Crystallization method used"
+        range: CrystallizationMethodEnum
+        slot_uri: nsls2:Method
+        comments:
+          - "Maps to NSLS2 spreadsheet: Method"
+      crystallization_conditions:
+        description: "Complete description of crystallization conditions including precipitant, pH, salts"
+        range: string
+        slot_uri: nsls2:Conditions
+        comments:
+          - "Maps to NSLS2 spreadsheet: Conditions"
+      drop_volume:
+        description: "Total drop volume in nanoliters"
+        range: float
+        slot_uri: nsls2:Drop_Volume
+        comments:
+          - "Maps to NSLS2 spreadsheet: Drop_Volume"
+      protein_concentration:
+        description: "Protein concentration for crystallization in mg/mL"
+        range: float
+        slot_uri: nsls2:Protein_Concentration
+        comments:
+          - "Maps to NSLS2 spreadsheet: Protein_Concentration"
+      crystal_size_um:
+        description: "Crystal dimensions in micrometers (length x width x height)"
+        range: string
+        slot_uri: nsls2:Crystal_Size
+        comments:
+          - "Maps to NSLS2 spreadsheet: Crystal_Size"
+      cryo_protectant:
+        description: "Cryoprotectant used for crystal cooling"
+        range: string
+        slot_uri: nsls2:Cryo_Protectant
+        comments:
+          - "Maps to NSLS2 spreadsheet: Cryo_Protectant"
+      crystal_id:
+        description: "Identifier for the specific crystal used"
+        range: string
+        slot_uri: nsls2:Crystal_ID
+        comments:
+          - "Maps to NSLS2 spreadsheet: Crystal_ID"
+      screen_name:
+        description: "Name of crystallization screen used"
+      temperature_c:
+        description: "Crystallization temperature in Celsius"
+        range: float
+      drop_ratio_protein_to_reservoir:
+        description: "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)"
+      reservoir_volume_ul:
+        description: "Reservoir volume in microliters"
+        range: float
+      seeding_type:
+        description: "Type of seeding used (micro, macro, streak)"
+      seed_stock_dilution:
+        description: "Dilution factor for seed stock"
+
   XRayPreparation:
     is_a: TechniqueSpecificPreparation
     description: "X-ray crystallography specific preparation"
@@ -991,6 +1307,9 @@ classes:
       crystallization_method:
         description: "Method used for crystallization"
         range: CrystallizationMethodEnum
+      crystallization_conditions:
+        description: "Detailed crystallization conditions"
+        range: CrystallizationConditions
       screen_name:
         description: "Name of crystallization screen used"
       temperature_c:
@@ -1015,8 +1334,6 @@ classes:
         description: "Strategy used to optimize crystals"
       optimized_condition:
         description: "Final optimized crystallization condition"
-      crystallization_conditions:
-        description: "Detailed crystallization conditions"
       # Crystal handling
       crystal_size_um:
         description: "Crystal dimensions in micrometers"
@@ -1032,10 +1349,26 @@ classes:
         description: "Conditions for crystal soaking"
       mounting_method:
         description: "Crystal mounting method"
+        slot_uri: nsls2:Mount_Type
+        comments:
+          - "Maps to NSLS2 spreadsheet: Mount_Type"
       flash_cooling_method:
         description: "Flash cooling protocol"
       crystal_notes:
         description: "Additional notes about crystal quality and handling"
+      # Mounting details (NSLS2 Mounting mapping)
+      loop_size:
+        description: "Loop size in micrometers"
+        range: float
+        slot_uri: nsls2:Loop_Size
+        comments:
+          - "Maps to NSLS2 spreadsheet: Loop_Size"
+      mounting_temperature:
+        description: "Temperature during mounting in Kelvin"
+        range: float
+        slot_uri: nsls2:Temperature
+        comments:
+          - "Maps to NSLS2 spreadsheet: Temperature"
 
   SAXSPreparation:
     is_a: TechniqueSpecificPreparation
@@ -1368,7 +1701,7 @@ enums:
         description: "Instrument being commissioned"
 
   DetectorTypeEnum:
-    description: "Types of detectors for cryo-EM"
+    description: "Types of detectors for cryo-EM and X-ray crystallography"
     permissible_values:
       direct_electron:
         description: "Direct electron detector"
@@ -1378,6 +1711,16 @@ enums:
         description: "CMOS detector"
       hybrid_pixel:
         description: "Hybrid pixel detector"
+      eiger:
+        description: "Dectris EIGER detector (hybrid photon counting)"
+      pilatus:
+        description: "Dectris PILATUS detector"
+      rayonix:
+        description: "Rayonix CCD detector"
+      adsc:
+        description: "ADSC CCD detector"
+      mar:
+        description: "MAR CCD or imaging plate detector"
 
   XRaySourceTypeEnum:
     description: "Types of X-ray sources"
@@ -1474,12 +1817,20 @@ enums:
         description: "MTZ reflection format"
       cbf:
         description: "Crystallographic Binary Format"
+      cbf_zst:
+        description: "Zstandard-compressed CBF format"
+      img:
+        description: "Generic diffraction image format"
+      h5:
+        description: "HDF5 format (alternative extension)"
       ascii:
         description: "ASCII text format"
       thermo_raw:
         description: "Thermo Fisher RAW format"
       zip:
         description: "ZIP compressed archive"
+      gz:
+        description: "Gzip compressed format"
 
   DataTypeEnum:
     description: "Types of data"

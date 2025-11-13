@@ -22,13 +22,13 @@ Alias: dose
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 
 
 
