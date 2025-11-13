@@ -1,0 +1,259 @@
+id: https://w3id.org/lambda-ber-schema/dataset/pnnl-cryo-em-enhanced
+title: "PNNL Enhanced Cryo-EM Dataset Example"
+description: "Example dataset demonstrating PNNL schema alignment features for comprehensive cryo-EM metadata"
+
+# Enhanced instruments with detailed PNNL metadata
+instruments:
+  - id: https://w3id.org/lambda-ber-schema/instrument/titan-krios-001
+    title: "Titan Krios G4 Enhanced"
+    description: "Titan Krios with detailed PNNL metadata fields"
+    instrument_code: "TITAN-KRIOS-G4-001"
+    manufacturer: "Thermo Fisher"
+    model: "Titan Krios G4"
+    current_status: operational
+    installation_date: "2023-01-15"
+    
+    # Enhanced CryoEMInstrument fields from PNNL
+    accelerating_voltage: 300
+    cs: 2.7  # Spherical aberration in mm
+    c2_aperture: 50  # C2 aperture in micrometers
+    objective_aperture: 100  # Objective aperture in micrometers
+    phase_plate: true
+    phase_plate_type: "Volta"
+    energy_filter_present: true
+    energy_filter_make: "Gatan"
+    energy_filter_model: "GIF Quantum LS"
+    energy_filter_slit_width: 20  # eV
+    detector_type: "direct_electron"
+    detector_position: "post-column"
+    detector_mode: "counting"
+    pixel_size_physical: 5.0  # micrometers
+    pixel_size_min: 0.5
+    pixel_size_max: 4.0
+    autoloader_capacity: 12
+    microscope_software: "EPU"
+    microscope_software_version: "3.2"
+    spotsize: 8
+    gunlens: 4
+    imaging_mode: "TEM"
+    tem_beam_diameter: 0.8  # micrometers
+
+studies:
+  - id: https://w3id.org/lambda-ber-schema/study/pnnl-enhanced-001
+    title: "PNNL Enhanced Cryo-EM Single Particle Study"
+    description: "Demonstration of enhanced cryo-EM metadata with PNNL schema alignment"
+    
+    samples:
+      - id: https://w3id.org/lambda-ber-schema/sample/protein-complex-001
+        sample_code: "PROT-COMP-2024-001"
+        sample_type: "protein"
+        title: "Test protein complex"
+        description: "Example protein complex for PNNL schema testing"
+        
+    sample_preparations:
+      - id: https://w3id.org/lambda-ber-schema/prep/cryo-em-enhanced-001
+        preparation_type: "cryo_em_grid"
+        sample_id: "https://w3id.org/lambda-ber-schema/sample/protein-complex-001"
+        preparation_date: "2024-11-12"
+        
+        # Enhanced CryoEMPreparation with detailed PNNL vitrification
+        grid_type: "quantifoil"
+        grid_material: "carbon"
+        support_film: "carbon"
+        hole_size: 1.2
+        vitrification_method: "plunge_freezing"
+        vitrification_instrument: "Vitrobot Mark IV"
+        
+        # Detailed glow discharge parameters
+        glow_discharge_applied: true
+        glow_discharge_time: 60  # seconds
+        glow_discharge_current: 15  # milliamperes
+        glow_discharge_atmosphere: "air"
+        glow_discharge_pressure: 0.39  # millibar
+        
+        # Detailed vitrification parameters
+        blot_time: 4.0
+        blot_force: 3
+        blot_number: 2
+        wait_time: 10.0
+        humidity_percentage: 95.0
+        chamber_temperature: 4.0
+        blotter_height: 0.0
+        blotter_setting: 1.0
+        sample_applied_volume: 3.5  # microliters
+        ethane_temperature: -183.0  # Celsius
+
+    instrument_runs:
+      - id: https://w3id.org/lambda-ber-schema/experiment/enhanced-session-001
+        experiment_code: "ENH-CRYO-SESSION-001"
+        sample_id: "https://w3id.org/lambda-ber-schema/sample/protein-complex-001"
+        instrument_id: "https://w3id.org/lambda-ber-schema/instrument/titan-krios-001"
+        experiment_date: "2024-11-12"
+        operator_id: "jsmith"
+        technique: "cryo_em"
+        
+        # Enhanced acquisition session metadata from PNNL
+        magnification: 81000
+        calibrated_pixel_size: 1.06  # Angstroms per pixel
+        camera_binning: 1
+        exposure_time_per_frame: 50.0  # milliseconds
+        frames_per_movie: 40
+        total_exposure_time: 2000.0  # milliseconds
+        total_dose: 50.0  # e-/Angstrom^2
+        dose_rate: 8.5  # e-/Angstrom^2/s
+        defocus_target: 1.5  # micrometers
+        defocus_range_min: 0.8
+        defocus_range_max: 2.5
+        defocus_range_increment: 0.1
+        astigmatism_target: 50.0  # nanometers
+        coma: 10.0  # nanometers
+        stage_tilt: 0.0  # degrees
+        autoloader_slot: "slot_3"
+        shots_per_hole: 1
+        holes_per_group: 9
+        acquisition_software: "EPU"
+        acquisition_software_version: "3.2.1"
+
+    workflow_runs:
+      # Motion correction with structured parameters
+      - id: https://w3id.org/lambda-ber-schema/workflow/motion-corr-001
+        workflow_code: "MOTION-CORR-ENH-001"
+        workflow_type: "motion_correction"
+        experiment_id: "https://w3id.org/lambda-ber-schema/experiment/enhanced-session-001"
+        software_name: "MotionCor2"
+        software_version: "1.6.4"
+        started_at: "2024-11-12T14:30:00Z"
+        completed_at: "2024-11-12T15:45:00Z"
+        
+        # Structured motion correction parameters
+        motion_correction_params:
+          patch_size: 5
+          binning: 1
+          dose_weighting: true
+          bfactor_dose_weighting: -150.0
+          anisotropic_correction: true
+          frame_grouping: 1
+          output_binning: 1
+          drift_total: 8.5  # Angstroms
+
+      # CTF estimation with structured parameters
+      - id: https://w3id.org/lambda-ber-schema/workflow/ctf-est-001
+        workflow_code: "CTF-EST-ENH-001"
+        workflow_type: "ctf_estimation"
+        experiment_id: "https://w3id.org/lambda-ber-schema/experiment/enhanced-session-001"
+        software_name: "CTFFIND4"
+        software_version: "4.1.14"
+        started_at: "2024-11-12T15:45:00Z"
+        completed_at: "2024-11-12T16:15:00Z"
+        
+        # Structured CTF estimation parameters
+        ctf_estimation_params:
+          defocus_search_min: 0.5
+          defocus_search_max: 4.0
+          defocus_step: 0.01
+          amplitude_contrast: 0.1
+          cs: 2.7  # millimeters
+          voltage: 300  # kV
+
+      # 3D refinement with FSC curve
+      - id: https://w3id.org/lambda-ber-schema/workflow/refinement-001
+        workflow_code: "3D-REFINE-ENH-001"
+        workflow_type: "refinement"
+        experiment_id: "https://w3id.org/lambda-ber-schema/experiment/enhanced-session-001"
+        software_name: "RELION"
+        software_version: "4.0.1"
+        started_at: "2024-11-12T18:00:00Z"
+        completed_at: "2024-11-12T22:30:00Z"
+        
+        # Structured refinement parameters
+        refinement_params:
+          symmetry: "C1"
+          pixel_size: 1.06
+          box_size: 256
+          gold_standard: true
+          split_strategy: "random_half"
+          resolution_0_143: 3.2
+          resolution_0_5: 4.1
+          map_sharpening_bfactor: -120.0
+          
+        # Example FSC curve data
+        fsc_curve:
+          resolution_angstrom: [10.0, 8.0, 6.0, 5.0, 4.0, 3.5, 3.2, 3.0, 2.8]
+          fsc_value: [0.99, 0.95, 0.85, 0.70, 0.50, 0.30, 0.143, 0.10, 0.05]
+
+    data_files:
+      # Enhanced movie file
+      - id: https://w3id.org/lambda-ber-schema/file/movie-001
+        file_name: "GridSquare_1_hole_001_movie.tiff"
+        file_path: "/data/movies/"
+        file_format: "tiff"
+        file_size_bytes: 2500000000
+        checksum: "sha256:abc123def456..."
+        data_type: "movie"
+        storage_uri: "s3://pnnl-cryoem-data/movies/"
+        related_entity: "https://w3id.org/lambda-ber-schema/experiment/enhanced-session-001"
+        file_role: "raw"
+        
+      # Motion-corrected micrograph
+      - id: https://w3id.org/lambda-ber-schema/file/micrograph-001
+        file_name: "GridSquare_1_hole_001_aligned.mrc"
+        file_path: "/data/micrographs/"
+        file_format: "mrc"
+        file_size_bytes: 67108864
+        checksum: "sha256:def456abc123..."
+        data_type: "motion_corrected"
+        storage_uri: "s3://pnnl-cryoem-data/micrographs/"
+        related_entity: "https://w3id.org/lambda-ber-schema/workflow/motion-corr-001"
+        file_role: "intermediate"
+
+    images:
+      # Enhanced movie with per-frame metadata
+      - id: https://w3id.org/lambda-ber-schema/image/movie-001
+        file_name: "GridSquare_1_hole_001_movie.tiff"
+        title: "Raw cryo-EM movie"
+        description: "Raw movie with enhanced PNNL metadata"
+        
+        # Movie-specific metadata
+        frames: 40
+        super_resolution: false
+        pixel_size_unbinned: 1.06
+        timestamp: "2024-11-12T14:30:15Z"
+        stage_position_x: 125.3
+        stage_position_y: 89.7
+        stage_position_z: 0.0
+        nominal_defocus: 1.8
+        dose_per_frame: 1.25
+        beam_shift_x: 2.1
+        beam_shift_y: -1.8
+        ice_thickness_estimate: 45.0
+        grid_square_id: "GridSquare_1"
+        hole_id: "hole_001"
+        acquisition_group: "template_1"
+
+      # Enhanced micrograph with CTF results
+      - id: https://w3id.org/lambda-ber-schema/image/micrograph-001
+        file_name: "GridSquare_1_hole_001_aligned.mrc"
+        title: "Motion-corrected micrograph with CTF"
+        description: "Micrograph with detailed CTF estimation results"
+        
+        # Micrograph-specific metadata
+        pixel_size: 1.06
+        defocus: 1.85
+        dose: 50.0
+        origin_movie_id: "https://w3id.org/lambda-ber-schema/image/movie-001"
+        
+        # CTF estimation results
+        defocus_u: 1.88
+        defocus_v: 1.82
+        astigmatism: 45.2
+        astigmatism_angle: 87.3
+        resolution_fit_limit: 4.5
+        ctf_quality_score: 0.85
+
+keywords:
+  - "cryo-EM"
+  - "PNNL"
+  - "enhanced metadata"
+  - "single particle"
+  - "motion correction"
+  - "CTF estimation"
