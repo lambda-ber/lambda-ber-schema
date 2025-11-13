@@ -39,5 +39,8 @@ nav:
     - Simple Scattering GluRS Dataset: examples/simplescattering-glurs-analysis.md
   - Technical:
     - Mapping to OME: technical/ome-mapping.md
+  - Slides:
+    - Overview: slides/overview.html
+    - Technical Deep Dive: slides/technical-overview.html
 site_url: https://lambda-ber.github.io/lambda-ber-schema
 repo_url: https://github.com/lambda-ber/lambda-ber-schema
