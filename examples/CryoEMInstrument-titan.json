@@ -10,10 +10,12 @@
   "accelerating_voltage": 300,
   "cs_corrector": true,
   "phase_plate": false,
-  "detector_type": "direct_electron",
+  "detector_technology": "direct_electron_detector",
+  "detector_manufacturer": "Gatan",
+  "detector_model": "K3 BioQuantum",
+  "detector_mode": "counting",
   "detector_dimensions": "5760x4092",
-  "pixel_size_min": 0.5,
-  "pixel_size_max": 2.5,
+  "pixel_size_physical_um": 5.0,
   "autoloader_capacity": 12,
   "@type": "CryoEMInstrument"
 }

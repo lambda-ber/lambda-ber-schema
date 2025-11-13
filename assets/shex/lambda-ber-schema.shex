@@ -192,17 +192,23 @@ linkml:Sparqlpath xsd:string
           <accelerating_voltage> @linkml:Integer ? ;
           <cs_corrector> @linkml:Boolean ? ;
           <phase_plate> @linkml:Boolean ? ;
-          <detector_type> [ <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#eiger>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#pilatus>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#rayonix>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#adsc> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#mar> ]
-          ? ;
+          <detector_technology> [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <detector_manufacturer> @linkml:String ? ;
+          <detector_model> @linkml:String ? ;
+          <detector_mode> [ <https://w3id.org/lambda-ber-schema/DetectorModeEnum#counting>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#integrating>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#super_resolution>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#linear>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#correlated_double_sampling> ] ? ;
+          <detector_position> @linkml:String ? ;
           <detector_dimensions> @linkml:String ? ;
-          <pixel_size_min> @linkml:Float ? ;
-          <pixel_size_max> @linkml:Float ? ;
+          <pixel_size_physical_um> @linkml:Float ? ;
           <autoloader_capacity> @linkml:Integer ?
        ) ;
        rdf:type [ <CryoEMInstrument> ]
@@ -307,7 +313,12 @@ linkml:Sparqlpath xsd:string
           <total_dose> @linkml:Float ? ;
           <dose_per_frame> @linkml:Float ? ;
           <wavelength_a> @linkml:Float ? ;
-          <detector> @linkml:String ? ;
+          <detector_mode> [ <https://w3id.org/lambda-ber-schema/DetectorModeEnum#counting>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#integrating>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#super_resolution>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#linear>
+             <https://w3id.org/lambda-ber-schema/DetectorModeEnum#correlated_double_sampling> ] ? ;
+          <pixel_size_calibrated> @linkml:Float ? ;
           <detector_distance_mm> @linkml:Float ? ;
           <beam_center_x_px> @linkml:Integer ? ;
           <beam_center_y_px> @linkml:Integer ? ;
@@ -421,17 +432,17 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
-          nsls2:Wavelength @linkml:Float ? ;
-          nsls2:Angle_increment @linkml:Float ? ;
-          nsls2:Start_angle @linkml:Float ? ;
-          nsls2:Number_of_images @linkml:Integer ? ;
-          nsls2:Beam_xy_x @linkml:Float ? ;
-          nsls2:Beam_xy_y @linkml:Float ? ;
-          nsls2:Detector_distance @linkml:Float ? ;
-          nsls2:Pixel_size_x @linkml:Float ? ;
-          nsls2:Pixel_size_y @linkml:Float ? ;
-          nsls2:Total_rotation_deg @linkml:Float ? ;
-          nsls2:Beamline @linkml:String ?
+          <wavelength> @linkml:Float ? ;
+          <oscillation_angle> @linkml:Float ? ;
+          <start_angle> @linkml:Float ? ;
+          <number_of_images> @linkml:Integer ? ;
+          <beam_center_x> @linkml:Float ? ;
+          <beam_center_y> @linkml:Float ? ;
+          <detector_distance> @linkml:Float ? ;
+          <pixel_size_x> @linkml:Float ? ;
+          <pixel_size_y> @linkml:Float ? ;
+          <total_rotation> @linkml:Float ? ;
+          <beamline> @linkml:String ?
        ) ;
        rdf:type [ <ExperimentRun> ]
     )
@@ -1208,29 +1219,29 @@ linkml:Sparqlpath xsd:string
           <deposited_to_pdb> @linkml:Boolean ? ;
           <pdb_id> @linkml:String ? ;
           <validation_report_path> @linkml:String ? ;
-          nsls2:Space_Group @linkml:String ? ;
-          nsls2:Unit_Cell_a @linkml:Float ? ;
-          nsls2:Unit_Cell_b @linkml:Float ? ;
-          nsls2:Unit_Cell_c @linkml:Float ? ;
-          nsls2:Unit_Cell_alpha @linkml:Float ? ;
-          nsls2:Unit_Cell_beta @linkml:Float ? ;
-          nsls2:Unit_Cell_gamma @linkml:Float ? ;
-          nsls2:Resolution_High_A @linkml:Float ? ;
-          nsls2:Resolution_Low_A @linkml:Float ? ;
-          nsls2:Rmerge @linkml:Float ? ;
-          nsls2:Rpim @linkml:Float ? ;
-          nsls2:CC_half @linkml:Float ? ;
-          nsls2:Completeness @linkml:Float ? ;
-          nsls2:I_over_sigma @linkml:Float ? ;
-          nsls2:Wilson_B @linkml:Float ? ;
-          nsls2:Multiplicity @linkml:Float ? ;
-          nsls2:Rwork @linkml:Float ? ;
-          nsls2:Rfree @linkml:Float ? ;
-          nsls2:RMSD_bonds @linkml:Float ? ;
-          nsls2:RMSD_angles @linkml:Float ? ;
-          nsls2:Ramachandran_Favored @linkml:Float ? ;
-          nsls2:Ramachandran_Outliers @linkml:Float ? ;
-          nsls2:Clashscore @linkml:Float ? ;
+          <space_group> @linkml:String ? ;
+          <unit_cell_a> @linkml:Float ? ;
+          <unit_cell_b> @linkml:Float ? ;
+          <unit_cell_c> @linkml:Float ? ;
+          <unit_cell_alpha> @linkml:Float ? ;
+          <unit_cell_beta> @linkml:Float ? ;
+          <unit_cell_gamma> @linkml:Float ? ;
+          <resolution_high> @linkml:Float ? ;
+          <resolution_low> @linkml:Float ? ;
+          <rmerge> @linkml:Float ? ;
+          <rpim> @linkml:Float ? ;
+          <cc_half> @linkml:Float ? ;
+          <completeness_percent> @linkml:Float ? ;
+          <i_over_sigma> @linkml:Float ? ;
+          <wilson_b_factor> @linkml:Float ? ;
+          <multiplicity> @linkml:Float ? ;
+          <rwork> @linkml:Float ? ;
+          <rfree> @linkml:Float ? ;
+          <rmsd_bonds> @linkml:Float ? ;
+          <rmsd_angles> @linkml:Float ? ;
+          <ramachandran_favored> @linkml:Float ? ;
+          <ramachandran_outliers> @linkml:Float ? ;
+          <clashscore> @linkml:Float ? ;
           <processing_notes> @linkml:String ? ;
           <compute_resources> @<ComputeResources> ? ;
           <started_at> @linkml:String ? ;
@@ -1248,14 +1259,15 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
-          nsls2:Detector [ <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#direct_electron>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#ccd> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#cmos>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#hybrid_pixel>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#eiger>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#pilatus>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#rayonix>
-             <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#adsc> <https://w3id.org/lambda-ber-schema/DetectorTypeEnum#mar> ]
-          ? ;
+          nsls2:Detector [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <detector_manufacturer> @linkml:String ? ;
+          <detector_model> @linkml:String ? ;
           nsls2:Beamline @linkml:String ? ;
           <energy_min> @linkml:Float ? ;
           <energy_max> @linkml:Float ? ;
@@ -1320,7 +1332,14 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
-          <detector_type> @linkml:String ? ;
+          <detector_technology> [ <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#direct_electron_detector>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#ccd>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#cmos>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#hybrid_photon_counting>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#scintillator_coupled>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
+             <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
+          <detector_model> @linkml:String ? ;
           <flux> @linkml:Float ? ;
           <calibration_standard> @linkml:String ?
        ) ;

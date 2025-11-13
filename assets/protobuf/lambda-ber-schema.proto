@@ -94,10 +94,13 @@ message CryoEMInstrument
   integer acceleratingVoltage = 0
   boolean csCorrector = 0
   boolean phasePlate = 0
-  detectorTypeEnum detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
+  detectorModeEnum detectorMode = 0
+  string detectorPosition = 0
   string detectorDimensions = 0
-  float pixelSizeMin = 0
-  float pixelSizeMax = 0
+  float pixelSizePhysicalUm = 0
   integer autoloaderCapacity = 0
  }
 // Cryo-EM specific sample preparation
@@ -151,7 +154,8 @@ message DataCollectionStrategy
   float totalDose = 0
   float dosePerFrame = 0
   float wavelengthA = 0
-  string detector = 0
+  detectorModeEnum detectorMode = 0
+  float pixelSizeCalibrated = 0
   float detectorDistanceMm = 0
   integer beamCenterXPx = 0
   integer beamCenterYPx = 0
@@ -842,7 +846,9 @@ message XRayInstrument
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
   xRaySourceTypeEnum sourceType = 0
-  detectorTypeEnum detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
   string beamlineId = 0
   float energyMin = 0
   float energyMax = 0
@@ -903,7 +909,8 @@ message XRFImage
   float dwellTime = 0
  repeated  string elementsMeasured = 0
   xRaySourceTypeEnum sourceType = 0
-  string detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorModel = 0
   float flux = 0
   string calibrationStandard = 0
  }
