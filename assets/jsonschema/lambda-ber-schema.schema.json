@@ -387,6 +387,62 @@
             "title": "BufferComposition",
             "type": "object"
         },
+        "CTFEstimationParameters": {
+            "additionalProperties": false,
+            "description": "Parameters specific to CTF estimation workflows",
+            "properties": {
+                "amplitude_contrast": {
+                    "description": "Amplitude contrast value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cs_used_in_estimation": {
+                    "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_search_max": {
+                    "description": "Maximum defocus search range in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_search_min": {
+                    "description": "Minimum defocus search range in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_step": {
+                    "description": "Defocus search step in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "voltage_used_in_estimation": {
+                    "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "CTFEstimationParameters",
+            "type": "object"
+        },
         "ClinicalSignificanceEnum": {
             "description": "Clinical significance of variants",
             "enum": [
@@ -680,6 +736,20 @@
                         "null"
                     ]
                 },
+                "c2_aperture": {
+                    "description": "C2 aperture size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cs": {
+                    "description": "Spherical aberration (Cs) in millimeters",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "cs_corrector": {
                     "description": "Spherical aberration corrector present",
                     "type": [
@@ -704,13 +774,66 @@
                         "null"
                     ]
                 },
+                "detector_mode": {
+                    "description": "Detector mode (counting, integrating, super_resolution)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_position": {
+                    "description": "Detector position",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "detector_type": {
                     "$ref": "#/$defs/DetectorTypeEnum",
                     "description": "Type of detector"
                 },
+                "energy_filter_make": {
+                    "description": "Energy filter manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy_filter_model": {
+                    "description": "Energy filter model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy_filter_present": {
+                    "description": "Whether energy filter is present",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "energy_filter_slit_width": {
+                    "description": "Energy filter slit width in eV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gunlens": {
+                    "description": "Gun lens setting",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
+                },
+                "imaging_mode": {
+                    "$ref": "#/$defs/ImagingModeEnum",
+                    "description": "Imaging mode for electron microscopy"
                 },
                 "installation_date": {
                     "description": "Date of instrument installation",
@@ -730,6 +853,20 @@
                         "null"
                     ]
                 },
+                "microscope_software": {
+                    "description": "Microscope control software (e.g., SerialEM, EPU, Leginon)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_software_version": {
+                    "description": "Software version",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "model": {
                     "description": "Instrument model",
                     "type": [
@@ -737,10 +874,24 @@
                         "null"
                     ]
                 },
+                "objective_aperture": {
+                    "description": "Objective aperture size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "phase_plate": {
                     "description": "Phase plate available",
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "phase_plate_type": {
+                    "description": "Type of phase plate if present",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -753,6 +904,27 @@
                 },
                 "pixel_size_min": {
                     "description": "Minimum pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_physical": {
+                    "description": "Physical pixel size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "spotsize": {
+                    "description": "Electron beam spot size setting",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "tem_beam_diameter": {
+                    "description": "TEM beam diameter in micrometers",
                     "type": [
                         "number",
                         "null"
@@ -783,10 +955,31 @@
                         "null"
                     ]
                 },
+                "blot_number": {
+                    "description": "Number of blots applied",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "blot_time": {
                     "description": "Blotting time in seconds",
                     "maximum": 10.0,
                     "minimum": 0.5,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "blotter_height": {
+                    "description": "Blotter height setting",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "blotter_setting": {
+                    "description": "Blotter setting value",
                     "type": [
                         "number",
                         "null"
@@ -800,6 +993,55 @@
                     ]
                 },
                 "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ethane_temperature": {
+                    "description": "Ethane temperature in Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "glow_discharge_applied": {
+                    "description": "Whether glow discharge treatment was applied",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "glow_discharge_atmosphere": {
+                    "description": "Glow discharge atmosphere (air, amylamine)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "glow_discharge_current": {
+                    "description": "Glow discharge current in milliamperes",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "glow_discharge_pressure": {
+                    "description": "Glow discharge pressure in millibar",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "glow_discharge_time": {
+                    "description": "Glow discharge time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "grid_material": {
+                    "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
                     "type": [
                         "string",
                         "null"
@@ -834,8 +1076,22 @@
                         "null"
                     ]
                 },
+                "sample_applied_volume": {
+                    "description": "Volume of sample applied in microliters",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "support_film": {
                     "description": "Support film type",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vitrification_instrument": {
+                    "description": "Vitrification instrument used (e.g., Vitrobot)",
                     "type": [
                         "string",
                         "null"
@@ -844,6 +1100,13 @@
                 "vitrification_method": {
                     "$ref": "#/$defs/VitrificationMethodEnum",
                     "description": "Method used for vitrification"
+                },
+                "wait_time": {
+                    "description": "Wait time before blotting in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             },
             "title": "CryoEMPreparation",
@@ -1145,6 +1408,13 @@
                         "null"
                     ]
                 },
+                "file_role": {
+                    "description": "Role of the file (raw, intermediate, final, diagnostic, metadata)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "file_size_bytes": {
                     "description": "File size in bytes",
                     "type": [
@@ -1155,6 +1425,20 @@
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
+                },
+                "related_entity": {
+                    "description": "ID of the entity that owns this file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "storage_uri": {
+                    "description": "Storage URI (S3, Globus, etc.)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "title": {
                     "type": [
@@ -1182,7 +1466,15 @@
                 "model",
                 "metadata",
                 "raw_data",
-                "processed_data"
+                "processed_data",
+                "movie",
+                "motion_corrected",
+                "ctf_estimation",
+                "particle_coordinates",
+                "class_averages",
+                "fsc_curve",
+                "map_half",
+                "validation_report"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -1499,6 +1791,34 @@
             "additionalProperties": false,
             "description": "An experimental data collection session",
             "properties": {
+                "acquisition_software": {
+                    "description": "Acquisition software used (e.g., SerialEM, EPU, Leginon)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "acquisition_software_version": {
+                    "description": "Version of acquisition software",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism_target": {
+                    "description": "Target astigmatism in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "autoloader_slot": {
+                    "description": "Autoloader slot identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "beam_center_x": {
                     "description": "Beam center X coordinate in pixels",
                     "type": [
@@ -1520,6 +1840,27 @@
                         "null"
                     ]
                 },
+                "calibrated_pixel_size": {
+                    "description": "Calibrated pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "camera_binning": {
+                    "description": "Camera binning factor",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "coma": {
+                    "description": "Coma aberration in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "data_collection_strategy": {
                     "anyOf": [
                         {
@@ -1531,6 +1872,34 @@
                     ],
                     "description": "Strategy for data collection"
                 },
+                "defocus_range_increment": {
+                    "description": "Defocus range increment in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_range_max": {
+                    "description": "Maximum defocus range in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_range_min": {
+                    "description": "Minimum defocus range in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_target": {
+                    "description": "Target defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "description": {
                     "type": [
                         "string",
@@ -1539,6 +1908,13 @@
                 },
                 "detector_distance": {
                     "description": "Distance from sample to detector in millimeters",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "dose_rate": {
+                    "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
                     "type": [
                         "number",
                         "null"
@@ -1570,6 +1946,27 @@
                     "$ref": "#/$defs/ExperimentalMethodEnum",
                     "description": "Specific experimental method for structure determination (particularly for diffraction techniques)"
                 },
+                "exposure_time_per_frame": {
+                    "description": "Exposure time per frame in milliseconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "frames_per_movie": {
+                    "description": "Number of frames per movie",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "holes_per_group": {
+                    "description": "Number of holes per group",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
@@ -1577,6 +1974,13 @@
                 "instrument_id": {
                     "description": "Reference to the instrument used",
                     "type": "string"
+                },
+                "magnification": {
+                    "description": "Magnification used during data collection",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "number_of_images": {
                     "description": "Total number of diffraction images collected",
@@ -1639,6 +2043,20 @@
                     "description": "Reference to the sample being analyzed",
                     "type": "string"
                 },
+                "shots_per_hole": {
+                    "description": "Number of shots taken per hole",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "stage_tilt": {
+                    "description": "Stage tilt angle in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "start_angle": {
                     "description": "Starting rotation angle in degrees",
                     "type": [
@@ -1653,6 +2071,20 @@
                 "title": {
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "total_dose": {
+                    "description": "Total electron dose in e-/Angstrom^2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "total_exposure_time": {
+                    "description": "Total exposure time in milliseconds",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -1759,6 +2191,42 @@
             ],
             "title": "ExpressionSystemEnum",
             "type": "string"
+        },
+        "FSCCurve": {
+            "additionalProperties": false,
+            "description": "Fourier Shell Correlation curve data.\n\nThe `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`\ncorresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "fsc_value": {
+                    "description": "FSC values corresponding to each resolution",
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxItems": 10000,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "resolution_angstrom": {
+                    "description": "Resolution values in Angstroms",
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxItems": 10000,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "FSCCurve",
+            "type": "object"
         },
         "FTIRImage": {
             "additionalProperties": false,
@@ -1903,6 +2371,12 @@
                 "ascii",
                 "thermo_raw",
                 "zip",
+                "mrcs",
+                "eer",
+                "cs",
+                "json",
+                "csv",
+                "ccp4",
                 "gz"
             ],
             "title": "FileFormatEnum",
@@ -2566,6 +3040,16 @@
             "title": "ImageFeature",
             "type": "object"
         },
+        "ImagingModeEnum": {
+            "description": "Imaging modes for electron microscopy",
+            "enum": [
+                "EFTEM",
+                "TEM",
+                "STEM"
+            ],
+            "title": "ImagingModeEnum",
+            "type": "string"
+        },
         "Instrument": {
             "additionalProperties": false,
             "description": "An instrument used to collect data",
@@ -2758,6 +3242,136 @@
             "title": "LigandInteraction",
             "type": "object"
         },
+        "Micrograph": {
+            "additionalProperties": false,
+            "description": "Motion-corrected micrograph derived from movie",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "astigmatism_angle": {
+                    "description": "Astigmatism angle in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ctf_quality_score": {
+                    "description": "CTF estimation quality score",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Measured defocus in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_u": {
+                    "description": "Defocus U in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus_v": {
+                    "description": "Defocus V in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Total electron dose in e-/Angstrom^2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "origin_movie_id": {
+                    "description": "Reference to original movie file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Final pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_fit_limit": {
+                    "description": "Resolution fit limit in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "Micrograph",
+            "type": "object"
+        },
         "MolecularComposition": {
             "additionalProperties": false,
             "description": "Molecular composition of a sample",
@@ -2800,6 +3414,269 @@
                 }
             },
             "title": "MolecularComposition",
+            "type": "object"
+        },
+        "MotionCorrectionParameters": {
+            "additionalProperties": false,
+            "description": "Parameters specific to motion correction workflows",
+            "properties": {
+                "anisotropic_correction": {
+                    "description": "Whether anisotropic motion correction was applied",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "bfactor_dose_weighting": {
+                    "description": "B-factor for dose weighting",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "binning": {
+                    "description": "Binning factor applied during motion correction",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dose_weighting": {
+                    "description": "Whether dose weighting was applied",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "drift_total": {
+                    "description": "Total drift in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "frame_grouping": {
+                    "description": "Number of frames grouped together",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "output_binning": {
+                    "description": "Output binning factor",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "patch_size": {
+                    "description": "Patch size for local motion correction",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MotionCorrectionParameters",
+            "type": "object"
+        },
+        "Movie": {
+            "additionalProperties": false,
+            "description": "Raw cryo-EM movie with frame-by-frame metadata for motion correction",
+            "properties": {
+                "acquisition_date": {
+                    "description": "Date image was acquired",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "acquisition_group": {
+                    "description": "Acquisition group identifier (e.g., template or area)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "astigmatism": {
+                    "description": "Astigmatism value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_shift_x": {
+                    "description": "Beam shift X in microradians",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_shift_y": {
+                    "description": "Beam shift Y in microradians",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "defocus": {
+                    "description": "Defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimensions_x": {
+                    "description": "Image width in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dimensions_y": {
+                    "description": "Image height in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dose": {
+                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "dose_per_frame": {
+                    "description": "Electron dose per frame in e-/Angstrom^2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "file_name": {
+                    "description": "Image file name",
+                    "type": "string"
+                },
+                "frames": {
+                    "description": "Number of frames in the movie",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "grid_square_id": {
+                    "description": "Grid square identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hole_id": {
+                    "description": "Hole identifier within grid square",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ice_thickness_estimate": {
+                    "description": "Estimated ice thickness in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "nominal_defocus": {
+                    "description": "Nominal defocus value in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_unbinned": {
+                    "description": "Unbinned pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "stage_position_x": {
+                    "description": "Stage X position in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "stage_position_y": {
+                    "description": "Stage Y position in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "stage_position_z": {
+                    "description": "Stage Z position in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "super_resolution": {
+                    "description": "Whether super-resolution mode was used",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "timestamp": {
+                    "description": "Acquisition timestamp",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "file_name",
+                "id"
+            ],
+            "title": "Movie",
             "type": "object"
         },
         "MutationEffect": {
@@ -3170,6 +4047,62 @@
             ],
             "title": "PTMTypeEnum",
             "type": "string"
+        },
+        "ParticlePickingParameters": {
+            "additionalProperties": false,
+            "description": "Parameters specific to particle picking workflows",
+            "properties": {
+                "box_size": {
+                    "description": "Particle box size in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model_file": {
+                    "description": "Path to deep learning model file if used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ncc_score": {
+                    "description": "Normalized cross-correlation score threshold",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "picking_method": {
+                    "description": "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "power_score": {
+                    "description": "Power score threshold",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "threshold": {
+                    "description": "Picking threshold",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ParticlePickingParameters",
+            "type": "object"
         },
         "PhasingMethodEnum": {
             "description": "Methods for phase determination in X-ray crystallography",
@@ -4060,6 +4993,76 @@
                 }
             },
             "title": "QualityMetrics",
+            "type": "object"
+        },
+        "RefinementParameters": {
+            "additionalProperties": false,
+            "description": "Parameters specific to 3D refinement workflows",
+            "properties": {
+                "box_size": {
+                    "description": "Box size in pixels",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gold_standard": {
+                    "description": "Whether gold-standard refinement was used",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "map_sharpening_bfactor": {
+                    "description": "B-factor used for map sharpening in Angstroms^2",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size": {
+                    "description": "Pixel size in Angstroms per pixel",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_0_143": {
+                    "description": "Resolution at FSC=0.143 in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_0_5": {
+                    "description": "Resolution at FSC=0.5 in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "split_strategy": {
+                    "description": "Strategy for data splitting",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "symmetry": {
+                    "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "RefinementParameters",
             "type": "object"
         },
         "SAXSInstrument": {
@@ -5262,6 +6265,17 @@
                     ],
                     "description": "Computational resources used"
                 },
+                "ctf_estimation_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CTFEstimationParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CTF estimation specific parameters"
+                },
                 "deposited_to_pdb": {
                     "description": "Whether structure was deposited to PDB",
                     "type": [
@@ -5278,6 +6292,17 @@
                 "experiment_id": {
                     "description": "Reference to the source experiment",
                     "type": "string"
+                },
+                "fsc_curve": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FSCCurve"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Fourier Shell Correlation curve data"
                 },
                 "i_over_sigma": {
                     "description": "Mean I/sigma(I) - signal to noise ratio",
@@ -5310,6 +6335,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "motion_correction_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MotionCorrectionParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Motion correction specific parameters"
                 },
                 "multiplicity": {
                     "description": "Data multiplicity (redundancy)",
@@ -5355,6 +6391,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "particle_picking_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ParticlePickingParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Particle picking specific parameters"
                 },
                 "pdb_id": {
                     "description": "PDB accession code if deposited",
@@ -5403,6 +6450,17 @@
                         "number",
                         "null"
                     ]
+                },
+                "refinement_params": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RefinementParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "3D refinement specific parameters"
                 },
                 "refinement_resolution_a": {
                     "description": "Resolution cutoff used for refinement in Angstroms",
@@ -5616,7 +6674,13 @@
                 "scaling",
                 "saxs_analysis",
                 "em_2d_classification",
-                "mass_spec_deconvolution"
+                "mass_spec_deconvolution",
+                "particle_extraction",
+                "ab_initio",
+                "postprocessing",
+                "map_validation",
+                "model_refinement",
+                "model_validation"
             ],
             "title": "WorkflowTypeEnum",
             "type": "string"

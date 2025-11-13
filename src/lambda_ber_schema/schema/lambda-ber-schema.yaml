@@ -578,8 +578,8 @@ classes:
         description: "Gun lens setting"
         range: integer
       imaging_mode:
-        description: "Imaging mode (e.g., EFTEM, TEM, STEM)"
-        range: string
+        description: "Imaging mode for electron microscopy"
+        range: ImagingModeEnum
       tem_beam_diameter:
         description: "TEM beam diameter in micrometers"
         range: float
@@ -2087,6 +2087,16 @@ enums:
         description: "Instrument is offline"
       commissioning:
         description: "Instrument being commissioned"
+
+  ImagingModeEnum:
+    description: "Imaging modes for electron microscopy"
+    permissible_values:
+      EFTEM:
+        description: "Energy-filtered transmission electron microscopy"
+      TEM:
+        description: "Transmission electron microscopy"
+      STEM:
+        description: "Scanning transmission electron microscopy"
 
   DetectorTypeEnum:
     description: "Types of detectors for cryo-EM and X-ray crystallography"

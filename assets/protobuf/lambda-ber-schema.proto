@@ -99,6 +99,23 @@ message CryoEMInstrument
   float pixelSizeMin = 0
   float pixelSizeMax = 0
   integer autoloaderCapacity = 0
+  float cs = 0
+  float c2Aperture = 0
+  float objectiveAperture = 0
+  string phasePlateType = 0
+  boolean energyFilterPresent = 0
+  string energyFilterMake = 0
+  string energyFilterModel = 0
+  float energyFilterSlitWidth = 0
+  string detectorPosition = 0
+  string detectorMode = 0
+  float pixelSizePhysical = 0
+  string microscopeSoftware = 0
+  string microscopeSoftwareVersion = 0
+  integer spotsize = 0
+  integer gunlens = 0
+  imagingModeEnum imagingMode = 0
+  float temBeamDiameter = 0
  }
 // Cryo-EM specific sample preparation
 message CryoEMPreparation
@@ -112,6 +129,19 @@ message CryoEMPreparation
   integer blotForce = 0
   float humidityPercentage = 0
   float chamberTemperature = 0
+  string gridMaterial = 0
+  boolean glowDischargeApplied = 0
+  float glowDischargeTime = 0
+  float glowDischargeCurrent = 0
+  string glowDischargeAtmosphere = 0
+  float glowDischargePressure = 0
+  string vitrificationInstrument = 0
+  integer blotNumber = 0
+  float waitTime = 0
+  float blotterHeight = 0
+  float blotterSetting = 0
+  float sampleAppliedVolume = 0
+  float ethaneTemperature = 0
   string plasmaTreatment = 0
  }
 // Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
@@ -131,6 +161,17 @@ message CrystallizationConditions
   float reservoirVolumeUl = 0
   string seedingType = 0
   string seedStockDilution = 0
+ }
+// Parameters specific to CTF estimation workflows
+message CTFEstimationParameters
+ {
+  string description = 0
+  float defocusSearchMin = 0
+  float defocusSearchMax = 0
+  float defocusStep = 0
+  float amplitudeContrast = 0
+  float csUsedInEstimation = 0
+  float voltageUsedInEstimation = 0
  }
 // Cross-references to external databases
 message DatabaseCrossReference
@@ -177,6 +218,9 @@ message DataFile
   string checksum = 0
   string creationDate = 0
   dataTypeEnum dataType = 0
+  string storageUri = 0
+  string relatedEntity = 0
+  string fileRole = 0
  }
 // A collection of studies
 message Dataset
@@ -241,6 +285,26 @@ message ExperimentRun
   qualityMetrics qualityMetrics = 0
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
+  integer magnification = 0
+  float calibratedPixelSize = 0
+  integer cameraBinning = 0
+  float exposureTimePerFrame = 0
+  integer framesPerMovie = 0
+  float totalExposureTime = 0
+  float totalDose = 0
+  float doseRate = 0
+  float defocusTarget = 0
+  float defocusRangeMin = 0
+  float defocusRangeMax = 0
+  float defocusRangeIncrement = 0
+  float astigmatismTarget = 0
+  float coma = 0
+  float stageTilt = 0
+  string autoloaderSlot = 0
+  integer shotsPerHole = 0
+  integer holesPerGroup = 0
+  string acquisitionSoftware = 0
+  string acquisitionSoftwareVersion = 0
   float wavelength = 0
   float oscillationAngle = 0
   float startAngle = 0
@@ -277,6 +341,17 @@ message FluorescenceImage
   float laserPower = 0
   float pinholeSize = 0
   float quantumYield = 0
+ }
+// Fourier Shell Correlation curve data.
+// 
+// The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
+// corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+// 
+message FSCCurve
+ {
+  string description = 0
+ repeated  float resolutionAngstrom = 0
+ repeated  float fscValue = 0
  }
 // Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
 message FTIRImage
@@ -406,6 +481,28 @@ message LigandInteraction
   float druggabilityScore = 0
   float interactionDistance = 0
  }
+// Motion-corrected micrograph derived from movie
+message Micrograph
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float pixelSize = 0
+  float defocus = 0
+  float dose = 0
+  string originMovieId = 0
+  float defocusU = 0
+  float defocusV = 0
+  float astigmatism = 0
+  float astigmatismAngle = 0
+  float resolutionFitLimit = 0
+  float ctfQualityScore = 0
+ }
 // Molecular composition of a sample
 message MolecularComposition
  {
@@ -413,6 +510,50 @@ message MolecularComposition
  repeated  string sequences = 0
  repeated  string modifications = 0
  repeated  string ligands = 0
+ }
+// Parameters specific to motion correction workflows
+message MotionCorrectionParameters
+ {
+  string description = 0
+  integer patchSize = 0
+  integer binning = 0
+  boolean doseWeighting = 0
+  float bfactorDoseWeighting = 0
+  boolean anisotropicCorrection = 0
+  integer frameGrouping = 0
+  integer outputBinning = 0
+  float driftTotal = 0
+ }
+// Raw cryo-EM movie with frame-by-frame metadata for motion correction
+message Movie
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  float pixelSize = 0
+  integer dimensionsX = 0
+  integer dimensionsY = 0
+  float exposureTime = 0
+  float dose = 0
+  float defocus = 0
+  float astigmatism = 0
+  integer frames = 0
+  boolean superResolution = 0
+  float pixelSizeUnbinned = 0
+  string timestamp = 0
+  float stagePositionX = 0
+  float stagePositionY = 0
+  float stagePositionZ = 0
+  float nominalDefocus = 0
+  float dosePerFrame = 0
+  float beamShiftX = 0
+  float beamShiftY = 0
+  float iceThicknessEstimate = 0
+  string gridSquareId = 0
+  string holeId = 0
+  string acquisitionGroup = 0
  }
 // Effects of mutations and variants on protein structure and function
 message MutationEffect
@@ -471,6 +612,17 @@ message OpticalImage
  repeated  string colorChannels = 0
   string whiteBalance = 0
   string contrastMethod = 0
+ }
+// Parameters specific to particle picking workflows
+message ParticlePickingParameters
+ {
+  string description = 0
+  string pickingMethod = 0
+  integer boxSize = 0
+  float threshold = 0
+  float powerScore = 0
+  float nccScore = 0
+  string modelFile = 0
  }
 // Post-translational modifications observed or predicted
 message PostTranslationalModification
@@ -605,6 +757,19 @@ message QualityMetrics
   float iZero = 0
   float rg = 0
   float rFactor = 0
+ }
+// Parameters specific to 3D refinement workflows
+message RefinementParameters
+ {
+  string description = 0
+  string symmetry = 0
+  float pixelSize = 0
+  integer boxSize = 0
+  boolean goldStandard = 0
+  string splitStrategy = 0
+  float resolution0143 = 0
+  float resolution05 = 0
+  float mapSharpeningBfactor = 0
  }
 // A biological sample used in structural biology experiments
 message Sample
@@ -828,6 +993,11 @@ message WorkflowRun
   computeResources computeResources = 0
   string startedAt = 0
   string completedAt = 0
+  motionCorrectionParameters motionCorrectionParams = 0
+  cTFEstimationParameters ctfEstimationParams = 0
+  particlePickingParameters particlePickingParams = 0
+  refinementParameters refinementParams = 0
+  fSCCurve fscCurve = 0
  repeated  dataFile outputFiles = 0
  }
 // X-ray diffractometer or synchrotron beamline specifications
