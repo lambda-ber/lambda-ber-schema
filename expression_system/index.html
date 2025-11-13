@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-expression_system">Slot: expression_system</h1>
-<p><em>Expression system used for recombinant protein production</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/expression_system">lambdaber:expression_system</a>
 Alias: expression_system</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: expression_system</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A biological sample used in structural biology experiments</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SamplePreparation/">SamplePreparation</a></td>
 <td>A process that prepares a sample for imaging</td>
 <td>no</td>
@@ -922,13 +911,9 @@ Alias: expression_system</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ExpressionSystemEnum/">ExpressionSystemEnum</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: expression_system</p>
 <details>
 
 <pre><code class="language-yaml">name: expression_system
-description: Expression system used for recombinant protein production
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: expression_system
-owner: SamplePreparation
 domain_of:
+- Sample
 - SamplePreparation
-range: ExpressionSystemEnum
+range: string
 
 </code></pre>
 

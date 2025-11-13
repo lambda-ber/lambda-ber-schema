@@ -837,6 +837,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -899,7 +908,7 @@
 
 <h1 id="slot-mounting_method">Slot: mounting_method</h1>
 <p><em>Crystal mounting method</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/mounting_method">lambdaber:mounting_method</a>
+<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Mount_Type">nsls2:Mount_Type</a>
 Alias: mounting_method</p>
 <!-- no inheritance hierarchy -->
 
@@ -924,6 +933,10 @@ Alias: mounting_method</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Maps to NSLS2 spreadsheet: Mount_Type</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -940,7 +953,7 @@ Alias: mounting_method</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:mounting_method</td>
+<td>nsls2:Mount_Type</td>
 </tr>
 <tr>
 <td>native</td>
@@ -953,8 +966,11 @@ Alias: mounting_method</p>
 
 <pre><code class="language-yaml">name: mounting_method
 description: Crystal mounting method
+comments:
+- 'Maps to NSLS2 spreadsheet: Mount_Type'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
+slot_uri: nsls2:Mount_Type
 alias: mounting_method
 owner: XRayPreparation
 domain_of:

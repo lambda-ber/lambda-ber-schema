@@ -429,6 +429,12 @@
       NamedThing &lt;|-- ExperimentRun
         click NamedThing href "../NamedThing/"
 
+      ExperimentRun : beam_center_x
+
+      ExperimentRun : beam_center_y
+
+      ExperimentRun : beamline
+
       ExperimentRun : data_collection_strategy
 
 
@@ -441,6 +447,8 @@
 
 
       ExperimentRun : description
+
+      ExperimentRun : detector_distance
 
       ExperimentRun : experiment_code
 
@@ -481,7 +489,15 @@
 
 
 
+      ExperimentRun : number_of_images
+
       ExperimentRun : operator_id
+
+      ExperimentRun : oscillation_angle
+
+      ExperimentRun : pixel_size_x
+
+      ExperimentRun : pixel_size_y
 
       ExperimentRun : processing_status
 
@@ -509,6 +525,8 @@
 
       ExperimentRun : sample_id
 
+      ExperimentRun : start_angle
+
       ExperimentRun : technique
 
 
@@ -521,6 +539,10 @@
 
 
       ExperimentRun : title
+
+      ExperimentRun : total_rotation
+
+      ExperimentRun : wavelength
 
 
 </div>
@@ -612,6 +634,72 @@
 <td><a href="../processing_status/">processing_status</a></td>
 <td>0..1 <br/> <a href="../ProcessingStatusEnum/">ProcessingStatusEnum</a></td>
 <td>Current processing status</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wavelength/">wavelength</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>X-ray wavelength in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../oscillation_angle/">oscillation_angle</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Oscillation angle per image in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../start_angle/">start_angle</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Starting rotation angle in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../number_of_images/">number_of_images</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of diffraction images collected</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beam_center_x/">beam_center_x</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Beam center X coordinate in pixels</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beam_center_y/">beam_center_y</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Beam center Y coordinate in pixels</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_distance/">detector_distance</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Distance from sample to detector in millimeters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pixel_size_x/">pixel_size_x</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Pixel size X dimension in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pixel_size_y/">pixel_size_y</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Pixel size Y dimension in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../total_rotation/">total_rotation</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total rotation range collected in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beamline/">beamline</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Beamline identifier (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -789,6 +877,126 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  wavelength:
+    name: wavelength
+    description: X-ray wavelength in Angstroms
+    comments:
+    - 'Maps to CBF: Wavelength'
+    - 'Maps to PDB: _diffrn_radiation_wavelength.wavelength'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Wavelength
+    domain_of:
+    - ExperimentRun
+    range: float
+  oscillation_angle:
+    name: oscillation_angle
+    description: Oscillation angle per image in degrees
+    comments:
+    - 'Maps to CBF: Angle_increment'
+    - 'Maps to PDB: _diffrn_scan.angle_increment'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Angle_increment
+    domain_of:
+    - ExperimentRun
+    range: float
+  start_angle:
+    name: start_angle
+    description: Starting rotation angle in degrees
+    comments:
+    - 'Maps to CBF: Start_angle'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Start_angle
+    domain_of:
+    - ExperimentRun
+    range: float
+  number_of_images:
+    name: number_of_images
+    description: Total number of diffraction images collected
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Number_of_images
+    domain_of:
+    - ExperimentRun
+    range: integer
+  beam_center_x:
+    name: beam_center_x
+    description: Beam center X coordinate in pixels
+    comments:
+    - 'Maps to CBF: Beam_xy (first value)'
+    - 'Maps to PDB: _diffrn_detector.beam_center_x'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beam_xy_x
+    domain_of:
+    - ExperimentRun
+    range: float
+  beam_center_y:
+    name: beam_center_y
+    description: Beam center Y coordinate in pixels
+    comments:
+    - 'Maps to CBF: Beam_xy (second value)'
+    - 'Maps to PDB: _diffrn_detector.beam_center_y'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beam_xy_y
+    domain_of:
+    - ExperimentRun
+    range: float
+  detector_distance:
+    name: detector_distance
+    description: Distance from sample to detector in millimeters
+    comments:
+    - 'Maps to CBF: Detector_distance'
+    - 'Maps to PDB: _diffrn_detector.distance'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Detector_distance
+    domain_of:
+    - ExperimentRun
+    range: float
+  pixel_size_x:
+    name: pixel_size_x
+    description: Pixel size X dimension in micrometers
+    comments:
+    - 'Maps to CBF: Pixel_size'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Pixel_size_x
+    domain_of:
+    - ExperimentRun
+    range: float
+  pixel_size_y:
+    name: pixel_size_y
+    description: Pixel size Y dimension in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Pixel_size_y
+    domain_of:
+    - ExperimentRun
+    range: float
+  total_rotation:
+    name: total_rotation
+    description: Total rotation range collected in degrees
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Total_rotation_deg
+    domain_of:
+    - ExperimentRun
+    range: float
+  beamline:
+    name: beamline
+    description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
+    comments:
+    - 'Maps to PDB: _diffrn_source.beamline'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    domain_of:
+    - ExperimentRun
+    range: string
 
 </code></pre>
 </details>
@@ -928,6 +1136,148 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  wavelength:
+    name: wavelength
+    description: X-ray wavelength in Angstroms
+    comments:
+    - 'Maps to CBF: Wavelength'
+    - 'Maps to PDB: _diffrn_radiation_wavelength.wavelength'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Wavelength
+    alias: wavelength
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  oscillation_angle:
+    name: oscillation_angle
+    description: Oscillation angle per image in degrees
+    comments:
+    - 'Maps to CBF: Angle_increment'
+    - 'Maps to PDB: _diffrn_scan.angle_increment'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Angle_increment
+    alias: oscillation_angle
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  start_angle:
+    name: start_angle
+    description: Starting rotation angle in degrees
+    comments:
+    - 'Maps to CBF: Start_angle'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Start_angle
+    alias: start_angle
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  number_of_images:
+    name: number_of_images
+    description: Total number of diffraction images collected
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Number_of_images
+    alias: number_of_images
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
+  beam_center_x:
+    name: beam_center_x
+    description: Beam center X coordinate in pixels
+    comments:
+    - 'Maps to CBF: Beam_xy (first value)'
+    - 'Maps to PDB: _diffrn_detector.beam_center_x'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beam_xy_x
+    alias: beam_center_x
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  beam_center_y:
+    name: beam_center_y
+    description: Beam center Y coordinate in pixels
+    comments:
+    - 'Maps to CBF: Beam_xy (second value)'
+    - 'Maps to PDB: _diffrn_detector.beam_center_y'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beam_xy_y
+    alias: beam_center_y
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  detector_distance:
+    name: detector_distance
+    description: Distance from sample to detector in millimeters
+    comments:
+    - 'Maps to CBF: Detector_distance'
+    - 'Maps to PDB: _diffrn_detector.distance'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Detector_distance
+    alias: detector_distance
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  pixel_size_x:
+    name: pixel_size_x
+    description: Pixel size X dimension in micrometers
+    comments:
+    - 'Maps to CBF: Pixel_size'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Pixel_size_x
+    alias: pixel_size_x
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  pixel_size_y:
+    name: pixel_size_y
+    description: Pixel size Y dimension in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Pixel_size_y
+    alias: pixel_size_y
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  total_rotation:
+    name: total_rotation
+    description: Total rotation range collected in degrees
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Total_rotation_deg
+    alias: total_rotation
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  beamline:
+    name: beamline
+    description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
+    comments:
+    - 'Maps to PDB: _diffrn_source.beamline'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    alias: beamline
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing

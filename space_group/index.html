@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-space_group">Slot: space_group</h1>
-<p><em>Crystallographic space group</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/space_group">lambdaber:space_group</a>
 Alias: space_group</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: space_group</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../WorkflowRun/">WorkflowRun</a></td>
+<td>A computational processing workflow execution</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../QualityMetrics/">QualityMetrics</a></td>
 <td>Quality metrics for experiments</td>
 <td>no</td>
@@ -925,10 +914,6 @@ Alias: space_group</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,12 +937,9 @@ Alias: space_group</p>
 <details>
 
 <pre><code class="language-yaml">name: space_group
-description: Crystallographic space group
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: space_group
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
 range: string
 

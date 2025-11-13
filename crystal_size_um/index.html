@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-crystal_size_um">Slot: crystal_size_um</h1>
-<p><em>Crystal dimensions in micrometers</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/crystal_size_um">lambdaber:crystal_size_um</a>
 Alias: crystal_size_um</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: crystal_size_um</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CrystallizationConditions/">CrystallizationConditions</a></td>
+<td>Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayPreparation/">XRayPreparation</a></td>
 <td>X-ray crystallography specific preparation</td>
 <td>no</td>
@@ -925,10 +914,6 @@ Alias: crystal_size_um</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,12 +937,9 @@ Alias: crystal_size_um</p>
 <details>
 
 <pre><code class="language-yaml">name: crystal_size_um
-description: Crystal dimensions in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: crystal_size_um
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

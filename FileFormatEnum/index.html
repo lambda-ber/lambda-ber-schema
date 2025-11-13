@@ -942,6 +942,21 @@
 <td>Crystallographic Binary Format</td>
 </tr>
 <tr>
+<td>cbf_zst</td>
+<td>None</td>
+<td>Zstandard-compressed CBF format</td>
+</tr>
+<tr>
+<td>img</td>
+<td>None</td>
+<td>Generic diffraction image format</td>
+</tr>
+<tr>
+<td>h5</td>
+<td>None</td>
+<td>HDF5 format (alternative extension)</td>
+</tr>
+<tr>
 <td>ascii</td>
 <td>None</td>
 <td>ASCII text format</td>
@@ -955,6 +970,11 @@
 <td>zip</td>
 <td>None</td>
 <td>ZIP compressed archive</td>
+</tr>
+<tr>
+<td>gz</td>
+<td>None</td>
+<td>Gzip compressed format</td>
 </tr>
 </tbody>
 </table>
@@ -1010,6 +1030,15 @@ permissible_values:
   cbf:
     text: cbf
     description: Crystallographic Binary Format
+  cbf_zst:
+    text: cbf_zst
+    description: Zstandard-compressed CBF format
+  img:
+    text: img
+    description: Generic diffraction image format
+  h5:
+    text: h5
+    description: HDF5 format (alternative extension)
   ascii:
     text: ascii
     description: ASCII text format
@@ -1019,6 +1048,9 @@ permissible_values:
   zip:
     text: zip
     description: ZIP compressed archive
+  gz:
+    text: gz
+    description: Gzip compressed format
 
 </code></pre>
 

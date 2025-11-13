@@ -889,7 +889,7 @@
 
 
 <h1 id="enum-detectortypeenum">Enum: DetectorTypeEnum</h1>
-<p><em>Types of detectors for cryo-EM</em></p>
+<p><em>Types of detectors for cryo-EM and X-ray crystallography</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/DetectorTypeEnum">lambdaber:DetectorTypeEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -921,6 +921,31 @@
 <td>None</td>
 <td>Hybrid pixel detector</td>
 </tr>
+<tr>
+<td>eiger</td>
+<td>None</td>
+<td>Dectris EIGER detector (hybrid photon counting)</td>
+</tr>
+<tr>
+<td>pilatus</td>
+<td>None</td>
+<td>Dectris PILATUS detector</td>
+</tr>
+<tr>
+<td>rayonix</td>
+<td>None</td>
+<td>Rayonix CCD detector</td>
+</tr>
+<tr>
+<td>adsc</td>
+<td>None</td>
+<td>ADSC CCD detector</td>
+</tr>
+<tr>
+<td>mar</td>
+<td>None</td>
+<td>MAR CCD or imaging plate detector</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -947,7 +972,7 @@
 <details>
 
 <pre><code class="language-yaml">name: DetectorTypeEnum
-description: Types of detectors for cryo-EM
+description: Types of detectors for cryo-EM and X-ray crystallography
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 permissible_values:
@@ -963,6 +988,21 @@ permissible_values:
   hybrid_pixel:
     text: hybrid_pixel
     description: Hybrid pixel detector
+  eiger:
+    text: eiger
+    description: Dectris EIGER detector (hybrid photon counting)
+  pilatus:
+    text: pilatus
+    description: Dectris PILATUS detector
+  rayonix:
+    text: rayonix
+    description: Rayonix CCD detector
+  adsc:
+    text: adsc
+    description: ADSC CCD detector
+  mar:
+    text: mar
+    description: MAR CCD or imaging plate detector
 
 </code></pre>
 

@@ -1,0 +1,1463 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="lambda-ber-schema">
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/slides/9B7F-example/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>S-SAD Structure of Lysozyme: NSLS2-BER-LAMBDA Integration - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              S-SAD Structure of Lysozyme: NSLS2-BER-LAMBDA Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#s-sad-phasing-of-hen-egg-white-lysozyme" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-SAD Phasing of Hen Egg White Lysozyme
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="overview">Overview</h1>
+<h2 id="s-sad-phasing-of-hen-egg-white-lysozyme">S-SAD Phasing of Hen Egg White Lysozyme</h2>
+<p><strong>PDB Entry</strong>: 9B7F
+<strong>Resolution</strong>: 1.64 Å
+<strong>Method</strong>: Sulfur Single-Wavelength Anomalous Diffraction (S-SAD)
+<strong>Facility</strong>: NSLS-II FMX Beamline, Brookhaven National Laboratory</p>
+<p><strong>Key Innovation</strong>: Lossless compression of diffraction data while preserving full structural information</p>
+<p><strong>Reference</strong>: Bernstein, H.J. &amp; Jakoncic, J. (2024). <em>J. Synchrotron Rad.</em> <strong>31</strong>, 647-654.</p>
+<hr />
+<h1 id="the-protein-hen-egg-white-lysozyme">The Protein: Hen Egg White Lysozyme</h1>
+<h2 id="why-lysozyme">Why Lysozyme?</h2>
+<ul>
+<li><strong>Most studied protein in crystallography</strong></li>
+<li>First enzyme structure solved by X-ray crystallography (1965)</li>
+<li>Standard test case for new methods</li>
+<li>
+<p>Well-characterized reference structure</p>
+</li>
+<li>
+<p><strong>Biological Function</strong>: Hydrolase (EC 3.2.1.17)</p>
+</li>
+<li>Catalyzes hydrolysis of bacterial cell wall peptidoglycan</li>
+<li>Antimicrobial enzyme found in egg white, tears, saliva</li>
+<li>
+<p>Also known as "Allergen Gal d IV"</p>
+</li>
+<li>
+<p><strong>Molecular Details</strong>:</p>
+</li>
+<li>129 amino acid residues</li>
+<li>14.3 kDa molecular weight</li>
+<li>8 methionine + 8 cysteine residues (native sulfur!)</li>
+<li>Source: <em>Gallus gallus</em> (chicken)</li>
+</ul>
+<hr />
+<h1 id="why-s-sad-phasing">Why S-SAD Phasing?</h1>
+<h2 id="traditional-vs-native-phasing">Traditional vs. Native Phasing</h2>
+<h3 id="traditional-approach">Traditional Approach:</h3>
+<ul>
+<li>Heavy atom derivatives (Se-Met, Hg, Pt)</li>
+<li>Requires special protein expression</li>
+<li>Multiple crystals often needed</li>
+<li>Time-consuming and expensive</li>
+</ul>
+<h3 id="s-sad-approach-this-structure">S-SAD Approach (This Structure):</h3>
+<ul>
+<li>Uses <strong>native sulfur</strong> atoms (Met, Cys)</li>
+<li>No special preparation needed</li>
+<li>Single native crystal</li>
+<li>Faster and more economical</li>
+</ul>
+<h3 id="requirements-for-success">Requirements for Success:</h3>
+<p>✅ High-flux synchrotron beamline (NSLS-II FMX)
+✅ Wavelength selection (1.65 Å to maximize f'' from sulfur)
+✅ High-quality detector (EIGER X 9M)
+✅ Sufficient sulfur atoms (16 in asymmetric unit)</p>
+<hr />
+<h1 id="crystal-growth">Crystal Growth</h1>
+<h2 id="crystallization-conditions">Crystallization Conditions</h2>
+<p><strong>Method</strong>: Hanging Drop Vapor Diffusion</p>
+<p><strong>Reservoir Solution</strong>:
+- 1000 mM NaCl
+- 100 mM Sodium Acetate pH 4.6
+- 50 mM Glycerol
+- 50 mM Ethylene Glycol</p>
+<p><strong>Drop</strong>: 1 µL protein + 1 µL reservoir
+<strong>Temperature</strong>: 298 K (25°C)</p>
+<p><strong>Crystal Properties</strong>:
+- Space group: P 43 21 2 (tetragonal)
+- Unit cell: a = b = 78.895 Å, c = 36.955 Å
+- Matthews coefficient: 2.03 Å³/Da
+- Solvent content: 40%
+- Diffraction quality: Excellent to 1.64 Å</p>
+<hr />
+<h1 id="data-collection-at-nsls-ii-fmx">Data Collection at NSLS-II FMX</h1>
+<h2 id="beamline-specifications">Beamline Specifications</h2>
+<p><strong>NSLS-II FMX</strong> (Frontier Macromolecular Crystallography)
+- Synchrotron radiation source
+- Energy range: 5-20 keV
+- High photon flux: 10¹² photons/s/mm²
+- Microfocus capability: 1-100 µm beam</p>
+<p><strong>Detector</strong>: Dectris EIGER X 9M
+- Hybrid photon counting detector
+- 9 megapixel resolution
+- Pixel size: 75 µm × 75 µm
+- Fast readout, zero noise</p>
+<hr />
+<h1 id="data-collection-strategy">Data Collection Strategy</h1>
+<h2 id="optimized-for-s-sad">Optimized for S-SAD</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wavelength</strong></td>
+<td>1.65 Å</td>
+<td>Maximize sulfur f'' signal</td>
+</tr>
+<tr>
+<td><strong>Detector Distance</strong></td>
+<td>100 mm</td>
+<td>High resolution to 1.64 Å</td>
+</tr>
+<tr>
+<td><strong>Oscillation</strong></td>
+<td>0.4° per image</td>
+<td>Fine slicing for completeness</td>
+</tr>
+<tr>
+<td><strong>Total Rotation</strong></td>
+<td>360°</td>
+<td>Full data redundancy</td>
+</tr>
+<tr>
+<td><strong>Temperature</strong></td>
+<td>100 K</td>
+<td>Cryogenic cooling</td>
+</tr>
+<tr>
+<td><strong>Beam Size</strong></td>
+<td>10 µm</td>
+<td>Match to crystal size</td>
+</tr>
+</tbody>
+</table>
+<p><strong>File Format</strong>: CBF with lossless Zstandard compression
+<strong>Data Size</strong>: ~2.5 MB per compressed image (vs ~8 MB uncompressed)</p>
+<hr />
+<h1 id="the-innovation-lossless-compression">The Innovation: Lossless Compression</h1>
+<h2 id="data-compression-challenge">Data Compression Challenge</h2>
+<h3 id="the-problem">The Problem:</h3>
+<ul>
+<li>Modern detectors generate massive data volumes</li>
+<li>Standard crystallography: 900 images × 8 MB = <strong>7.2 GB</strong> per dataset</li>
+<li>Storage and transfer becomes bottleneck</li>
+<li>Long-term archiving expensive</li>
+</ul>
+<h3 id="the-solution">The Solution:</h3>
+<p><strong>Lossless compression</strong> using Zstandard algorithm</p>
+<ul>
+<li><strong>Preserves every bit</strong> of diffraction intensity</li>
+<li><strong>Reduces file size by 70%</strong>: 8 MB → 2.5 MB per image</li>
+<li><strong>No information loss</strong> for phasing or refinement</li>
+<li><strong>Fast compression/decompression</strong></li>
+</ul>
+<h3 id="key-finding">Key Finding:</h3>
+<p><strong>S-SAD phasing successful</strong> with compressed data, proving that compression preserves all structural information!</p>
+<hr />
+<h1 id="data-processing-pipeline">Data Processing Pipeline</h1>
+<h2 id="from-raw-images-to-structure">From Raw Images to Structure</h2>
+<pre><code>1. Data Integration (XDS)
+   ├─ Space group determination: P 43 21 2
+   ├─ Unit cell refinement: 78.895 × 78.895 × 36.955 Å
+   └─ Resolution limit: 1.64 Å
+
+2. Scaling (AIMLESS)
+   ├─ Rmerge: 6.3%
+   ├─ CC½: 0.998 (excellent!)
+   ├─ Completeness: 99.9%
+   └─ I/σ(I): 13.1
+
+3. S-SAD Phasing (SHELXDE)
+   ├─ Locate 16 sulfur atoms (8 Met + 8 Cys)
+   ├─ Calculate anomalous differences
+   ├─ Determine experimental phases
+   └─ Generate initial electron density map
+
+4. Model Building &amp; Refinement (REFMAC5)
+   ├─ Automated building of 129 residues
+   ├─ Add 119 water molecules
+   ├─ Refine to Rwork = 15.9%, Rfree = 19.8%
+   └─ Validate geometry (0 Ramachandran outliers!)
+</code></pre>
+<hr />
+<h1 id="data-quality-metrics">Data Quality Metrics</h1>
+<h2 id="exceptional-quality-throughout">Exceptional Quality Throughout</h2>
+<h3 id="data-collection">Data Collection</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolution</td>
+<td>1.64 Å</td>
+<td>Atomic detail</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>88.9%</td>
+<td>Nearly complete</td>
+</tr>
+<tr>
+<td>Multiplicity</td>
+<td>~7×</td>
+<td>High redundancy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-processing">Data Processing</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rmerge</td>
+<td>6.3%</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Rpim</td>
+<td>3.4%</td>
+<td>Very good</td>
+</tr>
+<tr>
+<td>CC½</td>
+<td>0.998</td>
+<td>Outstanding correlation</td>
+</tr>
+<tr>
+<td>I/σ(I)</td>
+<td>13.1</td>
+<td>Strong signal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="final-refinement">Final Refinement</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rwork</td>
+<td>15.92%</td>
+<td>Excellent fit</td>
+</tr>
+<tr>
+<td>Rfree</td>
+<td>19.75%</td>
+<td>Good validation</td>
+</tr>
+<tr>
+<td>RMSD bonds</td>
+<td>0.012 Å</td>
+<td>Ideal geometry</td>
+</tr>
+<tr>
+<td>Ramachandran favored</td>
+<td>98.4%</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Ramachandran outliers</td>
+<td>0.0%</td>
+<td>Perfect!</td>
+</tr>
+<tr>
+<td>Clashscore</td>
+<td>3.2</td>
+<td>Very good</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="final-structure">Final Structure</h1>
+<h2 id="model-composition">Model Composition</h2>
+<p><strong>Protein</strong>:
+- 1 polypeptide chain (129 residues)
+- 0 Ramachandran outliers
+- Well-ordered throughout</p>
+<p><strong>Ligands and Ions</strong>:
+- 4 ethylene glycol molecules
+- 8 chloride ions
+- 4 sodium ions</p>
+<p><strong>Solvent</strong>:
+- 119 water molecules
+- Well-defined hydrogen bonding network</p>
+<p><strong>Total Atoms</strong>: 1,089
+<strong>Average B-factor</strong>: 28.5 Å²</p>
+<hr />
+<h1 id="nsls2-ber-lambda-integration">NSLS2-BER-LAMBDA Integration</h1>
+<h2 id="complete-metadata-mapping">Complete Metadata Mapping</h2>
+<h3 id="what-we-captured">What We Captured:</h3>
+<p><strong>Sample Level</strong> (NSLS2 → lambda-ber-schema):
+- ✅ Protein name, organism, EC number
+- ✅ Molecular weight, concentration
+- ✅ Buffer composition, storage conditions
+- ✅ Construct details (full-length, no tags)</p>
+<p><strong>Crystallization</strong> (NSLS2 Crystallization):
+- ✅ Method (hanging drop vapor diffusion)
+- ✅ Conditions (salts, pH, additives)
+- ✅ Temperature, drop volume
+- ✅ Crystal size, Matthews coefficient</p>
+<hr />
+<h1 id="nsls2-ber-lambda-integration-cont">NSLS2-BER-LAMBDA Integration (cont.)</h1>
+<h2 id="comprehensive-data-collection-mapping">Comprehensive Data Collection Mapping</h2>
+<p><strong>Data Collection</strong> (CBF headers → ExperimentRun):
+- ✅ Wavelength: 1.65 Å
+- ✅ Detector: EIGER X 9M
+- ✅ Detector distance: 100 mm
+- ✅ Beam center: (785.5, 783.4) pixels
+- ✅ Pixel size: 75 × 75 µm
+- ✅ Oscillation: 0.4° per frame
+- ✅ Exposure time: 0.03 s
+- ✅ Beamline: FMX</p>
+<p><strong>Data Processing</strong> (PDB mmCIF → WorkflowRun):
+- ✅ Space group, unit cell parameters
+- ✅ Resolution limits
+- ✅ Quality metrics (Rmerge, CC½, I/σ, Wilson B)
+- ✅ Completeness, multiplicity</p>
+<p><strong>Refinement</strong> (PDB → WorkflowRun):
+- ✅ Rwork, Rfree
+- ✅ RMSD bonds/angles
+- ✅ Ramachandran statistics
+- ✅ Clashscore, model composition</p>
+<hr />
+<h1 id="lambda-ber-schema-benefits">lambda-ber-schema Benefits</h1>
+<h2 id="why-use-a-formal-schema">Why Use a Formal Schema?</h2>
+<h3 id="1-semantic-consistency">1. <strong>Semantic Consistency</strong></h3>
+<ul>
+<li>Standardized field names across different sources</li>
+<li><code>nsls2:Wavelength</code> maps to CBF <code>Wavelength</code> AND PDB <code>_diffrn_radiation_wavelength.wavelength</code></li>
+<li>No ambiguity or data loss in translation</li>
+</ul>
+<h3 id="2-validation">2. <strong>Validation</strong></h3>
+<pre><code class="language-bash">$ linkml-validate -s lambda-ber-schema.yaml dataset-9B7F.yaml
+✓ No issues found
+</code></pre>
+<ul>
+<li>Automatic checking of data types, ranges, required fields</li>
+<li>Ensures completeness and correctness</li>
+</ul>
+<h3 id="3-interoperability">3. <strong>Interoperability</strong></h3>
+<ul>
+<li>Export to multiple formats: YAML, JSON, RDF, SQL</li>
+<li>Compatible with semantic web standards</li>
+<li>Integrates with knowledge graphs</li>
+</ul>
+<hr />
+<h1 id="lambda-ber-schema-benefits-cont">lambda-ber-schema Benefits (cont.)</h1>
+<h2 id="complete-provenance-tracking">Complete Provenance Tracking</h2>
+<pre><code class="language-yaml">workflow_runs:
+  - workflow_code: &quot;9B7F-SAD-PHASING-001&quot;
+    workflow_type: phasing
+    software_name: &quot;SHELXDE&quot;
+    software_version: &quot;2018/3&quot;
+    phasing_method: sad
+    experiment_id: &quot;FMX-2023-11-HEWL-SAD&quot;
+    input_data: [integration-001, scaling-001]
+    output_files: [phased-mtz, sulfur-sites]
+    started_at: &quot;2023-11-15T18:00:00&quot;
+    completed_at: &quot;2023-11-15T19:30:00&quot;
+    compute_resources:
+      cpu_hours: 1.5
+      memory_gb: 16
+</code></pre>
+<p><strong>Every step documented</strong>:
+- What software (and version)?
+- What parameters?
+- When was it run?
+- What resources were used?
+- What were the inputs/outputs?</p>
+<hr />
+<h1 id="use-cases">Use Cases</h1>
+<h2 id="who-benefits">Who Benefits?</h2>
+<h3 id="1-beamline-scientists">1. <strong>Beamline Scientists</strong></h3>
+<ul>
+<li>Automated metadata extraction from instruments</li>
+<li>Consistent data organization</li>
+<li>Easy handoff to users</li>
+</ul>
+<h3 id="2-structural-biologists">2. <strong>Structural Biologists</strong></h3>
+<ul>
+<li>Complete experimental record</li>
+<li>Easy data sharing and collaboration</li>
+<li>Publication-ready metadata</li>
+</ul>
+<h3 id="3-database-curators">3. <strong>Database Curators</strong></h3>
+<ul>
+<li>Standardized deposition format</li>
+<li>Rich semantic annotations</li>
+<li>Links to ontologies (UniProt, GO, PDB)</li>
+</ul>
+<h3 id="4-computational-scientists">4. <strong>Computational Scientists</strong></h3>
+<ul>
+<li>Machine-readable data</li>
+<li>Training datasets for ML/AI</li>
+<li>Reproducible analysis pipelines</li>
+</ul>
+<hr />
+<h1 id="future-directions">Future Directions</h1>
+<h2 id="expanding-the-framework">Expanding the Framework</h2>
+<h3 id="immediate-extensions">Immediate Extensions:</h3>
+<ol>
+<li><strong>Serial crystallography</strong> (SSX, SFX)</li>
+<li>Time-resolved data</li>
+<li>Pump-probe experiments</li>
+<li>
+<p>XFEL integration</p>
+</li>
+<li>
+<p><strong>Multi-technique integration</strong></p>
+</li>
+<li>Combine with cryo-EM data</li>
+<li>SAXS/WAXS solution scattering</li>
+<li>
+<p>Complementary techniques</p>
+</li>
+<li>
+<p><strong>Automated converters</strong></p>
+</li>
+<li>CBF/CIF → lambda-ber-schema</li>
+<li>Excel templates → schema</li>
+<li>API integration with beamlines</li>
+</ol>
+<h3 id="long-term-vision">Long-term Vision:</h3>
+<ul>
+<li><strong>Unified structural biology database</strong></li>
+<li><strong>AI-ready training datasets</strong></li>
+<li><strong>Real-time data processing</strong> at beamlines</li>
+<li><strong>Automated quality assessment</strong></li>
+</ul>
+<hr />
+<h1 id="technical-implementation">Technical Implementation</h1>
+<h2 id="from-cbf-to-schema">From CBF to Schema</h2>
+<h3 id="extraction-pipeline">Extraction Pipeline:</h3>
+<pre><code class="language-python">from lambda_ber_schema import Dataset, ExperimentRun
+from nsls2_lambda.metadata import parse_cbf, parse_cif
+
+# Extract from CBF diffraction image
+cbf_metadata = parse_cbf(&quot;lyso_7500eV.cbf.zst&quot;)
+
+# Map to schema
+experiment = ExperimentRun(
+    experiment_code=&quot;FMX-2023-11-HEWL-SAD&quot;,
+    technique=&quot;xray_crystallography&quot;,
+    wavelength=cbf_metadata['Wavelength'],  # 1.65 Å
+    beam_center_x=cbf_metadata['Beam_xy'][0],  # 785.5 px
+    beam_center_y=cbf_metadata['Beam_xy'][1],  # 783.4 px
+    detector_distance=cbf_metadata['Detector_distance'],  # 100 mm
+    pixel_size_x=0.075,  # mm
+    pixel_size_y=0.075,  # mm
+    oscillation_angle=cbf_metadata['Angle_increment'],  # 0.4°
+    start_angle=cbf_metadata['Start_angle'],  # 421°
+)
+
+# Validate
+experiment.validate()
+</code></pre>
+<hr />
+<h1 id="key-takeaways">Key Takeaways</h1>
+<h2 id="what-we-learned-from-9b7f">What We Learned from 9B7F</h2>
+<h3 id="scientific-achievement">Scientific Achievement:</h3>
+<p>✅ <strong>S-SAD phasing works</strong> with native sulfur (no heavy atoms needed)
+✅ <strong>Lossless compression preserves</strong> all structural information
+✅ <strong>High-quality structure</strong> (Rwork=15.9%, Rfree=19.8%, 0 outliers)</p>
+<h3 id="metadata-success">Metadata Success:</h3>
+<p>✅ <strong>Complete mapping</strong> from raw data to PDB deposition
+✅ <strong>All 11 NSLS2 categories</strong> represented in schema
+✅ <strong>Bidirectional compatibility</strong> (CBF ↔ Schema ↔ PDB)
+✅ <strong>Validation successful</strong> - schema is production-ready</p>
+<h3 id="broader-impact">Broader Impact:</h3>
+<p>✅ <strong>Template for future datasets</strong> at NSLS-II and other facilities
+✅ <strong>Demonstrates FAIR principles</strong> (Findable, Accessible, Interoperable, Reusable)
+✅ <strong>Enables AI/ML applications</strong> through standardized metadata
+✅ <strong>Foundation for integrative structural biology</strong></p>
+<hr />
+<h1 id="resources">Resources</h1>
+<h2 id="where-to-learn-more">Where to Learn More</h2>
+<h3 id="code-documentation">Code &amp; Documentation:</h3>
+<ul>
+<li><strong>lambda-ber-schema</strong>: https://github.com/lambda-ber/lambda-ber-schema</li>
+<li><strong>NSLS2-BER-LAMBDA</strong>: https://github.com/NSLS2/BER-LAMBDA</li>
+<li><strong>Schema Documentation</strong>: https://w3id.org/lambda-ber-schema/</li>
+</ul>
+<h3 id="example-files">Example Files:</h3>
+<ul>
+<li><strong>9B7F Example</strong>: <code>examples/Dataset-nsls2-9B7F.yaml</code></li>
+<li><strong>Raw Data</strong>: <code>tests/data/raw/9B7F.cif</code></li>
+<li><strong>Integration Guide</strong>: <code>docs/nsls2-integration.md</code></li>
+</ul>
+<h3 id="references">References:</h3>
+<ul>
+<li><strong>PDB Entry 9B7F</strong>: https://www.rcsb.org/structure/9B7F</li>
+<li><strong>Publication</strong>: Bernstein &amp; Jakoncic (2024) <em>J. Synchrotron Rad.</em> 31:647-654</li>
+<li>DOI: 10.1107/S160057752400359X</li>
+<li>PubMed: 38838167</li>
+</ul>
+<h3 id="contacts">Contacts:</h3>
+<ul>
+<li><strong>NSLS-II Beamline</strong>: Jean Jakoncic (jjakoncic@bnl.gov)</li>
+<li><strong>NSLS2-BER-LAMBDA</strong>: Shekar V (vshekar1@bnl.gov)</li>
+</ul>
+<hr />
+<h1 id="thank-you">Thank You!</h1>
+<h2 id="questions">Questions?</h2>
+<p><strong>This presentation demonstrates:</strong>
+- Complete crystallographic workflow (crystallization → structure)
+- S-SAD phasing with native sulfur atoms
+- Lossless compression of diffraction data
+- Comprehensive metadata integration (NSLS2 ↔ lambda-ber-schema)
+- FAIR data principles in structural biology</p>
+<p><strong>Next Steps:</strong>
+1. Explore the example: <code>examples/Dataset-nsls2-9B7F.yaml</code>
+2. Read the integration guide: <code>docs/nsls2-integration.md</code>
+3. Try the validation: <code>linkml-validate -s schema.yaml your-data.yaml</code>
+4. Contribute to the schema: https://github.com/lambda-ber/lambda-ber-schema</p>
+<hr />
+<p><strong>Appendix: Complete Workflow Summary</strong></p>
+<pre><code>Sample Preparation
+├─ Hen egg white lysozyme (14.3 kDa, 129 residues)
+├─ Crystallization (hanging drop, pH 4.6, 298 K)
+└─ Crystals: P 43 21 2, 78.9 × 78.9 × 37.0 Å
+
+Data Collection (NSLS-II FMX)
+├─ EIGER X 9M detector
+├─ 1.65 Å wavelength (optimized for sulfur)
+├─ 900 images, 0.4° oscillation
+├─ Lossless compression (70% size reduction)
+└─ Resolution: 1.64 Å
+
+Processing
+├─ Integration (XDS): 99.9% complete, CC½=0.998
+├─ Scaling (AIMLESS): Rmerge=6.3%, I/σ=13.1
+├─ S-SAD Phasing (SHELXDE): 16 sulfur sites located
+└─ Refinement (REFMAC5): Rwork=15.9%, Rfree=19.8%
+
+Result
+├─ High-quality structure (0 outliers)
+├─ PDB deposition: 9B7F
+├─ Publication: J. Synchrotron Rad. (2024)
+└─ Complete metadata in lambda-ber-schema format
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

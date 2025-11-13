@@ -497,6 +497,8 @@
 
 
 
+      Sample : construct
+
       Sample : database_cross_references
 
 
@@ -521,6 +523,8 @@
 
 
 
+      Sample : expression_system
+
       Sample : functional_sites
 
 
@@ -533,6 +537,8 @@
 
 
       Sample : id
+
+      Sample : ligand
 
       Sample : ligand_interactions
 
@@ -569,6 +575,8 @@
 
 
 
+      Sample : mutations
+
       Sample : organism
 
 
@@ -603,6 +611,8 @@
         click ProteinProteinInteraction href "../ProteinProteinInteraction/"
 
 
+
+      Sample : protein_name
 
       Sample : ptm_annotations
 
@@ -653,6 +663,8 @@
         click StructuralFeature href "../StructuralFeature/"
 
 
+
+      Sample : tag
 
       Sample : title
 
@@ -824,6 +836,42 @@
 <td><a href="../database_cross_references/">database_cross_references</a></td>
 <td>* <br/> <a href="../DatabaseCrossReference/">DatabaseCrossReference</a></td>
 <td>Cross-references to external databases</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protein_name/">protein_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Name of the protein</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../construct/">construct</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Construct description (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tag/">tag</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Affinity tag (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mutations/">mutations</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Mutations present in the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../expression_system/">expression_system</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Expression system used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ligand/">ligand</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ligand or small molecule bound to sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1147,6 +1195,75 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    domain_of:
+    - Sample
+    range: string
 
 </code></pre>
 </details>
@@ -1453,6 +1570,87 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    alias: protein_name
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    alias: construct
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    alias: tag
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    alias: mutations
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    alias: expression_system
+    owner: Sample
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    alias: ligand
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing

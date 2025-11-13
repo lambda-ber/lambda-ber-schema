@@ -431,7 +431,13 @@
 
       WorkflowRun : additional_software
 
+      WorkflowRun : cc_half
+
+      WorkflowRun : clashscore
+
       WorkflowRun : completed_at
+
+      WorkflowRun : completeness_percent
 
       WorkflowRun : compute_resources
 
@@ -450,6 +456,8 @@
 
       WorkflowRun : experiment_id
 
+      WorkflowRun : i_over_sigma
+
       WorkflowRun : id
 
       WorkflowRun : indexer_module
@@ -457,6 +465,8 @@
       WorkflowRun : integrator_module
 
       WorkflowRun : ligands_cofactors
+
+      WorkflowRun : multiplicity
 
       WorkflowRun : ncs_used
 
@@ -496,9 +506,29 @@
 
       WorkflowRun : processing_parameters
 
+      WorkflowRun : ramachandran_favored
+
+      WorkflowRun : ramachandran_outliers
+
       WorkflowRun : refinement_resolution_a
 
+      WorkflowRun : resolution_high
+
+      WorkflowRun : resolution_low
+
       WorkflowRun : restraints_other
+
+      WorkflowRun : rfree
+
+      WorkflowRun : rmerge
+
+      WorkflowRun : rmsd_angles
+
+      WorkflowRun : rmsd_bonds
+
+      WorkflowRun : rpim
+
+      WorkflowRun : rwork
 
       WorkflowRun : scaler_module
 
@@ -508,13 +538,29 @@
 
       WorkflowRun : software_version
 
+      WorkflowRun : space_group
+
       WorkflowRun : started_at
 
       WorkflowRun : title
 
       WorkflowRun : tls_used
 
+      WorkflowRun : unit_cell_a
+
+      WorkflowRun : unit_cell_alpha
+
+      WorkflowRun : unit_cell_b
+
+      WorkflowRun : unit_cell_beta
+
+      WorkflowRun : unit_cell_c
+
+      WorkflowRun : unit_cell_gamma
+
       WorkflowRun : validation_report_path
+
+      WorkflowRun : wilson_b_factor
 
       WorkflowRun : workflow_code
 
@@ -691,6 +737,144 @@
 <td><a href="../validation_report_path/">validation_report_path</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Path to validation report</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../space_group/">space_group</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Crystallographic space group</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_a/">unit_cell_a</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell parameter a in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_b/">unit_cell_b</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell parameter b in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_c/">unit_cell_c</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell parameter c in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_alpha/">unit_cell_alpha</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell angle alpha in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_beta/">unit_cell_beta</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell angle beta in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unit_cell_gamma/">unit_cell_gamma</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Unit cell angle gamma in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resolution_high/">resolution_high</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>High resolution limit in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resolution_low/">resolution_low</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Low resolution limit in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rmerge/">rmerge</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Rmerge - merge R-factor</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rpim/">rpim</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Rpim - precision-indicating merging R-factor</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cc_half/">cc_half</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Half-set correlation coefficient CC(1/2)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../completeness_percent/">completeness_percent</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Data completeness percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../i_over_sigma/">i_over_sigma</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Mean I/sigma(I) - signal to noise ratio</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wilson_b_factor/">wilson_b_factor</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Wilson B-factor in Angstroms squared</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../multiplicity/">multiplicity</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Data multiplicity (redundancy)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rwork/">rwork</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Refinement R-factor (working set)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rfree/">rfree</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>R-free (test set)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rmsd_bonds/">rmsd_bonds</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>RMSD from ideal bond lengths in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rmsd_angles/">rmsd_angles</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>RMSD from ideal bond angles in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ramachandran_favored/">ramachandran_favored</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Percentage of residues in favored Ramachandran regions</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ramachandran_outliers/">ramachandran_outliers</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Percentage of Ramachandran outliers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../clashscore/">clashscore</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>MolProbity clashscore</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -980,6 +1164,269 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
+  space_group:
+    name: space_group
+    description: Crystallographic space group
+    comments:
+    - 'Maps to PDB: _symmetry.space_group_name_h-m'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Space_Group
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: string
+  unit_cell_a:
+    name: unit_cell_a
+    description: Unit cell parameter a in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_a'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_a
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_b:
+    name: unit_cell_b
+    description: Unit cell parameter b in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_b'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_b
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_c:
+    name: unit_cell_c
+    description: Unit cell parameter c in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_c'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_c
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_alpha:
+    name: unit_cell_alpha
+    description: Unit cell angle alpha in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_alpha'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_alpha
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_beta:
+    name: unit_cell_beta
+    description: Unit cell angle beta in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_beta'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_beta
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_gamma:
+    name: unit_cell_gamma
+    description: Unit cell angle gamma in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_gamma'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_gamma
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  resolution_high:
+    name: resolution_high
+    description: High resolution limit in Angstroms
+    comments:
+    - 'Maps to PDB: _reflns.d_resolution_high'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Resolution_High_A
+    domain_of:
+    - WorkflowRun
+    range: float
+  resolution_low:
+    name: resolution_low
+    description: Low resolution limit in Angstroms
+    comments:
+    - 'Maps to PDB: _reflns.d_resolution_low'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Resolution_Low_A
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmerge:
+    name: rmerge
+    description: Rmerge - merge R-factor
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_Rmerge_I_obs'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rmerge
+    domain_of:
+    - WorkflowRun
+    range: float
+  rpim:
+    name: rpim
+    description: Rpim - precision-indicating merging R-factor
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_Rpim_I_all'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rpim
+    domain_of:
+    - WorkflowRun
+    range: float
+  cc_half:
+    name: cc_half
+    description: Half-set correlation coefficient CC(1/2)
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_CC_half'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:CC_half
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  completeness_percent:
+    name: completeness_percent
+    description: Data completeness percentage
+    comments:
+    - 'Maps to PDB: _reflns.percent_possible_obs'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Completeness
+    domain_of:
+    - WorkflowRun
+    range: float
+  i_over_sigma:
+    name: i_over_sigma
+    description: Mean I/sigma(I) - signal to noise ratio
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_netI_over_sigmaI'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:I_over_sigma
+    domain_of:
+    - WorkflowRun
+    range: float
+  wilson_b_factor:
+    name: wilson_b_factor
+    description: Wilson B-factor in Angstroms squared
+    comments:
+    - 'Maps to PDB: _reflns.B_iso_Wilson_estimate'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Wilson_B
+    domain_of:
+    - WorkflowRun
+    range: float
+  multiplicity:
+    name: multiplicity
+    description: Data multiplicity (redundancy)
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_redundancy'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Multiplicity
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  rwork:
+    name: rwork
+    description: Refinement R-factor (working set)
+    comments:
+    - 'Maps to PDB: _refine.ls_R_factor_R_work'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rwork
+    domain_of:
+    - WorkflowRun
+    range: float
+  rfree:
+    name: rfree
+    description: R-free (test set)
+    comments:
+    - 'Maps to PDB: _refine.ls_R_factor_R_free'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rfree
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmsd_bonds:
+    name: rmsd_bonds
+    description: RMSD from ideal bond lengths in Angstroms
+    comments:
+    - 'Maps to PDB: _refine.ls_d_res_high'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:RMSD_bonds
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmsd_angles:
+    name: rmsd_angles
+    description: RMSD from ideal bond angles in degrees
+    comments:
+    - 'Maps to PDB: _refine.ls_d_res_low'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:RMSD_angles
+    domain_of:
+    - WorkflowRun
+    range: float
+  ramachandran_favored:
+    name: ramachandran_favored
+    description: Percentage of residues in favored Ramachandran regions
+    comments:
+    - 'Maps to PDB: _refine.pdbx_overall_ESU_R'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ramachandran_Favored
+    domain_of:
+    - WorkflowRun
+    range: float
+  ramachandran_outliers:
+    name: ramachandran_outliers
+    description: Percentage of Ramachandran outliers
+    comments:
+    - 'Maps to PDB: _refine.pdbx_overall_ESU_R_Free'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ramachandran_Outliers
+    domain_of:
+    - WorkflowRun
+    range: float
+  clashscore:
+    name: clashscore
+    description: MolProbity clashscore
+    comments:
+    - Maps to validation report metrics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Clashscore
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
   processing_notes:
     name: processing_notes
     description: Additional notes about processing
@@ -1278,6 +1725,315 @@ attributes:
     domain_of:
     - WorkflowRun
     range: string
+  space_group:
+    name: space_group
+    description: Crystallographic space group
+    comments:
+    - 'Maps to PDB: _symmetry.space_group_name_h-m'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Space_Group
+    alias: space_group
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: string
+  unit_cell_a:
+    name: unit_cell_a
+    description: Unit cell parameter a in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_a'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_a
+    alias: unit_cell_a
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_b:
+    name: unit_cell_b
+    description: Unit cell parameter b in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_b'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_b
+    alias: unit_cell_b
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_c:
+    name: unit_cell_c
+    description: Unit cell parameter c in Angstroms
+    comments:
+    - 'Maps to PDB: _cell.length_c'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_c
+    alias: unit_cell_c
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_alpha:
+    name: unit_cell_alpha
+    description: Unit cell angle alpha in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_alpha'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_alpha
+    alias: unit_cell_alpha
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_beta:
+    name: unit_cell_beta
+    description: Unit cell angle beta in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_beta'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_beta
+    alias: unit_cell_beta
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  unit_cell_gamma:
+    name: unit_cell_gamma
+    description: Unit cell angle gamma in degrees
+    comments:
+    - 'Maps to PDB: _cell.angle_gamma'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Unit_Cell_gamma
+    alias: unit_cell_gamma
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  resolution_high:
+    name: resolution_high
+    description: High resolution limit in Angstroms
+    comments:
+    - 'Maps to PDB: _reflns.d_resolution_high'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Resolution_High_A
+    alias: resolution_high
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  resolution_low:
+    name: resolution_low
+    description: Low resolution limit in Angstroms
+    comments:
+    - 'Maps to PDB: _reflns.d_resolution_low'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Resolution_Low_A
+    alias: resolution_low
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmerge:
+    name: rmerge
+    description: Rmerge - merge R-factor
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_Rmerge_I_obs'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rmerge
+    alias: rmerge
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  rpim:
+    name: rpim
+    description: Rpim - precision-indicating merging R-factor
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_Rpim_I_all'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rpim
+    alias: rpim
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  cc_half:
+    name: cc_half
+    description: Half-set correlation coefficient CC(1/2)
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_CC_half'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:CC_half
+    alias: cc_half
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  completeness_percent:
+    name: completeness_percent
+    description: Data completeness percentage
+    comments:
+    - 'Maps to PDB: _reflns.percent_possible_obs'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Completeness
+    alias: completeness_percent
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  i_over_sigma:
+    name: i_over_sigma
+    description: Mean I/sigma(I) - signal to noise ratio
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_netI_over_sigmaI'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:I_over_sigma
+    alias: i_over_sigma
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  wilson_b_factor:
+    name: wilson_b_factor
+    description: Wilson B-factor in Angstroms squared
+    comments:
+    - 'Maps to PDB: _reflns.B_iso_Wilson_estimate'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Wilson_B
+    alias: wilson_b_factor
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  multiplicity:
+    name: multiplicity
+    description: Data multiplicity (redundancy)
+    comments:
+    - 'Maps to PDB: _reflns.pdbx_redundancy'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Multiplicity
+    alias: multiplicity
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
+  rwork:
+    name: rwork
+    description: Refinement R-factor (working set)
+    comments:
+    - 'Maps to PDB: _refine.ls_R_factor_R_work'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rwork
+    alias: rwork
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  rfree:
+    name: rfree
+    description: R-free (test set)
+    comments:
+    - 'Maps to PDB: _refine.ls_R_factor_R_free'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Rfree
+    alias: rfree
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmsd_bonds:
+    name: rmsd_bonds
+    description: RMSD from ideal bond lengths in Angstroms
+    comments:
+    - 'Maps to PDB: _refine.ls_d_res_high'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:RMSD_bonds
+    alias: rmsd_bonds
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  rmsd_angles:
+    name: rmsd_angles
+    description: RMSD from ideal bond angles in degrees
+    comments:
+    - 'Maps to PDB: _refine.ls_d_res_low'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:RMSD_angles
+    alias: rmsd_angles
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  ramachandran_favored:
+    name: ramachandran_favored
+    description: Percentage of residues in favored Ramachandran regions
+    comments:
+    - 'Maps to PDB: _refine.pdbx_overall_ESU_R'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ramachandran_Favored
+    alias: ramachandran_favored
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  ramachandran_outliers:
+    name: ramachandran_outliers
+    description: Percentage of Ramachandran outliers
+    comments:
+    - 'Maps to PDB: _refine.pdbx_overall_ESU_R_Free'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ramachandran_Outliers
+    alias: ramachandran_outliers
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  clashscore:
+    name: clashscore
+    description: MolProbity clashscore
+    comments:
+    - Maps to validation report metrics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Clashscore
+    alias: clashscore
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    - QualityMetrics
+    range: float
   processing_notes:
     name: processing_notes
     description: Additional notes about processing

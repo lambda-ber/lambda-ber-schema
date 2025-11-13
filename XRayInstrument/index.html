@@ -426,6 +426,8 @@
 
       XRayInstrument : beam_size_min
 
+      XRayInstrument : beamline_id
+
       XRayInstrument : crystal_cooling_capability
 
       XRayInstrument : current_status
@@ -440,6 +442,17 @@
 
 
       XRayInstrument : description
+
+      XRayInstrument : detector_type
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" DetectorTypeEnum : detector_type
+        click DetectorTypeEnum href "../DetectorTypeEnum/"
+
+
 
       XRayInstrument : energy_max
 
@@ -501,6 +514,18 @@
 <td><a href="../source_type/">source_type</a></td>
 <td>0..1 <br/> <a href="../XRaySourceTypeEnum/">XRaySourceTypeEnum</a></td>
 <td>Type of X-ray source</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_type/">detector_type</a></td>
+<td>0..1 <br/> <a href="../DetectorTypeEnum/">DetectorTypeEnum</a></td>
+<td>Type of X-ray detector</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../beamline_id/">beamline_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Beamline identifier at synchrotron facility</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -643,6 +668,28 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
+  detector_type:
+    name: detector_type
+    description: Type of X-ray detector
+    comments:
+    - 'Maps to CBF: Detector'
+    - 'Maps to PDB: _diffrn_detector.type'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    slot_uri: nsls2:Detector
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTypeEnum
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron facility
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    domain_of:
+    - XRayInstrument
+    range: string
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
@@ -726,6 +773,32 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
+  detector_type:
+    name: detector_type
+    description: Type of X-ray detector
+    comments:
+    - 'Maps to CBF: Detector'
+    - 'Maps to PDB: _diffrn_detector.type'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    slot_uri: nsls2:Detector
+    alias: detector_type
+    owner: XRayInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTypeEnum
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron facility
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    alias: beamline_id
+    owner: XRayInstrument
+    domain_of:
+    - XRayInstrument
+    range: string
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV

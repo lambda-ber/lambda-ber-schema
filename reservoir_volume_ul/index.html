@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-reservoir_volume_ul">Slot: reservoir_volume_ul</h1>
-<p><em>Reservoir volume in microliters</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/reservoir_volume_ul">lambdaber:reservoir_volume_ul</a>
 Alias: reservoir_volume_ul</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: reservoir_volume_ul</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CrystallizationConditions/">CrystallizationConditions</a></td>
+<td>Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayPreparation/">XRayPreparation</a></td>
 <td>X-ray crystallography specific preparation</td>
 <td>no</td>
@@ -922,13 +911,9 @@ Alias: reservoir_volume_ul</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: reservoir_volume_ul</p>
 <details>
 
 <pre><code class="language-yaml">name: reservoir_volume_ul
-description: Reservoir volume in microliters
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: reservoir_volume_ul
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
-range: float
+range: string
 
 </code></pre>
 

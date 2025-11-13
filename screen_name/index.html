@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-screen_name">Slot: screen_name</h1>
-<p><em>Name of crystallization screen used</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/screen_name">lambdaber:screen_name</a>
 Alias: screen_name</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: screen_name</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CrystallizationConditions/">CrystallizationConditions</a></td>
+<td>Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayPreparation/">XRayPreparation</a></td>
 <td>X-ray crystallography specific preparation</td>
 <td>no</td>
@@ -925,10 +914,6 @@ Alias: screen_name</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,12 +937,9 @@ Alias: screen_name</p>
 <details>
 
 <pre><code class="language-yaml">name: screen_name
-description: Name of crystallization screen used
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: screen_name
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

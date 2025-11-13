@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-unit_cell_alpha">Slot: unit_cell_alpha</h1>
-<p><em>Unit cell angle alpha in degrees</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/unit_cell_alpha">lambdaber:unit_cell_alpha</a>
 Alias: unit_cell_alpha</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: unit_cell_alpha</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../WorkflowRun/">WorkflowRun</a></td>
+<td>A computational processing workflow execution</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../QualityMetrics/">QualityMetrics</a></td>
 <td>Quality metrics for experiments</td>
 <td>no</td>
@@ -922,13 +911,9 @@ Alias: unit_cell_alpha</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: unit_cell_alpha</p>
 <details>
 
 <pre><code class="language-yaml">name: unit_cell_alpha
-description: Unit cell angle alpha in degrees
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: unit_cell_alpha
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 </code></pre>
 
