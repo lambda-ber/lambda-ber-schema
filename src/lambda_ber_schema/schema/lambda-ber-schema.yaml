@@ -1960,16 +1960,22 @@ classes:
 
   FSCCurve:
     is_a: AttributeGroup
-    description: "Fourier Shell Correlation curve data"
+    description: |
+      Fourier Shell Correlation curve data.
+      
+      The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
+      corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
     attributes:
       resolution_angstrom:
         description: "Resolution values in Angstroms"
         range: float
         multivalued: true
+        maximum_cardinality: 10000
       fsc_value:
         description: "FSC values corresponding to each resolution"
         range: float
         multivalued: true
+        maximum_cardinality: 10000
 
 enums:
   SampleTypeEnum:
