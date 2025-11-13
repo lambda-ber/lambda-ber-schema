@@ -849,6 +849,108 @@
             "title": "CryoEMPreparation",
             "type": "object"
         },
+        "CrystallizationConditions": {
+            "additionalProperties": false,
+            "description": "Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)",
+            "properties": {
+                "cryo_protectant": {
+                    "description": "Cryoprotectant used for crystal cooling",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystal_id": {
+                    "description": "Identifier for the specific crystal used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystal_size_um": {
+                    "description": "Crystal dimensions in micrometers (length x width x height)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystallization_conditions": {
+                    "description": "Complete description of crystallization conditions including precipitant, pH, salts",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "drop_ratio_protein_to_reservoir": {
+                    "description": "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "drop_volume": {
+                    "description": "Total drop volume in nanoliters",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "method": {
+                    "$ref": "#/$defs/CrystallizationMethodEnum",
+                    "description": "Crystallization method used"
+                },
+                "protein_concentration": {
+                    "description": "Protein concentration for crystallization in mg/mL",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "reservoir_volume_ul": {
+                    "description": "Reservoir volume in microliters",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "screen_name": {
+                    "description": "Name of crystallization screen used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "seed_stock_dilution": {
+                    "description": "Dilution factor for seed stock",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "seeding_type": {
+                    "description": "Type of seeding used (micro, macro, streak)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature_c": {
+                    "description": "Crystallization temperature in Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "CrystallizationConditions",
+            "type": "object"
+        },
         "CrystallizationMethodEnum": {
             "description": "Methods for protein crystallization",
             "enum": [
@@ -1207,12 +1309,17 @@
             "type": "object"
         },
         "DetectorTypeEnum": {
-            "description": "Types of detectors for cryo-EM",
+            "description": "Types of detectors for cryo-EM and X-ray crystallography",
             "enum": [
                 "direct_electron",
                 "ccd",
                 "cmos",
-                "hybrid_pixel"
+                "hybrid_pixel",
+                "eiger",
+                "pilatus",
+                "rayonix",
+                "adsc",
+                "mar"
             ],
             "title": "DetectorTypeEnum",
             "type": "string"
@@ -1392,6 +1499,27 @@
             "additionalProperties": false,
             "description": "An experimental data collection session",
             "properties": {
+                "beam_center_x": {
+                    "description": "Beam center X coordinate in pixels",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beam_center_y": {
+                    "description": "Beam center Y coordinate in pixels",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beamline": {
+                    "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "data_collection_strategy": {
                     "anyOf": [
                         {
@@ -1406,6 +1534,13 @@
                 "description": {
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "detector_distance": {
+                    "description": "Distance from sample to detector in millimeters",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -1443,10 +1578,38 @@
                     "description": "Reference to the instrument used",
                     "type": "string"
                 },
+                "number_of_images": {
+                    "description": "Total number of diffraction images collected",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "operator_id": {
                     "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "oscillation_angle": {
+                    "description": "Oscillation angle per image in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_x": {
+                    "description": "Pixel size X dimension in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_y": {
+                    "description": "Pixel size Y dimension in micrometers",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -1476,6 +1639,13 @@
                     "description": "Reference to the sample being analyzed",
                     "type": "string"
                 },
+                "start_angle": {
+                    "description": "Starting rotation angle in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "technique": {
                     "$ref": "#/$defs/TechniqueEnum",
                     "description": "Technique used for data collection"
@@ -1483,6 +1653,20 @@
                 "title": {
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "total_rotation": {
+                    "description": "Total rotation range collected in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "wavelength": {
+                    "description": "X-ray wavelength in Angstroms",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 }
@@ -1713,9 +1897,13 @@
                 "mmcif",
                 "mtz",
                 "cbf",
+                "cbf_zst",
+                "img",
+                "h5",
                 "ascii",
                 "thermo_raw",
-                "zip"
+                "zip",
+                "gz"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -4086,6 +4274,13 @@
                     ],
                     "description": "Conformational states and dynamics"
                 },
+                "construct": {
+                    "description": "Construct description (e.g., domain boundaries, truncations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "database_cross_references": {
                     "description": "Cross-references to external databases",
                     "items": {
@@ -4113,6 +4308,13 @@
                     ],
                     "description": "Evolutionary conservation data"
                 },
+                "expression_system": {
+                    "description": "Expression system used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "functional_sites": {
                     "description": "Functional site annotations for proteins in the sample",
                     "items": {
@@ -4126,6 +4328,13 @@
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
+                },
+                "ligand": {
+                    "description": "Ligand or small molecule bound to sample",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "ligand_interactions": {
                     "description": "Small molecule interaction annotations",
@@ -4165,6 +4374,13 @@
                         "null"
                     ]
                 },
+                "mutations": {
+                    "description": "Mutations present in the sample",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "organism": {
                     "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
                     "type": [
@@ -4193,6 +4409,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "protein_name": {
+                    "description": "Name of the protein",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -4248,6 +4471,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "tag": {
+                    "description": "Affinity tag (e.g., His6, GST, MBP)",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -4993,10 +5223,31 @@
                         "null"
                     ]
                 },
+                "cc_half": {
+                    "description": "Half-set correlation coefficient CC(1/2)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "clashscore": {
+                    "description": "MolProbity clashscore",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "completed_at": {
                     "description": "Workflow completion time",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "completeness_percent": {
+                    "description": "Data completeness percentage",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -5028,6 +5279,13 @@
                     "description": "Reference to the source experiment",
                     "type": "string"
                 },
+                "i_over_sigma": {
+                    "description": "Mean I/sigma(I) - signal to noise ratio",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
@@ -5050,6 +5308,13 @@
                     "description": "Ligands or cofactors modeled in the structure",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "multiplicity": {
+                    "description": "Data multiplicity (redundancy)",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -5125,8 +5390,36 @@
                         "null"
                     ]
                 },
+                "ramachandran_favored": {
+                    "description": "Percentage of residues in favored Ramachandran regions",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ramachandran_outliers": {
+                    "description": "Percentage of Ramachandran outliers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "refinement_resolution_a": {
                     "description": "Resolution cutoff used for refinement in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_high": {
+                    "description": "High resolution limit in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_low": {
+                    "description": "Low resolution limit in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -5136,6 +5429,48 @@
                     "description": "Other restraints applied during refinement",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "rfree": {
+                    "description": "R-free (test set)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rmerge": {
+                    "description": "Rmerge - merge R-factor",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rmsd_angles": {
+                    "description": "RMSD from ideal bond angles in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rmsd_bonds": {
+                    "description": "RMSD from ideal bond lengths in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rpim": {
+                    "description": "Rpim - precision-indicating merging R-factor",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rwork": {
+                    "description": "Refinement R-factor (working set)",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -5164,6 +5499,13 @@
                         "null"
                     ]
                 },
+                "space_group": {
+                    "description": "Crystallographic space group",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "started_at": {
                     "description": "Workflow start time",
                     "type": [
@@ -5184,10 +5526,59 @@
                         "null"
                     ]
                 },
+                "unit_cell_a": {
+                    "description": "Unit cell parameter a in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit_cell_alpha": {
+                    "description": "Unit cell angle alpha in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit_cell_b": {
+                    "description": "Unit cell parameter b in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit_cell_beta": {
+                    "description": "Unit cell angle beta in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit_cell_c": {
+                    "description": "Unit cell parameter c in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit_cell_gamma": {
+                    "description": "Unit cell angle gamma in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "validation_report_path": {
                     "description": "Path to validation report",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "wilson_b_factor": {
+                    "description": "Wilson B-factor in Angstroms squared",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -5392,6 +5783,13 @@
                         "null"
                     ]
                 },
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "crystal_cooling_capability": {
                     "description": "Crystal cooling system available",
                     "type": [
@@ -5408,6 +5806,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "detector_type": {
+                    "$ref": "#/$defs/DetectorTypeEnum",
+                    "description": "Type of X-ray detector"
                 },
                 "energy_max": {
                     "description": "Maximum X-ray energy in keV",
@@ -5531,11 +5933,15 @@
                     ]
                 },
                 "crystallization_conditions": {
-                    "description": "Detailed crystallization conditions",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrystallizationConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Detailed crystallization conditions"
                 },
                 "crystallization_method": {
                     "$ref": "#/$defs/CrystallizationMethodEnum",
@@ -5575,10 +5981,24 @@
                         "null"
                     ]
                 },
+                "loop_size": {
+                    "description": "Loop size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "mounting_method": {
                     "description": "Crystal mounting method",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "mounting_temperature": {
+                    "description": "Temperature during mounting in Kelvin",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },

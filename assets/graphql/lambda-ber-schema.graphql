@@ -203,6 +203,11 @@ enum DetectorTypeEnum
     ccd
     cmos
     hybrid_pixel
+    eiger
+    pilatus
+    rayonix
+    adsc
+    mar
   }
 
 enum EvidenceTypeEnum
@@ -242,9 +247,13 @@ enum FileFormatEnum
     mmcif
     mtz
     cbf
+    cbf_zst
+    img
+    h5
     ascii
     thermo_raw
     zip
+    gz
   }
 
 enum FunctionalEffectEnum
@@ -635,6 +644,24 @@ type CryoEMPreparation
     plasmaTreatment: String
   }
 
+type CrystallizationConditions
+  {
+    description: String
+    method: CrystallizationMethodEnum
+    crystallizationConditions: String
+    dropVolume: Float
+    proteinConcentration: Float
+    crystalSizeUm: String
+    cryoProtectant: String
+    crystalId: String
+    screenName: String
+    temperatureC: Float
+    dropRatioProteinToReservoir: String
+    reservoirVolumeUl: Float
+    seedingType: String
+    seedStockDilution: String
+  }
+
 type DatabaseCrossReference
   {
     description: String
@@ -743,6 +770,17 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
+    wavelength: Float
+    oscillationAngle: Float
+    startAngle: Float
+    numberOfImages: Integer
+    beamCenterX: Float
+    beamCenterY: Float
+    detectorDistance: Float
+    pixelSizeX: Float
+    pixelSizeY: Float
+    totalRotation: Float
+    beamline: String
   }
 
 type FluorescenceImage
@@ -1136,6 +1174,12 @@ type Sample
     evolutionaryConservation: EvolutionaryConservation
     conformationalEnsemble: ConformationalEnsemble
     databaseCrossReferences: [DatabaseCrossReference]
+    proteinName: String
+    construct: String
+    tag: String
+    mutations: String
+    expressionSystem: String
+    ligand: String
   }
 
 type SamplePreparation
@@ -1299,6 +1343,29 @@ type WorkflowRun
     depositedToPdb: Boolean
     pdbId: String
     validationReportPath: String
+    spaceGroup: String
+    unitCellA: Float
+    unitCellB: Float
+    unitCellC: Float
+    unitCellAlpha: Float
+    unitCellBeta: Float
+    unitCellGamma: Float
+    resolutionHigh: Float
+    resolutionLow: Float
+    rmerge: Float
+    rpim: Float
+    ccHalf: Float
+    completenessPercent: Float
+    iOverSigma: Float
+    wilsonBFactor: Float
+    multiplicity: Float
+    rwork: Float
+    rfree: Float
+    rmsdBonds: Float
+    rmsdAngles: Float
+    ramachandranFavored: Float
+    ramachandranOutliers: Float
+    clashscore: Float
     processingNotes: String
     computeResources: ComputeResources
     startedAt: String
@@ -1317,6 +1384,8 @@ type XRayInstrument
     installationDate: String
     currentStatus: InstrumentStatusEnum
     sourceType: XRaySourceTypeEnum
+    detectorType: DetectorTypeEnum
+    beamlineId: String
     energyMin: Float
     energyMax: Float
     beamSizeMin: Float
@@ -1334,6 +1403,7 @@ type XRayPreparation
     proteinBuffer: String
     additives: String
     crystallizationMethod: CrystallizationMethodEnum
+    crystallizationConditions: CrystallizationConditions
     screenName: String
     temperatureC: Float
     dropRatioProteinToReservoir: String
@@ -1344,7 +1414,6 @@ type XRayPreparation
     initialHitCondition: String
     optimizationStrategy: String
     optimizedCondition: String
-    crystallizationConditions: String
     crystalSizeUm: String
     cryoprotectant: String
     cryoprotectantConcentration: Float
@@ -1353,6 +1422,8 @@ type XRayPreparation
     mountingMethod: String
     flashCoolingMethod: String
     crystalNotes: String
+    loopSize: Float
+    mountingTemperature: Float
   }
 
 type XRFImage
