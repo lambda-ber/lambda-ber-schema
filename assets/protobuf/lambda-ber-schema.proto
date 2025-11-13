@@ -114,6 +114,24 @@ message CryoEMPreparation
   float chamberTemperature = 0
   string plasmaTreatment = 0
  }
+// Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
+message CrystallizationConditions
+ {
+  string description = 0
+  crystallizationMethodEnum method = 0
+  string crystallizationConditions = 0
+  float dropVolume = 0
+  float proteinConcentration = 0
+  string crystalSizeUm = 0
+  string cryoProtectant = 0
+  string crystalId = 0
+  string screenName = 0
+  float temperatureC = 0
+  string dropRatioProteinToReservoir = 0
+  float reservoirVolumeUl = 0
+  string seedingType = 0
+  string seedStockDilution = 0
+ }
 // Cross-references to external databases
 message DatabaseCrossReference
  {
@@ -223,6 +241,17 @@ message ExperimentRun
   qualityMetrics qualityMetrics = 0
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
+  float wavelength = 0
+  float oscillationAngle = 0
+  float startAngle = 0
+  integer numberOfImages = 0
+  float beamCenterX = 0
+  float beamCenterY = 0
+  float detectorDistance = 0
+  float pixelSizeX = 0
+  float pixelSizeY = 0
+  float totalRotation = 0
+  string beamline = 0
  }
 // Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 message FluorescenceImage
@@ -608,6 +637,12 @@ message Sample
   evolutionaryConservation evolutionaryConservation = 0
   conformationalEnsemble conformationalEnsemble = 0
  repeated  databaseCrossReference databaseCrossReferences = 0
+  string proteinName = 0
+  string construct = 0
+  string tag = 0
+  string mutations = 0
+  string expressionSystem = 0
+  string ligand = 0
  }
 // A process that prepares a sample for imaging
 message SamplePreparation
@@ -766,6 +801,29 @@ message WorkflowRun
   boolean depositedToPdb = 0
   string pdbId = 0
   string validationReportPath = 0
+  string spaceGroup = 0
+  float unitCellA = 0
+  float unitCellB = 0
+  float unitCellC = 0
+  float unitCellAlpha = 0
+  float unitCellBeta = 0
+  float unitCellGamma = 0
+  float resolutionHigh = 0
+  float resolutionLow = 0
+  float rmerge = 0
+  float rpim = 0
+  float ccHalf = 0
+  float completenessPercent = 0
+  float iOverSigma = 0
+  float wilsonBFactor = 0
+  float multiplicity = 0
+  float rwork = 0
+  float rfree = 0
+  float rmsdBonds = 0
+  float rmsdAngles = 0
+  float ramachandranFavored = 0
+  float ramachandranOutliers = 0
+  float clashscore = 0
   string processingNotes = 0
   computeResources computeResources = 0
   string startedAt = 0
@@ -784,6 +842,8 @@ message XRayInstrument
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
   xRaySourceTypeEnum sourceType = 0
+  detectorTypeEnum detectorType = 0
+  string beamlineId = 0
   float energyMin = 0
   float energyMax = 0
   float beamSizeMin = 0
@@ -801,6 +861,7 @@ message XRayPreparation
   string proteinBuffer = 0
   string additives = 0
   crystallizationMethodEnum crystallizationMethod = 0
+  crystallizationConditions crystallizationConditions = 0
   string screenName = 0
   float temperatureC = 0
   string dropRatioProteinToReservoir = 0
@@ -811,7 +872,6 @@ message XRayPreparation
   string initialHitCondition = 0
   string optimizationStrategy = 0
   string optimizedCondition = 0
-  string crystallizationConditions = 0
   string crystalSizeUm = 0
   string cryoprotectant = 0
   float cryoprotectantConcentration = 0
@@ -820,6 +880,8 @@ message XRayPreparation
   string mountingMethod = 0
   string flashCoolingMethod = 0
   string crystalNotes = 0
+  float loopSize = 0
+  float mountingTemperature = 0
  }
 // X-ray fluorescence (XRF) image showing elemental distribution
 message XRFImage

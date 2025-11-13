@@ -17,8 +17,8 @@ Alias: additives
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
+| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
 

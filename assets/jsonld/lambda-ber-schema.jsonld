@@ -51,6 +51,10 @@
     {
       "prefix_prefix": "CL",
       "prefix_reference": "http://purl.obolibrary.org/obo/CL_"
+    },
+    {
+      "prefix_prefix": "nsls2",
+      "prefix_reference": "https://github.com/NSLS2/BER-LAMBDA/"
     }
   ],
   "default_prefix": "lambdaber",
@@ -589,7 +593,7 @@
     {
       "name": "DetectorTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/DetectorTypeEnum",
-      "description": "Types of detectors for cryo-EM",
+      "description": "Types of detectors for cryo-EM and X-ray crystallography",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "permissible_values": [
         {
@@ -607,6 +611,26 @@
         {
           "text": "hybrid_pixel",
           "description": "Hybrid pixel detector"
+        },
+        {
+          "text": "eiger",
+          "description": "Dectris EIGER detector (hybrid photon counting)"
+        },
+        {
+          "text": "pilatus",
+          "description": "Dectris PILATUS detector"
+        },
+        {
+          "text": "rayonix",
+          "description": "Rayonix CCD detector"
+        },
+        {
+          "text": "adsc",
+          "description": "ADSC CCD detector"
+        },
+        {
+          "text": "mar",
+          "description": "MAR CCD or imaging plate detector"
         }
       ]
     },
@@ -801,6 +825,18 @@
           "description": "Crystallographic Binary Format"
         },
         {
+          "text": "cbf_zst",
+          "description": "Zstandard-compressed CBF format"
+        },
+        {
+          "text": "img",
+          "description": "Generic diffraction image format"
+        },
+        {
+          "text": "h5",
+          "description": "HDF5 format (alternative extension)"
+        },
+        {
           "text": "ascii",
           "description": "ASCII text format"
         },
@@ -811,6 +847,10 @@
         {
           "text": "zip",
           "description": "ZIP compressed archive"
+        },
+        {
+          "text": "gz",
+          "description": "Gzip compressed format"
         }
       ]
     },
@@ -2702,6 +2742,120 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sample__protein_name",
+      "description": "Name of the protein",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Protein_Name"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Protein_Name"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Protein_Name",
+      "alias": "protein_name",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__construct",
+      "description": "Construct description (e.g., domain boundaries, truncations)",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Construct"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Construct"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Construct",
+      "alias": "construct",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__tag",
+      "description": "Affinity tag (e.g., His6, GST, MBP)",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Tag"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Tag"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Tag",
+      "alias": "tag",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__mutations",
+      "description": "Mutations present in the sample",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Mutations"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Mutations"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Mutations",
+      "alias": "mutations",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__expression_system",
+      "description": "Expression system used",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Expression_System"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Expression_System"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Expression_System",
+      "alias": "expression_system",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__ligand",
+      "description": "Ligand or small molecule bound to sample",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Ligand"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Ligand"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ligand",
+      "alias": "ligand",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "proteinConstruct__construct_id",
       "description": "Unique identifier for this construct",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -3722,6 +3876,42 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "xRayInstrument__detector_type",
+      "description": "Type of X-ray detector",
+      "comments": [
+        "Maps to CBF: Detector",
+        "Maps to PDB: _diffrn_detector.type"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Detector"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Detector",
+      "alias": "detector_type",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "DetectorTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__beamline_id",
+      "description": "Beamline identifier at synchrotron facility",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beamline"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beamline",
+      "alias": "beamline_id",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "xRayInstrument__energy_min",
       "description": "Minimum X-ray energy in keV",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -4067,6 +4257,211 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__wavelength",
+      "description": "X-ray wavelength in Angstroms",
+      "comments": [
+        "Maps to CBF: Wavelength",
+        "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Wavelength"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
+      "alias": "wavelength",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__oscillation_angle",
+      "description": "Oscillation angle per image in degrees",
+      "comments": [
+        "Maps to CBF: Angle_increment",
+        "Maps to PDB: _diffrn_scan.angle_increment"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Angle_increment"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
+      "alias": "oscillation_angle",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__start_angle",
+      "description": "Starting rotation angle in degrees",
+      "comments": [
+        "Maps to CBF: Start_angle"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Start_angle"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Start_angle",
+      "alias": "start_angle",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__number_of_images",
+      "description": "Total number of diffraction images collected",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Number_of_images"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Number_of_images",
+      "alias": "number_of_images",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beam_center_x",
+      "description": "Beam center X coordinate in pixels",
+      "comments": [
+        "Maps to CBF: Beam_xy (first value)",
+        "Maps to PDB: _diffrn_detector.beam_center_x"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
+      "alias": "beam_center_x",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beam_center_y",
+      "description": "Beam center Y coordinate in pixels",
+      "comments": [
+        "Maps to CBF: Beam_xy (second value)",
+        "Maps to PDB: _diffrn_detector.beam_center_y"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
+      "alias": "beam_center_y",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__detector_distance",
+      "description": "Distance from sample to detector in millimeters",
+      "comments": [
+        "Maps to CBF: Detector_distance",
+        "Maps to PDB: _diffrn_detector.distance"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Detector_distance"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
+      "alias": "detector_distance",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__pixel_size_x",
+      "description": "Pixel size X dimension in micrometers",
+      "comments": [
+        "Maps to CBF: Pixel_size"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x",
+      "alias": "pixel_size_x",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__pixel_size_y",
+      "description": "Pixel size Y dimension in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_y"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_y",
+      "alias": "pixel_size_y",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__total_rotation",
+      "description": "Total rotation range collected in degrees",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg",
+      "alias": "total_rotation",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__beamline",
+      "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
+      "comments": [
+        "Maps to PDB: _diffrn_source.beamline"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beamline"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beamline",
+      "alias": "beamline",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "workflowRun__workflow_code",
       "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -4382,6 +4777,443 @@
         "WorkflowRun"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__space_group",
+      "description": "Crystallographic space group",
+      "comments": [
+        "Maps to PDB: _symmetry.space_group_name_h-m"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Space_Group"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Space_Group",
+      "alias": "space_group",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_a",
+      "description": "Unit cell parameter a in Angstroms",
+      "comments": [
+        "Maps to PDB: _cell.length_a"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a",
+      "alias": "unit_cell_a",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_b",
+      "description": "Unit cell parameter b in Angstroms",
+      "comments": [
+        "Maps to PDB: _cell.length_b"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b",
+      "alias": "unit_cell_b",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_c",
+      "description": "Unit cell parameter c in Angstroms",
+      "comments": [
+        "Maps to PDB: _cell.length_c"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c",
+      "alias": "unit_cell_c",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_alpha",
+      "description": "Unit cell angle alpha in degrees",
+      "comments": [
+        "Maps to PDB: _cell.angle_alpha"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha",
+      "alias": "unit_cell_alpha",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_beta",
+      "description": "Unit cell angle beta in degrees",
+      "comments": [
+        "Maps to PDB: _cell.angle_beta"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta",
+      "alias": "unit_cell_beta",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__unit_cell_gamma",
+      "description": "Unit cell angle gamma in degrees",
+      "comments": [
+        "Maps to PDB: _cell.angle_gamma"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma",
+      "alias": "unit_cell_gamma",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__resolution_high",
+      "description": "High resolution limit in Angstroms",
+      "comments": [
+        "Maps to PDB: _reflns.d_resolution_high"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A",
+      "alias": "resolution_high",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__resolution_low",
+      "description": "Low resolution limit in Angstroms",
+      "comments": [
+        "Maps to PDB: _reflns.d_resolution_low"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A",
+      "alias": "resolution_low",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rmerge",
+      "description": "Rmerge - merge R-factor",
+      "comments": [
+        "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rmerge"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rmerge",
+      "alias": "rmerge",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rpim",
+      "description": "Rpim - precision-indicating merging R-factor",
+      "comments": [
+        "Maps to PDB: _reflns.pdbx_Rpim_I_all"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rpim"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rpim",
+      "alias": "rpim",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__cc_half",
+      "description": "Half-set correlation coefficient CC(1/2)",
+      "comments": [
+        "Maps to PDB: _reflns.pdbx_CC_half"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/CC_half"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/CC_half",
+      "alias": "cc_half",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__completeness_percent",
+      "description": "Data completeness percentage",
+      "comments": [
+        "Maps to PDB: _reflns.percent_possible_obs"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Completeness"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Completeness",
+      "alias": "completeness_percent",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__i_over_sigma",
+      "description": "Mean I/sigma(I) - signal to noise ratio",
+      "comments": [
+        "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma",
+      "alias": "i_over_sigma",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__wilson_b_factor",
+      "description": "Wilson B-factor in Angstroms squared",
+      "comments": [
+        "Maps to PDB: _reflns.B_iso_Wilson_estimate"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Wilson_B"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Wilson_B",
+      "alias": "wilson_b_factor",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__multiplicity",
+      "description": "Data multiplicity (redundancy)",
+      "comments": [
+        "Maps to PDB: _reflns.pdbx_redundancy"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Multiplicity"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Multiplicity",
+      "alias": "multiplicity",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rwork",
+      "description": "Refinement R-factor (working set)",
+      "comments": [
+        "Maps to PDB: _refine.ls_R_factor_R_work"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rwork"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rwork",
+      "alias": "rwork",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rfree",
+      "description": "R-free (test set)",
+      "comments": [
+        "Maps to PDB: _refine.ls_R_factor_R_free"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rfree"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rfree",
+      "alias": "rfree",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rmsd_bonds",
+      "description": "RMSD from ideal bond lengths in Angstroms",
+      "comments": [
+        "Maps to PDB: _refine.ls_d_res_high"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds",
+      "alias": "rmsd_bonds",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__rmsd_angles",
+      "description": "RMSD from ideal bond angles in degrees",
+      "comments": [
+        "Maps to PDB: _refine.ls_d_res_low"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles",
+      "alias": "rmsd_angles",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ramachandran_favored",
+      "description": "Percentage of residues in favored Ramachandran regions",
+      "comments": [
+        "Maps to PDB: _refine.pdbx_overall_ESU_R"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored",
+      "alias": "ramachandran_favored",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ramachandran_outliers",
+      "description": "Percentage of Ramachandran outliers",
+      "comments": [
+        "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers",
+      "alias": "ramachandran_outliers",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__clashscore",
+      "description": "MolProbity clashscore",
+      "comments": [
+        "Maps to validation report metrics"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Clashscore"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Clashscore",
+      "alias": "clashscore",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
@@ -5403,6 +6235,217 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "crystallizationConditions__method",
+      "description": "Crystallization method used",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Method"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Method"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Method",
+      "alias": "method",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "CrystallizationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__crystallization_conditions",
+      "description": "Complete description of crystallization conditions including precipitant, pH, salts",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Conditions"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Conditions"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Conditions",
+      "alias": "crystallization_conditions",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__drop_volume",
+      "description": "Total drop volume in nanoliters",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Drop_Volume"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Drop_Volume"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Drop_Volume",
+      "alias": "drop_volume",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__protein_concentration",
+      "description": "Protein concentration for crystallization in mg/mL",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Protein_Concentration"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration",
+      "alias": "protein_concentration",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__crystal_size_um",
+      "description": "Crystal dimensions in micrometers (length x width x height)",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Crystal_Size"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Crystal_Size"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Crystal_Size",
+      "alias": "crystal_size_um",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__cryo_protectant",
+      "description": "Cryoprotectant used for crystal cooling",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Cryo_Protectant"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Cryo_Protectant"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Cryo_Protectant",
+      "alias": "cryo_protectant",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__crystal_id",
+      "description": "Identifier for the specific crystal used",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Crystal_ID"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Crystal_ID"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Crystal_ID",
+      "alias": "crystal_id",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__screen_name",
+      "description": "Name of crystallization screen used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/screen_name",
+      "alias": "screen_name",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__temperature_c",
+      "description": "Crystallization temperature in Celsius",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_c",
+      "alias": "temperature_c",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__drop_ratio_protein_to_reservoir",
+      "description": "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/drop_ratio_protein_to_reservoir",
+      "alias": "drop_ratio_protein_to_reservoir",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__reservoir_volume_ul",
+      "description": "Reservoir volume in microliters",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/reservoir_volume_ul",
+      "alias": "reservoir_volume_ul",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__seeding_type",
+      "description": "Type of seeding used (micro, macro, streak)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/seeding_type",
+      "alias": "seeding_type",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crystallizationConditions__seed_stock_dilution",
+      "description": "Dilution factor for seed stock",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/seed_stock_dilution",
+      "alias": "seed_stock_dilution",
+      "owner": "CrystallizationConditions",
+      "domain_of": [
+        "CrystallizationConditions"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "xRayPreparation__protein_concentration_mg_per_ml",
       "description": "Protein concentration for crystallization in mg/mL",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -5452,6 +6495,20 @@
         "XRayPreparation"
       ],
       "range": "CrystallizationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystallization_conditions",
+      "description": "Detailed crystallization conditions",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/crystallization_conditions",
+      "alias": "crystallization_conditions",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "CrystallizationConditions",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5585,19 +6642,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "xRayPreparation__crystallization_conditions",
-      "description": "Detailed crystallization conditions",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/crystallization_conditions",
-      "alias": "crystallization_conditions",
-      "owner": "XRayPreparation",
-      "domain_of": [
-        "XRayPreparation"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "xRayPreparation__crystal_size_um",
       "description": "Crystal dimensions in micrometers",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -5665,8 +6709,14 @@
     {
       "name": "xRayPreparation__mounting_method",
       "description": "Crystal mounting method",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Mount_Type"
+      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/mounting_method",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Mount_Type"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Mount_Type",
       "alias": "mounting_method",
       "owner": "XRayPreparation",
       "domain_of": [
@@ -5699,6 +6749,44 @@
         "XRayPreparation"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__loop_size",
+      "description": "Loop size in micrometers",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Loop_Size"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Loop_Size"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Loop_Size",
+      "alias": "loop_size",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__mounting_temperature",
+      "description": "Temperature during mounting in Kelvin",
+      "comments": [
+        "Maps to NSLS2 spreadsheet: Temperature"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Temperature"
+      ],
+      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Temperature",
+      "alias": "mounting_temperature",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
@@ -8401,7 +9489,13 @@
         "sample__biophysical_properties",
         "sample__evolutionary_conservation",
         "sample__conformational_ensemble",
-        "sample__database_cross_references"
+        "sample__database_cross_references",
+        "sample__protein_name",
+        "sample__construct",
+        "sample__tag",
+        "sample__mutations",
+        "sample__expression_system",
+        "sample__ligand"
       ],
       "slot_usage": {},
       "attributes": [
@@ -8576,6 +9670,66 @@
           "range": "DatabaseCrossReference",
           "multivalued": true,
           "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_name",
+          "description": "Name of the protein",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Protein_Name"
+          ],
+          "slot_uri": "nsls2:Protein_Name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "construct",
+          "description": "Construct description (e.g., domain boundaries, truncations)",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Construct"
+          ],
+          "slot_uri": "nsls2:Construct",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tag",
+          "description": "Affinity tag (e.g., His6, GST, MBP)",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Tag"
+          ],
+          "slot_uri": "nsls2:Tag",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mutations",
+          "description": "Mutations present in the sample",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Mutations"
+          ],
+          "slot_uri": "nsls2:Mutations",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "expression_system",
+          "description": "Expression system used",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Expression_System"
+          ],
+          "slot_uri": "nsls2:Expression_System",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligand",
+          "description": "Ligand or small molecule bound to sample",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Ligand"
+          ],
+          "slot_uri": "nsls2:Ligand",
+          "range": "string",
           "@type": "SlotDefinition"
         }
       ],
@@ -9173,6 +10327,8 @@
         "instrument__installation_date",
         "instrument__current_status",
         "xRayInstrument__source_type",
+        "xRayInstrument__detector_type",
+        "xRayInstrument__beamline_id",
         "xRayInstrument__energy_min",
         "xRayInstrument__energy_max",
         "xRayInstrument__beam_size_min",
@@ -9188,6 +10344,24 @@
           "name": "source_type",
           "description": "Type of X-ray source",
           "range": "XRaySourceTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_type",
+          "description": "Type of X-ray detector",
+          "comments": [
+            "Maps to CBF: Detector",
+            "Maps to PDB: _diffrn_detector.type"
+          ],
+          "slot_uri": "nsls2:Detector",
+          "range": "DetectorTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beamline_id",
+          "description": "Beamline identifier at synchrotron facility",
+          "slot_uri": "nsls2:Beamline",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -9324,7 +10498,18 @@
         "experimentRun__data_collection_strategy",
         "experimentRun__quality_metrics",
         "experimentRun__raw_data_location",
-        "experimentRun__processing_status"
+        "experimentRun__processing_status",
+        "experimentRun__wavelength",
+        "experimentRun__oscillation_angle",
+        "experimentRun__start_angle",
+        "experimentRun__number_of_images",
+        "experimentRun__beam_center_x",
+        "experimentRun__beam_center_y",
+        "experimentRun__detector_distance",
+        "experimentRun__pixel_size_x",
+        "experimentRun__pixel_size_y",
+        "experimentRun__total_rotation",
+        "experimentRun__beamline"
       ],
       "slot_usage": {},
       "attributes": [
@@ -9401,6 +10586,112 @@
           "description": "Current processing status",
           "range": "ProcessingStatusEnum",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavelength",
+          "description": "X-ray wavelength in Angstroms",
+          "comments": [
+            "Maps to CBF: Wavelength",
+            "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
+          ],
+          "slot_uri": "nsls2:Wavelength",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "oscillation_angle",
+          "description": "Oscillation angle per image in degrees",
+          "comments": [
+            "Maps to CBF: Angle_increment",
+            "Maps to PDB: _diffrn_scan.angle_increment"
+          ],
+          "slot_uri": "nsls2:Angle_increment",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "start_angle",
+          "description": "Starting rotation angle in degrees",
+          "comments": [
+            "Maps to CBF: Start_angle"
+          ],
+          "slot_uri": "nsls2:Start_angle",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_images",
+          "description": "Total number of diffraction images collected",
+          "slot_uri": "nsls2:Number_of_images",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_center_x",
+          "description": "Beam center X coordinate in pixels",
+          "comments": [
+            "Maps to CBF: Beam_xy (first value)",
+            "Maps to PDB: _diffrn_detector.beam_center_x"
+          ],
+          "slot_uri": "nsls2:Beam_xy_x",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_center_y",
+          "description": "Beam center Y coordinate in pixels",
+          "comments": [
+            "Maps to CBF: Beam_xy (second value)",
+            "Maps to PDB: _diffrn_detector.beam_center_y"
+          ],
+          "slot_uri": "nsls2:Beam_xy_y",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_distance",
+          "description": "Distance from sample to detector in millimeters",
+          "comments": [
+            "Maps to CBF: Detector_distance",
+            "Maps to PDB: _diffrn_detector.distance"
+          ],
+          "slot_uri": "nsls2:Detector_distance",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_x",
+          "description": "Pixel size X dimension in micrometers",
+          "comments": [
+            "Maps to CBF: Pixel_size"
+          ],
+          "slot_uri": "nsls2:Pixel_size_x",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_y",
+          "description": "Pixel size Y dimension in micrometers",
+          "slot_uri": "nsls2:Pixel_size_y",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_rotation",
+          "description": "Total rotation range collected in degrees",
+          "slot_uri": "nsls2:Total_rotation_deg",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beamline",
+          "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
+          "comments": [
+            "Maps to PDB: _diffrn_source.beamline"
+          ],
+          "slot_uri": "nsls2:Beamline",
+          "range": "string",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/ExperimentRun",
@@ -9440,6 +10731,29 @@
         "workflowRun__deposited_to_pdb",
         "workflowRun__pdb_id",
         "workflowRun__validation_report_path",
+        "workflowRun__space_group",
+        "workflowRun__unit_cell_a",
+        "workflowRun__unit_cell_b",
+        "workflowRun__unit_cell_c",
+        "workflowRun__unit_cell_alpha",
+        "workflowRun__unit_cell_beta",
+        "workflowRun__unit_cell_gamma",
+        "workflowRun__resolution_high",
+        "workflowRun__resolution_low",
+        "workflowRun__rmerge",
+        "workflowRun__rpim",
+        "workflowRun__cc_half",
+        "workflowRun__completeness_percent",
+        "workflowRun__i_over_sigma",
+        "workflowRun__wilson_b_factor",
+        "workflowRun__multiplicity",
+        "workflowRun__rwork",
+        "workflowRun__rfree",
+        "workflowRun__rmsd_bonds",
+        "workflowRun__rmsd_angles",
+        "workflowRun__ramachandran_favored",
+        "workflowRun__ramachandran_outliers",
+        "workflowRun__clashscore",
         "workflowRun__processing_notes",
         "workflowRun__compute_resources",
         "workflowRun__started_at",
@@ -9581,6 +10895,236 @@
         {
           "name": "validation_report_path",
           "description": "Path to validation report",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "space_group",
+          "description": "Crystallographic space group",
+          "comments": [
+            "Maps to PDB: _symmetry.space_group_name_h-m"
+          ],
+          "slot_uri": "nsls2:Space_Group",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_a",
+          "description": "Unit cell parameter a in Angstroms",
+          "comments": [
+            "Maps to PDB: _cell.length_a"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_a",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_b",
+          "description": "Unit cell parameter b in Angstroms",
+          "comments": [
+            "Maps to PDB: _cell.length_b"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_b",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_c",
+          "description": "Unit cell parameter c in Angstroms",
+          "comments": [
+            "Maps to PDB: _cell.length_c"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_c",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_alpha",
+          "description": "Unit cell angle alpha in degrees",
+          "comments": [
+            "Maps to PDB: _cell.angle_alpha"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_alpha",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_beta",
+          "description": "Unit cell angle beta in degrees",
+          "comments": [
+            "Maps to PDB: _cell.angle_beta"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_beta",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_gamma",
+          "description": "Unit cell angle gamma in degrees",
+          "comments": [
+            "Maps to PDB: _cell.angle_gamma"
+          ],
+          "slot_uri": "nsls2:Unit_Cell_gamma",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_high",
+          "description": "High resolution limit in Angstroms",
+          "comments": [
+            "Maps to PDB: _reflns.d_resolution_high"
+          ],
+          "slot_uri": "nsls2:Resolution_High_A",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_low",
+          "description": "Low resolution limit in Angstroms",
+          "comments": [
+            "Maps to PDB: _reflns.d_resolution_low"
+          ],
+          "slot_uri": "nsls2:Resolution_Low_A",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rmerge",
+          "description": "Rmerge - merge R-factor",
+          "comments": [
+            "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
+          ],
+          "slot_uri": "nsls2:Rmerge",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rpim",
+          "description": "Rpim - precision-indicating merging R-factor",
+          "comments": [
+            "Maps to PDB: _reflns.pdbx_Rpim_I_all"
+          ],
+          "slot_uri": "nsls2:Rpim",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cc_half",
+          "description": "Half-set correlation coefficient CC(1/2)",
+          "comments": [
+            "Maps to PDB: _reflns.pdbx_CC_half"
+          ],
+          "slot_uri": "nsls2:CC_half",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "completeness_percent",
+          "description": "Data completeness percentage",
+          "comments": [
+            "Maps to PDB: _reflns.percent_possible_obs"
+          ],
+          "slot_uri": "nsls2:Completeness",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "i_over_sigma",
+          "description": "Mean I/sigma(I) - signal to noise ratio",
+          "comments": [
+            "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
+          ],
+          "slot_uri": "nsls2:I_over_sigma",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wilson_b_factor",
+          "description": "Wilson B-factor in Angstroms squared",
+          "comments": [
+            "Maps to PDB: _reflns.B_iso_Wilson_estimate"
+          ],
+          "slot_uri": "nsls2:Wilson_B",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "multiplicity",
+          "description": "Data multiplicity (redundancy)",
+          "comments": [
+            "Maps to PDB: _reflns.pdbx_redundancy"
+          ],
+          "slot_uri": "nsls2:Multiplicity",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rwork",
+          "description": "Refinement R-factor (working set)",
+          "comments": [
+            "Maps to PDB: _refine.ls_R_factor_R_work"
+          ],
+          "slot_uri": "nsls2:Rwork",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rfree",
+          "description": "R-free (test set)",
+          "comments": [
+            "Maps to PDB: _refine.ls_R_factor_R_free"
+          ],
+          "slot_uri": "nsls2:Rfree",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rmsd_bonds",
+          "description": "RMSD from ideal bond lengths in Angstroms",
+          "comments": [
+            "Maps to PDB: _refine.ls_d_res_high"
+          ],
+          "slot_uri": "nsls2:RMSD_bonds",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rmsd_angles",
+          "description": "RMSD from ideal bond angles in degrees",
+          "comments": [
+            "Maps to PDB: _refine.ls_d_res_low"
+          ],
+          "slot_uri": "nsls2:RMSD_angles",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ramachandran_favored",
+          "description": "Percentage of residues in favored Ramachandran regions",
+          "comments": [
+            "Maps to PDB: _refine.pdbx_overall_ESU_R"
+          ],
+          "slot_uri": "nsls2:Ramachandran_Favored",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ramachandran_outliers",
+          "description": "Percentage of Ramachandran outliers",
+          "comments": [
+            "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
+          ],
+          "slot_uri": "nsls2:Ramachandran_Outliers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "clashscore",
+          "description": "MolProbity clashscore",
+          "comments": [
+            "Maps to validation report metrics"
+          ],
+          "slot_uri": "nsls2:Clashscore",
+          "range": "float",
           "@type": "SlotDefinition"
         },
         {
@@ -10420,6 +11964,136 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "CrystallizationConditions",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/CrystallizationConditions",
+      "description": "Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "crystallizationConditions__method",
+        "crystallizationConditions__crystallization_conditions",
+        "crystallizationConditions__drop_volume",
+        "crystallizationConditions__protein_concentration",
+        "crystallizationConditions__crystal_size_um",
+        "crystallizationConditions__cryo_protectant",
+        "crystallizationConditions__crystal_id",
+        "crystallizationConditions__screen_name",
+        "crystallizationConditions__temperature_c",
+        "crystallizationConditions__drop_ratio_protein_to_reservoir",
+        "crystallizationConditions__reservoir_volume_ul",
+        "crystallizationConditions__seeding_type",
+        "crystallizationConditions__seed_stock_dilution"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "method",
+          "description": "Crystallization method used",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Method"
+          ],
+          "slot_uri": "nsls2:Method",
+          "range": "CrystallizationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_conditions",
+          "description": "Complete description of crystallization conditions including precipitant, pH, salts",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Conditions"
+          ],
+          "slot_uri": "nsls2:Conditions",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drop_volume",
+          "description": "Total drop volume in nanoliters",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Drop_Volume"
+          ],
+          "slot_uri": "nsls2:Drop_Volume",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_concentration",
+          "description": "Protein concentration for crystallization in mg/mL",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Protein_Concentration"
+          ],
+          "slot_uri": "nsls2:Protein_Concentration",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_size_um",
+          "description": "Crystal dimensions in micrometers (length x width x height)",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Crystal_Size"
+          ],
+          "slot_uri": "nsls2:Crystal_Size",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryo_protectant",
+          "description": "Cryoprotectant used for crystal cooling",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Cryo_Protectant"
+          ],
+          "slot_uri": "nsls2:Cryo_Protectant",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_id",
+          "description": "Identifier for the specific crystal used",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Crystal_ID"
+          ],
+          "slot_uri": "nsls2:Crystal_ID",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "screen_name",
+          "description": "Name of crystallization screen used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_c",
+          "description": "Crystallization temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drop_ratio_protein_to_reservoir",
+          "description": "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "reservoir_volume_ul",
+          "description": "Reservoir volume in microliters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "seeding_type",
+          "description": "Type of seeding used (micro, macro, streak)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "seed_stock_dilution",
+          "description": "Dilution factor for seed stock",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/CrystallizationConditions",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "XRayPreparation",
       "definition_uri": "https://w3id.org/lambda-ber-schema/XRayPreparation",
       "description": "X-ray crystallography specific preparation",
@@ -10431,6 +12105,7 @@
         "xRayPreparation__protein_buffer",
         "xRayPreparation__additives",
         "xRayPreparation__crystallization_method",
+        "xRayPreparation__crystallization_conditions",
         "xRayPreparation__screen_name",
         "xRayPreparation__temperature_c",
         "xRayPreparation__drop_ratio_protein_to_reservoir",
@@ -10441,7 +12116,6 @@
         "xRayPreparation__initial_hit_condition",
         "xRayPreparation__optimization_strategy",
         "xRayPreparation__optimized_condition",
-        "xRayPreparation__crystallization_conditions",
         "xRayPreparation__crystal_size_um",
         "xRayPreparation__cryoprotectant",
         "xRayPreparation__cryoprotectant_concentration",
@@ -10449,7 +12123,9 @@
         "xRayPreparation__soak_conditions",
         "xRayPreparation__mounting_method",
         "xRayPreparation__flash_cooling_method",
-        "xRayPreparation__crystal_notes"
+        "xRayPreparation__crystal_notes",
+        "xRayPreparation__loop_size",
+        "xRayPreparation__mounting_temperature"
       ],
       "slot_usage": {},
       "attributes": [
@@ -10473,6 +12149,12 @@
           "name": "crystallization_method",
           "description": "Method used for crystallization",
           "range": "CrystallizationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_conditions",
+          "description": "Detailed crystallization conditions",
+          "range": "CrystallizationConditions",
           "@type": "SlotDefinition"
         },
         {
@@ -10529,11 +12211,6 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "crystallization_conditions",
-          "description": "Detailed crystallization conditions",
-          "@type": "SlotDefinition"
-        },
-        {
           "name": "crystal_size_um",
           "description": "Crystal dimensions in micrometers",
           "@type": "SlotDefinition"
@@ -10563,6 +12240,10 @@
         {
           "name": "mounting_method",
           "description": "Crystal mounting method",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Mount_Type"
+          ],
+          "slot_uri": "nsls2:Mount_Type",
           "@type": "SlotDefinition"
         },
         {
@@ -10573,6 +12254,26 @@
         {
           "name": "crystal_notes",
           "description": "Additional notes about crystal quality and handling",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "loop_size",
+          "description": "Loop size in micrometers",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Loop_Size"
+          ],
+          "slot_uri": "nsls2:Loop_Size",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mounting_temperature",
+          "description": "Temperature during mounting in Kelvin",
+          "comments": [
+            "Maps to NSLS2 spreadsheet: Temperature"
+          ],
+          "slot_uri": "nsls2:Temperature",
+          "range": "float",
           "@type": "SlotDefinition"
         }
       ],
@@ -12257,9 +13958,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-10-29T12:47:56",
-  "source_file_size": 55456,
-  "generation_date": "2025-10-29T12:53:43",
+  "source_file_date": "2025-11-12T17:06:39",
+  "source_file_size": 67916,
+  "generation_date": "2025-11-12T18:14:03",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
