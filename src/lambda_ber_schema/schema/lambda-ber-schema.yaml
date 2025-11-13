@@ -1935,7 +1935,7 @@ classes:
     attributes:
       symmetry:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
-        range: string
+        range: SymmetryEnum
       pixel_size:
         description: "Pixel size in Angstroms per pixel"
         range: float
@@ -2057,6 +2057,54 @@ enums:
         description: "High pressure freezing"
       slam_freezing:
         description: "Slam freezing"
+
+  SymmetryEnum:
+    description: "Crystallographic and non-crystallographic symmetry groups for cryo-EM"
+    permissible_values:
+      C1:
+        description: "C1 symmetry (no symmetry)"
+      C2:
+        description: "C2 cyclic symmetry (2-fold)"
+      C3:
+        description: "C3 cyclic symmetry (3-fold)"
+      C4:
+        description: "C4 cyclic symmetry (4-fold)"
+      C5:
+        description: "C5 cyclic symmetry (5-fold)"
+      C6:
+        description: "C6 cyclic symmetry (6-fold)"
+      C7:
+        description: "C7 cyclic symmetry (7-fold)"
+      C8:
+        description: "C8 cyclic symmetry (8-fold)"
+      C9:
+        description: "C9 cyclic symmetry (9-fold)"
+      C10:
+        description: "C10 cyclic symmetry (10-fold)"
+      D2:
+        description: "D2 dihedral symmetry (2-fold)"
+      D3:
+        description: "D3 dihedral symmetry (3-fold)"
+      D4:
+        description: "D4 dihedral symmetry (4-fold)"
+      D5:
+        description: "D5 dihedral symmetry (5-fold)"
+      D6:
+        description: "D6 dihedral symmetry (6-fold)"
+      D7:
+        description: "D7 dihedral symmetry (7-fold)"
+      D8:
+        description: "D8 dihedral symmetry (8-fold)"
+      D9:
+        description: "D9 dihedral symmetry (9-fold)"
+      D10:
+        description: "D10 dihedral symmetry (10-fold)"
+      T:
+        description: "Tetrahedral symmetry"
+      O:
+        description: "Octahedral symmetry"
+      I:
+        description: "Icosahedral symmetry"
 
   CrystallizationMethodEnum:
     description: "Methods for protein crystallization"
