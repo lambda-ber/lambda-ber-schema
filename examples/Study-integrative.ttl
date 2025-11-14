@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -39,7 +40,7 @@ lambdaber:exp_chd1_saxs_001 a lambdaber:ExperimentRun ;
             lambdaber:resolution "30.0"^^xsd:float ;
             lambdaber:signal_to_noise "45.0"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_chd1_001" ;
-    lambdaber:technique "saxs" .
+    lambdaber:technique CHMO:0000204 .
 
 lambdaber:exp_complex_cryoem_001 a lambdaber:ExperimentRun ;
     dcterms:title "CHD1-nucleosome complex structure" ;
@@ -64,7 +65,7 @@ lambdaber:exp_complex_cryoem_001 a lambdaber:ExperimentRun ;
             lambdaber:resolution "3.2"^^xsd:float ;
             lambdaber:signal_to_noise "3.8"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_chd1_ncp_complex_001" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:exp_ncp_cryoem_001 a lambdaber:ExperimentRun ;
     dcterms:title "Nucleosome cryo-EM collection" ;
@@ -89,7 +90,7 @@ lambdaber:exp_ncp_cryoem_001 a lambdaber:ExperimentRun ;
             lambdaber:resolution "2.5"^^xsd:float ;
             lambdaber:signal_to_noise "5.2"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_nucleosome_001" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:prep_chd1_saxs_001 a lambdaber:SamplePreparation ;
     dcterms:title "CHD1 SAXS sample preparation" ;

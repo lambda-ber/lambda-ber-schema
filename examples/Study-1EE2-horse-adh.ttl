@@ -1,5 +1,6 @@
 @base <http://example.org/> .
 @prefix @base: <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -26,7 +27,7 @@ lambdaber:exp_1EE2_xray_001 a lambdaber:ExperimentRun ;
             lambdaber:completeness "95.0"^^xsd:float ;
             lambdaber:resolution "1.54"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_1EE2_001" ;
-    lambdaber:technique "xray_crystallography" .
+    lambdaber:technique CHMO:0000156 .
 
 lambdaber:file_1EE2_coords a lambdaber:DataFile ;
     lambdaber:creation_date "2000-01-30" ;

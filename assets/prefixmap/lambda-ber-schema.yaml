@@ -1,4 +1,5 @@
 {
+   "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
    "CL": "http://purl.obolibrary.org/obo/CL_",
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "ROR": "https://ror.org/",

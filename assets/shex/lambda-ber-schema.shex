@@ -471,13 +471,11 @@ linkml:Sparqlpath xsd:string
           <instrument_id> @<Instrument> ;
           <experiment_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
-          <technique> [ <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_em>
-             <https://w3id.org/lambda-ber-schema/TechniqueEnum#xray_crystallography>
-             <https://w3id.org/lambda-ber-schema/TechniqueEnum#saxs> <https://w3id.org/lambda-ber-schema/TechniqueEnum#waxs>
-             <https://w3id.org/lambda-ber-schema/TechniqueEnum#sans> <https://w3id.org/lambda-ber-schema/TechniqueEnum#cryo_et>
-             <https://w3id.org/lambda-ber-schema/TechniqueEnum#electron_microscopy>
-             <https://w3id.org/lambda-ber-schema/TechniqueEnum#mass_spectrometry> ] ;
-          <experimental_method> [ <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#x_ray_diffraction>
+          <technique> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000204> <http://purl.obolibrary.org/obo/CHMO_0000207>
+             <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
+             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470> ] ;
+          <experimental_method> [ <http://purl.obolibrary.org/obo/CHMO_0000156>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#neutron_diffraction>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#electron_diffraction>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#fiber_diffraction> ] ? ;

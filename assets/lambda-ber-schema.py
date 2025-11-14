@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-13T22:06:16
+# Generation date: 2025-11-14T08:14:59
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -140,6 +140,7 @@ metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
+CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
@@ -4388,28 +4389,36 @@ class TechniqueEnum(EnumDefinitionImpl):
     """
     cryo_em = PermissibleValue(
         text="cryo_em",
-        description="Cryo-electron microscopy")
+        description="Cryo-electron microscopy",
+        meaning=CHMO["0002413"])
     xray_crystallography = PermissibleValue(
         text="xray_crystallography",
-        description="X-ray crystallography")
+        description="X-ray crystallography",
+        meaning=CHMO["0000156"])
     saxs = PermissibleValue(
         text="saxs",
-        description="Small-angle X-ray scattering")
+        description="Small-angle X-ray scattering",
+        meaning=CHMO["0000204"])
     waxs = PermissibleValue(
         text="waxs",
-        description="Wide-angle X-ray scattering")
+        description="Wide-angle X-ray scattering",
+        meaning=CHMO["0000207"])
     sans = PermissibleValue(
         text="sans",
-        description="Small-angle neutron scattering")
+        description="Small-angle neutron scattering",
+        meaning=CHMO["0000184"])
     cryo_et = PermissibleValue(
         text="cryo_et",
-        description="Cryo-electron tomography")
+        description="Cryo-electron tomography",
+        meaning=CHMO["0002413"])
     electron_microscopy = PermissibleValue(
         text="electron_microscopy",
-        description="General electron microscopy")
+        description="General electron microscopy",
+        meaning=CHMO["0000068"])
     mass_spectrometry = PermissibleValue(
         text="mass_spectrometry",
-        description="Mass spectrometry")
+        description="Mass spectrometry",
+        meaning=CHMO["0000470"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -4815,7 +4824,8 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
     """
     x_ray_diffraction = PermissibleValue(
         text="x_ray_diffraction",
-        description="X-ray diffraction")
+        description="X-ray diffraction",
+        meaning=CHMO["0000156"])
     neutron_diffraction = PermissibleValue(
         text="neutron_diffraction",
         description="Neutron diffraction")

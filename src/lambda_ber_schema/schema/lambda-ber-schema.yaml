@@ -96,6 +96,7 @@ prefixes:
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
   ROR: https://ror.org/
   wikidata: http://www.wikidata.org/entity/
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
 
 imports:
   - linkml:types
@@ -2497,20 +2498,30 @@ enums:
     permissible_values:
       cryo_em:
         description: "Cryo-electron microscopy"
+        meaning: CHMO:0002413
       xray_crystallography:
         description: "X-ray crystallography"
+        meaning: CHMO:0000156
       saxs:
         description: "Small-angle X-ray scattering"
+        meaning: CHMO:0000204
       waxs:
         description: "Wide-angle X-ray scattering"
+        meaning: CHMO:0000207
       sans:
         description: "Small-angle neutron scattering"
+        meaning: CHMO:0000184
       cryo_et:
         description: "Cryo-electron tomography"
+        meaning: CHMO:0002413
+        comments:
+          - "Uses same CHMO term as cryo_em; tomography is a specific application"
       electron_microscopy:
         description: "General electron microscopy"
+        meaning: CHMO:0000068
       mass_spectrometry:
         description: "Mass spectrometry"
+        meaning: CHMO:0000470
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -2755,6 +2766,7 @@ enums:
     permissible_values:
       x_ray_diffraction:
         description: "X-ray diffraction"
+        meaning: CHMO:0000156
       neutron_diffraction:
         description: "Neutron diffraction"
       electron_diffraction:
