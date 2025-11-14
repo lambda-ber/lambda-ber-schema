@@ -138,6 +138,7 @@ classes:
       ligand_id:
         description: "Ligand identifier (ChEMBL, ChEBI, PubChem)"
         required: true
+        range: uriorcurie
       ligand_name:
         description: "Common name of the ligand"
         required: true
