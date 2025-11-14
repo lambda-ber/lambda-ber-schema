@@ -3291,11 +3291,15 @@
             "description": "Conditions under which biophysical measurements were made",
             "properties": {
                 "buffer_composition": {
-                    "description": "Composition of the buffer used",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BufferComposition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Composition of the buffer used"
                 },
                 "description": {
                     "type": [

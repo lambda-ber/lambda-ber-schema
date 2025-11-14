@@ -720,7 +720,7 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> CLOSED {
     (  $<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition> @linkml:String ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition> @<BufferComposition> ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/ph> @linkml:Float ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @linkml:Float ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @linkml:Float ?

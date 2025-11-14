@@ -17,8 +17,8 @@ Alias: crystallization_conditions
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 | [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
+| [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
 

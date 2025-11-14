@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-14T15:07:00
+# Generation date: 2025-11-14T16:02:47
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -4019,7 +4019,7 @@ class MeasurementConditions(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.MeasurementConditions
 
     id: Union[str, MeasurementConditionsId] = None
-    buffer_composition: Optional[str] = None
+    buffer_composition: Optional[Union[dict, BufferComposition]] = None
     ph: Optional[float] = None
     ionic_strength: Optional[float] = None
     temperature: Optional[float] = None
@@ -4030,8 +4030,8 @@ class MeasurementConditions(NamedThing):
         if not isinstance(self.id, MeasurementConditionsId):
             self.id = MeasurementConditionsId(self.id)
 
-        if self.buffer_composition is not None and not isinstance(self.buffer_composition, str):
-            self.buffer_composition = str(self.buffer_composition)
+        if self.buffer_composition is not None and not isinstance(self.buffer_composition, BufferComposition):
+            self.buffer_composition = BufferComposition(**as_dict(self.buffer_composition))
 
         if self.ph is not None and not isinstance(self.ph, float):
             self.ph = float(self.ph)
@@ -7721,7 +7721,7 @@ slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER['functional_a
                    model_uri=LAMBDABER.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
 slots.measurementConditions__buffer_composition = Slot(uri=LAMBDABER['functional_annotation/buffer_composition'], name="measurementConditions__buffer_composition", curie=LAMBDABER.curie('functional_annotation/buffer_composition'),
-                   model_uri=LAMBDABER.measurementConditions__buffer_composition, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.measurementConditions__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
 
 slots.measurementConditions__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="measurementConditions__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
                    model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[float])

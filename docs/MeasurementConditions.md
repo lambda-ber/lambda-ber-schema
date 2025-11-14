@@ -24,6 +24,15 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
       
       MeasurementConditions : buffer_composition
         
+          
+    
+        
+        
+        MeasurementConditions --> "0..1" BufferComposition : buffer_composition
+        click BufferComposition href "../BufferComposition/"
+    
+
+        
       MeasurementConditions : description
         
       MeasurementConditions : id
@@ -53,7 +62,7 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [buffer_composition](buffer_composition.md) | 0..1 <br/> [String](String.md) | Composition of the buffer used | direct |
+| [buffer_composition](buffer_composition.md) | 0..1 <br/> [BufferComposition](BufferComposition.md) | Composition of the buffer used | direct |
 | [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH value of the solution during measurement | direct |
 | [ionic_strength](ionic_strength.md) | 0..1 <br/> [Float](Float.md) | Ionic strength in molar of material in solution | direct |
 | [temperature](temperature.md) | 0..1 <br/> [Float](Float.md) | Temperature in Kelvin during measurement | direct |
@@ -124,6 +133,7 @@ attributes:
     domain_of:
     - Sample
     - MeasurementConditions
+    range: BufferComposition
   ph:
     name: ph
     description: pH value of the solution during measurement
@@ -177,7 +187,7 @@ attributes:
     domain_of:
     - Sample
     - MeasurementConditions
-    range: string
+    range: BufferComposition
   ph:
     name: ph
     description: pH value of the solution during measurement

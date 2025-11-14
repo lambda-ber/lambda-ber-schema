@@ -486,7 +486,7 @@ message MeasurementConditions
   uriorcurie id = 0
   string title = 0
   string description = 0
-  string bufferComposition = 0
+  bufferComposition bufferComposition = 0
   float ph = 0
   float ionicStrength = 0
   float temperature = 0

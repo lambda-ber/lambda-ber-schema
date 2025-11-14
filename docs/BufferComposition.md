@@ -61,6 +61,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
 
 
 

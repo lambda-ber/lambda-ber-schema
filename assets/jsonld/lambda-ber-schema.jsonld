@@ -11787,7 +11787,8 @@
       "domain_of": [
         "MeasurementConditions"
       ],
-      "range": "string",
+      "range": "BufferComposition",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -17667,6 +17668,7 @@
         {
           "name": "buffer_composition",
           "description": "Composition of the buffer used",
+          "range": "BufferComposition",
           "@type": "SlotDefinition"
         },
         {
@@ -17706,7 +17708,7 @@
   "source_file": "lambda-ber-schema.yaml",
   "source_file_date": "2025-11-14T13:56:19",
   "source_file_size": 99417,
-  "generation_date": "2025-11-14T15:06:54",
+  "generation_date": "2025-11-14T16:02:41",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

@@ -1108,7 +1108,7 @@ type MeasurementConditions
     id: Uriorcurie!
     title: String
     description: String
-    bufferComposition: String
+    bufferComposition: BufferComposition
     ph: Float
     ionicStrength: Float
     temperature: Float
