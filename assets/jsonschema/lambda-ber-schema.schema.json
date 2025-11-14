@@ -1886,6 +1886,25 @@
             "title": "FTIRImage",
             "type": "object"
         },
+        "FacilityEnum": {
+            "description": "Major synchrotron and structural biology research facilities worldwide",
+            "enum": [
+                "NSLS_II",
+                "ALS",
+                "SSRL",
+                "APS",
+                "ESRF",
+                "DIAMOND",
+                "PHOTON_FACTORY",
+                "SPRING8",
+                "PETRA_III",
+                "SOLEIL",
+                "AUSTRALIAN_SYNCHROTRON",
+                "SIBYLS"
+            ],
+            "title": "FacilityEnum",
+            "type": "string"
+        },
         "FileFormatEnum": {
             "description": "File formats",
             "enum": [

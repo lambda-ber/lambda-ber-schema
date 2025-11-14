@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-12T18:14:05
+# Generation date: 2025-11-13T20:01:07
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -142,6 +142,7 @@ version = None
 # Namespaces
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
@@ -152,6 +153,7 @@ PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 DEFAULT_ = LAMBDABER
 
 
@@ -3384,6 +3386,69 @@ class AggregatedProteinView(NamedThing):
 
 
 # Enumerations
+class FacilityEnum(EnumDefinitionImpl):
+    """
+    Major synchrotron and structural biology research facilities worldwide
+    """
+    NSLS_II = PermissibleValue(
+        text="NSLS_II",
+        title="National Synchrotron Light Source II",
+        description="Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA",
+        meaning=ROR["01q47ea17"])
+    ALS = PermissibleValue(
+        text="ALS",
+        title="Advanced Light Source",
+        description="""Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA""")
+    SSRL = PermissibleValue(
+        text="SSRL",
+        title="Stanford Synchrotron Radiation Lightsource",
+        description="Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA")
+    APS = PermissibleValue(
+        text="APS",
+        title="Advanced Photon Source",
+        description="High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA")
+    ESRF = PermissibleValue(
+        text="ESRF",
+        title="European Synchrotron Radiation Facility",
+        description="High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source",
+        meaning=ROR["02550n020"])
+    DIAMOND = PermissibleValue(
+        text="DIAMOND",
+        title="Diamond Light Source",
+        description="""UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK""",
+        meaning=ROR["05etxs293"])
+    PHOTON_FACTORY = PermissibleValue(
+        text="PHOTON_FACTORY",
+        title="Photon Factory",
+        description="""Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan""")
+    SPRING8 = PermissibleValue(
+        text="SPRING8",
+        title="SPring-8",
+        description="Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan")
+    PETRA_III = PermissibleValue(
+        text="PETRA_III",
+        title="PETRA III",
+        description="High-brilliance synchrotron radiation source at DESY, Hamburg, Germany")
+    SOLEIL = PermissibleValue(
+        text="SOLEIL",
+        title="Synchrotron SOLEIL",
+        description="French national synchrotron facility near Paris, France",
+        meaning=ROR["01ydb3330"])
+    AUSTRALIAN_SYNCHROTRON = PermissibleValue(
+        text="AUSTRALIAN_SYNCHROTRON",
+        title="Australian Synchrotron",
+        description="Australia's national synchrotron facility in Melbourne, Victoria",
+        meaning=ROR["03vk18a84"])
+    SIBYLS = PermissibleValue(
+        text="SIBYLS",
+        title="SIBYLS Beamline 12.3.1",
+        description="""Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction""")
+
+    _defn = EnumDefinition(
+        name="FacilityEnum",
+        description="Major synchrotron and structural biology research facilities worldwide",
+    )
+
 class SampleTypeEnum(EnumDefinitionImpl):
     """
     Types of biological samples

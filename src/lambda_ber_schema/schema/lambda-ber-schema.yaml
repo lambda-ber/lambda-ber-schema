@@ -92,6 +92,8 @@ prefixes:
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
+  ROR: https://ror.org/
+  wikidata: http://www.wikidata.org/entity/
 
 imports:
   - linkml:types
@@ -1590,6 +1592,213 @@ classes:
         range: float
 
 enums:
+  FacilityEnum:
+    description: "Major synchrotron and structural biology research facilities worldwide"
+    comments:
+      - "This enum provides standardized identifiers for major facilities with rich metadata"
+      - "ROR (Research Organization Registry) IDs provide persistent organizational identifiers"
+      - "Not currently bound to any slots - available for future use"
+    permissible_values:
+      NSLS_II:
+        title: "National Synchrotron Light Source II"
+        description: "Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA"
+        meaning: ROR:01q47ea17
+        annotations:
+          parent_organization: "Brookhaven National Laboratory"
+          parent_ror: "ROR:02ex6cf31"
+          location: "Upton, New York, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q30270543"
+          energy_gev: "3.0"
+          operational_since: "2015"
+          beamlines_count: "28"
+          website: "https://www.bnl.gov/nsls2/"
+        aliases:
+          - NSLS-II
+          - NSLS2
+      ALS:
+        title: "Advanced Light Source"
+        description: "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA"
+        annotations:
+          parent_organization: "Lawrence Berkeley National Laboratory"
+          parent_ror: "ROR:02jbv0t02"
+          location: "Berkeley, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q4685011"
+          energy_gev: "1.9"
+          operational_since: "1993"
+          website: "https://als.lbl.gov/"
+        aliases:
+          - Advanced Light Source
+          - ALS Berkeley
+      SSRL:
+        title: "Stanford Synchrotron Radiation Lightsource"
+        description: "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA"
+        annotations:
+          parent_organization: "SLAC National Accelerator Laboratory"
+          parent_ror: "ROR:05gzmn429"
+          location: "Menlo Park, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q7598571"
+          energy_gev: "3.0"
+          operational_since: "1974"
+          website: "https://www-ssrl.slac.stanford.edu/"
+        aliases:
+          - Stanford Synchrotron Radiation Lightsource
+          - Stanford Synchrotron
+      APS:
+        title: "Advanced Photon Source"
+        description: "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA"
+        annotations:
+          parent_organization: "Argonne National Laboratory"
+          parent_ror: "ROR:05gvnxz63"
+          location: "Lemont, Illinois, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q2824628"
+          energy_gev: "7.0"
+          operational_since: "1996"
+          upgrade: "APS-U upgrade 2024"
+          website: "https://www.aps.anl.gov/"
+        aliases:
+          - Advanced Photon Source
+          - Argonne APS
+      ESRF:
+        title: "European Synchrotron Radiation Facility"
+        description: "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source"
+        meaning: ROR:02550n020
+        annotations:
+          location: "Grenoble, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1163036"
+          energy_gev: "6.0"
+          operational_since: "1994"
+          upgrade: "Extremely Brilliant Source (EBS) 2020"
+          partner_countries: "22"
+          website: "https://www.esrf.fr/"
+        aliases:
+          - European Synchrotron
+          - ESRF-EBS
+      DIAMOND:
+        title: "Diamond Light Source"
+        description: "UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK"
+        meaning: ROR:05etxs293
+        annotations:
+          location: "Harwell, Oxfordshire, UK"
+          country: "United Kingdom"
+          doe_facility: "false"
+          wikidata_id: "Q652731"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          beamlines_count: "32"
+          website: "https://www.diamond.ac.uk/"
+        aliases:
+          - Diamond
+          - Diamond Synchrotron
+      PHOTON_FACTORY:
+        title: "Photon Factory"
+        description: "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan"
+        annotations:
+          parent_organization: "High Energy Accelerator Research Organization (KEK)"
+          parent_ror: "ROR:01g5y5k24"
+          location: "Tsukuba, Ibaraki, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q7187717"
+          energy_gev: "2.5"
+          operational_since: "1982"
+          website: "https://www2.kek.jp/imss/pf/"
+        aliases:
+          - PF
+          - KEK Photon Factory
+      SPRING8:
+        title: "SPring-8"
+        description: "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan"
+        annotations:
+          parent_organization: "Japan Synchrotron Radiation Research Institute (JASRI)"
+          parent_ror: "ROR:01xjv7358"
+          location: "Sayo, Hyogo, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q1196821"
+          energy_gev: "8.0"
+          operational_since: "1997"
+          website: "http://www.spring8.or.jp/"
+        aliases:
+          - SPring-8
+          - Super Photon ring-8 GeV
+      PETRA_III:
+        title: "PETRA III"
+        description: "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany"
+        annotations:
+          parent_organization: "Deutsches Elektronen-Synchrotron (DESY)"
+          parent_ror: "ROR:01js2sh04"
+          location: "Hamburg, Germany"
+          country: "Germany"
+          doe_facility: "false"
+          wikidata_id: "Q1754942"
+          energy_gev: "6.0"
+          operational_since: "2009"
+          website: "https://photon-science.desy.de/facilities/petra_iii/"
+        aliases:
+          - PETRA III
+          - PETRA3
+      SOLEIL:
+        title: "Synchrotron SOLEIL"
+        description: "French national synchrotron facility near Paris, France"
+        meaning: ROR:01ydb3330
+        annotations:
+          location: "Saint-Aubin, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1414116"
+          energy_gev: "2.75"
+          operational_since: "2008"
+          website: "https://www.synchrotron-soleil.fr/"
+        aliases:
+          - SOLEIL
+          - Synchrotron SOLEIL
+      AUSTRALIAN_SYNCHROTRON:
+        title: "Australian Synchrotron"
+        description: "Australia's national synchrotron facility in Melbourne, Victoria"
+        meaning: ROR:03vk18a84
+        annotations:
+          location: "Melbourne, Victoria, Australia"
+          country: "Australia"
+          doe_facility: "false"
+          wikidata_id: "Q782691"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          website: "https://www.synchrotron.org.au/"
+        aliases:
+          - Australian Synchrotron
+          - AS
+      SIBYLS:
+        title: "SIBYLS Beamline 12.3.1"
+        description: "Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction"
+        annotations:
+          parent_facility: "Advanced Light Source"
+          parent_ror: "ROR:02jbv0t02"
+          location: "Berkeley, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science - Biological and Environmental Research"
+          beamline_id: "12.3.1"
+          techniques: "SAXS, MX, fiber diffraction"
+          website: "https://bl1231.als.lbl.gov/"
+        aliases:
+          - SIBYLS
+          - ALS 12.3.1
+          - Beamline 12.3.1
+
   SampleTypeEnum:
     description: "Types of biological samples"
     permissible_values:

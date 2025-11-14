@@ -1,6 +1,7 @@
 {
    "CL": "http://purl.obolibrary.org/obo/CL_",
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+   "ROR": "https://ror.org/",
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
    "dcterms": "http://purl.org/dc/terms/",
    "lambdaber": "https://w3id.org/lambda-ber-schema/",
@@ -10,5 +11,6 @@
    "prov": "http://www.w3.org/ns/prov#",
    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "sio": "http://semanticscience.org/resource/",
-   "skos": "http://www.w3.org/2004/02/skos/core#"
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "wikidata": "http://www.wikidata.org/entity/"
 }

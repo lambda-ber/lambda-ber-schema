@@ -237,6 +237,22 @@ enum ExpressionSystemEnum
     cell_free
   }
 
+enum FacilityEnum
+  {
+    NSLS_II
+    ALS
+    SSRL
+    APS
+    ESRF
+    DIAMOND
+    PHOTON_FACTORY
+    SPRING8
+    PETRA_III
+    SOLEIL
+    AUSTRALIAN_SYNCHROTRON
+    SIBYLS
+  }
+
 enum FileFormatEnum
   {
     mrc
