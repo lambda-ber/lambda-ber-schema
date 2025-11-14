@@ -602,8 +602,8 @@ classes:
         description: "Gun lens setting"
         range: integer
       imaging_mode:
-        description: "Imaging mode (e.g., EFTEM, TEM, STEM)"
-        range: string
+        description: "Imaging mode for electron microscopy"
+        range: ImagingModeEnum
       tem_beam_diameter:
         description: "TEM beam diameter in micrometers"
         range: float
@@ -763,7 +763,7 @@ classes:
         description: "Defocus range increment in micrometers"
         range: float
       astigmatism_target:
-        description: "Target astigmatism in nanometers"
+        description: "Target astigmatism in Angstroms"
         range: float
       coma:
         description: "Coma aberration in nanometers"
@@ -1219,7 +1219,7 @@ classes:
         description: "Defocus value in micrometers"
         range: float
       astigmatism:
-        description: "Astigmatism value"
+        description: "Astigmatism value in Angstroms"
         range: float
 
   Image3D:
@@ -1288,13 +1288,14 @@ classes:
   Micrograph:
     is_a: Image2D
     description: "Motion-corrected micrograph derived from movie"
-    attributes:
+    slot_usage:
       pixel_size:
         description: "Final pixel size in Angstroms per pixel"
-        range: float
       defocus:
         description: "Measured defocus in micrometers"
-        range: float
+      astigmatism:
+        description: "Astigmatism in Angstroms"
+    attributes:
       dose:
         description: "Total electron dose in e-/Angstrom^2"
         range: float
@@ -1307,9 +1308,6 @@ classes:
         range: float
       defocus_v:
         description: "Defocus V in micrometers"
-        range: float
-      astigmatism:
-        description: "Astigmatism in Angstroms"
         range: float
       astigmatism_angle:
         description: "Astigmatism angle in degrees"
@@ -1549,8 +1547,8 @@ classes:
         range: float
       # Additional detailed vitrification parameters from PNNL schema
       grid_material:
-        description: "Grid material (carbon, gold, graphene, silicon_nitride)"
-        range: string
+        description: "Grid material"
+        range: GridMaterialEnum
       glow_discharge_applied:
         description: "Whether glow discharge treatment was applied"
         range: boolean
@@ -2044,7 +2042,7 @@ classes:
     attributes:
       symmetry:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
-        range: string
+        range: SymmetryEnum
       pixel_size:
         description: "Pixel size in Angstroms per pixel"
         range: float
@@ -2364,6 +2362,18 @@ enums:
       gold:
         description: "Gold grid"
 
+  GridMaterialEnum:
+    description: "Materials used for EM grids"
+    permissible_values:
+      carbon:
+        description: "Carbon grid"
+      gold:
+        description: "Gold grid"
+      graphene:
+        description: "Graphene grid"
+      silicon_nitride:
+        description: "Silicon nitride grid"
+
   VitrificationMethodEnum:
     description: "Methods for vitrification"
     permissible_values:
@@ -2373,6 +2383,54 @@ enums:
         description: "High pressure freezing"
       slam_freezing:
         description: "Slam freezing"
+
+  SymmetryEnum:
+    description: "Crystallographic and non-crystallographic symmetry groups for cryo-EM"
+    permissible_values:
+      C1:
+        description: "C1 symmetry (no symmetry)"
+      C2:
+        description: "C2 cyclic symmetry (2-fold)"
+      C3:
+        description: "C3 cyclic symmetry (3-fold)"
+      C4:
+        description: "C4 cyclic symmetry (4-fold)"
+      C5:
+        description: "C5 cyclic symmetry (5-fold)"
+      C6:
+        description: "C6 cyclic symmetry (6-fold)"
+      C7:
+        description: "C7 cyclic symmetry (7-fold)"
+      C8:
+        description: "C8 cyclic symmetry (8-fold)"
+      C9:
+        description: "C9 cyclic symmetry (9-fold)"
+      C10:
+        description: "C10 cyclic symmetry (10-fold)"
+      D2:
+        description: "D2 dihedral symmetry (2-fold)"
+      D3:
+        description: "D3 dihedral symmetry (3-fold)"
+      D4:
+        description: "D4 dihedral symmetry (4-fold)"
+      D5:
+        description: "D5 dihedral symmetry (5-fold)"
+      D6:
+        description: "D6 dihedral symmetry (6-fold)"
+      D7:
+        description: "D7 dihedral symmetry (7-fold)"
+      D8:
+        description: "D8 dihedral symmetry (8-fold)"
+      D9:
+        description: "D9 dihedral symmetry (9-fold)"
+      D10:
+        description: "D10 dihedral symmetry (10-fold)"
+      T:
+        description: "Tetrahedral symmetry"
+      O:
+        description: "Octahedral symmetry"
+      I:
+        description: "Icosahedral symmetry"
 
   CrystallizationMethodEnum:
     description: "Methods for protein crystallization"
@@ -2403,6 +2461,16 @@ enums:
         description: "Instrument is offline"
       commissioning:
         description: "Instrument being commissioned"
+
+  ImagingModeEnum:
+    description: "Imaging modes for electron microscopy"
+    permissible_values:
+      EFTEM:
+        description: "Energy-filtered transmission electron microscopy"
+      TEM:
+        description: "Transmission electron microscopy"
+      STEM:
+        description: "Scanning transmission electron microscopy"
 
   DetectorTypeEnum:
     description: "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands."
