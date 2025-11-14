@@ -71,6 +71,10 @@
     {
       "prefix_prefix": "wikidata",
       "prefix_reference": "http://www.wikidata.org/entity/"
+    },
+    {
+      "prefix_prefix": "CHMO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CHMO_"
     }
   ],
   "default_prefix": "lambdaber",
@@ -1371,35 +1375,46 @@
       "permissible_values": [
         {
           "text": "cryo_em",
-          "description": "Cryo-electron microscopy"
+          "description": "Cryo-electron microscopy",
+          "meaning": "CHMO:0002413"
         },
         {
           "text": "xray_crystallography",
-          "description": "X-ray crystallography"
+          "description": "X-ray crystallography",
+          "meaning": "CHMO:0000156"
         },
         {
           "text": "saxs",
-          "description": "Small-angle X-ray scattering"
+          "description": "Small-angle X-ray scattering",
+          "meaning": "CHMO:0000204"
         },
         {
           "text": "waxs",
-          "description": "Wide-angle X-ray scattering"
+          "description": "Wide-angle X-ray scattering",
+          "meaning": "CHMO:0000207"
         },
         {
           "text": "sans",
-          "description": "Small-angle neutron scattering"
+          "description": "Small-angle neutron scattering",
+          "meaning": "CHMO:0000184"
         },
         {
           "text": "cryo_et",
-          "description": "Cryo-electron tomography"
+          "description": "Cryo-electron tomography",
+          "meaning": "CHMO:0002413",
+          "comments": [
+            "Uses same CHMO term as cryo_em; tomography is a specific application"
+          ]
         },
         {
           "text": "electron_microscopy",
-          "description": "General electron microscopy"
+          "description": "General electron microscopy",
+          "meaning": "CHMO:0000068"
         },
         {
           "text": "mass_spectrometry",
-          "description": "Mass spectrometry"
+          "description": "Mass spectrometry",
+          "meaning": "CHMO:0000470"
         }
       ]
     },
@@ -1887,7 +1902,8 @@
       "permissible_values": [
         {
           "text": "x_ray_diffraction",
-          "description": "X-ray diffraction"
+          "description": "X-ray diffraction",
+          "meaning": "CHMO:0000156"
         },
         {
           "text": "neutron_diffraction",
@@ -17467,9 +17483,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-13T19:45:59",
-  "source_file_size": 96895,
-  "generation_date": "2025-11-13T19:47:22",
+  "source_file_date": "2025-11-14T08:14:09",
+  "source_file_size": 97311,
+  "generation_date": "2025-11-14T08:14:56",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

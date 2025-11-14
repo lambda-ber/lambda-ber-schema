@@ -1,0 +1,20 @@
+Field,Description
+Project_ID,Internal project or proposal identifier.
+Sample_ID,Unique sample/construct ID tracked across all sheets.
+UniProt_ID,Primary UniProt accession for the target protein.
+Source_Organism,"Scientific name (e.g., Homo sapiens)."
+Expression_System,One of the controlled values (Bacteria/Yeast/Insect/Mammalian/Cell-free).
+Host_Strain_or_Cell_Line,"E.g., BL21(DE3), Sf9, HEK293F."
+Affinity_Type,"Primary capture method (e.g., Ni-NTA for His-tag)."
+Crystallization_Method,"Technique used (sitting, hanging, batch, LCP)."
+Facility,Synchrotron or in-house source used for data collection.
+Beamline,"Beamline name/number (e.g., NSLS-II FMX, AMX)."
+Primary_Software,"Main pipeline used (e.g., XDS, DIALS, HKL2000/3000)."
+Parameters_File_Path_or_Text,Link/path to parameter file or paste key parameters.
+Space_Group,Final space group from processing/scaling.
+Resolution_High_A,Highest resolution limit (Å).
+Completeness_Total_percent,Overall completeness (%) after merging.
+CC1/2,Half-set correlation coefficient (overall or high shell).
+Phasing_Method,MR/SAD/MAD/etc.
+Rwork/Rfree,Refinement residuals (final).
+PDB_ID,Accession after deposition if available.
