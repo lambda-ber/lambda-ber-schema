@@ -1,0 +1,73 @@
+# Example of an enzyme sample with cofactor binding annotations
+id: "lambdaber:sample-aldh-cofactor"
+sample_code: "ALDH2-2024-001"
+sample_type: protein
+title: "Human aldehyde dehydrogenase 2 with NAD+ and substrate"
+description: "ALDH2 enzyme co-crystallized with NAD+ cofactor for structural and functional studies"
+
+molecular_composition:
+  description: "Human ALDH2 tetramer with bound NAD+"
+  sequences:
+    - "MGSSLSRVPPTAGPLGSPLLLQEPALEAAGEEEELQDSDADGEEEKAEEEEKEEKAEDEEER..."
+
+molecular_weight: 217.5
+concentration: 5.0
+concentration_unit: mg_per_ml
+
+# Functional site with cofactor binding
+functional_sites:
+  - id: "lambdaber:funcsite-aldh2-active"
+    protein_id: "P05091"
+    pdb_entry: "1O00"
+    chain_id: "A"
+    site_type: catalytic_site
+    site_name: "NAD+-binding catalytic site"
+    residues: ["268", "302", "303", "395", "458"]
+    conservation_score: 0.99
+    functional_importance: "Essential for aldehyde oxidation to carboxylic acid"
+    go_terms: ["GO:0004029", "GO:0006081"]
+    ec_number: "1.2.1.3"
+    source_database: uniprot
+    confidence_score: 1.0
+    evidence_type: experimental
+    
+    ligand_interactions:
+      # NAD+ cofactor
+      - ligand_id: "CHEBI:57540"
+        ligand_name: "NAD+"
+        ligand_smiles: "C1=CC(=C[N+](=C1)[C@H]2[C@@H]([C@@H]([C@H](O2)COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)N4C=NC5=C(N=CN=C54)N)O)O)O)O)C(=O)N"
+        binding_affinity: 0.08
+        binding_affinity_type: km
+        binding_affinity_unit: millimolar
+        interaction_type: hydrogen_bond
+        binding_site_residues: ["268", "302", "303"]
+        is_cofactor: true
+        is_drug_like: false
+        interaction_distance: 2.8
+
+      # Substrate analog
+      - ligand_id: "CHEBI:15343"
+        ligand_name: "Acetaldehyde"
+        ligand_smiles: "CC=O"
+        binding_affinity: 0.18
+        binding_affinity_type: km
+        binding_affinity_unit: millimolar
+        interaction_type: hydrogen_bond
+        binding_site_residues: ["268", "458"]
+        is_cofactor: false
+        is_drug_like: false
+        interaction_distance: 3.1
+
+# Biophysical properties
+biophysical_properties:
+  - property_type: melting_temperature
+    value: 328.5
+    unit: "K"
+    error: 0.8
+    measurement_conditions:
+      - id: "lambdaber:meas-aldh2-001"
+        ph: 7.5
+        temperature: 298.15
+        ionic_strength: 0.1
+        buffer_composition: "50 mM Tris-HCl, 100 mM NaCl"
+    experimental_method: differential_scanning_calorimetry
