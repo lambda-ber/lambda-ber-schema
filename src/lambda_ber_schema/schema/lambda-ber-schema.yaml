@@ -1453,8 +1453,8 @@ classes:
         range: float
       # Additional detailed vitrification parameters from PNNL schema
       grid_material:
-        description: "Grid material (carbon, gold, graphene, silicon_nitride)"
-        range: string
+        description: "Grid material"
+        range: GridMaterialEnum
       glow_discharge_applied:
         description: "Whether glow discharge treatment was applied"
         range: boolean
@@ -2047,6 +2047,18 @@ enums:
         description: "Ultrathin carbon film"
       gold:
         description: "Gold grid"
+
+  GridMaterialEnum:
+    description: "Materials used for EM grids"
+    permissible_values:
+      carbon:
+        description: "Carbon grid"
+      gold:
+        description: "Gold grid"
+      graphene:
+        description: "Graphene grid"
+      silicon_nitride:
+        description: "Silicon nitride grid"
 
   VitrificationMethodEnum:
     description: "Methods for vitrification"
