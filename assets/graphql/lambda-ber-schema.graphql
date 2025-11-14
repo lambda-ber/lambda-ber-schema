@@ -205,6 +205,26 @@ enum DataTypeEnum
     validation_report
   }
 
+enum DetectorModeEnum
+  {
+    counting
+    integrating
+    super_resolution
+    linear
+    correlated_double_sampling
+  }
+
+enum DetectorTechnologyEnum
+  {
+    direct_electron_detector
+    ccd
+    cmos
+    hybrid_photon_counting
+    scintillator_coupled
+    imaging_plate
+    film
+  }
+
 enum DetectorTypeEnum
   {
     direct_electron
@@ -243,6 +263,22 @@ enum ExpressionSystemEnum
     insect
     mammalian
     cell_free
+  }
+
+enum FacilityEnum
+  {
+    NSLS_II
+    ALS
+    SSRL
+    ESRF
+    DIAMOND
+    PHOTON_FACTORY
+    APS
+    SPRING8
+    PETRA_III
+    SOLEIL
+    AUSTRALIAN_SYNCHROTRON
+    SIBYLS
   }
 
 enum FileFormatEnum
@@ -643,10 +679,13 @@ type CryoEMInstrument
     acceleratingVoltage: Integer
     csCorrector: Boolean
     phasePlate: Boolean
-    detectorType: DetectorTypeEnum
+    detectorTechnology: DetectorTechnologyEnum
+    detectorManufacturer: String
+    detectorModel: String
+    detectorMode: DetectorModeEnum
+    detectorPosition: String
     detectorDimensions: String
-    pixelSizeMin: Float
-    pixelSizeMax: Float
+    pixelSizePhysicalUm: Float
     autoloaderCapacity: Integer
     cs: Float
     c2Aperture: Float
@@ -656,8 +695,6 @@ type CryoEMInstrument
     energyFilterMake: String
     energyFilterModel: String
     energyFilterSlitWidth: Float
-    detectorPosition: String
-    detectorMode: String
     pixelSizePhysical: Float
     microscopeSoftware: String
     microscopeSoftwareVersion: String
@@ -719,8 +756,8 @@ type CTFEstimationParameters
     defocusSearchMax: Float
     defocusStep: Float
     amplitudeContrast: Float
-    cs: Float
-    voltage: Float
+    csUsedInEstimation: Float
+    voltageUsedInEstimation: Float
   }
 
 type DatabaseCrossReference
@@ -741,7 +778,8 @@ type DataCollectionStrategy
     totalDose: Float
     dosePerFrame: Float
     wavelengthA: Float
-    detector: String
+    detectorMode: DetectorModeEnum
+    pixelSizeCalibrated: Float
     detectorDistanceMm: Float
     beamCenterXPx: Integer
     beamCenterYPx: Integer
@@ -1034,16 +1072,16 @@ type Micrograph
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
     exposureTime: Float
-    dose: Float
+    pixelSize: Float
     defocus: Float
-    astigmatism: Float
+    dose: Float
     originMovieId: String
     defocusU: Float
     defocusV: Float
+    astigmatism: Float
     astigmatismAngle: Float
     resolutionFitLimit: Float
     ctfQualityScore: Float
@@ -1570,7 +1608,9 @@ type XRayInstrument
     installationDate: String
     currentStatus: InstrumentStatusEnum
     sourceType: XRaySourceTypeEnum
-    detectorType: DetectorTypeEnum
+    detectorTechnology: DetectorTechnologyEnum
+    detectorManufacturer: String
+    detectorModel: String
     beamlineId: String
     energyMin: Float
     energyMax: Float
@@ -1631,7 +1671,8 @@ type XRFImage
     dwellTime: Float
     elementsMeasured: [String]
     sourceType: XRaySourceTypeEnum
-    detectorType: String
+    detectorTechnology: DetectorTechnologyEnum
+    detectorModel: String
     flux: Float
     calibrationStandard: String
   }

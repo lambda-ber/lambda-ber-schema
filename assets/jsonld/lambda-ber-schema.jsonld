@@ -55,6 +55,26 @@
     {
       "prefix_prefix": "nsls2",
       "prefix_reference": "https://github.com/NSLS2/BER-LAMBDA/"
+    },
+    {
+      "prefix_prefix": "imgCIF",
+      "prefix_reference": "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#"
+    },
+    {
+      "prefix_prefix": "mmCIF",
+      "prefix_reference": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/"
+    },
+    {
+      "prefix_prefix": "ROR",
+      "prefix_reference": "https://ror.org/"
+    },
+    {
+      "prefix_prefix": "wikidata",
+      "prefix_reference": "http://www.wikidata.org/entity/"
+    },
+    {
+      "prefix_prefix": "CHMO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CHMO_"
     }
   ],
   "default_prefix": "lambdaber",
@@ -371,6 +391,593 @@
   ],
   "enums": [
     {
+      "name": "FacilityEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FacilityEnum",
+      "description": "Major synchrotron and structural biology research facilities worldwide",
+      "comments": [
+        "This enum provides standardized identifiers for major facilities with rich metadata",
+        "ROR (Research Organization Registry) IDs provide persistent organizational identifiers",
+        "Not currently bound to any slots - available for future use"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "NSLS_II",
+          "description": "Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA",
+          "meaning": "ROR:01q47ea17",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "Brookhaven National Laboratory"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:02ex6cf31"
+            },
+            {
+              "tag": "location",
+              "value": "Upton, New York, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q30270543"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "3.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2015"
+            },
+            {
+              "tag": "beamlines_count",
+              "value": "28"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.bnl.gov/nsls2/"
+            }
+          ],
+          "title": "National Synchrotron Light Source II",
+          "aliases": [
+            "NSLS-II",
+            "NSLS2"
+          ]
+        },
+        {
+          "text": "ALS",
+          "description": "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "Lawrence Berkeley National Laboratory"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:02jbv0t02"
+            },
+            {
+              "tag": "location",
+              "value": "Berkeley, California, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q4685011"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "1.9"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1993"
+            },
+            {
+              "tag": "website",
+              "value": "https://als.lbl.gov/"
+            }
+          ],
+          "title": "Advanced Light Source",
+          "aliases": [
+            "Advanced Light Source",
+            "ALS Berkeley"
+          ]
+        },
+        {
+          "text": "SSRL",
+          "description": "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "SLAC National Accelerator Laboratory"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:05gzmn429"
+            },
+            {
+              "tag": "location",
+              "value": "Menlo Park, California, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q7598571"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "3.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1974"
+            },
+            {
+              "tag": "website",
+              "value": "https://www-ssrl.slac.stanford.edu/"
+            }
+          ],
+          "title": "Stanford Synchrotron Radiation Lightsource",
+          "aliases": [
+            "Stanford Synchrotron Radiation Lightsource",
+            "Stanford Synchrotron"
+          ]
+        },
+        {
+          "text": "ESRF",
+          "description": "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source",
+          "meaning": "ROR:02550n020",
+          "annotations": [
+            {
+              "tag": "location",
+              "value": "Grenoble, France"
+            },
+            {
+              "tag": "country",
+              "value": "France"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q1163036"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "6.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1994"
+            },
+            {
+              "tag": "upgrade",
+              "value": "Extremely Brilliant Source (EBS) 2020"
+            },
+            {
+              "tag": "partner_countries",
+              "value": "22"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.esrf.fr/"
+            }
+          ],
+          "title": "European Synchrotron Radiation Facility",
+          "aliases": [
+            "European Synchrotron",
+            "ESRF-EBS"
+          ]
+        },
+        {
+          "text": "DIAMOND",
+          "description": "UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK",
+          "meaning": "ROR:05etxs293",
+          "annotations": [
+            {
+              "tag": "location",
+              "value": "Harwell, Oxfordshire, UK"
+            },
+            {
+              "tag": "country",
+              "value": "United Kingdom"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q652731"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "3.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2007"
+            },
+            {
+              "tag": "beamlines_count",
+              "value": "32"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.diamond.ac.uk/"
+            }
+          ],
+          "title": "Diamond Light Source",
+          "aliases": [
+            "Diamond",
+            "Diamond Synchrotron"
+          ]
+        },
+        {
+          "text": "PHOTON_FACTORY",
+          "description": "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "High Energy Accelerator Research Organization (KEK)"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:01g5y5k24"
+            },
+            {
+              "tag": "location",
+              "value": "Tsukuba, Ibaraki, Japan"
+            },
+            {
+              "tag": "country",
+              "value": "Japan"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q7187717"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "2.5"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1982"
+            },
+            {
+              "tag": "website",
+              "value": "https://www2.kek.jp/imss/pf/"
+            }
+          ],
+          "title": "Photon Factory",
+          "aliases": [
+            "PF",
+            "KEK Photon Factory"
+          ]
+        },
+        {
+          "text": "APS",
+          "description": "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "Argonne National Laboratory"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:05gvnxz63"
+            },
+            {
+              "tag": "location",
+              "value": "Lemont, Illinois, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q2824628"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "7.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1996"
+            },
+            {
+              "tag": "upgrade",
+              "value": "APS-U upgrade 2024"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.aps.anl.gov/"
+            }
+          ],
+          "title": "Advanced Photon Source",
+          "aliases": [
+            "Advanced Photon Source",
+            "Argonne APS"
+          ]
+        },
+        {
+          "text": "SPRING8",
+          "description": "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "Japan Synchrotron Radiation Research Institute (JASRI)"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:01xjv7358"
+            },
+            {
+              "tag": "location",
+              "value": "Sayo, Hyogo, Japan"
+            },
+            {
+              "tag": "country",
+              "value": "Japan"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q1196821"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "8.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1997"
+            },
+            {
+              "tag": "website",
+              "value": "http://www.spring8.or.jp/"
+            }
+          ],
+          "title": "SPring-8",
+          "aliases": [
+            "SPring-8",
+            "Super Photon ring-8 GeV"
+          ]
+        },
+        {
+          "text": "PETRA_III",
+          "description": "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany",
+          "annotations": [
+            {
+              "tag": "parent_organization",
+              "value": "Deutsches Elektronen-Synchrotron (DESY)"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:01js2sh04"
+            },
+            {
+              "tag": "location",
+              "value": "Hamburg, Germany"
+            },
+            {
+              "tag": "country",
+              "value": "Germany"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q1754942"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "6.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2009"
+            },
+            {
+              "tag": "website",
+              "value": "https://photon-science.desy.de/facilities/petra_iii/"
+            }
+          ],
+          "title": "PETRA III",
+          "aliases": [
+            "PETRA III",
+            "PETRA3"
+          ]
+        },
+        {
+          "text": "SOLEIL",
+          "description": "French national synchrotron facility near Paris, France",
+          "meaning": "ROR:01ydb3330",
+          "annotations": [
+            {
+              "tag": "location",
+              "value": "Saint-Aubin, France"
+            },
+            {
+              "tag": "country",
+              "value": "France"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q1414116"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "2.75"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2008"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.synchrotron-soleil.fr/"
+            }
+          ],
+          "title": "Synchrotron SOLEIL",
+          "aliases": [
+            "SOLEIL",
+            "Synchrotron SOLEIL"
+          ]
+        },
+        {
+          "text": "AUSTRALIAN_SYNCHROTRON",
+          "description": "Australia's national synchrotron facility in Melbourne, Victoria",
+          "meaning": "ROR:03vk18a84",
+          "annotations": [
+            {
+              "tag": "location",
+              "value": "Melbourne, Victoria, Australia"
+            },
+            {
+              "tag": "country",
+              "value": "Australia"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "false"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q782691"
+            },
+            {
+              "tag": "energy_gev",
+              "value": "3.0"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2007"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.synchrotron.org.au/"
+            }
+          ],
+          "title": "Australian Synchrotron",
+          "aliases": [
+            "Australian Synchrotron",
+            "AS"
+          ]
+        },
+        {
+          "text": "SIBYLS",
+          "description": "Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction",
+          "annotations": [
+            {
+              "tag": "parent_facility",
+              "value": "Advanced Light Source"
+            },
+            {
+              "tag": "parent_ror",
+              "value": "ROR:02jbv0t02"
+            },
+            {
+              "tag": "location",
+              "value": "Berkeley, California, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science - Biological and Environmental Research"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "12.3.1"
+            },
+            {
+              "tag": "techniques",
+              "value": "SAXS, MX, fiber diffraction"
+            },
+            {
+              "tag": "website",
+              "value": "https://bl1231.als.lbl.gov/"
+            }
+          ],
+          "title": "SIBYLS Beamline 12.3.1",
+          "aliases": [
+            "SIBYLS",
+            "ALS 12.3.1",
+            "Beamline 12.3.1"
+          ]
+        }
+      ]
+    },
+    {
       "name": "SampleTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/SampleTypeEnum",
       "description": "Types of biological samples",
@@ -593,7 +1200,8 @@
     {
       "name": "DetectorTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/DetectorTypeEnum",
-      "description": "Types of detectors for cryo-EM and X-ray crystallography",
+      "description": "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.",
+      "deprecated": "Use DetectorTechnologyEnum for detector technology, and separate manufacturer/model fields",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "permissible_values": [
         {
@@ -635,6 +1243,107 @@
       ]
     },
     {
+      "name": "DetectorTechnologyEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum",
+      "description": "Generic detector technologies for structural biology imaging",
+      "comments": [
+        "Separates detector technology from manufacturer/model for better ontology mapping",
+        "Use detector_manufacturer and detector_model fields for specific equipment details"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "direct_electron_detector",
+          "description": "Direct electron detector for cryo-EM (e.g., Gatan K2/K3, ThermoFisher Falcon, DirectElectron DE-64)",
+          "comments": [
+            "Modern cryo-EM detectors with direct electron counting capability"
+          ]
+        },
+        {
+          "text": "ccd",
+          "description": "Charge-coupled device camera",
+          "comments": [
+            "Used in both cryo-EM (older systems) and X-ray crystallography"
+          ]
+        },
+        {
+          "text": "cmos",
+          "description": "Complementary metal-oxide-semiconductor detector",
+          "comments": [
+            "Used in both cryo-EM and X-ray crystallography (e.g., Rigaku HyPix, Bruker PIXIUM)"
+          ]
+        },
+        {
+          "text": "hybrid_photon_counting",
+          "description": "Hybrid pixel photon counting detector for X-ray crystallography",
+          "comments": [
+            "Modern X-ray detectors (e.g., Dectris EIGER/PILATUS, Bruker PHOTON)"
+          ]
+        },
+        {
+          "text": "scintillator_coupled",
+          "description": "Scintillator-coupled indirect detection",
+          "comments": [
+            "Indirect detection via scintillator conversion"
+          ]
+        },
+        {
+          "text": "imaging_plate",
+          "description": "Imaging plate detector",
+          "comments": [
+            "Storage phosphor technology, historically common in X-ray crystallography"
+          ]
+        },
+        {
+          "text": "film",
+          "description": "Photographic film",
+          "comments": [
+            "Legacy detector type for historical datasets"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DetectorModeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DetectorModeEnum",
+      "description": "Operating modes for detectors during data collection",
+      "comments": [
+        "Particularly relevant for cryo-EM direct electron detectors"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "counting",
+          "description": "Electron/photon counting mode",
+          "comments": [
+            "Individual electron/photon events are counted"
+          ]
+        },
+        {
+          "text": "integrating",
+          "description": "Integrating mode (analog)",
+          "comments": [
+            "Charge accumulation over exposure time"
+          ]
+        },
+        {
+          "text": "super_resolution",
+          "description": "Super-resolution mode with oversampling",
+          "comments": [
+            "Cryo-EM mode with smaller effective pixel size via oversampling"
+          ]
+        },
+        {
+          "text": "linear",
+          "description": "Linear response mode"
+        },
+        {
+          "text": "correlated_double_sampling",
+          "description": "Correlated double sampling mode"
+        }
+      ]
+    },
+    {
       "name": "XRaySourceTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum",
       "description": "Types of X-ray sources",
@@ -666,35 +1375,46 @@
       "permissible_values": [
         {
           "text": "cryo_em",
-          "description": "Cryo-electron microscopy"
+          "description": "Cryo-electron microscopy",
+          "meaning": "CHMO:0002413"
         },
         {
           "text": "xray_crystallography",
-          "description": "X-ray crystallography"
+          "description": "X-ray crystallography",
+          "meaning": "CHMO:0000156"
         },
         {
           "text": "saxs",
-          "description": "Small-angle X-ray scattering"
+          "description": "Small-angle X-ray scattering",
+          "meaning": "CHMO:0000204"
         },
         {
           "text": "waxs",
-          "description": "Wide-angle X-ray scattering"
+          "description": "Wide-angle X-ray scattering",
+          "meaning": "CHMO:0000207"
         },
         {
           "text": "sans",
-          "description": "Small-angle neutron scattering"
+          "description": "Small-angle neutron scattering",
+          "meaning": "CHMO:0000184"
         },
         {
           "text": "cryo_et",
-          "description": "Cryo-electron tomography"
+          "description": "Cryo-electron tomography",
+          "meaning": "CHMO:0002413",
+          "comments": [
+            "Uses same CHMO term as cryo_em; tomography is a specific application"
+          ]
         },
         {
           "text": "electron_microscopy",
-          "description": "General electron microscopy"
+          "description": "General electron microscopy",
+          "meaning": "CHMO:0000068"
         },
         {
           "text": "mass_spectrometry",
-          "description": "Mass spectrometry"
+          "description": "Mass spectrometry",
+          "meaning": "CHMO:0000470"
         }
       ]
     },
@@ -1182,7 +1902,8 @@
       "permissible_values": [
         {
           "text": "x_ray_diffraction",
-          "description": "X-ray diffraction"
+          "description": "X-ray diffraction",
+          "meaning": "CHMO:0000156"
         },
         {
           "text": "neutron_diffraction",
@@ -3878,21 +4599,86 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "cryoEMInstrument__detector_type",
-      "description": "Type of detector",
+      "name": "cryoEMInstrument__detector_technology",
+      "description": "Generic detector technology type",
+      "comments": [
+        "Use this for technology classification (e.g., direct_electron_detector, ccd)",
+        "See detector_manufacturer and detector_model for specific equipment details"
+      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_type",
-      "alias": "detector_type",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_technology",
+      "alias": "detector_technology",
       "owner": "CryoEMInstrument",
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "DetectorTypeEnum",
+      "range": "DetectorTechnologyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_manufacturer",
+      "description": "Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)",
+      "comments": [
+        "Examples: Gatan, ThermoFisher Scientific, DirectElectron"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_manufacturer",
+      "alias": "detector_manufacturer",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_model",
+      "description": "Detector model (e.g., K3, Falcon 4i, DE-64)",
+      "comments": [
+        "Examples: K3 BioQuantum, Falcon 4i, DE-64"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_model",
+      "alias": "detector_model",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_mode",
+      "description": "Supported or default detector operating mode",
+      "comments": [
+        "Indicates operating mode capabilities (e.g., counting, super_resolution)"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_mode",
+      "alias": "detector_mode",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "DetectorModeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cryoEMInstrument__detector_position",
+      "description": "Physical position of detector in microscope (e.g., post-GIF, pre-column)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_position",
+      "alias": "detector_position",
+      "owner": "CryoEMInstrument",
+      "domain_of": [
+        "CryoEMInstrument"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMInstrument__detector_dimensions",
-      "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+      "description": "Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/detector_dimensions",
       "alias": "detector_dimensions",
@@ -3904,24 +4690,15 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "cryoEMInstrument__pixel_size_min",
-      "description": "Minimum pixel size in Angstroms per pixel",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_min",
-      "alias": "pixel_size_min",
-      "owner": "CryoEMInstrument",
-      "domain_of": [
-        "CryoEMInstrument"
+      "name": "cryoEMInstrument__pixel_size_physical_um",
+      "description": "Physical pixel size of the detector in micrometers",
+      "comments": [
+        "Hardware specification, independent of magnification",
+        "Calibrated pixel size (\u00c5/pixel) depends on magnification and is stored in ExperimentRun"
       ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "cryoEMInstrument__pixel_size_max",
-      "description": "Maximum pixel size in Angstroms per pixel",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_max",
-      "alias": "pixel_size_max",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_physical_um",
+      "alias": "pixel_size_physical_um",
       "owner": "CryoEMInstrument",
       "domain_of": [
         "CryoEMInstrument"
@@ -4047,32 +4824,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "cryoEMInstrument__detector_position",
-      "description": "Detector position",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_position",
-      "alias": "detector_position",
-      "owner": "CryoEMInstrument",
-      "domain_of": [
-        "CryoEMInstrument"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "cryoEMInstrument__detector_mode",
-      "description": "Detector mode (counting, integrating, super_resolution)",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_mode",
-      "alias": "detector_mode",
-      "owner": "CryoEMInstrument",
-      "domain_of": [
-        "CryoEMInstrument"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "cryoEMInstrument__pixel_size_physical",
       "description": "Physical pixel size in micrometers",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -4177,23 +4928,57 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "xRayInstrument__detector_type",
-      "description": "Type of X-ray detector",
+      "name": "xRayInstrument__detector_technology",
+      "description": "Generic detector technology type",
       "comments": [
-        "Maps to CBF: Detector",
-        "Maps to PDB: _diffrn_detector.type"
+        "Use this for technology classification (e.g., hybrid_photon_counting, ccd)",
+        "Maps to CBF: Detector (may contain model name)",
+        "Maps to PDB: _diffrn_detector.type",
+        "See detector_manufacturer and detector_model for specific equipment details"
       ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Detector"
       ],
       "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Detector",
-      "alias": "detector_type",
+      "alias": "detector_technology",
       "owner": "XRayInstrument",
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "DetectorTypeEnum",
+      "range": "DetectorTechnologyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__detector_manufacturer",
+      "description": "Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)",
+      "comments": [
+        "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_manufacturer",
+      "alias": "detector_manufacturer",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayInstrument__detector_model",
+      "description": "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)",
+      "comments": [
+        "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_model",
+      "alias": "detector_model",
+      "owner": "XRayInstrument",
+      "domain_of": [
+        "XRayInstrument"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -4819,71 +5604,78 @@
     },
     {
       "name": "experimentRun__wavelength",
-      "description": "X-ray wavelength in Angstroms",
-      "comments": [
-        "Maps to CBF: Wavelength",
-        "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
-      ],
+      "description": "X-ray wavelength",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Wavelength"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_radiation_wavelength.wavelength",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_radiation_wavelength.wavelength"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/wavelength",
       "alias": "wavelength",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__oscillation_angle",
-      "description": "Oscillation angle per image in degrees",
-      "comments": [
-        "Maps to CBF: Angle_increment",
-        "Maps to PDB: _diffrn_scan.angle_increment"
-      ],
+      "description": "Oscillation angle per image",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Angle_increment"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_increment",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan.angle_increment"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/oscillation_angle",
       "alias": "oscillation_angle",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__start_angle",
-      "description": "Starting rotation angle in degrees",
-      "comments": [
-        "Maps to CBF: Start_angle"
-      ],
+      "description": "Starting rotation angle",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Start_angle"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Start_angle",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_start"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Start_angle",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/start_angle",
       "alias": "start_angle",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__number_of_images",
       "description": "Total number of diffraction images collected",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Number_of_images"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Number_of_images",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan.frames"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Number_of_images",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/number_of_images",
       "alias": "number_of_images",
       "owner": "ExperimentRun",
       "domain_of": [
@@ -4894,126 +5686,148 @@
     },
     {
       "name": "experimentRun__beam_center_x",
-      "description": "Beam center X coordinate in pixels",
-      "comments": [
-        "Maps to CBF: Beam_xy (first value)",
-        "Maps to PDB: _diffrn_detector.beam_center_x"
-      ],
+      "description": "Beam center X coordinate",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_centre_x",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_x"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_center_x",
       "alias": "beam_center_x",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "[px]",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__beam_center_y",
-      "description": "Beam center Y coordinate in pixels",
-      "comments": [
-        "Maps to CBF: Beam_xy (second value)",
-        "Maps to PDB: _diffrn_detector.beam_center_y"
-      ],
+      "description": "Beam center Y coordinate",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_centre_y",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_y"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beam_center_y",
       "alias": "beam_center_y",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "[px]",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__detector_distance",
-      "description": "Distance from sample to detector in millimeters",
-      "comments": [
-        "Maps to CBF: Detector_distance",
-        "Maps to PDB: _diffrn_detector.distance"
-      ],
+      "description": "Distance from sample to detector",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Detector_distance"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_measurement.sample_detector_distance",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.distance"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_distance",
       "alias": "detector_distance",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "mm",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__pixel_size_x",
-      "description": "Pixel size X dimension in micrometers",
+      "description": "Pixel size X dimension",
       "comments": [
-        "Maps to CBF: Pixel_size"
+        "imgCIF: _array_element_size.size[1]"
       ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_array_element_size.size"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_x",
       "alias": "pixel_size_x",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "um",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__pixel_size_y",
-      "description": "Pixel size Y dimension in micrometers",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_y"
+      "description": "Pixel size Y dimension",
+      "comments": [
+        "imgCIF: _array_element_size.size[2]"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_y",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Pixel_size_y",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_array_element_size.size"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_y",
       "alias": "pixel_size_y",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "um",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__total_rotation",
-      "description": "Total rotation range collected in degrees",
+      "description": "Total rotation range collected",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg",
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_range"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/total_rotation",
       "alias": "total_rotation",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__beamline",
       "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
-      "comments": [
-        "Maps to PDB: _diffrn_source.beamline"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Beamline"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Beamline",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beamline",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/beamline",
       "alias": "beamline",
       "owner": "ExperimentRun",
       "domain_of": [
@@ -5343,14 +6157,12 @@
     {
       "name": "workflowRun__space_group",
       "description": "Crystallographic space group",
-      "comments": [
-        "Maps to PDB: _symmetry.space_group_name_h-m"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Space_Group"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Space_Group",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_symmetry.space_group_name_H-M"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Space_Group",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/space_group",
       "alias": "space_group",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5361,167 +6173,181 @@
     },
     {
       "name": "workflowRun__unit_cell_a",
-      "description": "Unit cell parameter a in Angstroms",
-      "comments": [
-        "Maps to PDB: _cell.length_a"
-      ],
+      "description": "Unit cell parameter a",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_a"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_a",
       "alias": "unit_cell_a",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_b",
-      "description": "Unit cell parameter b in Angstroms",
-      "comments": [
-        "Maps to PDB: _cell.length_b"
-      ],
+      "description": "Unit cell parameter b",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_b"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_b",
       "alias": "unit_cell_b",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_c",
-      "description": "Unit cell parameter c in Angstroms",
-      "comments": [
-        "Maps to PDB: _cell.length_c"
-      ],
+      "description": "Unit cell parameter c",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_c"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_c",
       "alias": "unit_cell_c",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_alpha",
-      "description": "Unit cell angle alpha in degrees",
-      "comments": [
-        "Maps to PDB: _cell.angle_alpha"
-      ],
+      "description": "Unit cell angle alpha",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_alpha"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_alpha",
       "alias": "unit_cell_alpha",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_beta",
-      "description": "Unit cell angle beta in degrees",
-      "comments": [
-        "Maps to PDB: _cell.angle_beta"
-      ],
+      "description": "Unit cell angle beta",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_beta"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_beta",
       "alias": "unit_cell_beta",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_gamma",
-      "description": "Unit cell angle gamma in degrees",
-      "comments": [
-        "Maps to PDB: _cell.angle_gamma"
-      ],
+      "description": "Unit cell angle gamma",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_gamma"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_gamma",
       "alias": "unit_cell_gamma",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__resolution_high",
-      "description": "High resolution limit in Angstroms",
-      "comments": [
-        "Maps to PDB: _reflns.d_resolution_high"
-      ],
+      "description": "High resolution limit",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_high"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_high",
       "alias": "resolution_high",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__resolution_low",
-      "description": "Low resolution limit in Angstroms",
-      "comments": [
-        "Maps to PDB: _reflns.d_resolution_low"
-      ],
+      "description": "Low resolution limit",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_low"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_low",
       "alias": "resolution_low",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rmerge",
       "description": "Rmerge - merge R-factor",
-      "comments": [
-        "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rmerge"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rmerge",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rmerge_I_obs"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rmerge",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rmerge",
       "alias": "rmerge",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5533,14 +6359,12 @@
     {
       "name": "workflowRun__rpim",
       "description": "Rpim - precision-indicating merging R-factor",
-      "comments": [
-        "Maps to PDB: _reflns.pdbx_Rpim_I_all"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rpim"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rpim",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rpim_I_all"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rpim",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rpim",
       "alias": "rpim",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5552,14 +6376,12 @@
     {
       "name": "workflowRun__cc_half",
       "description": "Half-set correlation coefficient CC(1/2)",
-      "comments": [
-        "Maps to PDB: _reflns.pdbx_CC_half"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/CC_half"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/CC_half",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/CC_half",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cc_half",
       "alias": "cc_half",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5571,33 +6393,33 @@
     {
       "name": "workflowRun__completeness_percent",
       "description": "Data completeness percentage",
-      "comments": [
-        "Maps to PDB: _reflns.percent_possible_obs"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Completeness"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Completeness",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.percent_possible_obs"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Completeness",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/completeness_percent",
       "alias": "completeness_percent",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "%",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__i_over_sigma",
       "description": "Mean I/sigma(I) - signal to noise ratio",
-      "comments": [
-        "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_netI_over_sigmaI"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/i_over_sigma",
       "alias": "i_over_sigma",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5608,34 +6430,34 @@
     },
     {
       "name": "workflowRun__wilson_b_factor",
-      "description": "Wilson B-factor in Angstroms squared",
-      "comments": [
-        "Maps to PDB: _reflns.B_iso_Wilson_estimate"
-      ],
+      "description": "Wilson B-factor",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Wilson_B"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Wilson_B",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.B_iso_Wilson_estimate"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Wilson_B",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/wilson_b_factor",
       "alias": "wilson_b_factor",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao2",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__multiplicity",
       "description": "Data multiplicity (redundancy)",
-      "comments": [
-        "Maps to PDB: _reflns.pdbx_redundancy"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Multiplicity"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Multiplicity",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_redundancy"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Multiplicity",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/multiplicity",
       "alias": "multiplicity",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5647,14 +6469,12 @@
     {
       "name": "workflowRun__rwork",
       "description": "Refinement R-factor (working set)",
-      "comments": [
-        "Maps to PDB: _refine.ls_R_factor_R_work"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rwork"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rwork",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_work"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rwork",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rwork",
       "alias": "rwork",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5666,14 +6486,12 @@
     {
       "name": "workflowRun__rfree",
       "description": "R-free (test set)",
-      "comments": [
-        "Maps to PDB: _refine.ls_R_factor_R_free"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rfree"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Rfree",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_free"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Rfree",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rfree",
       "alias": "rfree",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -5684,91 +6502,96 @@
     },
     {
       "name": "workflowRun__rmsd_bonds",
-      "description": "RMSD from ideal bond lengths in Angstroms",
-      "comments": [
-        "Maps to PDB: _refine.ls_d_res_high"
-      ],
+      "description": "RMSD from ideal bond lengths",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_d_res_high"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rmsd_bonds",
       "alias": "rmsd_bonds",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rmsd_angles",
-      "description": "RMSD from ideal bond angles in degrees",
-      "comments": [
-        "Maps to PDB: _refine.ls_d_res_low"
-      ],
+      "description": "RMSD from ideal bond angles",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_d_res_low"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/rmsd_angles",
       "alias": "rmsd_angles",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "deg",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ramachandran_favored",
       "description": "Percentage of residues in favored Ramachandran regions",
-      "comments": [
-        "Maps to PDB: _refine.pdbx_overall_ESU_R"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_overall_ESU_R"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ramachandran_favored",
       "alias": "ramachandran_favored",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "%",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ramachandran_outliers",
       "description": "Percentage of Ramachandran outliers",
-      "comments": [
-        "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_overall_ESU_R_Free"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ramachandran_outliers",
       "alias": "ramachandran_outliers",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "%",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__clashscore",
       "description": "MolProbity clashscore",
-      "comments": [
-        "Maps to validation report metrics"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Clashscore"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Clashscore",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/clashscore",
       "alias": "clashscore",
       "owner": "WorkflowRun",
       "domain_of": [
@@ -6399,6 +7222,45 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "micrograph__pixel_size",
+      "description": "Final pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "alias": "pixel_size",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__defocus",
+      "description": "Measured defocus in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
+      "alias": "defocus",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__dose",
+      "description": "Total electron dose in e-/Angstrom^2",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/dose",
+      "alias": "dose",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "micrograph__origin_movie_id",
       "description": "Reference to original movie file",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -6430,6 +7292,19 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_v",
       "alias": "defocus_v",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "micrograph__astigmatism",
+      "description": "Astigmatism in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
+      "alias": "astigmatism",
       "owner": "Micrograph",
       "domain_of": [
         "Micrograph"
@@ -6831,11 +7706,27 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "xRFImage__detector_type",
-      "description": "Type of X-ray detector used",
+      "name": "xRFImage__detector_technology",
+      "description": "Type of X-ray detector technology used",
+      "comments": [
+        "For XRF, typically energy-dispersive or wavelength-dispersive detectors"
+      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_type",
-      "alias": "detector_type",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_technology",
+      "alias": "detector_technology",
+      "owner": "XRFImage",
+      "domain_of": [
+        "XRFImage"
+      ],
+      "range": "DetectorTechnologyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRFImage__detector_model",
+      "description": "Specific detector model used for XRF measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_model",
+      "alias": "detector_model",
       "owner": "XRFImage",
       "domain_of": [
         "XRFImage"
@@ -8124,16 +9015,42 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "dataCollectionStrategy__detector",
-      "description": "Detector model/type",
+      "name": "dataCollectionStrategy__detector_mode",
+      "description": "Detector operating mode used during this experiment",
+      "comments": [
+        "For cryo-EM: counting, integrating, or super_resolution",
+        "Detector technology, manufacturer, and model are specified in the Instrument"
+      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/detector",
-      "alias": "detector",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/detector_mode",
+      "alias": "detector_mode",
       "owner": "DataCollectionStrategy",
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "string",
+      "range": "DetectorModeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__pixel_size_calibrated",
+      "description": "Calibrated pixel size for this experiment",
+      "comments": [
+        "For cryo-EM: depends on magnification (\u00c5/pixel)",
+        "For X-ray: typically mm/pixel or \u00b5m/pixel",
+        "Physical pixel size is hardware spec stored in Instrument"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_calibrated",
+      "alias": "pixel_size_calibrated",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "Ao/px",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
@@ -8904,11 +9821,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "cTFEstimationParameters__cs",
-      "description": "Spherical aberration (Cs) in millimeters",
+      "name": "cTFEstimationParameters__cs_used_in_estimation",
+      "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/cs",
-      "alias": "cs",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cs_used_in_estimation",
+      "alias": "cs_used_in_estimation",
       "owner": "CTFEstimationParameters",
       "domain_of": [
         "CTFEstimationParameters"
@@ -8917,11 +9834,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "cTFEstimationParameters__voltage",
-      "description": "Accelerating voltage in kV",
+      "name": "cTFEstimationParameters__voltage_used_in_estimation",
+      "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/voltage",
-      "alias": "voltage",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/voltage_used_in_estimation",
+      "alias": "voltage_used_in_estimation",
       "owner": "CTFEstimationParameters",
       "domain_of": [
         "CTFEstimationParameters"
@@ -11744,10 +12661,13 @@
         "cryoEMInstrument__accelerating_voltage",
         "cryoEMInstrument__cs_corrector",
         "cryoEMInstrument__phase_plate",
-        "cryoEMInstrument__detector_type",
+        "cryoEMInstrument__detector_technology",
+        "cryoEMInstrument__detector_manufacturer",
+        "cryoEMInstrument__detector_model",
+        "cryoEMInstrument__detector_mode",
+        "cryoEMInstrument__detector_position",
         "cryoEMInstrument__detector_dimensions",
-        "cryoEMInstrument__pixel_size_min",
-        "cryoEMInstrument__pixel_size_max",
+        "cryoEMInstrument__pixel_size_physical_um",
         "cryoEMInstrument__autoloader_capacity",
         "cryoEMInstrument__cs",
         "cryoEMInstrument__c2_aperture",
@@ -11757,8 +12677,6 @@
         "cryoEMInstrument__energy_filter_make",
         "cryoEMInstrument__energy_filter_model",
         "cryoEMInstrument__energy_filter_slit_width",
-        "cryoEMInstrument__detector_position",
-        "cryoEMInstrument__detector_mode",
         "cryoEMInstrument__pixel_size_physical",
         "cryoEMInstrument__microscope_software",
         "cryoEMInstrument__microscope_software_version",
@@ -11802,25 +12720,61 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "detector_type",
-          "description": "Type of detector",
-          "range": "DetectorTypeEnum",
+          "name": "detector_technology",
+          "description": "Generic detector technology type",
+          "comments": [
+            "Use this for technology classification (e.g., direct_electron_detector, ccd)",
+            "See detector_manufacturer and detector_model for specific equipment details"
+          ],
+          "range": "DetectorTechnologyEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_manufacturer",
+          "description": "Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)",
+          "comments": [
+            "Examples: Gatan, ThermoFisher Scientific, DirectElectron"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_model",
+          "description": "Detector model (e.g., K3, Falcon 4i, DE-64)",
+          "comments": [
+            "Examples: K3 BioQuantum, Falcon 4i, DE-64"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_mode",
+          "description": "Supported or default detector operating mode",
+          "comments": [
+            "Indicates operating mode capabilities (e.g., counting, super_resolution)"
+          ],
+          "range": "DetectorModeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_position",
+          "description": "Physical position of detector in microscope (e.g., post-GIF, pre-column)",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "detector_dimensions",
-          "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+          "description": "Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
-          "name": "pixel_size_min",
-          "description": "Minimum pixel size in Angstroms per pixel",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "pixel_size_max",
-          "description": "Maximum pixel size in Angstroms per pixel",
+          "name": "pixel_size_physical_um",
+          "description": "Physical pixel size of the detector in micrometers",
+          "comments": [
+            "Hardware specification, independent of magnification",
+            "Calibrated pixel size (\u00c5/pixel) depends on magnification and is stored in ExperimentRun"
+          ],
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -11876,18 +12830,6 @@
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
           "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "detector_position",
-          "description": "Detector position",
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "detector_mode",
-          "description": "Detector mode (counting, integrating, super_resolution)",
-          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -11952,7 +12894,9 @@
         "instrument__installation_date",
         "instrument__current_status",
         "xRayInstrument__source_type",
-        "xRayInstrument__detector_type",
+        "xRayInstrument__detector_technology",
+        "xRayInstrument__detector_manufacturer",
+        "xRayInstrument__detector_model",
         "xRayInstrument__beamline_id",
         "xRayInstrument__energy_min",
         "xRayInstrument__energy_max",
@@ -11972,14 +12916,34 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "detector_type",
-          "description": "Type of X-ray detector",
+          "name": "detector_technology",
+          "description": "Generic detector technology type",
           "comments": [
-            "Maps to CBF: Detector",
-            "Maps to PDB: _diffrn_detector.type"
+            "Use this for technology classification (e.g., hybrid_photon_counting, ccd)",
+            "Maps to CBF: Detector (may contain model name)",
+            "Maps to PDB: _diffrn_detector.type",
+            "See detector_manufacturer and detector_model for specific equipment details"
           ],
           "slot_uri": "nsls2:Detector",
-          "range": "DetectorTypeEnum",
+          "range": "DetectorTechnologyEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_manufacturer",
+          "description": "Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)",
+          "comments": [
+            "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_model",
+          "description": "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)",
+          "comments": [
+            "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
+          ],
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -12354,107 +13318,158 @@
         },
         {
           "name": "wavelength",
-          "description": "X-ray wavelength in Angstroms",
-          "comments": [
-            "Maps to CBF: Wavelength",
-            "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
+          "description": "X-ray wavelength",
+          "exact_mappings": [
+            "nsls2:Wavelength",
+            "imgCIF:_diffrn_radiation_wavelength.wavelength",
+            "mmCIF:_diffrn_radiation_wavelength.wavelength"
           ],
-          "slot_uri": "nsls2:Wavelength",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "oscillation_angle",
-          "description": "Oscillation angle per image in degrees",
-          "comments": [
-            "Maps to CBF: Angle_increment",
-            "Maps to PDB: _diffrn_scan.angle_increment"
+          "description": "Oscillation angle per image",
+          "exact_mappings": [
+            "nsls2:Angle_increment",
+            "imgCIF:_diffrn_scan_axis.angle_increment",
+            "mmCIF:_diffrn_scan.angle_increment"
           ],
-          "slot_uri": "nsls2:Angle_increment",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "start_angle",
-          "description": "Starting rotation angle in degrees",
-          "comments": [
-            "Maps to CBF: Start_angle"
+          "description": "Starting rotation angle",
+          "exact_mappings": [
+            "nsls2:Start_angle",
+            "imgCIF:_diffrn_scan_axis.angle_start"
           ],
-          "slot_uri": "nsls2:Start_angle",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "number_of_images",
           "description": "Total number of diffraction images collected",
-          "slot_uri": "nsls2:Number_of_images",
+          "exact_mappings": [
+            "nsls2:Number_of_images",
+            "imgCIF:_diffrn_scan.frames"
+          ],
           "range": "integer",
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_center_x",
-          "description": "Beam center X coordinate in pixels",
-          "comments": [
-            "Maps to CBF: Beam_xy (first value)",
-            "Maps to PDB: _diffrn_detector.beam_center_x"
+          "description": "Beam center X coordinate",
+          "exact_mappings": [
+            "nsls2:Beam_xy_x",
+            "imgCIF:_diffrn_detector.beam_centre_x",
+            "mmCIF:_diffrn_detector.beam_center_x"
           ],
-          "slot_uri": "nsls2:Beam_xy_x",
           "range": "float",
+          "unit": {
+            "ucum_code": "[px]",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_center_y",
-          "description": "Beam center Y coordinate in pixels",
-          "comments": [
-            "Maps to CBF: Beam_xy (second value)",
-            "Maps to PDB: _diffrn_detector.beam_center_y"
+          "description": "Beam center Y coordinate",
+          "exact_mappings": [
+            "nsls2:Beam_xy_y",
+            "imgCIF:_diffrn_detector.beam_centre_y",
+            "mmCIF:_diffrn_detector.beam_center_y"
           ],
-          "slot_uri": "nsls2:Beam_xy_y",
           "range": "float",
+          "unit": {
+            "ucum_code": "[px]",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "detector_distance",
-          "description": "Distance from sample to detector in millimeters",
-          "comments": [
-            "Maps to CBF: Detector_distance",
-            "Maps to PDB: _diffrn_detector.distance"
+          "description": "Distance from sample to detector",
+          "exact_mappings": [
+            "nsls2:Detector_distance",
+            "imgCIF:_diffrn_measurement.sample_detector_distance",
+            "mmCIF:_diffrn_detector.distance"
           ],
-          "slot_uri": "nsls2:Detector_distance",
           "range": "float",
+          "unit": {
+            "ucum_code": "mm",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "pixel_size_x",
-          "description": "Pixel size X dimension in micrometers",
+          "description": "Pixel size X dimension",
           "comments": [
-            "Maps to CBF: Pixel_size"
+            "imgCIF: _array_element_size.size[1]"
           ],
-          "slot_uri": "nsls2:Pixel_size_x",
+          "exact_mappings": [
+            "nsls2:Pixel_size_x",
+            "imgCIF:_array_element_size.size"
+          ],
           "range": "float",
+          "unit": {
+            "ucum_code": "um",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "pixel_size_y",
-          "description": "Pixel size Y dimension in micrometers",
-          "slot_uri": "nsls2:Pixel_size_y",
+          "description": "Pixel size Y dimension",
+          "comments": [
+            "imgCIF: _array_element_size.size[2]"
+          ],
+          "exact_mappings": [
+            "nsls2:Pixel_size_y",
+            "imgCIF:_array_element_size.size"
+          ],
           "range": "float",
+          "unit": {
+            "ucum_code": "um",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "total_rotation",
-          "description": "Total rotation range collected in degrees",
-          "slot_uri": "nsls2:Total_rotation_deg",
+          "description": "Total rotation range collected",
+          "exact_mappings": [
+            "nsls2:Total_rotation_deg",
+            "imgCIF:_diffrn_scan_axis.angle_range"
+          ],
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "beamline",
           "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
-          "comments": [
-            "Maps to PDB: _diffrn_source.beamline"
+          "exact_mappings": [
+            "nsls2:Beamline",
+            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
           ],
-          "slot_uri": "nsls2:Beamline",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -12670,230 +13685,285 @@
         {
           "name": "space_group",
           "description": "Crystallographic space group",
-          "comments": [
-            "Maps to PDB: _symmetry.space_group_name_h-m"
+          "exact_mappings": [
+            "nsls2:Space_Group",
+            "mmCIF:_symmetry.space_group_name_H-M"
           ],
-          "slot_uri": "nsls2:Space_Group",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_a",
-          "description": "Unit cell parameter a in Angstroms",
-          "comments": [
-            "Maps to PDB: _cell.length_a"
+          "description": "Unit cell parameter a",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_a",
+            "mmCIF:_cell.length_a"
           ],
-          "slot_uri": "nsls2:Unit_Cell_a",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_b",
-          "description": "Unit cell parameter b in Angstroms",
-          "comments": [
-            "Maps to PDB: _cell.length_b"
+          "description": "Unit cell parameter b",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_b",
+            "mmCIF:_cell.length_b"
           ],
-          "slot_uri": "nsls2:Unit_Cell_b",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_c",
-          "description": "Unit cell parameter c in Angstroms",
-          "comments": [
-            "Maps to PDB: _cell.length_c"
+          "description": "Unit cell parameter c",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_c",
+            "mmCIF:_cell.length_c"
           ],
-          "slot_uri": "nsls2:Unit_Cell_c",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_alpha",
-          "description": "Unit cell angle alpha in degrees",
-          "comments": [
-            "Maps to PDB: _cell.angle_alpha"
+          "description": "Unit cell angle alpha",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_alpha",
+            "mmCIF:_cell.angle_alpha"
           ],
-          "slot_uri": "nsls2:Unit_Cell_alpha",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_beta",
-          "description": "Unit cell angle beta in degrees",
-          "comments": [
-            "Maps to PDB: _cell.angle_beta"
+          "description": "Unit cell angle beta",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_beta",
+            "mmCIF:_cell.angle_beta"
           ],
-          "slot_uri": "nsls2:Unit_Cell_beta",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_gamma",
-          "description": "Unit cell angle gamma in degrees",
-          "comments": [
-            "Maps to PDB: _cell.angle_gamma"
+          "description": "Unit cell angle gamma",
+          "exact_mappings": [
+            "nsls2:Unit_Cell_gamma",
+            "mmCIF:_cell.angle_gamma"
           ],
-          "slot_uri": "nsls2:Unit_Cell_gamma",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_high",
-          "description": "High resolution limit in Angstroms",
-          "comments": [
-            "Maps to PDB: _reflns.d_resolution_high"
+          "description": "High resolution limit",
+          "exact_mappings": [
+            "nsls2:Resolution_High_A",
+            "mmCIF:_reflns.d_resolution_high"
           ],
-          "slot_uri": "nsls2:Resolution_High_A",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_low",
-          "description": "Low resolution limit in Angstroms",
-          "comments": [
-            "Maps to PDB: _reflns.d_resolution_low"
+          "description": "Low resolution limit",
+          "exact_mappings": [
+            "nsls2:Resolution_Low_A",
+            "mmCIF:_reflns.d_resolution_low"
           ],
-          "slot_uri": "nsls2:Resolution_Low_A",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "rmerge",
           "description": "Rmerge - merge R-factor",
-          "comments": [
-            "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
+          "exact_mappings": [
+            "nsls2:Rmerge",
+            "mmCIF:_reflns.pdbx_Rmerge_I_obs"
           ],
-          "slot_uri": "nsls2:Rmerge",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "rpim",
           "description": "Rpim - precision-indicating merging R-factor",
-          "comments": [
-            "Maps to PDB: _reflns.pdbx_Rpim_I_all"
+          "exact_mappings": [
+            "nsls2:Rpim",
+            "mmCIF:_reflns.pdbx_Rpim_I_all"
           ],
-          "slot_uri": "nsls2:Rpim",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "cc_half",
           "description": "Half-set correlation coefficient CC(1/2)",
-          "comments": [
-            "Maps to PDB: _reflns.pdbx_CC_half"
+          "exact_mappings": [
+            "nsls2:CC_half",
+            "mmCIF:_reflns.pdbx_CC_half"
           ],
-          "slot_uri": "nsls2:CC_half",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "completeness_percent",
           "description": "Data completeness percentage",
-          "comments": [
-            "Maps to PDB: _reflns.percent_possible_obs"
+          "exact_mappings": [
+            "nsls2:Completeness",
+            "mmCIF:_reflns.percent_possible_obs"
           ],
-          "slot_uri": "nsls2:Completeness",
           "range": "float",
+          "unit": {
+            "ucum_code": "%",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "i_over_sigma",
           "description": "Mean I/sigma(I) - signal to noise ratio",
-          "comments": [
-            "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
+          "exact_mappings": [
+            "nsls2:I_over_sigma",
+            "mmCIF:_reflns.pdbx_netI_over_sigmaI"
           ],
-          "slot_uri": "nsls2:I_over_sigma",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "wilson_b_factor",
-          "description": "Wilson B-factor in Angstroms squared",
-          "comments": [
-            "Maps to PDB: _reflns.B_iso_Wilson_estimate"
+          "description": "Wilson B-factor",
+          "exact_mappings": [
+            "nsls2:Wilson_B",
+            "mmCIF:_reflns.B_iso_Wilson_estimate"
           ],
-          "slot_uri": "nsls2:Wilson_B",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao2",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "multiplicity",
           "description": "Data multiplicity (redundancy)",
-          "comments": [
-            "Maps to PDB: _reflns.pdbx_redundancy"
+          "exact_mappings": [
+            "nsls2:Multiplicity",
+            "mmCIF:_reflns.pdbx_redundancy"
           ],
-          "slot_uri": "nsls2:Multiplicity",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "rwork",
           "description": "Refinement R-factor (working set)",
-          "comments": [
-            "Maps to PDB: _refine.ls_R_factor_R_work"
+          "exact_mappings": [
+            "nsls2:Rwork",
+            "mmCIF:_refine.ls_R_factor_R_work"
           ],
-          "slot_uri": "nsls2:Rwork",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "rfree",
           "description": "R-free (test set)",
-          "comments": [
-            "Maps to PDB: _refine.ls_R_factor_R_free"
+          "exact_mappings": [
+            "nsls2:Rfree",
+            "mmCIF:_refine.ls_R_factor_R_free"
           ],
-          "slot_uri": "nsls2:Rfree",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "rmsd_bonds",
-          "description": "RMSD from ideal bond lengths in Angstroms",
-          "comments": [
-            "Maps to PDB: _refine.ls_d_res_high"
+          "description": "RMSD from ideal bond lengths",
+          "exact_mappings": [
+            "nsls2:RMSD_bonds",
+            "mmCIF:_refine.ls_d_res_high"
           ],
-          "slot_uri": "nsls2:RMSD_bonds",
           "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "rmsd_angles",
-          "description": "RMSD from ideal bond angles in degrees",
-          "comments": [
-            "Maps to PDB: _refine.ls_d_res_low"
+          "description": "RMSD from ideal bond angles",
+          "exact_mappings": [
+            "nsls2:RMSD_angles",
+            "mmCIF:_refine.ls_d_res_low"
           ],
-          "slot_uri": "nsls2:RMSD_angles",
           "range": "float",
+          "unit": {
+            "ucum_code": "deg",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_favored",
           "description": "Percentage of residues in favored Ramachandran regions",
-          "comments": [
-            "Maps to PDB: _refine.pdbx_overall_ESU_R"
+          "exact_mappings": [
+            "nsls2:Ramachandran_Favored",
+            "mmCIF:_refine.pdbx_overall_ESU_R"
           ],
-          "slot_uri": "nsls2:Ramachandran_Favored",
           "range": "float",
+          "unit": {
+            "ucum_code": "%",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_outliers",
           "description": "Percentage of Ramachandran outliers",
-          "comments": [
-            "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
+          "exact_mappings": [
+            "nsls2:Ramachandran_Outliers",
+            "mmCIF:_refine.pdbx_overall_ESU_R_Free"
           ],
-          "slot_uri": "nsls2:Ramachandran_Outliers",
           "range": "float",
+          "unit": {
+            "ucum_code": "%",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
           "name": "clashscore",
           "description": "MolProbity clashscore",
-          "comments": [
-            "Maps to validation report metrics"
+          "exact_mappings": [
+            "nsls2:Clashscore"
           ],
-          "slot_uri": "nsls2:Clashscore",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -13338,22 +14408,40 @@
         "namedThing__description",
         "image__file_name",
         "image__acquisition_date",
-        "image__pixel_size",
         "image__dimensions_x",
         "image__dimensions_y",
         "image__exposure_time",
-        "image__dose",
-        "image2D__defocus",
-        "image2D__astigmatism",
+        "micrograph__pixel_size",
+        "micrograph__defocus",
+        "micrograph__dose",
         "micrograph__origin_movie_id",
         "micrograph__defocus_u",
         "micrograph__defocus_v",
+        "micrograph__astigmatism",
         "micrograph__astigmatism_angle",
         "micrograph__resolution_fit_limit",
         "micrograph__ctf_quality_score"
       ],
       "slot_usage": {},
       "attributes": [
+        {
+          "name": "pixel_size",
+          "description": "Final pixel size in Angstroms per pixel",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "defocus",
+          "description": "Measured defocus in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dose",
+          "description": "Total electron dose in e-/Angstrom^2",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
         {
           "name": "origin_movie_id",
           "description": "Reference to original movie file",
@@ -13369,6 +14457,12 @@
         {
           "name": "defocus_v",
           "description": "Defocus V in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "astigmatism",
+          "description": "Astigmatism in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -13650,7 +14744,8 @@
         "xRFImage__dwell_time",
         "xRFImage__elements_measured",
         "xRFImage__source_type",
-        "xRFImage__detector_type",
+        "xRFImage__detector_technology",
+        "xRFImage__detector_model",
         "xRFImage__flux",
         "xRFImage__calibration_standard"
       ],
@@ -13688,8 +14783,17 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "detector_type",
-          "description": "Type of X-ray detector used",
+          "name": "detector_technology",
+          "description": "Type of X-ray detector technology used",
+          "comments": [
+            "For XRF, typically energy-dispersive or wavelength-dispersive detectors"
+          ],
+          "range": "DetectorTechnologyEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_model",
+          "description": "Specific detector model used for XRF measurement",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -14509,7 +15613,8 @@
         "dataCollectionStrategy__total_dose",
         "dataCollectionStrategy__dose_per_frame",
         "dataCollectionStrategy__wavelength_a",
-        "dataCollectionStrategy__detector",
+        "dataCollectionStrategy__detector_mode",
+        "dataCollectionStrategy__pixel_size_calibrated",
         "dataCollectionStrategy__detector_distance_mm",
         "dataCollectionStrategy__beam_center_x_px",
         "dataCollectionStrategy__beam_center_y_px",
@@ -14561,8 +15666,28 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "detector",
-          "description": "Detector model/type",
+          "name": "detector_mode",
+          "description": "Detector operating mode used during this experiment",
+          "comments": [
+            "For cryo-EM: counting, integrating, or super_resolution",
+            "Detector technology, manufacturer, and model are specified in the Instrument"
+          ],
+          "range": "DetectorModeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_calibrated",
+          "description": "Calibrated pixel size for this experiment",
+          "comments": [
+            "For cryo-EM: depends on magnification (\u00c5/pixel)",
+            "For X-ray: typically mm/pixel or \u00b5m/pixel",
+            "Physical pixel size is hardware spec stored in Instrument"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "Ao/px",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
@@ -14997,8 +16122,8 @@
         "cTFEstimationParameters__defocus_search_max",
         "cTFEstimationParameters__defocus_step",
         "cTFEstimationParameters__amplitude_contrast",
-        "cTFEstimationParameters__cs",
-        "cTFEstimationParameters__voltage"
+        "cTFEstimationParameters__cs_used_in_estimation",
+        "cTFEstimationParameters__voltage_used_in_estimation"
       ],
       "slot_usage": {},
       "attributes": [
@@ -15027,14 +16152,14 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "cs",
-          "description": "Spherical aberration (Cs) in millimeters",
+          "name": "cs_used_in_estimation",
+          "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
-          "name": "voltage",
-          "description": "Accelerating voltage in kV",
+          "name": "voltage_used_in_estimation",
+          "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
           "range": "float",
           "@type": "SlotDefinition"
         }
@@ -16358,9 +17483,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-13T18:54:21",
-  "source_file_size": 82153,
-  "generation_date": "2025-11-13T18:54:37",
+  "source_file_date": "2025-11-14T08:14:09",
+  "source_file_size": 97311,
+  "generation_date": "2025-11-14T08:14:56",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

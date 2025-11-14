@@ -398,8 +398,8 @@
                         "null"
                     ]
                 },
-                "cs": {
-                    "description": "Spherical aberration (Cs) in millimeters",
+                "cs_used_in_estimation": {
+                    "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
                     "type": [
                         "number",
                         "null"
@@ -432,8 +432,8 @@
                         "null"
                     ]
                 },
-                "voltage": {
-                    "description": "Accelerating voltage in kV",
+                "voltage_used_in_estimation": {
+                    "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
                     "type": [
                         "number",
                         "null"
@@ -768,29 +768,40 @@
                     ]
                 },
                 "detector_dimensions": {
-                    "description": "Detector dimensions in pixels (e.g., 4096x4096)",
+                    "description": "Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_manufacturer": {
+                    "description": "Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "detector_mode": {
-                    "description": "Detector mode (counting, integrating, super_resolution)",
+                    "$ref": "#/$defs/DetectorModeEnum",
+                    "description": "Supported or default detector operating mode"
+                },
+                "detector_model": {
+                    "description": "Detector model (e.g., K3, Falcon 4i, DE-64)",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "detector_position": {
-                    "description": "Detector position",
+                    "description": "Physical position of detector in microscope (e.g., post-GIF, pre-column)",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "detector_type": {
-                    "$ref": "#/$defs/DetectorTypeEnum",
-                    "description": "Type of detector"
+                "detector_technology": {
+                    "$ref": "#/$defs/DetectorTechnologyEnum",
+                    "description": "Generic detector technology type"
                 },
                 "energy_filter_make": {
                     "description": "Energy filter manufacturer",
@@ -898,22 +909,15 @@
                         "null"
                     ]
                 },
-                "pixel_size_max": {
-                    "description": "Maximum pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "pixel_size_min": {
-                    "description": "Minimum pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "pixel_size_physical": {
                     "description": "Physical pixel size in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_physical_um": {
+                    "description": "Physical pixel size of the detector in micrometers",
                     "type": [
                         "number",
                         "null"
@@ -1273,19 +1277,16 @@
                         "null"
                     ]
                 },
-                "detector": {
-                    "description": "Detector model/type",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "detector_distance_mm": {
                     "description": "Detector distance in millimeters",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "detector_mode": {
+                    "$ref": "#/$defs/DetectorModeEnum",
+                    "description": "Detector operating mode used during this experiment"
                 },
                 "dose_per_frame": {
                     "description": "Dose per frame",
@@ -1310,6 +1311,13 @@
                 },
                 "oscillation_per_image_deg": {
                     "description": "Oscillation angle per image in degrees",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pixel_size_calibrated": {
+                    "description": "Calibrated pixel size for this experiment",
                     "type": [
                         "number",
                         "null"
@@ -1603,8 +1611,34 @@
             "title": "Dataset",
             "type": "object"
         },
+        "DetectorModeEnum": {
+            "description": "Operating modes for detectors during data collection",
+            "enum": [
+                "counting",
+                "integrating",
+                "super_resolution",
+                "linear",
+                "correlated_double_sampling"
+            ],
+            "title": "DetectorModeEnum",
+            "type": "string"
+        },
+        "DetectorTechnologyEnum": {
+            "description": "Generic detector technologies for structural biology imaging",
+            "enum": [
+                "direct_electron_detector",
+                "ccd",
+                "cmos",
+                "hybrid_photon_counting",
+                "scintillator_coupled",
+                "imaging_plate",
+                "film"
+            ],
+            "title": "DetectorTechnologyEnum",
+            "type": "string"
+        },
         "DetectorTypeEnum": {
-            "description": "Types of detectors for cryo-EM and X-ray crystallography",
+            "description": "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.",
             "enum": [
                 "direct_electron",
                 "ccd",
@@ -1823,14 +1857,14 @@
                     ]
                 },
                 "beam_center_x": {
-                    "description": "Beam center X coordinate in pixels",
+                    "description": "Beam center X coordinate",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "beam_center_y": {
-                    "description": "Beam center Y coordinate in pixels",
+                    "description": "Beam center Y coordinate",
                     "type": [
                         "number",
                         "null"
@@ -1910,7 +1944,7 @@
                     ]
                 },
                 "detector_distance": {
-                    "description": "Distance from sample to detector in millimeters",
+                    "description": "Distance from sample to detector",
                     "type": [
                         "number",
                         "null"
@@ -2000,21 +2034,21 @@
                     ]
                 },
                 "oscillation_angle": {
-                    "description": "Oscillation angle per image in degrees",
+                    "description": "Oscillation angle per image",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "pixel_size_x": {
-                    "description": "Pixel size X dimension in micrometers",
+                    "description": "Pixel size X dimension",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "pixel_size_y": {
-                    "description": "Pixel size Y dimension in micrometers",
+                    "description": "Pixel size Y dimension",
                     "type": [
                         "number",
                         "null"
@@ -2061,7 +2095,7 @@
                     ]
                 },
                 "start_angle": {
-                    "description": "Starting rotation angle in degrees",
+                    "description": "Starting rotation angle",
                     "type": [
                         "number",
                         "null"
@@ -2092,14 +2126,14 @@
                     ]
                 },
                 "total_rotation": {
-                    "description": "Total rotation range collected in degrees",
+                    "description": "Total rotation range collected",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "wavelength": {
-                    "description": "X-ray wavelength in Angstroms",
+                    "description": "X-ray wavelength",
                     "type": [
                         "number",
                         "null"
@@ -2356,6 +2390,25 @@
             ],
             "title": "FTIRImage",
             "type": "object"
+        },
+        "FacilityEnum": {
+            "description": "Major synchrotron and structural biology research facilities worldwide",
+            "enum": [
+                "NSLS_II",
+                "ALS",
+                "SSRL",
+                "ESRF",
+                "DIAMOND",
+                "PHOTON_FACTORY",
+                "APS",
+                "SPRING8",
+                "PETRA_III",
+                "SOLEIL",
+                "AUSTRALIAN_SYNCHROTRON",
+                "SIBYLS"
+            ],
+            "title": "FacilityEnum",
+            "type": "string"
         },
         "FileFormatEnum": {
             "description": "File formats",
@@ -3247,7 +3300,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -3268,7 +3321,7 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
+                    "description": "Measured defocus in micrometers",
                     "type": [
                         "number",
                         "null"
@@ -3309,7 +3362,7 @@
                     ]
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
+                    "description": "Total electron dose in e-/Angstrom^2",
                     "type": [
                         "number",
                         "null"
@@ -3338,7 +3391,7 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
+                    "description": "Final pixel size in Angstroms per pixel",
                     "type": [
                         "number",
                         "null"
@@ -6463,14 +6516,14 @@
                     ]
                 },
                 "resolution_high": {
-                    "description": "High resolution limit in Angstroms",
+                    "description": "High resolution limit",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "resolution_low": {
-                    "description": "Low resolution limit in Angstroms",
+                    "description": "Low resolution limit",
                     "type": [
                         "number",
                         "null"
@@ -6498,14 +6551,14 @@
                     ]
                 },
                 "rmsd_angles": {
-                    "description": "RMSD from ideal bond angles in degrees",
+                    "description": "RMSD from ideal bond angles",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "rmsd_bonds": {
-                    "description": "RMSD from ideal bond lengths in Angstroms",
+                    "description": "RMSD from ideal bond lengths",
                     "type": [
                         "number",
                         "null"
@@ -6578,42 +6631,42 @@
                     ]
                 },
                 "unit_cell_a": {
-                    "description": "Unit cell parameter a in Angstroms",
+                    "description": "Unit cell parameter a",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "unit_cell_alpha": {
-                    "description": "Unit cell angle alpha in degrees",
+                    "description": "Unit cell angle alpha",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "unit_cell_b": {
-                    "description": "Unit cell parameter b in Angstroms",
+                    "description": "Unit cell parameter b",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "unit_cell_beta": {
-                    "description": "Unit cell angle beta in degrees",
+                    "description": "Unit cell angle beta",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "unit_cell_c": {
-                    "description": "Unit cell parameter c in Angstroms",
+                    "description": "Unit cell parameter c",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "unit_cell_gamma": {
-                    "description": "Unit cell angle gamma in degrees",
+                    "description": "Unit cell angle gamma",
                     "type": [
                         "number",
                         "null"
@@ -6627,7 +6680,7 @@
                     ]
                 },
                 "wilson_b_factor": {
-                    "description": "Wilson B-factor in Angstroms squared",
+                    "description": "Wilson B-factor",
                     "type": [
                         "number",
                         "null"
@@ -6730,12 +6783,16 @@
                         "null"
                     ]
                 },
-                "detector_type": {
-                    "description": "Type of X-ray detector used",
+                "detector_model": {
+                    "description": "Specific detector model used for XRF measurement",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "detector_technology": {
+                    "$ref": "#/$defs/DetectorTechnologyEnum",
+                    "description": "Type of X-ray detector technology used"
                 },
                 "dimensions_x": {
                     "description": "Image width in pixels",
@@ -6864,9 +6921,23 @@
                         "null"
                     ]
                 },
-                "detector_type": {
-                    "$ref": "#/$defs/DetectorTypeEnum",
-                    "description": "Type of X-ray detector"
+                "detector_manufacturer": {
+                    "description": "Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_model": {
+                    "description": "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_technology": {
+                    "$ref": "#/$defs/DetectorTechnologyEnum",
+                    "description": "Generic detector technology type"
                 },
                 "energy_max": {
                     "description": "Maximum X-ray energy in keV",

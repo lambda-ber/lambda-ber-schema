@@ -94,10 +94,13 @@ message CryoEMInstrument
   integer acceleratingVoltage = 0
   boolean csCorrector = 0
   boolean phasePlate = 0
-  detectorTypeEnum detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
+  detectorModeEnum detectorMode = 0
+  string detectorPosition = 0
   string detectorDimensions = 0
-  float pixelSizeMin = 0
-  float pixelSizeMax = 0
+  float pixelSizePhysicalUm = 0
   integer autoloaderCapacity = 0
   float cs = 0
   float c2Aperture = 0
@@ -107,8 +110,6 @@ message CryoEMInstrument
   string energyFilterMake = 0
   string energyFilterModel = 0
   float energyFilterSlitWidth = 0
-  string detectorPosition = 0
-  string detectorMode = 0
   float pixelSizePhysical = 0
   string microscopeSoftware = 0
   string microscopeSoftwareVersion = 0
@@ -170,8 +171,8 @@ message CTFEstimationParameters
   float defocusSearchMax = 0
   float defocusStep = 0
   float amplitudeContrast = 0
-  float cs = 0
-  float voltage = 0
+  float csUsedInEstimation = 0
+  float voltageUsedInEstimation = 0
  }
 // Cross-references to external databases
 message DatabaseCrossReference
@@ -192,7 +193,8 @@ message DataCollectionStrategy
   float totalDose = 0
   float dosePerFrame = 0
   float wavelengthA = 0
-  string detector = 0
+  detectorModeEnum detectorMode = 0
+  float pixelSizeCalibrated = 0
   float detectorDistanceMm = 0
   integer beamCenterXPx = 0
   integer beamCenterYPx = 0
@@ -489,16 +491,16 @@ message Micrograph
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
   float exposureTime = 0
-  float dose = 0
+  float pixelSize = 0
   float defocus = 0
-  float astigmatism = 0
+  float dose = 0
   string originMovieId = 0
   float defocusU = 0
   float defocusV = 0
+  float astigmatism = 0
   float astigmatismAngle = 0
   float resolutionFitLimit = 0
   float ctfQualityScore = 0
@@ -1012,7 +1014,9 @@ message XRayInstrument
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
   xRaySourceTypeEnum sourceType = 0
-  detectorTypeEnum detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
   string beamlineId = 0
   float energyMin = 0
   float energyMax = 0
@@ -1073,7 +1077,8 @@ message XRFImage
   float dwellTime = 0
  repeated  string elementsMeasured = 0
   xRaySourceTypeEnum sourceType = 0
-  string detectorType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorModel = 0
   float flux = 0
   string calibrationStandard = 0
  }

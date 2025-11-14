@@ -1,5 +1,6 @@
 @base <http://example.org/> .
 @prefix @base: <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -21,5 +22,5 @@
             lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
     lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
     lambdaber:sample_id "https://example.org/kibler2024/sample/hetBGL03-15-18" ;
-    lambdaber:technique "saxs" .
+    lambdaber:technique CHMO:0000204 .
 

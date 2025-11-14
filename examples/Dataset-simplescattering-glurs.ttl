@@ -1,5 +1,6 @@
 @base <http://example.org/> .
 @prefix @base: <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -42,7 +43,7 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
     lambdaber:raw_data_location "SIBYLS data archive" ;
     lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" ;
-    lambdaber:technique "saxs" .
+    lambdaber:technique CHMO:0000204 .
 
 <https://simplescattering.com/file/glurs-averaged> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-10-24" ;
