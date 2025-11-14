@@ -68,7 +68,10 @@ biophysical_properties:
   error: 0.8
   measurement_conditions:
   - id: lambdaber:meas-aldh2-001
-    buffer_composition: 50 mM Tris-HCl, 100 mM NaCl
+    buffer_composition:
+      components:
+      - 50 mM Tris-HCl
+      - 100 mM NaCl
     ph: 7.5
     ionic_strength: 0.1
     temperature: 298.15

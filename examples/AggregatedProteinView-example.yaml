@@ -240,6 +240,9 @@ biophysical_properties:
   unit: kcal/mol
   measurement_conditions:
   - id: lambdaber:p53-meas-cond-001
+    buffer_composition:
+      components:
+      - DNA-binding domain
     ph: 7.0
     temperature: 293.15
   experimental_method: differential_scanning_calorimetry
@@ -249,6 +252,9 @@ biophysical_properties:
   error: 1.2
   measurement_conditions:
   - id: lambdaber:p53-meas-cond-002
+    buffer_composition:
+      components:
+      - Full-length protein
     ph: 7.4
   experimental_method: circular_dichroism
 - property_type: aggregation_propensity
@@ -256,6 +262,9 @@ biophysical_properties:
   unit: probability
   measurement_conditions:
   - id: lambdaber:p53-meas-cond-003
+    buffer_composition:
+      components:
+      - Predicted for unfolded state
 conformational_ensemble:
   id: lambdaber:p53-confens-001
   protein_id: P04637

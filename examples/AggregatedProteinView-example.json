@@ -294,7 +294,11 @@
       "measurement_conditions": [
         {
           "id": "lambdaber:p53-meas-cond-001",
-          "buffer_composition": "DNA-binding domain",
+          "buffer_composition": {
+            "components": [
+              "DNA-binding domain"
+            ]
+          },
           "ph": 7.0,
           "temperature": 293.15
         }
@@ -309,7 +313,11 @@
       "measurement_conditions": [
         {
           "id": "lambdaber:p53-meas-cond-002",
-          "buffer_composition": "Full-length protein",
+          "buffer_composition": {
+            "components": [
+              "Full-length protein"
+            ]
+          },
           "ph": 7.4
         }
       ],
@@ -322,7 +330,11 @@
       "measurement_conditions": [
         {
           "id": "lambdaber:p53-meas-cond-003",
-          "buffer_composition": "Predicted for unfolded state"
+          "buffer_composition": {
+            "components": [
+              "Predicted for unfolded state"
+            ]
+          }
         }
       ]
     }

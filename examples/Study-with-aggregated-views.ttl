@@ -272,7 +272,8 @@ lambdaber:struct-feat-p53-002 a ns1:StructuralFeature ;
     ns1:structural_motif "Immunoglobulin-like beta-sandwich" .
 
 lambdaber:study-meas-cond-001 a ns1:MeasurementConditions ;
-    ns1:buffer_composition "Standard buffer" .
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "Standard buffer" ] .
 
 lambdaber:wf-run-001 a lambdaber:WorkflowRun ;
     dcterms:title "3D reconstruction of p53-MDM2 complex" ;

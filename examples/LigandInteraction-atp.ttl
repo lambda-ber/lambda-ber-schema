@@ -1,0 +1,20 @@
+@base <http://example.org/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a ns1:LigandInteraction ;
+    ns1:binding_affinity "0.015"^^xsd:float ;
+    ns1:binding_affinity_type "km" ;
+    ns1:binding_affinity_unit "millimolar" ;
+    ns1:binding_site_residues "168",
+        "169",
+        "170",
+        "340" ;
+    ns1:interaction_distance "3.2"^^xsd:float ;
+    ns1:interaction_type "hydrogen_bond" ;
+    ns1:is_cofactor true ;
+    ns1:is_drug_like false ;
+    ns1:ligand_id "CHEBI:30616"^^xsd:anyURI ;
+    ns1:ligand_name "ATP" ;
+    ns1:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" .
+

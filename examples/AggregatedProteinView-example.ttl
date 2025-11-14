@@ -27,13 +27,9 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:value "0.68"^^xsd:float ] ;
     ns1:conformational_ensemble lambdaber:p53-confens-001 ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "CHEMBL4096" ;
-            ns1:database_name "chembl" ;
-            ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "191170" ;
-            ns1:database_name "omim" ;
-            ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+            ns1:database_id "PF00870" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ],
         [ a ns1:DatabaseCrossReference ;
             ns1:database_id "P04637" ;
             ns1:database_name "uniprot" ;
@@ -44,26 +40,18 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:database_name "cosmic" ;
             ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
         [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "PF00870" ;
-            ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ] ;
+            ns1:database_id "191170" ;
+            ns1:database_name "omim" ;
+            ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "CHEMBL4096" ;
+            ns1:database_name "chembl" ;
+            ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ] ;
     ns1:evolutionary_conservation lambdaber:p53-evol-001 ;
     ns1:functional_sites lambdaber:p53-func-001,
         lambdaber:p53-func-002,
         lambdaber:p53-func-003 ;
     ns1:ligand_interactions [ a ns1:LigandInteraction ;
-            ns1:binding_affinity "0.09"^^xsd:float ;
-            ns1:binding_affinity_type "ki" ;
-            ns1:binding_affinity_unit "micromolar" ;
-            ns1:binding_site_residues "19",
-                "23",
-                "26" ;
-            ns1:druggability_score "0.75"^^xsd:float ;
-            ns1:interaction_type "hydrophobic" ;
-            ns1:is_drug_like true ;
-            ns1:ligand_id "CHEMBL3545110"^^xsd:anyURI ;
-            ns1:ligand_name "Nutlin-3a" ],
-        [ a ns1:LigandInteraction ;
             ns1:binding_affinity "0.001"^^xsd:float ;
             ns1:binding_affinity_type "kd" ;
             ns1:binding_affinity_unit "micromolar" ;
@@ -75,7 +63,19 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:is_cofactor true ;
             ns1:is_drug_like false ;
             ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
-            ns1:ligand_name "Zinc ion" ] ;
+            ns1:ligand_name "Zinc ion" ],
+        [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.09"^^xsd:float ;
+            ns1:binding_affinity_type "ki" ;
+            ns1:binding_affinity_unit "micromolar" ;
+            ns1:binding_site_residues "19",
+                "23",
+                "26" ;
+            ns1:druggability_score "0.75"^^xsd:float ;
+            ns1:interaction_type "hydrophobic" ;
+            ns1:is_drug_like true ;
+            ns1:ligand_id "CHEMBL3545110"^^xsd:anyURI ;
+            ns1:ligand_name "Nutlin-3a" ] ;
     ns1:mutations lambdaber:p53-mut-001,
         lambdaber:p53-mut-002,
         lambdaber:p53-mut-003 ;
@@ -106,6 +106,15 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
 lambdaber:p53-confens-001 a ns1:ConformationalEnsemble ;
     ns1:clustering_method "Structure-based clustering of DNA-binding domain" ;
     ns1:conformational_states [ a ns1:ConformationalState ;
+            ns1:characteristic_features "DNA-binding surface exposed",
+                "L1 loop flexible" ;
+            ns1:free_energy "0.0"^^xsd:float ;
+            ns1:pdb_entries "2AC0",
+                "2ADY" ;
+            ns1:population "0.4"^^xsd:float ;
+            ns1:state_id "dna_free" ;
+            ns1:state_name "DNA-free" ],
+        [ a ns1:ConformationalState ;
             ns1:characteristic_features "DNA contacts formed",
                 "L1 loop ordered" ;
             ns1:free_energy "-2.3"^^xsd:float ;
@@ -114,16 +123,7 @@ lambdaber:p53-confens-001 a ns1:ConformationalEnsemble ;
             ns1:population "0.6"^^xsd:float ;
             ns1:rmsd_from_reference "2.1"^^xsd:float ;
             ns1:state_id "dna_bound" ;
-            ns1:state_name "DNA-bound" ],
-        [ a ns1:ConformationalState ;
-            ns1:characteristic_features "DNA-binding surface exposed",
-                "L1 loop flexible" ;
-            ns1:free_energy "0.0"^^xsd:float ;
-            ns1:pdb_entries "2AC0",
-                "2ADY" ;
-            ns1:population "0.4"^^xsd:float ;
-            ns1:state_id "dna_free" ;
-            ns1:state_name "DNA-free" ] ;
+            ns1:state_name "DNA-bound" ] ;
     ns1:protein_id "P04637" ;
     ns1:rmsd_threshold "1.5"^^xsd:float ;
     ns1:transition_pathways "DNA-free <-> DNA-bound conformations" .
@@ -204,16 +204,19 @@ lambdaber:p53-func-003 a ns1:FunctionalSite ;
     ns1:source_database "pdbe" .
 
 lambdaber:p53-meas-cond-001 a ns1:MeasurementConditions ;
-    ns1:buffer_composition "DNA-binding domain" ;
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "DNA-binding domain" ] ;
     ns1:ph "7.0"^^xsd:float ;
     ns1:temperature "293.15"^^xsd:float .
 
 lambdaber:p53-meas-cond-002 a ns1:MeasurementConditions ;
-    ns1:buffer_composition "Full-length protein" ;
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "Full-length protein" ] ;
     ns1:ph "7.4"^^xsd:float .
 
 lambdaber:p53-meas-cond-003 a ns1:MeasurementConditions ;
-    ns1:buffer_composition "Predicted for unfolded state" .
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "Predicted for unfolded state" ] .
 
 lambdaber:p53-mut-001 a ns1:MutationEffect ;
     ns1:allele_frequency "1e-05"^^xsd:float ;

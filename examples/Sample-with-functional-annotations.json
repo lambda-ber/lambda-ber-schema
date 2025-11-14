@@ -164,7 +164,11 @@
       "measurement_conditions": [
         {
           "id": "lambdaber:meas-cond-001",
-          "buffer_composition": "150 mM NaCl",
+          "buffer_composition": {
+            "components": [
+              "150 mM NaCl"
+            ]
+          },
           "ph": 7.4,
           "ionic_strength": 0.15,
           "temperature": 298.15

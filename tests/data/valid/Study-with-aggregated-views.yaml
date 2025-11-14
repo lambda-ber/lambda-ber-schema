@@ -172,7 +172,9 @@ aggregated_protein_views:
         unit: "K"
         measurement_conditions:
           - id: "lambdaber:study-meas-cond-001"
-            buffer_composition: "Standard buffer"
+            buffer_composition:
+              components:
+                - "Standard buffer"
         experimental_method: differential_scanning_calorimetry
 
     evolutionary_conservation:

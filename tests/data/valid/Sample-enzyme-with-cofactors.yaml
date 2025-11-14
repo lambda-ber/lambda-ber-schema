@@ -69,5 +69,8 @@ biophysical_properties:
         ph: 7.5
         temperature: 298.15
         ionic_strength: 0.1
-        buffer_composition: "50 mM Tris-HCl, 100 mM NaCl"
+        buffer_composition:
+          components:
+            - "50 mM Tris-HCl"
+            - "100 mM NaCl"
     experimental_method: differential_scanning_calorimetry
