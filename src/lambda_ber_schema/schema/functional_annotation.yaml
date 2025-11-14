@@ -16,6 +16,17 @@ prefixes:
 
 default_range: string
 
+types:
+  smiles_string:
+    description: "A SMILES representation of a chemical structure"
+    aliases:
+      - smiles
+    typeof: string
+    see_also:
+      - https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system
+      - https://www.epa.gov/sites/default/files/2015-05/documents/appendf.pdf
+    pattern: "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$"
+
 classes:
 
   # Base annotation class
@@ -144,6 +155,7 @@ classes:
         required: true
       ligand_smiles:
         description: "SMILES representation of the ligand"
+        range: smiles_string
       binding_affinity:
         description: "Binding affinity value"
         range: float
