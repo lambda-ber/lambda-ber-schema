@@ -582,12 +582,6 @@ classes:
       energy_filter_slit_width:
         description: "Energy filter slit width in eV"
         range: float
-      detector_position:
-        description: "Detector position"
-        range: string
-      detector_mode:
-        description: "Detector mode (counting, integrating, super_resolution)"
-        range: string
       pixel_size_physical:
         description: "Physical pixel size in micrometers"
         range: float
