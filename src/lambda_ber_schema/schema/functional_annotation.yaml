@@ -507,6 +507,7 @@ classes:
     attributes:
       buffer_composition:
         description: "Composition of the buffer used"
+        range: BufferComposition
       ph:
         description: "pH value of the solution during measurement"
         range: float
