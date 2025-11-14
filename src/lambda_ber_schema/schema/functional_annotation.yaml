@@ -287,21 +287,7 @@ classes:
         range: float
       measurement_conditions:
         description: "Conditions under which measurement was made"
-      temperature:
-        description: "Temperature in Kelvin"
-        range: float
-        unit:
-          ucum_code: K
-      ph:
-        description: "pH value"
-        range: float
-        minimum_value: 0
-        maximum_value: 14
-      ionic_strength:
-        description: "Ionic strength in molar"
-        range: float
-        unit:
-          ucum_code: mol/L
+        range: MeasurementConditions
       experimental_method:
         description: "Method used for measurement"
         range: BiophysicalMethodEnum
@@ -506,6 +492,28 @@ classes:
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
+
+  MeasurementConditions:
+    is_a: NamedThing
+    description: "Conditions under which biophysical measurements were made"
+    attributes:
+      buffer_composition:
+        description: "Composition of the buffer used"
+      ph:
+        description: "pH value of the solution during measurement"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      ionic_strength:
+        description: "Ionic strength in molar of material in solution"
+        range: float
+        unit:
+          ucum_code: mol/L
+      temperature:
+        description: "Temperature in Kelvin during measurement"
+        range: float
+        unit:
+          ucum_code: K
 
 # Enumerations
 enums:
