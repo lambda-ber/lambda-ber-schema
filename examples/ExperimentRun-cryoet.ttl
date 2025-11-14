@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -29,5 +30,5 @@ lambdaber:exp_cryoet_mito_001 a lambdaber:ExperimentRun ;
             lambdaber:signal_to_noise "2.1"^^xsd:float ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/cryoet/mitochondria/" ;
     lambdaber:sample_id "lambdaber:sample_mitochondria_001" ;
-    lambdaber:technique "cryo_et" .
+    lambdaber:technique CHMO:0002413 .
 

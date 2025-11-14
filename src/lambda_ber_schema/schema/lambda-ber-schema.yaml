@@ -92,6 +92,11 @@ prefixes:
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
+  imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
+  mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
+  ROR: https://ror.org/
+  wikidata: http://www.wikidata.org/entity/
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
 
 imports:
   - linkml:types
@@ -386,7 +391,6 @@ classes:
         required: true
       preparation_date:
         description: "Date of sample preparation"
-        range: string
       operator_id:
         description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
@@ -401,6 +405,8 @@ classes:
       culture_volume_l:
         description: "Culture volume in liters"
         range: float
+        unit:
+          ucum_code: L
       medium:
         description: "Growth medium used"
       antibiotic_selection:
@@ -408,6 +414,8 @@ classes:
       growth_temperature_c:
         description: "Growth temperature in Celsius"
         range: float
+        unit:
+          ucum_code: Cel
       induction_agent:
         description: "Agent used to induce expression (e.g., IPTG, tetracycline)"
       inducer_concentration:
@@ -518,17 +526,39 @@ classes:
       phase_plate:
         description: "Phase plate available"
         range: boolean
-      detector_type:
-        description: "Type of detector"
-        range: DetectorTypeEnum
+      detector_technology:
+        description: "Generic detector technology type"
+        range: DetectorTechnologyEnum
+        comments:
+          - "Use this for technology classification (e.g., direct_electron_detector, ccd)"
+          - "See detector_manufacturer and detector_model for specific equipment details"
+      detector_manufacturer:
+        description: "Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)"
+        range: string
+        comments:
+          - "Examples: Gatan, ThermoFisher Scientific, DirectElectron"
+      detector_model:
+        description: "Detector model (e.g., K3, Falcon 4i, DE-64)"
+        range: string
+        comments:
+          - "Examples: K3 BioQuantum, Falcon 4i, DE-64"
+      detector_mode:
+        description: "Supported or default detector operating mode"
+        range: DetectorModeEnum
+        comments:
+          - "Indicates operating mode capabilities (e.g., counting, super_resolution)"
+      detector_position:
+        description: "Physical position of detector in microscope (e.g., post-GIF, pre-column)"
+        range: string
       detector_dimensions:
-        description: "Detector dimensions in pixels (e.g., 4096x4096)"
-      pixel_size_min:
-        description: "Minimum pixel size in Angstroms per pixel"
+        description: "Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)"
+        range: string
+      pixel_size_physical_um:
+        description: "Physical pixel size of the detector in micrometers"
         range: float
-      pixel_size_max:
-        description: "Maximum pixel size in Angstroms per pixel"
-        range: float
+        comments:
+          - "Hardware specification, independent of magnification"
+          - "Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun"
       autoloader_capacity:
         description: "Number of grids the autoloader can hold"
         range: integer
@@ -556,12 +586,6 @@ classes:
       energy_filter_slit_width:
         description: "Energy filter slit width in eV"
         range: float
-      detector_position:
-        description: "Detector position"
-        range: string
-      detector_mode:
-        description: "Detector mode (counting, integrating, super_resolution)"
-        range: string
       pixel_size_physical:
         description: "Physical pixel size in micrometers"
         range: float
@@ -591,13 +615,25 @@ classes:
       source_type:
         description: "Type of X-ray source"
         range: XRaySourceTypeEnum
-      detector_type:
-        description: "Type of X-ray detector"
-        range: DetectorTypeEnum
+      detector_technology:
+        description: "Generic detector technology type"
+        range: DetectorTechnologyEnum
         slot_uri: nsls2:Detector
         comments:
-          - "Maps to CBF: Detector"
+          - "Use this for technology classification (e.g., hybrid_photon_counting, ccd)"
+          - "Maps to CBF: Detector (may contain model name)"
           - "Maps to PDB: _diffrn_detector.type"
+          - "See detector_manufacturer and detector_model for specific equipment details"
+      detector_manufacturer:
+        description: "Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)"
+        range: string
+        comments:
+          - "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
+      detector_model:
+        description: "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)"
+        range: string
+        comments:
+          - "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
       beamline_id:
         description: "Beamline identifier at synchrotron facility"
         range: string
@@ -752,70 +788,98 @@ classes:
         range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
       wavelength:
-        description: "X-ray wavelength in Angstroms"
+        description: "X-ray wavelength"
         range: float
-        slot_uri: nsls2:Wavelength
-        comments:
-          - "Maps to CBF: Wavelength"
-          - "Maps to PDB: _diffrn_radiation_wavelength.wavelength"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Wavelength"
+          - "imgCIF:_diffrn_radiation_wavelength.wavelength"
+          - "mmCIF:_diffrn_radiation_wavelength.wavelength"
       oscillation_angle:
-        description: "Oscillation angle per image in degrees"
+        description: "Oscillation angle per image"
         range: float
-        slot_uri: nsls2:Angle_increment
-        comments:
-          - "Maps to CBF: Angle_increment"
-          - "Maps to PDB: _diffrn_scan.angle_increment"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Angle_increment"
+          - "imgCIF:_diffrn_scan_axis.angle_increment"
+          - "mmCIF:_diffrn_scan.angle_increment"
       start_angle:
-        description: "Starting rotation angle in degrees"
+        description: "Starting rotation angle"
         range: float
-        slot_uri: nsls2:Start_angle
-        comments:
-          - "Maps to CBF: Start_angle"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Start_angle"
+          - "imgCIF:_diffrn_scan_axis.angle_start"
       number_of_images:
         description: "Total number of diffraction images collected"
         range: integer
-        slot_uri: nsls2:Number_of_images
+        exact_mappings:
+          - "nsls2:Number_of_images"
+          - "imgCIF:_diffrn_scan.frames"
       beam_center_x:
-        description: "Beam center X coordinate in pixels"
+        description: "Beam center X coordinate"
         range: float
-        slot_uri: nsls2:Beam_xy_x
-        comments:
-          - "Maps to CBF: Beam_xy (first value)"
-          - "Maps to PDB: _diffrn_detector.beam_center_x"
+        unit:
+          ucum_code: "[px]"
+        exact_mappings:
+          - "nsls2:Beam_xy_x"
+          - "imgCIF:_diffrn_detector.beam_centre_x"
+          - "mmCIF:_diffrn_detector.beam_center_x"
       beam_center_y:
-        description: "Beam center Y coordinate in pixels"
+        description: "Beam center Y coordinate"
         range: float
-        slot_uri: nsls2:Beam_xy_y
-        comments:
-          - "Maps to CBF: Beam_xy (second value)"
-          - "Maps to PDB: _diffrn_detector.beam_center_y"
+        unit:
+          ucum_code: "[px]"
+        exact_mappings:
+          - "nsls2:Beam_xy_y"
+          - "imgCIF:_diffrn_detector.beam_centre_y"
+          - "mmCIF:_diffrn_detector.beam_center_y"
       detector_distance:
-        description: "Distance from sample to detector in millimeters"
+        description: "Distance from sample to detector"
         range: float
-        slot_uri: nsls2:Detector_distance
-        comments:
-          - "Maps to CBF: Detector_distance"
-          - "Maps to PDB: _diffrn_detector.distance"
+        unit:
+          ucum_code: mm
+        exact_mappings:
+          - "nsls2:Detector_distance"
+          - "imgCIF:_diffrn_measurement.sample_detector_distance"
+          - "mmCIF:_diffrn_detector.distance"
       pixel_size_x:
-        description: "Pixel size X dimension in micrometers"
+        description: "Pixel size X dimension"
         range: float
-        slot_uri: nsls2:Pixel_size_x
+        unit:
+          ucum_code: um
+        exact_mappings:
+          - "nsls2:Pixel_size_x"
+          - "imgCIF:_array_element_size.size"
         comments:
-          - "Maps to CBF: Pixel_size"
+          - "imgCIF: _array_element_size.size[1]"
       pixel_size_y:
-        description: "Pixel size Y dimension in micrometers"
+        description: "Pixel size Y dimension"
         range: float
-        slot_uri: nsls2:Pixel_size_y
+        unit:
+          ucum_code: um
+        exact_mappings:
+          - "nsls2:Pixel_size_y"
+          - "imgCIF:_array_element_size.size"
+        comments:
+          - "imgCIF: _array_element_size.size[2]"
       total_rotation:
-        description: "Total rotation range collected in degrees"
+        description: "Total rotation range collected"
         range: float
-        slot_uri: nsls2:Total_rotation_deg
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Total_rotation_deg"
+          - "imgCIF:_diffrn_scan_axis.angle_range"
       beamline:
         description: "Beamline identifier (e.g., FMX, AMX, 12.3.1)"
         range: string
-        slot_uri: nsls2:Beamline
-        comments:
-          - "Maps to PDB: _diffrn_source.beamline"
+        exact_mappings:
+          - "nsls2:Beamline"
+          - "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
 
   WorkflowRun:
     is_a: NamedThing
@@ -890,142 +954,169 @@ classes:
       space_group:
         description: "Crystallographic space group"
         range: string
-        slot_uri: nsls2:Space_Group
-        comments:
-          - "Maps to PDB: _symmetry.space_group_name_h-m"
+        exact_mappings:
+          - "nsls2:Space_Group"
+          - "mmCIF:_symmetry.space_group_name_H-M"
       unit_cell_a:
-        description: "Unit cell parameter a in Angstroms"
+        description: "Unit cell parameter a"
         range: float
-        slot_uri: nsls2:Unit_Cell_a
-        comments:
-          - "Maps to PDB: _cell.length_a"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Unit_Cell_a"
+          - "mmCIF:_cell.length_a"
       unit_cell_b:
-        description: "Unit cell parameter b in Angstroms"
+        description: "Unit cell parameter b"
         range: float
-        slot_uri: nsls2:Unit_Cell_b
-        comments:
-          - "Maps to PDB: _cell.length_b"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Unit_Cell_b"
+          - "mmCIF:_cell.length_b"
       unit_cell_c:
-        description: "Unit cell parameter c in Angstroms"
+        description: "Unit cell parameter c"
         range: float
-        slot_uri: nsls2:Unit_Cell_c
-        comments:
-          - "Maps to PDB: _cell.length_c"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Unit_Cell_c"
+          - "mmCIF:_cell.length_c"
       unit_cell_alpha:
-        description: "Unit cell angle alpha in degrees"
+        description: "Unit cell angle alpha"
         range: float
-        slot_uri: nsls2:Unit_Cell_alpha
-        comments:
-          - "Maps to PDB: _cell.angle_alpha"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Unit_Cell_alpha"
+          - "mmCIF:_cell.angle_alpha"
       unit_cell_beta:
-        description: "Unit cell angle beta in degrees"
+        description: "Unit cell angle beta"
         range: float
-        slot_uri: nsls2:Unit_Cell_beta
-        comments:
-          - "Maps to PDB: _cell.angle_beta"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Unit_Cell_beta"
+          - "mmCIF:_cell.angle_beta"
       unit_cell_gamma:
-        description: "Unit cell angle gamma in degrees"
+        description: "Unit cell angle gamma"
         range: float
-        slot_uri: nsls2:Unit_Cell_gamma
-        comments:
-          - "Maps to PDB: _cell.angle_gamma"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:Unit_Cell_gamma"
+          - "mmCIF:_cell.angle_gamma"
       resolution_high:
-        description: "High resolution limit in Angstroms"
+        description: "High resolution limit"
         range: float
-        slot_uri: nsls2:Resolution_High_A
-        comments:
-          - "Maps to PDB: _reflns.d_resolution_high"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Resolution_High_A"
+          - "mmCIF:_reflns.d_resolution_high"
       resolution_low:
-        description: "Low resolution limit in Angstroms"
+        description: "Low resolution limit"
         range: float
-        slot_uri: nsls2:Resolution_Low_A
-        comments:
-          - "Maps to PDB: _reflns.d_resolution_low"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:Resolution_Low_A"
+          - "mmCIF:_reflns.d_resolution_low"
       rmerge:
         description: "Rmerge - merge R-factor"
         range: float
-        slot_uri: nsls2:Rmerge
-        comments:
-          - "Maps to PDB: _reflns.pdbx_Rmerge_I_obs"
+        exact_mappings:
+          - "nsls2:Rmerge"
+          - "mmCIF:_reflns.pdbx_Rmerge_I_obs"
       rpim:
         description: "Rpim - precision-indicating merging R-factor"
         range: float
-        slot_uri: nsls2:Rpim
-        comments:
-          - "Maps to PDB: _reflns.pdbx_Rpim_I_all"
+        exact_mappings:
+          - "nsls2:Rpim"
+          - "mmCIF:_reflns.pdbx_Rpim_I_all"
       cc_half:
         description: "Half-set correlation coefficient CC(1/2)"
         range: float
-        slot_uri: nsls2:CC_half
-        comments:
-          - "Maps to PDB: _reflns.pdbx_CC_half"
+        exact_mappings:
+          - "nsls2:CC_half"
+          - "mmCIF:_reflns.pdbx_CC_half"
       completeness_percent:
         description: "Data completeness percentage"
         range: float
-        slot_uri: nsls2:Completeness
-        comments:
-          - "Maps to PDB: _reflns.percent_possible_obs"
+        unit:
+          ucum_code: "%"
+        exact_mappings:
+          - "nsls2:Completeness"
+          - "mmCIF:_reflns.percent_possible_obs"
       i_over_sigma:
         description: "Mean I/sigma(I) - signal to noise ratio"
         range: float
-        slot_uri: nsls2:I_over_sigma
-        comments:
-          - "Maps to PDB: _reflns.pdbx_netI_over_sigmaI"
+        exact_mappings:
+          - "nsls2:I_over_sigma"
+          - "mmCIF:_reflns.pdbx_netI_over_sigmaI"
       wilson_b_factor:
-        description: "Wilson B-factor in Angstroms squared"
+        description: "Wilson B-factor"
         range: float
-        slot_uri: nsls2:Wilson_B
-        comments:
-          - "Maps to PDB: _reflns.B_iso_Wilson_estimate"
+        unit:
+          ucum_code: Ao2
+        exact_mappings:
+          - "nsls2:Wilson_B"
+          - "mmCIF:_reflns.B_iso_Wilson_estimate"
       multiplicity:
         description: "Data multiplicity (redundancy)"
         range: float
-        slot_uri: nsls2:Multiplicity
-        comments:
-          - "Maps to PDB: _reflns.pdbx_redundancy"
+        exact_mappings:
+          - "nsls2:Multiplicity"
+          - "mmCIF:_reflns.pdbx_redundancy"
       # Refinement metrics (NSLS2 Refinement mapping)
       rwork:
         description: "Refinement R-factor (working set)"
         range: float
-        slot_uri: nsls2:Rwork
-        comments:
-          - "Maps to PDB: _refine.ls_R_factor_R_work"
+        exact_mappings:
+          - "nsls2:Rwork"
+          - "mmCIF:_refine.ls_R_factor_R_work"
       rfree:
         description: "R-free (test set)"
         range: float
-        slot_uri: nsls2:Rfree
-        comments:
-          - "Maps to PDB: _refine.ls_R_factor_R_free"
+        exact_mappings:
+          - "nsls2:Rfree"
+          - "mmCIF:_refine.ls_R_factor_R_free"
       rmsd_bonds:
-        description: "RMSD from ideal bond lengths in Angstroms"
+        description: "RMSD from ideal bond lengths"
         range: float
-        slot_uri: nsls2:RMSD_bonds
-        comments:
-          - "Maps to PDB: _refine.ls_d_res_high"
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "nsls2:RMSD_bonds"
+          - "mmCIF:_refine.ls_d_res_high"
       rmsd_angles:
-        description: "RMSD from ideal bond angles in degrees"
+        description: "RMSD from ideal bond angles"
         range: float
-        slot_uri: nsls2:RMSD_angles
-        comments:
-          - "Maps to PDB: _refine.ls_d_res_low"
+        unit:
+          ucum_code: deg
+        exact_mappings:
+          - "nsls2:RMSD_angles"
+          - "mmCIF:_refine.ls_d_res_low"
       ramachandran_favored:
         description: "Percentage of residues in favored Ramachandran regions"
         range: float
-        slot_uri: nsls2:Ramachandran_Favored
-        comments:
-          - "Maps to PDB: _refine.pdbx_overall_ESU_R"
+        unit:
+          ucum_code: "%"
+        exact_mappings:
+          - "nsls2:Ramachandran_Favored"
+          - "mmCIF:_refine.pdbx_overall_ESU_R"
       ramachandran_outliers:
         description: "Percentage of Ramachandran outliers"
         range: float
-        slot_uri: nsls2:Ramachandran_Outliers
-        comments:
-          - "Maps to PDB: _refine.pdbx_overall_ESU_R_Free"
+        unit:
+          ucum_code: "%"
+        exact_mappings:
+          - "nsls2:Ramachandran_Outliers"
+          - "mmCIF:_refine.pdbx_overall_ESU_R_Free"
       clashscore:
         description: "MolProbity clashscore"
         range: float
-        slot_uri: nsls2:Clashscore
-        comments:
-          - "Maps to validation report metrics"
+        exact_mappings:
+          - "nsls2:Clashscore"
       # Processing notes and metadata
       processing_notes:
         description: "Additional notes about processing"
@@ -1333,8 +1424,13 @@ classes:
       source_type:
         description: "X-ray source type (synchrotron or lab-source)"
         range: XRaySourceTypeEnum
-      detector_type:
-        description: "Type of X-ray detector used"
+      detector_technology:
+        description: "Type of X-ray detector technology used"
+        range: DetectorTechnologyEnum
+        comments:
+          - "For XRF, typically energy-dispersive or wavelength-dispersive detectors"
+      detector_model:
+        description: "Specific detector model used for XRF measurement"
         range: string
       flux:
         description: "Photon flux in photons/second"
@@ -1697,8 +1793,21 @@ classes:
       wavelength_a:
         description: "X-ray wavelength in Angstroms"
         range: float
-      detector:
-        description: "Detector model/type"
+      detector_mode:
+        description: "Detector operating mode used during this experiment"
+        range: DetectorModeEnum
+        comments:
+          - "For cryo-EM: counting, integrating, or super_resolution"
+          - "Detector technology, manufacturer, and model are specified in the Instrument"
+      pixel_size_calibrated:
+        description: "Calibrated pixel size for this experiment"
+        range: float
+        unit:
+          ucum_code: Ao/px
+        comments:
+          - "For cryo-EM: depends on magnification (Å/pixel)"
+          - "For X-ray: typically mm/pixel or µm/pixel"
+          - "Physical pixel size is hardware spec stored in Instrument"
       detector_distance_mm:
         description: "Detector distance in millimeters"
         range: float
@@ -1978,6 +2087,213 @@ classes:
         maximum_cardinality: 10000
 
 enums:
+  FacilityEnum:
+    description: "Major synchrotron and structural biology research facilities worldwide"
+    comments:
+      - "This enum provides standardized identifiers for major facilities with rich metadata"
+      - "ROR (Research Organization Registry) IDs provide persistent organizational identifiers"
+      - "Not currently bound to any slots - available for future use"
+    permissible_values:
+      NSLS_II:
+        title: "National Synchrotron Light Source II"
+        description: "Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA"
+        meaning: ROR:01q47ea17
+        annotations:
+          parent_organization: "Brookhaven National Laboratory"
+          parent_ror: "ROR:02ex6cf31"
+          location: "Upton, New York, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q30270543"
+          energy_gev: "3.0"
+          operational_since: "2015"
+          beamlines_count: "28"
+          website: "https://www.bnl.gov/nsls2/"
+        aliases:
+          - NSLS-II
+          - NSLS2
+      ALS:
+        title: "Advanced Light Source"
+        description: "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA"
+        annotations:
+          parent_organization: "Lawrence Berkeley National Laboratory"
+          parent_ror: "ROR:02jbv0t02"
+          location: "Berkeley, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q4685011"
+          energy_gev: "1.9"
+          operational_since: "1993"
+          website: "https://als.lbl.gov/"
+        aliases:
+          - Advanced Light Source
+          - ALS Berkeley
+      SSRL:
+        title: "Stanford Synchrotron Radiation Lightsource"
+        description: "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA"
+        annotations:
+          parent_organization: "SLAC National Accelerator Laboratory"
+          parent_ror: "ROR:05gzmn429"
+          location: "Menlo Park, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q7598571"
+          energy_gev: "3.0"
+          operational_since: "1974"
+          website: "https://www-ssrl.slac.stanford.edu/"
+        aliases:
+          - Stanford Synchrotron Radiation Lightsource
+          - Stanford Synchrotron
+      ESRF:
+        title: "European Synchrotron Radiation Facility"
+        description: "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source"
+        meaning: ROR:02550n020
+        annotations:
+          location: "Grenoble, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1163036"
+          energy_gev: "6.0"
+          operational_since: "1994"
+          upgrade: "Extremely Brilliant Source (EBS) 2020"
+          partner_countries: "22"
+          website: "https://www.esrf.fr/"
+        aliases:
+          - European Synchrotron
+          - ESRF-EBS
+      DIAMOND:
+        title: "Diamond Light Source"
+        description: "UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK"
+        meaning: ROR:05etxs293
+        annotations:
+          location: "Harwell, Oxfordshire, UK"
+          country: "United Kingdom"
+          doe_facility: "false"
+          wikidata_id: "Q652731"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          beamlines_count: "32"
+          website: "https://www.diamond.ac.uk/"
+        aliases:
+          - Diamond
+          - Diamond Synchrotron
+      PHOTON_FACTORY:
+        title: "Photon Factory"
+        description: "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan"
+        annotations:
+          parent_organization: "High Energy Accelerator Research Organization (KEK)"
+          parent_ror: "ROR:01g5y5k24"
+          location: "Tsukuba, Ibaraki, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q7187717"
+          energy_gev: "2.5"
+          operational_since: "1982"
+          website: "https://www2.kek.jp/imss/pf/"
+        aliases:
+          - PF
+          - KEK Photon Factory
+      APS:
+        title: "Advanced Photon Source"
+        description: "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA"
+        annotations:
+          parent_organization: "Argonne National Laboratory"
+          parent_ror: "ROR:05gvnxz63"
+          location: "Lemont, Illinois, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q2824628"
+          energy_gev: "7.0"
+          operational_since: "1996"
+          upgrade: "APS-U upgrade 2024"
+          website: "https://www.aps.anl.gov/"
+        aliases:
+          - Advanced Photon Source
+          - Argonne APS
+      SPRING8:
+        title: "SPring-8"
+        description: "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan"
+        annotations:
+          parent_organization: "Japan Synchrotron Radiation Research Institute (JASRI)"
+          parent_ror: "ROR:01xjv7358"
+          location: "Sayo, Hyogo, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q1196821"
+          energy_gev: "8.0"
+          operational_since: "1997"
+          website: "http://www.spring8.or.jp/"
+        aliases:
+          - SPring-8
+          - Super Photon ring-8 GeV
+      PETRA_III:
+        title: "PETRA III"
+        description: "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany"
+        annotations:
+          parent_organization: "Deutsches Elektronen-Synchrotron (DESY)"
+          parent_ror: "ROR:01js2sh04"
+          location: "Hamburg, Germany"
+          country: "Germany"
+          doe_facility: "false"
+          wikidata_id: "Q1754942"
+          energy_gev: "6.0"
+          operational_since: "2009"
+          website: "https://photon-science.desy.de/facilities/petra_iii/"
+        aliases:
+          - PETRA III
+          - PETRA3
+      SOLEIL:
+        title: "Synchrotron SOLEIL"
+        description: "French national synchrotron facility near Paris, France"
+        meaning: ROR:01ydb3330
+        annotations:
+          location: "Saint-Aubin, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1414116"
+          energy_gev: "2.75"
+          operational_since: "2008"
+          website: "https://www.synchrotron-soleil.fr/"
+        aliases:
+          - SOLEIL
+          - Synchrotron SOLEIL
+      AUSTRALIAN_SYNCHROTRON:
+        title: "Australian Synchrotron"
+        description: "Australia's national synchrotron facility in Melbourne, Victoria"
+        meaning: ROR:03vk18a84
+        annotations:
+          location: "Melbourne, Victoria, Australia"
+          country: "Australia"
+          doe_facility: "false"
+          wikidata_id: "Q782691"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          website: "https://www.synchrotron.org.au/"
+        aliases:
+          - Australian Synchrotron
+          - AS
+      SIBYLS:
+        title: "SIBYLS Beamline 12.3.1"
+        description: "Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction"
+        annotations:
+          parent_facility: "Advanced Light Source"
+          parent_ror: "ROR:02jbv0t02"
+          location: "Berkeley, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science - Biological and Environmental Research"
+          beamline_id: "12.3.1"
+          techniques: "SAXS, MX, fiber diffraction"
+          website: "https://bl1231.als.lbl.gov/"
+        aliases:
+          - SIBYLS
+          - ALS 12.3.1
+          - Beamline 12.3.1
+
   SampleTypeEnum:
     description: "Types of biological samples"
     permissible_values:
@@ -2159,7 +2475,8 @@ enums:
         description: "Scanning transmission electron microscopy"
 
   DetectorTypeEnum:
-    description: "Types of detectors for cryo-EM and X-ray crystallography"
+    description: "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands."
+    deprecated: "Use DetectorTechnologyEnum for detector technology, and separate manufacturer/model fields"
     permissible_values:
       direct_electron:
         description: "Direct electron detector"
@@ -2180,6 +2497,63 @@ enums:
       mar:
         description: "MAR CCD or imaging plate detector"
 
+  DetectorTechnologyEnum:
+    description: "Generic detector technologies for structural biology imaging"
+    comments:
+      - "Separates detector technology from manufacturer/model for better ontology mapping"
+      - "Use detector_manufacturer and detector_model fields for specific equipment details"
+    permissible_values:
+      direct_electron_detector:
+        description: "Direct electron detector for cryo-EM (e.g., Gatan K2/K3, ThermoFisher Falcon, DirectElectron DE-64)"
+        comments:
+          - "Modern cryo-EM detectors with direct electron counting capability"
+      ccd:
+        description: "Charge-coupled device camera"
+        comments:
+          - "Used in both cryo-EM (older systems) and X-ray crystallography"
+      cmos:
+        description: "Complementary metal-oxide-semiconductor detector"
+        comments:
+          - "Used in both cryo-EM and X-ray crystallography (e.g., Rigaku HyPix, Bruker PIXIUM)"
+      hybrid_photon_counting:
+        description: "Hybrid pixel photon counting detector for X-ray crystallography"
+        comments:
+          - "Modern X-ray detectors (e.g., Dectris EIGER/PILATUS, Bruker PHOTON)"
+      scintillator_coupled:
+        description: "Scintillator-coupled indirect detection"
+        comments:
+          - "Indirect detection via scintillator conversion"
+      imaging_plate:
+        description: "Imaging plate detector"
+        comments:
+          - "Storage phosphor technology, historically common in X-ray crystallography"
+      film:
+        description: "Photographic film"
+        comments:
+          - "Legacy detector type for historical datasets"
+
+  DetectorModeEnum:
+    description: "Operating modes for detectors during data collection"
+    comments:
+      - "Particularly relevant for cryo-EM direct electron detectors"
+    permissible_values:
+      counting:
+        description: "Electron/photon counting mode"
+        comments:
+          - "Individual electron/photon events are counted"
+      integrating:
+        description: "Integrating mode (analog)"
+        comments:
+          - "Charge accumulation over exposure time"
+      super_resolution:
+        description: "Super-resolution mode with oversampling"
+        comments:
+          - "Cryo-EM mode with smaller effective pixel size via oversampling"
+      linear:
+        description: "Linear response mode"
+      correlated_double_sampling:
+        description: "Correlated double sampling mode"
+
   XRaySourceTypeEnum:
     description: "Types of X-ray sources"
     permissible_values:
@@ -2197,20 +2571,30 @@ enums:
     permissible_values:
       cryo_em:
         description: "Cryo-electron microscopy"
+        meaning: CHMO:0002413
       xray_crystallography:
         description: "X-ray crystallography"
+        meaning: CHMO:0000156
       saxs:
         description: "Small-angle X-ray scattering"
+        meaning: CHMO:0000204
       waxs:
         description: "Wide-angle X-ray scattering"
+        meaning: CHMO:0000207
       sans:
         description: "Small-angle neutron scattering"
+        meaning: CHMO:0000184
       cryo_et:
         description: "Cryo-electron tomography"
+        meaning: CHMO:0002413
+        comments:
+          - "Uses same CHMO term as cryo_em; tomography is a specific application"
       electron_microscopy:
         description: "General electron microscopy"
+        meaning: CHMO:0000068
       mass_spectrometry:
         description: "Mass spectrometry"
+        meaning: CHMO:0000470
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -2455,6 +2839,7 @@ enums:
     permissible_values:
       x_ray_diffraction:
         description: "X-ray diffraction"
+        meaning: CHMO:0000156
       neutron_diffraction:
         description: "Neutron diffraction"
       electron_diffraction:

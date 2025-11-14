@@ -1,5 +1,6 @@
 @base <http://example.org/> .
 @prefix @base: <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
@@ -46,7 +47,7 @@ lambdaber:exp-run-001 a lambdaber:ExperimentRun ;
             lambdaber:completeness "99.5"^^xsd:float ;
             lambdaber:resolution "3.2"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample-P53-MDM2-001" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:func-site-001 a ns1:FunctionalSite ;
     ns1:conservation_score "0.92"^^xsd:float ;

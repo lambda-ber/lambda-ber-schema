@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-13T19:03:23
+# Generation date: 2025-11-14T08:14:59
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -140,18 +140,23 @@ metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
+CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
+IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 DEFAULT_ = LAMBDABER
 
 
@@ -936,10 +941,13 @@ class CryoEMInstrument(Instrument):
     accelerating_voltage: Optional[int] = None
     cs_corrector: Optional[Union[bool, Bool]] = None
     phase_plate: Optional[Union[bool, Bool]] = None
-    detector_type: Optional[Union[str, "DetectorTypeEnum"]] = None
+    detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
+    detector_manufacturer: Optional[str] = None
+    detector_model: Optional[str] = None
+    detector_mode: Optional[Union[str, "DetectorModeEnum"]] = None
+    detector_position: Optional[str] = None
     detector_dimensions: Optional[str] = None
-    pixel_size_min: Optional[float] = None
-    pixel_size_max: Optional[float] = None
+    pixel_size_physical_um: Optional[float] = None
     autoloader_capacity: Optional[int] = None
     cs: Optional[float] = None
     c2_aperture: Optional[float] = None
@@ -949,14 +957,12 @@ class CryoEMInstrument(Instrument):
     energy_filter_make: Optional[str] = None
     energy_filter_model: Optional[str] = None
     energy_filter_slit_width: Optional[float] = None
-    detector_position: Optional[str] = None
-    detector_mode: Optional[str] = None
     pixel_size_physical: Optional[float] = None
     microscope_software: Optional[str] = None
     microscope_software_version: Optional[str] = None
     spotsize: Optional[int] = None
     gunlens: Optional[int] = None
-    imaging_mode: Optional[Union[str, "ImagingModeEnum"]] = None
+    imaging_mode: Optional[str] = None
     tem_beam_diameter: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -974,17 +980,26 @@ class CryoEMInstrument(Instrument):
         if self.phase_plate is not None and not isinstance(self.phase_plate, Bool):
             self.phase_plate = Bool(self.phase_plate)
 
-        if self.detector_type is not None and not isinstance(self.detector_type, DetectorTypeEnum):
-            self.detector_type = DetectorTypeEnum(self.detector_type)
+        if self.detector_technology is not None and not isinstance(self.detector_technology, DetectorTechnologyEnum):
+            self.detector_technology = DetectorTechnologyEnum(self.detector_technology)
+
+        if self.detector_manufacturer is not None and not isinstance(self.detector_manufacturer, str):
+            self.detector_manufacturer = str(self.detector_manufacturer)
+
+        if self.detector_model is not None and not isinstance(self.detector_model, str):
+            self.detector_model = str(self.detector_model)
+
+        if self.detector_mode is not None and not isinstance(self.detector_mode, DetectorModeEnum):
+            self.detector_mode = DetectorModeEnum(self.detector_mode)
+
+        if self.detector_position is not None and not isinstance(self.detector_position, str):
+            self.detector_position = str(self.detector_position)
 
         if self.detector_dimensions is not None and not isinstance(self.detector_dimensions, str):
             self.detector_dimensions = str(self.detector_dimensions)
 
-        if self.pixel_size_min is not None and not isinstance(self.pixel_size_min, float):
-            self.pixel_size_min = float(self.pixel_size_min)
-
-        if self.pixel_size_max is not None and not isinstance(self.pixel_size_max, float):
-            self.pixel_size_max = float(self.pixel_size_max)
+        if self.pixel_size_physical_um is not None and not isinstance(self.pixel_size_physical_um, float):
+            self.pixel_size_physical_um = float(self.pixel_size_physical_um)
 
         if self.autoloader_capacity is not None and not isinstance(self.autoloader_capacity, int):
             self.autoloader_capacity = int(self.autoloader_capacity)
@@ -1013,12 +1028,6 @@ class CryoEMInstrument(Instrument):
         if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, float):
             self.energy_filter_slit_width = float(self.energy_filter_slit_width)
 
-        if self.detector_position is not None and not isinstance(self.detector_position, str):
-            self.detector_position = str(self.detector_position)
-
-        if self.detector_mode is not None and not isinstance(self.detector_mode, str):
-            self.detector_mode = str(self.detector_mode)
-
         if self.pixel_size_physical is not None and not isinstance(self.pixel_size_physical, float):
             self.pixel_size_physical = float(self.pixel_size_physical)
 
@@ -1034,8 +1043,8 @@ class CryoEMInstrument(Instrument):
         if self.gunlens is not None and not isinstance(self.gunlens, int):
             self.gunlens = int(self.gunlens)
 
-        if self.imaging_mode is not None and not isinstance(self.imaging_mode, ImagingModeEnum):
-            self.imaging_mode = ImagingModeEnum(self.imaging_mode)
+        if self.imaging_mode is not None and not isinstance(self.imaging_mode, str):
+            self.imaging_mode = str(self.imaging_mode)
 
         if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, float):
             self.tem_beam_diameter = float(self.tem_beam_diameter)
@@ -1058,7 +1067,9 @@ class XRayInstrument(Instrument):
     id: Union[str, XRayInstrumentId] = None
     instrument_code: str = None
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
-    detector_type: Optional[Union[str, "DetectorTypeEnum"]] = None
+    detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
+    detector_manufacturer: Optional[str] = None
+    detector_model: Optional[str] = None
     beamline_id: Optional[str] = None
     energy_min: Optional[float] = None
     energy_max: Optional[float] = None
@@ -1078,8 +1089,14 @@ class XRayInstrument(Instrument):
         if self.source_type is not None and not isinstance(self.source_type, XRaySourceTypeEnum):
             self.source_type = XRaySourceTypeEnum(self.source_type)
 
-        if self.detector_type is not None and not isinstance(self.detector_type, DetectorTypeEnum):
-            self.detector_type = DetectorTypeEnum(self.detector_type)
+        if self.detector_technology is not None and not isinstance(self.detector_technology, DetectorTechnologyEnum):
+            self.detector_technology = DetectorTechnologyEnum(self.detector_technology)
+
+        if self.detector_manufacturer is not None and not isinstance(self.detector_manufacturer, str):
+            self.detector_manufacturer = str(self.detector_manufacturer)
+
+        if self.detector_model is not None and not isinstance(self.detector_model, str):
+            self.detector_model = str(self.detector_model)
 
         if self.beamline_id is not None and not isinstance(self.beamline_id, str):
             self.beamline_id = str(self.beamline_id)
@@ -2140,7 +2157,8 @@ class XRFImage(Image2D):
     dwell_time: Optional[float] = None
     elements_measured: Optional[Union[str, list[str]]] = empty_list()
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
-    detector_type: Optional[str] = None
+    detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
+    detector_model: Optional[str] = None
     flux: Optional[float] = None
     calibration_standard: Optional[str] = None
 
@@ -2166,8 +2184,11 @@ class XRFImage(Image2D):
         if self.source_type is not None and not isinstance(self.source_type, XRaySourceTypeEnum):
             self.source_type = XRaySourceTypeEnum(self.source_type)
 
-        if self.detector_type is not None and not isinstance(self.detector_type, str):
-            self.detector_type = str(self.detector_type)
+        if self.detector_technology is not None and not isinstance(self.detector_technology, DetectorTechnologyEnum):
+            self.detector_technology = DetectorTechnologyEnum(self.detector_technology)
+
+        if self.detector_model is not None and not isinstance(self.detector_model, str):
+            self.detector_model = str(self.detector_model)
 
         if self.flux is not None and not isinstance(self.flux, float):
             self.flux = float(self.flux)
@@ -2727,7 +2748,8 @@ class DataCollectionStrategy(AttributeGroup):
     total_dose: Optional[float] = None
     dose_per_frame: Optional[float] = None
     wavelength_a: Optional[float] = None
-    detector: Optional[str] = None
+    detector_mode: Optional[Union[str, "DetectorModeEnum"]] = None
+    pixel_size_calibrated: Optional[float] = None
     detector_distance_mm: Optional[float] = None
     beam_center_x_px: Optional[int] = None
     beam_center_y_px: Optional[int] = None
@@ -2759,8 +2781,11 @@ class DataCollectionStrategy(AttributeGroup):
         if self.wavelength_a is not None and not isinstance(self.wavelength_a, float):
             self.wavelength_a = float(self.wavelength_a)
 
-        if self.detector is not None and not isinstance(self.detector, str):
-            self.detector = str(self.detector)
+        if self.detector_mode is not None and not isinstance(self.detector_mode, DetectorModeEnum):
+            self.detector_mode = DetectorModeEnum(self.detector_mode)
+
+        if self.pixel_size_calibrated is not None and not isinstance(self.pixel_size_calibrated, float):
+            self.pixel_size_calibrated = float(self.pixel_size_calibrated)
 
         if self.detector_distance_mm is not None and not isinstance(self.detector_distance_mm, float):
             self.detector_distance_mm = float(self.detector_distance_mm)
@@ -3983,6 +4008,69 @@ class AggregatedProteinView(NamedThing):
 
 
 # Enumerations
+class FacilityEnum(EnumDefinitionImpl):
+    """
+    Major synchrotron and structural biology research facilities worldwide
+    """
+    NSLS_II = PermissibleValue(
+        text="NSLS_II",
+        title="National Synchrotron Light Source II",
+        description="Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA",
+        meaning=ROR["01q47ea17"])
+    ALS = PermissibleValue(
+        text="ALS",
+        title="Advanced Light Source",
+        description="""Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA""")
+    SSRL = PermissibleValue(
+        text="SSRL",
+        title="Stanford Synchrotron Radiation Lightsource",
+        description="Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA")
+    ESRF = PermissibleValue(
+        text="ESRF",
+        title="European Synchrotron Radiation Facility",
+        description="High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source",
+        meaning=ROR["02550n020"])
+    DIAMOND = PermissibleValue(
+        text="DIAMOND",
+        title="Diamond Light Source",
+        description="""UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK""",
+        meaning=ROR["05etxs293"])
+    PHOTON_FACTORY = PermissibleValue(
+        text="PHOTON_FACTORY",
+        title="Photon Factory",
+        description="""Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan""")
+    APS = PermissibleValue(
+        text="APS",
+        title="Advanced Photon Source",
+        description="High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA")
+    SPRING8 = PermissibleValue(
+        text="SPRING8",
+        title="SPring-8",
+        description="Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan")
+    PETRA_III = PermissibleValue(
+        text="PETRA_III",
+        title="PETRA III",
+        description="High-brilliance synchrotron radiation source at DESY, Hamburg, Germany")
+    SOLEIL = PermissibleValue(
+        text="SOLEIL",
+        title="Synchrotron SOLEIL",
+        description="French national synchrotron facility near Paris, France",
+        meaning=ROR["01ydb3330"])
+    AUSTRALIAN_SYNCHROTRON = PermissibleValue(
+        text="AUSTRALIAN_SYNCHROTRON",
+        title="Australian Synchrotron",
+        description="Australia's national synchrotron facility in Melbourne, Victoria",
+        meaning=ROR["03vk18a84"])
+    SIBYLS = PermissibleValue(
+        text="SIBYLS",
+        title="SIBYLS Beamline 12.3.1",
+        description="""Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction""")
+
+    _defn = EnumDefinition(
+        name="FacilityEnum",
+        description="Major synchrotron and structural biology research facilities worldwide",
+    )
+
 class SampleTypeEnum(EnumDefinitionImpl):
     """
     Types of biological samples
@@ -4180,28 +4268,9 @@ class InstrumentStatusEnum(EnumDefinitionImpl):
         description="Operational status of instruments",
     )
 
-class ImagingModeEnum(EnumDefinitionImpl):
-    """
-    Imaging modes for electron microscopy
-    """
-    EFTEM = PermissibleValue(
-        text="EFTEM",
-        description="Energy-filtered transmission electron microscopy")
-    TEM = PermissibleValue(
-        text="TEM",
-        description="Transmission electron microscopy")
-    STEM = PermissibleValue(
-        text="STEM",
-        description="Scanning transmission electron microscopy")
-
-    _defn = EnumDefinition(
-        name="ImagingModeEnum",
-        description="Imaging modes for electron microscopy",
-    )
-
 class DetectorTypeEnum(EnumDefinitionImpl):
     """
-    Types of detectors for cryo-EM and X-ray crystallography
+    DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.
     """
     direct_electron = PermissibleValue(
         text="direct_electron",
@@ -4233,7 +4302,63 @@ class DetectorTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="DetectorTypeEnum",
-        description="Types of detectors for cryo-EM and X-ray crystallography",
+        description="DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.",
+    )
+
+class DetectorTechnologyEnum(EnumDefinitionImpl):
+    """
+    Generic detector technologies for structural biology imaging
+    """
+    direct_electron_detector = PermissibleValue(
+        text="direct_electron_detector",
+        description="""Direct electron detector for cryo-EM (e.g., Gatan K2/K3, ThermoFisher Falcon, DirectElectron DE-64)""")
+    ccd = PermissibleValue(
+        text="ccd",
+        description="Charge-coupled device camera")
+    cmos = PermissibleValue(
+        text="cmos",
+        description="Complementary metal-oxide-semiconductor detector")
+    hybrid_photon_counting = PermissibleValue(
+        text="hybrid_photon_counting",
+        description="Hybrid pixel photon counting detector for X-ray crystallography")
+    scintillator_coupled = PermissibleValue(
+        text="scintillator_coupled",
+        description="Scintillator-coupled indirect detection")
+    imaging_plate = PermissibleValue(
+        text="imaging_plate",
+        description="Imaging plate detector")
+    film = PermissibleValue(
+        text="film",
+        description="Photographic film")
+
+    _defn = EnumDefinition(
+        name="DetectorTechnologyEnum",
+        description="Generic detector technologies for structural biology imaging",
+    )
+
+class DetectorModeEnum(EnumDefinitionImpl):
+    """
+    Operating modes for detectors during data collection
+    """
+    counting = PermissibleValue(
+        text="counting",
+        description="Electron/photon counting mode")
+    integrating = PermissibleValue(
+        text="integrating",
+        description="Integrating mode (analog)")
+    super_resolution = PermissibleValue(
+        text="super_resolution",
+        description="Super-resolution mode with oversampling")
+    linear = PermissibleValue(
+        text="linear",
+        description="Linear response mode")
+    correlated_double_sampling = PermissibleValue(
+        text="correlated_double_sampling",
+        description="Correlated double sampling mode")
+
+    _defn = EnumDefinition(
+        name="DetectorModeEnum",
+        description="Operating modes for detectors during data collection",
     )
 
 class XRaySourceTypeEnum(EnumDefinitionImpl):
@@ -4264,28 +4389,36 @@ class TechniqueEnum(EnumDefinitionImpl):
     """
     cryo_em = PermissibleValue(
         text="cryo_em",
-        description="Cryo-electron microscopy")
+        description="Cryo-electron microscopy",
+        meaning=CHMO["0002413"])
     xray_crystallography = PermissibleValue(
         text="xray_crystallography",
-        description="X-ray crystallography")
+        description="X-ray crystallography",
+        meaning=CHMO["0000156"])
     saxs = PermissibleValue(
         text="saxs",
-        description="Small-angle X-ray scattering")
+        description="Small-angle X-ray scattering",
+        meaning=CHMO["0000204"])
     waxs = PermissibleValue(
         text="waxs",
-        description="Wide-angle X-ray scattering")
+        description="Wide-angle X-ray scattering",
+        meaning=CHMO["0000207"])
     sans = PermissibleValue(
         text="sans",
-        description="Small-angle neutron scattering")
+        description="Small-angle neutron scattering",
+        meaning=CHMO["0000184"])
     cryo_et = PermissibleValue(
         text="cryo_et",
-        description="Cryo-electron tomography")
+        description="Cryo-electron tomography",
+        meaning=CHMO["0002413"])
     electron_microscopy = PermissibleValue(
         text="electron_microscopy",
-        description="General electron microscopy")
+        description="General electron microscopy",
+        meaning=CHMO["0000068"])
     mass_spectrometry = PermissibleValue(
         text="mass_spectrometry",
-        description="Mass spectrometry")
+        description="Mass spectrometry",
+        meaning=CHMO["0000470"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -4691,7 +4824,8 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
     """
     x_ray_diffraction = PermissibleValue(
         text="x_ray_diffraction",
-        description="X-ray diffraction")
+        description="X-ray diffraction",
+        meaning=CHMO["0000156"])
     neutron_diffraction = PermissibleValue(
         text="neutron_diffraction",
         description="Neutron diffraction")
@@ -5923,17 +6057,26 @@ slots.cryoEMInstrument__cs_corrector = Slot(uri=LAMBDABER.cs_corrector, name="cr
 slots.cryoEMInstrument__phase_plate = Slot(uri=LAMBDABER.phase_plate, name="cryoEMInstrument__phase_plate", curie=LAMBDABER.curie('phase_plate'),
                    model_uri=LAMBDABER.cryoEMInstrument__phase_plate, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.cryoEMInstrument__detector_type = Slot(uri=LAMBDABER.detector_type, name="cryoEMInstrument__detector_type", curie=LAMBDABER.curie('detector_type'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_type, domain=None, range=Optional[Union[str, "DetectorTypeEnum"]])
+slots.cryoEMInstrument__detector_technology = Slot(uri=LAMBDABER.detector_technology, name="cryoEMInstrument__detector_technology", curie=LAMBDABER.curie('detector_technology'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+
+slots.cryoEMInstrument__detector_manufacturer = Slot(uri=LAMBDABER.detector_manufacturer, name="cryoEMInstrument__detector_manufacturer", curie=LAMBDABER.curie('detector_manufacturer'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_manufacturer, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="cryoEMInstrument__detector_model", curie=LAMBDABER.curie('detector_model'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_model, domain=None, range=Optional[str])
+
+slots.cryoEMInstrument__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="cryoEMInstrument__detector_mode", curie=LAMBDABER.curie('detector_mode'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
+
+slots.cryoEMInstrument__detector_position = Slot(uri=LAMBDABER.detector_position, name="cryoEMInstrument__detector_position", curie=LAMBDABER.curie('detector_position'),
+                   model_uri=LAMBDABER.cryoEMInstrument__detector_position, domain=None, range=Optional[str])
 
 slots.cryoEMInstrument__detector_dimensions = Slot(uri=LAMBDABER.detector_dimensions, name="cryoEMInstrument__detector_dimensions", curie=LAMBDABER.curie('detector_dimensions'),
                    model_uri=LAMBDABER.cryoEMInstrument__detector_dimensions, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__pixel_size_min = Slot(uri=LAMBDABER.pixel_size_min, name="cryoEMInstrument__pixel_size_min", curie=LAMBDABER.curie('pixel_size_min'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_min, domain=None, range=Optional[float])
-
-slots.cryoEMInstrument__pixel_size_max = Slot(uri=LAMBDABER.pixel_size_max, name="cryoEMInstrument__pixel_size_max", curie=LAMBDABER.curie('pixel_size_max'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_max, domain=None, range=Optional[float])
+slots.cryoEMInstrument__pixel_size_physical_um = Slot(uri=LAMBDABER.pixel_size_physical_um, name="cryoEMInstrument__pixel_size_physical_um", curie=LAMBDABER.curie('pixel_size_physical_um'),
+                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical_um, domain=None, range=Optional[float])
 
 slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDABER.autoloader_capacity, name="cryoEMInstrument__autoloader_capacity", curie=LAMBDABER.curie('autoloader_capacity'),
                    model_uri=LAMBDABER.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[int])
@@ -5962,12 +6105,6 @@ slots.cryoEMInstrument__energy_filter_model = Slot(uri=LAMBDABER.energy_filter_m
 slots.cryoEMInstrument__energy_filter_slit_width = Slot(uri=LAMBDABER.energy_filter_slit_width, name="cryoEMInstrument__energy_filter_slit_width", curie=LAMBDABER.curie('energy_filter_slit_width'),
                    model_uri=LAMBDABER.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[float])
 
-slots.cryoEMInstrument__detector_position = Slot(uri=LAMBDABER.detector_position, name="cryoEMInstrument__detector_position", curie=LAMBDABER.curie('detector_position'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_position, domain=None, range=Optional[str])
-
-slots.cryoEMInstrument__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="cryoEMInstrument__detector_mode", curie=LAMBDABER.curie('detector_mode'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_mode, domain=None, range=Optional[str])
-
 slots.cryoEMInstrument__pixel_size_physical = Slot(uri=LAMBDABER.pixel_size_physical, name="cryoEMInstrument__pixel_size_physical", curie=LAMBDABER.curie('pixel_size_physical'),
                    model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[float])
 
@@ -5984,7 +6121,7 @@ slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDABER.gunlens, name="cryoEMInstru
                    model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[int])
 
 slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDABER.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDABER.curie('imaging_mode'),
-                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[Union[str, "ImagingModeEnum"]])
+                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[str])
 
 slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDABER.curie('tem_beam_diameter'),
                    model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[float])
@@ -5992,8 +6129,14 @@ slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter
 slots.xRayInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="xRayInstrument__source_type", curie=LAMBDABER.curie('source_type'),
                    model_uri=LAMBDABER.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
-slots.xRayInstrument__detector_type = Slot(uri=NSLS2.Detector, name="xRayInstrument__detector_type", curie=NSLS2.curie('Detector'),
-                   model_uri=LAMBDABER.xRayInstrument__detector_type, domain=None, range=Optional[Union[str, "DetectorTypeEnum"]])
+slots.xRayInstrument__detector_technology = Slot(uri=NSLS2.Detector, name="xRayInstrument__detector_technology", curie=NSLS2.curie('Detector'),
+                   model_uri=LAMBDABER.xRayInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+
+slots.xRayInstrument__detector_manufacturer = Slot(uri=LAMBDABER.detector_manufacturer, name="xRayInstrument__detector_manufacturer", curie=LAMBDABER.curie('detector_manufacturer'),
+                   model_uri=LAMBDABER.xRayInstrument__detector_manufacturer, domain=None, range=Optional[str])
+
+slots.xRayInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRayInstrument__detector_model", curie=LAMBDABER.curie('detector_model'),
+                   model_uri=LAMBDABER.xRayInstrument__detector_model, domain=None, range=Optional[str])
 
 slots.xRayInstrument__beamline_id = Slot(uri=NSLS2.Beamline, name="xRayInstrument__beamline_id", curie=NSLS2.curie('Beamline'),
                    model_uri=LAMBDABER.xRayInstrument__beamline_id, domain=None, range=Optional[str])
@@ -6136,37 +6279,37 @@ slots.experimentRun__acquisition_software = Slot(uri=LAMBDABER.acquisition_softw
 slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDABER.acquisition_software_version, name="experimentRun__acquisition_software_version", curie=LAMBDABER.curie('acquisition_software_version'),
                    model_uri=LAMBDABER.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
 
-slots.experimentRun__wavelength = Slot(uri=NSLS2.Wavelength, name="experimentRun__wavelength", curie=NSLS2.curie('Wavelength'),
+slots.experimentRun__wavelength = Slot(uri=LAMBDABER.wavelength, name="experimentRun__wavelength", curie=LAMBDABER.curie('wavelength'),
                    model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[float])
 
-slots.experimentRun__oscillation_angle = Slot(uri=NSLS2.Angle_increment, name="experimentRun__oscillation_angle", curie=NSLS2.curie('Angle_increment'),
+slots.experimentRun__oscillation_angle = Slot(uri=LAMBDABER.oscillation_angle, name="experimentRun__oscillation_angle", curie=LAMBDABER.curie('oscillation_angle'),
                    model_uri=LAMBDABER.experimentRun__oscillation_angle, domain=None, range=Optional[float])
 
-slots.experimentRun__start_angle = Slot(uri=NSLS2.Start_angle, name="experimentRun__start_angle", curie=NSLS2.curie('Start_angle'),
+slots.experimentRun__start_angle = Slot(uri=LAMBDABER.start_angle, name="experimentRun__start_angle", curie=LAMBDABER.curie('start_angle'),
                    model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[float])
 
-slots.experimentRun__number_of_images = Slot(uri=NSLS2.Number_of_images, name="experimentRun__number_of_images", curie=NSLS2.curie('Number_of_images'),
+slots.experimentRun__number_of_images = Slot(uri=LAMBDABER.number_of_images, name="experimentRun__number_of_images", curie=LAMBDABER.curie('number_of_images'),
                    model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[int])
 
-slots.experimentRun__beam_center_x = Slot(uri=NSLS2.Beam_xy_x, name="experimentRun__beam_center_x", curie=NSLS2.curie('Beam_xy_x'),
+slots.experimentRun__beam_center_x = Slot(uri=LAMBDABER.beam_center_x, name="experimentRun__beam_center_x", curie=LAMBDABER.curie('beam_center_x'),
                    model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[float])
 
-slots.experimentRun__beam_center_y = Slot(uri=NSLS2.Beam_xy_y, name="experimentRun__beam_center_y", curie=NSLS2.curie('Beam_xy_y'),
+slots.experimentRun__beam_center_y = Slot(uri=LAMBDABER.beam_center_y, name="experimentRun__beam_center_y", curie=LAMBDABER.curie('beam_center_y'),
                    model_uri=LAMBDABER.experimentRun__beam_center_y, domain=None, range=Optional[float])
 
-slots.experimentRun__detector_distance = Slot(uri=NSLS2.Detector_distance, name="experimentRun__detector_distance", curie=NSLS2.curie('Detector_distance'),
+slots.experimentRun__detector_distance = Slot(uri=LAMBDABER.detector_distance, name="experimentRun__detector_distance", curie=LAMBDABER.curie('detector_distance'),
                    model_uri=LAMBDABER.experimentRun__detector_distance, domain=None, range=Optional[float])
 
-slots.experimentRun__pixel_size_x = Slot(uri=NSLS2.Pixel_size_x, name="experimentRun__pixel_size_x", curie=NSLS2.curie('Pixel_size_x'),
+slots.experimentRun__pixel_size_x = Slot(uri=LAMBDABER.pixel_size_x, name="experimentRun__pixel_size_x", curie=LAMBDABER.curie('pixel_size_x'),
                    model_uri=LAMBDABER.experimentRun__pixel_size_x, domain=None, range=Optional[float])
 
-slots.experimentRun__pixel_size_y = Slot(uri=NSLS2.Pixel_size_y, name="experimentRun__pixel_size_y", curie=NSLS2.curie('Pixel_size_y'),
+slots.experimentRun__pixel_size_y = Slot(uri=LAMBDABER.pixel_size_y, name="experimentRun__pixel_size_y", curie=LAMBDABER.curie('pixel_size_y'),
                    model_uri=LAMBDABER.experimentRun__pixel_size_y, domain=None, range=Optional[float])
 
-slots.experimentRun__total_rotation = Slot(uri=NSLS2.Total_rotation_deg, name="experimentRun__total_rotation", curie=NSLS2.curie('Total_rotation_deg'),
+slots.experimentRun__total_rotation = Slot(uri=LAMBDABER.total_rotation, name="experimentRun__total_rotation", curie=LAMBDABER.curie('total_rotation'),
                    model_uri=LAMBDABER.experimentRun__total_rotation, domain=None, range=Optional[float])
 
-slots.experimentRun__beamline = Slot(uri=NSLS2.Beamline, name="experimentRun__beamline", curie=NSLS2.curie('Beamline'),
+slots.experimentRun__beamline = Slot(uri=LAMBDABER.beamline, name="experimentRun__beamline", curie=LAMBDABER.curie('beamline'),
                    model_uri=LAMBDABER.experimentRun__beamline, domain=None, range=Optional[str])
 
 slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workflowRun__workflow_code", curie=LAMBDABER.curie('workflow_code'),
@@ -6241,73 +6384,73 @@ slots.workflowRun__pdb_id = Slot(uri=LAMBDABER.pdb_id, name="workflowRun__pdb_id
 slots.workflowRun__validation_report_path = Slot(uri=LAMBDABER.validation_report_path, name="workflowRun__validation_report_path", curie=LAMBDABER.curie('validation_report_path'),
                    model_uri=LAMBDABER.workflowRun__validation_report_path, domain=None, range=Optional[str])
 
-slots.workflowRun__space_group = Slot(uri=NSLS2.Space_Group, name="workflowRun__space_group", curie=NSLS2.curie('Space_Group'),
+slots.workflowRun__space_group = Slot(uri=LAMBDABER.space_group, name="workflowRun__space_group", curie=LAMBDABER.curie('space_group'),
                    model_uri=LAMBDABER.workflowRun__space_group, domain=None, range=Optional[str])
 
-slots.workflowRun__unit_cell_a = Slot(uri=NSLS2.Unit_Cell_a, name="workflowRun__unit_cell_a", curie=NSLS2.curie('Unit_Cell_a'),
+slots.workflowRun__unit_cell_a = Slot(uri=LAMBDABER.unit_cell_a, name="workflowRun__unit_cell_a", curie=LAMBDABER.curie('unit_cell_a'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_a, domain=None, range=Optional[float])
 
-slots.workflowRun__unit_cell_b = Slot(uri=NSLS2.Unit_Cell_b, name="workflowRun__unit_cell_b", curie=NSLS2.curie('Unit_Cell_b'),
+slots.workflowRun__unit_cell_b = Slot(uri=LAMBDABER.unit_cell_b, name="workflowRun__unit_cell_b", curie=LAMBDABER.curie('unit_cell_b'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_b, domain=None, range=Optional[float])
 
-slots.workflowRun__unit_cell_c = Slot(uri=NSLS2.Unit_Cell_c, name="workflowRun__unit_cell_c", curie=NSLS2.curie('Unit_Cell_c'),
+slots.workflowRun__unit_cell_c = Slot(uri=LAMBDABER.unit_cell_c, name="workflowRun__unit_cell_c", curie=LAMBDABER.curie('unit_cell_c'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_c, domain=None, range=Optional[float])
 
-slots.workflowRun__unit_cell_alpha = Slot(uri=NSLS2.Unit_Cell_alpha, name="workflowRun__unit_cell_alpha", curie=NSLS2.curie('Unit_Cell_alpha'),
+slots.workflowRun__unit_cell_alpha = Slot(uri=LAMBDABER.unit_cell_alpha, name="workflowRun__unit_cell_alpha", curie=LAMBDABER.curie('unit_cell_alpha'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_alpha, domain=None, range=Optional[float])
 
-slots.workflowRun__unit_cell_beta = Slot(uri=NSLS2.Unit_Cell_beta, name="workflowRun__unit_cell_beta", curie=NSLS2.curie('Unit_Cell_beta'),
+slots.workflowRun__unit_cell_beta = Slot(uri=LAMBDABER.unit_cell_beta, name="workflowRun__unit_cell_beta", curie=LAMBDABER.curie('unit_cell_beta'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_beta, domain=None, range=Optional[float])
 
-slots.workflowRun__unit_cell_gamma = Slot(uri=NSLS2.Unit_Cell_gamma, name="workflowRun__unit_cell_gamma", curie=NSLS2.curie('Unit_Cell_gamma'),
+slots.workflowRun__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name="workflowRun__unit_cell_gamma", curie=LAMBDABER.curie('unit_cell_gamma'),
                    model_uri=LAMBDABER.workflowRun__unit_cell_gamma, domain=None, range=Optional[float])
 
-slots.workflowRun__resolution_high = Slot(uri=NSLS2.Resolution_High_A, name="workflowRun__resolution_high", curie=NSLS2.curie('Resolution_High_A'),
+slots.workflowRun__resolution_high = Slot(uri=LAMBDABER.resolution_high, name="workflowRun__resolution_high", curie=LAMBDABER.curie('resolution_high'),
                    model_uri=LAMBDABER.workflowRun__resolution_high, domain=None, range=Optional[float])
 
-slots.workflowRun__resolution_low = Slot(uri=NSLS2.Resolution_Low_A, name="workflowRun__resolution_low", curie=NSLS2.curie('Resolution_Low_A'),
+slots.workflowRun__resolution_low = Slot(uri=LAMBDABER.resolution_low, name="workflowRun__resolution_low", curie=LAMBDABER.curie('resolution_low'),
                    model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[float])
 
-slots.workflowRun__rmerge = Slot(uri=NSLS2.Rmerge, name="workflowRun__rmerge", curie=NSLS2.curie('Rmerge'),
+slots.workflowRun__rmerge = Slot(uri=LAMBDABER.rmerge, name="workflowRun__rmerge", curie=LAMBDABER.curie('rmerge'),
                    model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[float])
 
-slots.workflowRun__rpim = Slot(uri=NSLS2.Rpim, name="workflowRun__rpim", curie=NSLS2.curie('Rpim'),
+slots.workflowRun__rpim = Slot(uri=LAMBDABER.rpim, name="workflowRun__rpim", curie=LAMBDABER.curie('rpim'),
                    model_uri=LAMBDABER.workflowRun__rpim, domain=None, range=Optional[float])
 
-slots.workflowRun__cc_half = Slot(uri=NSLS2.CC_half, name="workflowRun__cc_half", curie=NSLS2.curie('CC_half'),
+slots.workflowRun__cc_half = Slot(uri=LAMBDABER.cc_half, name="workflowRun__cc_half", curie=LAMBDABER.curie('cc_half'),
                    model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[float])
 
-slots.workflowRun__completeness_percent = Slot(uri=NSLS2.Completeness, name="workflowRun__completeness_percent", curie=NSLS2.curie('Completeness'),
+slots.workflowRun__completeness_percent = Slot(uri=LAMBDABER.completeness_percent, name="workflowRun__completeness_percent", curie=LAMBDABER.curie('completeness_percent'),
                    model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[float])
 
-slots.workflowRun__i_over_sigma = Slot(uri=NSLS2.I_over_sigma, name="workflowRun__i_over_sigma", curie=NSLS2.curie('I_over_sigma'),
+slots.workflowRun__i_over_sigma = Slot(uri=LAMBDABER.i_over_sigma, name="workflowRun__i_over_sigma", curie=LAMBDABER.curie('i_over_sigma'),
                    model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[float])
 
-slots.workflowRun__wilson_b_factor = Slot(uri=NSLS2.Wilson_B, name="workflowRun__wilson_b_factor", curie=NSLS2.curie('Wilson_B'),
+slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDABER.wilson_b_factor, name="workflowRun__wilson_b_factor", curie=LAMBDABER.curie('wilson_b_factor'),
                    model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[float])
 
-slots.workflowRun__multiplicity = Slot(uri=NSLS2.Multiplicity, name="workflowRun__multiplicity", curie=NSLS2.curie('Multiplicity'),
+slots.workflowRun__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="workflowRun__multiplicity", curie=LAMBDABER.curie('multiplicity'),
                    model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[float])
 
-slots.workflowRun__rwork = Slot(uri=NSLS2.Rwork, name="workflowRun__rwork", curie=NSLS2.curie('Rwork'),
+slots.workflowRun__rwork = Slot(uri=LAMBDABER.rwork, name="workflowRun__rwork", curie=LAMBDABER.curie('rwork'),
                    model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[float])
 
-slots.workflowRun__rfree = Slot(uri=NSLS2.Rfree, name="workflowRun__rfree", curie=NSLS2.curie('Rfree'),
+slots.workflowRun__rfree = Slot(uri=LAMBDABER.rfree, name="workflowRun__rfree", curie=LAMBDABER.curie('rfree'),
                    model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[float])
 
-slots.workflowRun__rmsd_bonds = Slot(uri=NSLS2.RMSD_bonds, name="workflowRun__rmsd_bonds", curie=NSLS2.curie('RMSD_bonds'),
+slots.workflowRun__rmsd_bonds = Slot(uri=LAMBDABER.rmsd_bonds, name="workflowRun__rmsd_bonds", curie=LAMBDABER.curie('rmsd_bonds'),
                    model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[float])
 
-slots.workflowRun__rmsd_angles = Slot(uri=NSLS2.RMSD_angles, name="workflowRun__rmsd_angles", curie=NSLS2.curie('RMSD_angles'),
+slots.workflowRun__rmsd_angles = Slot(uri=LAMBDABER.rmsd_angles, name="workflowRun__rmsd_angles", curie=LAMBDABER.curie('rmsd_angles'),
                    model_uri=LAMBDABER.workflowRun__rmsd_angles, domain=None, range=Optional[float])
 
-slots.workflowRun__ramachandran_favored = Slot(uri=NSLS2.Ramachandran_Favored, name="workflowRun__ramachandran_favored", curie=NSLS2.curie('Ramachandran_Favored'),
+slots.workflowRun__ramachandran_favored = Slot(uri=LAMBDABER.ramachandran_favored, name="workflowRun__ramachandran_favored", curie=LAMBDABER.curie('ramachandran_favored'),
                    model_uri=LAMBDABER.workflowRun__ramachandran_favored, domain=None, range=Optional[float])
 
-slots.workflowRun__ramachandran_outliers = Slot(uri=NSLS2.Ramachandran_Outliers, name="workflowRun__ramachandran_outliers", curie=NSLS2.curie('Ramachandran_Outliers'),
+slots.workflowRun__ramachandran_outliers = Slot(uri=LAMBDABER.ramachandran_outliers, name="workflowRun__ramachandran_outliers", curie=LAMBDABER.curie('ramachandran_outliers'),
                    model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[float])
 
-slots.workflowRun__clashscore = Slot(uri=NSLS2.Clashscore, name="workflowRun__clashscore", curie=NSLS2.curie('Clashscore'),
+slots.workflowRun__clashscore = Slot(uri=LAMBDABER.clashscore, name="workflowRun__clashscore", curie=LAMBDABER.curie('clashscore'),
                    model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[float])
 
 slots.workflowRun__processing_notes = Slot(uri=LAMBDABER.processing_notes, name="workflowRun__processing_notes", curie=LAMBDABER.curie('processing_notes'),
@@ -6562,8 +6705,11 @@ slots.xRFImage__elements_measured = Slot(uri=LAMBDABER.elements_measured, name="
 slots.xRFImage__source_type = Slot(uri=LAMBDABER.source_type, name="xRFImage__source_type", curie=LAMBDABER.curie('source_type'),
                    model_uri=LAMBDABER.xRFImage__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
-slots.xRFImage__detector_type = Slot(uri=LAMBDABER.detector_type, name="xRFImage__detector_type", curie=LAMBDABER.curie('detector_type'),
-                   model_uri=LAMBDABER.xRFImage__detector_type, domain=None, range=Optional[str])
+slots.xRFImage__detector_technology = Slot(uri=LAMBDABER.detector_technology, name="xRFImage__detector_technology", curie=LAMBDABER.curie('detector_technology'),
+                   model_uri=LAMBDABER.xRFImage__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+
+slots.xRFImage__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRFImage__detector_model", curie=LAMBDABER.curie('detector_model'),
+                   model_uri=LAMBDABER.xRFImage__detector_model, domain=None, range=Optional[str])
 
 slots.xRFImage__flux = Slot(uri=LAMBDABER.flux, name="xRFImage__flux", curie=LAMBDABER.curie('flux'),
                    model_uri=LAMBDABER.xRFImage__flux, domain=None, range=Optional[float])
@@ -6844,8 +6990,11 @@ slots.dataCollectionStrategy__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame
 slots.dataCollectionStrategy__wavelength_a = Slot(uri=LAMBDABER.wavelength_a, name="dataCollectionStrategy__wavelength_a", curie=LAMBDABER.curie('wavelength_a'),
                    model_uri=LAMBDABER.dataCollectionStrategy__wavelength_a, domain=None, range=Optional[float])
 
-slots.dataCollectionStrategy__detector = Slot(uri=LAMBDABER.detector, name="dataCollectionStrategy__detector", curie=LAMBDABER.curie('detector'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__detector, domain=None, range=Optional[str])
+slots.dataCollectionStrategy__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="dataCollectionStrategy__detector_mode", curie=LAMBDABER.curie('detector_mode'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
+
+slots.dataCollectionStrategy__pixel_size_calibrated = Slot(uri=LAMBDABER.pixel_size_calibrated, name="dataCollectionStrategy__pixel_size_calibrated", curie=LAMBDABER.curie('pixel_size_calibrated'),
+                   model_uri=LAMBDABER.dataCollectionStrategy__pixel_size_calibrated, domain=None, range=Optional[float])
 
 slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDABER.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=LAMBDABER.curie('detector_distance_mm'),
                    model_uri=LAMBDABER.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[float])
