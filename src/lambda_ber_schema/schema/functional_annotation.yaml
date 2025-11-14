@@ -71,7 +71,9 @@ classes:
       site_name:
         description: "Common name for this site"
       residues:
-        description: "List of residues forming the functional site"
+        description: >-
+          List of residues forming the functional site.
+          Each should be specified as a string (e.g., "45", "120A").
         multivalued: true
       ligand_interactions:
         description: "Ligands that interact with this site"
