@@ -1,0 +1,9 @@
+id: lambdaber:motion_correction_params_motioncor2
+title: "MotionCor2 motion correction parameters"
+description: "Standard MotionCor2 parameters for high-resolution cryo-EM data"
+patch_size: 5
+binning: 2
+dose_weighting: true
+bfactor_dose_weighting: 150.0
+anisotropic_correction: true
+frame_grouping: 1

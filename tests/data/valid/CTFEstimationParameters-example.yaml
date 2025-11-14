@@ -1,0 +1,9 @@
+id: lambdaber:ctf_estimation_params_ctffind4
+title: "CTFFIND4 CTF estimation parameters"
+description: "Standard CTFFIND4 parameters for CTF determination"
+defocus_search_min: 0.5
+defocus_search_max: 5.0
+defocus_step: 0.1
+amplitude_contrast: 0.07
+cs_used_in_estimation: 2.7
+voltage_used_in_estimation: 300.0

@@ -1,0 +1,18 @@
+id: lambdaber:micrograph_tfiid_grid02_h05_mc
+title: "TFIID motion-corrected micrograph"
+description: "Motion-corrected micrograph derived from raw movie"
+file_name: "FoilHole_19234567_Data_19234568_19234569_20240320_101542_fractions.mrc"
+acquisition_date: "2024-03-20T10:15:42"
+pixel_size: 0.85
+dimensions_x: 5760
+dimensions_y: 4092
+exposure_time: 2.5
+defocus: -2.15
+astigmatism: 0.05
+dose: 40.0
+origin_movie_id: "lambdaber:movie_tfiid_grid02_h05_001"
+defocus_u: -2.18
+defocus_v: -2.12
+astigmatism_angle: 45.2
+resolution_fit_limit: 3.8
+ctf_quality_score: 8.7

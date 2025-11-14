@@ -1,0 +1,9 @@
+id: lambdaber:particle_picking_params_template
+title: "Template-based particle picking parameters"
+description: "Template matching particle picking using reference projections"
+picking_method: "template_matching"
+box_size: 192
+threshold: 0.15
+power_score: 0.2
+ncc_score: 0.7
+model_file: "/path/to/template_references_ribosome.star"

@@ -1,0 +1,9 @@
+id: lambdaber:particle_picking_params_topaz
+title: "Topaz deep learning particle picking parameters"
+description: "Deep learning-based particle picking using Topaz neural network"
+picking_method: "deep_learning"
+box_size: 256
+threshold: 0.5
+power_score: 0.3
+ncc_score: 0.8
+model_file: "/path/to/topaz_model_ribosome.pkl"
