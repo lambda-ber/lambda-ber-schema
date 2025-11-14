@@ -128,11 +128,29 @@
 --     * Slot: accelerating_voltage Description: Accelerating voltage in kV
 --     * Slot: cs_corrector Description: Spherical aberration corrector present
 --     * Slot: phase_plate Description: Phase plate available
---     * Slot: detector_type Description: Type of detector
---     * Slot: detector_dimensions Description: Detector dimensions in pixels (e.g., 4096x4096)
---     * Slot: pixel_size_min Description: Minimum pixel size in Angstroms per pixel
---     * Slot: pixel_size_max Description: Maximum pixel size in Angstroms per pixel
+--     * Slot: detector_technology Description: Generic detector technology type
+--     * Slot: detector_manufacturer Description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
+--     * Slot: detector_model Description: Detector model (e.g., K3, Falcon 4i, DE-64)
+--     * Slot: detector_mode Description: Supported or default detector operating mode
+--     * Slot: detector_position Description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
+--     * Slot: detector_dimensions Description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
+--     * Slot: pixel_size_physical_um Description: Physical pixel size of the detector in micrometers
 --     * Slot: autoloader_capacity Description: Number of grids the autoloader can hold
+--     * Slot: cs Description: Spherical aberration (Cs) in millimeters
+--     * Slot: c2_aperture Description: C2 aperture size in micrometers
+--     * Slot: objective_aperture Description: Objective aperture size in micrometers
+--     * Slot: phase_plate_type Description: Type of phase plate if present
+--     * Slot: energy_filter_present Description: Whether energy filter is present
+--     * Slot: energy_filter_make Description: Energy filter manufacturer
+--     * Slot: energy_filter_model Description: Energy filter model
+--     * Slot: energy_filter_slit_width Description: Energy filter slit width in eV
+--     * Slot: pixel_size_physical Description: Physical pixel size in micrometers
+--     * Slot: microscope_software Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
+--     * Slot: microscope_software_version Description: Software version
+--     * Slot: spotsize Description: Electron beam spot size setting
+--     * Slot: gunlens Description: Gun lens setting
+--     * Slot: imaging_mode Description: Imaging mode (e.g., EFTEM, TEM, STEM)
+--     * Slot: tem_beam_diameter Description: TEM beam diameter in micrometers
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
@@ -143,7 +161,9 @@
 --     * Slot: description
 -- # Class: XRayInstrument Description: X-ray diffractometer or synchrotron beamline specifications
 --     * Slot: source_type Description: Type of X-ray source
---     * Slot: detector_type Description: Type of X-ray detector
+--     * Slot: detector_technology Description: Generic detector technology type
+--     * Slot: detector_manufacturer Description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
+--     * Slot: detector_model Description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
 --     * Slot: beamline_id Description: Beamline identifier at synchrotron facility
 --     * Slot: energy_min Description: Minimum X-ray energy in keV
 --     * Slot: energy_max Description: Maximum X-ray energy in keV
@@ -186,16 +206,36 @@
 --     * Slot: experimental_method Description: Specific experimental method for structure determination (particularly for diffraction techniques)
 --     * Slot: raw_data_location Description: Location of raw data files
 --     * Slot: processing_status Description: Current processing status
---     * Slot: wavelength Description: X-ray wavelength in Angstroms
---     * Slot: oscillation_angle Description: Oscillation angle per image in degrees
---     * Slot: start_angle Description: Starting rotation angle in degrees
+--     * Slot: magnification Description: Magnification used during data collection
+--     * Slot: calibrated_pixel_size Description: Calibrated pixel size in Angstroms per pixel
+--     * Slot: camera_binning Description: Camera binning factor
+--     * Slot: exposure_time_per_frame Description: Exposure time per frame in milliseconds
+--     * Slot: frames_per_movie Description: Number of frames per movie
+--     * Slot: total_exposure_time Description: Total exposure time in milliseconds
+--     * Slot: total_dose Description: Total electron dose in e-/Angstrom^2
+--     * Slot: dose_rate Description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+--     * Slot: defocus_target Description: Target defocus value in micrometers
+--     * Slot: defocus_range_min Description: Minimum defocus range in micrometers
+--     * Slot: defocus_range_max Description: Maximum defocus range in micrometers
+--     * Slot: defocus_range_increment Description: Defocus range increment in micrometers
+--     * Slot: astigmatism_target Description: Target astigmatism in nanometers
+--     * Slot: coma Description: Coma aberration in nanometers
+--     * Slot: stage_tilt Description: Stage tilt angle in degrees
+--     * Slot: autoloader_slot Description: Autoloader slot identifier
+--     * Slot: shots_per_hole Description: Number of shots taken per hole
+--     * Slot: holes_per_group Description: Number of holes per group
+--     * Slot: acquisition_software Description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
+--     * Slot: acquisition_software_version Description: Version of acquisition software
+--     * Slot: wavelength Description: X-ray wavelength
+--     * Slot: oscillation_angle Description: Oscillation angle per image
+--     * Slot: start_angle Description: Starting rotation angle
 --     * Slot: number_of_images Description: Total number of diffraction images collected
---     * Slot: beam_center_x Description: Beam center X coordinate in pixels
---     * Slot: beam_center_y Description: Beam center Y coordinate in pixels
---     * Slot: detector_distance Description: Distance from sample to detector in millimeters
---     * Slot: pixel_size_x Description: Pixel size X dimension in micrometers
---     * Slot: pixel_size_y Description: Pixel size Y dimension in micrometers
---     * Slot: total_rotation Description: Total rotation range collected in degrees
+--     * Slot: beam_center_x Description: Beam center X coordinate
+--     * Slot: beam_center_y Description: Beam center Y coordinate
+--     * Slot: detector_distance Description: Distance from sample to detector
+--     * Slot: pixel_size_x Description: Pixel size X dimension
+--     * Slot: pixel_size_y Description: Pixel size Y dimension
+--     * Slot: total_rotation Description: Total rotation range collected
 --     * Slot: beamline Description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
@@ -230,25 +270,25 @@
 --     * Slot: pdb_id Description: PDB accession code if deposited
 --     * Slot: validation_report_path Description: Path to validation report
 --     * Slot: space_group Description: Crystallographic space group
---     * Slot: unit_cell_a Description: Unit cell parameter a in Angstroms
---     * Slot: unit_cell_b Description: Unit cell parameter b in Angstroms
---     * Slot: unit_cell_c Description: Unit cell parameter c in Angstroms
---     * Slot: unit_cell_alpha Description: Unit cell angle alpha in degrees
---     * Slot: unit_cell_beta Description: Unit cell angle beta in degrees
---     * Slot: unit_cell_gamma Description: Unit cell angle gamma in degrees
---     * Slot: resolution_high Description: High resolution limit in Angstroms
---     * Slot: resolution_low Description: Low resolution limit in Angstroms
+--     * Slot: unit_cell_a Description: Unit cell parameter a
+--     * Slot: unit_cell_b Description: Unit cell parameter b
+--     * Slot: unit_cell_c Description: Unit cell parameter c
+--     * Slot: unit_cell_alpha Description: Unit cell angle alpha
+--     * Slot: unit_cell_beta Description: Unit cell angle beta
+--     * Slot: unit_cell_gamma Description: Unit cell angle gamma
+--     * Slot: resolution_high Description: High resolution limit
+--     * Slot: resolution_low Description: Low resolution limit
 --     * Slot: rmerge Description: Rmerge - merge R-factor
 --     * Slot: rpim Description: Rpim - precision-indicating merging R-factor
 --     * Slot: cc_half Description: Half-set correlation coefficient CC(1/2)
 --     * Slot: completeness_percent Description: Data completeness percentage
 --     * Slot: i_over_sigma Description: Mean I/sigma(I) - signal to noise ratio
---     * Slot: wilson_b_factor Description: Wilson B-factor in Angstroms squared
+--     * Slot: wilson_b_factor Description: Wilson B-factor
 --     * Slot: multiplicity Description: Data multiplicity (redundancy)
 --     * Slot: rwork Description: Refinement R-factor (working set)
 --     * Slot: rfree Description: R-free (test set)
---     * Slot: rmsd_bonds Description: RMSD from ideal bond lengths in Angstroms
---     * Slot: rmsd_angles Description: RMSD from ideal bond angles in degrees
+--     * Slot: rmsd_bonds Description: RMSD from ideal bond lengths
+--     * Slot: rmsd_angles Description: RMSD from ideal bond angles
 --     * Slot: ramachandran_favored Description: Percentage of residues in favored Ramachandran regions
 --     * Slot: ramachandran_outliers Description: Percentage of Ramachandran outliers
 --     * Slot: clashscore Description: MolProbity clashscore
@@ -260,6 +300,11 @@
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
 --     * Slot: compute_resources_id Description: Computational resources used
+--     * Slot: motion_correction_params_id Description: Motion correction specific parameters
+--     * Slot: ctf_estimation_params_id Description: CTF estimation specific parameters
+--     * Slot: particle_picking_params_id Description: Particle picking specific parameters
+--     * Slot: refinement_params_id Description: 3D refinement specific parameters
+--     * Slot: fsc_curve_id Description: Fourier Shell Correlation curve data
 -- # Class: DataFile Description: A data file generated or used in the study
 --     * Slot: file_name Description: Name of the file
 --     * Slot: file_path Description: Path to the file
@@ -268,6 +313,9 @@
 --     * Slot: checksum Description: SHA-256 checksum for data integrity
 --     * Slot: creation_date Description: File creation date
 --     * Slot: data_type Description: Type of data in the file
+--     * Slot: storage_uri Description: Storage URI (S3, Globus, etc.)
+--     * Slot: related_entity Description: ID of the entity that owns this file
+--     * Slot: file_role Description: Role of the file (raw, intermediate, final, diagnostic, metadata)
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
@@ -308,6 +356,53 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title
+--     * Slot: description
+-- # Class: Movie Description: Raw cryo-EM movie with frame-by-frame metadata for motion correction
+--     * Slot: frames Description: Number of frames in the movie
+--     * Slot: super_resolution Description: Whether super-resolution mode was used
+--     * Slot: pixel_size_unbinned Description: Unbinned pixel size in Angstroms per pixel
+--     * Slot: timestamp Description: Acquisition timestamp
+--     * Slot: stage_position_x Description: Stage X position in micrometers
+--     * Slot: stage_position_y Description: Stage Y position in micrometers
+--     * Slot: stage_position_z Description: Stage Z position in micrometers
+--     * Slot: nominal_defocus Description: Nominal defocus value in micrometers
+--     * Slot: dose_per_frame Description: Electron dose per frame in e-/Angstrom^2
+--     * Slot: beam_shift_x Description: Beam shift X in microradians
+--     * Slot: beam_shift_y Description: Beam shift Y in microradians
+--     * Slot: ice_thickness_estimate Description: Estimated ice thickness in nanometers
+--     * Slot: grid_square_id Description: Grid square identifier
+--     * Slot: hole_id Description: Hole identifier within grid square
+--     * Slot: acquisition_group Description: Acquisition group identifier (e.g., template or area)
+--     * Slot: defocus Description: Defocus value in micrometers
+--     * Slot: astigmatism Description: Astigmatism value
+--     * Slot: file_name Description: Image file name
+--     * Slot: acquisition_date Description: Date image was acquired
+--     * Slot: pixel_size Description: Pixel size in Angstroms
+--     * Slot: dimensions_x Description: Image width in pixels
+--     * Slot: dimensions_y Description: Image height in pixels
+--     * Slot: exposure_time Description: Exposure time in seconds
+--     * Slot: dose Description: Electron dose in e-/Å²
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title
+--     * Slot: description
+-- # Class: Micrograph Description: Motion-corrected micrograph derived from movie
+--     * Slot: pixel_size Description: Final pixel size in Angstroms per pixel
+--     * Slot: defocus Description: Measured defocus in micrometers
+--     * Slot: dose Description: Total electron dose in e-/Angstrom^2
+--     * Slot: origin_movie_id Description: Reference to original movie file
+--     * Slot: defocus_u Description: Defocus U in micrometers
+--     * Slot: defocus_v Description: Defocus V in micrometers
+--     * Slot: astigmatism Description: Astigmatism in Angstroms
+--     * Slot: astigmatism_angle Description: Astigmatism angle in degrees
+--     * Slot: resolution_fit_limit Description: Resolution fit limit in Angstroms
+--     * Slot: ctf_quality_score Description: CTF estimation quality score
+--     * Slot: file_name Description: Image file name
+--     * Slot: acquisition_date Description: Date image was acquired
+--     * Slot: dimensions_x Description: Image width in pixels
+--     * Slot: dimensions_y Description: Image height in pixels
+--     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
@@ -373,7 +468,8 @@
 --     * Slot: beam_size Description: X-ray beam size in micrometers
 --     * Slot: dwell_time Description: Dwell time per pixel in milliseconds
 --     * Slot: source_type Description: X-ray source type (synchrotron or lab-source)
---     * Slot: detector_type Description: Type of X-ray detector used
+--     * Slot: detector_technology Description: Type of X-ray detector technology used
+--     * Slot: detector_model Description: Specific detector model used for XRF measurement
 --     * Slot: flux Description: Photon flux in photons/second
 --     * Slot: calibration_standard Description: Reference standard used for calibration
 --     * Slot: defocus Description: Defocus value in micrometers
@@ -426,6 +522,19 @@
 --     * Slot: blot_force Description: Blotting force setting
 --     * Slot: humidity_percentage Description: Chamber humidity during vitrification
 --     * Slot: chamber_temperature Description: Chamber temperature in Celsius
+--     * Slot: grid_material Description: Grid material (carbon, gold, graphene, silicon_nitride)
+--     * Slot: glow_discharge_applied Description: Whether glow discharge treatment was applied
+--     * Slot: glow_discharge_time Description: Glow discharge time in seconds
+--     * Slot: glow_discharge_current Description: Glow discharge current in milliamperes
+--     * Slot: glow_discharge_atmosphere Description: Glow discharge atmosphere (air, amylamine)
+--     * Slot: glow_discharge_pressure Description: Glow discharge pressure in millibar
+--     * Slot: vitrification_instrument Description: Vitrification instrument used (e.g., Vitrobot)
+--     * Slot: blot_number Description: Number of blots applied
+--     * Slot: wait_time Description: Wait time before blotting in seconds
+--     * Slot: blotter_height Description: Blotter height setting
+--     * Slot: blotter_setting Description: Blotter setting value
+--     * Slot: sample_applied_volume Description: Volume of sample applied in microliters
+--     * Slot: ethane_temperature Description: Ethane temperature in Celsius
 --     * Slot: plasma_treatment Description: Plasma treatment details
 --     * Slot: description
 -- # Class: CrystallizationConditions Description: Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
@@ -496,7 +605,8 @@
 --     * Slot: total_dose Description: Total electron dose for cryo-EM
 --     * Slot: dose_per_frame Description: Dose per frame
 --     * Slot: wavelength_a Description: X-ray wavelength in Angstroms
---     * Slot: detector Description: Detector model/type
+--     * Slot: detector_mode Description: Detector operating mode used during this experiment
+--     * Slot: pixel_size_calibrated Description: Calibrated pixel size for this experiment
 --     * Slot: detector_distance_mm Description: Detector distance in millimeters
 --     * Slot: beam_center_x_px Description: Beam center X coordinate in pixels
 --     * Slot: beam_center_y_px Description: Beam center Y coordinate in pixels
@@ -550,6 +660,49 @@
 --     * Slot: gpu_hours Description: GPU hours used
 --     * Slot: memory_gb Description: Maximum memory used in GB
 --     * Slot: storage_gb Description: Storage used in GB
+--     * Slot: description
+-- # Class: MotionCorrectionParameters Description: Parameters specific to motion correction workflows
+--     * Slot: id
+--     * Slot: patch_size Description: Patch size for local motion correction
+--     * Slot: binning Description: Binning factor applied during motion correction
+--     * Slot: dose_weighting Description: Whether dose weighting was applied
+--     * Slot: bfactor_dose_weighting Description: B-factor for dose weighting
+--     * Slot: anisotropic_correction Description: Whether anisotropic motion correction was applied
+--     * Slot: frame_grouping Description: Number of frames grouped together
+--     * Slot: output_binning Description: Output binning factor
+--     * Slot: drift_total Description: Total drift in Angstroms
+--     * Slot: description
+-- # Class: CTFEstimationParameters Description: Parameters specific to CTF estimation workflows
+--     * Slot: id
+--     * Slot: defocus_search_min Description: Minimum defocus search range in micrometers
+--     * Slot: defocus_search_max Description: Maximum defocus search range in micrometers
+--     * Slot: defocus_step Description: Defocus search step in micrometers
+--     * Slot: amplitude_contrast Description: Amplitude contrast value
+--     * Slot: cs_used_in_estimation Description: Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification
+--     * Slot: voltage_used_in_estimation Description: Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification
+--     * Slot: description
+-- # Class: ParticlePickingParameters Description: Parameters specific to particle picking workflows
+--     * Slot: id
+--     * Slot: picking_method Description: Method used (manual, template_matching, deep_learning, LoG, Topaz, other)
+--     * Slot: box_size Description: Particle box size in pixels
+--     * Slot: threshold Description: Picking threshold
+--     * Slot: power_score Description: Power score threshold
+--     * Slot: ncc_score Description: Normalized cross-correlation score threshold
+--     * Slot: model_file Description: Path to deep learning model file if used
+--     * Slot: description
+-- # Class: RefinementParameters Description: Parameters specific to 3D refinement workflows
+--     * Slot: id
+--     * Slot: symmetry Description: Symmetry applied (C1, Cn, Dn, T, O, I)
+--     * Slot: pixel_size Description: Pixel size in Angstroms per pixel
+--     * Slot: box_size Description: Box size in pixels
+--     * Slot: gold_standard Description: Whether gold-standard refinement was used
+--     * Slot: split_strategy Description: Strategy for data splitting
+--     * Slot: resolution_0_143 Description: Resolution at FSC=0.143 in Angstroms
+--     * Slot: resolution_0_5 Description: Resolution at FSC=0.5 in Angstroms
+--     * Slot: map_sharpening_bfactor Description: B-factor used for map sharpening in Angstroms^2
+--     * Slot: description
+-- # Class: FSCCurve Description: Fourier Shell Correlation curve data.The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+--     * Slot: id
 --     * Slot: description
 -- # Class: ProteinAnnotation Description: Base class for all protein-related functional and structural annotations
 --     * Slot: protein_id Description: UniProt accession number
@@ -800,6 +953,12 @@
 -- # Class: SAXSPreparation_concentration_series
 --     * Slot: SAXSPreparation_id Description: Autocreated FK slot
 --     * Slot: concentration_series Description: Concentration values for series measurements
+-- # Class: FSCCurve_resolution_angstrom
+--     * Slot: FSCCurve_id Description: Autocreated FK slot
+--     * Slot: resolution_angstrom Description: Resolution values in Angstroms
+-- # Class: FSCCurve_fsc_value
+--     * Slot: FSCCurve_id Description: Autocreated FK slot
+--     * Slot: fsc_value Description: FSC values corresponding to each resolution
 -- # Class: ProteinAnnotation_publication_ids
 --     * Slot: ProteinAnnotation_id Description: Autocreated FK slot
 --     * Slot: publication_ids Description: PubMed IDs supporting this annotation
@@ -882,11 +1041,29 @@ CREATE TABLE "CryoEMInstrument" (
 	accelerating_voltage INTEGER,
 	cs_corrector BOOLEAN,
 	phase_plate BOOLEAN,
-	detector_type VARCHAR(15),
+	detector_technology VARCHAR(24),
+	detector_manufacturer TEXT,
+	detector_model TEXT,
+	detector_mode VARCHAR(26),
+	detector_position TEXT,
 	detector_dimensions TEXT,
-	pixel_size_min FLOAT,
-	pixel_size_max FLOAT,
+	pixel_size_physical_um FLOAT,
 	autoloader_capacity INTEGER,
+	cs FLOAT,
+	c2_aperture FLOAT,
+	objective_aperture FLOAT,
+	phase_plate_type TEXT,
+	energy_filter_present BOOLEAN,
+	energy_filter_make TEXT,
+	energy_filter_model TEXT,
+	energy_filter_slit_width FLOAT,
+	pixel_size_physical FLOAT,
+	microscope_software TEXT,
+	microscope_software_version TEXT,
+	spotsize INTEGER,
+	gunlens INTEGER,
+	imaging_mode TEXT,
+	tem_beam_diameter FLOAT,
 	instrument_code TEXT NOT NULL,
 	manufacturer TEXT,
 	model TEXT,
@@ -899,7 +1076,9 @@ CREATE TABLE "CryoEMInstrument" (
 );CREATE INDEX "ix_CryoEMInstrument_id" ON "CryoEMInstrument" (id);
 CREATE TABLE "XRayInstrument" (
 	source_type VARCHAR(14),
-	detector_type VARCHAR(15),
+	detector_technology VARCHAR(24),
+	detector_manufacturer TEXT,
+	detector_model TEXT,
 	beamline_id TEXT,
 	energy_min FLOAT,
 	energy_max FLOAT,
@@ -967,6 +1146,57 @@ CREATE TABLE "Image3D" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_Image3D_id" ON "Image3D" (id);
+CREATE TABLE "Movie" (
+	frames INTEGER,
+	super_resolution BOOLEAN,
+	pixel_size_unbinned FLOAT,
+	timestamp TEXT,
+	stage_position_x FLOAT,
+	stage_position_y FLOAT,
+	stage_position_z FLOAT,
+	nominal_defocus FLOAT,
+	dose_per_frame FLOAT,
+	beam_shift_x FLOAT,
+	beam_shift_y FLOAT,
+	ice_thickness_estimate FLOAT,
+	grid_square_id TEXT,
+	hole_id TEXT,
+	acquisition_group TEXT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	exposure_time FLOAT,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_Movie_id" ON "Movie" (id);
+CREATE TABLE "Micrograph" (
+	pixel_size FLOAT,
+	defocus FLOAT,
+	dose FLOAT,
+	origin_movie_id TEXT,
+	defocus_u FLOAT,
+	defocus_v FLOAT,
+	astigmatism FLOAT,
+	astigmatism_angle FLOAT,
+	resolution_fit_limit FLOAT,
+	ctf_quality_score FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	exposure_time FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_Micrograph_id" ON "Micrograph" (id);
 CREATE TABLE "FTIRImage" (
 	wavenumber_min FLOAT,
 	wavenumber_max FLOAT,
@@ -1035,7 +1265,8 @@ CREATE TABLE "XRFImage" (
 	beam_size FLOAT,
 	dwell_time FLOAT,
 	source_type VARCHAR(14),
-	detector_type TEXT,
+	detector_technology VARCHAR(24),
+	detector_model TEXT,
 	flux FLOAT,
 	calibration_standard TEXT,
 	defocus FLOAT,
@@ -1096,6 +1327,19 @@ CREATE TABLE "CryoEMPreparation" (
 	blot_force INTEGER,
 	humidity_percentage FLOAT,
 	chamber_temperature FLOAT,
+	grid_material TEXT,
+	glow_discharge_applied BOOLEAN,
+	glow_discharge_time FLOAT,
+	glow_discharge_current FLOAT,
+	glow_discharge_atmosphere TEXT,
+	glow_discharge_pressure FLOAT,
+	vitrification_instrument TEXT,
+	blot_number INTEGER,
+	wait_time FLOAT,
+	blotter_height FLOAT,
+	blotter_setting FLOAT,
+	sample_applied_volume FLOAT,
+	ethane_temperature FLOAT,
 	plasma_treatment TEXT,
 	description TEXT,
 	PRIMARY KEY (id)
@@ -1146,7 +1390,8 @@ CREATE TABLE "DataCollectionStrategy" (
 	total_dose FLOAT,
 	dose_per_frame FLOAT,
 	wavelength_a FLOAT,
-	detector TEXT,
+	detector_mode VARCHAR(26),
+	pixel_size_calibrated FLOAT,
 	detector_distance_mm FLOAT,
 	beam_center_x_px INTEGER,
 	beam_center_y_px INTEGER,
@@ -1207,6 +1452,59 @@ CREATE TABLE "ComputeResources" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_ComputeResources_id" ON "ComputeResources" (id);
+CREATE TABLE "MotionCorrectionParameters" (
+	id INTEGER NOT NULL,
+	patch_size INTEGER,
+	binning INTEGER,
+	dose_weighting BOOLEAN,
+	bfactor_dose_weighting FLOAT,
+	anisotropic_correction BOOLEAN,
+	frame_grouping INTEGER,
+	output_binning INTEGER,
+	drift_total FLOAT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_MotionCorrectionParameters_id" ON "MotionCorrectionParameters" (id);
+CREATE TABLE "CTFEstimationParameters" (
+	id INTEGER NOT NULL,
+	defocus_search_min FLOAT,
+	defocus_search_max FLOAT,
+	defocus_step FLOAT,
+	amplitude_contrast FLOAT,
+	cs_used_in_estimation FLOAT,
+	voltage_used_in_estimation FLOAT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_CTFEstimationParameters_id" ON "CTFEstimationParameters" (id);
+CREATE TABLE "ParticlePickingParameters" (
+	id INTEGER NOT NULL,
+	picking_method TEXT,
+	box_size INTEGER,
+	threshold FLOAT,
+	power_score FLOAT,
+	ncc_score FLOAT,
+	model_file TEXT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_ParticlePickingParameters_id" ON "ParticlePickingParameters" (id);
+CREATE TABLE "RefinementParameters" (
+	id INTEGER NOT NULL,
+	symmetry TEXT,
+	pixel_size FLOAT,
+	box_size INTEGER,
+	gold_standard BOOLEAN,
+	split_strategy TEXT,
+	resolution_0_143 FLOAT,
+	resolution_0_5 FLOAT,
+	map_sharpening_bfactor FLOAT,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_RefinementParameters_id" ON "RefinementParameters" (id);
+CREATE TABLE "FSCCurve" (
+	id INTEGER NOT NULL,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_FSCCurve_id" ON "FSCCurve" (id);
 CREATE TABLE "ProteinAnnotation" (
 	protein_id TEXT NOT NULL,
 	pdb_entry TEXT,
@@ -1358,19 +1656,19 @@ CREATE TABLE "MolecularComposition_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
+);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
 CREATE TABLE "BufferComposition_components" (
 	"BufferComposition_id" INTEGER,
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
@@ -1383,12 +1681,24 @@ CREATE TABLE "SAXSPreparation_concentration_series" (
 	PRIMARY KEY ("SAXSPreparation_id", concentration_series),
 	FOREIGN KEY("SAXSPreparation_id") REFERENCES "SAXSPreparation" (id)
 );CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);
+CREATE TABLE "FSCCurve_resolution_angstrom" (
+	"FSCCurve_id" INTEGER,
+	resolution_angstrom FLOAT,
+	PRIMARY KEY ("FSCCurve_id", resolution_angstrom),
+	FOREIGN KEY("FSCCurve_id") REFERENCES "FSCCurve" (id)
+);CREATE INDEX "ix_FSCCurve_resolution_angstrom_resolution_angstrom" ON "FSCCurve_resolution_angstrom" (resolution_angstrom);CREATE INDEX "ix_FSCCurve_resolution_angstrom_FSCCurve_id" ON "FSCCurve_resolution_angstrom" ("FSCCurve_id");
+CREATE TABLE "FSCCurve_fsc_value" (
+	"FSCCurve_id" INTEGER,
+	fsc_value FLOAT,
+	PRIMARY KEY ("FSCCurve_id", fsc_value),
+	FOREIGN KEY("FSCCurve_id") REFERENCES "FSCCurve" (id)
+);CREATE INDEX "ix_FSCCurve_fsc_value_fsc_value" ON "FSCCurve_fsc_value" (fsc_value);CREATE INDEX "ix_FSCCurve_fsc_value_FSCCurve_id" ON "FSCCurve_fsc_value" ("FSCCurve_id");
 CREATE TABLE "ProteinAnnotation_publication_ids" (
 	"ProteinAnnotation_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1400,7 +1710,7 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
@@ -1412,7 +1722,7 @@ CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
@@ -1547,6 +1857,26 @@ CREATE TABLE "ExperimentRun" (
 	experimental_method VARCHAR(20),
 	raw_data_location TEXT,
 	processing_status VARCHAR(13),
+	magnification INTEGER,
+	calibrated_pixel_size FLOAT,
+	camera_binning INTEGER,
+	exposure_time_per_frame FLOAT,
+	frames_per_movie INTEGER,
+	total_exposure_time FLOAT,
+	total_dose FLOAT,
+	dose_rate FLOAT,
+	defocus_target FLOAT,
+	defocus_range_min FLOAT,
+	defocus_range_max FLOAT,
+	defocus_range_increment FLOAT,
+	astigmatism_target FLOAT,
+	coma FLOAT,
+	stage_tilt FLOAT,
+	autoloader_slot TEXT,
+	shots_per_hole INTEGER,
+	holes_per_group INTEGER,
+	acquisition_software TEXT,
+	acquisition_software_version TEXT,
 	wavelength FLOAT,
 	oscillation_angle FLOAT,
 	start_angle FLOAT,
@@ -1628,9 +1958,19 @@ CREATE TABLE "WorkflowRun" (
 	description TEXT,
 	"Study_id" TEXT,
 	compute_resources_id INTEGER,
+	motion_correction_params_id INTEGER,
+	ctf_estimation_params_id INTEGER,
+	particle_picking_params_id INTEGER,
+	refinement_params_id INTEGER,
+	fsc_curve_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
-	FOREIGN KEY(compute_resources_id) REFERENCES "ComputeResources" (id)
+	FOREIGN KEY(compute_resources_id) REFERENCES "ComputeResources" (id),
+	FOREIGN KEY(motion_correction_params_id) REFERENCES "MotionCorrectionParameters" (id),
+	FOREIGN KEY(ctf_estimation_params_id) REFERENCES "CTFEstimationParameters" (id),
+	FOREIGN KEY(particle_picking_params_id) REFERENCES "ParticlePickingParameters" (id),
+	FOREIGN KEY(refinement_params_id) REFERENCES "RefinementParameters" (id),
+	FOREIGN KEY(fsc_curve_id) REFERENCES "FSCCurve" (id)
 );CREATE INDEX "ix_WorkflowRun_id" ON "WorkflowRun" (id);
 CREATE TABLE "DataFile" (
 	file_name TEXT NOT NULL,
@@ -1639,7 +1979,10 @@ CREATE TABLE "DataFile" (
 	file_size_bytes INTEGER,
 	checksum TEXT,
 	creation_date TEXT,
-	data_type VARCHAR(14),
+	data_type VARCHAR(20),
+	storage_uri TEXT,
+	related_entity TEXT,
+	file_role TEXT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
@@ -1683,13 +2026,13 @@ CREATE TABLE "ConformationalState_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
+);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "FunctionalSite" (
 	site_type VARCHAR(20) NOT NULL,
 	site_name TEXT,
@@ -1867,7 +2210,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
+);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -1919,7 +2262,7 @@ CREATE TABLE "StructuralFeature_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("StructuralFeature_id", publication_ids),
 	FOREIGN KEY("StructuralFeature_id") REFERENCES "StructuralFeature" (id)
-);CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");
+);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);
 CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	interface_residues TEXT,
@@ -1931,13 +2274,13 @@ CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	partner_interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", partner_interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);
 CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	"ProteinProteinInteraction_id" TEXT,
 	interaction_evidence VARCHAR(14),
 	PRIMARY KEY ("ProteinProteinInteraction_id", interaction_evidence),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interaction_evidence" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interaction_evidence_interaction_evidence" ON "ProteinProteinInteraction_interaction_evidence" (interaction_evidence);
 CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	"ProteinProteinInteraction_id" TEXT,
 	publication_ids TEXT,

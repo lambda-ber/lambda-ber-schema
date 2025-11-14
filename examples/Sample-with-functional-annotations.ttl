@@ -59,6 +59,15 @@ lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
 lambdaber:confens-001 a ns1:ConformationalEnsemble ;
     ns1:clustering_method "RMSD-based hierarchical clustering" ;
     ns1:conformational_states [ a ns1:ConformationalState ;
+            ns1:characteristic_features "ATP binding site exposed",
+                "Wide nucleotide channel" ;
+            ns1:free_energy "0.0"^^xsd:float ;
+            ns1:pdb_entries "6ZPN",
+                "6ZPO" ;
+            ns1:population "0.3"^^xsd:float ;
+            ns1:state_id "state_1" ;
+            ns1:state_name "open" ],
+        [ a ns1:ConformationalState ;
             ns1:characteristic_features "ATP bound",
                 "Catalytic residues positioned" ;
             ns1:free_energy "-1.2"^^xsd:float ;
@@ -76,16 +85,7 @@ lambdaber:confens-001 a ns1:ConformationalEnsemble ;
             ns1:population "0.2"^^xsd:float ;
             ns1:rmsd_from_reference "1.8"^^xsd:float ;
             ns1:state_id "state_3" ;
-            ns1:state_name "intermediate" ],
-        [ a ns1:ConformationalState ;
-            ns1:characteristic_features "ATP binding site exposed",
-                "Wide nucleotide channel" ;
-            ns1:free_energy "0.0"^^xsd:float ;
-            ns1:pdb_entries "6ZPN",
-                "6ZPO" ;
-            ns1:population "0.3"^^xsd:float ;
-            ns1:state_id "state_1" ;
-            ns1:state_name "open" ] ;
+            ns1:state_name "intermediate" ] ;
     ns1:protein_id "P25705" ;
     ns1:rmsd_threshold "2.5"^^xsd:float ;
     ns1:transition_pathways "Open <-> Intermediate <-> Closed conformations during catalytic cycle" .
