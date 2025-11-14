@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-14T08:14:59
+# Generation date: 2025-11-14T15:07:00
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -157,10 +157,18 @@ RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
+XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = LAMBDABER
 
 
 # Types
+class SmilesString(String):
+    """ A SMILES representation of a chemical structure """
+    type_class_uri = XSD["string"]
+    type_class_curie = "xsd:string"
+    type_name = "smiles_string"
+    type_model_uri = LAMBDABER.SmilesString
+
 
 # Class references
 class NamedThingId(URIorCURIE):
@@ -288,6 +296,10 @@ class EvolutionaryConservationId(ProteinAnnotationId):
 
 
 class AggregatedProteinViewId(NamedThingId):
+    pass
+
+
+class MeasurementConditionsId(NamedThingId):
     pass
 
 
@@ -962,7 +974,7 @@ class CryoEMInstrument(Instrument):
     microscope_software_version: Optional[str] = None
     spotsize: Optional[int] = None
     gunlens: Optional[int] = None
-    imaging_mode: Optional[str] = None
+    imaging_mode: Optional[Union[str, "ImagingModeEnum"]] = None
     tem_beam_diameter: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1043,8 +1055,8 @@ class CryoEMInstrument(Instrument):
         if self.gunlens is not None and not isinstance(self.gunlens, int):
             self.gunlens = int(self.gunlens)
 
-        if self.imaging_mode is not None and not isinstance(self.imaging_mode, str):
-            self.imaging_mode = str(self.imaging_mode)
+        if self.imaging_mode is not None and not isinstance(self.imaging_mode, ImagingModeEnum):
+            self.imaging_mode = ImagingModeEnum(self.imaging_mode)
 
         if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, float):
             self.tem_beam_diameter = float(self.tem_beam_diameter)
@@ -1925,28 +1937,22 @@ class Micrograph(Image2D):
 
     id: Union[str, MicrographId] = None
     file_name: str = None
-    pixel_size: Optional[float] = None
-    defocus: Optional[float] = None
     dose: Optional[float] = None
     origin_movie_id: Optional[str] = None
     defocus_u: Optional[float] = None
     defocus_v: Optional[float] = None
-    astigmatism: Optional[float] = None
     astigmatism_angle: Optional[float] = None
     resolution_fit_limit: Optional[float] = None
     ctf_quality_score: Optional[float] = None
+    pixel_size: Optional[str] = None
+    defocus: Optional[float] = None
+    astigmatism: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MicrographId):
             self.id = MicrographId(self.id)
-
-        if self.pixel_size is not None and not isinstance(self.pixel_size, float):
-            self.pixel_size = float(self.pixel_size)
-
-        if self.defocus is not None and not isinstance(self.defocus, float):
-            self.defocus = float(self.defocus)
 
         if self.dose is not None and not isinstance(self.dose, float):
             self.dose = float(self.dose)
@@ -1960,9 +1966,6 @@ class Micrograph(Image2D):
         if self.defocus_v is not None and not isinstance(self.defocus_v, float):
             self.defocus_v = float(self.defocus_v)
 
-        if self.astigmatism is not None and not isinstance(self.astigmatism, float):
-            self.astigmatism = float(self.astigmatism)
-
         if self.astigmatism_angle is not None and not isinstance(self.astigmatism_angle, float):
             self.astigmatism_angle = float(self.astigmatism_angle)
 
@@ -1971,6 +1974,15 @@ class Micrograph(Image2D):
 
         if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, float):
             self.ctf_quality_score = float(self.ctf_quality_score)
+
+        if self.pixel_size is not None and not isinstance(self.pixel_size, str):
+            self.pixel_size = str(self.pixel_size)
+
+        if self.defocus is not None and not isinstance(self.defocus, float):
+            self.defocus = float(self.defocus)
+
+        if self.astigmatism is not None and not isinstance(self.astigmatism, float):
+            self.astigmatism = float(self.astigmatism)
 
         super().__post_init__(**kwargs)
 
@@ -2380,7 +2392,7 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     blot_force: Optional[int] = None
     humidity_percentage: Optional[float] = None
     chamber_temperature: Optional[float] = None
-    grid_material: Optional[str] = None
+    grid_material: Optional[Union[str, "GridMaterialEnum"]] = None
     glow_discharge_applied: Optional[Union[bool, Bool]] = None
     glow_discharge_time: Optional[float] = None
     glow_discharge_current: Optional[float] = None
@@ -2420,8 +2432,8 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.chamber_temperature is not None and not isinstance(self.chamber_temperature, float):
             self.chamber_temperature = float(self.chamber_temperature)
 
-        if self.grid_material is not None and not isinstance(self.grid_material, str):
-            self.grid_material = str(self.grid_material)
+        if self.grid_material is not None and not isinstance(self.grid_material, GridMaterialEnum):
+            self.grid_material = GridMaterialEnum(self.grid_material)
 
         if self.glow_discharge_applied is not None and not isinstance(self.glow_discharge_applied, Bool):
             self.glow_discharge_applied = Bool(self.glow_discharge_applied)
@@ -3144,7 +3156,7 @@ class RefinementParameters(AttributeGroup):
     class_name: ClassVar[str] = "RefinementParameters"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.RefinementParameters
 
-    symmetry: Optional[str] = None
+    symmetry: Optional[Union[str, "SymmetryEnum"]] = None
     pixel_size: Optional[float] = None
     box_size: Optional[int] = None
     gold_standard: Optional[Union[bool, Bool]] = None
@@ -3154,8 +3166,8 @@ class RefinementParameters(AttributeGroup):
     map_sharpening_bfactor: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.symmetry is not None and not isinstance(self.symmetry, str):
-            self.symmetry = str(self.symmetry)
+        if self.symmetry is not None and not isinstance(self.symmetry, SymmetryEnum):
+            self.symmetry = SymmetryEnum(self.symmetry)
 
         if self.pixel_size is not None and not isinstance(self.pixel_size, float):
             self.pixel_size = float(self.pixel_size)
@@ -3413,9 +3425,9 @@ class LigandInteraction(AttributeGroup):
     class_name: ClassVar[str] = "LigandInteraction"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.LigandInteraction
 
-    ligand_id: str = None
+    ligand_id: Union[str, URIorCURIE] = None
     ligand_name: str = None
-    ligand_smiles: Optional[str] = None
+    ligand_smiles: Optional[Union[str, SmilesString]] = None
     binding_affinity: Optional[float] = None
     binding_affinity_type: Optional[Union[str, "BindingAffinityTypeEnum"]] = None
     binding_affinity_unit: Optional[Union[str, "AffinityUnitEnum"]] = None
@@ -3429,16 +3441,16 @@ class LigandInteraction(AttributeGroup):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.ligand_id):
             self.MissingRequiredField("ligand_id")
-        if not isinstance(self.ligand_id, str):
-            self.ligand_id = str(self.ligand_id)
+        if not isinstance(self.ligand_id, URIorCURIE):
+            self.ligand_id = URIorCURIE(self.ligand_id)
 
         if self._is_empty(self.ligand_name):
             self.MissingRequiredField("ligand_name")
         if not isinstance(self.ligand_name, str):
             self.ligand_name = str(self.ligand_name)
 
-        if self.ligand_smiles is not None and not isinstance(self.ligand_smiles, str):
-            self.ligand_smiles = str(self.ligand_smiles)
+        if self.ligand_smiles is not None and not isinstance(self.ligand_smiles, SmilesString):
+            self.ligand_smiles = SmilesString(self.ligand_smiles)
 
         if self.binding_affinity is not None and not isinstance(self.binding_affinity, float):
             self.binding_affinity = float(self.binding_affinity)
@@ -3622,10 +3634,7 @@ class BiophysicalProperty(AttributeGroup):
     value: float = None
     unit: str = None
     error: Optional[float] = None
-    measurement_conditions: Optional[str] = None
-    temperature: Optional[float] = None
-    ph: Optional[float] = None
-    ionic_strength: Optional[float] = None
+    measurement_conditions: Optional[Union[dict[Union[str, MeasurementConditionsId], Union[dict, "MeasurementConditions"]], list[Union[dict, "MeasurementConditions"]]]] = empty_dict()
     experimental_method: Optional[Union[str, "BiophysicalMethodEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3647,17 +3656,7 @@ class BiophysicalProperty(AttributeGroup):
         if self.error is not None and not isinstance(self.error, float):
             self.error = float(self.error)
 
-        if self.measurement_conditions is not None and not isinstance(self.measurement_conditions, str):
-            self.measurement_conditions = str(self.measurement_conditions)
-
-        if self.temperature is not None and not isinstance(self.temperature, float):
-            self.temperature = float(self.temperature)
-
-        if self.ph is not None and not isinstance(self.ph, float):
-            self.ph = float(self.ph)
-
-        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
-            self.ionic_strength = float(self.ionic_strength)
+        self._normalize_inlined_as_list(slot_name="measurement_conditions", slot_type=MeasurementConditions, key_name="id", keyed=True)
 
         if self.experimental_method is not None and not isinstance(self.experimental_method, BiophysicalMethodEnum):
             self.experimental_method = BiophysicalMethodEnum(self.experimental_method)
@@ -4007,6 +4006,45 @@ class AggregatedProteinView(NamedThing):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class MeasurementConditions(NamedThing):
+    """
+    Conditions under which biophysical measurements were made
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/MeasurementConditions"]
+    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/MeasurementConditions"
+    class_name: ClassVar[str] = "MeasurementConditions"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.MeasurementConditions
+
+    id: Union[str, MeasurementConditionsId] = None
+    buffer_composition: Optional[str] = None
+    ph: Optional[float] = None
+    ionic_strength: Optional[float] = None
+    temperature: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MeasurementConditionsId):
+            self.id = MeasurementConditionsId(self.id)
+
+        if self.buffer_composition is not None and not isinstance(self.buffer_composition, str):
+            self.buffer_composition = str(self.buffer_composition)
+
+        if self.ph is not None and not isinstance(self.ph, float):
+            self.ph = float(self.ph)
+
+        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
+            self.ionic_strength = float(self.ionic_strength)
+
+        if self.temperature is not None and not isinstance(self.temperature, float):
+            self.temperature = float(self.temperature)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class FacilityEnum(EnumDefinitionImpl):
     """
@@ -4196,6 +4234,28 @@ class GridTypeEnum(EnumDefinitionImpl):
         description="Types of EM grids",
     )
 
+class GridMaterialEnum(EnumDefinitionImpl):
+    """
+    Materials used for EM grids
+    """
+    carbon = PermissibleValue(
+        text="carbon",
+        description="Carbon grid")
+    gold = PermissibleValue(
+        text="gold",
+        description="Gold grid")
+    graphene = PermissibleValue(
+        text="graphene",
+        description="Graphene grid")
+    silicon_nitride = PermissibleValue(
+        text="silicon_nitride",
+        description="Silicon nitride grid")
+
+    _defn = EnumDefinition(
+        name="GridMaterialEnum",
+        description="Materials used for EM grids",
+    )
+
 class VitrificationMethodEnum(EnumDefinitionImpl):
     """
     Methods for vitrification
@@ -4213,6 +4273,82 @@ class VitrificationMethodEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="VitrificationMethodEnum",
         description="Methods for vitrification",
+    )
+
+class SymmetryEnum(EnumDefinitionImpl):
+    """
+    Crystallographic and non-crystallographic symmetry groups for cryo-EM
+    """
+    C1 = PermissibleValue(
+        text="C1",
+        description="C1 symmetry (no symmetry)")
+    C2 = PermissibleValue(
+        text="C2",
+        description="C2 cyclic symmetry (2-fold)")
+    C3 = PermissibleValue(
+        text="C3",
+        description="C3 cyclic symmetry (3-fold)")
+    C4 = PermissibleValue(
+        text="C4",
+        description="C4 cyclic symmetry (4-fold)")
+    C5 = PermissibleValue(
+        text="C5",
+        description="C5 cyclic symmetry (5-fold)")
+    C6 = PermissibleValue(
+        text="C6",
+        description="C6 cyclic symmetry (6-fold)")
+    C7 = PermissibleValue(
+        text="C7",
+        description="C7 cyclic symmetry (7-fold)")
+    C8 = PermissibleValue(
+        text="C8",
+        description="C8 cyclic symmetry (8-fold)")
+    C9 = PermissibleValue(
+        text="C9",
+        description="C9 cyclic symmetry (9-fold)")
+    C10 = PermissibleValue(
+        text="C10",
+        description="C10 cyclic symmetry (10-fold)")
+    D2 = PermissibleValue(
+        text="D2",
+        description="D2 dihedral symmetry (2-fold)")
+    D3 = PermissibleValue(
+        text="D3",
+        description="D3 dihedral symmetry (3-fold)")
+    D4 = PermissibleValue(
+        text="D4",
+        description="D4 dihedral symmetry (4-fold)")
+    D5 = PermissibleValue(
+        text="D5",
+        description="D5 dihedral symmetry (5-fold)")
+    D6 = PermissibleValue(
+        text="D6",
+        description="D6 dihedral symmetry (6-fold)")
+    D7 = PermissibleValue(
+        text="D7",
+        description="D7 dihedral symmetry (7-fold)")
+    D8 = PermissibleValue(
+        text="D8",
+        description="D8 dihedral symmetry (8-fold)")
+    D9 = PermissibleValue(
+        text="D9",
+        description="D9 dihedral symmetry (9-fold)")
+    D10 = PermissibleValue(
+        text="D10",
+        description="D10 dihedral symmetry (10-fold)")
+    T = PermissibleValue(
+        text="T",
+        description="Tetrahedral symmetry")
+    O = PermissibleValue(
+        text="O",
+        description="Octahedral symmetry")
+    I = PermissibleValue(
+        text="I",
+        description="Icosahedral symmetry")
+
+    _defn = EnumDefinition(
+        name="SymmetryEnum",
+        description="Crystallographic and non-crystallographic symmetry groups for cryo-EM",
     )
 
 class CrystallizationMethodEnum(EnumDefinitionImpl):
@@ -4266,6 +4402,25 @@ class InstrumentStatusEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="InstrumentStatusEnum",
         description="Operational status of instruments",
+    )
+
+class ImagingModeEnum(EnumDefinitionImpl):
+    """
+    Imaging modes for electron microscopy
+    """
+    EFTEM = PermissibleValue(
+        text="EFTEM",
+        description="Energy-filtered transmission electron microscopy")
+    TEM = PermissibleValue(
+        text="TEM",
+        description="Transmission electron microscopy")
+    STEM = PermissibleValue(
+        text="STEM",
+        description="Scanning transmission electron microscopy")
+
+    _defn = EnumDefinition(
+        name="ImagingModeEnum",
+        description="Imaging modes for electron microscopy",
     )
 
 class DetectorTypeEnum(EnumDefinitionImpl):
@@ -6121,7 +6276,7 @@ slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDABER.gunlens, name="cryoEMInstru
                    model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[int])
 
 slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDABER.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDABER.curie('imaging_mode'),
-                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[Union[str, "ImagingModeEnum"]])
 
 slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDABER.curie('tem_beam_diameter'),
                    model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[float])
@@ -6594,12 +6749,6 @@ slots.movie__hole_id = Slot(uri=LAMBDABER.hole_id, name="movie__hole_id", curie=
 slots.movie__acquisition_group = Slot(uri=LAMBDABER.acquisition_group, name="movie__acquisition_group", curie=LAMBDABER.curie('acquisition_group'),
                    model_uri=LAMBDABER.movie__acquisition_group, domain=None, range=Optional[str])
 
-slots.micrograph__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="micrograph__pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.micrograph__pixel_size, domain=None, range=Optional[float])
-
-slots.micrograph__defocus = Slot(uri=LAMBDABER.defocus, name="micrograph__defocus", curie=LAMBDABER.curie('defocus'),
-                   model_uri=LAMBDABER.micrograph__defocus, domain=None, range=Optional[float])
-
 slots.micrograph__dose = Slot(uri=LAMBDABER.dose, name="micrograph__dose", curie=LAMBDABER.curie('dose'),
                    model_uri=LAMBDABER.micrograph__dose, domain=None, range=Optional[float])
 
@@ -6611,9 +6760,6 @@ slots.micrograph__defocus_u = Slot(uri=LAMBDABER.defocus_u, name="micrograph__de
 
 slots.micrograph__defocus_v = Slot(uri=LAMBDABER.defocus_v, name="micrograph__defocus_v", curie=LAMBDABER.curie('defocus_v'),
                    model_uri=LAMBDABER.micrograph__defocus_v, domain=None, range=Optional[float])
-
-slots.micrograph__astigmatism = Slot(uri=LAMBDABER.astigmatism, name="micrograph__astigmatism", curie=LAMBDABER.curie('astigmatism'),
-                   model_uri=LAMBDABER.micrograph__astigmatism, domain=None, range=Optional[float])
 
 slots.micrograph__astigmatism_angle = Slot(uri=LAMBDABER.astigmatism_angle, name="micrograph__astigmatism_angle", curie=LAMBDABER.curie('astigmatism_angle'),
                    model_uri=LAMBDABER.micrograph__astigmatism_angle, domain=None, range=Optional[float])
@@ -6784,7 +6930,7 @@ slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temper
                    model_uri=LAMBDABER.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[float])
 
 slots.cryoEMPreparation__grid_material = Slot(uri=LAMBDABER.grid_material, name="cryoEMPreparation__grid_material", curie=LAMBDABER.curie('grid_material'),
-                   model_uri=LAMBDABER.cryoEMPreparation__grid_material, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.cryoEMPreparation__grid_material, domain=None, range=Optional[Union[str, "GridMaterialEnum"]])
 
 slots.cryoEMPreparation__glow_discharge_applied = Slot(uri=LAMBDABER.glow_discharge_applied, name="cryoEMPreparation__glow_discharge_applied", curie=LAMBDABER.curie('glow_discharge_applied'),
                    model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_applied, domain=None, range=Optional[Union[bool, Bool]])
@@ -7198,7 +7344,7 @@ slots.particlePickingParameters__model_file = Slot(uri=LAMBDABER.model_file, nam
                    model_uri=LAMBDABER.particlePickingParameters__model_file, domain=None, range=Optional[str])
 
 slots.refinementParameters__symmetry = Slot(uri=LAMBDABER.symmetry, name="refinementParameters__symmetry", curie=LAMBDABER.curie('symmetry'),
-                   model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])
 
 slots.refinementParameters__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="refinementParameters__pixel_size", curie=LAMBDABER.curie('pixel_size'),
                    model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[float])
@@ -7240,7 +7386,8 @@ slots.proteinAnnotation__chain_id = Slot(uri=LAMBDABER['functional_annotation/ch
                    pattern=re.compile(r'^[A-Za-z0-9]+$'))
 
 slots.proteinAnnotation__residue_range = Slot(uri=LAMBDABER['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDABER.curie('functional_annotation/residue_range'),
-                   model_uri=LAMBDABER.proteinAnnotation__residue_range, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.proteinAnnotation__residue_range, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9,\-]+$'))
 
 slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDABER['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDABER.curie('functional_annotation/confidence_score'),
                    model_uri=LAMBDABER.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
@@ -7259,7 +7406,7 @@ slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDABER['functional_anno
 
 slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDABER['functional_annotation/publication_ids'], name="proteinAnnotation__publication_ids", curie=LAMBDABER.curie('functional_annotation/publication_ids'),
                    model_uri=LAMBDABER.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
-                   pattern=re.compile(r'^PMID:[0-9]+$'))
+                   pattern=re.compile(r'^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$'))
 
 slots.functionalSite__site_type = Slot(uri=LAMBDABER['functional_annotation/site_type'], name="functionalSite__site_type", curie=LAMBDABER.curie('functional_annotation/site_type'),
                    model_uri=LAMBDABER.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
@@ -7314,13 +7461,13 @@ slots.structuralFeature__domain_id = Slot(uri=LAMBDABER['functional_annotation/d
                    model_uri=LAMBDABER.structuralFeature__domain_id, domain=None, range=Optional[str])
 
 slots.ligandInteraction__ligand_id = Slot(uri=LAMBDABER['functional_annotation/ligand_id'], name="ligandInteraction__ligand_id", curie=LAMBDABER.curie('functional_annotation/ligand_id'),
-                   model_uri=LAMBDABER.ligandInteraction__ligand_id, domain=None, range=str)
+                   model_uri=LAMBDABER.ligandInteraction__ligand_id, domain=None, range=Union[str, URIorCURIE])
 
 slots.ligandInteraction__ligand_name = Slot(uri=LAMBDABER['functional_annotation/ligand_name'], name="ligandInteraction__ligand_name", curie=LAMBDABER.curie('functional_annotation/ligand_name'),
                    model_uri=LAMBDABER.ligandInteraction__ligand_name, domain=None, range=str)
 
 slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDABER['functional_annotation/ligand_smiles'], name="ligandInteraction__ligand_smiles", curie=LAMBDABER.curie('functional_annotation/ligand_smiles'),
-                   model_uri=LAMBDABER.ligandInteraction__ligand_smiles, domain=None, range=Optional[str])
+                   model_uri=LAMBDABER.ligandInteraction__ligand_smiles, domain=None, range=Optional[Union[str, SmilesString]])
 
 slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDABER['functional_annotation/binding_affinity'], name="ligandInteraction__binding_affinity", curie=LAMBDABER.curie('functional_annotation/binding_affinity'),
                    model_uri=LAMBDABER.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
@@ -7424,16 +7571,7 @@ slots.biophysicalProperty__error = Slot(uri=LAMBDABER['functional_annotation/err
                    model_uri=LAMBDABER.biophysicalProperty__error, domain=None, range=Optional[float])
 
 slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDABER['functional_annotation/measurement_conditions'], name="biophysicalProperty__measurement_conditions", curie=LAMBDABER.curie('functional_annotation/measurement_conditions'),
-                   model_uri=LAMBDABER.biophysicalProperty__measurement_conditions, domain=None, range=Optional[str])
-
-slots.biophysicalProperty__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="biophysicalProperty__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
-                   model_uri=LAMBDABER.biophysicalProperty__temperature, domain=None, range=Optional[float])
-
-slots.biophysicalProperty__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="biophysicalProperty__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
-                   model_uri=LAMBDABER.biophysicalProperty__ph, domain=None, range=Optional[float])
-
-slots.biophysicalProperty__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="biophysicalProperty__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
-                   model_uri=LAMBDABER.biophysicalProperty__ionic_strength, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.biophysicalProperty__measurement_conditions, domain=None, range=Optional[Union[dict[Union[str, MeasurementConditionsId], Union[dict, MeasurementConditions]], list[Union[dict, MeasurementConditions]]]])
 
 slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDABER['functional_annotation/experimental_method'], name="biophysicalProperty__experimental_method", curie=LAMBDABER.curie('functional_annotation/experimental_method'),
                    model_uri=LAMBDABER.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
@@ -7581,3 +7719,27 @@ slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDABER['fun
 
 slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER['functional_annotation/cross_references'], name="aggregatedProteinView__cross_references", curie=LAMBDABER.curie('functional_annotation/cross_references'),
                    model_uri=LAMBDABER.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.measurementConditions__buffer_composition = Slot(uri=LAMBDABER['functional_annotation/buffer_composition'], name="measurementConditions__buffer_composition", curie=LAMBDABER.curie('functional_annotation/buffer_composition'),
+                   model_uri=LAMBDABER.measurementConditions__buffer_composition, domain=None, range=Optional[str])
+
+slots.measurementConditions__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="measurementConditions__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
+                   model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[float])
+
+slots.measurementConditions__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="measurementConditions__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
+                   model_uri=LAMBDABER.measurementConditions__ionic_strength, domain=None, range=Optional[float])
+
+slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="measurementConditions__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
+                   model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[float])
+
+slots.pixel_size = Slot(uri=LAMBDABER.pixel_size, name="pixel_size", curie=LAMBDABER.curie('pixel_size'),
+                   model_uri=LAMBDABER.pixel_size, domain=None, range=Optional[str])
+
+slots.Micrograph_pixel_size = Slot(uri=LAMBDABER.pixel_size, name="Micrograph_pixel_size", curie=LAMBDABER.curie('pixel_size'),
+                   model_uri=LAMBDABER.Micrograph_pixel_size, domain=Micrograph, range=Optional[str])
+
+slots.Micrograph_defocus = Slot(uri=LAMBDABER.defocus, name="Micrograph_defocus", curie=LAMBDABER.curie('defocus'),
+                   model_uri=LAMBDABER.Micrograph_defocus, domain=Micrograph, range=Optional[float])
+
+slots.Micrograph_astigmatism = Slot(uri=LAMBDABER.astigmatism, name="Micrograph_astigmatism", curie=LAMBDABER.curie('astigmatism'),
+                   model_uri=LAMBDABER.Micrograph_astigmatism, domain=Micrograph, range=Optional[float])
