@@ -727,7 +727,7 @@ classes:
         description: "Defocus range increment in micrometers"
         range: float
       astigmatism_target:
-        description: "Target astigmatism in nanometers"
+        description: "Target astigmatism in Angstroms"
         range: float
       coma:
         description: "Coma aberration in nanometers"
@@ -1128,7 +1128,7 @@ classes:
         description: "Defocus value in micrometers"
         range: float
       astigmatism:
-        description: "Astigmatism value"
+        description: "Astigmatism value in Angstroms"
         range: float
 
   Image3D:
