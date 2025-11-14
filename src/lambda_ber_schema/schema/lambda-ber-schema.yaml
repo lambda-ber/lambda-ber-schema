@@ -390,7 +390,6 @@ classes:
         required: true
       preparation_date:
         description: "Date of sample preparation"
-        range: string
       operator_id:
         description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
@@ -405,6 +404,8 @@ classes:
       culture_volume_l:
         description: "Culture volume in liters"
         range: float
+        unit:
+          ucum_code: L
       medium:
         description: "Growth medium used"
       antibiotic_selection:
@@ -412,6 +413,8 @@ classes:
       growth_temperature_c:
         description: "Growth temperature in Celsius"
         range: float
+        unit:
+          ucum_code: Cel
       induction_agent:
         description: "Agent used to induce expression (e.g., IPTG, tetracycline)"
       inducer_concentration:
