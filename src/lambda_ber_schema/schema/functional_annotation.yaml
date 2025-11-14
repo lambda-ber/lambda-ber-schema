@@ -286,8 +286,16 @@ classes:
         description: "Experimental error or uncertainty"
         range: float
       measurement_conditions:
-        description: "Conditions under which measurement was made"
+        description: >-
+          Conditions under which measurement was made.
+          If multiple sets of conditions were used,
+          this will represent that the same values
+          were obtained under different conditions.
+          If values differ under different conditions,
+          separate BiophysicalProperty instances should be created.
         range: MeasurementConditions
+        multivalued: true
+        inlined_as_list: true
       experimental_method:
         description: "Method used for measurement"
         range: BiophysicalMethodEnum
