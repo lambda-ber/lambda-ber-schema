@@ -3,11 +3,6 @@
 # Slot: crystal_size_um 
 
 
-_Crystal dimensions in micrometers_
-
-
-
-
 
 URI: [lambdaber:crystal_size_um](https://w3id.org/lambda-ber-schema/crystal_size_um)
 Alias: crystal_size_um
@@ -23,6 +18,7 @@ Alias: crystal_size_um
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 
 
 
@@ -43,13 +39,6 @@ Alias: crystal_size_um
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: crystal_size_um
 <details>
 ```yaml
 name: crystal_size_um
-description: Crystal dimensions in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: crystal_size_um
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

@@ -3,11 +3,6 @@
 # Slot: seed_stock_dilution 
 
 
-_Dilution factor for seed stock_
-
-
-
-
 
 URI: [lambdaber:seed_stock_dilution](https://w3id.org/lambda-ber-schema/seed_stock_dilution)
 Alias: seed_stock_dilution
@@ -23,6 +18,7 @@ Alias: seed_stock_dilution
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 
 
 
@@ -43,13 +39,6 @@ Alias: seed_stock_dilution
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: seed_stock_dilution
 <details>
 ```yaml
 name: seed_stock_dilution
-description: Dilution factor for seed stock
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: seed_stock_dilution
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

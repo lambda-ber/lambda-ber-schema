@@ -115,7 +115,7 @@ attributes:
     rank: 1000
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14
@@ -160,7 +160,7 @@ attributes:
     owner: BufferComposition
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14

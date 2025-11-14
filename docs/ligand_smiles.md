@@ -31,7 +31,7 @@ Alias: ligand_smiles
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [SmilesString](SmilesString.md)
 
 
 
@@ -73,7 +73,7 @@ alias: ligand_smiles
 owner: LigandInteraction
 domain_of:
 - LigandInteraction
-range: string
+range: smiles_string
 
 ```
 </details>

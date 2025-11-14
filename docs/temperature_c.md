@@ -3,11 +3,6 @@
 # Slot: temperature_c 
 
 
-_Crystallization temperature in Celsius_
-
-
-
-
 
 URI: [lambdaber:temperature_c](https://w3id.org/lambda-ber-schema/temperature_c)
 Alias: temperature_c
@@ -23,6 +18,7 @@ Alias: temperature_c
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: temperature_c
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: temperature_c
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: temperature_c
 <details>
 ```yaml
 name: temperature_c
-description: Crystallization temperature in Celsius
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: temperature_c
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
-range: float
+range: string
 
 ```
 </details>

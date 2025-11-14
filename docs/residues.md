@@ -3,7 +3,7 @@
 # Slot: residues 
 
 
-_List of residues forming the functional site_
+_List of residues forming the functional site. Each should be specified as a string (e.g., "45", "120A")._
 
 
 
@@ -68,7 +68,8 @@ Alias: residues
 <details>
 ```yaml
 name: residues
-description: List of residues forming the functional site
+description: List of residues forming the functional site. Each should be specified
+  as a string (e.g., "45", "120A").
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: residues

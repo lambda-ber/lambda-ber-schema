@@ -22,10 +22,12 @@ Alias: defocus
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  yes  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 
 
 

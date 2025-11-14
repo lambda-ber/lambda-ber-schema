@@ -13,7 +13,7 @@ URI: [lambdaber:ExperimentalMethodEnum](https://w3id.org/lambda-ber-schema/Exper
 
 | Value | Meaning | Description |
 | --- | --- | --- |
-| x_ray_diffraction | None | X-ray diffraction |
+| x_ray_diffraction | CHMO:0000156 | X-ray diffraction |
 | neutron_diffraction | None | Neutron diffraction |
 | electron_diffraction | None | Electron diffraction (e |
 | fiber_diffraction | None | Fiber diffraction |
@@ -60,6 +60,7 @@ permissible_values:
   x_ray_diffraction:
     text: x_ray_diffraction
     description: X-ray diffraction
+    meaning: CHMO:0000156
   neutron_diffraction:
     text: neutron_diffraction
     description: Neutron diffraction

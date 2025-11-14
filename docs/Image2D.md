@@ -23,6 +23,10 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
         click Image href "../Image/"
       
 
+      Image2D <|-- Movie
+        click Movie href "../Movie/"
+      Image2D <|-- Micrograph
+        click Micrograph href "../Micrograph/"
       Image2D <|-- FluorescenceImage
         click FluorescenceImage href "../FluorescenceImage/"
       Image2D <|-- OpticalImage
@@ -66,6 +70,8 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 * [NamedThing](NamedThing.md)
     * [Image](Image.md)
         * **Image2D**
+            * [Movie](Movie.md)
+            * [Micrograph](Micrograph.md)
             * [FluorescenceImage](FluorescenceImage.md)
             * [OpticalImage](OpticalImage.md)
             * [XRFImage](XRFImage.md)
@@ -77,7 +83,7 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | direct |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value | direct |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | direct |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
 | [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
@@ -148,7 +154,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -179,7 +185,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -217,6 +223,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -258,6 +265,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

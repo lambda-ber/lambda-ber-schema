@@ -314,6 +314,7 @@ attributes:
     owner: FTIRImage
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -355,6 +356,7 @@ attributes:
     owner: FTIRImage
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

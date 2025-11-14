@@ -49,6 +49,8 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
         click ConformationalEnsemble href "../ConformationalEnsemble/"
       NamedThing <|-- AggregatedProteinView
         click AggregatedProteinView href "../AggregatedProteinView/"
+      NamedThing <|-- MeasurementConditions
+        click MeasurementConditions href "../MeasurementConditions/"
       
       NamedThing : description
         
@@ -79,6 +81,7 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
     * [ProteinAnnotation](ProteinAnnotation.md)
     * [ConformationalEnsemble](ConformationalEnsemble.md)
     * [AggregatedProteinView](AggregatedProteinView.md)
+    * [MeasurementConditions](MeasurementConditions.md)
 
 
 

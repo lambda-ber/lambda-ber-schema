@@ -3,11 +3,6 @@
 # Slot: reservoir_volume_ul 
 
 
-_Reservoir volume in microliters_
-
-
-
-
 
 URI: [lambdaber:reservoir_volume_ul](https://w3id.org/lambda-ber-schema/reservoir_volume_ul)
 Alias: reservoir_volume_ul
@@ -23,6 +18,7 @@ Alias: reservoir_volume_ul
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: reservoir_volume_ul
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: reservoir_volume_ul
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: reservoir_volume_ul
 <details>
 ```yaml
 name: reservoir_volume_ul
-description: Reservoir volume in microliters
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: reservoir_volume_ul
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
-range: float
+range: string
 
 ```
 </details>
