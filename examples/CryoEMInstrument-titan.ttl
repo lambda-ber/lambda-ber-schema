@@ -11,12 +11,14 @@ lambdaber:instrument_titan_krios_001 a lambdaber:CryoEMInstrument ;
     lambdaber:current_status "operational" ;
     lambdaber:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
     lambdaber:detector_dimensions "5760x4092" ;
-    lambdaber:detector_type "direct_electron" ;
+    lambdaber:detector_manufacturer "Gatan" ;
+    lambdaber:detector_mode "counting" ;
+    lambdaber:detector_model "K3 BioQuantum" ;
+    lambdaber:detector_technology "direct_electron_detector" ;
     lambdaber:installation_date "2023-03-15" ;
     lambdaber:instrument_code "TK-G4-001" ;
     lambdaber:manufacturer "Thermo Fisher Scientific" ;
     lambdaber:model "Titan Krios G4" ;
     lambdaber:phase_plate false ;
-    lambdaber:pixel_size_max "2.5"^^xsd:float ;
-    lambdaber:pixel_size_min "0.5"^^xsd:float .
+    lambdaber:pixel_size_physical_um "5.0"^^xsd:float .
 

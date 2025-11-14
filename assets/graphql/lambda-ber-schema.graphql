@@ -195,6 +195,34 @@ enum DataTypeEnum
     metadata
     raw_data
     processed_data
+    movie
+    motion_corrected
+    ctf_estimation
+    particle_coordinates
+    class_averages
+    fsc_curve
+    map_half
+    validation_report
+  }
+
+enum DetectorModeEnum
+  {
+    counting
+    integrating
+    super_resolution
+    linear
+    correlated_double_sampling
+  }
+
+enum DetectorTechnologyEnum
+  {
+    direct_electron_detector
+    ccd
+    cmos
+    hybrid_photon_counting
+    scintillator_coupled
+    imaging_plate
+    film
   }
 
 enum DetectorTypeEnum
@@ -237,6 +265,22 @@ enum ExpressionSystemEnum
     cell_free
   }
 
+enum FacilityEnum
+  {
+    NSLS_II
+    ALS
+    SSRL
+    ESRF
+    DIAMOND
+    PHOTON_FACTORY
+    APS
+    SPRING8
+    PETRA_III
+    SOLEIL
+    AUSTRALIAN_SYNCHROTRON
+    SIBYLS
+  }
+
 enum FileFormatEnum
   {
     mrc
@@ -253,6 +297,12 @@ enum FileFormatEnum
     ascii
     thermo_raw
     zip
+    mrcs
+    eer
+    cs
+    json
+    csv
+    ccp4
     gz
   }
 
@@ -516,6 +566,12 @@ enum WorkflowTypeEnum
     saxs_analysis
     em_2d_classification
     mass_spec_deconvolution
+    particle_extraction
+    ab_initio
+    postprocessing
+    map_validation
+    model_refinement
+    model_validation
   }
 
 enum XRaySourceTypeEnum
@@ -623,11 +679,29 @@ type CryoEMInstrument
     acceleratingVoltage: Integer
     csCorrector: Boolean
     phasePlate: Boolean
-    detectorType: DetectorTypeEnum
+    detectorTechnology: DetectorTechnologyEnum
+    detectorManufacturer: String
+    detectorModel: String
+    detectorMode: DetectorModeEnum
+    detectorPosition: String
     detectorDimensions: String
-    pixelSizeMin: Float
-    pixelSizeMax: Float
+    pixelSizePhysicalUm: Float
     autoloaderCapacity: Integer
+    cs: Float
+    c2Aperture: Float
+    objectiveAperture: Float
+    phasePlateType: String
+    energyFilterPresent: Boolean
+    energyFilterMake: String
+    energyFilterModel: String
+    energyFilterSlitWidth: Float
+    pixelSizePhysical: Float
+    microscopeSoftware: String
+    microscopeSoftwareVersion: String
+    spotsize: Integer
+    gunlens: Integer
+    imagingMode: String
+    temBeamDiameter: Float
   }
 
 type CryoEMPreparation
@@ -641,6 +715,19 @@ type CryoEMPreparation
     blotForce: Integer
     humidityPercentage: Float
     chamberTemperature: Float
+    gridMaterial: String
+    glowDischargeApplied: Boolean
+    glowDischargeTime: Float
+    glowDischargeCurrent: Float
+    glowDischargeAtmosphere: String
+    glowDischargePressure: Float
+    vitrificationInstrument: String
+    blotNumber: Integer
+    waitTime: Float
+    blotterHeight: Float
+    blotterSetting: Float
+    sampleAppliedVolume: Float
+    ethaneTemperature: Float
     plasmaTreatment: String
   }
 
@@ -662,6 +749,17 @@ type CrystallizationConditions
     seedStockDilution: String
   }
 
+type CTFEstimationParameters
+  {
+    description: String
+    defocusSearchMin: Float
+    defocusSearchMax: Float
+    defocusStep: Float
+    amplitudeContrast: Float
+    csUsedInEstimation: Float
+    voltageUsedInEstimation: Float
+  }
+
 type DatabaseCrossReference
   {
     description: String
@@ -680,7 +778,8 @@ type DataCollectionStrategy
     totalDose: Float
     dosePerFrame: Float
     wavelengthA: Float
-    detector: String
+    detectorMode: DetectorModeEnum
+    pixelSizeCalibrated: Float
     detectorDistanceMm: Float
     beamCenterXPx: Integer
     beamCenterYPx: Integer
@@ -706,6 +805,9 @@ type DataFile
     checksum: String
     creationDate: String
     dataType: DataTypeEnum
+    storageUri: String
+    relatedEntity: String
+    fileRole: String
   }
 
 type Dataset
@@ -770,6 +872,26 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
+    magnification: Integer
+    calibratedPixelSize: Float
+    cameraBinning: Integer
+    exposureTimePerFrame: Float
+    framesPerMovie: Integer
+    totalExposureTime: Float
+    totalDose: Float
+    doseRate: Float
+    defocusTarget: Float
+    defocusRangeMin: Float
+    defocusRangeMax: Float
+    defocusRangeIncrement: Float
+    astigmatismTarget: Float
+    coma: Float
+    stageTilt: Float
+    autoloaderSlot: String
+    shotsPerHole: Integer
+    holesPerGroup: Integer
+    acquisitionSoftware: String
+    acquisitionSoftwareVersion: String
     wavelength: Float
     oscillationAngle: Float
     startAngle: Float
@@ -806,6 +928,13 @@ type FluorescenceImage
     laserPower: Float
     pinholeSize: Float
     quantumYield: Float
+  }
+
+type FSCCurve
+  {
+    description: String
+    resolutionAngstrom: [Float]
+    fscValue: [Float]
   }
 
 type FTIRImage
@@ -936,12 +1065,78 @@ type LigandInteraction
     interactionDistance: Float
   }
 
+type Micrograph
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    pixelSize: Float
+    defocus: Float
+    dose: Float
+    originMovieId: String
+    defocusU: Float
+    defocusV: Float
+    astigmatism: Float
+    astigmatismAngle: Float
+    resolutionFitLimit: Float
+    ctfQualityScore: Float
+  }
+
 type MolecularComposition
   {
     description: String
     sequences: [String]
     modifications: [String]
     ligands: [String]
+  }
+
+type MotionCorrectionParameters
+  {
+    description: String
+    patchSize: Integer
+    binning: Integer
+    doseWeighting: Boolean
+    bfactorDoseWeighting: Float
+    anisotropicCorrection: Boolean
+    frameGrouping: Integer
+    outputBinning: Integer
+    driftTotal: Float
+  }
+
+type Movie
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    fileName: String!
+    acquisitionDate: String
+    pixelSize: Float
+    dimensionsX: Integer
+    dimensionsY: Integer
+    exposureTime: Float
+    dose: Float
+    defocus: Float
+    astigmatism: Float
+    frames: Integer
+    superResolution: Boolean
+    pixelSizeUnbinned: Float
+    timestamp: String
+    stagePositionX: Float
+    stagePositionY: Float
+    stagePositionZ: Float
+    nominalDefocus: Float
+    dosePerFrame: Float
+    beamShiftX: Float
+    beamShiftY: Float
+    iceThicknessEstimate: Float
+    gridSquareId: String
+    holeId: String
+    acquisitionGroup: String
   }
 
 type MutationEffect
@@ -1008,6 +1203,17 @@ type OpticalImage
     colorChannels: [String]
     whiteBalance: String
     contrastMethod: String
+  }
+
+type ParticlePickingParameters
+  {
+    description: String
+    pickingMethod: String
+    boxSize: Integer
+    threshold: Float
+    powerScore: Float
+    nccScore: Float
+    modelFile: String
   }
 
 type PostTranslationalModification
@@ -1142,6 +1348,19 @@ type QualityMetrics
     iZero: Float
     rg: Float
     rFactor: Float
+  }
+
+type RefinementParameters
+  {
+    description: String
+    symmetry: String
+    pixelSize: Float
+    boxSize: Integer
+    goldStandard: Boolean
+    splitStrategy: String
+    resolution0143: Float
+    resolution05: Float
+    mapSharpeningBfactor: Float
   }
 
 type Sample
@@ -1370,6 +1589,11 @@ type WorkflowRun
     computeResources: ComputeResources
     startedAt: String
     completedAt: String
+    motionCorrectionParams: MotionCorrectionParameters
+    ctfEstimationParams: CTFEstimationParameters
+    particlePickingParams: ParticlePickingParameters
+    refinementParams: RefinementParameters
+    fscCurve: FSCCurve
     outputFiles: [DataFile]
   }
 
@@ -1384,7 +1608,9 @@ type XRayInstrument
     installationDate: String
     currentStatus: InstrumentStatusEnum
     sourceType: XRaySourceTypeEnum
-    detectorType: DetectorTypeEnum
+    detectorTechnology: DetectorTechnologyEnum
+    detectorManufacturer: String
+    detectorModel: String
     beamlineId: String
     energyMin: Float
     energyMax: Float
@@ -1445,7 +1671,8 @@ type XRFImage
     dwellTime: Float
     elementsMeasured: [String]
     sourceType: XRaySourceTypeEnum
-    detectorType: String
+    detectorTechnology: DetectorTechnologyEnum
+    detectorModel: String
     flux: Float
     calibrationStandard: String
   }
