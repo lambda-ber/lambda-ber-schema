@@ -224,6 +224,12 @@
           "property_type": "melting_temperature",
           "value": 315.8,
           "unit": "K",
+          "measurement_conditions": [
+            {
+              "id": "lambdaber:study-meas-cond-001",
+              "buffer_composition": "Standard buffer"
+            }
+          ],
           "experimental_method": "differential_scanning_calorimetry"
         }
       ],

@@ -161,7 +161,15 @@
       "property_type": "stability",
       "value": 65.5,
       "unit": "kcal/mol",
-      "measurement_conditions": "pH 7.4, 25°C, 150 mM NaCl",
+      "measurement_conditions": [
+        {
+          "id": "lambdaber:meas-cond-001",
+          "buffer_composition": "150 mM NaCl",
+          "ph": 7.4,
+          "ionic_strength": 0.15,
+          "temperature": 298.15
+        }
+      ],
       "experimental_method": "differential_scanning_calorimetry"
     },
     {
@@ -169,8 +177,14 @@
       "value": 338.2,
       "unit": "K",
       "error": 0.5,
-      "ph": 7.4,
-      "ionic_strength": 0.15,
+      "measurement_conditions": [
+        {
+          "id": "lambdaber:meas-cond-002",
+          "ph": 7.4,
+          "ionic_strength": 0.15,
+          "temperature": 298.15
+        }
+      ],
       "experimental_method": "circular_dichroism"
     }
   ],
