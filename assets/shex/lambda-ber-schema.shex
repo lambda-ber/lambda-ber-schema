@@ -45,6 +45,8 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString> xsd:string
+
 <https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> CLOSED {
     (  $<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
@@ -116,10 +118,8 @@ linkml:Sparqlpath xsd:string
           <https://w3id.org/lambda-ber-schema/functional_annotation/value> @linkml:Float ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/unit> @linkml:String ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/error> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions> @linkml:String ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ph> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @linkml:Float ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions>
+          @<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> * ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/experimental_method> [
              <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#differential_scanning_calorimetry>
              <https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalMethodEnum#isothermal_titration_calorimetry>
@@ -226,7 +226,9 @@ linkml:Sparqlpath xsd:string
           <microscope_software_version> @linkml:String ? ;
           <spotsize> @linkml:Integer ? ;
           <gunlens> @linkml:Integer ? ;
-          <imaging_mode> @linkml:String ? ;
+          <imaging_mode> [ <https://w3id.org/lambda-ber-schema/ImagingModeEnum#EFTEM>
+             <https://w3id.org/lambda-ber-schema/ImagingModeEnum#TEM> <https://w3id.org/lambda-ber-schema/ImagingModeEnum#STEM> ] ?
+          ;
           <tem_beam_diameter> @linkml:Float ?
        ) ;
        rdf:type [ <CryoEMInstrument> ]
@@ -250,7 +252,10 @@ linkml:Sparqlpath xsd:string
           <blot_force> @linkml:Integer ? ;
           <humidity_percentage> @linkml:Float ? ;
           <chamber_temperature> @linkml:Float ? ;
-          <grid_material> @linkml:String ? ;
+          <grid_material> [ <https://w3id.org/lambda-ber-schema/GridMaterialEnum#carbon>
+             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#gold>
+             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#graphene>
+             <https://w3id.org/lambda-ber-schema/GridMaterialEnum#silicon_nitride> ] ? ;
           <glow_discharge_applied> @linkml:Boolean ? ;
           <glow_discharge_time> @linkml:Float ? ;
           <glow_discharge_current> @linkml:Float ? ;
@@ -673,9 +678,10 @@ linkml:Sparqlpath xsd:string
 <https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> CLOSED {
     (  $<https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_id> @linkml:String ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_id> @linkml:Uriorcurie ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_name> @linkml:String ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_smiles> @linkml:String ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/ligand_smiles>
+          @<https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString> ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity> @linkml:Float ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/binding_affinity_type> [
              <https://w3id.org/lambda-ber-schema/functional_annotation/BindingAffinityTypeEnum#kd>
@@ -711,19 +717,31 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> CLOSED {
+    (  $<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition> @<BufferComposition> ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/ph> @linkml:Float ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @linkml:Float ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @linkml:Float ?
+       ) ;
+       rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> ]
+    )
+}
+
 <Micrograph> CLOSED {
     (  $<Micrograph_tes> (  &<Image2D_tes> ;
           rdf:type [ <Image2D> ] ? ;
-          <pixel_size> @linkml:Float ? ;
-          <defocus> @linkml:Float ? ;
           <dose> @linkml:Float ? ;
           <origin_movie_id> @linkml:String ? ;
           <defocus_u> @linkml:Float ? ;
           <defocus_v> @linkml:Float ? ;
-          <astigmatism> @linkml:Float ? ;
           <astigmatism_angle> @linkml:Float ? ;
           <resolution_fit_limit> @linkml:Float ? ;
-          <ctf_quality_score> @linkml:Float ?
+          <ctf_quality_score> @linkml:Float ? ;
+          <pixel_size> @linkml:String ? ;
+          <defocus> @linkml:Float ? ;
+          <astigmatism> @linkml:Float ?
        ) ;
        rdf:type [ <Micrograph> ]
     )
@@ -824,7 +842,8 @@ linkml:Sparqlpath xsd:string
 <NamedThing>  (
     @<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> OR
     @<https://w3id.org/lambda-ber-schema/functional_annotation/ConformationalEnsemble> OR @<DataFile> OR @<Dataset> OR
-    @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR
+    @<ExperimentRun> OR @<Image> OR @<Instrument> OR
+    @<https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> OR @<OntologyTerm> OR
     @<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> OR @<ProteinConstruct> OR @<Sample> OR
     @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
 )
@@ -1091,7 +1110,17 @@ linkml:Sparqlpath xsd:string
 <RefinementParameters> CLOSED {
     (  $<RefinementParameters_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <symmetry> @linkml:String ? ;
+          <symmetry> [ <https://w3id.org/lambda-ber-schema/SymmetryEnum#C1> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C2>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C3> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C4>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C5> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C6>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C7> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C8>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#C9> <https://w3id.org/lambda-ber-schema/SymmetryEnum#C10>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D2> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D3>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D4> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D5>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D6> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D7>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D8> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D9>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#D10> <https://w3id.org/lambda-ber-schema/SymmetryEnum#T>
+             <https://w3id.org/lambda-ber-schema/SymmetryEnum#O> <https://w3id.org/lambda-ber-schema/SymmetryEnum#I> ] ? ;
           <pixel_size> @linkml:Float ? ;
           <box_size> @linkml:Integer ? ;
           <gold_standard> @linkml:Boolean ? ;

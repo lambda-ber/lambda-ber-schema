@@ -93,7 +93,7 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
 | [white_balance](white_balance.md) | 0..1 <br/> [String](String.md) | White balance settings | direct |
 | [contrast_method](contrast_method.md) | 0..1 <br/> [String](String.md) | Contrast enhancement method used | direct |
 | [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | [Image2D](Image2D.md) |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value | [Image2D](Image2D.md) |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | [Image2D](Image2D.md) |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
 | [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
@@ -166,8 +166,8 @@ attributes:
     name: magnification
     description: Optical magnification factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - ExperimentRun
     - OpticalImage
     range: float
   numerical_aperture:
@@ -230,10 +230,10 @@ attributes:
     name: magnification
     description: Optical magnification factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: magnification
     owner: OpticalImage
     domain_of:
+    - ExperimentRun
     - OpticalImage
     range: float
   numerical_aperture:
@@ -289,7 +289,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -327,6 +327,7 @@ attributes:
     owner: OpticalImage
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -368,6 +369,7 @@ attributes:
     owner: OpticalImage
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

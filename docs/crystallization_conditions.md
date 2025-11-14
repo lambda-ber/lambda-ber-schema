@@ -3,11 +3,6 @@
 # Slot: crystallization_conditions 
 
 
-_Detailed crystallization conditions_
-
-
-
-
 
 URI: [lambdaber:crystallization_conditions](https://w3id.org/lambda-ber-schema/crystallization_conditions)
 Alias: crystallization_conditions
@@ -22,6 +17,7 @@ Alias: crystallization_conditions
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: crystallization_conditions
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: crystallization_conditions
 <details>
 ```yaml
 name: crystallization_conditions
-description: Detailed crystallization conditions
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: crystallization_conditions
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

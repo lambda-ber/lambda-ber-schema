@@ -255,71 +255,71 @@ attributes:
     name: space_group
     description: Crystallographic space group
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
   unit_cell_a:
     name: unit_cell_a
     description: Unit cell parameter a in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_b:
     name: unit_cell_b
     description: Unit cell parameter b in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_c:
     name: unit_cell_c
     description: Unit cell parameter c in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_alpha:
     name: unit_cell_alpha
     description: Unit cell angle alpha in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_beta:
     name: unit_cell_beta
     description: Unit cell angle beta in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_gamma:
     name: unit_cell_gamma
     description: Unit cell angle gamma in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   r_merge:
@@ -406,8 +406,8 @@ attributes:
     name: clashscore
     description: MolProbity clashscore
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   molprobity_score:
@@ -537,90 +537,90 @@ attributes:
     name: space_group
     description: Crystallographic space group
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: space_group
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: string
   unit_cell_a:
     name: unit_cell_a
     description: Unit cell parameter a in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_a
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_b:
     name: unit_cell_b
     description: Unit cell parameter b in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_b
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_c:
     name: unit_cell_c
     description: Unit cell parameter c in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_c
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_alpha:
     name: unit_cell_alpha
     description: Unit cell angle alpha in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_alpha
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_beta:
     name: unit_cell_beta
     description: Unit cell angle beta in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_beta
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   unit_cell_gamma:
     name: unit_cell_gamma
     description: Unit cell angle gamma in degrees
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: unit_cell_gamma
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: multiplicity
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: cc_half
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   r_merge:
@@ -727,10 +727,10 @@ attributes:
     name: clashscore
     description: MolProbity clashscore
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: clashscore
     owner: QualityMetrics
     domain_of:
+    - WorkflowRun
     - QualityMetrics
     range: float
   molprobity_score:

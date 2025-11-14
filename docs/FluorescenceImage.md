@@ -93,7 +93,7 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
 | [pinhole_size](pinhole_size.md) | 0..1 <br/> [Float](Float.md) | Pinhole size in Airy units for confocal microscopy | direct |
 | [quantum_yield](quantum_yield.md) | 0..1 <br/> [Float](Float.md) | Quantum yield of the fluorophore | direct |
 | [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | [Image2D](Image2D.md) |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value | [Image2D](Image2D.md) |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | [Image2D](Image2D.md) |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
 | [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
@@ -343,7 +343,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -381,6 +381,7 @@ attributes:
     owner: FluorescenceImage
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -422,6 +423,7 @@ attributes:
     owner: FluorescenceImage
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

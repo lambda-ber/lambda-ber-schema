@@ -61,6 +61,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Sample](Sample.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
 
 
 
@@ -115,7 +116,7 @@ attributes:
     rank: 1000
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14
@@ -160,7 +161,7 @@ attributes:
     owner: BufferComposition
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14

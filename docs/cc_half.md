@@ -3,11 +3,6 @@
 # Slot: cc_half 
 
 
-_Half-set correlation coefficient CC(1/2)_
-
-
-
-
 
 URI: [lambdaber:cc_half](https://w3id.org/lambda-ber-schema/cc_half)
 Alias: cc_half
@@ -23,6 +18,7 @@ Alias: cc_half
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: cc_half
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: cc_half
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: cc_half
 <details>
 ```yaml
 name: cc_half
-description: Half-set correlation coefficient CC(1/2)
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: cc_half
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 ```
 </details>

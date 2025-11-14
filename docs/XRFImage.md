@@ -36,7 +36,18 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
         
       XRFImage : description
         
-      XRFImage : detector_type
+      XRFImage : detector_model
+        
+      XRFImage : detector_technology
+        
+          
+    
+        
+        
+        XRFImage --> "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
+    
+
         
       XRFImage : dimensions_x
         
@@ -95,11 +106,12 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 | [dwell_time](dwell_time.md) | 0..1 <br/> [Float](Float.md) | Dwell time per pixel in milliseconds | direct |
 | [elements_measured](elements_measured.md) | * <br/> [String](String.md) | Elements detected and measured | direct |
 | [source_type](source_type.md) | 0..1 <br/> [XRaySourceTypeEnum](XRaySourceTypeEnum.md) | X-ray source type (synchrotron or lab-source) | direct |
-| [detector_type](detector_type.md) | 0..1 <br/> [String](String.md) | Type of X-ray detector used | direct |
+| [detector_technology](detector_technology.md) | 0..1 <br/> [DetectorTechnologyEnum](DetectorTechnologyEnum.md) | Type of X-ray detector technology used | direct |
+| [detector_model](detector_model.md) | 0..1 <br/> [String](String.md) | Specific detector model used for XRF measurement | direct |
 | [flux](flux.md) | 0..1 <br/> [Float](Float.md) | Photon flux in photons/second | direct |
 | [calibration_standard](calibration_standard.md) | 0..1 <br/> [String](String.md) | Reference standard used for calibration | direct |
 | [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | [Image2D](Image2D.md) |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value | [Image2D](Image2D.md) |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | [Image2D](Image2D.md) |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
 | [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
@@ -202,12 +214,24 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector used
+  detector_technology:
+    name: detector_technology
+    description: Type of X-ray detector technology used
+    comments:
+    - For XRF, typically energy-dispersive or wavelength-dispersive detectors
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_model:
+    name: detector_model
+    description: Specific detector model used for XRF measurement
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
     - XRFImage
     range: string
   flux:
@@ -291,14 +315,28 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector used
+  detector_technology:
+    name: detector_technology
+    description: Type of X-ray detector technology used
+    comments:
+    - For XRF, typically energy-dispersive or wavelength-dispersive detectors
     from_schema: https://w3id.org/lambda-ber-schema/
-    alias: detector_type
+    alias: detector_technology
     owner: XRFImage
     domain_of:
     - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_model:
+    name: detector_model
+    description: Specific detector model used for XRF measurement
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_model
+    owner: XRFImage
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
     - XRFImage
     range: string
   flux:
@@ -333,7 +371,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -371,6 +409,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -412,6 +451,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

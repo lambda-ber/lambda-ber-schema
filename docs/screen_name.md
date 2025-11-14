@@ -3,11 +3,6 @@
 # Slot: screen_name 
 
 
-_Name of crystallization screen used_
-
-
-
-
 
 URI: [lambdaber:screen_name](https://w3id.org/lambda-ber-schema/screen_name)
 Alias: screen_name
@@ -22,6 +17,7 @@ Alias: screen_name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: screen_name
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: screen_name
 <details>
 ```yaml
 name: screen_name
-description: Name of crystallization screen used
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: screen_name
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

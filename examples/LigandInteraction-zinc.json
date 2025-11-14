@@ -1,0 +1,19 @@
+{
+  "ligand_id": "CHEBI:30413",
+  "ligand_name": "Zinc cation",
+  "ligand_smiles": "[Zn+2]",
+  "binding_affinity": 0.001,
+  "binding_affinity_type": "kd",
+  "binding_affinity_unit": "micromolar",
+  "interaction_type": "metal_coordination",
+  "binding_site_residues": [
+    "176",
+    "179",
+    "238",
+    "242"
+  ],
+  "is_cofactor": true,
+  "is_drug_like": false,
+  "interaction_distance": 2.1,
+  "@type": "LigandInteraction"
+}

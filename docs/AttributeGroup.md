@@ -31,6 +31,8 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
         click StorageConditions href "../StorageConditions/"
       AttributeGroup <|-- TechniqueSpecificPreparation
         click TechniqueSpecificPreparation href "../TechniqueSpecificPreparation/"
+      AttributeGroup <|-- CrystallizationConditions
+        click CrystallizationConditions href "../CrystallizationConditions/"
       AttributeGroup <|-- ExperimentalConditions
         click ExperimentalConditions href "../ExperimentalConditions/"
       AttributeGroup <|-- DataCollectionStrategy
@@ -39,6 +41,16 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
         click QualityMetrics href "../QualityMetrics/"
       AttributeGroup <|-- ComputeResources
         click ComputeResources href "../ComputeResources/"
+      AttributeGroup <|-- MotionCorrectionParameters
+        click MotionCorrectionParameters href "../MotionCorrectionParameters/"
+      AttributeGroup <|-- CTFEstimationParameters
+        click CTFEstimationParameters href "../CTFEstimationParameters/"
+      AttributeGroup <|-- ParticlePickingParameters
+        click ParticlePickingParameters href "../ParticlePickingParameters/"
+      AttributeGroup <|-- RefinementParameters
+        click RefinementParameters href "../RefinementParameters/"
+      AttributeGroup <|-- FSCCurve
+        click FSCCurve href "../FSCCurve/"
       AttributeGroup <|-- LigandInteraction
         click LigandInteraction href "../LigandInteraction/"
       AttributeGroup <|-- BiophysicalProperty
@@ -64,10 +76,16 @@ URI: [lambdaber:AttributeGroup](https://w3id.org/lambda-ber-schema/AttributeGrou
     * [BufferComposition](BufferComposition.md)
     * [StorageConditions](StorageConditions.md)
     * [TechniqueSpecificPreparation](TechniqueSpecificPreparation.md)
+    * [CrystallizationConditions](CrystallizationConditions.md)
     * [ExperimentalConditions](ExperimentalConditions.md)
     * [DataCollectionStrategy](DataCollectionStrategy.md)
     * [QualityMetrics](QualityMetrics.md)
     * [ComputeResources](ComputeResources.md)
+    * [MotionCorrectionParameters](MotionCorrectionParameters.md)
+    * [CTFEstimationParameters](CTFEstimationParameters.md)
+    * [ParticlePickingParameters](ParticlePickingParameters.md)
+    * [RefinementParameters](RefinementParameters.md)
+    * [FSCCurve](FSCCurve.md)
     * [LigandInteraction](LigandInteraction.md)
     * [BiophysicalProperty](BiophysicalProperty.md)
     * [ConformationalState](ConformationalState.md)

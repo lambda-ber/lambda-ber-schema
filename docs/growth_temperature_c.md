@@ -74,6 +74,8 @@ owner: SamplePreparation
 domain_of:
 - SamplePreparation
 range: float
+unit:
+  ucum_code: Cel
 
 ```
 </details>

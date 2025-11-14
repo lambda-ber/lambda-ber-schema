@@ -3,7 +3,7 @@
 # Slot: ionic_strength 
 
 
-_Ionic strength in molar_
+_Ionic strength in molar of material in solution_
 
 
 
@@ -22,7 +22,7 @@ Alias: ionic_strength
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 
 
 
@@ -66,13 +66,13 @@ Alias: ionic_strength
 <details>
 ```yaml
 name: ionic_strength
-description: Ionic strength in molar
+description: Ionic strength in molar of material in solution
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ionic_strength
-owner: BiophysicalProperty
+owner: MeasurementConditions
 domain_of:
-- BiophysicalProperty
+- MeasurementConditions
 range: float
 unit:
   ucum_code: mol/L

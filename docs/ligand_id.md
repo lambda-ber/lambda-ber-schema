@@ -31,7 +31,7 @@ Alias: ligand_id
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [Uriorcurie](Uriorcurie.md)
 
 * Required: True
 
@@ -75,7 +75,7 @@ alias: ligand_id
 owner: LigandInteraction
 domain_of:
 - LigandInteraction
-range: string
+range: uriorcurie
 required: true
 
 ```

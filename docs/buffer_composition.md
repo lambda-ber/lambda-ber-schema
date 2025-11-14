@@ -3,11 +3,6 @@
 # Slot: buffer_composition 
 
 
-_Buffer composition including pH, salts, additives_
-
-
-
-
 
 URI: [lambdaber:buffer_composition](https://w3id.org/lambda-ber-schema/buffer_composition)
 Alias: buffer_composition
@@ -23,6 +18,7 @@ Alias: buffer_composition
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: buffer_composition
 
 ## Properties
 
-* Range: [BufferComposition](BufferComposition.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: buffer_composition
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: buffer_composition
 <details>
 ```yaml
 name: buffer_composition
-description: Buffer composition including pH, salts, additives
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: buffer_composition
-owner: Sample
 domain_of:
 - Sample
-range: BufferComposition
+- MeasurementConditions
+range: string
 
 ```
 </details>

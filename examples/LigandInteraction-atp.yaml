@@ -1,0 +1,15 @@
+ligand_id: CHEBI:30616
+ligand_name: ATP
+ligand_smiles: C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N
+binding_affinity: 0.015
+binding_affinity_type: km
+binding_affinity_unit: millimolar
+interaction_type: hydrogen_bond
+binding_site_residues:
+- '168'
+- '169'
+- '170'
+- '340'
+is_cofactor: true
+is_drug_like: false
+interaction_distance: 3.2

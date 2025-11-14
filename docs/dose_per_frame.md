@@ -3,11 +3,6 @@
 # Slot: dose_per_frame 
 
 
-_Dose per frame_
-
-
-
-
 
 URI: [lambdaber:dose_per_frame](https://w3id.org/lambda-ber-schema/dose_per_frame)
 Alias: dose_per_frame
@@ -22,6 +17,7 @@ Alias: dose_per_frame
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: dose_per_frame
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: dose_per_frame
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: dose_per_frame
 <details>
 ```yaml
 name: dose_per_frame
-description: Dose per frame
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: dose_per_frame
-owner: DataCollectionStrategy
 domain_of:
+- Movie
 - DataCollectionStrategy
-range: float
+range: string
 
 ```
 </details>

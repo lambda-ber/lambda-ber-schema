@@ -17,8 +17,8 @@ Alias: operator_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
 | [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
 
 
 

@@ -225,6 +225,7 @@ attributes:
     owner: Image3D
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -266,6 +267,7 @@ attributes:
     owner: Image3D
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

@@ -3,11 +3,6 @@
 # Slot: total_dose 
 
 
-_Total electron dose for cryo-EM_
-
-
-
-
 
 URI: [lambdaber:total_dose](https://w3id.org/lambda-ber-schema/total_dose)
 Alias: total_dose
@@ -22,6 +17,7 @@ Alias: total_dose
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: total_dose
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: total_dose
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: total_dose
 <details>
 ```yaml
 name: total_dose
-description: Total electron dose for cryo-EM
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: total_dose
-owner: DataCollectionStrategy
 domain_of:
+- ExperimentRun
 - DataCollectionStrategy
-range: float
+range: string
 
 ```
 </details>

@@ -135,7 +135,7 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 | [evidence_code](evidence_code.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Evidence and Conclusion Ontology (ECO) code | [ProteinAnnotation](ProteinAnnotation.md) |
 | [source_database](source_database.md) | 0..1 <br/> [AnnotationSourceEnum](AnnotationSourceEnum.md) | Source database or resource that provided this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [annotation_method](annotation_method.md) | 0..1 <br/> [String](String.md) | Computational or experimental method used | [ProteinAnnotation](ProteinAnnotation.md) |
-| [publication_ids](publication_ids.md) | * <br/> [String](String.md) | PubMed IDs supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
+| [publication_ids](publication_ids.md) | * <br/> [String](String.md) | IDs of one or more publications supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
@@ -215,7 +215,8 @@ attributes:
     - FunctionalSite
   residues:
     name: residues
-    description: List of residues forming the functional site
+    description: List of residues forming the functional site. Each should be specified
+      as a string (e.g., "45", "120A").
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -304,7 +305,8 @@ attributes:
     range: string
   residues:
     name: residues
-    description: List of residues forming the functional site
+    description: List of residues forming the functional site. Each should be specified
+      as a string (e.g., "45", "120A").
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: residues
@@ -417,6 +419,7 @@ attributes:
     domain_of:
     - ProteinAnnotation
     range: string
+    pattern: ^[0-9,\-]+$
   confidence_score:
     name: confidence_score
     description: Confidence score for the annotation (0-1)
@@ -471,7 +474,8 @@ attributes:
     range: string
   publication_ids:
     name: publication_ids
-    description: PubMed IDs supporting this annotation
+    description: IDs of one or more publications supporting this annotation. Use PubMed
+      IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: publication_ids
@@ -480,7 +484,7 @@ attributes:
     - ProteinAnnotation
     range: string
     multivalued: true
-    pattern: ^PMID:[0-9]+$
+    pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing

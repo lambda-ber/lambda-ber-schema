@@ -252,8 +252,8 @@ attributes:
     name: protein_name
     description: Protein name
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     domain_of:
+    - Sample
     - AggregatedProteinView
     required: true
   organism:
@@ -328,8 +328,8 @@ attributes:
     name: mutations
     description: All mutation annotations
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     domain_of:
+    - Sample
     - AggregatedProteinView
     range: MutationEffect
     multivalued: true
@@ -414,10 +414,10 @@ attributes:
     name: protein_name
     description: Protein name
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     alias: protein_name
     owner: AggregatedProteinView
     domain_of:
+    - Sample
     - AggregatedProteinView
     range: string
     required: true
@@ -509,10 +509,10 @@ attributes:
     name: mutations
     description: All mutation annotations
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     alias: mutations
     owner: AggregatedProteinView
     domain_of:
+    - Sample
     - AggregatedProteinView
     range: MutationEffect
     multivalued: true

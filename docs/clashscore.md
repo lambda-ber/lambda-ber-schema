@@ -3,11 +3,6 @@
 # Slot: clashscore 
 
 
-_MolProbity clashscore_
-
-
-
-
 
 URI: [lambdaber:clashscore](https://w3id.org/lambda-ber-schema/clashscore)
 Alias: clashscore
@@ -23,6 +18,7 @@ Alias: clashscore
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: clashscore
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: clashscore
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: clashscore
 <details>
 ```yaml
 name: clashscore
-description: MolProbity clashscore
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: clashscore
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 ```
 </details>

@@ -37,11 +37,16 @@ URI: [lambdaber:BiophysicalProperty](https://w3id.org/lambda-ber-schema/Biophysi
     
 
         
-      BiophysicalProperty : ionic_strength
-        
       BiophysicalProperty : measurement_conditions
         
-      BiophysicalProperty : ph
+          
+    
+        
+        
+        BiophysicalProperty --> "*" MeasurementConditions : measurement_conditions
+        click MeasurementConditions href "../MeasurementConditions/"
+    
+
         
       BiophysicalProperty : property_type
         
@@ -53,8 +58,6 @@ URI: [lambdaber:BiophysicalProperty](https://w3id.org/lambda-ber-schema/Biophysi
         click BiophysicalPropertyEnum href "../BiophysicalPropertyEnum/"
     
 
-        
-      BiophysicalProperty : temperature
         
       BiophysicalProperty : unit
         
@@ -81,10 +84,7 @@ URI: [lambdaber:BiophysicalProperty](https://w3id.org/lambda-ber-schema/Biophysi
 | [value](value.md) | 1 <br/> [Float](Float.md) | Numerical value of the property | direct |
 | [unit](unit.md) | 1 <br/> [String](String.md) | Unit of measurement | direct |
 | [error](error.md) | 0..1 <br/> [Float](Float.md) | Experimental error or uncertainty | direct |
-| [measurement_conditions](measurement_conditions.md) | 0..1 <br/> [String](String.md) | Conditions under which measurement was made | direct |
-| [temperature](temperature.md) | 0..1 <br/> [Float](Float.md) | Temperature in Kelvin | direct |
-| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH value | direct |
-| [ionic_strength](ionic_strength.md) | 0..1 <br/> [Float](Float.md) | Ionic strength in molar | direct |
+| [measurement_conditions](measurement_conditions.md) | * <br/> [MeasurementConditions](MeasurementConditions.md) | Conditions under which measurement was made | direct |
 | [experimental_method](experimental_method.md) | 0..1 <br/> [BiophysicalMethodEnum](BiophysicalMethodEnum.md) | Method used for measurement | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -181,42 +181,18 @@ attributes:
     range: float
   measurement_conditions:
     name: measurement_conditions
-    description: Conditions under which measurement was made
+    description: Conditions under which measurement was made. If multiple sets of
+      conditions were used, this will represent that the same values were obtained
+      under different conditions. If values differ under different conditions, separate
+      BiophysicalProperty instances should be created.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
     - BiophysicalProperty
-  temperature:
-    name: temperature
-    description: Temperature in Kelvin
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    domain_of:
-    - StorageConditions
-    - ExperimentalConditions
-    - BiophysicalProperty
-    range: float
-    unit:
-      ucum_code: K
-  ph:
-    name: ph
-    description: pH value
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    domain_of:
-    - BufferComposition
-    - BiophysicalProperty
-    range: float
-    minimum_value: 0
-    maximum_value: 14
-  ionic_strength:
-    name: ionic_strength
-    description: Ionic strength in molar
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
-    domain_of:
-    - BiophysicalProperty
-    range: float
-    unit:
-      ucum_code: mol/L
+    range: MeasurementConditions
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   experimental_method:
     name: experimental_method
     description: Method used for measurement
@@ -283,51 +259,20 @@ attributes:
     range: float
   measurement_conditions:
     name: measurement_conditions
-    description: Conditions under which measurement was made
+    description: Conditions under which measurement was made. If multiple sets of
+      conditions were used, this will represent that the same values were obtained
+      under different conditions. If values differ under different conditions, separate
+      BiophysicalProperty instances should be created.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: measurement_conditions
     owner: BiophysicalProperty
     domain_of:
     - BiophysicalProperty
-    range: string
-  temperature:
-    name: temperature
-    description: Temperature in Kelvin
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    alias: temperature
-    owner: BiophysicalProperty
-    domain_of:
-    - StorageConditions
-    - ExperimentalConditions
-    - BiophysicalProperty
-    range: float
-    unit:
-      ucum_code: K
-  ph:
-    name: ph
-    description: pH value
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    alias: ph
-    owner: BiophysicalProperty
-    domain_of:
-    - BufferComposition
-    - BiophysicalProperty
-    range: float
-    minimum_value: 0
-    maximum_value: 14
-  ionic_strength:
-    name: ionic_strength
-    description: Ionic strength in molar
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
-    alias: ionic_strength
-    owner: BiophysicalProperty
-    domain_of:
-    - BiophysicalProperty
-    range: float
-    unit:
-      ucum_code: mol/L
+    range: MeasurementConditions
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   experimental_method:
     name: experimental_method
     description: Method used for measurement

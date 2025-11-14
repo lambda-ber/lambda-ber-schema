@@ -16,6 +16,17 @@ prefixes:
 
 default_range: string
 
+types:
+  smiles_string:
+    description: "A SMILES representation of a chemical structure"
+    aliases:
+      - smiles
+    typeof: string
+    see_also:
+      - https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system
+      - https://www.epa.gov/sites/default/files/2015-05/documents/appendf.pdf
+    pattern: "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$"
+
 classes:
 
   # Base annotation class
@@ -35,6 +46,7 @@ classes:
         pattern: "^[A-Za-z0-9]+$"
       residue_range:
         description: "Range of residues (e.g., '1-100', '25,27,30-35')"
+        pattern: "^[0-9,\\-]+$"
       confidence_score:
         description: "Confidence score for the annotation (0-1)"
         range: float
@@ -52,9 +64,11 @@ classes:
       annotation_method:
         description: "Computational or experimental method used"
       publication_ids:
-        description: "PubMed IDs supporting this annotation"
+        description: >-
+          IDs of one or more publications supporting this annotation.
+          Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
         multivalued: true
-        pattern: "^PMID:[0-9]+$"
+        pattern: "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$"
 
   # Functional annotations
   FunctionalSite:
@@ -68,7 +82,9 @@ classes:
       site_name:
         description: "Common name for this site"
       residues:
-        description: "List of residues forming the functional site"
+        description: >-
+          List of residues forming the functional site.
+          Each should be specified as a string (e.g., "45", "120A").
         multivalued: true
       ligand_interactions:
         description: "Ligands that interact with this site"
@@ -133,11 +149,13 @@ classes:
       ligand_id:
         description: "Ligand identifier (ChEMBL, ChEBI, PubChem)"
         required: true
+        range: uriorcurie
       ligand_name:
         description: "Common name of the ligand"
         required: true
       ligand_smiles:
         description: "SMILES representation of the ligand"
+        range: smiles_string
       binding_affinity:
         description: "Binding affinity value"
         range: float
@@ -268,22 +286,16 @@ classes:
         description: "Experimental error or uncertainty"
         range: float
       measurement_conditions:
-        description: "Conditions under which measurement was made"
-      temperature:
-        description: "Temperature in Kelvin"
-        range: float
-        unit:
-          ucum_code: K
-      ph:
-        description: "pH value"
-        range: float
-        minimum_value: 0
-        maximum_value: 14
-      ionic_strength:
-        description: "Ionic strength in molar"
-        range: float
-        unit:
-          ucum_code: mol/L
+        description: >-
+          Conditions under which measurement was made.
+          If multiple sets of conditions were used,
+          this will represent that the same values
+          were obtained under different conditions.
+          If values differ under different conditions,
+          separate BiophysicalProperty instances should be created.
+        range: MeasurementConditions
+        multivalued: true
+        inlined_as_list: true
       experimental_method:
         description: "Method used for measurement"
         range: BiophysicalMethodEnum
@@ -488,6 +500,29 @@ classes:
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
+
+  MeasurementConditions:
+    is_a: NamedThing
+    description: "Conditions under which biophysical measurements were made"
+    attributes:
+      buffer_composition:
+        description: "Composition of the buffer used"
+        range: BufferComposition
+      ph:
+        description: "pH value of the solution during measurement"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      ionic_strength:
+        description: "Ionic strength in molar of material in solution"
+        range: float
+        unit:
+          ucum_code: mol/L
+      temperature:
+        description: "Temperature in Kelvin during measurement"
+        range: float
+        unit:
+          ucum_code: K
 
 # Enumerations
 enums:
