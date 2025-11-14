@@ -558,6 +558,57 @@ classes:
       autoloader_capacity:
         description: "Number of grids the autoloader can hold"
         range: integer
+      cs:
+        description: "Spherical aberration (Cs) in millimeters"
+        range: float
+      c2_aperture:
+        description: "C2 aperture size in micrometers"
+        range: float
+      objective_aperture:
+        description: "Objective aperture size in micrometers"
+        range: float
+      phase_plate_type:
+        description: "Type of phase plate if present"
+        range: string
+      energy_filter_present:
+        description: "Whether energy filter is present"
+        range: boolean
+      energy_filter_make:
+        description: "Energy filter manufacturer"
+        range: string
+      energy_filter_model:
+        description: "Energy filter model"
+        range: string
+      energy_filter_slit_width:
+        description: "Energy filter slit width in eV"
+        range: float
+      detector_position:
+        description: "Detector position"
+        range: string
+      detector_mode:
+        description: "Detector mode (counting, integrating, super_resolution)"
+        range: string
+      pixel_size_physical:
+        description: "Physical pixel size in micrometers"
+        range: float
+      microscope_software:
+        description: "Microscope control software (e.g., SerialEM, EPU, Leginon)"
+        range: string
+      microscope_software_version:
+        description: "Software version"
+        range: string
+      spotsize:
+        description: "Electron beam spot size setting"
+        range: integer
+      gunlens:
+        description: "Gun lens setting"
+        range: integer
+      imaging_mode:
+        description: "Imaging mode (e.g., EFTEM, TEM, STEM)"
+        range: string
+      tem_beam_diameter:
+        description: "TEM beam diameter in micrometers"
+        range: float
 
   XRayInstrument:
     is_a: Instrument
@@ -676,6 +727,67 @@ classes:
       processing_status:
         description: "Current processing status"
         range: ProcessingStatusEnum
+      # Cryo-EM specific acquisition session metadata
+      magnification:
+        description: "Magnification used during data collection"
+        range: integer
+      calibrated_pixel_size:
+        description: "Calibrated pixel size in Angstroms per pixel"
+        range: float
+      camera_binning:
+        description: "Camera binning factor"
+        range: integer
+      exposure_time_per_frame:
+        description: "Exposure time per frame in milliseconds"
+        range: float
+      frames_per_movie:
+        description: "Number of frames per movie"
+        range: integer
+      total_exposure_time:
+        description: "Total exposure time in milliseconds"
+        range: float
+      total_dose:
+        description: "Total electron dose in e-/Angstrom^2"
+        range: float
+      dose_rate:
+        description: "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
+        range: float
+      defocus_target:
+        description: "Target defocus value in micrometers"
+        range: float
+      defocus_range_min:
+        description: "Minimum defocus range in micrometers"
+        range: float
+      defocus_range_max:
+        description: "Maximum defocus range in micrometers"
+        range: float
+      defocus_range_increment:
+        description: "Defocus range increment in micrometers"
+        range: float
+      astigmatism_target:
+        description: "Target astigmatism in nanometers"
+        range: float
+      coma:
+        description: "Coma aberration in nanometers"
+        range: float
+      stage_tilt:
+        description: "Stage tilt angle in degrees"
+        range: float
+      autoloader_slot:
+        description: "Autoloader slot identifier"
+        range: string
+      shots_per_hole:
+        description: "Number of shots taken per hole"
+        range: integer
+      holes_per_group:
+        description: "Number of holes per group"
+        range: integer
+      acquisition_software:
+        description: "Acquisition software used (e.g., SerialEM, EPU, Leginon)"
+        range: string
+      acquisition_software_version:
+        description: "Version of acquisition software"
+        range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
       wavelength:
         description: "X-ray wavelength"
@@ -1019,6 +1131,22 @@ classes:
       completed_at:
         description: "Workflow completion time"
         range: string
+      # Structured parameters for specific workflow types
+      motion_correction_params:
+        description: "Motion correction specific parameters"
+        range: MotionCorrectionParameters
+      ctf_estimation_params:
+        description: "CTF estimation specific parameters"
+        range: CTFEstimationParameters
+      particle_picking_params:
+        description: "Particle picking specific parameters"
+        range: ParticlePickingParameters
+      refinement_params:
+        description: "3D refinement specific parameters"
+        range: RefinementParameters
+      fsc_curve:
+        description: "Fourier Shell Correlation curve data"
+        range: FSCCurve
       output_files:
         description: "Output files generated"
         range: DataFile
@@ -1048,6 +1176,16 @@ classes:
       data_type:
         description: "Type of data in the file"
         range: DataTypeEnum
+      # Additional PNNL file metadata
+      storage_uri:
+        description: "Storage URI (S3, Globus, etc.)"
+        range: string
+      related_entity:
+        description: "ID of the entity that owns this file"
+        range: string
+      file_role:
+        description: "Role of the file (raw, intermediate, final, diagnostic, metadata)"
+        range: string
 
   Image:
     is_a: NamedThing
@@ -1098,6 +1236,92 @@ classes:
         range: float
       reconstruction_method:
         description: "Method used for 3D reconstruction"
+
+  Movie:
+    is_a: Image2D
+    description: "Raw cryo-EM movie with frame-by-frame metadata for motion correction"
+    attributes:
+      frames:
+        description: "Number of frames in the movie"
+        range: integer
+      super_resolution:
+        description: "Whether super-resolution mode was used"
+        range: boolean
+      pixel_size_unbinned:
+        description: "Unbinned pixel size in Angstroms per pixel"
+        range: float
+      timestamp:
+        description: "Acquisition timestamp"
+        range: string
+      stage_position_x:
+        description: "Stage X position in micrometers"
+        range: float
+      stage_position_y:
+        description: "Stage Y position in micrometers"
+        range: float
+      stage_position_z:
+        description: "Stage Z position in micrometers"
+        range: float
+      nominal_defocus:
+        description: "Nominal defocus value in micrometers"
+        range: float
+      dose_per_frame:
+        description: "Electron dose per frame in e-/Angstrom^2"
+        range: float
+      beam_shift_x:
+        description: "Beam shift X in microradians"
+        range: float
+      beam_shift_y:
+        description: "Beam shift Y in microradians"
+        range: float
+      ice_thickness_estimate:
+        description: "Estimated ice thickness in nanometers"
+        range: float
+      grid_square_id:
+        description: "Grid square identifier"
+        range: string
+      hole_id:
+        description: "Hole identifier within grid square"
+        range: string
+      acquisition_group:
+        description: "Acquisition group identifier (e.g., template or area)"
+        range: string
+
+  Micrograph:
+    is_a: Image2D
+    description: "Motion-corrected micrograph derived from movie"
+    attributes:
+      pixel_size:
+        description: "Final pixel size in Angstroms per pixel"
+        range: float
+      defocus:
+        description: "Measured defocus in micrometers"
+        range: float
+      dose:
+        description: "Total electron dose in e-/Angstrom^2"
+        range: float
+      origin_movie_id:
+        description: "Reference to original movie file"
+        range: string
+      # CTF estimation results
+      defocus_u:
+        description: "Defocus U in micrometers"
+        range: float
+      defocus_v:
+        description: "Defocus V in micrometers"
+        range: float
+      astigmatism:
+        description: "Astigmatism in Angstroms"
+        range: float
+      astigmatism_angle:
+        description: "Astigmatism angle in degrees"
+        range: float
+      resolution_fit_limit:
+        description: "Resolution fit limit in Angstroms"
+        range: float
+      ctf_quality_score:
+        description: "CTF estimation quality score"
+        range: float
 
   FTIRImage:
     is_a: Image
@@ -1324,6 +1548,46 @@ classes:
         maximum_value: 100
       chamber_temperature:
         description: "Chamber temperature in Celsius"
+        range: float
+      # Additional detailed vitrification parameters from PNNL schema
+      grid_material:
+        description: "Grid material (carbon, gold, graphene, silicon_nitride)"
+        range: string
+      glow_discharge_applied:
+        description: "Whether glow discharge treatment was applied"
+        range: boolean
+      glow_discharge_time:
+        description: "Glow discharge time in seconds"
+        range: float
+      glow_discharge_current:
+        description: "Glow discharge current in milliamperes"
+        range: float
+      glow_discharge_atmosphere:
+        description: "Glow discharge atmosphere (air, amylamine)"
+        range: string
+      glow_discharge_pressure:
+        description: "Glow discharge pressure in millibar"
+        range: float
+      vitrification_instrument:
+        description: "Vitrification instrument used (e.g., Vitrobot)"
+        range: string
+      blot_number:
+        description: "Number of blots applied"
+        range: integer
+      wait_time:
+        description: "Wait time before blotting in seconds"
+        range: float
+      blotter_height:
+        description: "Blotter height setting"
+        range: float
+      blotter_setting:
+        description: "Blotter setting value"
+        range: float
+      sample_applied_volume:
+        description: "Volume of sample applied in microliters"
+        range: float
+      ethane_temperature:
+        description: "Ethane temperature in Celsius"
         range: float
       plasma_treatment:
         description: "Plasma treatment details"
@@ -1699,6 +1963,130 @@ classes:
       storage_gb:
         description: "Storage used in GB"
         range: float
+
+  # Structured parameter classes for specific workflow types
+  MotionCorrectionParameters:
+    is_a: AttributeGroup
+    description: "Parameters specific to motion correction workflows"
+    attributes:
+      patch_size:
+        description: "Patch size for local motion correction"
+        range: integer
+      binning:
+        description: "Binning factor applied during motion correction"
+        range: integer
+      dose_weighting:
+        description: "Whether dose weighting was applied"
+        range: boolean
+      bfactor_dose_weighting:
+        description: "B-factor for dose weighting"
+        range: float
+      anisotropic_correction:
+        description: "Whether anisotropic motion correction was applied"
+        range: boolean
+      frame_grouping:
+        description: "Number of frames grouped together"
+        range: integer
+      output_binning:
+        description: "Output binning factor"
+        range: integer
+      drift_total:
+        description: "Total drift in Angstroms"
+        range: float
+
+  CTFEstimationParameters:
+    is_a: AttributeGroup
+    description: "Parameters specific to CTF estimation workflows"
+    attributes:
+      defocus_search_min:
+        description: "Minimum defocus search range in micrometers"
+        range: float
+      defocus_search_max:
+        description: "Maximum defocus search range in micrometers"
+        range: float
+      defocus_step:
+        description: "Defocus search step in micrometers"
+        range: float
+      amplitude_contrast:
+        description: "Amplitude contrast value"
+        range: float
+      cs_used_in_estimation:
+        description: "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification"
+        range: float
+      voltage_used_in_estimation:
+        description: "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification"
+        range: float
+
+  ParticlePickingParameters:
+    is_a: AttributeGroup
+    description: "Parameters specific to particle picking workflows"
+    attributes:
+      picking_method:
+        description: "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)"
+        range: string
+      box_size:
+        description: "Particle box size in pixels"
+        range: integer
+      threshold:
+        description: "Picking threshold"
+        range: float
+      power_score:
+        description: "Power score threshold"
+        range: float
+      ncc_score:
+        description: "Normalized cross-correlation score threshold"
+        range: float
+      model_file:
+        description: "Path to deep learning model file if used"
+        range: string
+
+  RefinementParameters:
+    is_a: AttributeGroup
+    description: "Parameters specific to 3D refinement workflows"
+    attributes:
+      symmetry:
+        description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
+        range: string
+      pixel_size:
+        description: "Pixel size in Angstroms per pixel"
+        range: float
+      box_size:
+        description: "Box size in pixels"
+        range: integer
+      gold_standard:
+        description: "Whether gold-standard refinement was used"
+        range: boolean
+      split_strategy:
+        description: "Strategy for data splitting"
+        range: string
+      resolution_0_143:
+        description: "Resolution at FSC=0.143 in Angstroms"
+        range: float
+      resolution_0_5:
+        description: "Resolution at FSC=0.5 in Angstroms"
+        range: float
+      map_sharpening_bfactor:
+        description: "B-factor used for map sharpening in Angstroms^2"
+        range: float
+
+  FSCCurve:
+    is_a: AttributeGroup
+    description: |
+      Fourier Shell Correlation curve data.
+      
+      The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
+      corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+    attributes:
+      resolution_angstrom:
+        description: "Resolution values in Angstroms"
+        range: float
+        multivalued: true
+        maximum_cardinality: 10000
+      fsc_value:
+        description: "FSC values corresponding to each resolution"
+        range: float
+        multivalued: true
+        maximum_cardinality: 10000
 
 enums:
   FacilityEnum:
@@ -2173,6 +2561,18 @@ enums:
         description: "EM 2D classification"
       mass_spec_deconvolution:
         description: "Mass spectrometry deconvolution"
+      particle_extraction:
+        description: "Particle extraction from micrographs"
+      ab_initio:
+        description: "Ab initio 3D reconstruction"
+      postprocessing:
+        description: "Map post-processing and sharpening"
+      map_validation:
+        description: "3D map validation"
+      model_refinement:
+        description: "Atomic model refinement"
+      model_validation:
+        description: "Model validation and quality assessment"
 
   FileFormatEnum:
     description: "File formats"
@@ -2205,6 +2605,18 @@ enums:
         description: "Thermo Fisher RAW format"
       zip:
         description: "ZIP compressed archive"
+      mrcs:
+        description: "MRC stack format for particle stacks"
+      eer:
+        description: "EER format for electron counting"
+      cs:
+        description: "CryoSPARC format"
+      json:
+        description: "JSON data format"
+      csv:
+        description: "Comma-separated values format"
+      ccp4:
+        description: "CCP4 map format"
       gz:
         description: "Gzip compressed format"
 
@@ -2229,6 +2641,22 @@ enums:
         description: "Raw experimental data"
       processed_data:
         description: "Processed data"
+      movie:
+        description: "Raw cryo-EM movie"
+      motion_corrected:
+        description: "Motion-corrected micrograph"
+      ctf_estimation:
+        description: "CTF estimation results"
+      particle_coordinates:
+        description: "Particle picking coordinates"
+      class_averages:
+        description: "2D or 3D class averages"
+      fsc_curve:
+        description: "Fourier Shell Correlation data"
+      map_half:
+        description: "Half-map for gold-standard refinement"
+      validation_report:
+        description: "Validation report"
 
   CollectionModeEnum:
     description: "Data collection modes"
