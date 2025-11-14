@@ -25,7 +25,8 @@
     "Se"
   ],
   "source_type": "synchrotron",
-  "detector_type": "Vortex-ME4 4-element silicon drift detector",
+  "detector_technology": "scintillator_coupled",
+  "detector_model": "Vortex-ME4 4-element silicon drift detector",
   "flux": 1000000000000.0,
   "calibration_standard": "NIST SRM 1577c Bovine Liver",
   "@type": "XRFImage"

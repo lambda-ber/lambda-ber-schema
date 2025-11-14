@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
@@ -40,7 +41,7 @@ lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
             lambdaber:signal_to_noise "4.2"^^xsd:float ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
     lambdaber:sample_id "lambdaber:sample_tfiid_001" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
     dcterms:title "TFIID-DNA complex data collection" ;
@@ -65,7 +66,7 @@ lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
             lambdaber:resolution "3.1"^^xsd:float ;
             lambdaber:signal_to_noise "3.8"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_tfiid_dna_002" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:file_map_001 a lambdaber:DataFile ;
     dcterms:title "Final refined map TFIID" ;

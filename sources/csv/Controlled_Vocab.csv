@@ -1,0 +1,27 @@
+Field,Allowed_Value
+Expression_System,Bacteria
+Expression_System,Yeast
+Expression_System,Insect
+Expression_System,Mammalian
+Expression_System,Cell-free
+Crystallization_Method,Sitting-drop vapor diffusion
+Crystallization_Method,Hanging-drop vapor diffusion
+Crystallization_Method,Batch
+Crystallization_Method,Microbatch
+Crystallization_Method,LCP (lipidic cubic phase)
+Purification_Step,Affinity (Ni-NTA/Co-NTA/Strep/MBP/GST)
+Purification_Step,Tag cleavage
+Purification_Step,Ion-exchange (IEX)
+Purification_Step,Hydrophobic interaction (HIC)
+Purification_Step,Size-exclusion (SEC)
+Purification_Step,Dialysis/Buffer exchange
+Phasing_Method,Molecular Replacement (MR)
+Phasing_Method,SAD
+Phasing_Method,MAD
+Phasing_Method,SIR/MIR
+Phasing_Method,Fragile MR/ensemble
+Experimental_Method,X-RAY DIFFRACTION
+Experimental_Method,NEUTRON DIFFRACTION
+Experimental_Method,ELECTRON DIFFRACTION
+YesNo,Yes
+YesNo,No
