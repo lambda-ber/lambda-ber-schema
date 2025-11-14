@@ -53,9 +53,11 @@ classes:
       annotation_method:
         description: "Computational or experimental method used"
       publication_ids:
-        description: "PubMed IDs supporting this annotation"
+        description: >-
+          IDs of one or more publications supporting this annotation.
+          Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
         multivalued: true
-        pattern: "^PMID:[0-9]+$"
+        pattern: "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$"
 
   # Functional annotations
   FunctionalSite:
