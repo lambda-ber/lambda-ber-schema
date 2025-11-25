@@ -31,10 +31,7 @@ message BiophysicalProperty
   float value = 0
   string unit = 0
   float error = 0
-  string measurementConditions = 0
-  float temperature = 0
-  float ph = 0
-  float ionicStrength = 0
+ repeated  measurementConditions measurementConditions = 0
   biophysicalMethodEnum experimentalMethod = 0
  }
 // Buffer composition for sample storage
@@ -115,7 +112,7 @@ message CryoEMInstrument
   string microscopeSoftwareVersion = 0
   integer spotsize = 0
   integer gunlens = 0
-  string imagingMode = 0
+  imagingModeEnum imagingMode = 0
   float temBeamDiameter = 0
  }
 // Cryo-EM specific sample preparation
@@ -130,7 +127,7 @@ message CryoEMPreparation
   integer blotForce = 0
   float humidityPercentage = 0
   float chamberTemperature = 0
-  string gridMaterial = 0
+  gridMaterialEnum gridMaterial = 0
   boolean glowDischargeApplied = 0
   float glowDischargeTime = 0
   float glowDischargeCurrent = 0
@@ -470,9 +467,9 @@ message Instrument
 message LigandInteraction
  {
   string description = 0
-  string ligandId = 0
+  uriorcurie ligandId = 0
   string ligandName = 0
-  string ligandSmiles = 0
+  smilesString ligandSmiles = 0
   float bindingAffinity = 0
   bindingAffinityTypeEnum bindingAffinityType = 0
   affinityUnitEnum bindingAffinityUnit = 0
@@ -482,6 +479,17 @@ message LigandInteraction
   boolean isDrugLike = 0
   float druggabilityScore = 0
   float interactionDistance = 0
+ }
+// Conditions under which biophysical measurements were made
+message MeasurementConditions
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  bufferComposition bufferComposition = 0
+  float ph = 0
+  float ionicStrength = 0
+  float temperature = 0
  }
 // Motion-corrected micrograph derived from movie
 message Micrograph
@@ -494,16 +502,16 @@ message Micrograph
   integer dimensionsX = 0
   integer dimensionsY = 0
   float exposureTime = 0
-  float pixelSize = 0
-  float defocus = 0
   float dose = 0
   string originMovieId = 0
   float defocusU = 0
   float defocusV = 0
-  float astigmatism = 0
   float astigmatismAngle = 0
   float resolutionFitLimit = 0
   float ctfQualityScore = 0
+  string pixelSize = 0
+  float defocus = 0
+  float astigmatism = 0
  }
 // Molecular composition of a sample
 message MolecularComposition
@@ -764,7 +772,7 @@ message QualityMetrics
 message RefinementParameters
  {
   string description = 0
-  string symmetry = 0
+  symmetryEnum symmetry = 0
   float pixelSize = 0
   integer boxSize = 0
   boolean goldStandard = 0

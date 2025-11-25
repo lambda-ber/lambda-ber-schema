@@ -22,6 +22,14 @@ URI: [lambdaber:DataTypeEnum](https://w3id.org/lambda-ber-schema/DataTypeEnum)
 | metadata | None | Metadata file |
 | raw_data | None | Raw experimental data |
 | processed_data | None | Processed data |
+| movie | None | Raw cryo-EM movie |
+| motion_corrected | None | Motion-corrected micrograph |
+| ctf_estimation | None | CTF estimation results |
+| particle_coordinates | None | Particle picking coordinates |
+| class_averages | None | 2D or 3D class averages |
+| fsc_curve | None | Fourier Shell Correlation data |
+| map_half | None | Half-map for gold-standard refinement |
+| validation_report | None | Validation report |
 
 
 
@@ -89,6 +97,30 @@ permissible_values:
   processed_data:
     text: processed_data
     description: Processed data
+  movie:
+    text: movie
+    description: Raw cryo-EM movie
+  motion_corrected:
+    text: motion_corrected
+    description: Motion-corrected micrograph
+  ctf_estimation:
+    text: ctf_estimation
+    description: CTF estimation results
+  particle_coordinates:
+    text: particle_coordinates
+    description: Particle picking coordinates
+  class_averages:
+    text: class_averages
+    description: 2D or 3D class averages
+  fsc_curve:
+    text: fsc_curve
+    description: Fourier Shell Correlation data
+  map_half:
+    text: map_half
+    description: Half-map for gold-standard refinement
+  validation_report:
+    text: validation_report
+    description: Validation report
 
 ```
 </details>

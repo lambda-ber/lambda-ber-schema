@@ -284,7 +284,6 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: string
   operator_id:
     name: operator_id
     description: Identifier or name of the person who performed the sample preparation
@@ -306,8 +305,8 @@ attributes:
     name: expression_system
     description: Expression system used for recombinant protein production
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - Sample
     - SamplePreparation
     range: ExpressionSystemEnum
   host_strain_or_cell_line:
@@ -325,6 +324,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -347,6 +348,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -647,10 +650,10 @@ attributes:
     name: expression_system
     description: Expression system used for recombinant protein production
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: expression_system
     owner: SamplePreparation
     domain_of:
+    - Sample
     - SamplePreparation
     range: ExpressionSystemEnum
   host_strain_or_cell_line:
@@ -673,6 +676,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -703,6 +708,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)

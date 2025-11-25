@@ -176,6 +176,7 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
     dcterms:title "Complete p53 functional profile" ;
     ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
             ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions lambdaber:study-meas-cond-001 ;
             ns1:property_type "melting_temperature" ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ] ;
@@ -200,7 +201,7 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
                 "242" ;
             ns1:interaction_type "metal_coordination" ;
             ns1:is_cofactor true ;
-            ns1:ligand_id "CHEBI:30413" ;
+            ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
             ns1:ligand_name "Zinc" ] ;
     ns1:mutations lambdaber:mut-p53-001 ;
     ns1:organism "Homo sapiens" ;
@@ -269,6 +270,10 @@ lambdaber:struct-feat-p53-002 a ns1:StructuralFeature ;
     ns1:residue_range "94-292" ;
     ns1:source_database "cath" ;
     ns1:structural_motif "Immunoglobulin-like beta-sandwich" .
+
+lambdaber:study-meas-cond-001 a ns1:MeasurementConditions ;
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "Standard buffer" ] .
 
 lambdaber:wf-run-001 a lambdaber:WorkflowRun ;
     dcterms:title "3D reconstruction of p53-MDM2 complex" ;

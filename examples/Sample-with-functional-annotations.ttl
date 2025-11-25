@@ -8,15 +8,14 @@ lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
     dcterms:title "Human ATP synthase F1 complex with functional annotations" ;
     lambdaber:biophysical_properties [ a ns1:BiophysicalProperty ;
             ns1:experimental_method "differential_scanning_calorimetry" ;
-            ns1:measurement_conditions "pH 7.4, 25°C, 150 mM NaCl" ;
+            ns1:measurement_conditions lambdaber:meas-cond-001 ;
             ns1:property_type "stability" ;
             ns1:unit "kcal/mol" ;
             ns1:value "65.5"^^xsd:float ],
         [ a ns1:BiophysicalProperty ;
             ns1:error "0.5"^^xsd:float ;
             ns1:experimental_method "circular_dichroism" ;
-            ns1:ionic_strength "0.15"^^xsd:float ;
-            ns1:ph "7.4"^^xsd:float ;
+            ns1:measurement_conditions lambdaber:meas-cond-002 ;
             ns1:property_type "melting_temperature" ;
             ns1:unit "K" ;
             ns1:value "338.2"^^xsd:float ] ;
@@ -24,21 +23,21 @@ lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:conformational_ensemble lambdaber:confens-001 ;
     lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "PF00006" ;
-            ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ],
+            ns1:database_id "P25705" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P25705"^^xsd:anyURI ],
         [ a ns1:DatabaseCrossReference ;
             ns1:database_id "GO:0005524" ;
             ns1:database_name "go" ;
             ns1:database_url "http://amigo.geneontology.org/amigo/term/GO:0005524"^^xsd:anyURI ],
         [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00006" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "6ZPO" ;
             ns1:database_name "pdb" ;
-            ns1:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "P25705" ;
-            ns1:database_name "uniprot" ;
-            ns1:database_url "https://www.uniprot.org/uniprot/P25705"^^xsd:anyURI ] ;
+            ns1:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ] ;
     lambdaber:description "ATP synthase F1 complex with detailed functional site and structural annotations from PDBe-KB" ;
     lambdaber:evolutionary_conservation lambdaber:evol-001 ;
     lambdaber:functional_sites lambdaber:funcsite-001,
@@ -142,7 +141,7 @@ lambdaber:funcsite-002 a ns1:FunctionalSite ;
                 "256" ;
             ns1:interaction_type "hydrogen_bond" ;
             ns1:is_cofactor false ;
-            ns1:ligand_id "CHEBI:30616" ;
+            ns1:ligand_id "CHEBI:30616"^^xsd:anyURI ;
             ns1:ligand_name "ATP" ;
             ns1:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" ] ;
     ns1:protein_id "P06576" ;
@@ -153,6 +152,18 @@ lambdaber:funcsite-002 a ns1:FunctionalSite ;
     ns1:site_name "Catalytic site" ;
     ns1:site_type "catalytic_site" ;
     ns1:source_database "uniprot" .
+
+lambdaber:meas-cond-001 a ns1:MeasurementConditions ;
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "150 mM NaCl" ] ;
+    ns1:ionic_strength "0.15"^^xsd:float ;
+    ns1:ph "7.4"^^xsd:float ;
+    ns1:temperature "298.15"^^xsd:float .
+
+lambdaber:meas-cond-002 a ns1:MeasurementConditions ;
+    ns1:ionic_strength "0.15"^^xsd:float ;
+    ns1:ph "7.4"^^xsd:float ;
+    ns1:temperature "298.15"^^xsd:float .
 
 lambdaber:mut-001 a ns1:MutationEffect ;
     ns1:delta_delta_g "0.2"^^xsd:float ;

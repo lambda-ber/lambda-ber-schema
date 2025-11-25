@@ -3,11 +3,6 @@
 # Slot: protein_name 
 
 
-_Protein name_
-
-
-
-
 
 URI: [lambdaber:protein_name](https://w3id.org/lambda-ber-schema/protein_name)
 Alias: protein_name
@@ -23,6 +18,7 @@ Alias: protein_name
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 
 
 
@@ -33,8 +29,6 @@ Alias: protein_name
 
 * Range: [String](String.md)
 
-* Required: True
-
 
 
 
@@ -42,13 +36,6 @@ Alias: protein_name
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -68,15 +55,11 @@ Alias: protein_name
 <details>
 ```yaml
 name: protein_name
-description: Protein name
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: protein_name
-owner: AggregatedProteinView
 domain_of:
+- Sample
 - AggregatedProteinView
 range: string
-required: true
 
 ```
 </details>

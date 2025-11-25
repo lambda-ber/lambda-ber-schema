@@ -128,7 +128,7 @@ attributes:
     domain_of:
     - StorageConditions
     - ExperimentalConditions
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
   temperature_unit:
     name: temperature_unit
@@ -178,7 +178,7 @@ attributes:
     domain_of:
     - StorageConditions
     - ExperimentalConditions
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
   temperature_unit:
     name: temperature_unit

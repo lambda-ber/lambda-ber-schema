@@ -3,7 +3,7 @@
 # Slot: measurement_conditions 
 
 
-_Conditions under which measurement was made_
+_Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created._
 
 
 
@@ -31,7 +31,9 @@ Alias: measurement_conditions
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [MeasurementConditions](MeasurementConditions.md)
+
+* Multivalued: True
 
 
 
@@ -66,14 +68,20 @@ Alias: measurement_conditions
 <details>
 ```yaml
 name: measurement_conditions
-description: Conditions under which measurement was made
+description: Conditions under which measurement was made. If multiple sets of conditions
+  were used, this will represent that the same values were obtained under different
+  conditions. If values differ under different conditions, separate BiophysicalProperty
+  instances should be created.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: measurement_conditions
 owner: BiophysicalProperty
 domain_of:
 - BiophysicalProperty
-range: string
+range: MeasurementConditions
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 ```
 </details>

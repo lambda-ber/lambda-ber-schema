@@ -1,0 +1,13 @@
+# Example of aspirin covalent binding to COX enzyme
+ligand_id: "CHEBI:15365"
+ligand_name: "Aspirin"
+ligand_smiles: "CC(=O)OC1=CC=CC=C1C(=O)O"
+binding_affinity: 1.7
+binding_affinity_type: ic50
+binding_affinity_unit: micromolar
+interaction_type: covalent
+binding_site_residues: ["530"]
+is_cofactor: false
+is_drug_like: true
+druggability_score: 0.68
+interaction_distance: 1.5

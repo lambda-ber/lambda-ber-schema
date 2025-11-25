@@ -3,11 +3,6 @@
 # Slot: expression_system 
 
 
-_Expression system used for recombinant protein production_
-
-
-
-
 
 URI: [lambdaber:expression_system](https://w3id.org/lambda-ber-schema/expression_system)
 Alias: expression_system
@@ -22,6 +17,7 @@ Alias: expression_system
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 | [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: expression_system
 
 ## Properties
 
-* Range: [ExpressionSystemEnum](ExpressionSystemEnum.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: expression_system
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: expression_system
 <details>
 ```yaml
 name: expression_system
-description: Expression system used for recombinant protein production
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: expression_system
-owner: SamplePreparation
 domain_of:
+- Sample
 - SamplePreparation
-range: ExpressionSystemEnum
+range: string
 
 ```
 </details>

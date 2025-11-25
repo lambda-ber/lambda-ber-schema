@@ -18,7 +18,7 @@ Alias: ph
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [BufferComposition](BufferComposition.md) | Buffer composition for sample storage |  no  |
-| [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
+| [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 
 
 
@@ -58,7 +58,7 @@ name: ph
 alias: ph
 domain_of:
 - BufferComposition
-- BiophysicalProperty
+- MeasurementConditions
 range: string
 
 ```

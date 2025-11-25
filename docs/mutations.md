@@ -3,11 +3,6 @@
 # Slot: mutations 
 
 
-_All mutation annotations_
-
-
-
-
 
 URI: [lambdaber:mutations](https://w3id.org/lambda-ber-schema/mutations)
 Alias: mutations
@@ -23,6 +18,7 @@ Alias: mutations
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 
 
 
@@ -31,9 +27,7 @@ Alias: mutations
 
 ## Properties
 
-* Range: [MutationEffect](MutationEffect.md)
-
-* Multivalued: True
+* Range: [String](String.md)
 
 
 
@@ -42,13 +36,6 @@ Alias: mutations
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -68,17 +55,11 @@ Alias: mutations
 <details>
 ```yaml
 name: mutations
-description: All mutation annotations
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: mutations
-owner: AggregatedProteinView
 domain_of:
+- Sample
 - AggregatedProteinView
-range: MutationEffect
-multivalued: true
-inlined: true
-inlined_as_list: true
+range: string
 
 ```
 </details>

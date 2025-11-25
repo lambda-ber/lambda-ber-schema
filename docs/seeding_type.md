@@ -3,11 +3,6 @@
 # Slot: seeding_type 
 
 
-_Type of seeding used (micro, macro, streak)_
-
-
-
-
 
 URI: [lambdaber:seeding_type](https://w3id.org/lambda-ber-schema/seeding_type)
 Alias: seeding_type
@@ -22,6 +17,7 @@ Alias: seeding_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [CrystallizationConditions](CrystallizationConditions.md) | Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization ma... |  no  |
 | [XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: seeding_type
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: seeding_type
 <details>
 ```yaml
 name: seeding_type
-description: Type of seeding used (micro, macro, streak)
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: seeding_type
-owner: XRayPreparation
 domain_of:
+- CrystallizationConditions
 - XRayPreparation
 range: string
 

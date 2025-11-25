@@ -161,6 +161,7 @@ attributes:
     rank: 1000
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -194,6 +195,7 @@ attributes:
     rank: 1000
     domain_of:
     - Image
+    - Micrograph
     range: float
 
 ```
@@ -238,6 +240,7 @@ attributes:
     owner: Image
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -279,6 +282,7 @@ attributes:
     owner: Image
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id

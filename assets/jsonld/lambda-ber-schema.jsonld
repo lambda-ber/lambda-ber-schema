@@ -387,6 +387,24 @@
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
       "@type": "TypeDefinition"
+    },
+    {
+      "name": "smiles_string",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString",
+      "description": "A SMILES representation of a chemical structure",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "see_also": [
+        "https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system",
+        "https://www.epa.gov/sites/default/files/2015-05/documents/appendf.pdf"
+      ],
+      "aliases": [
+        "smiles"
+      ],
+      "typeof": "string",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "pattern": "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$",
+      "@type": "TypeDefinition"
     }
   ],
   "enums": [
@@ -1118,6 +1136,30 @@
       ]
     },
     {
+      "name": "GridMaterialEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/GridMaterialEnum",
+      "description": "Materials used for EM grids",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "carbon",
+          "description": "Carbon grid"
+        },
+        {
+          "text": "gold",
+          "description": "Gold grid"
+        },
+        {
+          "text": "graphene",
+          "description": "Graphene grid"
+        },
+        {
+          "text": "silicon_nitride",
+          "description": "Silicon nitride grid"
+        }
+      ]
+    },
+    {
       "name": "VitrificationMethodEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/VitrificationMethodEnum",
       "description": "Methods for vitrification",
@@ -1134,6 +1176,102 @@
         {
           "text": "slam_freezing",
           "description": "Slam freezing"
+        }
+      ]
+    },
+    {
+      "name": "SymmetryEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SymmetryEnum",
+      "description": "Crystallographic and non-crystallographic symmetry groups for cryo-EM",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "C1",
+          "description": "C1 symmetry (no symmetry)"
+        },
+        {
+          "text": "C2",
+          "description": "C2 cyclic symmetry (2-fold)"
+        },
+        {
+          "text": "C3",
+          "description": "C3 cyclic symmetry (3-fold)"
+        },
+        {
+          "text": "C4",
+          "description": "C4 cyclic symmetry (4-fold)"
+        },
+        {
+          "text": "C5",
+          "description": "C5 cyclic symmetry (5-fold)"
+        },
+        {
+          "text": "C6",
+          "description": "C6 cyclic symmetry (6-fold)"
+        },
+        {
+          "text": "C7",
+          "description": "C7 cyclic symmetry (7-fold)"
+        },
+        {
+          "text": "C8",
+          "description": "C8 cyclic symmetry (8-fold)"
+        },
+        {
+          "text": "C9",
+          "description": "C9 cyclic symmetry (9-fold)"
+        },
+        {
+          "text": "C10",
+          "description": "C10 cyclic symmetry (10-fold)"
+        },
+        {
+          "text": "D2",
+          "description": "D2 dihedral symmetry (2-fold)"
+        },
+        {
+          "text": "D3",
+          "description": "D3 dihedral symmetry (3-fold)"
+        },
+        {
+          "text": "D4",
+          "description": "D4 dihedral symmetry (4-fold)"
+        },
+        {
+          "text": "D5",
+          "description": "D5 dihedral symmetry (5-fold)"
+        },
+        {
+          "text": "D6",
+          "description": "D6 dihedral symmetry (6-fold)"
+        },
+        {
+          "text": "D7",
+          "description": "D7 dihedral symmetry (7-fold)"
+        },
+        {
+          "text": "D8",
+          "description": "D8 dihedral symmetry (8-fold)"
+        },
+        {
+          "text": "D9",
+          "description": "D9 dihedral symmetry (9-fold)"
+        },
+        {
+          "text": "D10",
+          "description": "D10 dihedral symmetry (10-fold)"
+        },
+        {
+          "text": "T",
+          "description": "Tetrahedral symmetry"
+        },
+        {
+          "text": "O",
+          "description": "Octahedral symmetry"
+        },
+        {
+          "text": "I",
+          "description": "Icosahedral symmetry"
         }
       ]
     },
@@ -1194,6 +1332,26 @@
         {
           "text": "commissioning",
           "description": "Instrument being commissioned"
+        }
+      ]
+    },
+    {
+      "name": "ImagingModeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ImagingModeEnum",
+      "description": "Imaging modes for electron microscopy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "EFTEM",
+          "description": "Energy-filtered transmission electron microscopy"
+        },
+        {
+          "text": "TEM",
+          "description": "Transmission electron microscopy"
+        },
+        {
+          "text": "STEM",
+          "description": "Scanning transmission electron microscopy"
         }
       ]
     },
@@ -4034,6 +4192,10 @@
         "SamplePreparation"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "L",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
@@ -4073,6 +4235,10 @@
         "SamplePreparation"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Cel",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
@@ -4890,7 +5056,7 @@
     },
     {
       "name": "cryoEMInstrument__imaging_mode",
-      "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
+      "description": "Imaging mode for electron microscopy",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/imaging_mode",
       "alias": "imaging_mode",
@@ -4898,7 +5064,7 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "string",
+      "range": "ImagingModeEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -5500,7 +5666,7 @@
     },
     {
       "name": "experimentRun__astigmatism_target",
-      "description": "Target astigmatism in nanometers",
+      "description": "Target astigmatism in Angstroms",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism_target",
       "alias": "astigmatism_target",
@@ -6976,7 +7142,7 @@
     },
     {
       "name": "image2D__astigmatism",
-      "description": "Astigmatism value",
+      "description": "Astigmatism value in Angstroms",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
       "alias": "astigmatism",
@@ -7222,32 +7388,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "micrograph__pixel_size",
-      "description": "Final pixel size in Angstroms per pixel",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
-      "alias": "pixel_size",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "micrograph__defocus",
-      "description": "Measured defocus in micrometers",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
-      "alias": "defocus",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "micrograph__dose",
       "description": "Total electron dose in e-/Angstrom^2",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -7292,19 +7432,6 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_v",
       "alias": "defocus_v",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "micrograph__astigmatism",
-      "description": "Astigmatism in Angstroms",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
-      "alias": "astigmatism",
       "owner": "Micrograph",
       "domain_of": [
         "Micrograph"
@@ -8057,7 +8184,7 @@
     },
     {
       "name": "cryoEMPreparation__grid_material",
-      "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
+      "description": "Grid material",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/grid_material",
       "alias": "grid_material",
@@ -8065,7 +8192,7 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "string",
+      "range": "GridMaterialEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -9934,7 +10061,7 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "string",
+      "range": "SymmetryEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -10112,6 +10239,7 @@
         "ProteinAnnotation"
       ],
       "range": "string",
+      "pattern": "^[0-9,\\-]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -10183,7 +10311,7 @@
     },
     {
       "name": "proteinAnnotation__publication_ids",
-      "description": "PubMed IDs supporting this annotation",
+      "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/publication_ids",
       "alias": "publication_ids",
@@ -10193,7 +10321,7 @@
       ],
       "range": "string",
       "multivalued": true,
-      "pattern": "^PMID:[0-9]+$",
+      "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
       "@type": "SlotDefinition"
     },
     {
@@ -10225,7 +10353,7 @@
     },
     {
       "name": "functionalSite__residues",
-      "description": "List of residues forming the functional site",
+      "description": "List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/residues",
       "alias": "residues",
@@ -10441,7 +10569,7 @@
       "domain_of": [
         "LigandInteraction"
       ],
-      "range": "string",
+      "range": "uriorcurie",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -10469,7 +10597,7 @@
       "domain_of": [
         "LigandInteraction"
       ],
-      "range": "string",
+      "range": "smiles_string",
       "@type": "SlotDefinition"
     },
     {
@@ -10934,7 +11062,7 @@
     },
     {
       "name": "biophysicalProperty__measurement_conditions",
-      "description": "Conditions under which measurement was made",
+      "description": "Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions",
       "alias": "measurement_conditions",
@@ -10942,56 +11070,10 @@
       "domain_of": [
         "BiophysicalProperty"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__temperature",
-      "description": "Temperature in Kelvin",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
-      "alias": "temperature",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "K",
-        "@type": "UnitOfMeasure"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__ph",
-      "description": "pH value",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
-      "alias": "ph",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "minimum_value": 0,
-      "maximum_value": 14,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__ionic_strength",
-      "description": "Ionic strength in molar",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
-      "alias": "ionic_strength",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "mol/L",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "MeasurementConditions",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11694,6 +11776,128 @@
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__buffer_composition",
+      "description": "Composition of the buffer used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition",
+      "alias": "buffer_composition",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "BufferComposition",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__ph",
+      "description": "pH value of the solution during measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
+      "alias": "ph",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 14,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__ionic_strength",
+      "description": "Ionic strength in molar of material in solution",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
+      "alias": "ionic_strength",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "mol/L",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__temperature",
+      "description": "Temperature in Kelvin during measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
+      "alias": "temperature",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "K",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pixel_size",
+      "description": "Final pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_pixel_size",
+      "description": "Final pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "pixel_size",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "alias": "pixel_size",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pixel_size",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_defocus",
+      "description": "Measured defocus in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "image2D__defocus",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
+      "alias": "defocus",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "defocus",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_astigmatism",
+      "description": "Astigmatism in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "image2D__astigmatism",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
+      "alias": "astigmatism",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "astigmatism",
+      "range": "float",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -12376,7 +12580,6 @@
         {
           "name": "preparation_date",
           "description": "Date of sample preparation",
-          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -12405,6 +12608,10 @@
           "name": "culture_volume_l",
           "description": "Culture volume in liters",
           "range": "float",
+          "unit": {
+            "ucum_code": "L",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
@@ -12421,6 +12628,10 @@
           "name": "growth_temperature_c",
           "description": "Growth temperature in Celsius",
           "range": "float",
+          "unit": {
+            "ucum_code": "Cel",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
@@ -12864,8 +13075,8 @@
         },
         {
           "name": "imaging_mode",
-          "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
-          "range": "string",
+          "description": "Imaging mode for electron microscopy",
+          "range": "ImagingModeEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -13270,7 +13481,7 @@
         },
         {
           "name": "astigmatism_target",
-          "description": "Target astigmatism in nanometers",
+          "description": "Target astigmatism in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -14213,7 +14424,7 @@
         },
         {
           "name": "astigmatism",
-          "description": "Astigmatism value",
+          "description": "Astigmatism value in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         }
@@ -14411,31 +14622,19 @@
         "image__dimensions_x",
         "image__dimensions_y",
         "image__exposure_time",
-        "micrograph__pixel_size",
-        "micrograph__defocus",
         "micrograph__dose",
         "micrograph__origin_movie_id",
         "micrograph__defocus_u",
         "micrograph__defocus_v",
-        "micrograph__astigmatism",
         "micrograph__astigmatism_angle",
         "micrograph__resolution_fit_limit",
-        "micrograph__ctf_quality_score"
+        "micrograph__ctf_quality_score",
+        "Micrograph_pixel_size",
+        "Micrograph_defocus",
+        "Micrograph_astigmatism"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "pixel_size",
-          "description": "Final pixel size in Angstroms per pixel",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "defocus",
-          "description": "Measured defocus in micrometers",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
         {
           "name": "dose",
           "description": "Total electron dose in e-/Angstrom^2",
@@ -14457,12 +14656,6 @@
         {
           "name": "defocus_v",
           "description": "Defocus V in micrometers",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "astigmatism",
-          "description": "Astigmatism in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -15093,8 +15286,8 @@
         },
         {
           "name": "grid_material",
-          "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
-          "range": "string",
+          "description": "Grid material",
+          "range": "GridMaterialEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -16246,7 +16439,7 @@
         {
           "name": "symmetry",
           "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
-          "range": "string",
+          "range": "SymmetryEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -16373,6 +16566,7 @@
         {
           "name": "residue_range",
           "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+          "pattern": "^[0-9,\\-]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -16408,9 +16602,9 @@
         },
         {
           "name": "publication_ids",
-          "description": "PubMed IDs supporting this annotation",
+          "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
           "multivalued": true,
-          "pattern": "^PMID:[0-9]+$",
+          "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
           "@type": "SlotDefinition"
         }
       ],
@@ -16462,7 +16656,7 @@
         },
         {
           "name": "residues",
-          "description": "List of residues forming the functional site",
+          "description": "List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").",
           "multivalued": true,
           "@type": "SlotDefinition"
         },
@@ -16622,6 +16816,7 @@
         {
           "name": "ligand_id",
           "description": "Ligand identifier (ChEMBL, ChEBI, PubChem)",
+          "range": "uriorcurie",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -16634,6 +16829,7 @@
         {
           "name": "ligand_smiles",
           "description": "SMILES representation of the ligand",
+          "range": "smiles_string",
           "@type": "SlotDefinition"
         },
         {
@@ -16920,9 +17116,6 @@
         "biophysicalProperty__unit",
         "biophysicalProperty__error",
         "biophysicalProperty__measurement_conditions",
-        "biophysicalProperty__temperature",
-        "biophysicalProperty__ph",
-        "biophysicalProperty__ionic_strength",
         "biophysicalProperty__experimental_method"
       ],
       "slot_usage": {},
@@ -16955,35 +17148,10 @@
         },
         {
           "name": "measurement_conditions",
-          "description": "Conditions under which measurement was made",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "temperature",
-          "description": "Temperature in Kelvin",
-          "range": "float",
-          "unit": {
-            "ucum_code": "K",
-            "@type": "UnitOfMeasure"
-          },
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "ph",
-          "description": "pH value",
-          "range": "float",
-          "minimum_value": 0,
-          "maximum_value": 14,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "ionic_strength",
-          "description": "Ionic strength in molar",
-          "range": "float",
-          "unit": {
-            "ucum_code": "mol/L",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.",
+          "range": "MeasurementConditions",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17479,13 +17647,68 @@
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "MeasurementConditions",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions",
+      "description": "Conditions under which biophysical measurements were made",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "measurementConditions__buffer_composition",
+        "measurementConditions__ph",
+        "measurementConditions__ionic_strength",
+        "measurementConditions__temperature"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "buffer_composition",
+          "description": "Composition of the buffer used",
+          "range": "BufferComposition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ph",
+          "description": "pH value of the solution during measurement",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 14,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ionic_strength",
+          "description": "Ionic strength in molar of material in solution",
+          "range": "float",
+          "unit": {
+            "ucum_code": "mol/L",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature",
+          "description": "Temperature in Kelvin during measurement",
+          "range": "float",
+          "unit": {
+            "ucum_code": "K",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-14T08:14:09",
-  "source_file_size": 97311,
-  "generation_date": "2025-11-14T08:14:56",
+  "source_file_date": "2025-11-14T13:56:19",
+  "source_file_size": 99417,
+  "generation_date": "2025-11-14T16:02:41",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

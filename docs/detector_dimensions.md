@@ -3,7 +3,7 @@
 # Slot: detector_dimensions 
 
 
-_Detector dimensions in pixels (e.g., 4096x4096)_
+_Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)_
 
 
 
@@ -66,7 +66,7 @@ Alias: detector_dimensions
 <details>
 ```yaml
 name: detector_dimensions
-description: Detector dimensions in pixels (e.g., 4096x4096)
+description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: detector_dimensions

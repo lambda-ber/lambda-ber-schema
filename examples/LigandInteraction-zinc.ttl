@@ -1,0 +1,20 @@
+@base <http://example.org/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a ns1:LigandInteraction ;
+    ns1:binding_affinity "0.001"^^xsd:float ;
+    ns1:binding_affinity_type "kd" ;
+    ns1:binding_affinity_unit "micromolar" ;
+    ns1:binding_site_residues "176",
+        "179",
+        "238",
+        "242" ;
+    ns1:interaction_distance "2.1"^^xsd:float ;
+    ns1:interaction_type "metal_coordination" ;
+    ns1:is_cofactor true ;
+    ns1:is_drug_like false ;
+    ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
+    ns1:ligand_name "Zinc cation" ;
+    ns1:ligand_smiles "[Zn+2]" .
+

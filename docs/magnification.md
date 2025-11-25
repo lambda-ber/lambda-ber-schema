@@ -3,11 +3,6 @@
 # Slot: magnification 
 
 
-_Optical magnification factor_
-
-
-
-
 
 URI: [lambdaber:magnification](https://w3id.org/lambda-ber-schema/magnification)
 Alias: magnification
@@ -22,6 +17,7 @@ Alias: magnification
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: magnification
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: magnification
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: magnification
 <details>
 ```yaml
 name: magnification
-description: Optical magnification factor
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: magnification
-owner: OpticalImage
 domain_of:
+- ExperimentRun
 - OpticalImage
-range: float
+range: string
 
 ```
 </details>
