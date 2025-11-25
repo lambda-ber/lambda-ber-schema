@@ -1,0 +1,46 @@
+---
+conditions:
+  sample_mg/ml: 
+  sample_buffer: 
+  vitrification_settings: '
+insert setting here
+'
+metadata:
+  program:
+    proposal_id: 61815
+    short_sample_name: Green box position 2 
+    session_id: 10-03-25_C2
+    instrument_id: 34303
+    voltage: 300  # (kev)
+    cs: 2.7  # (mm)
+    nominal_pixel_size: 0.34  # (Angstrom)
+    total_dose: 50  # (electron per Angstrom^2)
+    nominal_dose_rate_eps: null  # (electron per Angstrom^2 per second) or null
+    frames_per_second: null  # number of frames per second
+    total_exposure:   # (s)
+    processing_scheme: 1  # 1 = SPA, 2 = tomography, 3 = microED
+    detector_id: K3  # K3 or Ceta-D
+    detector_physical_pixel_size: 5  # (microns) 5=K3, 14=Ceta-D
+    nominal_magnification: 130  # (kx) or null
+    nominal_camera_Length: null  # (cm) or null
+    binning_factor: 0.5  # (0.5, 1, 2, 4, etc.)
+    tilting_mode: 0  # 0 = none, 1 = dose symmetric, 2 = linear, 3 = continuous
+    fiducial_size: null  # (Angstrom) or null
+    tilt_angle_increment: null  # (degrees) or null
+    rotation_rate: null  # (degrees/s) or null
+    c2_aperture: 50  # (microns) or null
+    spot_size: 5  # value or null
+    beam_diameter: 0.6  # (microns) or null
+    energy_filter_slit: 20  # (eV) or null
+    phase_plate: false  # true or false
+    topaz_model: NA  # unet, unet-small, fcnn, affine, unet-v0.2.2, or NA
+    motCorr_bin: 1       # factor for binning during motion correction using Fourier cropping (must be >= 1)
+assesments:
+  ice_contamination: 1  # 1 = None, 2 = Limited, 3 = Severe
+  ice_quality: 1  # 1 = Ideal range, 2 = Too thin, 3 = Too thick
+  particle_concentration: 1  # 1 = Just right, 2 = Too low, 3 = Too high
+notes: '
+
+  multiline comments can be inserted here
+'
+...
