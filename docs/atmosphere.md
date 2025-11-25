@@ -17,8 +17,8 @@ Alias: atmosphere
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
+| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 
 
 

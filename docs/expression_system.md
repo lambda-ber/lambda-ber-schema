@@ -17,8 +17,8 @@ Alias: expression_system
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 | [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 
 
 

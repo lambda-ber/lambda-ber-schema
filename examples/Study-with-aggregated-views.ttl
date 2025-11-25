@@ -2,6 +2,7 @@
 @prefix @base: <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix go: <http://purl.obolibrary.org/obo/GO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -219,7 +220,7 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
 lambdaber:ptm-p53-001 a ns1:PostTranslationalModification ;
     ns1:enzyme "ATM" ;
     ns1:functional_effect "Stabilization" ;
-    ns1:modification_type "phosphorylation" ;
+    ns1:modification_type go:0006468 ;
     ns1:modified_residue "S15" ;
     ns1:protein_id "P04637" ;
     ns1:regulatory_role "DNA damage response" ;
