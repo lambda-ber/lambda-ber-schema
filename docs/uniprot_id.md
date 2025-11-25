@@ -17,8 +17,8 @@ Alias: uniprot_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
 
 
 

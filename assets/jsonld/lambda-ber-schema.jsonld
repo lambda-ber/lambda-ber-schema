@@ -53,6 +53,10 @@
       "prefix_reference": "http://purl.obolibrary.org/obo/CL_"
     },
     {
+      "prefix_prefix": "GO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GO_"
+    },
+    {
       "prefix_prefix": "nsls2",
       "prefix_reference": "https://github.com/NSLS2/BER-LAMBDA/"
     },
@@ -2768,64 +2772,171 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
-          "text": "phosphorylation",
-          "description": "Phosphorylation"
-        },
-        {
           "text": "acetylation",
-          "description": "Acetylation"
+          "description": "protein acetylation",
+          "meaning": "GO:0006473"
         },
         {
-          "text": "methylation",
-          "description": "Methylation"
-        },
-        {
-          "text": "ubiquitination",
-          "description": "Ubiquitination"
-        },
-        {
-          "text": "sumoylation",
-          "description": "SUMOylation"
-        },
-        {
-          "text": "glycosylation",
-          "description": "Glycosylation"
-        },
-        {
-          "text": "palmitoylation",
-          "description": "Palmitoylation"
-        },
-        {
-          "text": "myristoylation",
-          "description": "Myristoylation"
-        },
-        {
-          "text": "prenylation",
-          "description": "Prenylation"
-        },
-        {
-          "text": "nitrosylation",
-          "description": "Nitrosylation"
-        },
-        {
-          "text": "oxidation",
-          "description": "Oxidation"
-        },
-        {
-          "text": "hydroxylation",
-          "description": "Hydroxylation"
-        },
-        {
-          "text": "proteolysis",
-          "description": "Proteolytic cleavage"
-        },
-        {
-          "text": "deamidation",
-          "description": "Deamidation"
+          "text": "acylation",
+          "description": "protein acylation",
+          "meaning": "GO:0043543"
         },
         {
           "text": "adp_ribosylation",
           "description": "ADP-ribosylation"
+        },
+        {
+          "text": "alkylation",
+          "description": "protein alkylation",
+          "meaning": "GO:0008213"
+        },
+        {
+          "text": "arginylation",
+          "description": "protein arginylation",
+          "meaning": "GO:0016598"
+        },
+        {
+          "text": "carbamoylation",
+          "description": "protein carbamoylation",
+          "meaning": "GO:0046944"
+        },
+        {
+          "text": "carboxylation",
+          "description": "protein carboxylation",
+          "meaning": "GO:0018214"
+        },
+        {
+          "text": "deacylation",
+          "description": "protein deacylation",
+          "meaning": "GO:0035601"
+        },
+        {
+          "text": "dealkylation",
+          "description": "protein dealkylation",
+          "meaning": "GO:0008214"
+        },
+        {
+          "text": "deamidation",
+          "description": "deamidation"
+        },
+        {
+          "text": "deamination",
+          "description": "protein deamination",
+          "meaning": "GO:0018277"
+        },
+        {
+          "text": "deglutathionylation",
+          "description": "protein deglutathionylation",
+          "meaning": "GO:0080058"
+        },
+        {
+          "text": "deglycation",
+          "description": "protein deglycation",
+          "meaning": "GO:0036525"
+        },
+        {
+          "text": "deglycosylation",
+          "description": "protein deglycosylation",
+          "meaning": "GO:0006517"
+        },
+        {
+          "text": "dephosphorylation",
+          "description": "protein dephosphorylation",
+          "meaning": "GO:0006470"
+        },
+        {
+          "text": "flavinylation",
+          "description": "protein flavinylation",
+          "meaning": "GO:0017013"
+        },
+        {
+          "text": "glutathionylation",
+          "description": "protein glutathionylation",
+          "meaning": "GO:0010731"
+        },
+        {
+          "text": "glycosylation",
+          "description": "protein glycosylation"
+        },
+        {
+          "text": "hydroxylation",
+          "description": "protein hydroxylation",
+          "meaning": "GO:0018126"
+        },
+        {
+          "text": "lipidation",
+          "description": "protein lipidation",
+          "meaning": "GO:0006497"
+        },
+        {
+          "text": "methylation",
+          "description": "protein methylation",
+          "meaning": "GO:0006479"
+        },
+        {
+          "text": "myristoylation",
+          "description": "protein myristoylation",
+          "meaning": "GO:0018377"
+        },
+        {
+          "text": "nitrosylation",
+          "description": "protein nitrosylation",
+          "meaning": "GO:0017014"
+        },
+        {
+          "text": "oxidation",
+          "description": "protein oxidation",
+          "meaning": "GO:0018158"
+        },
+        {
+          "text": "palmitoylation",
+          "description": "protein palmitoylation",
+          "meaning": "GO:0018345"
+        },
+        {
+          "text": "peptidyl_amino_acid_modification",
+          "description": "peptidyl-amino acid modification",
+          "meaning": "GO:0018193"
+        },
+        {
+          "text": "phosphorylation",
+          "description": "protein phosphorylation",
+          "meaning": "GO:0006468"
+        },
+        {
+          "text": "post_translational_protein_modification",
+          "description": "post-translational protein modification",
+          "meaning": "GO:0043687"
+        },
+        {
+          "text": "prenylation",
+          "description": "protein prenylation",
+          "meaning": "GO:0018342"
+        },
+        {
+          "text": "proteolysis",
+          "description": "proteolysis",
+          "meaning": "GO:0006508"
+        },
+        {
+          "text": "sulfation",
+          "description": "protein sulfation",
+          "meaning": "GO:0006477"
+        },
+        {
+          "text": "sulfhydration",
+          "description": "protein sulfhydration",
+          "meaning": "GO:0044524"
+        },
+        {
+          "text": "sumoylation",
+          "description": "protein sumoylation",
+          "meaning": "GO:0016925"
+        },
+        {
+          "text": "ubiquitination",
+          "description": "protein ubiquitination",
+          "meaning": "GO:0016567"
         }
       ]
     },
@@ -17706,9 +17817,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-14T13:56:19",
-  "source_file_size": 99417,
-  "generation_date": "2025-11-14T16:02:41",
+  "source_file_date": "2025-11-25T14:15:40",
+  "source_file_size": 99458,
+  "generation_date": "2025-11-25T14:35:44",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
