@@ -873,33 +873,45 @@ enums:
     description: "Types of post-translational modifications"
     permissible_values:
       phosphorylation:
-        description: "Phosphorylation"
+        description: "protein phosphorylation"
+        meaning: GO:0006468
       acetylation:
-        description: "Acetylation"
+        description: "protein acetylation"
+        meaning: GO:0006473
       methylation:
-        description: "Methylation"
+        description: "protein methylation"
+        meaning: GO:0006479
       ubiquitination:
-        description: "Ubiquitination"
+        description: "protein ubiquitination"
+        meaning: GO:0016567
       sumoylation:
-        description: "SUMOylation"
+        description: "protein sumoylation"
+        meaning: GO:0016925
       glycosylation:
-        description: "Glycosylation"
+        description: "protein glycosylation"
       palmitoylation:
-        description: "Palmitoylation"
+        description: "protein palmitoylation"
+        meaning: GO:0018345
       myristoylation:
-        description: "Myristoylation"
+        description: "protein myristoylation"
+        meaning: GO:0018377
       prenylation:
-        description: "Prenylation"
+        description: "protein prenylation"
+        meaning: GO:0018342
       nitrosylation:
-        description: "Nitrosylation"
+        description: "protein nitrosylation"
+        meaning: GO:0017014
       oxidation:
-        description: "Oxidation"
+        description: "protein oxidation"
+        meaning: GO:0018158
       hydroxylation:
-        description: "Hydroxylation"
+        description: "protein hydroxylation"
+        meaning: GO:0018126
       proteolysis:
-        description: "Proteolytic cleavage"
+        description: "proteolysis"
+        meaning: GO:0006508
       deamidation:
-        description: "Deamidation"
+        description: "deamidation"
       adp_ribosylation:
         description: "ADP-ribosylation"
 
