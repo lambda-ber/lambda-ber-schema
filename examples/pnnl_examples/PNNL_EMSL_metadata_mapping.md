@@ -74,42 +74,7 @@ The schema lacks essential capabilities for PNNL/EMSL facility operations:
 - Cannot track grid quality assessments required by PNNL protocols
 - Missing many low-level instrument settings needed for troubleshooting
 
-### Recommendations by Priority
-
-**HIGH PRIORITY** (blocking for PNNL adoption):
-1. Add tomography support to `DataCollectionStrategy`: tilt_scheme, tilt_min/max/increment, rotation_rate, fiducial_diameter
-2. Add tilt_angle and stage coordinates to `Image2D` or `ExperimentalConditions`
-3. Add grid quality fields to `QualityMetrics` or `SamplePreparation`: ice_contamination, ice_thickness_quality, particle_density_quality
-4. Extend `CryoEMInstrument` with: spherical_aberration_mm, c2_aperture_um, spot_size, energy_filter_width_ev, nominal_magnification, detector_model (string)
-5. Add proposal_id to `Study` or `Dataset`
-
-**MEDIUM PRIORITY** (enhanced metadata capture):
-6. Add all aperture fields (C1, C3, objective, SA) to `CryoEMInstrument`
-7. Add beam characterization to `ExperimentalConditions`: beam_diameter_um, beam_intensity, beam_shift/tilt, image_shift
-8. Add detector calibration: counts_per_electron, detector_physical_pixel_size_um, electron_counting_mode
-9. Add gun parameters: electron_source (enum), extractor_voltage_v, gun_lens
-10. Add holder_type to `SamplePreparation`
-
-**LOW PRIORITY** (nice-to-have):
-11. Add probe_mode enum (nanoprobe/microprobe)
-12. Add camera_length_cm for electron diffraction
-13. Expand DetectorTypeEnum with specific models (gatan_k3, falcon_4, ceta_d)
-
-### Implementation Path Forward
-
-**Phase 1 - Immediate (Tomography Enablement):**
-- Add 8 fields to support basic tomography workflows
-- Estimated effort: 1-2 weeks for schema updates + validation
-
-**Phase 2 - Facility Integration (Grid Quality + Proposals):**
-- Add grid assessment enums and proposal tracking
-- Estimated effort: 1 week for schema + 2 weeks for facility workflow integration
-
-**Phase 3 - Complete Metadata (Advanced Instrument Parameters):**
-- Add remaining 15-20 instrument characterization fields
-- Estimated effort: 2-3 weeks for comprehensive testing with EPU/SerialEM parsers
-
-**Total Estimated Timeline:** 6-8 weeks to full PNNL/EMSL facility adoption
+---
 
 ---
 
