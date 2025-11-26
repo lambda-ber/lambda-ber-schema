@@ -872,36 +872,105 @@ enums:
   PTMTypeEnum:
     description: "Types of post-translational modifications"
     permissible_values:
-      phosphorylation:
-        description: "Phosphorylation"
       acetylation:
-        description: "Acetylation"
-      methylation:
-        description: "Methylation"
-      ubiquitination:
-        description: "Ubiquitination"
-      sumoylation:
-        description: "SUMOylation"
-      glycosylation:
-        description: "Glycosylation"
-      palmitoylation:
-        description: "Palmitoylation"
-      myristoylation:
-        description: "Myristoylation"
-      prenylation:
-        description: "Prenylation"
-      nitrosylation:
-        description: "Nitrosylation"
-      oxidation:
-        description: "Oxidation"
-      hydroxylation:
-        description: "Hydroxylation"
-      proteolysis:
-        description: "Proteolytic cleavage"
-      deamidation:
-        description: "Deamidation"
+        description: "protein acetylation"
+        meaning: GO:0006473
+      acylation:
+        description: "protein acylation"
+        meaning: GO:0043543
       adp_ribosylation:
         description: "ADP-ribosylation"
+      alkylation:
+        description: "protein alkylation"
+        meaning: GO:0008213
+      arginylation:
+        description: "protein arginylation"
+        meaning: GO:0016598
+      carbamoylation:
+        description: "protein carbamoylation"
+        meaning: GO:0046944
+      carboxylation:
+        description: "protein carboxylation"
+        meaning: GO:0018214
+      deacylation:
+        description: "protein deacylation"
+        meaning: GO:0035601
+      dealkylation:
+        description: "protein dealkylation"
+        meaning: GO:0008214
+      deamidation:
+        description: "deamidation"
+      deamination:
+        description: "protein deamination"
+        meaning: GO:0018277
+      deglutathionylation:
+        description: "protein deglutathionylation"
+        meaning: GO:0080058
+      deglycation:
+        description: "protein deglycation"
+        meaning: GO:0036525
+      deglycosylation:
+        description: "protein deglycosylation"
+        meaning: GO:0006517
+      dephosphorylation:
+        description: "protein dephosphorylation"
+        meaning: GO:0006470
+      flavinylation:
+        description: "protein flavinylation"
+        meaning: GO:0017013
+      glutathionylation:
+        description: "protein glutathionylation"
+        meaning: GO:0010731
+      glycosylation:
+        description: "protein glycosylation"
+      hydroxylation:
+        description: "protein hydroxylation"
+        meaning: GO:0018126
+      lipidation:
+        description: "protein lipidation"
+        meaning: GO:0006497
+      methylation:
+        description: "protein methylation"
+        meaning: GO:0006479
+      myristoylation:
+        description: "protein myristoylation"
+        meaning: GO:0018377
+      nitrosylation:
+        description: "protein nitrosylation"
+        meaning: GO:0017014
+      oxidation:
+        description: "protein oxidation"
+        meaning: GO:0018158
+      palmitoylation:
+        description: "protein palmitoylation"
+        meaning: GO:0018345
+      peptidyl_amino_acid_modification:
+        description: "peptidyl-amino acid modification"
+        meaning: GO:0018193
+      phosphorylation:
+        description: "protein phosphorylation"
+        meaning: GO:0006468
+      post_translational_protein_modification:
+        description: "post-translational protein modification"
+        meaning: GO:0043687
+      prenylation:
+        description: "protein prenylation"
+        meaning: GO:0018342
+      proteolysis:
+        description: "proteolysis"
+        meaning: GO:0006508
+      sulfation:
+        description: "protein sulfation"
+        meaning: GO:0006477
+      sulfhydration:
+        description: "protein sulfhydration"
+        meaning: GO:0044524
+      sumoylation:
+        description: "protein sumoylation"
+        meaning: GO:0016925
+      ubiquitination:
+        description: "protein ubiquitination"
+        meaning: GO:0016567
 
   EvidenceTypeEnum:
     description: "Types of evidence"

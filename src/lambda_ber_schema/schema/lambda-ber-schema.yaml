@@ -91,6 +91,7 @@ prefixes:
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
+  GO: http://purl.obolibrary.org/obo/GO_
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
   imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
