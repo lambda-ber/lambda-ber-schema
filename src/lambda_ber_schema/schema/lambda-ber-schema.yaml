@@ -246,7 +246,7 @@ classes:
         description: "Reference to parent sample for derivation tracking"
         range: Sample
       purity_percentage:
-        description: "Sample purity as percentage"
+        description: "Sample purity as percentage (range: 0-100)"
         range: float
         minimum_value: 0
         maximum_value: 100
@@ -1462,6 +1462,11 @@ classes:
     is_a: NamedThing
     description: "A term from a controlled vocabulary or ontology"
     attributes:
+      terms:
+        description: "Collection of ontology terms"
+        range: OntologyTerm
+        multivalued: true
+        inlined_as_list: true
       label:
         description: "The human-readable label or name of the ontology term"
         range: string
@@ -1494,7 +1499,7 @@ classes:
     description: "Buffer composition for sample storage"
     attributes:
       ph:
-        description: "pH of the buffer"
+        description: "pH of the buffer (range: 0-14)"
         range: float
         minimum_value: 0
         maximum_value: 14
@@ -1540,7 +1545,7 @@ classes:
         description: "Support film type"
         range: string
       hole_size:
-        description: "Hole size in micrometers"
+        description: "Hole size in micrometers (range: 0.5-5.0)"
         range: float
         minimum_value: 0.5
         maximum_value: 5.0
@@ -1548,7 +1553,7 @@ classes:
         description: "Method used for vitrification"
         range: VitrificationMethodEnum
       blot_time:
-        description: "Blotting time in seconds"
+        description: "Blotting time in seconds (range: 0.5-10.0)"
         range: float
         minimum_value: 0.5
         maximum_value: 10.0
@@ -1556,7 +1561,7 @@ classes:
         description: "Blotting force setting"
         range: integer
       humidity_percentage:
-        description: "Chamber humidity during vitrification"
+        description: "Chamber humidity during vitrification (range: 0-100)"
         range: float
         minimum_value: 0
         maximum_value: 100
