@@ -119,8 +119,10 @@ classes:
         identifier: true
         range: uriorcurie
       title:
+        description: "A human-readable name or title for this entity"
         slot_uri: dcterms:title
       description:
+        description: "A detailed textual description of this entity"
         range: string
 
   AttributeGroup:
@@ -136,14 +138,17 @@ classes:
     description: "A collection of studies"
     attributes:
       keywords:
+        description: "Keywords or tags describing the dataset for search and categorization"
         range: string
         multivalued: true
       instruments:
+        description: "Instruments used across all studies in this dataset"
         range: Instrument
         multivalued: true
         inlined: true
         inlined_as_list: true
       studies:
+        description: "Individual research studies contained in this dataset"
         range: Study
         multivalued: true
         inlined: true
@@ -159,26 +164,32 @@ classes:
         multivalued: true
         inlined_as_list: true
       samples:
+        description: "Experimental samples used in this study, including biological samples "
         range: Sample
         multivalued: true
         inlined_as_list: true
       sample_preparations:
+        description: "Sample preparation procedures performed in this study"
         range: SamplePreparation
         multivalued: true
         inlined_as_list: true
       instrument_runs:
+        description: "Experimental data collection runs performed in this study"
         range: ExperimentRun
         multivalued: true
         inlined_as_list: true
       workflow_runs:
+        description: "Computational workflow executions for data processing in this study"
         range: WorkflowRun
         multivalued: true
         inlined_as_list: true
       data_files:
+        description: "Data files generated or used in this study"
         range: DataFile
         multivalued: true
         inlined_as_list: true
       images:
+        description: "Images acquired or generated in this study"
         range: Image
         multivalued: true
         inlined: true
@@ -1442,16 +1453,23 @@ classes:
     description: "Semantic annotations describing features identified in images using controlled vocabulary terms"
     attributes:
       terms:
+        description: "Ontology terms describing features identified in the image"
         range: OntologyTerm
+        multivalued: true
+        inlined_as_list: true
 
   OntologyTerm:
     is_a: NamedThing
+    description: "A term from a controlled vocabulary or ontology"
     attributes:
       label:
+        description: "The human-readable label or name of the ontology term"
         range: string
       definition:
+        description: "The formal definition or meaning of the ontology term"
         range: string
       ontology:
+        description: "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)"
         range: string
 
   MolecularComposition:
