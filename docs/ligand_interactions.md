@@ -17,8 +17,8 @@ Alias: ligand_interactions
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
 
 

@@ -908,21 +908,25 @@ linkml:Sparqlpath xsd:string
           &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
           rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation> ] ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/modification_type> [
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#phosphorylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#acetylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#methylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#ubiquitination>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#sumoylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#glycosylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#palmitoylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#myristoylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#prenylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#nitrosylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#oxidation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#hydroxylation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#proteolysis>
+             <http://purl.obolibrary.org/obo/GO_0006473> <http://purl.obolibrary.org/obo/GO_0043543>
+             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#adp_ribosylation>
+             <http://purl.obolibrary.org/obo/GO_0008213> <http://purl.obolibrary.org/obo/GO_0016598>
+             <http://purl.obolibrary.org/obo/GO_0046944> <http://purl.obolibrary.org/obo/GO_0018214>
+             <http://purl.obolibrary.org/obo/GO_0035601> <http://purl.obolibrary.org/obo/GO_0008214>
              <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#deamidation>
-             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#adp_ribosylation> ] ;
+             <http://purl.obolibrary.org/obo/GO_0018277> <http://purl.obolibrary.org/obo/GO_0080058>
+             <http://purl.obolibrary.org/obo/GO_0036525> <http://purl.obolibrary.org/obo/GO_0006517>
+             <http://purl.obolibrary.org/obo/GO_0006470> <http://purl.obolibrary.org/obo/GO_0017013>
+             <http://purl.obolibrary.org/obo/GO_0010731>
+             <https://w3id.org/lambda-ber-schema/functional_annotation/PTMTypeEnum#glycosylation>
+             <http://purl.obolibrary.org/obo/GO_0018126> <http://purl.obolibrary.org/obo/GO_0006497>
+             <http://purl.obolibrary.org/obo/GO_0006479> <http://purl.obolibrary.org/obo/GO_0018377>
+             <http://purl.obolibrary.org/obo/GO_0017014> <http://purl.obolibrary.org/obo/GO_0018158>
+             <http://purl.obolibrary.org/obo/GO_0018345> <http://purl.obolibrary.org/obo/GO_0018193>
+             <http://purl.obolibrary.org/obo/GO_0006468> <http://purl.obolibrary.org/obo/GO_0043687>
+             <http://purl.obolibrary.org/obo/GO_0018342> <http://purl.obolibrary.org/obo/GO_0006508>
+             <http://purl.obolibrary.org/obo/GO_0006477> <http://purl.obolibrary.org/obo/GO_0044524>
+             <http://purl.obolibrary.org/obo/GO_0016925> <http://purl.obolibrary.org/obo/GO_0016567> ] ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/modified_residue> @linkml:String ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/modification_group> @linkml:String ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/mass_shift> @linkml:Float ? ;

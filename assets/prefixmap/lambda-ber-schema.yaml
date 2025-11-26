@@ -1,6 +1,7 @@
 {
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
    "CL": "http://purl.obolibrary.org/obo/CL_",
+   "GO": "http://purl.obolibrary.org/obo/GO_",
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "ROR": "https://ror.org/",
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
