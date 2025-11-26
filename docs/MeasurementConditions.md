@@ -63,12 +63,12 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [buffer_composition](buffer_composition.md) | 0..1 <br/> [BufferComposition](BufferComposition.md) | Composition of the buffer used | direct |
-| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH value of the solution during measurement | direct |
+| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH value of the solution during measurement (range: 0-14) | direct |
 | [ionic_strength](ionic_strength.md) | 0..1 <br/> [Float](Float.md) | Ionic strength in molar of material in solution | direct |
 | [temperature](temperature.md) | 0..1 <br/> [Float](Float.md) | Temperature in Kelvin during measurement | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -136,7 +136,7 @@ attributes:
     range: BufferComposition
   ph:
     name: ph
-    description: pH value of the solution during measurement
+    description: 'pH value of the solution during measurement (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     domain_of:
     - BufferComposition
@@ -190,7 +190,7 @@ attributes:
     range: BufferComposition
   ph:
     name: ph
-    description: pH value of the solution during measurement
+    description: 'pH value of the solution during measurement (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     alias: ph
     owner: MeasurementConditions
@@ -241,6 +241,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -251,6 +252,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

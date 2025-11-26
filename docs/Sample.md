@@ -291,7 +291,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [anatomy](anatomy.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Anatomical part or tissue (e | direct |
 | [cell_type](cell_type.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Cell type if applicable (e | direct |
 | [parent_sample_id](parent_sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Reference to parent sample for derivation tracking | direct |
-| [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage | direct |
+| [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage (range: 0-100) | direct |
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [String](String.md) | Quality control metrics for the sample | direct |
 | [functional_sites](functional_sites.md) | * <br/> [FunctionalSite](FunctionalSite.md) | Functional site annotations for proteins in the sample | direct |
 | [structural_features](structural_features.md) | * <br/> [StructuralFeature](StructuralFeature.md) | Structural feature annotations | direct |
@@ -310,8 +310,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [expression_system](expression_system.md) | 0..1 <br/> [String](String.md) | Expression system used | direct |
 | [ligand](ligand.md) | 0..1 <br/> [String](String.md) | Ligand or small molecule bound to sample | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -484,7 +484,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -838,7 +838,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: purity_percentage
@@ -1090,6 +1090,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1100,6 +1101,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

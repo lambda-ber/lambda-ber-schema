@@ -93,8 +93,8 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 | [dimensions_y](dimensions_y.md) | 0..1 <br/> [Integer](Integer.md) | Image height in pixels | [Image](Image.md) |
 | [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | [Image](Image.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -403,6 +403,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -413,6 +414,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

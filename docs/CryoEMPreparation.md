@@ -115,11 +115,11 @@ URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPrep
 | ---  | --- | --- | --- |
 | [grid_type](grid_type.md) | 0..1 <br/> [GridTypeEnum](GridTypeEnum.md) | Type of EM grid used | direct |
 | [support_film](support_film.md) | 0..1 <br/> [String](String.md) | Support film type | direct |
-| [hole_size](hole_size.md) | 0..1 <br/> [Float](Float.md) | Hole size in micrometers | direct |
+| [hole_size](hole_size.md) | 0..1 <br/> [Float](Float.md) | Hole size in micrometers (range: 0 | direct |
 | [vitrification_method](vitrification_method.md) | 0..1 <br/> [VitrificationMethodEnum](VitrificationMethodEnum.md) | Method used for vitrification | direct |
-| [blot_time](blot_time.md) | 0..1 <br/> [Float](Float.md) | Blotting time in seconds | direct |
+| [blot_time](blot_time.md) | 0..1 <br/> [Float](Float.md) | Blotting time in seconds (range: 0 | direct |
 | [blot_force](blot_force.md) | 0..1 <br/> [Integer](Integer.md) | Blotting force setting | direct |
-| [humidity_percentage](humidity_percentage.md) | 0..1 <br/> [Float](Float.md) | Chamber humidity during vitrification | direct |
+| [humidity_percentage](humidity_percentage.md) | 0..1 <br/> [Float](Float.md) | Chamber humidity during vitrification (range: 0-100) | direct |
 | [chamber_temperature](chamber_temperature.md) | 0..1 <br/> [Float](Float.md) | Chamber temperature in Celsius | direct |
 | [grid_material](grid_material.md) | 0..1 <br/> [GridMaterialEnum](GridMaterialEnum.md) | Grid material | direct |
 | [glow_discharge_applied](glow_discharge_applied.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether glow discharge treatment was applied | direct |
@@ -204,7 +204,7 @@ attributes:
     range: string
   hole_size:
     name: hole_size
-    description: Hole size in micrometers
+    description: 'Hole size in micrometers (range: 0.5-5.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -222,7 +222,7 @@ attributes:
     range: VitrificationMethodEnum
   blot_time:
     name: blot_time
-    description: Blotting time in seconds
+    description: 'Blotting time in seconds (range: 0.5-10.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -240,7 +240,7 @@ attributes:
     range: integer
   humidity_percentage:
     name: humidity_percentage
-    description: Chamber humidity during vitrification
+    description: 'Chamber humidity during vitrification (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -402,7 +402,7 @@ attributes:
     range: string
   hole_size:
     name: hole_size
-    description: Hole size in micrometers
+    description: 'Hole size in micrometers (range: 0.5-5.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: hole_size
@@ -424,7 +424,7 @@ attributes:
     range: VitrificationMethodEnum
   blot_time:
     name: blot_time
-    description: Blotting time in seconds
+    description: 'Blotting time in seconds (range: 0.5-10.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: blot_time
@@ -446,7 +446,7 @@ attributes:
     range: integer
   humidity_percentage:
     name: humidity_percentage
-    description: Chamber humidity during vitrification
+    description: 'Chamber humidity during vitrification (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: humidity_percentage

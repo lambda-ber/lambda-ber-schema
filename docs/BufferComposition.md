@@ -47,7 +47,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH of the buffer | direct |
+| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH of the buffer (range: 0-14) | direct |
 | [components](components.md) | * <br/> [String](String.md) | Buffer components and their concentrations | direct |
 | [additives](additives.md) | * <br/> [String](String.md) | Additional additives in the buffer | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
@@ -111,7 +111,7 @@ is_a: AttributeGroup
 attributes:
   ph:
     name: ph
-    description: pH of the buffer
+    description: 'pH of the buffer (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -154,7 +154,7 @@ is_a: AttributeGroup
 attributes:
   ph:
     name: ph
-    description: pH of the buffer
+    description: 'pH of the buffer (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: ph

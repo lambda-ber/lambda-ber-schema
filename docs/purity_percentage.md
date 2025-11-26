@@ -3,7 +3,7 @@
 # Slot: purity_percentage 
 
 
-_Sample purity as percentage_
+_Sample purity as percentage (range: 0-100)_
 
 
 
@@ -70,7 +70,7 @@ Alias: purity_percentage
 <details>
 ```yaml
 name: purity_percentage
-description: Sample purity as percentage
+description: 'Sample purity as percentage (range: 0-100)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: purity_percentage

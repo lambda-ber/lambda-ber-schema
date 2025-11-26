@@ -3136,6 +3136,7 @@
     },
     {
       "name": "namedThing__title",
+      "description": "A human-readable name or title for this entity",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "mappings": [
         "http://purl.org/dc/terms/title"
@@ -3151,6 +3152,7 @@
     },
     {
       "name": "namedThing__description",
+      "description": "A detailed textual description of this entity",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/description",
       "alias": "description",
@@ -3175,6 +3177,7 @@
     },
     {
       "name": "dataset__keywords",
+      "description": "Keywords or tags describing the dataset for search and categorization",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/keywords",
       "alias": "keywords",
@@ -3188,6 +3191,7 @@
     },
     {
       "name": "dataset__instruments",
+      "description": "Instruments used across all studies in this dataset",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/instruments",
       "alias": "instruments",
@@ -3203,6 +3207,7 @@
     },
     {
       "name": "dataset__studies",
+      "description": "Individual research studies contained in this dataset",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/studies",
       "alias": "studies",
@@ -3234,6 +3239,7 @@
     },
     {
       "name": "study__samples",
+      "description": "Experimental samples used in this study, including biological samples ",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/samples",
       "alias": "samples",
@@ -3249,6 +3255,7 @@
     },
     {
       "name": "study__sample_preparations",
+      "description": "Sample preparation procedures performed in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/sample_preparations",
       "alias": "sample_preparations",
@@ -3264,6 +3271,7 @@
     },
     {
       "name": "study__instrument_runs",
+      "description": "Experimental data collection runs performed in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_runs",
       "alias": "instrument_runs",
@@ -3279,6 +3287,7 @@
     },
     {
       "name": "study__workflow_runs",
+      "description": "Computational workflow executions for data processing in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_runs",
       "alias": "workflow_runs",
@@ -3294,6 +3303,7 @@
     },
     {
       "name": "study__data_files",
+      "description": "Data files generated or used in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/data_files",
       "alias": "data_files",
@@ -3309,6 +3319,7 @@
     },
     {
       "name": "study__images",
+      "description": "Images acquired or generated in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/images",
       "alias": "images",
@@ -3518,7 +3529,7 @@
     },
     {
       "name": "sample__purity_percentage",
-      "description": "Sample purity as percentage",
+      "description": "Sample purity as percentage (range: 0-100)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/purity_percentage",
       "alias": "purity_percentage",
@@ -7889,6 +7900,7 @@
     },
     {
       "name": "imageFeature__terms",
+      "description": "Ontology terms describing features identified in the image",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/terms",
       "alias": "terms",
@@ -7897,10 +7909,30 @@
         "ImageFeature"
       ],
       "range": "OntologyTerm",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontologyTerm__terms",
+      "description": "Collection of ontology terms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/terms",
+      "alias": "terms",
+      "owner": "OntologyTerm",
+      "domain_of": [
+        "OntologyTerm"
+      ],
+      "range": "OntologyTerm",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ontologyTerm__label",
+      "description": "The human-readable label or name of the ontology term",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/label",
       "alias": "label",
@@ -7913,6 +7945,7 @@
     },
     {
       "name": "ontologyTerm__definition",
+      "description": "The formal definition or meaning of the ontology term",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/definition",
       "alias": "definition",
@@ -7925,6 +7958,7 @@
     },
     {
       "name": "ontologyTerm__ontology",
+      "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ontology",
       "alias": "ontology",
@@ -7979,7 +8013,7 @@
     },
     {
       "name": "bufferComposition__ph",
-      "description": "pH of the buffer",
+      "description": "pH of the buffer (range: 0-14)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ph",
       "alias": "ph",
@@ -8100,7 +8134,7 @@
     },
     {
       "name": "cryoEMPreparation__hole_size",
-      "description": "Hole size in micrometers",
+      "description": "Hole size in micrometers (range: 0.5-5.0)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/hole_size",
       "alias": "hole_size",
@@ -8128,7 +8162,7 @@
     },
     {
       "name": "cryoEMPreparation__blot_time",
-      "description": "Blotting time in seconds",
+      "description": "Blotting time in seconds (range: 0.5-10.0)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/blot_time",
       "alias": "blot_time",
@@ -8156,7 +8190,7 @@
     },
     {
       "name": "cryoEMPreparation__humidity_percentage",
-      "description": "Chamber humidity during vitrification",
+      "description": "Chamber humidity during vitrification (range: 0-100)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/humidity_percentage",
       "alias": "humidity_percentage",
@@ -10244,7 +10278,7 @@
     },
     {
       "name": "proteinAnnotation__confidence_score",
-      "description": "Confidence score for the annotation (0-1)",
+      "description": "Confidence score for the annotation (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/confidence_score",
       "alias": "confidence_score",
@@ -10383,7 +10417,7 @@
     },
     {
       "name": "functionalSite__conservation_score",
-      "description": "Evolutionary conservation score",
+      "description": "Evolutionary conservation score (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
@@ -10466,7 +10500,7 @@
     },
     {
       "name": "structuralFeature__solvent_accessibility",
-      "description": "Relative solvent accessible surface area",
+      "description": "Relative solvent accessible surface area (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/solvent_accessibility",
       "alias": "solvent_accessibility",
@@ -10494,7 +10528,7 @@
     },
     {
       "name": "structuralFeature__disorder_probability",
-      "description": "Probability of disorder (0-1)",
+      "description": "Probability of disorder (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/disorder_probability",
       "alias": "disorder_probability",
@@ -10694,7 +10728,7 @@
     },
     {
       "name": "ligandInteraction__druggability_score",
-      "description": "Druggability score of the binding site",
+      "description": "Druggability score of the binding site (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/druggability_score",
       "alias": "druggability_score",
@@ -10992,7 +11026,7 @@
     },
     {
       "name": "mutationEffect__allele_frequency",
-      "description": "Population allele frequency",
+      "description": "Population allele frequency (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/allele_frequency",
       "alias": "allele_frequency",
@@ -11232,7 +11266,7 @@
     },
     {
       "name": "conformationalState__population",
-      "description": "Relative population of this state",
+      "description": "Relative population of this state (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/population",
       "alias": "population",
@@ -11459,7 +11493,7 @@
     },
     {
       "name": "evolutionaryConservation__conservation_score",
-      "description": "Overall conservation score",
+      "description": "Overall conservation score (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
@@ -11793,7 +11827,7 @@
     },
     {
       "name": "measurementConditions__ph",
-      "description": "pH value of the solution during measurement",
+      "description": "pH value of the solution during measurement (range: 0-14)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
       "alias": "ph",
@@ -11923,11 +11957,13 @@
         },
         {
           "name": "title",
+          "description": "A human-readable name or title for this entity",
           "slot_uri": "dcterms:title",
           "@type": "SlotDefinition"
         },
         {
           "name": "description",
+          "description": "A detailed textual description of this entity",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -11973,12 +12009,14 @@
       "attributes": [
         {
           "name": "keywords",
+          "description": "Keywords or tags describing the dataset for search and categorization",
           "range": "string",
           "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "instruments",
+          "description": "Instruments used across all studies in this dataset",
           "range": "Instrument",
           "multivalued": true,
           "inlined": true,
@@ -11987,6 +12025,7 @@
         },
         {
           "name": "studies",
+          "description": "Individual research studies contained in this dataset",
           "range": "Study",
           "multivalued": true,
           "inlined": true,
@@ -12029,6 +12068,7 @@
         },
         {
           "name": "samples",
+          "description": "Experimental samples used in this study, including biological samples ",
           "range": "Sample",
           "multivalued": true,
           "inlined_as_list": true,
@@ -12036,6 +12076,7 @@
         },
         {
           "name": "sample_preparations",
+          "description": "Sample preparation procedures performed in this study",
           "range": "SamplePreparation",
           "multivalued": true,
           "inlined_as_list": true,
@@ -12043,6 +12084,7 @@
         },
         {
           "name": "instrument_runs",
+          "description": "Experimental data collection runs performed in this study",
           "range": "ExperimentRun",
           "multivalued": true,
           "inlined_as_list": true,
@@ -12050,6 +12092,7 @@
         },
         {
           "name": "workflow_runs",
+          "description": "Computational workflow executions for data processing in this study",
           "range": "WorkflowRun",
           "multivalued": true,
           "inlined_as_list": true,
@@ -12057,6 +12100,7 @@
         },
         {
           "name": "data_files",
+          "description": "Data files generated or used in this study",
           "range": "DataFile",
           "multivalued": true,
           "inlined_as_list": true,
@@ -12064,6 +12108,7 @@
         },
         {
           "name": "images",
+          "description": "Images acquired or generated in this study",
           "range": "Image",
           "multivalued": true,
           "inlined": true,
@@ -12210,7 +12255,7 @@
         },
         {
           "name": "purity_percentage",
-          "description": "Sample purity as percentage",
+          "description": "Sample purity as percentage (range: 0-100)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 100,
@@ -15020,7 +15065,10 @@
       "attributes": [
         {
           "name": "terms",
+          "description": "Ontology terms describing features identified in the image",
           "range": "OntologyTerm",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -15030,12 +15078,14 @@
     {
       "name": "OntologyTerm",
       "definition_uri": "https://w3id.org/lambda-ber-schema/OntologyTerm",
+      "description": "A term from a controlled vocabulary or ontology",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "ontologyTerm__terms",
         "ontologyTerm__label",
         "ontologyTerm__definition",
         "ontologyTerm__ontology"
@@ -15043,17 +15093,28 @@
       "slot_usage": {},
       "attributes": [
         {
+          "name": "terms",
+          "description": "Collection of ontology terms",
+          "range": "OntologyTerm",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "label",
+          "description": "The human-readable label or name of the ontology term",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "definition",
+          "description": "The formal definition or meaning of the ontology term",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "ontology",
+          "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -15116,7 +15177,7 @@
       "attributes": [
         {
           "name": "ph",
-          "description": "pH of the buffer",
+          "description": "pH of the buffer (range: 0-14)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 14,
@@ -15244,7 +15305,7 @@
         },
         {
           "name": "hole_size",
-          "description": "Hole size in micrometers",
+          "description": "Hole size in micrometers (range: 0.5-5.0)",
           "range": "float",
           "minimum_value": 0.5,
           "maximum_value": 5.0,
@@ -15258,7 +15319,7 @@
         },
         {
           "name": "blot_time",
-          "description": "Blotting time in seconds",
+          "description": "Blotting time in seconds (range: 0.5-10.0)",
           "range": "float",
           "minimum_value": 0.5,
           "maximum_value": 10.0,
@@ -15272,7 +15333,7 @@
         },
         {
           "name": "humidity_percentage",
-          "description": "Chamber humidity during vitrification",
+          "description": "Chamber humidity during vitrification (range: 0-100)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 100,
@@ -16571,7 +16632,7 @@
         },
         {
           "name": "confidence_score",
-          "description": "Confidence score for the annotation (0-1)",
+          "description": "Confidence score for the annotation (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16670,7 +16731,7 @@
         },
         {
           "name": "conservation_score",
-          "description": "Evolutionary conservation score",
+          "description": "Evolutionary conservation score (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16745,7 +16806,7 @@
         },
         {
           "name": "solvent_accessibility",
-          "description": "Relative solvent accessible surface area",
+          "description": "Relative solvent accessible surface area (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16759,7 +16820,7 @@
         },
         {
           "name": "disorder_probability",
-          "description": "Probability of disorder (0-1)",
+          "description": "Probability of disorder (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16876,7 +16937,7 @@
         },
         {
           "name": "druggability_score",
-          "description": "Druggability score of the binding site",
+          "description": "Druggability score of the binding site (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17093,7 +17154,7 @@
         },
         {
           "name": "allele_frequency",
-          "description": "Population allele frequency",
+          "description": "Population allele frequency (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17270,7 +17331,7 @@
         },
         {
           "name": "population",
-          "description": "Relative population of this state",
+          "description": "Relative population of this state (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17465,7 +17526,7 @@
       "attributes": [
         {
           "name": "conservation_score",
-          "description": "Overall conservation score",
+          "description": "Overall conservation score (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17673,7 +17734,7 @@
         },
         {
           "name": "ph",
-          "description": "pH value of the solution during measurement",
+          "description": "pH value of the solution during measurement (range: 0-14)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 14,
@@ -17706,9 +17767,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-14T13:56:19",
-  "source_file_size": 99417,
-  "generation_date": "2025-11-14T16:02:41",
+  "source_file_date": "2025-11-26T12:16:27",
+  "source_file_size": 100968,
+  "generation_date": "2025-11-26T13:46:30",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

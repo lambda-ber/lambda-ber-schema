@@ -3,6 +3,11 @@
 # Slot: sample_preparations 
 
 
+_Sample preparation procedures performed in this study_
+
+
+
+
 
 URI: [lambdaber:sample_preparations](https://w3id.org/lambda-ber-schema/sample_preparations)
 Alias: sample_preparations
@@ -63,6 +68,7 @@ Alias: sample_preparations
 <details>
 ```yaml
 name: sample_preparations
+description: Sample preparation procedures performed in this study
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: sample_preparations

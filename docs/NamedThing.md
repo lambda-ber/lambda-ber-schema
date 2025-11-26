@@ -90,8 +90,8 @@ URI: [lambdaber:NamedThing](https://w3id.org/lambda-ber-schema/NamedThing)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | direct |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | direct |
 
 
 
@@ -156,6 +156,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -163,6 +164,7 @@ attributes:
     - NamedThing
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -197,6 +199,7 @@ attributes:
     range: uriorcurie
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -207,6 +210,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

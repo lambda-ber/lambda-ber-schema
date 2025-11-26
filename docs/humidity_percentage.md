@@ -3,7 +3,7 @@
 # Slot: humidity_percentage 
 
 
-_Chamber humidity during vitrification_
+_Chamber humidity during vitrification (range: 0-100)_
 
 
 
@@ -70,7 +70,7 @@ Alias: humidity_percentage
 <details>
 ```yaml
 name: humidity_percentage
-description: Chamber humidity during vitrification
+description: 'Chamber humidity during vitrification (range: 0-100)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: humidity_percentage

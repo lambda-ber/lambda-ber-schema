@@ -651,7 +651,7 @@ linkml:Sparqlpath xsd:string
 <ImageFeature> CLOSED {
     (  $<ImageFeature_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <terms> @<OntologyTerm> ?
+          <terms> @<OntologyTerm> *
        ) ;
        rdf:type [ <ImageFeature> ] ?
     )
@@ -859,6 +859,7 @@ linkml:Sparqlpath xsd:string
 <OntologyTerm> CLOSED {
     (  $<OntologyTerm_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
+          <terms> @<OntologyTerm> * ;
           <label> @linkml:String ? ;
           <definition> @linkml:String ? ;
           <ontology> @linkml:String ?

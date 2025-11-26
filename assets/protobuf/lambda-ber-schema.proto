@@ -449,7 +449,7 @@ message Image3D
 message ImageFeature
  {
   string description = 0
-  ontologyTerm terms = 0
+ repeated  ontologyTerm terms = 0
  }
 // An instrument used to collect data
 message Instrument
@@ -592,11 +592,13 @@ message MutationEffect
   clinicalSignificanceEnum clinicalSignificance = 0
   float alleleFrequency = 0
  }
+// A term from a controlled vocabulary or ontology
 message OntologyTerm
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
+ repeated  ontologyTerm terms = 0
   string label = 0
   string definition = 0
   string ontology = 0
