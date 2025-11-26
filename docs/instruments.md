@@ -3,6 +3,11 @@
 # Slot: instruments 
 
 
+_Instruments used across all studies in this dataset_
+
+
+
+
 
 URI: [lambdaber:instruments](https://w3id.org/lambda-ber-schema/instruments)
 Alias: instruments
@@ -63,6 +68,7 @@ Alias: instruments
 <details>
 ```yaml
 name: instruments
+description: Instruments used across all studies in this dataset
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: instruments

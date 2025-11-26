@@ -3,6 +3,11 @@
 # Slot: samples 
 
 
+_Experimental samples used in this study, including biological samples _
+
+
+
+
 
 URI: [lambdaber:samples](https://w3id.org/lambda-ber-schema/samples)
 Alias: samples
@@ -63,6 +68,7 @@ Alias: samples
 <details>
 ```yaml
 name: samples
+description: 'Experimental samples used in this study, including biological samples '
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: samples

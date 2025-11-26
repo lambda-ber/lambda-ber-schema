@@ -3,7 +3,7 @@
 # Slot: population 
 
 
-_Relative population of this state_
+_Relative population of this state (range: 0-1)_
 
 
 
@@ -70,7 +70,7 @@ Alias: population
 <details>
 ```yaml
 name: population
-description: Relative population of this state
+description: 'Relative population of this state (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: population

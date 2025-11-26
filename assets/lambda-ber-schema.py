@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-25T14:35:49
+# Generation date: 2025-11-26T14:01:36
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -2224,17 +2224,19 @@ class ImageFeature(AttributeGroup):
     class_name: ClassVar[str] = "ImageFeature"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ImageFeature
 
-    terms: Optional[Union[str, OntologyTermId]] = None
+    terms: Optional[Union[dict[Union[str, OntologyTermId], Union[dict, "OntologyTerm"]], list[Union[dict, "OntologyTerm"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.terms is not None and not isinstance(self.terms, OntologyTermId):
-            self.terms = OntologyTermId(self.terms)
+        self._normalize_inlined_as_list(slot_name="terms", slot_type=OntologyTerm, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
 class OntologyTerm(NamedThing):
+    """
+    A term from a controlled vocabulary or ontology
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = LAMBDABER["OntologyTerm"]
@@ -2243,6 +2245,7 @@ class OntologyTerm(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.OntologyTerm
 
     id: Union[str, OntologyTermId] = None
+    terms: Optional[Union[dict[Union[str, OntologyTermId], Union[dict, "OntologyTerm"]], list[Union[dict, "OntologyTerm"]]]] = empty_dict()
     label: Optional[str] = None
     definition: Optional[str] = None
     ontology: Optional[str] = None
@@ -2252,6 +2255,8 @@ class OntologyTerm(NamedThing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OntologyTermId):
             self.id = OntologyTermId(self.id)
+
+        self._normalize_inlined_as_list(slot_name="terms", slot_type=OntologyTerm, key_name="id", keyed=True)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -6953,7 +6958,10 @@ slots.xRFImage__calibration_standard = Slot(uri=LAMBDABER.calibration_standard, 
                    model_uri=LAMBDABER.xRFImage__calibration_standard, domain=None, range=Optional[str])
 
 slots.imageFeature__terms = Slot(uri=LAMBDABER.terms, name="imageFeature__terms", curie=LAMBDABER.curie('terms'),
-                   model_uri=LAMBDABER.imageFeature__terms, domain=None, range=Optional[Union[str, OntologyTermId]])
+                   model_uri=LAMBDABER.imageFeature__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
+
+slots.ontologyTerm__terms = Slot(uri=LAMBDABER.terms, name="ontologyTerm__terms", curie=LAMBDABER.curie('terms'),
+                   model_uri=LAMBDABER.ontologyTerm__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
 
 slots.ontologyTerm__label = Slot(uri=LAMBDABER.label, name="ontologyTerm__label", curie=LAMBDABER.curie('label'),
                    model_uri=LAMBDABER.ontologyTerm__label, domain=None, range=Optional[str])

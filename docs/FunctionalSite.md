@@ -122,7 +122,7 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 | [site_name](site_name.md) | 0..1 <br/> [String](String.md) | Common name for this site | direct |
 | [residues](residues.md) | * <br/> [String](String.md) | List of residues forming the functional site | direct |
 | [ligand_interactions](ligand_interactions.md) | * <br/> [LigandInteraction](LigandInteraction.md) | Ligands that interact with this site | direct |
-| [conservation_score](conservation_score.md) | 0..1 <br/> [Float](Float.md) | Evolutionary conservation score | direct |
+| [conservation_score](conservation_score.md) | 0..1 <br/> [Float](Float.md) | Evolutionary conservation score (range: 0-1) | direct |
 | [functional_importance](functional_importance.md) | 0..1 <br/> [String](String.md) | Description of functional importance | direct |
 | [go_terms](go_terms.md) | * <br/> [Uriorcurie](Uriorcurie.md) | Associated Gene Ontology terms | direct |
 | [ec_number](ec_number.md) | 0..1 <br/> [String](String.md) | Enzyme Commission number for catalytic sites | direct |
@@ -130,15 +130,15 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
 | [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | [ProteinAnnotation](ProteinAnnotation.md) |
 | [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | [ProteinAnnotation](ProteinAnnotation.md) |
 | [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | [ProteinAnnotation](ProteinAnnotation.md) |
-| [confidence_score](confidence_score.md) | 0..1 <br/> [Float](Float.md) | Confidence score for the annotation (0-1) | [ProteinAnnotation](ProteinAnnotation.md) |
+| [confidence_score](confidence_score.md) | 0..1 <br/> [Float](Float.md) | Confidence score for the annotation (range: 0-1) | [ProteinAnnotation](ProteinAnnotation.md) |
 | [evidence_type](evidence_type.md) | 0..1 <br/> [EvidenceTypeEnum](EvidenceTypeEnum.md) | Type of evidence supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [evidence_code](evidence_code.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Evidence and Conclusion Ontology (ECO) code | [ProteinAnnotation](ProteinAnnotation.md) |
 | [source_database](source_database.md) | 0..1 <br/> [AnnotationSourceEnum](AnnotationSourceEnum.md) | Source database or resource that provided this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [annotation_method](annotation_method.md) | 0..1 <br/> [String](String.md) | Computational or experimental method used | [ProteinAnnotation](ProteinAnnotation.md) |
 | [publication_ids](publication_ids.md) | * <br/> [String](String.md) | IDs of one or more publications supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -236,7 +236,7 @@ attributes:
     inlined_as_list: true
   conservation_score:
     name: conservation_score
-    description: Evolutionary conservation score
+    description: 'Evolutionary conservation score (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -331,7 +331,7 @@ attributes:
     inlined_as_list: true
   conservation_score:
     name: conservation_score
-    description: Evolutionary conservation score
+    description: 'Evolutionary conservation score (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: conservation_score
@@ -422,7 +422,7 @@ attributes:
     pattern: ^[0-9,\-]+$
   confidence_score:
     name: confidence_score
-    description: Confidence score for the annotation (0-1)
+    description: 'Confidence score for the annotation (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: confidence_score
@@ -501,6 +501,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -511,6 +512,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

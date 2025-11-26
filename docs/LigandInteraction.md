@@ -102,7 +102,7 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 | [binding_site_residues](binding_site_residues.md) | * <br/> [String](String.md) | Residues involved in ligand binding | direct |
 | [is_cofactor](is_cofactor.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the ligand is a cofactor | direct |
 | [is_drug_like](is_drug_like.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the ligand has drug-like properties | direct |
-| [druggability_score](druggability_score.md) | 0..1 <br/> [Float](Float.md) | Druggability score of the binding site | direct |
+| [druggability_score](druggability_score.md) | 0..1 <br/> [Float](Float.md) | Druggability score of the binding site (range: 0-1) | direct |
 | [interaction_distance](interaction_distance.md) | 0..1 <br/> [Float](Float.md) | Distance criteria for interaction (Angstroms) | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -247,7 +247,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -383,7 +383,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: druggability_score

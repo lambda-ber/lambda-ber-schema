@@ -3,6 +3,11 @@
 # Slot: ontology 
 
 
+_The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)_
+
+
+
+
 
 URI: [lambdaber:ontology](https://w3id.org/lambda-ber-schema/ontology)
 Alias: ontology
@@ -17,7 +22,7 @@ Alias: ontology
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OntologyTerm](OntologyTerm.md) |  |  no  |
+| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 
 
 
@@ -61,6 +66,8 @@ Alias: ontology
 <details>
 ```yaml
 name: ontology
+description: The ontology or controlled vocabulary this term comes from (e.g., GO,
+  SO, UBERON)
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ontology

@@ -48,6 +48,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -157,6 +158,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -355,7 +357,7 @@
                     ]
                 },
                 "ph": {
-                    "description": "pH of the buffer",
+                    "description": "pH of the buffer (range: 0-14)",
                     "maximum": 14,
                     "minimum": 0,
                     "type": [
@@ -538,6 +540,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -576,6 +579,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -634,7 +638,7 @@
                     ]
                 },
                 "population": {
-                    "description": "Relative population of this state",
+                    "description": "Relative population of this state (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -742,6 +746,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -915,6 +920,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -947,7 +953,7 @@
                     ]
                 },
                 "blot_time": {
-                    "description": "Blotting time in seconds",
+                    "description": "Blotting time in seconds (range: 0.5-10.0)",
                     "maximum": 10.0,
                     "minimum": 0.5,
                     "type": [
@@ -1033,7 +1039,7 @@
                     "description": "Type of EM grid used"
                 },
                 "hole_size": {
-                    "description": "Hole size in micrometers",
+                    "description": "Hole size in micrometers (range: 0.5-5.0)",
                     "maximum": 5.0,
                     "minimum": 0.5,
                     "type": [
@@ -1042,7 +1048,7 @@
                     ]
                 },
                 "humidity_percentage": {
-                    "description": "Chamber humidity during vitrification",
+                    "description": "Chamber humidity during vitrification (range: 0-100)",
                     "maximum": 100,
                     "minimum": 0,
                     "type": [
@@ -1373,6 +1379,7 @@
                     "description": "Type of data in the file"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1426,6 +1433,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1536,6 +1544,7 @@
             "description": "A collection of studies",
             "properties": {
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1546,6 +1555,7 @@
                     "type": "string"
                 },
                 "instruments": {
+                    "description": "Instruments used across all studies in this dataset",
                     "items": {
                         "$ref": "#/$defs/Instrument"
                     },
@@ -1555,6 +1565,7 @@
                     ]
                 },
                 "keywords": {
+                    "description": "Keywords or tags describing the dataset for search and categorization",
                     "items": {
                         "type": "string"
                     },
@@ -1564,6 +1575,7 @@
                     ]
                 },
                 "studies": {
+                    "description": "Individual research studies contained in this dataset",
                     "items": {
                         "$ref": "#/$defs/Study"
                     },
@@ -1573,6 +1585,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1677,7 +1690,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -1693,7 +1706,7 @@
                     ]
                 },
                 "conservation_score": {
-                    "description": "Overall conservation score",
+                    "description": "Overall conservation score (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -1712,6 +1725,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1776,6 +1790,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1913,6 +1928,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2081,6 +2097,7 @@
                     "description": "Technique used for data collection"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2266,6 +2283,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2339,6 +2357,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2446,6 +2465,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2551,6 +2571,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2597,7 +2618,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -2606,7 +2627,7 @@
                     ]
                 },
                 "conservation_score": {
-                    "description": "Evolutionary conservation score",
+                    "description": "Evolutionary conservation score (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -2615,6 +2636,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2728,6 +2750,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2818,6 +2841,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2867,6 +2891,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2906,6 +2931,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2955,6 +2981,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2980,6 +3007,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3043,6 +3071,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3074,8 +3103,12 @@
                     ]
                 },
                 "terms": {
+                    "description": "Ontology terms describing features identified in the image",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTerm"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 }
@@ -3102,6 +3135,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3137,6 +3171,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3229,7 +3264,7 @@
                     ]
                 },
                 "druggability_score": {
-                    "description": "Druggability score of the binding site",
+                    "description": "Druggability score of the binding site (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3302,6 +3337,7 @@
                     "description": "Composition of the buffer used"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3319,7 +3355,7 @@
                     ]
                 },
                 "ph": {
-                    "description": "pH value of the solution during measurement",
+                    "description": "pH value of the solution during measurement (range: 0-14)",
                     "maximum": 14,
                     "minimum": 0,
                     "type": [
@@ -3335,6 +3371,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3401,6 +3438,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3464,6 +3502,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3638,6 +3677,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3771,6 +3811,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3789,7 +3830,7 @@
             "description": "Effects of mutations and variants on protein structure and function",
             "properties": {
                 "allele_frequency": {
-                    "description": "Population allele frequency",
+                    "description": "Population allele frequency (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3817,7 +3858,7 @@
                     "description": "Clinical significance"
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3833,6 +3874,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3929,6 +3971,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3959,15 +4002,17 @@
         },
         "OntologyTerm": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A term from a controlled vocabulary or ontology",
             "properties": {
                 "definition": {
+                    "description": "The formal definition or meaning of the ontology term",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3978,18 +4023,31 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "The human-readable label or name of the ontology term",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "ontology": {
+                    "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
+                "terms": {
+                    "description": "Collection of ontology terms",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTerm"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4045,6 +4103,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4112,6 +4171,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4264,7 +4324,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4273,6 +4333,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4380,6 +4441,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4441,7 +4503,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4450,6 +4512,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4510,6 +4573,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4560,6 +4624,7 @@
                     "type": "string"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4654,6 +4719,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4733,7 +4799,7 @@
                     "description": "Stability assessment of the complex"
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4742,6 +4808,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4854,6 +4921,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5199,6 +5267,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5276,6 +5345,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5420,6 +5490,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5558,7 +5629,7 @@
                     ]
                 },
                 "purity_percentage": {
-                    "description": "Sample purity as percentage",
+                    "description": "Sample purity as percentage (range: 0-100)",
                     "maximum": 100,
                     "minimum": 0,
                     "type": [
@@ -5610,6 +5681,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5692,6 +5764,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5913,6 +5986,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6047,7 +6121,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -6060,13 +6134,14 @@
                     "description": "Conformational state descriptor"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "disorder_probability": {
-                    "description": "Probability of disorder (0-1)",
+                    "description": "Probability of disorder (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -6144,7 +6219,7 @@
                     "description": "Secondary structure assignment"
                 },
                 "solvent_accessibility": {
-                    "description": "Relative solvent accessible surface area",
+                    "description": "Relative solvent accessible surface area (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -6164,6 +6239,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6220,6 +6296,7 @@
                     ]
                 },
                 "data_files": {
+                    "description": "Data files generated or used in this study",
                     "items": {
                         "$ref": "#/$defs/DataFile"
                     },
@@ -6229,6 +6306,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6239,6 +6317,7 @@
                     "type": "string"
                 },
                 "images": {
+                    "description": "Images acquired or generated in this study",
                     "items": {
                         "$ref": "#/$defs/Image"
                     },
@@ -6248,6 +6327,7 @@
                     ]
                 },
                 "instrument_runs": {
+                    "description": "Experimental data collection runs performed in this study",
                     "items": {
                         "$ref": "#/$defs/ExperimentRun"
                     },
@@ -6267,6 +6347,7 @@
                     ]
                 },
                 "sample_preparations": {
+                    "description": "Sample preparation procedures performed in this study",
                     "items": {
                         "$ref": "#/$defs/SamplePreparation"
                     },
@@ -6276,6 +6357,7 @@
                     ]
                 },
                 "samples": {
+                    "description": "Experimental samples used in this study, including biological samples ",
                     "items": {
                         "$ref": "#/$defs/Sample"
                     },
@@ -6285,12 +6367,14 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "workflow_runs": {
+                    "description": "Computational workflow executions for data processing in this study",
                     "items": {
                         "$ref": "#/$defs/WorkflowRun"
                     },
@@ -6439,6 +6523,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6727,6 +6812,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6887,6 +6973,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6975,6 +7062,7 @@
                     "description": "X-ray source type (synchrotron or lab-source)"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -7025,6 +7113,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -7117,6 +7206,7 @@
                     "description": "Type of X-ray source"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -7339,6 +7429,7 @@
     "metamodel_version": "1.7.0",
     "properties": {
         "description": {
+            "description": "A detailed textual description of this entity",
             "type": [
                 "string",
                 "null"
@@ -7349,6 +7440,7 @@
             "type": "string"
         },
         "instruments": {
+            "description": "Instruments used across all studies in this dataset",
             "items": {
                 "$ref": "#/$defs/Instrument"
             },
@@ -7358,6 +7450,7 @@
             ]
         },
         "keywords": {
+            "description": "Keywords or tags describing the dataset for search and categorization",
             "items": {
                 "type": "string"
             },
@@ -7367,6 +7460,7 @@
             ]
         },
         "studies": {
+            "description": "Individual research studies contained in this dataset",
             "items": {
                 "$ref": "#/$defs/Study"
             },
@@ -7376,6 +7470,7 @@
             ]
         },
         "title": {
+            "description": "A human-readable name or title for this entity",
             "type": [
                 "string",
                 "null"

@@ -3,6 +3,11 @@
 # Slot: instrument_runs 
 
 
+_Experimental data collection runs performed in this study_
+
+
+
+
 
 URI: [lambdaber:instrument_runs](https://w3id.org/lambda-ber-schema/instrument_runs)
 Alias: instrument_runs
@@ -63,6 +68,7 @@ Alias: instrument_runs
 <details>
 ```yaml
 name: instrument_runs
+description: Experimental data collection runs performed in this study
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: instrument_runs

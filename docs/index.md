@@ -132,7 +132,7 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OntologyTerm](OntologyTerm.md) |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |
@@ -165,7 +165,7 @@ Name: lambda-ber-schema
 | [aggregation_assessment](aggregation_assessment.md) | Assessment of protein aggregation state |
 | [alignment_depth](alignment_depth.md) | Number of sequences in alignment |
 | [aliquoting](aliquoting.md) | How the protein was aliquoted for storage |
-| [allele_frequency](allele_frequency.md) | Population allele frequency |
+| [allele_frequency](allele_frequency.md) | Population allele frequency (range: 0-1) |
 | [amplitude_contrast](amplitude_contrast.md) | Amplitude contrast value |
 | [anatomy](anatomy.md) | Anatomical part or tissue (e |
 | [anisotropic_correction](anisotropic_correction.md) | Whether anisotropic motion correction was applied |
@@ -209,7 +209,7 @@ Name: lambda-ber-schema
 | [biophysical_properties](biophysical_properties.md) | Measured or predicted biophysical properties |
 | [blot_force](blot_force.md) | Blotting force setting |
 | [blot_number](blot_number.md) | Number of blots applied |
-| [blot_time](blot_time.md) | Blotting time in seconds |
+| [blot_time](blot_time.md) | Blotting time in seconds (range: 0 |
 | [blotter_height](blotter_height.md) | Blotter height setting |
 | [blotter_setting](blotter_setting.md) | Blotter setting value |
 | [box_size](box_size.md) | Particle box size in pixels |
@@ -250,12 +250,12 @@ Name: lambda-ber-schema
 | [concentration_method](concentration_method.md) | Method used to concentrate protein |
 | [concentration_series](concentration_series.md) | Concentration values for series measurements |
 | [concentration_unit](concentration_unit.md) | Unit of concentration measurement |
-| [confidence_score](confidence_score.md) | Confidence score for the annotation (0-1) |
+| [confidence_score](confidence_score.md) | Confidence score for the annotation (range: 0-1) |
 | [conformational_ensemble](conformational_ensemble.md) | Conformational states and dynamics |
 | [conformational_state](conformational_state.md) | Conformational state descriptor |
 | [conformational_states](conformational_states.md) | Individual conformational states |
 | [conservation_method](conservation_method.md) | Method used for conservation analysis |
-| [conservation_score](conservation_score.md) | Evolutionary conservation score |
+| [conservation_score](conservation_score.md) | Evolutionary conservation score (range: 0-1) |
 | [conserved_residues](conserved_residues.md) | Highly conserved residues |
 | [construct](construct.md) | Construct description (e |
 | [construct_description](construct_description.md) | Human-readable description of the construct |
@@ -281,13 +281,13 @@ Name: lambda-ber-schema
 | [culture_volume_l](culture_volume_l.md) | Culture volume in liters |
 | [current_status](current_status.md) | Current operational status |
 | [data_collection_strategy](data_collection_strategy.md) | Strategy for data collection |
-| [data_files](data_files.md) |  |
+| [data_files](data_files.md) | Data files generated or used in this study |
 | [data_type](data_type.md) | Type of data in the file |
 | [database_cross_references](database_cross_references.md) | Cross-references to external databases |
 | [database_id](database_id.md) | Identifier in the external database |
 | [database_name](database_name.md) | Name of the external database |
 | [database_url](database_url.md) | URL to the database entry |
-| [definition](definition.md) |  |
+| [definition](definition.md) | The formal definition or meaning of the ontology term |
 | [defocus](defocus.md) | Defocus value in micrometers |
 | [defocus_range_increment](defocus_range_increment.md) | Defocus range increment in micrometers |
 | [defocus_range_max](defocus_range_max.md) | Maximum defocus range in micrometers |
@@ -300,7 +300,7 @@ Name: lambda-ber-schema
 | [defocus_v](defocus_v.md) | Defocus V in micrometers |
 | [delta_delta_g](delta_delta_g.md) | Change in folding free energy (kcal/mol) |
 | [deposited_to_pdb](deposited_to_pdb.md) | Whether structure was deposited to PDB |
-| [description](description.md) |  |
+| [description](description.md) | A detailed textual description of this entity |
 | [detector_dimensions](detector_dimensions.md) | Detector dimensions in pixels (e |
 | [detector_distance](detector_distance.md) | Distance from sample to detector |
 | [detector_distance_max](detector_distance_max.md) | Maximum detector distance in mm |
@@ -315,7 +315,7 @@ Name: lambda-ber-schema
 | [dimensions_y](dimensions_y.md) | Image height in pixels |
 | [dimensions_z](dimensions_z.md) | Image depth in pixels/slices |
 | [disease_association](disease_association.md) | Associated disease or phenotype |
-| [disorder_probability](disorder_probability.md) | Probability of disorder (0-1) |
+| [disorder_probability](disorder_probability.md) | Probability of disorder (range: 0-1) |
 | [dissociation_constant](dissociation_constant.md) | Experimental Kd if available |
 | [domain_assignment](domain_assignment.md) | Domain database assignment (CATH, SCOP, Pfam) |
 | [domain_id](domain_id.md) | Domain identifier from domain database |
@@ -327,7 +327,7 @@ Name: lambda-ber-schema
 | [drop_ratio_protein_to_reservoir](drop_ratio_protein_to_reservoir.md) | Ratio of protein to reservoir solution in drop (e |
 | [drop_volume](drop_volume.md) | Total drop volume in nanoliters |
 | [drop_volume_nl](drop_volume_nl.md) | Total drop volume in nanoliters |
-| [druggability_score](druggability_score.md) | Druggability score of the binding site |
+| [druggability_score](druggability_score.md) | Druggability score of the binding site (range: 0-1) |
 | [duration](duration.md) | Storage duration |
 | [dwell_time](dwell_time.md) | Dwell time per pixel in milliseconds |
 | [ec_number](ec_number.md) | Enzyme Commission number for catalytic sites |
@@ -403,18 +403,18 @@ Name: lambda-ber-schema
 | [harvest_timepoint](harvest_timepoint.md) | Time point when cells were harvested |
 | [hic_column](hic_column.md) | Hydrophobic interaction column used |
 | [hole_id](hole_id.md) | Hole identifier within grid square |
-| [hole_size](hole_size.md) | Hole size in micrometers |
+| [hole_size](hole_size.md) | Hole size in micrometers (range: 0 |
 | [holes_per_group](holes_per_group.md) | Number of holes per group |
 | [host_strain_or_cell_line](host_strain_or_cell_line.md) | Specific strain or cell line used (e |
 | [humidity](humidity.md) | Humidity percentage |
-| [humidity_percentage](humidity_percentage.md) | Chamber humidity during vitrification |
+| [humidity_percentage](humidity_percentage.md) | Chamber humidity during vitrification (range: 0-100) |
 | [i_over_sigma](i_over_sigma.md) | Mean I/sigma(I) - signal to noise ratio |
 | [i_zero](i_zero.md) | Forward scattering intensity I(0) |
 | [ice_thickness_estimate](ice_thickness_estimate.md) | Estimated ice thickness in nanometers |
 | [id](id.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... |
 | [iex_column](iex_column.md) | Ion-exchange column used |
 | [illumination_type](illumination_type.md) | Type of illumination (brightfield, darkfield, phase contrast, DIC) |
-| [images](images.md) |  |
+| [images](images.md) | Images acquired or generated in this study |
 | [imaging_mode](imaging_mode.md) | Imaging mode for electron microscopy |
 | [indexer_module](indexer_module.md) | Indexing module used (e |
 | [inducer_concentration](inducer_concentration.md) | Concentration of induction agent |
@@ -426,8 +426,8 @@ Name: lambda-ber-schema
 | [installation_date](installation_date.md) | Date of instrument installation |
 | [instrument_code](instrument_code.md) | Human-friendly facility or laboratory identifier for the instrument (e |
 | [instrument_id](instrument_id.md) | Reference to the instrument used |
-| [instrument_runs](instrument_runs.md) |  |
-| [instruments](instruments.md) |  |
+| [instrument_runs](instrument_runs.md) | Experimental data collection runs performed in this study |
+| [instruments](instruments.md) | Instruments used across all studies in this dataset |
 | [integrator_module](integrator_module.md) | Integration module used |
 | [interaction_distance](interaction_distance.md) | Distance criteria for interaction (Angstroms) |
 | [interaction_evidence](interaction_evidence.md) | Evidence for this interaction |
@@ -437,8 +437,8 @@ Name: lambda-ber-schema
 | [ionic_strength](ionic_strength.md) | Ionic strength in molar of material in solution |
 | [is_cofactor](is_cofactor.md) | Whether the ligand is a cofactor |
 | [is_drug_like](is_drug_like.md) | Whether the ligand has drug-like properties |
-| [keywords](keywords.md) |  |
-| [label](label.md) |  |
+| [keywords](keywords.md) | Keywords or tags describing the dataset for search and categorization |
+| [label](label.md) | The human-readable label or name of the ontology term |
 | [laser_power](laser_power.md) | Laser power in milliwatts or percentage |
 | [last_updated](last_updated.md) | Date of last update |
 | [ligand](ligand.md) | Ligand or small molecule bound to sample |
@@ -492,7 +492,7 @@ Name: lambda-ber-schema
 | [objective_aperture](objective_aperture.md) | Objective aperture size in micrometers |
 | [od600_at_induction](od600_at_induction.md) | Optical density at 600nm when induction was started |
 | [omim_id](omim_id.md) | OMIM database identifier |
-| [ontology](ontology.md) |  |
+| [ontology](ontology.md) | The ontology or controlled vocabulary this term comes from (e |
 | [operator_id](operator_id.md) | Identifier or name of the person who performed the sample preparation (e |
 | [optimization_strategy](optimization_strategy.md) | Strategy used to optimize crystals |
 | [optimized_condition](optimized_condition.md) | Final optimized crystallization condition |
@@ -514,7 +514,7 @@ Name: lambda-ber-schema
 | [pdb_entries](pdb_entries.md) | PDB entries representing this state |
 | [pdb_entry](pdb_entry.md) | PDB identifier |
 | [pdb_id](pdb_id.md) | PDB accession code if deposited |
-| [ph](ph.md) | pH of the buffer |
+| [ph](ph.md) | pH of the buffer (range: 0-14) |
 | [phase_plate](phase_plate.md) | Phase plate available |
 | [phase_plate_type](phase_plate_type.md) | Type of phase plate if present |
 | [phasing_method](phasing_method.md) | Phasing method used for X-ray crystallography structure determination |
@@ -528,7 +528,7 @@ Name: lambda-ber-schema
 | [pixel_size_x](pixel_size_x.md) | Pixel size X dimension |
 | [pixel_size_y](pixel_size_y.md) | Pixel size Y dimension |
 | [plasma_treatment](plasma_treatment.md) | Plasma treatment details |
-| [population](population.md) | Relative population of this state |
+| [population](population.md) | Relative population of this state (range: 0-1) |
 | [power_score](power_score.md) | Power score threshold |
 | [preparation_date](preparation_date.md) | Date of sample preparation |
 | [preparation_method](preparation_method.md) | Method used to prepare the sample |
@@ -557,7 +557,7 @@ Name: lambda-ber-schema
 | [publication_ids](publication_ids.md) | IDs of one or more publications supporting this annotation |
 | [purification_steps](purification_steps.md) | Ordered list of purification steps performed |
 | [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | Purity percentage by SDS-PAGE |
-| [purity_percentage](purity_percentage.md) | Sample purity as percentage |
+| [purity_percentage](purity_percentage.md) | Sample purity as percentage (range: 0-100) |
 | [q_range_max](q_range_max.md) | Maximum q value in inverse Angstroms |
 | [q_range_min](q_range_min.md) | Minimum q value in inverse Angstroms |
 | [quality_metrics](quality_metrics.md) | Quality control metrics for the sample |
@@ -605,9 +605,9 @@ Name: lambda-ber-schema
 | [sample_changer_capacity](sample_changer_capacity.md) | Number of samples in automatic sample changer |
 | [sample_code](sample_code.md) | Human-friendly laboratory identifier or facility code for the sample (e |
 | [sample_id](sample_id.md) | Reference to the sample being prepared |
-| [sample_preparations](sample_preparations.md) |  |
+| [sample_preparations](sample_preparations.md) | Sample preparation procedures performed in this study |
 | [sample_type](sample_type.md) | Type of biological sample |
-| [samples](samples.md) |  |
+| [samples](samples.md) | Experimental samples used in this study, including biological samples  |
 | [scaler_module](scaler_module.md) | Scaling module used (e |
 | [screen_name](screen_name.md) | Name of crystallization screen used |
 | [search_model_pdb_id](search_model_pdb_id.md) | PDB ID of search model for molecular replacement |
@@ -631,7 +631,7 @@ Name: lambda-ber-schema
 | [soak_conditions](soak_conditions.md) | Conditions for crystal soaking |
 | [software_name](software_name.md) | Software used for processing |
 | [software_version](software_version.md) | Software version |
-| [solvent_accessibility](solvent_accessibility.md) | Relative solvent accessible surface area |
+| [solvent_accessibility](solvent_accessibility.md) | Relative solvent accessible surface area (range: 0-1) |
 | [source_database](source_database.md) | Source database or resource that provided this annotation |
 | [source_type](source_type.md) | Type of X-ray source |
 | [space_group](space_group.md) | Crystallographic space group |
@@ -652,7 +652,7 @@ Name: lambda-ber-schema
 | [strategy_notes](strategy_notes.md) | Notes about data collection strategy |
 | [structural_features](structural_features.md) | Structural feature annotations |
 | [structural_motif](structural_motif.md) | Known structural motif |
-| [studies](studies.md) |  |
+| [studies](studies.md) | Individual research studies contained in this dataset |
 | [super_resolution](super_resolution.md) | Whether super-resolution mode was used |
 | [support_film](support_film.md) | Support film type |
 | [symmetry](symmetry.md) | Symmetry applied (C1, Cn, Dn, T, O, I) |
@@ -669,10 +669,10 @@ Name: lambda-ber-schema
 | [temperature_control_range](temperature_control_range.md) | Temperature control range in Celsius |
 | [temperature_k](temperature_k.md) | Data collection temperature in Kelvin |
 | [temperature_unit](temperature_unit.md) | Temperature unit |
-| [terms](terms.md) |  |
+| [terms](terms.md) | Ontology terms describing features identified in the image |
 | [threshold](threshold.md) | Picking threshold |
 | [timestamp](timestamp.md) | Acquisition timestamp |
-| [title](title.md) |  |
+| [title](title.md) | A human-readable name or title for this entity |
 | [tls_used](tls_used.md) | Whether TLS (Translation/Libration/Screw) refinement was used |
 | [total_dose](total_dose.md) | Total electron dose in e-/Angstrom^2 |
 | [total_exposure_time](total_exposure_time.md) | Total exposure time in milliseconds |
@@ -709,7 +709,7 @@ Name: lambda-ber-schema
 | [wilson_b_factor](wilson_b_factor.md) | Wilson B-factor |
 | [wilson_b_factor_a2](wilson_b_factor_a2.md) | Wilson B-factor in Angstroms squared |
 | [workflow_code](workflow_code.md) | Human-friendly identifier for the computational workflow run (e |
-| [workflow_runs](workflow_runs.md) |  |
+| [workflow_runs](workflow_runs.md) | Computational workflow executions for data processing in this study |
 | [workflow_type](workflow_type.md) | Type of processing workflow |
 | [yield_mg](yield_mg.md) | Total yield in milligrams |
 
