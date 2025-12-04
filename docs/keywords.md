@@ -3,6 +3,11 @@
 # Slot: keywords 
 
 
+_Keywords or tags describing the dataset for search and categorization_
+
+
+
+
 
 URI: [lambdaber:keywords](https://w3id.org/lambda-ber-schema/keywords)
 Alias: keywords
@@ -63,6 +68,7 @@ Alias: keywords
 <details>
 ```yaml
 name: keywords
+description: Keywords or tags describing the dataset for search and categorization
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: keywords

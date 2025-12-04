@@ -17,8 +17,8 @@ Alias: quality_metrics
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 | [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
 
 
 

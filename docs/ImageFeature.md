@@ -30,7 +30,7 @@ URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
     
         
         
-        ImageFeature --> "0..1" OntologyTerm : terms
+        ImageFeature --> "*" OntologyTerm : terms
         click OntologyTerm href "../OntologyTerm/"
     
 
@@ -52,7 +52,7 @@ URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [terms](terms.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) |  | direct |
+| [terms](terms.md) | * <br/> [OntologyTerm](OntologyTerm.md) | Ontology terms describing features identified in the image | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
 
@@ -107,11 +107,16 @@ is_a: AttributeGroup
 attributes:
   terms:
     name: terms
+    description: Ontology terms describing features identified in the image
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ImageFeature
+    - OntologyTerm
     range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
 ```
 </details>
@@ -128,13 +133,18 @@ is_a: AttributeGroup
 attributes:
   terms:
     name: terms
+    description: Ontology terms describing features identified in the image
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: terms
     owner: ImageFeature
     domain_of:
     - ImageFeature
+    - OntologyTerm
     range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

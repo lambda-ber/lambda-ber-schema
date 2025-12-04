@@ -3,7 +3,7 @@
 # Slot: hole_size 
 
 
-_Hole size in micrometers_
+_Hole size in micrometers (range: 0.5-5.0)_
 
 
 
@@ -70,7 +70,7 @@ Alias: hole_size
 <details>
 ```yaml
 name: hole_size
-description: Hole size in micrometers
+description: 'Hole size in micrometers (range: 0.5-5.0)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: hole_size

@@ -3,7 +3,7 @@
 # Slot: solvent_accessibility 
 
 
-_Relative solvent accessible surface area_
+_Relative solvent accessible surface area (range: 0-1)_
 
 
 
@@ -70,7 +70,7 @@ Alias: solvent_accessibility
 <details>
 ```yaml
 name: solvent_accessibility
-description: Relative solvent accessible surface area
+description: 'Relative solvent accessible surface area (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: solvent_accessibility

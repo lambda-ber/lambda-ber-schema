@@ -1090,7 +1090,7 @@ type Image3D
 type ImageFeature
   {
     description: String
-    terms: OntologyTerm
+    terms: [OntologyTerm]
   }
 
 type Instrument
@@ -1246,6 +1246,7 @@ type OntologyTerm
     id: Uriorcurie!
     title: String
     description: String
+    terms: [OntologyTerm]
     label: String
     definition: String
     ontology: String

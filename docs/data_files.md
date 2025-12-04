@@ -3,6 +3,11 @@
 # Slot: data_files 
 
 
+_Data files generated or used in this study_
+
+
+
+
 
 URI: [lambdaber:data_files](https://w3id.org/lambda-ber-schema/data_files)
 Alias: data_files
@@ -63,6 +68,7 @@ Alias: data_files
 <details>
 ```yaml
 name: data_files
+description: Data files generated or used in this study
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: data_files

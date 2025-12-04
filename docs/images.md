@@ -3,6 +3,11 @@
 # Slot: images 
 
 
+_Images acquired or generated in this study_
+
+
+
+
 
 URI: [lambdaber:images](https://w3id.org/lambda-ber-schema/images)
 Alias: images
@@ -63,6 +68,7 @@ Alias: images
 <details>
 ```yaml
 name: images
+description: Images acquired or generated in this study
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: images
