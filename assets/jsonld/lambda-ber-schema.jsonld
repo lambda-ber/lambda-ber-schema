@@ -17880,7 +17880,7 @@
   "source_file": "lambda-ber-schema.yaml",
   "source_file_date": "2025-12-04T15:43:47",
   "source_file_size": 101009,
-  "generation_date": "2025-12-04T15:44:20",
+  "generation_date": "2025-12-04T15:48:01",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
