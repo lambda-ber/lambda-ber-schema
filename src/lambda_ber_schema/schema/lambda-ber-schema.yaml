@@ -2010,7 +2010,7 @@ classes:
         range: integer
       output_binning:
         description: "Output binning factor"
-        range: integer
+        range: float
       drift_total:
         description: "Total drift in Angstroms"
         range: float
