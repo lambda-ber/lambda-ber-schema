@@ -3,11 +3,6 @@
 # Slot: multiplicity 
 
 
-_Data multiplicity (redundancy)_
-
-
-
-
 
 URI: [lambdaber:multiplicity](https://w3id.org/lambda-ber-schema/multiplicity)
 Alias: multiplicity
@@ -22,6 +17,7 @@ Alias: multiplicity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: multiplicity
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: multiplicity
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: multiplicity
 <details>
 ```yaml
 name: multiplicity
-description: Data multiplicity (redundancy)
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: multiplicity
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 ```
 </details>

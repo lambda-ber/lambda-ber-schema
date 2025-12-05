@@ -53,6 +53,10 @@
       "prefix_reference": "http://purl.obolibrary.org/obo/CL_"
     },
     {
+      "prefix_prefix": "GO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GO_"
+    },
+    {
       "prefix_prefix": "nsls2",
       "prefix_reference": "https://github.com/NSLS2/BER-LAMBDA/"
     },
@@ -386,6 +390,24 @@
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "smiles_string",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString",
+      "description": "A SMILES representation of a chemical structure",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "see_also": [
+        "https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system",
+        "https://www.epa.gov/sites/default/files/2015-05/documents/appendf.pdf"
+      ],
+      "aliases": [
+        "smiles"
+      ],
+      "typeof": "string",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "pattern": "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$",
       "@type": "TypeDefinition"
     }
   ],
@@ -1118,6 +1140,30 @@
       ]
     },
     {
+      "name": "GridMaterialEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/GridMaterialEnum",
+      "description": "Materials used for EM grids",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "carbon",
+          "description": "Carbon grid"
+        },
+        {
+          "text": "gold",
+          "description": "Gold grid"
+        },
+        {
+          "text": "graphene",
+          "description": "Graphene grid"
+        },
+        {
+          "text": "silicon_nitride",
+          "description": "Silicon nitride grid"
+        }
+      ]
+    },
+    {
       "name": "VitrificationMethodEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/VitrificationMethodEnum",
       "description": "Methods for vitrification",
@@ -1134,6 +1180,102 @@
         {
           "text": "slam_freezing",
           "description": "Slam freezing"
+        }
+      ]
+    },
+    {
+      "name": "SymmetryEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SymmetryEnum",
+      "description": "Crystallographic and non-crystallographic symmetry groups for cryo-EM",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "C1",
+          "description": "C1 symmetry (no symmetry)"
+        },
+        {
+          "text": "C2",
+          "description": "C2 cyclic symmetry (2-fold)"
+        },
+        {
+          "text": "C3",
+          "description": "C3 cyclic symmetry (3-fold)"
+        },
+        {
+          "text": "C4",
+          "description": "C4 cyclic symmetry (4-fold)"
+        },
+        {
+          "text": "C5",
+          "description": "C5 cyclic symmetry (5-fold)"
+        },
+        {
+          "text": "C6",
+          "description": "C6 cyclic symmetry (6-fold)"
+        },
+        {
+          "text": "C7",
+          "description": "C7 cyclic symmetry (7-fold)"
+        },
+        {
+          "text": "C8",
+          "description": "C8 cyclic symmetry (8-fold)"
+        },
+        {
+          "text": "C9",
+          "description": "C9 cyclic symmetry (9-fold)"
+        },
+        {
+          "text": "C10",
+          "description": "C10 cyclic symmetry (10-fold)"
+        },
+        {
+          "text": "D2",
+          "description": "D2 dihedral symmetry (2-fold)"
+        },
+        {
+          "text": "D3",
+          "description": "D3 dihedral symmetry (3-fold)"
+        },
+        {
+          "text": "D4",
+          "description": "D4 dihedral symmetry (4-fold)"
+        },
+        {
+          "text": "D5",
+          "description": "D5 dihedral symmetry (5-fold)"
+        },
+        {
+          "text": "D6",
+          "description": "D6 dihedral symmetry (6-fold)"
+        },
+        {
+          "text": "D7",
+          "description": "D7 dihedral symmetry (7-fold)"
+        },
+        {
+          "text": "D8",
+          "description": "D8 dihedral symmetry (8-fold)"
+        },
+        {
+          "text": "D9",
+          "description": "D9 dihedral symmetry (9-fold)"
+        },
+        {
+          "text": "D10",
+          "description": "D10 dihedral symmetry (10-fold)"
+        },
+        {
+          "text": "T",
+          "description": "Tetrahedral symmetry"
+        },
+        {
+          "text": "O",
+          "description": "Octahedral symmetry"
+        },
+        {
+          "text": "I",
+          "description": "Icosahedral symmetry"
         }
       ]
     },
@@ -1194,6 +1336,26 @@
         {
           "text": "commissioning",
           "description": "Instrument being commissioned"
+        }
+      ]
+    },
+    {
+      "name": "ImagingModeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ImagingModeEnum",
+      "description": "Imaging modes for electron microscopy",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "EFTEM",
+          "description": "Energy-filtered transmission electron microscopy"
+        },
+        {
+          "text": "TEM",
+          "description": "Transmission electron microscopy"
+        },
+        {
+          "text": "STEM",
+          "description": "Scanning transmission electron microscopy"
         }
       ]
     },
@@ -2610,64 +2772,171 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "permissible_values": [
         {
-          "text": "phosphorylation",
-          "description": "Phosphorylation"
-        },
-        {
           "text": "acetylation",
-          "description": "Acetylation"
+          "description": "protein acetylation",
+          "meaning": "GO:0006473"
         },
         {
-          "text": "methylation",
-          "description": "Methylation"
-        },
-        {
-          "text": "ubiquitination",
-          "description": "Ubiquitination"
-        },
-        {
-          "text": "sumoylation",
-          "description": "SUMOylation"
-        },
-        {
-          "text": "glycosylation",
-          "description": "Glycosylation"
-        },
-        {
-          "text": "palmitoylation",
-          "description": "Palmitoylation"
-        },
-        {
-          "text": "myristoylation",
-          "description": "Myristoylation"
-        },
-        {
-          "text": "prenylation",
-          "description": "Prenylation"
-        },
-        {
-          "text": "nitrosylation",
-          "description": "Nitrosylation"
-        },
-        {
-          "text": "oxidation",
-          "description": "Oxidation"
-        },
-        {
-          "text": "hydroxylation",
-          "description": "Hydroxylation"
-        },
-        {
-          "text": "proteolysis",
-          "description": "Proteolytic cleavage"
-        },
-        {
-          "text": "deamidation",
-          "description": "Deamidation"
+          "text": "acylation",
+          "description": "protein acylation",
+          "meaning": "GO:0043543"
         },
         {
           "text": "adp_ribosylation",
           "description": "ADP-ribosylation"
+        },
+        {
+          "text": "alkylation",
+          "description": "protein alkylation",
+          "meaning": "GO:0008213"
+        },
+        {
+          "text": "arginylation",
+          "description": "protein arginylation",
+          "meaning": "GO:0016598"
+        },
+        {
+          "text": "carbamoylation",
+          "description": "protein carbamoylation",
+          "meaning": "GO:0046944"
+        },
+        {
+          "text": "carboxylation",
+          "description": "protein carboxylation",
+          "meaning": "GO:0018214"
+        },
+        {
+          "text": "deacylation",
+          "description": "protein deacylation",
+          "meaning": "GO:0035601"
+        },
+        {
+          "text": "dealkylation",
+          "description": "protein dealkylation",
+          "meaning": "GO:0008214"
+        },
+        {
+          "text": "deamidation",
+          "description": "deamidation"
+        },
+        {
+          "text": "deamination",
+          "description": "protein deamination",
+          "meaning": "GO:0018277"
+        },
+        {
+          "text": "deglutathionylation",
+          "description": "protein deglutathionylation",
+          "meaning": "GO:0080058"
+        },
+        {
+          "text": "deglycation",
+          "description": "protein deglycation",
+          "meaning": "GO:0036525"
+        },
+        {
+          "text": "deglycosylation",
+          "description": "protein deglycosylation",
+          "meaning": "GO:0006517"
+        },
+        {
+          "text": "dephosphorylation",
+          "description": "protein dephosphorylation",
+          "meaning": "GO:0006470"
+        },
+        {
+          "text": "flavinylation",
+          "description": "protein flavinylation",
+          "meaning": "GO:0017013"
+        },
+        {
+          "text": "glutathionylation",
+          "description": "protein glutathionylation",
+          "meaning": "GO:0010731"
+        },
+        {
+          "text": "glycosylation",
+          "description": "protein glycosylation"
+        },
+        {
+          "text": "hydroxylation",
+          "description": "protein hydroxylation",
+          "meaning": "GO:0018126"
+        },
+        {
+          "text": "lipidation",
+          "description": "protein lipidation",
+          "meaning": "GO:0006497"
+        },
+        {
+          "text": "methylation",
+          "description": "protein methylation",
+          "meaning": "GO:0006479"
+        },
+        {
+          "text": "myristoylation",
+          "description": "protein myristoylation",
+          "meaning": "GO:0018377"
+        },
+        {
+          "text": "nitrosylation",
+          "description": "protein nitrosylation",
+          "meaning": "GO:0017014"
+        },
+        {
+          "text": "oxidation",
+          "description": "protein oxidation",
+          "meaning": "GO:0018158"
+        },
+        {
+          "text": "palmitoylation",
+          "description": "protein palmitoylation",
+          "meaning": "GO:0018345"
+        },
+        {
+          "text": "peptidyl_amino_acid_modification",
+          "description": "peptidyl-amino acid modification",
+          "meaning": "GO:0018193"
+        },
+        {
+          "text": "phosphorylation",
+          "description": "protein phosphorylation",
+          "meaning": "GO:0006468"
+        },
+        {
+          "text": "post_translational_protein_modification",
+          "description": "post-translational protein modification",
+          "meaning": "GO:0043687"
+        },
+        {
+          "text": "prenylation",
+          "description": "protein prenylation",
+          "meaning": "GO:0018342"
+        },
+        {
+          "text": "proteolysis",
+          "description": "proteolysis",
+          "meaning": "GO:0006508"
+        },
+        {
+          "text": "sulfation",
+          "description": "protein sulfation",
+          "meaning": "GO:0006477"
+        },
+        {
+          "text": "sulfhydration",
+          "description": "protein sulfhydration",
+          "meaning": "GO:0044524"
+        },
+        {
+          "text": "sumoylation",
+          "description": "protein sumoylation",
+          "meaning": "GO:0016925"
+        },
+        {
+          "text": "ubiquitination",
+          "description": "protein ubiquitination",
+          "meaning": "GO:0016567"
         }
       ]
     },
@@ -2978,6 +3247,7 @@
     },
     {
       "name": "namedThing__title",
+      "description": "A human-readable name or title for this entity",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "mappings": [
         "http://purl.org/dc/terms/title"
@@ -2993,6 +3263,7 @@
     },
     {
       "name": "namedThing__description",
+      "description": "A detailed textual description of this entity",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/description",
       "alias": "description",
@@ -3017,6 +3288,7 @@
     },
     {
       "name": "dataset__keywords",
+      "description": "Keywords or tags describing the dataset for search and categorization",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/keywords",
       "alias": "keywords",
@@ -3030,6 +3302,7 @@
     },
     {
       "name": "dataset__instruments",
+      "description": "Instruments used across all studies in this dataset",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/instruments",
       "alias": "instruments",
@@ -3045,6 +3318,7 @@
     },
     {
       "name": "dataset__studies",
+      "description": "Individual research studies contained in this dataset",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/studies",
       "alias": "studies",
@@ -3076,6 +3350,7 @@
     },
     {
       "name": "study__samples",
+      "description": "Experimental samples used in this study, including biological samples ",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/samples",
       "alias": "samples",
@@ -3091,6 +3366,7 @@
     },
     {
       "name": "study__sample_preparations",
+      "description": "Sample preparation procedures performed in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/sample_preparations",
       "alias": "sample_preparations",
@@ -3106,6 +3382,7 @@
     },
     {
       "name": "study__instrument_runs",
+      "description": "Experimental data collection runs performed in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_runs",
       "alias": "instrument_runs",
@@ -3121,6 +3398,7 @@
     },
     {
       "name": "study__workflow_runs",
+      "description": "Computational workflow executions for data processing in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_runs",
       "alias": "workflow_runs",
@@ -3136,6 +3414,7 @@
     },
     {
       "name": "study__data_files",
+      "description": "Data files generated or used in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/data_files",
       "alias": "data_files",
@@ -3151,6 +3430,7 @@
     },
     {
       "name": "study__images",
+      "description": "Images acquired or generated in this study",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/images",
       "alias": "images",
@@ -3360,7 +3640,7 @@
     },
     {
       "name": "sample__purity_percentage",
-      "description": "Sample purity as percentage",
+      "description": "Sample purity as percentage (range: 0-100)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/purity_percentage",
       "alias": "purity_percentage",
@@ -4034,6 +4314,10 @@
         "SamplePreparation"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "L",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
@@ -4073,6 +4357,10 @@
         "SamplePreparation"
       ],
       "range": "float",
+      "unit": {
+        "ucum_code": "Cel",
+        "@type": "UnitOfMeasure"
+      },
       "@type": "SlotDefinition"
     },
     {
@@ -4890,7 +5178,7 @@
     },
     {
       "name": "cryoEMInstrument__imaging_mode",
-      "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
+      "description": "Imaging mode for electron microscopy",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/imaging_mode",
       "alias": "imaging_mode",
@@ -4898,7 +5186,7 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "string",
+      "range": "ImagingModeEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -5500,7 +5788,7 @@
     },
     {
       "name": "experimentRun__astigmatism_target",
-      "description": "Target astigmatism in nanometers",
+      "description": "Target astigmatism in Angstroms",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism_target",
       "alias": "astigmatism_target",
@@ -6976,7 +7264,7 @@
     },
     {
       "name": "image2D__astigmatism",
-      "description": "Astigmatism value",
+      "description": "Astigmatism value in Angstroms",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
       "alias": "astigmatism",
@@ -7222,32 +7510,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "micrograph__pixel_size",
-      "description": "Final pixel size in Angstroms per pixel",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
-      "alias": "pixel_size",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "micrograph__defocus",
-      "description": "Measured defocus in micrometers",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
-      "alias": "defocus",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "micrograph__dose",
       "description": "Total electron dose in e-/Angstrom^2",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -7292,19 +7554,6 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_v",
       "alias": "defocus_v",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "range": "float",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "micrograph__astigmatism",
-      "description": "Astigmatism in Angstroms",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
-      "alias": "astigmatism",
       "owner": "Micrograph",
       "domain_of": [
         "Micrograph"
@@ -7762,6 +8011,7 @@
     },
     {
       "name": "imageFeature__terms",
+      "description": "Ontology terms describing features identified in the image",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/terms",
       "alias": "terms",
@@ -7770,10 +8020,30 @@
         "ImageFeature"
       ],
       "range": "OntologyTerm",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontologyTerm__terms",
+      "description": "Collection of ontology terms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/terms",
+      "alias": "terms",
+      "owner": "OntologyTerm",
+      "domain_of": [
+        "OntologyTerm"
+      ],
+      "range": "OntologyTerm",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ontologyTerm__label",
+      "description": "The human-readable label or name of the ontology term",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/label",
       "alias": "label",
@@ -7786,6 +8056,7 @@
     },
     {
       "name": "ontologyTerm__definition",
+      "description": "The formal definition or meaning of the ontology term",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/definition",
       "alias": "definition",
@@ -7798,6 +8069,7 @@
     },
     {
       "name": "ontologyTerm__ontology",
+      "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ontology",
       "alias": "ontology",
@@ -7852,7 +8124,7 @@
     },
     {
       "name": "bufferComposition__ph",
-      "description": "pH of the buffer",
+      "description": "pH of the buffer (range: 0-14)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ph",
       "alias": "ph",
@@ -7973,7 +8245,7 @@
     },
     {
       "name": "cryoEMPreparation__hole_size",
-      "description": "Hole size in micrometers",
+      "description": "Hole size in micrometers (range: 0.5-5.0)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/hole_size",
       "alias": "hole_size",
@@ -8001,7 +8273,7 @@
     },
     {
       "name": "cryoEMPreparation__blot_time",
-      "description": "Blotting time in seconds",
+      "description": "Blotting time in seconds (range: 0.5-10.0)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/blot_time",
       "alias": "blot_time",
@@ -8029,7 +8301,7 @@
     },
     {
       "name": "cryoEMPreparation__humidity_percentage",
-      "description": "Chamber humidity during vitrification",
+      "description": "Chamber humidity during vitrification (range: 0-100)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/humidity_percentage",
       "alias": "humidity_percentage",
@@ -8057,7 +8329,7 @@
     },
     {
       "name": "cryoEMPreparation__grid_material",
-      "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
+      "description": "Grid material",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/grid_material",
       "alias": "grid_material",
@@ -8065,7 +8337,7 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "string",
+      "range": "GridMaterialEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -9934,7 +10206,7 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "string",
+      "range": "SymmetryEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -10112,11 +10384,12 @@
         "ProteinAnnotation"
       ],
       "range": "string",
+      "pattern": "^[0-9,\\-]+$",
       "@type": "SlotDefinition"
     },
     {
       "name": "proteinAnnotation__confidence_score",
-      "description": "Confidence score for the annotation (0-1)",
+      "description": "Confidence score for the annotation (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/confidence_score",
       "alias": "confidence_score",
@@ -10183,7 +10456,7 @@
     },
     {
       "name": "proteinAnnotation__publication_ids",
-      "description": "PubMed IDs supporting this annotation",
+      "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/publication_ids",
       "alias": "publication_ids",
@@ -10193,7 +10466,7 @@
       ],
       "range": "string",
       "multivalued": true,
-      "pattern": "^PMID:[0-9]+$",
+      "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
       "@type": "SlotDefinition"
     },
     {
@@ -10225,7 +10498,7 @@
     },
     {
       "name": "functionalSite__residues",
-      "description": "List of residues forming the functional site",
+      "description": "List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/residues",
       "alias": "residues",
@@ -10255,7 +10528,7 @@
     },
     {
       "name": "functionalSite__conservation_score",
-      "description": "Evolutionary conservation score",
+      "description": "Evolutionary conservation score (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
@@ -10338,7 +10611,7 @@
     },
     {
       "name": "structuralFeature__solvent_accessibility",
-      "description": "Relative solvent accessible surface area",
+      "description": "Relative solvent accessible surface area (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/solvent_accessibility",
       "alias": "solvent_accessibility",
@@ -10366,7 +10639,7 @@
     },
     {
       "name": "structuralFeature__disorder_probability",
-      "description": "Probability of disorder (0-1)",
+      "description": "Probability of disorder (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/disorder_probability",
       "alias": "disorder_probability",
@@ -10441,7 +10714,7 @@
       "domain_of": [
         "LigandInteraction"
       ],
-      "range": "string",
+      "range": "uriorcurie",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -10469,7 +10742,7 @@
       "domain_of": [
         "LigandInteraction"
       ],
-      "range": "string",
+      "range": "smiles_string",
       "@type": "SlotDefinition"
     },
     {
@@ -10566,7 +10839,7 @@
     },
     {
       "name": "ligandInteraction__druggability_score",
-      "description": "Druggability score of the binding site",
+      "description": "Druggability score of the binding site (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/druggability_score",
       "alias": "druggability_score",
@@ -10864,7 +11137,7 @@
     },
     {
       "name": "mutationEffect__allele_frequency",
-      "description": "Population allele frequency",
+      "description": "Population allele frequency (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/allele_frequency",
       "alias": "allele_frequency",
@@ -10934,7 +11207,7 @@
     },
     {
       "name": "biophysicalProperty__measurement_conditions",
-      "description": "Conditions under which measurement was made",
+      "description": "Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/measurement_conditions",
       "alias": "measurement_conditions",
@@ -10942,56 +11215,10 @@
       "domain_of": [
         "BiophysicalProperty"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__temperature",
-      "description": "Temperature in Kelvin",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
-      "alias": "temperature",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "K",
-        "@type": "UnitOfMeasure"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__ph",
-      "description": "pH value",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
-      "alias": "ph",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "minimum_value": 0,
-      "maximum_value": 14,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "biophysicalProperty__ionic_strength",
-      "description": "Ionic strength in molar",
-      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
-      "alias": "ionic_strength",
-      "owner": "BiophysicalProperty",
-      "domain_of": [
-        "BiophysicalProperty"
-      ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "mol/L",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "MeasurementConditions",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11150,7 +11377,7 @@
     },
     {
       "name": "conformationalState__population",
-      "description": "Relative population of this state",
+      "description": "Relative population of this state (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/population",
       "alias": "population",
@@ -11377,7 +11604,7 @@
     },
     {
       "name": "evolutionaryConservation__conservation_score",
-      "description": "Overall conservation score",
+      "description": "Overall conservation score (range: 0-1)",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/conservation_score",
       "alias": "conservation_score",
@@ -11694,6 +11921,128 @@
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__buffer_composition",
+      "description": "Composition of the buffer used",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition",
+      "alias": "buffer_composition",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "BufferComposition",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__ph",
+      "description": "pH value of the solution during measurement (range: 0-14)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
+      "alias": "ph",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 14,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__ionic_strength",
+      "description": "Ionic strength in molar of material in solution",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
+      "alias": "ionic_strength",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "mol/L",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "measurementConditions__temperature",
+      "description": "Temperature in Kelvin during measurement",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
+      "alias": "temperature",
+      "owner": "MeasurementConditions",
+      "domain_of": [
+        "MeasurementConditions"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "K",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pixel_size",
+      "description": "Final pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_pixel_size",
+      "description": "Final pixel size in Angstroms per pixel",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "pixel_size",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
+      "alias": "pixel_size",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "pixel_size",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_defocus",
+      "description": "Measured defocus in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "image2D__defocus",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
+      "alias": "defocus",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "defocus",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Micrograph_astigmatism",
+      "description": "Astigmatism in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "image2D__astigmatism",
+      "domain": "Micrograph",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
+      "alias": "astigmatism",
+      "owner": "Micrograph",
+      "domain_of": [
+        "Micrograph"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "astigmatism",
+      "range": "float",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -11719,11 +12068,13 @@
         },
         {
           "name": "title",
+          "description": "A human-readable name or title for this entity",
           "slot_uri": "dcterms:title",
           "@type": "SlotDefinition"
         },
         {
           "name": "description",
+          "description": "A detailed textual description of this entity",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -11769,12 +12120,14 @@
       "attributes": [
         {
           "name": "keywords",
+          "description": "Keywords or tags describing the dataset for search and categorization",
           "range": "string",
           "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "instruments",
+          "description": "Instruments used across all studies in this dataset",
           "range": "Instrument",
           "multivalued": true,
           "inlined": true,
@@ -11783,6 +12136,7 @@
         },
         {
           "name": "studies",
+          "description": "Individual research studies contained in this dataset",
           "range": "Study",
           "multivalued": true,
           "inlined": true,
@@ -11825,6 +12179,7 @@
         },
         {
           "name": "samples",
+          "description": "Experimental samples used in this study, including biological samples ",
           "range": "Sample",
           "multivalued": true,
           "inlined_as_list": true,
@@ -11832,6 +12187,7 @@
         },
         {
           "name": "sample_preparations",
+          "description": "Sample preparation procedures performed in this study",
           "range": "SamplePreparation",
           "multivalued": true,
           "inlined_as_list": true,
@@ -11839,6 +12195,7 @@
         },
         {
           "name": "instrument_runs",
+          "description": "Experimental data collection runs performed in this study",
           "range": "ExperimentRun",
           "multivalued": true,
           "inlined_as_list": true,
@@ -11846,6 +12203,7 @@
         },
         {
           "name": "workflow_runs",
+          "description": "Computational workflow executions for data processing in this study",
           "range": "WorkflowRun",
           "multivalued": true,
           "inlined_as_list": true,
@@ -11853,6 +12211,7 @@
         },
         {
           "name": "data_files",
+          "description": "Data files generated or used in this study",
           "range": "DataFile",
           "multivalued": true,
           "inlined_as_list": true,
@@ -11860,6 +12219,7 @@
         },
         {
           "name": "images",
+          "description": "Images acquired or generated in this study",
           "range": "Image",
           "multivalued": true,
           "inlined": true,
@@ -12006,7 +12366,7 @@
         },
         {
           "name": "purity_percentage",
-          "description": "Sample purity as percentage",
+          "description": "Sample purity as percentage (range: 0-100)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 100,
@@ -12376,7 +12736,6 @@
         {
           "name": "preparation_date",
           "description": "Date of sample preparation",
-          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -12405,6 +12764,10 @@
           "name": "culture_volume_l",
           "description": "Culture volume in liters",
           "range": "float",
+          "unit": {
+            "ucum_code": "L",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
@@ -12421,6 +12784,10 @@
           "name": "growth_temperature_c",
           "description": "Growth temperature in Celsius",
           "range": "float",
+          "unit": {
+            "ucum_code": "Cel",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         },
         {
@@ -12864,8 +13231,8 @@
         },
         {
           "name": "imaging_mode",
-          "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
-          "range": "string",
+          "description": "Imaging mode for electron microscopy",
+          "range": "ImagingModeEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -13270,7 +13637,7 @@
         },
         {
           "name": "astigmatism_target",
-          "description": "Target astigmatism in nanometers",
+          "description": "Target astigmatism in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -14213,7 +14580,7 @@
         },
         {
           "name": "astigmatism",
-          "description": "Astigmatism value",
+          "description": "Astigmatism value in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         }
@@ -14411,31 +14778,19 @@
         "image__dimensions_x",
         "image__dimensions_y",
         "image__exposure_time",
-        "micrograph__pixel_size",
-        "micrograph__defocus",
         "micrograph__dose",
         "micrograph__origin_movie_id",
         "micrograph__defocus_u",
         "micrograph__defocus_v",
-        "micrograph__astigmatism",
         "micrograph__astigmatism_angle",
         "micrograph__resolution_fit_limit",
-        "micrograph__ctf_quality_score"
+        "micrograph__ctf_quality_score",
+        "Micrograph_pixel_size",
+        "Micrograph_defocus",
+        "Micrograph_astigmatism"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "pixel_size",
-          "description": "Final pixel size in Angstroms per pixel",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "defocus",
-          "description": "Measured defocus in micrometers",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
         {
           "name": "dose",
           "description": "Total electron dose in e-/Angstrom^2",
@@ -14457,12 +14812,6 @@
         {
           "name": "defocus_v",
           "description": "Defocus V in micrometers",
-          "range": "float",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "astigmatism",
-          "description": "Astigmatism in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -14827,7 +15176,10 @@
       "attributes": [
         {
           "name": "terms",
+          "description": "Ontology terms describing features identified in the image",
           "range": "OntologyTerm",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -14837,12 +15189,14 @@
     {
       "name": "OntologyTerm",
       "definition_uri": "https://w3id.org/lambda-ber-schema/OntologyTerm",
+      "description": "A term from a controlled vocabulary or ontology",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "ontologyTerm__terms",
         "ontologyTerm__label",
         "ontologyTerm__definition",
         "ontologyTerm__ontology"
@@ -14850,17 +15204,28 @@
       "slot_usage": {},
       "attributes": [
         {
+          "name": "terms",
+          "description": "Collection of ontology terms",
+          "range": "OntologyTerm",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "label",
+          "description": "The human-readable label or name of the ontology term",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "definition",
+          "description": "The formal definition or meaning of the ontology term",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "ontology",
+          "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -14923,7 +15288,7 @@
       "attributes": [
         {
           "name": "ph",
-          "description": "pH of the buffer",
+          "description": "pH of the buffer (range: 0-14)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 14,
@@ -15051,7 +15416,7 @@
         },
         {
           "name": "hole_size",
-          "description": "Hole size in micrometers",
+          "description": "Hole size in micrometers (range: 0.5-5.0)",
           "range": "float",
           "minimum_value": 0.5,
           "maximum_value": 5.0,
@@ -15065,7 +15430,7 @@
         },
         {
           "name": "blot_time",
-          "description": "Blotting time in seconds",
+          "description": "Blotting time in seconds (range: 0.5-10.0)",
           "range": "float",
           "minimum_value": 0.5,
           "maximum_value": 10.0,
@@ -15079,7 +15444,7 @@
         },
         {
           "name": "humidity_percentage",
-          "description": "Chamber humidity during vitrification",
+          "description": "Chamber humidity during vitrification (range: 0-100)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 100,
@@ -15093,8 +15458,8 @@
         },
         {
           "name": "grid_material",
-          "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
-          "range": "string",
+          "description": "Grid material",
+          "range": "GridMaterialEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -16246,7 +16611,7 @@
         {
           "name": "symmetry",
           "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
-          "range": "string",
+          "range": "SymmetryEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -16373,11 +16738,12 @@
         {
           "name": "residue_range",
           "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+          "pattern": "^[0-9,\\-]+$",
           "@type": "SlotDefinition"
         },
         {
           "name": "confidence_score",
-          "description": "Confidence score for the annotation (0-1)",
+          "description": "Confidence score for the annotation (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16408,9 +16774,9 @@
         },
         {
           "name": "publication_ids",
-          "description": "PubMed IDs supporting this annotation",
+          "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
           "multivalued": true,
-          "pattern": "^PMID:[0-9]+$",
+          "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
           "@type": "SlotDefinition"
         }
       ],
@@ -16462,7 +16828,7 @@
         },
         {
           "name": "residues",
-          "description": "List of residues forming the functional site",
+          "description": "List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").",
           "multivalued": true,
           "@type": "SlotDefinition"
         },
@@ -16476,7 +16842,7 @@
         },
         {
           "name": "conservation_score",
-          "description": "Evolutionary conservation score",
+          "description": "Evolutionary conservation score (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16551,7 +16917,7 @@
         },
         {
           "name": "solvent_accessibility",
-          "description": "Relative solvent accessible surface area",
+          "description": "Relative solvent accessible surface area (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16565,7 +16931,7 @@
         },
         {
           "name": "disorder_probability",
-          "description": "Probability of disorder (0-1)",
+          "description": "Probability of disorder (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16622,6 +16988,7 @@
         {
           "name": "ligand_id",
           "description": "Ligand identifier (ChEMBL, ChEBI, PubChem)",
+          "range": "uriorcurie",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -16634,6 +17001,7 @@
         {
           "name": "ligand_smiles",
           "description": "SMILES representation of the ligand",
+          "range": "smiles_string",
           "@type": "SlotDefinition"
         },
         {
@@ -16680,7 +17048,7 @@
         },
         {
           "name": "druggability_score",
-          "description": "Druggability score of the binding site",
+          "description": "Druggability score of the binding site (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16897,7 +17265,7 @@
         },
         {
           "name": "allele_frequency",
-          "description": "Population allele frequency",
+          "description": "Population allele frequency (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -16920,9 +17288,6 @@
         "biophysicalProperty__unit",
         "biophysicalProperty__error",
         "biophysicalProperty__measurement_conditions",
-        "biophysicalProperty__temperature",
-        "biophysicalProperty__ph",
-        "biophysicalProperty__ionic_strength",
         "biophysicalProperty__experimental_method"
       ],
       "slot_usage": {},
@@ -16955,35 +17320,10 @@
         },
         {
           "name": "measurement_conditions",
-          "description": "Conditions under which measurement was made",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "temperature",
-          "description": "Temperature in Kelvin",
-          "range": "float",
-          "unit": {
-            "ucum_code": "K",
-            "@type": "UnitOfMeasure"
-          },
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "ph",
-          "description": "pH value",
-          "range": "float",
-          "minimum_value": 0,
-          "maximum_value": 14,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "ionic_strength",
-          "description": "Ionic strength in molar",
-          "range": "float",
-          "unit": {
-            "ucum_code": "mol/L",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.",
+          "range": "MeasurementConditions",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17102,7 +17442,7 @@
         },
         {
           "name": "population",
-          "description": "Relative population of this state",
+          "description": "Relative population of this state (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17297,7 +17637,7 @@
       "attributes": [
         {
           "name": "conservation_score",
-          "description": "Overall conservation score",
+          "description": "Overall conservation score (range: 0-1)",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 1,
@@ -17479,13 +17819,68 @@
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "MeasurementConditions",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions",
+      "description": "Conditions under which biophysical measurements were made",
+      "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "measurementConditions__buffer_composition",
+        "measurementConditions__ph",
+        "measurementConditions__ionic_strength",
+        "measurementConditions__temperature"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "buffer_composition",
+          "description": "Composition of the buffer used",
+          "range": "BufferComposition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ph",
+          "description": "pH value of the solution during measurement (range: 0-14)",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 14,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ionic_strength",
+          "description": "Ionic strength in molar of material in solution",
+          "range": "float",
+          "unit": {
+            "ucum_code": "mol/L",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature",
+          "description": "Temperature in Kelvin during measurement",
+          "range": "float",
+          "unit": {
+            "ucum_code": "K",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-14T08:14:09",
-  "source_file_size": 97311,
-  "generation_date": "2025-11-14T08:14:56",
+  "source_file_date": "2025-11-26T13:58:11",
+  "source_file_size": 101009,
+  "generation_date": "2025-11-26T14:01:31",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

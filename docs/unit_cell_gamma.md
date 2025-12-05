@@ -3,11 +3,6 @@
 # Slot: unit_cell_gamma 
 
 
-_Unit cell angle gamma in degrees_
-
-
-
-
 
 URI: [lambdaber:unit_cell_gamma](https://w3id.org/lambda-ber-schema/unit_cell_gamma)
 Alias: unit_cell_gamma
@@ -22,6 +17,7 @@ Alias: unit_cell_gamma
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: unit_cell_gamma
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: unit_cell_gamma
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: unit_cell_gamma
 <details>
 ```yaml
 name: unit_cell_gamma
-description: Unit cell angle gamma in degrees
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: unit_cell_gamma
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 ```
 </details>

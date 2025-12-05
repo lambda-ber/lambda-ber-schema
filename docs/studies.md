@@ -3,6 +3,11 @@
 # Slot: studies 
 
 
+_Individual research studies contained in this dataset_
+
+
+
+
 
 URI: [lambdaber:studies](https://w3id.org/lambda-ber-schema/studies)
 Alias: studies
@@ -63,6 +68,7 @@ Alias: studies
 <details>
 ```yaml
 name: studies
+description: Individual research studies contained in this dataset
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: studies

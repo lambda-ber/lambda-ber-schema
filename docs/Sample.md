@@ -90,6 +90,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : construct
+        
       Sample : database_cross_references
         
           
@@ -114,6 +116,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : expression_system
+        
       Sample : functional_sites
         
           
@@ -126,6 +130,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
         
       Sample : id
+        
+      Sample : ligand
         
       Sample : ligand_interactions
         
@@ -162,6 +168,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : mutations
+        
       Sample : organism
         
           
@@ -196,6 +204,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         click ProteinProteinInteraction href "../ProteinProteinInteraction/"
     
 
+        
+      Sample : protein_name
         
       Sample : ptm_annotations
         
@@ -247,6 +257,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
     
 
         
+      Sample : tag
+        
       Sample : title
         
       
@@ -279,7 +291,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [anatomy](anatomy.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Anatomical part or tissue (e | direct |
 | [cell_type](cell_type.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Cell type if applicable (e | direct |
 | [parent_sample_id](parent_sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Reference to parent sample for derivation tracking | direct |
-| [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage | direct |
+| [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage (range: 0-100) | direct |
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [String](String.md) | Quality control metrics for the sample | direct |
 | [functional_sites](functional_sites.md) | * <br/> [FunctionalSite](FunctionalSite.md) | Functional site annotations for proteins in the sample | direct |
 | [structural_features](structural_features.md) | * <br/> [StructuralFeature](StructuralFeature.md) | Structural feature annotations | direct |
@@ -291,9 +303,15 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [evolutionary_conservation](evolutionary_conservation.md) | 0..1 <br/> [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation data | direct |
 | [conformational_ensemble](conformational_ensemble.md) | 0..1 <br/> [ConformationalEnsemble](ConformationalEnsemble.md) | Conformational states and dynamics | direct |
 | [database_cross_references](database_cross_references.md) | * <br/> [DatabaseCrossReference](DatabaseCrossReference.md) | Cross-references to external databases | direct |
+| [protein_name](protein_name.md) | 0..1 <br/> [String](String.md) | Name of the protein | direct |
+| [construct](construct.md) | 0..1 <br/> [String](String.md) | Construct description (e | direct |
+| [tag](tag.md) | 0..1 <br/> [String](String.md) | Affinity tag (e | direct |
+| [mutations](mutations.md) | 0..1 <br/> [String](String.md) | Mutations present in the sample | direct |
+| [expression_system](expression_system.md) | 0..1 <br/> [String](String.md) | Expression system used | direct |
+| [ligand](ligand.md) | 0..1 <br/> [String](String.md) | Ligand or small molecule bound to sample | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -413,6 +431,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - MeasurementConditions
     range: BufferComposition
   preparation_method:
     name: preparation_method
@@ -465,7 +484,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -595,6 +614,75 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    domain_of:
+    - Sample
+    range: string
 
 ```
 </details>
@@ -684,6 +772,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - MeasurementConditions
     range: BufferComposition
   preparation_method:
     name: preparation_method
@@ -749,7 +838,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: purity_percentage
@@ -904,6 +993,87 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    alias: protein_name
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    alias: construct
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    alias: tag
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    alias: mutations
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    alias: expression_system
+    owner: Sample
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    alias: ligand
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -920,6 +1090,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -930,6 +1101,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

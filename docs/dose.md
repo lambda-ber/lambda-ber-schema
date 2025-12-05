@@ -3,11 +3,6 @@
 # Slot: dose 
 
 
-_Electron dose in e-/Å²_
-
-
-
-
 
 URI: [lambdaber:dose](https://w3id.org/lambda-ber-schema/dose)
 Alias: dose
@@ -22,13 +17,15 @@ Alias: dose
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -37,7 +34,7 @@ Alias: dose
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -46,13 +43,6 @@ Alias: dose
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -72,14 +62,11 @@ Alias: dose
 <details>
 ```yaml
 name: dose
-description: Electron dose in e-/Å²
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: dose
-owner: Image
 domain_of:
 - Image
-range: float
+- Micrograph
+range: string
 
 ```
 </details>

@@ -16,6 +16,17 @@ prefixes:
 
 default_range: string
 
+types:
+  smiles_string:
+    description: "A SMILES representation of a chemical structure"
+    aliases:
+      - smiles
+    typeof: string
+    see_also:
+      - https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system
+      - https://www.epa.gov/sites/default/files/2015-05/documents/appendf.pdf
+    pattern: "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$"
+
 classes:
 
   # Base annotation class
@@ -35,8 +46,9 @@ classes:
         pattern: "^[A-Za-z0-9]+$"
       residue_range:
         description: "Range of residues (e.g., '1-100', '25,27,30-35')"
+        pattern: "^[0-9,\\-]+$"
       confidence_score:
-        description: "Confidence score for the annotation (0-1)"
+        description: "Confidence score for the annotation (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -52,9 +64,11 @@ classes:
       annotation_method:
         description: "Computational or experimental method used"
       publication_ids:
-        description: "PubMed IDs supporting this annotation"
+        description: >-
+          IDs of one or more publications supporting this annotation.
+          Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
         multivalued: true
-        pattern: "^PMID:[0-9]+$"
+        pattern: "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$"
 
   # Functional annotations
   FunctionalSite:
@@ -68,7 +82,9 @@ classes:
       site_name:
         description: "Common name for this site"
       residues:
-        description: "List of residues forming the functional site"
+        description: >-
+          List of residues forming the functional site.
+          Each should be specified as a string (e.g., "45", "120A").
         multivalued: true
       ligand_interactions:
         description: "Ligands that interact with this site"
@@ -76,7 +92,7 @@ classes:
         multivalued: true
         inlined_as_list: true
       conservation_score:
-        description: "Evolutionary conservation score"
+        description: "Evolutionary conservation score (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -103,7 +119,7 @@ classes:
         description: "Secondary structure assignment"
         range: SecondaryStructureEnum
       solvent_accessibility:
-        description: "Relative solvent accessible surface area"
+        description: "Relative solvent accessible surface area (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -111,7 +127,7 @@ classes:
         description: "B-factor or flexibility measure"
         range: float
       disorder_probability:
-        description: "Probability of disorder (0-1)"
+        description: "Probability of disorder (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -133,11 +149,13 @@ classes:
       ligand_id:
         description: "Ligand identifier (ChEMBL, ChEBI, PubChem)"
         required: true
+        range: uriorcurie
       ligand_name:
         description: "Common name of the ligand"
         required: true
       ligand_smiles:
         description: "SMILES representation of the ligand"
+        range: smiles_string
       binding_affinity:
         description: "Binding affinity value"
         range: float
@@ -160,7 +178,7 @@ classes:
         description: "Whether the ligand has drug-like properties"
         range: boolean
       druggability_score:
-        description: "Druggability score of the binding site"
+        description: "Druggability score of the binding site (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -243,7 +261,7 @@ classes:
         description: "Clinical significance"
         range: ClinicalSignificanceEnum
       allele_frequency:
-        description: "Population allele frequency"
+        description: "Population allele frequency (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -268,22 +286,16 @@ classes:
         description: "Experimental error or uncertainty"
         range: float
       measurement_conditions:
-        description: "Conditions under which measurement was made"
-      temperature:
-        description: "Temperature in Kelvin"
-        range: float
-        unit:
-          ucum_code: K
-      ph:
-        description: "pH value"
-        range: float
-        minimum_value: 0
-        maximum_value: 14
-      ionic_strength:
-        description: "Ionic strength in molar"
-        range: float
-        unit:
-          ucum_code: mol/L
+        description: >-
+          Conditions under which measurement was made.
+          If multiple sets of conditions were used,
+          this will represent that the same values
+          were obtained under different conditions.
+          If values differ under different conditions,
+          separate BiophysicalProperty instances should be created.
+        range: MeasurementConditions
+        multivalued: true
+        inlined_as_list: true
       experimental_method:
         description: "Method used for measurement"
         range: BiophysicalMethodEnum
@@ -329,7 +341,7 @@ classes:
         description: "PDB entries representing this state"
         multivalued: true
       population:
-        description: "Relative population of this state"
+        description: "Relative population of this state (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -400,7 +412,7 @@ classes:
     description: "Evolutionary conservation information"
     attributes:
       conservation_score:
-        description: "Overall conservation score"
+        description: "Overall conservation score (range: 0-1)"
         range: float
         minimum_value: 0
         maximum_value: 1
@@ -488,6 +500,29 @@ classes:
         range: DatabaseCrossReference
         multivalued: true
         inlined_as_list: true
+
+  MeasurementConditions:
+    is_a: NamedThing
+    description: "Conditions under which biophysical measurements were made"
+    attributes:
+      buffer_composition:
+        description: "Composition of the buffer used"
+        range: BufferComposition
+      ph:
+        description: "pH value of the solution during measurement (range: 0-14)"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      ionic_strength:
+        description: "Ionic strength in molar of material in solution"
+        range: float
+        unit:
+          ucum_code: mol/L
+      temperature:
+        description: "Temperature in Kelvin during measurement"
+        range: float
+        unit:
+          ucum_code: K
 
 # Enumerations
 enums:
@@ -837,36 +872,105 @@ enums:
   PTMTypeEnum:
     description: "Types of post-translational modifications"
     permissible_values:
-      phosphorylation:
-        description: "Phosphorylation"
       acetylation:
-        description: "Acetylation"
-      methylation:
-        description: "Methylation"
-      ubiquitination:
-        description: "Ubiquitination"
-      sumoylation:
-        description: "SUMOylation"
-      glycosylation:
-        description: "Glycosylation"
-      palmitoylation:
-        description: "Palmitoylation"
-      myristoylation:
-        description: "Myristoylation"
-      prenylation:
-        description: "Prenylation"
-      nitrosylation:
-        description: "Nitrosylation"
-      oxidation:
-        description: "Oxidation"
-      hydroxylation:
-        description: "Hydroxylation"
-      proteolysis:
-        description: "Proteolytic cleavage"
-      deamidation:
-        description: "Deamidation"
+        description: "protein acetylation"
+        meaning: GO:0006473
+      acylation:
+        description: "protein acylation"
+        meaning: GO:0043543
       adp_ribosylation:
         description: "ADP-ribosylation"
+      alkylation:
+        description: "protein alkylation"
+        meaning: GO:0008213
+      arginylation:
+        description: "protein arginylation"
+        meaning: GO:0016598
+      carbamoylation:
+        description: "protein carbamoylation"
+        meaning: GO:0046944
+      carboxylation:
+        description: "protein carboxylation"
+        meaning: GO:0018214
+      deacylation:
+        description: "protein deacylation"
+        meaning: GO:0035601
+      dealkylation:
+        description: "protein dealkylation"
+        meaning: GO:0008214
+      deamidation:
+        description: "deamidation"
+      deamination:
+        description: "protein deamination"
+        meaning: GO:0018277
+      deglutathionylation:
+        description: "protein deglutathionylation"
+        meaning: GO:0080058
+      deglycation:
+        description: "protein deglycation"
+        meaning: GO:0036525
+      deglycosylation:
+        description: "protein deglycosylation"
+        meaning: GO:0006517
+      dephosphorylation:
+        description: "protein dephosphorylation"
+        meaning: GO:0006470
+      flavinylation:
+        description: "protein flavinylation"
+        meaning: GO:0017013
+      glutathionylation:
+        description: "protein glutathionylation"
+        meaning: GO:0010731
+      glycosylation:
+        description: "protein glycosylation"
+      hydroxylation:
+        description: "protein hydroxylation"
+        meaning: GO:0018126
+      lipidation:
+        description: "protein lipidation"
+        meaning: GO:0006497
+      methylation:
+        description: "protein methylation"
+        meaning: GO:0006479
+      myristoylation:
+        description: "protein myristoylation"
+        meaning: GO:0018377
+      nitrosylation:
+        description: "protein nitrosylation"
+        meaning: GO:0017014
+      oxidation:
+        description: "protein oxidation"
+        meaning: GO:0018158
+      palmitoylation:
+        description: "protein palmitoylation"
+        meaning: GO:0018345
+      peptidyl_amino_acid_modification:
+        description: "peptidyl-amino acid modification"
+        meaning: GO:0018193
+      phosphorylation:
+        description: "protein phosphorylation"
+        meaning: GO:0006468
+      post_translational_protein_modification:
+        description: "post-translational protein modification"
+        meaning: GO:0043687
+      prenylation:
+        description: "protein prenylation"
+        meaning: GO:0018342
+      proteolysis:
+        description: "proteolysis"
+        meaning: GO:0006508
+      sulfation:
+        description: "protein sulfation"
+        meaning: GO:0006477
+      sulfhydration:
+        description: "protein sulfhydration"
+        meaning: GO:0044524
+      sumoylation:
+        description: "protein sumoylation"
+        meaning: GO:0016925
+      ubiquitination:
+        description: "protein ubiquitination"
+        meaning: GO:0016567
 
   EvidenceTypeEnum:
     description: "Types of evidence"

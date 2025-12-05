@@ -3,11 +3,6 @@
 # Slot: pixel_size 
 
 
-_Pixel size in Angstroms_
-
-
-
-
 
 URI: [lambdaber:pixel_size](https://w3id.org/lambda-ber-schema/pixel_size)
 Alias: pixel_size
@@ -22,13 +17,16 @@ Alias: pixel_size
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  yes  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [RefinementParameters](RefinementParameters.md) | Parameters specific to 3D refinement workflows |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
 | [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -37,7 +35,7 @@ Alias: pixel_size
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -46,13 +44,6 @@ Alias: pixel_size
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -72,14 +63,11 @@ Alias: pixel_size
 <details>
 ```yaml
 name: pixel_size
-description: Pixel size in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: pixel_size
-owner: Image
 domain_of:
 - Image
-range: float
+- RefinementParameters
+range: string
 
 ```
 </details>

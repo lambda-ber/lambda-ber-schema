@@ -199,8 +199,8 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 | [aggregation_assessment](aggregation_assessment.md) | 0..1 <br/> [String](String.md) | Assessment of protein aggregation state | direct |
 | [aliquoting](aliquoting.md) | 0..1 <br/> [String](String.md) | How the protein was aliquoted for storage | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -284,7 +284,6 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: string
   operator_id:
     name: operator_id
     description: Identifier or name of the person who performed the sample preparation
@@ -306,8 +305,8 @@ attributes:
     name: expression_system
     description: Expression system used for recombinant protein production
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - Sample
     - SamplePreparation
     range: ExpressionSystemEnum
   host_strain_or_cell_line:
@@ -325,6 +324,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -347,6 +348,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -647,10 +650,10 @@ attributes:
     name: expression_system
     description: Expression system used for recombinant protein production
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: expression_system
     owner: SamplePreparation
     domain_of:
+    - Sample
     - SamplePreparation
     range: ExpressionSystemEnum
   host_strain_or_cell_line:
@@ -673,6 +676,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -703,6 +708,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -1030,6 +1037,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1040,6 +1048,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

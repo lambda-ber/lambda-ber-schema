@@ -69,12 +69,12 @@ URI: [lambdaber:Dataset](https://w3id.org/lambda-ber-schema/Dataset)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [keywords](keywords.md) | * <br/> [String](String.md) |  | direct |
-| [instruments](instruments.md) | * <br/> [Instrument](Instrument.md) |  | direct |
-| [studies](studies.md) | * <br/> [Study](Study.md) |  | direct |
+| [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags describing the dataset for search and categorization | direct |
+| [instruments](instruments.md) | * <br/> [Instrument](Instrument.md) | Instruments used across all studies in this dataset | direct |
+| [studies](studies.md) | * <br/> [Study](Study.md) | Individual research studies contained in this dataset | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -127,6 +127,7 @@ is_a: NamedThing
 attributes:
   keywords:
     name: keywords
+    description: Keywords or tags describing the dataset for search and categorization
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -135,6 +136,7 @@ attributes:
     multivalued: true
   instruments:
     name: instruments
+    description: Instruments used across all studies in this dataset
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -145,6 +147,7 @@ attributes:
     inlined_as_list: true
   studies:
     name: studies
+    description: Individual research studies contained in this dataset
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -169,6 +172,7 @@ is_a: NamedThing
 attributes:
   keywords:
     name: keywords
+    description: Keywords or tags describing the dataset for search and categorization
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: keywords
@@ -179,6 +183,7 @@ attributes:
     multivalued: true
   instruments:
     name: instruments
+    description: Instruments used across all studies in this dataset
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: instruments
@@ -191,6 +196,7 @@ attributes:
     inlined_as_list: true
   studies:
     name: studies
+    description: Individual research studies contained in this dataset
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: studies
@@ -217,6 +223,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -227,6 +234,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

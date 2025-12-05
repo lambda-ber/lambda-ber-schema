@@ -26,6 +26,8 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
         
       XRayInstrument : beam_size_min
         
+      XRayInstrument : beamline_id
+        
       XRayInstrument : crystal_cooling_capability
         
       XRayInstrument : current_status
@@ -40,6 +42,21 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 
         
       XRayInstrument : description
+        
+      XRayInstrument : detector_manufacturer
+        
+      XRayInstrument : detector_model
+        
+      XRayInstrument : detector_technology
+        
+          
+    
+        
+        
+        XRayInstrument --> "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
+    
+
         
       XRayInstrument : energy_max
         
@@ -93,6 +110,10 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [source_type](source_type.md) | 0..1 <br/> [XRaySourceTypeEnum](XRaySourceTypeEnum.md) | Type of X-ray source | direct |
+| [detector_technology](detector_technology.md) | 0..1 <br/> [DetectorTechnologyEnum](DetectorTechnologyEnum.md) | Generic detector technology type | direct |
+| [detector_manufacturer](detector_manufacturer.md) | 0..1 <br/> [String](String.md) | Detector manufacturer (e | direct |
+| [detector_model](detector_model.md) | 0..1 <br/> [String](String.md) | Detector model (e | direct |
+| [beamline_id](beamline_id.md) | 0..1 <br/> [String](String.md) | Beamline identifier at synchrotron facility | direct |
 | [energy_min](energy_min.md) | 0..1 <br/> [Float](Float.md) | Minimum X-ray energy in keV | direct |
 | [energy_max](energy_max.md) | 0..1 <br/> [Float](Float.md) | Maximum X-ray energy in keV | direct |
 | [beam_size_min](beam_size_min.md) | 0..1 <br/> [Float](Float.md) | Minimum beam size in micrometers | direct |
@@ -107,8 +128,8 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 | [installation_date](installation_date.md) | 0..1 <br/> [String](String.md) | Date of instrument installation | [Instrument](Instrument.md) |
 | [current_status](current_status.md) | 0..1 <br/> [InstrumentStatusEnum](InstrumentStatusEnum.md) | Current operational status | [Instrument](Instrument.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -168,6 +189,51 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
+    - 'Maps to CBF: Detector (may contain model name)'
+    - 'Maps to PDB: _diffrn_detector.type'
+    - See detector_manufacturer and detector_model for specific equipment details
+    from_schema: https://w3id.org/lambda-ber-schema/
+    slot_uri: nsls2:Detector
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
+    comments:
+    - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
+    comments:
+    - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron facility
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    domain_of:
+    - XRayInstrument
+    range: string
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
@@ -254,6 +320,59 @@ attributes:
     - XRayInstrument
     - XRFImage
     range: XRaySourceTypeEnum
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
+    - 'Maps to CBF: Detector (may contain model name)'
+    - 'Maps to PDB: _diffrn_detector.type'
+    - See detector_manufacturer and detector_model for specific equipment details
+    from_schema: https://w3id.org/lambda-ber-schema/
+    slot_uri: nsls2:Detector
+    alias: detector_technology
+    owner: XRayInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
+    comments:
+    - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_manufacturer
+    owner: XRayInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
+    comments:
+    - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_model
+    owner: XRayInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron facility
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Beamline
+    alias: beamline_id
+    owner: XRayInstrument
+    domain_of:
+    - XRayInstrument
+    range: string
   energy_min:
     name: energy_min
     description: Minimum X-ray energy in keV
@@ -403,6 +522,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -413,6 +533,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

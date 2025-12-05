@@ -339,6 +339,14 @@ enum FunctionalSiteTypeEnum
     lipid_binding
   }
 
+enum GridMaterialEnum
+  {
+    carbon
+    gold
+    graphene
+    silicon_nitride
+  }
+
 enum GridTypeEnum
   {
     c_flat
@@ -358,6 +366,13 @@ enum IlluminationTypeEnum
     confocal
     polarized
     oblique
+  }
+
+enum ImagingModeEnum
+  {
+    EFTEM
+    TEM
+    STEM
   }
 
 enum InstrumentStatusEnum
@@ -439,21 +454,40 @@ enum ProcessingStatusEnum
 
 enum PTMTypeEnum
   {
-    phosphorylation
     acetylation
-    methylation
-    ubiquitination
-    sumoylation
+    acylation
+    adp_ribosylation
+    alkylation
+    arginylation
+    carbamoylation
+    carboxylation
+    deacylation
+    dealkylation
+    deamidation
+    deamination
+    deglutathionylation
+    deglycation
+    deglycosylation
+    dephosphorylation
+    flavinylation
+    glutathionylation
     glycosylation
-    palmitoylation
+    hydroxylation
+    lipidation
+    methylation
     myristoylation
-    prenylation
     nitrosylation
     oxidation
-    hydroxylation
+    palmitoylation
+    peptidyl_amino_acid_modification
+    phosphorylation
+    post_translational_protein_modification
+    prenylation
     proteolysis
-    deamidation
-    adp_ribosylation
+    sulfation
+    sulfhydration
+    sumoylation
+    ubiquitination
   }
 
 enum PurificationStepEnum
@@ -523,6 +557,32 @@ enum StructuralFeatureTypeEnum
     pore
     hinge
     linker
+  }
+
+enum SymmetryEnum
+  {
+    C1
+    C2
+    C3
+    C4
+    C5
+    C6
+    C7
+    C8
+    C9
+    C10
+    D2
+    D3
+    D4
+    D5
+    D6
+    D7
+    D8
+    D9
+    D10
+    T
+    O
+    I
   }
 
 enum TechniqueEnum
@@ -616,10 +676,7 @@ type BiophysicalProperty
     value: Float!
     unit: String!
     error: Float
-    measurementConditions: String
-    temperature: Float
-    ph: Float
-    ionicStrength: Float
+    measurementConditions: [MeasurementConditions]
     experimentalMethod: BiophysicalMethodEnum
   }
 
@@ -700,7 +757,7 @@ type CryoEMInstrument
     microscopeSoftwareVersion: String
     spotsize: Integer
     gunlens: Integer
-    imagingMode: String
+    imagingMode: ImagingModeEnum
     temBeamDiameter: Float
   }
 
@@ -715,7 +772,7 @@ type CryoEMPreparation
     blotForce: Integer
     humidityPercentage: Float
     chamberTemperature: Float
-    gridMaterial: String
+    gridMaterial: GridMaterialEnum
     glowDischargeApplied: Boolean
     glowDischargeTime: Float
     glowDischargeCurrent: Float
@@ -1033,7 +1090,7 @@ type Image3D
 type ImageFeature
   {
     description: String
-    terms: OntologyTerm
+    terms: [OntologyTerm]
   }
 
 type Instrument
@@ -1051,9 +1108,9 @@ type Instrument
 type LigandInteraction
   {
     description: String
-    ligandId: String!
+    ligandId: Uriorcurie!
     ligandName: String!
-    ligandSmiles: String
+    ligandSmiles: SmilesString
     bindingAffinity: Float
     bindingAffinityType: BindingAffinityTypeEnum
     bindingAffinityUnit: AffinityUnitEnum
@@ -1063,6 +1120,17 @@ type LigandInteraction
     isDrugLike: Boolean
     druggabilityScore: Float
     interactionDistance: Float
+  }
+
+type MeasurementConditions
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    bufferComposition: BufferComposition
+    ph: Float
+    ionicStrength: Float
+    temperature: Float
   }
 
 type Micrograph
@@ -1075,16 +1143,16 @@ type Micrograph
     dimensionsX: Integer
     dimensionsY: Integer
     exposureTime: Float
-    pixelSize: Float
-    defocus: Float
     dose: Float
     originMovieId: String
     defocusU: Float
     defocusV: Float
-    astigmatism: Float
     astigmatismAngle: Float
     resolutionFitLimit: Float
     ctfQualityScore: Float
+    pixelSize: String
+    defocus: Float
+    astigmatism: Float
   }
 
 type MolecularComposition
@@ -1178,6 +1246,7 @@ type OntologyTerm
     id: Uriorcurie!
     title: String
     description: String
+    terms: [OntologyTerm]
     label: String
     definition: String
     ontology: String
@@ -1353,7 +1422,7 @@ type QualityMetrics
 type RefinementParameters
   {
     description: String
-    symmetry: String
+    symmetry: SymmetryEnum
     pixelSize: Float
     boxSize: Integer
     goldStandard: Boolean

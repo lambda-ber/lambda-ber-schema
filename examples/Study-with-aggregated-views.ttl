@@ -2,6 +2,7 @@
 @prefix @base: <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix go: <http://purl.obolibrary.org/obo/GO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -176,17 +177,18 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
     dcterms:title "Complete p53 functional profile" ;
     ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
             ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions lambdaber:study-meas-cond-001 ;
             ns1:property_type "melting_temperature" ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ] ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "COSM10662" ;
-            ns1:database_name "cosmic" ;
-            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "P04637" ;
             ns1:database_name "uniprot" ;
-            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ] ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "COSM10662" ;
+            ns1:database_name "cosmic" ;
+            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ] ;
     ns1:evolutionary_conservation lambdaber:evol-cons-p53 ;
     ns1:functional_sites lambdaber:func-site-p53-001,
         lambdaber:func-site-p53-002 ;
@@ -200,7 +202,7 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
                 "242" ;
             ns1:interaction_type "metal_coordination" ;
             ns1:is_cofactor true ;
-            ns1:ligand_id "CHEBI:30413" ;
+            ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
             ns1:ligand_name "Zinc" ] ;
     ns1:mutations lambdaber:mut-p53-001 ;
     ns1:organism "Homo sapiens" ;
@@ -218,7 +220,7 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
 lambdaber:ptm-p53-001 a ns1:PostTranslationalModification ;
     ns1:enzyme "ATM" ;
     ns1:functional_effect "Stabilization" ;
-    ns1:modification_type "phosphorylation" ;
+    ns1:modification_type go:0006468 ;
     ns1:modified_residue "S15" ;
     ns1:protein_id "P04637" ;
     ns1:regulatory_role "DNA damage response" ;
@@ -269,6 +271,10 @@ lambdaber:struct-feat-p53-002 a ns1:StructuralFeature ;
     ns1:residue_range "94-292" ;
     ns1:source_database "cath" ;
     ns1:structural_motif "Immunoglobulin-like beta-sandwich" .
+
+lambdaber:study-meas-cond-001 a ns1:MeasurementConditions ;
+    ns1:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "Standard buffer" ] .
 
 lambdaber:wf-run-001 a lambdaber:WorkflowRun ;
     dcterms:title "3D reconstruction of p53-MDM2 complex" ;

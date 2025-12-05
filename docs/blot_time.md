@@ -3,7 +3,7 @@
 # Slot: blot_time 
 
 
-_Blotting time in seconds_
+_Blotting time in seconds (range: 0.5-10.0)_
 
 
 
@@ -70,7 +70,7 @@ Alias: blot_time
 <details>
 ```yaml
 name: blot_time
-description: Blotting time in seconds
+description: 'Blotting time in seconds (range: 0.5-10.0)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blot_time

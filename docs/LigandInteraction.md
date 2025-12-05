@@ -92,9 +92,9 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [ligand_id](ligand_id.md) | 1 <br/> [String](String.md) | Ligand identifier (ChEMBL, ChEBI, PubChem) | direct |
+| [ligand_id](ligand_id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Ligand identifier (ChEMBL, ChEBI, PubChem) | direct |
 | [ligand_name](ligand_name.md) | 1 <br/> [String](String.md) | Common name of the ligand | direct |
-| [ligand_smiles](ligand_smiles.md) | 0..1 <br/> [String](String.md) | SMILES representation of the ligand | direct |
+| [ligand_smiles](ligand_smiles.md) | 0..1 <br/> [SmilesString](SmilesString.md) | SMILES representation of the ligand | direct |
 | [binding_affinity](binding_affinity.md) | 0..1 <br/> [Float](Float.md) | Binding affinity value | direct |
 | [binding_affinity_type](binding_affinity_type.md) | 0..1 <br/> [BindingAffinityTypeEnum](BindingAffinityTypeEnum.md) | Type of binding measurement (Kd, Ki, IC50) | direct |
 | [binding_affinity_unit](binding_affinity_unit.md) | 0..1 <br/> [AffinityUnitEnum](AffinityUnitEnum.md) | Unit of binding affinity | direct |
@@ -102,7 +102,7 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
 | [binding_site_residues](binding_site_residues.md) | * <br/> [String](String.md) | Residues involved in ligand binding | direct |
 | [is_cofactor](is_cofactor.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the ligand is a cofactor | direct |
 | [is_drug_like](is_drug_like.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the ligand has drug-like properties | direct |
-| [druggability_score](druggability_score.md) | 0..1 <br/> [Float](Float.md) | Druggability score of the binding site | direct |
+| [druggability_score](druggability_score.md) | 0..1 <br/> [Float](Float.md) | Druggability score of the binding site (range: 0-1) | direct |
 | [interaction_distance](interaction_distance.md) | 0..1 <br/> [Float](Float.md) | Distance criteria for interaction (Angstroms) | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -171,6 +171,7 @@ attributes:
     rank: 1000
     domain_of:
     - LigandInteraction
+    range: uriorcurie
     required: true
   ligand_name:
     name: ligand_name
@@ -187,6 +188,7 @@ attributes:
     rank: 1000
     domain_of:
     - LigandInteraction
+    range: smiles_string
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
@@ -245,7 +247,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -285,7 +287,7 @@ attributes:
     owner: LigandInteraction
     domain_of:
     - LigandInteraction
-    range: string
+    range: uriorcurie
     required: true
   ligand_name:
     name: ligand_name
@@ -307,7 +309,7 @@ attributes:
     owner: LigandInteraction
     domain_of:
     - LigandInteraction
-    range: string
+    range: smiles_string
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
@@ -381,7 +383,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: druggability_score

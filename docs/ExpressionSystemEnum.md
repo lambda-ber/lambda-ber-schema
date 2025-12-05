@@ -22,12 +22,6 @@ URI: [lambdaber:ExpressionSystemEnum](https://w3id.org/lambda-ber-schema/Express
 
 
 
-## Slots
-
-| Name | Description |
-| ---  | --- |
-| [expression_system](expression_system.md) | Expression system used for recombinant protein production |
-
 
 
 

@@ -3,7 +3,7 @@
 # Slot: confidence_score 
 
 
-_Confidence score for the annotation (0-1)_
+_Confidence score for the annotation (range: 0-1)_
 
 
 
@@ -22,12 +22,12 @@ Alias: confidence_score
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 | [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 
 
@@ -76,7 +76,7 @@ Alias: confidence_score
 <details>
 ```yaml
 name: confidence_score
-description: Confidence score for the annotation (0-1)
+description: 'Confidence score for the annotation (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: confidence_score

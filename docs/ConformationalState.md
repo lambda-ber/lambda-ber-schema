@@ -58,7 +58,7 @@ URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/Conforma
 | [state_id](state_id.md) | 1 <br/> [String](String.md) | Identifier for this state | direct |
 | [state_name](state_name.md) | 0..1 <br/> [String](String.md) | Descriptive name (e | direct |
 | [pdb_entries](pdb_entries.md) | * <br/> [String](String.md) | PDB entries representing this state | direct |
-| [population](population.md) | 0..1 <br/> [Float](Float.md) | Relative population of this state | direct |
+| [population](population.md) | 0..1 <br/> [Float](Float.md) | Relative population of this state (range: 0-1) | direct |
 | [free_energy](free_energy.md) | 0..1 <br/> [Float](Float.md) | Relative free energy (kcal/mol) | direct |
 | [rmsd_from_reference](rmsd_from_reference.md) | 0..1 <br/> [Float](Float.md) | RMSD from reference structure | direct |
 | [characteristic_features](characteristic_features.md) | * <br/> [String](String.md) | Key features of this conformation | direct |
@@ -146,7 +146,7 @@ attributes:
     multivalued: true
   population:
     name: population
-    description: Relative population of this state
+    description: 'Relative population of this state (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -230,7 +230,7 @@ attributes:
     multivalued: true
   population:
     name: population
-    description: Relative population of this state
+    description: 'Relative population of this state (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: population

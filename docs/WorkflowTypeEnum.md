@@ -26,6 +26,12 @@ URI: [lambdaber:WorkflowTypeEnum](https://w3id.org/lambda-ber-schema/WorkflowTyp
 | saxs_analysis | None | SAXS data analysis |
 | em_2d_classification | None | EM 2D classification |
 | mass_spec_deconvolution | None | Mass spectrometry deconvolution |
+| particle_extraction | None | Particle extraction from micrographs |
+| ab_initio | None | Ab initio 3D reconstruction |
+| postprocessing | None | Map post-processing and sharpening |
+| map_validation | None | 3D map validation |
+| model_refinement | None | Atomic model refinement |
+| model_validation | None | Model validation and quality assessment |
 
 
 
@@ -105,6 +111,24 @@ permissible_values:
   mass_spec_deconvolution:
     text: mass_spec_deconvolution
     description: Mass spectrometry deconvolution
+  particle_extraction:
+    text: particle_extraction
+    description: Particle extraction from micrographs
+  ab_initio:
+    text: ab_initio
+    description: Ab initio 3D reconstruction
+  postprocessing:
+    text: postprocessing
+    description: Map post-processing and sharpening
+  map_validation:
+    text: map_validation
+    description: 3D map validation
+  model_refinement:
+    text: model_refinement
+    description: Atomic model refinement
+  model_validation:
+    text: model_validation
+    description: Model validation and quality assessment
 
 ```
 </details>

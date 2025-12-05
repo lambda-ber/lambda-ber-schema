@@ -28,6 +28,7 @@ URI: [lambdaber:CrystallizationMethodEnum](https://w3id.org/lambda-ber-schema/Cr
 
 | Name | Description |
 | ---  | --- |
+| [method](method.md) | Crystallization method used |
 | [crystallization_method](crystallization_method.md) | Method used for crystallization |
 
 

@@ -91,6 +91,7 @@ prefixes:
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   CL: http://purl.obolibrary.org/obo/CL_
+  GO: http://purl.obolibrary.org/obo/GO_
   nsls2: https://github.com/NSLS2/BER-LAMBDA/
   imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
   mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
@@ -119,8 +120,10 @@ classes:
         identifier: true
         range: uriorcurie
       title:
+        description: "A human-readable name or title for this entity"
         slot_uri: dcterms:title
       description:
+        description: "A detailed textual description of this entity"
         range: string
 
   AttributeGroup:
@@ -136,14 +139,17 @@ classes:
     description: "A collection of studies"
     attributes:
       keywords:
+        description: "Keywords or tags describing the dataset for search and categorization"
         range: string
         multivalued: true
       instruments:
+        description: "Instruments used across all studies in this dataset"
         range: Instrument
         multivalued: true
         inlined: true
         inlined_as_list: true
       studies:
+        description: "Individual research studies contained in this dataset"
         range: Study
         multivalued: true
         inlined: true
@@ -159,26 +165,32 @@ classes:
         multivalued: true
         inlined_as_list: true
       samples:
+        description: "Experimental samples used in this study, including biological samples "
         range: Sample
         multivalued: true
         inlined_as_list: true
       sample_preparations:
+        description: "Sample preparation procedures performed in this study"
         range: SamplePreparation
         multivalued: true
         inlined_as_list: true
       instrument_runs:
+        description: "Experimental data collection runs performed in this study"
         range: ExperimentRun
         multivalued: true
         inlined_as_list: true
       workflow_runs:
+        description: "Computational workflow executions for data processing in this study"
         range: WorkflowRun
         multivalued: true
         inlined_as_list: true
       data_files:
+        description: "Data files generated or used in this study"
         range: DataFile
         multivalued: true
         inlined_as_list: true
       images:
+        description: "Images acquired or generated in this study"
         range: Image
         multivalued: true
         inlined: true
@@ -235,7 +247,7 @@ classes:
         description: "Reference to parent sample for derivation tracking"
         range: Sample
       purity_percentage:
-        description: "Sample purity as percentage"
+        description: "Sample purity as percentage (range: 0-100)"
         range: float
         minimum_value: 0
         maximum_value: 100
@@ -391,7 +403,6 @@ classes:
         required: true
       preparation_date:
         description: "Date of sample preparation"
-        range: string
       operator_id:
         description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
@@ -406,6 +417,8 @@ classes:
       culture_volume_l:
         description: "Culture volume in liters"
         range: float
+        unit:
+          ucum_code: L
       medium:
         description: "Growth medium used"
       antibiotic_selection:
@@ -413,6 +426,8 @@ classes:
       growth_temperature_c:
         description: "Growth temperature in Celsius"
         range: float
+        unit:
+          ucum_code: Cel
       induction_agent:
         description: "Agent used to induce expression (e.g., IPTG, tetracycline)"
       inducer_concentration:
@@ -599,8 +614,8 @@ classes:
         description: "Gun lens setting"
         range: integer
       imaging_mode:
-        description: "Imaging mode (e.g., EFTEM, TEM, STEM)"
-        range: string
+        description: "Imaging mode for electron microscopy"
+        range: ImagingModeEnum
       tem_beam_diameter:
         description: "TEM beam diameter in micrometers"
         range: float
@@ -760,7 +775,7 @@ classes:
         description: "Defocus range increment in micrometers"
         range: float
       astigmatism_target:
-        description: "Target astigmatism in nanometers"
+        description: "Target astigmatism in Angstroms"
         range: float
       coma:
         description: "Coma aberration in nanometers"
@@ -1216,7 +1231,7 @@ classes:
         description: "Defocus value in micrometers"
         range: float
       astigmatism:
-        description: "Astigmatism value"
+        description: "Astigmatism value in Angstroms"
         range: float
 
   Image3D:
@@ -1285,13 +1300,14 @@ classes:
   Micrograph:
     is_a: Image2D
     description: "Motion-corrected micrograph derived from movie"
-    attributes:
+    slot_usage:
       pixel_size:
         description: "Final pixel size in Angstroms per pixel"
-        range: float
       defocus:
         description: "Measured defocus in micrometers"
-        range: float
+      astigmatism:
+        description: "Astigmatism in Angstroms"
+    attributes:
       dose:
         description: "Total electron dose in e-/Angstrom^2"
         range: float
@@ -1304,9 +1320,6 @@ classes:
         range: float
       defocus_v:
         description: "Defocus V in micrometers"
-        range: float
-      astigmatism:
-        description: "Astigmatism in Angstroms"
         range: float
       astigmatism_angle:
         description: "Astigmatism angle in degrees"
@@ -1441,16 +1454,28 @@ classes:
     description: "Semantic annotations describing features identified in images using controlled vocabulary terms"
     attributes:
       terms:
+        description: "Ontology terms describing features identified in the image"
         range: OntologyTerm
+        multivalued: true
+        inlined_as_list: true
 
   OntologyTerm:
     is_a: NamedThing
+    description: "A term from a controlled vocabulary or ontology"
     attributes:
+      terms:
+        description: "Collection of ontology terms"
+        range: OntologyTerm
+        multivalued: true
+        inlined_as_list: true
       label:
+        description: "The human-readable label or name of the ontology term"
         range: string
       definition:
+        description: "The formal definition or meaning of the ontology term"
         range: string
       ontology:
+        description: "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)"
         range: string
 
   MolecularComposition:
@@ -1475,7 +1500,7 @@ classes:
     description: "Buffer composition for sample storage"
     attributes:
       ph:
-        description: "pH of the buffer"
+        description: "pH of the buffer (range: 0-14)"
         range: float
         minimum_value: 0
         maximum_value: 14
@@ -1521,7 +1546,7 @@ classes:
         description: "Support film type"
         range: string
       hole_size:
-        description: "Hole size in micrometers"
+        description: "Hole size in micrometers (range: 0.5-5.0)"
         range: float
         minimum_value: 0.5
         maximum_value: 5.0
@@ -1529,7 +1554,7 @@ classes:
         description: "Method used for vitrification"
         range: VitrificationMethodEnum
       blot_time:
-        description: "Blotting time in seconds"
+        description: "Blotting time in seconds (range: 0.5-10.0)"
         range: float
         minimum_value: 0.5
         maximum_value: 10.0
@@ -1537,7 +1562,7 @@ classes:
         description: "Blotting force setting"
         range: integer
       humidity_percentage:
-        description: "Chamber humidity during vitrification"
+        description: "Chamber humidity during vitrification (range: 0-100)"
         range: float
         minimum_value: 0
         maximum_value: 100
@@ -1546,8 +1571,8 @@ classes:
         range: float
       # Additional detailed vitrification parameters from PNNL schema
       grid_material:
-        description: "Grid material (carbon, gold, graphene, silicon_nitride)"
-        range: string
+        description: "Grid material"
+        range: GridMaterialEnum
       glow_discharge_applied:
         description: "Whether glow discharge treatment was applied"
         range: boolean
@@ -2041,7 +2066,7 @@ classes:
     attributes:
       symmetry:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
-        range: string
+        range: SymmetryEnum
       pixel_size:
         description: "Pixel size in Angstroms per pixel"
         range: float
@@ -2361,6 +2386,18 @@ enums:
       gold:
         description: "Gold grid"
 
+  GridMaterialEnum:
+    description: "Materials used for EM grids"
+    permissible_values:
+      carbon:
+        description: "Carbon grid"
+      gold:
+        description: "Gold grid"
+      graphene:
+        description: "Graphene grid"
+      silicon_nitride:
+        description: "Silicon nitride grid"
+
   VitrificationMethodEnum:
     description: "Methods for vitrification"
     permissible_values:
@@ -2370,6 +2407,54 @@ enums:
         description: "High pressure freezing"
       slam_freezing:
         description: "Slam freezing"
+
+  SymmetryEnum:
+    description: "Crystallographic and non-crystallographic symmetry groups for cryo-EM"
+    permissible_values:
+      C1:
+        description: "C1 symmetry (no symmetry)"
+      C2:
+        description: "C2 cyclic symmetry (2-fold)"
+      C3:
+        description: "C3 cyclic symmetry (3-fold)"
+      C4:
+        description: "C4 cyclic symmetry (4-fold)"
+      C5:
+        description: "C5 cyclic symmetry (5-fold)"
+      C6:
+        description: "C6 cyclic symmetry (6-fold)"
+      C7:
+        description: "C7 cyclic symmetry (7-fold)"
+      C8:
+        description: "C8 cyclic symmetry (8-fold)"
+      C9:
+        description: "C9 cyclic symmetry (9-fold)"
+      C10:
+        description: "C10 cyclic symmetry (10-fold)"
+      D2:
+        description: "D2 dihedral symmetry (2-fold)"
+      D3:
+        description: "D3 dihedral symmetry (3-fold)"
+      D4:
+        description: "D4 dihedral symmetry (4-fold)"
+      D5:
+        description: "D5 dihedral symmetry (5-fold)"
+      D6:
+        description: "D6 dihedral symmetry (6-fold)"
+      D7:
+        description: "D7 dihedral symmetry (7-fold)"
+      D8:
+        description: "D8 dihedral symmetry (8-fold)"
+      D9:
+        description: "D9 dihedral symmetry (9-fold)"
+      D10:
+        description: "D10 dihedral symmetry (10-fold)"
+      T:
+        description: "Tetrahedral symmetry"
+      O:
+        description: "Octahedral symmetry"
+      I:
+        description: "Icosahedral symmetry"
 
   CrystallizationMethodEnum:
     description: "Methods for protein crystallization"
@@ -2400,6 +2485,16 @@ enums:
         description: "Instrument is offline"
       commissioning:
         description: "Instrument being commissioned"
+
+  ImagingModeEnum:
+    description: "Imaging modes for electron microscopy"
+    permissible_values:
+      EFTEM:
+        description: "Energy-filtered transmission electron microscopy"
+      TEM:
+        description: "Transmission electron microscopy"
+      STEM:
+        description: "Scanning transmission electron microscopy"
 
   DetectorTypeEnum:
     description: "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands."

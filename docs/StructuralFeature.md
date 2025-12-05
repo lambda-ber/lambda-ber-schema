@@ -131,9 +131,9 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
 | ---  | --- | --- | --- |
 | [feature_type](feature_type.md) | 1 <br/> [StructuralFeatureTypeEnum](StructuralFeatureTypeEnum.md) | Type of structural feature | direct |
 | [secondary_structure](secondary_structure.md) | 0..1 <br/> [SecondaryStructureEnum](SecondaryStructureEnum.md) | Secondary structure assignment | direct |
-| [solvent_accessibility](solvent_accessibility.md) | 0..1 <br/> [Float](Float.md) | Relative solvent accessible surface area | direct |
+| [solvent_accessibility](solvent_accessibility.md) | 0..1 <br/> [Float](Float.md) | Relative solvent accessible surface area (range: 0-1) | direct |
 | [backbone_flexibility](backbone_flexibility.md) | 0..1 <br/> [Float](Float.md) | B-factor or flexibility measure | direct |
-| [disorder_probability](disorder_probability.md) | 0..1 <br/> [Float](Float.md) | Probability of disorder (0-1) | direct |
+| [disorder_probability](disorder_probability.md) | 0..1 <br/> [Float](Float.md) | Probability of disorder (range: 0-1) | direct |
 | [conformational_state](conformational_state.md) | 0..1 <br/> [ConformationalStateEnum](ConformationalStateEnum.md) | Conformational state descriptor | direct |
 | [structural_motif](structural_motif.md) | 0..1 <br/> [String](String.md) | Known structural motif | direct |
 | [domain_assignment](domain_assignment.md) | 0..1 <br/> [String](String.md) | Domain database assignment (CATH, SCOP, Pfam) | direct |
@@ -142,15 +142,15 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
 | [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | [ProteinAnnotation](ProteinAnnotation.md) |
 | [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | [ProteinAnnotation](ProteinAnnotation.md) |
 | [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | [ProteinAnnotation](ProteinAnnotation.md) |
-| [confidence_score](confidence_score.md) | 0..1 <br/> [Float](Float.md) | Confidence score for the annotation (0-1) | [ProteinAnnotation](ProteinAnnotation.md) |
+| [confidence_score](confidence_score.md) | 0..1 <br/> [Float](Float.md) | Confidence score for the annotation (range: 0-1) | [ProteinAnnotation](ProteinAnnotation.md) |
 | [evidence_type](evidence_type.md) | 0..1 <br/> [EvidenceTypeEnum](EvidenceTypeEnum.md) | Type of evidence supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [evidence_code](evidence_code.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Evidence and Conclusion Ontology (ECO) code | [ProteinAnnotation](ProteinAnnotation.md) |
 | [source_database](source_database.md) | 0..1 <br/> [AnnotationSourceEnum](AnnotationSourceEnum.md) | Source database or resource that provided this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [annotation_method](annotation_method.md) | 0..1 <br/> [String](String.md) | Computational or experimental method used | [ProteinAnnotation](ProteinAnnotation.md) |
-| [publication_ids](publication_ids.md) | * <br/> [String](String.md) | PubMed IDs supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
+| [publication_ids](publication_ids.md) | * <br/> [String](String.md) | IDs of one or more publications supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -228,7 +228,7 @@ attributes:
     range: SecondaryStructureEnum
   solvent_accessibility:
     name: solvent_accessibility
-    description: Relative solvent accessible surface area
+    description: 'Relative solvent accessible surface area (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -246,7 +246,7 @@ attributes:
     range: float
   disorder_probability:
     name: disorder_probability
-    description: Probability of disorder (0-1)
+    description: 'Probability of disorder (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -319,7 +319,7 @@ attributes:
     range: SecondaryStructureEnum
   solvent_accessibility:
     name: solvent_accessibility
-    description: Relative solvent accessible surface area
+    description: 'Relative solvent accessible surface area (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: solvent_accessibility
@@ -341,7 +341,7 @@ attributes:
     range: float
   disorder_probability:
     name: disorder_probability
-    description: Probability of disorder (0-1)
+    description: 'Probability of disorder (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: disorder_probability
@@ -436,9 +436,10 @@ attributes:
     domain_of:
     - ProteinAnnotation
     range: string
+    pattern: ^[0-9,\-]+$
   confidence_score:
     name: confidence_score
-    description: Confidence score for the annotation (0-1)
+    description: 'Confidence score for the annotation (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: confidence_score
@@ -490,7 +491,8 @@ attributes:
     range: string
   publication_ids:
     name: publication_ids
-    description: PubMed IDs supporting this annotation
+    description: IDs of one or more publications supporting this annotation. Use PubMed
+      IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: publication_ids
@@ -499,7 +501,7 @@ attributes:
     - ProteinAnnotation
     range: string
     multivalued: true
-    pattern: ^PMID:[0-9]+$
+    pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -516,6 +518,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -526,6 +529,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

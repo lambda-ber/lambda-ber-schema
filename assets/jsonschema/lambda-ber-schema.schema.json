@@ -48,6 +48,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -157,6 +158,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -272,39 +274,19 @@
                     "$ref": "#/$defs/BiophysicalMethodEnum",
                     "description": "Method used for measurement"
                 },
-                "ionic_strength": {
-                    "description": "Ionic strength in molar",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "measurement_conditions": {
-                    "description": "Conditions under which measurement was made",
+                    "description": "Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.",
+                    "items": {
+                        "$ref": "#/$defs/MeasurementConditions"
+                    },
                     "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ph": {
-                    "description": "pH value",
-                    "maximum": 14,
-                    "minimum": 0,
-                    "type": [
-                        "number",
+                        "array",
                         "null"
                     ]
                 },
                 "property_type": {
                     "$ref": "#/$defs/BiophysicalPropertyEnum",
                     "description": "Type of biophysical property"
-                },
-                "temperature": {
-                    "description": "Temperature in Kelvin",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
                 },
                 "unit": {
                     "description": "Unit of measurement",
@@ -375,7 +357,7 @@
                     ]
                 },
                 "ph": {
-                    "description": "pH of the buffer",
+                    "description": "pH of the buffer (range: 0-14)",
                     "maximum": 14,
                     "minimum": 0,
                     "type": [
@@ -558,6 +540,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -596,6 +579,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -654,7 +638,7 @@
                     ]
                 },
                 "population": {
-                    "description": "Relative population of this state",
+                    "description": "Relative population of this state (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -762,6 +746,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -843,11 +828,8 @@
                     "type": "string"
                 },
                 "imaging_mode": {
-                    "description": "Imaging mode (e.g., EFTEM, TEM, STEM)",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/ImagingModeEnum",
+                    "description": "Imaging mode for electron microscopy"
                 },
                 "installation_date": {
                     "description": "Date of instrument installation",
@@ -938,6 +920,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -970,7 +953,7 @@
                     ]
                 },
                 "blot_time": {
-                    "description": "Blotting time in seconds",
+                    "description": "Blotting time in seconds (range: 0.5-10.0)",
                     "maximum": 10.0,
                     "minimum": 0.5,
                     "type": [
@@ -1048,18 +1031,15 @@
                     ]
                 },
                 "grid_material": {
-                    "description": "Grid material (carbon, gold, graphene, silicon_nitride)",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/GridMaterialEnum",
+                    "description": "Grid material"
                 },
                 "grid_type": {
                     "$ref": "#/$defs/GridTypeEnum",
                     "description": "Type of EM grid used"
                 },
                 "hole_size": {
-                    "description": "Hole size in micrometers",
+                    "description": "Hole size in micrometers (range: 0.5-5.0)",
                     "maximum": 5.0,
                     "minimum": 0.5,
                     "type": [
@@ -1068,7 +1048,7 @@
                     ]
                 },
                 "humidity_percentage": {
-                    "description": "Chamber humidity during vitrification",
+                    "description": "Chamber humidity during vitrification (range: 0-100)",
                     "maximum": 100,
                     "minimum": 0,
                     "type": [
@@ -1399,6 +1379,7 @@
                     "description": "Type of data in the file"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1452,6 +1433,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1562,6 +1544,7 @@
             "description": "A collection of studies",
             "properties": {
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1572,6 +1555,7 @@
                     "type": "string"
                 },
                 "instruments": {
+                    "description": "Instruments used across all studies in this dataset",
                     "items": {
                         "$ref": "#/$defs/Instrument"
                     },
@@ -1581,6 +1565,7 @@
                     ]
                 },
                 "keywords": {
+                    "description": "Keywords or tags describing the dataset for search and categorization",
                     "items": {
                         "type": "string"
                     },
@@ -1590,6 +1575,7 @@
                     ]
                 },
                 "studies": {
+                    "description": "Individual research studies contained in this dataset",
                     "items": {
                         "$ref": "#/$defs/Study"
                     },
@@ -1599,6 +1585,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1703,7 +1690,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -1719,7 +1706,7 @@
                     ]
                 },
                 "conservation_score": {
-                    "description": "Overall conservation score",
+                    "description": "Overall conservation score (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -1738,6 +1725,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -1772,9 +1760,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -1784,6 +1772,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -1801,6 +1790,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -1843,7 +1833,7 @@
                     ]
                 },
                 "astigmatism_target": {
-                    "description": "Target astigmatism in nanometers",
+                    "description": "Target astigmatism in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -1938,6 +1928,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2106,6 +2097,7 @@
                     "description": "Technique used for data collection"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2291,6 +2283,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2364,6 +2357,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2450,7 +2444,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism value in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -2471,6 +2465,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2576,6 +2571,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2622,7 +2618,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -2631,7 +2627,7 @@
                     ]
                 },
                 "conservation_score": {
-                    "description": "Evolutionary conservation score",
+                    "description": "Evolutionary conservation score (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -2640,6 +2636,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2709,9 +2706,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -2721,13 +2718,14 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "residues": {
-                    "description": "List of residues forming the functional site",
+                    "description": "List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").",
                     "items": {
                         "type": "string"
                     },
@@ -2752,6 +2750,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2790,6 +2789,17 @@
                 "lipid_binding"
             ],
             "title": "FunctionalSiteTypeEnum",
+            "type": "string"
+        },
+        "GridMaterialEnum": {
+            "description": "Materials used for EM grids",
+            "enum": [
+                "carbon",
+                "gold",
+                "graphene",
+                "silicon_nitride"
+            ],
+            "title": "GridMaterialEnum",
             "type": "string"
         },
         "GridTypeEnum": {
@@ -2831,6 +2841,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2880,6 +2891,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2905,7 +2917,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism value in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -2919,6 +2931,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -2968,6 +2981,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -2993,6 +3007,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3056,6 +3071,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3087,14 +3103,28 @@
                     ]
                 },
                 "terms": {
+                    "description": "Ontology terms describing features identified in the image",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTerm"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 }
             },
             "title": "ImageFeature",
             "type": "object"
+        },
+        "ImagingModeEnum": {
+            "description": "Imaging modes for electron microscopy",
+            "enum": [
+                "EFTEM",
+                "TEM",
+                "STEM"
+            ],
+            "title": "ImagingModeEnum",
+            "type": "string"
         },
         "Instrument": {
             "additionalProperties": false,
@@ -3105,6 +3135,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3140,6 +3171,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3232,7 +3264,7 @@
                     ]
                 },
                 "druggability_score": {
-                    "description": "Druggability score of the binding site",
+                    "description": "Druggability score of the binding site (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3275,6 +3307,7 @@
                 },
                 "ligand_smiles": {
                     "description": "SMILES representation of the ligand",
+                    "pattern": "^([A-Za-z0-9@+\\-\\[\\]\\(\\)\\\\/=#$%.]+)$",
                     "type": [
                         "string",
                         "null"
@@ -3286,6 +3319,69 @@
                 "ligand_name"
             ],
             "title": "LigandInteraction",
+            "type": "object"
+        },
+        "MeasurementConditions": {
+            "additionalProperties": false,
+            "description": "Conditions under which biophysical measurements were made",
+            "properties": {
+                "buffer_composition": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BufferComposition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Composition of the buffer used"
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "ionic_strength": {
+                    "description": "Ionic strength in molar of material in solution",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ph": {
+                    "description": "pH value of the solution during measurement (range: 0-14)",
+                    "maximum": 14,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temperature": {
+                    "description": "Temperature in Kelvin during measurement",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "MeasurementConditions",
             "type": "object"
         },
         "Micrograph": {
@@ -3342,6 +3438,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3405,6 +3502,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3551,7 +3649,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism value in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -3579,6 +3677,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3712,6 +3811,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3730,7 +3830,7 @@
             "description": "Effects of mutations and variants on protein structure and function",
             "properties": {
                 "allele_frequency": {
-                    "description": "Population allele frequency",
+                    "description": "Population allele frequency (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3758,7 +3858,7 @@
                     "description": "Clinical significance"
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -3774,6 +3874,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3847,9 +3948,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -3859,6 +3960,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -3869,6 +3971,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3899,15 +4002,17 @@
         },
         "OntologyTerm": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A term from a controlled vocabulary or ontology",
             "properties": {
                 "definition": {
+                    "description": "The formal definition or meaning of the ontology term",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -3918,18 +4023,31 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "The human-readable label or name of the ontology term",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "ontology": {
+                    "description": "The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
+                "terms": {
+                    "description": "Collection of ontology terms",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTerm"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -3954,7 +4072,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism value in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -3985,6 +4103,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4052,6 +4171,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4075,21 +4195,40 @@
         "PTMTypeEnum": {
             "description": "Types of post-translational modifications",
             "enum": [
-                "phosphorylation",
                 "acetylation",
-                "methylation",
-                "ubiquitination",
-                "sumoylation",
+                "acylation",
+                "adp_ribosylation",
+                "alkylation",
+                "arginylation",
+                "carbamoylation",
+                "carboxylation",
+                "deacylation",
+                "dealkylation",
+                "deamidation",
+                "deamination",
+                "deglutathionylation",
+                "deglycation",
+                "deglycosylation",
+                "dephosphorylation",
+                "flavinylation",
+                "glutathionylation",
                 "glycosylation",
-                "palmitoylation",
+                "hydroxylation",
+                "lipidation",
+                "methylation",
                 "myristoylation",
-                "prenylation",
                 "nitrosylation",
                 "oxidation",
-                "hydroxylation",
+                "palmitoylation",
+                "peptidyl_amino_acid_modification",
+                "phosphorylation",
+                "post_translational_protein_modification",
+                "prenylation",
                 "proteolysis",
-                "deamidation",
-                "adp_ribosylation"
+                "sulfation",
+                "sulfhydration",
+                "sumoylation",
+                "ubiquitination"
             ],
             "title": "PTMTypeEnum",
             "type": "string"
@@ -4185,7 +4324,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4194,6 +4333,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4264,9 +4404,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -4290,6 +4430,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -4300,6 +4441,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4361,7 +4503,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4370,6 +4512,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4407,9 +4550,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -4419,6 +4562,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -4429,6 +4573,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4479,6 +4624,7 @@
                     "type": "string"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4573,6 +4719,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -4652,7 +4799,7 @@
                     "description": "Stability assessment of the complex"
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -4661,6 +4808,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -4750,9 +4898,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -4762,6 +4910,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -4772,6 +4921,7 @@
                     "description": "Source database or resource that provided this annotation"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5101,11 +5251,8 @@
                     ]
                 },
                 "symmetry": {
-                    "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/SymmetryEnum",
+                    "description": "Symmetry applied (C1, Cn, Dn, T, O, I)"
                 }
             },
             "title": "RefinementParameters",
@@ -5120,6 +5267,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5197,6 +5345,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5341,6 +5490,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5479,7 +5629,7 @@
                     ]
                 },
                 "purity_percentage": {
-                    "description": "Sample purity as percentage",
+                    "description": "Sample purity as percentage (range: 0-100)",
                     "maximum": 100,
                     "minimum": 0,
                     "type": [
@@ -5531,6 +5681,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5613,6 +5764,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -5834,6 +5986,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -5968,7 +6121,7 @@
                     ]
                 },
                 "confidence_score": {
-                    "description": "Confidence score for the annotation (0-1)",
+                    "description": "Confidence score for the annotation (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -5981,13 +6134,14 @@
                     "description": "Conformational state descriptor"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "disorder_probability": {
-                    "description": "Probability of disorder (0-1)",
+                    "description": "Probability of disorder (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -6042,9 +6196,9 @@
                     "type": "string"
                 },
                 "publication_ids": {
-                    "description": "PubMed IDs supporting this annotation",
+                    "description": "IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.",
                     "items": {
-                        "pattern": "^PMID:[0-9]+$",
+                        "pattern": "^(PMID:[0-9]+|DOI:10\\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -6054,6 +6208,7 @@
                 },
                 "residue_range": {
                     "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "pattern": "^[0-9,\\-]+$",
                     "type": [
                         "string",
                         "null"
@@ -6064,7 +6219,7 @@
                     "description": "Secondary structure assignment"
                 },
                 "solvent_accessibility": {
-                    "description": "Relative solvent accessible surface area",
+                    "description": "Relative solvent accessible surface area (range: 0-1)",
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -6084,6 +6239,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6140,6 +6296,7 @@
                     ]
                 },
                 "data_files": {
+                    "description": "Data files generated or used in this study",
                     "items": {
                         "$ref": "#/$defs/DataFile"
                     },
@@ -6149,6 +6306,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6159,6 +6317,7 @@
                     "type": "string"
                 },
                 "images": {
+                    "description": "Images acquired or generated in this study",
                     "items": {
                         "$ref": "#/$defs/Image"
                     },
@@ -6168,6 +6327,7 @@
                     ]
                 },
                 "instrument_runs": {
+                    "description": "Experimental data collection runs performed in this study",
                     "items": {
                         "$ref": "#/$defs/ExperimentRun"
                     },
@@ -6187,6 +6347,7 @@
                     ]
                 },
                 "sample_preparations": {
+                    "description": "Sample preparation procedures performed in this study",
                     "items": {
                         "$ref": "#/$defs/SamplePreparation"
                     },
@@ -6196,6 +6357,7 @@
                     ]
                 },
                 "samples": {
+                    "description": "Experimental samples used in this study, including biological samples ",
                     "items": {
                         "$ref": "#/$defs/Sample"
                     },
@@ -6205,12 +6367,14 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "workflow_runs": {
+                    "description": "Computational workflow executions for data processing in this study",
                     "items": {
                         "$ref": "#/$defs/WorkflowRun"
                     },
@@ -6225,6 +6389,35 @@
             ],
             "title": "Study",
             "type": "object"
+        },
+        "SymmetryEnum": {
+            "description": "Crystallographic and non-crystallographic symmetry groups for cryo-EM",
+            "enum": [
+                "C1",
+                "C2",
+                "C3",
+                "C4",
+                "C5",
+                "C6",
+                "C7",
+                "C8",
+                "C9",
+                "C10",
+                "D2",
+                "D3",
+                "D4",
+                "D5",
+                "D6",
+                "D7",
+                "D8",
+                "D9",
+                "D10",
+                "T",
+                "O",
+                "I"
+            ],
+            "title": "SymmetryEnum",
+            "type": "string"
         },
         "TechniqueEnum": {
             "description": "Structural biology techniques",
@@ -6330,6 +6523,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6618,6 +6812,7 @@
                     ]
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6743,7 +6938,7 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value",
+                    "description": "Astigmatism value in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -6778,6 +6973,7 @@
                     ]
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -6866,6 +7062,7 @@
                     "description": "X-ray source type (synchrotron or lab-source)"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -6916,6 +7113,7 @@
                     "description": "Current operational status"
                 },
                 "description": {
+                    "description": "A detailed textual description of this entity",
                     "type": [
                         "string",
                         "null"
@@ -7008,6 +7206,7 @@
                     "description": "Type of X-ray source"
                 },
                 "title": {
+                    "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
                         "null"
@@ -7230,6 +7429,7 @@
     "metamodel_version": "1.7.0",
     "properties": {
         "description": {
+            "description": "A detailed textual description of this entity",
             "type": [
                 "string",
                 "null"
@@ -7240,6 +7440,7 @@
             "type": "string"
         },
         "instruments": {
+            "description": "Instruments used across all studies in this dataset",
             "items": {
                 "$ref": "#/$defs/Instrument"
             },
@@ -7249,6 +7450,7 @@
             ]
         },
         "keywords": {
+            "description": "Keywords or tags describing the dataset for search and categorization",
             "items": {
                 "type": "string"
             },
@@ -7258,6 +7460,7 @@
             ]
         },
         "studies": {
+            "description": "Individual research studies contained in this dataset",
             "items": {
                 "$ref": "#/$defs/Study"
             },
@@ -7267,6 +7470,7 @@
             ]
         },
         "title": {
+            "description": "A human-readable name or title for this entity",
             "type": [
                 "string",
                 "null"

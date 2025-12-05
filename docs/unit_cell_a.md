@@ -3,11 +3,6 @@
 # Slot: unit_cell_a 
 
 
-_Unit cell parameter a in Angstroms_
-
-
-
-
 
 URI: [lambdaber:unit_cell_a](https://w3id.org/lambda-ber-schema/unit_cell_a)
 Alias: unit_cell_a
@@ -22,6 +17,7 @@ Alias: unit_cell_a
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 
 
@@ -31,7 +27,7 @@ Alias: unit_cell_a
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: unit_cell_a
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -66,14 +55,11 @@ Alias: unit_cell_a
 <details>
 ```yaml
 name: unit_cell_a
-description: Unit cell parameter a in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: unit_cell_a
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
-range: float
+range: string
 
 ```
 </details>

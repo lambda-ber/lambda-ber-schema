@@ -3,7 +3,7 @@
 # Slot: publication_ids 
 
 
-_PubMed IDs supporting this annotation_
+_IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix._
 
 
 
@@ -22,12 +22,12 @@ Alias: publication_ids
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
 | [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
 | [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 
 
@@ -41,7 +41,7 @@ Alias: publication_ids
 
 * Multivalued: True
 
-* Regex pattern: `^PMID:[0-9]+$`
+* Regex pattern: `^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$`
 
 
 
@@ -76,7 +76,8 @@ Alias: publication_ids
 <details>
 ```yaml
 name: publication_ids
-description: PubMed IDs supporting this annotation
+description: IDs of one or more publications supporting this annotation. Use PubMed
+  IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: publication_ids
@@ -85,7 +86,7 @@ domain_of:
 - ProteinAnnotation
 range: string
 multivalued: true
-pattern: ^PMID:[0-9]+$
+pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
 
 ```
 </details>

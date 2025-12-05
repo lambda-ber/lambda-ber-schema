@@ -3,7 +3,7 @@
 # Slot: astigmatism 
 
 
-_Astigmatism value_
+_Astigmatism value in Angstroms_
 
 
 
@@ -22,10 +22,12 @@ Alias: astigmatism
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  yes  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 
 
 
@@ -69,7 +71,7 @@ Alias: astigmatism
 <details>
 ```yaml
 name: astigmatism
-description: Astigmatism value
+description: Astigmatism value in Angstroms
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: astigmatism

@@ -18,6 +18,7 @@ Alias: terms
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [ImageFeature](ImageFeature.md) | Semantic annotations describing features identified in images using controlle... |  no  |
+| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
 
 
 
@@ -26,7 +27,7 @@ Alias: terms
 
 ## Properties
 
-* Range: [OntologyTerm](OntologyTerm.md)
+* Range: [String](String.md)
 
 
 
@@ -35,13 +36,6 @@ Alias: terms
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -61,13 +55,11 @@ Alias: terms
 <details>
 ```yaml
 name: terms
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: terms
-owner: ImageFeature
 domain_of:
 - ImageFeature
-range: OntologyTerm
+- OntologyTerm
+range: string
 
 ```
 </details>

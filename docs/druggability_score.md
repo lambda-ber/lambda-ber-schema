@@ -3,7 +3,7 @@
 # Slot: druggability_score 
 
 
-_Druggability score of the binding site_
+_Druggability score of the binding site (range: 0-1)_
 
 
 
@@ -70,7 +70,7 @@ Alias: druggability_score
 <details>
 ```yaml
 name: druggability_score
-description: Druggability score of the binding site
+description: 'Druggability score of the binding site (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: druggability_score

@@ -23,6 +23,10 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
         click Image href "../Image/"
       
 
+      Image2D <|-- Movie
+        click Movie href "../Movie/"
+      Image2D <|-- Micrograph
+        click Micrograph href "../Micrograph/"
       Image2D <|-- FluorescenceImage
         click FluorescenceImage href "../FluorescenceImage/"
       Image2D <|-- OpticalImage
@@ -66,6 +70,8 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 * [NamedThing](NamedThing.md)
     * [Image](Image.md)
         * **Image2D**
+            * [Movie](Movie.md)
+            * [Micrograph](Micrograph.md)
             * [FluorescenceImage](FluorescenceImage.md)
             * [OpticalImage](OpticalImage.md)
             * [XRFImage](XRFImage.md)
@@ -77,7 +83,7 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | direct |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value | direct |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | direct |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
 | [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
@@ -86,8 +92,8 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 | [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | [Image](Image.md) |
 | [dose](dose.md) | 0..1 <br/> [Float](Float.md) | Electron dose in e-/Å² | [Image](Image.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
-| [title](title.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
 
 
 
@@ -148,7 +154,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -179,7 +185,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -217,6 +223,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -258,6 +265,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id
@@ -275,6 +283,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -285,6 +294,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

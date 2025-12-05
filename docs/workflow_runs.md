@@ -3,6 +3,11 @@
 # Slot: workflow_runs 
 
 
+_Computational workflow executions for data processing in this study_
+
+
+
+
 
 URI: [lambdaber:workflow_runs](https://w3id.org/lambda-ber-schema/workflow_runs)
 Alias: workflow_runs
@@ -63,6 +68,7 @@ Alias: workflow_runs
 <details>
 ```yaml
 name: workflow_runs
+description: Computational workflow executions for data processing in this study
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: workflow_runs

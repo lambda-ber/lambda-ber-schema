@@ -3,11 +3,6 @@
 # Slot: space_group 
 
 
-_Crystallographic space group_
-
-
-
-
 
 URI: [lambdaber:space_group](https://w3id.org/lambda-ber-schema/space_group)
 Alias: space_group
@@ -22,6 +17,7 @@ Alias: space_group
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
 | [QualityMetrics](QualityMetrics.md) | Quality metrics for experiments |  no  |
 
 
@@ -43,13 +39,6 @@ Alias: space_group
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,12 +55,9 @@ Alias: space_group
 <details>
 ```yaml
 name: space_group
-description: Crystallographic space group
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: space_group
-owner: QualityMetrics
 domain_of:
+- WorkflowRun
 - QualityMetrics
 range: string
 

@@ -3,7 +3,7 @@
 # Slot: disorder_probability 
 
 
-_Probability of disorder (0-1)_
+_Probability of disorder (range: 0-1)_
 
 
 
@@ -70,7 +70,7 @@ Alias: disorder_probability
 <details>
 ```yaml
 name: disorder_probability
-description: Probability of disorder (0-1)
+description: 'Probability of disorder (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: disorder_probability
