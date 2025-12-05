@@ -489,6 +489,7 @@ dev = [
     { name = "mkdocs" },
     { name = "mkdocs-material" },
     { name = "mkdocs-mermaid2-plugin" },
+    { name = "pytest" },
 ]
 
 [package.metadata]
@@ -504,6 +505,7 @@ dev = [
     { name = "mkdocs", specifier = ">=1.6.1" },
     { name = "mkdocs-material", specifier = ">=9.6.16" },
     { name = "mkdocs-mermaid2-plugin", specifier = ">=1.2.1" },
+    { name = "pytest", specifier = ">=8.0.0" },
 ]
 
 [[package]]

@@ -42,4 +42,11 @@ dev = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.6.16",
     "mkdocs-mermaid2-plugin>=1.2.1",
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]
