@@ -208,7 +208,7 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 | [processing_status](processing_status.md) | 0..1 <br/> [ProcessingStatusEnum](ProcessingStatusEnum.md) | Current processing status | direct |
 | [magnification](magnification.md) | 0..1 <br/> [Integer](Integer.md) | Magnification used during data collection | direct |
 | [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [Float](Float.md) | Calibrated pixel size in Angstroms per pixel | direct |
-| [camera_binning](camera_binning.md) | 0..1 <br/> [Integer](Integer.md) | Camera binning factor | direct |
+| [camera_binning](camera_binning.md) | 0..1 <br/> [Float](Float.md) | Camera binning factor | direct |
 | [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [Float](Float.md) | Exposure time per frame in milliseconds | direct |
 | [frames_per_movie](frames_per_movie.md) | 0..1 <br/> [Integer](Integer.md) | Number of frames per movie | direct |
 | [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [Float](Float.md) | Total exposure time in milliseconds | direct |
@@ -419,12 +419,14 @@ attributes:
     range: float
   camera_binning:
     name: camera_binning
-    description: Camera binning factor
+    description: Camera binning factor. This must be a positive float value (e.g.,
+      1, 1.5, 2, 3).
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: float
+    minimum_value: 0.01
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds
@@ -875,14 +877,16 @@ attributes:
     range: float
   camera_binning:
     name: camera_binning
-    description: Camera binning factor
+    description: Camera binning factor. This must be a positive float value (e.g.,
+      1, 1.5, 2, 3).
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: camera_binning
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: float
+    minimum_value: 0.01
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds

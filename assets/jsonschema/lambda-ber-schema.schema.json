@@ -1875,9 +1875,10 @@
                     ]
                 },
                 "camera_binning": {
-                    "description": "Camera binning factor",
+                    "description": "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
+                    "minimum": 0.01,
                     "type": [
-                        "integer",
+                        "number",
                         "null"
                     ]
                 },
@@ -3579,9 +3580,10 @@
                     ]
                 },
                 "binning": {
-                    "description": "Binning factor applied during motion correction",
+                    "description": "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
+                    "minimum": 0.01,
                     "type": [
-                        "integer",
+                        "number",
                         "null"
                     ]
                 },
@@ -3613,9 +3615,10 @@
                     ]
                 },
                 "output_binning": {
-                    "description": "Output binning factor",
+                    "description": "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
+                    "minimum": 0.01,
                     "type": [
-                        "integer",
+                        "number",
                         "null"
                     ]
                 },
@@ -7482,5 +7485,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": null
+    "version": "0.1.1.post4.dev0+e2dc952"
 }

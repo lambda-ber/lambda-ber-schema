@@ -3,7 +3,7 @@
 # Slot: binning 
 
 
-_Binning factor applied during motion correction_
+_Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3)._
 
 
 
@@ -31,7 +31,9 @@ Alias: binning
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [Float](Float.md)
+
+* Minimum Value: 0
 
 
 
@@ -66,14 +68,16 @@ Alias: binning
 <details>
 ```yaml
 name: binning
-description: Binning factor applied during motion correction
+description: Binning factor applied during motion correction. This must be a positive
+  float value (e.g., 1, 1.5, 2, 3).
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: binning
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: integer
+range: float
+minimum_value: 0.01
 
 ```
 </details>

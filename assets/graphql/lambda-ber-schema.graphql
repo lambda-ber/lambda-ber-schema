@@ -1,4 +1,5 @@
 # metamodel_version: 1.7.0
+# version: 0.1.1.post4.dev0+e2dc952
 enum AffinityUnitEnum
   {
     molar
@@ -931,7 +932,7 @@ type ExperimentRun
     processingStatus: ProcessingStatusEnum
     magnification: Integer
     calibratedPixelSize: Float
-    cameraBinning: Integer
+    cameraBinning: Float
     exposureTimePerFrame: Float
     framesPerMovie: Integer
     totalExposureTime: Float
@@ -1167,12 +1168,12 @@ type MotionCorrectionParameters
   {
     description: String
     patchSize: Integer
-    binning: Integer
+    binning: Float
     doseWeighting: Boolean
     bfactorDoseWeighting: Float
     anisotropicCorrection: Boolean
     frameGrouping: Integer
-    outputBinning: Integer
+    outputBinning: Float
     driftTotal: Float
   }
 
