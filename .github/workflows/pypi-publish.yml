@@ -1,40 +1,37 @@
-# name: Publish Python Package
+name: Publish Python Package
 
-# Not currently used for this project.
-# on:
-#   workflow_dispatch:
-#   release:
-#     types: [created]
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
 
-# jobs:
-#   build-n-publish:
-#     name: Build and publish Python 🐍 distributions 📦 to PyPI
-#     runs-on: ubuntu-latest
+jobs:
+  build-and-publish:
+    name: Build and publish Python 🐍 distributions 📦 to PyPI
+    runs-on: ubuntu-latest
 
-#     environment: release
-#     permissions:
-#       id-token: write
-#     steps:
-#       - uses: actions/checkout@v4
+    environment: release
+    permissions:
+      contents: read
+      id-token: write  # Required for PyPI Trusted Publisher
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: 3.9
-#           cache: pip
-#           cache-dependency-path: '**/pyproject.toml'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for git tag versioning
 
-#       - name: Install uv
-#         run: pip install uv
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-#       - name: Install dependencies
-#         run: uv pip install -r pyproject.toml --system -e .
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
 
-#       - name: Install build dependencies
-#         run: uv pip install --system build hatchling
+      - name: Build distributions
+        run: uv build
 
-#       - name: Build source and wheel archives
-#         run: python -m build
-
-#       - name: Publish
-#         uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish to PyPI (Trusted Publisher)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # No API token needed if you've set up Trusted Publisher on PyPI
