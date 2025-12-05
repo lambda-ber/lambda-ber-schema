@@ -1995,7 +1995,7 @@ classes:
         range: integer
       binning:
         description: "Binning factor applied during motion correction"
-        range: integer
+        range: float
       dose_weighting:
         description: "Whether dose weighting was applied"
         range: boolean
