@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-26T14:01:36
+# Generation date: 2025-12-05T17:01:36
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,7 +137,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = None
+version = "0.1.1.post4.dev0+e2dc952"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -1216,7 +1216,7 @@ class ExperimentRun(NamedThing):
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
     magnification: Optional[int] = None
     calibrated_pixel_size: Optional[float] = None
-    camera_binning: Optional[int] = None
+    camera_binning: Optional[float] = None
     exposure_time_per_frame: Optional[float] = None
     frames_per_movie: Optional[int] = None
     total_exposure_time: Optional[float] = None
@@ -1302,8 +1302,8 @@ class ExperimentRun(NamedThing):
         if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, float):
             self.calibrated_pixel_size = float(self.calibrated_pixel_size)
 
-        if self.camera_binning is not None and not isinstance(self.camera_binning, int):
-            self.camera_binning = int(self.camera_binning)
+        if self.camera_binning is not None and not isinstance(self.camera_binning, float):
+            self.camera_binning = float(self.camera_binning)
 
         if self.exposure_time_per_frame is not None and not isinstance(self.exposure_time_per_frame, float):
             self.exposure_time_per_frame = float(self.exposure_time_per_frame)
@@ -3032,20 +3032,20 @@ class MotionCorrectionParameters(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.MotionCorrectionParameters
 
     patch_size: Optional[int] = None
-    binning: Optional[int] = None
+    binning: Optional[float] = None
     dose_weighting: Optional[Union[bool, Bool]] = None
     bfactor_dose_weighting: Optional[float] = None
     anisotropic_correction: Optional[Union[bool, Bool]] = None
     frame_grouping: Optional[int] = None
-    output_binning: Optional[int] = None
+    output_binning: Optional[float] = None
     drift_total: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.patch_size is not None and not isinstance(self.patch_size, int):
             self.patch_size = int(self.patch_size)
 
-        if self.binning is not None and not isinstance(self.binning, int):
-            self.binning = int(self.binning)
+        if self.binning is not None and not isinstance(self.binning, float):
+            self.binning = float(self.binning)
 
         if self.dose_weighting is not None and not isinstance(self.dose_weighting, Bool):
             self.dose_weighting = Bool(self.dose_weighting)
@@ -3059,8 +3059,8 @@ class MotionCorrectionParameters(AttributeGroup):
         if self.frame_grouping is not None and not isinstance(self.frame_grouping, int):
             self.frame_grouping = int(self.frame_grouping)
 
-        if self.output_binning is not None and not isinstance(self.output_binning, int):
-            self.output_binning = int(self.output_binning)
+        if self.output_binning is not None and not isinstance(self.output_binning, float):
+            self.output_binning = float(self.output_binning)
 
         if self.drift_total is not None and not isinstance(self.drift_total, float):
             self.drift_total = float(self.drift_total)
@@ -6475,7 +6475,7 @@ slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDABER.calibrated_pixel
                    model_uri=LAMBDABER.experimentRun__calibrated_pixel_size, domain=None, range=Optional[float])
 
 slots.experimentRun__camera_binning = Slot(uri=LAMBDABER.camera_binning, name="experimentRun__camera_binning", curie=LAMBDABER.curie('camera_binning'),
-                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[float])
 
 slots.experimentRun__exposure_time_per_frame = Slot(uri=LAMBDABER.exposure_time_per_frame, name="experimentRun__exposure_time_per_frame", curie=LAMBDABER.curie('exposure_time_per_frame'),
                    model_uri=LAMBDABER.experimentRun__exposure_time_per_frame, domain=None, range=Optional[float])
@@ -7384,7 +7384,7 @@ slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDABER.patch_size, na
                    model_uri=LAMBDABER.motionCorrectionParameters__patch_size, domain=None, range=Optional[int])
 
 slots.motionCorrectionParameters__binning = Slot(uri=LAMBDABER.binning, name="motionCorrectionParameters__binning", curie=LAMBDABER.curie('binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[float])
 
 slots.motionCorrectionParameters__dose_weighting = Slot(uri=LAMBDABER.dose_weighting, name="motionCorrectionParameters__dose_weighting", curie=LAMBDABER.curie('dose_weighting'),
                    model_uri=LAMBDABER.motionCorrectionParameters__dose_weighting, domain=None, range=Optional[Union[bool, Bool]])
@@ -7399,7 +7399,7 @@ slots.motionCorrectionParameters__frame_grouping = Slot(uri=LAMBDABER.frame_grou
                    model_uri=LAMBDABER.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[int])
 
 slots.motionCorrectionParameters__output_binning = Slot(uri=LAMBDABER.output_binning, name="motionCorrectionParameters__output_binning", curie=LAMBDABER.curie('output_binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[float])
 
 slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDABER.drift_total, name="motionCorrectionParameters__drift_total", curie=LAMBDABER.curie('drift_total'),
                    model_uri=LAMBDABER.motionCorrectionParameters__drift_total, domain=None, range=Optional[float])

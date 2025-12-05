@@ -17,8 +17,8 @@ Alias: detector_mode
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 | [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
 
 
 

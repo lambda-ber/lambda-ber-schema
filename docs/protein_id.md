@@ -18,13 +18,13 @@ Alias: protein_id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
-| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 | [ConformationalEnsemble](ConformationalEnsemble.md) | Ensemble of conformational states for a protein |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
 | [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
 
 
 

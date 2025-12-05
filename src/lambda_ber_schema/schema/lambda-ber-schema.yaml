@@ -1,6 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
-version: "0.1.0.post68.dev0+bab47ff" # Managed by uv-dynamic-versioning
+version: "0.1.1.post4.dev0+e2dc952" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
