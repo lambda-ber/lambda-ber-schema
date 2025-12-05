@@ -1,0 +1,32 @@
+id: dataset_61815
+instruments:
+- id: inst_34303
+  instrument_code: '34303'
+  accelerating_voltage: 300
+  phase_plate: false
+  detector_model: K3
+  pixel_size_physical_um: 5.0
+  cs: 2.7
+  c2_aperture: 50.0
+  spotsize: 5
+studies:
+- id: proposal_61815
+  title: Proposal 61815
+  description: Imported from PNNL metadata
+  samples:
+  - id: sample_Green_box_position_2
+    sample_code: Green box position 2
+    sample_type: protein
+  instrument_runs:
+  - id: run_10-03-25_C2
+    experiment_code: 10-03-25_C2
+    sample_id: sample_Green_box_position_2
+    instrument_id: inst_34303
+    technique: cryo_em
+    experimental_conditions: {}
+    data_collection_strategy:
+      total_dose: 50.0
+      beam_size_um: 0.6
+    magnification: 130
+    pixel_size_x: 3.4000000000000007e-05
+    pixel_size_y: 3.4000000000000007e-05

@@ -145,7 +145,7 @@ Fields with no corresponding Lambda-BER schema field:
 
 ---
 
-## Mapping script Usage
+## Mapping script usage
 
 The mapping is implemented in `map_pnnl_metadata.py`:
 
