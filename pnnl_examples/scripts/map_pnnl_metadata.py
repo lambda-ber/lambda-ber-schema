@@ -158,12 +158,8 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
         id=inst_id,
         instrument_code=str(inst_id_val),
         accelerating_voltage=voltage,
-        model=str(det_id),  # Mapping detector ID to instrument model as a fallback
+        model=str(det_id),  # Mapping detector ID to instrument model
         phase_plate=program.get("phase_plate"),
-        cs=program.get("cs"),
-        spotsize=program.get("spot_size"),
-        c2_aperture=program.get("c2_aperture"),
-        pixel_size_physical_um=program.get("detector_physical_pixel_size"),
     )
     if program.get("phase_plate") is not None:
         log_map(
@@ -171,27 +167,22 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
             "CryoEMInstrument.phase_plate",
             program.get("phase_plate"),
         )
+
+    # CryoEM-specific instrument fields
     if program.get("cs") is not None:
-        log_map("program.cs", "CryoEMInstrument.cs", program.get("cs"))
+        log_map("program.cs", "CryoEMInstrument.cs", program["cs"])
+        instrument.cs = program["cs"]
     if program.get("spot_size") is not None:
-        log_map(
-            "program.spot_size", "CryoEMInstrument.spotsize", program.get("spot_size")
-        )
+        log_map("program.spot_size", "CryoEMInstrument.spotsize", program["spot_size"])
+        instrument.spotsize = program["spot_size"]
     if program.get("c2_aperture") is not None:
-        log_map(
-            "program.c2_aperture",
-            "CryoEMInstrument.c2_aperture",
-            program.get("c2_aperture"),
-        )
+        log_map("program.c2_aperture", "CryoEMInstrument.c2_aperture", program["c2_aperture"])
+        instrument.c2_aperture = program["c2_aperture"]
     if program.get("detector_physical_pixel_size") is not None:
-        log_map(
-            "program.detector_physical_pixel_size",
-            "CryoEMInstrument.pixel_size_physical_um",
-            program.get("detector_physical_pixel_size"),
-        )
+        log_map("program.detector_physical_pixel_size", "CryoEMInstrument.pixel_size_physical_um", program["detector_physical_pixel_size"])
+        instrument.pixel_size_physical_um = program["detector_physical_pixel_size"]
 
     log_new(f"Created CryoEMInstrument: {instrument.id}")
-    log(f"DEBUG: Instrument dump: {instrument.model_dump(exclude_none=True)}")
 
     # --- 4. ExperimentRun ---
     session_id = program.get("session_id", "unknown")
@@ -285,11 +276,7 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
     )
 
     if program.get("nominal_magnification") is not None:
-        log_map(
-            "program.nominal_magnification",
-            "ExperimentRun.magnification",
-            program.get("nominal_magnification"),
-        )
+        log_map("program.nominal_magnification", "ExperimentRun.magnification", program.get("nominal_magnification"))
     if binning is not None:
         log_map("program.binning_factor", "ExperimentRun.camera_binning", binning)
 
