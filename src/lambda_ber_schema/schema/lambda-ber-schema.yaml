@@ -747,7 +747,7 @@ classes:
         range: float
       camera_binning:
         description: "Camera binning factor"
-        range: integer
+        range: float
       exposure_time_per_frame:
         description: "Exposure time per frame in milliseconds"
         range: float
