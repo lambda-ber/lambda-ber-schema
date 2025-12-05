@@ -140,10 +140,7 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
 
     # Detector mapping
     det_id = program.get("detector_id", "")
-    # Note: pydantic.py CryoEMInstrument seems to lack detector_model/technology fields
-    # that are present in the updated schema yaml. Using available fields.
-    # We will map detector_id to 'model' (inherited from Instrument) for now.
-    log_map("program.detector_id", "CryoEMInstrument.model (fallback)", det_id)
+    log_map("program.detector_id", "CryoEMInstrument.detector_model", det_id)
 
     # Voltage
     voltage = program.get("voltage")
@@ -158,7 +155,9 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
         id=inst_id,
         instrument_code=str(inst_id_val),
         accelerating_voltage=voltage,
-        model=str(det_id),  # Mapping detector ID to instrument model
+        detector_model=str(
+            det_id
+        ),  # Mapping detector ID to detector model (e.g., K3, Ceta-D)
         phase_plate=program.get("phase_plate"),
     )
     if program.get("phase_plate") is not None:
@@ -176,10 +175,18 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
         log_map("program.spot_size", "CryoEMInstrument.spotsize", program["spot_size"])
         instrument.spotsize = program["spot_size"]
     if program.get("c2_aperture") is not None:
-        log_map("program.c2_aperture", "CryoEMInstrument.c2_aperture", program["c2_aperture"])
+        log_map(
+            "program.c2_aperture",
+            "CryoEMInstrument.c2_aperture",
+            program["c2_aperture"],
+        )
         instrument.c2_aperture = program["c2_aperture"]
     if program.get("detector_physical_pixel_size") is not None:
-        log_map("program.detector_physical_pixel_size", "CryoEMInstrument.pixel_size_physical_um", program["detector_physical_pixel_size"])
+        log_map(
+            "program.detector_physical_pixel_size",
+            "CryoEMInstrument.pixel_size_physical_um",
+            program["detector_physical_pixel_size"],
+        )
         instrument.pixel_size_physical_um = program["detector_physical_pixel_size"]
 
     log_new(f"Created CryoEMInstrument: {instrument.id}")
@@ -195,13 +202,8 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
 
     strategy = DataCollectionStrategy(
         total_dose=program.get("total_dose"),
-        dose_per_frame=program.get(
-            "nominal_dose_rate_eps"
-        ),  # Assuming this maps roughly
         frame_rate=program.get("frames_per_second"),
         beam_size_um=program.get("beam_diameter"),
-        # Missing:
-        # - pixel_size_calibrated (nominal_pixel_size)
     )
     if program.get("total_dose"):
         log_map(
@@ -209,13 +211,7 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
             "DataCollectionStrategy.total_dose",
             program.get("total_dose"),
         )
-    if program.get("nominal_dose_rate_eps"):
-        log_map(
-            "program.nominal_dose_rate_eps",
-            "DataCollectionStrategy.dose_per_frame",
-            program.get("nominal_dose_rate_eps"),
-        )
-    if program.get("frames_per_second"):
+    if program.get("frames_per_second") is not None:
         log_map(
             "program.frames_per_second",
             "DataCollectionStrategy.frame_rate",
@@ -266,6 +262,7 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
         experimental_conditions=exp_conditions,
         magnification=program.get("nominal_magnification"),
         camera_binning=binning,
+        dose_rate=program.get("nominal_dose_rate_eps"),
         # Mapping pixel size to ExperimentRun fields as fallback if they exist
         pixel_size_x=program.get(
             "nominal_pixel_size"
@@ -276,9 +273,19 @@ def map_pnnl_metadata(yaml_path: str, verbose: bool = False):
     )
 
     if program.get("nominal_magnification") is not None:
-        log_map("program.nominal_magnification", "ExperimentRun.magnification", program.get("nominal_magnification"))
+        log_map(
+            "program.nominal_magnification",
+            "ExperimentRun.magnification",
+            program.get("nominal_magnification"),
+        )
     if binning is not None:
         log_map("program.binning_factor", "ExperimentRun.camera_binning", binning)
+    if program.get("nominal_dose_rate_eps") is not None:
+        log_map(
+            "program.nominal_dose_rate_eps",
+            "ExperimentRun.dose_rate",
+            program.get("nominal_dose_rate_eps"),
+        )
 
     # Conversion for pixel size if we map it to ExperimentRun.pixel_size_x
     if program.get("nominal_pixel_size"):

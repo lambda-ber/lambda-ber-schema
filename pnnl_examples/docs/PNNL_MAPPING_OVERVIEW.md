@@ -15,11 +15,11 @@ This document provides a line-by-line mapping of PNNL metadata fields to the Lam
 | **metadata.program.nominal_pixel_size**           | `ExperimentRun.pixel_size_x`                | **Unit Conversion**: Ångström → µm (multiply by 1e-4)                                     |
 | **metadata.program.nominal_pixel_size**           | `ExperimentRun.pixel_size_y`                | **Unit Conversion**: Ångström → µm (same value for x/y)                                   |
 | **metadata.program.total_dose**                   | `DataCollectionStrategy.total_dose`         | Direct mapping (e⁻/Ų)                                                                     |
-| **metadata.program.nominal_dose_rate_eps**        | `DataCollectionStrategy.dose_per_frame`     | **Approximation**: dose_rate used as dose_per_frame proxy                                 |
-| **metadata.program.frames_per_second**            | —                                           | **GAP**: No corresponding field in Lambda-BER schema                                      |
+| **metadata.program.nominal_dose_rate_eps**        | `ExperimentRun.dose_rate`                   | Direct mapping (e⁻/Ų/s)                                                                   |
+| **metadata.program.frames_per_second**            | `DataCollectionStrategy.frame_rate`         | Direct mapping (frames/second)                                                            |
 | **metadata.program.total_exposure**               | `ExperimentRun.exposure_time`               | Direct mapping (seconds)                                                                  |
 | **metadata.program.processing_scheme**            | —                                           | **GAP**: No field for SPA/Tomography/MicroED flag (1/2/3)                                 |
-| **metadata.program.detector_id**                  | `CryoEMInstrument.model`                    | **Fallback**: Used when no model specified; values like "K3", "Ceta-D"                    |
+| **metadata.program.detector_id**                  | `CryoEMInstrument.detector_model`           | Direct mapping - detector model (e.g., "K3", "Ceta-D")                                    |
 | **metadata.program.detector_physical_pixel_size** | `CryoEMInstrument.pixel_size_physical_um`   | Direct mapping (µm)                                                                       |
 | **metadata.program.nominal_magnification**        | `ExperimentRun.magnification`               | Direct mapping (kx)                                                                       |
 | **metadata.program.nominal_camera_Length**        | —                                           | **GAP**: No corresponding field (used in diffraction/microED)                             |
@@ -34,8 +34,9 @@ This document provides a line-by-line mapping of PNNL metadata fields to the Lam
 | **metadata.program.energy_filter_slit**           | `CryoEMInstrument.energy_filter_slit_width` | Direct mapping (eV)                                                                       |
 | **metadata.program.phase_plate**                  | `CryoEMInstrument.phase_plate`              | Direct mapping (boolean)                                                                  |
 | **metadata.program.topaz_model**                  | —                                           | **GAP**: No field for particle picking AI model identifier                                |
-| **metadata.program.motCorr_bin**                  | —                                           | **GAP**: No field for motion correction binning parameter                                 |
+| **metadata.program.motCorr_bin**                  | `MotionCorrectionParameters.binning`        | Direct mapping - binning factor for motion correction workflow                            |
 | **conditions.sample_mg/ml**                       | `Sample.concentration`                      | **Transformation**: Parsed as float if present                                            |
+| **conditions.sample_mg/ml**                       | `Sample.concentration_unit`                 | Set to `ConcentrationUnitEnum.mg_per_ml` when concentration is present                    |
 | **conditions.sample_buffer**                      | `Sample.buffer_composition.components`      | **Transformation**: String parsed/split into component list                               |
 | **conditions.vitrification_settings**             | `CryoEMPreparation.vitrification_details`   | Direct mapping (free-text description)                                                    |
 | **assesments.ice_contamination**                  | —                                           | **GAP**: No quality assessment field (1=None, 2=Limited, 3=Severe)                        |
@@ -52,15 +53,12 @@ This document provides a line-by-line mapping of PNNL metadata fields to the Lam
 
 ### ⚠️ **Type Coercions**
 - **camera_binning**: Lambda-BER requires integer; PNNL has float values (0.5, 1.0, 2.0)
-  - **Script Behavior**: Skips mapping if not a whole number (e.g., 0.5 triggers warning)
-  - **Rationale**: Binning factor 0.5 likely refers to super-resolution mode, not traditional binning
 
 ### ❌ **Schema Gaps (Unmapped Fields)**
 The following PNNL fields have no home in Lambda-BER schema:
 
 | Missing Field            | PNNL Value Example                     | Use Case                                     |
 | :----------------------- | :------------------------------------- | :------------------------------------------- |
-| `frames_per_second`      | `null`                                 | Movie acquisition frame rate                 |
 | `processing_scheme`      | `1` (SPA) / `2` (Tomo) / `3` (MicroED) | Data collection modality flag                |
 | `nominal_camera_Length`  | `null` (cm)                            | Diffraction camera length for microED        |
 | `tilting_mode`           | `0` (none) / `1-3` (tilt modes)        | Tomography tilt strategy                     |
@@ -68,20 +66,86 @@ The following PNNL fields have no home in Lambda-BER schema:
 | `tilt_angle_increment`   | `null` (degrees)                       | Tilt series angular step                     |
 | `rotation_rate`          | `null` (deg/s)                         | Continuous tilt rotation speed               |
 | `topaz_model`            | `"NA"` / `"unet"`                      | Topaz AI model for particle picking          |
-| `motCorr_bin`            | `1`                                    | MotionCor2 binning factor                    |
 | `ice_contamination`      | `1-3` (enum)                           | Qualitative ice contamination assessment     |
 | `ice_quality`            | `1-3` (enum)                           | Qualitative ice thickness assessment         |
 | `particle_concentration` | `1-3` (enum)                           | Qualitative particle density assessment      |
 
-### 🔄 **Approximations**
-- **nominal_dose_rate_eps → dose_per_frame**: Dose rate (e⁻/Ų/s) used as proxy for per-frame dose when frames_per_second not provided
-
 ### 📝 **String Parsing**
 - **sample_buffer**: Free-text buffer string split on common delimiters (`,`, `;`, `\n`) to populate `BufferComposition.components` list
 
+
 ---
 
-## Usage
+## Mapping Statistics
+
+### Summary
+
+| Category                        | Count | Percentage |
+| :------------------------------ | ----: | :--------- |
+| **Direct Mappings**             |    20 | 55.6%      |
+| **Transformations/Conversions** |     7 | 19.4%      |
+| **Gaps/Unmapped**               |     9 | 25.0%      |
+| **Total PNNL Fields**           |    36 | 100%       |
+
+### Breakdown
+
+**Direct Mappings (20 fields)**
+Fields that map 1:1 without modification:
+- `voltage` → `accelerating_voltage`
+- `cs` → `cs`
+- `total_dose` → `total_dose`
+- `total_exposure` → `exposure_time`
+- `detector_physical_pixel_size` → `pixel_size_physical_um`
+- `nominal_magnification` → `magnification`
+- `nominal_dose_rate_eps` → `dose_rate`
+- `frames_per_second` → `frame_rate`
+- `c2_aperture` → `c2_aperture`
+- `spot_size` → `spotsize`
+- `beam_diameter` → `beam_size_um`
+- `energy_filter_slit` → `energy_filter_slit_width`
+- `phase_plate` → `phase_plate`
+- `session_id` → `experiment_code`
+- `short_sample_name` → `sample_code`
+- `vitrification_settings` → `vitrification_details`
+- `notes` → `description`
+- `detector_id` → `detector_model`
+- `motCorr_bin` → `binning` (MotionCorrectionParameters)
+
+**Transformations/Conversions (7 fields)**
+Fields requiring unit conversion, type coercion, or string manipulation:
+- `nominal_pixel_size` → `pixel_size_x/y` (Ångström → µm conversion)
+- `proposal_id` → `id` (prefixed with "proposal_")
+- `instrument_id` → `instrument_code` (numeric → string conversion)
+- `binning_factor` → `camera_binning` (float → int coercion, skipped if not whole number)
+- `sample_mg/ml` → `concentration` + `concentration_unit` (string → float parsing, unit set to mg_per_ml)
+- `sample_buffer` → `buffer_composition.components` (string → list parsing)
+
+**Gaps/Unmapped (9 fields)**
+Fields with no corresponding Lambda-BER schema field:
+- `processing_scheme`
+- `nominal_camera_Length`
+- `tilting_mode`
+- `fiducial_size`
+- `tilt_angle_increment`
+- `rotation_rate`
+- `topaz_model`
+- `ice_contamination`
+- `ice_quality`
+- `particle_concentration`
+
+### Coverage Analysis
+
+- **Instrument Metadata**: 11/14 fields mapped (78.6%)
+- **Acquisition Parameters**: 9/10 fields mapped (90%)
+- **Sample Conditions**: 2/3 fields mapped (66.7%)
+- **Quality Assessments**: 0/3 fields mapped (0%)
+- **Processing Hints**: 2/2 fields mapped (100%)
+- **Tomography-specific**: 0/4 fields mapped (0%)
+
+
+---
+
+## Mapping script Usage
 
 The mapping is implemented in `map_pnnl_metadata.py`:
 
