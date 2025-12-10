@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-26T14:01:36
+# Generation date: 2025-12-06T21:01:58
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -209,6 +209,10 @@ class XRayInstrumentId(InstrumentId):
 
 
 class SAXSInstrumentId(InstrumentId):
+    pass
+
+
+class BeamlineInstrumentId(InstrumentId):
     pass
 
 
@@ -906,6 +910,10 @@ class Instrument(NamedThing):
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
+    instrument_category: Optional[Union[str, "InstrumentCategoryEnum"]] = None
+    facility_name: Optional[Union[str, "FacilityEnum"]] = None
+    facility_ror: Optional[Union[str, URIorCURIE]] = None
+    beamline_id: Optional[str] = None
     manufacturer: Optional[str] = None
     model: Optional[str] = None
     installation_date: Optional[str] = None
@@ -921,6 +929,18 @@ class Instrument(NamedThing):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
             self.instrument_code = str(self.instrument_code)
+
+        if self.instrument_category is not None and not isinstance(self.instrument_category, InstrumentCategoryEnum):
+            self.instrument_category = InstrumentCategoryEnum(self.instrument_category)
+
+        if self.facility_name is not None and not isinstance(self.facility_name, FacilityEnum):
+            self.facility_name = FacilityEnum(self.facility_name)
+
+        if self.facility_ror is not None and not isinstance(self.facility_ror, URIorCURIE):
+            self.facility_ror = URIorCURIE(self.facility_ror)
+
+        if self.beamline_id is not None and not isinstance(self.beamline_id, str):
+            self.beamline_id = str(self.beamline_id)
 
         if self.manufacturer is not None and not isinstance(self.manufacturer, str):
             self.manufacturer = str(self.manufacturer)
@@ -1083,7 +1103,6 @@ class XRayInstrument(Instrument):
     detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
     detector_manufacturer: Optional[str] = None
     detector_model: Optional[str] = None
-    beamline_id: Optional[str] = None
     energy_min: Optional[float] = None
     energy_max: Optional[float] = None
     beam_size_min: Optional[float] = None
@@ -1110,9 +1129,6 @@ class XRayInstrument(Instrument):
 
         if self.detector_model is not None and not isinstance(self.detector_model, str):
             self.detector_model = str(self.detector_model)
-
-        if self.beamline_id is not None and not isinstance(self.beamline_id, str):
-            self.beamline_id = str(self.beamline_id)
 
         if self.energy_min is not None and not isinstance(self.energy_min, float):
             self.energy_min = float(self.energy_min)
@@ -1185,6 +1201,69 @@ class SAXSInstrument(Instrument):
 
         if self.temperature_control_range is not None and not isinstance(self.temperature_control_range, str):
             self.temperature_control_range = str(self.temperature_control_range)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BeamlineInstrument(Instrument):
+    """
+    Multi-technique synchrotron beamline that supports multiple experimental methods
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["BeamlineInstrument"]
+    class_class_curie: ClassVar[str] = "lambdaber:BeamlineInstrument"
+    class_name: ClassVar[str] = "BeamlineInstrument"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.BeamlineInstrument
+
+    id: Union[str, BeamlineInstrumentId] = None
+    instrument_code: str = None
+    techniques_supported: Union[Union[str, "TechniqueEnum"], list[Union[str, "TechniqueEnum"]]] = None
+    source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
+    energy_min: Optional[float] = None
+    energy_max: Optional[float] = None
+    q_range_min: Optional[float] = None
+    q_range_max: Optional[float] = None
+    sample_changer_capacity: Optional[int] = None
+    mail_in_service: Optional[Union[bool, Bool]] = None
+    website: Optional[Union[str, URI]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BeamlineInstrumentId):
+            self.id = BeamlineInstrumentId(self.id)
+
+        if self._is_empty(self.techniques_supported):
+            self.MissingRequiredField("techniques_supported")
+        if not isinstance(self.techniques_supported, list):
+            self.techniques_supported = [self.techniques_supported] if self.techniques_supported is not None else []
+        self.techniques_supported = [v if isinstance(v, TechniqueEnum) else TechniqueEnum(v) for v in self.techniques_supported]
+
+        if self.source_type is not None and not isinstance(self.source_type, XRaySourceTypeEnum):
+            self.source_type = XRaySourceTypeEnum(self.source_type)
+
+        if self.energy_min is not None and not isinstance(self.energy_min, float):
+            self.energy_min = float(self.energy_min)
+
+        if self.energy_max is not None and not isinstance(self.energy_max, float):
+            self.energy_max = float(self.energy_max)
+
+        if self.q_range_min is not None and not isinstance(self.q_range_min, float):
+            self.q_range_min = float(self.q_range_min)
+
+        if self.q_range_max is not None and not isinstance(self.q_range_max, float):
+            self.q_range_max = float(self.q_range_max)
+
+        if self.sample_changer_capacity is not None and not isinstance(self.sample_changer_capacity, int):
+            self.sample_changer_capacity = int(self.sample_changer_capacity)
+
+        if self.mail_in_service is not None and not isinstance(self.mail_in_service, Bool):
+            self.mail_in_service = Bool(self.mail_in_service)
+
+        if self.website is not None and not isinstance(self.website, URI):
+            self.website = URI(self.website)
 
         super().__post_init__(**kwargs)
 
@@ -4064,11 +4143,13 @@ class FacilityEnum(EnumDefinitionImpl):
     ALS = PermissibleValue(
         text="ALS",
         title="Advanced Light Source",
-        description="""Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA""")
+        description="""Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA""",
+        meaning=ROR["02jbv0t02"])
     SSRL = PermissibleValue(
         text="SSRL",
         title="Stanford Synchrotron Radiation Lightsource",
-        description="Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA")
+        description="Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA",
+        meaning=ROR["05gzmn429"])
     ESRF = PermissibleValue(
         text="ESRF",
         title="European Synchrotron Radiation Facility",
@@ -4082,19 +4163,23 @@ class FacilityEnum(EnumDefinitionImpl):
     PHOTON_FACTORY = PermissibleValue(
         text="PHOTON_FACTORY",
         title="Photon Factory",
-        description="""Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan""")
+        description="""Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan""",
+        meaning=ROR["01g5y5k24"])
     APS = PermissibleValue(
         text="APS",
         title="Advanced Photon Source",
-        description="High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA")
+        description="High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA",
+        meaning=ROR["05gvnxz63"])
     SPRING8 = PermissibleValue(
         text="SPRING8",
         title="SPring-8",
-        description="Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan")
+        description="Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan",
+        meaning=ROR["01xjv7358"])
     PETRA_III = PermissibleValue(
         text="PETRA_III",
         title="PETRA III",
-        description="High-brilliance synchrotron radiation source at DESY, Hamburg, Germany")
+        description="High-brilliance synchrotron radiation source at DESY, Hamburg, Germany",
+        meaning=ROR["01js2sh04"])
     SOLEIL = PermissibleValue(
         text="SOLEIL",
         title="Synchrotron SOLEIL",
@@ -4105,10 +4190,21 @@ class FacilityEnum(EnumDefinitionImpl):
         title="Australian Synchrotron",
         description="Australia's national synchrotron facility in Melbourne, Victoria",
         meaning=ROR["03vk18a84"])
-    SIBYLS = PermissibleValue(
-        text="SIBYLS",
-        title="SIBYLS Beamline 12.3.1",
-        description="""Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction""")
+    EMSL = PermissibleValue(
+        text="EMSL",
+        title="Environmental Molecular Sciences Laboratory",
+        description="DOE Office of Science user facility at PNNL with cryo-EM capabilities",
+        meaning=ROR["05h992307"])
+    SNS = PermissibleValue(
+        text="SNS",
+        title="Spallation Neutron Source",
+        description="Accelerator-based pulsed neutron source at ORNL providing intense neutron beams",
+        meaning=ROR["01qz5mb56"])
+    HFIR = PermissibleValue(
+        text="HFIR",
+        title="High Flux Isotope Reactor",
+        description="Reactor-based neutron source at ORNL with dedicated biology beamlines",
+        meaning=ROR["01qz5mb56"])
 
     _defn = EnumDefinition(
         name="FacilityEnum",
@@ -4408,6 +4504,60 @@ class InstrumentStatusEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="InstrumentStatusEnum",
         description="Operational status of instruments",
+    )
+
+class InstrumentCategoryEnum(EnumDefinitionImpl):
+    """
+    Categories of instruments based on their nature and location
+    """
+    SYNCHROTRON_BEAMLINE = PermissibleValue(
+        text="SYNCHROTRON_BEAMLINE",
+        description="Beamline at a synchrotron light source",
+        meaning=CHMO["0001084"])
+    NEUTRON_BEAMLINE = PermissibleValue(
+        text="NEUTRON_BEAMLINE",
+        description="Beamline at a neutron source")
+    XFEL_BEAMLINE = PermissibleValue(
+        text="XFEL_BEAMLINE",
+        description="Beamline at a free electron laser (X-ray FEL)")
+    ELECTRON_MICROSCOPE = PermissibleValue(
+        text="ELECTRON_MICROSCOPE",
+        description="Electron microscope (TEM, SEM, cryo-EM)")
+    BENCHTOP_XRAY = PermissibleValue(
+        text="BENCHTOP_XRAY",
+        description="Benchtop X-ray diffractometer or other laboratory X-ray source")
+    OPTICAL_MICROSCOPE = PermissibleValue(
+        text="OPTICAL_MICROSCOPE",
+        description="Optical or fluorescence microscope")
+    SPECTROMETER = PermissibleValue(
+        text="SPECTROMETER",
+        description="Spectroscopy instrument (FTIR, Raman, mass spec, etc.)")
+
+    _defn = EnumDefinition(
+        name="InstrumentCategoryEnum",
+        description="Categories of instruments based on their nature and location",
+    )
+
+class FacilityTypeEnum(EnumDefinitionImpl):
+    """
+    Types of research facilities
+    """
+    SYNCHROTRON = PermissibleValue(
+        text="SYNCHROTRON",
+        description="Synchrotron light source facility")
+    NEUTRON_SOURCE = PermissibleValue(
+        text="NEUTRON_SOURCE",
+        description="Neutron scattering facility (reactor or spallation source)")
+    FREE_ELECTRON_LASER = PermissibleValue(
+        text="FREE_ELECTRON_LASER",
+        description="Free electron laser facility (XFEL)")
+    CRYOEM_CENTER = PermissibleValue(
+        text="CRYOEM_CENTER",
+        description="Dedicated cryo-electron microscopy center")
+
+    _defn = EnumDefinition(
+        name="FacilityTypeEnum",
+        description="Types of research facilities",
     )
 
 class ImagingModeEnum(EnumDefinitionImpl):
@@ -6285,6 +6435,19 @@ slots.samplePreparation__aliquoting = Slot(uri=LAMBDABER.aliquoting, name="sampl
 slots.instrument__instrument_code = Slot(uri=LAMBDABER.instrument_code, name="instrument__instrument_code", curie=LAMBDABER.curie('instrument_code'),
                    model_uri=LAMBDABER.instrument__instrument_code, domain=None, range=str)
 
+slots.instrument__instrument_category = Slot(uri=LAMBDABER.instrument_category, name="instrument__instrument_category", curie=LAMBDABER.curie('instrument_category'),
+                   model_uri=LAMBDABER.instrument__instrument_category, domain=None, range=Optional[Union[str, "InstrumentCategoryEnum"]])
+
+slots.instrument__facility_name = Slot(uri=LAMBDABER.facility_name, name="instrument__facility_name", curie=LAMBDABER.curie('facility_name'),
+                   model_uri=LAMBDABER.instrument__facility_name, domain=None, range=Optional[Union[str, "FacilityEnum"]])
+
+slots.instrument__facility_ror = Slot(uri=LAMBDABER.facility_ror, name="instrument__facility_ror", curie=LAMBDABER.curie('facility_ror'),
+                   model_uri=LAMBDABER.instrument__facility_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^https://ror\.org/\w+$'))
+
+slots.instrument__beamline_id = Slot(uri=MMCIF['_diffrn_source.pdbx_synchrotron_beamline'], name="instrument__beamline_id", curie=MMCIF.curie('_diffrn_source.pdbx_synchrotron_beamline'),
+                   model_uri=LAMBDABER.instrument__beamline_id, domain=None, range=Optional[str])
+
 slots.instrument__manufacturer = Slot(uri=LAMBDABER.manufacturer, name="instrument__manufacturer", curie=LAMBDABER.curie('manufacturer'),
                    model_uri=LAMBDABER.instrument__manufacturer, domain=None, range=Optional[str])
 
@@ -6387,9 +6550,6 @@ slots.xRayInstrument__detector_manufacturer = Slot(uri=LAMBDABER.detector_manufa
 slots.xRayInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRayInstrument__detector_model", curie=LAMBDABER.curie('detector_model'),
                    model_uri=LAMBDABER.xRayInstrument__detector_model, domain=None, range=Optional[str])
 
-slots.xRayInstrument__beamline_id = Slot(uri=NSLS2.Beamline, name="xRayInstrument__beamline_id", curie=NSLS2.curie('Beamline'),
-                   model_uri=LAMBDABER.xRayInstrument__beamline_id, domain=None, range=Optional[str])
-
 slots.xRayInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="xRayInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
                    model_uri=LAMBDABER.xRayInstrument__energy_min, domain=None, range=Optional[float])
 
@@ -6431,6 +6591,33 @@ slots.sAXSInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_change
 
 slots.sAXSInstrument__temperature_control_range = Slot(uri=LAMBDABER.temperature_control_range, name="sAXSInstrument__temperature_control_range", curie=LAMBDABER.curie('temperature_control_range'),
                    model_uri=LAMBDABER.sAXSInstrument__temperature_control_range, domain=None, range=Optional[str])
+
+slots.beamlineInstrument__techniques_supported = Slot(uri=LAMBDABER.techniques_supported, name="beamlineInstrument__techniques_supported", curie=LAMBDABER.curie('techniques_supported'),
+                   model_uri=LAMBDABER.beamlineInstrument__techniques_supported, domain=None, range=Union[Union[str, "TechniqueEnum"], list[Union[str, "TechniqueEnum"]]])
+
+slots.beamlineInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="beamlineInstrument__source_type", curie=LAMBDABER.curie('source_type'),
+                   model_uri=LAMBDABER.beamlineInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
+
+slots.beamlineInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="beamlineInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
+                   model_uri=LAMBDABER.beamlineInstrument__energy_min, domain=None, range=Optional[float])
+
+slots.beamlineInstrument__energy_max = Slot(uri=LAMBDABER.energy_max, name="beamlineInstrument__energy_max", curie=LAMBDABER.curie('energy_max'),
+                   model_uri=LAMBDABER.beamlineInstrument__energy_max, domain=None, range=Optional[float])
+
+slots.beamlineInstrument__q_range_min = Slot(uri=LAMBDABER.q_range_min, name="beamlineInstrument__q_range_min", curie=LAMBDABER.curie('q_range_min'),
+                   model_uri=LAMBDABER.beamlineInstrument__q_range_min, domain=None, range=Optional[float])
+
+slots.beamlineInstrument__q_range_max = Slot(uri=LAMBDABER.q_range_max, name="beamlineInstrument__q_range_max", curie=LAMBDABER.curie('q_range_max'),
+                   model_uri=LAMBDABER.beamlineInstrument__q_range_max, domain=None, range=Optional[float])
+
+slots.beamlineInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_changer_capacity, name="beamlineInstrument__sample_changer_capacity", curie=LAMBDABER.curie('sample_changer_capacity'),
+                   model_uri=LAMBDABER.beamlineInstrument__sample_changer_capacity, domain=None, range=Optional[int])
+
+slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDABER.mail_in_service, name="beamlineInstrument__mail_in_service", curie=LAMBDABER.curie('mail_in_service'),
+                   model_uri=LAMBDABER.beamlineInstrument__mail_in_service, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.beamlineInstrument__website = Slot(uri=LAMBDABER.website, name="beamlineInstrument__website", curie=LAMBDABER.curie('website'),
+                   model_uri=LAMBDABER.beamlineInstrument__website, domain=None, range=Optional[Union[str, URI]])
 
 slots.experimentRun__experiment_code = Slot(uri=LAMBDABER.experiment_code, name="experimentRun__experiment_code", curie=LAMBDABER.curie('experiment_code'),
                    model_uri=LAMBDABER.experimentRun__experiment_code, domain=None, range=str)

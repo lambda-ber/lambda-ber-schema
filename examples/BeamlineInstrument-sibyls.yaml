@@ -1,0 +1,22 @@
+id: lambdaber:instrument_sibyls_1231
+title: SIBYLS Beamline 12.3.1
+description: SIBYLS (Structurally Integrated BiologY for Life Sciences) beamline at
+  ALS for SAXS, X-ray crystallography, and fiber diffraction
+instrument_code: ALS-12.3.1-SIBYLS
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: ALS
+facility_ror: https://ror.org/02jbv0t02
+beamline_id: 12.3.1
+manufacturer: Lawrence Berkeley National Laboratory
+model: SIBYLS Dual Endstation
+installation_date: '2008-09-01'
+current_status: operational
+techniques_supported:
+- saxs
+- xray_crystallography
+source_type: synchrotron
+q_range_min: 0.01
+q_range_max: 0.6
+sample_changer_capacity: 96
+mail_in_service: true
+website: https://bl1231.als.lbl.gov/

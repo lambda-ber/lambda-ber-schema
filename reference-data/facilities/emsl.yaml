@@ -1,0 +1,58 @@
+# Environmental Molecular Sciences Laboratory (EMSL) Cryo-EM Reference Data
+# Pacific Northwest National Laboratory (PNNL), Richland, Washington, USA
+#
+# Facility Information:
+#   Name: Environmental Molecular Sciences Laboratory
+#   Parent Organization: Pacific Northwest National Laboratory
+#   ROR: https://ror.org/05h992307 (PNNL)
+#   Facility Type: CRYOEM_CENTER
+#   Website: https://www.emsl.pnnl.gov/
+#
+# EMSL is a DOE Office of Science user facility. The cryo-EM suite includes:
+# - Titan Krios G3i for high-resolution single particle and tomography
+# - Aquilos cryo-FIB-SEM for sample preparation
+#
+# Sources:
+# - https://www.emsl.pnnl.gov/science/instruments-resources/cryogenic-transmission-electron-microscopy-structural-biology
+# - https://www.berstructuralbioportal.org/cryogenic-transmission-electron-microscopy-at-emsl/
+
+instruments:
+  # Titan Krios G3i Cryo-TEM
+  - id: lambdaber:instrument_emsl_krios_g3i
+    title: "EMSL Titan Krios G3i"
+    description: "State-of-the-art cryo-TEM for structural biology with Gatan K3 detector and energy filter"
+    instrument_code: "EMSL-KRIOS-G3I"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_ror: "https://ror.org/05h992307"
+    manufacturer: "Thermo Fisher Scientific"
+    model: "Titan Krios G3i"
+    installation_date: "2020-10-01"
+    current_status: operational
+    accelerating_voltage: 300
+    detector_technology: direct_electron_detector
+    detector_manufacturer: "Gatan"
+    detector_model: "K3 BioQuantum"
+    detector_mode: counting
+    energy_filter_present: true
+    energy_filter_make: "Gatan"
+    energy_filter_model: "BioQuantum"
+    autoloader_capacity: 12
+    phase_plate: true
+    cs_corrector: false
+
+  # Aquilos Cryo-FIB-SEM
+  - id: lambdaber:instrument_emsl_aquilos
+    title: "EMSL Aquilos 2 Cryo-FIB-SEM"
+    description: "Cryo-focused ion beam scanning electron microscope for lamella preparation"
+    instrument_code: "EMSL-AQUILOS-2"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_ror: "https://ror.org/05h992307"
+    manufacturer: "Thermo Fisher Scientific"
+    model: "Aquilos 2"
+    current_status: operational
+
+# Note: EMSL cryo-EM capabilities include:
+# - De novo structure determination of protein complexes >50 kDa
+# - High-resolution imaging of isolated organelles and whole cells
+# - Cryo-electron tomography for cellular ultrastructure
+# - Access is free via EMSL user proposals (50/50 split between EMSL and DOE/BER researchers)

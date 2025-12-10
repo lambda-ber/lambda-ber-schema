@@ -1,0 +1,156 @@
+# Advanced Photon Source (APS) Beamline Reference Data
+# Argonne National Laboratory, Lemont, Illinois, USA
+#
+# Facility Information:
+#   Name: Advanced Photon Source
+#   ROR: https://ror.org/05gvnxz63
+#   Energy: 7.0 GeV (upgrading to APS-U with 500x brightness increase)
+#   Website: https://www.aps.anl.gov/
+#
+# APS hosts 60+ beamlines. This file focuses on structural biology beamlines.
+#
+# Sources:
+# - https://www.berstructuralbioportal.org/aps/
+# - https://biosync.rcsb.org/synchrotronprofile.do?synch_id=aps
+# - https://sbc.aps.anl.gov/
+
+beamlines:
+  # Structural Biology Center (SBC) - Sector 19
+  # Note: SBC is transitioning to eBERlight
+  - id: lambdaber:beamline_aps_19id
+    title: "APS Beamline 19-ID (SBC)"
+    description: "Structural Biology Center insertion device beamline for macromolecular crystallography"
+    instrument_code: "APS-19-ID"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "19-ID"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_aps_19bm
+    title: "APS Beamline 19-BM (SBC)"
+    description: "Structural Biology Center bending magnet beamline"
+    instrument_code: "APS-19-BM"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "19-BM"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  # GM/CA@APS - Sector 23 (NIH NIGMS/NCI funded)
+  - id: lambdaber:beamline_aps_23id_b
+    title: "APS Beamline 23-ID-B (GM/CA)"
+    description: "GM/CA canted-undulator beamline for macromolecular crystallography"
+    instrument_code: "APS-23-ID-B"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "23-ID-B"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    mail_in_service: true
+    current_status: operational
+
+  - id: lambdaber:beamline_aps_23id_d
+    title: "APS Beamline 23-ID-D (GM/CA)"
+    description: "GM/CA canted-undulator beamline with EIGER2 XE 16M CdTe detector"
+    instrument_code: "APS-23-ID-D"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "23-ID-D"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    mail_in_service: true
+    current_status: operational
+
+  # NE-CAT - Sector 24 (Northeastern Collaborative Access Team)
+  - id: lambdaber:beamline_aps_24id_c
+    title: "APS Beamline 24-ID-C (NE-CAT)"
+    description: "Northeastern Collaborative Access Team beamline for macromolecular crystallography"
+    instrument_code: "APS-24-ID-C"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "24-ID-C"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_aps_24id_e
+    title: "APS Beamline 24-ID-E (NE-CAT)"
+    description: "NE-CAT beamline for macromolecular crystallography"
+    instrument_code: "APS-24-ID-E"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "24-ID-E"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  # SER-CAT - Sector 22 (South East Regional CAT)
+  - id: lambdaber:beamline_aps_22id
+    title: "APS Beamline 22-ID (SER-CAT)"
+    description: "South East Regional Collaborative Access Team beamline"
+    instrument_code: "APS-22-ID"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "22-ID"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_aps_22bm
+    title: "APS Beamline 22-BM (SER-CAT)"
+    description: "SER-CAT bending magnet beamline"
+    instrument_code: "APS-22-BM"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "22-BM"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  # IMCA-CAT - Sector 17 (Industrial Macromolecular Crystallography Association)
+  - id: lambdaber:beamline_aps_17id
+    title: "APS Beamline 17-ID (IMCA-CAT)"
+    description: "Industrial Macromolecular Crystallography Association beamline for pharmaceutical research"
+    instrument_code: "APS-17-ID"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "17-ID"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  # Bio-CAT - Sector 18 (Biophysics Collaborative Access Team)
+  - id: lambdaber:beamline_aps_18id
+    title: "APS Beamline 18-ID (Bio-CAT)"
+    description: "Biophysics Collaborative Access Team beamline for SAXS/fiber diffraction"
+    instrument_code: "APS-18-ID"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/05gvnxz63"
+    beamline_id: "18-ID"
+    techniques_supported:
+      - saxs
+      - fiber_diffraction
+    source_type: synchrotron
+    current_status: operational

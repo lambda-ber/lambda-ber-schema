@@ -278,7 +278,17 @@ enum FacilityEnum
     PETRA_III
     SOLEIL
     AUSTRALIAN_SYNCHROTRON
-    SIBYLS
+    EMSL
+    SNS
+    HFIR
+  }
+
+enum FacilityTypeEnum
+  {
+    SYNCHROTRON
+    NEUTRON_SOURCE
+    FREE_ELECTRON_LASER
+    CRYOEM_CENTER
   }
 
 enum FileFormatEnum
@@ -373,6 +383,17 @@ enum ImagingModeEnum
     EFTEM
     TEM
     STEM
+  }
+
+enum InstrumentCategoryEnum
+  {
+    SYNCHROTRON_BEAMLINE
+    NEUTRON_BEAMLINE
+    XFEL_BEAMLINE
+    ELECTRON_MICROSCOPE
+    BENCHTOP_XRAY
+    OPTICAL_MICROSCOPE
+    SPECTROMETER
   }
 
 enum InstrumentStatusEnum
@@ -669,6 +690,31 @@ interface AttributeGroup
     description: String
   }
 
+type BeamlineInstrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+    techniquesSupported: [TechniqueEnum]!
+    sourceType: XRaySourceTypeEnum
+    energyMin: Float
+    energyMax: Float
+    qRangeMin: Float
+    qRangeMax: Float
+    sampleChangerCapacity: Integer
+    mailInService: Boolean
+    website: Uri
+  }
+
 type BiophysicalProperty
   {
     description: String
@@ -729,6 +775,10 @@ type CryoEMInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
     manufacturer: String
     model: String
     installationDate: String
@@ -1099,6 +1149,10 @@ type Instrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
     manufacturer: String
     model: String
     installationDate: String
@@ -1525,6 +1579,10 @@ type SAXSInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
     manufacturer: String
     model: String
     installationDate: String
@@ -1672,6 +1730,10 @@ type XRayInstrument
     title: String
     description: String
     instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
     manufacturer: String
     model: String
     installationDate: String
@@ -1680,7 +1742,6 @@ type XRayInstrument
     detectorTechnology: DetectorTechnologyEnum
     detectorManufacturer: String
     detectorModel: String
-    beamlineId: String
     energyMin: Float
     energyMax: Float
     beamSizeMin: Float

@@ -1,0 +1,29 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:instrument_sibyls_1231 a lambdaber:BeamlineInstrument ;
+    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "12.3.1" ;
+    dcterms:title "SIBYLS Beamline 12.3.1" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "SIBYLS (Structurally Integrated BiologY for Life Sciences) beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction" ;
+    lambdaber:facility_name ROR:02jbv0t02 ;
+    lambdaber:facility_ror "https://ror.org/02jbv0t02"^^xsd:anyURI ;
+    lambdaber:installation_date "2008-09-01" ;
+    lambdaber:instrument_category CHMO:0001084 ;
+    lambdaber:instrument_code "ALS-12.3.1-SIBYLS" ;
+    lambdaber:mail_in_service true ;
+    lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
+    lambdaber:model "SIBYLS Dual Endstation" ;
+    lambdaber:q_range_max "0.6"^^xsd:float ;
+    lambdaber:q_range_min "0.01"^^xsd:float ;
+    lambdaber:sample_changer_capacity 96 ;
+    lambdaber:source_type "synchrotron" ;
+    lambdaber:techniques_supported CHMO:0000156,
+        CHMO:0000204 ;
+    lambdaber:website "https://bl1231.als.lbl.gov/"^^xsd:anyURI .
+

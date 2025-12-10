@@ -429,6 +429,10 @@
           "meaning": "ROR:01q47ea17",
           "annotations": [
             {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
+            {
               "tag": "parent_organization",
               "value": "Brookhaven National Laboratory"
             },
@@ -482,14 +486,15 @@
         {
           "text": "ALS",
           "description": "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA",
+          "meaning": "ROR:02jbv0t02",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "Lawrence Berkeley National Laboratory"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:02jbv0t02"
             },
             {
               "tag": "location",
@@ -533,14 +538,15 @@
         {
           "text": "SSRL",
           "description": "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA",
+          "meaning": "ROR:05gzmn429",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "SLAC National Accelerator Laboratory"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:05gzmn429"
             },
             {
               "tag": "location",
@@ -586,6 +592,10 @@
           "description": "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source",
           "meaning": "ROR:02550n020",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "location",
               "value": "Grenoble, France"
@@ -635,6 +645,10 @@
           "meaning": "ROR:05etxs293",
           "annotations": [
             {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
+            {
               "tag": "location",
               "value": "Harwell, Oxfordshire, UK"
             },
@@ -676,14 +690,15 @@
         {
           "text": "PHOTON_FACTORY",
           "description": "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan",
+          "meaning": "ROR:01g5y5k24",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "High Energy Accelerator Research Organization (KEK)"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:01g5y5k24"
             },
             {
               "tag": "location",
@@ -723,14 +738,15 @@
         {
           "text": "APS",
           "description": "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA",
+          "meaning": "ROR:05gvnxz63",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "Argonne National Laboratory"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:05gvnxz63"
             },
             {
               "tag": "location",
@@ -778,14 +794,15 @@
         {
           "text": "SPRING8",
           "description": "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan",
+          "meaning": "ROR:01xjv7358",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "Japan Synchrotron Radiation Research Institute (JASRI)"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:01xjv7358"
             },
             {
               "tag": "location",
@@ -825,14 +842,15 @@
         {
           "text": "PETRA_III",
           "description": "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany",
+          "meaning": "ROR:01js2sh04",
           "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
             {
               "tag": "parent_organization",
               "value": "Deutsches Elektronen-Synchrotron (DESY)"
-            },
-            {
-              "tag": "parent_ror",
-              "value": "ROR:01js2sh04"
             },
             {
               "tag": "location",
@@ -875,6 +893,10 @@
           "meaning": "ROR:01ydb3330",
           "annotations": [
             {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
+            {
               "tag": "location",
               "value": "Saint-Aubin, France"
             },
@@ -915,6 +937,10 @@
           "meaning": "ROR:03vk18a84",
           "annotations": [
             {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:SYNCHROTRON"
+            },
+            {
               "tag": "location",
               "value": "Melbourne, Victoria, Australia"
             },
@@ -950,20 +976,21 @@
           ]
         },
         {
-          "text": "SIBYLS",
-          "description": "Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction",
+          "text": "EMSL",
+          "description": "DOE Office of Science user facility at PNNL with cryo-EM capabilities",
+          "meaning": "ROR:05h992307",
           "annotations": [
             {
-              "tag": "parent_facility",
-              "value": "Advanced Light Source"
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:CRYOEM_CENTER"
             },
             {
-              "tag": "parent_ror",
-              "value": "ROR:02jbv0t02"
+              "tag": "parent_organization",
+              "value": "Pacific Northwest National Laboratory"
             },
             {
               "tag": "location",
-              "value": "Berkeley, California, USA"
+              "value": "Richland, Washington, USA"
             },
             {
               "tag": "country",
@@ -978,23 +1005,110 @@
               "value": "Office of Science - Biological and Environmental Research"
             },
             {
-              "tag": "beamline_id",
-              "value": "12.3.1"
+              "tag": "website",
+              "value": "https://www.emsl.pnnl.gov/"
+            }
+          ],
+          "title": "Environmental Molecular Sciences Laboratory",
+          "aliases": [
+            "EMSL",
+            "Environmental Molecular Sciences Laboratory"
+          ]
+        },
+        {
+          "text": "SNS",
+          "description": "Accelerator-based pulsed neutron source at ORNL providing intense neutron beams",
+          "meaning": "ROR:01qz5mb56",
+          "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:NEUTRON_SOURCE"
             },
             {
-              "tag": "techniques",
-              "value": "SAXS, MX, fiber diffraction"
+              "tag": "parent_organization",
+              "value": "Oak Ridge National Laboratory"
+            },
+            {
+              "tag": "location",
+              "value": "Oak Ridge, Tennessee, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q1545258"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2006"
             },
             {
               "tag": "website",
-              "value": "https://bl1231.als.lbl.gov/"
+              "value": "https://neutrons.ornl.gov/sns"
             }
           ],
-          "title": "SIBYLS Beamline 12.3.1",
+          "title": "Spallation Neutron Source",
           "aliases": [
-            "SIBYLS",
-            "ALS 12.3.1",
-            "Beamline 12.3.1"
+            "SNS",
+            "Spallation Neutron Source"
+          ]
+        },
+        {
+          "text": "HFIR",
+          "description": "Reactor-based neutron source at ORNL with dedicated biology beamlines",
+          "meaning": "ROR:01qz5mb56",
+          "annotations": [
+            {
+              "tag": "facility_type",
+              "value": "FacilityTypeEnum:NEUTRON_SOURCE"
+            },
+            {
+              "tag": "parent_organization",
+              "value": "Oak Ridge National Laboratory"
+            },
+            {
+              "tag": "location",
+              "value": "Oak Ridge, Tennessee, USA"
+            },
+            {
+              "tag": "country",
+              "value": "USA"
+            },
+            {
+              "tag": "doe_facility",
+              "value": "true"
+            },
+            {
+              "tag": "doe_office",
+              "value": "Office of Science"
+            },
+            {
+              "tag": "wikidata_id",
+              "value": "Q3126498"
+            },
+            {
+              "tag": "operational_since",
+              "value": "1966"
+            },
+            {
+              "tag": "website",
+              "value": "https://neutrons.ornl.gov/hfir"
+            }
+          ],
+          "title": "High Flux Isotope Reactor",
+          "aliases": [
+            "HFIR",
+            "High Flux Isotope Reactor"
           ]
         }
       ]
@@ -1336,6 +1450,70 @@
         {
           "text": "commissioning",
           "description": "Instrument being commissioned"
+        }
+      ]
+    },
+    {
+      "name": "InstrumentCategoryEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum",
+      "description": "Categories of instruments based on their nature and location",
+      "comments": [
+        "Use to distinguish synchrotron beamlines from laboratory equipment"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "SYNCHROTRON_BEAMLINE",
+          "description": "Beamline at a synchrotron light source",
+          "meaning": "CHMO:0001084"
+        },
+        {
+          "text": "NEUTRON_BEAMLINE",
+          "description": "Beamline at a neutron source"
+        },
+        {
+          "text": "XFEL_BEAMLINE",
+          "description": "Beamline at a free electron laser (X-ray FEL)"
+        },
+        {
+          "text": "ELECTRON_MICROSCOPE",
+          "description": "Electron microscope (TEM, SEM, cryo-EM)"
+        },
+        {
+          "text": "BENCHTOP_XRAY",
+          "description": "Benchtop X-ray diffractometer or other laboratory X-ray source"
+        },
+        {
+          "text": "OPTICAL_MICROSCOPE",
+          "description": "Optical or fluorescence microscope"
+        },
+        {
+          "text": "SPECTROMETER",
+          "description": "Spectroscopy instrument (FTIR, Raman, mass spec, etc.)"
+        }
+      ]
+    },
+    {
+      "name": "FacilityTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/FacilityTypeEnum",
+      "description": "Types of research facilities",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "SYNCHROTRON",
+          "description": "Synchrotron light source facility"
+        },
+        {
+          "text": "NEUTRON_SOURCE",
+          "description": "Neutron scattering facility (reactor or spallation source)"
+        },
+        {
+          "text": "FREE_ELECTRON_LASER",
+          "description": "Free electron laser facility (XFEL)"
+        },
+        {
+          "text": "CRYOEM_CENTER",
+          "description": "Dedicated cryo-electron microscopy center"
         }
       ]
     },
@@ -4782,6 +4960,78 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "instrument__instrument_category",
+      "description": "Category distinguishing beamlines from laboratory equipment",
+      "comments": [
+        "Use SYNCHROTRON_BEAMLINE for synchrotron beamlines",
+        "Use ELECTRON_MICROSCOPE for cryo-EM instruments"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_category",
+      "alias": "instrument_category",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "InstrumentCategoryEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__facility_name",
+      "description": "Name of the research facility where the instrument is located",
+      "comments": [
+        "Select from the standardized list of major synchrotron facilities",
+        "Leave empty for laboratory-based instruments"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/facility_name",
+      "alias": "facility_name",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "FacilityEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__facility_ror",
+      "description": "Research Organization Registry (ROR) identifier for the facility",
+      "comments": [
+        "Persistent identifier for the facility organization",
+        "Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/facility_ror",
+      "alias": "facility_ror",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "uriorcurie",
+      "pattern": "^https://ror\\.org/\\w+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "instrument__beamline_id",
+      "description": "Beamline identifier at synchrotron/neutron facility",
+      "comments": [
+        "Use facility-specific naming convention",
+        "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline"
+      ],
+      "slot_uri": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline",
+      "alias": "beamline_id",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "instrument__manufacturer",
       "description": "Instrument manufacturer",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -5270,22 +5520,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "xRayInstrument__beamline_id",
-      "description": "Beamline identifier at synchrotron facility",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Beamline"
-      ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Beamline",
-      "alias": "beamline_id",
-      "owner": "XRayInstrument",
-      "domain_of": [
-        "XRayInstrument"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "xRayInstrument__energy_min",
       "description": "Minimum X-ray energy in keV",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -5465,6 +5699,129 @@
         "SAXSInstrument"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__techniques_supported",
+      "description": "Experimental techniques available at this beamline",
+      "comments": [
+        "List all techniques this beamline supports",
+        "Example: [saxs, xray_crystallography] for SIBYLS"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/techniques_supported",
+      "alias": "techniques_supported",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "TechniqueEnum",
+      "required": true,
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__source_type",
+      "description": "Type of X-ray source",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/source_type",
+      "alias": "source_type",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "XRaySourceTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__energy_min",
+      "description": "Minimum X-ray energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_min",
+      "alias": "energy_min",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__energy_max",
+      "description": "Maximum X-ray energy in keV",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/energy_max",
+      "alias": "energy_max",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__q_range_min",
+      "description": "Minimum q value for SAXS in inverse Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/q_range_min",
+      "alias": "q_range_min",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__q_range_max",
+      "description": "Maximum q value for SAXS in inverse Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/q_range_max",
+      "alias": "q_range_max",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__sample_changer_capacity",
+      "description": "Automatic sample changer capacity",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_changer_capacity",
+      "alias": "sample_changer_capacity",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__mail_in_service",
+      "description": "Whether mail-in sample service is available",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/mail_in_service",
+      "alias": "mail_in_service",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__website",
+      "description": "Beamline website URL",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/website",
+      "alias": "website",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "uri",
       "@type": "SlotDefinition"
     },
     {
@@ -12971,6 +13328,10 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
         "instrument__manufacturer",
         "instrument__model",
         "instrument__installation_date",
@@ -12982,6 +13343,48 @@
           "name": "instrument_code",
           "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
           "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instrument_category",
+          "description": "Category distinguishing beamlines from laboratory equipment",
+          "comments": [
+            "Use SYNCHROTRON_BEAMLINE for synchrotron beamlines",
+            "Use ELECTRON_MICROSCOPE for cryo-EM instruments"
+          ],
+          "range": "InstrumentCategoryEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "facility_name",
+          "description": "Name of the research facility where the instrument is located",
+          "comments": [
+            "Select from the standardized list of major synchrotron facilities",
+            "Leave empty for laboratory-based instruments"
+          ],
+          "range": "FacilityEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "facility_ror",
+          "description": "Research Organization Registry (ROR) identifier for the facility",
+          "comments": [
+            "Persistent identifier for the facility organization",
+            "Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)"
+          ],
+          "range": "uriorcurie",
+          "pattern": "^https://ror\\.org/\\w+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beamline_id",
+          "description": "Beamline identifier at synchrotron/neutron facility",
+          "comments": [
+            "Use facility-specific naming convention",
+            "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
+          ],
+          "slot_uri": "mmCIF:_diffrn_source.pdbx_synchrotron_beamline",
+          "range": "string",
           "@type": "SlotDefinition"
         },
         {
@@ -13021,6 +13424,10 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
         "instrument__manufacturer",
         "instrument__model",
         "instrument__installation_date",
@@ -13256,6 +13663,10 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
         "instrument__manufacturer",
         "instrument__model",
         "instrument__installation_date",
@@ -13264,7 +13675,6 @@
         "xRayInstrument__detector_technology",
         "xRayInstrument__detector_manufacturer",
         "xRayInstrument__detector_model",
-        "xRayInstrument__beamline_id",
         "xRayInstrument__energy_min",
         "xRayInstrument__energy_max",
         "xRayInstrument__beam_size_min",
@@ -13310,13 +13720,6 @@
           "comments": [
             "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
           ],
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "beamline_id",
-          "description": "Beamline identifier at synchrotron facility",
-          "slot_uri": "nsls2:Beamline",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -13381,6 +13784,10 @@
         "namedThing__title",
         "namedThing__description",
         "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
         "instrument__manufacturer",
         "instrument__model",
         "instrument__installation_date",
@@ -13431,6 +13838,105 @@
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/SAXSInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BeamlineInstrument",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/BeamlineInstrument",
+      "description": "Multi-technique synchrotron beamline that supports multiple experimental methods",
+      "comments": [
+        "Use for beamlines like SIBYLS that support both SAXS and crystallography",
+        "For single-technique beamlines, use XRayInstrument or SAXSInstrument"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "beamlineInstrument__techniques_supported",
+        "beamlineInstrument__source_type",
+        "beamlineInstrument__energy_min",
+        "beamlineInstrument__energy_max",
+        "beamlineInstrument__q_range_min",
+        "beamlineInstrument__q_range_max",
+        "beamlineInstrument__sample_changer_capacity",
+        "beamlineInstrument__mail_in_service",
+        "beamlineInstrument__website"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "techniques_supported",
+          "description": "Experimental techniques available at this beamline",
+          "comments": [
+            "List all techniques this beamline supports",
+            "Example: [saxs, xray_crystallography] for SIBYLS"
+          ],
+          "range": "TechniqueEnum",
+          "required": true,
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_type",
+          "description": "Type of X-ray source",
+          "range": "XRaySourceTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_min",
+          "description": "Minimum X-ray energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy_max",
+          "description": "Maximum X-ray energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_range_min",
+          "description": "Minimum q value for SAXS in inverse Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_range_max",
+          "description": "Maximum q value for SAXS in inverse Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_changer_capacity",
+          "description": "Automatic sample changer capacity",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mail_in_service",
+          "description": "Whether mail-in sample service is available",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "website",
+          "description": "Beamline website URL",
+          "range": "uri",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/BeamlineInstrument",
       "@type": "ClassDefinition"
     },
     {
@@ -17878,9 +18384,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-11-26T13:58:11",
-  "source_file_size": 101009,
-  "generation_date": "2025-11-26T14:01:31",
+  "source_file_date": "2025-12-06T21:01:40",
+  "source_file_size": 106770,
+  "generation_date": "2025-12-06T21:01:54",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

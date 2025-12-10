@@ -510,6 +510,32 @@ classes:
       instrument_code:
         description: "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking."
         required: true
+      instrument_category:
+        description: "Category distinguishing beamlines from laboratory equipment"
+        range: InstrumentCategoryEnum
+        comments:
+          - "Use SYNCHROTRON_BEAMLINE for synchrotron beamlines"
+          - "Use ELECTRON_MICROSCOPE for cryo-EM instruments"
+      facility_name:
+        description: "Name of the research facility where the instrument is located"
+        range: FacilityEnum
+        comments:
+          - "Select from the standardized list of major synchrotron facilities"
+          - "Leave empty for laboratory-based instruments"
+      facility_ror:
+        description: "Research Organization Registry (ROR) identifier for the facility"
+        range: uriorcurie
+        pattern: "^https://ror\\.org/\\w+$"
+        comments:
+          - "Persistent identifier for the facility organization"
+          - "Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)"
+      beamline_id:
+        description: "Beamline identifier at synchrotron/neutron facility"
+        range: string
+        slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+        comments:
+          - "Use facility-specific naming convention"
+          - "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
       manufacturer:
         description: "Instrument manufacturer"
       model:
@@ -646,10 +672,6 @@ classes:
         range: string
         comments:
           - "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
-      beamline_id:
-        description: "Beamline identifier at synchrotron facility"
-        range: string
-        slot_uri: nsls2:Beamline
       energy_min:
         description: "Minimum X-ray energy in keV"
         range: float
@@ -694,6 +716,46 @@ classes:
         range: integer
       temperature_control_range:
         description: "Temperature control range in Celsius"
+
+  BeamlineInstrument:
+    is_a: Instrument
+    description: "Multi-technique synchrotron beamline that supports multiple experimental methods"
+    comments:
+      - "Use for beamlines like SIBYLS that support both SAXS and crystallography"
+      - "For single-technique beamlines, use XRayInstrument or SAXSInstrument"
+    attributes:
+      techniques_supported:
+        description: "Experimental techniques available at this beamline"
+        range: TechniqueEnum
+        multivalued: true
+        required: true
+        comments:
+          - "List all techniques this beamline supports"
+          - "Example: [saxs, xray_crystallography] for SIBYLS"
+      source_type:
+        description: "Type of X-ray source"
+        range: XRaySourceTypeEnum
+      energy_min:
+        description: "Minimum X-ray energy in keV"
+        range: float
+      energy_max:
+        description: "Maximum X-ray energy in keV"
+        range: float
+      q_range_min:
+        description: "Minimum q value for SAXS in inverse Angstroms"
+        range: float
+      q_range_max:
+        description: "Maximum q value for SAXS in inverse Angstroms"
+        range: float
+      sample_changer_capacity:
+        description: "Automatic sample changer capacity"
+        range: integer
+      mail_in_service:
+        description: "Whether mail-in sample service is available"
+        range: boolean
+      website:
+        description: "Beamline website URL"
+        range: uri
 
   ExperimentRun:
     is_a: NamedThing
@@ -2121,6 +2183,7 @@ enums:
         description: "Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA"
         meaning: ROR:01q47ea17
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "Brookhaven National Laboratory"
           parent_ror: "ROR:02ex6cf31"
           location: "Upton, New York, USA"
@@ -2138,9 +2201,10 @@ enums:
       ALS:
         title: "Advanced Light Source"
         description: "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA"
+        meaning: ROR:02jbv0t02
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "Lawrence Berkeley National Laboratory"
-          parent_ror: "ROR:02jbv0t02"
           location: "Berkeley, California, USA"
           country: "USA"
           doe_facility: "true"
@@ -2155,9 +2219,10 @@ enums:
       SSRL:
         title: "Stanford Synchrotron Radiation Lightsource"
         description: "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA"
+        meaning: ROR:05gzmn429
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "SLAC National Accelerator Laboratory"
-          parent_ror: "ROR:05gzmn429"
           location: "Menlo Park, California, USA"
           country: "USA"
           doe_facility: "true"
@@ -2174,6 +2239,7 @@ enums:
         description: "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source"
         meaning: ROR:02550n020
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           location: "Grenoble, France"
           country: "France"
           doe_facility: "false"
@@ -2191,6 +2257,7 @@ enums:
         description: "UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK"
         meaning: ROR:05etxs293
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           location: "Harwell, Oxfordshire, UK"
           country: "United Kingdom"
           doe_facility: "false"
@@ -2205,9 +2272,10 @@ enums:
       PHOTON_FACTORY:
         title: "Photon Factory"
         description: "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan"
+        meaning: ROR:01g5y5k24
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "High Energy Accelerator Research Organization (KEK)"
-          parent_ror: "ROR:01g5y5k24"
           location: "Tsukuba, Ibaraki, Japan"
           country: "Japan"
           doe_facility: "false"
@@ -2221,9 +2289,10 @@ enums:
       APS:
         title: "Advanced Photon Source"
         description: "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA"
+        meaning: ROR:05gvnxz63
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "Argonne National Laboratory"
-          parent_ror: "ROR:05gvnxz63"
           location: "Lemont, Illinois, USA"
           country: "USA"
           doe_facility: "true"
@@ -2239,9 +2308,10 @@ enums:
       SPRING8:
         title: "SPring-8"
         description: "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan"
+        meaning: ROR:01xjv7358
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "Japan Synchrotron Radiation Research Institute (JASRI)"
-          parent_ror: "ROR:01xjv7358"
           location: "Sayo, Hyogo, Japan"
           country: "Japan"
           doe_facility: "false"
@@ -2255,9 +2325,10 @@ enums:
       PETRA_III:
         title: "PETRA III"
         description: "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany"
+        meaning: ROR:01js2sh04
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           parent_organization: "Deutsches Elektronen-Synchrotron (DESY)"
-          parent_ror: "ROR:01js2sh04"
           location: "Hamburg, Germany"
           country: "Germany"
           doe_facility: "false"
@@ -2273,6 +2344,7 @@ enums:
         description: "French national synchrotron facility near Paris, France"
         meaning: ROR:01ydb3330
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           location: "Saint-Aubin, France"
           country: "France"
           doe_facility: "false"
@@ -2288,6 +2360,7 @@ enums:
         description: "Australia's national synchrotron facility in Melbourne, Victoria"
         meaning: ROR:03vk18a84
         annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
           location: "Melbourne, Victoria, Australia"
           country: "Australia"
           doe_facility: "false"
@@ -2298,23 +2371,55 @@ enums:
         aliases:
           - Australian Synchrotron
           - AS
-      SIBYLS:
-        title: "SIBYLS Beamline 12.3.1"
-        description: "Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction"
+      EMSL:
+        title: "Environmental Molecular Sciences Laboratory"
+        description: "DOE Office of Science user facility at PNNL with cryo-EM capabilities"
+        meaning: ROR:05h992307
         annotations:
-          parent_facility: "Advanced Light Source"
-          parent_ror: "ROR:02jbv0t02"
-          location: "Berkeley, California, USA"
+          facility_type: FacilityTypeEnum:CRYOEM_CENTER
+          parent_organization: "Pacific Northwest National Laboratory"
+          location: "Richland, Washington, USA"
           country: "USA"
           doe_facility: "true"
           doe_office: "Office of Science - Biological and Environmental Research"
-          beamline_id: "12.3.1"
-          techniques: "SAXS, MX, fiber diffraction"
-          website: "https://bl1231.als.lbl.gov/"
+          website: "https://www.emsl.pnnl.gov/"
         aliases:
-          - SIBYLS
-          - ALS 12.3.1
-          - Beamline 12.3.1
+          - EMSL
+          - Environmental Molecular Sciences Laboratory
+      SNS:
+        title: "Spallation Neutron Source"
+        description: "Accelerator-based pulsed neutron source at ORNL providing intense neutron beams"
+        meaning: ROR:01qz5mb56
+        annotations:
+          facility_type: FacilityTypeEnum:NEUTRON_SOURCE
+          parent_organization: "Oak Ridge National Laboratory"
+          location: "Oak Ridge, Tennessee, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q1545258"
+          operational_since: "2006"
+          website: "https://neutrons.ornl.gov/sns"
+        aliases:
+          - SNS
+          - Spallation Neutron Source
+      HFIR:
+        title: "High Flux Isotope Reactor"
+        description: "Reactor-based neutron source at ORNL with dedicated biology beamlines"
+        meaning: ROR:01qz5mb56
+        annotations:
+          facility_type: FacilityTypeEnum:NEUTRON_SOURCE
+          parent_organization: "Oak Ridge National Laboratory"
+          location: "Oak Ridge, Tennessee, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q3126498"
+          operational_since: "1966"
+          website: "https://neutrons.ornl.gov/hfir"
+        aliases:
+          - HFIR
+          - High Flux Isotope Reactor
 
   SampleTypeEnum:
     description: "Types of biological samples"
@@ -2485,6 +2590,39 @@ enums:
         description: "Instrument is offline"
       commissioning:
         description: "Instrument being commissioned"
+
+  InstrumentCategoryEnum:
+    description: "Categories of instruments based on their nature and location"
+    comments:
+      - "Use to distinguish synchrotron beamlines from laboratory equipment"
+    permissible_values:
+      SYNCHROTRON_BEAMLINE:
+        description: "Beamline at a synchrotron light source"
+        meaning: CHMO:0001084
+      NEUTRON_BEAMLINE:
+        description: "Beamline at a neutron source"
+      XFEL_BEAMLINE:
+        description: "Beamline at a free electron laser (X-ray FEL)"
+      ELECTRON_MICROSCOPE:
+        description: "Electron microscope (TEM, SEM, cryo-EM)"
+      BENCHTOP_XRAY:
+        description: "Benchtop X-ray diffractometer or other laboratory X-ray source"
+      OPTICAL_MICROSCOPE:
+        description: "Optical or fluorescence microscope"
+      SPECTROMETER:
+        description: "Spectroscopy instrument (FTIR, Raman, mass spec, etc.)"
+
+  FacilityTypeEnum:
+    description: "Types of research facilities"
+    permissible_values:
+      SYNCHROTRON:
+        description: "Synchrotron light source facility"
+      NEUTRON_SOURCE:
+        description: "Neutron scattering facility (reactor or spallation source)"
+      FREE_ELECTRON_LASER:
+        description: "Free electron laser facility (XFEL)"
+      CRYOEM_CENTER:
+        description: "Dedicated cryo-electron microscopy center"
 
   ImagingModeEnum:
     description: "Imaging modes for electron microscopy"
