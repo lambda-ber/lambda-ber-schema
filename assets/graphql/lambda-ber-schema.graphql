@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.0.post69.dev0+237d10d
+# version: 0.1.1.post4.dev0+e2dc952
 enum AffinityUnitEnum
   {
     molar
