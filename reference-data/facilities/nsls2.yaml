@@ -1,0 +1,57 @@
+# National Synchrotron Light Source II (NSLS-II) Beamline Reference Data
+# Brookhaven National Laboratory, Upton, New York, USA
+#
+# Facility Information:
+#   Name: National Synchrotron Light Source II
+#   ROR: https://ror.org/01q47ea17
+#   Energy: 3.0 GeV
+#   Website: https://www.bnl.gov/nsls2/
+#
+# This file contains reference instrument definitions for NSLS-II beamlines.
+# These can be used as templates or imported into datasets.
+
+beamlines:
+  # FMX - Frontier Macromolecular Crystallography
+  - id: lambdaber:beamline_nsls2_fmx
+    title: "FMX Beamline 17-ID-2"
+    description: "Frontier Macromolecular Crystallography beamline at NSLS-II for challenging crystallography problems"
+    instrument_code: "NSLS2-17-ID-2-FMX"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    beamline_id: "17-ID-2"
+    source_type: synchrotron
+    energy_min: 5.0
+    energy_max: 30.0
+    current_status: operational
+
+  # AMX - Automated Macromolecular Crystallography
+  - id: lambdaber:beamline_nsls2_amx
+    title: "AMX Beamline 17-ID-1"
+    description: "Highly Automated Macromolecular Crystallography beamline at NSLS-II for high-throughput data collection"
+    instrument_code: "NSLS2-17-ID-1-AMX"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    beamline_id: "17-ID-1"
+    source_type: synchrotron
+    energy_min: 5.0
+    energy_max: 18.0
+    mail_in_service: true
+    current_status: operational
+
+  # LiX - Life Science X-ray Scattering (SAXS/WAXS)
+  - id: lambdaber:beamline_nsls2_lix
+    title: "LiX Beamline 16-ID"
+    description: "Life Science X-ray Scattering beamline for SAXS/WAXS and solution scattering"
+    instrument_code: "NSLS2-16-ID-LiX"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    beamline_id: "16-ID"
+    techniques_supported:
+      - saxs
+      - waxs
+    source_type: synchrotron
+    mail_in_service: true
+    current_status: operational

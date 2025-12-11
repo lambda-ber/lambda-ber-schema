@@ -224,6 +224,149 @@
             "title": "AnnotationSourceEnum",
             "type": "string"
         },
+        "BeamlineInstrument": {
+            "additionalProperties": false,
+            "description": "Multi-technique synchrotron beamline that supports multiple experimental methods",
+            "properties": {
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy_max": {
+                    "description": "Maximum X-ray energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "energy_min": {
+                    "description": "Minimum X-ray energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "mail_in_service": {
+                    "description": "Whether mail-in sample service is available",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "q_range_max": {
+                    "description": "Maximum q value for SAXS in inverse Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "q_range_min": {
+                    "description": "Minimum q value for SAXS in inverse Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "sample_changer_capacity": {
+                    "description": "Automatic sample changer capacity",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "source_type": {
+                    "$ref": "#/$defs/XRaySourceTypeEnum",
+                    "description": "Type of X-ray source"
+                },
+                "techniques_supported": {
+                    "description": "Experimental techniques available at this beamline",
+                    "items": {
+                        "$ref": "#/$defs/TechniqueEnum"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "website": {
+                    "description": "Beamline website URL",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "techniques_supported",
+                "instrument_code",
+                "id"
+            ],
+            "title": "BeamlineInstrument",
+            "type": "object"
+        },
         "BindingAffinityTypeEnum": {
             "description": "Types of binding affinity measurements",
             "enum": [
@@ -720,6 +863,13 @@
                         "null"
                     ]
                 },
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "c2_aperture": {
                     "description": "C2 aperture size in micrometers",
                     "type": [
@@ -816,6 +966,18 @@
                         "null"
                     ]
                 },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "gunlens": {
                     "description": "Gun lens setting",
                     "type": [
@@ -837,6 +999,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
@@ -2400,9 +2566,22 @@
                 "PETRA_III",
                 "SOLEIL",
                 "AUSTRALIAN_SYNCHROTRON",
-                "SIBYLS"
+                "EMSL",
+                "SNS",
+                "HFIR"
             ],
             "title": "FacilityEnum",
+            "type": "string"
+        },
+        "FacilityTypeEnum": {
+            "description": "Types of research facilities",
+            "enum": [
+                "SYNCHROTRON",
+                "NEUTRON_SOURCE",
+                "FREE_ELECTRON_LASER",
+                "CRYOEM_CENTER"
+            ],
+            "title": "FacilityTypeEnum",
             "type": "string"
         },
         "FileFormatEnum": {
@@ -3131,12 +3310,31 @@
             "additionalProperties": false,
             "description": "An instrument used to collect data",
             "properties": {
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "current_status": {
                     "$ref": "#/$defs/InstrumentStatusEnum",
                     "description": "Current operational status"
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
                     "type": [
                         "string",
                         "null"
@@ -3152,6 +3350,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
@@ -3185,6 +3387,20 @@
             ],
             "title": "Instrument",
             "type": "object"
+        },
+        "InstrumentCategoryEnum": {
+            "description": "Categories of instruments based on their nature and location",
+            "enum": [
+                "SYNCHROTRON_BEAMLINE",
+                "NEUTRON_BEAMLINE",
+                "XFEL_BEAMLINE",
+                "ELECTRON_MICROSCOPE",
+                "BENCHTOP_XRAY",
+                "OPTICAL_MICROSCOPE",
+                "SPECTROMETER"
+            ],
+            "title": "InstrumentCategoryEnum",
+            "type": "string"
         },
         "InstrumentStatusEnum": {
             "description": "Operational status of instruments",
@@ -5265,6 +5481,13 @@
             "additionalProperties": false,
             "description": "SAXS/WAXS instrument specifications",
             "properties": {
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "current_status": {
                     "$ref": "#/$defs/InstrumentStatusEnum",
                     "description": "Current operational status"
@@ -5290,6 +5513,18 @@
                         "null"
                     ]
                 },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
@@ -5300,6 +5535,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
@@ -7098,7 +7337,7 @@
                     ]
                 },
                 "beamline_id": {
-                    "description": "Beamline identifier at synchrotron facility",
+                    "description": "Beamline identifier at synchrotron/neutron facility",
                     "type": [
                         "string",
                         "null"
@@ -7154,6 +7393,18 @@
                         "null"
                     ]
                 },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "flux_density": {
                     "description": "Photon flux density in photons/s/mm\u00b2",
                     "type": [
@@ -7178,6 +7429,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
                 },
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",

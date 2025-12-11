@@ -1,3 +1,4 @@
+assets/external
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -136,3 +137,6 @@ dmypy.json
 # Custom config files
 **_custom.*
 *.tmp
+
+# Synced external data (downloaded via just sync-gdrive)
+assets/external/

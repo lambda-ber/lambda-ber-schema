@@ -1,0 +1,127 @@
+# Stanford Synchrotron Radiation Lightsource (SSRL) Beamline Reference Data
+# SLAC National Accelerator Laboratory, Menlo Park, California, USA
+#
+# Facility Information:
+#   Name: Stanford Synchrotron Radiation Lightsource
+#   ROR: https://ror.org/05gzmn429
+#   Energy: 3.0 GeV
+#   Website: https://www-ssrl.slac.stanford.edu/
+#
+# The SMB (Structural Molecular Biology) program operates 7 dedicated beamlines:
+# - 4 for macromolecular crystallography (MX)
+# - 1 for SAXS/WAXS
+# - 2 for XAS (X-ray absorption spectroscopy)
+#
+# Sources:
+# - https://smb.slac.stanford.edu/
+# - https://www-ssrl.slac.stanford.edu/smb-mc/content/beamlines
+# - https://biosync.rcsb.org/synchrotronprofile.do?synch_id=ssrl
+
+beamlines:
+  # Macromolecular Crystallography Beamlines
+  - id: lambdaber:beamline_ssrl_bl12_2
+    title: "SSRL Beamline 12-2"
+    description: "Undulator beamline optimized for microcrystallography with intense microbeam"
+    instrument_code: "SSRL-BL12-2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL12-2"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_ssrl_bl12_1
+    title: "SSRL Beamline 12-1"
+    description: "New undulator beamline with ultra-small microbeam capability"
+    instrument_code: "SSRL-BL12-1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL12-1"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: commissioning
+
+  - id: lambdaber:beamline_ssrl_bl9_2
+    title: "SSRL Beamline 9-2"
+    description: "Macromolecular crystallography beamline optimized for MAD experiments"
+    instrument_code: "SSRL-BL9-2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL9-2"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_ssrl_bl9_1
+    title: "SSRL Beamline 9-1"
+    description: "MX side station, MAD capable"
+    instrument_code: "SSRL-BL9-1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL9-1"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_ssrl_bl14_1
+    title: "SSRL Beamline 14-1"
+    description: "Macromolecular crystallography beamline for MAD experiments"
+    instrument_code: "SSRL-BL14-1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL14-1"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_ssrl_bl7_1
+    title: "SSRL Beamline 7-1"
+    description: "MX side station, MAD capable"
+    instrument_code: "SSRL-BL7-1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL7-1"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_ssrl_bl11_1
+    title: "SSRL Beamline 11-1"
+    description: "MX side station, MAD capable"
+    instrument_code: "SSRL-BL11-1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL11-1"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  # SAXS/WAXS Beamline
+  - id: lambdaber:beamline_ssrl_bl4_2
+    title: "SSRL Beamline 4-2"
+    description: "Biological Small/Wide Angle X-ray Scattering (Bio-SAXS/WAXS) beamline"
+    instrument_code: "SSRL-BL4-2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: SSRL
+    facility_ror: "https://ror.org/05gzmn429"
+    beamline_id: "BL4-2"
+    techniques_supported:
+      - saxs
+      - waxs
+    source_type: synchrotron
+    mail_in_service: true
+    current_status: operational

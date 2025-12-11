@@ -1,0 +1,116 @@
+# Oak Ridge National Laboratory Neutron Facilities Reference Data
+# Oak Ridge National Laboratory, Oak Ridge, Tennessee, USA
+#
+# ORNL hosts two world-class neutron sources:
+# - Spallation Neutron Source (SNS) - pulsed neutron source
+# - High Flux Isotope Reactor (HFIR) - reactor neutron source
+#
+# Facility Information:
+#   ROR: https://ror.org/01qz5mb56 (ORNL)
+#   Facility Type: NEUTRON_SOURCE
+#   Website: https://neutrons.ornl.gov/
+#
+# Sources:
+# - https://neutrons.ornl.gov/instruments
+# - https://qa.berstructuralbioportal.org/sns-hfir.shtml
+
+# Spallation Neutron Source (SNS) Beamlines
+sns_beamlines:
+  # MaNDi - Macromolecular Neutron Diffractometer
+  - id: lambdaber:beamline_sns_mandi
+    title: "SNS MaNDi (BL-11B)"
+    description: "Macromolecular Neutron Diffractometer for neutron protein crystallography"
+    instrument_code: "SNS-BL11B-MANDI"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "BL-11B"
+    techniques_supported:
+      - neutron_crystallography
+    current_status: operational
+    website: "https://neutrons.ornl.gov/mandi"
+
+  # TOPAZ - Single-Crystal Diffractometer
+  - id: lambdaber:beamline_sns_topaz
+    title: "SNS TOPAZ (BL-12)"
+    description: "Single-Crystal Diffractometer for small molecule and macromolecular studies"
+    instrument_code: "SNS-BL12-TOPAZ"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "BL-12"
+    techniques_supported:
+      - neutron_crystallography
+    current_status: operational
+    website: "https://neutrons.ornl.gov/topaz"
+
+  # EQ-SANS - Extended Q-Range Small-Angle Neutron Scattering
+  - id: lambdaber:beamline_sns_eqsans
+    title: "SNS EQ-SANS (BL-6)"
+    description: "Extended Q-Range Small-Angle Neutron Scattering Diffractometer"
+    instrument_code: "SNS-BL6-EQSANS"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "BL-6"
+    techniques_supported:
+      - sans
+    current_status: operational
+    website: "https://neutrons.ornl.gov/eqsans"
+
+  # BASIS - Backscattering Spectrometer
+  - id: lambdaber:beamline_sns_basis
+    title: "SNS BASIS (BL-2)"
+    description: "Backscattering Spectrometer for dynamics studies"
+    instrument_code: "SNS-BL2-BASIS"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "BL-2"
+    techniques_supported:
+      - neutron_spectroscopy
+    current_status: operational
+    website: "https://neutrons.ornl.gov/basis"
+
+# High Flux Isotope Reactor (HFIR) Beamlines
+hfir_beamlines:
+  # Bio-SANS - Biological Small-Angle Neutron Scattering
+  - id: lambdaber:beamline_hfir_biosans
+    title: "HFIR Bio-SANS (CG-3)"
+    description: "Biological Small-Angle Neutron Scattering instrument for structural biology"
+    instrument_code: "HFIR-CG3-BIOSANS"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "CG-3"
+    techniques_supported:
+      - sans
+    current_status: operational
+    website: "https://neutrons.ornl.gov/biosans"
+
+  # IMAGINE - Quasi-Laue Diffractometer
+  - id: lambdaber:beamline_hfir_imagine
+    title: "HFIR IMAGINE (CG-4D)"
+    description: "Quasi-Laue Neutron Diffractometer for macromolecular crystallography"
+    instrument_code: "HFIR-CG4D-IMAGINE"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "CG-4D"
+    techniques_supported:
+      - neutron_crystallography
+    current_status: operational
+    website: "https://neutrons.ornl.gov/imagine"
+
+  # GP-SANS - General Purpose Small-Angle Neutron Scattering
+  - id: lambdaber:beamline_hfir_gpsans
+    title: "HFIR GP-SANS (CG-2)"
+    description: "General Purpose Small-Angle Neutron Scattering Diffractometer"
+    instrument_code: "HFIR-CG2-GPSANS"
+    instrument_category: NEUTRON_BEAMLINE
+    facility_ror: "https://ror.org/01qz5mb56"
+    beamline_id: "CG-2"
+    techniques_supported:
+      - sans
+    current_status: operational
+    website: "https://neutrons.ornl.gov/gpsans"
+
+# Supporting Resources:
+# - Bio-Deuteration Laboratory at SNS for producing deuterated biological samples
+# - Center for Structural Molecular Biology (CSMB) develops instrumentation and methods
+# - Annual Neutron Scattering School on Structural Biology
+# - Beam time available free of charge through ORNL general user program

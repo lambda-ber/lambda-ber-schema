@@ -107,3 +107,4 @@ gh-invite-the-dragon:
 # ============== Include project-specific recipes ==============
 
 import "project.justfile"
+import "sync.justfile"

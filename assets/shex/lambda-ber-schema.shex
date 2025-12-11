@@ -6,6 +6,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX nsls2: <https://github.com/NSLS2/BER-LAMBDA/>
+PREFIX mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/>
+PREFIX ROR: <https://ror.org/>
 
 
 linkml:String xsd:string
@@ -95,6 +97,29 @@ linkml:Sparqlpath xsd:string
 <AttributeGroup_struct> {
     (  $<AttributeGroup_tes> <description> @linkml:String ? ;
        rdf:type [ <AttributeGroup> ] ?
+    )
+}
+
+<BeamlineInstrument> CLOSED {
+    (  $<BeamlineInstrument_tes> (  &<Instrument_tes> ;
+          rdf:type [ <Instrument> ] ? ;
+          <techniques_supported> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000204> <http://purl.obolibrary.org/obo/CHMO_0000207>
+             <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
+             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470> ] + ;
+          <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
+             <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#metal_jet> ] ? ;
+          <energy_min> @linkml:Float ? ;
+          <energy_max> @linkml:Float ? ;
+          <q_range_min> @linkml:Float ? ;
+          <q_range_max> @linkml:Float ? ;
+          <sample_changer_capacity> @linkml:Integer ? ;
+          <mail_in_service> @linkml:Boolean ? ;
+          <website> @linkml:Uri ?
+       ) ;
+       rdf:type [ <BeamlineInstrument> ]
     )
 }
 
@@ -663,6 +688,17 @@ linkml:Sparqlpath xsd:string
        (  $<Instrument_tes> (  &<NamedThing_tes> ;
              rdf:type [ <NamedThing> ] ? ;
              <instrument_code> @linkml:String ;
+             <instrument_category> [ <http://purl.obolibrary.org/obo/CHMO_0001084>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#NEUTRON_BEAMLINE>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#XFEL_BEAMLINE>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#ELECTRON_MICROSCOPE>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#BENCHTOP_XRAY>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#OPTICAL_MICROSCOPE>
+                <https://w3id.org/lambda-ber-schema/InstrumentCategoryEnum#SPECTROMETER> ] ? ;
+             <facility_name> [ ROR:01q47ea17 ROR:02jbv0t02 ROR:05gzmn429 ROR:02550n020 ROR:05etxs293 ROR:01g5y5k24 ROR:05gvnxz63
+                ROR:01xjv7358 ROR:01js2sh04 ROR:01ydb3330 ROR:03vk18a84 ROR:05h992307 ROR:01qz5mb56 ROR:01qz5mb56 ] ? ;
+             <facility_ror> @linkml:Uriorcurie ? ;
+             mmCIF:_diffrn_source.pdbx_synchrotron_beamline @linkml:String ? ;
              <manufacturer> @linkml:String ? ;
              <model> @linkml:String ? ;
              <installation_date> @linkml:String ? ;
@@ -673,7 +709,7 @@ linkml:Sparqlpath xsd:string
           ) ;
           rdf:type [ <Instrument> ]
        )
-    } OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
+    } OR @<BeamlineInstrument> OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
 )
 
 <https://w3id.org/lambda-ber-schema/functional_annotation/LigandInteraction> CLOSED {
@@ -1487,7 +1523,6 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
           <detector_manufacturer> @linkml:String ? ;
           <detector_model> @linkml:String ? ;
-          nsls2:Beamline @linkml:String ? ;
           <energy_min> @linkml:Float ? ;
           <energy_max> @linkml:Float ? ;
           <beam_size_min> @linkml:Float ? ;

@@ -1,0 +1,69 @@
+# Advanced Light Source (ALS) Beamline Reference Data
+# Lawrence Berkeley National Laboratory, Berkeley, California, USA
+#
+# Facility Information:
+#   Name: Advanced Light Source
+#   ROR: https://ror.org/02jbv0t02
+#   Energy: 1.9 GeV
+#   Website: https://als.lbl.gov/
+#
+# This file contains reference instrument definitions for ALS beamlines.
+# These can be used as templates or imported into datasets.
+
+beamlines:
+  # SIBYLS - Multi-technique structural biology beamline
+  - id: lambdaber:beamline_sibyls
+    title: "SIBYLS Beamline 12.3.1"
+    description: "SIBYLS (Structurally Integrated BiologY for Life Sciences) is a multi-technique beamline supporting SAXS, X-ray crystallography, and fiber diffraction"
+    instrument_code: "ALS-12.3.1-SIBYLS"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "12.3.1"
+    techniques_supported:
+      - saxs
+      - xray_crystallography
+    source_type: synchrotron
+    q_range_min: 0.01
+    q_range_max: 0.6
+    sample_changer_capacity: 96
+    mail_in_service: true
+    website: "https://bl1231.als.lbl.gov/"
+    current_status: operational
+
+  # ALS 8.3.1 - Macromolecular Crystallography
+  - id: lambdaber:beamline_als_831
+    title: "ALS Beamline 8.3.1"
+    description: "Macromolecular crystallography beamline at ALS"
+    instrument_code: "ALS-8.3.1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "8.3.1"
+    source_type: synchrotron
+    energy_min: 6.0
+    energy_max: 18.0
+    current_status: operational
+
+  # Berkeley Center for Structural Biology beamlines
+  - id: lambdaber:beamline_als_501
+    title: "ALS Beamline 5.0.1"
+    description: "Berkeley Center for Structural Biology crystallography beamline"
+    instrument_code: "ALS-5.0.1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "5.0.1"
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_als_502
+    title: "ALS Beamline 5.0.2"
+    description: "Berkeley Center for Structural Biology crystallography beamline"
+    instrument_code: "ALS-5.0.2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "5.0.2"
+    source_type: synchrotron
+    current_status: operational

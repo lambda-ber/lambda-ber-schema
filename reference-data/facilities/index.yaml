@@ -1,0 +1,27 @@
+# Lambda-BER-Schema Facility Reference Data
+# Authoritative definitions for research facilities and their instruments
+#
+# These files provide reference data for beamlines and instruments. They are intended as:
+# - Template examples for users defining their own instruments
+# - Authoritative metadata that can be imported into datasets
+# - Documentation of known beamlines/instruments with validated metadata
+#
+# Note: These are NOT schema files - they are data instances that conform to the schema.
+
+# US DOE Synchrotron Light Sources
+synchrotron_facilities:
+  - als.yaml         # Advanced Light Source (Berkeley Lab)
+  - nsls2.yaml       # National Synchrotron Light Source II (Brookhaven)
+  - aps.yaml         # Advanced Photon Source (Argonne)
+  - ssrl.yaml        # Stanford Synchrotron Radiation Lightsource (SLAC)
+  # - esrf.yaml      # European Synchrotron Radiation Facility - TODO
+  # - diamond.yaml   # Diamond Light Source - TODO
+  # - spring8.yaml   # SPring-8 (Japan) - TODO
+
+# US DOE Neutron Sources
+neutron_facilities:
+  - ornl-neutron.yaml  # SNS and HFIR at Oak Ridge National Laboratory
+
+# Cryo-EM Facilities
+cryoem_facilities:
+  - emsl.yaml        # Environmental Molecular Sciences Laboratory (PNNL)

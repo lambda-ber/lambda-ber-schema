@@ -24,6 +24,31 @@ message AggregatedProteinView
   evolutionaryConservation evolutionaryConservation = 0
  repeated  databaseCrossReference crossReferences = 0
  }
+// Multi-technique synchrotron beamline that supports multiple experimental methods
+message BeamlineInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+ repeated  techniqueEnum techniquesSupported = 0
+  xRaySourceTypeEnum sourceType = 0
+  float energyMin = 0
+  float energyMax = 0
+  float qRangeMin = 0
+  float qRangeMax = 0
+  integer sampleChangerCapacity = 0
+  boolean mailInService = 0
+  uri website = 0
+ }
 // Measured or calculated biophysical properties
 message BiophysicalProperty
  {
@@ -85,6 +110,10 @@ message CryoEMInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
   string manufacturer = 0
   string model = 0
   string installationDate = 0
@@ -459,6 +488,10 @@ message Instrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
   string manufacturer = 0
   string model = 0
   string installationDate = 0
@@ -878,6 +911,10 @@ message SAXSInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
   string manufacturer = 0
   string model = 0
   string installationDate = 0
@@ -1020,6 +1057,10 @@ message XRayInstrument
   string title = 0
   string description = 0
   string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
   string manufacturer = 0
   string model = 0
   string installationDate = 0
@@ -1028,7 +1069,6 @@ message XRayInstrument
   detectorTechnologyEnum detectorTechnology = 0
   string detectorManufacturer = 0
   string detectorModel = 0
-  string beamlineId = 0
   float energyMin = 0
   float energyMax = 0
   float beamSizeMin = 0
