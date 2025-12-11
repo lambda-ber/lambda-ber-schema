@@ -1,6 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// version: 0.1.0.post69.dev0+237d10d
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -315,7 +316,7 @@ message ExperimentRun
   processingStatusEnum processingStatus = 0
   integer magnification = 0
   float calibratedPixelSize = 0
-  integer cameraBinning = 0
+  float cameraBinning = 0
   float exposureTimePerFrame = 0
   integer framesPerMovie = 0
   float totalExposureTime = 0
@@ -559,12 +560,12 @@ message MotionCorrectionParameters
  {
   string description = 0
   integer patchSize = 0
-  integer binning = 0
+  float binning = 0
   boolean doseWeighting = 0
   float bfactorDoseWeighting = 0
   boolean anisotropicCorrection = 0
   integer frameGrouping = 0
-  integer outputBinning = 0
+  float outputBinning = 0
   float driftTotal = 0
  }
 // Raw cryo-EM movie with frame-by-frame metadata for motion correction

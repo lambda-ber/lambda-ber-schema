@@ -1,12 +1,12 @@
 [project]
 name = "lambda-ber-schema"
-version = "0.1.0"
-description = "Add your description here"
+description = "Schema for multimodal structural biology imaging data"
 readme = "README.md"
 authors = [
     { name = "Chris Mungall", email = "cjm@berkeleybop.org" }
 ]
 requires-python = ">=3.12"
+dynamic = ["version"]
 dependencies = [
     "linkml-runtime>=1.9.4",
     "requests>=2.32.4",
@@ -16,8 +16,24 @@ dependencies = [
 lambda-ber-schema = "lambda-ber-schema:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
+
+# Dynamic versioning from git tags
+# Ref: https://github.com/ninoseki/uv-dynamic-versioning/
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+fallback-version = "0.0.0"
+
+# Inject version into schema YAML at build time
+# Ref: https://hatch.pypa.io/latest/plugins/build-hook/version/
+[tool.hatch.build.hooks.version]
+path = "src/lambda_ber_schema/schema/lambda-ber-schema.yaml"
+pattern = """^(?:version:\\s*")(?P<version>[^"]*)(?:"\\s*# Managed by uv-dynamic-versioning).*$"""
 
 [dependency-groups]
 dev = [
@@ -26,4 +42,11 @@ dev = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.6.16",
     "mkdocs-mermaid2-plugin>=1.2.1",
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]

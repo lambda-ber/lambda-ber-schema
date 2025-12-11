@@ -17,8 +17,8 @@ Alias: organism
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 | [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
 
 
 

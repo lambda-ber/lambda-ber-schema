@@ -3,7 +3,7 @@
 # Slot: output_binning 
 
 
-_Output binning factor_
+_Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)._
 
 
 
@@ -31,7 +31,9 @@ Alias: output_binning
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [Float](Float.md)
+
+* Minimum Value: 0
 
 
 
@@ -66,14 +68,16 @@ Alias: output_binning
 <details>
 ```yaml
 name: output_binning
-description: Output binning factor
+description: Output binning factor. This must be a positive float value (e.g., 1,
+  1.5, 2, 3).
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: output_binning
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: integer
+range: float
+minimum_value: 0.01
 
 ```
 </details>

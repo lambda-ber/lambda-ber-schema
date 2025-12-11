@@ -1,4 +1,5 @@
 # metamodel_version: 1.7.0
+# version: 0.1.0.post69.dev0+237d10d
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -520,7 +521,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
           <magnification> @linkml:Integer ? ;
           <calibrated_pixel_size> @linkml:Float ? ;
-          <camera_binning> @linkml:Integer ? ;
+          <camera_binning> @linkml:Float ? ;
           <exposure_time_per_frame> @linkml:Float ? ;
           <frames_per_movie> @linkml:Integer ? ;
           <total_exposure_time> @linkml:Float ? ;
@@ -798,12 +799,12 @@ linkml:Sparqlpath xsd:string
     (  $<MotionCorrectionParameters_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
           <patch_size> @linkml:Integer ? ;
-          <binning> @linkml:Integer ? ;
+          <binning> @linkml:Float ? ;
           <dose_weighting> @linkml:Boolean ? ;
           <bfactor_dose_weighting> @linkml:Float ? ;
           <anisotropic_correction> @linkml:Boolean ? ;
           <frame_grouping> @linkml:Integer ? ;
-          <output_binning> @linkml:Integer ? ;
+          <output_binning> @linkml:Float ? ;
           <drift_total> @linkml:Float ?
        ) ;
        rdf:type [ <MotionCorrectionParameters> ] ?

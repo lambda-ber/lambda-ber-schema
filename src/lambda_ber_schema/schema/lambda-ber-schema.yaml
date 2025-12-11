@@ -1,5 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
+version: "0.1.0.post69.dev0+237d10d" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -807,8 +808,9 @@ classes:
         description: "Calibrated pixel size in Angstroms per pixel"
         range: float
       camera_binning:
-        description: "Camera binning factor"
-        range: integer
+        description: "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
+        range: float
+        minimum_value: 0.01
       exposure_time_per_frame:
         description: "Exposure time per frame in milliseconds"
         range: float
@@ -2055,8 +2057,9 @@ classes:
         description: "Patch size for local motion correction"
         range: integer
       binning:
-        description: "Binning factor applied during motion correction"
-        range: integer
+        description: "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
+        range: float
+        minimum_value: 0.01
       dose_weighting:
         description: "Whether dose weighting was applied"
         range: boolean
@@ -2070,8 +2073,9 @@ classes:
         description: "Number of frames grouped together"
         range: integer
       output_binning:
-        description: "Output binning factor"
-        range: integer
+        description: "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
+        range: float
+        minimum_value: 0.01
       drift_total:
         description: "Total drift in Angstroms"
         range: float
