@@ -903,42 +903,42 @@
 <tbody>
 <tr>
 <td>cryo_em</td>
-<td>None</td>
+<td>CHMO:0002413</td>
 <td>Cryo-electron microscopy</td>
 </tr>
 <tr>
 <td>xray_crystallography</td>
-<td>None</td>
+<td>CHMO:0000156</td>
 <td>X-ray crystallography</td>
 </tr>
 <tr>
 <td>saxs</td>
-<td>None</td>
+<td>CHMO:0000204</td>
 <td>Small-angle X-ray scattering</td>
 </tr>
 <tr>
 <td>waxs</td>
-<td>None</td>
+<td>CHMO:0000207</td>
 <td>Wide-angle X-ray scattering</td>
 </tr>
 <tr>
 <td>sans</td>
-<td>None</td>
+<td>CHMO:0000184</td>
 <td>Small-angle neutron scattering</td>
 </tr>
 <tr>
 <td>cryo_et</td>
-<td>None</td>
+<td>CHMO:0002413</td>
 <td>Cryo-electron tomography</td>
 </tr>
 <tr>
 <td>electron_microscopy</td>
-<td>None</td>
+<td>CHMO:0000068</td>
 <td>General electron microscopy</td>
 </tr>
 <tr>
 <td>mass_spectrometry</td>
-<td>None</td>
+<td>CHMO:0000470</td>
 <td>Mass spectrometry</td>
 </tr>
 </tbody>
@@ -952,6 +952,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../techniques_supported/">techniques_supported</a></td>
+<td>Experimental techniques available at this beamline</td>
+</tr>
 <tr>
 <td><a href="../technique/">technique</a></td>
 <td>Technique used for data collection</td>
@@ -974,27 +978,37 @@ permissible_values:
   cryo_em:
     text: cryo_em
     description: Cryo-electron microscopy
+    meaning: CHMO:0002413
   xray_crystallography:
     text: xray_crystallography
     description: X-ray crystallography
+    meaning: CHMO:0000156
   saxs:
     text: saxs
     description: Small-angle X-ray scattering
+    meaning: CHMO:0000204
   waxs:
     text: waxs
     description: Wide-angle X-ray scattering
+    meaning: CHMO:0000207
   sans:
     text: sans
     description: Small-angle neutron scattering
+    meaning: CHMO:0000184
   cryo_et:
     text: cryo_et
     description: Cryo-electron tomography
+    meaning: CHMO:0002413
+    comments:
+    - Uses same CHMO term as cryo_em; tomography is a specific application
   electron_microscopy:
     text: electron_microscopy
     description: General electron microscopy
+    meaning: CHMO:0000068
   mass_spectrometry:
     text: mass_spectrometry
     description: Mass spectrometry
+    meaning: CHMO:0000470
 
 </code></pre>
 

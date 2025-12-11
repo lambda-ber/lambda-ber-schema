@@ -837,6 +837,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -898,8 +907,8 @@
 
 
 <h1 id="slot-beamline_id">Slot: beamline_id</h1>
-<p><em>Beamline identifier at synchrotron facility</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Beamline">nsls2:Beamline</a>
+<p><em>Beamline identifier at synchrotron/neutron facility</em></p>
+<p>URI: <a href="http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline">mmCIF:_diffrn_source.pdbx_synchrotron_beamline</a>
 Alias: beamline_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -914,8 +923,28 @@ Alias: beamline_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
+<td>Cryo-EM microscope specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An instrument used to collect data</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayInstrument/">XRayInstrument</a></td>
 <td>X-ray diffractometer or synchrotron beamline specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SAXSInstrument/">SAXSInstrument</a></td>
+<td>SAXS/WAXS instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
+<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -923,6 +952,11 @@ Alias: beamline_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Use facility-specific naming convention</li>
+<li>Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -940,7 +974,7 @@ Alias: beamline_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Beamline</td>
+<td>mmCIF:_diffrn_source.pdbx_synchrotron_beamline</td>
 </tr>
 <tr>
 <td>native</td>
@@ -952,14 +986,17 @@ Alias: beamline_id</p>
 <details>
 
 <pre><code class="language-yaml">name: beamline_id
-description: Beamline identifier at synchrotron facility
+description: Beamline identifier at synchrotron/neutron facility
+comments:
+- Use facility-specific naming convention
+- 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
-slot_uri: nsls2:Beamline
+slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 alias: beamline_id
-owner: XRayInstrument
+owner: Instrument
 domain_of:
-- XRayInstrument
+- Instrument
 range: string
 
 </code></pre>

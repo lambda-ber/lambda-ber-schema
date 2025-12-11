@@ -1,0 +1,2005 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/ideas/neutron-techniques-expansion/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Neutron Techniques Expansion for LAMBDA-BER Schema - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#neutron-techniques-expansion-for-lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Neutron Techniques Expansion for LAMBDA-BER Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-neutron-techniques-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Neutron Techniques Matter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Neutron Techniques Matter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unique-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unique Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biological-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Biological Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-schema-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Schema Gaps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Schema Gaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limited-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limited Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proposed Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-neutron-technique-enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Neutron Technique Enumeration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Neutron Technique Enumeration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expand-techniqueenum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expand TechniqueEnum
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-neutron-specific-instrument-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Neutron-Specific Instrument Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Neutron-Specific Instrument Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutroninstrument" class="md-nav__link">
+    <span class="md-ellipsis">
+      NeutronInstrument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutronsourceenum" class="md-nav__link">
+    <span class="md-ellipsis">
+      NeutronSourceEnum
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deuteration-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Deuteration Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Deuteration Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deuterationinfo-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeuterationInfo Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deuterationstrategyenum" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeuterationStrategyEnum
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-neutron-crystallography-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Neutron Crystallography Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Neutron Crystallography Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutroncrystallographyexperiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      NeutronCrystallographyExperiment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-contrast-variation-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Contrast Variation Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Contrast Variation Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contrastvariationseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ContrastVariationSeries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contrastpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      ContrastPoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-neutron-reflectometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Neutron Reflectometry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Neutron Reflectometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutronreflectometryexperiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      NeutronReflectometryExperiment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-quasi-elastic-neutron-scattering" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Quasi-Elastic Neutron Scattering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Quasi-Elastic Neutron Scattering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qensexperiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      QENSExperiment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-sample-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Sample Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Sample Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutronsampleenvironment" class="md-nav__link">
+    <span class="md-ellipsis">
+      NeutronSampleEnvironment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-existing-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Existing Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Existing Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-preparation-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Preparation Extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-file-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data File Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facility-specific-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facility-Specific Implementations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Facility-Specific Implementations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ornl-snshfir" class="md-nav__link">
+    <span class="md-ellipsis">
+      ORNL (SNS/HFIR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nist-ncnr" class="md-nav__link">
+    <span class="md-ellipsis">
+      NIST NCNR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanl-lansce" class="md-nav__link">
+    <span class="md-ellipsis">
+      LANL (LANSCE)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case-1-joint-x-rayneutron-refinement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Case 1: Joint X-ray/Neutron Refinement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-2-membrane-protein-contrast-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Case 2: Membrane Protein Contrast Variation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-3-protein-dynamics-by-qens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Case 3: Protein Dynamics by QENS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benefits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scientific-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scientific Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-lambda-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      For LAMBDA Goals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Volume
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Knowledge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roadmap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-core-neutron-support-q1-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Core Neutron Support (Q1 2025)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-advanced-techniques-q2-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Advanced Techniques (Q2 2025)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-integration-q3-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Integration (Q3 2025)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-aiml-features-q4-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4: AI/ML Features (Q4 2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="neutron-techniques-expansion-for-lambda-ber-schema">Neutron Techniques Expansion for LAMBDA-BER Schema</h1>
+<h2 id="overview">Overview</h2>
+<p>While the current schema includes SANS (Small Angle Neutron Scattering), neutron sources at DOE facilities offer many more techniques that provide unique biological insights. This document proposes comprehensive support for neutron-based structural biology methods.</p>
+<h2 id="why-neutron-techniques-matter">Why Neutron Techniques Matter</h2>
+<h3 id="unique-capabilities">Unique Capabilities</h3>
+<ol>
+<li><strong>Hydrogen Visualization</strong>: Neutrons see hydrogen/deuterium clearly</li>
+<li><strong>No Radiation Damage</strong>: Non-ionizing radiation preserves samples</li>
+<li><strong>Isotope Sensitivity</strong>: Different scattering from H vs D enables contrast variation</li>
+<li><strong>Magnetic Properties</strong>: Sensitivity to magnetic moments</li>
+<li><strong>Deep Penetration</strong>: Can probe bulk samples and complex environments</li>
+</ol>
+<h3 id="biological-applications">Biological Applications</h3>
+<ul>
+<li>Protein hydration and protonation states</li>
+<li>Membrane protein structure in native-like environments</li>
+<li>Drug binding with hydrogen positions</li>
+<li>Protein-DNA/RNA interactions</li>
+<li>Large complex assemblies via contrast matching</li>
+<li>Dynamics from quasi-elastic scattering</li>
+</ul>
+<h2 id="current-schema-gaps">Current Schema Gaps</h2>
+<h3 id="limited-coverage">Limited Coverage</h3>
+<ul>
+<li>Only SANS is explicitly supported</li>
+<li>No neutron crystallography</li>
+<li>No neutron reflectometry</li>
+<li>No quasi-elastic neutron scattering (QENS)</li>
+<li>No neutron imaging/tomography</li>
+<li>Missing deuteration metadata</li>
+</ul>
+<h3 id="missing-metadata">Missing Metadata</h3>
+<ul>
+<li>Deuteration levels and strategies</li>
+<li>Contrast variation series</li>
+<li>Neutron flux and wavelength</li>
+<li>Sample environment details</li>
+<li>Activation concerns</li>
+</ul>
+<h2 id="proposed-extensions">Proposed Extensions</h2>
+<h3 id="1-neutron-technique-enumeration">1. Neutron Technique Enumeration</h3>
+<h4 id="expand-techniqueenum">Expand TechniqueEnum</h4>
+<pre><code class="language-yaml">TechniqueEnum:
+  permissible_values:
+    # Existing...
+    sans:
+      description: Small-angle neutron scattering
+
+    # New neutron techniques
+    neutron_crystallography:
+      description: Single crystal neutron diffraction
+      meaning: CHMO:0000156
+
+    neutron_powder_diffraction:
+      description: Powder neutron diffraction
+      meaning: CHMO:0000157
+
+    neutron_reflectometry:
+      description: Neutron reflection at interfaces
+      meaning: CHMO:0000158
+
+    qens:
+      description: Quasi-elastic neutron scattering
+      meaning: CHMO:0000159
+
+    neutron_spin_echo:
+      description: Neutron spin echo spectroscopy
+      meaning: CHMO:0000160
+
+    neutron_imaging:
+      description: Neutron radiography/tomography
+
+    inelastic_neutron_scattering:
+      description: Inelastic neutron spectroscopy
+
+    neutron_triple_axis:
+      description: Triple-axis neutron spectroscopy
+</code></pre>
+<h3 id="2-neutron-specific-instrument-class">2. Neutron-Specific Instrument Class</h3>
+<h4 id="neutroninstrument">NeutronInstrument</h4>
+<pre><code class="language-yaml">NeutronInstrument:
+  is_a: Instrument
+  description: Neutron scattering/diffraction instrument
+  attributes:
+    neutron_source_type:
+      range: NeutronSourceEnum
+      required: true
+      description: Type of neutron source
+
+    moderator_type:
+      range: ModeratorTypeEnum
+      description: Cold/thermal/hot neutron moderator
+
+    neutron_wavelength:
+      range: float
+      unit: ucum:Angstrom
+      description: Neutron wavelength or range
+
+    wavelength_spread:
+      range: float
+      description: Wavelength resolution (Δλ/λ)
+
+    neutron_flux:
+      range: float
+      unit: ucum:cm-2.s-1
+      description: Neutron flux at sample
+
+    beam_size_h:
+      range: float
+      unit: ucum:mm
+      description: Horizontal beam size
+
+    beam_size_v:
+      range: float
+      unit: ucum:mm
+      description: Vertical beam size
+
+    chopper_system:
+      range: string
+      description: Description of chopper system
+
+    detector_type:
+      range: NeutronDetectorEnum
+      description: Type of neutron detector
+
+    collimation:
+      range: string
+      description: Collimation configuration
+
+    polarization:
+      range: boolean
+      description: Polarized neutron capability
+</code></pre>
+<h4 id="neutronsourceenum">NeutronSourceEnum</h4>
+<pre><code class="language-yaml">NeutronSourceEnum:
+  permissible_values:
+    reactor:
+      description: Nuclear reactor source
+
+    spallation:
+      description: Spallation neutron source
+
+    compact:
+      description: Compact accelerator source
+
+    cf252:
+      description: Californium-252 source
+</code></pre>
+<h3 id="3-deuteration-metadata">3. Deuteration Metadata</h3>
+<h4 id="deuterationinfo-class">DeuterationInfo Class</h4>
+<pre><code class="language-yaml">DeuterationInfo:
+  description: Information about isotopic labeling
+  attributes:
+    deuteration_strategy:
+      range: DeuterationStrategyEnum
+      required: true
+
+    global_deuteration_level:
+      range: float
+      description: Overall D/(H+D) ratio (0-1)
+
+    per_domain_deuteration:
+      range: DomainDeuteration
+      multivalued: true
+      description: Domain-specific labeling
+
+    d2o_percentage:
+      range: float
+      description: D2O percentage in buffer
+
+    biosynthetic_method:
+      range: string
+      description: Method for producing deuterated protein
+
+    exchange_conditions:
+      range: string
+      description: H/D exchange conditions if applicable
+
+    labile_proton_state:
+      range: LabileProtonEnum
+      description: State of exchangeable protons
+</code></pre>
+<h4 id="deuterationstrategyenum">DeuterationStrategyEnum</h4>
+<pre><code class="language-yaml">DeuterationStrategyEnum:
+  permissible_values:
+    uniform:
+      description: Uniform deuteration throughout
+
+    perdeuterated:
+      description: Fully deuterated (&gt;95% D)
+
+    partial:
+      description: Partial random deuteration
+
+    segmental:
+      description: Specific segments deuterated
+
+    amino_acid_specific:
+      description: Specific amino acids labeled
+
+    matched_out:
+      description: Deuteration matched to solvent
+
+    triple_isotope:
+      description: H/D/T labeling
+</code></pre>
+<h3 id="4-neutron-crystallography-extensions">4. Neutron Crystallography Extensions</h3>
+<h4 id="neutroncrystallographyexperiment">NeutronCrystallographyExperiment</h4>
+<pre><code class="language-yaml">NeutronCrystallographyExperiment:
+  is_a: ExperimentRun
+  attributes:
+    crystal_volume:
+      range: float
+      unit: ucum:mm3
+      required: true
+      description: Crystal volume (neutrons need large crystals)
+
+    data_collection_time:
+      range: float
+      unit: ucum:h
+      description: Total beam time
+
+    hydrogen_occupancy_refined:
+      range: boolean
+      description: Whether H/D occupancies were refined
+
+    water_orientation_determined:
+      range: boolean
+      description: Whether water molecule orientations determined
+
+    joint_xn_refinement:
+      range: boolean
+      description: Joint X-ray/neutron refinement used
+
+    xray_data_id:
+      range: DataFile
+      description: Corresponding X-ray dataset if joint refinement
+</code></pre>
+<h3 id="5-contrast-variation-support">5. Contrast Variation Support</h3>
+<h4 id="contrastvariationseries">ContrastVariationSeries</h4>
+<pre><code class="language-yaml">ContrastVariationSeries:
+  description: Series of measurements at different contrasts
+  attributes:
+    series_id:
+      range: string
+      identifier: true
+
+    contrast_points:
+      range: ContrastPoint
+      multivalued: true
+      inlined_as_list: true
+
+    match_point_determination:
+      range: MatchPointAnalysis
+      description: Analysis to find contrast match points
+
+    stuhrmann_analysis:
+      range: StuhrmannAnalysis
+      description: Stuhrmann plot analysis results
+</code></pre>
+<h4 id="contrastpoint">ContrastPoint</h4>
+<pre><code class="language-yaml">ContrastPoint:
+  attributes:
+    d2o_fraction:
+      range: float
+      required: true
+      description: Fraction of D2O in solvent
+
+    sld_solvent:
+      range: float
+      unit: ucum:10-6.Angstrom-2
+      description: Scattering length density of solvent
+
+    experiment_id:
+      range: ExperimentRun
+      description: Reference to the measurement
+
+    component_visible:
+      range: ComponentVisibilityEnum
+      description: Which component is highlighted
+</code></pre>
+<h3 id="6-neutron-reflectometry">6. Neutron Reflectometry</h3>
+<h4 id="neutronreflectometryexperiment">NeutronReflectometryExperiment</h4>
+<pre><code class="language-yaml">NeutronReflectometryExperiment:
+  is_a: ExperimentRun
+  attributes:
+    substrate_type:
+      range: SubstrateEnum
+      required: true
+
+    interface_type:
+      range: InterfaceEnum
+      required: true
+
+    q_range:
+      range: float
+      multivalued: true
+      description: Q-range measured [min, max]
+
+    layer_model:
+      range: LayerModel
+      description: Model used for fitting
+
+    roughness:
+      range: float
+      unit: ucum:Angstrom
+      description: Interface roughness
+
+    film_thickness:
+      range: float
+      unit: ucum:Angstrom
+      description: Total film thickness
+</code></pre>
+<h3 id="7-quasi-elastic-neutron-scattering">7. Quasi-Elastic Neutron Scattering</h3>
+<h4 id="qensexperiment">QENSExperiment</h4>
+<pre><code class="language-yaml">QENSExperiment:
+  is_a: ExperimentRun
+  attributes:
+    energy_resolution:
+      range: float
+      unit: ucum:ueV
+      description: Energy resolution
+
+    energy_range:
+      range: float
+      multivalued: true
+      unit: ucum:meV
+      description: Energy transfer range [min, max]
+
+    q_values:
+      range: float
+      multivalued: true
+      description: Momentum transfer values
+
+    temperature_series:
+      range: float
+      multivalued: true
+      unit: ucum:K
+      description: Temperatures measured
+
+    dynamics_model:
+      range: DynamicsModelEnum
+      description: Model used for analysis
+
+    diffusion_coefficient:
+      range: float
+      unit: ucum:cm2.s-1
+      description: Extracted diffusion coefficient
+
+    residence_time:
+      range: float
+      unit: ucum:ps
+      description: Residence time from jump diffusion
+</code></pre>
+<h3 id="8-sample-environment">8. Sample Environment</h3>
+<h4 id="neutronsampleenvironment">NeutronSampleEnvironment</h4>
+<pre><code class="language-yaml">NeutronSampleEnvironment:
+  attributes:
+    environment_type:
+      range: EnvironmentTypeEnum
+      required: true
+
+    temperature_control:
+      range: TemperatureControl
+      description: Temperature control system
+
+    pressure:
+      range: float
+      unit: ucum:bar
+      description: Sample pressure
+
+    magnetic_field:
+      range: float
+      unit: ucum:T
+      description: Applied magnetic field
+
+    flow_rate:
+      range: float
+      unit: ucum:mL.min-1
+      description: For flow cells
+
+    windows_material:
+      range: WindowMaterialEnum
+      description: Material of sample cell windows
+
+    activation_safe:
+      range: boolean
+      description: Sample checked for activation
+</code></pre>
+<h2 id="integration-with-existing-schema">Integration with Existing Schema</h2>
+<h3 id="sample-preparation-extensions">Sample Preparation Extensions</h3>
+<pre><code class="language-yaml">SamplePreparation:
+  attributes:
+    # Add to existing class
+    deuteration_info:
+      range: DeuterationInfo
+      description: Deuteration/labeling information
+
+    neutron_activation_check:
+      range: boolean
+      description: Checked for neutron activation
+</code></pre>
+<h3 id="data-file-extensions">Data File Extensions</h3>
+<pre><code class="language-yaml">DataFile:
+  attributes:
+    # Add neutron-specific formats
+    file_format:
+      # Add to existing enum:
+      # - nxs (NeXuS)
+      # - xye (powder diffraction)
+      # - refl (reflectometry)
+</code></pre>
+<h2 id="facility-specific-implementations">Facility-Specific Implementations</h2>
+<h3 id="ornl-snshfir">ORNL (SNS/HFIR)</h3>
+<ul>
+<li>Support for SNS instrument names</li>
+<li>Time-of-flight metadata</li>
+<li>Event-mode data handling</li>
+</ul>
+<h3 id="nist-ncnr">NIST NCNR</h3>
+<ul>
+<li>Support for reactor-based instruments</li>
+<li>Cold neutron metadata</li>
+<li>Activation protocols</li>
+</ul>
+<h3 id="lanl-lansce">LANL (LANSCE)</h3>
+<ul>
+<li>Pulsed source specifics</li>
+<li>Protein crystallography beamline</li>
+<li>Dynamics instruments</li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<h3 id="use-case-1-joint-x-rayneutron-refinement">Use Case 1: Joint X-ray/Neutron Refinement</h3>
+<pre><code class="language-yaml">study:
+  experiments:
+    - technique: x_ray_crystallography
+      experiment_code: &quot;xray_001&quot;
+      resolution_achieved: 1.5
+    - technique: neutron_crystallography
+      experiment_code: &quot;neutron_001&quot;
+      crystal_volume: 0.5
+      joint_xn_refinement: true
+      xray_data_id: &quot;xray_001_data.mtz&quot;
+      hydrogen_occupancy_refined: true
+</code></pre>
+<h3 id="use-case-2-membrane-protein-contrast-variation">Use Case 2: Membrane Protein Contrast Variation</h3>
+<pre><code class="language-yaml">contrast_series:
+  series_id: &quot;memb_protein_contrast&quot;
+  contrast_points:
+    - d2o_fraction: 0.0
+      component_visible: detergent_only
+    - d2o_fraction: 0.21
+      component_visible: protein_only
+    - d2o_fraction: 0.42
+      component_visible: both
+    - d2o_fraction: 0.86
+      component_visible: membrane_only
+    - d2o_fraction: 1.0
+      component_visible: all_components
+</code></pre>
+<h3 id="use-case-3-protein-dynamics-by-qens">Use Case 3: Protein Dynamics by QENS</h3>
+<pre><code class="language-yaml">qens_experiment:
+  technique: qens
+  energy_resolution: 0.9  # μeV
+  temperature_series: [280, 290, 300, 310, 320]
+  dynamics_model: jump_diffusion
+  diffusion_coefficient: 1.2e-5
+  residence_time: 15  # ps
+</code></pre>
+<h2 id="benefits">Benefits</h2>
+<h3 id="scientific-impact">Scientific Impact</h3>
+<ol>
+<li><strong>Complete Hydrogen Picture</strong>: See all hydrogens, including at active sites</li>
+<li><strong>Native Conditions</strong>: Study proteins in D2O-based native environments</li>
+<li><strong>Dynamics Integration</strong>: Connect structure with motion</li>
+<li><strong>Contrast Magic</strong>: Selectively visualize components in complexes</li>
+</ol>
+<h3 id="for-lambda-goals">For LAMBDA Goals</h3>
+<ol>
+<li><strong>Comprehensive Coverage</strong>: All BER neutron capabilities represented</li>
+<li><strong>Cross-Facility</strong>: Standardized across SNS, HFIR, NCNR, LANSCE</li>
+<li><strong>AI-Ready</strong>: Rich metadata for machine learning on neutron data</li>
+<li><strong>Multimodal</strong>: Enables joint X-ray/neutron approaches</li>
+</ol>
+<h2 id="implementation-considerations">Implementation Considerations</h2>
+<h3 id="data-volume">Data Volume</h3>
+<ul>
+<li>Neutron experiments often have lower data rates</li>
+<li>But longer collection times mean careful metadata tracking</li>
+<li>Event-mode data at SNS requires special handling</li>
+</ul>
+<h3 id="safety">Safety</h3>
+<ul>
+<li>Activation checks required</li>
+<li>Sample shipping protocols</li>
+<li>Deuterated compound handling</li>
+</ul>
+<h3 id="specialized-knowledge">Specialized Knowledge</h3>
+<ul>
+<li>Require good documentation</li>
+<li>Facility-specific guides</li>
+<li>Training materials for contrast variation</li>
+</ul>
+<h2 id="roadmap">Roadmap</h2>
+<h3 id="phase-1-core-neutron-support-q1-2025">Phase 1: Core Neutron Support (Q1 2025)</h3>
+<ul>
+<li>Basic NeutronInstrument class</li>
+<li>Neutron crystallography support</li>
+<li>Deuteration metadata</li>
+</ul>
+<h3 id="phase-2-advanced-techniques-q2-2025">Phase 2: Advanced Techniques (Q2 2025)</h3>
+<ul>
+<li>QENS and dynamics</li>
+<li>Reflectometry</li>
+<li>Contrast variation series</li>
+</ul>
+<h3 id="phase-3-integration-q3-2025">Phase 3: Integration (Q3 2025)</h3>
+<ul>
+<li>Joint refinement workflows</li>
+<li>Cross-technique correlation</li>
+<li>Facility-specific adaptations</li>
+</ul>
+<h3 id="phase-4-aiml-features-q4-2025">Phase 4: AI/ML Features (Q4 2025)</h3>
+<ul>
+<li>Hydrogen prediction models</li>
+<li>Dynamics extraction</li>
+<li>Automated contrast analysis</li>
+</ul>
+<h2 id="success-metrics">Success Metrics</h2>
+<ol>
+<li><strong>Coverage</strong>: % of neutron techniques supported</li>
+<li><strong>Adoption</strong>: Number of neutron datasets using schema</li>
+<li><strong>Integration</strong>: Joint X-ray/neutron studies captured</li>
+<li><strong>Quality</strong>: Completeness of deuteration metadata</li>
+<li><strong>Impact</strong>: Publications using neutron data from schema</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Comprehensive neutron technique support will position LAMBDA-BER as the definitive schema for multimodal structural biology. By capturing the unique aspects of neutron scattering alongside other techniques, we enable discoveries that leverage the full capabilities of DOE user facilities.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

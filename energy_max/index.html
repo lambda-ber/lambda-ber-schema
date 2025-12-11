@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-energy_max">Slot: energy_max</h1>
-<p><em>Maximum X-ray energy in keV</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/energy_max">lambdaber:energy_max</a>
 Alias: energy_max</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: energy_max</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
+<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayInstrument/">XRayInstrument</a></td>
 <td>X-ray diffractometer or synchrotron beamline specifications</td>
 <td>no</td>
@@ -922,13 +911,9 @@ Alias: energy_max</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: energy_max</p>
 <details>
 
 <pre><code class="language-yaml">name: energy_max
-description: Maximum X-ray energy in keV
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: energy_max
-owner: XRayInstrument
 domain_of:
 - XRayInstrument
-range: float
+- BeamlineInstrument
+range: string
 
 </code></pre>
 

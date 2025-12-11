@@ -422,6 +422,8 @@
       Instrument &lt;|-- SAXSInstrument
         click Instrument href "../Instrument/"
 
+      SAXSInstrument : beamline_id
+
       SAXSInstrument : current_status
 
 
@@ -439,9 +441,33 @@
 
       SAXSInstrument : detector_distance_min
 
+      SAXSInstrument : facility_name
+
+
+
+
+
+        SAXSInstrument --&gt; "0..1" FacilityEnum : facility_name
+        click FacilityEnum href "../FacilityEnum/"
+
+
+
+      SAXSInstrument : facility_ror
+
       SAXSInstrument : id
 
       SAXSInstrument : installation_date
+
+      SAXSInstrument : instrument_category
+
+
+
+
+
+        SAXSInstrument --&gt; "0..1" InstrumentCategoryEnum : instrument_category
+        click InstrumentCategoryEnum href "../InstrumentCategoryEnum/"
+
+
 
       SAXSInstrument : instrument_code
 
@@ -525,6 +551,30 @@
 <td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
+<td><a href="../instrument_category/">instrument_category</a></td>
+<td>0..1 <br/> <a href="../InstrumentCategoryEnum/">InstrumentCategoryEnum</a></td>
+<td>Category distinguishing beamlines from laboratory equipment</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_name/">facility_name</a></td>
+<td>0..1 <br/> <a href="../FacilityEnum/">FacilityEnum</a></td>
+<td>Name of the research facility where the instrument is located</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_ror/">facility_ror</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Research Organization Registry (ROR) identifier for the facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../beamline_id/">beamline_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Beamline identifier at synchrotron/neutron facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
 <td><a href="../manufacturer/">manufacturer</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Instrument manufacturer</td>
@@ -557,13 +607,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -608,6 +658,7 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: float
   q_range_max:
     name: q_range_max
@@ -616,6 +667,7 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: float
   detector_distance_min:
     name: detector_distance_min
@@ -640,6 +692,7 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: integer
   temperature_control_range:
     name: temperature_control_range
@@ -667,6 +720,7 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: float
   q_range_max:
     name: q_range_max
@@ -677,6 +731,7 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: float
   detector_distance_min:
     name: detector_distance_min
@@ -707,6 +762,7 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
+    - BeamlineInstrument
     range: integer
   temperature_control_range:
     name: temperature_control_range
@@ -731,6 +787,60 @@ attributes:
     - Instrument
     range: string
     required: true
+  instrument_category:
+    name: instrument_category
+    description: Category distinguishing beamlines from laboratory equipment
+    comments:
+    - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
+    - Use ELECTRON_MICROSCOPE for cryo-EM instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: instrument_category
+    owner: SAXSInstrument
+    domain_of:
+    - Instrument
+    range: InstrumentCategoryEnum
+  facility_name:
+    name: facility_name
+    description: Name of the research facility where the instrument is located
+    comments:
+    - Select from the standardized list of major synchrotron facilities
+    - Leave empty for laboratory-based instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_name
+    owner: SAXSInstrument
+    domain_of:
+    - Instrument
+    range: FacilityEnum
+  facility_ror:
+    name: facility_ror
+    description: Research Organization Registry (ROR) identifier for the facility
+    comments:
+    - Persistent identifier for the facility organization
+    - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_ror
+    owner: SAXSInstrument
+    domain_of:
+    - Instrument
+    range: uriorcurie
+    pattern: ^https://ror\.org/\w+$
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron/neutron facility
+    comments:
+    - Use facility-specific naming convention
+    - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    alias: beamline_id
+    owner: SAXSInstrument
+    domain_of:
+    - Instrument
+    range: string
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
@@ -787,6 +897,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -797,6 +908,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

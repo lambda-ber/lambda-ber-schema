@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -908,7 +899,7 @@
 
 <h1 id="slot-ramachandran_favored">Slot: ramachandran_favored</h1>
 <p><em>Percentage of residues in favored Ramachandran regions</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored">nsls2:Ramachandran_Favored</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/ramachandran_favored">lambdaber:ramachandran_favored</a>
 Alias: ramachandran_favored</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: ramachandran_favored</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _refine.pdbx_overall_ESU_R</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: ramachandran_favored</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Ramachandran_Favored</td>
+<td>lambdaber:ramachandran_favored</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:ramachandran_favored</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Ramachandran_Favored, mmCIF:_refine.pdbx_overall_ESU_R</td>
 </tr>
 </tbody>
 </table>
@@ -966,16 +957,18 @@ Alias: ramachandran_favored</p>
 
 <pre><code class="language-yaml">name: ramachandran_favored
 description: Percentage of residues in favored Ramachandran regions
-comments:
-- 'Maps to PDB: _refine.pdbx_overall_ESU_R'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Ramachandran_Favored
+- mmCIF:_refine.pdbx_overall_ESU_R
 rank: 1000
-slot_uri: nsls2:Ramachandran_Favored
 alias: ramachandran_favored
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
 range: float
+unit:
+  ucum_code: '%'
 
 </code></pre>
 

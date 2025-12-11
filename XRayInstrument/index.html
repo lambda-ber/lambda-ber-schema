@@ -443,20 +443,37 @@
 
       XRayInstrument : description
 
-      XRayInstrument : detector_type
+      XRayInstrument : detector_manufacturer
+
+      XRayInstrument : detector_model
+
+      XRayInstrument : detector_technology
 
 
 
 
 
-        XRayInstrument --&gt; "0..1" DetectorTypeEnum : detector_type
-        click DetectorTypeEnum href "../DetectorTypeEnum/"
+        XRayInstrument --&gt; "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
 
 
 
       XRayInstrument : energy_max
 
       XRayInstrument : energy_min
+
+      XRayInstrument : facility_name
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" FacilityEnum : facility_name
+        click FacilityEnum href "../FacilityEnum/"
+
+
+
+      XRayInstrument : facility_ror
 
       XRayInstrument : flux_density
 
@@ -465,6 +482,17 @@
       XRayInstrument : id
 
       XRayInstrument : installation_date
+
+      XRayInstrument : instrument_category
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" InstrumentCategoryEnum : instrument_category
+        click InstrumentCategoryEnum href "../InstrumentCategoryEnum/"
+
+
 
       XRayInstrument : instrument_code
 
@@ -517,15 +545,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector_type/">detector_type</a></td>
-<td>0..1 <br/> <a href="../DetectorTypeEnum/">DetectorTypeEnum</a></td>
-<td>Type of X-ray detector</td>
+<td><a href="../detector_technology/">detector_technology</a></td>
+<td>0..1 <br/> <a href="../DetectorTechnologyEnum/">DetectorTechnologyEnum</a></td>
+<td>Generic detector technology type</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../beamline_id/">beamline_id</a></td>
+<td><a href="../detector_manufacturer/">detector_manufacturer</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Beamline identifier at synchrotron facility</td>
+<td>Detector manufacturer (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_model/">detector_model</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Detector model (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -583,6 +617,30 @@
 <td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
+<td><a href="../instrument_category/">instrument_category</a></td>
+<td>0..1 <br/> <a href="../InstrumentCategoryEnum/">InstrumentCategoryEnum</a></td>
+<td>Category distinguishing beamlines from laboratory equipment</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_name/">facility_name</a></td>
+<td>0..1 <br/> <a href="../FacilityEnum/">FacilityEnum</a></td>
+<td>Name of the research facility where the instrument is located</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_ror/">facility_ror</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Research Organization Registry (ROR) identifier for the facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../beamline_id/">beamline_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Beamline identifier at synchrotron/neutron facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
 <td><a href="../manufacturer/">manufacturer</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Instrument manufacturer</td>
@@ -615,13 +673,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -666,29 +724,44 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
     comments:
-    - 'Maps to CBF: Detector'
+    - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
+    - 'Maps to CBF: Detector (may contain model name)'
     - 'Maps to PDB: _diffrn_detector.type'
+    - See detector_manufacturer and detector_model for specific equipment details
     from_schema: https://w3id.org/lambda-ber-schema/
     slot_uri: nsls2:Detector
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
     - XRFImage
-    range: DetectorTypeEnum
-  beamline_id:
-    name: beamline_id
-    description: Beamline identifier at synchrotron facility
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
+    comments:
+    - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    slot_uri: nsls2:Beamline
     domain_of:
+    - CryoEMInstrument
     - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
+    comments:
+    - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
     range: string
   energy_min:
     name: energy_min
@@ -697,6 +770,7 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     range: float
   energy_max:
     name: energy_max
@@ -705,6 +779,7 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     range: float
   beam_size_min:
     name: beam_size_min
@@ -771,33 +846,50 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
     comments:
-    - 'Maps to CBF: Detector'
+    - Use this for technology classification (e.g., hybrid_photon_counting, ccd)
+    - 'Maps to CBF: Detector (may contain model name)'
     - 'Maps to PDB: _diffrn_detector.type'
+    - See detector_manufacturer and detector_model for specific equipment details
     from_schema: https://w3id.org/lambda-ber-schema/
     slot_uri: nsls2:Detector
-    alias: detector_type
+    alias: detector_technology
     owner: XRayInstrument
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
     - XRFImage
-    range: DetectorTypeEnum
-  beamline_id:
-    name: beamline_id
-    description: Beamline identifier at synchrotron facility
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
+    comments:
+    - 'Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    slot_uri: nsls2:Beamline
-    alias: beamline_id
+    alias: detector_manufacturer
     owner: XRayInstrument
     domain_of:
+    - CryoEMInstrument
     - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
+    comments:
+    - 'Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_model
+    owner: XRayInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
     range: string
   energy_min:
     name: energy_min
@@ -808,6 +900,7 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     range: float
   energy_max:
     name: energy_max
@@ -818,6 +911,7 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     range: float
   beam_size_min:
     name: beam_size_min
@@ -892,6 +986,60 @@ attributes:
     - Instrument
     range: string
     required: true
+  instrument_category:
+    name: instrument_category
+    description: Category distinguishing beamlines from laboratory equipment
+    comments:
+    - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
+    - Use ELECTRON_MICROSCOPE for cryo-EM instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: instrument_category
+    owner: XRayInstrument
+    domain_of:
+    - Instrument
+    range: InstrumentCategoryEnum
+  facility_name:
+    name: facility_name
+    description: Name of the research facility where the instrument is located
+    comments:
+    - Select from the standardized list of major synchrotron facilities
+    - Leave empty for laboratory-based instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_name
+    owner: XRayInstrument
+    domain_of:
+    - Instrument
+    range: FacilityEnum
+  facility_ror:
+    name: facility_ror
+    description: Research Organization Registry (ROR) identifier for the facility
+    comments:
+    - Persistent identifier for the facility organization
+    - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_ror
+    owner: XRayInstrument
+    domain_of:
+    - Instrument
+    range: uriorcurie
+    pattern: ^https://ror\.org/\w+$
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron/neutron facility
+    comments:
+    - Use facility-specific naming convention
+    - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    alias: beamline_id
+    owner: XRayInstrument
+    domain_of:
+    - Instrument
+    range: string
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
@@ -948,6 +1096,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -958,6 +1107,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

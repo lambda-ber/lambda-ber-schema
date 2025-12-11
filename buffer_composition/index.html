@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-buffer_composition">Slot: buffer_composition</h1>
-<p><em>Buffer composition including pH, salts, additives</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/buffer_composition">lambdaber:buffer_composition</a>
 Alias: buffer_composition</p>
 <!-- no inheritance hierarchy -->
@@ -914,6 +898,11 @@ Alias: buffer_composition</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../MeasurementConditions/">MeasurementConditions</a></td>
+<td>Conditions under which biophysical measurements were made</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Sample/">Sample</a></td>
 <td>A biological sample used in structural biology experiments</td>
 <td>no</td>
@@ -922,13 +911,9 @@ Alias: buffer_composition</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../BufferComposition/">BufferComposition</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: buffer_composition</p>
 <details>
 
 <pre><code class="language-yaml">name: buffer_composition
-description: Buffer composition including pH, salts, additives
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: buffer_composition
-owner: Sample
 domain_of:
 - Sample
-range: BufferComposition
+- MeasurementConditions
+range: string
 
 </code></pre>
 

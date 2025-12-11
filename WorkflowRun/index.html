@@ -450,11 +450,33 @@
 
 
 
+      WorkflowRun : ctf_estimation_params
+
+
+
+
+
+        WorkflowRun --&gt; "0..1" CTFEstimationParameters : ctf_estimation_params
+        click CTFEstimationParameters href "../CTFEstimationParameters/"
+
+
+
       WorkflowRun : deposited_to_pdb
 
       WorkflowRun : description
 
       WorkflowRun : experiment_id
+
+      WorkflowRun : fsc_curve
+
+
+
+
+
+        WorkflowRun --&gt; "0..1" FSCCurve : fsc_curve
+        click FSCCurve href "../FSCCurve/"
+
+
 
       WorkflowRun : i_over_sigma
 
@@ -465,6 +487,17 @@
       WorkflowRun : integrator_module
 
       WorkflowRun : ligands_cofactors
+
+      WorkflowRun : motion_correction_params
+
+
+
+
+
+        WorkflowRun --&gt; "0..1" MotionCorrectionParameters : motion_correction_params
+        click MotionCorrectionParameters href "../MotionCorrectionParameters/"
+
+
 
       WorkflowRun : multiplicity
 
@@ -486,6 +519,17 @@
 
 
       WorkflowRun : parameters_file_path
+
+      WorkflowRun : particle_picking_params
+
+
+
+
+
+        WorkflowRun --&gt; "0..1" ParticlePickingParameters : particle_picking_params
+        click ParticlePickingParameters href "../ParticlePickingParameters/"
+
+
 
       WorkflowRun : pdb_id
 
@@ -509,6 +553,17 @@
       WorkflowRun : ramachandran_favored
 
       WorkflowRun : ramachandran_outliers
+
+      WorkflowRun : refinement_params
+
+
+
+
+
+        WorkflowRun --&gt; "0..1" RefinementParameters : refinement_params
+        click RefinementParameters href "../RefinementParameters/"
+
+
 
       WorkflowRun : refinement_resolution_a
 
@@ -748,49 +803,49 @@
 <tr>
 <td><a href="../unit_cell_a/">unit_cell_a</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell parameter a in Angstroms</td>
+<td>Unit cell parameter a</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit_cell_b/">unit_cell_b</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell parameter b in Angstroms</td>
+<td>Unit cell parameter b</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit_cell_c/">unit_cell_c</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell parameter c in Angstroms</td>
+<td>Unit cell parameter c</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit_cell_alpha/">unit_cell_alpha</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell angle alpha in degrees</td>
+<td>Unit cell angle alpha</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit_cell_beta/">unit_cell_beta</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell angle beta in degrees</td>
+<td>Unit cell angle beta</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit_cell_gamma/">unit_cell_gamma</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Unit cell angle gamma in degrees</td>
+<td>Unit cell angle gamma</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../resolution_high/">resolution_high</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>High resolution limit in Angstroms</td>
+<td>High resolution limit</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../resolution_low/">resolution_low</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Low resolution limit in Angstroms</td>
+<td>Low resolution limit</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -826,7 +881,7 @@
 <tr>
 <td><a href="../wilson_b_factor/">wilson_b_factor</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Wilson B-factor in Angstroms squared</td>
+<td>Wilson B-factor</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -850,13 +905,13 @@
 <tr>
 <td><a href="../rmsd_bonds/">rmsd_bonds</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>RMSD from ideal bond lengths in Angstroms</td>
+<td>RMSD from ideal bond lengths</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../rmsd_angles/">rmsd_angles</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>RMSD from ideal bond angles in degrees</td>
+<td>RMSD from ideal bond angles</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -902,6 +957,36 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../motion_correction_params/">motion_correction_params</a></td>
+<td>0..1 <br/> <a href="../MotionCorrectionParameters/">MotionCorrectionParameters</a></td>
+<td>Motion correction specific parameters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ctf_estimation_params/">ctf_estimation_params</a></td>
+<td>0..1 <br/> <a href="../CTFEstimationParameters/">CTFEstimationParameters</a></td>
+<td>CTF estimation specific parameters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../particle_picking_params/">particle_picking_params</a></td>
+<td>0..1 <br/> <a href="../ParticlePickingParameters/">ParticlePickingParameters</a></td>
+<td>Particle picking specific parameters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../refinement_params/">refinement_params</a></td>
+<td>0..1 <br/> <a href="../RefinementParameters/">RefinementParameters</a></td>
+<td>3D refinement specific parameters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../fsc_curve/">fsc_curve</a></td>
+<td>0..1 <br/> <a href="../FSCCurve/">FSCCurve</a></td>
+<td>Fourier Shell Correlation curve data</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../output_files/">output_files</a></td>
 <td>* <br/> <a href="../DataFile/">DataFile</a></td>
 <td>Output files generated</td>
@@ -916,13 +1001,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -1167,139 +1252,155 @@ attributes:
   space_group:
     name: space_group
     description: Crystallographic space group
-    comments:
-    - 'Maps to PDB: _symmetry.space_group_name_h-m'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Space_Group
+    - mmCIF:_symmetry.space_group_name_H-M
     rank: 1000
-    slot_uri: nsls2:Space_Group
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: string
   unit_cell_a:
     name: unit_cell_a
-    description: Unit cell parameter a in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_a'
+    description: Unit cell parameter a
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_a
+    - mmCIF:_cell.length_a
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_a
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_b:
     name: unit_cell_b
-    description: Unit cell parameter b in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_b'
+    description: Unit cell parameter b
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_b
+    - mmCIF:_cell.length_b
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_b
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_c:
     name: unit_cell_c
-    description: Unit cell parameter c in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_c'
+    description: Unit cell parameter c
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_c
+    - mmCIF:_cell.length_c
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_c
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_alpha:
     name: unit_cell_alpha
-    description: Unit cell angle alpha in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_alpha'
+    description: Unit cell angle alpha
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_alpha
+    - mmCIF:_cell.angle_alpha
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_alpha
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   unit_cell_beta:
     name: unit_cell_beta
-    description: Unit cell angle beta in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_beta'
+    description: Unit cell angle beta
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_beta
+    - mmCIF:_cell.angle_beta
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_beta
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   unit_cell_gamma:
     name: unit_cell_gamma
-    description: Unit cell angle gamma in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_gamma'
+    description: Unit cell angle gamma
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_gamma
+    - mmCIF:_cell.angle_gamma
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_gamma
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   resolution_high:
     name: resolution_high
-    description: High resolution limit in Angstroms
-    comments:
-    - 'Maps to PDB: _reflns.d_resolution_high'
+    description: High resolution limit
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Resolution_High_A
+    - mmCIF:_reflns.d_resolution_high
     rank: 1000
-    slot_uri: nsls2:Resolution_High_A
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   resolution_low:
     name: resolution_low
-    description: Low resolution limit in Angstroms
-    comments:
-    - 'Maps to PDB: _reflns.d_resolution_low'
+    description: Low resolution limit
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Resolution_Low_A
+    - mmCIF:_reflns.d_resolution_low
     rank: 1000
-    slot_uri: nsls2:Resolution_Low_A
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_Rmerge_I_obs'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rmerge
+    - mmCIF:_reflns.pdbx_Rmerge_I_obs
     rank: 1000
-    slot_uri: nsls2:Rmerge
     domain_of:
     - WorkflowRun
     range: float
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_Rpim_I_all'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rpim
+    - mmCIF:_reflns.pdbx_Rpim_I_all
     rank: 1000
-    slot_uri: nsls2:Rpim
     domain_of:
     - WorkflowRun
     range: float
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_CC_half'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:CC_half
+    - mmCIF:_reflns.pdbx_CC_half
     rank: 1000
-    slot_uri: nsls2:CC_half
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -1307,44 +1408,48 @@ attributes:
   completeness_percent:
     name: completeness_percent
     description: Data completeness percentage
-    comments:
-    - 'Maps to PDB: _reflns.percent_possible_obs'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Completeness
+    - mmCIF:_reflns.percent_possible_obs
     rank: 1000
-    slot_uri: nsls2:Completeness
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_netI_over_sigmaI'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:I_over_sigma
+    - mmCIF:_reflns.pdbx_netI_over_sigmaI
     rank: 1000
-    slot_uri: nsls2:I_over_sigma
     domain_of:
     - WorkflowRun
     range: float
   wilson_b_factor:
     name: wilson_b_factor
-    description: Wilson B-factor in Angstroms squared
-    comments:
-    - 'Maps to PDB: _reflns.B_iso_Wilson_estimate'
+    description: Wilson B-factor
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Wilson_B
+    - mmCIF:_reflns.B_iso_Wilson_estimate
     rank: 1000
-    slot_uri: nsls2:Wilson_B
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao2
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_redundancy'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Multiplicity
+    - mmCIF:_reflns.pdbx_redundancy
     rank: 1000
-    slot_uri: nsls2:Multiplicity
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -1352,77 +1457,84 @@ attributes:
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
-    comments:
-    - 'Maps to PDB: _refine.ls_R_factor_R_work'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rwork
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
-    slot_uri: nsls2:Rwork
     domain_of:
     - WorkflowRun
     range: float
   rfree:
     name: rfree
     description: R-free (test set)
-    comments:
-    - 'Maps to PDB: _refine.ls_R_factor_R_free'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rfree
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
-    slot_uri: nsls2:Rfree
     domain_of:
     - WorkflowRun
     range: float
   rmsd_bonds:
     name: rmsd_bonds
-    description: RMSD from ideal bond lengths in Angstroms
-    comments:
-    - 'Maps to PDB: _refine.ls_d_res_high'
+    description: RMSD from ideal bond lengths
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:RMSD_bonds
+    - mmCIF:_refine.ls_d_res_high
     rank: 1000
-    slot_uri: nsls2:RMSD_bonds
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   rmsd_angles:
     name: rmsd_angles
-    description: RMSD from ideal bond angles in degrees
-    comments:
-    - 'Maps to PDB: _refine.ls_d_res_low'
+    description: RMSD from ideal bond angles
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:RMSD_angles
+    - mmCIF:_refine.ls_d_res_low
     rank: 1000
-    slot_uri: nsls2:RMSD_angles
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: deg
   ramachandran_favored:
     name: ramachandran_favored
     description: Percentage of residues in favored Ramachandran regions
-    comments:
-    - 'Maps to PDB: _refine.pdbx_overall_ESU_R'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Ramachandran_Favored
+    - mmCIF:_refine.pdbx_overall_ESU_R
     rank: 1000
-    slot_uri: nsls2:Ramachandran_Favored
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   ramachandran_outliers:
     name: ramachandran_outliers
     description: Percentage of Ramachandran outliers
-    comments:
-    - 'Maps to PDB: _refine.pdbx_overall_ESU_R_Free'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Ramachandran_Outliers
+    - mmCIF:_refine.pdbx_overall_ESU_R_Free
     rank: 1000
-    slot_uri: nsls2:Ramachandran_Outliers
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    comments:
-    - Maps to validation report metrics
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Clashscore
     rank: 1000
-    slot_uri: nsls2:Clashscore
     domain_of:
     - WorkflowRun
     - QualityMetrics
@@ -1458,6 +1570,46 @@ attributes:
     domain_of:
     - WorkflowRun
     range: string
+  motion_correction_params:
+    name: motion_correction_params
+    description: Motion correction specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: MotionCorrectionParameters
+  ctf_estimation_params:
+    name: ctf_estimation_params
+    description: CTF estimation specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: CTFEstimationParameters
+  particle_picking_params:
+    name: particle_picking_params
+    description: Particle picking specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: ParticlePickingParameters
+  refinement_params:
+    name: refinement_params
+    description: 3D refinement specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: RefinementParameters
+  fsc_curve:
+    name: fsc_curve
+    description: Fourier Shell Correlation curve data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: FSCCurve
   output_files:
     name: output_files
     description: Output files generated
@@ -1728,11 +1880,11 @@ attributes:
   space_group:
     name: space_group
     description: Crystallographic space group
-    comments:
-    - 'Maps to PDB: _symmetry.space_group_name_h-m'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Space_Group
+    - mmCIF:_symmetry.space_group_name_H-M
     rank: 1000
-    slot_uri: nsls2:Space_Group
     alias: space_group
     owner: WorkflowRun
     domain_of:
@@ -1741,122 +1893,138 @@ attributes:
     range: string
   unit_cell_a:
     name: unit_cell_a
-    description: Unit cell parameter a in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_a'
+    description: Unit cell parameter a
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_a
+    - mmCIF:_cell.length_a
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_a
     alias: unit_cell_a
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_b:
     name: unit_cell_b
-    description: Unit cell parameter b in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_b'
+    description: Unit cell parameter b
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_b
+    - mmCIF:_cell.length_b
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_b
     alias: unit_cell_b
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_c:
     name: unit_cell_c
-    description: Unit cell parameter c in Angstroms
-    comments:
-    - 'Maps to PDB: _cell.length_c'
+    description: Unit cell parameter c
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_c
+    - mmCIF:_cell.length_c
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_c
     alias: unit_cell_c
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: Ao
   unit_cell_alpha:
     name: unit_cell_alpha
-    description: Unit cell angle alpha in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_alpha'
+    description: Unit cell angle alpha
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_alpha
+    - mmCIF:_cell.angle_alpha
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_alpha
     alias: unit_cell_alpha
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   unit_cell_beta:
     name: unit_cell_beta
-    description: Unit cell angle beta in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_beta'
+    description: Unit cell angle beta
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_beta
+    - mmCIF:_cell.angle_beta
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_beta
     alias: unit_cell_beta
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   unit_cell_gamma:
     name: unit_cell_gamma
-    description: Unit cell angle gamma in degrees
-    comments:
-    - 'Maps to PDB: _cell.angle_gamma'
+    description: Unit cell angle gamma
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Unit_Cell_gamma
+    - mmCIF:_cell.angle_gamma
     rank: 1000
-    slot_uri: nsls2:Unit_Cell_gamma
     alias: unit_cell_gamma
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+    unit:
+      ucum_code: deg
   resolution_high:
     name: resolution_high
-    description: High resolution limit in Angstroms
-    comments:
-    - 'Maps to PDB: _reflns.d_resolution_high'
+    description: High resolution limit
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Resolution_High_A
+    - mmCIF:_reflns.d_resolution_high
     rank: 1000
-    slot_uri: nsls2:Resolution_High_A
     alias: resolution_high
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   resolution_low:
     name: resolution_low
-    description: Low resolution limit in Angstroms
-    comments:
-    - 'Maps to PDB: _reflns.d_resolution_low'
+    description: Low resolution limit
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Resolution_Low_A
+    - mmCIF:_reflns.d_resolution_low
     rank: 1000
-    slot_uri: nsls2:Resolution_Low_A
     alias: resolution_low
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_Rmerge_I_obs'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rmerge
+    - mmCIF:_reflns.pdbx_Rmerge_I_obs
     rank: 1000
-    slot_uri: nsls2:Rmerge
     alias: rmerge
     owner: WorkflowRun
     domain_of:
@@ -1865,11 +2033,11 @@ attributes:
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_Rpim_I_all'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rpim
+    - mmCIF:_reflns.pdbx_Rpim_I_all
     rank: 1000
-    slot_uri: nsls2:Rpim
     alias: rpim
     owner: WorkflowRun
     domain_of:
@@ -1878,11 +2046,11 @@ attributes:
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_CC_half'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:CC_half
+    - mmCIF:_reflns.pdbx_CC_half
     rank: 1000
-    slot_uri: nsls2:CC_half
     alias: cc_half
     owner: WorkflowRun
     domain_of:
@@ -1892,24 +2060,26 @@ attributes:
   completeness_percent:
     name: completeness_percent
     description: Data completeness percentage
-    comments:
-    - 'Maps to PDB: _reflns.percent_possible_obs'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Completeness
+    - mmCIF:_reflns.percent_possible_obs
     rank: 1000
-    slot_uri: nsls2:Completeness
     alias: completeness_percent
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_netI_over_sigmaI'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:I_over_sigma
+    - mmCIF:_reflns.pdbx_netI_over_sigmaI
     rank: 1000
-    slot_uri: nsls2:I_over_sigma
     alias: i_over_sigma
     owner: WorkflowRun
     domain_of:
@@ -1917,25 +2087,27 @@ attributes:
     range: float
   wilson_b_factor:
     name: wilson_b_factor
-    description: Wilson B-factor in Angstroms squared
-    comments:
-    - 'Maps to PDB: _reflns.B_iso_Wilson_estimate'
+    description: Wilson B-factor
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Wilson_B
+    - mmCIF:_reflns.B_iso_Wilson_estimate
     rank: 1000
-    slot_uri: nsls2:Wilson_B
     alias: wilson_b_factor
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao2
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
-    comments:
-    - 'Maps to PDB: _reflns.pdbx_redundancy'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Multiplicity
+    - mmCIF:_reflns.pdbx_redundancy
     rank: 1000
-    slot_uri: nsls2:Multiplicity
     alias: multiplicity
     owner: WorkflowRun
     domain_of:
@@ -1945,11 +2117,11 @@ attributes:
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
-    comments:
-    - 'Maps to PDB: _refine.ls_R_factor_R_work'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rwork
+    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
-    slot_uri: nsls2:Rwork
     alias: rwork
     owner: WorkflowRun
     domain_of:
@@ -1958,11 +2130,11 @@ attributes:
   rfree:
     name: rfree
     description: R-free (test set)
-    comments:
-    - 'Maps to PDB: _refine.ls_R_factor_R_free'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Rfree
+    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
-    slot_uri: nsls2:Rfree
     alias: rfree
     owner: WorkflowRun
     domain_of:
@@ -1970,64 +2142,71 @@ attributes:
     range: float
   rmsd_bonds:
     name: rmsd_bonds
-    description: RMSD from ideal bond lengths in Angstroms
-    comments:
-    - 'Maps to PDB: _refine.ls_d_res_high'
+    description: RMSD from ideal bond lengths
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:RMSD_bonds
+    - mmCIF:_refine.ls_d_res_high
     rank: 1000
-    slot_uri: nsls2:RMSD_bonds
     alias: rmsd_bonds
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: Ao
   rmsd_angles:
     name: rmsd_angles
-    description: RMSD from ideal bond angles in degrees
-    comments:
-    - 'Maps to PDB: _refine.ls_d_res_low'
+    description: RMSD from ideal bond angles
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:RMSD_angles
+    - mmCIF:_refine.ls_d_res_low
     rank: 1000
-    slot_uri: nsls2:RMSD_angles
     alias: rmsd_angles
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: deg
   ramachandran_favored:
     name: ramachandran_favored
     description: Percentage of residues in favored Ramachandran regions
-    comments:
-    - 'Maps to PDB: _refine.pdbx_overall_ESU_R'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Ramachandran_Favored
+    - mmCIF:_refine.pdbx_overall_ESU_R
     rank: 1000
-    slot_uri: nsls2:Ramachandran_Favored
     alias: ramachandran_favored
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   ramachandran_outliers:
     name: ramachandran_outliers
     description: Percentage of Ramachandran outliers
-    comments:
-    - 'Maps to PDB: _refine.pdbx_overall_ESU_R_Free'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Ramachandran_Outliers
+    - mmCIF:_refine.pdbx_overall_ESU_R_Free
     rank: 1000
-    slot_uri: nsls2:Ramachandran_Outliers
     alias: ramachandran_outliers
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     range: float
+    unit:
+      ucum_code: '%'
   clashscore:
     name: clashscore
     description: MolProbity clashscore
-    comments:
-    - Maps to validation report metrics
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Clashscore
     rank: 1000
-    slot_uri: nsls2:Clashscore
     alias: clashscore
     owner: WorkflowRun
     domain_of:
@@ -2074,6 +2253,56 @@ attributes:
     domain_of:
     - WorkflowRun
     range: string
+  motion_correction_params:
+    name: motion_correction_params
+    description: Motion correction specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: motion_correction_params
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: MotionCorrectionParameters
+  ctf_estimation_params:
+    name: ctf_estimation_params
+    description: CTF estimation specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ctf_estimation_params
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: CTFEstimationParameters
+  particle_picking_params:
+    name: particle_picking_params
+    description: Particle picking specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: particle_picking_params
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: ParticlePickingParameters
+  refinement_params:
+    name: refinement_params
+    description: 3D refinement specific parameters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: refinement_params
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: RefinementParameters
+  fsc_curve:
+    name: fsc_curve
+    description: Fourier Shell Correlation curve data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: fsc_curve
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: FSCCurve
   output_files:
     name: output_files
     description: Output files generated
@@ -2101,6 +2330,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -2111,6 +2341,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

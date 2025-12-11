@@ -898,7 +898,7 @@
 
 
 <h1 id="slot-ionic_strength">Slot: ionic_strength</h1>
-<p><em>Ionic strength in molar</em></p>
+<p><em>Ionic strength in molar of material in solution</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/ionic_strength">lambdaber:ionic_strength</a>
 Alias: ionic_strength</p>
 <!-- no inheritance hierarchy -->
@@ -914,8 +914,8 @@ Alias: ionic_strength</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BiophysicalProperty/">BiophysicalProperty</a></td>
-<td>Measured or calculated biophysical properties</td>
+<td><a href="../MeasurementConditions/">MeasurementConditions</a></td>
+<td>Conditions under which biophysical measurements were made</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -952,13 +952,13 @@ Alias: ionic_strength</p>
 <details>
 
 <pre><code class="language-yaml">name: ionic_strength
-description: Ionic strength in molar
+description: Ionic strength in molar of material in solution
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ionic_strength
-owner: BiophysicalProperty
+owner: MeasurementConditions
 domain_of:
-- BiophysicalProperty
+- MeasurementConditions
 range: float
 unit:
   ucum_code: mol/L

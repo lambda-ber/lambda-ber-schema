@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -907,8 +898,8 @@
 
 
 <h1 id="slot-wavelength">Slot: wavelength</h1>
-<p><em>X-ray wavelength in Angstroms</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Wavelength">nsls2:Wavelength</a>
+<p><em>X-ray wavelength</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/wavelength">lambdaber:wavelength</a>
 Alias: wavelength</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,11 +924,6 @@ Alias: wavelength</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to CBF: Wavelength</li>
-<li>Maps to PDB: _diffrn_radiation_wavelength.wavelength</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -954,11 +940,15 @@ Alias: wavelength</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Wavelength</td>
+<td>lambdaber:wavelength</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:wavelength</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Wavelength, imgCIF:_diffrn_radiation_wavelength.wavelength, mmCIF:_diffrn_radiation_wavelength.wavelength</td>
 </tr>
 </tbody>
 </table>
@@ -966,18 +956,20 @@ Alias: wavelength</p>
 <details>
 
 <pre><code class="language-yaml">name: wavelength
-description: X-ray wavelength in Angstroms
-comments:
-- 'Maps to CBF: Wavelength'
-- 'Maps to PDB: _diffrn_radiation_wavelength.wavelength'
+description: X-ray wavelength
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Wavelength
+- imgCIF:_diffrn_radiation_wavelength.wavelength
+- mmCIF:_diffrn_radiation_wavelength.wavelength
 rank: 1000
-slot_uri: nsls2:Wavelength
 alias: wavelength
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
 range: float
+unit:
+  ucum_code: Ao
 
 </code></pre>
 

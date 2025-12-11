@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-total_dose">Slot: total_dose</h1>
-<p><em>Total electron dose for cryo-EM</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/total_dose">lambdaber:total_dose</a>
 Alias: total_dose</p>
 <!-- no inheritance hierarchy -->
@@ -918,17 +902,18 @@ Alias: total_dose</p>
 <td>Strategy for data collection</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../ExperimentRun/">ExperimentRun</a></td>
+<td>An experimental data collection session</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -952,14 +937,11 @@ Alias: total_dose</p>
 <details>
 
 <pre><code class="language-yaml">name: total_dose
-description: Total electron dose for cryo-EM
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: total_dose
-owner: DataCollectionStrategy
 domain_of:
+- ExperimentRun
 - DataCollectionStrategy
-range: float
+range: string
 
 </code></pre>
 

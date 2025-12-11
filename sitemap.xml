@@ -2,2346 +2,2914 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/AffinityUnitEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/AggregatedProteinView/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/AnnotationSourceEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/AttributeGroup/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/BeamlineInstrument/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/BindingAffinityTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/BiophysicalMethodEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/BiophysicalProperty/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/BiophysicalPropertyEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Boolean/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/BufferComposition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/CTFEstimationParameters/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ClinicalSignificanceEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/CollectionModeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ComplexStabilityEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ComputeResources/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ConcentrationUnitEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ConformationalEnsemble/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ConformationalState/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ConformationalStateEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/CryoEMInstrument/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/CryoEMPreparation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/CrystallizationConditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/CrystallizationMethodEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Curie/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DataCollectionStrategy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DataFile/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DataTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DatabaseCrossReference/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DatabaseNameEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Dataset/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DateOrDatetime/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Datetime/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Decimal/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/DetectorModeEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/DetectorTechnologyEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/DetectorTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Double/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/EvidenceTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/EvolutionaryConservation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ExperimentRun/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ExperimentalConditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ExperimentalMethodEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ExpressionSystemEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/FSCCurve/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/FTIR/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FTIRImage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/FacilityEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/FacilityTypeEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FileFormatEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Float/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FluorescenceImage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FunctionalEffectEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FunctionalSite/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/FunctionalSiteTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/GridMaterialEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/GridTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/IlluminationTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Image/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Image2D/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Image3D/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ImageFeature/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ImagingModeEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Instrument/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/InstrumentCategoryEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/InstrumentStatusEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Integer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/InteractionEvidenceEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/InteractionTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Jsonpath/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Jsonpointer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/LigandInteraction/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/MeasurementConditions/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/Micrograph/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/MolecularComposition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/MotionCorrectionParameters/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/Movie/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/MutationEffect/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/MutationTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/NamedThing/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Ncname/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Nodeidentifier/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Objectidentifier/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/OntologyTerm/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/OpticalImage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/PTMTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ParticlePickingParameters/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/PhasingMethodEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/PostTranslationalModification/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/PreparationTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ProcessingStatusEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ProteinAnnotation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ProteinConstruct/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ProteinProteinInteraction/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/PurificationStepEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/QualityMetrics/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/RefinementParameters/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/SAXSInstrument/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/SAXSPreparation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Sample/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/SamplePreparation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/SampleTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/SecondaryStructureEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/SmilesString/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Sparqlpath/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/StabilityEffectEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/StorageConditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/String/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/StructuralFeature/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/StructuralFeatureTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Study/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/SymmetryEnum/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/TechniqueEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/TechniqueSpecificPreparation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/TemperatureUnitEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Time/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Uri/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/Uriorcurie/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/VitrificationMethodEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/WorkflowRun/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/WorkflowTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/XRFImage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/XRayInstrument/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/XRayPreparation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/XRaySourceTypeEnum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/accelerating_voltage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/acquisition_date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/acquisition_group/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/acquisition_software/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/acquisition_software_version/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/additional_software/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/additives/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/affinity_column/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/affinity_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/aggregated_protein_views/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/aggregation_assessment/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/alignment_depth/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/aliquoting/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/allele_frequency/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/amplitude_contrast/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/anatomy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/anisotropic_correction/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/annotation_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/anom_corr/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/anom_sig_ano/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/anomalous_used/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/antibiotic_selection/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/apodization_function/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/astigmatism/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/astigmatism_angle/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/astigmatism_target/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/atmosphere/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/attenuator/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/autoloader_capacity/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/autoloader_slot/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/average_b_factor_a2/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/backbone_flexibility/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background_correction/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_center_x/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_center_x_px/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_center_y/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_center_y_px/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_energy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_shift_x/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_shift_y/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_size_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_size_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beam_size_um/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beamline/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/beamline_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/bfactor_dose_weighting/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/binding_affinity/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/binding_affinity_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/binding_affinity_unit/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/binding_energy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/binding_site_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/binning/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/biological_assembly/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/biophysical_properties/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/biostride-schema/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/blot_force/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/blot_number/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/blot_time/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/blotter_height/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/blotter_setting/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/box_size/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/buffer_composition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/buffer_matching_protocol/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/c2_aperture/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/calibrated_pixel_size/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/calibration_standard/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/camera_binning/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cc_half/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cell_path_length/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cell_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/chain_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/chamber_temperature/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/channel_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/characteristic_features/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/checksum/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/clashscore/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cleavage_site/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cleavage_temperature_c/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cleavage_time_h/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/clinical_significance/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cloning_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/clustering_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/codon_optimization_organism/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/coevolved_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/collection_mode/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/color_channels/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/coma/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/completed_at/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/completeness/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/completeness_high_res_shell_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/completeness_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/complex_stability/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/components/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/compute_resources/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/concentration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/concentration_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/concentration_series/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/concentration_unit/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/confidence_score/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conformational_ensemble/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conformational_state/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conformational_states/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conservation_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conservation_score/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/conserved_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/construct/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/construct_description/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/construct_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/contrast_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cpu_hours/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/creation_date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cross_references/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cryo_protectant/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cryoprotectant/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cryoprotectant_concentration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystal_cooling_capability/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystal_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystal_notes/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystal_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystal_size_um/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystallization_conditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/crystallization_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/cs/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/cs_corrector/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/cs_used_in_estimation/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ctf_estimation_params/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ctf_quality_score/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/culture_volume_l/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/current_status/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/data_collection_strategy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/data_files/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/data_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/database_cross_references/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/database_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/database_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/database_url/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/definition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_range_increment/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_range_max/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_range_min/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_search_max/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_search_min/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_step/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_target/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_u/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/defocus_v/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/delta_delta_g/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/deposited_to_pdb/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/description/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_dimensions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_distance/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_distance_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_distance_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_distance_mm/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_manufacturer/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_mode/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_model/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_position/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_technology/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/detector_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dimensions_x/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dimensions_y/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dimensions_z/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/disease_association/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/disorder_probability/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dissociation_constant/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/domain_assignment/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/domain_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dose/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dose_per_frame/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/dose_rate/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/dose_weighting/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/drift_total/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/drop_ratio_protein_to_reservoir/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/drop_volume/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/drop_volume_nl/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/druggability_score/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/duration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/dwell_time/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ec_number/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/effect_on_function/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/effect_on_stability/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elements_measured/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/elution_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/emission_filter/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/emission_wavelength/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_filter_make/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_filter_model/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_filter_present/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_filter_slit_width/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_landscape/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/energy_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/enzyme/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/error/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ethane_temperature/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/evidence_code/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/evidence_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/evolutionary_conservation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/excitation_filter/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/excitation_wavelength/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/experiment_code/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/experiment_date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/experiment_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/experimental_conditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/experimental_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/exposure_time/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/exposure_time_per_frame/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/expression_system/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/facility_name/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/facility_ror/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/feature_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/file_format/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/file_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/file_path/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/file_role/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/file_size_bytes/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/final_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/final_concentration_mg_per_ml/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/flash_cooling_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/fluorophore/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/flux/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/flux_density/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/flux_photons_per_s/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/frame_grouping/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/frame_rate/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/frames/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/frames_per_movie/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/free_energy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/fsc_curve/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/fsc_value/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/functional_effect/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/functional_impact_description/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/functional_importance/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/functional_sites/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/gene_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/gene_synthesis_provider/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/glow_discharge_applied/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/glow_discharge_atmosphere/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/glow_discharge_current/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/glow_discharge_pressure/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/glow_discharge_time/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/go_terms/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/gold_standard/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/goniometer_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/gpu_hours/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/grid_material/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/grid_square_id/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/grid_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/growth_temperature_c/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/gunlens/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/harvest_timepoint/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/hic_column/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/hole_id/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/hole_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/holes_per_group/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/host_strain_or_cell_line/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/humidity/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/humidity_percentage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/i_over_sigma/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/i_zero/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ice_thickness_estimate/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/iex_column/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/illumination_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/images/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/imaging_mode/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/indexer_module/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/inducer_concentration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/induction_agent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/induction_temperature_c/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/induction_time_h/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/initial_hit_condition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/insert_boundaries/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/installation_date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/instrument_category/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/instrument_code/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/instrument_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/instrument_runs/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/instruments/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/integrator_module/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/interaction_distance/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/interaction_evidence/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/interaction_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/interface_area/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/interface_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ionic_strength/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/is_cofactor/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/is_drug_like/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/keywords/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/label/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/lambda-ber-schema/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/laser_power/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/last_updated/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligand/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligand_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligand_interactions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligand_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligand_smiles/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligands/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ligands_cofactors/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/loop_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/lysis_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/lysis_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/magnification/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/mail_in_service/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/manufacturer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/map_sharpening_bfactor/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mass_shift/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mean_i_over_sigma_i/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/measurement_conditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/medium/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/memory_gb/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/microscope_software/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/microscope_software_version/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/model/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/model_file/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/modification_group/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/modification_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/modifications/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/modified_residue/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/molecular_composition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/molecular_signatures/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/molecular_weight/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/molprobity_score/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/monochromator_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/motion_correction_params/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mounting_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mounting_temperature/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/multiplicity/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mutation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mutation_effects/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mutation_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/mutations/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ncbi_taxid/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ncc_score/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ncs_used/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/nominal_defocus/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/nsls2-integration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/number_of_images/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/number_of_scans/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/number_of_waters/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/numerical_aperture/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/objective_aperture/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/od600_at_induction/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/omim_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ontology/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/operator_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/optimization_strategy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/optimized_condition/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/organism/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/organism_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/origin_movie_id/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/oscillation_angle/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/oscillation_per_image_deg/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/outlier_rejection_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/output_binning/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/output_files/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/parameters_file_path/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/parent_sample_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/particle_picking_params/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/partner_chain_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/partner_interface_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/partner_protein_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/patch_size/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pdb_entries/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pdb_entry/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pdb_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ph/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/phase_plate/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/phase_plate_type/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/phasing_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/picking_method/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pinhole_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_calibrated/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_physical/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_physical_um/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_unbinned/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_x/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pixel_size_y/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/plasma_treatment/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/population/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/power_score/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/preparation_date/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/preparation_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/preparation_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/pressure/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/principal_motions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/processing_level/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/processing_notes/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/processing_parameters/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/processing_status/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/promoter/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/property_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protease/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protease_inhibitors/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protease_ratio/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_concentration/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_concentration_mg_per_ml/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_constructs/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_interactions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protein_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/protocol_description/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ptm_annotations/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ptms/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/publication_ids/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/purification_steps/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/purity_by_sds_page_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/purity_percentage/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/q_range_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/q_range_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/quality_metrics/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/quantum_yield/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/r_factor/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/r_free/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/r_merge/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/r_pim/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/r_work/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ramachandran_favored/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ramachandran_favored_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ramachandran_outliers/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/ramachandran_outliers_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/raw_data_location/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/reconstruction_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/refinement_params/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/refinement_resolution_a/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/regulatory_role/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/related_entity/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/removal_enzyme/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/reservoir_volume_ul/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/residue_range/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_0_143/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_0_5/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_angstrom/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_fit_limit/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_high/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_high_shell_a/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_low/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/resolution_low_a/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/restraints_other/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rfree/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rg/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rmerge/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rmsd_angles/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rmsd_bonds/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rmsd_from_reference/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rmsd_threshold/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rpim/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/rwork/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_applied_volume/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_cell_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_changer_capacity/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_code/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_preparations/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sample_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/samples/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/scaler_module/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/screen_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/search_model_pdb_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sec_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sec_column/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/second_affinity_reverse/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/secondary_structure/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/seed_stock_dilution/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/seeding_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/selectable_marker/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sequence_file_path/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sequence_length_aa/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sequence_verified_by/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/sequences/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/shots_per_hole/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/signal_peptide/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/signal_to_noise/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/site_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/site_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/soak_compound/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/soak_conditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/software_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/software_version/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/solvent_accessibility/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/source_database/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/source_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/space_group/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/spectral_resolution/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/split_strategy/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/spotsize/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/stage_position_x/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/stage_position_y/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/stage_position_z/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/stage_tilt/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/start_angle/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/started_at/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/state_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/state_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/storage_conditions/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/storage_gb/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/storage_uri/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/strategy_notes/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/structural_features/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/structural_motif/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/studies/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/super_resolution/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/support_film/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/symmetry/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/tag/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/tag_cterm/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/tag_nterm/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/tag_removal/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/taxonomic_range/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/technique/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/techniques_supported/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/tem_beam_diameter/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature_c/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature_control/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature_control_range/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature_k/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/temperature_unit/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/terms/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/threshold/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/timestamp/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/title/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/tls_used/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/total_dose/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/total_exposure_time/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/total_frames/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/total_rotation/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/total_rotation_deg/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/transition_pathways/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/transmission_percent/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/uniprot_id/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_a/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_alpha/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_b/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_beta/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_c/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/unit_cell_gamma/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/validation-lessons-kibler-2024/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/validation_report_path/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/value/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/variable_residues/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/vector_backbone/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/vector_name/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/verification_notes/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/vitrification_instrument/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/vitrification_method/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/voltage_used_in_estimation/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/voxel_size/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/wait_time/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wash_buffer/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wavelength/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wavelength_a/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wavenumber_max/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wavenumber_min/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/website/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/white_balance/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wilson_b_factor/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/wilson_b_factor_a2/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/workflow_code/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/workflow_runs/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/workflow_type/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/yield_mg/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/ber-doe-facilities/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/data-quality-challenges/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/dials/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/emdb/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/empiar/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/lambda-ber-schema-data-lakehouse-strategy/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/mmcif/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/nexus/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/ome-alignment/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/rembi-alignment/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/background/sasdb/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/examples/simplescattering-glurs-analysis/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/ai-ml-metadata-integration/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/dynamics-data-expansion/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/experiment-outcomes-tracking/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/image-segmentation-integration/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/negative-results-and-replication/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/neutron-techniques-expansion/</loc>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/ideas/sbkb/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/slides/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/slides/9B7F-example/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://lambda-ber.github.io/lambda-ber-schema/slides/ontologies-for-structural-biology/</loc>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/slides/overview/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/slides/technical-overview/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
     <url>
          <loc>https://lambda-ber.github.io/lambda-ber-schema/technical/ome-mapping/</loc>
-         <lastmod>2025-11-13</lastmod>
+         <lastmod>2025-12-11</lastmod>
     </url>
 </urlset>

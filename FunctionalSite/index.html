@@ -557,7 +557,7 @@
 <tr>
 <td><a href="../conservation_score/">conservation_score</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Evolutionary conservation score</td>
+<td>Evolutionary conservation score (range: 0-1)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -605,7 +605,7 @@
 <tr>
 <td><a href="../confidence_score/">confidence_score</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Confidence score for the annotation (0-1)</td>
+<td>Confidence score for the annotation (range: 0-1)</td>
 <td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
 </tr>
 <tr>
@@ -635,7 +635,7 @@
 <tr>
 <td><a href="../publication_ids/">publication_ids</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>PubMed IDs supporting this annotation</td>
+<td>IDs of one or more publications supporting this annotation</td>
 <td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
 </tr>
 <tr>
@@ -647,13 +647,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -734,7 +734,8 @@ attributes:
     - FunctionalSite
   residues:
     name: residues
-    description: List of residues forming the functional site
+    description: List of residues forming the functional site. Each should be specified
+      as a string (e.g., "45", "120A").
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -754,7 +755,7 @@ attributes:
     inlined_as_list: true
   conservation_score:
     name: conservation_score
-    description: Evolutionary conservation score
+    description: 'Evolutionary conservation score (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -820,7 +821,8 @@ attributes:
     range: string
   residues:
     name: residues
-    description: List of residues forming the functional site
+    description: List of residues forming the functional site. Each should be specified
+      as a string (e.g., "45", "120A").
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: residues
@@ -845,7 +847,7 @@ attributes:
     inlined_as_list: true
   conservation_score:
     name: conservation_score
-    description: Evolutionary conservation score
+    description: 'Evolutionary conservation score (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: conservation_score
@@ -933,9 +935,10 @@ attributes:
     domain_of:
     - ProteinAnnotation
     range: string
+    pattern: ^[0-9,\-]+$
   confidence_score:
     name: confidence_score
-    description: Confidence score for the annotation (0-1)
+    description: 'Confidence score for the annotation (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: confidence_score
@@ -987,7 +990,8 @@ attributes:
     range: string
   publication_ids:
     name: publication_ids
-    description: PubMed IDs supporting this annotation
+    description: IDs of one or more publications supporting this annotation. Use PubMed
+      IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: publication_ids
@@ -996,7 +1000,7 @@ attributes:
     - ProteinAnnotation
     range: string
     multivalued: true
-    pattern: ^PMID:[0-9]+$
+    pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -1013,6 +1017,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1023,6 +1028,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

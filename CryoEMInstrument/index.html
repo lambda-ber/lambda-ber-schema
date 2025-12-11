@@ -426,6 +426,12 @@
 
       CryoEMInstrument : autoloader_capacity
 
+      CryoEMInstrument : beamline_id
+
+      CryoEMInstrument : c2_aperture
+
+      CryoEMInstrument : cs
+
       CryoEMInstrument : cs_corrector
 
       CryoEMInstrument : current_status
@@ -443,32 +449,106 @@
 
       CryoEMInstrument : detector_dimensions
 
-      CryoEMInstrument : detector_type
+      CryoEMInstrument : detector_manufacturer
+
+      CryoEMInstrument : detector_mode
 
 
 
 
 
-        CryoEMInstrument --&gt; "0..1" DetectorTypeEnum : detector_type
-        click DetectorTypeEnum href "../DetectorTypeEnum/"
+        CryoEMInstrument --&gt; "0..1" DetectorModeEnum : detector_mode
+        click DetectorModeEnum href "../DetectorModeEnum/"
 
 
+
+      CryoEMInstrument : detector_model
+
+      CryoEMInstrument : detector_position
+
+      CryoEMInstrument : detector_technology
+
+
+
+
+
+        CryoEMInstrument --&gt; "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
+
+
+
+      CryoEMInstrument : energy_filter_make
+
+      CryoEMInstrument : energy_filter_model
+
+      CryoEMInstrument : energy_filter_present
+
+      CryoEMInstrument : energy_filter_slit_width
+
+      CryoEMInstrument : facility_name
+
+
+
+
+
+        CryoEMInstrument --&gt; "0..1" FacilityEnum : facility_name
+        click FacilityEnum href "../FacilityEnum/"
+
+
+
+      CryoEMInstrument : facility_ror
+
+      CryoEMInstrument : gunlens
 
       CryoEMInstrument : id
 
+      CryoEMInstrument : imaging_mode
+
+
+
+
+
+        CryoEMInstrument --&gt; "0..1" ImagingModeEnum : imaging_mode
+        click ImagingModeEnum href "../ImagingModeEnum/"
+
+
+
       CryoEMInstrument : installation_date
+
+      CryoEMInstrument : instrument_category
+
+
+
+
+
+        CryoEMInstrument --&gt; "0..1" InstrumentCategoryEnum : instrument_category
+        click InstrumentCategoryEnum href "../InstrumentCategoryEnum/"
+
+
 
       CryoEMInstrument : instrument_code
 
       CryoEMInstrument : manufacturer
 
+      CryoEMInstrument : microscope_software
+
+      CryoEMInstrument : microscope_software_version
+
       CryoEMInstrument : model
+
+      CryoEMInstrument : objective_aperture
 
       CryoEMInstrument : phase_plate
 
-      CryoEMInstrument : pixel_size_max
+      CryoEMInstrument : phase_plate_type
 
-      CryoEMInstrument : pixel_size_min
+      CryoEMInstrument : pixel_size_physical
+
+      CryoEMInstrument : pixel_size_physical_um
+
+      CryoEMInstrument : spotsize
+
+      CryoEMInstrument : tem_beam_diameter
 
       CryoEMInstrument : title
 
@@ -514,9 +594,33 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector_type/">detector_type</a></td>
-<td>0..1 <br/> <a href="../DetectorTypeEnum/">DetectorTypeEnum</a></td>
-<td>Type of detector</td>
+<td><a href="../detector_technology/">detector_technology</a></td>
+<td>0..1 <br/> <a href="../DetectorTechnologyEnum/">DetectorTechnologyEnum</a></td>
+<td>Generic detector technology type</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_manufacturer/">detector_manufacturer</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Detector manufacturer (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_model/">detector_model</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Detector model (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_mode/">detector_mode</a></td>
+<td>0..1 <br/> <a href="../DetectorModeEnum/">DetectorModeEnum</a></td>
+<td>Supported or default detector operating mode</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_position/">detector_position</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Physical position of detector in microscope (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -526,15 +630,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../pixel_size_min/">pixel_size_min</a></td>
+<td><a href="../pixel_size_physical_um/">pixel_size_physical_um</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Minimum pixel size in Angstroms per pixel</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../pixel_size_max/">pixel_size_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Maximum pixel size in Angstroms per pixel</td>
+<td>Physical pixel size of the detector in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -544,9 +642,123 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../cs/">cs</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Spherical aberration (Cs) in millimeters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../c2_aperture/">c2_aperture</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>C2 aperture size in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../objective_aperture/">objective_aperture</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Objective aperture size in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../phase_plate_type/">phase_plate_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Type of phase plate if present</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../energy_filter_present/">energy_filter_present</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Whether energy filter is present</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../energy_filter_make/">energy_filter_make</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Energy filter manufacturer</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../energy_filter_model/">energy_filter_model</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Energy filter model</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../energy_filter_slit_width/">energy_filter_slit_width</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Energy filter slit width in eV</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pixel_size_physical/">pixel_size_physical</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Physical pixel size in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../microscope_software/">microscope_software</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Microscope control software (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../microscope_software_version/">microscope_software_version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Software version</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../spotsize/">spotsize</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Electron beam spot size setting</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gunlens/">gunlens</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Gun lens setting</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../imaging_mode/">imaging_mode</a></td>
+<td>0..1 <br/> <a href="../ImagingModeEnum/">ImagingModeEnum</a></td>
+<td>Imaging mode for electron microscopy</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tem_beam_diameter/">tem_beam_diameter</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>TEM beam diameter in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../instrument_code/">instrument_code</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>Human-friendly facility or laboratory identifier for the instrument (e</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../instrument_category/">instrument_category</a></td>
+<td>0..1 <br/> <a href="../InstrumentCategoryEnum/">InstrumentCategoryEnum</a></td>
+<td>Category distinguishing beamlines from laboratory equipment</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_name/">facility_name</a></td>
+<td>0..1 <br/> <a href="../FacilityEnum/">FacilityEnum</a></td>
+<td>Name of the research facility where the instrument is located</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../facility_ror/">facility_ror</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Research Organization Registry (ROR) identifier for the facility</td>
+<td><a href="../Instrument/">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../beamline_id/">beamline_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Beamline identifier at synchrotron/neutron facility</td>
 <td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
@@ -582,13 +794,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -654,34 +866,75 @@ attributes:
     domain_of:
     - CryoEMInstrument
     range: boolean
-  detector_type:
-    name: detector_type
-    description: Type of detector
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., direct_electron_detector, ccd)
+    - See detector_manufacturer and detector_model for specific equipment details
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
     - XRFImage
-    range: DetectorTypeEnum
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
+    comments:
+    - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., K3, Falcon 4i, DE-64)
+    comments:
+    - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  detector_mode:
+    name: detector_mode
+    description: Supported or default detector operating mode
+    comments:
+    - Indicates operating mode capabilities (e.g., counting, super_resolution)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  detector_position:
+    name: detector_position
+    description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
   detector_dimensions:
     name: detector_dimensions
-    description: Detector dimensions in pixels (e.g., 4096x4096)
+    description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - CryoEMInstrument
-  pixel_size_min:
-    name: pixel_size_min
-    description: Minimum pixel size in Angstroms per pixel
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - CryoEMInstrument
-    range: float
-  pixel_size_max:
-    name: pixel_size_max
-    description: Maximum pixel size in Angstroms per pixel
+    range: string
+  pixel_size_physical_um:
+    name: pixel_size_physical_um
+    description: Physical pixel size of the detector in micrometers
+    comments:
+    - Hardware specification, independent of magnification
+    - Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -695,6 +948,126 @@ attributes:
     domain_of:
     - CryoEMInstrument
     range: integer
+  cs:
+    name: cs
+    description: Spherical aberration (Cs) in millimeters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  c2_aperture:
+    name: c2_aperture
+    description: C2 aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  objective_aperture:
+    name: objective_aperture
+    description: Objective aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  phase_plate_type:
+    name: phase_plate_type
+    description: Type of phase plate if present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_present:
+    name: energy_filter_present
+    description: Whether energy filter is present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  energy_filter_make:
+    name: energy_filter_make
+    description: Energy filter manufacturer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_model:
+    name: energy_filter_model
+    description: Energy filter model
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width in eV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  pixel_size_physical:
+    name: pixel_size_physical
+    description: Physical pixel size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  microscope_software:
+    name: microscope_software
+    description: Microscope control software (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  microscope_software_version:
+    name: microscope_software_version
+    description: Software version
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  spotsize:
+    name: spotsize
+    description: Electron beam spot size setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: integer
+  gunlens:
+    name: gunlens
+    description: Gun lens setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: integer
+  imaging_mode:
+    name: imaging_mode
+    description: Imaging mode for electron microscopy
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: ImagingModeEnum
+  tem_beam_diameter:
+    name: tem_beam_diameter
+    description: TEM beam diameter in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: float
 
 </code></pre>
 </details>
@@ -739,21 +1112,74 @@ attributes:
     domain_of:
     - CryoEMInstrument
     range: boolean
-  detector_type:
-    name: detector_type
-    description: Type of detector
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., direct_electron_detector, ccd)
+    - See detector_manufacturer and detector_model for specific equipment details
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    alias: detector_type
+    alias: detector_technology
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
     - XRayInstrument
     - XRFImage
-    range: DetectorTypeEnum
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
+    comments:
+    - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_manufacturer
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., K3, Falcon 4i, DE-64)
+    comments:
+    - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_model
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  detector_mode:
+    name: detector_mode
+    description: Supported or default detector operating mode
+    comments:
+    - Indicates operating mode capabilities (e.g., counting, super_resolution)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_mode
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  detector_position:
+    name: detector_position
+    description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_position
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
   detector_dimensions:
     name: detector_dimensions
-    description: Detector dimensions in pixels (e.g., 4096x4096)
+    description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: detector_dimensions
@@ -761,22 +1187,15 @@ attributes:
     domain_of:
     - CryoEMInstrument
     range: string
-  pixel_size_min:
-    name: pixel_size_min
-    description: Minimum pixel size in Angstroms per pixel
+  pixel_size_physical_um:
+    name: pixel_size_physical_um
+    description: Physical pixel size of the detector in micrometers
+    comments:
+    - Hardware specification, independent of magnification
+    - Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    alias: pixel_size_min
-    owner: CryoEMInstrument
-    domain_of:
-    - CryoEMInstrument
-    range: float
-  pixel_size_max:
-    name: pixel_size_max
-    description: Maximum pixel size in Angstroms per pixel
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: pixel_size_max
+    alias: pixel_size_physical_um
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
@@ -791,6 +1210,156 @@ attributes:
     domain_of:
     - CryoEMInstrument
     range: integer
+  cs:
+    name: cs
+    description: Spherical aberration (Cs) in millimeters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cs
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  c2_aperture:
+    name: c2_aperture
+    description: C2 aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: c2_aperture
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  objective_aperture:
+    name: objective_aperture
+    description: Objective aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: objective_aperture
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  phase_plate_type:
+    name: phase_plate_type
+    description: Type of phase plate if present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: phase_plate_type
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_present:
+    name: energy_filter_present
+    description: Whether energy filter is present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_present
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  energy_filter_make:
+    name: energy_filter_make
+    description: Energy filter manufacturer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_make
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_model:
+    name: energy_filter_model
+    description: Energy filter model
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_model
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width in eV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_slit_width
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  pixel_size_physical:
+    name: pixel_size_physical
+    description: Physical pixel size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: pixel_size_physical
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
+  microscope_software:
+    name: microscope_software
+    description: Microscope control software (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: microscope_software
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  microscope_software_version:
+    name: microscope_software_version
+    description: Software version
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: microscope_software_version
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  spotsize:
+    name: spotsize
+    description: Electron beam spot size setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: spotsize
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: integer
+  gunlens:
+    name: gunlens
+    description: Gun lens setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: gunlens
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: integer
+  imaging_mode:
+    name: imaging_mode
+    description: Imaging mode for electron microscopy
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: imaging_mode
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: ImagingModeEnum
+  tem_beam_diameter:
+    name: tem_beam_diameter
+    description: TEM beam diameter in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: tem_beam_diameter
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: float
   instrument_code:
     name: instrument_code
     description: Human-friendly facility or laboratory identifier for the instrument
@@ -804,6 +1373,60 @@ attributes:
     - Instrument
     range: string
     required: true
+  instrument_category:
+    name: instrument_category
+    description: Category distinguishing beamlines from laboratory equipment
+    comments:
+    - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
+    - Use ELECTRON_MICROSCOPE for cryo-EM instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: instrument_category
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: InstrumentCategoryEnum
+  facility_name:
+    name: facility_name
+    description: Name of the research facility where the instrument is located
+    comments:
+    - Select from the standardized list of major synchrotron facilities
+    - Leave empty for laboratory-based instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_name
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: FacilityEnum
+  facility_ror:
+    name: facility_ror
+    description: Research Organization Registry (ROR) identifier for the facility
+    comments:
+    - Persistent identifier for the facility organization
+    - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_ror
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: uriorcurie
+    pattern: ^https://ror\.org/\w+$
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron/neutron facility
+    comments:
+    - Use facility-specific naming convention
+    - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    alias: beamline_id
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
@@ -860,6 +1483,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -870,6 +1494,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

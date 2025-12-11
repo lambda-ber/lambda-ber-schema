@@ -769,7 +769,7 @@
 <tr>
 <td><a href="../purity_percentage/">purity_percentage</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Sample purity as percentage</td>
+<td>Sample purity as percentage (range: 0-100)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -883,13 +883,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -1013,6 +1013,7 @@ attributes:
     rank: 1000
     domain_of:
     - Sample
+    - MeasurementConditions
     range: BufferComposition
   preparation_method:
     name: preparation_method
@@ -1065,7 +1066,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -1350,6 +1351,7 @@ attributes:
     owner: Sample
     domain_of:
     - Sample
+    - MeasurementConditions
     range: BufferComposition
   preparation_method:
     name: preparation_method
@@ -1415,7 +1417,7 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: Sample purity as percentage
+    description: 'Sample purity as percentage (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: purity_percentage
@@ -1667,6 +1669,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1677,6 +1680,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

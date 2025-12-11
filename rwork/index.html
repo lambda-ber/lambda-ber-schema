@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -908,7 +899,7 @@
 
 <h1 id="slot-rwork">Slot: rwork</h1>
 <p><em>Refinement R-factor (working set)</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Rwork">nsls2:Rwork</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/rwork">lambdaber:rwork</a>
 Alias: rwork</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: rwork</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _refine.ls_R_factor_R_work</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: rwork</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Rwork</td>
+<td>lambdaber:rwork</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:rwork</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Rwork, mmCIF:_refine.ls_R_factor_R_work</td>
 </tr>
 </tbody>
 </table>
@@ -966,11 +957,11 @@ Alias: rwork</p>
 
 <pre><code class="language-yaml">name: rwork
 description: Refinement R-factor (working set)
-comments:
-- 'Maps to PDB: _refine.ls_R_factor_R_work'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Rwork
+- mmCIF:_refine.ls_R_factor_R_work
 rank: 1000
-slot_uri: nsls2:Rwork
 alias: rwork
 owner: WorkflowRun
 domain_of:

@@ -450,9 +450,18 @@
 
       DataCollectionStrategy : description
 
-      DataCollectionStrategy : detector
-
       DataCollectionStrategy : detector_distance_mm
+
+      DataCollectionStrategy : detector_mode
+
+
+
+
+
+        DataCollectionStrategy --&gt; "0..1" DetectorModeEnum : detector_mode
+        click DetectorModeEnum href "../DetectorModeEnum/"
+
+
 
       DataCollectionStrategy : dose_per_frame
 
@@ -461,6 +470,8 @@
       DataCollectionStrategy : frame_rate
 
       DataCollectionStrategy : oscillation_per_image_deg
+
+      DataCollectionStrategy : pixel_size_calibrated
 
       DataCollectionStrategy : strategy_notes
 
@@ -533,9 +544,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector/">detector</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Detector model/type</td>
+<td><a href="../detector_mode/">detector_mode</a></td>
+<td>0..1 <br/> <a href="../DetectorModeEnum/">DetectorModeEnum</a></td>
+<td>Detector operating mode used during this experiment</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pixel_size_calibrated/">pixel_size_calibrated</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Calibrated pixel size for this experiment</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -692,16 +709,16 @@ attributes:
     name: total_dose
     description: Total electron dose for cryo-EM
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - ExperimentRun
     - DataCollectionStrategy
     range: float
   dose_per_frame:
     name: dose_per_frame
     description: Dose per frame
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - Movie
     - DataCollectionStrategy
     range: float
   wavelength_a:
@@ -712,13 +729,31 @@ attributes:
     domain_of:
     - DataCollectionStrategy
     range: float
-  detector:
-    name: detector
-    description: Detector model/type
+  detector_mode:
+    name: detector_mode
+    description: Detector operating mode used during this experiment
+    comments:
+    - 'For cryo-EM: counting, integrating, or super_resolution'
+    - Detector technology, manufacturer, and model are specified in the Instrument
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  pixel_size_calibrated:
+    name: pixel_size_calibrated
+    description: Calibrated pixel size for this experiment
+    comments:
+    - 'For cryo-EM: depends on magnification (Å/pixel)'
+    - 'For X-ray: typically mm/pixel or µm/pixel'
+    - Physical pixel size is hardware spec stored in Instrument
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
+    range: float
+    unit:
+      ucum_code: Ao/px
   detector_distance_mm:
     name: detector_distance_mm
     description: Detector distance in millimeters
@@ -849,20 +884,20 @@ attributes:
     name: total_dose
     description: Total electron dose for cryo-EM
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: total_dose
     owner: DataCollectionStrategy
     domain_of:
+    - ExperimentRun
     - DataCollectionStrategy
     range: float
   dose_per_frame:
     name: dose_per_frame
     description: Dose per frame
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: dose_per_frame
     owner: DataCollectionStrategy
     domain_of:
+    - Movie
     - DataCollectionStrategy
     range: float
   wavelength_a:
@@ -875,16 +910,35 @@ attributes:
     domain_of:
     - DataCollectionStrategy
     range: float
-  detector:
-    name: detector
-    description: Detector model/type
+  detector_mode:
+    name: detector_mode
+    description: Detector operating mode used during this experiment
+    comments:
+    - 'For cryo-EM: counting, integrating, or super_resolution'
+    - Detector technology, manufacturer, and model are specified in the Instrument
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_mode
+    owner: DataCollectionStrategy
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  pixel_size_calibrated:
+    name: pixel_size_calibrated
+    description: Calibrated pixel size for this experiment
+    comments:
+    - 'For cryo-EM: depends on magnification (Å/pixel)'
+    - 'For X-ray: typically mm/pixel or µm/pixel'
+    - Physical pixel size is hardware spec stored in Instrument
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    alias: detector
+    alias: pixel_size_calibrated
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: string
+    range: float
+    unit:
+      ucum_code: Ao/px
   detector_distance_mm:
     name: detector_distance_mm
     description: Detector distance in millimeters

@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -908,7 +899,7 @@
 
 <h1 id="slot-rmerge">Slot: rmerge</h1>
 <p><em>Rmerge - merge R-factor</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Rmerge">nsls2:Rmerge</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/rmerge">lambdaber:rmerge</a>
 Alias: rmerge</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: rmerge</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _reflns.pdbx_Rmerge_I_obs</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: rmerge</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Rmerge</td>
+<td>lambdaber:rmerge</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:rmerge</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Rmerge, mmCIF:_reflns.pdbx_Rmerge_I_obs</td>
 </tr>
 </tbody>
 </table>
@@ -966,11 +957,11 @@ Alias: rmerge</p>
 
 <pre><code class="language-yaml">name: rmerge
 description: Rmerge - merge R-factor
-comments:
-- 'Maps to PDB: _reflns.pdbx_Rmerge_I_obs'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Rmerge
+- mmCIF:_reflns.pdbx_Rmerge_I_obs
 rank: 1000
-slot_uri: nsls2:Rmerge
 alias: rmerge
 owner: WorkflowRun
 domain_of:

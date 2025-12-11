@@ -450,6 +450,8 @@
         click ConformationalEnsemble href "../ConformationalEnsemble/"
       NamedThing &lt;|-- AggregatedProteinView
         click AggregatedProteinView href "../AggregatedProteinView/"
+      NamedThing &lt;|-- MeasurementConditions
+        click MeasurementConditions href "../MeasurementConditions/"
 
       NamedThing : description
 
@@ -476,6 +478,7 @@
 <li><a href="../ProteinAnnotation/">ProteinAnnotation</a></li>
 <li><a href="../ConformationalEnsemble/">ConformationalEnsemble</a></li>
 <li><a href="../AggregatedProteinView/">AggregatedProteinView</a></li>
+<li><a href="../MeasurementConditions/">MeasurementConditions</a></li>
 </ul>
 </li>
 </ul>
@@ -499,13 +502,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -557,6 +560,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -564,6 +568,7 @@ attributes:
     - NamedThing
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -595,6 +600,7 @@ attributes:
     range: uriorcurie
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -605,6 +611,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

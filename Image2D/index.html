@@ -423,6 +423,10 @@
         click Image href "../Image/"
 
 
+      Image2D &lt;|-- Movie
+        click Movie href "../Movie/"
+      Image2D &lt;|-- Micrograph
+        click Micrograph href "../Micrograph/"
       Image2D &lt;|-- FluorescenceImage
         click FluorescenceImage href "../FluorescenceImage/"
       Image2D &lt;|-- OpticalImage
@@ -462,6 +466,8 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../Image/">Image</a><ul>
 <li><strong>Image2D</strong><ul>
+<li><a href="../Movie/">Movie</a></li>
+<li><a href="../Micrograph/">Micrograph</a></li>
 <li><a href="../FluorescenceImage/">FluorescenceImage</a></li>
 <li><a href="../OpticalImage/">OpticalImage</a></li>
 <li><a href="../XRFImage/">XRFImage</a></li>
@@ -492,7 +498,7 @@
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value</td>
+<td>Astigmatism value in Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -546,13 +552,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -600,7 +606,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -628,7 +634,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -666,6 +672,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -707,6 +714,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id
@@ -724,6 +732,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -734,6 +743,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

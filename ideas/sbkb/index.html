@@ -1,0 +1,1737 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/ideas/sbkb/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>SBKB Coverage Analysis - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sbkb-coverage-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SBKB Coverage Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sbkb-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      SBKB Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SBKB Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sbkb-final-holdings" class="md-nav__link">
+    <span class="md-ellipsis">
+      SBKB Final Holdings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-by-component-coverage-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component-by-Component Coverage Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component-by-Component Coverage Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-biosync-x-ray-facilities-catalog-strong-coverage-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. BioSync (X-ray Facilities Catalog) ✅ STRONG COVERAGE (85%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-targettrack-protein-target-database-excellent-coverage-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. TargetTrack (Protein Target Database) ✅ EXCELLENT COVERAGE (90%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-psi-technology-portal-no-direct-coverage-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PSI Technology Portal ❌ NO DIRECT COVERAGE (20%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-psi-publications-portal-minimal-coverage-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PSI Publications Portal ⚠️ MINIMAL COVERAGE (40%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-nature-research-highlights-no-coverage-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Nature Research Highlights ❌ NO COVERAGE (0%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-sbkb-database-statistics-partial-coverage-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SBKB Database Statistics ✅ PARTIAL COVERAGE (70%)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-sbkb-coverage-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall SBKB Coverage Assessment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overall SBKB Coverage Assessment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strengths-of-our-schema-beyond-sbkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strengths of Our Schema (Beyond SBKB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaps-compared-to-sbkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaps Compared to SBKB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority-1-high-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority 1 (High Value)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority-2-medium-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority 2 (Medium Value)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority-3-low-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority 3 (Low Value)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-implement-soon" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Priority (Implement Soon)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-implement-if-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Priority (Implement If Needed)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-implement-on-demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low Priority (Implement On Demand)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not Recommended
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sbkb-coverage-analysis">SBKB Coverage Analysis</h1>
+<p>Analysis of RCSB Structural Biology Knowledgebase (SBKB) coverage vs lambda-ber-schema.</p>
+<p><strong>Date:</strong> 2025-11-22
+<strong>Source:</strong> https://cdn.rcsb.org/sbkb/</p>
+<h2 id="sbkb-background">SBKB Background</h2>
+<p>The Protein Structure Initiative's (PSI) Structural Biology Knowledgebase (SBKB) operated from 2000-2015 and was retired in July 2017. It consisted of six main components:</p>
+<ol>
+<li><strong>BioSync</strong> — X-ray light facilities catalog (relocated to http://biosync.rcsb.org)</li>
+<li><strong>TargetTrack</strong> — Protein target database (archived at Zenodo DOI 10.5281/zenodo.821654)</li>
+<li><strong>PSI Technology Portal</strong> — Technical reports (retired)</li>
+<li><strong>PSI Publications Portal</strong> — 2,300+ publications (archived at Zenodo DOI 10.5281/zenodo.821648)</li>
+<li><strong>Nature Research Highlights</strong> — Educational articles (partially archived on PDB-101)</li>
+<li><strong>SBKB Database &amp; Web Services</strong> — Discontinued</li>
+</ol>
+<h3 id="sbkb-final-holdings">SBKB Final Holdings</h3>
+<ul>
+<li>6,920 PSI-contributed protein structures</li>
+<li>5,472 distinct structures</li>
+<li>22.8M homology models</li>
+<li>335,714 research targets</li>
+<li>23.73M total annotations</li>
+</ul>
+<h2 id="component-by-component-coverage-analysis">Component-by-Component Coverage Analysis</h2>
+<h3 id="1-biosync-x-ray-facilities-catalog-strong-coverage-85">1. BioSync (X-ray Facilities Catalog) ✅ STRONG COVERAGE (85%)</h3>
+<p><strong>What BioSync Tracks:</strong>
+- 130+ synchrotron beamlines worldwide
+- Facility capabilities (remote data collection, mail-in services, crystallization services, structure solution)
+- Technical equipment (detectors, robotics, microfocus beams, extreme condition capabilities)
+- PDB structure depositions by facility
+- Regional distribution statistics
+- Historical deposition trends since 1995</p>
+<p><strong>Our Schema Coverage:</strong></p>
+<p>✅ <strong>Comprehensive:</strong>
+- <code>FacilityEnum</code>: International facility tracking with:
+  - ROR (Research Organization Registry) IDs
+  - Parent organizations and DOE office affiliations
+  - Physical locations (city, country)
+  - Energy levels in GeV
+  - Number of beamlines
+  - Operational timelines
+  - Website and Wikidata links
+  - Upgrade information (e.g., APS-U)</p>
+<ul>
+<li><code>XRayInstrument</code>: Beamline-specific metadata:</li>
+<li><code>beamline_id</code> (e.g., "12.3.1" for SIBYLS)</li>
+<li><code>source_type</code>, <code>detector_type</code></li>
+<li><code>monochromator_type</code>, <code>goniometer_type</code></li>
+<li>Energy ranges (min/max keV)</li>
+<li>Beam sizes (min/max micrometers)</li>
+<li>Flux density (photons/s/mm²)</li>
+<li>
+<p>Crystal cooling capabilities</p>
+</li>
+<li>
+<p><code>ExperimentRun</code>: X-ray data collection parameters:</p>
+</li>
+<li><code>wavelength</code>, <code>oscillation_angle</code>, <code>start_angle</code></li>
+<li><code>beam_center_x</code>, <code>beam_center_y</code></li>
+<li><code>detector_distance</code>, <code>pixel_size_x</code>, <code>pixel_size_y</code></li>
+<li><code>number_of_images</code>, <code>total_rotation</code></li>
+<li><code>beamline</code> reference</li>
+</ul>
+<p>⚠️ <strong>Gaps:</strong>
+- No explicit facility service capabilities tracking:
+  - Remote data collection availability
+  - Mail-in services
+  - On-site crystallization services
+  - Structure determination services
+- No historical deposition statistics modeling
+- No facility-specific publication/structure counts</p>
+<p><strong>Recommendation:</strong> Add <code>FacilityCapabilities</code> class or extend <code>Facility</code> enum with service metadata.</p>
+<hr />
+<h3 id="2-targettrack-protein-target-database-excellent-coverage-90">2. TargetTrack (Protein Target Database) ✅ EXCELLENT COVERAGE (90%)</h3>
+<p><strong>What TargetTrack Tracked:</strong>
+- 350,000+ protein sequences (targets)
+- Target status updates (weekly/quarterly from PSI centers)
+- Experimental protocols and deviations
+- Detailed trial history from 100+ investigators at 35 research centers
+- Target selection via bioinformatics-based sequence/structure clustering
+- Complete XML schema (targetTrack-v1.4.1)</p>
+<p><strong>Our Schema Coverage:</strong></p>
+<p>✅ <strong>Comprehensive:</strong></p>
+<p><em>Target Identification:</em>
+- <code>Sample</code>: <code>protein_name</code>, <code>gene_name</code>, <code>protein_id</code>, <code>uniprot_id</code>, <code>ncbi_taxid</code>
+- <code>Sample</code>: <code>sequences</code>, <code>sequence_length_aa</code>, <code>molecular_weight</code>
+- <code>ProteinConstruct</code>: Detailed construct metadata:
+  - <code>construct_id</code>, <code>construct_description</code>
+  - <code>vector_backbone</code>, <code>promoter</code>
+  - <code>n_terminal_tag</code>, <code>c_terminal_tag</code>, <code>tag_cleavage_site</code>
+  - <code>gene_synthesis_provider</code>, <code>codon_optimization</code>
+  - <code>sequence_verification_method</code></p>
+<p><em>Expression &amp; Purification:</em>
+- <code>SamplePreparation</code>:
+  - <code>expression_system</code>, <code>host_strain_or_cell_line</code>
+  - <code>purification_steps</code> (affinity, IEX, HIC, SEC)
+  - <code>tag_removal</code>, <code>protease_cleavage</code>
+  - <code>concentration_method</code>, <code>final_yield</code>
+  - <code>purity_assessment</code> (SDS-PAGE)</p>
+<p><em>Functional Annotations:</em>
+- <code>AggregatedProteinView</code>: Comprehensive metadata consolidation:
+  - <code>FunctionalSite</code>: Catalytic, binding, PTM sites
+  - <code>StructuralFeature</code>: Domains (CATH, SCOP, Pfam), secondary structure, disorder
+  - <code>ProteinProteinInteraction</code>: Partners, interface residues, binding energies
+  - <code>LigandInteraction</code>: Small molecules with Kd/Ki/IC50
+  - <code>MutationEffect</code>: Stability (ΔΔG), disease associations (OMIM)
+  - <code>PostTranslationalModification</code>: 15+ modification types
+  - <code>BiophysicalProperty</code>: Tm, solubility, pI, extinction coefficient
+  - <code>ConformationalEnsemble</code>: Multiple states with populations
+  - <code>EvolutionaryConservation</code>: Conservation scores, coevolved residues
+  - <code>DatabaseCrossReference</code>: 30+ databases (UniProt, PDB, Pfam, ChEMBL, OMIM, etc.)</p>
+<p><em>Experimental Trial Tracking:</em>
+- <code>ExperimentRun</code>: Data collection sessions with <code>processing_status</code>, <code>quality_metrics</code>
+- <code>WorkflowRun</code>: Processing workflows with timestamps (<code>started_at</code>, <code>completed_at</code>)
+- <code>Study</code>: Project-level organization with multiple samples/experiments</p>
+<p><em>Evidence &amp; Provenance:</em>
+- Evidence types: experimental, predicted, inferred, literature-curated
+- Evidence codes (ECO - Evidence and Conclusion Ontology)
+- Source databases (PDBe-KB, UniProt, AlphaFold, etc.)
+- Confidence scores (0-1)
+- PubMed references (PMID)</p>
+<p>⚠️ <strong>Gaps:</strong>
+- No explicit target selection rationale:
+  - Bioinformatics clustering methodology
+  - Sequence/structure cluster representative designation
+  - Structural novelty justification
+- No weekly/quarterly status update timeline tracking
+- Limited multi-center collaboration metadata:
+  - Participating institutions
+  - Center-specific protocols vs standard protocols
+  - Protocol deviation tracking</p>
+<p><strong>Recommendation:</strong> Consider adding:
+1. <code>TargetSelectionRationale</code> to <code>Sample</code>:
+   - <code>selection_method</code> (bioinformatics, structural_genomics, disease_relevance)
+   - <code>cluster_representative_of</code>
+   - <code>novelty_justification</code>
+2. <code>CollaborativeProject</code> extension to <code>Study</code>:
+   - <code>participating_institutions</code> (using ROR)
+   - <code>funding_program</code>
+   - <code>protocol_deviations</code></p>
+<hr />
+<h3 id="3-psi-technology-portal-no-direct-coverage-20">3. PSI Technology Portal ❌ NO DIRECT COVERAGE (20%)</h3>
+<p><strong>What It Was:</strong>
+- Technical reports on method development
+- Protocol documentation
+- Technology innovations from PSI centers
+- Status: Retired, not accessible</p>
+<p><strong>Our Schema Coverage:</strong></p>
+<p>✅ <strong>Partial:</strong>
+- <code>WorkflowRun.software_name</code>, <code>software_version</code>: Software/method tracking
+- <code>SamplePreparation</code>: Protocol documentation
+- <code>processing_notes</code>: Free-text method descriptions</p>
+<p>⚠️ <strong>Gaps:</strong>
+- No explicit "method development" or "technology report" entity
+- No protocol versioning system
+- No technology innovation tracking class</p>
+<p><strong>Recommendation:</strong> Low priority. If needed, add:
+- <code>TechnologyReport</code> class with:
+  - <code>report_id</code>, <code>title</code>, <code>method_category</code>
+  - <code>protocol_version</code>, <code>innovation_description</code>
+  - <code>validation_data</code>, <code>performance_metrics</code></p>
+<hr />
+<h3 id="4-psi-publications-portal-minimal-coverage-40">4. PSI Publications Portal ⚠️ MINIMAL COVERAGE (40%)</h3>
+<p><strong>What It Tracked:</strong>
+- 2,300+ PSI publications
+- Full bibliographic metadata (authors, journal, DOI)
+- CSV and EndNote exports
+- Archived at Zenodo DOI 10.5281/zenodo.821648</p>
+<p><strong>Our Schema Coverage:</strong></p>
+<p>✅ <strong>Partial:</strong>
+- <code>Study.publications</code>: List of publication IDs
+- Evidence tracking: PMID citations in <code>AggregatedProteinView</code> annotations
+- <code>WorkflowRun.references</code>: Publication references</p>
+<p>⚠️ <strong>Gaps:</strong>
+- No comprehensive <code>Publication</code> class with:
+  - DOI, PMID, title
+  - Authors list
+  - Journal, volume, pages, year
+  - Funding acknowledgments
+- No publication-to-structure linkage tracking
+- No publication-to-dataset relationships
+- No bibliometric metadata</p>
+<p><strong>Recommendation:</strong> Medium priority. Add <code>Publication</code> class:</p>
+<pre><code class="language-yaml">Publication:
+  attributes:
+    publication_id:
+      identifier: true
+    doi:
+      range: string
+    pmid:
+      range: string
+    title:
+      range: string
+    authors:
+      range: string
+      multivalued: true
+    journal:
+      range: string
+    year:
+      range: integer
+    volume:
+      range: string
+    pages:
+      range: string
+    funding_acknowledgments:
+      range: string
+      multivalued: true
+    related_structures:
+      range: string
+      multivalued: true
+    related_datasets:
+      range: Dataset
+      multivalued: true
+</code></pre>
+<hr />
+<h3 id="5-nature-research-highlights-no-coverage-0">5. Nature Research Highlights ❌ NO COVERAGE (0%)</h3>
+<p><strong>What It Was:</strong>
+- Educational structural biology articles
+- Science communication content
+- Partially archived on PDB-101</p>
+<p><strong>Our Schema Coverage:</strong>
+- ❌ No educational content modeling
+- ❌ No science communication tracking</p>
+<p><strong>Recommendation:</strong> None. Out of scope for data modeling.</p>
+<hr />
+<h3 id="6-sbkb-database-statistics-partial-coverage-70">6. SBKB Database Statistics ✅ PARTIAL COVERAGE (70%)</h3>
+<p><strong>SBKB Statistics:</strong>
+- 6,920 PSI structures (5,472 distinct)
+- 22.8M homology models
+- 335K targets
+- 23.73M annotations
+- Redundancy tracking (distinct vs total structures)
+- Deposition trends over time</p>
+<p><strong>Our Schema Coverage:</strong></p>
+<p>✅ <strong>Strong:</strong>
+- <code>Dataset</code>: Can aggregate structure collections
+- <code>Study.samples</code>: Multiple samples per study
+- <code>Sample</code>: Multiple <code>ExperimentRun</code> instances = structure count
+- <code>WorkflowRun</code>: Homology modeling workflows:
+  - <code>workflow_type: homology_modeling</code>
+  - <code>search_model_pdb_id</code>: Template structure
+- <code>AggregatedProteinView</code>: Rich annotation metadata</p>
+<p>⚠️ <strong>Gaps:</strong>
+- No explicit "structure family" concept
+- No distinct vs redundant structure tracking
+- No deposition trend metadata
+- Homology model metadata less detailed than experimental structures:
+  - No template selection rationale
+  - No sequence identity to template
+  - No model confidence scores (e.g., QMEAN, ProQ)</p>
+<p><strong>Recommendation:</strong> Low priority unless PSI-style consortium reporting needed. Consider adding:
+1. <code>StructureFamily</code> class:
+   - <code>family_id</code>, <code>representative_structure</code>
+   - <code>member_structures</code> (redundant members)
+   - <code>sequence_identity_cutoff</code>
+2. Enhanced homology modeling in <code>WorkflowRun</code>:
+   - <code>template_sequence_identity</code>
+   - <code>model_confidence_score</code>
+   - <code>modeling_software_settings</code></p>
+<hr />
+<h2 id="overall-sbkb-coverage-assessment">Overall SBKB Coverage Assessment</h2>
+<h3 id="strengths-of-our-schema-beyond-sbkb">Strengths of Our Schema (Beyond SBKB)</h3>
+<ol>
+<li>✅ <strong>More comprehensive experimental metadata:</strong></li>
+<li>Cryo-EM (microscope specs, detector types, dose rates, CTF parameters)</li>
+<li>SAXS/WAXS (q-range, sample changers)</li>
+<li>
+<p>Multiple imaging modalities (FTIR, XRF, fluorescence, optical)</p>
+</li>
+<li>
+<p>✅ <strong>Richer protein functional annotations:</strong></p>
+</li>
+<li>30+ database cross-references</li>
+<li>PTMs with 15+ modification types</li>
+<li>Mutation effects with ΔΔG and disease associations</li>
+<li>Biophysical properties (Tm, solubility, pI)</li>
+<li>Conformational ensembles</li>
+<li>
+<p>Evolutionary conservation</p>
+</li>
+<li>
+<p>✅ <strong>Better facility metadata:</strong></p>
+</li>
+<li>ROR IDs for persistent organizational identification</li>
+<li>DOE classification and funding office tracking</li>
+<li>Facility upgrade timelines (e.g., APS-U)</li>
+<li>
+<p>Parent organization hierarchies</p>
+</li>
+<li>
+<p>✅ <strong>Modern file format support:</strong></p>
+</li>
+<li>HDF5, compressed formats (CBF_ZST)</li>
+<li>STAR files for cryo-EM</li>
+<li>
+<p>SHA-256 checksums for integrity</p>
+</li>
+<li>
+<p>✅ <strong>Enhanced provenance tracking:</strong></p>
+</li>
+<li>Compute resources (CPU/GPU/memory)</li>
+<li>Workflow execution timestamps</li>
+<li>Processing levels (0=raw, 1=corrected, 2=derived, 3=model)</li>
+<li>File roles (raw, intermediate, final, diagnostic)</li>
+</ol>
+<h3 id="gaps-compared-to-sbkb">Gaps Compared to SBKB</h3>
+<ol>
+<li>⚠️ <strong>Facility service/capability tracking:</strong></li>
+<li>Remote data collection availability</li>
+<li>Mail-in services</li>
+<li>On-site crystallization facilities</li>
+<li>Structure determination services</li>
+<li>
+<p>Robotic screening/mounting</p>
+</li>
+<li>
+<p>⚠️ <strong>Collaborative center metadata:</strong></p>
+</li>
+<li>Multi-institution projects</li>
+<li>PSI-style consortia organization</li>
+<li>Center-specific vs standard protocols</li>
+<li>
+<p>Protocol deviation tracking</p>
+</li>
+<li>
+<p>⚠️ <strong>Publication modeling:</strong></p>
+</li>
+<li>Full bibliographic metadata</li>
+<li>Author lists</li>
+<li>Funding acknowledgments</li>
+<li>
+<p>Publication-to-dataset linkage</p>
+</li>
+<li>
+<p>⚠️ <strong>Target selection rationale:</strong></p>
+</li>
+<li>Bioinformatics clustering methodology</li>
+<li>Structural novelty justification</li>
+<li>
+<p>Sequence/structure cluster representatives</p>
+</li>
+<li>
+<p>⚠️ <strong>Statistical aggregation views:</strong></p>
+</li>
+<li>Structure families (redundancy tracking)</li>
+<li>Deposition trends over time</li>
+<li>Homology model quality metrics</li>
+</ol>
+<hr />
+<h2 id="coverage-summary-table">Coverage Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>SBKB Component</th>
+<th>Coverage</th>
+<th>Priority for Enhancement</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BioSync</strong> (facilities)</td>
+<td><strong>85%</strong></td>
+<td>Medium</td>
+<td>Add service capabilities (remote, mail-in, etc.)</td>
+</tr>
+<tr>
+<td><strong>TargetTrack</strong> (proteins)</td>
+<td><strong>90%</strong></td>
+<td>Low</td>
+<td>Very comprehensive; optional collaborative tracking</td>
+</tr>
+<tr>
+<td><strong>Technology Portal</strong></td>
+<td><strong>20%</strong></td>
+<td>Low</td>
+<td>Retired; limited value for most use cases</td>
+</tr>
+<tr>
+<td><strong>Publications</strong></td>
+<td><strong>40%</strong></td>
+<td>Medium</td>
+<td>Add if bibliometrics or grant reporting needed</td>
+</tr>
+<tr>
+<td><strong>Research Highlights</strong></td>
+<td><strong>0%</strong></td>
+<td>None</td>
+<td>Out of scope</td>
+</tr>
+<tr>
+<td><strong>Statistics</strong></td>
+<td><strong>70%</strong></td>
+<td>Low</td>
+<td>Add if PSI-style consortium reporting required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall Assessment:</strong> Lambda-ber-schema provides <strong>stronger experimental and protein annotation coverage</strong> than SBKB, with main gaps in <strong>facility services metadata</strong> and <strong>multi-center collaboration tracking</strong>.</p>
+<hr />
+<h2 id="recommendations">Recommendations</h2>
+<h3 id="priority-1-high-value">Priority 1 (High Value)</h3>
+<p><strong>1. Add Facility Service Capabilities</strong></p>
+<p>Option A: Extend <code>FacilityEnum</code> with service metadata
+Option B: Create <code>FacilityCapabilities</code> class</p>
+<pre><code class="language-yaml">FacilityCapabilities:
+  attributes:
+    facility:
+      range: FacilityEnum
+      required: true
+    remote_data_collection:
+      range: boolean
+    mail_in_service:
+      range: boolean
+    crystallization_services:
+      range: boolean
+    structure_determination_services:
+      range: boolean
+    robotic_sample_mounting:
+      range: boolean
+    microfocus_capabilities:
+      range: boolean
+    extreme_conditions_support:
+      range: boolean
+    user_support_level:
+      range: UserSupportLevelEnum
+</code></pre>
+<p><strong>2. Add Publication Class</strong></p>
+<pre><code class="language-yaml">Publication:
+  is_a: NamedThing
+  attributes:
+    publication_id:
+      identifier: true
+    doi:
+      range: string
+      pattern: &quot;^10\\.\\d{4,}/.+$&quot;
+    pmid:
+      range: string
+    title:
+      range: string
+      required: true
+    authors:
+      range: string
+      multivalued: true
+    journal:
+      range: string
+    year:
+      range: integer
+    volume:
+      range: string
+    pages:
+      range: string
+    abstract:
+      range: string
+    funding_acknowledgments:
+      range: string
+      multivalued: true
+    related_structures:
+      range: string
+      multivalued: true
+      description: &quot;PDB IDs of structures described&quot;
+    related_datasets:
+      range: Dataset
+      multivalued: true
+</code></pre>
+<p>Update <code>Study.publications</code> to use this class instead of strings.</p>
+<h3 id="priority-2-medium-value">Priority 2 (Medium Value)</h3>
+<p><strong>3. Add Collaborative Project Metadata to Study</strong></p>
+<pre><code class="language-yaml">Study:
+  attributes:
+    # ... existing attributes ...
+    participating_institutions:
+      range: string
+      multivalued: true
+      description: &quot;ROR IDs of collaborating institutions&quot;
+    funding_program:
+      range: string
+      description: &quot;e.g., PSI, DOE BER, NIH&quot;
+    grant_numbers:
+      range: string
+      multivalued: true
+    consortium_name:
+      range: string
+      description: &quot;e.g., PSI Biology, SBGrid&quot;
+</code></pre>
+<p><strong>4. Extend Sample with Target Selection Metadata</strong></p>
+<pre><code class="language-yaml">Sample:
+  attributes:
+    # ... existing attributes ...
+    target_selection_method:
+      range: TargetSelectionMethodEnum
+      description: &quot;How this target was chosen&quot;
+    cluster_representative_of:
+      range: string
+      description: &quot;Sequence/structure cluster this represents&quot;
+    novelty_justification:
+      range: string
+      description: &quot;Why this target is biologically/structurally novel&quot;
+    structural_genomics_target:
+      range: boolean
+
+enums:
+  TargetSelectionMethodEnum:
+    permissible_values:
+      bioinformatics_clustering:
+        description: &quot;Selected as sequence/structure cluster representative&quot;
+      disease_relevance:
+        description: &quot;Medical or health importance&quot;
+      structural_novelty:
+        description: &quot;Novel fold or domain architecture&quot;
+      functional_importance:
+        description: &quot;Key biological pathway or process&quot;
+      ligand_binding:
+        description: &quot;Drug target or cofactor binding site&quot;
+</code></pre>
+<h3 id="priority-3-low-value">Priority 3 (Low Value)</h3>
+<p><strong>5. Add Statistical Aggregation Views</strong></p>
+<p>Only implement if consortium reporting or multi-project analytics needed.</p>
+<pre><code class="language-yaml">StructureFamily:
+  attributes:
+    family_id:
+      identifier: true
+    representative_structure:
+      range: string
+      description: &quot;PDB ID of cluster representative&quot;
+    member_structures:
+      range: string
+      multivalued: true
+      description: &quot;All PDB IDs in this family&quot;
+    sequence_identity_cutoff:
+      range: float
+      description: &quot;Clustering threshold used&quot;
+    structural_similarity_metric:
+      range: string
+      description: &quot;e.g., TM-score, RMSD&quot;
+
+DepositionStatistics:
+  attributes:
+    year:
+      range: integer
+    facility:
+      range: FacilityEnum
+    structure_count:
+      range: integer
+    distinct_structure_count:
+      range: integer
+    experimental_structures:
+      range: integer
+    homology_models:
+      range: integer
+</code></pre>
+<p><strong>6. Enhanced Homology Modeling Metadata</strong></p>
+<pre><code class="language-yaml">WorkflowRun:
+  attributes:
+    # ... existing attributes ...
+    # Add for homology modeling workflows:
+    template_sequence_identity:
+      range: float
+      description: &quot;% sequence identity to template&quot;
+    template_coverage:
+      range: float
+      description: &quot;% of query covered by template&quot;
+    model_confidence_score:
+      range: float
+      description: &quot;e.g., QMEAN, ProQ, pLDDT&quot;
+    model_confidence_metric:
+      range: string
+      description: &quot;Name of confidence scoring method&quot;
+    alignment_method:
+      range: string
+      description: &quot;e.g., BLAST, HHpred, MUSCLE&quot;
+</code></pre>
+<hr />
+<h2 id="implementation-notes">Implementation Notes</h2>
+<h3 id="high-priority-implement-soon">High Priority (Implement Soon)</h3>
+<ul>
+<li>Facility service capabilities: Useful for beamline users choosing facilities</li>
+<li>Publication class: Essential for grant reporting and bibliometrics</li>
+</ul>
+<h3 id="medium-priority-implement-if-needed">Medium Priority (Implement If Needed)</h3>
+<ul>
+<li>Collaborative metadata: Important for multi-institution projects like BER</li>
+<li>Target selection rationale: Valuable for structural genomics programs</li>
+</ul>
+<h3 id="low-priority-implement-on-demand">Low Priority (Implement On Demand)</h3>
+<ul>
+<li>Statistical aggregation: Only for consortium-level reporting</li>
+<li>Enhanced homology modeling: Only if modeling workflows become primary use case</li>
+</ul>
+<h3 id="not-recommended">Not Recommended</h3>
+<ul>
+<li>Technology reports: Historical PSI component, limited modern relevance</li>
+<li>Educational content: Out of scope for experimental data modeling</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Lambda-ber-schema <strong>exceeds SBKB capabilities</strong> in experimental metadata richness, protein functional annotations, and modern technique support (cryo-EM, SAXS, multi-modal imaging). The legacy of SBKB informs us that:</p>
+<ol>
+<li><strong>Facility service metadata matters</strong> for users selecting beamlines</li>
+<li><strong>Collaborative project tracking</strong> is important for large consortia</li>
+<li><strong>Publication linkage</strong> enables bibliometric analysis and reporting</li>
+<li><strong>Target rationale</strong> helps justify structural genomics investments</li>
+</ol>
+<p>The schema is well-positioned to support <strong>individual lab workflows</strong> and <strong>beamline data management</strong> today, with clear extension points for <strong>consortium-scale operations</strong> if needed in the future.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

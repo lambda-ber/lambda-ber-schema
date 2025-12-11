@@ -421,6 +421,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-ontologyterm">Class: OntologyTerm</h1>
+<p><em>A term from a controlled vocabulary or ontology</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/OntologyTerm">lambdaber:OntologyTerm</a></p>
 <div class="mermaid"> classDiagram
     class OntologyTerm
@@ -437,6 +438,17 @@
       OntologyTerm : label
 
       OntologyTerm : ontology
+
+      OntologyTerm : terms
+
+
+
+
+
+        OntologyTerm --&gt; "*" OntologyTerm : terms
+        click OntologyTerm href "../OntologyTerm/"
+
+
 
       OntologyTerm : title
 
@@ -461,21 +473,27 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../terms/">terms</a></td>
+<td>* <br/> <a href="./">OntologyTerm</a></td>
+<td>Collection of ontology terms</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../label/">label</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The human-readable label or name of the ontology term</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../definition/">definition</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The formal definition or meaning of the ontology term</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ontology/">ontology</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The ontology or controlled vocabulary this term comes from (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -487,13 +505,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -533,6 +551,12 @@
 <td>range</td>
 <td><a href="./">OntologyTerm</a></td>
 </tr>
+<tr>
+<td><a href="./">OntologyTerm</a></td>
+<td><a href="../terms/">terms</a></td>
+<td>range</td>
+<td><a href="./">OntologyTerm</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -564,11 +588,24 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: OntologyTerm
+description: A term from a controlled vocabulary or ontology
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
+  terms:
+    name: terms
+    description: Collection of ontology terms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - ImageFeature
+    - OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   label:
     name: label
+    description: The human-readable label or name of the ontology term
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -576,6 +613,7 @@ attributes:
     range: string
   definition:
     name: definition
+    description: The formal definition or meaning of the ontology term
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -583,6 +621,8 @@ attributes:
     range: string
   ontology:
     name: ontology
+    description: The ontology or controlled vocabulary this term comes from (e.g.,
+      GO, SO, UBERON)
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -594,11 +634,26 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: OntologyTerm
+description: A term from a controlled vocabulary or ontology
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
+  terms:
+    name: terms
+    description: Collection of ontology terms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: terms
+    owner: OntologyTerm
+    domain_of:
+    - ImageFeature
+    - OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   label:
     name: label
+    description: The human-readable label or name of the ontology term
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: label
@@ -608,6 +663,7 @@ attributes:
     range: string
   definition:
     name: definition
+    description: The formal definition or meaning of the ontology term
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: definition
@@ -617,6 +673,8 @@ attributes:
     range: string
   ontology:
     name: ontology
+    description: The ontology or controlled vocabulary this term comes from (e.g.,
+      GO, SO, UBERON)
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: ontology
@@ -640,6 +698,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -650,6 +709,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

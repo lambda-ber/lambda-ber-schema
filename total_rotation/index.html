@@ -898,8 +898,8 @@
 
 
 <h1 id="slot-total_rotation">Slot: total_rotation</h1>
-<p><em>Total rotation range collected in degrees</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg">nsls2:Total_rotation_deg</a>
+<p><em>Total rotation range collected</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/total_rotation">lambdaber:total_rotation</a>
 Alias: total_rotation</p>
 <!-- no inheritance hierarchy -->
 
@@ -940,11 +940,15 @@ Alias: total_rotation</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Total_rotation_deg</td>
+<td>lambdaber:total_rotation</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:total_rotation</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Total_rotation_deg, imgCIF:_diffrn_scan_axis.angle_range</td>
 </tr>
 </tbody>
 </table>
@@ -952,15 +956,19 @@ Alias: total_rotation</p>
 <details>
 
 <pre><code class="language-yaml">name: total_rotation
-description: Total rotation range collected in degrees
+description: Total rotation range collected
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Total_rotation_deg
+- imgCIF:_diffrn_scan_axis.angle_range
 rank: 1000
-slot_uri: nsls2:Total_rotation_deg
 alias: total_rotation
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
 range: float
+unit:
+  ucum_code: deg
 
 </code></pre>
 

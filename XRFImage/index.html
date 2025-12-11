@@ -436,7 +436,18 @@
 
       XRFImage : description
 
-      XRFImage : detector_type
+      XRFImage : detector_model
+
+      XRFImage : detector_technology
+
+
+
+
+
+        XRFImage --&gt; "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
+
+
 
       XRFImage : dimensions_x
 
@@ -528,9 +539,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../detector_type/">detector_type</a></td>
+<td><a href="../detector_technology/">detector_technology</a></td>
+<td>0..1 <br/> <a href="../DetectorTechnologyEnum/">DetectorTechnologyEnum</a></td>
+<td>Type of X-ray detector technology used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../detector_model/">detector_model</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Type of X-ray detector used</td>
+<td>Specific detector model used for XRF measurement</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -554,7 +571,7 @@
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value</td>
+<td>Astigmatism value in Angstroms</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
@@ -608,13 +625,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -692,11 +709,23 @@ attributes:
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector used
+  detector_technology:
+    name: detector_technology
+    description: Type of X-ray detector technology used
+    comments:
+    - For XRF, typically energy-dispersive or wavelength-dispersive detectors
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_model:
+    name: detector_model
+    description: Specific detector model used for XRF measurement
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - CryoEMInstrument
@@ -779,13 +808,27 @@ attributes:
     owner: XRFImage
     domain_of:
     - XRayInstrument
+    - BeamlineInstrument
     - XRFImage
     range: XRaySourceTypeEnum
-  detector_type:
-    name: detector_type
-    description: Type of X-ray detector used
+  detector_technology:
+    name: detector_technology
+    description: Type of X-ray detector technology used
+    comments:
+    - For XRF, typically energy-dispersive or wavelength-dispersive detectors
     from_schema: https://w3id.org/lambda-ber-schema/
-    alias: detector_type
+    alias: detector_technology
+    owner: XRFImage
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_model:
+    name: detector_model
+    description: Specific detector model used for XRF measurement
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: detector_model
     owner: XRFImage
     domain_of:
     - CryoEMInstrument
@@ -824,7 +867,7 @@ attributes:
     range: float
   astigmatism:
     name: astigmatism
-    description: Astigmatism value
+    description: Astigmatism value in Angstroms
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
@@ -862,6 +905,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - Image
+    - RefinementParameters
     range: float
   dimensions_x:
     name: dimensions_x
@@ -903,6 +947,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - Image
+    - Micrograph
     range: float
   id:
     name: id
@@ -920,6 +965,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -930,6 +976,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

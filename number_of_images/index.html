@@ -899,7 +899,7 @@
 
 <h1 id="slot-number_of_images">Slot: number_of_images</h1>
 <p><em>Total number of diffraction images collected</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Number_of_images">nsls2:Number_of_images</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/number_of_images">lambdaber:number_of_images</a>
 Alias: number_of_images</p>
 <!-- no inheritance hierarchy -->
 
@@ -940,11 +940,15 @@ Alias: number_of_images</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Number_of_images</td>
+<td>lambdaber:number_of_images</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:number_of_images</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Number_of_images, imgCIF:_diffrn_scan.frames</td>
 </tr>
 </tbody>
 </table>
@@ -954,8 +958,10 @@ Alias: number_of_images</p>
 <pre><code class="language-yaml">name: number_of_images
 description: Total number of diffraction images collected
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Number_of_images
+- imgCIF:_diffrn_scan.frames
 rank: 1000
-slot_uri: nsls2:Number_of_images
 alias: number_of_images
 owner: ExperimentRun
 domain_of:

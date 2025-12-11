@@ -460,7 +460,7 @@
 <tr>
 <td><a href="../ph/">ph</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>pH of the buffer</td>
+<td>pH of the buffer (range: 0-14)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -496,6 +496,12 @@
 <tbody>
 <tr>
 <td><a href="../Sample/">Sample</a></td>
+<td><a href="../buffer_composition/">buffer_composition</a></td>
+<td>range</td>
+<td><a href="./">BufferComposition</a></td>
+</tr>
+<tr>
+<td><a href="../MeasurementConditions/">MeasurementConditions</a></td>
 <td><a href="../buffer_composition/">buffer_composition</a></td>
 <td>range</td>
 <td><a href="./">BufferComposition</a></td>
@@ -537,12 +543,12 @@ is_a: AttributeGroup
 attributes:
   ph:
     name: ph
-    description: pH of the buffer
+    description: 'pH of the buffer (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14
@@ -577,14 +583,14 @@ is_a: AttributeGroup
 attributes:
   ph:
     name: ph
-    description: pH of the buffer
+    description: 'pH of the buffer (range: 0-14)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: ph
     owner: BufferComposition
     domain_of:
     - BufferComposition
-    - BiophysicalProperty
+    - MeasurementConditions
     range: float
     minimum_value: 0
     maximum_value: 14

@@ -843,21 +843,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -898,7 +883,6 @@
 
 
 <h1 id="slot-pixel_size">Slot: pixel_size</h1>
-<p><em>Pixel size in Angstroms</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/pixel_size">lambdaber:pixel_size</a>
 Alias: pixel_size</p>
 <!-- no inheritance hierarchy -->
@@ -914,8 +898,18 @@ Alias: pixel_size</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Image/">Image</a></td>
-<td>An image file from structural biology experiments</td>
+<td><a href="../Micrograph/">Micrograph</a></td>
+<td>Motion-corrected micrograph derived from movie</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../XRFImage/">XRFImage</a></td>
+<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Movie/">Movie</a></td>
+<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
 <td>no</td>
 </tr>
 <tr>
@@ -924,13 +918,18 @@ Alias: pixel_size</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
+<td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../OpticalImage/">OpticalImage</a></td>
 <td>Visible light optical microscopy or photography image</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FTIRImage/">FTIRImage</a></td>
-<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
+<td><a href="../Image/">Image</a></td>
+<td>An image file from structural biology experiments</td>
 <td>no</td>
 </tr>
 <tr>
@@ -939,26 +938,22 @@ Alias: pixel_size</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRFImage/">XRFImage</a></td>
-<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td><a href="../FTIRImage/">FTIRImage</a></td>
+<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
-<td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
+<td><a href="../RefinementParameters/">RefinementParameters</a></td>
+<td>Parameters specific to 3D refinement workflows</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -982,14 +977,11 @@ Alias: pixel_size</p>
 <details>
 
 <pre><code class="language-yaml">name: pixel_size
-description: Pixel size in Angstroms
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: pixel_size
-owner: Image
 domain_of:
 - Image
-range: float
+- RefinementParameters
+range: string
 
 </code></pre>
 

@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -908,7 +899,7 @@
 
 <h1 id="slot-beamline">Slot: beamline</h1>
 <p><em>Beamline identifier (e.g., FMX, AMX, 12.3.1)</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Beamline">nsls2:Beamline</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/beamline">lambdaber:beamline</a>
 Alias: beamline</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: beamline</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _diffrn_source.beamline</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: beamline</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Beamline</td>
+<td>lambdaber:beamline</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:beamline</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Beamline, mmCIF:_diffrn_source.pdbx_synchrotron_beamline</td>
 </tr>
 </tbody>
 </table>
@@ -966,11 +957,11 @@ Alias: beamline</p>
 
 <pre><code class="language-yaml">name: beamline
 description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-comments:
-- 'Maps to PDB: _diffrn_source.beamline'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Beamline
+- mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 rank: 1000
-slot_uri: nsls2:Beamline
 alias: beamline
 owner: ExperimentRun
 domain_of:

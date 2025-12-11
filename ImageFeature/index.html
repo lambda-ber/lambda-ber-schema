@@ -430,7 +430,7 @@
 
 
 
-        ImageFeature --&gt; "0..1" OntologyTerm : terms
+        ImageFeature --&gt; "*" OntologyTerm : terms
         click OntologyTerm href "../OntologyTerm/"
 
 
@@ -457,8 +457,8 @@
 <tbody>
 <tr>
 <td><a href="../terms/">terms</a></td>
-<td>0..1 <br/> <a href="../OntologyTerm/">OntologyTerm</a></td>
-<td></td>
+<td>* <br/> <a href="../OntologyTerm/">OntologyTerm</a></td>
+<td>Ontology terms describing features identified in the image</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -505,11 +505,16 @@ is_a: AttributeGroup
 attributes:
   terms:
     name: terms
+    description: Ontology terms describing features identified in the image
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ImageFeature
+    - OntologyTerm
     range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
 </code></pre>
 </details>
@@ -523,13 +528,18 @@ is_a: AttributeGroup
 attributes:
   terms:
     name: terms
+    description: Ontology terms describing features identified in the image
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: terms
     owner: ImageFeature
     domain_of:
     - ImageFeature
+    - OntologyTerm
     range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

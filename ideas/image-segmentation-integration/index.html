@@ -1,0 +1,2739 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/ideas/image-segmentation-integration/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Image Segmentation Integration for Lambda-BER-Schema - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#image-segmentation-integration-for-lambda-ber-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Image Segmentation Integration for Lambda-BER-Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-segmentation-in-structural-biology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background: Segmentation in Structural Biology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background: Segmentation in Structural Biology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#role-of-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role of Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traditional-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-learning-revolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Learning Revolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenesis-a-case-study-in-foundation-model-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zenesis: A Case Study in Foundation Model Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zenesis: A Case Study in Foundation Model Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Lambda-BER-Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Lambda-BER-Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-schema-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Schema Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposed-schema-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Schema Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proposed Schema Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aimodelrun-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. AIModelRun Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-segmentationoutput-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. SegmentationOutput Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-imagepreprocessing-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ImagePreprocessing Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-aireadinessassessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. AIReadinessAssessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-complete-zenesis-workflow-in-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Complete Zenesis Workflow in Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lakehouse-integration-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lakehouse Integration Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lakehouse Integration Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bronze-layer-raw-scientific-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bronze Layer: Raw Scientific Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silver-layer-preprocessed-and-segmented-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Silver Layer: Preprocessed and Segmented Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gold-layer-analytics-ready-feature-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gold Layer: Analytics-Ready Feature Tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-quality-monitoring-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Quality Monitoring Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-across-imaging-modalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases Across Imaging Modalities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases Across Imaging Modalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cryo-em-particle-picking" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Cryo-EM Particle Picking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-x-ray-crystallography-loop-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. X-ray Crystallography Loop Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-saxs-background-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SAXS Background Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multi-technique-integrative-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Multi-Technique Integrative Study
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-active-learning-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Active Learning Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-multi-modal-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Multi-Modal Foundation Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-federated-learning-for-privacy-sensitive-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Federated Learning for Privacy-Sensitive Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-explainable-ai-for-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Explainable AI for Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="image-segmentation-integration-for-lambda-ber-schema">Image Segmentation Integration for Lambda-BER-Schema</h1>
+<h2 id="overview">Overview</h2>
+<p>This document explores integration of automated image segmentation workflows with the lambda-ber-schema data model, using foundation model-based approaches as a case study. Image segmentation is critical for extracting quantitative features from structural biology imaging data, and modern AI approaches are transforming how researchers analyze cryo-EM, X-ray crystallography, FIB-SEM, and other imaging modalities.</p>
+<h2 id="background-segmentation-in-structural-biology">Background: Segmentation in Structural Biology</h2>
+<h3 id="role-of-segmentation">Role of Segmentation</h3>
+<p>Image segmentation - the process of partitioning images into meaningful regions or objects - is fundamental to structural biology image analysis across multiple scales and techniques:</p>
+<p><strong>Cryo-Electron Microscopy (Cryo-EM)</strong>
+- Particle picking: Identifying individual protein particles in micrographs for single-particle analysis
+- Tomogram segmentation: Delineating subcellular structures, organelles, and macromolecular complexes in cryo-electron tomography
+- Membrane segmentation: Identifying lipid bilayers and membrane-associated proteins
+- Example: Deep learning models like crYOLO [Wagner et al. 2019] and TOPAZ [Bepler et al. 2019] achieve near-human performance for automated particle picking</p>
+<p><strong>X-ray Crystallography</strong>
+- Crystal identification and tracking during screening and data collection
+- Loop detection in mounting images
+- Ice ring and diffraction spot segmentation in diffraction patterns
+- Solvent boundary identification in electron density maps</p>
+<p><strong>Materials Science Imaging (FIB-SEM, TEM)</strong>
+- Phase segmentation: Distinguishing catalyst, ionomer, void space in electrode materials
+- Pore network characterization for fuel cells and batteries
+- Grain boundary detection in crystalline materials
+- Multi-phase material quantification [Mukherjee et al. 2025]</p>
+<p><strong>Small Angle Scattering (SAXS/SANS)</strong>
+- Background subtraction and signal region identification
+- Artifact detection in 2D detector images
+- Automated buffer selection from image series</p>
+<h3 id="traditional-approaches">Traditional Approaches</h3>
+<p>Classical segmentation methods have been workhorses of structural biology:</p>
+<ol>
+<li><strong>Thresholding Methods</strong></li>
+<li>Otsu thresholding for intensity-based separation</li>
+<li>Adaptive thresholding for varying local contrast</li>
+<li>
+<p>Limited effectiveness on low-SNR scientific images [Mukherjee et al. 2025]</p>
+</li>
+<li>
+<p><strong>Edge-Based Methods</strong></p>
+</li>
+<li>Sobel, Canny edge detection for boundary identification</li>
+<li>
+<p>Struggle with noisy electron microscopy data</p>
+</li>
+<li>
+<p><strong>Template Matching</strong></p>
+</li>
+<li>Normalized cross-correlation for particle picking</li>
+<li>Computationally expensive, requires good templates</li>
+<li>
+<p>Gold standard for many years in cryo-EM [Sigworth 2004]</p>
+</li>
+<li>
+<p><strong>Machine Learning (Pre-Deep Learning)</strong></p>
+</li>
+<li>Random forests, SVMs for pixel classification</li>
+<li>Feature engineering required (HOG, SIFT, etc.)</li>
+<li>Examples: ilastik [Sommer et al. 2011] for interactive segmentation</li>
+</ol>
+<h3 id="deep-learning-revolution">Deep Learning Revolution</h3>
+<p>Modern deep learning has transformed segmentation capabilities:</p>
+<p><strong>Supervised Approaches</strong>
+- U-Net architectures for biomedical image segmentation [Ronneberger et al. 2015]
+- Mask R-CNN for instance segmentation
+- 3D CNNs for volumetric data (3D U-Net) [Çiçek et al. 2016]
+- Requires large annotated datasets - major bottleneck for scientific imaging</p>
+<p><strong>Self-Supervised and Foundation Models</strong>
+- DINO (self-DIstillation with NO labels) [Liu et al. 2023] for visual representation learning
+- Segment Anything Model (SAM) [Kirillov et al. 2023] for zero-shot segmentation
+- SAM 2 [Ravi et al. 2024] extends to video/volumetric sequences
+- Grounding DINO + SAM for text-prompted segmentation
+- Domain-specific adaptations: MedSAM [Ma et al. 2024], µSAM [Archit et al. 2025] for microscopy</p>
+<p><strong>Challenge: The AI-Readiness Gap</strong></p>
+<p>Scientific imaging data presents unique challenges that limit direct application of foundation models [Mukherjee et al. 2025]:</p>
+<ul>
+<li><strong>Non-standard formats</strong>: 16/32-bit depth, proprietary formats (CBF, IMG, H5)</li>
+<li><strong>Anisotropic sampling</strong>: Different resolution in X/Y/Z dimensions</li>
+<li><strong>Extreme dynamic ranges</strong>: High bit depths not compatible with 8-bit RGB models</li>
+<li><strong>Domain-specific artifacts</strong>: Beam damage, ice contamination, diffraction artifacts</li>
+<li><strong>Lack of annotations</strong>: No large-scale labeled datasets for most scientific domains</li>
+<li><strong>Low signal-to-noise</strong>: Particularly acute in dose-limited cryo-EM</li>
+</ul>
+<p>Recent work like Zenesis [Mukherjee et al. 2025] addresses this gap by providing lightweight adaptation techniques that make foundation models work on raw scientific data without extensive retraining or preprocessing.</p>
+<h2 id="zenesis-a-case-study-in-foundation-model-segmentation">Zenesis: A Case Study in Foundation Model Segmentation</h2>
+<h3 id="overview_1">Overview</h3>
+<p>Zenesis is a comprehensive no-code platform for zero-shot segmentation of scientific images, developed at Lawrence Berkeley National Laboratory [Mukherjee et al. 2025]. It demonstrates how modern foundation models can be adapted for non-AI-ready scientific data through:</p>
+<ol>
+<li><strong>Multi-modal grounding</strong>: GroundingDINO for text-guided bounding box detection</li>
+<li><strong>Zero-shot segmentation</strong>: SAM/SAM2 for mask generation without training</li>
+<li><strong>Human-in-the-loop refinement</strong>: Interactive correction of automated results</li>
+<li><strong>Volumetric consistency</strong>: Heuristic-based temporal smoothing for 3D data</li>
+<li><strong>Real-time evaluation</strong>: Comprehensive metrics (Dice, IoU, accuracy) at multiple granularities</li>
+</ol>
+<h3 id="performance">Performance</h3>
+<p>Validated on FIB-SEM imaging of catalyst materials (crystalline and amorphous IrO₂ in PEM electrolyzer ionomer films):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Sample Type</th>
+<th>Accuracy</th>
+<th>IoU</th>
+<th>Dice Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Otsu Threshold</td>
+<td>Crystalline</td>
+<td>0.586±0.125</td>
+<td>0.161±0.057</td>
+<td>0.274±0.080</td>
+</tr>
+<tr>
+<td>Otsu Threshold</td>
+<td>Amorphous</td>
+<td>0.581±0.019</td>
+<td>0.407±0.024</td>
+<td>0.578±0.024</td>
+</tr>
+<tr>
+<td>SAM-only</td>
+<td>Crystalline</td>
+<td>0.485±0.146</td>
+<td>0.100±0.083</td>
+<td>0.173±0.137</td>
+</tr>
+<tr>
+<td>SAM-only</td>
+<td>Amorphous</td>
+<td>0.499±0.160</td>
+<td>0.405±0.088</td>
+<td>0.571±0.087</td>
+</tr>
+<tr>
+<td><strong>Zenesis</strong></td>
+<td><strong>Crystalline</strong></td>
+<td><strong>0.987±0.005</strong></td>
+<td><strong>0.857±0.029</strong></td>
+<td><strong>0.923±0.017</strong></td>
+</tr>
+<tr>
+<td><strong>Zenesis</strong></td>
+<td><strong>Amorphous</strong></td>
+<td><strong>0.947±0.005</strong></td>
+<td><strong>0.858±0.015</strong></td>
+<td><strong>0.923±0.009</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The dramatic improvement over baselines demonstrates the value of text-guided grounding (GroundingDINO) to overcome SAM's tendency to segment high-contrast background regions rather than subtle scientific features.</p>
+<h3 id="workflow-architecture">Workflow Architecture</h3>
+<pre><code>┌─────────────────────┐
+│  Raw Scientific     │
+│  Images/Volumes     │
+│  (FIB-SEM, Cryo-EM, │
+│   SAXS, XRD, etc.)  │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Data Harmonization  │
+│ - Format conversion │
+│ - Bit depth handling│
+│ - Bicubic interpolation│
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  GroundingDINO      │
+│  (Text → BBox)      │
+│  Prompt: &quot;porous    │
+│   ionomer layer&quot;    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  SAM/SAM2           │
+│  (BBox → Mask)      │
+└──────────┬──────────┘
+           │
+           ├─────────────────────┐
+           │                     │
+           ▼                     ▼
+┌─────────────────────┐  ┌──────────────────┐
+│ Human-in-the-Loop   │  │ Volumetric       │
+│ - Random box        │  │ Refinement       │
+│   correction        │  │ - Sliding window │
+│ - Hierarchical      │  │   averaging      │
+│   segmentation      │  │ - Outlier        │
+│                     │  │   correction     │
+└─────────────────────┘  └──────────────────┘
+           │                     │
+           └──────────┬──────────┘
+                      │
+                      ▼
+           ┌─────────────────────┐
+           │  Segmentation       │
+           │  Outputs            │
+           │  - Masks            │
+           │  - Bounding boxes   │
+           │  - Metrics          │
+           │  - Visualizations   │
+           └─────────────────────┘
+</code></pre>
+<h2 id="integration-with-lambda-ber-schema">Integration with Lambda-BER-Schema</h2>
+<h3 id="current-schema-coverage">Current Schema Coverage</h3>
+<p>The existing lambda-ber-schema already supports key aspects of segmentation workflows:</p>
+<p><strong>ExperimentRun</strong>: Captures raw image acquisition
+- Detector settings (bit depth, pixel size, exposure)
+- Instrument parameters
+- Quality metrics</p>
+<p><strong>WorkflowRun</strong>: Tracks computational processing
+- Software name/version
+- Parameters
+- Quality metrics
+- Processing status</p>
+<p><strong>DataFile</strong>: Links input/output files
+- File formats
+- Checksums
+- Parent-child relationships</p>
+<p><strong>Sample</strong>: Provides biological/chemical context
+- Molecular composition
+- Buffer conditions
+- Sample preparation details</p>
+<h3 id="proposed-schema-extensions">Proposed Schema Extensions</h3>
+<p>To fully support modern segmentation workflows, we propose the following additions:</p>
+<h4 id="1-aimodelrun-class">1. AIModelRun Class</h4>
+<p>Capture execution of AI/ML models with full reproducibility:</p>
+<pre><code class="language-yaml">AIModelRun:
+  description: &quot;Execution of an AI/ML model on scientific imaging data&quot;
+  is_a: WorkflowRun
+
+  attributes:
+    model_name:
+      range: string
+      required: true
+      examples:
+        - &quot;GroundingDINO&quot;
+        - &quot;SAM&quot;
+        - &quot;SAM2&quot;
+        - &quot;crYOLO&quot;
+        - &quot;TOPAZ&quot;
+        - &quot;DeepPicker&quot;
+
+    model_version:
+      range: string
+      required: true
+      examples: [&quot;1.0&quot;, &quot;Swin-T&quot;, &quot;ViT-H&quot;]
+
+    model_architecture:
+      range: string
+      description: &quot;Model architecture details&quot;
+      examples:
+        - &quot;Swin-T + ViT-H&quot;
+        - &quot;Vision Transformer (ViT-H/16)&quot;
+        - &quot;ResNet50 + FPN&quot;
+
+    model_weights:
+      range: string
+      description: &quot;Source of pretrained weights or checkpoint path&quot;
+      examples:
+        - &quot;COCO-pretrained&quot;
+        - &quot;s3://models/fib-sem-finetuned-v2.pth&quot;
+
+    prompt_text:
+      range: string
+      description: &quot;Natural language prompt for grounding/text-guided models&quot;
+      examples:
+        - &quot;porous ionomer layer&quot;
+        - &quot;protein particle&quot;
+        - &quot;crystalline catalyst&quot;
+
+    prompt_type:
+      range: PromptTypeEnum
+      description: &quot;Type of prompt/guidance provided to model&quot;
+
+    confidence_thresholds:
+      range: ConfidenceThresholds
+      description: &quot;Threshold parameters for model outputs&quot;
+
+    human_in_the_loop:
+      range: boolean
+      description: &quot;Whether interactive refinement was performed&quot;
+
+    interactive_corrections:
+      range: InteractiveCorrection
+      multivalued: true
+      description: &quot;Log of human corrections made during processing&quot;
+
+    preprocessing_steps:
+      range: PreprocessingStep
+      multivalued: true
+      description: &quot;Data transformations applied before model inference&quot;
+
+PromptTypeEnum:
+  permissible_values:
+    text:
+      description: &quot;Natural language text prompt&quot;
+    point:
+      description: &quot;Point click prompts&quot;
+    bounding_box:
+      description: &quot;Rectangular box prompts&quot;
+    rough_mask:
+      description: &quot;Coarse segmentation outline&quot;
+    interactive:
+      description: &quot;Mixed human-in-the-loop prompting&quot;
+
+ConfidenceThresholds:
+  attributes:
+    box_threshold:
+      range: float
+      description: &quot;Minimum confidence for bounding box detection&quot;
+      minimum_value: 0.0
+      maximum_value: 1.0
+    text_threshold:
+      range: float
+      description: &quot;Minimum confidence for text-image alignment&quot;
+    mask_threshold:
+      range: float
+      description: &quot;Minimum confidence for mask prediction&quot;
+</code></pre>
+<h4 id="2-segmentationoutput-class">2. SegmentationOutput Class</h4>
+<p>Structured representation of segmentation results:</p>
+<pre><code class="language-yaml">SegmentationOutput:
+  description: &quot;Results from image segmentation workflow&quot;
+
+  attributes:
+    mask_file:
+      range: DataFile
+      required: true
+      description: &quot;Binary or multi-class segmentation masks&quot;
+
+    bounding_boxes:
+      range: BoundingBox
+      multivalued: true
+      description: &quot;Detected object bounding boxes&quot;
+
+    segmentation_metrics:
+      range: SegmentationMetrics
+      description: &quot;Quantitative evaluation metrics&quot;
+
+    extracted_segments:
+      range: DataFile
+      multivalued: true
+      description: &quot;Individual segmented objects/regions&quot;
+
+    visualization_files:
+      range: DataFile
+      multivalued: true
+      description: &quot;Overlay images, dashboards, etc.&quot;
+
+    hierarchical_segments:
+      range: SegmentationOutput
+      multivalued: true
+      description: &quot;Nested segmentations (e.g., 'Further Segment' in Zenesis)&quot;
+
+BoundingBox:
+  attributes:
+    x_min:
+      range: float
+      required: true
+    y_min:
+      range: float
+      required: true
+    x_max:
+      range: float
+      required: true
+    y_max:
+      range: float
+      required: true
+    z_min:
+      range: float
+      description: &quot;For 3D volumes&quot;
+    z_max:
+      range: float
+    confidence:
+      range: float
+      minimum_value: 0.0
+      maximum_value: 1.0
+    label:
+      range: string
+      description: &quot;Class label or object name&quot;
+
+SegmentationMetrics:
+  description: &quot;Quantitative metrics for segmentation quality&quot;
+  attributes:
+    dice_score:
+      range: float
+      description: &quot;Dice similarity coefficient (F1 score for segmentation)&quot;
+      minimum_value: 0.0
+      maximum_value: 1.0
+    iou:
+      range: float
+      description: &quot;Intersection over Union (Jaccard index)&quot;
+      minimum_value: 0.0
+      maximum_value: 1.0
+    accuracy:
+      range: float
+      description: &quot;Pixel-wise accuracy&quot;
+      minimum_value: 0.0
+      maximum_value: 1.0
+    precision:
+      range: float
+      minimum_value: 0.0
+      maximum_value: 1.0
+    recall:
+      range: float
+      minimum_value: 0.0
+      maximum_value: 1.0
+    f1_score:
+      range: float
+      minimum_value: 0.0
+      maximum_value: 1.0
+    specificity:
+      range: float
+      minimum_value: 0.0
+      maximum_value: 1.0
+    ground_truth_available:
+      range: boolean
+      description: &quot;Whether metrics are computed against ground truth&quot;
+</code></pre>
+<h4 id="3-imagepreprocessing-class">3. ImagePreprocessing Class</h4>
+<p>Track data transformations that achieve "AI-readiness":</p>
+<pre><code class="language-yaml">ImagePreprocessing:
+  description: &quot;Transformations applied to raw data to make it AI-compatible&quot;
+  is_a: WorkflowRun
+
+  attributes:
+    normalization_method:
+      range: NormalizationMethodEnum
+      description: &quot;Intensity normalization approach&quot;
+
+    bit_depth_conversion:
+      range: string
+      description: &quot;Bit depth transformation&quot;
+      examples:
+        - &quot;16bit_to_8bit_percentile&quot;
+        - &quot;preserve_16bit&quot;
+        - &quot;32bit_float_normalize&quot;
+
+    contrast_adjustment:
+      range: ContrastMethodEnum
+      description: &quot;Contrast enhancement method&quot;
+
+    resolution_harmonization:
+      range: ResolutionHarmonization
+      description: &quot;Handling anisotropic voxel sizes&quot;
+
+    format_conversion:
+      range: FormatConversion
+      description: &quot;File format transformation&quot;
+
+    artifact_correction:
+      range: ArtifactCorrection
+      multivalued: true
+      description: &quot;Domain-specific artifact removal&quot;
+
+NormalizationMethodEnum:
+  permissible_values:
+    percentile_clip:
+      description: &quot;Clip to percentile range (e.g., 1-99%)&quot;
+    zscore:
+      description: &quot;Z-score normalization&quot;
+    min_max:
+      description: &quot;Min-max scaling to [0,1]&quot;
+    histogram_equalization:
+      description: &quot;Adaptive histogram equalization (CLAHE)&quot;
+    none:
+      description: &quot;No normalization applied&quot;
+
+ContrastMethodEnum:
+  permissible_values:
+    clahe:
+      description: &quot;Contrast Limited Adaptive Histogram Equalization&quot;
+    unsharp_mask:
+      description: &quot;Unsharp masking for edge enhancement&quot;
+    gamma_correction:
+      description: &quot;Gamma adjustment&quot;
+    adaptive_threshold:
+      description: &quot;Local adaptive thresholding&quot;
+    none:
+      description: &quot;No contrast adjustment&quot;
+
+ResolutionHarmonization:
+  description: &quot;Methods for handling anisotropic imaging&quot;
+  attributes:
+    method:
+      range: ResamplingMethodEnum
+    target_voxel_size:
+      range: VoxelSize
+    interpolation:
+      range: InterpolationMethodEnum
+
+ResamplingMethodEnum:
+  permissible_values:
+    isotropic_resampling:
+      description: &quot;Resample to isotropic voxels&quot;
+    slice_by_slice:
+      description: &quot;Process 2D slices independently&quot;
+    anisotropic_kernel:
+      description: &quot;Use anisotropic convolution kernels&quot;
+    preserve_native:
+      description: &quot;Keep original anisotropic sampling&quot;
+
+InterpolationMethodEnum:
+  permissible_values:
+    bicubic:
+      description: &quot;Bicubic interpolation&quot;
+    bilinear:
+      description: &quot;Bilinear interpolation&quot;
+    nearest_neighbor:
+      description: &quot;Nearest neighbor&quot;
+    lanczos:
+      description: &quot;Lanczos resampling&quot;
+
+ArtifactCorrection:
+  attributes:
+    artifact_type:
+      range: ArtifactTypeEnum
+    correction_method:
+      range: string
+    parameters:
+      range: string
+      description: &quot;JSON-encoded correction parameters&quot;
+
+ArtifactTypeEnum:
+  permissible_values:
+    ice_contamination:
+      description: &quot;Ice crystals in cryo-EM&quot;
+    beam_damage:
+      description: &quot;Radiation damage artifacts&quot;
+    motion_blur:
+      description: &quot;Sample motion during acquisition&quot;
+    charging_artifacts:
+      description: &quot;Electron charging in SEM/TEM&quot;
+    diffraction_artifacts:
+      description: &quot;Unwanted diffraction in X-ray data&quot;
+    detector_artifacts:
+      description: &quot;Dead pixels, hot pixels, detector edge effects&quot;
+</code></pre>
+<h4 id="4-aireadinessassessment">4. AIReadinessAssessment</h4>
+<p>Metadata to track whether data is suitable for foundation models:</p>
+<pre><code class="language-yaml">AIReadinessAssessment:
+  description: &quot;Assessment of data compatibility with AI/ML workflows&quot;
+
+  attributes:
+    assessed_date:
+      range: string
+      description: &quot;When assessment was performed&quot;
+
+    bit_depth_compatible:
+      range: boolean
+      description: &quot;Whether bit depth is compatible with target model&quot;
+
+    format_standardized:
+      range: boolean
+      description: &quot;Whether file format is AI-framework compatible&quot;
+
+    contrast_sufficient:
+      range: boolean
+      description: &quot;Whether contrast is adequate for segmentation&quot;
+
+    resolution_adequate:
+      range: boolean
+      description: &quot;Whether spatial resolution meets model requirements&quot;
+
+    annotation_available:
+      range: boolean
+      description: &quot;Whether ground truth annotations exist&quot;
+
+    signal_to_noise_ratio:
+      range: float
+      description: &quot;Estimated SNR&quot;
+
+    preprocessing_required:
+      range: string
+      multivalued: true
+      description: &quot;List of required preprocessing steps&quot;
+      examples:
+        - &quot;contrast_normalization&quot;
+        - &quot;anisotropic_voxel_correction&quot;
+        - &quot;artifact_removal&quot;
+
+    foundation_model_applicable:
+      range: boolean
+      description: &quot;Whether zero-shot foundation models can be applied&quot;
+
+    recommended_approach:
+      range: SegmentationApproachEnum
+      description: &quot;Recommended segmentation strategy&quot;
+
+SegmentationApproachEnum:
+  permissible_values:
+    foundation_model_zero_shot:
+      description: &quot;Foundation models (SAM, Zenesis) without training&quot;
+    foundation_model_finetuned:
+      description: &quot;Foundation models with domain-specific fine-tuning&quot;
+    supervised_training:
+      description: &quot;Train supervised model from scratch (requires annotations)&quot;
+    classical_methods:
+      description: &quot;Traditional image processing (thresholding, edge detection)&quot;
+    hybrid:
+      description: &quot;Combination of AI and classical methods&quot;
+</code></pre>
+<h3 id="example-complete-zenesis-workflow-in-schema">Example: Complete Zenesis Workflow in Schema</h3>
+<pre><code class="language-yaml">Dataset:
+  dataset_id: &quot;CIWE-2025-001&quot;
+  title: &quot;Iridium Oxide Catalyst Distribution in PEM Electrolyzer Ionomer Films&quot;
+  studies:
+    - study_code: &quot;CIWE-IrO2-FIB-SEM-2025&quot;
+      description: &quot;FIB-SEM imaging of crystalline and amorphous IrO₂ catalysts&quot;
+
+      # Sample metadata
+      samples:
+        - sample_code: &quot;IrO2-crystalline-001&quot;
+          sample_type: catalyst
+          molecular_composition:
+            - molecule_name: &quot;Iridium oxide (crystalline)&quot;
+              chemical_formula: &quot;IrO2&quot;
+              concentration: 0.85
+              concentration_unit: mg_per_cm2
+          storage_conditions:
+            storage_temperature: -80
+            temperature_unit: celsius
+          notes: &quot;Needle-like morphology, specific surface area ~110 m²/g&quot;
+
+        - sample_code: &quot;IrO2-amorphous-001&quot;
+          sample_type: catalyst
+          molecular_composition:
+            - molecule_name: &quot;Iridium oxide (amorphous)&quot;
+              chemical_formula: &quot;IrOx&quot;
+              concentration: 0.85
+              concentration_unit: mg_per_cm2
+          notes: &quot;Specific surface area ~50 m²/g&quot;
+
+      # FIB-SEM acquisition
+      instrument_runs:
+        - experiment_code: &quot;FIB-SEM-20250630-001&quot;
+          technique: fib_sem
+          sample_id: &quot;IrO2-crystalline-001&quot;
+          instrument_id: &quot;LBNL-FIB-SEM-01&quot;
+          start_date: &quot;2025-06-30&quot;
+          collection_mode: volumetric
+          detector_settings:
+            bit_depth: 16
+            pixel_size_x: 5.0  # nm
+            pixel_size_y: 5.0
+            voxel_size_z: 10.0  # anisotropic
+          quality_metrics:
+            - metric_name: &quot;Signal-to-Noise Ratio&quot;
+              metric_value: &quot;12.5&quot;
+          ai_readiness_assessment:
+            assessed_date: &quot;2025-06-30&quot;
+            bit_depth_compatible: true
+            format_standardized: true
+            contrast_sufficient: false
+            resolution_adequate: true
+            annotation_available: false
+            preprocessing_required:
+              - &quot;contrast_normalization&quot;
+              - &quot;anisotropic_voxel_correction&quot;
+            foundation_model_applicable: true
+            recommended_approach: foundation_model_zero_shot
+
+        - experiment_code: &quot;FIB-SEM-20250630-002&quot;
+          technique: fib_sem
+          sample_id: &quot;IrO2-amorphous-001&quot;
+          instrument_id: &quot;LBNL-FIB-SEM-01&quot;
+          start_date: &quot;2025-06-30&quot;
+          collection_mode: volumetric
+          detector_settings:
+            bit_depth: 16
+            pixel_size_x: 5.0
+            pixel_size_y: 5.0
+            voxel_size_z: 10.0
+
+      # Data preprocessing workflow
+      workflow_runs:
+        - workflow_code: &quot;PREPROCESS-001&quot;
+          workflow_type: image_preprocessing
+          experiment_id: &quot;FIB-SEM-20250630-001&quot;
+          software_name: &quot;Zenesis&quot;
+          software_version: &quot;1.0&quot;
+          processing_status: completed
+          start_date: &quot;2025-06-30T14:00:00&quot;
+          end_date: &quot;2025-06-30T14:15:00&quot;
+          parameters:
+            normalization_method: &quot;percentile_clip&quot;
+            bit_depth_conversion: &quot;16bit_to_8bit_percentile&quot;
+            contrast_adjustment: &quot;clahe&quot;
+            resolution_harmonization:
+              method: &quot;isotropic_resampling&quot;
+              interpolation: &quot;bicubic&quot;
+
+        # Zenesis segmentation workflow
+        - workflow_code: &quot;ZENESIS-SEG-001&quot;
+          workflow_type: ai_segmentation
+          experiment_id: &quot;FIB-SEM-20250630-001&quot;
+          software_name: &quot;Zenesis&quot;
+          software_version: &quot;1.0&quot;
+          processing_status: completed
+          start_date: &quot;2025-06-30T14:15:00&quot;
+          end_date: &quot;2025-06-30T15:30:00&quot;
+          parameters:
+            model_name: &quot;GroundingDINO + SAM&quot;
+            model_version: &quot;Swin-T + ViT-H&quot;
+            model_architecture: &quot;Swin Transformer + Vision Transformer&quot;
+            prompt_text: &quot;porous ionomer layer&quot;
+            prompt_type: &quot;text&quot;
+            box_threshold: 0.35
+            text_threshold: 0.25
+            human_in_the_loop: true
+            preprocessing_pipeline: &quot;PREPROCESS-001&quot;
+            volumetric_refinement:
+              enabled: true
+              method: &quot;sliding_window_average&quot;
+              window_size: 5
+              height_factor_threshold: 2.0
+          quality_metrics:
+            - metric_name: &quot;Dice Score&quot;
+              metric_value: &quot;0.923&quot;
+            - metric_name: &quot;IoU&quot;
+              metric_value: &quot;0.857&quot;
+            - metric_name: &quot;Accuracy&quot;
+              metric_value: &quot;0.987&quot;
+            - metric_name: &quot;Processing Time&quot;
+              metric_value: &quot;75&quot;
+              metric_unit: &quot;minutes&quot;
+          segmentation_output:
+            mask_file: &quot;zenesis_masks_crystalline.npy&quot;
+            bounding_boxes:
+              - x_min: 150
+                y_min: 200
+                x_max: 1800
+                y_max: 450
+                confidence: 0.92
+                label: &quot;ionomer_layer&quot;
+            segmentation_metrics:
+              dice_score: 0.923
+              iou: 0.857
+              accuracy: 0.987
+              ground_truth_available: true
+            visualization_files:
+              - &quot;zenesis_overlay_crystalline.png&quot;
+              - &quot;zenesis_dashboard_crystalline.html&quot;
+
+        - workflow_code: &quot;ZENESIS-SEG-002&quot;
+          workflow_type: ai_segmentation
+          experiment_id: &quot;FIB-SEM-20250630-002&quot;
+          software_name: &quot;Zenesis&quot;
+          software_version: &quot;1.0&quot;
+          processing_status: completed
+          parameters:
+            model_name: &quot;GroundingDINO + SAM&quot;
+            prompt_text: &quot;porous ionomer layer&quot;
+            prompt_type: &quot;text&quot;
+            human_in_the_loop: true
+          quality_metrics:
+            - metric_name: &quot;Dice Score&quot;
+              metric_value: &quot;0.923&quot;
+            - metric_name: &quot;IoU&quot;
+              metric_value: &quot;0.858&quot;
+            - metric_name: &quot;Accuracy&quot;
+              metric_value: &quot;0.947&quot;
+          segmentation_output:
+            segmentation_metrics:
+              dice_score: 0.923
+              iou: 0.858
+              accuracy: 0.947
+              ground_truth_available: true
+
+        # Feature extraction from segmentations
+        - workflow_code: &quot;FEATURE-EXTRACT-001&quot;
+          workflow_type: quantitative_analysis
+          experiment_id: &quot;FIB-SEM-20250630-001&quot;
+          software_name: &quot;scikit-image&quot;
+          software_version: &quot;0.24.0&quot;
+          processing_status: completed
+          parent_workflow: &quot;ZENESIS-SEG-001&quot;
+          parameters:
+            input_masks: &quot;zenesis_masks_crystalline.npy&quot;
+            features_computed:
+              - &quot;ionomer_coverage_fraction&quot;
+              - &quot;catalyst_particle_count&quot;
+              - &quot;pore_size_distribution&quot;
+              - &quot;interfacial_area&quot;
+          quality_metrics:
+            - metric_name: &quot;Ionomer Coverage&quot;
+              metric_value: &quot;68.5&quot;
+              metric_unit: &quot;percent&quot;
+            - metric_name: &quot;Average Pore Size&quot;
+              metric_value: &quot;45.2&quot;
+              metric_unit: &quot;nm&quot;
+
+      # Data files with provenance
+      data_files:
+        # Raw data
+        - file_name: &quot;crystalline_IrO2_volume.tiff&quot;
+          file_format: tiff
+          file_size_mb: 2500
+          data_type: raw_image
+          checksum: &quot;sha256:abc123def456...&quot;
+          experiment_id: &quot;FIB-SEM-20250630-001&quot;
+
+        - file_name: &quot;amorphous_IrO2_volume.tiff&quot;
+          file_format: tiff
+          file_size_mb: 2400
+          data_type: raw_image
+          experiment_id: &quot;FIB-SEM-20250630-002&quot;
+
+        # Preprocessed data
+        - file_name: &quot;crystalline_normalized.npy&quot;
+          file_format: numpy
+          file_size_mb: 1200
+          data_type: processed_image
+          parent_file: &quot;crystalline_IrO2_volume.tiff&quot;
+          workflow_id: &quot;PREPROCESS-001&quot;
+
+        # Segmentation outputs
+        - file_name: &quot;zenesis_masks_crystalline.npy&quot;
+          file_format: numpy
+          file_size_mb: 150
+          data_type: segmentation_mask
+          parent_file: &quot;crystalline_normalized.npy&quot;
+          workflow_id: &quot;ZENESIS-SEG-001&quot;
+          checksum: &quot;sha256:seg789mask012...&quot;
+
+        - file_name: &quot;zenesis_bboxes_crystalline.json&quot;
+          file_format: json
+          file_size_mb: 0.5
+          data_type: annotation
+          workflow_id: &quot;ZENESIS-SEG-001&quot;
+
+        - file_name: &quot;zenesis_overlay_crystalline.png&quot;
+          file_format: png
+          file_size_mb: 25
+          data_type: visualization
+          workflow_id: &quot;ZENESIS-SEG-001&quot;
+
+        - file_name: &quot;zenesis_dashboard_crystalline.html&quot;
+          file_format: html
+          file_size_mb: 2
+          data_type: visualization
+          workflow_id: &quot;ZENESIS-SEG-001&quot;
+
+        # Feature tables
+        - file_name: &quot;ionomer_features_crystalline.parquet&quot;
+          file_format: parquet
+          file_size_mb: 5
+          data_type: derived_data
+          workflow_id: &quot;FEATURE-EXTRACT-001&quot;
+          parent_file: &quot;zenesis_masks_crystalline.npy&quot;
+</code></pre>
+<h2 id="lakehouse-integration-architecture">Lakehouse Integration Architecture</h2>
+<h3 id="bronze-layer-raw-scientific-data">Bronze Layer: Raw Scientific Data</h3>
+<p><strong>Purpose</strong>: Store raw, unmodified acquisition data with minimal schema validation</p>
+<p><strong>Storage Format</strong>: Native scientific formats with Delta Lake metadata overlay</p>
+<pre><code>s3://lakehouse/bronze/
+├── fib-sem/
+│   ├── technique=fib_sem/
+│   │   └── year=2025/month=06/day=30/
+│   │       ├── crystalline_IrO2_volume.tiff
+│   │       ├── amorphous_IrO2_volume.tiff
+│   │       └── _delta_log/
+│   └── metadata/
+│       └── lambda-ber-schema/
+│           └── experiment_runs.json
+├── cryo-em/
+│   └── technique=cryo_em/
+└── xray/
+    └── technique=xrd/
+</code></pre>
+<p><strong>Lambda-BER-Schema Role</strong>:
+- Catalog all raw acquisitions with provenance
+- Link to instrument parameters, sample metadata
+- Track AI readiness assessment
+- Enable cross-technique queries</p>
+<p><strong>Example Query</strong>:</p>
+<pre><code class="language-sql">-- Find all 16-bit FIB-SEM volumes with high SNR
+SELECT
+    e.experiment_code,
+    e.sample_id,
+    s.molecular_composition,
+    e.detector_settings.bit_depth,
+    e.quality_metrics
+FROM experiment_runs e
+JOIN samples s ON e.sample_id = s.sample_code
+WHERE e.technique = 'fib_sem'
+  AND e.collection_mode = 'volumetric'
+  AND e.detector_settings.bit_depth = 16
+  AND json_extract(e.quality_metrics, '$[?(@.metric_name==&quot;Signal-to-Noise Ratio&quot;)].metric_value') &gt; 10
+  AND e.ai_readiness_assessment.foundation_model_applicable = true
+</code></pre>
+<h3 id="silver-layer-preprocessed-and-segmented-data">Silver Layer: Preprocessed and Segmented Data</h3>
+<p><strong>Purpose</strong>: Store AI-ready data and segmentation results with quality metrics</p>
+<p><strong>Storage Format</strong>: Standardized formats (NumPy, Zarr, Parquet) in Delta Lake tables</p>
+<pre><code>s3://lakehouse/silver/
+├── preprocessed/
+│   ├── technique=fib_sem/preprocessing=zenesis/
+│   │   ├── data/
+│   │   │   ├── crystalline_normalized.zarr/
+│   │   │   └── amorphous_normalized.zarr/
+│   │   └── _delta_log/
+│   └── metadata/
+│       └── image_preprocessing_workflows.parquet
+│
+├── segmentations/
+│   ├── model=zenesis/prompt=ionomer_layer/
+│   │   ├── masks/
+│   │   │   ├── crystalline_masks.zarr/
+│   │   │   └── amorphous_masks.zarr/
+│   │   ├── bounding_boxes/
+│   │   │   └── all_bboxes.parquet
+│   │   └── _delta_log/
+│   └── metadata/
+│       └── segmentation_workflows.parquet
+│
+└── quality_metrics/
+    ├── per_slice_metrics.parquet
+    ├── per_sample_metrics.parquet
+    └── _delta_log/
+</code></pre>
+<p><strong>Lambda-BER-Schema Role</strong>:
+- Track preprocessing transformations (WorkflowRun with ImagePreprocessing)
+- Record segmentation parameters (AIModelRun)
+- Store quality metrics (SegmentationMetrics)
+- Link outputs to input experiments</p>
+<p><strong>Example Query</strong>:</p>
+<pre><code class="language-sql">-- Compare segmentation quality across different samples
+SELECT
+    w.workflow_code,
+    e.sample_id,
+    s.sample_type,
+    s.molecular_composition[0].molecule_name as catalyst_type,
+    json_extract(w.quality_metrics, '$[?(@.metric_name==&quot;Dice Score&quot;)].metric_value') as dice_score,
+    json_extract(w.quality_metrics, '$[?(@.metric_name==&quot;IoU&quot;)].metric_value') as iou,
+    w.parameters.prompt_text,
+    w.parameters.human_in_the_loop
+FROM workflow_runs w
+JOIN experiment_runs e ON w.experiment_id = e.experiment_code
+JOIN samples s ON e.sample_id = s.sample_code
+WHERE w.workflow_type = 'ai_segmentation'
+  AND w.software_name = 'Zenesis'
+  AND json_extract(w.quality_metrics, '$[?(@.metric_name==&quot;Dice Score&quot;)].metric_value') &gt; 0.90
+ORDER BY dice_score DESC
+</code></pre>
+<h3 id="gold-layer-analytics-ready-feature-tables">Gold Layer: Analytics-Ready Feature Tables</h3>
+<p><strong>Purpose</strong>: Store derived quantitative features and aggregated metrics for scientific analysis</p>
+<p><strong>Storage Format</strong>: Parquet tables optimized for analytics queries</p>
+<pre><code>s3://lakehouse/gold/
+├── feature_tables/
+│   ├── ionomer_coverage/
+│   │   ├── coverage_by_sample.parquet
+│   │   ├── coverage_by_depth.parquet
+│   │   └── _delta_log/
+│   ├── catalyst_distribution/
+│   │   ├── particle_counts.parquet
+│   │   ├── size_distributions.parquet
+│   │   └── _delta_log/
+│   ├── pore_network/
+│   │   ├── pore_sizes.parquet
+│   │   ├── connectivity.parquet
+│   │   └── _delta_log/
+│   └── interfacial_properties/
+│       ├── surface_areas.parquet
+│       └── _delta_log/
+│
+├── aggregated_metrics/
+│   ├── study_summary.parquet
+│   ├── technique_comparison.parquet
+│   └── _delta_log/
+│
+└── visualizations/
+    ├── dashboards/
+    │   └── segmentation_quality_overview.html
+    └── reports/
+        └── material_characterization_report.pdf
+</code></pre>
+<p><strong>Lambda-BER-Schema Role</strong>:
+- Link derived features to original samples and experiments
+- Track feature extraction workflows
+- Enable cross-study comparisons
+- Support hypothesis testing and correlation analysis</p>
+<p><strong>Example Query</strong>:</p>
+<pre><code class="language-sql">-- Correlate catalyst morphology with segmentation difficulty
+SELECT
+    s.sample_code,
+    s.molecular_composition[0].molecule_name as catalyst,
+    json_extract(s.notes, '$.specific_surface_area') as surface_area,
+    w.quality_metrics.dice_score,
+    f.ionomer_coverage,
+    f.avg_pore_size,
+    f.interfacial_area
+FROM samples s
+JOIN experiment_runs e ON s.sample_code = e.sample_id
+JOIN workflow_runs w ON e.experiment_code = w.experiment_id
+JOIN feature_tables.ionomer_coverage f ON w.workflow_code = f.workflow_id
+WHERE w.software_name = 'Zenesis'
+ORDER BY surface_area DESC
+</code></pre>
+<h3 id="data-flow-pipeline">Data Flow Pipeline</h3>
+<pre><code class="language-python"># Conceptual data pipeline using Delta Lake + lambda-ber-schema
+
+from delta import DeltaTable
+import yaml
+import numpy as np
+from zenesis import SegmentationPipeline
+
+# 1. BRONZE: Ingest raw FIB-SEM data with schema metadata
+def ingest_raw_data(tiff_path, schema_metadata_path):
+    &quot;&quot;&quot;Bronze layer: raw data + lambda-ber-schema metadata&quot;&quot;&quot;
+
+    # Load schema metadata
+    with open(schema_metadata_path) as f:
+        metadata = yaml.safe_load(f)
+
+    experiment = metadata['instrument_runs'][0]
+
+    # Write to Delta Lake with partitioning
+    (spark.read.format(&quot;geotiff&quot;)
+        .load(tiff_path)
+        .withColumn(&quot;experiment_code&quot;, lit(experiment['experiment_code']))
+        .withColumn(&quot;technique&quot;, lit(experiment['technique']))
+        .withColumn(&quot;sample_id&quot;, lit(experiment['sample_id']))
+        .withColumn(&quot;bit_depth&quot;, lit(experiment['detector_settings']['bit_depth']))
+        .withColumn(&quot;acquisition_date&quot;, lit(experiment['start_date']))
+        .write
+        .format(&quot;delta&quot;)
+        .partitionBy(&quot;technique&quot;, &quot;acquisition_date&quot;)
+        .mode(&quot;append&quot;)
+        .save(&quot;s3://lakehouse/bronze/fib-sem/&quot;))
+
+    # Also write full schema metadata
+    (spark.createDataFrame([metadata])
+        .write
+        .format(&quot;delta&quot;)
+        .mode(&quot;append&quot;)
+        .save(&quot;s3://lakehouse/bronze/metadata/lambda-ber-schema/&quot;))
+
+# 2. SILVER: Run Zenesis segmentation and track in schema
+def run_segmentation_pipeline(experiment_code):
+    &quot;&quot;&quot;Silver layer: AI processing with full provenance&quot;&quot;&quot;
+
+    # Read raw data from Bronze
+    raw_df = (spark.read.format(&quot;delta&quot;)
+        .load(&quot;s3://lakehouse/bronze/fib-sem/&quot;)
+        .filter(f&quot;experiment_code = '{experiment_code}'&quot;))
+
+    # Read metadata from schema
+    metadata_df = (spark.read.format(&quot;delta&quot;)
+        .load(&quot;s3://lakehouse/bronze/metadata/lambda-ber-schema/&quot;)
+        .filter(f&quot;instrument_runs.experiment_code = '{experiment_code}'&quot;))
+
+    experiment = metadata_df.first()['instrument_runs'][0]
+    sample_id = experiment['sample_id']
+
+    # Check AI readiness
+    ai_readiness = experiment.get('ai_readiness_assessment', {})
+    if not ai_readiness.get('foundation_model_applicable', False):
+        raise ValueError(f&quot;Experiment {experiment_code} not suitable for foundation models&quot;)
+
+    # Configure Zenesis from schema
+    pipeline = SegmentationPipeline(
+        model=&quot;GroundingDINO+SAM&quot;,
+        prompt=ai_readiness.get('segmentation_prompt', 'porous ionomer layer'),
+        box_threshold=0.35,
+        text_threshold=0.25,
+        human_in_the_loop=True,
+        volumetric_refinement=True
+    )
+
+    # Run segmentation
+    volume = raw_df.select(&quot;data&quot;).first()[&quot;data&quot;]
+    results = pipeline.run(volume)
+
+    # Create workflow metadata for lambda-ber-schema
+    workflow = {
+        'workflow_code': f&quot;ZENESIS-{experiment_code}&quot;,
+        'workflow_type': 'ai_segmentation',
+        'experiment_id': experiment_code,
+        'software_name': 'Zenesis',
+        'software_version': '1.0',
+        'processing_status': 'completed',
+        'parameters': {
+            'model_name': 'GroundingDINO + SAM',
+            'prompt_text': 'porous ionomer layer',
+            'prompt_type': 'text',
+            'box_threshold': 0.35,
+            'text_threshold': 0.25,
+            'human_in_the_loop': True
+        },
+        'quality_metrics': [
+            {'metric_name': 'Dice Score', 'metric_value': str(results.metrics.dice_score)},
+            {'metric_name': 'IoU', 'metric_value': str(results.metrics.iou)},
+            {'metric_name': 'Accuracy', 'metric_value': str(results.metrics.accuracy)}
+        ],
+        'segmentation_output': {
+            'mask_file': f&quot;zenesis_masks_{sample_id}.zarr&quot;,
+            'bounding_boxes': [bbox.to_dict() for bbox in results.bboxes],
+            'segmentation_metrics': results.metrics.to_dict()
+        }
+    }
+
+    # Write masks to Silver layer
+    (spark.createDataFrame(results.masks)
+        .write
+        .format(&quot;delta&quot;)
+        .partitionBy(&quot;model&quot;, &quot;prompt&quot;)
+        .mode(&quot;append&quot;)
+        .save(&quot;s3://lakehouse/silver/segmentations/masks/&quot;))
+
+    # Write workflow metadata
+    (spark.createDataFrame([workflow])
+        .write
+        .format(&quot;delta&quot;)
+        .mode(&quot;append&quot;)
+        .save(&quot;s3://lakehouse/silver/metadata/segmentation_workflows/&quot;))
+
+    return workflow
+
+# 3. GOLD: Extract features and aggregate
+def extract_features(workflow_code):
+    &quot;&quot;&quot;Gold layer: analytics-ready feature tables&quot;&quot;&quot;
+
+    from skimage import measure, morphology
+
+    # Read segmentation from Silver
+    masks = (spark.read.format(&quot;delta&quot;)
+        .load(&quot;s3://lakehouse/silver/segmentations/masks/&quot;)
+        .filter(f&quot;workflow_code = '{workflow_code}'&quot;))
+
+    workflow = (spark.read.format(&quot;delta&quot;)
+        .load(&quot;s3://lakehouse/silver/metadata/segmentation_workflows/&quot;)
+        .filter(f&quot;workflow_code = '{workflow_code}'&quot;)
+        .first())
+
+    experiment_code = workflow['experiment_id']
+
+    # Compute features
+    mask_array = masks.select(&quot;data&quot;).first()[&quot;data&quot;]
+
+    # Ionomer coverage
+    ionomer_fraction = np.sum(mask_array &gt; 0) / mask_array.size
+
+    # Pore size distribution
+    labeled_pores = measure.label(mask_array == 0)
+    pore_props = measure.regionprops(labeled_pores)
+    pore_sizes = [prop.area for prop in pore_props]
+
+    # Interfacial area
+    perimeter = np.sum(morphology.erosion(mask_array) != mask_array)
+
+    feature_table = {
+        'workflow_code': workflow_code,
+        'experiment_code': experiment_code,
+        'sample_id': workflow['sample_id'],
+        'ionomer_coverage': float(ionomer_fraction),
+        'pore_count': len(pore_sizes),
+        'mean_pore_size': float(np.mean(pore_sizes)),
+        'std_pore_size': float(np.std(pore_sizes)),
+        'interfacial_area': float(perimeter),
+        'segmentation_quality': workflow['quality_metrics']
+    }
+
+    # Write to Gold layer
+    (spark.createDataFrame([feature_table])
+        .write
+        .format(&quot;delta&quot;)
+        .mode(&quot;append&quot;)
+        .save(&quot;s3://lakehouse/gold/feature_tables/ionomer_coverage/&quot;))
+
+    return feature_table
+
+# 4. Query across the lakehouse with schema context
+def analyze_catalyst_performance():
+    &quot;&quot;&quot;Cross-layer analytics query&quot;&quot;&quot;
+
+    query = &quot;&quot;&quot;
+    SELECT
+        s.sample_code,
+        s.molecular_composition[0].molecule_name as catalyst_type,
+        s.molecular_composition[0].concentration as loading,
+        e.detector_settings.bit_depth,
+        e.quality_metrics[?(@.metric_name=='Signal-to-Noise Ratio')].metric_value as snr,
+        w.quality_metrics[?(@.metric_name=='Dice Score')].metric_value as seg_quality,
+        f.ionomer_coverage,
+        f.mean_pore_size,
+        f.interfacial_area
+    FROM delta.`s3://lakehouse/bronze/metadata/lambda-ber-schema/` s
+    JOIN delta.`s3://lakehouse/bronze/fib-sem/` raw
+        ON s.samples.sample_code = raw.sample_id
+    JOIN delta.`s3://lakehouse/silver/metadata/segmentation_workflows/` w
+        ON raw.experiment_code = w.experiment_id
+    JOIN delta.`s3://lakehouse/gold/feature_tables/ionomer_coverage/` f
+        ON w.workflow_code = f.workflow_code
+    WHERE w.software_name = 'Zenesis'
+      AND w.quality_metrics[?(@.metric_name=='Dice Score')].metric_value &gt; 0.90
+    ORDER BY f.ionomer_coverage DESC
+    &quot;&quot;&quot;
+
+    return spark.sql(query)
+</code></pre>
+<h3 id="real-time-quality-monitoring-dashboard">Real-Time Quality Monitoring Dashboard</h3>
+<p>Building on Zenesis's evaluation dashboard (Figure 8 in the paper), integrate with lambda-ber-schema for comprehensive monitoring:</p>
+<pre><code class="language-python">import streamlit as st
+import plotly.express as px
+import plotly.graph_objects as go
+import duckdb
+
+# Connect to lakehouse
+con = duckdb.connect()
+
+st.title(&quot;Zenesis Segmentation Quality Monitor&quot;)
+
+# Query metadata from lambda-ber-schema + results
+df = con.execute(&quot;&quot;&quot;
+    SELECT
+        w.workflow_code,
+        w.start_date::DATE as processing_date,
+        e.technique,
+        s.sample_code,
+        s.sample_type,
+        s.molecular_composition[1].molecule_name as material,
+        CAST(json_extract(w.quality_metrics,
+            '$[?(@.metric_name==&quot;Dice Score&quot;)].metric_value') AS FLOAT) as dice,
+        CAST(json_extract(w.quality_metrics,
+            '$[?(@.metric_name==&quot;IoU&quot;)].metric_value') AS FLOAT) as iou,
+        CAST(json_extract(w.quality_metrics,
+            '$[?(@.metric_name==&quot;Accuracy&quot;)].metric_value') AS FLOAT) as accuracy,
+        w.parameters.prompt_text as prompt,
+        w.parameters.human_in_the_loop as interactive,
+        CAST(json_extract(w.quality_metrics,
+            '$[?(@.metric_name==&quot;Processing Time&quot;)].metric_value') AS FLOAT) as proc_time_min
+    FROM read_json_auto('s3://lakehouse/silver/metadata/segmentation_workflows/*.json') w
+    JOIN read_json_auto('s3://lakehouse/bronze/metadata/lambda-ber-schema/*.json') schema
+        ON w.experiment_id = schema.instrument_runs.experiment_code
+    JOIN unnest(schema.samples) s
+        ON schema.instrument_runs.sample_id = s.sample_code
+    JOIN unnest(schema.instrument_runs) e
+        ON w.experiment_id = e.experiment_code
+    WHERE w.software_name = 'Zenesis'
+      AND w.processing_status = 'completed'
+    ORDER BY w.start_date DESC
+&quot;&quot;&quot;).df()
+
+# Overall metrics summary
+col1, col2, col3, col4 = st.columns(4)
+col1.metric(&quot;Total Segmentations&quot;, len(df))
+col2.metric(&quot;Avg Dice Score&quot;, f&quot;{df['dice'].mean():.3f}&quot;)
+col3.metric(&quot;Avg IoU&quot;, f&quot;{df['iou'].mean():.3f}&quot;)
+col4.metric(&quot;Avg Accuracy&quot;, f&quot;{df['accuracy'].mean():.3f}&quot;)
+
+# Quality distribution by material type
+fig1 = px.box(df, x='material', y='dice', color='technique',
+              title='Segmentation Quality by Material Type',
+              labels={'dice': 'Dice Score', 'material': 'Material'})
+st.plotly_chart(fig1)
+
+# Time series of segmentation quality
+fig2 = px.scatter(df, x='processing_date', y='dice', color='material',
+                  size='iou', hover_data=['workflow_code', 'prompt'],
+                  title='Segmentation Quality Over Time')
+st.plotly_chart(fig2)
+
+# Interactive vs automated performance comparison
+fig3 = go.Figure()
+for interactive in [True, False]:
+    subset = df[df['interactive'] == interactive]
+    fig3.add_trace(go.Box(
+        y=subset['dice'],
+        name='Interactive' if interactive else 'Fully Automated',
+        boxmean='sd'
+    ))
+fig3.update_layout(title='Impact of Human-in-the-Loop on Quality',
+                   yaxis_title='Dice Score')
+st.plotly_chart(fig3)
+
+# Processing efficiency
+fig4 = px.scatter(df, x='proc_time_min', y='dice', color='technique',
+                  hover_data=['sample_code', 'material'],
+                  title='Processing Time vs Quality',
+                  labels={'proc_time_min': 'Processing Time (min)', 'dice': 'Dice Score'})
+st.plotly_chart(fig4)
+
+# Per-sample detailed table
+st.subheader(&quot;Detailed Results&quot;)
+st.dataframe(df[['workflow_code', 'sample_code', 'material', 'technique',
+                 'dice', 'iou', 'accuracy', 'prompt', 'interactive']]
+             .sort_values('dice', ascending=False))
+</code></pre>
+<h2 id="use-cases-across-imaging-modalities">Use Cases Across Imaging Modalities</h2>
+<h3 id="1-cryo-em-particle-picking">1. Cryo-EM Particle Picking</h3>
+<pre><code class="language-yaml"># Cryo-EM single particle workflow
+ExperimentRun:
+  experiment_code: &quot;CryoEM-20250701-001&quot;
+  technique: cryo_em
+  sample_id: &quot;Apoferritin-001&quot;
+  instrument_id: &quot;Titan-Krios-300kV&quot;
+  detector_settings:
+    detector_type: &quot;K3 direct electron detector&quot;
+    pixel_size: 0.83  # Angstroms/pixel
+    total_dose: 50  # e-/Angstrom^2
+    number_of_frames: 40
+
+WorkflowRun:
+  workflow_code: &quot;PARTICLE-PICK-001&quot;
+  workflow_type: &quot;particle_picking&quot;
+  software_name: &quot;TOPAZ&quot;  # or &quot;crYOLO&quot; or Zenesis-adapted
+  parameters:
+    model_name: &quot;TOPAZ-pretrained&quot;
+    particle_radius: 100  # Angstroms
+    expected_particle_count: 500
+    confidence_threshold: 0.5
+  quality_metrics:
+    - metric_name: &quot;Particles Picked&quot;
+      metric_value: &quot;12547&quot;
+    - metric_name: &quot;Estimated Precision&quot;
+      metric_value: &quot;0.92&quot;
+    - metric_name: &quot;Estimated Recall&quot;
+      metric_value: &quot;0.88&quot;
+</code></pre>
+<h3 id="2-x-ray-crystallography-loop-detection">2. X-ray Crystallography Loop Detection</h3>
+<pre><code class="language-yaml"># Loop detection for automated mounting
+ExperimentRun:
+  experiment_code: &quot;XRay-LoopImaging-001&quot;
+  technique: loop_imaging
+  sample_id: &quot;Lysozyme-Crystal-9B7F&quot;
+
+WorkflowRun:
+  workflow_code: &quot;LOOP-DETECT-001&quot;
+  workflow_type: &quot;object_detection&quot;
+  software_name: &quot;Zenesis&quot;
+  parameters:
+    model_name: &quot;GroundingDINO + SAM&quot;
+    prompt_text: &quot;sample loop with mounted crystal&quot;
+    prompt_type: &quot;text&quot;
+  segmentation_output:
+    bounding_boxes:
+      - x_min: 450
+        y_min: 320
+        x_max: 680
+        y_max: 550
+        confidence: 0.95
+        label: &quot;loop&quot;
+      - x_min: 520
+        y_min: 410
+        x_max: 590
+        y_max: 480
+        confidence: 0.88
+        label: &quot;crystal&quot;
+</code></pre>
+<h3 id="3-saxs-background-segmentation">3. SAXS Background Segmentation</h3>
+<pre><code class="language-yaml"># Automated buffer subtraction for SAXS
+ExperimentRun:
+  experiment_code: &quot;SAXS-20250702-001&quot;
+  technique: saxs
+  sample_id: &quot;Protein-Complex-A&quot;
+
+WorkflowRun:
+  workflow_code: &quot;SAXS-BG-SEG-001&quot;
+  workflow_type: &quot;background_segmentation&quot;
+  software_name: &quot;Zenesis&quot;
+  parameters:
+    prompt_text: &quot;scattering signal region&quot;
+    artifact_detection_enabled: true
+  segmentation_output:
+    mask_file: &quot;signal_mask_001.npy&quot;
+    segmentation_metrics:
+      signal_fraction: 0.65
+      artifact_count: 3
+</code></pre>
+<h3 id="4-multi-technique-integrative-study">4. Multi-Technique Integrative Study</h3>
+<pre><code class="language-yaml"># Same sample analyzed with multiple techniques
+Study:
+  study_code: &quot;INTEGRATIVE-CATALYST-2025&quot;
+
+  samples:
+    - sample_code: &quot;PtRu-Catalyst-001&quot;
+
+  instrument_runs:
+    # FIB-SEM for 3D morphology
+    - experiment_code: &quot;FIB-SEM-001&quot;
+      technique: fib_sem
+      sample_id: &quot;PtRu-Catalyst-001&quot;
+
+    # TEM for high-resolution particle imaging
+    - experiment_code: &quot;TEM-001&quot;
+      technique: tem
+      sample_id: &quot;PtRu-Catalyst-001&quot;
+
+    # XRD for crystallographic structure
+    - experiment_code: &quot;XRD-001&quot;
+      technique: xrd
+      sample_id: &quot;PtRu-Catalyst-001&quot;
+
+  workflow_runs:
+    # Zenesis for FIB-SEM morphology
+    - workflow_code: &quot;ZENESIS-FIB-001&quot;
+      experiment_id: &quot;FIB-SEM-001&quot;
+      software_name: &quot;Zenesis&quot;
+      parameters:
+        prompt_text: &quot;catalyst nanoparticles&quot;
+
+    # Zenesis for TEM particle segmentation
+    - workflow_code: &quot;ZENESIS-TEM-001&quot;
+      experiment_id: &quot;TEM-001&quot;
+      software_name: &quot;Zenesis&quot;
+      parameters:
+        prompt_text: &quot;individual nanoparticle&quot;
+
+    # Integration workflow combining all modalities
+    - workflow_code: &quot;CORRELATIVE-ANALYSIS-001&quot;
+      workflow_type: &quot;integrative_analysis&quot;
+      parent_workflows:
+        - &quot;ZENESIS-FIB-001&quot;
+        - &quot;ZENESIS-TEM-001&quot;
+      parameters:
+        correlation_method: &quot;registration-based&quot;
+</code></pre>
+<h2 id="future-directions">Future Directions</h2>
+<h3 id="1-active-learning-integration">1. Active Learning Integration</h3>
+<p>Incorporate feedback loops where segmentation results inform which samples to image next:</p>
+<pre><code class="language-yaml">ActiveLearningWorkflow:
+  attributes:
+    uncertainty_threshold:
+      range: float
+      description: &quot;Confidence below which human review is requested&quot;
+    sampling_strategy:
+      range: SamplingStrategyEnum
+      enum_values: [uncertainty, diversity, expected_improvement]
+    feedback_incorporated:
+      range: boolean
+    retraining_triggered:
+      range: boolean
+</code></pre>
+<h3 id="2-multi-modal-foundation-models">2. Multi-Modal Foundation Models</h3>
+<p>Extend to models that jointly process images and other data types:</p>
+<pre><code class="language-yaml">MultiModalModelRun:
+  attributes:
+    modalities:
+      range: ModalityTypeEnum
+      multivalued: true
+      enum_values: [image, text, spectrum, diffraction_pattern, graph]
+    fusion_strategy:
+      range: FusionStrategyEnum
+      enum_values: [early_fusion, late_fusion, cross_attention]
+</code></pre>
+<h3 id="3-federated-learning-for-privacy-sensitive-data">3. Federated Learning for Privacy-Sensitive Data</h3>
+<p>Support collaborative model training across institutions without sharing raw data:</p>
+<pre><code class="language-yaml">FederatedLearningRun:
+  attributes:
+    participating_institutions:
+      range: string
+      multivalued: true
+    aggregation_method:
+      range: string
+    privacy_mechanism:
+      range: PrivacyMechanismEnum
+      enum_values: [differential_privacy, secure_aggregation, homomorphic_encryption]
+    local_data_kept_private:
+      range: boolean
+</code></pre>
+<h3 id="4-explainable-ai-for-segmentation">4. Explainable AI for Segmentation</h3>
+<p>Track interpretability methods to understand model decisions:</p>
+<pre><code class="language-yaml">ExplainabilityAnalysis:
+  attributes:
+    method:
+      range: ExplainabilityMethodEnum
+      enum_values: [grad_cam, attention_maps, saliency_maps, shap]
+    explanation_visualizations:
+      range: DataFile
+      multivalued: true
+    confidence_calibration:
+      range: CalibrationMetrics
+</code></pre>
+<h2 id="references">References</h2>
+<p><strong>Foundation Models</strong></p>
+<p>Archit, A., et al. (2025). Segment anything for microscopy. <em>Nature Methods</em>, 22(3), 579-591.</p>
+<p>Bepler, T., et al. (2019). Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs. <em>Nature Methods</em>, 16(11), 1153-1160.</p>
+<p>Kirillov, A., et al. (2023). Segment anything. In <em>Proceedings of the IEEE/CVF International Conference on Computer Vision</em> (pp. 3899-3910).</p>
+<p>Liu, S., et al. (2023). Grounding DINO: Marrying DINO with grounded pre-training for open-set object detection. <em>arXiv preprint arXiv:2303.05499</em>.</p>
+<p>Ma, J., et al. (2024). Segment anything in medical images. <em>Nature Communications</em>, 15(1), 1-9.</p>
+<p>Mukherjee, S., et al. (2025). Foundation models for zero-shot segmentation of scientific images without AI-ready data. <em>arXiv preprint arXiv:2506.24039</em>.</p>
+<p>Ravi, N., et al. (2024). SAM 2: Segment anything in images and videos. <em>arXiv preprint arXiv:2408.00714</em>.</p>
+<p>Wagner, T., et al. (2019). SPHIRE-crYOLO is a fast and accurate fully automated particle picker for cryo-EM. <em>Communications Biology</em>, 2(1), 218.</p>
+<p><strong>Deep Learning Architectures</strong></p>
+<p>Çiçek, Ö., et al. (2016). 3D U-Net: Learning dense volumetric segmentation from sparse annotation. In <em>International Conference on Medical Image Computing and Computer-Assisted Intervention</em> (pp. 424-432). Springer.</p>
+<p>Ronneberger, O., et al. (2015). U-Net: Convolutional networks for biomedical image segmentation. In <em>International Conference on Medical Image Computing and Computer-Assisted Intervention</em> (pp. 234-241). Springer.</p>
+<p><strong>Traditional Methods</strong></p>
+<p>Sigworth, F. J. (2004). Classical detection theory and the cryo-EM particle selection problem. <em>Journal of Structural Biology</em>, 145(1-2), 111-122.</p>
+<p>Sommer, C., et al. (2011). ilastik: Interactive learning and segmentation toolkit. In <em>2011 IEEE International Symposium on Biomedical Imaging: From Nano to Macro</em> (pp. 230-233). IEEE.</p>
+<p><strong>Data Readiness</strong></p>
+<p>Hiniduma, K., Byna, S., &amp; Bez, J. L. (2025). Data readiness for AI: A 360-degree survey. <em>ACM Computing Surveys</em>, 57(9).</p>
+<p><strong>Materials Science Applications</strong></p>
+<p>Fornaciari, J. C., et al. (2024). Achieving the hydrogen shot: Interrogating ionomer interfaces. <em>MRS Energy &amp; Sustainability</em>, 1-9.</p>
+<p>Kwon, O., et al. (2024). Understanding structure differences of iridium oxides depends on loading in proton exchange membrane electrolyzers. <em>Electrochemical Society Meeting Abstracts</em>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

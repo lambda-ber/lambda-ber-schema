@@ -827,13 +827,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -916,7 +916,6 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: string
   operator_id:
     name: operator_id
     description: Identifier or name of the person who performed the sample preparation
@@ -957,6 +956,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -979,6 +980,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -1302,6 +1305,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: L
   medium:
     name: medium
     description: Growth medium used
@@ -1332,6 +1337,8 @@ attributes:
     domain_of:
     - SamplePreparation
     range: float
+    unit:
+      ucum_code: Cel
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -1659,6 +1666,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1669,6 +1677,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

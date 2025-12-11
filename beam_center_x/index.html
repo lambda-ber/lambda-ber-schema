@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -907,8 +898,8 @@
 
 
 <h1 id="slot-beam_center_x">Slot: beam_center_x</h1>
-<p><em>Beam center X coordinate in pixels</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x">nsls2:Beam_xy_x</a>
+<p><em>Beam center X coordinate</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/beam_center_x">lambdaber:beam_center_x</a>
 Alias: beam_center_x</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,11 +924,6 @@ Alias: beam_center_x</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to CBF: Beam_xy (first value)</li>
-<li>Maps to PDB: _diffrn_detector.beam_center_x</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -954,11 +940,15 @@ Alias: beam_center_x</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Beam_xy_x</td>
+<td>lambdaber:beam_center_x</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:beam_center_x</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Beam_xy_x, imgCIF:_diffrn_detector.beam_centre_x, mmCIF:_diffrn_detector.beam_center_x</td>
 </tr>
 </tbody>
 </table>
@@ -966,18 +956,20 @@ Alias: beam_center_x</p>
 <details>
 
 <pre><code class="language-yaml">name: beam_center_x
-description: Beam center X coordinate in pixels
-comments:
-- 'Maps to CBF: Beam_xy (first value)'
-- 'Maps to PDB: _diffrn_detector.beam_center_x'
+description: Beam center X coordinate
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Beam_xy_x
+- imgCIF:_diffrn_detector.beam_centre_x
+- mmCIF:_diffrn_detector.beam_center_x
 rank: 1000
-slot_uri: nsls2:Beam_xy_x
 alias: beam_center_x
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
 range: float
+unit:
+  ucum_code: '[px]'
 
 </code></pre>
 

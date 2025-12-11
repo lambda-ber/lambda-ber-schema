@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -907,8 +898,8 @@
 
 
 <h1 id="slot-resolution_high">Slot: resolution_high</h1>
-<p><em>High resolution limit in Angstroms</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A">nsls2:Resolution_High_A</a>
+<p><em>High resolution limit</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/resolution_high">lambdaber:resolution_high</a>
 Alias: resolution_high</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: resolution_high</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _reflns.d_resolution_high</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: resolution_high</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Resolution_High_A</td>
+<td>lambdaber:resolution_high</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:resolution_high</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Resolution_High_A, mmCIF:_reflns.d_resolution_high</td>
 </tr>
 </tbody>
 </table>
@@ -965,17 +956,19 @@ Alias: resolution_high</p>
 <details>
 
 <pre><code class="language-yaml">name: resolution_high
-description: High resolution limit in Angstroms
-comments:
-- 'Maps to PDB: _reflns.d_resolution_high'
+description: High resolution limit
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Resolution_High_A
+- mmCIF:_reflns.d_resolution_high
 rank: 1000
-slot_uri: nsls2:Resolution_High_A
 alias: resolution_high
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
 range: float
+unit:
+  ucum_code: Ao
 
 </code></pre>
 

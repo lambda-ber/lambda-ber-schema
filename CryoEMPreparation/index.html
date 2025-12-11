@@ -424,11 +424,40 @@
 
       CryoEMPreparation : blot_force
 
+      CryoEMPreparation : blot_number
+
       CryoEMPreparation : blot_time
+
+      CryoEMPreparation : blotter_height
+
+      CryoEMPreparation : blotter_setting
 
       CryoEMPreparation : chamber_temperature
 
       CryoEMPreparation : description
+
+      CryoEMPreparation : ethane_temperature
+
+      CryoEMPreparation : glow_discharge_applied
+
+      CryoEMPreparation : glow_discharge_atmosphere
+
+      CryoEMPreparation : glow_discharge_current
+
+      CryoEMPreparation : glow_discharge_pressure
+
+      CryoEMPreparation : glow_discharge_time
+
+      CryoEMPreparation : grid_material
+
+
+
+
+
+        CryoEMPreparation --&gt; "0..1" GridMaterialEnum : grid_material
+        click GridMaterialEnum href "../GridMaterialEnum/"
+
+
 
       CryoEMPreparation : grid_type
 
@@ -447,7 +476,11 @@
 
       CryoEMPreparation : plasma_treatment
 
+      CryoEMPreparation : sample_applied_volume
+
       CryoEMPreparation : support_film
+
+      CryoEMPreparation : vitrification_instrument
 
       CryoEMPreparation : vitrification_method
 
@@ -459,6 +492,8 @@
         click VitrificationMethodEnum href "../VitrificationMethodEnum/"
 
 
+
+      CryoEMPreparation : wait_time
 
 
 </div>
@@ -498,7 +533,7 @@
 <tr>
 <td><a href="../hole_size/">hole_size</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Hole size in micrometers</td>
+<td>Hole size in micrometers (range: 0</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -510,7 +545,7 @@
 <tr>
 <td><a href="../blot_time/">blot_time</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Blotting time in seconds</td>
+<td>Blotting time in seconds (range: 0</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -522,13 +557,91 @@
 <tr>
 <td><a href="../humidity_percentage/">humidity_percentage</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Chamber humidity during vitrification</td>
+<td>Chamber humidity during vitrification (range: 0-100)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../chamber_temperature/">chamber_temperature</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Chamber temperature in Celsius</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../grid_material/">grid_material</a></td>
+<td>0..1 <br/> <a href="../GridMaterialEnum/">GridMaterialEnum</a></td>
+<td>Grid material</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../glow_discharge_applied/">glow_discharge_applied</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Whether glow discharge treatment was applied</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../glow_discharge_time/">glow_discharge_time</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Glow discharge time in seconds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../glow_discharge_current/">glow_discharge_current</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Glow discharge current in milliamperes</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../glow_discharge_atmosphere/">glow_discharge_atmosphere</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Glow discharge atmosphere (air, amylamine)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../glow_discharge_pressure/">glow_discharge_pressure</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Glow discharge pressure in millibar</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../vitrification_instrument/">vitrification_instrument</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Vitrification instrument used (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../blot_number/">blot_number</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of blots applied</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wait_time/">wait_time</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Wait time before blotting in seconds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../blotter_height/">blotter_height</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Blotter height setting</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../blotter_setting/">blotter_setting</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Blotter setting value</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_applied_volume/">sample_applied_volume</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Volume of sample applied in microliters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ethane_temperature/">ethane_temperature</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Ethane temperature in Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -596,7 +709,7 @@ attributes:
     range: string
   hole_size:
     name: hole_size
-    description: Hole size in micrometers
+    description: 'Hole size in micrometers (range: 0.5-5.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -614,7 +727,7 @@ attributes:
     range: VitrificationMethodEnum
   blot_time:
     name: blot_time
-    description: Blotting time in seconds
+    description: 'Blotting time in seconds (range: 0.5-10.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -632,7 +745,7 @@ attributes:
     range: integer
   humidity_percentage:
     name: humidity_percentage
-    description: Chamber humidity during vitrification
+    description: 'Chamber humidity during vitrification (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -643,6 +756,110 @@ attributes:
   chamber_temperature:
     name: chamber_temperature
     description: Chamber temperature in Celsius
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  grid_material:
+    name: grid_material
+    description: Grid material
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: GridMaterialEnum
+  glow_discharge_applied:
+    name: glow_discharge_applied
+    description: Whether glow discharge treatment was applied
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: boolean
+  glow_discharge_time:
+    name: glow_discharge_time
+    description: Glow discharge time in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  glow_discharge_current:
+    name: glow_discharge_current
+    description: Glow discharge current in milliamperes
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  glow_discharge_atmosphere:
+    name: glow_discharge_atmosphere
+    description: Glow discharge atmosphere (air, amylamine)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: string
+  glow_discharge_pressure:
+    name: glow_discharge_pressure
+    description: Glow discharge pressure in millibar
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  vitrification_instrument:
+    name: vitrification_instrument
+    description: Vitrification instrument used (e.g., Vitrobot)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: string
+  blot_number:
+    name: blot_number
+    description: Number of blots applied
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: integer
+  wait_time:
+    name: wait_time
+    description: Wait time before blotting in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  blotter_height:
+    name: blotter_height
+    description: Blotter height setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  blotter_setting:
+    name: blotter_setting
+    description: Blotter setting value
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  sample_applied_volume:
+    name: sample_applied_volume
+    description: Volume of sample applied in microliters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  ethane_temperature:
+    name: ethane_temperature
+    description: Ethane temperature in Celsius
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -687,7 +904,7 @@ attributes:
     range: string
   hole_size:
     name: hole_size
-    description: Hole size in micrometers
+    description: 'Hole size in micrometers (range: 0.5-5.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: hole_size
@@ -709,7 +926,7 @@ attributes:
     range: VitrificationMethodEnum
   blot_time:
     name: blot_time
-    description: Blotting time in seconds
+    description: 'Blotting time in seconds (range: 0.5-10.0)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: blot_time
@@ -731,7 +948,7 @@ attributes:
     range: integer
   humidity_percentage:
     name: humidity_percentage
-    description: Chamber humidity during vitrification
+    description: 'Chamber humidity during vitrification (range: 0-100)'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: humidity_percentage
@@ -747,6 +964,136 @@ attributes:
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: chamber_temperature
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  grid_material:
+    name: grid_material
+    description: Grid material
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: grid_material
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: GridMaterialEnum
+  glow_discharge_applied:
+    name: glow_discharge_applied
+    description: Whether glow discharge treatment was applied
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: glow_discharge_applied
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: boolean
+  glow_discharge_time:
+    name: glow_discharge_time
+    description: Glow discharge time in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: glow_discharge_time
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  glow_discharge_current:
+    name: glow_discharge_current
+    description: Glow discharge current in milliamperes
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: glow_discharge_current
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  glow_discharge_atmosphere:
+    name: glow_discharge_atmosphere
+    description: Glow discharge atmosphere (air, amylamine)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: glow_discharge_atmosphere
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: string
+  glow_discharge_pressure:
+    name: glow_discharge_pressure
+    description: Glow discharge pressure in millibar
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: glow_discharge_pressure
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  vitrification_instrument:
+    name: vitrification_instrument
+    description: Vitrification instrument used (e.g., Vitrobot)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: vitrification_instrument
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: string
+  blot_number:
+    name: blot_number
+    description: Number of blots applied
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: blot_number
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: integer
+  wait_time:
+    name: wait_time
+    description: Wait time before blotting in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: wait_time
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  blotter_height:
+    name: blotter_height
+    description: Blotter height setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: blotter_height
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  blotter_setting:
+    name: blotter_setting
+    description: Blotter setting value
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: blotter_setting
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  sample_applied_volume:
+    name: sample_applied_volume
+    description: Volume of sample applied in microliters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sample_applied_volume
+    owner: CryoEMPreparation
+    domain_of:
+    - CryoEMPreparation
+    range: float
+  ethane_temperature:
+    name: ethane_temperature
+    description: Ethane temperature in Celsius
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ethane_temperature
     owner: CryoEMPreparation
     domain_of:
     - CryoEMPreparation

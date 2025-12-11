@@ -907,8 +907,8 @@
 
 
 <h1 id="slot-pixel_size_x">Slot: pixel_size_x</h1>
-<p><em>Pixel size X dimension in micrometers</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Pixel_size_x">nsls2:Pixel_size_x</a>
+<p><em>Pixel size X dimension</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/pixel_size_x">lambdaber:pixel_size_x</a>
 Alias: pixel_size_x</p>
 <!-- no inheritance hierarchy -->
 
@@ -935,7 +935,7 @@ Alias: pixel_size_x</p>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Maps to CBF: Pixel_size</li>
+<li>imgCIF: _array_element_size.size[1]</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -953,11 +953,15 @@ Alias: pixel_size_x</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Pixel_size_x</td>
+<td>lambdaber:pixel_size_x</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:pixel_size_x</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Pixel_size_x, imgCIF:_array_element_size.size</td>
 </tr>
 </tbody>
 </table>
@@ -965,17 +969,21 @@ Alias: pixel_size_x</p>
 <details>
 
 <pre><code class="language-yaml">name: pixel_size_x
-description: Pixel size X dimension in micrometers
+description: Pixel size X dimension
 comments:
-- 'Maps to CBF: Pixel_size'
+- 'imgCIF: _array_element_size.size[1]'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Pixel_size_x
+- imgCIF:_array_element_size.size
 rank: 1000
-slot_uri: nsls2:Pixel_size_x
 alias: pixel_size_x
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
 range: float
+unit:
+  ucum_code: um
 
 </code></pre>
 

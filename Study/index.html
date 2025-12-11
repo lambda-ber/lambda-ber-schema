@@ -552,37 +552,37 @@
 <tr>
 <td><a href="../samples/">samples</a></td>
 <td>* <br/> <a href="../Sample/">Sample</a></td>
-<td></td>
+<td>Experimental samples used in this study, including biological samples</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sample_preparations/">sample_preparations</a></td>
 <td>* <br/> <a href="../SamplePreparation/">SamplePreparation</a></td>
-<td></td>
+<td>Sample preparation procedures performed in this study</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../instrument_runs/">instrument_runs</a></td>
 <td>* <br/> <a href="../ExperimentRun/">ExperimentRun</a></td>
-<td></td>
+<td>Experimental data collection runs performed in this study</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../workflow_runs/">workflow_runs</a></td>
 <td>* <br/> <a href="../WorkflowRun/">WorkflowRun</a></td>
-<td></td>
+<td>Computational workflow executions for data processing in this study</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../data_files/">data_files</a></td>
 <td>* <br/> <a href="../DataFile/">DataFile</a></td>
-<td></td>
+<td>Data files generated or used in this study</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../images/">images</a></td>
 <td>* <br/> <a href="../Image/">Image</a></td>
-<td></td>
+<td>Images acquired or generated in this study</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -600,13 +600,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -677,6 +677,7 @@ attributes:
     inlined_as_list: true
   samples:
     name: samples
+    description: 'Experimental samples used in this study, including biological samples '
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -687,6 +688,7 @@ attributes:
     inlined_as_list: true
   sample_preparations:
     name: sample_preparations
+    description: Sample preparation procedures performed in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -697,6 +699,7 @@ attributes:
     inlined_as_list: true
   instrument_runs:
     name: instrument_runs
+    description: Experimental data collection runs performed in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -707,6 +710,7 @@ attributes:
     inlined_as_list: true
   workflow_runs:
     name: workflow_runs
+    description: Computational workflow executions for data processing in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -717,6 +721,7 @@ attributes:
     inlined_as_list: true
   data_files:
     name: data_files
+    description: Data files generated or used in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -727,6 +732,7 @@ attributes:
     inlined_as_list: true
   images:
     name: images
+    description: Images acquired or generated in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -773,6 +779,7 @@ attributes:
     inlined_as_list: true
   samples:
     name: samples
+    description: 'Experimental samples used in this study, including biological samples '
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: samples
@@ -785,6 +792,7 @@ attributes:
     inlined_as_list: true
   sample_preparations:
     name: sample_preparations
+    description: Sample preparation procedures performed in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: sample_preparations
@@ -797,6 +805,7 @@ attributes:
     inlined_as_list: true
   instrument_runs:
     name: instrument_runs
+    description: Experimental data collection runs performed in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: instrument_runs
@@ -809,6 +818,7 @@ attributes:
     inlined_as_list: true
   workflow_runs:
     name: workflow_runs
+    description: Computational workflow executions for data processing in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: workflow_runs
@@ -821,6 +831,7 @@ attributes:
     inlined_as_list: true
   data_files:
     name: data_files
+    description: Data files generated or used in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: data_files
@@ -833,6 +844,7 @@ attributes:
     inlined_as_list: true
   images:
     name: images
+    description: Images acquired or generated in this study
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: images
@@ -873,6 +885,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -883,6 +896,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

@@ -18,7 +18,7 @@
     
     
       
-        <title>Enum: DetectorTypeEnum - lambda-ber-schema</title>
+        <title>Enum: DetectorTypeEnum (DEPRECATED) - lambda-ber-schema</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum-detectortypeenum" class="md-skip">
+        <a href="#enum-detectortypeenum-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enum: DetectorTypeEnum
+              Enum: DetectorTypeEnum (DEPRECATED)
             
           </span>
         </div>
@@ -828,15 +828,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Slots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -888,8 +879,8 @@
   
 
 
-<h1 id="enum-detectortypeenum">Enum: DetectorTypeEnum</h1>
-<p><em>Types of detectors for cryo-EM and X-ray crystallography</em></p>
+<h1 id="enum-detectortypeenum-deprecated">Enum: DetectorTypeEnum  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
+<p><em>DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/DetectorTypeEnum">lambdaber:DetectorTypeEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -948,21 +939,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../detector_type/">detector_type</a></td>
-<td>Type of detector</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -972,7 +948,10 @@
 <details>
 
 <pre><code class="language-yaml">name: DetectorTypeEnum
-description: Types of detectors for cryo-EM and X-ray crystallography
+description: 'DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies
+  and brands.'
+deprecated: Use DetectorTechnologyEnum for detector technology, and separate manufacturer/model
+  fields
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 permissible_values:

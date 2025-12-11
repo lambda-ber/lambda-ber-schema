@@ -898,7 +898,7 @@
 
 
 <h1 id="slot-publication_ids">Slot: publication_ids</h1>
-<p><em>PubMed IDs supporting this annotation</em></p>
+<p><em>IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/publication_ids">lambdaber:publication_ids</a>
 Alias: publication_ids</p>
 <!-- no inheritance hierarchy -->
@@ -914,13 +914,8 @@ Alias: publication_ids</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FunctionalSite/">FunctionalSite</a></td>
-<td>Functional sites including catalytic, binding, and regulatory sites</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
-<td>Post-translational modifications observed or predicted</td>
+<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
+<td>Protein-protein interactions and interfaces</td>
 <td>no</td>
 </tr>
 <tr>
@@ -929,8 +924,13 @@ Alias: publication_ids</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
-<td>Protein-protein interactions and interfaces</td>
+<td><a href="../StructuralFeature/">StructuralFeature</a></td>
+<td>Structural features and properties of protein regions</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
 <td>no</td>
 </tr>
 <tr>
@@ -939,8 +939,8 @@ Alias: publication_ids</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StructuralFeature/">StructuralFeature</a></td>
-<td>Structural features and properties of protein regions</td>
+<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
+<td>Post-translational modifications observed or predicted</td>
 <td>no</td>
 </tr>
 <tr>
@@ -959,7 +959,7 @@ Alias: publication_ids</p>
 <p>Multivalued: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^PMID:[0-9]+$</code></p>
+<p>Regex pattern: <code>^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -990,7 +990,8 @@ Alias: publication_ids</p>
 <details>
 
 <pre><code class="language-yaml">name: publication_ids
-description: PubMed IDs supporting this annotation
+description: IDs of one or more publications supporting this annotation. Use PubMed
+  IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: publication_ids
@@ -999,7 +1000,7 @@ domain_of:
 - ProteinAnnotation
 range: string
 multivalued: true
-pattern: ^PMID:[0-9]+$
+pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
 
 </code></pre>
 

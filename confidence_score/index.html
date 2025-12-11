@@ -898,7 +898,7 @@
 
 
 <h1 id="slot-confidence_score">Slot: confidence_score</h1>
-<p><em>Confidence score for the annotation (0-1)</em></p>
+<p><em>Confidence score for the annotation (range: 0-1)</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/confidence_score">lambdaber:confidence_score</a>
 Alias: confidence_score</p>
 <!-- no inheritance hierarchy -->
@@ -914,13 +914,8 @@ Alias: confidence_score</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FunctionalSite/">FunctionalSite</a></td>
-<td>Functional sites including catalytic, binding, and regulatory sites</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
-<td>Post-translational modifications observed or predicted</td>
+<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
+<td>Protein-protein interactions and interfaces</td>
 <td>no</td>
 </tr>
 <tr>
@@ -929,8 +924,13 @@ Alias: confidence_score</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
-<td>Protein-protein interactions and interfaces</td>
+<td><a href="../StructuralFeature/">StructuralFeature</a></td>
+<td>Structural features and properties of protein regions</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
 <td>no</td>
 </tr>
 <tr>
@@ -939,8 +939,8 @@ Alias: confidence_score</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StructuralFeature/">StructuralFeature</a></td>
-<td>Structural features and properties of protein regions</td>
+<td><a href="../PostTranslationalModification/">PostTranslationalModification</a></td>
+<td>Post-translational modifications observed or predicted</td>
 <td>no</td>
 </tr>
 <tr>
@@ -990,7 +990,7 @@ Alias: confidence_score</p>
 <details>
 
 <pre><code class="language-yaml">name: confidence_score
-description: Confidence score for the annotation (0-1)
+description: 'Confidence score for the annotation (range: 0-1)'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: confidence_score

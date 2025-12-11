@@ -429,11 +429,25 @@
       NamedThing &lt;|-- ExperimentRun
         click NamedThing href "../NamedThing/"
 
+      ExperimentRun : acquisition_software
+
+      ExperimentRun : acquisition_software_version
+
+      ExperimentRun : astigmatism_target
+
+      ExperimentRun : autoloader_slot
+
       ExperimentRun : beam_center_x
 
       ExperimentRun : beam_center_y
 
       ExperimentRun : beamline
+
+      ExperimentRun : calibrated_pixel_size
+
+      ExperimentRun : camera_binning
+
+      ExperimentRun : coma
 
       ExperimentRun : data_collection_strategy
 
@@ -446,9 +460,19 @@
 
 
 
+      ExperimentRun : defocus_range_increment
+
+      ExperimentRun : defocus_range_max
+
+      ExperimentRun : defocus_range_min
+
+      ExperimentRun : defocus_target
+
       ExperimentRun : description
 
       ExperimentRun : detector_distance
+
+      ExperimentRun : dose_rate
 
       ExperimentRun : experiment_code
 
@@ -476,6 +500,12 @@
 
 
 
+      ExperimentRun : exposure_time_per_frame
+
+      ExperimentRun : frames_per_movie
+
+      ExperimentRun : holes_per_group
+
       ExperimentRun : id
 
       ExperimentRun : instrument_id
@@ -488,6 +518,8 @@
         click Instrument href "../Instrument/"
 
 
+
+      ExperimentRun : magnification
 
       ExperimentRun : number_of_images
 
@@ -525,6 +557,10 @@
 
       ExperimentRun : sample_id
 
+      ExperimentRun : shots_per_hole
+
+      ExperimentRun : stage_tilt
+
       ExperimentRun : start_angle
 
       ExperimentRun : technique
@@ -539,6 +575,10 @@
 
 
       ExperimentRun : title
+
+      ExperimentRun : total_dose
+
+      ExperimentRun : total_exposure_time
 
       ExperimentRun : total_rotation
 
@@ -637,21 +677,141 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../magnification/">magnification</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Magnification used during data collection</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../calibrated_pixel_size/">calibrated_pixel_size</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Calibrated pixel size in Angstroms per pixel</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../camera_binning/">camera_binning</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Camera binning factor</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../exposure_time_per_frame/">exposure_time_per_frame</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Exposure time per frame in milliseconds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../frames_per_movie/">frames_per_movie</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of frames per movie</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../total_exposure_time/">total_exposure_time</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total exposure time in milliseconds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../total_dose/">total_dose</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total electron dose in e-/Angstrom^2</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../dose_rate/">dose_rate</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Dose rate in e-/pixel/s or e-/Angstrom^2/s</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../defocus_target/">defocus_target</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Target defocus value in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../defocus_range_min/">defocus_range_min</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Minimum defocus range in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../defocus_range_max/">defocus_range_max</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Maximum defocus range in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../defocus_range_increment/">defocus_range_increment</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Defocus range increment in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../astigmatism_target/">astigmatism_target</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Target astigmatism in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../coma/">coma</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Coma aberration in nanometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../stage_tilt/">stage_tilt</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Stage tilt angle in degrees</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../autoloader_slot/">autoloader_slot</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Autoloader slot identifier</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../shots_per_hole/">shots_per_hole</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of shots taken per hole</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../holes_per_group/">holes_per_group</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of holes per group</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../acquisition_software/">acquisition_software</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Acquisition software used (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../acquisition_software_version/">acquisition_software_version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Version of acquisition software</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../wavelength/">wavelength</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>X-ray wavelength in Angstroms</td>
+<td>X-ray wavelength</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../oscillation_angle/">oscillation_angle</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Oscillation angle per image in degrees</td>
+<td>Oscillation angle per image</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../start_angle/">start_angle</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Starting rotation angle in degrees</td>
+<td>Starting rotation angle</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -663,37 +823,37 @@
 <tr>
 <td><a href="../beam_center_x/">beam_center_x</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Beam center X coordinate in pixels</td>
+<td>Beam center X coordinate</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../beam_center_y/">beam_center_y</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Beam center Y coordinate in pixels</td>
+<td>Beam center Y coordinate</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../detector_distance/">detector_distance</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Distance from sample to detector in millimeters</td>
+<td>Distance from sample to detector</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pixel_size_x/">pixel_size_x</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size X dimension in micrometers</td>
+<td>Pixel size X dimension</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pixel_size_y/">pixel_size_y</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size Y dimension in micrometers</td>
+<td>Pixel size Y dimension</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../total_rotation/">total_rotation</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Total rotation range collected in degrees</td>
+<td>Total rotation range collected</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -711,13 +871,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -877,123 +1037,315 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  magnification:
+    name: magnification
+    description: Magnification used during data collection
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - OpticalImage
+    range: integer
+  calibrated_pixel_size:
+    name: calibrated_pixel_size
+    description: Calibrated pixel size in Angstroms per pixel
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  camera_binning:
+    name: camera_binning
+    description: Camera binning factor. This must be a positive float value (e.g.,
+      1, 1.5, 2, 3).
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    minimum_value: 0.01
+  exposure_time_per_frame:
+    name: exposure_time_per_frame
+    description: Exposure time per frame in milliseconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  frames_per_movie:
+    name: frames_per_movie
+    description: Number of frames per movie
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: integer
+  total_exposure_time:
+    name: total_exposure_time
+    description: Total exposure time in milliseconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  total_dose:
+    name: total_dose
+    description: Total electron dose in e-/Angstrom^2
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: float
+  dose_rate:
+    name: dose_rate
+    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_target:
+    name: defocus_target
+    description: Target defocus value in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_min:
+    name: defocus_range_min
+    description: Minimum defocus range in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_max:
+    name: defocus_range_max
+    description: Maximum defocus range in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_increment:
+    name: defocus_range_increment
+    description: Defocus range increment in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  astigmatism_target:
+    name: astigmatism_target
+    description: Target astigmatism in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  coma:
+    name: coma
+    description: Coma aberration in nanometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  stage_tilt:
+    name: stage_tilt
+    description: Stage tilt angle in degrees
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+  autoloader_slot:
+    name: autoloader_slot
+    description: Autoloader slot identifier
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  shots_per_hole:
+    name: shots_per_hole
+    description: Number of shots taken per hole
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: integer
+  holes_per_group:
+    name: holes_per_group
+    description: Number of holes per group
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: integer
+  acquisition_software:
+    name: acquisition_software
+    description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  acquisition_software_version:
+    name: acquisition_software_version
+    description: Version of acquisition software
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
   wavelength:
     name: wavelength
-    description: X-ray wavelength in Angstroms
-    comments:
-    - 'Maps to CBF: Wavelength'
-    - 'Maps to PDB: _diffrn_radiation_wavelength.wavelength'
+    description: X-ray wavelength
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Wavelength
+    - imgCIF:_diffrn_radiation_wavelength.wavelength
+    - mmCIF:_diffrn_radiation_wavelength.wavelength
     rank: 1000
-    slot_uri: nsls2:Wavelength
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: Ao
   oscillation_angle:
     name: oscillation_angle
-    description: Oscillation angle per image in degrees
-    comments:
-    - 'Maps to CBF: Angle_increment'
-    - 'Maps to PDB: _diffrn_scan.angle_increment'
+    description: Oscillation angle per image
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Angle_increment
+    - imgCIF:_diffrn_scan_axis.angle_increment
+    - mmCIF:_diffrn_scan.angle_increment
     rank: 1000
-    slot_uri: nsls2:Angle_increment
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   start_angle:
     name: start_angle
-    description: Starting rotation angle in degrees
-    comments:
-    - 'Maps to CBF: Start_angle'
+    description: Starting rotation angle
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Start_angle
+    - imgCIF:_diffrn_scan_axis.angle_start
     rank: 1000
-    slot_uri: nsls2:Start_angle
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Number_of_images
+    - imgCIF:_diffrn_scan.frames
     rank: 1000
-    slot_uri: nsls2:Number_of_images
     domain_of:
     - ExperimentRun
     range: integer
   beam_center_x:
     name: beam_center_x
-    description: Beam center X coordinate in pixels
-    comments:
-    - 'Maps to CBF: Beam_xy (first value)'
-    - 'Maps to PDB: _diffrn_detector.beam_center_x'
+    description: Beam center X coordinate
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beam_xy_x
+    - imgCIF:_diffrn_detector.beam_centre_x
+    - mmCIF:_diffrn_detector.beam_center_x
     rank: 1000
-    slot_uri: nsls2:Beam_xy_x
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: '[px]'
   beam_center_y:
     name: beam_center_y
-    description: Beam center Y coordinate in pixels
-    comments:
-    - 'Maps to CBF: Beam_xy (second value)'
-    - 'Maps to PDB: _diffrn_detector.beam_center_y'
+    description: Beam center Y coordinate
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beam_xy_y
+    - imgCIF:_diffrn_detector.beam_centre_y
+    - mmCIF:_diffrn_detector.beam_center_y
     rank: 1000
-    slot_uri: nsls2:Beam_xy_y
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: '[px]'
   detector_distance:
     name: detector_distance
-    description: Distance from sample to detector in millimeters
-    comments:
-    - 'Maps to CBF: Detector_distance'
-    - 'Maps to PDB: _diffrn_detector.distance'
+    description: Distance from sample to detector
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Detector_distance
+    - imgCIF:_diffrn_measurement.sample_detector_distance
+    - mmCIF:_diffrn_detector.distance
     rank: 1000
-    slot_uri: nsls2:Detector_distance
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: mm
   pixel_size_x:
     name: pixel_size_x
-    description: Pixel size X dimension in micrometers
+    description: Pixel size X dimension
     comments:
-    - 'Maps to CBF: Pixel_size'
+    - 'imgCIF: _array_element_size.size[1]'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Pixel_size_x
+    - imgCIF:_array_element_size.size
     rank: 1000
-    slot_uri: nsls2:Pixel_size_x
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: um
   pixel_size_y:
     name: pixel_size_y
-    description: Pixel size Y dimension in micrometers
+    description: Pixel size Y dimension
+    comments:
+    - 'imgCIF: _array_element_size.size[2]'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Pixel_size_y
+    - imgCIF:_array_element_size.size
     rank: 1000
-    slot_uri: nsls2:Pixel_size_y
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: um
   total_rotation:
     name: total_rotation
-    description: Total rotation range collected in degrees
+    description: Total rotation range collected
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Total_rotation_deg
+    - imgCIF:_diffrn_scan_axis.angle_range
     rank: 1000
-    slot_uri: nsls2:Total_rotation_deg
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    comments:
-    - 'Maps to PDB: _diffrn_source.beamline'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beamline
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: nsls2:Beamline
     domain_of:
     - ExperimentRun
     range: string
@@ -1136,53 +1488,265 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
-  wavelength:
-    name: wavelength
-    description: X-ray wavelength in Angstroms
-    comments:
-    - 'Maps to CBF: Wavelength'
-    - 'Maps to PDB: _diffrn_radiation_wavelength.wavelength'
+  magnification:
+    name: magnification
+    description: Magnification used during data collection
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    slot_uri: nsls2:Wavelength
+    alias: magnification
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - OpticalImage
+    range: integer
+  calibrated_pixel_size:
+    name: calibrated_pixel_size
+    description: Calibrated pixel size in Angstroms per pixel
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: calibrated_pixel_size
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  camera_binning:
+    name: camera_binning
+    description: Camera binning factor. This must be a positive float value (e.g.,
+      1, 1.5, 2, 3).
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: camera_binning
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    minimum_value: 0.01
+  exposure_time_per_frame:
+    name: exposure_time_per_frame
+    description: Exposure time per frame in milliseconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: exposure_time_per_frame
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  frames_per_movie:
+    name: frames_per_movie
+    description: Number of frames per movie
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: frames_per_movie
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
+  total_exposure_time:
+    name: total_exposure_time
+    description: Total exposure time in milliseconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: total_exposure_time
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  total_dose:
+    name: total_dose
+    description: Total electron dose in e-/Angstrom^2
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: total_dose
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - DataCollectionStrategy
+    range: float
+  dose_rate:
+    name: dose_rate
+    description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: dose_rate
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_target:
+    name: defocus_target
+    description: Target defocus value in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: defocus_target
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_min:
+    name: defocus_range_min
+    description: Minimum defocus range in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: defocus_range_min
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_max:
+    name: defocus_range_max
+    description: Maximum defocus range in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: defocus_range_max
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  defocus_range_increment:
+    name: defocus_range_increment
+    description: Defocus range increment in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: defocus_range_increment
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  astigmatism_target:
+    name: astigmatism_target
+    description: Target astigmatism in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: astigmatism_target
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  coma:
+    name: coma
+    description: Coma aberration in nanometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: coma
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  stage_tilt:
+    name: stage_tilt
+    description: Stage tilt angle in degrees
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: stage_tilt
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+  autoloader_slot:
+    name: autoloader_slot
+    description: Autoloader slot identifier
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: autoloader_slot
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  shots_per_hole:
+    name: shots_per_hole
+    description: Number of shots taken per hole
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: shots_per_hole
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
+  holes_per_group:
+    name: holes_per_group
+    description: Number of holes per group
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: holes_per_group
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
+  acquisition_software:
+    name: acquisition_software
+    description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: acquisition_software
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  acquisition_software_version:
+    name: acquisition_software_version
+    description: Version of acquisition software
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: acquisition_software_version
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  wavelength:
+    name: wavelength
+    description: X-ray wavelength
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Wavelength
+    - imgCIF:_diffrn_radiation_wavelength.wavelength
+    - mmCIF:_diffrn_radiation_wavelength.wavelength
+    rank: 1000
     alias: wavelength
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: Ao
   oscillation_angle:
     name: oscillation_angle
-    description: Oscillation angle per image in degrees
-    comments:
-    - 'Maps to CBF: Angle_increment'
-    - 'Maps to PDB: _diffrn_scan.angle_increment'
+    description: Oscillation angle per image
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Angle_increment
+    - imgCIF:_diffrn_scan_axis.angle_increment
+    - mmCIF:_diffrn_scan.angle_increment
     rank: 1000
-    slot_uri: nsls2:Angle_increment
     alias: oscillation_angle
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   start_angle:
     name: start_angle
-    description: Starting rotation angle in degrees
-    comments:
-    - 'Maps to CBF: Start_angle'
+    description: Starting rotation angle
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Start_angle
+    - imgCIF:_diffrn_scan_axis.angle_start
     rank: 1000
-    slot_uri: nsls2:Start_angle
     alias: start_angle
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Number_of_images
+    - imgCIF:_diffrn_scan.frames
     rank: 1000
-    slot_uri: nsls2:Number_of_images
     alias: number_of_images
     owner: ExperimentRun
     domain_of:
@@ -1190,89 +1754,109 @@ attributes:
     range: integer
   beam_center_x:
     name: beam_center_x
-    description: Beam center X coordinate in pixels
-    comments:
-    - 'Maps to CBF: Beam_xy (first value)'
-    - 'Maps to PDB: _diffrn_detector.beam_center_x'
+    description: Beam center X coordinate
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beam_xy_x
+    - imgCIF:_diffrn_detector.beam_centre_x
+    - mmCIF:_diffrn_detector.beam_center_x
     rank: 1000
-    slot_uri: nsls2:Beam_xy_x
     alias: beam_center_x
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: '[px]'
   beam_center_y:
     name: beam_center_y
-    description: Beam center Y coordinate in pixels
-    comments:
-    - 'Maps to CBF: Beam_xy (second value)'
-    - 'Maps to PDB: _diffrn_detector.beam_center_y'
+    description: Beam center Y coordinate
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beam_xy_y
+    - imgCIF:_diffrn_detector.beam_centre_y
+    - mmCIF:_diffrn_detector.beam_center_y
     rank: 1000
-    slot_uri: nsls2:Beam_xy_y
     alias: beam_center_y
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: '[px]'
   detector_distance:
     name: detector_distance
-    description: Distance from sample to detector in millimeters
-    comments:
-    - 'Maps to CBF: Detector_distance'
-    - 'Maps to PDB: _diffrn_detector.distance'
+    description: Distance from sample to detector
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Detector_distance
+    - imgCIF:_diffrn_measurement.sample_detector_distance
+    - mmCIF:_diffrn_detector.distance
     rank: 1000
-    slot_uri: nsls2:Detector_distance
     alias: detector_distance
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: mm
   pixel_size_x:
     name: pixel_size_x
-    description: Pixel size X dimension in micrometers
+    description: Pixel size X dimension
     comments:
-    - 'Maps to CBF: Pixel_size'
+    - 'imgCIF: _array_element_size.size[1]'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Pixel_size_x
+    - imgCIF:_array_element_size.size
     rank: 1000
-    slot_uri: nsls2:Pixel_size_x
     alias: pixel_size_x
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: um
   pixel_size_y:
     name: pixel_size_y
-    description: Pixel size Y dimension in micrometers
+    description: Pixel size Y dimension
+    comments:
+    - 'imgCIF: _array_element_size.size[2]'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Pixel_size_y
+    - imgCIF:_array_element_size.size
     rank: 1000
-    slot_uri: nsls2:Pixel_size_y
     alias: pixel_size_y
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: um
   total_rotation:
     name: total_rotation
-    description: Total rotation range collected in degrees
+    description: Total rotation range collected
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Total_rotation_deg
+    - imgCIF:_diffrn_scan_axis.angle_range
     rank: 1000
-    slot_uri: nsls2:Total_rotation_deg
     alias: total_rotation
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: float
+    unit:
+      ucum_code: deg
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
-    comments:
-    - 'Maps to PDB: _diffrn_source.beamline'
     from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - nsls2:Beamline
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: nsls2:Beamline
     alias: beamline
     owner: ExperimentRun
     domain_of:
@@ -1294,6 +1878,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -1304,6 +1889,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

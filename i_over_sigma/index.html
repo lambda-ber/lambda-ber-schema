@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -908,7 +899,7 @@
 
 <h1 id="slot-i_over_sigma">Slot: i_over_sigma</h1>
 <p><em>Mean I/sigma(I) - signal to noise ratio</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/I_over_sigma">nsls2:I_over_sigma</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/i_over_sigma">lambdaber:i_over_sigma</a>
 Alias: i_over_sigma</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: i_over_sigma</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _reflns.pdbx_netI_over_sigmaI</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: i_over_sigma</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:I_over_sigma</td>
+<td>lambdaber:i_over_sigma</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:i_over_sigma</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:I_over_sigma, mmCIF:_reflns.pdbx_netI_over_sigmaI</td>
 </tr>
 </tbody>
 </table>
@@ -966,11 +957,11 @@ Alias: i_over_sigma</p>
 
 <pre><code class="language-yaml">name: i_over_sigma
 description: Mean I/sigma(I) - signal to noise ratio
-comments:
-- 'Maps to PDB: _reflns.pdbx_netI_over_sigmaI'
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:I_over_sigma
+- mmCIF:_reflns.pdbx_netI_over_sigmaI
 rank: 1000
-slot_uri: nsls2:I_over_sigma
 alias: i_over_sigma
 owner: WorkflowRun
 domain_of:

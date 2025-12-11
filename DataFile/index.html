@@ -461,9 +461,15 @@
 
       DataFile : file_path
 
+      DataFile : file_role
+
       DataFile : file_size_bytes
 
       DataFile : id
+
+      DataFile : related_entity
+
+      DataFile : storage_uri
 
       DataFile : title
 
@@ -530,6 +536,24 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../storage_uri/">storage_uri</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Storage URI (S3, Globus, etc</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../related_entity/">related_entity</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>ID of the entity that owns this file</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../file_role/">file_role</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Role of the file (raw, intermediate, final, diagnostic, metadata)</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Globally unique identifier as an IRI or CURIE for machine processing and exte...</td>
@@ -538,13 +562,13 @@
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A human-readable name or title for this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A detailed textual description of this entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -663,6 +687,30 @@ attributes:
     domain_of:
     - DataFile
     range: DataTypeEnum
+  storage_uri:
+    name: storage_uri
+    description: Storage URI (S3, Globus, etc.)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+  related_entity:
+    name: related_entity
+    description: ID of the entity that owns this file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+  file_role:
+    name: file_role
+    description: Role of the file (raw, intermediate, final, diagnostic, metadata)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
 
 </code></pre>
 </details>
@@ -746,6 +794,36 @@ attributes:
     domain_of:
     - DataFile
     range: DataTypeEnum
+  storage_uri:
+    name: storage_uri
+    description: Storage URI (S3, Globus, etc.)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: storage_uri
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  related_entity:
+    name: related_entity
+    description: ID of the entity that owns this file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: related_entity
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  file_role:
+    name: file_role
+    description: Role of the file (raw, intermediate, final, diagnostic, metadata)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_role
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -762,6 +840,7 @@ attributes:
     required: true
   title:
     name: title
+    description: A human-readable name or title for this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     slot_uri: dcterms:title
@@ -772,6 +851,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A detailed textual description of this entity
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: description

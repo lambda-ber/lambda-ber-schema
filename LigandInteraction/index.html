@@ -504,7 +504,7 @@
 <tbody>
 <tr>
 <td><a href="../ligand_id/">ligand_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Ligand identifier (ChEMBL, ChEBI, PubChem)</td>
 <td>direct</td>
 </tr>
@@ -516,7 +516,7 @@
 </tr>
 <tr>
 <td><a href="../ligand_smiles/">ligand_smiles</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../SmilesString/">SmilesString</a></td>
 <td>SMILES representation of the ligand</td>
 <td>direct</td>
 </tr>
@@ -565,7 +565,7 @@
 <tr>
 <td><a href="../druggability_score/">druggability_score</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Druggability score of the binding site</td>
+<td>Druggability score of the binding site (range: 0-1)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -653,6 +653,7 @@ attributes:
     rank: 1000
     domain_of:
     - LigandInteraction
+    range: uriorcurie
     required: true
   ligand_name:
     name: ligand_name
@@ -669,6 +670,7 @@ attributes:
     rank: 1000
     domain_of:
     - LigandInteraction
+    range: smiles_string
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
@@ -727,7 +729,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
@@ -764,7 +766,7 @@ attributes:
     owner: LigandInteraction
     domain_of:
     - LigandInteraction
-    range: string
+    range: uriorcurie
     required: true
   ligand_name:
     name: ligand_name
@@ -786,7 +788,7 @@ attributes:
     owner: LigandInteraction
     domain_of:
     - LigandInteraction
-    range: string
+    range: smiles_string
   binding_affinity:
     name: binding_affinity
     description: Binding affinity value
@@ -860,7 +862,7 @@ attributes:
     range: boolean
   druggability_score:
     name: druggability_score
-    description: Druggability score of the binding site
+    description: 'Druggability score of the binding site (range: 0-1)'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: druggability_score

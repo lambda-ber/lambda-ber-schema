@@ -837,15 +837,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -907,8 +898,8 @@
 
 
 <h1 id="slot-resolution_low">Slot: resolution_low</h1>
-<p><em>Low resolution limit in Angstroms</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A">nsls2:Resolution_Low_A</a>
+<p><em>Low resolution limit</em></p>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/resolution_low">lambdaber:resolution_low</a>
 Alias: resolution_low</p>
 <!-- no inheritance hierarchy -->
 
@@ -933,10 +924,6 @@ Alias: resolution_low</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to PDB: _reflns.d_resolution_low</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -953,11 +940,15 @@ Alias: resolution_low</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Resolution_Low_A</td>
+<td>lambdaber:resolution_low</td>
 </tr>
 <tr>
 <td>native</td>
 <td>lambdaber:resolution_low</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Resolution_Low_A, mmCIF:_reflns.d_resolution_low</td>
 </tr>
 </tbody>
 </table>
@@ -965,17 +956,19 @@ Alias: resolution_low</p>
 <details>
 
 <pre><code class="language-yaml">name: resolution_low
-description: Low resolution limit in Angstroms
-comments:
-- 'Maps to PDB: _reflns.d_resolution_low'
+description: Low resolution limit
 from_schema: https://w3id.org/lambda-ber-schema/
+exact_mappings:
+- nsls2:Resolution_Low_A
+- mmCIF:_reflns.d_resolution_low
 rank: 1000
-slot_uri: nsls2:Resolution_Low_A
 alias: resolution_low
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
 range: float
+unit:
+  ucum_code: Ao
 
 </code></pre>
 
