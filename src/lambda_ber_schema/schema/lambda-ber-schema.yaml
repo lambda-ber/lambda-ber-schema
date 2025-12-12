@@ -112,6 +112,9 @@ types:
 
 classes:
 
+  Any:
+    class_uri: linkml:Any
+
   NamedThing:
     description: "A named thing"
     abstract: true
@@ -137,20 +140,25 @@ classes:
   AttributeValue:
     description: >-
       "A numerical value for a specific attribute along with its metadata, including
-      its unit of measurement, expressed as an OntologyTerm object corresponding to the
-      unit or a UCUM code."
+      its unit of measurement, expressed as a string corresponding to the UCUM code."
     attributes:
       value:
         description: "The numerical value of the attribute"
         range: float
+      # NOTE: This could be a OntologyTerm instead but it makes the ifabsent logic more complex
+      #       and there is a limited set of vocabs for units
       unit:
         description: "The unit of measurement for the attribute value"
-        range: Any
-        any_of:
-          - range: OntologyTerm
-          - range: string
-            comments:
-              - "UCUM code representing the unit (e.g., 'kDa' for kilodaltons, 'Cel' for degrees Celsius)"
+        range: string
+        comments:
+          - "UCUM code representing the unit (e.g., 'kDa' for kilodaltons, 'Cel' for degrees Celsius)"
+
+  MolecularWeightValue:
+    is_a: AttributeValue
+    description: "Molecular weight value. Defaults to kilodaltons (kDa) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(kDa)"
 
   Dataset:
     is_a: NamedThing
@@ -235,10 +243,8 @@ classes:
         description: "Description of molecular composition including sequences, modifications, ligands"
         range: MolecularComposition
       molecular_weight:
-        description: "Molecular weight in kDa"
-        range: float
-        unit:
-          ucum_code: kDa
+        description: "Molecular weight of the sample"
+        range: MolecularWeightValue
       concentration:
         description: "Sample concentration in mg/mL or µM"
         range: float
