@@ -24,7 +24,7 @@ instruments:
     energy_filter_make: "Gatan"
     energy_filter_model: "GIF Quantum LS"
     energy_filter_slit_width: 20  # eV
-    detector_type: "direct_electron"
+    detector_technology: direct_electron_detector
     detector_position: "post-column"
     detector_mode: "counting"
     pixel_size_physical: 5.0  # micrometers
