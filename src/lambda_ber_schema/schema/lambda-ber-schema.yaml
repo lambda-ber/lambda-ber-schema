@@ -134,6 +134,24 @@ classes:
       description:
         range: string
 
+  AttributeValue:
+    description: >-
+      "A numerical value for a specific attribute along with its metadata, including
+      its unit of measurement, expressed as an OntologyTerm object corresponding to the
+      unit or a UCUM code."
+    attributes:
+      value:
+        description: "The numerical value of the attribute"
+        range: float
+      unit:
+        description: "The unit of measurement for the attribute value"
+        range: Any
+        any_of:
+          - range: OntologyTerm
+          - range: string
+            comments:
+              - "UCUM code representing the unit (e.g., 'kDa' for kilodaltons, 'Cel' for degrees Celsius)"
+
   Dataset:
     is_a: NamedThing
     tree_root: true
