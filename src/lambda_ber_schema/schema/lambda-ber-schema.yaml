@@ -187,13 +187,34 @@ classes:
     slot_usage:
       unit:
         ifabsent: "string(um)"
-  
+
+  ResolutionValue:
+    is_a: AttributeValue
+    description: "Resolution value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
+
   RotationRangeValue:
     is_a: AttributeValue
     description: "Rotation range value. Defaults to degrees if no unit is specified."
     slot_usage:
       unit:
         ifabsent: "string(deg)"
+
+  UnitCellAngleValue:
+    is_a: AttributeValue
+    description: "Unit cell angle value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
+  UnitCellSizeValue:
+    is_a: AttributeValue
+    description: "Unit cell size value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
 
   WavelengthValue:
     is_a: AttributeValue
@@ -1083,49 +1104,37 @@ classes:
           - "mmCIF:_symmetry.space_group_name_H-M"
       unit_cell_a:
         description: "Unit cell parameter a"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_a"
           - "mmCIF:_cell.length_a"
       unit_cell_b:
         description: "Unit cell parameter b"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_b"
           - "mmCIF:_cell.length_b"
       unit_cell_c:
         description: "Unit cell parameter c"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_c"
           - "mmCIF:_cell.length_c"
       unit_cell_alpha:
         description: "Unit cell angle alpha"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_alpha"
           - "mmCIF:_cell.angle_alpha"
       unit_cell_beta:
         description: "Unit cell angle beta"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_beta"
           - "mmCIF:_cell.angle_beta"
       unit_cell_gamma:
         description: "Unit cell angle gamma"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_gamma"
           - "mmCIF:_cell.angle_gamma"
