@@ -153,12 +153,26 @@ classes:
         comments:
           - "UCUM code representing the unit (e.g., 'kDa' for kilodaltons, 'Cel' for degrees Celsius)"
 
+  AngleValue:
+    is_a: AttributeValue
+    description: "Angle value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
   MolecularWeightValue:
     is_a: AttributeValue
     description: "Molecular weight value. Defaults to kilodaltons (kDa) if no unit is specified."
     slot_usage:
       unit:
         ifabsent: "string(kDa)"
+  
+  WavelengthValue:
+    is_a: AttributeValue
+    description: "Wavelength value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
 
   Dataset:
     is_a: NamedThing
@@ -888,28 +902,22 @@ classes:
         range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
       wavelength:
-        description: "X-ray wavelength"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "X-ray wavelength used during data collection"
+        range: WavelengthValue
         exact_mappings:
           - "nsls2:Wavelength"
           - "imgCIF:_diffrn_radiation_wavelength.wavelength"
           - "mmCIF:_diffrn_radiation_wavelength.wavelength"
       oscillation_angle:
         description: "Oscillation angle per image"
-        range: float
-        unit:
-          ucum_code: deg
+        range: AngleValue
         exact_mappings:
           - "nsls2:Angle_increment"
           - "imgCIF:_diffrn_scan_axis.angle_increment"
           - "mmCIF:_diffrn_scan.angle_increment"
       start_angle:
         description: "Starting rotation angle"
-        range: float
-        unit:
-          ucum_code: deg
+        range: AngleValue
         exact_mappings:
           - "nsls2:Start_angle"
           - "imgCIF:_diffrn_scan_axis.angle_start"
