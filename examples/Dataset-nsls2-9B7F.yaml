@@ -33,7 +33,7 @@ instruments:
     model: "FMX Beamline"
     current_status: operational
     source_type: synchrotron
-    detector_type: eiger
+    detector_technology: hybrid_photon_counting
     beamline_id: "FMX"
     energy_min: 5.0
     energy_max: 20.0
