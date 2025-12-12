@@ -160,13 +160,41 @@ classes:
       unit:
         ifabsent: "string(deg)"
 
+  BeamCoordinateValue:
+    is_a: AttributeValue
+    description: "Beam coordinate value. Defaults to reference pixels ([px]) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string([px])"
+
+  InstrumentDistanceValue:
+    is_a: AttributeValue
+    description: "Instrument distance value. Defaults to millimeters (mm) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(mm)"
+
   MolecularWeightValue:
     is_a: AttributeValue
     description: "Molecular weight value. Defaults to kilodaltons (kDa) if no unit is specified."
     slot_usage:
       unit:
         ifabsent: "string(kDa)"
+
+  PixelSizeValue:
+    is_a: AttributeValue
+    description: "Pixel size value. Defaults to micrometers (um) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(um)"
   
+  RotationRangeValue:
+    is_a: AttributeValue
+    description: "Rotation range value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
   WavelengthValue:
     is_a: AttributeValue
     description: "Wavelength value. Defaults to Angstroms (Å) if no unit is specified."
@@ -929,36 +957,28 @@ classes:
           - "imgCIF:_diffrn_scan.frames"
       beam_center_x:
         description: "Beam center X coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        range: BeamCoordinateValue
         exact_mappings:
           - "nsls2:Beam_xy_x"
           - "imgCIF:_diffrn_detector.beam_centre_x"
           - "mmCIF:_diffrn_detector.beam_center_x"
       beam_center_y:
         description: "Beam center Y coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        range: BeamCoordinateValue
         exact_mappings:
           - "nsls2:Beam_xy_y"
           - "imgCIF:_diffrn_detector.beam_centre_y"
           - "mmCIF:_diffrn_detector.beam_center_y"
       detector_distance:
         description: "Distance from sample to detector"
-        range: float
-        unit:
-          ucum_code: mm
+        range: InstrumentDistanceValue
         exact_mappings:
           - "nsls2:Detector_distance"
           - "imgCIF:_diffrn_measurement.sample_detector_distance"
           - "mmCIF:_diffrn_detector.distance"
       pixel_size_x:
         description: "Pixel size X dimension"
-        range: float
-        unit:
-          ucum_code: um
+        range: PixelSizeValue
         exact_mappings:
           - "nsls2:Pixel_size_x"
           - "imgCIF:_array_element_size.size"
@@ -966,9 +986,7 @@ classes:
           - "imgCIF: _array_element_size.size[1]"
       pixel_size_y:
         description: "Pixel size Y dimension"
-        range: float
-        unit:
-          ucum_code: um
+        range: PixelSizeValue
         exact_mappings:
           - "nsls2:Pixel_size_y"
           - "imgCIF:_array_element_size.size"
@@ -976,9 +994,7 @@ classes:
           - "imgCIF: _array_element_size.size[2]"
       total_rotation:
         description: "Total rotation range collected"
-        range: float
-        unit:
-          ucum_code: deg
+        range: RotationRangeValue
         exact_mappings:
           - "nsls2:Total_rotation_deg"
           - "imgCIF:_diffrn_scan_axis.angle_range"
