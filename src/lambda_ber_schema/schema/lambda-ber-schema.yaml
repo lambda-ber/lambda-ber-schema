@@ -112,6 +112,9 @@ types:
 
 classes:
 
+  Any:
+    class_uri: linkml:Any
+
   NamedThing:
     description: "A named thing"
     abstract: true
@@ -133,6 +136,92 @@ classes:
     attributes:
       description:
         range: string
+
+  AttributeValue:
+    description: >-
+      "A numerical value for a specific attribute along with its metadata, including
+      its unit of measurement, expressed as a string corresponding to the UCUM code."
+    attributes:
+      value:
+        description: "The numerical value of the attribute"
+        range: float
+      # NOTE: This could be a OntologyTerm instead but it makes the ifabsent logic more complex
+      #       and there is a limited set of vocabs for units
+      unit:
+        description: "The unit of measurement for the attribute value"
+        range: string
+        comments:
+          - "UCUM code representing the unit (e.g., 'kDa' for kilodaltons, 'Cel' for degrees Celsius)"
+
+  AngleValue:
+    is_a: AttributeValue
+    description: "Angle value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
+  BeamCoordinateValue:
+    is_a: AttributeValue
+    description: "Beam coordinate value. Defaults to reference pixels ([px]) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string([px])"
+
+  InstrumentDistanceValue:
+    is_a: AttributeValue
+    description: "Instrument distance value. Defaults to millimeters (mm) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(mm)"
+
+  MolecularWeightValue:
+    is_a: AttributeValue
+    description: "Molecular weight value. Defaults to kilodaltons (kDa) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(kDa)"
+
+  PixelSizeValue:
+    is_a: AttributeValue
+    description: "Pixel size value. Defaults to micrometers (um) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(um)"
+
+  ResolutionValue:
+    is_a: AttributeValue
+    description: "Resolution value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
+
+  RotationRangeValue:
+    is_a: AttributeValue
+    description: "Rotation range value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
+  UnitCellAngleValue:
+    is_a: AttributeValue
+    description: "Unit cell angle value. Defaults to degrees if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(deg)"
+
+  UnitCellSizeValue:
+    is_a: AttributeValue
+    description: "Unit cell size value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
+
+  WavelengthValue:
+    is_a: AttributeValue
+    description: "Wavelength value. Defaults to Angstroms (Å) if no unit is specified."
+    slot_usage:
+      unit:
+        ifabsent: "string(Ao)"
 
   Dataset:
     is_a: NamedThing
@@ -217,10 +306,8 @@ classes:
         description: "Description of molecular composition including sequences, modifications, ligands"
         range: MolecularComposition
       molecular_weight:
-        description: "Molecular weight in kDa"
-        range: float
-        unit:
-          ucum_code: kDa
+        description: "Molecular weight of the sample"
+        range: MolecularWeightValue
       concentration:
         description: "Sample concentration in mg/mL or µM"
         range: float
@@ -864,28 +951,22 @@ classes:
         range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
       wavelength:
-        description: "X-ray wavelength"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "X-ray wavelength used during data collection"
+        range: WavelengthValue
         exact_mappings:
           - "nsls2:Wavelength"
           - "imgCIF:_diffrn_radiation_wavelength.wavelength"
           - "mmCIF:_diffrn_radiation_wavelength.wavelength"
       oscillation_angle:
         description: "Oscillation angle per image"
-        range: float
-        unit:
-          ucum_code: deg
+        range: AngleValue
         exact_mappings:
           - "nsls2:Angle_increment"
           - "imgCIF:_diffrn_scan_axis.angle_increment"
           - "mmCIF:_diffrn_scan.angle_increment"
       start_angle:
         description: "Starting rotation angle"
-        range: float
-        unit:
-          ucum_code: deg
+        range: AngleValue
         exact_mappings:
           - "nsls2:Start_angle"
           - "imgCIF:_diffrn_scan_axis.angle_start"
@@ -897,36 +978,28 @@ classes:
           - "imgCIF:_diffrn_scan.frames"
       beam_center_x:
         description: "Beam center X coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        range: BeamCoordinateValue
         exact_mappings:
           - "nsls2:Beam_xy_x"
           - "imgCIF:_diffrn_detector.beam_centre_x"
           - "mmCIF:_diffrn_detector.beam_center_x"
       beam_center_y:
         description: "Beam center Y coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        range: BeamCoordinateValue
         exact_mappings:
           - "nsls2:Beam_xy_y"
           - "imgCIF:_diffrn_detector.beam_centre_y"
           - "mmCIF:_diffrn_detector.beam_center_y"
       detector_distance:
         description: "Distance from sample to detector"
-        range: float
-        unit:
-          ucum_code: mm
+        range: InstrumentDistanceValue
         exact_mappings:
           - "nsls2:Detector_distance"
           - "imgCIF:_diffrn_measurement.sample_detector_distance"
           - "mmCIF:_diffrn_detector.distance"
       pixel_size_x:
         description: "Pixel size X dimension"
-        range: float
-        unit:
-          ucum_code: um
+        range: PixelSizeValue
         exact_mappings:
           - "nsls2:Pixel_size_x"
           - "imgCIF:_array_element_size.size"
@@ -934,9 +1007,7 @@ classes:
           - "imgCIF: _array_element_size.size[1]"
       pixel_size_y:
         description: "Pixel size Y dimension"
-        range: float
-        unit:
-          ucum_code: um
+        range: PixelSizeValue
         exact_mappings:
           - "nsls2:Pixel_size_y"
           - "imgCIF:_array_element_size.size"
@@ -944,9 +1015,7 @@ classes:
           - "imgCIF: _array_element_size.size[2]"
       total_rotation:
         description: "Total rotation range collected"
-        range: float
-        unit:
-          ucum_code: deg
+        range: RotationRangeValue
         exact_mappings:
           - "nsls2:Total_rotation_deg"
           - "imgCIF:_diffrn_scan_axis.angle_range"
@@ -1035,49 +1104,37 @@ classes:
           - "mmCIF:_symmetry.space_group_name_H-M"
       unit_cell_a:
         description: "Unit cell parameter a"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_a"
           - "mmCIF:_cell.length_a"
       unit_cell_b:
         description: "Unit cell parameter b"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_b"
           - "mmCIF:_cell.length_b"
       unit_cell_c:
         description: "Unit cell parameter c"
-        range: float
-        unit:
-          ucum_code: Ao
+        range: UnitCellSizeValue
         exact_mappings:
           - "nsls2:Unit_Cell_c"
           - "mmCIF:_cell.length_c"
       unit_cell_alpha:
         description: "Unit cell angle alpha"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_alpha"
           - "mmCIF:_cell.angle_alpha"
       unit_cell_beta:
         description: "Unit cell angle beta"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_beta"
           - "mmCIF:_cell.angle_beta"
       unit_cell_gamma:
         description: "Unit cell angle gamma"
-        range: float
-        unit:
-          ucum_code: deg
+        range: UnitCellAngleValue
         exact_mappings:
           - "nsls2:Unit_Cell_gamma"
           - "mmCIF:_cell.angle_gamma"
