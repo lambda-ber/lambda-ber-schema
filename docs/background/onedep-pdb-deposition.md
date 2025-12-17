@@ -281,9 +281,211 @@ The schema provides structured capture for the majority of PDB deposition metada
 2. Set `WorkflowRun.deposited_to_pdb = true`
 3. Maintain bidirectional links between local records and PDB entry
 
+## OneDep Validation Categories
+
+OneDep performs extensive validation before accepting a deposition. Understanding these checks helps ensure lambda-ber-schema captures the right metadata.
+
+### Geometry Validation
+| Check | What It Validates | Schema Support |
+|-------|-------------------|----------------|
+| Bond lengths | Deviations from ideal geometry | `WorkflowRun.rmsd_bonds` |
+| Bond angles | Deviations from ideal angles | `WorkflowRun.rmsd_angles` |
+| Ramachandran | Backbone dihedral angles | `WorkflowRun.ramachandran_favored`, `ramachandran_outliers` |
+| Rotamers | Side chain conformations | (in coordinate file) |
+| Clashes | Steric overlaps | `WorkflowRun.clashscore` |
+
+### Data Quality Validation
+| Check | What It Validates | Schema Support |
+|-------|-------------------|----------------|
+| Resolution | Claimed vs actual resolution | `WorkflowRun.resolution_high` |
+| Completeness | Data completeness | `WorkflowRun.completeness_percent` |
+| R-factors | Rwork/Rfree gap | `WorkflowRun.rwork`, `rfree` |
+| B-factors | Temperature factor distribution | `WorkflowRun.wilson_b_factor` |
+
+### Metadata Validation
+| Check | What It Validates | Schema Support |
+|-------|-------------------|----------------|
+| Sequence match | Coordinates match deposited sequence | `Sample.molecular_composition` |
+| Ligand identity | Chemical component dictionary match | `Sample` ligand fields |
+| Source organism | Taxonomy ID validity | `Sample.ncbi_taxid`, `organism` |
+| Expression system | Host organism consistency | `Sample.expression_system` |
+
+## Common Deposition Issues
+
+These are frequent problems researchers encounter during deposition, and how lambda-ber-schema helps prevent them:
+
+### 1. Missing or Inconsistent Metadata
+**Problem**: Data collection parameters don't match between coordinate file and deposition form.
+
+**Schema Solution**: Single source of truth in `ExperimentRun`:
+```yaml
+ExperimentRun:
+  wavelength: 0.9792        # Captured at beamline
+  temperature_k: 100        # Recorded automatically
+  detector_distance: 250.0  # From beamline metadata
+  beamline: "FMX"           # Facility identifier
+```
+
+### 2. Lost Sample Provenance
+**Problem**: Can't remember expression system or crystallization conditions months after data collection.
+
+**Schema Solution**: Captured at preparation time in `Sample` and `CrystallizationConditions`:
+```yaml
+Sample:
+  protein_name: "Lysozyme"
+  organism: NCBITaxon:9031  # Gallus gallus
+  expression_system: "E. coli BL21(DE3)"
+
+CrystallizationConditions:
+  method: "vapor_diffusion_hanging_drop"
+  precipitant_type: "NaCl"
+  precipitant_concentration: "1.0 M"
+  ph: 4.5
+```
+
+### 3. Processing Statistics Mismatch
+**Problem**: Reported statistics come from different processing runs.
+
+**Schema Solution**: `WorkflowRun` links statistics to specific processing:
+```yaml
+WorkflowRun:
+  workflow_code: "lysozyme-processing-v2"
+  software_name: "XDS"
+  software_version: "March 2024"
+  resolution_high: 1.64
+  rmerge: 0.082
+  completeness_percent: 99.8
+  # All stats from same processing run
+```
+
+### 4. Incorrect Phasing Attribution
+**Problem**: Phasing method or search model not properly documented.
+
+**Schema Solution**: Explicit phasing tracking:
+```yaml
+WorkflowRun:
+  phasing_method: sad  # PhasingMethodEnum
+  # or for molecular replacement:
+  phasing_method: molecular_replacement
+  search_model_pdb_id: "1LYZ"
+```
+
+## Example: Schema to OneDep Export
+
+Conceptual example of generating OneDep-ready metadata from lambda-ber-schema:
+
+```python
+def generate_onedep_metadata(study: Study) -> dict:
+    """Extract OneDep form data from lambda-ber-schema Study."""
+
+    sample = study.samples[0]
+    experiment = study.experiment_runs[0]
+    workflow = study.workflow_runs[0]
+    instrument = get_instrument(experiment.instrument_id)
+
+    return {
+        # TITLE
+        "structure_title": study.title,
+
+        # SOURCE
+        "source_organism": sample.organism,
+        "source_taxid": sample.ncbi_taxid,
+        "expression_system": sample.expression_system,
+
+        # COMPND
+        "molecule_name": sample.protein_name,
+
+        # REMARK 200 - Data Collection
+        "wavelength": experiment.wavelength,
+        "temperature": experiment.temperature_k,
+        "detector": instrument.detector_model,
+        "beamline": experiment.beamline,
+        "synchrotron": instrument.facility_id,
+
+        # CRYST1
+        "space_group": workflow.space_group,
+        "unit_cell": {
+            "a": workflow.unit_cell_a,
+            "b": workflow.unit_cell_b,
+            "c": workflow.unit_cell_c,
+            "alpha": workflow.unit_cell_alpha,
+            "beta": workflow.unit_cell_beta,
+            "gamma": workflow.unit_cell_gamma,
+        },
+
+        # Data quality
+        "resolution": workflow.resolution_high,
+        "rmerge": workflow.rmerge,
+        "completeness": workflow.completeness_percent,
+
+        # Refinement
+        "rwork": workflow.rwork,
+        "rfree": workflow.rfree,
+
+        # Phasing
+        "phasing_method": workflow.phasing_method,
+        "search_model": workflow.search_model_pdb_id,
+    }
+```
+
+## Workflow Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        STRUCTURE DETERMINATION WORKFLOW                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   SAMPLE    │───▶│   DATA      │───▶│ PROCESSING  │───▶│ REFINEMENT  │
+│ PREPARATION │    │ COLLECTION  │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+      │                  │                  │                  │
+      ▼                  ▼                  ▼                  ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Sample    │    │ Experiment  │    │ WorkflowRun │    │ WorkflowRun │
+│   + Cryst   │    │    Run      │    │ (indexing)  │    │(refinement) │
+│ Conditions  │    │             │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+      │                  │                  │                  │
+      │                  │                  │                  │
+      └──────────────────┴──────────────────┴──────────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │    lambda-ber-schema         │
+                    │    (unified metadata)        │
+                    └──────────────────────────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    │                             │
+                    ▼                             ▼
+         ┌─────────────────┐           ┌─────────────────┐
+         │  OneDep Forms   │           │  Local Archive  │
+         │  (deposition)   │           │  (provenance)   │
+         └─────────────────┘           └─────────────────┘
+                    │
+                    ▼
+         ┌─────────────────┐
+         │      PDB        │
+         │   (public)      │
+         └─────────────────┘
+```
+
+## Related Standards
+
+| Standard | Scope | Relationship to Schema |
+|----------|-------|------------------------|
+| **mmCIF/PDBx** | Atomic coordinates, structure metadata | Schema maps to mmCIF categories via `exact_mappings` |
+| **IHMCIF** | Integrative/hybrid methods | Future alignment for multi-technique studies |
+| **SIFTS** | Sequence-structure mapping | `Sample.molecular_composition` alignment |
+| **UniProt** | Protein sequences | `Sample` protein identifiers |
+| **NCBI Taxonomy** | Organism classification | `Sample.organism`, `ncbi_taxid` |
+
 ## References
 
 - [wwPDB OneDep](https://deposit.wwpdb.org) - Unified deposition portal
 - [mmCIF Dictionary](https://mmcif.wwpdb.org/) - Official mmCIF/PDBx dictionary
 - [PDB File Format](https://www.wwpdb.org/documentation/file-format) - Legacy format documentation
 - [PDB Validation](https://validate.wwpdb.org/) - Standalone validation server
+- [wwPDB Validation Reports](https://www.wwpdb.org/validation/validation-reports) - Understanding validation output
+- [PDB Data Harvesting](https://www.wwpdb.org/deposition/data-harvesting) - Automatic metadata extraction
