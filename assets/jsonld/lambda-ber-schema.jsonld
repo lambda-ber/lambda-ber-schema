@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a hierarchical structure that mirrors how structural biology research is organized:\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\nEach dataset contains one or more [Studies](Study.md), which are focused investigations of specific\nbiological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\nor \"Structure of the human ribosome under different conditions.\"\n\nWithin each study, you'll find:\n\n### Biological Materials\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, \n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and \n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n### Data Collection\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron \n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), \n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to \n  instruments. An experiment run captures when, how, and under what conditions data was collected,\n  including quality metrics like resolution and completeness.\n\n### Data Processing\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n### Data Products\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "https://w3id.org/lambda-ber-schema/",
-  "version": "0.1.1.post4.dev0+e2dc952",
+  "version": "0.1.1.post15.dev0+b4e2533",
   "imports": [
     "linkml:types",
     "functional_annotation"
@@ -80,6 +80,14 @@
     {
       "prefix_prefix": "CHMO",
       "prefix_reference": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "prefix_prefix": "ispyb",
+      "prefix_reference": "https://ispyb.github.io/ISPyB/"
+    },
+    {
+      "prefix_prefix": "PaNET",
+      "prefix_reference": "http://purl.org/pan-science/PaNET/PaNET"
     }
   ],
   "default_prefix": "lambdaber",
@@ -1722,22 +1730,34 @@
         {
           "text": "xray_crystallography",
           "description": "X-ray crystallography",
-          "meaning": "CHMO:0000156"
+          "meaning": "CHMO:0000156",
+          "exact_mappings": [
+            "PaNET:01164"
+          ]
         },
         {
           "text": "saxs",
           "description": "Small-angle X-ray scattering",
-          "meaning": "CHMO:0000204"
+          "meaning": "CHMO:0000204",
+          "exact_mappings": [
+            "PaNET:01188"
+          ]
         },
         {
           "text": "waxs",
           "description": "Wide-angle X-ray scattering",
-          "meaning": "CHMO:0000207"
+          "meaning": "CHMO:0000207",
+          "exact_mappings": [
+            "PaNET:01191"
+          ]
         },
         {
           "text": "sans",
           "description": "Small-angle neutron scattering",
-          "meaning": "CHMO:0000184"
+          "meaning": "CHMO:0000184",
+          "exact_mappings": [
+            "PaNET:01189"
+          ]
         },
         {
           "text": "cryo_et",
@@ -6256,7 +6276,8 @@
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_radiation_wavelength.wavelength",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_radiation_wavelength.wavelength"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_radiation_wavelength.wavelength",
+        "https://ispyb.github.io/ISPyB/DataCollection.wavelength"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/wavelength",
       "alias": "wavelength",
@@ -6278,7 +6299,8 @@
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_increment",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan.angle_increment"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan.angle_increment",
+        "https://ispyb.github.io/ISPyB/DataCollection.axisRange"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/oscillation_angle",
       "alias": "oscillation_angle",
@@ -6299,7 +6321,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Start_angle",
-        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_start"
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan_axis.angle_start",
+        "https://ispyb.github.io/ISPyB/DataCollection.axisStart"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/start_angle",
       "alias": "start_angle",
@@ -6320,7 +6343,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Number_of_images",
-        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan.frames"
+        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan.frames",
+        "https://ispyb.github.io/ISPyB/DataCollection.numberOfImages"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/number_of_images",
       "alias": "number_of_images",
@@ -6338,7 +6362,8 @@
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_centre_x",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_x"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_x",
+        "https://ispyb.github.io/ISPyB/DataCollection.xBeam"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_center_x",
       "alias": "beam_center_x",
@@ -6360,7 +6385,8 @@
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_detector.beam_centre_y",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_y"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_y",
+        "https://ispyb.github.io/ISPyB/DataCollection.yBeam"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_center_y",
       "alias": "beam_center_y",
@@ -6382,7 +6408,8 @@
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
         "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_measurement.sample_detector_distance",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.distance"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.distance",
+        "https://ispyb.github.io/ISPyB/DataCollection.detectorDistance"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/detector_distance",
       "alias": "detector_distance",
@@ -6472,7 +6499,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Beamline",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline",
+        "https://ispyb.github.io/ISPyB/BLSession.beamLineName"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/beamline",
       "alias": "beamline",
@@ -6481,6 +6509,283 @@
         "ExperimentRun"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__transmission",
+      "description": "X-ray beam transmission as percentage (0-100)",
+      "comments": [
+        "Percentage of full beam intensity used"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.transmission"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/transmission",
+      "alias": "transmission",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 100,
+      "unit": {
+        "ucum_code": "%",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__flux",
+      "description": "Photon flux at sample position in photons/second",
+      "comments": [
+        "Measured or calculated photon flux"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.flux"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/flux",
+      "alias": "flux",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "{photons}/s",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__flux_end",
+      "description": "Photon flux at end of data collection in photons/second",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.flux_end"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/flux_end",
+      "alias": "flux_end",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "{photons}/s",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__slit_gap_horizontal",
+      "description": "Horizontal slit gap aperture in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.slitGapHorizontal"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/slit_gap_horizontal",
+      "alias": "slit_gap_horizontal",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "um",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__slit_gap_vertical",
+      "description": "Vertical slit gap aperture in micrometers",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.slitGapVertical"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/slit_gap_vertical",
+      "alias": "slit_gap_vertical",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "um",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__undulator_gap",
+      "description": "Undulator gap setting in millimeters",
+      "comments": [
+        "Primary undulator gap for beamlines with insertion devices"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.undulatorGap1"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/undulator_gap",
+      "alias": "undulator_gap",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "mm",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__synchrotron_mode",
+      "description": "Synchrotron storage ring fill mode",
+      "comments": [
+        "e.g., 'Top-up', 'Decay', 'Hybrid'"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.synchrotronMode"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/synchrotron_mode",
+      "alias": "synchrotron_mode",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__exposure_time",
+      "description": "Exposure time per image in seconds",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.exposureTime"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time",
+      "alias": "exposure_time",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "s",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__start_time",
+      "description": "Data collection start timestamp",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.startTime"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/start_time",
+      "alias": "start_time",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__end_time",
+      "description": "Data collection end timestamp",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.endTime"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/end_time",
+      "alias": "end_time",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__resolution",
+      "description": "Resolution at edge of detector in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.resolution"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution",
+      "alias": "resolution",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__resolution_at_corner",
+      "description": "Resolution at corner of detector in Angstroms",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.resolutionAtCorner"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_at_corner",
+      "alias": "resolution_at_corner",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "Ao",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__ispyb_data_collection_id",
+      "description": "ISPyB DataCollection.dataCollectionId for traceability",
+      "comments": [
+        "Use to link back to ISPyB records"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/DataCollection.dataCollectionId"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_data_collection_id",
+      "alias": "ispyb_data_collection_id",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__ispyb_session_id",
+      "description": "ISPyB BLSession.sessionId",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/BLSession.sessionId"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_session_id",
+      "alias": "ispyb_session_id",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "integer",
       "@type": "SlotDefinition"
     },
     {
@@ -6807,7 +7112,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Space_Group",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_symmetry.space_group_name_H-M"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_symmetry.space_group_name_H-M",
+        "https://ispyb.github.io/ISPyB/AutoProcScaling.spaceGroup"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/space_group",
       "alias": "space_group",
@@ -6950,7 +7256,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_high"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_high",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.resolutionLimitHigh"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_high",
       "alias": "resolution_high",
@@ -6971,7 +7278,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_low"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.d_resolution_low",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.resolutionLimitLow"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_low",
       "alias": "resolution_low",
@@ -6992,7 +7300,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Rmerge",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rmerge_I_obs"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rmerge_I_obs",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rMerge"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rmerge",
       "alias": "rmerge",
@@ -7009,7 +7318,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Rpim",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rpim_I_all"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rpim_I_all",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rPim"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rpim",
       "alias": "rpim",
@@ -7026,7 +7336,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/CC_half",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.ccHalf"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/cc_half",
       "alias": "cc_half",
@@ -7043,7 +7354,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Completeness",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.percent_possible_obs"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.percent_possible_obs",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.completeness"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/completeness_percent",
       "alias": "completeness_percent",
@@ -7064,7 +7376,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_netI_over_sigmaI"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_netI_over_sigmaI",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.meanIOverSigI"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/i_over_sigma",
       "alias": "i_over_sigma",
@@ -7102,7 +7415,8 @@
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Multiplicity",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_redundancy"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_redundancy",
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.multiplicity"
       ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/multiplicity",
       "alias": "multiplicity",
@@ -7111,6 +7425,169 @@
         "WorkflowRun"
       ],
       "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__anomalous_completeness",
+      "description": "Completeness of anomalous data as percentage",
+      "comments": [
+        "Completeness of Bijvoet pairs"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.anomalousCompleteness"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/anomalous_completeness",
+      "alias": "anomalous_completeness",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "unit": {
+        "ucum_code": "%",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__anomalous_multiplicity",
+      "description": "Multiplicity of anomalous data",
+      "comments": [
+        "Redundancy of Bijvoet pairs"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.anomalousMultiplicity"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/anomalous_multiplicity",
+      "alias": "anomalous_multiplicity",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__cc_anomalous",
+      "description": "Anomalous correlation coefficient",
+      "comments": [
+        "Correlation coefficient between Bijvoet pairs"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.ccAno"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/cc_anomalous",
+      "alias": "cc_anomalous",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__r_anomalous",
+      "description": "Anomalous R-factor",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rAnom"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/r_anomalous",
+      "alias": "r_anomalous",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__sig_anomalous",
+      "description": "Mean anomalous difference signal",
+      "comments": [
+        "Mean |F(+) - F(-)|/sigma"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.sigAno"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sig_anomalous",
+      "alias": "sig_anomalous",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__n_total_observations",
+      "description": "Total number of observations (before merging)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.nTotalObservations"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/n_total_observations",
+      "alias": "n_total_observations",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__n_total_unique",
+      "description": "Total number of unique reflections",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.nTotalUniqueObservations"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/n_total_unique",
+      "alias": "n_total_unique",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ispyb_auto_proc_program_id",
+      "description": "ISPyB AutoProcProgram.autoProcProgramId",
+      "comments": [
+        "Links to ISPyB processing program record"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcProgram.autoProcProgramId"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_auto_proc_program_id",
+      "alias": "ispyb_auto_proc_program_id",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ispyb_auto_proc_scaling_id",
+      "description": "ISPyB AutoProcScaling.autoProcScalingId",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "exact_mappings": [
+        "https://ispyb.github.io/ISPyB/AutoProcScaling.autoProcScalingId"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_auto_proc_scaling_id",
+      "alias": "ispyb_auto_proc_scaling_id",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
       "@type": "SlotDefinition"
     },
     {
@@ -13995,7 +14472,21 @@
         "experimentRun__pixel_size_x",
         "experimentRun__pixel_size_y",
         "experimentRun__total_rotation",
-        "experimentRun__beamline"
+        "experimentRun__beamline",
+        "experimentRun__transmission",
+        "experimentRun__flux",
+        "experimentRun__flux_end",
+        "experimentRun__slit_gap_horizontal",
+        "experimentRun__slit_gap_vertical",
+        "experimentRun__undulator_gap",
+        "experimentRun__synchrotron_mode",
+        "experimentRun__exposure_time",
+        "experimentRun__start_time",
+        "experimentRun__end_time",
+        "experimentRun__resolution",
+        "experimentRun__resolution_at_corner",
+        "experimentRun__ispyb_data_collection_id",
+        "experimentRun__ispyb_session_id"
       ],
       "slot_usage": {},
       "attributes": [
@@ -14200,7 +14691,8 @@
           "exact_mappings": [
             "nsls2:Wavelength",
             "imgCIF:_diffrn_radiation_wavelength.wavelength",
-            "mmCIF:_diffrn_radiation_wavelength.wavelength"
+            "mmCIF:_diffrn_radiation_wavelength.wavelength",
+            "ispyb:DataCollection.wavelength"
           ],
           "range": "float",
           "unit": {
@@ -14215,7 +14707,8 @@
           "exact_mappings": [
             "nsls2:Angle_increment",
             "imgCIF:_diffrn_scan_axis.angle_increment",
-            "mmCIF:_diffrn_scan.angle_increment"
+            "mmCIF:_diffrn_scan.angle_increment",
+            "ispyb:DataCollection.axisRange"
           ],
           "range": "float",
           "unit": {
@@ -14229,7 +14722,8 @@
           "description": "Starting rotation angle",
           "exact_mappings": [
             "nsls2:Start_angle",
-            "imgCIF:_diffrn_scan_axis.angle_start"
+            "imgCIF:_diffrn_scan_axis.angle_start",
+            "ispyb:DataCollection.axisStart"
           ],
           "range": "float",
           "unit": {
@@ -14243,7 +14737,8 @@
           "description": "Total number of diffraction images collected",
           "exact_mappings": [
             "nsls2:Number_of_images",
-            "imgCIF:_diffrn_scan.frames"
+            "imgCIF:_diffrn_scan.frames",
+            "ispyb:DataCollection.numberOfImages"
           ],
           "range": "integer",
           "@type": "SlotDefinition"
@@ -14254,7 +14749,8 @@
           "exact_mappings": [
             "nsls2:Beam_xy_x",
             "imgCIF:_diffrn_detector.beam_centre_x",
-            "mmCIF:_diffrn_detector.beam_center_x"
+            "mmCIF:_diffrn_detector.beam_center_x",
+            "ispyb:DataCollection.xBeam"
           ],
           "range": "float",
           "unit": {
@@ -14269,7 +14765,8 @@
           "exact_mappings": [
             "nsls2:Beam_xy_y",
             "imgCIF:_diffrn_detector.beam_centre_y",
-            "mmCIF:_diffrn_detector.beam_center_y"
+            "mmCIF:_diffrn_detector.beam_center_y",
+            "ispyb:DataCollection.yBeam"
           ],
           "range": "float",
           "unit": {
@@ -14284,7 +14781,8 @@
           "exact_mappings": [
             "nsls2:Detector_distance",
             "imgCIF:_diffrn_measurement.sample_detector_distance",
-            "mmCIF:_diffrn_detector.distance"
+            "mmCIF:_diffrn_detector.distance",
+            "ispyb:DataCollection.detectorDistance"
           ],
           "range": "float",
           "unit": {
@@ -14346,9 +14844,189 @@
           "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
           "exact_mappings": [
             "nsls2:Beamline",
-            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
+            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline",
+            "ispyb:BLSession.beamLineName"
           ],
           "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "transmission",
+          "description": "X-ray beam transmission as percentage (0-100)",
+          "comments": [
+            "Percentage of full beam intensity used"
+          ],
+          "exact_mappings": [
+            "ispyb:DataCollection.transmission"
+          ],
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 100,
+          "unit": {
+            "ucum_code": "%",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux",
+          "description": "Photon flux at sample position in photons/second",
+          "comments": [
+            "Measured or calculated photon flux"
+          ],
+          "exact_mappings": [
+            "ispyb:DataCollection.flux"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "{photons}/s",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux_end",
+          "description": "Photon flux at end of data collection in photons/second",
+          "exact_mappings": [
+            "ispyb:DataCollection.flux_end"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "{photons}/s",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "slit_gap_horizontal",
+          "description": "Horizontal slit gap aperture in micrometers",
+          "exact_mappings": [
+            "ispyb:DataCollection.slitGapHorizontal"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "um",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "slit_gap_vertical",
+          "description": "Vertical slit gap aperture in micrometers",
+          "exact_mappings": [
+            "ispyb:DataCollection.slitGapVertical"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "um",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "undulator_gap",
+          "description": "Undulator gap setting in millimeters",
+          "comments": [
+            "Primary undulator gap for beamlines with insertion devices"
+          ],
+          "exact_mappings": [
+            "ispyb:DataCollection.undulatorGap1"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "mm",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "synchrotron_mode",
+          "description": "Synchrotron storage ring fill mode",
+          "comments": [
+            "e.g., 'Top-up', 'Decay', 'Hybrid'"
+          ],
+          "exact_mappings": [
+            "ispyb:DataCollection.synchrotronMode"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "exposure_time",
+          "description": "Exposure time per image in seconds",
+          "exact_mappings": [
+            "ispyb:DataCollection.exposureTime"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "s",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "start_time",
+          "description": "Data collection start timestamp",
+          "exact_mappings": [
+            "ispyb:DataCollection.startTime"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "end_time",
+          "description": "Data collection end timestamp",
+          "exact_mappings": [
+            "ispyb:DataCollection.endTime"
+          ],
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution",
+          "description": "Resolution at edge of detector in Angstroms",
+          "exact_mappings": [
+            "ispyb:DataCollection.resolution"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_at_corner",
+          "description": "Resolution at corner of detector in Angstroms",
+          "exact_mappings": [
+            "ispyb:DataCollection.resolutionAtCorner"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "Ao",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ispyb_data_collection_id",
+          "description": "ISPyB DataCollection.dataCollectionId for traceability",
+          "comments": [
+            "Use to link back to ISPyB records"
+          ],
+          "exact_mappings": [
+            "ispyb:DataCollection.dataCollectionId"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ispyb_session_id",
+          "description": "ISPyB BLSession.sessionId",
+          "exact_mappings": [
+            "ispyb:BLSession.sessionId"
+          ],
+          "range": "integer",
           "@type": "SlotDefinition"
         }
       ],
@@ -14405,6 +15083,15 @@
         "workflowRun__i_over_sigma",
         "workflowRun__wilson_b_factor",
         "workflowRun__multiplicity",
+        "workflowRun__anomalous_completeness",
+        "workflowRun__anomalous_multiplicity",
+        "workflowRun__cc_anomalous",
+        "workflowRun__r_anomalous",
+        "workflowRun__sig_anomalous",
+        "workflowRun__n_total_observations",
+        "workflowRun__n_total_unique",
+        "workflowRun__ispyb_auto_proc_program_id",
+        "workflowRun__ispyb_auto_proc_scaling_id",
         "workflowRun__rwork",
         "workflowRun__rfree",
         "workflowRun__rmsd_bonds",
@@ -14565,7 +15252,8 @@
           "description": "Crystallographic space group",
           "exact_mappings": [
             "nsls2:Space_Group",
-            "mmCIF:_symmetry.space_group_name_H-M"
+            "mmCIF:_symmetry.space_group_name_H-M",
+            "ispyb:AutoProcScaling.spaceGroup"
           ],
           "range": "string",
           "@type": "SlotDefinition"
@@ -14659,7 +15347,8 @@
           "description": "High resolution limit",
           "exact_mappings": [
             "nsls2:Resolution_High_A",
-            "mmCIF:_reflns.d_resolution_high"
+            "mmCIF:_reflns.d_resolution_high",
+            "ispyb:AutoProcScalingStatistics.resolutionLimitHigh"
           ],
           "range": "float",
           "unit": {
@@ -14673,7 +15362,8 @@
           "description": "Low resolution limit",
           "exact_mappings": [
             "nsls2:Resolution_Low_A",
-            "mmCIF:_reflns.d_resolution_low"
+            "mmCIF:_reflns.d_resolution_low",
+            "ispyb:AutoProcScalingStatistics.resolutionLimitLow"
           ],
           "range": "float",
           "unit": {
@@ -14687,7 +15377,8 @@
           "description": "Rmerge - merge R-factor",
           "exact_mappings": [
             "nsls2:Rmerge",
-            "mmCIF:_reflns.pdbx_Rmerge_I_obs"
+            "mmCIF:_reflns.pdbx_Rmerge_I_obs",
+            "ispyb:AutoProcScalingStatistics.rMerge"
           ],
           "range": "float",
           "@type": "SlotDefinition"
@@ -14697,7 +15388,8 @@
           "description": "Rpim - precision-indicating merging R-factor",
           "exact_mappings": [
             "nsls2:Rpim",
-            "mmCIF:_reflns.pdbx_Rpim_I_all"
+            "mmCIF:_reflns.pdbx_Rpim_I_all",
+            "ispyb:AutoProcScalingStatistics.rPim"
           ],
           "range": "float",
           "@type": "SlotDefinition"
@@ -14707,7 +15399,8 @@
           "description": "Half-set correlation coefficient CC(1/2)",
           "exact_mappings": [
             "nsls2:CC_half",
-            "mmCIF:_reflns.pdbx_CC_half"
+            "mmCIF:_reflns.pdbx_CC_half",
+            "ispyb:AutoProcScalingStatistics.ccHalf"
           ],
           "range": "float",
           "@type": "SlotDefinition"
@@ -14717,7 +15410,8 @@
           "description": "Data completeness percentage",
           "exact_mappings": [
             "nsls2:Completeness",
-            "mmCIF:_reflns.percent_possible_obs"
+            "mmCIF:_reflns.percent_possible_obs",
+            "ispyb:AutoProcScalingStatistics.completeness"
           ],
           "range": "float",
           "unit": {
@@ -14731,7 +15425,8 @@
           "description": "Mean I/sigma(I) - signal to noise ratio",
           "exact_mappings": [
             "nsls2:I_over_sigma",
-            "mmCIF:_reflns.pdbx_netI_over_sigmaI"
+            "mmCIF:_reflns.pdbx_netI_over_sigmaI",
+            "ispyb:AutoProcScalingStatistics.meanIOverSigI"
           ],
           "range": "float",
           "@type": "SlotDefinition"
@@ -14755,9 +15450,110 @@
           "description": "Data multiplicity (redundancy)",
           "exact_mappings": [
             "nsls2:Multiplicity",
-            "mmCIF:_reflns.pdbx_redundancy"
+            "mmCIF:_reflns.pdbx_redundancy",
+            "ispyb:AutoProcScalingStatistics.multiplicity"
           ],
           "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anomalous_completeness",
+          "description": "Completeness of anomalous data as percentage",
+          "comments": [
+            "Completeness of Bijvoet pairs"
+          ],
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.anomalousCompleteness"
+          ],
+          "range": "float",
+          "unit": {
+            "ucum_code": "%",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anomalous_multiplicity",
+          "description": "Multiplicity of anomalous data",
+          "comments": [
+            "Redundancy of Bijvoet pairs"
+          ],
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.anomalousMultiplicity"
+          ],
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cc_anomalous",
+          "description": "Anomalous correlation coefficient",
+          "comments": [
+            "Correlation coefficient between Bijvoet pairs"
+          ],
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.ccAno"
+          ],
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_anomalous",
+          "description": "Anomalous R-factor",
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.rAnom"
+          ],
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sig_anomalous",
+          "description": "Mean anomalous difference signal",
+          "comments": [
+            "Mean |F(+) - F(-)|/sigma"
+          ],
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.sigAno"
+          ],
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "n_total_observations",
+          "description": "Total number of observations (before merging)",
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.nTotalObservations"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "n_total_unique",
+          "description": "Total number of unique reflections",
+          "exact_mappings": [
+            "ispyb:AutoProcScalingStatistics.nTotalUniqueObservations"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ispyb_auto_proc_program_id",
+          "description": "ISPyB AutoProcProgram.autoProcProgramId",
+          "comments": [
+            "Links to ISPyB processing program record"
+          ],
+          "exact_mappings": [
+            "ispyb:AutoProcProgram.autoProcProgramId"
+          ],
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ispyb_auto_proc_scaling_id",
+          "description": "ISPyB AutoProcScaling.autoProcScalingId",
+          "exact_mappings": [
+            "ispyb:AutoProcScaling.autoProcScalingId"
+          ],
+          "range": "integer",
           "@type": "SlotDefinition"
         },
         {
@@ -18391,9 +19187,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-12T12:00:02",
-  "source_file_size": 107096,
-  "generation_date": "2025-12-12T12:46:47",
+  "source_file_date": "2025-12-17T13:04:18",
+  "source_file_size": 113964,
+  "generation_date": "2025-12-17T13:05:30",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
