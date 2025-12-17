@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.1.post4.dev0+e2dc952
+# version: 0.1.1.post15.dev0+b4e2533
 enum AffinityUnitEnum
   {
     molar
@@ -1011,6 +1011,20 @@ type ExperimentRun
     pixelSizeY: Float
     totalRotation: Float
     beamline: String
+    transmission: Float
+    flux: Float
+    fluxEnd: Float
+    slitGapHorizontal: Float
+    slitGapVertical: Float
+    undulatorGap: Float
+    synchrotronMode: String
+    exposureTime: Float
+    startTime: String
+    endTime: String
+    resolution: Float
+    resolutionAtCorner: Float
+    ispybDataCollectionId: Integer
+    ispybSessionId: Integer
   }
 
 type FluorescenceImage
@@ -1706,6 +1720,15 @@ type WorkflowRun
     iOverSigma: Float
     wilsonBFactor: Float
     multiplicity: Float
+    anomalousCompleteness: Float
+    anomalousMultiplicity: Float
+    ccAnomalous: Float
+    rAnomalous: Float
+    sigAnomalous: Float
+    nTotalObservations: Integer
+    nTotalUnique: Integer
+    ispybAutoProcProgramId: Integer
+    ispybAutoProcScalingId: Integer
     rwork: Float
     rfree: Float
     rmsdBonds: Float

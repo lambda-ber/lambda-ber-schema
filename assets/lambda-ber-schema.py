@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-12T12:46:54
+# Generation date: 2025-12-17T13:05:34
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,17 +137,19 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = "0.1.1.post4.dev0+e2dc952"
+version = "0.1.1.post15.dev0+b4e2533"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
+ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')
 LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/')
@@ -1324,6 +1326,20 @@ class ExperimentRun(NamedThing):
     pixel_size_y: Optional[float] = None
     total_rotation: Optional[float] = None
     beamline: Optional[str] = None
+    transmission: Optional[float] = None
+    flux: Optional[float] = None
+    flux_end: Optional[float] = None
+    slit_gap_horizontal: Optional[float] = None
+    slit_gap_vertical: Optional[float] = None
+    undulator_gap: Optional[float] = None
+    synchrotron_mode: Optional[str] = None
+    exposure_time: Optional[float] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
+    resolution: Optional[float] = None
+    resolution_at_corner: Optional[float] = None
+    ispyb_data_collection_id: Optional[int] = None
+    ispyb_session_id: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1468,6 +1484,48 @@ class ExperimentRun(NamedThing):
         if self.beamline is not None and not isinstance(self.beamline, str):
             self.beamline = str(self.beamline)
 
+        if self.transmission is not None and not isinstance(self.transmission, float):
+            self.transmission = float(self.transmission)
+
+        if self.flux is not None and not isinstance(self.flux, float):
+            self.flux = float(self.flux)
+
+        if self.flux_end is not None and not isinstance(self.flux_end, float):
+            self.flux_end = float(self.flux_end)
+
+        if self.slit_gap_horizontal is not None and not isinstance(self.slit_gap_horizontal, float):
+            self.slit_gap_horizontal = float(self.slit_gap_horizontal)
+
+        if self.slit_gap_vertical is not None and not isinstance(self.slit_gap_vertical, float):
+            self.slit_gap_vertical = float(self.slit_gap_vertical)
+
+        if self.undulator_gap is not None and not isinstance(self.undulator_gap, float):
+            self.undulator_gap = float(self.undulator_gap)
+
+        if self.synchrotron_mode is not None and not isinstance(self.synchrotron_mode, str):
+            self.synchrotron_mode = str(self.synchrotron_mode)
+
+        if self.exposure_time is not None and not isinstance(self.exposure_time, float):
+            self.exposure_time = float(self.exposure_time)
+
+        if self.start_time is not None and not isinstance(self.start_time, str):
+            self.start_time = str(self.start_time)
+
+        if self.end_time is not None and not isinstance(self.end_time, str):
+            self.end_time = str(self.end_time)
+
+        if self.resolution is not None and not isinstance(self.resolution, float):
+            self.resolution = float(self.resolution)
+
+        if self.resolution_at_corner is not None and not isinstance(self.resolution_at_corner, float):
+            self.resolution_at_corner = float(self.resolution_at_corner)
+
+        if self.ispyb_data_collection_id is not None and not isinstance(self.ispyb_data_collection_id, int):
+            self.ispyb_data_collection_id = int(self.ispyb_data_collection_id)
+
+        if self.ispyb_session_id is not None and not isinstance(self.ispyb_session_id, int):
+            self.ispyb_session_id = int(self.ispyb_session_id)
+
         super().__post_init__(**kwargs)
 
 
@@ -1524,6 +1582,15 @@ class WorkflowRun(NamedThing):
     i_over_sigma: Optional[float] = None
     wilson_b_factor: Optional[float] = None
     multiplicity: Optional[float] = None
+    anomalous_completeness: Optional[float] = None
+    anomalous_multiplicity: Optional[float] = None
+    cc_anomalous: Optional[float] = None
+    r_anomalous: Optional[float] = None
+    sig_anomalous: Optional[float] = None
+    n_total_observations: Optional[int] = None
+    n_total_unique: Optional[int] = None
+    ispyb_auto_proc_program_id: Optional[int] = None
+    ispyb_auto_proc_scaling_id: Optional[int] = None
     rwork: Optional[float] = None
     rfree: Optional[float] = None
     rmsd_bonds: Optional[float] = None
@@ -1675,6 +1742,33 @@ class WorkflowRun(NamedThing):
 
         if self.multiplicity is not None and not isinstance(self.multiplicity, float):
             self.multiplicity = float(self.multiplicity)
+
+        if self.anomalous_completeness is not None and not isinstance(self.anomalous_completeness, float):
+            self.anomalous_completeness = float(self.anomalous_completeness)
+
+        if self.anomalous_multiplicity is not None and not isinstance(self.anomalous_multiplicity, float):
+            self.anomalous_multiplicity = float(self.anomalous_multiplicity)
+
+        if self.cc_anomalous is not None and not isinstance(self.cc_anomalous, float):
+            self.cc_anomalous = float(self.cc_anomalous)
+
+        if self.r_anomalous is not None and not isinstance(self.r_anomalous, float):
+            self.r_anomalous = float(self.r_anomalous)
+
+        if self.sig_anomalous is not None and not isinstance(self.sig_anomalous, float):
+            self.sig_anomalous = float(self.sig_anomalous)
+
+        if self.n_total_observations is not None and not isinstance(self.n_total_observations, int):
+            self.n_total_observations = int(self.n_total_observations)
+
+        if self.n_total_unique is not None and not isinstance(self.n_total_unique, int):
+            self.n_total_unique = int(self.n_total_unique)
+
+        if self.ispyb_auto_proc_program_id is not None and not isinstance(self.ispyb_auto_proc_program_id, int):
+            self.ispyb_auto_proc_program_id = int(self.ispyb_auto_proc_program_id)
+
+        if self.ispyb_auto_proc_scaling_id is not None and not isinstance(self.ispyb_auto_proc_scaling_id, int):
+            self.ispyb_auto_proc_scaling_id = int(self.ispyb_auto_proc_scaling_id)
 
         if self.rwork is not None and not isinstance(self.rwork, float):
             self.rwork = float(self.rwork)
@@ -6748,6 +6842,48 @@ slots.experimentRun__total_rotation = Slot(uri=LAMBDABER.total_rotation, name="e
 slots.experimentRun__beamline = Slot(uri=LAMBDABER.beamline, name="experimentRun__beamline", curie=LAMBDABER.curie('beamline'),
                    model_uri=LAMBDABER.experimentRun__beamline, domain=None, range=Optional[str])
 
+slots.experimentRun__transmission = Slot(uri=LAMBDABER.transmission, name="experimentRun__transmission", curie=LAMBDABER.curie('transmission'),
+                   model_uri=LAMBDABER.experimentRun__transmission, domain=None, range=Optional[float])
+
+slots.experimentRun__flux = Slot(uri=LAMBDABER.flux, name="experimentRun__flux", curie=LAMBDABER.curie('flux'),
+                   model_uri=LAMBDABER.experimentRun__flux, domain=None, range=Optional[float])
+
+slots.experimentRun__flux_end = Slot(uri=LAMBDABER.flux_end, name="experimentRun__flux_end", curie=LAMBDABER.curie('flux_end'),
+                   model_uri=LAMBDABER.experimentRun__flux_end, domain=None, range=Optional[float])
+
+slots.experimentRun__slit_gap_horizontal = Slot(uri=LAMBDABER.slit_gap_horizontal, name="experimentRun__slit_gap_horizontal", curie=LAMBDABER.curie('slit_gap_horizontal'),
+                   model_uri=LAMBDABER.experimentRun__slit_gap_horizontal, domain=None, range=Optional[float])
+
+slots.experimentRun__slit_gap_vertical = Slot(uri=LAMBDABER.slit_gap_vertical, name="experimentRun__slit_gap_vertical", curie=LAMBDABER.curie('slit_gap_vertical'),
+                   model_uri=LAMBDABER.experimentRun__slit_gap_vertical, domain=None, range=Optional[float])
+
+slots.experimentRun__undulator_gap = Slot(uri=LAMBDABER.undulator_gap, name="experimentRun__undulator_gap", curie=LAMBDABER.curie('undulator_gap'),
+                   model_uri=LAMBDABER.experimentRun__undulator_gap, domain=None, range=Optional[float])
+
+slots.experimentRun__synchrotron_mode = Slot(uri=LAMBDABER.synchrotron_mode, name="experimentRun__synchrotron_mode", curie=LAMBDABER.curie('synchrotron_mode'),
+                   model_uri=LAMBDABER.experimentRun__synchrotron_mode, domain=None, range=Optional[str])
+
+slots.experimentRun__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentRun__exposure_time", curie=LAMBDABER.curie('exposure_time'),
+                   model_uri=LAMBDABER.experimentRun__exposure_time, domain=None, range=Optional[float])
+
+slots.experimentRun__start_time = Slot(uri=LAMBDABER.start_time, name="experimentRun__start_time", curie=LAMBDABER.curie('start_time'),
+                   model_uri=LAMBDABER.experimentRun__start_time, domain=None, range=Optional[str])
+
+slots.experimentRun__end_time = Slot(uri=LAMBDABER.end_time, name="experimentRun__end_time", curie=LAMBDABER.curie('end_time'),
+                   model_uri=LAMBDABER.experimentRun__end_time, domain=None, range=Optional[str])
+
+slots.experimentRun__resolution = Slot(uri=LAMBDABER.resolution, name="experimentRun__resolution", curie=LAMBDABER.curie('resolution'),
+                   model_uri=LAMBDABER.experimentRun__resolution, domain=None, range=Optional[float])
+
+slots.experimentRun__resolution_at_corner = Slot(uri=LAMBDABER.resolution_at_corner, name="experimentRun__resolution_at_corner", curie=LAMBDABER.curie('resolution_at_corner'),
+                   model_uri=LAMBDABER.experimentRun__resolution_at_corner, domain=None, range=Optional[float])
+
+slots.experimentRun__ispyb_data_collection_id = Slot(uri=LAMBDABER.ispyb_data_collection_id, name="experimentRun__ispyb_data_collection_id", curie=LAMBDABER.curie('ispyb_data_collection_id'),
+                   model_uri=LAMBDABER.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[int])
+
+slots.experimentRun__ispyb_session_id = Slot(uri=LAMBDABER.ispyb_session_id, name="experimentRun__ispyb_session_id", curie=LAMBDABER.curie('ispyb_session_id'),
+                   model_uri=LAMBDABER.experimentRun__ispyb_session_id, domain=None, range=Optional[int])
+
 slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workflowRun__workflow_code", curie=LAMBDABER.curie('workflow_code'),
                    model_uri=LAMBDABER.workflowRun__workflow_code, domain=None, range=str)
 
@@ -6867,6 +7003,33 @@ slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDABER.wilson_b_factor, name="w
 
 slots.workflowRun__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="workflowRun__multiplicity", curie=LAMBDABER.curie('multiplicity'),
                    model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[float])
+
+slots.workflowRun__anomalous_completeness = Slot(uri=LAMBDABER.anomalous_completeness, name="workflowRun__anomalous_completeness", curie=LAMBDABER.curie('anomalous_completeness'),
+                   model_uri=LAMBDABER.workflowRun__anomalous_completeness, domain=None, range=Optional[float])
+
+slots.workflowRun__anomalous_multiplicity = Slot(uri=LAMBDABER.anomalous_multiplicity, name="workflowRun__anomalous_multiplicity", curie=LAMBDABER.curie('anomalous_multiplicity'),
+                   model_uri=LAMBDABER.workflowRun__anomalous_multiplicity, domain=None, range=Optional[float])
+
+slots.workflowRun__cc_anomalous = Slot(uri=LAMBDABER.cc_anomalous, name="workflowRun__cc_anomalous", curie=LAMBDABER.curie('cc_anomalous'),
+                   model_uri=LAMBDABER.workflowRun__cc_anomalous, domain=None, range=Optional[float])
+
+slots.workflowRun__r_anomalous = Slot(uri=LAMBDABER.r_anomalous, name="workflowRun__r_anomalous", curie=LAMBDABER.curie('r_anomalous'),
+                   model_uri=LAMBDABER.workflowRun__r_anomalous, domain=None, range=Optional[float])
+
+slots.workflowRun__sig_anomalous = Slot(uri=LAMBDABER.sig_anomalous, name="workflowRun__sig_anomalous", curie=LAMBDABER.curie('sig_anomalous'),
+                   model_uri=LAMBDABER.workflowRun__sig_anomalous, domain=None, range=Optional[float])
+
+slots.workflowRun__n_total_observations = Slot(uri=LAMBDABER.n_total_observations, name="workflowRun__n_total_observations", curie=LAMBDABER.curie('n_total_observations'),
+                   model_uri=LAMBDABER.workflowRun__n_total_observations, domain=None, range=Optional[int])
+
+slots.workflowRun__n_total_unique = Slot(uri=LAMBDABER.n_total_unique, name="workflowRun__n_total_unique", curie=LAMBDABER.curie('n_total_unique'),
+                   model_uri=LAMBDABER.workflowRun__n_total_unique, domain=None, range=Optional[int])
+
+slots.workflowRun__ispyb_auto_proc_program_id = Slot(uri=LAMBDABER.ispyb_auto_proc_program_id, name="workflowRun__ispyb_auto_proc_program_id", curie=LAMBDABER.curie('ispyb_auto_proc_program_id'),
+                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_program_id, domain=None, range=Optional[int])
+
+slots.workflowRun__ispyb_auto_proc_scaling_id = Slot(uri=LAMBDABER.ispyb_auto_proc_scaling_id, name="workflowRun__ispyb_auto_proc_scaling_id", curie=LAMBDABER.curie('ispyb_auto_proc_scaling_id'),
+                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_scaling_id, domain=None, range=Optional[int])
 
 slots.workflowRun__rwork = Slot(uri=LAMBDABER.rwork, name="workflowRun__rwork", curie=LAMBDABER.curie('rwork'),
                    model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[float])
