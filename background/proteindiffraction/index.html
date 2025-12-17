@@ -1,0 +1,1813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/proteindiffraction/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>lambda-ber-schema and proteindiffraction.org (IRRMC) Alignment Analysis - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-ber-schema-and-proteindiffractionorg-irrmc-alignment-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              lambda-ber-schema and proteindiffraction.org (IRRMC) Alignment Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-proteindiffractionorg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to proteindiffraction.org
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to proteindiffraction.org">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-irrmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is IRRMC?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-status-2024-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Status (2024-2025)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#irrmc-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRRMC Data Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IRRMC Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entry Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Fields
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-ber-schema-irrmc-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema-IRRMC Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda-ber-schema-IRRMC Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Alignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata Alignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-collection-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Collection Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-differences-and-complementarities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences and Complementarities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Differences and Complementarities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Focus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-metadata-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Metadata Depth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Scope
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-ber-schema-reference-to-irrmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda-ber-schema Reference to IRRMC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irrmc-data-import-to-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRRMC Data Import to lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrichment-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enrichment Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproducibility-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reproducibility Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reproducibility Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sbdg-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SBDG Finding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-lambda-ber-schema-addresses-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      How lambda-ber-schema Addresses This
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-archival" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Archival
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Publication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-data-producers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Producers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-data-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Data Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Opportunities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Opportunities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-developments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Developments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with Related Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      References and Further Reading
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lambda-ber-schema-and-proteindiffractionorg-irrmc-alignment-analysis">lambda-ber-schema and proteindiffraction.org (IRRMC) Alignment Analysis</h1>
+<blockquote>
+<p><strong>Note</strong>: This document was generated using Claude (Anthropic's AI assistant) through automated analysis of documentation and web sources. While efforts have been made to ensure accuracy, there may be errors or outdated information. Please verify critical details with official proteindiffraction.org documentation.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>This document provides a detailed analysis of the alignment between the lambda-ber-schema schema and proteindiffraction.org (IRRMC - Integrated Resource for Reproducibility in Macromolecular Crystallography), examining how lambda-ber-schema can integrate with and complement IRRMC's role as an archive for raw X-ray diffraction data supporting reproducibility in crystallographic research.</p>
+<h2 id="introduction-to-proteindiffractionorg">Introduction to proteindiffraction.org</h2>
+<h3 id="what-is-irrmc">What is IRRMC?</h3>
+<p>proteindiffraction.org hosts the Integrated Resource for Reproducibility in Macromolecular Crystallography (IRRMC), a comprehensive repository designed to archive raw diffraction data with associated metadata from macromolecular crystallography experiments. Key characteristics:</p>
+<ul>
+<li><strong>Purpose</strong>: Archive raw diffraction images enabling structure reprocessing and validation</li>
+<li><strong>Content</strong>: 6,700+ projects, 10,800+ datasets (as of 2024)</li>
+<li><strong>Sources</strong>: Structural Genomics centers (CSGID, SSGCID, JCSG, MCSG, SGC) and individual research labs</li>
+<li><strong>Access</strong>: Freely available under Creative Commons CC0 (public domain)</li>
+<li><strong>Goal</strong>: Enable reproducibility through access to original experimental data</li>
+</ul>
+<h3 id="data-sources">Data Sources</h3>
+<p>IRRMC aggregates data from major structural biology initiatives:</p>
+<ol>
+<li><strong>Structural Genomics Centers</strong></li>
+<li>CSGID (Center for Structural Genomics of Infectious Diseases)</li>
+<li>SSGCID (Seattle Structural Genomics Center for Infectious Disease)</li>
+<li>JCSG (Joint Center for Structural Genomics)</li>
+<li>MCSG (Midwest Center for Structural Genomics)</li>
+<li>
+<p>SGC (Structural Genomics Consortium)</p>
+</li>
+<li>
+<p><strong>Individual Research Laboratories</strong></p>
+</li>
+<li>Academic institutions worldwide</li>
+<li>Industrial research groups</li>
+<li>Synchrotron user programs</li>
+</ol>
+<h3 id="current-status-2024-2025">Current Status (2024-2025)</h3>
+<ul>
+<li><strong>Version</strong>: 2.0 with improved metadata extraction</li>
+<li><strong>Architecture</strong>: Redesigned for automated publishing process</li>
+<li><strong>Standards</strong>: Moving toward FAIR data principles (Findable, Accessible, Interoperable, Re-usable)</li>
+<li><strong>Integration</strong>: Links to PDB structures via DOIs</li>
+</ul>
+<h2 id="irrmc-data-model">IRRMC Data Model</h2>
+<h3 id="entry-structure">Entry Structure</h3>
+<p>Each proteindiffraction.org dataset entry contains:</p>
+<pre><code>Project
+├── Dataset(s)
+│   ├── Raw diffraction images (typically ~10GB compressed)
+│   ├── Metadata
+│   │   ├── Title/Description
+│   │   ├── First Author/Organization
+│   │   ├── UniProt ID (protein identifier)
+│   │   ├── Resolution (Å)
+│   │   ├── R/Rfree values
+│   │   └── DOI
+│   └── External Links
+│       ├── PDB structure
+│       ├── Validation reports
+│       └── Institutional repositories
+└── Download Package (compressed archive)
+</code></pre>
+<h3 id="metadata-fields">Metadata Fields</h3>
+<p>Based on the browse interface, IRRMC captures:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>lambda-ber-schema Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Crystal structure description</td>
+<td>Study.title</td>
+</tr>
+<tr>
+<td>First Author</td>
+<td>Research group/PI</td>
+<td>Study.contributors</td>
+</tr>
+<tr>
+<td>UniProt ID</td>
+<td>Protein database link</td>
+<td>Sample.uniprot_id</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>Diffraction quality (Å)</td>
+<td>WorkflowRun.resolution</td>
+</tr>
+<tr>
+<td>R/Rfree</td>
+<td>Model reliability statistics</td>
+<td>WorkflowRun.r_work, r_free</td>
+</tr>
+<tr>
+<td>DOI</td>
+<td>Persistent identifier</td>
+<td>DataFile.doi</td>
+</tr>
+<tr>
+<td>PDB ID</td>
+<td>Deposited structure</td>
+<td>external_ids.pdb_id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="download-packages">Download Packages</h3>
+<p>Raw data is distributed as compressed archives:
+- Typical size: 139 MB to 9.3 GB per dataset
+- Format: Compressed diffraction image collections
+- Contents: CBF, IMG, or HDF5 format images</p>
+<h2 id="lambda-ber-schema-irrmc-alignment">lambda-ber-schema-IRRMC Alignment</h2>
+<h3 id="structural-mapping">Structural Mapping</h3>
+<table>
+<thead>
+<tr>
+<th>IRRMC Concept</th>
+<th>lambda-ber-schema Equivalent</th>
+<th>Alignment Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Project</strong></td>
+<td><strong>Dataset/Study</strong></td>
+<td>Complete experimental collection</td>
+</tr>
+<tr>
+<td><strong>Dataset</strong></td>
+<td><strong>ExperimentRun + DataFiles</strong></td>
+<td>Single data collection session</td>
+</tr>
+<tr>
+<td><strong>Raw Images</strong></td>
+<td><strong>DataFile (type: diffraction)</strong></td>
+<td>✅ Diffraction image files</td>
+</tr>
+<tr>
+<td><strong>Metadata</strong></td>
+<td><strong>ExperimentRun attributes</strong></td>
+<td>Collection parameters</td>
+</tr>
+<tr>
+<td><strong>Structure</strong></td>
+<td><strong>WorkflowRun output</strong></td>
+<td>Processing results</td>
+</tr>
+<tr>
+<td><strong>UniProt Link</strong></td>
+<td><strong>Sample.uniprot_id</strong></td>
+<td>✅ Protein identification</td>
+</tr>
+<tr>
+<td><strong>PDB Link</strong></td>
+<td><strong>external_ids</strong></td>
+<td>✅ Cross-references</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-alignment">Metadata Alignment</h3>
+<h4 id="data-collection-parameters">Data Collection Parameters</h4>
+<p><strong>IRRMC Metadata (implicit in raw data):</strong>
+- Wavelength
+- Detector distance
+- Oscillation angle
+- Beam center
+- Number of images</p>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">ExperimentRun:
+  technique: xray_crystallography
+  wavelength: 0.9795
+  detector_distance: 200.0
+  oscillation_angle: 0.2
+  beam_center_x: 1024.5
+  beam_center_y: 1024.5
+  number_of_images: 1800
+  beamline: &quot;FMX&quot;
+</code></pre>
+<h4 id="quality-metrics">Quality Metrics</h4>
+<p><strong>IRRMC Metadata:</strong>
+- Resolution
+- R-factor / R-free</p>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">WorkflowRun:
+  workflow_type: refinement
+  resolution: 1.85
+  r_work: 0.165
+  r_free: 0.198
+  space_group: &quot;P43212&quot;
+</code></pre>
+<h4 id="sample-information">Sample Information</h4>
+<p><strong>IRRMC Metadata:</strong>
+- UniProt ID
+- Protein name (from title)
+- Organism (from title)</p>
+<p><strong>lambda-ber-schema Equivalent:</strong></p>
+<pre><code class="language-yaml">Sample:
+  sample_code: &quot;lysozyme_001&quot;
+  protein_name: &quot;Lysozyme C&quot;
+  uniprot_id: &quot;P00698&quot;
+  source_organism: &quot;Gallus gallus&quot;
+</code></pre>
+<h2 id="key-differences-and-complementarities">Key Differences and Complementarities</h2>
+<h3 id="1-data-focus">1. Data Focus</h3>
+<p><strong>IRRMC</strong>: Raw data archival
+- Primary focus on diffraction images
+- Enables complete reprocessing
+- Supports reproducibility verification</p>
+<p><strong>lambda-ber-schema</strong>: Workflow context
+- Tracks complete experimental history
+- Links sample preparation to final structure
+- Captures processing parameter evolution</p>
+<h3 id="2-metadata-depth">2. Metadata Depth</h3>
+<p><strong>IRRMC</strong>: Minimal essential metadata
+- Enough to identify and locate data
+- Links to PDB for full details
+- Automated extraction where possible</p>
+<p><strong>lambda-ber-schema</strong>: Comprehensive metadata
+- Detailed experimental conditions
+- Buffer compositions, crystallization conditions
+- Quality metrics at each stage</p>
+<h3 id="3-scope">3. Scope</h3>
+<p><strong>IRRMC</strong>: X-ray crystallography specific
+- Specialized for MX data
+- Deep domain expertise
+- Established community resource</p>
+<p><strong>lambda-ber-schema</strong>: Multi-technique
+- Unified model across techniques
+- Supports cryo-EM, SAXS, spectroscopy
+- Integrative structural biology</p>
+<h2 id="integration-strategies">Integration Strategies</h2>
+<h3 id="lambda-ber-schema-reference-to-irrmc">lambda-ber-schema Reference to IRRMC</h3>
+<pre><code class="language-yaml"># Reference proteindiffraction.org dataset
+DataFile:
+  file_name: &quot;diffraction_images.tar.gz&quot;
+  file_format: cbf
+  data_type: diffraction
+  external_ids:
+    proteindiffraction_project: &quot;SSGCID-bael-8c0e8cf36da2&quot;
+  download_url: &quot;https://proteindiffraction.org/project/SSGCID-bael-8c0e8cf36da2&quot;
+</code></pre>
+<h3 id="irrmc-data-import-to-lambda-ber-schema">IRRMC Data Import to lambda-ber-schema</h3>
+<pre><code class="language-python">def import_from_proteindiffraction(project_id):
+    &quot;&quot;&quot;Import IRRMC project metadata into lambda-ber-schema&quot;&quot;&quot;
+
+    # Fetch project metadata
+    metadata = fetch_irrmc_metadata(project_id)
+
+    study = {
+        &quot;title&quot;: metadata[&quot;title&quot;],
+        &quot;external_ids&quot;: {
+            &quot;proteindiffraction_id&quot;: project_id,
+            &quot;pdb_id&quot;: metadata.get(&quot;pdb_id&quot;),
+            &quot;uniprot_id&quot;: metadata.get(&quot;uniprot_id&quot;)
+        },
+        &quot;samples&quot;: [{
+            &quot;sample_code&quot;: f&quot;sample_{project_id}&quot;,
+            &quot;protein_name&quot;: extract_protein_name(metadata[&quot;title&quot;]),
+            &quot;uniprot_id&quot;: metadata.get(&quot;uniprot_id&quot;)
+        }],
+        &quot;data_files&quot;: [{
+            &quot;file_name&quot;: f&quot;{project_id}_diffraction.tar.gz&quot;,
+            &quot;file_format&quot;: &quot;cbf&quot;,
+            &quot;data_type&quot;: &quot;diffraction&quot;,
+            &quot;file_size_bytes&quot;: metadata.get(&quot;download_size&quot;)
+        }],
+        &quot;workflow_runs&quot;: [{
+            &quot;workflow_type&quot;: &quot;refinement&quot;,
+            &quot;resolution&quot;: metadata.get(&quot;resolution&quot;),
+            &quot;r_work&quot;: metadata.get(&quot;r_factor&quot;),
+            &quot;r_free&quot;: metadata.get(&quot;r_free&quot;)
+        }]
+    }
+
+    return study
+</code></pre>
+<h3 id="enrichment-strategy">Enrichment Strategy</h3>
+<p>lambda-ber-schema can enrich IRRMC data with:</p>
+<ol>
+<li>
+<p><strong>Sample Preparation Details</strong>
+   <code>yaml
+   XRayPreparation:
+     crystallization_conditions:
+       method: vapor_diffusion_hanging_drop
+       precipitant: "30% PEG 4000"
+       ph: 7.5
+       temperature: 18.0</code></p>
+</li>
+<li>
+<p><strong>Processing Provenance</strong>
+   ```yaml
+   WorkflowRun:</p>
+<ul>
+<li>workflow_type: indexing
+   software_name: "DIALS"
+   software_version: "3.18.0"</li>
+<li>workflow_type: integration
+   software_name: "DIALS"</li>
+<li>workflow_type: scaling
+   software_name: "AIMLESS"</li>
+<li>workflow_type: phasing
+   software_name: "PHASER"
+   phasing_method: molecular_replacement
+   ```</li>
+</ul>
+</li>
+<li>
+<p><strong>Quality Assessment</strong>
+   <code>yaml
+   WorkflowRun:
+     quality_metrics:
+       completeness: 99.5
+       multiplicity: 6.8
+       r_merge: 0.082
+       i_sigma: 15.2
+       cc_half: 0.998</code></p>
+</li>
+</ol>
+<h2 id="reproducibility-support">Reproducibility Support</h2>
+<h3 id="the-sbdg-finding">The SBDG Finding</h3>
+<p>The Structural Biology Data Grid (SBDG) analysis revealed that "18% of deposited datasets could not be automatically reprocessed with current software" due to metadata and format inconsistencies (Iudin et al., 2016).</p>
+<h3 id="how-lambda-ber-schema-addresses-this">How lambda-ber-schema Addresses This</h3>
+<ol>
+<li><strong>Complete Metadata Capture</strong></li>
+<li>All parameters needed for reprocessing</li>
+<li>Controlled vocabularies reduce ambiguity</li>
+<li>
+<p>Required fields ensure completeness</p>
+</li>
+<li>
+<p><strong>Processing History</strong></p>
+</li>
+<li>Track which software versions were used</li>
+<li>Document parameter choices</li>
+<li>
+<p>Enable exact reproduction</p>
+</li>
+<li>
+<p><strong>Format Mappings</strong></p>
+</li>
+<li>imgCIF mappings for image metadata</li>
+<li>mmCIF mappings for structure data</li>
+<li>NSLS2 mappings for beamline metadata</li>
+</ol>
+<h2 id="recommended-workflow">Recommended Workflow</h2>
+<h3 id="1-data-collection">1. Data Collection</h3>
+<pre><code>Synchrotron beamline / Home source
+         ↓
+Collect diffraction images
+         ↓
+Record metadata in lambda-ber-schema (ExperimentRun)
+</code></pre>
+<h3 id="2-processing">2. Processing</h3>
+<pre><code>Process with DIALS/XDS/etc.
+         ↓
+Track each step in lambda-ber-schema (WorkflowRun)
+         ↓
+Capture quality metrics
+</code></pre>
+<h3 id="3-archival">3. Archival</h3>
+<pre><code>Deposit raw images to proteindiffraction.org
+         ↓
+Deposit structure to PDB
+         ↓
+Update lambda-ber-schema with accession IDs
+</code></pre>
+<h3 id="4-publication">4. Publication</h3>
+<pre><code>lambda-ber-schema: Complete workflow record
+proteindiffraction.org: Raw data archive
+PDB: Final structure
+         ↓
+All cross-linked for reproducibility
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="for-data-producers">For Data Producers</h3>
+<ol>
+<li><strong>Document Early</strong>: Use lambda-ber-schema during data collection</li>
+<li><strong>Archive Raw Data</strong>: Submit to proteindiffraction.org</li>
+<li><strong>Link Everything</strong>: Maintain cross-references between resources</li>
+<li><strong>Include Processing</strong>: Document software and parameters</li>
+</ol>
+<h3 id="for-data-consumers">For Data Consumers</h3>
+<ol>
+<li><strong>Check Raw Data</strong>: Verify proteindiffraction.org links exist</li>
+<li><strong>Review Metadata</strong>: Understand collection parameters</li>
+<li><strong>Reprocess If Needed</strong>: Use archived raw data</li>
+<li><strong>Cite Properly</strong>: Acknowledge data sources</li>
+</ol>
+<h2 id="future-opportunities">Future Opportunities</h2>
+<h3 id="technical-developments">Technical Developments</h3>
+<ol>
+<li><strong>Automated Extraction</strong></li>
+<li>Parse CBF/imgCIF headers automatically</li>
+<li>Extract metadata from proteindiffraction.org</li>
+<li>
+<p>Populate lambda-ber-schema programmatically</p>
+</li>
+<li>
+<p><strong>Validation Integration</strong></p>
+</li>
+<li>Compare processed results with deposited structures</li>
+<li>Flag inconsistencies for review</li>
+<li>
+<p>Enable systematic quality assessment</p>
+</li>
+<li>
+<p><strong>Search and Discovery</strong></p>
+</li>
+<li>Query across both resources</li>
+<li>Find raw data for reprocessing</li>
+<li>Identify similar experiments</li>
+</ol>
+<h3 id="community-benefits">Community Benefits</h3>
+<ul>
+<li>Enhanced reproducibility in crystallography</li>
+<li>Better training data for AI/ML models</li>
+<li>Improved method development and validation</li>
+<li>Comprehensive provenance for regulatory contexts</li>
+</ul>
+<h2 id="comparison-with-related-resources">Comparison with Related Resources</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Focus</th>
+<th>Raw Data</th>
+<th>Metadata Depth</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>proteindiffraction.org</td>
+<td>Raw diffraction images</td>
+<td>✅ Primary</td>
+<td>Basic</td>
+<td>MX only</td>
+</tr>
+<tr>
+<td>PDB</td>
+<td>Deposited structures</td>
+<td>❌</td>
+<td>Comprehensive</td>
+<td>Multi-technique</td>
+</tr>
+<tr>
+<td>lambda-ber-schema</td>
+<td>Workflow tracking</td>
+<td>Reference</td>
+<td>Comprehensive</td>
+<td>Multi-technique</td>
+</tr>
+<tr>
+<td>Zenodo</td>
+<td>General archival</td>
+<td>✅</td>
+<td>Variable</td>
+<td>Any</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p>proteindiffraction.org (IRRMC) and lambda-ber-schema form a <strong>complementary ecosystem</strong> for crystallographic data management:</p>
+<ul>
+<li><strong>IRRMC</strong> provides critical infrastructure for raw data archiving with:</li>
+<li>Petabyte-scale diffraction image storage</li>
+<li>CC0 licensing for unrestricted reuse</li>
+<li>Links to deposited PDB structures</li>
+<li>
+<p>Support for reproducibility verification</p>
+</li>
+<li>
+<p><strong>lambda-ber-schema</strong> adds comprehensive workflow context through:</p>
+</li>
+<li>Sample-to-structure tracking</li>
+<li>Detailed metadata with controlled vocabularies</li>
+<li>Processing provenance documentation</li>
+<li>Multi-technique integration capability</li>
+</ul>
+<p>The optimal strategy involves:
+1. Using lambda-ber-schema for complete experimental documentation
+2. Archiving raw diffraction data to proteindiffraction.org
+3. Maintaining bidirectional links between resources
+4. Leveraging both systems' strengths for reproducible crystallography</p>
+<p>This integration addresses the data quality challenges identified in the SBDG study by ensuring both raw data (IRRMC) and comprehensive metadata (lambda-ber-schema) are preserved, enabling true reproducibility in macromolecular crystallography.</p>
+<h2 id="references-and-further-reading">References and Further Reading</h2>
+<ul>
+<li>proteindiffraction.org: https://proteindiffraction.org/</li>
+<li>IRRMC About Page: https://proteindiffraction.org/about/</li>
+<li>Grabowski et al. (2016) "A public database of macromolecular diffraction experiments" Acta Cryst. D72, 1181-1193</li>
+<li>Iudin et al. (2016) "Data publication with the structural biology data grid supports live analysis" Nature Communications 7, 10882</li>
+<li>Minor et al. (2016) "Safeguarding structural data repositories against bad apples" Structure 24(2), 216-220</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

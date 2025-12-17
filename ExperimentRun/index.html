@@ -474,6 +474,8 @@
 
       ExperimentRun : dose_rate
 
+      ExperimentRun : end_time
+
       ExperimentRun : experiment_code
 
       ExperimentRun : experiment_date
@@ -500,7 +502,13 @@
 
 
 
+      ExperimentRun : exposure_time
+
       ExperimentRun : exposure_time_per_frame
+
+      ExperimentRun : flux
+
+      ExperimentRun : flux_end
 
       ExperimentRun : frames_per_movie
 
@@ -518,6 +526,10 @@
         click Instrument href "../Instrument/"
 
 
+
+      ExperimentRun : ispyb_data_collection_id
+
+      ExperimentRun : ispyb_session_id
 
       ExperimentRun : magnification
 
@@ -555,13 +567,25 @@
 
       ExperimentRun : raw_data_location
 
+      ExperimentRun : resolution
+
+      ExperimentRun : resolution_at_corner
+
       ExperimentRun : sample_id
 
       ExperimentRun : shots_per_hole
 
+      ExperimentRun : slit_gap_horizontal
+
+      ExperimentRun : slit_gap_vertical
+
       ExperimentRun : stage_tilt
 
       ExperimentRun : start_angle
+
+      ExperimentRun : start_time
+
+      ExperimentRun : synchrotron_mode
 
       ExperimentRun : technique
 
@@ -581,6 +605,10 @@
       ExperimentRun : total_exposure_time
 
       ExperimentRun : total_rotation
+
+      ExperimentRun : transmission
+
+      ExperimentRun : undulator_gap
 
       ExperimentRun : wavelength
 
@@ -860,6 +888,90 @@
 <td><a href="../beamline/">beamline</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Beamline identifier (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../transmission/">transmission</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>X-ray beam transmission as percentage (0-100)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../flux/">flux</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Photon flux at sample position in photons/second</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../flux_end/">flux_end</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Photon flux at end of data collection in photons/second</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../slit_gap_horizontal/">slit_gap_horizontal</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Horizontal slit gap aperture in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../slit_gap_vertical/">slit_gap_vertical</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Vertical slit gap aperture in micrometers</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../undulator_gap/">undulator_gap</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Undulator gap setting in millimeters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../synchrotron_mode/">synchrotron_mode</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Synchrotron storage ring fill mode</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../exposure_time/">exposure_time</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Exposure time per image in seconds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../start_time/">start_time</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Data collection start timestamp</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../end_time/">end_time</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Data collection end timestamp</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resolution/">resolution</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Resolution at edge of detector in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resolution_at_corner/">resolution_at_corner</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Resolution at corner of detector in Angstroms</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ispyb_data_collection_id/">ispyb_data_collection_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>ISPyB DataCollection</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ispyb_session_id/">ispyb_session_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>ISPyB BLSession</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1209,6 +1321,7 @@ attributes:
     - nsls2:Wavelength
     - imgCIF:_diffrn_radiation_wavelength.wavelength
     - mmCIF:_diffrn_radiation_wavelength.wavelength
+    - ispyb:DataCollection.wavelength
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1223,6 +1336,7 @@ attributes:
     - nsls2:Angle_increment
     - imgCIF:_diffrn_scan_axis.angle_increment
     - mmCIF:_diffrn_scan.angle_increment
+    - ispyb:DataCollection.axisRange
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1236,6 +1350,7 @@ attributes:
     exact_mappings:
     - nsls2:Start_angle
     - imgCIF:_diffrn_scan_axis.angle_start
+    - ispyb:DataCollection.axisStart
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1249,6 +1364,7 @@ attributes:
     exact_mappings:
     - nsls2:Number_of_images
     - imgCIF:_diffrn_scan.frames
+    - ispyb:DataCollection.numberOfImages
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1261,6 +1377,7 @@ attributes:
     - nsls2:Beam_xy_x
     - imgCIF:_diffrn_detector.beam_centre_x
     - mmCIF:_diffrn_detector.beam_center_x
+    - ispyb:DataCollection.xBeam
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1275,6 +1392,7 @@ attributes:
     - nsls2:Beam_xy_y
     - imgCIF:_diffrn_detector.beam_centre_y
     - mmCIF:_diffrn_detector.beam_center_y
+    - ispyb:DataCollection.yBeam
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1289,6 +1407,7 @@ attributes:
     - nsls2:Detector_distance
     - imgCIF:_diffrn_measurement.sample_detector_distance
     - mmCIF:_diffrn_detector.distance
+    - ispyb:DataCollection.detectorDistance
     rank: 1000
     domain_of:
     - ExperimentRun
@@ -1345,10 +1464,185 @@ attributes:
     exact_mappings:
     - nsls2:Beamline
     - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    - ispyb:BLSession.beamLineName
     rank: 1000
     domain_of:
     - ExperimentRun
     range: string
+  transmission:
+    name: transmission
+    description: X-ray beam transmission as percentage (0-100)
+    comments:
+    - Percentage of full beam intensity used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.transmission
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  flux:
+    name: flux
+    description: Photon flux at sample position in photons/second
+    comments:
+    - Measured or calculated photon flux
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.flux
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - XRFImage
+    range: float
+    unit:
+      ucum_code: '{photons}/s'
+  flux_end:
+    name: flux_end
+    description: Photon flux at end of data collection in photons/second
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.flux_end
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: '{photons}/s'
+  slit_gap_horizontal:
+    name: slit_gap_horizontal
+    description: Horizontal slit gap aperture in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.slitGapHorizontal
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: um
+  slit_gap_vertical:
+    name: slit_gap_vertical
+    description: Vertical slit gap aperture in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.slitGapVertical
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: um
+  undulator_gap:
+    name: undulator_gap
+    description: Undulator gap setting in millimeters
+    comments:
+    - Primary undulator gap for beamlines with insertion devices
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.undulatorGap1
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: mm
+  synchrotron_mode:
+    name: synchrotron_mode
+    description: Synchrotron storage ring fill mode
+    comments:
+    - e.g., 'Top-up', 'Decay', 'Hybrid'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.synchrotronMode
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  exposure_time:
+    name: exposure_time
+    description: Exposure time per image in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.exposureTime
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - Image
+    - ExperimentalConditions
+    range: float
+    unit:
+      ucum_code: s
+  start_time:
+    name: start_time
+    description: Data collection start timestamp
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.startTime
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  end_time:
+    name: end_time
+    description: Data collection end timestamp
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.endTime
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: string
+  resolution:
+    name: resolution
+    description: Resolution at edge of detector in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.resolution
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    - QualityMetrics
+    range: float
+    unit:
+      ucum_code: Ao
+  resolution_at_corner:
+    name: resolution_at_corner
+    description: Resolution at corner of detector in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.resolutionAtCorner
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: Ao
+  ispyb_data_collection_id:
+    name: ispyb_data_collection_id
+    description: ISPyB DataCollection.dataCollectionId for traceability
+    comments:
+    - Use to link back to ISPyB records
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.dataCollectionId
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: integer
+  ispyb_session_id:
+    name: ispyb_session_id
+    description: ISPyB BLSession.sessionId
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:BLSession.sessionId
+    rank: 1000
+    domain_of:
+    - ExperimentRun
+    range: integer
 
 </code></pre>
 </details>
@@ -1700,6 +1994,7 @@ attributes:
     - nsls2:Wavelength
     - imgCIF:_diffrn_radiation_wavelength.wavelength
     - mmCIF:_diffrn_radiation_wavelength.wavelength
+    - ispyb:DataCollection.wavelength
     rank: 1000
     alias: wavelength
     owner: ExperimentRun
@@ -1716,6 +2011,7 @@ attributes:
     - nsls2:Angle_increment
     - imgCIF:_diffrn_scan_axis.angle_increment
     - mmCIF:_diffrn_scan.angle_increment
+    - ispyb:DataCollection.axisRange
     rank: 1000
     alias: oscillation_angle
     owner: ExperimentRun
@@ -1731,6 +2027,7 @@ attributes:
     exact_mappings:
     - nsls2:Start_angle
     - imgCIF:_diffrn_scan_axis.angle_start
+    - ispyb:DataCollection.axisStart
     rank: 1000
     alias: start_angle
     owner: ExperimentRun
@@ -1746,6 +2043,7 @@ attributes:
     exact_mappings:
     - nsls2:Number_of_images
     - imgCIF:_diffrn_scan.frames
+    - ispyb:DataCollection.numberOfImages
     rank: 1000
     alias: number_of_images
     owner: ExperimentRun
@@ -1760,6 +2058,7 @@ attributes:
     - nsls2:Beam_xy_x
     - imgCIF:_diffrn_detector.beam_centre_x
     - mmCIF:_diffrn_detector.beam_center_x
+    - ispyb:DataCollection.xBeam
     rank: 1000
     alias: beam_center_x
     owner: ExperimentRun
@@ -1776,6 +2075,7 @@ attributes:
     - nsls2:Beam_xy_y
     - imgCIF:_diffrn_detector.beam_centre_y
     - mmCIF:_diffrn_detector.beam_center_y
+    - ispyb:DataCollection.yBeam
     rank: 1000
     alias: beam_center_y
     owner: ExperimentRun
@@ -1792,6 +2092,7 @@ attributes:
     - nsls2:Detector_distance
     - imgCIF:_diffrn_measurement.sample_detector_distance
     - mmCIF:_diffrn_detector.distance
+    - ispyb:DataCollection.detectorDistance
     rank: 1000
     alias: detector_distance
     owner: ExperimentRun
@@ -1856,12 +2157,215 @@ attributes:
     exact_mappings:
     - nsls2:Beamline
     - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    - ispyb:BLSession.beamLineName
     rank: 1000
     alias: beamline
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
     range: string
+  transmission:
+    name: transmission
+    description: X-ray beam transmission as percentage (0-100)
+    comments:
+    - Percentage of full beam intensity used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.transmission
+    rank: 1000
+    alias: transmission
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  flux:
+    name: flux
+    description: Photon flux at sample position in photons/second
+    comments:
+    - Measured or calculated photon flux
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.flux
+    rank: 1000
+    alias: flux
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - XRFImage
+    range: float
+    unit:
+      ucum_code: '{photons}/s'
+  flux_end:
+    name: flux_end
+    description: Photon flux at end of data collection in photons/second
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.flux_end
+    rank: 1000
+    alias: flux_end
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: '{photons}/s'
+  slit_gap_horizontal:
+    name: slit_gap_horizontal
+    description: Horizontal slit gap aperture in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.slitGapHorizontal
+    rank: 1000
+    alias: slit_gap_horizontal
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: um
+  slit_gap_vertical:
+    name: slit_gap_vertical
+    description: Vertical slit gap aperture in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.slitGapVertical
+    rank: 1000
+    alias: slit_gap_vertical
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: um
+  undulator_gap:
+    name: undulator_gap
+    description: Undulator gap setting in millimeters
+    comments:
+    - Primary undulator gap for beamlines with insertion devices
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.undulatorGap1
+    rank: 1000
+    alias: undulator_gap
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: mm
+  synchrotron_mode:
+    name: synchrotron_mode
+    description: Synchrotron storage ring fill mode
+    comments:
+    - e.g., 'Top-up', 'Decay', 'Hybrid'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.synchrotronMode
+    rank: 1000
+    alias: synchrotron_mode
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  exposure_time:
+    name: exposure_time
+    description: Exposure time per image in seconds
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.exposureTime
+    rank: 1000
+    alias: exposure_time
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - Image
+    - ExperimentalConditions
+    range: float
+    unit:
+      ucum_code: s
+  start_time:
+    name: start_time
+    description: Data collection start timestamp
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.startTime
+    rank: 1000
+    alias: start_time
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  end_time:
+    name: end_time
+    description: Data collection end timestamp
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.endTime
+    rank: 1000
+    alias: end_time
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: string
+  resolution:
+    name: resolution
+    description: Resolution at edge of detector in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.resolution
+    rank: 1000
+    alias: resolution
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    - QualityMetrics
+    range: float
+    unit:
+      ucum_code: Ao
+  resolution_at_corner:
+    name: resolution_at_corner
+    description: Resolution at corner of detector in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.resolutionAtCorner
+    rank: 1000
+    alias: resolution_at_corner
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: float
+    unit:
+      ucum_code: Ao
+  ispyb_data_collection_id:
+    name: ispyb_data_collection_id
+    description: ISPyB DataCollection.dataCollectionId for traceability
+    comments:
+    - Use to link back to ISPyB records
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:DataCollection.dataCollectionId
+    rank: 1000
+    alias: ispyb_data_collection_id
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
+  ispyb_session_id:
+    name: ispyb_session_id
+    description: ISPyB BLSession.sessionId
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:BLSession.sessionId
+    rank: 1000
+    alias: ispyb_session_id
+    owner: ExperimentRun
+    domain_of:
+    - ExperimentRun
+    range: integer
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing

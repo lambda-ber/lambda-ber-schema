@@ -1,0 +1,2505 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/background/onedep-pdb-deposition/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>PDB Deposition and OneDep - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pdb-deposition-and-onedep" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PDB Deposition and OneDep
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-structures-get-deposited" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Structures Get Deposited
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How Structures Get Deposited">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-reality-software-generated-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Reality: Software-Generated Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onedep-deposition-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      OneDep Deposition System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-metadata-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Metadata Gap
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-pdb-format-vs-mmcif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy PDB Format vs mmCIF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Legacy PDB Format vs mmCIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legacy-pdb-records-to-mmcif-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy PDB Records to mmCIF Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-200-data-collection-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      REMARK 200: Data Collection Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facility-metadata-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facility Metadata Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdb-headers-to-schema-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDB Headers to Schema Mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDB Headers to Schema Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-entry-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      HEADER - Entry Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-structure-title" class="md-nav__link">
+    <span class="md-ellipsis">
+      TITLE - Structure Title
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compnd-compoundmolecule" class="md-nav__link">
+    <span class="md-ellipsis">
+      COMPND - Compound/Molecule
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-biological-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOURCE - Biological Source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keywds-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      KEYWDS - Keywords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expdta-experimental-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXPDTA - Experimental Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#author-depositor-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      AUTHOR - Depositor Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jrnl-citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      JRNL - Citation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-200-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      REMARK 200 - Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-280-crystallization" class="md-nav__link">
+    <span class="md-ellipsis">
+      REMARK 280 - Crystallization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-350-biological-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      REMARK 350 - Biological Assembly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cryst1-unit-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRYST1 - Unit Cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origx-scale-coordinate-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      ORIGX / SCALE - Coordinate Transforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refinement-statistics-remark-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refinement Statistics (REMARK 3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phasing-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phasing Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deposition-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deposition Status
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-deposition-use-lambda-ber-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Deposition: Use lambda-ber-schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deposition-export-to-onedep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deposition: Export to OneDep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-deposition-link-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Deposition: Link Records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onedep-validation-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      OneDep Validation Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OneDep Validation Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geometry-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geometry Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-deposition-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Deposition Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Deposition Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-missing-or-inconsistent-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Missing or Inconsistent Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lost-sample-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Lost Sample Provenance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-processing-statistics-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Processing Statistics Mismatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-incorrect-phasing-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Incorrect Phasing Attribution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-schema-to-onedep-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Schema to OneDep Export
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Standards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pdb-deposition-and-onedep">PDB Deposition and OneDep</h1>
+<h2 id="overview">Overview</h2>
+<p>This document describes the practical workflow for depositing structures to the Protein Data Bank (PDB) and how lambda-ber-schema relates to the deposition process.</p>
+<h2 id="how-structures-get-deposited">How Structures Get Deposited</h2>
+<h3 id="the-reality-software-generated-files">The Reality: Software-Generated Files</h3>
+<p>Researchers almost never manually author mmCIF files. The typical workflow:</p>
+<ol>
+<li><strong>Structure determination software generates mmCIF</strong>: PHENIX, CCP4, RELION, cryoSPARC, etc. output refined coordinates</li>
+<li><strong>OneDep web portal</strong>: Researchers upload files and complete metadata via web forms</li>
+<li><strong>Validation and review</strong>: wwPDB staff validate and may request corrections</li>
+<li><strong>Release</strong>: Structure becomes publicly available</li>
+</ol>
+<h3 id="onedep-deposition-system">OneDep Deposition System</h3>
+<p>The wwPDB provides <a href="https://deposit.wwpdb.org">OneDep</a> - the unified deposition portal where researchers:</p>
+<ul>
+<li>Upload coordinate files (mmCIF format)</li>
+<li>Upload experimental data (structure factors, EM maps)</li>
+<li>Fill in metadata through web forms</li>
+<li>Answer questions about sample, methods, funding, authors</li>
+</ul>
+<p>OneDep validates everything and helps fix errors interactively. Most experimental metadata is extracted from the coordinate file - OneDep asks researchers to confirm and supplement.</p>
+<h3 id="the-metadata-gap">The Metadata Gap</h3>
+<p>The disconnect in current practice:</p>
+<ol>
+<li>Beamline software records data collection parameters</li>
+<li>Processing software tracks refinement statistics</li>
+<li>Lab notebooks contain sample preparation details</li>
+<li><strong>None of these systems communicate automatically</strong></li>
+</ol>
+<p>Researchers manually transcribe from multiple sources into OneDep forms - an error-prone and tedious process. This is exactly the gap lambda-ber-schema aims to fill.</p>
+<h2 id="legacy-pdb-format-vs-mmcif">Legacy PDB Format vs mmCIF</h2>
+<p>The PDB historically used a fixed-column text format with specific record types. While mmCIF is now the primary format, many facilities and researchers still reference the legacy record names.</p>
+<h3 id="legacy-pdb-records-to-mmcif-mapping">Legacy PDB Records to mmCIF Mapping</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Record</th>
+<th>Contents</th>
+<th>mmCIF Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HEADER</code></td>
+<td>Classification, date, PDB ID</td>
+<td><code>_entry</code>, <code>_struct_keywords</code></td>
+</tr>
+<tr>
+<td><code>TITLE</code></td>
+<td>Structure title</td>
+<td><code>_struct.title</code></td>
+</tr>
+<tr>
+<td><code>COMPND</code></td>
+<td>Molecule names, chains</td>
+<td><code>_entity.pdbx_description</code></td>
+</tr>
+<tr>
+<td><code>SOURCE</code></td>
+<td>Organism, expression system</td>
+<td><code>_entity_src_gen</code>, <code>_entity_src_nat</code></td>
+</tr>
+<tr>
+<td><code>KEYWDS</code></td>
+<td>Search keywords</td>
+<td><code>_struct_keywords.text</code></td>
+</tr>
+<tr>
+<td><code>EXPDTA</code></td>
+<td>Experimental method</td>
+<td><code>_exptl.method</code></td>
+</tr>
+<tr>
+<td><code>AUTHOR</code></td>
+<td>Depositor names</td>
+<td><code>_audit_author</code></td>
+</tr>
+<tr>
+<td><code>REVDAT</code></td>
+<td>Revision history</td>
+<td><code>_pdbx_audit_revision_history</code></td>
+</tr>
+<tr>
+<td><code>JRNL</code></td>
+<td>Publication citation</td>
+<td><code>_citation</code></td>
+</tr>
+<tr>
+<td><code>REMARK 200</code></td>
+<td>Crystallographic data collection</td>
+<td><code>_diffrn</code>, <code>_reflns</code></td>
+</tr>
+<tr>
+<td><code>REMARK 280</code></td>
+<td>Crystal/crystallization conditions</td>
+<td><code>_exptl_crystal_grow</code></td>
+</tr>
+<tr>
+<td><code>REMARK 350</code></td>
+<td>Biological assembly</td>
+<td><code>_pdbx_struct_assembly</code></td>
+</tr>
+<tr>
+<td><code>REMARK 465</code></td>
+<td>Missing residues</td>
+<td><code>_pdbx_unobs_or_zero_occ_residues</code></td>
+</tr>
+<tr>
+<td><code>CRYST1</code></td>
+<td>Unit cell, space group</td>
+<td><code>_cell</code>, <code>_symmetry</code></td>
+</tr>
+<tr>
+<td><code>ORIGX1/2/3</code></td>
+<td>Original coordinate transforms</td>
+<td><code>_database_PDB_matrix</code></td>
+</tr>
+<tr>
+<td><code>SCALE1/2/3</code></td>
+<td>Fractional coordinate transforms</td>
+<td><code>_atom_sites.fract_transf_*</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="remark-200-data-collection-details">REMARK 200: Data Collection Details</h3>
+<p>REMARK 200 is particularly important as it contains extensive data collection metadata:</p>
+<ul>
+<li>Wavelength</li>
+<li>Temperature</li>
+<li>Detector type and distance</li>
+<li>Resolution limits</li>
+<li>Beamline/source information</li>
+<li>Data collection date</li>
+</ul>
+<p>This maps to lambda-ber-schema's <code>ExperimentRun</code> class and the X-ray specific fields.</p>
+<h2 id="facility-metadata-requirements">Facility Metadata Requirements</h2>
+<p>Different synchrotron facilities track similar metadata for PDB deposition. A typical checklist includes:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Property</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDB_Headers</td>
+<td>HEADER</td>
+<td>Entry classification</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>TITLE</td>
+<td>Structure title</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>COMPND</td>
+<td>Compound description</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>SOURCE</td>
+<td>Biological source</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>KEYWDS</td>
+<td>Keywords</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>EXPDTA</td>
+<td>Experimental method</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>AUTHOR</td>
+<td>Author list</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>REVDAT</td>
+<td>Revision dates</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>JRNL</td>
+<td>Journal reference</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>REMARK_200</td>
+<td>Data collection parameters</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>REMARK_280</td>
+<td>Crystallization conditions</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>REMARK_350</td>
+<td>Biological assembly</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>REMARK_465</td>
+<td>Missing residues</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>CRYST1</td>
+<td>Unit cell parameters</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>ORIGX1/2/3</td>
+<td>Origin transforms</td>
+</tr>
+<tr>
+<td>PDB_Headers</td>
+<td>SCALE1/2/3</td>
+<td>Scale transforms</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pdb-headers-to-schema-mapping">PDB Headers to Schema Mapping</h2>
+<p>The following table shows how each PDB header record maps to specific classes and slots in lambda-ber-schema.</p>
+<h3 id="header-entry-information">HEADER - Entry Information</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classification</td>
+<td><code>Dataset</code></td>
+<td><code>keywords</code></td>
+<td>Entry classification terms</td>
+</tr>
+<tr>
+<td>Deposition date</td>
+<td><code>WorkflowRun</code></td>
+<td><code>deposited_to_pdb</code>, <code>end_date</code></td>
+<td>Tracked as workflow completion</td>
+</tr>
+<tr>
+<td>PDB ID</td>
+<td><code>WorkflowRun</code></td>
+<td><code>pdb_id</code></td>
+<td>Assigned accession code</td>
+</tr>
+</tbody>
+</table>
+<h3 id="title-structure-title">TITLE - Structure Title</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td><code>Study</code></td>
+<td><code>title</code>, <code>description</code></td>
+<td>Human-readable structure title</td>
+</tr>
+</tbody>
+</table>
+<h3 id="compnd-compoundmolecule">COMPND - Compound/Molecule</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Molecule name</td>
+<td><code>Sample</code></td>
+<td><code>protein_name</code></td>
+<td>Protein/molecule name</td>
+</tr>
+<tr>
+<td>Chain IDs</td>
+<td><code>Sample</code></td>
+<td><code>molecular_composition</code></td>
+<td>Chain assignments</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td><code>Sample</code></td>
+<td>(via ontology terms)</td>
+<td>Enzyme classification</td>
+</tr>
+<tr>
+<td>Engineered</td>
+<td><code>Sample</code></td>
+<td><code>construct</code>, <code>tag</code>, <code>mutations</code></td>
+<td>Construct details</td>
+</tr>
+</tbody>
+</table>
+<h3 id="source-biological-source">SOURCE - Biological Source</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organism scientific</td>
+<td><code>Sample</code></td>
+<td><code>organism</code></td>
+<td>Source organism (OntologyTerm)</td>
+</tr>
+<tr>
+<td>Organism taxid</td>
+<td><code>Sample</code></td>
+<td><code>ncbi_taxid</code></td>
+<td>NCBI taxonomy ID</td>
+</tr>
+<tr>
+<td>Expression system</td>
+<td><code>Sample</code></td>
+<td><code>expression_system</code></td>
+<td>Recombinant expression host</td>
+</tr>
+<tr>
+<td>Expression system taxid</td>
+<td><code>SamplePreparation</code></td>
+<td><code>expression_system</code></td>
+<td>Host organism details</td>
+</tr>
+<tr>
+<td>Gene</td>
+<td><code>Sample</code></td>
+<td><code>gene_synthesis_vendor</code>, <code>codon_optimization_organism</code></td>
+<td>Gene information</td>
+</tr>
+<tr>
+<td>Strain</td>
+<td><code>SamplePreparation</code></td>
+<td><code>cell_line</code></td>
+<td>Strain/cell line used</td>
+</tr>
+</tbody>
+</table>
+<h3 id="keywds-keywords">KEYWDS - Keywords</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keywords</td>
+<td><code>Dataset</code></td>
+<td><code>keywords</code></td>
+<td>Searchable terms (multivalued)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="expdta-experimental-method">EXPDTA - Experimental Method</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>ExperimentRun</code></td>
+<td><code>technique</code></td>
+<td>TechniqueEnum value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="author-depositor-information">AUTHOR - Depositor Information</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authors</td>
+<td><code>Study</code></td>
+<td><code>contributors</code></td>
+<td>Author list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jrnl-citation">JRNL - Citation</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Citation</td>
+<td><code>Study</code></td>
+<td><code>references</code></td>
+<td>Publication references</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remark-200-data-collection">REMARK 200 - Data Collection</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wavelength</td>
+<td><code>ExperimentRun</code></td>
+<td><code>wavelength</code></td>
+<td>X-ray wavelength in Å</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td><code>ExperimentRun</code></td>
+<td><code>temperature_k</code></td>
+<td>Data collection temperature</td>
+</tr>
+<tr>
+<td>Detector type</td>
+<td><code>XRayInstrument</code></td>
+<td><code>detector_technology</code></td>
+<td>DetectorTechnologyEnum</td>
+</tr>
+<tr>
+<td>Detector manufacturer</td>
+<td><code>XRayInstrument</code></td>
+<td><code>detector_manufacturer</code></td>
+<td>e.g., Dectris, Rayonix</td>
+</tr>
+<tr>
+<td>Detector model</td>
+<td><code>XRayInstrument</code></td>
+<td><code>detector_model</code></td>
+<td>e.g., EIGER2 X 16M</td>
+</tr>
+<tr>
+<td>Detector distance</td>
+<td><code>ExperimentRun</code></td>
+<td><code>detector_distance</code></td>
+<td>Sample-detector distance (mm)</td>
+</tr>
+<tr>
+<td>Beam center X/Y</td>
+<td><code>ExperimentRun</code></td>
+<td><code>beam_center_x</code>, <code>beam_center_y</code></td>
+<td>Beam position on detector</td>
+</tr>
+<tr>
+<td>Oscillation range</td>
+<td><code>ExperimentRun</code></td>
+<td><code>oscillation_angle</code></td>
+<td>Rotation per image</td>
+</tr>
+<tr>
+<td>Number of images</td>
+<td><code>ExperimentRun</code></td>
+<td><code>number_of_images</code></td>
+<td>Total frames collected</td>
+</tr>
+<tr>
+<td>Synchrotron</td>
+<td><code>XRayInstrument</code></td>
+<td><code>facility_id</code></td>
+<td>FacilityEnum value</td>
+</tr>
+<tr>
+<td>Beamline</td>
+<td><code>ExperimentRun</code></td>
+<td><code>beamline</code></td>
+<td>Beamline identifier</td>
+</tr>
+<tr>
+<td>Resolution range</td>
+<td><code>WorkflowRun</code></td>
+<td><code>resolution_high</code>, <code>resolution_low</code></td>
+<td>Resolution limits</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td><code>WorkflowRun</code></td>
+<td><code>completeness_percent</code></td>
+<td>Data completeness</td>
+</tr>
+<tr>
+<td>Rmerge</td>
+<td><code>WorkflowRun</code></td>
+<td><code>rmerge</code></td>
+<td>Merging R-factor</td>
+</tr>
+<tr>
+<td>I/sigmaI</td>
+<td><code>WorkflowRun</code></td>
+<td><code>i_over_sigma</code></td>
+<td>Signal-to-noise ratio</td>
+</tr>
+<tr>
+<td>Redundancy</td>
+<td><code>WorkflowRun</code></td>
+<td><code>multiplicity</code></td>
+<td>Data redundancy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remark-280-crystallization">REMARK 280 - Crystallization</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crystallization method</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>method</code></td>
+<td>Vapor diffusion, batch, etc.</td>
+</tr>
+<tr>
+<td>pH</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>ph</code></td>
+<td>Crystallization pH</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>temperature_celsius</code></td>
+<td>Growth temperature</td>
+</tr>
+<tr>
+<td>Precipitant</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>precipitant_type</code>, <code>precipitant_concentration</code></td>
+<td>Main precipitant</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>buffer</code>, <code>buffer_concentration</code></td>
+<td>Buffer system</td>
+</tr>
+<tr>
+<td>Salt</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>salt</code>, <code>salt_concentration</code></td>
+<td>Added salts</td>
+</tr>
+<tr>
+<td>Additives</td>
+<td><code>CrystallizationConditions</code></td>
+<td><code>additives</code></td>
+<td>Other components</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remark-350-biological-assembly">REMARK 350 - Biological Assembly</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Biological unit</td>
+<td><code>Sample</code></td>
+<td><code>oligomeric_state</code></td>
+<td>Assembly state</td>
+</tr>
+<tr>
+<td>Symmetry operators</td>
+<td>-</td>
+<td>Not directly modeled</td>
+<td>Assembly transforms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cryst1-unit-cell">CRYST1 - Unit Cell</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a, b, c</td>
+<td><code>WorkflowRun</code></td>
+<td><code>unit_cell_a</code>, <code>unit_cell_b</code>, <code>unit_cell_c</code></td>
+<td>Cell dimensions (Å)</td>
+</tr>
+<tr>
+<td>alpha, beta, gamma</td>
+<td><code>WorkflowRun</code></td>
+<td><code>unit_cell_alpha</code>, <code>unit_cell_beta</code>, <code>unit_cell_gamma</code></td>
+<td>Cell angles (°)</td>
+</tr>
+<tr>
+<td>Space group</td>
+<td><code>WorkflowRun</code></td>
+<td><code>space_group</code></td>
+<td>Hermann-Mauguin symbol</td>
+</tr>
+<tr>
+<td>Z value</td>
+<td>-</td>
+<td>Not directly modeled</td>
+<td>Molecules per unit cell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="origx-scale-coordinate-transforms">ORIGX / SCALE - Coordinate Transforms</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transform matrices</td>
+<td>-</td>
+<td>Not modeled</td>
+<td>Coordinate transformations stored in coordinate files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="refinement-statistics-remark-3">Refinement Statistics (REMARK 3)</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-work</td>
+<td><code>WorkflowRun</code></td>
+<td><code>rwork</code></td>
+<td>Working set R-factor</td>
+</tr>
+<tr>
+<td>R-free</td>
+<td><code>WorkflowRun</code></td>
+<td><code>rfree</code></td>
+<td>Free set R-factor</td>
+</tr>
+<tr>
+<td>RMSD bonds</td>
+<td><code>WorkflowRun</code></td>
+<td><code>rmsd_bonds</code></td>
+<td>Bond length deviation</td>
+</tr>
+<tr>
+<td>RMSD angles</td>
+<td><code>WorkflowRun</code></td>
+<td><code>rmsd_angles</code></td>
+<td>Bond angle deviation</td>
+</tr>
+<tr>
+<td>Ramachandran favored</td>
+<td><code>WorkflowRun</code></td>
+<td><code>ramachandran_favored</code></td>
+<td>% in favored regions</td>
+</tr>
+<tr>
+<td>Ramachandran outliers</td>
+<td><code>WorkflowRun</code></td>
+<td><code>ramachandran_outliers</code></td>
+<td>% outliers</td>
+</tr>
+<tr>
+<td>Clashscore</td>
+<td><code>WorkflowRun</code></td>
+<td><code>clashscore</code></td>
+<td>MolProbity clashscore</td>
+</tr>
+<tr>
+<td>Wilson B</td>
+<td><code>WorkflowRun</code></td>
+<td><code>wilson_b_factor</code></td>
+<td>Wilson B-factor estimate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phasing-information">Phasing Information</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phasing method</td>
+<td><code>WorkflowRun</code></td>
+<td><code>phasing_method</code></td>
+<td>PhasingMethodEnum (SAD, MAD, MR, etc.)</td>
+</tr>
+<tr>
+<td>Search model</td>
+<td><code>WorkflowRun</code></td>
+<td><code>search_model_pdb_id</code></td>
+<td>MR template PDB ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deposition-status">Deposition Status</h3>
+<table>
+<thead>
+<tr>
+<th>PDB Field</th>
+<th>Schema Class</th>
+<th>Schema Slot(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposited</td>
+<td><code>WorkflowRun</code></td>
+<td><code>deposited_to_pdb</code></td>
+<td>Boolean flag</td>
+</tr>
+<tr>
+<td>PDB ID</td>
+<td><code>WorkflowRun</code></td>
+<td><code>pdb_id</code></td>
+<td>Assigned accession</td>
+</tr>
+<tr>
+<td>Validation report</td>
+<td><code>WorkflowRun</code></td>
+<td><code>validation_report_path</code></td>
+<td>Path to validation PDF</td>
+</tr>
+</tbody>
+</table>
+<h2 id="coverage-summary">Coverage Summary</h2>
+<p>The schema provides structured capture for the majority of PDB deposition metadata:</p>
+<table>
+<thead>
+<tr>
+<th>PDB Section</th>
+<th>Coverage</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEADER/TITLE/KEYWDS</td>
+<td>✅ Full</td>
+<td>Dataset and Study metadata</td>
+</tr>
+<tr>
+<td>COMPND/SOURCE</td>
+<td>✅ Full</td>
+<td>Sample class with NSLS2 extensions</td>
+</tr>
+<tr>
+<td>EXPDTA/AUTHOR</td>
+<td>✅ Full</td>
+<td>ExperimentRun and Study</td>
+</tr>
+<tr>
+<td>REMARK 200 (data collection)</td>
+<td>✅ Full</td>
+<td>ExperimentRun + XRayInstrument</td>
+</tr>
+<tr>
+<td>REMARK 280 (crystallization)</td>
+<td>✅ Full</td>
+<td>CrystallizationConditions class</td>
+</tr>
+<tr>
+<td>REMARK 3 (refinement)</td>
+<td>✅ Full</td>
+<td>WorkflowRun refinement slots</td>
+</tr>
+<tr>
+<td>CRYST1 (unit cell)</td>
+<td>✅ Full</td>
+<td>WorkflowRun crystallographic slots</td>
+</tr>
+<tr>
+<td>REMARK 350 (assembly)</td>
+<td>⚠️ Partial</td>
+<td>oligomeric_state only</td>
+</tr>
+<tr>
+<td>ORIGX/SCALE (transforms)</td>
+<td>❌ None</td>
+<td>Stored in coordinate files</td>
+</tr>
+<tr>
+<td>ATOM/HETATM (coordinates)</td>
+<td>❌ None</td>
+<td>Schema tracks files, not coordinates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="integration-strategy">Integration Strategy</h2>
+<h3 id="pre-deposition-use-lambda-ber-schema">Pre-Deposition: Use lambda-ber-schema</h3>
+<ol>
+<li>Capture sample metadata at preparation time</li>
+<li>Record instrument and experimental parameters automatically from beamline</li>
+<li>Track processing workflows with software versions and parameters</li>
+<li>Maintain complete provenance from sample to structure</li>
+</ol>
+<h3 id="deposition-export-to-onedep">Deposition: Export to OneDep</h3>
+<ol>
+<li>Generate metadata summary from lambda-ber-schema records</li>
+<li>Use as reference when completing OneDep forms</li>
+<li>Future: automated export to OneDep-compatible format</li>
+</ol>
+<h3 id="post-deposition-link-records">Post-Deposition: Link Records</h3>
+<ol>
+<li>Update <code>WorkflowRun.pdb_id</code> with assigned accession</li>
+<li>Set <code>WorkflowRun.deposited_to_pdb = true</code></li>
+<li>Maintain bidirectional links between local records and PDB entry</li>
+</ol>
+<h2 id="onedep-validation-categories">OneDep Validation Categories</h2>
+<p>OneDep performs extensive validation before accepting a deposition. Understanding these checks helps ensure lambda-ber-schema captures the right metadata.</p>
+<h3 id="geometry-validation">Geometry Validation</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Validates</th>
+<th>Schema Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bond lengths</td>
+<td>Deviations from ideal geometry</td>
+<td><code>WorkflowRun.rmsd_bonds</code></td>
+</tr>
+<tr>
+<td>Bond angles</td>
+<td>Deviations from ideal angles</td>
+<td><code>WorkflowRun.rmsd_angles</code></td>
+</tr>
+<tr>
+<td>Ramachandran</td>
+<td>Backbone dihedral angles</td>
+<td><code>WorkflowRun.ramachandran_favored</code>, <code>ramachandran_outliers</code></td>
+</tr>
+<tr>
+<td>Rotamers</td>
+<td>Side chain conformations</td>
+<td>(in coordinate file)</td>
+</tr>
+<tr>
+<td>Clashes</td>
+<td>Steric overlaps</td>
+<td><code>WorkflowRun.clashscore</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality-validation">Data Quality Validation</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Validates</th>
+<th>Schema Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolution</td>
+<td>Claimed vs actual resolution</td>
+<td><code>WorkflowRun.resolution_high</code></td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>Data completeness</td>
+<td><code>WorkflowRun.completeness_percent</code></td>
+</tr>
+<tr>
+<td>R-factors</td>
+<td>Rwork/Rfree gap</td>
+<td><code>WorkflowRun.rwork</code>, <code>rfree</code></td>
+</tr>
+<tr>
+<td>B-factors</td>
+<td>Temperature factor distribution</td>
+<td><code>WorkflowRun.wilson_b_factor</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-validation">Metadata Validation</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Validates</th>
+<th>Schema Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sequence match</td>
+<td>Coordinates match deposited sequence</td>
+<td><code>Sample.molecular_composition</code></td>
+</tr>
+<tr>
+<td>Ligand identity</td>
+<td>Chemical component dictionary match</td>
+<td><code>Sample</code> ligand fields</td>
+</tr>
+<tr>
+<td>Source organism</td>
+<td>Taxonomy ID validity</td>
+<td><code>Sample.ncbi_taxid</code>, <code>organism</code></td>
+</tr>
+<tr>
+<td>Expression system</td>
+<td>Host organism consistency</td>
+<td><code>Sample.expression_system</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-deposition-issues">Common Deposition Issues</h2>
+<p>These are frequent problems researchers encounter during deposition, and how lambda-ber-schema helps prevent them:</p>
+<h3 id="1-missing-or-inconsistent-metadata">1. Missing or Inconsistent Metadata</h3>
+<p><strong>Problem</strong>: Data collection parameters don't match between coordinate file and deposition form.</p>
+<p><strong>Schema Solution</strong>: Single source of truth in <code>ExperimentRun</code>:</p>
+<pre><code class="language-yaml">ExperimentRun:
+  wavelength: 0.9792        # Captured at beamline
+  temperature_k: 100        # Recorded automatically
+  detector_distance: 250.0  # From beamline metadata
+  beamline: &quot;FMX&quot;           # Facility identifier
+</code></pre>
+<h3 id="2-lost-sample-provenance">2. Lost Sample Provenance</h3>
+<p><strong>Problem</strong>: Can't remember expression system or crystallization conditions months after data collection.</p>
+<p><strong>Schema Solution</strong>: Captured at preparation time in <code>Sample</code> and <code>CrystallizationConditions</code>:</p>
+<pre><code class="language-yaml">Sample:
+  protein_name: &quot;Lysozyme&quot;
+  organism: NCBITaxon:9031  # Gallus gallus
+  expression_system: &quot;E. coli BL21(DE3)&quot;
+
+CrystallizationConditions:
+  method: &quot;vapor_diffusion_hanging_drop&quot;
+  precipitant_type: &quot;NaCl&quot;
+  precipitant_concentration: &quot;1.0 M&quot;
+  ph: 4.5
+</code></pre>
+<h3 id="3-processing-statistics-mismatch">3. Processing Statistics Mismatch</h3>
+<p><strong>Problem</strong>: Reported statistics come from different processing runs.</p>
+<p><strong>Schema Solution</strong>: <code>WorkflowRun</code> links statistics to specific processing:</p>
+<pre><code class="language-yaml">WorkflowRun:
+  workflow_code: &quot;lysozyme-processing-v2&quot;
+  software_name: &quot;XDS&quot;
+  software_version: &quot;March 2024&quot;
+  resolution_high: 1.64
+  rmerge: 0.082
+  completeness_percent: 99.8
+  # All stats from same processing run
+</code></pre>
+<h3 id="4-incorrect-phasing-attribution">4. Incorrect Phasing Attribution</h3>
+<p><strong>Problem</strong>: Phasing method or search model not properly documented.</p>
+<p><strong>Schema Solution</strong>: Explicit phasing tracking:</p>
+<pre><code class="language-yaml">WorkflowRun:
+  phasing_method: sad  # PhasingMethodEnum
+  # or for molecular replacement:
+  phasing_method: molecular_replacement
+  search_model_pdb_id: &quot;1LYZ&quot;
+</code></pre>
+<h2 id="example-schema-to-onedep-export">Example: Schema to OneDep Export</h2>
+<p>Conceptual example of generating OneDep-ready metadata from lambda-ber-schema:</p>
+<pre><code class="language-python">def generate_onedep_metadata(study: Study) -&gt; dict:
+    &quot;&quot;&quot;Extract OneDep form data from lambda-ber-schema Study.&quot;&quot;&quot;
+
+    sample = study.samples[0]
+    experiment = study.experiment_runs[0]
+    workflow = study.workflow_runs[0]
+    instrument = get_instrument(experiment.instrument_id)
+
+    return {
+        # TITLE
+        &quot;structure_title&quot;: study.title,
+
+        # SOURCE
+        &quot;source_organism&quot;: sample.organism,
+        &quot;source_taxid&quot;: sample.ncbi_taxid,
+        &quot;expression_system&quot;: sample.expression_system,
+
+        # COMPND
+        &quot;molecule_name&quot;: sample.protein_name,
+
+        # REMARK 200 - Data Collection
+        &quot;wavelength&quot;: experiment.wavelength,
+        &quot;temperature&quot;: experiment.temperature_k,
+        &quot;detector&quot;: instrument.detector_model,
+        &quot;beamline&quot;: experiment.beamline,
+        &quot;synchrotron&quot;: instrument.facility_id,
+
+        # CRYST1
+        &quot;space_group&quot;: workflow.space_group,
+        &quot;unit_cell&quot;: {
+            &quot;a&quot;: workflow.unit_cell_a,
+            &quot;b&quot;: workflow.unit_cell_b,
+            &quot;c&quot;: workflow.unit_cell_c,
+            &quot;alpha&quot;: workflow.unit_cell_alpha,
+            &quot;beta&quot;: workflow.unit_cell_beta,
+            &quot;gamma&quot;: workflow.unit_cell_gamma,
+        },
+
+        # Data quality
+        &quot;resolution&quot;: workflow.resolution_high,
+        &quot;rmerge&quot;: workflow.rmerge,
+        &quot;completeness&quot;: workflow.completeness_percent,
+
+        # Refinement
+        &quot;rwork&quot;: workflow.rwork,
+        &quot;rfree&quot;: workflow.rfree,
+
+        # Phasing
+        &quot;phasing_method&quot;: workflow.phasing_method,
+        &quot;search_model&quot;: workflow.search_model_pdb_id,
+    }
+</code></pre>
+<h2 id="workflow-diagram">Workflow Diagram</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                        STRUCTURE DETERMINATION WORKFLOW                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   SAMPLE    │───▶│   DATA      │───▶│ PROCESSING  │───▶│ REFINEMENT  │
+│ PREPARATION │    │ COLLECTION  │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+      │                  │                  │                  │
+      ▼                  ▼                  ▼                  ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Sample    │    │ Experiment  │    │ WorkflowRun │    │ WorkflowRun │
+│   + Cryst   │    │    Run      │    │ (indexing)  │    │(refinement) │
+│ Conditions  │    │             │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+      │                  │                  │                  │
+      │                  │                  │                  │
+      └──────────────────┴──────────────────┴──────────────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │    lambda-ber-schema         │
+                    │    (unified metadata)        │
+                    └──────────────────────────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    │                             │
+                    ▼                             ▼
+         ┌─────────────────┐           ┌─────────────────┐
+         │  OneDep Forms   │           │  Local Archive  │
+         │  (deposition)   │           │  (provenance)   │
+         └─────────────────┘           └─────────────────┘
+                    │
+                    ▼
+         ┌─────────────────┐
+         │      PDB        │
+         │   (public)      │
+         └─────────────────┘
+</code></pre>
+<h2 id="related-standards">Related Standards</h2>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Scope</th>
+<th>Relationship to Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mmCIF/PDBx</strong></td>
+<td>Atomic coordinates, structure metadata</td>
+<td>Schema maps to mmCIF categories via <code>exact_mappings</code></td>
+</tr>
+<tr>
+<td><strong>IHMCIF</strong></td>
+<td>Integrative/hybrid methods</td>
+<td>Future alignment for multi-technique studies</td>
+</tr>
+<tr>
+<td><strong>SIFTS</strong></td>
+<td>Sequence-structure mapping</td>
+<td><code>Sample.molecular_composition</code> alignment</td>
+</tr>
+<tr>
+<td><strong>UniProt</strong></td>
+<td>Protein sequences</td>
+<td><code>Sample</code> protein identifiers</td>
+</tr>
+<tr>
+<td><strong>NCBI Taxonomy</strong></td>
+<td>Organism classification</td>
+<td><code>Sample.organism</code>, <code>ncbi_taxid</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://deposit.wwpdb.org">wwPDB OneDep</a> - Unified deposition portal</li>
+<li><a href="https://mmcif.wwpdb.org/">mmCIF Dictionary</a> - Official mmCIF/PDBx dictionary</li>
+<li><a href="https://www.wwpdb.org/documentation/file-format">PDB File Format</a> - Legacy format documentation</li>
+<li><a href="https://validate.wwpdb.org/">PDB Validation</a> - Standalone validation server</li>
+<li><a href="https://www.wwpdb.org/validation/validation-reports">wwPDB Validation Reports</a> - Understanding validation output</li>
+<li><a href="https://www.wwpdb.org/deposition/data-harvesting">PDB Data Harvesting</a> - Automatic metadata extraction</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

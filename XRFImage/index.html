@@ -736,8 +736,8 @@ attributes:
     name: flux
     description: Photon flux in photons/second
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     domain_of:
+    - ExperimentRun
     - XRFImage
     range: float
   calibration_standard:
@@ -839,10 +839,10 @@ attributes:
     name: flux
     description: Photon flux in photons/second
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: flux
     owner: XRFImage
     domain_of:
+    - ExperimentRun
     - XRFImage
     range: float
   calibration_standard:
@@ -931,10 +931,10 @@ attributes:
     name: exposure_time
     description: Exposure time in seconds
     from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
     alias: exposure_time
     owner: XRFImage
     domain_of:
+    - ExperimentRun
     - Image
     - ExperimentalConditions
     range: float

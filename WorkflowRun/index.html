@@ -431,6 +431,12 @@
 
       WorkflowRun : additional_software
 
+      WorkflowRun : anomalous_completeness
+
+      WorkflowRun : anomalous_multiplicity
+
+      WorkflowRun : cc_anomalous
+
       WorkflowRun : cc_half
 
       WorkflowRun : clashscore
@@ -486,6 +492,10 @@
 
       WorkflowRun : integrator_module
 
+      WorkflowRun : ispyb_auto_proc_program_id
+
+      WorkflowRun : ispyb_auto_proc_scaling_id
+
       WorkflowRun : ligands_cofactors
 
       WorkflowRun : motion_correction_params
@@ -500,6 +510,10 @@
 
 
       WorkflowRun : multiplicity
+
+      WorkflowRun : n_total_observations
+
+      WorkflowRun : n_total_unique
 
       WorkflowRun : ncs_used
 
@@ -550,6 +564,8 @@
 
       WorkflowRun : processing_parameters
 
+      WorkflowRun : r_anomalous
+
       WorkflowRun : ramachandran_favored
 
       WorkflowRun : ramachandran_outliers
@@ -588,6 +604,8 @@
       WorkflowRun : scaler_module
 
       WorkflowRun : search_model_pdb_id
+
+      WorkflowRun : sig_anomalous
 
       WorkflowRun : software_name
 
@@ -888,6 +906,60 @@
 <td><a href="../multiplicity/">multiplicity</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Data multiplicity (redundancy)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../anomalous_completeness/">anomalous_completeness</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Completeness of anomalous data as percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../anomalous_multiplicity/">anomalous_multiplicity</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Multiplicity of anomalous data</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cc_anomalous/">cc_anomalous</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Anomalous correlation coefficient</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../r_anomalous/">r_anomalous</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Anomalous R-factor</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sig_anomalous/">sig_anomalous</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Mean anomalous difference signal</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../n_total_observations/">n_total_observations</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of observations (before merging)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../n_total_unique/">n_total_unique</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of unique reflections</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ispyb_auto_proc_program_id/">ispyb_auto_proc_program_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>ISPyB AutoProcProgram</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ispyb_auto_proc_scaling_id/">ispyb_auto_proc_scaling_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>ISPyB AutoProcScaling</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1256,6 +1328,7 @@ attributes:
     exact_mappings:
     - nsls2:Space_Group
     - mmCIF:_symmetry.space_group_name_H-M
+    - ispyb:AutoProcScaling.spaceGroup
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1352,6 +1425,7 @@ attributes:
     exact_mappings:
     - nsls2:Resolution_High_A
     - mmCIF:_reflns.d_resolution_high
+    - ispyb:AutoProcScalingStatistics.resolutionLimitHigh
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1365,6 +1439,7 @@ attributes:
     exact_mappings:
     - nsls2:Resolution_Low_A
     - mmCIF:_reflns.d_resolution_low
+    - ispyb:AutoProcScalingStatistics.resolutionLimitLow
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1378,6 +1453,7 @@ attributes:
     exact_mappings:
     - nsls2:Rmerge
     - mmCIF:_reflns.pdbx_Rmerge_I_obs
+    - ispyb:AutoProcScalingStatistics.rMerge
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1389,6 +1465,7 @@ attributes:
     exact_mappings:
     - nsls2:Rpim
     - mmCIF:_reflns.pdbx_Rpim_I_all
+    - ispyb:AutoProcScalingStatistics.rPim
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1400,6 +1477,7 @@ attributes:
     exact_mappings:
     - nsls2:CC_half
     - mmCIF:_reflns.pdbx_CC_half
+    - ispyb:AutoProcScalingStatistics.ccHalf
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1412,6 +1490,7 @@ attributes:
     exact_mappings:
     - nsls2:Completeness
     - mmCIF:_reflns.percent_possible_obs
+    - ispyb:AutoProcScalingStatistics.completeness
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1425,6 +1504,7 @@ attributes:
     exact_mappings:
     - nsls2:I_over_sigma
     - mmCIF:_reflns.pdbx_netI_over_sigmaI
+    - ispyb:AutoProcScalingStatistics.meanIOverSigI
     rank: 1000
     domain_of:
     - WorkflowRun
@@ -1449,11 +1529,114 @@ attributes:
     exact_mappings:
     - nsls2:Multiplicity
     - mmCIF:_reflns.pdbx_redundancy
+    - ispyb:AutoProcScalingStatistics.multiplicity
     rank: 1000
     domain_of:
     - WorkflowRun
     - QualityMetrics
     range: float
+  anomalous_completeness:
+    name: anomalous_completeness
+    description: Completeness of anomalous data as percentage
+    comments:
+    - Completeness of Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.anomalousCompleteness
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: float
+    unit:
+      ucum_code: '%'
+  anomalous_multiplicity:
+    name: anomalous_multiplicity
+    description: Multiplicity of anomalous data
+    comments:
+    - Redundancy of Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.anomalousMultiplicity
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: float
+  cc_anomalous:
+    name: cc_anomalous
+    description: Anomalous correlation coefficient
+    comments:
+    - Correlation coefficient between Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.ccAno
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: float
+  r_anomalous:
+    name: r_anomalous
+    description: Anomalous R-factor
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.rAnom
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: float
+  sig_anomalous:
+    name: sig_anomalous
+    description: Mean anomalous difference signal
+    comments:
+    - Mean |F(+) - F(-)|/sigma
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.sigAno
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: float
+  n_total_observations:
+    name: n_total_observations
+    description: Total number of observations (before merging)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.nTotalObservations
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: integer
+  n_total_unique:
+    name: n_total_unique
+    description: Total number of unique reflections
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.nTotalUniqueObservations
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: integer
+  ispyb_auto_proc_program_id:
+    name: ispyb_auto_proc_program_id
+    description: ISPyB AutoProcProgram.autoProcProgramId
+    comments:
+    - Links to ISPyB processing program record
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcProgram.autoProcProgramId
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: integer
+  ispyb_auto_proc_scaling_id:
+    name: ispyb_auto_proc_scaling_id
+    description: ISPyB AutoProcScaling.autoProcScalingId
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScaling.autoProcScalingId
+    rank: 1000
+    domain_of:
+    - WorkflowRun
+    range: integer
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
@@ -1884,6 +2067,7 @@ attributes:
     exact_mappings:
     - nsls2:Space_Group
     - mmCIF:_symmetry.space_group_name_H-M
+    - ispyb:AutoProcScaling.spaceGroup
     rank: 1000
     alias: space_group
     owner: WorkflowRun
@@ -1994,6 +2178,7 @@ attributes:
     exact_mappings:
     - nsls2:Resolution_High_A
     - mmCIF:_reflns.d_resolution_high
+    - ispyb:AutoProcScalingStatistics.resolutionLimitHigh
     rank: 1000
     alias: resolution_high
     owner: WorkflowRun
@@ -2009,6 +2194,7 @@ attributes:
     exact_mappings:
     - nsls2:Resolution_Low_A
     - mmCIF:_reflns.d_resolution_low
+    - ispyb:AutoProcScalingStatistics.resolutionLimitLow
     rank: 1000
     alias: resolution_low
     owner: WorkflowRun
@@ -2024,6 +2210,7 @@ attributes:
     exact_mappings:
     - nsls2:Rmerge
     - mmCIF:_reflns.pdbx_Rmerge_I_obs
+    - ispyb:AutoProcScalingStatistics.rMerge
     rank: 1000
     alias: rmerge
     owner: WorkflowRun
@@ -2037,6 +2224,7 @@ attributes:
     exact_mappings:
     - nsls2:Rpim
     - mmCIF:_reflns.pdbx_Rpim_I_all
+    - ispyb:AutoProcScalingStatistics.rPim
     rank: 1000
     alias: rpim
     owner: WorkflowRun
@@ -2050,6 +2238,7 @@ attributes:
     exact_mappings:
     - nsls2:CC_half
     - mmCIF:_reflns.pdbx_CC_half
+    - ispyb:AutoProcScalingStatistics.ccHalf
     rank: 1000
     alias: cc_half
     owner: WorkflowRun
@@ -2064,6 +2253,7 @@ attributes:
     exact_mappings:
     - nsls2:Completeness
     - mmCIF:_reflns.percent_possible_obs
+    - ispyb:AutoProcScalingStatistics.completeness
     rank: 1000
     alias: completeness_percent
     owner: WorkflowRun
@@ -2079,6 +2269,7 @@ attributes:
     exact_mappings:
     - nsls2:I_over_sigma
     - mmCIF:_reflns.pdbx_netI_over_sigmaI
+    - ispyb:AutoProcScalingStatistics.meanIOverSigI
     rank: 1000
     alias: i_over_sigma
     owner: WorkflowRun
@@ -2107,6 +2298,7 @@ attributes:
     exact_mappings:
     - nsls2:Multiplicity
     - mmCIF:_reflns.pdbx_redundancy
+    - ispyb:AutoProcScalingStatistics.multiplicity
     rank: 1000
     alias: multiplicity
     owner: WorkflowRun
@@ -2114,6 +2306,126 @@ attributes:
     - WorkflowRun
     - QualityMetrics
     range: float
+  anomalous_completeness:
+    name: anomalous_completeness
+    description: Completeness of anomalous data as percentage
+    comments:
+    - Completeness of Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.anomalousCompleteness
+    rank: 1000
+    alias: anomalous_completeness
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+    unit:
+      ucum_code: '%'
+  anomalous_multiplicity:
+    name: anomalous_multiplicity
+    description: Multiplicity of anomalous data
+    comments:
+    - Redundancy of Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.anomalousMultiplicity
+    rank: 1000
+    alias: anomalous_multiplicity
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  cc_anomalous:
+    name: cc_anomalous
+    description: Anomalous correlation coefficient
+    comments:
+    - Correlation coefficient between Bijvoet pairs
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.ccAno
+    rank: 1000
+    alias: cc_anomalous
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  r_anomalous:
+    name: r_anomalous
+    description: Anomalous R-factor
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.rAnom
+    rank: 1000
+    alias: r_anomalous
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  sig_anomalous:
+    name: sig_anomalous
+    description: Mean anomalous difference signal
+    comments:
+    - Mean |F(+) - F(-)|/sigma
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.sigAno
+    rank: 1000
+    alias: sig_anomalous
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: float
+  n_total_observations:
+    name: n_total_observations
+    description: Total number of observations (before merging)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.nTotalObservations
+    rank: 1000
+    alias: n_total_observations
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: integer
+  n_total_unique:
+    name: n_total_unique
+    description: Total number of unique reflections
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScalingStatistics.nTotalUniqueObservations
+    rank: 1000
+    alias: n_total_unique
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: integer
+  ispyb_auto_proc_program_id:
+    name: ispyb_auto_proc_program_id
+    description: ISPyB AutoProcProgram.autoProcProgramId
+    comments:
+    - Links to ISPyB processing program record
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcProgram.autoProcProgramId
+    rank: 1000
+    alias: ispyb_auto_proc_program_id
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: integer
+  ispyb_auto_proc_scaling_id:
+    name: ispyb_auto_proc_scaling_id
+    description: ISPyB AutoProcScaling.autoProcScalingId
+    from_schema: https://w3id.org/lambda-ber-schema/
+    exact_mappings:
+    - ispyb:AutoProcScaling.autoProcScalingId
+    rank: 1000
+    alias: ispyb_auto_proc_scaling_id
+    owner: WorkflowRun
+    domain_of:
+    - WorkflowRun
+    range: integer
   rwork:
     name: rwork
     description: Refinement R-factor (working set)

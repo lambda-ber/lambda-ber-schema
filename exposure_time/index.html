@@ -898,13 +898,8 @@ Alias: exposure_time</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Micrograph/">Micrograph</a></td>
-<td>Motion-corrected micrograph derived from movie</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../XRFImage/">XRFImage</a></td>
-<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td><a href="../FTIRImage/">FTIRImage</a></td>
+<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -913,23 +908,13 @@ Alias: exposure_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Movie/">Movie</a></td>
-<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
+<td><a href="../Micrograph/">Micrograph</a></td>
+<td>Motion-corrected micrograph derived from movie</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Image2D/">Image2D</a></td>
-<td>A 2D image (micrograph, diffraction pattern)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
-<td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OpticalImage/">OpticalImage</a></td>
-<td>Visible light optical microscopy or photography image</td>
+<td><a href="../ExperimentRun/">ExperimentRun</a></td>
+<td>An experimental data collection session</td>
 <td>no</td>
 </tr>
 <tr>
@@ -943,8 +928,28 @@ Alias: exposure_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FTIRImage/">FTIRImage</a></td>
-<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
+<td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
+<td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OpticalImage/">OpticalImage</a></td>
+<td>Visible light optical microscopy or photography image</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Image2D/">Image2D</a></td>
+<td>A 2D image (micrograph, diffraction pattern)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRFImage/">XRFImage</a></td>
+<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Movie/">Movie</a></td>
+<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,6 +984,7 @@ Alias: exposure_time</p>
 <pre><code class="language-yaml">name: exposure_time
 alias: exposure_time
 domain_of:
+- ExperimentRun
 - Image
 - ExperimentalConditions
 range: string
