@@ -38,6 +38,13 @@ Analysis of integration with the DIALS crystallography processing framework. Thi
 - Integration with other crystallography software
 - Support for serial and electron diffraction
 
+### [PDB Deposition and OneDep](onedep-pdb-deposition.md)
+Practical guide to PDB deposition workflow and how lambda-ber-schema relates to the process:
+- OneDep deposition system overview
+- Legacy PDB record types to mmCIF mapping
+- Facility metadata requirements
+- Integration strategy for pre/post-deposition
+
 ## Purpose
 
 These alignment analyses serve to:
@@ -52,6 +59,7 @@ All analyzed standards are complementary to lambda-ber-schema rather than compet
 
 - **NeXus** excels at facility-level raw data capture with HDF5 storage
 - **mmCIF** is the definitive standard for atomic structure representation and PDB deposition
+- **OneDep** is the wwPDB deposition portal where metadata from lambda-ber-schema ultimately feeds
 - **EMDB** provides the archive for 3D EM reconstructions with comprehensive validation
 - **EMPIAR** manages petabyte-scale raw microscopy data with expanding modality support
 - **DIALS** delivers modern crystallography data processing with extensible architecture
