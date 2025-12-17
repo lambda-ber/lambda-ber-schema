@@ -4469,8 +4469,22 @@
                         "null"
                     ]
                 },
-                "model_file": {
-                    "description": "Path to deep learning model file if used",
+                "model_file_path": {
+                    "description": "Path to deep learning model file if using a local or custom trained model file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model_name": {
+                    "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model_source": {
+                    "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance.",
                     "type": [
                         "string",
                         "null"

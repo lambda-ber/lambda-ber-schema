@@ -666,13 +666,13 @@ enum XRaySourceTypeEnum
 
 type AggregatedProteinView
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     uniprotId: String!
     proteinName: String!
     organism: String
-    organismId: Integer
+    organismId: Int
     pdbEntries: [String]
     functionalSites: [FunctionalSite]
     structuralFeatures: [StructuralFeature]
@@ -693,13 +693,13 @@ interface AttributeGroup
 
 type BeamlineInstrument
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     instrumentCode: String!
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
-    facilityRor: Uriorcurie
+    facilityRor: String
     beamlineId: String
     manufacturer: String
     model: String
@@ -711,9 +711,9 @@ type BeamlineInstrument
     energyMax: Float
     qRangeMin: Float
     qRangeMax: Float
-    sampleChangerCapacity: Integer
+    sampleChangerCapacity: Int
     mailInService: Boolean
-    website: Uri
+    website: String
   }
 
 type BiophysicalProperty
@@ -746,7 +746,7 @@ type ComputeResources
 
 type ConformationalEnsemble
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -772,19 +772,19 @@ type ConformationalState
 
 type CryoEMInstrument
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     instrumentCode: String!
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
-    facilityRor: Uriorcurie
+    facilityRor: String
     beamlineId: String
     manufacturer: String
     model: String
     installationDate: String
     currentStatus: InstrumentStatusEnum
-    acceleratingVoltage: Integer
+    acceleratingVoltage: Int
     csCorrector: Boolean
     phasePlate: Boolean
     detectorTechnology: DetectorTechnologyEnum
@@ -794,7 +794,7 @@ type CryoEMInstrument
     detectorPosition: String
     detectorDimensions: String
     pixelSizePhysicalUm: Float
-    autoloaderCapacity: Integer
+    autoloaderCapacity: Int
     cs: Float
     c2Aperture: Float
     objectiveAperture: Float
@@ -806,8 +806,8 @@ type CryoEMInstrument
     pixelSizePhysical: Float
     microscopeSoftware: String
     microscopeSoftwareVersion: String
-    spotsize: Integer
-    gunlens: Integer
+    spotsize: Int
+    gunlens: Int
     imagingMode: ImagingModeEnum
     temBeamDiameter: Float
   }
@@ -820,7 +820,7 @@ type CryoEMPreparation
     holeSize: Float
     vitrificationMethod: VitrificationMethodEnum
     blotTime: Float
-    blotForce: Integer
+    blotForce: Int
     humidityPercentage: Float
     chamberTemperature: Float
     gridMaterial: GridMaterialEnum
@@ -830,7 +830,7 @@ type CryoEMPreparation
     glowDischargeAtmosphere: String
     glowDischargePressure: Float
     vitrificationInstrument: String
-    blotNumber: Integer
+    blotNumber: Int
     waitTime: Float
     blotterHeight: Float
     blotterSetting: Float
@@ -873,7 +873,7 @@ type DatabaseCrossReference
     description: String
     databaseName: DatabaseNameEnum!
     databaseId: String!
-    databaseUrl: Uri
+    databaseUrl: String
     lastUpdated: String
   }
 
@@ -881,7 +881,7 @@ type DataCollectionStrategy
   {
     description: String
     collectionMode: CollectionModeEnum
-    totalFrames: Integer
+    totalFrames: Int
     frameRate: Float
     totalDose: Float
     dosePerFrame: Float
@@ -889,8 +889,8 @@ type DataCollectionStrategy
     detectorMode: DetectorModeEnum
     pixelSizeCalibrated: Float
     detectorDistanceMm: Float
-    beamCenterXPx: Integer
-    beamCenterYPx: Integer
+    beamCenterXPx: Int
+    beamCenterYPx: Int
     beamSizeUm: Float
     fluxPhotonsPerS: Float
     transmissionPercent: Float
@@ -903,13 +903,13 @@ type DataCollectionStrategy
 
 type DataFile
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     filePath: String
     fileFormat: FileFormatEnum!
-    fileSizeBytes: Integer
+    fileSizeBytes: Int
     checksum: String
     creationDate: String
     dataType: DataTypeEnum
@@ -920,7 +920,7 @@ type DataFile
 
 type Dataset
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     keywords: [String]
@@ -930,7 +930,7 @@ type Dataset
 
 type EvolutionaryConservation
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -939,7 +939,7 @@ type EvolutionaryConservation
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -947,7 +947,7 @@ type EvolutionaryConservation
     conservedResidues: [String]
     variableResidues: [String]
     conservationMethod: String
-    alignmentDepth: Integer
+    alignmentDepth: Int
     taxonomicRange: String
     coevolvedResidues: [String]
   }
@@ -965,7 +965,7 @@ type ExperimentalConditions
 
 type ExperimentRun
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     experimentCode: String!
@@ -980,11 +980,11 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
-    magnification: Integer
+    magnification: Int
     calibratedPixelSize: Float
     cameraBinning: Float
     exposureTimePerFrame: Float
-    framesPerMovie: Integer
+    framesPerMovie: Int
     totalExposureTime: Float
     totalDose: Float
     doseRate: Float
@@ -996,14 +996,14 @@ type ExperimentRun
     coma: Float
     stageTilt: Float
     autoloaderSlot: String
-    shotsPerHole: Integer
-    holesPerGroup: Integer
+    shotsPerHole: Int
+    holesPerGroup: Int
     acquisitionSoftware: String
     acquisitionSoftwareVersion: String
     wavelength: Float
     oscillationAngle: Float
     startAngle: Float
-    numberOfImages: Integer
+    numberOfImages: Int
     beamCenterX: Float
     beamCenterY: Float
     detectorDistance: Float
@@ -1015,14 +1015,14 @@ type ExperimentRun
 
 type FluorescenceImage
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     defocus: Float
@@ -1047,20 +1047,20 @@ type FSCCurve
 
 type FTIRImage
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     wavenumberMin: Float
     wavenumberMax: Float
     spectralResolution: Float
-    numberOfScans: Integer
+    numberOfScans: Int
     apodizationFunction: String
     molecularSignatures: [String]
     backgroundCorrection: String
@@ -1068,7 +1068,7 @@ type FTIRImage
 
 type FunctionalSite
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1077,7 +1077,7 @@ type FunctionalSite
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1087,34 +1087,34 @@ type FunctionalSite
     ligandInteractions: [LigandInteraction]
     conservationScore: Float
     functionalImportance: String
-    goTerms: [Uriorcurie]
+    goTerms: [String]
     ecNumber: String
   }
 
 type Image
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
   }
 
 type Image2D
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     defocus: Float
@@ -1123,17 +1123,17 @@ type Image2D
 
 type Image3D
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
-    dimensionsZ: Integer
+    dimensionsZ: Int
     voxelSize: Float
     reconstructionMethod: String
   }
@@ -1146,13 +1146,13 @@ type ImageFeature
 
 type Instrument
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     instrumentCode: String!
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
-    facilityRor: Uriorcurie
+    facilityRor: String
     beamlineId: String
     manufacturer: String
     model: String
@@ -1163,7 +1163,7 @@ type Instrument
 type LigandInteraction
   {
     description: String
-    ligandId: Uriorcurie!
+    ligandId: String!
     ligandName: String!
     ligandSmiles: SmilesString
     bindingAffinity: Float
@@ -1179,7 +1179,7 @@ type LigandInteraction
 
 type MeasurementConditions
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     bufferComposition: BufferComposition
@@ -1190,13 +1190,13 @@ type MeasurementConditions
 
 type Micrograph
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     originMovieId: String
@@ -1221,31 +1221,31 @@ type MolecularComposition
 type MotionCorrectionParameters
   {
     description: String
-    patchSize: Integer
+    patchSize: Int
     binning: Float
     doseWeighting: Boolean
     bfactorDoseWeighting: Float
     anisotropicCorrection: Boolean
-    frameGrouping: Integer
+    frameGrouping: Int
     outputBinning: Float
     driftTotal: Float
   }
 
 type Movie
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     defocus: Float
     astigmatism: Float
-    frames: Integer
+    frames: Int
     superResolution: Boolean
     pixelSizeUnbinned: Float
     timestamp: String
@@ -1264,7 +1264,7 @@ type Movie
 
 type MutationEffect
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1273,7 +1273,7 @@ type MutationEffect
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1291,14 +1291,14 @@ type MutationEffect
 
 interface NamedThing
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
   }
 
 type OntologyTerm
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     terms: [OntologyTerm]
@@ -1309,14 +1309,14 @@ type OntologyTerm
 
 type OpticalImage
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     defocus: Float
@@ -1333,16 +1333,18 @@ type ParticlePickingParameters
   {
     description: String
     pickingMethod: String
-    boxSize: Integer
+    boxSize: Int
     threshold: Float
     powerScore: Float
     nccScore: Float
-    modelFile: String
+    modelName: String
+    modelFilePath: String
+    modelSource: String
   }
 
 type PostTranslationalModification
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1351,7 +1353,7 @@ type PostTranslationalModification
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1367,7 +1369,7 @@ type PostTranslationalModification
 
 type ProteinAnnotation
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1376,7 +1378,7 @@ type ProteinAnnotation
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1384,14 +1386,14 @@ type ProteinAnnotation
 
 type ProteinConstruct
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     constructId: String!
     uniprotId: String
     geneName: String
     ncbiTaxid: String
-    sequenceLengthAa: Integer
+    sequenceLengthAa: Int
     constructDescription: String
     geneSynthesisProvider: String
     codonOptimizationOrganism: String
@@ -1412,7 +1414,7 @@ type ProteinConstruct
 
 type ProteinProteinInteraction
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1421,7 +1423,7 @@ type ProteinProteinInteraction
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1479,7 +1481,7 @@ type RefinementParameters
     description: String
     symmetry: SymmetryEnum
     pixelSize: Float
-    boxSize: Integer
+    boxSize: Int
     goldStandard: Boolean
     splitStrategy: String
     resolution0143: Float
@@ -1489,7 +1491,7 @@ type RefinementParameters
 
 type Sample
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     sampleCode: String!
@@ -1527,7 +1529,7 @@ type Sample
 
 type SamplePreparation
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     preparationType: PreparationTypeEnum!
@@ -1576,13 +1578,13 @@ type SamplePreparation
 
 type SAXSInstrument
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     instrumentCode: String!
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
-    facilityRor: Uriorcurie
+    facilityRor: String
     beamlineId: String
     manufacturer: String
     model: String
@@ -1592,7 +1594,7 @@ type SAXSInstrument
     qRangeMax: Float
     detectorDistanceMin: Float
     detectorDistanceMax: Float
-    sampleChangerCapacity: Integer
+    sampleChangerCapacity: Int
     temperatureControlRange: String
   }
 
@@ -1617,7 +1619,7 @@ type StorageConditions
 
 type StructuralFeature
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinId: String!
@@ -1626,7 +1628,7 @@ type StructuralFeature
     residueRange: String
     confidenceScore: Float
     evidenceType: EvidenceTypeEnum
-    evidenceCode: Uriorcurie
+    evidenceCode: String
     sourceDatabase: AnnotationSourceEnum
     annotationMethod: String
     publicationIds: [String]
@@ -1643,7 +1645,7 @@ type StructuralFeature
 
 type Study
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     proteinConstructs: [ProteinConstruct]
@@ -1663,13 +1665,13 @@ interface TechniqueSpecificPreparation
 
 type WorkflowRun
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     workflowCode: String!
     workflowType: WorkflowTypeEnum!
     experimentId: String!
-    processingLevel: Integer
+    processingLevel: Int
     softwareName: String!
     softwareVersion: String
     additionalSoftware: String
@@ -1685,7 +1687,7 @@ type WorkflowRun
     ncsUsed: Boolean
     restraintsOther: String
     ligandsCofactors: String
-    numberOfWaters: Integer
+    numberOfWaters: Int
     refinementResolutionA: Float
     depositedToPdb: Boolean
     pdbId: String
@@ -1727,13 +1729,13 @@ type WorkflowRun
 
 type XRayInstrument
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     instrumentCode: String!
     instrumentCategory: InstrumentCategoryEnum
     facilityName: FacilityEnum
-    facilityRor: Uriorcurie
+    facilityRor: String
     beamlineId: String
     manufacturer: String
     model: String
@@ -1785,14 +1787,14 @@ type XRayPreparation
 
 type XRFImage
   {
-    id: Uriorcurie!
+    id: String!
     title: String
     description: String
     fileName: String!
     acquisitionDate: String
     pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: Int
+    dimensionsY: Int
     exposureTime: Float
     dose: Float
     defocus: Float

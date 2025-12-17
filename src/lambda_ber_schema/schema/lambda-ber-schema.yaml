@@ -2122,8 +2122,14 @@ classes:
       ncc_score:
         description: "Normalized cross-correlation score threshold"
         range: float
-      model_file:
-        description: "Path to deep learning model file if used"
+      model_name:
+        description: "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models."
+        range: string
+      model_file_path:
+        description: "Path to deep learning model file if using a local or custom trained model file"
+        range: string
+      model_source:
+        description: "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance."
         range: string
 
   RefinementParameters:

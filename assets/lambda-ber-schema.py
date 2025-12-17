@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-12T12:46:54
+# Generation date: 2025-12-17T22:59:00
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -3205,7 +3205,9 @@ class ParticlePickingParameters(AttributeGroup):
     threshold: Optional[float] = None
     power_score: Optional[float] = None
     ncc_score: Optional[float] = None
-    model_file: Optional[str] = None
+    model_name: Optional[str] = None
+    model_file_path: Optional[str] = None
+    model_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.picking_method is not None and not isinstance(self.picking_method, str):
@@ -3223,8 +3225,14 @@ class ParticlePickingParameters(AttributeGroup):
         if self.ncc_score is not None and not isinstance(self.ncc_score, float):
             self.ncc_score = float(self.ncc_score)
 
-        if self.model_file is not None and not isinstance(self.model_file, str):
-            self.model_file = str(self.model_file)
+        if self.model_name is not None and not isinstance(self.model_name, str):
+            self.model_name = str(self.model_name)
+
+        if self.model_file_path is not None and not isinstance(self.model_file_path, str):
+            self.model_file_path = str(self.model_file_path)
+
+        if self.model_source is not None and not isinstance(self.model_source, str):
+            self.model_source = str(self.model_source)
 
         super().__post_init__(**kwargs)
 
@@ -7624,8 +7632,14 @@ slots.particlePickingParameters__power_score = Slot(uri=LAMBDABER.power_score, n
 slots.particlePickingParameters__ncc_score = Slot(uri=LAMBDABER.ncc_score, name="particlePickingParameters__ncc_score", curie=LAMBDABER.curie('ncc_score'),
                    model_uri=LAMBDABER.particlePickingParameters__ncc_score, domain=None, range=Optional[float])
 
-slots.particlePickingParameters__model_file = Slot(uri=LAMBDABER.model_file, name="particlePickingParameters__model_file", curie=LAMBDABER.curie('model_file'),
-                   model_uri=LAMBDABER.particlePickingParameters__model_file, domain=None, range=Optional[str])
+slots.particlePickingParameters__model_name = Slot(uri=LAMBDABER.model_name, name="particlePickingParameters__model_name", curie=LAMBDABER.curie('model_name'),
+                   model_uri=LAMBDABER.particlePickingParameters__model_name, domain=None, range=Optional[str])
+
+slots.particlePickingParameters__model_file_path = Slot(uri=LAMBDABER.model_file_path, name="particlePickingParameters__model_file_path", curie=LAMBDABER.curie('model_file_path'),
+                   model_uri=LAMBDABER.particlePickingParameters__model_file_path, domain=None, range=Optional[str])
+
+slots.particlePickingParameters__model_source = Slot(uri=LAMBDABER.model_source, name="particlePickingParameters__model_source", curie=LAMBDABER.curie('model_source'),
+                   model_uri=LAMBDABER.particlePickingParameters__model_source, domain=None, range=Optional[str])
 
 slots.refinementParameters__symmetry = Slot(uri=LAMBDABER.symmetry, name="refinementParameters__symmetry", curie=LAMBDABER.curie('symmetry'),
                    model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])

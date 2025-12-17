@@ -3679,6 +3679,7 @@
       ],
       "range": "MolecularComposition",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3736,6 +3737,7 @@
       ],
       "range": "BufferComposition",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3763,6 +3765,7 @@
       ],
       "range": "StorageConditions",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5932,6 +5935,7 @@
       ],
       "range": "ExperimentalConditions",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5946,6 +5950,7 @@
       ],
       "range": "DataCollectionStrategy",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5960,6 +5965,7 @@
       ],
       "range": "QualityMetrics",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7272,6 +7278,7 @@
       ],
       "range": "ComputeResources",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7312,6 +7319,7 @@
       ],
       "range": "MotionCorrectionParameters",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7326,6 +7334,7 @@
       ],
       "range": "CTFEstimationParameters",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7340,6 +7349,7 @@
       ],
       "range": "ParticlePickingParameters",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7354,6 +7364,7 @@
       ],
       "range": "RefinementParameters",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7368,6 +7379,7 @@
       ],
       "range": "FSCCurve",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9143,6 +9155,7 @@
       ],
       "range": "CrystallizationConditions",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10545,11 +10558,37 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "particlePickingParameters__model_file",
-      "description": "Path to deep learning model file if used",
+      "name": "particlePickingParameters__model_name",
+      "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/model_file",
-      "alias": "model_file",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/model_name",
+      "alias": "model_name",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__model_file_path",
+      "description": "Path to deep learning model file if using a local or custom trained model file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/model_file_path",
+      "alias": "model_file_path",
+      "owner": "ParticlePickingParameters",
+      "domain_of": [
+        "ParticlePickingParameters"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "particlePickingParameters__model_source",
+      "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/model_source",
+      "alias": "model_source",
       "owner": "ParticlePickingParameters",
       "domain_of": [
         "ParticlePickingParameters"
@@ -12295,6 +12334,7 @@
       ],
       "range": "BufferComposition",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -17058,7 +17098,9 @@
         "particlePickingParameters__threshold",
         "particlePickingParameters__power_score",
         "particlePickingParameters__ncc_score",
-        "particlePickingParameters__model_file"
+        "particlePickingParameters__model_name",
+        "particlePickingParameters__model_file_path",
+        "particlePickingParameters__model_source"
       ],
       "slot_usage": {},
       "attributes": [
@@ -17093,8 +17135,20 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "model_file",
-          "description": "Path to deep learning model file if used",
+          "name": "model_name",
+          "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "model_file_path",
+          "description": "Path to deep learning model file if using a local or custom trained model file",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "model_source",
+          "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance.",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -18391,9 +18445,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-12T12:00:02",
-  "source_file_size": 107096,
-  "generation_date": "2025-12-12T12:46:47",
+  "source_file_date": "2025-12-17T22:54:06",
+  "source_file_size": 107544,
+  "generation_date": "2025-12-17T22:58:53",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
