@@ -2123,13 +2123,13 @@ classes:
         description: "Normalized cross-correlation score threshold"
         range: float
       model_name:
-        description: "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models."
+        description: "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods."
         range: string
       model_file_path:
-        description: "Path to deep learning model file if using a local or custom trained model file"
+        description: "Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods."
         range: string
       model_source:
-        description: "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance."
+        description: "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for."
         range: string
 
   RefinementParameters:

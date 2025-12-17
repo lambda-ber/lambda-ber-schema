@@ -10559,7 +10559,7 @@
     },
     {
       "name": "particlePickingParameters__model_name",
-      "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models.",
+      "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/model_name",
       "alias": "model_name",
@@ -10572,7 +10572,7 @@
     },
     {
       "name": "particlePickingParameters__model_file_path",
-      "description": "Path to deep learning model file if using a local or custom trained model file",
+      "description": "Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/model_file_path",
       "alias": "model_file_path",
@@ -10585,7 +10585,7 @@
     },
     {
       "name": "particlePickingParameters__model_source",
-      "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance.",
+      "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/model_source",
       "alias": "model_source",
@@ -17136,19 +17136,19 @@
         },
         {
           "name": "model_name",
-          "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Used to identify pretrained or standard models.",
+          "description": "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "model_file_path",
-          "description": "Path to deep learning model file if using a local or custom trained model file",
+          "description": "Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "model_source",
-          "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance.",
+          "description": "Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -18445,9 +18445,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-17T22:54:06",
-  "source_file_size": 107544,
-  "generation_date": "2025-12-17T22:58:53",
+  "source_file_date": "2025-12-17T23:08:02",
+  "source_file_size": 107908,
+  "generation_date": "2025-12-17T23:08:13",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
