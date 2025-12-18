@@ -948,7 +948,9 @@ linkml:Sparqlpath xsd:string
           <threshold> @linkml:Float ? ;
           <power_score> @linkml:Float ? ;
           <ncc_score> @linkml:Float ? ;
-          <model_file> @linkml:String ?
+          <model_name> @linkml:String ? ;
+          <model_file_path> @linkml:String ? ;
+          <model_source> @linkml:String ?
        ) ;
        rdf:type [ <ParticlePickingParameters> ] ?
     )

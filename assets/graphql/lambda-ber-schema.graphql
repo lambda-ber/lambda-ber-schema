@@ -1351,7 +1351,9 @@ type ParticlePickingParameters
     threshold: Float
     powerScore: Float
     nccScore: Float
-    modelFile: String
+    modelName: String
+    modelFilePath: String
+    modelSource: String
   }
 
 type PostTranslationalModification
