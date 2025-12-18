@@ -1,8 +1,12 @@
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:instrument_als_831 a lambdaber:XRayInstrument ;
+    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "8.3.1" ;
     dcterms:title "ALS Beamline 8.3.1" ;
     lambdaber:beam_size_max "200.0"^^xsd:float ;
     lambdaber:beam_size_min "20.0"^^xsd:float ;
@@ -11,9 +15,12 @@ lambdaber:instrument_als_831 a lambdaber:XRayInstrument ;
     lambdaber:description "Advanced Light Source beamline 8.3.1 for macromolecular crystallography" ;
     lambdaber:energy_max "18.0"^^xsd:float ;
     lambdaber:energy_min "6.0"^^xsd:float ;
+    lambdaber:facility_name ROR:02jbv0t02 ;
+    lambdaber:facility_ror "https://ror.org/02jbv0t02"^^xsd:anyURI ;
     lambdaber:flux_density "2000000000000.0"^^xsd:float ;
     lambdaber:goniometer_type "MD3 microdiffractometer" ;
     lambdaber:installation_date "2000-06-01" ;
+    lambdaber:instrument_category CHMO:0001084 ;
     lambdaber:instrument_code "ALS-8.3.1" ;
     lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
     lambdaber:model "ALS Beamline 8.3.1" ;
