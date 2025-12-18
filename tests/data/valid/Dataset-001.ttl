@@ -1,3 +1,4 @@
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 
@@ -11,7 +12,7 @@ lambdaber:irr001 a lambdaber:ExperimentRun ;
     lambdaber:experiment_code "EXP-TEST-001" ;
     lambdaber:instrument_id lambdaber:instrument_test_001 ;
     lambdaber:sample_id "lambdaber:sam001" ;
-    lambdaber:technique "cryo_em" .
+    lambdaber:technique CHMO:0002413 .
 
 lambdaber:sam001 a lambdaber:Sample ;
     dcterms:title "Test Sample" ;
