@@ -682,7 +682,9 @@ message ParticlePickingParameters
   float threshold = 0
   float powerScore = 0
   float nccScore = 0
-  string modelFile = 0
+  string modelName = 0
+  string modelFilePath = 0
+  string modelSource = 0
  }
 // Post-translational modifications observed or predicted
 message PostTranslationalModification
