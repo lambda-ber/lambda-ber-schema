@@ -35,7 +35,7 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
      * Description: Ligands that interact with this site
      * Range: [LigandInteraction](LigandInteraction.md)
  * [➞conservation_score](functionalSite__conservation_score.md)  <sub>0..1</sub>
-     * Description: Evolutionary conservation score
+     * Description: Evolutionary conservation score (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞functional_importance](functionalSite__functional_importance.md)  <sub>0..1</sub>
      * Description: Description of functional importance
@@ -71,7 +71,7 @@ URI: [lambdaber:FunctionalSite](https://w3id.org/lambda-ber-schema/FunctionalSit
      * Description: Range of residues (e.g., '1-100', '25,27,30-35')
      * Range: [String](types/String.md)
  * [➞confidence_score](proteinAnnotation__confidence_score.md)  <sub>0..1</sub>
-     * Description: Confidence score for the annotation (0-1)
+     * Description: Confidence score for the annotation (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞evidence_type](proteinAnnotation__evidence_type.md)  <sub>0..1</sub>
      * Description: Type of evidence supporting this annotation

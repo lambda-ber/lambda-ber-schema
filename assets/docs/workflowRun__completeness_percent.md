@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Completeness |
 |  | | mmCIF:_reflns.percent_possible_obs |
+|  | | ispyb:AutoProcScalingStatistics.completeness |

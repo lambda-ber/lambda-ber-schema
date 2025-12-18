@@ -1,7 +1,7 @@
 
 # Slot: population
 
-Relative population of this state
+Relative population of this state (range: 0-1)
 
 URI: [lambdaber:conformationalState__population](https://w3id.org/lambda-ber-schema/conformationalState__population)
 

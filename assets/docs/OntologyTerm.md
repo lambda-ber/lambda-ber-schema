@@ -6,7 +6,7 @@ A term from a controlled vocabulary or ontology
 URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ImageFeature]++-%20terms%200..*>[OntologyTerm&#124;label:string%20%3F;definition:string%20%3F;ontology:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Sample]-%20anatomy%200..1>[OntologyTerm],[Sample]-%20cell_type%200..1>[OntologyTerm],[Sample]-%20organism%200..1>[OntologyTerm],[NamedThing]^-[OntologyTerm],[Sample],[NamedThing],[ImageFeature])](https://yuml.me/diagram/nofunky;dir:TB/class/[ImageFeature]++-%20terms%200..*>[OntologyTerm&#124;label:string%20%3F;definition:string%20%3F;ontology:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Sample]-%20anatomy%200..1>[OntologyTerm],[Sample]-%20cell_type%200..1>[OntologyTerm],[Sample]-%20organism%200..1>[OntologyTerm],[NamedThing]^-[OntologyTerm],[Sample],[NamedThing],[ImageFeature])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm]<terms%200..*-++[OntologyTerm&#124;label:string%20%3F;definition:string%20%3F;ontology:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ImageFeature]++-%20terms%200..*>[OntologyTerm],[Sample]-%20anatomy%200..1>[OntologyTerm],[Sample]-%20cell_type%200..1>[OntologyTerm],[Sample]-%20organism%200..1>[OntologyTerm],[NamedThing]^-[OntologyTerm],[Sample],[NamedThing],[ImageFeature])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm]<terms%200..*-++[OntologyTerm&#124;label:string%20%3F;definition:string%20%3F;ontology:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ImageFeature]++-%20terms%200..*>[OntologyTerm],[Sample]-%20anatomy%200..1>[OntologyTerm],[Sample]-%20cell_type%200..1>[OntologyTerm],[Sample]-%20organism%200..1>[OntologyTerm],[NamedThing]^-[OntologyTerm],[Sample],[NamedThing],[ImageFeature])
 
 ## Parents
 
@@ -15,6 +15,7 @@ URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 ## Referenced by Class
 
  *  **None** *[➞terms](imageFeature__terms.md)*  <sub>0..\*</sub>  **[OntologyTerm](OntologyTerm.md)**
+ *  **None** *[➞terms](ontologyTerm__terms.md)*  <sub>0..\*</sub>  **[OntologyTerm](OntologyTerm.md)**
  *  **None** *[➞anatomy](sample__anatomy.md)*  <sub>0..1</sub>  **[OntologyTerm](OntologyTerm.md)**
  *  **None** *[➞cell_type](sample__cell_type.md)*  <sub>0..1</sub>  **[OntologyTerm](OntologyTerm.md)**
  *  **None** *[➞organism](sample__organism.md)*  <sub>0..1</sub>  **[OntologyTerm](OntologyTerm.md)**
@@ -24,6 +25,9 @@ URI: [lambdaber:OntologyTerm](https://w3id.org/lambda-ber-schema/OntologyTerm)
 
 ### Own
 
+ * [➞terms](ontologyTerm__terms.md)  <sub>0..\*</sub>
+     * Description: Collection of ontology terms
+     * Range: [OntologyTerm](OntologyTerm.md)
  * [➞label](ontologyTerm__label.md)  <sub>0..1</sub>
      * Description: The human-readable label or name of the ontology term
      * Range: [String](types/String.md)

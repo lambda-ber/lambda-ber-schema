@@ -24,19 +24,19 @@ URI: [lambdaber:CryoEMPreparation](https://w3id.org/lambda-ber-schema/CryoEMPrep
      * Description: Support film type
      * Range: [String](types/String.md)
  * [➞hole_size](cryoEMPreparation__hole_size.md)  <sub>0..1</sub>
-     * Description: Hole size in micrometers
+     * Description: Hole size in micrometers (range: 0.5-5.0)
      * Range: [Float](types/Float.md)
  * [➞vitrification_method](cryoEMPreparation__vitrification_method.md)  <sub>0..1</sub>
      * Description: Method used for vitrification
      * Range: [VitrificationMethodEnum](VitrificationMethodEnum.md)
  * [➞blot_time](cryoEMPreparation__blot_time.md)  <sub>0..1</sub>
-     * Description: Blotting time in seconds
+     * Description: Blotting time in seconds (range: 0.5-10.0)
      * Range: [Float](types/Float.md)
  * [➞blot_force](cryoEMPreparation__blot_force.md)  <sub>0..1</sub>
      * Description: Blotting force setting
      * Range: [Integer](types/Integer.md)
  * [➞humidity_percentage](cryoEMPreparation__humidity_percentage.md)  <sub>0..1</sub>
-     * Description: Chamber humidity during vitrification
+     * Description: Chamber humidity during vitrification (range: 0-100)
      * Range: [Float](types/Float.md)
  * [➞chamber_temperature](cryoEMPreparation__chamber_temperature.md)  <sub>0..1</sub>
      * Description: Chamber temperature in Celsius

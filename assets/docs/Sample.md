@@ -62,7 +62,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
      * Description: Reference to parent sample for derivation tracking
      * Range: [Sample](Sample.md)
  * [➞purity_percentage](sample__purity_percentage.md)  <sub>0..1</sub>
-     * Description: Sample purity as percentage
+     * Description: Sample purity as percentage (range: 0-100)
      * Range: [Float](types/Float.md)
  * [➞quality_metrics](sample__quality_metrics.md)  <sub>0..1</sub>
      * Description: Quality control metrics for the sample

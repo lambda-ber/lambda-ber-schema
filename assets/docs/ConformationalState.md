@@ -31,7 +31,7 @@ URI: [lambdaber:ConformationalState](https://w3id.org/lambda-ber-schema/Conforma
      * Description: PDB entries representing this state
      * Range: [String](types/String.md)
  * [➞population](conformationalState__population.md)  <sub>0..1</sub>
-     * Description: Relative population of this state
+     * Description: Relative population of this state (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞free_energy](conformationalState__free_energy.md)  <sub>0..1</sub>
      * Description: Relative free energy (kcal/mol)

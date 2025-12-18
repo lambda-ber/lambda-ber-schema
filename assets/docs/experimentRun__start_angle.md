@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Start_angle |
 |  | | imgCIF:_diffrn_scan_axis.angle_start |
+|  | | ispyb:DataCollection.axisStart |

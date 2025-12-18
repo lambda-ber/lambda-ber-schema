@@ -19,6 +19,7 @@ None &#8594;  <sub>1..1</sub> [Uriorcurie](types/Uriorcurie.md)
 ## Used by
 
  * [AggregatedProteinView](AggregatedProteinView.md)
+ * [BeamlineInstrument](BeamlineInstrument.md)
  * [ConformationalEnsemble](ConformationalEnsemble.md)
  * [CryoEMInstrument](CryoEMInstrument.md)
  * [DataFile](DataFile.md)

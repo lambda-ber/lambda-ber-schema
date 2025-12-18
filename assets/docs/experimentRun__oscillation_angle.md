@@ -27,3 +27,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | **Exact Mappings:** | | nsls2:Angle_increment |
 |  | | imgCIF:_diffrn_scan_axis.angle_increment |
 |  | | mmCIF:_diffrn_scan.angle_increment |
+|  | | ispyb:DataCollection.axisRange |

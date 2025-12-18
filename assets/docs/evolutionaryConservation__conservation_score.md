@@ -1,7 +1,7 @@
 
 # Slot: conservation_score
 
-Overall conservation score
+Overall conservation score (range: 0-1)
 
 URI: [lambdaber:evolutionaryConservation__conservation_score](https://w3id.org/lambda-ber-schema/evolutionaryConservation__conservation_score)
 

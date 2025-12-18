@@ -18,6 +18,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Used by
 
+ * [BeamlineInstrument](BeamlineInstrument.md)
  * [CryoEMInstrument](CryoEMInstrument.md)
  * [Instrument](Instrument.md)
  * [SAXSInstrument](SAXSInstrument.md)

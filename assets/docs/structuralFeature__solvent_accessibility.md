@@ -1,7 +1,7 @@
 
 # Slot: solvent_accessibility
 
-Relative solvent accessible surface area
+Relative solvent accessible surface area (range: 0-1)
 
 URI: [lambdaber:structuralFeature__solvent_accessibility](https://w3id.org/lambda-ber-schema/structuralFeature__solvent_accessibility)
 

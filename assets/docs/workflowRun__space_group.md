@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Space_Group |
 |  | | mmCIF:_symmetry.space_group_name_H-M |
+|  | | ispyb:AutoProcScaling.spaceGroup |

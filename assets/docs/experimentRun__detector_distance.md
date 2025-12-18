@@ -27,3 +27,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | **Exact Mappings:** | | nsls2:Detector_distance |
 |  | | imgCIF:_diffrn_measurement.sample_detector_distance |
 |  | | mmCIF:_diffrn_detector.distance |
+|  | | ispyb:DataCollection.detectorDistance |

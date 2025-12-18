@@ -21,6 +21,9 @@ URI: [lambdaber:WorkflowTypeEnum](https://w3id.org/lambda-ber-schema/WorkflowTyp
 | integration | Data integration |  |  |
 | scaling | Data scaling |  |  |
 | saxs_analysis | SAXS data analysis |  |  |
+| xas_normalization | XAS data normalization and background subtraction |  |  |
+| xanes_analysis | XANES spectral analysis and edge fitting |  |  |
+| exafs_analysis | EXAFS data analysis and shell fitting |  | {'comments': ['Includes Fourier transform, back-transform, and coordination shell fitting']} |
 | em_2d_classification | EM 2D classification |  |  |
 | mass_spec_deconvolution | Mass spectrometry deconvolution |  |  |
 | particle_extraction | Particle extraction from micrographs |  |  |

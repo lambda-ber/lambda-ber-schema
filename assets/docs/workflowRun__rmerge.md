@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Rmerge |
 |  | | mmCIF:_reflns.pdbx_Rmerge_I_obs |
+|  | | ispyb:AutoProcScalingStatistics.rMerge |

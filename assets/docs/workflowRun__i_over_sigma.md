@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:I_over_sigma |
 |  | | mmCIF:_reflns.pdbx_netI_over_sigmaI |
+|  | | ispyb:AutoProcScalingStatistics.meanIOverSigI |

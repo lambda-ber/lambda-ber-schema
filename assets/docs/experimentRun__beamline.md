@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Beamline |
 |  | | mmCIF:_diffrn_source.pdbx_synchrotron_beamline |
+|  | | ispyb:BLSession.beamLineName |

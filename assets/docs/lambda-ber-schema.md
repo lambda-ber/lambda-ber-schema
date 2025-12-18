@@ -4,7 +4,7 @@
 
 **metamodel version:** 1.7.0
 
-**version:** None
+**version:** 0.1.1.post15.dev0+b4e2533
 
 
 lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
@@ -127,6 +127,7 @@ A multimodal plant imaging study might combine:
              * [XRFImage](XRFImage.md) - X-ray fluorescence (XRF) image showing elemental distribution
          * [Image3D](Image3D.md) - A 3D volume or tomogram
      * [Instrument](Instrument.md) - An instrument used to collect data
+         * [BeamlineInstrument](BeamlineInstrument.md) - Multi-technique synchrotron beamline that supports multiple experimental methods
          * [CryoEMInstrument](CryoEMInstrument.md) - Cryo-EM microscope specifications
          * [SAXSInstrument](SAXSInstrument.md) - SAXS/WAXS instrument specifications
          * [XRayInstrument](XRayInstrument.md) - X-ray diffractometer or synchrotron beamline specifications
@@ -166,6 +167,15 @@ A multimodal plant imaging study might combine:
  * [➞structural_features](aggregatedProteinView__structural_features.md) - All structural feature annotations
  * [➞uniprot_id](aggregatedProteinView__uniprot_id.md) - UniProt accession
  * [➞description](attributeGroup__description.md)
+ * [➞energy_max](beamlineInstrument__energy_max.md) - Maximum X-ray energy in keV
+ * [➞energy_min](beamlineInstrument__energy_min.md) - Minimum X-ray energy in keV
+ * [➞mail_in_service](beamlineInstrument__mail_in_service.md) - Whether mail-in sample service is available
+ * [➞q_range_max](beamlineInstrument__q_range_max.md) - Maximum q value for SAXS in inverse Angstroms
+ * [➞q_range_min](beamlineInstrument__q_range_min.md) - Minimum q value for SAXS in inverse Angstroms
+ * [➞sample_changer_capacity](beamlineInstrument__sample_changer_capacity.md) - Automatic sample changer capacity
+ * [➞source_type](beamlineInstrument__source_type.md) - Type of X-ray source
+ * [➞techniques_supported](beamlineInstrument__techniques_supported.md) - Experimental techniques available at this beamline
+ * [➞website](beamlineInstrument__website.md) - Beamline website URL
  * [➞error](biophysicalProperty__error.md) - Experimental error or uncertainty
  * [➞experimental_method](biophysicalProperty__experimental_method.md) - Method used for measurement
  * [➞measurement_conditions](biophysicalProperty__measurement_conditions.md) - Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.
@@ -174,7 +184,7 @@ A multimodal plant imaging study might combine:
  * [➞value](biophysicalProperty__value.md) - Numerical value of the property
  * [➞additives](bufferComposition__additives.md) - Additional additives in the buffer
  * [➞components](bufferComposition__components.md) - Buffer components and their concentrations
- * [➞ph](bufferComposition__ph.md) - pH of the buffer
+ * [➞ph](bufferComposition__ph.md) - pH of the buffer (range: 0-14)
  * [➞amplitude_contrast](cTFEstimationParameters__amplitude_contrast.md) - Amplitude contrast value
  * [➞cs_used_in_estimation](cTFEstimationParameters__cs_used_in_estimation.md) - Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification
  * [➞defocus_search_max](cTFEstimationParameters__defocus_search_max.md) - Maximum defocus search range in micrometers
@@ -195,7 +205,7 @@ A multimodal plant imaging study might combine:
  * [➞characteristic_features](conformationalState__characteristic_features.md) - Key features of this conformation
  * [➞free_energy](conformationalState__free_energy.md) - Relative free energy (kcal/mol)
  * [➞pdb_entries](conformationalState__pdb_entries.md) - PDB entries representing this state
- * [➞population](conformationalState__population.md) - Relative population of this state
+ * [➞population](conformationalState__population.md) - Relative population of this state (range: 0-1)
  * [➞rmsd_from_reference](conformationalState__rmsd_from_reference.md) - RMSD from reference structure
  * [➞state_id](conformationalState__state_id.md) - Identifier for this state
  * [➞state_name](conformationalState__state_name.md) - Descriptive name (e.g., 'open', 'closed')
@@ -227,7 +237,7 @@ A multimodal plant imaging study might combine:
  * [➞tem_beam_diameter](cryoEMInstrument__tem_beam_diameter.md) - TEM beam diameter in micrometers
  * [➞blot_force](cryoEMPreparation__blot_force.md) - Blotting force setting
  * [➞blot_number](cryoEMPreparation__blot_number.md) - Number of blots applied
- * [➞blot_time](cryoEMPreparation__blot_time.md) - Blotting time in seconds
+ * [➞blot_time](cryoEMPreparation__blot_time.md) - Blotting time in seconds (range: 0.5-10.0)
  * [➞blotter_height](cryoEMPreparation__blotter_height.md) - Blotter height setting
  * [➞blotter_setting](cryoEMPreparation__blotter_setting.md) - Blotter setting value
  * [➞chamber_temperature](cryoEMPreparation__chamber_temperature.md) - Chamber temperature in Celsius
@@ -239,8 +249,8 @@ A multimodal plant imaging study might combine:
  * [➞glow_discharge_time](cryoEMPreparation__glow_discharge_time.md) - Glow discharge time in seconds
  * [➞grid_material](cryoEMPreparation__grid_material.md) - Grid material
  * [➞grid_type](cryoEMPreparation__grid_type.md) - Type of EM grid used
- * [➞hole_size](cryoEMPreparation__hole_size.md) - Hole size in micrometers
- * [➞humidity_percentage](cryoEMPreparation__humidity_percentage.md) - Chamber humidity during vitrification
+ * [➞hole_size](cryoEMPreparation__hole_size.md) - Hole size in micrometers (range: 0.5-5.0)
+ * [➞humidity_percentage](cryoEMPreparation__humidity_percentage.md) - Chamber humidity during vitrification (range: 0-100)
  * [➞plasma_treatment](cryoEMPreparation__plasma_treatment.md) - Plasma treatment details
  * [➞sample_applied_volume](cryoEMPreparation__sample_applied_volume.md) - Volume of sample applied in microliters
  * [➞support_film](cryoEMPreparation__support_film.md) - Support film type
@@ -299,7 +309,7 @@ A multimodal plant imaging study might combine:
  * [➞alignment_depth](evolutionaryConservation__alignment_depth.md) - Number of sequences in alignment
  * [➞coevolved_residues](evolutionaryConservation__coevolved_residues.md) - Pairs of coevolved residues
  * [➞conservation_method](evolutionaryConservation__conservation_method.md) - Method used for conservation analysis
- * [➞conservation_score](evolutionaryConservation__conservation_score.md) - Overall conservation score
+ * [➞conservation_score](evolutionaryConservation__conservation_score.md) - Overall conservation score (range: 0-1)
  * [➞conserved_residues](evolutionaryConservation__conserved_residues.md) - Highly conserved residues
  * [➞taxonomic_range](evolutionaryConservation__taxonomic_range.md) - Taxonomic range of conservation
  * [➞variable_residues](evolutionaryConservation__variable_residues.md) - Highly variable residues
@@ -311,7 +321,7 @@ A multimodal plant imaging study might combine:
  * [➞beam_center_y](experimentRun__beam_center_y.md) - Beam center Y coordinate
  * [➞beamline](experimentRun__beamline.md) - Beamline identifier (e.g., FMX, AMX, 12.3.1)
  * [➞calibrated_pixel_size](experimentRun__calibrated_pixel_size.md) - Calibrated pixel size in Angstroms per pixel
- * [➞camera_binning](experimentRun__camera_binning.md) - Camera binning factor
+ * [➞camera_binning](experimentRun__camera_binning.md) - Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
  * [➞coma](experimentRun__coma.md) - Coma aberration in nanometers
  * [➞data_collection_strategy](experimentRun__data_collection_strategy.md) - Strategy for data collection
  * [➞defocus_range_increment](experimentRun__defocus_range_increment.md) - Defocus range increment in micrometers
@@ -320,14 +330,20 @@ A multimodal plant imaging study might combine:
  * [➞defocus_target](experimentRun__defocus_target.md) - Target defocus value in micrometers
  * [➞detector_distance](experimentRun__detector_distance.md) - Distance from sample to detector
  * [➞dose_rate](experimentRun__dose_rate.md) - Dose rate in e-/pixel/s or e-/Angstrom^2/s
+ * [➞end_time](experimentRun__end_time.md) - Data collection end timestamp
  * [➞experiment_code](experimentRun__experiment_code.md) - Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
  * [➞experiment_date](experimentRun__experiment_date.md) - Date of the experiment
  * [➞experimental_conditions](experimentRun__experimental_conditions.md) - Environmental and experimental conditions
  * [➞experimental_method](experimentRun__experimental_method.md) - Specific experimental method for structure determination (particularly for diffraction techniques)
+ * [➞exposure_time](experimentRun__exposure_time.md) - Exposure time per image in seconds
  * [➞exposure_time_per_frame](experimentRun__exposure_time_per_frame.md) - Exposure time per frame in milliseconds
+ * [➞flux](experimentRun__flux.md) - Photon flux at sample position in photons/second
+ * [➞flux_end](experimentRun__flux_end.md) - Photon flux at end of data collection in photons/second
  * [➞frames_per_movie](experimentRun__frames_per_movie.md) - Number of frames per movie
  * [➞holes_per_group](experimentRun__holes_per_group.md) - Number of holes per group
  * [➞instrument_id](experimentRun__instrument_id.md) - Reference to the instrument used
+ * [➞ispyb_data_collection_id](experimentRun__ispyb_data_collection_id.md) - ISPyB DataCollection.dataCollectionId for traceability
+ * [➞ispyb_session_id](experimentRun__ispyb_session_id.md) - ISPyB BLSession.sessionId
  * [➞magnification](experimentRun__magnification.md) - Magnification used during data collection
  * [➞number_of_images](experimentRun__number_of_images.md) - Total number of diffraction images collected
  * [➞operator_id](experimentRun__operator_id.md) - Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)
@@ -337,14 +353,22 @@ A multimodal plant imaging study might combine:
  * [➞processing_status](experimentRun__processing_status.md) - Current processing status
  * [➞quality_metrics](experimentRun__quality_metrics.md) - Quality metrics for the experiment
  * [➞raw_data_location](experimentRun__raw_data_location.md) - Location of raw data files
+ * [➞resolution](experimentRun__resolution.md) - Resolution at edge of detector in Angstroms
+ * [➞resolution_at_corner](experimentRun__resolution_at_corner.md) - Resolution at corner of detector in Angstroms
  * [➞sample_id](experimentRun__sample_id.md) - Reference to the sample being analyzed
  * [➞shots_per_hole](experimentRun__shots_per_hole.md) - Number of shots taken per hole
+ * [➞slit_gap_horizontal](experimentRun__slit_gap_horizontal.md) - Horizontal slit gap aperture in micrometers
+ * [➞slit_gap_vertical](experimentRun__slit_gap_vertical.md) - Vertical slit gap aperture in micrometers
  * [➞stage_tilt](experimentRun__stage_tilt.md) - Stage tilt angle in degrees
  * [➞start_angle](experimentRun__start_angle.md) - Starting rotation angle
+ * [➞start_time](experimentRun__start_time.md) - Data collection start timestamp
+ * [➞synchrotron_mode](experimentRun__synchrotron_mode.md) - Synchrotron storage ring fill mode
  * [➞technique](experimentRun__technique.md) - Technique used for data collection
  * [➞total_dose](experimentRun__total_dose.md) - Total electron dose in e-/Angstrom^2
  * [➞total_exposure_time](experimentRun__total_exposure_time.md) - Total exposure time in milliseconds
  * [➞total_rotation](experimentRun__total_rotation.md) - Total rotation range collected
+ * [➞transmission](experimentRun__transmission.md) - X-ray beam transmission as percentage (0-100)
+ * [➞undulator_gap](experimentRun__undulator_gap.md) - Undulator gap setting in millimeters
  * [➞wavelength](experimentRun__wavelength.md) - X-ray wavelength
  * [➞atmosphere](experimentalConditions__atmosphere.md) - Atmosphere composition
  * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy in keV
@@ -370,7 +394,7 @@ A multimodal plant imaging study might combine:
  * [➞laser_power](fluorescenceImage__laser_power.md) - Laser power in milliwatts or percentage
  * [➞pinhole_size](fluorescenceImage__pinhole_size.md) - Pinhole size in Airy units for confocal microscopy
  * [➞quantum_yield](fluorescenceImage__quantum_yield.md) - Quantum yield of the fluorophore
- * [➞conservation_score](functionalSite__conservation_score.md) - Evolutionary conservation score
+ * [➞conservation_score](functionalSite__conservation_score.md) - Evolutionary conservation score (range: 0-1)
  * [➞ec_number](functionalSite__ec_number.md) - Enzyme Commission number for catalytic sites
  * [➞functional_importance](functionalSite__functional_importance.md) - Description of functional importance
  * [➞go_terms](functionalSite__go_terms.md) - Associated Gene Ontology terms
@@ -393,8 +417,12 @@ A multimodal plant imaging study might combine:
  * [➞exposure_time](image__exposure_time.md) - Exposure time in seconds
  * [➞file_name](image__file_name.md) - Image file name
  * [➞pixel_size](image__pixel_size.md) - Pixel size in Angstroms
+ * [➞beamline_id](instrument__beamline_id.md) - Beamline identifier at synchrotron/neutron facility
  * [➞current_status](instrument__current_status.md) - Current operational status
+ * [➞facility_name](instrument__facility_name.md) - Name of the research facility where the instrument is located
+ * [➞facility_ror](instrument__facility_ror.md) - Research Organization Registry (ROR) identifier for the facility
  * [➞installation_date](instrument__installation_date.md) - Date of instrument installation
+ * [➞instrument_category](instrument__instrument_category.md) - Category distinguishing beamlines from laboratory equipment
  * [➞instrument_code](instrument__instrument_code.md) - Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
  * [➞manufacturer](instrument__manufacturer.md) - Instrument manufacturer
  * [➞model](instrument__model.md) - Instrument model
@@ -402,7 +430,7 @@ A multimodal plant imaging study might combine:
  * [➞binding_affinity_type](ligandInteraction__binding_affinity_type.md) - Type of binding measurement (Kd, Ki, IC50)
  * [➞binding_affinity_unit](ligandInteraction__binding_affinity_unit.md) - Unit of binding affinity
  * [➞binding_site_residues](ligandInteraction__binding_site_residues.md) - Residues involved in ligand binding
- * [➞druggability_score](ligandInteraction__druggability_score.md) - Druggability score of the binding site
+ * [➞druggability_score](ligandInteraction__druggability_score.md) - Druggability score of the binding site (range: 0-1)
  * [➞interaction_distance](ligandInteraction__interaction_distance.md) - Distance criteria for interaction (Angstroms)
  * [➞interaction_type](ligandInteraction__interaction_type.md) - Type of interaction
  * [➞is_cofactor](ligandInteraction__is_cofactor.md) - Whether the ligand is a cofactor
@@ -412,7 +440,7 @@ A multimodal plant imaging study might combine:
  * [➞ligand_smiles](ligandInteraction__ligand_smiles.md) - SMILES representation of the ligand
  * [➞buffer_composition](measurementConditions__buffer_composition.md) - Composition of the buffer used
  * [➞ionic_strength](measurementConditions__ionic_strength.md) - Ionic strength in molar of material in solution
- * [➞ph](measurementConditions__ph.md) - pH value of the solution during measurement
+ * [➞ph](measurementConditions__ph.md) - pH value of the solution during measurement (range: 0-14)
  * [➞temperature](measurementConditions__temperature.md) - Temperature in Kelvin during measurement
  * [➞astigmatism_angle](micrograph__astigmatism_angle.md) - Astigmatism angle in degrees
  * [➞ctf_quality_score](micrograph__ctf_quality_score.md) - CTF estimation quality score
@@ -426,11 +454,11 @@ A multimodal plant imaging study might combine:
  * [➞sequences](molecularComposition__sequences.md) - Amino acid or nucleotide sequences
  * [➞anisotropic_correction](motionCorrectionParameters__anisotropic_correction.md) - Whether anisotropic motion correction was applied
  * [➞bfactor_dose_weighting](motionCorrectionParameters__bfactor_dose_weighting.md) - B-factor for dose weighting
- * [➞binning](motionCorrectionParameters__binning.md) - Binning factor applied during motion correction
+ * [➞binning](motionCorrectionParameters__binning.md) - Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).
  * [➞dose_weighting](motionCorrectionParameters__dose_weighting.md) - Whether dose weighting was applied
  * [➞drift_total](motionCorrectionParameters__drift_total.md) - Total drift in Angstroms
  * [➞frame_grouping](motionCorrectionParameters__frame_grouping.md) - Number of frames grouped together
- * [➞output_binning](motionCorrectionParameters__output_binning.md) - Output binning factor
+ * [➞output_binning](motionCorrectionParameters__output_binning.md) - Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
  * [➞patch_size](motionCorrectionParameters__patch_size.md) - Patch size for local motion correction
  * [➞acquisition_group](movie__acquisition_group.md) - Acquisition group identifier (e.g., template or area)
  * [➞beam_shift_x](movie__beam_shift_x.md) - Beam shift X in microradians
@@ -447,7 +475,7 @@ A multimodal plant imaging study might combine:
  * [➞stage_position_z](movie__stage_position_z.md) - Stage Z position in micrometers
  * [➞super_resolution](movie__super_resolution.md) - Whether super-resolution mode was used
  * [➞timestamp](movie__timestamp.md) - Acquisition timestamp
- * [➞allele_frequency](mutationEffect__allele_frequency.md) - Population allele frequency
+ * [➞allele_frequency](mutationEffect__allele_frequency.md) - Population allele frequency (range: 0-1)
  * [➞clinical_significance](mutationEffect__clinical_significance.md) - Clinical significance
  * [➞delta_delta_g](mutationEffect__delta_delta_g.md) - Change in folding free energy (kcal/mol)
  * [➞disease_association](mutationEffect__disease_association.md) - Associated disease or phenotype
@@ -463,6 +491,7 @@ A multimodal plant imaging study might combine:
  * [➞definition](ontologyTerm__definition.md) - The formal definition or meaning of the ontology term
  * [➞label](ontologyTerm__label.md) - The human-readable label or name of the ontology term
  * [➞ontology](ontologyTerm__ontology.md) - The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)
+ * [➞terms](ontologyTerm__terms.md) - Collection of ontology terms
  * [➞color_channels](opticalImage__color_channels.md) - Color channels present (e.g., RGB, grayscale)
  * [➞contrast_method](opticalImage__contrast_method.md) - Contrast enhancement method used
  * [➞illumination_type](opticalImage__illumination_type.md) - Type of illumination (brightfield, darkfield, phase contrast, DIC)
@@ -470,7 +499,9 @@ A multimodal plant imaging study might combine:
  * [➞numerical_aperture](opticalImage__numerical_aperture.md) - Numerical aperture of the objective lens
  * [➞white_balance](opticalImage__white_balance.md) - White balance settings
  * [➞box_size](particlePickingParameters__box_size.md) - Particle box size in pixels
- * [➞model_file](particlePickingParameters__model_file.md) - Path to deep learning model file if used
+ * [➞model_file_path](particlePickingParameters__model_file_path.md) - Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.
+ * [➞model_name](particlePickingParameters__model_name.md) - Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.
+ * [➞model_source](particlePickingParameters__model_source.md) - Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.
  * [➞ncc_score](particlePickingParameters__ncc_score.md) - Normalized cross-correlation score threshold
  * [➞picking_method](particlePickingParameters__picking_method.md) - Method used (manual, template_matching, deep_learning, LoG, Topaz, other)
  * [➞power_score](particlePickingParameters__power_score.md) - Power score threshold
@@ -487,7 +518,7 @@ A multimodal plant imaging study might combine:
  * [➞removal_enzyme](postTranslationalModification__removal_enzyme.md) - Enzyme that removes modification
  * [➞annotation_method](proteinAnnotation__annotation_method.md) - Computational or experimental method used
  * [➞chain_id](proteinAnnotation__chain_id.md) - Chain identifier in the PDB structure
- * [➞confidence_score](proteinAnnotation__confidence_score.md) - Confidence score for the annotation (0-1)
+ * [➞confidence_score](proteinAnnotation__confidence_score.md) - Confidence score for the annotation (range: 0-1)
  * [➞evidence_code](proteinAnnotation__evidence_code.md) - Evidence and Conclusion Ontology (ECO) code
  * [➞evidence_type](proteinAnnotation__evidence_type.md) - Type of evidence supporting this annotation
  * [➞pdb_entry](proteinAnnotation__pdb_entry.md) - PDB identifier
@@ -643,7 +674,7 @@ A multimodal plant imaging study might combine:
  * [➞protein_interactions](sample__protein_interactions.md) - Protein-protein interaction annotations
  * [➞protein_name](sample__protein_name.md) - Name of the protein
  * [➞ptm_annotations](sample__ptm_annotations.md) - Post-translational modification annotations
- * [➞purity_percentage](sample__purity_percentage.md) - Sample purity as percentage
+ * [➞purity_percentage](sample__purity_percentage.md) - Sample purity as percentage (range: 0-100)
  * [➞quality_metrics](sample__quality_metrics.md) - Quality control metrics for the sample
  * [➞sample_code](sample__sample_code.md) - Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
  * [➞sample_type](sample__sample_type.md) - Type of biological sample
@@ -656,12 +687,12 @@ A multimodal plant imaging study might combine:
  * [➞temperature_unit](storageConditions__temperature_unit.md) - Temperature unit
  * [➞backbone_flexibility](structuralFeature__backbone_flexibility.md) - B-factor or flexibility measure
  * [➞conformational_state](structuralFeature__conformational_state.md) - Conformational state descriptor
- * [➞disorder_probability](structuralFeature__disorder_probability.md) - Probability of disorder (0-1)
+ * [➞disorder_probability](structuralFeature__disorder_probability.md) - Probability of disorder (range: 0-1)
  * [➞domain_assignment](structuralFeature__domain_assignment.md) - Domain database assignment (CATH, SCOP, Pfam)
  * [➞domain_id](structuralFeature__domain_id.md) - Domain identifier from domain database
  * [➞feature_type](structuralFeature__feature_type.md) - Type of structural feature
  * [➞secondary_structure](structuralFeature__secondary_structure.md) - Secondary structure assignment
- * [➞solvent_accessibility](structuralFeature__solvent_accessibility.md) - Relative solvent accessible surface area
+ * [➞solvent_accessibility](structuralFeature__solvent_accessibility.md) - Relative solvent accessible surface area (range: 0-1)
  * [➞structural_motif](structuralFeature__structural_motif.md) - Known structural motif
  * [➞aggregated_protein_views](study__aggregated_protein_views.md) - Aggregated functional and structural annotations for proteins in this study
  * [➞data_files](study__data_files.md) - Data files generated or used in this study
@@ -672,6 +703,9 @@ A multimodal plant imaging study might combine:
  * [➞samples](study__samples.md) - Experimental samples used in this study, including biological samples
  * [➞workflow_runs](study__workflow_runs.md) - Computational workflow executions for data processing in this study
  * [➞additional_software](workflowRun__additional_software.md) - Additional software used in pipeline
+ * [➞anomalous_completeness](workflowRun__anomalous_completeness.md) - Completeness of anomalous data as percentage
+ * [➞anomalous_multiplicity](workflowRun__anomalous_multiplicity.md) - Multiplicity of anomalous data
+ * [➞cc_anomalous](workflowRun__cc_anomalous.md) - Anomalous correlation coefficient
  * [➞cc_half](workflowRun__cc_half.md) - Half-set correlation coefficient CC(1/2)
  * [➞clashscore](workflowRun__clashscore.md) - MolProbity clashscore
  * [➞completed_at](workflowRun__completed_at.md) - Workflow completion time
@@ -684,9 +718,13 @@ A multimodal plant imaging study might combine:
  * [➞i_over_sigma](workflowRun__i_over_sigma.md) - Mean I/sigma(I) - signal to noise ratio
  * [➞indexer_module](workflowRun__indexer_module.md) - Indexing module used (e.g., MOSFLM, XDS)
  * [➞integrator_module](workflowRun__integrator_module.md) - Integration module used
+ * [➞ispyb_auto_proc_program_id](workflowRun__ispyb_auto_proc_program_id.md) - ISPyB AutoProcProgram.autoProcProgramId
+ * [➞ispyb_auto_proc_scaling_id](workflowRun__ispyb_auto_proc_scaling_id.md) - ISPyB AutoProcScaling.autoProcScalingId
  * [➞ligands_cofactors](workflowRun__ligands_cofactors.md) - Ligands or cofactors modeled in the structure
  * [➞motion_correction_params](workflowRun__motion_correction_params.md) - Motion correction specific parameters
  * [➞multiplicity](workflowRun__multiplicity.md) - Data multiplicity (redundancy)
+ * [➞n_total_observations](workflowRun__n_total_observations.md) - Total number of observations (before merging)
+ * [➞n_total_unique](workflowRun__n_total_unique.md) - Total number of unique reflections
  * [➞ncs_used](workflowRun__ncs_used.md) - Whether Non-Crystallographic Symmetry restraints were used
  * [➞number_of_waters](workflowRun__number_of_waters.md) - Number of water molecules modeled
  * [➞outlier_rejection_method](workflowRun__outlier_rejection_method.md) - Method for rejecting outlier reflections
@@ -698,6 +736,7 @@ A multimodal plant imaging study might combine:
  * [➞processing_level](workflowRun__processing_level.md) - Processing level (0=raw, 1=corrected, 2=derived, 3=model)
  * [➞processing_notes](workflowRun__processing_notes.md) - Additional notes about processing
  * [➞processing_parameters](workflowRun__processing_parameters.md) - Parameters used in processing
+ * [➞r_anomalous](workflowRun__r_anomalous.md) - Anomalous R-factor
  * [➞ramachandran_favored](workflowRun__ramachandran_favored.md) - Percentage of residues in favored Ramachandran regions
  * [➞ramachandran_outliers](workflowRun__ramachandran_outliers.md) - Percentage of Ramachandran outliers
  * [➞refinement_params](workflowRun__refinement_params.md) - 3D refinement specific parameters
@@ -713,6 +752,7 @@ A multimodal plant imaging study might combine:
  * [➞rwork](workflowRun__rwork.md) - Refinement R-factor (working set)
  * [➞scaler_module](workflowRun__scaler_module.md) - Scaling module used (e.g., AIMLESS, SCALA)
  * [➞search_model_pdb_id](workflowRun__search_model_pdb_id.md) - PDB ID of search model for molecular replacement
+ * [➞sig_anomalous](workflowRun__sig_anomalous.md) - Mean anomalous difference signal
  * [➞software_name](workflowRun__software_name.md) - Software used for processing
  * [➞software_version](workflowRun__software_version.md) - Software version
  * [➞space_group](workflowRun__space_group.md) - Crystallographic space group
@@ -739,7 +779,6 @@ A multimodal plant imaging study might combine:
  * [➞source_type](xRFImage__source_type.md) - X-ray source type (synchrotron or lab-source)
  * [➞beam_size_max](xRayInstrument__beam_size_max.md) - Maximum beam size in micrometers
  * [➞beam_size_min](xRayInstrument__beam_size_min.md) - Minimum beam size in micrometers
- * [➞beamline_id](xRayInstrument__beamline_id.md) - Beamline identifier at synchrotron facility
  * [➞crystal_cooling_capability](xRayInstrument__crystal_cooling_capability.md) - Crystal cooling system available
  * [➞detector_manufacturer](xRayInstrument__detector_manufacturer.md) - Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
  * [➞detector_model](xRayInstrument__detector_model.md) - Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)
@@ -798,6 +837,7 @@ A multimodal plant imaging study might combine:
  * [ExperimentalMethodEnum](ExperimentalMethodEnum.md) - Experimental methods for structure determination
  * [ExpressionSystemEnum](ExpressionSystemEnum.md) - Expression systems for recombinant protein production
  * [FacilityEnum](FacilityEnum.md) - Major synchrotron and structural biology research facilities worldwide
+ * [FacilityTypeEnum](FacilityTypeEnum.md) - Types of research facilities
  * [FileFormatEnum](FileFormatEnum.md) - File formats
  * [FunctionalEffectEnum](FunctionalEffectEnum.md) - Effect on protein function
  * [FunctionalSiteTypeEnum](FunctionalSiteTypeEnum.md) - Types of functional sites in proteins
@@ -805,6 +845,7 @@ A multimodal plant imaging study might combine:
  * [GridTypeEnum](GridTypeEnum.md) - Types of EM grids
  * [IlluminationTypeEnum](IlluminationTypeEnum.md) - Types of illumination for optical microscopy
  * [ImagingModeEnum](ImagingModeEnum.md) - Imaging modes for electron microscopy
+ * [InstrumentCategoryEnum](InstrumentCategoryEnum.md) - Categories of instruments based on their nature and location
  * [InstrumentStatusEnum](InstrumentStatusEnum.md) - Operational status of instruments
  * [InteractionEvidenceEnum](InteractionEvidenceEnum.md) - Evidence for interactions
  * [InteractionTypeEnum](InteractionTypeEnum.md) - Types of molecular interactions

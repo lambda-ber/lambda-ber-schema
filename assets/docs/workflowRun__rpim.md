@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Rpim |
 |  | | mmCIF:_reflns.pdbx_Rpim_I_all |
+|  | | ispyb:AutoProcScalingStatistics.rPim |

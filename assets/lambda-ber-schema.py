@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-17T18:19:35
+# Generation date: 2025-12-17T18:52:03
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -4832,6 +4832,21 @@ class TechniqueEnum(EnumDefinitionImpl):
         text="mass_spectrometry",
         description="Mass spectrometry",
         meaning=CHMO["0000470"])
+    xas = PermissibleValue(
+        text="xas",
+        description="X-ray absorption spectroscopy",
+        meaning=CHMO["0000298"])
+    xanes = PermissibleValue(
+        text="xanes",
+        description="X-ray absorption near edge structure spectroscopy",
+        meaning=CHMO["0000305"])
+    exafs = PermissibleValue(
+        text="exafs",
+        description="Extended X-ray absorption fine structure spectroscopy",
+        meaning=CHMO["0000300"])
+    xmcd = PermissibleValue(
+        text="xmcd",
+        description="X-ray magnetic circular dichroism")
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -4900,6 +4915,15 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     saxs_analysis = PermissibleValue(
         text="saxs_analysis",
         description="SAXS data analysis")
+    xas_normalization = PermissibleValue(
+        text="xas_normalization",
+        description="XAS data normalization and background subtraction")
+    xanes_analysis = PermissibleValue(
+        text="xanes_analysis",
+        description="XANES spectral analysis and edge fitting")
+    exafs_analysis = PermissibleValue(
+        text="exafs_analysis",
+        description="EXAFS data analysis and shell fitting")
     em_2d_classification = PermissibleValue(
         text="em_2d_classification",
         description="EM 2D classification")

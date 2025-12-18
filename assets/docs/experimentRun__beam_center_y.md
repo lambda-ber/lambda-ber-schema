@@ -27,3 +27,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | **Exact Mappings:** | | nsls2:Beam_xy_y |
 |  | | imgCIF:_diffrn_detector.beam_centre_y |
 |  | | mmCIF:_diffrn_detector.beam_center_y |
+|  | | ispyb:DataCollection.yBeam |

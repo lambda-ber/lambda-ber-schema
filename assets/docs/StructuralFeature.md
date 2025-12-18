@@ -29,13 +29,13 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
      * Description: Secondary structure assignment
      * Range: [SecondaryStructureEnum](SecondaryStructureEnum.md)
  * [➞solvent_accessibility](structuralFeature__solvent_accessibility.md)  <sub>0..1</sub>
-     * Description: Relative solvent accessible surface area
+     * Description: Relative solvent accessible surface area (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞backbone_flexibility](structuralFeature__backbone_flexibility.md)  <sub>0..1</sub>
      * Description: B-factor or flexibility measure
      * Range: [Float](types/Float.md)
  * [➞disorder_probability](structuralFeature__disorder_probability.md)  <sub>0..1</sub>
-     * Description: Probability of disorder (0-1)
+     * Description: Probability of disorder (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞conformational_state](structuralFeature__conformational_state.md)  <sub>0..1</sub>
      * Description: Conformational state descriptor
@@ -74,7 +74,7 @@ URI: [lambdaber:StructuralFeature](https://w3id.org/lambda-ber-schema/Structural
      * Description: Range of residues (e.g., '1-100', '25,27,30-35')
      * Range: [String](types/String.md)
  * [➞confidence_score](proteinAnnotation__confidence_score.md)  <sub>0..1</sub>
-     * Description: Confidence score for the annotation (0-1)
+     * Description: Confidence score for the annotation (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞evidence_type](proteinAnnotation__evidence_type.md)  <sub>0..1</sub>
      * Description: Type of evidence supporting this annotation

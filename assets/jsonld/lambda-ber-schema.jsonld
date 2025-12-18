@@ -1776,6 +1776,48 @@
           "text": "mass_spectrometry",
           "description": "Mass spectrometry",
           "meaning": "CHMO:0000470"
+        },
+        {
+          "text": "xas",
+          "description": "X-ray absorption spectroscopy",
+          "meaning": "CHMO:0000298",
+          "exact_mappings": [
+            "PaNET:01196"
+          ]
+        },
+        {
+          "text": "xanes",
+          "description": "X-ray absorption near edge structure spectroscopy",
+          "meaning": "CHMO:0000305",
+          "comments": [
+            "Also known as NEXAFS (near-edge X-ray absorption fine structure)",
+            "Used for electronic structure, oxidation state, coordination geometry"
+          ],
+          "exact_mappings": [
+            "PaNET:01199"
+          ]
+        },
+        {
+          "text": "exafs",
+          "description": "Extended X-ray absorption fine structure spectroscopy",
+          "meaning": "CHMO:0000300",
+          "comments": [
+            "Used for local atomic structure around specific elements",
+            "Commonly used for metalloprotein active site characterization"
+          ],
+          "exact_mappings": [
+            "PaNET:01198"
+          ]
+        },
+        {
+          "text": "xmcd",
+          "description": "X-ray magnetic circular dichroism",
+          "comments": [
+            "Element-specific magnetometry technique"
+          ],
+          "exact_mappings": [
+            "PaNET:01137"
+          ]
         }
       ]
     },
@@ -1856,6 +1898,21 @@
         {
           "text": "saxs_analysis",
           "description": "SAXS data analysis"
+        },
+        {
+          "text": "xas_normalization",
+          "description": "XAS data normalization and background subtraction"
+        },
+        {
+          "text": "xanes_analysis",
+          "description": "XANES spectral analysis and edge fitting"
+        },
+        {
+          "text": "exafs_analysis",
+          "description": "EXAFS data analysis and shell fitting",
+          "comments": [
+            "Includes Fourier transform, back-transform, and coordination shell fitting"
+          ]
         },
         {
           "text": "em_2d_classification",
@@ -19227,9 +19284,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-17T18:19:17",
-  "source_file_size": 114776,
-  "generation_date": "2025-12-17T18:19:30",
+  "source_file_date": "2025-12-17T18:49:06",
+  "source_file_size": 116313,
+  "generation_date": "2025-12-17T18:51:59",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

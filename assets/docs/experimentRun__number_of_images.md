@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Number_of_images |
 |  | | imgCIF:_diffrn_scan.frames |
+|  | | ispyb:DataCollection.numberOfImages |

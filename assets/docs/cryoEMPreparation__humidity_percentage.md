@@ -1,7 +1,7 @@
 
 # Slot: humidity_percentage
 
-Chamber humidity during vitrification
+Chamber humidity during vitrification (range: 0-100)
 
 URI: [lambdaber:cryoEMPreparation__humidity_percentage](https://w3id.org/lambda-ber-schema/cryoEMPreparation__humidity_percentage)
 
