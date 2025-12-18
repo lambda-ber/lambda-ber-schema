@@ -1,6 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
-version: "0.1.1.post4.dev0+e2dc952" # Managed by uv-dynamic-versioning
+version: "0.1.1.post15.dev0+b4e2533" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -99,6 +99,8 @@ prefixes:
   ROR: https://ror.org/
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
+  ispyb: https://ispyb.github.io/ISPyB/
+  PaNET: http://purl.org/pan-science/PaNET/PaNET
 
 imports:
   - linkml:types
@@ -872,6 +874,7 @@ classes:
           - "nsls2:Wavelength"
           - "imgCIF:_diffrn_radiation_wavelength.wavelength"
           - "mmCIF:_diffrn_radiation_wavelength.wavelength"
+          - "ispyb:DataCollection.wavelength"
       oscillation_angle:
         description: "Oscillation angle per image"
         range: float
@@ -881,6 +884,7 @@ classes:
           - "nsls2:Angle_increment"
           - "imgCIF:_diffrn_scan_axis.angle_increment"
           - "mmCIF:_diffrn_scan.angle_increment"
+          - "ispyb:DataCollection.axisRange"
       start_angle:
         description: "Starting rotation angle"
         range: float
@@ -889,12 +893,14 @@ classes:
         exact_mappings:
           - "nsls2:Start_angle"
           - "imgCIF:_diffrn_scan_axis.angle_start"
+          - "ispyb:DataCollection.axisStart"
       number_of_images:
         description: "Total number of diffraction images collected"
         range: integer
         exact_mappings:
           - "nsls2:Number_of_images"
           - "imgCIF:_diffrn_scan.frames"
+          - "ispyb:DataCollection.numberOfImages"
       beam_center_x:
         description: "Beam center X coordinate"
         range: float
@@ -904,6 +910,7 @@ classes:
           - "nsls2:Beam_xy_x"
           - "imgCIF:_diffrn_detector.beam_centre_x"
           - "mmCIF:_diffrn_detector.beam_center_x"
+          - "ispyb:DataCollection.xBeam"
       beam_center_y:
         description: "Beam center Y coordinate"
         range: float
@@ -913,6 +920,7 @@ classes:
           - "nsls2:Beam_xy_y"
           - "imgCIF:_diffrn_detector.beam_centre_y"
           - "mmCIF:_diffrn_detector.beam_center_y"
+          - "ispyb:DataCollection.yBeam"
       detector_distance:
         description: "Distance from sample to detector"
         range: float
@@ -922,6 +930,7 @@ classes:
           - "nsls2:Detector_distance"
           - "imgCIF:_diffrn_measurement.sample_detector_distance"
           - "mmCIF:_diffrn_detector.distance"
+          - "ispyb:DataCollection.detectorDistance"
       pixel_size_x:
         description: "Pixel size X dimension"
         range: float
@@ -956,6 +965,109 @@ classes:
         exact_mappings:
           - "nsls2:Beamline"
           - "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
+          - "ispyb:BLSession.beamLineName"
+      # Additional ISPyB-compatible fields for X-ray data collection
+      transmission:
+        description: "X-ray beam transmission as percentage (0-100)"
+        range: float
+        unit:
+          ucum_code: "%"
+        minimum_value: 0
+        maximum_value: 100
+        exact_mappings:
+          - "ispyb:DataCollection.transmission"
+        comments:
+          - "Percentage of full beam intensity used"
+      flux:
+        description: "Photon flux at sample position in photons/second"
+        range: float
+        unit:
+          ucum_code: "{photons}/s"
+        exact_mappings:
+          - "ispyb:DataCollection.flux"
+        comments:
+          - "Measured or calculated photon flux"
+      flux_end:
+        description: "Photon flux at end of data collection in photons/second"
+        range: float
+        unit:
+          ucum_code: "{photons}/s"
+        exact_mappings:
+          - "ispyb:DataCollection.flux_end"
+      slit_gap_horizontal:
+        description: "Horizontal slit gap aperture in micrometers"
+        range: float
+        unit:
+          ucum_code: um
+        exact_mappings:
+          - "ispyb:DataCollection.slitGapHorizontal"
+      slit_gap_vertical:
+        description: "Vertical slit gap aperture in micrometers"
+        range: float
+        unit:
+          ucum_code: um
+        exact_mappings:
+          - "ispyb:DataCollection.slitGapVertical"
+      undulator_gap:
+        description: "Undulator gap setting in millimeters"
+        range: float
+        unit:
+          ucum_code: mm
+        exact_mappings:
+          - "ispyb:DataCollection.undulatorGap1"
+        comments:
+          - "Primary undulator gap for beamlines with insertion devices"
+      synchrotron_mode:
+        description: "Synchrotron storage ring fill mode"
+        range: string
+        exact_mappings:
+          - "ispyb:DataCollection.synchrotronMode"
+        comments:
+          - "e.g., 'Top-up', 'Decay', 'Hybrid'"
+      exposure_time:
+        description: "Exposure time per image in seconds"
+        range: float
+        unit:
+          ucum_code: s
+        exact_mappings:
+          - "ispyb:DataCollection.exposureTime"
+      start_time:
+        description: "Data collection start timestamp"
+        range: string
+        exact_mappings:
+          - "ispyb:DataCollection.startTime"
+      end_time:
+        description: "Data collection end timestamp"
+        range: string
+        exact_mappings:
+          - "ispyb:DataCollection.endTime"
+      resolution:
+        description: "Resolution at edge of detector in Angstroms"
+        range: float
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "ispyb:DataCollection.resolution"
+      resolution_at_corner:
+        description: "Resolution at corner of detector in Angstroms"
+        range: float
+        unit:
+          ucum_code: Ao
+        exact_mappings:
+          - "ispyb:DataCollection.resolutionAtCorner"
+      # ISPyB cross-reference IDs
+      ispyb_data_collection_id:
+        description: "ISPyB DataCollection.dataCollectionId for traceability"
+        range: integer
+        exact_mappings:
+          - "ispyb:DataCollection.dataCollectionId"
+        comments:
+          - "Use to link back to ISPyB records"
+      ispyb_session_id:
+        description: "ISPyB BLSession.sessionId"
+        range: integer
+        exact_mappings:
+          - "ispyb:BLSession.sessionId"
 
   WorkflowRun:
     is_a: NamedThing
@@ -1033,6 +1145,7 @@ classes:
         exact_mappings:
           - "nsls2:Space_Group"
           - "mmCIF:_symmetry.space_group_name_H-M"
+          - "ispyb:AutoProcScaling.spaceGroup"
       unit_cell_a:
         description: "Unit cell parameter a"
         range: float
@@ -1089,6 +1202,7 @@ classes:
         exact_mappings:
           - "nsls2:Resolution_High_A"
           - "mmCIF:_reflns.d_resolution_high"
+          - "ispyb:AutoProcScalingStatistics.resolutionLimitHigh"
       resolution_low:
         description: "Low resolution limit"
         range: float
@@ -1097,24 +1211,28 @@ classes:
         exact_mappings:
           - "nsls2:Resolution_Low_A"
           - "mmCIF:_reflns.d_resolution_low"
+          - "ispyb:AutoProcScalingStatistics.resolutionLimitLow"
       rmerge:
         description: "Rmerge - merge R-factor"
         range: float
         exact_mappings:
           - "nsls2:Rmerge"
           - "mmCIF:_reflns.pdbx_Rmerge_I_obs"
+          - "ispyb:AutoProcScalingStatistics.rMerge"
       rpim:
         description: "Rpim - precision-indicating merging R-factor"
         range: float
         exact_mappings:
           - "nsls2:Rpim"
           - "mmCIF:_reflns.pdbx_Rpim_I_all"
+          - "ispyb:AutoProcScalingStatistics.rPim"
       cc_half:
         description: "Half-set correlation coefficient CC(1/2)"
         range: float
         exact_mappings:
           - "nsls2:CC_half"
           - "mmCIF:_reflns.pdbx_CC_half"
+          - "ispyb:AutoProcScalingStatistics.ccHalf"
       completeness_percent:
         description: "Data completeness percentage"
         range: float
@@ -1123,12 +1241,14 @@ classes:
         exact_mappings:
           - "nsls2:Completeness"
           - "mmCIF:_reflns.percent_possible_obs"
+          - "ispyb:AutoProcScalingStatistics.completeness"
       i_over_sigma:
         description: "Mean I/sigma(I) - signal to noise ratio"
         range: float
         exact_mappings:
           - "nsls2:I_over_sigma"
           - "mmCIF:_reflns.pdbx_netI_over_sigmaI"
+          - "ispyb:AutoProcScalingStatistics.meanIOverSigI"
       wilson_b_factor:
         description: "Wilson B-factor"
         range: float
@@ -1143,6 +1263,66 @@ classes:
         exact_mappings:
           - "nsls2:Multiplicity"
           - "mmCIF:_reflns.pdbx_redundancy"
+          - "ispyb:AutoProcScalingStatistics.multiplicity"
+      # Anomalous statistics (ISPyB AutoProcScalingStatistics)
+      anomalous_completeness:
+        description: "Completeness of anomalous data as percentage"
+        range: float
+        unit:
+          ucum_code: "%"
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.anomalousCompleteness"
+        comments:
+          - "Completeness of Bijvoet pairs"
+      anomalous_multiplicity:
+        description: "Multiplicity of anomalous data"
+        range: float
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.anomalousMultiplicity"
+        comments:
+          - "Redundancy of Bijvoet pairs"
+      cc_anomalous:
+        description: "Anomalous correlation coefficient"
+        range: float
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.ccAno"
+        comments:
+          - "Correlation coefficient between Bijvoet pairs"
+      r_anomalous:
+        description: "Anomalous R-factor"
+        range: float
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.rAnom"
+      sig_anomalous:
+        description: "Mean anomalous difference signal"
+        range: float
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.sigAno"
+        comments:
+          - "Mean |F(+) - F(-)|/sigma"
+      n_total_observations:
+        description: "Total number of observations (before merging)"
+        range: integer
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.nTotalObservations"
+      n_total_unique:
+        description: "Total number of unique reflections"
+        range: integer
+        exact_mappings:
+          - "ispyb:AutoProcScalingStatistics.nTotalUniqueObservations"
+      # ISPyB cross-reference IDs for workflow
+      ispyb_auto_proc_program_id:
+        description: "ISPyB AutoProcProgram.autoProcProgramId"
+        range: integer
+        exact_mappings:
+          - "ispyb:AutoProcProgram.autoProcProgramId"
+        comments:
+          - "Links to ISPyB processing program record"
+      ispyb_auto_proc_scaling_id:
+        description: "ISPyB AutoProcScaling.autoProcScalingId"
+        range: integer
+        exact_mappings:
+          - "ispyb:AutoProcScaling.autoProcScalingId"
       # Refinement metrics (NSLS2 Refinement mapping)
       rwork:
         description: "Refinement R-factor (working set)"
@@ -2745,15 +2925,23 @@ enums:
       xray_crystallography:
         description: "X-ray crystallography"
         meaning: CHMO:0000156
+        exact_mappings:
+          - PaNET:01164  # macromolecular crystallography
       saxs:
         description: "Small-angle X-ray scattering"
         meaning: CHMO:0000204
+        exact_mappings:
+          - PaNET:01188  # small angle x-ray scattering
       waxs:
         description: "Wide-angle X-ray scattering"
         meaning: CHMO:0000207
+        exact_mappings:
+          - PaNET:01191  # wide angle x-ray scattering
       sans:
         description: "Small-angle neutron scattering"
         meaning: CHMO:0000184
+        exact_mappings:
+          - PaNET:01189  # small angle neutron scattering
       cryo_et:
         description: "Cryo-electron tomography"
         meaning: CHMO:0002413

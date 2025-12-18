@@ -2115,6 +2115,13 @@
                         "null"
                     ]
                 },
+                "end_time": {
+                    "description": "Data collection end timestamp",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "experiment_code": {
                     "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
                     "type": "string"
@@ -2141,8 +2148,29 @@
                     "$ref": "#/$defs/ExperimentalMethodEnum",
                     "description": "Specific experimental method for structure determination (particularly for diffraction techniques)"
                 },
+                "exposure_time": {
+                    "description": "Exposure time per image in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "exposure_time_per_frame": {
                     "description": "Exposure time per frame in milliseconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "flux": {
+                    "description": "Photon flux at sample position in photons/second",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "flux_end": {
+                    "description": "Photon flux at end of data collection in photons/second",
                     "type": [
                         "number",
                         "null"
@@ -2169,6 +2197,20 @@
                 "instrument_id": {
                     "description": "Reference to the instrument used",
                     "type": "string"
+                },
+                "ispyb_data_collection_id": {
+                    "description": "ISPyB DataCollection.dataCollectionId for traceability",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ispyb_session_id": {
+                    "description": "ISPyB BLSession.sessionId",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "magnification": {
                     "description": "Magnification used during data collection",
@@ -2234,6 +2276,20 @@
                         "null"
                     ]
                 },
+                "resolution": {
+                    "description": "Resolution at edge of detector in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "resolution_at_corner": {
+                    "description": "Resolution at corner of detector in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "sample_id": {
                     "description": "Reference to the sample being analyzed",
                     "type": "string"
@@ -2242,6 +2298,20 @@
                     "description": "Number of shots taken per hole",
                     "type": [
                         "integer",
+                        "null"
+                    ]
+                },
+                "slit_gap_horizontal": {
+                    "description": "Horizontal slit gap aperture in micrometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "slit_gap_vertical": {
+                    "description": "Vertical slit gap aperture in micrometers",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -2256,6 +2326,20 @@
                     "description": "Starting rotation angle",
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "start_time": {
+                    "description": "Data collection start timestamp",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synchrotron_mode": {
+                    "description": "Synchrotron storage ring fill mode",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -2286,6 +2370,22 @@
                 },
                 "total_rotation": {
                     "description": "Total rotation range collected",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "transmission": {
+                    "description": "X-ray beam transmission as percentage (0-100)",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "undulator_gap": {
+                    "description": "Undulator gap setting in millimeters",
                     "type": [
                         "number",
                         "null"
@@ -6721,6 +6821,27 @@
                         "null"
                     ]
                 },
+                "anomalous_completeness": {
+                    "description": "Completeness of anomalous data as percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "anomalous_multiplicity": {
+                    "description": "Multiplicity of anomalous data",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cc_anomalous": {
+                    "description": "Anomalous correlation coefficient",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "cc_half": {
                     "description": "Half-set correlation coefficient CC(1/2)",
                     "type": [
@@ -6825,6 +6946,20 @@
                         "null"
                     ]
                 },
+                "ispyb_auto_proc_program_id": {
+                    "description": "ISPyB AutoProcProgram.autoProcProgramId",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ispyb_auto_proc_scaling_id": {
+                    "description": "ISPyB AutoProcScaling.autoProcScalingId",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "ligands_cofactors": {
                     "description": "Ligands or cofactors modeled in the structure",
                     "type": [
@@ -6847,6 +6982,20 @@
                     "description": "Data multiplicity (redundancy)",
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "n_total_observations": {
+                    "description": "Total number of observations (before merging)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "n_total_unique": {
+                    "description": "Total number of unique reflections",
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -6930,6 +7079,13 @@
                     "description": "Parameters used in processing",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "r_anomalous": {
+                    "description": "Anomalous R-factor",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -7039,6 +7195,13 @@
                     "description": "PDB ID of search model for molecular replacement",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "sig_anomalous": {
+                    "description": "Mean anomalous difference signal",
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -7754,5 +7917,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.1.post4.dev0+e2dc952"
+    "version": "0.1.1.post15.dev0+b4e2533"
 }

@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.1.post4.dev0+e2dc952
+# version: 0.1.1.post15.dev0+b4e2533
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -549,7 +549,21 @@ linkml:Sparqlpath xsd:string
           <pixel_size_x> @linkml:Float ? ;
           <pixel_size_y> @linkml:Float ? ;
           <total_rotation> @linkml:Float ? ;
-          <beamline> @linkml:String ?
+          <beamline> @linkml:String ? ;
+          <transmission> @linkml:Float ? ;
+          <flux> @linkml:Float ? ;
+          <flux_end> @linkml:Float ? ;
+          <slit_gap_horizontal> @linkml:Float ? ;
+          <slit_gap_vertical> @linkml:Float ? ;
+          <undulator_gap> @linkml:Float ? ;
+          <synchrotron_mode> @linkml:String ? ;
+          <exposure_time> @linkml:Float ? ;
+          <start_time> @linkml:String ? ;
+          <end_time> @linkml:String ? ;
+          <resolution> @linkml:Float ? ;
+          <resolution_at_corner> @linkml:Float ? ;
+          <ispyb_data_collection_id> @linkml:Integer ? ;
+          <ispyb_session_id> @linkml:Integer ?
        ) ;
        rdf:type [ <ExperimentRun> ]
     )
@@ -1487,6 +1501,15 @@ linkml:Sparqlpath xsd:string
           <i_over_sigma> @linkml:Float ? ;
           <wilson_b_factor> @linkml:Float ? ;
           <multiplicity> @linkml:Float ? ;
+          <anomalous_completeness> @linkml:Float ? ;
+          <anomalous_multiplicity> @linkml:Float ? ;
+          <cc_anomalous> @linkml:Float ? ;
+          <r_anomalous> @linkml:Float ? ;
+          <sig_anomalous> @linkml:Float ? ;
+          <n_total_observations> @linkml:Integer ? ;
+          <n_total_unique> @linkml:Integer ? ;
+          <ispyb_auto_proc_program_id> @linkml:Integer ? ;
+          <ispyb_auto_proc_scaling_id> @linkml:Integer ? ;
           <rwork> @linkml:Float ? ;
           <rfree> @linkml:Float ? ;
           <rmsd_bonds> @linkml:Float ? ;

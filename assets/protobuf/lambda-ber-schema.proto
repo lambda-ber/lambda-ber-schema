@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.1.post4.dev0+e2dc952
+// version: 0.1.1.post15.dev0+b4e2533
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -345,6 +345,20 @@ message ExperimentRun
   float pixelSizeY = 0
   float totalRotation = 0
   string beamline = 0
+  float transmission = 0
+  float flux = 0
+  float fluxEnd = 0
+  float slitGapHorizontal = 0
+  float slitGapVertical = 0
+  float undulatorGap = 0
+  string synchrotronMode = 0
+  float exposureTime = 0
+  string startTime = 0
+  string endTime = 0
+  float resolution = 0
+  float resolutionAtCorner = 0
+  integer ispybDataCollectionId = 0
+  integer ispybSessionId = 0
  }
 // Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 message FluorescenceImage
@@ -1034,6 +1048,15 @@ message WorkflowRun
   float iOverSigma = 0
   float wilsonBFactor = 0
   float multiplicity = 0
+  float anomalousCompleteness = 0
+  float anomalousMultiplicity = 0
+  float ccAnomalous = 0
+  float rAnomalous = 0
+  float sigAnomalous = 0
+  integer nTotalObservations = 0
+  integer nTotalUnique = 0
+  integer ispybAutoProcProgramId = 0
+  integer ispybAutoProcScalingId = 0
   float rwork = 0
   float rfree = 0
   float rmsdBonds = 0
