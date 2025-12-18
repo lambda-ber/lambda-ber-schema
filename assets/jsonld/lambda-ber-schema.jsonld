@@ -19227,9 +19227,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-17T16:36:36",
+  "source_file_date": "2025-12-17T18:19:17",
   "source_file_size": 114776,
-  "generation_date": "2025-12-17T16:36:51",
+  "generation_date": "2025-12-17T18:19:30",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

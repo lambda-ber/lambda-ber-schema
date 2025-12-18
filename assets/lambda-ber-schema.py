@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-17T16:36:55
+# Generation date: 2025-12-17T18:19:35
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/

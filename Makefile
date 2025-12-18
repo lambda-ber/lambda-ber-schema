@@ -1,6 +1,7 @@
 RUN = uv run
 SCHEMA := src/lambda_ber_schema/schema/lambda-ber-schema.yaml
 DOCDIR := ./docs
+ELEMENTSDIR := ./docs/elements
 PYDANTIC := src/lambda_ber_schema/pydantic.py
 
 all: gen-project gendoc test-examples
@@ -17,9 +18,10 @@ $(PYDANTIC): $(SCHEMA)
 test-examples:
 	$(RUN) linkml-run-examples -t yaml -t json -t ttl -s $(SCHEMA) -P conf/prefixes.yaml -e tests/data/valid -d examples
 
+# Generate schema documentation to docs/elements/ and copy manual docs
 gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
-	$(RUN) gen-doc ${GEN_DARGS} -d $(DOCDIR) $(SCHEMA)
+	$(RUN) gen-doc -d $(ELEMENTSDIR) $(SCHEMA)
 
 serve:
 	$(RUN) mkdocs serve
