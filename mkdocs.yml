@@ -22,7 +22,8 @@ plugins:
   - search
   - mermaid2
 nav:
-  - Index: index.md
+  - Home: index.md
+  - Schema: elements/index.md
   - Background:
     - Overview: background/index.md
     - NEXUS: background/nexus.md

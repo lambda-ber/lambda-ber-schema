@@ -4,6 +4,7 @@
 # directory: "tmp"
 
 # By default all generators are run. Specify here the ones to skip.
+# Note: markdown docs are generated via gen-doc to docs/elements/ (in Makefile gendoc target)
 excludes:
   - markdown
 

@@ -22,7 +22,7 @@ Alias: detector
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [DataCollectionStrategy](DataCollectionStrategy.md) | Strategy for data collection |  no  |
+| [DataCollectionStrategy](elements/DataCollectionStrategy.md) | Strategy for data collection |  no  |
 
 
 
@@ -31,7 +31,7 @@ Alias: detector
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [String](elements/String.md)
 
 
 
