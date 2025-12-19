@@ -1153,34 +1153,50 @@
                     ]
                 },
                 "blot_time": {
-                    "description": "Blotting time in seconds (range: 0.5-10.0)",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
                     "maximum": 10.0,
-                    "minimum": 0.5,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0.5
                 },
                 "blotter_height": {
-                    "description": "Blotter height setting",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Blotter height setting. Data providers may include unit information in the QuantityValue if needed."
                 },
                 "blotter_setting": {
-                    "description": "Blotter setting value",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Blotter setting value. Data providers may include unit information in the QuantityValue if needed."
                 },
                 "chamber_temperature": {
-                    "description": "Chamber temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "type": [
@@ -1189,11 +1205,15 @@
                     ]
                 },
                 "ethane_temperature": {
-                    "description": "Ethane temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "glow_discharge_applied": {
                     "description": "Whether glow discharge treatment was applied",
@@ -1210,25 +1230,37 @@
                     ]
                 },
                 "glow_discharge_current": {
-                    "description": "Glow discharge current in milliamperes",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "glow_discharge_pressure": {
-                    "description": "Glow discharge pressure in millibar",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "glow_discharge_time": {
-                    "description": "Glow discharge time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "grid_material": {
                     "$ref": "#/$defs/GridMaterialEnum",
@@ -1239,22 +1271,30 @@
                     "description": "Type of EM grid used"
                 },
                 "hole_size": {
-                    "description": "Hole size in micrometers (range: 0.5-5.0)",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
                     "maximum": 5.0,
-                    "minimum": 0.5,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0.5
                 },
                 "humidity_percentage": {
-                    "description": "Chamber humidity during vitrification (range: 0-100)",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
                     "maximum": 100,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0
                 },
                 "plasma_treatment": {
                     "description": "Plasma treatment details",
@@ -1264,11 +1304,15 @@
                     ]
                 },
                 "sample_applied_volume": {
-                    "description": "Volume of sample applied in microliters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "support_film": {
                     "description": "Support film type",
@@ -1289,11 +1333,15 @@
                     "description": "Method used for vitrification"
                 },
                 "wait_time": {
-                    "description": "Wait time before blotting in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "title": "CryoEMPreparation",
@@ -1345,11 +1393,15 @@
                     ]
                 },
                 "drop_volume": {
-                    "description": "Total drop volume in nanoliters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "method": {
                     "$ref": "#/$defs/CrystallizationMethodEnum",
@@ -1363,11 +1415,15 @@
                     ]
                 },
                 "reservoir_volume_ul": {
-                    "description": "Reservoir volume in microliters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "screen_name": {
                     "description": "Name of crystallization screen used",
@@ -1391,11 +1447,15 @@
                     ]
                 },
                 "temperature_c": {
-                    "description": "Crystallization temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "title": "CrystallizationConditions",
@@ -6213,11 +6273,15 @@
                     ]
                 },
                 "cell_path_length": {
-                    "description": "Path length in mm",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "concentration_series": {
                     "description": "Concentration values for series measurements",
@@ -8323,11 +8387,15 @@
                     ]
                 },
                 "cryoprotectant_concentration": {
-                    "description": "Cryoprotectant concentration percentage",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
                 },
                 "crystal_notes": {
                     "description": "Additional notes about crystal quality and handling",
@@ -8372,11 +8440,15 @@
                     ]
                 },
                 "drop_volume_nl": {
-                    "description": "Total drop volume in nanoliters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "flash_cooling_method": {
                     "description": "Flash cooling protocol",
@@ -8393,11 +8465,15 @@
                     ]
                 },
                 "loop_size": {
-                    "description": "Loop size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "mounting_method": {
                     "description": "Crystal mounting method",
@@ -8407,11 +8483,15 @@
                     ]
                 },
                 "mounting_temperature": {
-                    "description": "Temperature during mounting in Kelvin",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "optimization_strategy": {
                     "description": "Strategy used to optimize crystals",
@@ -8442,11 +8522,15 @@
                     ]
                 },
                 "reservoir_volume_ul": {
-                    "description": "Reservoir volume in microliters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "screen_name": {
                     "description": "Name of crystallization screen used",
@@ -8484,11 +8568,15 @@
                     ]
                 },
                 "temperature_c": {
-                    "description": "Crystallization temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "title": "XRayPreparation",

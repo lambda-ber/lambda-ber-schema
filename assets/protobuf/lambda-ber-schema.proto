@@ -157,25 +157,25 @@ message CryoEMPreparation
   string description = 0
   gridTypeEnum gridType = 0
   string supportFilm = 0
-  float holeSize = 0
+  quantityValue holeSize = 0
   vitrificationMethodEnum vitrificationMethod = 0
-  float blotTime = 0
+  quantityValue blotTime = 0
   integer blotForce = 0
-  float humidityPercentage = 0
-  float chamberTemperature = 0
+  quantityValue humidityPercentage = 0
+  quantityValue chamberTemperature = 0
   gridMaterialEnum gridMaterial = 0
   boolean glowDischargeApplied = 0
-  float glowDischargeTime = 0
-  float glowDischargeCurrent = 0
+  quantityValue glowDischargeTime = 0
+  quantityValue glowDischargeCurrent = 0
   string glowDischargeAtmosphere = 0
-  float glowDischargePressure = 0
+  quantityValue glowDischargePressure = 0
   string vitrificationInstrument = 0
   integer blotNumber = 0
-  float waitTime = 0
-  float blotterHeight = 0
-  float blotterSetting = 0
-  float sampleAppliedVolume = 0
-  float ethaneTemperature = 0
+  quantityValue waitTime = 0
+  quantityValue blotterHeight = 0
+  quantityValue blotterSetting = 0
+  quantityValue sampleAppliedVolume = 0
+  quantityValue ethaneTemperature = 0
   string plasmaTreatment = 0
  }
 // Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
@@ -184,15 +184,15 @@ message CrystallizationConditions
   string description = 0
   crystallizationMethodEnum method = 0
   string crystallizationConditions = 0
-  float dropVolume = 0
+  quantityValue dropVolume = 0
   float proteinConcentration = 0
   string crystalSizeUm = 0
   string cryoProtectant = 0
   string crystalId = 0
   string screenName = 0
-  float temperatureC = 0
+  quantityValue temperatureC = 0
   string dropRatioProteinToReservoir = 0
-  float reservoirVolumeUl = 0
+  quantityValue reservoirVolumeUl = 0
   string seedingType = 0
   string seedStockDilution = 0
  }
@@ -973,7 +973,7 @@ message SAXSPreparation
  repeated  float concentrationSeries = 0
   string bufferMatchingProtocol = 0
   string sampleCellType = 0
-  float cellPathLength = 0
+  quantityValue cellPathLength = 0
   string temperatureControl = 0
  }
 // Storage conditions for samples
@@ -1145,10 +1145,10 @@ message XRayPreparation
   crystallizationMethodEnum crystallizationMethod = 0
   crystallizationConditions crystallizationConditions = 0
   string screenName = 0
-  float temperatureC = 0
+  quantityValue temperatureC = 0
   string dropRatioProteinToReservoir = 0
-  float dropVolumeNl = 0
-  float reservoirVolumeUl = 0
+  quantityValue dropVolumeNl = 0
+  quantityValue reservoirVolumeUl = 0
   string seedingType = 0
   string seedStockDilution = 0
   string initialHitCondition = 0
@@ -1156,14 +1156,14 @@ message XRayPreparation
   string optimizedCondition = 0
   string crystalSizeUm = 0
   string cryoprotectant = 0
-  float cryoprotectantConcentration = 0
+  quantityValue cryoprotectantConcentration = 0
   string soakCompound = 0
   string soakConditions = 0
   string mountingMethod = 0
   string flashCoolingMethod = 0
   string crystalNotes = 0
-  float loopSize = 0
-  float mountingTemperature = 0
+  quantityValue loopSize = 0
+  quantityValue mountingTemperature = 0
  }
 // X-ray fluorescence (XRF) image showing elemental distribution
 message XRFImage

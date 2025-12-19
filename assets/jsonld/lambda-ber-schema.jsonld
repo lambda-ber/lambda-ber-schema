@@ -9203,7 +9203,7 @@
     },
     {
       "name": "cryoEMPreparation__hole_size",
-      "description": "Hole size in micrometers (range: 0.5-5.0)",
+      "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/hole_size",
       "alias": "hole_size",
@@ -9211,7 +9211,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "minimum_value": 0.5,
       "maximum_value": 5.0,
       "@type": "SlotDefinition"
@@ -9231,7 +9232,7 @@
     },
     {
       "name": "cryoEMPreparation__blot_time",
-      "description": "Blotting time in seconds (range: 0.5-10.0)",
+      "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/blot_time",
       "alias": "blot_time",
@@ -9239,7 +9240,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "minimum_value": 0.5,
       "maximum_value": 10.0,
       "@type": "SlotDefinition"
@@ -9259,7 +9261,7 @@
     },
     {
       "name": "cryoEMPreparation__humidity_percentage",
-      "description": "Chamber humidity during vitrification (range: 0-100)",
+      "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/humidity_percentage",
       "alias": "humidity_percentage",
@@ -9267,14 +9269,15 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "minimum_value": 0,
       "maximum_value": 100,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__chamber_temperature",
-      "description": "Chamber temperature in Celsius",
+      "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/chamber_temperature",
       "alias": "chamber_temperature",
@@ -9282,7 +9285,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9313,7 +9317,7 @@
     },
     {
       "name": "cryoEMPreparation__glow_discharge_time",
-      "description": "Glow discharge time in seconds",
+      "description": "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_time",
       "alias": "glow_discharge_time",
@@ -9321,12 +9325,13 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__glow_discharge_current",
-      "description": "Glow discharge current in milliamperes",
+      "description": "Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_current",
       "alias": "glow_discharge_current",
@@ -9334,7 +9339,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9352,7 +9358,7 @@
     },
     {
       "name": "cryoEMPreparation__glow_discharge_pressure",
-      "description": "Glow discharge pressure in millibar",
+      "description": "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/glow_discharge_pressure",
       "alias": "glow_discharge_pressure",
@@ -9360,7 +9366,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9391,7 +9398,7 @@
     },
     {
       "name": "cryoEMPreparation__wait_time",
-      "description": "Wait time before blotting in seconds",
+      "description": "Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/wait_time",
       "alias": "wait_time",
@@ -9399,12 +9406,13 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__blotter_height",
-      "description": "Blotter height setting",
+      "description": "Blotter height setting. Data providers may include unit information in the QuantityValue if needed.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/blotter_height",
       "alias": "blotter_height",
@@ -9412,12 +9420,13 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__blotter_setting",
-      "description": "Blotter setting value",
+      "description": "Blotter setting value. Data providers may include unit information in the QuantityValue if needed.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/blotter_setting",
       "alias": "blotter_setting",
@@ -9425,12 +9434,13 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__sample_applied_volume",
-      "description": "Volume of sample applied in microliters",
+      "description": "Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/sample_applied_volume",
       "alias": "sample_applied_volume",
@@ -9438,12 +9448,13 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cryoEMPreparation__ethane_temperature",
-      "description": "Ethane temperature in Celsius",
+      "description": "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ethane_temperature",
       "alias": "ethane_temperature",
@@ -9451,7 +9462,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9507,7 +9519,7 @@
     },
     {
       "name": "crystallizationConditions__drop_volume",
-      "description": "Total drop volume in nanoliters",
+      "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "comments": [
         "Maps to NSLS2 spreadsheet: Drop_Volume"
       ],
@@ -9521,7 +9533,8 @@
       "domain_of": [
         "CrystallizationConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9615,7 +9628,7 @@
     },
     {
       "name": "crystallizationConditions__temperature_c",
-      "description": "Crystallization temperature in Celsius",
+      "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_c",
       "alias": "temperature_c",
@@ -9623,7 +9636,8 @@
       "domain_of": [
         "CrystallizationConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9641,7 +9655,7 @@
     },
     {
       "name": "crystallizationConditions__reservoir_volume_ul",
-      "description": "Reservoir volume in microliters",
+      "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/reservoir_volume_ul",
       "alias": "reservoir_volume_ul",
@@ -9649,7 +9663,8 @@
       "domain_of": [
         "CrystallizationConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9759,7 +9774,7 @@
     },
     {
       "name": "xRayPreparation__temperature_c",
-      "description": "Crystallization temperature in Celsius",
+      "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_c",
       "alias": "temperature_c",
@@ -9767,7 +9782,8 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9785,7 +9801,7 @@
     },
     {
       "name": "xRayPreparation__drop_volume_nl",
-      "description": "Total drop volume in nanoliters",
+      "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/drop_volume_nl",
       "alias": "drop_volume_nl",
@@ -9793,12 +9809,13 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "xRayPreparation__reservoir_volume_ul",
-      "description": "Reservoir volume in microliters",
+      "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/reservoir_volume_ul",
       "alias": "reservoir_volume_ul",
@@ -9806,7 +9823,8 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9902,7 +9920,7 @@
     },
     {
       "name": "xRayPreparation__cryoprotectant_concentration",
-      "description": "Cryoprotectant concentration percentage",
+      "description": "Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/cryoprotectant_concentration",
       "alias": "cryoprotectant_concentration",
@@ -9910,7 +9928,8 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9986,7 +10005,7 @@
     },
     {
       "name": "xRayPreparation__loop_size",
-      "description": "Loop size in micrometers",
+      "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "comments": [
         "Maps to NSLS2 spreadsheet: Loop_Size"
       ],
@@ -10000,12 +10019,13 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "xRayPreparation__mounting_temperature",
-      "description": "Temperature during mounting in Kelvin",
+      "description": "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "comments": [
         "Maps to NSLS2 spreadsheet: Temperature"
       ],
@@ -10019,7 +10039,8 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10064,7 +10085,7 @@
     },
     {
       "name": "sAXSPreparation__cell_path_length",
-      "description": "Path length in mm",
+      "description": "Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/cell_path_length",
       "alias": "cell_path_length",
@@ -10072,7 +10093,8 @@
       "domain_of": [
         "SAXSPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -16987,8 +17009,9 @@
         },
         {
           "name": "hole_size",
-          "description": "Hole size in micrometers (range: 0.5-5.0)",
-          "range": "float",
+          "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "minimum_value": 0.5,
           "maximum_value": 5.0,
           "@type": "SlotDefinition"
@@ -17001,8 +17024,9 @@
         },
         {
           "name": "blot_time",
-          "description": "Blotting time in seconds (range: 0.5-10.0)",
-          "range": "float",
+          "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "minimum_value": 0.5,
           "maximum_value": 10.0,
           "@type": "SlotDefinition"
@@ -17015,16 +17039,18 @@
         },
         {
           "name": "humidity_percentage",
-          "description": "Chamber humidity during vitrification (range: 0-100)",
-          "range": "float",
+          "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "minimum_value": 0,
           "maximum_value": 100,
           "@type": "SlotDefinition"
         },
         {
           "name": "chamber_temperature",
-          "description": "Chamber temperature in Celsius",
-          "range": "float",
+          "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17041,14 +17067,16 @@
         },
         {
           "name": "glow_discharge_time",
-          "description": "Glow discharge time in seconds",
-          "range": "float",
+          "description": "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "glow_discharge_current",
-          "description": "Glow discharge current in milliamperes",
-          "range": "float",
+          "description": "Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17059,8 +17087,9 @@
         },
         {
           "name": "glow_discharge_pressure",
-          "description": "Glow discharge pressure in millibar",
-          "range": "float",
+          "description": "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17077,32 +17106,37 @@
         },
         {
           "name": "wait_time",
-          "description": "Wait time before blotting in seconds",
-          "range": "float",
+          "description": "Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "blotter_height",
-          "description": "Blotter height setting",
-          "range": "float",
+          "description": "Blotter height setting. Data providers may include unit information in the QuantityValue if needed.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "blotter_setting",
-          "description": "Blotter setting value",
-          "range": "float",
+          "description": "Blotter setting value. Data providers may include unit information in the QuantityValue if needed.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "sample_applied_volume",
-          "description": "Volume of sample applied in microliters",
-          "range": "float",
+          "description": "Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ethane_temperature",
-          "description": "Ethane temperature in Celsius",
-          "range": "float",
+          "description": "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17160,12 +17194,13 @@
         },
         {
           "name": "drop_volume",
-          "description": "Total drop volume in nanoliters",
+          "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "comments": [
             "Maps to NSLS2 spreadsheet: Drop_Volume"
           ],
           "slot_uri": "nsls2:Drop_Volume",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17215,8 +17250,9 @@
         },
         {
           "name": "temperature_c",
-          "description": "Crystallization temperature in Celsius",
-          "range": "float",
+          "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17226,8 +17262,9 @@
         },
         {
           "name": "reservoir_volume_ul",
-          "description": "Reservoir volume in microliters",
-          "range": "float",
+          "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17315,8 +17352,9 @@
         },
         {
           "name": "temperature_c",
-          "description": "Crystallization temperature in Celsius",
-          "range": "float",
+          "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17326,14 +17364,16 @@
         },
         {
           "name": "drop_volume_nl",
-          "description": "Total drop volume in nanoliters",
-          "range": "float",
+          "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "reservoir_volume_ul",
-          "description": "Reservoir volume in microliters",
-          "range": "float",
+          "description": "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17374,8 +17414,9 @@
         },
         {
           "name": "cryoprotectant_concentration",
-          "description": "Cryoprotectant concentration percentage",
-          "range": "float",
+          "description": "Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17409,22 +17450,24 @@
         },
         {
           "name": "loop_size",
-          "description": "Loop size in micrometers",
+          "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "comments": [
             "Maps to NSLS2 spreadsheet: Loop_Size"
           ],
           "slot_uri": "nsls2:Loop_Size",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "mounting_temperature",
-          "description": "Temperature during mounting in Kelvin",
+          "description": "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "comments": [
             "Maps to NSLS2 spreadsheet: Temperature"
           ],
           "slot_uri": "nsls2:Temperature",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -17466,8 +17509,9 @@
         },
         {
           "name": "cell_path_length",
-          "description": "Path length in mm",
-          "range": "float",
+          "description": "Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -19629,9 +19673,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T12:24:47",
-  "source_file_size": 126120,
-  "generation_date": "2025-12-19T12:35:25",
+  "source_file_date": "2025-12-19T12:40:55",
+  "source_file_size": 129226,
+  "generation_date": "2025-12-19T12:41:11",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

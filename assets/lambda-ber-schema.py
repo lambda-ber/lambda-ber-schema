@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T12:35:31
+# Generation date: 2025-12-19T12:41:17
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -2576,25 +2576,25 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
 
     grid_type: Optional[Union[str, "GridTypeEnum"]] = None
     support_film: Optional[str] = None
-    hole_size: Optional[float] = None
+    hole_size: Optional[Union[dict, "QuantityValue"]] = None
     vitrification_method: Optional[Union[str, "VitrificationMethodEnum"]] = None
-    blot_time: Optional[float] = None
+    blot_time: Optional[Union[dict, "QuantityValue"]] = None
     blot_force: Optional[int] = None
-    humidity_percentage: Optional[float] = None
-    chamber_temperature: Optional[float] = None
+    humidity_percentage: Optional[Union[dict, "QuantityValue"]] = None
+    chamber_temperature: Optional[Union[dict, "QuantityValue"]] = None
     grid_material: Optional[Union[str, "GridMaterialEnum"]] = None
     glow_discharge_applied: Optional[Union[bool, Bool]] = None
-    glow_discharge_time: Optional[float] = None
-    glow_discharge_current: Optional[float] = None
+    glow_discharge_time: Optional[Union[dict, "QuantityValue"]] = None
+    glow_discharge_current: Optional[Union[dict, "QuantityValue"]] = None
     glow_discharge_atmosphere: Optional[str] = None
-    glow_discharge_pressure: Optional[float] = None
+    glow_discharge_pressure: Optional[Union[dict, "QuantityValue"]] = None
     vitrification_instrument: Optional[str] = None
     blot_number: Optional[int] = None
-    wait_time: Optional[float] = None
-    blotter_height: Optional[float] = None
-    blotter_setting: Optional[float] = None
-    sample_applied_volume: Optional[float] = None
-    ethane_temperature: Optional[float] = None
+    wait_time: Optional[Union[dict, "QuantityValue"]] = None
+    blotter_height: Optional[Union[dict, "QuantityValue"]] = None
+    blotter_setting: Optional[Union[dict, "QuantityValue"]] = None
+    sample_applied_volume: Optional[Union[dict, "QuantityValue"]] = None
+    ethane_temperature: Optional[Union[dict, "QuantityValue"]] = None
     plasma_treatment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2604,23 +2604,23 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.support_film is not None and not isinstance(self.support_film, str):
             self.support_film = str(self.support_film)
 
-        if self.hole_size is not None and not isinstance(self.hole_size, float):
-            self.hole_size = float(self.hole_size)
+        if self.hole_size is not None and not isinstance(self.hole_size, QuantityValue):
+            self.hole_size = QuantityValue(**as_dict(self.hole_size))
 
         if self.vitrification_method is not None and not isinstance(self.vitrification_method, VitrificationMethodEnum):
             self.vitrification_method = VitrificationMethodEnum(self.vitrification_method)
 
-        if self.blot_time is not None and not isinstance(self.blot_time, float):
-            self.blot_time = float(self.blot_time)
+        if self.blot_time is not None and not isinstance(self.blot_time, QuantityValue):
+            self.blot_time = QuantityValue(**as_dict(self.blot_time))
 
         if self.blot_force is not None and not isinstance(self.blot_force, int):
             self.blot_force = int(self.blot_force)
 
-        if self.humidity_percentage is not None and not isinstance(self.humidity_percentage, float):
-            self.humidity_percentage = float(self.humidity_percentage)
+        if self.humidity_percentage is not None and not isinstance(self.humidity_percentage, QuantityValue):
+            self.humidity_percentage = QuantityValue(**as_dict(self.humidity_percentage))
 
-        if self.chamber_temperature is not None and not isinstance(self.chamber_temperature, float):
-            self.chamber_temperature = float(self.chamber_temperature)
+        if self.chamber_temperature is not None and not isinstance(self.chamber_temperature, QuantityValue):
+            self.chamber_temperature = QuantityValue(**as_dict(self.chamber_temperature))
 
         if self.grid_material is not None and not isinstance(self.grid_material, GridMaterialEnum):
             self.grid_material = GridMaterialEnum(self.grid_material)
@@ -2628,17 +2628,17 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.glow_discharge_applied is not None and not isinstance(self.glow_discharge_applied, Bool):
             self.glow_discharge_applied = Bool(self.glow_discharge_applied)
 
-        if self.glow_discharge_time is not None and not isinstance(self.glow_discharge_time, float):
-            self.glow_discharge_time = float(self.glow_discharge_time)
+        if self.glow_discharge_time is not None and not isinstance(self.glow_discharge_time, QuantityValue):
+            self.glow_discharge_time = QuantityValue(**as_dict(self.glow_discharge_time))
 
-        if self.glow_discharge_current is not None and not isinstance(self.glow_discharge_current, float):
-            self.glow_discharge_current = float(self.glow_discharge_current)
+        if self.glow_discharge_current is not None and not isinstance(self.glow_discharge_current, QuantityValue):
+            self.glow_discharge_current = QuantityValue(**as_dict(self.glow_discharge_current))
 
         if self.glow_discharge_atmosphere is not None and not isinstance(self.glow_discharge_atmosphere, str):
             self.glow_discharge_atmosphere = str(self.glow_discharge_atmosphere)
 
-        if self.glow_discharge_pressure is not None and not isinstance(self.glow_discharge_pressure, float):
-            self.glow_discharge_pressure = float(self.glow_discharge_pressure)
+        if self.glow_discharge_pressure is not None and not isinstance(self.glow_discharge_pressure, QuantityValue):
+            self.glow_discharge_pressure = QuantityValue(**as_dict(self.glow_discharge_pressure))
 
         if self.vitrification_instrument is not None and not isinstance(self.vitrification_instrument, str):
             self.vitrification_instrument = str(self.vitrification_instrument)
@@ -2646,20 +2646,20 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.blot_number is not None and not isinstance(self.blot_number, int):
             self.blot_number = int(self.blot_number)
 
-        if self.wait_time is not None and not isinstance(self.wait_time, float):
-            self.wait_time = float(self.wait_time)
+        if self.wait_time is not None and not isinstance(self.wait_time, QuantityValue):
+            self.wait_time = QuantityValue(**as_dict(self.wait_time))
 
-        if self.blotter_height is not None and not isinstance(self.blotter_height, float):
-            self.blotter_height = float(self.blotter_height)
+        if self.blotter_height is not None and not isinstance(self.blotter_height, QuantityValue):
+            self.blotter_height = QuantityValue(**as_dict(self.blotter_height))
 
-        if self.blotter_setting is not None and not isinstance(self.blotter_setting, float):
-            self.blotter_setting = float(self.blotter_setting)
+        if self.blotter_setting is not None and not isinstance(self.blotter_setting, QuantityValue):
+            self.blotter_setting = QuantityValue(**as_dict(self.blotter_setting))
 
-        if self.sample_applied_volume is not None and not isinstance(self.sample_applied_volume, float):
-            self.sample_applied_volume = float(self.sample_applied_volume)
+        if self.sample_applied_volume is not None and not isinstance(self.sample_applied_volume, QuantityValue):
+            self.sample_applied_volume = QuantityValue(**as_dict(self.sample_applied_volume))
 
-        if self.ethane_temperature is not None and not isinstance(self.ethane_temperature, float):
-            self.ethane_temperature = float(self.ethane_temperature)
+        if self.ethane_temperature is not None and not isinstance(self.ethane_temperature, QuantityValue):
+            self.ethane_temperature = QuantityValue(**as_dict(self.ethane_temperature))
 
         if self.plasma_treatment is not None and not isinstance(self.plasma_treatment, str):
             self.plasma_treatment = str(self.plasma_treatment)
@@ -2681,15 +2681,15 @@ class CrystallizationConditions(AttributeGroup):
 
     method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
     crystallization_conditions: Optional[str] = None
-    drop_volume: Optional[float] = None
+    drop_volume: Optional[Union[dict, "QuantityValue"]] = None
     protein_concentration: Optional[float] = None
     crystal_size_um: Optional[str] = None
     cryo_protectant: Optional[str] = None
     crystal_id: Optional[str] = None
     screen_name: Optional[str] = None
-    temperature_c: Optional[float] = None
+    temperature_c: Optional[Union[dict, "QuantityValue"]] = None
     drop_ratio_protein_to_reservoir: Optional[str] = None
-    reservoir_volume_ul: Optional[float] = None
+    reservoir_volume_ul: Optional[Union[dict, "QuantityValue"]] = None
     seeding_type: Optional[str] = None
     seed_stock_dilution: Optional[str] = None
 
@@ -2700,8 +2700,8 @@ class CrystallizationConditions(AttributeGroup):
         if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
             self.crystallization_conditions = str(self.crystallization_conditions)
 
-        if self.drop_volume is not None and not isinstance(self.drop_volume, float):
-            self.drop_volume = float(self.drop_volume)
+        if self.drop_volume is not None and not isinstance(self.drop_volume, QuantityValue):
+            self.drop_volume = QuantityValue(**as_dict(self.drop_volume))
 
         if self.protein_concentration is not None and not isinstance(self.protein_concentration, float):
             self.protein_concentration = float(self.protein_concentration)
@@ -2718,14 +2718,14 @@ class CrystallizationConditions(AttributeGroup):
         if self.screen_name is not None and not isinstance(self.screen_name, str):
             self.screen_name = str(self.screen_name)
 
-        if self.temperature_c is not None and not isinstance(self.temperature_c, float):
-            self.temperature_c = float(self.temperature_c)
+        if self.temperature_c is not None and not isinstance(self.temperature_c, QuantityValue):
+            self.temperature_c = QuantityValue(**as_dict(self.temperature_c))
 
         if self.drop_ratio_protein_to_reservoir is not None and not isinstance(self.drop_ratio_protein_to_reservoir, str):
             self.drop_ratio_protein_to_reservoir = str(self.drop_ratio_protein_to_reservoir)
 
-        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, float):
-            self.reservoir_volume_ul = float(self.reservoir_volume_ul)
+        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, QuantityValue):
+            self.reservoir_volume_ul = QuantityValue(**as_dict(self.reservoir_volume_ul))
 
         if self.seeding_type is not None and not isinstance(self.seeding_type, str):
             self.seeding_type = str(self.seeding_type)
@@ -2754,10 +2754,10 @@ class XRayPreparation(TechniqueSpecificPreparation):
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
     crystallization_conditions: Optional[Union[dict, CrystallizationConditions]] = None
     screen_name: Optional[str] = None
-    temperature_c: Optional[float] = None
+    temperature_c: Optional[Union[dict, "QuantityValue"]] = None
     drop_ratio_protein_to_reservoir: Optional[str] = None
-    drop_volume_nl: Optional[float] = None
-    reservoir_volume_ul: Optional[float] = None
+    drop_volume_nl: Optional[Union[dict, "QuantityValue"]] = None
+    reservoir_volume_ul: Optional[Union[dict, "QuantityValue"]] = None
     seeding_type: Optional[str] = None
     seed_stock_dilution: Optional[str] = None
     initial_hit_condition: Optional[str] = None
@@ -2765,14 +2765,14 @@ class XRayPreparation(TechniqueSpecificPreparation):
     optimized_condition: Optional[str] = None
     crystal_size_um: Optional[str] = None
     cryoprotectant: Optional[str] = None
-    cryoprotectant_concentration: Optional[float] = None
+    cryoprotectant_concentration: Optional[Union[dict, "QuantityValue"]] = None
     soak_compound: Optional[str] = None
     soak_conditions: Optional[str] = None
     mounting_method: Optional[str] = None
     flash_cooling_method: Optional[str] = None
     crystal_notes: Optional[str] = None
-    loop_size: Optional[float] = None
-    mounting_temperature: Optional[float] = None
+    loop_size: Optional[Union[dict, "QuantityValue"]] = None
+    mounting_temperature: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, float):
@@ -2793,17 +2793,17 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.screen_name is not None and not isinstance(self.screen_name, str):
             self.screen_name = str(self.screen_name)
 
-        if self.temperature_c is not None and not isinstance(self.temperature_c, float):
-            self.temperature_c = float(self.temperature_c)
+        if self.temperature_c is not None and not isinstance(self.temperature_c, QuantityValue):
+            self.temperature_c = QuantityValue(**as_dict(self.temperature_c))
 
         if self.drop_ratio_protein_to_reservoir is not None and not isinstance(self.drop_ratio_protein_to_reservoir, str):
             self.drop_ratio_protein_to_reservoir = str(self.drop_ratio_protein_to_reservoir)
 
-        if self.drop_volume_nl is not None and not isinstance(self.drop_volume_nl, float):
-            self.drop_volume_nl = float(self.drop_volume_nl)
+        if self.drop_volume_nl is not None and not isinstance(self.drop_volume_nl, QuantityValue):
+            self.drop_volume_nl = QuantityValue(**as_dict(self.drop_volume_nl))
 
-        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, float):
-            self.reservoir_volume_ul = float(self.reservoir_volume_ul)
+        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, QuantityValue):
+            self.reservoir_volume_ul = QuantityValue(**as_dict(self.reservoir_volume_ul))
 
         if self.seeding_type is not None and not isinstance(self.seeding_type, str):
             self.seeding_type = str(self.seeding_type)
@@ -2826,8 +2826,8 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.cryoprotectant is not None and not isinstance(self.cryoprotectant, str):
             self.cryoprotectant = str(self.cryoprotectant)
 
-        if self.cryoprotectant_concentration is not None and not isinstance(self.cryoprotectant_concentration, float):
-            self.cryoprotectant_concentration = float(self.cryoprotectant_concentration)
+        if self.cryoprotectant_concentration is not None and not isinstance(self.cryoprotectant_concentration, QuantityValue):
+            self.cryoprotectant_concentration = QuantityValue(**as_dict(self.cryoprotectant_concentration))
 
         if self.soak_compound is not None and not isinstance(self.soak_compound, str):
             self.soak_compound = str(self.soak_compound)
@@ -2844,11 +2844,11 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.crystal_notes is not None and not isinstance(self.crystal_notes, str):
             self.crystal_notes = str(self.crystal_notes)
 
-        if self.loop_size is not None and not isinstance(self.loop_size, float):
-            self.loop_size = float(self.loop_size)
+        if self.loop_size is not None and not isinstance(self.loop_size, QuantityValue):
+            self.loop_size = QuantityValue(**as_dict(self.loop_size))
 
-        if self.mounting_temperature is not None and not isinstance(self.mounting_temperature, float):
-            self.mounting_temperature = float(self.mounting_temperature)
+        if self.mounting_temperature is not None and not isinstance(self.mounting_temperature, QuantityValue):
+            self.mounting_temperature = QuantityValue(**as_dict(self.mounting_temperature))
 
         super().__post_init__(**kwargs)
 
@@ -2868,7 +2868,7 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     concentration_series: Optional[Union[float, list[float]]] = empty_list()
     buffer_matching_protocol: Optional[str] = None
     sample_cell_type: Optional[str] = None
-    cell_path_length: Optional[float] = None
+    cell_path_length: Optional[Union[dict, "QuantityValue"]] = None
     temperature_control: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2882,8 +2882,8 @@ class SAXSPreparation(TechniqueSpecificPreparation):
         if self.sample_cell_type is not None and not isinstance(self.sample_cell_type, str):
             self.sample_cell_type = str(self.sample_cell_type)
 
-        if self.cell_path_length is not None and not isinstance(self.cell_path_length, float):
-            self.cell_path_length = float(self.cell_path_length)
+        if self.cell_path_length is not None and not isinstance(self.cell_path_length, QuantityValue):
+            self.cell_path_length = QuantityValue(**as_dict(self.cell_path_length))
 
         if self.temperature_control is not None and not isinstance(self.temperature_control, str):
             self.temperature_control = str(self.temperature_control)
@@ -7583,22 +7583,22 @@ slots.cryoEMPreparation__support_film = Slot(uri=LAMBDABER.support_film, name="c
                    model_uri=LAMBDABER.cryoEMPreparation__support_film, domain=None, range=Optional[str])
 
 slots.cryoEMPreparation__hole_size = Slot(uri=LAMBDABER.hole_size, name="cryoEMPreparation__hole_size", curie=LAMBDABER.curie('hole_size'),
-                   model_uri=LAMBDABER.cryoEMPreparation__hole_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__hole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__vitrification_method = Slot(uri=LAMBDABER.vitrification_method, name="cryoEMPreparation__vitrification_method", curie=LAMBDABER.curie('vitrification_method'),
                    model_uri=LAMBDABER.cryoEMPreparation__vitrification_method, domain=None, range=Optional[Union[str, "VitrificationMethodEnum"]])
 
 slots.cryoEMPreparation__blot_time = Slot(uri=LAMBDABER.blot_time, name="cryoEMPreparation__blot_time", curie=LAMBDABER.curie('blot_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__blot_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__blot_force = Slot(uri=LAMBDABER.blot_force, name="cryoEMPreparation__blot_force", curie=LAMBDABER.curie('blot_force'),
                    model_uri=LAMBDABER.cryoEMPreparation__blot_force, domain=None, range=Optional[int])
 
 slots.cryoEMPreparation__humidity_percentage = Slot(uri=LAMBDABER.humidity_percentage, name="cryoEMPreparation__humidity_percentage", curie=LAMBDABER.curie('humidity_percentage'),
-                   model_uri=LAMBDABER.cryoEMPreparation__humidity_percentage, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__humidity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temperature, name="cryoEMPreparation__chamber_temperature", curie=LAMBDABER.curie('chamber_temperature'),
-                   model_uri=LAMBDABER.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__grid_material = Slot(uri=LAMBDABER.grid_material, name="cryoEMPreparation__grid_material", curie=LAMBDABER.curie('grid_material'),
                    model_uri=LAMBDABER.cryoEMPreparation__grid_material, domain=None, range=Optional[Union[str, "GridMaterialEnum"]])
@@ -7607,16 +7607,16 @@ slots.cryoEMPreparation__glow_discharge_applied = Slot(uri=LAMBDABER.glow_discha
                    model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_applied, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.cryoEMPreparation__glow_discharge_time = Slot(uri=LAMBDABER.glow_discharge_time, name="cryoEMPreparation__glow_discharge_time", curie=LAMBDABER.curie('glow_discharge_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__glow_discharge_current = Slot(uri=LAMBDABER.glow_discharge_current, name="cryoEMPreparation__glow_discharge_current", curie=LAMBDABER.curie('glow_discharge_current'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_current, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_current, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__glow_discharge_atmosphere = Slot(uri=LAMBDABER.glow_discharge_atmosphere, name="cryoEMPreparation__glow_discharge_atmosphere", curie=LAMBDABER.curie('glow_discharge_atmosphere'),
                    model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_atmosphere, domain=None, range=Optional[str])
 
 slots.cryoEMPreparation__glow_discharge_pressure = Slot(uri=LAMBDABER.glow_discharge_pressure, name="cryoEMPreparation__glow_discharge_pressure", curie=LAMBDABER.curie('glow_discharge_pressure'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_pressure, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__vitrification_instrument = Slot(uri=LAMBDABER.vitrification_instrument, name="cryoEMPreparation__vitrification_instrument", curie=LAMBDABER.curie('vitrification_instrument'),
                    model_uri=LAMBDABER.cryoEMPreparation__vitrification_instrument, domain=None, range=Optional[str])
@@ -7625,19 +7625,19 @@ slots.cryoEMPreparation__blot_number = Slot(uri=LAMBDABER.blot_number, name="cry
                    model_uri=LAMBDABER.cryoEMPreparation__blot_number, domain=None, range=Optional[int])
 
 slots.cryoEMPreparation__wait_time = Slot(uri=LAMBDABER.wait_time, name="cryoEMPreparation__wait_time", curie=LAMBDABER.curie('wait_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__wait_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__wait_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__blotter_height = Slot(uri=LAMBDABER.blotter_height, name="cryoEMPreparation__blotter_height", curie=LAMBDABER.curie('blotter_height'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blotter_height, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__blotter_height, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__blotter_setting = Slot(uri=LAMBDABER.blotter_setting, name="cryoEMPreparation__blotter_setting", curie=LAMBDABER.curie('blotter_setting'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blotter_setting, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__blotter_setting, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__sample_applied_volume = Slot(uri=LAMBDABER.sample_applied_volume, name="cryoEMPreparation__sample_applied_volume", curie=LAMBDABER.curie('sample_applied_volume'),
-                   model_uri=LAMBDABER.cryoEMPreparation__sample_applied_volume, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__sample_applied_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDABER.ethane_temperature, name="cryoEMPreparation__ethane_temperature", curie=LAMBDABER.curie('ethane_temperature'),
-                   model_uri=LAMBDABER.cryoEMPreparation__ethane_temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMPreparation__ethane_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDABER.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDABER.curie('plasma_treatment'),
                    model_uri=LAMBDABER.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
@@ -7649,7 +7649,7 @@ slots.crystallizationConditions__crystallization_conditions = Slot(uri=NSLS2.Con
                    model_uri=LAMBDABER.crystallizationConditions__crystallization_conditions, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__drop_volume = Slot(uri=NSLS2.Drop_Volume, name="crystallizationConditions__drop_volume", curie=NSLS2.curie('Drop_Volume'),
-                   model_uri=LAMBDABER.crystallizationConditions__drop_volume, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.crystallizationConditions__drop_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__protein_concentration = Slot(uri=NSLS2.Protein_Concentration, name="crystallizationConditions__protein_concentration", curie=NSLS2.curie('Protein_Concentration'),
                    model_uri=LAMBDABER.crystallizationConditions__protein_concentration, domain=None, range=Optional[float])
@@ -7667,13 +7667,13 @@ slots.crystallizationConditions__screen_name = Slot(uri=LAMBDABER.screen_name, n
                    model_uri=LAMBDABER.crystallizationConditions__screen_name, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="crystallizationConditions__temperature_c", curie=LAMBDABER.curie('temperature_c'),
-                   model_uri=LAMBDABER.crystallizationConditions__temperature_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.crystallizationConditions__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="crystallizationConditions__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
                    model_uri=LAMBDABER.crystallizationConditions__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="crystallizationConditions__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
-                   model_uri=LAMBDABER.crystallizationConditions__reservoir_volume_ul, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.crystallizationConditions__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="crystallizationConditions__seeding_type", curie=LAMBDABER.curie('seeding_type'),
                    model_uri=LAMBDABER.crystallizationConditions__seeding_type, domain=None, range=Optional[str])
@@ -7700,16 +7700,16 @@ slots.xRayPreparation__screen_name = Slot(uri=LAMBDABER.screen_name, name="xRayP
                    model_uri=LAMBDABER.xRayPreparation__screen_name, domain=None, range=Optional[str])
 
 slots.xRayPreparation__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="xRayPreparation__temperature_c", curie=LAMBDABER.curie('temperature_c'),
-                   model_uri=LAMBDABER.xRayPreparation__temperature_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="xRayPreparation__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
                    model_uri=LAMBDABER.xRayPreparation__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
 
 slots.xRayPreparation__drop_volume_nl = Slot(uri=LAMBDABER.drop_volume_nl, name="xRayPreparation__drop_volume_nl", curie=LAMBDABER.curie('drop_volume_nl'),
-                   model_uri=LAMBDABER.xRayPreparation__drop_volume_nl, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__drop_volume_nl, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="xRayPreparation__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
-                   model_uri=LAMBDABER.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="xRayPreparation__seeding_type", curie=LAMBDABER.curie('seeding_type'),
                    model_uri=LAMBDABER.xRayPreparation__seeding_type, domain=None, range=Optional[str])
@@ -7733,7 +7733,7 @@ slots.xRayPreparation__cryoprotectant = Slot(uri=LAMBDABER.cryoprotectant, name=
                    model_uri=LAMBDABER.xRayPreparation__cryoprotectant, domain=None, range=Optional[str])
 
 slots.xRayPreparation__cryoprotectant_concentration = Slot(uri=LAMBDABER.cryoprotectant_concentration, name="xRayPreparation__cryoprotectant_concentration", curie=LAMBDABER.curie('cryoprotectant_concentration'),
-                   model_uri=LAMBDABER.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__soak_compound = Slot(uri=LAMBDABER.soak_compound, name="xRayPreparation__soak_compound", curie=LAMBDABER.curie('soak_compound'),
                    model_uri=LAMBDABER.xRayPreparation__soak_compound, domain=None, range=Optional[str])
@@ -7751,10 +7751,10 @@ slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDABER.crystal_notes, name="x
                    model_uri=LAMBDABER.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
 
 slots.xRayPreparation__loop_size = Slot(uri=NSLS2.Loop_Size, name="xRayPreparation__loop_size", curie=NSLS2.curie('Loop_Size'),
-                   model_uri=LAMBDABER.xRayPreparation__loop_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__loop_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__mounting_temperature = Slot(uri=NSLS2.Temperature, name="xRayPreparation__mounting_temperature", curie=NSLS2.curie('Temperature'),
-                   model_uri=LAMBDABER.xRayPreparation__mounting_temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDABER.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDABER.curie('concentration_series'),
                    model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])
@@ -7766,7 +7766,7 @@ slots.sAXSPreparation__sample_cell_type = Slot(uri=LAMBDABER.sample_cell_type, n
                    model_uri=LAMBDABER.sAXSPreparation__sample_cell_type, domain=None, range=Optional[str])
 
 slots.sAXSPreparation__cell_path_length = Slot(uri=LAMBDABER.cell_path_length, name="sAXSPreparation__cell_path_length", curie=LAMBDABER.curie('cell_path_length'),
-                   model_uri=LAMBDABER.sAXSPreparation__cell_path_length, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sAXSPreparation__cell_path_length, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSPreparation__temperature_control = Slot(uri=LAMBDABER.temperature_control, name="sAXSPreparation__temperature_control", curie=LAMBDABER.curie('temperature_control'),
                    model_uri=LAMBDABER.sAXSPreparation__temperature_control, domain=None, range=Optional[str])

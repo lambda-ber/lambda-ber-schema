@@ -1787,29 +1787,33 @@ classes:
         description: "Support film type"
         range: string
       hole_size:
-        description: "Hole size in micrometers (range: 0.5-5.0)"
-        range: float
+        description: "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         minimum_value: 0.5
         maximum_value: 5.0
       vitrification_method:
         description: "Method used for vitrification"
         range: VitrificationMethodEnum
       blot_time:
-        description: "Blotting time in seconds (range: 0.5-10.0)"
-        range: float
+        description: "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         minimum_value: 0.5
         maximum_value: 10.0
       blot_force:
         description: "Blotting force setting"
         range: integer
       humidity_percentage:
-        description: "Chamber humidity during vitrification (range: 0-100)"
-        range: float
+        description: "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         minimum_value: 0
         maximum_value: 100
       chamber_temperature:
-        description: "Chamber temperature in Celsius"
-        range: float
+        description: "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       # Additional detailed vitrification parameters from PNNL schema
       grid_material:
         description: "Grid material"
@@ -1818,17 +1822,20 @@ classes:
         description: "Whether glow discharge treatment was applied"
         range: boolean
       glow_discharge_time:
-        description: "Glow discharge time in seconds"
-        range: float
+        description: "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       glow_discharge_current:
-        description: "Glow discharge current in milliamperes"
-        range: float
+        description: "Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       glow_discharge_atmosphere:
         description: "Glow discharge atmosphere (air, amylamine)"
         range: string
       glow_discharge_pressure:
-        description: "Glow discharge pressure in millibar"
-        range: float
+        description: "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       vitrification_instrument:
         description: "Vitrification instrument used (e.g., Vitrobot)"
         range: string
@@ -1836,20 +1843,25 @@ classes:
         description: "Number of blots applied"
         range: integer
       wait_time:
-        description: "Wait time before blotting in seconds"
-        range: float
+        description: "Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       blotter_height:
-        description: "Blotter height setting"
-        range: float
+        description: "Blotter height setting. Data providers may include unit information in the QuantityValue if needed."
+        range: QuantityValue
+        inlined: true
       blotter_setting:
-        description: "Blotter setting value"
-        range: float
+        description: "Blotter setting value. Data providers may include unit information in the QuantityValue if needed."
+        range: QuantityValue
+        inlined: true
       sample_applied_volume:
-        description: "Volume of sample applied in microliters"
-        range: float
+        description: "Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       ethane_temperature:
-        description: "Ethane temperature in Celsius"
-        range: float
+        description: "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       plasma_treatment:
         description: "Plasma treatment details"
 
@@ -1870,8 +1882,9 @@ classes:
         comments:
           - "Maps to NSLS2 spreadsheet: Conditions"
       drop_volume:
-        description: "Total drop volume in nanoliters"
-        range: float
+        description: "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         slot_uri: nsls2:Drop_Volume
         comments:
           - "Maps to NSLS2 spreadsheet: Drop_Volume"
@@ -1902,13 +1915,15 @@ classes:
       screen_name:
         description: "Name of crystallization screen used"
       temperature_c:
-        description: "Crystallization temperature in Celsius"
-        range: float
+        description: "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       drop_ratio_protein_to_reservoir:
         description: "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)"
       reservoir_volume_ul:
-        description: "Reservoir volume in microliters"
-        range: float
+        description: "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       seeding_type:
         description: "Type of seeding used (micro, macro, streak)"
       seed_stock_dilution:
@@ -1936,16 +1951,19 @@ classes:
       screen_name:
         description: "Name of crystallization screen used"
       temperature_c:
-        description: "Crystallization temperature in Celsius"
-        range: float
+        description: "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       drop_ratio_protein_to_reservoir:
         description: "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)"
       drop_volume_nl:
-        description: "Total drop volume in nanoliters"
-        range: float
+        description: "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       reservoir_volume_ul:
-        description: "Reservoir volume in microliters"
-        range: float
+        description: "Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       seeding_type:
         description: "Type of seeding used (micro, macro, streak)"
       seed_stock_dilution:
@@ -1964,8 +1982,9 @@ classes:
         description: "Cryoprotectant used"
         range: string
       cryoprotectant_concentration:
-        description: "Cryoprotectant concentration percentage"
-        range: float
+        description: "Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       soak_compound:
         description: "Compound used for soaking (ligand, heavy atom)"
       soak_conditions:
@@ -1981,14 +2000,16 @@ classes:
         description: "Additional notes about crystal quality and handling"
       # Mounting details (NSLS2 Mounting mapping)
       loop_size:
-        description: "Loop size in micrometers"
-        range: float
+        description: "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         slot_uri: nsls2:Loop_Size
         comments:
           - "Maps to NSLS2 spreadsheet: Loop_Size"
       mounting_temperature:
-        description: "Temperature during mounting in Kelvin"
-        range: float
+        description: "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         slot_uri: nsls2:Temperature
         comments:
           - "Maps to NSLS2 spreadsheet: Temperature"
@@ -2006,8 +2027,9 @@ classes:
       sample_cell_type:
         description: "Type of sample cell used"
       cell_path_length:
-        description: "Path length in mm"
-        range: float
+        description: "Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       temperature_control:
         description: "Temperature control settings"
 

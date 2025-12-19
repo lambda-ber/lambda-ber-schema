@@ -301,30 +301,30 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/GridTypeEnum#ultrathin_carbon>
              <https://w3id.org/lambda-ber-schema/GridTypeEnum#gold> ] ? ;
           <support_film> @linkml:String ? ;
-          <hole_size> @linkml:Float ? ;
+          <hole_size> @<QuantityValue> ? ;
           <vitrification_method> [ <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#plunge_freezing>
              <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#high_pressure_freezing>
              <https://w3id.org/lambda-ber-schema/VitrificationMethodEnum#slam_freezing> ] ? ;
-          <blot_time> @linkml:Float ? ;
+          <blot_time> @<QuantityValue> ? ;
           <blot_force> @linkml:Integer ? ;
-          <humidity_percentage> @linkml:Float ? ;
-          <chamber_temperature> @linkml:Float ? ;
+          <humidity_percentage> @<QuantityValue> ? ;
+          <chamber_temperature> @<QuantityValue> ? ;
           <grid_material> [ <https://w3id.org/lambda-ber-schema/GridMaterialEnum#carbon>
              <https://w3id.org/lambda-ber-schema/GridMaterialEnum#gold>
              <https://w3id.org/lambda-ber-schema/GridMaterialEnum#graphene>
              <https://w3id.org/lambda-ber-schema/GridMaterialEnum#silicon_nitride> ] ? ;
           <glow_discharge_applied> @linkml:Boolean ? ;
-          <glow_discharge_time> @linkml:Float ? ;
-          <glow_discharge_current> @linkml:Float ? ;
+          <glow_discharge_time> @<QuantityValue> ? ;
+          <glow_discharge_current> @<QuantityValue> ? ;
           <glow_discharge_atmosphere> @linkml:String ? ;
-          <glow_discharge_pressure> @linkml:Float ? ;
+          <glow_discharge_pressure> @<QuantityValue> ? ;
           <vitrification_instrument> @linkml:String ? ;
           <blot_number> @linkml:Integer ? ;
-          <wait_time> @linkml:Float ? ;
-          <blotter_height> @linkml:Float ? ;
-          <blotter_setting> @linkml:Float ? ;
-          <sample_applied_volume> @linkml:Float ? ;
-          <ethane_temperature> @linkml:Float ? ;
+          <wait_time> @<QuantityValue> ? ;
+          <blotter_height> @<QuantityValue> ? ;
+          <blotter_setting> @<QuantityValue> ? ;
+          <sample_applied_volume> @<QuantityValue> ? ;
+          <ethane_temperature> @<QuantityValue> ? ;
           <plasma_treatment> @linkml:String ?
        ) ;
        rdf:type [ <CryoEMPreparation> ] ?
@@ -342,15 +342,15 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#dialysis>
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
           nsls2:Conditions @linkml:String ? ;
-          nsls2:Drop_Volume @linkml:Float ? ;
+          nsls2:Drop_Volume @<QuantityValue> ? ;
           nsls2:Protein_Concentration @linkml:Float ? ;
           nsls2:Crystal_Size @linkml:String ? ;
           nsls2:Cryo_Protectant @linkml:String ? ;
           nsls2:Crystal_ID @linkml:String ? ;
           <screen_name> @linkml:String ? ;
-          <temperature_c> @linkml:Float ? ;
+          <temperature_c> @<QuantityValue> ? ;
           <drop_ratio_protein_to_reservoir> @linkml:String ? ;
-          <reservoir_volume_ul> @linkml:Float ? ;
+          <reservoir_volume_ul> @<QuantityValue> ? ;
           <seeding_type> @linkml:String ? ;
           <seed_stock_dilution> @linkml:String ?
        ) ;
@@ -1383,7 +1383,7 @@ linkml:Sparqlpath xsd:string
           <concentration_series> @linkml:Float * ;
           <buffer_matching_protocol> @linkml:String ? ;
           <sample_cell_type> @linkml:String ? ;
-          <cell_path_length> @linkml:Float ? ;
+          <cell_path_length> @<QuantityValue> ? ;
           <temperature_control> @linkml:String ?
        ) ;
        rdf:type [ <SAXSPreparation> ] ?
@@ -1645,10 +1645,10 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
           <crystallization_conditions> @<CrystallizationConditions> ? ;
           <screen_name> @linkml:String ? ;
-          <temperature_c> @linkml:Float ? ;
+          <temperature_c> @<QuantityValue> ? ;
           <drop_ratio_protein_to_reservoir> @linkml:String ? ;
-          <drop_volume_nl> @linkml:Float ? ;
-          <reservoir_volume_ul> @linkml:Float ? ;
+          <drop_volume_nl> @<QuantityValue> ? ;
+          <reservoir_volume_ul> @<QuantityValue> ? ;
           <seeding_type> @linkml:String ? ;
           <seed_stock_dilution> @linkml:String ? ;
           <initial_hit_condition> @linkml:String ? ;
@@ -1656,14 +1656,14 @@ linkml:Sparqlpath xsd:string
           <optimized_condition> @linkml:String ? ;
           <crystal_size_um> @linkml:String ? ;
           <cryoprotectant> @linkml:String ? ;
-          <cryoprotectant_concentration> @linkml:Float ? ;
+          <cryoprotectant_concentration> @<QuantityValue> ? ;
           <soak_compound> @linkml:String ? ;
           <soak_conditions> @linkml:String ? ;
           nsls2:Mount_Type @linkml:String ? ;
           <flash_cooling_method> @linkml:String ? ;
           <crystal_notes> @linkml:String ? ;
-          nsls2:Loop_Size @linkml:Float ? ;
-          nsls2:Temperature @linkml:Float ?
+          nsls2:Loop_Size @<QuantityValue> ? ;
+          nsls2:Temperature @<QuantityValue> ?
        ) ;
        rdf:type [ <XRayPreparation> ] ?
     )

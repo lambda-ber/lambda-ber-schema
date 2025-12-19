@@ -576,43 +576,43 @@
 --     * Slot: id
 --     * Slot: grid_type Description: Type of EM grid used
 --     * Slot: support_film Description: Support film type
---     * Slot: hole_size Description: Hole size in micrometers (range: 0.5-5.0)
 --     * Slot: vitrification_method Description: Method used for vitrification
---     * Slot: blot_time Description: Blotting time in seconds (range: 0.5-10.0)
 --     * Slot: blot_force Description: Blotting force setting
---     * Slot: humidity_percentage Description: Chamber humidity during vitrification (range: 0-100)
---     * Slot: chamber_temperature Description: Chamber temperature in Celsius
 --     * Slot: grid_material Description: Grid material
 --     * Slot: glow_discharge_applied Description: Whether glow discharge treatment was applied
---     * Slot: glow_discharge_time Description: Glow discharge time in seconds
---     * Slot: glow_discharge_current Description: Glow discharge current in milliamperes
 --     * Slot: glow_discharge_atmosphere Description: Glow discharge atmosphere (air, amylamine)
---     * Slot: glow_discharge_pressure Description: Glow discharge pressure in millibar
 --     * Slot: vitrification_instrument Description: Vitrification instrument used (e.g., Vitrobot)
 --     * Slot: blot_number Description: Number of blots applied
---     * Slot: wait_time Description: Wait time before blotting in seconds
---     * Slot: blotter_height Description: Blotter height setting
---     * Slot: blotter_setting Description: Blotter setting value
---     * Slot: sample_applied_volume Description: Volume of sample applied in microliters
---     * Slot: ethane_temperature Description: Ethane temperature in Celsius
 --     * Slot: plasma_treatment Description: Plasma treatment details
 --     * Slot: description
+--     * Slot: hole_size_id Description: Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: blot_time_id Description: Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: humidity_percentage_id Description: Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
+--     * Slot: chamber_temperature_id Description: Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: glow_discharge_time_id Description: Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: glow_discharge_current_id Description: Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: glow_discharge_pressure_id Description: Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: wait_time_id Description: Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: blotter_height_id Description: Blotter height setting. Data providers may include unit information in the QuantityValue if needed.
+--     * Slot: blotter_setting_id Description: Blotter setting value. Data providers may include unit information in the QuantityValue if needed.
+--     * Slot: sample_applied_volume_id Description: Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: ethane_temperature_id Description: Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: CrystallizationConditions Description: Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
 --     * Slot: id
 --     * Slot: method Description: Crystallization method used
 --     * Slot: crystallization_conditions Description: Complete description of crystallization conditions including precipitant, pH, salts
---     * Slot: drop_volume Description: Total drop volume in nanoliters
 --     * Slot: protein_concentration Description: Protein concentration for crystallization in mg/mL
 --     * Slot: crystal_size_um Description: Crystal dimensions in micrometers (length x width x height)
 --     * Slot: cryo_protectant Description: Cryoprotectant used for crystal cooling
 --     * Slot: crystal_id Description: Identifier for the specific crystal used
 --     * Slot: screen_name Description: Name of crystallization screen used
---     * Slot: temperature_c Description: Crystallization temperature in Celsius
 --     * Slot: drop_ratio_protein_to_reservoir Description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
---     * Slot: reservoir_volume_ul Description: Reservoir volume in microliters
 --     * Slot: seeding_type Description: Type of seeding used (micro, macro, streak)
 --     * Slot: seed_stock_dilution Description: Dilution factor for seed stock
 --     * Slot: description
+--     * Slot: drop_volume_id Description: Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: temperature_c_id Description: Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: reservoir_volume_ul_id Description: Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: XRayPreparation Description: X-ray crystallography specific preparation
 --     * Slot: id
 --     * Slot: protein_concentration_mg_per_ml Description: Protein concentration for crystallization in mg/mL
@@ -620,10 +620,7 @@
 --     * Slot: additives Description: Additives mixed with protein before crystallization
 --     * Slot: crystallization_method Description: Method used for crystallization
 --     * Slot: screen_name Description: Name of crystallization screen used
---     * Slot: temperature_c Description: Crystallization temperature in Celsius
 --     * Slot: drop_ratio_protein_to_reservoir Description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
---     * Slot: drop_volume_nl Description: Total drop volume in nanoliters
---     * Slot: reservoir_volume_ul Description: Reservoir volume in microliters
 --     * Slot: seeding_type Description: Type of seeding used (micro, macro, streak)
 --     * Slot: seed_stock_dilution Description: Dilution factor for seed stock
 --     * Slot: initial_hit_condition Description: Description of initial crystallization hit condition
@@ -631,23 +628,26 @@
 --     * Slot: optimized_condition Description: Final optimized crystallization condition
 --     * Slot: crystal_size_um Description: Crystal dimensions in micrometers
 --     * Slot: cryoprotectant Description: Cryoprotectant used
---     * Slot: cryoprotectant_concentration Description: Cryoprotectant concentration percentage
 --     * Slot: soak_compound Description: Compound used for soaking (ligand, heavy atom)
 --     * Slot: soak_conditions Description: Conditions for crystal soaking
 --     * Slot: mounting_method Description: Crystal mounting method
 --     * Slot: flash_cooling_method Description: Flash cooling protocol
 --     * Slot: crystal_notes Description: Additional notes about crystal quality and handling
---     * Slot: loop_size Description: Loop size in micrometers
---     * Slot: mounting_temperature Description: Temperature during mounting in Kelvin
 --     * Slot: description
 --     * Slot: crystallization_conditions_id Description: Detailed crystallization conditions
+--     * Slot: temperature_c_id Description: Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: drop_volume_nl_id Description: Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: reservoir_volume_ul_id Description: Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: cryoprotectant_concentration_id Description: Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
+--     * Slot: loop_size_id Description: Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: mounting_temperature_id Description: Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: SAXSPreparation Description: SAXS/WAXS specific preparation
 --     * Slot: id
 --     * Slot: buffer_matching_protocol Description: Protocol for buffer matching
 --     * Slot: sample_cell_type Description: Type of sample cell used
---     * Slot: cell_path_length Description: Path length in mm
 --     * Slot: temperature_control Description: Temperature control settings
 --     * Slot: description
+--     * Slot: cell_path_length_id Description: Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: ExperimentalConditions Description: Environmental and experimental conditions
 --     * Slot: id
 --     * Slot: atmosphere Description: Atmosphere composition
@@ -1270,60 +1270,6 @@ CREATE TABLE "TechniqueSpecificPreparation" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_TechniqueSpecificPreparation_id" ON "TechniqueSpecificPreparation" (id);
-CREATE TABLE "CryoEMPreparation" (
-	id INTEGER NOT NULL,
-	grid_type VARCHAR(16),
-	support_film TEXT,
-	hole_size FLOAT,
-	vitrification_method VARCHAR(22),
-	blot_time FLOAT,
-	blot_force INTEGER,
-	humidity_percentage FLOAT,
-	chamber_temperature FLOAT,
-	grid_material VARCHAR(15),
-	glow_discharge_applied BOOLEAN,
-	glow_discharge_time FLOAT,
-	glow_discharge_current FLOAT,
-	glow_discharge_atmosphere TEXT,
-	glow_discharge_pressure FLOAT,
-	vitrification_instrument TEXT,
-	blot_number INTEGER,
-	wait_time FLOAT,
-	blotter_height FLOAT,
-	blotter_setting FLOAT,
-	sample_applied_volume FLOAT,
-	ethane_temperature FLOAT,
-	plasma_treatment TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_CryoEMPreparation_id" ON "CryoEMPreparation" (id);
-CREATE TABLE "CrystallizationConditions" (
-	id INTEGER NOT NULL,
-	method VARCHAR(24),
-	crystallization_conditions TEXT,
-	drop_volume FLOAT,
-	protein_concentration FLOAT,
-	crystal_size_um TEXT,
-	cryo_protectant TEXT,
-	crystal_id TEXT,
-	screen_name TEXT,
-	temperature_c FLOAT,
-	drop_ratio_protein_to_reservoir TEXT,
-	reservoir_volume_ul FLOAT,
-	seeding_type TEXT,
-	seed_stock_dilution TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_CrystallizationConditions_id" ON "CrystallizationConditions" (id);
-CREATE TABLE "SAXSPreparation" (
-	id INTEGER NOT NULL,
-	buffer_matching_protocol TEXT,
-	sample_cell_type TEXT,
-	cell_path_length FLOAT,
-	temperature_control TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_SAXSPreparation_id" ON "SAXSPreparation" (id);
 CREATE TABLE "ComputeResources" (
 	id INTEGER NOT NULL,
 	cpu_hours FLOAT,
@@ -1481,37 +1427,6 @@ CREATE TABLE "OntologyTerm" (
 	FOREIGN KEY("ImageFeature_id") REFERENCES "ImageFeature" (id),
 	FOREIGN KEY("OntologyTerm_id") REFERENCES "OntologyTerm" (id)
 );CREATE INDEX "ix_OntologyTerm_id" ON "OntologyTerm" (id);
-CREATE TABLE "XRayPreparation" (
-	id INTEGER NOT NULL,
-	protein_concentration_mg_per_ml FLOAT,
-	protein_buffer TEXT,
-	additives TEXT,
-	crystallization_method VARCHAR(24),
-	screen_name TEXT,
-	temperature_c FLOAT,
-	drop_ratio_protein_to_reservoir TEXT,
-	drop_volume_nl FLOAT,
-	reservoir_volume_ul FLOAT,
-	seeding_type TEXT,
-	seed_stock_dilution TEXT,
-	initial_hit_condition TEXT,
-	optimization_strategy TEXT,
-	optimized_condition TEXT,
-	crystal_size_um TEXT,
-	cryoprotectant TEXT,
-	cryoprotectant_concentration FLOAT,
-	soak_compound TEXT,
-	soak_conditions TEXT,
-	mounting_method TEXT,
-	flash_cooling_method TEXT,
-	crystal_notes TEXT,
-	loop_size FLOAT,
-	mounting_temperature FLOAT,
-	description TEXT,
-	crystallization_conditions_id INTEGER,
-	PRIMARY KEY (id),
-	FOREIGN KEY(crystallization_conditions_id) REFERENCES "CrystallizationConditions" (id)
-);CREATE INDEX "ix_XRayPreparation_id" ON "XRayPreparation" (id);
 CREATE TABLE "AttributeValue" (
 	id INTEGER NOT NULL,
 	raw_value TEXT,
@@ -1595,37 +1510,31 @@ CREATE TABLE "BufferComposition_components" (
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
 );CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
-CREATE TABLE "SAXSPreparation_concentration_series" (
-	"SAXSPreparation_id" INTEGER,
-	concentration_series FLOAT,
-	PRIMARY KEY ("SAXSPreparation_id", concentration_series),
-	FOREIGN KEY("SAXSPreparation_id") REFERENCES "SAXSPreparation" (id)
-);CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");
 CREATE TABLE "FSCCurve_resolution_angstrom" (
 	"FSCCurve_id" INTEGER,
 	resolution_angstrom FLOAT,
 	PRIMARY KEY ("FSCCurve_id", resolution_angstrom),
 	FOREIGN KEY("FSCCurve_id") REFERENCES "FSCCurve" (id)
-);CREATE INDEX "ix_FSCCurve_resolution_angstrom_resolution_angstrom" ON "FSCCurve_resolution_angstrom" (resolution_angstrom);CREATE INDEX "ix_FSCCurve_resolution_angstrom_FSCCurve_id" ON "FSCCurve_resolution_angstrom" ("FSCCurve_id");
+);CREATE INDEX "ix_FSCCurve_resolution_angstrom_FSCCurve_id" ON "FSCCurve_resolution_angstrom" ("FSCCurve_id");CREATE INDEX "ix_FSCCurve_resolution_angstrom_resolution_angstrom" ON "FSCCurve_resolution_angstrom" (resolution_angstrom);
 CREATE TABLE "FSCCurve_fsc_value" (
 	"FSCCurve_id" INTEGER,
 	fsc_value FLOAT,
 	PRIMARY KEY ("FSCCurve_id", fsc_value),
 	FOREIGN KEY("FSCCurve_id") REFERENCES "FSCCurve" (id)
-);CREATE INDEX "ix_FSCCurve_fsc_value_fsc_value" ON "FSCCurve_fsc_value" (fsc_value);CREATE INDEX "ix_FSCCurve_fsc_value_FSCCurve_id" ON "FSCCurve_fsc_value" ("FSCCurve_id");
+);CREATE INDEX "ix_FSCCurve_fsc_value_FSCCurve_id" ON "FSCCurve_fsc_value" ("FSCCurve_id");CREATE INDEX "ix_FSCCurve_fsc_value_fsc_value" ON "FSCCurve_fsc_value" (fsc_value);
 CREATE TABLE "ProteinAnnotation_publication_ids" (
 	"ProteinAnnotation_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1637,13 +1546,13 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
@@ -2114,6 +2023,76 @@ CREATE TABLE "StorageConditions" (
 	PRIMARY KEY (id),
 	FOREIGN KEY(temperature_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_StorageConditions_id" ON "StorageConditions" (id);
+CREATE TABLE "CryoEMPreparation" (
+	id INTEGER NOT NULL,
+	grid_type VARCHAR(16),
+	support_film TEXT,
+	vitrification_method VARCHAR(22),
+	blot_force INTEGER,
+	grid_material VARCHAR(15),
+	glow_discharge_applied BOOLEAN,
+	glow_discharge_atmosphere TEXT,
+	vitrification_instrument TEXT,
+	blot_number INTEGER,
+	plasma_treatment TEXT,
+	description TEXT,
+	hole_size_id INTEGER,
+	blot_time_id INTEGER,
+	humidity_percentage_id INTEGER,
+	chamber_temperature_id INTEGER,
+	glow_discharge_time_id INTEGER,
+	glow_discharge_current_id INTEGER,
+	glow_discharge_pressure_id INTEGER,
+	wait_time_id INTEGER,
+	blotter_height_id INTEGER,
+	blotter_setting_id INTEGER,
+	sample_applied_volume_id INTEGER,
+	ethane_temperature_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(hole_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(blot_time_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(humidity_percentage_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(chamber_temperature_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(glow_discharge_time_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(glow_discharge_current_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(glow_discharge_pressure_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(wait_time_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(blotter_height_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(blotter_setting_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_applied_volume_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(ethane_temperature_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_CryoEMPreparation_id" ON "CryoEMPreparation" (id);
+CREATE TABLE "CrystallizationConditions" (
+	id INTEGER NOT NULL,
+	method VARCHAR(24),
+	crystallization_conditions TEXT,
+	protein_concentration FLOAT,
+	crystal_size_um TEXT,
+	cryo_protectant TEXT,
+	crystal_id TEXT,
+	screen_name TEXT,
+	drop_ratio_protein_to_reservoir TEXT,
+	seeding_type TEXT,
+	seed_stock_dilution TEXT,
+	description TEXT,
+	drop_volume_id INTEGER,
+	temperature_c_id INTEGER,
+	reservoir_volume_ul_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(drop_volume_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(temperature_c_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(reservoir_volume_ul_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_CrystallizationConditions_id" ON "CrystallizationConditions" (id);
+CREATE TABLE "SAXSPreparation" (
+	id INTEGER NOT NULL,
+	buffer_matching_protocol TEXT,
+	sample_cell_type TEXT,
+	temperature_control TEXT,
+	description TEXT,
+	cell_path_length_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(cell_path_length_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SAXSPreparation_id" ON "SAXSPreparation" (id);
 CREATE TABLE "ExperimentalConditions" (
 	id INTEGER NOT NULL,
 	atmosphere TEXT,
@@ -2214,13 +2193,13 @@ CREATE TABLE "ConformationalState_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("ConformationalState_id", pdb_entries),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");
+);CREATE INDEX "ix_ConformationalState_pdb_entries_ConformationalState_id" ON "ConformationalState_pdb_entries" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_pdb_entries_pdb_entries" ON "ConformationalState_pdb_entries" (pdb_entries);
 CREATE TABLE "ConformationalState_characteristic_features" (
 	"ConformationalState_id" INTEGER,
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -2349,6 +2328,43 @@ CREATE TABLE "ExperimentRun" (
 	FOREIGN KEY(resolution_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(resolution_at_corner_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_ExperimentRun_id" ON "ExperimentRun" (id);
+CREATE TABLE "XRayPreparation" (
+	id INTEGER NOT NULL,
+	protein_concentration_mg_per_ml FLOAT,
+	protein_buffer TEXT,
+	additives TEXT,
+	crystallization_method VARCHAR(24),
+	screen_name TEXT,
+	drop_ratio_protein_to_reservoir TEXT,
+	seeding_type TEXT,
+	seed_stock_dilution TEXT,
+	initial_hit_condition TEXT,
+	optimization_strategy TEXT,
+	optimized_condition TEXT,
+	crystal_size_um TEXT,
+	cryoprotectant TEXT,
+	soak_compound TEXT,
+	soak_conditions TEXT,
+	mounting_method TEXT,
+	flash_cooling_method TEXT,
+	crystal_notes TEXT,
+	description TEXT,
+	crystallization_conditions_id INTEGER,
+	temperature_c_id INTEGER,
+	drop_volume_nl_id INTEGER,
+	reservoir_volume_ul_id INTEGER,
+	cryoprotectant_concentration_id INTEGER,
+	loop_size_id INTEGER,
+	mounting_temperature_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(crystallization_conditions_id) REFERENCES "CrystallizationConditions" (id),
+	FOREIGN KEY(temperature_c_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(drop_volume_nl_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(reservoir_volume_ul_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(cryoprotectant_concentration_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(loop_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(mounting_temperature_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_XRayPreparation_id" ON "XRayPreparation" (id);
 CREATE TABLE "SamplePreparation_purification_steps" (
 	"SamplePreparation_id" TEXT,
 	purification_steps VARCHAR(23),
@@ -2379,7 +2395,13 @@ CREATE TABLE "XRFImage_elements_measured" (
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
+);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
+CREATE TABLE "SAXSPreparation_concentration_series" (
+	"SAXSPreparation_id" INTEGER,
+	concentration_series FLOAT,
+	PRIMARY KEY ("SAXSPreparation_id", concentration_series),
+	FOREIGN KEY("SAXSPreparation_id") REFERENCES "SAXSPreparation" (id)
+);CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
@@ -2589,7 +2611,7 @@ CREATE TABLE "FunctionalSite_residues" (
 	residues TEXT,
 	PRIMARY KEY ("FunctionalSite_id", residues),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_residues_FunctionalSite_id" ON "FunctionalSite_residues" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_residues_residues" ON "FunctionalSite_residues" (residues);
 CREATE TABLE "FunctionalSite_go_terms" (
 	"FunctionalSite_id" TEXT,
 	go_terms TEXT,
@@ -2601,7 +2623,7 @@ CREATE TABLE "FunctionalSite_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("FunctionalSite_id", publication_ids),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);
+);CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");
 CREATE TABLE "StructuralFeature_publication_ids" (
 	"StructuralFeature_id" TEXT,
 	publication_ids TEXT,
@@ -2613,7 +2635,7 @@ CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);
 CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	partner_interface_residues TEXT,
@@ -2649,4 +2671,4 @@ CREATE TABLE "LigandInteraction_binding_site_residues" (
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");

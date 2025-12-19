@@ -840,25 +840,25 @@ type CryoEMPreparation
     description: String
     gridType: GridTypeEnum
     supportFilm: String
-    holeSize: Float
+    holeSize: QuantityValue
     vitrificationMethod: VitrificationMethodEnum
-    blotTime: Float
+    blotTime: QuantityValue
     blotForce: Integer
-    humidityPercentage: Float
-    chamberTemperature: Float
+    humidityPercentage: QuantityValue
+    chamberTemperature: QuantityValue
     gridMaterial: GridMaterialEnum
     glowDischargeApplied: Boolean
-    glowDischargeTime: Float
-    glowDischargeCurrent: Float
+    glowDischargeTime: QuantityValue
+    glowDischargeCurrent: QuantityValue
     glowDischargeAtmosphere: String
-    glowDischargePressure: Float
+    glowDischargePressure: QuantityValue
     vitrificationInstrument: String
     blotNumber: Integer
-    waitTime: Float
-    blotterHeight: Float
-    blotterSetting: Float
-    sampleAppliedVolume: Float
-    ethaneTemperature: Float
+    waitTime: QuantityValue
+    blotterHeight: QuantityValue
+    blotterSetting: QuantityValue
+    sampleAppliedVolume: QuantityValue
+    ethaneTemperature: QuantityValue
     plasmaTreatment: String
   }
 
@@ -867,15 +867,15 @@ type CrystallizationConditions
     description: String
     method: CrystallizationMethodEnum
     crystallizationConditions: String
-    dropVolume: Float
+    dropVolume: QuantityValue
     proteinConcentration: Float
     crystalSizeUm: String
     cryoProtectant: String
     crystalId: String
     screenName: String
-    temperatureC: Float
+    temperatureC: QuantityValue
     dropRatioProteinToReservoir: String
-    reservoirVolumeUl: Float
+    reservoirVolumeUl: QuantityValue
     seedingType: String
     seedStockDilution: String
   }
@@ -1659,7 +1659,7 @@ type SAXSPreparation
     concentrationSeries: [Float]
     bufferMatchingProtocol: String
     sampleCellType: String
-    cellPathLength: Float
+    cellPathLength: QuantityValue
     temperatureControl: String
   }
 
@@ -1836,10 +1836,10 @@ type XRayPreparation
     crystallizationMethod: CrystallizationMethodEnum
     crystallizationConditions: CrystallizationConditions
     screenName: String
-    temperatureC: Float
+    temperatureC: QuantityValue
     dropRatioProteinToReservoir: String
-    dropVolumeNl: Float
-    reservoirVolumeUl: Float
+    dropVolumeNl: QuantityValue
+    reservoirVolumeUl: QuantityValue
     seedingType: String
     seedStockDilution: String
     initialHitCondition: String
@@ -1847,14 +1847,14 @@ type XRayPreparation
     optimizedCondition: String
     crystalSizeUm: String
     cryoprotectant: String
-    cryoprotectantConcentration: Float
+    cryoprotectantConcentration: QuantityValue
     soakCompound: String
     soakConditions: String
     mountingMethod: String
     flashCoolingMethod: String
     crystalNotes: String
-    loopSize: Float
-    mountingTemperature: Float
+    loopSize: QuantityValue
+    mountingTemperature: QuantityValue
   }
 
 type XRFImage
