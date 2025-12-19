@@ -219,7 +219,6 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.0"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Parent symmetric homo-oligomeric β-glucosidase design" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:sequences "MDFYTLPTSHPV..." ] ;
@@ -240,7 +239,6 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Alternative hetero-hexamer design" ;
     lambdaber:molecular_weight [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "181.8"^^xsd:float ;
@@ -256,7 +254,6 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:modifications "6xHis tag (removed after purification)",
@@ -273,8 +270,7 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
             lambdaber:duration "< 1 week before measurement" ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 <https://example.org/kibler2024/study/hetBGL-design-validation> a lambdaber:Study ;
     dcterms:title "Structural validation of designed hetero-oligomeric BGL complexes" ;

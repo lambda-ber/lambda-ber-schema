@@ -16,7 +16,6 @@ molecular_weight:
 concentration:
   numeric_value: 2.5
   unit: milligrams per milliliter
-concentration_unit: mg_per_ml
 buffer_composition:
   ph: 8.0
   components:
@@ -26,6 +25,5 @@ storage_conditions:
   temperature:
     numeric_value: 4.0
     unit: degrees Celsius
-  temperature_unit: celsius
   duration: < 1 week before measurement
 organism: NCBITaxon:562

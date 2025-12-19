@@ -15,7 +15,6 @@ molecular_weight:
 concentration:
   numeric_value: 10.0
   unit: milligrams per milliliter
-concentration_unit: mg_per_ml
 functional_sites:
 - id: lambdaber:funcsite-001
   protein_id: P25705

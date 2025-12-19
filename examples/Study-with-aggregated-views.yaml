@@ -15,7 +15,6 @@ samples:
   concentration:
     numeric_value: 8.0
     unit: milligrams per milliliter
-  concentration_unit: mg_per_ml
   functional_sites:
   - id: lambdaber:func-site-001
     protein_id: P04637

@@ -31,7 +31,6 @@ studies:
       temperature:
         numeric_value: 4.0
         unit: degrees Celsius
-      temperature_unit: celsius
       duration: 7 days
       atmosphere: argon-purged
   - id: lambdaber:sample-LOOS-002
@@ -52,7 +51,6 @@ studies:
       temperature:
         numeric_value: 4.0
         unit: degrees Celsius
-      temperature_unit: celsius
   - id: lambdaber:sample-LOOS-003
     title: TrLOOL1 from Trichoderma reesei
     sample_code: LOOS-003
@@ -71,7 +69,6 @@ studies:
       temperature:
         numeric_value: 4.0
         unit: degrees Celsius
-      temperature_unit: celsius
   - id: lambdaber:sample-LOOS-004
     title: PcaLOOL12-cellulose complex
     sample_code: LOOS-004
@@ -92,7 +89,6 @@ studies:
       temperature:
         numeric_value: 4.0
         unit: degrees Celsius
-      temperature_unit: celsius
   sample_preparations:
   - id: lambdaber:prep-saxs-001
     title: SAXS sample preparation

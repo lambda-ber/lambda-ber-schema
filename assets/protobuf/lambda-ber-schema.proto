@@ -868,7 +868,6 @@ message Sample
   molecularComposition molecularComposition = 0
   quantityValue molecularWeight = 0
   quantityValue concentration = 0
-  concentrationUnitEnum concentrationUnit = 0
   bufferComposition bufferComposition = 0
   string preparationMethod = 0
   storageConditions storageConditions = 0
@@ -981,7 +980,6 @@ message StorageConditions
  {
   string description = 0
   quantityValue temperature = 0
-  temperatureUnitEnum temperatureUnit = 0
   string duration = 0
   string atmosphere = 0
  }

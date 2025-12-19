@@ -227,9 +227,6 @@ classes:
         description: "Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-      concentration_unit:
-        description: "Unit of concentration measurement"
-        range: ConcentrationUnitEnum
       buffer_composition:
         description: "Buffer composition including pH, salts, additives"
         range: BufferComposition
@@ -1766,9 +1763,6 @@ classes:
         description: "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-      temperature_unit:
-        description: "Temperature unit"
-        range: TemperatureUnitEnum
       duration:
         description: "Storage duration"
         range: string
@@ -2692,28 +2686,6 @@ enums:
         description: "Viral particle"
       organelle:
         description: "Cellular organelle"
-
-  ConcentrationUnitEnum:
-    description: "Units for concentration measurement"
-    permissible_values:
-      mg_per_ml:
-        description: "Milligrams per milliliter"
-      micromolar:
-        description: "Micromolar"
-      millimolar:
-        description: "Millimolar"
-      nanomolar:
-        description: "Nanomolar"
-
-  TemperatureUnitEnum:
-    description: "Units for temperature measurement"
-    permissible_values:
-      celsius:
-        description: "Degrees Celsius"
-      kelvin:
-        description: "Kelvin"
-      fahrenheit:
-        description: "Degrees Fahrenheit"
 
   PreparationTypeEnum:
     description: "Types of sample preparation"

@@ -69,7 +69,6 @@ lambdaber:sample_1EE2_001 a lambdaber:Sample ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "10.0"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "2x Zinc Ion",
                 "Alcohol Dehydrogenase (373 residues)",
@@ -83,8 +82,7 @@ lambdaber:sample_1EE2_001 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "277.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "kelvin" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:wf_1EE2_refinement_001 a lambdaber:WorkflowRun ;
     dcterms:title "Structure Refinement" ;

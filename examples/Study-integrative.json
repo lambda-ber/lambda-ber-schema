@@ -29,7 +29,6 @@
         "numeric_value": 5.0,
         "unit": "milligrams per milliliter"
       },
-      "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.5,
         "components": [
@@ -74,7 +73,6 @@
         "numeric_value": 2.0,
         "unit": "milligrams per milliliter"
       },
-      "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.8,
         "components": [
@@ -115,7 +113,6 @@
         "numeric_value": 0.5,
         "unit": "milligrams per milliliter"
       },
-      "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.5,
         "components": [

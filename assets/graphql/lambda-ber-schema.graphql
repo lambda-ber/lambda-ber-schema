@@ -125,14 +125,6 @@ enum ComplexStabilityEnum
     non_obligate
   }
 
-enum ConcentrationUnitEnum
-  {
-    mg_per_ml
-    micromolar
-    millimolar
-    nanomolar
-  }
-
 enum ConformationalStateEnum
   {
     open
@@ -621,13 +613,6 @@ enum TechniqueEnum
     xanes
     exafs
     xmcd
-  }
-
-enum TemperatureUnitEnum
-  {
-    celsius
-    kelvin
-    fahrenheit
   }
 
 enum VitrificationMethodEnum
@@ -1554,7 +1539,6 @@ type Sample
     molecularComposition: MolecularComposition
     molecularWeight: QuantityValue
     concentration: QuantityValue
-    concentrationUnit: ConcentrationUnitEnum
     bufferComposition: BufferComposition
     preparationMethod: String
     storageConditions: StorageConditions
@@ -1667,7 +1651,6 @@ type StorageConditions
   {
     description: String
     temperature: QuantityValue
-    temperatureUnit: TemperatureUnitEnum
     duration: String
     atmosphere: String
   }

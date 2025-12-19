@@ -1260,10 +1260,6 @@ linkml:Sparqlpath xsd:string
           <molecular_composition> @<MolecularComposition> ? ;
           <molecular_weight> @<QuantityValue> ? ;
           <concentration> @<QuantityValue> ? ;
-          <concentration_unit> [ <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml>
-             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar>
-             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar>
-             <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#nanomolar> ] ? ;
           <buffer_composition> @<BufferComposition> ? ;
           <preparation_method> @linkml:String ? ;
           <storage_conditions> @<StorageConditions> ? ;
@@ -1394,9 +1390,6 @@ linkml:Sparqlpath xsd:string
     (  $<StorageConditions_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
           <temperature> @<QuantityValue> ? ;
-          <temperature_unit> [ <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius>
-             <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin>
-             <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit> ] ? ;
           <duration> @linkml:String ? ;
           <atmosphere> @linkml:String ?
        ) ;

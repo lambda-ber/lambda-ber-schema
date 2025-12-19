@@ -63,7 +63,6 @@
             "numeric_value": 5.0,
             "unit": "milligrams per milliliter"
           },
-          "concentration_unit": "mg_per_ml",
           "buffer_composition": {
             "ph": 8.0,
             "components": [
@@ -100,7 +99,6 @@
             "numeric_value": 2.5,
             "unit": "milligrams per milliliter"
           },
-          "concentration_unit": "mg_per_ml",
           "buffer_composition": {
             "ph": 8.0,
             "components": [
@@ -113,7 +111,6 @@
               "numeric_value": 4.0,
               "unit": "degrees Celsius"
             },
-            "temperature_unit": "celsius",
             "duration": "< 1 week before measurement"
           }
         },
@@ -130,7 +127,6 @@
             "numeric_value": 2.5,
             "unit": "milligrams per milliliter"
           },
-          "concentration_unit": "mg_per_ml",
           "buffer_composition": {
             "ph": 8.0,
             "components": [

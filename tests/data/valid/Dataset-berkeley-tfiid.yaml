@@ -41,7 +41,6 @@ studies:
     concentration:
       numeric_value: 0.8
       unit: milligrams per milliliter
-    concentration_unit: mg_per_ml
     buffer_composition:
       ph: 7.9
       components:
@@ -56,7 +55,6 @@ studies:
       temperature:
         numeric_value: -80
         unit: degrees Celsius
-      temperature_unit: celsius
       duration: 6 months
       atmosphere: Flash frozen in liquid nitrogen
     organism: NCBITaxon:9606
@@ -83,7 +81,6 @@ studies:
     concentration:
       numeric_value: 0.5
       unit: milligrams per milliliter
-    concentration_unit: mg_per_ml
     parent_sample_id: lambdaber:sample_tfiid_001
     buffer_composition:
       ph: 7.9

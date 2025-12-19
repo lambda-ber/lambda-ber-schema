@@ -106,8 +106,7 @@ lambdaber:sample-LOOS-001 a lambdaber:Sample ;
             lambdaber:duration "7 days" ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:sample-LOOS-002 a lambdaber:Sample ;
     dcterms:title "PcaLOOL12 pH stress series" ;
@@ -123,8 +122,7 @@ lambdaber:sample-LOOS-002 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:sample-LOOS-003 a lambdaber:Sample ;
     dcterms:title "TrLOOL1 from Trichoderma reesei" ;
@@ -140,8 +138,7 @@ lambdaber:sample-LOOS-003 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:sample-LOOS-004 a lambdaber:Sample ;
     dcterms:title "PcaLOOL12-cellulose complex" ;
@@ -158,8 +155,7 @@ lambdaber:sample-LOOS-004 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:study-loosenin-2025 a lambdaber:Study ;
     dcterms:title "Structural and functional characterization of fungal loosenins" ;

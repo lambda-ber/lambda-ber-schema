@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T13:01:52
+# Generation date: 2025-12-19T13:10:48
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -473,7 +473,6 @@ class Sample(NamedThing):
     molecular_composition: Optional[Union[dict, "MolecularComposition"]] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
     concentration: Optional[Union[dict, "QuantityValue"]] = None
-    concentration_unit: Optional[Union[str, "ConcentrationUnitEnum"]] = None
     buffer_composition: Optional[Union[dict, "BufferComposition"]] = None
     preparation_method: Optional[str] = None
     storage_conditions: Optional[Union[dict, "StorageConditions"]] = None
@@ -524,9 +523,6 @@ class Sample(NamedThing):
 
         if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
             self.concentration = QuantityValue(**as_dict(self.concentration))
-
-        if self.concentration_unit is not None and not isinstance(self.concentration_unit, ConcentrationUnitEnum):
-            self.concentration_unit = ConcentrationUnitEnum(self.concentration_unit)
 
         if self.buffer_composition is not None and not isinstance(self.buffer_composition, BufferComposition):
             self.buffer_composition = BufferComposition(**as_dict(self.buffer_composition))
@@ -2530,16 +2526,12 @@ class StorageConditions(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.StorageConditions
 
     temperature: Optional[Union[dict, "QuantityValue"]] = None
-    temperature_unit: Optional[Union[str, "TemperatureUnitEnum"]] = None
     duration: Optional[str] = None
     atmosphere: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
-
-        if self.temperature_unit is not None and not isinstance(self.temperature_unit, TemperatureUnitEnum):
-            self.temperature_unit = TemperatureUnitEnum(self.temperature_unit)
 
         if self.duration is not None and not isinstance(self.duration, str):
             self.duration = str(self.duration)
@@ -4506,47 +4498,6 @@ class SampleTypeEnum(EnumDefinitionImpl):
         description="Types of biological samples",
     )
 
-class ConcentrationUnitEnum(EnumDefinitionImpl):
-    """
-    Units for concentration measurement
-    """
-    mg_per_ml = PermissibleValue(
-        text="mg_per_ml",
-        description="Milligrams per milliliter")
-    micromolar = PermissibleValue(
-        text="micromolar",
-        description="Micromolar")
-    millimolar = PermissibleValue(
-        text="millimolar",
-        description="Millimolar")
-    nanomolar = PermissibleValue(
-        text="nanomolar",
-        description="Nanomolar")
-
-    _defn = EnumDefinition(
-        name="ConcentrationUnitEnum",
-        description="Units for concentration measurement",
-    )
-
-class TemperatureUnitEnum(EnumDefinitionImpl):
-    """
-    Units for temperature measurement
-    """
-    celsius = PermissibleValue(
-        text="celsius",
-        description="Degrees Celsius")
-    kelvin = PermissibleValue(
-        text="kelvin",
-        description="Kelvin")
-    fahrenheit = PermissibleValue(
-        text="fahrenheit",
-        description="Degrees Fahrenheit")
-
-    _defn = EnumDefinition(
-        name="TemperatureUnitEnum",
-        description="Units for temperature measurement",
-    )
-
 class PreparationTypeEnum(EnumDefinitionImpl):
     """
     Types of sample preparation
@@ -6483,9 +6434,6 @@ slots.sample__molecular_weight = Slot(uri=LAMBDABER.molecular_weight, name="samp
 slots.sample__concentration = Slot(uri=LAMBDABER.concentration, name="sample__concentration", curie=LAMBDABER.curie('concentration'),
                    model_uri=LAMBDABER.sample__concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sample__concentration_unit = Slot(uri=LAMBDABER.concentration_unit, name="sample__concentration_unit", curie=LAMBDABER.curie('concentration_unit'),
-                   model_uri=LAMBDABER.sample__concentration_unit, domain=None, range=Optional[Union[str, "ConcentrationUnitEnum"]])
-
 slots.sample__buffer_composition = Slot(uri=LAMBDABER.buffer_composition, name="sample__buffer_composition", curie=LAMBDABER.curie('buffer_composition'),
                    model_uri=LAMBDABER.sample__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
 
@@ -7566,9 +7514,6 @@ slots.bufferComposition__additives = Slot(uri=LAMBDABER.additives, name="bufferC
 
 slots.storageConditions__temperature = Slot(uri=LAMBDABER.temperature, name="storageConditions__temperature", curie=LAMBDABER.curie('temperature'),
                    model_uri=LAMBDABER.storageConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.storageConditions__temperature_unit = Slot(uri=LAMBDABER.temperature_unit, name="storageConditions__temperature_unit", curie=LAMBDABER.curie('temperature_unit'),
-                   model_uri=LAMBDABER.storageConditions__temperature_unit, domain=None, range=Optional[Union[str, "TemperatureUnitEnum"]])
 
 slots.storageConditions__duration = Slot(uri=LAMBDABER.duration, name="storageConditions__duration", curie=LAMBDABER.curie('duration'),
                    model_uri=LAMBDABER.storageConditions__duration, domain=None, range=Optional[str])

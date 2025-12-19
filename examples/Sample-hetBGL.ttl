@@ -12,7 +12,6 @@
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:modifications "6xHis tag (removed after purification)",
@@ -30,6 +29,5 @@
             lambdaber:duration "< 1 week before measurement" ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 

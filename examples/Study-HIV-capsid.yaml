@@ -18,7 +18,6 @@ samples:
   concentration:
     numeric_value: 2.5
     unit: milligrams per milliliter
-  concentration_unit: mg_per_ml
   buffer_composition:
     ph: 8.0
     components:
@@ -32,7 +31,6 @@ samples:
     temperature:
       numeric_value: -80.0
       unit: degrees Celsius
-    temperature_unit: celsius
     duration: 3 months
     atmosphere: Flash frozen in liquid nitrogen
   purity_percentage:

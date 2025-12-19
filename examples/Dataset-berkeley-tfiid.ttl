@@ -190,7 +190,6 @@ lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "TFIID bound to super core promoter DNA" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "TFIID complex" ;
@@ -367,7 +366,6 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.8"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Purified human TFIID complex for structural analysis" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "DNA promoter sequence" ;
@@ -389,8 +387,7 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
             lambdaber:duration "6 months" ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "-80.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ;
-            lambdaber:temperature_unit "celsius" ] .
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:instrument_titan_krios_001 a lambdaber:Instrument ;
     dcterms:title "Titan Krios G4" ;

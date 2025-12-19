@@ -720,17 +720,6 @@
             "title": "ComputeResources",
             "type": "object"
         },
-        "ConcentrationUnitEnum": {
-            "description": "Units for concentration measurement",
-            "enum": [
-                "mg_per_ml",
-                "micromolar",
-                "millimolar",
-                "nanomolar"
-            ],
-            "title": "ConcentrationUnitEnum",
-            "type": "string"
-        },
         "ConformationalEnsemble": {
             "additionalProperties": false,
             "description": "Ensemble of conformational states for a protein",
@@ -6515,10 +6504,6 @@
                     ],
                     "description": "Sample concentration, typically specified in mg/mL or \u00b5M. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue."
                 },
-                "concentration_unit": {
-                    "$ref": "#/$defs/ConcentrationUnitEnum",
-                    "description": "Unit of concentration measurement"
-                },
                 "conformational_ensemble": {
                     "anyOf": [
                         {
@@ -7175,10 +7160,6 @@
                         }
                     ],
                     "description": "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
-                },
-                "temperature_unit": {
-                    "$ref": "#/$defs/TemperatureUnitEnum",
-                    "description": "Temperature unit"
                 }
             },
             "title": "StorageConditions",
@@ -7526,16 +7507,6 @@
                 "xmcd"
             ],
             "title": "TechniqueEnum",
-            "type": "string"
-        },
-        "TemperatureUnitEnum": {
-            "description": "Units for temperature measurement",
-            "enum": [
-                "celsius",
-                "kelvin",
-                "fahrenheit"
-            ],
-            "title": "TemperatureUnitEnum",
             "type": "string"
         },
         "TextValue": {

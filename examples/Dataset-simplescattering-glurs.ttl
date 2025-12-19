@@ -145,7 +145,6 @@ approximately 5 mg/mL, filtered through 0.22 μm filter.
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.0"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:sequences "Uniprot:Q9XCL6" ] ;

@@ -38,7 +38,6 @@
               "numeric_value": 4.0,
               "unit": "degrees Celsius"
             },
-            "temperature_unit": "celsius",
             "duration": "7 days",
             "atmosphere": "argon-purged"
           }
@@ -67,8 +66,7 @@
             "temperature": {
               "numeric_value": 4.0,
               "unit": "degrees Celsius"
-            },
-            "temperature_unit": "celsius"
+            }
           }
         },
         {
@@ -95,8 +93,7 @@
             "temperature": {
               "numeric_value": 4.0,
               "unit": "degrees Celsius"
-            },
-            "temperature_unit": "celsius"
+            }
           }
         },
         {
@@ -126,8 +123,7 @@
             "temperature": {
               "numeric_value": 4.0,
               "unit": "degrees Celsius"
-            },
-            "temperature_unit": "celsius"
+            }
           }
         }
       ],

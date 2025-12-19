@@ -24,7 +24,6 @@
         "numeric_value": 10.0,
         "unit": "milligrams per milliliter"
       },
-      "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.0,
         "components": [
@@ -35,8 +34,7 @@
         "temperature": {
           "numeric_value": 277.0,
           "unit": "degrees Celsius"
-        },
-        "temperature_unit": "kelvin"
+        }
       }
     }
   ],

@@ -1168,50 +1168,6 @@
       ]
     },
     {
-      "name": "ConcentrationUnitEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum",
-      "description": "Units for concentration measurement",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "permissible_values": [
-        {
-          "text": "mg_per_ml",
-          "description": "Milligrams per milliliter"
-        },
-        {
-          "text": "micromolar",
-          "description": "Micromolar"
-        },
-        {
-          "text": "millimolar",
-          "description": "Millimolar"
-        },
-        {
-          "text": "nanomolar",
-          "description": "Nanomolar"
-        }
-      ]
-    },
-    {
-      "name": "TemperatureUnitEnum",
-      "definition_uri": "https://w3id.org/lambda-ber-schema/TemperatureUnitEnum",
-      "description": "Units for temperature measurement",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "permissible_values": [
-        {
-          "text": "celsius",
-          "description": "Degrees Celsius"
-        },
-        {
-          "text": "kelvin",
-          "description": "Kelvin"
-        },
-        {
-          "text": "fahrenheit",
-          "description": "Degrees Fahrenheit"
-        }
-      ]
-    },
-    {
       "name": "PreparationTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/PreparationTypeEnum",
       "description": "Types of sample preparation",
@@ -3925,19 +3881,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "sample__concentration_unit",
-      "description": "Unit of concentration measurement",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/concentration_unit",
-      "alias": "concentration_unit",
-      "owner": "Sample",
-      "domain_of": [
-        "Sample"
-      ],
-      "range": "ConcentrationUnitEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -9142,19 +9085,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "storageConditions__temperature_unit",
-      "description": "Temperature unit",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_unit",
-      "alias": "temperature_unit",
-      "owner": "StorageConditions",
-      "domain_of": [
-        "StorageConditions"
-      ],
-      "range": "TemperatureUnitEnum",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "storageConditions__duration",
       "description": "Storage duration",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -13495,7 +13425,6 @@
         "sample__molecular_composition",
         "sample__molecular_weight",
         "sample__concentration",
-        "sample__concentration_unit",
         "sample__buffer_composition",
         "sample__preparation_method",
         "sample__storage_conditions",
@@ -13555,12 +13484,6 @@
           "description": "Sample concentration, typically specified in mg/mL or \u00b5M. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "concentration_unit",
-          "description": "Unit of concentration measurement",
-          "range": "ConcentrationUnitEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -16960,7 +16883,6 @@
       "slots": [
         "attributeGroup__description",
         "storageConditions__temperature",
-        "storageConditions__temperature_unit",
         "storageConditions__duration",
         "storageConditions__atmosphere"
       ],
@@ -16971,12 +16893,6 @@
           "description": "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "temperature_unit",
-          "description": "Temperature unit",
-          "range": "TemperatureUnitEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -19757,9 +19673,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T13:01:40",
-  "source_file_size": 135404,
-  "generation_date": "2025-12-19T13:01:46",
+  "source_file_date": "2025-12-19T13:09:14",
+  "source_file_size": 134601,
+  "generation_date": "2025-12-19T13:10:43",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
