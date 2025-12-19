@@ -104,6 +104,7 @@ prefixes:
 
 imports:
   - linkml:types
+  - lambda_ber_types
   - functional_annotation
 
 default_range: string
@@ -219,10 +220,9 @@ classes:
         description: "Description of molecular composition including sequences, modifications, ligands"
         range: MolecularComposition
       molecular_weight:
-        description: "Molecular weight in kDa"
-        range: float
-        unit:
-          ucum_code: kDa
+        description: "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       concentration:
         description: "Sample concentration in mg/mL or µM"
         range: float
@@ -418,19 +418,17 @@ classes:
       host_strain_or_cell_line:
         description: "Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)"
       culture_volume_l:
-        description: "Culture volume in liters"
-        range: float
-        unit:
-          ucum_code: L
+        description: "Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       medium:
         description: "Growth medium used"
       antibiotic_selection:
         description: "Antibiotic or selection agent used"
       growth_temperature_c:
-        description: "Growth temperature in Celsius"
-        range: float
-        unit:
-          ucum_code: Cel
+        description: "Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       induction_agent:
         description: "Agent used to induce expression (e.g., IPTG, tetracycline)"
       inducer_concentration:
@@ -866,30 +864,27 @@ classes:
         range: string
       # X-ray crystallography specific fields (NSLS2 Data_Collection mapping)
       wavelength:
-        description: "X-ray wavelength"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Wavelength"
           - "imgCIF:_diffrn_radiation_wavelength.wavelength"
           - "mmCIF:_diffrn_radiation_wavelength.wavelength"
           - "ispyb:DataCollection.wavelength"
       oscillation_angle:
-        description: "Oscillation angle per image"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Angle_increment"
           - "imgCIF:_diffrn_scan_axis.angle_increment"
           - "mmCIF:_diffrn_scan.angle_increment"
           - "ispyb:DataCollection.axisRange"
       start_angle:
-        description: "Starting rotation angle"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Start_angle"
           - "imgCIF:_diffrn_scan_axis.angle_start"
@@ -902,60 +897,54 @@ classes:
           - "imgCIF:_diffrn_scan.frames"
           - "ispyb:DataCollection.numberOfImages"
       beam_center_x:
-        description: "Beam center X coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        description: "Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Beam_xy_x"
           - "imgCIF:_diffrn_detector.beam_centre_x"
           - "mmCIF:_diffrn_detector.beam_center_x"
           - "ispyb:DataCollection.xBeam"
       beam_center_y:
-        description: "Beam center Y coordinate"
-        range: float
-        unit:
-          ucum_code: "[px]"
+        description: "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Beam_xy_y"
           - "imgCIF:_diffrn_detector.beam_centre_y"
           - "mmCIF:_diffrn_detector.beam_center_y"
           - "ispyb:DataCollection.yBeam"
       detector_distance:
-        description: "Distance from sample to detector"
-        range: float
-        unit:
-          ucum_code: mm
+        description: "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Detector_distance"
           - "imgCIF:_diffrn_measurement.sample_detector_distance"
           - "mmCIF:_diffrn_detector.distance"
           - "ispyb:DataCollection.detectorDistance"
       pixel_size_x:
-        description: "Pixel size X dimension"
-        range: float
-        unit:
-          ucum_code: um
+        description: "Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Pixel_size_x"
           - "imgCIF:_array_element_size.size"
         comments:
           - "imgCIF: _array_element_size.size[1]"
       pixel_size_y:
-        description: "Pixel size Y dimension"
-        range: float
-        unit:
-          ucum_code: um
+        description: "Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Pixel_size_y"
           - "imgCIF:_array_element_size.size"
         comments:
           - "imgCIF: _array_element_size.size[2]"
       total_rotation:
-        description: "Total rotation range collected"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Total_rotation_deg"
           - "imgCIF:_diffrn_scan_axis.angle_range"
@@ -968,10 +957,9 @@ classes:
           - "ispyb:BLSession.beamLineName"
       # Additional ISPyB-compatible fields for X-ray data collection
       transmission:
-        description: "X-ray beam transmission as percentage (0-100)"
-        range: float
-        unit:
-          ucum_code: "%"
+        description: "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         minimum_value: 0
         maximum_value: 100
         exact_mappings:
@@ -979,40 +967,35 @@ classes:
         comments:
           - "Percentage of full beam intensity used"
       flux:
-        description: "Photon flux at sample position in photons/second"
-        range: float
-        unit:
-          ucum_code: "{photons}/s"
+        description: "Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.flux"
         comments:
           - "Measured or calculated photon flux"
       flux_end:
-        description: "Photon flux at end of data collection in photons/second"
-        range: float
-        unit:
-          ucum_code: "{photons}/s"
+        description: "Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.flux_end"
       slit_gap_horizontal:
-        description: "Horizontal slit gap aperture in micrometers"
-        range: float
-        unit:
-          ucum_code: um
+        description: "Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.slitGapHorizontal"
       slit_gap_vertical:
-        description: "Vertical slit gap aperture in micrometers"
-        range: float
-        unit:
-          ucum_code: um
+        description: "Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.slitGapVertical"
       undulator_gap:
-        description: "Undulator gap setting in millimeters"
-        range: float
-        unit:
-          ucum_code: mm
+        description: "Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.undulatorGap1"
         comments:
@@ -1025,10 +1008,9 @@ classes:
         comments:
           - "e.g., 'Top-up', 'Decay', 'Hybrid'"
       exposure_time:
-        description: "Exposure time per image in seconds"
-        range: float
-        unit:
-          ucum_code: s
+        description: "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.exposureTime"
       start_time:
@@ -1042,17 +1024,15 @@ classes:
         exact_mappings:
           - "ispyb:DataCollection.endTime"
       resolution:
-        description: "Resolution at edge of detector in Angstroms"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.resolution"
       resolution_at_corner:
-        description: "Resolution at corner of detector in Angstroms"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:DataCollection.resolutionAtCorner"
       # ISPyB cross-reference IDs
@@ -1147,67 +1127,59 @@ classes:
           - "mmCIF:_symmetry.space_group_name_H-M"
           - "ispyb:AutoProcScaling.spaceGroup"
       unit_cell_a:
-        description: "Unit cell parameter a"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Unit cell parameter a, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_a"
           - "mmCIF:_cell.length_a"
       unit_cell_b:
-        description: "Unit cell parameter b"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Unit cell parameter b, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_b"
           - "mmCIF:_cell.length_b"
       unit_cell_c:
-        description: "Unit cell parameter c"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Unit cell parameter c, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_c"
           - "mmCIF:_cell.length_c"
       unit_cell_alpha:
-        description: "Unit cell angle alpha"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_alpha"
           - "mmCIF:_cell.angle_alpha"
       unit_cell_beta:
-        description: "Unit cell angle beta"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_beta"
           - "mmCIF:_cell.angle_beta"
       unit_cell_gamma:
-        description: "Unit cell angle gamma"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Unit_Cell_gamma"
           - "mmCIF:_cell.angle_gamma"
       resolution_high:
-        description: "High resolution limit"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Resolution_High_A"
           - "mmCIF:_reflns.d_resolution_high"
           - "ispyb:AutoProcScalingStatistics.resolutionLimitHigh"
       resolution_low:
-        description: "Low resolution limit"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Resolution_Low_A"
           - "mmCIF:_reflns.d_resolution_low"
@@ -1234,10 +1206,9 @@ classes:
           - "mmCIF:_reflns.pdbx_CC_half"
           - "ispyb:AutoProcScalingStatistics.ccHalf"
       completeness_percent:
-        description: "Data completeness percentage"
-        range: float
-        unit:
-          ucum_code: "%"
+        description: "Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Completeness"
           - "mmCIF:_reflns.percent_possible_obs"
@@ -1250,10 +1221,9 @@ classes:
           - "mmCIF:_reflns.pdbx_netI_over_sigmaI"
           - "ispyb:AutoProcScalingStatistics.meanIOverSigI"
       wilson_b_factor:
-        description: "Wilson B-factor"
-        range: float
-        unit:
-          ucum_code: Ao2
+        description: "Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Wilson_B"
           - "mmCIF:_reflns.B_iso_Wilson_estimate"
@@ -1266,10 +1236,9 @@ classes:
           - "ispyb:AutoProcScalingStatistics.multiplicity"
       # Anomalous statistics (ISPyB AutoProcScalingStatistics)
       anomalous_completeness:
-        description: "Completeness of anomalous data as percentage"
-        range: float
-        unit:
-          ucum_code: "%"
+        description: "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "ispyb:AutoProcScalingStatistics.anomalousCompleteness"
         comments:
@@ -1337,34 +1306,30 @@ classes:
           - "nsls2:Rfree"
           - "mmCIF:_refine.ls_R_factor_R_free"
       rmsd_bonds:
-        description: "RMSD from ideal bond lengths"
-        range: float
-        unit:
-          ucum_code: Ao
+        description: "RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:RMSD_bonds"
           - "mmCIF:_refine.ls_d_res_high"
       rmsd_angles:
-        description: "RMSD from ideal bond angles"
-        range: float
-        unit:
-          ucum_code: deg
+        description: "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:RMSD_angles"
           - "mmCIF:_refine.ls_d_res_low"
       ramachandran_favored:
-        description: "Percentage of residues in favored Ramachandran regions"
-        range: float
-        unit:
-          ucum_code: "%"
+        description: "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Ramachandran_Favored"
           - "mmCIF:_refine.pdbx_overall_ESU_R"
       ramachandran_outliers:
-        description: "Percentage of Ramachandran outliers"
-        range: float
-        unit:
-          ucum_code: "%"
+        description: "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         exact_mappings:
           - "nsls2:Ramachandran_Outliers"
           - "mmCIF:_refine.pdbx_overall_ESU_R_Free"
@@ -2066,10 +2031,9 @@ classes:
           - "For cryo-EM: counting, integrating, or super_resolution"
           - "Detector technology, manufacturer, and model are specified in the Instrument"
       pixel_size_calibrated:
-        description: "Calibrated pixel size for this experiment"
-        range: float
-        unit:
-          ucum_code: Ao/px
+        description: "Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         comments:
           - "For cryo-EM: depends on magnification (Å/pixel)"
           - "For X-ray: typically mm/pixel or µm/pixel"
