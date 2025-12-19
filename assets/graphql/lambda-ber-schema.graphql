@@ -617,6 +617,10 @@ enum TechniqueEnum
     cryo_et
     electron_microscopy
     mass_spectrometry
+    xas
+    xanes
+    exafs
+    xmcd
   }
 
 enum TemperatureUnitEnum
@@ -646,6 +650,9 @@ enum WorkflowTypeEnum
     integration
     scaling
     saxs_analysis
+    xas_normalization
+    xanes_analysis
+    exafs_analysis
     em_2d_classification
     mass_spec_deconvolution
     particle_extraction

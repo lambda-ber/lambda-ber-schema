@@ -77,7 +77,7 @@ URI: [lambdaber:ProteinProteinInteraction](https://w3id.org/lambda-ber-schema/Pr
      * Description: Range of residues (e.g., '1-100', '25,27,30-35')
      * Range: [String](types/String.md)
  * [➞confidence_score](proteinAnnotation__confidence_score.md)  <sub>0..1</sub>
-     * Description: Confidence score for the annotation (0-1)
+     * Description: Confidence score for the annotation (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞evidence_type](proteinAnnotation__evidence_type.md)  <sub>0..1</sub>
      * Description: Type of evidence supporting this annotation

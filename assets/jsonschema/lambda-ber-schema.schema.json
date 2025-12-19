@@ -6785,7 +6785,11 @@
                 "sans",
                 "cryo_et",
                 "electron_microscopy",
-                "mass_spectrometry"
+                "mass_spectrometry",
+                "xas",
+                "xanes",
+                "exafs",
+                "xmcd"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -7333,6 +7337,9 @@
                 "integration",
                 "scaling",
                 "saxs_analysis",
+                "xas_normalization",
+                "xanes_analysis",
+                "exafs_analysis",
                 "em_2d_classification",
                 "mass_spec_deconvolution",
                 "particle_extraction",

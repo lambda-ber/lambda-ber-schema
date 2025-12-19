@@ -2953,6 +2953,33 @@ enums:
       mass_spectrometry:
         description: "Mass spectrometry"
         meaning: CHMO:0000470
+      xas:
+        description: "X-ray absorption spectroscopy"
+        meaning: CHMO:0000298
+        exact_mappings:
+          - PaNET:01196  # x-ray absorption spectroscopy
+      xanes:
+        description: "X-ray absorption near edge structure spectroscopy"
+        meaning: CHMO:0000305
+        exact_mappings:
+          - PaNET:01199  # x-ray absorption near edge structure
+        comments:
+          - "Also known as NEXAFS (near-edge X-ray absorption fine structure)"
+          - "Used for electronic structure, oxidation state, coordination geometry"
+      exafs:
+        description: "Extended X-ray absorption fine structure spectroscopy"
+        meaning: CHMO:0000300
+        exact_mappings:
+          - PaNET:01198  # extended x-ray absorption fine structure
+        comments:
+          - "Used for local atomic structure around specific elements"
+          - "Commonly used for metalloprotein active site characterization"
+      xmcd:
+        description: "X-ray magnetic circular dichroism"
+        exact_mappings:
+          - PaNET:01137  # x-ray magnetic circular dichroism
+        comments:
+          - "Element-specific magnetometry technique"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -2993,6 +3020,14 @@ enums:
         description: "Data scaling"
       saxs_analysis:
         description: "SAXS data analysis"
+      xas_normalization:
+        description: "XAS data normalization and background subtraction"
+      xanes_analysis:
+        description: "XANES spectral analysis and edge fitting"
+      exafs_analysis:
+        description: "EXAFS data analysis and shell fitting"
+        comments:
+          - "Includes Fourier transform, back-transform, and coordination shell fitting"
       em_2d_classification:
         description: "EM 2D classification"
       mass_spec_deconvolution:

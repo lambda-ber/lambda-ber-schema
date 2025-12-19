@@ -1,7 +1,7 @@
 
 # Slot: ph
 
-pH of the buffer
+pH of the buffer (range: 0-14)
 
 URI: [lambdaber:bufferComposition__ph](https://w3id.org/lambda-ber-schema/bufferComposition__ph)
 

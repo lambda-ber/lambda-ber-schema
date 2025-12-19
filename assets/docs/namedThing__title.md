@@ -19,6 +19,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Used by
 
  * [AggregatedProteinView](AggregatedProteinView.md)
+ * [BeamlineInstrument](BeamlineInstrument.md)
  * [ConformationalEnsemble](ConformationalEnsemble.md)
  * [CryoEMInstrument](CryoEMInstrument.md)
  * [DataFile](DataFile.md)

@@ -23,7 +23,7 @@ URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/Evo
 ### Own
 
  * [➞conservation_score](evolutionaryConservation__conservation_score.md)  <sub>0..1</sub>
-     * Description: Overall conservation score
+     * Description: Overall conservation score (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞conserved_residues](evolutionaryConservation__conserved_residues.md)  <sub>0..\*</sub>
      * Description: Highly conserved residues
@@ -68,7 +68,7 @@ URI: [lambdaber:EvolutionaryConservation](https://w3id.org/lambda-ber-schema/Evo
      * Description: Range of residues (e.g., '1-100', '25,27,30-35')
      * Range: [String](types/String.md)
  * [➞confidence_score](proteinAnnotation__confidence_score.md)  <sub>0..1</sub>
-     * Description: Confidence score for the annotation (0-1)
+     * Description: Confidence score for the annotation (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞evidence_type](proteinAnnotation__evidence_type.md)  <sub>0..1</sub>
      * Description: Type of evidence supporting this annotation

@@ -1,7 +1,7 @@
 
 # Slot: hole_size
 
-Hole size in micrometers
+Hole size in micrometers (range: 0.5-5.0)
 
 URI: [lambdaber:cryoEMPreparation__hole_size](https://w3id.org/lambda-ber-schema/cryoEMPreparation__hole_size)
 

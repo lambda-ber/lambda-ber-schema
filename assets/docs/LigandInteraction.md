@@ -54,7 +54,7 @@ URI: [lambdaber:LigandInteraction](https://w3id.org/lambda-ber-schema/LigandInte
      * Description: Whether the ligand has drug-like properties
      * Range: [Boolean](types/Boolean.md)
  * [➞druggability_score](ligandInteraction__druggability_score.md)  <sub>0..1</sub>
-     * Description: Druggability score of the binding site
+     * Description: Druggability score of the binding site (range: 0-1)
      * Range: [Float](types/Float.md)
  * [➞interaction_distance](ligandInteraction__interaction_distance.md)  <sub>0..1</sub>
      * Description: Distance criteria for interaction (Angstroms)

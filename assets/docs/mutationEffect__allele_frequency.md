@@ -1,7 +1,7 @@
 
 # Slot: allele_frequency
 
-Population allele frequency
+Population allele frequency (range: 0-1)
 
 URI: [lambdaber:mutationEffect__allele_frequency](https://w3id.org/lambda-ber-schema/mutationEffect__allele_frequency)
 

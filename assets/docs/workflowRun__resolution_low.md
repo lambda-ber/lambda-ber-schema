@@ -26,3 +26,4 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 | --- | --- | --- |
 | **Exact Mappings:** | | nsls2:Resolution_Low_A |
 |  | | mmCIF:_reflns.d_resolution_low |
+|  | | ispyb:AutoProcScalingStatistics.resolutionLimitLow |

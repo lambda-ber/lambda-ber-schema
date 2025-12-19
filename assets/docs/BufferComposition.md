@@ -23,7 +23,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 ### Own
 
  * [➞ph](bufferComposition__ph.md)  <sub>0..1</sub>
-     * Description: pH of the buffer
+     * Description: pH of the buffer (range: 0-14)
      * Range: [Float](types/Float.md)
  * [➞components](bufferComposition__components.md)  <sub>0..\*</sub>
      * Description: Buffer components and their concentrations

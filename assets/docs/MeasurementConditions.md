@@ -25,7 +25,7 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
      * Description: Composition of the buffer used
      * Range: [BufferComposition](BufferComposition.md)
  * [➞ph](measurementConditions__ph.md)  <sub>0..1</sub>
-     * Description: pH value of the solution during measurement
+     * Description: pH value of the solution during measurement (range: 0-14)
      * Range: [Float](types/Float.md)
  * [➞ionic_strength](measurementConditions__ionic_strength.md)  <sub>0..1</sub>
      * Description: Ionic strength in molar of material in solution

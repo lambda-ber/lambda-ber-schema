@@ -1,7 +1,7 @@
 
 # Slot: ph
 
-pH value of the solution during measurement
+pH value of the solution during measurement (range: 0-14)
 
 URI: [lambdaber:measurementConditions__ph](https://w3id.org/lambda-ber-schema/measurementConditions__ph)
 

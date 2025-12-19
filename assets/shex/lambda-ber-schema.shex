@@ -106,7 +106,9 @@ linkml:Sparqlpath xsd:string
           <techniques_supported> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
              <http://purl.obolibrary.org/obo/CHMO_0000204> <http://purl.obolibrary.org/obo/CHMO_0000207>
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
-             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470> ] + ;
+             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
+             <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd> ] + ;
           <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
@@ -505,7 +507,9 @@ linkml:Sparqlpath xsd:string
           <technique> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
              <http://purl.obolibrary.org/obo/CHMO_0000204> <http://purl.obolibrary.org/obo/CHMO_0000207>
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
-             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470> ] ;
+             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
+             <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd> ] ;
           <experimental_method> [ <http://purl.obolibrary.org/obo/CHMO_0000156>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#neutron_diffraction>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#electron_diffraction>
@@ -1450,6 +1454,9 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#integration>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#scaling>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#saxs_analysis>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#xas_normalization>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#xanes_analysis>
+             <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#exafs_analysis>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#em_2d_classification>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#mass_spec_deconvolution>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#particle_extraction>

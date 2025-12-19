@@ -6,7 +6,7 @@ SAXS/WAXS instrument specifications
 URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])
 
 ## Parents
 
@@ -49,6 +49,18 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
      * Range: [String](types/String.md)
  * [➞instrument_code](instrument__instrument_code.md)  <sub>1..1</sub>
      * Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
+     * Range: [String](types/String.md)
+ * [➞instrument_category](instrument__instrument_category.md)  <sub>0..1</sub>
+     * Description: Category distinguishing beamlines from laboratory equipment
+     * Range: [InstrumentCategoryEnum](InstrumentCategoryEnum.md)
+ * [➞facility_name](instrument__facility_name.md)  <sub>0..1</sub>
+     * Description: Name of the research facility where the instrument is located
+     * Range: [FacilityEnum](FacilityEnum.md)
+ * [➞facility_ror](instrument__facility_ror.md)  <sub>0..1</sub>
+     * Description: Research Organization Registry (ROR) identifier for the facility
+     * Range: [Uriorcurie](types/Uriorcurie.md)
+ * [➞beamline_id](instrument__beamline_id.md)  <sub>0..1</sub>
+     * Description: Beamline identifier at synchrotron/neutron facility
      * Range: [String](types/String.md)
  * [➞manufacturer](instrument__manufacturer.md)  <sub>0..1</sub>
      * Description: Instrument manufacturer

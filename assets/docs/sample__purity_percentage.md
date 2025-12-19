@@ -1,7 +1,7 @@
 
 # Slot: purity_percentage
 
-Sample purity as percentage
+Sample purity as percentage (range: 0-100)
 
 URI: [lambdaber:sample__purity_percentage](https://w3id.org/lambda-ber-schema/sample__purity_percentage)
 
