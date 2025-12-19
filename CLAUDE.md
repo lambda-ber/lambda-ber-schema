@@ -15,7 +15,7 @@ lambda-ber-schema is a LinkML schema project for representing structural biologi
 ## Core Architecture
 
 ### Schema Structure
-The main schema definition is located at `src/lambda-ber-schema/schema/lambda-ber-schema.yaml`. This LinkML schema defines:
+The main schema definition is located at `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`. This LinkML schema defines:
 - **Dataset**: Root container with studies collection
 - **Study**: Contains samples, preparations, experiments, workflows, data files, and images
 - **Sample**: Biological samples with molecular composition, buffer conditions, storage details
@@ -29,7 +29,7 @@ The main schema definition is located at `src/lambda-ber-schema/schema/lambda-be
 
 ### Generated Assets
 The `assets/` directory contains auto-generated outputs from the LinkML schema:
-- Python dataclasses (`lambda-ber-schema.py`)
+- Python dataclasses (`lambda_ber_schema.py`)
 - JSON Schema validation (`jsonschema/`)
 - Documentation (`docs/`)
 - Multiple serialization formats (GraphQL, OWL, SHACL, etc.)
@@ -41,7 +41,7 @@ Generate all downstream artifacts from the LinkML schema:
 ```bash
 make gen-project
 # or directly:
-uv run gen-project src/lambda-ber-schema/schema/lambda-ber-schema.yaml -d assets
+uv run gen-project src/lambda_ber_schema/schema/lambda_ber_schema.yaml -d assets
 ```
 
 ### Testing
@@ -56,13 +56,13 @@ This runs:
 ### Schema Validation
 Validate the schema against LinkML metamodel:
 ```bash
-uv run linkml-lint src/lambda-ber-schema/schema/lambda-ber-schema.yaml
+uv run linkml-lint src/lambda_ber_schema/schema/lambda_ber_schema.yaml
 ```
 
 ### Data Validation
 Validate data files against the schema:
 ```bash
-uv run linkml-validate -s src/lambda-ber-schema/schema/lambda-ber-schema.yaml <data_file>
+uv run linkml-validate -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml <data_file>
 ```
 
 ### Python Environment
@@ -78,7 +78,7 @@ uv run lambda-ber-schema
 
 ## Project Structure
 
-- `src/lambda-ber-schema/schema/lambda-ber-schema.yaml` - Main LinkML schema definition
+- `src/lambda_ber_schema/schema/lambda_ber_schema.yaml` - Main LinkML schema definition
 - `assets/` - Generated artifacts (Python, docs, JSON Schema, etc.)
 - `docs/spec.md` - Comprehensive specification for BER structural biology data
 - `docs/background.md` - Research on current structural biology data systems

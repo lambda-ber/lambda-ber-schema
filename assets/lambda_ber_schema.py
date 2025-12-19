@@ -1,5 +1,5 @@
-# Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T14:41:57
+# Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
+# Generation date: 2025-12-19T14:46:26
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,7 +137,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Float, Integer, St
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = "0.1.1.post15.dev0+b4e2533"
+version = "0.1.1.post47.dev0+25564fe"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -147,7 +147,7 @@ NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxo
 PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
-UO = CurieNamespace('UO', 'http://example.org/UNKNOWN/UO/')
+UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')

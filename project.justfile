@@ -2,7 +2,7 @@
 
 # Variables
 RUN := "uv run"
-SCHEMA := "src/lambda_ber_schema/schema/lambda-ber-schema.yaml"
+SCHEMA := "src/lambda_ber_schema/schema/lambda_ber_schema.yaml"
 DOCDIR := "./docs/elements"
 
 # Run all schema generation tasks (gen-project, gendoc, test-examples)

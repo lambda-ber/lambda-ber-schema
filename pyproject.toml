@@ -32,7 +32,7 @@ fallback-version = "0.0.0"
 # Inject version into schema YAML at build time
 # Ref: https://hatch.pypa.io/latest/plugins/build-hook/version/
 [tool.hatch.build.hooks.version]
-path = "src/lambda_ber_schema/schema/lambda-ber-schema.yaml"
+path = "src/lambda_ber_schema/schema/lambda_ber_schema.yaml"
 pattern = """^(?:version:\\s*")(?P<version>[^"]*)(?:"\\s*# Managed by uv-dynamic-versioning).*$"""
 
 [dependency-groups]

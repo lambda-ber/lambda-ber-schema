@@ -1,0 +1,1190 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// version: 0.1.1.post47.dev0+25564fe
+// Aggregated view of all structural and functional data for a protein
+message AggregatedProteinView
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string uniprotId = 0
+  string proteinName = 0
+  string organism = 0
+  integer organismId = 0
+ repeated  string pdbEntries = 0
+ repeated  functionalSite functionalSites = 0
+ repeated  structuralFeature structuralFeatures = 0
+ repeated  proteinProteinInteraction proteinInteractions = 0
+ repeated  ligandInteraction ligandInteractions = 0
+ repeated  mutationEffect mutations = 0
+ repeated  postTranslationalModification ptms = 0
+ repeated  biophysicalProperty biophysicalProperties = 0
+  conformationalEnsemble conformationalEnsemble = 0
+  evolutionaryConservation evolutionaryConservation = 0
+ repeated  databaseCrossReference crossReferences = 0
+ }
+// A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
+message Attribute
+ {
+  string id = 0
+  string label = 0
+ }
+// Multi-technique synchrotron beamline that supports multiple experimental methods
+message BeamlineInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+ repeated  techniqueEnum techniquesSupported = 0
+  xRaySourceTypeEnum sourceType = 0
+  quantityValue energyMin = 0
+  quantityValue energyMax = 0
+  quantityValue qRangeMin = 0
+  quantityValue qRangeMax = 0
+  quantityValue sampleChangerCapacity = 0
+  boolean mailInService = 0
+  uri website = 0
+ }
+// Measured or calculated biophysical properties
+message BiophysicalProperty
+ {
+  string description = 0
+  biophysicalPropertyEnum propertyType = 0
+  float value = 0
+  string unit = 0
+  float error = 0
+ repeated  measurementConditions measurementConditions = 0
+  biophysicalMethodEnum experimentalMethod = 0
+ }
+// Buffer composition for sample storage
+message BufferComposition
+ {
+  string description = 0
+  quantityValue ph = 0
+ repeated  string components = 0
+ repeated  string additives = 0
+ }
+// Computational resources used
+message ComputeResources
+ {
+  string description = 0
+  quantityValue cpuHours = 0
+  quantityValue gpuHours = 0
+  quantityValue memoryGb = 0
+  quantityValue storageGb = 0
+ }
+// Ensemble of conformational states for a protein
+message ConformationalEnsemble
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+ repeated  conformationalState conformationalStates = 0
+  string clusteringMethod = 0
+  float rmsdThreshold = 0
+  string transitionPathways = 0
+  string energyLandscape = 0
+ repeated  string principalMotions = 0
+ }
+// Individual conformational state
+message ConformationalState
+ {
+  string description = 0
+  string stateId = 0
+  string stateName = 0
+ repeated  string pdbEntries = 0
+  float population = 0
+  float freeEnergy = 0
+  float rmsdFromReference = 0
+ repeated  string characteristicFeatures = 0
+ }
+// Cryo-EM microscope specifications
+message CryoEMInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  quantityValue acceleratingVoltage = 0
+  boolean csCorrector = 0
+  boolean phasePlate = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
+  detectorModeEnum detectorMode = 0
+  string detectorPosition = 0
+  string detectorDimensions = 0
+  quantityValue pixelSizePhysicalUm = 0
+  quantityValue autoloaderCapacity = 0
+  quantityValue cs = 0
+  quantityValue c2Aperture = 0
+  quantityValue objectiveAperture = 0
+  string phasePlateType = 0
+  boolean energyFilterPresent = 0
+  string energyFilterMake = 0
+  string energyFilterModel = 0
+  quantityValue energyFilterSlitWidth = 0
+  quantityValue pixelSizePhysical = 0
+  string microscopeSoftware = 0
+  string microscopeSoftwareVersion = 0
+  quantityValue spotsize = 0
+  quantityValue gunlens = 0
+  imagingModeEnum imagingMode = 0
+  quantityValue temBeamDiameter = 0
+ }
+// Cryo-EM specific sample preparation
+message CryoEMPreparation
+ {
+  string description = 0
+  gridTypeEnum gridType = 0
+  string supportFilm = 0
+  quantityValue holeSize = 0
+  vitrificationMethodEnum vitrificationMethod = 0
+  quantityValue blotTime = 0
+  quantityValue blotForce = 0
+  quantityValue humidityPercentage = 0
+  quantityValue chamberTemperature = 0
+  gridMaterialEnum gridMaterial = 0
+  boolean glowDischargeApplied = 0
+  quantityValue glowDischargeTime = 0
+  quantityValue glowDischargeCurrent = 0
+  string glowDischargeAtmosphere = 0
+  quantityValue glowDischargePressure = 0
+  string vitrificationInstrument = 0
+  quantityValue blotNumber = 0
+  quantityValue waitTime = 0
+  quantityValue blotterHeight = 0
+  quantityValue blotterSetting = 0
+  quantityValue sampleAppliedVolume = 0
+  quantityValue ethaneTemperature = 0
+  string plasmaTreatment = 0
+ }
+// Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mapping)
+message CrystallizationConditions
+ {
+  string description = 0
+  crystallizationMethodEnum method = 0
+  string crystallizationConditions = 0
+  quantityValue dropVolume = 0
+  quantityValue proteinConcentration = 0
+  string crystalSizeUm = 0
+  string cryoProtectant = 0
+  string crystalId = 0
+  string screenName = 0
+  quantityValue temperatureC = 0
+  string dropRatioProteinToReservoir = 0
+  quantityValue reservoirVolumeUl = 0
+  string seedingType = 0
+  string seedStockDilution = 0
+ }
+// Parameters specific to CTF estimation workflows
+message CTFEstimationParameters
+ {
+  string description = 0
+  quantityValue defocusSearchMin = 0
+  quantityValue defocusSearchMax = 0
+  quantityValue defocusStep = 0
+  quantityValue amplitudeContrast = 0
+  quantityValue csUsedInEstimation = 0
+  quantityValue voltageUsedInEstimation = 0
+ }
+// Cross-references to external databases
+message DatabaseCrossReference
+ {
+  string description = 0
+  databaseNameEnum databaseName = 0
+  string databaseId = 0
+  uri databaseUrl = 0
+  string lastUpdated = 0
+ }
+// Strategy for data collection
+message DataCollectionStrategy
+ {
+  string description = 0
+  collectionModeEnum collectionMode = 0
+  quantityValue totalFrames = 0
+  quantityValue frameRate = 0
+  quantityValue totalDose = 0
+  quantityValue dosePerFrame = 0
+  quantityValue wavelengthA = 0
+  detectorModeEnum detectorMode = 0
+  quantityValue pixelSizeCalibrated = 0
+  quantityValue detectorDistanceMm = 0
+  quantityValue beamCenterXPx = 0
+  quantityValue beamCenterYPx = 0
+  quantityValue beamSizeUm = 0
+  quantityValue fluxPhotonsPerS = 0
+  quantityValue transmissionPercent = 0
+  string attenuator = 0
+  quantityValue temperatureK = 0
+  quantityValue oscillationPerImageDeg = 0
+  quantityValue totalRotationDeg = 0
+  string strategyNotes = 0
+ }
+// A data file generated or used in the study
+message DataFile
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string filePath = 0
+  fileFormatEnum fileFormat = 0
+  quantityValue fileSizeBytes = 0
+  string checksum = 0
+  string creationDate = 0
+  dataTypeEnum dataType = 0
+  string storageUri = 0
+  string relatedEntity = 0
+  string fileRole = 0
+ }
+// A collection of studies
+message Dataset
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  string keywords = 0
+ repeated  instrument instruments = 0
+ repeated  study studies = 0
+ }
+// A date or date and time value.
+message DateTimeValue
+ {
+  attribute attribute = 0
+  string rawValue = 0
+  string value = 0
+ }
+// Evolutionary conservation information
+message EvolutionaryConservation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  float conservationScore = 0
+ repeated  string conservedResidues = 0
+ repeated  string variableResidues = 0
+  string conservationMethod = 0
+  integer alignmentDepth = 0
+  string taxonomicRange = 0
+ repeated  string coevolvedResidues = 0
+ }
+// Environmental and experimental conditions
+message ExperimentalConditions
+ {
+  string description = 0
+  quantityValue temperature = 0
+  quantityValue humidity = 0
+  quantityValue pressure = 0
+  string atmosphere = 0
+  quantityValue beamEnergy = 0
+  quantityValue exposureTime = 0
+ }
+// An experimental data collection session
+message ExperimentRun
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string experimentCode = 0
+  string sampleId = 0
+  instrument instrumentId = 0
+  string experimentDate = 0
+  string operatorId = 0
+  techniqueEnum technique = 0
+  experimentalMethodEnum experimentalMethod = 0
+  experimentalConditions experimentalConditions = 0
+  dataCollectionStrategy dataCollectionStrategy = 0
+  qualityMetrics qualityMetrics = 0
+  string rawDataLocation = 0
+  processingStatusEnum processingStatus = 0
+  quantityValue magnification = 0
+  quantityValue calibratedPixelSize = 0
+  quantityValue cameraBinning = 0
+  quantityValue exposureTimePerFrame = 0
+  quantityValue framesPerMovie = 0
+  quantityValue totalExposureTime = 0
+  quantityValue totalDose = 0
+  quantityValue doseRate = 0
+  quantityValue defocusTarget = 0
+  quantityValue defocusRangeMin = 0
+  quantityValue defocusRangeMax = 0
+  quantityValue defocusRangeIncrement = 0
+  quantityValue astigmatismTarget = 0
+  quantityValue coma = 0
+  quantityValue stageTilt = 0
+  string autoloaderSlot = 0
+  quantityValue shotsPerHole = 0
+  quantityValue holesPerGroup = 0
+  string acquisitionSoftware = 0
+  string acquisitionSoftwareVersion = 0
+  quantityValue wavelength = 0
+  quantityValue oscillationAngle = 0
+  quantityValue startAngle = 0
+  quantityValue numberOfImages = 0
+  quantityValue beamCenterX = 0
+  quantityValue beamCenterY = 0
+  quantityValue detectorDistance = 0
+  quantityValue pixelSizeX = 0
+  quantityValue pixelSizeY = 0
+  quantityValue totalRotation = 0
+  string beamline = 0
+  quantityValue transmission = 0
+  quantityValue flux = 0
+  quantityValue fluxEnd = 0
+  quantityValue slitGapHorizontal = 0
+  quantityValue slitGapVertical = 0
+  quantityValue undulatorGap = 0
+  string synchrotronMode = 0
+  quantityValue exposureTime = 0
+  string startTime = 0
+  string endTime = 0
+  quantityValue resolution = 0
+  quantityValue resolutionAtCorner = 0
+  quantityValue ispybDataCollectionId = 0
+  quantityValue ispybSessionId = 0
+ }
+// Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
+message FluorescenceImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+  quantityValue excitationWavelength = 0
+  quantityValue emissionWavelength = 0
+  string excitationFilter = 0
+  string emissionFilter = 0
+  string fluorophore = 0
+  string channelName = 0
+  quantityValue laserPower = 0
+  quantityValue pinholeSize = 0
+  quantityValue quantumYield = 0
+ }
+// Fourier Shell Correlation curve data.
+// 
+// The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
+// corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+// 
+message FSCCurve
+ {
+  string description = 0
+  quantityValue resolutionAngstrom = 0
+  quantityValue fscValue = 0
+ }
+// Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
+message FTIRImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue wavenumberMin = 0
+  quantityValue wavenumberMax = 0
+  quantityValue spectralResolution = 0
+  quantityValue numberOfScans = 0
+  string apodizationFunction = 0
+ repeated  string molecularSignatures = 0
+  string backgroundCorrection = 0
+ }
+// Functional sites including catalytic, binding, and regulatory sites
+message FunctionalSite
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  functionalSiteTypeEnum siteType = 0
+  string siteName = 0
+ repeated  string residues = 0
+ repeated  ligandInteraction ligandInteractions = 0
+  float conservationScore = 0
+  string functionalImportance = 0
+ repeated  uriorcurie goTerms = 0
+  string ecNumber = 0
+ }
+// An image file from structural biology experiments
+message Image
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+ }
+// A 2D image (micrograph, diffraction pattern)
+message Image2D
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+ }
+// A 3D volume or tomogram
+message Image3D
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue dimensionsZ = 0
+  quantityValue voxelSize = 0
+  string reconstructionMethod = 0
+ }
+// Semantic annotations describing features identified in images using controlled vocabulary terms
+message ImageFeature
+ {
+  string description = 0
+ repeated  ontologyTerm terms = 0
+ }
+// An instrument used to collect data
+message Instrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+ }
+// Small molecule/ligand interactions with proteins
+message LigandInteraction
+ {
+  string description = 0
+  uriorcurie ligandId = 0
+  string ligandName = 0
+  smilesString ligandSmiles = 0
+  float bindingAffinity = 0
+  bindingAffinityTypeEnum bindingAffinityType = 0
+  affinityUnitEnum bindingAffinityUnit = 0
+  interactionTypeEnum interactionType = 0
+ repeated  string bindingSiteResidues = 0
+  boolean isCofactor = 0
+  boolean isDrugLike = 0
+  float druggabilityScore = 0
+  float interactionDistance = 0
+ }
+// Conditions under which biophysical measurements were made
+message MeasurementConditions
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  bufferComposition bufferComposition = 0
+  quantityValue ph = 0
+  quantityValue ionicStrength = 0
+  quantityValue temperature = 0
+ }
+// Motion-corrected micrograph derived from movie
+message Micrograph
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  string originMovieId = 0
+  quantityValue defocusU = 0
+  quantityValue defocusV = 0
+  quantityValue astigmatismAngle = 0
+  quantityValue resolutionFitLimit = 0
+  quantityValue ctfQualityScore = 0
+  string pixelSize = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+ }
+// Molecular composition of a sample
+message MolecularComposition
+ {
+  string description = 0
+ repeated  string sequences = 0
+ repeated  string modifications = 0
+ repeated  string ligands = 0
+ }
+// Parameters specific to motion correction workflows
+message MotionCorrectionParameters
+ {
+  string description = 0
+  quantityValue patchSize = 0
+  quantityValue binning = 0
+  boolean doseWeighting = 0
+  quantityValue bfactorDoseWeighting = 0
+  boolean anisotropicCorrection = 0
+  quantityValue frameGrouping = 0
+  quantityValue outputBinning = 0
+  quantityValue driftTotal = 0
+ }
+// Raw cryo-EM movie with frame-by-frame metadata for motion correction
+message Movie
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+  quantityValue frames = 0
+  boolean superResolution = 0
+  quantityValue pixelSizeUnbinned = 0
+  string timestamp = 0
+  quantityValue stagePositionX = 0
+  quantityValue stagePositionY = 0
+  quantityValue stagePositionZ = 0
+  quantityValue nominalDefocus = 0
+  quantityValue dosePerFrame = 0
+  quantityValue beamShiftX = 0
+  quantityValue beamShiftY = 0
+  quantityValue iceThicknessEstimate = 0
+  string gridSquareId = 0
+  string holeId = 0
+  string acquisitionGroup = 0
+ }
+// Effects of mutations and variants on protein structure and function
+message MutationEffect
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  string mutation = 0
+  mutationTypeEnum mutationType = 0
+  stabilityEffectEnum effectOnStability = 0
+  float deltaDeltaG = 0
+  functionalEffectEnum effectOnFunction = 0
+  string functionalImpactDescription = 0
+  string diseaseAssociation = 0
+  string omimId = 0
+  clinicalSignificanceEnum clinicalSignificance = 0
+  float alleleFrequency = 0
+ }
+// A term from a controlled vocabulary or ontology
+message OntologyTerm
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  ontologyTerm terms = 0
+  string label = 0
+  string definition = 0
+  string ontology = 0
+ }
+// Visible light optical microscopy or photography image
+message OpticalImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+  illuminationTypeEnum illuminationType = 0
+  quantityValue magnification = 0
+  quantityValue numericalAperture = 0
+ repeated  string colorChannels = 0
+  string whiteBalance = 0
+  string contrastMethod = 0
+ }
+// Parameters specific to particle picking workflows
+message ParticlePickingParameters
+ {
+  string description = 0
+  string pickingMethod = 0
+  quantityValue boxSize = 0
+  quantityValue threshold = 0
+  quantityValue powerScore = 0
+  quantityValue nccScore = 0
+  string modelName = 0
+  string modelFilePath = 0
+  string modelSource = 0
+ }
+// Post-translational modifications observed or predicted
+message PostTranslationalModification
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  pTMTypeEnum modificationType = 0
+  string modifiedResidue = 0
+  string modificationGroup = 0
+  float massShift = 0
+  string functionalEffect = 0
+  string regulatoryRole = 0
+  string enzyme = 0
+  string removalEnzyme = 0
+ }
+// Base class for all protein-related functional and structural annotations
+message ProteinAnnotation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+ }
+// Detailed information about a protein construct including cloning and sequence design
+message ProteinConstruct
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string constructId = 0
+  string uniprotId = 0
+  string geneName = 0
+  string ncbiTaxid = 0
+  quantityValue sequenceLengthAa = 0
+  string constructDescription = 0
+  string geneSynthesisProvider = 0
+  string codonOptimizationOrganism = 0
+  string vectorBackbone = 0
+  string vectorName = 0
+  string promoter = 0
+  string tagNterm = 0
+  string tagCterm = 0
+  string cleavageSite = 0
+  string signalPeptide = 0
+  string selectableMarker = 0
+  string cloningMethod = 0
+  string insertBoundaries = 0
+  string sequenceFilePath = 0
+  string sequenceVerifiedBy = 0
+  string verificationNotes = 0
+ }
+// Protein-protein interactions and interfaces
+message ProteinProteinInteraction
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  string partnerProteinId = 0
+  string partnerChainId = 0
+ repeated  string interfaceResidues = 0
+ repeated  string partnerInterfaceResidues = 0
+  float interfaceArea = 0
+  float bindingEnergy = 0
+  float dissociationConstant = 0
+  complexStabilityEnum complexStability = 0
+  boolean biologicalAssembly = 0
+ repeated  interactionEvidenceEnum interactionEvidence = 0
+ }
+// Quality metrics for experiments
+message QualityMetrics
+ {
+  string description = 0
+  quantityValue resolution = 0
+  quantityValue resolutionHighShellA = 0
+  quantityValue resolutionLowA = 0
+  quantityValue completeness = 0
+  quantityValue completenessHighResShellPercent = 0
+  quantityValue signalToNoise = 0
+  quantityValue meanIOverSigmaI = 0
+  string spaceGroup = 0
+  quantityValue unitCellA = 0
+  quantityValue unitCellB = 0
+  quantityValue unitCellC = 0
+  quantityValue unitCellAlpha = 0
+  quantityValue unitCellBeta = 0
+  quantityValue unitCellGamma = 0
+  quantityValue multiplicity = 0
+  quantityValue ccHalf = 0
+  quantityValue rMerge = 0
+  quantityValue rPim = 0
+  quantityValue wilsonBFactorA2 = 0
+  boolean anomalousUsed = 0
+  quantityValue anomCorr = 0
+  quantityValue anomSigAno = 0
+  quantityValue rWork = 0
+  quantityValue rFree = 0
+  quantityValue ramachandranFavoredPercent = 0
+  quantityValue ramachandranOutliersPercent = 0
+  quantityValue clashscore = 0
+  quantityValue molprobityScore = 0
+  quantityValue averageBFactorA2 = 0
+  quantityValue iZero = 0
+  quantityValue rg = 0
+  quantityValue rFactor = 0
+ }
+// A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+message QuantityValue
+ {
+  attribute attribute = 0
+  float maximumNumericValue = 0
+  float minimumNumericValue = 0
+  float numericValue = 0
+  string unit = 0
+  curie unitCvId = 0
+  string rawValue = 0
+ }
+// Parameters specific to 3D refinement workflows
+message RefinementParameters
+ {
+  string description = 0
+  symmetryEnum symmetry = 0
+  quantityValue pixelSize = 0
+  quantityValue boxSize = 0
+  boolean goldStandard = 0
+  string splitStrategy = 0
+  quantityValue resolution0143 = 0
+  quantityValue resolution05 = 0
+  quantityValue mapSharpeningBfactor = 0
+ }
+// A biological sample used in structural biology experiments
+message Sample
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string sampleCode = 0
+  sampleTypeEnum sampleType = 0
+  molecularComposition molecularComposition = 0
+  quantityValue molecularWeight = 0
+  quantityValue concentration = 0
+  bufferComposition bufferComposition = 0
+  string preparationMethod = 0
+  storageConditions storageConditions = 0
+  ontologyTerm organism = 0
+  ontologyTerm anatomy = 0
+  ontologyTerm cellType = 0
+  sample parentSampleId = 0
+  quantityValue purityPercentage = 0
+  string qualityMetrics = 0
+ repeated  functionalSite functionalSites = 0
+ repeated  structuralFeature structuralFeatures = 0
+ repeated  proteinProteinInteraction proteinInteractions = 0
+ repeated  ligandInteraction ligandInteractions = 0
+ repeated  mutationEffect mutationEffects = 0
+ repeated  postTranslationalModification ptmAnnotations = 0
+ repeated  biophysicalProperty biophysicalProperties = 0
+  evolutionaryConservation evolutionaryConservation = 0
+  conformationalEnsemble conformationalEnsemble = 0
+ repeated  databaseCrossReference databaseCrossReferences = 0
+  string proteinName = 0
+  string construct = 0
+  string tag = 0
+  string mutations = 0
+  string expressionSystem = 0
+  string ligand = 0
+ }
+// A process that prepares a sample for imaging
+message SamplePreparation
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  preparationTypeEnum preparationType = 0
+  string sampleId = 0
+  string preparationDate = 0
+  string operatorId = 0
+  string protocolDescription = 0
+  expressionSystemEnum expressionSystem = 0
+  string hostStrainOrCellLine = 0
+  quantityValue cultureVolumeL = 0
+  string medium = 0
+  string antibioticSelection = 0
+  quantityValue growthTemperatureC = 0
+  string inductionAgent = 0
+  string inducerConcentration = 0
+  quantityValue inductionTemperatureC = 0
+  quantityValue inductionTimeH = 0
+  quantityValue od600AtInduction = 0
+  string harvestTimepoint = 0
+  string lysisMethod = 0
+  string proteaseInhibitors = 0
+ repeated  purificationStepEnum purificationSteps = 0
+  string affinityType = 0
+  string affinityColumn = 0
+  string lysisBuffer = 0
+  string washBuffer = 0
+  string elutionBuffer = 0
+  boolean tagRemoval = 0
+  string protease = 0
+  string proteaseRatio = 0
+  quantityValue cleavageTimeH = 0
+  quantityValue cleavageTemperatureC = 0
+  string secondAffinityReverse = 0
+  string iexColumn = 0
+  string hicColumn = 0
+  string secColumn = 0
+  string secBuffer = 0
+  string concentrationMethod = 0
+  string finalBuffer = 0
+  quantityValue finalConcentrationMgPerMl = 0
+  quantityValue yieldMg = 0
+  quantityValue purityBySdsPagePercent = 0
+  string aggregationAssessment = 0
+  string aliquoting = 0
+ }
+// SAXS/WAXS instrument specifications
+message SAXSInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  quantityValue qRangeMin = 0
+  quantityValue qRangeMax = 0
+  quantityValue detectorDistanceMin = 0
+  quantityValue detectorDistanceMax = 0
+  quantityValue sampleChangerCapacity = 0
+  string temperatureControlRange = 0
+ }
+// SAXS/WAXS specific preparation
+message SAXSPreparation
+ {
+  string description = 0
+  quantityValue concentrationSeries = 0
+  string bufferMatchingProtocol = 0
+  string sampleCellType = 0
+  quantityValue cellPathLength = 0
+  string temperatureControl = 0
+ }
+// Storage conditions for samples
+message StorageConditions
+ {
+  string description = 0
+  quantityValue temperature = 0
+  string duration = 0
+  string atmosphere = 0
+ }
+// Structural features and properties of protein regions
+message StructuralFeature
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string proteinId = 0
+  string pdbEntry = 0
+  string chainId = 0
+  string residueRange = 0
+  float confidenceScore = 0
+  evidenceTypeEnum evidenceType = 0
+  uriorcurie evidenceCode = 0
+  annotationSourceEnum sourceDatabase = 0
+  string annotationMethod = 0
+ repeated  string publicationIds = 0
+  structuralFeatureTypeEnum featureType = 0
+  secondaryStructureEnum secondaryStructure = 0
+  float solventAccessibility = 0
+  float backboneFlexibility = 0
+  float disorderProbability = 0
+  conformationalStateEnum conformationalState = 0
+  string structuralMotif = 0
+  string domainAssignment = 0
+  string domainId = 0
+ }
+// A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
+message Study
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  proteinConstruct proteinConstructs = 0
+ repeated  sample samples = 0
+ repeated  samplePreparation samplePreparations = 0
+ repeated  experimentRun instrumentRuns = 0
+ repeated  workflowRun workflowRuns = 0
+ repeated  dataFile dataFiles = 0
+ repeated  image images = 0
+ repeated  aggregatedProteinView aggregatedProteinViews = 0
+ }
+// A value described using a text string, optionally with a controlled vocabulary ID.
+message TextValue
+ {
+  attribute attribute = 0
+  string rawValue = 0
+  string value = 0
+  curie valueCvId = 0
+ }
+// A computational processing workflow execution
+message WorkflowRun
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string workflowCode = 0
+  workflowTypeEnum workflowType = 0
+  string experimentId = 0
+  quantityValue processingLevel = 0
+  string softwareName = 0
+  string softwareVersion = 0
+  string additionalSoftware = 0
+  string processingParameters = 0
+  string parametersFilePath = 0
+  string indexerModule = 0
+  string integratorModule = 0
+  string scalerModule = 0
+  string outlierRejectionMethod = 0
+  phasingMethodEnum phasingMethod = 0
+  string searchModelPdbId = 0
+  boolean tlsUsed = 0
+  boolean ncsUsed = 0
+  string restraintsOther = 0
+  string ligandsCofactors = 0
+  quantityValue numberOfWaters = 0
+  quantityValue refinementResolutionA = 0
+  boolean depositedToPdb = 0
+  string pdbId = 0
+  string validationReportPath = 0
+  string spaceGroup = 0
+  quantityValue unitCellA = 0
+  quantityValue unitCellB = 0
+  quantityValue unitCellC = 0
+  quantityValue unitCellAlpha = 0
+  quantityValue unitCellBeta = 0
+  quantityValue unitCellGamma = 0
+  quantityValue resolutionHigh = 0
+  quantityValue resolutionLow = 0
+  quantityValue rmerge = 0
+  quantityValue rpim = 0
+  quantityValue ccHalf = 0
+  quantityValue completenessPercent = 0
+  quantityValue iOverSigma = 0
+  quantityValue wilsonBFactor = 0
+  quantityValue multiplicity = 0
+  quantityValue anomalousCompleteness = 0
+  quantityValue anomalousMultiplicity = 0
+  quantityValue ccAnomalous = 0
+  quantityValue rAnomalous = 0
+  quantityValue sigAnomalous = 0
+  quantityValue nTotalObservations = 0
+  quantityValue nTotalUnique = 0
+  quantityValue ispybAutoProcProgramId = 0
+  quantityValue ispybAutoProcScalingId = 0
+  quantityValue rwork = 0
+  quantityValue rfree = 0
+  quantityValue rmsdBonds = 0
+  quantityValue rmsdAngles = 0
+  quantityValue ramachandranFavored = 0
+  quantityValue ramachandranOutliers = 0
+  quantityValue clashscore = 0
+  string processingNotes = 0
+  computeResources computeResources = 0
+  string startedAt = 0
+  string completedAt = 0
+  motionCorrectionParameters motionCorrectionParams = 0
+  cTFEstimationParameters ctfEstimationParams = 0
+  particlePickingParameters particlePickingParams = 0
+  refinementParameters refinementParams = 0
+  fSCCurve fscCurve = 0
+ repeated  dataFile outputFiles = 0
+ }
+// X-ray diffractometer or synchrotron beamline specifications
+message XRayInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  xRaySourceTypeEnum sourceType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorManufacturer = 0
+  string detectorModel = 0
+  quantityValue energyMin = 0
+  quantityValue energyMax = 0
+  quantityValue beamSizeMin = 0
+  quantityValue beamSizeMax = 0
+  quantityValue fluxDensity = 0
+  string monochromatorType = 0
+  string goniometerType = 0
+  boolean crystalCoolingCapability = 0
+ }
+// X-ray crystallography specific preparation
+message XRayPreparation
+ {
+  string description = 0
+  quantityValue proteinConcentrationMgPerMl = 0
+  string proteinBuffer = 0
+  string additives = 0
+  crystallizationMethodEnum crystallizationMethod = 0
+  crystallizationConditions crystallizationConditions = 0
+  string screenName = 0
+  quantityValue temperatureC = 0
+  string dropRatioProteinToReservoir = 0
+  quantityValue dropVolumeNl = 0
+  quantityValue reservoirVolumeUl = 0
+  string seedingType = 0
+  string seedStockDilution = 0
+  string initialHitCondition = 0
+  string optimizationStrategy = 0
+  string optimizedCondition = 0
+  string crystalSizeUm = 0
+  string cryoprotectant = 0
+  quantityValue cryoprotectantConcentration = 0
+  string soakCompound = 0
+  string soakConditions = 0
+  string mountingMethod = 0
+  string flashCoolingMethod = 0
+  string crystalNotes = 0
+  quantityValue loopSize = 0
+  quantityValue mountingTemperature = 0
+ }
+// X-ray fluorescence (XRF) image showing elemental distribution
+message XRFImage
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string fileName = 0
+  string acquisitionDate = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
+  quantityValue exposureTime = 0
+  quantityValue dose = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
+  quantityValue beamEnergy = 0
+  quantityValue beamSize = 0
+  quantityValue dwellTime = 0
+ repeated  string elementsMeasured = 0
+  xRaySourceTypeEnum sourceType = 0
+  detectorTechnologyEnum detectorTechnology = 0
+  string detectorModel = 0
+  quantityValue flux = 0
+  string calibrationStandard = 0
+ }
