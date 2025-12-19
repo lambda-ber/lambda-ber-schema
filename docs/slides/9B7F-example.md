@@ -293,7 +293,7 @@ date: "2024"
 
 ### 2. **Validation**
 ```bash
-$ linkml-validate -s lambda-ber-schema.yaml dataset-9B7F.yaml
+$ linkml-validate -s lambda_ber_schema.yaml dataset-9B7F.yaml
 ✓ No issues found
 ```
 - Automatic checking of data types, ranges, required fields

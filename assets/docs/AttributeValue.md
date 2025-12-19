@@ -1,36 +1,168 @@
 
-# Class: AttributeValue
 
-The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
-
-URI: [lambdaber:AttributeValue](https://w3id.org/lambda-ber-schema/AttributeValue)
+# Class: AttributeValue 
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TextValue],[QuantityValue],[DateTimeValue],[Attribute]<attribute%200..1-++[AttributeValue&#124;raw_value:string%20%3F],[AttributeValue]^-[TextValue],[AttributeValue]^-[QuantityValue],[AttributeValue]^-[DateTimeValue],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[TextValue],[QuantityValue],[DateTimeValue],[Attribute]<attribute%200..1-++[AttributeValue&#124;raw_value:string%20%3F],[AttributeValue]^-[TextValue],[AttributeValue]^-[QuantityValue],[AttributeValue]^-[DateTimeValue],[Attribute])
-
-## Children
-
- * [DateTimeValue](DateTimeValue.md) - A date or date and time value.
- * [QuantityValue](QuantityValue.md) - A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
- * [TextValue](TextValue.md) - A value described using a text string, optionally with a controlled vocabulary ID.
-
-## Referenced by Class
+_The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value._
 
 
-## Attributes
 
 
-### Own
+* __NOTE__: this is an abstract class and should not be instantiated directly
 
- * [➞attribute](attributeValue__attribute.md)  <sub>0..1</sub>
-     * Description: The attribute being represented.
-     * Range: [Attribute](Attribute.md)
- * [➞raw_value](attributeValue__raw_value.md)  <sub>0..1</sub>
-     * Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
-     * Range: [String](types/String.md)
 
-## Other properties
+URI: [nmdc:AttributeValue](https://w3id.org/nmdc/AttributeValue)
 
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | nmdc:AttributeValue |
+
+
+
+
+```mermaid
+ classDiagram
+    class AttributeValue
+    click AttributeValue href "../AttributeValue/"
+      AttributeValue <|-- QuantityValue
+        click QuantityValue href "../QuantityValue/"
+      AttributeValue <|-- TextValue
+        click TextValue href "../TextValue/"
+      AttributeValue <|-- DateTimeValue
+        click DateTimeValue href "../DateTimeValue/"
+      
+      AttributeValue : attribute
+        
+          
+    
+        
+        
+        AttributeValue --> "0..1" Attribute : attribute
+        click Attribute href "../Attribute/"
+    
+
+        
+      AttributeValue : raw_value
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* **AttributeValue**
+    * [QuantityValue](QuantityValue.md)
+    * [TextValue](TextValue.md)
+    * [DateTimeValue](DateTimeValue.md)
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [attribute](attribute.md) | 0..1 <br/> [Attribute](Attribute.md) | The attribute being represented | direct |
+| [raw_value](raw_value.md) | 0..1 <br/> [String](String.md) | Unnormalized atomic string representation, suggested syntax {number} {unit} | direct |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | nmdc:AttributeValue |
+| native | lambdaber:AttributeValue |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: AttributeValue
+description: The value for any attribute of an entity. This object can hold both the
+  un-normalized atomic value and the structured value.
+from_schema: https://w3id.org/lambda-ber-schema/
+abstract: true
+attributes:
+  attribute:
+    name: attribute
+    description: The attribute being represented.
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    domain_of:
+    - AttributeValue
+    range: Attribute
+  raw_value:
+    name: raw_value
+    description: Unnormalized atomic string representation, suggested syntax {number}
+      {unit}
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    domain_of:
+    - AttributeValue
+    range: string
+class_uri: nmdc:AttributeValue
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: AttributeValue
+description: The value for any attribute of an entity. This object can hold both the
+  un-normalized atomic value and the structured value.
+from_schema: https://w3id.org/lambda-ber-schema/
+abstract: true
+attributes:
+  attribute:
+    name: attribute
+    description: The attribute being represented.
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    alias: attribute
+    owner: AttributeValue
+    domain_of:
+    - AttributeValue
+    range: Attribute
+  raw_value:
+    name: raw_value
+    description: Unnormalized atomic string representation, suggested syntax {number}
+      {unit}
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    alias: raw_value
+    owner: AttributeValue
+    domain_of:
+    - AttributeValue
+    range: string
+class_uri: nmdc:AttributeValue
+
+```
+</details>

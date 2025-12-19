@@ -1,37 +1,208 @@
 
-# Class: StorageConditions
 
-Storage conditions for samples
+# Class: StorageConditions 
+
+
+_Storage conditions for samples_
+
+
+
+
 
 URI: [lambdaber:StorageConditions](https://w3id.org/lambda-ber-schema/StorageConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[StorageConditions&#124;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[Sample]++-%20storage_conditions%200..1>[StorageConditions],[AttributeGroup]^-[StorageConditions],[Sample],[QuantityValue],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[StorageConditions&#124;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[Sample]++-%20storage_conditions%200..1>[StorageConditions],[AttributeGroup]^-[StorageConditions],[Sample],[QuantityValue],[AttributeGroup])
-
-## Parents
-
- *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
-
-## Referenced by Class
-
- *  **None** *[➞storage_conditions](sample__storage_conditions.md)*  <sub>0..1</sub>  **[StorageConditions](StorageConditions.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞temperature](storageConditions__temperature.md)  <sub>0..1</sub>
-     * Description: Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞duration](storageConditions__duration.md)  <sub>0..1</sub>
-     * Description: Storage duration
-     * Range: [String](types/String.md)
- * [➞atmosphere](storageConditions__atmosphere.md)  <sub>0..1</sub>
-     * Description: Storage atmosphere conditions
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class StorageConditions
+    click StorageConditions href "../StorageConditions/"
+      AttributeGroup <|-- StorageConditions
+        click AttributeGroup href "../AttributeGroup/"
+      
+      StorageConditions : atmosphere
+        
+      StorageConditions : description
+        
+      StorageConditions : duration
+        
+      StorageConditions : temperature
+        
+          
+    
+        
+        
+        StorageConditions --> "0..1" QuantityValue : temperature
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from AttributeGroup:
+        
+      
+```
 
- * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+
+
+
+
+## Inheritance
+* [AttributeGroup](AttributeGroup.md)
+    * **StorageConditions**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [temperature](temperature.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Storage temperature, typically specified in degrees Celsius | direct |
+| [duration](duration.md) | 0..1 <br/> [String](String.md) | Storage duration | direct |
+| [atmosphere](atmosphere.md) | 0..1 <br/> [String](String.md) | Storage atmosphere conditions | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Sample](Sample.md) | [storage_conditions](storage_conditions.md) | range | [StorageConditions](StorageConditions.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:StorageConditions |
+| native | lambdaber:StorageConditions |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: StorageConditions
+description: Storage conditions for samples
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  temperature:
+    name: temperature
+    description: Storage temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - StorageConditions
+    - ExperimentalConditions
+    - MeasurementConditions
+    range: QuantityValue
+    inlined: true
+  duration:
+    name: duration
+    description: Storage duration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - StorageConditions
+    range: string
+  atmosphere:
+    name: atmosphere
+    description: Storage atmosphere conditions
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - StorageConditions
+    - ExperimentalConditions
+    range: string
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: StorageConditions
+description: Storage conditions for samples
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  temperature:
+    name: temperature
+    description: Storage temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: temperature
+    owner: StorageConditions
+    domain_of:
+    - StorageConditions
+    - ExperimentalConditions
+    - MeasurementConditions
+    range: QuantityValue
+    inlined: true
+  duration:
+    name: duration
+    description: Storage duration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: duration
+    owner: StorageConditions
+    domain_of:
+    - StorageConditions
+    range: string
+  atmosphere:
+    name: atmosphere
+    description: Storage atmosphere conditions
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: atmosphere
+    owner: StorageConditions
+    domain_of:
+    - StorageConditions
+    - ExperimentalConditions
+    range: string
+  description:
+    name: description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: description
+    owner: StorageConditions
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

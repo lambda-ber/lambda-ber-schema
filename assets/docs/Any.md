@@ -1,18 +1,91 @@
 
-# Class: Any
+
+# Class: Any 
 
 
 
-URI: [lambdaber:Any](https://w3id.org/lambda-ber-schema/Any)
+URI: [linkml:Any](https://w3id.org/linkml/Any)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Any])](https://yuml.me/diagram/nofunky;dir:TB/class/[Any])
-
-## Attributes
 
 
-## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | linkml:Any |
+```mermaid
+ classDiagram
+    class Any
+    click Any href "../Any/"
+      
+```
+
+
+
+
+<!-- no inheritance hierarchy -->
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:Any |
+| native | lambdaber:Any |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: Any
+from_schema: https://w3id.org/lambda-ber-schema/
+class_uri: linkml:Any
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: Any
+from_schema: https://w3id.org/lambda-ber-schema/
+class_uri: linkml:Any
+
+```
+</details>

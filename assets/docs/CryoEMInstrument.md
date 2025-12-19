@@ -1,136 +1,1039 @@
 
-# Class: CryoEMInstrument
 
-Cryo-EM microscope specifications
+# Class: CryoEMInstrument 
+
+
+_Cryo-EM microscope specifications_
+
+
+
+
 
 URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<tem_beam_diameter%200..1-++[CryoEMInstrument&#124;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;imaging_mode:ImagingModeEnum%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<gunlens%200..1-++[CryoEMInstrument],[QuantityValue]<spotsize%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical%200..1-++[CryoEMInstrument],[QuantityValue]<energy_filter_slit_width%200..1-++[CryoEMInstrument],[QuantityValue]<objective_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<c2_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<cs%200..1-++[CryoEMInstrument],[QuantityValue]<autoloader_capacity%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical_um%200..1-++[CryoEMInstrument],[QuantityValue]<accelerating_voltage%200..1-++[CryoEMInstrument],[Instrument]^-[CryoEMInstrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<tem_beam_diameter%200..1-++[CryoEMInstrument&#124;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;imaging_mode:ImagingModeEnum%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<gunlens%200..1-++[CryoEMInstrument],[QuantityValue]<spotsize%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical%200..1-++[CryoEMInstrument],[QuantityValue]<energy_filter_slit_width%200..1-++[CryoEMInstrument],[QuantityValue]<objective_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<c2_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<cs%200..1-++[CryoEMInstrument],[QuantityValue]<autoloader_capacity%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical_um%200..1-++[CryoEMInstrument],[QuantityValue]<accelerating_voltage%200..1-++[CryoEMInstrument],[Instrument]^-[CryoEMInstrument])
-
-## Parents
-
- *  is_a: [Instrument](Instrument.md) - An instrument used to collect data
-
-## Attributes
 
 
-### Own
 
- * [➞accelerating_voltage](cryoEMInstrument__accelerating_voltage.md)  <sub>0..1</sub>
-     * Description: Accelerating voltage in kV
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞cs_corrector](cryoEMInstrument__cs_corrector.md)  <sub>0..1</sub>
-     * Description: Spherical aberration corrector present
-     * Range: [Boolean](types/Boolean.md)
- * [➞phase_plate](cryoEMInstrument__phase_plate.md)  <sub>0..1</sub>
-     * Description: Phase plate available
-     * Range: [Boolean](types/Boolean.md)
- * [➞detector_technology](cryoEMInstrument__detector_technology.md)  <sub>0..1</sub>
-     * Description: Generic detector technology type
-     * Range: [DetectorTechnologyEnum](DetectorTechnologyEnum.md)
- * [➞detector_manufacturer](cryoEMInstrument__detector_manufacturer.md)  <sub>0..1</sub>
-     * Description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
-     * Range: [String](types/String.md)
- * [➞detector_model](cryoEMInstrument__detector_model.md)  <sub>0..1</sub>
-     * Description: Detector model (e.g., K3, Falcon 4i, DE-64)
-     * Range: [String](types/String.md)
- * [➞detector_mode](cryoEMInstrument__detector_mode.md)  <sub>0..1</sub>
-     * Description: Supported or default detector operating mode
-     * Range: [DetectorModeEnum](DetectorModeEnum.md)
- * [➞detector_position](cryoEMInstrument__detector_position.md)  <sub>0..1</sub>
-     * Description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
-     * Range: [String](types/String.md)
- * [➞detector_dimensions](cryoEMInstrument__detector_dimensions.md)  <sub>0..1</sub>
-     * Description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
-     * Range: [String](types/String.md)
- * [➞pixel_size_physical_um](cryoEMInstrument__pixel_size_physical_um.md)  <sub>0..1</sub>
-     * Description: Physical pixel size of the detector in micrometers
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞autoloader_capacity](cryoEMInstrument__autoloader_capacity.md)  <sub>0..1</sub>
-     * Description: Number of grids the autoloader can hold
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞cs](cryoEMInstrument__cs.md)  <sub>0..1</sub>
-     * Description: Spherical aberration (Cs) in millimeters
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞c2_aperture](cryoEMInstrument__c2_aperture.md)  <sub>0..1</sub>
-     * Description: C2 aperture size in micrometers
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞objective_aperture](cryoEMInstrument__objective_aperture.md)  <sub>0..1</sub>
-     * Description: Objective aperture size in micrometers
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞phase_plate_type](cryoEMInstrument__phase_plate_type.md)  <sub>0..1</sub>
-     * Description: Type of phase plate if present
-     * Range: [String](types/String.md)
- * [➞energy_filter_present](cryoEMInstrument__energy_filter_present.md)  <sub>0..1</sub>
-     * Description: Whether energy filter is present
-     * Range: [Boolean](types/Boolean.md)
- * [➞energy_filter_make](cryoEMInstrument__energy_filter_make.md)  <sub>0..1</sub>
-     * Description: Energy filter manufacturer
-     * Range: [String](types/String.md)
- * [➞energy_filter_model](cryoEMInstrument__energy_filter_model.md)  <sub>0..1</sub>
-     * Description: Energy filter model
-     * Range: [String](types/String.md)
- * [➞energy_filter_slit_width](cryoEMInstrument__energy_filter_slit_width.md)  <sub>0..1</sub>
-     * Description: Energy filter slit width in eV
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞pixel_size_physical](cryoEMInstrument__pixel_size_physical.md)  <sub>0..1</sub>
-     * Description: Physical pixel size in micrometers
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞microscope_software](cryoEMInstrument__microscope_software.md)  <sub>0..1</sub>
-     * Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
-     * Range: [String](types/String.md)
- * [➞microscope_software_version](cryoEMInstrument__microscope_software_version.md)  <sub>0..1</sub>
-     * Description: Software version
-     * Range: [String](types/String.md)
- * [➞spotsize](cryoEMInstrument__spotsize.md)  <sub>0..1</sub>
-     * Description: Electron beam spot size setting
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞gunlens](cryoEMInstrument__gunlens.md)  <sub>0..1</sub>
-     * Description: Gun lens setting
-     * Range: [QuantityValue](QuantityValue.md)
- * [➞imaging_mode](cryoEMInstrument__imaging_mode.md)  <sub>0..1</sub>
-     * Description: Imaging mode for electron microscopy
-     * Range: [ImagingModeEnum](ImagingModeEnum.md)
- * [➞tem_beam_diameter](cryoEMInstrument__tem_beam_diameter.md)  <sub>0..1</sub>
-     * Description: TEM beam diameter in micrometers
-     * Range: [QuantityValue](QuantityValue.md)
+```mermaid
+ classDiagram
+    class CryoEMInstrument
+    click CryoEMInstrument href "../CryoEMInstrument/"
+      Instrument <|-- CryoEMInstrument
+        click Instrument href "../Instrument/"
+      
+      CryoEMInstrument : accelerating_voltage
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : accelerating_voltage
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from Instrument:
+        
+      CryoEMInstrument : autoloader_capacity
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : autoloader_capacity
+        click QuantityValue href "../QuantityValue/"
+    
 
- * [➞id](namedThing__id.md)  <sub>1..1</sub>
-     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞title](namedThing__title.md)  <sub>0..1</sub>
-     * Description: A human-readable name or title for this entity
-     * Range: [String](types/String.md)
- * [➞description](namedThing__description.md)  <sub>0..1</sub>
-     * Description: A detailed textual description of this entity
-     * Range: [String](types/String.md)
- * [➞instrument_code](instrument__instrument_code.md)  <sub>1..1</sub>
-     * Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
-     * Range: [String](types/String.md)
- * [➞instrument_category](instrument__instrument_category.md)  <sub>0..1</sub>
-     * Description: Category distinguishing beamlines from laboratory equipment
-     * Range: [InstrumentCategoryEnum](InstrumentCategoryEnum.md)
- * [➞facility_name](instrument__facility_name.md)  <sub>0..1</sub>
-     * Description: Name of the research facility where the instrument is located
-     * Range: [FacilityEnum](FacilityEnum.md)
- * [➞facility_ror](instrument__facility_ror.md)  <sub>0..1</sub>
-     * Description: Research Organization Registry (ROR) identifier for the facility
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞beamline_id](instrument__beamline_id.md)  <sub>0..1</sub>
-     * Description: Beamline identifier at synchrotron/neutron facility
-     * Range: [String](types/String.md)
- * [➞manufacturer](instrument__manufacturer.md)  <sub>0..1</sub>
-     * Description: Instrument manufacturer
-     * Range: [String](types/String.md)
- * [➞model](instrument__model.md)  <sub>0..1</sub>
-     * Description: Instrument model
-     * Range: [String](types/String.md)
- * [➞installation_date](instrument__installation_date.md)  <sub>0..1</sub>
-     * Description: Date of instrument installation
-     * Range: [String](types/String.md)
- * [➞current_status](instrument__current_status.md)  <sub>0..1</sub>
-     * Description: Current operational status
-     * Range: [InstrumentStatusEnum](InstrumentStatusEnum.md)
+        
+      CryoEMInstrument : beamline_id
+        
+      CryoEMInstrument : c2_aperture
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : c2_aperture
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : cs
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : cs
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : cs_corrector
+        
+      CryoEMInstrument : current_status
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" InstrumentStatusEnum : current_status
+        click InstrumentStatusEnum href "../InstrumentStatusEnum/"
+    
+
+        
+      CryoEMInstrument : description
+        
+      CryoEMInstrument : detector_dimensions
+        
+      CryoEMInstrument : detector_manufacturer
+        
+      CryoEMInstrument : detector_mode
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" DetectorModeEnum : detector_mode
+        click DetectorModeEnum href "../DetectorModeEnum/"
+    
+
+        
+      CryoEMInstrument : detector_model
+        
+      CryoEMInstrument : detector_position
+        
+      CryoEMInstrument : detector_technology
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" DetectorTechnologyEnum : detector_technology
+        click DetectorTechnologyEnum href "../DetectorTechnologyEnum/"
+    
+
+        
+      CryoEMInstrument : energy_filter_make
+        
+      CryoEMInstrument : energy_filter_model
+        
+      CryoEMInstrument : energy_filter_present
+        
+      CryoEMInstrument : energy_filter_slit_width
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : energy_filter_slit_width
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : facility_name
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" FacilityEnum : facility_name
+        click FacilityEnum href "../FacilityEnum/"
+    
+
+        
+      CryoEMInstrument : facility_ror
+        
+      CryoEMInstrument : gunlens
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : gunlens
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : id
+        
+      CryoEMInstrument : imaging_mode
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" ImagingModeEnum : imaging_mode
+        click ImagingModeEnum href "../ImagingModeEnum/"
+    
+
+        
+      CryoEMInstrument : installation_date
+        
+      CryoEMInstrument : instrument_category
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" InstrumentCategoryEnum : instrument_category
+        click InstrumentCategoryEnum href "../InstrumentCategoryEnum/"
+    
+
+        
+      CryoEMInstrument : instrument_code
+        
+      CryoEMInstrument : manufacturer
+        
+      CryoEMInstrument : microscope_software
+        
+      CryoEMInstrument : microscope_software_version
+        
+      CryoEMInstrument : model
+        
+      CryoEMInstrument : objective_aperture
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : objective_aperture
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : phase_plate
+        
+      CryoEMInstrument : phase_plate_type
+        
+      CryoEMInstrument : pixel_size_physical
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : pixel_size_physical
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : pixel_size_physical_um
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : pixel_size_physical_um
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : spotsize
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : spotsize
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : tem_beam_diameter
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : tem_beam_diameter
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      CryoEMInstrument : title
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [NamedThing](NamedThing.md)
+    * [Instrument](Instrument.md)
+        * **CryoEMInstrument**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [accelerating_voltage](accelerating_voltage.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Accelerating voltage in kV | direct |
+| [cs_corrector](cs_corrector.md) | 0..1 <br/> [Boolean](Boolean.md) | Spherical aberration corrector present | direct |
+| [phase_plate](phase_plate.md) | 0..1 <br/> [Boolean](Boolean.md) | Phase plate available | direct |
+| [detector_technology](detector_technology.md) | 0..1 <br/> [DetectorTechnologyEnum](DetectorTechnologyEnum.md) | Generic detector technology type | direct |
+| [detector_manufacturer](detector_manufacturer.md) | 0..1 <br/> [String](String.md) | Detector manufacturer (e | direct |
+| [detector_model](detector_model.md) | 0..1 <br/> [String](String.md) | Detector model (e | direct |
+| [detector_mode](detector_mode.md) | 0..1 <br/> [DetectorModeEnum](DetectorModeEnum.md) | Supported or default detector operating mode | direct |
+| [detector_position](detector_position.md) | 0..1 <br/> [String](String.md) | Physical position of detector in microscope (e | direct |
+| [detector_dimensions](detector_dimensions.md) | 0..1 <br/> [String](String.md) | Detector dimensions in pixels (e | direct |
+| [pixel_size_physical_um](pixel_size_physical_um.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Physical pixel size of the detector in micrometers | direct |
+| [autoloader_capacity](autoloader_capacity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of grids the autoloader can hold | direct |
+| [cs](cs.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Spherical aberration (Cs) in millimeters | direct |
+| [c2_aperture](c2_aperture.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | C2 aperture size in micrometers | direct |
+| [objective_aperture](objective_aperture.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Objective aperture size in micrometers | direct |
+| [phase_plate_type](phase_plate_type.md) | 0..1 <br/> [String](String.md) | Type of phase plate if present | direct |
+| [energy_filter_present](energy_filter_present.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether energy filter is present | direct |
+| [energy_filter_make](energy_filter_make.md) | 0..1 <br/> [String](String.md) | Energy filter manufacturer | direct |
+| [energy_filter_model](energy_filter_model.md) | 0..1 <br/> [String](String.md) | Energy filter model | direct |
+| [energy_filter_slit_width](energy_filter_slit_width.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Energy filter slit width in eV | direct |
+| [pixel_size_physical](pixel_size_physical.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Physical pixel size in micrometers | direct |
+| [microscope_software](microscope_software.md) | 0..1 <br/> [String](String.md) | Microscope control software (e | direct |
+| [microscope_software_version](microscope_software_version.md) | 0..1 <br/> [String](String.md) | Software version | direct |
+| [spotsize](spotsize.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron beam spot size setting | direct |
+| [gunlens](gunlens.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Gun lens setting | direct |
+| [imaging_mode](imaging_mode.md) | 0..1 <br/> [ImagingModeEnum](ImagingModeEnum.md) | Imaging mode for electron microscopy | direct |
+| [tem_beam_diameter](tem_beam_diameter.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | TEM beam diameter in micrometers | direct |
+| [instrument_code](instrument_code.md) | 1 <br/> [String](String.md) | Human-friendly facility or laboratory identifier for the instrument (e | [Instrument](Instrument.md) |
+| [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
+| [facility_name](facility_name.md) | 0..1 <br/> [FacilityEnum](FacilityEnum.md) | Name of the research facility where the instrument is located | [Instrument](Instrument.md) |
+| [facility_ror](facility_ror.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Research Organization Registry (ROR) identifier for the facility | [Instrument](Instrument.md) |
+| [beamline_id](beamline_id.md) | 0..1 <br/> [String](String.md) | Beamline identifier at synchrotron/neutron facility | [Instrument](Instrument.md) |
+| [manufacturer](manufacturer.md) | 0..1 <br/> [String](String.md) | Instrument manufacturer | [Instrument](Instrument.md) |
+| [model](model.md) | 0..1 <br/> [String](String.md) | Instrument model | [Instrument](Instrument.md) |
+| [installation_date](installation_date.md) | 0..1 <br/> [String](String.md) | Date of instrument installation | [Instrument](Instrument.md) |
+| [current_status](current_status.md) | 0..1 <br/> [InstrumentStatusEnum](InstrumentStatusEnum.md) | Current operational status | [Instrument](Instrument.md) |
+| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:CryoEMInstrument |
+| native | lambdaber:CryoEMInstrument |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: CryoEMInstrument
+description: Cryo-EM microscope specifications
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: Instrument
+attributes:
+  accelerating_voltage:
+    name: accelerating_voltage
+    description: Accelerating voltage in kV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  cs_corrector:
+    name: cs_corrector
+    description: Spherical aberration corrector present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  phase_plate:
+    name: phase_plate
+    description: Phase plate available
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., direct_electron_detector, ccd)
+    - See detector_manufacturer and detector_model for specific equipment details
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
+    comments:
+    - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., K3, Falcon 4i, DE-64)
+    comments:
+    - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  detector_mode:
+    name: detector_mode
+    description: Supported or default detector operating mode
+    comments:
+    - Indicates operating mode capabilities (e.g., counting, super_resolution)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  detector_position:
+    name: detector_position
+    description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  detector_dimensions:
+    name: detector_dimensions
+    description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  pixel_size_physical_um:
+    name: pixel_size_physical_um
+    description: Physical pixel size of the detector in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  autoloader_capacity:
+    name: autoloader_capacity
+    description: Number of grids the autoloader can hold
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  cs:
+    name: cs
+    description: Spherical aberration (Cs) in millimeters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  c2_aperture:
+    name: c2_aperture
+    description: C2 aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  objective_aperture:
+    name: objective_aperture
+    description: Objective aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  phase_plate_type:
+    name: phase_plate_type
+    description: Type of phase plate if present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_present:
+    name: energy_filter_present
+    description: Whether energy filter is present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  energy_filter_make:
+    name: energy_filter_make
+    description: Energy filter manufacturer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_model:
+    name: energy_filter_model
+    description: Energy filter model
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width in eV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  pixel_size_physical:
+    name: pixel_size_physical
+    description: Physical pixel size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  microscope_software:
+    name: microscope_software
+    description: Microscope control software (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  microscope_software_version:
+    name: microscope_software_version
+    description: Software version
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  spotsize:
+    name: spotsize
+    description: Electron beam spot size setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  gunlens:
+    name: gunlens
+    description: Gun lens setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  imaging_mode:
+    name: imaging_mode
+    description: Imaging mode for electron microscopy
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: ImagingModeEnum
+  tem_beam_diameter:
+    name: tem_beam_diameter
+    description: TEM beam diameter in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: CryoEMInstrument
+description: Cryo-EM microscope specifications
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: Instrument
+attributes:
+  accelerating_voltage:
+    name: accelerating_voltage
+    description: Accelerating voltage in kV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: accelerating_voltage
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  cs_corrector:
+    name: cs_corrector
+    description: Spherical aberration corrector present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cs_corrector
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  phase_plate:
+    name: phase_plate
+    description: Phase plate available
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: phase_plate
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  detector_technology:
+    name: detector_technology
+    description: Generic detector technology type
+    comments:
+    - Use this for technology classification (e.g., direct_electron_detector, ccd)
+    - See detector_manufacturer and detector_model for specific equipment details
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_technology
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: DetectorTechnologyEnum
+  detector_manufacturer:
+    name: detector_manufacturer
+    description: Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
+    comments:
+    - 'Examples: Gatan, ThermoFisher Scientific, DirectElectron'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_manufacturer
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    range: string
+  detector_model:
+    name: detector_model
+    description: Detector model (e.g., K3, Falcon 4i, DE-64)
+    comments:
+    - 'Examples: K3 BioQuantum, Falcon 4i, DE-64'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_model
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - XRayInstrument
+    - XRFImage
+    range: string
+  detector_mode:
+    name: detector_mode
+    description: Supported or default detector operating mode
+    comments:
+    - Indicates operating mode capabilities (e.g., counting, super_resolution)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_mode
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    - DataCollectionStrategy
+    range: DetectorModeEnum
+  detector_position:
+    name: detector_position
+    description: Physical position of detector in microscope (e.g., post-GIF, pre-column)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_position
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  detector_dimensions:
+    name: detector_dimensions
+    description: Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: detector_dimensions
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  pixel_size_physical_um:
+    name: pixel_size_physical_um
+    description: Physical pixel size of the detector in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: pixel_size_physical_um
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  autoloader_capacity:
+    name: autoloader_capacity
+    description: Number of grids the autoloader can hold
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: autoloader_capacity
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  cs:
+    name: cs
+    description: Spherical aberration (Cs) in millimeters
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cs
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  c2_aperture:
+    name: c2_aperture
+    description: C2 aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: c2_aperture
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  objective_aperture:
+    name: objective_aperture
+    description: Objective aperture size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: objective_aperture
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  phase_plate_type:
+    name: phase_plate_type
+    description: Type of phase plate if present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: phase_plate_type
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_present:
+    name: energy_filter_present
+    description: Whether energy filter is present
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_present
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: boolean
+  energy_filter_make:
+    name: energy_filter_make
+    description: Energy filter manufacturer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_make
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_model:
+    name: energy_filter_model
+    description: Energy filter model
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_model
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  energy_filter_slit_width:
+    name: energy_filter_slit_width
+    description: Energy filter slit width in eV
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: energy_filter_slit_width
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  pixel_size_physical:
+    name: pixel_size_physical
+    description: Physical pixel size in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: pixel_size_physical
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  microscope_software:
+    name: microscope_software
+    description: Microscope control software (e.g., SerialEM, EPU, Leginon)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: microscope_software
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  microscope_software_version:
+    name: microscope_software_version
+    description: Software version
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: microscope_software_version
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: string
+  spotsize:
+    name: spotsize
+    description: Electron beam spot size setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: spotsize
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  gunlens:
+    name: gunlens
+    description: Gun lens setting
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: gunlens
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  imaging_mode:
+    name: imaging_mode
+    description: Imaging mode for electron microscopy
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: imaging_mode
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: ImagingModeEnum
+  tem_beam_diameter:
+    name: tem_beam_diameter
+    description: TEM beam diameter in micrometers
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: tem_beam_diameter
+    owner: CryoEMInstrument
+    domain_of:
+    - CryoEMInstrument
+    range: QuantityValue
+    inlined: true
+  instrument_code:
+    name: instrument_code
+    description: Human-friendly facility or laboratory identifier for the instrument
+      (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
+      reference and equipment tracking.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: instrument_code
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
+    required: true
+  instrument_category:
+    name: instrument_category
+    description: Category distinguishing beamlines from laboratory equipment
+    comments:
+    - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
+    - Use ELECTRON_MICROSCOPE for cryo-EM instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: instrument_category
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: InstrumentCategoryEnum
+  facility_name:
+    name: facility_name
+    description: Name of the research facility where the instrument is located
+    comments:
+    - Select from the standardized list of major synchrotron facilities
+    - Leave empty for laboratory-based instruments
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_name
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: FacilityEnum
+  facility_ror:
+    name: facility_ror
+    description: Research Organization Registry (ROR) identifier for the facility
+    comments:
+    - Persistent identifier for the facility organization
+    - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: facility_ror
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: uriorcurie
+    pattern: ^https://ror\.org/\w+$
+  beamline_id:
+    name: beamline_id
+    description: Beamline identifier at synchrotron/neutron facility
+    comments:
+    - Use facility-specific naming convention
+    - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+    alias: beamline_id
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
+  manufacturer:
+    name: manufacturer
+    description: Instrument manufacturer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: manufacturer
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
+  model:
+    name: model
+    description: Instrument model
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: model
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
+  installation_date:
+    name: installation_date
+    description: Date of instrument installation
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: installation_date
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: string
+  current_status:
+    name: current_status
+    description: Current operational status
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: current_status
+    owner: CryoEMInstrument
+    domain_of:
+    - Instrument
+    range: InstrumentStatusEnum
+  id:
+    name: id
+    description: Globally unique identifier as an IRI or CURIE for machine processing
+      and external references. Used for linking data across systems and semantic web
+      integration.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: CryoEMInstrument
+    domain_of:
+    - NamedThing
+    - Attribute
+    range: uriorcurie
+    required: true
+  title:
+    name: title
+    description: A human-readable name or title for this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: CryoEMInstrument
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    description: A detailed textual description of this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: description
+    owner: CryoEMInstrument
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

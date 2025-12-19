@@ -1,90 +1,500 @@
 
-# Class: PostTranslationalModification
 
-Post-translational modifications observed or predicted
+# Class: PostTranslationalModification 
+
+
+_Post-translational modifications observed or predicted_
+
+
+
+
 
 URI: [lambdaber:PostTranslationalModification](https://w3id.org/lambda-ber-schema/PostTranslationalModification)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ProteinAnnotation],[AggregatedProteinView]++-%20ptms%200..*>[PostTranslationalModification&#124;modification_type:PTMTypeEnum;modified_residue:string;modification_group:string%20%3F;mass_shift:float%20%3F;functional_effect:string%20%3F;regulatory_role:string%20%3F;enzyme:string%20%3F;removal_enzyme:string%20%3F;protein_id(i):string;pdb_entry(i):string%20%3F;chain_id(i):string%20%3F;residue_range(i):string%20%3F;confidence_score(i):float%20%3F;evidence_type(i):EvidenceTypeEnum%20%3F;evidence_code(i):uriorcurie%20%3F;source_database(i):AnnotationSourceEnum%20%3F;annotation_method(i):string%20%3F;publication_ids(i):string%20*;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Sample]++-%20ptm_annotations%200..*>[PostTranslationalModification],[ProteinAnnotation]^-[PostTranslationalModification],[Sample],[AggregatedProteinView])](https://yuml.me/diagram/nofunky;dir:TB/class/[ProteinAnnotation],[AggregatedProteinView]++-%20ptms%200..*>[PostTranslationalModification&#124;modification_type:PTMTypeEnum;modified_residue:string;modification_group:string%20%3F;mass_shift:float%20%3F;functional_effect:string%20%3F;regulatory_role:string%20%3F;enzyme:string%20%3F;removal_enzyme:string%20%3F;protein_id(i):string;pdb_entry(i):string%20%3F;chain_id(i):string%20%3F;residue_range(i):string%20%3F;confidence_score(i):float%20%3F;evidence_type(i):EvidenceTypeEnum%20%3F;evidence_code(i):uriorcurie%20%3F;source_database(i):AnnotationSourceEnum%20%3F;annotation_method(i):string%20%3F;publication_ids(i):string%20*;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Sample]++-%20ptm_annotations%200..*>[PostTranslationalModification],[ProteinAnnotation]^-[PostTranslationalModification],[Sample],[AggregatedProteinView])
-
-## Parents
-
- *  is_a: [ProteinAnnotation](ProteinAnnotation.md) - Base class for all protein-related functional and structural annotations
-
-## Referenced by Class
-
- *  **None** *[➞ptms](aggregatedProteinView__ptms.md)*  <sub>0..\*</sub>  **[PostTranslationalModification](PostTranslationalModification.md)**
- *  **None** *[➞ptm_annotations](sample__ptm_annotations.md)*  <sub>0..\*</sub>  **[PostTranslationalModification](PostTranslationalModification.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞modification_type](postTranslationalModification__modification_type.md)  <sub>1..1</sub>
-     * Description: Type of PTM
-     * Range: [PTMTypeEnum](PTMTypeEnum.md)
- * [➞modified_residue](postTranslationalModification__modified_residue.md)  <sub>1..1</sub>
-     * Description: Residue that is modified
-     * Range: [String](types/String.md)
- * [➞modification_group](postTranslationalModification__modification_group.md)  <sub>0..1</sub>
-     * Description: Chemical group added (e.g., 'phosphate', 'methyl')
-     * Range: [String](types/String.md)
- * [➞mass_shift](postTranslationalModification__mass_shift.md)  <sub>0..1</sub>
-     * Description: Mass change due to modification (Da)
-     * Range: [Float](types/Float.md)
- * [➞functional_effect](postTranslationalModification__functional_effect.md)  <sub>0..1</sub>
-     * Description: Known functional effect of this PTM
-     * Range: [String](types/String.md)
- * [➞regulatory_role](postTranslationalModification__regulatory_role.md)  <sub>0..1</sub>
-     * Description: Role in regulation
-     * Range: [String](types/String.md)
- * [➞enzyme](postTranslationalModification__enzyme.md)  <sub>0..1</sub>
-     * Description: Enzyme responsible for modification
-     * Range: [String](types/String.md)
- * [➞removal_enzyme](postTranslationalModification__removal_enzyme.md)  <sub>0..1</sub>
-     * Description: Enzyme that removes modification
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class PostTranslationalModification
+    click PostTranslationalModification href "../PostTranslationalModification/"
+      ProteinAnnotation <|-- PostTranslationalModification
+        click ProteinAnnotation href "../ProteinAnnotation/"
+      
+      PostTranslationalModification : annotation_method
+        
+      PostTranslationalModification : chain_id
+        
+      PostTranslationalModification : confidence_score
+        
+      PostTranslationalModification : description
+        
+      PostTranslationalModification : enzyme
+        
+      PostTranslationalModification : evidence_code
+        
+      PostTranslationalModification : evidence_type
+        
+          
+    
+        
+        
+        PostTranslationalModification --> "0..1" EvidenceTypeEnum : evidence_type
+        click EvidenceTypeEnum href "../EvidenceTypeEnum/"
+    
 
-### Inherited from ProteinAnnotation:
+        
+      PostTranslationalModification : functional_effect
+        
+      PostTranslationalModification : id
+        
+      PostTranslationalModification : mass_shift
+        
+      PostTranslationalModification : modification_group
+        
+      PostTranslationalModification : modification_type
+        
+          
+    
+        
+        
+        PostTranslationalModification --> "1" PTMTypeEnum : modification_type
+        click PTMTypeEnum href "../PTMTypeEnum/"
+    
 
- * [➞id](namedThing__id.md)  <sub>1..1</sub>
-     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞title](namedThing__title.md)  <sub>0..1</sub>
-     * Description: A human-readable name or title for this entity
-     * Range: [String](types/String.md)
- * [➞description](namedThing__description.md)  <sub>0..1</sub>
-     * Description: A detailed textual description of this entity
-     * Range: [String](types/String.md)
- * [➞protein_id](proteinAnnotation__protein_id.md)  <sub>1..1</sub>
-     * Description: UniProt accession number
-     * Range: [String](types/String.md)
- * [➞pdb_entry](proteinAnnotation__pdb_entry.md)  <sub>0..1</sub>
-     * Description: PDB identifier
-     * Range: [String](types/String.md)
- * [➞chain_id](proteinAnnotation__chain_id.md)  <sub>0..1</sub>
-     * Description: Chain identifier in the PDB structure
-     * Range: [String](types/String.md)
- * [➞residue_range](proteinAnnotation__residue_range.md)  <sub>0..1</sub>
-     * Description: Range of residues (e.g., '1-100', '25,27,30-35')
-     * Range: [String](types/String.md)
- * [➞confidence_score](proteinAnnotation__confidence_score.md)  <sub>0..1</sub>
-     * Description: Confidence score for the annotation (range: 0-1)
-     * Range: [Float](types/Float.md)
- * [➞evidence_type](proteinAnnotation__evidence_type.md)  <sub>0..1</sub>
-     * Description: Type of evidence supporting this annotation
-     * Range: [EvidenceTypeEnum](EvidenceTypeEnum.md)
- * [➞evidence_code](proteinAnnotation__evidence_code.md)  <sub>0..1</sub>
-     * Description: Evidence and Conclusion Ontology (ECO) code
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞source_database](proteinAnnotation__source_database.md)  <sub>0..1</sub>
-     * Description: Source database or resource that provided this annotation
-     * Range: [AnnotationSourceEnum](AnnotationSourceEnum.md)
- * [➞annotation_method](proteinAnnotation__annotation_method.md)  <sub>0..1</sub>
-     * Description: Computational or experimental method used
-     * Range: [String](types/String.md)
- * [➞publication_ids](proteinAnnotation__publication_ids.md)  <sub>0..\*</sub>
-     * Description: IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
-     * Range: [String](types/String.md)
+        
+      PostTranslationalModification : modified_residue
+        
+      PostTranslationalModification : pdb_entry
+        
+      PostTranslationalModification : protein_id
+        
+      PostTranslationalModification : publication_ids
+        
+      PostTranslationalModification : regulatory_role
+        
+      PostTranslationalModification : removal_enzyme
+        
+      PostTranslationalModification : residue_range
+        
+      PostTranslationalModification : source_database
+        
+          
+    
+        
+        
+        PostTranslationalModification --> "0..1" AnnotationSourceEnum : source_database
+        click AnnotationSourceEnum href "../AnnotationSourceEnum/"
+    
+
+        
+      PostTranslationalModification : title
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [NamedThing](NamedThing.md)
+    * [ProteinAnnotation](ProteinAnnotation.md)
+        * **PostTranslationalModification**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [modification_type](modification_type.md) | 1 <br/> [PTMTypeEnum](PTMTypeEnum.md) | Type of PTM | direct |
+| [modified_residue](modified_residue.md) | 1 <br/> [String](String.md) | Residue that is modified | direct |
+| [modification_group](modification_group.md) | 0..1 <br/> [String](String.md) | Chemical group added (e | direct |
+| [mass_shift](mass_shift.md) | 0..1 <br/> [Float](Float.md) | Mass change due to modification (Da) | direct |
+| [functional_effect](functional_effect.md) | 0..1 <br/> [String](String.md) | Known functional effect of this PTM | direct |
+| [regulatory_role](regulatory_role.md) | 0..1 <br/> [String](String.md) | Role in regulation | direct |
+| [enzyme](enzyme.md) | 0..1 <br/> [String](String.md) | Enzyme responsible for modification | direct |
+| [removal_enzyme](removal_enzyme.md) | 0..1 <br/> [String](String.md) | Enzyme that removes modification | direct |
+| [protein_id](protein_id.md) | 1 <br/> [String](String.md) | UniProt accession number | [ProteinAnnotation](ProteinAnnotation.md) |
+| [pdb_entry](pdb_entry.md) | 0..1 <br/> [String](String.md) | PDB identifier | [ProteinAnnotation](ProteinAnnotation.md) |
+| [chain_id](chain_id.md) | 0..1 <br/> [String](String.md) | Chain identifier in the PDB structure | [ProteinAnnotation](ProteinAnnotation.md) |
+| [residue_range](residue_range.md) | 0..1 <br/> [String](String.md) | Range of residues (e | [ProteinAnnotation](ProteinAnnotation.md) |
+| [confidence_score](confidence_score.md) | 0..1 <br/> [Float](Float.md) | Confidence score for the annotation (range: 0-1) | [ProteinAnnotation](ProteinAnnotation.md) |
+| [evidence_type](evidence_type.md) | 0..1 <br/> [EvidenceTypeEnum](EvidenceTypeEnum.md) | Type of evidence supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
+| [evidence_code](evidence_code.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | Evidence and Conclusion Ontology (ECO) code | [ProteinAnnotation](ProteinAnnotation.md) |
+| [source_database](source_database.md) | 0..1 <br/> [AnnotationSourceEnum](AnnotationSourceEnum.md) | Source database or resource that provided this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
+| [annotation_method](annotation_method.md) | 0..1 <br/> [String](String.md) | Computational or experimental method used | [ProteinAnnotation](ProteinAnnotation.md) |
+| [publication_ids](publication_ids.md) | * <br/> [String](String.md) | IDs of one or more publications supporting this annotation | [ProteinAnnotation](ProteinAnnotation.md) |
+| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Sample](Sample.md) | [ptm_annotations](ptm_annotations.md) | range | [PostTranslationalModification](PostTranslationalModification.md) |
+| [AggregatedProteinView](AggregatedProteinView.md) | [ptms](ptms.md) | range | [PostTranslationalModification](PostTranslationalModification.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:PostTranslationalModification |
+| native | lambdaber:PostTranslationalModification |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: PostTranslationalModification
+description: Post-translational modifications observed or predicted
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: ProteinAnnotation
+attributes:
+  modification_type:
+    name: modification_type
+    description: Type of PTM
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+    range: PTMTypeEnum
+    required: true
+  modified_residue:
+    name: modified_residue
+    description: Residue that is modified
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+    required: true
+  modification_group:
+    name: modification_group
+    description: Chemical group added (e.g., 'phosphate', 'methyl')
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+  mass_shift:
+    name: mass_shift
+    description: Mass change due to modification (Da)
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+    range: float
+    unit:
+      ucum_code: Da
+  functional_effect:
+    name: functional_effect
+    description: Known functional effect of this PTM
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+  regulatory_role:
+    name: regulatory_role
+    description: Role in regulation
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+  enzyme:
+    name: enzyme
+    description: Enzyme responsible for modification
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+  removal_enzyme:
+    name: removal_enzyme
+    description: Enzyme that removes modification
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    domain_of:
+    - PostTranslationalModification
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: PostTranslationalModification
+description: Post-translational modifications observed or predicted
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: ProteinAnnotation
+attributes:
+  modification_type:
+    name: modification_type
+    description: Type of PTM
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: modification_type
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: PTMTypeEnum
+    required: true
+  modified_residue:
+    name: modified_residue
+    description: Residue that is modified
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: modified_residue
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+    required: true
+  modification_group:
+    name: modification_group
+    description: Chemical group added (e.g., 'phosphate', 'methyl')
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: modification_group
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+  mass_shift:
+    name: mass_shift
+    description: Mass change due to modification (Da)
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: mass_shift
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: float
+    unit:
+      ucum_code: Da
+  functional_effect:
+    name: functional_effect
+    description: Known functional effect of this PTM
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: functional_effect
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+  regulatory_role:
+    name: regulatory_role
+    description: Role in regulation
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: regulatory_role
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+  enzyme:
+    name: enzyme
+    description: Enzyme responsible for modification
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: enzyme
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+  removal_enzyme:
+    name: removal_enzyme
+    description: Enzyme that removes modification
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: removal_enzyme
+    owner: PostTranslationalModification
+    domain_of:
+    - PostTranslationalModification
+    range: string
+  protein_id:
+    name: protein_id
+    description: UniProt accession number
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: protein_id
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    - ConformationalEnsemble
+    range: string
+    required: true
+    pattern: ^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$
+  pdb_entry:
+    name: pdb_entry
+    description: PDB identifier
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: pdb_entry
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: string
+    pattern: ^[0-9][A-Za-z0-9]{3}$
+  chain_id:
+    name: chain_id
+    description: Chain identifier in the PDB structure
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: chain_id
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: string
+    pattern: ^[A-Za-z0-9]+$
+  residue_range:
+    name: residue_range
+    description: Range of residues (e.g., '1-100', '25,27,30-35')
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: residue_range
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: string
+    pattern: ^[0-9,\-]+$
+  confidence_score:
+    name: confidence_score
+    description: 'Confidence score for the annotation (range: 0-1)'
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: confidence_score
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+  evidence_type:
+    name: evidence_type
+    description: Type of evidence supporting this annotation
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: evidence_type
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: EvidenceTypeEnum
+  evidence_code:
+    name: evidence_code
+    description: Evidence and Conclusion Ontology (ECO) code
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: evidence_code
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: uriorcurie
+  source_database:
+    name: source_database
+    description: Source database or resource that provided this annotation
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: source_database
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: AnnotationSourceEnum
+  annotation_method:
+    name: annotation_method
+    description: Computational or experimental method used
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: annotation_method
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: string
+  publication_ids:
+    name: publication_ids
+    description: IDs of one or more publications supporting this annotation. Use PubMed
+      IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
+    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    rank: 1000
+    alias: publication_ids
+    owner: PostTranslationalModification
+    domain_of:
+    - ProteinAnnotation
+    range: string
+    multivalued: true
+    pattern: ^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$
+  id:
+    name: id
+    description: Globally unique identifier as an IRI or CURIE for machine processing
+      and external references. Used for linking data across systems and semantic web
+      integration.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: PostTranslationalModification
+    domain_of:
+    - NamedThing
+    - Attribute
+    range: uriorcurie
+    required: true
+  title:
+    name: title
+    description: A human-readable name or title for this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: PostTranslationalModification
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    description: A detailed textual description of this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: description
+    owner: PostTranslationalModification
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

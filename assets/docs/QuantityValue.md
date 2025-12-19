@@ -1,319 +1,602 @@
 
-# Class: QuantityValue
 
-A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
-
-URI: [lambdaber:QuantityValue](https://w3id.org/lambda-ber-schema/QuantityValue)
+# Class: QuantityValue 
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Micrograph]++-%20astigmatism%200..1>[QuantityValue&#124;maximum_numeric_value:float%20%3F;minimum_numeric_value:float%20%3F;numeric_value:float;unit:string;unit_cv_id:curie%20%3F;raw_value:string%20%3F],[Micrograph]++-%20defocus%200..1>[QuantityValue],[BeamlineInstrument]++-%20energy_max%200..1>[QuantityValue],[BeamlineInstrument]++-%20energy_min%200..1>[QuantityValue],[BeamlineInstrument]++-%20q_range_max%200..1>[QuantityValue],[BeamlineInstrument]++-%20q_range_min%200..1>[QuantityValue],[BeamlineInstrument]++-%20sample_changer_capacity%200..1>[QuantityValue],[BufferComposition]++-%20ph%200..1>[QuantityValue],[CTFEstimationParameters]++-%20amplitude_contrast%200..1>[QuantityValue],[CTFEstimationParameters]++-%20cs_used_in_estimation%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_search_max%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_search_min%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_step%200..1>[QuantityValue],[CTFEstimationParameters]++-%20voltage_used_in_estimation%200..1>[QuantityValue],[ComputeResources]++-%20cpu_hours%200..1>[QuantityValue],[ComputeResources]++-%20gpu_hours%200..1>[QuantityValue],[ComputeResources]++-%20memory_gb%200..1>[QuantityValue],[ComputeResources]++-%20storage_gb%200..1>[QuantityValue],[CryoEMInstrument]++-%20accelerating_voltage%200..1>[QuantityValue],[CryoEMInstrument]++-%20autoloader_capacity%200..1>[QuantityValue],[CryoEMInstrument]++-%20c2_aperture%200..1>[QuantityValue],[CryoEMInstrument]++-%20cs%200..1>[QuantityValue],[CryoEMInstrument]++-%20energy_filter_slit_width%200..1>[QuantityValue],[CryoEMInstrument]++-%20gunlens%200..1>[QuantityValue],[CryoEMInstrument]++-%20objective_aperture%200..1>[QuantityValue],[CryoEMInstrument]++-%20pixel_size_physical%200..1>[QuantityValue],[CryoEMInstrument]++-%20pixel_size_physical_um%200..1>[QuantityValue],[CryoEMInstrument]++-%20spotsize%200..1>[QuantityValue],[CryoEMInstrument]++-%20tem_beam_diameter%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_force%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_number%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_time%200..1>[QuantityValue],[CryoEMPreparation]++-%20blotter_height%200..1>[QuantityValue],[CryoEMPreparation]++-%20blotter_setting%200..1>[QuantityValue],[CryoEMPreparation]++-%20chamber_temperature%200..1>[QuantityValue],[CryoEMPreparation]++-%20ethane_temperature%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_current%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_pressure%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_time%200..1>[QuantityValue],[CryoEMPreparation]++-%20hole_size%200..1>[QuantityValue],[CryoEMPreparation]++-%20humidity_percentage%200..1>[QuantityValue],[CryoEMPreparation]++-%20sample_applied_volume%200..1>[QuantityValue],[CryoEMPreparation]++-%20wait_time%200..1>[QuantityValue],[CrystallizationConditions]++-%20drop_volume%200..1>[QuantityValue],[CrystallizationConditions]++-%20protein_concentration%200..1>[QuantityValue],[CrystallizationConditions]++-%20reservoir_volume_ul%200..1>[QuantityValue],[CrystallizationConditions]++-%20temperature_c%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_center_x_px%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_center_y_px%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_size_um%200..1>[QuantityValue],[DataCollectionStrategy]++-%20detector_distance_mm%200..1>[QuantityValue],[DataCollectionStrategy]++-%20dose_per_frame%200..1>[QuantityValue],[DataCollectionStrategy]++-%20flux_photons_per_s%200..1>[QuantityValue],[DataCollectionStrategy]++-%20frame_rate%200..1>[QuantityValue],[DataCollectionStrategy]++-%20oscillation_per_image_deg%200..1>[QuantityValue],[DataCollectionStrategy]++-%20pixel_size_calibrated%200..1>[QuantityValue],[DataCollectionStrategy]++-%20temperature_k%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_dose%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_frames%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_rotation_deg%200..1>[QuantityValue],[DataCollectionStrategy]++-%20transmission_percent%200..1>[QuantityValue],[DataCollectionStrategy]++-%20wavelength_a%200..1>[QuantityValue],[DataFile]++-%20file_size_bytes%200..1>[QuantityValue],[ExperimentRun]++-%20astigmatism_target%200..1>[QuantityValue],[ExperimentRun]++-%20beam_center_x%200..1>[QuantityValue],[ExperimentRun]++-%20beam_center_y%200..1>[QuantityValue],[ExperimentRun]++-%20calibrated_pixel_size%200..1>[QuantityValue],[ExperimentRun]++-%20camera_binning%200..1>[QuantityValue],[ExperimentRun]++-%20coma%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_increment%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_max%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_min%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_target%200..1>[QuantityValue],[ExperimentRun]++-%20detector_distance%200..1>[QuantityValue],[ExperimentRun]++-%20dose_rate%200..1>[QuantityValue],[ExperimentRun]++-%20exposure_time%200..1>[QuantityValue],[ExperimentRun]++-%20exposure_time_per_frame%200..1>[QuantityValue],[ExperimentRun]++-%20flux%200..1>[QuantityValue],[ExperimentRun]++-%20flux_end%200..1>[QuantityValue],[ExperimentRun]++-%20frames_per_movie%200..1>[QuantityValue],[ExperimentRun]++-%20holes_per_group%200..1>[QuantityValue],[ExperimentRun]++-%20ispyb_data_collection_id%200..1>[QuantityValue],[ExperimentRun]++-%20ispyb_session_id%200..1>[QuantityValue],[ExperimentRun]++-%20magnification%200..1>[QuantityValue],[ExperimentRun]++-%20number_of_images%200..1>[QuantityValue],[ExperimentRun]++-%20oscillation_angle%200..1>[QuantityValue],[ExperimentRun]++-%20pixel_size_x%200..1>[QuantityValue],[ExperimentRun]++-%20pixel_size_y%200..1>[QuantityValue],[ExperimentRun]++-%20resolution%200..1>[QuantityValue],[ExperimentRun]++-%20resolution_at_corner%200..1>[QuantityValue],[ExperimentRun]++-%20shots_per_hole%200..1>[QuantityValue],[ExperimentRun]++-%20slit_gap_horizontal%200..1>[QuantityValue],[ExperimentRun]++-%20slit_gap_vertical%200..1>[QuantityValue],[ExperimentRun]++-%20stage_tilt%200..1>[QuantityValue],[ExperimentRun]++-%20start_angle%200..1>[QuantityValue],[ExperimentRun]++-%20total_dose%200..1>[QuantityValue],[ExperimentRun]++-%20total_exposure_time%200..1>[QuantityValue],[ExperimentRun]++-%20total_rotation%200..1>[QuantityValue],[ExperimentRun]++-%20transmission%200..1>[QuantityValue],[ExperimentRun]++-%20undulator_gap%200..1>[QuantityValue],[ExperimentRun]++-%20wavelength%200..1>[QuantityValue],[ExperimentalConditions]++-%20beam_energy%200..1>[QuantityValue],[ExperimentalConditions]++-%20exposure_time%200..1>[QuantityValue],[ExperimentalConditions]++-%20humidity%200..1>[QuantityValue],[ExperimentalConditions]++-%20pressure%200..1>[QuantityValue],[ExperimentalConditions]++-%20temperature%200..1>[QuantityValue],[FSCCurve]++-%20fsc_value%200..1>[QuantityValue],[FSCCurve]++-%20resolution_angstrom%200..1>[QuantityValue],[FTIRImage]++-%20number_of_scans%200..1>[QuantityValue],[FTIRImage]++-%20spectral_resolution%200..1>[QuantityValue],[FTIRImage]++-%20wavenumber_max%200..1>[QuantityValue],[FTIRImage]++-%20wavenumber_min%200..1>[QuantityValue],[FluorescenceImage]++-%20emission_wavelength%200..1>[QuantityValue],[FluorescenceImage]++-%20excitation_wavelength%200..1>[QuantityValue],[FluorescenceImage]++-%20laser_power%200..1>[QuantityValue],[FluorescenceImage]++-%20pinhole_size%200..1>[QuantityValue],[FluorescenceImage]++-%20quantum_yield%200..1>[QuantityValue],[Image2D]++-%20astigmatism%200..1>[QuantityValue],[Image2D]++-%20defocus%200..1>[QuantityValue],[Image3D]++-%20dimensions_z%200..1>[QuantityValue],[Image3D]++-%20voxel_size%200..1>[QuantityValue],[Image]++-%20dimensions_x%200..1>[QuantityValue],[Image]++-%20dimensions_y%200..1>[QuantityValue],[Image]++-%20dose%200..1>[QuantityValue],[Image]++-%20exposure_time%200..1>[QuantityValue],[Image]++-%20pixel_size%200..1>[QuantityValue],[MeasurementConditions]++-%20ionic_strength%200..1>[QuantityValue],[MeasurementConditions]++-%20ph%200..1>[QuantityValue],[MeasurementConditions]++-%20temperature%200..1>[QuantityValue],[Micrograph]++-%20astigmatism_angle%200..1>[QuantityValue],[Micrograph]++-%20ctf_quality_score%200..1>[QuantityValue],[Micrograph]++-%20defocus_u%200..1>[QuantityValue],[Micrograph]++-%20defocus_v%200..1>[QuantityValue],[Micrograph]++-%20dose%200..1>[QuantityValue],[Micrograph]++-%20resolution_fit_limit%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20bfactor_dose_weighting%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20binning%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20drift_total%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20frame_grouping%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20output_binning%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20patch_size%200..1>[QuantityValue],[Movie]++-%20beam_shift_x%200..1>[QuantityValue],[Movie]++-%20beam_shift_y%200..1>[QuantityValue],[Movie]++-%20dose_per_frame%200..1>[QuantityValue],[Movie]++-%20frames%200..1>[QuantityValue],[Movie]++-%20ice_thickness_estimate%200..1>[QuantityValue],[Movie]++-%20nominal_defocus%200..1>[QuantityValue],[Movie]++-%20pixel_size_unbinned%200..1>[QuantityValue],[Movie]++-%20stage_position_x%200..1>[QuantityValue],[Movie]++-%20stage_position_y%200..1>[QuantityValue],[Movie]++-%20stage_position_z%200..1>[QuantityValue],[OpticalImage]++-%20magnification%200..1>[QuantityValue],[OpticalImage]++-%20numerical_aperture%200..1>[QuantityValue],[ParticlePickingParameters]++-%20box_size%200..1>[QuantityValue],[ParticlePickingParameters]++-%20ncc_score%200..1>[QuantityValue],[ParticlePickingParameters]++-%20power_score%200..1>[QuantityValue],[ParticlePickingParameters]++-%20threshold%200..1>[QuantityValue],[ProteinConstruct]++-%20sequence_length_aa%200..1>[QuantityValue],[QualityMetrics]++-%20anom_corr%200..1>[QuantityValue],[QualityMetrics]++-%20anom_sig_ano%200..1>[QuantityValue],[QualityMetrics]++-%20average_b_factor_a2%200..1>[QuantityValue],[QualityMetrics]++-%20cc_half%200..1>[QuantityValue],[QualityMetrics]++-%20clashscore%200..1>[QuantityValue],[QualityMetrics]++-%20completeness%200..1>[QuantityValue],[QualityMetrics]++-%20completeness_high_res_shell_percent%200..1>[QuantityValue],[QualityMetrics]++-%20i_zero%200..1>[QuantityValue],[QualityMetrics]++-%20mean_i_over_sigma_i%200..1>[QuantityValue],[QualityMetrics]++-%20molprobity_score%200..1>[QuantityValue],[QualityMetrics]++-%20multiplicity%200..1>[QuantityValue],[QualityMetrics]++-%20r_factor%200..1>[QuantityValue],[QualityMetrics]++-%20r_free%200..1>[QuantityValue],[QualityMetrics]++-%20r_merge%200..1>[QuantityValue],[QualityMetrics]++-%20r_pim%200..1>[QuantityValue],[QualityMetrics]++-%20r_work%200..1>[QuantityValue],[QualityMetrics]++-%20ramachandran_favored_percent%200..1>[QuantityValue],[QualityMetrics]++-%20ramachandran_outliers_percent%200..1>[QuantityValue],[QualityMetrics]++-%20resolution%200..1>[QuantityValue],[QualityMetrics]++-%20resolution_high_shell_a%200..1>[QuantityValue],[QualityMetrics]++-%20resolution_low_a%200..1>[QuantityValue],[QualityMetrics]++-%20rg%200..1>[QuantityValue],[QualityMetrics]++-%20signal_to_noise%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_a%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_alpha%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_b%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_beta%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_c%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_gamma%200..1>[QuantityValue],[QualityMetrics]++-%20wilson_b_factor_a2%200..1>[QuantityValue],[RefinementParameters]++-%20box_size%200..1>[QuantityValue],[RefinementParameters]++-%20map_sharpening_bfactor%200..1>[QuantityValue],[RefinementParameters]++-%20pixel_size%200..1>[QuantityValue],[RefinementParameters]++-%20resolution_0_143%200..1>[QuantityValue],[RefinementParameters]++-%20resolution_0_5%200..1>[QuantityValue],[SAXSInstrument]++-%20detector_distance_max%200..1>[QuantityValue],[SAXSInstrument]++-%20detector_distance_min%200..1>[QuantityValue],[SAXSInstrument]++-%20q_range_max%200..1>[QuantityValue],[SAXSInstrument]++-%20q_range_min%200..1>[QuantityValue],[SAXSInstrument]++-%20sample_changer_capacity%200..1>[QuantityValue],[SAXSPreparation]++-%20cell_path_length%200..1>[QuantityValue],[SAXSPreparation]++-%20concentration_series%200..1>[QuantityValue],[SamplePreparation]++-%20cleavage_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20cleavage_time_h%200..1>[QuantityValue],[SamplePreparation]++-%20culture_volume_l%200..1>[QuantityValue],[SamplePreparation]++-%20final_concentration_mg_per_ml%200..1>[QuantityValue],[SamplePreparation]++-%20growth_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20induction_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20induction_time_h%200..1>[QuantityValue],[SamplePreparation]++-%20od600_at_induction%200..1>[QuantityValue],[SamplePreparation]++-%20purity_by_sds_page_percent%200..1>[QuantityValue],[SamplePreparation]++-%20yield_mg%200..1>[QuantityValue],[Sample]++-%20concentration%200..1>[QuantityValue],[Sample]++-%20molecular_weight%200..1>[QuantityValue],[Sample]++-%20purity_percentage%200..1>[QuantityValue],[StorageConditions]++-%20temperature%200..1>[QuantityValue],[WorkflowRun]++-%20anomalous_completeness%200..1>[QuantityValue],[WorkflowRun]++-%20anomalous_multiplicity%200..1>[QuantityValue],[WorkflowRun]++-%20cc_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20cc_half%200..1>[QuantityValue],[WorkflowRun]++-%20clashscore%200..1>[QuantityValue],[WorkflowRun]++-%20completeness_percent%200..1>[QuantityValue],[WorkflowRun]++-%20i_over_sigma%200..1>[QuantityValue],[WorkflowRun]++-%20ispyb_auto_proc_program_id%200..1>[QuantityValue],[WorkflowRun]++-%20ispyb_auto_proc_scaling_id%200..1>[QuantityValue],[WorkflowRun]++-%20multiplicity%200..1>[QuantityValue],[WorkflowRun]++-%20n_total_observations%200..1>[QuantityValue],[WorkflowRun]++-%20n_total_unique%200..1>[QuantityValue],[WorkflowRun]++-%20number_of_waters%200..1>[QuantityValue],[WorkflowRun]++-%20processing_level%200..1>[QuantityValue],[WorkflowRun]++-%20r_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20ramachandran_favored%200..1>[QuantityValue],[WorkflowRun]++-%20ramachandran_outliers%200..1>[QuantityValue],[WorkflowRun]++-%20refinement_resolution_a%200..1>[QuantityValue],[WorkflowRun]++-%20resolution_high%200..1>[QuantityValue],[WorkflowRun]++-%20resolution_low%200..1>[QuantityValue],[WorkflowRun]++-%20rfree%200..1>[QuantityValue],[WorkflowRun]++-%20rmerge%200..1>[QuantityValue],[WorkflowRun]++-%20rmsd_angles%200..1>[QuantityValue],[WorkflowRun]++-%20rmsd_bonds%200..1>[QuantityValue],[WorkflowRun]++-%20rpim%200..1>[QuantityValue],[WorkflowRun]++-%20rwork%200..1>[QuantityValue],[WorkflowRun]++-%20sig_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_a%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_alpha%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_b%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_beta%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_c%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_gamma%200..1>[QuantityValue],[WorkflowRun]++-%20wilson_b_factor%200..1>[QuantityValue],[XRFImage]++-%20beam_energy%200..1>[QuantityValue],[XRFImage]++-%20beam_size%200..1>[QuantityValue],[XRFImage]++-%20dwell_time%200..1>[QuantityValue],[XRFImage]++-%20flux%200..1>[QuantityValue],[XRayInstrument]++-%20beam_size_max%200..1>[QuantityValue],[XRayInstrument]++-%20beam_size_min%200..1>[QuantityValue],[XRayInstrument]++-%20energy_max%200..1>[QuantityValue],[XRayInstrument]++-%20energy_min%200..1>[QuantityValue],[XRayInstrument]++-%20flux_density%200..1>[QuantityValue],[XRayPreparation]++-%20cryoprotectant_concentration%200..1>[QuantityValue],[XRayPreparation]++-%20drop_volume_nl%200..1>[QuantityValue],[XRayPreparation]++-%20loop_size%200..1>[QuantityValue],[XRayPreparation]++-%20mounting_temperature%200..1>[QuantityValue],[XRayPreparation]++-%20protein_concentration_mg_per_ml%200..1>[QuantityValue],[XRayPreparation]++-%20reservoir_volume_ul%200..1>[QuantityValue],[XRayPreparation]++-%20temperature_c%200..1>[QuantityValue],[AttributeValue]^-[QuantityValue],[XRayPreparation],[XRayInstrument],[XRFImage],[WorkflowRun],[StorageConditions],[SamplePreparation],[Sample],[SAXSPreparation],[SAXSInstrument],[RefinementParameters],[QualityMetrics],[ProteinConstruct],[ParticlePickingParameters],[OpticalImage],[Movie],[MotionCorrectionParameters],[Micrograph],[MeasurementConditions],[Image3D],[Image2D],[Image],[FluorescenceImage],[FTIRImage],[FSCCurve],[ExperimentalConditions],[ExperimentRun],[DataFile],[DataCollectionStrategy],[CrystallizationConditions],[CryoEMPreparation],[CryoEMInstrument],[ComputeResources],[CTFEstimationParameters],[BufferComposition],[BeamlineInstrument],[AttributeValue],[Attribute])](https://yuml.me/diagram/nofunky;dir:TB/class/[Micrograph]++-%20astigmatism%200..1>[QuantityValue&#124;maximum_numeric_value:float%20%3F;minimum_numeric_value:float%20%3F;numeric_value:float;unit:string;unit_cv_id:curie%20%3F;raw_value:string%20%3F],[Micrograph]++-%20defocus%200..1>[QuantityValue],[BeamlineInstrument]++-%20energy_max%200..1>[QuantityValue],[BeamlineInstrument]++-%20energy_min%200..1>[QuantityValue],[BeamlineInstrument]++-%20q_range_max%200..1>[QuantityValue],[BeamlineInstrument]++-%20q_range_min%200..1>[QuantityValue],[BeamlineInstrument]++-%20sample_changer_capacity%200..1>[QuantityValue],[BufferComposition]++-%20ph%200..1>[QuantityValue],[CTFEstimationParameters]++-%20amplitude_contrast%200..1>[QuantityValue],[CTFEstimationParameters]++-%20cs_used_in_estimation%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_search_max%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_search_min%200..1>[QuantityValue],[CTFEstimationParameters]++-%20defocus_step%200..1>[QuantityValue],[CTFEstimationParameters]++-%20voltage_used_in_estimation%200..1>[QuantityValue],[ComputeResources]++-%20cpu_hours%200..1>[QuantityValue],[ComputeResources]++-%20gpu_hours%200..1>[QuantityValue],[ComputeResources]++-%20memory_gb%200..1>[QuantityValue],[ComputeResources]++-%20storage_gb%200..1>[QuantityValue],[CryoEMInstrument]++-%20accelerating_voltage%200..1>[QuantityValue],[CryoEMInstrument]++-%20autoloader_capacity%200..1>[QuantityValue],[CryoEMInstrument]++-%20c2_aperture%200..1>[QuantityValue],[CryoEMInstrument]++-%20cs%200..1>[QuantityValue],[CryoEMInstrument]++-%20energy_filter_slit_width%200..1>[QuantityValue],[CryoEMInstrument]++-%20gunlens%200..1>[QuantityValue],[CryoEMInstrument]++-%20objective_aperture%200..1>[QuantityValue],[CryoEMInstrument]++-%20pixel_size_physical%200..1>[QuantityValue],[CryoEMInstrument]++-%20pixel_size_physical_um%200..1>[QuantityValue],[CryoEMInstrument]++-%20spotsize%200..1>[QuantityValue],[CryoEMInstrument]++-%20tem_beam_diameter%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_force%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_number%200..1>[QuantityValue],[CryoEMPreparation]++-%20blot_time%200..1>[QuantityValue],[CryoEMPreparation]++-%20blotter_height%200..1>[QuantityValue],[CryoEMPreparation]++-%20blotter_setting%200..1>[QuantityValue],[CryoEMPreparation]++-%20chamber_temperature%200..1>[QuantityValue],[CryoEMPreparation]++-%20ethane_temperature%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_current%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_pressure%200..1>[QuantityValue],[CryoEMPreparation]++-%20glow_discharge_time%200..1>[QuantityValue],[CryoEMPreparation]++-%20hole_size%200..1>[QuantityValue],[CryoEMPreparation]++-%20humidity_percentage%200..1>[QuantityValue],[CryoEMPreparation]++-%20sample_applied_volume%200..1>[QuantityValue],[CryoEMPreparation]++-%20wait_time%200..1>[QuantityValue],[CrystallizationConditions]++-%20drop_volume%200..1>[QuantityValue],[CrystallizationConditions]++-%20protein_concentration%200..1>[QuantityValue],[CrystallizationConditions]++-%20reservoir_volume_ul%200..1>[QuantityValue],[CrystallizationConditions]++-%20temperature_c%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_center_x_px%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_center_y_px%200..1>[QuantityValue],[DataCollectionStrategy]++-%20beam_size_um%200..1>[QuantityValue],[DataCollectionStrategy]++-%20detector_distance_mm%200..1>[QuantityValue],[DataCollectionStrategy]++-%20dose_per_frame%200..1>[QuantityValue],[DataCollectionStrategy]++-%20flux_photons_per_s%200..1>[QuantityValue],[DataCollectionStrategy]++-%20frame_rate%200..1>[QuantityValue],[DataCollectionStrategy]++-%20oscillation_per_image_deg%200..1>[QuantityValue],[DataCollectionStrategy]++-%20pixel_size_calibrated%200..1>[QuantityValue],[DataCollectionStrategy]++-%20temperature_k%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_dose%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_frames%200..1>[QuantityValue],[DataCollectionStrategy]++-%20total_rotation_deg%200..1>[QuantityValue],[DataCollectionStrategy]++-%20transmission_percent%200..1>[QuantityValue],[DataCollectionStrategy]++-%20wavelength_a%200..1>[QuantityValue],[DataFile]++-%20file_size_bytes%200..1>[QuantityValue],[ExperimentRun]++-%20astigmatism_target%200..1>[QuantityValue],[ExperimentRun]++-%20beam_center_x%200..1>[QuantityValue],[ExperimentRun]++-%20beam_center_y%200..1>[QuantityValue],[ExperimentRun]++-%20calibrated_pixel_size%200..1>[QuantityValue],[ExperimentRun]++-%20camera_binning%200..1>[QuantityValue],[ExperimentRun]++-%20coma%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_increment%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_max%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_range_min%200..1>[QuantityValue],[ExperimentRun]++-%20defocus_target%200..1>[QuantityValue],[ExperimentRun]++-%20detector_distance%200..1>[QuantityValue],[ExperimentRun]++-%20dose_rate%200..1>[QuantityValue],[ExperimentRun]++-%20exposure_time%200..1>[QuantityValue],[ExperimentRun]++-%20exposure_time_per_frame%200..1>[QuantityValue],[ExperimentRun]++-%20flux%200..1>[QuantityValue],[ExperimentRun]++-%20flux_end%200..1>[QuantityValue],[ExperimentRun]++-%20frames_per_movie%200..1>[QuantityValue],[ExperimentRun]++-%20holes_per_group%200..1>[QuantityValue],[ExperimentRun]++-%20ispyb_data_collection_id%200..1>[QuantityValue],[ExperimentRun]++-%20ispyb_session_id%200..1>[QuantityValue],[ExperimentRun]++-%20magnification%200..1>[QuantityValue],[ExperimentRun]++-%20number_of_images%200..1>[QuantityValue],[ExperimentRun]++-%20oscillation_angle%200..1>[QuantityValue],[ExperimentRun]++-%20pixel_size_x%200..1>[QuantityValue],[ExperimentRun]++-%20pixel_size_y%200..1>[QuantityValue],[ExperimentRun]++-%20resolution%200..1>[QuantityValue],[ExperimentRun]++-%20resolution_at_corner%200..1>[QuantityValue],[ExperimentRun]++-%20shots_per_hole%200..1>[QuantityValue],[ExperimentRun]++-%20slit_gap_horizontal%200..1>[QuantityValue],[ExperimentRun]++-%20slit_gap_vertical%200..1>[QuantityValue],[ExperimentRun]++-%20stage_tilt%200..1>[QuantityValue],[ExperimentRun]++-%20start_angle%200..1>[QuantityValue],[ExperimentRun]++-%20total_dose%200..1>[QuantityValue],[ExperimentRun]++-%20total_exposure_time%200..1>[QuantityValue],[ExperimentRun]++-%20total_rotation%200..1>[QuantityValue],[ExperimentRun]++-%20transmission%200..1>[QuantityValue],[ExperimentRun]++-%20undulator_gap%200..1>[QuantityValue],[ExperimentRun]++-%20wavelength%200..1>[QuantityValue],[ExperimentalConditions]++-%20beam_energy%200..1>[QuantityValue],[ExperimentalConditions]++-%20exposure_time%200..1>[QuantityValue],[ExperimentalConditions]++-%20humidity%200..1>[QuantityValue],[ExperimentalConditions]++-%20pressure%200..1>[QuantityValue],[ExperimentalConditions]++-%20temperature%200..1>[QuantityValue],[FSCCurve]++-%20fsc_value%200..1>[QuantityValue],[FSCCurve]++-%20resolution_angstrom%200..1>[QuantityValue],[FTIRImage]++-%20number_of_scans%200..1>[QuantityValue],[FTIRImage]++-%20spectral_resolution%200..1>[QuantityValue],[FTIRImage]++-%20wavenumber_max%200..1>[QuantityValue],[FTIRImage]++-%20wavenumber_min%200..1>[QuantityValue],[FluorescenceImage]++-%20emission_wavelength%200..1>[QuantityValue],[FluorescenceImage]++-%20excitation_wavelength%200..1>[QuantityValue],[FluorescenceImage]++-%20laser_power%200..1>[QuantityValue],[FluorescenceImage]++-%20pinhole_size%200..1>[QuantityValue],[FluorescenceImage]++-%20quantum_yield%200..1>[QuantityValue],[Image2D]++-%20astigmatism%200..1>[QuantityValue],[Image2D]++-%20defocus%200..1>[QuantityValue],[Image3D]++-%20dimensions_z%200..1>[QuantityValue],[Image3D]++-%20voxel_size%200..1>[QuantityValue],[Image]++-%20dimensions_x%200..1>[QuantityValue],[Image]++-%20dimensions_y%200..1>[QuantityValue],[Image]++-%20dose%200..1>[QuantityValue],[Image]++-%20exposure_time%200..1>[QuantityValue],[Image]++-%20pixel_size%200..1>[QuantityValue],[MeasurementConditions]++-%20ionic_strength%200..1>[QuantityValue],[MeasurementConditions]++-%20ph%200..1>[QuantityValue],[MeasurementConditions]++-%20temperature%200..1>[QuantityValue],[Micrograph]++-%20astigmatism_angle%200..1>[QuantityValue],[Micrograph]++-%20ctf_quality_score%200..1>[QuantityValue],[Micrograph]++-%20defocus_u%200..1>[QuantityValue],[Micrograph]++-%20defocus_v%200..1>[QuantityValue],[Micrograph]++-%20dose%200..1>[QuantityValue],[Micrograph]++-%20resolution_fit_limit%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20bfactor_dose_weighting%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20binning%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20drift_total%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20frame_grouping%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20output_binning%200..1>[QuantityValue],[MotionCorrectionParameters]++-%20patch_size%200..1>[QuantityValue],[Movie]++-%20beam_shift_x%200..1>[QuantityValue],[Movie]++-%20beam_shift_y%200..1>[QuantityValue],[Movie]++-%20dose_per_frame%200..1>[QuantityValue],[Movie]++-%20frames%200..1>[QuantityValue],[Movie]++-%20ice_thickness_estimate%200..1>[QuantityValue],[Movie]++-%20nominal_defocus%200..1>[QuantityValue],[Movie]++-%20pixel_size_unbinned%200..1>[QuantityValue],[Movie]++-%20stage_position_x%200..1>[QuantityValue],[Movie]++-%20stage_position_y%200..1>[QuantityValue],[Movie]++-%20stage_position_z%200..1>[QuantityValue],[OpticalImage]++-%20magnification%200..1>[QuantityValue],[OpticalImage]++-%20numerical_aperture%200..1>[QuantityValue],[ParticlePickingParameters]++-%20box_size%200..1>[QuantityValue],[ParticlePickingParameters]++-%20ncc_score%200..1>[QuantityValue],[ParticlePickingParameters]++-%20power_score%200..1>[QuantityValue],[ParticlePickingParameters]++-%20threshold%200..1>[QuantityValue],[ProteinConstruct]++-%20sequence_length_aa%200..1>[QuantityValue],[QualityMetrics]++-%20anom_corr%200..1>[QuantityValue],[QualityMetrics]++-%20anom_sig_ano%200..1>[QuantityValue],[QualityMetrics]++-%20average_b_factor_a2%200..1>[QuantityValue],[QualityMetrics]++-%20cc_half%200..1>[QuantityValue],[QualityMetrics]++-%20clashscore%200..1>[QuantityValue],[QualityMetrics]++-%20completeness%200..1>[QuantityValue],[QualityMetrics]++-%20completeness_high_res_shell_percent%200..1>[QuantityValue],[QualityMetrics]++-%20i_zero%200..1>[QuantityValue],[QualityMetrics]++-%20mean_i_over_sigma_i%200..1>[QuantityValue],[QualityMetrics]++-%20molprobity_score%200..1>[QuantityValue],[QualityMetrics]++-%20multiplicity%200..1>[QuantityValue],[QualityMetrics]++-%20r_factor%200..1>[QuantityValue],[QualityMetrics]++-%20r_free%200..1>[QuantityValue],[QualityMetrics]++-%20r_merge%200..1>[QuantityValue],[QualityMetrics]++-%20r_pim%200..1>[QuantityValue],[QualityMetrics]++-%20r_work%200..1>[QuantityValue],[QualityMetrics]++-%20ramachandran_favored_percent%200..1>[QuantityValue],[QualityMetrics]++-%20ramachandran_outliers_percent%200..1>[QuantityValue],[QualityMetrics]++-%20resolution%200..1>[QuantityValue],[QualityMetrics]++-%20resolution_high_shell_a%200..1>[QuantityValue],[QualityMetrics]++-%20resolution_low_a%200..1>[QuantityValue],[QualityMetrics]++-%20rg%200..1>[QuantityValue],[QualityMetrics]++-%20signal_to_noise%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_a%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_alpha%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_b%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_beta%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_c%200..1>[QuantityValue],[QualityMetrics]++-%20unit_cell_gamma%200..1>[QuantityValue],[QualityMetrics]++-%20wilson_b_factor_a2%200..1>[QuantityValue],[RefinementParameters]++-%20box_size%200..1>[QuantityValue],[RefinementParameters]++-%20map_sharpening_bfactor%200..1>[QuantityValue],[RefinementParameters]++-%20pixel_size%200..1>[QuantityValue],[RefinementParameters]++-%20resolution_0_143%200..1>[QuantityValue],[RefinementParameters]++-%20resolution_0_5%200..1>[QuantityValue],[SAXSInstrument]++-%20detector_distance_max%200..1>[QuantityValue],[SAXSInstrument]++-%20detector_distance_min%200..1>[QuantityValue],[SAXSInstrument]++-%20q_range_max%200..1>[QuantityValue],[SAXSInstrument]++-%20q_range_min%200..1>[QuantityValue],[SAXSInstrument]++-%20sample_changer_capacity%200..1>[QuantityValue],[SAXSPreparation]++-%20cell_path_length%200..1>[QuantityValue],[SAXSPreparation]++-%20concentration_series%200..1>[QuantityValue],[SamplePreparation]++-%20cleavage_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20cleavage_time_h%200..1>[QuantityValue],[SamplePreparation]++-%20culture_volume_l%200..1>[QuantityValue],[SamplePreparation]++-%20final_concentration_mg_per_ml%200..1>[QuantityValue],[SamplePreparation]++-%20growth_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20induction_temperature_c%200..1>[QuantityValue],[SamplePreparation]++-%20induction_time_h%200..1>[QuantityValue],[SamplePreparation]++-%20od600_at_induction%200..1>[QuantityValue],[SamplePreparation]++-%20purity_by_sds_page_percent%200..1>[QuantityValue],[SamplePreparation]++-%20yield_mg%200..1>[QuantityValue],[Sample]++-%20concentration%200..1>[QuantityValue],[Sample]++-%20molecular_weight%200..1>[QuantityValue],[Sample]++-%20purity_percentage%200..1>[QuantityValue],[StorageConditions]++-%20temperature%200..1>[QuantityValue],[WorkflowRun]++-%20anomalous_completeness%200..1>[QuantityValue],[WorkflowRun]++-%20anomalous_multiplicity%200..1>[QuantityValue],[WorkflowRun]++-%20cc_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20cc_half%200..1>[QuantityValue],[WorkflowRun]++-%20clashscore%200..1>[QuantityValue],[WorkflowRun]++-%20completeness_percent%200..1>[QuantityValue],[WorkflowRun]++-%20i_over_sigma%200..1>[QuantityValue],[WorkflowRun]++-%20ispyb_auto_proc_program_id%200..1>[QuantityValue],[WorkflowRun]++-%20ispyb_auto_proc_scaling_id%200..1>[QuantityValue],[WorkflowRun]++-%20multiplicity%200..1>[QuantityValue],[WorkflowRun]++-%20n_total_observations%200..1>[QuantityValue],[WorkflowRun]++-%20n_total_unique%200..1>[QuantityValue],[WorkflowRun]++-%20number_of_waters%200..1>[QuantityValue],[WorkflowRun]++-%20processing_level%200..1>[QuantityValue],[WorkflowRun]++-%20r_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20ramachandran_favored%200..1>[QuantityValue],[WorkflowRun]++-%20ramachandran_outliers%200..1>[QuantityValue],[WorkflowRun]++-%20refinement_resolution_a%200..1>[QuantityValue],[WorkflowRun]++-%20resolution_high%200..1>[QuantityValue],[WorkflowRun]++-%20resolution_low%200..1>[QuantityValue],[WorkflowRun]++-%20rfree%200..1>[QuantityValue],[WorkflowRun]++-%20rmerge%200..1>[QuantityValue],[WorkflowRun]++-%20rmsd_angles%200..1>[QuantityValue],[WorkflowRun]++-%20rmsd_bonds%200..1>[QuantityValue],[WorkflowRun]++-%20rpim%200..1>[QuantityValue],[WorkflowRun]++-%20rwork%200..1>[QuantityValue],[WorkflowRun]++-%20sig_anomalous%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_a%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_alpha%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_b%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_beta%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_c%200..1>[QuantityValue],[WorkflowRun]++-%20unit_cell_gamma%200..1>[QuantityValue],[WorkflowRun]++-%20wilson_b_factor%200..1>[QuantityValue],[XRFImage]++-%20beam_energy%200..1>[QuantityValue],[XRFImage]++-%20beam_size%200..1>[QuantityValue],[XRFImage]++-%20dwell_time%200..1>[QuantityValue],[XRFImage]++-%20flux%200..1>[QuantityValue],[XRayInstrument]++-%20beam_size_max%200..1>[QuantityValue],[XRayInstrument]++-%20beam_size_min%200..1>[QuantityValue],[XRayInstrument]++-%20energy_max%200..1>[QuantityValue],[XRayInstrument]++-%20energy_min%200..1>[QuantityValue],[XRayInstrument]++-%20flux_density%200..1>[QuantityValue],[XRayPreparation]++-%20cryoprotectant_concentration%200..1>[QuantityValue],[XRayPreparation]++-%20drop_volume_nl%200..1>[QuantityValue],[XRayPreparation]++-%20loop_size%200..1>[QuantityValue],[XRayPreparation]++-%20mounting_temperature%200..1>[QuantityValue],[XRayPreparation]++-%20protein_concentration_mg_per_ml%200..1>[QuantityValue],[XRayPreparation]++-%20reservoir_volume_ul%200..1>[QuantityValue],[XRayPreparation]++-%20temperature_c%200..1>[QuantityValue],[AttributeValue]^-[QuantityValue],[XRayPreparation],[XRayInstrument],[XRFImage],[WorkflowRun],[StorageConditions],[SamplePreparation],[Sample],[SAXSPreparation],[SAXSInstrument],[RefinementParameters],[QualityMetrics],[ProteinConstruct],[ParticlePickingParameters],[OpticalImage],[Movie],[MotionCorrectionParameters],[Micrograph],[MeasurementConditions],[Image3D],[Image2D],[Image],[FluorescenceImage],[FTIRImage],[FSCCurve],[ExperimentalConditions],[ExperimentRun],[DataFile],[DataCollectionStrategy],[CrystallizationConditions],[CryoEMPreparation],[CryoEMInstrument],[ComputeResources],[CTFEstimationParameters],[BufferComposition],[BeamlineInstrument],[AttributeValue],[Attribute])
-
-## Parents
-
- *  is_a: [AttributeValue](AttributeValue.md) - The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
-
-## Referenced by Class
-
- *  **[Micrograph](Micrograph.md)** *[Micrograph➞astigmatism](Micrograph_astigmatism.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **[Micrograph](Micrograph.md)** *[Micrograph➞defocus](Micrograph_defocus.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞energy_max](beamlineInstrument__energy_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞energy_min](beamlineInstrument__energy_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞q_range_max](beamlineInstrument__q_range_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞q_range_min](beamlineInstrument__q_range_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞sample_changer_capacity](beamlineInstrument__sample_changer_capacity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ph](bufferComposition__ph.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞amplitude_contrast](cTFEstimationParameters__amplitude_contrast.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cs_used_in_estimation](cTFEstimationParameters__cs_used_in_estimation.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_search_max](cTFEstimationParameters__defocus_search_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_search_min](cTFEstimationParameters__defocus_search_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_step](cTFEstimationParameters__defocus_step.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞voltage_used_in_estimation](cTFEstimationParameters__voltage_used_in_estimation.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cpu_hours](computeResources__cpu_hours.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞gpu_hours](computeResources__gpu_hours.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞memory_gb](computeResources__memory_gb.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞storage_gb](computeResources__storage_gb.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞accelerating_voltage](cryoEMInstrument__accelerating_voltage.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞autoloader_capacity](cryoEMInstrument__autoloader_capacity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞c2_aperture](cryoEMInstrument__c2_aperture.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cs](cryoEMInstrument__cs.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞energy_filter_slit_width](cryoEMInstrument__energy_filter_slit_width.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞gunlens](cryoEMInstrument__gunlens.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞objective_aperture](cryoEMInstrument__objective_aperture.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_physical](cryoEMInstrument__pixel_size_physical.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_physical_um](cryoEMInstrument__pixel_size_physical_um.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞spotsize](cryoEMInstrument__spotsize.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞tem_beam_diameter](cryoEMInstrument__tem_beam_diameter.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞blot_force](cryoEMPreparation__blot_force.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞blot_number](cryoEMPreparation__blot_number.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞blot_time](cryoEMPreparation__blot_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞blotter_height](cryoEMPreparation__blotter_height.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞blotter_setting](cryoEMPreparation__blotter_setting.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞chamber_temperature](cryoEMPreparation__chamber_temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ethane_temperature](cryoEMPreparation__ethane_temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞glow_discharge_current](cryoEMPreparation__glow_discharge_current.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞glow_discharge_pressure](cryoEMPreparation__glow_discharge_pressure.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞glow_discharge_time](cryoEMPreparation__glow_discharge_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞hole_size](cryoEMPreparation__hole_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞humidity_percentage](cryoEMPreparation__humidity_percentage.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞sample_applied_volume](cryoEMPreparation__sample_applied_volume.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wait_time](cryoEMPreparation__wait_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞drop_volume](crystallizationConditions__drop_volume.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞protein_concentration](crystallizationConditions__protein_concentration.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞reservoir_volume_ul](crystallizationConditions__reservoir_volume_ul.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature_c](crystallizationConditions__temperature_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_center_x_px](dataCollectionStrategy__beam_center_x_px.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_center_y_px](dataCollectionStrategy__beam_center_y_px.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_size_um](dataCollectionStrategy__beam_size_um.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞detector_distance_mm](dataCollectionStrategy__detector_distance_mm.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dose_per_frame](dataCollectionStrategy__dose_per_frame.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞flux_photons_per_s](dataCollectionStrategy__flux_photons_per_s.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞frame_rate](dataCollectionStrategy__frame_rate.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞oscillation_per_image_deg](dataCollectionStrategy__oscillation_per_image_deg.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_calibrated](dataCollectionStrategy__pixel_size_calibrated.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature_k](dataCollectionStrategy__temperature_k.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_dose](dataCollectionStrategy__total_dose.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_frames](dataCollectionStrategy__total_frames.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_rotation_deg](dataCollectionStrategy__total_rotation_deg.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞transmission_percent](dataCollectionStrategy__transmission_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wavelength_a](dataCollectionStrategy__wavelength_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞file_size_bytes](dataFile__file_size_bytes.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞astigmatism_target](experimentRun__astigmatism_target.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_center_x](experimentRun__beam_center_x.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_center_y](experimentRun__beam_center_y.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞calibrated_pixel_size](experimentRun__calibrated_pixel_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞camera_binning](experimentRun__camera_binning.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞coma](experimentRun__coma.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_range_increment](experimentRun__defocus_range_increment.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_range_max](experimentRun__defocus_range_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_range_min](experimentRun__defocus_range_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_target](experimentRun__defocus_target.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞detector_distance](experimentRun__detector_distance.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dose_rate](experimentRun__dose_rate.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞exposure_time](experimentRun__exposure_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞exposure_time_per_frame](experimentRun__exposure_time_per_frame.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞flux](experimentRun__flux.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞flux_end](experimentRun__flux_end.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞frames_per_movie](experimentRun__frames_per_movie.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞holes_per_group](experimentRun__holes_per_group.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ispyb_data_collection_id](experimentRun__ispyb_data_collection_id.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ispyb_session_id](experimentRun__ispyb_session_id.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞magnification](experimentRun__magnification.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞number_of_images](experimentRun__number_of_images.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞oscillation_angle](experimentRun__oscillation_angle.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_x](experimentRun__pixel_size_x.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_y](experimentRun__pixel_size_y.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution](experimentRun__resolution.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_at_corner](experimentRun__resolution_at_corner.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞shots_per_hole](experimentRun__shots_per_hole.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞slit_gap_horizontal](experimentRun__slit_gap_horizontal.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞slit_gap_vertical](experimentRun__slit_gap_vertical.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞stage_tilt](experimentRun__stage_tilt.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞start_angle](experimentRun__start_angle.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_dose](experimentRun__total_dose.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_exposure_time](experimentRun__total_exposure_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞total_rotation](experimentRun__total_rotation.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞transmission](experimentRun__transmission.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞undulator_gap](experimentRun__undulator_gap.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wavelength](experimentRun__wavelength.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_energy](experimentalConditions__beam_energy.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞exposure_time](experimentalConditions__exposure_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞humidity](experimentalConditions__humidity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pressure](experimentalConditions__pressure.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature](experimentalConditions__temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞fsc_value](fSCCurve__fsc_value.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_angstrom](fSCCurve__resolution_angstrom.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞number_of_scans](fTIRImage__number_of_scans.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞spectral_resolution](fTIRImage__spectral_resolution.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wavenumber_max](fTIRImage__wavenumber_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wavenumber_min](fTIRImage__wavenumber_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞emission_wavelength](fluorescenceImage__emission_wavelength.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞excitation_wavelength](fluorescenceImage__excitation_wavelength.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞laser_power](fluorescenceImage__laser_power.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pinhole_size](fluorescenceImage__pinhole_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞quantum_yield](fluorescenceImage__quantum_yield.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞astigmatism](image2D__astigmatism.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus](image2D__defocus.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dimensions_z](image3D__dimensions_z.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞voxel_size](image3D__voxel_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dimensions_x](image__dimensions_x.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dimensions_y](image__dimensions_y.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dose](image__dose.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞exposure_time](image__exposure_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size](image__pixel_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ionic_strength](measurementConditions__ionic_strength.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ph](measurementConditions__ph.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature](measurementConditions__temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞astigmatism_angle](micrograph__astigmatism_angle.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ctf_quality_score](micrograph__ctf_quality_score.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_u](micrograph__defocus_u.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞defocus_v](micrograph__defocus_v.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dose](micrograph__dose.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_fit_limit](micrograph__resolution_fit_limit.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞bfactor_dose_weighting](motionCorrectionParameters__bfactor_dose_weighting.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞binning](motionCorrectionParameters__binning.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞drift_total](motionCorrectionParameters__drift_total.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞frame_grouping](motionCorrectionParameters__frame_grouping.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞output_binning](motionCorrectionParameters__output_binning.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞patch_size](motionCorrectionParameters__patch_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_shift_x](movie__beam_shift_x.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_shift_y](movie__beam_shift_y.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dose_per_frame](movie__dose_per_frame.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞frames](movie__frames.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ice_thickness_estimate](movie__ice_thickness_estimate.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞nominal_defocus](movie__nominal_defocus.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size_unbinned](movie__pixel_size_unbinned.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞stage_position_x](movie__stage_position_x.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞stage_position_y](movie__stage_position_y.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞stage_position_z](movie__stage_position_z.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞magnification](opticalImage__magnification.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞numerical_aperture](opticalImage__numerical_aperture.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞box_size](particlePickingParameters__box_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ncc_score](particlePickingParameters__ncc_score.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞power_score](particlePickingParameters__power_score.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞threshold](particlePickingParameters__threshold.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞sequence_length_aa](proteinConstruct__sequence_length_aa.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞anom_corr](qualityMetrics__anom_corr.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞anom_sig_ano](qualityMetrics__anom_sig_ano.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞average_b_factor_a2](qualityMetrics__average_b_factor_a2.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cc_half](qualityMetrics__cc_half.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞clashscore](qualityMetrics__clashscore.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞completeness](qualityMetrics__completeness.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞completeness_high_res_shell_percent](qualityMetrics__completeness_high_res_shell_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞i_zero](qualityMetrics__i_zero.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞mean_i_over_sigma_i](qualityMetrics__mean_i_over_sigma_i.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞molprobity_score](qualityMetrics__molprobity_score.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞multiplicity](qualityMetrics__multiplicity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_factor](qualityMetrics__r_factor.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_free](qualityMetrics__r_free.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_merge](qualityMetrics__r_merge.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_pim](qualityMetrics__r_pim.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_work](qualityMetrics__r_work.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ramachandran_favored_percent](qualityMetrics__ramachandran_favored_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ramachandran_outliers_percent](qualityMetrics__ramachandran_outliers_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution](qualityMetrics__resolution.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_high_shell_a](qualityMetrics__resolution_high_shell_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_low_a](qualityMetrics__resolution_low_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rg](qualityMetrics__rg.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞signal_to_noise](qualityMetrics__signal_to_noise.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_a](qualityMetrics__unit_cell_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_alpha](qualityMetrics__unit_cell_alpha.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_b](qualityMetrics__unit_cell_b.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_beta](qualityMetrics__unit_cell_beta.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_c](qualityMetrics__unit_cell_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_gamma](qualityMetrics__unit_cell_gamma.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wilson_b_factor_a2](qualityMetrics__wilson_b_factor_a2.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞box_size](refinementParameters__box_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞map_sharpening_bfactor](refinementParameters__map_sharpening_bfactor.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞pixel_size](refinementParameters__pixel_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_0_143](refinementParameters__resolution_0_143.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_0_5](refinementParameters__resolution_0_5.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞detector_distance_max](sAXSInstrument__detector_distance_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞detector_distance_min](sAXSInstrument__detector_distance_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞q_range_max](sAXSInstrument__q_range_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞q_range_min](sAXSInstrument__q_range_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞sample_changer_capacity](sAXSInstrument__sample_changer_capacity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cell_path_length](sAXSPreparation__cell_path_length.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞concentration_series](sAXSPreparation__concentration_series.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cleavage_temperature_c](samplePreparation__cleavage_temperature_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cleavage_time_h](samplePreparation__cleavage_time_h.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞culture_volume_l](samplePreparation__culture_volume_l.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞final_concentration_mg_per_ml](samplePreparation__final_concentration_mg_per_ml.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞growth_temperature_c](samplePreparation__growth_temperature_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞induction_temperature_c](samplePreparation__induction_temperature_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞induction_time_h](samplePreparation__induction_time_h.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞od600_at_induction](samplePreparation__od600_at_induction.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞purity_by_sds_page_percent](samplePreparation__purity_by_sds_page_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞yield_mg](samplePreparation__yield_mg.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞concentration](sample__concentration.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞molecular_weight](sample__molecular_weight.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞purity_percentage](sample__purity_percentage.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature](storageConditions__temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞anomalous_completeness](workflowRun__anomalous_completeness.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞anomalous_multiplicity](workflowRun__anomalous_multiplicity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cc_anomalous](workflowRun__cc_anomalous.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cc_half](workflowRun__cc_half.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞clashscore](workflowRun__clashscore.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞completeness_percent](workflowRun__completeness_percent.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞i_over_sigma](workflowRun__i_over_sigma.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ispyb_auto_proc_program_id](workflowRun__ispyb_auto_proc_program_id.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ispyb_auto_proc_scaling_id](workflowRun__ispyb_auto_proc_scaling_id.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞multiplicity](workflowRun__multiplicity.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞n_total_observations](workflowRun__n_total_observations.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞n_total_unique](workflowRun__n_total_unique.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞number_of_waters](workflowRun__number_of_waters.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞processing_level](workflowRun__processing_level.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞r_anomalous](workflowRun__r_anomalous.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ramachandran_favored](workflowRun__ramachandran_favored.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞ramachandran_outliers](workflowRun__ramachandran_outliers.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞refinement_resolution_a](workflowRun__refinement_resolution_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_high](workflowRun__resolution_high.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞resolution_low](workflowRun__resolution_low.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rfree](workflowRun__rfree.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rmerge](workflowRun__rmerge.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rmsd_angles](workflowRun__rmsd_angles.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rmsd_bonds](workflowRun__rmsd_bonds.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rpim](workflowRun__rpim.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞rwork](workflowRun__rwork.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞sig_anomalous](workflowRun__sig_anomalous.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_a](workflowRun__unit_cell_a.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_alpha](workflowRun__unit_cell_alpha.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_b](workflowRun__unit_cell_b.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_beta](workflowRun__unit_cell_beta.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_c](workflowRun__unit_cell_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞unit_cell_gamma](workflowRun__unit_cell_gamma.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞wilson_b_factor](workflowRun__wilson_b_factor.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_energy](xRFImage__beam_energy.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_size](xRFImage__beam_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞dwell_time](xRFImage__dwell_time.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞flux](xRFImage__flux.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_size_max](xRayInstrument__beam_size_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞beam_size_min](xRayInstrument__beam_size_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞energy_max](xRayInstrument__energy_max.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞energy_min](xRayInstrument__energy_min.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞flux_density](xRayInstrument__flux_density.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞cryoprotectant_concentration](xRayPreparation__cryoprotectant_concentration.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞drop_volume_nl](xRayPreparation__drop_volume_nl.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞loop_size](xRayPreparation__loop_size.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞mounting_temperature](xRayPreparation__mounting_temperature.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞protein_concentration_mg_per_ml](xRayPreparation__protein_concentration_mg_per_ml.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞reservoir_volume_ul](xRayPreparation__reservoir_volume_ul.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
- *  **None** *[➞temperature_c](xRayPreparation__temperature_c.md)*  <sub>0..1</sub>  **[QuantityValue](QuantityValue.md)**
-
-## Attributes
+_A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified._
 
 
-### Own
 
- * [maximum_numeric_value](maximum_numeric_value.md)  <sub>0..1</sub>
-     * Description: The maximum value part, expressed as a number, of the quantity value when the value covers a range.
-     * Range: [Float](types/Float.md)
- * [minimum_numeric_value](minimum_numeric_value.md)  <sub>0..1</sub>
-     * Description: The minimum value part, expressed as a number, of the quantity value when the value covers a range.
-     * Range: [Float](types/Float.md)
- * [QuantityValue➞numeric_value](QuantityValue_numeric_value.md)  <sub>1..1</sub>
-     * Description: The numerical value of the quantity
-     * Range: [Float](types/Float.md)
- * [QuantityValue➞unit](QuantityValue_unit.md)  <sub>1..1</sub>
-     * Description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
-     * Range: [String](types/String.md)
- * [unit_cv_id](unit_cv_id.md)  <sub>0..1</sub>
-     * Description: The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).
-     * Range: [Curie](types/Curie.md)
- * [QuantityValue➞raw_value](QuantityValue_raw_value.md)  <sub>0..1</sub>
-     * Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
-     * Range: [String](types/String.md)
-     * Example: 1.5 micrometers None
-     * Example: 50 Angstroms None
 
-### Inherited from AttributeValue:
 
- * [➞attribute](attributeValue__attribute.md)  <sub>0..1</sub>
-     * Description: The attribute being represented.
-     * Range: [Attribute](Attribute.md)
+URI: [nmdc:QuantityValue](https://w3id.org/nmdc/QuantityValue)
 
-## Other properties
 
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | nmdc:QuantityValue |
-|  | | schema:QuantityValue |
+
+
+
+```mermaid
+ classDiagram
+    class QuantityValue
+    click QuantityValue href "../QuantityValue/"
+      AttributeValue <|-- QuantityValue
+        click AttributeValue href "../AttributeValue/"
+      
+      QuantityValue : attribute
+        
+          
+    
+        
+        
+        QuantityValue --> "0..1" Attribute : attribute
+        click Attribute href "../Attribute/"
+    
+
+        
+      QuantityValue : maximum_numeric_value
+        
+      QuantityValue : minimum_numeric_value
+        
+      QuantityValue : numeric_value
+        
+      QuantityValue : raw_value
+        
+      QuantityValue : unit
+        
+      QuantityValue : unit_cv_id
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [AttributeValue](AttributeValue.md)
+    * **QuantityValue**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [maximum_numeric_value](maximum_numeric_value.md) | 0..1 <br/> [Float](Float.md) | The maximum value part, expressed as a number, of the quantity value when the... | direct |
+| [minimum_numeric_value](minimum_numeric_value.md) | 0..1 <br/> [Float](Float.md) | The minimum value part, expressed as a number, of the quantity value when the... | direct |
+| [numeric_value](numeric_value.md) | 1 <br/> [Float](Float.md) | The numerical value of the quantity | direct |
+| [unit](unit.md) | 1 <br/> [String](String.md) | The unit of measurement (e | direct |
+| [unit_cv_id](unit_cv_id.md) | 0..1 <br/> [Curie](Curie.md) | The unit of the quantity, expressed as a CURIE from the Unit Ontology (e | direct |
+| [attribute](attribute.md) | 0..1 <br/> [Attribute](Attribute.md) | The attribute being represented | [AttributeValue](AttributeValue.md) |
+| [raw_value](raw_value.md) | 0..1 <br/> [String](String.md) | Unnormalized atomic string representation, suggested syntax {number} {unit} | [AttributeValue](AttributeValue.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Sample](Sample.md) | [molecular_weight](molecular_weight.md) | range | [QuantityValue](QuantityValue.md) |
+| [Sample](Sample.md) | [concentration](concentration.md) | range | [QuantityValue](QuantityValue.md) |
+| [Sample](Sample.md) | [purity_percentage](purity_percentage.md) | range | [QuantityValue](QuantityValue.md) |
+| [ProteinConstruct](ProteinConstruct.md) | [sequence_length_aa](sequence_length_aa.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [culture_volume_l](culture_volume_l.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [growth_temperature_c](growth_temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [induction_temperature_c](induction_temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [induction_time_h](induction_time_h.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [od600_at_induction](od600_at_induction.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [cleavage_time_h](cleavage_time_h.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [cleavage_temperature_c](cleavage_temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [yield_mg](yield_mg.md) | range | [QuantityValue](QuantityValue.md) |
+| [SamplePreparation](SamplePreparation.md) | [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [accelerating_voltage](accelerating_voltage.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [pixel_size_physical_um](pixel_size_physical_um.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [autoloader_capacity](autoloader_capacity.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [cs](cs.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [c2_aperture](c2_aperture.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [objective_aperture](objective_aperture.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [energy_filter_slit_width](energy_filter_slit_width.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [pixel_size_physical](pixel_size_physical.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [spotsize](spotsize.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [gunlens](gunlens.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMInstrument](CryoEMInstrument.md) | [tem_beam_diameter](tem_beam_diameter.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayInstrument](XRayInstrument.md) | [energy_min](energy_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayInstrument](XRayInstrument.md) | [energy_max](energy_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayInstrument](XRayInstrument.md) | [beam_size_min](beam_size_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayInstrument](XRayInstrument.md) | [beam_size_max](beam_size_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayInstrument](XRayInstrument.md) | [flux_density](flux_density.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSInstrument](SAXSInstrument.md) | [q_range_min](q_range_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSInstrument](SAXSInstrument.md) | [q_range_max](q_range_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSInstrument](SAXSInstrument.md) | [detector_distance_min](detector_distance_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSInstrument](SAXSInstrument.md) | [detector_distance_max](detector_distance_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSInstrument](SAXSInstrument.md) | [sample_changer_capacity](sample_changer_capacity.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamlineInstrument](BeamlineInstrument.md) | [energy_min](energy_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamlineInstrument](BeamlineInstrument.md) | [energy_max](energy_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamlineInstrument](BeamlineInstrument.md) | [q_range_min](q_range_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamlineInstrument](BeamlineInstrument.md) | [q_range_max](q_range_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [BeamlineInstrument](BeamlineInstrument.md) | [sample_changer_capacity](sample_changer_capacity.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [magnification](magnification.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [calibrated_pixel_size](calibrated_pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [camera_binning](camera_binning.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [exposure_time_per_frame](exposure_time_per_frame.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [frames_per_movie](frames_per_movie.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [total_exposure_time](total_exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [total_dose](total_dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [dose_rate](dose_rate.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [defocus_target](defocus_target.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [defocus_range_min](defocus_range_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [defocus_range_max](defocus_range_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [defocus_range_increment](defocus_range_increment.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [astigmatism_target](astigmatism_target.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [coma](coma.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [stage_tilt](stage_tilt.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [shots_per_hole](shots_per_hole.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [holes_per_group](holes_per_group.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [wavelength](wavelength.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [oscillation_angle](oscillation_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [start_angle](start_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [number_of_images](number_of_images.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [beam_center_x](beam_center_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [beam_center_y](beam_center_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [detector_distance](detector_distance.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [pixel_size_x](pixel_size_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [pixel_size_y](pixel_size_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [total_rotation](total_rotation.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [transmission](transmission.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [flux](flux.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [flux_end](flux_end.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [slit_gap_horizontal](slit_gap_horizontal.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [slit_gap_vertical](slit_gap_vertical.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [undulator_gap](undulator_gap.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [resolution](resolution.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [resolution_at_corner](resolution_at_corner.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [ispyb_data_collection_id](ispyb_data_collection_id.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentRun](ExperimentRun.md) | [ispyb_session_id](ispyb_session_id.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [processing_level](processing_level.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [number_of_waters](number_of_waters.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [refinement_resolution_a](refinement_resolution_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_a](unit_cell_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_b](unit_cell_b.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_c](unit_cell_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_alpha](unit_cell_alpha.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_beta](unit_cell_beta.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [unit_cell_gamma](unit_cell_gamma.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [resolution_high](resolution_high.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [resolution_low](resolution_low.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rmerge](rmerge.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rpim](rpim.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [cc_half](cc_half.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [completeness_percent](completeness_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [i_over_sigma](i_over_sigma.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [wilson_b_factor](wilson_b_factor.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [multiplicity](multiplicity.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [anomalous_completeness](anomalous_completeness.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [anomalous_multiplicity](anomalous_multiplicity.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [cc_anomalous](cc_anomalous.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [r_anomalous](r_anomalous.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [sig_anomalous](sig_anomalous.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [n_total_observations](n_total_observations.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [n_total_unique](n_total_unique.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [ispyb_auto_proc_program_id](ispyb_auto_proc_program_id.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [ispyb_auto_proc_scaling_id](ispyb_auto_proc_scaling_id.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rwork](rwork.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rfree](rfree.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rmsd_bonds](rmsd_bonds.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [rmsd_angles](rmsd_angles.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [ramachandran_favored](ramachandran_favored.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [ramachandran_outliers](ramachandran_outliers.md) | range | [QuantityValue](QuantityValue.md) |
+| [WorkflowRun](WorkflowRun.md) | [clashscore](clashscore.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataFile](DataFile.md) | [file_size_bytes](file_size_bytes.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image](Image.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image](Image.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image](Image.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image](Image.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image](Image.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image2D](Image2D.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [dimensions_z](dimensions_z.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [voxel_size](voxel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [Image3D](Image3D.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [frames](frames.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [pixel_size_unbinned](pixel_size_unbinned.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [stage_position_x](stage_position_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [stage_position_y](stage_position_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [stage_position_z](stage_position_z.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [nominal_defocus](nominal_defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [dose_per_frame](dose_per_frame.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [beam_shift_x](beam_shift_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [beam_shift_y](beam_shift_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [ice_thickness_estimate](ice_thickness_estimate.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [Movie](Movie.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [defocus_u](defocus_u.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [defocus_v](defocus_v.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [astigmatism_angle](astigmatism_angle.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [resolution_fit_limit](resolution_fit_limit.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [ctf_quality_score](ctf_quality_score.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [Micrograph](Micrograph.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [wavenumber_min](wavenumber_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [wavenumber_max](wavenumber_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [spectral_resolution](spectral_resolution.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [number_of_scans](number_of_scans.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [FTIRImage](FTIRImage.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [excitation_wavelength](excitation_wavelength.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [emission_wavelength](emission_wavelength.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [laser_power](laser_power.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [pinhole_size](pinhole_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [quantum_yield](quantum_yield.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [FluorescenceImage](FluorescenceImage.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [magnification](magnification.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [numerical_aperture](numerical_aperture.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [OpticalImage](OpticalImage.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [beam_energy](beam_energy.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [beam_size](beam_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [dwell_time](dwell_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [flux](flux.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [defocus](defocus.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [astigmatism](astigmatism.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [dimensions_x](dimensions_x.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [dimensions_y](dimensions_y.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRFImage](XRFImage.md) | [dose](dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [BufferComposition](BufferComposition.md) | [ph](ph.md) | range | [QuantityValue](QuantityValue.md) |
+| [StorageConditions](StorageConditions.md) | [temperature](temperature.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [hole_size](hole_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [blot_time](blot_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [blot_force](blot_force.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [humidity_percentage](humidity_percentage.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [chamber_temperature](chamber_temperature.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [glow_discharge_time](glow_discharge_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [glow_discharge_current](glow_discharge_current.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [glow_discharge_pressure](glow_discharge_pressure.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [blot_number](blot_number.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [wait_time](wait_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [blotter_height](blotter_height.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [blotter_setting](blotter_setting.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [sample_applied_volume](sample_applied_volume.md) | range | [QuantityValue](QuantityValue.md) |
+| [CryoEMPreparation](CryoEMPreparation.md) | [ethane_temperature](ethane_temperature.md) | range | [QuantityValue](QuantityValue.md) |
+| [CrystallizationConditions](CrystallizationConditions.md) | [drop_volume](drop_volume.md) | range | [QuantityValue](QuantityValue.md) |
+| [CrystallizationConditions](CrystallizationConditions.md) | [protein_concentration](protein_concentration.md) | range | [QuantityValue](QuantityValue.md) |
+| [CrystallizationConditions](CrystallizationConditions.md) | [temperature_c](temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [CrystallizationConditions](CrystallizationConditions.md) | [reservoir_volume_ul](reservoir_volume_ul.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [protein_concentration_mg_per_ml](protein_concentration_mg_per_ml.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [temperature_c](temperature_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [drop_volume_nl](drop_volume_nl.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [reservoir_volume_ul](reservoir_volume_ul.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [cryoprotectant_concentration](cryoprotectant_concentration.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [loop_size](loop_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [XRayPreparation](XRayPreparation.md) | [mounting_temperature](mounting_temperature.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSPreparation](SAXSPreparation.md) | [concentration_series](concentration_series.md) | range | [QuantityValue](QuantityValue.md) |
+| [SAXSPreparation](SAXSPreparation.md) | [cell_path_length](cell_path_length.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentalConditions](ExperimentalConditions.md) | [temperature](temperature.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentalConditions](ExperimentalConditions.md) | [humidity](humidity.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentalConditions](ExperimentalConditions.md) | [pressure](pressure.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentalConditions](ExperimentalConditions.md) | [beam_energy](beam_energy.md) | range | [QuantityValue](QuantityValue.md) |
+| [ExperimentalConditions](ExperimentalConditions.md) | [exposure_time](exposure_time.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [total_frames](total_frames.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [frame_rate](frame_rate.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [total_dose](total_dose.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [dose_per_frame](dose_per_frame.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [wavelength_a](wavelength_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [pixel_size_calibrated](pixel_size_calibrated.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [detector_distance_mm](detector_distance_mm.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_center_x_px](beam_center_x_px.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_center_y_px](beam_center_y_px.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [beam_size_um](beam_size_um.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [flux_photons_per_s](flux_photons_per_s.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [transmission_percent](transmission_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [temperature_k](temperature_k.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [oscillation_per_image_deg](oscillation_per_image_deg.md) | range | [QuantityValue](QuantityValue.md) |
+| [DataCollectionStrategy](DataCollectionStrategy.md) | [total_rotation_deg](total_rotation_deg.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [resolution](resolution.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [resolution_high_shell_a](resolution_high_shell_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [resolution_low_a](resolution_low_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [completeness](completeness.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [completeness_high_res_shell_percent](completeness_high_res_shell_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [signal_to_noise](signal_to_noise.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [mean_i_over_sigma_i](mean_i_over_sigma_i.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_a](unit_cell_a.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_b](unit_cell_b.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_c](unit_cell_c.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_alpha](unit_cell_alpha.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_beta](unit_cell_beta.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [unit_cell_gamma](unit_cell_gamma.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [multiplicity](multiplicity.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [cc_half](cc_half.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [r_merge](r_merge.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [r_pim](r_pim.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [wilson_b_factor_a2](wilson_b_factor_a2.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [anom_corr](anom_corr.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [anom_sig_ano](anom_sig_ano.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [r_work](r_work.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [r_free](r_free.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [ramachandran_favored_percent](ramachandran_favored_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [ramachandran_outliers_percent](ramachandran_outliers_percent.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [clashscore](clashscore.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [molprobity_score](molprobity_score.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [average_b_factor_a2](average_b_factor_a2.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [i_zero](i_zero.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [rg](rg.md) | range | [QuantityValue](QuantityValue.md) |
+| [QualityMetrics](QualityMetrics.md) | [r_factor](r_factor.md) | range | [QuantityValue](QuantityValue.md) |
+| [ComputeResources](ComputeResources.md) | [cpu_hours](cpu_hours.md) | range | [QuantityValue](QuantityValue.md) |
+| [ComputeResources](ComputeResources.md) | [gpu_hours](gpu_hours.md) | range | [QuantityValue](QuantityValue.md) |
+| [ComputeResources](ComputeResources.md) | [memory_gb](memory_gb.md) | range | [QuantityValue](QuantityValue.md) |
+| [ComputeResources](ComputeResources.md) | [storage_gb](storage_gb.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [patch_size](patch_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [binning](binning.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [bfactor_dose_weighting](bfactor_dose_weighting.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [frame_grouping](frame_grouping.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [output_binning](output_binning.md) | range | [QuantityValue](QuantityValue.md) |
+| [MotionCorrectionParameters](MotionCorrectionParameters.md) | [drift_total](drift_total.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [defocus_search_min](defocus_search_min.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [defocus_search_max](defocus_search_max.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [defocus_step](defocus_step.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [amplitude_contrast](amplitude_contrast.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [cs_used_in_estimation](cs_used_in_estimation.md) | range | [QuantityValue](QuantityValue.md) |
+| [CTFEstimationParameters](CTFEstimationParameters.md) | [voltage_used_in_estimation](voltage_used_in_estimation.md) | range | [QuantityValue](QuantityValue.md) |
+| [ParticlePickingParameters](ParticlePickingParameters.md) | [box_size](box_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [ParticlePickingParameters](ParticlePickingParameters.md) | [threshold](threshold.md) | range | [QuantityValue](QuantityValue.md) |
+| [ParticlePickingParameters](ParticlePickingParameters.md) | [power_score](power_score.md) | range | [QuantityValue](QuantityValue.md) |
+| [ParticlePickingParameters](ParticlePickingParameters.md) | [ncc_score](ncc_score.md) | range | [QuantityValue](QuantityValue.md) |
+| [RefinementParameters](RefinementParameters.md) | [pixel_size](pixel_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [RefinementParameters](RefinementParameters.md) | [box_size](box_size.md) | range | [QuantityValue](QuantityValue.md) |
+| [RefinementParameters](RefinementParameters.md) | [resolution_0_143](resolution_0_143.md) | range | [QuantityValue](QuantityValue.md) |
+| [RefinementParameters](RefinementParameters.md) | [resolution_0_5](resolution_0_5.md) | range | [QuantityValue](QuantityValue.md) |
+| [RefinementParameters](RefinementParameters.md) | [map_sharpening_bfactor](map_sharpening_bfactor.md) | range | [QuantityValue](QuantityValue.md) |
+| [FSCCurve](FSCCurve.md) | [resolution_angstrom](resolution_angstrom.md) | range | [QuantityValue](QuantityValue.md) |
+| [FSCCurve](FSCCurve.md) | [fsc_value](fsc_value.md) | range | [QuantityValue](QuantityValue.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [ph](ph.md) | range | [QuantityValue](QuantityValue.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [ionic_strength](ionic_strength.md) | range | [QuantityValue](QuantityValue.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [temperature](temperature.md) | range | [QuantityValue](QuantityValue.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | nmdc:QuantityValue |
+| native | lambdaber:QuantityValue |
+| undefined | schema:QuantityValue |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: QuantityValue
+description: A simple quantity value, representing a measurement with a numeric value
+  and unit. This allows data providers to specify measurements in their preferred
+  unit while enabling standardized interpretation. For example, a pixel size could
+  be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+from_schema: https://w3id.org/lambda-ber-schema/
+mappings:
+- schema:QuantityValue
+is_a: AttributeValue
+slots:
+- maximum_numeric_value
+- minimum_numeric_value
+- numeric_value
+- unit
+- unit_cv_id
+slot_usage:
+  numeric_value:
+    name: numeric_value
+    description: The numerical value of the quantity
+    required: true
+  unit:
+    name: unit
+    description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
+      Should match the UCUM standard notation or Unit Ontology.
+    required: true
+  raw_value:
+    name: raw_value
+    description: Unnormalized atomic string representation, suggested syntax {number}
+      {unit}
+    examples:
+    - value: 1.5 micrometers
+    - value: 50 Angstroms
+class_uri: nmdc:QuantityValue
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: QuantityValue
+description: A simple quantity value, representing a measurement with a numeric value
+  and unit. This allows data providers to specify measurements in their preferred
+  unit while enabling standardized interpretation. For example, a pixel size could
+  be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+from_schema: https://w3id.org/lambda-ber-schema/
+mappings:
+- schema:QuantityValue
+is_a: AttributeValue
+slot_usage:
+  numeric_value:
+    name: numeric_value
+    description: The numerical value of the quantity
+    required: true
+  unit:
+    name: unit
+    description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
+      Should match the UCUM standard notation or Unit Ontology.
+    required: true
+  raw_value:
+    name: raw_value
+    description: Unnormalized atomic string representation, suggested syntax {number}
+      {unit}
+    examples:
+    - value: 1.5 micrometers
+    - value: 50 Angstroms
+attributes:
+  maximum_numeric_value:
+    name: maximum_numeric_value
+    description: The maximum value part, expressed as a number, of the quantity value
+      when the value covers a range.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    mappings:
+    - nmdc:maximum_numeric_value
+    rank: 1000
+    is_a: numeric_value
+    alias: maximum_numeric_value
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    range: float
+  minimum_numeric_value:
+    name: minimum_numeric_value
+    description: The minimum value part, expressed as a number, of the quantity value
+      when the value covers a range.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    mappings:
+    - nmdc:minimum_numeric_value
+    rank: 1000
+    is_a: numeric_value
+    alias: minimum_numeric_value
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    range: float
+  numeric_value:
+    name: numeric_value
+    description: The numerical value of the quantity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    mappings:
+    - nmdc:numeric_value
+    - qud:quantityValue
+    - schema:value
+    rank: 1000
+    alias: numeric_value
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    range: float
+    required: true
+  unit:
+    name: unit
+    description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
+      Should match the UCUM standard notation or Unit Ontology.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    aliases:
+    - scale
+    mappings:
+    - nmdc:unit
+    - qud:unit
+    - schema:unitCode
+    - UO:0000000
+    rank: 1000
+    alias: unit
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    - BiophysicalProperty
+    range: string
+    required: true
+  unit_cv_id:
+    name: unit_cv_id
+    description: The unit of the quantity, expressed as a CURIE from the Unit Ontology
+      (e.g., UO:0000016 for micrometer).
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: unit_cv_id
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    range: curie
+  attribute:
+    name: attribute
+    description: The attribute being represented.
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    alias: attribute
+    owner: QuantityValue
+    domain_of:
+    - AttributeValue
+    range: Attribute
+  raw_value:
+    name: raw_value
+    description: Unnormalized atomic string representation, suggested syntax {number}
+      {unit}
+    examples:
+    - value: 1.5 micrometers
+    - value: 50 Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/types
+    alias: raw_value
+    owner: QuantityValue
+    domain_of:
+    - AttributeValue
+    range: string
+class_uri: nmdc:QuantityValue
+
+```
+</details>
