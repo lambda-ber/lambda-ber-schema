@@ -6,7 +6,7 @@ A process that prepares a sample for imaging
 URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<growth_temperature_c%200..1-++[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;induction_temperature_c:float%20%3F;induction_time_h:float%20%3F;od600_at_induction:float%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;cleavage_time_h:float%20%3F;cleavage_temperature_c:float%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;final_concentration_mg_per_ml:float%20%3F;yield_mg:float%20%3F;purity_by_sds_page_percent:float%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<culture_volume_l%200..1-++[SamplePreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation],[NamedThing]^-[SamplePreparation],[Study],[QuantityValue],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<growth_temperature_c%200..1-++[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;induction_temperature_c:float%20%3F;induction_time_h:float%20%3F;od600_at_induction:float%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;cleavage_time_h:float%20%3F;cleavage_temperature_c:float%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;final_concentration_mg_per_ml:float%20%3F;yield_mg:float%20%3F;purity_by_sds_page_percent:float%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<culture_volume_l%200..1-++[SamplePreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation],[NamedThing]^-[SamplePreparation],[Study],[QuantityValue],[NamedThing])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<purity_by_sds_page_percent%200..1-++[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<yield_mg%200..1-++[SamplePreparation],[QuantityValue]<final_concentration_mg_per_ml%200..1-++[SamplePreparation],[QuantityValue]<cleavage_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<cleavage_time_h%200..1-++[SamplePreparation],[QuantityValue]<od600_at_induction%200..1-++[SamplePreparation],[QuantityValue]<induction_time_h%200..1-++[SamplePreparation],[QuantityValue]<induction_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<growth_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<culture_volume_l%200..1-++[SamplePreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation],[NamedThing]^-[SamplePreparation],[Study],[QuantityValue],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<purity_by_sds_page_percent%200..1-++[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<yield_mg%200..1-++[SamplePreparation],[QuantityValue]<final_concentration_mg_per_ml%200..1-++[SamplePreparation],[QuantityValue]<cleavage_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<cleavage_time_h%200..1-++[SamplePreparation],[QuantityValue]<od600_at_induction%200..1-++[SamplePreparation],[QuantityValue]<induction_time_h%200..1-++[SamplePreparation],[QuantityValue]<induction_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<growth_temperature_c%200..1-++[SamplePreparation],[QuantityValue]<culture_volume_l%200..1-++[SamplePreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation],[NamedThing]^-[SamplePreparation],[Study],[QuantityValue],[NamedThing])
 
 ## Parents
 
@@ -61,14 +61,14 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
      * Description: Concentration of induction agent
      * Range: [String](types/String.md)
  * [➞induction_temperature_c](samplePreparation__induction_temperature_c.md)  <sub>0..1</sub>
-     * Description: Temperature during induction in Celsius
-     * Range: [Float](types/Float.md)
+     * Description: Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞induction_time_h](samplePreparation__induction_time_h.md)  <sub>0..1</sub>
-     * Description: Duration of induction in hours
-     * Range: [Float](types/Float.md)
+     * Description: Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞od600_at_induction](samplePreparation__od600_at_induction.md)  <sub>0..1</sub>
-     * Description: Optical density at 600nm when induction was started
-     * Range: [Float](types/Float.md)
+     * Description: Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞harvest_timepoint](samplePreparation__harvest_timepoint.md)  <sub>0..1</sub>
      * Description: Time point when cells were harvested
      * Range: [String](types/String.md)
@@ -107,10 +107,10 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
      * Range: [String](types/String.md)
  * [➞cleavage_time_h](samplePreparation__cleavage_time_h.md)  <sub>0..1</sub>
      * Description: Duration of protease cleavage in hours
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞cleavage_temperature_c](samplePreparation__cleavage_temperature_c.md)  <sub>0..1</sub>
      * Description: Temperature during cleavage in Celsius
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞second_affinity_reverse](samplePreparation__second_affinity_reverse.md)  <sub>0..1</sub>
      * Description: Second affinity or reverse affinity step
      * Range: [String](types/String.md)
@@ -134,13 +134,13 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
      * Range: [String](types/String.md)
  * [➞final_concentration_mg_per_ml](samplePreparation__final_concentration_mg_per_ml.md)  <sub>0..1</sub>
      * Description: Final protein concentration in mg/mL
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞yield_mg](samplePreparation__yield_mg.md)  <sub>0..1</sub>
      * Description: Total yield in milligrams
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞purity_by_sds_page_percent](samplePreparation__purity_by_sds_page_percent.md)  <sub>0..1</sub>
      * Description: Purity percentage by SDS-PAGE
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞aggregation_assessment](samplePreparation__aggregation_assessment.md)  <sub>0..1</sub>
      * Description: Assessment of protein aggregation state
      * Range: [String](types/String.md)

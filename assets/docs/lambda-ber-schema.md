@@ -198,15 +198,15 @@ A multimodal plant imaging study might combine:
  * [➞components](bufferComposition__components.md) - Buffer components and their concentrations
  * [➞ph](bufferComposition__ph.md) - pH of the buffer (range: 0-14)
  * [➞amplitude_contrast](cTFEstimationParameters__amplitude_contrast.md) - Amplitude contrast value
- * [➞cs_used_in_estimation](cTFEstimationParameters__cs_used_in_estimation.md) - Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification
- * [➞defocus_search_max](cTFEstimationParameters__defocus_search_max.md) - Maximum defocus search range in micrometers
- * [➞defocus_search_min](cTFEstimationParameters__defocus_search_min.md) - Minimum defocus search range in micrometers
- * [➞defocus_step](cTFEstimationParameters__defocus_step.md) - Defocus search step in micrometers
- * [➞voltage_used_in_estimation](cTFEstimationParameters__voltage_used_in_estimation.md) - Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification
- * [➞cpu_hours](computeResources__cpu_hours.md) - CPU hours used
- * [➞gpu_hours](computeResources__gpu_hours.md) - GPU hours used
- * [➞memory_gb](computeResources__memory_gb.md) - Maximum memory used in GB
- * [➞storage_gb](computeResources__storage_gb.md) - Storage used in GB
+ * [➞cs_used_in_estimation](cTFEstimationParameters__cs_used_in_estimation.md) - Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞defocus_search_max](cTFEstimationParameters__defocus_search_max.md) - Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞defocus_search_min](cTFEstimationParameters__defocus_search_min.md) - Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞defocus_step](cTFEstimationParameters__defocus_step.md) - Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞voltage_used_in_estimation](cTFEstimationParameters__voltage_used_in_estimation.md) - Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞cpu_hours](computeResources__cpu_hours.md) - CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.
+ * [➞gpu_hours](computeResources__gpu_hours.md) - GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.
+ * [➞memory_gb](computeResources__memory_gb.md) - Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞storage_gb](computeResources__storage_gb.md) - Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞clustering_method](conformationalEnsemble__clustering_method.md) - Method used for conformational clustering
  * [➞conformational_states](conformationalEnsemble__conformational_states.md) - Individual conformational states
  * [➞energy_landscape](conformationalEnsemble__energy_landscape.md) - Description of the energy landscape
@@ -249,58 +249,58 @@ A multimodal plant imaging study might combine:
  * [➞tem_beam_diameter](cryoEMInstrument__tem_beam_diameter.md) - TEM beam diameter in micrometers
  * [➞blot_force](cryoEMPreparation__blot_force.md) - Blotting force setting
  * [➞blot_number](cryoEMPreparation__blot_number.md) - Number of blots applied
- * [➞blot_time](cryoEMPreparation__blot_time.md) - Blotting time in seconds (range: 0.5-10.0)
- * [➞blotter_height](cryoEMPreparation__blotter_height.md) - Blotter height setting
- * [➞blotter_setting](cryoEMPreparation__blotter_setting.md) - Blotter setting value
- * [➞chamber_temperature](cryoEMPreparation__chamber_temperature.md) - Chamber temperature in Celsius
- * [➞ethane_temperature](cryoEMPreparation__ethane_temperature.md) - Ethane temperature in Celsius
+ * [➞blot_time](cryoEMPreparation__blot_time.md) - Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞blotter_height](cryoEMPreparation__blotter_height.md) - Blotter height setting. Data providers may include unit information in the QuantityValue if needed.
+ * [➞blotter_setting](cryoEMPreparation__blotter_setting.md) - Blotter setting value. Data providers may include unit information in the QuantityValue if needed.
+ * [➞chamber_temperature](cryoEMPreparation__chamber_temperature.md) - Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞ethane_temperature](cryoEMPreparation__ethane_temperature.md) - Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞glow_discharge_applied](cryoEMPreparation__glow_discharge_applied.md) - Whether glow discharge treatment was applied
  * [➞glow_discharge_atmosphere](cryoEMPreparation__glow_discharge_atmosphere.md) - Glow discharge atmosphere (air, amylamine)
- * [➞glow_discharge_current](cryoEMPreparation__glow_discharge_current.md) - Glow discharge current in milliamperes
- * [➞glow_discharge_pressure](cryoEMPreparation__glow_discharge_pressure.md) - Glow discharge pressure in millibar
- * [➞glow_discharge_time](cryoEMPreparation__glow_discharge_time.md) - Glow discharge time in seconds
+ * [➞glow_discharge_current](cryoEMPreparation__glow_discharge_current.md) - Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞glow_discharge_pressure](cryoEMPreparation__glow_discharge_pressure.md) - Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞glow_discharge_time](cryoEMPreparation__glow_discharge_time.md) - Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞grid_material](cryoEMPreparation__grid_material.md) - Grid material
  * [➞grid_type](cryoEMPreparation__grid_type.md) - Type of EM grid used
- * [➞hole_size](cryoEMPreparation__hole_size.md) - Hole size in micrometers (range: 0.5-5.0)
- * [➞humidity_percentage](cryoEMPreparation__humidity_percentage.md) - Chamber humidity during vitrification (range: 0-100)
+ * [➞hole_size](cryoEMPreparation__hole_size.md) - Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞humidity_percentage](cryoEMPreparation__humidity_percentage.md) - Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
  * [➞plasma_treatment](cryoEMPreparation__plasma_treatment.md) - Plasma treatment details
- * [➞sample_applied_volume](cryoEMPreparation__sample_applied_volume.md) - Volume of sample applied in microliters
+ * [➞sample_applied_volume](cryoEMPreparation__sample_applied_volume.md) - Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞support_film](cryoEMPreparation__support_film.md) - Support film type
  * [➞vitrification_instrument](cryoEMPreparation__vitrification_instrument.md) - Vitrification instrument used (e.g., Vitrobot)
  * [➞vitrification_method](cryoEMPreparation__vitrification_method.md) - Method used for vitrification
- * [➞wait_time](cryoEMPreparation__wait_time.md) - Wait time before blotting in seconds
+ * [➞wait_time](cryoEMPreparation__wait_time.md) - Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞cryo_protectant](crystallizationConditions__cryo_protectant.md) - Cryoprotectant used for crystal cooling
  * [➞crystal_id](crystallizationConditions__crystal_id.md) - Identifier for the specific crystal used
  * [➞crystal_size_um](crystallizationConditions__crystal_size_um.md) - Crystal dimensions in micrometers (length x width x height)
  * [➞crystallization_conditions](crystallizationConditions__crystallization_conditions.md) - Complete description of crystallization conditions including precipitant, pH, salts
  * [➞drop_ratio_protein_to_reservoir](crystallizationConditions__drop_ratio_protein_to_reservoir.md) - Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
- * [➞drop_volume](crystallizationConditions__drop_volume.md) - Total drop volume in nanoliters
+ * [➞drop_volume](crystallizationConditions__drop_volume.md) - Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞method](crystallizationConditions__method.md) - Crystallization method used
  * [➞protein_concentration](crystallizationConditions__protein_concentration.md) - Protein concentration for crystallization in mg/mL
- * [➞reservoir_volume_ul](crystallizationConditions__reservoir_volume_ul.md) - Reservoir volume in microliters
+ * [➞reservoir_volume_ul](crystallizationConditions__reservoir_volume_ul.md) - Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞screen_name](crystallizationConditions__screen_name.md) - Name of crystallization screen used
  * [➞seed_stock_dilution](crystallizationConditions__seed_stock_dilution.md) - Dilution factor for seed stock
  * [➞seeding_type](crystallizationConditions__seeding_type.md) - Type of seeding used (micro, macro, streak)
- * [➞temperature_c](crystallizationConditions__temperature_c.md) - Crystallization temperature in Celsius
+ * [➞temperature_c](crystallizationConditions__temperature_c.md) - Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞attenuator](dataCollectionStrategy__attenuator.md) - Attenuator setting used
  * [➞beam_center_x_px](dataCollectionStrategy__beam_center_x_px.md) - Beam center X coordinate in pixels
  * [➞beam_center_y_px](dataCollectionStrategy__beam_center_y_px.md) - Beam center Y coordinate in pixels
- * [➞beam_size_um](dataCollectionStrategy__beam_size_um.md) - Beam size in micrometers
+ * [➞beam_size_um](dataCollectionStrategy__beam_size_um.md) - Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞collection_mode](dataCollectionStrategy__collection_mode.md) - Mode of data collection
- * [➞detector_distance_mm](dataCollectionStrategy__detector_distance_mm.md) - Detector distance in millimeters
+ * [➞detector_distance_mm](dataCollectionStrategy__detector_distance_mm.md) - Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞detector_mode](dataCollectionStrategy__detector_mode.md) - Detector operating mode used during this experiment
- * [➞dose_per_frame](dataCollectionStrategy__dose_per_frame.md) - Dose per frame
- * [➞flux_photons_per_s](dataCollectionStrategy__flux_photons_per_s.md) - Photon flux in photons per second
- * [➞frame_rate](dataCollectionStrategy__frame_rate.md) - Frames per second
- * [➞oscillation_per_image_deg](dataCollectionStrategy__oscillation_per_image_deg.md) - Oscillation angle per image in degrees
+ * [➞dose_per_frame](dataCollectionStrategy__dose_per_frame.md) - Dose per frame, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞flux_photons_per_s](dataCollectionStrategy__flux_photons_per_s.md) - Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞frame_rate](dataCollectionStrategy__frame_rate.md) - Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞oscillation_per_image_deg](dataCollectionStrategy__oscillation_per_image_deg.md) - Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞pixel_size_calibrated](dataCollectionStrategy__pixel_size_calibrated.md) - Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞strategy_notes](dataCollectionStrategy__strategy_notes.md) - Notes about data collection strategy
- * [➞temperature_k](dataCollectionStrategy__temperature_k.md) - Data collection temperature in Kelvin
- * [➞total_dose](dataCollectionStrategy__total_dose.md) - Total electron dose for cryo-EM
+ * [➞temperature_k](dataCollectionStrategy__temperature_k.md) - Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞total_dose](dataCollectionStrategy__total_dose.md) - Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞total_frames](dataCollectionStrategy__total_frames.md) - Total number of frames/images
- * [➞total_rotation_deg](dataCollectionStrategy__total_rotation_deg.md) - Total rotation range in degrees
- * [➞transmission_percent](dataCollectionStrategy__transmission_percent.md) - Beam transmission percentage
- * [➞wavelength_a](dataCollectionStrategy__wavelength_a.md) - X-ray wavelength in Angstroms
+ * [➞total_rotation_deg](dataCollectionStrategy__total_rotation_deg.md) - Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞transmission_percent](dataCollectionStrategy__transmission_percent.md) - Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
+ * [➞wavelength_a](dataCollectionStrategy__wavelength_a.md) - X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞checksum](dataFile__checksum.md) - SHA-256 checksum for data integrity
  * [➞creation_date](dataFile__creation_date.md) - File creation date
  * [➞data_type](dataFile__data_type.md) - Type of data in the file
@@ -353,7 +353,7 @@ A multimodal plant imaging study might combine:
  * [➞flux](experimentRun__flux.md) - Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞flux_end](experimentRun__flux_end.md) - Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞frames_per_movie](experimentRun__frames_per_movie.md) - Number of frames per movie
- * [➞holes_per_group](experimentRun__holes_per_group.md) - Number of holes per group
+ * [➞holes_per_group](experimentRun__holes_per_group.md) - Number of holes per group. Data providers may include unit information in the QuantityValue if needed.
  * [➞instrument_id](experimentRun__instrument_id.md) - Reference to the instrument used
  * [➞ispyb_data_collection_id](experimentRun__ispyb_data_collection_id.md) - ISPyB DataCollection.dataCollectionId for traceability
  * [➞ispyb_session_id](experimentRun__ispyb_session_id.md) - ISPyB BLSession.sessionId
@@ -384,28 +384,28 @@ A multimodal plant imaging study might combine:
  * [➞undulator_gap](experimentRun__undulator_gap.md) - Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.
  * [➞wavelength](experimentRun__wavelength.md) - X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞atmosphere](experimentalConditions__atmosphere.md) - Atmosphere composition
- * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy in keV
+ * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞exposure_time](experimentalConditions__exposure_time.md) - Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
- * [➞humidity](experimentalConditions__humidity.md) - Humidity percentage
- * [➞pressure](experimentalConditions__pressure.md) - Pressure in kPa
- * [➞temperature](experimentalConditions__temperature.md) - Temperature in Celsius
+ * [➞humidity](experimentalConditions__humidity.md) - Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+ * [➞pressure](experimentalConditions__pressure.md) - Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞temperature](experimentalConditions__temperature.md) - Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞fsc_value](fSCCurve__fsc_value.md) - FSC values corresponding to each resolution
  * [➞resolution_angstrom](fSCCurve__resolution_angstrom.md) - Resolution values in Angstroms
  * [➞apodization_function](fTIRImage__apodization_function.md) - Mathematical function used for apodization
  * [➞background_correction](fTIRImage__background_correction.md) - Method used for background correction
  * [➞molecular_signatures](fTIRImage__molecular_signatures.md) - Identified molecular signatures or peaks
  * [➞number_of_scans](fTIRImage__number_of_scans.md) - Number of scans averaged for the spectrum
- * [➞spectral_resolution](fTIRImage__spectral_resolution.md) - Spectral resolution in cm⁻¹
- * [➞wavenumber_max](fTIRImage__wavenumber_max.md) - Maximum wavenumber in cm⁻¹
- * [➞wavenumber_min](fTIRImage__wavenumber_min.md) - Minimum wavenumber in cm⁻¹
+ * [➞spectral_resolution](fTIRImage__spectral_resolution.md) - Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞wavenumber_max](fTIRImage__wavenumber_max.md) - Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞wavenumber_min](fTIRImage__wavenumber_min.md) - Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞channel_name](fluorescenceImage__channel_name.md) - Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
  * [➞emission_filter](fluorescenceImage__emission_filter.md) - Specifications of the emission filter
- * [➞emission_wavelength](fluorescenceImage__emission_wavelength.md) - Emission wavelength in nanometers
+ * [➞emission_wavelength](fluorescenceImage__emission_wavelength.md) - Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞excitation_filter](fluorescenceImage__excitation_filter.md) - Specifications of the excitation filter
- * [➞excitation_wavelength](fluorescenceImage__excitation_wavelength.md) - Excitation wavelength in nanometers
+ * [➞excitation_wavelength](fluorescenceImage__excitation_wavelength.md) - Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞fluorophore](fluorescenceImage__fluorophore.md) - Name or type of fluorophore used
- * [➞laser_power](fluorescenceImage__laser_power.md) - Laser power in milliwatts or percentage
- * [➞pinhole_size](fluorescenceImage__pinhole_size.md) - Pinhole size in Airy units for confocal microscopy
+ * [➞laser_power](fluorescenceImage__laser_power.md) - Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞pinhole_size](fluorescenceImage__pinhole_size.md) - Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞quantum_yield](fluorescenceImage__quantum_yield.md) - Quantum yield of the fluorophore
  * [➞conservation_score](functionalSite__conservation_score.md) - Evolutionary conservation score (range: 0-1)
  * [➞ec_number](functionalSite__ec_number.md) - Enzyme Commission number for catalytic sites
@@ -452,9 +452,9 @@ A multimodal plant imaging study might combine:
  * [➞ligand_name](ligandInteraction__ligand_name.md) - Common name of the ligand
  * [➞ligand_smiles](ligandInteraction__ligand_smiles.md) - SMILES representation of the ligand
  * [➞buffer_composition](measurementConditions__buffer_composition.md) - Composition of the buffer used
- * [➞ionic_strength](measurementConditions__ionic_strength.md) - Ionic strength in molar of material in solution
- * [➞ph](measurementConditions__ph.md) - pH value of the solution during measurement (range: 0-14)
- * [➞temperature](measurementConditions__temperature.md) - Temperature in Kelvin during measurement
+ * [➞ionic_strength](measurementConditions__ionic_strength.md) - Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞ph](measurementConditions__ph.md) - pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞temperature](measurementConditions__temperature.md) - Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞astigmatism_angle](micrograph__astigmatism_angle.md) - Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞ctf_quality_score](micrograph__ctf_quality_score.md) - CTF estimation quality score
  * [➞defocus_u](micrograph__defocus_u.md) - Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -466,10 +466,10 @@ A multimodal plant imaging study might combine:
  * [➞modifications](molecularComposition__modifications.md) - Post-translational modifications or chemical modifications
  * [➞sequences](molecularComposition__sequences.md) - Amino acid or nucleotide sequences
  * [➞anisotropic_correction](motionCorrectionParameters__anisotropic_correction.md) - Whether anisotropic motion correction was applied
- * [➞bfactor_dose_weighting](motionCorrectionParameters__bfactor_dose_weighting.md) - B-factor for dose weighting
+ * [➞bfactor_dose_weighting](motionCorrectionParameters__bfactor_dose_weighting.md) - B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞binning](motionCorrectionParameters__binning.md) - Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).
  * [➞dose_weighting](motionCorrectionParameters__dose_weighting.md) - Whether dose weighting was applied
- * [➞drift_total](motionCorrectionParameters__drift_total.md) - Total drift in Angstroms
+ * [➞drift_total](motionCorrectionParameters__drift_total.md) - Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞frame_grouping](motionCorrectionParameters__frame_grouping.md) - Number of frames grouped together
  * [➞output_binning](motionCorrectionParameters__output_binning.md) - Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
  * [➞patch_size](motionCorrectionParameters__patch_size.md) - Patch size for local motion correction
@@ -512,8 +512,8 @@ A multimodal plant imaging study might combine:
  * [➞color_channels](opticalImage__color_channels.md) - Color channels present (e.g., RGB, grayscale)
  * [➞contrast_method](opticalImage__contrast_method.md) - Contrast enhancement method used
  * [➞illumination_type](opticalImage__illumination_type.md) - Type of illumination (brightfield, darkfield, phase contrast, DIC)
- * [➞magnification](opticalImage__magnification.md) - Optical magnification factor
- * [➞numerical_aperture](opticalImage__numerical_aperture.md) - Numerical aperture of the objective lens
+ * [➞magnification](opticalImage__magnification.md) - Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.
+ * [➞numerical_aperture](opticalImage__numerical_aperture.md) - Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.
  * [➞white_balance](opticalImage__white_balance.md) - White balance settings
  * [➞box_size](particlePickingParameters__box_size.md) - Particle box size in pixels
  * [➞model_file_path](particlePickingParameters__model_file_path.md) - Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.
@@ -580,8 +580,8 @@ A multimodal plant imaging study might combine:
  * [➞average_b_factor_a2](qualityMetrics__average_b_factor_a2.md) - Average B-factor in Angstroms squared
  * [➞cc_half](qualityMetrics__cc_half.md) - Half-set correlation coefficient CC(1/2)
  * [➞clashscore](qualityMetrics__clashscore.md) - MolProbity clashscore
- * [➞completeness](qualityMetrics__completeness.md) - Data completeness percentage
- * [➞completeness_high_res_shell_percent](qualityMetrics__completeness_high_res_shell_percent.md) - Completeness in highest resolution shell
+ * [➞completeness](qualityMetrics__completeness.md) - Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
+ * [➞completeness_high_res_shell_percent](qualityMetrics__completeness_high_res_shell_percent.md) - Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
  * [➞i_zero](qualityMetrics__i_zero.md) - Forward scattering intensity I(0)
  * [➞mean_i_over_sigma_i](qualityMetrics__mean_i_over_sigma_i.md) - Mean I/sigma(I)
  * [➞molprobity_score](qualityMetrics__molprobity_score.md) - Overall MolProbity score
@@ -594,25 +594,25 @@ A multimodal plant imaging study might combine:
  * [➞ramachandran_favored_percent](qualityMetrics__ramachandran_favored_percent.md) - Percentage of residues in favored Ramachandran regions
  * [➞ramachandran_outliers_percent](qualityMetrics__ramachandran_outliers_percent.md) - Percentage of Ramachandran outliers
  * [➞resolution](qualityMetrics__resolution.md) - Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
- * [➞resolution_high_shell_a](qualityMetrics__resolution_high_shell_a.md) - High resolution shell limit in Angstroms
- * [➞resolution_low_a](qualityMetrics__resolution_low_a.md) - Low resolution limit in Angstroms
- * [➞rg](qualityMetrics__rg.md) - Radius of gyration in Angstroms
+ * [➞resolution_high_shell_a](qualityMetrics__resolution_high_shell_a.md) - High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞resolution_low_a](qualityMetrics__resolution_low_a.md) - Low resolution limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞rg](qualityMetrics__rg.md) - Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞signal_to_noise](qualityMetrics__signal_to_noise.md) - Signal to noise ratio
  * [➞space_group](qualityMetrics__space_group.md) - Crystallographic space group
- * [➞unit_cell_a](qualityMetrics__unit_cell_a.md) - Unit cell parameter a in Angstroms
- * [➞unit_cell_alpha](qualityMetrics__unit_cell_alpha.md) - Unit cell angle alpha in degrees
- * [➞unit_cell_b](qualityMetrics__unit_cell_b.md) - Unit cell parameter b in Angstroms
- * [➞unit_cell_beta](qualityMetrics__unit_cell_beta.md) - Unit cell angle beta in degrees
- * [➞unit_cell_c](qualityMetrics__unit_cell_c.md) - Unit cell parameter c in Angstroms
- * [➞unit_cell_gamma](qualityMetrics__unit_cell_gamma.md) - Unit cell angle gamma in degrees
+ * [➞unit_cell_a](qualityMetrics__unit_cell_a.md) - Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_alpha](qualityMetrics__unit_cell_alpha.md) - Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_b](qualityMetrics__unit_cell_b.md) - Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_beta](qualityMetrics__unit_cell_beta.md) - Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_c](qualityMetrics__unit_cell_c.md) - Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_gamma](qualityMetrics__unit_cell_gamma.md) - Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞wilson_b_factor_a2](qualityMetrics__wilson_b_factor_a2.md) - Wilson B-factor in Angstroms squared
  * [raw_value](raw_value.md) - The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms" or "2-4 micrometers"
  * [➞box_size](refinementParameters__box_size.md) - Box size in pixels
  * [➞gold_standard](refinementParameters__gold_standard.md) - Whether gold-standard refinement was used
- * [➞map_sharpening_bfactor](refinementParameters__map_sharpening_bfactor.md) - B-factor used for map sharpening in Angstroms^2
- * [➞pixel_size](refinementParameters__pixel_size.md) - Pixel size in Angstroms per pixel
- * [➞resolution_0_143](refinementParameters__resolution_0_143.md) - Resolution at FSC=0.143 in Angstroms
- * [➞resolution_0_5](refinementParameters__resolution_0_5.md) - Resolution at FSC=0.5 in Angstroms
+ * [➞map_sharpening_bfactor](refinementParameters__map_sharpening_bfactor.md) - B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞pixel_size](refinementParameters__pixel_size.md) - Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞resolution_0_143](refinementParameters__resolution_0_143.md) - Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞resolution_0_5](refinementParameters__resolution_0_5.md) - Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞split_strategy](refinementParameters__split_strategy.md) - Strategy for data splitting
  * [➞symmetry](refinementParameters__symmetry.md) - Symmetry applied (C1, Cn, Dn, T, O, I)
  * [➞detector_distance_max](sAXSInstrument__detector_distance_max.md) - Maximum detector distance in mm
@@ -622,7 +622,7 @@ A multimodal plant imaging study might combine:
  * [➞sample_changer_capacity](sAXSInstrument__sample_changer_capacity.md) - Number of samples in automatic sample changer
  * [➞temperature_control_range](sAXSInstrument__temperature_control_range.md) - Temperature control range in Celsius
  * [➞buffer_matching_protocol](sAXSPreparation__buffer_matching_protocol.md) - Protocol for buffer matching
- * [➞cell_path_length](sAXSPreparation__cell_path_length.md) - Path length in mm
+ * [➞cell_path_length](sAXSPreparation__cell_path_length.md) - Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞concentration_series](sAXSPreparation__concentration_series.md) - Concentration values for series measurements
  * [➞sample_cell_type](sAXSPreparation__sample_cell_type.md) - Type of sample cell used
  * [➞temperature_control](sAXSPreparation__temperature_control.md) - Temperature control settings
@@ -646,12 +646,12 @@ A multimodal plant imaging study might combine:
  * [➞iex_column](samplePreparation__iex_column.md) - Ion-exchange column used
  * [➞inducer_concentration](samplePreparation__inducer_concentration.md) - Concentration of induction agent
  * [➞induction_agent](samplePreparation__induction_agent.md) - Agent used to induce expression (e.g., IPTG, tetracycline)
- * [➞induction_temperature_c](samplePreparation__induction_temperature_c.md) - Temperature during induction in Celsius
- * [➞induction_time_h](samplePreparation__induction_time_h.md) - Duration of induction in hours
+ * [➞induction_temperature_c](samplePreparation__induction_temperature_c.md) - Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞induction_time_h](samplePreparation__induction_time_h.md) - Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.
  * [➞lysis_buffer](samplePreparation__lysis_buffer.md) - Buffer composition for lysis
  * [➞lysis_method](samplePreparation__lysis_method.md) - Method used for cell lysis
  * [➞medium](samplePreparation__medium.md) - Growth medium used
- * [➞od600_at_induction](samplePreparation__od600_at_induction.md) - Optical density at 600nm when induction was started
+ * [➞od600_at_induction](samplePreparation__od600_at_induction.md) - Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.
  * [➞operator_id](samplePreparation__operator_id.md) - Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)
  * [➞preparation_date](samplePreparation__preparation_date.md) - Date of sample preparation
  * [➞preparation_type](samplePreparation__preparation_type.md) - Type of sample preparation
@@ -672,8 +672,7 @@ A multimodal plant imaging study might combine:
  * [➞biophysical_properties](sample__biophysical_properties.md) - Measured or predicted biophysical properties
  * [➞buffer_composition](sample__buffer_composition.md) - Buffer composition including pH, salts, additives
  * [➞cell_type](sample__cell_type.md) - Cell type if applicable (e.g., CL:0000057 for fibroblast)
- * [➞concentration](sample__concentration.md) - Sample concentration in mg/mL or µM
- * [➞concentration_unit](sample__concentration_unit.md) - Unit of concentration measurement
+ * [➞concentration](sample__concentration.md) - Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
  * [➞conformational_ensemble](sample__conformational_ensemble.md) - Conformational states and dynamics
  * [➞construct](sample__construct.md) - Construct description (e.g., domain boundaries, truncations)
  * [➞database_cross_references](sample__database_cross_references.md) - Cross-references to external databases
@@ -692,7 +691,7 @@ A multimodal plant imaging study might combine:
  * [➞protein_interactions](sample__protein_interactions.md) - Protein-protein interaction annotations
  * [➞protein_name](sample__protein_name.md) - Name of the protein
  * [➞ptm_annotations](sample__ptm_annotations.md) - Post-translational modification annotations
- * [➞purity_percentage](sample__purity_percentage.md) - Sample purity as percentage (range: 0-100)
+ * [➞purity_percentage](sample__purity_percentage.md) - Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
  * [➞quality_metrics](sample__quality_metrics.md) - Quality control metrics for the sample
  * [➞sample_code](sample__sample_code.md) - Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
  * [➞sample_type](sample__sample_type.md) - Type of biological sample
@@ -701,8 +700,7 @@ A multimodal plant imaging study might combine:
  * [➞tag](sample__tag.md) - Affinity tag (e.g., His6, GST, MBP)
  * [➞atmosphere](storageConditions__atmosphere.md) - Storage atmosphere conditions
  * [➞duration](storageConditions__duration.md) - Storage duration
- * [➞temperature](storageConditions__temperature.md) - Storage temperature in Celsius
- * [➞temperature_unit](storageConditions__temperature_unit.md) - Temperature unit
+ * [➞temperature](storageConditions__temperature.md) - Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞backbone_flexibility](structuralFeature__backbone_flexibility.md) - B-factor or flexibility measure
  * [➞conformational_state](structuralFeature__conformational_state.md) - Conformational state descriptor
  * [➞disorder_probability](structuralFeature__disorder_probability.md) - Probability of disorder (range: 0-1)
@@ -793,12 +791,12 @@ A multimodal plant imaging study might combine:
  * [➞wilson_b_factor](workflowRun__wilson_b_factor.md) - Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞workflow_code](workflowRun__workflow_code.md) - Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
  * [➞workflow_type](workflowRun__workflow_type.md) - Type of processing workflow
- * [➞beam_energy](xRFImage__beam_energy.md) - X-ray beam energy in keV
- * [➞beam_size](xRFImage__beam_size.md) - X-ray beam size in micrometers
+ * [➞beam_energy](xRFImage__beam_energy.md) - X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞beam_size](xRFImage__beam_size.md) - X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞calibration_standard](xRFImage__calibration_standard.md) - Reference standard used for calibration
  * [➞detector_model](xRFImage__detector_model.md) - Specific detector model used for XRF measurement
  * [➞detector_technology](xRFImage__detector_technology.md) - Type of X-ray detector technology used
- * [➞dwell_time](xRFImage__dwell_time.md) - Dwell time per pixel in milliseconds
+ * [➞dwell_time](xRFImage__dwell_time.md) - Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞elements_measured](xRFImage__elements_measured.md) - Elements detected and measured
  * [➞flux](xRFImage__flux.md) - Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞source_type](xRFImage__source_type.md) - X-ray source type (synchrotron or lab-source)
@@ -816,29 +814,29 @@ A multimodal plant imaging study might combine:
  * [➞source_type](xRayInstrument__source_type.md) - Type of X-ray source
  * [➞additives](xRayPreparation__additives.md) - Additives mixed with protein before crystallization
  * [➞cryoprotectant](xRayPreparation__cryoprotectant.md) - Cryoprotectant used
- * [➞cryoprotectant_concentration](xRayPreparation__cryoprotectant_concentration.md) - Cryoprotectant concentration percentage
+ * [➞cryoprotectant_concentration](xRayPreparation__cryoprotectant_concentration.md) - Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
  * [➞crystal_notes](xRayPreparation__crystal_notes.md) - Additional notes about crystal quality and handling
  * [➞crystal_size_um](xRayPreparation__crystal_size_um.md) - Crystal dimensions in micrometers
  * [➞crystallization_conditions](xRayPreparation__crystallization_conditions.md) - Detailed crystallization conditions
  * [➞crystallization_method](xRayPreparation__crystallization_method.md) - Method used for crystallization
  * [➞drop_ratio_protein_to_reservoir](xRayPreparation__drop_ratio_protein_to_reservoir.md) - Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
- * [➞drop_volume_nl](xRayPreparation__drop_volume_nl.md) - Total drop volume in nanoliters
+ * [➞drop_volume_nl](xRayPreparation__drop_volume_nl.md) - Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞flash_cooling_method](xRayPreparation__flash_cooling_method.md) - Flash cooling protocol
  * [➞initial_hit_condition](xRayPreparation__initial_hit_condition.md) - Description of initial crystallization hit condition
- * [➞loop_size](xRayPreparation__loop_size.md) - Loop size in micrometers
+ * [➞loop_size](xRayPreparation__loop_size.md) - Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞mounting_method](xRayPreparation__mounting_method.md) - Crystal mounting method
- * [➞mounting_temperature](xRayPreparation__mounting_temperature.md) - Temperature during mounting in Kelvin
+ * [➞mounting_temperature](xRayPreparation__mounting_temperature.md) - Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞optimization_strategy](xRayPreparation__optimization_strategy.md) - Strategy used to optimize crystals
  * [➞optimized_condition](xRayPreparation__optimized_condition.md) - Final optimized crystallization condition
  * [➞protein_buffer](xRayPreparation__protein_buffer.md) - Buffer composition for protein solution
  * [➞protein_concentration_mg_per_ml](xRayPreparation__protein_concentration_mg_per_ml.md) - Protein concentration for crystallization in mg/mL
- * [➞reservoir_volume_ul](xRayPreparation__reservoir_volume_ul.md) - Reservoir volume in microliters
+ * [➞reservoir_volume_ul](xRayPreparation__reservoir_volume_ul.md) - Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞screen_name](xRayPreparation__screen_name.md) - Name of crystallization screen used
  * [➞seed_stock_dilution](xRayPreparation__seed_stock_dilution.md) - Dilution factor for seed stock
  * [➞seeding_type](xRayPreparation__seeding_type.md) - Type of seeding used (micro, macro, streak)
  * [➞soak_compound](xRayPreparation__soak_compound.md) - Compound used for soaking (ligand, heavy atom)
  * [➞soak_conditions](xRayPreparation__soak_conditions.md) - Conditions for crystal soaking
- * [➞temperature_c](xRayPreparation__temperature_c.md) - Crystallization temperature in Celsius
+ * [➞temperature_c](xRayPreparation__temperature_c.md) - Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 ### Enums
 
@@ -850,7 +848,6 @@ A multimodal plant imaging study might combine:
  * [ClinicalSignificanceEnum](ClinicalSignificanceEnum.md) - Clinical significance of variants
  * [CollectionModeEnum](CollectionModeEnum.md) - Data collection modes
  * [ComplexStabilityEnum](ComplexStabilityEnum.md) - Stability of protein complexes
- * [ConcentrationUnitEnum](ConcentrationUnitEnum.md) - Units for concentration measurement
  * [ConformationalStateEnum](ConformationalStateEnum.md) - Conformational states
  * [CrystallizationMethodEnum](CrystallizationMethodEnum.md) - Methods for protein crystallization
  * [DataTypeEnum](DataTypeEnum.md) - Types of data
@@ -886,7 +883,6 @@ A multimodal plant imaging study might combine:
  * [StructuralFeatureTypeEnum](StructuralFeatureTypeEnum.md) - Types of structural features
  * [SymmetryEnum](SymmetryEnum.md) - Crystallographic and non-crystallographic symmetry groups for cryo-EM
  * [TechniqueEnum](TechniqueEnum.md) - Structural biology techniques
- * [TemperatureUnitEnum](TemperatureUnitEnum.md) - Units for temperature measurement
  * [VitrificationMethodEnum](VitrificationMethodEnum.md) - Methods for vitrification
  * [WorkflowTypeEnum](WorkflowTypeEnum.md) - Types of processing workflows
  * [XRaySourceTypeEnum](XRaySourceTypeEnum.md) - Types of X-ray sources

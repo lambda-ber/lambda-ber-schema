@@ -6,7 +6,7 @@ Parameters specific to particle picking workflows
 URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/ParticlePickingParameters)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20particle_picking_params%200..1>[ParticlePickingParameters&#124;picking_method:string%20%3F;box_size:integer%20%3F;threshold:float%20%3F;power_score:float%20%3F;ncc_score:float%20%3F;model_name:string%20%3F;model_file_path:string%20%3F;model_source:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ParticlePickingParameters],[WorkflowRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20particle_picking_params%200..1>[ParticlePickingParameters&#124;picking_method:string%20%3F;box_size:integer%20%3F;threshold:float%20%3F;power_score:float%20%3F;ncc_score:float%20%3F;model_name:string%20%3F;model_file_path:string%20%3F;model_source:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ParticlePickingParameters],[WorkflowRun],[AttributeGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ncc_score%200..1-++[ParticlePickingParameters&#124;picking_method:string%20%3F;model_name:string%20%3F;model_file_path:string%20%3F;model_source:string%20%3F;description(i):string%20%3F],[QuantityValue]<power_score%200..1-++[ParticlePickingParameters],[QuantityValue]<threshold%200..1-++[ParticlePickingParameters],[QuantityValue]<box_size%200..1-++[ParticlePickingParameters],[WorkflowRun]++-%20particle_picking_params%200..1>[ParticlePickingParameters],[AttributeGroup]^-[ParticlePickingParameters],[WorkflowRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ncc_score%200..1-++[ParticlePickingParameters&#124;picking_method:string%20%3F;model_name:string%20%3F;model_file_path:string%20%3F;model_source:string%20%3F;description(i):string%20%3F],[QuantityValue]<power_score%200..1-++[ParticlePickingParameters],[QuantityValue]<threshold%200..1-++[ParticlePickingParameters],[QuantityValue]<box_size%200..1-++[ParticlePickingParameters],[WorkflowRun]++-%20particle_picking_params%200..1>[ParticlePickingParameters],[AttributeGroup]^-[ParticlePickingParameters],[WorkflowRun],[AttributeGroup])
 
 ## Parents
 
@@ -26,16 +26,16 @@ URI: [lambdaber:ParticlePickingParameters](https://w3id.org/lambda-ber-schema/Pa
      * Range: [String](types/String.md)
  * [➞box_size](particlePickingParameters__box_size.md)  <sub>0..1</sub>
      * Description: Particle box size in pixels
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞threshold](particlePickingParameters__threshold.md)  <sub>0..1</sub>
      * Description: Picking threshold
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞power_score](particlePickingParameters__power_score.md)  <sub>0..1</sub>
      * Description: Power score threshold
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ncc_score](particlePickingParameters__ncc_score.md)  <sub>0..1</sub>
      * Description: Normalized cross-correlation score threshold
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞model_name](particlePickingParameters__model_name.md)  <sub>0..1</sub>
      * Description: Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.
      * Range: [String](types/String.md)

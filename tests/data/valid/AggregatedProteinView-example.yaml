@@ -240,7 +240,9 @@ biophysical_properties:
   unit: kcal/mol
   measurement_conditions:
   - id: lambdaber:p53-meas-cond-001
-    ph: 7.0
+    ph:
+      numeric_value: 7.0
+      unit: pH units
     temperature:
       numeric_value: 293.15
       unit: degrees Celsius
@@ -254,7 +256,9 @@ biophysical_properties:
   error: 1.2
   measurement_conditions:
   - id: lambdaber:p53-meas-cond-002
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
     buffer_composition:
       components:
       - Full-length protein

@@ -6,7 +6,7 @@ A data file generated or used in the study
 URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Study]++-%20data_files%200..*>[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;file_size_bytes:integer%20%3F;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Study]++-%20data_files%200..*>[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;file_size_bytes:integer%20%3F;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[QuantityValue]<file_size_bytes%200..1-++[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Study]++-%20data_files%200..*>[DataFile],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[QuantityValue]<file_size_bytes%200..1-++[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Study]++-%20data_files%200..*>[DataFile],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])
 
 ## Parents
 
@@ -33,7 +33,7 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
      * Range: [FileFormatEnum](FileFormatEnum.md)
  * [➞file_size_bytes](dataFile__file_size_bytes.md)  <sub>0..1</sub>
      * Description: File size in bytes
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞checksum](dataFile__checksum.md)  <sub>0..1</sub>
      * Description: SHA-256 checksum for data integrity
      * Range: [String](types/String.md)

@@ -187,13 +187,13 @@ lambdaber:protein-view-p53 a ns1:AggregatedProteinView ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ] ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "COSM10662" ;
-            ns1:database_name "cosmic" ;
-            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "P04637" ;
             ns1:database_name "uniprot" ;
-            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ] ;
+            ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "COSM10662" ;
+            ns1:database_name "cosmic" ;
+            ns1:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ] ;
     ns1:evolutionary_conservation lambdaber:evol-cons-p53 ;
     ns1:functional_sites lambdaber:func-site-p53-001,
         lambdaber:func-site-p53-002 ;

@@ -3988,8 +3988,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "minimum_value": 0,
-      "maximum_value": 100,
       "@type": "SlotDefinition"
     },
     {
@@ -4338,7 +4336,8 @@
       "domain_of": [
         "ProteinConstruct"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4931,7 +4930,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4944,7 +4944,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5048,7 +5049,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5061,7 +5063,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5074,7 +5077,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5251,21 +5255,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "integer",
-      "any_of": [
-        {
-          "equals_number": 120,
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "equals_number": 200,
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "equals_number": 300,
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5388,10 +5379,6 @@
     {
       "name": "cryoEMInstrument__pixel_size_physical_um",
       "description": "Physical pixel size of the detector in micrometers",
-      "comments": [
-        "Hardware specification, independent of magnification",
-        "Calibrated pixel size (\u00c5/pixel) depends on magnification and is stored in ExperimentRun"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_physical_um",
       "alias": "pixel_size_physical_um",
@@ -5399,7 +5386,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5412,7 +5400,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5425,7 +5414,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5438,7 +5428,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5451,7 +5442,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5516,7 +5508,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5529,7 +5522,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5568,7 +5562,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5581,7 +5576,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5607,7 +5603,8 @@
       "domain_of": [
         "CryoEMInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5687,7 +5684,8 @@
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5700,7 +5698,8 @@
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5713,7 +5712,8 @@
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5726,7 +5726,8 @@
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5739,7 +5740,8 @@
       "domain_of": [
         "XRayInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5791,7 +5793,8 @@
       "domain_of": [
         "SAXSInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5804,7 +5807,8 @@
       "domain_of": [
         "SAXSInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5817,7 +5821,8 @@
       "domain_of": [
         "SAXSInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5830,7 +5835,8 @@
       "domain_of": [
         "SAXSInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5843,7 +5849,8 @@
       "domain_of": [
         "SAXSInstrument"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5901,7 +5908,8 @@
       "domain_of": [
         "BeamlineInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5914,7 +5922,8 @@
       "domain_of": [
         "BeamlineInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5927,7 +5936,8 @@
       "domain_of": [
         "BeamlineInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5940,7 +5950,8 @@
       "domain_of": [
         "BeamlineInstrument"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5953,7 +5964,8 @@
       "domain_of": [
         "BeamlineInstrument"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6155,7 +6167,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6168,7 +6181,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6181,8 +6195,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "minimum_value": 0.01,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6195,7 +6209,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6208,7 +6223,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6221,7 +6237,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6234,7 +6251,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6247,7 +6265,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6260,7 +6279,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6273,7 +6293,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6286,7 +6307,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6299,7 +6321,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6312,7 +6335,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6325,7 +6349,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6338,7 +6363,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6364,12 +6390,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__holes_per_group",
-      "description": "Number of holes per group",
+      "description": "Number of holes per group. Data providers may include unit information in the QuantityValue if needed.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/holes_per_group",
       "alias": "holes_per_group",
@@ -6377,7 +6404,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6469,18 +6497,14 @@
       "name": "experimentRun__number_of_images",
       "description": "Total number of diffraction images collected",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Number_of_images",
-        "https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#_diffrn_scan.frames",
-        "https://ispyb.github.io/ISPyB/DataCollection.numberOfImages"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/number_of_images",
       "alias": "number_of_images",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6639,8 +6663,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "minimum_value": 0,
-      "maximum_value": 100,
       "@type": "SlotDefinition"
     },
     {
@@ -6839,36 +6861,29 @@
     {
       "name": "experimentRun__ispyb_data_collection_id",
       "description": "ISPyB DataCollection.dataCollectionId for traceability",
-      "comments": [
-        "Use to link back to ISPyB records"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/DataCollection.dataCollectionId"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_data_collection_id",
       "alias": "ispyb_data_collection_id",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__ispyb_session_id",
       "description": "ISPyB BLSession.sessionId",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/BLSession.sessionId"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_session_id",
       "alias": "ispyb_session_id",
       "owner": "ExperimentRun",
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6923,9 +6938,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
-      "minimum_value": 0,
-      "maximum_value": 4,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7134,7 +7148,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7147,7 +7162,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7357,54 +7373,42 @@
       "name": "workflowRun__rmerge",
       "description": "Rmerge - merge R-factor",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rmerge",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rmerge_I_obs",
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rMerge"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rmerge",
       "alias": "rmerge",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rpim",
       "description": "Rpim - precision-indicating merging R-factor",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rpim",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rpim_I_all",
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rPim"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rpim",
       "alias": "rpim",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__cc_half",
       "description": "Half-set correlation coefficient CC(1/2)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/CC_half",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half",
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.ccHalf"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/cc_half",
       "alias": "cc_half",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7430,18 +7434,14 @@
       "name": "workflowRun__i_over_sigma",
       "description": "Mean I/sigma(I) - signal to noise ratio",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/I_over_sigma",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_netI_over_sigmaI",
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.meanIOverSigI"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/i_over_sigma",
       "alias": "i_over_sigma",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7466,18 +7466,14 @@
       "name": "workflowRun__multiplicity",
       "description": "Data multiplicity (redundancy)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Multiplicity",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_redundancy",
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.multiplicity"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/multiplicity",
       "alias": "multiplicity",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7503,175 +7499,141 @@
     {
       "name": "workflowRun__anomalous_multiplicity",
       "description": "Multiplicity of anomalous data",
-      "comments": [
-        "Redundancy of Bijvoet pairs"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.anomalousMultiplicity"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/anomalous_multiplicity",
       "alias": "anomalous_multiplicity",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__cc_anomalous",
       "description": "Anomalous correlation coefficient",
-      "comments": [
-        "Correlation coefficient between Bijvoet pairs"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.ccAno"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/cc_anomalous",
       "alias": "cc_anomalous",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__r_anomalous",
       "description": "Anomalous R-factor",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.rAnom"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/r_anomalous",
       "alias": "r_anomalous",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__sig_anomalous",
       "description": "Mean anomalous difference signal",
-      "comments": [
-        "Mean |F(+) - F(-)|/sigma"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.sigAno"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/sig_anomalous",
       "alias": "sig_anomalous",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__n_total_observations",
       "description": "Total number of observations (before merging)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.nTotalObservations"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/n_total_observations",
       "alias": "n_total_observations",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__n_total_unique",
       "description": "Total number of unique reflections",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScalingStatistics.nTotalUniqueObservations"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/n_total_unique",
       "alias": "n_total_unique",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ispyb_auto_proc_program_id",
       "description": "ISPyB AutoProcProgram.autoProcProgramId",
-      "comments": [
-        "Links to ISPyB processing program record"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcProgram.autoProcProgramId"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_auto_proc_program_id",
       "alias": "ispyb_auto_proc_program_id",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ispyb_auto_proc_scaling_id",
       "description": "ISPyB AutoProcScaling.autoProcScalingId",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://ispyb.github.io/ISPyB/AutoProcScaling.autoProcScalingId"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/ispyb_auto_proc_scaling_id",
       "alias": "ispyb_auto_proc_scaling_id",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rwork",
       "description": "Refinement R-factor (working set)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rwork",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_work"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rwork",
       "alias": "rwork",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rfree",
       "description": "R-free (test set)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Rfree",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_free"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/rfree",
       "alias": "rfree",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7750,16 +7712,14 @@
       "name": "workflowRun__clashscore",
       "description": "MolProbity clashscore",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "exact_mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Clashscore"
-      ],
       "slot_uri": "https://w3id.org/lambda-ber-schema/clashscore",
       "alias": "clashscore",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7950,7 +7910,8 @@
       "domain_of": [
         "DataFile"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8124,7 +8085,8 @@
       "domain_of": [
         "Image"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8206,7 +8168,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8315,7 +8278,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8328,7 +8292,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8341,7 +8306,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8407,7 +8373,8 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8489,7 +8456,8 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8544,7 +8512,8 @@
       "domain_of": [
         "FTIRImage"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8705,7 +8674,8 @@
       "domain_of": [
         "FluorescenceImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9037,9 +9007,8 @@
       "domain_of": [
         "BufferComposition"
       ],
-      "range": "float",
-      "minimum_value": 0,
-      "maximum_value": 14,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9148,8 +9117,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "minimum_value": 0.5,
-      "maximum_value": 5.0,
       "@type": "SlotDefinition"
     },
     {
@@ -9177,8 +9144,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "minimum_value": 0.5,
-      "maximum_value": 10.0,
       "@type": "SlotDefinition"
     },
     {
@@ -9191,7 +9156,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9206,8 +9172,6 @@
       ],
       "range": "QuantityValue",
       "inlined": true,
-      "minimum_value": 0,
-      "maximum_value": 100,
       "@type": "SlotDefinition"
     },
     {
@@ -9328,7 +9292,8 @@
       "domain_of": [
         "CryoEMPreparation"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9475,20 +9440,15 @@
     {
       "name": "crystallizationConditions__protein_concentration",
       "description": "Protein concentration for crystallization in mg/mL",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Protein_Concentration"
-      ],
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration"
-      ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/protein_concentration",
       "alias": "protein_concentration",
       "owner": "CrystallizationConditions",
       "domain_of": [
         "CrystallizationConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9638,7 +9598,8 @@
       "domain_of": [
         "XRayPreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9988,8 +9949,8 @@
       "domain_of": [
         "SAXSPreparation"
       ],
-      "range": "float",
-      "multivalued": true,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10151,7 +10112,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10270,7 +10232,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10283,7 +10246,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10476,7 +10440,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10489,7 +10454,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10599,7 +10565,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10612,7 +10579,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10625,7 +10593,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10638,7 +10607,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10651,7 +10621,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10677,7 +10648,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10690,7 +10662,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10703,7 +10676,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10716,7 +10690,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10729,7 +10704,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10742,7 +10718,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10755,7 +10732,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10768,7 +10746,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10781,7 +10760,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10794,7 +10774,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10821,7 +10802,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10890,7 +10872,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10903,8 +10886,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "float",
-      "minimum_value": 0.01,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10957,7 +10940,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10970,8 +10954,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "float",
-      "minimum_value": 0.01,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11040,7 +11024,8 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11094,7 +11079,8 @@
       "domain_of": [
         "ParticlePickingParameters"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11107,7 +11093,8 @@
       "domain_of": [
         "ParticlePickingParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11120,7 +11107,8 @@
       "domain_of": [
         "ParticlePickingParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11133,7 +11121,8 @@
       "domain_of": [
         "ParticlePickingParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11212,7 +11201,8 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11293,9 +11283,8 @@
       "domain_of": [
         "FSCCurve"
       ],
-      "range": "float",
-      "multivalued": true,
-      "maximum_cardinality": 10000,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11308,9 +11297,8 @@
       "domain_of": [
         "FSCCurve"
       ],
-      "range": "float",
-      "multivalued": true,
-      "maximum_cardinality": 10000,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13031,7 +13019,7 @@
     },
     {
       "name": "measurementConditions__ph",
-      "description": "pH value of the solution during measurement (range: 0-14)",
+      "description": "pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ph",
       "alias": "ph",
@@ -13039,9 +13027,8 @@
       "domain_of": [
         "MeasurementConditions"
       ],
-      "range": "float",
-      "minimum_value": 0,
-      "maximum_value": 14,
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13532,8 +13519,6 @@
           "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "minimum_value": 0,
-          "maximum_value": 100,
           "@type": "SlotDefinition"
         },
         {
@@ -13741,7 +13726,8 @@
         {
           "name": "sequence_length_aa",
           "description": "Length of the protein sequence in amino acids",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14045,13 +14031,15 @@
         {
           "name": "cleavage_time_h",
           "description": "Duration of protease cleavage in hours",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "cleavage_temperature_c",
           "description": "Temperature during cleavage in Celsius",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14092,19 +14080,22 @@
         {
           "name": "final_concentration_mg_per_ml",
           "description": "Final protein concentration in mg/mL",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "yield_mg",
           "description": "Total yield in milligrams",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "purity_by_sds_page_percent",
           "description": "Purity percentage by SDS-PAGE",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14268,21 +14259,8 @@
         {
           "name": "accelerating_voltage",
           "description": "Accelerating voltage in kV",
-          "range": "integer",
-          "any_of": [
-            {
-              "equals_number": 120,
-              "@type": "AnonymousSlotExpression"
-            },
-            {
-              "equals_number": 200,
-              "@type": "AnonymousSlotExpression"
-            },
-            {
-              "equals_number": 300,
-              "@type": "AnonymousSlotExpression"
-            }
-          ],
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14349,35 +14327,36 @@
         {
           "name": "pixel_size_physical_um",
           "description": "Physical pixel size of the detector in micrometers",
-          "comments": [
-            "Hardware specification, independent of magnification",
-            "Calibrated pixel size (\u00c5/pixel) depends on magnification and is stored in ExperimentRun"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "autoloader_capacity",
           "description": "Number of grids the autoloader can hold",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "cs",
           "description": "Spherical aberration (Cs) in millimeters",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "c2_aperture",
           "description": "C2 aperture size in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "objective_aperture",
           "description": "Objective aperture size in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14407,13 +14386,15 @@
         {
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "pixel_size_physical",
           "description": "Physical pixel size in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14431,13 +14412,15 @@
         {
           "name": "spotsize",
           "description": "Electron beam spot size setting",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "gunlens",
           "description": "Gun lens setting",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14449,7 +14432,8 @@
         {
           "name": "tem_beam_diameter",
           "description": "TEM beam diameter in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -14530,31 +14514,36 @@
         {
           "name": "energy_min",
           "description": "Minimum X-ray energy in keV",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "energy_max",
           "description": "Maximum X-ray energy in keV",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_size_min",
           "description": "Minimum beam size in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_size_max",
           "description": "Maximum beam size in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "flux_density",
           "description": "Photon flux density in photons/s/mm\u00b2",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14608,31 +14597,36 @@
         {
           "name": "q_range_min",
           "description": "Minimum q value in inverse Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "q_range_max",
           "description": "Maximum q value in inverse Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "detector_distance_min",
           "description": "Minimum detector distance in mm",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "detector_distance_max",
           "description": "Maximum detector distance in mm",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "sample_changer_capacity",
           "description": "Number of samples in automatic sample changer",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14700,31 +14694,36 @@
         {
           "name": "energy_min",
           "description": "Minimum X-ray energy in keV",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "energy_max",
           "description": "Maximum X-ray energy in keV",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "q_range_min",
           "description": "Minimum q value for SAXS in inverse Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "q_range_max",
           "description": "Maximum q value for SAXS in inverse Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "sample_changer_capacity",
           "description": "Automatic sample changer capacity",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14890,92 +14889,106 @@
         {
           "name": "magnification",
           "description": "Magnification used during data collection",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "calibrated_pixel_size",
           "description": "Calibrated pixel size in Angstroms per pixel",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "camera_binning",
           "description": "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-          "range": "float",
-          "minimum_value": 0.01,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "exposure_time_per_frame",
           "description": "Exposure time per frame in milliseconds",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "frames_per_movie",
           "description": "Number of frames per movie",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_exposure_time",
           "description": "Total exposure time in milliseconds",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_dose",
           "description": "Total electron dose in e-/Angstrom^2",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "dose_rate",
           "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_target",
           "description": "Target defocus value in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_range_min",
           "description": "Minimum defocus range in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_range_max",
           "description": "Maximum defocus range in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_range_increment",
           "description": "Defocus range increment in micrometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "astigmatism_target",
           "description": "Target astigmatism in Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "coma",
           "description": "Coma aberration in nanometers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "stage_tilt",
           "description": "Stage tilt angle in degrees",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14987,13 +15000,15 @@
         {
           "name": "shots_per_hole",
           "description": "Number of shots taken per hole",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "holes_per_group",
-          "description": "Number of holes per group",
-          "range": "integer",
+          "description": "Number of holes per group. Data providers may include unit information in the QuantityValue if needed.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15049,12 +15064,8 @@
         {
           "name": "number_of_images",
           "description": "Total number of diffraction images collected",
-          "exact_mappings": [
-            "nsls2:Number_of_images",
-            "imgCIF:_diffrn_scan.frames",
-            "ispyb:DataCollection.numberOfImages"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15157,8 +15168,6 @@
           ],
           "range": "QuantityValue",
           "inlined": true,
-          "minimum_value": 0,
-          "maximum_value": 100,
           "@type": "SlotDefinition"
         },
         {
@@ -15280,22 +15289,15 @@
         {
           "name": "ispyb_data_collection_id",
           "description": "ISPyB DataCollection.dataCollectionId for traceability",
-          "comments": [
-            "Use to link back to ISPyB records"
-          ],
-          "exact_mappings": [
-            "ispyb:DataCollection.dataCollectionId"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ispyb_session_id",
           "description": "ISPyB BLSession.sessionId",
-          "exact_mappings": [
-            "ispyb:BLSession.sessionId"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -15404,9 +15406,8 @@
         {
           "name": "processing_level",
           "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)",
-          "range": "integer",
-          "minimum_value": 0,
-          "maximum_value": 4,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15491,13 +15492,15 @@
         {
           "name": "number_of_waters",
           "description": "Number of water molecules modeled",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "refinement_resolution_a",
           "description": "Resolution cutoff used for refinement in Angstroms",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15620,34 +15623,22 @@
         {
           "name": "rmerge",
           "description": "Rmerge - merge R-factor",
-          "exact_mappings": [
-            "nsls2:Rmerge",
-            "mmCIF:_reflns.pdbx_Rmerge_I_obs",
-            "ispyb:AutoProcScalingStatistics.rMerge"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "rpim",
           "description": "Rpim - precision-indicating merging R-factor",
-          "exact_mappings": [
-            "nsls2:Rpim",
-            "mmCIF:_reflns.pdbx_Rpim_I_all",
-            "ispyb:AutoProcScalingStatistics.rPim"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "cc_half",
           "description": "Half-set correlation coefficient CC(1/2)",
-          "exact_mappings": [
-            "nsls2:CC_half",
-            "mmCIF:_reflns.pdbx_CC_half",
-            "ispyb:AutoProcScalingStatistics.ccHalf"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15665,12 +15656,8 @@
         {
           "name": "i_over_sigma",
           "description": "Mean I/sigma(I) - signal to noise ratio",
-          "exact_mappings": [
-            "nsls2:I_over_sigma",
-            "mmCIF:_reflns.pdbx_netI_over_sigmaI",
-            "ispyb:AutoProcScalingStatistics.meanIOverSigI"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15687,12 +15674,8 @@
         {
           "name": "multiplicity",
           "description": "Data multiplicity (redundancy)",
-          "exact_mappings": [
-            "nsls2:Multiplicity",
-            "mmCIF:_reflns.pdbx_redundancy",
-            "ispyb:AutoProcScalingStatistics.multiplicity"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15711,105 +15694,71 @@
         {
           "name": "anomalous_multiplicity",
           "description": "Multiplicity of anomalous data",
-          "comments": [
-            "Redundancy of Bijvoet pairs"
-          ],
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.anomalousMultiplicity"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "cc_anomalous",
           "description": "Anomalous correlation coefficient",
-          "comments": [
-            "Correlation coefficient between Bijvoet pairs"
-          ],
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.ccAno"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "r_anomalous",
           "description": "Anomalous R-factor",
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.rAnom"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "sig_anomalous",
           "description": "Mean anomalous difference signal",
-          "comments": [
-            "Mean |F(+) - F(-)|/sigma"
-          ],
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.sigAno"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "n_total_observations",
           "description": "Total number of observations (before merging)",
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.nTotalObservations"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "n_total_unique",
           "description": "Total number of unique reflections",
-          "exact_mappings": [
-            "ispyb:AutoProcScalingStatistics.nTotalUniqueObservations"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ispyb_auto_proc_program_id",
           "description": "ISPyB AutoProcProgram.autoProcProgramId",
-          "comments": [
-            "Links to ISPyB processing program record"
-          ],
-          "exact_mappings": [
-            "ispyb:AutoProcProgram.autoProcProgramId"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ispyb_auto_proc_scaling_id",
           "description": "ISPyB AutoProcScaling.autoProcScalingId",
-          "exact_mappings": [
-            "ispyb:AutoProcScaling.autoProcScalingId"
-          ],
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "rwork",
           "description": "Refinement R-factor (working set)",
-          "exact_mappings": [
-            "nsls2:Rwork",
-            "mmCIF:_refine.ls_R_factor_R_work"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "rfree",
           "description": "R-free (test set)",
-          "exact_mappings": [
-            "nsls2:Rfree",
-            "mmCIF:_refine.ls_R_factor_R_free"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15859,10 +15808,8 @@
         {
           "name": "clashscore",
           "description": "MolProbity clashscore",
-          "exact_mappings": [
-            "nsls2:Clashscore"
-          ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15973,7 +15920,8 @@
         {
           "name": "file_size_bytes",
           "description": "File size in bytes",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16078,7 +16026,8 @@
         {
           "name": "dose",
           "description": "Electron dose in e-/\u00c5\u00b2",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -16211,7 +16160,8 @@
         {
           "name": "frames",
           "description": "Number of frames in the movie",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16264,19 +16214,22 @@
         {
           "name": "dose_per_frame",
           "description": "Electron dose per frame in e-/Angstrom^2",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_shift_x",
           "description": "Beam shift X in microradians",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_shift_y",
           "description": "Beam shift Y in microradians",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16339,7 +16292,8 @@
         {
           "name": "dose",
           "description": "Total electron dose in e-/Angstrom^2",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16379,7 +16333,8 @@
         {
           "name": "ctf_quality_score",
           "description": "CTF estimation quality score",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -16437,7 +16392,8 @@
         {
           "name": "number_of_scans",
           "description": "Number of scans averaged for the spectrum",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16549,7 +16505,8 @@
         {
           "name": "quantum_yield",
           "description": "Quantum yield of the fluorophore",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -16851,9 +16808,8 @@
         {
           "name": "ph",
           "description": "pH of the buffer (range: 0-14)",
-          "range": "float",
-          "minimum_value": 0,
-          "maximum_value": 14,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16975,8 +16931,6 @@
           "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "minimum_value": 0.5,
-          "maximum_value": 5.0,
           "@type": "SlotDefinition"
         },
         {
@@ -16990,14 +16944,13 @@
           "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "minimum_value": 0.5,
-          "maximum_value": 10.0,
           "@type": "SlotDefinition"
         },
         {
           "name": "blot_force",
           "description": "Blotting force setting",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17005,8 +16958,6 @@
           "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
           "range": "QuantityValue",
           "inlined": true,
-          "minimum_value": 0,
-          "maximum_value": 100,
           "@type": "SlotDefinition"
         },
         {
@@ -17064,7 +17015,8 @@
         {
           "name": "blot_number",
           "description": "Number of blots applied",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17169,11 +17121,8 @@
         {
           "name": "protein_concentration",
           "description": "Protein concentration for crystallization in mg/mL",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Protein_Concentration"
-          ],
-          "slot_uri": "nsls2:Protein_Concentration",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17283,7 +17232,8 @@
         {
           "name": "protein_concentration_mg_per_ml",
           "description": "Protein concentration for crystallization in mg/mL",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17456,8 +17406,8 @@
         {
           "name": "concentration_series",
           "description": "Concentration values for series measurements",
-          "range": "float",
-          "multivalued": true,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17586,7 +17536,8 @@
         {
           "name": "total_frames",
           "description": "Total number of frames/images",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17649,13 +17600,15 @@
         {
           "name": "beam_center_x_px",
           "description": "Beam center X coordinate in pixels",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_center_y_px",
           "description": "Beam center Y coordinate in pixels",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17795,13 +17748,15 @@
         {
           "name": "signal_to_noise",
           "description": "Signal to noise ratio",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "mean_i_over_sigma_i",
           "description": "Mean I/sigma(I)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17854,31 +17809,36 @@
         {
           "name": "multiplicity",
           "description": "Data multiplicity (redundancy)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "cc_half",
           "description": "Half-set correlation coefficient CC(1/2)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "r_merge",
           "description": "Rmerge - merge R-factor",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "r_pim",
           "description": "Rpim - precision-indicating merging R-factor",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "wilson_b_factor_a2",
           "description": "Wilson B-factor in Angstroms squared",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17890,61 +17850,71 @@
         {
           "name": "anom_corr",
           "description": "Anomalous correlation",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "anom_sig_ano",
           "description": "Anomalous signal strength",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "r_work",
           "description": "Refinement R-factor (working set)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "r_free",
           "description": "R-free (test set)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_favored_percent",
           "description": "Percentage of residues in favored Ramachandran regions",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_outliers_percent",
           "description": "Percentage of Ramachandran outliers",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "clashscore",
           "description": "MolProbity clashscore",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "molprobity_score",
           "description": "Overall MolProbity score",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "average_b_factor_a2",
           "description": "Average B-factor in Angstroms squared",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "i_zero",
           "description": "Forward scattering intensity I(0)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17957,7 +17927,8 @@
         {
           "name": "r_factor",
           "description": "R-factor for crystallography (deprecated, use r_work)",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -18033,14 +18004,15 @@
         {
           "name": "patch_size",
           "description": "Patch size for local motion correction",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "binning",
           "description": "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-          "range": "float",
-          "minimum_value": 0.01,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18065,14 +18037,15 @@
         {
           "name": "frame_grouping",
           "description": "Number of frames grouped together",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "output_binning",
           "description": "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-          "range": "float",
-          "minimum_value": 0.01,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18127,7 +18100,8 @@
         {
           "name": "amplitude_contrast",
           "description": "Amplitude contrast value",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18176,25 +18150,29 @@
         {
           "name": "box_size",
           "description": "Particle box size in pixels",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "threshold",
           "description": "Picking threshold",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "power_score",
           "description": "Power score threshold",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ncc_score",
           "description": "Normalized cross-correlation score threshold",
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18254,7 +18232,8 @@
         {
           "name": "box_size",
           "description": "Box size in pixels",
-          "range": "integer",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18310,17 +18289,15 @@
         {
           "name": "resolution_angstrom",
           "description": "Resolution values in Angstroms",
-          "range": "float",
-          "multivalued": true,
-          "maximum_cardinality": 10000,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "fsc_value",
           "description": "FSC values corresponding to each resolution",
-          "range": "float",
-          "multivalued": true,
-          "maximum_cardinality": 10000,
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -19646,10 +19623,9 @@
         },
         {
           "name": "ph",
-          "description": "pH value of the solution during measurement (range: 0-14)",
-          "range": "float",
-          "minimum_value": 0,
-          "maximum_value": 14,
+          "description": "pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -19673,9 +19649,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T13:09:14",
-  "source_file_size": 134601,
-  "generation_date": "2025-12-19T13:10:43",
+  "source_file_date": "2025-12-19T14:37:44",
+  "source_file_size": 134889,
+  "generation_date": "2025-12-19T14:39:27",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

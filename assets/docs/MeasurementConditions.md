@@ -6,7 +6,7 @@ Conditions under which biophysical measurements were made
 URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/MeasurementConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[BufferComposition]<buffer_composition%200..1-++[MeasurementConditions&#124;ph:float%20%3F;ionic_strength:float%20%3F;temperature:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[BiophysicalProperty]++-%20measurement_conditions%200..*>[MeasurementConditions],[NamedThing]^-[MeasurementConditions],[BufferComposition],[BiophysicalProperty])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[BufferComposition]<buffer_composition%200..1-++[MeasurementConditions&#124;ph:float%20%3F;ionic_strength:float%20%3F;temperature:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[BiophysicalProperty]++-%20measurement_conditions%200..*>[MeasurementConditions],[NamedThing]^-[MeasurementConditions],[BufferComposition],[BiophysicalProperty])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[QuantityValue]<temperature%200..1-++[MeasurementConditions&#124;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<ionic_strength%200..1-++[MeasurementConditions],[QuantityValue]<ph%200..1-++[MeasurementConditions],[BufferComposition]<buffer_composition%200..1-++[MeasurementConditions],[BiophysicalProperty]++-%20measurement_conditions%200..*>[MeasurementConditions],[NamedThing]^-[MeasurementConditions],[BufferComposition],[BiophysicalProperty])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[QuantityValue]<temperature%200..1-++[MeasurementConditions&#124;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<ionic_strength%200..1-++[MeasurementConditions],[QuantityValue]<ph%200..1-++[MeasurementConditions],[BufferComposition]<buffer_composition%200..1-++[MeasurementConditions],[BiophysicalProperty]++-%20measurement_conditions%200..*>[MeasurementConditions],[NamedThing]^-[MeasurementConditions],[BufferComposition],[BiophysicalProperty])
 
 ## Parents
 
@@ -25,14 +25,14 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
      * Description: Composition of the buffer used
      * Range: [BufferComposition](BufferComposition.md)
  * [➞ph](measurementConditions__ph.md)  <sub>0..1</sub>
-     * Description: pH value of the solution during measurement (range: 0-14)
-     * Range: [Float](types/Float.md)
+     * Description: pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ionic_strength](measurementConditions__ionic_strength.md)  <sub>0..1</sub>
-     * Description: Ionic strength in molar of material in solution
-     * Range: [Float](types/Float.md)
+     * Description: Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞temperature](measurementConditions__temperature.md)  <sub>0..1</sub>
-     * Description: Temperature in Kelvin during measurement
-     * Range: [Float](types/Float.md)
+     * Description: Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from NamedThing:
 

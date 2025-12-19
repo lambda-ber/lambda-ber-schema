@@ -8,7 +8,7 @@ URI: [lambdaber:dataFile__file_size_bytes](https://w3id.org/lambda-ber-schema/da
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

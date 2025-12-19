@@ -4,7 +4,9 @@ description: Single-wavelength anomalous dispersion phasing
 workflow_code: WF-PHASE-SAD-001
 workflow_type: phasing
 experiment_id: lambdaber:exp_xray_selmet_001
-processing_level: 2
+processing_level:
+  numeric_value: 2
+  unit: level
 software_name: PHENIX
 software_version: '1.21'
 processing_parameters: autosol wavelength=0.9792 sites=12

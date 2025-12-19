@@ -6,7 +6,7 @@ X-ray fluorescence (XRF) image showing elemental distribution
 URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux%200..1-++[XRFImage&#124;beam_energy:float%20%3F;beam_size:float%20%3F;dwell_time:float%20%3F;elements_measured:string%20*;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_model:string%20%3F;calibration_standard:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D]^-[XRFImage],[QuantityValue],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux%200..1-++[XRFImage&#124;beam_energy:float%20%3F;beam_size:float%20%3F;dwell_time:float%20%3F;elements_measured:string%20*;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_model:string%20%3F;calibration_standard:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D]^-[XRFImage],[QuantityValue],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux%200..1-++[XRFImage&#124;elements_measured:string%20*;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_model:string%20%3F;calibration_standard:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dwell_time%200..1-++[XRFImage],[QuantityValue]<beam_size%200..1-++[XRFImage],[QuantityValue]<beam_energy%200..1-++[XRFImage],[Image2D]^-[XRFImage],[QuantityValue],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux%200..1-++[XRFImage&#124;elements_measured:string%20*;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_model:string%20%3F;calibration_standard:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dwell_time%200..1-++[XRFImage],[QuantityValue]<beam_size%200..1-++[XRFImage],[QuantityValue]<beam_energy%200..1-++[XRFImage],[Image2D]^-[XRFImage],[QuantityValue],[Image2D])
 
 ## Parents
 
@@ -18,14 +18,14 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
 ### Own
 
  * [➞beam_energy](xRFImage__beam_energy.md)  <sub>0..1</sub>
-     * Description: X-ray beam energy in keV
-     * Range: [Float](types/Float.md)
+     * Description: X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_size](xRFImage__beam_size.md)  <sub>0..1</sub>
-     * Description: X-ray beam size in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dwell_time](xRFImage__dwell_time.md)  <sub>0..1</sub>
-     * Description: Dwell time per pixel in milliseconds
-     * Range: [Float](types/Float.md)
+     * Description: Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞elements_measured](xRFImage__elements_measured.md)  <sub>0..\*</sub>
      * Description: Elements detected and measured
      * Range: [String](types/String.md)
@@ -76,7 +76,7 @@ URI: [lambdaber:XRFImage](https://w3id.org/lambda-ber-schema/XRFImage)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
      * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)

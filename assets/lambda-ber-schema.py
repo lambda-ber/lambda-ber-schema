@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T13:10:48
+# Generation date: 2025-12-19T14:39:34
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -617,7 +617,7 @@ class ProteinConstruct(NamedThing):
     uniprot_id: Optional[str] = None
     gene_name: Optional[str] = None
     ncbi_taxid: Optional[str] = None
-    sequence_length_aa: Optional[int] = None
+    sequence_length_aa: Optional[Union[dict, "QuantityValue"]] = None
     construct_description: Optional[str] = None
     gene_synthesis_provider: Optional[str] = None
     codon_optimization_organism: Optional[str] = None
@@ -655,8 +655,8 @@ class ProteinConstruct(NamedThing):
         if self.ncbi_taxid is not None and not isinstance(self.ncbi_taxid, str):
             self.ncbi_taxid = str(self.ncbi_taxid)
 
-        if self.sequence_length_aa is not None and not isinstance(self.sequence_length_aa, int):
-            self.sequence_length_aa = int(self.sequence_length_aa)
+        if self.sequence_length_aa is not None and not isinstance(self.sequence_length_aa, QuantityValue):
+            self.sequence_length_aa = QuantityValue(**as_dict(self.sequence_length_aa))
 
         if self.construct_description is not None and not isinstance(self.construct_description, str):
             self.construct_description = str(self.construct_description)
@@ -750,8 +750,8 @@ class SamplePreparation(NamedThing):
     tag_removal: Optional[Union[bool, Bool]] = None
     protease: Optional[str] = None
     protease_ratio: Optional[str] = None
-    cleavage_time_h: Optional[float] = None
-    cleavage_temperature_c: Optional[float] = None
+    cleavage_time_h: Optional[Union[dict, "QuantityValue"]] = None
+    cleavage_temperature_c: Optional[Union[dict, "QuantityValue"]] = None
     second_affinity_reverse: Optional[str] = None
     iex_column: Optional[str] = None
     hic_column: Optional[str] = None
@@ -759,9 +759,9 @@ class SamplePreparation(NamedThing):
     sec_buffer: Optional[str] = None
     concentration_method: Optional[str] = None
     final_buffer: Optional[str] = None
-    final_concentration_mg_per_ml: Optional[float] = None
-    yield_mg: Optional[float] = None
-    purity_by_sds_page_percent: Optional[float] = None
+    final_concentration_mg_per_ml: Optional[Union[dict, "QuantityValue"]] = None
+    yield_mg: Optional[Union[dict, "QuantityValue"]] = None
+    purity_by_sds_page_percent: Optional[Union[dict, "QuantityValue"]] = None
     aggregation_assessment: Optional[str] = None
     aliquoting: Optional[str] = None
 
@@ -860,11 +860,11 @@ class SamplePreparation(NamedThing):
         if self.protease_ratio is not None and not isinstance(self.protease_ratio, str):
             self.protease_ratio = str(self.protease_ratio)
 
-        if self.cleavage_time_h is not None and not isinstance(self.cleavage_time_h, float):
-            self.cleavage_time_h = float(self.cleavage_time_h)
+        if self.cleavage_time_h is not None and not isinstance(self.cleavage_time_h, QuantityValue):
+            self.cleavage_time_h = QuantityValue(**as_dict(self.cleavage_time_h))
 
-        if self.cleavage_temperature_c is not None and not isinstance(self.cleavage_temperature_c, float):
-            self.cleavage_temperature_c = float(self.cleavage_temperature_c)
+        if self.cleavage_temperature_c is not None and not isinstance(self.cleavage_temperature_c, QuantityValue):
+            self.cleavage_temperature_c = QuantityValue(**as_dict(self.cleavage_temperature_c))
 
         if self.second_affinity_reverse is not None and not isinstance(self.second_affinity_reverse, str):
             self.second_affinity_reverse = str(self.second_affinity_reverse)
@@ -887,14 +887,14 @@ class SamplePreparation(NamedThing):
         if self.final_buffer is not None and not isinstance(self.final_buffer, str):
             self.final_buffer = str(self.final_buffer)
 
-        if self.final_concentration_mg_per_ml is not None and not isinstance(self.final_concentration_mg_per_ml, float):
-            self.final_concentration_mg_per_ml = float(self.final_concentration_mg_per_ml)
+        if self.final_concentration_mg_per_ml is not None and not isinstance(self.final_concentration_mg_per_ml, QuantityValue):
+            self.final_concentration_mg_per_ml = QuantityValue(**as_dict(self.final_concentration_mg_per_ml))
 
-        if self.yield_mg is not None and not isinstance(self.yield_mg, float):
-            self.yield_mg = float(self.yield_mg)
+        if self.yield_mg is not None and not isinstance(self.yield_mg, QuantityValue):
+            self.yield_mg = QuantityValue(**as_dict(self.yield_mg))
 
-        if self.purity_by_sds_page_percent is not None and not isinstance(self.purity_by_sds_page_percent, float):
-            self.purity_by_sds_page_percent = float(self.purity_by_sds_page_percent)
+        if self.purity_by_sds_page_percent is not None and not isinstance(self.purity_by_sds_page_percent, QuantityValue):
+            self.purity_by_sds_page_percent = QuantityValue(**as_dict(self.purity_by_sds_page_percent))
 
         if self.aggregation_assessment is not None and not isinstance(self.aggregation_assessment, str):
             self.aggregation_assessment = str(self.aggregation_assessment)
@@ -980,7 +980,7 @@ class CryoEMInstrument(Instrument):
 
     id: Union[str, CryoEMInstrumentId] = None
     instrument_code: str = None
-    accelerating_voltage: Optional[int] = None
+    accelerating_voltage: Optional[Union[dict, "QuantityValue"]] = None
     cs_corrector: Optional[Union[bool, Bool]] = None
     phase_plate: Optional[Union[bool, Bool]] = None
     detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
@@ -989,23 +989,23 @@ class CryoEMInstrument(Instrument):
     detector_mode: Optional[Union[str, "DetectorModeEnum"]] = None
     detector_position: Optional[str] = None
     detector_dimensions: Optional[str] = None
-    pixel_size_physical_um: Optional[float] = None
-    autoloader_capacity: Optional[int] = None
-    cs: Optional[float] = None
-    c2_aperture: Optional[float] = None
-    objective_aperture: Optional[float] = None
+    pixel_size_physical_um: Optional[Union[dict, "QuantityValue"]] = None
+    autoloader_capacity: Optional[Union[dict, "QuantityValue"]] = None
+    cs: Optional[Union[dict, "QuantityValue"]] = None
+    c2_aperture: Optional[Union[dict, "QuantityValue"]] = None
+    objective_aperture: Optional[Union[dict, "QuantityValue"]] = None
     phase_plate_type: Optional[str] = None
     energy_filter_present: Optional[Union[bool, Bool]] = None
     energy_filter_make: Optional[str] = None
     energy_filter_model: Optional[str] = None
-    energy_filter_slit_width: Optional[float] = None
-    pixel_size_physical: Optional[float] = None
+    energy_filter_slit_width: Optional[Union[dict, "QuantityValue"]] = None
+    pixel_size_physical: Optional[Union[dict, "QuantityValue"]] = None
     microscope_software: Optional[str] = None
     microscope_software_version: Optional[str] = None
-    spotsize: Optional[int] = None
-    gunlens: Optional[int] = None
+    spotsize: Optional[Union[dict, "QuantityValue"]] = None
+    gunlens: Optional[Union[dict, "QuantityValue"]] = None
     imaging_mode: Optional[Union[str, "ImagingModeEnum"]] = None
-    tem_beam_diameter: Optional[float] = None
+    tem_beam_diameter: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1013,8 +1013,8 @@ class CryoEMInstrument(Instrument):
         if not isinstance(self.id, CryoEMInstrumentId):
             self.id = CryoEMInstrumentId(self.id)
 
-        if self.accelerating_voltage is not None and not isinstance(self.accelerating_voltage, int):
-            self.accelerating_voltage = int(self.accelerating_voltage)
+        if self.accelerating_voltage is not None and not isinstance(self.accelerating_voltage, QuantityValue):
+            self.accelerating_voltage = QuantityValue(**as_dict(self.accelerating_voltage))
 
         if self.cs_corrector is not None and not isinstance(self.cs_corrector, Bool):
             self.cs_corrector = Bool(self.cs_corrector)
@@ -1040,20 +1040,20 @@ class CryoEMInstrument(Instrument):
         if self.detector_dimensions is not None and not isinstance(self.detector_dimensions, str):
             self.detector_dimensions = str(self.detector_dimensions)
 
-        if self.pixel_size_physical_um is not None and not isinstance(self.pixel_size_physical_um, float):
-            self.pixel_size_physical_um = float(self.pixel_size_physical_um)
+        if self.pixel_size_physical_um is not None and not isinstance(self.pixel_size_physical_um, QuantityValue):
+            self.pixel_size_physical_um = QuantityValue(**as_dict(self.pixel_size_physical_um))
 
-        if self.autoloader_capacity is not None and not isinstance(self.autoloader_capacity, int):
-            self.autoloader_capacity = int(self.autoloader_capacity)
+        if self.autoloader_capacity is not None and not isinstance(self.autoloader_capacity, QuantityValue):
+            self.autoloader_capacity = QuantityValue(**as_dict(self.autoloader_capacity))
 
-        if self.cs is not None and not isinstance(self.cs, float):
-            self.cs = float(self.cs)
+        if self.cs is not None and not isinstance(self.cs, QuantityValue):
+            self.cs = QuantityValue(**as_dict(self.cs))
 
-        if self.c2_aperture is not None and not isinstance(self.c2_aperture, float):
-            self.c2_aperture = float(self.c2_aperture)
+        if self.c2_aperture is not None and not isinstance(self.c2_aperture, QuantityValue):
+            self.c2_aperture = QuantityValue(**as_dict(self.c2_aperture))
 
-        if self.objective_aperture is not None and not isinstance(self.objective_aperture, float):
-            self.objective_aperture = float(self.objective_aperture)
+        if self.objective_aperture is not None and not isinstance(self.objective_aperture, QuantityValue):
+            self.objective_aperture = QuantityValue(**as_dict(self.objective_aperture))
 
         if self.phase_plate_type is not None and not isinstance(self.phase_plate_type, str):
             self.phase_plate_type = str(self.phase_plate_type)
@@ -1067,11 +1067,11 @@ class CryoEMInstrument(Instrument):
         if self.energy_filter_model is not None and not isinstance(self.energy_filter_model, str):
             self.energy_filter_model = str(self.energy_filter_model)
 
-        if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, float):
-            self.energy_filter_slit_width = float(self.energy_filter_slit_width)
+        if self.energy_filter_slit_width is not None and not isinstance(self.energy_filter_slit_width, QuantityValue):
+            self.energy_filter_slit_width = QuantityValue(**as_dict(self.energy_filter_slit_width))
 
-        if self.pixel_size_physical is not None and not isinstance(self.pixel_size_physical, float):
-            self.pixel_size_physical = float(self.pixel_size_physical)
+        if self.pixel_size_physical is not None and not isinstance(self.pixel_size_physical, QuantityValue):
+            self.pixel_size_physical = QuantityValue(**as_dict(self.pixel_size_physical))
 
         if self.microscope_software is not None and not isinstance(self.microscope_software, str):
             self.microscope_software = str(self.microscope_software)
@@ -1079,17 +1079,17 @@ class CryoEMInstrument(Instrument):
         if self.microscope_software_version is not None and not isinstance(self.microscope_software_version, str):
             self.microscope_software_version = str(self.microscope_software_version)
 
-        if self.spotsize is not None and not isinstance(self.spotsize, int):
-            self.spotsize = int(self.spotsize)
+        if self.spotsize is not None and not isinstance(self.spotsize, QuantityValue):
+            self.spotsize = QuantityValue(**as_dict(self.spotsize))
 
-        if self.gunlens is not None and not isinstance(self.gunlens, int):
-            self.gunlens = int(self.gunlens)
+        if self.gunlens is not None and not isinstance(self.gunlens, QuantityValue):
+            self.gunlens = QuantityValue(**as_dict(self.gunlens))
 
         if self.imaging_mode is not None and not isinstance(self.imaging_mode, ImagingModeEnum):
             self.imaging_mode = ImagingModeEnum(self.imaging_mode)
 
-        if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, float):
-            self.tem_beam_diameter = float(self.tem_beam_diameter)
+        if self.tem_beam_diameter is not None and not isinstance(self.tem_beam_diameter, QuantityValue):
+            self.tem_beam_diameter = QuantityValue(**as_dict(self.tem_beam_diameter))
 
         super().__post_init__(**kwargs)
 
@@ -1112,11 +1112,11 @@ class XRayInstrument(Instrument):
     detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
     detector_manufacturer: Optional[str] = None
     detector_model: Optional[str] = None
-    energy_min: Optional[float] = None
-    energy_max: Optional[float] = None
-    beam_size_min: Optional[float] = None
-    beam_size_max: Optional[float] = None
-    flux_density: Optional[float] = None
+    energy_min: Optional[Union[dict, "QuantityValue"]] = None
+    energy_max: Optional[Union[dict, "QuantityValue"]] = None
+    beam_size_min: Optional[Union[dict, "QuantityValue"]] = None
+    beam_size_max: Optional[Union[dict, "QuantityValue"]] = None
+    flux_density: Optional[Union[dict, "QuantityValue"]] = None
     monochromator_type: Optional[str] = None
     goniometer_type: Optional[str] = None
     crystal_cooling_capability: Optional[Union[bool, Bool]] = None
@@ -1139,20 +1139,20 @@ class XRayInstrument(Instrument):
         if self.detector_model is not None and not isinstance(self.detector_model, str):
             self.detector_model = str(self.detector_model)
 
-        if self.energy_min is not None and not isinstance(self.energy_min, float):
-            self.energy_min = float(self.energy_min)
+        if self.energy_min is not None and not isinstance(self.energy_min, QuantityValue):
+            self.energy_min = QuantityValue(**as_dict(self.energy_min))
 
-        if self.energy_max is not None and not isinstance(self.energy_max, float):
-            self.energy_max = float(self.energy_max)
+        if self.energy_max is not None and not isinstance(self.energy_max, QuantityValue):
+            self.energy_max = QuantityValue(**as_dict(self.energy_max))
 
-        if self.beam_size_min is not None and not isinstance(self.beam_size_min, float):
-            self.beam_size_min = float(self.beam_size_min)
+        if self.beam_size_min is not None and not isinstance(self.beam_size_min, QuantityValue):
+            self.beam_size_min = QuantityValue(**as_dict(self.beam_size_min))
 
-        if self.beam_size_max is not None and not isinstance(self.beam_size_max, float):
-            self.beam_size_max = float(self.beam_size_max)
+        if self.beam_size_max is not None and not isinstance(self.beam_size_max, QuantityValue):
+            self.beam_size_max = QuantityValue(**as_dict(self.beam_size_max))
 
-        if self.flux_density is not None and not isinstance(self.flux_density, float):
-            self.flux_density = float(self.flux_density)
+        if self.flux_density is not None and not isinstance(self.flux_density, QuantityValue):
+            self.flux_density = QuantityValue(**as_dict(self.flux_density))
 
         if self.monochromator_type is not None and not isinstance(self.monochromator_type, str):
             self.monochromator_type = str(self.monochromator_type)
@@ -1180,11 +1180,11 @@ class SAXSInstrument(Instrument):
 
     id: Union[str, SAXSInstrumentId] = None
     instrument_code: str = None
-    q_range_min: Optional[float] = None
-    q_range_max: Optional[float] = None
-    detector_distance_min: Optional[float] = None
-    detector_distance_max: Optional[float] = None
-    sample_changer_capacity: Optional[int] = None
+    q_range_min: Optional[Union[dict, "QuantityValue"]] = None
+    q_range_max: Optional[Union[dict, "QuantityValue"]] = None
+    detector_distance_min: Optional[Union[dict, "QuantityValue"]] = None
+    detector_distance_max: Optional[Union[dict, "QuantityValue"]] = None
+    sample_changer_capacity: Optional[Union[dict, "QuantityValue"]] = None
     temperature_control_range: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1193,20 +1193,20 @@ class SAXSInstrument(Instrument):
         if not isinstance(self.id, SAXSInstrumentId):
             self.id = SAXSInstrumentId(self.id)
 
-        if self.q_range_min is not None and not isinstance(self.q_range_min, float):
-            self.q_range_min = float(self.q_range_min)
+        if self.q_range_min is not None and not isinstance(self.q_range_min, QuantityValue):
+            self.q_range_min = QuantityValue(**as_dict(self.q_range_min))
 
-        if self.q_range_max is not None and not isinstance(self.q_range_max, float):
-            self.q_range_max = float(self.q_range_max)
+        if self.q_range_max is not None and not isinstance(self.q_range_max, QuantityValue):
+            self.q_range_max = QuantityValue(**as_dict(self.q_range_max))
 
-        if self.detector_distance_min is not None and not isinstance(self.detector_distance_min, float):
-            self.detector_distance_min = float(self.detector_distance_min)
+        if self.detector_distance_min is not None and not isinstance(self.detector_distance_min, QuantityValue):
+            self.detector_distance_min = QuantityValue(**as_dict(self.detector_distance_min))
 
-        if self.detector_distance_max is not None and not isinstance(self.detector_distance_max, float):
-            self.detector_distance_max = float(self.detector_distance_max)
+        if self.detector_distance_max is not None and not isinstance(self.detector_distance_max, QuantityValue):
+            self.detector_distance_max = QuantityValue(**as_dict(self.detector_distance_max))
 
-        if self.sample_changer_capacity is not None and not isinstance(self.sample_changer_capacity, int):
-            self.sample_changer_capacity = int(self.sample_changer_capacity)
+        if self.sample_changer_capacity is not None and not isinstance(self.sample_changer_capacity, QuantityValue):
+            self.sample_changer_capacity = QuantityValue(**as_dict(self.sample_changer_capacity))
 
         if self.temperature_control_range is not None and not isinstance(self.temperature_control_range, str):
             self.temperature_control_range = str(self.temperature_control_range)
@@ -1230,11 +1230,11 @@ class BeamlineInstrument(Instrument):
     instrument_code: str = None
     techniques_supported: Union[Union[str, "TechniqueEnum"], list[Union[str, "TechniqueEnum"]]] = None
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
-    energy_min: Optional[float] = None
-    energy_max: Optional[float] = None
-    q_range_min: Optional[float] = None
-    q_range_max: Optional[float] = None
-    sample_changer_capacity: Optional[int] = None
+    energy_min: Optional[Union[dict, "QuantityValue"]] = None
+    energy_max: Optional[Union[dict, "QuantityValue"]] = None
+    q_range_min: Optional[Union[dict, "QuantityValue"]] = None
+    q_range_max: Optional[Union[dict, "QuantityValue"]] = None
+    sample_changer_capacity: Optional[Union[dict, "QuantityValue"]] = None
     mail_in_service: Optional[Union[bool, Bool]] = None
     website: Optional[Union[str, URI]] = None
 
@@ -1253,20 +1253,20 @@ class BeamlineInstrument(Instrument):
         if self.source_type is not None and not isinstance(self.source_type, XRaySourceTypeEnum):
             self.source_type = XRaySourceTypeEnum(self.source_type)
 
-        if self.energy_min is not None and not isinstance(self.energy_min, float):
-            self.energy_min = float(self.energy_min)
+        if self.energy_min is not None and not isinstance(self.energy_min, QuantityValue):
+            self.energy_min = QuantityValue(**as_dict(self.energy_min))
 
-        if self.energy_max is not None and not isinstance(self.energy_max, float):
-            self.energy_max = float(self.energy_max)
+        if self.energy_max is not None and not isinstance(self.energy_max, QuantityValue):
+            self.energy_max = QuantityValue(**as_dict(self.energy_max))
 
-        if self.q_range_min is not None and not isinstance(self.q_range_min, float):
-            self.q_range_min = float(self.q_range_min)
+        if self.q_range_min is not None and not isinstance(self.q_range_min, QuantityValue):
+            self.q_range_min = QuantityValue(**as_dict(self.q_range_min))
 
-        if self.q_range_max is not None and not isinstance(self.q_range_max, float):
-            self.q_range_max = float(self.q_range_max)
+        if self.q_range_max is not None and not isinstance(self.q_range_max, QuantityValue):
+            self.q_range_max = QuantityValue(**as_dict(self.q_range_max))
 
-        if self.sample_changer_capacity is not None and not isinstance(self.sample_changer_capacity, int):
-            self.sample_changer_capacity = int(self.sample_changer_capacity)
+        if self.sample_changer_capacity is not None and not isinstance(self.sample_changer_capacity, QuantityValue):
+            self.sample_changer_capacity = QuantityValue(**as_dict(self.sample_changer_capacity))
 
         if self.mail_in_service is not None and not isinstance(self.mail_in_service, Bool):
             self.mail_in_service = Bool(self.mail_in_service)
@@ -1302,30 +1302,30 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
-    magnification: Optional[int] = None
-    calibrated_pixel_size: Optional[float] = None
-    camera_binning: Optional[float] = None
-    exposure_time_per_frame: Optional[float] = None
-    frames_per_movie: Optional[int] = None
-    total_exposure_time: Optional[float] = None
-    total_dose: Optional[float] = None
-    dose_rate: Optional[float] = None
-    defocus_target: Optional[float] = None
-    defocus_range_min: Optional[float] = None
-    defocus_range_max: Optional[float] = None
-    defocus_range_increment: Optional[float] = None
-    astigmatism_target: Optional[float] = None
-    coma: Optional[float] = None
-    stage_tilt: Optional[float] = None
+    magnification: Optional[Union[dict, "QuantityValue"]] = None
+    calibrated_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
+    camera_binning: Optional[Union[dict, "QuantityValue"]] = None
+    exposure_time_per_frame: Optional[Union[dict, "QuantityValue"]] = None
+    frames_per_movie: Optional[Union[dict, "QuantityValue"]] = None
+    total_exposure_time: Optional[Union[dict, "QuantityValue"]] = None
+    total_dose: Optional[Union[dict, "QuantityValue"]] = None
+    dose_rate: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_target: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_range_min: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_range_max: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_range_increment: Optional[Union[dict, "QuantityValue"]] = None
+    astigmatism_target: Optional[Union[dict, "QuantityValue"]] = None
+    coma: Optional[Union[dict, "QuantityValue"]] = None
+    stage_tilt: Optional[Union[dict, "QuantityValue"]] = None
     autoloader_slot: Optional[str] = None
-    shots_per_hole: Optional[int] = None
-    holes_per_group: Optional[int] = None
+    shots_per_hole: Optional[Union[dict, "QuantityValue"]] = None
+    holes_per_group: Optional[Union[dict, "QuantityValue"]] = None
     acquisition_software: Optional[str] = None
     acquisition_software_version: Optional[str] = None
     wavelength: Optional[Union[dict, "QuantityValue"]] = None
     oscillation_angle: Optional[Union[dict, "QuantityValue"]] = None
     start_angle: Optional[Union[dict, "QuantityValue"]] = None
-    number_of_images: Optional[int] = None
+    number_of_images: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_x: Optional[Union[dict, "QuantityValue"]] = None
     beam_center_y: Optional[Union[dict, "QuantityValue"]] = None
     detector_distance: Optional[Union[dict, "QuantityValue"]] = None
@@ -1345,8 +1345,8 @@ class ExperimentRun(NamedThing):
     end_time: Optional[str] = None
     resolution: Optional[Union[dict, "QuantityValue"]] = None
     resolution_at_corner: Optional[Union[dict, "QuantityValue"]] = None
-    ispyb_data_collection_id: Optional[int] = None
-    ispyb_session_id: Optional[int] = None
+    ispyb_data_collection_id: Optional[Union[dict, "QuantityValue"]] = None
+    ispyb_session_id: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1398,59 +1398,59 @@ class ExperimentRun(NamedThing):
         if self.processing_status is not None and not isinstance(self.processing_status, ProcessingStatusEnum):
             self.processing_status = ProcessingStatusEnum(self.processing_status)
 
-        if self.magnification is not None and not isinstance(self.magnification, int):
-            self.magnification = int(self.magnification)
+        if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
+            self.magnification = QuantityValue(**as_dict(self.magnification))
 
-        if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, float):
-            self.calibrated_pixel_size = float(self.calibrated_pixel_size)
+        if self.calibrated_pixel_size is not None and not isinstance(self.calibrated_pixel_size, QuantityValue):
+            self.calibrated_pixel_size = QuantityValue(**as_dict(self.calibrated_pixel_size))
 
-        if self.camera_binning is not None and not isinstance(self.camera_binning, float):
-            self.camera_binning = float(self.camera_binning)
+        if self.camera_binning is not None and not isinstance(self.camera_binning, QuantityValue):
+            self.camera_binning = QuantityValue(**as_dict(self.camera_binning))
 
-        if self.exposure_time_per_frame is not None and not isinstance(self.exposure_time_per_frame, float):
-            self.exposure_time_per_frame = float(self.exposure_time_per_frame)
+        if self.exposure_time_per_frame is not None and not isinstance(self.exposure_time_per_frame, QuantityValue):
+            self.exposure_time_per_frame = QuantityValue(**as_dict(self.exposure_time_per_frame))
 
-        if self.frames_per_movie is not None and not isinstance(self.frames_per_movie, int):
-            self.frames_per_movie = int(self.frames_per_movie)
+        if self.frames_per_movie is not None and not isinstance(self.frames_per_movie, QuantityValue):
+            self.frames_per_movie = QuantityValue(**as_dict(self.frames_per_movie))
 
-        if self.total_exposure_time is not None and not isinstance(self.total_exposure_time, float):
-            self.total_exposure_time = float(self.total_exposure_time)
+        if self.total_exposure_time is not None and not isinstance(self.total_exposure_time, QuantityValue):
+            self.total_exposure_time = QuantityValue(**as_dict(self.total_exposure_time))
 
-        if self.total_dose is not None and not isinstance(self.total_dose, float):
-            self.total_dose = float(self.total_dose)
+        if self.total_dose is not None and not isinstance(self.total_dose, QuantityValue):
+            self.total_dose = QuantityValue(**as_dict(self.total_dose))
 
-        if self.dose_rate is not None and not isinstance(self.dose_rate, float):
-            self.dose_rate = float(self.dose_rate)
+        if self.dose_rate is not None and not isinstance(self.dose_rate, QuantityValue):
+            self.dose_rate = QuantityValue(**as_dict(self.dose_rate))
 
-        if self.defocus_target is not None and not isinstance(self.defocus_target, float):
-            self.defocus_target = float(self.defocus_target)
+        if self.defocus_target is not None and not isinstance(self.defocus_target, QuantityValue):
+            self.defocus_target = QuantityValue(**as_dict(self.defocus_target))
 
-        if self.defocus_range_min is not None and not isinstance(self.defocus_range_min, float):
-            self.defocus_range_min = float(self.defocus_range_min)
+        if self.defocus_range_min is not None and not isinstance(self.defocus_range_min, QuantityValue):
+            self.defocus_range_min = QuantityValue(**as_dict(self.defocus_range_min))
 
-        if self.defocus_range_max is not None and not isinstance(self.defocus_range_max, float):
-            self.defocus_range_max = float(self.defocus_range_max)
+        if self.defocus_range_max is not None and not isinstance(self.defocus_range_max, QuantityValue):
+            self.defocus_range_max = QuantityValue(**as_dict(self.defocus_range_max))
 
-        if self.defocus_range_increment is not None and not isinstance(self.defocus_range_increment, float):
-            self.defocus_range_increment = float(self.defocus_range_increment)
+        if self.defocus_range_increment is not None and not isinstance(self.defocus_range_increment, QuantityValue):
+            self.defocus_range_increment = QuantityValue(**as_dict(self.defocus_range_increment))
 
-        if self.astigmatism_target is not None and not isinstance(self.astigmatism_target, float):
-            self.astigmatism_target = float(self.astigmatism_target)
+        if self.astigmatism_target is not None and not isinstance(self.astigmatism_target, QuantityValue):
+            self.astigmatism_target = QuantityValue(**as_dict(self.astigmatism_target))
 
-        if self.coma is not None and not isinstance(self.coma, float):
-            self.coma = float(self.coma)
+        if self.coma is not None and not isinstance(self.coma, QuantityValue):
+            self.coma = QuantityValue(**as_dict(self.coma))
 
-        if self.stage_tilt is not None and not isinstance(self.stage_tilt, float):
-            self.stage_tilt = float(self.stage_tilt)
+        if self.stage_tilt is not None and not isinstance(self.stage_tilt, QuantityValue):
+            self.stage_tilt = QuantityValue(**as_dict(self.stage_tilt))
 
         if self.autoloader_slot is not None and not isinstance(self.autoloader_slot, str):
             self.autoloader_slot = str(self.autoloader_slot)
 
-        if self.shots_per_hole is not None and not isinstance(self.shots_per_hole, int):
-            self.shots_per_hole = int(self.shots_per_hole)
+        if self.shots_per_hole is not None and not isinstance(self.shots_per_hole, QuantityValue):
+            self.shots_per_hole = QuantityValue(**as_dict(self.shots_per_hole))
 
-        if self.holes_per_group is not None and not isinstance(self.holes_per_group, int):
-            self.holes_per_group = int(self.holes_per_group)
+        if self.holes_per_group is not None and not isinstance(self.holes_per_group, QuantityValue):
+            self.holes_per_group = QuantityValue(**as_dict(self.holes_per_group))
 
         if self.acquisition_software is not None and not isinstance(self.acquisition_software, str):
             self.acquisition_software = str(self.acquisition_software)
@@ -1467,8 +1467,8 @@ class ExperimentRun(NamedThing):
         if self.start_angle is not None and not isinstance(self.start_angle, QuantityValue):
             self.start_angle = QuantityValue(**as_dict(self.start_angle))
 
-        if self.number_of_images is not None and not isinstance(self.number_of_images, int):
-            self.number_of_images = int(self.number_of_images)
+        if self.number_of_images is not None and not isinstance(self.number_of_images, QuantityValue):
+            self.number_of_images = QuantityValue(**as_dict(self.number_of_images))
 
         if self.beam_center_x is not None and not isinstance(self.beam_center_x, QuantityValue):
             self.beam_center_x = QuantityValue(**as_dict(self.beam_center_x))
@@ -1527,11 +1527,11 @@ class ExperimentRun(NamedThing):
         if self.resolution_at_corner is not None and not isinstance(self.resolution_at_corner, QuantityValue):
             self.resolution_at_corner = QuantityValue(**as_dict(self.resolution_at_corner))
 
-        if self.ispyb_data_collection_id is not None and not isinstance(self.ispyb_data_collection_id, int):
-            self.ispyb_data_collection_id = int(self.ispyb_data_collection_id)
+        if self.ispyb_data_collection_id is not None and not isinstance(self.ispyb_data_collection_id, QuantityValue):
+            self.ispyb_data_collection_id = QuantityValue(**as_dict(self.ispyb_data_collection_id))
 
-        if self.ispyb_session_id is not None and not isinstance(self.ispyb_session_id, int):
-            self.ispyb_session_id = int(self.ispyb_session_id)
+        if self.ispyb_session_id is not None and not isinstance(self.ispyb_session_id, QuantityValue):
+            self.ispyb_session_id = QuantityValue(**as_dict(self.ispyb_session_id))
 
         super().__post_init__(**kwargs)
 
@@ -1553,7 +1553,7 @@ class WorkflowRun(NamedThing):
     workflow_type: Union[str, "WorkflowTypeEnum"] = None
     experiment_id: str = None
     software_name: str = None
-    processing_level: Optional[int] = None
+    processing_level: Optional[Union[dict, "QuantityValue"]] = None
     software_version: Optional[str] = None
     additional_software: Optional[str] = None
     processing_parameters: Optional[str] = None
@@ -1568,8 +1568,8 @@ class WorkflowRun(NamedThing):
     ncs_used: Optional[Union[bool, Bool]] = None
     restraints_other: Optional[str] = None
     ligands_cofactors: Optional[str] = None
-    number_of_waters: Optional[int] = None
-    refinement_resolution_a: Optional[float] = None
+    number_of_waters: Optional[Union[dict, "QuantityValue"]] = None
+    refinement_resolution_a: Optional[Union[dict, "QuantityValue"]] = None
     deposited_to_pdb: Optional[Union[bool, Bool]] = None
     pdb_id: Optional[str] = None
     validation_report_path: Optional[str] = None
@@ -1582,29 +1582,29 @@ class WorkflowRun(NamedThing):
     unit_cell_gamma: Optional[Union[dict, "QuantityValue"]] = None
     resolution_high: Optional[Union[dict, "QuantityValue"]] = None
     resolution_low: Optional[Union[dict, "QuantityValue"]] = None
-    rmerge: Optional[float] = None
-    rpim: Optional[float] = None
-    cc_half: Optional[float] = None
+    rmerge: Optional[Union[dict, "QuantityValue"]] = None
+    rpim: Optional[Union[dict, "QuantityValue"]] = None
+    cc_half: Optional[Union[dict, "QuantityValue"]] = None
     completeness_percent: Optional[Union[dict, "QuantityValue"]] = None
-    i_over_sigma: Optional[float] = None
+    i_over_sigma: Optional[Union[dict, "QuantityValue"]] = None
     wilson_b_factor: Optional[Union[dict, "QuantityValue"]] = None
-    multiplicity: Optional[float] = None
+    multiplicity: Optional[Union[dict, "QuantityValue"]] = None
     anomalous_completeness: Optional[Union[dict, "QuantityValue"]] = None
-    anomalous_multiplicity: Optional[float] = None
-    cc_anomalous: Optional[float] = None
-    r_anomalous: Optional[float] = None
-    sig_anomalous: Optional[float] = None
-    n_total_observations: Optional[int] = None
-    n_total_unique: Optional[int] = None
-    ispyb_auto_proc_program_id: Optional[int] = None
-    ispyb_auto_proc_scaling_id: Optional[int] = None
-    rwork: Optional[float] = None
-    rfree: Optional[float] = None
+    anomalous_multiplicity: Optional[Union[dict, "QuantityValue"]] = None
+    cc_anomalous: Optional[Union[dict, "QuantityValue"]] = None
+    r_anomalous: Optional[Union[dict, "QuantityValue"]] = None
+    sig_anomalous: Optional[Union[dict, "QuantityValue"]] = None
+    n_total_observations: Optional[Union[dict, "QuantityValue"]] = None
+    n_total_unique: Optional[Union[dict, "QuantityValue"]] = None
+    ispyb_auto_proc_program_id: Optional[Union[dict, "QuantityValue"]] = None
+    ispyb_auto_proc_scaling_id: Optional[Union[dict, "QuantityValue"]] = None
+    rwork: Optional[Union[dict, "QuantityValue"]] = None
+    rfree: Optional[Union[dict, "QuantityValue"]] = None
     rmsd_bonds: Optional[Union[dict, "QuantityValue"]] = None
     rmsd_angles: Optional[Union[dict, "QuantityValue"]] = None
     ramachandran_favored: Optional[Union[dict, "QuantityValue"]] = None
     ramachandran_outliers: Optional[Union[dict, "QuantityValue"]] = None
-    clashscore: Optional[float] = None
+    clashscore: Optional[Union[dict, "QuantityValue"]] = None
     processing_notes: Optional[str] = None
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
     started_at: Optional[str] = None
@@ -1642,8 +1642,8 @@ class WorkflowRun(NamedThing):
         if not isinstance(self.software_name, str):
             self.software_name = str(self.software_name)
 
-        if self.processing_level is not None and not isinstance(self.processing_level, int):
-            self.processing_level = int(self.processing_level)
+        if self.processing_level is not None and not isinstance(self.processing_level, QuantityValue):
+            self.processing_level = QuantityValue(**as_dict(self.processing_level))
 
         if self.software_version is not None and not isinstance(self.software_version, str):
             self.software_version = str(self.software_version)
@@ -1687,11 +1687,11 @@ class WorkflowRun(NamedThing):
         if self.ligands_cofactors is not None and not isinstance(self.ligands_cofactors, str):
             self.ligands_cofactors = str(self.ligands_cofactors)
 
-        if self.number_of_waters is not None and not isinstance(self.number_of_waters, int):
-            self.number_of_waters = int(self.number_of_waters)
+        if self.number_of_waters is not None and not isinstance(self.number_of_waters, QuantityValue):
+            self.number_of_waters = QuantityValue(**as_dict(self.number_of_waters))
 
-        if self.refinement_resolution_a is not None and not isinstance(self.refinement_resolution_a, float):
-            self.refinement_resolution_a = float(self.refinement_resolution_a)
+        if self.refinement_resolution_a is not None and not isinstance(self.refinement_resolution_a, QuantityValue):
+            self.refinement_resolution_a = QuantityValue(**as_dict(self.refinement_resolution_a))
 
         if self.deposited_to_pdb is not None and not isinstance(self.deposited_to_pdb, Bool):
             self.deposited_to_pdb = Bool(self.deposited_to_pdb)
@@ -1729,59 +1729,59 @@ class WorkflowRun(NamedThing):
         if self.resolution_low is not None and not isinstance(self.resolution_low, QuantityValue):
             self.resolution_low = QuantityValue(**as_dict(self.resolution_low))
 
-        if self.rmerge is not None and not isinstance(self.rmerge, float):
-            self.rmerge = float(self.rmerge)
+        if self.rmerge is not None and not isinstance(self.rmerge, QuantityValue):
+            self.rmerge = QuantityValue(**as_dict(self.rmerge))
 
-        if self.rpim is not None and not isinstance(self.rpim, float):
-            self.rpim = float(self.rpim)
+        if self.rpim is not None and not isinstance(self.rpim, QuantityValue):
+            self.rpim = QuantityValue(**as_dict(self.rpim))
 
-        if self.cc_half is not None and not isinstance(self.cc_half, float):
-            self.cc_half = float(self.cc_half)
+        if self.cc_half is not None and not isinstance(self.cc_half, QuantityValue):
+            self.cc_half = QuantityValue(**as_dict(self.cc_half))
 
         if self.completeness_percent is not None and not isinstance(self.completeness_percent, QuantityValue):
             self.completeness_percent = QuantityValue(**as_dict(self.completeness_percent))
 
-        if self.i_over_sigma is not None and not isinstance(self.i_over_sigma, float):
-            self.i_over_sigma = float(self.i_over_sigma)
+        if self.i_over_sigma is not None and not isinstance(self.i_over_sigma, QuantityValue):
+            self.i_over_sigma = QuantityValue(**as_dict(self.i_over_sigma))
 
         if self.wilson_b_factor is not None and not isinstance(self.wilson_b_factor, QuantityValue):
             self.wilson_b_factor = QuantityValue(**as_dict(self.wilson_b_factor))
 
-        if self.multiplicity is not None and not isinstance(self.multiplicity, float):
-            self.multiplicity = float(self.multiplicity)
+        if self.multiplicity is not None and not isinstance(self.multiplicity, QuantityValue):
+            self.multiplicity = QuantityValue(**as_dict(self.multiplicity))
 
         if self.anomalous_completeness is not None and not isinstance(self.anomalous_completeness, QuantityValue):
             self.anomalous_completeness = QuantityValue(**as_dict(self.anomalous_completeness))
 
-        if self.anomalous_multiplicity is not None and not isinstance(self.anomalous_multiplicity, float):
-            self.anomalous_multiplicity = float(self.anomalous_multiplicity)
+        if self.anomalous_multiplicity is not None and not isinstance(self.anomalous_multiplicity, QuantityValue):
+            self.anomalous_multiplicity = QuantityValue(**as_dict(self.anomalous_multiplicity))
 
-        if self.cc_anomalous is not None and not isinstance(self.cc_anomalous, float):
-            self.cc_anomalous = float(self.cc_anomalous)
+        if self.cc_anomalous is not None and not isinstance(self.cc_anomalous, QuantityValue):
+            self.cc_anomalous = QuantityValue(**as_dict(self.cc_anomalous))
 
-        if self.r_anomalous is not None and not isinstance(self.r_anomalous, float):
-            self.r_anomalous = float(self.r_anomalous)
+        if self.r_anomalous is not None and not isinstance(self.r_anomalous, QuantityValue):
+            self.r_anomalous = QuantityValue(**as_dict(self.r_anomalous))
 
-        if self.sig_anomalous is not None and not isinstance(self.sig_anomalous, float):
-            self.sig_anomalous = float(self.sig_anomalous)
+        if self.sig_anomalous is not None and not isinstance(self.sig_anomalous, QuantityValue):
+            self.sig_anomalous = QuantityValue(**as_dict(self.sig_anomalous))
 
-        if self.n_total_observations is not None and not isinstance(self.n_total_observations, int):
-            self.n_total_observations = int(self.n_total_observations)
+        if self.n_total_observations is not None and not isinstance(self.n_total_observations, QuantityValue):
+            self.n_total_observations = QuantityValue(**as_dict(self.n_total_observations))
 
-        if self.n_total_unique is not None and not isinstance(self.n_total_unique, int):
-            self.n_total_unique = int(self.n_total_unique)
+        if self.n_total_unique is not None and not isinstance(self.n_total_unique, QuantityValue):
+            self.n_total_unique = QuantityValue(**as_dict(self.n_total_unique))
 
-        if self.ispyb_auto_proc_program_id is not None and not isinstance(self.ispyb_auto_proc_program_id, int):
-            self.ispyb_auto_proc_program_id = int(self.ispyb_auto_proc_program_id)
+        if self.ispyb_auto_proc_program_id is not None and not isinstance(self.ispyb_auto_proc_program_id, QuantityValue):
+            self.ispyb_auto_proc_program_id = QuantityValue(**as_dict(self.ispyb_auto_proc_program_id))
 
-        if self.ispyb_auto_proc_scaling_id is not None and not isinstance(self.ispyb_auto_proc_scaling_id, int):
-            self.ispyb_auto_proc_scaling_id = int(self.ispyb_auto_proc_scaling_id)
+        if self.ispyb_auto_proc_scaling_id is not None and not isinstance(self.ispyb_auto_proc_scaling_id, QuantityValue):
+            self.ispyb_auto_proc_scaling_id = QuantityValue(**as_dict(self.ispyb_auto_proc_scaling_id))
 
-        if self.rwork is not None and not isinstance(self.rwork, float):
-            self.rwork = float(self.rwork)
+        if self.rwork is not None and not isinstance(self.rwork, QuantityValue):
+            self.rwork = QuantityValue(**as_dict(self.rwork))
 
-        if self.rfree is not None and not isinstance(self.rfree, float):
-            self.rfree = float(self.rfree)
+        if self.rfree is not None and not isinstance(self.rfree, QuantityValue):
+            self.rfree = QuantityValue(**as_dict(self.rfree))
 
         if self.rmsd_bonds is not None and not isinstance(self.rmsd_bonds, QuantityValue):
             self.rmsd_bonds = QuantityValue(**as_dict(self.rmsd_bonds))
@@ -1795,8 +1795,8 @@ class WorkflowRun(NamedThing):
         if self.ramachandran_outliers is not None and not isinstance(self.ramachandran_outliers, QuantityValue):
             self.ramachandran_outliers = QuantityValue(**as_dict(self.ramachandran_outliers))
 
-        if self.clashscore is not None and not isinstance(self.clashscore, float):
-            self.clashscore = float(self.clashscore)
+        if self.clashscore is not None and not isinstance(self.clashscore, QuantityValue):
+            self.clashscore = QuantityValue(**as_dict(self.clashscore))
 
         if self.processing_notes is not None and not isinstance(self.processing_notes, str):
             self.processing_notes = str(self.processing_notes)
@@ -1848,7 +1848,7 @@ class DataFile(NamedThing):
     file_name: str = None
     file_format: Union[str, "FileFormatEnum"] = None
     file_path: Optional[str] = None
-    file_size_bytes: Optional[int] = None
+    file_size_bytes: Optional[Union[dict, "QuantityValue"]] = None
     checksum: Optional[str] = None
     creation_date: Optional[str] = None
     data_type: Optional[Union[str, "DataTypeEnum"]] = None
@@ -1875,8 +1875,8 @@ class DataFile(NamedThing):
         if self.file_path is not None and not isinstance(self.file_path, str):
             self.file_path = str(self.file_path)
 
-        if self.file_size_bytes is not None and not isinstance(self.file_size_bytes, int):
-            self.file_size_bytes = int(self.file_size_bytes)
+        if self.file_size_bytes is not None and not isinstance(self.file_size_bytes, QuantityValue):
+            self.file_size_bytes = QuantityValue(**as_dict(self.file_size_bytes))
 
         if self.checksum is not None and not isinstance(self.checksum, str):
             self.checksum = str(self.checksum)
@@ -1918,7 +1918,7 @@ class Image(NamedThing):
     dimensions_x: Optional[Union[dict, "QuantityValue"]] = None
     dimensions_y: Optional[Union[dict, "QuantityValue"]] = None
     exposure_time: Optional[Union[dict, "QuantityValue"]] = None
-    dose: Optional[float] = None
+    dose: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1946,8 +1946,8 @@ class Image(NamedThing):
         if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
             self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
 
-        if self.dose is not None and not isinstance(self.dose, float):
-            self.dose = float(self.dose)
+        if self.dose is not None and not isinstance(self.dose, QuantityValue):
+            self.dose = QuantityValue(**as_dict(self.dose))
 
         super().__post_init__(**kwargs)
 
@@ -2034,7 +2034,7 @@ class Movie(Image2D):
 
     id: Union[str, MovieId] = None
     file_name: str = None
-    frames: Optional[int] = None
+    frames: Optional[Union[dict, "QuantityValue"]] = None
     super_resolution: Optional[Union[bool, Bool]] = None
     pixel_size_unbinned: Optional[Union[dict, "QuantityValue"]] = None
     timestamp: Optional[str] = None
@@ -2042,9 +2042,9 @@ class Movie(Image2D):
     stage_position_y: Optional[Union[dict, "QuantityValue"]] = None
     stage_position_z: Optional[Union[dict, "QuantityValue"]] = None
     nominal_defocus: Optional[Union[dict, "QuantityValue"]] = None
-    dose_per_frame: Optional[float] = None
-    beam_shift_x: Optional[float] = None
-    beam_shift_y: Optional[float] = None
+    dose_per_frame: Optional[Union[dict, "QuantityValue"]] = None
+    beam_shift_x: Optional[Union[dict, "QuantityValue"]] = None
+    beam_shift_y: Optional[Union[dict, "QuantityValue"]] = None
     ice_thickness_estimate: Optional[Union[dict, "QuantityValue"]] = None
     grid_square_id: Optional[str] = None
     hole_id: Optional[str] = None
@@ -2056,8 +2056,8 @@ class Movie(Image2D):
         if not isinstance(self.id, MovieId):
             self.id = MovieId(self.id)
 
-        if self.frames is not None and not isinstance(self.frames, int):
-            self.frames = int(self.frames)
+        if self.frames is not None and not isinstance(self.frames, QuantityValue):
+            self.frames = QuantityValue(**as_dict(self.frames))
 
         if self.super_resolution is not None and not isinstance(self.super_resolution, Bool):
             self.super_resolution = Bool(self.super_resolution)
@@ -2080,14 +2080,14 @@ class Movie(Image2D):
         if self.nominal_defocus is not None and not isinstance(self.nominal_defocus, QuantityValue):
             self.nominal_defocus = QuantityValue(**as_dict(self.nominal_defocus))
 
-        if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, float):
-            self.dose_per_frame = float(self.dose_per_frame)
+        if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, QuantityValue):
+            self.dose_per_frame = QuantityValue(**as_dict(self.dose_per_frame))
 
-        if self.beam_shift_x is not None and not isinstance(self.beam_shift_x, float):
-            self.beam_shift_x = float(self.beam_shift_x)
+        if self.beam_shift_x is not None and not isinstance(self.beam_shift_x, QuantityValue):
+            self.beam_shift_x = QuantityValue(**as_dict(self.beam_shift_x))
 
-        if self.beam_shift_y is not None and not isinstance(self.beam_shift_y, float):
-            self.beam_shift_y = float(self.beam_shift_y)
+        if self.beam_shift_y is not None and not isinstance(self.beam_shift_y, QuantityValue):
+            self.beam_shift_y = QuantityValue(**as_dict(self.beam_shift_y))
 
         if self.ice_thickness_estimate is not None and not isinstance(self.ice_thickness_estimate, QuantityValue):
             self.ice_thickness_estimate = QuantityValue(**as_dict(self.ice_thickness_estimate))
@@ -2118,13 +2118,13 @@ class Micrograph(Image2D):
 
     id: Union[str, MicrographId] = None
     file_name: str = None
-    dose: Optional[float] = None
+    dose: Optional[Union[dict, "QuantityValue"]] = None
     origin_movie_id: Optional[str] = None
     defocus_u: Optional[Union[dict, "QuantityValue"]] = None
     defocus_v: Optional[Union[dict, "QuantityValue"]] = None
     astigmatism_angle: Optional[Union[dict, "QuantityValue"]] = None
     resolution_fit_limit: Optional[Union[dict, "QuantityValue"]] = None
-    ctf_quality_score: Optional[float] = None
+    ctf_quality_score: Optional[Union[dict, "QuantityValue"]] = None
     pixel_size: Optional[str] = None
     defocus: Optional[Union[dict, "QuantityValue"]] = None
     astigmatism: Optional[Union[dict, "QuantityValue"]] = None
@@ -2135,8 +2135,8 @@ class Micrograph(Image2D):
         if not isinstance(self.id, MicrographId):
             self.id = MicrographId(self.id)
 
-        if self.dose is not None and not isinstance(self.dose, float):
-            self.dose = float(self.dose)
+        if self.dose is not None and not isinstance(self.dose, QuantityValue):
+            self.dose = QuantityValue(**as_dict(self.dose))
 
         if self.origin_movie_id is not None and not isinstance(self.origin_movie_id, str):
             self.origin_movie_id = str(self.origin_movie_id)
@@ -2153,8 +2153,8 @@ class Micrograph(Image2D):
         if self.resolution_fit_limit is not None and not isinstance(self.resolution_fit_limit, QuantityValue):
             self.resolution_fit_limit = QuantityValue(**as_dict(self.resolution_fit_limit))
 
-        if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, float):
-            self.ctf_quality_score = float(self.ctf_quality_score)
+        if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, QuantityValue):
+            self.ctf_quality_score = QuantityValue(**as_dict(self.ctf_quality_score))
 
         if self.pixel_size is not None and not isinstance(self.pixel_size, str):
             self.pixel_size = str(self.pixel_size)
@@ -2186,7 +2186,7 @@ class FTIRImage(Image):
     wavenumber_min: Optional[Union[dict, "QuantityValue"]] = None
     wavenumber_max: Optional[Union[dict, "QuantityValue"]] = None
     spectral_resolution: Optional[Union[dict, "QuantityValue"]] = None
-    number_of_scans: Optional[int] = None
+    number_of_scans: Optional[Union[dict, "QuantityValue"]] = None
     apodization_function: Optional[str] = None
     molecular_signatures: Optional[Union[str, list[str]]] = empty_list()
     background_correction: Optional[str] = None
@@ -2206,8 +2206,8 @@ class FTIRImage(Image):
         if self.spectral_resolution is not None and not isinstance(self.spectral_resolution, QuantityValue):
             self.spectral_resolution = QuantityValue(**as_dict(self.spectral_resolution))
 
-        if self.number_of_scans is not None and not isinstance(self.number_of_scans, int):
-            self.number_of_scans = int(self.number_of_scans)
+        if self.number_of_scans is not None and not isinstance(self.number_of_scans, QuantityValue):
+            self.number_of_scans = QuantityValue(**as_dict(self.number_of_scans))
 
         if self.apodization_function is not None and not isinstance(self.apodization_function, str):
             self.apodization_function = str(self.apodization_function)
@@ -2244,7 +2244,7 @@ class FluorescenceImage(Image2D):
     channel_name: Optional[str] = None
     laser_power: Optional[Union[dict, "QuantityValue"]] = None
     pinhole_size: Optional[Union[dict, "QuantityValue"]] = None
-    quantum_yield: Optional[float] = None
+    quantum_yield: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2276,8 +2276,8 @@ class FluorescenceImage(Image2D):
         if self.pinhole_size is not None and not isinstance(self.pinhole_size, QuantityValue):
             self.pinhole_size = QuantityValue(**as_dict(self.pinhole_size))
 
-        if self.quantum_yield is not None and not isinstance(self.quantum_yield, float):
-            self.quantum_yield = float(self.quantum_yield)
+        if self.quantum_yield is not None and not isinstance(self.quantum_yield, QuantityValue):
+            self.quantum_yield = QuantityValue(**as_dict(self.quantum_yield))
 
         super().__post_init__(**kwargs)
 
@@ -2494,13 +2494,13 @@ class BufferComposition(AttributeGroup):
     class_name: ClassVar[str] = "BufferComposition"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.BufferComposition
 
-    ph: Optional[float] = None
+    ph: Optional[Union[dict, "QuantityValue"]] = None
     components: Optional[Union[str, list[str]]] = empty_list()
     additives: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.ph is not None and not isinstance(self.ph, float):
-            self.ph = float(self.ph)
+        if self.ph is not None and not isinstance(self.ph, QuantityValue):
+            self.ph = QuantityValue(**as_dict(self.ph))
 
         if not isinstance(self.components, list):
             self.components = [self.components] if self.components is not None else []
@@ -2571,7 +2571,7 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     hole_size: Optional[Union[dict, "QuantityValue"]] = None
     vitrification_method: Optional[Union[str, "VitrificationMethodEnum"]] = None
     blot_time: Optional[Union[dict, "QuantityValue"]] = None
-    blot_force: Optional[int] = None
+    blot_force: Optional[Union[dict, "QuantityValue"]] = None
     humidity_percentage: Optional[Union[dict, "QuantityValue"]] = None
     chamber_temperature: Optional[Union[dict, "QuantityValue"]] = None
     grid_material: Optional[Union[str, "GridMaterialEnum"]] = None
@@ -2581,7 +2581,7 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     glow_discharge_atmosphere: Optional[str] = None
     glow_discharge_pressure: Optional[Union[dict, "QuantityValue"]] = None
     vitrification_instrument: Optional[str] = None
-    blot_number: Optional[int] = None
+    blot_number: Optional[Union[dict, "QuantityValue"]] = None
     wait_time: Optional[Union[dict, "QuantityValue"]] = None
     blotter_height: Optional[Union[dict, "QuantityValue"]] = None
     blotter_setting: Optional[Union[dict, "QuantityValue"]] = None
@@ -2605,8 +2605,8 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.blot_time is not None and not isinstance(self.blot_time, QuantityValue):
             self.blot_time = QuantityValue(**as_dict(self.blot_time))
 
-        if self.blot_force is not None and not isinstance(self.blot_force, int):
-            self.blot_force = int(self.blot_force)
+        if self.blot_force is not None and not isinstance(self.blot_force, QuantityValue):
+            self.blot_force = QuantityValue(**as_dict(self.blot_force))
 
         if self.humidity_percentage is not None and not isinstance(self.humidity_percentage, QuantityValue):
             self.humidity_percentage = QuantityValue(**as_dict(self.humidity_percentage))
@@ -2635,8 +2635,8 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
         if self.vitrification_instrument is not None and not isinstance(self.vitrification_instrument, str):
             self.vitrification_instrument = str(self.vitrification_instrument)
 
-        if self.blot_number is not None and not isinstance(self.blot_number, int):
-            self.blot_number = int(self.blot_number)
+        if self.blot_number is not None and not isinstance(self.blot_number, QuantityValue):
+            self.blot_number = QuantityValue(**as_dict(self.blot_number))
 
         if self.wait_time is not None and not isinstance(self.wait_time, QuantityValue):
             self.wait_time = QuantityValue(**as_dict(self.wait_time))
@@ -2674,7 +2674,7 @@ class CrystallizationConditions(AttributeGroup):
     method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
     crystallization_conditions: Optional[str] = None
     drop_volume: Optional[Union[dict, "QuantityValue"]] = None
-    protein_concentration: Optional[float] = None
+    protein_concentration: Optional[Union[dict, "QuantityValue"]] = None
     crystal_size_um: Optional[str] = None
     cryo_protectant: Optional[str] = None
     crystal_id: Optional[str] = None
@@ -2695,8 +2695,8 @@ class CrystallizationConditions(AttributeGroup):
         if self.drop_volume is not None and not isinstance(self.drop_volume, QuantityValue):
             self.drop_volume = QuantityValue(**as_dict(self.drop_volume))
 
-        if self.protein_concentration is not None and not isinstance(self.protein_concentration, float):
-            self.protein_concentration = float(self.protein_concentration)
+        if self.protein_concentration is not None and not isinstance(self.protein_concentration, QuantityValue):
+            self.protein_concentration = QuantityValue(**as_dict(self.protein_concentration))
 
         if self.crystal_size_um is not None and not isinstance(self.crystal_size_um, str):
             self.crystal_size_um = str(self.crystal_size_um)
@@ -2740,7 +2740,7 @@ class XRayPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "XRayPreparation"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.XRayPreparation
 
-    protein_concentration_mg_per_ml: Optional[float] = None
+    protein_concentration_mg_per_ml: Optional[Union[dict, "QuantityValue"]] = None
     protein_buffer: Optional[str] = None
     additives: Optional[str] = None
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
@@ -2767,8 +2767,8 @@ class XRayPreparation(TechniqueSpecificPreparation):
     mounting_temperature: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, float):
-            self.protein_concentration_mg_per_ml = float(self.protein_concentration_mg_per_ml)
+        if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, QuantityValue):
+            self.protein_concentration_mg_per_ml = QuantityValue(**as_dict(self.protein_concentration_mg_per_ml))
 
         if self.protein_buffer is not None and not isinstance(self.protein_buffer, str):
             self.protein_buffer = str(self.protein_buffer)
@@ -2857,16 +2857,15 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "SAXSPreparation"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.SAXSPreparation
 
-    concentration_series: Optional[Union[float, list[float]]] = empty_list()
+    concentration_series: Optional[Union[dict, "QuantityValue"]] = None
     buffer_matching_protocol: Optional[str] = None
     sample_cell_type: Optional[str] = None
     cell_path_length: Optional[Union[dict, "QuantityValue"]] = None
     temperature_control: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.concentration_series, list):
-            self.concentration_series = [self.concentration_series] if self.concentration_series is not None else []
-        self.concentration_series = [v if isinstance(v, float) else float(v) for v in self.concentration_series]
+        if self.concentration_series is not None and not isinstance(self.concentration_series, QuantityValue):
+            self.concentration_series = QuantityValue(**as_dict(self.concentration_series))
 
         if self.buffer_matching_protocol is not None and not isinstance(self.buffer_matching_protocol, str):
             self.buffer_matching_protocol = str(self.buffer_matching_protocol)
@@ -2937,7 +2936,7 @@ class DataCollectionStrategy(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.DataCollectionStrategy
 
     collection_mode: Optional[Union[str, "CollectionModeEnum"]] = None
-    total_frames: Optional[int] = None
+    total_frames: Optional[Union[dict, "QuantityValue"]] = None
     frame_rate: Optional[Union[dict, "QuantityValue"]] = None
     total_dose: Optional[Union[dict, "QuantityValue"]] = None
     dose_per_frame: Optional[Union[dict, "QuantityValue"]] = None
@@ -2945,8 +2944,8 @@ class DataCollectionStrategy(AttributeGroup):
     detector_mode: Optional[Union[str, "DetectorModeEnum"]] = None
     pixel_size_calibrated: Optional[Union[dict, "QuantityValue"]] = None
     detector_distance_mm: Optional[Union[dict, "QuantityValue"]] = None
-    beam_center_x_px: Optional[int] = None
-    beam_center_y_px: Optional[int] = None
+    beam_center_x_px: Optional[Union[dict, "QuantityValue"]] = None
+    beam_center_y_px: Optional[Union[dict, "QuantityValue"]] = None
     beam_size_um: Optional[Union[dict, "QuantityValue"]] = None
     flux_photons_per_s: Optional[Union[dict, "QuantityValue"]] = None
     transmission_percent: Optional[Union[dict, "QuantityValue"]] = None
@@ -2960,8 +2959,8 @@ class DataCollectionStrategy(AttributeGroup):
         if self.collection_mode is not None and not isinstance(self.collection_mode, CollectionModeEnum):
             self.collection_mode = CollectionModeEnum(self.collection_mode)
 
-        if self.total_frames is not None and not isinstance(self.total_frames, int):
-            self.total_frames = int(self.total_frames)
+        if self.total_frames is not None and not isinstance(self.total_frames, QuantityValue):
+            self.total_frames = QuantityValue(**as_dict(self.total_frames))
 
         if self.frame_rate is not None and not isinstance(self.frame_rate, QuantityValue):
             self.frame_rate = QuantityValue(**as_dict(self.frame_rate))
@@ -2984,11 +2983,11 @@ class DataCollectionStrategy(AttributeGroup):
         if self.detector_distance_mm is not None and not isinstance(self.detector_distance_mm, QuantityValue):
             self.detector_distance_mm = QuantityValue(**as_dict(self.detector_distance_mm))
 
-        if self.beam_center_x_px is not None and not isinstance(self.beam_center_x_px, int):
-            self.beam_center_x_px = int(self.beam_center_x_px)
+        if self.beam_center_x_px is not None and not isinstance(self.beam_center_x_px, QuantityValue):
+            self.beam_center_x_px = QuantityValue(**as_dict(self.beam_center_x_px))
 
-        if self.beam_center_y_px is not None and not isinstance(self.beam_center_y_px, int):
-            self.beam_center_y_px = int(self.beam_center_y_px)
+        if self.beam_center_y_px is not None and not isinstance(self.beam_center_y_px, QuantityValue):
+            self.beam_center_y_px = QuantityValue(**as_dict(self.beam_center_y_px))
 
         if self.beam_size_um is not None and not isinstance(self.beam_size_um, QuantityValue):
             self.beam_size_um = QuantityValue(**as_dict(self.beam_size_um))
@@ -3034,8 +3033,8 @@ class QualityMetrics(AttributeGroup):
     resolution_low_a: Optional[Union[dict, "QuantityValue"]] = None
     completeness: Optional[Union[dict, "QuantityValue"]] = None
     completeness_high_res_shell_percent: Optional[Union[dict, "QuantityValue"]] = None
-    signal_to_noise: Optional[float] = None
-    mean_i_over_sigma_i: Optional[float] = None
+    signal_to_noise: Optional[Union[dict, "QuantityValue"]] = None
+    mean_i_over_sigma_i: Optional[Union[dict, "QuantityValue"]] = None
     space_group: Optional[str] = None
     unit_cell_a: Optional[Union[dict, "QuantityValue"]] = None
     unit_cell_b: Optional[Union[dict, "QuantityValue"]] = None
@@ -3043,24 +3042,24 @@ class QualityMetrics(AttributeGroup):
     unit_cell_alpha: Optional[Union[dict, "QuantityValue"]] = None
     unit_cell_beta: Optional[Union[dict, "QuantityValue"]] = None
     unit_cell_gamma: Optional[Union[dict, "QuantityValue"]] = None
-    multiplicity: Optional[float] = None
-    cc_half: Optional[float] = None
-    r_merge: Optional[float] = None
-    r_pim: Optional[float] = None
-    wilson_b_factor_a2: Optional[float] = None
+    multiplicity: Optional[Union[dict, "QuantityValue"]] = None
+    cc_half: Optional[Union[dict, "QuantityValue"]] = None
+    r_merge: Optional[Union[dict, "QuantityValue"]] = None
+    r_pim: Optional[Union[dict, "QuantityValue"]] = None
+    wilson_b_factor_a2: Optional[Union[dict, "QuantityValue"]] = None
     anomalous_used: Optional[Union[bool, Bool]] = None
-    anom_corr: Optional[float] = None
-    anom_sig_ano: Optional[float] = None
-    r_work: Optional[float] = None
-    r_free: Optional[float] = None
-    ramachandran_favored_percent: Optional[float] = None
-    ramachandran_outliers_percent: Optional[float] = None
-    clashscore: Optional[float] = None
-    molprobity_score: Optional[float] = None
-    average_b_factor_a2: Optional[float] = None
-    i_zero: Optional[float] = None
+    anom_corr: Optional[Union[dict, "QuantityValue"]] = None
+    anom_sig_ano: Optional[Union[dict, "QuantityValue"]] = None
+    r_work: Optional[Union[dict, "QuantityValue"]] = None
+    r_free: Optional[Union[dict, "QuantityValue"]] = None
+    ramachandran_favored_percent: Optional[Union[dict, "QuantityValue"]] = None
+    ramachandran_outliers_percent: Optional[Union[dict, "QuantityValue"]] = None
+    clashscore: Optional[Union[dict, "QuantityValue"]] = None
+    molprobity_score: Optional[Union[dict, "QuantityValue"]] = None
+    average_b_factor_a2: Optional[Union[dict, "QuantityValue"]] = None
+    i_zero: Optional[Union[dict, "QuantityValue"]] = None
     rg: Optional[Union[dict, "QuantityValue"]] = None
-    r_factor: Optional[float] = None
+    r_factor: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.resolution is not None and not isinstance(self.resolution, QuantityValue):
@@ -3078,11 +3077,11 @@ class QualityMetrics(AttributeGroup):
         if self.completeness_high_res_shell_percent is not None and not isinstance(self.completeness_high_res_shell_percent, QuantityValue):
             self.completeness_high_res_shell_percent = QuantityValue(**as_dict(self.completeness_high_res_shell_percent))
 
-        if self.signal_to_noise is not None and not isinstance(self.signal_to_noise, float):
-            self.signal_to_noise = float(self.signal_to_noise)
+        if self.signal_to_noise is not None and not isinstance(self.signal_to_noise, QuantityValue):
+            self.signal_to_noise = QuantityValue(**as_dict(self.signal_to_noise))
 
-        if self.mean_i_over_sigma_i is not None and not isinstance(self.mean_i_over_sigma_i, float):
-            self.mean_i_over_sigma_i = float(self.mean_i_over_sigma_i)
+        if self.mean_i_over_sigma_i is not None and not isinstance(self.mean_i_over_sigma_i, QuantityValue):
+            self.mean_i_over_sigma_i = QuantityValue(**as_dict(self.mean_i_over_sigma_i))
 
         if self.space_group is not None and not isinstance(self.space_group, str):
             self.space_group = str(self.space_group)
@@ -3105,59 +3104,59 @@ class QualityMetrics(AttributeGroup):
         if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, QuantityValue):
             self.unit_cell_gamma = QuantityValue(**as_dict(self.unit_cell_gamma))
 
-        if self.multiplicity is not None and not isinstance(self.multiplicity, float):
-            self.multiplicity = float(self.multiplicity)
+        if self.multiplicity is not None and not isinstance(self.multiplicity, QuantityValue):
+            self.multiplicity = QuantityValue(**as_dict(self.multiplicity))
 
-        if self.cc_half is not None and not isinstance(self.cc_half, float):
-            self.cc_half = float(self.cc_half)
+        if self.cc_half is not None and not isinstance(self.cc_half, QuantityValue):
+            self.cc_half = QuantityValue(**as_dict(self.cc_half))
 
-        if self.r_merge is not None and not isinstance(self.r_merge, float):
-            self.r_merge = float(self.r_merge)
+        if self.r_merge is not None and not isinstance(self.r_merge, QuantityValue):
+            self.r_merge = QuantityValue(**as_dict(self.r_merge))
 
-        if self.r_pim is not None and not isinstance(self.r_pim, float):
-            self.r_pim = float(self.r_pim)
+        if self.r_pim is not None and not isinstance(self.r_pim, QuantityValue):
+            self.r_pim = QuantityValue(**as_dict(self.r_pim))
 
-        if self.wilson_b_factor_a2 is not None and not isinstance(self.wilson_b_factor_a2, float):
-            self.wilson_b_factor_a2 = float(self.wilson_b_factor_a2)
+        if self.wilson_b_factor_a2 is not None and not isinstance(self.wilson_b_factor_a2, QuantityValue):
+            self.wilson_b_factor_a2 = QuantityValue(**as_dict(self.wilson_b_factor_a2))
 
         if self.anomalous_used is not None and not isinstance(self.anomalous_used, Bool):
             self.anomalous_used = Bool(self.anomalous_used)
 
-        if self.anom_corr is not None and not isinstance(self.anom_corr, float):
-            self.anom_corr = float(self.anom_corr)
+        if self.anom_corr is not None and not isinstance(self.anom_corr, QuantityValue):
+            self.anom_corr = QuantityValue(**as_dict(self.anom_corr))
 
-        if self.anom_sig_ano is not None and not isinstance(self.anom_sig_ano, float):
-            self.anom_sig_ano = float(self.anom_sig_ano)
+        if self.anom_sig_ano is not None and not isinstance(self.anom_sig_ano, QuantityValue):
+            self.anom_sig_ano = QuantityValue(**as_dict(self.anom_sig_ano))
 
-        if self.r_work is not None and not isinstance(self.r_work, float):
-            self.r_work = float(self.r_work)
+        if self.r_work is not None and not isinstance(self.r_work, QuantityValue):
+            self.r_work = QuantityValue(**as_dict(self.r_work))
 
-        if self.r_free is not None and not isinstance(self.r_free, float):
-            self.r_free = float(self.r_free)
+        if self.r_free is not None and not isinstance(self.r_free, QuantityValue):
+            self.r_free = QuantityValue(**as_dict(self.r_free))
 
-        if self.ramachandran_favored_percent is not None and not isinstance(self.ramachandran_favored_percent, float):
-            self.ramachandran_favored_percent = float(self.ramachandran_favored_percent)
+        if self.ramachandran_favored_percent is not None and not isinstance(self.ramachandran_favored_percent, QuantityValue):
+            self.ramachandran_favored_percent = QuantityValue(**as_dict(self.ramachandran_favored_percent))
 
-        if self.ramachandran_outliers_percent is not None and not isinstance(self.ramachandran_outliers_percent, float):
-            self.ramachandran_outliers_percent = float(self.ramachandran_outliers_percent)
+        if self.ramachandran_outliers_percent is not None and not isinstance(self.ramachandran_outliers_percent, QuantityValue):
+            self.ramachandran_outliers_percent = QuantityValue(**as_dict(self.ramachandran_outliers_percent))
 
-        if self.clashscore is not None and not isinstance(self.clashscore, float):
-            self.clashscore = float(self.clashscore)
+        if self.clashscore is not None and not isinstance(self.clashscore, QuantityValue):
+            self.clashscore = QuantityValue(**as_dict(self.clashscore))
 
-        if self.molprobity_score is not None and not isinstance(self.molprobity_score, float):
-            self.molprobity_score = float(self.molprobity_score)
+        if self.molprobity_score is not None and not isinstance(self.molprobity_score, QuantityValue):
+            self.molprobity_score = QuantityValue(**as_dict(self.molprobity_score))
 
-        if self.average_b_factor_a2 is not None and not isinstance(self.average_b_factor_a2, float):
-            self.average_b_factor_a2 = float(self.average_b_factor_a2)
+        if self.average_b_factor_a2 is not None and not isinstance(self.average_b_factor_a2, QuantityValue):
+            self.average_b_factor_a2 = QuantityValue(**as_dict(self.average_b_factor_a2))
 
-        if self.i_zero is not None and not isinstance(self.i_zero, float):
-            self.i_zero = float(self.i_zero)
+        if self.i_zero is not None and not isinstance(self.i_zero, QuantityValue):
+            self.i_zero = QuantityValue(**as_dict(self.i_zero))
 
         if self.rg is not None and not isinstance(self.rg, QuantityValue):
             self.rg = QuantityValue(**as_dict(self.rg))
 
-        if self.r_factor is not None and not isinstance(self.r_factor, float):
-            self.r_factor = float(self.r_factor)
+        if self.r_factor is not None and not isinstance(self.r_factor, QuantityValue):
+            self.r_factor = QuantityValue(**as_dict(self.r_factor))
 
         super().__post_init__(**kwargs)
 
@@ -3207,21 +3206,21 @@ class MotionCorrectionParameters(AttributeGroup):
     class_name: ClassVar[str] = "MotionCorrectionParameters"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.MotionCorrectionParameters
 
-    patch_size: Optional[int] = None
-    binning: Optional[float] = None
+    patch_size: Optional[Union[dict, "QuantityValue"]] = None
+    binning: Optional[Union[dict, "QuantityValue"]] = None
     dose_weighting: Optional[Union[bool, Bool]] = None
     bfactor_dose_weighting: Optional[Union[dict, "QuantityValue"]] = None
     anisotropic_correction: Optional[Union[bool, Bool]] = None
-    frame_grouping: Optional[int] = None
-    output_binning: Optional[float] = None
+    frame_grouping: Optional[Union[dict, "QuantityValue"]] = None
+    output_binning: Optional[Union[dict, "QuantityValue"]] = None
     drift_total: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.patch_size is not None and not isinstance(self.patch_size, int):
-            self.patch_size = int(self.patch_size)
+        if self.patch_size is not None and not isinstance(self.patch_size, QuantityValue):
+            self.patch_size = QuantityValue(**as_dict(self.patch_size))
 
-        if self.binning is not None and not isinstance(self.binning, float):
-            self.binning = float(self.binning)
+        if self.binning is not None and not isinstance(self.binning, QuantityValue):
+            self.binning = QuantityValue(**as_dict(self.binning))
 
         if self.dose_weighting is not None and not isinstance(self.dose_weighting, Bool):
             self.dose_weighting = Bool(self.dose_weighting)
@@ -3232,11 +3231,11 @@ class MotionCorrectionParameters(AttributeGroup):
         if self.anisotropic_correction is not None and not isinstance(self.anisotropic_correction, Bool):
             self.anisotropic_correction = Bool(self.anisotropic_correction)
 
-        if self.frame_grouping is not None and not isinstance(self.frame_grouping, int):
-            self.frame_grouping = int(self.frame_grouping)
+        if self.frame_grouping is not None and not isinstance(self.frame_grouping, QuantityValue):
+            self.frame_grouping = QuantityValue(**as_dict(self.frame_grouping))
 
-        if self.output_binning is not None and not isinstance(self.output_binning, float):
-            self.output_binning = float(self.output_binning)
+        if self.output_binning is not None and not isinstance(self.output_binning, QuantityValue):
+            self.output_binning = QuantityValue(**as_dict(self.output_binning))
 
         if self.drift_total is not None and not isinstance(self.drift_total, QuantityValue):
             self.drift_total = QuantityValue(**as_dict(self.drift_total))
@@ -3259,7 +3258,7 @@ class CTFEstimationParameters(AttributeGroup):
     defocus_search_min: Optional[Union[dict, "QuantityValue"]] = None
     defocus_search_max: Optional[Union[dict, "QuantityValue"]] = None
     defocus_step: Optional[Union[dict, "QuantityValue"]] = None
-    amplitude_contrast: Optional[float] = None
+    amplitude_contrast: Optional[Union[dict, "QuantityValue"]] = None
     cs_used_in_estimation: Optional[Union[dict, "QuantityValue"]] = None
     voltage_used_in_estimation: Optional[Union[dict, "QuantityValue"]] = None
 
@@ -3273,8 +3272,8 @@ class CTFEstimationParameters(AttributeGroup):
         if self.defocus_step is not None and not isinstance(self.defocus_step, QuantityValue):
             self.defocus_step = QuantityValue(**as_dict(self.defocus_step))
 
-        if self.amplitude_contrast is not None and not isinstance(self.amplitude_contrast, float):
-            self.amplitude_contrast = float(self.amplitude_contrast)
+        if self.amplitude_contrast is not None and not isinstance(self.amplitude_contrast, QuantityValue):
+            self.amplitude_contrast = QuantityValue(**as_dict(self.amplitude_contrast))
 
         if self.cs_used_in_estimation is not None and not isinstance(self.cs_used_in_estimation, QuantityValue):
             self.cs_used_in_estimation = QuantityValue(**as_dict(self.cs_used_in_estimation))
@@ -3298,10 +3297,10 @@ class ParticlePickingParameters(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ParticlePickingParameters
 
     picking_method: Optional[str] = None
-    box_size: Optional[int] = None
-    threshold: Optional[float] = None
-    power_score: Optional[float] = None
-    ncc_score: Optional[float] = None
+    box_size: Optional[Union[dict, "QuantityValue"]] = None
+    threshold: Optional[Union[dict, "QuantityValue"]] = None
+    power_score: Optional[Union[dict, "QuantityValue"]] = None
+    ncc_score: Optional[Union[dict, "QuantityValue"]] = None
     model_name: Optional[str] = None
     model_file_path: Optional[str] = None
     model_source: Optional[str] = None
@@ -3310,17 +3309,17 @@ class ParticlePickingParameters(AttributeGroup):
         if self.picking_method is not None and not isinstance(self.picking_method, str):
             self.picking_method = str(self.picking_method)
 
-        if self.box_size is not None and not isinstance(self.box_size, int):
-            self.box_size = int(self.box_size)
+        if self.box_size is not None and not isinstance(self.box_size, QuantityValue):
+            self.box_size = QuantityValue(**as_dict(self.box_size))
 
-        if self.threshold is not None and not isinstance(self.threshold, float):
-            self.threshold = float(self.threshold)
+        if self.threshold is not None and not isinstance(self.threshold, QuantityValue):
+            self.threshold = QuantityValue(**as_dict(self.threshold))
 
-        if self.power_score is not None and not isinstance(self.power_score, float):
-            self.power_score = float(self.power_score)
+        if self.power_score is not None and not isinstance(self.power_score, QuantityValue):
+            self.power_score = QuantityValue(**as_dict(self.power_score))
 
-        if self.ncc_score is not None and not isinstance(self.ncc_score, float):
-            self.ncc_score = float(self.ncc_score)
+        if self.ncc_score is not None and not isinstance(self.ncc_score, QuantityValue):
+            self.ncc_score = QuantityValue(**as_dict(self.ncc_score))
 
         if self.model_name is not None and not isinstance(self.model_name, str):
             self.model_name = str(self.model_name)
@@ -3348,7 +3347,7 @@ class RefinementParameters(AttributeGroup):
 
     symmetry: Optional[Union[str, "SymmetryEnum"]] = None
     pixel_size: Optional[Union[dict, "QuantityValue"]] = None
-    box_size: Optional[int] = None
+    box_size: Optional[Union[dict, "QuantityValue"]] = None
     gold_standard: Optional[Union[bool, Bool]] = None
     split_strategy: Optional[str] = None
     resolution_0_143: Optional[Union[dict, "QuantityValue"]] = None
@@ -3362,8 +3361,8 @@ class RefinementParameters(AttributeGroup):
         if self.pixel_size is not None and not isinstance(self.pixel_size, QuantityValue):
             self.pixel_size = QuantityValue(**as_dict(self.pixel_size))
 
-        if self.box_size is not None and not isinstance(self.box_size, int):
-            self.box_size = int(self.box_size)
+        if self.box_size is not None and not isinstance(self.box_size, QuantityValue):
+            self.box_size = QuantityValue(**as_dict(self.box_size))
 
         if self.gold_standard is not None and not isinstance(self.gold_standard, Bool):
             self.gold_standard = Bool(self.gold_standard)
@@ -3399,17 +3398,15 @@ class FSCCurve(AttributeGroup):
     class_name: ClassVar[str] = "FSCCurve"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.FSCCurve
 
-    resolution_angstrom: Optional[Union[float, list[float]]] = empty_list()
-    fsc_value: Optional[Union[float, list[float]]] = empty_list()
+    resolution_angstrom: Optional[Union[dict, "QuantityValue"]] = None
+    fsc_value: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.resolution_angstrom, list):
-            self.resolution_angstrom = [self.resolution_angstrom] if self.resolution_angstrom is not None else []
-        self.resolution_angstrom = [v if isinstance(v, float) else float(v) for v in self.resolution_angstrom]
+        if self.resolution_angstrom is not None and not isinstance(self.resolution_angstrom, QuantityValue):
+            self.resolution_angstrom = QuantityValue(**as_dict(self.resolution_angstrom))
 
-        if not isinstance(self.fsc_value, list):
-            self.fsc_value = [self.fsc_value] if self.fsc_value is not None else []
-        self.fsc_value = [v if isinstance(v, float) else float(v) for v in self.fsc_value]
+        if self.fsc_value is not None and not isinstance(self.fsc_value, QuantityValue):
+            self.fsc_value = QuantityValue(**as_dict(self.fsc_value))
 
         super().__post_init__(**kwargs)
 
@@ -4364,7 +4361,7 @@ class MeasurementConditions(NamedThing):
 
     id: Union[str, MeasurementConditionsId] = None
     buffer_composition: Optional[Union[dict, BufferComposition]] = None
-    ph: Optional[float] = None
+    ph: Optional[Union[dict, QuantityValue]] = None
     ionic_strength: Optional[Union[dict, QuantityValue]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
 
@@ -4377,8 +4374,8 @@ class MeasurementConditions(NamedThing):
         if self.buffer_composition is not None and not isinstance(self.buffer_composition, BufferComposition):
             self.buffer_composition = BufferComposition(**as_dict(self.buffer_composition))
 
-        if self.ph is not None and not isinstance(self.ph, float):
-            self.ph = float(self.ph)
+        if self.ph is not None and not isinstance(self.ph, QuantityValue):
+            self.ph = QuantityValue(**as_dict(self.ph))
 
         if self.ionic_strength is not None and not isinstance(self.ionic_strength, QuantityValue):
             self.ionic_strength = QuantityValue(**as_dict(self.ionic_strength))
@@ -6522,7 +6519,7 @@ slots.proteinConstruct__ncbi_taxid = Slot(uri=LAMBDABER.ncbi_taxid, name="protei
                    model_uri=LAMBDABER.proteinConstruct__ncbi_taxid, domain=None, range=Optional[str])
 
 slots.proteinConstruct__sequence_length_aa = Slot(uri=LAMBDABER.sequence_length_aa, name="proteinConstruct__sequence_length_aa", curie=LAMBDABER.curie('sequence_length_aa'),
-                   model_uri=LAMBDABER.proteinConstruct__sequence_length_aa, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.proteinConstruct__sequence_length_aa, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.proteinConstruct__construct_description = Slot(uri=LAMBDABER.construct_description, name="proteinConstruct__construct_description", curie=LAMBDABER.curie('construct_description'),
                    model_uri=LAMBDABER.proteinConstruct__construct_description, domain=None, range=Optional[str])
@@ -6657,10 +6654,10 @@ slots.samplePreparation__protease_ratio = Slot(uri=LAMBDABER.protease_ratio, nam
                    model_uri=LAMBDABER.samplePreparation__protease_ratio, domain=None, range=Optional[str])
 
 slots.samplePreparation__cleavage_time_h = Slot(uri=LAMBDABER.cleavage_time_h, name="samplePreparation__cleavage_time_h", curie=LAMBDABER.curie('cleavage_time_h'),
-                   model_uri=LAMBDABER.samplePreparation__cleavage_time_h, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__cleavage_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__cleavage_temperature_c = Slot(uri=LAMBDABER.cleavage_temperature_c, name="samplePreparation__cleavage_temperature_c", curie=LAMBDABER.curie('cleavage_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__second_affinity_reverse = Slot(uri=LAMBDABER.second_affinity_reverse, name="samplePreparation__second_affinity_reverse", curie=LAMBDABER.curie('second_affinity_reverse'),
                    model_uri=LAMBDABER.samplePreparation__second_affinity_reverse, domain=None, range=Optional[str])
@@ -6684,13 +6681,13 @@ slots.samplePreparation__final_buffer = Slot(uri=LAMBDABER.final_buffer, name="s
                    model_uri=LAMBDABER.samplePreparation__final_buffer, domain=None, range=Optional[str])
 
 slots.samplePreparation__final_concentration_mg_per_ml = Slot(uri=LAMBDABER.final_concentration_mg_per_ml, name="samplePreparation__final_concentration_mg_per_ml", curie=LAMBDABER.curie('final_concentration_mg_per_ml'),
-                   model_uri=LAMBDABER.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__yield_mg = Slot(uri=LAMBDABER.yield_mg, name="samplePreparation__yield_mg", curie=LAMBDABER.curie('yield_mg'),
-                   model_uri=LAMBDABER.samplePreparation__yield_mg, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__yield_mg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__purity_by_sds_page_percent = Slot(uri=LAMBDABER.purity_by_sds_page_percent, name="samplePreparation__purity_by_sds_page_percent", curie=LAMBDABER.curie('purity_by_sds_page_percent'),
-                   model_uri=LAMBDABER.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__aggregation_assessment = Slot(uri=LAMBDABER.aggregation_assessment, name="samplePreparation__aggregation_assessment", curie=LAMBDABER.curie('aggregation_assessment'),
                    model_uri=LAMBDABER.samplePreparation__aggregation_assessment, domain=None, range=Optional[str])
@@ -6727,7 +6724,7 @@ slots.instrument__current_status = Slot(uri=LAMBDABER.current_status, name="inst
                    model_uri=LAMBDABER.instrument__current_status, domain=None, range=Optional[Union[str, "InstrumentStatusEnum"]])
 
 slots.cryoEMInstrument__accelerating_voltage = Slot(uri=LAMBDABER.accelerating_voltage, name="cryoEMInstrument__accelerating_voltage", curie=LAMBDABER.curie('accelerating_voltage'),
-                   model_uri=LAMBDABER.cryoEMInstrument__accelerating_voltage, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMInstrument__accelerating_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__cs_corrector = Slot(uri=LAMBDABER.cs_corrector, name="cryoEMInstrument__cs_corrector", curie=LAMBDABER.curie('cs_corrector'),
                    model_uri=LAMBDABER.cryoEMInstrument__cs_corrector, domain=None, range=Optional[Union[bool, Bool]])
@@ -6754,19 +6751,19 @@ slots.cryoEMInstrument__detector_dimensions = Slot(uri=LAMBDABER.detector_dimens
                    model_uri=LAMBDABER.cryoEMInstrument__detector_dimensions, domain=None, range=Optional[str])
 
 slots.cryoEMInstrument__pixel_size_physical_um = Slot(uri=LAMBDABER.pixel_size_physical_um, name="cryoEMInstrument__pixel_size_physical_um", curie=LAMBDABER.curie('pixel_size_physical_um'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical_um, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical_um, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDABER.autoloader_capacity, name="cryoEMInstrument__autoloader_capacity", curie=LAMBDABER.curie('autoloader_capacity'),
-                   model_uri=LAMBDABER.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__cs = Slot(uri=LAMBDABER.cs, name="cryoEMInstrument__cs", curie=LAMBDABER.curie('cs'),
-                   model_uri=LAMBDABER.cryoEMInstrument__cs, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__cs, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__c2_aperture = Slot(uri=LAMBDABER.c2_aperture, name="cryoEMInstrument__c2_aperture", curie=LAMBDABER.curie('c2_aperture'),
-                   model_uri=LAMBDABER.cryoEMInstrument__c2_aperture, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__objective_aperture = Slot(uri=LAMBDABER.objective_aperture, name="cryoEMInstrument__objective_aperture", curie=LAMBDABER.curie('objective_aperture'),
-                   model_uri=LAMBDABER.cryoEMInstrument__objective_aperture, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__objective_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__phase_plate_type = Slot(uri=LAMBDABER.phase_plate_type, name="cryoEMInstrument__phase_plate_type", curie=LAMBDABER.curie('phase_plate_type'),
                    model_uri=LAMBDABER.cryoEMInstrument__phase_plate_type, domain=None, range=Optional[str])
@@ -6781,10 +6778,10 @@ slots.cryoEMInstrument__energy_filter_model = Slot(uri=LAMBDABER.energy_filter_m
                    model_uri=LAMBDABER.cryoEMInstrument__energy_filter_model, domain=None, range=Optional[str])
 
 slots.cryoEMInstrument__energy_filter_slit_width = Slot(uri=LAMBDABER.energy_filter_slit_width, name="cryoEMInstrument__energy_filter_slit_width", curie=LAMBDABER.curie('energy_filter_slit_width'),
-                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__pixel_size_physical = Slot(uri=LAMBDABER.pixel_size_physical, name="cryoEMInstrument__pixel_size_physical", curie=LAMBDABER.curie('pixel_size_physical'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__microscope_software = Slot(uri=LAMBDABER.microscope_software, name="cryoEMInstrument__microscope_software", curie=LAMBDABER.curie('microscope_software'),
                    model_uri=LAMBDABER.cryoEMInstrument__microscope_software, domain=None, range=Optional[str])
@@ -6793,16 +6790,16 @@ slots.cryoEMInstrument__microscope_software_version = Slot(uri=LAMBDABER.microsc
                    model_uri=LAMBDABER.cryoEMInstrument__microscope_software_version, domain=None, range=Optional[str])
 
 slots.cryoEMInstrument__spotsize = Slot(uri=LAMBDABER.spotsize, name="cryoEMInstrument__spotsize", curie=LAMBDABER.curie('spotsize'),
-                   model_uri=LAMBDABER.cryoEMInstrument__spotsize, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMInstrument__spotsize, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDABER.gunlens, name="cryoEMInstrument__gunlens", curie=LAMBDABER.curie('gunlens'),
-                   model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDABER.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDABER.curie('imaging_mode'),
                    model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[Union[str, "ImagingModeEnum"]])
 
 slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDABER.curie('tem_beam_diameter'),
-                   model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="xRayInstrument__source_type", curie=LAMBDABER.curie('source_type'),
                    model_uri=LAMBDABER.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
@@ -6817,19 +6814,19 @@ slots.xRayInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="
                    model_uri=LAMBDABER.xRayInstrument__detector_model, domain=None, range=Optional[str])
 
 slots.xRayInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="xRayInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
-                   model_uri=LAMBDABER.xRayInstrument__energy_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__energy_max = Slot(uri=LAMBDABER.energy_max, name="xRayInstrument__energy_max", curie=LAMBDABER.curie('energy_max'),
-                   model_uri=LAMBDABER.xRayInstrument__energy_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__beam_size_min = Slot(uri=LAMBDABER.beam_size_min, name="xRayInstrument__beam_size_min", curie=LAMBDABER.curie('beam_size_min'),
-                   model_uri=LAMBDABER.xRayInstrument__beam_size_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayInstrument__beam_size_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__beam_size_max = Slot(uri=LAMBDABER.beam_size_max, name="xRayInstrument__beam_size_max", curie=LAMBDABER.curie('beam_size_max'),
-                   model_uri=LAMBDABER.xRayInstrument__beam_size_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayInstrument__beam_size_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__flux_density = Slot(uri=LAMBDABER.flux_density, name="xRayInstrument__flux_density", curie=LAMBDABER.curie('flux_density'),
-                   model_uri=LAMBDABER.xRayInstrument__flux_density, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayInstrument__flux_density, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayInstrument__monochromator_type = Slot(uri=LAMBDABER.monochromator_type, name="xRayInstrument__monochromator_type", curie=LAMBDABER.curie('monochromator_type'),
                    model_uri=LAMBDABER.xRayInstrument__monochromator_type, domain=None, range=Optional[str])
@@ -6841,19 +6838,19 @@ slots.xRayInstrument__crystal_cooling_capability = Slot(uri=LAMBDABER.crystal_co
                    model_uri=LAMBDABER.xRayInstrument__crystal_cooling_capability, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.sAXSInstrument__q_range_min = Slot(uri=LAMBDABER.q_range_min, name="sAXSInstrument__q_range_min", curie=LAMBDABER.curie('q_range_min'),
-                   model_uri=LAMBDABER.sAXSInstrument__q_range_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sAXSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSInstrument__q_range_max = Slot(uri=LAMBDABER.q_range_max, name="sAXSInstrument__q_range_max", curie=LAMBDABER.curie('q_range_max'),
-                   model_uri=LAMBDABER.sAXSInstrument__q_range_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sAXSInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSInstrument__detector_distance_min = Slot(uri=LAMBDABER.detector_distance_min, name="sAXSInstrument__detector_distance_min", curie=LAMBDABER.curie('detector_distance_min'),
-                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSInstrument__detector_distance_max = Slot(uri=LAMBDABER.detector_distance_max, name="sAXSInstrument__detector_distance_max", curie=LAMBDABER.curie('detector_distance_max'),
-                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_changer_capacity, name="sAXSInstrument__sample_changer_capacity", curie=LAMBDABER.curie('sample_changer_capacity'),
-                   model_uri=LAMBDABER.sAXSInstrument__sample_changer_capacity, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.sAXSInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSInstrument__temperature_control_range = Slot(uri=LAMBDABER.temperature_control_range, name="sAXSInstrument__temperature_control_range", curie=LAMBDABER.curie('temperature_control_range'),
                    model_uri=LAMBDABER.sAXSInstrument__temperature_control_range, domain=None, range=Optional[str])
@@ -6865,19 +6862,19 @@ slots.beamlineInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="be
                    model_uri=LAMBDABER.beamlineInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
 slots.beamlineInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="beamlineInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
-                   model_uri=LAMBDABER.beamlineInstrument__energy_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.beamlineInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.beamlineInstrument__energy_max = Slot(uri=LAMBDABER.energy_max, name="beamlineInstrument__energy_max", curie=LAMBDABER.curie('energy_max'),
-                   model_uri=LAMBDABER.beamlineInstrument__energy_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.beamlineInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.beamlineInstrument__q_range_min = Slot(uri=LAMBDABER.q_range_min, name="beamlineInstrument__q_range_min", curie=LAMBDABER.curie('q_range_min'),
-                   model_uri=LAMBDABER.beamlineInstrument__q_range_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.beamlineInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.beamlineInstrument__q_range_max = Slot(uri=LAMBDABER.q_range_max, name="beamlineInstrument__q_range_max", curie=LAMBDABER.curie('q_range_max'),
-                   model_uri=LAMBDABER.beamlineInstrument__q_range_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.beamlineInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.beamlineInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_changer_capacity, name="beamlineInstrument__sample_changer_capacity", curie=LAMBDABER.curie('sample_changer_capacity'),
-                   model_uri=LAMBDABER.beamlineInstrument__sample_changer_capacity, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.beamlineInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDABER.mail_in_service, name="beamlineInstrument__mail_in_service", curie=LAMBDABER.curie('mail_in_service'),
                    model_uri=LAMBDABER.beamlineInstrument__mail_in_service, domain=None, range=Optional[Union[bool, Bool]])
@@ -6922,58 +6919,58 @@ slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, n
                    model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
 
 slots.experimentRun__magnification = Slot(uri=LAMBDABER.magnification, name="experimentRun__magnification", curie=LAMBDABER.curie('magnification'),
-                   model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDABER.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDABER.curie('calibrated_pixel_size'),
-                   model_uri=LAMBDABER.experimentRun__calibrated_pixel_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__calibrated_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__camera_binning = Slot(uri=LAMBDABER.camera_binning, name="experimentRun__camera_binning", curie=LAMBDABER.curie('camera_binning'),
-                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__exposure_time_per_frame = Slot(uri=LAMBDABER.exposure_time_per_frame, name="experimentRun__exposure_time_per_frame", curie=LAMBDABER.curie('exposure_time_per_frame'),
-                   model_uri=LAMBDABER.experimentRun__exposure_time_per_frame, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__exposure_time_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__frames_per_movie = Slot(uri=LAMBDABER.frames_per_movie, name="experimentRun__frames_per_movie", curie=LAMBDABER.curie('frames_per_movie'),
-                   model_uri=LAMBDABER.experimentRun__frames_per_movie, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__frames_per_movie, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__total_exposure_time = Slot(uri=LAMBDABER.total_exposure_time, name="experimentRun__total_exposure_time", curie=LAMBDABER.curie('total_exposure_time'),
-                   model_uri=LAMBDABER.experimentRun__total_exposure_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__total_exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__total_dose = Slot(uri=LAMBDABER.total_dose, name="experimentRun__total_dose", curie=LAMBDABER.curie('total_dose'),
-                   model_uri=LAMBDABER.experimentRun__total_dose, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__total_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__dose_rate = Slot(uri=LAMBDABER.dose_rate, name="experimentRun__dose_rate", curie=LAMBDABER.curie('dose_rate'),
-                   model_uri=LAMBDABER.experimentRun__dose_rate, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__dose_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__defocus_target = Slot(uri=LAMBDABER.defocus_target, name="experimentRun__defocus_target", curie=LAMBDABER.curie('defocus_target'),
-                   model_uri=LAMBDABER.experimentRun__defocus_target, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__defocus_target, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__defocus_range_min = Slot(uri=LAMBDABER.defocus_range_min, name="experimentRun__defocus_range_min", curie=LAMBDABER.curie('defocus_range_min'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__defocus_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__defocus_range_max = Slot(uri=LAMBDABER.defocus_range_max, name="experimentRun__defocus_range_max", curie=LAMBDABER.curie('defocus_range_max'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__defocus_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__defocus_range_increment = Slot(uri=LAMBDABER.defocus_range_increment, name="experimentRun__defocus_range_increment", curie=LAMBDABER.curie('defocus_range_increment'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_increment, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__defocus_range_increment, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__astigmatism_target = Slot(uri=LAMBDABER.astigmatism_target, name="experimentRun__astigmatism_target", curie=LAMBDABER.curie('astigmatism_target'),
-                   model_uri=LAMBDABER.experimentRun__astigmatism_target, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__astigmatism_target, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__coma = Slot(uri=LAMBDABER.coma, name="experimentRun__coma", curie=LAMBDABER.curie('coma'),
-                   model_uri=LAMBDABER.experimentRun__coma, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__coma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__stage_tilt = Slot(uri=LAMBDABER.stage_tilt, name="experimentRun__stage_tilt", curie=LAMBDABER.curie('stage_tilt'),
-                   model_uri=LAMBDABER.experimentRun__stage_tilt, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__stage_tilt, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__autoloader_slot = Slot(uri=LAMBDABER.autoloader_slot, name="experimentRun__autoloader_slot", curie=LAMBDABER.curie('autoloader_slot'),
                    model_uri=LAMBDABER.experimentRun__autoloader_slot, domain=None, range=Optional[str])
 
 slots.experimentRun__shots_per_hole = Slot(uri=LAMBDABER.shots_per_hole, name="experimentRun__shots_per_hole", curie=LAMBDABER.curie('shots_per_hole'),
-                   model_uri=LAMBDABER.experimentRun__shots_per_hole, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__shots_per_hole, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__holes_per_group = Slot(uri=LAMBDABER.holes_per_group, name="experimentRun__holes_per_group", curie=LAMBDABER.curie('holes_per_group'),
-                   model_uri=LAMBDABER.experimentRun__holes_per_group, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__holes_per_group, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__acquisition_software = Slot(uri=LAMBDABER.acquisition_software, name="experimentRun__acquisition_software", curie=LAMBDABER.curie('acquisition_software'),
                    model_uri=LAMBDABER.experimentRun__acquisition_software, domain=None, range=Optional[str])
@@ -6991,7 +6988,7 @@ slots.experimentRun__start_angle = Slot(uri=LAMBDABER.start_angle, name="experim
                    model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__number_of_images = Slot(uri=LAMBDABER.number_of_images, name="experimentRun__number_of_images", curie=LAMBDABER.curie('number_of_images'),
-                   model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__beam_center_x = Slot(uri=LAMBDABER.beam_center_x, name="experimentRun__beam_center_x", curie=LAMBDABER.curie('beam_center_x'),
                    model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7051,10 +7048,10 @@ slots.experimentRun__resolution_at_corner = Slot(uri=LAMBDABER.resolution_at_cor
                    model_uri=LAMBDABER.experimentRun__resolution_at_corner, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__ispyb_data_collection_id = Slot(uri=LAMBDABER.ispyb_data_collection_id, name="experimentRun__ispyb_data_collection_id", curie=LAMBDABER.curie('ispyb_data_collection_id'),
-                   model_uri=LAMBDABER.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__ispyb_session_id = Slot(uri=LAMBDABER.ispyb_session_id, name="experimentRun__ispyb_session_id", curie=LAMBDABER.curie('ispyb_session_id'),
-                   model_uri=LAMBDABER.experimentRun__ispyb_session_id, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.experimentRun__ispyb_session_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workflowRun__workflow_code", curie=LAMBDABER.curie('workflow_code'),
                    model_uri=LAMBDABER.workflowRun__workflow_code, domain=None, range=str)
@@ -7066,7 +7063,7 @@ slots.workflowRun__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="workf
                    model_uri=LAMBDABER.workflowRun__experiment_id, domain=None, range=str)
 
 slots.workflowRun__processing_level = Slot(uri=LAMBDABER.processing_level, name="workflowRun__processing_level", curie=LAMBDABER.curie('processing_level'),
-                   model_uri=LAMBDABER.workflowRun__processing_level, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__processing_level, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__software_name = Slot(uri=LAMBDABER.software_name, name="workflowRun__software_name", curie=LAMBDABER.curie('software_name'),
                    model_uri=LAMBDABER.workflowRun__software_name, domain=None, range=str)
@@ -7114,10 +7111,10 @@ slots.workflowRun__ligands_cofactors = Slot(uri=LAMBDABER.ligands_cofactors, nam
                    model_uri=LAMBDABER.workflowRun__ligands_cofactors, domain=None, range=Optional[str])
 
 slots.workflowRun__number_of_waters = Slot(uri=LAMBDABER.number_of_waters, name="workflowRun__number_of_waters", curie=LAMBDABER.curie('number_of_waters'),
-                   model_uri=LAMBDABER.workflowRun__number_of_waters, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__number_of_waters, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__refinement_resolution_a = Slot(uri=LAMBDABER.refinement_resolution_a, name="workflowRun__refinement_resolution_a", curie=LAMBDABER.curie('refinement_resolution_a'),
-                   model_uri=LAMBDABER.workflowRun__refinement_resolution_a, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__refinement_resolution_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__deposited_to_pdb = Slot(uri=LAMBDABER.deposited_to_pdb, name="workflowRun__deposited_to_pdb", curie=LAMBDABER.curie('deposited_to_pdb'),
                    model_uri=LAMBDABER.workflowRun__deposited_to_pdb, domain=None, range=Optional[Union[bool, Bool]])
@@ -7156,58 +7153,58 @@ slots.workflowRun__resolution_low = Slot(uri=LAMBDABER.resolution_low, name="wor
                    model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rmerge = Slot(uri=LAMBDABER.rmerge, name="workflowRun__rmerge", curie=LAMBDABER.curie('rmerge'),
-                   model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rpim = Slot(uri=LAMBDABER.rpim, name="workflowRun__rpim", curie=LAMBDABER.curie('rpim'),
-                   model_uri=LAMBDABER.workflowRun__rpim, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rpim, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__cc_half = Slot(uri=LAMBDABER.cc_half, name="workflowRun__cc_half", curie=LAMBDABER.curie('cc_half'),
-                   model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__completeness_percent = Slot(uri=LAMBDABER.completeness_percent, name="workflowRun__completeness_percent", curie=LAMBDABER.curie('completeness_percent'),
                    model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__i_over_sigma = Slot(uri=LAMBDABER.i_over_sigma, name="workflowRun__i_over_sigma", curie=LAMBDABER.curie('i_over_sigma'),
-                   model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDABER.wilson_b_factor, name="workflowRun__wilson_b_factor", curie=LAMBDABER.curie('wilson_b_factor'),
                    model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="workflowRun__multiplicity", curie=LAMBDABER.curie('multiplicity'),
-                   model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__anomalous_completeness = Slot(uri=LAMBDABER.anomalous_completeness, name="workflowRun__anomalous_completeness", curie=LAMBDABER.curie('anomalous_completeness'),
                    model_uri=LAMBDABER.workflowRun__anomalous_completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__anomalous_multiplicity = Slot(uri=LAMBDABER.anomalous_multiplicity, name="workflowRun__anomalous_multiplicity", curie=LAMBDABER.curie('anomalous_multiplicity'),
-                   model_uri=LAMBDABER.workflowRun__anomalous_multiplicity, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__anomalous_multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__cc_anomalous = Slot(uri=LAMBDABER.cc_anomalous, name="workflowRun__cc_anomalous", curie=LAMBDABER.curie('cc_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__cc_anomalous, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__cc_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__r_anomalous = Slot(uri=LAMBDABER.r_anomalous, name="workflowRun__r_anomalous", curie=LAMBDABER.curie('r_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__r_anomalous, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__r_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__sig_anomalous = Slot(uri=LAMBDABER.sig_anomalous, name="workflowRun__sig_anomalous", curie=LAMBDABER.curie('sig_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__sig_anomalous, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__sig_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__n_total_observations = Slot(uri=LAMBDABER.n_total_observations, name="workflowRun__n_total_observations", curie=LAMBDABER.curie('n_total_observations'),
-                   model_uri=LAMBDABER.workflowRun__n_total_observations, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__n_total_observations, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__n_total_unique = Slot(uri=LAMBDABER.n_total_unique, name="workflowRun__n_total_unique", curie=LAMBDABER.curie('n_total_unique'),
-                   model_uri=LAMBDABER.workflowRun__n_total_unique, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__n_total_unique, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__ispyb_auto_proc_program_id = Slot(uri=LAMBDABER.ispyb_auto_proc_program_id, name="workflowRun__ispyb_auto_proc_program_id", curie=LAMBDABER.curie('ispyb_auto_proc_program_id'),
-                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_program_id, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_program_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__ispyb_auto_proc_scaling_id = Slot(uri=LAMBDABER.ispyb_auto_proc_scaling_id, name="workflowRun__ispyb_auto_proc_scaling_id", curie=LAMBDABER.curie('ispyb_auto_proc_scaling_id'),
-                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_scaling_id, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_scaling_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rwork = Slot(uri=LAMBDABER.rwork, name="workflowRun__rwork", curie=LAMBDABER.curie('rwork'),
-                   model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rfree = Slot(uri=LAMBDABER.rfree, name="workflowRun__rfree", curie=LAMBDABER.curie('rfree'),
-                   model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rmsd_bonds = Slot(uri=LAMBDABER.rmsd_bonds, name="workflowRun__rmsd_bonds", curie=LAMBDABER.curie('rmsd_bonds'),
                    model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7222,7 +7219,7 @@ slots.workflowRun__ramachandran_outliers = Slot(uri=LAMBDABER.ramachandran_outli
                    model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__clashscore = Slot(uri=LAMBDABER.clashscore, name="workflowRun__clashscore", curie=LAMBDABER.curie('clashscore'),
-                   model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__processing_notes = Slot(uri=LAMBDABER.processing_notes, name="workflowRun__processing_notes", curie=LAMBDABER.curie('processing_notes'),
                    model_uri=LAMBDABER.workflowRun__processing_notes, domain=None, range=Optional[str])
@@ -7264,7 +7261,7 @@ slots.dataFile__file_format = Slot(uri=LAMBDABER.file_format, name="dataFile__fi
                    model_uri=LAMBDABER.dataFile__file_format, domain=None, range=Union[str, "FileFormatEnum"])
 
 slots.dataFile__file_size_bytes = Slot(uri=LAMBDABER.file_size_bytes, name="dataFile__file_size_bytes", curie=LAMBDABER.curie('file_size_bytes'),
-                   model_uri=LAMBDABER.dataFile__file_size_bytes, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.dataFile__file_size_bytes, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataFile__checksum = Slot(uri=LAMBDABER.checksum, name="dataFile__checksum", curie=LAMBDABER.curie('checksum'),
                    model_uri=LAMBDABER.dataFile__checksum, domain=None, range=Optional[str])
@@ -7303,7 +7300,7 @@ slots.image__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="image__expo
                    model_uri=LAMBDABER.image__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image__dose = Slot(uri=LAMBDABER.dose, name="image__dose", curie=LAMBDABER.curie('dose'),
-                   model_uri=LAMBDABER.image__dose, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image2D__defocus = Slot(uri=LAMBDABER.defocus, name="image2D__defocus", curie=LAMBDABER.curie('defocus'),
                    model_uri=LAMBDABER.image2D__defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7321,7 +7318,7 @@ slots.image3D__reconstruction_method = Slot(uri=LAMBDABER.reconstruction_method,
                    model_uri=LAMBDABER.image3D__reconstruction_method, domain=None, range=Optional[str])
 
 slots.movie__frames = Slot(uri=LAMBDABER.frames, name="movie__frames", curie=LAMBDABER.curie('frames'),
-                   model_uri=LAMBDABER.movie__frames, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.movie__frames, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__super_resolution = Slot(uri=LAMBDABER.super_resolution, name="movie__super_resolution", curie=LAMBDABER.curie('super_resolution'),
                    model_uri=LAMBDABER.movie__super_resolution, domain=None, range=Optional[Union[bool, Bool]])
@@ -7345,13 +7342,13 @@ slots.movie__nominal_defocus = Slot(uri=LAMBDABER.nominal_defocus, name="movie__
                    model_uri=LAMBDABER.movie__nominal_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="movie__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
-                   model_uri=LAMBDABER.movie__dose_per_frame, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__dose_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__beam_shift_x = Slot(uri=LAMBDABER.beam_shift_x, name="movie__beam_shift_x", curie=LAMBDABER.curie('beam_shift_x'),
-                   model_uri=LAMBDABER.movie__beam_shift_x, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__beam_shift_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__beam_shift_y = Slot(uri=LAMBDABER.beam_shift_y, name="movie__beam_shift_y", curie=LAMBDABER.curie('beam_shift_y'),
-                   model_uri=LAMBDABER.movie__beam_shift_y, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__beam_shift_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__ice_thickness_estimate = Slot(uri=LAMBDABER.ice_thickness_estimate, name="movie__ice_thickness_estimate", curie=LAMBDABER.curie('ice_thickness_estimate'),
                    model_uri=LAMBDABER.movie__ice_thickness_estimate, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7366,7 +7363,7 @@ slots.movie__acquisition_group = Slot(uri=LAMBDABER.acquisition_group, name="mov
                    model_uri=LAMBDABER.movie__acquisition_group, domain=None, range=Optional[str])
 
 slots.micrograph__dose = Slot(uri=LAMBDABER.dose, name="micrograph__dose", curie=LAMBDABER.curie('dose'),
-                   model_uri=LAMBDABER.micrograph__dose, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__origin_movie_id = Slot(uri=LAMBDABER.origin_movie_id, name="micrograph__origin_movie_id", curie=LAMBDABER.curie('origin_movie_id'),
                    model_uri=LAMBDABER.micrograph__origin_movie_id, domain=None, range=Optional[str])
@@ -7384,7 +7381,7 @@ slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDABER.resolution_fit_limit
                    model_uri=LAMBDABER.micrograph__resolution_fit_limit, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__ctf_quality_score = Slot(uri=LAMBDABER.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDABER.curie('ctf_quality_score'),
-                   model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDABER.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDABER.curie('wavenumber_min'),
                    model_uri=LAMBDABER.fTIRImage__wavenumber_min, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7396,7 +7393,7 @@ slots.fTIRImage__spectral_resolution = Slot(uri=LAMBDABER.spectral_resolution, n
                    model_uri=LAMBDABER.fTIRImage__spectral_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__number_of_scans = Slot(uri=LAMBDABER.number_of_scans, name="fTIRImage__number_of_scans", curie=LAMBDABER.curie('number_of_scans'),
-                   model_uri=LAMBDABER.fTIRImage__number_of_scans, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.fTIRImage__number_of_scans, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__apodization_function = Slot(uri=LAMBDABER.apodization_function, name="fTIRImage__apodization_function", curie=LAMBDABER.curie('apodization_function'),
                    model_uri=LAMBDABER.fTIRImage__apodization_function, domain=None, range=Optional[str])
@@ -7432,7 +7429,7 @@ slots.fluorescenceImage__pinhole_size = Slot(uri=LAMBDABER.pinhole_size, name="f
                    model_uri=LAMBDABER.fluorescenceImage__pinhole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fluorescenceImage__quantum_yield = Slot(uri=LAMBDABER.quantum_yield, name="fluorescenceImage__quantum_yield", curie=LAMBDABER.curie('quantum_yield'),
-                   model_uri=LAMBDABER.fluorescenceImage__quantum_yield, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fluorescenceImage__quantum_yield, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.opticalImage__illumination_type = Slot(uri=LAMBDABER.illumination_type, name="opticalImage__illumination_type", curie=LAMBDABER.curie('illumination_type'),
                    model_uri=LAMBDABER.opticalImage__illumination_type, domain=None, range=Optional[Union[str, "IlluminationTypeEnum"]])
@@ -7504,7 +7501,7 @@ slots.molecularComposition__ligands = Slot(uri=LAMBDABER.ligands, name="molecula
                    model_uri=LAMBDABER.molecularComposition__ligands, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.bufferComposition__ph = Slot(uri=LAMBDABER.ph, name="bufferComposition__ph", curie=LAMBDABER.curie('ph'),
-                   model_uri=LAMBDABER.bufferComposition__ph, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.bufferComposition__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.bufferComposition__components = Slot(uri=LAMBDABER.components, name="bufferComposition__components", curie=LAMBDABER.curie('components'),
                    model_uri=LAMBDABER.bufferComposition__components, domain=None, range=Optional[Union[str, list[str]]])
@@ -7537,7 +7534,7 @@ slots.cryoEMPreparation__blot_time = Slot(uri=LAMBDABER.blot_time, name="cryoEMP
                    model_uri=LAMBDABER.cryoEMPreparation__blot_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__blot_force = Slot(uri=LAMBDABER.blot_force, name="cryoEMPreparation__blot_force", curie=LAMBDABER.curie('blot_force'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_force, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMPreparation__blot_force, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__humidity_percentage = Slot(uri=LAMBDABER.humidity_percentage, name="cryoEMPreparation__humidity_percentage", curie=LAMBDABER.curie('humidity_percentage'),
                    model_uri=LAMBDABER.cryoEMPreparation__humidity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7567,7 +7564,7 @@ slots.cryoEMPreparation__vitrification_instrument = Slot(uri=LAMBDABER.vitrifica
                    model_uri=LAMBDABER.cryoEMPreparation__vitrification_instrument, domain=None, range=Optional[str])
 
 slots.cryoEMPreparation__blot_number = Slot(uri=LAMBDABER.blot_number, name="cryoEMPreparation__blot_number", curie=LAMBDABER.curie('blot_number'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_number, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.cryoEMPreparation__blot_number, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cryoEMPreparation__wait_time = Slot(uri=LAMBDABER.wait_time, name="cryoEMPreparation__wait_time", curie=LAMBDABER.curie('wait_time'),
                    model_uri=LAMBDABER.cryoEMPreparation__wait_time, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7596,8 +7593,8 @@ slots.crystallizationConditions__crystallization_conditions = Slot(uri=NSLS2.Con
 slots.crystallizationConditions__drop_volume = Slot(uri=NSLS2.Drop_Volume, name="crystallizationConditions__drop_volume", curie=NSLS2.curie('Drop_Volume'),
                    model_uri=LAMBDABER.crystallizationConditions__drop_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.crystallizationConditions__protein_concentration = Slot(uri=NSLS2.Protein_Concentration, name="crystallizationConditions__protein_concentration", curie=NSLS2.curie('Protein_Concentration'),
-                   model_uri=LAMBDABER.crystallizationConditions__protein_concentration, domain=None, range=Optional[float])
+slots.crystallizationConditions__protein_concentration = Slot(uri=LAMBDABER.protein_concentration, name="crystallizationConditions__protein_concentration", curie=LAMBDABER.curie('protein_concentration'),
+                   model_uri=LAMBDABER.crystallizationConditions__protein_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__crystal_size_um = Slot(uri=NSLS2.Crystal_Size, name="crystallizationConditions__crystal_size_um", curie=NSLS2.curie('Crystal_Size'),
                    model_uri=LAMBDABER.crystallizationConditions__crystal_size_um, domain=None, range=Optional[str])
@@ -7627,7 +7624,7 @@ slots.crystallizationConditions__seed_stock_dilution = Slot(uri=LAMBDABER.seed_s
                    model_uri=LAMBDABER.crystallizationConditions__seed_stock_dilution, domain=None, range=Optional[str])
 
 slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=LAMBDABER.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=LAMBDABER.curie('protein_concentration_mg_per_ml'),
-                   model_uri=LAMBDABER.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__protein_buffer = Slot(uri=LAMBDABER.protein_buffer, name="xRayPreparation__protein_buffer", curie=LAMBDABER.curie('protein_buffer'),
                    model_uri=LAMBDABER.xRayPreparation__protein_buffer, domain=None, range=Optional[str])
@@ -7702,7 +7699,7 @@ slots.xRayPreparation__mounting_temperature = Slot(uri=NSLS2.Temperature, name="
                    model_uri=LAMBDABER.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDABER.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDABER.curie('concentration_series'),
-                   model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSPreparation__buffer_matching_protocol = Slot(uri=LAMBDABER.buffer_matching_protocol, name="sAXSPreparation__buffer_matching_protocol", curie=LAMBDABER.curie('buffer_matching_protocol'),
                    model_uri=LAMBDABER.sAXSPreparation__buffer_matching_protocol, domain=None, range=Optional[str])
@@ -7738,7 +7735,7 @@ slots.dataCollectionStrategy__collection_mode = Slot(uri=LAMBDABER.collection_mo
                    model_uri=LAMBDABER.dataCollectionStrategy__collection_mode, domain=None, range=Optional[Union[str, "CollectionModeEnum"]])
 
 slots.dataCollectionStrategy__total_frames = Slot(uri=LAMBDABER.total_frames, name="dataCollectionStrategy__total_frames", curie=LAMBDABER.curie('total_frames'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__total_frames, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.dataCollectionStrategy__total_frames, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__frame_rate = Slot(uri=LAMBDABER.frame_rate, name="dataCollectionStrategy__frame_rate", curie=LAMBDABER.curie('frame_rate'),
                    model_uri=LAMBDABER.dataCollectionStrategy__frame_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7762,10 +7759,10 @@ slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDABER.detector
                    model_uri=LAMBDABER.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=LAMBDABER.beam_center_x_px, name="dataCollectionStrategy__beam_center_x_px", curie=LAMBDABER.curie('beam_center_x_px'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=LAMBDABER.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=LAMBDABER.curie('beam_center_y_px'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__beam_size_um = Slot(uri=LAMBDABER.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=LAMBDABER.curie('beam_size_um'),
                    model_uri=LAMBDABER.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7807,10 +7804,10 @@ slots.qualityMetrics__completeness_high_res_shell_percent = Slot(uri=LAMBDABER.c
                    model_uri=LAMBDABER.qualityMetrics__completeness_high_res_shell_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__signal_to_noise = Slot(uri=LAMBDABER.signal_to_noise, name="qualityMetrics__signal_to_noise", curie=LAMBDABER.curie('signal_to_noise'),
-                   model_uri=LAMBDABER.qualityMetrics__signal_to_noise, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__signal_to_noise, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__mean_i_over_sigma_i = Slot(uri=LAMBDABER.mean_i_over_sigma_i, name="qualityMetrics__mean_i_over_sigma_i", curie=LAMBDABER.curie('mean_i_over_sigma_i'),
-                   model_uri=LAMBDABER.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__space_group = Slot(uri=LAMBDABER.space_group, name="qualityMetrics__space_group", curie=LAMBDABER.curie('space_group'),
                    model_uri=LAMBDABER.qualityMetrics__space_group, domain=None, range=Optional[str])
@@ -7834,58 +7831,58 @@ slots.qualityMetrics__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name
                    model_uri=LAMBDABER.qualityMetrics__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="qualityMetrics__multiplicity", curie=LAMBDABER.curie('multiplicity'),
-                   model_uri=LAMBDABER.qualityMetrics__multiplicity, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__cc_half = Slot(uri=LAMBDABER.cc_half, name="qualityMetrics__cc_half", curie=LAMBDABER.curie('cc_half'),
-                   model_uri=LAMBDABER.qualityMetrics__cc_half, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__r_merge = Slot(uri=LAMBDABER.r_merge, name="qualityMetrics__r_merge", curie=LAMBDABER.curie('r_merge'),
-                   model_uri=LAMBDABER.qualityMetrics__r_merge, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__r_merge, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__r_pim = Slot(uri=LAMBDABER.r_pim, name="qualityMetrics__r_pim", curie=LAMBDABER.curie('r_pim'),
-                   model_uri=LAMBDABER.qualityMetrics__r_pim, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__r_pim, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__wilson_b_factor_a2 = Slot(uri=LAMBDABER.wilson_b_factor_a2, name="qualityMetrics__wilson_b_factor_a2", curie=LAMBDABER.curie('wilson_b_factor_a2'),
-                   model_uri=LAMBDABER.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__anomalous_used = Slot(uri=LAMBDABER.anomalous_used, name="qualityMetrics__anomalous_used", curie=LAMBDABER.curie('anomalous_used'),
                    model_uri=LAMBDABER.qualityMetrics__anomalous_used, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.qualityMetrics__anom_corr = Slot(uri=LAMBDABER.anom_corr, name="qualityMetrics__anom_corr", curie=LAMBDABER.curie('anom_corr'),
-                   model_uri=LAMBDABER.qualityMetrics__anom_corr, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__anom_corr, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__anom_sig_ano = Slot(uri=LAMBDABER.anom_sig_ano, name="qualityMetrics__anom_sig_ano", curie=LAMBDABER.curie('anom_sig_ano'),
-                   model_uri=LAMBDABER.qualityMetrics__anom_sig_ano, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__anom_sig_ano, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__r_work = Slot(uri=LAMBDABER.r_work, name="qualityMetrics__r_work", curie=LAMBDABER.curie('r_work'),
-                   model_uri=LAMBDABER.qualityMetrics__r_work, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__r_work, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__r_free = Slot(uri=LAMBDABER.r_free, name="qualityMetrics__r_free", curie=LAMBDABER.curie('r_free'),
-                   model_uri=LAMBDABER.qualityMetrics__r_free, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__r_free, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__ramachandran_favored_percent = Slot(uri=LAMBDABER.ramachandran_favored_percent, name="qualityMetrics__ramachandran_favored_percent", curie=LAMBDABER.curie('ramachandran_favored_percent'),
-                   model_uri=LAMBDABER.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__ramachandran_outliers_percent = Slot(uri=LAMBDABER.ramachandran_outliers_percent, name="qualityMetrics__ramachandran_outliers_percent", curie=LAMBDABER.curie('ramachandran_outliers_percent'),
-                   model_uri=LAMBDABER.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__clashscore = Slot(uri=LAMBDABER.clashscore, name="qualityMetrics__clashscore", curie=LAMBDABER.curie('clashscore'),
-                   model_uri=LAMBDABER.qualityMetrics__clashscore, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__molprobity_score = Slot(uri=LAMBDABER.molprobity_score, name="qualityMetrics__molprobity_score", curie=LAMBDABER.curie('molprobity_score'),
-                   model_uri=LAMBDABER.qualityMetrics__molprobity_score, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__molprobity_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__average_b_factor_a2 = Slot(uri=LAMBDABER.average_b_factor_a2, name="qualityMetrics__average_b_factor_a2", curie=LAMBDABER.curie('average_b_factor_a2'),
-                   model_uri=LAMBDABER.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__i_zero = Slot(uri=LAMBDABER.i_zero, name="qualityMetrics__i_zero", curie=LAMBDABER.curie('i_zero'),
-                   model_uri=LAMBDABER.qualityMetrics__i_zero, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__i_zero, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__rg = Slot(uri=LAMBDABER.rg, name="qualityMetrics__rg", curie=LAMBDABER.curie('rg'),
                    model_uri=LAMBDABER.qualityMetrics__rg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__r_factor = Slot(uri=LAMBDABER.r_factor, name="qualityMetrics__r_factor", curie=LAMBDABER.curie('r_factor'),
-                   model_uri=LAMBDABER.qualityMetrics__r_factor, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__r_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.computeResources__cpu_hours = Slot(uri=LAMBDABER.cpu_hours, name="computeResources__cpu_hours", curie=LAMBDABER.curie('cpu_hours'),
                    model_uri=LAMBDABER.computeResources__cpu_hours, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7900,10 +7897,10 @@ slots.computeResources__storage_gb = Slot(uri=LAMBDABER.storage_gb, name="comput
                    model_uri=LAMBDABER.computeResources__storage_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDABER.patch_size, name="motionCorrectionParameters__patch_size", curie=LAMBDABER.curie('patch_size'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__patch_size, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.motionCorrectionParameters__patch_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.motionCorrectionParameters__binning = Slot(uri=LAMBDABER.binning, name="motionCorrectionParameters__binning", curie=LAMBDABER.curie('binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.motionCorrectionParameters__dose_weighting = Slot(uri=LAMBDABER.dose_weighting, name="motionCorrectionParameters__dose_weighting", curie=LAMBDABER.curie('dose_weighting'),
                    model_uri=LAMBDABER.motionCorrectionParameters__dose_weighting, domain=None, range=Optional[Union[bool, Bool]])
@@ -7915,10 +7912,10 @@ slots.motionCorrectionParameters__anisotropic_correction = Slot(uri=LAMBDABER.an
                    model_uri=LAMBDABER.motionCorrectionParameters__anisotropic_correction, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.motionCorrectionParameters__frame_grouping = Slot(uri=LAMBDABER.frame_grouping, name="motionCorrectionParameters__frame_grouping", curie=LAMBDABER.curie('frame_grouping'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.motionCorrectionParameters__output_binning = Slot(uri=LAMBDABER.output_binning, name="motionCorrectionParameters__output_binning", curie=LAMBDABER.curie('output_binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDABER.drift_total, name="motionCorrectionParameters__drift_total", curie=LAMBDABER.curie('drift_total'),
                    model_uri=LAMBDABER.motionCorrectionParameters__drift_total, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7933,7 +7930,7 @@ slots.cTFEstimationParameters__defocus_step = Slot(uri=LAMBDABER.defocus_step, n
                    model_uri=LAMBDABER.cTFEstimationParameters__defocus_step, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__amplitude_contrast = Slot(uri=LAMBDABER.amplitude_contrast, name="cTFEstimationParameters__amplitude_contrast", curie=LAMBDABER.curie('amplitude_contrast'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__cs_used_in_estimation = Slot(uri=LAMBDABER.cs_used_in_estimation, name="cTFEstimationParameters__cs_used_in_estimation", curie=LAMBDABER.curie('cs_used_in_estimation'),
                    model_uri=LAMBDABER.cTFEstimationParameters__cs_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7945,16 +7942,16 @@ slots.particlePickingParameters__picking_method = Slot(uri=LAMBDABER.picking_met
                    model_uri=LAMBDABER.particlePickingParameters__picking_method, domain=None, range=Optional[str])
 
 slots.particlePickingParameters__box_size = Slot(uri=LAMBDABER.box_size, name="particlePickingParameters__box_size", curie=LAMBDABER.curie('box_size'),
-                   model_uri=LAMBDABER.particlePickingParameters__box_size, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.particlePickingParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particlePickingParameters__threshold = Slot(uri=LAMBDABER.threshold, name="particlePickingParameters__threshold", curie=LAMBDABER.curie('threshold'),
-                   model_uri=LAMBDABER.particlePickingParameters__threshold, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.particlePickingParameters__threshold, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particlePickingParameters__power_score = Slot(uri=LAMBDABER.power_score, name="particlePickingParameters__power_score", curie=LAMBDABER.curie('power_score'),
-                   model_uri=LAMBDABER.particlePickingParameters__power_score, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.particlePickingParameters__power_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particlePickingParameters__ncc_score = Slot(uri=LAMBDABER.ncc_score, name="particlePickingParameters__ncc_score", curie=LAMBDABER.curie('ncc_score'),
-                   model_uri=LAMBDABER.particlePickingParameters__ncc_score, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.particlePickingParameters__ncc_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particlePickingParameters__model_name = Slot(uri=LAMBDABER.model_name, name="particlePickingParameters__model_name", curie=LAMBDABER.curie('model_name'),
                    model_uri=LAMBDABER.particlePickingParameters__model_name, domain=None, range=Optional[str])
@@ -7972,7 +7969,7 @@ slots.refinementParameters__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="re
                    model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.refinementParameters__box_size = Slot(uri=LAMBDABER.box_size, name="refinementParameters__box_size", curie=LAMBDABER.curie('box_size'),
-                   model_uri=LAMBDABER.refinementParameters__box_size, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.refinementParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.refinementParameters__gold_standard = Slot(uri=LAMBDABER.gold_standard, name="refinementParameters__gold_standard", curie=LAMBDABER.curie('gold_standard'),
                    model_uri=LAMBDABER.refinementParameters__gold_standard, domain=None, range=Optional[Union[bool, Bool]])
@@ -7990,10 +7987,10 @@ slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDABER.map_shar
                    model_uri=LAMBDABER.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDABER.curie('resolution_angstrom'),
-                   model_uri=LAMBDABER.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=LAMBDABER.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fSCCurve__fsc_value = Slot(uri=LAMBDABER.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDABER.curie('fsc_value'),
-                   model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.attributeValue__attribute = Slot(uri=LAMBDABER.attribute, name="attributeValue__attribute", curie=LAMBDABER.curie('attribute'),
                    model_uri=LAMBDABER.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])
@@ -8367,7 +8364,7 @@ slots.measurementConditions__buffer_composition = Slot(uri=LAMBDABER['functional
                    model_uri=LAMBDABER.measurementConditions__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
 
 slots.measurementConditions__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="measurementConditions__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
-                   model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.measurementConditions__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="measurementConditions__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
                    model_uri=LAMBDABER.measurementConditions__ionic_strength, domain=None, range=Optional[Union[dict, QuantityValue]])

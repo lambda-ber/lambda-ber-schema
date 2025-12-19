@@ -29,7 +29,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             lambdaber:frame_rate [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "1.0"^^xsd:float ;
                     lambdaber:unit "frames per second" ] ;
-            lambdaber:total_frames 660 ] ;
+            lambdaber:total_frames [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "660.0"^^xsd:float ;
+                    lambdaber:unit "frames" ] ] ;
     lambdaber:experiment_code "SIBYLS-2023-10-24-GluRS" ;
     lambdaber:experiment_date "2023-10-24" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
@@ -46,14 +48,18 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:operator_id "S. Tsutakawa" ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:i_zero "45.0"^^xsd:float ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "45.0"^^xsd:float ;
+                    lambdaber:unit "scattering intensity" ] ;
             lambdaber:resolution [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "25.0"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
             lambdaber:rg [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "32.5"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "50.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "SIBYLS data archive" ;
     lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" ;
     lambdaber:technique CHMO:0000204 .
@@ -64,7 +70,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Averaged SAXS profile from peak fractions" ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "A_S_GluRS_1_5.dat" ;
-    lambdaber:file_size_bytes 107834 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "107834.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-complete> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-10-24" ;
@@ -72,7 +80,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Complete SEC-SAXS dataset with all 660 frames" ;
     lambdaber:file_format "zip" ;
     lambdaber:file_name "GluRS_Results.zip" ;
-    lambdaber:file_size_bytes 10840982 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10840982.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-frame-001> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-10-20" ;
@@ -80,7 +90,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "First SEC-SAXS frame" ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "GluRS_1_00001.dat" ;
-    lambdaber:file_size_bytes 35739 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "35739.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-structure> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-12-13" ;
@@ -88,7 +100,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Crystal structure of P. aeruginosa GluRS (zinc-bound form)" ;
     lambdaber:file_format "pdb" ;
     lambdaber:file_name "8vc5.pdb" ;
-    lambdaber:file_size_bytes 1310256 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1310256.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/img/guinier-plot> a lambdaber:Image ;
     lambdaber:description "Guinier analysis for Rg determination" ;
@@ -141,7 +155,9 @@ approximately 5 mg/mL, filtered through 0.22 μm filter.
                 "150 mM NaCl",
                 "20 mM Tris-HCl",
                 "5 mM MgCl2" ;
-            lambdaber:ph "7.5"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.0"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
@@ -177,7 +193,9 @@ to determine oligomeric state in solution conditions. Crystal structure
 
 <https://simplescattering.com/workflow/mals-processing> a lambdaber:WorkflowRun ;
     lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters """molecular_weight_determination=enabled;
 polydispersity_analysis=enabled
 """ ;
@@ -196,7 +214,9 @@ polydispersity_analysis=enabled
                     lambdaber:numeric_value "16.0"^^xsd:float ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters """q_range=0.0109-0.4729;
 sample_detector_distance=2.1m;
 detector=Pilatus3_2M;

@@ -15,8 +15,14 @@ techniques_supported:
 - saxs
 - xray_crystallography
 source_type: synchrotron
-q_range_min: 0.01
-q_range_max: 0.6
-sample_changer_capacity: 96
+q_range_min:
+  numeric_value: 0.01
+  unit: inverse Angstroms
+q_range_max:
+  numeric_value: 0.6
+  unit: inverse Angstroms
+sample_changer_capacity:
+  numeric_value: 96.0
+  unit: samples
 mail_in_service: true
 website: https://bl1231.als.lbl.gov/

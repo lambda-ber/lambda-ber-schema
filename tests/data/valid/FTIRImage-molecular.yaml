@@ -15,7 +15,9 @@ dimensions_y:
 exposure_time:
   numeric_value: 0.5
   unit: seconds
-dose: 0
+dose:
+  numeric_value: 0
+  unit: electrons per Angstrom squared
 wavenumber_min:
   numeric_value: 800
   unit: inverse centimeters
@@ -25,7 +27,9 @@ wavenumber_max:
 spectral_resolution:
   numeric_value: 4
   unit: inverse centimeters
-number_of_scans: 32
+number_of_scans:
+  numeric_value: 32
+  unit: scans
 apodization_function: Blackman-Harris 3-term
 molecular_signatures:
 - 1650 cm⁻¹ - Amide I (C=O stretch)

@@ -715,11 +715,11 @@ type BeamlineInstrument
     currentStatus: InstrumentStatusEnum
     techniquesSupported: [TechniqueEnum]!
     sourceType: XRaySourceTypeEnum
-    energyMin: Float
-    energyMax: Float
-    qRangeMin: Float
-    qRangeMax: Float
-    sampleChangerCapacity: Integer
+    energyMin: QuantityValue
+    energyMax: QuantityValue
+    qRangeMin: QuantityValue
+    qRangeMax: QuantityValue
+    sampleChangerCapacity: QuantityValue
     mailInService: Boolean
     website: Uri
   }
@@ -738,7 +738,7 @@ type BiophysicalProperty
 type BufferComposition
   {
     description: String
-    ph: Float
+    ph: QuantityValue
     components: [String]
     additives: [String]
   }
@@ -792,7 +792,7 @@ type CryoEMInstrument
     model: String
     installationDate: String
     currentStatus: InstrumentStatusEnum
-    acceleratingVoltage: Integer
+    acceleratingVoltage: QuantityValue
     csCorrector: Boolean
     phasePlate: Boolean
     detectorTechnology: DetectorTechnologyEnum
@@ -801,23 +801,23 @@ type CryoEMInstrument
     detectorMode: DetectorModeEnum
     detectorPosition: String
     detectorDimensions: String
-    pixelSizePhysicalUm: Float
-    autoloaderCapacity: Integer
-    cs: Float
-    c2Aperture: Float
-    objectiveAperture: Float
+    pixelSizePhysicalUm: QuantityValue
+    autoloaderCapacity: QuantityValue
+    cs: QuantityValue
+    c2Aperture: QuantityValue
+    objectiveAperture: QuantityValue
     phasePlateType: String
     energyFilterPresent: Boolean
     energyFilterMake: String
     energyFilterModel: String
-    energyFilterSlitWidth: Float
-    pixelSizePhysical: Float
+    energyFilterSlitWidth: QuantityValue
+    pixelSizePhysical: QuantityValue
     microscopeSoftware: String
     microscopeSoftwareVersion: String
-    spotsize: Integer
-    gunlens: Integer
+    spotsize: QuantityValue
+    gunlens: QuantityValue
     imagingMode: ImagingModeEnum
-    temBeamDiameter: Float
+    temBeamDiameter: QuantityValue
   }
 
 type CryoEMPreparation
@@ -828,7 +828,7 @@ type CryoEMPreparation
     holeSize: QuantityValue
     vitrificationMethod: VitrificationMethodEnum
     blotTime: QuantityValue
-    blotForce: Integer
+    blotForce: QuantityValue
     humidityPercentage: QuantityValue
     chamberTemperature: QuantityValue
     gridMaterial: GridMaterialEnum
@@ -838,7 +838,7 @@ type CryoEMPreparation
     glowDischargeAtmosphere: String
     glowDischargePressure: QuantityValue
     vitrificationInstrument: String
-    blotNumber: Integer
+    blotNumber: QuantityValue
     waitTime: QuantityValue
     blotterHeight: QuantityValue
     blotterSetting: QuantityValue
@@ -853,7 +853,7 @@ type CrystallizationConditions
     method: CrystallizationMethodEnum
     crystallizationConditions: String
     dropVolume: QuantityValue
-    proteinConcentration: Float
+    proteinConcentration: QuantityValue
     crystalSizeUm: String
     cryoProtectant: String
     crystalId: String
@@ -871,7 +871,7 @@ type CTFEstimationParameters
     defocusSearchMin: QuantityValue
     defocusSearchMax: QuantityValue
     defocusStep: QuantityValue
-    amplitudeContrast: Float
+    amplitudeContrast: QuantityValue
     csUsedInEstimation: QuantityValue
     voltageUsedInEstimation: QuantityValue
   }
@@ -889,7 +889,7 @@ type DataCollectionStrategy
   {
     description: String
     collectionMode: CollectionModeEnum
-    totalFrames: Integer
+    totalFrames: QuantityValue
     frameRate: QuantityValue
     totalDose: QuantityValue
     dosePerFrame: QuantityValue
@@ -897,8 +897,8 @@ type DataCollectionStrategy
     detectorMode: DetectorModeEnum
     pixelSizeCalibrated: QuantityValue
     detectorDistanceMm: QuantityValue
-    beamCenterXPx: Integer
-    beamCenterYPx: Integer
+    beamCenterXPx: QuantityValue
+    beamCenterYPx: QuantityValue
     beamSizeUm: QuantityValue
     fluxPhotonsPerS: QuantityValue
     transmissionPercent: QuantityValue
@@ -917,7 +917,7 @@ type DataFile
     fileName: String!
     filePath: String
     fileFormat: FileFormatEnum!
-    fileSizeBytes: Integer
+    fileSizeBytes: QuantityValue
     checksum: String
     creationDate: String
     dataType: DataTypeEnum
@@ -995,30 +995,30 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
-    magnification: Integer
-    calibratedPixelSize: Float
-    cameraBinning: Float
-    exposureTimePerFrame: Float
-    framesPerMovie: Integer
-    totalExposureTime: Float
-    totalDose: Float
-    doseRate: Float
-    defocusTarget: Float
-    defocusRangeMin: Float
-    defocusRangeMax: Float
-    defocusRangeIncrement: Float
-    astigmatismTarget: Float
-    coma: Float
-    stageTilt: Float
+    magnification: QuantityValue
+    calibratedPixelSize: QuantityValue
+    cameraBinning: QuantityValue
+    exposureTimePerFrame: QuantityValue
+    framesPerMovie: QuantityValue
+    totalExposureTime: QuantityValue
+    totalDose: QuantityValue
+    doseRate: QuantityValue
+    defocusTarget: QuantityValue
+    defocusRangeMin: QuantityValue
+    defocusRangeMax: QuantityValue
+    defocusRangeIncrement: QuantityValue
+    astigmatismTarget: QuantityValue
+    coma: QuantityValue
+    stageTilt: QuantityValue
     autoloaderSlot: String
-    shotsPerHole: Integer
-    holesPerGroup: Integer
+    shotsPerHole: QuantityValue
+    holesPerGroup: QuantityValue
     acquisitionSoftware: String
     acquisitionSoftwareVersion: String
     wavelength: QuantityValue
     oscillationAngle: QuantityValue
     startAngle: QuantityValue
-    numberOfImages: Integer
+    numberOfImages: QuantityValue
     beamCenterX: QuantityValue
     beamCenterY: QuantityValue
     detectorDistance: QuantityValue
@@ -1038,8 +1038,8 @@ type ExperimentRun
     endTime: String
     resolution: QuantityValue
     resolutionAtCorner: QuantityValue
-    ispybDataCollectionId: Integer
-    ispybSessionId: Integer
+    ispybDataCollectionId: QuantityValue
+    ispybSessionId: QuantityValue
   }
 
 type FluorescenceImage
@@ -1053,7 +1053,7 @@ type FluorescenceImage
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
     excitationWavelength: QuantityValue
@@ -1064,14 +1064,14 @@ type FluorescenceImage
     channelName: String
     laserPower: QuantityValue
     pinholeSize: QuantityValue
-    quantumYield: Float
+    quantumYield: QuantityValue
   }
 
 type FSCCurve
   {
     description: String
-    resolutionAngstrom: [Float]
-    fscValue: [Float]
+    resolutionAngstrom: QuantityValue
+    fscValue: QuantityValue
   }
 
 type FTIRImage
@@ -1085,11 +1085,11 @@ type FTIRImage
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     wavenumberMin: QuantityValue
     wavenumberMax: QuantityValue
     spectralResolution: QuantityValue
-    numberOfScans: Integer
+    numberOfScans: QuantityValue
     apodizationFunction: String
     molecularSignatures: [String]
     backgroundCorrection: String
@@ -1131,7 +1131,7 @@ type Image
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
   }
 
 type Image2D
@@ -1145,7 +1145,7 @@ type Image2D
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
   }
@@ -1161,7 +1161,7 @@ type Image3D
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     dimensionsZ: QuantityValue
     voxelSize: QuantityValue
     reconstructionMethod: String
@@ -1212,7 +1212,7 @@ type MeasurementConditions
     title: String
     description: String
     bufferComposition: BufferComposition
-    ph: Float
+    ph: QuantityValue
     ionicStrength: QuantityValue
     temperature: QuantityValue
   }
@@ -1227,13 +1227,13 @@ type Micrograph
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     originMovieId: String
     defocusU: QuantityValue
     defocusV: QuantityValue
     astigmatismAngle: QuantityValue
     resolutionFitLimit: QuantityValue
-    ctfQualityScore: Float
+    ctfQualityScore: QuantityValue
     pixelSize: String
     defocus: QuantityValue
     astigmatism: QuantityValue
@@ -1250,13 +1250,13 @@ type MolecularComposition
 type MotionCorrectionParameters
   {
     description: String
-    patchSize: Integer
-    binning: Float
+    patchSize: QuantityValue
+    binning: QuantityValue
     doseWeighting: Boolean
     bfactorDoseWeighting: QuantityValue
     anisotropicCorrection: Boolean
-    frameGrouping: Integer
-    outputBinning: Float
+    frameGrouping: QuantityValue
+    outputBinning: QuantityValue
     driftTotal: QuantityValue
   }
 
@@ -1271,10 +1271,10 @@ type Movie
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
-    frames: Integer
+    frames: QuantityValue
     superResolution: Boolean
     pixelSizeUnbinned: QuantityValue
     timestamp: String
@@ -1282,9 +1282,9 @@ type Movie
     stagePositionY: QuantityValue
     stagePositionZ: QuantityValue
     nominalDefocus: QuantityValue
-    dosePerFrame: Float
-    beamShiftX: Float
-    beamShiftY: Float
+    dosePerFrame: QuantityValue
+    beamShiftX: QuantityValue
+    beamShiftY: QuantityValue
     iceThicknessEstimate: QuantityValue
     gridSquareId: String
     holeId: String
@@ -1347,7 +1347,7 @@ type OpticalImage
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
     illuminationType: IlluminationTypeEnum
@@ -1362,10 +1362,10 @@ type ParticlePickingParameters
   {
     description: String
     pickingMethod: String
-    boxSize: Integer
-    threshold: Float
-    powerScore: Float
-    nccScore: Float
+    boxSize: QuantityValue
+    threshold: QuantityValue
+    powerScore: QuantityValue
+    nccScore: QuantityValue
     modelName: String
     modelFilePath: String
     modelSource: String
@@ -1422,7 +1422,7 @@ type ProteinConstruct
     uniprotId: String
     geneName: String
     ncbiTaxid: String
-    sequenceLengthAa: Integer
+    sequenceLengthAa: QuantityValue
     constructDescription: String
     geneSynthesisProvider: String
     codonOptimizationOrganism: String
@@ -1476,8 +1476,8 @@ type QualityMetrics
     resolutionLowA: QuantityValue
     completeness: QuantityValue
     completenessHighResShellPercent: QuantityValue
-    signalToNoise: Float
-    meanIOverSigmaI: Float
+    signalToNoise: QuantityValue
+    meanIOverSigmaI: QuantityValue
     spaceGroup: String
     unitCellA: QuantityValue
     unitCellB: QuantityValue
@@ -1485,24 +1485,24 @@ type QualityMetrics
     unitCellAlpha: QuantityValue
     unitCellBeta: QuantityValue
     unitCellGamma: QuantityValue
-    multiplicity: Float
-    ccHalf: Float
-    rMerge: Float
-    rPim: Float
-    wilsonBFactorA2: Float
+    multiplicity: QuantityValue
+    ccHalf: QuantityValue
+    rMerge: QuantityValue
+    rPim: QuantityValue
+    wilsonBFactorA2: QuantityValue
     anomalousUsed: Boolean
-    anomCorr: Float
-    anomSigAno: Float
-    rWork: Float
-    rFree: Float
-    ramachandranFavoredPercent: Float
-    ramachandranOutliersPercent: Float
-    clashscore: Float
-    molprobityScore: Float
-    averageBFactorA2: Float
-    iZero: Float
+    anomCorr: QuantityValue
+    anomSigAno: QuantityValue
+    rWork: QuantityValue
+    rFree: QuantityValue
+    ramachandranFavoredPercent: QuantityValue
+    ramachandranOutliersPercent: QuantityValue
+    clashscore: QuantityValue
+    molprobityScore: QuantityValue
+    averageBFactorA2: QuantityValue
+    iZero: QuantityValue
     rg: QuantityValue
-    rFactor: Float
+    rFactor: QuantityValue
   }
 
 type QuantityValue
@@ -1521,7 +1521,7 @@ type RefinementParameters
     description: String
     symmetry: SymmetryEnum
     pixelSize: QuantityValue
-    boxSize: Integer
+    boxSize: QuantityValue
     goldStandard: Boolean
     splitStrategy: String
     resolution0143: QuantityValue
@@ -1599,8 +1599,8 @@ type SamplePreparation
     tagRemoval: Boolean
     protease: String
     proteaseRatio: String
-    cleavageTimeH: Float
-    cleavageTemperatureC: Float
+    cleavageTimeH: QuantityValue
+    cleavageTemperatureC: QuantityValue
     secondAffinityReverse: String
     iexColumn: String
     hicColumn: String
@@ -1608,9 +1608,9 @@ type SamplePreparation
     secBuffer: String
     concentrationMethod: String
     finalBuffer: String
-    finalConcentrationMgPerMl: Float
-    yieldMg: Float
-    purityBySdsPagePercent: Float
+    finalConcentrationMgPerMl: QuantityValue
+    yieldMg: QuantityValue
+    purityBySdsPagePercent: QuantityValue
     aggregationAssessment: String
     aliquoting: String
   }
@@ -1629,18 +1629,18 @@ type SAXSInstrument
     model: String
     installationDate: String
     currentStatus: InstrumentStatusEnum
-    qRangeMin: Float
-    qRangeMax: Float
-    detectorDistanceMin: Float
-    detectorDistanceMax: Float
-    sampleChangerCapacity: Integer
+    qRangeMin: QuantityValue
+    qRangeMax: QuantityValue
+    detectorDistanceMin: QuantityValue
+    detectorDistanceMax: QuantityValue
+    sampleChangerCapacity: QuantityValue
     temperatureControlRange: String
   }
 
 type SAXSPreparation
   {
     description: String
-    concentrationSeries: [Float]
+    concentrationSeries: QuantityValue
     bufferMatchingProtocol: String
     sampleCellType: String
     cellPathLength: QuantityValue
@@ -1717,7 +1717,7 @@ type WorkflowRun
     workflowCode: String!
     workflowType: WorkflowTypeEnum!
     experimentId: String!
-    processingLevel: Integer
+    processingLevel: QuantityValue
     softwareName: String!
     softwareVersion: String
     additionalSoftware: String
@@ -1733,8 +1733,8 @@ type WorkflowRun
     ncsUsed: Boolean
     restraintsOther: String
     ligandsCofactors: String
-    numberOfWaters: Integer
-    refinementResolutionA: Float
+    numberOfWaters: QuantityValue
+    refinementResolutionA: QuantityValue
     depositedToPdb: Boolean
     pdbId: String
     validationReportPath: String
@@ -1747,29 +1747,29 @@ type WorkflowRun
     unitCellGamma: QuantityValue
     resolutionHigh: QuantityValue
     resolutionLow: QuantityValue
-    rmerge: Float
-    rpim: Float
-    ccHalf: Float
+    rmerge: QuantityValue
+    rpim: QuantityValue
+    ccHalf: QuantityValue
     completenessPercent: QuantityValue
-    iOverSigma: Float
+    iOverSigma: QuantityValue
     wilsonBFactor: QuantityValue
-    multiplicity: Float
+    multiplicity: QuantityValue
     anomalousCompleteness: QuantityValue
-    anomalousMultiplicity: Float
-    ccAnomalous: Float
-    rAnomalous: Float
-    sigAnomalous: Float
-    nTotalObservations: Integer
-    nTotalUnique: Integer
-    ispybAutoProcProgramId: Integer
-    ispybAutoProcScalingId: Integer
-    rwork: Float
-    rfree: Float
+    anomalousMultiplicity: QuantityValue
+    ccAnomalous: QuantityValue
+    rAnomalous: QuantityValue
+    sigAnomalous: QuantityValue
+    nTotalObservations: QuantityValue
+    nTotalUnique: QuantityValue
+    ispybAutoProcProgramId: QuantityValue
+    ispybAutoProcScalingId: QuantityValue
+    rwork: QuantityValue
+    rfree: QuantityValue
     rmsdBonds: QuantityValue
     rmsdAngles: QuantityValue
     ramachandranFavored: QuantityValue
     ramachandranOutliers: QuantityValue
-    clashscore: Float
+    clashscore: QuantityValue
     processingNotes: String
     computeResources: ComputeResources
     startedAt: String
@@ -1800,11 +1800,11 @@ type XRayInstrument
     detectorTechnology: DetectorTechnologyEnum
     detectorManufacturer: String
     detectorModel: String
-    energyMin: Float
-    energyMax: Float
-    beamSizeMin: Float
-    beamSizeMax: Float
-    fluxDensity: Float
+    energyMin: QuantityValue
+    energyMax: QuantityValue
+    beamSizeMin: QuantityValue
+    beamSizeMax: QuantityValue
+    fluxDensity: QuantityValue
     monochromatorType: String
     goniometerType: String
     crystalCoolingCapability: Boolean
@@ -1813,7 +1813,7 @@ type XRayInstrument
 type XRayPreparation
   {
     description: String
-    proteinConcentrationMgPerMl: Float
+    proteinConcentrationMgPerMl: QuantityValue
     proteinBuffer: String
     additives: String
     crystallizationMethod: CrystallizationMethodEnum
@@ -1851,7 +1851,7 @@ type XRFImage
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
-    dose: Float
+    dose: QuantityValue
     defocus: QuantityValue
     astigmatism: QuantityValue
     beamEnergy: QuantityValue

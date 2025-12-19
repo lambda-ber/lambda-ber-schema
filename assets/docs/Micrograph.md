@@ -6,7 +6,7 @@ Motion-corrected micrograph derived from movie
 URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;origin_movie_id:string%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<ctf_quality_score%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[QuantityValue]<dose%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;origin_movie_id:string%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<ctf_quality_score%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[QuantityValue]<dose%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])
 
 ## Parents
 
@@ -22,7 +22,7 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 
  * [➞dose](micrograph__dose.md)  <sub>0..1</sub>
      * Description: Total electron dose in e-/Angstrom^2
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞origin_movie_id](micrograph__origin_movie_id.md)  <sub>0..1</sub>
      * Description: Reference to original movie file
      * Range: [String](types/String.md)
@@ -40,7 +40,7 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞ctf_quality_score](micrograph__ctf_quality_score.md)  <sub>0..1</sub>
      * Description: CTF estimation quality score
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [Micrograph➞pixel_size](Micrograph_pixel_size.md)  <sub>0..1</sub>
      * Description: Final pixel size in Angstroms per pixel
      * Range: [String](types/String.md)

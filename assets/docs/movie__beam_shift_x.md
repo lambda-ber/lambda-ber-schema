@@ -8,7 +8,7 @@ URI: [lambdaber:movie__beam_shift_x](https://w3id.org/lambda-ber-schema/movie__b
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

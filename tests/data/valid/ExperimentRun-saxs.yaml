@@ -18,8 +18,12 @@ experimental_conditions:
 data_collection_strategy:
   collection_mode: batch
 quality_metrics:
-  signal_to_noise: 50
-  i_zero: 0.045
+  signal_to_noise:
+    numeric_value: 50
+    unit: signal to noise ratio
+  i_zero:
+    numeric_value: 0.045
+    unit: scattering intensity
   rg:
     numeric_value: 42.3
     unit: Angstroms

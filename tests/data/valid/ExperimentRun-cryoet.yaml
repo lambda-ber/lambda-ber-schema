@@ -20,7 +20,9 @@ experimental_conditions:
   atmosphere: High vacuum
 data_collection_strategy:
   collection_mode: continuous
-  total_frames: 61
+  total_frames:
+    numeric_value: 61
+    unit: frames
   frame_rate:
     numeric_value: 0.5
     unit: frames per second
@@ -37,7 +39,11 @@ quality_metrics:
   completeness:
     numeric_value: 95
     unit: percent
-  signal_to_noise: 2.1
-  r_factor: 0
+  signal_to_noise:
+    numeric_value: 2.1
+    unit: signal to noise ratio
+  r_factor:
+    numeric_value: 0
+    unit: R-factor
 raw_data_location: /data/berkeley/2024/cryoet/mitochondria/
 processing_status: processing

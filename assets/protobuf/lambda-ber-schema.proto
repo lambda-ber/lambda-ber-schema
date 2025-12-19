@@ -47,11 +47,11 @@ message BeamlineInstrument
   instrumentStatusEnum currentStatus = 0
  repeated  techniqueEnum techniquesSupported = 0
   xRaySourceTypeEnum sourceType = 0
-  float energyMin = 0
-  float energyMax = 0
-  float qRangeMin = 0
-  float qRangeMax = 0
-  integer sampleChangerCapacity = 0
+  quantityValue energyMin = 0
+  quantityValue energyMax = 0
+  quantityValue qRangeMin = 0
+  quantityValue qRangeMax = 0
+  quantityValue sampleChangerCapacity = 0
   boolean mailInService = 0
   uri website = 0
  }
@@ -70,7 +70,7 @@ message BiophysicalProperty
 message BufferComposition
  {
   string description = 0
-  float ph = 0
+  quantityValue ph = 0
  repeated  string components = 0
  repeated  string additives = 0
  }
@@ -124,7 +124,7 @@ message CryoEMInstrument
   string model = 0
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
-  integer acceleratingVoltage = 0
+  quantityValue acceleratingVoltage = 0
   boolean csCorrector = 0
   boolean phasePlate = 0
   detectorTechnologyEnum detectorTechnology = 0
@@ -133,23 +133,23 @@ message CryoEMInstrument
   detectorModeEnum detectorMode = 0
   string detectorPosition = 0
   string detectorDimensions = 0
-  float pixelSizePhysicalUm = 0
-  integer autoloaderCapacity = 0
-  float cs = 0
-  float c2Aperture = 0
-  float objectiveAperture = 0
+  quantityValue pixelSizePhysicalUm = 0
+  quantityValue autoloaderCapacity = 0
+  quantityValue cs = 0
+  quantityValue c2Aperture = 0
+  quantityValue objectiveAperture = 0
   string phasePlateType = 0
   boolean energyFilterPresent = 0
   string energyFilterMake = 0
   string energyFilterModel = 0
-  float energyFilterSlitWidth = 0
-  float pixelSizePhysical = 0
+  quantityValue energyFilterSlitWidth = 0
+  quantityValue pixelSizePhysical = 0
   string microscopeSoftware = 0
   string microscopeSoftwareVersion = 0
-  integer spotsize = 0
-  integer gunlens = 0
+  quantityValue spotsize = 0
+  quantityValue gunlens = 0
   imagingModeEnum imagingMode = 0
-  float temBeamDiameter = 0
+  quantityValue temBeamDiameter = 0
  }
 // Cryo-EM specific sample preparation
 message CryoEMPreparation
@@ -160,7 +160,7 @@ message CryoEMPreparation
   quantityValue holeSize = 0
   vitrificationMethodEnum vitrificationMethod = 0
   quantityValue blotTime = 0
-  integer blotForce = 0
+  quantityValue blotForce = 0
   quantityValue humidityPercentage = 0
   quantityValue chamberTemperature = 0
   gridMaterialEnum gridMaterial = 0
@@ -170,7 +170,7 @@ message CryoEMPreparation
   string glowDischargeAtmosphere = 0
   quantityValue glowDischargePressure = 0
   string vitrificationInstrument = 0
-  integer blotNumber = 0
+  quantityValue blotNumber = 0
   quantityValue waitTime = 0
   quantityValue blotterHeight = 0
   quantityValue blotterSetting = 0
@@ -185,7 +185,7 @@ message CrystallizationConditions
   crystallizationMethodEnum method = 0
   string crystallizationConditions = 0
   quantityValue dropVolume = 0
-  float proteinConcentration = 0
+  quantityValue proteinConcentration = 0
   string crystalSizeUm = 0
   string cryoProtectant = 0
   string crystalId = 0
@@ -203,7 +203,7 @@ message CTFEstimationParameters
   quantityValue defocusSearchMin = 0
   quantityValue defocusSearchMax = 0
   quantityValue defocusStep = 0
-  float amplitudeContrast = 0
+  quantityValue amplitudeContrast = 0
   quantityValue csUsedInEstimation = 0
   quantityValue voltageUsedInEstimation = 0
  }
@@ -221,7 +221,7 @@ message DataCollectionStrategy
  {
   string description = 0
   collectionModeEnum collectionMode = 0
-  integer totalFrames = 0
+  quantityValue totalFrames = 0
   quantityValue frameRate = 0
   quantityValue totalDose = 0
   quantityValue dosePerFrame = 0
@@ -229,8 +229,8 @@ message DataCollectionStrategy
   detectorModeEnum detectorMode = 0
   quantityValue pixelSizeCalibrated = 0
   quantityValue detectorDistanceMm = 0
-  integer beamCenterXPx = 0
-  integer beamCenterYPx = 0
+  quantityValue beamCenterXPx = 0
+  quantityValue beamCenterYPx = 0
   quantityValue beamSizeUm = 0
   quantityValue fluxPhotonsPerS = 0
   quantityValue transmissionPercent = 0
@@ -249,7 +249,7 @@ message DataFile
   string fileName = 0
   string filePath = 0
   fileFormatEnum fileFormat = 0
-  integer fileSizeBytes = 0
+  quantityValue fileSizeBytes = 0
   string checksum = 0
   string creationDate = 0
   dataTypeEnum dataType = 0
@@ -327,30 +327,30 @@ message ExperimentRun
   qualityMetrics qualityMetrics = 0
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
-  integer magnification = 0
-  float calibratedPixelSize = 0
-  float cameraBinning = 0
-  float exposureTimePerFrame = 0
-  integer framesPerMovie = 0
-  float totalExposureTime = 0
-  float totalDose = 0
-  float doseRate = 0
-  float defocusTarget = 0
-  float defocusRangeMin = 0
-  float defocusRangeMax = 0
-  float defocusRangeIncrement = 0
-  float astigmatismTarget = 0
-  float coma = 0
-  float stageTilt = 0
+  quantityValue magnification = 0
+  quantityValue calibratedPixelSize = 0
+  quantityValue cameraBinning = 0
+  quantityValue exposureTimePerFrame = 0
+  quantityValue framesPerMovie = 0
+  quantityValue totalExposureTime = 0
+  quantityValue totalDose = 0
+  quantityValue doseRate = 0
+  quantityValue defocusTarget = 0
+  quantityValue defocusRangeMin = 0
+  quantityValue defocusRangeMax = 0
+  quantityValue defocusRangeIncrement = 0
+  quantityValue astigmatismTarget = 0
+  quantityValue coma = 0
+  quantityValue stageTilt = 0
   string autoloaderSlot = 0
-  integer shotsPerHole = 0
-  integer holesPerGroup = 0
+  quantityValue shotsPerHole = 0
+  quantityValue holesPerGroup = 0
   string acquisitionSoftware = 0
   string acquisitionSoftwareVersion = 0
   quantityValue wavelength = 0
   quantityValue oscillationAngle = 0
   quantityValue startAngle = 0
-  integer numberOfImages = 0
+  quantityValue numberOfImages = 0
   quantityValue beamCenterX = 0
   quantityValue beamCenterY = 0
   quantityValue detectorDistance = 0
@@ -370,8 +370,8 @@ message ExperimentRun
   string endTime = 0
   quantityValue resolution = 0
   quantityValue resolutionAtCorner = 0
-  integer ispybDataCollectionId = 0
-  integer ispybSessionId = 0
+  quantityValue ispybDataCollectionId = 0
+  quantityValue ispybSessionId = 0
  }
 // Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 message FluorescenceImage
@@ -385,7 +385,7 @@ message FluorescenceImage
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
   quantityValue excitationWavelength = 0
@@ -396,7 +396,7 @@ message FluorescenceImage
   string channelName = 0
   quantityValue laserPower = 0
   quantityValue pinholeSize = 0
-  float quantumYield = 0
+  quantityValue quantumYield = 0
  }
 // Fourier Shell Correlation curve data.
 // 
@@ -406,8 +406,8 @@ message FluorescenceImage
 message FSCCurve
  {
   string description = 0
- repeated  float resolutionAngstrom = 0
- repeated  float fscValue = 0
+  quantityValue resolutionAngstrom = 0
+  quantityValue fscValue = 0
  }
 // Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
 message FTIRImage
@@ -421,11 +421,11 @@ message FTIRImage
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue wavenumberMin = 0
   quantityValue wavenumberMax = 0
   quantityValue spectralResolution = 0
-  integer numberOfScans = 0
+  quantityValue numberOfScans = 0
   string apodizationFunction = 0
  repeated  string molecularSignatures = 0
   string backgroundCorrection = 0
@@ -467,7 +467,7 @@ message Image
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
  }
 // A 2D image (micrograph, diffraction pattern)
 message Image2D
@@ -481,7 +481,7 @@ message Image2D
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
  }
@@ -497,7 +497,7 @@ message Image3D
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue dimensionsZ = 0
   quantityValue voxelSize = 0
   string reconstructionMethod = 0
@@ -548,7 +548,7 @@ message MeasurementConditions
   string title = 0
   string description = 0
   bufferComposition bufferComposition = 0
-  float ph = 0
+  quantityValue ph = 0
   quantityValue ionicStrength = 0
   quantityValue temperature = 0
  }
@@ -563,13 +563,13 @@ message Micrograph
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   string originMovieId = 0
   quantityValue defocusU = 0
   quantityValue defocusV = 0
   quantityValue astigmatismAngle = 0
   quantityValue resolutionFitLimit = 0
-  float ctfQualityScore = 0
+  quantityValue ctfQualityScore = 0
   string pixelSize = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
@@ -586,13 +586,13 @@ message MolecularComposition
 message MotionCorrectionParameters
  {
   string description = 0
-  integer patchSize = 0
-  float binning = 0
+  quantityValue patchSize = 0
+  quantityValue binning = 0
   boolean doseWeighting = 0
   quantityValue bfactorDoseWeighting = 0
   boolean anisotropicCorrection = 0
-  integer frameGrouping = 0
-  float outputBinning = 0
+  quantityValue frameGrouping = 0
+  quantityValue outputBinning = 0
   quantityValue driftTotal = 0
  }
 // Raw cryo-EM movie with frame-by-frame metadata for motion correction
@@ -607,10 +607,10 @@ message Movie
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
-  integer frames = 0
+  quantityValue frames = 0
   boolean superResolution = 0
   quantityValue pixelSizeUnbinned = 0
   string timestamp = 0
@@ -618,9 +618,9 @@ message Movie
   quantityValue stagePositionY = 0
   quantityValue stagePositionZ = 0
   quantityValue nominalDefocus = 0
-  float dosePerFrame = 0
-  float beamShiftX = 0
-  float beamShiftY = 0
+  quantityValue dosePerFrame = 0
+  quantityValue beamShiftX = 0
+  quantityValue beamShiftY = 0
   quantityValue iceThicknessEstimate = 0
   string gridSquareId = 0
   string holeId = 0
@@ -676,7 +676,7 @@ message OpticalImage
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
   illuminationTypeEnum illuminationType = 0
@@ -691,10 +691,10 @@ message ParticlePickingParameters
  {
   string description = 0
   string pickingMethod = 0
-  integer boxSize = 0
-  float threshold = 0
-  float powerScore = 0
-  float nccScore = 0
+  quantityValue boxSize = 0
+  quantityValue threshold = 0
+  quantityValue powerScore = 0
+  quantityValue nccScore = 0
   string modelName = 0
   string modelFilePath = 0
   string modelSource = 0
@@ -751,7 +751,7 @@ message ProteinConstruct
   string uniprotId = 0
   string geneName = 0
   string ncbiTaxid = 0
-  integer sequenceLengthAa = 0
+  quantityValue sequenceLengthAa = 0
   string constructDescription = 0
   string geneSynthesisProvider = 0
   string codonOptimizationOrganism = 0
@@ -805,8 +805,8 @@ message QualityMetrics
   quantityValue resolutionLowA = 0
   quantityValue completeness = 0
   quantityValue completenessHighResShellPercent = 0
-  float signalToNoise = 0
-  float meanIOverSigmaI = 0
+  quantityValue signalToNoise = 0
+  quantityValue meanIOverSigmaI = 0
   string spaceGroup = 0
   quantityValue unitCellA = 0
   quantityValue unitCellB = 0
@@ -814,24 +814,24 @@ message QualityMetrics
   quantityValue unitCellAlpha = 0
   quantityValue unitCellBeta = 0
   quantityValue unitCellGamma = 0
-  float multiplicity = 0
-  float ccHalf = 0
-  float rMerge = 0
-  float rPim = 0
-  float wilsonBFactorA2 = 0
+  quantityValue multiplicity = 0
+  quantityValue ccHalf = 0
+  quantityValue rMerge = 0
+  quantityValue rPim = 0
+  quantityValue wilsonBFactorA2 = 0
   boolean anomalousUsed = 0
-  float anomCorr = 0
-  float anomSigAno = 0
-  float rWork = 0
-  float rFree = 0
-  float ramachandranFavoredPercent = 0
-  float ramachandranOutliersPercent = 0
-  float clashscore = 0
-  float molprobityScore = 0
-  float averageBFactorA2 = 0
-  float iZero = 0
+  quantityValue anomCorr = 0
+  quantityValue anomSigAno = 0
+  quantityValue rWork = 0
+  quantityValue rFree = 0
+  quantityValue ramachandranFavoredPercent = 0
+  quantityValue ramachandranOutliersPercent = 0
+  quantityValue clashscore = 0
+  quantityValue molprobityScore = 0
+  quantityValue averageBFactorA2 = 0
+  quantityValue iZero = 0
   quantityValue rg = 0
-  float rFactor = 0
+  quantityValue rFactor = 0
  }
 // A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
 message QuantityValue
@@ -850,7 +850,7 @@ message RefinementParameters
   string description = 0
   symmetryEnum symmetry = 0
   quantityValue pixelSize = 0
-  integer boxSize = 0
+  quantityValue boxSize = 0
   boolean goldStandard = 0
   string splitStrategy = 0
   quantityValue resolution0143 = 0
@@ -928,8 +928,8 @@ message SamplePreparation
   boolean tagRemoval = 0
   string protease = 0
   string proteaseRatio = 0
-  float cleavageTimeH = 0
-  float cleavageTemperatureC = 0
+  quantityValue cleavageTimeH = 0
+  quantityValue cleavageTemperatureC = 0
   string secondAffinityReverse = 0
   string iexColumn = 0
   string hicColumn = 0
@@ -937,9 +937,9 @@ message SamplePreparation
   string secBuffer = 0
   string concentrationMethod = 0
   string finalBuffer = 0
-  float finalConcentrationMgPerMl = 0
-  float yieldMg = 0
-  float purityBySdsPagePercent = 0
+  quantityValue finalConcentrationMgPerMl = 0
+  quantityValue yieldMg = 0
+  quantityValue purityBySdsPagePercent = 0
   string aggregationAssessment = 0
   string aliquoting = 0
  }
@@ -958,18 +958,18 @@ message SAXSInstrument
   string model = 0
   string installationDate = 0
   instrumentStatusEnum currentStatus = 0
-  float qRangeMin = 0
-  float qRangeMax = 0
-  float detectorDistanceMin = 0
-  float detectorDistanceMax = 0
-  integer sampleChangerCapacity = 0
+  quantityValue qRangeMin = 0
+  quantityValue qRangeMax = 0
+  quantityValue detectorDistanceMin = 0
+  quantityValue detectorDistanceMax = 0
+  quantityValue sampleChangerCapacity = 0
   string temperatureControlRange = 0
  }
 // SAXS/WAXS specific preparation
 message SAXSPreparation
  {
   string description = 0
- repeated  float concentrationSeries = 0
+  quantityValue concentrationSeries = 0
   string bufferMatchingProtocol = 0
   string sampleCellType = 0
   quantityValue cellPathLength = 0
@@ -1041,7 +1041,7 @@ message WorkflowRun
   string workflowCode = 0
   workflowTypeEnum workflowType = 0
   string experimentId = 0
-  integer processingLevel = 0
+  quantityValue processingLevel = 0
   string softwareName = 0
   string softwareVersion = 0
   string additionalSoftware = 0
@@ -1057,8 +1057,8 @@ message WorkflowRun
   boolean ncsUsed = 0
   string restraintsOther = 0
   string ligandsCofactors = 0
-  integer numberOfWaters = 0
-  float refinementResolutionA = 0
+  quantityValue numberOfWaters = 0
+  quantityValue refinementResolutionA = 0
   boolean depositedToPdb = 0
   string pdbId = 0
   string validationReportPath = 0
@@ -1071,29 +1071,29 @@ message WorkflowRun
   quantityValue unitCellGamma = 0
   quantityValue resolutionHigh = 0
   quantityValue resolutionLow = 0
-  float rmerge = 0
-  float rpim = 0
-  float ccHalf = 0
+  quantityValue rmerge = 0
+  quantityValue rpim = 0
+  quantityValue ccHalf = 0
   quantityValue completenessPercent = 0
-  float iOverSigma = 0
+  quantityValue iOverSigma = 0
   quantityValue wilsonBFactor = 0
-  float multiplicity = 0
+  quantityValue multiplicity = 0
   quantityValue anomalousCompleteness = 0
-  float anomalousMultiplicity = 0
-  float ccAnomalous = 0
-  float rAnomalous = 0
-  float sigAnomalous = 0
-  integer nTotalObservations = 0
-  integer nTotalUnique = 0
-  integer ispybAutoProcProgramId = 0
-  integer ispybAutoProcScalingId = 0
-  float rwork = 0
-  float rfree = 0
+  quantityValue anomalousMultiplicity = 0
+  quantityValue ccAnomalous = 0
+  quantityValue rAnomalous = 0
+  quantityValue sigAnomalous = 0
+  quantityValue nTotalObservations = 0
+  quantityValue nTotalUnique = 0
+  quantityValue ispybAutoProcProgramId = 0
+  quantityValue ispybAutoProcScalingId = 0
+  quantityValue rwork = 0
+  quantityValue rfree = 0
   quantityValue rmsdBonds = 0
   quantityValue rmsdAngles = 0
   quantityValue ramachandranFavored = 0
   quantityValue ramachandranOutliers = 0
-  float clashscore = 0
+  quantityValue clashscore = 0
   string processingNotes = 0
   computeResources computeResources = 0
   string startedAt = 0
@@ -1124,11 +1124,11 @@ message XRayInstrument
   detectorTechnologyEnum detectorTechnology = 0
   string detectorManufacturer = 0
   string detectorModel = 0
-  float energyMin = 0
-  float energyMax = 0
-  float beamSizeMin = 0
-  float beamSizeMax = 0
-  float fluxDensity = 0
+  quantityValue energyMin = 0
+  quantityValue energyMax = 0
+  quantityValue beamSizeMin = 0
+  quantityValue beamSizeMax = 0
+  quantityValue fluxDensity = 0
   string monochromatorType = 0
   string goniometerType = 0
   boolean crystalCoolingCapability = 0
@@ -1137,7 +1137,7 @@ message XRayInstrument
 message XRayPreparation
  {
   string description = 0
-  float proteinConcentrationMgPerMl = 0
+  quantityValue proteinConcentrationMgPerMl = 0
   string proteinBuffer = 0
   string additives = 0
   crystallizationMethodEnum crystallizationMethod = 0
@@ -1175,7 +1175,7 @@ message XRFImage
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
-  float dose = 0
+  quantityValue dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
   quantityValue beamEnergy = 0

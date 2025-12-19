@@ -6,7 +6,7 @@ A 2D image (micrograph, diffraction pattern)
 URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])
 
 ## Parents
 
@@ -66,4 +66,4 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)

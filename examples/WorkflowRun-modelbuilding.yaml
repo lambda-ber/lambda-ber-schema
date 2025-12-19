@@ -5,7 +5,9 @@ workflow_code: WF-MODEL-PROT-001
 workflow_type: model_building
 experiment_id: lambdaber:exp_proteasome_001
 software_name: Coot
-processing_level: 4
+processing_level:
+  numeric_value: 4.0
+  unit: level
 software_version: 0.9.8.92
 processing_parameters: Real space refinement with secondary structure restraints
 compute_resources:

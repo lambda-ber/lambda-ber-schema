@@ -6,7 +6,7 @@ SAXS/WAXS instrument specifications
 URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[SAXSInstrument&#124;q_range_min:float%20%3F;q_range_max:float%20%3F;detector_distance_min:float%20%3F;detector_distance_max:float%20%3F;sample_changer_capacity:integer%20%3F;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<sample_changer_capacity%200..1-++[SAXSInstrument&#124;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<detector_distance_max%200..1-++[SAXSInstrument],[QuantityValue]<detector_distance_min%200..1-++[SAXSInstrument],[QuantityValue]<q_range_max%200..1-++[SAXSInstrument],[QuantityValue]<q_range_min%200..1-++[SAXSInstrument],[Instrument]^-[SAXSInstrument],[QuantityValue],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<sample_changer_capacity%200..1-++[SAXSInstrument&#124;temperature_control_range:string%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<detector_distance_max%200..1-++[SAXSInstrument],[QuantityValue]<detector_distance_min%200..1-++[SAXSInstrument],[QuantityValue]<q_range_max%200..1-++[SAXSInstrument],[QuantityValue]<q_range_min%200..1-++[SAXSInstrument],[Instrument]^-[SAXSInstrument],[QuantityValue],[Instrument])
 
 ## Parents
 
@@ -19,19 +19,19 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
 
  * [➞q_range_min](sAXSInstrument__q_range_min.md)  <sub>0..1</sub>
      * Description: Minimum q value in inverse Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞q_range_max](sAXSInstrument__q_range_max.md)  <sub>0..1</sub>
      * Description: Maximum q value in inverse Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞detector_distance_min](sAXSInstrument__detector_distance_min.md)  <sub>0..1</sub>
      * Description: Minimum detector distance in mm
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞detector_distance_max](sAXSInstrument__detector_distance_max.md)  <sub>0..1</sub>
      * Description: Maximum detector distance in mm
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞sample_changer_capacity](sAXSInstrument__sample_changer_capacity.md)  <sub>0..1</sub>
      * Description: Number of samples in automatic sample changer
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞temperature_control_range](sAXSInstrument__temperature_control_range.md)  <sub>0..1</sub>
      * Description: Temperature control range in Celsius
      * Range: [String](types/String.md)

@@ -15,7 +15,9 @@ dimensions_y:
 exposure_time:
   numeric_value: 2.5
   unit: seconds
-dose: 40
+dose:
+  numeric_value: 40
+  unit: electrons per Angstrom squared
 defocus:
   numeric_value: -2.1
   unit: micrometers

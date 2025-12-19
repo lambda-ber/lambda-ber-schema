@@ -20,7 +20,10 @@
     "numeric_value": 0.0,
     "unit": "seconds"
   },
-  "dose": 0.0,
+  "dose": {
+    "numeric_value": 0.0,
+    "unit": "electrons per Angstrom squared"
+  },
   "dimensions_z": {
     "numeric_value": 440.0,
     "unit": "pixels"

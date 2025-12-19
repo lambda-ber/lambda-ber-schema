@@ -47,7 +47,10 @@
             "unit": "milligrams per milliliter"
           },
           "buffer_composition": {
-            "ph": 7.5,
+            "ph": {
+              "numeric_value": 7.5,
+              "unit": "pH units"
+            },
             "components": [
               "20 mM Tris-HCl",
               "150 mM NaCl",
@@ -106,7 +109,10 @@
           },
           "data_collection_strategy": {
             "collection_mode": "sec_saxs",
-            "total_frames": 660,
+            "total_frames": {
+              "numeric_value": 660.0,
+              "unit": "frames"
+            },
             "frame_rate": {
               "numeric_value": 1.0,
               "unit": "frames per second"
@@ -117,8 +123,14 @@
               "numeric_value": 25.0,
               "unit": "Angstroms"
             },
-            "signal_to_noise": 50.0,
-            "i_zero": 45.0,
+            "signal_to_noise": {
+              "numeric_value": 50.0,
+              "unit": "signal to noise ratio"
+            },
+            "i_zero": {
+              "numeric_value": 45.0,
+              "unit": "scattering intensity"
+            },
             "rg": {
               "numeric_value": 32.5,
               "unit": "Angstroms"
@@ -135,7 +147,10 @@
           "workflow_type": "saxs_analysis",
           "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
           "software_name": "SAXS FrameSlice",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "2023",
           "processing_parameters": "q_range=0.0109-0.4729;\nsample_detector_distance=2.1m;\ndetector=Pilatus3_2M;\nbuffer_subtraction=automated;\nframe_averaging=enabled\n",
           "compute_resources": {
@@ -157,7 +172,10 @@
           "workflow_type": "saxs_analysis",
           "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
           "software_name": "MALS Analysis Software",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "2023",
           "processing_parameters": "molecular_weight_determination=enabled;\npolydispersity_analysis=enabled\n"
         }
@@ -168,7 +186,10 @@
           "description": "First SEC-SAXS frame",
           "file_name": "GluRS_1_00001.dat",
           "file_format": "ascii",
-          "file_size_bytes": 35739,
+          "file_size_bytes": {
+            "numeric_value": 35739.0,
+            "unit": "bytes"
+          },
           "creation_date": "2023-10-20",
           "data_type": "scattering"
         },
@@ -177,7 +198,10 @@
           "description": "Averaged SAXS profile from peak fractions",
           "file_name": "A_S_GluRS_1_5.dat",
           "file_format": "ascii",
-          "file_size_bytes": 107834,
+          "file_size_bytes": {
+            "numeric_value": 107834.0,
+            "unit": "bytes"
+          },
           "creation_date": "2023-10-24",
           "data_type": "processed_data"
         },
@@ -186,7 +210,10 @@
           "description": "Crystal structure of P. aeruginosa GluRS (zinc-bound form)",
           "file_name": "8vc5.pdb",
           "file_format": "pdb",
-          "file_size_bytes": 1310256,
+          "file_size_bytes": {
+            "numeric_value": 1310256.0,
+            "unit": "bytes"
+          },
           "creation_date": "2023-12-13",
           "data_type": "model"
         },
@@ -195,7 +222,10 @@
           "description": "Complete SEC-SAXS dataset with all 660 frames",
           "file_name": "GluRS_Results.zip",
           "file_format": "zip",
-          "file_size_bytes": 10840982,
+          "file_size_bytes": {
+            "numeric_value": 10840982.0,
+            "unit": "bytes"
+          },
           "creation_date": "2023-10-24",
           "data_type": "raw_data"
         }

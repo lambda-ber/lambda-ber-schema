@@ -251,8 +251,6 @@ classes:
         description: "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        minimum_value: 0
-        maximum_value: 100
       quality_metrics:
         description: "Quality control metrics for the sample"
       # Functional annotations from knowledge bases
@@ -357,7 +355,8 @@ classes:
         description: "NCBI Taxonomy ID for source organism"
       sequence_length_aa:
         description: "Length of the protein sequence in amino acids"
-        range: integer
+        range: QuantityValue
+        inlined: true
       construct_description:
         description: "Human-readable description of the construct"
       gene_synthesis_provider:
@@ -474,10 +473,12 @@ classes:
         description: "Ratio of protease to protein"
       cleavage_time_h:
         description: "Duration of protease cleavage in hours"
-        range: float
+        range: QuantityValue
+        inlined: true
       cleavage_temperature_c:
         description: "Temperature during cleavage in Celsius"
-        range: float
+        range: QuantityValue
+        inlined: true
       second_affinity_reverse:
         description: "Second affinity or reverse affinity step"
       iex_column:
@@ -494,13 +495,16 @@ classes:
         description: "Final buffer composition after purification"
       final_concentration_mg_per_ml:
         description: "Final protein concentration in mg/mL"
-        range: float
+        range: QuantityValue
+        inlined: true
       yield_mg:
         description: "Total yield in milligrams"
-        range: float
+        range: QuantityValue
+        inlined: true
       purity_by_sds_page_percent:
         description: "Purity percentage by SDS-PAGE"
-        range: float
+        range: QuantityValue
+        inlined: true
       aggregation_assessment:
         description: "Assessment of protein aggregation state"
       aliquoting:
@@ -556,11 +560,8 @@ classes:
     attributes:
       accelerating_voltage:
         description: "Accelerating voltage in kV"
-        range: integer
-        any_of:
-          - equals_number: 120
-          - equals_number: 200
-          - equals_number: 300
+        range: QuantityValue
+        inlined: true
       cs_corrector:
         description: "Spherical aberration corrector present"
         range: boolean
@@ -596,22 +597,24 @@ classes:
         range: string
       pixel_size_physical_um:
         description: "Physical pixel size of the detector in micrometers"
-        range: float
-        comments:
-          - "Hardware specification, independent of magnification"
-          - "Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun"
+        range: QuantityValue
+        inlined: true
       autoloader_capacity:
         description: "Number of grids the autoloader can hold"
-        range: integer
+        range: QuantityValue
+        inlined: true
       cs:
         description: "Spherical aberration (Cs) in millimeters"
-        range: float
+        range: QuantityValue
+        inlined: true
       c2_aperture:
         description: "C2 aperture size in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       objective_aperture:
         description: "Objective aperture size in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       phase_plate_type:
         description: "Type of phase plate if present"
         range: string
@@ -626,10 +629,12 @@ classes:
         range: string
       energy_filter_slit_width:
         description: "Energy filter slit width in eV"
-        range: float
+        range: QuantityValue
+        inlined: true
       pixel_size_physical:
         description: "Physical pixel size in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       microscope_software:
         description: "Microscope control software (e.g., SerialEM, EPU, Leginon)"
         range: string
@@ -638,16 +643,19 @@ classes:
         range: string
       spotsize:
         description: "Electron beam spot size setting"
-        range: integer
+        range: QuantityValue
+        inlined: true
       gunlens:
         description: "Gun lens setting"
-        range: integer
+        range: QuantityValue
+        inlined: true
       imaging_mode:
         description: "Imaging mode for electron microscopy"
         range: ImagingModeEnum
       tem_beam_diameter:
         description: "TEM beam diameter in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
 
   XRayInstrument:
     is_a: Instrument
@@ -677,19 +685,24 @@ classes:
           - "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
       energy_min:
         description: "Minimum X-ray energy in keV"
-        range: float
+        range: QuantityValue
+        inlined: true
       energy_max:
         description: "Maximum X-ray energy in keV"
-        range: float
+        range: QuantityValue
+        inlined: true
       beam_size_min:
         description: "Minimum beam size in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       beam_size_max:
         description: "Maximum beam size in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       flux_density:
         description: "Photon flux density in photons/s/mm²"
-        range: float
+        range: QuantityValue
+        inlined: true
       monochromator_type:
         description: "Type of monochromator"
       goniometer_type:
@@ -704,19 +717,24 @@ classes:
     attributes:
       q_range_min:
         description: "Minimum q value in inverse Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       q_range_max:
         description: "Maximum q value in inverse Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       detector_distance_min:
         description: "Minimum detector distance in mm"
-        range: float
+        range: QuantityValue
+        inlined: true
       detector_distance_max:
         description: "Maximum detector distance in mm"
-        range: float
+        range: QuantityValue
+        inlined: true
       sample_changer_capacity:
         description: "Number of samples in automatic sample changer"
-        range: integer
+        range: QuantityValue
+        inlined: true
       temperature_control_range:
         description: "Temperature control range in Celsius"
 
@@ -740,19 +758,24 @@ classes:
         range: XRaySourceTypeEnum
       energy_min:
         description: "Minimum X-ray energy in keV"
-        range: float
+        range: QuantityValue
+        inlined: true
       energy_max:
         description: "Maximum X-ray energy in keV"
-        range: float
+        range: QuantityValue
+        inlined: true
       q_range_min:
         description: "Minimum q value for SAXS in inverse Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       q_range_max:
         description: "Maximum q value for SAXS in inverse Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       sample_changer_capacity:
         description: "Automatic sample changer capacity"
-        range: integer
+        range: QuantityValue
+        inlined: true
       mail_in_service:
         description: "Whether mail-in sample service is available"
         range: boolean
@@ -805,59 +828,75 @@ classes:
       # Cryo-EM specific acquisition session metadata
       magnification:
         description: "Magnification used during data collection"
-        range: integer
+        range: QuantityValue
+        inlined: true
       calibrated_pixel_size:
         description: "Calibrated pixel size in Angstroms per pixel"
-        range: float
+        range: QuantityValue
+        inlined: true
       camera_binning:
         description: "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
-        range: float
-        minimum_value: 0.01
+        range: QuantityValue
+        inlined: true
       exposure_time_per_frame:
         description: "Exposure time per frame in milliseconds"
-        range: float
+        range: QuantityValue
+        inlined: true
       frames_per_movie:
         description: "Number of frames per movie"
-        range: integer
+        range: QuantityValue
+        inlined: true
       total_exposure_time:
         description: "Total exposure time in milliseconds"
-        range: float
+        range: QuantityValue
+        inlined: true
       total_dose:
         description: "Total electron dose in e-/Angstrom^2"
-        range: float
+        range: QuantityValue
+        inlined: true
       dose_rate:
         description: "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
-        range: float
+        range: QuantityValue
+        inlined: true
       defocus_target:
         description: "Target defocus value in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       defocus_range_min:
         description: "Minimum defocus range in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       defocus_range_max:
         description: "Maximum defocus range in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       defocus_range_increment:
         description: "Defocus range increment in micrometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       astigmatism_target:
         description: "Target astigmatism in Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       coma:
         description: "Coma aberration in nanometers"
-        range: float
+        range: QuantityValue
+        inlined: true
       stage_tilt:
         description: "Stage tilt angle in degrees"
-        range: float
+        range: QuantityValue
+        inlined: true
       autoloader_slot:
         description: "Autoloader slot identifier"
         range: string
       shots_per_hole:
         description: "Number of shots taken per hole"
-        range: integer
+        range: QuantityValue
+        inlined: true
       holes_per_group:
-        description: "Number of holes per group"
-        range: integer
+        description: "Number of holes per group. Data providers may include unit information in the QuantityValue if needed."
+        range: QuantityValue
+        inlined: true
       acquisition_software:
         description: "Acquisition software used (e.g., SerialEM, EPU, Leginon)"
         range: string
@@ -893,11 +932,8 @@ classes:
           - "ispyb:DataCollection.axisStart"
       number_of_images:
         description: "Total number of diffraction images collected"
-        range: integer
-        exact_mappings:
-          - "nsls2:Number_of_images"
-          - "imgCIF:_diffrn_scan.frames"
-          - "ispyb:DataCollection.numberOfImages"
+        range: QuantityValue
+        inlined: true
       beam_center_x:
         description: "Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -962,8 +998,6 @@ classes:
         description: "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        minimum_value: 0
-        maximum_value: 100
         exact_mappings:
           - "ispyb:DataCollection.transmission"
         comments:
@@ -1040,16 +1074,12 @@ classes:
       # ISPyB cross-reference IDs
       ispyb_data_collection_id:
         description: "ISPyB DataCollection.dataCollectionId for traceability"
-        range: integer
-        exact_mappings:
-          - "ispyb:DataCollection.dataCollectionId"
-        comments:
-          - "Use to link back to ISPyB records"
+        range: QuantityValue
+        inlined: true
       ispyb_session_id:
         description: "ISPyB BLSession.sessionId"
-        range: integer
-        exact_mappings:
-          - "ispyb:BLSession.sessionId"
+        range: QuantityValue
+        inlined: true
 
   WorkflowRun:
     is_a: NamedThing
@@ -1068,9 +1098,8 @@ classes:
         required: true
       processing_level:
         description: "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
-        range: integer
-        minimum_value: 0
-        maximum_value: 4
+        range: QuantityValue
+        inlined: true
       software_name:
         description: "Software used for processing"
         required: true
@@ -1109,10 +1138,12 @@ classes:
         description: "Ligands or cofactors modeled in the structure"
       number_of_waters:
         description: "Number of water molecules modeled"
-        range: integer
+        range: QuantityValue
+        inlined: true
       refinement_resolution_a:
         description: "Resolution cutoff used for refinement in Angstroms"
-        range: float
+        range: QuantityValue
+        inlined: true
       deposited_to_pdb:
         description: "Whether structure was deposited to PDB"
         range: boolean
@@ -1188,25 +1219,16 @@ classes:
           - "ispyb:AutoProcScalingStatistics.resolutionLimitLow"
       rmerge:
         description: "Rmerge - merge R-factor"
-        range: float
-        exact_mappings:
-          - "nsls2:Rmerge"
-          - "mmCIF:_reflns.pdbx_Rmerge_I_obs"
-          - "ispyb:AutoProcScalingStatistics.rMerge"
+        range: QuantityValue
+        inlined: true
       rpim:
         description: "Rpim - precision-indicating merging R-factor"
-        range: float
-        exact_mappings:
-          - "nsls2:Rpim"
-          - "mmCIF:_reflns.pdbx_Rpim_I_all"
-          - "ispyb:AutoProcScalingStatistics.rPim"
+        range: QuantityValue
+        inlined: true
       cc_half:
         description: "Half-set correlation coefficient CC(1/2)"
-        range: float
-        exact_mappings:
-          - "nsls2:CC_half"
-          - "mmCIF:_reflns.pdbx_CC_half"
-          - "ispyb:AutoProcScalingStatistics.ccHalf"
+        range: QuantityValue
+        inlined: true
       completeness_percent:
         description: "Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1217,11 +1239,8 @@ classes:
           - "ispyb:AutoProcScalingStatistics.completeness"
       i_over_sigma:
         description: "Mean I/sigma(I) - signal to noise ratio"
-        range: float
-        exact_mappings:
-          - "nsls2:I_over_sigma"
-          - "mmCIF:_reflns.pdbx_netI_over_sigmaI"
-          - "ispyb:AutoProcScalingStatistics.meanIOverSigI"
+        range: QuantityValue
+        inlined: true
       wilson_b_factor:
         description: "Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1231,11 +1250,8 @@ classes:
           - "mmCIF:_reflns.B_iso_Wilson_estimate"
       multiplicity:
         description: "Data multiplicity (redundancy)"
-        range: float
-        exact_mappings:
-          - "nsls2:Multiplicity"
-          - "mmCIF:_reflns.pdbx_redundancy"
-          - "ispyb:AutoProcScalingStatistics.multiplicity"
+        range: QuantityValue
+        inlined: true
       # Anomalous statistics (ISPyB AutoProcScalingStatistics)
       anomalous_completeness:
         description: "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
@@ -1247,66 +1263,46 @@ classes:
           - "Completeness of Bijvoet pairs"
       anomalous_multiplicity:
         description: "Multiplicity of anomalous data"
-        range: float
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.anomalousMultiplicity"
-        comments:
-          - "Redundancy of Bijvoet pairs"
+        range: QuantityValue
+        inlined: true
       cc_anomalous:
         description: "Anomalous correlation coefficient"
-        range: float
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.ccAno"
-        comments:
-          - "Correlation coefficient between Bijvoet pairs"
+        range: QuantityValue
+        inlined: true
       r_anomalous:
         description: "Anomalous R-factor"
-        range: float
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.rAnom"
+        range: QuantityValue
+        inlined: true
       sig_anomalous:
         description: "Mean anomalous difference signal"
-        range: float
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.sigAno"
-        comments:
-          - "Mean |F(+) - F(-)|/sigma"
+        range: QuantityValue
+        inlined: true
       n_total_observations:
         description: "Total number of observations (before merging)"
-        range: integer
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.nTotalObservations"
+        range: QuantityValue
+        inlined: true
       n_total_unique:
         description: "Total number of unique reflections"
-        range: integer
-        exact_mappings:
-          - "ispyb:AutoProcScalingStatistics.nTotalUniqueObservations"
+        range: QuantityValue
+        inlined: true
       # ISPyB cross-reference IDs for workflow
       ispyb_auto_proc_program_id:
         description: "ISPyB AutoProcProgram.autoProcProgramId"
-        range: integer
-        exact_mappings:
-          - "ispyb:AutoProcProgram.autoProcProgramId"
-        comments:
-          - "Links to ISPyB processing program record"
+        range: QuantityValue
+        inlined: true
       ispyb_auto_proc_scaling_id:
         description: "ISPyB AutoProcScaling.autoProcScalingId"
-        range: integer
-        exact_mappings:
-          - "ispyb:AutoProcScaling.autoProcScalingId"
+        range: QuantityValue
+        inlined: true
       # Refinement metrics (NSLS2 Refinement mapping)
       rwork:
         description: "Refinement R-factor (working set)"
-        range: float
-        exact_mappings:
-          - "nsls2:Rwork"
-          - "mmCIF:_refine.ls_R_factor_R_work"
+        range: QuantityValue
+        inlined: true
       rfree:
         description: "R-free (test set)"
-        range: float
-        exact_mappings:
-          - "nsls2:Rfree"
-          - "mmCIF:_refine.ls_R_factor_R_free"
+        range: QuantityValue
+        inlined: true
       rmsd_bonds:
         description: "RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1337,9 +1333,8 @@ classes:
           - "mmCIF:_refine.pdbx_overall_ESU_R_Free"
       clashscore:
         description: "MolProbity clashscore"
-        range: float
-        exact_mappings:
-          - "nsls2:Clashscore"
+        range: QuantityValue
+        inlined: true
       # Processing notes and metadata
       processing_notes:
         description: "Additional notes about processing"
@@ -1388,7 +1383,8 @@ classes:
         required: true
       file_size_bytes:
         description: "File size in bytes"
-        range: integer
+        range: QuantityValue
+        inlined: true
       checksum:
         description: "SHA-256 checksum for data integrity"
       creation_date:
@@ -1436,7 +1432,8 @@ classes:
         inlined: true
       dose:
         description: "Electron dose in e-/Å²"
-        range: float
+        range: QuantityValue
+        inlined: true
       
   Image2D:
     is_a: Image
@@ -1472,7 +1469,8 @@ classes:
     attributes:
       frames:
         description: "Number of frames in the movie"
-        range: integer
+        range: QuantityValue
+        inlined: true
       super_resolution:
         description: "Whether super-resolution mode was used"
         range: boolean
@@ -1501,13 +1499,16 @@ classes:
         inlined: true
       dose_per_frame:
         description: "Electron dose per frame in e-/Angstrom^2"
-        range: float
+        range: QuantityValue
+        inlined: true
       beam_shift_x:
         description: "Beam shift X in microradians"
-        range: float
+        range: QuantityValue
+        inlined: true
       beam_shift_y:
         description: "Beam shift Y in microradians"
-        range: float
+        range: QuantityValue
+        inlined: true
       ice_thickness_estimate:
         description: "Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1535,7 +1536,8 @@ classes:
     attributes:
       dose:
         description: "Total electron dose in e-/Angstrom^2"
-        range: float
+        range: QuantityValue
+        inlined: true
       origin_movie_id:
         description: "Reference to original movie file"
         range: string
@@ -1558,7 +1560,8 @@ classes:
         inlined: true
       ctf_quality_score:
         description: "CTF estimation quality score"
-        range: float
+        range: QuantityValue
+        inlined: true
 
   FTIRImage:
     is_a: Image
@@ -1578,7 +1581,8 @@ classes:
         inlined: true
       number_of_scans:
         description: "Number of scans averaged for the spectrum"
-        range: integer
+        range: QuantityValue
+        inlined: true
       apodization_function:
         description: "Mathematical function used for apodization"
         range: string
@@ -1624,7 +1628,8 @@ classes:
         inlined: true
       quantum_yield:
         description: "Quantum yield of the fluorophore"
-        range: float
+        range: QuantityValue
+        inlined: true
 
   OpticalImage:
     is_a: Image2D
@@ -1743,9 +1748,8 @@ classes:
     attributes:
       ph:
         description: "pH of the buffer (range: 0-14)"
-        range: float
-        minimum_value: 0
-        maximum_value: 14
+        range: QuantityValue
+        inlined: true
       components:
         description: "Buffer components and their concentrations"
         range: string
@@ -1789,8 +1793,6 @@ classes:
         description: "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        minimum_value: 0.5
-        maximum_value: 5.0
       vitrification_method:
         description: "Method used for vitrification"
         range: VitrificationMethodEnum
@@ -1798,17 +1800,14 @@ classes:
         description: "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        minimum_value: 0.5
-        maximum_value: 10.0
       blot_force:
         description: "Blotting force setting"
-        range: integer
+        range: QuantityValue
+        inlined: true
       humidity_percentage:
         description: "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        minimum_value: 0
-        maximum_value: 100
       chamber_temperature:
         description: "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1840,7 +1839,8 @@ classes:
         range: string
       blot_number:
         description: "Number of blots applied"
-        range: integer
+        range: QuantityValue
+        inlined: true
       wait_time:
         description: "Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1889,10 +1889,8 @@ classes:
           - "Maps to NSLS2 spreadsheet: Drop_Volume"
       protein_concentration:
         description: "Protein concentration for crystallization in mg/mL"
-        range: float
-        slot_uri: nsls2:Protein_Concentration
-        comments:
-          - "Maps to NSLS2 spreadsheet: Protein_Concentration"
+        range: QuantityValue
+        inlined: true
       crystal_size_um:
         description: "Crystal dimensions in micrometers (length x width x height)"
         range: string
@@ -1935,7 +1933,8 @@ classes:
       # Pre-crystallization
       protein_concentration_mg_per_ml:
         description: "Protein concentration for crystallization in mg/mL"
-        range: float
+        range: QuantityValue
+        inlined: true
       protein_buffer:
         description: "Buffer composition for protein solution"
       additives:
@@ -2019,8 +2018,8 @@ classes:
     attributes:
       concentration_series:
         description: "Concentration values for series measurements"
-        range: float
-        multivalued: true
+        range: QuantityValue
+        inlined: true
       buffer_matching_protocol:
         description: "Protocol for buffer matching"
       sample_cell_type:
@@ -2068,7 +2067,8 @@ classes:
         range: CollectionModeEnum
       total_frames:
         description: "Total number of frames/images"
-        range: integer
+        range: QuantityValue
+        inlined: true
       frame_rate:
         description: "Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2106,10 +2106,12 @@ classes:
         inlined: true
       beam_center_x_px:
         description: "Beam center X coordinate in pixels"
-        range: integer
+        range: QuantityValue
+        inlined: true
       beam_center_y_px:
         description: "Beam center Y coordinate in pixels"
-        range: integer
+        range: QuantityValue
+        inlined: true
       beam_size_um:
         description: "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2166,10 +2168,12 @@ classes:
         inlined: true
       signal_to_noise:
         description: "Signal to noise ratio"
-        range: float
+        range: QuantityValue
+        inlined: true
       mean_i_over_sigma_i:
         description: "Mean I/sigma(I)"
-        range: float
+        range: QuantityValue
+        inlined: true
       # Crystallographic processing metrics
       space_group:
         description: "Crystallographic space group"
@@ -2199,54 +2203,69 @@ classes:
         inlined: true
       multiplicity:
         description: "Data multiplicity (redundancy)"
-        range: float
+        range: QuantityValue
+        inlined: true
       cc_half:
         description: "Half-set correlation coefficient CC(1/2)"
-        range: float
+        range: QuantityValue
+        inlined: true
       r_merge:
         description: "Rmerge - merge R-factor"
-        range: float
+        range: QuantityValue
+        inlined: true
       r_pim:
         description: "Rpim - precision-indicating merging R-factor"
-        range: float
+        range: QuantityValue
+        inlined: true
       wilson_b_factor_a2:
         description: "Wilson B-factor in Angstroms squared"
-        range: float
+        range: QuantityValue
+        inlined: true
       anomalous_used:
         description: "Whether anomalous signal was used"
         range: boolean
       anom_corr:
         description: "Anomalous correlation"
-        range: float
+        range: QuantityValue
+        inlined: true
       anom_sig_ano:
         description: "Anomalous signal strength"
-        range: float
+        range: QuantityValue
+        inlined: true
       # Refinement metrics
       r_work:
         description: "Refinement R-factor (working set)"
-        range: float
+        range: QuantityValue
+        inlined: true
       r_free:
         description: "R-free (test set)"
-        range: float
+        range: QuantityValue
+        inlined: true
       ramachandran_favored_percent:
         description: "Percentage of residues in favored Ramachandran regions"
-        range: float
+        range: QuantityValue
+        inlined: true
       ramachandran_outliers_percent:
         description: "Percentage of Ramachandran outliers"
-        range: float
+        range: QuantityValue
+        inlined: true
       clashscore:
         description: "MolProbity clashscore"
-        range: float
+        range: QuantityValue
+        inlined: true
       molprobity_score:
         description: "Overall MolProbity score"
-        range: float
+        range: QuantityValue
+        inlined: true
       average_b_factor_a2:
         description: "Average B-factor in Angstroms squared"
-        range: float
+        range: QuantityValue
+        inlined: true
       # SAXS metrics
       i_zero:
         description: "Forward scattering intensity I(0)"
-        range: float
+        range: QuantityValue
+        inlined: true
       rg:
         description: "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2254,7 +2273,8 @@ classes:
       # Legacy/deprecated
       r_factor:
         description: "R-factor for crystallography (deprecated, use r_work)"
-        range: float
+        range: QuantityValue
+        inlined: true
 
   ComputeResources:
     is_a: AttributeGroup
@@ -2284,11 +2304,12 @@ classes:
     attributes:
       patch_size:
         description: "Patch size for local motion correction"
-        range: integer
+        range: QuantityValue
+        inlined: true
       binning:
         description: "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
-        range: float
-        minimum_value: 0.01
+        range: QuantityValue
+        inlined: true
       dose_weighting:
         description: "Whether dose weighting was applied"
         range: boolean
@@ -2301,11 +2322,12 @@ classes:
         range: boolean
       frame_grouping:
         description: "Number of frames grouped together"
-        range: integer
+        range: QuantityValue
+        inlined: true
       output_binning:
         description: "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
-        range: float
-        minimum_value: 0.01
+        range: QuantityValue
+        inlined: true
       drift_total:
         description: "Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2329,7 +2351,8 @@ classes:
         inlined: true
       amplitude_contrast:
         description: "Amplitude contrast value"
-        range: float
+        range: QuantityValue
+        inlined: true
       cs_used_in_estimation:
         description: "Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2348,16 +2371,20 @@ classes:
         range: string
       box_size:
         description: "Particle box size in pixels"
-        range: integer
+        range: QuantityValue
+        inlined: true
       threshold:
         description: "Picking threshold"
-        range: float
+        range: QuantityValue
+        inlined: true
       power_score:
         description: "Power score threshold"
-        range: float
+        range: QuantityValue
+        inlined: true
       ncc_score:
         description: "Normalized cross-correlation score threshold"
-        range: float
+        range: QuantityValue
+        inlined: true
       model_name:
         description: "Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods."
         range: string
@@ -2381,7 +2408,8 @@ classes:
         inlined: true
       box_size:
         description: "Box size in pixels"
-        range: integer
+        range: QuantityValue
+        inlined: true
       gold_standard:
         description: "Whether gold-standard refinement was used"
         range: boolean
@@ -2411,14 +2439,12 @@ classes:
     attributes:
       resolution_angstrom:
         description: "Resolution values in Angstroms"
-        range: float
-        multivalued: true
-        maximum_cardinality: 10000
+        range: QuantityValue
+        inlined: true
       fsc_value:
         description: "FSC values corresponding to each resolution"
-        range: float
-        multivalued: true
-        maximum_cardinality: 10000
+        range: QuantityValue
+        inlined: true
 
 enums:
   FacilityEnum:

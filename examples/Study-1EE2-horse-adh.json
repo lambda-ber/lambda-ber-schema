@@ -25,7 +25,10 @@
         "unit": "milligrams per milliliter"
       },
       "buffer_composition": {
-        "ph": 7.0,
+        "ph": {
+          "numeric_value": 7.0,
+          "unit": "pH units"
+        },
         "components": [
           "TES/KOH"
         ]

@@ -18,7 +18,9 @@ dimensions_z:
 exposure_time:
   numeric_value: 0
   unit: seconds
-dose: 0
+dose:
+  numeric_value: 0
+  unit: electrons per Angstrom squared
 voxel_size:
   numeric_value: 1.06
   unit: Angstroms

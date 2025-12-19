@@ -14,7 +14,9 @@ lambdaber:df-cryoem-001 a lambdaber:DataFile ;
     lambdaber:file_format "star" ;
     lambdaber:file_name "loosenin_cellulose.star" ;
     lambdaber:file_path "/data/cryoem/2025/loosenin/" ;
-    lambdaber:file_size_bytes 125000000000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "125000000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:df-map-001 a lambdaber:DataFile ;
     dcterms:title "CryoEM density map" ;
@@ -22,7 +24,9 @@ lambdaber:df-map-001 a lambdaber:DataFile ;
     lambdaber:file_format "mrc" ;
     lambdaber:file_name "loosenin_cellulose_map.mrc" ;
     lambdaber:file_path "/data/cryoem/2025/loosenin/" ;
-    lambdaber:file_size_bytes 512000000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "512000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:df-mx-001 a lambdaber:DataFile ;
     dcterms:title "X-ray diffraction data" ;
@@ -30,7 +34,9 @@ lambdaber:df-mx-001 a lambdaber:DataFile ;
     lambdaber:file_format "mtz" ;
     lambdaber:file_name "loosenin_native.mtz" ;
     lambdaber:file_path "/data/mx/2025/loosenin/" ;
-    lambdaber:file_size_bytes 45000000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "45000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:df-pdb-001 a lambdaber:DataFile ;
     dcterms:title "Refined crystal structure" ;
@@ -38,7 +44,9 @@ lambdaber:df-pdb-001 a lambdaber:DataFile ;
     lambdaber:file_format "pdb" ;
     lambdaber:file_name "loosenin_refined.pdb" ;
     lambdaber:file_path "/data/mx/2025/loosenin/" ;
-    lambdaber:file_size_bytes 800000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:df-sans-001 a lambdaber:DataFile ;
     dcterms:title "SANS complex data" ;
@@ -46,7 +54,9 @@ lambdaber:df-sans-001 a lambdaber:DataFile ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "biosans_complex.dat" ;
     lambdaber:file_path "/data/sans/2025/loosenin/" ;
-    lambdaber:file_size_bytes 1800000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1800000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:df-saxs-001 a lambdaber:DataFile ;
     dcterms:title "SAXS pH series data" ;
@@ -54,7 +64,9 @@ lambdaber:df-saxs-001 a lambdaber:DataFile ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "loosenin_ph_series.dat" ;
     lambdaber:file_path "/data/saxs/2025/loosenin/" ;
-    lambdaber:file_size_bytes 2500000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2500000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:img-sans-001 a lambdaber:Image ;
     dcterms:title "SANS model fit" ;
@@ -93,7 +105,9 @@ lambdaber:sample-LOOS-001 a lambdaber:Sample ;
                 "5% glycerol" ;
             lambdaber:components "150mM NaCl",
                 "50mM MES buffer" ;
-            lambdaber:ph "6.0"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "6.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "calcium ions" ;
             lambdaber:modifications "N-glycosylation at positions 45, 78, 156" ;
@@ -113,7 +127,9 @@ lambdaber:sample-LOOS-002 a lambdaber:Sample ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "100mM NaCl",
                 "Universal buffer system" ;
-            lambdaber:ph "5.0"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "5.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:modifications "N-glycosylation" ;
             lambdaber:sequences "Same as LOOS-001" ] ;
@@ -129,7 +145,9 @@ lambdaber:sample-LOOS-003 a lambdaber:Sample ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "200mM NaCl",
                 "50mM sodium acetate" ;
-            lambdaber:ph "5.5"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "5.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "calcium ions" ;
             lambdaber:sequences "TrLOOL1 sequence - homolog from T. reesei" ] ;
@@ -146,7 +164,9 @@ lambdaber:sample-LOOS-004 a lambdaber:Sample ;
             lambdaber:additives "10mg/mL Avicel cellulose" ;
             lambdaber:components "150mM NaCl",
                 "50mM MES buffer" ;
-            lambdaber:ph "6.0"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "6.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "microcrystalline cellulose (Avicel PH-101)" ;
             lambdaber:sequences "PcaLOOL12 protein sequence" ] ;
@@ -183,7 +203,9 @@ lambdaber:study-loosenin-2025 a lambdaber:Study ;
 lambdaber:wf-cryoem-001 a lambdaber:WorkflowRun ;
     dcterms:title "Single particle reconstruction" ;
     lambdaber:experiment_id "lambdaber:exp-cryoem-001" ;
-    lambdaber:processing_level 3 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:software_name "RELION" ;
     lambdaber:software_version "4.0" ;
     lambdaber:workflow_code "CryoEM-SPA" ;
@@ -192,7 +214,9 @@ lambdaber:wf-cryoem-001 a lambdaber:WorkflowRun ;
 lambdaber:wf-integrative-001 a lambdaber:WorkflowRun ;
     dcterms:title "Integrative modeling" ;
     lambdaber:experiment_id "lambdaber:exp-saxs-001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:software_name "IMP" ;
     lambdaber:software_version "2.18" ;
     lambdaber:workflow_code "IMP-modeling" ;
@@ -201,7 +225,9 @@ lambdaber:wf-integrative-001 a lambdaber:WorkflowRun ;
 lambdaber:wf-mx-001 a lambdaber:WorkflowRun ;
     dcterms:title "Crystal structure determination" ;
     lambdaber:experiment_id "lambdaber:exp-mx-001" ;
-    lambdaber:processing_level 3 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:software_name "PHENIX" ;
     lambdaber:software_version "1.20.1" ;
     lambdaber:workflow_code "MX-structure" ;
@@ -210,7 +236,9 @@ lambdaber:wf-mx-001 a lambdaber:WorkflowRun ;
 lambdaber:wf-saxs-001 a lambdaber:WorkflowRun ;
     dcterms:title "SAXS pH series analysis" ;
     lambdaber:experiment_id "lambdaber:exp-saxs-001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:software_name "ATSAS" ;
     lambdaber:software_version "3.2.1" ;
     lambdaber:workflow_code "SAXS-pH-analysis" ;

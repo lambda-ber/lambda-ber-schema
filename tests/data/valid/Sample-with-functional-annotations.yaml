@@ -134,7 +134,9 @@ biophysical_properties:
   unit: kcal/mol
   measurement_conditions:
   - id: lambdaber:meas-cond-001
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
     temperature:
       numeric_value: 298.15
       unit: degrees Celsius
@@ -151,7 +153,9 @@ biophysical_properties:
   error: 0.5
   measurement_conditions:
   - id: lambdaber:meas-cond-002
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
     temperature:
       numeric_value: 298.15
       unit: degrees Celsius

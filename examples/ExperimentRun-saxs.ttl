@@ -24,11 +24,15 @@
     lambdaber:operator_id "Kathryn Burnett" ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:i_zero "0.045"^^xsd:float ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.045"^^xsd:float ;
+                    lambdaber:unit "scattering intensity" ] ;
             lambdaber:rg [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "42.3"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "50.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
     lambdaber:sample_id "https://example.org/kibler2024/sample/hetBGL03-15-18" ;
     lambdaber:technique CHMO:0000204 .

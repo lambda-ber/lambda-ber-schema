@@ -45,7 +45,9 @@ studies:
       numeric_value: 5.0
       unit: milligrams per milliliter
     buffer_composition:
-      ph: 7.5
+      ph:
+        numeric_value: 7.5
+        unit: pH units
       components:
       - 20 mM Tris-HCl
       - 150 mM NaCl
@@ -100,13 +102,19 @@ studies:
         unit: seconds
     data_collection_strategy:
       collection_mode: sec_saxs
-      total_frames: 660
+      total_frames:
+        numeric_value: 660
+        unit: frames
       frame_rate:
         numeric_value: 1
         unit: frames per second
     quality_metrics:
-      signal_to_noise: 50
-      i_zero: 45.0
+      signal_to_noise:
+        numeric_value: 50
+        unit: signal to noise ratio
+      i_zero:
+        numeric_value: 45.0
+        unit: scattering intensity
       rg:
         numeric_value: 32.5
         unit: Angstroms
@@ -120,7 +128,9 @@ studies:
     workflow_code: GluRS-SAXS-processing-2023
     workflow_type: saxs_analysis
     experiment_id: https://simplescattering.com/experiment/glurs-sec-saxs
-    processing_level: 2
+    processing_level:
+      numeric_value: 2
+      unit: level
     software_name: SAXS FrameSlice
     software_version: '2023'
     processing_parameters: 'q_range=0.0109-0.4729;
@@ -147,7 +157,9 @@ studies:
     workflow_code: GluRS-MALS-processing-2023
     workflow_type: saxs_analysis
     experiment_id: https://simplescattering.com/experiment/glurs-sec-saxs
-    processing_level: 2
+    processing_level:
+      numeric_value: 2
+      unit: level
     software_name: MALS Analysis Software
     software_version: '2023'
     processing_parameters: 'molecular_weight_determination=enabled;
@@ -159,28 +171,36 @@ studies:
   - id: https://simplescattering.com/file/glurs-frame-001
     file_name: GluRS_1_00001.dat
     file_format: ascii
-    file_size_bytes: 35739
+    file_size_bytes:
+      numeric_value: 35739
+      unit: bytes
     data_type: scattering
     creation_date: '2023-10-20'
     description: First SEC-SAXS frame
   - id: https://simplescattering.com/file/glurs-averaged
     file_name: A_S_GluRS_1_5.dat
     file_format: ascii
-    file_size_bytes: 107834
+    file_size_bytes:
+      numeric_value: 107834
+      unit: bytes
     data_type: processed_data
     creation_date: '2023-10-24'
     description: Averaged SAXS profile from peak fractions
   - id: https://simplescattering.com/file/glurs-structure
     file_name: 8vc5.pdb
     file_format: pdb
-    file_size_bytes: 1310256
+    file_size_bytes:
+      numeric_value: 1310256
+      unit: bytes
     data_type: model
     creation_date: '2023-12-13'
     description: Crystal structure of P. aeruginosa GluRS (zinc-bound form)
   - id: https://simplescattering.com/file/glurs-complete
     file_name: GluRS_Results.zip
     file_format: zip
-    file_size_bytes: 10840982
+    file_size_bytes:
+      numeric_value: 10840982
+      unit: bytes
     data_type: raw_data
     creation_date: '2023-10-24'
     description: Complete SEC-SAXS dataset with all 660 frames

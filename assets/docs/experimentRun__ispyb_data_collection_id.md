@@ -8,7 +8,7 @@ URI: [lambdaber:experimentRun__ispyb_data_collection_id](https://w3id.org/lambda
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,10 +19,3 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 ## Used by
 
  * [ExperimentRun](ExperimentRun.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Comments:** | | Use to link back to ISPyB records |
-| **Exact Mappings:** | | ispyb:DataCollection.dataCollectionId |

@@ -6,7 +6,7 @@ An image file from structural biology experiments
 URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<exposure_time%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<exposure_time%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<dose%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<exposure_time%200..1-++[Image],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<dose%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<exposure_time%200..1-++[Image],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])
 
 ## Parents
 
@@ -47,7 +47,7 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from NamedThing:
 

@@ -6,7 +6,7 @@ Visible light optical microscopy or photography image
 URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D]^-[OpticalImage&#124;illumination_type:IlluminationTypeEnum%20%3F;magnification:float%20%3F;numerical_aperture:float%20%3F;color_channels:string%20*;white_balance:string%20%3F;contrast_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D]^-[OpticalImage&#124;illumination_type:IlluminationTypeEnum%20%3F;magnification:float%20%3F;numerical_aperture:float%20%3F;color_channels:string%20*;white_balance:string%20%3F;contrast_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<numerical_aperture%200..1-++[OpticalImage&#124;illumination_type:IlluminationTypeEnum%20%3F;color_channels:string%20*;white_balance:string%20%3F;contrast_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<magnification%200..1-++[OpticalImage],[Image2D]^-[OpticalImage],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<numerical_aperture%200..1-++[OpticalImage&#124;illumination_type:IlluminationTypeEnum%20%3F;color_channels:string%20*;white_balance:string%20%3F;contrast_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<magnification%200..1-++[OpticalImage],[Image2D]^-[OpticalImage],[Image2D])
 
 ## Parents
 
@@ -21,11 +21,11 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
      * Description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
      * Range: [IlluminationTypeEnum](IlluminationTypeEnum.md)
  * [➞magnification](opticalImage__magnification.md)  <sub>0..1</sub>
-     * Description: Optical magnification factor
-     * Range: [Float](types/Float.md)
+     * Description: Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞numerical_aperture](opticalImage__numerical_aperture.md)  <sub>0..1</sub>
-     * Description: Numerical aperture of the objective lens
-     * Range: [Float](types/Float.md)
+     * Description: Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞color_channels](opticalImage__color_channels.md)  <sub>0..\*</sub>
      * Description: Color channels present (e.g., RGB, grayscale)
      * Range: [String](types/String.md)
@@ -67,7 +67,7 @@ URI: [lambdaber:OpticalImage](https://w3id.org/lambda-ber-schema/OpticalImage)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
      * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)

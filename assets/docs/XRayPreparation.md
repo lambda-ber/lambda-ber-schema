@@ -6,7 +6,7 @@ X-ray crystallography specific preparation
 URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[CrystallizationConditions]<crystallization_conditions%200..1-++[XRayPreparation&#124;protein_concentration_mg_per_ml:float%20%3F;protein_buffer:string%20%3F;additives:string%20%3F;crystallization_method:CrystallizationMethodEnum%20%3F;screen_name:string%20%3F;temperature_c:float%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;drop_volume_nl:float%20%3F;reservoir_volume_ul:float%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;initial_hit_condition:string%20%3F;optimization_strategy:string%20%3F;optimized_condition:string%20%3F;crystal_size_um:string%20%3F;cryoprotectant:string%20%3F;cryoprotectant_concentration:float%20%3F;soak_compound:string%20%3F;soak_conditions:string%20%3F;mounting_method:string%20%3F;flash_cooling_method:string%20%3F;crystal_notes:string%20%3F;loop_size:float%20%3F;mounting_temperature:float%20%3F;description(i):string%20%3F],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation],[CrystallizationConditions])](https://yuml.me/diagram/nofunky;dir:TB/class/[CrystallizationConditions]<crystallization_conditions%200..1-++[XRayPreparation&#124;protein_concentration_mg_per_ml:float%20%3F;protein_buffer:string%20%3F;additives:string%20%3F;crystallization_method:CrystallizationMethodEnum%20%3F;screen_name:string%20%3F;temperature_c:float%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;drop_volume_nl:float%20%3F;reservoir_volume_ul:float%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;initial_hit_condition:string%20%3F;optimization_strategy:string%20%3F;optimized_condition:string%20%3F;crystal_size_um:string%20%3F;cryoprotectant:string%20%3F;cryoprotectant_concentration:float%20%3F;soak_compound:string%20%3F;soak_conditions:string%20%3F;mounting_method:string%20%3F;flash_cooling_method:string%20%3F;crystal_notes:string%20%3F;loop_size:float%20%3F;mounting_temperature:float%20%3F;description(i):string%20%3F],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation],[CrystallizationConditions])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<mounting_temperature%200..1-++[XRayPreparation&#124;protein_buffer:string%20%3F;additives:string%20%3F;crystallization_method:CrystallizationMethodEnum%20%3F;screen_name:string%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;initial_hit_condition:string%20%3F;optimization_strategy:string%20%3F;optimized_condition:string%20%3F;crystal_size_um:string%20%3F;cryoprotectant:string%20%3F;soak_compound:string%20%3F;soak_conditions:string%20%3F;mounting_method:string%20%3F;flash_cooling_method:string%20%3F;crystal_notes:string%20%3F;description(i):string%20%3F],[QuantityValue]<loop_size%200..1-++[XRayPreparation],[QuantityValue]<cryoprotectant_concentration%200..1-++[XRayPreparation],[QuantityValue]<reservoir_volume_ul%200..1-++[XRayPreparation],[QuantityValue]<drop_volume_nl%200..1-++[XRayPreparation],[QuantityValue]<temperature_c%200..1-++[XRayPreparation],[CrystallizationConditions]<crystallization_conditions%200..1-++[XRayPreparation],[QuantityValue]<protein_concentration_mg_per_ml%200..1-++[XRayPreparation],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation],[QuantityValue],[CrystallizationConditions])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<mounting_temperature%200..1-++[XRayPreparation&#124;protein_buffer:string%20%3F;additives:string%20%3F;crystallization_method:CrystallizationMethodEnum%20%3F;screen_name:string%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;initial_hit_condition:string%20%3F;optimization_strategy:string%20%3F;optimized_condition:string%20%3F;crystal_size_um:string%20%3F;cryoprotectant:string%20%3F;soak_compound:string%20%3F;soak_conditions:string%20%3F;mounting_method:string%20%3F;flash_cooling_method:string%20%3F;crystal_notes:string%20%3F;description(i):string%20%3F],[QuantityValue]<loop_size%200..1-++[XRayPreparation],[QuantityValue]<cryoprotectant_concentration%200..1-++[XRayPreparation],[QuantityValue]<reservoir_volume_ul%200..1-++[XRayPreparation],[QuantityValue]<drop_volume_nl%200..1-++[XRayPreparation],[QuantityValue]<temperature_c%200..1-++[XRayPreparation],[CrystallizationConditions]<crystallization_conditions%200..1-++[XRayPreparation],[QuantityValue]<protein_concentration_mg_per_ml%200..1-++[XRayPreparation],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation],[QuantityValue],[CrystallizationConditions])
 
 ## Parents
 
@@ -19,7 +19,7 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
 
  * [➞protein_concentration_mg_per_ml](xRayPreparation__protein_concentration_mg_per_ml.md)  <sub>0..1</sub>
      * Description: Protein concentration for crystallization in mg/mL
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞protein_buffer](xRayPreparation__protein_buffer.md)  <sub>0..1</sub>
      * Description: Buffer composition for protein solution
      * Range: [String](types/String.md)
@@ -36,17 +36,17 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
      * Description: Name of crystallization screen used
      * Range: [String](types/String.md)
  * [➞temperature_c](xRayPreparation__temperature_c.md)  <sub>0..1</sub>
-     * Description: Crystallization temperature in Celsius
-     * Range: [Float](types/Float.md)
+     * Description: Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞drop_ratio_protein_to_reservoir](xRayPreparation__drop_ratio_protein_to_reservoir.md)  <sub>0..1</sub>
      * Description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
      * Range: [String](types/String.md)
  * [➞drop_volume_nl](xRayPreparation__drop_volume_nl.md)  <sub>0..1</sub>
-     * Description: Total drop volume in nanoliters
-     * Range: [Float](types/Float.md)
+     * Description: Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞reservoir_volume_ul](xRayPreparation__reservoir_volume_ul.md)  <sub>0..1</sub>
-     * Description: Reservoir volume in microliters
-     * Range: [Float](types/Float.md)
+     * Description: Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞seeding_type](xRayPreparation__seeding_type.md)  <sub>0..1</sub>
      * Description: Type of seeding used (micro, macro, streak)
      * Range: [String](types/String.md)
@@ -69,8 +69,8 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
      * Description: Cryoprotectant used
      * Range: [String](types/String.md)
  * [➞cryoprotectant_concentration](xRayPreparation__cryoprotectant_concentration.md)  <sub>0..1</sub>
-     * Description: Cryoprotectant concentration percentage
-     * Range: [Float](types/Float.md)
+     * Description: Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞soak_compound](xRayPreparation__soak_compound.md)  <sub>0..1</sub>
      * Description: Compound used for soaking (ligand, heavy atom)
      * Range: [String](types/String.md)
@@ -87,11 +87,11 @@ URI: [lambdaber:XRayPreparation](https://w3id.org/lambda-ber-schema/XRayPreparat
      * Description: Additional notes about crystal quality and handling
      * Range: [String](types/String.md)
  * [➞loop_size](xRayPreparation__loop_size.md)  <sub>0..1</sub>
-     * Description: Loop size in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞mounting_temperature](xRayPreparation__mounting_temperature.md)  <sub>0..1</sub>
-     * Description: Temperature during mounting in Kelvin
-     * Range: [Float](types/Float.md)
+     * Description: Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from TechniqueSpecificPreparation:
 

@@ -509,10 +509,9 @@ classes:
         description: "Composition of the buffer used"
         range: BufferComposition
       ph:
-        description: "pH value of the solution during measurement (range: 0-14)"
-        range: float
-        minimum_value: 0
-        maximum_value: 14
+        description: "pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       ionic_strength:
         description: "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue

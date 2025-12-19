@@ -281,18 +281,26 @@
                     ]
                 },
                 "energy_max": {
-                    "description": "Maximum X-ray energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum X-ray energy in keV"
                 },
                 "energy_min": {
-                    "description": "Minimum X-ray energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum X-ray energy in keV"
                 },
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
@@ -347,25 +355,37 @@
                     ]
                 },
                 "q_range_max": {
-                    "description": "Maximum q value for SAXS in inverse Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum q value for SAXS in inverse Angstroms"
                 },
                 "q_range_min": {
-                    "description": "Minimum q value for SAXS in inverse Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum q value for SAXS in inverse Angstroms"
                 },
                 "sample_changer_capacity": {
-                    "description": "Automatic sample changer capacity",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Automatic sample changer capacity"
                 },
                 "source_type": {
                     "$ref": "#/$defs/XRaySourceTypeEnum",
@@ -534,13 +554,15 @@
                     ]
                 },
                 "ph": {
-                    "description": "pH of the buffer (range: 0-14)",
-                    "maximum": 14,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "pH of the buffer (range: 0-14)"
                 }
             },
             "title": "BufferComposition",
@@ -551,11 +573,15 @@
             "description": "Parameters specific to CTF estimation workflows",
             "properties": {
                 "amplitude_contrast": {
-                    "description": "Amplitude contrast value",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Amplitude contrast value"
                 },
                 "cs_used_in_estimation": {
                     "anyOf": [
@@ -900,27 +926,24 @@
                 "accelerating_voltage": {
                     "anyOf": [
                         {
-                            "const": 120
-                        },
-                        {
-                            "const": 200
-                        },
-                        {
-                            "const": 300
+                            "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "Accelerating voltage in kV",
-                    "type": "integer"
+                    "description": "Accelerating voltage in kV"
                 },
                 "autoloader_capacity": {
-                    "description": "Number of grids the autoloader can hold",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of grids the autoloader can hold"
                 },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
@@ -930,18 +953,26 @@
                     ]
                 },
                 "c2_aperture": {
-                    "description": "C2 aperture size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "C2 aperture size in micrometers"
                 },
                 "cs": {
-                    "description": "Spherical aberration (Cs) in millimeters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Spherical aberration (Cs) in millimeters"
                 },
                 "cs_corrector": {
                     "description": "Spherical aberration corrector present",
@@ -1019,11 +1050,15 @@
                     ]
                 },
                 "energy_filter_slit_width": {
-                    "description": "Energy filter slit width in eV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Energy filter slit width in eV"
                 },
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
@@ -1038,11 +1073,15 @@
                     ]
                 },
                 "gunlens": {
-                    "description": "Gun lens setting",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Gun lens setting"
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
@@ -1096,11 +1135,15 @@
                     ]
                 },
                 "objective_aperture": {
-                    "description": "Objective aperture size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Objective aperture size in micrometers"
                 },
                 "phase_plate": {
                     "description": "Phase plate available",
@@ -1117,32 +1160,48 @@
                     ]
                 },
                 "pixel_size_physical": {
-                    "description": "Physical pixel size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Physical pixel size in micrometers"
                 },
                 "pixel_size_physical_um": {
-                    "description": "Physical pixel size of the detector in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Physical pixel size of the detector in micrometers"
                 },
                 "spotsize": {
-                    "description": "Electron beam spot size setting",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron beam spot size setting"
                 },
                 "tem_beam_diameter": {
-                    "description": "TEM beam diameter in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "TEM beam diameter in micrometers"
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -1164,18 +1223,26 @@
             "description": "Cryo-EM specific sample preparation",
             "properties": {
                 "blot_force": {
-                    "description": "Blotting force setting",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Blotting force setting"
                 },
                 "blot_number": {
-                    "description": "Number of blots applied",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of blots applied"
                 },
                 "blot_time": {
                     "anyOf": [
@@ -1186,9 +1253,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
-                    "maximum": 10.0,
-                    "minimum": 0.5
+                    "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "blotter_height": {
                     "anyOf": [
@@ -1304,9 +1369,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
-                    "maximum": 5.0,
-                    "minimum": 0.5
+                    "description": "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "humidity_percentage": {
                     "anyOf": [
@@ -1317,9 +1380,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
-                    "maximum": 100,
-                    "minimum": 0
+                    "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
                 },
                 "plasma_treatment": {
                     "description": "Plasma treatment details",
@@ -1433,11 +1494,15 @@
                     "description": "Crystallization method used"
                 },
                 "protein_concentration": {
-                    "description": "Protein concentration for crystallization in mg/mL",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Protein concentration for crystallization in mg/mL"
                 },
                 "reservoir_volume_ul": {
                     "anyOf": [
@@ -1512,18 +1577,26 @@
                     ]
                 },
                 "beam_center_x_px": {
-                    "description": "Beam center X coordinate in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center X coordinate in pixels"
                 },
                 "beam_center_y_px": {
-                    "description": "Beam center Y coordinate in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center Y coordinate in pixels"
                 },
                 "beam_size_um": {
                     "anyOf": [
@@ -1646,11 +1719,15 @@
                     "description": "Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "total_frames": {
-                    "description": "Total number of frames/images",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of frames/images"
                 },
                 "total_rotation_deg": {
                     "anyOf": [
@@ -1741,11 +1818,15 @@
                     ]
                 },
                 "file_size_bytes": {
-                    "description": "File size in bytes",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "File size in bytes"
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
@@ -2199,11 +2280,15 @@
                     ]
                 },
                 "astigmatism_target": {
-                    "description": "Target astigmatism in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target astigmatism in Angstroms"
                 },
                 "autoloader_slot": {
                     "description": "Autoloader slot identifier",
@@ -2242,26 +2327,37 @@
                     ]
                 },
                 "calibrated_pixel_size": {
-                    "description": "Calibrated pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Calibrated pixel size in Angstroms per pixel"
                 },
                 "camera_binning": {
-                    "description": "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-                    "minimum": 0.01,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
                 },
                 "coma": {
-                    "description": "Coma aberration in nanometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Coma aberration in nanometers"
                 },
                 "data_collection_strategy": {
                     "anyOf": [
@@ -2275,32 +2371,48 @@
                     "description": "Strategy for data collection"
                 },
                 "defocus_range_increment": {
-                    "description": "Defocus range increment in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus range increment in micrometers"
                 },
                 "defocus_range_max": {
-                    "description": "Maximum defocus range in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum defocus range in micrometers"
                 },
                 "defocus_range_min": {
-                    "description": "Minimum defocus range in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum defocus range in micrometers"
                 },
                 "defocus_target": {
-                    "description": "Target defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target defocus value in micrometers"
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -2321,11 +2433,15 @@
                     "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose_rate": {
-                    "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
                 },
                 "end_time": {
                     "description": "Data collection end timestamp",
@@ -2372,11 +2488,15 @@
                     "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "exposure_time_per_frame": {
-                    "description": "Exposure time per frame in milliseconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time per frame in milliseconds"
                 },
                 "flux": {
                     "anyOf": [
@@ -2401,18 +2521,26 @@
                     "description": "Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "frames_per_movie": {
-                    "description": "Number of frames per movie",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of frames per movie"
                 },
                 "holes_per_group": {
-                    "description": "Number of holes per group",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of holes per group. Data providers may include unit information in the QuantityValue if needed."
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
@@ -2423,32 +2551,48 @@
                     "type": "string"
                 },
                 "ispyb_data_collection_id": {
-                    "description": "ISPyB DataCollection.dataCollectionId for traceability",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ISPyB DataCollection.dataCollectionId for traceability"
                 },
                 "ispyb_session_id": {
-                    "description": "ISPyB BLSession.sessionId",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ISPyB BLSession.sessionId"
                 },
                 "magnification": {
-                    "description": "Magnification used during data collection",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Magnification used during data collection"
                 },
                 "number_of_images": {
-                    "description": "Total number of diffraction images collected",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of diffraction images collected"
                 },
                 "operator_id": {
                     "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
@@ -2539,11 +2683,15 @@
                     "type": "string"
                 },
                 "shots_per_hole": {
-                    "description": "Number of shots taken per hole",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of shots taken per hole"
                 },
                 "slit_gap_horizontal": {
                     "anyOf": [
@@ -2568,11 +2716,15 @@
                     "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "stage_tilt": {
-                    "description": "Stage tilt angle in degrees",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Stage tilt angle in degrees"
                 },
                 "start_angle": {
                     "anyOf": [
@@ -2611,18 +2763,26 @@
                     ]
                 },
                 "total_dose": {
-                    "description": "Total electron dose in e-/Angstrom^2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total electron dose in e-/Angstrom^2"
                 },
                 "total_exposure_time": {
-                    "description": "Total exposure time in milliseconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total exposure time in milliseconds"
                 },
                 "total_rotation": {
                     "anyOf": [
@@ -2644,9 +2804,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
-                    "maximum": 100,
-                    "minimum": 0
+                    "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "undulator_gap": {
                     "anyOf": [
@@ -2791,26 +2949,26 @@
                     ]
                 },
                 "fsc_value": {
-                    "description": "FSC values corresponding to each resolution",
-                    "items": {
-                        "type": "number"
-                    },
-                    "maxItems": 10000,
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "FSC values corresponding to each resolution"
                 },
                 "resolution_angstrom": {
-                    "description": "Resolution values in Angstroms",
-                    "items": {
-                        "type": "number"
-                    },
-                    "maxItems": 10000,
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution values in Angstroms"
                 }
             },
             "title": "FSCCurve",
@@ -2871,11 +3029,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -2907,11 +3069,15 @@
                     ]
                 },
                 "number_of_scans": {
-                    "description": "Number of scans averaged for the spectrum",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of scans averaged for the spectrum"
                 },
                 "pixel_size": {
                     "anyOf": [
@@ -3102,11 +3268,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "emission_filter": {
                     "description": "Specifications of the emission filter",
@@ -3204,11 +3374,15 @@
                     "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "quantum_yield": {
-                    "description": "Quantum yield of the fluorophore",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Quantum yield of the fluorophore"
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -3510,11 +3684,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -3624,11 +3802,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -3727,11 +3909,15 @@
                     "description": "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -4100,13 +4286,15 @@
                     "description": "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "ph": {
-                    "description": "pH value of the solution during measurement (range: 0-14)",
-                    "maximum": 14,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "temperature": {
                     "anyOf": [
@@ -4167,11 +4355,15 @@
                     "description": "Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "ctf_quality_score": {
-                    "description": "CTF estimation quality score",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CTF estimation quality score"
                 },
                 "defocus": {
                     "anyOf": [
@@ -4236,11 +4428,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Total electron dose in e-/Angstrom^2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total electron dose in e-/Angstrom^2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -4372,12 +4568,15 @@
                     "description": "B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "binning": {
-                    "description": "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-                    "minimum": 0.01,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
                 },
                 "description": {
                     "type": [
@@ -4404,26 +4603,37 @@
                     "description": "Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "frame_grouping": {
-                    "description": "Number of frames grouped together",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of frames grouped together"
                 },
                 "output_binning": {
-                    "description": "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).",
-                    "minimum": 0.01,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
                 },
                 "patch_size": {
-                    "description": "Patch size for local motion correction",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Patch size for local motion correction"
                 }
             },
             "title": "MotionCorrectionParameters",
@@ -4459,18 +4669,26 @@
                     "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_shift_x": {
-                    "description": "Beam shift X in microradians",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam shift X in microradians"
                 },
                 "beam_shift_y": {
-                    "description": "Beam shift Y in microradians",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam shift Y in microradians"
                 },
                 "defocus": {
                     "anyOf": [
@@ -4513,18 +4731,26 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "dose_per_frame": {
-                    "description": "Electron dose per frame in e-/Angstrom^2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose per frame in e-/Angstrom^2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -4542,11 +4768,15 @@
                     "type": "string"
                 },
                 "frames": {
-                    "description": "Number of frames in the movie",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of frames in the movie"
                 },
                 "grid_square_id": {
                     "description": "Grid square identifier",
@@ -4987,11 +5217,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -5117,11 +5351,15 @@
             "description": "Parameters specific to particle picking workflows",
             "properties": {
                 "box_size": {
-                    "description": "Particle box size in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Particle box size in pixels"
                 },
                 "description": {
                     "type": [
@@ -5151,11 +5389,15 @@
                     ]
                 },
                 "ncc_score": {
-                    "description": "Normalized cross-correlation score threshold",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Normalized cross-correlation score threshold"
                 },
                 "picking_method": {
                     "description": "Method used (manual, template_matching, deep_learning, LoG, Topaz, other)",
@@ -5165,18 +5407,26 @@
                     ]
                 },
                 "power_score": {
-                    "description": "Power score threshold",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Power score threshold"
                 },
                 "threshold": {
-                    "description": "Picking threshold",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Picking threshold"
                 }
             },
             "title": "ParticlePickingParameters",
@@ -5577,11 +5827,15 @@
                     ]
                 },
                 "sequence_length_aa": {
-                    "description": "Length of the protein sequence in amino acids",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Length of the protein sequence in amino acids"
                 },
                 "sequence_verified_by": {
                     "description": "Method or person who verified the sequence",
@@ -5851,18 +6105,26 @@
             "description": "Quality metrics for experiments",
             "properties": {
                 "anom_corr": {
-                    "description": "Anomalous correlation",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Anomalous correlation"
                 },
                 "anom_sig_ano": {
-                    "description": "Anomalous signal strength",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Anomalous signal strength"
                 },
                 "anomalous_used": {
                     "description": "Whether anomalous signal was used",
@@ -5872,25 +6134,37 @@
                     ]
                 },
                 "average_b_factor_a2": {
-                    "description": "Average B-factor in Angstroms squared",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average B-factor in Angstroms squared"
                 },
                 "cc_half": {
-                    "description": "Half-set correlation coefficient CC(1/2)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Half-set correlation coefficient CC(1/2)"
                 },
                 "clashscore": {
-                    "description": "MolProbity clashscore",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "MolProbity clashscore"
                 },
                 "completeness": {
                     "anyOf": [
@@ -5921,81 +6195,125 @@
                     ]
                 },
                 "i_zero": {
-                    "description": "Forward scattering intensity I(0)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Forward scattering intensity I(0)"
                 },
                 "mean_i_over_sigma_i": {
-                    "description": "Mean I/sigma(I)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mean I/sigma(I)"
                 },
                 "molprobity_score": {
-                    "description": "Overall MolProbity score",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Overall MolProbity score"
                 },
                 "multiplicity": {
-                    "description": "Data multiplicity (redundancy)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data multiplicity (redundancy)"
                 },
                 "r_factor": {
-                    "description": "R-factor for crystallography (deprecated, use r_work)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "R-factor for crystallography (deprecated, use r_work)"
                 },
                 "r_free": {
-                    "description": "R-free (test set)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "R-free (test set)"
                 },
                 "r_merge": {
-                    "description": "Rmerge - merge R-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rmerge - merge R-factor"
                 },
                 "r_pim": {
-                    "description": "Rpim - precision-indicating merging R-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rpim - precision-indicating merging R-factor"
                 },
                 "r_work": {
-                    "description": "Refinement R-factor (working set)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Refinement R-factor (working set)"
                 },
                 "ramachandran_favored_percent": {
-                    "description": "Percentage of residues in favored Ramachandran regions",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Percentage of residues in favored Ramachandran regions"
                 },
                 "ramachandran_outliers_percent": {
-                    "description": "Percentage of Ramachandran outliers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Percentage of Ramachandran outliers"
                 },
                 "resolution": {
                     "anyOf": [
@@ -6042,11 +6360,15 @@
                     "description": "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "signal_to_noise": {
-                    "description": "Signal to noise ratio",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Signal to noise ratio"
                 },
                 "space_group": {
                     "description": "Crystallographic space group",
@@ -6122,11 +6444,15 @@
                     "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "wilson_b_factor_a2": {
-                    "description": "Wilson B-factor in Angstroms squared",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Wilson B-factor in Angstroms squared"
                 }
             },
             "title": "QualityMetrics",
@@ -6196,11 +6522,15 @@
             "description": "Parameters specific to 3D refinement workflows",
             "properties": {
                 "box_size": {
-                    "description": "Box size in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Box size in pixels"
                 },
                 "description": {
                     "type": [
@@ -6297,18 +6627,26 @@
                     ]
                 },
                 "detector_distance_max": {
-                    "description": "Maximum detector distance in mm",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum detector distance in mm"
                 },
                 "detector_distance_min": {
-                    "description": "Minimum detector distance in mm",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum detector distance in mm"
                 },
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
@@ -6356,25 +6694,37 @@
                     ]
                 },
                 "q_range_max": {
-                    "description": "Maximum q value in inverse Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum q value in inverse Angstroms"
                 },
                 "q_range_min": {
-                    "description": "Minimum q value in inverse Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum q value in inverse Angstroms"
                 },
                 "sample_changer_capacity": {
-                    "description": "Number of samples in automatic sample changer",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of samples in automatic sample changer"
                 },
                 "temperature_control_range": {
                     "description": "Temperature control range in Celsius",
@@ -6421,14 +6771,15 @@
                     "description": "Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "concentration_series": {
-                    "description": "Concentration values for series measurements",
-                    "items": {
-                        "type": "number"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Concentration values for series measurements"
                 },
                 "description": {
                     "type": [
@@ -6684,9 +7035,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
-                    "maximum": 100,
-                    "minimum": 0
+                    "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
                 },
                 "quality_metrics": {
                     "description": "Quality control metrics for the sample",
@@ -6787,18 +7136,26 @@
                     ]
                 },
                 "cleavage_temperature_c": {
-                    "description": "Temperature during cleavage in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during cleavage in Celsius"
                 },
                 "cleavage_time_h": {
-                    "description": "Duration of protease cleavage in hours",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of protease cleavage in hours"
                 },
                 "concentration_method": {
                     "description": "Method used to concentrate protein",
@@ -6844,11 +7201,15 @@
                     ]
                 },
                 "final_concentration_mg_per_ml": {
-                    "description": "Final protein concentration in mg/mL",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Final protein concentration in mg/mL"
                 },
                 "growth_temperature_c": {
                     "anyOf": [
@@ -7018,11 +7379,15 @@
                     ]
                 },
                 "purity_by_sds_page_percent": {
-                    "description": "Purity percentage by SDS-PAGE",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Purity percentage by SDS-PAGE"
                 },
                 "sample_id": {
                     "description": "Reference to the sample being prepared",
@@ -7071,11 +7436,15 @@
                     ]
                 },
                 "yield_mg": {
-                    "description": "Total yield in milligrams",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total yield in milligrams"
                 }
             },
             "required": [
@@ -7582,32 +7951,48 @@
                     "description": "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "anomalous_multiplicity": {
-                    "description": "Multiplicity of anomalous data",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Multiplicity of anomalous data"
                 },
                 "cc_anomalous": {
-                    "description": "Anomalous correlation coefficient",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Anomalous correlation coefficient"
                 },
                 "cc_half": {
-                    "description": "Half-set correlation coefficient CC(1/2)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Half-set correlation coefficient CC(1/2)"
                 },
                 "clashscore": {
-                    "description": "MolProbity clashscore",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "MolProbity clashscore"
                 },
                 "completed_at": {
                     "description": "Workflow completion time",
@@ -7679,11 +8064,15 @@
                     "description": "Fourier Shell Correlation curve data"
                 },
                 "i_over_sigma": {
-                    "description": "Mean I/sigma(I) - signal to noise ratio",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mean I/sigma(I) - signal to noise ratio"
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
@@ -7704,18 +8093,26 @@
                     ]
                 },
                 "ispyb_auto_proc_program_id": {
-                    "description": "ISPyB AutoProcProgram.autoProcProgramId",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ISPyB AutoProcProgram.autoProcProgramId"
                 },
                 "ispyb_auto_proc_scaling_id": {
-                    "description": "ISPyB AutoProcScaling.autoProcScalingId",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ISPyB AutoProcScaling.autoProcScalingId"
                 },
                 "ligands_cofactors": {
                     "description": "Ligands or cofactors modeled in the structure",
@@ -7736,25 +8133,37 @@
                     "description": "Motion correction specific parameters"
                 },
                 "multiplicity": {
-                    "description": "Data multiplicity (redundancy)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data multiplicity (redundancy)"
                 },
                 "n_total_observations": {
-                    "description": "Total number of observations (before merging)",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of observations (before merging)"
                 },
                 "n_total_unique": {
-                    "description": "Total number of unique reflections",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total number of unique reflections"
                 },
                 "ncs_used": {
                     "description": "Whether Non-Crystallographic Symmetry restraints were used",
@@ -7764,11 +8173,15 @@
                     ]
                 },
                 "number_of_waters": {
-                    "description": "Number of water molecules modeled",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Number of water molecules modeled"
                 },
                 "outlier_rejection_method": {
                     "description": "Method for rejecting outlier reflections",
@@ -7817,13 +8230,15 @@
                     "description": "Phasing method used for X-ray crystallography structure determination"
                 },
                 "processing_level": {
-                    "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)",
-                    "maximum": 4,
-                    "minimum": 0,
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
                 },
                 "processing_notes": {
                     "description": "Additional notes about processing",
@@ -7840,11 +8255,15 @@
                     ]
                 },
                 "r_anomalous": {
-                    "description": "Anomalous R-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Anomalous R-factor"
                 },
                 "ramachandran_favored": {
                     "anyOf": [
@@ -7880,11 +8299,15 @@
                     "description": "3D refinement specific parameters"
                 },
                 "refinement_resolution_a": {
-                    "description": "Resolution cutoff used for refinement in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution cutoff used for refinement in Angstroms"
                 },
                 "resolution_high": {
                     "anyOf": [
@@ -7916,18 +8339,26 @@
                     ]
                 },
                 "rfree": {
-                    "description": "R-free (test set)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "R-free (test set)"
                 },
                 "rmerge": {
-                    "description": "Rmerge - merge R-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rmerge - merge R-factor"
                 },
                 "rmsd_angles": {
                     "anyOf": [
@@ -7952,18 +8383,26 @@
                     "description": "RMSD from ideal bond lengths, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "rpim": {
-                    "description": "Rpim - precision-indicating merging R-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rpim - precision-indicating merging R-factor"
                 },
                 "rwork": {
-                    "description": "Refinement R-factor (working set)",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Refinement R-factor (working set)"
                 },
                 "scaler_module": {
                     "description": "Scaling module used (e.g., AIMLESS, SCALA)",
@@ -7980,11 +8419,15 @@
                     ]
                 },
                 "sig_anomalous": {
-                    "description": "Mean anomalous difference signal",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Mean anomalous difference signal"
                 },
                 "software_name": {
                     "description": "Software used for processing",
@@ -8260,11 +8703,15 @@
                     "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
-                    "description": "Electron dose in e-/\u00c5\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electron dose in e-/\u00c5\u00b2"
                 },
                 "dwell_time": {
                     "anyOf": [
@@ -8352,18 +8799,26 @@
             "description": "X-ray diffractometer or synchrotron beamline specifications",
             "properties": {
                 "beam_size_max": {
-                    "description": "Maximum beam size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum beam size in micrometers"
                 },
                 "beam_size_min": {
-                    "description": "Minimum beam size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum beam size in micrometers"
                 },
                 "beamline_id": {
                     "description": "Beamline identifier at synchrotron/neutron facility",
@@ -8409,18 +8864,26 @@
                     "description": "Generic detector technology type"
                 },
                 "energy_max": {
-                    "description": "Maximum X-ray energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum X-ray energy in keV"
                 },
                 "energy_min": {
-                    "description": "Minimum X-ray energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum X-ray energy in keV"
                 },
                 "facility_name": {
                     "$ref": "#/$defs/FacilityEnum",
@@ -8435,11 +8898,15 @@
                     ]
                 },
                 "flux_density": {
-                    "description": "Photon flux density in photons/s/mm\u00b2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Photon flux density in photons/s/mm\u00b2"
                 },
                 "goniometer_type": {
                     "description": "Type of goniometer",
@@ -8654,11 +9121,15 @@
                     ]
                 },
                 "protein_concentration_mg_per_ml": {
-                    "description": "Protein concentration for crystallization in mg/mL",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Protein concentration for crystallization in mg/mL"
                 },
                 "reservoir_volume_ul": {
                     "anyOf": [

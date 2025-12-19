@@ -8,7 +8,7 @@ URI: [lambdaber:workflowRun__n_total_unique](https://w3id.org/lambda-ber-schema/
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,9 +19,3 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 ## Used by
 
  * [WorkflowRun](WorkflowRun.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | ispyb:AutoProcScalingStatistics.nTotalUniqueObservations |

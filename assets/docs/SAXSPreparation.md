@@ -6,7 +6,7 @@ SAXS/WAXS specific preparation
 URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TechniqueSpecificPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation&#124;concentration_series:float%20*;buffer_matching_protocol:string%20%3F;sample_cell_type:string%20%3F;cell_path_length:float%20%3F;temperature_control:string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[TechniqueSpecificPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation&#124;concentration_series:float%20*;buffer_matching_protocol:string%20%3F;sample_cell_type:string%20%3F;cell_path_length:float%20%3F;temperature_control:string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[TechniqueSpecificPreparation],[QuantityValue]<cell_path_length%200..1-++[SAXSPreparation&#124;buffer_matching_protocol:string%20%3F;sample_cell_type:string%20%3F;temperature_control:string%20%3F;description(i):string%20%3F],[QuantityValue]<concentration_series%200..1-++[SAXSPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[QuantityValue])](https://yuml.me/diagram/nofunky;dir:TB/class/[TechniqueSpecificPreparation],[QuantityValue]<cell_path_length%200..1-++[SAXSPreparation&#124;buffer_matching_protocol:string%20%3F;sample_cell_type:string%20%3F;temperature_control:string%20%3F;description(i):string%20%3F],[QuantityValue]<concentration_series%200..1-++[SAXSPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[QuantityValue])
 
 ## Parents
 
@@ -17,9 +17,9 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
 
 ### Own
 
- * [➞concentration_series](sAXSPreparation__concentration_series.md)  <sub>0..\*</sub>
+ * [➞concentration_series](sAXSPreparation__concentration_series.md)  <sub>0..1</sub>
      * Description: Concentration values for series measurements
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞buffer_matching_protocol](sAXSPreparation__buffer_matching_protocol.md)  <sub>0..1</sub>
      * Description: Protocol for buffer matching
      * Range: [String](types/String.md)
@@ -27,8 +27,8 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
      * Description: Type of sample cell used
      * Range: [String](types/String.md)
  * [➞cell_path_length](sAXSPreparation__cell_path_length.md)  <sub>0..1</sub>
-     * Description: Path length in mm
-     * Range: [Float](types/Float.md)
+     * Description: Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞temperature_control](sAXSPreparation__temperature_control.md)  <sub>0..1</sub>
      * Description: Temperature control settings
      * Range: [String](types/String.md)

@@ -20,7 +20,10 @@
     "numeric_value": 0.2,
     "unit": "seconds"
   },
-  "dose": 0.0,
+  "dose": {
+    "numeric_value": 0.0,
+    "unit": "electrons per Angstrom squared"
+  },
   "defocus": {
     "numeric_value": 0.0,
     "unit": "micrometers"
@@ -49,6 +52,9 @@
     "numeric_value": 1.0,
     "unit": "Airy units"
   },
-  "quantum_yield": 0.6,
+  "quantum_yield": {
+    "numeric_value": 0.6,
+    "unit": "quantum yield"
+  },
   "@type": "FluorescenceImage"
 }

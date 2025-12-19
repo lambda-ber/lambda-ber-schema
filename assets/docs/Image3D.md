@@ -6,7 +6,7 @@ A 3D volume or tomogram
 URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])
 
 ## Parents
 
@@ -58,4 +58,4 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)

@@ -8,7 +8,7 @@ URI: [lambdaber:samplePreparation__final_concentration_mg_per_ml](https://w3id.o
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

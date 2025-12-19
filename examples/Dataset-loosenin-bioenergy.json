@@ -23,7 +23,10 @@
             ]
           },
           "buffer_composition": {
-            "ph": 6.0,
+            "ph": {
+              "numeric_value": 6.0,
+              "unit": "pH units"
+            },
             "components": [
               "50mM MES buffer",
               "150mM NaCl"
@@ -56,7 +59,10 @@
             ]
           },
           "buffer_composition": {
-            "ph": 5.0,
+            "ph": {
+              "numeric_value": 5.0,
+              "unit": "pH units"
+            },
             "components": [
               "Universal buffer system",
               "100mM NaCl"
@@ -83,7 +89,10 @@
             ]
           },
           "buffer_composition": {
-            "ph": 5.5,
+            "ph": {
+              "numeric_value": 5.5,
+              "unit": "pH units"
+            },
             "components": [
               "50mM sodium acetate",
               "200mM NaCl"
@@ -110,7 +119,10 @@
             ]
           },
           "buffer_composition": {
-            "ph": 6.0,
+            "ph": {
+              "numeric_value": 6.0,
+              "unit": "pH units"
+            },
             "components": [
               "50mM MES buffer",
               "150mM NaCl"
@@ -161,7 +173,10 @@
           "workflow_type": "saxs_analysis",
           "experiment_id": "lambdaber:exp-saxs-001",
           "software_name": "ATSAS",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "3.2.1"
         },
         {
@@ -171,7 +186,10 @@
           "workflow_type": "phasing",
           "experiment_id": "lambdaber:exp-mx-001",
           "software_name": "PHENIX",
-          "processing_level": 3,
+          "processing_level": {
+            "numeric_value": 3.0,
+            "unit": "level"
+          },
           "software_version": "1.20.1"
         },
         {
@@ -181,7 +199,10 @@
           "workflow_type": "refinement",
           "experiment_id": "lambdaber:exp-cryoem-001",
           "software_name": "RELION",
-          "processing_level": 3,
+          "processing_level": {
+            "numeric_value": 3.0,
+            "unit": "level"
+          },
           "software_version": "4.0"
         },
         {
@@ -191,7 +212,10 @@
           "workflow_type": "model_building",
           "experiment_id": "lambdaber:exp-saxs-001",
           "software_name": "IMP",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "2.18"
         }
       ],
@@ -202,7 +226,10 @@
           "file_name": "loosenin_ph_series.dat",
           "file_format": "ascii",
           "file_path": "/data/saxs/2025/loosenin/",
-          "file_size_bytes": 2500000,
+          "file_size_bytes": {
+            "numeric_value": 2500000.0,
+            "unit": "bytes"
+          },
           "data_type": "scattering"
         },
         {
@@ -211,7 +238,10 @@
           "file_name": "biosans_complex.dat",
           "file_format": "ascii",
           "file_path": "/data/sans/2025/loosenin/",
-          "file_size_bytes": 1800000,
+          "file_size_bytes": {
+            "numeric_value": 1800000.0,
+            "unit": "bytes"
+          },
           "data_type": "scattering"
         },
         {
@@ -220,7 +250,10 @@
           "file_name": "loosenin_native.mtz",
           "file_format": "mtz",
           "file_path": "/data/mx/2025/loosenin/",
-          "file_size_bytes": 45000000,
+          "file_size_bytes": {
+            "numeric_value": 45000000.0,
+            "unit": "bytes"
+          },
           "data_type": "diffraction"
         },
         {
@@ -229,7 +262,10 @@
           "file_name": "loosenin_refined.pdb",
           "file_format": "pdb",
           "file_path": "/data/mx/2025/loosenin/",
-          "file_size_bytes": 800000,
+          "file_size_bytes": {
+            "numeric_value": 800000.0,
+            "unit": "bytes"
+          },
           "data_type": "model"
         },
         {
@@ -238,7 +274,10 @@
           "file_name": "loosenin_cellulose.star",
           "file_format": "star",
           "file_path": "/data/cryoem/2025/loosenin/",
-          "file_size_bytes": 125000000000,
+          "file_size_bytes": {
+            "numeric_value": 125000000000.0,
+            "unit": "bytes"
+          },
           "data_type": "particles"
         },
         {
@@ -247,7 +286,10 @@
           "file_name": "loosenin_cellulose_map.mrc",
           "file_format": "mrc",
           "file_path": "/data/cryoem/2025/loosenin/",
-          "file_size_bytes": 512000000,
+          "file_size_bytes": {
+            "numeric_value": 512000000.0,
+            "unit": "bytes"
+          },
           "data_type": "volume"
         }
       ],

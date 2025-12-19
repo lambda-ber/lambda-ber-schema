@@ -243,7 +243,9 @@ biophysical_properties:
     buffer_composition:
       components:
       - DNA-binding domain
-    ph: 7.0
+    ph:
+      numeric_value: 7.0
+      unit: pH units
     temperature:
       numeric_value: 293.15
       unit: degrees Celsius
@@ -257,7 +259,9 @@ biophysical_properties:
     buffer_composition:
       components:
       - Full-length protein
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
   experimental_method: circular_dichroism
 - property_type: aggregation_propensity
   value: 0.68

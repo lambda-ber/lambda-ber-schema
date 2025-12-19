@@ -16,7 +16,9 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
     lambdaber:dimensions_y [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "128.0"^^xsd:float ;
             lambdaber:unit "pixels" ] ;
-    lambdaber:dose "0.0"^^xsd:float ;
+    lambdaber:dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.5"^^xsd:float ;
             lambdaber:unit "seconds" ] ;
@@ -26,7 +28,9 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
         "1740 cm⁻¹ - C=O stretch (ester lipids)",
         "2920 cm⁻¹ - CH2 asymmetric stretch (lipids)",
         "3300 cm⁻¹ - O-H stretch (water)" ;
-    lambdaber:number_of_scans 32 ;
+    lambdaber:number_of_scans [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "32.0"^^xsd:float ;
+            lambdaber:unit "scans" ] ;
     lambdaber:pixel_size [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.5"^^xsd:float ;
             lambdaber:unit "Angstroms" ] ;

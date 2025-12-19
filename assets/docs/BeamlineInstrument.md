@@ -6,7 +6,7 @@ Multi-technique synchrotron beamline that supports multiple experimental methods
 URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument],[Instrument]^-[BeamlineInstrument&#124;techniques_supported:TechniqueEnum%20%2B;source_type:XRaySourceTypeEnum%20%3F;energy_min:float%20%3F;energy_max:float%20%3F;q_range_min:float%20%3F;q_range_max:float%20%3F;sample_changer_capacity:integer%20%3F;mail_in_service:boolean%20%3F;website:uri%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument],[Instrument]^-[BeamlineInstrument&#124;techniques_supported:TechniqueEnum%20%2B;source_type:XRaySourceTypeEnum%20%3F;energy_min:float%20%3F;energy_max:float%20%3F;q_range_min:float%20%3F;q_range_max:float%20%3F;sample_changer_capacity:integer%20%3F;mail_in_service:boolean%20%3F;website:uri%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<sample_changer_capacity%200..1-++[BeamlineInstrument&#124;techniques_supported:TechniqueEnum%20%2B;source_type:XRaySourceTypeEnum%20%3F;mail_in_service:boolean%20%3F;website:uri%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<q_range_max%200..1-++[BeamlineInstrument],[QuantityValue]<q_range_min%200..1-++[BeamlineInstrument],[QuantityValue]<energy_max%200..1-++[BeamlineInstrument],[QuantityValue]<energy_min%200..1-++[BeamlineInstrument],[Instrument]^-[BeamlineInstrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<sample_changer_capacity%200..1-++[BeamlineInstrument&#124;techniques_supported:TechniqueEnum%20%2B;source_type:XRaySourceTypeEnum%20%3F;mail_in_service:boolean%20%3F;website:uri%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<q_range_max%200..1-++[BeamlineInstrument],[QuantityValue]<q_range_min%200..1-++[BeamlineInstrument],[QuantityValue]<energy_max%200..1-++[BeamlineInstrument],[QuantityValue]<energy_min%200..1-++[BeamlineInstrument],[Instrument]^-[BeamlineInstrument])
 
 ## Parents
 
@@ -25,19 +25,19 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
      * Range: [XRaySourceTypeEnum](XRaySourceTypeEnum.md)
  * [➞energy_min](beamlineInstrument__energy_min.md)  <sub>0..1</sub>
      * Description: Minimum X-ray energy in keV
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞energy_max](beamlineInstrument__energy_max.md)  <sub>0..1</sub>
      * Description: Maximum X-ray energy in keV
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞q_range_min](beamlineInstrument__q_range_min.md)  <sub>0..1</sub>
      * Description: Minimum q value for SAXS in inverse Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞q_range_max](beamlineInstrument__q_range_max.md)  <sub>0..1</sub>
      * Description: Maximum q value for SAXS in inverse Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞sample_changer_capacity](beamlineInstrument__sample_changer_capacity.md)  <sub>0..1</sub>
      * Description: Automatic sample changer capacity
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞mail_in_service](beamlineInstrument__mail_in_service.md)  <sub>0..1</sub>
      * Description: Whether mail-in sample service is available
      * Range: [Boolean](types/Boolean.md)

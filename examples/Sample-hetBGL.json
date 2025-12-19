@@ -23,7 +23,10 @@
     "unit": "milligrams per milliliter"
   },
   "buffer_composition": {
-    "ph": 8.0,
+    "ph": {
+      "numeric_value": 8.0,
+      "unit": "pH units"
+    },
     "components": [
       "25 mM Tris",
       "300 mM NaCl"

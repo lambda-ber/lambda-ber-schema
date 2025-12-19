@@ -6,7 +6,7 @@ An experimental data collection session
 URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;number_of_images:integer%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;number_of_images:integer%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<ispyb_session_id%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;autoloader_slot:string%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<ispyb_data_collection_id%200..1-++[ExperimentRun],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<number_of_images%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QuantityValue]<holes_per_group%200..1-++[ExperimentRun],[QuantityValue]<shots_per_hole%200..1-++[ExperimentRun],[QuantityValue]<stage_tilt%200..1-++[ExperimentRun],[QuantityValue]<coma%200..1-++[ExperimentRun],[QuantityValue]<astigmatism_target%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_increment%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_max%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_min%200..1-++[ExperimentRun],[QuantityValue]<defocus_target%200..1-++[ExperimentRun],[QuantityValue]<dose_rate%200..1-++[ExperimentRun],[QuantityValue]<total_dose%200..1-++[ExperimentRun],[QuantityValue]<total_exposure_time%200..1-++[ExperimentRun],[QuantityValue]<frames_per_movie%200..1-++[ExperimentRun],[QuantityValue]<exposure_time_per_frame%200..1-++[ExperimentRun],[QuantityValue]<camera_binning%200..1-++[ExperimentRun],[QuantityValue]<calibrated_pixel_size%200..1-++[ExperimentRun],[QuantityValue]<magnification%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<ispyb_session_id%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;autoloader_slot:string%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<ispyb_data_collection_id%200..1-++[ExperimentRun],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<number_of_images%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QuantityValue]<holes_per_group%200..1-++[ExperimentRun],[QuantityValue]<shots_per_hole%200..1-++[ExperimentRun],[QuantityValue]<stage_tilt%200..1-++[ExperimentRun],[QuantityValue]<coma%200..1-++[ExperimentRun],[QuantityValue]<astigmatism_target%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_increment%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_max%200..1-++[ExperimentRun],[QuantityValue]<defocus_range_min%200..1-++[ExperimentRun],[QuantityValue]<defocus_target%200..1-++[ExperimentRun],[QuantityValue]<dose_rate%200..1-++[ExperimentRun],[QuantityValue]<total_dose%200..1-++[ExperimentRun],[QuantityValue]<total_exposure_time%200..1-++[ExperimentRun],[QuantityValue]<frames_per_movie%200..1-++[ExperimentRun],[QuantityValue]<exposure_time_per_frame%200..1-++[ExperimentRun],[QuantityValue]<camera_binning%200..1-++[ExperimentRun],[QuantityValue]<calibrated_pixel_size%200..1-++[ExperimentRun],[QuantityValue]<magnification%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])
 
 ## Parents
 
@@ -59,58 +59,58 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
      * Range: [ProcessingStatusEnum](ProcessingStatusEnum.md)
  * [➞magnification](experimentRun__magnification.md)  <sub>0..1</sub>
      * Description: Magnification used during data collection
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞calibrated_pixel_size](experimentRun__calibrated_pixel_size.md)  <sub>0..1</sub>
      * Description: Calibrated pixel size in Angstroms per pixel
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞camera_binning](experimentRun__camera_binning.md)  <sub>0..1</sub>
      * Description: Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time_per_frame](experimentRun__exposure_time_per_frame.md)  <sub>0..1</sub>
      * Description: Exposure time per frame in milliseconds
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞frames_per_movie](experimentRun__frames_per_movie.md)  <sub>0..1</sub>
      * Description: Number of frames per movie
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞total_exposure_time](experimentRun__total_exposure_time.md)  <sub>0..1</sub>
      * Description: Total exposure time in milliseconds
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞total_dose](experimentRun__total_dose.md)  <sub>0..1</sub>
      * Description: Total electron dose in e-/Angstrom^2
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose_rate](experimentRun__dose_rate.md)  <sub>0..1</sub>
      * Description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus_target](experimentRun__defocus_target.md)  <sub>0..1</sub>
      * Description: Target defocus value in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus_range_min](experimentRun__defocus_range_min.md)  <sub>0..1</sub>
      * Description: Minimum defocus range in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus_range_max](experimentRun__defocus_range_max.md)  <sub>0..1</sub>
      * Description: Maximum defocus range in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus_range_increment](experimentRun__defocus_range_increment.md)  <sub>0..1</sub>
      * Description: Defocus range increment in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞astigmatism_target](experimentRun__astigmatism_target.md)  <sub>0..1</sub>
      * Description: Target astigmatism in Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞coma](experimentRun__coma.md)  <sub>0..1</sub>
      * Description: Coma aberration in nanometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞stage_tilt](experimentRun__stage_tilt.md)  <sub>0..1</sub>
      * Description: Stage tilt angle in degrees
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞autoloader_slot](experimentRun__autoloader_slot.md)  <sub>0..1</sub>
      * Description: Autoloader slot identifier
      * Range: [String](types/String.md)
  * [➞shots_per_hole](experimentRun__shots_per_hole.md)  <sub>0..1</sub>
      * Description: Number of shots taken per hole
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞holes_per_group](experimentRun__holes_per_group.md)  <sub>0..1</sub>
-     * Description: Number of holes per group
-     * Range: [Integer](types/Integer.md)
+     * Description: Number of holes per group. Data providers may include unit information in the QuantityValue if needed.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞acquisition_software](experimentRun__acquisition_software.md)  <sub>0..1</sub>
      * Description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
      * Range: [String](types/String.md)
@@ -128,7 +128,7 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞number_of_images](experimentRun__number_of_images.md)  <sub>0..1</sub>
      * Description: Total number of diffraction images collected
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_center_x](experimentRun__beam_center_x.md)  <sub>0..1</sub>
      * Description: Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
@@ -188,10 +188,10 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞ispyb_data_collection_id](experimentRun__ispyb_data_collection_id.md)  <sub>0..1</sub>
      * Description: ISPyB DataCollection.dataCollectionId for traceability
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ispyb_session_id](experimentRun__ispyb_session_id.md)  <sub>0..1</sub>
      * Description: ISPyB BLSession.sessionId
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from NamedThing:
 

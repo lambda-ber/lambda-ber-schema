@@ -6,7 +6,7 @@ Fluorescence microscopy image capturing specific molecular targets through fluor
 URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/FluorescenceImage)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D],[Image2D]^-[FluorescenceImage&#124;excitation_wavelength:float%20%3F;emission_wavelength:float%20%3F;excitation_filter:string%20%3F;emission_filter:string%20%3F;fluorophore:string%20%3F;channel_name:string%20%3F;laser_power:float%20%3F;pinhole_size:float%20%3F;quantum_yield:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D],[Image2D]^-[FluorescenceImage&#124;excitation_wavelength:float%20%3F;emission_wavelength:float%20%3F;excitation_filter:string%20%3F;emission_filter:string%20%3F;fluorophore:string%20%3F;channel_name:string%20%3F;laser_power:float%20%3F;pinhole_size:float%20%3F;quantum_yield:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D],[QuantityValue]<quantum_yield%200..1-++[FluorescenceImage&#124;excitation_filter:string%20%3F;emission_filter:string%20%3F;fluorophore:string%20%3F;channel_name:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<pinhole_size%200..1-++[FluorescenceImage],[QuantityValue]<laser_power%200..1-++[FluorescenceImage],[QuantityValue]<emission_wavelength%200..1-++[FluorescenceImage],[QuantityValue]<excitation_wavelength%200..1-++[FluorescenceImage],[Image2D]^-[FluorescenceImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image2D],[QuantityValue]<quantum_yield%200..1-++[FluorescenceImage&#124;excitation_filter:string%20%3F;emission_filter:string%20%3F;fluorophore:string%20%3F;channel_name:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<pinhole_size%200..1-++[FluorescenceImage],[QuantityValue]<laser_power%200..1-++[FluorescenceImage],[QuantityValue]<emission_wavelength%200..1-++[FluorescenceImage],[QuantityValue]<excitation_wavelength%200..1-++[FluorescenceImage],[Image2D]^-[FluorescenceImage])
 
 ## Parents
 
@@ -18,11 +18,11 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
 ### Own
 
  * [➞excitation_wavelength](fluorescenceImage__excitation_wavelength.md)  <sub>0..1</sub>
-     * Description: Excitation wavelength in nanometers
-     * Range: [Float](types/Float.md)
+     * Description: Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞emission_wavelength](fluorescenceImage__emission_wavelength.md)  <sub>0..1</sub>
-     * Description: Emission wavelength in nanometers
-     * Range: [Float](types/Float.md)
+     * Description: Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞excitation_filter](fluorescenceImage__excitation_filter.md)  <sub>0..1</sub>
      * Description: Specifications of the excitation filter
      * Range: [String](types/String.md)
@@ -36,14 +36,14 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
      * Description: Name of the fluorescence channel (e.g., DAPI, GFP, RFP)
      * Range: [String](types/String.md)
  * [➞laser_power](fluorescenceImage__laser_power.md)  <sub>0..1</sub>
-     * Description: Laser power in milliwatts or percentage
-     * Range: [Float](types/Float.md)
+     * Description: Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞pinhole_size](fluorescenceImage__pinhole_size.md)  <sub>0..1</sub>
-     * Description: Pinhole size in Airy units for confocal microscopy
-     * Range: [Float](types/Float.md)
+     * Description: Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞quantum_yield](fluorescenceImage__quantum_yield.md)  <sub>0..1</sub>
      * Description: Quantum yield of the fluorophore
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from Image2D:
 
@@ -76,7 +76,7 @@ URI: [lambdaber:FluorescenceImage](https://w3id.org/lambda-ber-schema/Fluorescen
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
      * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)

@@ -6,7 +6,7 @@ Raw cryo-EM movie with frame-by-frame metadata for motion correction
 URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;timestamp:string%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;timestamp:string%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;super_resolution:boolean%20%3F;timestamp:string%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<beam_shift_y%200..1-++[Movie],[QuantityValue]<beam_shift_x%200..1-++[Movie],[QuantityValue]<dose_per_frame%200..1-++[Movie],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[QuantityValue]<frames%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;super_resolution:boolean%20%3F;timestamp:string%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<beam_shift_y%200..1-++[Movie],[QuantityValue]<beam_shift_x%200..1-++[Movie],[QuantityValue]<dose_per_frame%200..1-++[Movie],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[QuantityValue]<frames%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])
 
 ## Parents
 
@@ -19,7 +19,7 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 
  * [➞frames](movie__frames.md)  <sub>0..1</sub>
      * Description: Number of frames in the movie
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞super_resolution](movie__super_resolution.md)  <sub>0..1</sub>
      * Description: Whether super-resolution mode was used
      * Range: [Boolean](types/Boolean.md)
@@ -43,13 +43,13 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose_per_frame](movie__dose_per_frame.md)  <sub>0..1</sub>
      * Description: Electron dose per frame in e-/Angstrom^2
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_shift_x](movie__beam_shift_x.md)  <sub>0..1</sub>
      * Description: Beam shift X in microradians
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_shift_y](movie__beam_shift_y.md)  <sub>0..1</sub>
      * Description: Beam shift Y in microradians
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ice_thickness_estimate](movie__ice_thickness_estimate.md)  <sub>0..1</sub>
      * Description: Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
@@ -94,7 +94,7 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
      * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)

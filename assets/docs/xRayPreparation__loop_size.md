@@ -1,14 +1,14 @@
 
 # Slot: loop_size
 
-Loop size in micrometers
+Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:xRayPreparation__loop_size](https://w3id.org/lambda-ber-schema/xRayPreparation__loop_size)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

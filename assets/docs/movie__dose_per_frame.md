@@ -8,7 +8,7 @@ URI: [lambdaber:movie__dose_per_frame](https://w3id.org/lambda-ber-schema/movie_
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

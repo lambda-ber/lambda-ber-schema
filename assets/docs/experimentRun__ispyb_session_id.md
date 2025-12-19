@@ -8,7 +8,7 @@ URI: [lambdaber:experimentRun__ispyb_session_id](https://w3id.org/lambda-ber-sch
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,9 +19,3 @@ None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
 ## Used by
 
  * [ExperimentRun](ExperimentRun.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | ispyb:BLSession.sessionId |

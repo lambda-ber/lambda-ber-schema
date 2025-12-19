@@ -1,12 +1,17 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:instrument_titan_krios_001 a lambdaber:CryoEMInstrument ;
     dcterms:title "Titan Krios G4" ;
-    lambdaber:accelerating_voltage 300 ;
-    lambdaber:autoloader_capacity 12 ;
+    lambdaber:accelerating_voltage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "300.0"^^xsd:float ;
+            lambdaber:unit "kilovolts" ] ;
+    lambdaber:autoloader_capacity [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "12.0"^^xsd:float ;
+            lambdaber:unit "grids" ] ;
     lambdaber:cs_corrector true ;
     lambdaber:current_status "operational" ;
     lambdaber:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
@@ -20,5 +25,7 @@ lambdaber:instrument_titan_krios_001 a lambdaber:CryoEMInstrument ;
     lambdaber:manufacturer "Thermo Fisher Scientific" ;
     lambdaber:model "Titan Krios G4" ;
     lambdaber:phase_plate false ;
-    lambdaber:pixel_size_physical_um "5.0"^^xsd:float .
+    lambdaber:pixel_size_physical_um [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] .
 

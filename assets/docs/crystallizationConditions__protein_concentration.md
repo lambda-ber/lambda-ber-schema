@@ -8,7 +8,7 @@ URI: [lambdaber:crystallizationConditions__protein_concentration](https://w3id.o
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,10 +19,3 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 ## Used by
 
  * [CrystallizationConditions](CrystallizationConditions.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | nsls2:Protein_Concentration |
-| **Comments:** | | Maps to NSLS2 spreadsheet: Protein_Concentration |

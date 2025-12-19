@@ -20,7 +20,10 @@
     "numeric_value": 0.05,
     "unit": "seconds"
   },
-  "dose": 0.0,
+  "dose": {
+    "numeric_value": 0.0,
+    "unit": "electrons per Angstrom squared"
+  },
   "defocus": {
     "numeric_value": 0.0,
     "unit": "micrometers"

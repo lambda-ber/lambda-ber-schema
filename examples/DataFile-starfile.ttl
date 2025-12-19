@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:datafile_particles_001 a lambdaber:DataFile ;
@@ -12,5 +13,7 @@ lambdaber:datafile_particles_001 a lambdaber:DataFile ;
     lambdaber:file_format "star" ;
     lambdaber:file_name "run_data.star" ;
     lambdaber:file_path "/data/berkeley/2024/tfiid/relion/Refine3D/job042/run_data.star" ;
-    lambdaber:file_size_bytes 128974623 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "128974623.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 

@@ -6,7 +6,7 @@ Crystal growth conditions for X-ray crystallography (NSLS2 Crystallization mappi
 URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/CrystallizationConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation]++-%20crystallization_conditions%200..1>[CrystallizationConditions&#124;method:CrystallizationMethodEnum%20%3F;crystallization_conditions:string%20%3F;drop_volume:float%20%3F;protein_concentration:float%20%3F;crystal_size_um:string%20%3F;cryo_protectant:string%20%3F;crystal_id:string%20%3F;screen_name:string%20%3F;temperature_c:float%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;reservoir_volume_ul:float%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[CrystallizationConditions],[XRayPreparation],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation]++-%20crystallization_conditions%200..1>[CrystallizationConditions&#124;method:CrystallizationMethodEnum%20%3F;crystallization_conditions:string%20%3F;drop_volume:float%20%3F;protein_concentration:float%20%3F;crystal_size_um:string%20%3F;cryo_protectant:string%20%3F;crystal_id:string%20%3F;screen_name:string%20%3F;temperature_c:float%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;reservoir_volume_ul:float%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[CrystallizationConditions],[XRayPreparation],[AttributeGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<reservoir_volume_ul%200..1-++[CrystallizationConditions&#124;method:CrystallizationMethodEnum%20%3F;crystallization_conditions:string%20%3F;crystal_size_um:string%20%3F;cryo_protectant:string%20%3F;crystal_id:string%20%3F;screen_name:string%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;description(i):string%20%3F],[QuantityValue]<temperature_c%200..1-++[CrystallizationConditions],[QuantityValue]<protein_concentration%200..1-++[CrystallizationConditions],[QuantityValue]<drop_volume%200..1-++[CrystallizationConditions],[XRayPreparation]++-%20crystallization_conditions%200..1>[CrystallizationConditions],[AttributeGroup]^-[CrystallizationConditions],[XRayPreparation],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<reservoir_volume_ul%200..1-++[CrystallizationConditions&#124;method:CrystallizationMethodEnum%20%3F;crystallization_conditions:string%20%3F;crystal_size_um:string%20%3F;cryo_protectant:string%20%3F;crystal_id:string%20%3F;screen_name:string%20%3F;drop_ratio_protein_to_reservoir:string%20%3F;seeding_type:string%20%3F;seed_stock_dilution:string%20%3F;description(i):string%20%3F],[QuantityValue]<temperature_c%200..1-++[CrystallizationConditions],[QuantityValue]<protein_concentration%200..1-++[CrystallizationConditions],[QuantityValue]<drop_volume%200..1-++[CrystallizationConditions],[XRayPreparation]++-%20crystallization_conditions%200..1>[CrystallizationConditions],[AttributeGroup]^-[CrystallizationConditions],[XRayPreparation],[AttributeGroup])
 
 ## Parents
 
@@ -28,11 +28,11 @@ URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/Cr
      * Description: Complete description of crystallization conditions including precipitant, pH, salts
      * Range: [String](types/String.md)
  * [➞drop_volume](crystallizationConditions__drop_volume.md)  <sub>0..1</sub>
-     * Description: Total drop volume in nanoliters
-     * Range: [Float](types/Float.md)
+     * Description: Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞protein_concentration](crystallizationConditions__protein_concentration.md)  <sub>0..1</sub>
      * Description: Protein concentration for crystallization in mg/mL
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞crystal_size_um](crystallizationConditions__crystal_size_um.md)  <sub>0..1</sub>
      * Description: Crystal dimensions in micrometers (length x width x height)
      * Range: [String](types/String.md)
@@ -46,14 +46,14 @@ URI: [lambdaber:CrystallizationConditions](https://w3id.org/lambda-ber-schema/Cr
      * Description: Name of crystallization screen used
      * Range: [String](types/String.md)
  * [➞temperature_c](crystallizationConditions__temperature_c.md)  <sub>0..1</sub>
-     * Description: Crystallization temperature in Celsius
-     * Range: [Float](types/Float.md)
+     * Description: Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞drop_ratio_protein_to_reservoir](crystallizationConditions__drop_ratio_protein_to_reservoir.md)  <sub>0..1</sub>
      * Description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
      * Range: [String](types/String.md)
  * [➞reservoir_volume_ul](crystallizationConditions__reservoir_volume_ul.md)  <sub>0..1</sub>
-     * Description: Reservoir volume in microliters
-     * Range: [Float](types/Float.md)
+     * Description: Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞seeding_type](crystallizationConditions__seeding_type.md)  <sub>0..1</sub>
      * Description: Type of seeding used (micro, macro, streak)
      * Range: [String](types/String.md)

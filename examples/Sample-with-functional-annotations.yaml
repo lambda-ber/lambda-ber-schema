@@ -137,7 +137,9 @@ biophysical_properties:
     buffer_composition:
       components:
       - 150 mM NaCl
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
     ionic_strength:
       numeric_value: 0.15
       unit: molar
@@ -151,7 +153,9 @@ biophysical_properties:
   error: 0.5
   measurement_conditions:
   - id: lambdaber:meas-cond-002
-    ph: 7.4
+    ph:
+      numeric_value: 7.4
+      unit: pH units
     ionic_strength:
       numeric_value: 0.15
       unit: molar

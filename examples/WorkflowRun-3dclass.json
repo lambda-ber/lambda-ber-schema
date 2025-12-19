@@ -6,7 +6,10 @@
   "workflow_type": "classification_3d",
   "experiment_id": "lambdaber:exp_ribosome_001",
   "software_name": "RELION",
-  "processing_level": 2,
+  "processing_level": {
+    "numeric_value": 2.0,
+    "unit": "level"
+  },
   "software_version": "4.0.1",
   "processing_parameters": "--K 8 --iter 30 --tau2_fudge 4 --particle_diameter 300",
   "compute_resources": {

@@ -8,7 +8,7 @@ URI: [lambdaber:workflowRun__rpim](https://w3id.org/lambda-ber-schema/workflowRu
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,11 +19,3 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 ## Used by
 
  * [WorkflowRun](WorkflowRun.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | nsls2:Rpim |
-|  | | mmCIF:_reflns.pdbx_Rpim_I_all |
-|  | | ispyb:AutoProcScalingStatistics.rPim |

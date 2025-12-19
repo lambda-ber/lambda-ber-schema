@@ -6,7 +6,7 @@ Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composi
 URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[QuantityValue]<number_of_scans%200..1-++[FTIRImage&#124;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<spectral_resolution%200..1-++[FTIRImage],[QuantityValue]<wavenumber_max%200..1-++[FTIRImage],[QuantityValue]<wavenumber_min%200..1-++[FTIRImage],[Image]^-[FTIRImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[QuantityValue]<number_of_scans%200..1-++[FTIRImage&#124;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<spectral_resolution%200..1-++[FTIRImage],[QuantityValue]<wavenumber_max%200..1-++[FTIRImage],[QuantityValue]<wavenumber_min%200..1-++[FTIRImage],[Image]^-[FTIRImage])
 
 ## Parents
 
@@ -18,17 +18,17 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 ### Own
 
  * [➞wavenumber_min](fTIRImage__wavenumber_min.md)  <sub>0..1</sub>
-     * Description: Minimum wavenumber in cm⁻¹
-     * Range: [Float](types/Float.md)
+     * Description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞wavenumber_max](fTIRImage__wavenumber_max.md)  <sub>0..1</sub>
-     * Description: Maximum wavenumber in cm⁻¹
-     * Range: [Float](types/Float.md)
+     * Description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞spectral_resolution](fTIRImage__spectral_resolution.md)  <sub>0..1</sub>
-     * Description: Spectral resolution in cm⁻¹
-     * Range: [Float](types/Float.md)
+     * Description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞number_of_scans](fTIRImage__number_of_scans.md)  <sub>0..1</sub>
      * Description: Number of scans averaged for the spectrum
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞apodization_function](fTIRImage__apodization_function.md)  <sub>0..1</sub>
      * Description: Mathematical function used for apodization
      * Range: [String](types/String.md)
@@ -70,4 +70,4 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)

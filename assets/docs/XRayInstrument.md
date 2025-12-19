@@ -6,7 +6,7 @@ X-ray diffractometer or synchrotron beamline specifications
 URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[XRayInstrument&#124;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;energy_min:float%20%3F;energy_max:float%20%3F;beam_size_min:float%20%3F;beam_size_max:float%20%3F;flux_density:float%20%3F;monochromator_type:string%20%3F;goniometer_type:string%20%3F;crystal_cooling_capability:boolean%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument]^-[XRayInstrument&#124;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;energy_min:float%20%3F;energy_max:float%20%3F;beam_size_min:float%20%3F;beam_size_max:float%20%3F;flux_density:float%20%3F;monochromator_type:string%20%3F;goniometer_type:string%20%3F;crystal_cooling_capability:boolean%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Instrument])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux_density%200..1-++[XRayInstrument&#124;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;monochromator_type:string%20%3F;goniometer_type:string%20%3F;crystal_cooling_capability:boolean%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<beam_size_max%200..1-++[XRayInstrument],[QuantityValue]<beam_size_min%200..1-++[XRayInstrument],[QuantityValue]<energy_max%200..1-++[XRayInstrument],[QuantityValue]<energy_min%200..1-++[XRayInstrument],[Instrument]^-[XRayInstrument],[QuantityValue],[Instrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<flux_density%200..1-++[XRayInstrument&#124;source_type:XRaySourceTypeEnum%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;monochromator_type:string%20%3F;goniometer_type:string%20%3F;crystal_cooling_capability:boolean%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<beam_size_max%200..1-++[XRayInstrument],[QuantityValue]<beam_size_min%200..1-++[XRayInstrument],[QuantityValue]<energy_max%200..1-++[XRayInstrument],[QuantityValue]<energy_min%200..1-++[XRayInstrument],[Instrument]^-[XRayInstrument],[QuantityValue],[Instrument])
 
 ## Parents
 
@@ -31,19 +31,19 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
      * Range: [String](types/String.md)
  * [➞energy_min](xRayInstrument__energy_min.md)  <sub>0..1</sub>
      * Description: Minimum X-ray energy in keV
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞energy_max](xRayInstrument__energy_max.md)  <sub>0..1</sub>
      * Description: Maximum X-ray energy in keV
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_size_min](xRayInstrument__beam_size_min.md)  <sub>0..1</sub>
      * Description: Minimum beam size in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_size_max](xRayInstrument__beam_size_max.md)  <sub>0..1</sub>
      * Description: Maximum beam size in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞flux_density](xRayInstrument__flux_density.md)  <sub>0..1</sub>
      * Description: Photon flux density in photons/s/mm²
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞monochromator_type](xRayInstrument__monochromator_type.md)  <sub>0..1</sub>
      * Description: Type of monochromator
      * Range: [String](types/String.md)

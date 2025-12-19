@@ -95,7 +95,10 @@
               "100 mM NaCl"
             ]
           },
-          "ph": 7.5,
+          "ph": {
+            "numeric_value": 7.5,
+            "unit": "pH units"
+          },
           "ionic_strength": {
             "numeric_value": 0.1,
             "unit": "molar"

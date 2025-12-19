@@ -6,7 +6,7 @@ Storage conditions for samples
 URI: [lambdaber:StorageConditions](https://w3id.org/lambda-ber-schema/StorageConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[StorageConditions],[Sample],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[StorageConditions],[Sample],[AttributeGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[StorageConditions&#124;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[Sample]++-%20storage_conditions%200..1>[StorageConditions],[AttributeGroup]^-[StorageConditions],[Sample],[QuantityValue],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue]<temperature%200..1-++[StorageConditions&#124;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[Sample]++-%20storage_conditions%200..1>[StorageConditions],[AttributeGroup]^-[StorageConditions],[Sample],[QuantityValue],[AttributeGroup])
 
 ## Parents
 
@@ -22,11 +22,8 @@ URI: [lambdaber:StorageConditions](https://w3id.org/lambda-ber-schema/StorageCon
 ### Own
 
  * [➞temperature](storageConditions__temperature.md)  <sub>0..1</sub>
-     * Description: Storage temperature in Celsius
-     * Range: [Float](types/Float.md)
- * [➞temperature_unit](storageConditions__temperature_unit.md)  <sub>0..1</sub>
-     * Description: Temperature unit
-     * Range: [TemperatureUnitEnum](TemperatureUnitEnum.md)
+     * Description: Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞duration](storageConditions__duration.md)  <sub>0..1</sub>
      * Description: Storage duration
      * Range: [String](types/String.md)

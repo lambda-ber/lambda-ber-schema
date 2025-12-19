@@ -6,7 +6,7 @@ Cryo-EM microscope specifications
 URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument],[Instrument]^-[CryoEMInstrument&#124;accelerating_voltage:integer%20%3F;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;pixel_size_physical_um:float%20%3F;autoloader_capacity:integer%20%3F;cs:float%20%3F;c2_aperture:float%20%3F;objective_aperture:float%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;energy_filter_slit_width:float%20%3F;pixel_size_physical:float%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;spotsize:integer%20%3F;gunlens:integer%20%3F;imaging_mode:ImagingModeEnum%20%3F;tem_beam_diameter:float%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[Instrument],[Instrument]^-[CryoEMInstrument&#124;accelerating_voltage:integer%20%3F;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;pixel_size_physical_um:float%20%3F;autoloader_capacity:integer%20%3F;cs:float%20%3F;c2_aperture:float%20%3F;objective_aperture:float%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;energy_filter_slit_width:float%20%3F;pixel_size_physical:float%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;spotsize:integer%20%3F;gunlens:integer%20%3F;imaging_mode:ImagingModeEnum%20%3F;tem_beam_diameter:float%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<tem_beam_diameter%200..1-++[CryoEMInstrument&#124;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;imaging_mode:ImagingModeEnum%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<gunlens%200..1-++[CryoEMInstrument],[QuantityValue]<spotsize%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical%200..1-++[CryoEMInstrument],[QuantityValue]<energy_filter_slit_width%200..1-++[CryoEMInstrument],[QuantityValue]<objective_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<c2_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<cs%200..1-++[CryoEMInstrument],[QuantityValue]<autoloader_capacity%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical_um%200..1-++[CryoEMInstrument],[QuantityValue]<accelerating_voltage%200..1-++[CryoEMInstrument],[Instrument]^-[CryoEMInstrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Instrument],[QuantityValue]<tem_beam_diameter%200..1-++[CryoEMInstrument&#124;cs_corrector:boolean%20%3F;phase_plate:boolean%20%3F;detector_technology:DetectorTechnologyEnum%20%3F;detector_manufacturer:string%20%3F;detector_model:string%20%3F;detector_mode:DetectorModeEnum%20%3F;detector_position:string%20%3F;detector_dimensions:string%20%3F;phase_plate_type:string%20%3F;energy_filter_present:boolean%20%3F;energy_filter_make:string%20%3F;energy_filter_model:string%20%3F;microscope_software:string%20%3F;microscope_software_version:string%20%3F;imaging_mode:ImagingModeEnum%20%3F;instrument_code(i):string;instrument_category(i):InstrumentCategoryEnum%20%3F;facility_name(i):FacilityEnum%20%3F;facility_ror(i):uriorcurie%20%3F;beamline_id(i):string%20%3F;manufacturer(i):string%20%3F;model(i):string%20%3F;installation_date(i):string%20%3F;current_status(i):InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<gunlens%200..1-++[CryoEMInstrument],[QuantityValue]<spotsize%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical%200..1-++[CryoEMInstrument],[QuantityValue]<energy_filter_slit_width%200..1-++[CryoEMInstrument],[QuantityValue]<objective_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<c2_aperture%200..1-++[CryoEMInstrument],[QuantityValue]<cs%200..1-++[CryoEMInstrument],[QuantityValue]<autoloader_capacity%200..1-++[CryoEMInstrument],[QuantityValue]<pixel_size_physical_um%200..1-++[CryoEMInstrument],[QuantityValue]<accelerating_voltage%200..1-++[CryoEMInstrument],[Instrument]^-[CryoEMInstrument])
 
 ## Parents
 
@@ -19,7 +19,7 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 
  * [➞accelerating_voltage](cryoEMInstrument__accelerating_voltage.md)  <sub>0..1</sub>
      * Description: Accelerating voltage in kV
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞cs_corrector](cryoEMInstrument__cs_corrector.md)  <sub>0..1</sub>
      * Description: Spherical aberration corrector present
      * Range: [Boolean](types/Boolean.md)
@@ -46,19 +46,19 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
      * Range: [String](types/String.md)
  * [➞pixel_size_physical_um](cryoEMInstrument__pixel_size_physical_um.md)  <sub>0..1</sub>
      * Description: Physical pixel size of the detector in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞autoloader_capacity](cryoEMInstrument__autoloader_capacity.md)  <sub>0..1</sub>
      * Description: Number of grids the autoloader can hold
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞cs](cryoEMInstrument__cs.md)  <sub>0..1</sub>
      * Description: Spherical aberration (Cs) in millimeters
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞c2_aperture](cryoEMInstrument__c2_aperture.md)  <sub>0..1</sub>
      * Description: C2 aperture size in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞objective_aperture](cryoEMInstrument__objective_aperture.md)  <sub>0..1</sub>
      * Description: Objective aperture size in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞phase_plate_type](cryoEMInstrument__phase_plate_type.md)  <sub>0..1</sub>
      * Description: Type of phase plate if present
      * Range: [String](types/String.md)
@@ -73,10 +73,10 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
      * Range: [String](types/String.md)
  * [➞energy_filter_slit_width](cryoEMInstrument__energy_filter_slit_width.md)  <sub>0..1</sub>
      * Description: Energy filter slit width in eV
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞pixel_size_physical](cryoEMInstrument__pixel_size_physical.md)  <sub>0..1</sub>
      * Description: Physical pixel size in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞microscope_software](cryoEMInstrument__microscope_software.md)  <sub>0..1</sub>
      * Description: Microscope control software (e.g., SerialEM, EPU, Leginon)
      * Range: [String](types/String.md)
@@ -85,16 +85,16 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
      * Range: [String](types/String.md)
  * [➞spotsize](cryoEMInstrument__spotsize.md)  <sub>0..1</sub>
      * Description: Electron beam spot size setting
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞gunlens](cryoEMInstrument__gunlens.md)  <sub>0..1</sub>
      * Description: Gun lens setting
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞imaging_mode](cryoEMInstrument__imaging_mode.md)  <sub>0..1</sub>
      * Description: Imaging mode for electron microscopy
      * Range: [ImagingModeEnum](ImagingModeEnum.md)
  * [➞tem_beam_diameter](cryoEMInstrument__tem_beam_diameter.md)  <sub>0..1</sub>
      * Description: TEM beam diameter in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from Instrument:
 

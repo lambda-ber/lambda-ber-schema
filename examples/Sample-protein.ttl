@@ -12,7 +12,9 @@ lambdaber:sample001 a lambdaber:Sample ;
             lambdaber:components "1 mM DTT",
                 "150 mM NaCl",
                 "50 mM Tris-HCl" ;
-            lambdaber:ph "8.0"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;

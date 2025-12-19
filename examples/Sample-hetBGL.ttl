@@ -8,7 +8,9 @@
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
-            lambdaber:ph "8.0"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;

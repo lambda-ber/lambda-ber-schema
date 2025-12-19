@@ -6,7 +6,7 @@ Buffer composition for sample storage
 URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComposition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ph%200..1-++[BufferComposition&#124;components:string%20*;additives:string%20*;description(i):string%20%3F],[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ph%200..1-++[BufferComposition&#124;components:string%20*;additives:string%20*;description(i):string%20%3F],[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])
 
 ## Parents
 
@@ -24,7 +24,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 
  * [➞ph](bufferComposition__ph.md)  <sub>0..1</sub>
      * Description: pH of the buffer (range: 0-14)
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞components](bufferComposition__components.md)  <sub>0..\*</sub>
      * Description: Buffer components and their concentrations
      * Range: [String](types/String.md)

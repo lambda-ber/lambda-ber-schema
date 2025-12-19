@@ -23,7 +23,9 @@ samples:
     numeric_value: 5.0
     unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.5
+    ph:
+      numeric_value: 7.5
+      unit: pH units
     components:
     - 10 mM Tris-HCl
     - 1 mM EDTA
@@ -55,7 +57,9 @@ samples:
     numeric_value: 2.0
     unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.8
+    ph:
+      numeric_value: 7.8
+      unit: pH units
     components:
     - 25 mM HEPES
     - 150 mM KCl
@@ -85,7 +89,9 @@ samples:
     numeric_value: 0.5
     unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.5
+    ph:
+      numeric_value: 7.5
+      unit: pH units
     components:
     - 20 mM HEPES
     - 100 mM KCl
@@ -147,7 +153,9 @@ instrument_runs:
       unit: kilopascals
   data_collection_strategy:
     collection_mode: counting
-    total_frames: 5000
+    total_frames:
+      numeric_value: 5000.0
+      unit: frames
     frame_rate:
       numeric_value: 40.0
       unit: frames per second
@@ -164,7 +172,9 @@ instrument_runs:
     completeness:
       numeric_value: 99.9
       unit: percent
-    signal_to_noise: 5.2
+    signal_to_noise:
+      numeric_value: 5.2
+      unit: signal to noise ratio
   processing_status: completed
 - id: lambdaber:exp_chd1_saxs_001
   title: CHD1 SAXS analysis
@@ -187,7 +197,9 @@ instrument_runs:
       unit: kilopascals
   data_collection_strategy:
     collection_mode: continuous
-    total_frames: 20
+    total_frames:
+      numeric_value: 20.0
+      unit: frames
     frame_rate:
       numeric_value: 1.0
       unit: frames per second
@@ -198,7 +210,9 @@ instrument_runs:
     completeness:
       numeric_value: 100.0
       unit: percent
-    signal_to_noise: 45.0
+    signal_to_noise:
+      numeric_value: 45.0
+      unit: signal to noise ratio
   processing_status: completed
 - id: lambdaber:exp_complex_cryoem_001
   title: CHD1-nucleosome complex structure
@@ -221,7 +235,9 @@ instrument_runs:
       unit: kilopascals
   data_collection_strategy:
     collection_mode: super_resolution
-    total_frames: 10000
+    total_frames:
+      numeric_value: 10000.0
+      unit: frames
     frame_rate:
       numeric_value: 40.0
       unit: frames per second
@@ -238,5 +254,7 @@ instrument_runs:
     completeness:
       numeric_value: 98.5
       unit: percent
-    signal_to_noise: 3.8
+    signal_to_noise:
+      numeric_value: 3.8
+      unit: signal to noise ratio
   processing_status: processing

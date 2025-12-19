@@ -6,7 +6,7 @@ A computational processing workflow execution
 URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DataFile]<output_files%200..*-%20[WorkflowRun&#124;workflow_code:string;workflow_type:WorkflowTypeEnum;experiment_id:string;processing_level:integer%20%3F;software_name:string;software_version:string%20%3F;additional_software:string%20%3F;processing_parameters:string%20%3F;parameters_file_path:string%20%3F;indexer_module:string%20%3F;integrator_module:string%20%3F;scaler_module:string%20%3F;outlier_rejection_method:string%20%3F;phasing_method:PhasingMethodEnum%20%3F;search_model_pdb_id:string%20%3F;tls_used:boolean%20%3F;ncs_used:boolean%20%3F;restraints_other:string%20%3F;ligands_cofactors:string%20%3F;number_of_waters:integer%20%3F;refinement_resolution_a:float%20%3F;deposited_to_pdb:boolean%20%3F;pdb_id:string%20%3F;validation_report_path:string%20%3F;space_group:string%20%3F;rmerge:float%20%3F;rpim:float%20%3F;cc_half:float%20%3F;i_over_sigma:float%20%3F;multiplicity:float%20%3F;anomalous_multiplicity:float%20%3F;cc_anomalous:float%20%3F;r_anomalous:float%20%3F;sig_anomalous:float%20%3F;n_total_observations:integer%20%3F;n_total_unique:integer%20%3F;ispyb_auto_proc_program_id:integer%20%3F;ispyb_auto_proc_scaling_id:integer%20%3F;rwork:float%20%3F;rfree:float%20%3F;clashscore:float%20%3F;processing_notes:string%20%3F;started_at:string%20%3F;completed_at:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[FSCCurve]<fsc_curve%200..1-++[WorkflowRun],[RefinementParameters]<refinement_params%200..1-++[WorkflowRun],[ParticlePickingParameters]<particle_picking_params%200..1-++[WorkflowRun],[CTFEstimationParameters]<ctf_estimation_params%200..1-++[WorkflowRun],[MotionCorrectionParameters]<motion_correction_params%200..1-++[WorkflowRun],[ComputeResources]<compute_resources%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_outliers%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_favored%200..1-++[WorkflowRun],[QuantityValue]<rmsd_angles%200..1-++[WorkflowRun],[QuantityValue]<rmsd_bonds%200..1-++[WorkflowRun],[QuantityValue]<anomalous_completeness%200..1-++[WorkflowRun],[QuantityValue]<wilson_b_factor%200..1-++[WorkflowRun],[QuantityValue]<completeness_percent%200..1-++[WorkflowRun],[QuantityValue]<resolution_low%200..1-++[WorkflowRun],[QuantityValue]<resolution_high%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_gamma%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_beta%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_alpha%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_c%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_b%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_a%200..1-++[WorkflowRun],[Study]++-%20workflow_runs%200..*>[WorkflowRun],[NamedThing]^-[WorkflowRun],[Study],[RefinementParameters],[QuantityValue],[ParticlePickingParameters],[NamedThing],[MotionCorrectionParameters],[FSCCurve],[DataFile],[ComputeResources],[CTFEstimationParameters])](https://yuml.me/diagram/nofunky;dir:TB/class/[DataFile]<output_files%200..*-%20[WorkflowRun&#124;workflow_code:string;workflow_type:WorkflowTypeEnum;experiment_id:string;processing_level:integer%20%3F;software_name:string;software_version:string%20%3F;additional_software:string%20%3F;processing_parameters:string%20%3F;parameters_file_path:string%20%3F;indexer_module:string%20%3F;integrator_module:string%20%3F;scaler_module:string%20%3F;outlier_rejection_method:string%20%3F;phasing_method:PhasingMethodEnum%20%3F;search_model_pdb_id:string%20%3F;tls_used:boolean%20%3F;ncs_used:boolean%20%3F;restraints_other:string%20%3F;ligands_cofactors:string%20%3F;number_of_waters:integer%20%3F;refinement_resolution_a:float%20%3F;deposited_to_pdb:boolean%20%3F;pdb_id:string%20%3F;validation_report_path:string%20%3F;space_group:string%20%3F;rmerge:float%20%3F;rpim:float%20%3F;cc_half:float%20%3F;i_over_sigma:float%20%3F;multiplicity:float%20%3F;anomalous_multiplicity:float%20%3F;cc_anomalous:float%20%3F;r_anomalous:float%20%3F;sig_anomalous:float%20%3F;n_total_observations:integer%20%3F;n_total_unique:integer%20%3F;ispyb_auto_proc_program_id:integer%20%3F;ispyb_auto_proc_scaling_id:integer%20%3F;rwork:float%20%3F;rfree:float%20%3F;clashscore:float%20%3F;processing_notes:string%20%3F;started_at:string%20%3F;completed_at:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[FSCCurve]<fsc_curve%200..1-++[WorkflowRun],[RefinementParameters]<refinement_params%200..1-++[WorkflowRun],[ParticlePickingParameters]<particle_picking_params%200..1-++[WorkflowRun],[CTFEstimationParameters]<ctf_estimation_params%200..1-++[WorkflowRun],[MotionCorrectionParameters]<motion_correction_params%200..1-++[WorkflowRun],[ComputeResources]<compute_resources%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_outliers%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_favored%200..1-++[WorkflowRun],[QuantityValue]<rmsd_angles%200..1-++[WorkflowRun],[QuantityValue]<rmsd_bonds%200..1-++[WorkflowRun],[QuantityValue]<anomalous_completeness%200..1-++[WorkflowRun],[QuantityValue]<wilson_b_factor%200..1-++[WorkflowRun],[QuantityValue]<completeness_percent%200..1-++[WorkflowRun],[QuantityValue]<resolution_low%200..1-++[WorkflowRun],[QuantityValue]<resolution_high%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_gamma%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_beta%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_alpha%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_c%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_b%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_a%200..1-++[WorkflowRun],[Study]++-%20workflow_runs%200..*>[WorkflowRun],[NamedThing]^-[WorkflowRun],[Study],[RefinementParameters],[QuantityValue],[ParticlePickingParameters],[NamedThing],[MotionCorrectionParameters],[FSCCurve],[DataFile],[ComputeResources],[CTFEstimationParameters])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[DataFile]<output_files%200..*-%20[WorkflowRun&#124;workflow_code:string;workflow_type:WorkflowTypeEnum;experiment_id:string;software_name:string;software_version:string%20%3F;additional_software:string%20%3F;processing_parameters:string%20%3F;parameters_file_path:string%20%3F;indexer_module:string%20%3F;integrator_module:string%20%3F;scaler_module:string%20%3F;outlier_rejection_method:string%20%3F;phasing_method:PhasingMethodEnum%20%3F;search_model_pdb_id:string%20%3F;tls_used:boolean%20%3F;ncs_used:boolean%20%3F;restraints_other:string%20%3F;ligands_cofactors:string%20%3F;deposited_to_pdb:boolean%20%3F;pdb_id:string%20%3F;validation_report_path:string%20%3F;space_group:string%20%3F;processing_notes:string%20%3F;started_at:string%20%3F;completed_at:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[FSCCurve]<fsc_curve%200..1-++[WorkflowRun],[RefinementParameters]<refinement_params%200..1-++[WorkflowRun],[ParticlePickingParameters]<particle_picking_params%200..1-++[WorkflowRun],[CTFEstimationParameters]<ctf_estimation_params%200..1-++[WorkflowRun],[MotionCorrectionParameters]<motion_correction_params%200..1-++[WorkflowRun],[ComputeResources]<compute_resources%200..1-++[WorkflowRun],[QuantityValue]<clashscore%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_outliers%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_favored%200..1-++[WorkflowRun],[QuantityValue]<rmsd_angles%200..1-++[WorkflowRun],[QuantityValue]<rmsd_bonds%200..1-++[WorkflowRun],[QuantityValue]<rfree%200..1-++[WorkflowRun],[QuantityValue]<rwork%200..1-++[WorkflowRun],[QuantityValue]<ispyb_auto_proc_scaling_id%200..1-++[WorkflowRun],[QuantityValue]<ispyb_auto_proc_program_id%200..1-++[WorkflowRun],[QuantityValue]<n_total_unique%200..1-++[WorkflowRun],[QuantityValue]<n_total_observations%200..1-++[WorkflowRun],[QuantityValue]<sig_anomalous%200..1-++[WorkflowRun],[QuantityValue]<r_anomalous%200..1-++[WorkflowRun],[QuantityValue]<cc_anomalous%200..1-++[WorkflowRun],[QuantityValue]<anomalous_multiplicity%200..1-++[WorkflowRun],[QuantityValue]<anomalous_completeness%200..1-++[WorkflowRun],[QuantityValue]<multiplicity%200..1-++[WorkflowRun],[QuantityValue]<wilson_b_factor%200..1-++[WorkflowRun],[QuantityValue]<i_over_sigma%200..1-++[WorkflowRun],[QuantityValue]<completeness_percent%200..1-++[WorkflowRun],[QuantityValue]<cc_half%200..1-++[WorkflowRun],[QuantityValue]<rpim%200..1-++[WorkflowRun],[QuantityValue]<rmerge%200..1-++[WorkflowRun],[QuantityValue]<resolution_low%200..1-++[WorkflowRun],[QuantityValue]<resolution_high%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_gamma%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_beta%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_alpha%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_c%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_b%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_a%200..1-++[WorkflowRun],[QuantityValue]<refinement_resolution_a%200..1-++[WorkflowRun],[QuantityValue]<number_of_waters%200..1-++[WorkflowRun],[QuantityValue]<processing_level%200..1-++[WorkflowRun],[Study]++-%20workflow_runs%200..*>[WorkflowRun],[NamedThing]^-[WorkflowRun],[Study],[RefinementParameters],[QuantityValue],[ParticlePickingParameters],[NamedThing],[MotionCorrectionParameters],[FSCCurve],[DataFile],[ComputeResources],[CTFEstimationParameters])](https://yuml.me/diagram/nofunky;dir:TB/class/[DataFile]<output_files%200..*-%20[WorkflowRun&#124;workflow_code:string;workflow_type:WorkflowTypeEnum;experiment_id:string;software_name:string;software_version:string%20%3F;additional_software:string%20%3F;processing_parameters:string%20%3F;parameters_file_path:string%20%3F;indexer_module:string%20%3F;integrator_module:string%20%3F;scaler_module:string%20%3F;outlier_rejection_method:string%20%3F;phasing_method:PhasingMethodEnum%20%3F;search_model_pdb_id:string%20%3F;tls_used:boolean%20%3F;ncs_used:boolean%20%3F;restraints_other:string%20%3F;ligands_cofactors:string%20%3F;deposited_to_pdb:boolean%20%3F;pdb_id:string%20%3F;validation_report_path:string%20%3F;space_group:string%20%3F;processing_notes:string%20%3F;started_at:string%20%3F;completed_at:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[FSCCurve]<fsc_curve%200..1-++[WorkflowRun],[RefinementParameters]<refinement_params%200..1-++[WorkflowRun],[ParticlePickingParameters]<particle_picking_params%200..1-++[WorkflowRun],[CTFEstimationParameters]<ctf_estimation_params%200..1-++[WorkflowRun],[MotionCorrectionParameters]<motion_correction_params%200..1-++[WorkflowRun],[ComputeResources]<compute_resources%200..1-++[WorkflowRun],[QuantityValue]<clashscore%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_outliers%200..1-++[WorkflowRun],[QuantityValue]<ramachandran_favored%200..1-++[WorkflowRun],[QuantityValue]<rmsd_angles%200..1-++[WorkflowRun],[QuantityValue]<rmsd_bonds%200..1-++[WorkflowRun],[QuantityValue]<rfree%200..1-++[WorkflowRun],[QuantityValue]<rwork%200..1-++[WorkflowRun],[QuantityValue]<ispyb_auto_proc_scaling_id%200..1-++[WorkflowRun],[QuantityValue]<ispyb_auto_proc_program_id%200..1-++[WorkflowRun],[QuantityValue]<n_total_unique%200..1-++[WorkflowRun],[QuantityValue]<n_total_observations%200..1-++[WorkflowRun],[QuantityValue]<sig_anomalous%200..1-++[WorkflowRun],[QuantityValue]<r_anomalous%200..1-++[WorkflowRun],[QuantityValue]<cc_anomalous%200..1-++[WorkflowRun],[QuantityValue]<anomalous_multiplicity%200..1-++[WorkflowRun],[QuantityValue]<anomalous_completeness%200..1-++[WorkflowRun],[QuantityValue]<multiplicity%200..1-++[WorkflowRun],[QuantityValue]<wilson_b_factor%200..1-++[WorkflowRun],[QuantityValue]<i_over_sigma%200..1-++[WorkflowRun],[QuantityValue]<completeness_percent%200..1-++[WorkflowRun],[QuantityValue]<cc_half%200..1-++[WorkflowRun],[QuantityValue]<rpim%200..1-++[WorkflowRun],[QuantityValue]<rmerge%200..1-++[WorkflowRun],[QuantityValue]<resolution_low%200..1-++[WorkflowRun],[QuantityValue]<resolution_high%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_gamma%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_beta%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_alpha%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_c%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_b%200..1-++[WorkflowRun],[QuantityValue]<unit_cell_a%200..1-++[WorkflowRun],[QuantityValue]<refinement_resolution_a%200..1-++[WorkflowRun],[QuantityValue]<number_of_waters%200..1-++[WorkflowRun],[QuantityValue]<processing_level%200..1-++[WorkflowRun],[Study]++-%20workflow_runs%200..*>[WorkflowRun],[NamedThing]^-[WorkflowRun],[Study],[RefinementParameters],[QuantityValue],[ParticlePickingParameters],[NamedThing],[MotionCorrectionParameters],[FSCCurve],[DataFile],[ComputeResources],[CTFEstimationParameters])
 
 ## Parents
 
@@ -32,7 +32,7 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
      * Range: [String](types/String.md)
  * [➞processing_level](workflowRun__processing_level.md)  <sub>0..1</sub>
      * Description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞software_name](workflowRun__software_name.md)  <sub>1..1</sub>
      * Description: Software used for processing
      * Range: [String](types/String.md)
@@ -80,10 +80,10 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
      * Range: [String](types/String.md)
  * [➞number_of_waters](workflowRun__number_of_waters.md)  <sub>0..1</sub>
      * Description: Number of water molecules modeled
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞refinement_resolution_a](workflowRun__refinement_resolution_a.md)  <sub>0..1</sub>
      * Description: Resolution cutoff used for refinement in Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞deposited_to_pdb](workflowRun__deposited_to_pdb.md)  <sub>0..1</sub>
      * Description: Whether structure was deposited to PDB
      * Range: [Boolean](types/Boolean.md)
@@ -122,58 +122,58 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞rmerge](workflowRun__rmerge.md)  <sub>0..1</sub>
      * Description: Rmerge - merge R-factor
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞rpim](workflowRun__rpim.md)  <sub>0..1</sub>
      * Description: Rpim - precision-indicating merging R-factor
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞cc_half](workflowRun__cc_half.md)  <sub>0..1</sub>
      * Description: Half-set correlation coefficient CC(1/2)
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞completeness_percent](workflowRun__completeness_percent.md)  <sub>0..1</sub>
      * Description: Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
  * [➞i_over_sigma](workflowRun__i_over_sigma.md)  <sub>0..1</sub>
      * Description: Mean I/sigma(I) - signal to noise ratio
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞wilson_b_factor](workflowRun__wilson_b_factor.md)  <sub>0..1</sub>
      * Description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
  * [➞multiplicity](workflowRun__multiplicity.md)  <sub>0..1</sub>
      * Description: Data multiplicity (redundancy)
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞anomalous_completeness](workflowRun__anomalous_completeness.md)  <sub>0..1</sub>
      * Description: Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
  * [➞anomalous_multiplicity](workflowRun__anomalous_multiplicity.md)  <sub>0..1</sub>
      * Description: Multiplicity of anomalous data
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞cc_anomalous](workflowRun__cc_anomalous.md)  <sub>0..1</sub>
      * Description: Anomalous correlation coefficient
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞r_anomalous](workflowRun__r_anomalous.md)  <sub>0..1</sub>
      * Description: Anomalous R-factor
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞sig_anomalous](workflowRun__sig_anomalous.md)  <sub>0..1</sub>
      * Description: Mean anomalous difference signal
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞n_total_observations](workflowRun__n_total_observations.md)  <sub>0..1</sub>
      * Description: Total number of observations (before merging)
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞n_total_unique](workflowRun__n_total_unique.md)  <sub>0..1</sub>
      * Description: Total number of unique reflections
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ispyb_auto_proc_program_id](workflowRun__ispyb_auto_proc_program_id.md)  <sub>0..1</sub>
      * Description: ISPyB AutoProcProgram.autoProcProgramId
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ispyb_auto_proc_scaling_id](workflowRun__ispyb_auto_proc_scaling_id.md)  <sub>0..1</sub>
      * Description: ISPyB AutoProcScaling.autoProcScalingId
-     * Range: [Integer](types/Integer.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞rwork](workflowRun__rwork.md)  <sub>0..1</sub>
      * Description: Refinement R-factor (working set)
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞rfree](workflowRun__rfree.md)  <sub>0..1</sub>
      * Description: R-free (test set)
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞rmsd_bonds](workflowRun__rmsd_bonds.md)  <sub>0..1</sub>
      * Description: RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
      * Range: [QuantityValue](QuantityValue.md)
@@ -188,7 +188,7 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
      * Range: [QuantityValue](QuantityValue.md)
  * [➞clashscore](workflowRun__clashscore.md)  <sub>0..1</sub>
      * Description: MolProbity clashscore
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞processing_notes](workflowRun__processing_notes.md)  <sub>0..1</sub>
      * Description: Additional notes about processing
      * Range: [String](types/String.md)

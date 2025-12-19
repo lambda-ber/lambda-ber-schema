@@ -21,7 +21,9 @@ lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
     lambdaber:dimensions_y [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2048.0"^^xsd:float ;
             lambdaber:unit "pixels" ] ;
-    lambdaber:dose "0.0"^^xsd:float ;
+    lambdaber:dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] ;
     lambdaber:emission_filter "525/50 nm bandpass" ;
     lambdaber:emission_wavelength [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "509.0"^^xsd:float ;
@@ -44,5 +46,7 @@ lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
     lambdaber:pixel_size [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.065"^^xsd:float ;
             lambdaber:unit "Angstroms" ] ;
-    lambdaber:quantum_yield "0.6"^^xsd:float .
+    lambdaber:quantum_yield [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.6"^^xsd:float ;
+            lambdaber:unit "quantum yield" ] .
 

@@ -30,7 +30,9 @@ lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
             lambdaber:total_dose [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "40.0"^^xsd:float ;
                     lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:total_frames 8500 ] ;
+            lambdaber:total_frames [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8500.0"^^xsd:float ;
+                    lambdaber:unit "frames" ] ] ;
     lambdaber:description "High-resolution cryo-EM data collection of TFIID" ;
     lambdaber:experiment_code "EXP-TFIID-2024-001" ;
     lambdaber:experiment_date "2024-03-20T10:00:00" ;
@@ -55,7 +57,9 @@ lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
             lambdaber:resolution [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "2.8"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise "4.2"^^xsd:float ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.2"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
     lambdaber:sample_id "lambdaber:sample_tfiid_001" ;
     lambdaber:technique CHMO:0002413 .
@@ -73,7 +77,9 @@ lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
             lambdaber:total_dose [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "42.0"^^xsd:float ;
                     lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:total_frames 12000 ] ;
+            lambdaber:total_frames [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "12000.0"^^xsd:float ;
+                    lambdaber:unit "frames" ] ] ;
     lambdaber:description "Cryo-EM data collection of TFIID bound to DNA" ;
     lambdaber:experiment_code "EXP-TFIID-DNA-2024-002" ;
     lambdaber:experiment_date "2024-03-21T14:00:00" ;
@@ -97,7 +103,9 @@ lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
             lambdaber:resolution [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "3.1"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise "3.8"^^xsd:float ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.8"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:sample_id "lambdaber:sample_tfiid_dna_002" ;
     lambdaber:technique CHMO:0002413 .
 
@@ -110,7 +118,9 @@ lambdaber:file_map_001 a lambdaber:DataFile ;
     lambdaber:file_format "mrc" ;
     lambdaber:file_name "TFIID_final_map.mrc" ;
     lambdaber:file_path "/data/berkeley/2024/tfiid/maps/TFIID_final_map.mrc" ;
-    lambdaber:file_size_bytes 536870912 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "536870912.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:file_model_001 a lambdaber:DataFile ;
     dcterms:title "Atomic model of TFIID" ;
@@ -120,7 +130,9 @@ lambdaber:file_model_001 a lambdaber:DataFile ;
     lambdaber:file_format "pdb" ;
     lambdaber:file_name "TFIID_model.pdb" ;
     lambdaber:file_path "/data/berkeley/2024/tfiid/models/TFIID_model.pdb" ;
-    lambdaber:file_size_bytes 12582912 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "12582912.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:file_particles_001 a lambdaber:DataFile ;
     dcterms:title "Extracted particles TFIID" ;
@@ -130,7 +142,9 @@ lambdaber:file_particles_001 a lambdaber:DataFile ;
     lambdaber:file_format "star" ;
     lambdaber:file_name "TFIID_particles.star" ;
     lambdaber:file_path "/data/berkeley/2024/tfiid/particles/TFIID_particles.star" ;
-    lambdaber:file_size_bytes 450000000000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "450000000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:file_raw_movies_001 a lambdaber:DataFile ;
     dcterms:title "Raw movie stack TFIID" ;
@@ -141,7 +155,9 @@ lambdaber:file_raw_movies_001 a lambdaber:DataFile ;
     lambdaber:file_format "mrc" ;
     lambdaber:file_name "TFIID_movies.tar" ;
     lambdaber:file_path "/data/berkeley/2024/tfiid/raw/TFIID_movies.tar" ;
-    lambdaber:file_size_bytes 5400000000000 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5400000000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 lambdaber:img_mic_001 a lambdaber:Image ;
     dcterms:title "Representative micrograph" ;
@@ -152,7 +168,9 @@ lambdaber:img_mic_001 a lambdaber:Image ;
     lambdaber:dimensions_y [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "4092.0"^^xsd:float ;
             lambdaber:unit "pixels" ] ;
-    lambdaber:dose "40.0"^^xsd:float ;
+    lambdaber:dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "40.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "seconds" ] ;
@@ -186,7 +204,9 @@ lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
             lambdaber:components "100 mM KCl",
                 "20 mM HEPES",
                 "5 mM MgCl2" ;
-            lambdaber:ph "7.9"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.9"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.5"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
@@ -244,7 +264,9 @@ lambdaber:workflow_2d_class_001 a lambdaber:WorkflowRun ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "2D classification in RELION" ;
     lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "--K 200 --iter 25 --tau2_fudge 2" ;
     lambdaber:software_name "RELION" ;
     lambdaber:software_version "4.0.1" ;
@@ -270,7 +292,9 @@ lambdaber:workflow_3d_refine_001 a lambdaber:WorkflowRun ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "High-resolution 3D refinement" ;
     lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level 3 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "Non-uniform refinement with C1 symmetry" ;
     lambdaber:software_name "cryoSPARC" ;
     lambdaber:software_version "4.4.0" ;
@@ -293,7 +317,9 @@ lambdaber:workflow_ctf_001 a lambdaber:WorkflowRun ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "CTF estimation using CTFFIND4" ;
     lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level 1 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "Resolution 30 5" ;
     lambdaber:software_name "CTFFIND4" ;
     lambdaber:software_version "4.1.14" ;
@@ -319,7 +345,9 @@ lambdaber:workflow_motion_001 a lambdaber:WorkflowRun ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Motion correction using MotionCor2" ;
     lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level 1 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "-Patch 5 5 -Gpu 0 -FmDose 1.2" ;
     lambdaber:software_name "MotionCor2" ;
     lambdaber:software_version "1.6.4" ;
@@ -345,7 +373,9 @@ lambdaber:workflow_picking_001 a lambdaber:WorkflowRun ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Automated particle picking using crYOLO" ;
     lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "Model TFIID_trained threshold 0.3" ;
     lambdaber:software_name "crYOLO" ;
     lambdaber:software_version "1.9.0" ;
@@ -362,7 +392,9 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
                 "150 mM KCl",
                 "20 mM HEPES",
                 "5 mM MgCl2" ;
-            lambdaber:ph "7.9"^^xsd:float ] ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.9"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
     lambdaber:concentration [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.8"^^xsd:float ;
             lambdaber:unit "milligrams per milliliter" ] ;
