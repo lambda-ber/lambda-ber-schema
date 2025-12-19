@@ -187,7 +187,9 @@ lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
                 "20 mM HEPES",
                 "5 mM MgCl2" ;
             lambdaber:ph "7.9"^^xsd:float ] ;
-    lambdaber:concentration "0.5"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "TFIID bound to super core promoter DNA" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -199,7 +201,9 @@ lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
             lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:parent_sample_id lambdaber:sample_tfiid_001 ;
-    lambdaber:purity_percentage "92.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "92.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "TFIID-DNA-2024-002" ;
     lambdaber:sample_type "complex" .
 
@@ -360,7 +364,9 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
                 "20 mM HEPES",
                 "5 mM MgCl2" ;
             lambdaber:ph "7.9"^^xsd:float ] ;
-    lambdaber:concentration "0.8"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.8"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Purified human TFIID complex for structural analysis" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -373,7 +379,9 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
             lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:preparation_method "Nuclear extract followed by immunoaffinity purification and glycerol gradient" ;
-    lambdaber:purity_percentage "95.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "95.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "TFIID-2024-001" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;

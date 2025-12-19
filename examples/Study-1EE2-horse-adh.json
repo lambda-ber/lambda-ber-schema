@@ -20,7 +20,10 @@
         "numeric_value": 80.0,
         "unit": "kilodaltons"
       },
-      "concentration": 10.0,
+      "concentration": {
+        "numeric_value": 10.0,
+        "unit": "milligrams per milliliter"
+      },
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.0,

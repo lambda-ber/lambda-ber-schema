@@ -224,8 +224,9 @@ classes:
         range: QuantityValue
         inlined: true
       concentration:
-        description: "Sample concentration in mg/mL or µM"
-        range: float
+        description: "Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       concentration_unit:
         description: "Unit of concentration measurement"
         range: ConcentrationUnitEnum
@@ -250,8 +251,9 @@ classes:
         description: "Reference to parent sample for derivation tracking"
         range: Sample
       purity_percentage:
-        description: "Sample purity as percentage (range: 0-100)"
-        range: float
+        description: "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
         minimum_value: 0
         maximum_value: 100
       quality_metrics:
@@ -434,14 +436,17 @@ classes:
       inducer_concentration:
         description: "Concentration of induction agent"
       induction_temperature_c:
-        description: "Temperature during induction in Celsius"
-        range: float
+        description: "Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       induction_time_h:
-        description: "Duration of induction in hours"
-        range: float
+        description: "Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       od600_at_induction:
-        description: "Optical density at 600nm when induction was started"
-        range: float
+        description: "Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed."
+        range: QuantityValue
+        inlined: true
       harvest_timepoint:
         description: "Time point when cells were harvested"
       lysis_method:
@@ -2317,23 +2322,28 @@ classes:
     description: "Parameters specific to CTF estimation workflows"
     attributes:
       defocus_search_min:
-        description: "Minimum defocus search range in micrometers"
-        range: float
+        description: "Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       defocus_search_max:
-        description: "Maximum defocus search range in micrometers"
-        range: float
+        description: "Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       defocus_step:
-        description: "Defocus search step in micrometers"
-        range: float
+        description: "Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       amplitude_contrast:
         description: "Amplitude contrast value"
         range: float
       cs_used_in_estimation:
-        description: "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification"
-        range: float
+        description: "Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       voltage_used_in_estimation:
-        description: "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification"
-        range: float
+        description: "Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
   ParticlePickingParameters:
     is_a: AttributeGroup
@@ -2372,8 +2382,9 @@ classes:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
         range: SymmetryEnum
       pixel_size:
-        description: "Pixel size in Angstroms per pixel"
-        range: float
+        description: "Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       box_size:
         description: "Box size in pixels"
         range: integer
@@ -2384,14 +2395,17 @@ classes:
         description: "Strategy for data splitting"
         range: string
       resolution_0_143:
-        description: "Resolution at FSC=0.143 in Angstroms"
-        range: float
+        description: "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       resolution_0_5:
-        description: "Resolution at FSC=0.5 in Angstroms"
-        range: float
+        description: "Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       map_sharpening_bfactor:
-        description: "B-factor used for map sharpening in Angstroms^2"
-        range: float
+        description: "B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
   FSCCurve:
     is_a: AttributeGroup

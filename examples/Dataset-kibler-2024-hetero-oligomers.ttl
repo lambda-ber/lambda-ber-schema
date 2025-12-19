@@ -216,7 +216,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
             lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "5.0"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Parent symmetric homo-oligomeric β-glucosidase design" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -224,7 +226,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:molecular_weight [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "180.0"^^xsd:float ;
             lambdaber:unit "kilodaltons" ] ;
-    lambdaber:purity_percentage "95.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "95.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "BGL0" ;
     lambdaber:sample_type "protein" .
 
@@ -233,7 +237,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
             lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "2.5"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Alternative hetero-hexamer design" ;
     lambdaber:molecular_weight [ a nmdc:QuantityValue ;
@@ -247,7 +253,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
             lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "2.5"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;

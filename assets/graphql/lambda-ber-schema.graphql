@@ -883,12 +883,12 @@ type CrystallizationConditions
 type CTFEstimationParameters
   {
     description: String
-    defocusSearchMin: Float
-    defocusSearchMax: Float
-    defocusStep: Float
+    defocusSearchMin: QuantityValue
+    defocusSearchMax: QuantityValue
+    defocusStep: QuantityValue
     amplitudeContrast: Float
-    csUsedInEstimation: Float
-    voltageUsedInEstimation: Float
+    csUsedInEstimation: QuantityValue
+    voltageUsedInEstimation: QuantityValue
   }
 
 type DatabaseCrossReference
@@ -1535,13 +1535,13 @@ type RefinementParameters
   {
     description: String
     symmetry: SymmetryEnum
-    pixelSize: Float
+    pixelSize: QuantityValue
     boxSize: Integer
     goldStandard: Boolean
     splitStrategy: String
-    resolution0143: Float
-    resolution05: Float
-    mapSharpeningBfactor: Float
+    resolution0143: QuantityValue
+    resolution05: QuantityValue
+    mapSharpeningBfactor: QuantityValue
   }
 
 type Sample
@@ -1553,7 +1553,7 @@ type Sample
     sampleType: SampleTypeEnum!
     molecularComposition: MolecularComposition
     molecularWeight: QuantityValue
-    concentration: Float
+    concentration: QuantityValue
     concentrationUnit: ConcentrationUnitEnum
     bufferComposition: BufferComposition
     preparationMethod: String
@@ -1562,7 +1562,7 @@ type Sample
     anatomy: OntologyTerm
     cellType: OntologyTerm
     parentSampleId: Sample
-    purityPercentage: Float
+    purityPercentage: QuantityValue
     qualityMetrics: String
     functionalSites: [FunctionalSite]
     structuralFeatures: [StructuralFeature]
@@ -1600,9 +1600,9 @@ type SamplePreparation
     growthTemperatureC: QuantityValue
     inductionAgent: String
     inducerConcentration: String
-    inductionTemperatureC: Float
-    inductionTimeH: Float
-    od600AtInduction: Float
+    inductionTemperatureC: QuantityValue
+    inductionTimeH: QuantityValue
+    od600AtInduction: QuantityValue
     harvestTimepoint: String
     lysisMethod: String
     proteaseInhibitors: String

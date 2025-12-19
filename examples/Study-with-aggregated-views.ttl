@@ -233,7 +233,9 @@ lambdaber:ptm-p53-001 a ns1:PostTranslationalModification ;
 
 lambdaber:sample-P53-MDM2-001 a lambdaber:Sample ;
     dcterms:title "p53-MDM2 complex for structural studies" ;
-    lambdaber:concentration "8.0"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:functional_sites lambdaber:func-site-001 ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;

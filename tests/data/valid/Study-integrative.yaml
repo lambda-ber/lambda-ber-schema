@@ -19,7 +19,9 @@ samples:
   molecular_weight:
     numeric_value: 206.0
     unit: kilodaltons
-  concentration: 5.0
+  concentration:
+    numeric_value: 5.0
+    unit: milligrams per milliliter
   concentration_unit: mg_per_ml
   buffer_composition:
     ph: 7.5
@@ -31,7 +33,9 @@ samples:
     - 1 mM DTT
   organism: NCBITaxon:9606
   anatomy: UBERON:0000922
-  purity_percentage: 99.0
+  purity_percentage:
+    numeric_value: 99.0
+    unit: percent
   preparation_method: Salt gradient dialysis reconstitution
 - id: lambdaber:sample_chd1_001
   title: Chromodomain helicase CHD1
@@ -48,7 +52,9 @@ samples:
   molecular_weight:
     numeric_value: 168.5
     unit: kilodaltons
-  concentration: 2.0
+  concentration:
+    numeric_value: 2.0
+    unit: milligrams per milliliter
   concentration_unit: mg_per_ml
   buffer_composition:
     ph: 7.8
@@ -60,7 +66,9 @@ samples:
     - 1 mM ATP
     - 1 mM DTT
   organism: NCBITaxon:4932
-  purity_percentage: 95.0
+  purity_percentage:
+    numeric_value: 95.0
+    unit: percent
   preparation_method: Sf9 insect cell expression with FLAG purification
 - id: lambdaber:sample_chd1_ncp_complex_001
   title: CHD1-nucleosome complex
@@ -78,7 +86,9 @@ samples:
   molecular_weight:
     numeric_value: 374.5
     unit: kilodaltons
-  concentration: 0.5
+  concentration:
+    numeric_value: 0.5
+    unit: milligrams per milliliter
   concentration_unit: mg_per_ml
   buffer_composition:
     ph: 7.5
@@ -90,7 +100,9 @@ samples:
     - 1 mM ADP
     - 1 mM BeCl2
     - 5 mM NaF
-  purity_percentage: 90.0
+  purity_percentage:
+    numeric_value: 90.0
+    unit: percent
   preparation_method: In vitro reconstitution by mixing CHD1 with nucleosome
 sample_preparations:
 - id: lambdaber:prep_ncp_grid_001

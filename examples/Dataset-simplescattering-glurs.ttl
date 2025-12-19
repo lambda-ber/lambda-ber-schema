@@ -142,7 +142,9 @@ approximately 5 mg/mL, filtered through 0.22 μm filter.
                 "20 mM Tris-HCl",
                 "5 mM MgCl2" ;
             lambdaber:ph "7.5"^^xsd:float ] ;
-    lambdaber:concentration "5.0"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;

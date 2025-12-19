@@ -558,32 +558,48 @@
                     ]
                 },
                 "cs_used_in_estimation": {
-                    "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_search_max": {
-                    "description": "Maximum defocus search range in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_search_min": {
-                    "description": "Minimum defocus search range in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_step": {
-                    "description": "Defocus search step in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "type": [
@@ -592,11 +608,15 @@
                     ]
                 },
                 "voltage_used_in_estimation": {
-                    "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "title": "CTFEstimationParameters",
@@ -6207,32 +6227,48 @@
                     ]
                 },
                 "map_sharpening_bfactor": {
-                    "description": "B-factor used for map sharpening in Angstroms^2",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "B-factor used for map sharpening, typically specified in Angstroms squared (\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_0_143": {
-                    "description": "Resolution at FSC=0.143 in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_0_5": {
-                    "description": "Resolution at FSC=0.5 in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "split_strategy": {
                     "description": "Strategy for data splitting",
@@ -6469,11 +6505,15 @@
                     ]
                 },
                 "concentration": {
-                    "description": "Sample concentration in mg/mL or \u00b5M",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample concentration, typically specified in mg/mL or \u00b5M. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue."
                 },
                 "concentration_unit": {
                     "$ref": "#/$defs/ConcentrationUnitEnum",
@@ -6651,13 +6691,17 @@
                     ]
                 },
                 "purity_percentage": {
-                    "description": "Sample purity as percentage (range: 0-100)",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
                     "maximum": 100,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0
                 },
                 "quality_metrics": {
                     "description": "Quality control metrics for the sample",
@@ -6879,18 +6923,26 @@
                     ]
                 },
                 "induction_temperature_c": {
-                    "description": "Temperature during induction in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "induction_time_h": {
-                    "description": "Duration of induction in hours",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue."
                 },
                 "lysis_buffer": {
                     "description": "Buffer composition for lysis",
@@ -6914,11 +6966,15 @@
                     ]
                 },
                 "od600_at_induction": {
-                    "description": "Optical density at 600nm when induction was started",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed."
                 },
                 "operator_id": {
                     "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",

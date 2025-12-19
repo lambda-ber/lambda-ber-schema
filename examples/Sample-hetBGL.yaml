@@ -13,7 +13,9 @@ molecular_composition:
 molecular_weight:
   numeric_value: 182.5
   unit: kilodaltons
-concentration: 2.5
+concentration:
+  numeric_value: 2.5
+  unit: milligrams per milliliter
 concentration_unit: mg_per_ml
 buffer_composition:
   ph: 8.0

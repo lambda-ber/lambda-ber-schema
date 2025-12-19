@@ -50,14 +50,18 @@ studies:
     molecular_weight:
       numeric_value: 180.0
       unit: kilodaltons
-    concentration: 5.0
+    concentration:
+      numeric_value: 5.0
+      unit: milligrams per milliliter
     concentration_unit: mg_per_ml
     buffer_composition:
       ph: 8.0
       components:
       - 25 mM Tris
       - 300 mM NaCl
-    purity_percentage: 95.0
+    purity_percentage:
+      numeric_value: 95.0
+      unit: percent
   - id: https://example.org/kibler2024/sample/hetBGL03-15-18
     description: Pseudosymmetric hetero-hexamer with three distinct chains
     sample_code: hetBGL03-15-18
@@ -73,7 +77,9 @@ studies:
     molecular_weight:
       numeric_value: 182.5
       unit: kilodaltons
-    concentration: 2.5
+    concentration:
+      numeric_value: 2.5
+      unit: milligrams per milliliter
     concentration_unit: mg_per_ml
     buffer_composition:
       ph: 8.0
@@ -93,7 +99,9 @@ studies:
     molecular_weight:
       numeric_value: 181.8
       unit: kilodaltons
-    concentration: 2.5
+    concentration:
+      numeric_value: 2.5
+      unit: milligrams per milliliter
     concentration_unit: mg_per_ml
     buffer_composition:
       ph: 8.0

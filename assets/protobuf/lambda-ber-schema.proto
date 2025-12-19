@@ -200,12 +200,12 @@ message CrystallizationConditions
 message CTFEstimationParameters
  {
   string description = 0
-  float defocusSearchMin = 0
-  float defocusSearchMax = 0
-  float defocusStep = 0
+  quantityValue defocusSearchMin = 0
+  quantityValue defocusSearchMax = 0
+  quantityValue defocusStep = 0
   float amplitudeContrast = 0
-  float csUsedInEstimation = 0
-  float voltageUsedInEstimation = 0
+  quantityValue csUsedInEstimation = 0
+  quantityValue voltageUsedInEstimation = 0
  }
 // Cross-references to external databases
 message DatabaseCrossReference
@@ -849,13 +849,13 @@ message RefinementParameters
  {
   string description = 0
   symmetryEnum symmetry = 0
-  float pixelSize = 0
+  quantityValue pixelSize = 0
   integer boxSize = 0
   boolean goldStandard = 0
   string splitStrategy = 0
-  float resolution0143 = 0
-  float resolution05 = 0
-  float mapSharpeningBfactor = 0
+  quantityValue resolution0143 = 0
+  quantityValue resolution05 = 0
+  quantityValue mapSharpeningBfactor = 0
  }
 // A biological sample used in structural biology experiments
 message Sample
@@ -867,7 +867,7 @@ message Sample
   sampleTypeEnum sampleType = 0
   molecularComposition molecularComposition = 0
   quantityValue molecularWeight = 0
-  float concentration = 0
+  quantityValue concentration = 0
   concentrationUnitEnum concentrationUnit = 0
   bufferComposition bufferComposition = 0
   string preparationMethod = 0
@@ -876,7 +876,7 @@ message Sample
   ontologyTerm anatomy = 0
   ontologyTerm cellType = 0
   sample parentSampleId = 0
-  float purityPercentage = 0
+  quantityValue purityPercentage = 0
   string qualityMetrics = 0
  repeated  functionalSite functionalSites = 0
  repeated  structuralFeature structuralFeatures = 0
@@ -914,9 +914,9 @@ message SamplePreparation
   quantityValue growthTemperatureC = 0
   string inductionAgent = 0
   string inducerConcentration = 0
-  float inductionTemperatureC = 0
-  float inductionTimeH = 0
-  float od600AtInduction = 0
+  quantityValue inductionTemperatureC = 0
+  quantityValue inductionTimeH = 0
+  quantityValue od600AtInduction = 0
   string harvestTimepoint = 0
   string lysisMethod = 0
   string proteaseInhibitors = 0

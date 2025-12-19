@@ -16,7 +16,10 @@
     "numeric_value": 25.6,
     "unit": "kilodaltons"
   },
-  "concentration": 2.5,
+  "concentration": {
+    "numeric_value": 2.5,
+    "unit": "milligrams per milliliter"
+  },
   "concentration_unit": "mg_per_ml",
   "buffer_composition": {
     "ph": 8.0,
@@ -40,6 +43,9 @@
     "atmosphere": "Flash frozen in liquid nitrogen"
   },
   "organism": "NCBITaxon:9606",
-  "purity_percentage": 98.5,
+  "purity_percentage": {
+    "numeric_value": 98.5,
+    "unit": "percent"
+  },
   "@type": "Sample"
 }

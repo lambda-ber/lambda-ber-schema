@@ -173,7 +173,9 @@ lambdaber:sample_chd1_001 a lambdaber:Sample ;
                 "2 mM MgCl2",
                 "25 mM HEPES" ;
             lambdaber:ph "7.8"^^xsd:float ] ;
-    lambdaber:concentration "2.0"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Full-length yeast CHD1 protein" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -185,7 +187,9 @@ lambdaber:sample_chd1_001 a lambdaber:Sample ;
             lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:4932 ;
     lambdaber:preparation_method "Sf9 insect cell expression with FLAG purification" ;
-    lambdaber:purity_percentage "95.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "95.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "CHD1-FL-2024-001" ;
     lambdaber:sample_type "protein" .
 
@@ -199,7 +203,9 @@ lambdaber:sample_chd1_ncp_complex_001 a lambdaber:Sample ;
                 "2 mM MgCl2",
                 "20 mM HEPES" ;
             lambdaber:ph "7.5"^^xsd:float ] ;
-    lambdaber:concentration "0.5"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "CHD1 bound to nucleosome core particle" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -211,7 +217,9 @@ lambdaber:sample_chd1_ncp_complex_001 a lambdaber:Sample ;
             lambdaber:unit "kilodaltons" ] ;
     lambdaber:parent_sample_id lambdaber:sample_nucleosome_001 ;
     lambdaber:preparation_method "In vitro reconstitution by mixing CHD1 with nucleosome" ;
-    lambdaber:purity_percentage "90.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "90.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "CHD1-NCP-2024-001" ;
     lambdaber:sample_type "complex" .
 
@@ -224,7 +232,9 @@ lambdaber:sample_nucleosome_001 a lambdaber:Sample ;
                 "10 mM Tris-HCl",
                 "50 mM NaCl" ;
             lambdaber:ph "7.5"^^xsd:float ] ;
-    lambdaber:concentration "5.0"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Nucleosome with 147bp Widom 601 DNA" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
@@ -237,7 +247,9 @@ lambdaber:sample_nucleosome_001 a lambdaber:Sample ;
             lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:preparation_method "Salt gradient dialysis reconstitution" ;
-    lambdaber:purity_percentage "99.0"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "99.0"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "NCP-601-2024-001" ;
     lambdaber:sample_type "complex" .
 

@@ -361,12 +361,12 @@ linkml:Sparqlpath xsd:string
 <CTFEstimationParameters> CLOSED {
     (  $<CTFEstimationParameters_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <defocus_search_min> @linkml:Float ? ;
-          <defocus_search_max> @linkml:Float ? ;
-          <defocus_step> @linkml:Float ? ;
+          <defocus_search_min> @<QuantityValue> ? ;
+          <defocus_search_max> @<QuantityValue> ? ;
+          <defocus_step> @<QuantityValue> ? ;
           <amplitude_contrast> @linkml:Float ? ;
-          <cs_used_in_estimation> @linkml:Float ? ;
-          <voltage_used_in_estimation> @linkml:Float ?
+          <cs_used_in_estimation> @<QuantityValue> ? ;
+          <voltage_used_in_estimation> @<QuantityValue> ?
        ) ;
        rdf:type [ <CTFEstimationParameters> ] ?
     )
@@ -1235,13 +1235,13 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/SymmetryEnum#D8> <https://w3id.org/lambda-ber-schema/SymmetryEnum#D9>
              <https://w3id.org/lambda-ber-schema/SymmetryEnum#D10> <https://w3id.org/lambda-ber-schema/SymmetryEnum#T>
              <https://w3id.org/lambda-ber-schema/SymmetryEnum#O> <https://w3id.org/lambda-ber-schema/SymmetryEnum#I> ] ? ;
-          <pixel_size> @linkml:Float ? ;
+          <pixel_size> @<QuantityValue> ? ;
           <box_size> @linkml:Integer ? ;
           <gold_standard> @linkml:Boolean ? ;
           <split_strategy> @linkml:String ? ;
-          <resolution_0_143> @linkml:Float ? ;
-          <resolution_0_5> @linkml:Float ? ;
-          <map_sharpening_bfactor> @linkml:Float ?
+          <resolution_0_143> @<QuantityValue> ? ;
+          <resolution_0_5> @<QuantityValue> ? ;
+          <map_sharpening_bfactor> @<QuantityValue> ?
        ) ;
        rdf:type [ <RefinementParameters> ] ?
     )
@@ -1259,7 +1259,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> ] ;
           <molecular_composition> @<MolecularComposition> ? ;
           <molecular_weight> @<QuantityValue> ? ;
-          <concentration> @linkml:Float ? ;
+          <concentration> @<QuantityValue> ? ;
           <concentration_unit> [ <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml>
              <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar>
              <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#millimolar>
@@ -1271,7 +1271,7 @@ linkml:Sparqlpath xsd:string
           <anatomy> @<OntologyTerm> ? ;
           <cell_type> @<OntologyTerm> ? ;
           <parent_sample_id> @<Sample> ? ;
-          <purity_percentage> @linkml:Float ? ;
+          <purity_percentage> @<QuantityValue> ? ;
           <quality_metrics> @linkml:String ? ;
           <functional_sites> @<https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSite> * ;
           <structural_features> @<https://w3id.org/lambda-ber-schema/functional_annotation/StructuralFeature> * ;
@@ -1320,9 +1320,9 @@ linkml:Sparqlpath xsd:string
           <growth_temperature_c> @<QuantityValue> ? ;
           <induction_agent> @linkml:String ? ;
           <inducer_concentration> @linkml:String ? ;
-          <induction_temperature_c> @linkml:Float ? ;
-          <induction_time_h> @linkml:Float ? ;
-          <od600_at_induction> @linkml:Float ? ;
+          <induction_temperature_c> @<QuantityValue> ? ;
+          <induction_time_h> @<QuantityValue> ? ;
+          <od600_at_induction> @<QuantityValue> ? ;
           <harvest_timepoint> @linkml:String ? ;
           <lysis_method> @linkml:String ? ;
           <protease_inhibitors> @linkml:String ? ;

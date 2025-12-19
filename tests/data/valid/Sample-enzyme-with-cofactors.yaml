@@ -11,7 +11,9 @@ molecular_composition:
 molecular_weight:
   numeric_value: 217.5
   unit: kilodaltons
-concentration: 5.0
+concentration:
+  numeric_value: 5.0
+  unit: milligrams per milliliter
 concentration_unit: mg_per_ml
 functional_sites:
 - id: lambdaber:funcsite-aldh2-active

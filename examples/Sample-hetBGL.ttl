@@ -9,7 +9,9 @@
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
             lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "2.5"^^xsd:float ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;

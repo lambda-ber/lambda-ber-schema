@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T12:54:24
+# Generation date: 2025-12-19T13:01:52
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -472,7 +472,7 @@ class Sample(NamedThing):
     sample_type: Union[str, "SampleTypeEnum"] = None
     molecular_composition: Optional[Union[dict, "MolecularComposition"]] = None
     molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
-    concentration: Optional[float] = None
+    concentration: Optional[Union[dict, "QuantityValue"]] = None
     concentration_unit: Optional[Union[str, "ConcentrationUnitEnum"]] = None
     buffer_composition: Optional[Union[dict, "BufferComposition"]] = None
     preparation_method: Optional[str] = None
@@ -481,7 +481,7 @@ class Sample(NamedThing):
     anatomy: Optional[Union[str, OntologyTermId]] = None
     cell_type: Optional[Union[str, OntologyTermId]] = None
     parent_sample_id: Optional[Union[str, SampleId]] = None
-    purity_percentage: Optional[float] = None
+    purity_percentage: Optional[Union[dict, "QuantityValue"]] = None
     quality_metrics: Optional[str] = None
     functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, "FunctionalSite"]], list[Union[dict, "FunctionalSite"]]]] = empty_dict()
     structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, "StructuralFeature"]], list[Union[dict, "StructuralFeature"]]]] = empty_dict()
@@ -522,8 +522,8 @@ class Sample(NamedThing):
         if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantityValue):
             self.molecular_weight = QuantityValue(**as_dict(self.molecular_weight))
 
-        if self.concentration is not None and not isinstance(self.concentration, float):
-            self.concentration = float(self.concentration)
+        if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
+            self.concentration = QuantityValue(**as_dict(self.concentration))
 
         if self.concentration_unit is not None and not isinstance(self.concentration_unit, ConcentrationUnitEnum):
             self.concentration_unit = ConcentrationUnitEnum(self.concentration_unit)
@@ -549,8 +549,8 @@ class Sample(NamedThing):
         if self.parent_sample_id is not None and not isinstance(self.parent_sample_id, SampleId):
             self.parent_sample_id = SampleId(self.parent_sample_id)
 
-        if self.purity_percentage is not None and not isinstance(self.purity_percentage, float):
-            self.purity_percentage = float(self.purity_percentage)
+        if self.purity_percentage is not None and not isinstance(self.purity_percentage, QuantityValue):
+            self.purity_percentage = QuantityValue(**as_dict(self.purity_percentage))
 
         if self.quality_metrics is not None and not isinstance(self.quality_metrics, str):
             self.quality_metrics = str(self.quality_metrics)
@@ -739,9 +739,9 @@ class SamplePreparation(NamedThing):
     growth_temperature_c: Optional[Union[dict, "QuantityValue"]] = None
     induction_agent: Optional[str] = None
     inducer_concentration: Optional[str] = None
-    induction_temperature_c: Optional[float] = None
-    induction_time_h: Optional[float] = None
-    od600_at_induction: Optional[float] = None
+    induction_temperature_c: Optional[Union[dict, "QuantityValue"]] = None
+    induction_time_h: Optional[Union[dict, "QuantityValue"]] = None
+    od600_at_induction: Optional[Union[dict, "QuantityValue"]] = None
     harvest_timepoint: Optional[str] = None
     lysis_method: Optional[str] = None
     protease_inhibitors: Optional[str] = None
@@ -818,14 +818,14 @@ class SamplePreparation(NamedThing):
         if self.inducer_concentration is not None and not isinstance(self.inducer_concentration, str):
             self.inducer_concentration = str(self.inducer_concentration)
 
-        if self.induction_temperature_c is not None and not isinstance(self.induction_temperature_c, float):
-            self.induction_temperature_c = float(self.induction_temperature_c)
+        if self.induction_temperature_c is not None and not isinstance(self.induction_temperature_c, QuantityValue):
+            self.induction_temperature_c = QuantityValue(**as_dict(self.induction_temperature_c))
 
-        if self.induction_time_h is not None and not isinstance(self.induction_time_h, float):
-            self.induction_time_h = float(self.induction_time_h)
+        if self.induction_time_h is not None and not isinstance(self.induction_time_h, QuantityValue):
+            self.induction_time_h = QuantityValue(**as_dict(self.induction_time_h))
 
-        if self.od600_at_induction is not None and not isinstance(self.od600_at_induction, float):
-            self.od600_at_induction = float(self.od600_at_induction)
+        if self.od600_at_induction is not None and not isinstance(self.od600_at_induction, QuantityValue):
+            self.od600_at_induction = QuantityValue(**as_dict(self.od600_at_induction))
 
         if self.harvest_timepoint is not None and not isinstance(self.harvest_timepoint, str):
             self.harvest_timepoint = str(self.harvest_timepoint)
@@ -3264,31 +3264,31 @@ class CTFEstimationParameters(AttributeGroup):
     class_name: ClassVar[str] = "CTFEstimationParameters"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.CTFEstimationParameters
 
-    defocus_search_min: Optional[float] = None
-    defocus_search_max: Optional[float] = None
-    defocus_step: Optional[float] = None
+    defocus_search_min: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_search_max: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_step: Optional[Union[dict, "QuantityValue"]] = None
     amplitude_contrast: Optional[float] = None
-    cs_used_in_estimation: Optional[float] = None
-    voltage_used_in_estimation: Optional[float] = None
+    cs_used_in_estimation: Optional[Union[dict, "QuantityValue"]] = None
+    voltage_used_in_estimation: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.defocus_search_min is not None and not isinstance(self.defocus_search_min, float):
-            self.defocus_search_min = float(self.defocus_search_min)
+        if self.defocus_search_min is not None and not isinstance(self.defocus_search_min, QuantityValue):
+            self.defocus_search_min = QuantityValue(**as_dict(self.defocus_search_min))
 
-        if self.defocus_search_max is not None and not isinstance(self.defocus_search_max, float):
-            self.defocus_search_max = float(self.defocus_search_max)
+        if self.defocus_search_max is not None and not isinstance(self.defocus_search_max, QuantityValue):
+            self.defocus_search_max = QuantityValue(**as_dict(self.defocus_search_max))
 
-        if self.defocus_step is not None and not isinstance(self.defocus_step, float):
-            self.defocus_step = float(self.defocus_step)
+        if self.defocus_step is not None and not isinstance(self.defocus_step, QuantityValue):
+            self.defocus_step = QuantityValue(**as_dict(self.defocus_step))
 
         if self.amplitude_contrast is not None and not isinstance(self.amplitude_contrast, float):
             self.amplitude_contrast = float(self.amplitude_contrast)
 
-        if self.cs_used_in_estimation is not None and not isinstance(self.cs_used_in_estimation, float):
-            self.cs_used_in_estimation = float(self.cs_used_in_estimation)
+        if self.cs_used_in_estimation is not None and not isinstance(self.cs_used_in_estimation, QuantityValue):
+            self.cs_used_in_estimation = QuantityValue(**as_dict(self.cs_used_in_estimation))
 
-        if self.voltage_used_in_estimation is not None and not isinstance(self.voltage_used_in_estimation, float):
-            self.voltage_used_in_estimation = float(self.voltage_used_in_estimation)
+        if self.voltage_used_in_estimation is not None and not isinstance(self.voltage_used_in_estimation, QuantityValue):
+            self.voltage_used_in_estimation = QuantityValue(**as_dict(self.voltage_used_in_estimation))
 
         super().__post_init__(**kwargs)
 
@@ -3355,20 +3355,20 @@ class RefinementParameters(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.RefinementParameters
 
     symmetry: Optional[Union[str, "SymmetryEnum"]] = None
-    pixel_size: Optional[float] = None
+    pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     box_size: Optional[int] = None
     gold_standard: Optional[Union[bool, Bool]] = None
     split_strategy: Optional[str] = None
-    resolution_0_143: Optional[float] = None
-    resolution_0_5: Optional[float] = None
-    map_sharpening_bfactor: Optional[float] = None
+    resolution_0_143: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_0_5: Optional[Union[dict, "QuantityValue"]] = None
+    map_sharpening_bfactor: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.symmetry is not None and not isinstance(self.symmetry, SymmetryEnum):
             self.symmetry = SymmetryEnum(self.symmetry)
 
-        if self.pixel_size is not None and not isinstance(self.pixel_size, float):
-            self.pixel_size = float(self.pixel_size)
+        if self.pixel_size is not None and not isinstance(self.pixel_size, QuantityValue):
+            self.pixel_size = QuantityValue(**as_dict(self.pixel_size))
 
         if self.box_size is not None and not isinstance(self.box_size, int):
             self.box_size = int(self.box_size)
@@ -3379,14 +3379,14 @@ class RefinementParameters(AttributeGroup):
         if self.split_strategy is not None and not isinstance(self.split_strategy, str):
             self.split_strategy = str(self.split_strategy)
 
-        if self.resolution_0_143 is not None and not isinstance(self.resolution_0_143, float):
-            self.resolution_0_143 = float(self.resolution_0_143)
+        if self.resolution_0_143 is not None and not isinstance(self.resolution_0_143, QuantityValue):
+            self.resolution_0_143 = QuantityValue(**as_dict(self.resolution_0_143))
 
-        if self.resolution_0_5 is not None and not isinstance(self.resolution_0_5, float):
-            self.resolution_0_5 = float(self.resolution_0_5)
+        if self.resolution_0_5 is not None and not isinstance(self.resolution_0_5, QuantityValue):
+            self.resolution_0_5 = QuantityValue(**as_dict(self.resolution_0_5))
 
-        if self.map_sharpening_bfactor is not None and not isinstance(self.map_sharpening_bfactor, float):
-            self.map_sharpening_bfactor = float(self.map_sharpening_bfactor)
+        if self.map_sharpening_bfactor is not None and not isinstance(self.map_sharpening_bfactor, QuantityValue):
+            self.map_sharpening_bfactor = QuantityValue(**as_dict(self.map_sharpening_bfactor))
 
         super().__post_init__(**kwargs)
 
@@ -6481,7 +6481,7 @@ slots.sample__molecular_weight = Slot(uri=LAMBDABER.molecular_weight, name="samp
                    model_uri=LAMBDABER.sample__molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sample__concentration = Slot(uri=LAMBDABER.concentration, name="sample__concentration", curie=LAMBDABER.curie('concentration'),
-                   model_uri=LAMBDABER.sample__concentration, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sample__concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sample__concentration_unit = Slot(uri=LAMBDABER.concentration_unit, name="sample__concentration_unit", curie=LAMBDABER.curie('concentration_unit'),
                    model_uri=LAMBDABER.sample__concentration_unit, domain=None, range=Optional[Union[str, "ConcentrationUnitEnum"]])
@@ -6508,7 +6508,7 @@ slots.sample__parent_sample_id = Slot(uri=LAMBDABER.parent_sample_id, name="samp
                    model_uri=LAMBDABER.sample__parent_sample_id, domain=None, range=Optional[Union[str, SampleId]])
 
 slots.sample__purity_percentage = Slot(uri=LAMBDABER.purity_percentage, name="sample__purity_percentage", curie=LAMBDABER.curie('purity_percentage'),
-                   model_uri=LAMBDABER.sample__purity_percentage, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sample__purity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sample__quality_metrics = Slot(uri=LAMBDABER.quality_metrics, name="sample__quality_metrics", curie=LAMBDABER.curie('quality_metrics'),
                    model_uri=LAMBDABER.sample__quality_metrics, domain=None, range=Optional[str])
@@ -6664,13 +6664,13 @@ slots.samplePreparation__inducer_concentration = Slot(uri=LAMBDABER.inducer_conc
                    model_uri=LAMBDABER.samplePreparation__inducer_concentration, domain=None, range=Optional[str])
 
 slots.samplePreparation__induction_temperature_c = Slot(uri=LAMBDABER.induction_temperature_c, name="samplePreparation__induction_temperature_c", curie=LAMBDABER.curie('induction_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__induction_temperature_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__induction_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__induction_time_h = Slot(uri=LAMBDABER.induction_time_h, name="samplePreparation__induction_time_h", curie=LAMBDABER.curie('induction_time_h'),
-                   model_uri=LAMBDABER.samplePreparation__induction_time_h, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__induction_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__od600_at_induction = Slot(uri=LAMBDABER.od600_at_induction, name="samplePreparation__od600_at_induction", curie=LAMBDABER.curie('od600_at_induction'),
-                   model_uri=LAMBDABER.samplePreparation__od600_at_induction, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__od600_at_induction, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__harvest_timepoint = Slot(uri=LAMBDABER.harvest_timepoint, name="samplePreparation__harvest_timepoint", curie=LAMBDABER.curie('harvest_timepoint'),
                    model_uri=LAMBDABER.samplePreparation__harvest_timepoint, domain=None, range=Optional[str])
@@ -7979,22 +7979,22 @@ slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDABER.drift_total, 
                    model_uri=LAMBDABER.motionCorrectionParameters__drift_total, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__defocus_search_min = Slot(uri=LAMBDABER.defocus_search_min, name="cTFEstimationParameters__defocus_search_min", curie=LAMBDABER.curie('defocus_search_min'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__defocus_search_max = Slot(uri=LAMBDABER.defocus_search_max, name="cTFEstimationParameters__defocus_search_max", curie=LAMBDABER.curie('defocus_search_max'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__defocus_step = Slot(uri=LAMBDABER.defocus_step, name="cTFEstimationParameters__defocus_step", curie=LAMBDABER.curie('defocus_step'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_step, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_step, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__amplitude_contrast = Slot(uri=LAMBDABER.amplitude_contrast, name="cTFEstimationParameters__amplitude_contrast", curie=LAMBDABER.curie('amplitude_contrast'),
                    model_uri=LAMBDABER.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[float])
 
 slots.cTFEstimationParameters__cs_used_in_estimation = Slot(uri=LAMBDABER.cs_used_in_estimation, name="cTFEstimationParameters__cs_used_in_estimation", curie=LAMBDABER.curie('cs_used_in_estimation'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__cs_used_in_estimation, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__cs_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.cTFEstimationParameters__voltage_used_in_estimation = Slot(uri=LAMBDABER.voltage_used_in_estimation, name="cTFEstimationParameters__voltage_used_in_estimation", curie=LAMBDABER.curie('voltage_used_in_estimation'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__voltage_used_in_estimation, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.cTFEstimationParameters__voltage_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particlePickingParameters__picking_method = Slot(uri=LAMBDABER.picking_method, name="particlePickingParameters__picking_method", curie=LAMBDABER.curie('picking_method'),
                    model_uri=LAMBDABER.particlePickingParameters__picking_method, domain=None, range=Optional[str])
@@ -8024,7 +8024,7 @@ slots.refinementParameters__symmetry = Slot(uri=LAMBDABER.symmetry, name="refine
                    model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])
 
 slots.refinementParameters__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="refinementParameters__pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.refinementParameters__box_size = Slot(uri=LAMBDABER.box_size, name="refinementParameters__box_size", curie=LAMBDABER.curie('box_size'),
                    model_uri=LAMBDABER.refinementParameters__box_size, domain=None, range=Optional[int])
@@ -8036,13 +8036,13 @@ slots.refinementParameters__split_strategy = Slot(uri=LAMBDABER.split_strategy, 
                    model_uri=LAMBDABER.refinementParameters__split_strategy, domain=None, range=Optional[str])
 
 slots.refinementParameters__resolution_0_143 = Slot(uri=LAMBDABER.resolution_0_143, name="refinementParameters__resolution_0_143", curie=LAMBDABER.curie('resolution_0_143'),
-                   model_uri=LAMBDABER.refinementParameters__resolution_0_143, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.refinementParameters__resolution_0_143, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDABER.resolution_0_5, name="refinementParameters__resolution_0_5", curie=LAMBDABER.curie('resolution_0_5'),
-                   model_uri=LAMBDABER.refinementParameters__resolution_0_5, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.refinementParameters__resolution_0_5, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDABER.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDABER.curie('map_sharpening_bfactor'),
-                   model_uri=LAMBDABER.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDABER.curie('resolution_angstrom'),
                    model_uri=LAMBDABER.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[float, list[float]]])

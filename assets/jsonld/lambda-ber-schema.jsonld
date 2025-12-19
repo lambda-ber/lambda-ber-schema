@@ -3915,7 +3915,7 @@
     },
     {
       "name": "sample__concentration",
-      "description": "Sample concentration in mg/mL or \u00b5M",
+      "description": "Sample concentration, typically specified in mg/mL or \u00b5M. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/concentration",
       "alias": "concentration",
@@ -3923,7 +3923,8 @@
       "domain_of": [
         "Sample"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4034,7 +4035,7 @@
     },
     {
       "name": "sample__purity_percentage",
-      "description": "Sample purity as percentage (range: 0-100)",
+      "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/purity_percentage",
       "alias": "purity_percentage",
@@ -4042,7 +4043,8 @@
       "domain_of": [
         "Sample"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "minimum_value": 0,
       "maximum_value": 100,
       "@type": "SlotDefinition"
@@ -4779,7 +4781,7 @@
     },
     {
       "name": "samplePreparation__induction_temperature_c",
-      "description": "Temperature during induction in Celsius",
+      "description": "Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/induction_temperature_c",
       "alias": "induction_temperature_c",
@@ -4787,12 +4789,13 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "samplePreparation__induction_time_h",
-      "description": "Duration of induction in hours",
+      "description": "Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/induction_time_h",
       "alias": "induction_time_h",
@@ -4800,12 +4803,13 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "samplePreparation__od600_at_induction",
-      "description": "Optical density at 600nm when induction was started",
+      "description": "Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/od600_at_induction",
       "alias": "od600_at_induction",
@@ -4813,7 +4817,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11055,7 +11060,7 @@
     },
     {
       "name": "cTFEstimationParameters__defocus_search_min",
-      "description": "Minimum defocus search range in micrometers",
+      "description": "Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_search_min",
       "alias": "defocus_search_min",
@@ -11063,12 +11068,13 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cTFEstimationParameters__defocus_search_max",
-      "description": "Maximum defocus search range in micrometers",
+      "description": "Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_search_max",
       "alias": "defocus_search_max",
@@ -11076,12 +11082,13 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cTFEstimationParameters__defocus_step",
-      "description": "Defocus search step in micrometers",
+      "description": "Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_step",
       "alias": "defocus_step",
@@ -11089,7 +11096,8 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11107,7 +11115,7 @@
     },
     {
       "name": "cTFEstimationParameters__cs_used_in_estimation",
-      "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
+      "description": "Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/cs_used_in_estimation",
       "alias": "cs_used_in_estimation",
@@ -11115,12 +11123,13 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "cTFEstimationParameters__voltage_used_in_estimation",
-      "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
+      "description": "Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/voltage_used_in_estimation",
       "alias": "voltage_used_in_estimation",
@@ -11128,7 +11137,8 @@
       "domain_of": [
         "CTFEstimationParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11250,7 +11260,7 @@
     },
     {
       "name": "refinementParameters__pixel_size",
-      "description": "Pixel size in Angstroms per pixel",
+      "description": "Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
       "alias": "pixel_size",
@@ -11258,7 +11268,8 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11302,7 +11313,7 @@
     },
     {
       "name": "refinementParameters__resolution_0_143",
-      "description": "Resolution at FSC=0.143 in Angstroms",
+      "description": "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_0_143",
       "alias": "resolution_0_143",
@@ -11310,12 +11321,13 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "refinementParameters__resolution_0_5",
-      "description": "Resolution at FSC=0.5 in Angstroms",
+      "description": "Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_0_5",
       "alias": "resolution_0_5",
@@ -11323,12 +11335,13 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "refinementParameters__map_sharpening_bfactor",
-      "description": "B-factor used for map sharpening in Angstroms^2",
+      "description": "B-factor used for map sharpening, typically specified in Angstroms squared (\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/map_sharpening_bfactor",
       "alias": "map_sharpening_bfactor",
@@ -11336,7 +11349,8 @@
       "domain_of": [
         "RefinementParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13538,8 +13552,9 @@
         },
         {
           "name": "concentration",
-          "description": "Sample concentration in mg/mL or \u00b5M",
-          "range": "float",
+          "description": "Sample concentration, typically specified in mg/mL or \u00b5M. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -13591,8 +13606,9 @@
         },
         {
           "name": "purity_percentage",
-          "description": "Sample purity as percentage (range: 0-100)",
-          "range": "float",
+          "description": "Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "minimum_value": 0,
           "maximum_value": 100,
           "@type": "SlotDefinition"
@@ -14021,20 +14037,23 @@
         },
         {
           "name": "induction_temperature_c",
-          "description": "Temperature during induction in Celsius",
-          "range": "float",
+          "description": "Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "induction_time_h",
-          "description": "Duration of induction in hours",
-          "range": "float",
+          "description": "Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "od600_at_induction",
-          "description": "Optical density at 600nm when induction was started",
-          "range": "float",
+          "description": "Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18170,20 +18189,23 @@
       "attributes": [
         {
           "name": "defocus_search_min",
-          "description": "Minimum defocus search range in micrometers",
-          "range": "float",
+          "description": "Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_search_max",
-          "description": "Maximum defocus search range in micrometers",
-          "range": "float",
+          "description": "Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_step",
-          "description": "Defocus search step in micrometers",
-          "range": "float",
+          "description": "Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18194,14 +18216,16 @@
         },
         {
           "name": "cs_used_in_estimation",
-          "description": "Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification",
-          "range": "float",
+          "description": "Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "voltage_used_in_estimation",
-          "description": "Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification",
-          "range": "float",
+          "description": "Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -18306,8 +18330,9 @@
         },
         {
           "name": "pixel_size",
-          "description": "Pixel size in Angstroms per pixel",
-          "range": "float",
+          "description": "Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18330,20 +18355,23 @@
         },
         {
           "name": "resolution_0_143",
-          "description": "Resolution at FSC=0.143 in Angstroms",
-          "range": "float",
+          "description": "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_0_5",
-          "description": "Resolution at FSC=0.5 in Angstroms",
-          "range": "float",
+          "description": "Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "map_sharpening_bfactor",
-          "description": "B-factor used for map sharpening in Angstroms^2",
-          "range": "float",
+          "description": "B-factor used for map sharpening, typically specified in Angstroms squared (\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -19729,9 +19757,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T12:50:14",
-  "source_file_size": 133387,
-  "generation_date": "2025-12-19T12:54:18",
+  "source_file_date": "2025-12-19T13:01:40",
+  "source_file_size": 135404,
+  "generation_date": "2025-12-19T13:01:46",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

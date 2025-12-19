@@ -25,7 +25,10 @@
         "numeric_value": 206.0,
         "unit": "kilodaltons"
       },
-      "concentration": 5.0,
+      "concentration": {
+        "numeric_value": 5.0,
+        "unit": "milligrams per milliliter"
+      },
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.5,
@@ -41,7 +44,10 @@
       "preparation_method": "Salt gradient dialysis reconstitution",
       "organism": "NCBITaxon:9606",
       "anatomy": "UBERON:0000922",
-      "purity_percentage": 99.0
+      "purity_percentage": {
+        "numeric_value": 99.0,
+        "unit": "percent"
+      }
     },
     {
       "id": "lambdaber:sample_chd1_001",
@@ -64,7 +70,10 @@
         "numeric_value": 168.5,
         "unit": "kilodaltons"
       },
-      "concentration": 2.0,
+      "concentration": {
+        "numeric_value": 2.0,
+        "unit": "milligrams per milliliter"
+      },
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.8,
@@ -80,7 +89,10 @@
       },
       "preparation_method": "Sf9 insect cell expression with FLAG purification",
       "organism": "NCBITaxon:4932",
-      "purity_percentage": 95.0
+      "purity_percentage": {
+        "numeric_value": 95.0,
+        "unit": "percent"
+      }
     },
     {
       "id": "lambdaber:sample_chd1_ncp_complex_001",
@@ -99,7 +111,10 @@
         "numeric_value": 374.5,
         "unit": "kilodaltons"
       },
-      "concentration": 0.5,
+      "concentration": {
+        "numeric_value": 0.5,
+        "unit": "milligrams per milliliter"
+      },
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
         "ph": 7.5,
@@ -116,7 +131,10 @@
       },
       "preparation_method": "In vitro reconstitution by mixing CHD1 with nucleosome",
       "parent_sample_id": "lambdaber:sample_nucleosome_001",
-      "purity_percentage": 90.0
+      "purity_percentage": {
+        "numeric_value": 90.0,
+        "unit": "percent"
+      }
     }
   ],
   "sample_preparations": [

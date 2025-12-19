@@ -38,7 +38,9 @@ studies:
     molecular_weight:
       numeric_value: 1200.0
       unit: kilodaltons
-    concentration: 0.8
+    concentration:
+      numeric_value: 0.8
+      unit: milligrams per milliliter
     concentration_unit: mg_per_ml
     buffer_composition:
       ph: 7.9
@@ -58,7 +60,9 @@ studies:
       duration: 6 months
       atmosphere: Flash frozen in liquid nitrogen
     organism: NCBITaxon:9606
-    purity_percentage: 95.0
+    purity_percentage:
+      numeric_value: 95.0
+      unit: percent
     preparation_method: Nuclear extract followed by immunoaffinity purification and
       glycerol gradient
   - id: lambdaber:sample_tfiid_dna_002
@@ -76,7 +80,9 @@ studies:
     molecular_weight:
       numeric_value: 1250.0
       unit: kilodaltons
-    concentration: 0.5
+    concentration:
+      numeric_value: 0.5
+      unit: milligrams per milliliter
     concentration_unit: mg_per_ml
     parent_sample_id: lambdaber:sample_tfiid_001
     buffer_composition:
@@ -88,7 +94,9 @@ studies:
       additives:
       - 1 mM DTT
     organism: NCBITaxon:9606
-    purity_percentage: 92.0
+    purity_percentage:
+      numeric_value: 92.0
+      unit: percent
   sample_preparations:
   - id: lambdaber:prep_tfiid_grid_001
     title: TFIID complex grid preparation

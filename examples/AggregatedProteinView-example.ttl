@@ -10,12 +10,6 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
     dcterms:title "Aggregated structural and functional data for human p53" ;
     lambdaber:description "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases" ;
     ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
-            ns1:experimental_method "differential_scanning_calorimetry" ;
-            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
-            ns1:property_type "stability" ;
-            ns1:unit "kcal/mol" ;
-            ns1:value "42.5"^^xsd:float ],
-        [ a ns1:BiophysicalProperty ;
             ns1:error "1.2"^^xsd:float ;
             ns1:experimental_method "circular_dichroism" ;
             ns1:measurement_conditions lambdaber:p53-meas-cond-002 ;
@@ -23,20 +17,18 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ],
         [ a ns1:BiophysicalProperty ;
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
+            ns1:property_type "stability" ;
+            ns1:unit "kcal/mol" ;
+            ns1:value "42.5"^^xsd:float ],
+        [ a ns1:BiophysicalProperty ;
             ns1:measurement_conditions lambdaber:p53-meas-cond-003 ;
             ns1:property_type "aggregation_propensity" ;
             ns1:unit "probability" ;
             ns1:value "0.68"^^xsd:float ] ;
     ns1:conformational_ensemble lambdaber:p53-confens-001 ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "PF00870" ;
-            ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "191170" ;
-            ns1:database_name "omim" ;
-            ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "CHEMBL4096" ;
             ns1:database_name "chembl" ;
             ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ],
@@ -48,7 +40,15 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:database_id "P04637" ;
             ns1:database_name "uniprot" ;
             ns1:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ;
-            ns1:last_updated "2024-01-15" ] ;
+            ns1:last_updated "2024-01-15" ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "191170" ;
+            ns1:database_name "omim" ;
+            ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00870" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ] ;
     ns1:evolutionary_conservation lambdaber:p53-evol-001 ;
     ns1:functional_sites lambdaber:p53-func-001,
         lambdaber:p53-func-002,

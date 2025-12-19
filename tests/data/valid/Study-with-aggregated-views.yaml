@@ -12,7 +12,9 @@ samples:
   molecular_weight:
     numeric_value: 45.5
     unit: kilodaltons
-  concentration: 8.0
+  concentration:
+    numeric_value: 8.0
+    unit: milligrams per milliliter
   concentration_unit: mg_per_ml
   functional_sites:
   - id: lambdaber:func-site-001

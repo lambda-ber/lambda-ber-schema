@@ -49,7 +49,10 @@
             "numeric_value": 1200.0,
             "unit": "kilodaltons"
           },
-          "concentration": 0.8,
+          "concentration": {
+            "numeric_value": 0.8,
+            "unit": "milligrams per milliliter"
+          },
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
             "ph": 7.9,
@@ -75,7 +78,10 @@
             "atmosphere": "Flash frozen in liquid nitrogen"
           },
           "organism": "NCBITaxon:9606",
-          "purity_percentage": 95.0
+          "purity_percentage": {
+            "numeric_value": 95.0,
+            "unit": "percent"
+          }
         },
         {
           "id": "lambdaber:sample_tfiid_dna_002",
@@ -98,7 +104,10 @@
             "numeric_value": 1250.0,
             "unit": "kilodaltons"
           },
-          "concentration": 0.5,
+          "concentration": {
+            "numeric_value": 0.5,
+            "unit": "milligrams per milliliter"
+          },
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
             "ph": 7.9,
@@ -113,7 +122,10 @@
           },
           "organism": "NCBITaxon:9606",
           "parent_sample_id": "lambdaber:sample_tfiid_001",
-          "purity_percentage": 92.0
+          "purity_percentage": {
+            "numeric_value": 92.0,
+            "unit": "percent"
+          }
         }
       ],
       "sample_preparations": [
