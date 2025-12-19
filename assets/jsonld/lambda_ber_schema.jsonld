@@ -19655,7 +19655,7 @@
   "source_file": "lambda_ber_schema.yaml",
   "source_file_date": "2025-12-19T14:46:18",
   "source_file_size": 134930,
-  "generation_date": "2025-12-19T14:46:20",
+  "generation_date": "2025-12-19T14:49:42",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",
