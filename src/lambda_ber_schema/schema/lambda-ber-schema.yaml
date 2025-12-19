@@ -101,6 +101,7 @@ prefixes:
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   ispyb: https://ispyb.github.io/ISPyB/
   PaNET: http://purl.org/pan-science/PaNET/PaNET
+  UO: http://purl.obolibrary.org/obo/UO_
 
 imports:
   - linkml:types
