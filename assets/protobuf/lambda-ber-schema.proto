@@ -78,10 +78,10 @@ message BufferComposition
 message ComputeResources
  {
   string description = 0
-  float cpuHours = 0
-  float gpuHours = 0
-  float memoryGb = 0
-  float storageGb = 0
+  quantityValue cpuHours = 0
+  quantityValue gpuHours = 0
+  quantityValue memoryGb = 0
+  quantityValue storageGb = 0
  }
 // Ensemble of conformational states for a protein
 message ConformationalEnsemble
@@ -222,22 +222,22 @@ message DataCollectionStrategy
   string description = 0
   collectionModeEnum collectionMode = 0
   integer totalFrames = 0
-  float frameRate = 0
-  float totalDose = 0
-  float dosePerFrame = 0
-  float wavelengthA = 0
+  quantityValue frameRate = 0
+  quantityValue totalDose = 0
+  quantityValue dosePerFrame = 0
+  quantityValue wavelengthA = 0
   detectorModeEnum detectorMode = 0
   quantityValue pixelSizeCalibrated = 0
-  float detectorDistanceMm = 0
+  quantityValue detectorDistanceMm = 0
   integer beamCenterXPx = 0
   integer beamCenterYPx = 0
-  float beamSizeUm = 0
-  float fluxPhotonsPerS = 0
-  float transmissionPercent = 0
+  quantityValue beamSizeUm = 0
+  quantityValue fluxPhotonsPerS = 0
+  quantityValue transmissionPercent = 0
   string attenuator = 0
-  float temperatureK = 0
-  float oscillationPerImageDeg = 0
-  float totalRotationDeg = 0
+  quantityValue temperatureK = 0
+  quantityValue oscillationPerImageDeg = 0
+  quantityValue totalRotationDeg = 0
   string strategyNotes = 0
  }
 // A data file generated or used in the study
@@ -589,11 +589,11 @@ message MotionCorrectionParameters
   integer patchSize = 0
   float binning = 0
   boolean doseWeighting = 0
-  float bfactorDoseWeighting = 0
+  quantityValue bfactorDoseWeighting = 0
   boolean anisotropicCorrection = 0
   integer frameGrouping = 0
   float outputBinning = 0
-  float driftTotal = 0
+  quantityValue driftTotal = 0
  }
 // Raw cryo-EM movie with frame-by-frame metadata for motion correction
 message Movie
@@ -801,19 +801,19 @@ message QualityMetrics
  {
   string description = 0
   quantityValue resolution = 0
-  float resolutionHighShellA = 0
-  float resolutionLowA = 0
-  float completeness = 0
-  float completenessHighResShellPercent = 0
+  quantityValue resolutionHighShellA = 0
+  quantityValue resolutionLowA = 0
+  quantityValue completeness = 0
+  quantityValue completenessHighResShellPercent = 0
   float signalToNoise = 0
   float meanIOverSigmaI = 0
   string spaceGroup = 0
-  float unitCellA = 0
-  float unitCellB = 0
-  float unitCellC = 0
-  float unitCellAlpha = 0
-  float unitCellBeta = 0
-  float unitCellGamma = 0
+  quantityValue unitCellA = 0
+  quantityValue unitCellB = 0
+  quantityValue unitCellC = 0
+  quantityValue unitCellAlpha = 0
+  quantityValue unitCellBeta = 0
+  quantityValue unitCellGamma = 0
   float multiplicity = 0
   float ccHalf = 0
   float rMerge = 0
@@ -830,7 +830,7 @@ message QualityMetrics
   float molprobityScore = 0
   float averageBFactorA2 = 0
   float iZero = 0
-  float rg = 0
+  quantityValue rg = 0
   float rFactor = 0
  }
 // A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.

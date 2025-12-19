@@ -10221,7 +10221,7 @@
     },
     {
       "name": "dataCollectionStrategy__frame_rate",
-      "description": "Frames per second",
+      "description": "Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/frame_rate",
       "alias": "frame_rate",
@@ -10229,12 +10229,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__total_dose",
-      "description": "Total electron dose for cryo-EM",
+      "description": "Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/total_dose",
       "alias": "total_dose",
@@ -10242,12 +10243,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__dose_per_frame",
-      "description": "Dose per frame",
+      "description": "Dose per frame, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/dose_per_frame",
       "alias": "dose_per_frame",
@@ -10255,12 +10257,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__wavelength_a",
-      "description": "X-ray wavelength in Angstroms",
+      "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/wavelength_a",
       "alias": "wavelength_a",
@@ -10268,7 +10271,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10309,7 +10313,7 @@
     },
     {
       "name": "dataCollectionStrategy__detector_distance_mm",
-      "description": "Detector distance in millimeters",
+      "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/detector_distance_mm",
       "alias": "detector_distance_mm",
@@ -10317,7 +10321,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10348,7 +10353,7 @@
     },
     {
       "name": "dataCollectionStrategy__beam_size_um",
-      "description": "Beam size in micrometers",
+      "description": "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_size_um",
       "alias": "beam_size_um",
@@ -10356,12 +10361,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__flux_photons_per_s",
-      "description": "Photon flux in photons per second",
+      "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/flux_photons_per_s",
       "alias": "flux_photons_per_s",
@@ -10369,12 +10375,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__transmission_percent",
-      "description": "Beam transmission percentage",
+      "description": "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/transmission_percent",
       "alias": "transmission_percent",
@@ -10382,7 +10389,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10400,7 +10408,7 @@
     },
     {
       "name": "dataCollectionStrategy__temperature_k",
-      "description": "Data collection temperature in Kelvin",
+      "description": "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/temperature_k",
       "alias": "temperature_k",
@@ -10408,12 +10416,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__oscillation_per_image_deg",
-      "description": "Oscillation angle per image in degrees",
+      "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/oscillation_per_image_deg",
       "alias": "oscillation_per_image_deg",
@@ -10421,12 +10430,13 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "dataCollectionStrategy__total_rotation_deg",
-      "description": "Total rotation range in degrees",
+      "description": "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/total_rotation_deg",
       "alias": "total_rotation_deg",
@@ -10434,7 +10444,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10466,7 +10477,7 @@
     },
     {
       "name": "qualityMetrics__resolution_high_shell_a",
-      "description": "High resolution shell limit in Angstroms",
+      "description": "High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_high_shell_a",
       "alias": "resolution_high_shell_a",
@@ -10474,12 +10485,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__resolution_low_a",
-      "description": "Low resolution limit in Angstroms",
+      "description": "Low resolution limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_low_a",
       "alias": "resolution_low_a",
@@ -10487,12 +10499,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__completeness",
-      "description": "Data completeness percentage",
+      "description": "Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/completeness",
       "alias": "completeness",
@@ -10500,12 +10513,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__completeness_high_res_shell_percent",
-      "description": "Completeness in highest resolution shell",
+      "description": "Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/completeness_high_res_shell_percent",
       "alias": "completeness_high_res_shell_percent",
@@ -10513,7 +10527,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10557,7 +10572,7 @@
     },
     {
       "name": "qualityMetrics__unit_cell_a",
-      "description": "Unit cell parameter a in Angstroms",
+      "description": "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_a",
       "alias": "unit_cell_a",
@@ -10565,12 +10580,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__unit_cell_b",
-      "description": "Unit cell parameter b in Angstroms",
+      "description": "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_b",
       "alias": "unit_cell_b",
@@ -10578,12 +10594,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__unit_cell_c",
-      "description": "Unit cell parameter c in Angstroms",
+      "description": "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_c",
       "alias": "unit_cell_c",
@@ -10591,12 +10608,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__unit_cell_alpha",
-      "description": "Unit cell angle alpha in degrees",
+      "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_alpha",
       "alias": "unit_cell_alpha",
@@ -10604,12 +10622,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__unit_cell_beta",
-      "description": "Unit cell angle beta in degrees",
+      "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_beta",
       "alias": "unit_cell_beta",
@@ -10617,12 +10636,13 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "qualityMetrics__unit_cell_gamma",
-      "description": "Unit cell angle gamma in degrees",
+      "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cell_gamma",
       "alias": "unit_cell_gamma",
@@ -10630,7 +10650,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10843,7 +10864,7 @@
     },
     {
       "name": "qualityMetrics__rg",
-      "description": "Radius of gyration in Angstroms",
+      "description": "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/rg",
       "alias": "rg",
@@ -10851,7 +10872,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10869,7 +10891,7 @@
     },
     {
       "name": "computeResources__cpu_hours",
-      "description": "CPU hours used",
+      "description": "CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/cpu_hours",
       "alias": "cpu_hours",
@@ -10877,12 +10899,13 @@
       "domain_of": [
         "ComputeResources"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "computeResources__gpu_hours",
-      "description": "GPU hours used",
+      "description": "GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/gpu_hours",
       "alias": "gpu_hours",
@@ -10890,12 +10913,13 @@
       "domain_of": [
         "ComputeResources"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "computeResources__memory_gb",
-      "description": "Maximum memory used in GB",
+      "description": "Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/memory_gb",
       "alias": "memory_gb",
@@ -10903,12 +10927,13 @@
       "domain_of": [
         "ComputeResources"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "computeResources__storage_gb",
-      "description": "Storage used in GB",
+      "description": "Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/storage_gb",
       "alias": "storage_gb",
@@ -10916,7 +10941,8 @@
       "domain_of": [
         "ComputeResources"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10961,7 +10987,7 @@
     },
     {
       "name": "motionCorrectionParameters__bfactor_dose_weighting",
-      "description": "B-factor for dose weighting",
+      "description": "B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/bfactor_dose_weighting",
       "alias": "bfactor_dose_weighting",
@@ -10969,7 +10995,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11014,7 +11041,7 @@
     },
     {
       "name": "motionCorrectionParameters__drift_total",
-      "description": "Total drift in Angstroms",
+      "description": "Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/drift_total",
       "alias": "drift_total",
@@ -11022,7 +11049,8 @@
       "domain_of": [
         "MotionCorrectionParameters"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -17628,26 +17656,30 @@
         },
         {
           "name": "frame_rate",
-          "description": "Frames per second",
-          "range": "float",
+          "description": "Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_dose",
-          "description": "Total electron dose for cryo-EM",
-          "range": "float",
+          "description": "Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "dose_per_frame",
-          "description": "Dose per frame",
-          "range": "float",
+          "description": "Dose per frame, typically specified in electrons per Angstrom squared (e\u207b/\u00c5\u00b2). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "wavelength_a",
-          "description": "X-ray wavelength in Angstroms",
-          "range": "float",
+          "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17674,8 +17706,9 @@
         },
         {
           "name": "detector_distance_mm",
-          "description": "Detector distance in millimeters",
-          "range": "float",
+          "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17692,20 +17725,23 @@
         },
         {
           "name": "beam_size_um",
-          "description": "Beam size in micrometers",
-          "range": "float",
+          "description": "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "flux_photons_per_s",
-          "description": "Photon flux in photons per second",
-          "range": "float",
+          "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "transmission_percent",
-          "description": "Beam transmission percentage",
-          "range": "float",
+          "description": "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17715,20 +17751,23 @@
         },
         {
           "name": "temperature_k",
-          "description": "Data collection temperature in Kelvin",
-          "range": "float",
+          "description": "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "oscillation_per_image_deg",
-          "description": "Oscillation angle per image in degrees",
-          "range": "float",
+          "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_rotation_deg",
-          "description": "Total rotation range in degrees",
-          "range": "float",
+          "description": "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17792,26 +17831,30 @@
         },
         {
           "name": "resolution_high_shell_a",
-          "description": "High resolution shell limit in Angstroms",
-          "range": "float",
+          "description": "High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_low_a",
-          "description": "Low resolution limit in Angstroms",
-          "range": "float",
+          "description": "Low resolution limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "completeness",
-          "description": "Data completeness percentage",
-          "range": "float",
+          "description": "Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "completeness_high_res_shell_percent",
-          "description": "Completeness in highest resolution shell",
-          "range": "float",
+          "description": "Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17833,38 +17876,44 @@
         },
         {
           "name": "unit_cell_a",
-          "description": "Unit cell parameter a in Angstroms",
-          "range": "float",
+          "description": "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_b",
-          "description": "Unit cell parameter b in Angstroms",
-          "range": "float",
+          "description": "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_c",
-          "description": "Unit cell parameter c in Angstroms",
-          "range": "float",
+          "description": "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_alpha",
-          "description": "Unit cell angle alpha in degrees",
-          "range": "float",
+          "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_beta",
-          "description": "Unit cell angle beta in degrees",
-          "range": "float",
+          "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_gamma",
-          "description": "Unit cell angle gamma in degrees",
-          "range": "float",
+          "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17965,8 +18014,9 @@
         },
         {
           "name": "rg",
-          "description": "Radius of gyration in Angstroms",
-          "range": "float",
+          "description": "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17996,26 +18046,30 @@
       "attributes": [
         {
           "name": "cpu_hours",
-          "description": "CPU hours used",
-          "range": "float",
+          "description": "CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "gpu_hours",
-          "description": "GPU hours used",
-          "range": "float",
+          "description": "GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "memory_gb",
-          "description": "Maximum memory used in GB",
-          "range": "float",
+          "description": "Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "storage_gb",
-          "description": "Storage used in GB",
-          "range": "float",
+          "description": "Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -18062,8 +18116,9 @@
         },
         {
           "name": "bfactor_dose_weighting",
-          "description": "B-factor for dose weighting",
-          "range": "float",
+          "description": "B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18087,8 +18142,9 @@
         },
         {
           "name": "drift_total",
-          "description": "Total drift in Angstroms",
-          "range": "float",
+          "description": "Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -19673,9 +19729,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T12:40:55",
-  "source_file_size": 129226,
-  "generation_date": "2025-12-19T12:41:11",
+  "source_file_date": "2025-12-19T12:50:14",
+  "source_file_size": 133387,
+  "generation_date": "2025-12-19T12:54:18",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

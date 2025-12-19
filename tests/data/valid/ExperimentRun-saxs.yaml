@@ -20,6 +20,8 @@ data_collection_strategy:
 quality_metrics:
   signal_to_noise: 50
   i_zero: 0.045
-  rg: 42.3
+  rg:
+    numeric_value: 42.3
+    unit: Angstroms
 raw_data_location: SIBYLS-HT-SAXS-program
 processing_status: completed

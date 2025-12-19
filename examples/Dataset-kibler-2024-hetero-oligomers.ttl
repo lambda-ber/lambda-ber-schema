@@ -73,7 +73,9 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:i_zero "0.045"^^xsd:float ;
-            lambdaber:rg "42.3"^^xsd:float ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "42.3"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
             lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
     lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
     lambdaber:sample_id "hetBGL03-15-18" ;
@@ -297,8 +299,12 @@ at LBNL Advanced Light Source SIBYLS beamline and other facilities.
 
 <https://example.org/kibler2024/workflow/em-processing> a lambdaber:WorkflowRun ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:gpu_hours "2.0"^^xsd:float ;
-            lambdaber:memory_gb "32.0"^^xsd:float ] ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:experiment_id "nsEM-2024-02-05-hetBGL" ;
     lambdaber:output_files <hetBGL03-15-18_2D_classes.mrcs>,
         <hetBGL03-15-18_class_averages.png> ;
@@ -323,8 +329,12 @@ at LBNL Advanced Light Source SIBYLS beamline and other facilities.
 <https://example.org/kibler2024/workflow/saxs-processing> a lambdaber:WorkflowRun ;
     lambdaber:completed_at "2024-02-01T18:30:00Z" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "0.5"^^xsd:float ;
-            lambdaber:memory_gb "8.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.5"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:experiment_id "SIBYLS-2024-02-01-hetBGL" ;
     lambdaber:output_files <hetBGL03-15-18_guinier_fit.png>,
         <hetBGL03-15-18_kratky_plot.png>,

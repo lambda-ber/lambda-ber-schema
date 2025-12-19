@@ -133,14 +133,22 @@ studies:
     data_collection_strategy:
       collection_mode: counting
       total_frames: 8500
-      frame_rate: 40
-      total_dose: 40
-      dose_per_frame: 1.2
+      frame_rate:
+        numeric_value: 40
+        unit: frames per second
+      total_dose:
+        numeric_value: 40
+        unit: electrons per Angstrom squared
+      dose_per_frame:
+        numeric_value: 1.2
+        unit: electrons per Angstrom squared
     quality_metrics:
       resolution:
         numeric_value: 2.8
         unit: Angstroms
-      completeness: 99.5
+      completeness:
+        numeric_value: 99.5
+        unit: percent
       signal_to_noise: 4.2
     raw_data_location: /data/berkeley/2024/tfiid/raw/
     processing_status: completed
@@ -166,14 +174,22 @@ studies:
     data_collection_strategy:
       collection_mode: super_resolution
       total_frames: 12000
-      frame_rate: 40
-      total_dose: 42
-      dose_per_frame: 1.1
+      frame_rate:
+        numeric_value: 40
+        unit: frames per second
+      total_dose:
+        numeric_value: 42
+        unit: electrons per Angstrom squared
+      dose_per_frame:
+        numeric_value: 1.1
+        unit: electrons per Angstrom squared
     quality_metrics:
       resolution:
         numeric_value: 3.1
         unit: Angstroms
-      completeness: 98.0
+      completeness:
+        numeric_value: 98.0
+        unit: percent
       signal_to_noise: 3.8
     processing_status: completed
   workflow_runs:
@@ -188,10 +204,18 @@ studies:
     software_version: 1.6.4
     processing_parameters: -Patch 5 5 -Gpu 0 -FmDose 1.2
     compute_resources:
-      cpu_hours: 2.5
-      gpu_hours: 8.0
-      memory_gb: 32
-      storage_gb: 450
+      cpu_hours:
+        numeric_value: 2.5
+        unit: hours
+      gpu_hours:
+        numeric_value: 8.0
+        unit: hours
+      memory_gb:
+        numeric_value: 32
+        unit: gigabytes
+      storage_gb:
+        numeric_value: 450
+        unit: gigabytes
     started_at: '2024-03-20T18:00:00'
     completed_at: '2024-03-20T20:30:00'
   - id: lambdaber:workflow_ctf_001
@@ -205,9 +229,15 @@ studies:
     software_version: 4.1.14
     processing_parameters: Resolution 30 5
     compute_resources:
-      cpu_hours: 4.0
-      memory_gb: 16
-      storage_gb: 50
+      cpu_hours:
+        numeric_value: 4.0
+        unit: hours
+      memory_gb:
+        numeric_value: 16
+        unit: gigabytes
+      storage_gb:
+        numeric_value: 50
+        unit: gigabytes
     started_at: '2024-03-20T20:35:00'
     completed_at: '2024-03-20T21:15:00'
   - id: lambdaber:workflow_picking_001
@@ -221,10 +251,18 @@ studies:
     software_version: 1.9.0
     processing_parameters: Model TFIID_trained threshold 0.3
     compute_resources:
-      cpu_hours: 1.5
-      gpu_hours: 3.0
-      memory_gb: 24
-      storage_gb: 120
+      cpu_hours:
+        numeric_value: 1.5
+        unit: hours
+      gpu_hours:
+        numeric_value: 3.0
+        unit: hours
+      memory_gb:
+        numeric_value: 24
+        unit: gigabytes
+      storage_gb:
+        numeric_value: 120
+        unit: gigabytes
     started_at: '2024-03-21T09:00:00'
     completed_at: '2024-03-21T10:30:00'
   - id: lambdaber:workflow_2d_class_001
@@ -238,10 +276,18 @@ studies:
     software_version: 4.0.1
     processing_parameters: --K 200 --iter 25 --tau2_fudge 2
     compute_resources:
-      cpu_hours: 24.0
-      gpu_hours: 48.0
-      memory_gb: 256
-      storage_gb: 800
+      cpu_hours:
+        numeric_value: 24.0
+        unit: hours
+      gpu_hours:
+        numeric_value: 48.0
+        unit: hours
+      memory_gb:
+        numeric_value: 256
+        unit: gigabytes
+      storage_gb:
+        numeric_value: 800
+        unit: gigabytes
     started_at: '2024-03-21T11:00:00'
     completed_at: '2024-03-22T11:00:00'
   - id: lambdaber:workflow_3d_refine_001
@@ -255,10 +301,18 @@ studies:
     software_version: 4.4.0
     processing_parameters: Non-uniform refinement with C1 symmetry
     compute_resources:
-      cpu_hours: 36.0
-      gpu_hours: 72.0
-      memory_gb: 512
-      storage_gb: 1200
+      cpu_hours:
+        numeric_value: 36.0
+        unit: hours
+      gpu_hours:
+        numeric_value: 72.0
+        unit: hours
+      memory_gb:
+        numeric_value: 512
+        unit: gigabytes
+      storage_gb:
+        numeric_value: 1200
+        unit: gigabytes
     started_at: '2024-03-22T14:00:00'
     completed_at: '2024-03-24T02:00:00'
   data_files:

@@ -26,7 +26,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
 <https://simplescattering.com/experiment/glurs-sec-saxs> a lambdaber:ExperimentRun ;
     lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
             lambdaber:collection_mode "sec_saxs" ;
-            lambdaber:frame_rate "1.0"^^xsd:float ;
+            lambdaber:frame_rate [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "frames per second" ] ;
             lambdaber:total_frames 660 ] ;
     lambdaber:experiment_code "SIBYLS-2023-10-24-GluRS" ;
     lambdaber:experiment_date "2023-10-24" ;
@@ -48,7 +50,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             lambdaber:resolution [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "25.0"^^xsd:float ;
                     lambdaber:unit "Angstroms" ] ;
-            lambdaber:rg "32.5"^^xsd:float ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
             lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
     lambdaber:raw_data_location "SIBYLS data archive" ;
     lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" ;
@@ -184,8 +188,12 @@ polydispersity_analysis=enabled
 <https://simplescattering.com/workflow/saxs-processing> a lambdaber:WorkflowRun ;
     lambdaber:completed_at "2023-10-24T14:00:00Z" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "1.0"^^xsd:float ;
-            lambdaber:memory_gb "16.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "16.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
     lambdaber:processing_level 2 ;
     lambdaber:processing_parameters """q_range=0.0109-0.4729;

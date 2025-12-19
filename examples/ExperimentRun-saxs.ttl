@@ -25,7 +25,9 @@
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:i_zero "0.045"^^xsd:float ;
-            lambdaber:rg "42.3"^^xsd:float ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "42.3"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
             lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
     lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
     lambdaber:sample_id "https://example.org/kibler2024/sample/hetBGL03-15-18" ;

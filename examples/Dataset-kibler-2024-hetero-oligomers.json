@@ -187,7 +187,10 @@
           "quality_metrics": {
             "signal_to_noise": 50.0,
             "i_zero": 0.045,
-            "rg": 42.3
+            "rg": {
+              "numeric_value": 42.3,
+              "unit": "Angstroms"
+            }
           },
           "raw_data_location": "SIBYLS-HT-SAXS-program",
           "processing_status": "completed"
@@ -262,8 +265,14 @@
           "software_version": "2024.1",
           "processing_parameters": "buffer_subtraction=automated; guinier_fit_range=0.01-0.025; kratky_analysis=true; p_of_r_calculation=GNOM",
           "compute_resources": {
-            "cpu_hours": 0.5,
-            "memory_gb": 8.0
+            "cpu_hours": {
+              "numeric_value": 0.5,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 8.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-02-01T18:00:00Z",
           "completed_at": "2024-02-01T18:30:00Z",
@@ -283,8 +292,14 @@
           "software_version": "3.1",
           "processing_parameters": "particle_diameter=150A; mask_diameter=180A; number_of_classes=50",
           "compute_resources": {
-            "gpu_hours": 2.0,
-            "memory_gb": 32.0
+            "gpu_hours": {
+              "numeric_value": 2.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 32.0,
+              "unit": "gigabytes"
+            }
           },
           "output_files": [
             "hetBGL03-15-18_2D_classes.mrcs",

@@ -105,7 +105,10 @@
           "data_collection_strategy": {
             "collection_mode": "sec_saxs",
             "total_frames": 660,
-            "frame_rate": 1.0
+            "frame_rate": {
+              "numeric_value": 1.0,
+              "unit": "frames per second"
+            }
           },
           "quality_metrics": {
             "resolution": {
@@ -114,7 +117,10 @@
             },
             "signal_to_noise": 50.0,
             "i_zero": 45.0,
-            "rg": 32.5
+            "rg": {
+              "numeric_value": 32.5,
+              "unit": "Angstroms"
+            }
           },
           "raw_data_location": "SIBYLS data archive",
           "processing_status": "completed"
@@ -131,8 +137,14 @@
           "software_version": "2023",
           "processing_parameters": "q_range=0.0109-0.4729;\nsample_detector_distance=2.1m;\ndetector=Pilatus3_2M;\nbuffer_subtraction=automated;\nframe_averaging=enabled\n",
           "compute_resources": {
-            "cpu_hours": 1.0,
-            "memory_gb": 16.0
+            "cpu_hours": {
+              "numeric_value": 1.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 16.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2023-10-24T12:00:00Z",
           "completed_at": "2023-10-24T14:00:00Z"

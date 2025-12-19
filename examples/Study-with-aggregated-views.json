@@ -68,7 +68,10 @@
           "numeric_value": 3.2,
           "unit": "Angstroms"
         },
-        "completeness": 99.5
+        "completeness": {
+          "numeric_value": 99.5,
+          "unit": "percent"
+        }
       }
     }
   ],

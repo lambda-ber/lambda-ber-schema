@@ -22,14 +22,22 @@ experimental_conditions:
 data_collection_strategy:
   collection_mode: oscillation
   total_frames: 360
-  frame_rate: 1.0
-  total_dose: 0.0
-  dose_per_frame: 0.0
+  frame_rate:
+    numeric_value: 1.0
+    unit: frames per second
+  total_dose:
+    numeric_value: 0.0
+    unit: electrons per Angstrom squared
+  dose_per_frame:
+    numeric_value: 0.0
+    unit: electrons per Angstrom squared
 quality_metrics:
   resolution:
     numeric_value: 1.5
     unit: Angstroms
-  completeness: 99.8
+  completeness:
+    numeric_value: 99.8
+    unit: percent
   signal_to_noise: 15.2
   r_factor: 0.182
 raw_data_location: /data/als/2024/xray/lysozyme/

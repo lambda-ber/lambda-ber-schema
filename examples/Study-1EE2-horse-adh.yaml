@@ -50,7 +50,9 @@ instrument_runs:
     resolution:
       numeric_value: 1.54
       unit: Angstroms
-    completeness: 95.0
+    completeness:
+      numeric_value: 95.0
+      unit: percent
 workflow_runs:
 - id: lambdaber:wf_1EE2_refinement_001
   title: Structure Refinement

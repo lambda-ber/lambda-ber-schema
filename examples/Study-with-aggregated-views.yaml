@@ -51,7 +51,9 @@ instrument_runs:
     resolution:
       numeric_value: 3.2
       unit: Angstroms
-    completeness: 99.5
+    completeness:
+      numeric_value: 99.5
+      unit: percent
 workflow_runs:
 - id: lambdaber:wf-run-001
   title: 3D reconstruction of p53-MDM2 complex

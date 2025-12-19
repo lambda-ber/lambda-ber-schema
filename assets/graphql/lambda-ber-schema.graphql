@@ -761,10 +761,10 @@ type BufferComposition
 type ComputeResources
   {
     description: String
-    cpuHours: Float
-    gpuHours: Float
-    memoryGb: Float
-    storageGb: Float
+    cpuHours: QuantityValue
+    gpuHours: QuantityValue
+    memoryGb: QuantityValue
+    storageGb: QuantityValue
   }
 
 type ConformationalEnsemble
@@ -905,22 +905,22 @@ type DataCollectionStrategy
     description: String
     collectionMode: CollectionModeEnum
     totalFrames: Integer
-    frameRate: Float
-    totalDose: Float
-    dosePerFrame: Float
-    wavelengthA: Float
+    frameRate: QuantityValue
+    totalDose: QuantityValue
+    dosePerFrame: QuantityValue
+    wavelengthA: QuantityValue
     detectorMode: DetectorModeEnum
     pixelSizeCalibrated: QuantityValue
-    detectorDistanceMm: Float
+    detectorDistanceMm: QuantityValue
     beamCenterXPx: Integer
     beamCenterYPx: Integer
-    beamSizeUm: Float
-    fluxPhotonsPerS: Float
-    transmissionPercent: Float
+    beamSizeUm: QuantityValue
+    fluxPhotonsPerS: QuantityValue
+    transmissionPercent: QuantityValue
     attenuator: String
-    temperatureK: Float
-    oscillationPerImageDeg: Float
-    totalRotationDeg: Float
+    temperatureK: QuantityValue
+    oscillationPerImageDeg: QuantityValue
+    totalRotationDeg: QuantityValue
     strategyNotes: String
   }
 
@@ -1268,11 +1268,11 @@ type MotionCorrectionParameters
     patchSize: Integer
     binning: Float
     doseWeighting: Boolean
-    bfactorDoseWeighting: Float
+    bfactorDoseWeighting: QuantityValue
     anisotropicCorrection: Boolean
     frameGrouping: Integer
     outputBinning: Float
-    driftTotal: Float
+    driftTotal: QuantityValue
   }
 
 type Movie
@@ -1487,19 +1487,19 @@ type QualityMetrics
   {
     description: String
     resolution: QuantityValue
-    resolutionHighShellA: Float
-    resolutionLowA: Float
-    completeness: Float
-    completenessHighResShellPercent: Float
+    resolutionHighShellA: QuantityValue
+    resolutionLowA: QuantityValue
+    completeness: QuantityValue
+    completenessHighResShellPercent: QuantityValue
     signalToNoise: Float
     meanIOverSigmaI: Float
     spaceGroup: String
-    unitCellA: Float
-    unitCellB: Float
-    unitCellC: Float
-    unitCellAlpha: Float
-    unitCellBeta: Float
-    unitCellGamma: Float
+    unitCellA: QuantityValue
+    unitCellB: QuantityValue
+    unitCellC: QuantityValue
+    unitCellAlpha: QuantityValue
+    unitCellBeta: QuantityValue
+    unitCellGamma: QuantityValue
     multiplicity: Float
     ccHalf: Float
     rMerge: Float
@@ -1516,7 +1516,7 @@ type QualityMetrics
     molprobityScore: Float
     averageBFactorA2: Float
     iZero: Float
-    rg: Float
+    rg: QuantityValue
     rFactor: Float
   }
 

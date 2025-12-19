@@ -2071,18 +2071,22 @@ classes:
         description: "Total number of frames/images"
         range: integer
       frame_rate:
-        description: "Frames per second"
-        range: float
+        description: "Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       total_dose:
-        description: "Total electron dose for cryo-EM"
-        range: float
+        description: "Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       dose_per_frame:
-        description: "Dose per frame"
-        range: float
+        description: "Dose per frame, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       # X-ray specific parameters
       wavelength_a:
-        description: "X-ray wavelength in Angstroms"
-        range: float
+        description: "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       detector_mode:
         description: "Detector operating mode used during this experiment"
         range: DetectorModeEnum
@@ -2098,8 +2102,9 @@ classes:
           - "For X-ray: typically mm/pixel or µm/pixel"
           - "Physical pixel size is hardware spec stored in Instrument"
       detector_distance_mm:
-        description: "Detector distance in millimeters"
-        range: float
+        description: "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       beam_center_x_px:
         description: "Beam center X coordinate in pixels"
         range: integer
@@ -2107,25 +2112,31 @@ classes:
         description: "Beam center Y coordinate in pixels"
         range: integer
       beam_size_um:
-        description: "Beam size in micrometers"
-        range: float
+        description: "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       flux_photons_per_s:
-        description: "Photon flux in photons per second"
-        range: float
+        description: "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       transmission_percent:
-        description: "Beam transmission percentage"
-        range: float
+        description: "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       attenuator:
         description: "Attenuator setting used"
       temperature_k:
-        description: "Data collection temperature in Kelvin"
-        range: float
+        description: "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       oscillation_per_image_deg:
-        description: "Oscillation angle per image in degrees"
-        range: float
+        description: "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       total_rotation_deg:
-        description: "Total rotation range in degrees"
-        range: float
+        description: "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       strategy_notes:
         description: "Notes about data collection strategy"
 
@@ -2139,17 +2150,21 @@ classes:
         range: QuantityValue
         inlined: true
       resolution_high_shell_a:
-        description: "High resolution shell limit in Angstroms"
-        range: float
+        description: "High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       resolution_low_a:
-        description: "Low resolution limit in Angstroms"
-        range: float
+        description: "Low resolution limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       completeness:
-        description: "Data completeness percentage"
-        range: float
+        description: "Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       completeness_high_res_shell_percent:
-        description: "Completeness in highest resolution shell"
-        range: float
+        description: "Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       signal_to_noise:
         description: "Signal to noise ratio"
         range: float
@@ -2160,23 +2175,29 @@ classes:
       space_group:
         description: "Crystallographic space group"
       unit_cell_a:
-        description: "Unit cell parameter a in Angstroms"
-        range: float
+        description: "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       unit_cell_b:
-        description: "Unit cell parameter b in Angstroms"
-        range: float
+        description: "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       unit_cell_c:
-        description: "Unit cell parameter c in Angstroms"
-        range: float
+        description: "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       unit_cell_alpha:
-        description: "Unit cell angle alpha in degrees"
-        range: float
+        description: "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       unit_cell_beta:
-        description: "Unit cell angle beta in degrees"
-        range: float
+        description: "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       unit_cell_gamma:
-        description: "Unit cell angle gamma in degrees"
-        range: float
+        description: "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       multiplicity:
         description: "Data multiplicity (redundancy)"
         range: float
@@ -2228,8 +2249,9 @@ classes:
         description: "Forward scattering intensity I(0)"
         range: float
       rg:
-        description: "Radius of gyration in Angstroms"
-        range: float
+        description: "Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       # Legacy/deprecated
       r_factor:
         description: "R-factor for crystallography (deprecated, use r_work)"
@@ -2240,17 +2262,21 @@ classes:
     description: "Computational resources used"
     attributes:
       cpu_hours:
-        description: "CPU hours used"
-        range: float
+        description: "CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       gpu_hours:
-        description: "GPU hours used"
-        range: float
+        description: "GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       memory_gb:
-        description: "Maximum memory used in GB"
-        range: float
+        description: "Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       storage_gb:
-        description: "Storage used in GB"
-        range: float
+        description: "Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
   # Structured parameter classes for specific workflow types
   MotionCorrectionParameters:
@@ -2268,8 +2294,9 @@ classes:
         description: "Whether dose weighting was applied"
         range: boolean
       bfactor_dose_weighting:
-        description: "B-factor for dose weighting"
-        range: float
+        description: "B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       anisotropic_correction:
         description: "Whether anisotropic motion correction was applied"
         range: boolean
@@ -2281,8 +2308,9 @@ classes:
         range: float
         minimum_value: 0.01
       drift_total:
-        description: "Total drift in Angstroms"
-        range: float
+        description: "Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
   CTFEstimationParameters:
     is_a: AttributeGroup
