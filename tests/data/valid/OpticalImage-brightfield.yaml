@@ -23,8 +23,12 @@ astigmatism:
   numeric_value: 0
   unit: Angstroms
 illumination_type: brightfield
-magnification: 10
-numerical_aperture: 0.25
+magnification:
+  numeric_value: 10
+  unit: times
+numerical_aperture:
+  numeric_value: 0.25
+  unit: dimensionless
 color_channels:
 - Red
 - Green

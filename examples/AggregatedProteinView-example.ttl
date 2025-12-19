@@ -2,6 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix go: <http://purl.obolibrary.org/obo/GO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -9,6 +10,12 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
     dcterms:title "Aggregated structural and functional data for human p53" ;
     lambdaber:description "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases" ;
     ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
+            ns1:property_type "stability" ;
+            ns1:unit "kcal/mol" ;
+            ns1:value "42.5"^^xsd:float ],
+        [ a ns1:BiophysicalProperty ;
             ns1:error "1.2"^^xsd:float ;
             ns1:experimental_method "circular_dichroism" ;
             ns1:measurement_conditions lambdaber:p53-meas-cond-002 ;
@@ -16,22 +23,12 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ],
         [ a ns1:BiophysicalProperty ;
-            ns1:experimental_method "differential_scanning_calorimetry" ;
-            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
-            ns1:property_type "stability" ;
-            ns1:unit "kcal/mol" ;
-            ns1:value "42.5"^^xsd:float ],
-        [ a ns1:BiophysicalProperty ;
             ns1:measurement_conditions lambdaber:p53-meas-cond-003 ;
             ns1:property_type "aggregation_propensity" ;
             ns1:unit "probability" ;
             ns1:value "0.68"^^xsd:float ] ;
     ns1:conformational_ensemble lambdaber:p53-confens-001 ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "PF00870" ;
-            ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "191170" ;
             ns1:database_name "omim" ;
             ns1:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
@@ -47,24 +44,16 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
         [ a ns1:DatabaseCrossReference ;
             ns1:database_id "CHEMBL4096" ;
             ns1:database_name "chembl" ;
-            ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ] ;
+            ns1:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00870" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ] ;
     ns1:evolutionary_conservation lambdaber:p53-evol-001 ;
     ns1:functional_sites lambdaber:p53-func-001,
         lambdaber:p53-func-002,
         lambdaber:p53-func-003 ;
     ns1:ligand_interactions [ a ns1:LigandInteraction ;
-            ns1:binding_affinity "0.09"^^xsd:float ;
-            ns1:binding_affinity_type "ki" ;
-            ns1:binding_affinity_unit "micromolar" ;
-            ns1:binding_site_residues "19",
-                "23",
-                "26" ;
-            ns1:druggability_score "0.75"^^xsd:float ;
-            ns1:interaction_type "hydrophobic" ;
-            ns1:is_drug_like true ;
-            ns1:ligand_id "CHEMBL3545110"^^xsd:anyURI ;
-            ns1:ligand_name "Nutlin-3a" ],
-        [ a ns1:LigandInteraction ;
             ns1:binding_affinity "0.001"^^xsd:float ;
             ns1:binding_affinity_type "kd" ;
             ns1:binding_affinity_unit "micromolar" ;
@@ -76,7 +65,19 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:is_cofactor true ;
             ns1:is_drug_like false ;
             ns1:ligand_id "CHEBI:30413"^^xsd:anyURI ;
-            ns1:ligand_name "Zinc ion" ] ;
+            ns1:ligand_name "Zinc ion" ],
+        [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.09"^^xsd:float ;
+            ns1:binding_affinity_type "ki" ;
+            ns1:binding_affinity_unit "micromolar" ;
+            ns1:binding_site_residues "19",
+                "23",
+                "26" ;
+            ns1:druggability_score "0.75"^^xsd:float ;
+            ns1:interaction_type "hydrophobic" ;
+            ns1:is_drug_like true ;
+            ns1:ligand_id "CHEMBL3545110"^^xsd:anyURI ;
+            ns1:ligand_name "Nutlin-3a" ] ;
     ns1:mutations lambdaber:p53-mut-001,
         lambdaber:p53-mut-002,
         lambdaber:p53-mut-003 ;
@@ -208,7 +209,9 @@ lambdaber:p53-meas-cond-001 a ns1:MeasurementConditions ;
     ns1:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "DNA-binding domain" ] ;
     ns1:ph "7.0"^^xsd:float ;
-    ns1:temperature "293.15"^^xsd:float .
+    ns1:temperature [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "293.15"^^xsd:float ;
+            lambdaber:unit "degrees Celsius" ] .
 
 lambdaber:p53-meas-cond-002 a ns1:MeasurementConditions ;
     ns1:buffer_composition [ a lambdaber:BufferComposition ;

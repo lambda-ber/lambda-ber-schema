@@ -28,7 +28,10 @@
     ]
   },
   "storage_conditions": {
-    "temperature": 4.0,
+    "temperature": {
+      "numeric_value": 4.0,
+      "unit": "degrees Celsius"
+    },
     "temperature_unit": "celsius",
     "duration": "< 1 week before measurement"
   },

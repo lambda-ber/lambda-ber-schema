@@ -28,7 +28,9 @@ studies:
       - 5% glycerol
       - 1mM DTT
     storage_conditions:
-      temperature: 4.0
+      temperature:
+        numeric_value: 4.0
+        unit: degrees Celsius
       temperature_unit: celsius
       duration: 7 days
       atmosphere: argon-purged
@@ -47,7 +49,9 @@ studies:
       - Universal buffer system
       - 100mM NaCl
     storage_conditions:
-      temperature: 4.0
+      temperature:
+        numeric_value: 4.0
+        unit: degrees Celsius
       temperature_unit: celsius
   - id: lambdaber:sample-LOOS-003
     title: TrLOOL1 from Trichoderma reesei
@@ -64,7 +68,9 @@ studies:
       - 50mM sodium acetate
       - 200mM NaCl
     storage_conditions:
-      temperature: 4.0
+      temperature:
+        numeric_value: 4.0
+        unit: degrees Celsius
       temperature_unit: celsius
   - id: lambdaber:sample-LOOS-004
     title: PcaLOOL12-cellulose complex
@@ -83,7 +89,9 @@ studies:
       additives:
       - 10mg/mL Avicel cellulose
     storage_conditions:
-      temperature: 4.0
+      temperature:
+        numeric_value: 4.0
+        unit: degrees Celsius
       temperature_unit: celsius
   sample_preparations:
   - id: lambdaber:prep-saxs-001

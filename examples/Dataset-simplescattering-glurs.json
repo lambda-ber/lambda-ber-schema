@@ -89,8 +89,14 @@
           "experiment_date": "2023-10-24",
           "operator_id": "S. Tsutakawa",
           "experimental_conditions": {
-            "temperature": 20.0,
-            "beam_energy": 11.0,
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            },
+            "beam_energy": {
+              "numeric_value": 11.0,
+              "unit": "kiloelectronvolts"
+            },
             "exposure_time": {
               "numeric_value": 1.0,
               "unit": "seconds"

@@ -523,11 +523,11 @@ linkml:Sparqlpath xsd:string
 <ExperimentalConditions> CLOSED {
     (  $<ExperimentalConditions_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <temperature> @linkml:Float ? ;
-          <humidity> @linkml:Float ? ;
-          <pressure> @linkml:Float ? ;
+          <temperature> @<QuantityValue> ? ;
+          <humidity> @<QuantityValue> ? ;
+          <pressure> @<QuantityValue> ? ;
           <atmosphere> @linkml:String ? ;
-          <beam_energy> @linkml:Float ? ;
+          <beam_energy> @<QuantityValue> ? ;
           <exposure_time> @<QuantityValue> ?
        ) ;
        rdf:type [ <ExperimentalConditions> ] ?
@@ -614,14 +614,14 @@ linkml:Sparqlpath xsd:string
 <FluorescenceImage> CLOSED {
     (  $<FluorescenceImage_tes> (  &<Image2D_tes> ;
           rdf:type [ <Image2D> ] ? ;
-          <excitation_wavelength> @linkml:Float ? ;
-          <emission_wavelength> @linkml:Float ? ;
+          <excitation_wavelength> @<QuantityValue> ? ;
+          <emission_wavelength> @<QuantityValue> ? ;
           <excitation_filter> @linkml:String ? ;
           <emission_filter> @linkml:String ? ;
           <fluorophore> @linkml:String ? ;
           <channel_name> @linkml:String ? ;
-          <laser_power> @linkml:Float ? ;
-          <pinhole_size> @linkml:Float ? ;
+          <laser_power> @<QuantityValue> ? ;
+          <pinhole_size> @<QuantityValue> ? ;
           <quantum_yield> @linkml:Float ?
        ) ;
        rdf:type [ <FluorescenceImage> ]
@@ -641,9 +641,9 @@ linkml:Sparqlpath xsd:string
 <FTIRImage> CLOSED {
     (  $<FTIRImage_tes> (  &<Image_tes> ;
           rdf:type [ <Image> ] ? ;
-          <wavenumber_min> @linkml:Float ? ;
-          <wavenumber_max> @linkml:Float ? ;
-          <spectral_resolution> @linkml:Float ? ;
+          <wavenumber_min> @<QuantityValue> ? ;
+          <wavenumber_max> @<QuantityValue> ? ;
+          <spectral_resolution> @<QuantityValue> ? ;
           <number_of_scans> @linkml:Integer ? ;
           <apodization_function> @linkml:String ? ;
           <molecular_signatures> @linkml:String * ;
@@ -815,8 +815,8 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedThing> ] ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/buffer_composition> @<BufferComposition> ? ;
           <https://w3id.org/lambda-ber-schema/functional_annotation/ph> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @linkml:Float ? ;
-          <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @linkml:Float ?
+          <https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength> @<QuantityValue> ? ;
+          <https://w3id.org/lambda-ber-schema/functional_annotation/temperature> @<QuantityValue> ?
        ) ;
        rdf:type [ <https://w3id.org/lambda-ber-schema/functional_annotation/MeasurementConditions> ]
     )
@@ -972,8 +972,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#confocal>
              <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#polarized>
              <https://w3id.org/lambda-ber-schema/IlluminationTypeEnum#oblique> ] ? ;
-          <magnification> @linkml:Float ? ;
-          <numerical_aperture> @linkml:Float ? ;
+          <magnification> @<QuantityValue> ? ;
+          <numerical_aperture> @<QuantityValue> ? ;
           <color_channels> @linkml:String * ;
           <white_balance> @linkml:String ? ;
           <contrast_method> @linkml:String ?
@@ -1393,7 +1393,7 @@ linkml:Sparqlpath xsd:string
 <StorageConditions> CLOSED {
     (  $<StorageConditions_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <temperature> @linkml:Float ? ;
+          <temperature> @<QuantityValue> ? ;
           <temperature_unit> [ <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#celsius>
              <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#kelvin>
              <https://w3id.org/lambda-ber-schema/TemperatureUnitEnum#fahrenheit> ] ? ;
@@ -1672,9 +1672,9 @@ linkml:Sparqlpath xsd:string
 <XRFImage> CLOSED {
     (  $<XRFImage_tes> (  &<Image2D_tes> ;
           rdf:type [ <Image2D> ] ? ;
-          <beam_energy> @linkml:Float ? ;
-          <beam_size> @linkml:Float ? ;
-          <dwell_time> @linkml:Float ? ;
+          <beam_energy> @<QuantityValue> ? ;
+          <beam_size> @<QuantityValue> ? ;
+          <dwell_time> @<QuantityValue> ? ;
           <elements_measured> @linkml:String * ;
           <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>

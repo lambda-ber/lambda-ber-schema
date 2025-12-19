@@ -244,7 +244,9 @@ biophysical_properties:
       components:
       - DNA-binding domain
     ph: 7.0
-    temperature: 293.15
+    temperature:
+      numeric_value: 293.15
+      unit: degrees Celsius
   experimental_method: differential_scanning_calorimetry
 - property_type: melting_temperature
   value: 315.8

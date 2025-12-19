@@ -88,8 +88,12 @@ studies:
     operator_id: S. Tsutakawa
     technique: saxs
     experimental_conditions:
-      temperature: 20
-      beam_energy: 11.0
+      temperature:
+        numeric_value: 20
+        unit: degrees Celsius
+      beam_energy:
+        numeric_value: 11.0
+        unit: kiloelectronvolts
       exposure_time:
         numeric_value: 1.0
         unit: seconds

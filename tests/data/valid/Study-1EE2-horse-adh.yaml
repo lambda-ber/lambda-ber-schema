@@ -23,7 +23,9 @@ samples:
     components:
     - TES/KOH
   storage_conditions:
-    temperature: 277.0
+    temperature:
+      numeric_value: 277.0
+      unit: degrees Celsius
     temperature_unit: kelvin
 sample_preparations:
 - id: lambdaber:prep_1EE2_001
@@ -41,7 +43,9 @@ instrument_runs:
   technique: xray_crystallography
   experiment_date: '1998-11-23'
   experimental_conditions:
-    temperature: 100.0
+    temperature:
+      numeric_value: 100.0
+      unit: degrees Celsius
   quality_metrics:
     resolution:
       numeric_value: 1.54

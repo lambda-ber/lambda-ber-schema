@@ -2564,11 +2564,15 @@
                     ]
                 },
                 "beam_energy": {
-                    "description": "Beam energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "type": [
@@ -2588,25 +2592,37 @@
                     "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "humidity": {
-                    "description": "Humidity percentage",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "pressure": {
-                    "description": "Pressure in kPa",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "temperature": {
-                    "description": "Temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "title": "ExperimentalConditions",
@@ -2780,11 +2796,15 @@
                     "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "spectral_resolution": {
-                    "description": "Spectral resolution in cm\u207b\u00b9",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Spectral resolution, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -2794,18 +2814,26 @@
                     ]
                 },
                 "wavenumber_max": {
-                    "description": "Maximum wavenumber in cm\u207b\u00b9",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "wavenumber_min": {
-                    "description": "Minimum wavenumber in cm\u207b\u00b9",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "required": [
@@ -2959,11 +2987,15 @@
                     ]
                 },
                 "emission_wavelength": {
-                    "description": "Emission wavelength in nanometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "excitation_filter": {
                     "description": "Specifications of the excitation filter",
@@ -2973,11 +3005,15 @@
                     ]
                 },
                 "excitation_wavelength": {
-                    "description": "Excitation wavelength in nanometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "exposure_time": {
                     "anyOf": [
@@ -3006,18 +3042,26 @@
                     "type": "string"
                 },
                 "laser_power": {
-                    "description": "Laser power in milliwatts or percentage",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pinhole_size": {
-                    "description": "Pinhole size in Airy units for confocal microscopy",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pixel_size": {
                     "anyOf": [
@@ -3916,11 +3960,15 @@
                     "type": "string"
                 },
                 "ionic_strength": {
-                    "description": "Ionic strength in molar of material in solution",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "ph": {
                     "description": "pH value of the solution during measurement (range: 0-14)",
@@ -3932,11 +3980,15 @@
                     ]
                 },
                 "temperature": {
-                    "description": "Temperature in Kelvin during measurement",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -4828,18 +4880,26 @@
                     "description": "Type of illumination (brightfield, darkfield, phase contrast, DIC)"
                 },
                 "magnification": {
-                    "description": "Optical magnification factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue."
                 },
                 "numerical_aperture": {
-                    "description": "Numerical aperture of the objective lens",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed."
                 },
                 "pixel_size": {
                     "anyOf": [
@@ -6874,11 +6934,15 @@
                     ]
                 },
                 "temperature": {
-                    "description": "Storage temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "temperature_unit": {
                     "$ref": "#/$defs/TemperatureUnitEnum",
@@ -7913,18 +7977,26 @@
                     "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_energy": {
-                    "description": "X-ray beam energy in keV",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_size": {
-                    "description": "X-ray beam size in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "calibration_standard": {
                     "description": "Reference standard used for calibration",
@@ -7992,11 +8064,15 @@
                     ]
                 },
                 "dwell_time": {
-                    "description": "Dwell time per pixel in milliseconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "elements_measured": {
                     "description": "Elements detected and measured",

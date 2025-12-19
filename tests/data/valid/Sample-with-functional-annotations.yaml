@@ -134,8 +134,12 @@ biophysical_properties:
   measurement_conditions:
   - id: lambdaber:meas-cond-001
     ph: 7.4
-    temperature: 298.15
-    ionic_strength: 0.15
+    temperature:
+      numeric_value: 298.15
+      unit: degrees Celsius
+    ionic_strength:
+      numeric_value: 0.15
+      unit: molar
     buffer_composition:
       components:
       - 150 mM NaCl
@@ -147,8 +151,12 @@ biophysical_properties:
   measurement_conditions:
   - id: lambdaber:meas-cond-002
     ph: 7.4
-    temperature: 298.15
-    ionic_strength: 0.15
+    temperature:
+      numeric_value: 298.15
+      unit: degrees Celsius
+    ionic_strength:
+      numeric_value: 0.15
+      unit: molar
   experimental_method: circular_dichroism
 evolutionary_conservation:
   id: lambdaber:evol-001

@@ -26,6 +26,8 @@
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:duration "< 1 week before measurement" ;
-            lambdaber:temperature "4.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 

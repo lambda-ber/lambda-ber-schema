@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T12:18:28
+# Generation date: 2025-12-19T12:35:31
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -2187,9 +2187,9 @@ class FTIRImage(Image):
 
     id: Union[str, FTIRImageId] = None
     file_name: str = None
-    wavenumber_min: Optional[float] = None
-    wavenumber_max: Optional[float] = None
-    spectral_resolution: Optional[float] = None
+    wavenumber_min: Optional[Union[dict, "QuantityValue"]] = None
+    wavenumber_max: Optional[Union[dict, "QuantityValue"]] = None
+    spectral_resolution: Optional[Union[dict, "QuantityValue"]] = None
     number_of_scans: Optional[int] = None
     apodization_function: Optional[str] = None
     molecular_signatures: Optional[Union[str, list[str]]] = empty_list()
@@ -2201,14 +2201,14 @@ class FTIRImage(Image):
         if not isinstance(self.id, FTIRImageId):
             self.id = FTIRImageId(self.id)
 
-        if self.wavenumber_min is not None and not isinstance(self.wavenumber_min, float):
-            self.wavenumber_min = float(self.wavenumber_min)
+        if self.wavenumber_min is not None and not isinstance(self.wavenumber_min, QuantityValue):
+            self.wavenumber_min = QuantityValue(**as_dict(self.wavenumber_min))
 
-        if self.wavenumber_max is not None and not isinstance(self.wavenumber_max, float):
-            self.wavenumber_max = float(self.wavenumber_max)
+        if self.wavenumber_max is not None and not isinstance(self.wavenumber_max, QuantityValue):
+            self.wavenumber_max = QuantityValue(**as_dict(self.wavenumber_max))
 
-        if self.spectral_resolution is not None and not isinstance(self.spectral_resolution, float):
-            self.spectral_resolution = float(self.spectral_resolution)
+        if self.spectral_resolution is not None and not isinstance(self.spectral_resolution, QuantityValue):
+            self.spectral_resolution = QuantityValue(**as_dict(self.spectral_resolution))
 
         if self.number_of_scans is not None and not isinstance(self.number_of_scans, int):
             self.number_of_scans = int(self.number_of_scans)
@@ -2240,14 +2240,14 @@ class FluorescenceImage(Image2D):
 
     id: Union[str, FluorescenceImageId] = None
     file_name: str = None
-    excitation_wavelength: Optional[float] = None
-    emission_wavelength: Optional[float] = None
+    excitation_wavelength: Optional[Union[dict, "QuantityValue"]] = None
+    emission_wavelength: Optional[Union[dict, "QuantityValue"]] = None
     excitation_filter: Optional[str] = None
     emission_filter: Optional[str] = None
     fluorophore: Optional[str] = None
     channel_name: Optional[str] = None
-    laser_power: Optional[float] = None
-    pinhole_size: Optional[float] = None
+    laser_power: Optional[Union[dict, "QuantityValue"]] = None
+    pinhole_size: Optional[Union[dict, "QuantityValue"]] = None
     quantum_yield: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2256,11 +2256,11 @@ class FluorescenceImage(Image2D):
         if not isinstance(self.id, FluorescenceImageId):
             self.id = FluorescenceImageId(self.id)
 
-        if self.excitation_wavelength is not None and not isinstance(self.excitation_wavelength, float):
-            self.excitation_wavelength = float(self.excitation_wavelength)
+        if self.excitation_wavelength is not None and not isinstance(self.excitation_wavelength, QuantityValue):
+            self.excitation_wavelength = QuantityValue(**as_dict(self.excitation_wavelength))
 
-        if self.emission_wavelength is not None and not isinstance(self.emission_wavelength, float):
-            self.emission_wavelength = float(self.emission_wavelength)
+        if self.emission_wavelength is not None and not isinstance(self.emission_wavelength, QuantityValue):
+            self.emission_wavelength = QuantityValue(**as_dict(self.emission_wavelength))
 
         if self.excitation_filter is not None and not isinstance(self.excitation_filter, str):
             self.excitation_filter = str(self.excitation_filter)
@@ -2274,11 +2274,11 @@ class FluorescenceImage(Image2D):
         if self.channel_name is not None and not isinstance(self.channel_name, str):
             self.channel_name = str(self.channel_name)
 
-        if self.laser_power is not None and not isinstance(self.laser_power, float):
-            self.laser_power = float(self.laser_power)
+        if self.laser_power is not None and not isinstance(self.laser_power, QuantityValue):
+            self.laser_power = QuantityValue(**as_dict(self.laser_power))
 
-        if self.pinhole_size is not None and not isinstance(self.pinhole_size, float):
-            self.pinhole_size = float(self.pinhole_size)
+        if self.pinhole_size is not None and not isinstance(self.pinhole_size, QuantityValue):
+            self.pinhole_size = QuantityValue(**as_dict(self.pinhole_size))
 
         if self.quantum_yield is not None and not isinstance(self.quantum_yield, float):
             self.quantum_yield = float(self.quantum_yield)
@@ -2301,8 +2301,8 @@ class OpticalImage(Image2D):
     id: Union[str, OpticalImageId] = None
     file_name: str = None
     illumination_type: Optional[Union[str, "IlluminationTypeEnum"]] = None
-    magnification: Optional[float] = None
-    numerical_aperture: Optional[float] = None
+    magnification: Optional[Union[dict, "QuantityValue"]] = None
+    numerical_aperture: Optional[Union[dict, "QuantityValue"]] = None
     color_channels: Optional[Union[str, list[str]]] = empty_list()
     white_balance: Optional[str] = None
     contrast_method: Optional[str] = None
@@ -2316,11 +2316,11 @@ class OpticalImage(Image2D):
         if self.illumination_type is not None and not isinstance(self.illumination_type, IlluminationTypeEnum):
             self.illumination_type = IlluminationTypeEnum(self.illumination_type)
 
-        if self.magnification is not None and not isinstance(self.magnification, float):
-            self.magnification = float(self.magnification)
+        if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
+            self.magnification = QuantityValue(**as_dict(self.magnification))
 
-        if self.numerical_aperture is not None and not isinstance(self.numerical_aperture, float):
-            self.numerical_aperture = float(self.numerical_aperture)
+        if self.numerical_aperture is not None and not isinstance(self.numerical_aperture, QuantityValue):
+            self.numerical_aperture = QuantityValue(**as_dict(self.numerical_aperture))
 
         if not isinstance(self.color_channels, list):
             self.color_channels = [self.color_channels] if self.color_channels is not None else []
@@ -2349,9 +2349,9 @@ class XRFImage(Image2D):
 
     id: Union[str, XRFImageId] = None
     file_name: str = None
-    beam_energy: Optional[float] = None
-    beam_size: Optional[float] = None
-    dwell_time: Optional[float] = None
+    beam_energy: Optional[Union[dict, "QuantityValue"]] = None
+    beam_size: Optional[Union[dict, "QuantityValue"]] = None
+    dwell_time: Optional[Union[dict, "QuantityValue"]] = None
     elements_measured: Optional[Union[str, list[str]]] = empty_list()
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
     detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
@@ -2365,14 +2365,14 @@ class XRFImage(Image2D):
         if not isinstance(self.id, XRFImageId):
             self.id = XRFImageId(self.id)
 
-        if self.beam_energy is not None and not isinstance(self.beam_energy, float):
-            self.beam_energy = float(self.beam_energy)
+        if self.beam_energy is not None and not isinstance(self.beam_energy, QuantityValue):
+            self.beam_energy = QuantityValue(**as_dict(self.beam_energy))
 
-        if self.beam_size is not None and not isinstance(self.beam_size, float):
-            self.beam_size = float(self.beam_size)
+        if self.beam_size is not None and not isinstance(self.beam_size, QuantityValue):
+            self.beam_size = QuantityValue(**as_dict(self.beam_size))
 
-        if self.dwell_time is not None and not isinstance(self.dwell_time, float):
-            self.dwell_time = float(self.dwell_time)
+        if self.dwell_time is not None and not isinstance(self.dwell_time, QuantityValue):
+            self.dwell_time = QuantityValue(**as_dict(self.dwell_time))
 
         if not isinstance(self.elements_measured, list):
             self.elements_measured = [self.elements_measured] if self.elements_measured is not None else []
@@ -2529,14 +2529,14 @@ class StorageConditions(AttributeGroup):
     class_name: ClassVar[str] = "StorageConditions"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.StorageConditions
 
-    temperature: Optional[float] = None
+    temperature: Optional[Union[dict, "QuantityValue"]] = None
     temperature_unit: Optional[Union[str, "TemperatureUnitEnum"]] = None
     duration: Optional[str] = None
     atmosphere: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.temperature is not None and not isinstance(self.temperature, float):
-            self.temperature = float(self.temperature)
+        if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
+            self.temperature = QuantityValue(**as_dict(self.temperature))
 
         if self.temperature_unit is not None and not isinstance(self.temperature_unit, TemperatureUnitEnum):
             self.temperature_unit = TemperatureUnitEnum(self.temperature_unit)
@@ -2903,28 +2903,28 @@ class ExperimentalConditions(AttributeGroup):
     class_name: ClassVar[str] = "ExperimentalConditions"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentalConditions
 
-    temperature: Optional[float] = None
-    humidity: Optional[float] = None
-    pressure: Optional[float] = None
+    temperature: Optional[Union[dict, "QuantityValue"]] = None
+    humidity: Optional[Union[dict, "QuantityValue"]] = None
+    pressure: Optional[Union[dict, "QuantityValue"]] = None
     atmosphere: Optional[str] = None
-    beam_energy: Optional[float] = None
+    beam_energy: Optional[Union[dict, "QuantityValue"]] = None
     exposure_time: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.temperature is not None and not isinstance(self.temperature, float):
-            self.temperature = float(self.temperature)
+        if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
+            self.temperature = QuantityValue(**as_dict(self.temperature))
 
-        if self.humidity is not None and not isinstance(self.humidity, float):
-            self.humidity = float(self.humidity)
+        if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
+            self.humidity = QuantityValue(**as_dict(self.humidity))
 
-        if self.pressure is not None and not isinstance(self.pressure, float):
-            self.pressure = float(self.pressure)
+        if self.pressure is not None and not isinstance(self.pressure, QuantityValue):
+            self.pressure = QuantityValue(**as_dict(self.pressure))
 
         if self.atmosphere is not None and not isinstance(self.atmosphere, str):
             self.atmosphere = str(self.atmosphere)
 
-        if self.beam_energy is not None and not isinstance(self.beam_energy, float):
-            self.beam_energy = float(self.beam_energy)
+        if self.beam_energy is not None and not isinstance(self.beam_energy, QuantityValue):
+            self.beam_energy = QuantityValue(**as_dict(self.beam_energy))
 
         if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
             self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
@@ -4373,8 +4373,8 @@ class MeasurementConditions(NamedThing):
     id: Union[str, MeasurementConditionsId] = None
     buffer_composition: Optional[Union[dict, BufferComposition]] = None
     ph: Optional[float] = None
-    ionic_strength: Optional[float] = None
-    temperature: Optional[float] = None
+    ionic_strength: Optional[Union[dict, QuantityValue]] = None
+    temperature: Optional[Union[dict, QuantityValue]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4388,11 +4388,11 @@ class MeasurementConditions(NamedThing):
         if self.ph is not None and not isinstance(self.ph, float):
             self.ph = float(self.ph)
 
-        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
-            self.ionic_strength = float(self.ionic_strength)
+        if self.ionic_strength is not None and not isinstance(self.ionic_strength, QuantityValue):
+            self.ionic_strength = QuantityValue(**as_dict(self.ionic_strength))
 
-        if self.temperature is not None and not isinstance(self.temperature, float):
-            self.temperature = float(self.temperature)
+        if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
+            self.temperature = QuantityValue(**as_dict(self.temperature))
 
         super().__post_init__(**kwargs)
 
@@ -7439,13 +7439,13 @@ slots.micrograph__ctf_quality_score = Slot(uri=LAMBDABER.ctf_quality_score, name
                    model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[float])
 
 slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDABER.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDABER.curie('wavenumber_min'),
-                   model_uri=LAMBDABER.fTIRImage__wavenumber_min, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fTIRImage__wavenumber_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__wavenumber_max = Slot(uri=LAMBDABER.wavenumber_max, name="fTIRImage__wavenumber_max", curie=LAMBDABER.curie('wavenumber_max'),
-                   model_uri=LAMBDABER.fTIRImage__wavenumber_max, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fTIRImage__wavenumber_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__spectral_resolution = Slot(uri=LAMBDABER.spectral_resolution, name="fTIRImage__spectral_resolution", curie=LAMBDABER.curie('spectral_resolution'),
-                   model_uri=LAMBDABER.fTIRImage__spectral_resolution, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fTIRImage__spectral_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fTIRImage__number_of_scans = Slot(uri=LAMBDABER.number_of_scans, name="fTIRImage__number_of_scans", curie=LAMBDABER.curie('number_of_scans'),
                    model_uri=LAMBDABER.fTIRImage__number_of_scans, domain=None, range=Optional[int])
@@ -7460,10 +7460,10 @@ slots.fTIRImage__background_correction = Slot(uri=LAMBDABER.background_correctio
                    model_uri=LAMBDABER.fTIRImage__background_correction, domain=None, range=Optional[str])
 
 slots.fluorescenceImage__excitation_wavelength = Slot(uri=LAMBDABER.excitation_wavelength, name="fluorescenceImage__excitation_wavelength", curie=LAMBDABER.curie('excitation_wavelength'),
-                   model_uri=LAMBDABER.fluorescenceImage__excitation_wavelength, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fluorescenceImage__excitation_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fluorescenceImage__emission_wavelength = Slot(uri=LAMBDABER.emission_wavelength, name="fluorescenceImage__emission_wavelength", curie=LAMBDABER.curie('emission_wavelength'),
-                   model_uri=LAMBDABER.fluorescenceImage__emission_wavelength, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fluorescenceImage__emission_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fluorescenceImage__excitation_filter = Slot(uri=LAMBDABER.excitation_filter, name="fluorescenceImage__excitation_filter", curie=LAMBDABER.curie('excitation_filter'),
                    model_uri=LAMBDABER.fluorescenceImage__excitation_filter, domain=None, range=Optional[str])
@@ -7478,10 +7478,10 @@ slots.fluorescenceImage__channel_name = Slot(uri=LAMBDABER.channel_name, name="f
                    model_uri=LAMBDABER.fluorescenceImage__channel_name, domain=None, range=Optional[str])
 
 slots.fluorescenceImage__laser_power = Slot(uri=LAMBDABER.laser_power, name="fluorescenceImage__laser_power", curie=LAMBDABER.curie('laser_power'),
-                   model_uri=LAMBDABER.fluorescenceImage__laser_power, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fluorescenceImage__laser_power, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fluorescenceImage__pinhole_size = Slot(uri=LAMBDABER.pinhole_size, name="fluorescenceImage__pinhole_size", curie=LAMBDABER.curie('pinhole_size'),
-                   model_uri=LAMBDABER.fluorescenceImage__pinhole_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.fluorescenceImage__pinhole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fluorescenceImage__quantum_yield = Slot(uri=LAMBDABER.quantum_yield, name="fluorescenceImage__quantum_yield", curie=LAMBDABER.curie('quantum_yield'),
                    model_uri=LAMBDABER.fluorescenceImage__quantum_yield, domain=None, range=Optional[float])
@@ -7490,10 +7490,10 @@ slots.opticalImage__illumination_type = Slot(uri=LAMBDABER.illumination_type, na
                    model_uri=LAMBDABER.opticalImage__illumination_type, domain=None, range=Optional[Union[str, "IlluminationTypeEnum"]])
 
 slots.opticalImage__magnification = Slot(uri=LAMBDABER.magnification, name="opticalImage__magnification", curie=LAMBDABER.curie('magnification'),
-                   model_uri=LAMBDABER.opticalImage__magnification, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.opticalImage__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.opticalImage__numerical_aperture = Slot(uri=LAMBDABER.numerical_aperture, name="opticalImage__numerical_aperture", curie=LAMBDABER.curie('numerical_aperture'),
-                   model_uri=LAMBDABER.opticalImage__numerical_aperture, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.opticalImage__numerical_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.opticalImage__color_channels = Slot(uri=LAMBDABER.color_channels, name="opticalImage__color_channels", curie=LAMBDABER.curie('color_channels'),
                    model_uri=LAMBDABER.opticalImage__color_channels, domain=None, range=Optional[Union[str, list[str]]])
@@ -7505,13 +7505,13 @@ slots.opticalImage__contrast_method = Slot(uri=LAMBDABER.contrast_method, name="
                    model_uri=LAMBDABER.opticalImage__contrast_method, domain=None, range=Optional[str])
 
 slots.xRFImage__beam_energy = Slot(uri=LAMBDABER.beam_energy, name="xRFImage__beam_energy", curie=LAMBDABER.curie('beam_energy'),
-                   model_uri=LAMBDABER.xRFImage__beam_energy, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRFImage__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRFImage__beam_size = Slot(uri=LAMBDABER.beam_size, name="xRFImage__beam_size", curie=LAMBDABER.curie('beam_size'),
-                   model_uri=LAMBDABER.xRFImage__beam_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRFImage__beam_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRFImage__dwell_time = Slot(uri=LAMBDABER.dwell_time, name="xRFImage__dwell_time", curie=LAMBDABER.curie('dwell_time'),
-                   model_uri=LAMBDABER.xRFImage__dwell_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRFImage__dwell_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRFImage__elements_measured = Slot(uri=LAMBDABER.elements_measured, name="xRFImage__elements_measured", curie=LAMBDABER.curie('elements_measured'),
                    model_uri=LAMBDABER.xRFImage__elements_measured, domain=None, range=Optional[Union[str, list[str]]])
@@ -7565,7 +7565,7 @@ slots.bufferComposition__additives = Slot(uri=LAMBDABER.additives, name="bufferC
                    model_uri=LAMBDABER.bufferComposition__additives, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.storageConditions__temperature = Slot(uri=LAMBDABER.temperature, name="storageConditions__temperature", curie=LAMBDABER.curie('temperature'),
-                   model_uri=LAMBDABER.storageConditions__temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.storageConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.storageConditions__temperature_unit = Slot(uri=LAMBDABER.temperature_unit, name="storageConditions__temperature_unit", curie=LAMBDABER.curie('temperature_unit'),
                    model_uri=LAMBDABER.storageConditions__temperature_unit, domain=None, range=Optional[Union[str, "TemperatureUnitEnum"]])
@@ -7772,19 +7772,19 @@ slots.sAXSPreparation__temperature_control = Slot(uri=LAMBDABER.temperature_cont
                    model_uri=LAMBDABER.sAXSPreparation__temperature_control, domain=None, range=Optional[str])
 
 slots.experimentalConditions__temperature = Slot(uri=LAMBDABER.temperature, name="experimentalConditions__temperature", curie=LAMBDABER.curie('temperature'),
-                   model_uri=LAMBDABER.experimentalConditions__temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentalConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentalConditions__humidity = Slot(uri=LAMBDABER.humidity, name="experimentalConditions__humidity", curie=LAMBDABER.curie('humidity'),
-                   model_uri=LAMBDABER.experimentalConditions__humidity, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentalConditions__humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentalConditions__pressure = Slot(uri=LAMBDABER.pressure, name="experimentalConditions__pressure", curie=LAMBDABER.curie('pressure'),
-                   model_uri=LAMBDABER.experimentalConditions__pressure, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentalConditions__pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentalConditions__atmosphere = Slot(uri=LAMBDABER.atmosphere, name="experimentalConditions__atmosphere", curie=LAMBDABER.curie('atmosphere'),
                    model_uri=LAMBDABER.experimentalConditions__atmosphere, domain=None, range=Optional[str])
 
 slots.experimentalConditions__beam_energy = Slot(uri=LAMBDABER.beam_energy, name="experimentalConditions__beam_energy", curie=LAMBDABER.curie('beam_energy'),
-                   model_uri=LAMBDABER.experimentalConditions__beam_energy, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentalConditions__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentalConditions__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentalConditions__exposure_time", curie=LAMBDABER.curie('exposure_time'),
                    model_uri=LAMBDABER.experimentalConditions__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8425,10 +8425,10 @@ slots.measurementConditions__ph = Slot(uri=LAMBDABER['functional_annotation/ph']
                    model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[float])
 
 slots.measurementConditions__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="measurementConditions__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
-                   model_uri=LAMBDABER.measurementConditions__ionic_strength, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.measurementConditions__ionic_strength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="measurementConditions__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
-                   model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.pixel_size = Slot(uri=LAMBDABER.pixel_size, name="pixel_size", curie=LAMBDABER.curie('pixel_size'),
                    model_uri=LAMBDABER.pixel_size, domain=None, range=Optional[str])

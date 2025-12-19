@@ -81,7 +81,9 @@ studies:
       - 25 mM Tris
       - 300 mM NaCl
     storage_conditions:
-      temperature: 4
+      temperature:
+        numeric_value: 4
+        unit: degrees Celsius
       temperature_unit: celsius
       duration: < 1 week before measurement
   - id: https://example.org/kibler2024/sample/hetBGL01-20-22
@@ -135,8 +137,12 @@ studies:
     operator_id: Kathryn Burnett
     technique: saxs
     experimental_conditions:
-      temperature: 20
-      beam_energy: 9.76
+      temperature:
+        numeric_value: 20
+        unit: degrees Celsius
+      beam_energy:
+        numeric_value: 9.76
+        unit: kiloelectronvolts
       exposure_time:
         numeric_value: 0.3
         unit: seconds
@@ -155,7 +161,9 @@ studies:
     experiment_date: '2024-02-01'
     technique: saxs
     experimental_conditions:
-      temperature: 20
+      temperature:
+        numeric_value: 20
+        unit: degrees Celsius
     data_collection_strategy:
       collection_mode: sec_saxs
     quality_metrics:
@@ -168,7 +176,9 @@ studies:
     operator_id: University of Washington EM facility
     technique: electron_microscopy
     experimental_conditions:
-      temperature: 20
+      temperature:
+        numeric_value: 20
+        unit: degrees Celsius
     data_collection_strategy:
       collection_mode: single_particle
     quality_metrics:
@@ -180,7 +190,9 @@ studies:
     experiment_date: '2024-02-10'
     technique: mass_spectrometry
     experimental_conditions:
-      temperature: 25
+      temperature:
+        numeric_value: 25
+        unit: degrees Celsius
     quality_metrics:
       signal_to_noise: 100
   workflow_runs:

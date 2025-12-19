@@ -31,11 +31,15 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:experiment_code "SIBYLS-2023-10-24-GluRS" ;
     lambdaber:experiment_date "2023-10-24" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:beam_energy "11.0"^^xsd:float ;
+            lambdaber:beam_energy [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "11.0"^^xsd:float ;
+                    lambdaber:unit "kiloelectronvolts" ] ;
             lambdaber:exposure_time [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "1.0"^^xsd:float ;
                     lambdaber:unit "seconds" ] ;
-            lambdaber:temperature "20.0"^^xsd:float ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
     lambdaber:instrument_id <SIBYLS-BL12.3.1> ;
     lambdaber:operator_id "S. Tsutakawa" ;
     lambdaber:processing_status "completed" ;

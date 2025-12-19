@@ -9,9 +9,18 @@
   "experiment_date": "2024-04-10T09:30:00",
   "operator_id": "als_user_042",
   "experimental_conditions": {
-    "temperature": -173.0,
-    "humidity": 0.0,
-    "pressure": 101.325,
+    "temperature": {
+      "numeric_value": -173.0,
+      "unit": "degrees Celsius"
+    },
+    "humidity": {
+      "numeric_value": 0.0,
+      "unit": "percent"
+    },
+    "pressure": {
+      "numeric_value": 101.325,
+      "unit": "kilopascals"
+    },
     "atmosphere": "Nitrogen stream"
   },
   "data_collection_strategy": {

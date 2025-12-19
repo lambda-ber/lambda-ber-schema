@@ -30,7 +30,13 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
     lambdaber:pixel_size [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "5.5"^^xsd:float ;
             lambdaber:unit "Angstroms" ] ;
-    lambdaber:spectral_resolution "4.0"^^xsd:float ;
-    lambdaber:wavenumber_max "4000.0"^^xsd:float ;
-    lambdaber:wavenumber_min "800.0"^^xsd:float .
+    lambdaber:spectral_resolution [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4.0"^^xsd:float ;
+            lambdaber:unit "inverse centimeters" ] ;
+    lambdaber:wavenumber_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4000.0"^^xsd:float ;
+            lambdaber:unit "inverse centimeters" ] ;
+    lambdaber:wavenumber_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "inverse centimeters" ] .
 

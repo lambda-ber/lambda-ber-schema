@@ -78,7 +78,11 @@ lambdaber:meas-aldh2-001 a ns1:MeasurementConditions ;
     ns1:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "100 mM NaCl",
                 "50 mM Tris-HCl" ] ;
-    ns1:ionic_strength "0.1"^^xsd:float ;
+    ns1:ionic_strength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.1"^^xsd:float ;
+            lambdaber:unit "molar" ] ;
     ns1:ph "7.5"^^xsd:float ;
-    ns1:temperature "298.15"^^xsd:float .
+    ns1:temperature [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "298.15"^^xsd:float ;
+            lambdaber:unit "degrees Celsius" ] .
 

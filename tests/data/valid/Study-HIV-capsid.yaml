@@ -26,7 +26,9 @@ samples:
     additives:
     - 5% glycerol
   storage_conditions:
-    temperature: -80
+    temperature:
+      numeric_value: -80
+      unit: degrees Celsius
     temperature_unit: celsius
     duration: 3 months
     atmosphere: Flash frozen in liquid nitrogen

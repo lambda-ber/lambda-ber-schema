@@ -302,11 +302,11 @@ message EvolutionaryConservation
 message ExperimentalConditions
  {
   string description = 0
-  float temperature = 0
-  float humidity = 0
-  float pressure = 0
+  quantityValue temperature = 0
+  quantityValue humidity = 0
+  quantityValue pressure = 0
   string atmosphere = 0
-  float beamEnergy = 0
+  quantityValue beamEnergy = 0
   quantityValue exposureTime = 0
  }
 // An experimental data collection session
@@ -388,14 +388,14 @@ message FluorescenceImage
   float dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
-  float excitationWavelength = 0
-  float emissionWavelength = 0
+  quantityValue excitationWavelength = 0
+  quantityValue emissionWavelength = 0
   string excitationFilter = 0
   string emissionFilter = 0
   string fluorophore = 0
   string channelName = 0
-  float laserPower = 0
-  float pinholeSize = 0
+  quantityValue laserPower = 0
+  quantityValue pinholeSize = 0
   float quantumYield = 0
  }
 // Fourier Shell Correlation curve data.
@@ -422,9 +422,9 @@ message FTIRImage
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float wavenumberMin = 0
-  float wavenumberMax = 0
-  float spectralResolution = 0
+  quantityValue wavenumberMin = 0
+  quantityValue wavenumberMax = 0
+  quantityValue spectralResolution = 0
   integer numberOfScans = 0
   string apodizationFunction = 0
  repeated  string molecularSignatures = 0
@@ -549,8 +549,8 @@ message MeasurementConditions
   string description = 0
   bufferComposition bufferComposition = 0
   float ph = 0
-  float ionicStrength = 0
-  float temperature = 0
+  quantityValue ionicStrength = 0
+  quantityValue temperature = 0
  }
 // Motion-corrected micrograph derived from movie
 message Micrograph
@@ -680,8 +680,8 @@ message OpticalImage
   quantityValue defocus = 0
   quantityValue astigmatism = 0
   illuminationTypeEnum illuminationType = 0
-  float magnification = 0
-  float numericalAperture = 0
+  quantityValue magnification = 0
+  quantityValue numericalAperture = 0
  repeated  string colorChannels = 0
   string whiteBalance = 0
   string contrastMethod = 0
@@ -980,7 +980,7 @@ message SAXSPreparation
 message StorageConditions
  {
   string description = 0
-  float temperature = 0
+  quantityValue temperature = 0
   temperatureUnitEnum temperatureUnit = 0
   string duration = 0
   string atmosphere = 0
@@ -1180,9 +1180,9 @@ message XRFImage
   float dose = 0
   quantityValue defocus = 0
   quantityValue astigmatism = 0
-  float beamEnergy = 0
-  float beamSize = 0
-  float dwellTime = 0
+  quantityValue beamEnergy = 0
+  quantityValue beamSize = 0
+  quantityValue dwellTime = 0
  repeated  string elementsMeasured = 0
   xRaySourceTypeEnum sourceType = 0
   detectorTechnologyEnum detectorTechnology = 0

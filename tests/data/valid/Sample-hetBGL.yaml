@@ -21,7 +21,9 @@ buffer_composition:
   - 25 mM Tris
   - 300 mM NaCl
 storage_conditions:
-  temperature: 4
+  temperature:
+    numeric_value: 4
+    unit: degrees Celsius
   temperature_unit: celsius
   duration: < 1 week before measurement
 organism: NCBITaxon:562

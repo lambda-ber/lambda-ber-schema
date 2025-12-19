@@ -22,9 +22,15 @@ defocus:
 astigmatism:
   numeric_value: 0.0
   unit: Angstroms
-beam_energy: 10.0
-beam_size: 2.0
-dwell_time: 100.0
+beam_energy:
+  numeric_value: 10.0
+  unit: kiloelectronvolts
+beam_size:
+  numeric_value: 2.0
+  unit: micrometers
+dwell_time:
+  numeric_value: 100.0
+  unit: milliseconds
 elements_measured:
 - K
 - Ca

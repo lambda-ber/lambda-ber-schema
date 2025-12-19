@@ -71,8 +71,12 @@ biophysical_properties:
   measurement_conditions:
   - id: lambdaber:meas-aldh2-001
     ph: 7.5
-    temperature: 298.15
-    ionic_strength: 0.1
+    temperature:
+      numeric_value: 298.15
+      unit: degrees Celsius
+    ionic_strength:
+      numeric_value: 0.1
+      unit: molar
     buffer_composition:
       components:
       - 50 mM Tris-HCl

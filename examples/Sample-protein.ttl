@@ -30,6 +30,8 @@ lambdaber:sample001 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:atmosphere "Flash frozen in liquid nitrogen" ;
             lambdaber:duration "3 months" ;
-            lambdaber:temperature "-80.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "-80.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 

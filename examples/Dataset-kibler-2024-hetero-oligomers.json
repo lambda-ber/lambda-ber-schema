@@ -100,7 +100,10 @@
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "temperature_unit": "celsius",
             "duration": "< 1 week before measurement"
           }
@@ -165,8 +168,14 @@
           "experiment_date": "2024-02-01",
           "operator_id": "Kathryn Burnett",
           "experimental_conditions": {
-            "temperature": 20.0,
-            "beam_energy": 9.76,
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            },
+            "beam_energy": {
+              "numeric_value": 9.76,
+              "unit": "kiloelectronvolts"
+            },
             "exposure_time": {
               "numeric_value": 0.3,
               "unit": "seconds"
@@ -191,7 +200,10 @@
           "technique": "saxs",
           "experiment_date": "2024-02-01",
           "experimental_conditions": {
-            "temperature": 20.0
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "sec_saxs"
@@ -209,7 +221,10 @@
           "experiment_date": "2024-02-05",
           "operator_id": "University of Washington EM facility",
           "experimental_conditions": {
-            "temperature": 20.0
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "single_particle"
@@ -226,7 +241,10 @@
           "technique": "mass_spectrometry",
           "experiment_date": "2024-02-10",
           "experimental_conditions": {
-            "temperature": 25.0
+            "temperature": {
+              "numeric_value": 25.0,
+              "unit": "degrees Celsius"
+            }
           },
           "quality_metrics": {
             "signal_to_noise": 100.0

@@ -31,7 +31,10 @@
   },
   "preparation_method": "E. coli expression followed by Ni-NTA and size exclusion chromatography",
   "storage_conditions": {
-    "temperature": -80.0,
+    "temperature": {
+      "numeric_value": -80.0,
+      "unit": "degrees Celsius"
+    },
     "temperature_unit": "celsius",
     "duration": "3 months",
     "atmosphere": "Flash frozen in liquid nitrogen"

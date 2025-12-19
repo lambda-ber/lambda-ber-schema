@@ -985,11 +985,11 @@ type EvolutionaryConservation
 type ExperimentalConditions
   {
     description: String
-    temperature: Float
-    humidity: Float
-    pressure: Float
+    temperature: QuantityValue
+    humidity: QuantityValue
+    pressure: QuantityValue
     atmosphere: String
-    beamEnergy: Float
+    beamEnergy: QuantityValue
     exposureTime: QuantityValue
   }
 
@@ -1071,14 +1071,14 @@ type FluorescenceImage
     dose: Float
     defocus: QuantityValue
     astigmatism: QuantityValue
-    excitationWavelength: Float
-    emissionWavelength: Float
+    excitationWavelength: QuantityValue
+    emissionWavelength: QuantityValue
     excitationFilter: String
     emissionFilter: String
     fluorophore: String
     channelName: String
-    laserPower: Float
-    pinholeSize: Float
+    laserPower: QuantityValue
+    pinholeSize: QuantityValue
     quantumYield: Float
   }
 
@@ -1101,9 +1101,9 @@ type FTIRImage
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    wavenumberMin: Float
-    wavenumberMax: Float
-    spectralResolution: Float
+    wavenumberMin: QuantityValue
+    wavenumberMax: QuantityValue
+    spectralResolution: QuantityValue
     numberOfScans: Integer
     apodizationFunction: String
     molecularSignatures: [String]
@@ -1228,8 +1228,8 @@ type MeasurementConditions
     description: String
     bufferComposition: BufferComposition
     ph: Float
-    ionicStrength: Float
-    temperature: Float
+    ionicStrength: QuantityValue
+    temperature: QuantityValue
   }
 
 type Micrograph
@@ -1366,8 +1366,8 @@ type OpticalImage
     defocus: QuantityValue
     astigmatism: QuantityValue
     illuminationType: IlluminationTypeEnum
-    magnification: Float
-    numericalAperture: Float
+    magnification: QuantityValue
+    numericalAperture: QuantityValue
     colorChannels: [String]
     whiteBalance: String
     contrastMethod: String
@@ -1666,7 +1666,7 @@ type SAXSPreparation
 type StorageConditions
   {
     description: String
-    temperature: Float
+    temperature: QuantityValue
     temperatureUnit: TemperatureUnitEnum
     duration: String
     atmosphere: String
@@ -1871,9 +1871,9 @@ type XRFImage
     dose: Float
     defocus: QuantityValue
     astigmatism: QuantityValue
-    beamEnergy: Float
-    beamSize: Float
-    dwellTime: Float
+    beamEnergy: QuantityValue
+    beamSize: QuantityValue
+    dwellTime: QuantityValue
     elementsMeasured: [String]
     sourceType: XRaySourceTypeEnum
     detectorTechnology: DetectorTechnologyEnum

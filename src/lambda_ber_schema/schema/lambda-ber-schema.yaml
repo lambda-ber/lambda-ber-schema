@@ -1563,14 +1563,17 @@ classes:
     description: "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy"
     attributes:
       wavenumber_min:
-        description: "Minimum wavenumber in cm⁻¹"
-        range: float
+        description: "Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       wavenumber_max:
-        description: "Maximum wavenumber in cm⁻¹"
-        range: float
+        description: "Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       spectral_resolution:
-        description: "Spectral resolution in cm⁻¹"
-        range: float
+        description: "Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       number_of_scans:
         description: "Number of scans averaged for the spectrum"
         range: integer
@@ -1590,11 +1593,13 @@ classes:
     description: "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling"
     attributes:
       excitation_wavelength:
-        description: "Excitation wavelength in nanometers"
-        range: float
+        description: "Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       emission_wavelength:
-        description: "Emission wavelength in nanometers"
-        range: float
+        description: "Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       excitation_filter:
         description: "Specifications of the excitation filter"
         range: string
@@ -1608,11 +1613,13 @@ classes:
         description: "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)"
         range: string
       laser_power:
-        description: "Laser power in milliwatts or percentage"
-        range: float
+        description: "Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       pinhole_size:
-        description: "Pinhole size in Airy units for confocal microscopy"
-        range: float
+        description: "Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       quantum_yield:
         description: "Quantum yield of the fluorophore"
         range: float
@@ -1625,11 +1632,13 @@ classes:
         description: "Type of illumination (brightfield, darkfield, phase contrast, DIC)"
         range: IlluminationTypeEnum
       magnification:
-        description: "Optical magnification factor"
-        range: float
+        description: "Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       numerical_aperture:
-        description: "Numerical aperture of the objective lens"
-        range: float
+        description: "Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed."
+        range: QuantityValue
+        inlined: true
       color_channels:
         description: "Color channels present (e.g., RGB, grayscale)"
         range: string
@@ -1646,14 +1655,17 @@ classes:
     description: "X-ray fluorescence (XRF) image showing elemental distribution"
     attributes:
       beam_energy:
-        description: "X-ray beam energy in keV"
-        range: float
+        description: "X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       beam_size:
-        description: "X-ray beam size in micrometers"
-        range: float
+        description: "X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       dwell_time:
-        description: "Dwell time per pixel in milliseconds"
-        range: float
+        description: "Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       elements_measured:
         description: "Elements detected and measured"
         range: string
@@ -1746,8 +1758,9 @@ classes:
     description: "Storage conditions for samples"
     attributes:
       temperature:
-        description: "Storage temperature in Celsius"
-        range: float
+        description: "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       temperature_unit:
         description: "Temperature unit"
         range: TemperatureUnitEnum
@@ -2003,19 +2016,23 @@ classes:
     description: "Environmental and experimental conditions"
     attributes:
       temperature:
-        description: "Temperature in Celsius"
-        range: float
+        description: "Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       humidity:
-        description: "Humidity percentage"
-        range: float
+        description: "Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       pressure:
-        description: "Pressure in kPa"
-        range: float
+        description: "Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       atmosphere:
         description: "Atmosphere composition"
       beam_energy:
-        description: "Beam energy in keV"
-        range: float
+        description: "Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       exposure_time:
         description: "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue

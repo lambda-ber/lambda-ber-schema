@@ -22,12 +22,20 @@ defocus:
 astigmatism:
   numeric_value: 0
   unit: Angstroms
-excitation_wavelength: 488
-emission_wavelength: 509
+excitation_wavelength:
+  numeric_value: 488
+  unit: nanometers
+emission_wavelength:
+  numeric_value: 509
+  unit: nanometers
 excitation_filter: 488/10 nm bandpass
 emission_filter: 525/50 nm bandpass
 fluorophore: Enhanced GFP (EGFP)
 channel_name: GFP
-laser_power: 2.5
-pinhole_size: 1.0
+laser_power:
+  numeric_value: 2.5
+  unit: milliwatts
+pinhole_size:
+  numeric_value: 1.0
+  unit: Airy units
 quantum_yield: 0.6

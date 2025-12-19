@@ -22,7 +22,9 @@ lambdaber:exp_1EE2_xray_001 a lambdaber:ExperimentRun ;
     lambdaber:experiment_code "1EE2_XRAY_001" ;
     lambdaber:experiment_date "1998-11-23" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:temperature "100.0"^^xsd:float ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
     lambdaber:instrument_id <DESY_BW7B> ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:completeness "95.0"^^xsd:float ;
@@ -75,7 +77,9 @@ lambdaber:sample_1EE2_001 a lambdaber:Sample ;
     lambdaber:sample_code "1EE2_SAMPLE_001" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
-            lambdaber:temperature "277.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "277.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "kelvin" ] .
 
 lambdaber:wf_1EE2_refinement_001 a lambdaber:WorkflowRun ;

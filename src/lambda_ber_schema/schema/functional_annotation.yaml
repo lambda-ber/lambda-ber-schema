@@ -514,15 +514,13 @@ classes:
         minimum_value: 0
         maximum_value: 14
       ionic_strength:
-        description: "Ionic strength in molar of material in solution"
-        range: float
-        unit:
-          ucum_code: mol/L
+        description: "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       temperature:
-        description: "Temperature in Kelvin during measurement"
-        range: float
-        unit:
-          ucum_code: K
+        description: "Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
 # Enumerations
 enums:

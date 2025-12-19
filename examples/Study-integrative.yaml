@@ -127,9 +127,15 @@ instrument_runs:
   experiment_date: '2024-05-15T08:00:00'
   operator_id: cryoem_operator_001
   experimental_conditions:
-    temperature: -180.0
-    humidity: 0.0
-    pressure: 1.0e-06
+    temperature:
+      numeric_value: -180.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0.0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: counting
     total_frames: 5000
@@ -153,9 +159,15 @@ instrument_runs:
   experiment_date: '2024-05-16T10:00:00'
   operator_id: saxs_operator_001
   experimental_conditions:
-    temperature: 20.0
-    humidity: 50.0
-    pressure: 101.325
+    temperature:
+      numeric_value: 20.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 50.0
+      unit: percent
+    pressure:
+      numeric_value: 101.325
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: continuous
     total_frames: 20
@@ -177,9 +189,15 @@ instrument_runs:
   experiment_date: '2024-05-17T09:00:00'
   operator_id: cryoem_operator_001
   experimental_conditions:
-    temperature: -180.0
-    humidity: 0.0
-    pressure: 1.0e-06
+    temperature:
+      numeric_value: -180.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0.0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: super_resolution
     total_frames: 10000

@@ -34,7 +34,10 @@
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "temperature_unit": "celsius",
             "duration": "7 days",
             "atmosphere": "argon-purged"
@@ -61,7 +64,10 @@
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "temperature_unit": "celsius"
           }
         },
@@ -86,7 +92,10 @@
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "temperature_unit": "celsius"
           }
         },
@@ -114,7 +123,10 @@
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "temperature_unit": "celsius"
           }
         }

@@ -1,210 +1,197 @@
 id: lambdaber:dataset-loosenin-bioenergy
-title: Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology Investigation
-
+title: Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology
+  Investigation
 studies:
-  - id: lambdaber:study-loosenin-2025
-    title: Structural and functional characterization of fungal loosenins
-    
-    samples:
-      - id: lambdaber:sample-LOOS-001
-        title: PcaLOOL12 wild-type protein
-        sample_code: LOOS-001
-        sample_type: protein
-        molecular_composition:
-          sequences:
-            - >
-              MKVLSFAIAAALALATAPAAAEDGTVVDCTNYQGRCGSQCGPTGLCCSKYGWCGNTDHYCGDGCQSQCP
-              YGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGNSYTTTTTSSSGGGGSGGSGGSTTNAGAGPS
-              TPSAPSAPSAPAAPSAPSTPSAPSTPSAPSTPSAPSTPSAPGNYTLQCDPATGWLSCNGGPCNPGSCCS
-              QFGYCGSGAAYCGAGCQGGPCQPPC
-          modifications:
-            - N-glycosylation at positions 45, 78, 156
-          ligands:
-            - calcium ions
-        buffer_composition:
-          ph: 6.0
-          components:
-            - 50mM MES buffer
-            - 150mM NaCl
-          additives:
-            - 5% glycerol
-            - 1mM DTT
-        storage_conditions:
-          temperature: 4
-          temperature_unit: celsius
-          duration: 7 days
-          atmosphere: argon-purged
-          
-      - id: lambdaber:sample-LOOS-002
-        title: PcaLOOL12 pH stress series
-        sample_code: LOOS-002 
-        sample_type: protein
-        molecular_composition:
-          sequences:
-            - Same as LOOS-001
-          modifications:
-            - N-glycosylation
-        buffer_composition:
-          ph: 5.0
-          components:
-            - Universal buffer system
-            - 100mM NaCl
-        storage_conditions:
-          temperature: 4
-          temperature_unit: celsius
-          
-      - id: lambdaber:sample-LOOS-003
-        title: TrLOOL1 from Trichoderma reesei
-        sample_code: LOOS-003
-        sample_type: protein
-        molecular_composition:
-          sequences:
-            - TrLOOL1 sequence - homolog from T. reesei
-          ligands:
-            - calcium ions
-        buffer_composition:
-          ph: 5.5
-          components:
-            - 50mM sodium acetate
-            - 200mM NaCl
-        storage_conditions:
-          temperature: 4
-          temperature_unit: celsius
-          
-      - id: lambdaber:sample-LOOS-004
-        title: PcaLOOL12-cellulose complex
-        sample_code: LOOS-004
-        sample_type: complex
-        molecular_composition:
-          sequences:
-            - PcaLOOL12 protein sequence
-          ligands:
-            - microcrystalline cellulose (Avicel PH-101)
-        buffer_composition:
-          ph: 6.0
-          components:
-            - 50mM MES buffer
-            - 150mM NaCl
-          additives:
-            - 10mg/mL Avicel cellulose
-        storage_conditions:
-          temperature: 4
-          temperature_unit: celsius
+- id: lambdaber:study-loosenin-2025
+  title: Structural and functional characterization of fungal loosenins
+  samples:
+  - id: lambdaber:sample-LOOS-001
+    title: PcaLOOL12 wild-type protein
+    sample_code: LOOS-001
+    sample_type: protein
+    molecular_composition:
+      sequences:
+      - 'MKVLSFAIAAALALATAPAAAEDGTVVDCTNYQGRCGSQCGPTGLCCSKYGWCGNTDHYCGDGCQSQCP YGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGNSYTTTTTSSSGGGGSGGSGGSTTNAGAGPS
+        TPSAPSAPSAPAAPSAPSTPSAPSTPSAPSTPSAPSTPSAPGNYTLQCDPATGWLSCNGGPCNPGSCCS QFGYCGSGAAYCGAGCQGGPCQPPC
 
-    sample_preparations:
-      - id: lambdaber:prep-saxs-001
-        title: SAXS sample preparation
-        preparation_type: saxs
-        sample_id: lambdaber:sample-LOOS-001
-        
-      - id: lambdaber:prep-sans-001  
-        title: SANS contrast matching preparation
-        preparation_type: sans
-        sample_id: lambdaber:sample-LOOS-001
-        
-      - id: lambdaber:prep-crystal-001
-        title: Crystal preparation for X-ray diffraction
-        preparation_type: xray_crystallography
-        sample_id: lambdaber:sample-LOOS-001
-        
-      - id: lambdaber:prep-cryoem-001
-        title: CryoEM grid preparation of complex
-        preparation_type: cryo_em
-        sample_id: lambdaber:sample-LOOS-004
-
-    workflow_runs:
-      - id: lambdaber:wf-saxs-001
-        title: SAXS pH series analysis
-        workflow_code: SAXS-pH-analysis
-        workflow_type: saxs_analysis
-        experiment_id: lambdaber:exp-saxs-001
-        processing_level: 2
-        software_name: ATSAS
-        software_version: "3.2.1"
-        
-      - id: lambdaber:wf-mx-001
-        title: Crystal structure determination
-        workflow_code: MX-structure
-        workflow_type: phasing
-        experiment_id: lambdaber:exp-mx-001
-        processing_level: 3
-        software_name: PHENIX
-        software_version: "1.20.1"
-        
-      - id: lambdaber:wf-cryoem-001
-        title: Single particle reconstruction
-        workflow_code: CryoEM-SPA
-        workflow_type: refinement
-        experiment_id: lambdaber:exp-cryoem-001
-        processing_level: 3
-        software_name: RELION
-        software_version: "4.0"
-        
-      - id: lambdaber:wf-integrative-001
-        title: Integrative modeling
-        workflow_code: IMP-modeling
-        workflow_type: model_building
-        experiment_id: lambdaber:exp-saxs-001
-        processing_level: 2
-        software_name: IMP
-        software_version: "2.18"
-
-    data_files:
-      - id: lambdaber:df-saxs-001
-        title: SAXS pH series data
-        file_name: loosenin_ph_series.dat
-        file_path: /data/saxs/2025/loosenin/
-        file_format: ascii
-        file_size_bytes: 2500000
-        data_type: scattering
-        
-      - id: lambdaber:df-sans-001
-        title: SANS complex data
-        file_name: biosans_complex.dat
-        file_path: /data/sans/2025/loosenin/
-        file_format: ascii
-        file_size_bytes: 1800000
-        data_type: scattering
-        
-      - id: lambdaber:df-mx-001
-        title: X-ray diffraction data
-        file_name: loosenin_native.mtz
-        file_path: /data/mx/2025/loosenin/
-        file_format: mtz
-        file_size_bytes: 45000000
-        data_type: diffraction
-        
-      - id: lambdaber:df-pdb-001
-        title: Refined crystal structure
-        file_name: loosenin_refined.pdb
-        file_path: /data/mx/2025/loosenin/
-        file_format: pdb
-        file_size_bytes: 800000
-        data_type: model
-        
-      - id: lambdaber:df-cryoem-001
-        title: CryoEM particle stack
-        file_name: loosenin_cellulose.star
-        file_path: /data/cryoem/2025/loosenin/
-        file_format: star
-        file_size_bytes: 125000000000
-        data_type: particles
-        
-      - id: lambdaber:df-map-001
-        title: CryoEM density map
-        file_name: loosenin_cellulose_map.mrc
-        file_path: /data/cryoem/2025/loosenin/
-        file_format: mrc
-        file_size_bytes: 512000000
-        data_type: volume
-
-    images:
-      - id: lambdaber:img-saxs-001
-        title: SAXS Guinier plots
-        file_name: saxs_guinier_plots.png
-        acquisition_date: "2025-02-12"
-        
-      - id: lambdaber:img-sans-001
-        title: SANS model fit
-        file_name: sans_model_fit.png
-        acquisition_date: "2025-02-25"
+        '
+      modifications:
+      - N-glycosylation at positions 45, 78, 156
+      ligands:
+      - calcium ions
+    buffer_composition:
+      ph: 6.0
+      components:
+      - 50mM MES buffer
+      - 150mM NaCl
+      additives:
+      - 5% glycerol
+      - 1mM DTT
+    storage_conditions:
+      temperature:
+        numeric_value: 4
+        unit: degrees Celsius
+      temperature_unit: celsius
+      duration: 7 days
+      atmosphere: argon-purged
+  - id: lambdaber:sample-LOOS-002
+    title: PcaLOOL12 pH stress series
+    sample_code: LOOS-002
+    sample_type: protein
+    molecular_composition:
+      sequences:
+      - Same as LOOS-001
+      modifications:
+      - N-glycosylation
+    buffer_composition:
+      ph: 5.0
+      components:
+      - Universal buffer system
+      - 100mM NaCl
+    storage_conditions:
+      temperature:
+        numeric_value: 4
+        unit: degrees Celsius
+      temperature_unit: celsius
+  - id: lambdaber:sample-LOOS-003
+    title: TrLOOL1 from Trichoderma reesei
+    sample_code: LOOS-003
+    sample_type: protein
+    molecular_composition:
+      sequences:
+      - TrLOOL1 sequence - homolog from T. reesei
+      ligands:
+      - calcium ions
+    buffer_composition:
+      ph: 5.5
+      components:
+      - 50mM sodium acetate
+      - 200mM NaCl
+    storage_conditions:
+      temperature:
+        numeric_value: 4
+        unit: degrees Celsius
+      temperature_unit: celsius
+  - id: lambdaber:sample-LOOS-004
+    title: PcaLOOL12-cellulose complex
+    sample_code: LOOS-004
+    sample_type: complex
+    molecular_composition:
+      sequences:
+      - PcaLOOL12 protein sequence
+      ligands:
+      - microcrystalline cellulose (Avicel PH-101)
+    buffer_composition:
+      ph: 6.0
+      components:
+      - 50mM MES buffer
+      - 150mM NaCl
+      additives:
+      - 10mg/mL Avicel cellulose
+    storage_conditions:
+      temperature:
+        numeric_value: 4
+        unit: degrees Celsius
+      temperature_unit: celsius
+  sample_preparations:
+  - id: lambdaber:prep-saxs-001
+    title: SAXS sample preparation
+    preparation_type: saxs
+    sample_id: lambdaber:sample-LOOS-001
+  - id: lambdaber:prep-sans-001
+    title: SANS contrast matching preparation
+    preparation_type: sans
+    sample_id: lambdaber:sample-LOOS-001
+  - id: lambdaber:prep-crystal-001
+    title: Crystal preparation for X-ray diffraction
+    preparation_type: xray_crystallography
+    sample_id: lambdaber:sample-LOOS-001
+  - id: lambdaber:prep-cryoem-001
+    title: CryoEM grid preparation of complex
+    preparation_type: cryo_em
+    sample_id: lambdaber:sample-LOOS-004
+  workflow_runs:
+  - id: lambdaber:wf-saxs-001
+    title: SAXS pH series analysis
+    workflow_code: SAXS-pH-analysis
+    workflow_type: saxs_analysis
+    experiment_id: lambdaber:exp-saxs-001
+    processing_level: 2
+    software_name: ATSAS
+    software_version: 3.2.1
+  - id: lambdaber:wf-mx-001
+    title: Crystal structure determination
+    workflow_code: MX-structure
+    workflow_type: phasing
+    experiment_id: lambdaber:exp-mx-001
+    processing_level: 3
+    software_name: PHENIX
+    software_version: 1.20.1
+  - id: lambdaber:wf-cryoem-001
+    title: Single particle reconstruction
+    workflow_code: CryoEM-SPA
+    workflow_type: refinement
+    experiment_id: lambdaber:exp-cryoem-001
+    processing_level: 3
+    software_name: RELION
+    software_version: '4.0'
+  - id: lambdaber:wf-integrative-001
+    title: Integrative modeling
+    workflow_code: IMP-modeling
+    workflow_type: model_building
+    experiment_id: lambdaber:exp-saxs-001
+    processing_level: 2
+    software_name: IMP
+    software_version: '2.18'
+  data_files:
+  - id: lambdaber:df-saxs-001
+    title: SAXS pH series data
+    file_name: loosenin_ph_series.dat
+    file_path: /data/saxs/2025/loosenin/
+    file_format: ascii
+    file_size_bytes: 2500000
+    data_type: scattering
+  - id: lambdaber:df-sans-001
+    title: SANS complex data
+    file_name: biosans_complex.dat
+    file_path: /data/sans/2025/loosenin/
+    file_format: ascii
+    file_size_bytes: 1800000
+    data_type: scattering
+  - id: lambdaber:df-mx-001
+    title: X-ray diffraction data
+    file_name: loosenin_native.mtz
+    file_path: /data/mx/2025/loosenin/
+    file_format: mtz
+    file_size_bytes: 45000000
+    data_type: diffraction
+  - id: lambdaber:df-pdb-001
+    title: Refined crystal structure
+    file_name: loosenin_refined.pdb
+    file_path: /data/mx/2025/loosenin/
+    file_format: pdb
+    file_size_bytes: 800000
+    data_type: model
+  - id: lambdaber:df-cryoem-001
+    title: CryoEM particle stack
+    file_name: loosenin_cellulose.star
+    file_path: /data/cryoem/2025/loosenin/
+    file_format: star
+    file_size_bytes: 125000000000
+    data_type: particles
+  - id: lambdaber:df-map-001
+    title: CryoEM density map
+    file_name: loosenin_cellulose_map.mrc
+    file_path: /data/cryoem/2025/loosenin/
+    file_format: mrc
+    file_size_bytes: 512000000
+    data_type: volume
+  images:
+  - id: lambdaber:img-saxs-001
+    title: SAXS Guinier plots
+    file_name: saxs_guinier_plots.png
+    acquisition_date: '2025-02-12'
+  - id: lambdaber:img-sans-001
+    title: SANS model fit
+    file_name: sans_model_fit.png
+    acquisition_date: '2025-02-25'

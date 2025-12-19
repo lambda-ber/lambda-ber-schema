@@ -173,8 +173,14 @@
             ]
           },
           "ph": 7.4,
-          "ionic_strength": 0.15,
-          "temperature": 298.15
+          "ionic_strength": {
+            "numeric_value": 0.15,
+            "unit": "molar"
+          },
+          "temperature": {
+            "numeric_value": 298.15,
+            "unit": "degrees Celsius"
+          }
         }
       ],
       "experimental_method": "differential_scanning_calorimetry"
@@ -188,8 +194,14 @@
         {
           "id": "lambdaber:meas-cond-002",
           "ph": 7.4,
-          "ionic_strength": 0.15,
-          "temperature": 298.15
+          "ionic_strength": {
+            "numeric_value": 0.15,
+            "unit": "molar"
+          },
+          "temperature": {
+            "numeric_value": 298.15,
+            "unit": "degrees Celsius"
+          }
         }
       ],
       "experimental_method": "circular_dichroism"

@@ -8,9 +8,15 @@ technique: cryo_et
 experiment_date: '2024-05-01T11:00:00'
 operator_id: cryoet_specialist_003
 experimental_conditions:
-  temperature: -180.0
-  humidity: 0.0
-  pressure: 1.0e-06
+  temperature:
+    numeric_value: -180.0
+    unit: degrees Celsius
+  humidity:
+    numeric_value: 0.0
+    unit: percent
+  pressure:
+    numeric_value: 1.0e-06
+    unit: kilopascals
   atmosphere: High vacuum
 data_collection_strategy:
   collection_mode: continuous

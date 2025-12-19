@@ -16,9 +16,15 @@ exposure_time:
   numeric_value: 0.5
   unit: seconds
 dose: 0.0
-wavenumber_min: 800.0
-wavenumber_max: 4000.0
-spectral_resolution: 4.0
+wavenumber_min:
+  numeric_value: 800.0
+  unit: inverse centimeters
+wavenumber_max:
+  numeric_value: 4000.0
+  unit: inverse centimeters
+spectral_resolution:
+  numeric_value: 4.0
+  unit: inverse centimeters
 number_of_scans: 32
 apodization_function: Blackman-Harris 3-term
 molecular_signatures:

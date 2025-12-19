@@ -8546,7 +8546,7 @@
     },
     {
       "name": "fTIRImage__wavenumber_min",
-      "description": "Minimum wavenumber in cm\u207b\u00b9",
+      "description": "Minimum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/wavenumber_min",
       "alias": "wavenumber_min",
@@ -8554,12 +8554,13 @@
       "domain_of": [
         "FTIRImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "fTIRImage__wavenumber_max",
-      "description": "Maximum wavenumber in cm\u207b\u00b9",
+      "description": "Maximum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/wavenumber_max",
       "alias": "wavenumber_max",
@@ -8567,12 +8568,13 @@
       "domain_of": [
         "FTIRImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "fTIRImage__spectral_resolution",
-      "description": "Spectral resolution in cm\u207b\u00b9",
+      "description": "Spectral resolution, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/spectral_resolution",
       "alias": "spectral_resolution",
@@ -8580,7 +8582,8 @@
       "domain_of": [
         "FTIRImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8638,7 +8641,7 @@
     },
     {
       "name": "fluorescenceImage__excitation_wavelength",
-      "description": "Excitation wavelength in nanometers",
+      "description": "Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/excitation_wavelength",
       "alias": "excitation_wavelength",
@@ -8646,12 +8649,13 @@
       "domain_of": [
         "FluorescenceImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "fluorescenceImage__emission_wavelength",
-      "description": "Emission wavelength in nanometers",
+      "description": "Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/emission_wavelength",
       "alias": "emission_wavelength",
@@ -8659,7 +8663,8 @@
       "domain_of": [
         "FluorescenceImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8716,7 +8721,7 @@
     },
     {
       "name": "fluorescenceImage__laser_power",
-      "description": "Laser power in milliwatts or percentage",
+      "description": "Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/laser_power",
       "alias": "laser_power",
@@ -8724,12 +8729,13 @@
       "domain_of": [
         "FluorescenceImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "fluorescenceImage__pinhole_size",
-      "description": "Pinhole size in Airy units for confocal microscopy",
+      "description": "Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pinhole_size",
       "alias": "pinhole_size",
@@ -8737,7 +8743,8 @@
       "domain_of": [
         "FluorescenceImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8768,7 +8775,7 @@
     },
     {
       "name": "opticalImage__magnification",
-      "description": "Optical magnification factor",
+      "description": "Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/magnification",
       "alias": "magnification",
@@ -8776,12 +8783,13 @@
       "domain_of": [
         "OpticalImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "opticalImage__numerical_aperture",
-      "description": "Numerical aperture of the objective lens",
+      "description": "Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/numerical_aperture",
       "alias": "numerical_aperture",
@@ -8789,7 +8797,8 @@
       "domain_of": [
         "OpticalImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8834,7 +8843,7 @@
     },
     {
       "name": "xRFImage__beam_energy",
-      "description": "X-ray beam energy in keV",
+      "description": "X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_energy",
       "alias": "beam_energy",
@@ -8842,12 +8851,13 @@
       "domain_of": [
         "XRFImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "xRFImage__beam_size",
-      "description": "X-ray beam size in micrometers",
+      "description": "X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_size",
       "alias": "beam_size",
@@ -8855,12 +8865,13 @@
       "domain_of": [
         "XRFImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "xRFImage__dwell_time",
-      "description": "Dwell time per pixel in milliseconds",
+      "description": "Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/dwell_time",
       "alias": "dwell_time",
@@ -8868,7 +8879,8 @@
       "domain_of": [
         "XRFImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9112,7 +9124,7 @@
     },
     {
       "name": "storageConditions__temperature",
-      "description": "Storage temperature in Celsius",
+      "description": "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/temperature",
       "alias": "temperature",
@@ -9120,7 +9132,8 @@
       "domain_of": [
         "StorageConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10077,7 +10090,7 @@
     },
     {
       "name": "experimentalConditions__temperature",
-      "description": "Temperature in Celsius",
+      "description": "Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/temperature",
       "alias": "temperature",
@@ -10085,12 +10098,13 @@
       "domain_of": [
         "ExperimentalConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentalConditions__humidity",
-      "description": "Humidity percentage",
+      "description": "Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/humidity",
       "alias": "humidity",
@@ -10098,12 +10112,13 @@
       "domain_of": [
         "ExperimentalConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentalConditions__pressure",
-      "description": "Pressure in kPa",
+      "description": "Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pressure",
       "alias": "pressure",
@@ -10111,7 +10126,8 @@
       "domain_of": [
         "ExperimentalConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10129,7 +10145,7 @@
     },
     {
       "name": "experimentalConditions__beam_energy",
-      "description": "Beam energy in keV",
+      "description": "Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/beam_energy",
       "alias": "beam_energy",
@@ -10137,7 +10153,8 @@
       "domain_of": [
         "ExperimentalConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13035,7 +13052,7 @@
     },
     {
       "name": "measurementConditions__ionic_strength",
-      "description": "Ionic strength in molar of material in solution",
+      "description": "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/ionic_strength",
       "alias": "ionic_strength",
@@ -13043,16 +13060,13 @@
       "domain_of": [
         "MeasurementConditions"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "mol/L",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "measurementConditions__temperature",
-      "description": "Temperature in Kelvin during measurement",
+      "description": "Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/functional_annotation",
       "slot_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/temperature",
       "alias": "temperature",
@@ -13060,11 +13074,8 @@
       "domain_of": [
         "MeasurementConditions"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "K",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -16412,20 +16423,23 @@
       "attributes": [
         {
           "name": "wavenumber_min",
-          "description": "Minimum wavenumber in cm\u207b\u00b9",
-          "range": "float",
+          "description": "Minimum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "wavenumber_max",
-          "description": "Maximum wavenumber in cm\u207b\u00b9",
-          "range": "float",
+          "description": "Maximum wavenumber, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "spectral_resolution",
-          "description": "Spectral resolution in cm\u207b\u00b9",
-          "range": "float",
+          "description": "Spectral resolution, typically specified in inverse centimeters (cm\u207b\u00b9). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16490,14 +16504,16 @@
       "attributes": [
         {
           "name": "excitation_wavelength",
-          "description": "Excitation wavelength in nanometers",
-          "range": "float",
+          "description": "Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "emission_wavelength",
-          "description": "Emission wavelength in nanometers",
-          "range": "float",
+          "description": "Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16526,14 +16542,16 @@
         },
         {
           "name": "laser_power",
-          "description": "Laser power in milliwatts or percentage",
-          "range": "float",
+          "description": "Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "pinhole_size",
-          "description": "Pinhole size in Airy units for confocal microscopy",
-          "range": "float",
+          "description": "Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16582,14 +16600,16 @@
         },
         {
           "name": "magnification",
-          "description": "Optical magnification factor",
-          "range": "float",
+          "description": "Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "numerical_aperture",
-          "description": "Numerical aperture of the objective lens",
-          "range": "float",
+          "description": "Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16648,20 +16668,23 @@
       "attributes": [
         {
           "name": "beam_energy",
-          "description": "X-ray beam energy in keV",
-          "range": "float",
+          "description": "X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_size",
-          "description": "X-ray beam size in micrometers",
-          "range": "float",
+          "description": "X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "dwell_time",
-          "description": "Dwell time per pixel in milliseconds",
-          "range": "float",
+          "description": "Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16876,8 +16899,9 @@
       "attributes": [
         {
           "name": "temperature",
-          "description": "Storage temperature in Celsius",
-          "range": "float",
+          "description": "Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17474,20 +17498,23 @@
       "attributes": [
         {
           "name": "temperature",
-          "description": "Temperature in Celsius",
-          "range": "float",
+          "description": "Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "humidity",
-          "description": "Humidity percentage",
-          "range": "float",
+          "description": "Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "pressure",
-          "description": "Pressure in kPa",
-          "range": "float",
+          "description": "Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17497,8 +17524,9 @@
         },
         {
           "name": "beam_energy",
-          "description": "Beam energy in keV",
-          "range": "float",
+          "description": "Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -19582,22 +19610,16 @@
         },
         {
           "name": "ionic_strength",
-          "description": "Ionic strength in molar of material in solution",
-          "range": "float",
-          "unit": {
-            "ucum_code": "mol/L",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "temperature",
-          "description": "Temperature in Kelvin during measurement",
-          "range": "float",
-          "unit": {
-            "ucum_code": "K",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -19607,9 +19629,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T12:10:41",
-  "source_file_size": 123639,
-  "generation_date": "2025-12-19T12:18:23",
+  "source_file_date": "2025-12-19T12:24:47",
+  "source_file_size": 126120,
+  "generation_date": "2025-12-19T12:35:25",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",

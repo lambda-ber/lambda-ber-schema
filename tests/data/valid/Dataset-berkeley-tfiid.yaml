@@ -51,7 +51,9 @@ studies:
       - 1 mM DTT
       - 0.5 mM PMSF
     storage_conditions:
-      temperature: -80
+      temperature:
+        numeric_value: -80
+        unit: degrees Celsius
       temperature_unit: celsius
       duration: 6 months
       atmosphere: Flash frozen in liquid nitrogen
@@ -118,9 +120,15 @@ studies:
     operator_id: nogales_lab_member_002
     technique: cryo_em
     experimental_conditions:
-      temperature: -180
-      humidity: 0
-      pressure: 1.0e-06
+      temperature:
+        numeric_value: -180
+        unit: degrees Celsius
+      humidity:
+        numeric_value: 0
+        unit: percent
+      pressure:
+        numeric_value: 1.0e-06
+        unit: kilopascals
       atmosphere: High vacuum
     data_collection_strategy:
       collection_mode: counting
@@ -146,9 +154,15 @@ studies:
     operator_id: nogales_lab_member_002
     technique: cryo_em
     experimental_conditions:
-      temperature: -180
-      humidity: 0
-      pressure: 1.0e-06
+      temperature:
+        numeric_value: -180
+        unit: degrees Celsius
+      humidity:
+        numeric_value: 0
+        unit: percent
+      pressure:
+        numeric_value: 1.0e-06
+        unit: kilopascals
     data_collection_strategy:
       collection_mode: super_resolution
       total_frames: 12000

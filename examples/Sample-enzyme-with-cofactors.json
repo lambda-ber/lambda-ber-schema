@@ -94,8 +94,14 @@
             ]
           },
           "ph": 7.5,
-          "ionic_strength": 0.1,
-          "temperature": 298.15
+          "ionic_strength": {
+            "numeric_value": 0.1,
+            "unit": "molar"
+          },
+          "temperature": {
+            "numeric_value": 298.15,
+            "unit": "degrees Celsius"
+          }
         }
       ],
       "experimental_method": "differential_scanning_calorimetry"

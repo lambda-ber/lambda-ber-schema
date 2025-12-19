@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
@@ -103,7 +104,9 @@ lambdaber:sample-LOOS-001 a lambdaber:Sample ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:atmosphere "argon-purged" ;
             lambdaber:duration "7 days" ;
-            lambdaber:temperature "4.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 
 lambdaber:sample-LOOS-002 a lambdaber:Sample ;
@@ -118,7 +121,9 @@ lambdaber:sample-LOOS-002 a lambdaber:Sample ;
     lambdaber:sample_code "LOOS-002" ;
     lambdaber:sample_type "protein" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
-            lambdaber:temperature "4.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 
 lambdaber:sample-LOOS-003 a lambdaber:Sample ;
@@ -133,7 +138,9 @@ lambdaber:sample-LOOS-003 a lambdaber:Sample ;
     lambdaber:sample_code "LOOS-003" ;
     lambdaber:sample_type "protein" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
-            lambdaber:temperature "4.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 
 lambdaber:sample-LOOS-004 a lambdaber:Sample ;
@@ -149,7 +156,9 @@ lambdaber:sample-LOOS-004 a lambdaber:Sample ;
     lambdaber:sample_code "LOOS-004" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
-            lambdaber:temperature "4.0"^^xsd:float ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ;
             lambdaber:temperature_unit "celsius" ] .
 
 lambdaber:study-loosenin-2025 a lambdaber:Study ;
