@@ -224,6 +224,40 @@
             "title": "AnnotationSourceEnum",
             "type": "string"
         },
+        "Any": {
+            "additionalProperties": true,
+            "description": "",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
+        "Attribute": {
+            "additionalProperties": false,
+            "description": "A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.",
+            "properties": {
+                "id": {
+                    "description": "A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "label": {
+                    "description": "Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "label"
+            ],
+            "title": "Attribute",
+            "type": "object"
+        },
         "BeamlineInstrument": {
             "additionalProperties": false,
             "description": "Multi-technique synchrotron beamline that supports multiple experimental methods",
@@ -1463,11 +1497,15 @@
                     ]
                 },
                 "pixel_size_calibrated": {
-                    "description": "Calibrated pixel size for this experiment",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Calibrated pixel size for this experiment, typically specified in Angstroms (\u00c5) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "strategy_notes": {
                     "description": "Notes about data collection strategy",
@@ -1764,6 +1802,39 @@
             "title": "Dataset",
             "type": "object"
         },
+        "DateTimeValue": {
+            "additionalProperties": false,
+            "description": "A date or date and time value.",
+            "properties": {
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Attribute"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The attribute being represented."
+                },
+                "raw_value": {
+                    "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "DateTimeValue",
+            "type": "object"
+        },
         "DetectorModeEnum": {
             "description": "Operating modes for detectors during data collection",
             "enum": [
@@ -2013,18 +2084,26 @@
                     ]
                 },
                 "beam_center_x": {
-                    "description": "Beam center X coordinate",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_center_y": {
-                    "description": "Beam center Y coordinate",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beamline": {
                     "description": "Beamline identifier (e.g., FMX, AMX, 12.3.1)",
@@ -2102,11 +2181,15 @@
                     ]
                 },
                 "detector_distance": {
-                    "description": "Distance from sample to detector",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose_rate": {
                     "description": "Dose rate in e-/pixel/s or e-/Angstrom^2/s",
@@ -2149,11 +2232,15 @@
                     "description": "Specific experimental method for structure determination (particularly for diffraction techniques)"
                 },
                 "exposure_time": {
-                    "description": "Exposure time per image in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "exposure_time_per_frame": {
                     "description": "Exposure time per frame in milliseconds",
@@ -2163,18 +2250,26 @@
                     ]
                 },
                 "flux": {
-                    "description": "Photon flux at sample position in photons/second",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "flux_end": {
-                    "description": "Photon flux at end of data collection in photons/second",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "frames_per_movie": {
                     "description": "Number of frames per movie",
@@ -2234,25 +2329,37 @@
                     ]
                 },
                 "oscillation_angle": {
-                    "description": "Oscillation angle per image",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pixel_size_x": {
-                    "description": "Pixel size X dimension",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size X dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue."
                 },
                 "pixel_size_y": {
-                    "description": "Pixel size Y dimension",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size Y dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue."
                 },
                 "processing_status": {
                     "$ref": "#/$defs/ProcessingStatusEnum",
@@ -2277,18 +2384,26 @@
                     ]
                 },
                 "resolution": {
-                    "description": "Resolution at edge of detector in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution at edge of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_at_corner": {
-                    "description": "Resolution at corner of detector in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution at corner of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "sample_id": {
                     "description": "Reference to the sample being analyzed",
@@ -2302,18 +2417,26 @@
                     ]
                 },
                 "slit_gap_horizontal": {
-                    "description": "Horizontal slit gap aperture in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Horizontal slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "slit_gap_vertical": {
-                    "description": "Vertical slit gap aperture in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "stage_tilt": {
                     "description": "Stage tilt angle in degrees",
@@ -2323,11 +2446,15 @@
                     ]
                 },
                 "start_angle": {
-                    "description": "Starting rotation angle",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "start_time": {
                     "description": "Data collection start timestamp",
@@ -2369,34 +2496,50 @@
                     ]
                 },
                 "total_rotation": {
-                    "description": "Total rotation range collected",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "transmission": {
-                    "description": "X-ray beam transmission as percentage (0-100)",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
                     "maximum": 100,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0
                 },
                 "undulator_gap": {
-                    "description": "Undulator gap setting in millimeters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices."
                 },
                 "wavelength": {
-                    "description": "X-ray wavelength",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X-ray wavelength, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "required": [
@@ -2434,11 +2577,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "humidity": {
                     "description": "Humidity percentage",
@@ -2578,11 +2725,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -2801,11 +2952,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -3149,11 +3304,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -3239,11 +3398,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -3322,11 +3485,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -3783,11 +3950,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -4031,11 +4202,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -4450,11 +4625,15 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
@@ -5430,11 +5609,15 @@
                     ]
                 },
                 "resolution": {
-                    "description": "Resolution in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_high_shell_a": {
                     "description": "High resolution shell limit in Angstroms",
@@ -5522,6 +5705,65 @@
                 }
             },
             "title": "QualityMetrics",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.",
+            "properties": {
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Attribute"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The attribute being represented."
+                },
+                "maximum_numeric_value": {
+                    "description": "The maximum value part, expressed as a number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "minimum_numeric_value": {
+                    "description": "The minimum value part, expressed as a number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "numeric_value": {
+                    "description": "The numerical value of the quantity",
+                    "type": "number"
+                },
+                "raw_value": {
+                    "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "The unit of measurement (e.g., \"Angstroms\", \"micrometers\", \"kilodaltons\"). Should match the UCUM standard notation or Unit Ontology.",
+                    "type": "string"
+                },
+                "unit_cv_id": {
+                    "description": "The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "numeric_value",
+                "unit"
+            ],
+            "title": "QuantityValue",
             "type": "object"
         },
         "RefinementParameters": {
@@ -5913,11 +6155,15 @@
                     "description": "Description of molecular composition including sequences, modifications, ligands"
                 },
                 "molecular_weight": {
-                    "description": "Molecular weight in kDa",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue."
                 },
                 "mutation_effects": {
                     "description": "Effects of mutations present in the sample",
@@ -6113,11 +6359,15 @@
                     ]
                 },
                 "culture_volume_l": {
-                    "description": "Culture volume in liters",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -6152,11 +6402,15 @@
                     ]
                 },
                 "growth_temperature_c": {
-                    "description": "Growth temperature in Celsius",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue."
                 },
                 "harvest_timepoint": {
                     "description": "Time point when cells were harvested",
@@ -6804,6 +7058,46 @@
             "title": "TemperatureUnitEnum",
             "type": "string"
         },
+        "TextValue": {
+            "additionalProperties": false,
+            "description": "A value described using a text string, optionally with a controlled vocabulary ID.",
+            "properties": {
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Attribute"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The attribute being represented."
+                },
+                "raw_value": {
+                    "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The text value",
+                    "type": "string"
+                },
+                "value_cv_id": {
+                    "description": "For values in a controlled vocabulary, the CV ID for the value.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "TextValue",
+            "type": "object"
+        },
         "VitrificationMethodEnum": {
             "description": "Methods for vitrification",
             "enum": [
@@ -6826,11 +7120,15 @@
                     ]
                 },
                 "anomalous_completeness": {
-                    "description": "Completeness of anomalous data as percentage",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "anomalous_multiplicity": {
                     "description": "Multiplicity of anomalous data",
@@ -6868,11 +7166,15 @@
                     ]
                 },
                 "completeness_percent": {
-                    "description": "Data completeness percentage",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "compute_resources": {
                     "anyOf": [
@@ -7094,18 +7396,26 @@
                     ]
                 },
                 "ramachandran_favored": {
-                    "description": "Percentage of residues in favored Ramachandran regions",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "ramachandran_outliers": {
-                    "description": "Percentage of Ramachandran outliers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
                 },
                 "refinement_params": {
                     "anyOf": [
@@ -7126,18 +7436,26 @@
                     ]
                 },
                 "resolution_high": {
-                    "description": "High resolution limit",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "High resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_low": {
-                    "description": "Low resolution limit",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Low resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "restraints_other": {
                     "description": "Other restraints applied during refinement",
@@ -7161,18 +7479,26 @@
                     ]
                 },
                 "rmsd_angles": {
-                    "description": "RMSD from ideal bond angles",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "rmsd_bonds": {
-                    "description": "RMSD from ideal bond lengths",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RMSD from ideal bond lengths, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "rpim": {
                     "description": "Rpim - precision-indicating merging R-factor",
@@ -7249,46 +7575,70 @@
                     ]
                 },
                 "unit_cell_a": {
-                    "description": "Unit cell parameter a",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell parameter a, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "unit_cell_alpha": {
-                    "description": "Unit cell angle alpha",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "unit_cell_b": {
-                    "description": "Unit cell parameter b",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell parameter b, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "unit_cell_beta": {
-                    "description": "Unit cell angle beta",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "unit_cell_c": {
-                    "description": "Unit cell parameter c",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell parameter c, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "unit_cell_gamma": {
-                    "description": "Unit cell angle gamma",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "validation_report_path": {
                     "description": "Path to validation report",
@@ -7298,11 +7648,15 @@
                     ]
                 },
                 "wilson_b_factor": {
-                    "description": "Wilson B-factor",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Wilson B-factor, typically specified in Angstroms squared (\u0172). Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "workflow_code": {
                     "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
@@ -7455,22 +7809,30 @@
                     ]
                 },
                 "exposure_time": {
-                    "description": "Exposure time in seconds",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "file_name": {
                     "description": "Image file name",
                     "type": "string"
                 },
                 "flux": {
-                    "description": "Photon flux in photons/second",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",

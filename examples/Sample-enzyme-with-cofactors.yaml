@@ -8,7 +8,9 @@ molecular_composition:
   description: Human ALDH2 tetramer with bound NAD+
   sequences:
   - MGSSLSRVPPTAGPLGSPLLLQEPALEAAGEEEELQDSDADGEEEKAEEEEKEEKAEDEEER...
-molecular_weight: 217.5
+molecular_weight:
+  numeric_value: 217.5
+  unit: kilodaltons
 concentration: 5.0
 concentration_unit: mg_per_ml
 functional_sites:

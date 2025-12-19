@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:optical_img_001 a lambdaber:OpticalImage ;
@@ -16,7 +17,9 @@ lambdaber:optical_img_001 a lambdaber:OpticalImage ;
     lambdaber:dimensions_x 4096 ;
     lambdaber:dimensions_y 3072 ;
     lambdaber:dose "0.0"^^xsd:float ;
-    lambdaber:exposure_time "0.05"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.05"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "tissue_section_h&e_10x.tif" ;
     lambdaber:illumination_type "brightfield" ;
     lambdaber:magnification "10.0"^^xsd:float ;

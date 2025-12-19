@@ -6,7 +6,7 @@ An experimental data collection session
 URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;wavelength:float%20%3F;oscillation_angle:float%20%3F;start_angle:float%20%3F;number_of_images:integer%20%3F;beam_center_x:float%20%3F;beam_center_y:float%20%3F;detector_distance:float%20%3F;pixel_size_x:float%20%3F;pixel_size_y:float%20%3F;total_rotation:float%20%3F;beamline:string%20%3F;transmission:float%20%3F;flux:float%20%3F;flux_end:float%20%3F;slit_gap_horizontal:float%20%3F;slit_gap_vertical:float%20%3F;undulator_gap:float%20%3F;synchrotron_mode:string%20%3F;exposure_time:float%20%3F;start_time:string%20%3F;end_time:string%20%3F;resolution:float%20%3F;resolution_at_corner:float%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])](https://yuml.me/diagram/nofunky;dir:TB/class/[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;wavelength:float%20%3F;oscillation_angle:float%20%3F;start_angle:float%20%3F;number_of_images:integer%20%3F;beam_center_x:float%20%3F;beam_center_y:float%20%3F;detector_distance:float%20%3F;pixel_size_x:float%20%3F;pixel_size_y:float%20%3F;total_rotation:float%20%3F;beamline:string%20%3F;transmission:float%20%3F;flux:float%20%3F;flux_end:float%20%3F;slit_gap_horizontal:float%20%3F;slit_gap_vertical:float%20%3F;undulator_gap:float%20%3F;synchrotron_mode:string%20%3F;exposure_time:float%20%3F;start_time:string%20%3F;end_time:string%20%3F;resolution:float%20%3F;resolution_at_corner:float%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;number_of_images:integer%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QualityMetrics],[NamedThing],[Instrument],[ExperimentalConditions],[QuantityValue]<resolution_at_corner%200..1-++[ExperimentRun&#124;experiment_code:string;sample_id:string;experiment_date:string%20%3F;operator_id:string%20%3F;technique:TechniqueEnum;experimental_method:ExperimentalMethodEnum%20%3F;raw_data_location:string%20%3F;processing_status:ProcessingStatusEnum%20%3F;magnification:integer%20%3F;calibrated_pixel_size:float%20%3F;camera_binning:float%20%3F;exposure_time_per_frame:float%20%3F;frames_per_movie:integer%20%3F;total_exposure_time:float%20%3F;total_dose:float%20%3F;dose_rate:float%20%3F;defocus_target:float%20%3F;defocus_range_min:float%20%3F;defocus_range_max:float%20%3F;defocus_range_increment:float%20%3F;astigmatism_target:float%20%3F;coma:float%20%3F;stage_tilt:float%20%3F;autoloader_slot:string%20%3F;shots_per_hole:integer%20%3F;holes_per_group:integer%20%3F;acquisition_software:string%20%3F;acquisition_software_version:string%20%3F;number_of_images:integer%20%3F;beamline:string%20%3F;synchrotron_mode:string%20%3F;start_time:string%20%3F;end_time:string%20%3F;ispyb_data_collection_id:integer%20%3F;ispyb_session_id:integer%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<resolution%200..1-++[ExperimentRun],[QuantityValue]<exposure_time%200..1-++[ExperimentRun],[QuantityValue]<undulator_gap%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_vertical%200..1-++[ExperimentRun],[QuantityValue]<slit_gap_horizontal%200..1-++[ExperimentRun],[QuantityValue]<flux_end%200..1-++[ExperimentRun],[QuantityValue]<flux%200..1-++[ExperimentRun],[QuantityValue]<transmission%200..1-++[ExperimentRun],[QuantityValue]<total_rotation%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_y%200..1-++[ExperimentRun],[QuantityValue]<pixel_size_x%200..1-++[ExperimentRun],[QuantityValue]<detector_distance%200..1-++[ExperimentRun],[QuantityValue]<beam_center_y%200..1-++[ExperimentRun],[QuantityValue]<beam_center_x%200..1-++[ExperimentRun],[QuantityValue]<start_angle%200..1-++[ExperimentRun],[QuantityValue]<oscillation_angle%200..1-++[ExperimentRun],[QuantityValue]<wavelength%200..1-++[ExperimentRun],[QualityMetrics]<quality_metrics%200..1-++[ExperimentRun],[DataCollectionStrategy]<data_collection_strategy%200..1-++[ExperimentRun],[ExperimentalConditions]<experimental_conditions%200..1-++[ExperimentRun],[Instrument]<instrument_id%201..1-%20[ExperimentRun],[Study]++-%20instrument_runs%200..*>[ExperimentRun],[NamedThing]^-[ExperimentRun],[Study],[DataCollectionStrategy])
 
 ## Parents
 
@@ -118,62 +118,62 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
      * Description: Version of acquisition software
      * Range: [String](types/String.md)
  * [➞wavelength](experimentRun__wavelength.md)  <sub>0..1</sub>
-     * Description: X-ray wavelength
-     * Range: [Float](types/Float.md)
+     * Description: X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞oscillation_angle](experimentRun__oscillation_angle.md)  <sub>0..1</sub>
-     * Description: Oscillation angle per image
-     * Range: [Float](types/Float.md)
+     * Description: Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞start_angle](experimentRun__start_angle.md)  <sub>0..1</sub>
-     * Description: Starting rotation angle
-     * Range: [Float](types/Float.md)
+     * Description: Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞number_of_images](experimentRun__number_of_images.md)  <sub>0..1</sub>
      * Description: Total number of diffraction images collected
      * Range: [Integer](types/Integer.md)
  * [➞beam_center_x](experimentRun__beam_center_x.md)  <sub>0..1</sub>
-     * Description: Beam center X coordinate
-     * Range: [Float](types/Float.md)
+     * Description: Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beam_center_y](experimentRun__beam_center_y.md)  <sub>0..1</sub>
-     * Description: Beam center Y coordinate
-     * Range: [Float](types/Float.md)
+     * Description: Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞detector_distance](experimentRun__detector_distance.md)  <sub>0..1</sub>
-     * Description: Distance from sample to detector
-     * Range: [Float](types/Float.md)
+     * Description: Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞pixel_size_x](experimentRun__pixel_size_x.md)  <sub>0..1</sub>
-     * Description: Pixel size X dimension
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞pixel_size_y](experimentRun__pixel_size_y.md)  <sub>0..1</sub>
-     * Description: Pixel size Y dimension
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞total_rotation](experimentRun__total_rotation.md)  <sub>0..1</sub>
-     * Description: Total rotation range collected
-     * Range: [Float](types/Float.md)
+     * Description: Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞beamline](experimentRun__beamline.md)  <sub>0..1</sub>
      * Description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
      * Range: [String](types/String.md)
  * [➞transmission](experimentRun__transmission.md)  <sub>0..1</sub>
-     * Description: X-ray beam transmission as percentage (0-100)
-     * Range: [Float](types/Float.md)
+     * Description: X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞flux](experimentRun__flux.md)  <sub>0..1</sub>
-     * Description: Photon flux at sample position in photons/second
-     * Range: [Float](types/Float.md)
+     * Description: Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞flux_end](experimentRun__flux_end.md)  <sub>0..1</sub>
-     * Description: Photon flux at end of data collection in photons/second
-     * Range: [Float](types/Float.md)
+     * Description: Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞slit_gap_horizontal](experimentRun__slit_gap_horizontal.md)  <sub>0..1</sub>
-     * Description: Horizontal slit gap aperture in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞slit_gap_vertical](experimentRun__slit_gap_vertical.md)  <sub>0..1</sub>
-     * Description: Vertical slit gap aperture in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞undulator_gap](experimentRun__undulator_gap.md)  <sub>0..1</sub>
-     * Description: Undulator gap setting in millimeters
-     * Range: [Float](types/Float.md)
+     * Description: Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞synchrotron_mode](experimentRun__synchrotron_mode.md)  <sub>0..1</sub>
      * Description: Synchrotron storage ring fill mode
      * Range: [String](types/String.md)
  * [➞exposure_time](experimentRun__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time per image in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞start_time](experimentRun__start_time.md)  <sub>0..1</sub>
      * Description: Data collection start timestamp
      * Range: [String](types/String.md)
@@ -181,11 +181,11 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
      * Description: Data collection end timestamp
      * Range: [String](types/String.md)
  * [➞resolution](experimentRun__resolution.md)  <sub>0..1</sub>
-     * Description: Resolution at edge of detector in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞resolution_at_corner](experimentRun__resolution_at_corner.md)  <sub>0..1</sub>
-     * Description: Resolution at corner of detector in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ispyb_data_collection_id](experimentRun__ispyb_data_collection_id.md)  <sub>0..1</sub>
      * Description: ISPyB DataCollection.dataCollectionId for traceability
      * Range: [Integer](types/Integer.md)

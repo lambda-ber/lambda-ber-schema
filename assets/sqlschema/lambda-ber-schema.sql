@@ -17,7 +17,6 @@
 -- # Class: Sample Description: A biological sample used in structural biology experiments
 --     * Slot: sample_code Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 --     * Slot: sample_type Description: Type of biological sample
---     * Slot: molecular_weight Description: Molecular weight in kDa
 --     * Slot: concentration Description: Sample concentration in mg/mL or µM
 --     * Slot: concentration_unit Description: Unit of concentration measurement
 --     * Slot: preparation_method Description: Method used to prepare the sample
@@ -38,6 +37,7 @@
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Study_id Description: Autocreated FK slot
 --     * Slot: molecular_composition_id Description: Description of molecular composition including sequences, modifications, ligands
+--     * Slot: molecular_weight_id Description: Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.
 --     * Slot: buffer_composition_id Description: Buffer composition including pH, salts, additives
 --     * Slot: storage_conditions_id Description: Storage conditions for the sample
 --     * Slot: evolutionary_conservation_id Description: Evolutionary conservation data
@@ -76,10 +76,8 @@
 --     * Slot: protocol_description Description: Detailed protocol description
 --     * Slot: expression_system Description: Expression system used for recombinant protein production
 --     * Slot: host_strain_or_cell_line Description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
---     * Slot: culture_volume_l Description: Culture volume in liters
 --     * Slot: medium Description: Growth medium used
 --     * Slot: antibiotic_selection Description: Antibiotic or selection agent used
---     * Slot: growth_temperature_c Description: Growth temperature in Celsius
 --     * Slot: induction_agent Description: Agent used to induce expression (e.g., IPTG, tetracycline)
 --     * Slot: inducer_concentration Description: Concentration of induction agent
 --     * Slot: induction_temperature_c Description: Temperature during induction in Celsius
@@ -114,6 +112,8 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: culture_volume_l_id Description: Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: growth_temperature_c_id Description: Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
 -- # Class: Instrument Description: An instrument used to collect data
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
@@ -262,29 +262,11 @@
 --     * Slot: holes_per_group Description: Number of holes per group
 --     * Slot: acquisition_software Description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
 --     * Slot: acquisition_software_version Description: Version of acquisition software
---     * Slot: wavelength Description: X-ray wavelength
---     * Slot: oscillation_angle Description: Oscillation angle per image
---     * Slot: start_angle Description: Starting rotation angle
 --     * Slot: number_of_images Description: Total number of diffraction images collected
---     * Slot: beam_center_x Description: Beam center X coordinate
---     * Slot: beam_center_y Description: Beam center Y coordinate
---     * Slot: detector_distance Description: Distance from sample to detector
---     * Slot: pixel_size_x Description: Pixel size X dimension
---     * Slot: pixel_size_y Description: Pixel size Y dimension
---     * Slot: total_rotation Description: Total rotation range collected
 --     * Slot: beamline Description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
---     * Slot: transmission Description: X-ray beam transmission as percentage (0-100)
---     * Slot: flux Description: Photon flux at sample position in photons/second
---     * Slot: flux_end Description: Photon flux at end of data collection in photons/second
---     * Slot: slit_gap_horizontal Description: Horizontal slit gap aperture in micrometers
---     * Slot: slit_gap_vertical Description: Vertical slit gap aperture in micrometers
---     * Slot: undulator_gap Description: Undulator gap setting in millimeters
 --     * Slot: synchrotron_mode Description: Synchrotron storage ring fill mode
---     * Slot: exposure_time Description: Exposure time per image in seconds
 --     * Slot: start_time Description: Data collection start timestamp
 --     * Slot: end_time Description: Data collection end timestamp
---     * Slot: resolution Description: Resolution at edge of detector in Angstroms
---     * Slot: resolution_at_corner Description: Resolution at corner of detector in Angstroms
 --     * Slot: ispyb_data_collection_id Description: ISPyB DataCollection.dataCollectionId for traceability
 --     * Slot: ispyb_session_id Description: ISPyB BLSession.sessionId
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
@@ -294,6 +276,24 @@
 --     * Slot: experimental_conditions_id Description: Environmental and experimental conditions
 --     * Slot: data_collection_strategy_id Description: Strategy for data collection
 --     * Slot: quality_metrics_id Description: Quality metrics for the experiment
+--     * Slot: wavelength_id Description: X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: oscillation_angle_id Description: Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: start_angle_id Description: Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: beam_center_x_id Description: Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: beam_center_y_id Description: Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: detector_distance_id Description: Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_x_id Description: Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
+--     * Slot: pixel_size_y_id Description: Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
+--     * Slot: total_rotation_id Description: Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: transmission_id Description: X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+--     * Slot: flux_id Description: Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: flux_end_id Description: Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: slit_gap_horizontal_id Description: Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: slit_gap_vertical_id Description: Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: undulator_gap_id Description: Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.
+--     * Slot: exposure_time_id Description: Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: resolution_id Description: Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: resolution_at_corner_id Description: Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: WorkflowRun Description: A computational processing workflow execution
 --     * Slot: workflow_code Description: Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
 --     * Slot: workflow_type Description: Type of processing workflow
@@ -320,22 +320,11 @@
 --     * Slot: pdb_id Description: PDB accession code if deposited
 --     * Slot: validation_report_path Description: Path to validation report
 --     * Slot: space_group Description: Crystallographic space group
---     * Slot: unit_cell_a Description: Unit cell parameter a
---     * Slot: unit_cell_b Description: Unit cell parameter b
---     * Slot: unit_cell_c Description: Unit cell parameter c
---     * Slot: unit_cell_alpha Description: Unit cell angle alpha
---     * Slot: unit_cell_beta Description: Unit cell angle beta
---     * Slot: unit_cell_gamma Description: Unit cell angle gamma
---     * Slot: resolution_high Description: High resolution limit
---     * Slot: resolution_low Description: Low resolution limit
 --     * Slot: rmerge Description: Rmerge - merge R-factor
 --     * Slot: rpim Description: Rpim - precision-indicating merging R-factor
 --     * Slot: cc_half Description: Half-set correlation coefficient CC(1/2)
---     * Slot: completeness_percent Description: Data completeness percentage
 --     * Slot: i_over_sigma Description: Mean I/sigma(I) - signal to noise ratio
---     * Slot: wilson_b_factor Description: Wilson B-factor
 --     * Slot: multiplicity Description: Data multiplicity (redundancy)
---     * Slot: anomalous_completeness Description: Completeness of anomalous data as percentage
 --     * Slot: anomalous_multiplicity Description: Multiplicity of anomalous data
 --     * Slot: cc_anomalous Description: Anomalous correlation coefficient
 --     * Slot: r_anomalous Description: Anomalous R-factor
@@ -346,10 +335,6 @@
 --     * Slot: ispyb_auto_proc_scaling_id Description: ISPyB AutoProcScaling.autoProcScalingId
 --     * Slot: rwork Description: Refinement R-factor (working set)
 --     * Slot: rfree Description: R-free (test set)
---     * Slot: rmsd_bonds Description: RMSD from ideal bond lengths
---     * Slot: rmsd_angles Description: RMSD from ideal bond angles
---     * Slot: ramachandran_favored Description: Percentage of residues in favored Ramachandran regions
---     * Slot: ramachandran_outliers Description: Percentage of Ramachandran outliers
 --     * Slot: clashscore Description: MolProbity clashscore
 --     * Slot: processing_notes Description: Additional notes about processing
 --     * Slot: started_at Description: Workflow start time
@@ -358,6 +343,21 @@
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: unit_cell_a_id Description: Unit cell parameter a, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: unit_cell_b_id Description: Unit cell parameter b, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: unit_cell_c_id Description: Unit cell parameter c, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: unit_cell_alpha_id Description: Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: unit_cell_beta_id Description: Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: unit_cell_gamma_id Description: Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: resolution_high_id Description: High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: resolution_low_id Description: Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: completeness_percent_id Description: Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+--     * Slot: wilson_b_factor_id Description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: anomalous_completeness_id Description: Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+--     * Slot: rmsd_bonds_id Description: RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: rmsd_angles_id Description: RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: ramachandran_favored_id Description: Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+--     * Slot: ramachandran_outliers_id Description: Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 --     * Slot: compute_resources_id Description: Computational resources used
 --     * Slot: motion_correction_params_id Description: Motion correction specific parameters
 --     * Slot: ctf_estimation_params_id Description: CTF estimation specific parameters
@@ -385,12 +385,12 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Image2D Description: A 2D image (micrograph, diffraction pattern)
 --     * Slot: defocus Description: Defocus value in micrometers
 --     * Slot: astigmatism Description: Astigmatism value in Angstroms
@@ -399,11 +399,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Image3D Description: A 3D volume or tomogram
 --     * Slot: dimensions_z Description: Image depth in pixels/slices
 --     * Slot: voxel_size Description: Voxel size in Angstroms
@@ -413,11 +413,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Movie Description: Raw cryo-EM movie with frame-by-frame metadata for motion correction
 --     * Slot: frames Description: Number of frames in the movie
 --     * Slot: super_resolution Description: Whether super-resolution mode was used
@@ -441,11 +441,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Micrograph Description: Motion-corrected micrograph derived from movie
 --     * Slot: dose Description: Total electron dose in e-/Angstrom^2
 --     * Slot: origin_movie_id Description: Reference to original movie file
@@ -461,10 +461,10 @@
 --     * Slot: pixel_size Description: Final pixel size in Angstroms per pixel
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: FTIRImage Description: Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
 --     * Slot: wavenumber_min Description: Minimum wavenumber in cm⁻¹
 --     * Slot: wavenumber_max Description: Maximum wavenumber in cm⁻¹
@@ -477,11 +477,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: FluorescenceImage Description: Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 --     * Slot: excitation_wavelength Description: Excitation wavelength in nanometers
 --     * Slot: emission_wavelength Description: Emission wavelength in nanometers
@@ -499,11 +499,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: OpticalImage Description: Visible light optical microscopy or photography image
 --     * Slot: illumination_type Description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
 --     * Slot: magnification Description: Optical magnification factor
@@ -517,11 +517,11 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: XRFImage Description: X-ray fluorescence (XRF) image showing elemental distribution
 --     * Slot: beam_energy Description: X-ray beam energy in keV
 --     * Slot: beam_size Description: X-ray beam size in micrometers
@@ -529,7 +529,6 @@
 --     * Slot: source_type Description: X-ray source type (synchrotron or lab-source)
 --     * Slot: detector_technology Description: Type of X-ray detector technology used
 --     * Slot: detector_model Description: Specific detector model used for XRF measurement
---     * Slot: flux Description: Photon flux in photons/second
 --     * Slot: calibration_standard Description: Reference standard used for calibration
 --     * Slot: defocus Description: Defocus value in micrometers
 --     * Slot: astigmatism Description: Astigmatism value in Angstroms
@@ -538,11 +537,12 @@
 --     * Slot: pixel_size Description: Pixel size in Angstroms
 --     * Slot: dimensions_x Description: Image width in pixels
 --     * Slot: dimensions_y Description: Image height in pixels
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: flux_id Description: Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: ImageFeature Description: Semantic annotations describing features identified in images using controlled vocabulary terms
 --     * Slot: id
 --     * Slot: description
@@ -655,8 +655,8 @@
 --     * Slot: pressure Description: Pressure in kPa
 --     * Slot: atmosphere Description: Atmosphere composition
 --     * Slot: beam_energy Description: Beam energy in keV
---     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: description
+--     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: DataCollectionStrategy Description: Strategy for data collection
 --     * Slot: id
 --     * Slot: collection_mode Description: Mode of data collection
@@ -666,7 +666,6 @@
 --     * Slot: dose_per_frame Description: Dose per frame
 --     * Slot: wavelength_a Description: X-ray wavelength in Angstroms
 --     * Slot: detector_mode Description: Detector operating mode used during this experiment
---     * Slot: pixel_size_calibrated Description: Calibrated pixel size for this experiment
 --     * Slot: detector_distance_mm Description: Detector distance in millimeters
 --     * Slot: beam_center_x_px Description: Beam center X coordinate in pixels
 --     * Slot: beam_center_y_px Description: Beam center Y coordinate in pixels
@@ -679,9 +678,9 @@
 --     * Slot: total_rotation_deg Description: Total rotation range in degrees
 --     * Slot: strategy_notes Description: Notes about data collection strategy
 --     * Slot: description
+--     * Slot: pixel_size_calibrated_id Description: Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: QualityMetrics Description: Quality metrics for experiments
 --     * Slot: id
---     * Slot: resolution Description: Resolution in Angstroms
 --     * Slot: resolution_high_shell_a Description: High resolution shell limit in Angstroms
 --     * Slot: resolution_low_a Description: Low resolution limit in Angstroms
 --     * Slot: completeness Description: Data completeness percentage
@@ -714,6 +713,7 @@
 --     * Slot: rg Description: Radius of gyration in Angstroms
 --     * Slot: r_factor Description: R-factor for crystallography (deprecated, use r_work)
 --     * Slot: description
+--     * Slot: resolution_id Description: Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: ComputeResources Description: Computational resources used
 --     * Slot: id
 --     * Slot: cpu_hours Description: CPU hours used
@@ -766,6 +766,36 @@
 -- # Class: FSCCurve Description: Fourier Shell Correlation curve data.The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
 --     * Slot: id
 --     * Slot: description
+-- # Class: Any
+--     * Slot: id
+-- # Abstract Class: AttributeValue Description: The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
+--     * Slot: id
+--     * Slot: raw_value Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+--     * Slot: attribute_uid Description: The attribute being represented.
+-- # Class: Attribute Description: A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
+--     * Slot: uid
+--     * Slot: id Description: A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.
+--     * Slot: label Description: Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.
+-- # Class: QuantityValue Description: A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+--     * Slot: id
+--     * Slot: maximum_numeric_value Description: The maximum value part, expressed as a number, of the quantity value when the value covers a range.
+--     * Slot: minimum_numeric_value Description: The minimum value part, expressed as a number, of the quantity value when the value covers a range.
+--     * Slot: numeric_value Description: The numerical value of the quantity
+--     * Slot: unit Description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
+--     * Slot: unit_cv_id Description: The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).
+--     * Slot: raw_value Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+--     * Slot: attribute_uid Description: The attribute being represented.
+-- # Class: TextValue Description: A value described using a text string, optionally with a controlled vocabulary ID.
+--     * Slot: id
+--     * Slot: value Description: The text value
+--     * Slot: value_cv_id Description: For values in a controlled vocabulary, the CV ID for the value.
+--     * Slot: raw_value Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+--     * Slot: attribute_uid Description: The attribute being represented.
+-- # Class: DateTimeValue Description: A date or date and time value.
+--     * Slot: id
+--     * Slot: value Description: The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.
+--     * Slot: raw_value Description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+--     * Slot: attribute_uid Description: The attribute being represented.
 -- # Class: ProteinAnnotation Description: Base class for all protein-related functional and structural annotations
 --     * Slot: protein_id Description: UniProt accession number
 --     * Slot: pdb_entry Description: PDB identifier
@@ -1219,174 +1249,6 @@ CREATE TABLE "BeamlineInstrument" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_BeamlineInstrument_id" ON "BeamlineInstrument" (id);
-CREATE TABLE "Image2D" (
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_Image2D_id" ON "Image2D" (id);
-CREATE TABLE "Image3D" (
-	dimensions_z INTEGER,
-	voxel_size FLOAT,
-	reconstruction_method TEXT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_Image3D_id" ON "Image3D" (id);
-CREATE TABLE "Movie" (
-	frames INTEGER,
-	super_resolution BOOLEAN,
-	pixel_size_unbinned FLOAT,
-	timestamp TEXT,
-	stage_position_x FLOAT,
-	stage_position_y FLOAT,
-	stage_position_z FLOAT,
-	nominal_defocus FLOAT,
-	dose_per_frame FLOAT,
-	beam_shift_x FLOAT,
-	beam_shift_y FLOAT,
-	ice_thickness_estimate FLOAT,
-	grid_square_id TEXT,
-	hole_id TEXT,
-	acquisition_group TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_Movie_id" ON "Movie" (id);
-CREATE TABLE "Micrograph" (
-	dose FLOAT,
-	origin_movie_id TEXT,
-	defocus_u FLOAT,
-	defocus_v FLOAT,
-	astigmatism_angle FLOAT,
-	resolution_fit_limit FLOAT,
-	ctf_quality_score FLOAT,
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_Micrograph_id" ON "Micrograph" (id);
-CREATE TABLE "FTIRImage" (
-	wavenumber_min FLOAT,
-	wavenumber_max FLOAT,
-	spectral_resolution FLOAT,
-	number_of_scans INTEGER,
-	apodization_function TEXT,
-	background_correction TEXT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_FTIRImage_id" ON "FTIRImage" (id);
-CREATE TABLE "FluorescenceImage" (
-	excitation_wavelength FLOAT,
-	emission_wavelength FLOAT,
-	excitation_filter TEXT,
-	emission_filter TEXT,
-	fluorophore TEXT,
-	channel_name TEXT,
-	laser_power FLOAT,
-	pinhole_size FLOAT,
-	quantum_yield FLOAT,
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_FluorescenceImage_id" ON "FluorescenceImage" (id);
-CREATE TABLE "OpticalImage" (
-	illumination_type VARCHAR(14),
-	magnification FLOAT,
-	numerical_aperture FLOAT,
-	white_balance TEXT,
-	contrast_method TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_OpticalImage_id" ON "OpticalImage" (id);
-CREATE TABLE "XRFImage" (
-	beam_energy FLOAT,
-	beam_size FLOAT,
-	dwell_time FLOAT,
-	source_type VARCHAR(14),
-	detector_technology VARCHAR(24),
-	detector_model TEXT,
-	flux FLOAT,
-	calibration_standard TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
-	file_name TEXT NOT NULL,
-	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
-	exposure_time FLOAT,
-	dose FLOAT,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_XRFImage_id" ON "XRFImage" (id);
 CREATE TABLE "ImageFeature" (
 	id INTEGER NOT NULL,
 	description TEXT,
@@ -1471,78 +1333,6 @@ CREATE TABLE "SAXSPreparation" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_SAXSPreparation_id" ON "SAXSPreparation" (id);
-CREATE TABLE "ExperimentalConditions" (
-	id INTEGER NOT NULL,
-	temperature FLOAT,
-	humidity FLOAT,
-	pressure FLOAT,
-	atmosphere TEXT,
-	beam_energy FLOAT,
-	exposure_time FLOAT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_ExperimentalConditions_id" ON "ExperimentalConditions" (id);
-CREATE TABLE "DataCollectionStrategy" (
-	id INTEGER NOT NULL,
-	collection_mode VARCHAR(16),
-	total_frames INTEGER,
-	frame_rate FLOAT,
-	total_dose FLOAT,
-	dose_per_frame FLOAT,
-	wavelength_a FLOAT,
-	detector_mode VARCHAR(26),
-	pixel_size_calibrated FLOAT,
-	detector_distance_mm FLOAT,
-	beam_center_x_px INTEGER,
-	beam_center_y_px INTEGER,
-	beam_size_um FLOAT,
-	flux_photons_per_s FLOAT,
-	transmission_percent FLOAT,
-	attenuator TEXT,
-	temperature_k FLOAT,
-	oscillation_per_image_deg FLOAT,
-	total_rotation_deg FLOAT,
-	strategy_notes TEXT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_DataCollectionStrategy_id" ON "DataCollectionStrategy" (id);
-CREATE TABLE "QualityMetrics" (
-	id INTEGER NOT NULL,
-	resolution FLOAT,
-	resolution_high_shell_a FLOAT,
-	resolution_low_a FLOAT,
-	completeness FLOAT,
-	completeness_high_res_shell_percent FLOAT,
-	signal_to_noise FLOAT,
-	mean_i_over_sigma_i FLOAT,
-	space_group TEXT,
-	unit_cell_a FLOAT,
-	unit_cell_b FLOAT,
-	unit_cell_c FLOAT,
-	unit_cell_alpha FLOAT,
-	unit_cell_beta FLOAT,
-	unit_cell_gamma FLOAT,
-	multiplicity FLOAT,
-	cc_half FLOAT,
-	r_merge FLOAT,
-	r_pim FLOAT,
-	wilson_b_factor_a2 FLOAT,
-	anomalous_used BOOLEAN,
-	anom_corr FLOAT,
-	anom_sig_ano FLOAT,
-	r_work FLOAT,
-	r_free FLOAT,
-	ramachandran_favored_percent FLOAT,
-	ramachandran_outliers_percent FLOAT,
-	clashscore FLOAT,
-	molprobity_score FLOAT,
-	average_b_factor_a2 FLOAT,
-	i_zero FLOAT,
-	rg FLOAT,
-	r_factor FLOAT,
-	description TEXT,
-	PRIMARY KEY (id)
-);CREATE INDEX "ix_QualityMetrics_id" ON "QualityMetrics" (id);
 CREATE TABLE "ComputeResources" (
 	id INTEGER NOT NULL,
 	cpu_hours FLOAT,
@@ -1607,6 +1397,16 @@ CREATE TABLE "FSCCurve" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_FSCCurve_id" ON "FSCCurve" (id);
+CREATE TABLE "Any" (
+	id INTEGER NOT NULL,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_Any_id" ON "Any" (id);
+CREATE TABLE "Attribute" (
+	uid INTEGER NOT NULL,
+	id TEXT,
+	label TEXT NOT NULL,
+	PRIMARY KEY (uid)
+);CREATE INDEX "ix_Attribute_uid" ON "Attribute" (uid);
 CREATE TABLE "ProteinAnnotation" (
 	protein_id TEXT NOT NULL,
 	pdb_entry TEXT,
@@ -1721,6 +1521,42 @@ CREATE TABLE "XRayPreparation" (
 	PRIMARY KEY (id),
 	FOREIGN KEY(crystallization_conditions_id) REFERENCES "CrystallizationConditions" (id)
 );CREATE INDEX "ix_XRayPreparation_id" ON "XRayPreparation" (id);
+CREATE TABLE "AttributeValue" (
+	id INTEGER NOT NULL,
+	raw_value TEXT,
+	attribute_uid INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(attribute_uid) REFERENCES "Attribute" (uid)
+);CREATE INDEX "ix_AttributeValue_id" ON "AttributeValue" (id);
+CREATE TABLE "QuantityValue" (
+	id INTEGER NOT NULL,
+	maximum_numeric_value FLOAT,
+	minimum_numeric_value FLOAT,
+	numeric_value FLOAT NOT NULL,
+	unit TEXT NOT NULL,
+	unit_cv_id TEXT,
+	raw_value TEXT,
+	attribute_uid INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(attribute_uid) REFERENCES "Attribute" (uid)
+);CREATE INDEX "ix_QuantityValue_id" ON "QuantityValue" (id);
+CREATE TABLE "TextValue" (
+	id INTEGER NOT NULL,
+	value TEXT NOT NULL,
+	value_cv_id TEXT,
+	raw_value TEXT,
+	attribute_uid INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(attribute_uid) REFERENCES "Attribute" (uid)
+);CREATE INDEX "ix_TextValue_id" ON "TextValue" (id);
+CREATE TABLE "DateTimeValue" (
+	id INTEGER NOT NULL,
+	value TEXT NOT NULL,
+	raw_value TEXT,
+	attribute_uid INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(attribute_uid) REFERENCES "Attribute" (uid)
+);CREATE INDEX "ix_DateTimeValue_id" ON "DateTimeValue" (id);
 CREATE TABLE "ConformationalState" (
 	id INTEGER NOT NULL,
 	state_id TEXT NOT NULL,
@@ -1738,31 +1574,13 @@ CREATE TABLE "Dataset_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Dataset_id", keywords),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");
+);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(20) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
 );CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
-CREATE TABLE "FTIRImage_molecular_signatures" (
-	"FTIRImage_id" TEXT,
-	molecular_signatures TEXT,
-	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
-	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
-CREATE TABLE "OpticalImage_color_channels" (
-	"OpticalImage_id" TEXT,
-	color_channels TEXT,
-	PRIMARY KEY ("OpticalImage_id", color_channels),
-	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
-CREATE TABLE "XRFImage_elements_measured" (
-	"XRFImage_id" TEXT,
-	elements_measured TEXT,
-	PRIMARY KEY ("XRFImage_id", elements_measured),
-	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
@@ -1792,7 +1610,7 @@ CREATE TABLE "BufferComposition_additives" (
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
 CREATE TABLE "SAXSPreparation_concentration_series" (
 	"SAXSPreparation_id" INTEGER,
 	concentration_series FLOAT,
@@ -1816,7 +1634,7 @@ CREATE TABLE "ProteinAnnotation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
@@ -1850,7 +1668,6 @@ CREATE TABLE "EvolutionaryConservation_publication_ids" (
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
-	molecular_weight FLOAT,
 	concentration FLOAT,
 	concentration_unit VARCHAR(10),
 	preparation_method TEXT,
@@ -1871,6 +1688,7 @@ CREATE TABLE "Sample" (
 	description TEXT,
 	"Study_id" TEXT,
 	molecular_composition_id INTEGER,
+	molecular_weight_id INTEGER,
 	buffer_composition_id INTEGER,
 	storage_conditions_id INTEGER,
 	evolutionary_conservation_id TEXT,
@@ -1882,6 +1700,7 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(parent_sample_id) REFERENCES "Sample" (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
 	FOREIGN KEY(molecular_composition_id) REFERENCES "MolecularComposition" (id),
+	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(buffer_composition_id) REFERENCES "BufferComposition" (id),
 	FOREIGN KEY(storage_conditions_id) REFERENCES "StorageConditions" (id),
 	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id),
@@ -1924,10 +1743,8 @@ CREATE TABLE "SamplePreparation" (
 	protocol_description TEXT,
 	expression_system VARCHAR(9),
 	host_strain_or_cell_line TEXT,
-	culture_volume_l FLOAT,
 	medium TEXT,
 	antibiotic_selection TEXT,
-	growth_temperature_c FLOAT,
 	induction_agent TEXT,
 	inducer_concentration TEXT,
 	induction_temperature_c FLOAT,
@@ -1962,78 +1779,13 @@ CREATE TABLE "SamplePreparation" (
 	title TEXT,
 	description TEXT,
 	"Study_id" TEXT,
+	culture_volume_l_id INTEGER,
+	growth_temperature_c_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
-);CREATE INDEX "ix_SamplePreparation_id" ON "SamplePreparation" (id);
-CREATE TABLE "ExperimentRun" (
-	experiment_code TEXT NOT NULL,
-	sample_id TEXT NOT NULL,
-	instrument_id TEXT NOT NULL,
-	experiment_date TEXT,
-	operator_id TEXT,
-	technique VARCHAR(20) NOT NULL,
-	experimental_method VARCHAR(20),
-	raw_data_location TEXT,
-	processing_status VARCHAR(13),
-	magnification INTEGER,
-	calibrated_pixel_size FLOAT,
-	camera_binning FLOAT,
-	exposure_time_per_frame FLOAT,
-	frames_per_movie INTEGER,
-	total_exposure_time FLOAT,
-	total_dose FLOAT,
-	dose_rate FLOAT,
-	defocus_target FLOAT,
-	defocus_range_min FLOAT,
-	defocus_range_max FLOAT,
-	defocus_range_increment FLOAT,
-	astigmatism_target FLOAT,
-	coma FLOAT,
-	stage_tilt FLOAT,
-	autoloader_slot TEXT,
-	shots_per_hole INTEGER,
-	holes_per_group INTEGER,
-	acquisition_software TEXT,
-	acquisition_software_version TEXT,
-	wavelength FLOAT,
-	oscillation_angle FLOAT,
-	start_angle FLOAT,
-	number_of_images INTEGER,
-	beam_center_x FLOAT,
-	beam_center_y FLOAT,
-	detector_distance FLOAT,
-	pixel_size_x FLOAT,
-	pixel_size_y FLOAT,
-	total_rotation FLOAT,
-	beamline TEXT,
-	transmission FLOAT,
-	flux FLOAT,
-	flux_end FLOAT,
-	slit_gap_horizontal FLOAT,
-	slit_gap_vertical FLOAT,
-	undulator_gap FLOAT,
-	synchrotron_mode TEXT,
-	exposure_time FLOAT,
-	start_time TEXT,
-	end_time TEXT,
-	resolution FLOAT,
-	resolution_at_corner FLOAT,
-	ispyb_data_collection_id INTEGER,
-	ispyb_session_id INTEGER,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"Study_id" TEXT,
-	experimental_conditions_id INTEGER,
-	data_collection_strategy_id INTEGER,
-	quality_metrics_id INTEGER,
-	PRIMARY KEY (id),
-	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
-	FOREIGN KEY(experimental_conditions_id) REFERENCES "ExperimentalConditions" (id),
-	FOREIGN KEY(data_collection_strategy_id) REFERENCES "DataCollectionStrategy" (id),
-	FOREIGN KEY(quality_metrics_id) REFERENCES "QualityMetrics" (id)
-);CREATE INDEX "ix_ExperimentRun_id" ON "ExperimentRun" (id);
+	FOREIGN KEY(culture_volume_l_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(growth_temperature_c_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SamplePreparation_id" ON "SamplePreparation" (id);
 CREATE TABLE "WorkflowRun" (
 	workflow_code TEXT NOT NULL,
 	workflow_type VARCHAR(23) NOT NULL,
@@ -2060,22 +1812,11 @@ CREATE TABLE "WorkflowRun" (
 	pdb_id TEXT,
 	validation_report_path TEXT,
 	space_group TEXT,
-	unit_cell_a FLOAT,
-	unit_cell_b FLOAT,
-	unit_cell_c FLOAT,
-	unit_cell_alpha FLOAT,
-	unit_cell_beta FLOAT,
-	unit_cell_gamma FLOAT,
-	resolution_high FLOAT,
-	resolution_low FLOAT,
 	rmerge FLOAT,
 	rpim FLOAT,
 	cc_half FLOAT,
-	completeness_percent FLOAT,
 	i_over_sigma FLOAT,
-	wilson_b_factor FLOAT,
 	multiplicity FLOAT,
-	anomalous_completeness FLOAT,
 	anomalous_multiplicity FLOAT,
 	cc_anomalous FLOAT,
 	r_anomalous FLOAT,
@@ -2086,10 +1827,6 @@ CREATE TABLE "WorkflowRun" (
 	ispyb_auto_proc_scaling_id INTEGER,
 	rwork FLOAT,
 	rfree FLOAT,
-	rmsd_bonds FLOAT,
-	rmsd_angles FLOAT,
-	ramachandran_favored FLOAT,
-	ramachandran_outliers FLOAT,
 	clashscore FLOAT,
 	processing_notes TEXT,
 	started_at TEXT,
@@ -2098,6 +1835,21 @@ CREATE TABLE "WorkflowRun" (
 	title TEXT,
 	description TEXT,
 	"Study_id" TEXT,
+	unit_cell_a_id INTEGER,
+	unit_cell_b_id INTEGER,
+	unit_cell_c_id INTEGER,
+	unit_cell_alpha_id INTEGER,
+	unit_cell_beta_id INTEGER,
+	unit_cell_gamma_id INTEGER,
+	resolution_high_id INTEGER,
+	resolution_low_id INTEGER,
+	completeness_percent_id INTEGER,
+	wilson_b_factor_id INTEGER,
+	anomalous_completeness_id INTEGER,
+	rmsd_bonds_id INTEGER,
+	rmsd_angles_id INTEGER,
+	ramachandran_favored_id INTEGER,
+	ramachandran_outliers_id INTEGER,
 	compute_resources_id INTEGER,
 	motion_correction_params_id INTEGER,
 	ctf_estimation_params_id INTEGER,
@@ -2106,6 +1858,21 @@ CREATE TABLE "WorkflowRun" (
 	fsc_curve_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY(unit_cell_a_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(unit_cell_b_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(unit_cell_c_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(unit_cell_alpha_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(unit_cell_beta_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(unit_cell_gamma_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(resolution_high_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(resolution_low_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(completeness_percent_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(wilson_b_factor_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(anomalous_completeness_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(rmsd_bonds_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(rmsd_angles_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(ramachandran_favored_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(ramachandran_outliers_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(compute_resources_id) REFERENCES "ComputeResources" (id),
 	FOREIGN KEY(motion_correction_params_id) REFERENCES "MotionCorrectionParameters" (id),
 	FOREIGN KEY(ctf_estimation_params_id) REFERENCES "CTFEstimationParameters" (id),
@@ -2137,15 +1904,268 @@ CREATE TABLE "Image" (
 	pixel_size FLOAT,
 	dimensions_x INTEGER,
 	dimensions_y INTEGER,
-	exposure_time FLOAT,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	"Study_id" TEXT,
+	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
+	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Image_id" ON "Image" (id);
+CREATE TABLE "Image2D" (
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_Image2D_id" ON "Image2D" (id);
+CREATE TABLE "Image3D" (
+	dimensions_z INTEGER,
+	voxel_size FLOAT,
+	reconstruction_method TEXT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_Image3D_id" ON "Image3D" (id);
+CREATE TABLE "Movie" (
+	frames INTEGER,
+	super_resolution BOOLEAN,
+	pixel_size_unbinned FLOAT,
+	timestamp TEXT,
+	stage_position_x FLOAT,
+	stage_position_y FLOAT,
+	stage_position_z FLOAT,
+	nominal_defocus FLOAT,
+	dose_per_frame FLOAT,
+	beam_shift_x FLOAT,
+	beam_shift_y FLOAT,
+	ice_thickness_estimate FLOAT,
+	grid_square_id TEXT,
+	hole_id TEXT,
+	acquisition_group TEXT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_Movie_id" ON "Movie" (id);
+CREATE TABLE "Micrograph" (
+	dose FLOAT,
+	origin_movie_id TEXT,
+	defocus_u FLOAT,
+	defocus_v FLOAT,
+	astigmatism_angle FLOAT,
+	resolution_fit_limit FLOAT,
+	ctf_quality_score FLOAT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_Micrograph_id" ON "Micrograph" (id);
+CREATE TABLE "FTIRImage" (
+	wavenumber_min FLOAT,
+	wavenumber_max FLOAT,
+	spectral_resolution FLOAT,
+	number_of_scans INTEGER,
+	apodization_function TEXT,
+	background_correction TEXT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_FTIRImage_id" ON "FTIRImage" (id);
+CREATE TABLE "FluorescenceImage" (
+	excitation_wavelength FLOAT,
+	emission_wavelength FLOAT,
+	excitation_filter TEXT,
+	emission_filter TEXT,
+	fluorophore TEXT,
+	channel_name TEXT,
+	laser_power FLOAT,
+	pinhole_size FLOAT,
+	quantum_yield FLOAT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_FluorescenceImage_id" ON "FluorescenceImage" (id);
+CREATE TABLE "OpticalImage" (
+	illumination_type VARCHAR(14),
+	magnification FLOAT,
+	numerical_aperture FLOAT,
+	white_balance TEXT,
+	contrast_method TEXT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_OpticalImage_id" ON "OpticalImage" (id);
+CREATE TABLE "XRFImage" (
+	beam_energy FLOAT,
+	beam_size FLOAT,
+	dwell_time FLOAT,
+	source_type VARCHAR(14),
+	detector_technology VARCHAR(24),
+	detector_model TEXT,
+	calibration_standard TEXT,
+	defocus FLOAT,
+	astigmatism FLOAT,
+	file_name TEXT NOT NULL,
+	acquisition_date TEXT,
+	pixel_size FLOAT,
+	dimensions_x INTEGER,
+	dimensions_y INTEGER,
+	dose FLOAT,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	flux_id INTEGER,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(flux_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_XRFImage_id" ON "XRFImage" (id);
+CREATE TABLE "ExperimentalConditions" (
+	id INTEGER NOT NULL,
+	temperature FLOAT,
+	humidity FLOAT,
+	pressure FLOAT,
+	atmosphere TEXT,
+	beam_energy FLOAT,
+	description TEXT,
+	exposure_time_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_ExperimentalConditions_id" ON "ExperimentalConditions" (id);
+CREATE TABLE "DataCollectionStrategy" (
+	id INTEGER NOT NULL,
+	collection_mode VARCHAR(16),
+	total_frames INTEGER,
+	frame_rate FLOAT,
+	total_dose FLOAT,
+	dose_per_frame FLOAT,
+	wavelength_a FLOAT,
+	detector_mode VARCHAR(26),
+	detector_distance_mm FLOAT,
+	beam_center_x_px INTEGER,
+	beam_center_y_px INTEGER,
+	beam_size_um FLOAT,
+	flux_photons_per_s FLOAT,
+	transmission_percent FLOAT,
+	attenuator TEXT,
+	temperature_k FLOAT,
+	oscillation_per_image_deg FLOAT,
+	total_rotation_deg FLOAT,
+	strategy_notes TEXT,
+	description TEXT,
+	pixel_size_calibrated_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(pixel_size_calibrated_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_DataCollectionStrategy_id" ON "DataCollectionStrategy" (id);
+CREATE TABLE "QualityMetrics" (
+	id INTEGER NOT NULL,
+	resolution_high_shell_a FLOAT,
+	resolution_low_a FLOAT,
+	completeness FLOAT,
+	completeness_high_res_shell_percent FLOAT,
+	signal_to_noise FLOAT,
+	mean_i_over_sigma_i FLOAT,
+	space_group TEXT,
+	unit_cell_a FLOAT,
+	unit_cell_b FLOAT,
+	unit_cell_c FLOAT,
+	unit_cell_alpha FLOAT,
+	unit_cell_beta FLOAT,
+	unit_cell_gamma FLOAT,
+	multiplicity FLOAT,
+	cc_half FLOAT,
+	r_merge FLOAT,
+	r_pim FLOAT,
+	wilson_b_factor_a2 FLOAT,
+	anomalous_used BOOLEAN,
+	anom_corr FLOAT,
+	anom_sig_ano FLOAT,
+	r_work FLOAT,
+	r_free FLOAT,
+	ramachandran_favored_percent FLOAT,
+	ramachandran_outliers_percent FLOAT,
+	clashscore FLOAT,
+	molprobity_score FLOAT,
+	average_b_factor_a2 FLOAT,
+	i_zero FLOAT,
+	rg FLOAT,
+	r_factor FLOAT,
+	description TEXT,
+	resolution_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(resolution_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_QualityMetrics_id" ON "QualityMetrics" (id);
 CREATE TABLE "AggregatedProteinView" (
 	uniprot_id TEXT NOT NULL,
 	protein_name TEXT NOT NULL,
@@ -2174,6 +2194,93 @@ CREATE TABLE "ConformationalState_characteristic_features" (
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
 );CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+CREATE TABLE "ExperimentRun" (
+	experiment_code TEXT NOT NULL,
+	sample_id TEXT NOT NULL,
+	instrument_id TEXT NOT NULL,
+	experiment_date TEXT,
+	operator_id TEXT,
+	technique VARCHAR(20) NOT NULL,
+	experimental_method VARCHAR(20),
+	raw_data_location TEXT,
+	processing_status VARCHAR(13),
+	magnification INTEGER,
+	calibrated_pixel_size FLOAT,
+	camera_binning FLOAT,
+	exposure_time_per_frame FLOAT,
+	frames_per_movie INTEGER,
+	total_exposure_time FLOAT,
+	total_dose FLOAT,
+	dose_rate FLOAT,
+	defocus_target FLOAT,
+	defocus_range_min FLOAT,
+	defocus_range_max FLOAT,
+	defocus_range_increment FLOAT,
+	astigmatism_target FLOAT,
+	coma FLOAT,
+	stage_tilt FLOAT,
+	autoloader_slot TEXT,
+	shots_per_hole INTEGER,
+	holes_per_group INTEGER,
+	acquisition_software TEXT,
+	acquisition_software_version TEXT,
+	number_of_images INTEGER,
+	beamline TEXT,
+	synchrotron_mode TEXT,
+	start_time TEXT,
+	end_time TEXT,
+	ispyb_data_collection_id INTEGER,
+	ispyb_session_id INTEGER,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Study_id" TEXT,
+	experimental_conditions_id INTEGER,
+	data_collection_strategy_id INTEGER,
+	quality_metrics_id INTEGER,
+	wavelength_id INTEGER,
+	oscillation_angle_id INTEGER,
+	start_angle_id INTEGER,
+	beam_center_x_id INTEGER,
+	beam_center_y_id INTEGER,
+	detector_distance_id INTEGER,
+	pixel_size_x_id INTEGER,
+	pixel_size_y_id INTEGER,
+	total_rotation_id INTEGER,
+	transmission_id INTEGER,
+	flux_id INTEGER,
+	flux_end_id INTEGER,
+	slit_gap_horizontal_id INTEGER,
+	slit_gap_vertical_id INTEGER,
+	undulator_gap_id INTEGER,
+	exposure_time_id INTEGER,
+	resolution_id INTEGER,
+	resolution_at_corner_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id),
+	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY(experimental_conditions_id) REFERENCES "ExperimentalConditions" (id),
+	FOREIGN KEY(data_collection_strategy_id) REFERENCES "DataCollectionStrategy" (id),
+	FOREIGN KEY(quality_metrics_id) REFERENCES "QualityMetrics" (id),
+	FOREIGN KEY(wavelength_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(oscillation_angle_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(start_angle_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(beam_center_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(beam_center_y_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(detector_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_y_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(total_rotation_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(transmission_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(flux_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(flux_end_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(slit_gap_horizontal_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(slit_gap_vertical_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(undulator_gap_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(resolution_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(resolution_at_corner_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_ExperimentRun_id" ON "ExperimentRun" (id);
 CREATE TABLE "FunctionalSite" (
 	site_type VARCHAR(20) NOT NULL,
 	site_name TEXT,
@@ -2348,12 +2455,30 @@ CREATE TABLE "WorkflowRun_output_files" (
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
 );CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+CREATE TABLE "FTIRImage_molecular_signatures" (
+	"FTIRImage_id" TEXT,
+	molecular_signatures TEXT,
+	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
+	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
+CREATE TABLE "OpticalImage_color_channels" (
+	"OpticalImage_id" TEXT,
+	color_channels TEXT,
+	PRIMARY KEY ("OpticalImage_id", color_channels),
+	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
+);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
+CREATE TABLE "XRFImage_elements_measured" (
+	"XRFImage_id" TEXT,
+	elements_measured TEXT,
+	PRIMARY KEY ("XRFImage_id", elements_measured),
+	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
+);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
 	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
 CREATE TABLE "LigandInteraction" (
 	id INTEGER NOT NULL,
 	ligand_id TEXT NOT NULL,
@@ -2436,7 +2561,7 @@ CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", publication_ids),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);
+);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");
 CREATE TABLE "MutationEffect_publication_ids" (
 	"MutationEffect_id" TEXT,
 	publication_ids TEXT,
@@ -2448,7 +2573,7 @@ CREATE TABLE "PostTranslationalModification_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,

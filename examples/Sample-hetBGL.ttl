@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/kibler2024/sample/hetBGL03-15-18> a lambdaber:Sample ;
@@ -17,7 +18,9 @@
             lambdaber:sequences "MDFYTLPTSHPA...",
                 "MDFYTLPTSHPV...",
                 "MDFYTLPTSNPV..." ] ;
-    lambdaber:molecular_weight "182.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "182.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:562 ;
     lambdaber:sample_code "hetBGL03-15-18" ;
     lambdaber:sample_type "complex" ;

@@ -5,6 +5,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX nmdc: <https://w3id.org/nmdc/>
 PREFIX nsls2: <https://github.com/NSLS2/BER-LAMBDA/>
 PREFIX mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/>
 PREFIX ROR: <https://ror.org/>
@@ -48,6 +49,8 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<DecimalDegree> xsd:decimal
+
 <https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString> xsd:string
 
 <https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> CLOSED {
@@ -83,6 +86,20 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<Any> CLOSED {
+    (  $<Any_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+<Attribute> CLOSED {
+    (  $<Attribute_tes> (  <id> @linkml:String ? ;
+          <label> @linkml:String
+       ) ;
+       rdf:type [ <Attribute> ] ?
+    )
+}
+
 <AttributeGroup>  (
     @<https://w3id.org/lambda-ber-schema/functional_annotation/BiophysicalProperty> OR @<BufferComposition> OR
     @<CTFEstimationParameters> OR @<ComputeResources> OR
@@ -97,6 +114,18 @@ linkml:Sparqlpath xsd:string
 <AttributeGroup_struct> {
     (  $<AttributeGroup_tes> <description> @linkml:String ? ;
        rdf:type [ <AttributeGroup> ] ?
+    )
+}
+
+<AttributeValue>  (
+    @<DateTimeValue> OR @<QuantityValue> OR @<TextValue>
+)
+
+<AttributeValue_struct> {
+    (  $<AttributeValue_tes> (  <attribute> @<Attribute> ? ;
+          <raw_value> @linkml:String ?
+       ) ;
+       rdf:type [ nmdc:AttributeValue ] ?
     )
 }
 
@@ -396,7 +425,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/DetectorModeEnum#super_resolution>
              <https://w3id.org/lambda-ber-schema/DetectorModeEnum#linear>
              <https://w3id.org/lambda-ber-schema/DetectorModeEnum#correlated_double_sampling> ] ? ;
-          <pixel_size_calibrated> @linkml:Float ? ;
+          <pixel_size_calibrated> @<QuantityValue> ? ;
           <detector_distance_mm> @linkml:Float ? ;
           <beam_center_x_px> @linkml:Integer ? ;
           <beam_center_y_px> @linkml:Integer ? ;
@@ -466,6 +495,15 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<DateTimeValue> CLOSED {
+    (  $<DateTimeValue_tes> (  &<AttributeValue_tes> ;
+          rdf:type [ nmdc:AttributeValue ] ? ;
+          <value> @linkml:String
+       ) ;
+       rdf:type [ nmdc:DateTimeValue ] ?
+    )
+}
+
 <https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation> CLOSED {
     (  $<https://w3id.org/lambda-ber-schema/functional_annotation/EvolutionaryConservation_tes> ( 
           &<https://w3id.org/lambda-ber-schema/functional_annotation/ProteinAnnotation_tes> ;
@@ -490,7 +528,7 @@ linkml:Sparqlpath xsd:string
           <pressure> @linkml:Float ? ;
           <atmosphere> @linkml:String ? ;
           <beam_energy> @linkml:Float ? ;
-          <exposure_time> @linkml:Float ?
+          <exposure_time> @<QuantityValue> ?
        ) ;
        rdf:type [ <ExperimentalConditions> ] ?
     )
@@ -543,29 +581,29 @@ linkml:Sparqlpath xsd:string
           <holes_per_group> @linkml:Integer ? ;
           <acquisition_software> @linkml:String ? ;
           <acquisition_software_version> @linkml:String ? ;
-          <wavelength> @linkml:Float ? ;
-          <oscillation_angle> @linkml:Float ? ;
-          <start_angle> @linkml:Float ? ;
+          <wavelength> @<QuantityValue> ? ;
+          <oscillation_angle> @<QuantityValue> ? ;
+          <start_angle> @<QuantityValue> ? ;
           <number_of_images> @linkml:Integer ? ;
-          <beam_center_x> @linkml:Float ? ;
-          <beam_center_y> @linkml:Float ? ;
-          <detector_distance> @linkml:Float ? ;
-          <pixel_size_x> @linkml:Float ? ;
-          <pixel_size_y> @linkml:Float ? ;
-          <total_rotation> @linkml:Float ? ;
+          <beam_center_x> @<QuantityValue> ? ;
+          <beam_center_y> @<QuantityValue> ? ;
+          <detector_distance> @<QuantityValue> ? ;
+          <pixel_size_x> @<QuantityValue> ? ;
+          <pixel_size_y> @<QuantityValue> ? ;
+          <total_rotation> @<QuantityValue> ? ;
           <beamline> @linkml:String ? ;
-          <transmission> @linkml:Float ? ;
-          <flux> @linkml:Float ? ;
-          <flux_end> @linkml:Float ? ;
-          <slit_gap_horizontal> @linkml:Float ? ;
-          <slit_gap_vertical> @linkml:Float ? ;
-          <undulator_gap> @linkml:Float ? ;
+          <transmission> @<QuantityValue> ? ;
+          <flux> @<QuantityValue> ? ;
+          <flux_end> @<QuantityValue> ? ;
+          <slit_gap_horizontal> @<QuantityValue> ? ;
+          <slit_gap_vertical> @<QuantityValue> ? ;
+          <undulator_gap> @<QuantityValue> ? ;
           <synchrotron_mode> @linkml:String ? ;
-          <exposure_time> @linkml:Float ? ;
+          <exposure_time> @<QuantityValue> ? ;
           <start_time> @linkml:String ? ;
           <end_time> @linkml:String ? ;
-          <resolution> @linkml:Float ? ;
-          <resolution_at_corner> @linkml:Float ? ;
+          <resolution> @<QuantityValue> ? ;
+          <resolution_at_corner> @<QuantityValue> ? ;
           <ispyb_data_collection_id> @linkml:Integer ? ;
           <ispyb_session_id> @linkml:Integer ?
        ) ;
@@ -661,7 +699,7 @@ linkml:Sparqlpath xsd:string
              <pixel_size> @linkml:Float ? ;
              <dimensions_x> @linkml:Integer ? ;
              <dimensions_y> @linkml:Integer ? ;
-             <exposure_time> @linkml:Float ? ;
+             <exposure_time> @<QuantityValue> ? ;
              <dose> @linkml:Float ?
           ) ;
           rdf:type [ <Image> ]
@@ -1132,7 +1170,7 @@ linkml:Sparqlpath xsd:string
 <QualityMetrics> CLOSED {
     (  $<QualityMetrics_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <resolution> @linkml:Float ? ;
+          <resolution> @<QuantityValue> ? ;
           <resolution_high_shell_a> @linkml:Float ? ;
           <resolution_low_a> @linkml:Float ? ;
           <completeness> @linkml:Float ? ;
@@ -1166,6 +1204,20 @@ linkml:Sparqlpath xsd:string
           <r_factor> @linkml:Float ?
        ) ;
        rdf:type [ <QualityMetrics> ] ?
+    )
+}
+
+<QuantityValue> CLOSED {
+    (  $<QuantityValue_tes> (  &<AttributeValue_tes> ;
+          rdf:type [ nmdc:AttributeValue ] ? ;
+          <maximum_numeric_value> @linkml:Float ? ;
+          <minimum_numeric_value> @linkml:Float ? ;
+          <numeric_value> @linkml:Float ;
+          <unit> @linkml:String ;
+          <unit_cv_id> @linkml:Curie ? ;
+          <raw_value> @linkml:String ?
+       ) ;
+       rdf:type [ nmdc:QuantityValue ] ?
     )
 }
 
@@ -1206,7 +1258,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/SampleTypeEnum#virus>
              <https://w3id.org/lambda-ber-schema/SampleTypeEnum#organelle> ] ;
           <molecular_composition> @<MolecularComposition> ? ;
-          <molecular_weight> @linkml:Float ? ;
+          <molecular_weight> @<QuantityValue> ? ;
           <concentration> @linkml:Float ? ;
           <concentration_unit> [ <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#mg_per_ml>
              <https://w3id.org/lambda-ber-schema/ConcentrationUnitEnum#micromolar>
@@ -1262,10 +1314,10 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#mammalian>
              <https://w3id.org/lambda-ber-schema/ExpressionSystemEnum#cell_free> ] ? ;
           <host_strain_or_cell_line> @linkml:String ? ;
-          <culture_volume_l> @linkml:Float ? ;
+          <culture_volume_l> @<QuantityValue> ? ;
           <medium> @linkml:String ? ;
           <antibiotic_selection> @linkml:String ? ;
-          <growth_temperature_c> @linkml:Float ? ;
+          <growth_temperature_c> @<QuantityValue> ? ;
           <induction_agent> @linkml:String ? ;
           <inducer_concentration> @linkml:String ? ;
           <induction_temperature_c> @linkml:Float ? ;
@@ -1439,6 +1491,16 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<TextValue> CLOSED {
+    (  $<TextValue_tes> (  &<AttributeValue_tes> ;
+          rdf:type [ nmdc:AttributeValue ] ? ;
+          <value> @linkml:String ;
+          <value_cv_id> @linkml:Curie ?
+       ) ;
+       rdf:type [ nmdc:TextValue ] ?
+    )
+}
+
 <WorkflowRun> CLOSED {
     (  $<WorkflowRun_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
@@ -1493,22 +1555,22 @@ linkml:Sparqlpath xsd:string
           <pdb_id> @linkml:String ? ;
           <validation_report_path> @linkml:String ? ;
           <space_group> @linkml:String ? ;
-          <unit_cell_a> @linkml:Float ? ;
-          <unit_cell_b> @linkml:Float ? ;
-          <unit_cell_c> @linkml:Float ? ;
-          <unit_cell_alpha> @linkml:Float ? ;
-          <unit_cell_beta> @linkml:Float ? ;
-          <unit_cell_gamma> @linkml:Float ? ;
-          <resolution_high> @linkml:Float ? ;
-          <resolution_low> @linkml:Float ? ;
+          <unit_cell_a> @<QuantityValue> ? ;
+          <unit_cell_b> @<QuantityValue> ? ;
+          <unit_cell_c> @<QuantityValue> ? ;
+          <unit_cell_alpha> @<QuantityValue> ? ;
+          <unit_cell_beta> @<QuantityValue> ? ;
+          <unit_cell_gamma> @<QuantityValue> ? ;
+          <resolution_high> @<QuantityValue> ? ;
+          <resolution_low> @<QuantityValue> ? ;
           <rmerge> @linkml:Float ? ;
           <rpim> @linkml:Float ? ;
           <cc_half> @linkml:Float ? ;
-          <completeness_percent> @linkml:Float ? ;
+          <completeness_percent> @<QuantityValue> ? ;
           <i_over_sigma> @linkml:Float ? ;
-          <wilson_b_factor> @linkml:Float ? ;
+          <wilson_b_factor> @<QuantityValue> ? ;
           <multiplicity> @linkml:Float ? ;
-          <anomalous_completeness> @linkml:Float ? ;
+          <anomalous_completeness> @<QuantityValue> ? ;
           <anomalous_multiplicity> @linkml:Float ? ;
           <cc_anomalous> @linkml:Float ? ;
           <r_anomalous> @linkml:Float ? ;
@@ -1519,10 +1581,10 @@ linkml:Sparqlpath xsd:string
           <ispyb_auto_proc_scaling_id> @linkml:Integer ? ;
           <rwork> @linkml:Float ? ;
           <rfree> @linkml:Float ? ;
-          <rmsd_bonds> @linkml:Float ? ;
-          <rmsd_angles> @linkml:Float ? ;
-          <ramachandran_favored> @linkml:Float ? ;
-          <ramachandran_outliers> @linkml:Float ? ;
+          <rmsd_bonds> @<QuantityValue> ? ;
+          <rmsd_angles> @<QuantityValue> ? ;
+          <ramachandran_favored> @<QuantityValue> ? ;
+          <ramachandran_outliers> @<QuantityValue> ? ;
           <clashscore> @linkml:Float ? ;
           <processing_notes> @linkml:String ? ;
           <compute_resources> @<ComputeResources> ? ;
@@ -1626,7 +1688,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#imaging_plate>
              <https://w3id.org/lambda-ber-schema/DetectorTechnologyEnum#film> ] ? ;
           <detector_model> @linkml:String ? ;
-          <flux> @linkml:Float ? ;
+          <flux> @<QuantityValue> ? ;
           <calibration_standard> @linkml:String ?
        ) ;
        rdf:type [ <XRFImage> ]

@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:img2d_mic_tfiid_042 a lambdaber:Image2D ;
@@ -12,7 +13,9 @@ lambdaber:img2d_mic_tfiid_042 a lambdaber:Image2D ;
     lambdaber:dimensions_x 5760 ;
     lambdaber:dimensions_y 4092 ;
     lambdaber:dose "40.0"^^xsd:float ;
-    lambdaber:exposure_time "2.5"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "FoilHole_19234567_Data_19234568_19234569_20240320_101542_fractions.mrc" ;
     lambdaber:pixel_size "0.85"^^xsd:float .
 

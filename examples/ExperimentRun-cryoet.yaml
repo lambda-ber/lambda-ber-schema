@@ -19,7 +19,9 @@ data_collection_strategy:
   total_dose: 120.0
   dose_per_frame: 2.0
 quality_metrics:
-  resolution: 8.5
+  resolution:
+    numeric_value: 8.5
+    unit: Angstroms
   completeness: 95.0
   signal_to_noise: 2.1
   r_factor: 0.0

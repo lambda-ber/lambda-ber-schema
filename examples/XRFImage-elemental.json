@@ -7,7 +7,10 @@
   "pixel_size": 2.0,
   "dimensions_x": 500,
   "dimensions_y": 400,
-  "exposure_time": 0.1,
+  "exposure_time": {
+    "numeric_value": 0.1,
+    "unit": "seconds"
+  },
   "dose": 0.0,
   "defocus": 0.0,
   "astigmatism": 0.0,
@@ -27,7 +30,10 @@
   "source_type": "synchrotron",
   "detector_technology": "scintillator_coupled",
   "detector_model": "Vortex-ME4 4-element silicon drift detector",
-  "flux": 1000000000000.0,
+  "flux": {
+    "numeric_value": 1000000000000.0,
+    "unit": "photons per second"
+  },
   "calibration_standard": "NIST SRM 1577c Bovine Liver",
   "@type": "XRFImage"
 }

@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
@@ -17,7 +18,9 @@ lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
     lambdaber:emission_wavelength "509.0"^^xsd:float ;
     lambdaber:excitation_filter "488/10 nm bandpass" ;
     lambdaber:excitation_wavelength "488.0"^^xsd:float ;
-    lambdaber:exposure_time "0.2"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.2"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "hsp70_gfp_z042.tif" ;
     lambdaber:fluorophore "Enhanced GFP (EGFP)" ;
     lambdaber:laser_power "2.5"^^xsd:float ;

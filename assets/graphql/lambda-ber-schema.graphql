@@ -693,9 +693,25 @@ type AggregatedProteinView
     crossReferences: [DatabaseCrossReference]
   }
 
+type Any
+  {
+  }
+
+type Attribute
+  {
+    id: String
+    label: String!
+  }
+
 interface AttributeGroup
   {
     description: String
+  }
+
+interface AttributeValue
+  {
+    attribute: Attribute
+    rawValue: String
   }
 
 type BeamlineInstrument
@@ -894,7 +910,7 @@ type DataCollectionStrategy
     dosePerFrame: Float
     wavelengthA: Float
     detectorMode: DetectorModeEnum
-    pixelSizeCalibrated: Float
+    pixelSizeCalibrated: QuantityValue
     detectorDistanceMm: Float
     beamCenterXPx: Integer
     beamCenterYPx: Integer
@@ -935,6 +951,13 @@ type Dataset
     studies: [Study]
   }
 
+type DateTimeValue
+  {
+    attribute: Attribute
+    rawValue: String
+    value: String!
+  }
+
 type EvolutionaryConservation
   {
     id: Uriorcurie!
@@ -967,7 +990,7 @@ type ExperimentalConditions
     pressure: Float
     atmosphere: String
     beamEnergy: Float
-    exposureTime: Float
+    exposureTime: QuantityValue
   }
 
 type ExperimentRun
@@ -1007,29 +1030,29 @@ type ExperimentRun
     holesPerGroup: Integer
     acquisitionSoftware: String
     acquisitionSoftwareVersion: String
-    wavelength: Float
-    oscillationAngle: Float
-    startAngle: Float
+    wavelength: QuantityValue
+    oscillationAngle: QuantityValue
+    startAngle: QuantityValue
     numberOfImages: Integer
-    beamCenterX: Float
-    beamCenterY: Float
-    detectorDistance: Float
-    pixelSizeX: Float
-    pixelSizeY: Float
-    totalRotation: Float
+    beamCenterX: QuantityValue
+    beamCenterY: QuantityValue
+    detectorDistance: QuantityValue
+    pixelSizeX: QuantityValue
+    pixelSizeY: QuantityValue
+    totalRotation: QuantityValue
     beamline: String
-    transmission: Float
-    flux: Float
-    fluxEnd: Float
-    slitGapHorizontal: Float
-    slitGapVertical: Float
-    undulatorGap: Float
+    transmission: QuantityValue
+    flux: QuantityValue
+    fluxEnd: QuantityValue
+    slitGapHorizontal: QuantityValue
+    slitGapVertical: QuantityValue
+    undulatorGap: QuantityValue
     synchrotronMode: String
-    exposureTime: Float
+    exposureTime: QuantityValue
     startTime: String
     endTime: String
-    resolution: Float
-    resolutionAtCorner: Float
+    resolution: QuantityValue
+    resolutionAtCorner: QuantityValue
     ispybDataCollectionId: Integer
     ispybSessionId: Integer
   }
@@ -1044,7 +1067,7 @@ type FluorescenceImage
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     defocus: Float
     astigmatism: Float
@@ -1076,7 +1099,7 @@ type FTIRImage
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     wavenumberMin: Float
     wavenumberMax: Float
@@ -1122,7 +1145,7 @@ type Image
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
   }
 
@@ -1136,7 +1159,7 @@ type Image2D
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     defocus: Float
     astigmatism: Float
@@ -1152,7 +1175,7 @@ type Image3D
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     dimensionsZ: Integer
     voxelSize: Float
@@ -1218,7 +1241,7 @@ type Micrograph
     acquisitionDate: String
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     originMovieId: String
     defocusU: Float
@@ -1262,7 +1285,7 @@ type Movie
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     defocus: Float
     astigmatism: Float
@@ -1338,7 +1361,7 @@ type OpticalImage
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     defocus: Float
     astigmatism: Float
@@ -1463,7 +1486,7 @@ type ProteinProteinInteraction
 type QualityMetrics
   {
     description: String
-    resolution: Float
+    resolution: QuantityValue
     resolutionHighShellA: Float
     resolutionLowA: Float
     completeness: Float
@@ -1497,6 +1520,17 @@ type QualityMetrics
     rFactor: Float
   }
 
+type QuantityValue
+  {
+    attribute: Attribute
+    maximumNumericValue: Float
+    minimumNumericValue: Float
+    numericValue: Float!
+    unit: String!
+    unitCvId: Curie
+    rawValue: String
+  }
+
 type RefinementParameters
   {
     description: String
@@ -1518,7 +1552,7 @@ type Sample
     sampleCode: String!
     sampleType: SampleTypeEnum!
     molecularComposition: MolecularComposition
-    molecularWeight: Float
+    molecularWeight: QuantityValue
     concentration: Float
     concentrationUnit: ConcentrationUnitEnum
     bufferComposition: BufferComposition
@@ -1560,10 +1594,10 @@ type SamplePreparation
     protocolDescription: String
     expressionSystem: ExpressionSystemEnum
     hostStrainOrCellLine: String
-    cultureVolumeL: Float
+    cultureVolumeL: QuantityValue
     medium: String
     antibioticSelection: String
-    growthTemperatureC: Float
+    growthTemperatureC: QuantityValue
     inductionAgent: String
     inducerConcentration: String
     inductionTemperatureC: Float
@@ -1684,6 +1718,14 @@ interface TechniqueSpecificPreparation
     description: String
   }
 
+type TextValue
+  {
+    attribute: Attribute
+    rawValue: String
+    value: String!
+    valueCvId: Curie
+  }
+
 type WorkflowRun
   {
     id: Uriorcurie!
@@ -1714,22 +1756,22 @@ type WorkflowRun
     pdbId: String
     validationReportPath: String
     spaceGroup: String
-    unitCellA: Float
-    unitCellB: Float
-    unitCellC: Float
-    unitCellAlpha: Float
-    unitCellBeta: Float
-    unitCellGamma: Float
-    resolutionHigh: Float
-    resolutionLow: Float
+    unitCellA: QuantityValue
+    unitCellB: QuantityValue
+    unitCellC: QuantityValue
+    unitCellAlpha: QuantityValue
+    unitCellBeta: QuantityValue
+    unitCellGamma: QuantityValue
+    resolutionHigh: QuantityValue
+    resolutionLow: QuantityValue
     rmerge: Float
     rpim: Float
     ccHalf: Float
-    completenessPercent: Float
+    completenessPercent: QuantityValue
     iOverSigma: Float
-    wilsonBFactor: Float
+    wilsonBFactor: QuantityValue
     multiplicity: Float
-    anomalousCompleteness: Float
+    anomalousCompleteness: QuantityValue
     anomalousMultiplicity: Float
     ccAnomalous: Float
     rAnomalous: Float
@@ -1740,10 +1782,10 @@ type WorkflowRun
     ispybAutoProcScalingId: Integer
     rwork: Float
     rfree: Float
-    rmsdBonds: Float
-    rmsdAngles: Float
-    ramachandranFavored: Float
-    ramachandranOutliers: Float
+    rmsdBonds: QuantityValue
+    rmsdAngles: QuantityValue
+    ramachandranFavored: QuantityValue
+    ramachandranOutliers: QuantityValue
     clashscore: Float
     processingNotes: String
     computeResources: ComputeResources
@@ -1825,7 +1867,7 @@ type XRFImage
     pixelSize: Float
     dimensionsX: Integer
     dimensionsY: Integer
-    exposureTime: Float
+    exposureTime: QuantityValue
     dose: Float
     defocus: Float
     astigmatism: Float
@@ -1836,6 +1878,6 @@ type XRFImage
     sourceType: XRaySourceTypeEnum
     detectorTechnology: DetectorTechnologyEnum
     detectorModel: String
-    flux: Float
+    flux: QuantityValue
     calibrationStandard: String
   }

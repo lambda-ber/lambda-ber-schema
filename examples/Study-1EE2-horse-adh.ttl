@@ -3,6 +3,7 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:study_1EE2_horse_adh a lambdaber:Study ;
@@ -25,7 +26,9 @@ lambdaber:exp_1EE2_xray_001 a lambdaber:ExperimentRun ;
     lambdaber:instrument_id <DESY_BW7B> ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:completeness "95.0"^^xsd:float ;
-            lambdaber:resolution "1.54"^^xsd:float ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.54"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
     lambdaber:sample_id "lambdaber:sample_1EE2_001" ;
     lambdaber:technique CHMO:0000156 .
 
@@ -64,7 +67,9 @@ lambdaber:sample_1EE2_001 a lambdaber:Sample ;
                 "Alcohol Dehydrogenase (373 residues)",
                 "Cholic Acid",
                 "NAD+" ] ;
-    lambdaber:molecular_weight "80.0"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "80.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "1EE2_SAMPLE_001" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;

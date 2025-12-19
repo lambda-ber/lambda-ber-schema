@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:xrf_img_001 a lambdaber:XRFImage ;
@@ -26,9 +27,13 @@ lambdaber:xrf_img_001 a lambdaber:XRFImage ;
         "Mn",
         "Se",
         "Zn" ;
-    lambdaber:exposure_time "0.1"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.1"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "leaf_xrf_map_2um_resolution.h5" ;
-    lambdaber:flux "1000000000000.0"^^xsd:float ;
+    lambdaber:flux [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1000000000000.0"^^xsd:float ;
+            lambdaber:unit "photons per second" ] ;
     lambdaber:pixel_size "2.0"^^xsd:float ;
     lambdaber:source_type "synchrotron" .
 

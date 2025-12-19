@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-17T18:52:03
+# Generation date: 2025-12-19T11:44:46
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -133,8 +133,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uri, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Curie, Float, Integer, String, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
 version = "0.1.1.post15.dev0+b4e2533"
@@ -147,6 +147,7 @@ NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxo
 PANET = CurieNamespace('PaNET', 'http://purl.org/pan-science/PaNET/PaNET')
 ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
+UO = CurieNamespace('UO', 'http://example.org/UNKNOWN/UO/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')
@@ -156,7 +157,9 @@ MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
+SCHEMA = CurieNamespace('schema', 'https://schema.org/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
@@ -165,6 +168,14 @@ DEFAULT_ = LAMBDABER
 
 
 # Types
+class DecimalDegree(float):
+    """ A decimal degree expresses latitude or longitude as decimal fractions. """
+    type_class_uri = XSD["decimal"]
+    type_class_curie = "xsd:decimal"
+    type_name = "decimal degree"
+    type_model_uri = LAMBDABER.DecimalDegree
+
+
 class SmilesString(String):
     """ A SMILES representation of a chemical structure """
     type_class_uri = XSD["string"]
@@ -460,7 +471,7 @@ class Sample(NamedThing):
     sample_code: str = None
     sample_type: Union[str, "SampleTypeEnum"] = None
     molecular_composition: Optional[Union[dict, "MolecularComposition"]] = None
-    molecular_weight: Optional[float] = None
+    molecular_weight: Optional[Union[dict, "QuantityValue"]] = None
     concentration: Optional[float] = None
     concentration_unit: Optional[Union[str, "ConcentrationUnitEnum"]] = None
     buffer_composition: Optional[Union[dict, "BufferComposition"]] = None
@@ -508,8 +519,8 @@ class Sample(NamedThing):
         if self.molecular_composition is not None and not isinstance(self.molecular_composition, MolecularComposition):
             self.molecular_composition = MolecularComposition(**as_dict(self.molecular_composition))
 
-        if self.molecular_weight is not None and not isinstance(self.molecular_weight, float):
-            self.molecular_weight = float(self.molecular_weight)
+        if self.molecular_weight is not None and not isinstance(self.molecular_weight, QuantityValue):
+            self.molecular_weight = QuantityValue(**as_dict(self.molecular_weight))
 
         if self.concentration is not None and not isinstance(self.concentration, float):
             self.concentration = float(self.concentration)
@@ -722,10 +733,10 @@ class SamplePreparation(NamedThing):
     protocol_description: Optional[str] = None
     expression_system: Optional[Union[str, "ExpressionSystemEnum"]] = None
     host_strain_or_cell_line: Optional[str] = None
-    culture_volume_l: Optional[float] = None
+    culture_volume_l: Optional[Union[dict, "QuantityValue"]] = None
     medium: Optional[str] = None
     antibiotic_selection: Optional[str] = None
-    growth_temperature_c: Optional[float] = None
+    growth_temperature_c: Optional[Union[dict, "QuantityValue"]] = None
     induction_agent: Optional[str] = None
     inducer_concentration: Optional[str] = None
     induction_temperature_c: Optional[float] = None
@@ -789,8 +800,8 @@ class SamplePreparation(NamedThing):
         if self.host_strain_or_cell_line is not None and not isinstance(self.host_strain_or_cell_line, str):
             self.host_strain_or_cell_line = str(self.host_strain_or_cell_line)
 
-        if self.culture_volume_l is not None and not isinstance(self.culture_volume_l, float):
-            self.culture_volume_l = float(self.culture_volume_l)
+        if self.culture_volume_l is not None and not isinstance(self.culture_volume_l, QuantityValue):
+            self.culture_volume_l = QuantityValue(**as_dict(self.culture_volume_l))
 
         if self.medium is not None and not isinstance(self.medium, str):
             self.medium = str(self.medium)
@@ -798,8 +809,8 @@ class SamplePreparation(NamedThing):
         if self.antibiotic_selection is not None and not isinstance(self.antibiotic_selection, str):
             self.antibiotic_selection = str(self.antibiotic_selection)
 
-        if self.growth_temperature_c is not None and not isinstance(self.growth_temperature_c, float):
-            self.growth_temperature_c = float(self.growth_temperature_c)
+        if self.growth_temperature_c is not None and not isinstance(self.growth_temperature_c, QuantityValue):
+            self.growth_temperature_c = QuantityValue(**as_dict(self.growth_temperature_c))
 
         if self.induction_agent is not None and not isinstance(self.induction_agent, str):
             self.induction_agent = str(self.induction_agent)
@@ -1315,29 +1326,29 @@ class ExperimentRun(NamedThing):
     holes_per_group: Optional[int] = None
     acquisition_software: Optional[str] = None
     acquisition_software_version: Optional[str] = None
-    wavelength: Optional[float] = None
-    oscillation_angle: Optional[float] = None
-    start_angle: Optional[float] = None
+    wavelength: Optional[Union[dict, "QuantityValue"]] = None
+    oscillation_angle: Optional[Union[dict, "QuantityValue"]] = None
+    start_angle: Optional[Union[dict, "QuantityValue"]] = None
     number_of_images: Optional[int] = None
-    beam_center_x: Optional[float] = None
-    beam_center_y: Optional[float] = None
-    detector_distance: Optional[float] = None
-    pixel_size_x: Optional[float] = None
-    pixel_size_y: Optional[float] = None
-    total_rotation: Optional[float] = None
+    beam_center_x: Optional[Union[dict, "QuantityValue"]] = None
+    beam_center_y: Optional[Union[dict, "QuantityValue"]] = None
+    detector_distance: Optional[Union[dict, "QuantityValue"]] = None
+    pixel_size_x: Optional[Union[dict, "QuantityValue"]] = None
+    pixel_size_y: Optional[Union[dict, "QuantityValue"]] = None
+    total_rotation: Optional[Union[dict, "QuantityValue"]] = None
     beamline: Optional[str] = None
-    transmission: Optional[float] = None
-    flux: Optional[float] = None
-    flux_end: Optional[float] = None
-    slit_gap_horizontal: Optional[float] = None
-    slit_gap_vertical: Optional[float] = None
-    undulator_gap: Optional[float] = None
+    transmission: Optional[Union[dict, "QuantityValue"]] = None
+    flux: Optional[Union[dict, "QuantityValue"]] = None
+    flux_end: Optional[Union[dict, "QuantityValue"]] = None
+    slit_gap_horizontal: Optional[Union[dict, "QuantityValue"]] = None
+    slit_gap_vertical: Optional[Union[dict, "QuantityValue"]] = None
+    undulator_gap: Optional[Union[dict, "QuantityValue"]] = None
     synchrotron_mode: Optional[str] = None
-    exposure_time: Optional[float] = None
+    exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     start_time: Optional[str] = None
     end_time: Optional[str] = None
-    resolution: Optional[float] = None
-    resolution_at_corner: Optional[float] = None
+    resolution: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_at_corner: Optional[Union[dict, "QuantityValue"]] = None
     ispyb_data_collection_id: Optional[int] = None
     ispyb_session_id: Optional[int] = None
 
@@ -1451,62 +1462,62 @@ class ExperimentRun(NamedThing):
         if self.acquisition_software_version is not None and not isinstance(self.acquisition_software_version, str):
             self.acquisition_software_version = str(self.acquisition_software_version)
 
-        if self.wavelength is not None and not isinstance(self.wavelength, float):
-            self.wavelength = float(self.wavelength)
+        if self.wavelength is not None and not isinstance(self.wavelength, QuantityValue):
+            self.wavelength = QuantityValue(**as_dict(self.wavelength))
 
-        if self.oscillation_angle is not None and not isinstance(self.oscillation_angle, float):
-            self.oscillation_angle = float(self.oscillation_angle)
+        if self.oscillation_angle is not None and not isinstance(self.oscillation_angle, QuantityValue):
+            self.oscillation_angle = QuantityValue(**as_dict(self.oscillation_angle))
 
-        if self.start_angle is not None and not isinstance(self.start_angle, float):
-            self.start_angle = float(self.start_angle)
+        if self.start_angle is not None and not isinstance(self.start_angle, QuantityValue):
+            self.start_angle = QuantityValue(**as_dict(self.start_angle))
 
         if self.number_of_images is not None and not isinstance(self.number_of_images, int):
             self.number_of_images = int(self.number_of_images)
 
-        if self.beam_center_x is not None and not isinstance(self.beam_center_x, float):
-            self.beam_center_x = float(self.beam_center_x)
+        if self.beam_center_x is not None and not isinstance(self.beam_center_x, QuantityValue):
+            self.beam_center_x = QuantityValue(**as_dict(self.beam_center_x))
 
-        if self.beam_center_y is not None and not isinstance(self.beam_center_y, float):
-            self.beam_center_y = float(self.beam_center_y)
+        if self.beam_center_y is not None and not isinstance(self.beam_center_y, QuantityValue):
+            self.beam_center_y = QuantityValue(**as_dict(self.beam_center_y))
 
-        if self.detector_distance is not None and not isinstance(self.detector_distance, float):
-            self.detector_distance = float(self.detector_distance)
+        if self.detector_distance is not None and not isinstance(self.detector_distance, QuantityValue):
+            self.detector_distance = QuantityValue(**as_dict(self.detector_distance))
 
-        if self.pixel_size_x is not None and not isinstance(self.pixel_size_x, float):
-            self.pixel_size_x = float(self.pixel_size_x)
+        if self.pixel_size_x is not None and not isinstance(self.pixel_size_x, QuantityValue):
+            self.pixel_size_x = QuantityValue(**as_dict(self.pixel_size_x))
 
-        if self.pixel_size_y is not None and not isinstance(self.pixel_size_y, float):
-            self.pixel_size_y = float(self.pixel_size_y)
+        if self.pixel_size_y is not None and not isinstance(self.pixel_size_y, QuantityValue):
+            self.pixel_size_y = QuantityValue(**as_dict(self.pixel_size_y))
 
-        if self.total_rotation is not None and not isinstance(self.total_rotation, float):
-            self.total_rotation = float(self.total_rotation)
+        if self.total_rotation is not None and not isinstance(self.total_rotation, QuantityValue):
+            self.total_rotation = QuantityValue(**as_dict(self.total_rotation))
 
         if self.beamline is not None and not isinstance(self.beamline, str):
             self.beamline = str(self.beamline)
 
-        if self.transmission is not None and not isinstance(self.transmission, float):
-            self.transmission = float(self.transmission)
+        if self.transmission is not None and not isinstance(self.transmission, QuantityValue):
+            self.transmission = QuantityValue(**as_dict(self.transmission))
 
-        if self.flux is not None and not isinstance(self.flux, float):
-            self.flux = float(self.flux)
+        if self.flux is not None and not isinstance(self.flux, QuantityValue):
+            self.flux = QuantityValue(**as_dict(self.flux))
 
-        if self.flux_end is not None and not isinstance(self.flux_end, float):
-            self.flux_end = float(self.flux_end)
+        if self.flux_end is not None and not isinstance(self.flux_end, QuantityValue):
+            self.flux_end = QuantityValue(**as_dict(self.flux_end))
 
-        if self.slit_gap_horizontal is not None and not isinstance(self.slit_gap_horizontal, float):
-            self.slit_gap_horizontal = float(self.slit_gap_horizontal)
+        if self.slit_gap_horizontal is not None and not isinstance(self.slit_gap_horizontal, QuantityValue):
+            self.slit_gap_horizontal = QuantityValue(**as_dict(self.slit_gap_horizontal))
 
-        if self.slit_gap_vertical is not None and not isinstance(self.slit_gap_vertical, float):
-            self.slit_gap_vertical = float(self.slit_gap_vertical)
+        if self.slit_gap_vertical is not None and not isinstance(self.slit_gap_vertical, QuantityValue):
+            self.slit_gap_vertical = QuantityValue(**as_dict(self.slit_gap_vertical))
 
-        if self.undulator_gap is not None and not isinstance(self.undulator_gap, float):
-            self.undulator_gap = float(self.undulator_gap)
+        if self.undulator_gap is not None and not isinstance(self.undulator_gap, QuantityValue):
+            self.undulator_gap = QuantityValue(**as_dict(self.undulator_gap))
 
         if self.synchrotron_mode is not None and not isinstance(self.synchrotron_mode, str):
             self.synchrotron_mode = str(self.synchrotron_mode)
 
-        if self.exposure_time is not None and not isinstance(self.exposure_time, float):
-            self.exposure_time = float(self.exposure_time)
+        if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
+            self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
 
         if self.start_time is not None and not isinstance(self.start_time, str):
             self.start_time = str(self.start_time)
@@ -1514,11 +1525,11 @@ class ExperimentRun(NamedThing):
         if self.end_time is not None and not isinstance(self.end_time, str):
             self.end_time = str(self.end_time)
 
-        if self.resolution is not None and not isinstance(self.resolution, float):
-            self.resolution = float(self.resolution)
+        if self.resolution is not None and not isinstance(self.resolution, QuantityValue):
+            self.resolution = QuantityValue(**as_dict(self.resolution))
 
-        if self.resolution_at_corner is not None and not isinstance(self.resolution_at_corner, float):
-            self.resolution_at_corner = float(self.resolution_at_corner)
+        if self.resolution_at_corner is not None and not isinstance(self.resolution_at_corner, QuantityValue):
+            self.resolution_at_corner = QuantityValue(**as_dict(self.resolution_at_corner))
 
         if self.ispyb_data_collection_id is not None and not isinstance(self.ispyb_data_collection_id, int):
             self.ispyb_data_collection_id = int(self.ispyb_data_collection_id)
@@ -1567,22 +1578,22 @@ class WorkflowRun(NamedThing):
     pdb_id: Optional[str] = None
     validation_report_path: Optional[str] = None
     space_group: Optional[str] = None
-    unit_cell_a: Optional[float] = None
-    unit_cell_b: Optional[float] = None
-    unit_cell_c: Optional[float] = None
-    unit_cell_alpha: Optional[float] = None
-    unit_cell_beta: Optional[float] = None
-    unit_cell_gamma: Optional[float] = None
-    resolution_high: Optional[float] = None
-    resolution_low: Optional[float] = None
+    unit_cell_a: Optional[Union[dict, "QuantityValue"]] = None
+    unit_cell_b: Optional[Union[dict, "QuantityValue"]] = None
+    unit_cell_c: Optional[Union[dict, "QuantityValue"]] = None
+    unit_cell_alpha: Optional[Union[dict, "QuantityValue"]] = None
+    unit_cell_beta: Optional[Union[dict, "QuantityValue"]] = None
+    unit_cell_gamma: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_high: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_low: Optional[Union[dict, "QuantityValue"]] = None
     rmerge: Optional[float] = None
     rpim: Optional[float] = None
     cc_half: Optional[float] = None
-    completeness_percent: Optional[float] = None
+    completeness_percent: Optional[Union[dict, "QuantityValue"]] = None
     i_over_sigma: Optional[float] = None
-    wilson_b_factor: Optional[float] = None
+    wilson_b_factor: Optional[Union[dict, "QuantityValue"]] = None
     multiplicity: Optional[float] = None
-    anomalous_completeness: Optional[float] = None
+    anomalous_completeness: Optional[Union[dict, "QuantityValue"]] = None
     anomalous_multiplicity: Optional[float] = None
     cc_anomalous: Optional[float] = None
     r_anomalous: Optional[float] = None
@@ -1593,10 +1604,10 @@ class WorkflowRun(NamedThing):
     ispyb_auto_proc_scaling_id: Optional[int] = None
     rwork: Optional[float] = None
     rfree: Optional[float] = None
-    rmsd_bonds: Optional[float] = None
-    rmsd_angles: Optional[float] = None
-    ramachandran_favored: Optional[float] = None
-    ramachandran_outliers: Optional[float] = None
+    rmsd_bonds: Optional[Union[dict, "QuantityValue"]] = None
+    rmsd_angles: Optional[Union[dict, "QuantityValue"]] = None
+    ramachandran_favored: Optional[Union[dict, "QuantityValue"]] = None
+    ramachandran_outliers: Optional[Union[dict, "QuantityValue"]] = None
     clashscore: Optional[float] = None
     processing_notes: Optional[str] = None
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
@@ -1698,29 +1709,29 @@ class WorkflowRun(NamedThing):
         if self.space_group is not None and not isinstance(self.space_group, str):
             self.space_group = str(self.space_group)
 
-        if self.unit_cell_a is not None and not isinstance(self.unit_cell_a, float):
-            self.unit_cell_a = float(self.unit_cell_a)
+        if self.unit_cell_a is not None and not isinstance(self.unit_cell_a, QuantityValue):
+            self.unit_cell_a = QuantityValue(**as_dict(self.unit_cell_a))
 
-        if self.unit_cell_b is not None and not isinstance(self.unit_cell_b, float):
-            self.unit_cell_b = float(self.unit_cell_b)
+        if self.unit_cell_b is not None and not isinstance(self.unit_cell_b, QuantityValue):
+            self.unit_cell_b = QuantityValue(**as_dict(self.unit_cell_b))
 
-        if self.unit_cell_c is not None and not isinstance(self.unit_cell_c, float):
-            self.unit_cell_c = float(self.unit_cell_c)
+        if self.unit_cell_c is not None and not isinstance(self.unit_cell_c, QuantityValue):
+            self.unit_cell_c = QuantityValue(**as_dict(self.unit_cell_c))
 
-        if self.unit_cell_alpha is not None and not isinstance(self.unit_cell_alpha, float):
-            self.unit_cell_alpha = float(self.unit_cell_alpha)
+        if self.unit_cell_alpha is not None and not isinstance(self.unit_cell_alpha, QuantityValue):
+            self.unit_cell_alpha = QuantityValue(**as_dict(self.unit_cell_alpha))
 
-        if self.unit_cell_beta is not None and not isinstance(self.unit_cell_beta, float):
-            self.unit_cell_beta = float(self.unit_cell_beta)
+        if self.unit_cell_beta is not None and not isinstance(self.unit_cell_beta, QuantityValue):
+            self.unit_cell_beta = QuantityValue(**as_dict(self.unit_cell_beta))
 
-        if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, float):
-            self.unit_cell_gamma = float(self.unit_cell_gamma)
+        if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, QuantityValue):
+            self.unit_cell_gamma = QuantityValue(**as_dict(self.unit_cell_gamma))
 
-        if self.resolution_high is not None and not isinstance(self.resolution_high, float):
-            self.resolution_high = float(self.resolution_high)
+        if self.resolution_high is not None and not isinstance(self.resolution_high, QuantityValue):
+            self.resolution_high = QuantityValue(**as_dict(self.resolution_high))
 
-        if self.resolution_low is not None and not isinstance(self.resolution_low, float):
-            self.resolution_low = float(self.resolution_low)
+        if self.resolution_low is not None and not isinstance(self.resolution_low, QuantityValue):
+            self.resolution_low = QuantityValue(**as_dict(self.resolution_low))
 
         if self.rmerge is not None and not isinstance(self.rmerge, float):
             self.rmerge = float(self.rmerge)
@@ -1731,20 +1742,20 @@ class WorkflowRun(NamedThing):
         if self.cc_half is not None and not isinstance(self.cc_half, float):
             self.cc_half = float(self.cc_half)
 
-        if self.completeness_percent is not None and not isinstance(self.completeness_percent, float):
-            self.completeness_percent = float(self.completeness_percent)
+        if self.completeness_percent is not None and not isinstance(self.completeness_percent, QuantityValue):
+            self.completeness_percent = QuantityValue(**as_dict(self.completeness_percent))
 
         if self.i_over_sigma is not None and not isinstance(self.i_over_sigma, float):
             self.i_over_sigma = float(self.i_over_sigma)
 
-        if self.wilson_b_factor is not None and not isinstance(self.wilson_b_factor, float):
-            self.wilson_b_factor = float(self.wilson_b_factor)
+        if self.wilson_b_factor is not None and not isinstance(self.wilson_b_factor, QuantityValue):
+            self.wilson_b_factor = QuantityValue(**as_dict(self.wilson_b_factor))
 
         if self.multiplicity is not None and not isinstance(self.multiplicity, float):
             self.multiplicity = float(self.multiplicity)
 
-        if self.anomalous_completeness is not None and not isinstance(self.anomalous_completeness, float):
-            self.anomalous_completeness = float(self.anomalous_completeness)
+        if self.anomalous_completeness is not None and not isinstance(self.anomalous_completeness, QuantityValue):
+            self.anomalous_completeness = QuantityValue(**as_dict(self.anomalous_completeness))
 
         if self.anomalous_multiplicity is not None and not isinstance(self.anomalous_multiplicity, float):
             self.anomalous_multiplicity = float(self.anomalous_multiplicity)
@@ -1776,17 +1787,17 @@ class WorkflowRun(NamedThing):
         if self.rfree is not None and not isinstance(self.rfree, float):
             self.rfree = float(self.rfree)
 
-        if self.rmsd_bonds is not None and not isinstance(self.rmsd_bonds, float):
-            self.rmsd_bonds = float(self.rmsd_bonds)
+        if self.rmsd_bonds is not None and not isinstance(self.rmsd_bonds, QuantityValue):
+            self.rmsd_bonds = QuantityValue(**as_dict(self.rmsd_bonds))
 
-        if self.rmsd_angles is not None and not isinstance(self.rmsd_angles, float):
-            self.rmsd_angles = float(self.rmsd_angles)
+        if self.rmsd_angles is not None and not isinstance(self.rmsd_angles, QuantityValue):
+            self.rmsd_angles = QuantityValue(**as_dict(self.rmsd_angles))
 
-        if self.ramachandran_favored is not None and not isinstance(self.ramachandran_favored, float):
-            self.ramachandran_favored = float(self.ramachandran_favored)
+        if self.ramachandran_favored is not None and not isinstance(self.ramachandran_favored, QuantityValue):
+            self.ramachandran_favored = QuantityValue(**as_dict(self.ramachandran_favored))
 
-        if self.ramachandran_outliers is not None and not isinstance(self.ramachandran_outliers, float):
-            self.ramachandran_outliers = float(self.ramachandran_outliers)
+        if self.ramachandran_outliers is not None and not isinstance(self.ramachandran_outliers, QuantityValue):
+            self.ramachandran_outliers = QuantityValue(**as_dict(self.ramachandran_outliers))
 
         if self.clashscore is not None and not isinstance(self.clashscore, float):
             self.clashscore = float(self.clashscore)
@@ -1910,7 +1921,7 @@ class Image(NamedThing):
     pixel_size: Optional[float] = None
     dimensions_x: Optional[int] = None
     dimensions_y: Optional[int] = None
-    exposure_time: Optional[float] = None
+    exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     dose: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1936,8 +1947,8 @@ class Image(NamedThing):
         if self.dimensions_y is not None and not isinstance(self.dimensions_y, int):
             self.dimensions_y = int(self.dimensions_y)
 
-        if self.exposure_time is not None and not isinstance(self.exposure_time, float):
-            self.exposure_time = float(self.exposure_time)
+        if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
+            self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
 
         if self.dose is not None and not isinstance(self.dose, float):
             self.dose = float(self.dose)
@@ -2345,7 +2356,7 @@ class XRFImage(Image2D):
     source_type: Optional[Union[str, "XRaySourceTypeEnum"]] = None
     detector_technology: Optional[Union[str, "DetectorTechnologyEnum"]] = None
     detector_model: Optional[str] = None
-    flux: Optional[float] = None
+    flux: Optional[Union[dict, "QuantityValue"]] = None
     calibration_standard: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2376,8 +2387,8 @@ class XRFImage(Image2D):
         if self.detector_model is not None and not isinstance(self.detector_model, str):
             self.detector_model = str(self.detector_model)
 
-        if self.flux is not None and not isinstance(self.flux, float):
-            self.flux = float(self.flux)
+        if self.flux is not None and not isinstance(self.flux, QuantityValue):
+            self.flux = QuantityValue(**as_dict(self.flux))
 
         if self.calibration_standard is not None and not isinstance(self.calibration_standard, str):
             self.calibration_standard = str(self.calibration_standard)
@@ -2897,7 +2908,7 @@ class ExperimentalConditions(AttributeGroup):
     pressure: Optional[float] = None
     atmosphere: Optional[str] = None
     beam_energy: Optional[float] = None
-    exposure_time: Optional[float] = None
+    exposure_time: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.temperature is not None and not isinstance(self.temperature, float):
@@ -2915,8 +2926,8 @@ class ExperimentalConditions(AttributeGroup):
         if self.beam_energy is not None and not isinstance(self.beam_energy, float):
             self.beam_energy = float(self.beam_energy)
 
-        if self.exposure_time is not None and not isinstance(self.exposure_time, float):
-            self.exposure_time = float(self.exposure_time)
+        if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
+            self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
 
         super().__post_init__(**kwargs)
 
@@ -2940,7 +2951,7 @@ class DataCollectionStrategy(AttributeGroup):
     dose_per_frame: Optional[float] = None
     wavelength_a: Optional[float] = None
     detector_mode: Optional[Union[str, "DetectorModeEnum"]] = None
-    pixel_size_calibrated: Optional[float] = None
+    pixel_size_calibrated: Optional[Union[dict, "QuantityValue"]] = None
     detector_distance_mm: Optional[float] = None
     beam_center_x_px: Optional[int] = None
     beam_center_y_px: Optional[int] = None
@@ -2975,8 +2986,8 @@ class DataCollectionStrategy(AttributeGroup):
         if self.detector_mode is not None and not isinstance(self.detector_mode, DetectorModeEnum):
             self.detector_mode = DetectorModeEnum(self.detector_mode)
 
-        if self.pixel_size_calibrated is not None and not isinstance(self.pixel_size_calibrated, float):
-            self.pixel_size_calibrated = float(self.pixel_size_calibrated)
+        if self.pixel_size_calibrated is not None and not isinstance(self.pixel_size_calibrated, QuantityValue):
+            self.pixel_size_calibrated = QuantityValue(**as_dict(self.pixel_size_calibrated))
 
         if self.detector_distance_mm is not None and not isinstance(self.detector_distance_mm, float):
             self.detector_distance_mm = float(self.detector_distance_mm)
@@ -3026,7 +3037,7 @@ class QualityMetrics(AttributeGroup):
     class_name: ClassVar[str] = "QualityMetrics"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.QualityMetrics
 
-    resolution: Optional[float] = None
+    resolution: Optional[Union[dict, "QuantityValue"]] = None
     resolution_high_shell_a: Optional[float] = None
     resolution_low_a: Optional[float] = None
     completeness: Optional[float] = None
@@ -3060,8 +3071,8 @@ class QualityMetrics(AttributeGroup):
     r_factor: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.resolution is not None and not isinstance(self.resolution, float):
-            self.resolution = float(self.resolution)
+        if self.resolution is not None and not isinstance(self.resolution, QuantityValue):
+            self.resolution = QuantityValue(**as_dict(self.resolution))
 
         if self.resolution_high_shell_a is not None and not isinstance(self.resolution_high_shell_a, float):
             self.resolution_high_shell_a = float(self.resolution_high_shell_a)
@@ -3407,6 +3418,160 @@ class FSCCurve(AttributeGroup):
         if not isinstance(self.fsc_value, list):
             self.fsc_value = [self.fsc_value] if self.fsc_value is not None else []
         self.fsc_value = [v if isinstance(v, float) else float(v) for v in self.fsc_value]
+
+        super().__post_init__(**kwargs)
+
+
+Any = Any
+
+@dataclass(repr=False)
+class AttributeValue(YAMLRoot):
+    """
+    The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the
+    structured value.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["AttributeValue"]
+    class_class_curie: ClassVar[str] = "nmdc:AttributeValue"
+    class_name: ClassVar[str] = "AttributeValue"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.AttributeValue
+
+    attribute: Optional[Union[dict, "Attribute"]] = None
+    raw_value: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.attribute is not None and not isinstance(self.attribute, Attribute):
+            self.attribute = Attribute(**as_dict(self.attribute))
+
+        if self.raw_value is not None and not isinstance(self.raw_value, str):
+            self.raw_value = str(self.raw_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Attribute(YAMLRoot):
+    """
+    A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity.
+    Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label
+    should be the term name from the ontology and the id should be the fully-qualified CURIE.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["Attribute"]
+    class_class_curie: ClassVar[str] = "lambdaber:Attribute"
+    class_name: ClassVar[str] = "Attribute"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.Attribute
+
+    label: str = None
+    id: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.label):
+            self.MissingRequiredField("label")
+        if not isinstance(self.label, str):
+            self.label = str(self.label)
+
+        if self.id is not None and not isinstance(self.id, str):
+            self.id = str(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class QuantityValue(AttributeValue):
+    """
+    A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to
+    specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size
+    could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["QuantityValue"]
+    class_class_curie: ClassVar[str] = "nmdc:QuantityValue"
+    class_name: ClassVar[str] = "QuantityValue"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.QuantityValue
+
+    numeric_value: float = None
+    unit: str = None
+    maximum_numeric_value: Optional[float] = None
+    minimum_numeric_value: Optional[float] = None
+    unit_cv_id: Optional[Union[str, Curie]] = None
+    raw_value: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.numeric_value):
+            self.MissingRequiredField("numeric_value")
+        if not isinstance(self.numeric_value, float):
+            self.numeric_value = float(self.numeric_value)
+
+        if self._is_empty(self.unit):
+            self.MissingRequiredField("unit")
+        if not isinstance(self.unit, str):
+            self.unit = str(self.unit)
+
+        if self.maximum_numeric_value is not None and not isinstance(self.maximum_numeric_value, float):
+            self.maximum_numeric_value = float(self.maximum_numeric_value)
+
+        if self.minimum_numeric_value is not None and not isinstance(self.minimum_numeric_value, float):
+            self.minimum_numeric_value = float(self.minimum_numeric_value)
+
+        if self.unit_cv_id is not None and not isinstance(self.unit_cv_id, Curie):
+            self.unit_cv_id = Curie(self.unit_cv_id)
+
+        if self.raw_value is not None and not isinstance(self.raw_value, str):
+            self.raw_value = str(self.raw_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TextValue(AttributeValue):
+    """
+    A value described using a text string, optionally with a controlled vocabulary ID.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["TextValue"]
+    class_class_curie: ClassVar[str] = "nmdc:TextValue"
+    class_name: ClassVar[str] = "TextValue"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.TextValue
+
+    value: str = None
+    value_cv_id: Optional[Union[str, Curie]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        if self.value_cv_id is not None and not isinstance(self.value_cv_id, Curie):
+            self.value_cv_id = Curie(self.value_cv_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DateTimeValue(AttributeValue):
+    """
+    A date or date and time value.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["DateTimeValue"]
+    class_class_curie: ClassVar[str] = "nmdc:DateTimeValue"
+    class_name: ClassVar[str] = "DateTimeValue"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.DateTimeValue
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
 
         super().__post_init__(**kwargs)
 
@@ -6231,6 +6396,33 @@ class DatabaseNameEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.attribute = Slot(uri=LAMBDABER.attribute, name="attribute", curie=LAMBDABER.curie('attribute'),
+                   model_uri=LAMBDABER.attribute, domain=None, range=Union[dict, Attribute])
+
+slots.numeric_value = Slot(uri=LAMBDABER.numeric_value, name="numeric_value", curie=LAMBDABER.curie('numeric_value'),
+                   model_uri=LAMBDABER.numeric_value, domain=None, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+
+slots.minimum_numeric_value = Slot(uri=LAMBDABER.minimum_numeric_value, name="minimum_numeric_value", curie=LAMBDABER.curie('minimum_numeric_value'),
+                   model_uri=LAMBDABER.minimum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["minimum_numeric_value"]])
+
+slots.maximum_numeric_value = Slot(uri=LAMBDABER.maximum_numeric_value, name="maximum_numeric_value", curie=LAMBDABER.curie('maximum_numeric_value'),
+                   model_uri=LAMBDABER.maximum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["maximum_numeric_value"]])
+
+slots.raw_value = Slot(uri=LAMBDABER.raw_value, name="raw_value", curie=LAMBDABER.curie('raw_value'),
+                   model_uri=LAMBDABER.raw_value, domain=None, range=Optional[str], mappings = [NMDC["raw_value"]])
+
+slots.unit = Slot(uri=LAMBDABER.unit, name="unit", curie=LAMBDABER.curie('unit'),
+                   model_uri=LAMBDABER.unit, domain=None, range=Optional[str], mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
+
+slots.unit_cv_id = Slot(uri=LAMBDABER.unit_cv_id, name="unit_cv_id", curie=LAMBDABER.curie('unit_cv_id'),
+                   model_uri=LAMBDABER.unit_cv_id, domain=None, range=Optional[Union[str, Curie]])
+
+slots.value = Slot(uri=LAMBDABER.value, name="value", curie=LAMBDABER.curie('value'),
+                   model_uri=LAMBDABER.value, domain=None, range=Optional[str])
+
+slots.value_cv_id = Slot(uri=LAMBDABER.value_cv_id, name="value_cv_id", curie=LAMBDABER.curie('value_cv_id'),
+                   model_uri=LAMBDABER.value_cv_id, domain=None, range=Optional[Union[str, Curie]])
+
 slots.namedThing__id = Slot(uri=LAMBDABER.id, name="namedThing__id", curie=LAMBDABER.curie('id'),
                    model_uri=LAMBDABER.namedThing__id, domain=None, range=URIRef)
 
@@ -6286,7 +6478,7 @@ slots.sample__molecular_composition = Slot(uri=LAMBDABER.molecular_composition, 
                    model_uri=LAMBDABER.sample__molecular_composition, domain=None, range=Optional[Union[dict, MolecularComposition]])
 
 slots.sample__molecular_weight = Slot(uri=LAMBDABER.molecular_weight, name="sample__molecular_weight", curie=LAMBDABER.curie('molecular_weight'),
-                   model_uri=LAMBDABER.sample__molecular_weight, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.sample__molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sample__concentration = Slot(uri=LAMBDABER.concentration, name="sample__concentration", curie=LAMBDABER.curie('concentration'),
                    model_uri=LAMBDABER.sample__concentration, domain=None, range=Optional[float])
@@ -6454,7 +6646,7 @@ slots.samplePreparation__host_strain_or_cell_line = Slot(uri=LAMBDABER.host_stra
                    model_uri=LAMBDABER.samplePreparation__host_strain_or_cell_line, domain=None, range=Optional[str])
 
 slots.samplePreparation__culture_volume_l = Slot(uri=LAMBDABER.culture_volume_l, name="samplePreparation__culture_volume_l", curie=LAMBDABER.curie('culture_volume_l'),
-                   model_uri=LAMBDABER.samplePreparation__culture_volume_l, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__culture_volume_l, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__medium = Slot(uri=LAMBDABER.medium, name="samplePreparation__medium", curie=LAMBDABER.curie('medium'),
                    model_uri=LAMBDABER.samplePreparation__medium, domain=None, range=Optional[str])
@@ -6463,7 +6655,7 @@ slots.samplePreparation__antibiotic_selection = Slot(uri=LAMBDABER.antibiotic_se
                    model_uri=LAMBDABER.samplePreparation__antibiotic_selection, domain=None, range=Optional[str])
 
 slots.samplePreparation__growth_temperature_c = Slot(uri=LAMBDABER.growth_temperature_c, name="samplePreparation__growth_temperature_c", curie=LAMBDABER.curie('growth_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__growth_temperature_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.samplePreparation__growth_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samplePreparation__induction_agent = Slot(uri=LAMBDABER.induction_agent, name="samplePreparation__induction_agent", curie=LAMBDABER.curie('induction_agent'),
                    model_uri=LAMBDABER.samplePreparation__induction_agent, domain=None, range=Optional[str])
@@ -6842,61 +7034,61 @@ slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDABER.acquisiti
                    model_uri=LAMBDABER.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
 
 slots.experimentRun__wavelength = Slot(uri=LAMBDABER.wavelength, name="experimentRun__wavelength", curie=LAMBDABER.curie('wavelength'),
-                   model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__oscillation_angle = Slot(uri=LAMBDABER.oscillation_angle, name="experimentRun__oscillation_angle", curie=LAMBDABER.curie('oscillation_angle'),
-                   model_uri=LAMBDABER.experimentRun__oscillation_angle, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__oscillation_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__start_angle = Slot(uri=LAMBDABER.start_angle, name="experimentRun__start_angle", curie=LAMBDABER.curie('start_angle'),
-                   model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__number_of_images = Slot(uri=LAMBDABER.number_of_images, name="experimentRun__number_of_images", curie=LAMBDABER.curie('number_of_images'),
                    model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[int])
 
 slots.experimentRun__beam_center_x = Slot(uri=LAMBDABER.beam_center_x, name="experimentRun__beam_center_x", curie=LAMBDABER.curie('beam_center_x'),
-                   model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__beam_center_y = Slot(uri=LAMBDABER.beam_center_y, name="experimentRun__beam_center_y", curie=LAMBDABER.curie('beam_center_y'),
-                   model_uri=LAMBDABER.experimentRun__beam_center_y, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__beam_center_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__detector_distance = Slot(uri=LAMBDABER.detector_distance, name="experimentRun__detector_distance", curie=LAMBDABER.curie('detector_distance'),
-                   model_uri=LAMBDABER.experimentRun__detector_distance, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__detector_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__pixel_size_x = Slot(uri=LAMBDABER.pixel_size_x, name="experimentRun__pixel_size_x", curie=LAMBDABER.curie('pixel_size_x'),
-                   model_uri=LAMBDABER.experimentRun__pixel_size_x, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__pixel_size_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__pixel_size_y = Slot(uri=LAMBDABER.pixel_size_y, name="experimentRun__pixel_size_y", curie=LAMBDABER.curie('pixel_size_y'),
-                   model_uri=LAMBDABER.experimentRun__pixel_size_y, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__pixel_size_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__total_rotation = Slot(uri=LAMBDABER.total_rotation, name="experimentRun__total_rotation", curie=LAMBDABER.curie('total_rotation'),
-                   model_uri=LAMBDABER.experimentRun__total_rotation, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__total_rotation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__beamline = Slot(uri=LAMBDABER.beamline, name="experimentRun__beamline", curie=LAMBDABER.curie('beamline'),
                    model_uri=LAMBDABER.experimentRun__beamline, domain=None, range=Optional[str])
 
 slots.experimentRun__transmission = Slot(uri=LAMBDABER.transmission, name="experimentRun__transmission", curie=LAMBDABER.curie('transmission'),
-                   model_uri=LAMBDABER.experimentRun__transmission, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__transmission, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__flux = Slot(uri=LAMBDABER.flux, name="experimentRun__flux", curie=LAMBDABER.curie('flux'),
-                   model_uri=LAMBDABER.experimentRun__flux, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__flux_end = Slot(uri=LAMBDABER.flux_end, name="experimentRun__flux_end", curie=LAMBDABER.curie('flux_end'),
-                   model_uri=LAMBDABER.experimentRun__flux_end, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__flux_end, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__slit_gap_horizontal = Slot(uri=LAMBDABER.slit_gap_horizontal, name="experimentRun__slit_gap_horizontal", curie=LAMBDABER.curie('slit_gap_horizontal'),
-                   model_uri=LAMBDABER.experimentRun__slit_gap_horizontal, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__slit_gap_horizontal, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__slit_gap_vertical = Slot(uri=LAMBDABER.slit_gap_vertical, name="experimentRun__slit_gap_vertical", curie=LAMBDABER.curie('slit_gap_vertical'),
-                   model_uri=LAMBDABER.experimentRun__slit_gap_vertical, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__slit_gap_vertical, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__undulator_gap = Slot(uri=LAMBDABER.undulator_gap, name="experimentRun__undulator_gap", curie=LAMBDABER.curie('undulator_gap'),
-                   model_uri=LAMBDABER.experimentRun__undulator_gap, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__undulator_gap, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__synchrotron_mode = Slot(uri=LAMBDABER.synchrotron_mode, name="experimentRun__synchrotron_mode", curie=LAMBDABER.curie('synchrotron_mode'),
                    model_uri=LAMBDABER.experimentRun__synchrotron_mode, domain=None, range=Optional[str])
 
 slots.experimentRun__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentRun__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.experimentRun__exposure_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__start_time = Slot(uri=LAMBDABER.start_time, name="experimentRun__start_time", curie=LAMBDABER.curie('start_time'),
                    model_uri=LAMBDABER.experimentRun__start_time, domain=None, range=Optional[str])
@@ -6905,10 +7097,10 @@ slots.experimentRun__end_time = Slot(uri=LAMBDABER.end_time, name="experimentRun
                    model_uri=LAMBDABER.experimentRun__end_time, domain=None, range=Optional[str])
 
 slots.experimentRun__resolution = Slot(uri=LAMBDABER.resolution, name="experimentRun__resolution", curie=LAMBDABER.curie('resolution'),
-                   model_uri=LAMBDABER.experimentRun__resolution, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__resolution_at_corner = Slot(uri=LAMBDABER.resolution_at_corner, name="experimentRun__resolution_at_corner", curie=LAMBDABER.curie('resolution_at_corner'),
-                   model_uri=LAMBDABER.experimentRun__resolution_at_corner, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentRun__resolution_at_corner, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimentRun__ispyb_data_collection_id = Slot(uri=LAMBDABER.ispyb_data_collection_id, name="experimentRun__ispyb_data_collection_id", curie=LAMBDABER.curie('ispyb_data_collection_id'),
                    model_uri=LAMBDABER.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[int])
@@ -6992,28 +7184,28 @@ slots.workflowRun__space_group = Slot(uri=LAMBDABER.space_group, name="workflowR
                    model_uri=LAMBDABER.workflowRun__space_group, domain=None, range=Optional[str])
 
 slots.workflowRun__unit_cell_a = Slot(uri=LAMBDABER.unit_cell_a, name="workflowRun__unit_cell_a", curie=LAMBDABER.curie('unit_cell_a'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_a, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__unit_cell_b = Slot(uri=LAMBDABER.unit_cell_b, name="workflowRun__unit_cell_b", curie=LAMBDABER.curie('unit_cell_b'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_b, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_b, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__unit_cell_c = Slot(uri=LAMBDABER.unit_cell_c, name="workflowRun__unit_cell_c", curie=LAMBDABER.curie('unit_cell_c'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_c, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__unit_cell_alpha = Slot(uri=LAMBDABER.unit_cell_alpha, name="workflowRun__unit_cell_alpha", curie=LAMBDABER.curie('unit_cell_alpha'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_alpha, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_alpha, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__unit_cell_beta = Slot(uri=LAMBDABER.unit_cell_beta, name="workflowRun__unit_cell_beta", curie=LAMBDABER.curie('unit_cell_beta'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_beta, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_beta, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name="workflowRun__unit_cell_gamma", curie=LAMBDABER.curie('unit_cell_gamma'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_gamma, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__resolution_high = Slot(uri=LAMBDABER.resolution_high, name="workflowRun__resolution_high", curie=LAMBDABER.curie('resolution_high'),
-                   model_uri=LAMBDABER.workflowRun__resolution_high, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__resolution_high, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__resolution_low = Slot(uri=LAMBDABER.resolution_low, name="workflowRun__resolution_low", curie=LAMBDABER.curie('resolution_low'),
-                   model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rmerge = Slot(uri=LAMBDABER.rmerge, name="workflowRun__rmerge", curie=LAMBDABER.curie('rmerge'),
                    model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[float])
@@ -7025,19 +7217,19 @@ slots.workflowRun__cc_half = Slot(uri=LAMBDABER.cc_half, name="workflowRun__cc_h
                    model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[float])
 
 slots.workflowRun__completeness_percent = Slot(uri=LAMBDABER.completeness_percent, name="workflowRun__completeness_percent", curie=LAMBDABER.curie('completeness_percent'),
-                   model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__i_over_sigma = Slot(uri=LAMBDABER.i_over_sigma, name="workflowRun__i_over_sigma", curie=LAMBDABER.curie('i_over_sigma'),
                    model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[float])
 
 slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDABER.wilson_b_factor, name="workflowRun__wilson_b_factor", curie=LAMBDABER.curie('wilson_b_factor'),
-                   model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="workflowRun__multiplicity", curie=LAMBDABER.curie('multiplicity'),
                    model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[float])
 
 slots.workflowRun__anomalous_completeness = Slot(uri=LAMBDABER.anomalous_completeness, name="workflowRun__anomalous_completeness", curie=LAMBDABER.curie('anomalous_completeness'),
-                   model_uri=LAMBDABER.workflowRun__anomalous_completeness, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__anomalous_completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__anomalous_multiplicity = Slot(uri=LAMBDABER.anomalous_multiplicity, name="workflowRun__anomalous_multiplicity", curie=LAMBDABER.curie('anomalous_multiplicity'),
                    model_uri=LAMBDABER.workflowRun__anomalous_multiplicity, domain=None, range=Optional[float])
@@ -7070,16 +7262,16 @@ slots.workflowRun__rfree = Slot(uri=LAMBDABER.rfree, name="workflowRun__rfree", 
                    model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[float])
 
 slots.workflowRun__rmsd_bonds = Slot(uri=LAMBDABER.rmsd_bonds, name="workflowRun__rmsd_bonds", curie=LAMBDABER.curie('rmsd_bonds'),
-                   model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__rmsd_angles = Slot(uri=LAMBDABER.rmsd_angles, name="workflowRun__rmsd_angles", curie=LAMBDABER.curie('rmsd_angles'),
-                   model_uri=LAMBDABER.workflowRun__rmsd_angles, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__rmsd_angles, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__ramachandran_favored = Slot(uri=LAMBDABER.ramachandran_favored, name="workflowRun__ramachandran_favored", curie=LAMBDABER.curie('ramachandran_favored'),
-                   model_uri=LAMBDABER.workflowRun__ramachandran_favored, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__ramachandran_favored, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__ramachandran_outliers = Slot(uri=LAMBDABER.ramachandran_outliers, name="workflowRun__ramachandran_outliers", curie=LAMBDABER.curie('ramachandran_outliers'),
-                   model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.workflowRun__clashscore = Slot(uri=LAMBDABER.clashscore, name="workflowRun__clashscore", curie=LAMBDABER.curie('clashscore'),
                    model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[float])
@@ -7160,7 +7352,7 @@ slots.image__dimensions_y = Slot(uri=LAMBDABER.dimensions_y, name="image__dimens
                    model_uri=LAMBDABER.image__dimensions_y, domain=None, range=Optional[int])
 
 slots.image__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="image__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.image__exposure_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image__dose = Slot(uri=LAMBDABER.dose, name="image__dose", curie=LAMBDABER.curie('dose'),
                    model_uri=LAMBDABER.image__dose, domain=None, range=Optional[float])
@@ -7334,7 +7526,7 @@ slots.xRFImage__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRFIma
                    model_uri=LAMBDABER.xRFImage__detector_model, domain=None, range=Optional[str])
 
 slots.xRFImage__flux = Slot(uri=LAMBDABER.flux, name="xRFImage__flux", curie=LAMBDABER.curie('flux'),
-                   model_uri=LAMBDABER.xRFImage__flux, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.xRFImage__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRFImage__calibration_standard = Slot(uri=LAMBDABER.calibration_standard, name="xRFImage__calibration_standard", curie=LAMBDABER.curie('calibration_standard'),
                    model_uri=LAMBDABER.xRFImage__calibration_standard, domain=None, range=Optional[str])
@@ -7595,7 +7787,7 @@ slots.experimentalConditions__beam_energy = Slot(uri=LAMBDABER.beam_energy, name
                    model_uri=LAMBDABER.experimentalConditions__beam_energy, domain=None, range=Optional[float])
 
 slots.experimentalConditions__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentalConditions__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.experimentalConditions__exposure_time, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.experimentalConditions__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__collection_mode = Slot(uri=LAMBDABER.collection_mode, name="dataCollectionStrategy__collection_mode", curie=LAMBDABER.curie('collection_mode'),
                    model_uri=LAMBDABER.dataCollectionStrategy__collection_mode, domain=None, range=Optional[Union[str, "CollectionModeEnum"]])
@@ -7619,7 +7811,7 @@ slots.dataCollectionStrategy__detector_mode = Slot(uri=LAMBDABER.detector_mode, 
                    model_uri=LAMBDABER.dataCollectionStrategy__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
 
 slots.dataCollectionStrategy__pixel_size_calibrated = Slot(uri=LAMBDABER.pixel_size_calibrated, name="dataCollectionStrategy__pixel_size_calibrated", curie=LAMBDABER.curie('pixel_size_calibrated'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__pixel_size_calibrated, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.dataCollectionStrategy__pixel_size_calibrated, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDABER.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=LAMBDABER.curie('detector_distance_mm'),
                    model_uri=LAMBDABER.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[float])
@@ -7655,7 +7847,7 @@ slots.dataCollectionStrategy__strategy_notes = Slot(uri=LAMBDABER.strategy_notes
                    model_uri=LAMBDABER.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
 
 slots.qualityMetrics__resolution = Slot(uri=LAMBDABER.resolution, name="qualityMetrics__resolution", curie=LAMBDABER.curie('resolution'),
-                   model_uri=LAMBDABER.qualityMetrics__resolution, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.qualityMetrics__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.qualityMetrics__resolution_high_shell_a = Slot(uri=LAMBDABER.resolution_high_shell_a, name="qualityMetrics__resolution_high_shell_a", curie=LAMBDABER.curie('resolution_high_shell_a'),
                    model_uri=LAMBDABER.qualityMetrics__resolution_high_shell_a, domain=None, range=Optional[float])
@@ -7857,6 +8049,27 @@ slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, na
 
 slots.fSCCurve__fsc_value = Slot(uri=LAMBDABER.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDABER.curie('fsc_value'),
                    model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[float, list[float]]])
+
+slots.attributeValue__attribute = Slot(uri=LAMBDABER.attribute, name="attributeValue__attribute", curie=LAMBDABER.curie('attribute'),
+                   model_uri=LAMBDABER.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])
+
+slots.attributeValue__raw_value = Slot(uri=LAMBDABER.raw_value, name="attributeValue__raw_value", curie=LAMBDABER.curie('raw_value'),
+                   model_uri=LAMBDABER.attributeValue__raw_value, domain=None, range=Optional[str])
+
+slots.attribute__id = Slot(uri=LAMBDABER.id, name="attribute__id", curie=LAMBDABER.curie('id'),
+                   model_uri=LAMBDABER.attribute__id, domain=None, range=Optional[str])
+
+slots.attribute__label = Slot(uri=LAMBDABER.label, name="attribute__label", curie=LAMBDABER.curie('label'),
+                   model_uri=LAMBDABER.attribute__label, domain=None, range=str)
+
+slots.textValue__value = Slot(uri=LAMBDABER.value, name="textValue__value", curie=LAMBDABER.curie('value'),
+                   model_uri=LAMBDABER.textValue__value, domain=None, range=str)
+
+slots.textValue__value_cv_id = Slot(uri=LAMBDABER.value_cv_id, name="textValue__value_cv_id", curie=LAMBDABER.curie('value_cv_id'),
+                   model_uri=LAMBDABER.textValue__value_cv_id, domain=None, range=Optional[Union[str, Curie]])
+
+slots.dateTimeValue__value = Slot(uri=LAMBDABER.value, name="dateTimeValue__value", curie=LAMBDABER.curie('value'),
+                   model_uri=LAMBDABER.dateTimeValue__value, domain=None, range=str)
 
 slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
                    model_uri=LAMBDABER.proteinAnnotation__protein_id, domain=None, range=str,
@@ -8228,3 +8441,12 @@ slots.Micrograph_defocus = Slot(uri=LAMBDABER.defocus, name="Micrograph_defocus"
 
 slots.Micrograph_astigmatism = Slot(uri=LAMBDABER.astigmatism, name="Micrograph_astigmatism", curie=LAMBDABER.curie('astigmatism'),
                    model_uri=LAMBDABER.Micrograph_astigmatism, domain=Micrograph, range=Optional[float])
+
+slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
+                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=float, mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+
+slots.QuantityValue_unit = Slot(uri=LAMBDABER.unit, name="QuantityValue_unit", curie=LAMBDABER.curie('unit'),
+                   model_uri=LAMBDABER.QuantityValue_unit, domain=QuantityValue, range=str, mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
+
+slots.QuantityValue_raw_value = Slot(uri=LAMBDABER.raw_value, name="QuantityValue_raw_value", curie=LAMBDABER.curie('raw_value'),
+                   model_uri=LAMBDABER.QuantityValue_raw_value, domain=QuantityValue, range=Optional[str], mappings = [NMDC["raw_value"]])

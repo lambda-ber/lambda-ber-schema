@@ -3,6 +3,7 @@
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:dataset_berkeley_tfiid_2024 a lambdaber:Dataset ;
@@ -37,7 +38,9 @@ lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:completeness "99.5"^^xsd:float ;
-            lambdaber:resolution "2.8"^^xsd:float ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.8"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
             lambdaber:signal_to_noise "4.2"^^xsd:float ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
     lambdaber:sample_id "lambdaber:sample_tfiid_001" ;
@@ -63,7 +66,9 @@ lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
             lambdaber:completeness "98.0"^^xsd:float ;
-            lambdaber:resolution "3.1"^^xsd:float ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.1"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
             lambdaber:signal_to_noise "3.8"^^xsd:float ] ;
     lambdaber:sample_id "lambdaber:sample_tfiid_dna_002" ;
     lambdaber:technique CHMO:0002413 .
@@ -116,7 +121,9 @@ lambdaber:img_mic_001 a lambdaber:Image ;
     lambdaber:dimensions_x 5760 ;
     lambdaber:dimensions_y 4092 ;
     lambdaber:dose "40.0"^^xsd:float ;
-    lambdaber:exposure_time "2.5"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "mic_001.mrc" ;
     lambdaber:pixel_size "0.85"^^xsd:float .
 
@@ -153,7 +160,9 @@ lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
             lambdaber:ligands "TFIID complex" ;
             lambdaber:modifications "5' fluorescent label" ;
             lambdaber:sequences "GGCTATAAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCG" ] ;
-    lambdaber:molecular_weight "1250.0"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1250.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:parent_sample_id lambdaber:sample_tfiid_001 ;
     lambdaber:purity_percentage "92.0"^^xsd:float ;
@@ -287,7 +296,9 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
             lambdaber:modifications "TAF1 phosphorylation at S residues",
                 "TAF7 acetylation" ;
             lambdaber:sequences "MSDAEGEKPFKGWEEQVQGRGRVNVLRNKFGGPVTLEQQRWEQAQQGVVEELRCDAVKSMNGFLNLSLPSQEPADLSELQEKLEEILRLNDTFKKNTGLPSTSAELDAAQEELQDWLSKLEENAKAIGEKDQVLEAAAKQLDNEAEAHTQQVYNLKKKGQAAPEEQEEEEDLVAGDEDD" ] ;
-    lambdaber:molecular_weight "1200.0"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1200.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:preparation_method "Nuclear extract followed by immunoaffinity purification and glycerol gradient" ;
     lambdaber:purity_percentage "95.0"^^xsd:float ;

@@ -16,7 +16,10 @@
           "2x Zinc Ion"
         ]
       },
-      "molecular_weight": 80.0,
+      "molecular_weight": {
+        "numeric_value": 80.0,
+        "unit": "kilodaltons"
+      },
       "concentration": 10.0,
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
@@ -53,7 +56,10 @@
         "temperature": 100.0
       },
       "quality_metrics": {
-        "resolution": 1.54,
+        "resolution": {
+          "numeric_value": 1.54,
+          "unit": "Angstroms"
+        },
         "completeness": 95.0
       }
     }

@@ -9,7 +9,10 @@
   "experimental_conditions": {
     "temperature": 20.0,
     "beam_energy": 9.76,
-    "exposure_time": 0.3
+    "exposure_time": {
+      "numeric_value": 0.3,
+      "unit": "seconds"
+    }
   },
   "data_collection_strategy": {
     "collection_mode": "batch"

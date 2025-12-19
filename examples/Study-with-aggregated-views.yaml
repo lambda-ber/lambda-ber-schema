@@ -9,7 +9,9 @@ samples:
   sample_type: complex
   molecular_composition:
     description: Human p53 N-terminal domain with MDM2
-  molecular_weight: 45.5
+  molecular_weight:
+    numeric_value: 45.5
+    unit: kilodaltons
   concentration: 8.0
   concentration_unit: mg_per_ml
   functional_sites:
@@ -46,7 +48,9 @@ instrument_runs:
   instrument_id: TITAN-001
   technique: cryo_em
   quality_metrics:
-    resolution: 3.2
+    resolution:
+      numeric_value: 3.2
+      unit: Angstroms
     completeness: 99.5
 workflow_runs:
 - id: lambdaber:wf-run-001

@@ -88,6 +88,8 @@ A multimodal plant imaging study might combine:
 
 ### Classes
 
+ * [Any](Any.md)
+ * [Attribute](Attribute.md) - A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
  * [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
      * [BiophysicalProperty](BiophysicalProperty.md) - Measured or calculated biophysical properties
      * [BufferComposition](BufferComposition.md) - Buffer composition for sample storage
@@ -111,6 +113,10 @@ A multimodal plant imaging study might combine:
          * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
          * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
          * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
+ * [AttributeValue](AttributeValue.md) - The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
+     * [DateTimeValue](DateTimeValue.md) - A date or date and time value.
+     * [QuantityValue](QuantityValue.md) - A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+     * [TextValue](TextValue.md) - A value described using a text string, optionally with a controlled vocabulary ID.
  * [NamedThing](NamedThing.md) - A named thing
      * [AggregatedProteinView](AggregatedProteinView.md) - Aggregated view of all structural and functional data for a protein
      * [ConformationalEnsemble](ConformationalEnsemble.md) - Ensemble of conformational states for a protein
@@ -166,7 +172,13 @@ A multimodal plant imaging study might combine:
  * [➞ptms](aggregatedProteinView__ptms.md) - All post-translational modifications
  * [➞structural_features](aggregatedProteinView__structural_features.md) - All structural feature annotations
  * [➞uniprot_id](aggregatedProteinView__uniprot_id.md) - UniProt accession
+ * [attribute](attribute.md) - The attribute being represented.
  * [➞description](attributeGroup__description.md)
+ * [➞attribute](attributeValue__attribute.md) - The attribute being represented.
+ * [➞raw_value](attributeValue__raw_value.md) - Unnormalized atomic string representation, suggested syntax {number} {unit}
+     * [QuantityValue➞raw_value](QuantityValue_raw_value.md)
+ * [➞id](attribute__id.md) - A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.
+ * [➞label](attribute__label.md) - Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.
  * [➞energy_max](beamlineInstrument__energy_max.md) - Maximum X-ray energy in keV
  * [➞energy_min](beamlineInstrument__energy_min.md) - Minimum X-ray energy in keV
  * [➞mail_in_service](beamlineInstrument__mail_in_service.md) - Whether mail-in sample service is available
@@ -281,7 +293,7 @@ A multimodal plant imaging study might combine:
  * [➞flux_photons_per_s](dataCollectionStrategy__flux_photons_per_s.md) - Photon flux in photons per second
  * [➞frame_rate](dataCollectionStrategy__frame_rate.md) - Frames per second
  * [➞oscillation_per_image_deg](dataCollectionStrategy__oscillation_per_image_deg.md) - Oscillation angle per image in degrees
- * [➞pixel_size_calibrated](dataCollectionStrategy__pixel_size_calibrated.md) - Calibrated pixel size for this experiment
+ * [➞pixel_size_calibrated](dataCollectionStrategy__pixel_size_calibrated.md) - Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞strategy_notes](dataCollectionStrategy__strategy_notes.md) - Notes about data collection strategy
  * [➞temperature_k](dataCollectionStrategy__temperature_k.md) - Data collection temperature in Kelvin
  * [➞total_dose](dataCollectionStrategy__total_dose.md) - Total electron dose for cryo-EM
@@ -306,6 +318,7 @@ A multimodal plant imaging study might combine:
  * [➞instruments](dataset__instruments.md) - Instruments used across all studies in this dataset
  * [➞keywords](dataset__keywords.md) - Keywords or tags describing the dataset for search and categorization
  * [➞studies](dataset__studies.md) - Individual research studies contained in this dataset
+ * [➞value](dateTimeValue__value.md) - The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.
  * [➞alignment_depth](evolutionaryConservation__alignment_depth.md) - Number of sequences in alignment
  * [➞coevolved_residues](evolutionaryConservation__coevolved_residues.md) - Pairs of coevolved residues
  * [➞conservation_method](evolutionaryConservation__conservation_method.md) - Method used for conservation analysis
@@ -317,8 +330,8 @@ A multimodal plant imaging study might combine:
  * [➞acquisition_software_version](experimentRun__acquisition_software_version.md) - Version of acquisition software
  * [➞astigmatism_target](experimentRun__astigmatism_target.md) - Target astigmatism in Angstroms
  * [➞autoloader_slot](experimentRun__autoloader_slot.md) - Autoloader slot identifier
- * [➞beam_center_x](experimentRun__beam_center_x.md) - Beam center X coordinate
- * [➞beam_center_y](experimentRun__beam_center_y.md) - Beam center Y coordinate
+ * [➞beam_center_x](experimentRun__beam_center_x.md) - Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞beam_center_y](experimentRun__beam_center_y.md) - Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞beamline](experimentRun__beamline.md) - Beamline identifier (e.g., FMX, AMX, 12.3.1)
  * [➞calibrated_pixel_size](experimentRun__calibrated_pixel_size.md) - Calibrated pixel size in Angstroms per pixel
  * [➞camera_binning](experimentRun__camera_binning.md) - Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).
@@ -328,17 +341,17 @@ A multimodal plant imaging study might combine:
  * [➞defocus_range_max](experimentRun__defocus_range_max.md) - Maximum defocus range in micrometers
  * [➞defocus_range_min](experimentRun__defocus_range_min.md) - Minimum defocus range in micrometers
  * [➞defocus_target](experimentRun__defocus_target.md) - Target defocus value in micrometers
- * [➞detector_distance](experimentRun__detector_distance.md) - Distance from sample to detector
+ * [➞detector_distance](experimentRun__detector_distance.md) - Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞dose_rate](experimentRun__dose_rate.md) - Dose rate in e-/pixel/s or e-/Angstrom^2/s
  * [➞end_time](experimentRun__end_time.md) - Data collection end timestamp
  * [➞experiment_code](experimentRun__experiment_code.md) - Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
  * [➞experiment_date](experimentRun__experiment_date.md) - Date of the experiment
  * [➞experimental_conditions](experimentRun__experimental_conditions.md) - Environmental and experimental conditions
  * [➞experimental_method](experimentRun__experimental_method.md) - Specific experimental method for structure determination (particularly for diffraction techniques)
- * [➞exposure_time](experimentRun__exposure_time.md) - Exposure time per image in seconds
+ * [➞exposure_time](experimentRun__exposure_time.md) - Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞exposure_time_per_frame](experimentRun__exposure_time_per_frame.md) - Exposure time per frame in milliseconds
- * [➞flux](experimentRun__flux.md) - Photon flux at sample position in photons/second
- * [➞flux_end](experimentRun__flux_end.md) - Photon flux at end of data collection in photons/second
+ * [➞flux](experimentRun__flux.md) - Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞flux_end](experimentRun__flux_end.md) - Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞frames_per_movie](experimentRun__frames_per_movie.md) - Number of frames per movie
  * [➞holes_per_group](experimentRun__holes_per_group.md) - Number of holes per group
  * [➞instrument_id](experimentRun__instrument_id.md) - Reference to the instrument used
@@ -347,29 +360,29 @@ A multimodal plant imaging study might combine:
  * [➞magnification](experimentRun__magnification.md) - Magnification used during data collection
  * [➞number_of_images](experimentRun__number_of_images.md) - Total number of diffraction images collected
  * [➞operator_id](experimentRun__operator_id.md) - Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)
- * [➞oscillation_angle](experimentRun__oscillation_angle.md) - Oscillation angle per image
- * [➞pixel_size_x](experimentRun__pixel_size_x.md) - Pixel size X dimension
- * [➞pixel_size_y](experimentRun__pixel_size_y.md) - Pixel size Y dimension
+ * [➞oscillation_angle](experimentRun__oscillation_angle.md) - Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞pixel_size_x](experimentRun__pixel_size_x.md) - Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
+ * [➞pixel_size_y](experimentRun__pixel_size_y.md) - Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
  * [➞processing_status](experimentRun__processing_status.md) - Current processing status
  * [➞quality_metrics](experimentRun__quality_metrics.md) - Quality metrics for the experiment
  * [➞raw_data_location](experimentRun__raw_data_location.md) - Location of raw data files
- * [➞resolution](experimentRun__resolution.md) - Resolution at edge of detector in Angstroms
- * [➞resolution_at_corner](experimentRun__resolution_at_corner.md) - Resolution at corner of detector in Angstroms
+ * [➞resolution](experimentRun__resolution.md) - Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞resolution_at_corner](experimentRun__resolution_at_corner.md) - Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞sample_id](experimentRun__sample_id.md) - Reference to the sample being analyzed
  * [➞shots_per_hole](experimentRun__shots_per_hole.md) - Number of shots taken per hole
- * [➞slit_gap_horizontal](experimentRun__slit_gap_horizontal.md) - Horizontal slit gap aperture in micrometers
- * [➞slit_gap_vertical](experimentRun__slit_gap_vertical.md) - Vertical slit gap aperture in micrometers
+ * [➞slit_gap_horizontal](experimentRun__slit_gap_horizontal.md) - Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞slit_gap_vertical](experimentRun__slit_gap_vertical.md) - Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞stage_tilt](experimentRun__stage_tilt.md) - Stage tilt angle in degrees
- * [➞start_angle](experimentRun__start_angle.md) - Starting rotation angle
+ * [➞start_angle](experimentRun__start_angle.md) - Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞start_time](experimentRun__start_time.md) - Data collection start timestamp
  * [➞synchrotron_mode](experimentRun__synchrotron_mode.md) - Synchrotron storage ring fill mode
  * [➞technique](experimentRun__technique.md) - Technique used for data collection
  * [➞total_dose](experimentRun__total_dose.md) - Total electron dose in e-/Angstrom^2
  * [➞total_exposure_time](experimentRun__total_exposure_time.md) - Total exposure time in milliseconds
- * [➞total_rotation](experimentRun__total_rotation.md) - Total rotation range collected
- * [➞transmission](experimentRun__transmission.md) - X-ray beam transmission as percentage (0-100)
- * [➞undulator_gap](experimentRun__undulator_gap.md) - Undulator gap setting in millimeters
- * [➞wavelength](experimentRun__wavelength.md) - X-ray wavelength
+ * [➞total_rotation](experimentRun__total_rotation.md) - Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞transmission](experimentRun__transmission.md) - X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+ * [➞undulator_gap](experimentRun__undulator_gap.md) - Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.
+ * [➞wavelength](experimentRun__wavelength.md) - X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞atmosphere](experimentalConditions__atmosphere.md) - Atmosphere composition
  * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy in keV
  * [➞exposure_time](experimentalConditions__exposure_time.md) - Exposure time in seconds
@@ -488,6 +501,10 @@ A multimodal plant imaging study might combine:
  * [➞description](namedThing__description.md) - A detailed textual description of this entity
  * [➞id](namedThing__id.md) - Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
  * [➞title](namedThing__title.md) - A human-readable name or title for this entity
+ * [numeric_value](numeric_value.md) - The numerical part of a quantity value, expressed as a number.
+     * [QuantityValue➞numeric_value](QuantityValue_numeric_value.md) - The numerical value of the quantity
+     * [maximum_numeric_value](maximum_numeric_value.md) - The maximum value part, expressed as a number, of the quantity value when the value covers a range.
+     * [minimum_numeric_value](minimum_numeric_value.md) - The minimum value part, expressed as a number, of the quantity value when the value covers a range.
  * [➞definition](ontologyTerm__definition.md) - The formal definition or meaning of the ontology term
  * [➞label](ontologyTerm__label.md) - The human-readable label or name of the ontology term
  * [➞ontology](ontologyTerm__ontology.md) - The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)
@@ -589,6 +606,7 @@ A multimodal plant imaging study might combine:
  * [➞unit_cell_c](qualityMetrics__unit_cell_c.md) - Unit cell parameter c in Angstroms
  * [➞unit_cell_gamma](qualityMetrics__unit_cell_gamma.md) - Unit cell angle gamma in degrees
  * [➞wilson_b_factor_a2](qualityMetrics__wilson_b_factor_a2.md) - Wilson B-factor in Angstroms squared
+ * [raw_value](raw_value.md) - The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms" or "2-4 micrometers"
  * [➞box_size](refinementParameters__box_size.md) - Box size in pixels
  * [➞gold_standard](refinementParameters__gold_standard.md) - Whether gold-standard refinement was used
  * [➞map_sharpening_bfactor](refinementParameters__map_sharpening_bfactor.md) - B-factor used for map sharpening in Angstroms^2
@@ -616,12 +634,12 @@ A multimodal plant imaging study might combine:
  * [➞cleavage_temperature_c](samplePreparation__cleavage_temperature_c.md) - Temperature during cleavage in Celsius
  * [➞cleavage_time_h](samplePreparation__cleavage_time_h.md) - Duration of protease cleavage in hours
  * [➞concentration_method](samplePreparation__concentration_method.md) - Method used to concentrate protein
- * [➞culture_volume_l](samplePreparation__culture_volume_l.md) - Culture volume in liters
+ * [➞culture_volume_l](samplePreparation__culture_volume_l.md) - Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞elution_buffer](samplePreparation__elution_buffer.md) - Buffer composition for elution
  * [➞expression_system](samplePreparation__expression_system.md) - Expression system used for recombinant protein production
  * [➞final_buffer](samplePreparation__final_buffer.md) - Final buffer composition after purification
  * [➞final_concentration_mg_per_ml](samplePreparation__final_concentration_mg_per_ml.md) - Final protein concentration in mg/mL
- * [➞growth_temperature_c](samplePreparation__growth_temperature_c.md) - Growth temperature in Celsius
+ * [➞growth_temperature_c](samplePreparation__growth_temperature_c.md) - Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
  * [➞harvest_timepoint](samplePreparation__harvest_timepoint.md) - Time point when cells were harvested
  * [➞hic_column](samplePreparation__hic_column.md) - Hydrophobic interaction column used
  * [➞host_strain_or_cell_line](samplePreparation__host_strain_or_cell_line.md) - Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
@@ -665,7 +683,7 @@ A multimodal plant imaging study might combine:
  * [➞ligand](sample__ligand.md) - Ligand or small molecule bound to sample
  * [➞ligand_interactions](sample__ligand_interactions.md) - Small molecule interaction annotations
  * [➞molecular_composition](sample__molecular_composition.md) - Description of molecular composition including sequences, modifications, ligands
- * [➞molecular_weight](sample__molecular_weight.md) - Molecular weight in kDa
+ * [➞molecular_weight](sample__molecular_weight.md) - Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.
  * [➞mutation_effects](sample__mutation_effects.md) - Effects of mutations present in the sample
  * [➞mutations](sample__mutations.md) - Mutations present in the sample
  * [➞organism](sample__organism.md) - Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)
@@ -702,14 +720,21 @@ A multimodal plant imaging study might combine:
  * [➞sample_preparations](study__sample_preparations.md) - Sample preparation procedures performed in this study
  * [➞samples](study__samples.md) - Experimental samples used in this study, including biological samples
  * [➞workflow_runs](study__workflow_runs.md) - Computational workflow executions for data processing in this study
+ * [➞value](textValue__value.md) - The text value
+ * [➞value_cv_id](textValue__value_cv_id.md) - For values in a controlled vocabulary, the CV ID for the value.
+ * [unit](unit.md) - The unit of measurement. Should be taken from the UCUM unit collection or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.
+     * [QuantityValue➞unit](QuantityValue_unit.md) - The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
+ * [unit_cv_id](unit_cv_id.md) - The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).
+ * [value](value.md) - The value, as a text string.
+ * [value_cv_id](value_cv_id.md) - For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.
  * [➞additional_software](workflowRun__additional_software.md) - Additional software used in pipeline
- * [➞anomalous_completeness](workflowRun__anomalous_completeness.md) - Completeness of anomalous data as percentage
+ * [➞anomalous_completeness](workflowRun__anomalous_completeness.md) - Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
  * [➞anomalous_multiplicity](workflowRun__anomalous_multiplicity.md) - Multiplicity of anomalous data
  * [➞cc_anomalous](workflowRun__cc_anomalous.md) - Anomalous correlation coefficient
  * [➞cc_half](workflowRun__cc_half.md) - Half-set correlation coefficient CC(1/2)
  * [➞clashscore](workflowRun__clashscore.md) - MolProbity clashscore
  * [➞completed_at](workflowRun__completed_at.md) - Workflow completion time
- * [➞completeness_percent](workflowRun__completeness_percent.md) - Data completeness percentage
+ * [➞completeness_percent](workflowRun__completeness_percent.md) - Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
  * [➞compute_resources](workflowRun__compute_resources.md) - Computational resources used
  * [➞ctf_estimation_params](workflowRun__ctf_estimation_params.md) - CTF estimation specific parameters
  * [➞deposited_to_pdb](workflowRun__deposited_to_pdb.md) - Whether structure was deposited to PDB
@@ -737,17 +762,17 @@ A multimodal plant imaging study might combine:
  * [➞processing_notes](workflowRun__processing_notes.md) - Additional notes about processing
  * [➞processing_parameters](workflowRun__processing_parameters.md) - Parameters used in processing
  * [➞r_anomalous](workflowRun__r_anomalous.md) - Anomalous R-factor
- * [➞ramachandran_favored](workflowRun__ramachandran_favored.md) - Percentage of residues in favored Ramachandran regions
- * [➞ramachandran_outliers](workflowRun__ramachandran_outliers.md) - Percentage of Ramachandran outliers
+ * [➞ramachandran_favored](workflowRun__ramachandran_favored.md) - Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
+ * [➞ramachandran_outliers](workflowRun__ramachandran_outliers.md) - Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
  * [➞refinement_params](workflowRun__refinement_params.md) - 3D refinement specific parameters
  * [➞refinement_resolution_a](workflowRun__refinement_resolution_a.md) - Resolution cutoff used for refinement in Angstroms
- * [➞resolution_high](workflowRun__resolution_high.md) - High resolution limit
- * [➞resolution_low](workflowRun__resolution_low.md) - Low resolution limit
+ * [➞resolution_high](workflowRun__resolution_high.md) - High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞resolution_low](workflowRun__resolution_low.md) - Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞restraints_other](workflowRun__restraints_other.md) - Other restraints applied during refinement
  * [➞rfree](workflowRun__rfree.md) - R-free (test set)
  * [➞rmerge](workflowRun__rmerge.md) - Rmerge - merge R-factor
- * [➞rmsd_angles](workflowRun__rmsd_angles.md) - RMSD from ideal bond angles
- * [➞rmsd_bonds](workflowRun__rmsd_bonds.md) - RMSD from ideal bond lengths
+ * [➞rmsd_angles](workflowRun__rmsd_angles.md) - RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞rmsd_bonds](workflowRun__rmsd_bonds.md) - RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞rpim](workflowRun__rpim.md) - Rpim - precision-indicating merging R-factor
  * [➞rwork](workflowRun__rwork.md) - Refinement R-factor (working set)
  * [➞scaler_module](workflowRun__scaler_module.md) - Scaling module used (e.g., AIMLESS, SCALA)
@@ -758,14 +783,14 @@ A multimodal plant imaging study might combine:
  * [➞space_group](workflowRun__space_group.md) - Crystallographic space group
  * [➞started_at](workflowRun__started_at.md) - Workflow start time
  * [➞tls_used](workflowRun__tls_used.md) - Whether TLS (Translation/Libration/Screw) refinement was used
- * [➞unit_cell_a](workflowRun__unit_cell_a.md) - Unit cell parameter a
- * [➞unit_cell_alpha](workflowRun__unit_cell_alpha.md) - Unit cell angle alpha
- * [➞unit_cell_b](workflowRun__unit_cell_b.md) - Unit cell parameter b
- * [➞unit_cell_beta](workflowRun__unit_cell_beta.md) - Unit cell angle beta
- * [➞unit_cell_c](workflowRun__unit_cell_c.md) - Unit cell parameter c
- * [➞unit_cell_gamma](workflowRun__unit_cell_gamma.md) - Unit cell angle gamma
+ * [➞unit_cell_a](workflowRun__unit_cell_a.md) - Unit cell parameter a, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_alpha](workflowRun__unit_cell_alpha.md) - Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_b](workflowRun__unit_cell_b.md) - Unit cell parameter b, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_beta](workflowRun__unit_cell_beta.md) - Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_c](workflowRun__unit_cell_c.md) - Unit cell parameter c, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞unit_cell_gamma](workflowRun__unit_cell_gamma.md) - Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞validation_report_path](workflowRun__validation_report_path.md) - Path to validation report
- * [➞wilson_b_factor](workflowRun__wilson_b_factor.md) - Wilson B-factor
+ * [➞wilson_b_factor](workflowRun__wilson_b_factor.md) - Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞workflow_code](workflowRun__workflow_code.md) - Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
  * [➞workflow_type](workflowRun__workflow_type.md) - Type of processing workflow
  * [➞beam_energy](xRFImage__beam_energy.md) - X-ray beam energy in keV
@@ -897,6 +922,7 @@ A multimodal plant imaging study might combine:
  * [DateOrDatetime](types/DateOrDatetime.md)  (**str**)  - Either a date or a datetime
  * [Datetime](types/Datetime.md)  (**XSDDateTime**)  - The combination of a date and time
  * [Decimal](types/Decimal.md)  (**Decimal**)  - A real number with arbitrary precision that conforms to the xsd:decimal specification
+ * [DecimalDegree](types/DecimalDegree.md)  (**float**)  - A decimal degree expresses latitude or longitude as decimal fractions.
  * [Double](types/Double.md)  (**float**)  - A real number that conforms to the xsd:double specification
  * [Float](types/Float.md)  (**float**)  - A real number that conforms to the xsd:float specification
  * [Integer](types/Integer.md)  (**int**)  - An integer

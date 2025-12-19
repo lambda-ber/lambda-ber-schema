@@ -9,7 +9,9 @@ molecular_composition:
   sequences:
   - MAAAKFERQHMDSSTE...KVLDSGAPIKIPVGPETLGRIMNVIGEPIDERGPIKTKQFAPIH
   - MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA
-molecular_weight: 380.5
+molecular_weight:
+  numeric_value: 380.5
+  unit: kilodaltons
 concentration: 10.0
 concentration_unit: mg_per_ml
 functional_sites:

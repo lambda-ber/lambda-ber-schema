@@ -6,7 +6,9 @@ acquisition_date: '2024-05-20T14:30:00'
 pixel_size: 5.5
 dimensions_x: 128
 dimensions_y: 128
-exposure_time: 0.5
+exposure_time:
+  numeric_value: 0.5
+  unit: seconds
 dose: 0.0
 wavenumber_min: 800.0
 wavenumber_max: 4000.0

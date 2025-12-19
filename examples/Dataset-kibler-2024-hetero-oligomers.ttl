@@ -3,6 +3,7 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://doi.org/10.1038/s41467-024-54913-8> a lambdaber:Dataset ;
@@ -55,7 +56,9 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     lambdaber:experiment_date "2024-02-01" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
             lambdaber:beam_energy "9.76"^^xsd:float ;
-            lambdaber:exposure_time "0.3"^^xsd:float ;
+            lambdaber:exposure_time [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.3"^^xsd:float ;
+                    lambdaber:unit "seconds" ] ;
             lambdaber:temperature "20.0"^^xsd:float ] ;
     lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
     lambdaber:operator_id "Kathryn Burnett" ;
@@ -190,7 +193,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:description "Parent symmetric homo-oligomeric β-glucosidase design" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:sequences "MDFYTLPTSHPV..." ] ;
-    lambdaber:molecular_weight "180.0"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "180.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:purity_percentage "95.0"^^xsd:float ;
     lambdaber:sample_code "BGL0" ;
     lambdaber:sample_type "protein" .
@@ -203,7 +208,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:concentration "2.5"^^xsd:float ;
     lambdaber:concentration_unit "mg_per_ml" ;
     lambdaber:description "Alternative hetero-hexamer design" ;
-    lambdaber:molecular_weight "181.8"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "181.8"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "hetBGL01-20-22" ;
     lambdaber:sample_type "complex" .
 
@@ -221,7 +228,9 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
             lambdaber:sequences "MDFYTLPTSHPA...",
                 "MDFYTLPTSHPV...",
                 "MDFYTLPTSNPV..." ] ;
-    lambdaber:molecular_weight "182.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "182.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "hetBGL03-15-18" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;

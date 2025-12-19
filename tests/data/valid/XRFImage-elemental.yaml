@@ -1,12 +1,14 @@
 id: lambdaber:xrf_img_001
-title: "Synchrotron XRF elemental map of leaf tissue"
-description: "Multi-element XRF map showing distribution of nutrients and trace elements"
-file_name: "leaf_xrf_map_2um_resolution.h5"
-acquisition_date: "2024-05-25T16:00:00"
+title: Synchrotron XRF elemental map of leaf tissue
+description: Multi-element XRF map showing distribution of nutrients and trace elements
+file_name: leaf_xrf_map_2um_resolution.h5
+acquisition_date: '2024-05-25T16:00:00'
 pixel_size: 2.0
 dimensions_x: 500
 dimensions_y: 400
-exposure_time: 0.1
+exposure_time:
+  numeric_value: 0.1
+  unit: seconds
 dose: 0
 defocus: 0
 astigmatism: 0
@@ -14,16 +16,18 @@ beam_energy: 10.0
 beam_size: 2.0
 dwell_time: 100
 elements_measured:
-  - "K"
-  - "Ca"
-  - "Mn"
-  - "Fe"
-  - "Cu"
-  - "Zn"
-  - "As"
-  - "Se"
+- K
+- Ca
+- Mn
+- Fe
+- Cu
+- Zn
+- As
+- Se
 source_type: synchrotron
 detector_technology: scintillator_coupled
-detector_model: "Vortex-ME4 4-element silicon drift detector"
-flux: 1000000000000
-calibration_standard: "NIST SRM 1577c Bovine Liver"
+detector_model: Vortex-ME4 4-element silicon drift detector
+flux:
+  numeric_value: 1000000000000
+  unit: photons per second
+calibration_standard: NIST SRM 1577c Bovine Liver

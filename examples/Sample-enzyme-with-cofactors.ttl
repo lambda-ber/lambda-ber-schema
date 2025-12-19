@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -20,7 +21,9 @@ lambdaber:sample-aldh-cofactor a lambdaber:Sample ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:description "Human ALDH2 tetramer with bound NAD+" ;
             lambdaber:sequences "MGSSLSRVPPTAGPLGSPLLLQEPALEAAGEEEELQDSDADGEEEKAEEEEKEEKAEDEEER..." ] ;
-    lambdaber:molecular_weight "217.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "217.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "ALDH2-2024-001" ;
     lambdaber:sample_type "protein" .
 

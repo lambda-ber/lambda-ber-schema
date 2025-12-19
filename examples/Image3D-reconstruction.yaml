@@ -6,7 +6,9 @@ acquisition_date: '2024-04-28T14:30:00'
 pixel_size: 1.06
 dimensions_x: 440
 dimensions_y: 440
-exposure_time: 0.0
+exposure_time:
+  numeric_value: 0.0
+  unit: seconds
 dose: 0.0
 dimensions_z: 440
 voxel_size: 1.06

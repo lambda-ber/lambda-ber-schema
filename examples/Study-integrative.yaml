@@ -16,7 +16,9 @@ samples:
     - H4K20me1
     ligands:
     - Histone octamer
-  molecular_weight: 206.0
+  molecular_weight:
+    numeric_value: 206.0
+    unit: kilodaltons
   concentration: 5.0
   concentration_unit: mg_per_ml
   buffer_composition:
@@ -43,7 +45,9 @@ samples:
     - ATP binding domain
     ligands:
     - ATP
-  molecular_weight: 168.5
+  molecular_weight:
+    numeric_value: 168.5
+    unit: kilodaltons
   concentration: 2.0
   concentration_unit: mg_per_ml
   buffer_composition:
@@ -68,7 +72,9 @@ samples:
     - CHD1
     - Nucleosome
     - ADP-BeF3
-  molecular_weight: 374.5
+  molecular_weight:
+    numeric_value: 374.5
+    unit: kilodaltons
   concentration: 0.5
   concentration_unit: mg_per_ml
   buffer_composition:
@@ -131,7 +137,9 @@ instrument_runs:
     total_dose: 45.0
     dose_per_frame: 1.125
   quality_metrics:
-    resolution: 2.5
+    resolution:
+      numeric_value: 2.5
+      unit: Angstroms
     completeness: 99.9
     signal_to_noise: 5.2
   processing_status: completed
@@ -153,7 +161,9 @@ instrument_runs:
     total_frames: 20
     frame_rate: 1.0
   quality_metrics:
-    resolution: 30.0
+    resolution:
+      numeric_value: 30.0
+      unit: Angstroms
     completeness: 100.0
     signal_to_noise: 45.0
   processing_status: completed
@@ -177,7 +187,9 @@ instrument_runs:
     total_dose: 50.0
     dose_per_frame: 1.25
   quality_metrics:
-    resolution: 3.2
+    resolution:
+      numeric_value: 3.2
+      unit: Angstroms
     completeness: 98.5
     signal_to_noise: 3.8
   processing_status: processing

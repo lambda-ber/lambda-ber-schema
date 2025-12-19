@@ -1,21 +1,21 @@
-# SAXS experiment run from Kibler 2024
-
-id: "https://example.org/kibler2024/exp/saxs-main"
-experiment_code: "SIBYLS-2024-02-01-hetBGL"
-sample_id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
-instrument_id: "ALS-12.3.1-SIBYLS"
-experiment_date: "2024-02-01"
-operator_id: "Kathryn Burnett"
+id: https://example.org/kibler2024/exp/saxs-main
+experiment_code: SIBYLS-2024-02-01-hetBGL
+sample_id: https://example.org/kibler2024/sample/hetBGL03-15-18
+instrument_id: ALS-12.3.1-SIBYLS
+experiment_date: '2024-02-01'
+operator_id: Kathryn Burnett
 technique: saxs
 experimental_conditions:
-  temperature: 20  # Celsius
-  beam_energy: 9.76  # keV - This might not validate
-  exposure_time: 0.3  # seconds
+  temperature: 20
+  beam_energy: 9.76
+  exposure_time:
+    numeric_value: 0.3
+    unit: seconds
 data_collection_strategy:
-  collection_mode: batch  # Validated: 'batch' is in CollectionModeEnum
+  collection_mode: batch
 quality_metrics:
   signal_to_noise: 50
-  i_zero: 0.045  # Validated by schema
-  rg: 42.3  # Validates correctly
-raw_data_location: "SIBYLS-HT-SAXS-program"
-processing_status: completed  # Using existing enum value
+  i_zero: 0.045
+  rg: 42.3
+raw_data_location: SIBYLS-HT-SAXS-program
+processing_status: completed

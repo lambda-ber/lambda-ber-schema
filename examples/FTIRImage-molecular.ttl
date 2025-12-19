@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
@@ -12,7 +13,9 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
     lambdaber:dimensions_x 128 ;
     lambdaber:dimensions_y 128 ;
     lambdaber:dose "0.0"^^xsd:float ;
-    lambdaber:exposure_time "0.5"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.5"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "sample_ftir_map_001.h5" ;
     lambdaber:molecular_signatures "1550 cm⁻¹ - Amide II (N-H bend)",
         "1650 cm⁻¹ - Amide I (C=O stretch)",

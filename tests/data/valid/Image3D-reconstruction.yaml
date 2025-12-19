@@ -1,13 +1,15 @@
 id: lambdaber:img3d_map_ribosome_001
-title: "Human 80S ribosome reconstruction"
-description: "3D reconstruction of human 80S ribosome at 2.9A resolution"
-file_name: "ribosome_80S_final_sharpened.mrc"
-acquisition_date: "2024-04-28T14:30:00"
+title: Human 80S ribosome reconstruction
+description: 3D reconstruction of human 80S ribosome at 2.9A resolution
+file_name: ribosome_80S_final_sharpened.mrc
+acquisition_date: '2024-04-28T14:30:00'
 pixel_size: 1.06
 dimensions_x: 440
 dimensions_y: 440
 dimensions_z: 440
-exposure_time: 0
+exposure_time:
+  numeric_value: 0
+  unit: seconds
 dose: 0
 voxel_size: 1.06
-reconstruction_method: "Non-uniform refinement in cryoSPARC with C1 symmetry"
+reconstruction_method: Non-uniform refinement in cryoSPARC with C1 symmetry

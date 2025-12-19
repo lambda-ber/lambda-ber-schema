@@ -38,7 +38,9 @@ studies:
     molecular_composition:
       sequences:
       - Uniprot:Q9XCL6
-    molecular_weight: 54.8
+    molecular_weight:
+      numeric_value: 54.8
+      unit: kilodaltons
     concentration: 5.0
     concentration_unit: mg_per_ml
     buffer_composition:
@@ -88,13 +90,17 @@ studies:
     experimental_conditions:
       temperature: 20.0
       beam_energy: 11.0
-      exposure_time: 1.0
+      exposure_time:
+        numeric_value: 1.0
+        unit: seconds
     data_collection_strategy:
       collection_mode: sec_saxs
       total_frames: 660
       frame_rate: 1.0
     quality_metrics:
-      resolution: 25.0
+      resolution:
+        numeric_value: 25.0
+        unit: Angstroms
       signal_to_noise: 50.0
       i_zero: 45.0
       rg: 32.5

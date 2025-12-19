@@ -7,7 +7,10 @@
   "pixel_size": 0.065,
   "dimensions_x": 2048,
   "dimensions_y": 2048,
-  "exposure_time": 0.2,
+  "exposure_time": {
+    "numeric_value": 0.2,
+    "unit": "seconds"
+  },
   "dose": 0.0,
   "defocus": 0.0,
   "astigmatism": 0.0,

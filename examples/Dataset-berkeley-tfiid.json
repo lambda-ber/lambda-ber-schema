@@ -45,7 +45,10 @@
               "DNA promoter sequence"
             ]
           },
-          "molecular_weight": 1200.0,
+          "molecular_weight": {
+            "numeric_value": 1200.0,
+            "unit": "kilodaltons"
+          },
           "concentration": 0.8,
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
@@ -88,7 +91,10 @@
               "TFIID complex"
             ]
           },
-          "molecular_weight": 1250.0,
+          "molecular_weight": {
+            "numeric_value": 1250.0,
+            "unit": "kilodaltons"
+          },
           "concentration": 0.5,
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
@@ -154,7 +160,10 @@
             "dose_per_frame": 1.2
           },
           "quality_metrics": {
-            "resolution": 2.8,
+            "resolution": {
+              "numeric_value": 2.8,
+              "unit": "Angstroms"
+            },
             "completeness": 99.5,
             "signal_to_noise": 4.2
           },
@@ -184,7 +193,10 @@
             "dose_per_frame": 1.1
           },
           "quality_metrics": {
-            "resolution": 3.1,
+            "resolution": {
+              "numeric_value": 3.1,
+              "unit": "Angstroms"
+            },
             "completeness": 98.0,
             "signal_to_noise": 3.8
           },
@@ -349,7 +361,10 @@
           "pixel_size": 0.85,
           "dimensions_x": 5760,
           "dimensions_y": 4092,
-          "exposure_time": 2.5,
+          "exposure_time": {
+            "numeric_value": 2.5,
+            "unit": "seconds"
+          },
           "dose": 40.0
         }
       ]

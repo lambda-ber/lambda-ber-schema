@@ -1,14 +1,14 @@
 
 # Slot: wilson_b_factor
 
-Wilson B-factor
+Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:workflowRun__wilson_b_factor](https://w3id.org/lambda-ber-schema/workflowRun__wilson_b_factor)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

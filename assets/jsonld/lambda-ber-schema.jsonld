@@ -5,6 +5,7 @@
   "version": "0.1.1.post15.dev0+b4e2533",
   "imports": [
     "linkml:types",
+    "lambda_ber_types",
     "functional_annotation"
   ],
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -399,6 +400,18 @@
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal_degree",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DecimalDegree",
+      "description": "A decimal degree expresses latitude or longitude as decimal fractions.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "see_also": [
+        "https://en.wikipedia.org/wiki/Decimal_degrees"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
       "@type": "TypeDefinition"
     },
     {
@@ -3487,6 +3500,134 @@
   ],
   "slots": [
     {
+      "name": "attribute",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/attribute",
+      "description": "The attribute being represented.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/attribute",
+      "range": "Attribute",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "numeric_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/numeric_value",
+      "description": "The numerical part of a quantity value, expressed as a number.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/numeric_value",
+        "http://qudt.org/1.1/schema/qudt#quantityValue",
+        "https://schema.org/value"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minimum_numeric_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/minimum_numeric_value",
+      "description": "The minimum value part, expressed as a number, of the quantity value when the value covers a range.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/minimum_numeric_value"
+      ],
+      "is_a": "numeric_value",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/minimum_numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maximum_numeric_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/maximum_numeric_value",
+      "description": "The maximum value part, expressed as a number, of the quantity value when the value covers a range.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/maximum_numeric_value"
+      ],
+      "is_a": "numeric_value",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/maximum_numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "raw_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/raw_value",
+      "description": "The value that was specified in raw form, i.e. a string. E.g. \"2 Angstroms\" or \"2-4 micrometers\"",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/raw_value"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/raw_value",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/unit",
+      "description": "The unit of measurement. Should be taken from the UCUM unit collection or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "aliases": [
+        "scale"
+      ],
+      "mappings": [
+        "https://w3id.org/nmdc/unit",
+        "http://qudt.org/1.1/schema/qudt#unit",
+        "https://schema.org/unitCode",
+        "http://example.org/UNKNOWN/UO/0000000"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit_cv_id",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/unit_cv_id",
+      "description": "The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit_cv_id",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "curie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/value",
+      "description": "The value, as a text string.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/value",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value_cv_id",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/value_cv_id",
+      "description": "For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/value_cv_id",
+      "range": "curie",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "namedThing__id",
       "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -3760,7 +3901,7 @@
     },
     {
       "name": "sample__molecular_weight",
-      "description": "Molecular weight in kDa",
+      "description": "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/molecular_weight",
       "alias": "molecular_weight",
@@ -3768,11 +3909,8 @@
       "domain_of": [
         "Sample"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "kDa",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4561,7 +4699,7 @@
     },
     {
       "name": "samplePreparation__culture_volume_l",
-      "description": "Culture volume in liters",
+      "description": "Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/culture_volume_l",
       "alias": "culture_volume_l",
@@ -4569,11 +4707,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "L",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4604,7 +4739,7 @@
     },
     {
       "name": "samplePreparation__growth_temperature_c",
-      "description": "Growth temperature in Celsius",
+      "description": "Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/growth_temperature_c",
       "alias": "growth_temperature_c",
@@ -4612,11 +4747,8 @@
       "domain_of": [
         "SamplePreparation"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Cel",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6328,7 +6460,7 @@
     },
     {
       "name": "experimentRun__wavelength",
-      "description": "X-ray wavelength",
+      "description": "X-ray wavelength, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Wavelength",
@@ -6342,16 +6474,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__oscillation_angle",
-      "description": "Oscillation angle per image",
+      "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Angle_increment",
@@ -6365,16 +6494,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__start_angle",
-      "description": "Starting rotation angle",
+      "description": "Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Start_angle",
@@ -6387,11 +6513,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6414,7 +6537,7 @@
     },
     {
       "name": "experimentRun__beam_center_x",
-      "description": "Beam center X coordinate",
+      "description": "Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_x",
@@ -6428,16 +6551,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "[px]",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__beam_center_y",
-      "description": "Beam center Y coordinate",
+      "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Beam_xy_y",
@@ -6451,16 +6571,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "[px]",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__detector_distance",
-      "description": "Distance from sample to detector",
+      "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Detector_distance",
@@ -6474,16 +6591,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "mm",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__pixel_size_x",
-      "description": "Pixel size X dimension",
+      "description": "Pixel size X dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.",
       "comments": [
         "imgCIF: _array_element_size.size[1]"
       ],
@@ -6498,16 +6612,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "um",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__pixel_size_y",
-      "description": "Pixel size Y dimension",
+      "description": "Pixel size Y dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.",
       "comments": [
         "imgCIF: _array_element_size.size[2]"
       ],
@@ -6522,16 +6633,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "um",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__total_rotation",
-      "description": "Total rotation range collected",
+      "description": "Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Total_rotation_deg",
@@ -6543,11 +6651,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6570,7 +6675,7 @@
     },
     {
       "name": "experimentRun__transmission",
-      "description": "X-ray beam transmission as percentage (0-100)",
+      "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "comments": [
         "Percentage of full beam intensity used"
       ],
@@ -6584,18 +6689,15 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "minimum_value": 0,
       "maximum_value": 100,
-      "unit": {
-        "ucum_code": "%",
-        "@type": "UnitOfMeasure"
-      },
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__flux",
-      "description": "Photon flux at sample position in photons/second",
+      "description": "Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "comments": [
         "Measured or calculated photon flux"
       ],
@@ -6609,16 +6711,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "{photons}/s",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__flux_end",
-      "description": "Photon flux at end of data collection in photons/second",
+      "description": "Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.flux_end"
@@ -6629,16 +6728,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "{photons}/s",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__slit_gap_horizontal",
-      "description": "Horizontal slit gap aperture in micrometers",
+      "description": "Horizontal slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.slitGapHorizontal"
@@ -6649,16 +6745,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "um",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__slit_gap_vertical",
-      "description": "Vertical slit gap aperture in micrometers",
+      "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.slitGapVertical"
@@ -6669,16 +6762,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "um",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__undulator_gap",
-      "description": "Undulator gap setting in millimeters",
+      "description": "Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.",
       "comments": [
         "Primary undulator gap for beamlines with insertion devices"
       ],
@@ -6692,11 +6782,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "mm",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6720,7 +6807,7 @@
     },
     {
       "name": "experimentRun__exposure_time",
-      "description": "Exposure time per image in seconds",
+      "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.exposureTime"
@@ -6731,11 +6818,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "s",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6772,7 +6856,7 @@
     },
     {
       "name": "experimentRun__resolution",
-      "description": "Resolution at edge of detector in Angstroms",
+      "description": "Resolution at edge of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.resolution"
@@ -6783,16 +6867,13 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "experimentRun__resolution_at_corner",
-      "description": "Resolution at corner of detector in Angstroms",
+      "description": "Resolution at corner of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://ispyb.github.io/ISPyB/DataCollection.resolutionAtCorner"
@@ -6803,11 +6884,8 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7183,7 +7261,7 @@
     },
     {
       "name": "workflowRun__unit_cell_a",
-      "description": "Unit cell parameter a",
+      "description": "Unit cell parameter a, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_a",
@@ -7195,16 +7273,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_b",
-      "description": "Unit cell parameter b",
+      "description": "Unit cell parameter b, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_b",
@@ -7216,16 +7291,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_c",
-      "description": "Unit cell parameter c",
+      "description": "Unit cell parameter c, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_c",
@@ -7237,16 +7309,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_alpha",
-      "description": "Unit cell angle alpha",
+      "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_alpha",
@@ -7258,16 +7327,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_beta",
-      "description": "Unit cell angle beta",
+      "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_beta",
@@ -7279,16 +7345,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__unit_cell_gamma",
-      "description": "Unit cell angle gamma",
+      "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Unit_Cell_gamma",
@@ -7300,16 +7363,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__resolution_high",
-      "description": "High resolution limit",
+      "description": "High resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Resolution_High_A",
@@ -7322,16 +7382,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__resolution_low",
-      "description": "Low resolution limit",
+      "description": "Low resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Resolution_Low_A",
@@ -7344,11 +7401,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7407,7 +7461,7 @@
     },
     {
       "name": "workflowRun__completeness_percent",
-      "description": "Data completeness percentage",
+      "description": "Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Completeness",
@@ -7420,11 +7474,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "%",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7447,7 +7498,7 @@
     },
     {
       "name": "workflowRun__wilson_b_factor",
-      "description": "Wilson B-factor",
+      "description": "Wilson B-factor, typically specified in Angstroms squared (\u0172). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Wilson_B",
@@ -7459,11 +7510,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao2",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7486,7 +7534,7 @@
     },
     {
       "name": "workflowRun__anomalous_completeness",
-      "description": "Completeness of anomalous data as percentage",
+      "description": "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "comments": [
         "Completeness of Bijvoet pairs"
       ],
@@ -7500,11 +7548,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "%",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7683,7 +7728,7 @@
     },
     {
       "name": "workflowRun__rmsd_bonds",
-      "description": "RMSD from ideal bond lengths",
+      "description": "RMSD from ideal bond lengths, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds",
@@ -7695,16 +7740,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__rmsd_angles",
-      "description": "RMSD from ideal bond angles",
+      "description": "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles",
@@ -7716,16 +7758,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "deg",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ramachandran_favored",
-      "description": "Percentage of residues in favored Ramachandran regions",
+      "description": "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored",
@@ -7737,16 +7776,13 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "%",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "workflowRun__ramachandran_outliers",
-      "description": "Percentage of Ramachandran outliers",
+      "description": "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers",
@@ -7758,11 +7794,8 @@
       "domain_of": [
         "WorkflowRun"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "%",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8118,7 +8151,7 @@
     },
     {
       "name": "image__exposure_time",
-      "description": "Exposure time in seconds",
+      "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time",
       "alias": "exposure_time",
@@ -8126,7 +8159,8 @@
       "domain_of": [
         "Image"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8878,7 +8912,7 @@
     },
     {
       "name": "xRFImage__flux",
-      "description": "Photon flux in photons/second",
+      "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/flux",
       "alias": "flux",
@@ -8886,7 +8920,8 @@
       "domain_of": [
         "XRFImage"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10090,7 +10125,7 @@
     },
     {
       "name": "experimentalConditions__exposure_time",
-      "description": "Exposure time in seconds",
+      "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/exposure_time",
       "alias": "exposure_time",
@@ -10098,7 +10133,8 @@
       "domain_of": [
         "ExperimentalConditions"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10198,7 +10234,7 @@
     },
     {
       "name": "dataCollectionStrategy__pixel_size_calibrated",
-      "description": "Calibrated pixel size for this experiment",
+      "description": "Calibrated pixel size for this experiment, typically specified in Angstroms (\u00c5) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "comments": [
         "For cryo-EM: depends on magnification (\u00c5/pixel)",
         "For X-ray: typically mm/pixel or \u00b5m/pixel",
@@ -10211,11 +10247,8 @@
       "domain_of": [
         "DataCollectionStrategy"
       ],
-      "range": "float",
-      "unit": {
-        "ucum_code": "Ao/px",
-        "@type": "UnitOfMeasure"
-      },
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -10363,7 +10396,7 @@
     },
     {
       "name": "qualityMetrics__resolution",
-      "description": "Resolution in Angstroms",
+      "description": "Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution",
       "alias": "resolution",
@@ -10371,7 +10404,8 @@
       "domain_of": [
         "QualityMetrics"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11249,6 +11283,116 @@
       "range": "float",
       "multivalued": true,
       "maximum_cardinality": 10000,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attributeValue__attribute",
+      "description": "The attribute being represented.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/attribute",
+      "alias": "attribute",
+      "owner": "AttributeValue",
+      "domain_of": [
+        "AttributeValue"
+      ],
+      "range": "Attribute",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attributeValue__raw_value",
+      "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/raw_value",
+      "alias": "raw_value",
+      "owner": "AttributeValue",
+      "domain_of": [
+        "AttributeValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attribute__id",
+      "description": "A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/id",
+      "alias": "id",
+      "owner": "Attribute",
+      "domain_of": [
+        "Attribute"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attribute__label",
+      "description": "Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "aliases": [
+        "name",
+        "title"
+      ],
+      "slot_uri": "https://w3id.org/lambda-ber-schema/label",
+      "alias": "label",
+      "owner": "Attribute",
+      "domain_of": [
+        "Attribute"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "textValue__value",
+      "description": "The text value",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/value",
+      "alias": "value",
+      "owner": "TextValue",
+      "domain_of": [
+        "TextValue"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "textValue__value_cv_id",
+      "description": "For values in a controlled vocabulary, the CV ID for the value.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/value_cv_id",
+      "alias": "value_cv_id",
+      "owner": "TextValue",
+      "domain_of": [
+        "TextValue"
+      ],
+      "range": "curie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dateTimeValue__value",
+      "description": "The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.",
+      "examples": [
+        {
+          "value": "2025-11-09",
+          "@type": "Example"
+        },
+        {
+          "value": "2025-09-16T22:48:54Z",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/value",
+      "alias": "value",
+      "owner": "DateTimeValue",
+      "domain_of": [
+        "DateTimeValue"
+      ],
+      "range": "string",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -12964,6 +13108,89 @@
       "usage_slot_name": "astigmatism",
       "range": "float",
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_numeric_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/numeric_value",
+      "description": "The numerical value of the quantity",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/numeric_value",
+        "http://qudt.org/1.1/schema/qudt#quantityValue",
+        "https://schema.org/value"
+      ],
+      "is_a": "numeric_value",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/numeric_value",
+      "alias": "numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "numeric_value",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_unit",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/unit",
+      "description": "The unit of measurement (e.g., \"Angstroms\", \"micrometers\", \"kilodaltons\"). Should match the UCUM standard notation or Unit Ontology.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "aliases": [
+        "scale"
+      ],
+      "mappings": [
+        "https://w3id.org/nmdc/unit",
+        "http://qudt.org/1.1/schema/qudt#unit",
+        "https://schema.org/unitCode",
+        "http://example.org/UNKNOWN/UO/0000000"
+      ],
+      "is_a": "unit",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/unit",
+      "alias": "unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "unit",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_raw_value",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/raw_value",
+      "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+      "examples": [
+        {
+          "value": "1.5 micrometers",
+          "@type": "Example"
+        },
+        {
+          "value": "50 Angstroms",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "https://w3id.org/nmdc/raw_value"
+      ],
+      "is_a": "attributeValue__raw_value",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/raw_value",
+      "alias": "raw_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "raw_value",
+      "range": "string",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -13224,12 +13451,9 @@
         },
         {
           "name": "molecular_weight",
-          "description": "Molecular weight in kDa",
-          "range": "float",
-          "unit": {
-            "ucum_code": "kDa",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -13683,12 +13907,9 @@
         },
         {
           "name": "culture_volume_l",
-          "description": "Culture volume in liters",
-          "range": "float",
-          "unit": {
-            "ucum_code": "L",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -13703,12 +13924,9 @@
         },
         {
           "name": "growth_temperature_c",
-          "description": "Growth temperature in Celsius",
-          "range": "float",
-          "unit": {
-            "ucum_code": "Cel",
-            "@type": "UnitOfMeasure"
-          },
+          "description": "Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14770,49 +14988,40 @@
         },
         {
           "name": "wavelength",
-          "description": "X-ray wavelength",
+          "description": "X-ray wavelength, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Wavelength",
             "imgCIF:_diffrn_radiation_wavelength.wavelength",
             "mmCIF:_diffrn_radiation_wavelength.wavelength",
             "ispyb:DataCollection.wavelength"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "oscillation_angle",
-          "description": "Oscillation angle per image",
+          "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Angle_increment",
             "imgCIF:_diffrn_scan_axis.angle_increment",
             "mmCIF:_diffrn_scan.angle_increment",
             "ispyb:DataCollection.axisRange"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "start_angle",
-          "description": "Starting rotation angle",
+          "description": "Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Start_angle",
             "imgCIF:_diffrn_scan_axis.angle_start",
             "ispyb:DataCollection.axisStart"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14828,55 +15037,46 @@
         },
         {
           "name": "beam_center_x",
-          "description": "Beam center X coordinate",
+          "description": "Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Beam_xy_x",
             "imgCIF:_diffrn_detector.beam_centre_x",
             "mmCIF:_diffrn_detector.beam_center_x",
             "ispyb:DataCollection.xBeam"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "[px]",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "beam_center_y",
-          "description": "Beam center Y coordinate",
+          "description": "Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Beam_xy_y",
             "imgCIF:_diffrn_detector.beam_centre_y",
             "mmCIF:_diffrn_detector.beam_center_y",
             "ispyb:DataCollection.yBeam"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "[px]",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "detector_distance",
-          "description": "Distance from sample to detector",
+          "description": "Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Detector_distance",
             "imgCIF:_diffrn_measurement.sample_detector_distance",
             "mmCIF:_diffrn_detector.distance",
             "ispyb:DataCollection.detectorDistance"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "mm",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "pixel_size_x",
-          "description": "Pixel size X dimension",
+          "description": "Pixel size X dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.",
           "comments": [
             "imgCIF: _array_element_size.size[1]"
           ],
@@ -14884,16 +15084,13 @@
             "nsls2:Pixel_size_x",
             "imgCIF:_array_element_size.size"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "um",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "pixel_size_y",
-          "description": "Pixel size Y dimension",
+          "description": "Pixel size Y dimension, typically specified in micrometers (\u00b5m). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.",
           "comments": [
             "imgCIF: _array_element_size.size[2]"
           ],
@@ -14901,25 +15098,19 @@
             "nsls2:Pixel_size_y",
             "imgCIF:_array_element_size.size"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "um",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "total_rotation",
-          "description": "Total rotation range collected",
+          "description": "Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Total_rotation_deg",
             "imgCIF:_diffrn_scan_axis.angle_range"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -14935,91 +15126,73 @@
         },
         {
           "name": "transmission",
-          "description": "X-ray beam transmission as percentage (0-100)",
+          "description": "X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "comments": [
             "Percentage of full beam intensity used"
           ],
           "exact_mappings": [
             "ispyb:DataCollection.transmission"
           ],
-          "range": "float",
+          "range": "QuantityValue",
+          "inlined": true,
           "minimum_value": 0,
           "maximum_value": 100,
-          "unit": {
-            "ucum_code": "%",
-            "@type": "UnitOfMeasure"
-          },
           "@type": "SlotDefinition"
         },
         {
           "name": "flux",
-          "description": "Photon flux at sample position in photons/second",
+          "description": "Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "comments": [
             "Measured or calculated photon flux"
           ],
           "exact_mappings": [
             "ispyb:DataCollection.flux"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "{photons}/s",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "flux_end",
-          "description": "Photon flux at end of data collection in photons/second",
+          "description": "Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.flux_end"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "{photons}/s",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "slit_gap_horizontal",
-          "description": "Horizontal slit gap aperture in micrometers",
+          "description": "Horizontal slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.slitGapHorizontal"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "um",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "slit_gap_vertical",
-          "description": "Vertical slit gap aperture in micrometers",
+          "description": "Vertical slit gap aperture, typically specified in micrometers (\u00b5m). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.slitGapVertical"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "um",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "undulator_gap",
-          "description": "Undulator gap setting in millimeters",
+          "description": "Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.",
           "comments": [
             "Primary undulator gap for beamlines with insertion devices"
           ],
           "exact_mappings": [
             "ispyb:DataCollection.undulatorGap1"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "mm",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15036,15 +15209,12 @@
         },
         {
           "name": "exposure_time",
-          "description": "Exposure time per image in seconds",
+          "description": "Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.exposureTime"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "s",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15067,28 +15237,22 @@
         },
         {
           "name": "resolution",
-          "description": "Resolution at edge of detector in Angstroms",
+          "description": "Resolution at edge of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.resolution"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_at_corner",
-          "description": "Resolution at corner of detector in Angstroms",
+          "description": "Resolution at corner of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "ispyb:DataCollection.resolutionAtCorner"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15343,116 +15507,92 @@
         },
         {
           "name": "unit_cell_a",
-          "description": "Unit cell parameter a",
+          "description": "Unit cell parameter a, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_a",
             "mmCIF:_cell.length_a"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_b",
-          "description": "Unit cell parameter b",
+          "description": "Unit cell parameter b, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_b",
             "mmCIF:_cell.length_b"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_c",
-          "description": "Unit cell parameter c",
+          "description": "Unit cell parameter c, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_c",
             "mmCIF:_cell.length_c"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_alpha",
-          "description": "Unit cell angle alpha",
+          "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_alpha",
             "mmCIF:_cell.angle_alpha"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_beta",
-          "description": "Unit cell angle beta",
+          "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_beta",
             "mmCIF:_cell.angle_beta"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_gamma",
-          "description": "Unit cell angle gamma",
+          "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Unit_Cell_gamma",
             "mmCIF:_cell.angle_gamma"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_high",
-          "description": "High resolution limit",
+          "description": "High resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Resolution_High_A",
             "mmCIF:_reflns.d_resolution_high",
             "ispyb:AutoProcScalingStatistics.resolutionLimitHigh"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_low",
-          "description": "Low resolution limit",
+          "description": "Low resolution limit, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Resolution_Low_A",
             "mmCIF:_reflns.d_resolution_low",
             "ispyb:AutoProcScalingStatistics.resolutionLimitLow"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15490,17 +15630,14 @@
         },
         {
           "name": "completeness_percent",
-          "description": "Data completeness percentage",
+          "description": "Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Completeness",
             "mmCIF:_reflns.percent_possible_obs",
             "ispyb:AutoProcScalingStatistics.completeness"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "%",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15516,16 +15653,13 @@
         },
         {
           "name": "wilson_b_factor",
-          "description": "Wilson B-factor",
+          "description": "Wilson B-factor, typically specified in Angstroms squared (\u0172). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Wilson_B",
             "mmCIF:_reflns.B_iso_Wilson_estimate"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao2",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15541,18 +15675,15 @@
         },
         {
           "name": "anomalous_completeness",
-          "description": "Completeness of anomalous data as percentage",
+          "description": "Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "comments": [
             "Completeness of Bijvoet pairs"
           ],
           "exact_mappings": [
             "ispyb:AutoProcScalingStatistics.anomalousCompleteness"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "%",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15661,58 +15792,46 @@
         },
         {
           "name": "rmsd_bonds",
-          "description": "RMSD from ideal bond lengths",
+          "description": "RMSD from ideal bond lengths, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:RMSD_bonds",
             "mmCIF:_refine.ls_d_res_high"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "rmsd_angles",
-          "description": "RMSD from ideal bond angles",
+          "description": "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:RMSD_angles",
             "mmCIF:_refine.ls_d_res_low"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "deg",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_favored",
-          "description": "Percentage of residues in favored Ramachandran regions",
+          "description": "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Ramachandran_Favored",
             "mmCIF:_refine.pdbx_overall_ESU_R"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "%",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "ramachandran_outliers",
-          "description": "Percentage of Ramachandran outliers",
+          "description": "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Ramachandran_Outliers",
             "mmCIF:_refine.pdbx_overall_ESU_R_Free"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "%",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -15926,8 +16045,9 @@
         },
         {
           "name": "exposure_time",
-          "description": "Exposure time in seconds",
-          "range": "float",
+          "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16538,8 +16658,9 @@
         },
         {
           "name": "flux",
-          "description": "Photon flux in photons/second",
-          "range": "float",
+          "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17346,8 +17467,9 @@
         },
         {
           "name": "exposure_time",
-          "description": "Exposure time in seconds",
-          "range": "float",
+          "description": "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -17432,17 +17554,14 @@
         },
         {
           "name": "pixel_size_calibrated",
-          "description": "Calibrated pixel size for this experiment",
+          "description": "Calibrated pixel size for this experiment, typically specified in Angstroms (\u00c5) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "comments": [
             "For cryo-EM: depends on magnification (\u00c5/pixel)",
             "For X-ray: typically mm/pixel or \u00b5m/pixel",
             "Physical pixel size is hardware spec stored in Instrument"
           ],
-          "range": "float",
-          "unit": {
-            "ucum_code": "Ao/px",
-            "@type": "UnitOfMeasure"
-          },
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -17558,8 +17677,9 @@
       "attributes": [
         {
           "name": "resolution",
-          "description": "Resolution in Angstroms",
-          "range": "float",
+          "description": "Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18097,6 +18217,173 @@
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/FSCCurve",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Any",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AttributeValue",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/AttributeValue",
+      "description": "The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "nmdc:AttributeValue"
+      ],
+      "abstract": true,
+      "slots": [
+        "attributeValue__attribute",
+        "attributeValue__raw_value"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "attribute",
+          "description": "The attribute being represented.",
+          "range": "Attribute",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "raw_value",
+          "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/nmdc/AttributeValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Attribute",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/Attribute",
+      "description": "A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "slots": [
+        "attribute__id",
+        "attribute__label"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "id",
+          "description": "A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.",
+          "recommended": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "label",
+          "description": "Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.",
+          "aliases": [
+            "name",
+            "title"
+          ],
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/Attribute",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/QuantityValue",
+      "description": "A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "nmdc:QuantityValue",
+        "schema:QuantityValue"
+      ],
+      "is_a": "AttributeValue",
+      "slots": [
+        "attributeValue__attribute",
+        "maximum_numeric_value",
+        "minimum_numeric_value",
+        "QuantityValue_numeric_value",
+        "QuantityValue_unit",
+        "unit_cv_id",
+        "QuantityValue_raw_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/nmdc/QuantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TextValue",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/TextValue",
+      "description": "A value described using a text string, optionally with a controlled vocabulary ID.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "nmdc:TextValue"
+      ],
+      "is_a": "AttributeValue",
+      "slots": [
+        "attributeValue__attribute",
+        "attributeValue__raw_value",
+        "textValue__value",
+        "textValue__value_cv_id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "value",
+          "description": "The text value",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "value_cv_id",
+          "description": "For values in a controlled vocabulary, the CV ID for the value.",
+          "range": "curie",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/nmdc/TextValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DateTimeValue",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DateTimeValue",
+      "description": "A date or date and time value.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/types",
+      "mappings": [
+        "nmdc:DateTimeValue"
+      ],
+      "is_a": "AttributeValue",
+      "slots": [
+        "attributeValue__attribute",
+        "attributeValue__raw_value",
+        "dateTimeValue__value"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "value",
+          "description": "The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.",
+          "examples": [
+            {
+              "value": "2025-11-09",
+              "@type": "Example"
+            },
+            {
+              "value": "2025-09-16T22:48:54Z",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/nmdc/DateTimeValue",
       "@type": "ClassDefinition"
     },
     {
@@ -19284,13 +19571,14 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-17T18:49:06",
-  "source_file_size": 116313,
-  "generation_date": "2025-12-17T18:51:59",
+  "source_file_date": "2025-12-19T11:38:48",
+  "source_file_size": 121245,
+  "generation_date": "2025-12-19T11:44:39",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
+    "lambda_ber_types.context.jsonld",
     "functional_annotation.context.jsonld",
     {
       "@base": "https://w3id.org/lambda-ber-schema/"

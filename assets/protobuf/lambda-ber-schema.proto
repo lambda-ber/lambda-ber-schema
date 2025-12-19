@@ -24,6 +24,12 @@ message AggregatedProteinView
   evolutionaryConservation evolutionaryConservation = 0
  repeated  databaseCrossReference crossReferences = 0
  }
+// A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
+message Attribute
+ {
+  string id = 0
+  string label = 0
+ }
 // Multi-technique synchrotron beamline that supports multiple experimental methods
 message BeamlineInstrument
  {
@@ -221,7 +227,7 @@ message DataCollectionStrategy
   float dosePerFrame = 0
   float wavelengthA = 0
   detectorModeEnum detectorMode = 0
-  float pixelSizeCalibrated = 0
+  quantityValue pixelSizeCalibrated = 0
   float detectorDistanceMm = 0
   integer beamCenterXPx = 0
   integer beamCenterYPx = 0
@@ -261,6 +267,13 @@ message Dataset
  repeated  instrument instruments = 0
  repeated  study studies = 0
  }
+// A date or date and time value.
+message DateTimeValue
+ {
+  attribute attribute = 0
+  string rawValue = 0
+  string value = 0
+ }
 // Evolutionary conservation information
 message EvolutionaryConservation
  {
@@ -294,7 +307,7 @@ message ExperimentalConditions
   float pressure = 0
   string atmosphere = 0
   float beamEnergy = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
  }
 // An experimental data collection session
 message ExperimentRun
@@ -334,29 +347,29 @@ message ExperimentRun
   integer holesPerGroup = 0
   string acquisitionSoftware = 0
   string acquisitionSoftwareVersion = 0
-  float wavelength = 0
-  float oscillationAngle = 0
-  float startAngle = 0
+  quantityValue wavelength = 0
+  quantityValue oscillationAngle = 0
+  quantityValue startAngle = 0
   integer numberOfImages = 0
-  float beamCenterX = 0
-  float beamCenterY = 0
-  float detectorDistance = 0
-  float pixelSizeX = 0
-  float pixelSizeY = 0
-  float totalRotation = 0
+  quantityValue beamCenterX = 0
+  quantityValue beamCenterY = 0
+  quantityValue detectorDistance = 0
+  quantityValue pixelSizeX = 0
+  quantityValue pixelSizeY = 0
+  quantityValue totalRotation = 0
   string beamline = 0
-  float transmission = 0
-  float flux = 0
-  float fluxEnd = 0
-  float slitGapHorizontal = 0
-  float slitGapVertical = 0
-  float undulatorGap = 0
+  quantityValue transmission = 0
+  quantityValue flux = 0
+  quantityValue fluxEnd = 0
+  quantityValue slitGapHorizontal = 0
+  quantityValue slitGapVertical = 0
+  quantityValue undulatorGap = 0
   string synchrotronMode = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   string startTime = 0
   string endTime = 0
-  float resolution = 0
-  float resolutionAtCorner = 0
+  quantityValue resolution = 0
+  quantityValue resolutionAtCorner = 0
   integer ispybDataCollectionId = 0
   integer ispybSessionId = 0
  }
@@ -371,7 +384,7 @@ message FluorescenceImage
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float defocus = 0
   float astigmatism = 0
@@ -407,7 +420,7 @@ message FTIRImage
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float wavenumberMin = 0
   float wavenumberMax = 0
@@ -453,7 +466,7 @@ message Image
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
  }
 // A 2D image (micrograph, diffraction pattern)
@@ -467,7 +480,7 @@ message Image2D
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float defocus = 0
   float astigmatism = 0
@@ -483,7 +496,7 @@ message Image3D
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   integer dimensionsZ = 0
   float voxelSize = 0
@@ -549,7 +562,7 @@ message Micrograph
   string acquisitionDate = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   string originMovieId = 0
   float defocusU = 0
@@ -593,7 +606,7 @@ message Movie
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float defocus = 0
   float astigmatism = 0
@@ -662,7 +675,7 @@ message OpticalImage
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float defocus = 0
   float astigmatism = 0
@@ -787,7 +800,7 @@ message ProteinProteinInteraction
 message QualityMetrics
  {
   string description = 0
-  float resolution = 0
+  quantityValue resolution = 0
   float resolutionHighShellA = 0
   float resolutionLowA = 0
   float completeness = 0
@@ -820,6 +833,17 @@ message QualityMetrics
   float rg = 0
   float rFactor = 0
  }
+// A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+message QuantityValue
+ {
+  attribute attribute = 0
+  float maximumNumericValue = 0
+  float minimumNumericValue = 0
+  float numericValue = 0
+  string unit = 0
+  curie unitCvId = 0
+  string rawValue = 0
+ }
 // Parameters specific to 3D refinement workflows
 message RefinementParameters
  {
@@ -842,7 +866,7 @@ message Sample
   string sampleCode = 0
   sampleTypeEnum sampleType = 0
   molecularComposition molecularComposition = 0
-  float molecularWeight = 0
+  quantityValue molecularWeight = 0
   float concentration = 0
   concentrationUnitEnum concentrationUnit = 0
   bufferComposition bufferComposition = 0
@@ -884,10 +908,10 @@ message SamplePreparation
   string protocolDescription = 0
   expressionSystemEnum expressionSystem = 0
   string hostStrainOrCellLine = 0
-  float cultureVolumeL = 0
+  quantityValue cultureVolumeL = 0
   string medium = 0
   string antibioticSelection = 0
-  float growthTemperatureC = 0
+  quantityValue growthTemperatureC = 0
   string inductionAgent = 0
   string inducerConcentration = 0
   float inductionTemperatureC = 0
@@ -1002,6 +1026,14 @@ message Study
  repeated  image images = 0
  repeated  aggregatedProteinView aggregatedProteinViews = 0
  }
+// A value described using a text string, optionally with a controlled vocabulary ID.
+message TextValue
+ {
+  attribute attribute = 0
+  string rawValue = 0
+  string value = 0
+  curie valueCvId = 0
+ }
 // A computational processing workflow execution
 message WorkflowRun
  {
@@ -1033,22 +1065,22 @@ message WorkflowRun
   string pdbId = 0
   string validationReportPath = 0
   string spaceGroup = 0
-  float unitCellA = 0
-  float unitCellB = 0
-  float unitCellC = 0
-  float unitCellAlpha = 0
-  float unitCellBeta = 0
-  float unitCellGamma = 0
-  float resolutionHigh = 0
-  float resolutionLow = 0
+  quantityValue unitCellA = 0
+  quantityValue unitCellB = 0
+  quantityValue unitCellC = 0
+  quantityValue unitCellAlpha = 0
+  quantityValue unitCellBeta = 0
+  quantityValue unitCellGamma = 0
+  quantityValue resolutionHigh = 0
+  quantityValue resolutionLow = 0
   float rmerge = 0
   float rpim = 0
   float ccHalf = 0
-  float completenessPercent = 0
+  quantityValue completenessPercent = 0
   float iOverSigma = 0
-  float wilsonBFactor = 0
+  quantityValue wilsonBFactor = 0
   float multiplicity = 0
-  float anomalousCompleteness = 0
+  quantityValue anomalousCompleteness = 0
   float anomalousMultiplicity = 0
   float ccAnomalous = 0
   float rAnomalous = 0
@@ -1059,10 +1091,10 @@ message WorkflowRun
   integer ispybAutoProcScalingId = 0
   float rwork = 0
   float rfree = 0
-  float rmsdBonds = 0
-  float rmsdAngles = 0
-  float ramachandranFavored = 0
-  float ramachandranOutliers = 0
+  quantityValue rmsdBonds = 0
+  quantityValue rmsdAngles = 0
+  quantityValue ramachandranFavored = 0
+  quantityValue ramachandranOutliers = 0
   float clashscore = 0
   string processingNotes = 0
   computeResources computeResources = 0
@@ -1144,7 +1176,7 @@ message XRFImage
   float pixelSize = 0
   integer dimensionsX = 0
   integer dimensionsY = 0
-  float exposureTime = 0
+  quantityValue exposureTime = 0
   float dose = 0
   float defocus = 0
   float astigmatism = 0
@@ -1155,6 +1187,6 @@ message XRFImage
   xRaySourceTypeEnum sourceType = 0
   detectorTechnologyEnum detectorTechnology = 0
   string detectorModel = 0
-  float flux = 0
+  quantityValue flux = 0
   string calibrationStandard = 0
  }
