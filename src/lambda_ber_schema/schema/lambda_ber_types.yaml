@@ -1,0 +1,166 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+
+id: https://w3id.org/lambda-ber-schema/types
+name: lambda_ber_types
+title: Types for the lambda-ber-schema
+description: Standardized value types for the lambda-ber-schema, including QuantityValue for representing measurements with units
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  qud: http://qudt.org/1.1/schema/qudt#
+  schema: https://schema.org/
+  lambdaber: https://w3id.org/lambda-ber-schema/
+imports:
+  - linkml:types
+default_prefix: lambdaber
+default_range: string
+
+slots:
+
+  attribute:
+    description: The attribute being represented.
+    range: Attribute
+    required: true
+
+  numeric_value:
+    description: The numerical part of a quantity value, expressed as a number.
+    range: float
+    mappings:
+      - nmdc:numeric_value
+      - qud:quantityValue
+      - schema:value
+
+  minimum_numeric_value:
+    is_a: numeric_value
+    description: The minimum value part, expressed as a number, of the quantity value when the value covers a range.
+    mappings:
+      - nmdc:minimum_numeric_value
+
+  maximum_numeric_value:
+    is_a: numeric_value
+    description: The maximum value part, expressed as a number, of the quantity value when the value covers a range.
+    mappings:
+      - nmdc:maximum_numeric_value
+
+  raw_value:
+    description: The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms" or "2-4 micrometers"
+    range: string
+    mappings:
+      - nmdc:raw_value
+
+  unit:
+    description: The unit of measurement. Should be taken from the UCUM unit collection or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.
+    aliases:
+      - scale
+    range: string
+    mappings:
+      - nmdc:unit
+      - qud:unit
+      - schema:unitCode
+      - UO:0000000
+
+  unit_cv_id:
+    description: The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).
+    range: curie
+
+  value:
+    description: The value, as a text string.
+    range: string
+
+  value_cv_id:
+    description: For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.
+    range: curie
+
+classes:
+
+  Any:
+    class_uri: linkml:Any
+
+  AttributeValue:
+    abstract: true
+    class_uri: nmdc:AttributeValue
+    description: >-
+      The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
+    attributes:
+      attribute:
+        description: The attribute being represented.
+        range: Attribute
+      raw_value:
+        description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+        range: string
+
+  Attribute:
+    description: A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
+    attributes:
+      id:
+        description: A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.
+        recommended: true
+      label:
+        aliases:
+          - name
+          - title
+        description: Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.
+        required: true
+
+  QuantityValue:
+    class_uri: nmdc:QuantityValue
+    is_a: AttributeValue
+    description: >-
+      A simple quantity value, representing a measurement with a numeric value and unit.
+      This allows data providers to specify measurements in their preferred unit while enabling
+      standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers
+      or 15 Angstroms, with the unit clearly specified.
+    slots:
+      - maximum_numeric_value
+      - minimum_numeric_value
+      - numeric_value
+      - unit
+      - unit_cv_id
+    slot_usage:
+      numeric_value:
+        description: The numerical value of the quantity
+        required: true
+      unit:
+        description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
+        required: true
+      raw_value:
+        description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+        examples:
+          - value: "1.5 micrometers"
+          - value: "50 Angstroms"
+    mappings:
+      - schema:QuantityValue
+
+  TextValue:
+    class_uri: nmdc:TextValue
+    is_a: AttributeValue
+    description: A value described using a text string, optionally with a controlled vocabulary ID.
+    attributes:
+      value:
+        description: The text value
+        range: string
+        required: true
+      value_cv_id:
+        description: For values in a controlled vocabulary, the CV ID for the value.
+        range: curie
+
+  DateTimeValue:
+    class_uri: nmdc:DateTimeValue
+    is_a: AttributeValue
+    description: A date or date and time value.
+    attributes:
+      value:
+        description: The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.
+        range: string
+        required: true
+        examples:
+          - value: "2025-11-09"
+          - value: "2025-09-16T22:48:54Z"
+
+types:
+  decimal degree:
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    uri: xsd:decimal
+    base: float
+    see_also:
+      - https://en.wikipedia.org/wiki/Decimal_degrees
