@@ -1417,14 +1417,17 @@ classes:
         description: "Date image was acquired"
         range: string
       pixel_size:
-        description: "Pixel size in Angstroms"
-        range: float
+        description: "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       dimensions_x:
-        description: "Image width in pixels"
-        range: integer
+        description: "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       dimensions_y:
-        description: "Image height in pixels"
-        range: integer
+        description: "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       exposure_time:
         description: "Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1438,22 +1441,26 @@ classes:
     description: "A 2D image (micrograph, diffraction pattern)"
     attributes:
       defocus:
-        description: "Defocus value in micrometers"
-        range: float
+        description: "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       astigmatism:
-        description: "Astigmatism value in Angstroms"
-        range: float
+        description: "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
 
   Image3D:
     is_a: Image
     description: "A 3D volume or tomogram"
     attributes:
       dimensions_z:
-        description: "Image depth in pixels/slices"
-        range: integer
+        description: "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       voxel_size:
-        description: "Voxel size in Angstroms"
-        range: float
+        description: "Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       reconstruction_method:
         description: "Method used for 3D reconstruction"
 
@@ -1468,23 +1475,28 @@ classes:
         description: "Whether super-resolution mode was used"
         range: boolean
       pixel_size_unbinned:
-        description: "Unbinned pixel size in Angstroms per pixel"
-        range: float
+        description: "Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       timestamp:
         description: "Acquisition timestamp"
         range: string
       stage_position_x:
-        description: "Stage X position in micrometers"
-        range: float
+        description: "Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       stage_position_y:
-        description: "Stage Y position in micrometers"
-        range: float
+        description: "Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       stage_position_z:
-        description: "Stage Z position in micrometers"
-        range: float
+        description: "Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       nominal_defocus:
-        description: "Nominal defocus value in micrometers"
-        range: float
+        description: "Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       dose_per_frame:
         description: "Electron dose per frame in e-/Angstrom^2"
         range: float
@@ -1495,8 +1507,9 @@ classes:
         description: "Beam shift Y in microradians"
         range: float
       ice_thickness_estimate:
-        description: "Estimated ice thickness in nanometers"
-        range: float
+        description: "Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       grid_square_id:
         description: "Grid square identifier"
         range: string
@@ -1526,17 +1539,21 @@ classes:
         range: string
       # CTF estimation results
       defocus_u:
-        description: "Defocus U in micrometers"
-        range: float
+        description: "Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       defocus_v:
-        description: "Defocus V in micrometers"
-        range: float
+        description: "Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       astigmatism_angle:
-        description: "Astigmatism angle in degrees"
-        range: float
+        description: "Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       resolution_fit_limit:
-        description: "Resolution fit limit in Angstroms"
-        range: float
+        description: "Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
+        range: QuantityValue
+        inlined: true
       ctf_quality_score:
         description: "CTF estimation quality score"
         range: float
