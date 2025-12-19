@@ -1,15 +1,19 @@
 @base <http://example.org/> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/kibler2024/sample/hetBGL03-15-18> a lambdaber:Sample ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "25 mM Tris",
                 "300 mM NaCl" ;
-            lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "2.5"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:modifications "6xHis tag (removed after purification)",
@@ -17,12 +21,15 @@
             lambdaber:sequences "MDFYTLPTSHPA...",
                 "MDFYTLPTSHPV...",
                 "MDFYTLPTSNPV..." ] ;
-    lambdaber:molecular_weight "182.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "182.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:562 ;
     lambdaber:sample_code "hetBGL03-15-18" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:duration "< 1 week before measurement" ;
-            lambdaber:temperature "4.0"^^xsd:float ;
-            lambdaber:temperature_unit "celsius" ] .
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] .
 

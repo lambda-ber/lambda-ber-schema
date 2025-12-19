@@ -4,6 +4,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix go: <http://purl.obolibrary.org/obo/GO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -45,8 +46,12 @@ lambdaber:exp-run-001 a lambdaber:ExperimentRun ;
     lambdaber:experiment_code "EXP-P53-001" ;
     lambdaber:instrument_id <TITAN-001> ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:completeness "99.5"^^xsd:float ;
-            lambdaber:resolution "3.2"^^xsd:float ] ;
+            lambdaber:completeness [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "99.5"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "3.2"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
     lambdaber:sample_id "lambdaber:sample-P53-MDM2-001" ;
     lambdaber:technique CHMO:0002413 .
 
@@ -228,12 +233,15 @@ lambdaber:ptm-p53-001 a ns1:PostTranslationalModification ;
 
 lambdaber:sample-P53-MDM2-001 a lambdaber:Sample ;
     dcterms:title "p53-MDM2 complex for structural studies" ;
-    lambdaber:concentration "8.0"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:functional_sites lambdaber:func-site-001 ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:description "Human p53 N-terminal domain with MDM2" ] ;
-    lambdaber:molecular_weight "45.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "45.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:mutation_effects lambdaber:mut-eff-001 ;
     lambdaber:sample_code "P53-MDM2-001" ;
     lambdaber:sample_type "complex" .

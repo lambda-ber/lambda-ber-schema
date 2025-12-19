@@ -1,5 +1,5 @@
 RUN = uv run
-SCHEMA := src/lambda_ber_schema/schema/lambda-ber-schema.yaml
+SCHEMA := src/lambda_ber_schema/schema/lambda_ber_schema.yaml
 DOCDIR := ./docs
 ELEMENTSDIR := ./docs/elements
 PYDANTIC := src/lambda_ber_schema/pydantic.py

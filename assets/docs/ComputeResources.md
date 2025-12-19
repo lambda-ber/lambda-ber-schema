@@ -1,40 +1,262 @@
 
-# Class: ComputeResources
 
-Computational resources used
+# Class: ComputeResources 
+
+
+_Computational resources used_
+
+
+
+
 
 URI: [lambdaber:ComputeResources](https://w3id.org/lambda-ber-schema/ComputeResources)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20compute_resources%200..1>[ComputeResources&#124;cpu_hours:float%20%3F;gpu_hours:float%20%3F;memory_gb:float%20%3F;storage_gb:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ComputeResources],[WorkflowRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20compute_resources%200..1>[ComputeResources&#124;cpu_hours:float%20%3F;gpu_hours:float%20%3F;memory_gb:float%20%3F;storage_gb:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ComputeResources],[WorkflowRun],[AttributeGroup])
-
-## Parents
-
- *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
-
-## Referenced by Class
-
- *  **None** *[➞compute_resources](workflowRun__compute_resources.md)*  <sub>0..1</sub>  **[ComputeResources](ComputeResources.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞cpu_hours](computeResources__cpu_hours.md)  <sub>0..1</sub>
-     * Description: CPU hours used
-     * Range: [Float](types/Float.md)
- * [➞gpu_hours](computeResources__gpu_hours.md)  <sub>0..1</sub>
-     * Description: GPU hours used
-     * Range: [Float](types/Float.md)
- * [➞memory_gb](computeResources__memory_gb.md)  <sub>0..1</sub>
-     * Description: Maximum memory used in GB
-     * Range: [Float](types/Float.md)
- * [➞storage_gb](computeResources__storage_gb.md)  <sub>0..1</sub>
-     * Description: Storage used in GB
-     * Range: [Float](types/Float.md)
+```mermaid
+ classDiagram
+    class ComputeResources
+    click ComputeResources href "../ComputeResources/"
+      AttributeGroup <|-- ComputeResources
+        click AttributeGroup href "../AttributeGroup/"
+      
+      ComputeResources : cpu_hours
+        
+          
+    
+        
+        
+        ComputeResources --> "0..1" QuantityValue : cpu_hours
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from AttributeGroup:
+        
+      ComputeResources : description
+        
+      ComputeResources : gpu_hours
+        
+          
+    
+        
+        
+        ComputeResources --> "0..1" QuantityValue : gpu_hours
+        click QuantityValue href "../QuantityValue/"
+    
 
- * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+        
+      ComputeResources : memory_gb
+        
+          
+    
+        
+        
+        ComputeResources --> "0..1" QuantityValue : memory_gb
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ComputeResources : storage_gb
+        
+          
+    
+        
+        
+        ComputeResources --> "0..1" QuantityValue : storage_gb
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [AttributeGroup](AttributeGroup.md)
+    * **ComputeResources**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [cpu_hours](cpu_hours.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | CPU hours used, measured in hours | direct |
+| [gpu_hours](gpu_hours.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | GPU hours used, measured in hours | direct |
+| [memory_gb](memory_gb.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum memory used, typically specified in gigabytes (GB) | direct |
+| [storage_gb](storage_gb.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Storage used, typically specified in gigabytes (GB) | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | [compute_resources](compute_resources.md) | range | [ComputeResources](ComputeResources.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:ComputeResources |
+| native | lambdaber:ComputeResources |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: ComputeResources
+description: Computational resources used
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  cpu_hours:
+    name: cpu_hours
+    description: CPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  gpu_hours:
+    name: gpu_hours
+    description: GPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  memory_gb:
+    name: memory_gb
+    description: Maximum memory used, typically specified in gigabytes (GB). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  storage_gb:
+    name: storage_gb
+    description: Storage used, typically specified in gigabytes (GB). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: ComputeResources
+description: Computational resources used
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  cpu_hours:
+    name: cpu_hours
+    description: CPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cpu_hours
+    owner: ComputeResources
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  gpu_hours:
+    name: gpu_hours
+    description: GPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: gpu_hours
+    owner: ComputeResources
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  memory_gb:
+    name: memory_gb
+    description: Maximum memory used, typically specified in gigabytes (GB). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: memory_gb
+    owner: ComputeResources
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  storage_gb:
+    name: storage_gb
+    description: Storage used, typically specified in gigabytes (GB). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: storage_gb
+    owner: ComputeResources
+    domain_of:
+    - ComputeResources
+    range: QuantityValue
+    inlined: true
+  description:
+    name: description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: description
+    owner: ComputeResources
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

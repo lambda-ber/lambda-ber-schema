@@ -9,23 +9,56 @@
   "experiment_date": "2024-04-10T09:30:00",
   "operator_id": "als_user_042",
   "experimental_conditions": {
-    "temperature": -173.0,
-    "humidity": 0.0,
-    "pressure": 101.325,
+    "temperature": {
+      "numeric_value": -173.0,
+      "unit": "degrees Celsius"
+    },
+    "humidity": {
+      "numeric_value": 0.0,
+      "unit": "percent"
+    },
+    "pressure": {
+      "numeric_value": 101.325,
+      "unit": "kilopascals"
+    },
     "atmosphere": "Nitrogen stream"
   },
   "data_collection_strategy": {
     "collection_mode": "oscillation",
-    "total_frames": 360,
-    "frame_rate": 1.0,
-    "total_dose": 0.0,
-    "dose_per_frame": 0.0
+    "total_frames": {
+      "numeric_value": 360.0,
+      "unit": "frames"
+    },
+    "frame_rate": {
+      "numeric_value": 1.0,
+      "unit": "frames per second"
+    },
+    "total_dose": {
+      "numeric_value": 0.0,
+      "unit": "electrons per Angstrom squared"
+    },
+    "dose_per_frame": {
+      "numeric_value": 0.0,
+      "unit": "electrons per Angstrom squared"
+    }
   },
   "quality_metrics": {
-    "resolution": 1.5,
-    "completeness": 99.8,
-    "signal_to_noise": 15.2,
-    "r_factor": 0.182
+    "resolution": {
+      "numeric_value": 1.5,
+      "unit": "Angstroms"
+    },
+    "completeness": {
+      "numeric_value": 99.8,
+      "unit": "percent"
+    },
+    "signal_to_noise": {
+      "numeric_value": 15.2,
+      "unit": "signal to noise ratio"
+    },
+    "r_factor": {
+      "numeric_value": 0.182,
+      "unit": "R-factor"
+    }
   },
   "raw_data_location": "/data/als/2024/xray/lysozyme/",
   "processing_status": "completed",

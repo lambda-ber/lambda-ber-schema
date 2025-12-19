@@ -16,11 +16,16 @@ samples:
     - H4K20me1
     ligands:
     - Histone octamer
-  molecular_weight: 206.0
-  concentration: 5.0
-  concentration_unit: mg_per_ml
+  molecular_weight:
+    numeric_value: 206.0
+    unit: kilodaltons
+  concentration:
+    numeric_value: 5.0
+    unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.5
+    ph:
+      numeric_value: 7.5
+      unit: pH units
     components:
     - 10 mM Tris-HCl
     - 1 mM EDTA
@@ -30,7 +35,9 @@ samples:
   preparation_method: Salt gradient dialysis reconstitution
   organism: NCBITaxon:9606
   anatomy: UBERON:0000922
-  purity_percentage: 99.0
+  purity_percentage:
+    numeric_value: 99.0
+    unit: percent
 - id: lambdaber:sample_chd1_001
   title: Chromodomain helicase CHD1
   description: Full-length yeast CHD1 protein
@@ -43,11 +50,16 @@ samples:
     - ATP binding domain
     ligands:
     - ATP
-  molecular_weight: 168.5
-  concentration: 2.0
-  concentration_unit: mg_per_ml
+  molecular_weight:
+    numeric_value: 168.5
+    unit: kilodaltons
+  concentration:
+    numeric_value: 2.0
+    unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.8
+    ph:
+      numeric_value: 7.8
+      unit: pH units
     components:
     - 25 mM HEPES
     - 150 mM KCl
@@ -57,7 +69,9 @@ samples:
     - 1 mM DTT
   preparation_method: Sf9 insect cell expression with FLAG purification
   organism: NCBITaxon:4932
-  purity_percentage: 95.0
+  purity_percentage:
+    numeric_value: 95.0
+    unit: percent
 - id: lambdaber:sample_chd1_ncp_complex_001
   title: CHD1-nucleosome complex
   description: CHD1 bound to nucleosome core particle
@@ -68,11 +82,16 @@ samples:
     - CHD1
     - Nucleosome
     - ADP-BeF3
-  molecular_weight: 374.5
-  concentration: 0.5
-  concentration_unit: mg_per_ml
+  molecular_weight:
+    numeric_value: 374.5
+    unit: kilodaltons
+  concentration:
+    numeric_value: 0.5
+    unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.5
+    ph:
+      numeric_value: 7.5
+      unit: pH units
     components:
     - 20 mM HEPES
     - 100 mM KCl
@@ -83,7 +102,9 @@ samples:
     - 5 mM NaF
   preparation_method: In vitro reconstitution by mixing CHD1 with nucleosome
   parent_sample_id: lambdaber:sample_nucleosome_001
-  purity_percentage: 90.0
+  purity_percentage:
+    numeric_value: 90.0
+    unit: percent
 sample_preparations:
 - id: lambdaber:prep_ncp_grid_001
   title: Nucleosome grid preparation for cryo-EM
@@ -121,19 +142,39 @@ instrument_runs:
   experiment_date: '2024-05-15T08:00:00'
   operator_id: cryoem_operator_001
   experimental_conditions:
-    temperature: -180.0
-    humidity: 0.0
-    pressure: 1.0e-06
+    temperature:
+      numeric_value: -180.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0.0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: counting
-    total_frames: 5000
-    frame_rate: 40.0
-    total_dose: 45.0
-    dose_per_frame: 1.125
+    total_frames:
+      numeric_value: 5000.0
+      unit: frames
+    frame_rate:
+      numeric_value: 40.0
+      unit: frames per second
+    total_dose:
+      numeric_value: 45.0
+      unit: electrons per Angstrom squared
+    dose_per_frame:
+      numeric_value: 1.125
+      unit: electrons per Angstrom squared
   quality_metrics:
-    resolution: 2.5
-    completeness: 99.9
-    signal_to_noise: 5.2
+    resolution:
+      numeric_value: 2.5
+      unit: Angstroms
+    completeness:
+      numeric_value: 99.9
+      unit: percent
+    signal_to_noise:
+      numeric_value: 5.2
+      unit: signal to noise ratio
   processing_status: completed
 - id: lambdaber:exp_chd1_saxs_001
   title: CHD1 SAXS analysis
@@ -145,17 +186,33 @@ instrument_runs:
   experiment_date: '2024-05-16T10:00:00'
   operator_id: saxs_operator_001
   experimental_conditions:
-    temperature: 20.0
-    humidity: 50.0
-    pressure: 101.325
+    temperature:
+      numeric_value: 20.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 50.0
+      unit: percent
+    pressure:
+      numeric_value: 101.325
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: continuous
-    total_frames: 20
-    frame_rate: 1.0
+    total_frames:
+      numeric_value: 20.0
+      unit: frames
+    frame_rate:
+      numeric_value: 1.0
+      unit: frames per second
   quality_metrics:
-    resolution: 30.0
-    completeness: 100.0
-    signal_to_noise: 45.0
+    resolution:
+      numeric_value: 30.0
+      unit: Angstroms
+    completeness:
+      numeric_value: 100.0
+      unit: percent
+    signal_to_noise:
+      numeric_value: 45.0
+      unit: signal to noise ratio
   processing_status: completed
 - id: lambdaber:exp_complex_cryoem_001
   title: CHD1-nucleosome complex structure
@@ -167,17 +224,37 @@ instrument_runs:
   experiment_date: '2024-05-17T09:00:00'
   operator_id: cryoem_operator_001
   experimental_conditions:
-    temperature: -180.0
-    humidity: 0.0
-    pressure: 1.0e-06
+    temperature:
+      numeric_value: -180.0
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0.0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
   data_collection_strategy:
     collection_mode: super_resolution
-    total_frames: 10000
-    frame_rate: 40.0
-    total_dose: 50.0
-    dose_per_frame: 1.25
+    total_frames:
+      numeric_value: 10000.0
+      unit: frames
+    frame_rate:
+      numeric_value: 40.0
+      unit: frames per second
+    total_dose:
+      numeric_value: 50.0
+      unit: electrons per Angstrom squared
+    dose_per_frame:
+      numeric_value: 1.25
+      unit: electrons per Angstrom squared
   quality_metrics:
-    resolution: 3.2
-    completeness: 98.5
-    signal_to_noise: 3.8
+    resolution:
+      numeric_value: 3.2
+      unit: Angstroms
+    completeness:
+      numeric_value: 98.5
+      unit: percent
+    signal_to_noise:
+      numeric_value: 3.8
+      unit: signal to noise ratio
   processing_status: processing

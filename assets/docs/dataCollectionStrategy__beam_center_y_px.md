@@ -8,7 +8,7 @@ URI: [lambdaber:dataCollectionStrategy__beam_center_y_px](https://w3id.org/lambd
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

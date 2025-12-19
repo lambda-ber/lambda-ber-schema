@@ -1,37 +1,216 @@
 
-# Class: FSCCurve
 
-Fourier Shell Correlation curve data.
+# Class: FSCCurve 
 
-The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
-corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+
+_Fourier Shell Correlation curve data._
+
+__
+
+_The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`_
+
+_corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements._
+
+__
+
+
+
+
 
 URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20fsc_curve%200..1>[FSCCurve&#124;resolution_angstrom:float%20*;fsc_value:float%20*;description(i):string%20%3F],[AttributeGroup]^-[FSCCurve],[WorkflowRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowRun]++-%20fsc_curve%200..1>[FSCCurve&#124;resolution_angstrom:float%20*;fsc_value:float%20*;description(i):string%20%3F],[AttributeGroup]^-[FSCCurve],[WorkflowRun],[AttributeGroup])
-
-## Parents
-
- *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
-
-## Referenced by Class
-
- *  **None** *[➞fsc_curve](workflowRun__fsc_curve.md)*  <sub>0..1</sub>  **[FSCCurve](FSCCurve.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞resolution_angstrom](fSCCurve__resolution_angstrom.md)  <sub>0..\*</sub>
-     * Description: Resolution values in Angstroms
-     * Range: [Float](types/Float.md)
- * [➞fsc_value](fSCCurve__fsc_value.md)  <sub>0..\*</sub>
-     * Description: FSC values corresponding to each resolution
-     * Range: [Float](types/Float.md)
+```mermaid
+ classDiagram
+    class FSCCurve
+    click FSCCurve href "../FSCCurve/"
+      AttributeGroup <|-- FSCCurve
+        click AttributeGroup href "../AttributeGroup/"
+      
+      FSCCurve : description
+        
+      FSCCurve : fsc_value
+        
+          
+    
+        
+        
+        FSCCurve --> "0..1" QuantityValue : fsc_value
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from AttributeGroup:
+        
+      FSCCurve : resolution_angstrom
+        
+          
+    
+        
+        
+        FSCCurve --> "0..1" QuantityValue : resolution_angstrom
+        click QuantityValue href "../QuantityValue/"
+    
 
- * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [AttributeGroup](AttributeGroup.md)
+    * **FSCCurve**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [resolution_angstrom](resolution_angstrom.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Resolution values in Angstroms | direct |
+| [fsc_value](fsc_value.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | FSC values corresponding to each resolution | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [WorkflowRun](WorkflowRun.md) | [fsc_curve](fsc_curve.md) | range | [FSCCurve](FSCCurve.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:FSCCurve |
+| native | lambdaber:FSCCurve |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: FSCCurve
+description: 'Fourier Shell Correlation curve data.
+
+
+  The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each
+  value at index i in `resolution_angstrom`
+
+  corresponding to the value at index i in `fsc_value`. Both arrays should not exceed
+  10,000 elements.
+
+  '
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  resolution_angstrom:
+    name: resolution_angstrom
+    description: Resolution values in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - FSCCurve
+    range: QuantityValue
+    inlined: true
+  fsc_value:
+    name: fsc_value
+    description: FSC values corresponding to each resolution
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - FSCCurve
+    range: QuantityValue
+    inlined: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: FSCCurve
+description: 'Fourier Shell Correlation curve data.
+
+
+  The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each
+  value at index i in `resolution_angstrom`
+
+  corresponding to the value at index i in `fsc_value`. Both arrays should not exceed
+  10,000 elements.
+
+  '
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  resolution_angstrom:
+    name: resolution_angstrom
+    description: Resolution values in Angstroms
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: resolution_angstrom
+    owner: FSCCurve
+    domain_of:
+    - FSCCurve
+    range: QuantityValue
+    inlined: true
+  fsc_value:
+    name: fsc_value
+    description: FSC values corresponding to each resolution
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: fsc_value
+    owner: FSCCurve
+    domain_of:
+    - FSCCurve
+    range: QuantityValue
+    inlined: true
+  description:
+    name: description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: description
+    owner: FSCCurve
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

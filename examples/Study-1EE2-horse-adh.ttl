@@ -3,6 +3,7 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:study_1EE2_horse_adh a lambdaber:Study ;
@@ -21,11 +22,17 @@ lambdaber:exp_1EE2_xray_001 a lambdaber:ExperimentRun ;
     lambdaber:experiment_code "1EE2_XRAY_001" ;
     lambdaber:experiment_date "1998-11-23" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:temperature "100.0"^^xsd:float ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
     lambdaber:instrument_id <DESY_BW7B> ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:completeness "95.0"^^xsd:float ;
-            lambdaber:resolution "1.54"^^xsd:float ] ;
+            lambdaber:completeness [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "95.0"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.54"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
     lambdaber:sample_id "lambdaber:sample_1EE2_001" ;
     lambdaber:technique CHMO:0000156 .
 
@@ -44,7 +51,9 @@ lambdaber:file_1EE2_sf a lambdaber:DataFile ;
 lambdaber:img_1EE2_diffraction_001 a lambdaber:Image ;
     lambdaber:acquisition_date "1998-11-23" ;
     lambdaber:file_name "1ee2_diffraction_pattern.img" ;
-    lambdaber:pixel_size "0.15"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.15"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 
 lambdaber:prep_1EE2_001 a lambdaber:SamplePreparation ;
     lambdaber:description "Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K, NAD+ and Cholic Acid" ;
@@ -56,20 +65,26 @@ lambdaber:sample_1EE2_001 a lambdaber:Sample ;
     dcterms:title "Horse Liver Alcohol Dehydrogenase" ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "TES/KOH" ;
-            lambdaber:ph "7.0"^^xsd:float ] ;
-    lambdaber:concentration "10.0"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:ligands "2x Zinc Ion",
                 "Alcohol Dehydrogenase (373 residues)",
                 "Cholic Acid",
                 "NAD+" ] ;
-    lambdaber:molecular_weight "80.0"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "80.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "1EE2_SAMPLE_001" ;
     lambdaber:sample_type "complex" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
-            lambdaber:temperature "277.0"^^xsd:float ;
-            lambdaber:temperature_unit "kelvin" ] .
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "277.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] .
 
 lambdaber:wf_1EE2_refinement_001 a lambdaber:WorkflowRun ;
     dcterms:title "Structure Refinement" ;

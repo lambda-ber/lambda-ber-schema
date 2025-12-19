@@ -8,7 +8,7 @@ URI: [lambdaber:sAXSPreparation__concentration_series](https://w3id.org/lambda-b
 
 ## Domain and Range
 
-None &#8594;  <sub>0..\*</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

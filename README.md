@@ -35,7 +35,7 @@ make test
 
 This project uses **dynamic versioning** from git tags. The version is automatically:
 1. Set in the Python package metadata
-2. Injected into the schema YAML (`src/lambda_ber_schema/schema/lambda-ber-schema.yaml`)
+2. Injected into the schema YAML (`src/lambda_ber_schema/schema/lambda_ber_schema.yaml`)
 
 ### Release Process
 

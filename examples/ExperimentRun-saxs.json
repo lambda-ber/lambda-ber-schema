@@ -7,17 +7,35 @@
   "experiment_date": "2024-02-01",
   "operator_id": "Kathryn Burnett",
   "experimental_conditions": {
-    "temperature": 20.0,
-    "beam_energy": 9.76,
-    "exposure_time": 0.3
+    "temperature": {
+      "numeric_value": 20.0,
+      "unit": "degrees Celsius"
+    },
+    "beam_energy": {
+      "numeric_value": 9.76,
+      "unit": "kiloelectronvolts"
+    },
+    "exposure_time": {
+      "numeric_value": 0.3,
+      "unit": "seconds"
+    }
   },
   "data_collection_strategy": {
     "collection_mode": "batch"
   },
   "quality_metrics": {
-    "signal_to_noise": 50.0,
-    "i_zero": 0.045,
-    "rg": 42.3
+    "signal_to_noise": {
+      "numeric_value": 50.0,
+      "unit": "signal to noise ratio"
+    },
+    "i_zero": {
+      "numeric_value": 0.045,
+      "unit": "scattering intensity"
+    },
+    "rg": {
+      "numeric_value": 42.3,
+      "unit": "Angstroms"
+    }
   },
   "raw_data_location": "SIBYLS-HT-SAXS-program",
   "processing_status": "completed",

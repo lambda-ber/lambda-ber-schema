@@ -1,23 +1,40 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:xrf_img_001 a lambdaber:XRFImage ;
     dcterms:title "Synchrotron XRF elemental map of leaf tissue" ;
     lambdaber:acquisition_date "2024-05-25T16:00:00" ;
-    lambdaber:astigmatism "0.0"^^xsd:float ;
-    lambdaber:beam_energy "10.0"^^xsd:float ;
-    lambdaber:beam_size "2.0"^^xsd:float ;
+    lambdaber:astigmatism [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:beam_energy [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "kiloelectronvolts" ] ;
+    lambdaber:beam_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
     lambdaber:calibration_standard "NIST SRM 1577c Bovine Liver" ;
-    lambdaber:defocus "0.0"^^xsd:float ;
+    lambdaber:defocus [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
     lambdaber:description "Multi-element XRF map showing distribution of nutrients and trace elements" ;
     lambdaber:detector_model "Vortex-ME4 4-element silicon drift detector" ;
     lambdaber:detector_technology "scintillator_coupled" ;
-    lambdaber:dimensions_x 500 ;
-    lambdaber:dimensions_y 400 ;
-    lambdaber:dose "0.0"^^xsd:float ;
-    lambdaber:dwell_time "100.0"^^xsd:float ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "500.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "400.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dose [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "electrons per Angstrom squared" ] ;
+    lambdaber:dwell_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "100.0"^^xsd:float ;
+            lambdaber:unit "milliseconds" ] ;
     lambdaber:elements_measured "As",
         "Ca",
         "Cu",
@@ -26,9 +43,15 @@ lambdaber:xrf_img_001 a lambdaber:XRFImage ;
         "Mn",
         "Se",
         "Zn" ;
-    lambdaber:exposure_time "0.1"^^xsd:float ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.1"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
     lambdaber:file_name "leaf_xrf_map_2um_resolution.h5" ;
-    lambdaber:flux "1000000000000.0"^^xsd:float ;
-    lambdaber:pixel_size "2.0"^^xsd:float ;
+    lambdaber:flux [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1000000000000.0"^^xsd:float ;
+            lambdaber:unit "photons per second" ] ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
     lambdaber:source_type "synchrotron" .
 

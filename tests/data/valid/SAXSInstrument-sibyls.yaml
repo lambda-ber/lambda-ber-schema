@@ -1,14 +1,24 @@
 id: lambdaber:instrument_sibyls_1231
-title: "SIBYLS Beamline 12.3.1"
-description: "SIBYLS beamline at ALS for SAXS and crystallography"
-instrument_code: "ALS-12.3.1-SIBYLS"
-manufacturer: "Lawrence Berkeley National Laboratory"
-model: "SIBYLS Dual Endstation"
-installation_date: "2008-09-01"
+title: SIBYLS Beamline 12.3.1
+description: SIBYLS beamline at ALS for SAXS and crystallography
+instrument_code: ALS-12.3.1-SIBYLS
+manufacturer: Lawrence Berkeley National Laboratory
+model: SIBYLS Dual Endstation
+installation_date: '2008-09-01'
 current_status: operational
-q_range_min: 0.01
-q_range_max: 0.6
-detector_distance_min: 1500
-detector_distance_max: 5000
-sample_changer_capacity: 96
-temperature_control_range: "4-60"
+q_range_min:
+  numeric_value: 0.01
+  unit: inverse Angstroms
+q_range_max:
+  numeric_value: 0.6
+  unit: inverse Angstroms
+detector_distance_min:
+  numeric_value: 1500
+  unit: millimeters
+detector_distance_max:
+  numeric_value: 5000
+  unit: millimeters
+sample_changer_capacity:
+  numeric_value: 96
+  unit: samples
+temperature_control_range: 4-60

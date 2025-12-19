@@ -1,14 +1,14 @@
 
 # Slot: astigmatism_angle
 
-Astigmatism angle in degrees
+Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:micrograph__astigmatism_angle](https://w3id.org/lambda-ber-schema/micrograph__astigmatism_angle)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

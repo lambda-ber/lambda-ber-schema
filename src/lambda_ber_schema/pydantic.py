@@ -211,7 +211,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                            'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
                   'wikidata': {'prefix_prefix': 'wikidata',
                                'prefix_reference': 'http://www.wikidata.org/entity/'}},
-     'source_file': 'src/lambda_ber_schema/schema/lambda-ber-schema.yaml'} )
+     'source_file': 'src/lambda_ber_schema/schema/lambda_ber_schema.yaml'} )
 
 class FunctionalSiteTypeEnum(str, Enum):
     """

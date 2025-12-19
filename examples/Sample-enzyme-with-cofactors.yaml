@@ -8,9 +8,12 @@ molecular_composition:
   description: Human ALDH2 tetramer with bound NAD+
   sequences:
   - MGSSLSRVPPTAGPLGSPLLLQEPALEAAGEEEELQDSDADGEEEKAEEEEKEEKAEDEEER...
-molecular_weight: 217.5
-concentration: 5.0
-concentration_unit: mg_per_ml
+molecular_weight:
+  numeric_value: 217.5
+  unit: kilodaltons
+concentration:
+  numeric_value: 5.0
+  unit: milligrams per milliliter
 functional_sites:
 - id: lambdaber:funcsite-aldh2-active
   protein_id: P05091
@@ -72,7 +75,13 @@ biophysical_properties:
       components:
       - 50 mM Tris-HCl
       - 100 mM NaCl
-    ph: 7.5
-    ionic_strength: 0.1
-    temperature: 298.15
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    ionic_strength:
+      numeric_value: 0.1
+      unit: molar
+    temperature:
+      numeric_value: 298.15
+      unit: degrees Celsius
   experimental_method: differential_scanning_calorimetry

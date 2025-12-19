@@ -9,23 +9,56 @@
   "experiment_date": "2024-05-01T11:00:00",
   "operator_id": "cryoet_specialist_003",
   "experimental_conditions": {
-    "temperature": -180.0,
-    "humidity": 0.0,
-    "pressure": 1e-06,
+    "temperature": {
+      "numeric_value": -180.0,
+      "unit": "degrees Celsius"
+    },
+    "humidity": {
+      "numeric_value": 0.0,
+      "unit": "percent"
+    },
+    "pressure": {
+      "numeric_value": 1e-06,
+      "unit": "kilopascals"
+    },
     "atmosphere": "High vacuum"
   },
   "data_collection_strategy": {
     "collection_mode": "continuous",
-    "total_frames": 61,
-    "frame_rate": 0.5,
-    "total_dose": 120.0,
-    "dose_per_frame": 2.0
+    "total_frames": {
+      "numeric_value": 61.0,
+      "unit": "frames"
+    },
+    "frame_rate": {
+      "numeric_value": 0.5,
+      "unit": "frames per second"
+    },
+    "total_dose": {
+      "numeric_value": 120.0,
+      "unit": "electrons per Angstrom squared"
+    },
+    "dose_per_frame": {
+      "numeric_value": 2.0,
+      "unit": "electrons per Angstrom squared"
+    }
   },
   "quality_metrics": {
-    "resolution": 8.5,
-    "completeness": 95.0,
-    "signal_to_noise": 2.1,
-    "r_factor": 0.0
+    "resolution": {
+      "numeric_value": 8.5,
+      "unit": "Angstroms"
+    },
+    "completeness": {
+      "numeric_value": 95.0,
+      "unit": "percent"
+    },
+    "signal_to_noise": {
+      "numeric_value": 2.1,
+      "unit": "signal to noise ratio"
+    },
+    "r_factor": {
+      "numeric_value": 0.0,
+      "unit": "R-factor"
+    }
   },
   "raw_data_location": "/data/berkeley/2024/cryoet/mitochondria/",
   "processing_status": "processing",

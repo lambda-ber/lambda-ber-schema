@@ -1,27 +1,159 @@
 
-# Class: ImageFeature
 
-Semantic annotations describing features identified in images using controlled vocabulary terms
+# Class: ImageFeature 
+
+
+_Semantic annotations describing features identified in images using controlled vocabulary terms_
+
+
+
+
 
 URI: [lambdaber:ImageFeature](https://w3id.org/lambda-ber-schema/ImageFeature)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm],[OntologyTerm]<terms%200..*-++[ImageFeature&#124;description(i):string%20%3F],[AttributeGroup]^-[ImageFeature],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm],[OntologyTerm]<terms%200..*-++[ImageFeature&#124;description(i):string%20%3F],[AttributeGroup]^-[ImageFeature],[AttributeGroup])
-
-## Parents
-
- *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
-
-## Attributes
 
 
-### Own
 
- * [➞terms](imageFeature__terms.md)  <sub>0..\*</sub>
-     * Description: Ontology terms describing features identified in the image
-     * Range: [OntologyTerm](OntologyTerm.md)
+```mermaid
+ classDiagram
+    class ImageFeature
+    click ImageFeature href "../ImageFeature/"
+      AttributeGroup <|-- ImageFeature
+        click AttributeGroup href "../AttributeGroup/"
+      
+      ImageFeature : description
+        
+      ImageFeature : terms
+        
+          
+    
+        
+        
+        ImageFeature --> "*" OntologyTerm : terms
+        click OntologyTerm href "../OntologyTerm/"
+    
 
-### Inherited from AttributeGroup:
+        
+      
+```
 
- * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+
+
+
+
+## Inheritance
+* [AttributeGroup](AttributeGroup.md)
+    * **ImageFeature**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [terms](terms.md) | * <br/> [OntologyTerm](OntologyTerm.md) | Ontology terms describing features identified in the image | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:ImageFeature |
+| native | lambdaber:ImageFeature |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: ImageFeature
+description: Semantic annotations describing features identified in images using controlled
+  vocabulary terms
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  terms:
+    name: terms
+    description: Ontology terms describing features identified in the image
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - ImageFeature
+    - OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: ImageFeature
+description: Semantic annotations describing features identified in images using controlled
+  vocabulary terms
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  terms:
+    name: terms
+    description: Ontology terms describing features identified in the image
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: terms
+    owner: ImageFeature
+    domain_of:
+    - ImageFeature
+    - OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  description:
+    name: description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: description
+    owner: ImageFeature
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

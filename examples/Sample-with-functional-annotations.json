@@ -11,9 +11,14 @@
       "MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA"
     ]
   },
-  "molecular_weight": 380.5,
-  "concentration": 10.0,
-  "concentration_unit": "mg_per_ml",
+  "molecular_weight": {
+    "numeric_value": 380.5,
+    "unit": "kilodaltons"
+  },
+  "concentration": {
+    "numeric_value": 10.0,
+    "unit": "milligrams per milliliter"
+  },
   "functional_sites": [
     {
       "id": "lambdaber:funcsite-001",
@@ -169,9 +174,18 @@
               "150 mM NaCl"
             ]
           },
-          "ph": 7.4,
-          "ionic_strength": 0.15,
-          "temperature": 298.15
+          "ph": {
+            "numeric_value": 7.4,
+            "unit": "pH units"
+          },
+          "ionic_strength": {
+            "numeric_value": 0.15,
+            "unit": "molar"
+          },
+          "temperature": {
+            "numeric_value": 298.15,
+            "unit": "degrees Celsius"
+          }
         }
       ],
       "experimental_method": "differential_scanning_calorimetry"
@@ -184,9 +198,18 @@
       "measurement_conditions": [
         {
           "id": "lambdaber:meas-cond-002",
-          "ph": 7.4,
-          "ionic_strength": 0.15,
-          "temperature": 298.15
+          "ph": {
+            "numeric_value": 7.4,
+            "unit": "pH units"
+          },
+          "ionic_strength": {
+            "numeric_value": 0.15,
+            "unit": "molar"
+          },
+          "temperature": {
+            "numeric_value": 298.15,
+            "unit": "degrees Celsius"
+          }
         }
       ],
       "experimental_method": "circular_dichroism"

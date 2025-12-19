@@ -5,13 +5,23 @@ workflow_code: WF-3DCLASS-RIBO-001
 workflow_type: classification_3d
 experiment_id: lambdaber:exp_ribosome_001
 software_name: RELION
-processing_level: 2
+processing_level:
+  numeric_value: 2.0
+  unit: level
 software_version: 4.0.1
 processing_parameters: --K 8 --iter 30 --tau2_fudge 4 --particle_diameter 300
 compute_resources:
-  cpu_hours: 48.0
-  gpu_hours: 96.0
-  memory_gb: 512.0
-  storage_gb: 2000.0
+  cpu_hours:
+    numeric_value: 48.0
+    unit: hours
+  gpu_hours:
+    numeric_value: 96.0
+    unit: hours
+  memory_gb:
+    numeric_value: 512.0
+    unit: gigabytes
+  storage_gb:
+    numeric_value: 2000.0
+    unit: gigabytes
 started_at: '2024-04-20T08:00:00'
 completed_at: '2024-04-22T08:00:00'

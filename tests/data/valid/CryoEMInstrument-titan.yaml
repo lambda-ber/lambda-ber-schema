@@ -1,18 +1,24 @@
 id: lambdaber:instrument_titan_krios_001
-title: "Titan Krios G4"
-description: "300kV Cryo-EM microscope with Gatan K3 detector"
-instrument_code: "TK-G4-001"
-manufacturer: "Thermo Fisher Scientific"
-model: "Titan Krios G4"
-installation_date: "2023-03-15"
+title: Titan Krios G4
+description: 300kV Cryo-EM microscope with Gatan K3 detector
+instrument_code: TK-G4-001
+manufacturer: Thermo Fisher Scientific
+model: Titan Krios G4
+installation_date: '2023-03-15'
 current_status: operational
-accelerating_voltage: 300
+accelerating_voltage:
+  numeric_value: 300
+  unit: kilovolts
 cs_corrector: true
 phase_plate: false
 detector_technology: direct_electron_detector
-detector_manufacturer: "Gatan"
-detector_model: "K3 BioQuantum"
+detector_manufacturer: Gatan
+detector_model: K3 BioQuantum
 detector_mode: counting
-detector_dimensions: "5760x4092"
-pixel_size_physical_um: 5.0
-autoloader_capacity: 12
+detector_dimensions: 5760x4092
+pixel_size_physical_um:
+  numeric_value: 5.0
+  unit: micrometers
+autoloader_capacity:
+  numeric_value: 12
+  unit: grids

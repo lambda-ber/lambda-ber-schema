@@ -1,19 +1,30 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:workflow_phasing_selmet_001 a lambdaber:WorkflowRun ;
     dcterms:title "SAD phasing of selenomethionine derivative" ;
     lambdaber:completed_at "2024-05-02T22:00:00" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "24.0"^^xsd:float ;
-            lambdaber:gpu_hours "0.0"^^xsd:float ;
-            lambdaber:memory_gb "32.0"^^xsd:float ;
-            lambdaber:storage_gb "100.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "24.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ;
+            lambdaber:storage_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Single-wavelength anomalous dispersion phasing" ;
     lambdaber:experiment_id "lambdaber:exp_xray_selmet_001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "autosol wavelength=0.9792 sites=12" ;
     lambdaber:software_name "PHENIX" ;
     lambdaber:software_version "1.21" ;

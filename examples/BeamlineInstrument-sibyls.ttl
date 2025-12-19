@@ -4,6 +4,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:instrument_sibyls_1231 a lambdaber:BeamlineInstrument ;
@@ -19,9 +20,15 @@ lambdaber:instrument_sibyls_1231 a lambdaber:BeamlineInstrument ;
     lambdaber:mail_in_service true ;
     lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
     lambdaber:model "SIBYLS Dual Endstation" ;
-    lambdaber:q_range_max "0.6"^^xsd:float ;
-    lambdaber:q_range_min "0.01"^^xsd:float ;
-    lambdaber:sample_changer_capacity 96 ;
+    lambdaber:q_range_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.6"^^xsd:float ;
+            lambdaber:unit "inverse Angstroms" ] ;
+    lambdaber:q_range_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.01"^^xsd:float ;
+            lambdaber:unit "inverse Angstroms" ] ;
+    lambdaber:sample_changer_capacity [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "96.0"^^xsd:float ;
+            lambdaber:unit "samples" ] ;
     lambdaber:source_type "synchrotron" ;
     lambdaber:techniques_supported CHMO:0000156,
         CHMO:0000204 ;

@@ -13,16 +13,22 @@ samples:
     - NAD+
     - Cholic Acid
     - 2x Zinc Ion
-  molecular_weight: 80.0
-  concentration: 10.0
-  concentration_unit: mg_per_ml
+  molecular_weight:
+    numeric_value: 80.0
+    unit: kilodaltons
+  concentration:
+    numeric_value: 10.0
+    unit: milligrams per milliliter
   buffer_composition:
-    ph: 7.0
+    ph:
+      numeric_value: 7.0
+      unit: pH units
     components:
     - TES/KOH
   storage_conditions:
-    temperature: 277.0
-    temperature_unit: kelvin
+    temperature:
+      numeric_value: 277.0
+      unit: degrees Celsius
 sample_preparations:
 - id: lambdaber:prep_1EE2_001
   description: Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K,
@@ -39,10 +45,16 @@ instrument_runs:
   technique: xray_crystallography
   experiment_date: '1998-11-23'
   experimental_conditions:
-    temperature: 100.0
+    temperature:
+      numeric_value: 100.0
+      unit: degrees Celsius
   quality_metrics:
-    resolution: 1.54
-    completeness: 95.0
+    resolution:
+      numeric_value: 1.54
+      unit: Angstroms
+    completeness:
+      numeric_value: 95.0
+      unit: percent
 workflow_runs:
 - id: lambdaber:wf_1EE2_refinement_001
   title: Structure Refinement
@@ -66,4 +78,6 @@ images:
 - id: lambdaber:img_1EE2_diffraction_001
   file_name: 1ee2_diffraction_pattern.img
   acquisition_date: '1998-11-23'
-  pixel_size: 0.15
+  pixel_size:
+    numeric_value: 0.15
+    unit: Angstroms

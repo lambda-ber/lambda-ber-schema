@@ -1,30 +1,38 @@
 id: lambdaber:sample001
-title: "HIV-1 capsid protein CA"
-description: "Purified HIV-1 capsid protein for cryo-EM structural analysis"
-sample_code: "HIV1-CA-2024-001"
+title: HIV-1 capsid protein CA
+description: Purified HIV-1 capsid protein for cryo-EM structural analysis
+sample_code: HIV1-CA-2024-001
 sample_type: protein
 molecular_composition:
   sequences:
-    - "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP"
+  - MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP
   modifications:
-    - "N-terminal His6 tag"
+  - N-terminal His6 tag
   ligands: []
-molecular_weight: 25.6
-concentration: 2.5
-concentration_unit: mg_per_ml
+molecular_weight:
+  numeric_value: 25.6
+  unit: kilodaltons
+concentration:
+  numeric_value: 2.5
+  unit: milligrams per milliliter
 buffer_composition:
-  ph: 8.0
+  ph:
+    numeric_value: 8.0
+    unit: pH units
   components:
-    - "50 mM Tris-HCl"
-    - "150 mM NaCl"
-    - "1 mM DTT"
+  - 50 mM Tris-HCl
+  - 150 mM NaCl
+  - 1 mM DTT
   additives:
-    - "5% glycerol"
+  - 5% glycerol
 storage_conditions:
-  temperature: -80
-  temperature_unit: celsius
-  duration: "3 months"
-  atmosphere: "Flash frozen in liquid nitrogen"
-organism: "NCBITaxon:9606"
-purity_percentage: 98.5
-preparation_method: "E. coli expression followed by Ni-NTA and size exclusion chromatography"
+  temperature:
+    numeric_value: -80
+    unit: degrees Celsius
+  duration: 3 months
+  atmosphere: Flash frozen in liquid nitrogen
+organism: NCBITaxon:9606
+purity_percentage:
+  numeric_value: 98.5
+  unit: percent
+preparation_method: E. coli expression followed by Ni-NTA and size exclusion chromatography

@@ -1,161 +1,1179 @@
 
-# Class: SamplePreparation
 
-A process that prepares a sample for imaging
+# Class: SamplePreparation 
+
+
+_A process that prepares a sample for imaging_
+
+
+
+
 
 URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;culture_volume_l:float%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;growth_temperature_c:float%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;induction_temperature_c:float%20%3F;induction_time_h:float%20%3F;od600_at_induction:float%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;cleavage_time_h:float%20%3F;cleavage_temperature_c:float%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;final_concentration_mg_per_ml:float%20%3F;yield_mg:float%20%3F;purity_by_sds_page_percent:float%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[NamedThing]^-[SamplePreparation],[Study],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;expression_system:ExpressionSystemEnum%20%3F;host_strain_or_cell_line:string%20%3F;culture_volume_l:float%20%3F;medium:string%20%3F;antibiotic_selection:string%20%3F;growth_temperature_c:float%20%3F;induction_agent:string%20%3F;inducer_concentration:string%20%3F;induction_temperature_c:float%20%3F;induction_time_h:float%20%3F;od600_at_induction:float%20%3F;harvest_timepoint:string%20%3F;lysis_method:string%20%3F;protease_inhibitors:string%20%3F;purification_steps:PurificationStepEnum%20*;affinity_type:string%20%3F;affinity_column:string%20%3F;lysis_buffer:string%20%3F;wash_buffer:string%20%3F;elution_buffer:string%20%3F;tag_removal:boolean%20%3F;protease:string%20%3F;protease_ratio:string%20%3F;cleavage_time_h:float%20%3F;cleavage_temperature_c:float%20%3F;second_affinity_reverse:string%20%3F;iex_column:string%20%3F;hic_column:string%20%3F;sec_column:string%20%3F;sec_buffer:string%20%3F;concentration_method:string%20%3F;final_buffer:string%20%3F;final_concentration_mg_per_ml:float%20%3F;yield_mg:float%20%3F;purity_by_sds_page_percent:float%20%3F;aggregation_assessment:string%20%3F;aliquoting:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[NamedThing]^-[SamplePreparation],[Study],[NamedThing])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A named thing
-
-## Referenced by Class
-
- *  **None** *[➞sample_preparations](study__sample_preparations.md)*  <sub>0..\*</sub>  **[SamplePreparation](SamplePreparation.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞preparation_type](samplePreparation__preparation_type.md)  <sub>1..1</sub>
-     * Description: Type of sample preparation
-     * Range: [PreparationTypeEnum](PreparationTypeEnum.md)
- * [➞sample_id](samplePreparation__sample_id.md)  <sub>1..1</sub>
-     * Description: Reference to the sample being prepared
-     * Range: [String](types/String.md)
- * [➞preparation_date](samplePreparation__preparation_date.md)  <sub>0..1</sub>
-     * Description: Date of sample preparation
-     * Range: [String](types/String.md)
- * [➞operator_id](samplePreparation__operator_id.md)  <sub>0..1</sub>
-     * Description: Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)
-     * Range: [String](types/String.md)
- * [➞protocol_description](samplePreparation__protocol_description.md)  <sub>0..1</sub>
-     * Description: Detailed protocol description
-     * Range: [String](types/String.md)
- * [➞expression_system](samplePreparation__expression_system.md)  <sub>0..1</sub>
-     * Description: Expression system used for recombinant protein production
-     * Range: [ExpressionSystemEnum](ExpressionSystemEnum.md)
- * [➞host_strain_or_cell_line](samplePreparation__host_strain_or_cell_line.md)  <sub>0..1</sub>
-     * Description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
-     * Range: [String](types/String.md)
- * [➞culture_volume_l](samplePreparation__culture_volume_l.md)  <sub>0..1</sub>
-     * Description: Culture volume in liters
-     * Range: [Float](types/Float.md)
- * [➞medium](samplePreparation__medium.md)  <sub>0..1</sub>
-     * Description: Growth medium used
-     * Range: [String](types/String.md)
- * [➞antibiotic_selection](samplePreparation__antibiotic_selection.md)  <sub>0..1</sub>
-     * Description: Antibiotic or selection agent used
-     * Range: [String](types/String.md)
- * [➞growth_temperature_c](samplePreparation__growth_temperature_c.md)  <sub>0..1</sub>
-     * Description: Growth temperature in Celsius
-     * Range: [Float](types/Float.md)
- * [➞induction_agent](samplePreparation__induction_agent.md)  <sub>0..1</sub>
-     * Description: Agent used to induce expression (e.g., IPTG, tetracycline)
-     * Range: [String](types/String.md)
- * [➞inducer_concentration](samplePreparation__inducer_concentration.md)  <sub>0..1</sub>
-     * Description: Concentration of induction agent
-     * Range: [String](types/String.md)
- * [➞induction_temperature_c](samplePreparation__induction_temperature_c.md)  <sub>0..1</sub>
-     * Description: Temperature during induction in Celsius
-     * Range: [Float](types/Float.md)
- * [➞induction_time_h](samplePreparation__induction_time_h.md)  <sub>0..1</sub>
-     * Description: Duration of induction in hours
-     * Range: [Float](types/Float.md)
- * [➞od600_at_induction](samplePreparation__od600_at_induction.md)  <sub>0..1</sub>
-     * Description: Optical density at 600nm when induction was started
-     * Range: [Float](types/Float.md)
- * [➞harvest_timepoint](samplePreparation__harvest_timepoint.md)  <sub>0..1</sub>
-     * Description: Time point when cells were harvested
-     * Range: [String](types/String.md)
- * [➞lysis_method](samplePreparation__lysis_method.md)  <sub>0..1</sub>
-     * Description: Method used for cell lysis
-     * Range: [String](types/String.md)
- * [➞protease_inhibitors](samplePreparation__protease_inhibitors.md)  <sub>0..1</sub>
-     * Description: Protease inhibitors added
-     * Range: [String](types/String.md)
- * [➞purification_steps](samplePreparation__purification_steps.md)  <sub>0..\*</sub>
-     * Description: Ordered list of purification steps performed
-     * Range: [PurificationStepEnum](PurificationStepEnum.md)
- * [➞affinity_type](samplePreparation__affinity_type.md)  <sub>0..1</sub>
-     * Description: Type of affinity chromatography
-     * Range: [String](types/String.md)
- * [➞affinity_column](samplePreparation__affinity_column.md)  <sub>0..1</sub>
-     * Description: Affinity column specifications
-     * Range: [String](types/String.md)
- * [➞lysis_buffer](samplePreparation__lysis_buffer.md)  <sub>0..1</sub>
-     * Description: Buffer composition for lysis
-     * Range: [String](types/String.md)
- * [➞wash_buffer](samplePreparation__wash_buffer.md)  <sub>0..1</sub>
-     * Description: Buffer composition for washing
-     * Range: [String](types/String.md)
- * [➞elution_buffer](samplePreparation__elution_buffer.md)  <sub>0..1</sub>
-     * Description: Buffer composition for elution
-     * Range: [String](types/String.md)
- * [➞tag_removal](samplePreparation__tag_removal.md)  <sub>0..1</sub>
-     * Description: Whether and how affinity tag was removed
-     * Range: [Boolean](types/Boolean.md)
- * [➞protease](samplePreparation__protease.md)  <sub>0..1</sub>
-     * Description: Protease used for tag cleavage
-     * Range: [String](types/String.md)
- * [➞protease_ratio](samplePreparation__protease_ratio.md)  <sub>0..1</sub>
-     * Description: Ratio of protease to protein
-     * Range: [String](types/String.md)
- * [➞cleavage_time_h](samplePreparation__cleavage_time_h.md)  <sub>0..1</sub>
-     * Description: Duration of protease cleavage in hours
-     * Range: [Float](types/Float.md)
- * [➞cleavage_temperature_c](samplePreparation__cleavage_temperature_c.md)  <sub>0..1</sub>
-     * Description: Temperature during cleavage in Celsius
-     * Range: [Float](types/Float.md)
- * [➞second_affinity_reverse](samplePreparation__second_affinity_reverse.md)  <sub>0..1</sub>
-     * Description: Second affinity or reverse affinity step
-     * Range: [String](types/String.md)
- * [➞iex_column](samplePreparation__iex_column.md)  <sub>0..1</sub>
-     * Description: Ion-exchange column used
-     * Range: [String](types/String.md)
- * [➞hic_column](samplePreparation__hic_column.md)  <sub>0..1</sub>
-     * Description: Hydrophobic interaction column used
-     * Range: [String](types/String.md)
- * [➞sec_column](samplePreparation__sec_column.md)  <sub>0..1</sub>
-     * Description: Size-exclusion column used
-     * Range: [String](types/String.md)
- * [➞sec_buffer](samplePreparation__sec_buffer.md)  <sub>0..1</sub>
-     * Description: Buffer for size-exclusion chromatography
-     * Range: [String](types/String.md)
- * [➞concentration_method](samplePreparation__concentration_method.md)  <sub>0..1</sub>
-     * Description: Method used to concentrate protein
-     * Range: [String](types/String.md)
- * [➞final_buffer](samplePreparation__final_buffer.md)  <sub>0..1</sub>
-     * Description: Final buffer composition after purification
-     * Range: [String](types/String.md)
- * [➞final_concentration_mg_per_ml](samplePreparation__final_concentration_mg_per_ml.md)  <sub>0..1</sub>
-     * Description: Final protein concentration in mg/mL
-     * Range: [Float](types/Float.md)
- * [➞yield_mg](samplePreparation__yield_mg.md)  <sub>0..1</sub>
-     * Description: Total yield in milligrams
-     * Range: [Float](types/Float.md)
- * [➞purity_by_sds_page_percent](samplePreparation__purity_by_sds_page_percent.md)  <sub>0..1</sub>
-     * Description: Purity percentage by SDS-PAGE
-     * Range: [Float](types/Float.md)
- * [➞aggregation_assessment](samplePreparation__aggregation_assessment.md)  <sub>0..1</sub>
-     * Description: Assessment of protein aggregation state
-     * Range: [String](types/String.md)
- * [➞aliquoting](samplePreparation__aliquoting.md)  <sub>0..1</sub>
-     * Description: How the protein was aliquoted for storage
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class SamplePreparation
+    click SamplePreparation href "../SamplePreparation/"
+      NamedThing <|-- SamplePreparation
+        click NamedThing href "../NamedThing/"
+      
+      SamplePreparation : affinity_column
+        
+      SamplePreparation : affinity_type
+        
+      SamplePreparation : aggregation_assessment
+        
+      SamplePreparation : aliquoting
+        
+      SamplePreparation : antibiotic_selection
+        
+      SamplePreparation : cleavage_temperature_c
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : cleavage_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from NamedThing:
+        
+      SamplePreparation : cleavage_time_h
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : cleavage_time_h
+        click QuantityValue href "../QuantityValue/"
+    
 
- * [➞id](namedThing__id.md)  <sub>1..1</sub>
-     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞title](namedThing__title.md)  <sub>0..1</sub>
-     * Description: A human-readable name or title for this entity
-     * Range: [String](types/String.md)
- * [➞description](namedThing__description.md)  <sub>0..1</sub>
-     * Description: A detailed textual description of this entity
-     * Range: [String](types/String.md)
+        
+      SamplePreparation : concentration_method
+        
+      SamplePreparation : culture_volume_l
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : culture_volume_l
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : description
+        
+      SamplePreparation : elution_buffer
+        
+      SamplePreparation : expression_system
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" ExpressionSystemEnum : expression_system
+        click ExpressionSystemEnum href "../ExpressionSystemEnum/"
+    
+
+        
+      SamplePreparation : final_buffer
+        
+      SamplePreparation : final_concentration_mg_per_ml
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : final_concentration_mg_per_ml
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : growth_temperature_c
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : growth_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : harvest_timepoint
+        
+      SamplePreparation : hic_column
+        
+      SamplePreparation : host_strain_or_cell_line
+        
+      SamplePreparation : id
+        
+      SamplePreparation : iex_column
+        
+      SamplePreparation : inducer_concentration
+        
+      SamplePreparation : induction_agent
+        
+      SamplePreparation : induction_temperature_c
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : induction_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : induction_time_h
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : induction_time_h
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : lysis_buffer
+        
+      SamplePreparation : lysis_method
+        
+      SamplePreparation : medium
+        
+      SamplePreparation : od600_at_induction
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : od600_at_induction
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : operator_id
+        
+      SamplePreparation : preparation_date
+        
+      SamplePreparation : preparation_type
+        
+          
+    
+        
+        
+        SamplePreparation --> "1" PreparationTypeEnum : preparation_type
+        click PreparationTypeEnum href "../PreparationTypeEnum/"
+    
+
+        
+      SamplePreparation : protease
+        
+      SamplePreparation : protease_inhibitors
+        
+      SamplePreparation : protease_ratio
+        
+      SamplePreparation : protocol_description
+        
+      SamplePreparation : purification_steps
+        
+          
+    
+        
+        
+        SamplePreparation --> "*" PurificationStepEnum : purification_steps
+        click PurificationStepEnum href "../PurificationStepEnum/"
+    
+
+        
+      SamplePreparation : purity_by_sds_page_percent
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : purity_by_sds_page_percent
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      SamplePreparation : sample_id
+        
+      SamplePreparation : sec_buffer
+        
+      SamplePreparation : sec_column
+        
+      SamplePreparation : second_affinity_reverse
+        
+      SamplePreparation : tag_removal
+        
+      SamplePreparation : title
+        
+      SamplePreparation : wash_buffer
+        
+      SamplePreparation : yield_mg
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : yield_mg
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [NamedThing](NamedThing.md)
+    * **SamplePreparation**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [preparation_type](preparation_type.md) | 1 <br/> [PreparationTypeEnum](PreparationTypeEnum.md) | Type of sample preparation | direct |
+| [sample_id](sample_id.md) | 1 <br/> [String](String.md) | Reference to the sample being prepared | direct |
+| [preparation_date](preparation_date.md) | 0..1 <br/> [String](String.md) | Date of sample preparation | direct |
+| [operator_id](operator_id.md) | 0..1 <br/> [String](String.md) | Identifier or name of the person who performed the sample preparation (e | direct |
+| [protocol_description](protocol_description.md) | 0..1 <br/> [String](String.md) | Detailed protocol description | direct |
+| [expression_system](expression_system.md) | 0..1 <br/> [ExpressionSystemEnum](ExpressionSystemEnum.md) | Expression system used for recombinant protein production | direct |
+| [host_strain_or_cell_line](host_strain_or_cell_line.md) | 0..1 <br/> [String](String.md) | Specific strain or cell line used (e | direct |
+| [culture_volume_l](culture_volume_l.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Culture volume, typically specified in liters (L) | direct |
+| [medium](medium.md) | 0..1 <br/> [String](String.md) | Growth medium used | direct |
+| [antibiotic_selection](antibiotic_selection.md) | 0..1 <br/> [String](String.md) | Antibiotic or selection agent used | direct |
+| [growth_temperature_c](growth_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Growth temperature, typically specified in degrees Celsius | direct |
+| [induction_agent](induction_agent.md) | 0..1 <br/> [String](String.md) | Agent used to induce expression (e | direct |
+| [inducer_concentration](inducer_concentration.md) | 0..1 <br/> [String](String.md) | Concentration of induction agent | direct |
+| [induction_temperature_c](induction_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Temperature during induction, typically specified in degrees Celsius | direct |
+| [induction_time_h](induction_time_h.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Duration of induction, typically specified in hours | direct |
+| [od600_at_induction](od600_at_induction.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Optical density at 600nm when induction was started | direct |
+| [harvest_timepoint](harvest_timepoint.md) | 0..1 <br/> [String](String.md) | Time point when cells were harvested | direct |
+| [lysis_method](lysis_method.md) | 0..1 <br/> [String](String.md) | Method used for cell lysis | direct |
+| [protease_inhibitors](protease_inhibitors.md) | 0..1 <br/> [String](String.md) | Protease inhibitors added | direct |
+| [purification_steps](purification_steps.md) | * <br/> [PurificationStepEnum](PurificationStepEnum.md) | Ordered list of purification steps performed | direct |
+| [affinity_type](affinity_type.md) | 0..1 <br/> [String](String.md) | Type of affinity chromatography | direct |
+| [affinity_column](affinity_column.md) | 0..1 <br/> [String](String.md) | Affinity column specifications | direct |
+| [lysis_buffer](lysis_buffer.md) | 0..1 <br/> [String](String.md) | Buffer composition for lysis | direct |
+| [wash_buffer](wash_buffer.md) | 0..1 <br/> [String](String.md) | Buffer composition for washing | direct |
+| [elution_buffer](elution_buffer.md) | 0..1 <br/> [String](String.md) | Buffer composition for elution | direct |
+| [tag_removal](tag_removal.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether and how affinity tag was removed | direct |
+| [protease](protease.md) | 0..1 <br/> [String](String.md) | Protease used for tag cleavage | direct |
+| [protease_ratio](protease_ratio.md) | 0..1 <br/> [String](String.md) | Ratio of protease to protein | direct |
+| [cleavage_time_h](cleavage_time_h.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Duration of protease cleavage in hours | direct |
+| [cleavage_temperature_c](cleavage_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Temperature during cleavage in Celsius | direct |
+| [second_affinity_reverse](second_affinity_reverse.md) | 0..1 <br/> [String](String.md) | Second affinity or reverse affinity step | direct |
+| [iex_column](iex_column.md) | 0..1 <br/> [String](String.md) | Ion-exchange column used | direct |
+| [hic_column](hic_column.md) | 0..1 <br/> [String](String.md) | Hydrophobic interaction column used | direct |
+| [sec_column](sec_column.md) | 0..1 <br/> [String](String.md) | Size-exclusion column used | direct |
+| [sec_buffer](sec_buffer.md) | 0..1 <br/> [String](String.md) | Buffer for size-exclusion chromatography | direct |
+| [concentration_method](concentration_method.md) | 0..1 <br/> [String](String.md) | Method used to concentrate protein | direct |
+| [final_buffer](final_buffer.md) | 0..1 <br/> [String](String.md) | Final buffer composition after purification | direct |
+| [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Final protein concentration in mg/mL | direct |
+| [yield_mg](yield_mg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total yield in milligrams | direct |
+| [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Purity percentage by SDS-PAGE | direct |
+| [aggregation_assessment](aggregation_assessment.md) | 0..1 <br/> [String](String.md) | Assessment of protein aggregation state | direct |
+| [aliquoting](aliquoting.md) | 0..1 <br/> [String](String.md) | How the protein was aliquoted for storage | direct |
+| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Study](Study.md) | [sample_preparations](sample_preparations.md) | range | [SamplePreparation](SamplePreparation.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:SamplePreparation |
+| native | lambdaber:SamplePreparation |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: SamplePreparation
+description: A process that prepares a sample for imaging
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  preparation_type:
+    name: preparation_type
+    description: Type of sample preparation
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: PreparationTypeEnum
+    required: true
+  sample_id:
+    name: sample_id
+    description: Reference to the sample being prepared
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    - ExperimentRun
+    range: string
+    required: true
+  preparation_date:
+    name: preparation_date
+    description: Date of sample preparation
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  operator_id:
+    name: operator_id
+    description: Identifier or name of the person who performed the sample preparation
+      (e.g., 'jsmith', 'John Smith', or personnel ID)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    - ExperimentRun
+    range: string
+  protocol_description:
+    name: protocol_description
+    description: Detailed protocol description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  expression_system:
+    name: expression_system
+    description: Expression system used for recombinant protein production
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: ExpressionSystemEnum
+  host_strain_or_cell_line:
+    name: host_strain_or_cell_line
+    description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  culture_volume_l:
+    name: culture_volume_l
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  medium:
+    name: medium
+    description: Growth medium used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  antibiotic_selection:
+    name: antibiotic_selection
+    description: Antibiotic or selection agent used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  growth_temperature_c:
+    name: growth_temperature_c
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  induction_agent:
+    name: induction_agent
+    description: Agent used to induce expression (e.g., IPTG, tetracycline)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  inducer_concentration:
+    name: inducer_concentration
+    description: Concentration of induction agent
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  induction_temperature_c:
+    name: induction_temperature_c
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  induction_time_h:
+    name: induction_time_h
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  od600_at_induction:
+    name: od600_at_induction
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  harvest_timepoint:
+    name: harvest_timepoint
+    description: Time point when cells were harvested
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  lysis_method:
+    name: lysis_method
+    description: Method used for cell lysis
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  protease_inhibitors:
+    name: protease_inhibitors
+    description: Protease inhibitors added
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  purification_steps:
+    name: purification_steps
+    description: Ordered list of purification steps performed
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: PurificationStepEnum
+    multivalued: true
+  affinity_type:
+    name: affinity_type
+    description: Type of affinity chromatography
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  affinity_column:
+    name: affinity_column
+    description: Affinity column specifications
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  lysis_buffer:
+    name: lysis_buffer
+    description: Buffer composition for lysis
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  wash_buffer:
+    name: wash_buffer
+    description: Buffer composition for washing
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  elution_buffer:
+    name: elution_buffer
+    description: Buffer composition for elution
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  tag_removal:
+    name: tag_removal
+    description: Whether and how affinity tag was removed
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: boolean
+  protease:
+    name: protease
+    description: Protease used for tag cleavage
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  protease_ratio:
+    name: protease_ratio
+    description: Ratio of protease to protein
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  cleavage_time_h:
+    name: cleavage_time_h
+    description: Duration of protease cleavage in hours
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  cleavage_temperature_c:
+    name: cleavage_temperature_c
+    description: Temperature during cleavage in Celsius
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  second_affinity_reverse:
+    name: second_affinity_reverse
+    description: Second affinity or reverse affinity step
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  iex_column:
+    name: iex_column
+    description: Ion-exchange column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  hic_column:
+    name: hic_column
+    description: Hydrophobic interaction column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  sec_column:
+    name: sec_column
+    description: Size-exclusion column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  sec_buffer:
+    name: sec_buffer
+    description: Buffer for size-exclusion chromatography
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  concentration_method:
+    name: concentration_method
+    description: Method used to concentrate protein
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  final_buffer:
+    name: final_buffer
+    description: Final buffer composition after purification
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  final_concentration_mg_per_ml:
+    name: final_concentration_mg_per_ml
+    description: Final protein concentration in mg/mL
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  yield_mg:
+    name: yield_mg
+    description: Total yield in milligrams
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  purity_by_sds_page_percent:
+    name: purity_by_sds_page_percent
+    description: Purity percentage by SDS-PAGE
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  aggregation_assessment:
+    name: aggregation_assessment
+    description: Assessment of protein aggregation state
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+  aliquoting:
+    name: aliquoting
+    description: How the protein was aliquoted for storage
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - SamplePreparation
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: SamplePreparation
+description: A process that prepares a sample for imaging
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  preparation_type:
+    name: preparation_type
+    description: Type of sample preparation
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: preparation_type
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: PreparationTypeEnum
+    required: true
+  sample_id:
+    name: sample_id
+    description: Reference to the sample being prepared
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sample_id
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    - ExperimentRun
+    range: string
+    required: true
+  preparation_date:
+    name: preparation_date
+    description: Date of sample preparation
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: preparation_date
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  operator_id:
+    name: operator_id
+    description: Identifier or name of the person who performed the sample preparation
+      (e.g., 'jsmith', 'John Smith', or personnel ID)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: operator_id
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    - ExperimentRun
+    range: string
+  protocol_description:
+    name: protocol_description
+    description: Detailed protocol description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protocol_description
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used for recombinant protein production
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: expression_system
+    owner: SamplePreparation
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: ExpressionSystemEnum
+  host_strain_or_cell_line:
+    name: host_strain_or_cell_line
+    description: Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: host_strain_or_cell_line
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  culture_volume_l:
+    name: culture_volume_l
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: culture_volume_l
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  medium:
+    name: medium
+    description: Growth medium used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: medium
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  antibiotic_selection:
+    name: antibiotic_selection
+    description: Antibiotic or selection agent used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: antibiotic_selection
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  growth_temperature_c:
+    name: growth_temperature_c
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: growth_temperature_c
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  induction_agent:
+    name: induction_agent
+    description: Agent used to induce expression (e.g., IPTG, tetracycline)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: induction_agent
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  inducer_concentration:
+    name: inducer_concentration
+    description: Concentration of induction agent
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: inducer_concentration
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  induction_temperature_c:
+    name: induction_temperature_c
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: induction_temperature_c
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  induction_time_h:
+    name: induction_time_h
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: induction_time_h
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  od600_at_induction:
+    name: od600_at_induction
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: od600_at_induction
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  harvest_timepoint:
+    name: harvest_timepoint
+    description: Time point when cells were harvested
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: harvest_timepoint
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  lysis_method:
+    name: lysis_method
+    description: Method used for cell lysis
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: lysis_method
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  protease_inhibitors:
+    name: protease_inhibitors
+    description: Protease inhibitors added
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protease_inhibitors
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  purification_steps:
+    name: purification_steps
+    description: Ordered list of purification steps performed
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: purification_steps
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: PurificationStepEnum
+    multivalued: true
+  affinity_type:
+    name: affinity_type
+    description: Type of affinity chromatography
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: affinity_type
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  affinity_column:
+    name: affinity_column
+    description: Affinity column specifications
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: affinity_column
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  lysis_buffer:
+    name: lysis_buffer
+    description: Buffer composition for lysis
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: lysis_buffer
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  wash_buffer:
+    name: wash_buffer
+    description: Buffer composition for washing
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: wash_buffer
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  elution_buffer:
+    name: elution_buffer
+    description: Buffer composition for elution
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: elution_buffer
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  tag_removal:
+    name: tag_removal
+    description: Whether and how affinity tag was removed
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: tag_removal
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: boolean
+  protease:
+    name: protease
+    description: Protease used for tag cleavage
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protease
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  protease_ratio:
+    name: protease_ratio
+    description: Ratio of protease to protein
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protease_ratio
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  cleavage_time_h:
+    name: cleavage_time_h
+    description: Duration of protease cleavage in hours
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cleavage_time_h
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  cleavage_temperature_c:
+    name: cleavage_temperature_c
+    description: Temperature during cleavage in Celsius
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cleavage_temperature_c
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  second_affinity_reverse:
+    name: second_affinity_reverse
+    description: Second affinity or reverse affinity step
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: second_affinity_reverse
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  iex_column:
+    name: iex_column
+    description: Ion-exchange column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: iex_column
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  hic_column:
+    name: hic_column
+    description: Hydrophobic interaction column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: hic_column
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  sec_column:
+    name: sec_column
+    description: Size-exclusion column used
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sec_column
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  sec_buffer:
+    name: sec_buffer
+    description: Buffer for size-exclusion chromatography
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sec_buffer
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  concentration_method:
+    name: concentration_method
+    description: Method used to concentrate protein
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: concentration_method
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  final_buffer:
+    name: final_buffer
+    description: Final buffer composition after purification
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: final_buffer
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  final_concentration_mg_per_ml:
+    name: final_concentration_mg_per_ml
+    description: Final protein concentration in mg/mL
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: final_concentration_mg_per_ml
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  yield_mg:
+    name: yield_mg
+    description: Total yield in milligrams
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: yield_mg
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  purity_by_sds_page_percent:
+    name: purity_by_sds_page_percent
+    description: Purity percentage by SDS-PAGE
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: purity_by_sds_page_percent
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: QuantityValue
+    inlined: true
+  aggregation_assessment:
+    name: aggregation_assessment
+    description: Assessment of protein aggregation state
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: aggregation_assessment
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  aliquoting:
+    name: aliquoting
+    description: How the protein was aliquoted for storage
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: aliquoting
+    owner: SamplePreparation
+    domain_of:
+    - SamplePreparation
+    range: string
+  id:
+    name: id
+    description: Globally unique identifier as an IRI or CURIE for machine processing
+      and external references. Used for linking data across systems and semantic web
+      integration.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: SamplePreparation
+    domain_of:
+    - NamedThing
+    - Attribute
+    range: uriorcurie
+    required: true
+  title:
+    name: title
+    description: A human-readable name or title for this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: SamplePreparation
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    description: A detailed textual description of this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: description
+    owner: SamplePreparation
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

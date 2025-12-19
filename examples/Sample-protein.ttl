@@ -2,6 +2,7 @@
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:sample001 a lambdaber:Sample ;
@@ -11,22 +12,30 @@ lambdaber:sample001 a lambdaber:Sample ;
             lambdaber:components "1 mM DTT",
                 "150 mM NaCl",
                 "50 mM Tris-HCl" ;
-            lambdaber:ph "8.0"^^xsd:float ] ;
-    lambdaber:concentration "2.5"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:description "Purified HIV-1 capsid protein for cryo-EM structural analysis" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:modifications "N-terminal His6 tag" ;
             lambdaber:sequences "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP" ] ;
-    lambdaber:molecular_weight "25.6"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "25.6"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:organism NCBITaxon:9606 ;
     lambdaber:preparation_method "E. coli expression followed by Ni-NTA and size exclusion chromatography" ;
-    lambdaber:purity_percentage "98.5"^^xsd:float ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "98.5"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
     lambdaber:sample_code "HIV1-CA-2024-001" ;
     lambdaber:sample_type "protein" ;
     lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
             lambdaber:atmosphere "Flash frozen in liquid nitrogen" ;
             lambdaber:duration "3 months" ;
-            lambdaber:temperature "-80.0"^^xsd:float ;
-            lambdaber:temperature_unit "celsius" ] .
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "-80.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] .
 

@@ -2,32 +2,55 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:exp_cryoet_mito_001 a lambdaber:ExperimentRun ;
     dcterms:title "Mitochondrial cryo-electron tomography" ;
     lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
             lambdaber:collection_mode "continuous" ;
-            lambdaber:dose_per_frame "2.0"^^xsd:float ;
-            lambdaber:frame_rate "0.5"^^xsd:float ;
-            lambdaber:total_dose "120.0"^^xsd:float ;
-            lambdaber:total_frames 61 ] ;
+            lambdaber:dose_per_frame [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.0"^^xsd:float ;
+                    lambdaber:unit "electrons per Angstrom squared" ] ;
+            lambdaber:frame_rate [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.5"^^xsd:float ;
+                    lambdaber:unit "frames per second" ] ;
+            lambdaber:total_dose [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "120.0"^^xsd:float ;
+                    lambdaber:unit "electrons per Angstrom squared" ] ;
+            lambdaber:total_frames [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "61.0"^^xsd:float ;
+                    lambdaber:unit "frames" ] ] ;
     lambdaber:description "Cryo-ET tilt series of isolated mitochondria" ;
     lambdaber:experiment_code "EXP-CRYOET-MITO-2024-001" ;
     lambdaber:experiment_date "2024-05-01T11:00:00" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
             lambdaber:atmosphere "High vacuum" ;
-            lambdaber:humidity "0.0"^^xsd:float ;
-            lambdaber:pressure "1e-06"^^xsd:float ;
-            lambdaber:temperature "-180.0"^^xsd:float ] ;
+            lambdaber:humidity [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:pressure [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1e-06"^^xsd:float ;
+                    lambdaber:unit "kilopascals" ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "-180.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
     lambdaber:instrument_id lambdaber:instrument_titan_krios_002 ;
     lambdaber:operator_id "cryoet_specialist_003" ;
     lambdaber:processing_status "processing" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:completeness "95.0"^^xsd:float ;
-            lambdaber:r_factor "0.0"^^xsd:float ;
-            lambdaber:resolution "8.5"^^xsd:float ;
-            lambdaber:signal_to_noise "2.1"^^xsd:float ] ;
+            lambdaber:completeness [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "95.0"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:r_factor [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "R-factor" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.1"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/cryoet/mitochondria/" ;
     lambdaber:sample_id "lambdaber:sample_mitochondria_001" ;
     lambdaber:technique CHMO:0002413 .

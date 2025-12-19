@@ -3,16 +3,34 @@ title: Brightfield microscopy of tissue section
 description: High-resolution brightfield image of stained tissue cross-section
 file_name: tissue_section_h&e_10x.tif
 acquisition_date: '2024-05-18T11:45:00'
-pixel_size: 0.65
-dimensions_x: 4096
-dimensions_y: 3072
-exposure_time: 0.05
-dose: 0.0
-defocus: 0.0
-astigmatism: 0.0
+pixel_size:
+  numeric_value: 0.65
+  unit: Angstroms
+dimensions_x:
+  numeric_value: 4096.0
+  unit: pixels
+dimensions_y:
+  numeric_value: 3072.0
+  unit: pixels
+exposure_time:
+  numeric_value: 0.05
+  unit: seconds
+dose:
+  numeric_value: 0.0
+  unit: electrons per Angstrom squared
+defocus:
+  numeric_value: 0.0
+  unit: micrometers
+astigmatism:
+  numeric_value: 0.0
+  unit: Angstroms
 illumination_type: brightfield
-magnification: 10.0
-numerical_aperture: 0.25
+magnification:
+  numeric_value: 10.0
+  unit: times
+numerical_aperture:
+  numeric_value: 0.25
+  unit: dimensionless
 color_channels:
 - Red
 - Green

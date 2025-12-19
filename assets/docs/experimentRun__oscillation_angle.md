@@ -1,14 +1,14 @@
 
 # Slot: oscillation_angle
 
-Oscillation angle per image
+Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:experimentRun__oscillation_angle](https://w3id.org/lambda-ber-schema/experimentRun__oscillation_angle)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

@@ -1,66 +1,403 @@
 
-# Class: DataFile
 
-A data file generated or used in the study
+# Class: DataFile 
+
+
+_A data file generated or used in the study_
+
+
+
+
 
 URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Study]++-%20data_files%200..*>[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;file_size_bytes:integer%20%3F;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Study]++-%20data_files%200..*>[DataFile&#124;file_name:string;file_path:string%20%3F;file_format:FileFormatEnum;file_size_bytes:integer%20%3F;checksum:string%20%3F;creation_date:string%20%3F;data_type:DataTypeEnum%20%3F;storage_uri:string%20%3F;related_entity:string%20%3F;file_role:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[WorkflowRun]-%20output_files%200..*>[DataFile],[NamedThing]^-[DataFile],[WorkflowRun],[Study])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A named thing
-
-## Referenced by Class
-
- *  **None** *[➞data_files](study__data_files.md)*  <sub>0..\*</sub>  **[DataFile](DataFile.md)**
- *  **None** *[➞output_files](workflowRun__output_files.md)*  <sub>0..\*</sub>  **[DataFile](DataFile.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞file_name](dataFile__file_name.md)  <sub>1..1</sub>
-     * Description: Name of the file
-     * Range: [String](types/String.md)
- * [➞file_path](dataFile__file_path.md)  <sub>0..1</sub>
-     * Description: Path to the file
-     * Range: [String](types/String.md)
- * [➞file_format](dataFile__file_format.md)  <sub>1..1</sub>
-     * Description: File format
-     * Range: [FileFormatEnum](FileFormatEnum.md)
- * [➞file_size_bytes](dataFile__file_size_bytes.md)  <sub>0..1</sub>
-     * Description: File size in bytes
-     * Range: [Integer](types/Integer.md)
- * [➞checksum](dataFile__checksum.md)  <sub>0..1</sub>
-     * Description: SHA-256 checksum for data integrity
-     * Range: [String](types/String.md)
- * [➞creation_date](dataFile__creation_date.md)  <sub>0..1</sub>
-     * Description: File creation date
-     * Range: [String](types/String.md)
- * [➞data_type](dataFile__data_type.md)  <sub>0..1</sub>
-     * Description: Type of data in the file
-     * Range: [DataTypeEnum](DataTypeEnum.md)
- * [➞storage_uri](dataFile__storage_uri.md)  <sub>0..1</sub>
-     * Description: Storage URI (S3, Globus, etc.)
-     * Range: [String](types/String.md)
- * [➞related_entity](dataFile__related_entity.md)  <sub>0..1</sub>
-     * Description: ID of the entity that owns this file
-     * Range: [String](types/String.md)
- * [➞file_role](dataFile__file_role.md)  <sub>0..1</sub>
-     * Description: Role of the file (raw, intermediate, final, diagnostic, metadata)
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class DataFile
+    click DataFile href "../DataFile/"
+      NamedThing <|-- DataFile
+        click NamedThing href "../NamedThing/"
+      
+      DataFile : checksum
+        
+      DataFile : creation_date
+        
+      DataFile : data_type
+        
+          
+    
+        
+        
+        DataFile --> "0..1" DataTypeEnum : data_type
+        click DataTypeEnum href "../DataTypeEnum/"
+    
 
-### Inherited from NamedThing:
+        
+      DataFile : description
+        
+      DataFile : file_format
+        
+          
+    
+        
+        
+        DataFile --> "1" FileFormatEnum : file_format
+        click FileFormatEnum href "../FileFormatEnum/"
+    
 
- * [➞id](namedThing__id.md)  <sub>1..1</sub>
-     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞title](namedThing__title.md)  <sub>0..1</sub>
-     * Description: A human-readable name or title for this entity
-     * Range: [String](types/String.md)
- * [➞description](namedThing__description.md)  <sub>0..1</sub>
-     * Description: A detailed textual description of this entity
-     * Range: [String](types/String.md)
+        
+      DataFile : file_name
+        
+      DataFile : file_path
+        
+      DataFile : file_role
+        
+      DataFile : file_size_bytes
+        
+          
+    
+        
+        
+        DataFile --> "0..1" QuantityValue : file_size_bytes
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      DataFile : id
+        
+      DataFile : related_entity
+        
+      DataFile : storage_uri
+        
+      DataFile : title
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [NamedThing](NamedThing.md)
+    * **DataFile**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [file_name](file_name.md) | 1 <br/> [String](String.md) | Name of the file | direct |
+| [file_path](file_path.md) | 0..1 <br/> [String](String.md) | Path to the file | direct |
+| [file_format](file_format.md) | 1 <br/> [FileFormatEnum](FileFormatEnum.md) | File format | direct |
+| [file_size_bytes](file_size_bytes.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | File size in bytes | direct |
+| [checksum](checksum.md) | 0..1 <br/> [String](String.md) | SHA-256 checksum for data integrity | direct |
+| [creation_date](creation_date.md) | 0..1 <br/> [String](String.md) | File creation date | direct |
+| [data_type](data_type.md) | 0..1 <br/> [DataTypeEnum](DataTypeEnum.md) | Type of data in the file | direct |
+| [storage_uri](storage_uri.md) | 0..1 <br/> [String](String.md) | Storage URI (S3, Globus, etc | direct |
+| [related_entity](related_entity.md) | 0..1 <br/> [String](String.md) | ID of the entity that owns this file | direct |
+| [file_role](file_role.md) | 0..1 <br/> [String](String.md) | Role of the file (raw, intermediate, final, diagnostic, metadata) | direct |
+| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Study](Study.md) | [data_files](data_files.md) | range | [DataFile](DataFile.md) |
+| [WorkflowRun](WorkflowRun.md) | [output_files](output_files.md) | range | [DataFile](DataFile.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:DataFile |
+| native | lambdaber:DataFile |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: DataFile
+description: A data file generated or used in the study
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  file_name:
+    name: file_name
+    description: Name of the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    - Image
+    required: true
+  file_path:
+    name: file_path
+    description: Path to the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+  file_format:
+    name: file_format
+    description: File format
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: FileFormatEnum
+    required: true
+  file_size_bytes:
+    name: file_size_bytes
+    description: File size in bytes
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: QuantityValue
+    inlined: true
+  checksum:
+    name: checksum
+    description: SHA-256 checksum for data integrity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+  creation_date:
+    name: creation_date
+    description: File creation date
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+  data_type:
+    name: data_type
+    description: Type of data in the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: DataTypeEnum
+  storage_uri:
+    name: storage_uri
+    description: Storage URI (S3, Globus, etc.)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+  related_entity:
+    name: related_entity
+    description: ID of the entity that owns this file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+  file_role:
+    name: file_role
+    description: Role of the file (raw, intermediate, final, diagnostic, metadata)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - DataFile
+    range: string
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: DataFile
+description: A data file generated or used in the study
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  file_name:
+    name: file_name
+    description: Name of the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_name
+    owner: DataFile
+    domain_of:
+    - DataFile
+    - Image
+    range: string
+    required: true
+  file_path:
+    name: file_path
+    description: Path to the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_path
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  file_format:
+    name: file_format
+    description: File format
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_format
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: FileFormatEnum
+    required: true
+  file_size_bytes:
+    name: file_size_bytes
+    description: File size in bytes
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_size_bytes
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: QuantityValue
+    inlined: true
+  checksum:
+    name: checksum
+    description: SHA-256 checksum for data integrity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: checksum
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  creation_date:
+    name: creation_date
+    description: File creation date
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: creation_date
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  data_type:
+    name: data_type
+    description: Type of data in the file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: data_type
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: DataTypeEnum
+  storage_uri:
+    name: storage_uri
+    description: Storage URI (S3, Globus, etc.)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: storage_uri
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  related_entity:
+    name: related_entity
+    description: ID of the entity that owns this file
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: related_entity
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  file_role:
+    name: file_role
+    description: Role of the file (raw, intermediate, final, diagnostic, metadata)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: file_role
+    owner: DataFile
+    domain_of:
+    - DataFile
+    range: string
+  id:
+    name: id
+    description: Globally unique identifier as an IRI or CURIE for machine processing
+      and external references. Used for linking data across systems and semantic web
+      integration.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: DataFile
+    domain_of:
+    - NamedThing
+    - Attribute
+    range: uriorcurie
+    required: true
+  title:
+    name: title
+    description: A human-readable name or title for this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: DataFile
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    description: A detailed textual description of this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: description
+    owner: DataFile
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

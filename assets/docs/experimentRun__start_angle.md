@@ -1,14 +1,14 @@
 
 # Slot: start_angle
 
-Starting rotation angle
+Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:experimentRun__start_angle](https://w3id.org/lambda-ber-schema/experimentRun__start_angle)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

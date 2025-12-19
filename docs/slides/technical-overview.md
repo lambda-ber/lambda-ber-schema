@@ -92,7 +92,7 @@ Metamodel concepts: `classes`, `slots`, `types`, `enums`
 
 ## lambda-ber-schema Architecture
 
-Located at: `src/lambda_ber_schema/schema/lambda-ber-schema.yaml`
+Located at: `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`
 
 ```yaml
 id: https://w3id.org/lambda-ber/lambda-ber-schema
@@ -258,7 +258,7 @@ Core compilation command:
 ```bash
 uv run gen-project \
   --config-file config.yaml \
-  src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   -d assets
 ```
 
@@ -358,7 +358,7 @@ Generated JSON Schema can validate data:
 ```bash
 # Using linkml-validate
 uv run linkml-validate \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   tests/data/valid/Sample-protein.yaml
 
 # Or using JSON Schema directly
@@ -408,7 +408,7 @@ lambda-ber-schema/
 ## Source Schema Location
 
 **Primary source of truth**:
-`src/lambda_ber_schema/schema/lambda-ber-schema.yaml`
+`src/lambda_ber_schema/schema/lambda_ber_schema.yaml`
 
 All other files are generated from this schema.
 
@@ -500,7 +500,7 @@ Requires: Python 3.9+, uv, just (optional but recommended)
 
 ## The Development Cycle
 
-1. **Edit schema**: Modify `src/lambda_ber_schema/schema/lambda-ber-schema.yaml`
+1. **Edit schema**: Modify `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`
 2. **Generate artifacts**: Run `just gen-project`
 3. **Create/update examples**: Add test data to `tests/data/valid/`
 4. **Validate**: Run `just test-examples`
@@ -765,7 +765,7 @@ Validate the schema against LinkML metamodel:
 
 ```bash
 uv run linkml-lint \
-  src/lambda_ber_schema/schema/lambda-ber-schema.yaml
+  src/lambda_ber_schema/schema/lambda_ber_schema.yaml
 ```
 
 Checks for:
@@ -783,7 +783,7 @@ Checks for:
 ```bash
 uv run linkml-run-examples \
   -t yaml -t json -t ttl \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   -e tests/data/valid \
   -d examples
 ```
@@ -801,7 +801,7 @@ Validate individual files:
 
 ```bash
 uv run linkml-validate \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   tests/data/valid/Sample-protein.yaml
 ```
 

@@ -45,11 +45,19 @@
               "DNA promoter sequence"
             ]
           },
-          "molecular_weight": 1200.0,
-          "concentration": 0.8,
-          "concentration_unit": "mg_per_ml",
+          "molecular_weight": {
+            "numeric_value": 1200.0,
+            "unit": "kilodaltons"
+          },
+          "concentration": {
+            "numeric_value": 0.8,
+            "unit": "milligrams per milliliter"
+          },
           "buffer_composition": {
-            "ph": 7.9,
+            "ph": {
+              "numeric_value": 7.9,
+              "unit": "pH units"
+            },
             "components": [
               "20 mM HEPES",
               "150 mM KCl",
@@ -63,13 +71,18 @@
           },
           "preparation_method": "Nuclear extract followed by immunoaffinity purification and glycerol gradient",
           "storage_conditions": {
-            "temperature": -80.0,
-            "temperature_unit": "celsius",
+            "temperature": {
+              "numeric_value": -80.0,
+              "unit": "degrees Celsius"
+            },
             "duration": "6 months",
             "atmosphere": "Flash frozen in liquid nitrogen"
           },
           "organism": "NCBITaxon:9606",
-          "purity_percentage": 95.0
+          "purity_percentage": {
+            "numeric_value": 95.0,
+            "unit": "percent"
+          }
         },
         {
           "id": "lambdaber:sample_tfiid_dna_002",
@@ -88,11 +101,19 @@
               "TFIID complex"
             ]
           },
-          "molecular_weight": 1250.0,
-          "concentration": 0.5,
-          "concentration_unit": "mg_per_ml",
+          "molecular_weight": {
+            "numeric_value": 1250.0,
+            "unit": "kilodaltons"
+          },
+          "concentration": {
+            "numeric_value": 0.5,
+            "unit": "milligrams per milliliter"
+          },
           "buffer_composition": {
-            "ph": 7.9,
+            "ph": {
+              "numeric_value": 7.9,
+              "unit": "pH units"
+            },
             "components": [
               "20 mM HEPES",
               "100 mM KCl",
@@ -104,7 +125,10 @@
           },
           "organism": "NCBITaxon:9606",
           "parent_sample_id": "lambdaber:sample_tfiid_001",
-          "purity_percentage": 92.0
+          "purity_percentage": {
+            "numeric_value": 92.0,
+            "unit": "percent"
+          }
         }
       ],
       "sample_preparations": [
@@ -141,22 +165,52 @@
           "experiment_date": "2024-03-20T10:00:00",
           "operator_id": "nogales_lab_member_002",
           "experimental_conditions": {
-            "temperature": -180.0,
-            "humidity": 0.0,
-            "pressure": 1e-06,
+            "temperature": {
+              "numeric_value": -180.0,
+              "unit": "degrees Celsius"
+            },
+            "humidity": {
+              "numeric_value": 0.0,
+              "unit": "percent"
+            },
+            "pressure": {
+              "numeric_value": 1e-06,
+              "unit": "kilopascals"
+            },
             "atmosphere": "High vacuum"
           },
           "data_collection_strategy": {
             "collection_mode": "counting",
-            "total_frames": 8500,
-            "frame_rate": 40.0,
-            "total_dose": 40.0,
-            "dose_per_frame": 1.2
+            "total_frames": {
+              "numeric_value": 8500.0,
+              "unit": "frames"
+            },
+            "frame_rate": {
+              "numeric_value": 40.0,
+              "unit": "frames per second"
+            },
+            "total_dose": {
+              "numeric_value": 40.0,
+              "unit": "electrons per Angstrom squared"
+            },
+            "dose_per_frame": {
+              "numeric_value": 1.2,
+              "unit": "electrons per Angstrom squared"
+            }
           },
           "quality_metrics": {
-            "resolution": 2.8,
-            "completeness": 99.5,
-            "signal_to_noise": 4.2
+            "resolution": {
+              "numeric_value": 2.8,
+              "unit": "Angstroms"
+            },
+            "completeness": {
+              "numeric_value": 99.5,
+              "unit": "percent"
+            },
+            "signal_to_noise": {
+              "numeric_value": 4.2,
+              "unit": "signal to noise ratio"
+            }
           },
           "raw_data_location": "/data/berkeley/2024/tfiid/raw/",
           "processing_status": "completed"
@@ -172,21 +226,51 @@
           "experiment_date": "2024-03-21T14:00:00",
           "operator_id": "nogales_lab_member_002",
           "experimental_conditions": {
-            "temperature": -180.0,
-            "humidity": 0.0,
-            "pressure": 1e-06
+            "temperature": {
+              "numeric_value": -180.0,
+              "unit": "degrees Celsius"
+            },
+            "humidity": {
+              "numeric_value": 0.0,
+              "unit": "percent"
+            },
+            "pressure": {
+              "numeric_value": 1e-06,
+              "unit": "kilopascals"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "super_resolution",
-            "total_frames": 12000,
-            "frame_rate": 40.0,
-            "total_dose": 42.0,
-            "dose_per_frame": 1.1
+            "total_frames": {
+              "numeric_value": 12000.0,
+              "unit": "frames"
+            },
+            "frame_rate": {
+              "numeric_value": 40.0,
+              "unit": "frames per second"
+            },
+            "total_dose": {
+              "numeric_value": 42.0,
+              "unit": "electrons per Angstrom squared"
+            },
+            "dose_per_frame": {
+              "numeric_value": 1.1,
+              "unit": "electrons per Angstrom squared"
+            }
           },
           "quality_metrics": {
-            "resolution": 3.1,
-            "completeness": 98.0,
-            "signal_to_noise": 3.8
+            "resolution": {
+              "numeric_value": 3.1,
+              "unit": "Angstroms"
+            },
+            "completeness": {
+              "numeric_value": 98.0,
+              "unit": "percent"
+            },
+            "signal_to_noise": {
+              "numeric_value": 3.8,
+              "unit": "signal to noise ratio"
+            }
           },
           "processing_status": "completed"
         }
@@ -200,14 +284,29 @@
           "workflow_type": "motion_correction",
           "experiment_id": "lambdaber:exp_tfiid_001",
           "software_name": "MotionCor2",
-          "processing_level": 1,
+          "processing_level": {
+            "numeric_value": 1.0,
+            "unit": "level"
+          },
           "software_version": "1.6.4",
           "processing_parameters": "-Patch 5 5 -Gpu 0 -FmDose 1.2",
           "compute_resources": {
-            "cpu_hours": 2.5,
-            "gpu_hours": 8.0,
-            "memory_gb": 32.0,
-            "storage_gb": 450.0
+            "cpu_hours": {
+              "numeric_value": 2.5,
+              "unit": "hours"
+            },
+            "gpu_hours": {
+              "numeric_value": 8.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 32.0,
+              "unit": "gigabytes"
+            },
+            "storage_gb": {
+              "numeric_value": 450.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-03-20T18:00:00",
           "completed_at": "2024-03-20T20:30:00"
@@ -220,13 +319,25 @@
           "workflow_type": "ctf_estimation",
           "experiment_id": "lambdaber:exp_tfiid_001",
           "software_name": "CTFFIND4",
-          "processing_level": 1,
+          "processing_level": {
+            "numeric_value": 1.0,
+            "unit": "level"
+          },
           "software_version": "4.1.14",
           "processing_parameters": "Resolution 30 5",
           "compute_resources": {
-            "cpu_hours": 4.0,
-            "memory_gb": 16.0,
-            "storage_gb": 50.0
+            "cpu_hours": {
+              "numeric_value": 4.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 16.0,
+              "unit": "gigabytes"
+            },
+            "storage_gb": {
+              "numeric_value": 50.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-03-20T20:35:00",
           "completed_at": "2024-03-20T21:15:00"
@@ -239,14 +350,29 @@
           "workflow_type": "particle_picking",
           "experiment_id": "lambdaber:exp_tfiid_001",
           "software_name": "crYOLO",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "1.9.0",
           "processing_parameters": "Model TFIID_trained threshold 0.3",
           "compute_resources": {
-            "cpu_hours": 1.5,
-            "gpu_hours": 3.0,
-            "memory_gb": 24.0,
-            "storage_gb": 120.0
+            "cpu_hours": {
+              "numeric_value": 1.5,
+              "unit": "hours"
+            },
+            "gpu_hours": {
+              "numeric_value": 3.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 24.0,
+              "unit": "gigabytes"
+            },
+            "storage_gb": {
+              "numeric_value": 120.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-03-21T09:00:00",
           "completed_at": "2024-03-21T10:30:00"
@@ -259,14 +385,29 @@
           "workflow_type": "classification_2d",
           "experiment_id": "lambdaber:exp_tfiid_001",
           "software_name": "RELION",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "4.0.1",
           "processing_parameters": "--K 200 --iter 25 --tau2_fudge 2",
           "compute_resources": {
-            "cpu_hours": 24.0,
-            "gpu_hours": 48.0,
-            "memory_gb": 256.0,
-            "storage_gb": 800.0
+            "cpu_hours": {
+              "numeric_value": 24.0,
+              "unit": "hours"
+            },
+            "gpu_hours": {
+              "numeric_value": 48.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 256.0,
+              "unit": "gigabytes"
+            },
+            "storage_gb": {
+              "numeric_value": 800.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-03-21T11:00:00",
           "completed_at": "2024-03-22T11:00:00"
@@ -279,14 +420,29 @@
           "workflow_type": "refinement",
           "experiment_id": "lambdaber:exp_tfiid_001",
           "software_name": "cryoSPARC",
-          "processing_level": 3,
+          "processing_level": {
+            "numeric_value": 3.0,
+            "unit": "level"
+          },
           "software_version": "4.4.0",
           "processing_parameters": "Non-uniform refinement with C1 symmetry",
           "compute_resources": {
-            "cpu_hours": 36.0,
-            "gpu_hours": 72.0,
-            "memory_gb": 512.0,
-            "storage_gb": 1200.0
+            "cpu_hours": {
+              "numeric_value": 36.0,
+              "unit": "hours"
+            },
+            "gpu_hours": {
+              "numeric_value": 72.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 512.0,
+              "unit": "gigabytes"
+            },
+            "storage_gb": {
+              "numeric_value": 1200.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-03-22T14:00:00",
           "completed_at": "2024-03-24T02:00:00"
@@ -300,7 +456,10 @@
           "file_name": "TFIID_movies.tar",
           "file_format": "mrc",
           "file_path": "/data/berkeley/2024/tfiid/raw/TFIID_movies.tar",
-          "file_size_bytes": 5400000000000,
+          "file_size_bytes": {
+            "numeric_value": 5400000000000.0,
+            "unit": "bytes"
+          },
           "checksum": "a7f2c9b8e5d4a1b3c6d9e8f7a4b5c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9",
           "creation_date": "2024-03-20T16:00:00",
           "data_type": "micrograph"
@@ -312,7 +471,10 @@
           "file_name": "TFIID_particles.star",
           "file_format": "star",
           "file_path": "/data/berkeley/2024/tfiid/particles/TFIID_particles.star",
-          "file_size_bytes": 450000000000,
+          "file_size_bytes": {
+            "numeric_value": 450000000000.0,
+            "unit": "bytes"
+          },
           "creation_date": "2024-03-21T11:00:00",
           "data_type": "particles"
         },
@@ -323,7 +485,10 @@
           "file_name": "TFIID_final_map.mrc",
           "file_format": "mrc",
           "file_path": "/data/berkeley/2024/tfiid/maps/TFIID_final_map.mrc",
-          "file_size_bytes": 536870912,
+          "file_size_bytes": {
+            "numeric_value": 536870912.0,
+            "unit": "bytes"
+          },
           "checksum": "b8c3d0a9f1e2b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9",
           "creation_date": "2024-03-24T02:00:00",
           "data_type": "volume"
@@ -335,7 +500,10 @@
           "file_name": "TFIID_model.pdb",
           "file_format": "pdb",
           "file_path": "/data/berkeley/2024/tfiid/models/TFIID_model.pdb",
-          "file_size_bytes": 12582912,
+          "file_size_bytes": {
+            "numeric_value": 12582912.0,
+            "unit": "bytes"
+          },
           "creation_date": "2024-03-25T10:00:00",
           "data_type": "model"
         }
@@ -346,11 +514,26 @@
           "title": "Representative micrograph",
           "file_name": "mic_001.mrc",
           "acquisition_date": "2024-03-20T10:15:00",
-          "pixel_size": 0.85,
-          "dimensions_x": 5760,
-          "dimensions_y": 4092,
-          "exposure_time": 2.5,
-          "dose": 40.0
+          "pixel_size": {
+            "numeric_value": 0.85,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 5760.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 4092.0,
+            "unit": "pixels"
+          },
+          "exposure_time": {
+            "numeric_value": 2.5,
+            "unit": "seconds"
+          },
+          "dose": {
+            "numeric_value": 40.0,
+            "unit": "electrons per Angstrom squared"
+          }
         }
       ]
     }

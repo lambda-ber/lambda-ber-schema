@@ -1,38 +1,209 @@
 
-# Class: BufferComposition
 
-Buffer composition for sample storage
+# Class: BufferComposition 
+
+
+_Buffer composition for sample storage_
+
+
+
+
 
 URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComposition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[MeasurementConditions]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[Sample]++-%20buffer_composition%200..1>[BufferComposition],[AttributeGroup]^-[BufferComposition],[Sample],[MeasurementConditions],[AttributeGroup])
-
-## Parents
-
- *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
-
-## Referenced by Class
-
- *  **None** *[➞buffer_composition](measurementConditions__buffer_composition.md)*  <sub>0..1</sub>  **[BufferComposition](BufferComposition.md)**
- *  **None** *[➞buffer_composition](sample__buffer_composition.md)*  <sub>0..1</sub>  **[BufferComposition](BufferComposition.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞ph](bufferComposition__ph.md)  <sub>0..1</sub>
-     * Description: pH of the buffer (range: 0-14)
-     * Range: [Float](types/Float.md)
- * [➞components](bufferComposition__components.md)  <sub>0..\*</sub>
-     * Description: Buffer components and their concentrations
-     * Range: [String](types/String.md)
- * [➞additives](bufferComposition__additives.md)  <sub>0..\*</sub>
-     * Description: Additional additives in the buffer
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class BufferComposition
+    click BufferComposition href "../BufferComposition/"
+      AttributeGroup <|-- BufferComposition
+        click AttributeGroup href "../AttributeGroup/"
+      
+      BufferComposition : additives
+        
+      BufferComposition : components
+        
+      BufferComposition : description
+        
+      BufferComposition : ph
+        
+          
+    
+        
+        
+        BufferComposition --> "0..1" QuantityValue : ph
+        click QuantityValue href "../QuantityValue/"
+    
 
-### Inherited from AttributeGroup:
+        
+      
+```
 
- * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+
+
+
+
+## Inheritance
+* [AttributeGroup](AttributeGroup.md)
+    * **BufferComposition**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [ph](ph.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | pH of the buffer (range: 0-14) | direct |
+| [components](components.md) | * <br/> [String](String.md) | Buffer components and their concentrations | direct |
+| [additives](additives.md) | * <br/> [String](String.md) | Additional additives in the buffer | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Sample](Sample.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
+| [MeasurementConditions](MeasurementConditions.md) | [buffer_composition](buffer_composition.md) | range | [BufferComposition](BufferComposition.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:BufferComposition |
+| native | lambdaber:BufferComposition |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: BufferComposition
+description: Buffer composition for sample storage
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  ph:
+    name: ph
+    description: 'pH of the buffer (range: 0-14)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BufferComposition
+    - MeasurementConditions
+    range: QuantityValue
+    inlined: true
+  components:
+    name: components
+    description: Buffer components and their concentrations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BufferComposition
+    range: string
+    multivalued: true
+  additives:
+    name: additives
+    description: Additional additives in the buffer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BufferComposition
+    - XRayPreparation
+    range: string
+    multivalued: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: BufferComposition
+description: Buffer composition for sample storage
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: AttributeGroup
+attributes:
+  ph:
+    name: ph
+    description: 'pH of the buffer (range: 0-14)'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ph
+    owner: BufferComposition
+    domain_of:
+    - BufferComposition
+    - MeasurementConditions
+    range: QuantityValue
+    inlined: true
+  components:
+    name: components
+    description: Buffer components and their concentrations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: components
+    owner: BufferComposition
+    domain_of:
+    - BufferComposition
+    range: string
+    multivalued: true
+  additives:
+    name: additives
+    description: Additional additives in the buffer
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: additives
+    owner: BufferComposition
+    domain_of:
+    - BufferComposition
+    - XRayPreparation
+    range: string
+    multivalued: true
+  description:
+    name: description
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: description
+    owner: BufferComposition
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>

@@ -12,11 +12,16 @@ samples:
     - MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP
     modifications:
     - N-terminal His6 tag
-  molecular_weight: 25.6
-  concentration: 2.5
-  concentration_unit: mg_per_ml
+  molecular_weight:
+    numeric_value: 25.6
+    unit: kilodaltons
+  concentration:
+    numeric_value: 2.5
+    unit: milligrams per milliliter
   buffer_composition:
-    ph: 8.0
+    ph:
+      numeric_value: 8.0
+      unit: pH units
     components:
     - 50 mM Tris-HCl
     - 150 mM NaCl
@@ -25,8 +30,11 @@ samples:
     - 5% glycerol
   preparation_method: E. coli expression followed by Ni-NTA and size exclusion chromatography
   storage_conditions:
-    temperature: -80.0
-    temperature_unit: celsius
+    temperature:
+      numeric_value: -80.0
+      unit: degrees Celsius
     duration: 3 months
     atmosphere: Flash frozen in liquid nitrogen
-  purity_percentage: 98.5
+  purity_percentage:
+    numeric_value: 98.5
+    unit: percent

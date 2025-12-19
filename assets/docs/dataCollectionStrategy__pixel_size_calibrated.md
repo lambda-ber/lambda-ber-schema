@@ -1,14 +1,14 @@
 
 # Slot: pixel_size_calibrated
 
-Calibrated pixel size for this experiment
+Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:dataCollectionStrategy__pixel_size_calibrated](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__pixel_size_calibrated)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

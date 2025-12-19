@@ -18,7 +18,7 @@ except ImportError:
 
 # Path to the schema file
 SCHEMA_PATH = Path(__file__).parent.parent / "src" / \
-    "lambda_ber_schema" / "schema" / "lambda-ber-schema.yaml"
+    "lambda_ber_schema" / "schema" / "lambda_ber_schema.yaml"
 PROJECT_ROOT = Path(__file__).parent.parent
 
 # The marker comment that identifies the version line for injection
@@ -134,7 +134,7 @@ def test_build_injects_version():
     with zipfile.ZipFile(wheel_path, "r") as zf:
         # Find the schema file in the wheel
         schema_files = [n for n in zf.namelist(
-        ) if n.endswith("lambda-ber-schema.yaml")]
+        ) if n.endswith("lambda_ber_schema.yaml")]
         assert len(
             schema_files) == 1, f"Expected 1 schema file in wheel, found: {schema_files}"
 

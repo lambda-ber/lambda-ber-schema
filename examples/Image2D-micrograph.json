@@ -4,12 +4,33 @@
   "description": "High-quality micrograph showing TFIID particles",
   "file_name": "FoilHole_19234567_Data_19234568_19234569_20240320_101542_fractions.mrc",
   "acquisition_date": "2024-03-20T10:15:42",
-  "pixel_size": 0.85,
-  "dimensions_x": 5760,
-  "dimensions_y": 4092,
-  "exposure_time": 2.5,
-  "dose": 40.0,
-  "defocus": -2.1,
-  "astigmatism": 0.05,
+  "pixel_size": {
+    "numeric_value": 0.85,
+    "unit": "Angstroms"
+  },
+  "dimensions_x": {
+    "numeric_value": 5760.0,
+    "unit": "pixels"
+  },
+  "dimensions_y": {
+    "numeric_value": 4092.0,
+    "unit": "pixels"
+  },
+  "exposure_time": {
+    "numeric_value": 2.5,
+    "unit": "seconds"
+  },
+  "dose": {
+    "numeric_value": 40.0,
+    "unit": "electrons per Angstrom squared"
+  },
+  "defocus": {
+    "numeric_value": -2.1,
+    "unit": "micrometers"
+  },
+  "astigmatism": {
+    "numeric_value": 0.05,
+    "unit": "Angstroms"
+  },
   "@type": "Image2D"
 }

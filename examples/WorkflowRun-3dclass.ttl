@@ -1,19 +1,30 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:workflow_3dclass_ribosome_001 a lambdaber:WorkflowRun ;
     dcterms:title "3D classification of ribosome particles" ;
     lambdaber:completed_at "2024-04-22T08:00:00" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "48.0"^^xsd:float ;
-            lambdaber:gpu_hours "96.0"^^xsd:float ;
-            lambdaber:memory_gb "512.0"^^xsd:float ;
-            lambdaber:storage_gb "2000.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "48.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "96.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "512.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ;
+            lambdaber:storage_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2000.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "3D classification to resolve ribosome conformational states" ;
     lambdaber:experiment_id "lambdaber:exp_ribosome_001" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "--K 8 --iter 30 --tau2_fudge 4 --particle_diameter 300" ;
     lambdaber:software_name "RELION" ;
     lambdaber:software_version "4.0.1" ;

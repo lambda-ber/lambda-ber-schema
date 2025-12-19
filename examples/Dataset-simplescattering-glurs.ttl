@@ -3,6 +3,7 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://simplescattering.com/dataset/xsbhevph> a lambdaber:Dataset ;
@@ -25,22 +26,40 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
 <https://simplescattering.com/experiment/glurs-sec-saxs> a lambdaber:ExperimentRun ;
     lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
             lambdaber:collection_mode "sec_saxs" ;
-            lambdaber:frame_rate "1.0"^^xsd:float ;
-            lambdaber:total_frames 660 ] ;
+            lambdaber:frame_rate [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "frames per second" ] ;
+            lambdaber:total_frames [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "660.0"^^xsd:float ;
+                    lambdaber:unit "frames" ] ] ;
     lambdaber:experiment_code "SIBYLS-2023-10-24-GluRS" ;
     lambdaber:experiment_date "2023-10-24" ;
     lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:beam_energy "11.0"^^xsd:float ;
-            lambdaber:exposure_time "1.0"^^xsd:float ;
-            lambdaber:temperature "20.0"^^xsd:float ] ;
+            lambdaber:beam_energy [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "11.0"^^xsd:float ;
+                    lambdaber:unit "kiloelectronvolts" ] ;
+            lambdaber:exposure_time [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "seconds" ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
     lambdaber:instrument_id <SIBYLS-BL12.3.1> ;
     lambdaber:operator_id "S. Tsutakawa" ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:i_zero "45.0"^^xsd:float ;
-            lambdaber:resolution "25.0"^^xsd:float ;
-            lambdaber:rg "32.5"^^xsd:float ;
-            lambdaber:signal_to_noise "50.0"^^xsd:float ] ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "45.0"^^xsd:float ;
+                    lambdaber:unit "scattering intensity" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "25.0"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "50.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "SIBYLS data archive" ;
     lambdaber:sample_id "https://simplescattering.com/sample/glurs-pa" ;
     lambdaber:technique CHMO:0000204 .
@@ -51,7 +70,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Averaged SAXS profile from peak fractions" ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "A_S_GluRS_1_5.dat" ;
-    lambdaber:file_size_bytes 107834 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "107834.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-complete> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-10-24" ;
@@ -59,7 +80,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Complete SEC-SAXS dataset with all 660 frames" ;
     lambdaber:file_format "zip" ;
     lambdaber:file_name "GluRS_Results.zip" ;
-    lambdaber:file_size_bytes 10840982 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10840982.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-frame-001> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-10-20" ;
@@ -67,7 +90,9 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "First SEC-SAXS frame" ;
     lambdaber:file_format "ascii" ;
     lambdaber:file_name "GluRS_1_00001.dat" ;
-    lambdaber:file_size_bytes 35739 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "35739.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/file/glurs-structure> a lambdaber:DataFile ;
     lambdaber:creation_date "2023-12-13" ;
@@ -75,18 +100,28 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
     lambdaber:description "Crystal structure of P. aeruginosa GluRS (zinc-bound form)" ;
     lambdaber:file_format "pdb" ;
     lambdaber:file_name "8vc5.pdb" ;
-    lambdaber:file_size_bytes 1310256 .
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1310256.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
 
 <https://simplescattering.com/img/guinier-plot> a lambdaber:Image ;
     lambdaber:description "Guinier analysis for Rg determination" ;
-    lambdaber:dimensions_x 800 ;
-    lambdaber:dimensions_y 600 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "600.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "GluRS_Guinier_plot.png" .
 
 <https://simplescattering.com/img/sec-chromatogram> a lambdaber:Image ;
     lambdaber:description "SEC elution profile with SAXS intensity" ;
-    lambdaber:dimensions_x 1200 ;
-    lambdaber:dimensions_y 800 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1200.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "GluRS_SEC_chromatogram.png" .
 
 <https://simplescattering.com/prep/glurs-expression> a lambdaber:SamplePreparation ;
@@ -120,13 +155,18 @@ approximately 5 mg/mL, filtered through 0.22 μm filter.
                 "150 mM NaCl",
                 "20 mM Tris-HCl",
                 "5 mM MgCl2" ;
-            lambdaber:ph "7.5"^^xsd:float ] ;
-    lambdaber:concentration "5.0"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.5"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:sequences "Uniprot:Q9XCL6" ] ;
-    lambdaber:molecular_weight "54.8"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "54.8"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:preparation_method "Expressed in E. coli BL21(DE3)" ;
     lambdaber:sample_code "PA-GluRS" ;
     lambdaber:sample_type "protein" .
@@ -153,7 +193,9 @@ to determine oligomeric state in solution conditions. Crystal structure
 
 <https://simplescattering.com/workflow/mals-processing> a lambdaber:WorkflowRun ;
     lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters """molecular_weight_determination=enabled;
 polydispersity_analysis=enabled
 """ ;
@@ -165,10 +207,16 @@ polydispersity_analysis=enabled
 <https://simplescattering.com/workflow/saxs-processing> a lambdaber:WorkflowRun ;
     lambdaber:completed_at "2023-10-24T14:00:00Z" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "1.0"^^xsd:float ;
-            lambdaber:memory_gb "16.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "16.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
-    lambdaber:processing_level 2 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters """q_range=0.0109-0.4729;
 sample_detector_distance=2.1m;
 detector=Pilatus3_2M;

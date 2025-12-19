@@ -1,14 +1,14 @@
 
 # Slot: detector_distance
 
-Distance from sample to detector
+Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:experimentRun__detector_distance](https://w3id.org/lambda-ber-schema/experimentRun__detector_distance)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

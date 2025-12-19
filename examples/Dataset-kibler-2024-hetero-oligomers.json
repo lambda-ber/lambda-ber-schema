@@ -55,17 +55,28 @@
               "MDFYTLPTSHPV..."
             ]
           },
-          "molecular_weight": 180.0,
-          "concentration": 5.0,
-          "concentration_unit": "mg_per_ml",
+          "molecular_weight": {
+            "numeric_value": 180.0,
+            "unit": "kilodaltons"
+          },
+          "concentration": {
+            "numeric_value": 5.0,
+            "unit": "milligrams per milliliter"
+          },
           "buffer_composition": {
-            "ph": 8.0,
+            "ph": {
+              "numeric_value": 8.0,
+              "unit": "pH units"
+            },
             "components": [
               "25 mM Tris",
               "300 mM NaCl"
             ]
           },
-          "purity_percentage": 95.0
+          "purity_percentage": {
+            "numeric_value": 95.0,
+            "unit": "percent"
+          }
         },
         {
           "id": "https://example.org/kibler2024/sample/hetBGL03-15-18",
@@ -83,19 +94,29 @@
               "6xHis tag (removed after purification)"
             ]
           },
-          "molecular_weight": 182.5,
-          "concentration": 2.5,
-          "concentration_unit": "mg_per_ml",
+          "molecular_weight": {
+            "numeric_value": 182.5,
+            "unit": "kilodaltons"
+          },
+          "concentration": {
+            "numeric_value": 2.5,
+            "unit": "milligrams per milliliter"
+          },
           "buffer_composition": {
-            "ph": 8.0,
+            "ph": {
+              "numeric_value": 8.0,
+              "unit": "pH units"
+            },
             "components": [
               "25 mM Tris",
               "300 mM NaCl"
             ]
           },
           "storage_conditions": {
-            "temperature": 4.0,
-            "temperature_unit": "celsius",
+            "temperature": {
+              "numeric_value": 4.0,
+              "unit": "degrees Celsius"
+            },
             "duration": "< 1 week before measurement"
           }
         },
@@ -104,11 +125,19 @@
           "description": "Alternative hetero-hexamer design",
           "sample_code": "hetBGL01-20-22",
           "sample_type": "complex",
-          "molecular_weight": 181.8,
-          "concentration": 2.5,
-          "concentration_unit": "mg_per_ml",
+          "molecular_weight": {
+            "numeric_value": 181.8,
+            "unit": "kilodaltons"
+          },
+          "concentration": {
+            "numeric_value": 2.5,
+            "unit": "milligrams per milliliter"
+          },
           "buffer_composition": {
-            "ph": 8.0,
+            "ph": {
+              "numeric_value": 8.0,
+              "unit": "pH units"
+            },
             "components": [
               "25 mM Tris",
               "300 mM NaCl"
@@ -156,17 +185,35 @@
           "experiment_date": "2024-02-01",
           "operator_id": "Kathryn Burnett",
           "experimental_conditions": {
-            "temperature": 20.0,
-            "beam_energy": 9.76,
-            "exposure_time": 0.3
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            },
+            "beam_energy": {
+              "numeric_value": 9.76,
+              "unit": "kiloelectronvolts"
+            },
+            "exposure_time": {
+              "numeric_value": 0.3,
+              "unit": "seconds"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "batch"
           },
           "quality_metrics": {
-            "signal_to_noise": 50.0,
-            "i_zero": 0.045,
-            "rg": 42.3
+            "signal_to_noise": {
+              "numeric_value": 50.0,
+              "unit": "signal to noise ratio"
+            },
+            "i_zero": {
+              "numeric_value": 0.045,
+              "unit": "scattering intensity"
+            },
+            "rg": {
+              "numeric_value": 42.3,
+              "unit": "Angstroms"
+            }
           },
           "raw_data_location": "SIBYLS-HT-SAXS-program",
           "processing_status": "completed"
@@ -179,13 +226,19 @@
           "technique": "saxs",
           "experiment_date": "2024-02-01",
           "experimental_conditions": {
-            "temperature": 20.0
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "sec_saxs"
           },
           "quality_metrics": {
-            "signal_to_noise": 45.0
+            "signal_to_noise": {
+              "numeric_value": 45.0,
+              "unit": "signal to noise ratio"
+            }
           }
         },
         {
@@ -197,13 +250,19 @@
           "experiment_date": "2024-02-05",
           "operator_id": "University of Washington EM facility",
           "experimental_conditions": {
-            "temperature": 20.0
+            "temperature": {
+              "numeric_value": 20.0,
+              "unit": "degrees Celsius"
+            }
           },
           "data_collection_strategy": {
             "collection_mode": "single_particle"
           },
           "quality_metrics": {
-            "signal_to_noise": 30.0
+            "signal_to_noise": {
+              "numeric_value": 30.0,
+              "unit": "signal to noise ratio"
+            }
           }
         },
         {
@@ -214,10 +273,16 @@
           "technique": "mass_spectrometry",
           "experiment_date": "2024-02-10",
           "experimental_conditions": {
-            "temperature": 25.0
+            "temperature": {
+              "numeric_value": 25.0,
+              "unit": "degrees Celsius"
+            }
           },
           "quality_metrics": {
-            "signal_to_noise": 100.0
+            "signal_to_noise": {
+              "numeric_value": 100.0,
+              "unit": "signal to noise ratio"
+            }
           }
         }
       ],
@@ -228,12 +293,21 @@
           "workflow_type": "saxs_analysis",
           "experiment_id": "SIBYLS-2024-02-01-hetBGL",
           "software_name": "SAXS FrameSlice",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "2024.1",
           "processing_parameters": "buffer_subtraction=automated; guinier_fit_range=0.01-0.025; kratky_analysis=true; p_of_r_calculation=GNOM",
           "compute_resources": {
-            "cpu_hours": 0.5,
-            "memory_gb": 8.0
+            "cpu_hours": {
+              "numeric_value": 0.5,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 8.0,
+              "unit": "gigabytes"
+            }
           },
           "started_at": "2024-02-01T18:00:00Z",
           "completed_at": "2024-02-01T18:30:00Z",
@@ -249,12 +323,21 @@
           "workflow_type": "em_2d_classification",
           "experiment_id": "nsEM-2024-02-05-hetBGL",
           "software_name": "EPU",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "3.1",
           "processing_parameters": "particle_diameter=150A; mask_diameter=180A; number_of_classes=50",
           "compute_resources": {
-            "gpu_hours": 2.0,
-            "memory_gb": 32.0
+            "gpu_hours": {
+              "numeric_value": 2.0,
+              "unit": "hours"
+            },
+            "memory_gb": {
+              "numeric_value": 32.0,
+              "unit": "gigabytes"
+            }
           },
           "output_files": [
             "hetBGL03-15-18_2D_classes.mrcs",
@@ -267,7 +350,10 @@
           "workflow_type": "mass_spec_deconvolution",
           "experiment_id": "nMS-2024-02-10-hetBGL",
           "software_name": "UniDecs",
-          "processing_level": 2,
+          "processing_level": {
+            "numeric_value": 2.0,
+            "unit": "level"
+          },
           "software_version": "4.1.2+",
           "processing_parameters": "mass_range=150000-200000; charge_range=15-40; peak_width=10",
           "output_files": [
@@ -282,7 +368,10 @@
           "description": "Buffer-subtracted SAXS profile at 2.5 mg/mL",
           "file_name": "hetBGL03-15-18_saxs_2p5mgml.dat",
           "file_format": "ascii",
-          "file_size_bytes": 45000,
+          "file_size_bytes": {
+            "numeric_value": 45000.0,
+            "unit": "bytes"
+          },
           "checksum": "sha256:abc123...",
           "creation_date": "2024-02-01",
           "data_type": "processed_data"
@@ -292,7 +381,10 @@
           "description": "Buffer-subtracted SAXS profile at 5.0 mg/mL",
           "file_name": "hetBGL03-15-18_saxs_5mgml.dat",
           "file_format": "ascii",
-          "file_size_bytes": 45000,
+          "file_size_bytes": {
+            "numeric_value": 45000.0,
+            "unit": "bytes"
+          },
           "checksum": "sha256:def456...",
           "creation_date": "2024-02-01",
           "data_type": "processed_data"
@@ -302,7 +394,10 @@
           "description": "2D class averages from negative stain EM",
           "file_name": "hetBGL03-15-18_2D_classes.mrcs",
           "file_format": "mrc",
-          "file_size_bytes": 250000000,
+          "file_size_bytes": {
+            "numeric_value": 250000000.0,
+            "unit": "bytes"
+          },
           "checksum": "sha256:ghi789...",
           "creation_date": "2024-02-05",
           "data_type": "processed_data"
@@ -311,7 +406,10 @@
           "id": "https://example.org/kibler2024/file/ms-raw",
           "file_name": "hetBGL03-15-18_native_ms.raw",
           "file_format": "thermo_raw",
-          "file_size_bytes": 150000000,
+          "file_size_bytes": {
+            "numeric_value": 150000000.0,
+            "unit": "bytes"
+          },
           "checksum": "sha256:jkl012...",
           "creation_date": "2024-02-10",
           "data_type": "raw_data"
@@ -321,7 +419,10 @@
           "description": "Computational design model",
           "file_name": "hetBGL03-15-18_design_model.pdb",
           "file_format": "pdb",
-          "file_size_bytes": 850000,
+          "file_size_bytes": {
+            "numeric_value": 850000.0,
+            "unit": "bytes"
+          },
           "checksum": "sha256:mno345...",
           "creation_date": "2024-01-01",
           "data_type": "model"
@@ -332,24 +433,48 @@
           "id": "https://example.org/kibler2024/img/saxs-profile",
           "description": "SAXS scattering profile with Guinier fit",
           "file_name": "hetBGL03-15-18_saxs_profile.png",
-          "pixel_size": 1.0,
-          "dimensions_x": 1200,
-          "dimensions_y": 800
+          "pixel_size": {
+            "numeric_value": 1.0,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 1200.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 800.0,
+            "unit": "pixels"
+          }
         },
         {
           "id": "https://example.org/kibler2024/img/em-classes",
           "description": "2D class averages from negative stain EM",
           "file_name": "hetBGL03-15-18_class_averages.png",
-          "pixel_size": 1.98,
-          "dimensions_x": 2048,
-          "dimensions_y": 2048
+          "pixel_size": {
+            "numeric_value": 1.98,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 2048.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 2048.0,
+            "unit": "pixels"
+          }
         },
         {
           "id": "https://example.org/kibler2024/img/structural-comparison",
           "description": "Overlay of design model with SAXS envelope",
           "file_name": "hetBGL_structural_comparison.png",
-          "dimensions_x": 1600,
-          "dimensions_y": 1200
+          "dimensions_x": {
+            "numeric_value": 1600.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 1200.0,
+            "unit": "pixels"
+          }
         }
       ]
     }

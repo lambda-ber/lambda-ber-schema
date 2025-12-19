@@ -1,6 +1,7 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -13,14 +14,17 @@ lambdaber:sample-aldh-cofactor a lambdaber:Sample ;
             ns1:property_type "melting_temperature" ;
             ns1:unit "K" ;
             ns1:value "328.5"^^xsd:float ] ;
-    lambdaber:concentration "5.0"^^xsd:float ;
-    lambdaber:concentration_unit "mg_per_ml" ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:description "ALDH2 enzyme co-crystallized with NAD+ cofactor for structural and functional studies" ;
     lambdaber:functional_sites lambdaber:funcsite-aldh2-active ;
     lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
             lambdaber:description "Human ALDH2 tetramer with bound NAD+" ;
             lambdaber:sequences "MGSSLSRVPPTAGPLGSPLLLQEPALEAAGEEEELQDSDADGEEEKAEEEEKEEKAEDEEER..." ] ;
-    lambdaber:molecular_weight "217.5"^^xsd:float ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "217.5"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
     lambdaber:sample_code "ALDH2-2024-001" ;
     lambdaber:sample_type "protein" .
 
@@ -75,7 +79,13 @@ lambdaber:meas-aldh2-001 a ns1:MeasurementConditions ;
     ns1:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "100 mM NaCl",
                 "50 mM Tris-HCl" ] ;
-    ns1:ionic_strength "0.1"^^xsd:float ;
-    ns1:ph "7.5"^^xsd:float ;
-    ns1:temperature "298.15"^^xsd:float .
+    ns1:ionic_strength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.1"^^xsd:float ;
+            lambdaber:unit "molar" ] ;
+    ns1:ph [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "7.5"^^xsd:float ;
+            lambdaber:unit "pH units" ] ;
+    ns1:temperature [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "298.15"^^xsd:float ;
+            lambdaber:unit "degrees Celsius" ] .
 

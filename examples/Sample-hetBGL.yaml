@@ -10,16 +10,22 @@ molecular_composition:
   modifications:
   - TEV protease cleavage site
   - 6xHis tag (removed after purification)
-molecular_weight: 182.5
-concentration: 2.5
-concentration_unit: mg_per_ml
+molecular_weight:
+  numeric_value: 182.5
+  unit: kilodaltons
+concentration:
+  numeric_value: 2.5
+  unit: milligrams per milliliter
 buffer_composition:
-  ph: 8.0
+  ph:
+    numeric_value: 8.0
+    unit: pH units
   components:
   - 25 mM Tris
   - 300 mM NaCl
 storage_conditions:
-  temperature: 4.0
-  temperature_unit: celsius
+  temperature:
+    numeric_value: 4.0
+    unit: degrees Celsius
   duration: < 1 week before measurement
 organism: NCBITaxon:562

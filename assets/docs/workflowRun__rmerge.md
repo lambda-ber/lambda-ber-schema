@@ -8,7 +8,7 @@ URI: [lambdaber:workflowRun__rmerge](https://w3id.org/lambda-ber-schema/workflow
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 
@@ -19,11 +19,3 @@ None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 ## Used by
 
  * [WorkflowRun](WorkflowRun.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Exact Mappings:** | | nsls2:Rmerge |
-|  | | mmCIF:_reflns.pdbx_Rmerge_I_obs |
-|  | | ispyb:AutoProcScalingStatistics.rMerge |

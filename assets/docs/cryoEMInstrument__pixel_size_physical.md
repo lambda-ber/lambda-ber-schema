@@ -8,7 +8,7 @@ URI: [lambdaber:cryoEMInstrument__pixel_size_physical](https://w3id.org/lambda-b
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

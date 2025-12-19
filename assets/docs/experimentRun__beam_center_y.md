@@ -1,14 +1,14 @@
 
 # Slot: beam_center_y
 
-Beam center Y coordinate
+Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:experimentRun__beam_center_y](https://w3id.org/lambda-ber-schema/experimentRun__beam_center_y)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

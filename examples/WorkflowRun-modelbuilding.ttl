@@ -1,19 +1,30 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:workflow_model_proteasome_001 a lambdaber:WorkflowRun ;
     dcterms:title "Atomic model building for 26S proteasome" ;
     lambdaber:completed_at "2024-04-30T17:00:00" ;
     lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours "120.0"^^xsd:float ;
-            lambdaber:gpu_hours "0.0"^^xsd:float ;
-            lambdaber:memory_gb "64.0"^^xsd:float ;
-            lambdaber:storage_gb "50.0"^^xsd:float ] ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "120.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "64.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ;
+            lambdaber:storage_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "50.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Building and refining atomic model into cryo-EM density" ;
     lambdaber:experiment_id "lambdaber:exp_proteasome_001" ;
-    lambdaber:processing_level 4 ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
     lambdaber:processing_parameters "Real space refinement with secondary structure restraints" ;
     lambdaber:software_name "Coot" ;
     lambdaber:software_version "0.9.8.92" ;

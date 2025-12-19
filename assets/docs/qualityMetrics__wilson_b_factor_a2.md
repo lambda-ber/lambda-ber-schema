@@ -8,7 +8,7 @@ URI: [lambdaber:qualityMetrics__wilson_b_factor_a2](https://w3id.org/lambda-ber-
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

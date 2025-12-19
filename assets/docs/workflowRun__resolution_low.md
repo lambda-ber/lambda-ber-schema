@@ -1,14 +1,14 @@
 
 # Slot: resolution_low
 
-Low resolution limit
+Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:workflowRun__resolution_low](https://w3id.org/lambda-ber-schema/workflowRun__resolution_low)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

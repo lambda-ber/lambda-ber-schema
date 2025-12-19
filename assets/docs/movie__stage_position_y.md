@@ -1,14 +1,14 @@
 
 # Slot: stage_position_y
 
-Stage Y position in micrometers
+Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:movie__stage_position_y](https://w3id.org/lambda-ber-schema/movie__stage_position_y)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

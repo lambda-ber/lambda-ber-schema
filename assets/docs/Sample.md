@@ -1,129 +1,1123 @@
 
-# Class: Sample
 
-A biological sample used in structural biology experiments
+# Class: Sample 
+
+
+_A biological sample used in structural biology experiments_
+
+
+
+
 
 URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StructuralFeature],[StorageConditions],[DatabaseCrossReference]<database_cross_references%200..*-++[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;protein_name:string%20%3F;construct:string%20%3F;tag:string%20%3F;mutations:string%20%3F;expression_system:string%20%3F;ligand:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ConformationalEnsemble]<conformational_ensemble%200..1-++[Sample],[EvolutionaryConservation]<evolutionary_conservation%200..1-++[Sample],[BiophysicalProperty]<biophysical_properties%200..*-++[Sample],[PostTranslationalModification]<ptm_annotations%200..*-++[Sample],[MutationEffect]<mutation_effects%200..*-++[Sample],[LigandInteraction]<ligand_interactions%200..*-++[Sample],[ProteinProteinInteraction]<protein_interactions%200..*-++[Sample],[StructuralFeature]<structural_features%200..*-++[Sample],[FunctionalSite]<functional_sites%200..*-++[Sample],[Sample]<parent_sample_id%200..1-%20[Sample],[OntologyTerm]<cell_type%200..1-%20[Sample],[OntologyTerm]<anatomy%200..1-%20[Sample],[OntologyTerm]<organism%200..1-%20[Sample],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[ProteinProteinInteraction],[PostTranslationalModification],[OntologyTerm],[NamedThing],[MutationEffect],[MolecularComposition],[LigandInteraction],[FunctionalSite],[EvolutionaryConservation],[DatabaseCrossReference],[ConformationalEnsemble],[BufferComposition],[BiophysicalProperty])](https://yuml.me/diagram/nofunky;dir:TB/class/[StructuralFeature],[StorageConditions],[DatabaseCrossReference]<database_cross_references%200..*-++[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;protein_name:string%20%3F;construct:string%20%3F;tag:string%20%3F;mutations:string%20%3F;expression_system:string%20%3F;ligand:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ConformationalEnsemble]<conformational_ensemble%200..1-++[Sample],[EvolutionaryConservation]<evolutionary_conservation%200..1-++[Sample],[BiophysicalProperty]<biophysical_properties%200..*-++[Sample],[PostTranslationalModification]<ptm_annotations%200..*-++[Sample],[MutationEffect]<mutation_effects%200..*-++[Sample],[LigandInteraction]<ligand_interactions%200..*-++[Sample],[ProteinProteinInteraction]<protein_interactions%200..*-++[Sample],[StructuralFeature]<structural_features%200..*-++[Sample],[FunctionalSite]<functional_sites%200..*-++[Sample],[Sample]<parent_sample_id%200..1-%20[Sample],[OntologyTerm]<cell_type%200..1-%20[Sample],[OntologyTerm]<anatomy%200..1-%20[Sample],[OntologyTerm]<organism%200..1-%20[Sample],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[ProteinProteinInteraction],[PostTranslationalModification],[OntologyTerm],[NamedThing],[MutationEffect],[MolecularComposition],[LigandInteraction],[FunctionalSite],[EvolutionaryConservation],[DatabaseCrossReference],[ConformationalEnsemble],[BufferComposition],[BiophysicalProperty])
-
-## Parents
-
- *  is_a: [NamedThing](NamedThing.md) - A named thing
-
-## Referenced by Class
-
- *  **None** *[➞parent_sample_id](sample__parent_sample_id.md)*  <sub>0..1</sub>  **[Sample](Sample.md)**
- *  **None** *[➞samples](study__samples.md)*  <sub>0..\*</sub>  **[Sample](Sample.md)**
-
-## Attributes
 
 
-### Own
 
- * [➞sample_code](sample__sample_code.md)  <sub>1..1</sub>
-     * Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
-     * Range: [String](types/String.md)
- * [➞sample_type](sample__sample_type.md)  <sub>1..1</sub>
-     * Description: Type of biological sample
-     * Range: [SampleTypeEnum](SampleTypeEnum.md)
- * [➞molecular_composition](sample__molecular_composition.md)  <sub>0..1</sub>
-     * Description: Description of molecular composition including sequences, modifications, ligands
-     * Range: [MolecularComposition](MolecularComposition.md)
- * [➞molecular_weight](sample__molecular_weight.md)  <sub>0..1</sub>
-     * Description: Molecular weight in kDa
-     * Range: [Float](types/Float.md)
- * [➞concentration](sample__concentration.md)  <sub>0..1</sub>
-     * Description: Sample concentration in mg/mL or µM
-     * Range: [Float](types/Float.md)
- * [➞concentration_unit](sample__concentration_unit.md)  <sub>0..1</sub>
-     * Description: Unit of concentration measurement
-     * Range: [ConcentrationUnitEnum](ConcentrationUnitEnum.md)
- * [➞buffer_composition](sample__buffer_composition.md)  <sub>0..1</sub>
-     * Description: Buffer composition including pH, salts, additives
-     * Range: [BufferComposition](BufferComposition.md)
- * [➞preparation_method](sample__preparation_method.md)  <sub>0..1</sub>
-     * Description: Method used to prepare the sample
-     * Range: [String](types/String.md)
- * [➞storage_conditions](sample__storage_conditions.md)  <sub>0..1</sub>
-     * Description: Storage conditions for the sample
-     * Range: [StorageConditions](StorageConditions.md)
- * [➞organism](sample__organism.md)  <sub>0..1</sub>
-     * Description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)
-     * Range: [OntologyTerm](OntologyTerm.md)
- * [➞anatomy](sample__anatomy.md)  <sub>0..1</sub>
-     * Description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
-     * Range: [OntologyTerm](OntologyTerm.md)
- * [➞cell_type](sample__cell_type.md)  <sub>0..1</sub>
-     * Description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
-     * Range: [OntologyTerm](OntologyTerm.md)
- * [➞parent_sample_id](sample__parent_sample_id.md)  <sub>0..1</sub>
-     * Description: Reference to parent sample for derivation tracking
-     * Range: [Sample](Sample.md)
- * [➞purity_percentage](sample__purity_percentage.md)  <sub>0..1</sub>
-     * Description: Sample purity as percentage (range: 0-100)
-     * Range: [Float](types/Float.md)
- * [➞quality_metrics](sample__quality_metrics.md)  <sub>0..1</sub>
-     * Description: Quality control metrics for the sample
-     * Range: [String](types/String.md)
- * [➞functional_sites](sample__functional_sites.md)  <sub>0..\*</sub>
-     * Description: Functional site annotations for proteins in the sample
-     * Range: [FunctionalSite](FunctionalSite.md)
- * [➞structural_features](sample__structural_features.md)  <sub>0..\*</sub>
-     * Description: Structural feature annotations
-     * Range: [StructuralFeature](StructuralFeature.md)
- * [➞protein_interactions](sample__protein_interactions.md)  <sub>0..\*</sub>
-     * Description: Protein-protein interaction annotations
-     * Range: [ProteinProteinInteraction](ProteinProteinInteraction.md)
- * [➞ligand_interactions](sample__ligand_interactions.md)  <sub>0..\*</sub>
-     * Description: Small molecule interaction annotations
-     * Range: [LigandInteraction](LigandInteraction.md)
- * [➞mutation_effects](sample__mutation_effects.md)  <sub>0..\*</sub>
-     * Description: Effects of mutations present in the sample
-     * Range: [MutationEffect](MutationEffect.md)
- * [➞ptm_annotations](sample__ptm_annotations.md)  <sub>0..\*</sub>
-     * Description: Post-translational modification annotations
-     * Range: [PostTranslationalModification](PostTranslationalModification.md)
- * [➞biophysical_properties](sample__biophysical_properties.md)  <sub>0..\*</sub>
-     * Description: Measured or predicted biophysical properties
-     * Range: [BiophysicalProperty](BiophysicalProperty.md)
- * [➞evolutionary_conservation](sample__evolutionary_conservation.md)  <sub>0..1</sub>
-     * Description: Evolutionary conservation data
-     * Range: [EvolutionaryConservation](EvolutionaryConservation.md)
- * [➞conformational_ensemble](sample__conformational_ensemble.md)  <sub>0..1</sub>
-     * Description: Conformational states and dynamics
-     * Range: [ConformationalEnsemble](ConformationalEnsemble.md)
- * [➞database_cross_references](sample__database_cross_references.md)  <sub>0..\*</sub>
-     * Description: Cross-references to external databases
-     * Range: [DatabaseCrossReference](DatabaseCrossReference.md)
- * [➞protein_name](sample__protein_name.md)  <sub>0..1</sub>
-     * Description: Name of the protein
-     * Range: [String](types/String.md)
- * [➞construct](sample__construct.md)  <sub>0..1</sub>
-     * Description: Construct description (e.g., domain boundaries, truncations)
-     * Range: [String](types/String.md)
- * [➞tag](sample__tag.md)  <sub>0..1</sub>
-     * Description: Affinity tag (e.g., His6, GST, MBP)
-     * Range: [String](types/String.md)
- * [➞mutations](sample__mutations.md)  <sub>0..1</sub>
-     * Description: Mutations present in the sample
-     * Range: [String](types/String.md)
- * [➞expression_system](sample__expression_system.md)  <sub>0..1</sub>
-     * Description: Expression system used
-     * Range: [String](types/String.md)
- * [➞ligand](sample__ligand.md)  <sub>0..1</sub>
-     * Description: Ligand or small molecule bound to sample
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class Sample
+    click Sample href "../Sample/"
+      NamedThing <|-- Sample
+        click NamedThing href "../NamedThing/"
+      
+      Sample : anatomy
+        
+          
+    
+        
+        
+        Sample --> "0..1" OntologyTerm : anatomy
+        click OntologyTerm href "../OntologyTerm/"
+    
 
-### Inherited from NamedThing:
+        
+      Sample : biophysical_properties
+        
+          
+    
+        
+        
+        Sample --> "*" BiophysicalProperty : biophysical_properties
+        click BiophysicalProperty href "../BiophysicalProperty/"
+    
 
- * [➞id](namedThing__id.md)  <sub>1..1</sub>
-     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
-     * Range: [Uriorcurie](types/Uriorcurie.md)
- * [➞title](namedThing__title.md)  <sub>0..1</sub>
-     * Description: A human-readable name or title for this entity
-     * Range: [String](types/String.md)
- * [➞description](namedThing__description.md)  <sub>0..1</sub>
-     * Description: A detailed textual description of this entity
-     * Range: [String](types/String.md)
+        
+      Sample : buffer_composition
+        
+          
+    
+        
+        
+        Sample --> "0..1" BufferComposition : buffer_composition
+        click BufferComposition href "../BufferComposition/"
+    
+
+        
+      Sample : cell_type
+        
+          
+    
+        
+        
+        Sample --> "0..1" OntologyTerm : cell_type
+        click OntologyTerm href "../OntologyTerm/"
+    
+
+        
+      Sample : concentration
+        
+          
+    
+        
+        
+        Sample --> "0..1" QuantityValue : concentration
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      Sample : conformational_ensemble
+        
+          
+    
+        
+        
+        Sample --> "0..1" ConformationalEnsemble : conformational_ensemble
+        click ConformationalEnsemble href "../ConformationalEnsemble/"
+    
+
+        
+      Sample : construct
+        
+      Sample : database_cross_references
+        
+          
+    
+        
+        
+        Sample --> "*" DatabaseCrossReference : database_cross_references
+        click DatabaseCrossReference href "../DatabaseCrossReference/"
+    
+
+        
+      Sample : description
+        
+      Sample : evolutionary_conservation
+        
+          
+    
+        
+        
+        Sample --> "0..1" EvolutionaryConservation : evolutionary_conservation
+        click EvolutionaryConservation href "../EvolutionaryConservation/"
+    
+
+        
+      Sample : expression_system
+        
+      Sample : functional_sites
+        
+          
+    
+        
+        
+        Sample --> "*" FunctionalSite : functional_sites
+        click FunctionalSite href "../FunctionalSite/"
+    
+
+        
+      Sample : id
+        
+      Sample : ligand
+        
+      Sample : ligand_interactions
+        
+          
+    
+        
+        
+        Sample --> "*" LigandInteraction : ligand_interactions
+        click LigandInteraction href "../LigandInteraction/"
+    
+
+        
+      Sample : molecular_composition
+        
+          
+    
+        
+        
+        Sample --> "0..1" MolecularComposition : molecular_composition
+        click MolecularComposition href "../MolecularComposition/"
+    
+
+        
+      Sample : molecular_weight
+        
+          
+    
+        
+        
+        Sample --> "0..1" QuantityValue : molecular_weight
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      Sample : mutation_effects
+        
+          
+    
+        
+        
+        Sample --> "*" MutationEffect : mutation_effects
+        click MutationEffect href "../MutationEffect/"
+    
+
+        
+      Sample : mutations
+        
+      Sample : organism
+        
+          
+    
+        
+        
+        Sample --> "0..1" OntologyTerm : organism
+        click OntologyTerm href "../OntologyTerm/"
+    
+
+        
+      Sample : parent_sample_id
+        
+          
+    
+        
+        
+        Sample --> "0..1" Sample : parent_sample_id
+        click Sample href "../Sample/"
+    
+
+        
+      Sample : preparation_method
+        
+      Sample : protein_interactions
+        
+          
+    
+        
+        
+        Sample --> "*" ProteinProteinInteraction : protein_interactions
+        click ProteinProteinInteraction href "../ProteinProteinInteraction/"
+    
+
+        
+      Sample : protein_name
+        
+      Sample : ptm_annotations
+        
+          
+    
+        
+        
+        Sample --> "*" PostTranslationalModification : ptm_annotations
+        click PostTranslationalModification href "../PostTranslationalModification/"
+    
+
+        
+      Sample : purity_percentage
+        
+          
+    
+        
+        
+        Sample --> "0..1" QuantityValue : purity_percentage
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      Sample : quality_metrics
+        
+      Sample : sample_code
+        
+      Sample : sample_type
+        
+          
+    
+        
+        
+        Sample --> "1" SampleTypeEnum : sample_type
+        click SampleTypeEnum href "../SampleTypeEnum/"
+    
+
+        
+      Sample : storage_conditions
+        
+          
+    
+        
+        
+        Sample --> "0..1" StorageConditions : storage_conditions
+        click StorageConditions href "../StorageConditions/"
+    
+
+        
+      Sample : structural_features
+        
+          
+    
+        
+        
+        Sample --> "*" StructuralFeature : structural_features
+        click StructuralFeature href "../StructuralFeature/"
+    
+
+        
+      Sample : tag
+        
+      Sample : title
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [NamedThing](NamedThing.md)
+    * **Sample**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [sample_code](sample_code.md) | 1 <br/> [String](String.md) | Human-friendly laboratory identifier or facility code for the sample (e | direct |
+| [sample_type](sample_type.md) | 1 <br/> [SampleTypeEnum](SampleTypeEnum.md) | Type of biological sample | direct |
+| [molecular_composition](molecular_composition.md) | 0..1 <br/> [MolecularComposition](MolecularComposition.md) | Description of molecular composition including sequences, modifications, liga... | direct |
+| [molecular_weight](molecular_weight.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Molecular weight, typically specified in kilodaltons (kDa) | direct |
+| [concentration](concentration.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Sample concentration, typically specified in mg/mL or µM | direct |
+| [buffer_composition](buffer_composition.md) | 0..1 <br/> [BufferComposition](BufferComposition.md) | Buffer composition including pH, salts, additives | direct |
+| [preparation_method](preparation_method.md) | 0..1 <br/> [String](String.md) | Method used to prepare the sample | direct |
+| [storage_conditions](storage_conditions.md) | 0..1 <br/> [StorageConditions](StorageConditions.md) | Storage conditions for the sample | direct |
+| [organism](organism.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Source organism for the sample (e | direct |
+| [anatomy](anatomy.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Anatomical part or tissue (e | direct |
+| [cell_type](cell_type.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Cell type if applicable (e | direct |
+| [parent_sample_id](parent_sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Reference to parent sample for derivation tracking | direct |
+| [purity_percentage](purity_percentage.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Sample purity, typically specified as a percentage (range: 0-100) | direct |
+| [quality_metrics](quality_metrics.md) | 0..1 <br/> [String](String.md) | Quality control metrics for the sample | direct |
+| [functional_sites](functional_sites.md) | * <br/> [FunctionalSite](FunctionalSite.md) | Functional site annotations for proteins in the sample | direct |
+| [structural_features](structural_features.md) | * <br/> [StructuralFeature](StructuralFeature.md) | Structural feature annotations | direct |
+| [protein_interactions](protein_interactions.md) | * <br/> [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interaction annotations | direct |
+| [ligand_interactions](ligand_interactions.md) | * <br/> [LigandInteraction](LigandInteraction.md) | Small molecule interaction annotations | direct |
+| [mutation_effects](mutation_effects.md) | * <br/> [MutationEffect](MutationEffect.md) | Effects of mutations present in the sample | direct |
+| [ptm_annotations](ptm_annotations.md) | * <br/> [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modification annotations | direct |
+| [biophysical_properties](biophysical_properties.md) | * <br/> [BiophysicalProperty](BiophysicalProperty.md) | Measured or predicted biophysical properties | direct |
+| [evolutionary_conservation](evolutionary_conservation.md) | 0..1 <br/> [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation data | direct |
+| [conformational_ensemble](conformational_ensemble.md) | 0..1 <br/> [ConformationalEnsemble](ConformationalEnsemble.md) | Conformational states and dynamics | direct |
+| [database_cross_references](database_cross_references.md) | * <br/> [DatabaseCrossReference](DatabaseCrossReference.md) | Cross-references to external databases | direct |
+| [protein_name](protein_name.md) | 0..1 <br/> [String](String.md) | Name of the protein | direct |
+| [construct](construct.md) | 0..1 <br/> [String](String.md) | Construct description (e | direct |
+| [tag](tag.md) | 0..1 <br/> [String](String.md) | Affinity tag (e | direct |
+| [mutations](mutations.md) | 0..1 <br/> [String](String.md) | Mutations present in the sample | direct |
+| [expression_system](expression_system.md) | 0..1 <br/> [String](String.md) | Expression system used | direct |
+| [ligand](ligand.md) | 0..1 <br/> [String](String.md) | Ligand or small molecule bound to sample | direct |
+| [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Study](Study.md) | [samples](samples.md) | range | [Sample](Sample.md) |
+| [Sample](Sample.md) | [parent_sample_id](parent_sample_id.md) | range | [Sample](Sample.md) |
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lambda-ber-schema/
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | lambdaber:Sample |
+| native | lambdaber:Sample |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: Sample
+description: A biological sample used in structural biology experiments
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  sample_code:
+    name: sample_code
+    description: Human-friendly laboratory identifier or facility code for the sample
+      (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference
+      and tracking within laboratory workflows.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    required: true
+  sample_type:
+    name: sample_type
+    description: Type of biological sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: SampleTypeEnum
+    required: true
+  molecular_composition:
+    name: molecular_composition
+    description: Description of molecular composition including sequences, modifications,
+      ligands
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: MolecularComposition
+  molecular_weight:
+    name: molecular_weight
+    description: Molecular weight, typically specified in kilodaltons (kDa). Data
+      providers may specify alternative units (e.g., Daltons, g/mol) by including
+      the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  concentration:
+    name: concentration
+    description: Sample concentration, typically specified in mg/mL or µM. Data providers
+      may specify alternative units (e.g., molar, g/L) by including the unit in the
+      QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  buffer_composition:
+    name: buffer_composition
+    description: Buffer composition including pH, salts, additives
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - MeasurementConditions
+    range: BufferComposition
+  preparation_method:
+    name: preparation_method
+    description: Method used to prepare the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+  storage_conditions:
+    name: storage_conditions
+    description: Storage conditions for the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: StorageConditions
+  organism:
+    name: organism
+    description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis
+      thaliana)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: OntologyTerm
+  anatomy:
+    name: anatomy
+    description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: OntologyTerm
+  cell_type:
+    name: cell_type
+    description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: OntologyTerm
+  parent_sample_id:
+    name: parent_sample_id
+    description: Reference to parent sample for derivation tracking
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: Sample
+  purity_percentage:
+    name: purity_percentage
+    description: 'Sample purity, typically specified as a percentage (range: 0-100).
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  quality_metrics:
+    name: quality_metrics
+    description: Quality control metrics for the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - ExperimentRun
+  functional_sites:
+    name: functional_sites
+    description: Functional site annotations for proteins in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: FunctionalSite
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  structural_features:
+    name: structural_features
+    description: Structural feature annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: StructuralFeature
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_interactions:
+    name: protein_interactions
+    description: Protein-protein interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ProteinProteinInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ligand_interactions:
+    name: ligand_interactions
+    description: Small molecule interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - FunctionalSite
+    - AggregatedProteinView
+    range: LigandInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  mutation_effects:
+    name: mutation_effects
+    description: Effects of mutations present in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: MutationEffect
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ptm_annotations:
+    name: ptm_annotations
+    description: Post-translational modification annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: PostTranslationalModification
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  biophysical_properties:
+    name: biophysical_properties
+    description: Measured or predicted biophysical properties
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: BiophysicalProperty
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evolutionary_conservation:
+    name: evolutionary_conservation
+    description: Evolutionary conservation data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: EvolutionaryConservation
+    inlined: true
+  conformational_ensemble:
+    name: conformational_ensemble
+    description: Conformational states and dynamics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ConformationalEnsemble
+    inlined: true
+  database_cross_references:
+    name: database_cross_references
+    description: Cross-references to external databases
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Sample
+    range: DatabaseCrossReference
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    domain_of:
+    - Sample
+    range: string
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: Sample
+description: A biological sample used in structural biology experiments
+from_schema: https://w3id.org/lambda-ber-schema/
+is_a: NamedThing
+attributes:
+  sample_code:
+    name: sample_code
+    description: Human-friendly laboratory identifier or facility code for the sample
+      (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference
+      and tracking within laboratory workflows.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sample_code
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+    required: true
+  sample_type:
+    name: sample_type
+    description: Type of biological sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sample_type
+    owner: Sample
+    domain_of:
+    - Sample
+    range: SampleTypeEnum
+    required: true
+  molecular_composition:
+    name: molecular_composition
+    description: Description of molecular composition including sequences, modifications,
+      ligands
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: molecular_composition
+    owner: Sample
+    domain_of:
+    - Sample
+    range: MolecularComposition
+  molecular_weight:
+    name: molecular_weight
+    description: Molecular weight, typically specified in kilodaltons (kDa). Data
+      providers may specify alternative units (e.g., Daltons, g/mol) by including
+      the unit in the QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: molecular_weight
+    owner: Sample
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  concentration:
+    name: concentration
+    description: Sample concentration, typically specified in mg/mL or µM. Data providers
+      may specify alternative units (e.g., molar, g/L) by including the unit in the
+      QuantityValue.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: concentration
+    owner: Sample
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  buffer_composition:
+    name: buffer_composition
+    description: Buffer composition including pH, salts, additives
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: buffer_composition
+    owner: Sample
+    domain_of:
+    - Sample
+    - MeasurementConditions
+    range: BufferComposition
+  preparation_method:
+    name: preparation_method
+    description: Method used to prepare the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: preparation_method
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  storage_conditions:
+    name: storage_conditions
+    description: Storage conditions for the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: storage_conditions
+    owner: Sample
+    domain_of:
+    - Sample
+    range: StorageConditions
+  organism:
+    name: organism
+    description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis
+      thaliana)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: organism
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: OntologyTerm
+  anatomy:
+    name: anatomy
+    description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: anatomy
+    owner: Sample
+    domain_of:
+    - Sample
+    range: OntologyTerm
+  cell_type:
+    name: cell_type
+    description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: cell_type
+    owner: Sample
+    domain_of:
+    - Sample
+    range: OntologyTerm
+  parent_sample_id:
+    name: parent_sample_id
+    description: Reference to parent sample for derivation tracking
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: parent_sample_id
+    owner: Sample
+    domain_of:
+    - Sample
+    range: Sample
+  purity_percentage:
+    name: purity_percentage
+    description: 'Sample purity, typically specified as a percentage (range: 0-100).
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: purity_percentage
+    owner: Sample
+    domain_of:
+    - Sample
+    range: QuantityValue
+    inlined: true
+  quality_metrics:
+    name: quality_metrics
+    description: Quality control metrics for the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: quality_metrics
+    owner: Sample
+    domain_of:
+    - Sample
+    - ExperimentRun
+    range: string
+  functional_sites:
+    name: functional_sites
+    description: Functional site annotations for proteins in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: functional_sites
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: FunctionalSite
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  structural_features:
+    name: structural_features
+    description: Structural feature annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: structural_features
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: StructuralFeature
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_interactions:
+    name: protein_interactions
+    description: Protein-protein interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: protein_interactions
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ProteinProteinInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ligand_interactions:
+    name: ligand_interactions
+    description: Small molecule interaction annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ligand_interactions
+    owner: Sample
+    domain_of:
+    - Sample
+    - FunctionalSite
+    - AggregatedProteinView
+    range: LigandInteraction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  mutation_effects:
+    name: mutation_effects
+    description: Effects of mutations present in the sample
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: mutation_effects
+    owner: Sample
+    domain_of:
+    - Sample
+    range: MutationEffect
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ptm_annotations:
+    name: ptm_annotations
+    description: Post-translational modification annotations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: ptm_annotations
+    owner: Sample
+    domain_of:
+    - Sample
+    range: PostTranslationalModification
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  biophysical_properties:
+    name: biophysical_properties
+    description: Measured or predicted biophysical properties
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: biophysical_properties
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: BiophysicalProperty
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evolutionary_conservation:
+    name: evolutionary_conservation
+    description: Evolutionary conservation data
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: evolutionary_conservation
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: EvolutionaryConservation
+    inlined: true
+  conformational_ensemble:
+    name: conformational_ensemble
+    description: Conformational states and dynamics
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: conformational_ensemble
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: ConformationalEnsemble
+    inlined: true
+  database_cross_references:
+    name: database_cross_references
+    description: Cross-references to external databases
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: database_cross_references
+    owner: Sample
+    domain_of:
+    - Sample
+    range: DatabaseCrossReference
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  protein_name:
+    name: protein_name
+    description: Name of the protein
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Protein_Name'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Protein_Name
+    alias: protein_name
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  construct:
+    name: construct
+    description: Construct description (e.g., domain boundaries, truncations)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Construct'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Construct
+    alias: construct
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  tag:
+    name: tag
+    description: Affinity tag (e.g., His6, GST, MBP)
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Tag'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Tag
+    alias: tag
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  mutations:
+    name: mutations
+    description: Mutations present in the sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Mutations'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Mutations
+    alias: mutations
+    owner: Sample
+    domain_of:
+    - Sample
+    - AggregatedProteinView
+    range: string
+  expression_system:
+    name: expression_system
+    description: Expression system used
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Expression_System'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Expression_System
+    alias: expression_system
+    owner: Sample
+    domain_of:
+    - Sample
+    - SamplePreparation
+    range: string
+  ligand:
+    name: ligand
+    description: Ligand or small molecule bound to sample
+    comments:
+    - 'Maps to NSLS2 spreadsheet: Ligand'
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: nsls2:Ligand
+    alias: ligand
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+  id:
+    name: id
+    description: Globally unique identifier as an IRI or CURIE for machine processing
+      and external references. Used for linking data across systems and semantic web
+      integration.
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Sample
+    domain_of:
+    - NamedThing
+    - Attribute
+    range: uriorcurie
+    required: true
+  title:
+    name: title
+    description: A human-readable name or title for this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: Sample
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    description: A detailed textual description of this entity
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: description
+    owner: Sample
+    domain_of:
+    - NamedThing
+    - AttributeGroup
+    range: string
+
+```
+</details>
