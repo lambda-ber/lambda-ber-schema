@@ -130,22 +130,38 @@ using SAXS, negative-stain EM, and native mass spectrometry.
 
 <https://example.org/kibler2024/img/em-classes> a lambdaber:Image ;
     lambdaber:description "2D class averages from negative stain EM" ;
-    lambdaber:dimensions_x 2048 ;
-    lambdaber:dimensions_y 2048 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2048.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2048.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "hetBGL03-15-18_class_averages.png" ;
-    lambdaber:pixel_size "1.98"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.98"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 
 <https://example.org/kibler2024/img/saxs-profile> a lambdaber:Image ;
     lambdaber:description "SAXS scattering profile with Guinier fit" ;
-    lambdaber:dimensions_x 1200 ;
-    lambdaber:dimensions_y 800 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1200.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "hetBGL03-15-18_saxs_profile.png" ;
-    lambdaber:pixel_size "1.0"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.0"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 
 <https://example.org/kibler2024/img/structural-comparison> a lambdaber:Image ;
     lambdaber:description "Overlay of design model with SAXS envelope" ;
-    lambdaber:dimensions_x 1600 ;
-    lambdaber:dimensions_y 1200 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1600.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1200.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "hetBGL_structural_comparison.png" .
 
 <https://example.org/kibler2024/prep/expression> a lambdaber:SamplePreparation ;

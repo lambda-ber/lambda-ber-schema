@@ -1,14 +1,14 @@
 
 # Slot: pixel_size
 
-Pixel size in Angstroms
+Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:image__pixel_size](https://w3id.org/lambda-ber-schema/image__pixel_size)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

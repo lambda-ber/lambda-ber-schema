@@ -47,7 +47,9 @@ lambdaber:file_1EE2_sf a lambdaber:DataFile ;
 lambdaber:img_1EE2_diffraction_001 a lambdaber:Image ;
     lambdaber:acquisition_date "1998-11-23" ;
     lambdaber:file_name "1ee2_diffraction_pattern.img" ;
-    lambdaber:pixel_size "0.15"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.15"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 
 lambdaber:prep_1EE2_001 a lambdaber:SamplePreparation ;
     lambdaber:description "Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K, NAD+ and Cholic Acid" ;

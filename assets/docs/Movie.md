@@ -6,7 +6,7 @@ Raw cryo-EM movie with frame-by-frame metadata for motion correction
 URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Image2D]^-[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;pixel_size_unbinned:float%20%3F;timestamp:string%20%3F;stage_position_x:float%20%3F;stage_position_y:float%20%3F;stage_position_z:float%20%3F;nominal_defocus:float%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;ice_thickness_estimate:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;defocus(i):float%20%3F;astigmatism(i):float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[Image2D]^-[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;pixel_size_unbinned:float%20%3F;timestamp:string%20%3F;stage_position_x:float%20%3F;stage_position_y:float%20%3F;stage_position_z:float%20%3F;nominal_defocus:float%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;ice_thickness_estimate:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;defocus(i):float%20%3F;astigmatism(i):float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;timestamp:string%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<ice_thickness_estimate%200..1-++[Movie&#124;frames:integer%20%3F;super_resolution:boolean%20%3F;timestamp:string%20%3F;dose_per_frame:float%20%3F;beam_shift_x:float%20%3F;beam_shift_y:float%20%3F;grid_square_id:string%20%3F;hole_id:string%20%3F;acquisition_group:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<nominal_defocus%200..1-++[Movie],[QuantityValue]<stage_position_z%200..1-++[Movie],[QuantityValue]<stage_position_y%200..1-++[Movie],[QuantityValue]<stage_position_x%200..1-++[Movie],[QuantityValue]<pixel_size_unbinned%200..1-++[Movie],[Image2D]^-[Movie],[Image2D])
 
 ## Parents
 
@@ -24,23 +24,23 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
      * Description: Whether super-resolution mode was used
      * Range: [Boolean](types/Boolean.md)
  * [➞pixel_size_unbinned](movie__pixel_size_unbinned.md)  <sub>0..1</sub>
-     * Description: Unbinned pixel size in Angstroms per pixel
-     * Range: [Float](types/Float.md)
+     * Description: Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞timestamp](movie__timestamp.md)  <sub>0..1</sub>
      * Description: Acquisition timestamp
      * Range: [String](types/String.md)
  * [➞stage_position_x](movie__stage_position_x.md)  <sub>0..1</sub>
-     * Description: Stage X position in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞stage_position_y](movie__stage_position_y.md)  <sub>0..1</sub>
-     * Description: Stage Y position in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞stage_position_z](movie__stage_position_z.md)  <sub>0..1</sub>
-     * Description: Stage Z position in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞nominal_defocus](movie__nominal_defocus.md)  <sub>0..1</sub>
-     * Description: Nominal defocus value in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose_per_frame](movie__dose_per_frame.md)  <sub>0..1</sub>
      * Description: Electron dose per frame in e-/Angstrom^2
      * Range: [Float](types/Float.md)
@@ -51,8 +51,8 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
      * Description: Beam shift Y in microradians
      * Range: [Float](types/Float.md)
  * [➞ice_thickness_estimate](movie__ice_thickness_estimate.md)  <sub>0..1</sub>
-     * Description: Estimated ice thickness in nanometers
-     * Range: [Float](types/Float.md)
+     * Description: Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞grid_square_id](movie__grid_square_id.md)  <sub>0..1</sub>
      * Description: Grid square identifier
      * Range: [String](types/String.md)
@@ -81,23 +81,23 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞pixel_size](image__pixel_size.md)  <sub>0..1</sub>
-     * Description: Pixel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
      * Range: [Float](types/Float.md)
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
-     * Description: Defocus value in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞astigmatism](image2D__astigmatism.md)  <sub>0..1</sub>
-     * Description: Astigmatism value in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)

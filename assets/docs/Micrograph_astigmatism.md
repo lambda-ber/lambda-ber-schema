@@ -8,7 +8,7 @@ URI: [lambdaber:Micrograph_astigmatism](https://w3id.org/lambda-ber-schema/Micro
 
 ## Domain and Range
 
-[Micrograph](Micrograph.md) &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+[Micrograph](Micrograph.md) &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

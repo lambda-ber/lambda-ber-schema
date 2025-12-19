@@ -3,15 +3,25 @@ title: GFP fluorescence image of stress response proteins
 description: Confocal fluorescence image showing GFP-tagged heat shock proteins
 file_name: hsp70_gfp_z042.tif
 acquisition_date: '2024-05-22T09:15:00'
-pixel_size: 0.065
-dimensions_x: 2048
-dimensions_y: 2048
+pixel_size:
+  numeric_value: 0.065
+  unit: Angstroms
+dimensions_x:
+  numeric_value: 2048
+  unit: pixels
+dimensions_y:
+  numeric_value: 2048
+  unit: pixels
 exposure_time:
   numeric_value: 0.2
   unit: seconds
 dose: 0
-defocus: 0
-astigmatism: 0
+defocus:
+  numeric_value: 0
+  unit: micrometers
+astigmatism:
+  numeric_value: 0
+  unit: Angstroms
 excitation_wavelength: 488
 emission_wavelength: 509
 excitation_filter: 488/10 nm bandpass

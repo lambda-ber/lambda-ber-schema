@@ -6,7 +6,7 @@ Motion-corrected micrograph derived from movie
 URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Image2D]^-[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;defocus_u:float%20%3F;defocus_v:float%20%3F;astigmatism_angle:float%20%3F;resolution_fit_limit:float%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;defocus:float%20%3F;astigmatism:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[Image2D]^-[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;defocus_u:float%20%3F;defocus_v:float%20%3F;astigmatism_angle:float%20%3F;resolution_fit_limit:float%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;defocus:float%20%3F;astigmatism:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image2D])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<astigmatism%200..1-++[Micrograph&#124;dose:float%20%3F;origin_movie_id:string%20%3F;ctf_quality_score:float%20%3F;pixel_size:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Micrograph],[QuantityValue]<resolution_fit_limit%200..1-++[Micrograph],[QuantityValue]<astigmatism_angle%200..1-++[Micrograph],[QuantityValue]<defocus_v%200..1-++[Micrograph],[QuantityValue]<defocus_u%200..1-++[Micrograph],[Image2D]^-[Micrograph],[Image2D])
 
 ## Parents
 
@@ -27,17 +27,17 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
      * Description: Reference to original movie file
      * Range: [String](types/String.md)
  * [➞defocus_u](micrograph__defocus_u.md)  <sub>0..1</sub>
-     * Description: Defocus U in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞defocus_v](micrograph__defocus_v.md)  <sub>0..1</sub>
-     * Description: Defocus V in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞astigmatism_angle](micrograph__astigmatism_angle.md)  <sub>0..1</sub>
-     * Description: Astigmatism angle in degrees
-     * Range: [Float](types/Float.md)
+     * Description: Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞resolution_fit_limit](micrograph__resolution_fit_limit.md)  <sub>0..1</sub>
-     * Description: Resolution fit limit in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞ctf_quality_score](micrograph__ctf_quality_score.md)  <sub>0..1</sub>
      * Description: CTF estimation quality score
      * Range: [Float](types/Float.md)
@@ -46,10 +46,10 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
      * Range: [String](types/String.md)
  * [Micrograph➞defocus](Micrograph_defocus.md)  <sub>0..1</sub>
      * Description: Measured defocus in micrometers
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
  * [Micrograph➞astigmatism](Micrograph_astigmatism.md)  <sub>0..1</sub>
      * Description: Astigmatism in Angstroms
-     * Range: [Float](types/Float.md)
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from Image2D:
 
@@ -69,11 +69,11 @@ URI: [lambdaber:Micrograph](https://w3id.org/lambda-ber-schema/Micrograph)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)

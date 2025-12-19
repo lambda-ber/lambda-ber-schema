@@ -3,9 +3,15 @@ title: FTIR spectroscopic image of protein sample
 description: FTIR image showing protein secondary structure and lipid distribution
 file_name: sample_ftir_map_001.h5
 acquisition_date: '2024-05-20T14:30:00'
-pixel_size: 5.5
-dimensions_x: 128
-dimensions_y: 128
+pixel_size:
+  numeric_value: 5.5
+  unit: Angstroms
+dimensions_x:
+  numeric_value: 128
+  unit: pixels
+dimensions_y:
+  numeric_value: 128
+  unit: pixels
 exposure_time:
   numeric_value: 0.5
   unit: seconds

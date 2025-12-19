@@ -118,14 +118,20 @@ lambdaber:file_raw_movies_001 a lambdaber:DataFile ;
 lambdaber:img_mic_001 a lambdaber:Image ;
     dcterms:title "Representative micrograph" ;
     lambdaber:acquisition_date "2024-03-20T10:15:00" ;
-    lambdaber:dimensions_x 5760 ;
-    lambdaber:dimensions_y 4092 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5760.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4092.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:dose "40.0"^^xsd:float ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "seconds" ] ;
     lambdaber:file_name "mic_001.mrc" ;
-    lambdaber:pixel_size "0.85"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.85"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 
 lambdaber:prep_tfiid_dna_grid_002 a lambdaber:SamplePreparation ;
     dcterms:title "TFIID-DNA complex grid preparation" ;

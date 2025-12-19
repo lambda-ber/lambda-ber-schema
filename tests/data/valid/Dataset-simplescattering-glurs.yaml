@@ -174,11 +174,19 @@ studies:
   images:
   - id: https://simplescattering.com/img/sec-chromatogram
     file_name: GluRS_SEC_chromatogram.png
-    dimensions_x: 1200
-    dimensions_y: 800
+    dimensions_x:
+      numeric_value: 1200
+      unit: pixels
+    dimensions_y:
+      numeric_value: 800
+      unit: pixels
     description: SEC elution profile with SAXS intensity
   - id: https://simplescattering.com/img/guinier-plot
     file_name: GluRS_Guinier_plot.png
-    dimensions_x: 800
-    dimensions_y: 600
+    dimensions_x:
+      numeric_value: 800
+      unit: pixels
+    dimensions_y:
+      numeric_value: 600
+      unit: pixels
     description: Guinier analysis for Rg determination

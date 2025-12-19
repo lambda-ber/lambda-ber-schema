@@ -344,24 +344,48 @@
           "id": "https://example.org/kibler2024/img/saxs-profile",
           "description": "SAXS scattering profile with Guinier fit",
           "file_name": "hetBGL03-15-18_saxs_profile.png",
-          "pixel_size": 1.0,
-          "dimensions_x": 1200,
-          "dimensions_y": 800
+          "pixel_size": {
+            "numeric_value": 1.0,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 1200.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 800.0,
+            "unit": "pixels"
+          }
         },
         {
           "id": "https://example.org/kibler2024/img/em-classes",
           "description": "2D class averages from negative stain EM",
           "file_name": "hetBGL03-15-18_class_averages.png",
-          "pixel_size": 1.98,
-          "dimensions_x": 2048,
-          "dimensions_y": 2048
+          "pixel_size": {
+            "numeric_value": 1.98,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 2048.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 2048.0,
+            "unit": "pixels"
+          }
         },
         {
           "id": "https://example.org/kibler2024/img/structural-comparison",
           "description": "Overlay of design model with SAXS envelope",
           "file_name": "hetBGL_structural_comparison.png",
-          "dimensions_x": 1600,
-          "dimensions_y": 1200
+          "dimensions_x": {
+            "numeric_value": 1600.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 1200.0,
+            "unit": "pixels"
+          }
         }
       ]
     }

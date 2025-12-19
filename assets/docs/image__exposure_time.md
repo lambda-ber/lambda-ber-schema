@@ -1,14 +1,14 @@
 
 # Slot: exposure_time
 
-Exposure time in seconds
+Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:image__exposure_time](https://w3id.org/lambda-ber-schema/image__exposure_time)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

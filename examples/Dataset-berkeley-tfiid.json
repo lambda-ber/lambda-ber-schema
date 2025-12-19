@@ -358,9 +358,18 @@
           "title": "Representative micrograph",
           "file_name": "mic_001.mrc",
           "acquisition_date": "2024-03-20T10:15:00",
-          "pixel_size": 0.85,
-          "dimensions_x": 5760,
-          "dimensions_y": 4092,
+          "pixel_size": {
+            "numeric_value": 0.85,
+            "unit": "Angstroms"
+          },
+          "dimensions_x": {
+            "numeric_value": 5760.0,
+            "unit": "pixels"
+          },
+          "dimensions_y": {
+            "numeric_value": 4092.0,
+            "unit": "pixels"
+          },
           "exposure_time": {
             "numeric_value": 2.5,
             "unit": "seconds"

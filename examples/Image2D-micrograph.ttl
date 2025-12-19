@@ -7,15 +7,25 @@
 lambdaber:img2d_mic_tfiid_042 a lambdaber:Image2D ;
     dcterms:title "TFIID micrograph 042" ;
     lambdaber:acquisition_date "2024-03-20T10:15:42" ;
-    lambdaber:astigmatism "0.05"^^xsd:float ;
-    lambdaber:defocus "-2.1"^^xsd:float ;
+    lambdaber:astigmatism [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.05"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
+    lambdaber:defocus [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "-2.1"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
     lambdaber:description "High-quality micrograph showing TFIID particles" ;
-    lambdaber:dimensions_x 5760 ;
-    lambdaber:dimensions_y 4092 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5760.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4092.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:dose "40.0"^^xsd:float ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.5"^^xsd:float ;
             lambdaber:unit "seconds" ] ;
     lambdaber:file_name "FoilHole_19234567_Data_19234568_19234569_20240320_101542_fractions.mrc" ;
-    lambdaber:pixel_size "0.85"^^xsd:float .
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.85"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 

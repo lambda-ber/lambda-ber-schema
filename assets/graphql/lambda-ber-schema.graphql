@@ -1064,13 +1064,13 @@ type FluorescenceImage
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     excitationWavelength: Float
     emissionWavelength: Float
     excitationFilter: String
@@ -1096,9 +1096,9 @@ type FTIRImage
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
     wavenumberMin: Float
@@ -1142,9 +1142,9 @@ type Image
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
   }
@@ -1156,13 +1156,13 @@ type Image2D
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
   }
 
 type Image3D
@@ -1172,13 +1172,13 @@ type Image3D
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    dimensionsZ: Integer
-    voxelSize: Float
+    dimensionsZ: QuantityValue
+    voxelSize: QuantityValue
     reconstructionMethod: String
   }
 
@@ -1239,19 +1239,19 @@ type Micrograph
     description: String
     fileName: String!
     acquisitionDate: String
-    dimensionsX: Integer
-    dimensionsY: Integer
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
     originMovieId: String
-    defocusU: Float
-    defocusV: Float
-    astigmatismAngle: Float
-    resolutionFitLimit: Float
+    defocusU: QuantityValue
+    defocusV: QuantityValue
+    astigmatismAngle: QuantityValue
+    resolutionFitLimit: QuantityValue
     ctfQualityScore: Float
     pixelSize: String
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
   }
 
 type MolecularComposition
@@ -1282,25 +1282,25 @@ type Movie
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     frames: Integer
     superResolution: Boolean
-    pixelSizeUnbinned: Float
+    pixelSizeUnbinned: QuantityValue
     timestamp: String
-    stagePositionX: Float
-    stagePositionY: Float
-    stagePositionZ: Float
-    nominalDefocus: Float
+    stagePositionX: QuantityValue
+    stagePositionY: QuantityValue
+    stagePositionZ: QuantityValue
+    nominalDefocus: QuantityValue
     dosePerFrame: Float
     beamShiftX: Float
     beamShiftY: Float
-    iceThicknessEstimate: Float
+    iceThicknessEstimate: QuantityValue
     gridSquareId: String
     holeId: String
     acquisitionGroup: String
@@ -1358,13 +1358,13 @@ type OpticalImage
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     illuminationType: IlluminationTypeEnum
     magnification: Float
     numericalAperture: Float
@@ -1864,13 +1864,13 @@ type XRFImage
     description: String
     fileName: String!
     acquisitionDate: String
-    pixelSize: Float
-    dimensionsX: Integer
-    dimensionsY: Integer
+    pixelSize: QuantityValue
+    dimensionsX: QuantityValue
+    dimensionsY: QuantityValue
     exposureTime: QuantityValue
     dose: Float
-    defocus: Float
-    astigmatism: Float
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     beamEnergy: Float
     beamSize: Float
     dwellTime: Float

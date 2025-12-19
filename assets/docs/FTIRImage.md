@@ -6,7 +6,7 @@ Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composi
 URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[Image],[Image]^-[FTIRImage&#124;wavenumber_min:float%20%3F;wavenumber_max:float%20%3F;spectral_resolution:float%20%3F;number_of_scans:integer%20%3F;apodization_function:string%20%3F;molecular_signatures:string%20*;background_correction:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F])
 
 ## Parents
 
@@ -57,17 +57,17 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞pixel_size](image__pixel_size.md)  <sub>0..1</sub>
-     * Description: Pixel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
      * Range: [Float](types/Float.md)

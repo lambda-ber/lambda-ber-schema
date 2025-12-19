@@ -8,15 +8,25 @@ lambdaber:img3d_map_ribosome_001 a lambdaber:Image3D ;
     dcterms:title "Human 80S ribosome reconstruction" ;
     lambdaber:acquisition_date "2024-04-28T14:30:00" ;
     lambdaber:description "3D reconstruction of human 80S ribosome at 2.9A resolution" ;
-    lambdaber:dimensions_x 440 ;
-    lambdaber:dimensions_y 440 ;
-    lambdaber:dimensions_z 440 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "440.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "440.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_z [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "440.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:dose "0.0"^^xsd:float ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.0"^^xsd:float ;
             lambdaber:unit "seconds" ] ;
     lambdaber:file_name "ribosome_80S_final_sharpened.mrc" ;
-    lambdaber:pixel_size "1.06"^^xsd:float ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.06"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
     lambdaber:reconstruction_method "Non-uniform refinement in cryoSPARC with C1 symmetry" ;
-    lambdaber:voxel_size "1.06"^^xsd:float .
+    lambdaber:voxel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.06"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
 

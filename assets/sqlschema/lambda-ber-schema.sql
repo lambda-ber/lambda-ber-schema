@@ -382,88 +382,88 @@
 -- # Class: Image Description: An image file from structural biology experiments
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Image2D Description: A 2D image (micrograph, diffraction pattern)
---     * Slot: defocus Description: Defocus value in micrometers
---     * Slot: astigmatism Description: Astigmatism value in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Image3D Description: A 3D volume or tomogram
---     * Slot: dimensions_z Description: Image depth in pixels/slices
---     * Slot: voxel_size Description: Voxel size in Angstroms
 --     * Slot: reconstruction_method Description: Method used for 3D reconstruction
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: dimensions_z_id Description: Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: voxel_size_id Description: Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Movie Description: Raw cryo-EM movie with frame-by-frame metadata for motion correction
 --     * Slot: frames Description: Number of frames in the movie
 --     * Slot: super_resolution Description: Whether super-resolution mode was used
---     * Slot: pixel_size_unbinned Description: Unbinned pixel size in Angstroms per pixel
 --     * Slot: timestamp Description: Acquisition timestamp
---     * Slot: stage_position_x Description: Stage X position in micrometers
---     * Slot: stage_position_y Description: Stage Y position in micrometers
---     * Slot: stage_position_z Description: Stage Z position in micrometers
---     * Slot: nominal_defocus Description: Nominal defocus value in micrometers
 --     * Slot: dose_per_frame Description: Electron dose per frame in e-/Angstrom^2
 --     * Slot: beam_shift_x Description: Beam shift X in microradians
 --     * Slot: beam_shift_y Description: Beam shift Y in microradians
---     * Slot: ice_thickness_estimate Description: Estimated ice thickness in nanometers
 --     * Slot: grid_square_id Description: Grid square identifier
 --     * Slot: hole_id Description: Hole identifier within grid square
 --     * Slot: acquisition_group Description: Acquisition group identifier (e.g., template or area)
---     * Slot: defocus Description: Defocus value in micrometers
---     * Slot: astigmatism Description: Astigmatism value in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: pixel_size_unbinned_id Description: Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: stage_position_x_id Description: Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: stage_position_y_id Description: Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: stage_position_z_id Description: Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: nominal_defocus_id Description: Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: ice_thickness_estimate_id Description: Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: Micrograph Description: Motion-corrected micrograph derived from movie
 --     * Slot: dose Description: Total electron dose in e-/Angstrom^2
 --     * Slot: origin_movie_id Description: Reference to original movie file
---     * Slot: defocus_u Description: Defocus U in micrometers
---     * Slot: defocus_v Description: Defocus V in micrometers
---     * Slot: astigmatism_angle Description: Astigmatism angle in degrees
---     * Slot: resolution_fit_limit Description: Resolution fit limit in Angstroms
 --     * Slot: ctf_quality_score Description: CTF estimation quality score
---     * Slot: defocus Description: Measured defocus in micrometers
---     * Slot: astigmatism Description: Astigmatism in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Final pixel size in Angstroms per pixel
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: defocus_u_id Description: Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_v_id Description: Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_angle_id Description: Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: resolution_fit_limit_id Description: Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_id Description: Measured defocus in micrometers
+--     * Slot: astigmatism_id Description: Astigmatism in Angstroms
+--     * Slot: pixel_size_id Description: Final pixel size in Angstroms per pixel
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: FTIRImage Description: Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
 --     * Slot: wavenumber_min Description: Minimum wavenumber in cm⁻¹
@@ -474,13 +474,13 @@
 --     * Slot: background_correction Description: Method used for background correction
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: FluorescenceImage Description: Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 --     * Slot: excitation_wavelength Description: Excitation wavelength in nanometers
@@ -492,17 +492,17 @@
 --     * Slot: laser_power Description: Laser power in milliwatts or percentage
 --     * Slot: pinhole_size Description: Pinhole size in Airy units for confocal microscopy
 --     * Slot: quantum_yield Description: Quantum yield of the fluorophore
---     * Slot: defocus Description: Defocus value in micrometers
---     * Slot: astigmatism Description: Astigmatism value in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: OpticalImage Description: Visible light optical microscopy or photography image
 --     * Slot: illumination_type Description: Type of illumination (brightfield, darkfield, phase contrast, DIC)
@@ -510,17 +510,17 @@
 --     * Slot: numerical_aperture Description: Numerical aperture of the objective lens
 --     * Slot: white_balance Description: White balance settings
 --     * Slot: contrast_method Description: Contrast enhancement method used
---     * Slot: defocus Description: Defocus value in micrometers
---     * Slot: astigmatism Description: Astigmatism value in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: XRFImage Description: X-ray fluorescence (XRF) image showing elemental distribution
 --     * Slot: beam_energy Description: X-ray beam energy in keV
@@ -530,18 +530,18 @@
 --     * Slot: detector_technology Description: Type of X-ray detector technology used
 --     * Slot: detector_model Description: Specific detector model used for XRF measurement
 --     * Slot: calibration_standard Description: Reference standard used for calibration
---     * Slot: defocus Description: Defocus value in micrometers
---     * Slot: astigmatism Description: Astigmatism value in Angstroms
 --     * Slot: file_name Description: Image file name
 --     * Slot: acquisition_date Description: Date image was acquired
---     * Slot: pixel_size Description: Pixel size in Angstroms
---     * Slot: dimensions_x Description: Image width in pixels
---     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: dose Description: Electron dose in e-/Å²
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
 --     * Slot: flux_id Description: Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
 -- # Class: ImageFeature Description: Semantic annotations describing features identified in images using controlled vocabulary terms
 --     * Slot: id
@@ -1574,31 +1574,31 @@ CREATE TABLE "Dataset_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Dataset_id", keywords),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);
+);CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(20) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
+);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
 CREATE TABLE "BufferComposition_components" (
 	"BufferComposition_id" INTEGER,
 	components TEXT,
@@ -1634,13 +1634,13 @@ CREATE TABLE "ProteinAnnotation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinAnnotation_id", publication_ids),
 	FOREIGN KEY("ProteinAnnotation_id") REFERENCES "ProteinAnnotation" (id)
-);CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");
+);CREATE INDEX "ix_ProteinAnnotation_publication_ids_ProteinAnnotation_id" ON "ProteinAnnotation_publication_ids" ("ProteinAnnotation_id");CREATE INDEX "ix_ProteinAnnotation_publication_ids_publication_ids" ON "ProteinAnnotation_publication_ids" (publication_ids);
 CREATE TABLE "ConformationalEnsemble_principal_motions" (
 	"ConformationalEnsemble_id" TEXT,
 	principal_motions TEXT,
 	PRIMARY KEY ("ConformationalEnsemble_id", principal_motions),
 	FOREIGN KEY("ConformationalEnsemble_id") REFERENCES "ConformationalEnsemble" (id)
-);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");
+);CREATE INDEX "ix_ConformationalEnsemble_principal_motions_ConformationalEnsemble_id" ON "ConformationalEnsemble_principal_motions" ("ConformationalEnsemble_id");CREATE INDEX "ix_ConformationalEnsemble_principal_motions_principal_motions" ON "ConformationalEnsemble_principal_motions" (principal_motions);
 CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	conserved_residues TEXT,
@@ -1664,7 +1664,7 @@ CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", publication_ids),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);
+);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -1901,103 +1901,136 @@ CREATE TABLE "DataFile" (
 CREATE TABLE "Image" (
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	"Study_id" TEXT,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Image_id" ON "Image" (id);
 CREATE TABLE "Image2D" (
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Image2D_id" ON "Image2D" (id);
 CREATE TABLE "Image3D" (
-	dimensions_z INTEGER,
-	voxel_size FLOAT,
 	reconstruction_method TEXT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	dimensions_z_id INTEGER,
+	voxel_size_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(dimensions_z_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(voxel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Image3D_id" ON "Image3D" (id);
 CREATE TABLE "Movie" (
 	frames INTEGER,
 	super_resolution BOOLEAN,
-	pixel_size_unbinned FLOAT,
 	timestamp TEXT,
-	stage_position_x FLOAT,
-	stage_position_y FLOAT,
-	stage_position_z FLOAT,
-	nominal_defocus FLOAT,
 	dose_per_frame FLOAT,
 	beam_shift_x FLOAT,
 	beam_shift_y FLOAT,
-	ice_thickness_estimate FLOAT,
 	grid_square_id TEXT,
 	hole_id TEXT,
 	acquisition_group TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	pixel_size_unbinned_id INTEGER,
+	stage_position_x_id INTEGER,
+	stage_position_y_id INTEGER,
+	stage_position_z_id INTEGER,
+	nominal_defocus_id INTEGER,
+	ice_thickness_estimate_id INTEGER,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(pixel_size_unbinned_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(stage_position_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(stage_position_y_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(stage_position_z_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(nominal_defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(ice_thickness_estimate_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Movie_id" ON "Movie" (id);
 CREATE TABLE "Micrograph" (
 	dose FLOAT,
 	origin_movie_id TEXT,
-	defocus_u FLOAT,
-	defocus_v FLOAT,
-	astigmatism_angle FLOAT,
-	resolution_fit_limit FLOAT,
 	ctf_quality_score FLOAT,
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	defocus_u_id INTEGER,
+	defocus_v_id INTEGER,
+	astigmatism_angle_id INTEGER,
+	resolution_fit_limit_id INTEGER,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(defocus_u_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(defocus_v_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_angle_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(resolution_fit_limit_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_Micrograph_id" ON "Micrograph" (id);
 CREATE TABLE "FTIRImage" (
@@ -2009,15 +2042,18 @@ CREATE TABLE "FTIRImage" (
 	background_correction TEXT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_FTIRImage_id" ON "FTIRImage" (id);
 CREATE TABLE "FluorescenceImage" (
@@ -2030,19 +2066,24 @@ CREATE TABLE "FluorescenceImage" (
 	laser_power FLOAT,
 	pinhole_size FLOAT,
 	quantum_yield FLOAT,
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_FluorescenceImage_id" ON "FluorescenceImage" (id);
 CREATE TABLE "OpticalImage" (
@@ -2051,19 +2092,24 @@ CREATE TABLE "OpticalImage" (
 	numerical_aperture FLOAT,
 	white_balance TEXT,
 	contrast_method TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_OpticalImage_id" ON "OpticalImage" (id);
 CREATE TABLE "XRFImage" (
@@ -2074,21 +2120,26 @@ CREATE TABLE "XRFImage" (
 	detector_technology VARCHAR(24),
 	detector_model TEXT,
 	calibration_standard TEXT,
-	defocus FLOAT,
-	astigmatism FLOAT,
 	file_name TEXT NOT NULL,
 	acquisition_date TEXT,
-	pixel_size FLOAT,
-	dimensions_x INTEGER,
-	dimensions_y INTEGER,
 	dose FLOAT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	flux_id INTEGER,
+	defocus_id INTEGER,
+	astigmatism_id INTEGER,
+	pixel_size_id INTEGER,
+	dimensions_x_id INTEGER,
+	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY(flux_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(defocus_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(astigmatism_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(exposure_time_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_XRFImage_id" ON "XRFImage" (id);
 CREATE TABLE "ExperimentalConditions" (
@@ -2193,7 +2244,7 @@ CREATE TABLE "ConformationalState_characteristic_features" (
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "ExperimentRun" (
 	experiment_code TEXT NOT NULL,
 	sample_id TEXT NOT NULL,
@@ -2454,13 +2505,13 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
@@ -2478,7 +2529,7 @@ CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	pdb_entries TEXT,
 	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
 CREATE TABLE "LigandInteraction" (
 	id INTEGER NOT NULL,
 	ligand_id TEXT NOT NULL,
@@ -2525,13 +2576,13 @@ CREATE TABLE "FunctionalSite_go_terms" (
 	go_terms TEXT,
 	PRIMARY KEY ("FunctionalSite_id", go_terms),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_go_terms_FunctionalSite_id" ON "FunctionalSite_go_terms" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_go_terms_go_terms" ON "FunctionalSite_go_terms" (go_terms);
+);CREATE INDEX "ix_FunctionalSite_go_terms_go_terms" ON "FunctionalSite_go_terms" (go_terms);CREATE INDEX "ix_FunctionalSite_go_terms_FunctionalSite_id" ON "FunctionalSite_go_terms" ("FunctionalSite_id");
 CREATE TABLE "FunctionalSite_publication_ids" (
 	"FunctionalSite_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("FunctionalSite_id", publication_ids),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");
+);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);
 CREATE TABLE "StructuralFeature_publication_ids" (
 	"StructuralFeature_id" TEXT,
 	publication_ids TEXT,
@@ -2543,7 +2594,7 @@ CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_interface_residues_interface_residues" ON "ProteinProteinInteraction_interface_residues" (interface_residues);
 CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	partner_interface_residues TEXT,
@@ -2561,22 +2612,22 @@ CREATE TABLE "ProteinProteinInteraction_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", publication_ids),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_publication_ids" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_publication_ids_publication_ids" ON "ProteinProteinInteraction_publication_ids" (publication_ids);
 CREATE TABLE "MutationEffect_publication_ids" (
 	"MutationEffect_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("MutationEffect_id", publication_ids),
 	FOREIGN KEY("MutationEffect_id") REFERENCES "MutationEffect" (id)
-);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);
+);CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");
 CREATE TABLE "PostTranslationalModification_publication_ids" (
 	"PostTranslationalModification_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("PostTranslationalModification_id", publication_ids),
 	FOREIGN KEY("PostTranslationalModification_id") REFERENCES "PostTranslationalModification" (id)
-);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);
+);CREATE INDEX "ix_PostTranslationalModification_publication_ids_publication_ids" ON "PostTranslationalModification_publication_ids" (publication_ids);CREATE INDEX "ix_PostTranslationalModification_publication_ids_PostTranslationalModification_id" ON "PostTranslationalModification_publication_ids" ("PostTranslationalModification_id");
 CREATE TABLE "LigandInteraction_binding_site_residues" (
 	"LigandInteraction_id" INTEGER,
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");

@@ -37,6 +37,19 @@ lambdaber:funcsite-aldh2-active a ns1:FunctionalSite ;
     ns1:go_terms "GO:0004029"^^xsd:anyURI,
         "GO:0006081"^^xsd:anyURI ;
     ns1:ligand_interactions [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.18"^^xsd:float ;
+            ns1:binding_affinity_type "km" ;
+            ns1:binding_affinity_unit "millimolar" ;
+            ns1:binding_site_residues "268",
+                "458" ;
+            ns1:interaction_distance "3.1"^^xsd:float ;
+            ns1:interaction_type "hydrogen_bond" ;
+            ns1:is_cofactor false ;
+            ns1:is_drug_like false ;
+            ns1:ligand_id "CHEBI:15343"^^xsd:anyURI ;
+            ns1:ligand_name "Acetaldehyde" ;
+            ns1:ligand_smiles "CC=O" ],
+        [ a ns1:LigandInteraction ;
             ns1:binding_affinity "0.08"^^xsd:float ;
             ns1:binding_affinity_type "km" ;
             ns1:binding_affinity_unit "millimolar" ;
@@ -49,20 +62,7 @@ lambdaber:funcsite-aldh2-active a ns1:FunctionalSite ;
             ns1:is_drug_like false ;
             ns1:ligand_id "CHEBI:57540"^^xsd:anyURI ;
             ns1:ligand_name "NAD+" ;
-            ns1:ligand_smiles "C1=CC(=C[N+](=C1)[C@H]2[C@@H]([C@@H]([C@H](O2)COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)N4C=NC5=C(N=CN=C54)N)O)O)O)O)C(=O)N" ],
-        [ a ns1:LigandInteraction ;
-            ns1:binding_affinity "0.18"^^xsd:float ;
-            ns1:binding_affinity_type "km" ;
-            ns1:binding_affinity_unit "millimolar" ;
-            ns1:binding_site_residues "268",
-                "458" ;
-            ns1:interaction_distance "3.1"^^xsd:float ;
-            ns1:interaction_type "hydrogen_bond" ;
-            ns1:is_cofactor false ;
-            ns1:is_drug_like false ;
-            ns1:ligand_id "CHEBI:15343"^^xsd:anyURI ;
-            ns1:ligand_name "Acetaldehyde" ;
-            ns1:ligand_smiles "CC=O" ] ;
+            ns1:ligand_smiles "C1=CC(=C[N+](=C1)[C@H]2[C@@H]([C@@H]([C@H](O2)COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)N4C=NC5=C(N=CN=C54)N)O)O)O)O)C(=O)N" ] ;
     ns1:pdb_entry "1O00" ;
     ns1:protein_id "P05091" ;
     ns1:residues "268",

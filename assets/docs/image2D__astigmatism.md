@@ -1,14 +1,14 @@
 
 # Slot: astigmatism
 
-Astigmatism value in Angstroms
+Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
 URI: [lambdaber:image2D__astigmatism](https://w3id.org/lambda-ber-schema/image2D__astigmatism)
 
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [Float](types/Float.md)
+None &#8594;  <sub>0..1</sub> [QuantityValue](QuantityValue.md)
 
 ## Parents
 

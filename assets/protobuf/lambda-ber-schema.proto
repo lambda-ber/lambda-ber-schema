@@ -381,13 +381,13 @@ message FluorescenceImage
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
   float excitationWavelength = 0
   float emissionWavelength = 0
   string excitationFilter = 0
@@ -417,9 +417,9 @@ message FTIRImage
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
   float wavenumberMin = 0
@@ -463,9 +463,9 @@ message Image
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
  }
@@ -477,13 +477,13 @@ message Image2D
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
  }
 // A 3D volume or tomogram
 message Image3D
@@ -493,13 +493,13 @@ message Image3D
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  integer dimensionsZ = 0
-  float voxelSize = 0
+  quantityValue dimensionsZ = 0
+  quantityValue voxelSize = 0
   string reconstructionMethod = 0
  }
 // Semantic annotations describing features identified in images using controlled vocabulary terms
@@ -560,19 +560,19 @@ message Micrograph
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
   string originMovieId = 0
-  float defocusU = 0
-  float defocusV = 0
-  float astigmatismAngle = 0
-  float resolutionFitLimit = 0
+  quantityValue defocusU = 0
+  quantityValue defocusV = 0
+  quantityValue astigmatismAngle = 0
+  quantityValue resolutionFitLimit = 0
   float ctfQualityScore = 0
   string pixelSize = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
  }
 // Molecular composition of a sample
 message MolecularComposition
@@ -603,25 +603,25 @@ message Movie
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
   integer frames = 0
   boolean superResolution = 0
-  float pixelSizeUnbinned = 0
+  quantityValue pixelSizeUnbinned = 0
   string timestamp = 0
-  float stagePositionX = 0
-  float stagePositionY = 0
-  float stagePositionZ = 0
-  float nominalDefocus = 0
+  quantityValue stagePositionX = 0
+  quantityValue stagePositionY = 0
+  quantityValue stagePositionZ = 0
+  quantityValue nominalDefocus = 0
   float dosePerFrame = 0
   float beamShiftX = 0
   float beamShiftY = 0
-  float iceThicknessEstimate = 0
+  quantityValue iceThicknessEstimate = 0
   string gridSquareId = 0
   string holeId = 0
   string acquisitionGroup = 0
@@ -672,13 +672,13 @@ message OpticalImage
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
   illuminationTypeEnum illuminationType = 0
   float magnification = 0
   float numericalAperture = 0
@@ -1173,13 +1173,13 @@ message XRFImage
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
-  float pixelSize = 0
-  integer dimensionsX = 0
-  integer dimensionsY = 0
+  quantityValue pixelSize = 0
+  quantityValue dimensionsX = 0
+  quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
   float dose = 0
-  float defocus = 0
-  float astigmatism = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
   float beamEnergy = 0
   float beamSize = 0
   float dwellTime = 0

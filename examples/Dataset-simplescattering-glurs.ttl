@@ -84,14 +84,22 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
 
 <https://simplescattering.com/img/guinier-plot> a lambdaber:Image ;
     lambdaber:description "Guinier analysis for Rg determination" ;
-    lambdaber:dimensions_x 800 ;
-    lambdaber:dimensions_y 600 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "600.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "GluRS_Guinier_plot.png" .
 
 <https://simplescattering.com/img/sec-chromatogram> a lambdaber:Image ;
     lambdaber:description "SEC elution profile with SAXS intensity" ;
-    lambdaber:dimensions_x 1200 ;
-    lambdaber:dimensions_y 800 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1200.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "800.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:file_name "GluRS_SEC_chromatogram.png" .
 
 <https://simplescattering.com/prep/glurs-expression> a lambdaber:SamplePreparation ;

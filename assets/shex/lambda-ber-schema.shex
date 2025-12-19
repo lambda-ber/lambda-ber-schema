@@ -696,9 +696,9 @@ linkml:Sparqlpath xsd:string
              rdf:type [ <NamedThing> ] ? ;
              <file_name> @linkml:String ;
              <acquisition_date> @linkml:String ? ;
-             <pixel_size> @linkml:Float ? ;
-             <dimensions_x> @linkml:Integer ? ;
-             <dimensions_y> @linkml:Integer ? ;
+             <pixel_size> @<QuantityValue> ? ;
+             <dimensions_x> @<QuantityValue> ? ;
+             <dimensions_y> @<QuantityValue> ? ;
              <exposure_time> @<QuantityValue> ? ;
              <dose> @linkml:Float ?
           ) ;
@@ -711,8 +711,8 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Image2D_tes> (  &<Image_tes> ;
              rdf:type [ <Image> ] ? ;
-             <defocus> @linkml:Float ? ;
-             <astigmatism> @linkml:Float ?
+             <defocus> @<QuantityValue> ? ;
+             <astigmatism> @<QuantityValue> ?
           ) ;
           rdf:type [ <Image2D> ]
        )
@@ -722,8 +722,8 @@ linkml:Sparqlpath xsd:string
 <Image3D> CLOSED {
     (  $<Image3D_tes> (  &<Image_tes> ;
           rdf:type [ <Image> ] ? ;
-          <dimensions_z> @linkml:Integer ? ;
-          <voxel_size> @linkml:Float ? ;
+          <dimensions_z> @<QuantityValue> ? ;
+          <voxel_size> @<QuantityValue> ? ;
           <reconstruction_method> @linkml:String ?
        ) ;
        rdf:type [ <Image3D> ]
@@ -827,14 +827,14 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Image2D> ] ? ;
           <dose> @linkml:Float ? ;
           <origin_movie_id> @linkml:String ? ;
-          <defocus_u> @linkml:Float ? ;
-          <defocus_v> @linkml:Float ? ;
-          <astigmatism_angle> @linkml:Float ? ;
-          <resolution_fit_limit> @linkml:Float ? ;
+          <defocus_u> @<QuantityValue> ? ;
+          <defocus_v> @<QuantityValue> ? ;
+          <astigmatism_angle> @<QuantityValue> ? ;
+          <resolution_fit_limit> @<QuantityValue> ? ;
           <ctf_quality_score> @linkml:Float ? ;
           <pixel_size> @linkml:String ? ;
-          <defocus> @linkml:Float ? ;
-          <astigmatism> @linkml:Float ?
+          <defocus> @<QuantityValue> ? ;
+          <astigmatism> @<QuantityValue> ?
        ) ;
        rdf:type [ <Micrograph> ]
     )
@@ -872,16 +872,16 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Image2D> ] ? ;
           <frames> @linkml:Integer ? ;
           <super_resolution> @linkml:Boolean ? ;
-          <pixel_size_unbinned> @linkml:Float ? ;
+          <pixel_size_unbinned> @<QuantityValue> ? ;
           <timestamp> @linkml:String ? ;
-          <stage_position_x> @linkml:Float ? ;
-          <stage_position_y> @linkml:Float ? ;
-          <stage_position_z> @linkml:Float ? ;
-          <nominal_defocus> @linkml:Float ? ;
+          <stage_position_x> @<QuantityValue> ? ;
+          <stage_position_y> @<QuantityValue> ? ;
+          <stage_position_z> @<QuantityValue> ? ;
+          <nominal_defocus> @<QuantityValue> ? ;
           <dose_per_frame> @linkml:Float ? ;
           <beam_shift_x> @linkml:Float ? ;
           <beam_shift_y> @linkml:Float ? ;
-          <ice_thickness_estimate> @linkml:Float ? ;
+          <ice_thickness_estimate> @<QuantityValue> ? ;
           <grid_square_id> @linkml:String ? ;
           <hole_id> @linkml:String ? ;
           <acquisition_group> @linkml:String ?

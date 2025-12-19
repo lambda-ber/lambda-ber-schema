@@ -96,7 +96,10 @@
       "id": "lambdaber:img_1EE2_diffraction_001",
       "file_name": "1ee2_diffraction_pattern.img",
       "acquisition_date": "1998-11-23",
-      "pixel_size": 0.15
+      "pixel_size": {
+        "numeric_value": 0.15,
+        "unit": "Angstroms"
+      }
     }
   ],
   "@type": "Study"

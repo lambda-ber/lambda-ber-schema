@@ -385,7 +385,7 @@ A multimodal plant imaging study might combine:
  * [➞wavelength](experimentRun__wavelength.md) - X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞atmosphere](experimentalConditions__atmosphere.md) - Atmosphere composition
  * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy in keV
- * [➞exposure_time](experimentalConditions__exposure_time.md) - Exposure time in seconds
+ * [➞exposure_time](experimentalConditions__exposure_time.md) - Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞humidity](experimentalConditions__humidity.md) - Humidity percentage
  * [➞pressure](experimentalConditions__pressure.md) - Pressure in kPa
  * [➞temperature](experimentalConditions__temperature.md) - Temperature in Celsius
@@ -415,21 +415,21 @@ A multimodal plant imaging study might combine:
  * [➞residues](functionalSite__residues.md) - List of residues forming the functional site. Each should be specified as a string (e.g., "45", "120A").
  * [➞site_name](functionalSite__site_name.md) - Common name for this site
  * [➞site_type](functionalSite__site_type.md) - Type of functional site
- * [➞astigmatism](image2D__astigmatism.md) - Astigmatism value in Angstroms
+ * [➞astigmatism](image2D__astigmatism.md) - Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
      * [Micrograph➞astigmatism](Micrograph_astigmatism.md) - Astigmatism in Angstroms
- * [➞defocus](image2D__defocus.md) - Defocus value in micrometers
+ * [➞defocus](image2D__defocus.md) - Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
      * [Micrograph➞defocus](Micrograph_defocus.md) - Measured defocus in micrometers
- * [➞dimensions_z](image3D__dimensions_z.md) - Image depth in pixels/slices
+ * [➞dimensions_z](image3D__dimensions_z.md) - Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞reconstruction_method](image3D__reconstruction_method.md) - Method used for 3D reconstruction
- * [➞voxel_size](image3D__voxel_size.md) - Voxel size in Angstroms
+ * [➞voxel_size](image3D__voxel_size.md) - Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞terms](imageFeature__terms.md) - Ontology terms describing features identified in the image
  * [➞acquisition_date](image__acquisition_date.md) - Date image was acquired
- * [➞dimensions_x](image__dimensions_x.md) - Image width in pixels
- * [➞dimensions_y](image__dimensions_y.md) - Image height in pixels
+ * [➞dimensions_x](image__dimensions_x.md) - Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞dimensions_y](image__dimensions_y.md) - Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞dose](image__dose.md) - Electron dose in e-/Å²
- * [➞exposure_time](image__exposure_time.md) - Exposure time in seconds
+ * [➞exposure_time](image__exposure_time.md) - Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞file_name](image__file_name.md) - Image file name
- * [➞pixel_size](image__pixel_size.md) - Pixel size in Angstroms
+ * [➞pixel_size](image__pixel_size.md) - Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞beamline_id](instrument__beamline_id.md) - Beamline identifier at synchrotron/neutron facility
  * [➞current_status](instrument__current_status.md) - Current operational status
  * [➞facility_name](instrument__facility_name.md) - Name of the research facility where the instrument is located
@@ -455,13 +455,13 @@ A multimodal plant imaging study might combine:
  * [➞ionic_strength](measurementConditions__ionic_strength.md) - Ionic strength in molar of material in solution
  * [➞ph](measurementConditions__ph.md) - pH value of the solution during measurement (range: 0-14)
  * [➞temperature](measurementConditions__temperature.md) - Temperature in Kelvin during measurement
- * [➞astigmatism_angle](micrograph__astigmatism_angle.md) - Astigmatism angle in degrees
+ * [➞astigmatism_angle](micrograph__astigmatism_angle.md) - Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞ctf_quality_score](micrograph__ctf_quality_score.md) - CTF estimation quality score
- * [➞defocus_u](micrograph__defocus_u.md) - Defocus U in micrometers
- * [➞defocus_v](micrograph__defocus_v.md) - Defocus V in micrometers
+ * [➞defocus_u](micrograph__defocus_u.md) - Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞defocus_v](micrograph__defocus_v.md) - Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞dose](micrograph__dose.md) - Total electron dose in e-/Angstrom^2
  * [➞origin_movie_id](micrograph__origin_movie_id.md) - Reference to original movie file
- * [➞resolution_fit_limit](micrograph__resolution_fit_limit.md) - Resolution fit limit in Angstroms
+ * [➞resolution_fit_limit](micrograph__resolution_fit_limit.md) - Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞ligands](molecularComposition__ligands.md) - Bound ligands or cofactors
  * [➞modifications](molecularComposition__modifications.md) - Post-translational modifications or chemical modifications
  * [➞sequences](molecularComposition__sequences.md) - Amino acid or nucleotide sequences
@@ -480,12 +480,12 @@ A multimodal plant imaging study might combine:
  * [➞frames](movie__frames.md) - Number of frames in the movie
  * [➞grid_square_id](movie__grid_square_id.md) - Grid square identifier
  * [➞hole_id](movie__hole_id.md) - Hole identifier within grid square
- * [➞ice_thickness_estimate](movie__ice_thickness_estimate.md) - Estimated ice thickness in nanometers
- * [➞nominal_defocus](movie__nominal_defocus.md) - Nominal defocus value in micrometers
- * [➞pixel_size_unbinned](movie__pixel_size_unbinned.md) - Unbinned pixel size in Angstroms per pixel
- * [➞stage_position_x](movie__stage_position_x.md) - Stage X position in micrometers
- * [➞stage_position_y](movie__stage_position_y.md) - Stage Y position in micrometers
- * [➞stage_position_z](movie__stage_position_z.md) - Stage Z position in micrometers
+ * [➞ice_thickness_estimate](movie__ice_thickness_estimate.md) - Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞nominal_defocus](movie__nominal_defocus.md) - Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞pixel_size_unbinned](movie__pixel_size_unbinned.md) - Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞stage_position_x](movie__stage_position_x.md) - Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞stage_position_y](movie__stage_position_y.md) - Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+ * [➞stage_position_z](movie__stage_position_z.md) - Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞super_resolution](movie__super_resolution.md) - Whether super-resolution mode was used
  * [➞timestamp](movie__timestamp.md) - Acquisition timestamp
  * [➞allele_frequency](mutationEffect__allele_frequency.md) - Population allele frequency (range: 0-1)
@@ -593,7 +593,7 @@ A multimodal plant imaging study might combine:
  * [➞r_work](qualityMetrics__r_work.md) - Refinement R-factor (working set)
  * [➞ramachandran_favored_percent](qualityMetrics__ramachandran_favored_percent.md) - Percentage of residues in favored Ramachandran regions
  * [➞ramachandran_outliers_percent](qualityMetrics__ramachandran_outliers_percent.md) - Percentage of Ramachandran outliers
- * [➞resolution](qualityMetrics__resolution.md) - Resolution in Angstroms
+ * [➞resolution](qualityMetrics__resolution.md) - Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞resolution_high_shell_a](qualityMetrics__resolution_high_shell_a.md) - High resolution shell limit in Angstroms
  * [➞resolution_low_a](qualityMetrics__resolution_low_a.md) - Low resolution limit in Angstroms
  * [➞rg](qualityMetrics__rg.md) - Radius of gyration in Angstroms
@@ -800,7 +800,7 @@ A multimodal plant imaging study might combine:
  * [➞detector_technology](xRFImage__detector_technology.md) - Type of X-ray detector technology used
  * [➞dwell_time](xRFImage__dwell_time.md) - Dwell time per pixel in milliseconds
  * [➞elements_measured](xRFImage__elements_measured.md) - Elements detected and measured
- * [➞flux](xRFImage__flux.md) - Photon flux in photons/second
+ * [➞flux](xRFImage__flux.md) - Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
  * [➞source_type](xRFImage__source_type.md) - X-ray source type (synchrotron or lab-source)
  * [➞beam_size_max](xRayInstrument__beam_size_max.md) - Maximum beam size in micrometers
  * [➞beam_size_min](xRayInstrument__beam_size_min.md) - Minimum beam size in micrometers

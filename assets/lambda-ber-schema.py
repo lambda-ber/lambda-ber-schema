@@ -1,5 +1,5 @@
 # Auto generated from lambda-ber-schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T11:44:46
+# Generation date: 2025-12-19T12:18:28
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -1918,9 +1918,9 @@ class Image(NamedThing):
     id: Union[str, ImageId] = None
     file_name: str = None
     acquisition_date: Optional[str] = None
-    pixel_size: Optional[float] = None
-    dimensions_x: Optional[int] = None
-    dimensions_y: Optional[int] = None
+    pixel_size: Optional[Union[dict, "QuantityValue"]] = None
+    dimensions_x: Optional[Union[dict, "QuantityValue"]] = None
+    dimensions_y: Optional[Union[dict, "QuantityValue"]] = None
     exposure_time: Optional[Union[dict, "QuantityValue"]] = None
     dose: Optional[float] = None
 
@@ -1938,14 +1938,14 @@ class Image(NamedThing):
         if self.acquisition_date is not None and not isinstance(self.acquisition_date, str):
             self.acquisition_date = str(self.acquisition_date)
 
-        if self.pixel_size is not None and not isinstance(self.pixel_size, float):
-            self.pixel_size = float(self.pixel_size)
+        if self.pixel_size is not None and not isinstance(self.pixel_size, QuantityValue):
+            self.pixel_size = QuantityValue(**as_dict(self.pixel_size))
 
-        if self.dimensions_x is not None and not isinstance(self.dimensions_x, int):
-            self.dimensions_x = int(self.dimensions_x)
+        if self.dimensions_x is not None and not isinstance(self.dimensions_x, QuantityValue):
+            self.dimensions_x = QuantityValue(**as_dict(self.dimensions_x))
 
-        if self.dimensions_y is not None and not isinstance(self.dimensions_y, int):
-            self.dimensions_y = int(self.dimensions_y)
+        if self.dimensions_y is not None and not isinstance(self.dimensions_y, QuantityValue):
+            self.dimensions_y = QuantityValue(**as_dict(self.dimensions_y))
 
         if self.exposure_time is not None and not isinstance(self.exposure_time, QuantityValue):
             self.exposure_time = QuantityValue(**as_dict(self.exposure_time))
@@ -1970,8 +1970,8 @@ class Image2D(Image):
 
     id: Union[str, Image2DId] = None
     file_name: str = None
-    defocus: Optional[float] = None
-    astigmatism: Optional[float] = None
+    defocus: Optional[Union[dict, "QuantityValue"]] = None
+    astigmatism: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1979,11 +1979,11 @@ class Image2D(Image):
         if not isinstance(self.id, Image2DId):
             self.id = Image2DId(self.id)
 
-        if self.defocus is not None and not isinstance(self.defocus, float):
-            self.defocus = float(self.defocus)
+        if self.defocus is not None and not isinstance(self.defocus, QuantityValue):
+            self.defocus = QuantityValue(**as_dict(self.defocus))
 
-        if self.astigmatism is not None and not isinstance(self.astigmatism, float):
-            self.astigmatism = float(self.astigmatism)
+        if self.astigmatism is not None and not isinstance(self.astigmatism, QuantityValue):
+            self.astigmatism = QuantityValue(**as_dict(self.astigmatism))
 
         super().__post_init__(**kwargs)
 
@@ -2002,8 +2002,8 @@ class Image3D(Image):
 
     id: Union[str, Image3DId] = None
     file_name: str = None
-    dimensions_z: Optional[int] = None
-    voxel_size: Optional[float] = None
+    dimensions_z: Optional[Union[dict, "QuantityValue"]] = None
+    voxel_size: Optional[Union[dict, "QuantityValue"]] = None
     reconstruction_method: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2012,11 +2012,11 @@ class Image3D(Image):
         if not isinstance(self.id, Image3DId):
             self.id = Image3DId(self.id)
 
-        if self.dimensions_z is not None and not isinstance(self.dimensions_z, int):
-            self.dimensions_z = int(self.dimensions_z)
+        if self.dimensions_z is not None and not isinstance(self.dimensions_z, QuantityValue):
+            self.dimensions_z = QuantityValue(**as_dict(self.dimensions_z))
 
-        if self.voxel_size is not None and not isinstance(self.voxel_size, float):
-            self.voxel_size = float(self.voxel_size)
+        if self.voxel_size is not None and not isinstance(self.voxel_size, QuantityValue):
+            self.voxel_size = QuantityValue(**as_dict(self.voxel_size))
 
         if self.reconstruction_method is not None and not isinstance(self.reconstruction_method, str):
             self.reconstruction_method = str(self.reconstruction_method)
@@ -2040,16 +2040,16 @@ class Movie(Image2D):
     file_name: str = None
     frames: Optional[int] = None
     super_resolution: Optional[Union[bool, Bool]] = None
-    pixel_size_unbinned: Optional[float] = None
+    pixel_size_unbinned: Optional[Union[dict, "QuantityValue"]] = None
     timestamp: Optional[str] = None
-    stage_position_x: Optional[float] = None
-    stage_position_y: Optional[float] = None
-    stage_position_z: Optional[float] = None
-    nominal_defocus: Optional[float] = None
+    stage_position_x: Optional[Union[dict, "QuantityValue"]] = None
+    stage_position_y: Optional[Union[dict, "QuantityValue"]] = None
+    stage_position_z: Optional[Union[dict, "QuantityValue"]] = None
+    nominal_defocus: Optional[Union[dict, "QuantityValue"]] = None
     dose_per_frame: Optional[float] = None
     beam_shift_x: Optional[float] = None
     beam_shift_y: Optional[float] = None
-    ice_thickness_estimate: Optional[float] = None
+    ice_thickness_estimate: Optional[Union[dict, "QuantityValue"]] = None
     grid_square_id: Optional[str] = None
     hole_id: Optional[str] = None
     acquisition_group: Optional[str] = None
@@ -2066,23 +2066,23 @@ class Movie(Image2D):
         if self.super_resolution is not None and not isinstance(self.super_resolution, Bool):
             self.super_resolution = Bool(self.super_resolution)
 
-        if self.pixel_size_unbinned is not None and not isinstance(self.pixel_size_unbinned, float):
-            self.pixel_size_unbinned = float(self.pixel_size_unbinned)
+        if self.pixel_size_unbinned is not None and not isinstance(self.pixel_size_unbinned, QuantityValue):
+            self.pixel_size_unbinned = QuantityValue(**as_dict(self.pixel_size_unbinned))
 
         if self.timestamp is not None and not isinstance(self.timestamp, str):
             self.timestamp = str(self.timestamp)
 
-        if self.stage_position_x is not None and not isinstance(self.stage_position_x, float):
-            self.stage_position_x = float(self.stage_position_x)
+        if self.stage_position_x is not None and not isinstance(self.stage_position_x, QuantityValue):
+            self.stage_position_x = QuantityValue(**as_dict(self.stage_position_x))
 
-        if self.stage_position_y is not None and not isinstance(self.stage_position_y, float):
-            self.stage_position_y = float(self.stage_position_y)
+        if self.stage_position_y is not None and not isinstance(self.stage_position_y, QuantityValue):
+            self.stage_position_y = QuantityValue(**as_dict(self.stage_position_y))
 
-        if self.stage_position_z is not None and not isinstance(self.stage_position_z, float):
-            self.stage_position_z = float(self.stage_position_z)
+        if self.stage_position_z is not None and not isinstance(self.stage_position_z, QuantityValue):
+            self.stage_position_z = QuantityValue(**as_dict(self.stage_position_z))
 
-        if self.nominal_defocus is not None and not isinstance(self.nominal_defocus, float):
-            self.nominal_defocus = float(self.nominal_defocus)
+        if self.nominal_defocus is not None and not isinstance(self.nominal_defocus, QuantityValue):
+            self.nominal_defocus = QuantityValue(**as_dict(self.nominal_defocus))
 
         if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, float):
             self.dose_per_frame = float(self.dose_per_frame)
@@ -2093,8 +2093,8 @@ class Movie(Image2D):
         if self.beam_shift_y is not None and not isinstance(self.beam_shift_y, float):
             self.beam_shift_y = float(self.beam_shift_y)
 
-        if self.ice_thickness_estimate is not None and not isinstance(self.ice_thickness_estimate, float):
-            self.ice_thickness_estimate = float(self.ice_thickness_estimate)
+        if self.ice_thickness_estimate is not None and not isinstance(self.ice_thickness_estimate, QuantityValue):
+            self.ice_thickness_estimate = QuantityValue(**as_dict(self.ice_thickness_estimate))
 
         if self.grid_square_id is not None and not isinstance(self.grid_square_id, str):
             self.grid_square_id = str(self.grid_square_id)
@@ -2124,14 +2124,14 @@ class Micrograph(Image2D):
     file_name: str = None
     dose: Optional[float] = None
     origin_movie_id: Optional[str] = None
-    defocus_u: Optional[float] = None
-    defocus_v: Optional[float] = None
-    astigmatism_angle: Optional[float] = None
-    resolution_fit_limit: Optional[float] = None
+    defocus_u: Optional[Union[dict, "QuantityValue"]] = None
+    defocus_v: Optional[Union[dict, "QuantityValue"]] = None
+    astigmatism_angle: Optional[Union[dict, "QuantityValue"]] = None
+    resolution_fit_limit: Optional[Union[dict, "QuantityValue"]] = None
     ctf_quality_score: Optional[float] = None
     pixel_size: Optional[str] = None
-    defocus: Optional[float] = None
-    astigmatism: Optional[float] = None
+    defocus: Optional[Union[dict, "QuantityValue"]] = None
+    astigmatism: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2145,17 +2145,17 @@ class Micrograph(Image2D):
         if self.origin_movie_id is not None and not isinstance(self.origin_movie_id, str):
             self.origin_movie_id = str(self.origin_movie_id)
 
-        if self.defocus_u is not None and not isinstance(self.defocus_u, float):
-            self.defocus_u = float(self.defocus_u)
+        if self.defocus_u is not None and not isinstance(self.defocus_u, QuantityValue):
+            self.defocus_u = QuantityValue(**as_dict(self.defocus_u))
 
-        if self.defocus_v is not None and not isinstance(self.defocus_v, float):
-            self.defocus_v = float(self.defocus_v)
+        if self.defocus_v is not None and not isinstance(self.defocus_v, QuantityValue):
+            self.defocus_v = QuantityValue(**as_dict(self.defocus_v))
 
-        if self.astigmatism_angle is not None and not isinstance(self.astigmatism_angle, float):
-            self.astigmatism_angle = float(self.astigmatism_angle)
+        if self.astigmatism_angle is not None and not isinstance(self.astigmatism_angle, QuantityValue):
+            self.astigmatism_angle = QuantityValue(**as_dict(self.astigmatism_angle))
 
-        if self.resolution_fit_limit is not None and not isinstance(self.resolution_fit_limit, float):
-            self.resolution_fit_limit = float(self.resolution_fit_limit)
+        if self.resolution_fit_limit is not None and not isinstance(self.resolution_fit_limit, QuantityValue):
+            self.resolution_fit_limit = QuantityValue(**as_dict(self.resolution_fit_limit))
 
         if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, float):
             self.ctf_quality_score = float(self.ctf_quality_score)
@@ -2163,11 +2163,11 @@ class Micrograph(Image2D):
         if self.pixel_size is not None and not isinstance(self.pixel_size, str):
             self.pixel_size = str(self.pixel_size)
 
-        if self.defocus is not None and not isinstance(self.defocus, float):
-            self.defocus = float(self.defocus)
+        if self.defocus is not None and not isinstance(self.defocus, QuantityValue):
+            self.defocus = QuantityValue(**as_dict(self.defocus))
 
-        if self.astigmatism is not None and not isinstance(self.astigmatism, float):
-            self.astigmatism = float(self.astigmatism)
+        if self.astigmatism is not None and not isinstance(self.astigmatism, QuantityValue):
+            self.astigmatism = QuantityValue(**as_dict(self.astigmatism))
 
         super().__post_init__(**kwargs)
 
@@ -7343,13 +7343,13 @@ slots.image__acquisition_date = Slot(uri=LAMBDABER.acquisition_date, name="image
                    model_uri=LAMBDABER.image__acquisition_date, domain=None, range=Optional[str])
 
 slots.image__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="image__pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.image__pixel_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image__dimensions_x = Slot(uri=LAMBDABER.dimensions_x, name="image__dimensions_x", curie=LAMBDABER.curie('dimensions_x'),
-                   model_uri=LAMBDABER.image__dimensions_x, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.image__dimensions_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image__dimensions_y = Slot(uri=LAMBDABER.dimensions_y, name="image__dimensions_y", curie=LAMBDABER.curie('dimensions_y'),
-                   model_uri=LAMBDABER.image__dimensions_y, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.image__dimensions_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="image__exposure_time", curie=LAMBDABER.curie('exposure_time'),
                    model_uri=LAMBDABER.image__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7358,16 +7358,16 @@ slots.image__dose = Slot(uri=LAMBDABER.dose, name="image__dose", curie=LAMBDABER
                    model_uri=LAMBDABER.image__dose, domain=None, range=Optional[float])
 
 slots.image2D__defocus = Slot(uri=LAMBDABER.defocus, name="image2D__defocus", curie=LAMBDABER.curie('defocus'),
-                   model_uri=LAMBDABER.image2D__defocus, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image2D__defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image2D__astigmatism = Slot(uri=LAMBDABER.astigmatism, name="image2D__astigmatism", curie=LAMBDABER.curie('astigmatism'),
-                   model_uri=LAMBDABER.image2D__astigmatism, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image2D__astigmatism, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image3D__dimensions_z = Slot(uri=LAMBDABER.dimensions_z, name="image3D__dimensions_z", curie=LAMBDABER.curie('dimensions_z'),
-                   model_uri=LAMBDABER.image3D__dimensions_z, domain=None, range=Optional[int])
+                   model_uri=LAMBDABER.image3D__dimensions_z, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image3D__voxel_size = Slot(uri=LAMBDABER.voxel_size, name="image3D__voxel_size", curie=LAMBDABER.curie('voxel_size'),
-                   model_uri=LAMBDABER.image3D__voxel_size, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.image3D__voxel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.image3D__reconstruction_method = Slot(uri=LAMBDABER.reconstruction_method, name="image3D__reconstruction_method", curie=LAMBDABER.curie('reconstruction_method'),
                    model_uri=LAMBDABER.image3D__reconstruction_method, domain=None, range=Optional[str])
@@ -7379,22 +7379,22 @@ slots.movie__super_resolution = Slot(uri=LAMBDABER.super_resolution, name="movie
                    model_uri=LAMBDABER.movie__super_resolution, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.movie__pixel_size_unbinned = Slot(uri=LAMBDABER.pixel_size_unbinned, name="movie__pixel_size_unbinned", curie=LAMBDABER.curie('pixel_size_unbinned'),
-                   model_uri=LAMBDABER.movie__pixel_size_unbinned, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__pixel_size_unbinned, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__timestamp = Slot(uri=LAMBDABER.timestamp, name="movie__timestamp", curie=LAMBDABER.curie('timestamp'),
                    model_uri=LAMBDABER.movie__timestamp, domain=None, range=Optional[str])
 
 slots.movie__stage_position_x = Slot(uri=LAMBDABER.stage_position_x, name="movie__stage_position_x", curie=LAMBDABER.curie('stage_position_x'),
-                   model_uri=LAMBDABER.movie__stage_position_x, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__stage_position_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__stage_position_y = Slot(uri=LAMBDABER.stage_position_y, name="movie__stage_position_y", curie=LAMBDABER.curie('stage_position_y'),
-                   model_uri=LAMBDABER.movie__stage_position_y, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__stage_position_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__stage_position_z = Slot(uri=LAMBDABER.stage_position_z, name="movie__stage_position_z", curie=LAMBDABER.curie('stage_position_z'),
-                   model_uri=LAMBDABER.movie__stage_position_z, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__stage_position_z, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__nominal_defocus = Slot(uri=LAMBDABER.nominal_defocus, name="movie__nominal_defocus", curie=LAMBDABER.curie('nominal_defocus'),
-                   model_uri=LAMBDABER.movie__nominal_defocus, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__nominal_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="movie__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
                    model_uri=LAMBDABER.movie__dose_per_frame, domain=None, range=Optional[float])
@@ -7406,7 +7406,7 @@ slots.movie__beam_shift_y = Slot(uri=LAMBDABER.beam_shift_y, name="movie__beam_s
                    model_uri=LAMBDABER.movie__beam_shift_y, domain=None, range=Optional[float])
 
 slots.movie__ice_thickness_estimate = Slot(uri=LAMBDABER.ice_thickness_estimate, name="movie__ice_thickness_estimate", curie=LAMBDABER.curie('ice_thickness_estimate'),
-                   model_uri=LAMBDABER.movie__ice_thickness_estimate, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.movie__ice_thickness_estimate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.movie__grid_square_id = Slot(uri=LAMBDABER.grid_square_id, name="movie__grid_square_id", curie=LAMBDABER.curie('grid_square_id'),
                    model_uri=LAMBDABER.movie__grid_square_id, domain=None, range=Optional[str])
@@ -7424,16 +7424,16 @@ slots.micrograph__origin_movie_id = Slot(uri=LAMBDABER.origin_movie_id, name="mi
                    model_uri=LAMBDABER.micrograph__origin_movie_id, domain=None, range=Optional[str])
 
 slots.micrograph__defocus_u = Slot(uri=LAMBDABER.defocus_u, name="micrograph__defocus_u", curie=LAMBDABER.curie('defocus_u'),
-                   model_uri=LAMBDABER.micrograph__defocus_u, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__defocus_u, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__defocus_v = Slot(uri=LAMBDABER.defocus_v, name="micrograph__defocus_v", curie=LAMBDABER.curie('defocus_v'),
-                   model_uri=LAMBDABER.micrograph__defocus_v, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__defocus_v, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__astigmatism_angle = Slot(uri=LAMBDABER.astigmatism_angle, name="micrograph__astigmatism_angle", curie=LAMBDABER.curie('astigmatism_angle'),
-                   model_uri=LAMBDABER.micrograph__astigmatism_angle, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__astigmatism_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDABER.resolution_fit_limit, name="micrograph__resolution_fit_limit", curie=LAMBDABER.curie('resolution_fit_limit'),
-                   model_uri=LAMBDABER.micrograph__resolution_fit_limit, domain=None, range=Optional[float])
+                   model_uri=LAMBDABER.micrograph__resolution_fit_limit, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.micrograph__ctf_quality_score = Slot(uri=LAMBDABER.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDABER.curie('ctf_quality_score'),
                    model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[float])
@@ -8437,10 +8437,10 @@ slots.Micrograph_pixel_size = Slot(uri=LAMBDABER.pixel_size, name="Micrograph_pi
                    model_uri=LAMBDABER.Micrograph_pixel_size, domain=Micrograph, range=Optional[str])
 
 slots.Micrograph_defocus = Slot(uri=LAMBDABER.defocus, name="Micrograph_defocus", curie=LAMBDABER.curie('defocus'),
-                   model_uri=LAMBDABER.Micrograph_defocus, domain=Micrograph, range=Optional[float])
+                   model_uri=LAMBDABER.Micrograph_defocus, domain=Micrograph, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Micrograph_astigmatism = Slot(uri=LAMBDABER.astigmatism, name="Micrograph_astigmatism", curie=LAMBDABER.curie('astigmatism'),
-                   model_uri=LAMBDABER.Micrograph_astigmatism, domain=Micrograph, range=Optional[float])
+                   model_uri=LAMBDABER.Micrograph_astigmatism, domain=Micrograph, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
                    model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=float, mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])

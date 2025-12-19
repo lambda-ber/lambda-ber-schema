@@ -6,7 +6,7 @@ Environmental and experimental conditions
 URI: [lambdaber:ExperimentalConditions](https://w3id.org/lambda-ber-schema/ExperimentalConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;exposure_time:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ExperimentalConditions],[ExperimentRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;exposure_time:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[ExperimentalConditions],[ExperimentRun],[AttributeGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<exposure_time%200..1-++[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;description(i):string%20%3F],[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions],[AttributeGroup]^-[ExperimentalConditions],[ExperimentRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<exposure_time%200..1-++[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;description(i):string%20%3F],[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions],[AttributeGroup]^-[ExperimentalConditions],[ExperimentRun],[AttributeGroup])
 
 ## Parents
 
@@ -37,8 +37,8 @@ URI: [lambdaber:ExperimentalConditions](https://w3id.org/lambda-ber-schema/Exper
      * Description: Beam energy in keV
      * Range: [Float](types/Float.md)
  * [➞exposure_time](experimentalConditions__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from AttributeGroup:
 

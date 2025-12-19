@@ -270,18 +270,34 @@ studies:
   images:
   - id: https://example.org/kibler2024/img/saxs-profile
     file_name: hetBGL03-15-18_saxs_profile.png
-    dimensions_x: 1200
-    dimensions_y: 800
-    pixel_size: 1
+    dimensions_x:
+      numeric_value: 1200
+      unit: pixels
+    dimensions_y:
+      numeric_value: 800
+      unit: pixels
+    pixel_size:
+      numeric_value: 1
+      unit: Angstroms
     description: SAXS scattering profile with Guinier fit
   - id: https://example.org/kibler2024/img/em-classes
     file_name: hetBGL03-15-18_class_averages.png
-    dimensions_x: 2048
-    dimensions_y: 2048
-    pixel_size: 1.98
+    dimensions_x:
+      numeric_value: 2048
+      unit: pixels
+    dimensions_y:
+      numeric_value: 2048
+      unit: pixels
+    pixel_size:
+      numeric_value: 1.98
+      unit: Angstroms
     description: 2D class averages from negative stain EM
   - id: https://example.org/kibler2024/img/structural-comparison
     file_name: hetBGL_structural_comparison.png
-    dimensions_x: 1600
-    dimensions_y: 1200
+    dimensions_x:
+      numeric_value: 1600
+      unit: pixels
+    dimensions_y:
+      numeric_value: 1200
+      unit: pixels
     description: Overlay of design model with SAXS envelope

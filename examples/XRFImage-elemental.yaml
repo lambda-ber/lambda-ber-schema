@@ -3,15 +3,25 @@ title: Synchrotron XRF elemental map of leaf tissue
 description: Multi-element XRF map showing distribution of nutrients and trace elements
 file_name: leaf_xrf_map_2um_resolution.h5
 acquisition_date: '2024-05-25T16:00:00'
-pixel_size: 2.0
-dimensions_x: 500
-dimensions_y: 400
+pixel_size:
+  numeric_value: 2.0
+  unit: Angstroms
+dimensions_x:
+  numeric_value: 500.0
+  unit: pixels
+dimensions_y:
+  numeric_value: 400.0
+  unit: pixels
 exposure_time:
   numeric_value: 0.1
   unit: seconds
 dose: 0.0
-defocus: 0.0
-astigmatism: 0.0
+defocus:
+  numeric_value: 0.0
+  unit: micrometers
+astigmatism:
+  numeric_value: 0.0
+  unit: Angstroms
 beam_energy: 10.0
 beam_size: 2.0
 dwell_time: 100.0

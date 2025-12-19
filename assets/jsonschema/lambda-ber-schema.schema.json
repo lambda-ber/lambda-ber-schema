@@ -2704,18 +2704,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -2761,11 +2769,15 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "spectral_resolution": {
                     "description": "Spectral resolution in cm\u207b\u00b9",
@@ -2875,11 +2887,15 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "channel_name": {
                     "description": "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)",
@@ -2889,11 +2905,15 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -2903,18 +2923,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -2992,11 +3020,15 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "quantum_yield": {
                     "description": "Quantum yield of the fluorophore",
@@ -3283,18 +3315,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -3323,11 +3363,15 @@
                     "type": "string"
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -3356,18 +3400,26 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -3377,18 +3429,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -3417,11 +3477,15 @@
                     "type": "string"
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -3457,25 +3521,37 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_z": {
-                    "description": "Image depth in pixels/slices",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -3504,11 +3580,15 @@
                     "type": "string"
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "reconstruction_method": {
                     "description": "Method used for 3D reconstruction",
@@ -3525,11 +3605,15 @@
                     ]
                 },
                 "voxel_size": {
-                    "description": "Voxel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 }
             },
             "required": [
@@ -3880,18 +3964,26 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism in Angstroms"
                 },
                 "astigmatism_angle": {
-                    "description": "Astigmatism angle in degrees",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "ctf_quality_score": {
                     "description": "CTF estimation quality score",
@@ -3901,25 +3993,37 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Measured defocus in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Measured defocus in micrometers"
                 },
                 "defocus_u": {
-                    "description": "Defocus U in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_v": {
-                    "description": "Defocus V in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -3929,18 +4033,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Total electron dose in e-/Angstrom^2",
@@ -3976,18 +4088,26 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Final pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Final pixel size in Angstroms per pixel"
                 },
                 "resolution_fit_limit": {
-                    "description": "Resolution fit limit in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -4139,11 +4259,15 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_shift_x": {
                     "description": "Beam shift X in microradians",
@@ -4160,11 +4284,15 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -4174,18 +4302,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -4238,57 +4374,85 @@
                     ]
                 },
                 "ice_thickness_estimate": {
-                    "description": "Estimated ice thickness in nanometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "nominal_defocus": {
-                    "description": "Nominal defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "pixel_size_unbinned": {
-                    "description": "Unbinned pixel size in Angstroms per pixel",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "stage_position_x": {
-                    "description": "Stage X position in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "stage_position_y": {
-                    "description": "Stage Y position in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "stage_position_z": {
-                    "description": "Stage Z position in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "super_resolution": {
                     "description": "Whether super-resolution mode was used",
@@ -4566,11 +4730,15 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "color_channels": {
                     "description": "Color channels present (e.g., RGB, grayscale)",
@@ -4590,11 +4758,15 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -4604,18 +4776,26 @@
                     ]
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -4662,11 +4842,15 @@
                     ]
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "title": {
                     "description": "A human-readable name or title for this entity",
@@ -7718,11 +7902,15 @@
                     ]
                 },
                 "astigmatism": {
-                    "description": "Astigmatism value in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "beam_energy": {
                     "description": "X-ray beam energy in keV",
@@ -7746,11 +7934,15 @@
                     ]
                 },
                 "defocus": {
-                    "description": "Defocus value in micrometers",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -7771,18 +7963,26 @@
                     "description": "Type of X-ray detector technology used"
                 },
                 "dimensions_x": {
-                    "description": "Image width in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dimensions_y": {
-                    "description": "Image height in pixels",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "dose": {
                     "description": "Electron dose in e-/\u00c5\u00b2",
@@ -7839,11 +8039,15 @@
                     "type": "string"
                 },
                 "pixel_size": {
-                    "description": "Pixel size in Angstroms",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "source_type": {
                     "$ref": "#/$defs/XRaySourceTypeEnum",

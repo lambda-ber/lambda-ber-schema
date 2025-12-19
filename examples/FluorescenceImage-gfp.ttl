@@ -7,12 +7,20 @@
 lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
     dcterms:title "GFP fluorescence image of stress response proteins" ;
     lambdaber:acquisition_date "2024-05-22T09:15:00" ;
-    lambdaber:astigmatism "0.0"^^xsd:float ;
+    lambdaber:astigmatism [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
     lambdaber:channel_name "GFP" ;
-    lambdaber:defocus "0.0"^^xsd:float ;
+    lambdaber:defocus [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
     lambdaber:description "Confocal fluorescence image showing GFP-tagged heat shock proteins" ;
-    lambdaber:dimensions_x 2048 ;
-    lambdaber:dimensions_y 2048 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2048.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2048.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:dose "0.0"^^xsd:float ;
     lambdaber:emission_filter "525/50 nm bandpass" ;
     lambdaber:emission_wavelength "509.0"^^xsd:float ;
@@ -25,6 +33,8 @@ lambdaber:fluor_img_gfp_001 a lambdaber:FluorescenceImage ;
     lambdaber:fluorophore "Enhanced GFP (EGFP)" ;
     lambdaber:laser_power "2.5"^^xsd:float ;
     lambdaber:pinhole_size "1.0"^^xsd:float ;
-    lambdaber:pixel_size "0.065"^^xsd:float ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.065"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
     lambdaber:quantum_yield "0.6"^^xsd:float .
 

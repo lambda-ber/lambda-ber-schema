@@ -6,7 +6,7 @@ An image file from structural biology experiments
 URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image3D],[Image2D],[Study]++-%20images%200..*>[Image&#124;file_name:string;acquisition_date:string%20%3F;pixel_size:float%20%3F;dimensions_x:integer%20%3F;dimensions_y:integer%20%3F;exposure_time:float%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image3D],[Image2D],[Study]++-%20images%200..*>[Image&#124;file_name:string;acquisition_date:string%20%3F;pixel_size:float%20%3F;dimensions_x:integer%20%3F;dimensions_y:integer%20%3F;exposure_time:float%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<exposure_time%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[NamedThing],[Image3D],[Image2D],[QuantityValue]<exposure_time%200..1-++[Image&#124;file_name:string;acquisition_date:string%20%3F;dose:float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_y%200..1-++[Image],[QuantityValue]<dimensions_x%200..1-++[Image],[QuantityValue]<pixel_size%200..1-++[Image],[Study]++-%20images%200..*>[Image],[Image]^-[Image3D],[Image]^-[Image2D],[Image]^-[FTIRImage],[NamedThing]^-[Image],[Study],[FTIRImage])
 
 ## Parents
 
@@ -34,17 +34,17 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞pixel_size](image__pixel_size.md)  <sub>0..1</sub>
-     * Description: Pixel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
      * Range: [Float](types/Float.md)

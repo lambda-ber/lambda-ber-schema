@@ -6,7 +6,7 @@ A 2D image (micrograph, diffraction pattern)
 URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[OpticalImage],[Movie],[Micrograph],[Image2D&#124;defocus:float%20%3F;astigmatism:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[OpticalImage],[Movie],[Micrograph],[Image2D&#124;defocus:float%20%3F;astigmatism:float%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRFImage],[QuantityValue],[OpticalImage],[Movie],[Micrograph],[QuantityValue]<astigmatism%200..1-++[Image2D&#124;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<defocus%200..1-++[Image2D],[Image2D]^-[XRFImage],[Image2D]^-[OpticalImage],[Image2D]^-[Movie],[Image2D]^-[Micrograph],[Image2D]^-[FluorescenceImage],[Image]^-[Image2D],[Image],[FluorescenceImage])
 
 ## Parents
 
@@ -29,11 +29,11 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
 ### Own
 
  * [➞defocus](image2D__defocus.md)  <sub>0..1</sub>
-     * Description: Defocus value in micrometers
-     * Range: [Float](types/Float.md)
+     * Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞astigmatism](image2D__astigmatism.md)  <sub>0..1</sub>
-     * Description: Astigmatism value in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
 
 ### Inherited from Image:
 
@@ -53,17 +53,17 @@ URI: [lambdaber:Image2D](https://w3id.org/lambda-ber-schema/Image2D)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞pixel_size](image__pixel_size.md)  <sub>0..1</sub>
-     * Description: Pixel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
      * Range: [Float](types/Float.md)

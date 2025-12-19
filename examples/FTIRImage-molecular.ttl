@@ -10,8 +10,12 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
     lambdaber:apodization_function "Blackman-Harris 3-term" ;
     lambdaber:background_correction "Atmospheric compensation with CO2 and H2O vapor subtraction" ;
     lambdaber:description "FTIR image showing protein secondary structure and lipid distribution" ;
-    lambdaber:dimensions_x 128 ;
-    lambdaber:dimensions_y 128 ;
+    lambdaber:dimensions_x [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "128.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
+    lambdaber:dimensions_y [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "128.0"^^xsd:float ;
+            lambdaber:unit "pixels" ] ;
     lambdaber:dose "0.0"^^xsd:float ;
     lambdaber:exposure_time [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "0.5"^^xsd:float ;
@@ -23,7 +27,9 @@ lambdaber:ftir_img_001 a lambdaber:FTIRImage ;
         "2920 cm⁻¹ - CH2 asymmetric stretch (lipids)",
         "3300 cm⁻¹ - O-H stretch (water)" ;
     lambdaber:number_of_scans 32 ;
-    lambdaber:pixel_size "5.5"^^xsd:float ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.5"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] ;
     lambdaber:spectral_resolution "4.0"^^xsd:float ;
     lambdaber:wavenumber_max "4000.0"^^xsd:float ;
     lambdaber:wavenumber_min "800.0"^^xsd:float .

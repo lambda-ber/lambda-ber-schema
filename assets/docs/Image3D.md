@@ -6,7 +6,7 @@ A 3D volume or tomogram
 URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Image]^-[Image3D&#124;dimensions_z:integer%20%3F;voxel_size:float%20%3F;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image])](https://yuml.me/diagram/nofunky;dir:TB/class/[Image]^-[Image3D&#124;dimensions_z:integer%20%3F;voxel_size:float%20%3F;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;pixel_size(i):float%20%3F;dimensions_x(i):integer%20%3F;dimensions_y(i):integer%20%3F;exposure_time(i):float%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[Image])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])](https://yuml.me/diagram/nofunky;dir:TB/class/[QuantityValue],[QuantityValue]<voxel_size%200..1-++[Image3D&#124;reconstruction_method:string%20%3F;file_name(i):string;acquisition_date(i):string%20%3F;dose(i):float%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[QuantityValue]<dimensions_z%200..1-++[Image3D],[Image]^-[Image3D],[Image])
 
 ## Parents
 
@@ -18,11 +18,11 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 ### Own
 
  * [➞dimensions_z](image3D__dimensions_z.md)  <sub>0..1</sub>
-     * Description: Image depth in pixels/slices
-     * Range: [Integer](types/Integer.md)
+     * Description: Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞voxel_size](image3D__voxel_size.md)  <sub>0..1</sub>
-     * Description: Voxel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞reconstruction_method](image3D__reconstruction_method.md)  <sub>0..1</sub>
      * Description: Method used for 3D reconstruction
      * Range: [String](types/String.md)
@@ -45,17 +45,17 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
      * Description: Date image was acquired
      * Range: [String](types/String.md)
  * [➞pixel_size](image__pixel_size.md)  <sub>0..1</sub>
-     * Description: Pixel size in Angstroms
-     * Range: [Float](types/Float.md)
+     * Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_x](image__dimensions_x.md)  <sub>0..1</sub>
-     * Description: Image width in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dimensions_y](image__dimensions_y.md)  <sub>0..1</sub>
-     * Description: Image height in pixels
-     * Range: [Integer](types/Integer.md)
+     * Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞exposure_time](image__exposure_time.md)  <sub>0..1</sub>
-     * Description: Exposure time in seconds
-     * Range: [Float](types/Float.md)
+     * Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
+     * Range: [QuantityValue](QuantityValue.md)
  * [➞dose](image__dose.md)  <sub>0..1</sub>
      * Description: Electron dose in e-/Å²
      * Range: [Float](types/Float.md)

@@ -8112,7 +8112,7 @@
     },
     {
       "name": "image__pixel_size",
-      "description": "Pixel size in Angstroms",
+      "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
       "alias": "pixel_size",
@@ -8120,12 +8120,13 @@
       "domain_of": [
         "Image"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "image__dimensions_x",
-      "description": "Image width in pixels",
+      "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_x",
       "alias": "dimensions_x",
@@ -8133,12 +8134,13 @@
       "domain_of": [
         "Image"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "image__dimensions_y",
-      "description": "Image height in pixels",
+      "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_y",
       "alias": "dimensions_y",
@@ -8146,7 +8148,8 @@
       "domain_of": [
         "Image"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8178,7 +8181,7 @@
     },
     {
       "name": "image2D__defocus",
-      "description": "Defocus value in micrometers",
+      "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
       "alias": "defocus",
@@ -8186,12 +8189,13 @@
       "domain_of": [
         "Image2D"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "image2D__astigmatism",
-      "description": "Astigmatism value in Angstroms",
+      "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
       "alias": "astigmatism",
@@ -8199,12 +8203,13 @@
       "domain_of": [
         "Image2D"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "image3D__dimensions_z",
-      "description": "Image depth in pixels/slices",
+      "description": "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/dimensions_z",
       "alias": "dimensions_z",
@@ -8212,12 +8217,13 @@
       "domain_of": [
         "Image3D"
       ],
-      "range": "integer",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "image3D__voxel_size",
-      "description": "Voxel size in Angstroms",
+      "description": "Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/voxel_size",
       "alias": "voxel_size",
@@ -8225,7 +8231,8 @@
       "domain_of": [
         "Image3D"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8269,7 +8276,7 @@
     },
     {
       "name": "movie__pixel_size_unbinned",
-      "description": "Unbinned pixel size in Angstroms per pixel",
+      "description": "Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size_unbinned",
       "alias": "pixel_size_unbinned",
@@ -8277,7 +8284,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8295,7 +8303,7 @@
     },
     {
       "name": "movie__stage_position_x",
-      "description": "Stage X position in micrometers",
+      "description": "Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_x",
       "alias": "stage_position_x",
@@ -8303,12 +8311,13 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "movie__stage_position_y",
-      "description": "Stage Y position in micrometers",
+      "description": "Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_y",
       "alias": "stage_position_y",
@@ -8316,12 +8325,13 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "movie__stage_position_z",
-      "description": "Stage Z position in micrometers",
+      "description": "Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/stage_position_z",
       "alias": "stage_position_z",
@@ -8329,12 +8339,13 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "movie__nominal_defocus",
-      "description": "Nominal defocus value in micrometers",
+      "description": "Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/nominal_defocus",
       "alias": "nominal_defocus",
@@ -8342,7 +8353,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8386,7 +8398,7 @@
     },
     {
       "name": "movie__ice_thickness_estimate",
-      "description": "Estimated ice thickness in nanometers",
+      "description": "Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/ice_thickness_estimate",
       "alias": "ice_thickness_estimate",
@@ -8394,7 +8406,8 @@
       "domain_of": [
         "Movie"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8464,7 +8477,7 @@
     },
     {
       "name": "micrograph__defocus_u",
-      "description": "Defocus U in micrometers",
+      "description": "Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_u",
       "alias": "defocus_u",
@@ -8472,12 +8485,13 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "micrograph__defocus_v",
-      "description": "Defocus V in micrometers",
+      "description": "Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/defocus_v",
       "alias": "defocus_v",
@@ -8485,12 +8499,13 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "micrograph__astigmatism_angle",
-      "description": "Astigmatism angle in degrees",
+      "description": "Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism_angle",
       "alias": "astigmatism_angle",
@@ -8498,12 +8513,13 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "micrograph__resolution_fit_limit",
-      "description": "Resolution fit limit in Angstroms",
+      "description": "Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/resolution_fit_limit",
       "alias": "resolution_fit_limit",
@@ -8511,7 +8527,8 @@
       "domain_of": [
         "Micrograph"
       ],
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13089,7 +13106,8 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "defocus",
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -13106,7 +13124,8 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "astigmatism",
-      "range": "float",
+      "range": "QuantityValue",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -16027,20 +16046,23 @@
         },
         {
           "name": "pixel_size",
-          "description": "Pixel size in Angstroms",
-          "range": "float",
+          "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "dimensions_x",
-          "description": "Image width in pixels",
-          "range": "integer",
+          "description": "Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "dimensions_y",
-          "description": "Image height in pixels",
-          "range": "integer",
+          "description": "Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16084,14 +16106,16 @@
       "attributes": [
         {
           "name": "defocus",
-          "description": "Defocus value in micrometers",
-          "range": "float",
+          "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "astigmatism",
-          "description": "Astigmatism value in Angstroms",
-          "range": "float",
+          "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -16123,14 +16147,16 @@
       "attributes": [
         {
           "name": "dimensions_z",
-          "description": "Image depth in pixels/slices",
-          "range": "integer",
+          "description": "Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "voxel_size",
-          "description": "Voxel size in Angstroms",
-          "range": "float",
+          "description": "Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16193,8 +16219,9 @@
         },
         {
           "name": "pixel_size_unbinned",
-          "description": "Unbinned pixel size in Angstroms per pixel",
-          "range": "float",
+          "description": "Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16205,26 +16232,30 @@
         },
         {
           "name": "stage_position_x",
-          "description": "Stage X position in micrometers",
-          "range": "float",
+          "description": "Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "stage_position_y",
-          "description": "Stage Y position in micrometers",
-          "range": "float",
+          "description": "Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "stage_position_z",
-          "description": "Stage Z position in micrometers",
-          "range": "float",
+          "description": "Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "nominal_defocus",
-          "description": "Nominal defocus value in micrometers",
-          "range": "float",
+          "description": "Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16247,8 +16278,9 @@
         },
         {
           "name": "ice_thickness_estimate",
-          "description": "Estimated ice thickness in nanometers",
-          "range": "float",
+          "description": "Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -16315,26 +16347,30 @@
         },
         {
           "name": "defocus_u",
-          "description": "Defocus U in micrometers",
-          "range": "float",
+          "description": "Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "defocus_v",
-          "description": "Defocus V in micrometers",
-          "range": "float",
+          "description": "Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "astigmatism_angle",
-          "description": "Astigmatism angle in degrees",
-          "range": "float",
+          "description": "Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "resolution_fit_limit",
-          "description": "Resolution fit limit in Angstroms",
-          "range": "float",
+          "description": "Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "range": "QuantityValue",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -19571,9 +19607,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda-ber-schema.yaml",
-  "source_file_date": "2025-12-19T11:38:48",
-  "source_file_size": 121245,
-  "generation_date": "2025-12-19T11:44:39",
+  "source_file_date": "2025-12-19T12:10:41",
+  "source_file_size": 123639,
+  "generation_date": "2025-12-19T12:18:23",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda-ber-schema.context.jsonld",
