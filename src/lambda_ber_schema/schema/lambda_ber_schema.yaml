@@ -836,7 +836,7 @@ classes:
       experiment_code:
         description: "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems."
         required: true
-# Relationships removed - use ExperimentSampleAssociation and ExperimentInstrumentAssociation
+      # Relationships removed - use ExperimentSampleAssociation and ExperimentInstrumentAssociation
       experiment_date:
         description: "Date of the experiment"
         range: string
@@ -1131,7 +1131,7 @@ classes:
         description: "Type of processing workflow"
         range: WorkflowTypeEnum
         required: true
-# Relationships removed - use WorkflowExperimentAssociation
+      # Relationships removed - use WorkflowExperimentAssociation
       processing_level:
         description: "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
         range: QuantityValue
@@ -2481,6 +2481,1238 @@ classes:
         description: "FSC values corresponding to each resolution"
         range: QuantityValue
         inlined: true
+
+enums:
+  FacilityEnum:
+    description: "Major synchrotron and structural biology research facilities worldwide"
+    comments:
+      - "This enum provides standardized identifiers for major facilities with rich metadata"
+      - "ROR (Research Organization Registry) IDs provide persistent organizational identifiers"
+      - "Not currently bound to any slots - available for future use"
+    permissible_values:
+      NSLS_II:
+        title: "National Synchrotron Light Source II"
+        description: "Fourth-generation synchrotron light source at Brookhaven National Laboratory, Upton, NY, USA"
+        meaning: ROR:01q47ea17
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "Brookhaven National Laboratory"
+          parent_ror: "ROR:02ex6cf31"
+          location: "Upton, New York, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q30270543"
+          energy_gev: "3.0"
+          operational_since: "2015"
+          beamlines_count: "28"
+          website: "https://www.bnl.gov/nsls2/"
+        aliases:
+          - NSLS-II
+          - NSLS2
+      ALS:
+        title: "Advanced Light Source"
+        description: "Third-generation synchrotron light source at Lawrence Berkeley National Laboratory, Berkeley, CA, USA"
+        meaning: ROR:02jbv0t02
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "Lawrence Berkeley National Laboratory"
+          location: "Berkeley, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q4685011"
+          energy_gev: "1.9"
+          operational_since: "1993"
+          website: "https://als.lbl.gov/"
+        aliases:
+          - Advanced Light Source
+          - ALS Berkeley
+      SSRL:
+        title: "Stanford Synchrotron Radiation Lightsource"
+        description: "Synchrotron radiation facility at SLAC National Accelerator Laboratory, Menlo Park, CA, USA"
+        meaning: ROR:05gzmn429
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "SLAC National Accelerator Laboratory"
+          location: "Menlo Park, California, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q7598571"
+          energy_gev: "3.0"
+          operational_since: "1974"
+          website: "https://www-ssrl.slac.stanford.edu/"
+        aliases:
+          - Stanford Synchrotron Radiation Lightsource
+          - Stanford Synchrotron
+      ESRF:
+        title: "European Synchrotron Radiation Facility"
+        description: "High-energy synchrotron facility in Grenoble, France - world's most intense X-ray source"
+        meaning: ROR:02550n020
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          location: "Grenoble, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1163036"
+          energy_gev: "6.0"
+          operational_since: "1994"
+          upgrade: "Extremely Brilliant Source (EBS) 2020"
+          partner_countries: "22"
+          website: "https://www.esrf.fr/"
+        aliases:
+          - European Synchrotron
+          - ESRF-EBS
+      DIAMOND:
+        title: "Diamond Light Source"
+        description: "UK's national synchrotron science facility at Harwell Science and Innovation Campus, Oxfordshire, UK"
+        meaning: ROR:05etxs293
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          location: "Harwell, Oxfordshire, UK"
+          country: "United Kingdom"
+          doe_facility: "false"
+          wikidata_id: "Q652731"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          beamlines_count: "32"
+          website: "https://www.diamond.ac.uk/"
+        aliases:
+          - Diamond
+          - Diamond Synchrotron
+      PHOTON_FACTORY:
+        title: "Photon Factory"
+        description: "Synchrotron radiation facility at KEK (High Energy Accelerator Research Organization), Tsukuba, Japan"
+        meaning: ROR:01g5y5k24
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "High Energy Accelerator Research Organization (KEK)"
+          location: "Tsukuba, Ibaraki, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q7187717"
+          energy_gev: "2.5"
+          operational_since: "1982"
+          website: "https://www2.kek.jp/imss/pf/"
+        aliases:
+          - PF
+          - KEK Photon Factory
+      APS:
+        title: "Advanced Photon Source"
+        description: "High-energy synchrotron at Argonne National Laboratory, Lemont, IL, USA"
+        meaning: ROR:05gvnxz63
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "Argonne National Laboratory"
+          location: "Lemont, Illinois, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q2824628"
+          energy_gev: "7.0"
+          operational_since: "1996"
+          upgrade: "APS-U upgrade 2024"
+          website: "https://www.aps.anl.gov/"
+        aliases:
+          - Advanced Photon Source
+          - Argonne APS
+      SPRING8:
+        title: "SPring-8"
+        description: "Large-scale synchrotron radiation facility in Harima Science Park City, Hyogo, Japan"
+        meaning: ROR:01xjv7358
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "Japan Synchrotron Radiation Research Institute (JASRI)"
+          location: "Sayo, Hyogo, Japan"
+          country: "Japan"
+          doe_facility: "false"
+          wikidata_id: "Q1196821"
+          energy_gev: "8.0"
+          operational_since: "1997"
+          website: "http://www.spring8.or.jp/"
+        aliases:
+          - SPring-8
+          - Super Photon ring-8 GeV
+      PETRA_III:
+        title: "PETRA III"
+        description: "High-brilliance synchrotron radiation source at DESY, Hamburg, Germany"
+        meaning: ROR:01js2sh04
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          parent_organization: "Deutsches Elektronen-Synchrotron (DESY)"
+          location: "Hamburg, Germany"
+          country: "Germany"
+          doe_facility: "false"
+          wikidata_id: "Q1754942"
+          energy_gev: "6.0"
+          operational_since: "2009"
+          website: "https://photon-science.desy.de/facilities/petra_iii/"
+        aliases:
+          - PETRA III
+          - PETRA3
+      SOLEIL:
+        title: "Synchrotron SOLEIL"
+        description: "French national synchrotron facility near Paris, France"
+        meaning: ROR:01ydb3330
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          location: "Saint-Aubin, France"
+          country: "France"
+          doe_facility: "false"
+          wikidata_id: "Q1414116"
+          energy_gev: "2.75"
+          operational_since: "2008"
+          website: "https://www.synchrotron-soleil.fr/"
+        aliases:
+          - SOLEIL
+          - Synchrotron SOLEIL
+      AUSTRALIAN_SYNCHROTRON:
+        title: "Australian Synchrotron"
+        description: "Australia's national synchrotron facility in Melbourne, Victoria"
+        meaning: ROR:03vk18a84
+        annotations:
+          facility_type: FacilityTypeEnum:SYNCHROTRON
+          location: "Melbourne, Victoria, Australia"
+          country: "Australia"
+          doe_facility: "false"
+          wikidata_id: "Q782691"
+          energy_gev: "3.0"
+          operational_since: "2007"
+          website: "https://www.synchrotron.org.au/"
+        aliases:
+          - Australian Synchrotron
+          - AS
+      EMSL:
+        title: "Environmental Molecular Sciences Laboratory"
+        description: "DOE Office of Science user facility at PNNL with cryo-EM capabilities"
+        meaning: ROR:05h992307
+        annotations:
+          facility_type: FacilityTypeEnum:CRYOEM_CENTER
+          parent_organization: "Pacific Northwest National Laboratory"
+          location: "Richland, Washington, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science - Biological and Environmental Research"
+          website: "https://www.emsl.pnnl.gov/"
+        aliases:
+          - EMSL
+          - Environmental Molecular Sciences Laboratory
+      SNS:
+        title: "Spallation Neutron Source"
+        description: "Accelerator-based pulsed neutron source at ORNL providing intense neutron beams"
+        meaning: ROR:01qz5mb56
+        annotations:
+          facility_type: FacilityTypeEnum:NEUTRON_SOURCE
+          parent_organization: "Oak Ridge National Laboratory"
+          location: "Oak Ridge, Tennessee, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q1545258"
+          operational_since: "2006"
+          website: "https://neutrons.ornl.gov/sns"
+        aliases:
+          - SNS
+          - Spallation Neutron Source
+      HFIR:
+        title: "High Flux Isotope Reactor"
+        description: "Reactor-based neutron source at ORNL with dedicated biology beamlines"
+        meaning: ROR:01qz5mb56
+        annotations:
+          facility_type: FacilityTypeEnum:NEUTRON_SOURCE
+          parent_organization: "Oak Ridge National Laboratory"
+          location: "Oak Ridge, Tennessee, USA"
+          country: "USA"
+          doe_facility: "true"
+          doe_office: "Office of Science"
+          wikidata_id: "Q3126498"
+          operational_since: "1966"
+          website: "https://neutrons.ornl.gov/hfir"
+        aliases:
+          - HFIR
+          - High Flux Isotope Reactor
+
+  SampleTypeEnum:
+    description: "Types of biological samples"
+    permissible_values:
+      protein:
+        description: "Protein sample"
+      nucleic_acid:
+        description: "Nucleic acid sample (DNA or RNA)"
+      complex:
+        description: "Protein-protein or protein-nucleic acid complex"
+      membrane_protein:
+        description: "Membrane protein sample"
+      virus:
+        description: "Viral particle"
+      organelle:
+        description: "Cellular organelle"
+
+  PreparationTypeEnum:
+    description: "Types of sample preparation"
+    permissible_values:
+      cryo_em:
+        description: "Cryo-EM preparation"
+      xray_crystallography:
+        description: "X-ray crystallography preparation"
+      saxs:
+        description: "SAXS/WAXS preparation"
+      sans:
+        description: "SANS preparation"
+      protein_expression:
+        description: "Protein expression in host cells"
+      protein_purification:
+        description: "Protein purification"
+      negative_stain:
+        description: "Negative stain EM preparation"
+
+  GridTypeEnum:
+    description: "Types of EM grids"
+    permissible_values:
+      c_flat:
+        description: "C-flat holey carbon grid"
+      quantifoil:
+        description: "Quantifoil holey carbon grid"
+      lacey_carbon:
+        description: "Lacey carbon grid"
+      ultrathin_carbon:
+        description: "Ultrathin carbon film"
+      gold:
+        description: "Gold grid"
+
+  GridMaterialEnum:
+    description: "Materials used for EM grids"
+    permissible_values:
+      carbon:
+        description: "Carbon grid"
+      gold:
+        description: "Gold grid"
+      graphene:
+        description: "Graphene grid"
+      silicon_nitride:
+        description: "Silicon nitride grid"
+
+  VitrificationMethodEnum:
+    description: "Methods for vitrification"
+    permissible_values:
+      plunge_freezing:
+        description: "Plunge freezing in liquid ethane"
+      high_pressure_freezing:
+        description: "High pressure freezing"
+      slam_freezing:
+        description: "Slam freezing"
+
+  SymmetryEnum:
+    description: "Crystallographic and non-crystallographic symmetry groups for cryo-EM"
+    permissible_values:
+      C1:
+        description: "C1 symmetry (no symmetry)"
+      C2:
+        description: "C2 cyclic symmetry (2-fold)"
+      C3:
+        description: "C3 cyclic symmetry (3-fold)"
+      C4:
+        description: "C4 cyclic symmetry (4-fold)"
+      C5:
+        description: "C5 cyclic symmetry (5-fold)"
+      C6:
+        description: "C6 cyclic symmetry (6-fold)"
+      C7:
+        description: "C7 cyclic symmetry (7-fold)"
+      C8:
+        description: "C8 cyclic symmetry (8-fold)"
+      C9:
+        description: "C9 cyclic symmetry (9-fold)"
+      C10:
+        description: "C10 cyclic symmetry (10-fold)"
+      D2:
+        description: "D2 dihedral symmetry (2-fold)"
+      D3:
+        description: "D3 dihedral symmetry (3-fold)"
+      D4:
+        description: "D4 dihedral symmetry (4-fold)"
+      D5:
+        description: "D5 dihedral symmetry (5-fold)"
+      D6:
+        description: "D6 dihedral symmetry (6-fold)"
+      D7:
+        description: "D7 dihedral symmetry (7-fold)"
+      D8:
+        description: "D8 dihedral symmetry (8-fold)"
+      D9:
+        description: "D9 dihedral symmetry (9-fold)"
+      D10:
+        description: "D10 dihedral symmetry (10-fold)"
+      T:
+        description: "Tetrahedral symmetry"
+      O:
+        description: "Octahedral symmetry"
+      I:
+        description: "Icosahedral symmetry"
+
+  CrystallizationMethodEnum:
+    description: "Methods for protein crystallization"
+    permissible_values:
+      vapor_diffusion_hanging:
+        description: "Vapor diffusion hanging drop"
+      vapor_diffusion_sitting:
+        description: "Vapor diffusion sitting drop"
+      batch:
+        description: "Batch crystallization"
+      microbatch:
+        description: "Microbatch under oil"
+      lcp:
+        description: "Lipidic cubic phase (LCP)"
+      dialysis:
+        description: "Dialysis method"
+      free_interface_diffusion:
+        description: "Free interface diffusion"
+
+  InstrumentStatusEnum:
+    description: "Operational status of instruments"
+    permissible_values:
+      operational:
+        description: "Instrument is operational"
+      maintenance:
+        description: "Instrument under maintenance"
+      offline:
+        description: "Instrument is offline"
+      commissioning:
+        description: "Instrument being commissioned"
+
+  InstrumentCategoryEnum:
+    description: "Categories of instruments based on their nature and location"
+    comments:
+      - "Use to distinguish synchrotron beamlines from laboratory equipment"
+    permissible_values:
+      SYNCHROTRON_BEAMLINE:
+        description: "Beamline at a synchrotron light source"
+        meaning: CHMO:0001084
+      NEUTRON_BEAMLINE:
+        description: "Beamline at a neutron source"
+      XFEL_BEAMLINE:
+        description: "Beamline at a free electron laser (X-ray FEL)"
+      ELECTRON_MICROSCOPE:
+        description: "Electron microscope (TEM, SEM, cryo-EM)"
+      BENCHTOP_XRAY:
+        description: "Benchtop X-ray diffractometer or other laboratory X-ray source"
+      OPTICAL_MICROSCOPE:
+        description: "Optical or fluorescence microscope"
+      SPECTROMETER:
+        description: "Spectroscopy instrument (FTIR, Raman, mass spec, etc.)"
+
+  FacilityTypeEnum:
+    description: "Types of research facilities"
+    permissible_values:
+      SYNCHROTRON:
+        description: "Synchrotron light source facility"
+      NEUTRON_SOURCE:
+        description: "Neutron scattering facility (reactor or spallation source)"
+      FREE_ELECTRON_LASER:
+        description: "Free electron laser facility (XFEL)"
+      CRYOEM_CENTER:
+        description: "Dedicated cryo-electron microscopy center"
+
+  BeamlineEnum:
+    description: "Specific beamline instances at DOE and other major structural biology facilities"
+    comments:
+      - "Each beamline is annotated with its parent facility from FacilityEnum"
+      - "Focus on beamlines used for structural biology (MX, SAXS/WAXS, neutron scattering)"
+      - "Beamline IDs follow facility-specific conventions"
+    permissible_values:
+      # === ALS Beamlines (Lawrence Berkeley National Laboratory) ===
+      ALS_SIBYLS:
+        title: "SIBYLS (BL12.3.1)"
+        description: "Structurally Integrated Biology for Life Sciences - dual SAXS/WAXS and macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "12.3.1"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs|TechniqueEnum:xray_crystallography"
+          doe_beamline: "true"
+          mail_in_service: "true"
+          website: "https://sibyls.als.lbl.gov/"
+          operational_since: "2004"
+        aliases:
+          - SIBYLS
+          - BL12.3.1
+          - ALS 12.3.1
+      ALS_BL501:
+        title: "ALS BL5.0.1"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "5.0.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL5.0.1
+      ALS_BL502:
+        title: "ALS BL5.0.2"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "5.0.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL5.0.2
+      ALS_BL821:
+        title: "ALS BL8.2.1"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.2.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL8.2.1
+      ALS_BL822:
+        title: "ALS BL8.2.2"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.2.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL8.2.2
+      ALS_BL831:
+        title: "ALS BL8.3.1"
+        description: "High-throughput macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.3.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          mail_in_service: "true"
+        aliases:
+          - BL8.3.1
+      ALS_BL1222:
+        title: "ALS BL12.2.2"
+        description: "High-throughput macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "12.2.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL12.2.2
+
+      # === NSLS-II Beamlines (Brookhaven National Laboratory) ===
+      NSLS2_FMX:
+        title: "FMX (17-ID-1)"
+        description: "Frontier Microfocus Macromolecular Crystallography beamline for challenging small crystals"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "17-ID-1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-1"
+          operational_since: "2016"
+        aliases:
+          - FMX
+          - 17-ID-1
+      NSLS2_AMX:
+        title: "AMX (17-ID-2)"
+        description: "Automated Macromolecular Crystallography beamline for high-throughput structure determination"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "17-ID-2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-2"
+          operational_since: "2016"
+        aliases:
+          - AMX
+          - 17-ID-2
+      NSLS2_NYX:
+        title: "NYX (19-ID)"
+        description: "Newest crystallography beamline for rapid data collection"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "19-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - NYX
+          - 19-ID
+      NSLS2_LIX:
+        title: "LiX (16-ID)"
+        description: "Life Science X-ray Scattering beamline for solution SAXS/WAXS"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "16-ID"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs"
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=16-ID"
+        aliases:
+          - LiX
+          - 16-ID
+
+      # === APS Beamlines (Argonne National Laboratory) ===
+      APS_GMCA_23IDB:
+        title: "GM/CA 23-ID-B"
+        description: "General Medical Sciences and Cancer Institutes Collaborative Access Team - microfocus beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "23-ID-B"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.gmca.anl.gov/"
+        aliases:
+          - GM/CA-B
+          - 23-ID-B
+      APS_GMCA_23IDD:
+        title: "GM/CA 23-ID-D"
+        description: "General Medical Sciences and Cancer Institutes Collaborative Access Team - standard beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "23-ID-D"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.gmca.anl.gov/"
+        aliases:
+          - GM/CA-D
+          - 23-ID-D
+      APS_LSCAT_21ID:
+        title: "LS-CAT (21-ID)"
+        description: "Life Sciences Collaborative Access Team beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "21-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://ls-cat.org/"
+        aliases:
+          - LS-CAT
+          - 21-ID
+      APS_NECAT_24IDC:
+        title: "NE-CAT 24-ID-C"
+        description: "Northeastern Collaborative Access Team - microfocus beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "24-ID-C"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://necat.chem.cornell.edu/"
+        aliases:
+          - NE-CAT-C
+          - 24-ID-C
+      APS_NECAT_24IDE:
+        title: "NE-CAT 24-ID-E"
+        description: "Northeastern Collaborative Access Team - standard beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "24-ID-E"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://necat.chem.cornell.edu/"
+        aliases:
+          - NE-CAT-E
+          - 24-ID-E
+      APS_SERCAT_22ID:
+        title: "SER-CAT (22-ID)"
+        description: "Southeast Regional Collaborative Access Team - insertion device beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "22-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.ser-cat.org/"
+        aliases:
+          - SER-CAT
+          - 22-ID
+      APS_SERCAT_22BM:
+        title: "SER-CAT (22-BM)"
+        description: "Southeast Regional Collaborative Access Team - bending magnet beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "22-BM"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.ser-cat.org/"
+        aliases:
+          - SER-CAT-BM
+          - 22-BM
+      APS_SBCCAT_19ID:
+        title: "SBC-CAT (19-ID)"
+        description: "Structural Biology Center Collaborative Access Team beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "19-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.anl.gov/sbc"
+        aliases:
+          - SBC-CAT
+          - 19-ID
+      APS_BIOCARS_14ID:
+        title: "BioCARS (14-ID)"
+        description: "Center for Advanced Radiation Sources - time-resolved crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "14-ID"
+          techniques: "TechniqueEnum:xray_crystallography|TechniqueEnum:time_resolved_crystallography"
+          doe_beamline: "true"
+          website: "https://biocars.uchicago.edu/"
+        aliases:
+          - BioCARS
+          - 14-ID
+      APS_BIOCAT_18ID:
+        title: "BioCAT (18-ID)"
+        description: "Biophysics Collaborative Access Team - fiber diffraction and SAXS"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "18-ID"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:fiber_diffraction"
+          doe_beamline: "true"
+          website: "https://www.bio.aps.anl.gov/"
+        aliases:
+          - BioCAT
+          - 18-ID
+      APS_IMCACAT_17ID:
+        title: "IMCA-CAT (17-ID)"
+        description: "Industrial Macromolecular Crystallography Association Collaborative Access Team"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "17-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - IMCA-CAT
+          - 17-ID
+
+      # === SSRL Beamlines (SLAC National Accelerator Laboratory) ===
+      SSRL_BL92:
+        title: "SSRL BL9-2"
+        description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "9-2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL9-2
+          - SSRL 9-2
+      SSRL_BL122:
+        title: "SSRL BL12-2"
+        description: "Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "12-2"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs"
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL12-2
+          - SSRL 12-2
+      SSRL_BL141:
+        title: "SSRL BL14-1"
+        description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "14-1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL14-1
+          - SSRL 14-1
+
+      # === SNS/HFIR Neutron Beamlines (Oak Ridge National Laboratory) ===
+      SNS_MANDI:
+        title: "MaNDi"
+        description: "Macromolecular Neutron Diffractometer for neutron protein crystallography"
+        annotations:
+          facility: FacilityEnum:SNS
+          beamline_id: "BL-11B"
+          techniques: TechniqueEnum:neutron_crystallography
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/mandi"
+        aliases:
+          - MaNDi
+          - BL-11B
+      HFIR_IMAGINE:
+        title: "IMAGINE"
+        description: "Image plate single crystal diffractometer for neutron protein crystallography"
+        annotations:
+          facility: FacilityEnum:HFIR
+          beamline_id: "CG-4D"
+          techniques: TechniqueEnum:neutron_crystallography
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/imagine"
+        aliases:
+          - IMAGINE
+          - CG-4D
+      SNS_BIOSANS:
+        title: "Bio-SANS"
+        description: "Biological Small-Angle Neutron Scattering instrument"
+        annotations:
+          facility: FacilityEnum:HFIR
+          beamline_id: "CG-3"
+          techniques: TechniqueEnum:sans
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/bio-sans"
+        aliases:
+          - Bio-SANS
+          - CG-3
+      SNS_EQSANS:
+        title: "EQ-SANS"
+        description: "Extended Q-Range Small-Angle Neutron Scattering instrument"
+        annotations:
+          facility: FacilityEnum:SNS
+          beamline_id: "BL-6"
+          techniques: TechniqueEnum:sans
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/eqsans"
+        aliases:
+          - EQ-SANS
+          - BL-6
+
+  ImagingModeEnum:
+    description: "Imaging modes for electron microscopy"
+    permissible_values:
+      EFTEM:
+        description: "Energy-filtered transmission electron microscopy"
+      TEM:
+        description: "Transmission electron microscopy"
+      STEM:
+        description: "Scanning transmission electron microscopy"
+
+  DetectorTypeEnum:
+    description: "DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands."
+    deprecated: "Use DetectorTechnologyEnum for detector technology, and separate manufacturer/model fields"
+    permissible_values:
+      direct_electron:
+        description: "Direct electron detector"
+      ccd:
+        description: "CCD camera"
+      cmos:
+        description: "CMOS detector"
+      hybrid_pixel:
+        description: "Hybrid pixel detector"
+      eiger:
+        description: "Dectris EIGER detector (hybrid photon counting)"
+      pilatus:
+        description: "Dectris PILATUS detector"
+      rayonix:
+        description: "Rayonix CCD detector"
+      adsc:
+        description: "ADSC CCD detector"
+      mar:
+        description: "MAR CCD or imaging plate detector"
+
+  DetectorTechnologyEnum:
+    description: "Generic detector technologies for structural biology imaging"
+    comments:
+      - "Separates detector technology from manufacturer/model for better ontology mapping"
+      - "Use detector_manufacturer and detector_model fields for specific equipment details"
+    permissible_values:
+      direct_electron_detector:
+        description: "Direct electron detector for cryo-EM (e.g., Gatan K2/K3, ThermoFisher Falcon, DirectElectron DE-64)"
+        comments:
+          - "Modern cryo-EM detectors with direct electron counting capability"
+      ccd:
+        description: "Charge-coupled device camera"
+        comments:
+          - "Used in both cryo-EM (older systems) and X-ray crystallography"
+      cmos:
+        description: "Complementary metal-oxide-semiconductor detector"
+        comments:
+          - "Used in both cryo-EM and X-ray crystallography (e.g., Rigaku HyPix, Bruker PIXIUM)"
+      hybrid_photon_counting:
+        description: "Hybrid pixel photon counting detector for X-ray crystallography"
+        comments:
+          - "Modern X-ray detectors (e.g., Dectris EIGER/PILATUS, Bruker PHOTON)"
+      scintillator_coupled:
+        description: "Scintillator-coupled indirect detection"
+        comments:
+          - "Indirect detection via scintillator conversion"
+      imaging_plate:
+        description: "Imaging plate detector"
+        comments:
+          - "Storage phosphor technology, historically common in X-ray crystallography"
+      film:
+        description: "Photographic film"
+        comments:
+          - "Legacy detector type for historical datasets"
+
+  DetectorModeEnum:
+    description: "Operating modes for detectors during data collection"
+    comments:
+      - "Particularly relevant for cryo-EM direct electron detectors"
+    permissible_values:
+      counting:
+        description: "Electron/photon counting mode"
+        comments:
+          - "Individual electron/photon events are counted"
+      integrating:
+        description: "Integrating mode (analog)"
+        comments:
+          - "Charge accumulation over exposure time"
+      super_resolution:
+        description: "Super-resolution mode with oversampling"
+        comments:
+          - "Cryo-EM mode with smaller effective pixel size via oversampling"
+      linear:
+        description: "Linear response mode"
+      correlated_double_sampling:
+        description: "Correlated double sampling mode"
+
+  XRaySourceTypeEnum:
+    description: "Types of X-ray sources"
+    permissible_values:
+      synchrotron:
+        description: "Synchrotron radiation source"
+      rotating_anode:
+        description: "Rotating anode generator"
+      microfocus:
+        description: "Microfocus sealed tube"
+      metal_jet:
+        description: "Liquid metal jet source"
+
+  TechniqueEnum:
+    description: "Structural biology techniques"
+    permissible_values:
+      cryo_em:
+        description: "Cryo-electron microscopy"
+        meaning: CHMO:0002413
+      xray_crystallography:
+        description: "X-ray crystallography"
+        meaning: CHMO:0000156
+        exact_mappings:
+          - PaNET:01164  # macromolecular crystallography
+      saxs:
+        description: "Small-angle X-ray scattering"
+        meaning: CHMO:0000204
+        exact_mappings:
+          - PaNET:01188  # small angle x-ray scattering
+      waxs:
+        description: "Wide-angle X-ray scattering"
+        meaning: CHMO:0000207
+        exact_mappings:
+          - PaNET:01191  # wide angle x-ray scattering
+      sans:
+        description: "Small-angle neutron scattering"
+        meaning: CHMO:0000184
+        exact_mappings:
+          - PaNET:01189  # small angle neutron scattering
+      cryo_et:
+        description: "Cryo-electron tomography"
+        meaning: CHMO:0002413
+        comments:
+          - "Uses same CHMO term as cryo_em; tomography is a specific application"
+      electron_microscopy:
+        description: "General electron microscopy"
+        meaning: CHMO:0000068
+      mass_spectrometry:
+        description: "Mass spectrometry"
+        meaning: CHMO:0000470
+      xas:
+        description: "X-ray absorption spectroscopy"
+        meaning: CHMO:0000298
+        exact_mappings:
+          - PaNET:01196  # x-ray absorption spectroscopy
+      xanes:
+        description: "X-ray absorption near edge structure spectroscopy"
+        meaning: CHMO:0000305
+        exact_mappings:
+          - PaNET:01199  # x-ray absorption near edge structure
+        comments:
+          - "Also known as NEXAFS (near-edge X-ray absorption fine structure)"
+          - "Used for electronic structure, oxidation state, coordination geometry"
+      exafs:
+        description: "Extended X-ray absorption fine structure spectroscopy"
+        meaning: CHMO:0000300
+        exact_mappings:
+          - PaNET:01198  # extended x-ray absorption fine structure
+        comments:
+          - "Used for local atomic structure around specific elements"
+          - "Commonly used for metalloprotein active site characterization"
+      xmcd:
+        description: "X-ray magnetic circular dichroism"
+        exact_mappings:
+          - PaNET:01137  # x-ray magnetic circular dichroism
+        comments:
+          - "Element-specific magnetometry technique"
+      neutron_crystallography:
+        description: "Neutron macromolecular crystallography"
+        meaning: CHMO:0000182
+        comments:
+          - "Also known as neutron protein crystallography or neutron macromolecular diffraction"
+          - "Used for hydrogen/deuterium visualization in protein structures"
+      fiber_diffraction:
+        description: "Fiber diffraction for structural analysis of fibrous samples"
+        meaning: CHMO:0000156
+        comments:
+          - "Used for studying filamentous proteins, DNA fibers, muscle fibers"
+      time_resolved_crystallography:
+        description: "Time-resolved macromolecular crystallography"
+        meaning: CHMO:0000156
+        comments:
+          - "Pump-probe crystallography for capturing structural dynamics"
+          - "Requires fast X-ray pulses (synchrotron or XFEL)"
+
+  ProcessingStatusEnum:
+    description: "Processing status"
+    permissible_values:
+      raw:
+        description: "Raw data"
+      preprocessing:
+        description: "Being preprocessed"
+      processing:
+        description: "Being processed"
+      completed:
+        description: "Processing completed"
+      failed:
+        description: "Processing failed"
+
+  WorkflowTypeEnum:
+    description: "Types of processing workflows"
+    permissible_values:
+      motion_correction:
+        description: "Motion correction for cryo-EM"
+      ctf_estimation:
+        description: "CTF estimation"
+      particle_picking:
+        description: "Particle picking"
+      classification_2d:
+        description: "2D classification"
+      classification_3d:
+        description: "3D classification"
+      refinement:
+        description: "3D refinement"
+      model_building:
+        description: "Atomic model building"
+      phasing:
+        description: "Phase determination"
+      integration:
+        description: "Data integration"
+      scaling:
+        description: "Data scaling"
+      saxs_analysis:
+        description: "SAXS data analysis"
+      xas_normalization:
+        description: "XAS data normalization and background subtraction"
+      xanes_analysis:
+        description: "XANES spectral analysis and edge fitting"
+      exafs_analysis:
+        description: "EXAFS data analysis and shell fitting"
+        comments:
+          - "Includes Fourier transform, back-transform, and coordination shell fitting"
+      em_2d_classification:
+        description: "EM 2D classification"
+      mass_spec_deconvolution:
+        description: "Mass spectrometry deconvolution"
+      particle_extraction:
+        description: "Particle extraction from micrographs"
+      ab_initio:
+        description: "Ab initio 3D reconstruction"
+      postprocessing:
+        description: "Map post-processing and sharpening"
+      map_validation:
+        description: "3D map validation"
+      model_refinement:
+        description: "Atomic model refinement"
+      model_validation:
+        description: "Model validation and quality assessment"
+
+  FileFormatEnum:
+    description: "File formats"
+    permissible_values:
+      mrc:
+        description: "MRC format for EM data"
+      tiff:
+        description: "TIFF image format"
+      hdf5:
+        description: "HDF5 hierarchical data format"
+      star:
+        description: "STAR format for metadata"
+      pdb:
+        description: "PDB coordinate format"
+      mmcif:
+        description: "mmCIF format"
+      mtz:
+        description: "MTZ reflection format"
+      cbf:
+        description: "Crystallographic Binary Format"
+      cbf_zst:
+        description: "Zstandard-compressed CBF format"
+      img:
+        description: "Generic diffraction image format"
+      h5:
+        description: "HDF5 format (alternative extension)"
+      ascii:
+        description: "ASCII text format"
+      thermo_raw:
+        description: "Thermo Fisher RAW format"
+      zip:
+        description: "ZIP compressed archive"
+      mrcs:
+        description: "MRC stack format for particle stacks"
+      eer:
+        description: "EER format for electron counting"
+      cs:
+        description: "CryoSPARC format"
+      json:
+        description: "JSON data format"
+      csv:
+        description: "Comma-separated values format"
+      ccp4:
+        description: "CCP4 map format"
+      gz:
+        description: "Gzip compressed format"
+
+  DataTypeEnum:
+    description: "Types of data"
+    permissible_values:
+      micrograph:
+        description: "Electron micrograph"
+      diffraction:
+        description: "Diffraction pattern"
+      scattering:
+        description: "Scattering data"
+      particles:
+        description: "Particle stack"
+      volume:
+        description: "3D volume"
+      model:
+        description: "Atomic model"
+      metadata:
+        description: "Metadata file"
+      raw_data:
+        description: "Raw experimental data"
+      processed_data:
+        description: "Processed data"
+      movie:
+        description: "Raw cryo-EM movie"
+      motion_corrected:
+        description: "Motion-corrected micrograph"
+      ctf_estimation:
+        description: "CTF estimation results"
+      particle_coordinates:
+        description: "Particle picking coordinates"
+      class_averages:
+        description: "2D or 3D class averages"
+      fsc_curve:
+        description: "Fourier Shell Correlation data"
+      map_half:
+        description: "Half-map for gold-standard refinement"
+      validation_report:
+        description: "Validation report"
+
+  CollectionModeEnum:
+    description: "Data collection modes"
+    permissible_values:
+      counting:
+        description: "Counting mode"
+      super_resolution:
+        description: "Super-resolution mode"
+      continuous:
+        description: "Continuous collection"
+      oscillation:
+        description: "Oscillation method"
+      still:
+        description: "Still images"
+      batch:
+        description: "Batch mode collection"
+      sec_saxs:
+        description: "SEC-SAXS collection mode"
+      single_particle:
+        description: "Single particle analysis mode"
+
+  IlluminationTypeEnum:
+    description: "Types of illumination for optical microscopy"
+    permissible_values:
+      brightfield:
+        description: "Brightfield illumination"
+      darkfield:
+        description: "Darkfield illumination"
+      phase_contrast:
+        description: "Phase contrast microscopy"
+      dic:
+        description: "Differential interference contrast (DIC/Nomarski)"
+      fluorescence:
+        description: "Fluorescence illumination"
+      confocal:
+        description: "Confocal laser scanning"
+      polarized:
+        description: "Polarized light microscopy"
+      oblique:
+        description: "Oblique illumination"
+
+  ExpressionSystemEnum:
+    description: "Expression systems for recombinant protein production"
+    permissible_values:
+      bacteria:
+        description: "Bacterial expression (e.g., E. coli)"
+      yeast:
+        description: "Yeast expression (e.g., S. cerevisiae, P. pastoris)"
+      insect:
+        description: "Insect cell expression (e.g., Sf9, High Five)"
+      mammalian:
+        description: "Mammalian cell expression (e.g., HEK293, CHO)"
+      cell_free:
+        description: "Cell-free expression system"
+
+  PurificationStepEnum:
+    description: "Protein purification steps and methods"
+    permissible_values:
+      affinity_ni_nta:
+        description: "Affinity chromatography using Ni-NTA resin"
+      affinity_co_nta:
+        description: "Affinity chromatography using Co-NTA resin"
+      affinity_strep:
+        description: "Affinity chromatography using Strep-tag"
+      affinity_mbp:
+        description: "Affinity chromatography using maltose-binding protein (MBP)"
+      affinity_gst:
+        description: "Affinity chromatography using glutathione S-transferase (GST)"
+      tag_cleavage:
+        description: "Proteolytic cleavage of purification tags"
+      ion_exchange:
+        description: "Ion-exchange chromatography (IEX)"
+      hydrophobic_interaction:
+        description: "Hydrophobic interaction chromatography (HIC)"
+      size_exclusion:
+        description: "Size-exclusion chromatography (SEC)"
+      dialysis:
+        description: "Dialysis or buffer exchange"
+
+  PhasingMethodEnum:
+    description: "Methods for phase determination in X-ray crystallography"
+    permissible_values:
+      molecular_replacement:
+        description: "Molecular replacement (MR)"
+      sad:
+        description: "Single-wavelength anomalous diffraction (SAD)"
+      mad:
+        description: "Multi-wavelength anomalous diffraction (MAD)"
+      sir:
+        description: "Single isomorphous replacement (SIR)"
+      mir:
+        description: "Multiple isomorphous replacement (MIR)"
+      siras:
+        description: "Single isomorphous replacement with anomalous scattering (SIRAS)"
+      miras:
+        description: "Multiple isomorphous replacement with anomalous scattering (MIRAS)"
+      fragile_mr:
+        description: "Fragile molecular replacement or ensemble-based MR"
+
+  ExperimentalMethodEnum:
+    description: "Experimental methods for structure determination"
+    permissible_values:
+      x_ray_diffraction:
+        description: "X-ray diffraction"
+        meaning: CHMO:0000156
+      neutron_diffraction:
+        description: "Neutron diffraction"
+      electron_diffraction:
+        description: "Electron diffraction (e.g., microED)"
+      fiber_diffraction:
+        description: "Fiber diffraction"
 
   # ===== ASSOCIATION CLASSES FOR RELATIONAL MODEL =====
 
