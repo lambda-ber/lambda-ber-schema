@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a hierarchical structure that mirrors how structural biology research is organized:\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\nEach dataset contains one or more [Studies](Study.md), which are focused investigations of specific\nbiological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\nor \"Structure of the human ribosome under different conditions.\"\n\nWithin each study, you'll find:\n\n### Biological Materials\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, \n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and \n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n### Data Collection\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron \n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), \n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to \n  instruments. An experiment run captures when, how, and under what conditions data was collected,\n  including quality metrics like resolution and completeness.\n\n### Data Processing\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n### Data Products\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "https://w3id.org/lambda-ber-schema/",
-  "version": "0.1.1.post47.dev0+25564fe",
+  "version": "0.1.2.post19.dev0+b043e45",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -1500,6 +1500,901 @@
       ]
     },
     {
+      "name": "BeamlineEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/BeamlineEnum",
+      "description": "Specific beamline instances at DOE and other major structural biology facilities",
+      "comments": [
+        "Each beamline is annotated with its parent facility from FacilityEnum",
+        "Focus on beamlines used for structural biology (MX, SAXS/WAXS, neutron scattering)",
+        "Beamline IDs follow facility-specific conventions"
+      ],
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "ALS_SIBYLS",
+          "description": "Structurally Integrated Biology for Life Sciences - dual SAXS/WAXS and macromolecular crystallography beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "12.3.1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:saxs|TechniqueEnum:waxs|TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "mail_in_service",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://sibyls.als.lbl.gov/"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2004"
+            }
+          ],
+          "title": "SIBYLS (BL12.3.1)",
+          "aliases": [
+            "SIBYLS",
+            "BL12.3.1",
+            "ALS 12.3.1"
+          ]
+        },
+        {
+          "text": "ALS_BL501",
+          "description": "Protein crystallography beamline at the Advanced Light Source",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "5.0.1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL5.0.1",
+          "aliases": [
+            "BL5.0.1"
+          ]
+        },
+        {
+          "text": "ALS_BL502",
+          "description": "Protein crystallography beamline at the Advanced Light Source",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "5.0.2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL5.0.2",
+          "aliases": [
+            "BL5.0.2"
+          ]
+        },
+        {
+          "text": "ALS_BL821",
+          "description": "Protein crystallography beamline at the Advanced Light Source",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "8.2.1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL8.2.1",
+          "aliases": [
+            "BL8.2.1"
+          ]
+        },
+        {
+          "text": "ALS_BL822",
+          "description": "Protein crystallography beamline at the Advanced Light Source",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "8.2.2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL8.2.2",
+          "aliases": [
+            "BL8.2.2"
+          ]
+        },
+        {
+          "text": "ALS_BL831",
+          "description": "High-throughput macromolecular crystallography beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "8.3.1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "mail_in_service",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL8.3.1",
+          "aliases": [
+            "BL8.3.1"
+          ]
+        },
+        {
+          "text": "ALS_BL1222",
+          "description": "High-throughput macromolecular crystallography beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:ALS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "12.2.2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "ALS BL12.2.2",
+          "aliases": [
+            "BL12.2.2"
+          ]
+        },
+        {
+          "text": "NSLS2_FMX",
+          "description": "Frontier Microfocus Macromolecular Crystallography beamline for challenging small crystals",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:NSLS_II"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "17-ID-1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-1"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2016"
+            }
+          ],
+          "title": "FMX (17-ID-1)",
+          "aliases": [
+            "FMX",
+            "17-ID-1"
+          ]
+        },
+        {
+          "text": "NSLS2_AMX",
+          "description": "Automated Macromolecular Crystallography beamline for high-throughput structure determination",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:NSLS_II"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "17-ID-2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-2"
+            },
+            {
+              "tag": "operational_since",
+              "value": "2016"
+            }
+          ],
+          "title": "AMX (17-ID-2)",
+          "aliases": [
+            "AMX",
+            "17-ID-2"
+          ]
+        },
+        {
+          "text": "NSLS2_NYX",
+          "description": "Newest crystallography beamline for rapid data collection",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:NSLS_II"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "19-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "NYX (19-ID)",
+          "aliases": [
+            "NYX",
+            "19-ID"
+          ]
+        },
+        {
+          "text": "NSLS2_LIX",
+          "description": "Life Science X-ray Scattering beamline for solution SAXS/WAXS",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:NSLS_II"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "16-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:saxs|TechniqueEnum:waxs"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=16-ID"
+            }
+          ],
+          "title": "LiX (16-ID)",
+          "aliases": [
+            "LiX",
+            "16-ID"
+          ]
+        },
+        {
+          "text": "APS_GMCA_23IDB",
+          "description": "General Medical Sciences and Cancer Institutes Collaborative Access Team - microfocus beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "23-ID-B"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.gmca.anl.gov/"
+            }
+          ],
+          "title": "GM/CA 23-ID-B",
+          "aliases": [
+            "GM/CA-B",
+            "23-ID-B"
+          ]
+        },
+        {
+          "text": "APS_GMCA_23IDD",
+          "description": "General Medical Sciences and Cancer Institutes Collaborative Access Team - standard beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "23-ID-D"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.gmca.anl.gov/"
+            }
+          ],
+          "title": "GM/CA 23-ID-D",
+          "aliases": [
+            "GM/CA-D",
+            "23-ID-D"
+          ]
+        },
+        {
+          "text": "APS_LSCAT_21ID",
+          "description": "Life Sciences Collaborative Access Team beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "21-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://ls-cat.org/"
+            }
+          ],
+          "title": "LS-CAT (21-ID)",
+          "aliases": [
+            "LS-CAT",
+            "21-ID"
+          ]
+        },
+        {
+          "text": "APS_NECAT_24IDC",
+          "description": "Northeastern Collaborative Access Team - microfocus beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "24-ID-C"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://necat.chem.cornell.edu/"
+            }
+          ],
+          "title": "NE-CAT 24-ID-C",
+          "aliases": [
+            "NE-CAT-C",
+            "24-ID-C"
+          ]
+        },
+        {
+          "text": "APS_NECAT_24IDE",
+          "description": "Northeastern Collaborative Access Team - standard beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "24-ID-E"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://necat.chem.cornell.edu/"
+            }
+          ],
+          "title": "NE-CAT 24-ID-E",
+          "aliases": [
+            "NE-CAT-E",
+            "24-ID-E"
+          ]
+        },
+        {
+          "text": "APS_SERCAT_22ID",
+          "description": "Southeast Regional Collaborative Access Team - insertion device beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "22-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.ser-cat.org/"
+            }
+          ],
+          "title": "SER-CAT (22-ID)",
+          "aliases": [
+            "SER-CAT",
+            "22-ID"
+          ]
+        },
+        {
+          "text": "APS_SERCAT_22BM",
+          "description": "Southeast Regional Collaborative Access Team - bending magnet beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "22-BM"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.ser-cat.org/"
+            }
+          ],
+          "title": "SER-CAT (22-BM)",
+          "aliases": [
+            "SER-CAT-BM",
+            "22-BM"
+          ]
+        },
+        {
+          "text": "APS_SBCCAT_19ID",
+          "description": "Structural Biology Center Collaborative Access Team beamline",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "19-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.anl.gov/sbc"
+            }
+          ],
+          "title": "SBC-CAT (19-ID)",
+          "aliases": [
+            "SBC-CAT",
+            "19-ID"
+          ]
+        },
+        {
+          "text": "APS_BIOCARS_14ID",
+          "description": "Center for Advanced Radiation Sources - time-resolved crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "14-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography|TechniqueEnum:time_resolved_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://biocars.uchicago.edu/"
+            }
+          ],
+          "title": "BioCARS (14-ID)",
+          "aliases": [
+            "BioCARS",
+            "14-ID"
+          ]
+        },
+        {
+          "text": "APS_BIOCAT_18ID",
+          "description": "Biophysics Collaborative Access Team - fiber diffraction and SAXS",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "18-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:saxs|TechniqueEnum:fiber_diffraction"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www.bio.aps.anl.gov/"
+            }
+          ],
+          "title": "BioCAT (18-ID)",
+          "aliases": [
+            "BioCAT",
+            "18-ID"
+          ]
+        },
+        {
+          "text": "APS_IMCACAT_17ID",
+          "description": "Industrial Macromolecular Crystallography Association Collaborative Access Team",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:APS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "17-ID"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            }
+          ],
+          "title": "IMCA-CAT (17-ID)",
+          "aliases": [
+            "IMCA-CAT",
+            "17-ID"
+          ]
+        },
+        {
+          "text": "SSRL_BL92",
+          "description": "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SSRL"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "9-2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www-ssrl.slac.stanford.edu/smb/"
+            }
+          ],
+          "title": "SSRL BL9-2",
+          "aliases": [
+            "BL9-2",
+            "SSRL 9-2"
+          ]
+        },
+        {
+          "text": "SSRL_BL122",
+          "description": "Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SSRL"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "12-2"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:saxs|TechniqueEnum:waxs"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www-ssrl.slac.stanford.edu/smb/"
+            }
+          ],
+          "title": "SSRL BL12-2",
+          "aliases": [
+            "BL12-2",
+            "SSRL 12-2"
+          ]
+        },
+        {
+          "text": "SSRL_BL141",
+          "description": "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SSRL"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "14-1"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:xray_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://www-ssrl.slac.stanford.edu/smb/"
+            }
+          ],
+          "title": "SSRL BL14-1",
+          "aliases": [
+            "BL14-1",
+            "SSRL 14-1"
+          ]
+        },
+        {
+          "text": "SNS_MANDI",
+          "description": "Macromolecular Neutron Diffractometer for neutron protein crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SNS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "BL-11B"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:neutron_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://neutrons.ornl.gov/mandi"
+            }
+          ],
+          "title": "MaNDi",
+          "aliases": [
+            "MaNDi",
+            "BL-11B"
+          ]
+        },
+        {
+          "text": "HFIR_IMAGINE",
+          "description": "Image plate single crystal diffractometer for neutron protein crystallography",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:HFIR"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "CG-4D"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:neutron_crystallography"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://neutrons.ornl.gov/imagine"
+            }
+          ],
+          "title": "IMAGINE",
+          "aliases": [
+            "IMAGINE",
+            "CG-4D"
+          ]
+        },
+        {
+          "text": "SNS_BIOSANS",
+          "description": "Biological Small-Angle Neutron Scattering instrument",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:HFIR"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "CG-3"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:sans"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://neutrons.ornl.gov/bio-sans"
+            }
+          ],
+          "title": "Bio-SANS",
+          "aliases": [
+            "Bio-SANS",
+            "CG-3"
+          ]
+        },
+        {
+          "text": "SNS_EQSANS",
+          "description": "Extended Q-Range Small-Angle Neutron Scattering instrument",
+          "annotations": [
+            {
+              "tag": "facility",
+              "value": "FacilityEnum:SNS"
+            },
+            {
+              "tag": "beamline_id",
+              "value": "BL-6"
+            },
+            {
+              "tag": "techniques",
+              "value": "TechniqueEnum:sans"
+            },
+            {
+              "tag": "doe_beamline",
+              "value": "true"
+            },
+            {
+              "tag": "website",
+              "value": "https://neutrons.ornl.gov/eqsans"
+            }
+          ],
+          "title": "EQ-SANS",
+          "aliases": [
+            "EQ-SANS",
+            "BL-6"
+          ]
+        }
+      ]
+    },
+    {
       "name": "ImagingModeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/ImagingModeEnum",
       "description": "Imaging modes for electron microscopy",
@@ -1790,6 +2685,32 @@
           ],
           "exact_mappings": [
             "PaNET:01137"
+          ]
+        },
+        {
+          "text": "neutron_crystallography",
+          "description": "Neutron macromolecular crystallography",
+          "meaning": "CHMO:0000182",
+          "comments": [
+            "Also known as neutron protein crystallography or neutron macromolecular diffraction",
+            "Used for hydrogen/deuterium visualization in protein structures"
+          ]
+        },
+        {
+          "text": "fiber_diffraction",
+          "description": "Fiber diffraction for structural analysis of fibrous samples",
+          "meaning": "CHMO:0000156",
+          "comments": [
+            "Used for studying filamentous proteins, DNA fibers, muscle fibers"
+          ]
+        },
+        {
+          "text": "time_resolved_crystallography",
+          "description": "Time-resolved macromolecular crystallography",
+          "meaning": "CHMO:0000156",
+          "comments": [
+            "Pump-probe crystallography for capturing structural dynamics",
+            "Requires fast X-ray pulses (synchrotron or XFEL)"
           ]
         }
       ]
@@ -19653,9 +20574,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2025-12-19T14:46:18",
-  "source_file_size": 134930,
-  "generation_date": "2025-12-19T14:49:42",
+  "source_file_date": "2026-01-20T10:47:18",
+  "source_file_size": 148806,
+  "generation_date": "2026-01-20T10:47:26",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T14:49:48
+# Generation date: 2026-01-20T10:47:29
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,7 +137,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Float, Integer, St
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = "0.1.1.post47.dev0+25564fe"
+version = "0.1.2.post19.dev0+b043e45"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -4775,6 +4775,132 @@ class FacilityTypeEnum(EnumDefinitionImpl):
         description="Types of research facilities",
     )
 
+class BeamlineEnum(EnumDefinitionImpl):
+    """
+    Specific beamline instances at DOE and other major structural biology facilities
+    """
+    ALS_SIBYLS = PermissibleValue(
+        text="ALS_SIBYLS",
+        title="SIBYLS (BL12.3.1)",
+        description="""Structurally Integrated Biology for Life Sciences - dual SAXS/WAXS and macromolecular crystallography beamline""")
+    ALS_BL501 = PermissibleValue(
+        text="ALS_BL501",
+        title="ALS BL5.0.1",
+        description="Protein crystallography beamline at the Advanced Light Source")
+    ALS_BL502 = PermissibleValue(
+        text="ALS_BL502",
+        title="ALS BL5.0.2",
+        description="Protein crystallography beamline at the Advanced Light Source")
+    ALS_BL821 = PermissibleValue(
+        text="ALS_BL821",
+        title="ALS BL8.2.1",
+        description="Protein crystallography beamline at the Advanced Light Source")
+    ALS_BL822 = PermissibleValue(
+        text="ALS_BL822",
+        title="ALS BL8.2.2",
+        description="Protein crystallography beamline at the Advanced Light Source")
+    ALS_BL831 = PermissibleValue(
+        text="ALS_BL831",
+        title="ALS BL8.3.1",
+        description="High-throughput macromolecular crystallography beamline")
+    ALS_BL1222 = PermissibleValue(
+        text="ALS_BL1222",
+        title="ALS BL12.2.2",
+        description="High-throughput macromolecular crystallography beamline")
+    NSLS2_FMX = PermissibleValue(
+        text="NSLS2_FMX",
+        title="FMX (17-ID-1)",
+        description="Frontier Microfocus Macromolecular Crystallography beamline for challenging small crystals")
+    NSLS2_AMX = PermissibleValue(
+        text="NSLS2_AMX",
+        title="AMX (17-ID-2)",
+        description="Automated Macromolecular Crystallography beamline for high-throughput structure determination")
+    NSLS2_NYX = PermissibleValue(
+        text="NSLS2_NYX",
+        title="NYX (19-ID)",
+        description="Newest crystallography beamline for rapid data collection")
+    NSLS2_LIX = PermissibleValue(
+        text="NSLS2_LIX",
+        title="LiX (16-ID)",
+        description="Life Science X-ray Scattering beamline for solution SAXS/WAXS")
+    APS_GMCA_23IDB = PermissibleValue(
+        text="APS_GMCA_23IDB",
+        title="GM/CA 23-ID-B",
+        description="General Medical Sciences and Cancer Institutes Collaborative Access Team - microfocus beamline")
+    APS_GMCA_23IDD = PermissibleValue(
+        text="APS_GMCA_23IDD",
+        title="GM/CA 23-ID-D",
+        description="General Medical Sciences and Cancer Institutes Collaborative Access Team - standard beamline")
+    APS_LSCAT_21ID = PermissibleValue(
+        text="APS_LSCAT_21ID",
+        title="LS-CAT (21-ID)",
+        description="Life Sciences Collaborative Access Team beamline")
+    APS_NECAT_24IDC = PermissibleValue(
+        text="APS_NECAT_24IDC",
+        title="NE-CAT 24-ID-C",
+        description="Northeastern Collaborative Access Team - microfocus beamline")
+    APS_NECAT_24IDE = PermissibleValue(
+        text="APS_NECAT_24IDE",
+        title="NE-CAT 24-ID-E",
+        description="Northeastern Collaborative Access Team - standard beamline")
+    APS_SERCAT_22ID = PermissibleValue(
+        text="APS_SERCAT_22ID",
+        title="SER-CAT (22-ID)",
+        description="Southeast Regional Collaborative Access Team - insertion device beamline")
+    APS_SERCAT_22BM = PermissibleValue(
+        text="APS_SERCAT_22BM",
+        title="SER-CAT (22-BM)",
+        description="Southeast Regional Collaborative Access Team - bending magnet beamline")
+    APS_SBCCAT_19ID = PermissibleValue(
+        text="APS_SBCCAT_19ID",
+        title="SBC-CAT (19-ID)",
+        description="Structural Biology Center Collaborative Access Team beamline")
+    APS_BIOCARS_14ID = PermissibleValue(
+        text="APS_BIOCARS_14ID",
+        title="BioCARS (14-ID)",
+        description="Center for Advanced Radiation Sources - time-resolved crystallography")
+    APS_BIOCAT_18ID = PermissibleValue(
+        text="APS_BIOCAT_18ID",
+        title="BioCAT (18-ID)",
+        description="Biophysics Collaborative Access Team - fiber diffraction and SAXS")
+    APS_IMCACAT_17ID = PermissibleValue(
+        text="APS_IMCACAT_17ID",
+        title="IMCA-CAT (17-ID)",
+        description="Industrial Macromolecular Crystallography Association Collaborative Access Team")
+    SSRL_BL92 = PermissibleValue(
+        text="SSRL_BL92",
+        title="SSRL BL9-2",
+        description="Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource")
+    SSRL_BL122 = PermissibleValue(
+        text="SSRL_BL122",
+        title="SSRL BL12-2",
+        description="Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource")
+    SSRL_BL141 = PermissibleValue(
+        text="SSRL_BL141",
+        title="SSRL BL14-1",
+        description="Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource")
+    SNS_MANDI = PermissibleValue(
+        text="SNS_MANDI",
+        title="MaNDi",
+        description="Macromolecular Neutron Diffractometer for neutron protein crystallography")
+    HFIR_IMAGINE = PermissibleValue(
+        text="HFIR_IMAGINE",
+        title="IMAGINE",
+        description="Image plate single crystal diffractometer for neutron protein crystallography")
+    SNS_BIOSANS = PermissibleValue(
+        text="SNS_BIOSANS",
+        title="Bio-SANS",
+        description="Biological Small-Angle Neutron Scattering instrument")
+    SNS_EQSANS = PermissibleValue(
+        text="SNS_EQSANS",
+        title="EQ-SANS",
+        description="Extended Q-Range Small-Angle Neutron Scattering instrument")
+
+    _defn = EnumDefinition(
+        name="BeamlineEnum",
+        description="Specific beamline instances at DOE and other major structural biology facilities",
+    )
+
 class ImagingModeEnum(EnumDefinitionImpl):
     """
     Imaging modes for electron microscopy
@@ -4960,6 +5086,18 @@ class TechniqueEnum(EnumDefinitionImpl):
     xmcd = PermissibleValue(
         text="xmcd",
         description="X-ray magnetic circular dichroism")
+    neutron_crystallography = PermissibleValue(
+        text="neutron_crystallography",
+        description="Neutron macromolecular crystallography",
+        meaning=CHMO["0000182"])
+    fiber_diffraction = PermissibleValue(
+        text="fiber_diffraction",
+        description="Fiber diffraction for structural analysis of fibrous samples",
+        meaning=CHMO["0000156"])
+    time_resolved_crystallography = PermissibleValue(
+        text="time_resolved_crystallography",
+        description="Time-resolved macromolecular crystallography",
+        meaning=CHMO["0000156"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
