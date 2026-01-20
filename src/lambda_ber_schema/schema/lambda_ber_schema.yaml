@@ -783,6 +783,15 @@ classes:
       website:
         description: "Beamline website URL"
         range: uri
+      lims_system:
+        description: "Laboratory Information Management System used at this beamline"
+        range: LIMSSystemEnum
+      daq_system:
+        description: "Data acquisition system used for experiment orchestration"
+        range: DataAcquisitionSystemEnum
+      control_system:
+        description: "Low-level control system for device communication"
+        range: ControlSystemEnum
 
   ExperimentRun:
     is_a: NamedThing
@@ -826,6 +835,9 @@ classes:
       processing_status:
         description: "Current processing status"
         range: ProcessingStatusEnum
+      daq_system:
+        description: "Data acquisition system used to collect this experiment"
+        range: DataAcquisitionSystemEnum
       # Cryo-EM specific acquisition session metadata
       magnification:
         description: "Magnification used during data collection"
@@ -3678,3 +3690,182 @@ enums:
         description: "Electron diffraction (e.g., microED)"
       fiber_diffraction:
         description: "Fiber diffraction"
+
+  LIMSSystemEnum:
+    description: >-
+      Laboratory Information Management Systems (LIMS) used at structural biology facilities
+      to manage samples, experiments, and data workflows. These systems track samples from
+      shipment through data collection and processing.
+    permissible_values:
+      ispyb:
+        title: ISPyB (Community)
+        description: >-
+          Information System for Protein crystallography Beamlines - the community-maintained
+          variant developed collaboratively by ESRF, MAX IV, SOLEIL, ALBA, and other facilities.
+          Provides comprehensive tracking of samples, data collections, and processing results
+          for macromolecular crystallography. The py-ispyb Python API targets this variant.
+        annotations:
+          github: https://github.com/ispyb/ispyb-database-modeling
+          api_github: https://github.com/ispyb/py-ispyb
+          publication: https://doi.org/10.1093/bioinformatics/btr535
+          facilities: "ESRF, MAX IV, SOLEIL, ALBA"
+      ispyb_diamond:
+        title: ISPyB (Diamond)
+        description: >-
+          Diamond Light Source variant of ISPyB, the original reference implementation.
+          Tightly integrated with Diamond's infrastructure and SynchWeb web interface.
+          Shares core schema with community ISPyB but has diverged in extensions and APIs.
+        annotations:
+          github: https://github.com/DiamondLightSource/ispyb-database
+          synchweb_publication: https://doi.org/10.1107/S1600577515005317
+          facilities: "Diamond Light Source"
+      icat:
+        title: ICAT
+        description: >-
+          ICAT is a metadata catalogue and data management system designed to support
+          large facility experimental data. Used primarily at neutron and photon sources
+          for cataloging experimental data with rich metadata and providing data access APIs.
+        annotations:
+          website: https://icatproject.org/
+          github: https://github.com/icatproject
+          facilities: "ISIS, Diamond, ESRF, ILL, ORNL"
+      mxlive:
+        title: MXLive
+        description: >-
+          Web-based LIMS developed at the Canadian Light Source for macromolecular
+          crystallography beamlines. Provides sample tracking, data collection scheduling,
+          and integration with automated data processing pipelines.
+        annotations:
+          facilities: "Canadian Light Source"
+      mxcube:
+        title: MXCuBE
+        description: >-
+          Macromolecular Crystallography Beamline Control Unit Environment - a unified
+          beamline control and experiment management system. Originally developed at ESRF,
+          now a collaborative project. MXCuBE3 is the modern web-based version.
+        annotations:
+          website: https://mxcube.github.io/mxcube/
+          github: https://github.com/mxcube
+          facilities: "ESRF, MAX IV, SOLEIL, ALBA, DESY, EMBL"
+      user_office:
+        title: User Office System
+        description: >-
+          Generic facility user office or proposal management system for tracking
+          beam time proposals, user access, and administrative metadata.
+
+  DataAcquisitionSystemEnum:
+    description: >-
+      Data acquisition (DAQ) systems for orchestrating experimental data collection at
+      facilities. These systems coordinate hardware, execute scan sequences, and stream
+      data and metadata during experiments.
+    permissible_values:
+      bluesky:
+        title: Bluesky
+        description: >-
+          Event-based data acquisition framework developed at NSLS-II (Brookhaven National
+          Laboratory). Uses a streaming document model with RunStart, Event, and RunStop
+          documents. Built on Python with ophyd for hardware abstraction and databroker
+          for data access. Increasingly adopted at ALS, APS, and international facilities.
+        annotations:
+          website: https://blueskyproject.io/
+          github: https://github.com/bluesky
+          event_model_github: https://github.com/bluesky/event-model
+          databroker_github: https://github.com/bluesky/databroker
+          publication: https://doi.org/10.1080/08940886.2019.1608121
+          facilities: "NSLS-II, ALS (SIBYLS), APS, MAX IV"
+      spec:
+        title: SPEC
+        description: >-
+          Legacy macro-based data acquisition system from Certified Scientific Software.
+          Long-standing standard at synchrotron beamlines, using a command-line interface
+          with macro scripting. Still in use at many facilities but being replaced by
+          modern alternatives.
+        annotations:
+          website: https://www.certif.com/content/spec/
+      sardana:
+        title: Sardana
+        description: >-
+          Tango-based data acquisition and control system developed at ALBA. Provides
+          a modular framework for beamline control with macro execution, scan management,
+          and integration with Tango device servers.
+        annotations:
+          website: https://sardana-controls.org/
+          github: https://github.com/sardana-org/sardana
+          facilities: "ALBA, MAX IV, SOLEIL, DESY"
+      gda:
+        title: GDA
+        description: >-
+          Generic Data Acquisition - Java-based data acquisition framework developed
+          at Diamond Light Source. Provides beamline control, scan execution, and
+          integration with EPICS and other control systems.
+        annotations:
+          website: https://www.opengda.org/
+          github: https://github.com/openGDA
+          facilities: "Diamond Light Source"
+      mxcube:
+        title: MXCuBE (Data Collection)
+        description: >-
+          MXCuBE used as data collection interface for macromolecular crystallography.
+          Provides automated data collection strategies, sample centering, and integration
+          with processing pipelines. See also mxcube in LIMSSystemEnum for sample management.
+        annotations:
+          website: https://mxcube.github.io/mxcube/
+          github: https://github.com/mxcube
+          facilities: "ESRF, MAX IV, SOLEIL, ALBA, DESY, EMBL"
+      blu_ice:
+        title: Blu-Ice
+        description: >-
+          Data collection software developed at SSRL (Stanford Synchrotron Radiation
+          Lightsource) for macromolecular crystallography. Provides graphical interface
+          for sample positioning, data collection strategy, and beamline control.
+        annotations:
+          publication: https://doi.org/10.1107/S0909049505012719
+          facilities: "SSRL"
+      jblue_ice:
+        title: JBluIce
+        description: >-
+          Java-based variant of Blu-Ice deployed at GM/CA (General Medicine and Cancer
+          Institutes Collaborative Access Team) and SER-CAT beamlines at APS.
+        annotations:
+          facilities: "APS (GM/CA, SER-CAT)"
+
+  ControlSystemEnum:
+    description: >-
+      Low-level control systems and middleware frameworks for device communication
+      and hardware abstraction at experimental facilities. These provide the foundation
+      layer that data acquisition systems build upon.
+    permissible_values:
+      epics:
+        title: EPICS
+        description: >-
+          Experimental Physics and Industrial Control System - open-source control system
+          framework widely used at accelerators and large experimental facilities worldwide.
+          Provides distributed control with Channel Access protocol, IOCs (Input/Output
+          Controllers), and extensive tool ecosystem.
+        annotations:
+          website: https://epics-controls.org/
+          github: https://github.com/epics-base
+          facilities: "Most US synchrotrons (ALS, APS, NSLS-II, SSRL), many international facilities"
+      tango:
+        title: Tango Controls
+        description: >-
+          Object-oriented distributed control system developed at ESRF. Provides device
+          servers, a naming service, and tools for building control applications. Widely
+          adopted at European synchrotrons and other facilities.
+        annotations:
+          website: https://www.tango-controls.org/
+          github: https://github.com/tango-controls
+          facilities: "ESRF, ALBA, MAX IV, SOLEIL, DESY, ELETTRA"
+      labview:
+        title: LabVIEW
+        description: >-
+          Graphical programming environment from National Instruments for instrument
+          control and data acquisition. Used at some laboratory and smaller-scale facilities
+          for custom instrument integration.
+        annotations:
+          website: https://www.ni.com/labview
+      opi:
+        title: OPI
+        description: >-
+          Operator Interface - legacy control system used at ALS before EPICS adoption.
+          Historical reference for older beamline configurations.

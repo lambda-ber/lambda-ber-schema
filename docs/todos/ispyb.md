@@ -8,8 +8,22 @@ ISPyB (Information System for Protein crystallography Beamlines) is a LIMS used 
 
 - [ISPyB Database (Diamond)](https://github.com/DiamondLightSource/ispyb-database)
 - [ISPyB Database Modeling](https://github.com/ispyb/ispyb-database-modeling)
+- [py-ispyb Python API](https://github.com/ispyb/py-ispyb)
 - [ISPyB Publication](https://academic.oup.com/bioinformatics/article/27/22/3186/195018)
 - [SynchWeb Interface](https://pmc.ncbi.nlm.nih.gov/articles/PMC4453979/)
+
+## ISPyB Variants
+
+There are two main ISPyB implementations that have diverged over time:
+
+| Variant | Repository | Used At | Notes |
+|---------|------------|---------|-------|
+| **Diamond ISPyB** | `DiamondLightSource/ispyb-database` | Diamond Light Source | Original reference implementation |
+| **Community ISPyB** | `ispyb/ispyb-database-modeling` | ESRF, MAX IV, SOLEIL, ALBA | Multi-facility collaboration, more active schema development |
+
+The core schema (DataCollection, AutoProc*, BLSample, etc.) is shared, but extensions and APIs differ. The `py-ispyb` Python API primarily targets the community version.
+
+For lambda-ber-schema integration, the mappings should work with both variants since they target the common core schema elements.
 
 ## Completed Tasks
 
