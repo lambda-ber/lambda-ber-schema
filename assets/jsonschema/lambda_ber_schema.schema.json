@@ -5569,14 +5569,7 @@
             "type": "object"
         },
         "OutputTypeEnum": {
-            "description": "Type of output from a workflow",
-            "enum": [
-                "processed_data",
-                "model",
-                "map",
-                "log",
-                "statistics"
-            ],
+            "description": "",
             "title": "OutputTypeEnum",
             "type": "string"
         },
@@ -9768,5 +9761,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.0.0.post2.dev0+6cb7484"
+    "version": "0.0.0.post161.dev0+d3b8060"
 }

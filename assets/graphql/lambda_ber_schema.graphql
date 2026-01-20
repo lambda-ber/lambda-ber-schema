@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post2.dev0+6cb7484
+# version: 0.0.0.post161.dev0+d3b8060
 enum AffinityUnitEnum
   {
     molar
@@ -488,15 +488,6 @@ enum MutationTypeEnum
     insertion
     duplication
     substitution
-  }
-
-enum OutputTypeEnum
-  {
-    processed_data
-    model
-    map
-    log
-    statistics
   }
 
 enum PhasingMethodEnum

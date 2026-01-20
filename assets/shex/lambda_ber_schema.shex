@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post2.dev0+6cb7484
+# version: 0.0.0.post161.dev0+d3b8060
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -1580,10 +1580,7 @@ linkml:Sparqlpath xsd:string
 <WorkflowOutputAssociation> CLOSED {
     (  $<WorkflowOutputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
           <file_id> @<DataFile> ;
-          <output_type> [ <https://w3id.org/lambda-ber-schema/OutputTypeEnum#processed_data>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#model> <https://w3id.org/lambda-ber-schema/OutputTypeEnum#map>
-             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#log> <https://w3id.org/lambda-ber-schema/OutputTypeEnum#statistics>
-             ] ?
+          <output_type> . ?
        ) ;
        rdf:type [ <WorkflowOutputAssociation> ] ?
     )

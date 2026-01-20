@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-20T19:36:39
+# Generation date: 2026-01-20T20:17:51
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,7 +137,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post2.dev0+6cb7484"
+version = "0.0.0.post161.dev0+d3b8060"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -3690,9 +3690,6 @@ class WorkflowOutputAssociation(YAMLRoot):
         if not isinstance(self.file_id, DataFileId):
             self.file_id = DataFileId(self.file_id)
 
-        if self.output_type is not None and not isinstance(self.output_type, OutputTypeEnum):
-            self.output_type = OutputTypeEnum(self.output_type)
-
         super().__post_init__(**kwargs)
 
 
@@ -5900,28 +5897,9 @@ class InputTypeEnum(EnumDefinitionImpl):
     )
 
 class OutputTypeEnum(EnumDefinitionImpl):
-    """
-    Type of output from a workflow
-    """
-    processed_data = PermissibleValue(
-        text="processed_data",
-        description="Processed/corrected data")
-    model = PermissibleValue(
-        text="model",
-        description="Structural model")
-    map = PermissibleValue(
-        text="map",
-        description="Density map or reconstruction")
-    log = PermissibleValue(
-        text="log",
-        description="Processing log or report")
-    statistics = PermissibleValue(
-        text="statistics",
-        description="Quality statistics or metrics")
 
     _defn = EnumDefinition(
         name="OutputTypeEnum",
-        description="Type of output from a workflow",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):

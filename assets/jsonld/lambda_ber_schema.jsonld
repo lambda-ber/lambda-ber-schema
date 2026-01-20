@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a hierarchical structure that mirrors how structural biology research is organized:\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\nEach dataset contains one or more [Studies](Study.md), which are focused investigations of specific\nbiological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\nor \"Structure of the human ribosome under different conditions.\"\n\nWithin each study, you'll find:\n\n### Biological Materials\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, \n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and \n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n### Data Collection\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron \n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), \n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to \n  instruments. An experiment run captures when, how, and under what conditions data was collected,\n  including quality metrics like resolution and completeness.\n\n### Data Processing\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n### Data Products\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "https://w3id.org/lambda-ber-schema/",
-  "version": "0.0.0.post2.dev0+6cb7484",
+  "version": "0.0.0.post161.dev0+d3b8060",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -3326,30 +3326,7 @@
     {
       "name": "OutputTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/OutputTypeEnum",
-      "description": "Type of output from a workflow",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "permissible_values": [
-        {
-          "text": "processed_data",
-          "description": "Processed/corrected data"
-        },
-        {
-          "text": "model",
-          "description": "Structural model"
-        },
-        {
-          "text": "map",
-          "description": "Density map or reconstruction"
-        },
-        {
-          "text": "log",
-          "description": "Processing log or report"
-        },
-        {
-          "text": "statistics",
-          "description": "Quality statistics or metrics"
-        }
-      ]
+      "from_schema": "https://w3id.org/lambda-ber-schema/"
     },
     {
       "name": "FunctionalSiteTypeEnum",
@@ -21418,9 +21395,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-01-20T19:36:27",
-  "source_file_size": 155783,
-  "generation_date": "2026-01-20T19:36:33",
+  "source_file_date": "2026-01-20T20:14:30",
+  "source_file_size": 155344,
+  "generation_date": "2026-01-20T20:17:45",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",
