@@ -1,6 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
-version: "0.1.1.post47.dev0+25564fe" # Managed by uv-dynamic-versioning
+version: "0.1.2.post19.dev0+b043e45" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -2879,6 +2879,363 @@ enums:
       CRYOEM_CENTER:
         description: "Dedicated cryo-electron microscopy center"
 
+  BeamlineEnum:
+    description: "Specific beamline instances at DOE and other major structural biology facilities"
+    comments:
+      - "Each beamline is annotated with its parent facility from FacilityEnum"
+      - "Focus on beamlines used for structural biology (MX, SAXS/WAXS, neutron scattering)"
+      - "Beamline IDs follow facility-specific conventions"
+    permissible_values:
+      # === ALS Beamlines (Lawrence Berkeley National Laboratory) ===
+      ALS_SIBYLS:
+        title: "SIBYLS (BL12.3.1)"
+        description: "Structurally Integrated Biology for Life Sciences - dual SAXS/WAXS and macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "12.3.1"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs|TechniqueEnum:xray_crystallography"
+          doe_beamline: "true"
+          mail_in_service: "true"
+          website: "https://sibyls.als.lbl.gov/"
+          operational_since: "2004"
+        aliases:
+          - SIBYLS
+          - BL12.3.1
+          - ALS 12.3.1
+      ALS_BL501:
+        title: "ALS BL5.0.1"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "5.0.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL5.0.1
+      ALS_BL502:
+        title: "ALS BL5.0.2"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "5.0.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL5.0.2
+      ALS_BL821:
+        title: "ALS BL8.2.1"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.2.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL8.2.1
+      ALS_BL822:
+        title: "ALS BL8.2.2"
+        description: "Protein crystallography beamline at the Advanced Light Source"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.2.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL8.2.2
+      ALS_BL831:
+        title: "ALS BL8.3.1"
+        description: "High-throughput macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "8.3.1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          mail_in_service: "true"
+        aliases:
+          - BL8.3.1
+      ALS_BL1222:
+        title: "ALS BL12.2.2"
+        description: "High-throughput macromolecular crystallography beamline"
+        annotations:
+          facility: FacilityEnum:ALS
+          beamline_id: "12.2.2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - BL12.2.2
+
+      # === NSLS-II Beamlines (Brookhaven National Laboratory) ===
+      NSLS2_FMX:
+        title: "FMX (17-ID-1)"
+        description: "Frontier Microfocus Macromolecular Crystallography beamline for challenging small crystals"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "17-ID-1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-1"
+          operational_since: "2016"
+        aliases:
+          - FMX
+          - 17-ID-1
+      NSLS2_AMX:
+        title: "AMX (17-ID-2)"
+        description: "Automated Macromolecular Crystallography beamline for high-throughput structure determination"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "17-ID-2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=17-ID-2"
+          operational_since: "2016"
+        aliases:
+          - AMX
+          - 17-ID-2
+      NSLS2_NYX:
+        title: "NYX (19-ID)"
+        description: "Newest crystallography beamline for rapid data collection"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "19-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - NYX
+          - 19-ID
+      NSLS2_LIX:
+        title: "LiX (16-ID)"
+        description: "Life Science X-ray Scattering beamline for solution SAXS/WAXS"
+        annotations:
+          facility: FacilityEnum:NSLS_II
+          beamline_id: "16-ID"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs"
+          doe_beamline: "true"
+          website: "https://www.bnl.gov/nsls2/beamlines/beamline.php?r=16-ID"
+        aliases:
+          - LiX
+          - 16-ID
+
+      # === APS Beamlines (Argonne National Laboratory) ===
+      APS_GMCA_23IDB:
+        title: "GM/CA 23-ID-B"
+        description: "General Medical Sciences and Cancer Institutes Collaborative Access Team - microfocus beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "23-ID-B"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.gmca.anl.gov/"
+        aliases:
+          - GM/CA-B
+          - 23-ID-B
+      APS_GMCA_23IDD:
+        title: "GM/CA 23-ID-D"
+        description: "General Medical Sciences and Cancer Institutes Collaborative Access Team - standard beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "23-ID-D"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.gmca.anl.gov/"
+        aliases:
+          - GM/CA-D
+          - 23-ID-D
+      APS_LSCAT_21ID:
+        title: "LS-CAT (21-ID)"
+        description: "Life Sciences Collaborative Access Team beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "21-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://ls-cat.org/"
+        aliases:
+          - LS-CAT
+          - 21-ID
+      APS_NECAT_24IDC:
+        title: "NE-CAT 24-ID-C"
+        description: "Northeastern Collaborative Access Team - microfocus beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "24-ID-C"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://necat.chem.cornell.edu/"
+        aliases:
+          - NE-CAT-C
+          - 24-ID-C
+      APS_NECAT_24IDE:
+        title: "NE-CAT 24-ID-E"
+        description: "Northeastern Collaborative Access Team - standard beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "24-ID-E"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://necat.chem.cornell.edu/"
+        aliases:
+          - NE-CAT-E
+          - 24-ID-E
+      APS_SERCAT_22ID:
+        title: "SER-CAT (22-ID)"
+        description: "Southeast Regional Collaborative Access Team - insertion device beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "22-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.ser-cat.org/"
+        aliases:
+          - SER-CAT
+          - 22-ID
+      APS_SERCAT_22BM:
+        title: "SER-CAT (22-BM)"
+        description: "Southeast Regional Collaborative Access Team - bending magnet beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "22-BM"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.ser-cat.org/"
+        aliases:
+          - SER-CAT-BM
+          - 22-BM
+      APS_SBCCAT_19ID:
+        title: "SBC-CAT (19-ID)"
+        description: "Structural Biology Center Collaborative Access Team beamline"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "19-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www.anl.gov/sbc"
+        aliases:
+          - SBC-CAT
+          - 19-ID
+      APS_BIOCARS_14ID:
+        title: "BioCARS (14-ID)"
+        description: "Center for Advanced Radiation Sources - time-resolved crystallography"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "14-ID"
+          techniques: "TechniqueEnum:xray_crystallography|TechniqueEnum:time_resolved_crystallography"
+          doe_beamline: "true"
+          website: "https://biocars.uchicago.edu/"
+        aliases:
+          - BioCARS
+          - 14-ID
+      APS_BIOCAT_18ID:
+        title: "BioCAT (18-ID)"
+        description: "Biophysics Collaborative Access Team - fiber diffraction and SAXS"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "18-ID"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:fiber_diffraction"
+          doe_beamline: "true"
+          website: "https://www.bio.aps.anl.gov/"
+        aliases:
+          - BioCAT
+          - 18-ID
+      APS_IMCACAT_17ID:
+        title: "IMCA-CAT (17-ID)"
+        description: "Industrial Macromolecular Crystallography Association Collaborative Access Team"
+        annotations:
+          facility: FacilityEnum:APS
+          beamline_id: "17-ID"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+        aliases:
+          - IMCA-CAT
+          - 17-ID
+
+      # === SSRL Beamlines (SLAC National Accelerator Laboratory) ===
+      SSRL_BL92:
+        title: "SSRL BL9-2"
+        description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "9-2"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL9-2
+          - SSRL 9-2
+      SSRL_BL122:
+        title: "SSRL BL12-2"
+        description: "Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "12-2"
+          techniques: "TechniqueEnum:saxs|TechniqueEnum:waxs"
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL12-2
+          - SSRL 12-2
+      SSRL_BL141:
+        title: "SSRL BL14-1"
+        description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource"
+        annotations:
+          facility: FacilityEnum:SSRL
+          beamline_id: "14-1"
+          techniques: TechniqueEnum:xray_crystallography
+          doe_beamline: "true"
+          website: "https://www-ssrl.slac.stanford.edu/smb/"
+        aliases:
+          - BL14-1
+          - SSRL 14-1
+
+      # === SNS/HFIR Neutron Beamlines (Oak Ridge National Laboratory) ===
+      SNS_MANDI:
+        title: "MaNDi"
+        description: "Macromolecular Neutron Diffractometer for neutron protein crystallography"
+        annotations:
+          facility: FacilityEnum:SNS
+          beamline_id: "BL-11B"
+          techniques: TechniqueEnum:neutron_crystallography
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/mandi"
+        aliases:
+          - MaNDi
+          - BL-11B
+      HFIR_IMAGINE:
+        title: "IMAGINE"
+        description: "Image plate single crystal diffractometer for neutron protein crystallography"
+        annotations:
+          facility: FacilityEnum:HFIR
+          beamline_id: "CG-4D"
+          techniques: TechniqueEnum:neutron_crystallography
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/imagine"
+        aliases:
+          - IMAGINE
+          - CG-4D
+      SNS_BIOSANS:
+        title: "Bio-SANS"
+        description: "Biological Small-Angle Neutron Scattering instrument"
+        annotations:
+          facility: FacilityEnum:HFIR
+          beamline_id: "CG-3"
+          techniques: TechniqueEnum:sans
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/bio-sans"
+        aliases:
+          - Bio-SANS
+          - CG-3
+      SNS_EQSANS:
+        title: "EQ-SANS"
+        description: "Extended Q-Range Small-Angle Neutron Scattering instrument"
+        annotations:
+          facility: FacilityEnum:SNS
+          beamline_id: "BL-6"
+          techniques: TechniqueEnum:sans
+          doe_beamline: "true"
+          website: "https://neutrons.ornl.gov/eqsans"
+        aliases:
+          - EQ-SANS
+          - BL-6
+
   ImagingModeEnum:
     description: "Imaging modes for electron microscopy"
     permissible_values:
@@ -3045,6 +3402,23 @@ enums:
           - PaNET:01137  # x-ray magnetic circular dichroism
         comments:
           - "Element-specific magnetometry technique"
+      neutron_crystallography:
+        description: "Neutron macromolecular crystallography"
+        meaning: CHMO:0000182
+        comments:
+          - "Also known as neutron protein crystallography or neutron macromolecular diffraction"
+          - "Used for hydrogen/deuterium visualization in protein structures"
+      fiber_diffraction:
+        description: "Fiber diffraction for structural analysis of fibrous samples"
+        meaning: CHMO:0000156
+        comments:
+          - "Used for studying filamentous proteins, DNA fibers, muscle fibers"
+      time_resolved_crystallography:
+        description: "Time-resolved macromolecular crystallography"
+        meaning: CHMO:0000156
+        comments:
+          - "Pump-probe crystallography for capturing structural dynamics"
+          - "Requires fast X-ray pulses (synchrotron or XFEL)"
 
   ProcessingStatusEnum:
     description: "Processing status"

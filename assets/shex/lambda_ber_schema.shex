@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.1.post47.dev0+25564fe
+# version: 0.1.2.post19.dev0+b043e45
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -137,7 +137,9 @@ linkml:Sparqlpath xsd:string
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
              <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
              <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
-             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd> ] + ;
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd>
+             <http://purl.obolibrary.org/obo/CHMO_0000182> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000156> ] + ;
           <source_type> [ <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#synchrotron>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#rotating_anode>
              <https://w3id.org/lambda-ber-schema/XRaySourceTypeEnum#microfocus>
@@ -547,7 +549,9 @@ linkml:Sparqlpath xsd:string
              <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
              <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
              <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
-             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd> ] ;
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <https://w3id.org/lambda-ber-schema/TechniqueEnum#xmcd>
+             <http://purl.obolibrary.org/obo/CHMO_0000182> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000156> ] ;
           <experimental_method> [ <http://purl.obolibrary.org/obo/CHMO_0000156>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#neutron_diffraction>
              <https://w3id.org/lambda-ber-schema/ExperimentalMethodEnum#electron_diffraction>
