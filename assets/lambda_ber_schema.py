@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-20T20:17:51
+# Generation date: 2026-01-20T13:12:01
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -2150,9 +2150,6 @@ class Micrograph(Image2D):
     astigmatism_angle: Optional[Union[dict, "QuantityValue"]] = None
     resolution_fit_limit: Optional[Union[dict, "QuantityValue"]] = None
     ctf_quality_score: Optional[Union[dict, "QuantityValue"]] = None
-    pixel_size: Optional[str] = None
-    defocus: Optional[Union[dict, "QuantityValue"]] = None
-    astigmatism: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2180,15 +2177,6 @@ class Micrograph(Image2D):
 
         if self.ctf_quality_score is not None and not isinstance(self.ctf_quality_score, QuantityValue):
             self.ctf_quality_score = QuantityValue(**as_dict(self.ctf_quality_score))
-
-        if self.pixel_size is not None and not isinstance(self.pixel_size, str):
-            self.pixel_size = str(self.pixel_size)
-
-        if self.defocus is not None and not isinstance(self.defocus, QuantityValue):
-            self.defocus = QuantityValue(**as_dict(self.defocus))
-
-        if self.astigmatism is not None and not isinstance(self.astigmatism, QuantityValue):
-            self.astigmatism = QuantityValue(**as_dict(self.astigmatism))
 
         super().__post_init__(**kwargs)
 
@@ -3689,6 +3677,9 @@ class WorkflowOutputAssociation(YAMLRoot):
             self.MissingRequiredField("file_id")
         if not isinstance(self.file_id, DataFileId):
             self.file_id = DataFileId(self.file_id)
+
+        if self.output_type is not None and not isinstance(self.output_type, OutputTypeEnum):
+            self.output_type = OutputTypeEnum(self.output_type)
 
         super().__post_init__(**kwargs)
 
@@ -5897,9 +5888,40 @@ class InputTypeEnum(EnumDefinitionImpl):
     )
 
 class OutputTypeEnum(EnumDefinitionImpl):
+    """
+    Types of outputs from computational workflows
+    """
+    map = PermissibleValue(
+        text="map",
+        description="Density map or reconstructed volume")
+    model = PermissibleValue(
+        text="model",
+        description="Atomic model or coordinates")
+    particles = PermissibleValue(
+        text="particles",
+        description="Particle stack or extracted particles")
+    micrographs = PermissibleValue(
+        text="micrographs",
+        description="Motion-corrected micrographs")
+    ctf_estimates = PermissibleValue(
+        text="ctf_estimates",
+        description="CTF estimation results")
+    metadata = PermissibleValue(
+        text="metadata",
+        description="Metadata or parameter files")
+    statistics = PermissibleValue(
+        text="statistics",
+        description="Processing statistics or quality metrics")
+    processed_data = PermissibleValue(
+        text="processed_data",
+        description="Processed or derived data files")
+    log = PermissibleValue(
+        text="log",
+        description="Processing log files")
 
     _defn = EnumDefinition(
         name="OutputTypeEnum",
+        description="Types of outputs from computational workflows",
     )
 
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
@@ -8966,18 +8988,6 @@ slots.measurementConditions__ionic_strength = Slot(uri=LAMBDABER['functional_ann
 
 slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="measurementConditions__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
                    model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.pixel_size = Slot(uri=LAMBDABER.pixel_size, name="pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.pixel_size, domain=None, range=Optional[str])
-
-slots.Micrograph_pixel_size = Slot(uri=LAMBDABER.pixel_size, name="Micrograph_pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.Micrograph_pixel_size, domain=Micrograph, range=Optional[str])
-
-slots.Micrograph_defocus = Slot(uri=LAMBDABER.defocus, name="Micrograph_defocus", curie=LAMBDABER.curie('defocus'),
-                   model_uri=LAMBDABER.Micrograph_defocus, domain=Micrograph, range=Optional[Union[dict, "QuantityValue"]])
-
-slots.Micrograph_astigmatism = Slot(uri=LAMBDABER.astigmatism, name="Micrograph_astigmatism", curie=LAMBDABER.curie('astigmatism'),
-                   model_uri=LAMBDABER.Micrograph_astigmatism, domain=Micrograph, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
                    model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=float, mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])

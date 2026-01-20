@@ -26,10 +26,6 @@ lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
             lambdaber:unit "milligrams per milliliter" ] ;
     lambdaber:conformational_ensemble lambdaber:confens-001 ;
     lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
-            ns1:database_id "PF00006" ;
-            ns1:database_name "pfam" ;
-            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ],
-        [ a ns1:DatabaseCrossReference ;
             ns1:database_id "6ZPO" ;
             ns1:database_name "pdb" ;
             ns1:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
@@ -37,6 +33,10 @@ lambdaber:sample-ALS-FUNC-001 a lambdaber:Sample ;
             ns1:database_id "GO:0005524" ;
             ns1:database_name "go" ;
             ns1:database_url "http://amigo.geneontology.org/amigo/term/GO:0005524"^^xsd:anyURI ],
+        [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "PF00006" ;
+            ns1:database_name "pfam" ;
+            ns1:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ],
         [ a ns1:DatabaseCrossReference ;
             ns1:database_id "P25705" ;
             ns1:database_name "uniprot" ;

@@ -872,10 +872,7 @@ linkml:Sparqlpath xsd:string
           <defocus_v> @<QuantityValue> ? ;
           <astigmatism_angle> @<QuantityValue> ? ;
           <resolution_fit_limit> @<QuantityValue> ? ;
-          <ctf_quality_score> @<QuantityValue> ? ;
-          <pixel_size> @linkml:String ? ;
-          <defocus> @<QuantityValue> ? ;
-          <astigmatism> @<QuantityValue> ?
+          <ctf_quality_score> @<QuantityValue> ?
        ) ;
        rdf:type [ <Micrograph> ]
     )
@@ -1580,7 +1577,15 @@ linkml:Sparqlpath xsd:string
 <WorkflowOutputAssociation> CLOSED {
     (  $<WorkflowOutputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
           <file_id> @<DataFile> ;
-          <output_type> . ?
+          <output_type> [ <https://w3id.org/lambda-ber-schema/OutputTypeEnum#map>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#model>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#particles>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#micrographs>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#ctf_estimates>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#metadata>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#statistics>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#processed_data>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#log> ] ?
        ) ;
        rdf:type [ <WorkflowOutputAssociation> ] ?
     )

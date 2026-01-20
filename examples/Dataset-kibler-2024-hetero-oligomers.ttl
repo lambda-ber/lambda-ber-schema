@@ -19,16 +19,16 @@ divide-and-conquer design strategy with comprehensive structural characterizatio
 using SAXS, negative-stain EM, and native mass spectrometry.
 """ ;
     lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
-            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
-            lambdaber:instrument_id <QE-UHMR> ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
+            lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
             lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
-            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
-            lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:instrument_id <QE-UHMR> ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
@@ -44,12 +44,12 @@ using SAXS, negative-stain EM, and native mass spectrometry.
             lambdaber:role "target" ;
             lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
         [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
+            lambdaber:preparation_id <https://example.org/kibler2024/prep/saxs> ;
             lambdaber:role "target" ;
             lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
         [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
-            lambdaber:preparation_id <https://example.org/kibler2024/prep/saxs> ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
             lambdaber:role "target" ;
             lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
         [ a lambdaber:ExperimentSampleAssociation ;
@@ -81,35 +81,35 @@ using SAXS, negative-stain EM, and native mass spectrometry.
             lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
         [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
         [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
-            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
-        [ a lambdaber:StudyExperimentAssociation ;
-            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
-            lambdaber:role "target" ;
-            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL01-20-22> ;
+            lambdaber:role "control" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/BGL0> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:role "target" ;
             lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:role "control" ;
-            lambdaber:sample_id <https://example.org/kibler2024/sample/BGL0> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL01-20-22> ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/ms-analysis> ],
+        [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
             lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
-            lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ],
-        [ a lambdaber:StudyWorkflowAssociation ;
-            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
-            lambdaber:workflow_id <https://example.org/kibler2024/workflow/ms-analysis> ] ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
             lambdaber:workflow_id <https://example.org/kibler2024/workflow/ms-analysis> ],
@@ -120,10 +120,10 @@ using SAXS, negative-stain EM, and native mass spectrometry.
             lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
             lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ] ;
     lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id <https://example.org/kibler2024/file/saxs-5mgml> ;
+            lambdaber:file_id <https://example.org/kibler2024/file/saxs-2p5mgml> ;
             lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id <https://example.org/kibler2024/file/saxs-2p5mgml> ;
+            lambdaber:file_id <https://example.org/kibler2024/file/saxs-5mgml> ;
             lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
         [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id <https://example.org/kibler2024/file/em-2d-classes> ;

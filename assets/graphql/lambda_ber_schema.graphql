@@ -490,6 +490,19 @@ enum MutationTypeEnum
     substitution
   }
 
+enum OutputTypeEnum
+  {
+    map
+    model
+    particles
+    micrographs
+    ctf_estimates
+    metadata
+    statistics
+    processed_data
+    log
+  }
+
 enum PhasingMethodEnum
   {
     molecular_replacement
@@ -1319,9 +1332,12 @@ type Micrograph
     description: String
     fileName: String!
     acquisitionDate: String
+    pixelSize: QuantityValue
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     dose: QuantityValue
     originMovieId: String
     defocusU: QuantityValue
@@ -1329,9 +1345,6 @@ type Micrograph
     astigmatismAngle: QuantityValue
     resolutionFitLimit: QuantityValue
     ctfQualityScore: QuantityValue
-    pixelSize: String
-    defocus: QuantityValue
-    astigmatism: QuantityValue
   }
 
 type MolecularComposition

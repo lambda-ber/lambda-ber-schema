@@ -6,10 +6,97 @@ ISPyB (Information System for Protein crystallography Beamlines) is a LIMS used 
 
 ## References
 
-- [ISPyB Database (Diamond)](https://github.com/DiamondLightSource/ispyb-database)
-- [ISPyB Database Modeling](https://github.com/ispyb/ispyb-database-modeling)
+- [ISPyB Database (Diamond)](https://github.com/DiamondLightSource/ispyb-database) - Main SQL DDL source
+- [ISPyB Database Modeling](https://github.com/ispyb/ispyb-database-modeling) - Schema documentation
 - [ISPyB Publication](https://academic.oup.com/bioinformatics/article/27/22/3186/195018)
 - [SynchWeb Interface](https://pmc.ncbi.nlm.nih.gov/articles/PMC4453979/)
+- [py-ispyb API](https://ispyb.readthedocs.io/en/latest/) - Python API for ISPyB
+
+## SQL DDL Sources
+
+The authoritative DDL is in [DiamondLightSource/ispyb-database](https://github.com/DiamondLightSource/ispyb-database):
+
+```
+schemas/ispyb/
+├── tables.sql      # CREATE TABLE statements (~200 tables)
+├── lookups.sql     # Lookup/enum tables
+├── data.sql        # Test data
+└── routines.sql    # Stored procedures
+```
+
+Key tables (from tables.sql):
+- `Proposal`, `BLSession`, `Person`, `Laboratory`
+- `Protein`, `Crystal`, `BLSample`, `Container`, `Dewar`, `Shipping`
+- `DataCollection`, `DataCollectionGroup`, `Detector`, `GridInfo`
+- `AutoProcProgram`, `AutoProcIntegration`, `AutoProcScaling`, `AutoProcScalingStatistics`
+- `PhasingStep`, `PhasingAnalysis`, `ModelBuilding`
+
+## ETL Strategy
+
+### Phase 1: Schema Import (DuckDB)
+
+Load ISPyB DDL into DuckDB for analysis and querying:
+
+```bash
+# Download DDL
+curl -O https://raw.githubusercontent.com/DiamondLightSource/ispyb-database/master/schemas/ispyb/tables.sql
+
+# Convert MySQL DDL to DuckDB-compatible format (or use sqlglot)
+python scripts/mysql_to_duckdb.py tables.sql > ispyb_schema.duckdb.sql
+
+# Load into DuckDB
+duckdb db/ispyb.ddb < ispyb_schema.duckdb.sql
+```
+
+### Phase 2: Mapping Table
+
+Create explicit mapping between ISPyB columns and lambda-ber-schema slots:
+
+```yaml
+# mappings/ispyb_to_lambda_ber.yaml
+mappings:
+  - ispyb_table: DataCollection
+    ispyb_column: wavelength
+    lambda_ber_class: ExperimentRun
+    lambda_ber_slot: wavelength
+    transform: null  # direct mapping
+
+  - ispyb_table: AutoProcScalingStatistics
+    ispyb_column: resolutionLimitHigh
+    lambda_ber_class: WorkflowRun
+    lambda_ber_slot: resolution_high
+    transform: null
+```
+
+### Phase 3: ETL Scripts
+
+```python
+# src/lambda_ber_schema/etl/ispyb_import.py
+"""Import ISPyB data into lambda-ber-schema format."""
+
+def ispyb_to_study(session: dict) -> Study:
+    """Convert ISPyB BLSession to lambda-ber Study."""
+    ...
+
+def ispyb_to_experiment_run(dc: dict) -> ExperimentRun:
+    """Convert ISPyB DataCollection to ExperimentRun."""
+    ...
+
+def ispyb_to_workflow_run(autoproc: dict) -> WorkflowRun:
+    """Convert ISPyB AutoProcScalingStatistics to WorkflowRun."""
+    ...
+```
+
+### Phase 4: Sync Pipeline
+
+```
+ISPyB (MySQL) → DuckDB mirror → Transform → lambda-ber YAML/JSON → Lakehouse
+```
+
+Options for ISPyB access:
+1. **Direct MySQL** - If facility provides read access
+2. **py-ispyb API** - REST API access (https://ispyb.readthedocs.io/)
+3. **Data dumps** - Periodic SQL dumps from facilities
 
 ## Completed Tasks
 
@@ -64,6 +151,15 @@ WorkflowRun fields with new `ispyb:AutoProcScalingStatistics.*` mappings:
 
 ## Remaining Tasks
 
+### ETL Infrastructure (Priority: High)
+
+- [ ] Download and mirror ISPyB DDL to `assets/external/ispyb/`
+- [ ] Create `scripts/mysql_to_duckdb.py` for DDL conversion
+- [ ] Create `db/ispyb_schema.ddb` with empty ISPyB tables
+- [ ] Create `mappings/ispyb_to_lambda_ber.yaml` mapping file
+- [ ] Create `src/lambda_ber_schema/etl/ispyb_import.py` ETL module
+- [ ] Add `just ispyb-sync` target for running ETL
+
 ### Sample/Container Tracking (Priority: Medium)
 
 Fields for sample logistics (not yet implemented):
@@ -73,16 +169,18 @@ Fields for sample logistics (not yet implemented):
 - [ ] Shipment tracking metadata
 - [ ] Add `ispyb_bl_sample_id` to Sample
 
-### Validation Examples (Priority: Low)
+### Validation Examples (Priority: Medium)
 
 - [ ] Create example with full ISPyB field coverage
+- [ ] Create example from real ISPyB export (anonymized)
 - [ ] Test round-trip conversion ISPyB → lambda-ber-schema → ISPyB
 
-### Future: Conversion Utilities (Priority: Low)
+### Conversion Utilities (Priority: Medium)
 
 - [ ] Python utility: ISPyB SQL → YAML export
 - [ ] Python utility: YAML → ISPyB SQL import
-- [ ] Integration with py-ispyb API
+- [ ] Integration with py-ispyb API (https://ispyb.readthedocs.io/)
+- [ ] CLI command: `lambda-ber-schema import-ispyb <db_url>`
 
 ## Entity Mapping Reference
 

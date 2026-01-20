@@ -4604,7 +4604,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Astigmatism in Angstroms"
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "astigmatism_angle": {
                     "anyOf": [
@@ -4637,7 +4637,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measured defocus in micrometers"
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_u": {
                     "anyOf": [
@@ -4736,7 +4736,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Final pixel size in Angstroms per pixel"
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_fit_limit": {
                     "anyOf": [
@@ -5569,7 +5569,18 @@
             "type": "object"
         },
         "OutputTypeEnum": {
-            "description": "",
+            "description": "Types of outputs from computational workflows",
+            "enum": [
+                "map",
+                "model",
+                "particles",
+                "micrographs",
+                "ctf_estimates",
+                "metadata",
+                "statistics",
+                "processed_data",
+                "log"
+            ],
             "title": "OutputTypeEnum",
             "type": "string"
         },

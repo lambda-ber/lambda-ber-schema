@@ -588,9 +588,12 @@ message Micrograph
   string description = 0
   string fileName = 0
   string acquisitionDate = 0
+  quantityValue pixelSize = 0
   quantityValue dimensionsX = 0
   quantityValue dimensionsY = 0
   quantityValue exposureTime = 0
+  quantityValue defocus = 0
+  quantityValue astigmatism = 0
   quantityValue dose = 0
   string originMovieId = 0
   quantityValue defocusU = 0
@@ -598,9 +601,6 @@ message Micrograph
   quantityValue astigmatismAngle = 0
   quantityValue resolutionFitLimit = 0
   quantityValue ctfQualityScore = 0
-  string pixelSize = 0
-  quantityValue defocus = 0
-  quantityValue astigmatism = 0
  }
 // Molecular composition of a sample
 message MolecularComposition

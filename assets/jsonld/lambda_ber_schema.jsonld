@@ -3326,7 +3326,46 @@
     {
       "name": "OutputTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/OutputTypeEnum",
-      "from_schema": "https://w3id.org/lambda-ber-schema/"
+      "description": "Types of outputs from computational workflows",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "map",
+          "description": "Density map or reconstructed volume"
+        },
+        {
+          "text": "model",
+          "description": "Atomic model or coordinates"
+        },
+        {
+          "text": "particles",
+          "description": "Particle stack or extracted particles"
+        },
+        {
+          "text": "micrographs",
+          "description": "Motion-corrected micrographs"
+        },
+        {
+          "text": "ctf_estimates",
+          "description": "CTF estimation results"
+        },
+        {
+          "text": "metadata",
+          "description": "Metadata or parameter files"
+        },
+        {
+          "text": "statistics",
+          "description": "Processing statistics or quality metrics"
+        },
+        {
+          "text": "processed_data",
+          "description": "Processed or derived data files"
+        },
+        {
+          "text": "log",
+          "description": "Processing log files"
+        }
+      ]
     },
     {
       "name": "FunctionalSiteTypeEnum",
@@ -14481,67 +14520,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "pixel_size",
-      "description": "Final pixel size in Angstroms per pixel",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Micrograph_pixel_size",
-      "description": "Final pixel size in Angstroms per pixel",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "is_a": "pixel_size",
-      "domain": "Micrograph",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/pixel_size",
-      "alias": "pixel_size",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "pixel_size",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Micrograph_defocus",
-      "description": "Measured defocus in micrometers",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "is_a": "image2D__defocus",
-      "domain": "Micrograph",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/defocus",
-      "alias": "defocus",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "defocus",
-      "range": "QuantityValue",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Micrograph_astigmatism",
-      "description": "Astigmatism in Angstroms",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "is_a": "image2D__astigmatism",
-      "domain": "Micrograph",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/astigmatism",
-      "alias": "astigmatism",
-      "owner": "Micrograph",
-      "domain_of": [
-        "Micrograph"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "astigmatism",
-      "range": "QuantityValue",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "QuantityValue_numeric_value",
       "definition_uri": "https://w3id.org/lambda-ber-schema/numeric_value",
       "description": "The numerical value of the quantity",
@@ -17738,19 +17716,19 @@
         "namedThing__description",
         "image__file_name",
         "image__acquisition_date",
+        "image__pixel_size",
         "image__dimensions_x",
         "image__dimensions_y",
         "image__exposure_time",
+        "image2D__defocus",
+        "image2D__astigmatism",
         "micrograph__dose",
         "micrograph__origin_movie_id",
         "micrograph__defocus_u",
         "micrograph__defocus_v",
         "micrograph__astigmatism_angle",
         "micrograph__resolution_fit_limit",
-        "micrograph__ctf_quality_score",
-        "Micrograph_pixel_size",
-        "Micrograph_defocus",
-        "Micrograph_astigmatism"
+        "micrograph__ctf_quality_score"
       ],
       "slot_usage": {},
       "attributes": [
@@ -21395,9 +21373,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-01-20T20:14:30",
-  "source_file_size": 155344,
-  "generation_date": "2026-01-20T20:17:45",
+  "source_file_date": "2026-01-20T13:07:29",
+  "source_file_size": 155830,
+  "generation_date": "2026-01-20T13:11:57",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

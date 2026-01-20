@@ -1562,13 +1562,6 @@ classes:
   Micrograph:
     is_a: Image2D
     description: "Motion-corrected micrograph derived from movie"
-    slot_usage:
-      pixel_size:
-        description: "Final pixel size in Angstroms per pixel"
-      defocus:
-        description: "Measured defocus in micrometers"
-      astigmatism:
-        description: "Astigmatism in Angstroms"
     attributes:
       dose:
         description: "Total electron dose in e-/Angstrom^2"
@@ -3880,3 +3873,23 @@ enums:
         description: "Mask or selection file"
 
   OutputTypeEnum:
+    description: "Types of outputs from computational workflows"
+    permissible_values:
+      map:
+        description: "Density map or reconstructed volume"
+      model:
+        description: "Atomic model or coordinates"
+      particles:
+        description: "Particle stack or extracted particles"
+      micrographs:
+        description: "Motion-corrected micrographs"
+      ctf_estimates:
+        description: "CTF estimation results"
+      metadata:
+        description: "Metadata or parameter files"
+      statistics:
+        description: "Processing statistics or quality metrics"
+      processed_data:
+        description: "Processed or derived data files"
+      log:
+        description: "Processing log files"
