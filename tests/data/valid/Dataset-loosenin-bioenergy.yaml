@@ -1,221 +1,420 @@
 id: lambdaber:dataset-loosenin-bioenergy
-title: Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology
-  Investigation
+title: Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology Investigation
+description: Comprehensive structural biology investigation of fungal loosenin proteins using SAXS, SANS, X-ray crystallography, and cryo-EM across multiple facilities
+keywords:
+- loosenin
+- bioenergy
+- fungal proteins
+- cellulose binding
+- multi-technique
+- SAXS
+- SANS
+- crystallography
+- cryo-EM
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
 studies:
 - id: lambdaber:study-loosenin-2025
   title: Structural and functional characterization of fungal loosenins
-  samples:
-  - id: lambdaber:sample-LOOS-001
-    title: PcaLOOL12 wild-type protein
-    sample_code: LOOS-001
-    sample_type: protein
-    molecular_composition:
-      sequences:
-      - 'MKVLSFAIAAALALATAPAAAEDGTVVDCTNYQGRCGSQCGPTGLCCSKYGWCGNTDHYCGDGCQSQCP YGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGNSYTTTTTSSSGGGGSGGSGGSTTNAGAGPS
-        TPSAPSAPSAPAAPSAPSTPSAPSTPSAPSTPSAPSTPSAPGNYTLQCDPATGWLSCNGGPCNPGSCCS QFGYCGSGAAYCGAGCQGGPCQPPC
+  description: Multi-facility structural study of fungal loosenin proteins and their cellulose binding mechanisms
+  keywords:
+  - loosenin
+  - structural biology
+  - cellulose binding
 
-        '
-      modifications:
-      - N-glycosylation at positions 45, 78, 156
-      ligands:
-      - calcium ions
-    buffer_composition:
-      ph:
-        numeric_value: 6.0
-        unit: pH units
-      components:
-      - 50mM MES buffer
-      - 150mM NaCl
-      additives:
-      - 5% glycerol
-      - 1mM DTT
-    storage_conditions:
-      temperature:
-        numeric_value: 4
-        unit: degrees Celsius
-      duration: 7 days
-      atmosphere: argon-purged
-  - id: lambdaber:sample-LOOS-002
-    title: PcaLOOL12 pH stress series
-    sample_code: LOOS-002
-    sample_type: protein
-    molecular_composition:
-      sequences:
-      - Same as LOOS-001
-      modifications:
-      - N-glycosylation
-    buffer_composition:
-      ph:
-        numeric_value: 5.0
-        unit: pH units
-      components:
-      - Universal buffer system
-      - 100mM NaCl
-    storage_conditions:
-      temperature:
-        numeric_value: 4
-        unit: degrees Celsius
-  - id: lambdaber:sample-LOOS-003
-    title: TrLOOL1 from Trichoderma reesei
-    sample_code: LOOS-003
-    sample_type: protein
-    molecular_composition:
-      sequences:
-      - TrLOOL1 sequence - homolog from T. reesei
-      ligands:
-      - calcium ions
-    buffer_composition:
-      ph:
-        numeric_value: 5.5
-        unit: pH units
-      components:
-      - 50mM sodium acetate
-      - 200mM NaCl
-    storage_conditions:
-      temperature:
-        numeric_value: 4
-        unit: degrees Celsius
-  - id: lambdaber:sample-LOOS-004
-    title: PcaLOOL12-cellulose complex
-    sample_code: LOOS-004
-    sample_type: complex
-    molecular_composition:
-      sequences:
-      - PcaLOOL12 protein sequence
-      ligands:
-      - microcrystalline cellulose (Avicel PH-101)
-    buffer_composition:
-      ph:
-        numeric_value: 6.0
-        unit: pH units
-      components:
-      - 50mM MES buffer
-      - 150mM NaCl
-      additives:
-      - 10mg/mL Avicel cellulose
-    storage_conditions:
-      temperature:
-        numeric_value: 4
-        unit: degrees Celsius
-  sample_preparations:
-  - id: lambdaber:prep-saxs-001
-    title: SAXS sample preparation
-    preparation_type: saxs
-    sample_id: lambdaber:sample-LOOS-001
-  - id: lambdaber:prep-sans-001
-    title: SANS contrast matching preparation
-    preparation_type: sans
-    sample_id: lambdaber:sample-LOOS-001
-  - id: lambdaber:prep-crystal-001
-    title: Crystal preparation for X-ray diffraction
-    preparation_type: xray_crystallography
-    sample_id: lambdaber:sample-LOOS-001
-  - id: lambdaber:prep-cryoem-001
-    title: CryoEM grid preparation of complex
-    preparation_type: cryo_em
-    sample_id: lambdaber:sample-LOOS-004
-  workflow_runs:
-  - id: lambdaber:wf-saxs-001
-    title: SAXS pH series analysis
-    workflow_code: SAXS-pH-analysis
-    workflow_type: saxs_analysis
-    experiment_id: lambdaber:exp-saxs-001
-    processing_level:
-      numeric_value: 2
-      unit: level
-    software_name: ATSAS
-    software_version: 3.2.1
-  - id: lambdaber:wf-mx-001
-    title: Crystal structure determination
-    workflow_code: MX-structure
-    workflow_type: phasing
-    experiment_id: lambdaber:exp-mx-001
-    processing_level:
-      numeric_value: 3
-      unit: level
-    software_name: PHENIX
-    software_version: 1.20.1
-  - id: lambdaber:wf-cryoem-001
-    title: Single particle reconstruction
-    workflow_code: CryoEM-SPA
-    workflow_type: refinement
-    experiment_id: lambdaber:exp-cryoem-001
-    processing_level:
-      numeric_value: 3
-      unit: level
-    software_name: RELION
-    software_version: '4.0'
-  - id: lambdaber:wf-integrative-001
-    title: Integrative modeling
-    workflow_code: IMP-modeling
-    workflow_type: model_building
-    experiment_id: lambdaber:exp-saxs-001
-    processing_level:
-      numeric_value: 2
-      unit: level
-    software_name: IMP
-    software_version: '2.18'
-  data_files:
-  - id: lambdaber:df-saxs-001
-    title: SAXS pH series data
-    file_name: loosenin_ph_series.dat
-    file_path: /data/saxs/2025/loosenin/
-    file_format: ascii
-    file_size_bytes:
-      numeric_value: 2500000
-      unit: bytes
-    data_type: scattering
-  - id: lambdaber:df-sans-001
-    title: SANS complex data
-    file_name: biosans_complex.dat
-    file_path: /data/sans/2025/loosenin/
-    file_format: ascii
-    file_size_bytes:
-      numeric_value: 1800000
-      unit: bytes
-    data_type: scattering
-  - id: lambdaber:df-mx-001
-    title: X-ray diffraction data
-    file_name: loosenin_native.mtz
-    file_path: /data/mx/2025/loosenin/
-    file_format: mtz
-    file_size_bytes:
-      numeric_value: 45000000
-      unit: bytes
-    data_type: diffraction
-  - id: lambdaber:df-pdb-001
-    title: Refined crystal structure
-    file_name: loosenin_refined.pdb
-    file_path: /data/mx/2025/loosenin/
-    file_format: pdb
-    file_size_bytes:
-      numeric_value: 800000
-      unit: bytes
-    data_type: model
-  - id: lambdaber:df-cryoem-001
-    title: CryoEM particle stack
-    file_name: loosenin_cellulose.star
-    file_path: /data/cryoem/2025/loosenin/
-    file_format: star
-    file_size_bytes:
-      numeric_value: 125000000000
-      unit: bytes
-    data_type: particles
-  - id: lambdaber:df-map-001
-    title: CryoEM density map
-    file_name: loosenin_cellulose_map.mrc
-    file_path: /data/cryoem/2025/loosenin/
-    file_format: mrc
-    file_size_bytes:
-      numeric_value: 512000000
-      unit: bytes
-    data_type: volume
-  images:
-  - id: lambdaber:img-saxs-001
-    title: SAXS Guinier plots
-    file_name: saxs_guinier_plots.png
-    acquisition_date: '2025-02-12'
-  - id: lambdaber:img-sans-001
-    title: SANS model fit
-    file_name: sans_model_fit.png
-    acquisition_date: '2025-02-25'
+instruments:
+- id: lambdaber:instrument-als-saxs-001
+  title: ALS SAXS Beamline
+  description: Advanced Light Source SAXS beamline for solution scattering
+  instrument_code: ALS-SAXS-12.3.1
+  manufacturer: Lawrence Berkeley National Laboratory
+  model: BL 12.3.1 SAXS
+  current_status: operational
+- id: lambdaber:instrument-biosans-001
+  title: Bio-SANS Instrument
+  description: Biological Small Angle Neutron Scattering instrument at ORNL
+  instrument_code: BIOSANS-CG3
+  manufacturer: Oak Ridge National Laboratory
+  model: Bio-SANS CG-3
+  current_status: operational
+- id: lambdaber:instrument-als-mx-001
+  title: ALS Macromolecular Crystallography Beamline
+  description: Advanced Light Source beamline for protein crystallography
+  instrument_code: ALS-BL-8.2.1
+  manufacturer: Lawrence Berkeley National Laboratory
+  model: BL 8.2.1
+  current_status: operational
+- id: lambdaber:instrument-krios-001
+  title: Titan Krios Cryo-EM
+  description: 300kV Cryo-EM microscope for high-resolution structure determination
+  instrument_code: KRIOS-001
+  manufacturer: Thermo Fisher Scientific
+  model: Titan Krios G3i
+  current_status: operational
+
+samples:
+- id: lambdaber:sample-LOOS-001
+  title: PcaLOOL12 wild-type protein
+  description: Wild-type loosenin protein from Pycnoporus cinnabarinus
+  sample_code: LOOS-001
+  sample_type: protein
+  molecular_composition:
+    sequences:
+    - 'MKVLSFAIAAALALATAPAAAEDGTVVDCTNYQGRCGSQCGPTGLCCSKYGWCGNTDHYCGDGCQSQCP YGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGNSYTTTTTSSSGGGGSGGSGGSTTNAGAGPS TPSAPSAPSAPAAPSAPSTPSAPSTPSAPSTPSAPSTPSAPGNYTLQCDPATGWLSCNGGPCNPGSCCS QFGYCGSGAAYCGAGCQGGPCQPPC
+
+      '
+    modifications:
+    - N-glycosylation at positions 45, 78, 156
+    ligands:
+    - calcium ions
+  buffer_composition:
+    ph:
+      numeric_value: 6.0
+      unit: pH units
+    components:
+    - 50mM MES buffer
+    - 150mM NaCl
+    additives:
+    - 5% glycerol
+    - 1mM DTT
+  storage_conditions:
+    temperature:
+      numeric_value: 4
+      unit: degrees Celsius
+    duration: 7 days
+    atmosphere: argon-purged
+- id: lambdaber:sample-LOOS-002
+  title: PcaLOOL12 pH stress series
+  description: PcaLOOL12 protein prepared at different pH values for pH stability studies
+  sample_code: LOOS-002
+  sample_type: protein
+  molecular_composition:
+    sequences:
+    - Same as LOOS-001
+    modifications:
+    - N-glycosylation
+  buffer_composition:
+    ph:
+      numeric_value: 5.0
+      unit: pH units
+    components:
+    - Universal buffer system
+    - 100mM NaCl
+  storage_conditions:
+    temperature:
+      numeric_value: 4
+      unit: degrees Celsius
+- id: lambdaber:sample-LOOS-003
+  title: TrLOOL1 from Trichoderma reesei
+  description: Loosenin homolog from Trichoderma reesei for comparative studies
+  sample_code: LOOS-003
+  sample_type: protein
+  molecular_composition:
+    sequences:
+    - TrLOOL1 sequence - homolog from T. reesei
+    ligands:
+    - calcium ions
+  buffer_composition:
+    ph:
+      numeric_value: 5.5
+      unit: pH units
+    components:
+    - 50mM sodium acetate
+    - 200mM NaCl
+  storage_conditions:
+    temperature:
+      numeric_value: 4
+      unit: degrees Celsius
+- id: lambdaber:sample-LOOS-004
+  title: PcaLOOL12-cellulose complex
+  description: PcaLOOL12 protein in complex with microcrystalline cellulose
+  sample_code: LOOS-004
+  sample_type: complex
+  molecular_composition:
+    sequences:
+    - PcaLOOL12 protein sequence
+    ligands:
+    - microcrystalline cellulose (Avicel PH-101)
+  buffer_composition:
+    ph:
+      numeric_value: 6.0
+      unit: pH units
+    components:
+    - 50mM MES buffer
+    - 150mM NaCl
+    additives:
+    - 10mg/mL Avicel cellulose
+  storage_conditions:
+    temperature:
+      numeric_value: 4
+      unit: degrees Celsius
+
+sample_preparations:
+- id: lambdaber:prep-saxs-001
+  title: SAXS sample preparation
+  description: Sample preparation for SAXS experiments
+  preparation_type: saxs
+  sample_id: lambdaber:sample-LOOS-001
+- id: lambdaber:prep-sans-001
+  title: SANS contrast matching preparation
+  description: Sample preparation for SANS experiments with deuterated buffer
+  preparation_type: sans
+  sample_id: lambdaber:sample-LOOS-001
+- id: lambdaber:prep-crystal-001
+  title: Crystal preparation for X-ray diffraction
+  description: Crystallization of PcaLOOL12 for X-ray diffraction
+  preparation_type: xray_crystallography
+  sample_id: lambdaber:sample-LOOS-001
+- id: lambdaber:prep-cryoem-001
+  title: CryoEM grid preparation of complex
+  description: Cryo-EM grid preparation for PcaLOOL12-cellulose complex
+  preparation_type: cryo_em
+  sample_id: lambdaber:sample-LOOS-004
+
+experiment_runs:
+- id: lambdaber:exp-saxs-001
+  title: SAXS pH series experiment
+  description: SAXS data collection for pH-dependent conformational changes
+  experiment_code: SAXS-LOOS-001
+  technique: saxs
+  experiment_date: '2025-02-10'
+  processing_status: completed
+- id: lambdaber:exp-sans-001
+  title: SANS complex characterization
+  description: SANS data collection for PcaLOOL12-cellulose complex
+  experiment_code: SANS-LOOS-001
+  technique: sans
+  experiment_date: '2025-02-20'
+  processing_status: completed
+- id: lambdaber:exp-mx-001
+  title: X-ray crystallography data collection
+  description: High-resolution X-ray diffraction data collection
+  experiment_code: MX-LOOS-001
+  technique: xray_crystallography
+  experiment_date: '2025-03-05'
+  processing_status: completed
+- id: lambdaber:exp-cryoem-001
+  title: CryoEM single particle analysis
+  description: Cryo-EM data collection for PcaLOOL12-cellulose complex
+  experiment_code: CRYOEM-LOOS-001
+  technique: cryo_em
+  experiment_date: '2025-03-15'
+  processing_status: completed
+
+workflow_runs:
+- id: lambdaber:wf-saxs-001
+  title: SAXS pH series analysis
+  description: SAXS data analysis and modeling for pH series
+  workflow_code: SAXS-pH-analysis
+  workflow_type: saxs_analysis
+  processing_level:
+    numeric_value: 2
+    unit: level
+  software_name: ATSAS
+  software_version: 3.2.1
+- id: lambdaber:wf-mx-001
+  title: Crystal structure determination
+  description: Phasing and refinement of crystal structure
+  workflow_code: MX-structure
+  workflow_type: phasing
+  processing_level:
+    numeric_value: 3
+    unit: level
+  software_name: PHENIX
+  software_version: 1.20.1
+- id: lambdaber:wf-cryoem-001
+  title: Single particle reconstruction
+  description: Cryo-EM single particle reconstruction workflow
+  workflow_code: CryoEM-SPA
+  workflow_type: refinement
+  processing_level:
+    numeric_value: 3
+    unit: level
+  software_name: RELION
+  software_version: '4.0'
+- id: lambdaber:wf-integrative-001
+  title: Integrative modeling
+  description: Integrative structural modeling combining SAXS, SANS, and cryo-EM data
+  workflow_code: IMP-modeling
+  workflow_type: model_building
+  processing_level:
+    numeric_value: 2
+    unit: level
+  software_name: IMP
+  software_version: '2.18'
+
+data_files:
+- id: lambdaber:df-saxs-001
+  title: SAXS pH series data
+  description: Raw SAXS scattering curves for pH series
+  file_name: loosenin_ph_series.dat
+  file_path: /data/saxs/2025/loosenin/
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 2500000
+    unit: bytes
+  data_type: scattering
+- id: lambdaber:df-sans-001
+  title: SANS complex data
+  description: SANS scattering data for PcaLOOL12-cellulose complex
+  file_name: biosans_complex.dat
+  file_path: /data/sans/2025/loosenin/
+  file_format: ascii
+  file_size_bytes:
+    numeric_value: 1800000
+    unit: bytes
+  data_type: scattering
+- id: lambdaber:df-mx-001
+  title: X-ray diffraction data
+  description: Processed X-ray diffraction data
+  file_name: loosenin_native.mtz
+  file_path: /data/mx/2025/loosenin/
+  file_format: mtz
+  file_size_bytes:
+    numeric_value: 45000000
+    unit: bytes
+  data_type: diffraction
+- id: lambdaber:df-pdb-001
+  title: Refined crystal structure
+  description: Refined atomic model from X-ray crystallography
+  file_name: loosenin_refined.pdb
+  file_path: /data/mx/2025/loosenin/
+  file_format: pdb
+  file_size_bytes:
+    numeric_value: 800000
+    unit: bytes
+  data_type: model
+- id: lambdaber:df-cryoem-001
+  title: CryoEM particle stack
+  description: Particle stack for single particle reconstruction
+  file_name: loosenin_cellulose.star
+  file_path: /data/cryoem/2025/loosenin/
+  file_format: star
+  file_size_bytes:
+    numeric_value: 125000000000
+    unit: bytes
+  data_type: particles
+- id: lambdaber:df-map-001
+  title: CryoEM density map
+  description: Final 3D reconstruction density map
+  file_name: loosenin_cellulose_map.mrc
+  file_path: /data/cryoem/2025/loosenin/
+  file_format: mrc
+  file_size_bytes:
+    numeric_value: 512000000
+    unit: bytes
+  data_type: volume
+
+images:
+- id: lambdaber:img-saxs-001
+  title: SAXS Guinier plots
+  description: Guinier analysis plots for pH series
+  file_name: saxs_guinier_plots.png
+  acquisition_date: '2025-02-12'
+- id: lambdaber:img-sans-001
+  title: SANS model fit
+  description: Model fitting results for SANS data
+  file_name: sans_model_fit.png
+  acquisition_date: '2025-02-25'
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study-loosenin-2025
+  sample_id: lambdaber:sample-LOOS-001
+  role: target
+- study_id: lambdaber:study-loosenin-2025
+  sample_id: lambdaber:sample-LOOS-002
+  role: target
+- study_id: lambdaber:study-loosenin-2025
+  sample_id: lambdaber:sample-LOOS-003
+  role: target
+- study_id: lambdaber:study-loosenin-2025
+  sample_id: lambdaber:sample-LOOS-004
+  role: target
+
+study_experiment_associations:
+- study_id: lambdaber:study-loosenin-2025
+  experiment_id: lambdaber:exp-saxs-001
+- study_id: lambdaber:study-loosenin-2025
+  experiment_id: lambdaber:exp-sans-001
+- study_id: lambdaber:study-loosenin-2025
+  experiment_id: lambdaber:exp-mx-001
+- study_id: lambdaber:study-loosenin-2025
+  experiment_id: lambdaber:exp-cryoem-001
+
+study_workflow_associations:
+- study_id: lambdaber:study-loosenin-2025
+  workflow_id: lambdaber:wf-saxs-001
+- study_id: lambdaber:study-loosenin-2025
+  workflow_id: lambdaber:wf-mx-001
+- study_id: lambdaber:study-loosenin-2025
+  workflow_id: lambdaber:wf-cryoem-001
+- study_id: lambdaber:study-loosenin-2025
+  workflow_id: lambdaber:wf-integrative-001
+
+experiment_sample_associations:
+- experiment_id: lambdaber:exp-saxs-001
+  sample_id: lambdaber:sample-LOOS-001
+  role: target
+  preparation_id: lambdaber:prep-saxs-001
+- experiment_id: lambdaber:exp-saxs-001
+  sample_id: lambdaber:sample-LOOS-002
+  role: target
+- experiment_id: lambdaber:exp-sans-001
+  sample_id: lambdaber:sample-LOOS-001
+  role: target
+  preparation_id: lambdaber:prep-sans-001
+- experiment_id: lambdaber:exp-mx-001
+  sample_id: lambdaber:sample-LOOS-001
+  role: target
+  preparation_id: lambdaber:prep-crystal-001
+- experiment_id: lambdaber:exp-cryoem-001
+  sample_id: lambdaber:sample-LOOS-004
+  role: target
+  preparation_id: lambdaber:prep-cryoem-001
+
+experiment_instrument_associations:
+- experiment_id: lambdaber:exp-saxs-001
+  instrument_id: lambdaber:instrument-als-saxs-001
+  role: primary
+- experiment_id: lambdaber:exp-sans-001
+  instrument_id: lambdaber:instrument-biosans-001
+  role: primary
+- experiment_id: lambdaber:exp-mx-001
+  instrument_id: lambdaber:instrument-als-mx-001
+  role: primary
+- experiment_id: lambdaber:exp-cryoem-001
+  instrument_id: lambdaber:instrument-krios-001
+  role: primary
+
+workflow_experiment_associations:
+- workflow_id: lambdaber:wf-saxs-001
+  experiment_id: lambdaber:exp-saxs-001
+- workflow_id: lambdaber:wf-mx-001
+  experiment_id: lambdaber:exp-mx-001
+- workflow_id: lambdaber:wf-cryoem-001
+  experiment_id: lambdaber:exp-cryoem-001
+- workflow_id: lambdaber:wf-integrative-001
+  experiment_id: lambdaber:exp-saxs-001
+
+workflow_output_associations:
+- workflow_id: lambdaber:wf-saxs-001
+  file_id: lambdaber:df-saxs-001
+  output_type: processed_data
+- workflow_id: lambdaber:wf-mx-001
+  file_id: lambdaber:df-mx-001
+  output_type: processed_data
+- workflow_id: lambdaber:wf-mx-001
+  file_id: lambdaber:df-pdb-001
+  output_type: model
+- workflow_id: lambdaber:wf-cryoem-001
+  file_id: lambdaber:df-cryoem-001
+  output_type: processed_data
+- workflow_id: lambdaber:wf-cryoem-001
+  file_id: lambdaber:df-map-001
+  output_type: map
+- workflow_id: lambdaber:wf-integrative-001
+  file_id: lambdaber:df-sans-001
+  output_type: processed_data

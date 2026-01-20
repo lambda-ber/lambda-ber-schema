@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.1.post47.dev0+25564fe
+// version: 0.0.0.post2.dev0+6cb7484
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -257,15 +257,30 @@ message DataFile
   string relatedEntity = 0
   string fileRole = 0
  }
-// A collection of studies
+// Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.
 message Dataset
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
  repeated  string keywords = 0
- repeated  instrument instruments = 0
  repeated  study studies = 0
+ repeated  instrument instruments = 0
+ repeated  proteinConstruct proteinConstructs = 0
+ repeated  sample samples = 0
+ repeated  samplePreparation samplePreparations = 0
+ repeated  experimentRun experimentRuns = 0
+ repeated  workflowRun workflowRuns = 0
+ repeated  dataFile dataFiles = 0
+ repeated  image images = 0
+ repeated  studySampleAssociation studySampleAssociations = 0
+ repeated  studyExperimentAssociation studyExperimentAssociations = 0
+ repeated  studyWorkflowAssociation studyWorkflowAssociations = 0
+ repeated  experimentSampleAssociation experimentSampleAssociations = 0
+ repeated  experimentInstrumentAssociation experimentInstrumentAssociations = 0
+ repeated  workflowExperimentAssociation workflowExperimentAssociations = 0
+ repeated  workflowInputAssociation workflowInputAssociations = 0
+ repeated  workflowOutputAssociation workflowOutputAssociations = 0
  }
 // A date or date and time value.
 message DateTimeValue
@@ -309,6 +324,13 @@ message ExperimentalConditions
   quantityValue beamEnergy = 0
   quantityValue exposureTime = 0
  }
+// M:N link between ExperimentRun and Instrument
+message ExperimentInstrumentAssociation
+ {
+  experimentRun experimentId = 0
+  instrument instrumentId = 0
+  instrumentRoleEnum role = 0
+ }
 // An experimental data collection session
 message ExperimentRun
  {
@@ -316,8 +338,6 @@ message ExperimentRun
   string title = 0
   string description = 0
   string experimentCode = 0
-  string sampleId = 0
-  instrument instrumentId = 0
   string experimentDate = 0
   string operatorId = 0
   techniqueEnum technique = 0
@@ -372,6 +392,14 @@ message ExperimentRun
   quantityValue resolutionAtCorner = 0
   quantityValue ispybDataCollectionId = 0
   quantityValue ispybSessionId = 0
+ }
+// M:N link between ExperimentRun and Sample with role metadata
+message ExperimentSampleAssociation
+ {
+  experimentRun experimentId = 0
+  sample sampleId = 0
+  experimentSampleRoleEnum role = 0
+  samplePreparation preparationId = 0
  }
 // Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
 message FluorescenceImage
@@ -1009,20 +1037,33 @@ message StructuralFeature
   string domainAssignment = 0
   string domainId = 0
  }
-// A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
+// A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.
 message Study
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
- repeated  proteinConstruct proteinConstructs = 0
- repeated  sample samples = 0
- repeated  samplePreparation samplePreparations = 0
- repeated  experimentRun instrumentRuns = 0
- repeated  workflowRun workflowRuns = 0
- repeated  dataFile dataFiles = 0
- repeated  image images = 0
- repeated  aggregatedProteinView aggregatedProteinViews = 0
+ repeated  string keywords = 0
+ }
+// M:N link between Study and ExperimentRun
+message StudyExperimentAssociation
+ {
+  study studyId = 0
+  experimentRun experimentId = 0
+ }
+// M:N link between Study and Sample with role metadata
+message StudySampleAssociation
+ {
+  study studyId = 0
+  sample sampleId = 0
+  sampleRoleEnum role = 0
+  date dateAdded = 0
+ }
+// M:N link between Study and WorkflowRun
+message StudyWorkflowAssociation
+ {
+  study studyId = 0
+  workflowRun workflowId = 0
  }
 // A value described using a text string, optionally with a controlled vocabulary ID.
 message TextValue
@@ -1032,6 +1073,26 @@ message TextValue
   string value = 0
   curie valueCvId = 0
  }
+// M:N link between WorkflowRun and source ExperimentRuns
+message WorkflowExperimentAssociation
+ {
+  workflowRun workflowId = 0
+  experimentRun experimentId = 0
+ }
+// Links input DataFiles to WorkflowRun
+message WorkflowInputAssociation
+ {
+  workflowRun workflowId = 0
+  dataFile fileId = 0
+  inputTypeEnum inputType = 0
+ }
+// Links output DataFiles to WorkflowRun
+message WorkflowOutputAssociation
+ {
+  workflowRun workflowId = 0
+  dataFile fileId = 0
+  outputTypeEnum outputType = 0
+ }
 // A computational processing workflow execution
 message WorkflowRun
  {
@@ -1040,7 +1101,6 @@ message WorkflowRun
   string description = 0
   string workflowCode = 0
   workflowTypeEnum workflowType = 0
-  string experimentId = 0
   quantityValue processingLevel = 0
   string softwareName = 0
   string softwareVersion = 0

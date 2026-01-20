@@ -1,0 +1,164 @@
+{
+  "id": "lambdaber:dataset-p53-interactions",
+  "title": "Structural basis of p53 tumor suppressor interactions",
+  "description": "Comprehensive structural and functional study of p53 and its interaction partners combining cryo-EM, crystallography, and knowledge base annotations",
+  "studies": [
+    {
+      "id": "lambdaber:study-p53-interactions",
+      "title": "Structural basis of p53 tumor suppressor interactions",
+      "description": "Comprehensive structural and functional study of p53 and its interaction partners combining cryo-EM, crystallography, and knowledge base annotations"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "lambdaber:instrument-titan-001",
+      "title": "Titan Krios Cryo-EM",
+      "description": "Titan Krios cryo-electron microscope",
+      "instrument_code": "TITAN-001",
+      "manufacturer": "Thermo Fisher Scientific",
+      "model": "Titan Krios",
+      "current_status": "operational"
+    }
+  ],
+  "samples": [
+    {
+      "id": "lambdaber:sample-P53-MDM2-001",
+      "title": "p53-MDM2 complex for structural studies",
+      "sample_code": "P53-MDM2-001",
+      "sample_type": "complex",
+      "molecular_composition": {
+        "description": "Human p53 N-terminal domain with MDM2"
+      },
+      "molecular_weight": {
+        "numeric_value": 45.5,
+        "unit": "kilodaltons"
+      },
+      "concentration": {
+        "numeric_value": 8.0,
+        "unit": "milligrams per milliliter"
+      },
+      "functional_sites": [
+        {
+          "id": "lambdaber:func-site-001",
+          "protein_id": "P04637",
+          "evidence_type": "experimental",
+          "source_database": "pdbe_kb",
+          "site_type": "protein_binding",
+          "site_name": "MDM2 binding interface",
+          "residues": [
+            "19",
+            "23",
+            "26"
+          ],
+          "conservation_score": 0.92
+        }
+      ],
+      "mutation_effects": [
+        {
+          "id": "lambdaber:mut-eff-001",
+          "protein_id": "P04637",
+          "source_database": "foldx",
+          "mutation": "S15D",
+          "mutation_type": "missense",
+          "effect_on_stability": "neutral",
+          "effect_on_function": "altered_function",
+          "functional_impact_description": "Phosphomimetic - reduces MDM2 binding"
+        }
+      ]
+    }
+  ],
+  "sample_preparations": [
+    {
+      "id": "lambdaber:prep-001",
+      "title": "Cryo-EM grid preparation of p53-MDM2 complex",
+      "preparation_type": "cryo_em",
+      "sample_id": "lambdaber:sample-P53-MDM2-001"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "lambdaber:exp-run-001",
+      "title": "Cryo-EM data collection of p53-MDM2",
+      "experiment_code": "EXP-P53-001",
+      "technique": "cryo_em",
+      "quality_metrics": {
+        "resolution": {
+          "numeric_value": 3.2,
+          "unit": "Angstroms"
+        },
+        "completeness": {
+          "numeric_value": 99.5,
+          "unit": "percent"
+        }
+      }
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "lambdaber:wf-run-001",
+      "title": "3D reconstruction of p53-MDM2 complex",
+      "workflow_code": "WF-P53-001",
+      "workflow_type": "refinement",
+      "software_name": "RELION",
+      "software_version": "4.0"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "lambdaber:data-file-001",
+      "title": "Final 3D reconstruction",
+      "file_name": "p53_mdm2_reconstruction.mrc",
+      "file_format": "mrc",
+      "file_path": "/data/structures/p53_mdm2.mrc",
+      "data_type": "volume"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "lambdaber:study-p53-interactions",
+      "sample_id": "lambdaber:sample-P53-MDM2-001",
+      "role": "target"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambdaber:study-p53-interactions",
+      "experiment_id": "lambdaber:exp-run-001"
+    }
+  ],
+  "study_workflow_associations": [
+    {
+      "study_id": "lambdaber:study-p53-interactions",
+      "workflow_id": "lambdaber:wf-run-001"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambdaber:exp-run-001",
+      "sample_id": "lambdaber:sample-P53-MDM2-001",
+      "role": "target",
+      "preparation_id": "lambdaber:prep-001"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "lambdaber:exp-run-001",
+      "instrument_id": "lambdaber:instrument-titan-001",
+      "role": "primary"
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "lambdaber:wf-run-001",
+      "experiment_id": "lambdaber:exp-run-001"
+    }
+  ],
+  "workflow_output_associations": [
+    {
+      "workflow_id": "lambdaber:wf-run-001",
+      "file_id": "lambdaber:data-file-001",
+      "output_type": "map"
+    }
+  ],
+  "@type": "Dataset"
+}

@@ -8,11 +8,58 @@
 
 <https://doi.org/10.1038/s41467-024-54913-8> a lambdaber:Dataset ;
     dcterms:title "Design of pseudosymmetric protein hetero-oligomers" ;
+    lambdaber:data_files <https://example.org/kibler2024/file/design-model>,
+        <https://example.org/kibler2024/file/em-2d-classes>,
+        <https://example.org/kibler2024/file/ms-raw>,
+        <https://example.org/kibler2024/file/saxs-2p5mgml>,
+        <https://example.org/kibler2024/file/saxs-5mgml> ;
     lambdaber:description """Systematic computational design and experimental validation of pseudosymmetric 
 protein hetero-oligomers with three or more unique subunits. The study combines 
 divide-and-conquer design strategy with comprehensive structural characterization 
 using SAXS, negative-stain EM, and native mass spectrometry.
 """ ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:instrument_id <QE-UHMR> ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
+            lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
+            lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
+            lambdaber:instrument_id <Talos-L120C> ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs <https://example.org/kibler2024/exp/native-ms>,
+        <https://example.org/kibler2024/exp/nsem>,
+        <https://example.org/kibler2024/exp/saxs-main>,
+        <https://example.org/kibler2024/exp/sec-saxs> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
+            lambdaber:preparation_id <https://example.org/kibler2024/prep/negative-stain> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
+            lambdaber:preparation_id <https://example.org/kibler2024/prep/saxs> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
+            lambdaber:preparation_id <https://example.org/kibler2024/prep/saxs> ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ] ;
+    lambdaber:images <https://example.org/kibler2024/img/em-classes>,
+        <https://example.org/kibler2024/img/saxs-profile>,
+        <https://example.org/kibler2024/img/structural-comparison> ;
     lambdaber:instruments <ALS-12.3.1-SIBYLS>,
         <QE-UHMR>,
         <Talos-L120C> ;
@@ -22,89 +69,68 @@ using SAXS, negative-stain EM, and native mass spectrometry.
         "protein design",
         "pseudosymmetry",
         "structural biology" ;
-    lambdaber:studies <https://example.org/kibler2024/study/hetBGL-design-validation> .
-
-<https://example.org/kibler2024/exp/native-ms> a lambdaber:ExperimentRun ;
-    lambdaber:experiment_code "nMS-2024-02-10-hetBGL" ;
-    lambdaber:experiment_date "2024-02-10" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "25.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id <QE-UHMR> ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "100.0"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:sample_id "hetBGL03-15-18" ;
-    lambdaber:technique CHMO:0000470 .
-
-<https://example.org/kibler2024/exp/nsem> a lambdaber:ExperimentRun ;
-    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
-            lambdaber:collection_mode "single_particle" ] ;
-    lambdaber:experiment_code "nsEM-2024-02-05-hetBGL" ;
-    lambdaber:experiment_date "2024-02-05" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "20.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id <Talos-L120C> ;
-    lambdaber:operator_id "University of Washington EM facility" ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "30.0"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:sample_id "hetBGL03-15-18" ;
-    lambdaber:technique CHMO:0000068 .
-
-<https://example.org/kibler2024/exp/saxs-main> a lambdaber:ExperimentRun ;
-    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
-            lambdaber:collection_mode "batch" ] ;
-    lambdaber:experiment_code "SIBYLS-2024-02-01-hetBGL" ;
-    lambdaber:experiment_date "2024-02-01" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:beam_energy [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "9.76"^^xsd:float ;
-                    lambdaber:unit "kiloelectronvolts" ] ;
-            lambdaber:exposure_time [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "0.3"^^xsd:float ;
-                    lambdaber:unit "seconds" ] ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "20.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
-    lambdaber:operator_id "Kathryn Burnett" ;
-    lambdaber:processing_status "completed" ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:i_zero [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "0.045"^^xsd:float ;
-                    lambdaber:unit "scattering intensity" ] ;
-            lambdaber:rg [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "42.3"^^xsd:float ;
-                    lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "50.0"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
-    lambdaber:sample_id "hetBGL03-15-18" ;
-    lambdaber:technique CHMO:0000204 .
-
-<https://example.org/kibler2024/exp/sec-saxs> a lambdaber:ExperimentRun ;
-    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
-            lambdaber:collection_mode "sec_saxs" ] ;
-    lambdaber:experiment_code "SIBYLS-2024-02-01-SEC-SAXS" ;
-    lambdaber:experiment_date "2024-02-01" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "20.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "45.0"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:sample_id "hetBGL03-15-18" ;
-    lambdaber:technique CHMO:0000204 .
+    lambdaber:sample_preparations <https://example.org/kibler2024/prep/expression>,
+        <https://example.org/kibler2024/prep/negative-stain>,
+        <https://example.org/kibler2024/prep/purification>,
+        <https://example.org/kibler2024/prep/saxs> ;
+    lambdaber:samples <https://example.org/kibler2024/sample/BGL0>,
+        <https://example.org/kibler2024/sample/hetBGL01-20-22>,
+        <https://example.org/kibler2024/sample/hetBGL03-15-18> ;
+    lambdaber:studies <https://example.org/kibler2024/study/hetBGL-design-validation> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/sec-saxs> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL01-20-22> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/hetBGL03-15-18> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "control" ;
+            lambdaber:sample_id <https://example.org/kibler2024/sample/BGL0> ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ],
+        [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id <https://example.org/kibler2024/study/hetBGL-design-validation> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/ms-analysis> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/native-ms> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/ms-analysis> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/saxs-main> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://example.org/kibler2024/exp/nsem> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://example.org/kibler2024/file/saxs-5mgml> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://example.org/kibler2024/file/saxs-2p5mgml> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/saxs-processing> ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id <https://example.org/kibler2024/file/em-2d-classes> ;
+            lambdaber:workflow_id <https://example.org/kibler2024/workflow/em-processing> ] ;
+    lambdaber:workflow_runs <https://example.org/kibler2024/workflow/em-processing>,
+        <https://example.org/kibler2024/workflow/ms-analysis>,
+        <https://example.org/kibler2024/workflow/saxs-processing> .
 
 <https://example.org/kibler2024/file/design-model> a lambdaber:DataFile ;
     lambdaber:checksum "sha256:mno345..." ;
@@ -117,17 +143,6 @@ using SAXS, negative-stain EM, and native mass spectrometry.
             lambdaber:numeric_value "850000.0"^^xsd:float ;
             lambdaber:unit "bytes" ] .
 
-<https://example.org/kibler2024/file/em-2d-classes> a lambdaber:DataFile ;
-    lambdaber:checksum "sha256:ghi789..." ;
-    lambdaber:creation_date "2024-02-05" ;
-    lambdaber:data_type "processed_data" ;
-    lambdaber:description "2D class averages from negative stain EM" ;
-    lambdaber:file_format "mrc" ;
-    lambdaber:file_name "hetBGL03-15-18_2D_classes.mrcs" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "250000000.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
 <https://example.org/kibler2024/file/ms-raw> a lambdaber:DataFile ;
     lambdaber:checksum "sha256:jkl012..." ;
     lambdaber:creation_date "2024-02-10" ;
@@ -136,28 +151,6 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     lambdaber:file_name "hetBGL03-15-18_native_ms.raw" ;
     lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "150000000.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
-<https://example.org/kibler2024/file/saxs-2p5mgml> a lambdaber:DataFile ;
-    lambdaber:checksum "sha256:abc123..." ;
-    lambdaber:creation_date "2024-02-01" ;
-    lambdaber:data_type "processed_data" ;
-    lambdaber:description "Buffer-subtracted SAXS profile at 2.5 mg/mL" ;
-    lambdaber:file_format "ascii" ;
-    lambdaber:file_name "hetBGL03-15-18_saxs_2p5mgml.dat" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "45000.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
-<https://example.org/kibler2024/file/saxs-5mgml> a lambdaber:DataFile ;
-    lambdaber:checksum "sha256:def456..." ;
-    lambdaber:creation_date "2024-02-01" ;
-    lambdaber:data_type "processed_data" ;
-    lambdaber:description "Buffer-subtracted SAXS profile at 5.0 mg/mL" ;
-    lambdaber:file_format "ascii" ;
-    lambdaber:file_name "hetBGL03-15-18_saxs_5mgml.dat" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "45000.0"^^xsd:float ;
             lambdaber:unit "bytes" ] .
 
 <https://example.org/kibler2024/img/em-classes> a lambdaber:Image ;
@@ -205,14 +198,6 @@ for 18-24 hours with shaking.
 """ ;
     lambdaber:sample_id "hetBGL03-15-18" .
 
-<https://example.org/kibler2024/prep/negative-stain> a lambdaber:SamplePreparation ;
-    lambdaber:preparation_date "2024-02-05" ;
-    lambdaber:preparation_type "negative_stain" ;
-    lambdaber:protocol_description """3 μL of protein solution applied to thick carbon film-coated 400 mesh 
-copper grids, stained with 2% uranyl formate.
-""" ;
-    lambdaber:sample_id "hetBGL03-15-18" .
-
 <https://example.org/kibler2024/prep/purification> a lambdaber:SamplePreparation ;
     lambdaber:preparation_date "2024-01-16" ;
     lambdaber:preparation_type "protein_purification" ;
@@ -223,11 +208,60 @@ chromatography in 25 mM Tris, 300 mM NaCl, pH 8.0.
 """ ;
     lambdaber:sample_id "hetBGL03-15-18" .
 
-<https://example.org/kibler2024/prep/saxs> a lambdaber:SamplePreparation ;
-    lambdaber:preparation_date "2024-02-01" ;
-    lambdaber:preparation_type "saxs" ;
-    lambdaber:protocol_description """TEV-cleaved samples re-purified by SEC in SAXS buffer and concentrated 
-using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
+<QE-UHMR> a lambdaber:Instrument ;
+    dcterms:title "Q Exactive UHMR Mass Spectrometer" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "Ultra-high mass range mass spectrometer for native MS" ;
+    lambdaber:instrument_code "QE-UHMR-001" ;
+    lambdaber:manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:model "Q Exactive UHMR" .
+
+<Talos-L120C> a lambdaber:Instrument ;
+    dcterms:title "Talos L120C Microscope" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "120kV TEM for negative stain electron microscopy" ;
+    lambdaber:instrument_code "TALOS-L120C-001" ;
+    lambdaber:manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:model "Talos L120C" .
+
+<https://example.org/kibler2024/file/em-2d-classes> a lambdaber:DataFile ;
+    lambdaber:checksum "sha256:ghi789..." ;
+    lambdaber:creation_date "2024-02-05" ;
+    lambdaber:data_type "processed_data" ;
+    lambdaber:description "2D class averages from negative stain EM" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "hetBGL03-15-18_2D_classes.mrcs" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "250000000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
+
+<https://example.org/kibler2024/file/saxs-2p5mgml> a lambdaber:DataFile ;
+    lambdaber:checksum "sha256:abc123..." ;
+    lambdaber:creation_date "2024-02-01" ;
+    lambdaber:data_type "processed_data" ;
+    lambdaber:description "Buffer-subtracted SAXS profile at 2.5 mg/mL" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "hetBGL03-15-18_saxs_2p5mgml.dat" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "45000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
+
+<https://example.org/kibler2024/file/saxs-5mgml> a lambdaber:DataFile ;
+    lambdaber:checksum "sha256:def456..." ;
+    lambdaber:creation_date "2024-02-01" ;
+    lambdaber:data_type "processed_data" ;
+    lambdaber:description "Buffer-subtracted SAXS profile at 5.0 mg/mL" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "hetBGL03-15-18_saxs_5mgml.dat" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "45000.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
+
+<https://example.org/kibler2024/prep/negative-stain> a lambdaber:SamplePreparation ;
+    lambdaber:preparation_date "2024-02-05" ;
+    lambdaber:preparation_type "negative_stain" ;
+    lambdaber:protocol_description """3 μL of protein solution applied to thick carbon film-coated 400 mesh 
+copper grids, stained with 2% uranyl formate.
 """ ;
     lambdaber:sample_id "hetBGL03-15-18" .
 
@@ -270,6 +304,142 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
     lambdaber:sample_code "hetBGL01-20-22" ;
     lambdaber:sample_type "complex" .
 
+<ALS-12.3.1-SIBYLS> a lambdaber:Instrument ;
+    dcterms:title "ALS SIBYLS Beamline 12.3.1" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "SAXS/WAXS beamline at Advanced Light Source for biological samples" ;
+    lambdaber:instrument_code "ALS-SIBYLS-12.3.1" ;
+    lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
+    lambdaber:model "SIBYLS Beamline 12.3.1" .
+
+<https://example.org/kibler2024/prep/saxs> a lambdaber:SamplePreparation ;
+    lambdaber:preparation_date "2024-02-01" ;
+    lambdaber:preparation_type "saxs" ;
+    lambdaber:protocol_description """TEV-cleaved samples re-purified by SEC in SAXS buffer and concentrated 
+using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
+""" ;
+    lambdaber:sample_id "hetBGL03-15-18" .
+
+<https://example.org/kibler2024/workflow/ms-analysis> a lambdaber:WorkflowRun ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
+    lambdaber:processing_parameters "mass_range=150000-200000; charge_range=15-40; peak_width=10" ;
+    lambdaber:software_name "UniDecs" ;
+    lambdaber:software_version "4.1.2+" ;
+    lambdaber:workflow_code "nMS-analysis-2024-02-10" ;
+    lambdaber:workflow_type "mass_spec_deconvolution" .
+
+<https://example.org/kibler2024/exp/sec-saxs> a lambdaber:ExperimentRun ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "sec_saxs" ] ;
+    lambdaber:experiment_code "SIBYLS-2024-02-01-SEC-SAXS" ;
+    lambdaber:experiment_date "2024-02-01" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "45.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
+    lambdaber:technique CHMO:0000204 .
+
+<https://example.org/kibler2024/workflow/em-processing> a lambdaber:WorkflowRun ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
+    lambdaber:processing_parameters "particle_diameter=150A; mask_diameter=180A; number_of_classes=50" ;
+    lambdaber:software_name "EPU" ;
+    lambdaber:software_version "3.1" ;
+    lambdaber:workflow_code "nsEM-processing-2024-02-05" ;
+    lambdaber:workflow_type "em_2d_classification" .
+
+<https://example.org/kibler2024/exp/native-ms> a lambdaber:ExperimentRun ;
+    lambdaber:experiment_code "nMS-2024-02-10-hetBGL" ;
+    lambdaber:experiment_date "2024-02-10" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "25.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
+    lambdaber:technique CHMO:0000470 .
+
+<https://example.org/kibler2024/exp/nsem> a lambdaber:ExperimentRun ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "single_particle" ] ;
+    lambdaber:experiment_code "nsEM-2024-02-05-hetBGL" ;
+    lambdaber:experiment_date "2024-02-05" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:operator_id "University of Washington EM facility" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "30.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
+    lambdaber:technique CHMO:0000068 .
+
+<https://example.org/kibler2024/exp/saxs-main> a lambdaber:ExperimentRun ;
+    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
+            lambdaber:collection_mode "batch" ] ;
+    lambdaber:experiment_code "SIBYLS-2024-02-01-hetBGL" ;
+    lambdaber:experiment_date "2024-02-01" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:beam_energy [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "9.76"^^xsd:float ;
+                    lambdaber:unit "kiloelectronvolts" ] ;
+            lambdaber:exposure_time [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.3"^^xsd:float ;
+                    lambdaber:unit "seconds" ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "20.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:operator_id "Kathryn Burnett" ;
+    lambdaber:processing_status "completed" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.045"^^xsd:float ;
+                    lambdaber:unit "scattering intensity" ] ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "42.3"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "50.0"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
+    lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
+    lambdaber:technique CHMO:0000204 .
+
+<https://example.org/kibler2024/workflow/saxs-processing> a lambdaber:WorkflowRun ;
+    lambdaber:completed_at "2024-02-01T18:30:00Z" ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.5"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
+    lambdaber:processing_parameters "buffer_subtraction=automated; guinier_fit_range=0.01-0.025; kratky_analysis=true; p_of_r_calculation=GNOM" ;
+    lambdaber:software_name "SAXS FrameSlice" ;
+    lambdaber:software_version "2024.1" ;
+    lambdaber:started_at "2024-02-01T18:00:00Z" ;
+    lambdaber:workflow_code "SAXS-processing-2024-02-01" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
 <https://example.org/kibler2024/sample/hetBGL03-15-18> a lambdaber:Sample ;
     lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
             lambdaber:components "25 mM Tris",
@@ -300,110 +470,11 @@ using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
 
 <https://example.org/kibler2024/study/hetBGL-design-validation> a lambdaber:Study ;
     dcterms:title "Structural validation of designed hetero-oligomeric BGL complexes" ;
-    lambdaber:data_files <https://example.org/kibler2024/file/design-model>,
-        <https://example.org/kibler2024/file/em-2d-classes>,
-        <https://example.org/kibler2024/file/ms-raw>,
-        <https://example.org/kibler2024/file/saxs-2p5mgml>,
-        <https://example.org/kibler2024/file/saxs-5mgml> ;
     lambdaber:description """Comprehensive structural characterization of computationally designed 
 pseudosymmetric hetero-oligomers using multiple biophysical techniques
 at LBNL Advanced Light Source SIBYLS beamline and other facilities.
 """ ;
-    lambdaber:images <https://example.org/kibler2024/img/em-classes>,
-        <https://example.org/kibler2024/img/saxs-profile>,
-        <https://example.org/kibler2024/img/structural-comparison> ;
-    lambdaber:instrument_runs <https://example.org/kibler2024/exp/native-ms>,
-        <https://example.org/kibler2024/exp/nsem>,
-        <https://example.org/kibler2024/exp/saxs-main>,
-        <https://example.org/kibler2024/exp/sec-saxs> ;
-    lambdaber:sample_preparations <https://example.org/kibler2024/prep/expression>,
-        <https://example.org/kibler2024/prep/negative-stain>,
-        <https://example.org/kibler2024/prep/purification>,
-        <https://example.org/kibler2024/prep/saxs> ;
-    lambdaber:samples <https://example.org/kibler2024/sample/BGL0>,
-        <https://example.org/kibler2024/sample/hetBGL01-20-22>,
-        <https://example.org/kibler2024/sample/hetBGL03-15-18> ;
-    lambdaber:workflow_runs <https://example.org/kibler2024/workflow/em-processing>,
-        <https://example.org/kibler2024/workflow/ms-analysis>,
-        <https://example.org/kibler2024/workflow/saxs-processing> .
-
-<https://example.org/kibler2024/workflow/em-processing> a lambdaber:WorkflowRun ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "2.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "32.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:experiment_id "nsEM-2024-02-05-hetBGL" ;
-    lambdaber:output_files <hetBGL03-15-18_2D_classes.mrcs>,
-        <hetBGL03-15-18_class_averages.png> ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "2.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "particle_diameter=150A; mask_diameter=180A; number_of_classes=50" ;
-    lambdaber:software_name "EPU" ;
-    lambdaber:software_version "3.1" ;
-    lambdaber:workflow_code "nsEM-processing-2024-02-05" ;
-    lambdaber:workflow_type "em_2d_classification" .
-
-<https://example.org/kibler2024/workflow/ms-analysis> a lambdaber:WorkflowRun ;
-    lambdaber:experiment_id "nMS-2024-02-10-hetBGL" ;
-    lambdaber:output_files <hetBGL03-15-18_deconvoluted.png>,
-        <hetBGL03-15-18_mass_spectrum.txt> ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "2.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "mass_range=150000-200000; charge_range=15-40; peak_width=10" ;
-    lambdaber:software_name "UniDecs" ;
-    lambdaber:software_version "4.1.2+" ;
-    lambdaber:workflow_code "nMS-analysis-2024-02-10" ;
-    lambdaber:workflow_type "mass_spec_deconvolution" .
-
-<https://example.org/kibler2024/workflow/saxs-processing> a lambdaber:WorkflowRun ;
-    lambdaber:completed_at "2024-02-01T18:30:00Z" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "0.5"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "8.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:experiment_id "SIBYLS-2024-02-01-hetBGL" ;
-    lambdaber:output_files <hetBGL03-15-18_guinier_fit.png>,
-        <hetBGL03-15-18_kratky_plot.png>,
-        <hetBGL03-15-18_saxs_profile.dat> ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "2.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "buffer_subtraction=automated; guinier_fit_range=0.01-0.025; kratky_analysis=true; p_of_r_calculation=GNOM" ;
-    lambdaber:software_name "SAXS FrameSlice" ;
-    lambdaber:software_version "2024.1" ;
-    lambdaber:started_at "2024-02-01T18:00:00Z" ;
-    lambdaber:workflow_code "SAXS-processing-2024-02-01" ;
-    lambdaber:workflow_type "saxs_analysis" .
-
-<QE-UHMR> a lambdaber:Instrument ;
-    dcterms:title "Q Exactive UHMR Mass Spectrometer" ;
-    lambdaber:current_status "operational" ;
-    lambdaber:description "Ultra-high mass range mass spectrometer for native MS" ;
-    lambdaber:instrument_code "QE-UHMR-001" ;
-    lambdaber:manufacturer "Thermo Fisher Scientific" ;
-    lambdaber:model "Q Exactive UHMR" .
-
-<Talos-L120C> a lambdaber:Instrument ;
-    dcterms:title "Talos L120C Microscope" ;
-    lambdaber:current_status "operational" ;
-    lambdaber:description "120kV TEM for negative stain electron microscopy" ;
-    lambdaber:instrument_code "TALOS-L120C-001" ;
-    lambdaber:manufacturer "Thermo Fisher Scientific" ;
-    lambdaber:model "Talos L120C" .
-
-<ALS-12.3.1-SIBYLS> a lambdaber:Instrument ;
-    dcterms:title "ALS SIBYLS Beamline 12.3.1" ;
-    lambdaber:current_status "operational" ;
-    lambdaber:description "SAXS/WAXS beamline at Advanced Light Source for biological samples" ;
-    lambdaber:instrument_code "ALS-SIBYLS-12.3.1" ;
-    lambdaber:manufacturer "Lawrence Berkeley National Laboratory" ;
-    lambdaber:model "SIBYLS Beamline 12.3.1" .
+    lambdaber:keywords "multimodal characterization",
+        "protein design",
+        "structural validation" .
 

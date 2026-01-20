@@ -1,0 +1,131 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset_1EE2_horse_adh a lambdaber:Dataset ;
+    dcterms:title "Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution" ;
+    lambdaber:data_files lambdaber:file_1EE2_coords,
+        lambdaber:file_1EE2_sf ;
+    lambdaber:description "The structure of steroid-active alcohol dehydrogenase from Equus caballus (horse) liver, complexed with NAD+ and cholic acid" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
+            lambdaber:instrument_id lambdaber:instrument_DESY_BW7B ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:exp_1EE2_xray_001 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
+            lambdaber:preparation_id lambdaber:prep_1EE2_001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_1EE2_001 ] ;
+    lambdaber:images lambdaber:img_1EE2_diffraction_001 ;
+    lambdaber:instruments lambdaber:instrument_DESY_BW7B ;
+    lambdaber:sample_preparations lambdaber:prep_1EE2_001 ;
+    lambdaber:samples lambdaber:sample_1EE2_001 ;
+    lambdaber:studies lambdaber:study_1EE2_horse_adh ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
+            lambdaber:study_id lambdaber:study_1EE2_horse_adh ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_1EE2_001 ;
+            lambdaber:study_id lambdaber:study_1EE2_horse_adh ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
+            lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_1EE2_coords ;
+            lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ],
+        [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_1EE2_sf ;
+            lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
+    lambdaber:workflow_runs lambdaber:wf_1EE2_refinement_001 .
+
+lambdaber:img_1EE2_diffraction_001 a lambdaber:Image ;
+    lambdaber:acquisition_date "1998-11-23" ;
+    lambdaber:file_name "1ee2_diffraction_pattern.img" ;
+    lambdaber:pixel_size [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "0.15"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+
+lambdaber:file_1EE2_coords a lambdaber:DataFile ;
+    lambdaber:creation_date "2000-01-30" ;
+    lambdaber:data_type "model" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "1EE2.pdb" .
+
+lambdaber:file_1EE2_sf a lambdaber:DataFile ;
+    lambdaber:creation_date "2000-01-30" ;
+    lambdaber:data_type "diffraction" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "1EE2_sf.cif" .
+
+lambdaber:instrument_DESY_BW7B a lambdaber:Instrument ;
+    dcterms:title "DESY BW7B X-ray Beamline" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "X-ray crystallography beamline at DESY Hamburg" ;
+    lambdaber:instrument_code "DESY_BW7B" ;
+    lambdaber:manufacturer "DESY" ;
+    lambdaber:model "BW7B" .
+
+lambdaber:prep_1EE2_001 a lambdaber:SamplePreparation ;
+    lambdaber:description "Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K, NAD+ and Cholic Acid" ;
+    lambdaber:preparation_date "1998-11-01" ;
+    lambdaber:preparation_type "xray_crystallography" ;
+    lambdaber:sample_id "lambdaber:sample_1EE2_001" .
+
+lambdaber:sample_1EE2_001 a lambdaber:Sample ;
+    dcterms:title "Horse Liver Alcohol Dehydrogenase" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "TES/KOH" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:ligands "2x Zinc Ion",
+                "Alcohol Dehydrogenase (373 residues)",
+                "Cholic Acid",
+                "NAD+" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "80.0"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:sample_code "1EE2_SAMPLE_001" ;
+    lambdaber:sample_type "complex" ;
+    lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "277.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] .
+
+lambdaber:study_1EE2_horse_adh a lambdaber:Study ;
+    dcterms:title "Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution" ;
+    lambdaber:description "The structure of steroid-active alcohol dehydrogenase from Equus caballus (horse) liver, complexed with NAD+ and cholic acid" .
+
+lambdaber:wf_1EE2_refinement_001 a lambdaber:WorkflowRun ;
+    dcterms:title "Structure Refinement" ;
+    lambdaber:software_name "CNS" ;
+    lambdaber:software_version "1.0" ;
+    lambdaber:workflow_code "1EE2_REFINEMENT_001" ;
+    lambdaber:workflow_type "refinement" .
+
+lambdaber:exp_1EE2_xray_001 a lambdaber:ExperimentRun ;
+    dcterms:title "X-ray Diffraction Data Collection" ;
+    lambdaber:experiment_code "1EE2_XRAY_001" ;
+    lambdaber:experiment_date "1998-11-23" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "100.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "95.0"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.54"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ] ;
+    lambdaber:technique CHMO:0000156 .
+

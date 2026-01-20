@@ -2,8 +2,6 @@ id: lambdaber:exp_cryoet_mito_001
 title: Mitochondrial cryo-electron tomography
 description: Cryo-ET tilt series of isolated mitochondria
 experiment_code: EXP-CRYOET-MITO-2024-001
-sample_id: lambdaber:sample_mitochondria_001
-instrument_id: lambdaber:instrument_titan_krios_002
 experiment_date: '2024-05-01T11:00:00'
 operator_id: cryoet_specialist_003
 technique: cryo_et

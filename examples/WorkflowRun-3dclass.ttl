@@ -21,7 +21,6 @@ lambdaber:workflow_3dclass_ribosome_001 a lambdaber:WorkflowRun ;
                     lambdaber:numeric_value "2000.0"^^xsd:float ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "3D classification to resolve ribosome conformational states" ;
-    lambdaber:experiment_id "lambdaber:exp_ribosome_001" ;
     lambdaber:processing_level [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.0"^^xsd:float ;
             lambdaber:unit "level" ] ;

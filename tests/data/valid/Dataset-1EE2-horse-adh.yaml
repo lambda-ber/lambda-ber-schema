@@ -1,0 +1,135 @@
+id: lambdaber:dataset_1EE2_horse_adh
+title: Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution
+description: The structure of steroid-active alcohol dehydrogenase from Equus caballus
+  (horse) liver, complexed with NAD+ and cholic acid
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
+studies:
+- id: lambdaber:study_1EE2_horse_adh
+  title: Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution
+  description: The structure of steroid-active alcohol dehydrogenase from Equus caballus
+    (horse) liver, complexed with NAD+ and cholic acid
+
+instruments:
+- id: lambdaber:instrument_DESY_BW7B
+  title: DESY BW7B X-ray Beamline
+  description: X-ray crystallography beamline at DESY Hamburg
+  instrument_code: DESY_BW7B
+  manufacturer: DESY
+  model: BW7B
+  current_status: operational
+
+samples:
+- id: lambdaber:sample_1EE2_001
+  title: Horse Liver Alcohol Dehydrogenase
+  sample_code: 1EE2_SAMPLE_001
+  sample_type: complex
+  molecular_composition:
+    ligands:
+    - Alcohol Dehydrogenase (373 residues)
+    - NAD+
+    - Cholic Acid
+    - 2x Zinc Ion
+  molecular_weight:
+    numeric_value: 80.0
+    unit: kilodaltons
+  concentration:
+    numeric_value: 10.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.0
+      unit: pH units
+    components:
+    - TES/KOH
+  storage_conditions:
+    temperature:
+      numeric_value: 277.0
+      unit: degrees Celsius
+
+sample_preparations:
+- id: lambdaber:prep_1EE2_001
+  description: Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K,
+    NAD+ and Cholic Acid
+  preparation_type: xray_crystallography
+  sample_id: lambdaber:sample_1EE2_001
+  preparation_date: '1998-11-01'
+
+experiment_runs:
+- id: lambdaber:exp_1EE2_xray_001
+  title: X-ray Diffraction Data Collection
+  experiment_code: 1EE2_XRAY_001
+  technique: xray_crystallography
+  experiment_date: '1998-11-23'
+  experimental_conditions:
+    temperature:
+      numeric_value: 100.0
+      unit: degrees Celsius
+  quality_metrics:
+    resolution:
+      numeric_value: 1.54
+      unit: Angstroms
+    completeness:
+      numeric_value: 95.0
+      unit: percent
+
+workflow_runs:
+- id: lambdaber:wf_1EE2_refinement_001
+  title: Structure Refinement
+  workflow_code: 1EE2_REFINEMENT_001
+  workflow_type: refinement
+  software_name: CNS
+  software_version: '1.0'
+
+data_files:
+- id: lambdaber:file_1EE2_coords
+  file_name: 1EE2.pdb
+  file_format: pdb
+  creation_date: '2000-01-30'
+  data_type: model
+- id: lambdaber:file_1EE2_sf
+  file_name: 1EE2_sf.cif
+  file_format: mmcif
+  creation_date: '2000-01-30'
+  data_type: diffraction
+
+images:
+- id: lambdaber:img_1EE2_diffraction_001
+  file_name: 1ee2_diffraction_pattern.img
+  acquisition_date: '1998-11-23'
+  pixel_size:
+    numeric_value: 0.15
+    unit: Angstroms
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study_1EE2_horse_adh
+  sample_id: lambdaber:sample_1EE2_001
+  role: target
+
+study_experiment_associations:
+- study_id: lambdaber:study_1EE2_horse_adh
+  experiment_id: lambdaber:exp_1EE2_xray_001
+
+experiment_sample_associations:
+- experiment_id: lambdaber:exp_1EE2_xray_001
+  sample_id: lambdaber:sample_1EE2_001
+  role: target
+  preparation_id: lambdaber:prep_1EE2_001
+
+experiment_instrument_associations:
+- experiment_id: lambdaber:exp_1EE2_xray_001
+  instrument_id: lambdaber:instrument_DESY_BW7B
+  role: primary
+
+workflow_experiment_associations:
+- workflow_id: lambdaber:wf_1EE2_refinement_001
+  experiment_id: lambdaber:exp_1EE2_xray_001
+
+workflow_output_associations:
+- workflow_id: lambdaber:wf_1EE2_refinement_001
+  file_id: lambdaber:file_1EE2_coords
+- workflow_id: lambdaber:wf_1EE2_refinement_001
+  file_id: lambdaber:file_1EE2_sf

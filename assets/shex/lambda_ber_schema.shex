@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.1.post47.dev0+25564fe
+# version: 0.0.0.post2.dev0+6cb7484
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -488,8 +488,23 @@ linkml:Sparqlpath xsd:string
     (  $<Dataset_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
           <keywords> @linkml:String * ;
+          <studies> @<Study> * ;
           <instruments> @<Instrument> * ;
-          <studies> @<Study> *
+          <protein_constructs> @<ProteinConstruct> * ;
+          <samples> @<Sample> * ;
+          <sample_preparations> @<SamplePreparation> * ;
+          <experiment_runs> @<ExperimentRun> * ;
+          <workflow_runs> @<WorkflowRun> * ;
+          <data_files> @<DataFile> * ;
+          <images> @<Image> * ;
+          <study_sample_associations> @<StudySampleAssociation> * ;
+          <study_experiment_associations> @<StudyExperimentAssociation> * ;
+          <study_workflow_associations> @<StudyWorkflowAssociation> * ;
+          <experiment_sample_associations> @<ExperimentSampleAssociation> * ;
+          <experiment_instrument_associations> @<ExperimentInstrumentAssociation> * ;
+          <workflow_experiment_associations> @<WorkflowExperimentAssociation> * ;
+          <workflow_input_associations> @<WorkflowInputAssociation> * ;
+          <workflow_output_associations> @<WorkflowOutputAssociation> *
        ) ;
        rdf:type [ <Dataset> ]
     )
@@ -534,12 +549,21 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<ExperimentInstrumentAssociation> CLOSED {
+    (  $<ExperimentInstrumentAssociation_tes> (  <experiment_id> @<ExperimentRun> ;
+          <instrument_id> @<Instrument> ;
+          <role> [ <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#primary>
+             <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#detector>
+             <https://w3id.org/lambda-ber-schema/InstrumentRoleEnum#sample_handler> ] ?
+       ) ;
+       rdf:type [ <ExperimentInstrumentAssociation> ] ?
+    )
+}
+
 <ExperimentRun> CLOSED {
     (  $<ExperimentRun_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
           <experiment_code> @linkml:String ;
-          <sample_id> @linkml:String ;
-          <instrument_id> @<Instrument> ;
           <experiment_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
           <technique> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
@@ -608,6 +632,19 @@ linkml:Sparqlpath xsd:string
           <ispyb_session_id> @<QuantityValue> ?
        ) ;
        rdf:type [ <ExperimentRun> ]
+    )
+}
+
+<ExperimentSampleAssociation> CLOSED {
+    (  $<ExperimentSampleAssociation_tes> (  <experiment_id> @<ExperimentRun> ;
+          <sample_id> @<Sample> ;
+          <role> [ <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#target>
+             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#buffer_blank>
+             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#standard>
+             <https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum#size_marker> ] ? ;
+          <preparation_id> @<SamplePreparation> ?
+       ) ;
+       rdf:type [ <ExperimentSampleAssociation> ] ?
     )
 }
 
@@ -1459,16 +1496,38 @@ linkml:Sparqlpath xsd:string
 <Study> CLOSED {
     (  $<Study_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
-          <protein_constructs> @<ProteinConstruct> * ;
-          <samples> @<Sample> * ;
-          <sample_preparations> @<SamplePreparation> * ;
-          <instrument_runs> @<ExperimentRun> * ;
-          <workflow_runs> @<WorkflowRun> * ;
-          <data_files> @<DataFile> * ;
-          <images> @<Image> * ;
-          <aggregated_protein_views> @<https://w3id.org/lambda-ber-schema/functional_annotation/AggregatedProteinView> *
+          <keywords> @linkml:String *
        ) ;
        rdf:type [ <Study> ]
+    )
+}
+
+<StudyExperimentAssociation> CLOSED {
+    (  $<StudyExperimentAssociation_tes> (  <study_id> @<Study> ;
+          <experiment_id> @<ExperimentRun>
+       ) ;
+       rdf:type [ <StudyExperimentAssociation> ] ?
+    )
+}
+
+<StudySampleAssociation> CLOSED {
+    (  $<StudySampleAssociation_tes> (  <study_id> @<Study> ;
+          <sample_id> @<Sample> ;
+          <role> [ <https://w3id.org/lambda-ber-schema/SampleRoleEnum#target>
+             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#control>
+             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#reference>
+             <https://w3id.org/lambda-ber-schema/SampleRoleEnum#blank> ] ? ;
+          <date_added> @linkml:Date ?
+       ) ;
+       rdf:type [ <StudySampleAssociation> ] ?
+    )
+}
+
+<StudyWorkflowAssociation> CLOSED {
+    (  $<StudyWorkflowAssociation_tes> (  <study_id> @<Study> ;
+          <workflow_id> @<WorkflowRun>
+       ) ;
+       rdf:type [ <StudyWorkflowAssociation> ] ?
     )
 }
 
@@ -1491,6 +1550,38 @@ linkml:Sparqlpath xsd:string
           <value_cv_id> @linkml:Curie ?
        ) ;
        rdf:type [ nmdc:TextValue ] ?
+    )
+}
+
+<WorkflowExperimentAssociation> CLOSED {
+    (  $<WorkflowExperimentAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
+          <experiment_id> @<ExperimentRun>
+       ) ;
+       rdf:type [ <WorkflowExperimentAssociation> ] ?
+    )
+}
+
+<WorkflowInputAssociation> CLOSED {
+    (  $<WorkflowInputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
+          <file_id> @<DataFile> ;
+          <input_type> [ <https://w3id.org/lambda-ber-schema/InputTypeEnum#raw_data>
+             <https://w3id.org/lambda-ber-schema/InputTypeEnum#reference>
+             <https://w3id.org/lambda-ber-schema/InputTypeEnum#parameters> <https://w3id.org/lambda-ber-schema/InputTypeEnum#mask>
+             ] ?
+       ) ;
+       rdf:type [ <WorkflowInputAssociation> ] ?
+    )
+}
+
+<WorkflowOutputAssociation> CLOSED {
+    (  $<WorkflowOutputAssociation_tes> (  <workflow_id> @<WorkflowRun> ;
+          <file_id> @<DataFile> ;
+          <output_type> [ <https://w3id.org/lambda-ber-schema/OutputTypeEnum#processed_data>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#model> <https://w3id.org/lambda-ber-schema/OutputTypeEnum#map>
+             <https://w3id.org/lambda-ber-schema/OutputTypeEnum#log> <https://w3id.org/lambda-ber-schema/OutputTypeEnum#statistics>
+             ] ?
+       ) ;
+       rdf:type [ <WorkflowOutputAssociation> ] ?
     )
 }
 
@@ -1520,7 +1611,6 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#map_validation>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_refinement>
              <https://w3id.org/lambda-ber-schema/WorkflowTypeEnum#model_validation> ] ;
-          <experiment_id> @linkml:String ;
           <processing_level> @<QuantityValue> ? ;
           <software_name> @linkml:String ;
           <software_version> @linkml:String ? ;

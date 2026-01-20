@@ -11,6 +11,13 @@
     "oligomerization",
     "SIBYLS"
   ],
+  "studies": [
+    {
+      "id": "https://simplescattering.com/study/glurs-oligomerization",
+      "title": "Determination of GluRS oligomerization state in solution",
+      "description": "Structural characterization of P. aeruginosa GluRS using SEC-SAXS-MALS\nto determine oligomeric state in solution conditions. Crystal structure\n(PDB: 8VC5) shows zinc-bound form.\n"
+    }
+  ],
   "instruments": [
     {
       "id": "SIBYLS-BL12.3.1",
@@ -22,242 +29,291 @@
       "current_status": "operational"
     }
   ],
-  "studies": [
+  "samples": [
     {
-      "id": "https://simplescattering.com/study/glurs-oligomerization",
-      "title": "Determination of GluRS oligomerization state in solution",
-      "description": "Structural characterization of P. aeruginosa GluRS using SEC-SAXS-MALS\nto determine oligomeric state in solution conditions. Crystal structure\n(PDB: 8VC5) shows zinc-bound form.\n",
-      "samples": [
-        {
-          "id": "https://simplescattering.com/sample/glurs-pa",
-          "description": "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa",
-          "sample_code": "PA-GluRS",
-          "sample_type": "protein",
-          "molecular_composition": {
-            "sequences": [
-              "Uniprot:Q9XCL6"
-            ]
-          },
-          "molecular_weight": {
-            "numeric_value": 54.8,
-            "unit": "kilodaltons"
-          },
-          "concentration": {
-            "numeric_value": 5.0,
-            "unit": "milligrams per milliliter"
-          },
-          "buffer_composition": {
-            "ph": {
-              "numeric_value": 7.5,
-              "unit": "pH units"
-            },
-            "components": [
-              "20 mM Tris-HCl",
-              "150 mM NaCl",
-              "5 mM MgCl2",
-              "1 mM DTT"
-            ]
-          },
-          "preparation_method": "Expressed in E. coli BL21(DE3)"
+      "id": "https://simplescattering.com/sample/glurs-pa",
+      "description": "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa",
+      "sample_code": "PA-GluRS",
+      "sample_type": "protein",
+      "molecular_composition": {
+        "sequences": [
+          "Uniprot:Q9XCL6"
+        ]
+      },
+      "molecular_weight": {
+        "numeric_value": 54.8,
+        "unit": "kilodaltons"
+      },
+      "concentration": {
+        "numeric_value": 5.0,
+        "unit": "milligrams per milliliter"
+      },
+      "buffer_composition": {
+        "ph": {
+          "numeric_value": 7.5,
+          "unit": "pH units"
+        },
+        "components": [
+          "20 mM Tris-HCl",
+          "150 mM NaCl",
+          "5 mM MgCl2",
+          "1 mM DTT"
+        ]
+      },
+      "preparation_method": "Expressed in E. coli BL21(DE3)"
+    }
+  ],
+  "sample_preparations": [
+    {
+      "id": "https://simplescattering.com/prep/glurs-expression",
+      "preparation_type": "protein_expression",
+      "sample_id": "https://simplescattering.com/sample/glurs-pa",
+      "preparation_date": "2023-10-01",
+      "protocol_description": "GluRS expressed in Escherichia coli BL21(DE3) cells.\nStandard IPTG induction protocol.\n"
+    },
+    {
+      "id": "https://simplescattering.com/prep/glurs-purification",
+      "preparation_type": "protein_purification",
+      "sample_id": "https://simplescattering.com/sample/glurs-pa",
+      "preparation_date": "2023-10-15",
+      "protocol_description": "Purified using Ni-NTA affinity chromatography followed by\nsize exclusion chromatography. Final buffer: 20 mM Tris pH 7.5,\n150 mM NaCl, 5 mM MgCl2, 1 mM DTT.\n"
+    },
+    {
+      "id": "https://simplescattering.com/prep/sec-saxs",
+      "preparation_type": "saxs",
+      "sample_id": "https://simplescattering.com/sample/glurs-pa",
+      "preparation_date": "2023-10-24",
+      "protocol_description": "Sample prepared for SEC-SAXS-MALS analysis. Concentrated to \napproximately 5 mg/mL, filtered through 0.22 μm filter.\n"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "https://simplescattering.com/experiment/glurs-sec-saxs",
+      "experiment_code": "SIBYLS-2023-10-24-GluRS",
+      "technique": "saxs",
+      "experiment_date": "2023-10-24",
+      "operator_id": "S. Tsutakawa",
+      "experimental_conditions": {
+        "temperature": {
+          "numeric_value": 20.0,
+          "unit": "degrees Celsius"
+        },
+        "beam_energy": {
+          "numeric_value": 11.0,
+          "unit": "kiloelectronvolts"
+        },
+        "exposure_time": {
+          "numeric_value": 1.0,
+          "unit": "seconds"
         }
-      ],
-      "sample_preparations": [
-        {
-          "id": "https://simplescattering.com/prep/glurs-expression",
-          "preparation_type": "protein_expression",
-          "sample_id": "https://simplescattering.com/sample/glurs-pa",
-          "preparation_date": "2023-10-01",
-          "protocol_description": "GluRS expressed in Escherichia coli BL21(DE3) cells.\nStandard IPTG induction protocol.\n"
+      },
+      "data_collection_strategy": {
+        "collection_mode": "sec_saxs",
+        "total_frames": {
+          "numeric_value": 660.0,
+          "unit": "frames"
         },
-        {
-          "id": "https://simplescattering.com/prep/glurs-purification",
-          "preparation_type": "protein_purification",
-          "sample_id": "https://simplescattering.com/sample/glurs-pa",
-          "preparation_date": "2023-10-15",
-          "protocol_description": "Purified using Ni-NTA affinity chromatography followed by\nsize exclusion chromatography. Final buffer: 20 mM Tris pH 7.5,\n150 mM NaCl, 5 mM MgCl2, 1 mM DTT.\n"
-        },
-        {
-          "id": "https://simplescattering.com/prep/sec-saxs",
-          "preparation_type": "saxs",
-          "sample_id": "https://simplescattering.com/sample/glurs-pa",
-          "preparation_date": "2023-10-24",
-          "protocol_description": "Sample prepared for SEC-SAXS-MALS analysis. Concentrated to \napproximately 5 mg/mL, filtered through 0.22 μm filter.\n"
+        "frame_rate": {
+          "numeric_value": 1.0,
+          "unit": "frames per second"
         }
-      ],
-      "instrument_runs": [
-        {
-          "id": "https://simplescattering.com/experiment/glurs-sec-saxs",
-          "experiment_code": "SIBYLS-2023-10-24-GluRS",
-          "sample_id": "https://simplescattering.com/sample/glurs-pa",
-          "instrument_id": "SIBYLS-BL12.3.1",
-          "technique": "saxs",
-          "experiment_date": "2023-10-24",
-          "operator_id": "S. Tsutakawa",
-          "experimental_conditions": {
-            "temperature": {
-              "numeric_value": 20.0,
-              "unit": "degrees Celsius"
-            },
-            "beam_energy": {
-              "numeric_value": 11.0,
-              "unit": "kiloelectronvolts"
-            },
-            "exposure_time": {
-              "numeric_value": 1.0,
-              "unit": "seconds"
-            }
-          },
-          "data_collection_strategy": {
-            "collection_mode": "sec_saxs",
-            "total_frames": {
-              "numeric_value": 660.0,
-              "unit": "frames"
-            },
-            "frame_rate": {
-              "numeric_value": 1.0,
-              "unit": "frames per second"
-            }
-          },
-          "quality_metrics": {
-            "resolution": {
-              "numeric_value": 25.0,
-              "unit": "Angstroms"
-            },
-            "signal_to_noise": {
-              "numeric_value": 50.0,
-              "unit": "signal to noise ratio"
-            },
-            "i_zero": {
-              "numeric_value": 45.0,
-              "unit": "scattering intensity"
-            },
-            "rg": {
-              "numeric_value": 32.5,
-              "unit": "Angstroms"
-            }
-          },
-          "raw_data_location": "SIBYLS data archive",
-          "processing_status": "completed"
+      },
+      "quality_metrics": {
+        "resolution": {
+          "numeric_value": 25.0,
+          "unit": "Angstroms"
+        },
+        "signal_to_noise": {
+          "numeric_value": 50.0,
+          "unit": "signal to noise ratio"
+        },
+        "i_zero": {
+          "numeric_value": 45.0,
+          "unit": "scattering intensity"
+        },
+        "rg": {
+          "numeric_value": 32.5,
+          "unit": "Angstroms"
         }
-      ],
-      "workflow_runs": [
-        {
-          "id": "https://simplescattering.com/workflow/saxs-processing",
-          "workflow_code": "GluRS-SAXS-processing-2023",
-          "workflow_type": "saxs_analysis",
-          "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
-          "software_name": "SAXS FrameSlice",
-          "processing_level": {
-            "numeric_value": 2.0,
-            "unit": "level"
-          },
-          "software_version": "2023",
-          "processing_parameters": "q_range=0.0109-0.4729;\nsample_detector_distance=2.1m;\ndetector=Pilatus3_2M;\nbuffer_subtraction=automated;\nframe_averaging=enabled\n",
-          "compute_resources": {
-            "cpu_hours": {
-              "numeric_value": 1.0,
-              "unit": "hours"
-            },
-            "memory_gb": {
-              "numeric_value": 16.0,
-              "unit": "gigabytes"
-            }
-          },
-          "started_at": "2023-10-24T12:00:00Z",
-          "completed_at": "2023-10-24T14:00:00Z"
+      },
+      "raw_data_location": "SIBYLS data archive",
+      "processing_status": "completed"
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "https://simplescattering.com/workflow/saxs-processing",
+      "workflow_code": "GluRS-SAXS-processing-2023",
+      "workflow_type": "saxs_analysis",
+      "software_name": "SAXS FrameSlice",
+      "processing_level": {
+        "numeric_value": 2.0,
+        "unit": "level"
+      },
+      "software_version": "2023",
+      "processing_parameters": "q_range=0.0109-0.4729;\nsample_detector_distance=2.1m;\ndetector=Pilatus3_2M;\nbuffer_subtraction=automated;\nframe_averaging=enabled\n",
+      "compute_resources": {
+        "cpu_hours": {
+          "numeric_value": 1.0,
+          "unit": "hours"
         },
-        {
-          "id": "https://simplescattering.com/workflow/mals-processing",
-          "workflow_code": "GluRS-MALS-processing-2023",
-          "workflow_type": "saxs_analysis",
-          "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
-          "software_name": "MALS Analysis Software",
-          "processing_level": {
-            "numeric_value": 2.0,
-            "unit": "level"
-          },
-          "software_version": "2023",
-          "processing_parameters": "molecular_weight_determination=enabled;\npolydispersity_analysis=enabled\n"
+        "memory_gb": {
+          "numeric_value": 16.0,
+          "unit": "gigabytes"
         }
-      ],
-      "data_files": [
-        {
-          "id": "https://simplescattering.com/file/glurs-frame-001",
-          "description": "First SEC-SAXS frame",
-          "file_name": "GluRS_1_00001.dat",
-          "file_format": "ascii",
-          "file_size_bytes": {
-            "numeric_value": 35739.0,
-            "unit": "bytes"
-          },
-          "creation_date": "2023-10-20",
-          "data_type": "scattering"
-        },
-        {
-          "id": "https://simplescattering.com/file/glurs-averaged",
-          "description": "Averaged SAXS profile from peak fractions",
-          "file_name": "A_S_GluRS_1_5.dat",
-          "file_format": "ascii",
-          "file_size_bytes": {
-            "numeric_value": 107834.0,
-            "unit": "bytes"
-          },
-          "creation_date": "2023-10-24",
-          "data_type": "processed_data"
-        },
-        {
-          "id": "https://simplescattering.com/file/glurs-structure",
-          "description": "Crystal structure of P. aeruginosa GluRS (zinc-bound form)",
-          "file_name": "8vc5.pdb",
-          "file_format": "pdb",
-          "file_size_bytes": {
-            "numeric_value": 1310256.0,
-            "unit": "bytes"
-          },
-          "creation_date": "2023-12-13",
-          "data_type": "model"
-        },
-        {
-          "id": "https://simplescattering.com/file/glurs-complete",
-          "description": "Complete SEC-SAXS dataset with all 660 frames",
-          "file_name": "GluRS_Results.zip",
-          "file_format": "zip",
-          "file_size_bytes": {
-            "numeric_value": 10840982.0,
-            "unit": "bytes"
-          },
-          "creation_date": "2023-10-24",
-          "data_type": "raw_data"
-        }
-      ],
-      "images": [
-        {
-          "id": "https://simplescattering.com/img/sec-chromatogram",
-          "description": "SEC elution profile with SAXS intensity",
-          "file_name": "GluRS_SEC_chromatogram.png",
-          "dimensions_x": {
-            "numeric_value": 1200.0,
-            "unit": "pixels"
-          },
-          "dimensions_y": {
-            "numeric_value": 800.0,
-            "unit": "pixels"
-          }
-        },
-        {
-          "id": "https://simplescattering.com/img/guinier-plot",
-          "description": "Guinier analysis for Rg determination",
-          "file_name": "GluRS_Guinier_plot.png",
-          "dimensions_x": {
-            "numeric_value": 800.0,
-            "unit": "pixels"
-          },
-          "dimensions_y": {
-            "numeric_value": 600.0,
-            "unit": "pixels"
-          }
-        }
-      ]
+      },
+      "started_at": "2023-10-24T12:00:00Z",
+      "completed_at": "2023-10-24T14:00:00Z"
+    },
+    {
+      "id": "https://simplescattering.com/workflow/mals-processing",
+      "workflow_code": "GluRS-MALS-processing-2023",
+      "workflow_type": "saxs_analysis",
+      "software_name": "MALS Analysis Software",
+      "processing_level": {
+        "numeric_value": 2.0,
+        "unit": "level"
+      },
+      "software_version": "2023",
+      "processing_parameters": "molecular_weight_determination=enabled;\npolydispersity_analysis=enabled\n"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "https://simplescattering.com/file/glurs-frame-001",
+      "description": "First SEC-SAXS frame",
+      "file_name": "GluRS_1_00001.dat",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "numeric_value": 35739.0,
+        "unit": "bytes"
+      },
+      "creation_date": "2023-10-20",
+      "data_type": "scattering"
+    },
+    {
+      "id": "https://simplescattering.com/file/glurs-averaged",
+      "description": "Averaged SAXS profile from peak fractions",
+      "file_name": "A_S_GluRS_1_5.dat",
+      "file_format": "ascii",
+      "file_size_bytes": {
+        "numeric_value": 107834.0,
+        "unit": "bytes"
+      },
+      "creation_date": "2023-10-24",
+      "data_type": "processed_data"
+    },
+    {
+      "id": "https://simplescattering.com/file/glurs-structure",
+      "description": "Crystal structure of P. aeruginosa GluRS (zinc-bound form)",
+      "file_name": "8vc5.pdb",
+      "file_format": "pdb",
+      "file_size_bytes": {
+        "numeric_value": 1310256.0,
+        "unit": "bytes"
+      },
+      "creation_date": "2023-12-13",
+      "data_type": "model"
+    },
+    {
+      "id": "https://simplescattering.com/file/glurs-complete",
+      "description": "Complete SEC-SAXS dataset with all 660 frames",
+      "file_name": "GluRS_Results.zip",
+      "file_format": "zip",
+      "file_size_bytes": {
+        "numeric_value": 10840982.0,
+        "unit": "bytes"
+      },
+      "creation_date": "2023-10-24",
+      "data_type": "raw_data"
+    }
+  ],
+  "images": [
+    {
+      "id": "https://simplescattering.com/img/sec-chromatogram",
+      "description": "SEC elution profile with SAXS intensity",
+      "file_name": "GluRS_SEC_chromatogram.png",
+      "dimensions_x": {
+        "numeric_value": 1200.0,
+        "unit": "pixels"
+      },
+      "dimensions_y": {
+        "numeric_value": 800.0,
+        "unit": "pixels"
+      }
+    },
+    {
+      "id": "https://simplescattering.com/img/guinier-plot",
+      "description": "Guinier analysis for Rg determination",
+      "file_name": "GluRS_Guinier_plot.png",
+      "dimensions_x": {
+        "numeric_value": 800.0,
+        "unit": "pixels"
+      },
+      "dimensions_y": {
+        "numeric_value": 600.0,
+        "unit": "pixels"
+      }
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "https://simplescattering.com/study/glurs-oligomerization",
+      "sample_id": "https://simplescattering.com/sample/glurs-pa",
+      "role": "target"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "https://simplescattering.com/study/glurs-oligomerization",
+      "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs"
+    }
+  ],
+  "study_workflow_associations": [
+    {
+      "study_id": "https://simplescattering.com/study/glurs-oligomerization",
+      "workflow_id": "https://simplescattering.com/workflow/saxs-processing"
+    },
+    {
+      "study_id": "https://simplescattering.com/study/glurs-oligomerization",
+      "workflow_id": "https://simplescattering.com/workflow/mals-processing"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
+      "sample_id": "https://simplescattering.com/sample/glurs-pa",
+      "role": "target",
+      "preparation_id": "https://simplescattering.com/prep/sec-saxs"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs",
+      "instrument_id": "SIBYLS-BL12.3.1",
+      "role": "primary"
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "https://simplescattering.com/workflow/saxs-processing",
+      "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs"
+    },
+    {
+      "workflow_id": "https://simplescattering.com/workflow/mals-processing",
+      "experiment_id": "https://simplescattering.com/experiment/glurs-sec-saxs"
+    }
+  ],
+  "workflow_output_associations": [
+    {
+      "workflow_id": "https://simplescattering.com/workflow/saxs-processing",
+      "file_id": "https://simplescattering.com/file/glurs-averaged",
+      "output_type": "processed_data"
+    },
+    {
+      "workflow_id": "https://simplescattering.com/workflow/mals-processing",
+      "file_id": "https://simplescattering.com/file/glurs-averaged",
+      "output_type": "processed_data"
     }
   ],
   "@type": "Dataset"

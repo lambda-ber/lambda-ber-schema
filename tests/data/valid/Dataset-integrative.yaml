@@ -1,0 +1,344 @@
+id: lambdaber:dataset_integrative_nucleosome
+title: Integrative structural analysis of nucleosome remodeling
+description: Multi-technique study combining cryo-EM, SAXS, and X-ray crystallography
+  to study chromatin remodeler-nucleosome complexes
+
+# ===== ENTITY TABLES (FLAT COLLECTIONS) =====
+
+studies:
+- id: lambdaber:study_integrative_nucleosome
+  title: Integrative structural analysis of nucleosome remodeling
+  description: Multi-technique study combining cryo-EM, SAXS, and X-ray crystallography
+    to study chromatin remodeler-nucleosome complexes
+  keywords:
+  - chromatin remodeling
+  - nucleosome
+  - CHD1
+  - integrative structural biology
+  - cryo-EM
+  - SAXS
+
+instruments:
+- id: lambdaber:instrument_titan_krios_001
+  title: Titan Krios G3i
+  description: 300kV cryo-electron microscope for high-resolution structure determination
+  instrument_code: KRIOS-001
+  manufacturer: Thermo Fisher Scientific
+  model: Titan Krios G3i
+  current_status: operational
+- id: lambdaber:instrument_sibyls_1231
+  title: SIBYLS Beamline 12.3.1
+  description: SAXS/WAXS beamline at Advanced Light Source
+  instrument_code: SIBYLS-12.3.1
+  manufacturer: Advanced Light Source
+  model: Beamline 12.3.1
+  current_status: operational
+
+samples:
+- id: lambdaber:sample_nucleosome_001
+  title: Reconstituted nucleosome core particle
+  description: Nucleosome with 147bp Widom 601 DNA
+  sample_code: NCP-601-2024-001
+  sample_type: complex
+  molecular_composition:
+    sequences:
+    - ATCAATATCCACCTGCAGATTCTACCAAAAGTGTATTTGGAAACTGCTCCATCAAAAGGCATGTTCAGCTGGAATCCAGCTGAACATGCCTTTTGATGGAGCAGTTTCCAAATACACTTTTGGTAGAATCTGCAGGTGGATATTGATAT
+    modifications:
+    - H3K36me3
+    - H4K20me1
+    ligands:
+    - Histone octamer
+  molecular_weight:
+    numeric_value: 206.0
+    unit: kilodaltons
+  concentration:
+    numeric_value: 5.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 10 mM Tris-HCl
+    - 1 mM EDTA
+    - 50 mM NaCl
+    additives:
+    - 1 mM DTT
+  organism: NCBITaxon:9606
+  anatomy: UBERON:0000922
+  purity_percentage:
+    numeric_value: 99.0
+    unit: percent
+  preparation_method: Salt gradient dialysis reconstitution
+- id: lambdaber:sample_chd1_001
+  title: Chromodomain helicase CHD1
+  description: Full-length yeast CHD1 protein
+  sample_code: CHD1-FL-2024-001
+  sample_type: protein
+  molecular_composition:
+    sequences:
+    - MSQKYFDKLKQLIEPWLCGDDNVSEIVQGDFNLDSIVQNLKNAVEKGQKEVFGLVKDNKLPFWVDPTNNHGIVIQNDGKCFYINRPSTGKFLTQDDVDAIILPNFISDPISANRITFAEVTSNLQNFFTKQDLANLGVQALNHLAEAGLLPPELAKQLDAYQKAIEKNFGAGGVVIAACHDIDHTRDHVMVDLADGHTRAVLELAHQFNPALLKTLEEPPEALKKQLELAEKLEVAITGPVGSGKSTLAAQLCQLLNWQSKKVIFLTGDKGQCGDVIEKYRGQLGLAQKCILFIDEIHYLSQYDGPNALRSLLSAGVTDRKVTILSATLDKANFQRALGVSHVIVGTQGIFNQPYLDQLKAKFPDLILLCRDPYFSQLKQHFENLENLISQHNLGFSLQQILTGVSRDIAKQVNSNKQNIQNLMSRFEVQNQLIVIANQLLSQINFGELNQMAIKLGFEPIPVDDLFIKRLQLMEQALRKEDAVKAFLNDQSTQTQELLDNNREQISSLRNLINTYINQFPKPYNPVSEYFRAQVSNLLSLNHDDFAQIEQVMHGHIEPFVINLCKQFGLNVPGGRIAVGDVFTPHENSIAVFLEYLNLVKKWLDSRGQRTGTIPGAMYTLPRFCFLRVDSPIVDPVSNQYISHSIVTMAKEGRISGDDIVDALKIMKQTDISQAIFDRMLSRTPSECRQMMLSSVSPLSRTTKSLHGLFKQRCGNVHEAMAQVVSEAKPLSTVQIFSQSTKHWFVLTGAPQYFKGQDIQAMLHQICQGLGFSPKSGKTGIIDGGVAGCALYQAFLKATKGVQMFVDEVHTLADIDIKRHNRGIRVVAFVCHDLEISTIIRRDRIKFVTYAEVSSGKFRALCKSPILGSRWYFANCDPETHAIAQQALRGLGGCTVLITAPLQDWWPDAQRTPLAEAEKALALLPYVLHQKMNPGSGPGIYDAIRLRGTAERKVVLTPLKQGLMQSIKDLSAKEKEFGNKVRTSMTEEGLEAVNKAKEEGISATNQDLLNLFLKQNPELLNRLTPQILQAVGRREEPVSAANLVQFGLKPVGPNVTDPGMVKATLKYIAETFGDFQPGDMKVITVKQNIQMTSKKVELAKAAANVMYHLVKTKLAEQEQQRELEQKQQELEHLQVNLAKSESTVSSSEEGVGDGDDEPDFKETLKLTTQKQFARDLRDLEKQFRRLEEDKPKPVYSQDDEDEAAGVEVEDDNDLELELDMKDEDEQKLQNLLIDKEETDSILSDITNVDSELSNALVDRDDDVIPQEEEEEEKEEDEEEEEEEEDDELLGDLL
+    modifications:
+    - ATP binding domain
+    ligands:
+    - ATP
+  molecular_weight:
+    numeric_value: 168.5
+    unit: kilodaltons
+  concentration:
+    numeric_value: 2.0
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.8
+      unit: pH units
+    components:
+    - 25 mM HEPES
+    - 150 mM KCl
+    - 2 mM MgCl2
+    additives:
+    - 1 mM ATP
+    - 1 mM DTT
+  organism: NCBITaxon:4932
+  purity_percentage:
+    numeric_value: 95.0
+    unit: percent
+  preparation_method: Sf9 insect cell expression with FLAG purification
+- id: lambdaber:sample_chd1_ncp_complex_001
+  title: CHD1-nucleosome complex
+  description: CHD1 bound to nucleosome core particle
+  sample_code: CHD1-NCP-2024-001
+  sample_type: complex
+  parent_sample_id: lambdaber:sample_nucleosome_001
+  molecular_composition:
+    sequences: []
+    modifications: []
+    ligands:
+    - CHD1
+    - Nucleosome
+    - ADP-BeF3
+  molecular_weight:
+    numeric_value: 374.5
+    unit: kilodaltons
+  concentration:
+    numeric_value: 0.5
+    unit: milligrams per milliliter
+  buffer_composition:
+    ph:
+      numeric_value: 7.5
+      unit: pH units
+    components:
+    - 20 mM HEPES
+    - 100 mM KCl
+    - 2 mM MgCl2
+    additives:
+    - 1 mM ADP
+    - 1 mM BeCl2
+    - 5 mM NaF
+  purity_percentage:
+    numeric_value: 90.0
+    unit: percent
+  preparation_method: In vitro reconstitution by mixing CHD1 with nucleosome
+
+sample_preparations:
+- id: lambdaber:prep_ncp_grid_001
+  title: Nucleosome grid preparation for cryo-EM
+  description: Grid preparation for nucleosome imaging
+  preparation_type: cryo_em
+  sample_id: lambdaber:sample_nucleosome_001
+  preparation_date: '2024-05-10'
+  operator_id: chromatin_lab_member_001
+  protocol_description: Quantifoil R2/2 grids, glow discharged, 3µL sample applied,
+    blotted 3s
+- id: lambdaber:prep_chd1_saxs_001
+  title: CHD1 SAXS sample preparation
+  description: Preparation for SAXS analysis of CHD1
+  preparation_type: saxs
+  sample_id: lambdaber:sample_chd1_001
+  preparation_date: '2024-05-11'
+  operator_id: saxs_specialist_001
+  protocol_description: Concentration series 0.5, 1.0, 2.0 mg/mL prepared
+- id: lambdaber:prep_complex_cryo_001
+  title: CHD1-nucleosome complex grid preparation
+  description: Cryo-EM grid preparation for complex
+  preparation_type: cryo_em
+  sample_id: lambdaber:sample_chd1_ncp_complex_001
+  preparation_date: '2024-05-12'
+  operator_id: chromatin_lab_member_001
+  protocol_description: UltrAuFoil grids to reduce preferred orientation
+
+experiment_runs:
+- id: lambdaber:exp_ncp_cryoem_001
+  title: Nucleosome cryo-EM collection
+  description: High-resolution data collection of nucleosome
+  experiment_code: EXP-NCP-CRYOEM-001
+  experiment_date: '2024-05-15T08:00:00'
+  operator_id: cryoem_operator_001
+  technique: cryo_em
+  experimental_conditions:
+    temperature:
+      numeric_value: -180
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
+  data_collection_strategy:
+    collection_mode: counting
+    total_frames:
+      numeric_value: 5000
+      unit: frames
+    frame_rate:
+      numeric_value: 40
+      unit: frames per second
+    total_dose:
+      numeric_value: 45
+      unit: electrons per Angstrom squared
+    dose_per_frame:
+      numeric_value: 1.125
+      unit: electrons per Angstrom squared
+  quality_metrics:
+    resolution:
+      numeric_value: 2.5
+      unit: Angstroms
+    completeness:
+      numeric_value: 99.9
+      unit: percent
+    signal_to_noise:
+      numeric_value: 5.2
+      unit: signal to noise ratio
+  processing_status: completed
+- id: lambdaber:exp_chd1_saxs_001
+  title: CHD1 SAXS analysis
+  description: Solution scattering of CHD1
+  experiment_code: EXP-CHD1-SAXS-001
+  experiment_date: '2024-05-16T10:00:00'
+  operator_id: saxs_operator_001
+  technique: saxs
+  experimental_conditions:
+    temperature:
+      numeric_value: 20
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 50
+      unit: percent
+    pressure:
+      numeric_value: 101.325
+      unit: kilopascals
+  data_collection_strategy:
+    collection_mode: continuous
+    total_frames:
+      numeric_value: 20
+      unit: frames
+    frame_rate:
+      numeric_value: 1
+      unit: frames per second
+  quality_metrics:
+    resolution:
+      numeric_value: 30
+      unit: Angstroms
+    completeness:
+      numeric_value: 100
+      unit: percent
+    signal_to_noise:
+      numeric_value: 45
+      unit: signal to noise ratio
+  processing_status: completed
+- id: lambdaber:exp_complex_cryoem_001
+  title: CHD1-nucleosome complex structure
+  description: Cryo-EM of chromatin remodeler bound to nucleosome
+  experiment_code: EXP-COMPLEX-001
+  experiment_date: '2024-05-17T09:00:00'
+  operator_id: cryoem_operator_001
+  technique: cryo_em
+  experimental_conditions:
+    temperature:
+      numeric_value: -180
+      unit: degrees Celsius
+    humidity:
+      numeric_value: 0
+      unit: percent
+    pressure:
+      numeric_value: 1.0e-06
+      unit: kilopascals
+  data_collection_strategy:
+    collection_mode: super_resolution
+    total_frames:
+      numeric_value: 10000
+      unit: frames
+    frame_rate:
+      numeric_value: 40
+      unit: frames per second
+    total_dose:
+      numeric_value: 50
+      unit: electrons per Angstrom squared
+    dose_per_frame:
+      numeric_value: 1.25
+      unit: electrons per Angstrom squared
+  quality_metrics:
+    resolution:
+      numeric_value: 3.2
+      unit: Angstroms
+    completeness:
+      numeric_value: 98.5
+      unit: percent
+    signal_to_noise:
+      numeric_value: 3.8
+      unit: signal to noise ratio
+  processing_status: processing
+
+# ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+
+study_sample_associations:
+- study_id: lambdaber:study_integrative_nucleosome
+  sample_id: lambdaber:sample_nucleosome_001
+  role: target
+- study_id: lambdaber:study_integrative_nucleosome
+  sample_id: lambdaber:sample_chd1_001
+  role: target
+- study_id: lambdaber:study_integrative_nucleosome
+  sample_id: lambdaber:sample_chd1_ncp_complex_001
+  role: target
+
+study_experiment_associations:
+- study_id: lambdaber:study_integrative_nucleosome
+  experiment_id: lambdaber:exp_ncp_cryoem_001
+- study_id: lambdaber:study_integrative_nucleosome
+  experiment_id: lambdaber:exp_chd1_saxs_001
+- study_id: lambdaber:study_integrative_nucleosome
+  experiment_id: lambdaber:exp_complex_cryoem_001
+
+experiment_sample_associations:
+- experiment_id: lambdaber:exp_ncp_cryoem_001
+  sample_id: lambdaber:sample_nucleosome_001
+  role: target
+  preparation_id: lambdaber:prep_ncp_grid_001
+- experiment_id: lambdaber:exp_chd1_saxs_001
+  sample_id: lambdaber:sample_chd1_001
+  role: target
+  preparation_id: lambdaber:prep_chd1_saxs_001
+- experiment_id: lambdaber:exp_complex_cryoem_001
+  sample_id: lambdaber:sample_chd1_ncp_complex_001
+  role: target
+  preparation_id: lambdaber:prep_complex_cryo_001
+
+experiment_instrument_associations:
+- experiment_id: lambdaber:exp_ncp_cryoem_001
+  instrument_id: lambdaber:instrument_titan_krios_001
+  role: primary
+- experiment_id: lambdaber:exp_chd1_saxs_001
+  instrument_id: lambdaber:instrument_sibyls_1231
+  role: primary
+- experiment_id: lambdaber:exp_complex_cryoem_001
+  instrument_id: lambdaber:instrument_titan_krios_001
+  role: primary
+
+study_workflow_associations: []
+
+workflow_experiment_associations: []
+
+workflow_input_associations: []
+
+workflow_output_associations: []

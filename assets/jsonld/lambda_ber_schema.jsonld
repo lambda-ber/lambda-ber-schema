@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a hierarchical structure that mirrors how structural biology research is organized:\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\nEach dataset contains one or more [Studies](Study.md), which are focused investigations of specific\nbiological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\nor \"Structure of the human ribosome under different conditions.\"\n\nWithin each study, you'll find:\n\n### Biological Materials\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, \n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and \n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n### Data Collection\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron \n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), \n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to \n  instruments. An experiment run captures when, how, and under what conditions data was collected,\n  including quality metrics like resolution and completeness.\n\n### Data Processing\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n### Data Products\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "https://w3id.org/lambda-ber-schema/",
-  "version": "0.1.1.post47.dev0+25564fe",
+  "version": "0.0.0.post2.dev0+6cb7484",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -2311,6 +2311,126 @@
       ]
     },
     {
+      "name": "SampleRoleEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/SampleRoleEnum",
+      "description": "Role of a sample in a study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "target",
+          "description": "Primary sample under investigation"
+        },
+        {
+          "text": "control",
+          "description": "Control sample for comparison"
+        },
+        {
+          "text": "reference",
+          "description": "Reference standard or calibrant"
+        },
+        {
+          "text": "blank",
+          "description": "Buffer blank or negative control"
+        }
+      ]
+    },
+    {
+      "name": "ExperimentSampleRoleEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ExperimentSampleRoleEnum",
+      "description": "Role of a sample in an experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "target",
+          "description": "Primary target of measurement"
+        },
+        {
+          "text": "buffer_blank",
+          "description": "Buffer-only measurement for subtraction"
+        },
+        {
+          "text": "standard",
+          "description": "Calibration or reference standard"
+        },
+        {
+          "text": "size_marker",
+          "description": "Molecular weight marker"
+        }
+      ]
+    },
+    {
+      "name": "InstrumentRoleEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/InstrumentRoleEnum",
+      "description": "Role of an instrument in an experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "primary",
+          "description": "Primary data collection instrument"
+        },
+        {
+          "text": "detector",
+          "description": "Secondary detector or detection component"
+        },
+        {
+          "text": "sample_handler",
+          "description": "Automated sample handling or positioning"
+        }
+      ]
+    },
+    {
+      "name": "InputTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/InputTypeEnum",
+      "description": "Type of input for a workflow",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "raw_data",
+          "description": "Raw experimental data"
+        },
+        {
+          "text": "reference",
+          "description": "Reference data (e.g., PDB model, database)"
+        },
+        {
+          "text": "parameters",
+          "description": "Processing parameters file"
+        },
+        {
+          "text": "mask",
+          "description": "Mask or selection file"
+        }
+      ]
+    },
+    {
+      "name": "OutputTypeEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/OutputTypeEnum",
+      "description": "Type of output from a workflow",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "processed_data",
+          "description": "Processed/corrected data"
+        },
+        {
+          "text": "model",
+          "description": "Structural model"
+        },
+        {
+          "text": "map",
+          "description": "Density map or reconstruction"
+        },
+        {
+          "text": "log",
+          "description": "Processing log or report"
+        },
+        {
+          "text": "statistics",
+          "description": "Quality statistics or metrics"
+        }
+      ]
+    },
+    {
       "name": "FunctionalSiteTypeEnum",
       "definition_uri": "https://w3id.org/lambda-ber-schema/functional_annotation/FunctionalSiteTypeEnum",
       "description": "Types of functional sites in proteins",
@@ -3658,24 +3778,8 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "dataset__instruments",
-      "description": "Instruments used across all studies in this dataset",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/instruments",
-      "alias": "instruments",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "Instrument",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "dataset__studies",
-      "description": "Individual research studies contained in this dataset",
+      "description": "All studies in this dataset",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/studies",
       "alias": "studies",
@@ -3690,14 +3794,30 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__protein_constructs",
-      "description": "Protein constructs and cloning information",
+      "name": "dataset__instruments",
+      "description": "All instruments used across studies",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instruments",
+      "alias": "instruments",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Instrument",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__protein_constructs",
+      "description": "All protein constructs",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/protein_constructs",
       "alias": "protein_constructs",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "ProteinConstruct",
       "multivalued": true,
@@ -3706,14 +3826,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__samples",
-      "description": "Experimental samples used in this study, including biological samples ",
+      "name": "dataset__samples",
+      "description": "All samples across all studies",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/samples",
       "alias": "samples",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "Sample",
       "multivalued": true,
@@ -3722,14 +3842,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__sample_preparations",
-      "description": "Sample preparation procedures performed in this study",
+      "name": "dataset__sample_preparations",
+      "description": "All sample preparations",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/sample_preparations",
       "alias": "sample_preparations",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "SamplePreparation",
       "multivalued": true,
@@ -3738,14 +3858,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__instrument_runs",
-      "description": "Experimental data collection runs performed in this study",
+      "name": "dataset__experiment_runs",
+      "description": "All experiment runs (data collection sessions)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_runs",
-      "alias": "instrument_runs",
-      "owner": "Study",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_runs",
+      "alias": "experiment_runs",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "ExperimentRun",
       "multivalued": true,
@@ -3754,14 +3874,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__workflow_runs",
-      "description": "Computational workflow executions for data processing in this study",
+      "name": "dataset__workflow_runs",
+      "description": "All workflow runs (computational processing)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_runs",
       "alias": "workflow_runs",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "WorkflowRun",
       "multivalued": true,
@@ -3770,14 +3890,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__data_files",
-      "description": "Data files generated or used in this study",
+      "name": "dataset__data_files",
+      "description": "All data files",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/data_files",
       "alias": "data_files",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "DataFile",
       "multivalued": true,
@@ -3786,14 +3906,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__images",
-      "description": "Images acquired or generated in this study",
+      "name": "dataset__images",
+      "description": "All images",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "slot_uri": "https://w3id.org/lambda-ber-schema/images",
       "alias": "images",
-      "owner": "Study",
+      "owner": "Dataset",
       "domain_of": [
-        "Study"
+        "Dataset"
       ],
       "range": "Image",
       "multivalued": true,
@@ -3802,19 +3922,145 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "study__aggregated_protein_views",
-      "description": "Aggregated functional and structural annotations for proteins in this study",
+      "name": "dataset__study_sample_associations",
+      "description": "Links between studies and samples (M:N)",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/aggregated_protein_views",
-      "alias": "aggregated_protein_views",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_sample_associations",
+      "alias": "study_sample_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "StudySampleAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__study_experiment_associations",
+      "description": "Links between studies and experiments (M:N)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_experiment_associations",
+      "alias": "study_experiment_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "StudyExperimentAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__study_workflow_associations",
+      "description": "Links between studies and workflows (M:N)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_workflow_associations",
+      "alias": "study_workflow_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "StudyWorkflowAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__experiment_sample_associations",
+      "description": "Links between experiments and samples (M:N with role)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_sample_associations",
+      "alias": "experiment_sample_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "ExperimentSampleAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__experiment_instrument_associations",
+      "description": "Links between experiments and instruments (M:N)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_instrument_associations",
+      "alias": "experiment_instrument_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "ExperimentInstrumentAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__workflow_experiment_associations",
+      "description": "Links between workflows and source experiments (M:N)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_experiment_associations",
+      "alias": "workflow_experiment_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "WorkflowExperimentAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__workflow_input_associations",
+      "description": "Links between workflows and input files",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_input_associations",
+      "alias": "workflow_input_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "WorkflowInputAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataset__workflow_output_associations",
+      "description": "Links between workflows and output files",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_output_associations",
+      "alias": "workflow_output_associations",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "WorkflowOutputAssociation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "study__keywords",
+      "description": "Keywords or tags describing the study for search and categorization",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/keywords",
+      "alias": "keywords",
       "owner": "Study",
       "domain_of": [
         "Study"
       ],
-      "range": "AggregatedProteinView",
+      "range": "string",
       "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6013,34 +6259,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "experimentRun__sample_id",
-      "description": "Reference to the sample being analyzed",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_id",
-      "alias": "sample_id",
-      "owner": "ExperimentRun",
-      "domain_of": [
-        "ExperimentRun"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "experimentRun__instrument_id",
-      "description": "Reference to the instrument used",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_id",
-      "alias": "instrument_id",
-      "owner": "ExperimentRun",
-      "domain_of": [
-        "ExperimentRun"
-      ],
-      "range": "Instrument",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "experimentRun__experiment_date",
       "description": "Date of the experiment",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -6915,20 +7133,6 @@
         "WorkflowRun"
       ],
       "range": "WorkflowTypeEnum",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "workflowRun__experiment_id",
-      "description": "Reference to the source experiment",
-      "from_schema": "https://w3id.org/lambda-ber-schema/",
-      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
-      "alias": "experiment_id",
-      "owner": "WorkflowRun",
-      "domain_of": [
-        "WorkflowRun"
-      ],
-      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -11306,6 +11510,321 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "studySampleAssociation__study_id",
+      "description": "Reference to the study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_id",
+      "alias": "study_id",
+      "owner": "StudySampleAssociation",
+      "domain_of": [
+        "StudySampleAssociation"
+      ],
+      "range": "Study",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studySampleAssociation__sample_id",
+      "description": "Reference to the sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_id",
+      "alias": "sample_id",
+      "owner": "StudySampleAssociation",
+      "domain_of": [
+        "StudySampleAssociation"
+      ],
+      "range": "Sample",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studySampleAssociation__role",
+      "description": "Role of sample in study (e.g., target, control, reference)",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/role",
+      "alias": "role",
+      "owner": "StudySampleAssociation",
+      "domain_of": [
+        "StudySampleAssociation"
+      ],
+      "range": "SampleRoleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studySampleAssociation__date_added",
+      "description": "Date when sample was added to study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/date_added",
+      "alias": "date_added",
+      "owner": "StudySampleAssociation",
+      "domain_of": [
+        "StudySampleAssociation"
+      ],
+      "range": "date",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyExperimentAssociation__study_id",
+      "description": "Reference to the study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_id",
+      "alias": "study_id",
+      "owner": "StudyExperimentAssociation",
+      "domain_of": [
+        "StudyExperimentAssociation"
+      ],
+      "range": "Study",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyExperimentAssociation__experiment_id",
+      "description": "Reference to the experiment run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
+      "alias": "experiment_id",
+      "owner": "StudyExperimentAssociation",
+      "domain_of": [
+        "StudyExperimentAssociation"
+      ],
+      "range": "ExperimentRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyWorkflowAssociation__study_id",
+      "description": "Reference to the study",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/study_id",
+      "alias": "study_id",
+      "owner": "StudyWorkflowAssociation",
+      "domain_of": [
+        "StudyWorkflowAssociation"
+      ],
+      "range": "Study",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "studyWorkflowAssociation__workflow_id",
+      "description": "Reference to the workflow run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_id",
+      "alias": "workflow_id",
+      "owner": "StudyWorkflowAssociation",
+      "domain_of": [
+        "StudyWorkflowAssociation"
+      ],
+      "range": "WorkflowRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentSampleAssociation__experiment_id",
+      "description": "Reference to the experiment run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
+      "alias": "experiment_id",
+      "owner": "ExperimentSampleAssociation",
+      "domain_of": [
+        "ExperimentSampleAssociation"
+      ],
+      "range": "ExperimentRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentSampleAssociation__sample_id",
+      "description": "Reference to the sample",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/sample_id",
+      "alias": "sample_id",
+      "owner": "ExperimentSampleAssociation",
+      "domain_of": [
+        "ExperimentSampleAssociation"
+      ],
+      "range": "Sample",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentSampleAssociation__role",
+      "description": "Role of sample in experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/role",
+      "alias": "role",
+      "owner": "ExperimentSampleAssociation",
+      "domain_of": [
+        "ExperimentSampleAssociation"
+      ],
+      "range": "ExperimentSampleRoleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentSampleAssociation__preparation_id",
+      "description": "Specific preparation used for this sample in this experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/preparation_id",
+      "alias": "preparation_id",
+      "owner": "ExperimentSampleAssociation",
+      "domain_of": [
+        "ExperimentSampleAssociation"
+      ],
+      "range": "SamplePreparation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentInstrumentAssociation__experiment_id",
+      "description": "Reference to the experiment run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
+      "alias": "experiment_id",
+      "owner": "ExperimentInstrumentAssociation",
+      "domain_of": [
+        "ExperimentInstrumentAssociation"
+      ],
+      "range": "ExperimentRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentInstrumentAssociation__instrument_id",
+      "description": "Reference to the instrument",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/instrument_id",
+      "alias": "instrument_id",
+      "owner": "ExperimentInstrumentAssociation",
+      "domain_of": [
+        "ExperimentInstrumentAssociation"
+      ],
+      "range": "Instrument",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentInstrumentAssociation__role",
+      "description": "Role of instrument in experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/role",
+      "alias": "role",
+      "owner": "ExperimentInstrumentAssociation",
+      "domain_of": [
+        "ExperimentInstrumentAssociation"
+      ],
+      "range": "InstrumentRoleEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowExperimentAssociation__workflow_id",
+      "description": "Reference to the workflow run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_id",
+      "alias": "workflow_id",
+      "owner": "WorkflowExperimentAssociation",
+      "domain_of": [
+        "WorkflowExperimentAssociation"
+      ],
+      "range": "WorkflowRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowExperimentAssociation__experiment_id",
+      "description": "Reference to the source experiment run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/experiment_id",
+      "alias": "experiment_id",
+      "owner": "WorkflowExperimentAssociation",
+      "domain_of": [
+        "WorkflowExperimentAssociation"
+      ],
+      "range": "ExperimentRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowInputAssociation__workflow_id",
+      "description": "Reference to the workflow run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_id",
+      "alias": "workflow_id",
+      "owner": "WorkflowInputAssociation",
+      "domain_of": [
+        "WorkflowInputAssociation"
+      ],
+      "range": "WorkflowRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowInputAssociation__file_id",
+      "description": "Reference to the input data file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_id",
+      "alias": "file_id",
+      "owner": "WorkflowInputAssociation",
+      "domain_of": [
+        "WorkflowInputAssociation"
+      ],
+      "range": "DataFile",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowInputAssociation__input_type",
+      "description": "Type of input for the workflow",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/input_type",
+      "alias": "input_type",
+      "owner": "WorkflowInputAssociation",
+      "domain_of": [
+        "WorkflowInputAssociation"
+      ],
+      "range": "InputTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowOutputAssociation__workflow_id",
+      "description": "Reference to the workflow run",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/workflow_id",
+      "alias": "workflow_id",
+      "owner": "WorkflowOutputAssociation",
+      "domain_of": [
+        "WorkflowOutputAssociation"
+      ],
+      "range": "WorkflowRun",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowOutputAssociation__file_id",
+      "description": "Reference to the output data file",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/file_id",
+      "alias": "file_id",
+      "owner": "WorkflowOutputAssociation",
+      "domain_of": [
+        "WorkflowOutputAssociation"
+      ],
+      "range": "DataFile",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowOutputAssociation__output_type",
+      "description": "Type of output from the workflow",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/output_type",
+      "alias": "output_type",
+      "owner": "WorkflowOutputAssociation",
+      "domain_of": [
+        "WorkflowOutputAssociation"
+      ],
+      "range": "OutputTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "attributeValue__attribute",
       "description": "The attribute being represented.",
       "from_schema": "https://w3id.org/lambda-ber-schema/types",
@@ -13268,7 +13787,7 @@
     {
       "name": "Dataset",
       "definition_uri": "https://w3id.org/lambda-ber-schema/Dataset",
-      "description": "A collection of studies",
+      "description": "Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "is_a": "NamedThing",
       "slots": [
@@ -13276,8 +13795,23 @@
         "namedThing__title",
         "namedThing__description",
         "dataset__keywords",
+        "dataset__studies",
         "dataset__instruments",
-        "dataset__studies"
+        "dataset__protein_constructs",
+        "dataset__samples",
+        "dataset__sample_preparations",
+        "dataset__experiment_runs",
+        "dataset__workflow_runs",
+        "dataset__data_files",
+        "dataset__images",
+        "dataset__study_sample_associations",
+        "dataset__study_experiment_associations",
+        "dataset__study_workflow_associations",
+        "dataset__experiment_sample_associations",
+        "dataset__experiment_instrument_associations",
+        "dataset__workflow_experiment_associations",
+        "dataset__workflow_input_associations",
+        "dataset__workflow_output_associations"
       ],
       "slot_usage": {},
       "attributes": [
@@ -13289,20 +13823,138 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "instruments",
-          "description": "Instruments used across all studies in this dataset",
-          "range": "Instrument",
+          "name": "studies",
+          "description": "All studies in this dataset",
+          "range": "Study",
           "multivalued": true,
-          "inlined": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
-          "name": "studies",
-          "description": "Individual research studies contained in this dataset",
-          "range": "Study",
+          "name": "instruments",
+          "description": "All instruments used across studies",
+          "range": "Instrument",
           "multivalued": true,
-          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_constructs",
+          "description": "All protein constructs",
+          "range": "ProteinConstruct",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "samples",
+          "description": "All samples across all studies",
+          "range": "Sample",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_preparations",
+          "description": "All sample preparations",
+          "range": "SamplePreparation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_runs",
+          "description": "All experiment runs (data collection sessions)",
+          "range": "ExperimentRun",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_runs",
+          "description": "All workflow runs (computational processing)",
+          "range": "WorkflowRun",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "data_files",
+          "description": "All data files",
+          "range": "DataFile",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "images",
+          "description": "All images",
+          "range": "Image",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "study_sample_associations",
+          "description": "Links between studies and samples (M:N)",
+          "range": "StudySampleAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "study_experiment_associations",
+          "description": "Links between studies and experiments (M:N)",
+          "range": "StudyExperimentAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "study_workflow_associations",
+          "description": "Links between studies and workflows (M:N)",
+          "range": "StudyWorkflowAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_sample_associations",
+          "description": "Links between experiments and samples (M:N with role)",
+          "range": "ExperimentSampleAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_instrument_associations",
+          "description": "Links between experiments and instruments (M:N)",
+          "range": "ExperimentInstrumentAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_experiment_associations",
+          "description": "Links between workflows and source experiments (M:N)",
+          "range": "WorkflowExperimentAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_input_associations",
+          "description": "Links between workflows and input files",
+          "range": "WorkflowInputAssociation",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_output_associations",
+          "description": "Links between workflows and output files",
+          "range": "WorkflowOutputAssociation",
+          "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
@@ -13314,87 +13966,22 @@
     {
       "name": "Study",
       "definition_uri": "https://w3id.org/lambda-ber-schema/Study",
-      "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
+      "description": "A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
       "is_a": "NamedThing",
       "slots": [
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
-        "study__protein_constructs",
-        "study__samples",
-        "study__sample_preparations",
-        "study__instrument_runs",
-        "study__workflow_runs",
-        "study__data_files",
-        "study__images",
-        "study__aggregated_protein_views"
+        "study__keywords"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "protein_constructs",
-          "description": "Protein constructs and cloning information",
-          "range": "ProteinConstruct",
+          "name": "keywords",
+          "description": "Keywords or tags describing the study for search and categorization",
+          "range": "string",
           "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "samples",
-          "description": "Experimental samples used in this study, including biological samples ",
-          "range": "Sample",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "sample_preparations",
-          "description": "Sample preparation procedures performed in this study",
-          "range": "SamplePreparation",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "instrument_runs",
-          "description": "Experimental data collection runs performed in this study",
-          "range": "ExperimentRun",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "workflow_runs",
-          "description": "Computational workflow executions for data processing in this study",
-          "range": "WorkflowRun",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "data_files",
-          "description": "Data files generated or used in this study",
-          "range": "DataFile",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "images",
-          "description": "Images acquired or generated in this study",
-          "range": "Image",
-          "multivalued": true,
-          "inlined": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "aggregated_protein_views",
-          "description": "Aggregated functional and structural annotations for proteins in this study",
-          "range": "AggregatedProteinView",
-          "multivalued": true,
-          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -14757,8 +15344,6 @@
         "namedThing__title",
         "namedThing__description",
         "experimentRun__experiment_code",
-        "experimentRun__sample_id",
-        "experimentRun__instrument_id",
         "experimentRun__experiment_date",
         "experimentRun__operator_id",
         "experimentRun__technique",
@@ -14819,20 +15404,6 @@
         {
           "name": "experiment_code",
           "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "sample_id",
-          "description": "Reference to the sample being analyzed",
-          "range": "string",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "instrument_id",
-          "description": "Reference to the instrument used",
-          "range": "Instrument",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -15320,7 +15891,6 @@
         "namedThing__description",
         "workflowRun__workflow_code",
         "workflowRun__workflow_type",
-        "workflowRun__experiment_id",
         "workflowRun__processing_level",
         "workflowRun__software_name",
         "workflowRun__software_version",
@@ -15397,13 +15967,6 @@
           "name": "workflow_type",
           "description": "Type of processing workflow",
           "range": "WorkflowTypeEnum",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "experiment_id",
-          "description": "Reference to the source experiment",
-          "range": "string",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -18309,6 +18872,287 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "StudySampleAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/StudySampleAssociation",
+      "description": "M:N link between Study and Sample with role metadata",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "studySampleAssociation__study_id",
+        "studySampleAssociation__sample_id",
+        "studySampleAssociation__role",
+        "studySampleAssociation__date_added"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "study_id",
+          "description": "Reference to the study",
+          "range": "Study",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_id",
+          "description": "Reference to the sample",
+          "range": "Sample",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "role",
+          "description": "Role of sample in study (e.g., target, control, reference)",
+          "range": "SampleRoleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "date_added",
+          "description": "Date when sample was added to study",
+          "range": "date",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/StudySampleAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StudyExperimentAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/StudyExperimentAssociation",
+      "description": "M:N link between Study and ExperimentRun",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "studyExperimentAssociation__study_id",
+        "studyExperimentAssociation__experiment_id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "study_id",
+          "description": "Reference to the study",
+          "range": "Study",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_id",
+          "description": "Reference to the experiment run",
+          "range": "ExperimentRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/StudyExperimentAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StudyWorkflowAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/StudyWorkflowAssociation",
+      "description": "M:N link between Study and WorkflowRun",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "studyWorkflowAssociation__study_id",
+        "studyWorkflowAssociation__workflow_id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "study_id",
+          "description": "Reference to the study",
+          "range": "Study",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "workflow_id",
+          "description": "Reference to the workflow run",
+          "range": "WorkflowRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/StudyWorkflowAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExperimentSampleAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation",
+      "description": "M:N link between ExperimentRun and Sample with role metadata",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "experimentSampleAssociation__experiment_id",
+        "experimentSampleAssociation__sample_id",
+        "experimentSampleAssociation__role",
+        "experimentSampleAssociation__preparation_id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "experiment_id",
+          "description": "Reference to the experiment run",
+          "range": "ExperimentRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_id",
+          "description": "Reference to the sample",
+          "range": "Sample",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "role",
+          "description": "Role of sample in experiment",
+          "range": "ExperimentSampleRoleEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "preparation_id",
+          "description": "Specific preparation used for this sample in this experiment",
+          "range": "SamplePreparation",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExperimentInstrumentAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation",
+      "description": "M:N link between ExperimentRun and Instrument",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "experimentInstrumentAssociation__experiment_id",
+        "experimentInstrumentAssociation__instrument_id",
+        "experimentInstrumentAssociation__role"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "experiment_id",
+          "description": "Reference to the experiment run",
+          "range": "ExperimentRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instrument_id",
+          "description": "Reference to the instrument",
+          "range": "Instrument",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "role",
+          "description": "Role of instrument in experiment",
+          "range": "InstrumentRoleEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/ExperimentInstrumentAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "WorkflowExperimentAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation",
+      "description": "M:N link between WorkflowRun and source ExperimentRuns",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "workflowExperimentAssociation__workflow_id",
+        "workflowExperimentAssociation__experiment_id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "workflow_id",
+          "description": "Reference to the workflow run",
+          "range": "WorkflowRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experiment_id",
+          "description": "Reference to the source experiment run",
+          "range": "ExperimentRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "WorkflowInputAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/WorkflowInputAssociation",
+      "description": "Links input DataFiles to WorkflowRun",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "workflowInputAssociation__workflow_id",
+        "workflowInputAssociation__file_id",
+        "workflowInputAssociation__input_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "workflow_id",
+          "description": "Reference to the workflow run",
+          "range": "WorkflowRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_id",
+          "description": "Reference to the input data file",
+          "range": "DataFile",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "input_type",
+          "description": "Type of input for the workflow",
+          "range": "InputTypeEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/WorkflowInputAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "WorkflowOutputAssociation",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/WorkflowOutputAssociation",
+      "description": "Links output DataFiles to WorkflowRun",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slots": [
+        "workflowOutputAssociation__workflow_id",
+        "workflowOutputAssociation__file_id",
+        "workflowOutputAssociation__output_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "workflow_id",
+          "description": "Reference to the workflow run",
+          "range": "WorkflowRun",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "file_id",
+          "description": "Reference to the output data file",
+          "range": "DataFile",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "output_type",
+          "description": "Type of output from the workflow",
+          "range": "OutputTypeEnum",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lambda-ber-schema/WorkflowOutputAssociation",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Any",
       "definition_uri": "https://w3id.org/lambda-ber-schema/Any",
       "from_schema": "https://w3id.org/lambda-ber-schema/types",
@@ -19653,9 +20497,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2025-12-19T14:46:18",
-  "source_file_size": 134930,
-  "generation_date": "2025-12-19T14:49:42",
+  "source_file_date": "2026-01-20T19:04:15",
+  "source_file_size": 141903,
+  "generation_date": "2026-01-20T19:20:58",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-19T14:49:48
+# Generation date: 2026-01-20T19:21:05
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -133,11 +133,11 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Curie, Float, Integer, String, Uri, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integer, String, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.1.post47.dev0+25564fe"
+version = "0.0.0.post2.dev0+6cb7484"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -376,7 +376,8 @@ class AttributeGroup(YAMLRoot):
 @dataclass(repr=False)
 class Dataset(NamedThing):
     """
-    A collection of studies
+    Root container holding flat entity collections and association tables. Follows relational database design patterns
+    for structural biology data.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -387,8 +388,23 @@ class Dataset(NamedThing):
 
     id: Union[str, DatasetId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
-    instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     studies: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
+    instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
+    protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
+    samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
+    sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
+    experiment_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
+    workflow_runs: Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, "WorkflowRun"]], list[Union[dict, "WorkflowRun"]]]] = empty_dict()
+    data_files: Optional[Union[dict[Union[str, DataFileId], Union[dict, "DataFile"]], list[Union[dict, "DataFile"]]]] = empty_dict()
+    images: Optional[Union[dict[Union[str, ImageId], Union[dict, "Image"]], list[Union[dict, "Image"]]]] = empty_dict()
+    study_sample_associations: Optional[Union[Union[dict, "StudySampleAssociation"], list[Union[dict, "StudySampleAssociation"]]]] = empty_list()
+    study_experiment_associations: Optional[Union[Union[dict, "StudyExperimentAssociation"], list[Union[dict, "StudyExperimentAssociation"]]]] = empty_list()
+    study_workflow_associations: Optional[Union[Union[dict, "StudyWorkflowAssociation"], list[Union[dict, "StudyWorkflowAssociation"]]]] = empty_list()
+    experiment_sample_associations: Optional[Union[Union[dict, "ExperimentSampleAssociation"], list[Union[dict, "ExperimentSampleAssociation"]]]] = empty_list()
+    experiment_instrument_associations: Optional[Union[Union[dict, "ExperimentInstrumentAssociation"], list[Union[dict, "ExperimentInstrumentAssociation"]]]] = empty_list()
+    workflow_experiment_associations: Optional[Union[Union[dict, "WorkflowExperimentAssociation"], list[Union[dict, "WorkflowExperimentAssociation"]]]] = empty_list()
+    workflow_input_associations: Optional[Union[Union[dict, "WorkflowInputAssociation"], list[Union[dict, "WorkflowInputAssociation"]]]] = empty_list()
+    workflow_output_associations: Optional[Union[Union[dict, "WorkflowOutputAssociation"], list[Union[dict, "WorkflowOutputAssociation"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -400,9 +416,55 @@ class Dataset(NamedThing):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
 
+        self._normalize_inlined_as_list(slot_name="studies", slot_type=Study, key_name="id", keyed=True)
+
         self._normalize_inlined_as_list(slot_name="instruments", slot_type=Instrument, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="studies", slot_type=Study, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="sample_preparations", slot_type=SamplePreparation, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="experiment_runs", slot_type=ExperimentRun, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="workflow_runs", slot_type=WorkflowRun, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="data_files", slot_type=DataFile, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="images", slot_type=Image, key_name="id", keyed=True)
+
+        if not isinstance(self.study_sample_associations, list):
+            self.study_sample_associations = [self.study_sample_associations] if self.study_sample_associations is not None else []
+        self.study_sample_associations = [v if isinstance(v, StudySampleAssociation) else StudySampleAssociation(**as_dict(v)) for v in self.study_sample_associations]
+
+        if not isinstance(self.study_experiment_associations, list):
+            self.study_experiment_associations = [self.study_experiment_associations] if self.study_experiment_associations is not None else []
+        self.study_experiment_associations = [v if isinstance(v, StudyExperimentAssociation) else StudyExperimentAssociation(**as_dict(v)) for v in self.study_experiment_associations]
+
+        if not isinstance(self.study_workflow_associations, list):
+            self.study_workflow_associations = [self.study_workflow_associations] if self.study_workflow_associations is not None else []
+        self.study_workflow_associations = [v if isinstance(v, StudyWorkflowAssociation) else StudyWorkflowAssociation(**as_dict(v)) for v in self.study_workflow_associations]
+
+        if not isinstance(self.experiment_sample_associations, list):
+            self.experiment_sample_associations = [self.experiment_sample_associations] if self.experiment_sample_associations is not None else []
+        self.experiment_sample_associations = [v if isinstance(v, ExperimentSampleAssociation) else ExperimentSampleAssociation(**as_dict(v)) for v in self.experiment_sample_associations]
+
+        if not isinstance(self.experiment_instrument_associations, list):
+            self.experiment_instrument_associations = [self.experiment_instrument_associations] if self.experiment_instrument_associations is not None else []
+        self.experiment_instrument_associations = [v if isinstance(v, ExperimentInstrumentAssociation) else ExperimentInstrumentAssociation(**as_dict(v)) for v in self.experiment_instrument_associations]
+
+        if not isinstance(self.workflow_experiment_associations, list):
+            self.workflow_experiment_associations = [self.workflow_experiment_associations] if self.workflow_experiment_associations is not None else []
+        self.workflow_experiment_associations = [v if isinstance(v, WorkflowExperimentAssociation) else WorkflowExperimentAssociation(**as_dict(v)) for v in self.workflow_experiment_associations]
+
+        if not isinstance(self.workflow_input_associations, list):
+            self.workflow_input_associations = [self.workflow_input_associations] if self.workflow_input_associations is not None else []
+        self.workflow_input_associations = [v if isinstance(v, WorkflowInputAssociation) else WorkflowInputAssociation(**as_dict(v)) for v in self.workflow_input_associations]
+
+        if not isinstance(self.workflow_output_associations, list):
+            self.workflow_output_associations = [self.workflow_output_associations] if self.workflow_output_associations is not None else []
+        self.workflow_output_associations = [v if isinstance(v, WorkflowOutputAssociation) else WorkflowOutputAssociation(**as_dict(v)) for v in self.workflow_output_associations]
 
         super().__post_init__(**kwargs)
 
@@ -410,8 +472,8 @@ class Dataset(NamedThing):
 @dataclass(repr=False)
 class Study(NamedThing):
     """
-    A focused research investigation that groups related samples, experiments, and data collection around a specific
-    biological question or hypothesis
+    A logical grouping of related experiments investigating a research question. In the relational model, Study is
+    lightweight - all relationships are via association tables.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -421,14 +483,7 @@ class Study(NamedThing):
     class_model_uri: ClassVar[URIRef] = LAMBDABER.Study
 
     id: Union[str, StudyId] = None
-    protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
-    samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
-    sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
-    instrument_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
-    workflow_runs: Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, "WorkflowRun"]], list[Union[dict, "WorkflowRun"]]]] = empty_dict()
-    data_files: Optional[Union[dict[Union[str, DataFileId], Union[dict, "DataFile"]], list[Union[dict, "DataFile"]]]] = empty_dict()
-    images: Optional[Union[dict[Union[str, ImageId], Union[dict, "Image"]], list[Union[dict, "Image"]]]] = empty_dict()
-    aggregated_protein_views: Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, "AggregatedProteinView"]], list[Union[dict, "AggregatedProteinView"]]]] = empty_dict()
+    keywords: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -436,21 +491,9 @@ class Study(NamedThing):
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
 
-        self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="sample_preparations", slot_type=SamplePreparation, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="instrument_runs", slot_type=ExperimentRun, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="workflow_runs", slot_type=WorkflowRun, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="data_files", slot_type=DataFile, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="images", slot_type=Image, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="aggregated_protein_views", slot_type=AggregatedProteinView, key_name="id", keyed=True)
+        if not isinstance(self.keywords, list):
+            self.keywords = [self.keywords] if self.keywords is not None else []
+        self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
 
         super().__post_init__(**kwargs)
 
@@ -1291,8 +1334,6 @@ class ExperimentRun(NamedThing):
 
     id: Union[str, ExperimentRunId] = None
     experiment_code: str = None
-    sample_id: str = None
-    instrument_id: Union[str, InstrumentId] = None
     technique: Union[str, "TechniqueEnum"] = None
     experiment_date: Optional[str] = None
     operator_id: Optional[str] = None
@@ -1358,16 +1399,6 @@ class ExperimentRun(NamedThing):
             self.MissingRequiredField("experiment_code")
         if not isinstance(self.experiment_code, str):
             self.experiment_code = str(self.experiment_code)
-
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, str):
-            self.sample_id = str(self.sample_id)
-
-        if self._is_empty(self.instrument_id):
-            self.MissingRequiredField("instrument_id")
-        if not isinstance(self.instrument_id, InstrumentId):
-            self.instrument_id = InstrumentId(self.instrument_id)
 
         if self._is_empty(self.technique):
             self.MissingRequiredField("technique")
@@ -1551,7 +1582,6 @@ class WorkflowRun(NamedThing):
     id: Union[str, WorkflowRunId] = None
     workflow_code: str = None
     workflow_type: Union[str, "WorkflowTypeEnum"] = None
-    experiment_id: str = None
     software_name: str = None
     processing_level: Optional[Union[dict, "QuantityValue"]] = None
     software_version: Optional[str] = None
@@ -1631,11 +1661,6 @@ class WorkflowRun(NamedThing):
             self.MissingRequiredField("workflow_type")
         if not isinstance(self.workflow_type, WorkflowTypeEnum):
             self.workflow_type = WorkflowTypeEnum(self.workflow_type)
-
-        if self._is_empty(self.experiment_id):
-            self.MissingRequiredField("experiment_id")
-        if not isinstance(self.experiment_id, str):
-            self.experiment_id = str(self.experiment_id)
 
         if self._is_empty(self.software_name):
             self.MissingRequiredField("software_name")
@@ -3407,6 +3432,266 @@ class FSCCurve(AttributeGroup):
 
         if self.fsc_value is not None and not isinstance(self.fsc_value, QuantityValue):
             self.fsc_value = QuantityValue(**as_dict(self.fsc_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StudySampleAssociation(YAMLRoot):
+    """
+    M:N link between Study and Sample with role metadata
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudySampleAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:StudySampleAssociation"
+    class_name: ClassVar[str] = "StudySampleAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudySampleAssociation
+
+    study_id: Union[str, StudyId] = None
+    sample_id: Union[str, SampleId] = None
+    role: Optional[Union[str, "SampleRoleEnum"]] = None
+    date_added: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self.role is not None and not isinstance(self.role, SampleRoleEnum):
+            self.role = SampleRoleEnum(self.role)
+
+        if self.date_added is not None and not isinstance(self.date_added, XSDDate):
+            self.date_added = XSDDate(self.date_added)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StudyExperimentAssociation(YAMLRoot):
+    """
+    M:N link between Study and ExperimentRun
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudyExperimentAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:StudyExperimentAssociation"
+    class_name: ClassVar[str] = "StudyExperimentAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudyExperimentAssociation
+
+    study_id: Union[str, StudyId] = None
+    experiment_id: Union[str, ExperimentRunId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentRunId):
+            self.experiment_id = ExperimentRunId(self.experiment_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StudyWorkflowAssociation(YAMLRoot):
+    """
+    M:N link between Study and WorkflowRun
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudyWorkflowAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:StudyWorkflowAssociation"
+    class_name: ClassVar[str] = "StudyWorkflowAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudyWorkflowAssociation
+
+    study_id: Union[str, StudyId] = None
+    workflow_id: Union[str, WorkflowRunId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.study_id):
+            self.MissingRequiredField("study_id")
+        if not isinstance(self.study_id, StudyId):
+            self.study_id = StudyId(self.study_id)
+
+        if self._is_empty(self.workflow_id):
+            self.MissingRequiredField("workflow_id")
+        if not isinstance(self.workflow_id, WorkflowRunId):
+            self.workflow_id = WorkflowRunId(self.workflow_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ExperimentSampleAssociation(YAMLRoot):
+    """
+    M:N link between ExperimentRun and Sample with role metadata
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentSampleAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:ExperimentSampleAssociation"
+    class_name: ClassVar[str] = "ExperimentSampleAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentSampleAssociation
+
+    experiment_id: Union[str, ExperimentRunId] = None
+    sample_id: Union[str, SampleId] = None
+    role: Optional[Union[str, "ExperimentSampleRoleEnum"]] = None
+    preparation_id: Optional[Union[str, SamplePreparationId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentRunId):
+            self.experiment_id = ExperimentRunId(self.experiment_id)
+
+        if self._is_empty(self.sample_id):
+            self.MissingRequiredField("sample_id")
+        if not isinstance(self.sample_id, SampleId):
+            self.sample_id = SampleId(self.sample_id)
+
+        if self.role is not None and not isinstance(self.role, ExperimentSampleRoleEnum):
+            self.role = ExperimentSampleRoleEnum(self.role)
+
+        if self.preparation_id is not None and not isinstance(self.preparation_id, SamplePreparationId):
+            self.preparation_id = SamplePreparationId(self.preparation_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ExperimentInstrumentAssociation(YAMLRoot):
+    """
+    M:N link between ExperimentRun and Instrument
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentInstrumentAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:ExperimentInstrumentAssociation"
+    class_name: ClassVar[str] = "ExperimentInstrumentAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentInstrumentAssociation
+
+    experiment_id: Union[str, ExperimentRunId] = None
+    instrument_id: Union[str, InstrumentId] = None
+    role: Optional[Union[str, "InstrumentRoleEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentRunId):
+            self.experiment_id = ExperimentRunId(self.experiment_id)
+
+        if self._is_empty(self.instrument_id):
+            self.MissingRequiredField("instrument_id")
+        if not isinstance(self.instrument_id, InstrumentId):
+            self.instrument_id = InstrumentId(self.instrument_id)
+
+        if self.role is not None and not isinstance(self.role, InstrumentRoleEnum):
+            self.role = InstrumentRoleEnum(self.role)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class WorkflowExperimentAssociation(YAMLRoot):
+    """
+    M:N link between WorkflowRun and source ExperimentRuns
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowExperimentAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:WorkflowExperimentAssociation"
+    class_name: ClassVar[str] = "WorkflowExperimentAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowExperimentAssociation
+
+    workflow_id: Union[str, WorkflowRunId] = None
+    experiment_id: Union[str, ExperimentRunId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.workflow_id):
+            self.MissingRequiredField("workflow_id")
+        if not isinstance(self.workflow_id, WorkflowRunId):
+            self.workflow_id = WorkflowRunId(self.workflow_id)
+
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentRunId):
+            self.experiment_id = ExperimentRunId(self.experiment_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class WorkflowInputAssociation(YAMLRoot):
+    """
+    Links input DataFiles to WorkflowRun
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowInputAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:WorkflowInputAssociation"
+    class_name: ClassVar[str] = "WorkflowInputAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowInputAssociation
+
+    workflow_id: Union[str, WorkflowRunId] = None
+    file_id: Union[str, DataFileId] = None
+    input_type: Optional[Union[str, "InputTypeEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.workflow_id):
+            self.MissingRequiredField("workflow_id")
+        if not isinstance(self.workflow_id, WorkflowRunId):
+            self.workflow_id = WorkflowRunId(self.workflow_id)
+
+        if self._is_empty(self.file_id):
+            self.MissingRequiredField("file_id")
+        if not isinstance(self.file_id, DataFileId):
+            self.file_id = DataFileId(self.file_id)
+
+        if self.input_type is not None and not isinstance(self.input_type, InputTypeEnum):
+            self.input_type = InputTypeEnum(self.input_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class WorkflowOutputAssociation(YAMLRoot):
+    """
+    Links output DataFiles to WorkflowRun
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowOutputAssociation"]
+    class_class_curie: ClassVar[str] = "lambdaber:WorkflowOutputAssociation"
+    class_name: ClassVar[str] = "WorkflowOutputAssociation"
+    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowOutputAssociation
+
+    workflow_id: Union[str, WorkflowRunId] = None
+    file_id: Union[str, DataFileId] = None
+    output_type: Optional[Union[str, "OutputTypeEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.workflow_id):
+            self.MissingRequiredField("workflow_id")
+        if not isinstance(self.workflow_id, WorkflowRunId):
+            self.workflow_id = WorkflowRunId(self.workflow_id)
+
+        if self._is_empty(self.file_id):
+            self.MissingRequiredField("file_id")
+        if not isinstance(self.file_id, DataFileId):
+            self.file_id = DataFileId(self.file_id)
+
+        if self.output_type is not None and not isinstance(self.output_type, OutputTypeEnum):
+            self.output_type = OutputTypeEnum(self.output_type)
 
         super().__post_init__(**kwargs)
 
@@ -5391,6 +5676,116 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
         description="Experimental methods for structure determination",
     )
 
+class SampleRoleEnum(EnumDefinitionImpl):
+    """
+    Role of a sample in a study
+    """
+    target = PermissibleValue(
+        text="target",
+        description="Primary sample under investigation")
+    control = PermissibleValue(
+        text="control",
+        description="Control sample for comparison")
+    reference = PermissibleValue(
+        text="reference",
+        description="Reference standard or calibrant")
+    blank = PermissibleValue(
+        text="blank",
+        description="Buffer blank or negative control")
+
+    _defn = EnumDefinition(
+        name="SampleRoleEnum",
+        description="Role of a sample in a study",
+    )
+
+class ExperimentSampleRoleEnum(EnumDefinitionImpl):
+    """
+    Role of a sample in an experiment
+    """
+    target = PermissibleValue(
+        text="target",
+        description="Primary target of measurement")
+    buffer_blank = PermissibleValue(
+        text="buffer_blank",
+        description="Buffer-only measurement for subtraction")
+    standard = PermissibleValue(
+        text="standard",
+        description="Calibration or reference standard")
+    size_marker = PermissibleValue(
+        text="size_marker",
+        description="Molecular weight marker")
+
+    _defn = EnumDefinition(
+        name="ExperimentSampleRoleEnum",
+        description="Role of a sample in an experiment",
+    )
+
+class InstrumentRoleEnum(EnumDefinitionImpl):
+    """
+    Role of an instrument in an experiment
+    """
+    primary = PermissibleValue(
+        text="primary",
+        description="Primary data collection instrument")
+    detector = PermissibleValue(
+        text="detector",
+        description="Secondary detector or detection component")
+    sample_handler = PermissibleValue(
+        text="sample_handler",
+        description="Automated sample handling or positioning")
+
+    _defn = EnumDefinition(
+        name="InstrumentRoleEnum",
+        description="Role of an instrument in an experiment",
+    )
+
+class InputTypeEnum(EnumDefinitionImpl):
+    """
+    Type of input for a workflow
+    """
+    raw_data = PermissibleValue(
+        text="raw_data",
+        description="Raw experimental data")
+    reference = PermissibleValue(
+        text="reference",
+        description="Reference data (e.g., PDB model, database)")
+    parameters = PermissibleValue(
+        text="parameters",
+        description="Processing parameters file")
+    mask = PermissibleValue(
+        text="mask",
+        description="Mask or selection file")
+
+    _defn = EnumDefinition(
+        name="InputTypeEnum",
+        description="Type of input for a workflow",
+    )
+
+class OutputTypeEnum(EnumDefinitionImpl):
+    """
+    Type of output from a workflow
+    """
+    processed_data = PermissibleValue(
+        text="processed_data",
+        description="Processed/corrected data")
+    model = PermissibleValue(
+        text="model",
+        description="Structural model")
+    map = PermissibleValue(
+        text="map",
+        description="Density map or reconstruction")
+    log = PermissibleValue(
+        text="log",
+        description="Processing log or report")
+    statistics = PermissibleValue(
+        text="statistics",
+        description="Quality statistics or metrics")
+
+    _defn = EnumDefinition(
+        name="OutputTypeEnum",
+        description="Type of output from a workflow",
+    )
+
 class FunctionalSiteTypeEnum(EnumDefinitionImpl):
     """
     Types of functional sites in proteins
@@ -6386,35 +6781,59 @@ slots.attributeGroup__description = Slot(uri=LAMBDABER.description, name="attrib
 slots.dataset__keywords = Slot(uri=LAMBDABER.keywords, name="dataset__keywords", curie=LAMBDABER.curie('keywords'),
                    model_uri=LAMBDABER.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.dataset__instruments = Slot(uri=LAMBDABER.instruments, name="dataset__instruments", curie=LAMBDABER.curie('instruments'),
-                   model_uri=LAMBDABER.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
-
 slots.dataset__studies = Slot(uri=LAMBDABER.studies, name="dataset__studies", curie=LAMBDABER.curie('studies'),
                    model_uri=LAMBDABER.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
-slots.study__protein_constructs = Slot(uri=LAMBDABER.protein_constructs, name="study__protein_constructs", curie=LAMBDABER.curie('protein_constructs'),
-                   model_uri=LAMBDABER.study__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
+slots.dataset__instruments = Slot(uri=LAMBDABER.instruments, name="dataset__instruments", curie=LAMBDABER.curie('instruments'),
+                   model_uri=LAMBDABER.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
-slots.study__samples = Slot(uri=LAMBDABER.samples, name="study__samples", curie=LAMBDABER.curie('samples'),
-                   model_uri=LAMBDABER.study__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
+slots.dataset__protein_constructs = Slot(uri=LAMBDABER.protein_constructs, name="dataset__protein_constructs", curie=LAMBDABER.curie('protein_constructs'),
+                   model_uri=LAMBDABER.dataset__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
 
-slots.study__sample_preparations = Slot(uri=LAMBDABER.sample_preparations, name="study__sample_preparations", curie=LAMBDABER.curie('sample_preparations'),
-                   model_uri=LAMBDABER.study__sample_preparations, domain=None, range=Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, SamplePreparation]], list[Union[dict, SamplePreparation]]]])
+slots.dataset__samples = Slot(uri=LAMBDABER.samples, name="dataset__samples", curie=LAMBDABER.curie('samples'),
+                   model_uri=LAMBDABER.dataset__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
 
-slots.study__instrument_runs = Slot(uri=LAMBDABER.instrument_runs, name="study__instrument_runs", curie=LAMBDABER.curie('instrument_runs'),
-                   model_uri=LAMBDABER.study__instrument_runs, domain=None, range=Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, ExperimentRun]], list[Union[dict, ExperimentRun]]]])
+slots.dataset__sample_preparations = Slot(uri=LAMBDABER.sample_preparations, name="dataset__sample_preparations", curie=LAMBDABER.curie('sample_preparations'),
+                   model_uri=LAMBDABER.dataset__sample_preparations, domain=None, range=Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, SamplePreparation]], list[Union[dict, SamplePreparation]]]])
 
-slots.study__workflow_runs = Slot(uri=LAMBDABER.workflow_runs, name="study__workflow_runs", curie=LAMBDABER.curie('workflow_runs'),
-                   model_uri=LAMBDABER.study__workflow_runs, domain=None, range=Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, WorkflowRun]], list[Union[dict, WorkflowRun]]]])
+slots.dataset__experiment_runs = Slot(uri=LAMBDABER.experiment_runs, name="dataset__experiment_runs", curie=LAMBDABER.curie('experiment_runs'),
+                   model_uri=LAMBDABER.dataset__experiment_runs, domain=None, range=Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, ExperimentRun]], list[Union[dict, ExperimentRun]]]])
 
-slots.study__data_files = Slot(uri=LAMBDABER.data_files, name="study__data_files", curie=LAMBDABER.curie('data_files'),
-                   model_uri=LAMBDABER.study__data_files, domain=None, range=Optional[Union[dict[Union[str, DataFileId], Union[dict, DataFile]], list[Union[dict, DataFile]]]])
+slots.dataset__workflow_runs = Slot(uri=LAMBDABER.workflow_runs, name="dataset__workflow_runs", curie=LAMBDABER.curie('workflow_runs'),
+                   model_uri=LAMBDABER.dataset__workflow_runs, domain=None, range=Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, WorkflowRun]], list[Union[dict, WorkflowRun]]]])
 
-slots.study__images = Slot(uri=LAMBDABER.images, name="study__images", curie=LAMBDABER.curie('images'),
-                   model_uri=LAMBDABER.study__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
+slots.dataset__data_files = Slot(uri=LAMBDABER.data_files, name="dataset__data_files", curie=LAMBDABER.curie('data_files'),
+                   model_uri=LAMBDABER.dataset__data_files, domain=None, range=Optional[Union[dict[Union[str, DataFileId], Union[dict, DataFile]], list[Union[dict, DataFile]]]])
 
-slots.study__aggregated_protein_views = Slot(uri=LAMBDABER.aggregated_protein_views, name="study__aggregated_protein_views", curie=LAMBDABER.curie('aggregated_protein_views'),
-                   model_uri=LAMBDABER.study__aggregated_protein_views, domain=None, range=Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, AggregatedProteinView]], list[Union[dict, AggregatedProteinView]]]])
+slots.dataset__images = Slot(uri=LAMBDABER.images, name="dataset__images", curie=LAMBDABER.curie('images'),
+                   model_uri=LAMBDABER.dataset__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
+
+slots.dataset__study_sample_associations = Slot(uri=LAMBDABER.study_sample_associations, name="dataset__study_sample_associations", curie=LAMBDABER.curie('study_sample_associations'),
+                   model_uri=LAMBDABER.dataset__study_sample_associations, domain=None, range=Optional[Union[Union[dict, StudySampleAssociation], list[Union[dict, StudySampleAssociation]]]])
+
+slots.dataset__study_experiment_associations = Slot(uri=LAMBDABER.study_experiment_associations, name="dataset__study_experiment_associations", curie=LAMBDABER.curie('study_experiment_associations'),
+                   model_uri=LAMBDABER.dataset__study_experiment_associations, domain=None, range=Optional[Union[Union[dict, StudyExperimentAssociation], list[Union[dict, StudyExperimentAssociation]]]])
+
+slots.dataset__study_workflow_associations = Slot(uri=LAMBDABER.study_workflow_associations, name="dataset__study_workflow_associations", curie=LAMBDABER.curie('study_workflow_associations'),
+                   model_uri=LAMBDABER.dataset__study_workflow_associations, domain=None, range=Optional[Union[Union[dict, StudyWorkflowAssociation], list[Union[dict, StudyWorkflowAssociation]]]])
+
+slots.dataset__experiment_sample_associations = Slot(uri=LAMBDABER.experiment_sample_associations, name="dataset__experiment_sample_associations", curie=LAMBDABER.curie('experiment_sample_associations'),
+                   model_uri=LAMBDABER.dataset__experiment_sample_associations, domain=None, range=Optional[Union[Union[dict, ExperimentSampleAssociation], list[Union[dict, ExperimentSampleAssociation]]]])
+
+slots.dataset__experiment_instrument_associations = Slot(uri=LAMBDABER.experiment_instrument_associations, name="dataset__experiment_instrument_associations", curie=LAMBDABER.curie('experiment_instrument_associations'),
+                   model_uri=LAMBDABER.dataset__experiment_instrument_associations, domain=None, range=Optional[Union[Union[dict, ExperimentInstrumentAssociation], list[Union[dict, ExperimentInstrumentAssociation]]]])
+
+slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDABER.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDABER.curie('workflow_experiment_associations'),
+                   model_uri=LAMBDABER.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
+
+slots.dataset__workflow_input_associations = Slot(uri=LAMBDABER.workflow_input_associations, name="dataset__workflow_input_associations", curie=LAMBDABER.curie('workflow_input_associations'),
+                   model_uri=LAMBDABER.dataset__workflow_input_associations, domain=None, range=Optional[Union[Union[dict, WorkflowInputAssociation], list[Union[dict, WorkflowInputAssociation]]]])
+
+slots.dataset__workflow_output_associations = Slot(uri=LAMBDABER.workflow_output_associations, name="dataset__workflow_output_associations", curie=LAMBDABER.curie('workflow_output_associations'),
+                   model_uri=LAMBDABER.dataset__workflow_output_associations, domain=None, range=Optional[Union[Union[dict, WorkflowOutputAssociation], list[Union[dict, WorkflowOutputAssociation]]]])
+
+slots.study__keywords = Slot(uri=LAMBDABER.keywords, name="study__keywords", curie=LAMBDABER.curie('keywords'),
+                   model_uri=LAMBDABER.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.sample__sample_code = Slot(uri=LAMBDABER.sample_code, name="sample__sample_code", curie=LAMBDABER.curie('sample_code'),
                    model_uri=LAMBDABER.sample__sample_code, domain=None, range=str)
@@ -6885,12 +7304,6 @@ slots.beamlineInstrument__website = Slot(uri=LAMBDABER.website, name="beamlineIn
 slots.experimentRun__experiment_code = Slot(uri=LAMBDABER.experiment_code, name="experimentRun__experiment_code", curie=LAMBDABER.curie('experiment_code'),
                    model_uri=LAMBDABER.experimentRun__experiment_code, domain=None, range=str)
 
-slots.experimentRun__sample_id = Slot(uri=LAMBDABER.sample_id, name="experimentRun__sample_id", curie=LAMBDABER.curie('sample_id'),
-                   model_uri=LAMBDABER.experimentRun__sample_id, domain=None, range=str)
-
-slots.experimentRun__instrument_id = Slot(uri=LAMBDABER.instrument_id, name="experimentRun__instrument_id", curie=LAMBDABER.curie('instrument_id'),
-                   model_uri=LAMBDABER.experimentRun__instrument_id, domain=None, range=Union[str, InstrumentId])
-
 slots.experimentRun__experiment_date = Slot(uri=LAMBDABER.experiment_date, name="experimentRun__experiment_date", curie=LAMBDABER.curie('experiment_date'),
                    model_uri=LAMBDABER.experimentRun__experiment_date, domain=None, range=Optional[str])
 
@@ -7058,9 +7471,6 @@ slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workf
 
 slots.workflowRun__workflow_type = Slot(uri=LAMBDABER.workflow_type, name="workflowRun__workflow_type", curie=LAMBDABER.curie('workflow_type'),
                    model_uri=LAMBDABER.workflowRun__workflow_type, domain=None, range=Union[str, "WorkflowTypeEnum"])
-
-slots.workflowRun__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="workflowRun__experiment_id", curie=LAMBDABER.curie('experiment_id'),
-                   model_uri=LAMBDABER.workflowRun__experiment_id, domain=None, range=str)
 
 slots.workflowRun__processing_level = Slot(uri=LAMBDABER.processing_level, name="workflowRun__processing_level", curie=LAMBDABER.curie('processing_level'),
                    model_uri=LAMBDABER.workflowRun__processing_level, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7991,6 +8401,75 @@ slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, na
 
 slots.fSCCurve__fsc_value = Slot(uri=LAMBDABER.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDABER.curie('fsc_value'),
                    model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.studySampleAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studySampleAssociation__study_id", curie=LAMBDABER.curie('study_id'),
+                   model_uri=LAMBDABER.studySampleAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studySampleAssociation__sample_id = Slot(uri=LAMBDABER.sample_id, name="studySampleAssociation__sample_id", curie=LAMBDABER.curie('sample_id'),
+                   model_uri=LAMBDABER.studySampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.studySampleAssociation__role = Slot(uri=LAMBDABER.role, name="studySampleAssociation__role", curie=LAMBDABER.curie('role'),
+                   model_uri=LAMBDABER.studySampleAssociation__role, domain=None, range=Optional[Union[str, "SampleRoleEnum"]])
+
+slots.studySampleAssociation__date_added = Slot(uri=LAMBDABER.date_added, name="studySampleAssociation__date_added", curie=LAMBDABER.curie('date_added'),
+                   model_uri=LAMBDABER.studySampleAssociation__date_added, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.studyExperimentAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studyExperimentAssociation__study_id", curie=LAMBDABER.curie('study_id'),
+                   model_uri=LAMBDABER.studyExperimentAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studyExperimentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="studyExperimentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
+                   model_uri=LAMBDABER.studyExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+
+slots.studyWorkflowAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studyWorkflowAssociation__study_id", curie=LAMBDABER.curie('study_id'),
+                   model_uri=LAMBDABER.studyWorkflowAssociation__study_id, domain=None, range=Union[str, StudyId])
+
+slots.studyWorkflowAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="studyWorkflowAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
+                   model_uri=LAMBDABER.studyWorkflowAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+
+slots.experimentSampleAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="experimentSampleAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
+                   model_uri=LAMBDABER.experimentSampleAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+
+slots.experimentSampleAssociation__sample_id = Slot(uri=LAMBDABER.sample_id, name="experimentSampleAssociation__sample_id", curie=LAMBDABER.curie('sample_id'),
+                   model_uri=LAMBDABER.experimentSampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
+
+slots.experimentSampleAssociation__role = Slot(uri=LAMBDABER.role, name="experimentSampleAssociation__role", curie=LAMBDABER.curie('role'),
+                   model_uri=LAMBDABER.experimentSampleAssociation__role, domain=None, range=Optional[Union[str, "ExperimentSampleRoleEnum"]])
+
+slots.experimentSampleAssociation__preparation_id = Slot(uri=LAMBDABER.preparation_id, name="experimentSampleAssociation__preparation_id", curie=LAMBDABER.curie('preparation_id'),
+                   model_uri=LAMBDABER.experimentSampleAssociation__preparation_id, domain=None, range=Optional[Union[str, SamplePreparationId]])
+
+slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
+                   model_uri=LAMBDABER.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+
+slots.experimentInstrumentAssociation__instrument_id = Slot(uri=LAMBDABER.instrument_id, name="experimentInstrumentAssociation__instrument_id", curie=LAMBDABER.curie('instrument_id'),
+                   model_uri=LAMBDABER.experimentInstrumentAssociation__instrument_id, domain=None, range=Union[str, InstrumentId])
+
+slots.experimentInstrumentAssociation__role = Slot(uri=LAMBDABER.role, name="experimentInstrumentAssociation__role", curie=LAMBDABER.curie('role'),
+                   model_uri=LAMBDABER.experimentInstrumentAssociation__role, domain=None, range=Optional[Union[str, "InstrumentRoleEnum"]])
+
+slots.workflowExperimentAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowExperimentAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
+                   model_uri=LAMBDABER.workflowExperimentAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+
+slots.workflowExperimentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="workflowExperimentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
+                   model_uri=LAMBDABER.workflowExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+
+slots.workflowInputAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowInputAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
+                   model_uri=LAMBDABER.workflowInputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+
+slots.workflowInputAssociation__file_id = Slot(uri=LAMBDABER.file_id, name="workflowInputAssociation__file_id", curie=LAMBDABER.curie('file_id'),
+                   model_uri=LAMBDABER.workflowInputAssociation__file_id, domain=None, range=Union[str, DataFileId])
+
+slots.workflowInputAssociation__input_type = Slot(uri=LAMBDABER.input_type, name="workflowInputAssociation__input_type", curie=LAMBDABER.curie('input_type'),
+                   model_uri=LAMBDABER.workflowInputAssociation__input_type, domain=None, range=Optional[Union[str, "InputTypeEnum"]])
+
+slots.workflowOutputAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowOutputAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
+                   model_uri=LAMBDABER.workflowOutputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+
+slots.workflowOutputAssociation__file_id = Slot(uri=LAMBDABER.file_id, name="workflowOutputAssociation__file_id", curie=LAMBDABER.curie('file_id'),
+                   model_uri=LAMBDABER.workflowOutputAssociation__file_id, domain=None, range=Union[str, DataFileId])
+
+slots.workflowOutputAssociation__output_type = Slot(uri=LAMBDABER.output_type, name="workflowOutputAssociation__output_type", curie=LAMBDABER.curie('output_type'),
+                   model_uri=LAMBDABER.workflowOutputAssociation__output_type, domain=None, range=Optional[Union[str, "OutputTypeEnum"]])
 
 slots.attributeValue__attribute = Slot(uri=LAMBDABER.attribute, name="attributeValue__attribute", curie=LAMBDABER.curie('attribute'),
                    model_uri=LAMBDABER.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])
