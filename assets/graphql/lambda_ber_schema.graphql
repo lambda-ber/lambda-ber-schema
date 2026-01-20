@@ -53,6 +53,39 @@ enum AnnotationSourceEnum
     clinvar
   }
 
+enum BeamlineEnum
+  {
+    ALS_SIBYLS
+    ALS_BL501
+    ALS_BL502
+    ALS_BL821
+    ALS_BL822
+    ALS_BL831
+    ALS_BL1222
+    NSLS2_FMX
+    NSLS2_AMX
+    NSLS2_NYX
+    NSLS2_LIX
+    APS_GMCA_23IDB
+    APS_GMCA_23IDD
+    APS_LSCAT_21ID
+    APS_NECAT_24IDC
+    APS_NECAT_24IDE
+    APS_SERCAT_22ID
+    APS_SERCAT_22BM
+    APS_SBCCAT_19ID
+    APS_BIOCARS_14ID
+    APS_BIOCAT_18ID
+    APS_IMCACAT_17ID
+    SSRL_BL92
+    SSRL_BL122
+    SSRL_BL141
+    SNS_MANDI
+    HFIR_IMAGINE
+    SNS_BIOSANS
+    SNS_EQSANS
+  }
+
 enum BindingAffinityTypeEnum
   {
     kd
@@ -653,6 +686,9 @@ enum TechniqueEnum
     xanes
     exafs
     xmcd
+    neutron_crystallography
+    fiber_diffraction
+    time_resolved_crystallography
   }
 
 enum VitrificationMethodEnum
