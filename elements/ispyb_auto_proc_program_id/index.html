@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -953,11 +944,7 @@ Alias: ispyb_auto_proc_program_id</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Links to ISPyB processing program record</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -981,10 +968,6 @@ Alias: ispyb_auto_proc_program_id</p>
 <td>native</td>
 <td>lambdaber:ispyb_auto_proc_program_id</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>ispyb:AutoProcProgram.autoProcProgramId</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -992,17 +975,14 @@ Alias: ispyb_auto_proc_program_id</p>
 
 <pre><code class="language-yaml">name: ispyb_auto_proc_program_id
 description: ISPyB AutoProcProgram.autoProcProgramId
-comments:
-- Links to ISPyB processing program record
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcProgram.autoProcProgramId
 rank: 1000
 alias: ispyb_auto_proc_program_id
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

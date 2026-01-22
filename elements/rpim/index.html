@@ -944,7 +944,7 @@ Alias: rpim</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -968,10 +968,6 @@ Alias: rpim</p>
 <td>native</td>
 <td>lambdaber:rpim</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>nsls2:Rpim, mmCIF:_reflns.pdbx_Rpim_I_all, ispyb:AutoProcScalingStatistics.rPim</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -980,16 +976,13 @@ Alias: rpim</p>
 <pre><code class="language-yaml">name: rpim
 description: Rpim - precision-indicating merging R-factor
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Rpim
-- mmCIF:_reflns.pdbx_Rpim_I_all
-- ispyb:AutoProcScalingStatistics.rPim
 rank: 1000
 alias: rpim
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

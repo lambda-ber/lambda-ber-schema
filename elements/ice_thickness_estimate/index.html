@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-ice_thickness_estimate">Slot: ice_thickness_estimate</h1>
-<p><em>Estimated ice thickness in nanometers</em></p>
+<p><em>Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/ice_thickness_estimate">lambdaber:ice_thickness_estimate</a>
 Alias: ice_thickness_estimate</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: ice_thickness_estimate</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: ice_thickness_estimate</p>
 <details>
 
 <pre><code class="language-yaml">name: ice_thickness_estimate
-description: Estimated ice thickness in nanometers
+description: Estimated ice thickness, typically specified in nanometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ice_thickness_estimate
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

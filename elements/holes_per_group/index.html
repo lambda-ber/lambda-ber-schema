@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-holes_per_group">Slot: holes_per_group</h1>
-<p><em>Number of holes per group</em></p>
+<p><em>Number of holes per group. Data providers may include unit information in the QuantityValue if needed.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/holes_per_group">lambdaber:holes_per_group</a>
 Alias: holes_per_group</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: holes_per_group</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: holes_per_group</p>
 <details>
 
 <pre><code class="language-yaml">name: holes_per_group
-description: Number of holes per group
+description: Number of holes per group. Data providers may include unit information
+  in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: holes_per_group
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

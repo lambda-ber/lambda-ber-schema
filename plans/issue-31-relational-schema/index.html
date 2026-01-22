@@ -1,0 +1,1966 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/plans/issue-31-relational-schema/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Plan: Make the Schema More Relational (Issue #31) - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plan-make-the-schema-more-relational-issue-31" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plan: Make the Schema More Relational (Issue #31)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-architecture-document-oriented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Architecture (Document-Oriented)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Architecture (Document-Oriented)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-current-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with Current Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-architecture-relational-with-association-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proposed Architecture (Relational with Association Tables)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proposed Architecture (Relational with Association Tables)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Association Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-cardinality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationship Cardinality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-schema-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Schema Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Schema Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-complete-restructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset (Complete Restructure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-simplified-no-inlined-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study (Simplified - No Inlined Collections)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-no-relationship-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample (No Relationship Slots)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimentrun-no-relationship-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExperimentRun (No Relationship Slots)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowrun-no-relationship-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      WorkflowRun (No Relationship Slots)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-association-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Association Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Enumerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-data-relational-with-association-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Data: Relational with Association Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Data: Relational with Association Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql-table-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Table Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-relational-features-demonstrated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Relational Features Demonstrated:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impact-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impact Assessment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Impact Assessment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-additions" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Additions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Breakdown
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="plan-make-the-schema-more-relational-issue-31">Plan: Make the Schema More Relational (Issue #31)</h1>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>The current schema follows an NMDC-style document-oriented design optimized for MongoDB:
+- <code>Dataset</code> is <code>tree_root: true</code> - mandatory entry point
+- Everything must be bundled within a <code>Study</code> using <code>inlined: true</code> and <code>inlined_as_list: true</code>
+- Forces hierarchical containment rather than relational references
+- No support for M:N relationships (e.g., sample used in multiple studies)</p>
+<p><strong>Goal</strong>: Restructure to a proper relational model with explicit association tables for M:N relationships.</p>
+<hr />
+<h2 id="current-architecture-document-oriented">Current Architecture (Document-Oriented)</h2>
+<pre><code>Dataset (tree_root: true)
+├── instruments: Instrument[] (inlined)
+└── studies: Study[] (inlined)
+    ├── samples: Sample[] (inlined)
+    ├── sample_preparations: SamplePreparation[] (inlined)
+    ├── instrument_runs: ExperimentRun[] (inlined)
+    ├── workflow_runs: WorkflowRun[] (inlined)
+    ├── data_files: DataFile[] (inlined)
+    └── images: Image[] (inlined)
+</code></pre>
+<h3 id="problems-with-current-design">Problems with Current Design</h3>
+<ol>
+<li>Entities cannot exist independently of Study</li>
+<li>No M:N relationships - sample can't be shared across studies</li>
+<li>Relationship metadata has no home (e.g., "sample's role in experiment")</li>
+<li>Doesn't map cleanly to SQL tables</li>
+</ol>
+<hr />
+<h2 id="proposed-architecture-relational-with-association-tables">Proposed Architecture (Relational with Association Tables)</h2>
+<h3 id="design-principles">Design Principles</h3>
+<ol>
+<li><strong>Flat entity collections</strong> - All entities live directly in Dataset</li>
+<li><strong>Explicit association tables</strong> - M:N relationships via link classes</li>
+<li><strong>No inlined collections</strong> - Study becomes a lightweight grouping entity</li>
+<li><strong>Relationship metadata</strong> - Association classes can carry attributes (role, date, etc.)</li>
+<li><strong>SQL-friendly</strong> - Maps directly to normalized database tables</li>
+</ol>
+<h3 id="target-structure">Target Structure</h3>
+<pre><code>Dataset (tree_root: true)
+├── Entity Tables (flat collections)
+│   ├── studies: Study[]
+│   ├── instruments: Instrument[]
+│   ├── samples: Sample[]
+│   ├── sample_preparations: SamplePreparation[]
+│   ├── experiment_runs: ExperimentRun[]
+│   ├── workflow_runs: WorkflowRun[]
+│   ├── data_files: DataFile[]
+│   └── images: Image[]
+│
+└── Association Tables (M:N link tables)
+    ├── study_sample_associations: StudySampleAssociation[]
+    ├── study_experiment_associations: StudyExperimentAssociation[]
+    ├── study_workflow_associations: StudyWorkflowAssociation[]
+    ├── experiment_sample_associations: ExperimentSampleAssociation[]
+    ├── experiment_instrument_associations: ExperimentInstrumentAssociation[]
+    ├── workflow_experiment_associations: WorkflowExperimentAssociation[]
+    ├── workflow_input_associations: WorkflowInputAssociation[]
+    └── workflow_output_associations: WorkflowOutputAssociation[]
+</code></pre>
+<h3 id="association-classes">Association Classes</h3>
+<pre><code class="language-yaml">StudySampleAssociation:
+  description: &quot;Links a sample to a study (M:N)&quot;
+  attributes:
+    study_id:
+      range: Study
+      required: true
+    sample_id:
+      range: Sample
+      required: true
+    role:
+      description: &quot;Role of sample in study (e.g., target, control, reference)&quot;
+      range: SampleRoleEnum
+    date_added:
+      range: date
+
+StudyExperimentAssociation:
+  description: &quot;Links an experiment run to a study (M:N)&quot;
+  attributes:
+    study_id:
+      range: Study
+      required: true
+    experiment_id:
+      range: ExperimentRun
+      required: true
+
+ExperimentSampleAssociation:
+  description: &quot;Links a sample to an experiment (M:N)&quot;
+  attributes:
+    experiment_id:
+      range: ExperimentRun
+      required: true
+    sample_id:
+      range: Sample
+      required: true
+    role:
+      description: &quot;Role in experiment (e.g., target, buffer_blank, standard)&quot;
+      range: ExperimentSampleRoleEnum
+    preparation_id:
+      description: &quot;Specific preparation used for this sample in this experiment&quot;
+      range: SamplePreparation
+
+ExperimentInstrumentAssociation:
+  description: &quot;Links an instrument to an experiment (M:N for multi-instrument setups)&quot;
+  attributes:
+    experiment_id:
+      range: ExperimentRun
+      required: true
+    instrument_id:
+      range: Instrument
+      required: true
+    role:
+      description: &quot;Role of instrument (e.g., primary, detector, sample_changer)&quot;
+      range: InstrumentRoleEnum
+
+WorkflowExperimentAssociation:
+  description: &quot;Links source experiments to a workflow (M:N - workflows can merge data)&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    experiment_id:
+      range: ExperimentRun
+      required: true
+
+WorkflowInputAssociation:
+  description: &quot;Links input files to a workflow&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    file_id:
+      range: DataFile
+      required: true
+    input_type:
+      description: &quot;Type of input (e.g., raw_data, reference, parameters)&quot;
+      range: InputTypeEnum
+
+WorkflowOutputAssociation:
+  description: &quot;Links output files to a workflow&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    file_id:
+      range: DataFile
+      required: true
+    output_type:
+      description: &quot;Type of output (e.g., processed_data, log, model)&quot;
+      range: OutputTypeEnum
+</code></pre>
+<h3 id="entity-changes">Entity Changes</h3>
+<p><strong>Study</strong> - Remove all inlined collections, becomes lightweight:</p>
+<pre><code class="language-yaml">Study:
+  is_a: NamedThing
+  description: &quot;A logical grouping of related experiments around a research question&quot;
+  attributes:
+    # Keep metadata only
+    keywords: ...
+    # NO samples, experiment_runs, etc. - use association tables
+</code></pre>
+<p><strong>Sample, ExperimentRun, WorkflowRun, etc.</strong> - Remove study_ids, use association tables:</p>
+<pre><code class="language-yaml">Sample:
+  attributes:
+    # NO study_ids - relationship via StudySampleAssociation
+    # Keep all other attributes
+
+ExperimentRun:
+  attributes:
+    # NO study_ids, sample_ids, instrument_id
+    # Relationships via association tables
+    # Keep technique, experimental_conditions, quality_metrics, etc.
+
+WorkflowRun:
+  attributes:
+    # NO study_ids, experiment_ids, input/output file refs
+    # Relationships via association tables
+    # Keep workflow_type, software_name, processing_parameters, etc.
+</code></pre>
+<h3 id="relationship-cardinality">Relationship Cardinality</h3>
+<table>
+<thead>
+<tr>
+<th>Relationship</th>
+<th>Association Table</th>
+<th>Metadata Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Study ↔ Sample</td>
+<td>StudySampleAssociation</td>
+<td>role, date_added</td>
+</tr>
+<tr>
+<td>Study ↔ ExperimentRun</td>
+<td>StudyExperimentAssociation</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Study ↔ WorkflowRun</td>
+<td>StudyWorkflowAssociation</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ExperimentRun ↔ Sample</td>
+<td>ExperimentSampleAssociation</td>
+<td>role, preparation_id</td>
+</tr>
+<tr>
+<td>ExperimentRun ↔ Instrument</td>
+<td>ExperimentInstrumentAssociation</td>
+<td>role</td>
+</tr>
+<tr>
+<td>WorkflowRun ↔ ExperimentRun</td>
+<td>WorkflowExperimentAssociation</td>
+<td>-</td>
+</tr>
+<tr>
+<td>WorkflowRun ↔ DataFile (in)</td>
+<td>WorkflowInputAssociation</td>
+<td>input_type</td>
+</tr>
+<tr>
+<td>WorkflowRun ↔ DataFile (out)</td>
+<td>WorkflowOutputAssociation</td>
+<td>output_type</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detailed-schema-changes">Detailed Schema Changes</h2>
+<h3 id="dataset-complete-restructure">Dataset (Complete Restructure)</h3>
+<pre><code class="language-yaml">Dataset:
+  is_a: NamedThing
+  tree_root: true
+  description: &gt;-
+    Root container holding flat entity collections and association tables.
+    Follows relational database design patterns.
+  attributes:
+    keywords:
+      range: string
+      multivalued: true
+
+    # ===== ENTITY TABLES =====
+    studies:
+      description: &quot;All studies in this dataset&quot;
+      range: Study
+      multivalued: true
+      inlined_as_list: true
+    instruments:
+      description: &quot;All instruments&quot;
+      range: Instrument
+      multivalued: true
+      inlined_as_list: true
+    protein_constructs:
+      range: ProteinConstruct
+      multivalued: true
+      inlined_as_list: true
+    samples:
+      range: Sample
+      multivalued: true
+      inlined_as_list: true
+    sample_preparations:
+      range: SamplePreparation
+      multivalued: true
+      inlined_as_list: true
+    experiment_runs:
+      range: ExperimentRun
+      multivalued: true
+      inlined_as_list: true
+    workflow_runs:
+      range: WorkflowRun
+      multivalued: true
+      inlined_as_list: true
+    data_files:
+      range: DataFile
+      multivalued: true
+      inlined_as_list: true
+    images:
+      range: Image
+      multivalued: true
+      inlined_as_list: true
+
+    # ===== ASSOCIATION TABLES =====
+    study_sample_associations:
+      description: &quot;Links between studies and samples (M:N)&quot;
+      range: StudySampleAssociation
+      multivalued: true
+      inlined_as_list: true
+    study_experiment_associations:
+      description: &quot;Links between studies and experiments (M:N)&quot;
+      range: StudyExperimentAssociation
+      multivalued: true
+      inlined_as_list: true
+    study_workflow_associations:
+      description: &quot;Links between studies and workflows (M:N)&quot;
+      range: StudyWorkflowAssociation
+      multivalued: true
+      inlined_as_list: true
+    experiment_sample_associations:
+      description: &quot;Links between experiments and samples (M:N with role)&quot;
+      range: ExperimentSampleAssociation
+      multivalued: true
+      inlined_as_list: true
+    experiment_instrument_associations:
+      description: &quot;Links between experiments and instruments (M:N)&quot;
+      range: ExperimentInstrumentAssociation
+      multivalued: true
+      inlined_as_list: true
+    workflow_experiment_associations:
+      description: &quot;Links between workflows and source experiments (M:N)&quot;
+      range: WorkflowExperimentAssociation
+      multivalued: true
+      inlined_as_list: true
+    workflow_input_associations:
+      description: &quot;Links between workflows and input files&quot;
+      range: WorkflowInputAssociation
+      multivalued: true
+      inlined_as_list: true
+    workflow_output_associations:
+      description: &quot;Links between workflows and output files&quot;
+      range: WorkflowOutputAssociation
+      multivalued: true
+      inlined_as_list: true
+</code></pre>
+<h3 id="study-simplified-no-inlined-collections">Study (Simplified - No Inlined Collections)</h3>
+<pre><code class="language-yaml">Study:
+  is_a: NamedThing
+  description: &quot;A logical grouping of related experiments investigating a research question&quot;
+  attributes:
+    keywords:
+      range: string
+      multivalued: true
+    # All relationships via association tables - no inlined collections
+</code></pre>
+<h3 id="sample-no-relationship-slots">Sample (No Relationship Slots)</h3>
+<pre><code class="language-yaml">Sample:
+  is_a: NamedThing
+  attributes:
+    sample_code:
+      required: true
+    sample_type:
+      range: SampleTypeEnum
+      required: true
+    # ... keep all existing data attributes
+    # REMOVE: study_ids (use StudySampleAssociation)
+    # Keep parent_sample_id as it's a true FK, not M:N
+    parent_sample_id:
+      range: Sample
+</code></pre>
+<h3 id="experimentrun-no-relationship-slots">ExperimentRun (No Relationship Slots)</h3>
+<pre><code class="language-yaml">ExperimentRun:
+  is_a: NamedThing
+  attributes:
+    experiment_code:
+      required: true
+    technique:
+      range: TechniqueEnum
+      required: true
+    # ... keep all existing data attributes (experimental_conditions, quality_metrics, etc.)
+    # REMOVE: sample_id, instrument_id, study_ids
+    # All relationships via association tables
+</code></pre>
+<h3 id="workflowrun-no-relationship-slots">WorkflowRun (No Relationship Slots)</h3>
+<pre><code class="language-yaml">WorkflowRun:
+  is_a: NamedThing
+  attributes:
+    workflow_code:
+      required: true
+    workflow_type:
+      range: WorkflowTypeEnum
+      required: true
+    software_name:
+      required: true
+    # ... keep all existing data attributes
+    # REMOVE: experiment_id, study_ids, input/output file refs
+    # All relationships via association tables
+</code></pre>
+<h3 id="new-association-classes">New Association Classes</h3>
+<pre><code class="language-yaml">StudySampleAssociation:
+  description: &quot;M:N link between Study and Sample&quot;
+  attributes:
+    study_id:
+      range: Study
+      required: true
+    sample_id:
+      range: Sample
+      required: true
+    role:
+      range: SampleRoleEnum
+    date_added:
+      range: date
+
+StudyExperimentAssociation:
+  description: &quot;M:N link between Study and ExperimentRun&quot;
+  attributes:
+    study_id:
+      range: Study
+      required: true
+    experiment_id:
+      range: ExperimentRun
+      required: true
+
+StudyWorkflowAssociation:
+  description: &quot;M:N link between Study and WorkflowRun&quot;
+  attributes:
+    study_id:
+      range: Study
+      required: true
+    workflow_id:
+      range: WorkflowRun
+      required: true
+
+ExperimentSampleAssociation:
+  description: &quot;M:N link between ExperimentRun and Sample with role metadata&quot;
+  attributes:
+    experiment_id:
+      range: ExperimentRun
+      required: true
+    sample_id:
+      range: Sample
+      required: true
+    role:
+      description: &quot;Role of sample in experiment&quot;
+      range: ExperimentSampleRoleEnum
+    preparation_id:
+      description: &quot;Specific preparation used&quot;
+      range: SamplePreparation
+
+ExperimentInstrumentAssociation:
+  description: &quot;M:N link between ExperimentRun and Instrument&quot;
+  attributes:
+    experiment_id:
+      range: ExperimentRun
+      required: true
+    instrument_id:
+      range: Instrument
+      required: true
+    role:
+      range: InstrumentRoleEnum
+
+WorkflowExperimentAssociation:
+  description: &quot;M:N link between WorkflowRun and source ExperimentRuns&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    experiment_id:
+      range: ExperimentRun
+      required: true
+
+WorkflowInputAssociation:
+  description: &quot;Links input DataFiles to WorkflowRun&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    file_id:
+      range: DataFile
+      required: true
+    input_type:
+      range: InputTypeEnum
+
+WorkflowOutputAssociation:
+  description: &quot;Links output DataFiles to WorkflowRun&quot;
+  attributes:
+    workflow_id:
+      range: WorkflowRun
+      required: true
+    file_id:
+      range: DataFile
+      required: true
+    output_type:
+      range: OutputTypeEnum
+</code></pre>
+<h3 id="new-enumerations">New Enumerations</h3>
+<pre><code class="language-yaml">SampleRoleEnum:
+  permissible_values:
+    target:
+      description: &quot;Primary sample under investigation&quot;
+    control:
+      description: &quot;Control sample&quot;
+    reference:
+      description: &quot;Reference standard&quot;
+    blank:
+      description: &quot;Buffer blank or negative control&quot;
+
+ExperimentSampleRoleEnum:
+  permissible_values:
+    target:
+      description: &quot;Primary target of measurement&quot;
+    buffer_blank:
+      description: &quot;Buffer-only measurement for subtraction&quot;
+    standard:
+      description: &quot;Calibration or reference standard&quot;
+    size_marker:
+      description: &quot;Molecular weight marker&quot;
+
+InstrumentRoleEnum:
+  permissible_values:
+    primary:
+      description: &quot;Primary data collection instrument&quot;
+    detector:
+      description: &quot;Secondary detector&quot;
+    sample_handler:
+      description: &quot;Automated sample handling&quot;
+
+InputTypeEnum:
+  permissible_values:
+    raw_data:
+      description: &quot;Raw experimental data&quot;
+    reference:
+      description: &quot;Reference data (e.g., PDB model)&quot;
+    parameters:
+      description: &quot;Processing parameters file&quot;
+    mask:
+      description: &quot;Mask or selection file&quot;
+
+OutputTypeEnum:
+  permissible_values:
+    processed_data:
+      description: &quot;Processed/corrected data&quot;
+    model:
+      description: &quot;Structural model&quot;
+    map:
+      description: &quot;Density map or reconstruction&quot;
+    log:
+      description: &quot;Processing log&quot;
+    statistics:
+      description: &quot;Quality statistics&quot;
+</code></pre>
+<hr />
+<h2 id="example-data-relational-with-association-tables">Example Data: Relational with Association Tables</h2>
+<pre><code class="language-yaml"># Dataset-relational-example.yaml
+id: lambdaber:dataset_berkeley_multimodal
+title: &quot;Berkeley Multimodal Structural Biology Dataset&quot;
+description: &quot;Demonstrating relational pattern with explicit association tables&quot;
+
+# ===== ENTITY TABLES =====
+
+instruments:
+  - id: lambdaber:titan_001
+    instrument_code: &quot;TITAN-K3-001&quot;
+    manufacturer: &quot;ThermoFisher&quot;
+
+  - id: lambdaber:sibyls_001
+    instrument_code: &quot;ALS-12.3.1&quot;
+    facility_name: &quot;ALS&quot;
+
+studies:
+  - id: lambdaber:study_tfiid_cryoem
+    title: &quot;TFIID Cryo-EM Study&quot;
+    keywords: [&quot;cryo-EM&quot;, &quot;transcription&quot;, &quot;TFIID&quot;]
+
+  - id: lambdaber:study_tfiid_saxs
+    title: &quot;TFIID Solution Scattering Study&quot;
+    keywords: [&quot;SAXS&quot;, &quot;transcription&quot;, &quot;TFIID&quot;]
+
+samples:
+  - id: lambdaber:sample_tfiid
+    sample_code: &quot;TFIID-001&quot;
+    sample_type: complex
+    molecular_weight: 1200.0
+    # NO study_ids here - relationships via association tables
+
+  - id: lambdaber:sample_bsa
+    sample_code: &quot;REFERENCE-BSA&quot;
+    sample_type: protein
+    molecular_weight: 66.5
+
+experiment_runs:
+  - id: lambdaber:exp_cryoem_001
+    experiment_code: &quot;EXP-CRYOEM-001&quot;
+    technique: cryo_em
+    # NO sample_ids, instrument_ids - via association tables
+
+  - id: lambdaber:exp_saxs_001
+    experiment_code: &quot;EXP-SAXS-001&quot;
+    technique: saxs
+
+data_files:
+  - id: lambdaber:file_micrographs_001
+    file_name: &quot;micrographs_001.mrc&quot;
+    file_format: mrc
+
+  - id: lambdaber:file_scattering_001
+    file_name: &quot;saxs_curve.dat&quot;
+    file_format: dat
+
+workflow_runs:
+  - id: lambdaber:wf_mc_001
+    workflow_code: &quot;WF-MC-001&quot;
+    workflow_type: motion_correction
+    software_name: &quot;MotionCor2&quot;
+    software_version: &quot;1.6.4&quot;
+
+  - id: lambdaber:wf_integration_001
+    workflow_code: &quot;WF-INTEGRATE-001&quot;
+    workflow_type: data_integration
+    software_name: &quot;Custom Pipeline&quot;
+
+# ===== ASSOCIATION TABLES =====
+
+# Sample used in multiple studies (M:N)
+study_sample_associations:
+  - study_id: lambdaber:study_tfiid_cryoem
+    sample_id: lambdaber:sample_tfiid
+    role: target
+
+  - study_id: lambdaber:study_tfiid_saxs
+    sample_id: lambdaber:sample_tfiid
+    role: target
+
+  - study_id: lambdaber:study_tfiid_saxs
+    sample_id: lambdaber:sample_bsa
+    role: reference
+
+# Experiments belong to studies
+study_experiment_associations:
+  - study_id: lambdaber:study_tfiid_cryoem
+    experiment_id: lambdaber:exp_cryoem_001
+
+  - study_id: lambdaber:study_tfiid_saxs
+    experiment_id: lambdaber:exp_saxs_001
+
+# Experiment uses samples (with roles)
+experiment_sample_associations:
+  - experiment_id: lambdaber:exp_cryoem_001
+    sample_id: lambdaber:sample_tfiid
+    role: target
+
+  - experiment_id: lambdaber:exp_saxs_001
+    sample_id: lambdaber:sample_tfiid
+    role: target
+
+  - experiment_id: lambdaber:exp_saxs_001
+    sample_id: lambdaber:sample_bsa
+    role: buffer_blank
+
+# Experiment uses instruments
+experiment_instrument_associations:
+  - experiment_id: lambdaber:exp_cryoem_001
+    instrument_id: lambdaber:titan_001
+    role: primary
+
+  - experiment_id: lambdaber:exp_saxs_001
+    instrument_id: lambdaber:sibyls_001
+    role: primary
+
+# Workflow processes experiments (M:N - integration workflow uses both)
+workflow_experiment_associations:
+  - workflow_id: lambdaber:wf_mc_001
+    experiment_id: lambdaber:exp_cryoem_001
+
+  - workflow_id: lambdaber:wf_integration_001
+    experiment_id: lambdaber:exp_cryoem_001
+
+  - workflow_id: lambdaber:wf_integration_001
+    experiment_id: lambdaber:exp_saxs_001
+
+# Workflow outputs
+workflow_output_associations:
+  - workflow_id: lambdaber:wf_mc_001
+    file_id: lambdaber:file_micrographs_001
+    output_type: processed_data
+</code></pre>
+<h3 id="sql-table-mapping">SQL Table Mapping</h3>
+<p>The above YAML maps directly to SQL tables:</p>
+<pre><code class="language-sql">-- Entity tables
+CREATE TABLE samples (id, sample_code, sample_type, molecular_weight, ...);
+CREATE TABLE studies (id, title, keywords, ...);
+CREATE TABLE experiment_runs (id, experiment_code, technique, ...);
+
+-- Association tables (join tables)
+CREATE TABLE study_sample_associations (
+  study_id REFERENCES studies(id),
+  sample_id REFERENCES samples(id),
+  role TEXT,
+  PRIMARY KEY (study_id, sample_id)
+);
+
+CREATE TABLE experiment_sample_associations (
+  experiment_id REFERENCES experiment_runs(id),
+  sample_id REFERENCES samples(id),
+  role TEXT,
+  preparation_id REFERENCES sample_preparations(id),
+  PRIMARY KEY (experiment_id, sample_id)
+);
+</code></pre>
+<h3 id="key-relational-features-demonstrated">Key Relational Features Demonstrated:</h3>
+<ol>
+<li><strong>Sample reuse</strong>: <code>sample_tfiid</code> linked to both studies via separate association rows</li>
+<li><strong>Role metadata</strong>: <code>experiment_sample_associations</code> captures sample's role (target vs buffer_blank)</li>
+<li><strong>Multi-experiment workflows</strong>: <code>wf_integration_001</code> linked to both cryo-EM and SAXS experiments</li>
+<li><strong>Clean separation</strong>: Entities contain only intrinsic data; relationships are explicit</li>
+</ol>
+<hr />
+<h2 id="impact-assessment">Impact Assessment</h2>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li><strong>Study</strong>: Remove all inlined collections (samples, experiment_runs, etc.)</li>
+<li><strong>ExperimentRun</strong>: Remove <code>sample_id</code>, <code>instrument_id</code> slots</li>
+<li><strong>WorkflowRun</strong>: Remove <code>experiment_id</code> slot</li>
+<li><strong>All existing examples</strong>: Will need to be rewritten</li>
+</ul>
+<h3 id="new-additions">New Additions</h3>
+<ul>
+<li>8 new association classes for M:N relationships</li>
+<li>5 new enumerations for role metadata</li>
+<li>Flat entity collection slots on Dataset</li>
+<li>Association table slots on Dataset</li>
+</ul>
+<h3 id="migration-required">Migration Required</h3>
+<p>All existing test examples in <code>tests/data/valid/</code> will need to be converted to the new relational format with association tables.</p>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li>Clean relational model - maps directly to SQL</li>
+<li>M:N relationships properly supported</li>
+<li>Relationship metadata (roles) has a home</li>
+<li>No data duplication</li>
+<li>Simpler entity classes (only intrinsic attributes)</li>
+</ul>
+<hr />
+<h2 id="task-breakdown">Task Breakdown</h2>
+<ol>
+<li><strong>Add association classes</strong> - All 8 association classes with their attributes</li>
+<li><strong>Add role enumerations</strong> - SampleRoleEnum, ExperimentSampleRoleEnum, etc.</li>
+<li><strong>Add flat entity collections to Dataset</strong> - samples, experiment_runs, etc.</li>
+<li><strong>Add association table slots to Dataset</strong> - study_sample_associations, etc.</li>
+<li><strong>Simplify Study</strong> - Remove all inlined collections</li>
+<li><strong>Simplify ExperimentRun</strong> - Remove sample_id, instrument_id</li>
+<li><strong>Simplify WorkflowRun</strong> - Remove experiment_id, input/output file refs</li>
+<li><strong>Rewrite all test examples</strong> - Convert to relational format</li>
+<li><strong>Update documentation</strong> - CLAUDE.md, spec.md</li>
+<li><strong>Generate and validate</strong> - Run <code>make test</code></li>
+</ol>
+<hr />
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li><strong>Association class identifiers?</strong></li>
+<li>Should association classes have their own <code>id</code> field?</li>
+<li>Or use composite key (study_id + sample_id)?</li>
+<li>
+<p>Recommendation: No id - use composite key pattern</p>
+</li>
+<li>
+<p><strong>Orphan entities?</strong></p>
+</li>
+<li>Allow samples/experiments with no study associations?</li>
+<li>
+<p>Recommendation: Yes - enables facility catalogs, standalone data</p>
+</li>
+<li>
+<p><strong>Cascading semantics?</strong></p>
+</li>
+<li>If Study is deleted, delete associations?</li>
+<li>
+<p>Handled at application/database level, not schema</p>
+</li>
+<li>
+<p><strong>Additional association metadata?</strong></p>
+</li>
+<li>What other attributes might associations need?</li>
+<li>Examples: <code>date_added</code>, <code>added_by</code>, <code>notes</code></li>
+<li>
+<p>Can add later as needed</p>
+</li>
+<li>
+<p><strong>Naming convention?</strong></p>
+</li>
+<li><code>StudySampleAssociation</code> vs <code>study_sample_link</code> vs <code>study_sample</code>?</li>
+<li>Current: <code>*Association</code> for classes, <code>*_associations</code> for slots</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -451,6 +451,15 @@
 
       CrystallizationConditions : drop_volume
 
+
+
+
+
+        CrystallizationConditions --&gt; "0..1" QuantityValue : drop_volume
+        click QuantityValue href "../QuantityValue/"
+
+
+
       CrystallizationConditions : method
 
 
@@ -464,7 +473,25 @@
 
       CrystallizationConditions : protein_concentration
 
+
+
+
+
+        CrystallizationConditions --&gt; "0..1" QuantityValue : protein_concentration
+        click QuantityValue href "../QuantityValue/"
+
+
+
       CrystallizationConditions : reservoir_volume_ul
+
+
+
+
+
+        CrystallizationConditions --&gt; "0..1" QuantityValue : reservoir_volume_ul
+        click QuantityValue href "../QuantityValue/"
+
+
 
       CrystallizationConditions : screen_name
 
@@ -473,6 +500,15 @@
       CrystallizationConditions : seeding_type
 
       CrystallizationConditions : temperature_c
+
+
+
+
+
+        CrystallizationConditions --&gt; "0..1" QuantityValue : temperature_c
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -508,13 +544,13 @@
 </tr>
 <tr>
 <td><a href="../drop_volume/">drop_volume</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Total drop volume in nanoliters</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Total drop volume, typically specified in nanoliters</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protein_concentration/">protein_concentration</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Protein concentration for crystallization in mg/mL</td>
 <td>direct</td>
 </tr>
@@ -544,8 +580,8 @@
 </tr>
 <tr>
 <td><a href="../temperature_c/">temperature_c</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Crystallization temperature in Celsius</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Crystallization temperature, typically specified in degrees Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -556,8 +592,8 @@
 </tr>
 <tr>
 <td><a href="../reservoir_volume_ul/">reservoir_volume_ul</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Reservoir volume in microliters</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Reservoir volume, typically specified in microliters</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -659,7 +695,8 @@ attributes:
     range: string
   drop_volume:
     name: drop_volume
-    description: Total drop volume in nanoliters
+    description: Total drop volume, typically specified in nanoliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Drop_Volume'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -667,18 +704,17 @@ attributes:
     slot_uri: nsls2:Drop_Volume
     domain_of:
     - CrystallizationConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   protein_concentration:
     name: protein_concentration
     description: Protein concentration for crystallization in mg/mL
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Protein_Concentration'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    slot_uri: nsls2:Protein_Concentration
     domain_of:
     - CrystallizationConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers (length x width x height)
@@ -723,13 +759,15 @@ attributes:
     - XRayPreparation
   temperature_c:
     name: temperature_c
-    description: Crystallization temperature in Celsius
+    description: Crystallization temperature, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
@@ -740,13 +778,15 @@ attributes:
     - XRayPreparation
   reservoir_volume_ul:
     name: reservoir_volume_ul
-    description: Reservoir volume in microliters
+    description: Reservoir volume, typically specified in microliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
@@ -804,7 +844,8 @@ attributes:
     range: string
   drop_volume:
     name: drop_volume
-    description: Total drop volume in nanoliters
+    description: Total drop volume, typically specified in nanoliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Drop_Volume'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -814,20 +855,19 @@ attributes:
     owner: CrystallizationConditions
     domain_of:
     - CrystallizationConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   protein_concentration:
     name: protein_concentration
     description: Protein concentration for crystallization in mg/mL
-    comments:
-    - 'Maps to NSLS2 spreadsheet: Protein_Concentration'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    slot_uri: nsls2:Protein_Concentration
     alias: protein_concentration
     owner: CrystallizationConditions
     domain_of:
     - CrystallizationConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   crystal_size_um:
     name: crystal_size_um
     description: Crystal dimensions in micrometers (length x width x height)
@@ -881,7 +921,8 @@ attributes:
     range: string
   temperature_c:
     name: temperature_c
-    description: Crystallization temperature in Celsius
+    description: Crystallization temperature, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: temperature_c
@@ -889,7 +930,8 @@ attributes:
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
@@ -903,7 +945,8 @@ attributes:
     range: string
   reservoir_volume_ul:
     name: reservoir_volume_ul
-    description: Reservoir volume in microliters
+    description: Reservoir volume, typically specified in microliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: reservoir_volume_ul
@@ -911,7 +954,8 @@ attributes:
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)

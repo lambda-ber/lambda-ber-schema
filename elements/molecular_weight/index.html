@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-molecular_weight">Slot: molecular_weight</h1>
-<p><em>Molecular weight in kDa</em></p>
+<p><em>Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/molecular_weight">lambdaber:molecular_weight</a>
 Alias: molecular_weight</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: molecular_weight</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,16 +974,17 @@ Alias: molecular_weight</p>
 <details>
 
 <pre><code class="language-yaml">name: molecular_weight
-description: Molecular weight in kDa
+description: Molecular weight, typically specified in kilodaltons (kDa). Data providers
+  may specify alternative units (e.g., Daltons, g/mol) by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: molecular_weight
 owner: Sample
 domain_of:
 - Sample
-range: float
-unit:
-  ucum_code: kDa
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

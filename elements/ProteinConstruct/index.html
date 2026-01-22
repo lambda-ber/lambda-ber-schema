@@ -467,6 +467,15 @@
 
       ProteinConstruct : sequence_length_aa
 
+
+
+
+
+        ProteinConstruct --&gt; "0..1" QuantityValue : sequence_length_aa
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ProteinConstruct : sequence_verified_by
 
       ProteinConstruct : signal_peptide
@@ -531,7 +540,7 @@
 </tr>
 <tr>
 <td><a href="../sequence_length_aa/">sequence_length_aa</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Length of the protein sequence in amino acids</td>
 <td>direct</td>
 </tr>
@@ -663,7 +672,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
+<td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../protein_constructs/">protein_constructs</a></td>
 <td>range</td>
 <td><a href="./">ProteinConstruct</a></td>
@@ -741,7 +750,8 @@ attributes:
     rank: 1000
     domain_of:
     - ProteinConstruct
-    range: integer
+    range: QuantityValue
+    inlined: true
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
@@ -916,7 +926,8 @@ attributes:
     owner: ProteinConstruct
     domain_of:
     - ProteinConstruct
-    range: integer
+    range: QuantityValue
+    inlined: true
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
@@ -1089,6 +1100,7 @@ attributes:
     owner: ProteinConstruct
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

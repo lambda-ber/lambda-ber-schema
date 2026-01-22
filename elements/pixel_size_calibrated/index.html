@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-pixel_size_calibrated">Slot: pixel_size_calibrated</h1>
-<p><em>Calibrated pixel size for this experiment</em></p>
+<p><em>Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/pixel_size_calibrated">lambdaber:pixel_size_calibrated</a>
 Alias: pixel_size_calibrated</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: pixel_size_calibrated</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -989,7 +989,9 @@ Alias: pixel_size_calibrated</p>
 <details>
 
 <pre><code class="language-yaml">name: pixel_size_calibrated
-description: Calibrated pixel size for this experiment
+description: Calibrated pixel size for this experiment, typically specified in Angstroms
+  (Å) per pixel. Data providers may specify alternative units by including the unit
+  in the QuantityValue.
 comments:
 - 'For cryo-EM: depends on magnification (Å/pixel)'
 - 'For X-ray: typically mm/pixel or µm/pixel'
@@ -1000,9 +1002,8 @@ alias: pixel_size_calibrated
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
-unit:
-  ucum_code: Ao/px
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

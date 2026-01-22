@@ -449,11 +449,38 @@
 
       SamplePreparation : cleavage_temperature_c
 
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : cleavage_temperature_c
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SamplePreparation : cleavage_time_h
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : cleavage_time_h
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SamplePreparation : concentration_method
 
       SamplePreparation : culture_volume_l
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : culture_volume_l
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SamplePreparation : description
 
@@ -474,7 +501,25 @@
 
       SamplePreparation : final_concentration_mg_per_ml
 
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : final_concentration_mg_per_ml
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SamplePreparation : growth_temperature_c
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : growth_temperature_c
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SamplePreparation : harvest_timepoint
 
@@ -492,7 +537,25 @@
 
       SamplePreparation : induction_temperature_c
 
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : induction_temperature_c
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SamplePreparation : induction_time_h
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : induction_time_h
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SamplePreparation : lysis_buffer
 
@@ -501,6 +564,15 @@
       SamplePreparation : medium
 
       SamplePreparation : od600_at_induction
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : od600_at_induction
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SamplePreparation : operator_id
 
@@ -538,6 +610,15 @@
 
       SamplePreparation : purity_by_sds_page_percent
 
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : purity_by_sds_page_percent
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SamplePreparation : sample_id
 
       SamplePreparation : sec_buffer
@@ -553,6 +634,15 @@
       SamplePreparation : wash_buffer
 
       SamplePreparation : yield_mg
+
+
+
+
+
+        SamplePreparation --&gt; "0..1" QuantityValue : yield_mg
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -618,8 +708,8 @@
 </tr>
 <tr>
 <td><a href="../culture_volume_l/">culture_volume_l</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Culture volume in liters</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Culture volume, typically specified in liters (L)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -636,8 +726,8 @@
 </tr>
 <tr>
 <td><a href="../growth_temperature_c/">growth_temperature_c</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Growth temperature in Celsius</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Growth temperature, typically specified in degrees Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -654,19 +744,19 @@
 </tr>
 <tr>
 <td><a href="../induction_temperature_c/">induction_temperature_c</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Temperature during induction in Celsius</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Temperature during induction, typically specified in degrees Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../induction_time_h/">induction_time_h</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Duration of induction in hours</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Duration of induction, typically specified in hours</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../od600_at_induction/">od600_at_induction</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Optical density at 600nm when induction was started</td>
 <td>direct</td>
 </tr>
@@ -744,13 +834,13 @@
 </tr>
 <tr>
 <td><a href="../cleavage_time_h/">cleavage_time_h</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Duration of protease cleavage in hours</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../cleavage_temperature_c/">cleavage_temperature_c</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Temperature during cleavage in Celsius</td>
 <td>direct</td>
 </tr>
@@ -798,19 +888,19 @@
 </tr>
 <tr>
 <td><a href="../final_concentration_mg_per_ml/">final_concentration_mg_per_ml</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Final protein concentration in mg/mL</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../yield_mg/">yield_mg</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Total yield in milligrams</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../purity_by_sds_page_percent/">purity_by_sds_page_percent</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Purity percentage by SDS-PAGE</td>
 <td>direct</td>
 </tr>
@@ -858,8 +948,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
+<td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../sample_preparations/">sample_preparations</a></td>
+<td>range</td>
+<td><a href="./">SamplePreparation</a></td>
+</tr>
+<tr>
+<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td><a href="../preparation_id/">preparation_id</a></td>
 <td>range</td>
 <td><a href="./">SamplePreparation</a></td>
 </tr>
@@ -914,7 +1010,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    - ExperimentRun
+    - StudySampleAssociation
+    - ExperimentSampleAssociation
     range: string
     required: true
   preparation_date:
@@ -958,14 +1055,14 @@ attributes:
     - SamplePreparation
   culture_volume_l:
     name: culture_volume_l
-    description: Culture volume in liters
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: L
+    range: QuantityValue
+    inlined: true
   medium:
     name: medium
     description: Growth medium used
@@ -982,14 +1079,15 @@ attributes:
     - SamplePreparation
   growth_temperature_c:
     name: growth_temperature_c
-    description: Growth temperature in Celsius
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: Cel
+    range: QuantityValue
+    inlined: true
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -1006,28 +1104,35 @@ attributes:
     - SamplePreparation
   induction_temperature_c:
     name: induction_temperature_c
-    description: Temperature during induction in Celsius
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   induction_time_h:
     name: induction_time_h
-    description: Duration of induction in hours
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   od600_at_induction:
     name: od600_at_induction
-    description: Optical density at 600nm when induction was started
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
@@ -1122,7 +1227,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
@@ -1130,7 +1236,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
@@ -1187,7 +1294,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
@@ -1195,7 +1303,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
@@ -1203,7 +1312,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
@@ -1248,7 +1358,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    - ExperimentRun
+    - StudySampleAssociation
+    - ExperimentSampleAssociation
     range: string
     required: true
   preparation_date:
@@ -1305,16 +1416,16 @@ attributes:
     range: string
   culture_volume_l:
     name: culture_volume_l
-    description: Culture volume in liters
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: culture_volume_l
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: L
+    range: QuantityValue
+    inlined: true
   medium:
     name: medium
     description: Growth medium used
@@ -1337,16 +1448,17 @@ attributes:
     range: string
   growth_temperature_c:
     name: growth_temperature_c
-    description: Growth temperature in Celsius
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: growth_temperature_c
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: Cel
+    range: QuantityValue
+    inlined: true
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -1369,34 +1481,41 @@ attributes:
     range: string
   induction_temperature_c:
     name: induction_temperature_c
-    description: Temperature during induction in Celsius
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: induction_temperature_c
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   induction_time_h:
     name: induction_time_h
-    description: Duration of induction in hours
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: induction_time_h
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   od600_at_induction:
     name: od600_at_induction
-    description: Optical density at 600nm when induction was started
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: od600_at_induction
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
@@ -1527,7 +1646,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
@@ -1537,7 +1657,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
@@ -1617,7 +1738,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
@@ -1627,7 +1749,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
@@ -1637,7 +1760,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
@@ -1670,6 +1794,7 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

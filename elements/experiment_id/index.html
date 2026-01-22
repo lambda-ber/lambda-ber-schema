@@ -865,21 +865,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -920,7 +905,6 @@
 
 
 <h1 id="slot-experiment_id">Slot: experiment_id</h1>
-<p><em>Reference to the source experiment</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/experiment_id">lambdaber:experiment_id</a>
 Alias: experiment_id</p>
 <!-- no inheritance hierarchy -->
@@ -936,26 +920,32 @@ Alias: experiment_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../WorkflowRun/">WorkflowRun</a></td>
-<td>A computational processing workflow execution</td>
+<td><a href="../WorkflowExperimentAssociation/">WorkflowExperimentAssociation</a></td>
+<td>M:N link between WorkflowRun and source ExperimentRuns</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>M:N link between ExperimentRun and Sample with role metadata</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentInstrumentAssociation/">ExperimentInstrumentAssociation</a></td>
+<td>M:N link between ExperimentRun and Instrument</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StudyExperimentAssociation/">StudyExperimentAssociation</a></td>
+<td>M:N link between Study and ExperimentRun</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -979,15 +969,13 @@ Alias: experiment_id</p>
 <details>
 
 <pre><code class="language-yaml">name: experiment_id
-description: Reference to the source experiment
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: experiment_id
-owner: WorkflowRun
 domain_of:
-- WorkflowRun
+- StudyExperimentAssociation
+- ExperimentSampleAssociation
+- ExperimentInstrumentAssociation
+- WorkflowExperimentAssociation
 range: string
-required: true
 
 </code></pre>
 

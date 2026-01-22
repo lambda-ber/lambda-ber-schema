@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-induction_time_h">Slot: induction_time_h</h1>
-<p><em>Duration of induction in hours</em></p>
+<p><em>Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/induction_time_h">lambdaber:induction_time_h</a>
 Alias: induction_time_h</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: induction_time_h</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,17 @@ Alias: induction_time_h</p>
 <details>
 
 <pre><code class="language-yaml">name: induction_time_h
-description: Duration of induction in hours
+description: Duration of induction, typically specified in hours. Data providers may
+  specify alternative units (e.g., minutes, seconds) by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: induction_time_h
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

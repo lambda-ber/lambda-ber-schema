@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-resolution_0_143">Slot: resolution_0_143</h1>
-<p><em>Resolution at FSC=0.143 in Angstroms</em></p>
+<p><em>Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/resolution_0_143">lambdaber:resolution_0_143</a>
 Alias: resolution_0_143</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: resolution_0_143</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: resolution_0_143</p>
 <details>
 
 <pre><code class="language-yaml">name: resolution_0_143
-description: Resolution at FSC=0.143 in Angstroms
+description: Resolution at FSC=0.143, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: resolution_0_143
 owner: RefinementParameters
 domain_of:
 - RefinementParameters
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

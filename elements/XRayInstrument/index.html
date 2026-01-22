@@ -432,7 +432,25 @@
 
       XRayInstrument : beam_size_max
 
+
+
+
+
+        XRayInstrument --&gt; "0..1" QuantityValue : beam_size_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayInstrument : beam_size_min
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" QuantityValue : beam_size_min
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRayInstrument : beamline_id
 
@@ -468,7 +486,25 @@
 
       XRayInstrument : energy_max
 
+
+
+
+
+        XRayInstrument --&gt; "0..1" QuantityValue : energy_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayInstrument : energy_min
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" QuantityValue : energy_min
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRayInstrument : facility_name
 
@@ -484,6 +520,15 @@
       XRayInstrument : facility_ror
 
       XRayInstrument : flux_density
+
+
+
+
+
+        XRayInstrument --&gt; "0..1" QuantityValue : flux_density
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRayInstrument : goniometer_type
 
@@ -572,31 +617,31 @@
 </tr>
 <tr>
 <td><a href="../energy_min/">energy_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum X-ray energy in keV</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../energy_max/">energy_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum X-ray energy in keV</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../beam_size_min/">beam_size_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum beam size in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../beam_size_max/">beam_size_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum beam size in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../flux_density/">flux_density</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Photon flux density in photons/s/mm²</td>
 <td>direct</td>
 </tr>
@@ -779,7 +824,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -788,7 +834,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
@@ -796,7 +843,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
@@ -804,7 +852,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
@@ -812,7 +861,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
@@ -909,7 +959,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -920,7 +971,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
@@ -930,7 +982,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
@@ -940,7 +993,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
@@ -950,7 +1004,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
@@ -1100,6 +1155,7 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

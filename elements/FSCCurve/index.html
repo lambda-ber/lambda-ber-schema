@@ -445,7 +445,25 @@
 
       FSCCurve : fsc_value
 
+
+
+
+
+        FSCCurve --&gt; "0..1" QuantityValue : fsc_value
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FSCCurve : resolution_angstrom
+
+
+
+
+
+        FSCCurve --&gt; "0..1" QuantityValue : resolution_angstrom
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -469,13 +487,13 @@
 <tbody>
 <tr>
 <td><a href="../resolution_angstrom/">resolution_angstrom</a></td>
-<td>* <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Resolution values in Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../fsc_value/">fsc_value</a></td>
-<td>* <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>FSC values corresponding to each resolution</td>
 <td>direct</td>
 </tr>
@@ -555,9 +573,8 @@ attributes:
     rank: 1000
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
@@ -565,9 +582,8 @@ attributes:
     rank: 1000
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -596,9 +612,8 @@ attributes:
     owner: FSCCurve
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
@@ -608,9 +623,8 @@ attributes:
     owner: FSCCurve
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-cpu_hours">Slot: cpu_hours</h1>
-<p><em>CPU hours used</em></p>
+<p><em>CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/cpu_hours">lambdaber:cpu_hours</a>
 Alias: cpu_hours</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: cpu_hours</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: cpu_hours</p>
 <details>
 
 <pre><code class="language-yaml">name: cpu_hours
-description: CPU hours used
+description: CPU hours used, measured in hours. Data providers may specify alternative
+  time units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: cpu_hours
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

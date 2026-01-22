@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-od600_at_induction">Slot: od600_at_induction</h1>
-<p><em>Optical density at 600nm when induction was started</em></p>
+<p><em>Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/od600_at_induction">lambdaber:od600_at_induction</a>
 Alias: od600_at_induction</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: od600_at_induction</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: od600_at_induction</p>
 <details>
 
 <pre><code class="language-yaml">name: od600_at_induction
-description: Optical density at 600nm when induction was started
+description: Optical density at 600nm when induction was started. Data providers may
+  include unit information in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: od600_at_induction
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

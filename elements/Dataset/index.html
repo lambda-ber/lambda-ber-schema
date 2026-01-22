@@ -422,7 +422,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-dataset">Class: Dataset</h1>
-<p><em>A collection of studies</em></p>
+<p><em>Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/Dataset">lambdaber:Dataset</a></p>
 <div class="mermaid"> classDiagram
     class Dataset
@@ -430,9 +430,64 @@
       NamedThing &lt;|-- Dataset
         click NamedThing href "../NamedThing/"
 
+      Dataset : data_files
+
+
+
+
+
+        Dataset --&gt; "*" DataFile : data_files
+        click DataFile href "../DataFile/"
+
+
+
       Dataset : description
 
+      Dataset : experiment_instrument_associations
+
+
+
+
+
+        Dataset --&gt; "*" ExperimentInstrumentAssociation : experiment_instrument_associations
+        click ExperimentInstrumentAssociation href "../ExperimentInstrumentAssociation/"
+
+
+
+      Dataset : experiment_runs
+
+
+
+
+
+        Dataset --&gt; "*" ExperimentRun : experiment_runs
+        click ExperimentRun href "../ExperimentRun/"
+
+
+
+      Dataset : experiment_sample_associations
+
+
+
+
+
+        Dataset --&gt; "*" ExperimentSampleAssociation : experiment_sample_associations
+        click ExperimentSampleAssociation href "../ExperimentSampleAssociation/"
+
+
+
       Dataset : id
+
+      Dataset : images
+
+
+
+
+
+        Dataset --&gt; "*" Image : images
+        click Image href "../Image/"
+
+
 
       Dataset : instruments
 
@@ -447,6 +502,39 @@
 
       Dataset : keywords
 
+      Dataset : protein_constructs
+
+
+
+
+
+        Dataset --&gt; "*" ProteinConstruct : protein_constructs
+        click ProteinConstruct href "../ProteinConstruct/"
+
+
+
+      Dataset : sample_preparations
+
+
+
+
+
+        Dataset --&gt; "*" SamplePreparation : sample_preparations
+        click SamplePreparation href "../SamplePreparation/"
+
+
+
+      Dataset : samples
+
+
+
+
+
+        Dataset --&gt; "*" Sample : samples
+        click Sample href "../Sample/"
+
+
+
       Dataset : studies
 
 
@@ -458,7 +546,84 @@
 
 
 
+      Dataset : study_experiment_associations
+
+
+
+
+
+        Dataset --&gt; "*" StudyExperimentAssociation : study_experiment_associations
+        click StudyExperimentAssociation href "../StudyExperimentAssociation/"
+
+
+
+      Dataset : study_sample_associations
+
+
+
+
+
+        Dataset --&gt; "*" StudySampleAssociation : study_sample_associations
+        click StudySampleAssociation href "../StudySampleAssociation/"
+
+
+
+      Dataset : study_workflow_associations
+
+
+
+
+
+        Dataset --&gt; "*" StudyWorkflowAssociation : study_workflow_associations
+        click StudyWorkflowAssociation href "../StudyWorkflowAssociation/"
+
+
+
       Dataset : title
+
+      Dataset : workflow_experiment_associations
+
+
+
+
+
+        Dataset --&gt; "*" WorkflowExperimentAssociation : workflow_experiment_associations
+        click WorkflowExperimentAssociation href "../WorkflowExperimentAssociation/"
+
+
+
+      Dataset : workflow_input_associations
+
+
+
+
+
+        Dataset --&gt; "*" WorkflowInputAssociation : workflow_input_associations
+        click WorkflowInputAssociation href "../WorkflowInputAssociation/"
+
+
+
+      Dataset : workflow_output_associations
+
+
+
+
+
+        Dataset --&gt; "*" WorkflowOutputAssociation : workflow_output_associations
+        click WorkflowOutputAssociation href "../WorkflowOutputAssociation/"
+
+
+
+      Dataset : workflow_runs
+
+
+
+
+
+        Dataset --&gt; "*" WorkflowRun : workflow_runs
+        click WorkflowRun href "../WorkflowRun/"
+
+
 
 
 </div>
@@ -487,15 +652,105 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../instruments/">instruments</a></td>
-<td>* <br/> <a href="../Instrument/">Instrument</a></td>
-<td>Instruments used across all studies in this dataset</td>
+<td><a href="../studies/">studies</a></td>
+<td>* <br/> <a href="../Study/">Study</a></td>
+<td>All studies in this dataset</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../studies/">studies</a></td>
-<td>* <br/> <a href="../Study/">Study</a></td>
-<td>Individual research studies contained in this dataset</td>
+<td><a href="../instruments/">instruments</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>All instruments used across studies</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protein_constructs/">protein_constructs</a></td>
+<td>* <br/> <a href="../ProteinConstruct/">ProteinConstruct</a></td>
+<td>All protein constructs</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samples/">samples</a></td>
+<td>* <br/> <a href="../Sample/">Sample</a></td>
+<td>All samples across all studies</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_preparations/">sample_preparations</a></td>
+<td>* <br/> <a href="../SamplePreparation/">SamplePreparation</a></td>
+<td>All sample preparations</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_runs/">experiment_runs</a></td>
+<td>* <br/> <a href="../ExperimentRun/">ExperimentRun</a></td>
+<td>All experiment runs (data collection sessions)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../workflow_runs/">workflow_runs</a></td>
+<td>* <br/> <a href="../WorkflowRun/">WorkflowRun</a></td>
+<td>All workflow runs (computational processing)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_files/">data_files</a></td>
+<td>* <br/> <a href="../DataFile/">DataFile</a></td>
+<td>All data files</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../images/">images</a></td>
+<td>* <br/> <a href="../Image/">Image</a></td>
+<td>All images</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../study_sample_associations/">study_sample_associations</a></td>
+<td>* <br/> <a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
+<td>Links between studies and samples (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../study_experiment_associations/">study_experiment_associations</a></td>
+<td>* <br/> <a href="../StudyExperimentAssociation/">StudyExperimentAssociation</a></td>
+<td>Links between studies and experiments (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../study_workflow_associations/">study_workflow_associations</a></td>
+<td>* <br/> <a href="../StudyWorkflowAssociation/">StudyWorkflowAssociation</a></td>
+<td>Links between studies and workflows (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_sample_associations/">experiment_sample_associations</a></td>
+<td>* <br/> <a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>Links between experiments and samples (M:N with role)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_instrument_associations/">experiment_instrument_associations</a></td>
+<td>* <br/> <a href="../ExperimentInstrumentAssociation/">ExperimentInstrumentAssociation</a></td>
+<td>Links between experiments and instruments (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../workflow_experiment_associations/">workflow_experiment_associations</a></td>
+<td>* <br/> <a href="../WorkflowExperimentAssociation/">WorkflowExperimentAssociation</a></td>
+<td>Links between workflows and source experiments (M:N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../workflow_input_associations/">workflow_input_associations</a></td>
+<td>* <br/> <a href="../WorkflowInputAssociation/">WorkflowInputAssociation</a></td>
+<td>Links between workflows and input files</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../workflow_output_associations/">workflow_output_associations</a></td>
+<td>* <br/> <a href="../WorkflowOutputAssociation/">WorkflowOutputAssociation</a></td>
+<td>Links between workflows and output files</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -547,7 +802,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-description: A collection of studies
+description: Root container holding flat entity collections and association tables.
+  Follows relational database design patterns for structural biology data.
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
@@ -558,11 +814,23 @@ attributes:
     rank: 1000
     domain_of:
     - Dataset
+    - Study
     range: string
     multivalued: true
+  studies:
+    name: studies
+    description: All studies in this dataset
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Study
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   instruments:
     name: instruments
-    description: Instruments used across all studies in this dataset
+    description: All instruments used across studies
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
@@ -571,14 +839,168 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  studies:
-    name: studies
-    description: Individual research studies contained in this dataset
+  protein_constructs:
+    name: protein_constructs
+    description: All protein constructs
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Dataset
-    range: Study
+    range: ProteinConstruct
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  samples:
+    name: samples
+    description: All samples across all studies
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Sample
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_preparations:
+    name: sample_preparations
+    description: All sample preparations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: SamplePreparation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_runs:
+    name: experiment_runs
+    description: All experiment runs (data collection sessions)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: ExperimentRun
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_runs:
+    name: workflow_runs
+    description: All workflow runs (computational processing)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowRun
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  data_files:
+    name: data_files
+    description: All data files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: DataFile
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  images:
+    name: images
+    description: All images
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: Image
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_sample_associations:
+    name: study_sample_associations
+    description: Links between studies and samples (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudySampleAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_experiment_associations:
+    name: study_experiment_associations
+    description: Links between studies and experiments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyExperimentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_workflow_associations:
+    name: study_workflow_associations
+    description: Links between studies and workflows (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: StudyWorkflowAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_sample_associations:
+    name: experiment_sample_associations
+    description: Links between experiments and samples (M:N with role)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: ExperimentSampleAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_instrument_associations:
+    name: experiment_instrument_associations
+    description: Links between experiments and instruments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: ExperimentInstrumentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_experiment_associations:
+    name: workflow_experiment_associations
+    description: Links between workflows and source experiments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowExperimentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_input_associations:
+    name: workflow_input_associations
+    description: Links between workflows and input files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowInputAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_output_associations:
+    name: workflow_output_associations
+    description: Links between workflows and output files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - Dataset
+    range: WorkflowOutputAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -589,7 +1011,8 @@ tree_root: true
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-description: A collection of studies
+description: Root container holding flat entity collections and association tables.
+  Follows relational database design patterns for structural biology data.
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: NamedThing
 attributes:
@@ -602,11 +1025,25 @@ attributes:
     owner: Dataset
     domain_of:
     - Dataset
+    - Study
     range: string
     multivalued: true
+  studies:
+    name: studies
+    description: All studies in this dataset
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: studies
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Study
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   instruments:
     name: instruments
-    description: Instruments used across all studies in this dataset
+    description: All instruments used across studies
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: instruments
@@ -617,16 +1054,198 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  studies:
-    name: studies
-    description: Individual research studies contained in this dataset
+  protein_constructs:
+    name: protein_constructs
+    description: All protein constructs
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
-    alias: studies
+    alias: protein_constructs
     owner: Dataset
     domain_of:
     - Dataset
-    range: Study
+    range: ProteinConstruct
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  samples:
+    name: samples
+    description: All samples across all studies
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: samples
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Sample
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  sample_preparations:
+    name: sample_preparations
+    description: All sample preparations
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: sample_preparations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: SamplePreparation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_runs:
+    name: experiment_runs
+    description: All experiment runs (data collection sessions)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: experiment_runs
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: ExperimentRun
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_runs:
+    name: workflow_runs
+    description: All workflow runs (computational processing)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: workflow_runs
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowRun
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  data_files:
+    name: data_files
+    description: All data files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: data_files
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: DataFile
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  images:
+    name: images
+    description: All images
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: images
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: Image
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_sample_associations:
+    name: study_sample_associations
+    description: Links between studies and samples (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: study_sample_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudySampleAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_experiment_associations:
+    name: study_experiment_associations
+    description: Links between studies and experiments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: study_experiment_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyExperimentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  study_workflow_associations:
+    name: study_workflow_associations
+    description: Links between studies and workflows (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: study_workflow_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: StudyWorkflowAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_sample_associations:
+    name: experiment_sample_associations
+    description: Links between experiments and samples (M:N with role)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: experiment_sample_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: ExperimentSampleAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  experiment_instrument_associations:
+    name: experiment_instrument_associations
+    description: Links between experiments and instruments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: experiment_instrument_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: ExperimentInstrumentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_experiment_associations:
+    name: workflow_experiment_associations
+    description: Links between workflows and source experiments (M:N)
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: workflow_experiment_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowExperimentAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_input_associations:
+    name: workflow_input_associations
+    description: Links between workflows and input files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: workflow_input_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowInputAssociation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  workflow_output_associations:
+    name: workflow_output_associations
+    description: Links between workflows and output files
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: workflow_output_associations
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: WorkflowOutputAssociation
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -642,6 +1261,7 @@ attributes:
     owner: Dataset
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

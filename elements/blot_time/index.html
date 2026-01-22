@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-blot_time">Slot: blot_time</h1>
-<p><em>Blotting time in seconds (range: 0.5-10.0)</em></p>
+<p><em>Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/blot_time">lambdaber:blot_time</a>
 Alias: blot_time</p>
 <!-- no inheritance hierarchy -->
@@ -944,15 +944,7 @@ Alias: blot_time</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Maximum Value: 10</p>
-</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -982,16 +974,16 @@ Alias: blot_time</p>
 <details>
 
 <pre><code class="language-yaml">name: blot_time
-description: 'Blotting time in seconds (range: 0.5-10.0)'
+description: 'Blotting time, typically specified in seconds (range: 0.5-10.0). Data
+  providers may specify alternative units by including the unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blot_time
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
-minimum_value: 0.5
-maximum_value: 10.0
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

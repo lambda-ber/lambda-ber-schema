@@ -944,7 +944,7 @@ Alias: r_anomalous</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -968,10 +968,6 @@ Alias: r_anomalous</p>
 <td>native</td>
 <td>lambdaber:r_anomalous</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>ispyb:AutoProcScalingStatistics.rAnom</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -980,14 +976,13 @@ Alias: r_anomalous</p>
 <pre><code class="language-yaml">name: r_anomalous
 description: Anomalous R-factor
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.rAnom
 rank: 1000
 alias: r_anomalous
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

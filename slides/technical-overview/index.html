@@ -966,7 +966,7 @@
 <h1 id="part-2-schema-structure">Part 2: Schema Structure</h1>
 <hr />
 <h2 id="lambda-ber-schema-architecture">lambda-ber-schema Architecture</h2>
-<p>Located at: <code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></p>
+<p>Located at: <code>src/lambda_ber_schema/schema/lambda_ber_schema.yaml</code></p>
 <pre><code class="language-yaml">id: https://w3id.org/lambda-ber/lambda-ber-schema
 name: lambda-ber-schema
 description: Schema for structural biology imaging data
@@ -1086,7 +1086,7 @@ particle_count: 2000000000000
 <p>Core compilation command:</p>
 <pre><code class="language-bash">uv run gen-project \
   --config-file config.yaml \
-  src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   -d assets
 </code></pre>
 <p>Generates all downstream artifacts from the schema.</p>
@@ -1163,7 +1163,7 @@ with open('sample.yaml', 'w') as f:
 <p>Generated JSON Schema can validate data:</p>
 <pre><code class="language-bash"># Using linkml-validate
 uv run linkml-validate \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   tests/data/valid/Sample-protein.yaml
 
 # Or using JSON Schema directly
@@ -1201,7 +1201,7 @@ jsonschema -i data.json assets/jsonschema/lambda-ber-schema.json
 <hr />
 <h2 id="source-schema-location">Source Schema Location</h2>
 <p><strong>Primary source of truth</strong>:
-<code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></p>
+<code>src/lambda_ber_schema/schema/lambda_ber_schema.yaml</code></p>
 <p>All other files are generated from this schema.</p>
 <p><strong>Never edit generated files directly!</strong></p>
 <p>Edit the schema, then regenerate.</p>
@@ -1267,7 +1267,7 @@ uv run linkml-lint --version
 <hr />
 <h2 id="the-development-cycle">The Development Cycle</h2>
 <ol>
-<li><strong>Edit schema</strong>: Modify <code>src/lambda_ber_schema/schema/lambda-ber-schema.yaml</code></li>
+<li><strong>Edit schema</strong>: Modify <code>src/lambda_ber_schema/schema/lambda_ber_schema.yaml</code></li>
 <li><strong>Generate artifacts</strong>: Run <code>just gen-project</code></li>
 <li><strong>Create/update examples</strong>: Add test data to <code>tests/data/valid/</code></li>
 <li><strong>Validate</strong>: Run <code>just test-examples</code></li>
@@ -1468,7 +1468,7 @@ buffer_composition:
 <h2 id="schema-linting">Schema Linting</h2>
 <p>Validate the schema against LinkML metamodel:</p>
 <pre><code class="language-bash">uv run linkml-lint \
-  src/lambda_ber_schema/schema/lambda-ber-schema.yaml
+  src/lambda_ber_schema/schema/lambda_ber_schema.yaml
 </code></pre>
 <p>Checks for:
 - Syntax errors
@@ -1480,7 +1480,7 @@ buffer_composition:
 <p><code>linkml-run-examples</code> validates and converts example data:</p>
 <pre><code class="language-bash">uv run linkml-run-examples \
   -t yaml -t json -t ttl \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   -e tests/data/valid \
   -d examples
 </code></pre>
@@ -1492,7 +1492,7 @@ buffer_composition:
 <h2 id="manual-validation">Manual Validation</h2>
 <p>Validate individual files:</p>
 <pre><code class="language-bash">uv run linkml-validate \
-  -s src/lambda_ber_schema/schema/lambda-ber-schema.yaml \
+  -s src/lambda_ber_schema/schema/lambda_ber_schema.yaml \
   tests/data/valid/Sample-protein.yaml
 </code></pre>
 <p>Useful for debugging specific instances.</p>

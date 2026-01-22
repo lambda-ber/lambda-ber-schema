@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-images">Slot: images</h1>
-<p><em>Images acquired or generated in this study</em></p>
+<p><em>All images</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/images">lambdaber:images</a>
 Alias: images</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,8 @@ Alias: images</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,13 +979,13 @@ Alias: images</p>
 <details>
 
 <pre><code class="language-yaml">name: images
-description: Images acquired or generated in this study
+description: All images
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: images
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: Image
 multivalued: true
 inlined: true

@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-ionic_strength">Slot: ionic_strength</h1>
-<p><em>Ionic strength in molar of material in solution</em></p>
+<p><em>Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/ionic_strength">lambdaber:ionic_strength</a>
 Alias: ionic_strength</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: ionic_strength</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,16 +974,16 @@ Alias: ionic_strength</p>
 <details>
 
 <pre><code class="language-yaml">name: ionic_strength
-description: Ionic strength in molar of material in solution
+description: Ionic strength, typically specified in molar (mol/L). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ionic_strength
 owner: MeasurementConditions
 domain_of:
 - MeasurementConditions
-range: float
-unit:
-  ucum_code: mol/L
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

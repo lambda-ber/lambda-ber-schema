@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-growth_temperature_c">Slot: growth_temperature_c</h1>
-<p><em>Growth temperature in Celsius</em></p>
+<p><em>Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/growth_temperature_c">lambdaber:growth_temperature_c</a>
 Alias: growth_temperature_c</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: growth_temperature_c</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,16 +974,16 @@ Alias: growth_temperature_c</p>
 <details>
 
 <pre><code class="language-yaml">name: growth_temperature_c
-description: Growth temperature in Celsius
+description: Growth temperature, typically specified in degrees Celsius. Data providers
+  may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: growth_temperature_c
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
-unit:
-  ucum_code: Cel
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -434,25 +434,115 @@
 
       Micrograph : astigmatism
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : astigmatism_angle
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : astigmatism_angle
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : ctf_quality_score
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : ctf_quality_score
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : defocus
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : defocus_u
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : defocus_u
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : defocus_v
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : defocus_v
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : description
 
       Micrograph : dimensions_x
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : dimensions_y
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : dose
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : exposure_time
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : file_name
 
@@ -462,7 +552,25 @@
 
       Micrograph : pixel_size
 
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Micrograph : resolution_fit_limit
+
+
+
+
+
+        Micrograph --&gt; "0..1" QuantityValue : resolution_fit_limit
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Micrograph : title
 
@@ -494,7 +602,7 @@
 <tbody>
 <tr>
 <td><a href="../dose/">dose</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Total electron dose in e-/Angstrom^2</td>
 <td>direct</td>
 </tr>
@@ -506,44 +614,44 @@
 </tr>
 <tr>
 <td><a href="../defocus_u/">defocus_u</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus U in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus U, typically specified in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../defocus_v/">defocus_v</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus V in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus V, typically specified in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../astigmatism_angle/">astigmatism_angle</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism angle in degrees</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism angle, typically specified in degrees</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../resolution_fit_limit/">resolution_fit_limit</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Resolution fit limit in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Resolution fit limit, typically specified in Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctf_quality_score/">ctf_quality_score</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>CTF estimation quality score</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../defocus/">defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Measured defocus in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus value, typically specified in micrometers</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
@@ -560,26 +668,26 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Final pixel size in Angstroms per pixel</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pixel size, typically specified in Angstroms</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_x/">dimensions_x</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image width in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image width, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_y/">dimensions_y</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image height in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image height, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
@@ -634,16 +742,6 @@
 description: Motion-corrected micrograph derived from movie
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: Image2D
-slot_usage:
-  pixel_size:
-    name: pixel_size
-    description: Final pixel size in Angstroms per pixel
-  defocus:
-    name: defocus
-    description: Measured defocus in micrometers
-  astigmatism:
-    name: astigmatism
-    description: Astigmatism in Angstroms
 attributes:
   dose:
     name: dose
@@ -652,7 +750,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   origin_movie_id:
     name: origin_movie_id
     description: Reference to original movie file
@@ -663,36 +762,44 @@ attributes:
     range: string
   defocus_u:
     name: defocus_u
-    description: Defocus U in micrometers
+    description: Defocus U, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_v:
     name: defocus_v
-    description: Defocus V in micrometers
+    description: Defocus V, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism_angle:
     name: astigmatism_angle
-    description: Astigmatism angle in degrees
+    description: Astigmatism angle, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   resolution_fit_limit:
     name: resolution_fit_limit
-    description: Resolution fit limit in Angstroms
+    description: Resolution fit limit, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   ctf_quality_score:
     name: ctf_quality_score
     description: CTF estimation quality score
@@ -700,7 +807,8 @@ attributes:
     rank: 1000
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -710,16 +818,6 @@ attributes:
 description: Motion-corrected micrograph derived from movie
 from_schema: https://w3id.org/lambda-ber-schema/
 is_a: Image2D
-slot_usage:
-  pixel_size:
-    name: pixel_size
-    description: Final pixel size in Angstroms per pixel
-  defocus:
-    name: defocus
-    description: Measured defocus in micrometers
-  astigmatism:
-    name: astigmatism
-    description: Astigmatism in Angstroms
 attributes:
   dose:
     name: dose
@@ -730,7 +828,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   origin_movie_id:
     name: origin_movie_id
     description: Reference to original movie file
@@ -743,44 +842,52 @@ attributes:
     range: string
   defocus_u:
     name: defocus_u
-    description: Defocus U in micrometers
+    description: Defocus U, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus_u
     owner: Micrograph
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_v:
     name: defocus_v
-    description: Defocus V in micrometers
+    description: Defocus V, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus_v
     owner: Micrograph
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism_angle:
     name: astigmatism_angle
-    description: Astigmatism angle in degrees
+    description: Astigmatism angle, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism_angle
     owner: Micrograph
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   resolution_fit_limit:
     name: resolution_fit_limit
-    description: Resolution fit limit in Angstroms
+    description: Resolution fit limit, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: resolution_fit_limit
     owner: Micrograph
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   ctf_quality_score:
     name: ctf_quality_score
     description: CTF estimation quality score
@@ -790,27 +897,32 @@ attributes:
     owner: Micrograph
     domain_of:
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus:
     name: defocus
-    description: Measured defocus in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: Micrograph
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: Micrograph
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -834,7 +946,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Final pixel size in Angstroms per pixel
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -842,30 +955,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: Micrograph
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: Micrograph
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: Micrograph
@@ -873,7 +992,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -886,6 +1006,7 @@ attributes:
     owner: Micrograph
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

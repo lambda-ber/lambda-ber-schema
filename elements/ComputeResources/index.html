@@ -439,13 +439,49 @@
 
       ComputeResources : cpu_hours
 
+
+
+
+
+        ComputeResources --&gt; "0..1" QuantityValue : cpu_hours
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ComputeResources : description
 
       ComputeResources : gpu_hours
 
+
+
+
+
+        ComputeResources --&gt; "0..1" QuantityValue : gpu_hours
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ComputeResources : memory_gb
 
+
+
+
+
+        ComputeResources --&gt; "0..1" QuantityValue : memory_gb
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ComputeResources : storage_gb
+
+
+
+
+
+        ComputeResources --&gt; "0..1" QuantityValue : storage_gb
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -469,26 +505,26 @@
 <tbody>
 <tr>
 <td><a href="../cpu_hours/">cpu_hours</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>CPU hours used</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>CPU hours used, measured in hours</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gpu_hours/">gpu_hours</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>GPU hours used</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>GPU hours used, measured in hours</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../memory_gb/">memory_gb</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Maximum memory used in GB</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Maximum memory used, typically specified in gigabytes (GB)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../storage_gb/">storage_gb</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Storage used in GB</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Storage used, typically specified in gigabytes (GB)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -553,36 +589,44 @@ is_a: AttributeGroup
 attributes:
   cpu_hours:
     name: cpu_hours
-    description: CPU hours used
+    description: CPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   gpu_hours:
     name: gpu_hours
-    description: GPU hours used
+    description: GPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   memory_gb:
     name: memory_gb
-    description: Maximum memory used in GB
+    description: Maximum memory used, typically specified in gigabytes (GB). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   storage_gb:
     name: storage_gb
-    description: Storage used in GB
+    description: Storage used, typically specified in gigabytes (GB). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -595,44 +639,52 @@ is_a: AttributeGroup
 attributes:
   cpu_hours:
     name: cpu_hours
-    description: CPU hours used
+    description: CPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: cpu_hours
     owner: ComputeResources
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   gpu_hours:
     name: gpu_hours
-    description: GPU hours used
+    description: GPU hours used, measured in hours. Data providers may specify alternative
+      time units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: gpu_hours
     owner: ComputeResources
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   memory_gb:
     name: memory_gb
-    description: Maximum memory used in GB
+    description: Maximum memory used, typically specified in gigabytes (GB). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: memory_gb
     owner: ComputeResources
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   storage_gb:
     name: storage_gb
-    description: Storage used in GB
+    description: Storage used, typically specified in gigabytes (GB). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: storage_gb
     owner: ComputeResources
     domain_of:
     - ComputeResources
-    range: float
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

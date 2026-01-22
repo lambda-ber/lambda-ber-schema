@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-anomalous_completeness">Slot: anomalous_completeness</h1>
-<p><em>Completeness of anomalous data as percentage</em></p>
+<p><em>Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/anomalous_completeness">lambdaber:anomalous_completeness</a>
 Alias: anomalous_completeness</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: anomalous_completeness</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -991,7 +991,8 @@ Alias: anomalous_completeness</p>
 <details>
 
 <pre><code class="language-yaml">name: anomalous_completeness
-description: Completeness of anomalous data as percentage
+description: Completeness of anomalous data as a percentage (0-100). Data providers
+  may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Completeness of Bijvoet pairs
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -1002,9 +1003,8 @@ alias: anomalous_completeness
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

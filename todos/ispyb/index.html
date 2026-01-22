@@ -859,6 +859,66 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sql-ddl-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL DDL Sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-schema-import-duckdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Schema Import (DuckDB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-mapping-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Mapping Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-etl-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: ETL Scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-sync-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4: Sync Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#completed-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       Completed Tasks
@@ -935,6 +995,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#etl-infrastructure-priority-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL Infrastructure (Priority: High)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#samplecontainer-tracking-priority-medium" class="md-nav__link">
     <span class="md-ellipsis">
       Sample/Container Tracking (Priority: Medium)
@@ -944,18 +1013,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#validation-examples-priority-low" class="md-nav__link">
+  <a href="#validation-examples-priority-medium" class="md-nav__link">
     <span class="md-ellipsis">
-      Validation Examples (Priority: Low)
+      Validation Examples (Priority: Medium)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#future-conversion-utilities-priority-low" class="md-nav__link">
+  <a href="#conversion-utilities-priority-medium" class="md-nav__link">
     <span class="md-ellipsis">
-      Future: Conversion Utilities (Priority: Low)
+      Conversion Utilities (Priority: Medium)
     </span>
   </a>
   
@@ -1032,11 +1101,77 @@
 <p>ISPyB (Information System for Protein crystallography Beamlines) is a LIMS used at major synchrotron facilities (ESRF, Diamond, MAX IV, SOLEIL, ALBA). This document tracks integration work to enable interoperability between lambda-ber-schema and ISPyB.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://github.com/DiamondLightSource/ispyb-database">ISPyB Database (Diamond)</a></li>
-<li><a href="https://github.com/ispyb/ispyb-database-modeling">ISPyB Database Modeling</a></li>
+<li><a href="https://github.com/DiamondLightSource/ispyb-database">ISPyB Database (Diamond)</a> - Main SQL DDL source</li>
+<li><a href="https://github.com/ispyb/ispyb-database-modeling">ISPyB Database Modeling</a> - Schema documentation</li>
 <li><a href="https://academic.oup.com/bioinformatics/article/27/22/3186/195018">ISPyB Publication</a></li>
 <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4453979/">SynchWeb Interface</a></li>
+<li><a href="https://ispyb.readthedocs.io/en/latest/">py-ispyb API</a> - Python API for ISPyB</li>
 </ul>
+<h2 id="sql-ddl-sources">SQL DDL Sources</h2>
+<p>The authoritative DDL is in <a href="https://github.com/DiamondLightSource/ispyb-database">DiamondLightSource/ispyb-database</a>:</p>
+<pre><code>schemas/ispyb/
+├── tables.sql      # CREATE TABLE statements (~200 tables)
+├── lookups.sql     # Lookup/enum tables
+├── data.sql        # Test data
+└── routines.sql    # Stored procedures
+</code></pre>
+<p>Key tables (from tables.sql):
+- <code>Proposal</code>, <code>BLSession</code>, <code>Person</code>, <code>Laboratory</code>
+- <code>Protein</code>, <code>Crystal</code>, <code>BLSample</code>, <code>Container</code>, <code>Dewar</code>, <code>Shipping</code>
+- <code>DataCollection</code>, <code>DataCollectionGroup</code>, <code>Detector</code>, <code>GridInfo</code>
+- <code>AutoProcProgram</code>, <code>AutoProcIntegration</code>, <code>AutoProcScaling</code>, <code>AutoProcScalingStatistics</code>
+- <code>PhasingStep</code>, <code>PhasingAnalysis</code>, <code>ModelBuilding</code></p>
+<h2 id="etl-strategy">ETL Strategy</h2>
+<h3 id="phase-1-schema-import-duckdb">Phase 1: Schema Import (DuckDB)</h3>
+<p>Load ISPyB DDL into DuckDB for analysis and querying:</p>
+<pre><code class="language-bash"># Download DDL
+curl -O https://raw.githubusercontent.com/DiamondLightSource/ispyb-database/master/schemas/ispyb/tables.sql
+
+# Convert MySQL DDL to DuckDB-compatible format (or use sqlglot)
+python scripts/mysql_to_duckdb.py tables.sql &gt; ispyb_schema.duckdb.sql
+
+# Load into DuckDB
+duckdb db/ispyb.ddb &lt; ispyb_schema.duckdb.sql
+</code></pre>
+<h3 id="phase-2-mapping-table">Phase 2: Mapping Table</h3>
+<p>Create explicit mapping between ISPyB columns and lambda-ber-schema slots:</p>
+<pre><code class="language-yaml"># mappings/ispyb_to_lambda_ber.yaml
+mappings:
+  - ispyb_table: DataCollection
+    ispyb_column: wavelength
+    lambda_ber_class: ExperimentRun
+    lambda_ber_slot: wavelength
+    transform: null  # direct mapping
+
+  - ispyb_table: AutoProcScalingStatistics
+    ispyb_column: resolutionLimitHigh
+    lambda_ber_class: WorkflowRun
+    lambda_ber_slot: resolution_high
+    transform: null
+</code></pre>
+<h3 id="phase-3-etl-scripts">Phase 3: ETL Scripts</h3>
+<pre><code class="language-python"># src/lambda_ber_schema/etl/ispyb_import.py
+&quot;&quot;&quot;Import ISPyB data into lambda-ber-schema format.&quot;&quot;&quot;
+
+def ispyb_to_study(session: dict) -&gt; Study:
+    &quot;&quot;&quot;Convert ISPyB BLSession to lambda-ber Study.&quot;&quot;&quot;
+    ...
+
+def ispyb_to_experiment_run(dc: dict) -&gt; ExperimentRun:
+    &quot;&quot;&quot;Convert ISPyB DataCollection to ExperimentRun.&quot;&quot;&quot;
+    ...
+
+def ispyb_to_workflow_run(autoproc: dict) -&gt; WorkflowRun:
+    &quot;&quot;&quot;Convert ISPyB AutoProcScalingStatistics to WorkflowRun.&quot;&quot;&quot;
+    ...
+</code></pre>
+<h3 id="phase-4-sync-pipeline">Phase 4: Sync Pipeline</h3>
+<pre><code>ISPyB (MySQL) → DuckDB mirror → Transform → lambda-ber YAML/JSON → Lakehouse
+</code></pre>
+<p>Options for ISPyB access:
+1. <strong>Direct MySQL</strong> - If facility provides read access
+2. <strong>py-ispyb API</strong> - REST API access (https://ispyb.readthedocs.io/)
+3. <strong>Data dumps</strong> - Periodic SQL dumps from facilities</p>
 <h2 id="completed-tasks">Completed Tasks</h2>
 <h3 id="1-schema-annotations-priority-high-done">1. Schema Annotations (Priority: High) - DONE</h3>
 <p>Added <code>ispyb:</code> prefix and exact_mappings to enable semantic interoperability.</p>
@@ -1085,6 +1220,15 @@
 - rmerge, rpim, cc_half, completeness_percent
 - i_over_sigma, multiplicity</p>
 <h2 id="remaining-tasks">Remaining Tasks</h2>
+<h3 id="etl-infrastructure-priority-high">ETL Infrastructure (Priority: High)</h3>
+<ul>
+<li>[ ] Download and mirror ISPyB DDL to <code>assets/external/ispyb/</code></li>
+<li>[ ] Create <code>scripts/mysql_to_duckdb.py</code> for DDL conversion</li>
+<li>[ ] Create <code>db/ispyb_schema.ddb</code> with empty ISPyB tables</li>
+<li>[ ] Create <code>mappings/ispyb_to_lambda_ber.yaml</code> mapping file</li>
+<li>[ ] Create <code>src/lambda_ber_schema/etl/ispyb_import.py</code> ETL module</li>
+<li>[ ] Add <code>just ispyb-sync</code> target for running ETL</li>
+</ul>
 <h3 id="samplecontainer-tracking-priority-medium">Sample/Container Tracking (Priority: Medium)</h3>
 <p>Fields for sample logistics (not yet implemented):</p>
 <ul>
@@ -1093,16 +1237,18 @@
 <li>[ ] Shipment tracking metadata</li>
 <li>[ ] Add <code>ispyb_bl_sample_id</code> to Sample</li>
 </ul>
-<h3 id="validation-examples-priority-low">Validation Examples (Priority: Low)</h3>
+<h3 id="validation-examples-priority-medium">Validation Examples (Priority: Medium)</h3>
 <ul>
 <li>[ ] Create example with full ISPyB field coverage</li>
+<li>[ ] Create example from real ISPyB export (anonymized)</li>
 <li>[ ] Test round-trip conversion ISPyB → lambda-ber-schema → ISPyB</li>
 </ul>
-<h3 id="future-conversion-utilities-priority-low">Future: Conversion Utilities (Priority: Low)</h3>
+<h3 id="conversion-utilities-priority-medium">Conversion Utilities (Priority: Medium)</h3>
 <ul>
 <li>[ ] Python utility: ISPyB SQL → YAML export</li>
 <li>[ ] Python utility: YAML → ISPyB SQL import</li>
-<li>[ ] Integration with py-ispyb API</li>
+<li>[ ] Integration with py-ispyb API (https://ispyb.readthedocs.io/)</li>
+<li>[ ] CLI command: <code>lambda-ber-schema import-ispyb &lt;db_url&gt;</code></li>
 </ul>
 <h2 id="entity-mapping-reference">Entity Mapping Reference</h2>
 <table>

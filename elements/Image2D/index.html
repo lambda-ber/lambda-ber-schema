@@ -447,23 +447,86 @@
 
       Image2D : astigmatism
 
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Image2D : defocus
+
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Image2D : description
 
       Image2D : dimensions_x
 
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Image2D : dimensions_y
+
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Image2D : dose
 
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+
+
+
       Image2D : exposure_time
+
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Image2D : file_name
 
       Image2D : id
 
       Image2D : pixel_size
+
+
+
+
+
+        Image2D --&gt; "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
 
       Image2D : title
 
@@ -499,14 +562,14 @@
 <tbody>
 <tr>
 <td><a href="../defocus/">defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus value in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus value, typically specified in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -523,31 +586,31 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pixel size, typically specified in Angstroms</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_x/">dimensions_x</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image width in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image width, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_y/">dimensions_y</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image height in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image height, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dose/">dose</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Electron dose in e-/Å²</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
@@ -606,20 +669,24 @@ is_a: Image
 attributes:
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -632,24 +699,28 @@ is_a: Image
 attributes:
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: Image2D
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: Image2D
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -673,7 +744,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -681,30 +753,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: Image2D
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: Image2D
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: Image2D
@@ -712,7 +790,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -723,7 +802,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -736,6 +816,7 @@ attributes:
     owner: Image2D
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-voltage_used_in_estimation">Slot: voltage_used_in_estimation</h1>
-<p><em>Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification</em></p>
+<p><em>Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/voltage_used_in_estimation">lambdaber:voltage_used_in_estimation</a>
 Alias: voltage_used_in_estimation</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: voltage_used_in_estimation</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,15 +974,17 @@ Alias: voltage_used_in_estimation</p>
 <details>
 
 <pre><code class="language-yaml">name: voltage_used_in_estimation
-description: Accelerating voltage value used during CTF estimation (in kV); may differ
-  from instrument specification
+description: Accelerating voltage value used during CTF estimation, typically specified
+  in kilovolts (kV); may differ from instrument specification. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: voltage_used_in_estimation
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

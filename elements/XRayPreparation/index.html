@@ -436,6 +436,15 @@
 
       XRayPreparation : cryoprotectant_concentration
 
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : cryoprotectant_concentration
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayPreparation : crystal_notes
 
       XRayPreparation : crystal_size_um
@@ -468,15 +477,42 @@
 
       XRayPreparation : drop_volume_nl
 
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : drop_volume_nl
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayPreparation : flash_cooling_method
 
       XRayPreparation : initial_hit_condition
 
       XRayPreparation : loop_size
 
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : loop_size
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayPreparation : mounting_method
 
       XRayPreparation : mounting_temperature
+
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : mounting_temperature
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRayPreparation : optimization_strategy
 
@@ -486,7 +522,25 @@
 
       XRayPreparation : protein_concentration_mg_per_ml
 
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : protein_concentration_mg_per_ml
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRayPreparation : reservoir_volume_ul
+
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : reservoir_volume_ul
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRayPreparation : screen_name
 
@@ -499,6 +553,15 @@
       XRayPreparation : soak_conditions
 
       XRayPreparation : temperature_c
+
+
+
+
+
+        XRayPreparation --&gt; "0..1" QuantityValue : temperature_c
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -525,7 +588,7 @@
 <tbody>
 <tr>
 <td><a href="../protein_concentration_mg_per_ml/">protein_concentration_mg_per_ml</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Protein concentration for crystallization in mg/mL</td>
 <td>direct</td>
 </tr>
@@ -561,8 +624,8 @@
 </tr>
 <tr>
 <td><a href="../temperature_c/">temperature_c</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Crystallization temperature in Celsius</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Crystallization temperature, typically specified in degrees Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -573,14 +636,14 @@
 </tr>
 <tr>
 <td><a href="../drop_volume_nl/">drop_volume_nl</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Total drop volume in nanoliters</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Total drop volume, typically specified in nanoliters</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../reservoir_volume_ul/">reservoir_volume_ul</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Reservoir volume in microliters</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Reservoir volume, typically specified in microliters</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -627,8 +690,8 @@
 </tr>
 <tr>
 <td><a href="../cryoprotectant_concentration/">cryoprotectant_concentration</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Cryoprotectant concentration percentage</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Cryoprotectant concentration, typically specified as a percentage</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -663,14 +726,14 @@
 </tr>
 <tr>
 <td><a href="../loop_size/">loop_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Loop size in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Loop size, typically specified in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../mounting_temperature/">mounting_temperature</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Temperature during mounting in Kelvin</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Temperature during mounting, typically specified in Kelvin</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -721,7 +784,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   protein_buffer:
     name: protein_buffer
     description: Buffer composition for protein solution
@@ -761,12 +825,14 @@ attributes:
     - XRayPreparation
   temperature_c:
     name: temperature_c
-    description: Crystallization temperature in Celsius
+    description: Crystallization temperature, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
@@ -776,20 +842,24 @@ attributes:
     - XRayPreparation
   drop_volume_nl:
     name: drop_volume_nl
-    description: Total drop volume in nanoliters
+    description: Total drop volume, typically specified in nanoliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   reservoir_volume_ul:
     name: reservoir_volume_ul
-    description: Reservoir volume in microliters
+    description: Reservoir volume, typically specified in microliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
@@ -842,12 +912,15 @@ attributes:
     range: string
   cryoprotectant_concentration:
     name: cryoprotectant_concentration
-    description: Cryoprotectant concentration percentage
+    description: Cryoprotectant concentration, typically specified as a percentage.
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   soak_compound:
     name: soak_compound
     description: Compound used for soaking (ligand, heavy atom)
@@ -888,7 +961,8 @@ attributes:
     - XRayPreparation
   loop_size:
     name: loop_size
-    description: Loop size in micrometers
+    description: Loop size, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Loop_Size'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -896,10 +970,12 @@ attributes:
     slot_uri: nsls2:Loop_Size
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   mounting_temperature:
     name: mounting_temperature
-    description: Temperature during mounting in Kelvin
+    description: Temperature during mounting, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Temperature'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -907,7 +983,8 @@ attributes:
     slot_uri: nsls2:Temperature
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -927,7 +1004,8 @@ attributes:
     owner: XRayPreparation
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   protein_buffer:
     name: protein_buffer
     description: Buffer composition for protein solution
@@ -980,14 +1058,16 @@ attributes:
     range: string
   temperature_c:
     name: temperature_c
-    description: Crystallization temperature in Celsius
+    description: Crystallization temperature, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: temperature_c
     owner: XRayPreparation
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   drop_ratio_protein_to_reservoir:
     name: drop_ratio_protein_to_reservoir
     description: Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)
@@ -1000,24 +1080,28 @@ attributes:
     range: string
   drop_volume_nl:
     name: drop_volume_nl
-    description: Total drop volume in nanoliters
+    description: Total drop volume, typically specified in nanoliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: drop_volume_nl
     owner: XRayPreparation
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   reservoir_volume_ul:
     name: reservoir_volume_ul
-    description: Reservoir volume in microliters
+    description: Reservoir volume, typically specified in microliters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: reservoir_volume_ul
     owner: XRayPreparation
     domain_of:
     - CrystallizationConditions
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   seeding_type:
     name: seeding_type
     description: Type of seeding used (micro, macro, streak)
@@ -1090,14 +1174,17 @@ attributes:
     range: string
   cryoprotectant_concentration:
     name: cryoprotectant_concentration
-    description: Cryoprotectant concentration percentage
+    description: Cryoprotectant concentration, typically specified as a percentage.
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: cryoprotectant_concentration
     owner: XRayPreparation
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   soak_compound:
     name: soak_compound
     description: Compound used for soaking (ligand, heavy atom)
@@ -1153,7 +1240,8 @@ attributes:
     range: string
   loop_size:
     name: loop_size
-    description: Loop size in micrometers
+    description: Loop size, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Loop_Size'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1163,10 +1251,12 @@ attributes:
     owner: XRayPreparation
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   mounting_temperature:
     name: mounting_temperature
-    description: Temperature during mounting in Kelvin
+    description: Temperature during mounting, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     comments:
     - 'Maps to NSLS2 spreadsheet: Temperature'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1176,7 +1266,8 @@ attributes:
     owner: XRayPreparation
     domain_of:
     - XRayPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

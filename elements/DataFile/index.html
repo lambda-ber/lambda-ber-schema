@@ -473,6 +473,15 @@
 
       DataFile : file_size_bytes
 
+
+
+
+
+        DataFile --&gt; "0..1" QuantityValue : file_size_bytes
+        click QuantityValue href "../QuantityValue/"
+
+
+
       DataFile : id
 
       DataFile : related_entity
@@ -521,7 +530,7 @@
 </tr>
 <tr>
 <td><a href="../file_size_bytes/">file_size_bytes</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>File size in bytes</td>
 <td>direct</td>
 </tr>
@@ -593,7 +602,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
+<td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../data_files/">data_files</a></td>
 <td>range</td>
 <td><a href="./">DataFile</a></td>
@@ -601,6 +610,18 @@
 <tr>
 <td><a href="../WorkflowRun/">WorkflowRun</a></td>
 <td><a href="../output_files/">output_files</a></td>
+<td>range</td>
+<td><a href="./">DataFile</a></td>
+</tr>
+<tr>
+<td><a href="../WorkflowInputAssociation/">WorkflowInputAssociation</a></td>
+<td><a href="../file_id/">file_id</a></td>
+<td>range</td>
+<td><a href="./">DataFile</a></td>
+</tr>
+<tr>
+<td><a href="../WorkflowOutputAssociation/">WorkflowOutputAssociation</a></td>
+<td><a href="../file_id/">file_id</a></td>
 <td>range</td>
 <td><a href="./">DataFile</a></td>
 </tr>
@@ -671,7 +692,8 @@ attributes:
     rank: 1000
     domain_of:
     - DataFile
-    range: integer
+    range: QuantityValue
+    inlined: true
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
@@ -771,7 +793,8 @@ attributes:
     owner: DataFile
     domain_of:
     - DataFile
-    range: integer
+    range: QuantityValue
+    inlined: true
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
@@ -844,6 +867,7 @@ attributes:
     owner: DataFile
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

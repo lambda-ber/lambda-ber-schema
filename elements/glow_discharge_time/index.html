@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-glow_discharge_time">Slot: glow_discharge_time</h1>
-<p><em>Glow discharge time in seconds</em></p>
+<p><em>Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/glow_discharge_time">lambdaber:glow_discharge_time</a>
 Alias: glow_discharge_time</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: glow_discharge_time</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: glow_discharge_time</p>
 <details>
 
 <pre><code class="language-yaml">name: glow_discharge_time
-description: Glow discharge time in seconds
+description: Glow discharge time, typically specified in seconds. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: glow_discharge_time
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

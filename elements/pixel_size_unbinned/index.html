@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-pixel_size_unbinned">Slot: pixel_size_unbinned</h1>
-<p><em>Unbinned pixel size in Angstroms per pixel</em></p>
+<p><em>Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/pixel_size_unbinned">lambdaber:pixel_size_unbinned</a>
 Alias: pixel_size_unbinned</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: pixel_size_unbinned</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: pixel_size_unbinned</p>
 <details>
 
 <pre><code class="language-yaml">name: pixel_size_unbinned
-description: Unbinned pixel size in Angstroms per pixel
+description: Unbinned pixel size, typically specified in Angstroms per pixel. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pixel_size_unbinned
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

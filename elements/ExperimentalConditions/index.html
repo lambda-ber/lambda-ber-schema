@@ -441,15 +441,60 @@
 
       ExperimentalConditions : beam_energy
 
+
+
+
+
+        ExperimentalConditions --&gt; "0..1" QuantityValue : beam_energy
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentalConditions : description
 
       ExperimentalConditions : exposure_time
 
+
+
+
+
+        ExperimentalConditions --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentalConditions : humidity
+
+
+
+
+
+        ExperimentalConditions --&gt; "0..1" QuantityValue : humidity
+        click QuantityValue href "../QuantityValue/"
+
+
 
       ExperimentalConditions : pressure
 
+
+
+
+
+        ExperimentalConditions --&gt; "0..1" QuantityValue : pressure
+        click QuantityValue href "../QuantityValue/"
+
+
+
       ExperimentalConditions : temperature
+
+
+
+
+
+        ExperimentalConditions --&gt; "0..1" QuantityValue : temperature
+        click QuantityValue href "../QuantityValue/"
+
+
 
 
 </div>
@@ -473,20 +518,20 @@
 <tbody>
 <tr>
 <td><a href="../temperature/">temperature</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Temperature in Celsius</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Temperature, typically specified in degrees Celsius</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../humidity/">humidity</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Humidity percentage</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Humidity, typically specified as a percentage (0-100)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pressure/">pressure</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pressure in kPa</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pressure, typically specified in kilopascals (kPa)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -497,14 +542,14 @@
 </tr>
 <tr>
 <td><a href="../beam_energy/">beam_energy</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Beam energy in keV</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Beam energy, typically specified in kiloelectronvolts (keV)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -569,29 +614,36 @@ is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
-    description: Temperature in Celsius
+    description: Temperature, typically specified in degrees Celsius. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   humidity:
     name: humidity
-    description: Humidity percentage
+    description: Humidity, typically specified as a percentage (0-100). Data providers
+      may specify as a decimal fraction or percentage by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   pressure:
     name: pressure
-    description: Pressure in kPa
+    description: Pressure, typically specified in kilopascals (kPa). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   atmosphere:
     name: atmosphere
     description: Atmosphere composition
@@ -601,21 +653,25 @@ attributes:
     - ExperimentalConditions
   beam_energy:
     name: beam_energy
-    description: Beam energy in keV
+    description: Beam energy, typically specified in kiloelectronvolts (keV). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - XRFImage
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -628,7 +684,8 @@ is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
-    description: Temperature in Celsius
+    description: Temperature, typically specified in degrees Celsius. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: temperature
     owner: ExperimentalConditions
@@ -636,27 +693,33 @@ attributes:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   humidity:
     name: humidity
-    description: Humidity percentage
+    description: Humidity, typically specified as a percentage (0-100). Data providers
+      may specify as a decimal fraction or percentage by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: humidity
     owner: ExperimentalConditions
     domain_of:
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   pressure:
     name: pressure
-    description: Pressure in kPa
+    description: Pressure, typically specified in kilopascals (kPa). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pressure
     owner: ExperimentalConditions
     domain_of:
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   atmosphere:
     name: atmosphere
     description: Atmosphere composition
@@ -669,17 +732,20 @@ attributes:
     range: string
   beam_energy:
     name: beam_energy
-    description: Beam energy in keV
+    description: Beam energy, typically specified in kiloelectronvolts (keV). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: beam_energy
     owner: ExperimentalConditions
     domain_of:
     - XRFImage
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: ExperimentalConditions
@@ -687,7 +753,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

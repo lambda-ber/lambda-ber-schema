@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-resolution_low">Slot: resolution_low</h1>
-<p><em>Low resolution limit</em></p>
+<p><em>Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/resolution_low">lambdaber:resolution_low</a>
 Alias: resolution_low</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: resolution_low</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: resolution_low</p>
 <details>
 
 <pre><code class="language-yaml">name: resolution_low
-description: Low resolution limit
+description: Low resolution limit, typically specified in Angstroms (Å). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Resolution_Low_A
@@ -989,9 +990,8 @@ alias: resolution_low
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

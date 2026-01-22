@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-completeness_high_res_shell_percent">Slot: completeness_high_res_shell_percent</h1>
-<p><em>Completeness in highest resolution shell</em></p>
+<p><em>Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/completeness_high_res_shell_percent">lambdaber:completeness_high_res_shell_percent</a>
 Alias: completeness_high_res_shell_percent</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: completeness_high_res_shell_percent</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,17 @@ Alias: completeness_high_res_shell_percent</p>
 <details>
 
 <pre><code class="language-yaml">name: completeness_high_res_shell_percent
-description: Completeness in highest resolution shell
+description: Completeness in highest resolution shell, typically specified as a percentage
+  (0-100). Data providers may specify as decimal fraction by including the unit in
+  the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: completeness_high_res_shell_percent
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

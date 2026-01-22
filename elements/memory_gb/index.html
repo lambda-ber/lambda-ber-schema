@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-memory_gb">Slot: memory_gb</h1>
-<p><em>Maximum memory used in GB</em></p>
+<p><em>Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/memory_gb">lambdaber:memory_gb</a>
 Alias: memory_gb</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: memory_gb</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: memory_gb</p>
 <details>
 
 <pre><code class="language-yaml">name: memory_gb
-description: Maximum memory used in GB
+description: Maximum memory used, typically specified in gigabytes (GB). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: memory_gb
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

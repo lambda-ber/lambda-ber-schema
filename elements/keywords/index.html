@@ -865,21 +865,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -920,7 +905,6 @@
 
 
 <h1 id="slot-keywords">Slot: keywords</h1>
-<p><em>Keywords or tags describing the dataset for search and categorization</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/keywords">lambdaber:keywords</a>
 Alias: keywords</p>
 <!-- no inheritance hierarchy -->
@@ -936,26 +920,22 @@ Alias: keywords</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Study/">Study</a></td>
+<td>A logical grouping of related experiments investigating a research question</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Dataset/">Dataset</a></td>
-<td>A collection of studies</td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -979,15 +959,11 @@ Alias: keywords</p>
 <details>
 
 <pre><code class="language-yaml">name: keywords
-description: Keywords or tags describing the dataset for search and categorization
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: keywords
-owner: Dataset
 domain_of:
 - Dataset
+- Study
 range: string
-multivalued: true
 
 </code></pre>
 

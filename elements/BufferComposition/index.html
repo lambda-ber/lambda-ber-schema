@@ -446,6 +446,15 @@
       BufferComposition : ph
 
 
+
+
+
+        BufferComposition --&gt; "0..1" QuantityValue : ph
+        click QuantityValue href "../QuantityValue/"
+
+
+
+
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -467,7 +476,7 @@
 <tbody>
 <tr>
 <td><a href="../ph/">ph</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>pH of the buffer (range: 0-14)</td>
 <td>direct</td>
 </tr>
@@ -557,9 +566,8 @@ attributes:
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   components:
     name: components
     description: Buffer components and their concentrations
@@ -599,9 +607,8 @@ attributes:
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   components:
     name: components
     description: Buffer components and their concentrations

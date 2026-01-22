@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-beam_center_x">Slot: beam_center_x</h1>
-<p><em>Beam center X coordinate</em></p>
+<p><em>Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/beam_center_x">lambdaber:beam_center_x</a>
 Alias: beam_center_x</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: beam_center_x</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: beam_center_x</p>
 <details>
 
 <pre><code class="language-yaml">name: beam_center_x
-description: Beam center X coordinate
+description: Beam center X coordinate, typically specified in pixels ([px]). Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Beam_xy_x
@@ -990,9 +991,8 @@ alias: beam_center_x
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: '[px]'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

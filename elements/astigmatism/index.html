@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-astigmatism">Slot: astigmatism</h1>
-<p><em>Astigmatism value in Angstroms</em></p>
+<p><em>Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/astigmatism">lambdaber:astigmatism</a>
 Alias: astigmatism</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,13 @@ Alias: astigmatism</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Movie/">Movie</a></td>
-<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
+<td><a href="../Micrograph/">Micrograph</a></td>
+<td>Motion-corrected micrograph derived from movie</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OpticalImage/">OpticalImage</a></td>
+<td>Visible light optical microscopy or photography image</td>
 <td>no</td>
 </tr>
 <tr>
@@ -946,14 +951,9 @@ Alias: astigmatism</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../XRFImage/">XRFImage</a></td>
-<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td><a href="../Movie/">Movie</a></td>
+<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Micrograph/">Micrograph</a></td>
-<td>Motion-corrected micrograph derived from movie</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
@@ -961,15 +961,15 @@ Alias: astigmatism</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OpticalImage/">OpticalImage</a></td>
-<td>Visible light optical microscopy or photography image</td>
+<td><a href="../XRFImage/">XRFImage</a></td>
+<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -999,14 +999,16 @@ Alias: astigmatism</p>
 <details>
 
 <pre><code class="language-yaml">name: astigmatism
-description: Astigmatism value in Angstroms
+description: Astigmatism value, typically specified in Angstroms. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: astigmatism
 owner: Image2D
 domain_of:
 - Image2D
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

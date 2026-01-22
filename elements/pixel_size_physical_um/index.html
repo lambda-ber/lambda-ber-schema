@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -953,12 +944,7 @@ Alias: pixel_size_physical_um</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Hardware specification, independent of magnification</li>
-<li>Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -989,16 +975,14 @@ Alias: pixel_size_physical_um</p>
 
 <pre><code class="language-yaml">name: pixel_size_physical_um
 description: Physical pixel size of the detector in micrometers
-comments:
-- Hardware specification, independent of magnification
-- Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pixel_size_physical_um
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

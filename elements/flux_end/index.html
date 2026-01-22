@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-flux_end">Slot: flux_end</h1>
-<p><em>Photon flux at end of data collection in photons/second</em></p>
+<p><em>Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/flux_end">lambdaber:flux_end</a>
 Alias: flux_end</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: flux_end</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,9 @@ Alias: flux_end</p>
 <details>
 
 <pre><code class="language-yaml">name: flux_end
-description: Photon flux at end of data collection in photons/second
+description: Photon flux at end of data collection, typically specified in photons
+  per second. Data providers may specify alternative units by including the unit in
+  the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - ispyb:DataCollection.flux_end
@@ -987,9 +989,8 @@ alias: flux_end
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: '{photons}/s'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

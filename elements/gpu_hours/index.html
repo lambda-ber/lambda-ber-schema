@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-gpu_hours">Slot: gpu_hours</h1>
-<p><em>GPU hours used</em></p>
+<p><em>GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/gpu_hours">lambdaber:gpu_hours</a>
 Alias: gpu_hours</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: gpu_hours</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: gpu_hours</p>
 <details>
 
 <pre><code class="language-yaml">name: gpu_hours
-description: GPU hours used
+description: GPU hours used, measured in hours. Data providers may specify alternative
+  time units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: gpu_hours
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

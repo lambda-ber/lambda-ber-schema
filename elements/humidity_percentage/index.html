@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-humidity_percentage">Slot: humidity_percentage</h1>
-<p><em>Chamber humidity during vitrification (range: 0-100)</em></p>
+<p><em>Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/humidity_percentage">lambdaber:humidity_percentage</a>
 Alias: humidity_percentage</p>
 <!-- no inheritance hierarchy -->
@@ -944,15 +944,7 @@ Alias: humidity_percentage</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Maximum Value: 100</p>
-</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -982,16 +974,17 @@ Alias: humidity_percentage</p>
 <details>
 
 <pre><code class="language-yaml">name: humidity_percentage
-description: 'Chamber humidity during vitrification (range: 0-100)'
+description: 'Chamber humidity during vitrification (range: 0-100), typically specified
+  as a percentage. Data providers may specify as decimal fraction by including the
+  unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: humidity_percentage
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
-minimum_value: 0
-maximum_value: 100
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

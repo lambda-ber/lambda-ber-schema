@@ -944,7 +944,7 @@ Alias: ispyb_session_id</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -968,10 +968,6 @@ Alias: ispyb_session_id</p>
 <td>native</td>
 <td>lambdaber:ispyb_session_id</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>ispyb:BLSession.sessionId</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -980,14 +976,13 @@ Alias: ispyb_session_id</p>
 <pre><code class="language-yaml">name: ispyb_session_id
 description: ISPyB BLSession.sessionId
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:BLSession.sessionId
 rank: 1000
 alias: ispyb_session_id
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

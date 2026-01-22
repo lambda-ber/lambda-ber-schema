@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-detector_distance">Slot: detector_distance</h1>
-<p><em>Distance from sample to detector</em></p>
+<p><em>Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/detector_distance">lambdaber:detector_distance</a>
 Alias: detector_distance</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: detector_distance</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,9 @@ Alias: detector_distance</p>
 <details>
 
 <pre><code class="language-yaml">name: detector_distance
-description: Distance from sample to detector
+description: Distance from sample to detector, typically specified in millimeters
+  (mm). Data providers may specify alternative units by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Detector_distance
@@ -990,9 +992,8 @@ alias: detector_distance
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: mm
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

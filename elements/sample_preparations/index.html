@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-sample_preparations">Slot: sample_preparations</h1>
-<p><em>Sample preparation procedures performed in this study</em></p>
+<p><em>All sample preparations</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/sample_preparations">lambdaber:sample_preparations</a>
 Alias: sample_preparations</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,8 @@ Alias: sample_preparations</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,13 +979,13 @@ Alias: sample_preparations</p>
 <details>
 
 <pre><code class="language-yaml">name: sample_preparations
-description: Sample preparation procedures performed in this study
+description: All sample preparations
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: sample_preparations
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: SamplePreparation
 multivalued: true
 inlined: true

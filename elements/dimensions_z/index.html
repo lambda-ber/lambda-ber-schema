@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-dimensions_z">Slot: dimensions_z</h1>
-<p><em>Image depth in pixels/slices</em></p>
+<p><em>Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/dimensions_z">lambdaber:dimensions_z</a>
 Alias: dimensions_z</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: dimensions_z</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: dimensions_z</p>
 <details>
 
 <pre><code class="language-yaml">name: dimensions_z
-description: Image depth in pixels/slices
+description: Image depth, typically specified in pixels or slices. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: dimensions_z
 owner: Image3D
 domain_of:
 - Image3D
-range: integer
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

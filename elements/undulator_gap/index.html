@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-undulator_gap">Slot: undulator_gap</h1>
-<p><em>Undulator gap setting in millimeters</em></p>
+<p><em>Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/undulator_gap">lambdaber:undulator_gap</a>
 Alias: undulator_gap</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: undulator_gap</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -991,7 +991,9 @@ Alias: undulator_gap</p>
 <details>
 
 <pre><code class="language-yaml">name: undulator_gap
-description: Undulator gap setting in millimeters
+description: Undulator gap setting, typically specified in millimeters (mm). Data
+  providers may specify alternative units by including the unit in the QuantityValue.
+  Primary undulator gap for beamlines with insertion devices.
 comments:
 - Primary undulator gap for beamlines with insertion devices
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -1002,9 +1004,8 @@ alias: undulator_gap
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: mm
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

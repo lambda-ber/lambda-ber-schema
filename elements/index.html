@@ -1228,6 +1228,14 @@ or "Structure of the human ribosome under different conditions."</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="Any/">Any</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Attribute/">Attribute</a></td>
+<td>A domain, measurement, attribute, property, or any descriptor for additional ...</td>
+</tr>
+<tr>
 <td><a href="AttributeGroup/">AttributeGroup</a></td>
 <td>A grouping of related data attributes that form a logical unit</td>
 </tr>
@@ -1320,6 +1328,30 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>X-ray crystallography specific preparation</td>
 </tr>
 <tr>
+<td><a href="AttributeValue/">AttributeValue</a></td>
+<td>The value for any attribute of an entity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DateTimeValue/">DateTimeValue</a></td>
+<td>A date or date and time value</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity value, representing a measurement with a numeric value and ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextValue/">TextValue</a></td>
+<td>A value described using a text string, optionally with a controlled vocabular...</td>
+</tr>
+<tr>
+<td><a href="ExperimentInstrumentAssociation/">ExperimentInstrumentAssociation</a></td>
+<td>M:N link between ExperimentRun and Instrument</td>
+</tr>
+<tr>
+<td><a href="ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>M:N link between ExperimentRun and Sample with role metadata</td>
+</tr>
+<tr>
 <td><a href="NamedThing/">NamedThing</a></td>
 <td>A named thing</td>
 </tr>
@@ -1337,7 +1369,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Dataset/">Dataset</a></td>
-<td>A collection of studies</td>
+<td>Root container holding flat entity collections and association tables</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentRun/">ExperimentRun</a></td>
@@ -1449,11 +1481,35 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td>A logical grouping of related experiments investigating a research question</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="WorkflowRun/">WorkflowRun</a></td>
 <td>A computational processing workflow execution</td>
+</tr>
+<tr>
+<td><a href="StudyExperimentAssociation/">StudyExperimentAssociation</a></td>
+<td>M:N link between Study and ExperimentRun</td>
+</tr>
+<tr>
+<td><a href="StudySampleAssociation/">StudySampleAssociation</a></td>
+<td>M:N link between Study and Sample with role metadata</td>
+</tr>
+<tr>
+<td><a href="StudyWorkflowAssociation/">StudyWorkflowAssociation</a></td>
+<td>M:N link between Study and WorkflowRun</td>
+</tr>
+<tr>
+<td><a href="WorkflowExperimentAssociation/">WorkflowExperimentAssociation</a></td>
+<td>M:N link between WorkflowRun and source ExperimentRuns</td>
+</tr>
+<tr>
+<td><a href="WorkflowInputAssociation/">WorkflowInputAssociation</a></td>
+<td>Links input DataFiles to WorkflowRun</td>
+</tr>
+<tr>
+<td><a href="WorkflowOutputAssociation/">WorkflowOutputAssociation</a></td>
+<td>Links output DataFiles to WorkflowRun</td>
 </tr>
 </tbody>
 </table>
@@ -1503,10 +1559,6 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>Type of affinity chromatography</td>
 </tr>
 <tr>
-<td><a href="aggregated_protein_views/">aggregated_protein_views</a></td>
-<td>Aggregated functional and structural annotations for proteins in this study</td>
-</tr>
-<tr>
 <td><a href="aggregation_assessment/">aggregation_assessment</a></td>
 <td>Assessment of protein aggregation state</td>
 </tr>
@@ -1548,7 +1600,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="anomalous_completeness/">anomalous_completeness</a></td>
-<td>Completeness of anomalous data as percentage</td>
+<td>Completeness of anomalous data as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="anomalous_multiplicity/">anomalous_multiplicity</a></td>
@@ -1568,11 +1620,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="astigmatism/">astigmatism</a></td>
-<td>Astigmatism value in Angstroms</td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="astigmatism_angle/">astigmatism_angle</a></td>
-<td>Astigmatism angle in degrees</td>
+<td>Astigmatism angle, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="astigmatism_target/">astigmatism_target</a></td>
@@ -1585,6 +1637,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="attenuator/">attenuator</a></td>
 <td>Attenuator setting used</td>
+</tr>
+<tr>
+<td><a href="attribute/">attribute</a></td>
+<td>The attribute being represented</td>
 </tr>
 <tr>
 <td><a href="autoloader_capacity/">autoloader_capacity</a></td>
@@ -1608,7 +1664,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="beam_center_x/">beam_center_x</a></td>
-<td>Beam center X coordinate</td>
+<td>Beam center X coordinate, typically specified in pixels ([px])</td>
 </tr>
 <tr>
 <td><a href="beam_center_x_px/">beam_center_x_px</a></td>
@@ -1616,7 +1672,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="beam_center_y/">beam_center_y</a></td>
-<td>Beam center Y coordinate</td>
+<td>Beam center Y coordinate, typically specified in pixels ([px])</td>
 </tr>
 <tr>
 <td><a href="beam_center_y_px/">beam_center_y_px</a></td>
@@ -1624,7 +1680,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="beam_energy/">beam_energy</a></td>
-<td>X-ray beam energy in keV</td>
+<td>X-ray beam energy, typically specified in kiloelectronvolts (keV)</td>
 </tr>
 <tr>
 <td><a href="beam_shift_x/">beam_shift_x</a></td>
@@ -1636,7 +1692,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="beam_size/">beam_size</a></td>
-<td>X-ray beam size in micrometers</td>
+<td>X-ray beam size, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="beam_size_max/">beam_size_max</a></td>
@@ -1648,7 +1704,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="beam_size_um/">beam_size_um</a></td>
-<td>Beam size in micrometers</td>
+<td>Beam size, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="beamline/">beamline</a></td>
@@ -1660,7 +1716,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="bfactor_dose_weighting/">bfactor_dose_weighting</a></td>
-<td>B-factor for dose weighting</td>
+<td>B-factor for dose weighting, typically specified in Angstroms squared</td>
 </tr>
 <tr>
 <td><a href="binding_affinity/">binding_affinity</a></td>
@@ -1704,7 +1760,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="blot_time/">blot_time</a></td>
-<td>Blotting time in seconds (range: 0</td>
+<td>Blotting time, typically specified in seconds (range: 0</td>
 </tr>
 <tr>
 <td><a href="blotter_height/">blotter_height</a></td>
@@ -1752,7 +1808,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="cell_path_length/">cell_path_length</a></td>
-<td>Path length in mm</td>
+<td>Path length, typically specified in millimeters (mm)</td>
 </tr>
 <tr>
 <td><a href="cell_type/">cell_type</a></td>
@@ -1764,7 +1820,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="chamber_temperature/">chamber_temperature</a></td>
-<td>Chamber temperature in Celsius</td>
+<td>Chamber temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="channel_name/">channel_name</a></td>
@@ -1832,15 +1888,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="completeness/">completeness</a></td>
-<td>Data completeness percentage</td>
+<td>Data completeness, typically specified as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="completeness_high_res_shell_percent/">completeness_high_res_shell_percent</a></td>
-<td>Completeness in highest resolution shell</td>
+<td>Completeness in highest resolution shell, typically specified as a percentage...</td>
 </tr>
 <tr>
 <td><a href="completeness_percent/">completeness_percent</a></td>
-<td>Data completeness percentage</td>
+<td>Data completeness as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="complex_stability/">complex_stability</a></td>
@@ -1856,7 +1912,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="concentration/">concentration</a></td>
-<td>Sample concentration in mg/mL or µM</td>
+<td>Sample concentration, typically specified in mg/mL or µM</td>
 </tr>
 <tr>
 <td><a href="concentration_method/">concentration_method</a></td>
@@ -1865,10 +1921,6 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="concentration_series/">concentration_series</a></td>
 <td>Concentration values for series measurements</td>
-</tr>
-<tr>
-<td><a href="concentration_unit/">concentration_unit</a></td>
-<td>Unit of concentration measurement</td>
 </tr>
 <tr>
 <td><a href="confidence_score/">confidence_score</a></td>
@@ -1916,7 +1968,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="cpu_hours/">cpu_hours</a></td>
-<td>CPU hours used</td>
+<td>CPU hours used, measured in hours</td>
 </tr>
 <tr>
 <td><a href="creation_date/">creation_date</a></td>
@@ -1936,7 +1988,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="cryoprotectant_concentration/">cryoprotectant_concentration</a></td>
-<td>Cryoprotectant concentration percentage</td>
+<td>Cryoprotectant concentration, typically specified as a percentage</td>
 </tr>
 <tr>
 <td><a href="crystal_cooling_capability/">crystal_cooling_capability</a></td>
@@ -1972,7 +2024,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="cs_used_in_estimation/">cs_used_in_estimation</a></td>
-<td>Spherical aberration (Cs) value used during CTF estimation (in millimeters); ...</td>
+<td>Spherical aberration (Cs) value used during CTF estimation, typically specifi...</td>
 </tr>
 <tr>
 <td><a href="ctf_estimation_params/">ctf_estimation_params</a></td>
@@ -1984,7 +2036,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="culture_volume_l/">culture_volume_l</a></td>
-<td>Culture volume in liters</td>
+<td>Culture volume, typically specified in liters (L)</td>
 </tr>
 <tr>
 <td><a href="current_status/">current_status</a></td>
@@ -1996,7 +2048,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="data_files/">data_files</a></td>
-<td>Data files generated or used in this study</td>
+<td>All data files</td>
 </tr>
 <tr>
 <td><a href="data_type/">data_type</a></td>
@@ -2019,12 +2071,16 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>URL to the database entry</td>
 </tr>
 <tr>
+<td><a href="date_added/">date_added</a></td>
+<td>Date when sample was added to study</td>
+</tr>
+<tr>
 <td><a href="definition/">definition</a></td>
 <td>The formal definition or meaning of the ontology term</td>
 </tr>
 <tr>
 <td><a href="defocus/">defocus</a></td>
-<td>Defocus value in micrometers</td>
+<td>Defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_range_increment/">defocus_range_increment</a></td>
@@ -2040,15 +2096,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="defocus_search_max/">defocus_search_max</a></td>
-<td>Maximum defocus search range in micrometers</td>
+<td>Maximum defocus search range, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_search_min/">defocus_search_min</a></td>
-<td>Minimum defocus search range in micrometers</td>
+<td>Minimum defocus search range, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_step/">defocus_step</a></td>
-<td>Defocus search step in micrometers</td>
+<td>Defocus search step, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_target/">defocus_target</a></td>
@@ -2056,11 +2112,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="defocus_u/">defocus_u</a></td>
-<td>Defocus U in micrometers</td>
+<td>Defocus U, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="defocus_v/">defocus_v</a></td>
-<td>Defocus V in micrometers</td>
+<td>Defocus V, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="delta_delta_g/">delta_delta_g</a></td>
@@ -2080,7 +2136,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="detector_distance/">detector_distance</a></td>
-<td>Distance from sample to detector</td>
+<td>Distance from sample to detector, typically specified in millimeters (mm)</td>
 </tr>
 <tr>
 <td><a href="detector_distance_max/">detector_distance_max</a></td>
@@ -2092,7 +2148,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="detector_distance_mm/">detector_distance_mm</a></td>
-<td>Detector distance in millimeters</td>
+<td>Detector distance, typically specified in millimeters</td>
 </tr>
 <tr>
 <td><a href="detector_manufacturer/">detector_manufacturer</a></td>
@@ -2116,15 +2172,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="dimensions_x/">dimensions_x</a></td>
-<td>Image width in pixels</td>
+<td>Image width, typically specified in pixels</td>
 </tr>
 <tr>
 <td><a href="dimensions_y/">dimensions_y</a></td>
-<td>Image height in pixels</td>
+<td>Image height, typically specified in pixels</td>
 </tr>
 <tr>
 <td><a href="dimensions_z/">dimensions_z</a></td>
-<td>Image depth in pixels/slices</td>
+<td>Image depth, typically specified in pixels or slices</td>
 </tr>
 <tr>
 <td><a href="disease_association/">disease_association</a></td>
@@ -2164,7 +2220,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="drift_total/">drift_total</a></td>
-<td>Total drift in Angstroms</td>
+<td>Total drift, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="drop_ratio_protein_to_reservoir/">drop_ratio_protein_to_reservoir</a></td>
@@ -2172,11 +2228,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="drop_volume/">drop_volume</a></td>
-<td>Total drop volume in nanoliters</td>
+<td>Total drop volume, typically specified in nanoliters</td>
 </tr>
 <tr>
 <td><a href="drop_volume_nl/">drop_volume_nl</a></td>
-<td>Total drop volume in nanoliters</td>
+<td>Total drop volume, typically specified in nanoliters</td>
 </tr>
 <tr>
 <td><a href="druggability_score/">druggability_score</a></td>
@@ -2188,7 +2244,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="dwell_time/">dwell_time</a></td>
-<td>Dwell time per pixel in milliseconds</td>
+<td>Dwell time per pixel, typically specified in milliseconds</td>
 </tr>
 <tr>
 <td><a href="ec_number/">ec_number</a></td>
@@ -2216,7 +2272,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="emission_wavelength/">emission_wavelength</a></td>
-<td>Emission wavelength in nanometers</td>
+<td>Emission wavelength, typically specified in nanometers</td>
 </tr>
 <tr>
 <td><a href="end_time/">end_time</a></td>
@@ -2260,7 +2316,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="ethane_temperature/">ethane_temperature</a></td>
-<td>Ethane temperature in Celsius</td>
+<td>Ethane temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="evidence_code/">evidence_code</a></td>
@@ -2280,7 +2336,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="excitation_wavelength/">excitation_wavelength</a></td>
-<td>Excitation wavelength in nanometers</td>
+<td>Excitation wavelength, typically specified in nanometers</td>
 </tr>
 <tr>
 <td><a href="experiment_code/">experiment_code</a></td>
@@ -2292,7 +2348,19 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="experiment_id/">experiment_id</a></td>
-<td>Reference to the source experiment</td>
+<td>Reference to the experiment run</td>
+</tr>
+<tr>
+<td><a href="experiment_instrument_associations/">experiment_instrument_associations</a></td>
+<td>Links between experiments and instruments (M:N)</td>
+</tr>
+<tr>
+<td><a href="experiment_runs/">experiment_runs</a></td>
+<td>All experiment runs (data collection sessions)</td>
+</tr>
+<tr>
+<td><a href="experiment_sample_associations/">experiment_sample_associations</a></td>
+<td>Links between experiments and samples (M:N with role)</td>
 </tr>
 <tr>
 <td><a href="experimental_conditions/">experimental_conditions</a></td>
@@ -2304,7 +2372,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="exposure_time/">exposure_time</a></td>
-<td>Exposure time per image in seconds</td>
+<td>Exposure time per image, typically specified in seconds (s)</td>
 </tr>
 <tr>
 <td><a href="exposure_time_per_frame/">exposure_time_per_frame</a></td>
@@ -2329,6 +2397,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="file_format/">file_format</a></td>
 <td>File format</td>
+</tr>
+<tr>
+<td><a href="file_id/">file_id</a></td>
+<td>Reference to the input data file</td>
 </tr>
 <tr>
 <td><a href="file_name/">file_name</a></td>
@@ -2364,7 +2436,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="flux/">flux</a></td>
-<td>Photon flux at sample position in photons/second</td>
+<td>Photon flux at sample position, typically specified in photons per second</td>
 </tr>
 <tr>
 <td><a href="flux_density/">flux_density</a></td>
@@ -2372,11 +2444,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="flux_end/">flux_end</a></td>
-<td>Photon flux at end of data collection in photons/second</td>
+<td>Photon flux at end of data collection, typically specified in photons per sec...</td>
 </tr>
 <tr>
 <td><a href="flux_photons_per_s/">flux_photons_per_s</a></td>
-<td>Photon flux in photons per second</td>
+<td>Photon flux, typically specified in photons per second</td>
 </tr>
 <tr>
 <td><a href="frame_grouping/">frame_grouping</a></td>
@@ -2384,7 +2456,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="frame_rate/">frame_rate</a></td>
-<td>Frames per second</td>
+<td>Frame rate, typically specified in frames per second</td>
 </tr>
 <tr>
 <td><a href="frames/">frames</a></td>
@@ -2440,15 +2512,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="glow_discharge_current/">glow_discharge_current</a></td>
-<td>Glow discharge current in milliamperes</td>
+<td>Glow discharge current, typically specified in milliamperes</td>
 </tr>
 <tr>
 <td><a href="glow_discharge_pressure/">glow_discharge_pressure</a></td>
-<td>Glow discharge pressure in millibar</td>
+<td>Glow discharge pressure, typically specified in millibars</td>
 </tr>
 <tr>
 <td><a href="glow_discharge_time/">glow_discharge_time</a></td>
-<td>Glow discharge time in seconds</td>
+<td>Glow discharge time, typically specified in seconds</td>
 </tr>
 <tr>
 <td><a href="go_terms/">go_terms</a></td>
@@ -2464,7 +2536,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="gpu_hours/">gpu_hours</a></td>
-<td>GPU hours used</td>
+<td>GPU hours used, measured in hours</td>
 </tr>
 <tr>
 <td><a href="grid_material/">grid_material</a></td>
@@ -2480,7 +2552,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="growth_temperature_c/">growth_temperature_c</a></td>
-<td>Growth temperature in Celsius</td>
+<td>Growth temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="gunlens/">gunlens</a></td>
@@ -2500,7 +2572,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="hole_size/">hole_size</a></td>
-<td>Hole size in micrometers (range: 0</td>
+<td>Hole size, typically specified in micrometers (range: 0</td>
 </tr>
 <tr>
 <td><a href="holes_per_group/">holes_per_group</a></td>
@@ -2512,11 +2584,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="humidity/">humidity</a></td>
-<td>Humidity percentage</td>
+<td>Humidity, typically specified as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="humidity_percentage/">humidity_percentage</a></td>
-<td>Chamber humidity during vitrification (range: 0-100)</td>
+<td>Chamber humidity during vitrification (range: 0-100), typically specified as ...</td>
 </tr>
 <tr>
 <td><a href="i_over_sigma/">i_over_sigma</a></td>
@@ -2528,7 +2600,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="ice_thickness_estimate/">ice_thickness_estimate</a></td>
-<td>Estimated ice thickness in nanometers</td>
+<td>Estimated ice thickness, typically specified in nanometers</td>
 </tr>
 <tr>
 <td><a href="id/">id</a></td>
@@ -2544,7 +2616,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="images/">images</a></td>
-<td>Images acquired or generated in this study</td>
+<td>All images</td>
 </tr>
 <tr>
 <td><a href="imaging_mode/">imaging_mode</a></td>
@@ -2564,15 +2636,19 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="induction_temperature_c/">induction_temperature_c</a></td>
-<td>Temperature during induction in Celsius</td>
+<td>Temperature during induction, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="induction_time_h/">induction_time_h</a></td>
-<td>Duration of induction in hours</td>
+<td>Duration of induction, typically specified in hours</td>
 </tr>
 <tr>
 <td><a href="initial_hit_condition/">initial_hit_condition</a></td>
 <td>Description of initial crystallization hit condition</td>
+</tr>
+<tr>
+<td><a href="input_type/">input_type</a></td>
+<td>Type of input for the workflow</td>
 </tr>
 <tr>
 <td><a href="insert_boundaries/">insert_boundaries</a></td>
@@ -2592,15 +2668,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="instrument_id/">instrument_id</a></td>
-<td>Reference to the instrument used</td>
-</tr>
-<tr>
-<td><a href="instrument_runs/">instrument_runs</a></td>
-<td>Experimental data collection runs performed in this study</td>
+<td>Reference to the instrument</td>
 </tr>
 <tr>
 <td><a href="instruments/">instruments</a></td>
-<td>Instruments used across all studies in this dataset</td>
+<td>All instruments used across studies</td>
 </tr>
 <tr>
 <td><a href="integrator_module/">integrator_module</a></td>
@@ -2628,7 +2700,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="ionic_strength/">ionic_strength</a></td>
-<td>Ionic strength in molar of material in solution</td>
+<td>Ionic strength, typically specified in molar (mol/L)</td>
 </tr>
 <tr>
 <td><a href="is_cofactor/">is_cofactor</a></td>
@@ -2664,7 +2736,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="laser_power/">laser_power</a></td>
-<td>Laser power in milliwatts or percentage</td>
+<td>Laser power, typically specified in milliwatts</td>
 </tr>
 <tr>
 <td><a href="last_updated/">last_updated</a></td>
@@ -2700,7 +2772,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="loop_size/">loop_size</a></td>
-<td>Loop size in micrometers</td>
+<td>Loop size, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="lysis_buffer/">lysis_buffer</a></td>
@@ -2724,11 +2796,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="map_sharpening_bfactor/">map_sharpening_bfactor</a></td>
-<td>B-factor used for map sharpening in Angstroms^2</td>
+<td>B-factor used for map sharpening, typically specified in Angstroms squared (Å...</td>
 </tr>
 <tr>
 <td><a href="mass_shift/">mass_shift</a></td>
 <td>Mass change due to modification (Da)</td>
+</tr>
+<tr>
+<td><a href="maximum_numeric_value/">maximum_numeric_value</a></td>
+<td>The maximum value part, expressed as a number, of the quantity value when the...</td>
 </tr>
 <tr>
 <td><a href="mean_i_over_sigma_i/">mean_i_over_sigma_i</a></td>
@@ -2744,7 +2820,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="memory_gb/">memory_gb</a></td>
-<td>Maximum memory used in GB</td>
+<td>Maximum memory used, typically specified in gigabytes (GB)</td>
 </tr>
 <tr>
 <td><a href="method/">method</a></td>
@@ -2757,6 +2833,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="microscope_software_version/">microscope_software_version</a></td>
 <td>Software version</td>
+</tr>
+<tr>
+<td><a href="minimum_numeric_value/">minimum_numeric_value</a></td>
+<td>The minimum value part, expressed as a number, of the quantity value when the...</td>
 </tr>
 <tr>
 <td><a href="model/">model</a></td>
@@ -2800,7 +2880,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="molecular_weight/">molecular_weight</a></td>
-<td>Molecular weight in kDa</td>
+<td>Molecular weight, typically specified in kilodaltons (kDa)</td>
 </tr>
 <tr>
 <td><a href="molprobity_score/">molprobity_score</a></td>
@@ -2820,7 +2900,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="mounting_temperature/">mounting_temperature</a></td>
-<td>Temperature during mounting in Kelvin</td>
+<td>Temperature during mounting, typically specified in Kelvin</td>
 </tr>
 <tr>
 <td><a href="multiplicity/">multiplicity</a></td>
@@ -2864,7 +2944,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="nominal_defocus/">nominal_defocus</a></td>
-<td>Nominal defocus value in micrometers</td>
+<td>Nominal defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="number_of_images/">number_of_images</a></td>
@@ -2877,6 +2957,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="number_of_waters/">number_of_waters</a></td>
 <td>Number of water molecules modeled</td>
+</tr>
+<tr>
+<td><a href="numeric_value/">numeric_value</a></td>
+<td>The numerical part of a quantity value, expressed as a number</td>
 </tr>
 <tr>
 <td><a href="numerical_aperture/">numerical_aperture</a></td>
@@ -2924,11 +3008,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="oscillation_angle/">oscillation_angle</a></td>
-<td>Oscillation angle per image</td>
+<td>Oscillation angle per image, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="oscillation_per_image_deg/">oscillation_per_image_deg</a></td>
-<td>Oscillation angle per image in degrees</td>
+<td>Oscillation angle per image, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="outlier_rejection_method/">outlier_rejection_method</a></td>
@@ -2941,6 +3025,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="output_files/">output_files</a></td>
 <td>Output files generated</td>
+</tr>
+<tr>
+<td><a href="output_type/">output_type</a></td>
+<td>Type of output from the workflow</td>
 </tr>
 <tr>
 <td><a href="parameters_file_path/">parameters_file_path</a></td>
@@ -3004,15 +3092,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="pinhole_size/">pinhole_size</a></td>
-<td>Pinhole size in Airy units for confocal microscopy</td>
+<td>Pinhole size, typically specified in Airy units for confocal microscopy</td>
 </tr>
 <tr>
 <td><a href="pixel_size/">pixel_size</a></td>
-<td>Pixel size in Angstroms</td>
+<td>Pixel size, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="pixel_size_calibrated/">pixel_size_calibrated</a></td>
-<td>Calibrated pixel size for this experiment</td>
+<td>Calibrated pixel size for this experiment, typically specified in Angstroms (...</td>
 </tr>
 <tr>
 <td><a href="pixel_size_physical/">pixel_size_physical</a></td>
@@ -3024,15 +3112,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="pixel_size_unbinned/">pixel_size_unbinned</a></td>
-<td>Unbinned pixel size in Angstroms per pixel</td>
+<td>Unbinned pixel size, typically specified in Angstroms per pixel</td>
 </tr>
 <tr>
 <td><a href="pixel_size_x/">pixel_size_x</a></td>
-<td>Pixel size X dimension</td>
+<td>Pixel size X dimension, typically specified in micrometers (µm)</td>
 </tr>
 <tr>
 <td><a href="pixel_size_y/">pixel_size_y</a></td>
-<td>Pixel size Y dimension</td>
+<td>Pixel size Y dimension, typically specified in micrometers (µm)</td>
 </tr>
 <tr>
 <td><a href="plasma_treatment/">plasma_treatment</a></td>
@@ -3051,6 +3139,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>Date of sample preparation</td>
 </tr>
 <tr>
+<td><a href="preparation_id/">preparation_id</a></td>
+<td>Specific preparation used for this sample in this experiment</td>
+</tr>
+<tr>
 <td><a href="preparation_method/">preparation_method</a></td>
 <td>Method used to prepare the sample</td>
 </tr>
@@ -3060,7 +3152,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="pressure/">pressure</a></td>
-<td>Pressure in kPa</td>
+<td>Pressure, typically specified in kilopascals (kPa)</td>
 </tr>
 <tr>
 <td><a href="principal_motions/">principal_motions</a></td>
@@ -3116,7 +3208,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="protein_constructs/">protein_constructs</a></td>
-<td>Protein constructs and cloning information</td>
+<td>All protein constructs</td>
 </tr>
 <tr>
 <td><a href="protein_id/">protein_id</a></td>
@@ -3156,7 +3248,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="purity_percentage/">purity_percentage</a></td>
-<td>Sample purity as percentage (range: 0-100)</td>
+<td>Sample purity, typically specified as a percentage (range: 0-100)</td>
 </tr>
 <tr>
 <td><a href="q_range_max/">q_range_max</a></td>
@@ -3200,7 +3292,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="ramachandran_favored/">ramachandran_favored</a></td>
-<td>Percentage of residues in favored Ramachandran regions</td>
+<td>Percentage of residues in favored Ramachandran regions (0-100)</td>
 </tr>
 <tr>
 <td><a href="ramachandran_favored_percent/">ramachandran_favored_percent</a></td>
@@ -3208,7 +3300,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="ramachandran_outliers/">ramachandran_outliers</a></td>
-<td>Percentage of Ramachandran outliers</td>
+<td>Percentage of Ramachandran outliers (0-100)</td>
 </tr>
 <tr>
 <td><a href="ramachandran_outliers_percent/">ramachandran_outliers_percent</a></td>
@@ -3217,6 +3309,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="raw_data_location/">raw_data_location</a></td>
 <td>Location of raw data files</td>
+</tr>
+<tr>
+<td><a href="raw_value/">raw_value</a></td>
+<td>The value that was specified in raw form, i</td>
 </tr>
 <tr>
 <td><a href="reconstruction_method/">reconstruction_method</a></td>
@@ -3244,7 +3340,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="reservoir_volume_ul/">reservoir_volume_ul</a></td>
-<td>Reservoir volume in microliters</td>
+<td>Reservoir volume, typically specified in microliters</td>
 </tr>
 <tr>
 <td><a href="residue_range/">residue_range</a></td>
@@ -3256,7 +3352,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="resolution/">resolution</a></td>
-<td>Resolution at edge of detector in Angstroms</td>
+<td>Resolution at edge of detector, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="resolution_0_143/">resolution_0_143</a></td>
@@ -3272,27 +3368,27 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="resolution_at_corner/">resolution_at_corner</a></td>
-<td>Resolution at corner of detector in Angstroms</td>
+<td>Resolution at corner of detector, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="resolution_fit_limit/">resolution_fit_limit</a></td>
-<td>Resolution fit limit in Angstroms</td>
+<td>Resolution fit limit, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="resolution_high/">resolution_high</a></td>
-<td>High resolution limit</td>
+<td>High resolution limit, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="resolution_high_shell_a/">resolution_high_shell_a</a></td>
-<td>High resolution shell limit in Angstroms</td>
+<td>High resolution shell limit, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="resolution_low/">resolution_low</a></td>
-<td>Low resolution limit</td>
+<td>Low resolution limit, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="resolution_low_a/">resolution_low_a</a></td>
-<td>Low resolution limit in Angstroms</td>
+<td>Low resolution limit, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="restraints_other/">restraints_other</a></td>
@@ -3304,7 +3400,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="rg/">rg</a></td>
-<td>Radius of gyration in Angstroms</td>
+<td>Radius of gyration, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="rmerge/">rmerge</a></td>
@@ -3312,11 +3408,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="rmsd_angles/">rmsd_angles</a></td>
-<td>RMSD from ideal bond angles</td>
+<td>RMSD from ideal bond angles, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="rmsd_bonds/">rmsd_bonds</a></td>
-<td>RMSD from ideal bond lengths</td>
+<td>RMSD from ideal bond lengths, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="rmsd_from_reference/">rmsd_from_reference</a></td>
@@ -3325,6 +3421,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="rmsd_threshold/">rmsd_threshold</a></td>
 <td>RMSD threshold for clustering (Angstroms)</td>
+</tr>
+<tr>
+<td><a href="role/">role</a></td>
+<td>Role of sample in study (e</td>
 </tr>
 <tr>
 <td><a href="rpim/">rpim</a></td>
@@ -3336,7 +3436,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="sample_applied_volume/">sample_applied_volume</a></td>
-<td>Volume of sample applied in microliters</td>
+<td>Volume of sample applied, typically specified in microliters</td>
 </tr>
 <tr>
 <td><a href="sample_cell_type/">sample_cell_type</a></td>
@@ -3356,7 +3456,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="sample_preparations/">sample_preparations</a></td>
-<td>Sample preparation procedures performed in this study</td>
+<td>All sample preparations</td>
 </tr>
 <tr>
 <td><a href="sample_type/">sample_type</a></td>
@@ -3364,7 +3464,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="samples/">samples</a></td>
-<td>Experimental samples used in this study, including biological samples</td>
+<td>All samples across all studies</td>
 </tr>
 <tr>
 <td><a href="scaler_module/">scaler_module</a></td>
@@ -3448,11 +3548,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="slit_gap_horizontal/">slit_gap_horizontal</a></td>
-<td>Horizontal slit gap aperture in micrometers</td>
+<td>Horizontal slit gap aperture, typically specified in micrometers (µm)</td>
 </tr>
 <tr>
 <td><a href="slit_gap_vertical/">slit_gap_vertical</a></td>
-<td>Vertical slit gap aperture in micrometers</td>
+<td>Vertical slit gap aperture, typically specified in micrometers (µm)</td>
 </tr>
 <tr>
 <td><a href="soak_compound/">soak_compound</a></td>
@@ -3488,7 +3588,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="spectral_resolution/">spectral_resolution</a></td>
-<td>Spectral resolution in cm⁻¹</td>
+<td>Spectral resolution, typically specified in inverse centimeters (cm⁻¹)</td>
 </tr>
 <tr>
 <td><a href="split_strategy/">split_strategy</a></td>
@@ -3500,15 +3600,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="stage_position_x/">stage_position_x</a></td>
-<td>Stage X position in micrometers</td>
+<td>Stage X position, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="stage_position_y/">stage_position_y</a></td>
-<td>Stage Y position in micrometers</td>
+<td>Stage Y position, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="stage_position_z/">stage_position_z</a></td>
-<td>Stage Z position in micrometers</td>
+<td>Stage Z position, typically specified in micrometers</td>
 </tr>
 <tr>
 <td><a href="stage_tilt/">stage_tilt</a></td>
@@ -3516,7 +3616,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="start_angle/">start_angle</a></td>
-<td>Starting rotation angle</td>
+<td>Starting rotation angle, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="start_time/">start_time</a></td>
@@ -3540,7 +3640,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="storage_gb/">storage_gb</a></td>
-<td>Storage used in GB</td>
+<td>Storage used, typically specified in gigabytes (GB)</td>
 </tr>
 <tr>
 <td><a href="storage_uri/">storage_uri</a></td>
@@ -3560,7 +3660,23 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="studies/">studies</a></td>
-<td>Individual research studies contained in this dataset</td>
+<td>All studies in this dataset</td>
+</tr>
+<tr>
+<td><a href="study_experiment_associations/">study_experiment_associations</a></td>
+<td>Links between studies and experiments (M:N)</td>
+</tr>
+<tr>
+<td><a href="study_id/">study_id</a></td>
+<td>Reference to the study</td>
+</tr>
+<tr>
+<td><a href="study_sample_associations/">study_sample_associations</a></td>
+<td>Links between studies and samples (M:N)</td>
+</tr>
+<tr>
+<td><a href="study_workflow_associations/">study_workflow_associations</a></td>
+<td>Links between studies and workflows (M:N)</td>
 </tr>
 <tr>
 <td><a href="super_resolution/">super_resolution</a></td>
@@ -3612,11 +3728,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="temperature/">temperature</a></td>
-<td>Storage temperature in Celsius</td>
+<td>Storage temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="temperature_c/">temperature_c</a></td>
-<td>Crystallization temperature in Celsius</td>
+<td>Crystallization temperature, typically specified in degrees Celsius</td>
 </tr>
 <tr>
 <td><a href="temperature_control/">temperature_control</a></td>
@@ -3628,11 +3744,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="temperature_k/">temperature_k</a></td>
-<td>Data collection temperature in Kelvin</td>
-</tr>
-<tr>
-<td><a href="temperature_unit/">temperature_unit</a></td>
-<td>Temperature unit</td>
+<td>Data collection temperature, typically specified in Kelvin</td>
 </tr>
 <tr>
 <td><a href="terms/">terms</a></td>
@@ -3668,11 +3780,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="total_rotation/">total_rotation</a></td>
-<td>Total rotation range collected</td>
+<td>Total rotation range collected, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="total_rotation_deg/">total_rotation_deg</a></td>
-<td>Total rotation range in degrees</td>
+<td>Total rotation range, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="transition_pathways/">transition_pathways</a></td>
@@ -3680,15 +3792,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="transmission/">transmission</a></td>
-<td>X-ray beam transmission as percentage (0-100)</td>
+<td>X-ray beam transmission as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="transmission_percent/">transmission_percent</a></td>
-<td>Beam transmission percentage</td>
+<td>Beam transmission, typically specified as a percentage (0-100)</td>
 </tr>
 <tr>
 <td><a href="undulator_gap/">undulator_gap</a></td>
-<td>Undulator gap setting in millimeters</td>
+<td>Undulator gap setting, typically specified in millimeters (mm)</td>
 </tr>
 <tr>
 <td><a href="uniprot_id/">uniprot_id</a></td>
@@ -3696,31 +3808,35 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="unit/">unit</a></td>
-<td>Unit of measurement</td>
+<td>The unit of measurement</td>
 </tr>
 <tr>
 <td><a href="unit_cell_a/">unit_cell_a</a></td>
-<td>Unit cell parameter a</td>
+<td>Unit cell parameter a, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="unit_cell_alpha/">unit_cell_alpha</a></td>
-<td>Unit cell angle alpha</td>
+<td>Unit cell angle alpha, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="unit_cell_b/">unit_cell_b</a></td>
-<td>Unit cell parameter b</td>
+<td>Unit cell parameter b, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="unit_cell_beta/">unit_cell_beta</a></td>
-<td>Unit cell angle beta</td>
+<td>Unit cell angle beta, typically specified in degrees</td>
 </tr>
 <tr>
 <td><a href="unit_cell_c/">unit_cell_c</a></td>
-<td>Unit cell parameter c</td>
+<td>Unit cell parameter c, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="unit_cell_gamma/">unit_cell_gamma</a></td>
-<td>Unit cell angle gamma</td>
+<td>Unit cell angle gamma, typically specified in degrees</td>
+</tr>
+<tr>
+<td><a href="unit_cv_id/">unit_cv_id</a></td>
+<td>The unit of the quantity, expressed as a CURIE from the Unit Ontology (e</td>
 </tr>
 <tr>
 <td><a href="validation_report_path/">validation_report_path</a></td>
@@ -3728,7 +3844,11 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="value/">value</a></td>
-<td>Numerical value of the property</td>
+<td>The value, as a text string</td>
+</tr>
+<tr>
+<td><a href="value_cv_id/">value_cv_id</a></td>
+<td>For values that are in a controlled vocabulary (CV), this attribute should ca...</td>
 </tr>
 <tr>
 <td><a href="variable_residues/">variable_residues</a></td>
@@ -3756,15 +3876,15 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="voltage_used_in_estimation/">voltage_used_in_estimation</a></td>
-<td>Accelerating voltage value used during CTF estimation (in kV); may differ fro...</td>
+<td>Accelerating voltage value used during CTF estimation, typically specified in...</td>
 </tr>
 <tr>
 <td><a href="voxel_size/">voxel_size</a></td>
-<td>Voxel size in Angstroms</td>
+<td>Voxel size, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="wait_time/">wait_time</a></td>
-<td>Wait time before blotting in seconds</td>
+<td>Wait time before blotting, typically specified in seconds</td>
 </tr>
 <tr>
 <td><a href="wash_buffer/">wash_buffer</a></td>
@@ -3772,19 +3892,19 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="wavelength/">wavelength</a></td>
-<td>X-ray wavelength</td>
+<td>X-ray wavelength, typically specified in Angstroms (Å)</td>
 </tr>
 <tr>
 <td><a href="wavelength_a/">wavelength_a</a></td>
-<td>X-ray wavelength in Angstroms</td>
+<td>X-ray wavelength, typically specified in Angstroms</td>
 </tr>
 <tr>
 <td><a href="wavenumber_max/">wavenumber_max</a></td>
-<td>Maximum wavenumber in cm⁻¹</td>
+<td>Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹)</td>
 </tr>
 <tr>
 <td><a href="wavenumber_min/">wavenumber_min</a></td>
-<td>Minimum wavenumber in cm⁻¹</td>
+<td>Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹)</td>
 </tr>
 <tr>
 <td><a href="website/">website</a></td>
@@ -3796,7 +3916,7 @@ or "Structure of the human ribosome under different conditions."</p>
 </tr>
 <tr>
 <td><a href="wilson_b_factor/">wilson_b_factor</a></td>
-<td>Wilson B-factor</td>
+<td>Wilson B-factor, typically specified in Angstroms squared (Ų)</td>
 </tr>
 <tr>
 <td><a href="wilson_b_factor_a2/">wilson_b_factor_a2</a></td>
@@ -3807,8 +3927,24 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>Human-friendly identifier for the computational workflow run (e</td>
 </tr>
 <tr>
+<td><a href="workflow_experiment_associations/">workflow_experiment_associations</a></td>
+<td>Links between workflows and source experiments (M:N)</td>
+</tr>
+<tr>
+<td><a href="workflow_id/">workflow_id</a></td>
+<td>Reference to the workflow run</td>
+</tr>
+<tr>
+<td><a href="workflow_input_associations/">workflow_input_associations</a></td>
+<td>Links between workflows and input files</td>
+</tr>
+<tr>
+<td><a href="workflow_output_associations/">workflow_output_associations</a></td>
+<td>Links between workflows and output files</td>
+</tr>
+<tr>
 <td><a href="workflow_runs/">workflow_runs</a></td>
-<td>Computational workflow executions for data processing in this study</td>
+<td>All workflow runs (computational processing)</td>
 </tr>
 <tr>
 <td><a href="workflow_type/">workflow_type</a></td>
@@ -3838,6 +3974,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>Sources of functional annotations</td>
 </tr>
 <tr>
+<td><a href="BeamlineEnum/">BeamlineEnum</a></td>
+<td>Specific beamline instances at DOE and other major structural biology facilit...</td>
+</tr>
+<tr>
 <td><a href="BindingAffinityTypeEnum/">BindingAffinityTypeEnum</a></td>
 <td>Types of binding affinity measurements</td>
 </tr>
@@ -3860,10 +4000,6 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="ComplexStabilityEnum/">ComplexStabilityEnum</a></td>
 <td>Stability of protein complexes</td>
-</tr>
-<tr>
-<td><a href="ConcentrationUnitEnum/">ConcentrationUnitEnum</a></td>
-<td>Units for concentration measurement</td>
 </tr>
 <tr>
 <td><a href="ConformationalStateEnum/">ConformationalStateEnum</a></td>
@@ -3900,6 +4036,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="ExperimentalMethodEnum/">ExperimentalMethodEnum</a></td>
 <td>Experimental methods for structure determination</td>
+</tr>
+<tr>
+<td><a href="ExperimentSampleRoleEnum/">ExperimentSampleRoleEnum</a></td>
+<td>Role of a sample in an experiment</td>
 </tr>
 <tr>
 <td><a href="ExpressionSystemEnum/">ExpressionSystemEnum</a></td>
@@ -3942,8 +4082,16 @@ or "Structure of the human ribosome under different conditions."</p>
 <td>Imaging modes for electron microscopy</td>
 </tr>
 <tr>
+<td><a href="InputTypeEnum/">InputTypeEnum</a></td>
+<td>Type of input for a workflow</td>
+</tr>
+<tr>
 <td><a href="InstrumentCategoryEnum/">InstrumentCategoryEnum</a></td>
 <td>Categories of instruments based on their nature and location</td>
+</tr>
+<tr>
+<td><a href="InstrumentRoleEnum/">InstrumentRoleEnum</a></td>
+<td>Role of an instrument in an experiment</td>
 </tr>
 <tr>
 <td><a href="InstrumentStatusEnum/">InstrumentStatusEnum</a></td>
@@ -3960,6 +4108,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="MutationTypeEnum/">MutationTypeEnum</a></td>
 <td>Types of mutations</td>
+</tr>
+<tr>
+<td><a href="OutputTypeEnum/">OutputTypeEnum</a></td>
+<td>Types of outputs from computational workflows</td>
 </tr>
 <tr>
 <td><a href="PhasingMethodEnum/">PhasingMethodEnum</a></td>
@@ -3980,6 +4132,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="PurificationStepEnum/">PurificationStepEnum</a></td>
 <td>Protein purification steps and methods</td>
+</tr>
+<tr>
+<td><a href="SampleRoleEnum/">SampleRoleEnum</a></td>
+<td>Role of a sample in a study</td>
 </tr>
 <tr>
 <td><a href="SampleTypeEnum/">SampleTypeEnum</a></td>
@@ -4004,10 +4160,6 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="TechniqueEnum/">TechniqueEnum</a></td>
 <td>Structural biology techniques</td>
-</tr>
-<tr>
-<td><a href="TemperatureUnitEnum/">TemperatureUnitEnum</a></td>
-<td>Units for temperature measurement</td>
 </tr>
 <tr>
 <td><a href="VitrificationMethodEnum/">VitrificationMethodEnum</a></td>
@@ -4055,6 +4207,10 @@ or "Structure of the human ribosome under different conditions."</p>
 <tr>
 <td><a href="Decimal/">Decimal</a></td>
 <td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="DecimalDegree/">DecimalDegree</a></td>
+<td>A decimal degree expresses latitude or longitude as decimal fractions</td>
 </tr>
 <tr>
 <td><a href="Double/">Double</a></td>

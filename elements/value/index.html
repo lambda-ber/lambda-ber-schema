@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-value">Slot: value</h1>
-<p><em>Numerical value of the property</em></p>
+<p><em>The value, as a text string.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/value">lambdaber:value</a>
 Alias: value</p>
 <!-- no inheritance hierarchy -->
@@ -936,6 +936,16 @@ Alias: value</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A value described using a text string, optionally with a controlled vocabular...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DateTimeValue/">DateTimeValue</a></td>
+<td>A date or date and time value</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../BiophysicalProperty/">BiophysicalProperty</a></td>
 <td>Measured or calculated biophysical properties</td>
 <td>no</td>
@@ -944,12 +954,7 @@ Alias: value</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -979,15 +984,15 @@ Alias: value</p>
 <details>
 
 <pre><code class="language-yaml">name: value
-description: Numerical value of the property
+description: The value, as a text string.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: value
-owner: BiophysicalProperty
 domain_of:
+- TextValue
+- DateTimeValue
 - BiophysicalProperty
-range: float
-required: true
+range: string
 
 </code></pre>
 

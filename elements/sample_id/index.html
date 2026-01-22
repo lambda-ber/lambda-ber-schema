@@ -920,13 +920,18 @@ Alias: sample_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentRun/">ExperimentRun</a></td>
-<td>An experimental data collection session</td>
+<td><a href="../ExperimentSampleAssociation/">ExperimentSampleAssociation</a></td>
+<td>M:N link between ExperimentRun and Sample with role metadata</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../SamplePreparation/">SamplePreparation</a></td>
 <td>A process that prepares a sample for imaging</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StudySampleAssociation/">StudySampleAssociation</a></td>
+<td>M:N link between Study and Sample with role metadata</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -962,7 +967,8 @@ Alias: sample_id</p>
 alias: sample_id
 domain_of:
 - SamplePreparation
-- ExperimentRun
+- StudySampleAssociation
+- ExperimentSampleAssociation
 range: string
 
 </code></pre>

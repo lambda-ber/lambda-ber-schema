@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-beam_size">Slot: beam_size</h1>
-<p><em>X-ray beam size in micrometers</em></p>
+<p><em>X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/beam_size">lambdaber:beam_size</a>
 Alias: beam_size</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: beam_size</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: beam_size</p>
 <details>
 
 <pre><code class="language-yaml">name: beam_size
-description: X-ray beam size in micrometers
+description: X-ray beam size, typically specified in micrometers. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: beam_size
 owner: XRFImage
 domain_of:
 - XRFImage
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -953,11 +944,7 @@ Alias: anomalous_multiplicity</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Redundancy of Bijvoet pairs</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -981,10 +968,6 @@ Alias: anomalous_multiplicity</p>
 <td>native</td>
 <td>lambdaber:anomalous_multiplicity</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>ispyb:AutoProcScalingStatistics.anomalousMultiplicity</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -992,17 +975,14 @@ Alias: anomalous_multiplicity</p>
 
 <pre><code class="language-yaml">name: anomalous_multiplicity
 description: Multiplicity of anomalous data
-comments:
-- Redundancy of Bijvoet pairs
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.anomalousMultiplicity
 rank: 1000
 alias: anomalous_multiplicity
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

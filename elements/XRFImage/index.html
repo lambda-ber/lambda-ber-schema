@@ -434,13 +434,49 @@
 
       XRFImage : astigmatism
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : beam_energy
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : beam_energy
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : beam_size
+
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : beam_size
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRFImage : calibration_standard
 
       XRFImage : defocus
+
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRFImage : description
 
@@ -459,23 +495,86 @@
 
       XRFImage : dimensions_x
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : dimensions_y
+
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRFImage : dose
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : dwell_time
+
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : dwell_time
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRFImage : elements_measured
 
       XRFImage : exposure_time
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : file_name
 
       XRFImage : flux
 
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : flux
+        click QuantityValue href "../QuantityValue/"
+
+
+
       XRFImage : id
 
       XRFImage : pixel_size
+
+
+
+
+
+        XRFImage --&gt; "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
 
       XRFImage : source_type
 
@@ -518,20 +617,20 @@
 <tbody>
 <tr>
 <td><a href="../beam_energy/">beam_energy</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>X-ray beam energy in keV</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>X-ray beam energy, typically specified in kiloelectronvolts (keV)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../beam_size/">beam_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>X-ray beam size in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>X-ray beam size, typically specified in micrometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../dwell_time/">dwell_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Dwell time per pixel in milliseconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Dwell time per pixel, typically specified in milliseconds</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -560,8 +659,8 @@
 </tr>
 <tr>
 <td><a href="../flux/">flux</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Photon flux in photons/second</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Photon flux, typically specified in photons per second</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -572,14 +671,14 @@
 </tr>
 <tr>
 <td><a href="../defocus/">defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus value in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus value, typically specified in micrometers</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
@@ -596,31 +695,31 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pixel size, typically specified in Angstroms</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_x/">dimensions_x</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image width in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image width, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_y/">dimensions_y</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image height in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image height, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dose/">dose</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Electron dose in e-/Å²</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
@@ -679,29 +778,35 @@ is_a: Image2D
 attributes:
   beam_energy:
     name: beam_energy
-    description: X-ray beam energy in keV
+    description: X-ray beam energy, typically specified in kiloelectronvolts (keV).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - XRFImage
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size:
     name: beam_size
-    description: X-ray beam size in micrometers
+    description: X-ray beam size, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   dwell_time:
     name: dwell_time
-    description: Dwell time per pixel in milliseconds
+    description: Dwell time per pixel, typically specified in milliseconds. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   elements_measured:
     name: elements_measured
     description: Elements detected and measured
@@ -742,12 +847,14 @@ attributes:
     range: string
   flux:
     name: flux
-    description: Photon flux in photons/second
+    description: Photon flux, typically specified in photons per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - ExperimentRun
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   calibration_standard:
     name: calibration_standard
     description: Reference standard used for calibration
@@ -768,7 +875,8 @@ is_a: Image2D
 attributes:
   beam_energy:
     name: beam_energy
-    description: X-ray beam energy in keV
+    description: X-ray beam energy, typically specified in kiloelectronvolts (keV).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: beam_energy
@@ -776,27 +884,32 @@ attributes:
     domain_of:
     - XRFImage
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size:
     name: beam_size
-    description: X-ray beam size in micrometers
+    description: X-ray beam size, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: beam_size
     owner: XRFImage
     domain_of:
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   dwell_time:
     name: dwell_time
-    description: Dwell time per pixel in milliseconds
+    description: Dwell time per pixel, typically specified in milliseconds. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dwell_time
     owner: XRFImage
     domain_of:
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   elements_measured:
     name: elements_measured
     description: Elements detected and measured
@@ -845,14 +958,16 @@ attributes:
     range: string
   flux:
     name: flux
-    description: Photon flux in photons/second
+    description: Photon flux, typically specified in photons per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: flux
     owner: XRFImage
     domain_of:
     - ExperimentRun
     - XRFImage
-    range: float
+    range: QuantityValue
+    inlined: true
   calibration_standard:
     name: calibration_standard
     description: Reference standard used for calibration
@@ -865,24 +980,28 @@ attributes:
     range: string
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: XRFImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: XRFImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -906,7 +1025,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -914,30 +1034,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: XRFImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: XRFImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: XRFImage
@@ -945,7 +1071,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -956,7 +1083,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -969,6 +1097,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

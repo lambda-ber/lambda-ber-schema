@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-oscillation_angle">Slot: oscillation_angle</h1>
-<p><em>Oscillation angle per image</em></p>
+<p><em>Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/oscillation_angle">lambdaber:oscillation_angle</a>
 Alias: oscillation_angle</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: oscillation_angle</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: oscillation_angle</p>
 <details>
 
 <pre><code class="language-yaml">name: oscillation_angle
-description: Oscillation angle per image
+description: Oscillation angle per image, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Angle_increment
@@ -990,9 +991,8 @@ alias: oscillation_angle
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

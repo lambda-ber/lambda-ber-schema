@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-hole_size">Slot: hole_size</h1>
-<p><em>Hole size in micrometers (range: 0.5-5.0)</em></p>
+<p><em>Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/hole_size">lambdaber:hole_size</a>
 Alias: hole_size</p>
 <!-- no inheritance hierarchy -->
@@ -944,15 +944,7 @@ Alias: hole_size</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Maximum Value: 5</p>
-</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -982,16 +974,16 @@ Alias: hole_size</p>
 <details>
 
 <pre><code class="language-yaml">name: hole_size
-description: 'Hole size in micrometers (range: 0.5-5.0)'
+description: 'Hole size, typically specified in micrometers (range: 0.5-5.0). Data
+  providers may specify alternative units by including the unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: hole_size
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
-minimum_value: 0.5
-maximum_value: 5.0
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

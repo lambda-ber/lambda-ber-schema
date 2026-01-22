@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-data_files">Slot: data_files</h1>
-<p><em>Data files generated or used in this study</em></p>
+<p><em>All data files</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/data_files">lambdaber:data_files</a>
 Alias: data_files</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,8 @@ Alias: data_files</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,13 +979,13 @@ Alias: data_files</p>
 <details>
 
 <pre><code class="language-yaml">name: data_files
-description: Data files generated or used in this study
+description: All data files
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: data_files
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: DataFile
 multivalued: true
 inlined: true

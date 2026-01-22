@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-concentration">Slot: concentration</h1>
-<p><em>Sample concentration in mg/mL or µM</em></p>
+<p><em>Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/concentration">lambdaber:concentration</a>
 Alias: concentration</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: concentration</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: concentration</p>
 <details>
 
 <pre><code class="language-yaml">name: concentration
-description: Sample concentration in mg/mL or µM
+description: Sample concentration, typically specified in mg/mL or µM. Data providers
+  may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: concentration
 owner: Sample
 domain_of:
 - Sample
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

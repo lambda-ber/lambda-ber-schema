@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-mounting_temperature">Slot: mounting_temperature</h1>
-<p><em>Temperature during mounting in Kelvin</em></p>
+<p><em>Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Temperature">nsls2:Temperature</a>
 Alias: mounting_temperature</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: mounting_temperature</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -987,7 +987,8 @@ Alias: mounting_temperature</p>
 <details>
 
 <pre><code class="language-yaml">name: mounting_temperature
-description: Temperature during mounting in Kelvin
+description: Temperature during mounting, typically specified in Kelvin. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 comments:
 - 'Maps to NSLS2 spreadsheet: Temperature'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -997,7 +998,8 @@ alias: mounting_temperature
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

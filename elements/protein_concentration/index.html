@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -930,7 +921,7 @@
 
 <h1 id="slot-protein_concentration">Slot: protein_concentration</h1>
 <p><em>Protein concentration for crystallization in mg/mL</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration">nsls2:Protein_Concentration</a>
+<p>URI: <a href="https://w3id.org/lambda-ber-schema/protein_concentration">lambdaber:protein_concentration</a>
 Alias: protein_concentration</p>
 <!-- no inheritance hierarchy -->
 
@@ -953,11 +944,7 @@ Alias: protein_concentration</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to NSLS2 spreadsheet: Protein_Concentration</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -975,7 +962,7 @@ Alias: protein_concentration</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Protein_Concentration</td>
+<td>lambdaber:protein_concentration</td>
 </tr>
 <tr>
 <td>native</td>
@@ -988,16 +975,14 @@ Alias: protein_concentration</p>
 
 <pre><code class="language-yaml">name: protein_concentration
 description: Protein concentration for crystallization in mg/mL
-comments:
-- 'Maps to NSLS2 spreadsheet: Protein_Concentration'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
-slot_uri: nsls2:Protein_Concentration
 alias: protein_concentration
 owner: CrystallizationConditions
 domain_of:
 - CrystallizationConditions
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

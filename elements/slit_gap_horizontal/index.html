@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-slit_gap_horizontal">Slot: slit_gap_horizontal</h1>
-<p><em>Horizontal slit gap aperture in micrometers</em></p>
+<p><em>Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/slit_gap_horizontal">lambdaber:slit_gap_horizontal</a>
 Alias: slit_gap_horizontal</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: slit_gap_horizontal</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: slit_gap_horizontal</p>
 <details>
 
 <pre><code class="language-yaml">name: slit_gap_horizontal
-description: Horizontal slit gap aperture in micrometers
+description: Horizontal slit gap aperture, typically specified in micrometers (µm).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - ispyb:DataCollection.slitGapHorizontal
@@ -987,9 +988,8 @@ alias: slit_gap_horizontal
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: um
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

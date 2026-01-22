@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-protein_constructs">Slot: protein_constructs</h1>
-<p><em>Protein constructs and cloning information</em></p>
+<p><em>All protein constructs</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/protein_constructs">lambdaber:protein_constructs</a>
 Alias: protein_constructs</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,8 @@ Alias: protein_constructs</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,13 +979,13 @@ Alias: protein_constructs</p>
 <details>
 
 <pre><code class="language-yaml">name: protein_constructs
-description: Protein constructs and cloning information
+description: All protein constructs
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: protein_constructs
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: ProteinConstruct
 multivalued: true
 inlined: true

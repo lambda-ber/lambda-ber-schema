@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-samples">Slot: samples</h1>
-<p>_Experimental samples used in this study, including biological samples _</p>
+<p><em>All samples across all studies</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/samples">lambdaber:samples</a>
 Alias: samples</p>
 <!-- no inheritance hierarchy -->
@@ -936,8 +936,8 @@ Alias: samples</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A focused research investigation that groups related samples, experiments, an...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+<td>Root container holding flat entity collections and association tables</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -979,13 +979,13 @@ Alias: samples</p>
 <details>
 
 <pre><code class="language-yaml">name: samples
-description: 'Experimental samples used in this study, including biological samples '
+description: All samples across all studies
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: samples
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: Sample
 multivalued: true
 inlined: true

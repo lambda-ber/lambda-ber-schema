@@ -454,7 +454,25 @@
 
       BeamlineInstrument : energy_max
 
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" QuantityValue : energy_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       BeamlineInstrument : energy_min
+
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" QuantityValue : energy_min
+        click QuantityValue href "../QuantityValue/"
+
+
 
       BeamlineInstrument : facility_name
 
@@ -494,9 +512,36 @@
 
       BeamlineInstrument : q_range_max
 
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" QuantityValue : q_range_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       BeamlineInstrument : q_range_min
 
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" QuantityValue : q_range_min
+        click QuantityValue href "../QuantityValue/"
+
+
+
       BeamlineInstrument : sample_changer_capacity
+
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" QuantityValue : sample_changer_capacity
+        click QuantityValue href "../QuantityValue/"
+
+
 
       BeamlineInstrument : source_type
 
@@ -561,31 +606,31 @@
 </tr>
 <tr>
 <td><a href="../energy_min/">energy_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum X-ray energy in keV</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../energy_max/">energy_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum X-ray energy in keV</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../q_range_min/">q_range_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum q value for SAXS in inverse Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../q_range_max/">q_range_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum q value for SAXS in inverse Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sample_changer_capacity/">sample_changer_capacity</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Automatic sample changer capacity</td>
 <td>direct</td>
 </tr>
@@ -746,7 +791,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -754,7 +800,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
@@ -762,7 +809,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
@@ -770,7 +818,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
@@ -778,7 +827,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
@@ -844,7 +894,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -854,7 +905,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
@@ -864,7 +916,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
@@ -874,7 +927,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
@@ -884,7 +938,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
@@ -1024,6 +1079,7 @@ attributes:
     owner: BeamlineInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

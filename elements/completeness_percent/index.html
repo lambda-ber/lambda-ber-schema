@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-completeness_percent">Slot: completeness_percent</h1>
-<p><em>Data completeness percentage</em></p>
+<p><em>Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/completeness_percent">lambdaber:completeness_percent</a>
 Alias: completeness_percent</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: completeness_percent</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: completeness_percent</p>
 <details>
 
 <pre><code class="language-yaml">name: completeness_percent
-description: Data completeness percentage
+description: Data completeness as a percentage (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Completeness
@@ -989,9 +990,8 @@ alias: completeness_percent
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

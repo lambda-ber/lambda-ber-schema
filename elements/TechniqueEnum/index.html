@@ -963,6 +963,41 @@
 <td>CHMO:0000470</td>
 <td>Mass spectrometry</td>
 </tr>
+<tr>
+<td>xas</td>
+<td>CHMO:0000298</td>
+<td>X-ray absorption spectroscopy</td>
+</tr>
+<tr>
+<td>xanes</td>
+<td>CHMO:0000305</td>
+<td>X-ray absorption near edge structure spectroscopy</td>
+</tr>
+<tr>
+<td>exafs</td>
+<td>CHMO:0000300</td>
+<td>Extended X-ray absorption fine structure spectroscopy</td>
+</tr>
+<tr>
+<td>xmcd</td>
+<td>None</td>
+<td>X-ray magnetic circular dichroism</td>
+</tr>
+<tr>
+<td>neutron_crystallography</td>
+<td>CHMO:0000182</td>
+<td>Neutron macromolecular crystallography</td>
+</tr>
+<tr>
+<td>fiber_diffraction</td>
+<td>CHMO:0000156</td>
+<td>Fiber diffraction for structural analysis of fibrous samples</td>
+</tr>
+<tr>
+<td>time_resolved_crystallography</td>
+<td>CHMO:0000156</td>
+<td>Time-resolved macromolecular crystallography</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1039,6 +1074,57 @@ permissible_values:
     text: mass_spectrometry
     description: Mass spectrometry
     meaning: CHMO:0000470
+  xas:
+    text: xas
+    description: X-ray absorption spectroscopy
+    meaning: CHMO:0000298
+    exact_mappings:
+    - PaNET:01196
+  xanes:
+    text: xanes
+    description: X-ray absorption near edge structure spectroscopy
+    meaning: CHMO:0000305
+    comments:
+    - Also known as NEXAFS (near-edge X-ray absorption fine structure)
+    - Used for electronic structure, oxidation state, coordination geometry
+    exact_mappings:
+    - PaNET:01199
+  exafs:
+    text: exafs
+    description: Extended X-ray absorption fine structure spectroscopy
+    meaning: CHMO:0000300
+    comments:
+    - Used for local atomic structure around specific elements
+    - Commonly used for metalloprotein active site characterization
+    exact_mappings:
+    - PaNET:01198
+  xmcd:
+    text: xmcd
+    description: X-ray magnetic circular dichroism
+    comments:
+    - Element-specific magnetometry technique
+    exact_mappings:
+    - PaNET:01137
+  neutron_crystallography:
+    text: neutron_crystallography
+    description: Neutron macromolecular crystallography
+    meaning: CHMO:0000182
+    comments:
+    - Also known as neutron protein crystallography or neutron macromolecular diffraction
+    - Used for hydrogen/deuterium visualization in protein structures
+  fiber_diffraction:
+    text: fiber_diffraction
+    description: Fiber diffraction for structural analysis of fibrous samples
+    meaning: CHMO:0000156
+    comments:
+    - Used for studying filamentous proteins, DNA fibers, muscle fibers
+  time_resolved_crystallography:
+    text: time_resolved_crystallography
+    description: Time-resolved macromolecular crystallography
+    meaning: CHMO:0000156
+    comments:
+    - Pump-probe crystallography for capturing structural dynamics
+    - Requires fast X-ray pulses (synchrotron or XFEL)
 
 </code></pre>
 

@@ -434,27 +434,99 @@
 
       FluorescenceImage : astigmatism
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : channel_name
 
       FluorescenceImage : defocus
+
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+
+
 
       FluorescenceImage : description
 
       FluorescenceImage : dimensions_x
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : dimensions_y
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : dose
+
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+
+
 
       FluorescenceImage : emission_filter
 
       FluorescenceImage : emission_wavelength
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : emission_wavelength
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : excitation_filter
 
       FluorescenceImage : excitation_wavelength
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : excitation_wavelength
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : exposure_time
+
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
 
       FluorescenceImage : file_name
 
@@ -464,11 +536,47 @@
 
       FluorescenceImage : laser_power
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : laser_power
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : pinhole_size
+
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : pinhole_size
+        click QuantityValue href "../QuantityValue/"
+
+
 
       FluorescenceImage : pixel_size
 
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
+
       FluorescenceImage : quantum_yield
+
+
+
+
+
+        FluorescenceImage --&gt; "0..1" QuantityValue : quantum_yield
+        click QuantityValue href "../QuantityValue/"
+
+
 
       FluorescenceImage : title
 
@@ -500,14 +608,14 @@
 <tbody>
 <tr>
 <td><a href="../excitation_wavelength/">excitation_wavelength</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Excitation wavelength in nanometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Excitation wavelength, typically specified in nanometers</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../emission_wavelength/">emission_wavelength</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Emission wavelength in nanometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Emission wavelength, typically specified in nanometers</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -536,32 +644,32 @@
 </tr>
 <tr>
 <td><a href="../laser_power/">laser_power</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Laser power in milliwatts or percentage</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Laser power, typically specified in milliwatts</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pinhole_size/">pinhole_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pinhole size in Airy units for confocal microscopy</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pinhole size, typically specified in Airy units for confocal microscopy</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../quantum_yield/">quantum_yield</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Quantum yield of the fluorophore</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../defocus/">defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus value in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus value, typically specified in micrometers</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
@@ -578,31 +686,31 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pixel size, typically specified in Angstroms</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_x/">dimensions_x</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image width in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image width, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_y/">dimensions_y</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image height in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image height, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dose/">dose</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Electron dose in e-/Å²</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
@@ -662,20 +770,24 @@ is_a: Image2D
 attributes:
   excitation_wavelength:
     name: excitation_wavelength
-    description: Excitation wavelength in nanometers
+    description: Excitation wavelength, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   emission_wavelength:
     name: emission_wavelength
-    description: Emission wavelength in nanometers
+    description: Emission wavelength, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   excitation_filter:
     name: excitation_filter
     description: Specifications of the excitation filter
@@ -710,20 +822,24 @@ attributes:
     range: string
   laser_power:
     name: laser_power
-    description: Laser power in milliwatts or percentage
+    description: Laser power, typically specified in milliwatts. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   pinhole_size:
     name: pinhole_size
-    description: Pinhole size in Airy units for confocal microscopy
+    description: Pinhole size, typically specified in Airy units for confocal microscopy.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   quantum_yield:
     name: quantum_yield
     description: Quantum yield of the fluorophore
@@ -731,7 +847,8 @@ attributes:
     rank: 1000
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
 
 </code></pre>
 </details>
@@ -745,24 +862,28 @@ is_a: Image2D
 attributes:
   excitation_wavelength:
     name: excitation_wavelength
-    description: Excitation wavelength in nanometers
+    description: Excitation wavelength, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: excitation_wavelength
     owner: FluorescenceImage
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   emission_wavelength:
     name: emission_wavelength
-    description: Emission wavelength in nanometers
+    description: Emission wavelength, typically specified in nanometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: emission_wavelength
     owner: FluorescenceImage
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   excitation_filter:
     name: excitation_filter
     description: Specifications of the excitation filter
@@ -805,24 +926,28 @@ attributes:
     range: string
   laser_power:
     name: laser_power
-    description: Laser power in milliwatts or percentage
+    description: Laser power, typically specified in milliwatts. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: laser_power
     owner: FluorescenceImage
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   pinhole_size:
     name: pinhole_size
-    description: Pinhole size in Airy units for confocal microscopy
+    description: Pinhole size, typically specified in Airy units for confocal microscopy.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pinhole_size
     owner: FluorescenceImage
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   quantum_yield:
     name: quantum_yield
     description: Quantum yield of the fluorophore
@@ -832,27 +957,32 @@ attributes:
     owner: FluorescenceImage
     domain_of:
     - FluorescenceImage
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: FluorescenceImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: FluorescenceImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -876,7 +1006,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -884,30 +1015,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: FluorescenceImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: FluorescenceImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: FluorescenceImage
@@ -915,7 +1052,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -926,7 +1064,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -939,6 +1078,7 @@ attributes:
     owner: FluorescenceImage
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

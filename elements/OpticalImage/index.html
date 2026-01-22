@@ -434,21 +434,75 @@
 
       OpticalImage : astigmatism
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : color_channels
 
       OpticalImage : contrast_method
 
       OpticalImage : defocus
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : description
 
       OpticalImage : dimensions_x
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : dimensions_y
+
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+
+
 
       OpticalImage : dose
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : exposure_time
+
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+
+
 
       OpticalImage : file_name
 
@@ -467,9 +521,36 @@
 
       OpticalImage : magnification
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : magnification
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : numerical_aperture
 
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : numerical_aperture
+        click QuantityValue href "../QuantityValue/"
+
+
+
       OpticalImage : pixel_size
+
+
+
+
+
+        OpticalImage --&gt; "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+
+
 
       OpticalImage : title
 
@@ -509,13 +590,13 @@
 </tr>
 <tr>
 <td><a href="../magnification/">magnification</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Optical magnification factor</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../numerical_aperture/">numerical_aperture</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Numerical aperture of the objective lens</td>
 <td>direct</td>
 </tr>
@@ -539,14 +620,14 @@
 </tr>
 <tr>
 <td><a href="../defocus/">defocus</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Defocus value in micrometers</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Defocus value, typically specified in micrometers</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
 <td><a href="../astigmatism/">astigmatism</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Astigmatism value in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Astigmatism value, typically specified in Angstroms</td>
 <td><a href="../Image2D/">Image2D</a></td>
 </tr>
 <tr>
@@ -563,31 +644,31 @@
 </tr>
 <tr>
 <td><a href="../pixel_size/">pixel_size</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Pixel size in Angstroms</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pixel size, typically specified in Angstroms</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_x/">dimensions_x</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image width in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image width, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dimensions_y/">dimensions_y</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Image height in pixels</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Image height, typically specified in pixels</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_time/">exposure_time</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Exposure time in seconds</td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Exposure time, typically specified in seconds</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
 <tr>
 <td><a href="../dose/">dose</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Electron dose in e-/Å²</td>
 <td><a href="../Image/">Image</a></td>
 </tr>
@@ -654,20 +735,24 @@ attributes:
     range: IlluminationTypeEnum
   magnification:
     name: magnification
-    description: Optical magnification factor
+    description: Optical magnification factor. Data providers may specify the unit
+      (e.g., times, X) in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - ExperimentRun
     - OpticalImage
-    range: float
+    range: QuantityValue
+    inlined: true
   numerical_aperture:
     name: numerical_aperture
-    description: Numerical aperture of the objective lens
+    description: Numerical aperture of the objective lens. Data providers may include
+      unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - OpticalImage
-    range: float
+    range: QuantityValue
+    inlined: true
   color_channels:
     name: color_channels
     description: Color channels present (e.g., RGB, grayscale)
@@ -715,24 +800,28 @@ attributes:
     range: IlluminationTypeEnum
   magnification:
     name: magnification
-    description: Optical magnification factor
+    description: Optical magnification factor. Data providers may specify the unit
+      (e.g., times, X) in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: magnification
     owner: OpticalImage
     domain_of:
     - ExperimentRun
     - OpticalImage
-    range: float
+    range: QuantityValue
+    inlined: true
   numerical_aperture:
     name: numerical_aperture
-    description: Numerical aperture of the objective lens
+    description: Numerical aperture of the objective lens. Data providers may include
+      unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: numerical_aperture
     owner: OpticalImage
     domain_of:
     - OpticalImage
-    range: float
+    range: QuantityValue
+    inlined: true
   color_channels:
     name: color_channels
     description: Color channels present (e.g., RGB, grayscale)
@@ -766,24 +855,28 @@ attributes:
     range: string
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: OpticalImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: OpticalImage
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -807,7 +900,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -815,30 +909,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: OpticalImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: OpticalImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: OpticalImage
@@ -846,7 +946,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -857,7 +958,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -870,6 +972,7 @@ attributes:
     owner: OpticalImage
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

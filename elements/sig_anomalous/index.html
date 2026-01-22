@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -953,11 +944,7 @@ Alias: sig_anomalous</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Mean |F(+) - F(-)|/sigma</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -981,10 +968,6 @@ Alias: sig_anomalous</p>
 <td>native</td>
 <td>lambdaber:sig_anomalous</td>
 </tr>
-<tr>
-<td>exact</td>
-<td>ispyb:AutoProcScalingStatistics.sigAno</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -992,17 +975,14 @@ Alias: sig_anomalous</p>
 
 <pre><code class="language-yaml">name: sig_anomalous
 description: Mean anomalous difference signal
-comments:
-- Mean |F(+) - F(-)|/sigma
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.sigAno
 rank: 1000
 alias: sig_anomalous
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

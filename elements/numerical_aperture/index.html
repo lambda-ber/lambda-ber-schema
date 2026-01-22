@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-numerical_aperture">Slot: numerical_aperture</h1>
-<p><em>Numerical aperture of the objective lens</em></p>
+<p><em>Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/numerical_aperture">lambdaber:numerical_aperture</a>
 Alias: numerical_aperture</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: numerical_aperture</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: numerical_aperture</p>
 <details>
 
 <pre><code class="language-yaml">name: numerical_aperture
-description: Numerical aperture of the objective lens
+description: Numerical aperture of the objective lens. Data providers may include
+  unit information in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: numerical_aperture
 owner: OpticalImage
 domain_of:
 - OpticalImage
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-drop_volume">Slot: drop_volume</h1>
-<p><em>Total drop volume in nanoliters</em></p>
+<p><em>Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Drop_Volume">nsls2:Drop_Volume</a>
 Alias: drop_volume</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: drop_volume</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -987,7 +987,8 @@ Alias: drop_volume</p>
 <details>
 
 <pre><code class="language-yaml">name: drop_volume
-description: Total drop volume in nanoliters
+description: Total drop volume, typically specified in nanoliters. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 comments:
 - 'Maps to NSLS2 spreadsheet: Drop_Volume'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -997,7 +998,8 @@ alias: drop_volume
 owner: CrystallizationConditions
 domain_of:
 - CrystallizationConditions
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -979,6 +979,21 @@
 <td>SAXS data analysis</td>
 </tr>
 <tr>
+<td>xas_normalization</td>
+<td>None</td>
+<td>XAS data normalization and background subtraction</td>
+</tr>
+<tr>
+<td>xanes_analysis</td>
+<td>None</td>
+<td>XANES spectral analysis and edge fitting</td>
+</tr>
+<tr>
+<td>exafs_analysis</td>
+<td>None</td>
+<td>EXAFS data analysis and shell fitting</td>
+</tr>
+<tr>
 <td>em_2d_classification</td>
 <td>None</td>
 <td>EM 2D classification</td>
@@ -1081,6 +1096,17 @@ permissible_values:
   saxs_analysis:
     text: saxs_analysis
     description: SAXS data analysis
+  xas_normalization:
+    text: xas_normalization
+    description: XAS data normalization and background subtraction
+  xanes_analysis:
+    text: xanes_analysis
+    description: XANES spectral analysis and edge fitting
+  exafs_analysis:
+    text: exafs_analysis
+    description: EXAFS data analysis and shell fitting
+    comments:
+    - Includes Fourier transform, back-transform, and coordination shell fitting
   em_2d_classification:
     text: em_2d_classification
     description: EM 2D classification

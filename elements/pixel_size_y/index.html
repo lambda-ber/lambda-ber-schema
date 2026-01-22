@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-pixel_size_y">Slot: pixel_size_y</h1>
-<p><em>Pixel size Y dimension</em></p>
+<p><em>Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/pixel_size_y">lambdaber:pixel_size_y</a>
 Alias: pixel_size_y</p>
 <!-- no inheritance hierarchy -->
@@ -953,7 +953,7 @@ Alias: pixel_size_y</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -991,7 +991,9 @@ Alias: pixel_size_y</p>
 <details>
 
 <pre><code class="language-yaml">name: pixel_size_y
-description: Pixel size Y dimension
+description: Pixel size Y dimension, typically specified in micrometers (µm). Data
+  providers may specify alternative units (e.g., Angstroms) by including the unit
+  in the QuantityValue.
 comments:
 - 'imgCIF: _array_element_size.size[2]'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -1003,9 +1005,8 @@ alias: pixel_size_y
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: um
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

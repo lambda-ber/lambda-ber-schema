@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -920,7 +929,7 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p><em>Unit of measurement</em></p>
+<p><em>The unit of measurement. Should be taken from the UCUM unit collection or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/unit">lambdaber:unit</a>
 Alias: unit</p>
 <!-- no inheritance hierarchy -->
@@ -936,6 +945,11 @@ Alias: unit</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity value, representing a measurement with a numeric value and ...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../BiophysicalProperty/">BiophysicalProperty</a></td>
 <td>Measured or calculated biophysical properties</td>
 <td>no</td>
@@ -944,12 +958,11 @@ Alias: unit</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>scale</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -973,21 +986,32 @@ Alias: unit</p>
 <td>native</td>
 <td>lambdaber:unit</td>
 </tr>
+<tr>
+<td>undefined</td>
+<td>nmdc:unit, qud:unit, schema:unitCode, UO:0000000</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: unit
-description: Unit of measurement
+description: The unit of measurement. Should be taken from the UCUM unit collection
+  or the Unit Ontology. Examples include Angstroms, micrometers, kilodaltons, degrees.
 from_schema: https://w3id.org/lambda-ber-schema/
+aliases:
+- scale
+mappings:
+- nmdc:unit
+- qud:unit
+- schema:unitCode
+- UO:0000000
 rank: 1000
 alias: unit
-owner: BiophysicalProperty
 domain_of:
+- QuantityValue
 - BiophysicalProperty
 range: string
-required: true
 
 </code></pre>
 

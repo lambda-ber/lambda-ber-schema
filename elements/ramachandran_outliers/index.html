@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-ramachandran_outliers">Slot: ramachandran_outliers</h1>
-<p><em>Percentage of Ramachandran outliers</em></p>
+<p><em>Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/ramachandran_outliers">lambdaber:ramachandran_outliers</a>
 Alias: ramachandran_outliers</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: ramachandran_outliers</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: ramachandran_outliers</p>
 <details>
 
 <pre><code class="language-yaml">name: ramachandran_outliers
-description: Percentage of Ramachandran outliers
+description: Percentage of Ramachandran outliers (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Ramachandran_Outliers
@@ -988,9 +989,8 @@ alias: ramachandran_outliers
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

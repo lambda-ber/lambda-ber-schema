@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-wavelength_a">Slot: wavelength_a</h1>
-<p><em>X-ray wavelength in Angstroms</em></p>
+<p><em>X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/wavelength_a">lambdaber:wavelength_a</a>
 Alias: wavelength_a</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: wavelength_a</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: wavelength_a</p>
 <details>
 
 <pre><code class="language-yaml">name: wavelength_a
-description: X-ray wavelength in Angstroms
+description: X-ray wavelength, typically specified in Angstroms. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: wavelength_a
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

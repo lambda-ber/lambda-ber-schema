@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-start_angle">Slot: start_angle</h1>
-<p><em>Starting rotation angle</em></p>
+<p><em>Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/start_angle">lambdaber:start_angle</a>
 Alias: start_angle</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: start_angle</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -978,7 +978,8 @@ Alias: start_angle</p>
 <details>
 
 <pre><code class="language-yaml">name: start_angle
-description: Starting rotation angle
+description: Starting rotation angle, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Start_angle
@@ -989,9 +990,8 @@ alias: start_angle
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-spectral_resolution">Slot: spectral_resolution</h1>
-<p><em>Spectral resolution in cm⁻¹</em></p>
+<p><em>Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/spectral_resolution">lambdaber:spectral_resolution</a>
 Alias: spectral_resolution</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: spectral_resolution</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: spectral_resolution</p>
 <details>
 
 <pre><code class="language-yaml">name: spectral_resolution
-description: Spectral resolution in cm⁻¹
+description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: spectral_resolution
 owner: FTIRImage
 domain_of:
 - FTIRImage
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

@@ -929,7 +929,7 @@
 
 
 <h1 id="slot-transmission">Slot: transmission</h1>
-<p><em>X-ray beam transmission as percentage (0-100)</em></p>
+<p><em>X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/transmission">lambdaber:transmission</a>
 Alias: transmission</p>
 <!-- no inheritance hierarchy -->
@@ -953,15 +953,7 @@ Alias: transmission</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Float/">Float</a></p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Maximum Value: 100</p>
-</li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -999,7 +991,8 @@ Alias: transmission</p>
 <details>
 
 <pre><code class="language-yaml">name: transmission
-description: X-ray beam transmission as percentage (0-100)
+description: X-ray beam transmission as a percentage (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Percentage of full beam intensity used
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -1010,11 +1003,8 @@ alias: transmission
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-minimum_value: 0
-maximum_value: 100
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

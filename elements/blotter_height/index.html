@@ -920,7 +920,7 @@
 
 
 <h1 id="slot-blotter_height">Slot: blotter_height</h1>
-<p><em>Blotter height setting</em></p>
+<p><em>Blotter height setting. Data providers may include unit information in the QuantityValue if needed.</em></p>
 <p>URI: <a href="https://w3id.org/lambda-ber-schema/blotter_height">lambdaber:blotter_height</a>
 Alias: blotter_height</p>
 <!-- no inheritance hierarchy -->
@@ -944,7 +944,7 @@ Alias: blotter_height</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -974,14 +974,16 @@ Alias: blotter_height</p>
 <details>
 
 <pre><code class="language-yaml">name: blotter_height
-description: Blotter height setting
+description: Blotter height setting. Data providers may include unit information in
+  the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blotter_height
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 </code></pre>
 

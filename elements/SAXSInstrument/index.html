@@ -447,7 +447,25 @@
 
       SAXSInstrument : detector_distance_max
 
+
+
+
+
+        SAXSInstrument --&gt; "0..1" QuantityValue : detector_distance_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SAXSInstrument : detector_distance_min
+
+
+
+
+
+        SAXSInstrument --&gt; "0..1" QuantityValue : detector_distance_min
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SAXSInstrument : facility_name
 
@@ -485,9 +503,36 @@
 
       SAXSInstrument : q_range_max
 
+
+
+
+
+        SAXSInstrument --&gt; "0..1" QuantityValue : q_range_max
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SAXSInstrument : q_range_min
 
+
+
+
+
+        SAXSInstrument --&gt; "0..1" QuantityValue : q_range_min
+        click QuantityValue href "../QuantityValue/"
+
+
+
       SAXSInstrument : sample_changer_capacity
+
+
+
+
+
+        SAXSInstrument --&gt; "0..1" QuantityValue : sample_changer_capacity
+        click QuantityValue href "../QuantityValue/"
+
+
 
       SAXSInstrument : temperature_control_range
 
@@ -518,31 +563,31 @@
 <tbody>
 <tr>
 <td><a href="../q_range_min/">q_range_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum q value in inverse Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../q_range_max/">q_range_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum q value in inverse Angstroms</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../detector_distance_min/">detector_distance_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Minimum detector distance in mm</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../detector_distance_max/">detector_distance_max</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Maximum detector distance in mm</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sample_changer_capacity/">sample_changer_capacity</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Number of samples in automatic sample changer</td>
 <td>direct</td>
 </tr>
@@ -667,7 +712,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
@@ -676,7 +722,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
@@ -684,7 +731,8 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
@@ -692,7 +740,8 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
@@ -701,7 +750,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
@@ -729,7 +779,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
@@ -740,7 +791,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
@@ -750,7 +802,8 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
@@ -760,7 +813,8 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
@@ -771,7 +825,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
@@ -901,6 +956,7 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:
