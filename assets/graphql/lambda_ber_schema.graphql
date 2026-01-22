@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post19.dev0+b043e45
+# version: 0.0.0.post161.dev0+d3b8060
 enum AffinityUnitEnum
   {
     molar
@@ -282,6 +282,14 @@ enum ExperimentalMethodEnum
     fiber_diffraction
   }
 
+enum ExperimentSampleRoleEnum
+  {
+    target
+    buffer_blank
+    standard
+    size_marker
+  }
+
 enum ExpressionSystemEnum
   {
     bacteria
@@ -411,6 +419,14 @@ enum ImagingModeEnum
     STEM
   }
 
+enum InputTypeEnum
+  {
+    raw_data
+    reference
+    parameters
+    mask
+  }
+
 enum InstrumentCategoryEnum
   {
     SYNCHROTRON_BEAMLINE
@@ -420,6 +436,13 @@ enum InstrumentCategoryEnum
     BENCHTOP_XRAY
     OPTICAL_MICROSCOPE
     SPECTROMETER
+  }
+
+enum InstrumentRoleEnum
+  {
+    primary
+    detector
+    sample_handler
   }
 
 enum InstrumentStatusEnum
@@ -465,6 +488,19 @@ enum MutationTypeEnum
     insertion
     duplication
     substitution
+  }
+
+enum OutputTypeEnum
+  {
+    map
+    model
+    particles
+    micrographs
+    ctf_estimates
+    metadata
+    statistics
+    processed_data
+    log
   }
 
 enum PhasingMethodEnum
@@ -549,6 +585,14 @@ enum PurificationStepEnum
     hydrophobic_interaction
     size_exclusion
     dialysis
+  }
+
+enum SampleRoleEnum
+  {
+    target
+    control
+    reference
+    blank
   }
 
 enum SampleTypeEnum
@@ -968,8 +1012,23 @@ type Dataset
     title: String
     description: String
     keywords: [String]
-    instruments: [Instrument]
     studies: [Study]
+    instruments: [Instrument]
+    proteinConstructs: [ProteinConstruct]
+    samples: [Sample]
+    samplePreparations: [SamplePreparation]
+    experimentRuns: [ExperimentRun]
+    workflowRuns: [WorkflowRun]
+    dataFiles: [DataFile]
+    images: [Image]
+    studySampleAssociations: [StudySampleAssociation]
+    studyExperimentAssociations: [StudyExperimentAssociation]
+    studyWorkflowAssociations: [StudyWorkflowAssociation]
+    experimentSampleAssociations: [ExperimentSampleAssociation]
+    experimentInstrumentAssociations: [ExperimentInstrumentAssociation]
+    workflowExperimentAssociations: [WorkflowExperimentAssociation]
+    workflowInputAssociations: [WorkflowInputAssociation]
+    workflowOutputAssociations: [WorkflowOutputAssociation]
   }
 
 type DateTimeValue
@@ -1014,14 +1073,19 @@ type ExperimentalConditions
     exposureTime: QuantityValue
   }
 
+type ExperimentInstrumentAssociation
+  {
+    experimentId: ExperimentRun!
+    instrumentId: Instrument!
+    role: InstrumentRoleEnum
+  }
+
 type ExperimentRun
   {
     id: Uriorcurie!
     title: String
     description: String
     experimentCode: String!
-    sampleId: String!
-    instrumentId: Instrument!
     experimentDate: String
     operatorId: String
     technique: TechniqueEnum!
@@ -1076,6 +1140,14 @@ type ExperimentRun
     resolutionAtCorner: QuantityValue
     ispybDataCollectionId: QuantityValue
     ispybSessionId: QuantityValue
+  }
+
+type ExperimentSampleAssociation
+  {
+    experimentId: ExperimentRun!
+    sampleId: Sample!
+    role: ExperimentSampleRoleEnum
+    preparationId: SamplePreparation
   }
 
 type FluorescenceImage
@@ -1260,9 +1332,12 @@ type Micrograph
     description: String
     fileName: String!
     acquisitionDate: String
+    pixelSize: QuantityValue
     dimensionsX: QuantityValue
     dimensionsY: QuantityValue
     exposureTime: QuantityValue
+    defocus: QuantityValue
+    astigmatism: QuantityValue
     dose: QuantityValue
     originMovieId: String
     defocusU: QuantityValue
@@ -1270,9 +1345,6 @@ type Micrograph
     astigmatismAngle: QuantityValue
     resolutionFitLimit: QuantityValue
     ctfQualityScore: QuantityValue
-    pixelSize: String
-    defocus: QuantityValue
-    astigmatism: QuantityValue
   }
 
 type MolecularComposition
@@ -1722,14 +1794,27 @@ type Study
     id: Uriorcurie!
     title: String
     description: String
-    proteinConstructs: [ProteinConstruct]
-    samples: [Sample]
-    samplePreparations: [SamplePreparation]
-    instrumentRuns: [ExperimentRun]
-    workflowRuns: [WorkflowRun]
-    dataFiles: [DataFile]
-    images: [Image]
-    aggregatedProteinViews: [AggregatedProteinView]
+    keywords: [String]
+  }
+
+type StudyExperimentAssociation
+  {
+    studyId: Study!
+    experimentId: ExperimentRun!
+  }
+
+type StudySampleAssociation
+  {
+    studyId: Study!
+    sampleId: Sample!
+    role: SampleRoleEnum
+    dateAdded: Date
+  }
+
+type StudyWorkflowAssociation
+  {
+    studyId: Study!
+    workflowId: WorkflowRun!
   }
 
 interface TechniqueSpecificPreparation
@@ -1745,6 +1830,26 @@ type TextValue
     valueCvId: Curie
   }
 
+type WorkflowExperimentAssociation
+  {
+    workflowId: WorkflowRun!
+    experimentId: ExperimentRun!
+  }
+
+type WorkflowInputAssociation
+  {
+    workflowId: WorkflowRun!
+    fileId: DataFile!
+    inputType: InputTypeEnum
+  }
+
+type WorkflowOutputAssociation
+  {
+    workflowId: WorkflowRun!
+    fileId: DataFile!
+    outputType: OutputTypeEnum
+  }
+
 type WorkflowRun
   {
     id: Uriorcurie!
@@ -1752,7 +1857,6 @@ type WorkflowRun
     description: String
     workflowCode: String!
     workflowType: WorkflowTypeEnum!
-    experimentId: String!
     processingLevel: QuantityValue
     softwareName: String!
     softwareVersion: String

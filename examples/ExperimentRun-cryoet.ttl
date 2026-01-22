@@ -35,7 +35,6 @@ lambdaber:exp_cryoet_mito_001 a lambdaber:ExperimentRun ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "-180.0"^^xsd:float ;
                     lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id lambdaber:instrument_titan_krios_002 ;
     lambdaber:operator_id "cryoet_specialist_003" ;
     lambdaber:processing_status "processing" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
@@ -52,6 +51,5 @@ lambdaber:exp_cryoet_mito_001 a lambdaber:ExperimentRun ;
                     lambdaber:numeric_value "2.1"^^xsd:float ;
                     lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "/data/berkeley/2024/cryoet/mitochondria/" ;
-    lambdaber:sample_id "lambdaber:sample_mitochondria_001" ;
     lambdaber:technique CHMO:0002413 .
 

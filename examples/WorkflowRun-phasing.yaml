@@ -3,7 +3,6 @@ title: SAD phasing of selenomethionine derivative
 description: Single-wavelength anomalous dispersion phasing
 workflow_code: WF-PHASE-SAD-001
 workflow_type: phasing
-experiment_id: lambdaber:exp_xray_selmet_001
 software_name: PHENIX
 processing_level:
   numeric_value: 2.0

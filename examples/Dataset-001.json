@@ -1,5 +1,18 @@
 {
   "id": "lambdaber:ds001",
+  "title": "Test Dataset",
+  "description": "Simple test dataset demonstrating relational schema structure",
+  "studies": [
+    {
+      "id": "lambdaber:sty001",
+      "title": "Test Study",
+      "description": "Test Study Description",
+      "keywords": [
+        "test",
+        "demo"
+      ]
+    }
+  ],
   "instruments": [
     {
       "id": "lambdaber:instrument_test_001",
@@ -11,40 +24,59 @@
       "current_status": "operational"
     }
   ],
-  "studies": [
+  "samples": [
     {
-      "id": "lambdaber:sty001",
-      "title": "Test Study",
-      "description": "Test Study Description",
-      "samples": [
-        {
-          "id": "lambdaber:sam001",
-          "title": "Test Sample",
-          "description": "Test Sample Description",
-          "sample_code": "TEST-001",
-          "sample_type": "protein"
-        }
-      ],
-      "sample_preparations": [
-        {
-          "id": "lambdaber:spr001",
-          "title": "Test Sample Preparation",
-          "description": "Test Sample Preparation Description",
-          "preparation_type": "cryo_em",
-          "sample_id": "lambdaber:sam001"
-        }
-      ],
-      "instrument_runs": [
-        {
-          "id": "lambdaber:irr001",
-          "title": "Test Instrument Run",
-          "description": "Test Instrument Run Description",
-          "experiment_code": "EXP-TEST-001",
-          "sample_id": "lambdaber:sam001",
-          "instrument_id": "lambdaber:instrument_test_001",
-          "technique": "cryo_em"
-        }
-      ]
+      "id": "lambdaber:sam001",
+      "title": "Test Sample",
+      "description": "Test Sample Description",
+      "sample_code": "TEST-001",
+      "sample_type": "protein"
+    }
+  ],
+  "sample_preparations": [
+    {
+      "id": "lambdaber:spr001",
+      "title": "Test Sample Preparation",
+      "description": "Test Sample Preparation Description",
+      "preparation_type": "cryo_em",
+      "sample_id": "lambdaber:sam001"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "lambdaber:irr001",
+      "title": "Test Instrument Run",
+      "description": "Test Instrument Run Description",
+      "experiment_code": "EXP-TEST-001",
+      "technique": "cryo_em"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "lambdaber:sty001",
+      "sample_id": "lambdaber:sam001",
+      "role": "target"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambdaber:sty001",
+      "experiment_id": "lambdaber:irr001"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambdaber:irr001",
+      "sample_id": "lambdaber:sam001",
+      "role": "target",
+      "preparation_id": "lambdaber:spr001"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "lambdaber:irr001",
+      "instrument_id": "lambdaber:instrument_test_001",
+      "role": "primary"
     }
   ],
   "@type": "Dataset"

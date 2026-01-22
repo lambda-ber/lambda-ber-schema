@@ -1,0 +1,257 @@
+# ISPyB to lambda-ber-schema Field Mappings
+# Source: https://github.com/DiamondLightSource/ispyb-database
+#
+# This file defines bidirectional mappings between ISPyB MySQL tables
+# and lambda-ber-schema LinkML classes.
+
+version: "1.0"
+source_schema: ispyb
+target_schema: lambda-ber-schema
+
+# Class-level mappings
+class_mappings:
+
+  # Session/Study level
+  - ispyb_table: BLSession
+    lambda_ber_class: Study
+    notes: "Beamline visit session maps to Study"
+
+  - ispyb_table: Proposal
+    lambda_ber_class: Dataset
+    notes: "Proposal/project maps to Dataset container"
+
+  # Sample hierarchy
+  - ispyb_table: Protein
+    lambda_ber_class: ProteinConstruct
+    notes: "Protein metadata"
+
+  - ispyb_table: Crystal
+    lambda_ber_class: Sample
+    notes: "Crystal with crystallographic parameters"
+
+  - ispyb_table: BLSample
+    lambda_ber_class: Sample
+    notes: "Physical sample on beamline"
+
+  # Data collection
+  - ispyb_table: DataCollection
+    lambda_ber_class: ExperimentRun
+    notes: "Core data collection record"
+
+  - ispyb_table: Detector
+    lambda_ber_class: Instrument
+    notes: "Detector as part of instrument; could be separate class"
+
+  # Processing
+  - ispyb_table: AutoProcProgram
+    lambda_ber_class: WorkflowRun
+    notes: "Processing program execution"
+
+  - ispyb_table: AutoProcScalingStatistics
+    lambda_ber_class: WorkflowRun
+    notes: "Scaling statistics embedded in WorkflowRun"
+
+# Field-level mappings for DataCollection -> ExperimentRun
+field_mappings:
+
+  DataCollection_to_ExperimentRun:
+    - ispyb: dataCollectionId
+      lambda_ber: ispyb_data_collection_id
+      transform: null
+
+    - ispyb: wavelength
+      lambda_ber: wavelength
+      transform: null
+      notes: "Wavelength in Angstroms"
+
+    - ispyb: detectorDistance
+      lambda_ber: detector_distance
+      transform: null
+      notes: "Sample-detector distance in mm"
+
+    - ispyb: numberOfImages
+      lambda_ber: number_of_images
+      transform: null
+
+    - ispyb: axisStart
+      lambda_ber: start_angle
+      transform: null
+      notes: "Starting rotation angle in degrees"
+
+    - ispyb: axisRange
+      lambda_ber: oscillation_angle
+      transform: null
+      notes: "Oscillation range per image in degrees"
+
+    - ispyb: xBeam
+      lambda_ber: beam_center_x
+      transform: null
+      notes: "Beam center X in mm"
+
+    - ispyb: yBeam
+      lambda_ber: beam_center_y
+      transform: null
+      notes: "Beam center Y in mm"
+
+    - ispyb: resolution
+      lambda_ber: resolution
+      transform: null
+      notes: "Resolution at detector edge in Angstroms"
+
+    - ispyb: resolutionAtCorner
+      lambda_ber: resolution_at_corner
+      transform: null
+
+    - ispyb: exposureTime
+      lambda_ber: exposure_time
+      transform: null
+      notes: "Exposure time per image in seconds"
+
+    - ispyb: transmission
+      lambda_ber: transmission
+      transform: null
+      notes: "Beam transmission 0-100%"
+
+    - ispyb: flux
+      lambda_ber: flux
+      transform: null
+      notes: "Photon flux in photons/second"
+
+    - ispyb: flux_end
+      lambda_ber: flux_end
+      transform: null
+
+    - ispyb: slitGapHorizontal
+      lambda_ber: slit_gap_horizontal
+      transform: null
+      notes: "Horizontal slit aperture in micrometers"
+
+    - ispyb: slitGapVertical
+      lambda_ber: slit_gap_vertical
+      transform: null
+
+    - ispyb: undulatorGap1
+      lambda_ber: undulator_gap
+      transform: null
+      notes: "Undulator gap in mm"
+
+    - ispyb: synchrotronMode
+      lambda_ber: synchrotron_mode
+      transform: null
+
+    - ispyb: startTime
+      lambda_ber: start_time
+      transform: datetime_to_string
+
+    - ispyb: endTime
+      lambda_ber: end_time
+      transform: datetime_to_string
+
+  AutoProcScalingStatistics_to_WorkflowRun:
+    - ispyb: autoProcScalingStatisticsId
+      lambda_ber: ispyb_auto_proc_scaling_id
+      transform: null
+
+    - ispyb: resolutionLimitLow
+      lambda_ber: resolution_low
+      transform: null
+
+    - ispyb: resolutionLimitHigh
+      lambda_ber: resolution_high
+      transform: null
+
+    - ispyb: rMerge
+      lambda_ber: rmerge
+      transform: null
+      notes: "R-merge value"
+
+    - ispyb: rPim
+      lambda_ber: rpim
+      transform: null
+      notes: "R-pim value"
+
+    - ispyb: completeness
+      lambda_ber: completeness_percent
+      transform: null
+
+    - ispyb: multiplicity
+      lambda_ber: multiplicity
+      transform: null
+
+    - ispyb: meanIOverSigI
+      lambda_ber: i_over_sigma
+      transform: null
+      notes: "Mean I/sigma(I)"
+
+    - ispyb: ccHalf
+      lambda_ber: cc_half
+      transform: null
+      notes: "CC1/2 correlation coefficient"
+
+    - ispyb: anomalousCompleteness
+      lambda_ber: anomalous_completeness
+      transform: null
+
+    - ispyb: anomalousMultiplicity
+      lambda_ber: anomalous_multiplicity
+      transform: null
+
+    - ispyb: ccAno
+      lambda_ber: cc_anomalous
+      transform: null
+
+    - ispyb: rAnom
+      lambda_ber: r_anomalous
+      transform: null
+
+    - ispyb: sigAno
+      lambda_ber: sig_anomalous
+      transform: null
+
+    - ispyb: nTotalObservations
+      lambda_ber: n_total_observations
+      transform: null
+
+    - ispyb: nTotalUniqueObservations
+      lambda_ber: n_total_unique
+      transform: null
+
+  BLSession_to_Study:
+    - ispyb: sessionId
+      lambda_ber: ispyb_session_id
+      transform: null
+
+    - ispyb: beamLineName
+      lambda_ber: beamline
+      transform: null
+
+    - ispyb: startDate
+      lambda_ber: start_date
+      transform: datetime_to_string
+
+    - ispyb: endDate
+      lambda_ber: end_date
+      transform: datetime_to_string
+
+    - ispyb: comments
+      lambda_ber: description
+      transform: null
+
+# Unmapped ISPyB tables (to be addressed)
+unmapped_tables:
+  - Shipping
+  - Dewar
+  - Container
+  - RobotAction
+  - GridInfo
+  - DataCollectionGroup
+  - PhasingStep
+  - PhasingAnalysis
+  - ModelBuilding
+  notes: "These require new lambda-ber-schema classes or extensions"
+
+# Transforms
+transforms:
+  datetime_to_string:
+    description: "Convert MySQL DATETIME to ISO8601 string"
+    python: "lambda x: x.isoformat() if x else None"

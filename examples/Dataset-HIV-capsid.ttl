@@ -1,0 +1,93 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset_hiv_capsid a lambdaber:Dataset ;
+    dcterms:title "HIV-1 Capsid Structure Analysis" ;
+    lambdaber:description "Structural characterization of HIV-1 capsid protein using cryo-EM" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_hiv_ca_001 ;
+            lambdaber:instrument_id lambdaber:instrument_cryoem_001 ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:exp_hiv_ca_001 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp_hiv_ca_001 ;
+            lambdaber:preparation_id lambdaber:spr_hiv_ca_001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_hiv_ca_001 ] ;
+    lambdaber:instruments lambdaber:instrument_cryoem_001 ;
+    lambdaber:sample_preparations lambdaber:spr_hiv_ca_001 ;
+    lambdaber:samples lambdaber:sample_hiv_ca_001 ;
+    lambdaber:studies lambdaber:study_hiv_capsid ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_hiv_ca_001 ;
+            lambdaber:study_id lambdaber:study_hiv_capsid ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_hiv_ca_001 ;
+            lambdaber:study_id lambdaber:study_hiv_capsid ] .
+
+lambdaber:instrument_cryoem_001 a lambdaber:Instrument ;
+    dcterms:title "Cryo-EM Microscope" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "Cryo-electron microscope for HIV capsid structural analysis" ;
+    lambdaber:instrument_code "CRYOEM-001" ;
+    lambdaber:manufacturer "FEI/Thermo Fisher" ;
+    lambdaber:model "Titan Krios" .
+
+lambdaber:spr_hiv_ca_001 a lambdaber:SamplePreparation ;
+    dcterms:title "HIV-1 CA Cryo-EM Grid Preparation" ;
+    lambdaber:description "Cryo-EM grid preparation for HIV-1 capsid protein" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:sample_id "lambdaber:sample_hiv_ca_001" .
+
+lambdaber:sample_hiv_ca_001 a lambdaber:Sample ;
+    dcterms:title "HIV-1 capsid protein CA" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "5% glycerol" ;
+            lambdaber:components "1 mM DTT",
+                "150 mM NaCl",
+                "50 mM Tris-HCl" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "pH units" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "2.5"^^xsd:float ;
+            lambdaber:unit "milligrams per milliliter" ] ;
+    lambdaber:description "Purified HIV-1 capsid protein for cryo-EM structural analysis" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:modifications "N-terminal His6 tag" ;
+            lambdaber:sequences "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "25.6"^^xsd:float ;
+            lambdaber:unit "kilodaltons" ] ;
+    lambdaber:preparation_method "E. coli expression followed by Ni-NTA and size exclusion chromatography" ;
+    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "98.5"^^xsd:float ;
+            lambdaber:unit "percent" ] ;
+    lambdaber:sample_code "HIV1-CA-2024-001" ;
+    lambdaber:sample_type "protein" ;
+    lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
+            lambdaber:atmosphere "Flash frozen in liquid nitrogen" ;
+            lambdaber:duration "3 months" ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "-80.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] .
+
+lambdaber:study_hiv_capsid a lambdaber:Study ;
+    dcterms:title "HIV-1 Capsid Structure Analysis" ;
+    lambdaber:description "Structural characterization of HIV-1 capsid protein using cryo-EM" ;
+    lambdaber:keywords "HIV-1",
+        "capsid protein",
+        "cryo-EM",
+        "structural biology" .
+
+lambdaber:exp_hiv_ca_001 a lambdaber:ExperimentRun ;
+    dcterms:title "HIV-1 CA Cryo-EM Data Collection" ;
+    lambdaber:description "Cryo-EM data collection session for HIV-1 capsid protein" ;
+    lambdaber:experiment_code "HIV-CA-CRYOEM-001" ;
+    lambdaber:technique CHMO:0002413 .
+

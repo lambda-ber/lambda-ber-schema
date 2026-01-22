@@ -3,8 +3,6 @@
   "title": "Lysozyme crystal X-ray diffraction",
   "description": "X-ray diffraction data collection from lysozyme crystals at ALS beamline 8.3.1",
   "experiment_code": "EXP-XRD-LYS-2024-001",
-  "sample_id": "lambdaber:sample_lysozyme_001",
-  "instrument_id": "lambdaber:instrument_als_831",
   "technique": "xray_crystallography",
   "experiment_date": "2024-04-10T09:30:00",
   "operator_id": "als_user_042",

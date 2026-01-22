@@ -1,6 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
-version: "0.1.2.post19.dev0+b043e45" # Managed by uv-dynamic-versioning
+version: "0.0.0.post161.dev0+d3b8060" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -141,70 +141,115 @@ classes:
   Dataset:
     is_a: NamedThing
     tree_root: true
-    description: "A collection of studies"
+    description: >-
+      Root container holding flat entity collections and association tables.
+      Follows relational database design patterns for structural biology data.
     attributes:
       keywords:
         description: "Keywords or tags describing the dataset for search and categorization"
         range: string
         multivalued: true
-      instruments:
-        description: "Instruments used across all studies in this dataset"
-        range: Instrument
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
+
+      # ===== ENTITY TABLES (FLAT COLLECTIONS) =====
       studies:
-        description: "Individual research studies contained in this dataset"
+        description: "All studies in this dataset"
         range: Study
         multivalued: true
-        inlined: true
         inlined_as_list: true
-
-  Study:
-    is_a: NamedThing
-    description: "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis"
-    attributes:
+      instruments:
+        description: "All instruments used across studies"
+        range: Instrument
+        multivalued: true
+        inlined_as_list: true
       protein_constructs:
-        description: "Protein constructs and cloning information"
+        description: "All protein constructs"
         range: ProteinConstruct
         multivalued: true
         inlined_as_list: true
       samples:
-        description: "Experimental samples used in this study, including biological samples "
+        description: "All samples across all studies"
         range: Sample
         multivalued: true
         inlined_as_list: true
       sample_preparations:
-        description: "Sample preparation procedures performed in this study"
+        description: "All sample preparations"
         range: SamplePreparation
         multivalued: true
         inlined_as_list: true
-      instrument_runs:
-        description: "Experimental data collection runs performed in this study"
+      experiment_runs:
+        description: "All experiment runs (data collection sessions)"
         range: ExperimentRun
         multivalued: true
         inlined_as_list: true
       workflow_runs:
-        description: "Computational workflow executions for data processing in this study"
+        description: "All workflow runs (computational processing)"
         range: WorkflowRun
         multivalued: true
         inlined_as_list: true
       data_files:
-        description: "Data files generated or used in this study"
+        description: "All data files"
         range: DataFile
         multivalued: true
         inlined_as_list: true
       images:
-        description: "Images acquired or generated in this study"
+        description: "All images"
         range: Image
         multivalued: true
-        inlined: true
         inlined_as_list: true
-      aggregated_protein_views:
-        description: "Aggregated functional and structural annotations for proteins in this study"
-        range: AggregatedProteinView
+
+      # ===== ASSOCIATION TABLES (M:N RELATIONSHIPS) =====
+      study_sample_associations:
+        description: "Links between studies and samples (M:N)"
+        range: StudySampleAssociation
         multivalued: true
         inlined_as_list: true
+      study_experiment_associations:
+        description: "Links between studies and experiments (M:N)"
+        range: StudyExperimentAssociation
+        multivalued: true
+        inlined_as_list: true
+      study_workflow_associations:
+        description: "Links between studies and workflows (M:N)"
+        range: StudyWorkflowAssociation
+        multivalued: true
+        inlined_as_list: true
+      experiment_sample_associations:
+        description: "Links between experiments and samples (M:N with role)"
+        range: ExperimentSampleAssociation
+        multivalued: true
+        inlined_as_list: true
+      experiment_instrument_associations:
+        description: "Links between experiments and instruments (M:N)"
+        range: ExperimentInstrumentAssociation
+        multivalued: true
+        inlined_as_list: true
+      workflow_experiment_associations:
+        description: "Links between workflows and source experiments (M:N)"
+        range: WorkflowExperimentAssociation
+        multivalued: true
+        inlined_as_list: true
+      workflow_input_associations:
+        description: "Links between workflows and input files"
+        range: WorkflowInputAssociation
+        multivalued: true
+        inlined_as_list: true
+      workflow_output_associations:
+        description: "Links between workflows and output files"
+        range: WorkflowOutputAssociation
+        multivalued: true
+        inlined_as_list: true
+
+  Study:
+    is_a: NamedThing
+    description: >-
+      A logical grouping of related experiments investigating a research question.
+      In the relational model, Study is lightweight - all relationships are via association tables.
+    attributes:
+      keywords:
+        description: "Keywords or tags describing the study for search and categorization"
+        range: string
+        multivalued: true
+      # All entity relationships removed - use association tables in Dataset
 
   Sample:
     is_a: NamedThing
@@ -791,14 +836,7 @@ classes:
       experiment_code:
         description: "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems."
         required: true
-      sample_id:
-        description: "Reference to the sample being analyzed"
-        range: string
-        required: true
-      instrument_id:
-        description: "Reference to the instrument used"
-        range: Instrument
-        required: true
+      # Relationships removed - use ExperimentSampleAssociation and ExperimentInstrumentAssociation
       experiment_date:
         description: "Date of the experiment"
         range: string
@@ -1093,10 +1131,7 @@ classes:
         description: "Type of processing workflow"
         range: WorkflowTypeEnum
         required: true
-      experiment_id:
-        description: "Reference to the source experiment"
-        range: string
-        required: true
+      # Relationships removed - use WorkflowExperimentAssociation
       processing_level:
         description: "Processing level (0=raw, 1=corrected, 2=derived, 3=model)"
         range: QuantityValue
@@ -1527,13 +1562,6 @@ classes:
   Micrograph:
     is_a: Image2D
     description: "Motion-corrected micrograph derived from movie"
-    slot_usage:
-      pixel_size:
-        description: "Final pixel size in Angstroms per pixel"
-      defocus:
-        description: "Measured defocus in micrometers"
-      astigmatism:
-        description: "Astigmatism in Angstroms"
     attributes:
       dose:
         description: "Total electron dose in e-/Angstrom^2"
@@ -2446,6 +2474,125 @@ classes:
         description: "FSC values corresponding to each resolution"
         range: QuantityValue
         inlined: true
+
+  # ===== ASSOCIATION CLASSES FOR RELATIONAL MODEL =====
+
+  StudySampleAssociation:
+    description: "M:N link between Study and Sample with role metadata"
+    attributes:
+      study_id:
+        description: "Reference to the study"
+        range: Study
+        required: true
+      sample_id:
+        description: "Reference to the sample"
+        range: Sample
+        required: true
+      role:
+        description: "Role of sample in study (e.g., target, control, reference)"
+        range: SampleRoleEnum
+      date_added:
+        description: "Date when sample was added to study"
+        range: date
+
+  StudyExperimentAssociation:
+    description: "M:N link between Study and ExperimentRun"
+    attributes:
+      study_id:
+        description: "Reference to the study"
+        range: Study
+        required: true
+      experiment_id:
+        description: "Reference to the experiment run"
+        range: ExperimentRun
+        required: true
+
+  StudyWorkflowAssociation:
+    description: "M:N link between Study and WorkflowRun"
+    attributes:
+      study_id:
+        description: "Reference to the study"
+        range: Study
+        required: true
+      workflow_id:
+        description: "Reference to the workflow run"
+        range: WorkflowRun
+        required: true
+
+  ExperimentSampleAssociation:
+    description: "M:N link between ExperimentRun and Sample with role metadata"
+    attributes:
+      experiment_id:
+        description: "Reference to the experiment run"
+        range: ExperimentRun
+        required: true
+      sample_id:
+        description: "Reference to the sample"
+        range: Sample
+        required: true
+      role:
+        description: "Role of sample in experiment"
+        range: ExperimentSampleRoleEnum
+      preparation_id:
+        description: "Specific preparation used for this sample in this experiment"
+        range: SamplePreparation
+
+  ExperimentInstrumentAssociation:
+    description: "M:N link between ExperimentRun and Instrument"
+    attributes:
+      experiment_id:
+        description: "Reference to the experiment run"
+        range: ExperimentRun
+        required: true
+      instrument_id:
+        description: "Reference to the instrument"
+        range: Instrument
+        required: true
+      role:
+        description: "Role of instrument in experiment"
+        range: InstrumentRoleEnum
+
+  WorkflowExperimentAssociation:
+    description: "M:N link between WorkflowRun and source ExperimentRuns"
+    attributes:
+      workflow_id:
+        description: "Reference to the workflow run"
+        range: WorkflowRun
+        required: true
+      experiment_id:
+        description: "Reference to the source experiment run"
+        range: ExperimentRun
+        required: true
+
+  WorkflowInputAssociation:
+    description: "Links input DataFiles to WorkflowRun"
+    attributes:
+      workflow_id:
+        description: "Reference to the workflow run"
+        range: WorkflowRun
+        required: true
+      file_id:
+        description: "Reference to the input data file"
+        range: DataFile
+        required: true
+      input_type:
+        description: "Type of input for the workflow"
+        range: InputTypeEnum
+
+  WorkflowOutputAssociation:
+    description: "Links output DataFiles to WorkflowRun"
+    attributes:
+      workflow_id:
+        description: "Reference to the workflow run"
+        range: WorkflowRun
+        required: true
+      file_id:
+        description: "Reference to the output data file"
+        range: DataFile
+        required: true
+      output_type:
+        description: "Type of output from the workflow"
+        range: OutputTypeEnum
 
 enums:
   FacilityEnum:
@@ -3678,3 +3825,71 @@ enums:
         description: "Electron diffraction (e.g., microED)"
       fiber_diffraction:
         description: "Fiber diffraction"
+
+  SampleRoleEnum:
+    description: "Role of a sample in a study"
+    permissible_values:
+      target:
+        description: "Primary sample under investigation"
+      control:
+        description: "Control sample for comparison"
+      reference:
+        description: "Reference standard or calibrant"
+      blank:
+        description: "Buffer blank or negative control"
+
+  ExperimentSampleRoleEnum:
+    description: "Role of a sample in an experiment"
+    permissible_values:
+      target:
+        description: "Primary target of measurement"
+      buffer_blank:
+        description: "Buffer-only measurement for subtraction"
+      standard:
+        description: "Calibration or reference standard"
+      size_marker:
+        description: "Molecular weight marker"
+
+  InstrumentRoleEnum:
+    description: "Role of an instrument in an experiment"
+    permissible_values:
+      primary:
+        description: "Primary data collection instrument"
+      detector:
+        description: "Secondary detector or detection component"
+      sample_handler:
+        description: "Automated sample handling or positioning"
+
+  InputTypeEnum:
+    description: "Type of input for a workflow"
+    permissible_values:
+      raw_data:
+        description: "Raw experimental data"
+      reference:
+        description: "Reference data (e.g., PDB model, database)"
+      parameters:
+        description: "Processing parameters file"
+      mask:
+        description: "Mask or selection file"
+
+  OutputTypeEnum:
+    description: "Types of outputs from computational workflows"
+    permissible_values:
+      map:
+        description: "Density map or reconstructed volume"
+      model:
+        description: "Atomic model or coordinates"
+      particles:
+        description: "Particle stack or extracted particles"
+      micrographs:
+        description: "Motion-corrected micrographs"
+      ctf_estimates:
+        description: "CTF estimation results"
+      metadata:
+        description: "Metadata or parameter files"
+      statistics:
+        description: "Processing statistics or quality metrics"
+      processed_data:
+        description: "Processed or derived data files"
+      log:
+        description: "Processing log files"

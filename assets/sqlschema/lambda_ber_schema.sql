@@ -5,11 +5,11 @@
 -- # Abstract Class: AttributeGroup Description: A grouping of related data attributes that form a logical unit
 --     * Slot: id
 --     * Slot: description
--- # Class: Dataset Description: A collection of studies
+-- # Class: Dataset Description: Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
--- # Class: Study Description: A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
+-- # Class: Study Description: A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
@@ -32,7 +32,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: molecular_composition_id Description: Description of molecular composition including sequences, modifications, ligands
 --     * Slot: molecular_weight_id Description: Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.
 --     * Slot: concentration_id Description: Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
@@ -65,7 +65,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: sequence_length_aa_id Description: Length of the protein sequence in amino acids
 -- # Class: SamplePreparation Description: A process that prepares a sample for imaging
 --     * Slot: preparation_type Description: Type of sample preparation
@@ -102,7 +102,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: culture_volume_l_id Description: Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: growth_temperature_c_id Description: Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
 --     * Slot: induction_temperature_c_id Description: Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -233,8 +233,6 @@
 --     * Slot: sample_changer_capacity_id Description: Automatic sample changer capacity
 -- # Class: ExperimentRun Description: An experimental data collection session
 --     * Slot: experiment_code Description: Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
---     * Slot: sample_id Description: Reference to the sample being analyzed
---     * Slot: instrument_id Description: Reference to the instrument used
 --     * Slot: experiment_date Description: Date of the experiment
 --     * Slot: operator_id Description: Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)
 --     * Slot: technique Description: Technique used for data collection
@@ -251,7 +249,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: experimental_conditions_id Description: Environmental and experimental conditions
 --     * Slot: data_collection_strategy_id Description: Strategy for data collection
 --     * Slot: quality_metrics_id Description: Quality metrics for the experiment
@@ -296,7 +294,6 @@
 -- # Class: WorkflowRun Description: A computational processing workflow execution
 --     * Slot: workflow_code Description: Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
 --     * Slot: workflow_type Description: Type of processing workflow
---     * Slot: experiment_id Description: Reference to the source experiment
 --     * Slot: software_name Description: Software used for processing
 --     * Slot: software_version Description: Software version
 --     * Slot: additional_software Description: Additional software used in pipeline
@@ -322,7 +319,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: processing_level_id Description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
 --     * Slot: number_of_waters_id Description: Number of water molecules modeled
 --     * Slot: refinement_resolution_a_id Description: Resolution cutoff used for refinement in Angstroms
@@ -376,7 +373,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: file_size_bytes_id Description: File size in bytes
 -- # Class: Image Description: An image file from structural biology experiments
 --     * Slot: file_name Description: Image file name
@@ -384,7 +381,7 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -458,9 +455,9 @@
 --     * Slot: astigmatism_angle_id Description: Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: resolution_fit_limit_id Description: Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: ctf_quality_score_id Description: CTF estimation quality score
---     * Slot: defocus_id Description: Measured defocus in micrometers
---     * Slot: astigmatism_id Description: Astigmatism in Angstroms
---     * Slot: pixel_size_id Description: Final pixel size in Angstroms per pixel
+--     * Slot: defocus_id Description: Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: astigmatism_id Description: Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
+--     * Slot: pixel_size_id Description: Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: dimensions_x_id Description: Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: dimensions_y_id Description: Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 --     * Slot: exposure_time_id Description: Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.
@@ -767,6 +764,53 @@
 --     * Slot: description
 --     * Slot: resolution_angstrom_id Description: Resolution values in Angstroms
 --     * Slot: fsc_value_id Description: FSC values corresponding to each resolution
+-- # Class: StudySampleAssociation Description: M:N link between Study and Sample with role metadata
+--     * Slot: id
+--     * Slot: study_id Description: Reference to the study
+--     * Slot: sample_id Description: Reference to the sample
+--     * Slot: role Description: Role of sample in study (e.g., target, control, reference)
+--     * Slot: date_added Description: Date when sample was added to study
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: StudyExperimentAssociation Description: M:N link between Study and ExperimentRun
+--     * Slot: id
+--     * Slot: study_id Description: Reference to the study
+--     * Slot: experiment_id Description: Reference to the experiment run
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: StudyWorkflowAssociation Description: M:N link between Study and WorkflowRun
+--     * Slot: id
+--     * Slot: study_id Description: Reference to the study
+--     * Slot: workflow_id Description: Reference to the workflow run
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: ExperimentSampleAssociation Description: M:N link between ExperimentRun and Sample with role metadata
+--     * Slot: id
+--     * Slot: experiment_id Description: Reference to the experiment run
+--     * Slot: sample_id Description: Reference to the sample
+--     * Slot: role Description: Role of sample in experiment
+--     * Slot: preparation_id Description: Specific preparation used for this sample in this experiment
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: ExperimentInstrumentAssociation Description: M:N link between ExperimentRun and Instrument
+--     * Slot: id
+--     * Slot: experiment_id Description: Reference to the experiment run
+--     * Slot: instrument_id Description: Reference to the instrument
+--     * Slot: role Description: Role of instrument in experiment
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: WorkflowExperimentAssociation Description: M:N link between WorkflowRun and source ExperimentRuns
+--     * Slot: id
+--     * Slot: workflow_id Description: Reference to the workflow run
+--     * Slot: experiment_id Description: Reference to the source experiment run
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: WorkflowInputAssociation Description: Links input DataFiles to WorkflowRun
+--     * Slot: id
+--     * Slot: workflow_id Description: Reference to the workflow run
+--     * Slot: file_id Description: Reference to the input data file
+--     * Slot: input_type Description: Type of input for the workflow
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: WorkflowOutputAssociation Description: Links output DataFiles to WorkflowRun
+--     * Slot: id
+--     * Slot: workflow_id Description: Reference to the workflow run
+--     * Slot: file_id Description: Reference to the output data file
+--     * Slot: output_type Description: Type of output from the workflow
+--     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: Any
 --     * Slot: id
 -- # Abstract Class: AttributeValue Description: The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
@@ -1003,7 +1047,6 @@
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title Description: A human-readable name or title for this entity
 --     * Slot: description Description: A detailed textual description of this entity
---     * Slot: Study_id Description: Autocreated FK slot
 --     * Slot: conformational_ensemble_id Description: Conformational ensemble data
 --     * Slot: evolutionary_conservation_id Description: Conservation analysis
 -- # Class: MeasurementConditions Description: Conditions under which biophysical measurements were made
@@ -1018,6 +1061,9 @@
 -- # Class: Dataset_keywords
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: keywords Description: Keywords or tags describing the dataset for search and categorization
+-- # Class: Study_keywords
+--     * Slot: Study_id Description: Autocreated FK slot
+--     * Slot: keywords Description: Keywords or tags describing the study for search and categorization
 -- # Class: SamplePreparation_purification_steps
 --     * Slot: SamplePreparation_id Description: Autocreated FK slot
 --     * Slot: purification_steps Description: Ordered list of purification steps performed
@@ -1285,6 +1331,20 @@ CREATE TABLE "ConformationalState" (
 	PRIMARY KEY (id),
 	FOREIGN KEY("ConformationalEnsemble_id") REFERENCES "ConformationalEnsemble" (id)
 );CREATE INDEX "ix_ConformationalState_id" ON "ConformationalState" (id);
+CREATE TABLE "AggregatedProteinView" (
+	uniprot_id TEXT NOT NULL,
+	protein_name TEXT NOT NULL,
+	organism TEXT,
+	organism_id INTEGER,
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	conformational_ensemble_id TEXT,
+	evolutionary_conservation_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id),
+	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id)
+);CREATE INDEX "ix_AggregatedProteinView_id" ON "AggregatedProteinView" (id);
 CREATE TABLE "Dataset_keywords" (
 	"Dataset_id" TEXT,
 	keywords TEXT,
@@ -1326,7 +1386,7 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
@@ -1338,13 +1398,13 @@ CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", publication_ids),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");
+);CREATE INDEX "ix_EvolutionaryConservation_publication_ids_EvolutionaryConservation_id" ON "EvolutionaryConservation_publication_ids" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_publication_ids_publication_ids" ON "EvolutionaryConservation_publication_ids" (publication_ids);
 CREATE TABLE "ProteinConstruct" (
 	construct_id TEXT NOT NULL,
 	uniprot_id TEXT,
@@ -1369,10 +1429,10 @@ CREATE TABLE "ProteinConstruct" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	sequence_length_aa_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(sequence_length_aa_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_ProteinConstruct_id" ON "ProteinConstruct" (id);
 CREATE TABLE "SamplePreparation" (
@@ -1410,7 +1470,7 @@ CREATE TABLE "SamplePreparation" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	culture_volume_l_id INTEGER,
 	growth_temperature_c_id INTEGER,
 	induction_temperature_c_id INTEGER,
@@ -1422,7 +1482,7 @@ CREATE TABLE "SamplePreparation" (
 	yield_mg_id INTEGER,
 	purity_by_sds_page_percent_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(culture_volume_l_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(growth_temperature_c_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(induction_temperature_c_id) REFERENCES "QuantityValue" (id),
@@ -1585,10 +1645,10 @@ CREATE TABLE "DataFile" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	file_size_bytes_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(file_size_bytes_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_DataFile_id" ON "DataFile" (id);
 CREATE TABLE "Image" (
@@ -1597,14 +1657,14 @@ CREATE TABLE "Image" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	pixel_size_id INTEGER,
 	dimensions_x_id INTEGER,
 	dimensions_y_id INTEGER,
 	exposure_time_id INTEGER,
 	dose_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(pixel_size_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(dimensions_x_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(dimensions_y_id) REFERENCES "QuantityValue" (id),
@@ -2169,22 +2229,12 @@ CREATE TABLE "FSCCurve" (
 	FOREIGN KEY(resolution_angstrom_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(fsc_value_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_FSCCurve_id" ON "FSCCurve" (id);
-CREATE TABLE "AggregatedProteinView" (
-	uniprot_id TEXT NOT NULL,
-	protein_name TEXT NOT NULL,
-	organism TEXT,
-	organism_id INTEGER,
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
+CREATE TABLE "Study_keywords" (
 	"Study_id" TEXT,
-	conformational_ensemble_id TEXT,
-	evolutionary_conservation_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
-	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id),
-	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_AggregatedProteinView_id" ON "AggregatedProteinView" (id);
+	keywords TEXT,
+	PRIMARY KEY ("Study_id", keywords),
+	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
+);CREATE INDEX "ix_Study_keywords_Study_id" ON "Study_keywords" ("Study_id");CREATE INDEX "ix_Study_keywords_keywords" ON "Study_keywords" (keywords);
 CREATE TABLE "ConformationalState_pdb_entries" (
 	"ConformationalState_id" INTEGER,
 	pdb_entries TEXT,
@@ -2196,7 +2246,13 @@ CREATE TABLE "ConformationalState_characteristic_features" (
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
+CREATE TABLE "AggregatedProteinView_pdb_entries" (
+	"AggregatedProteinView_id" TEXT,
+	pdb_entries TEXT,
+	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
+	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -2215,7 +2271,7 @@ CREATE TABLE "Sample" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	molecular_composition_id INTEGER,
 	molecular_weight_id INTEGER,
 	concentration_id INTEGER,
@@ -2229,7 +2285,7 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(anatomy) REFERENCES "OntologyTerm" (id),
 	FOREIGN KEY(cell_type) REFERENCES "OntologyTerm" (id),
 	FOREIGN KEY(parent_sample_id) REFERENCES "Sample" (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(molecular_composition_id) REFERENCES "MolecularComposition" (id),
 	FOREIGN KEY(molecular_weight_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(concentration_id) REFERENCES "QuantityValue" (id),
@@ -2241,8 +2297,6 @@ CREATE TABLE "Sample" (
 );CREATE INDEX "ix_Sample_id" ON "Sample" (id);
 CREATE TABLE "ExperimentRun" (
 	experiment_code TEXT NOT NULL,
-	sample_id TEXT NOT NULL,
-	instrument_id TEXT NOT NULL,
 	experiment_date TEXT,
 	operator_id TEXT,
 	technique VARCHAR(29) NOT NULL,
@@ -2259,7 +2313,7 @@ CREATE TABLE "ExperimentRun" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	experimental_conditions_id INTEGER,
 	data_collection_strategy_id INTEGER,
 	quality_metrics_id INTEGER,
@@ -2302,8 +2356,7 @@ CREATE TABLE "ExperimentRun" (
 	ispyb_data_collection_id_id INTEGER,
 	ispyb_session_id_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(experimental_conditions_id) REFERENCES "ExperimentalConditions" (id),
 	FOREIGN KEY(data_collection_strategy_id) REFERENCES "DataCollectionStrategy" (id),
 	FOREIGN KEY(quality_metrics_id) REFERENCES "QualityMetrics" (id),
@@ -2349,7 +2402,6 @@ CREATE TABLE "ExperimentRun" (
 CREATE TABLE "WorkflowRun" (
 	workflow_code TEXT NOT NULL,
 	workflow_type VARCHAR(23) NOT NULL,
-	experiment_id TEXT NOT NULL,
 	software_name TEXT NOT NULL,
 	software_version TEXT,
 	additional_software TEXT,
@@ -2375,7 +2427,7 @@ CREATE TABLE "WorkflowRun" (
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
-	"Study_id" TEXT,
+	"Dataset_id" TEXT,
 	processing_level_id INTEGER,
 	number_of_waters_id INTEGER,
 	refinement_resolution_a_id INTEGER,
@@ -2417,7 +2469,7 @@ CREATE TABLE "WorkflowRun" (
 	refinement_params_id INTEGER,
 	fsc_curve_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Study_id") REFERENCES "Study" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
 	FOREIGN KEY(processing_level_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(number_of_waters_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(refinement_resolution_a_id) REFERENCES "QuantityValue" (id),
@@ -2502,19 +2554,19 @@ CREATE TABLE "SamplePreparation_purification_steps" (
 	purification_steps VARCHAR(23),
 	PRIMARY KEY ("SamplePreparation_id", purification_steps),
 	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
-);CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");
+);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(29) NOT NULL,
 	PRIMARY KEY ("BeamlineInstrument_id", techniques_supported),
 	FOREIGN KEY("BeamlineInstrument_id") REFERENCES "BeamlineInstrument" (id)
-);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);
+);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_techniques_supported" ON "BeamlineInstrument_techniques_supported" (techniques_supported);CREATE INDEX "ix_BeamlineInstrument_techniques_supported_BeamlineInstrument_id" ON "BeamlineInstrument_techniques_supported" ("BeamlineInstrument_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
@@ -2526,25 +2578,107 @@ CREATE TABLE "XRFImage_elements_measured" (
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
+);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
 CREATE TABLE "BufferComposition_components" (
 	"BufferComposition_id" INTEGER,
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
 );CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
-CREATE TABLE "AggregatedProteinView_pdb_entries" (
-	"AggregatedProteinView_id" TEXT,
-	pdb_entries TEXT,
-	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
-	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
+CREATE TABLE "StudySampleAssociation" (
+	id INTEGER NOT NULL,
+	study_id TEXT NOT NULL,
+	sample_id TEXT NOT NULL,
+	role VARCHAR(9),
+	date_added DATE,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(study_id) REFERENCES "Study" (id),
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_StudySampleAssociation_id" ON "StudySampleAssociation" (id);
+CREATE TABLE "StudyExperimentAssociation" (
+	id INTEGER NOT NULL,
+	study_id TEXT NOT NULL,
+	experiment_id TEXT NOT NULL,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(study_id) REFERENCES "Study" (id),
+	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_StudyExperimentAssociation_id" ON "StudyExperimentAssociation" (id);
+CREATE TABLE "StudyWorkflowAssociation" (
+	id INTEGER NOT NULL,
+	study_id TEXT NOT NULL,
+	workflow_id TEXT NOT NULL,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(study_id) REFERENCES "Study" (id),
+	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_StudyWorkflowAssociation_id" ON "StudyWorkflowAssociation" (id);
+CREATE TABLE "ExperimentSampleAssociation" (
+	id INTEGER NOT NULL,
+	experiment_id TEXT NOT NULL,
+	sample_id TEXT NOT NULL,
+	role VARCHAR(12),
+	preparation_id TEXT,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
+	FOREIGN KEY(sample_id) REFERENCES "Sample" (id),
+	FOREIGN KEY(preparation_id) REFERENCES "SamplePreparation" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_ExperimentSampleAssociation_id" ON "ExperimentSampleAssociation" (id);
+CREATE TABLE "ExperimentInstrumentAssociation" (
+	id INTEGER NOT NULL,
+	experiment_id TEXT NOT NULL,
+	instrument_id TEXT NOT NULL,
+	role VARCHAR(14),
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
+	FOREIGN KEY(instrument_id) REFERENCES "Instrument" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_ExperimentInstrumentAssociation_id" ON "ExperimentInstrumentAssociation" (id);
+CREATE TABLE "WorkflowExperimentAssociation" (
+	id INTEGER NOT NULL,
+	workflow_id TEXT NOT NULL,
+	experiment_id TEXT NOT NULL,
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
+	FOREIGN KEY(experiment_id) REFERENCES "ExperimentRun" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_WorkflowExperimentAssociation_id" ON "WorkflowExperimentAssociation" (id);
+CREATE TABLE "WorkflowInputAssociation" (
+	id INTEGER NOT NULL,
+	workflow_id TEXT NOT NULL,
+	file_id TEXT NOT NULL,
+	input_type VARCHAR(10),
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
+	FOREIGN KEY(file_id) REFERENCES "DataFile" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_WorkflowInputAssociation_id" ON "WorkflowInputAssociation" (id);
+CREATE TABLE "WorkflowOutputAssociation" (
+	id INTEGER NOT NULL,
+	workflow_id TEXT NOT NULL,
+	file_id TEXT NOT NULL,
+	output_type VARCHAR(14),
+	"Dataset_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(workflow_id) REFERENCES "WorkflowRun" (id),
+	FOREIGN KEY(file_id) REFERENCES "DataFile" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);CREATE INDEX "ix_WorkflowOutputAssociation_id" ON "WorkflowOutputAssociation" (id);
 CREATE TABLE "FunctionalSite" (
 	site_type VARCHAR(20) NOT NULL,
 	site_name TEXT,
@@ -2712,7 +2846,7 @@ CREATE TABLE "WorkflowRun_output_files" (
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");
+);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
 CREATE TABLE "LigandInteraction" (
 	id INTEGER NOT NULL,
 	ligand_id TEXT NOT NULL,
@@ -2804,7 +2938,7 @@ CREATE TABLE "MutationEffect_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("MutationEffect_id", publication_ids),
 	FOREIGN KEY("MutationEffect_id") REFERENCES "MutationEffect" (id)
-);CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");
+);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);
 CREATE TABLE "PostTranslationalModification_publication_ids" (
 	"PostTranslationalModification_id" TEXT,
 	publication_ids TEXT,
@@ -2816,4 +2950,4 @@ CREATE TABLE "LigandInteraction_binding_site_residues" (
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);

@@ -1,5 +1,4 @@
 @base <http://example.org/> .
-@prefix @base: <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
@@ -20,7 +19,6 @@
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "20.0"^^xsd:float ;
                     lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id <ALS-12.3.1-SIBYLS> ;
     lambdaber:operator_id "Kathryn Burnett" ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
@@ -34,6 +32,5 @@
                     lambdaber:numeric_value "50.0"^^xsd:float ;
                     lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "SIBYLS-HT-SAXS-program" ;
-    lambdaber:sample_id "https://example.org/kibler2024/sample/hetBGL03-15-18" ;
     lambdaber:technique CHMO:0000204 .
 

@@ -23,6 +23,19 @@ lambdaber:funcsite-kinase-active-site a ns1:FunctionalSite ;
             ns1:ligand_name "Magnesium cation" ;
             ns1:ligand_smiles "[Mg+2]" ],
         [ a ns1:LigandInteraction ;
+            ns1:binding_affinity "0.012"^^xsd:float ;
+            ns1:binding_affinity_type "km" ;
+            ns1:binding_affinity_unit "millimolar" ;
+            ns1:binding_site_residues "315",
+                "318",
+                "351" ;
+            ns1:interaction_type "hydrogen_bond" ;
+            ns1:is_cofactor true ;
+            ns1:is_drug_like false ;
+            ns1:ligand_id "CHEBI:30616"^^xsd:anyURI ;
+            ns1:ligand_name "ATP" ;
+            ns1:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" ],
+        [ a ns1:LigandInteraction ;
             ns1:binding_affinity "0.025"^^xsd:float ;
             ns1:binding_affinity_type "ic50" ;
             ns1:binding_affinity_unit "micromolar" ;
@@ -36,20 +49,7 @@ lambdaber:funcsite-kinase-active-site a ns1:FunctionalSite ;
             ns1:is_drug_like true ;
             ns1:ligand_id "CHEMBL941"^^xsd:anyURI ;
             ns1:ligand_name "Imatinib" ;
-            ns1:ligand_smiles "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5" ],
-        [ a ns1:LigandInteraction ;
-            ns1:binding_affinity "0.012"^^xsd:float ;
-            ns1:binding_affinity_type "km" ;
-            ns1:binding_affinity_unit "millimolar" ;
-            ns1:binding_site_residues "315",
-                "318",
-                "351" ;
-            ns1:interaction_type "hydrogen_bond" ;
-            ns1:is_cofactor true ;
-            ns1:is_drug_like false ;
-            ns1:ligand_id "CHEBI:30616"^^xsd:anyURI ;
-            ns1:ligand_name "ATP" ;
-            ns1:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" ] ;
+            ns1:ligand_smiles "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5" ] ;
     ns1:pdb_entry "2HYY" ;
     ns1:protein_id "P00519" ;
     ns1:residues "315",

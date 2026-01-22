@@ -1,7 +1,25 @@
 {
-  "id": "lambdaber:study_1EE2_horse_adh",
+  "id": "lambdaber:dataset_1EE2_horse_adh",
   "title": "Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution",
   "description": "The structure of steroid-active alcohol dehydrogenase from Equus caballus (horse) liver, complexed with NAD+ and cholic acid",
+  "studies": [
+    {
+      "id": "lambdaber:study_1EE2_horse_adh",
+      "title": "Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution",
+      "description": "The structure of steroid-active alcohol dehydrogenase from Equus caballus (horse) liver, complexed with NAD+ and cholic acid"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "lambdaber:instrument_DESY_BW7B",
+      "title": "DESY BW7B X-ray Beamline",
+      "description": "X-ray crystallography beamline at DESY Hamburg",
+      "instrument_code": "DESY_BW7B",
+      "manufacturer": "DESY",
+      "model": "BW7B",
+      "current_status": "operational"
+    }
+  ],
   "samples": [
     {
       "id": "lambdaber:sample_1EE2_001",
@@ -50,13 +68,11 @@
       "preparation_date": "1998-11-01"
     }
   ],
-  "instrument_runs": [
+  "experiment_runs": [
     {
       "id": "lambdaber:exp_1EE2_xray_001",
       "title": "X-ray Diffraction Data Collection",
       "experiment_code": "1EE2_XRAY_001",
-      "sample_id": "lambdaber:sample_1EE2_001",
-      "instrument_id": "DESY_BW7B",
       "technique": "xray_crystallography",
       "experiment_date": "1998-11-23",
       "experimental_conditions": {
@@ -83,7 +99,6 @@
       "title": "Structure Refinement",
       "workflow_code": "1EE2_REFINEMENT_001",
       "workflow_type": "refinement",
-      "experiment_id": "lambdaber:exp_1EE2_xray_001",
       "software_name": "CNS",
       "software_version": "1.0"
     }
@@ -115,5 +130,49 @@
       }
     }
   ],
-  "@type": "Study"
+  "study_sample_associations": [
+    {
+      "study_id": "lambdaber:study_1EE2_horse_adh",
+      "sample_id": "lambdaber:sample_1EE2_001",
+      "role": "target"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambdaber:study_1EE2_horse_adh",
+      "experiment_id": "lambdaber:exp_1EE2_xray_001"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambdaber:exp_1EE2_xray_001",
+      "sample_id": "lambdaber:sample_1EE2_001",
+      "role": "target",
+      "preparation_id": "lambdaber:prep_1EE2_001"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "lambdaber:exp_1EE2_xray_001",
+      "instrument_id": "lambdaber:instrument_DESY_BW7B",
+      "role": "primary"
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "lambdaber:wf_1EE2_refinement_001",
+      "experiment_id": "lambdaber:exp_1EE2_xray_001"
+    }
+  ],
+  "workflow_output_associations": [
+    {
+      "workflow_id": "lambdaber:wf_1EE2_refinement_001",
+      "file_id": "lambdaber:file_1EE2_coords"
+    },
+    {
+      "workflow_id": "lambdaber:wf_1EE2_refinement_001",
+      "file_id": "lambdaber:file_1EE2_sf"
+    }
+  ],
+  "@type": "Dataset"
 }

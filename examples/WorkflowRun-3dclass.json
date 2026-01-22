@@ -4,7 +4,6 @@
   "description": "3D classification to resolve ribosome conformational states",
   "workflow_code": "WF-3DCLASS-RIBO-001",
   "workflow_type": "classification_3d",
-  "experiment_id": "lambdaber:exp_ribosome_001",
   "software_name": "RELION",
   "processing_level": {
     "numeric_value": 2.0,

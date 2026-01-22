@@ -21,7 +21,6 @@ lambdaber:workflow_model_proteasome_001 a lambdaber:WorkflowRun ;
                     lambdaber:numeric_value "50.0"^^xsd:float ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Building and refining atomic model into cryo-EM density" ;
-    lambdaber:experiment_id "lambdaber:exp_proteasome_001" ;
     lambdaber:processing_level [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "4.0"^^xsd:float ;
             lambdaber:unit "level" ] ;

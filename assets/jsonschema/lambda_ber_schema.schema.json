@@ -1991,8 +1991,18 @@
         },
         "Dataset": {
             "additionalProperties": false,
-            "description": "A collection of studies",
+            "description": "Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.",
             "properties": {
+                "data_files": {
+                    "description": "All data files",
+                    "items": {
+                        "$ref": "#/$defs/DataFile"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "A detailed textual description of this entity",
                     "type": [
@@ -2000,12 +2010,52 @@
                         "null"
                     ]
                 },
+                "experiment_instrument_associations": {
+                    "description": "Links between experiments and instruments (M:N)",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentInstrumentAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "experiment_runs": {
+                    "description": "All experiment runs (data collection sessions)",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentRun"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "experiment_sample_associations": {
+                    "description": "Links between experiments and samples (M:N with role)",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentSampleAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
+                "images": {
+                    "description": "All images",
+                    "items": {
+                        "$ref": "#/$defs/Image"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "instruments": {
-                    "description": "Instruments used across all studies in this dataset",
+                    "description": "All instruments used across studies",
                     "items": {
                         "$ref": "#/$defs/Instrument"
                     },
@@ -2024,10 +2074,70 @@
                         "null"
                     ]
                 },
+                "protein_constructs": {
+                    "description": "All protein constructs",
+                    "items": {
+                        "$ref": "#/$defs/ProteinConstruct"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sample_preparations": {
+                    "description": "All sample preparations",
+                    "items": {
+                        "$ref": "#/$defs/SamplePreparation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "samples": {
+                    "description": "All samples across all studies",
+                    "items": {
+                        "$ref": "#/$defs/Sample"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "studies": {
-                    "description": "Individual research studies contained in this dataset",
+                    "description": "All studies in this dataset",
                     "items": {
                         "$ref": "#/$defs/Study"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_experiment_associations": {
+                    "description": "Links between studies and experiments (M:N)",
+                    "items": {
+                        "$ref": "#/$defs/StudyExperimentAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_sample_associations": {
+                    "description": "Links between studies and samples (M:N)",
+                    "items": {
+                        "$ref": "#/$defs/StudySampleAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "study_workflow_associations": {
+                    "description": "Links between studies and workflows (M:N)",
+                    "items": {
+                        "$ref": "#/$defs/StudyWorkflowAssociation"
                     },
                     "type": [
                         "array",
@@ -2038,6 +2148,46 @@
                     "description": "A human-readable name or title for this entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "workflow_experiment_associations": {
+                    "description": "Links between workflows and source experiments (M:N)",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowExperimentAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "workflow_input_associations": {
+                    "description": "Links between workflows and input files",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowInputAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "workflow_output_associations": {
+                    "description": "Links between workflows and output files",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowOutputAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "workflow_runs": {
+                    "description": "All workflow runs (computational processing)",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowRun"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 }
@@ -2295,6 +2445,30 @@
                 "id"
             ],
             "title": "EvolutionaryConservation",
+            "type": "object"
+        },
+        "ExperimentInstrumentAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between ExperimentRun and Instrument",
+            "properties": {
+                "experiment_id": {
+                    "description": "Reference to the experiment run",
+                    "type": "string"
+                },
+                "instrument_id": {
+                    "description": "Reference to the instrument",
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/$defs/InstrumentRoleEnum",
+                    "description": "Role of instrument in experiment"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "instrument_id"
+            ],
+            "title": "ExperimentInstrumentAssociation",
             "type": "object"
         },
         "ExperimentRun": {
@@ -2582,10 +2756,6 @@
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
-                "instrument_id": {
-                    "description": "Reference to the instrument used",
-                    "type": "string"
-                },
                 "ispyb_data_collection_id": {
                     "anyOf": [
                         {
@@ -2713,10 +2883,6 @@
                         }
                     ],
                     "description": "Resolution at corner of detector, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue."
-                },
-                "sample_id": {
-                    "description": "Reference to the sample being analyzed",
-                    "type": "string"
                 },
                 "shots_per_hole": {
                     "anyOf": [
@@ -2867,13 +3033,53 @@
             },
             "required": [
                 "experiment_code",
-                "sample_id",
-                "instrument_id",
                 "technique",
                 "id"
             ],
             "title": "ExperimentRun",
             "type": "object"
+        },
+        "ExperimentSampleAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between ExperimentRun and Sample with role metadata",
+            "properties": {
+                "experiment_id": {
+                    "description": "Reference to the experiment run",
+                    "type": "string"
+                },
+                "preparation_id": {
+                    "description": "Specific preparation used for this sample in this experiment",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "$ref": "#/$defs/ExperimentSampleRoleEnum",
+                    "description": "Role of sample in experiment"
+                },
+                "sample_id": {
+                    "description": "Reference to the sample",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "sample_id"
+            ],
+            "title": "ExperimentSampleAssociation",
+            "type": "object"
+        },
+        "ExperimentSampleRoleEnum": {
+            "description": "Role of a sample in an experiment",
+            "enum": [
+                "target",
+                "buffer_blank",
+                "standard",
+                "size_marker"
+            ],
+            "title": "ExperimentSampleRoleEnum",
+            "type": "string"
         },
         "ExperimentalConditions": {
             "additionalProperties": false,
@@ -4052,6 +4258,17 @@
             "title": "ImagingModeEnum",
             "type": "string"
         },
+        "InputTypeEnum": {
+            "description": "Type of input for a workflow",
+            "enum": [
+                "raw_data",
+                "reference",
+                "parameters",
+                "mask"
+            ],
+            "title": "InputTypeEnum",
+            "type": "string"
+        },
         "Instrument": {
             "additionalProperties": false,
             "description": "An instrument used to collect data",
@@ -4146,6 +4363,16 @@
                 "SPECTROMETER"
             ],
             "title": "InstrumentCategoryEnum",
+            "type": "string"
+        },
+        "InstrumentRoleEnum": {
+            "description": "Role of an instrument in an experiment",
+            "enum": [
+                "primary",
+                "detector",
+                "sample_handler"
+            ],
+            "title": "InstrumentRoleEnum",
             "type": "string"
         },
         "InstrumentStatusEnum": {
@@ -4377,7 +4604,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Astigmatism in Angstroms"
+                    "description": "Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "astigmatism_angle": {
                     "anyOf": [
@@ -4410,7 +4637,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measured defocus in micrometers"
+                    "description": "Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "defocus_u": {
                     "anyOf": [
@@ -4509,7 +4736,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Final pixel size in Angstroms per pixel"
+                    "description": "Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
                 },
                 "resolution_fit_limit": {
                     "anyOf": [
@@ -5340,6 +5567,22 @@
             ],
             "title": "OpticalImage",
             "type": "object"
+        },
+        "OutputTypeEnum": {
+            "description": "Types of outputs from computational workflows",
+            "enum": [
+                "map",
+                "model",
+                "particles",
+                "micrographs",
+                "ctf_estimates",
+                "metadata",
+                "statistics",
+                "processed_data",
+                "log"
+            ],
+            "title": "OutputTypeEnum",
+            "type": "string"
         },
         "PTMTypeEnum": {
             "description": "Types of post-translational modifications",
@@ -7491,6 +7734,17 @@
             "title": "SamplePreparation",
             "type": "object"
         },
+        "SampleRoleEnum": {
+            "description": "Role of a sample in a study",
+            "enum": [
+                "target",
+                "control",
+                "reference",
+                "blank"
+            ],
+            "title": "SampleRoleEnum",
+            "type": "string"
+        },
         "SampleTypeEnum": {
             "description": "Types of biological samples",
             "enum": [
@@ -7759,28 +8013,8 @@
         },
         "Study": {
             "additionalProperties": false,
-            "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
+            "description": "A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.",
             "properties": {
-                "aggregated_protein_views": {
-                    "description": "Aggregated functional and structural annotations for proteins in this study",
-                    "items": {
-                        "$ref": "#/$defs/AggregatedProteinView"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "data_files": {
-                    "description": "Data files generated or used in this study",
-                    "items": {
-                        "$ref": "#/$defs/DataFile"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "A detailed textual description of this entity",
                     "type": [
@@ -7792,50 +8026,10 @@
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
-                "images": {
-                    "description": "Images acquired or generated in this study",
+                "keywords": {
+                    "description": "Keywords or tags describing the study for search and categorization",
                     "items": {
-                        "$ref": "#/$defs/Image"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "instrument_runs": {
-                    "description": "Experimental data collection runs performed in this study",
-                    "items": {
-                        "$ref": "#/$defs/ExperimentRun"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "protein_constructs": {
-                    "description": "Protein constructs and cloning information",
-                    "items": {
-                        "$ref": "#/$defs/ProteinConstruct"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "sample_preparations": {
-                    "description": "Sample preparation procedures performed in this study",
-                    "items": {
-                        "$ref": "#/$defs/SamplePreparation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "samples": {
-                    "description": "Experimental samples used in this study, including biological samples ",
-                    "items": {
-                        "$ref": "#/$defs/Sample"
+                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -7848,22 +8042,84 @@
                         "string",
                         "null"
                     ]
-                },
-                "workflow_runs": {
-                    "description": "Computational workflow executions for data processing in this study",
-                    "items": {
-                        "$ref": "#/$defs/WorkflowRun"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 }
             },
             "required": [
                 "id"
             ],
             "title": "Study",
+            "type": "object"
+        },
+        "StudyExperimentAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Study and ExperimentRun",
+            "properties": {
+                "experiment_id": {
+                    "description": "Reference to the experiment run",
+                    "type": "string"
+                },
+                "study_id": {
+                    "description": "Reference to the study",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "experiment_id"
+            ],
+            "title": "StudyExperimentAssociation",
+            "type": "object"
+        },
+        "StudySampleAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Study and Sample with role metadata",
+            "properties": {
+                "date_added": {
+                    "description": "Date when sample was added to study",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "role": {
+                    "$ref": "#/$defs/SampleRoleEnum",
+                    "description": "Role of sample in study (e.g., target, control, reference)"
+                },
+                "sample_id": {
+                    "description": "Reference to the sample",
+                    "type": "string"
+                },
+                "study_id": {
+                    "description": "Reference to the study",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "sample_id"
+            ],
+            "title": "StudySampleAssociation",
+            "type": "object"
+        },
+        "StudyWorkflowAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between Study and WorkflowRun",
+            "properties": {
+                "study_id": {
+                    "description": "Reference to the study",
+                    "type": "string"
+                },
+                "workflow_id": {
+                    "description": "Reference to the workflow run",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "study_id",
+                "workflow_id"
+            ],
+            "title": "StudyWorkflowAssociation",
             "type": "object"
         },
         "SymmetryEnum": {
@@ -7966,6 +8222,74 @@
             ],
             "title": "VitrificationMethodEnum",
             "type": "string"
+        },
+        "WorkflowExperimentAssociation": {
+            "additionalProperties": false,
+            "description": "M:N link between WorkflowRun and source ExperimentRuns",
+            "properties": {
+                "experiment_id": {
+                    "description": "Reference to the source experiment run",
+                    "type": "string"
+                },
+                "workflow_id": {
+                    "description": "Reference to the workflow run",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "workflow_id",
+                "experiment_id"
+            ],
+            "title": "WorkflowExperimentAssociation",
+            "type": "object"
+        },
+        "WorkflowInputAssociation": {
+            "additionalProperties": false,
+            "description": "Links input DataFiles to WorkflowRun",
+            "properties": {
+                "file_id": {
+                    "description": "Reference to the input data file",
+                    "type": "string"
+                },
+                "input_type": {
+                    "$ref": "#/$defs/InputTypeEnum",
+                    "description": "Type of input for the workflow"
+                },
+                "workflow_id": {
+                    "description": "Reference to the workflow run",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "workflow_id",
+                "file_id"
+            ],
+            "title": "WorkflowInputAssociation",
+            "type": "object"
+        },
+        "WorkflowOutputAssociation": {
+            "additionalProperties": false,
+            "description": "Links output DataFiles to WorkflowRun",
+            "properties": {
+                "file_id": {
+                    "description": "Reference to the output data file",
+                    "type": "string"
+                },
+                "output_type": {
+                    "$ref": "#/$defs/OutputTypeEnum",
+                    "description": "Type of output from the workflow"
+                },
+                "workflow_id": {
+                    "description": "Reference to the workflow run",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "workflow_id",
+                "file_id"
+            ],
+            "title": "WorkflowOutputAssociation",
+            "type": "object"
         },
         "WorkflowRun": {
             "additionalProperties": false,
@@ -8086,10 +8410,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "experiment_id": {
-                    "description": "Reference to the source experiment",
-                    "type": "string"
                 },
                 "fsc_curve": {
                     "anyOf": [
@@ -8603,7 +8923,6 @@
             "required": [
                 "workflow_code",
                 "workflow_type",
-                "experiment_id",
                 "software_name",
                 "id"
             ],
@@ -9246,9 +9565,19 @@
     "$id": "https://w3id.org/lambda-ber-schema/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A collection of studies",
+    "description": "Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.",
     "metamodel_version": "1.7.0",
     "properties": {
+        "data_files": {
+            "description": "All data files",
+            "items": {
+                "$ref": "#/$defs/DataFile"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "description": {
             "description": "A detailed textual description of this entity",
             "type": [
@@ -9256,12 +9585,52 @@
                 "null"
             ]
         },
+        "experiment_instrument_associations": {
+            "description": "Links between experiments and instruments (M:N)",
+            "items": {
+                "$ref": "#/$defs/ExperimentInstrumentAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "experiment_runs": {
+            "description": "All experiment runs (data collection sessions)",
+            "items": {
+                "$ref": "#/$defs/ExperimentRun"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "experiment_sample_associations": {
+            "description": "Links between experiments and samples (M:N with role)",
+            "items": {
+                "$ref": "#/$defs/ExperimentSampleAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "id": {
             "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
             "type": "string"
         },
+        "images": {
+            "description": "All images",
+            "items": {
+                "$ref": "#/$defs/Image"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "instruments": {
-            "description": "Instruments used across all studies in this dataset",
+            "description": "All instruments used across studies",
             "items": {
                 "$ref": "#/$defs/Instrument"
             },
@@ -9280,10 +9649,70 @@
                 "null"
             ]
         },
+        "protein_constructs": {
+            "description": "All protein constructs",
+            "items": {
+                "$ref": "#/$defs/ProteinConstruct"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "sample_preparations": {
+            "description": "All sample preparations",
+            "items": {
+                "$ref": "#/$defs/SamplePreparation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "samples": {
+            "description": "All samples across all studies",
+            "items": {
+                "$ref": "#/$defs/Sample"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "studies": {
-            "description": "Individual research studies contained in this dataset",
+            "description": "All studies in this dataset",
             "items": {
                 "$ref": "#/$defs/Study"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "study_experiment_associations": {
+            "description": "Links between studies and experiments (M:N)",
+            "items": {
+                "$ref": "#/$defs/StudyExperimentAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "study_sample_associations": {
+            "description": "Links between studies and samples (M:N)",
+            "items": {
+                "$ref": "#/$defs/StudySampleAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "study_workflow_associations": {
+            "description": "Links between studies and workflows (M:N)",
+            "items": {
+                "$ref": "#/$defs/StudyWorkflowAssociation"
             },
             "type": [
                 "array",
@@ -9296,6 +9725,46 @@
                 "string",
                 "null"
             ]
+        },
+        "workflow_experiment_associations": {
+            "description": "Links between workflows and source experiments (M:N)",
+            "items": {
+                "$ref": "#/$defs/WorkflowExperimentAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "workflow_input_associations": {
+            "description": "Links between workflows and input files",
+            "items": {
+                "$ref": "#/$defs/WorkflowInputAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "workflow_output_associations": {
+            "description": "Links between workflows and output files",
+            "items": {
+                "$ref": "#/$defs/WorkflowOutputAssociation"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "workflow_runs": {
+            "description": "All workflow runs (computational processing)",
+            "items": {
+                "$ref": "#/$defs/WorkflowRun"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
         }
     },
     "required": [
@@ -9303,5 +9772,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post19.dev0+b043e45"
+    "version": "0.0.0.post161.dev0+d3b8060"
 }
