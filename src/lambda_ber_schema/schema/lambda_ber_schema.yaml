@@ -3100,21 +3100,6 @@ enums:
           mail_in_service: "true"
         aliases:
           - BL8.3.1
-      ALS_BL832:
-        title: "ALS BL8.3.2"
-        description: >-
-          Hard X-ray micro-tomography beamline for non-destructive 3D imaging.
-          Provides high-resolution micro-CT capabilities for biological, geological,
-          and materials samples. Supports absorption and phase contrast imaging modes.
-        annotations:
-          facility: FacilityEnum:ALS
-          beamline_id: "8.3.2"
-          techniques: TechniqueEnum:xray_tomography
-          doe_beamline: "true"
-          website: "https://microct.lbl.gov/"
-        aliases:
-          - BL8.3.2
-          - microCT
       ALS_BL1222:
         title: "ALS BL12.2.2"
         description: "High-throughput macromolecular crystallography beamline"
@@ -3581,15 +3566,6 @@ enums:
         comments:
           - "Pump-probe crystallography for capturing structural dynamics"
           - "Requires fast X-ray pulses (synchrotron or XFEL)"
-      xray_tomography:
-        description: "X-ray computed tomography (micro-CT) for 3D imaging"
-        meaning: CHMO:0002743
-        exact_mappings:
-          - PaNET:01154  # tomography
-        comments:
-          - "Non-destructive 3D imaging technique"
-          - "Includes micro-CT, nano-CT, and phase contrast tomography"
-          - "Used for cellular imaging, materials science, and paleontology"
 
   ProcessingStatusEnum:
     description: "Processing status"
