@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post161.dev0+d3b8060
+# version: 0.1.2.post31.dev0+a94024b
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

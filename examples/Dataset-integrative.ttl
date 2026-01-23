@@ -11,12 +11,12 @@ lambdaber:dataset_integrative_nucleosome a lambdaber:Dataset ;
     dcterms:title "Integrative structural analysis of nucleosome remodeling" ;
     lambdaber:description "Multi-technique study combining cryo-EM, SAXS, and X-ray crystallography to study chromatin remodeler-nucleosome complexes" ;
     lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
-            lambdaber:experiment_id lambdaber:exp_ncp_cryoem_001 ;
-            lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
-            lambdaber:role "primary" ],
-        [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id lambdaber:exp_chd1_saxs_001 ;
             lambdaber:instrument_id lambdaber:instrument_sibyls_1231 ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_ncp_cryoem_001 ;
+            lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id lambdaber:exp_complex_cryoem_001 ;
@@ -50,13 +50,13 @@ lambdaber:dataset_integrative_nucleosome a lambdaber:Dataset ;
         lambdaber:sample_nucleosome_001 ;
     lambdaber:studies lambdaber:study_integrative_nucleosome ;
     lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
-            lambdaber:experiment_id lambdaber:exp_ncp_cryoem_001 ;
+            lambdaber:experiment_id lambdaber:exp_chd1_saxs_001 ;
             lambdaber:study_id lambdaber:study_integrative_nucleosome ],
         [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp_complex_cryoem_001 ;
             lambdaber:study_id lambdaber:study_integrative_nucleosome ],
         [ a lambdaber:StudyExperimentAssociation ;
-            lambdaber:experiment_id lambdaber:exp_chd1_saxs_001 ;
+            lambdaber:experiment_id lambdaber:exp_ncp_cryoem_001 ;
             lambdaber:study_id lambdaber:study_integrative_nucleosome ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
             lambdaber:role "target" ;

@@ -1,0 +1,69 @@
+id: simplescattering:xsbhevph
+title: SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS
+studies:
+- id: simplescattering:xsbhevph/study
+  title: SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS
+instruments:
+- id: simplescattering:instrument/sibyls-bl12.3.1
+  title: SIBYLS BL12.3.1
+  description: SEC-SAXS beamline at Advanced Light Source, Berkeley Lab
+  instrument_code: ALS-SIBYLS-BL12.3.1
+  manufacturer: Lawrence Berkeley National Laboratory
+samples:
+- id: simplescattering:xsbhevph/sample
+  title: SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS
+  description: The aminoacyl-tRNA synthetases (AaRSs) are an ancient family of structurally
+    diverse enzymes that deliver amino acids to the translation machinery. While GluRSs
+    were previously classified as monomers,  the form expressed in Pseudomonas aeruginosa
+    appears to be a homodimer. This experiment was conducted to determine the oligomerization
+    state in solution.
+  sample_code: SS-XSBHEVPH
+  sample_type: protein
+  concentration:
+    numeric_value: 3.5
+    unit: mg/mL
+  buffer_composition:
+    ph:
+      numeric_value: 6.5
+      unit: pH
+    components:
+    - 20 mM HEPES, 150 mM NaCl, 5 mM MgCl2
+experiment_runs:
+- id: simplescattering:xsbhevph/experiment
+  experiment_code: SS-XSBHEVPH-EXP
+  technique: saxs
+  wavelength:
+    numeric_value: 1.127
+    unit: Angstroms
+  detector_distance:
+    numeric_value: 2100.0
+    unit: mm
+  beamline: SIBYLS BL12.3.1
+data_files:
+- id: simplescattering:xsbhevph/file/glurs_results_zip
+  description: Data file from Simple Scattering dataset xsbhevph
+  file_name: GluRS_Results.zip
+  file_path: https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22f8ac3518d7c73bcd0e862fed599a7ceb4384bc/GluRS_Results.zip?disposition=attachment
+  file_format: zip
+- id: simplescattering:xsbhevph/file/a_s_glurs_1_5_dat
+  description: Data file from Simple Scattering dataset xsbhevph
+  file_name: A_S_GluRS_1_5.dat
+  file_path: https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--183433be86d7de6e664c74c9e3a3e19811fdee08/A_S_GluRS_1_5.dat?disposition=attachment
+  file_format: ascii
+- id: simplescattering:xsbhevph/file/8vc5_pdb
+  description: Data file from Simple Scattering dataset xsbhevph
+  file_name: 8vc5.pdb
+  file_path: https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--859126383c33e946f0ca03b5e534985b0ad7db99/8vc5.pdb?disposition=attachment
+  file_format: pdb
+study_sample_associations:
+- study_id: simplescattering:xsbhevph/study
+  sample_id: simplescattering:xsbhevph/sample
+study_experiment_associations:
+- study_id: simplescattering:xsbhevph/study
+  experiment_id: simplescattering:xsbhevph/experiment
+experiment_sample_associations:
+- experiment_id: simplescattering:xsbhevph/experiment
+  sample_id: simplescattering:xsbhevph/sample
+experiment_instrument_associations:
+- experiment_id: simplescattering:xsbhevph/experiment
+  instrument_id: simplescattering:instrument/sibyls-bl12.3.1

@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-20T13:12:01
+# Generation date: 2026-01-23T11:38:37
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -10,18 +10,18 @@
 #
 #   ## Schema Organization
 #
-#   The schema follows a hierarchical structure that mirrors how structural biology research is organized:
+#   The schema follows a **relational design** with flat entity collections and explicit association
+#   tables for many-to-many relationships. This maps cleanly to SQL databases while supporting
+#   flexible data reuse across studies.
 #
 #   The top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.
 #   A dataset might represent all data from a specific grant, collaboration, or publication.
 #
-#   Each dataset contains one or more [Studies](Study.md), which are focused investigations of specific
-#   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
-#   or "Structure of the human ribosome under different conditions."
+#   ### Entity Tables
 #
-#   Within each study, you'll find:
+#   All entities are stored in flat collections at the Dataset level:
 #
-#   ### Biological Materials
+#   **Biological Materials**
 #   - [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
 #     cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
 #     storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
@@ -30,22 +30,22 @@
 #     This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
 #     X-ray studies, or staining protocols for fluorescence microscopy.
 #
-#   ### Data Collection
+#   **Data Collection**
 #   - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
 #     beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
 #     [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
 #     like accelerating voltage, detector type, or beam energy.
 #
-#   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to
-#     instruments. An experiment run captures when, how, and under what conditions data was collected,
-#     including quality metrics like resolution and completeness.
+#   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
+#     captures when, how, and under what conditions data was collected, including quality metrics
+#     like resolution and completeness.
 #
-#   ### Data Processing
+#   **Data Processing**
 #   - [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes
 #     motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
 #     for crystallography. Each workflow tracks the software used, parameters, and computational resources.
 #
-#   ### Data Products
+#   **Data Products**
 #   - [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file
 #     is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).
 #
@@ -56,6 +56,30 @@
 #     - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components
 #     - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy
 #     - [XRFImage](XRFImage.md): Elemental distribution maps
+#
+#   **Logical Groupings**
+#   - [Studies](Study.md): Lightweight groupings representing focused investigations of specific
+#     biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+#     or "Structure of the human ribosome under different conditions."
+#
+#   ### Association Tables
+#
+#   Many-to-many relationships are represented via explicit association tables, which can carry
+#   relationship metadata (e.g., the role of a sample in an experiment):
+#
+#   - **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)
+#   - **StudyExperimentAssociation**: Links experiments to studies
+#   - **StudyWorkflowAssociation**: Links workflows to studies
+#   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+#   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
+#   - **WorkflowExperimentAssociation**: Links source experiments to workflows
+#   - **WorkflowInputAssociation**: Links input files to workflows
+#   - **WorkflowOutputAssociation**: Links output files to workflows
+#
+#   This relational design enables:
+#   - **Sample reuse**: The same sample can be used in multiple studies and experiments
+#   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
+#   - **Integrative workflows**: A workflow can combine data from multiple experiments
 #
 #   ## Example Usage
 #
@@ -75,6 +99,8 @@
 #
 #   ## Key Features
 #
+#   - **Relational design**: Flat entity tables with explicit association tables for M:N relationships
+#   - **SQL-friendly**: Maps directly to normalized database tables
 #   - **Technique-agnostic core**: The same schema handles data from any structural biology method
 #   - **Rich metadata**: Comprehensive tracking from sample to structure
 #   - **Workflow provenance**: Complete computational reproducibility
@@ -137,7 +163,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post161.dev0+d3b8060"
+version = "0.1.2.post31.dev0+a94024b"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
