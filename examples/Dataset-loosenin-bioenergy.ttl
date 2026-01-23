@@ -15,16 +15,16 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
         lambdaber:df-saxs-001 ;
     lambdaber:description "Comprehensive structural biology investigation of fungal loosenin proteins using SAXS, SANS, X-ray crystallography, and cryo-EM across multiple facilities" ;
     lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
-            lambdaber:experiment_id lambdaber:exp-mx-001 ;
-            lambdaber:instrument_id lambdaber:instrument-als-mx-001 ;
-            lambdaber:role "primary" ],
-        [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id lambdaber:exp-saxs-001 ;
             lambdaber:instrument_id lambdaber:instrument-als-saxs-001 ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id lambdaber:exp-sans-001 ;
             lambdaber:instrument_id lambdaber:instrument-biosans-001 ;
+            lambdaber:role "primary" ],
+        [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-mx-001 ;
+            lambdaber:instrument_id lambdaber:instrument-als-mx-001 ;
             lambdaber:role "primary" ],
         [ a lambdaber:ExperimentInstrumentAssociation ;
             lambdaber:experiment_id lambdaber:exp-cryoem-001 ;
@@ -45,11 +45,6 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
             lambdaber:role "target" ;
             lambdaber:sample_id lambdaber:sample-LOOS-001 ],
         [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id lambdaber:exp-sans-001 ;
-            lambdaber:preparation_id lambdaber:prep-sans-001 ;
-            lambdaber:role "target" ;
-            lambdaber:sample_id lambdaber:sample-LOOS-001 ],
-        [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id lambdaber:exp-mx-001 ;
             lambdaber:preparation_id lambdaber:prep-crystal-001 ;
             lambdaber:role "target" ;
@@ -57,7 +52,12 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id lambdaber:exp-saxs-001 ;
             lambdaber:role "target" ;
-            lambdaber:sample_id lambdaber:sample-LOOS-002 ] ;
+            lambdaber:sample_id lambdaber:sample-LOOS-002 ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp-sans-001 ;
+            lambdaber:preparation_id lambdaber:prep-sans-001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-LOOS-001 ] ;
     lambdaber:images lambdaber:img-sans-001,
         lambdaber:img-saxs-001 ;
     lambdaber:instruments lambdaber:instrument-als-mx-001,
@@ -83,22 +83,18 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
         lambdaber:sample-LOOS-004 ;
     lambdaber:studies lambdaber:study-loosenin-2025 ;
     lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
-            lambdaber:experiment_id lambdaber:exp-saxs-001 ;
-            lambdaber:study_id lambdaber:study-loosenin-2025 ],
-        [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-cryoem-001 ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ],
         [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-sans-001 ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ],
         [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-saxs-001 ;
+            lambdaber:study_id lambdaber:study-loosenin-2025 ],
+        [ a lambdaber:StudyExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-mx-001 ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
-            lambdaber:role "target" ;
-            lambdaber:sample_id lambdaber:sample-LOOS-004 ;
-            lambdaber:study_id lambdaber:study-loosenin-2025 ],
-        [ a lambdaber:StudySampleAssociation ;
             lambdaber:role "target" ;
             lambdaber:sample_id lambdaber:sample-LOOS-002 ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ],
@@ -108,11 +104,15 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample-LOOS-004 ;
+            lambdaber:study_id lambdaber:study-loosenin-2025 ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
             lambdaber:sample_id lambdaber:sample-LOOS-003 ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ;
-            lambdaber:workflow_id lambdaber:wf-integrative-001 ],
+            lambdaber:workflow_id lambdaber:wf-mx-001 ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ;
             lambdaber:workflow_id lambdaber:wf-cryoem-001 ],
@@ -121,27 +121,27 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
             lambdaber:workflow_id lambdaber:wf-saxs-001 ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id lambdaber:study-loosenin-2025 ;
-            lambdaber:workflow_id lambdaber:wf-mx-001 ] ;
+            lambdaber:workflow_id lambdaber:wf-integrative-001 ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp-mx-001 ;
+            lambdaber:workflow_id lambdaber:wf-mx-001 ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-saxs-001 ;
             lambdaber:workflow_id lambdaber:wf-saxs-001 ],
         [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-cryoem-001 ;
             lambdaber:workflow_id lambdaber:wf-cryoem-001 ],
         [ a lambdaber:WorkflowExperimentAssociation ;
-            lambdaber:experiment_id lambdaber:exp-mx-001 ;
-            lambdaber:workflow_id lambdaber:wf-mx-001 ],
-        [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id lambdaber:exp-saxs-001 ;
             lambdaber:workflow_id lambdaber:wf-integrative-001 ] ;
     lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:df-sans-001 ;
+            lambdaber:file_id lambdaber:df-saxs-001 ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id lambdaber:wf-integrative-001 ],
+            lambdaber:workflow_id lambdaber:wf-saxs-001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:df-mx-001 ;
+            lambdaber:file_id lambdaber:df-cryoem-001 ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id lambdaber:wf-mx-001 ],
+            lambdaber:workflow_id lambdaber:wf-cryoem-001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
             lambdaber:file_id lambdaber:df-pdb-001 ;
             lambdaber:output_type "model" ;
@@ -151,13 +151,13 @@ lambdaber:dataset-loosenin-bioenergy a lambdaber:Dataset ;
             lambdaber:output_type "map" ;
             lambdaber:workflow_id lambdaber:wf-cryoem-001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:df-saxs-001 ;
+            lambdaber:file_id lambdaber:df-sans-001 ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id lambdaber:wf-saxs-001 ],
+            lambdaber:workflow_id lambdaber:wf-integrative-001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:df-cryoem-001 ;
+            lambdaber:file_id lambdaber:df-mx-001 ;
             lambdaber:output_type "processed_data" ;
-            lambdaber:workflow_id lambdaber:wf-cryoem-001 ] ;
+            lambdaber:workflow_id lambdaber:wf-mx-001 ] ;
     lambdaber:workflow_runs lambdaber:wf-cryoem-001,
         lambdaber:wf-integrative-001,
         lambdaber:wf-mx-001,

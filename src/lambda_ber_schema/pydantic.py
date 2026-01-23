@@ -27,7 +27,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "None"
+version = "0.1.2.post31.dev0+a94024b"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -181,22 +181,36 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '- **Standards-compliant**: Follows FAIR principles and '
                     'integrates with existing ontologies\n',
      'id': 'https://w3id.org/lambda-ber-schema/',
-     'imports': ['linkml:types', 'functional_annotation'],
+     'imports': ['linkml:types', 'lambda_ber_types', 'functional_annotation'],
      'name': 'lambda-ber-schema',
-     'prefixes': {'CL': {'prefix_prefix': 'CL',
+     'prefixes': {'CHMO': {'prefix_prefix': 'CHMO',
+                           'prefix_reference': 'http://purl.obolibrary.org/obo/CHMO_'},
+                  'CL': {'prefix_prefix': 'CL',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/CL_'},
+                  'GO': {'prefix_prefix': 'GO',
+                         'prefix_reference': 'http://purl.obolibrary.org/obo/GO_'},
                   'NCBITaxon': {'prefix_prefix': 'NCBITaxon',
                                 'prefix_reference': 'http://purl.obolibrary.org/obo/NCBITaxon_'},
+                  'PaNET': {'prefix_prefix': 'PaNET',
+                            'prefix_reference': 'http://purl.org/pan-science/PaNET/PaNET'},
                   'ROR': {'prefix_prefix': 'ROR',
                           'prefix_reference': 'https://ror.org/'},
                   'UBERON': {'prefix_prefix': 'UBERON',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/UBERON_'},
+                  'UO': {'prefix_prefix': 'UO',
+                         'prefix_reference': 'http://purl.obolibrary.org/obo/UO_'},
                   'dcterms': {'prefix_prefix': 'dcterms',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
+                  'imgCIF': {'prefix_prefix': 'imgCIF',
+                             'prefix_reference': 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#'},
+                  'ispyb': {'prefix_prefix': 'ispyb',
+                            'prefix_reference': 'https://ispyb.github.io/ISPyB/'},
                   'lambdaber': {'prefix_prefix': 'lambdaber',
                                 'prefix_reference': 'https://w3id.org/lambda-ber-schema/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
+                  'mmCIF': {'prefix_prefix': 'mmCIF',
+                            'prefix_reference': 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/'},
                   'nmdc': {'prefix_prefix': 'nmdc',
                            'prefix_reference': 'https://w3id.org/nmdc/'},
                   'nsls2': {'prefix_prefix': 'nsls2',
@@ -871,65 +885,141 @@ class PTMTypeEnum(str, Enum):
     """
     Types of post-translational modifications
     """
-    phosphorylation = "phosphorylation"
-    """
-    Phosphorylation
-    """
     acetylation = "acetylation"
     """
-    Acetylation
+    protein acetylation
     """
-    methylation = "methylation"
+    acylation = "acylation"
     """
-    Methylation
-    """
-    ubiquitination = "ubiquitination"
-    """
-    Ubiquitination
-    """
-    sumoylation = "sumoylation"
-    """
-    SUMOylation
-    """
-    glycosylation = "glycosylation"
-    """
-    Glycosylation
-    """
-    palmitoylation = "palmitoylation"
-    """
-    Palmitoylation
-    """
-    myristoylation = "myristoylation"
-    """
-    Myristoylation
-    """
-    prenylation = "prenylation"
-    """
-    Prenylation
-    """
-    nitrosylation = "nitrosylation"
-    """
-    Nitrosylation
-    """
-    oxidation = "oxidation"
-    """
-    Oxidation
-    """
-    hydroxylation = "hydroxylation"
-    """
-    Hydroxylation
-    """
-    proteolysis = "proteolysis"
-    """
-    Proteolytic cleavage
-    """
-    deamidation = "deamidation"
-    """
-    Deamidation
+    protein acylation
     """
     adp_ribosylation = "adp_ribosylation"
     """
     ADP-ribosylation
+    """
+    alkylation = "alkylation"
+    """
+    protein alkylation
+    """
+    arginylation = "arginylation"
+    """
+    protein arginylation
+    """
+    carbamoylation = "carbamoylation"
+    """
+    protein carbamoylation
+    """
+    carboxylation = "carboxylation"
+    """
+    protein carboxylation
+    """
+    deacylation = "deacylation"
+    """
+    protein deacylation
+    """
+    dealkylation = "dealkylation"
+    """
+    protein dealkylation
+    """
+    deamidation = "deamidation"
+    """
+    deamidation
+    """
+    deamination = "deamination"
+    """
+    protein deamination
+    """
+    deglutathionylation = "deglutathionylation"
+    """
+    protein deglutathionylation
+    """
+    deglycation = "deglycation"
+    """
+    protein deglycation
+    """
+    deglycosylation = "deglycosylation"
+    """
+    protein deglycosylation
+    """
+    dephosphorylation = "dephosphorylation"
+    """
+    protein dephosphorylation
+    """
+    flavinylation = "flavinylation"
+    """
+    protein flavinylation
+    """
+    glutathionylation = "glutathionylation"
+    """
+    protein glutathionylation
+    """
+    glycosylation = "glycosylation"
+    """
+    protein glycosylation
+    """
+    hydroxylation = "hydroxylation"
+    """
+    protein hydroxylation
+    """
+    lipidation = "lipidation"
+    """
+    protein lipidation
+    """
+    methylation = "methylation"
+    """
+    protein methylation
+    """
+    myristoylation = "myristoylation"
+    """
+    protein myristoylation
+    """
+    nitrosylation = "nitrosylation"
+    """
+    protein nitrosylation
+    """
+    oxidation = "oxidation"
+    """
+    protein oxidation
+    """
+    palmitoylation = "palmitoylation"
+    """
+    protein palmitoylation
+    """
+    peptidyl_amino_acid_modification = "peptidyl_amino_acid_modification"
+    """
+    peptidyl-amino acid modification
+    """
+    phosphorylation = "phosphorylation"
+    """
+    protein phosphorylation
+    """
+    post_translational_protein_modification = "post_translational_protein_modification"
+    """
+    post-translational protein modification
+    """
+    prenylation = "prenylation"
+    """
+    protein prenylation
+    """
+    proteolysis = "proteolysis"
+    """
+    proteolysis
+    """
+    sulfation = "sulfation"
+    """
+    protein sulfation
+    """
+    sulfhydration = "sulfhydration"
+    """
+    protein sulfhydration
+    """
+    sumoylation = "sumoylation"
+    """
+    protein sumoylation
+    """
+    ubiquitination = "ubiquitination"
+    """
+    protein ubiquitination
     """
 
 
@@ -1263,9 +1353,17 @@ class FacilityEnum(str, Enum):
     """
     Australia's national synchrotron facility in Melbourne, Victoria
     """
-    SIBYLS_Beamline_12FULL_STOP3FULL_STOP1 = "SIBYLS"
+    Environmental_Molecular_Sciences_Laboratory = "EMSL"
     """
-    Integrated structural biology beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction
+    DOE Office of Science user facility at PNNL with cryo-EM capabilities
+    """
+    Spallation_Neutron_Source = "SNS"
+    """
+    Accelerator-based pulsed neutron source at ORNL providing intense neutron beams
+    """
+    High_Flux_Isotope_Reactor = "HFIR"
+    """
+    Reactor-based neutron source at ORNL with dedicated biology beamlines
     """
 
 
@@ -1296,46 +1394,6 @@ class SampleTypeEnum(str, Enum):
     organelle = "organelle"
     """
     Cellular organelle
-    """
-
-
-class ConcentrationUnitEnum(str, Enum):
-    """
-    Units for concentration measurement
-    """
-    mg_per_ml = "mg_per_ml"
-    """
-    Milligrams per milliliter
-    """
-    micromolar = "micromolar"
-    """
-    Micromolar
-    """
-    millimolar = "millimolar"
-    """
-    Millimolar
-    """
-    nanomolar = "nanomolar"
-    """
-    Nanomolar
-    """
-
-
-class TemperatureUnitEnum(str, Enum):
-    """
-    Units for temperature measurement
-    """
-    celsius = "celsius"
-    """
-    Degrees Celsius
-    """
-    kelvin = "kelvin"
-    """
-    Kelvin
-    """
-    fahrenheit = "fahrenheit"
-    """
-    Degrees Fahrenheit
     """
 
 
@@ -1399,6 +1457,28 @@ class GridTypeEnum(str, Enum):
     """
 
 
+class GridMaterialEnum(str, Enum):
+    """
+    Materials used for EM grids
+    """
+    carbon = "carbon"
+    """
+    Carbon grid
+    """
+    gold = "gold"
+    """
+    Gold grid
+    """
+    graphene = "graphene"
+    """
+    Graphene grid
+    """
+    silicon_nitride = "silicon_nitride"
+    """
+    Silicon nitride grid
+    """
+
+
 class VitrificationMethodEnum(str, Enum):
     """
     Methods for vitrification
@@ -1414,6 +1494,100 @@ class VitrificationMethodEnum(str, Enum):
     slam_freezing = "slam_freezing"
     """
     Slam freezing
+    """
+
+
+class SymmetryEnum(str, Enum):
+    """
+    Crystallographic and non-crystallographic symmetry groups for cryo-EM
+    """
+    C1 = "C1"
+    """
+    C1 symmetry (no symmetry)
+    """
+    C2 = "C2"
+    """
+    C2 cyclic symmetry (2-fold)
+    """
+    C3 = "C3"
+    """
+    C3 cyclic symmetry (3-fold)
+    """
+    C4 = "C4"
+    """
+    C4 cyclic symmetry (4-fold)
+    """
+    C5 = "C5"
+    """
+    C5 cyclic symmetry (5-fold)
+    """
+    C6 = "C6"
+    """
+    C6 cyclic symmetry (6-fold)
+    """
+    C7 = "C7"
+    """
+    C7 cyclic symmetry (7-fold)
+    """
+    C8 = "C8"
+    """
+    C8 cyclic symmetry (8-fold)
+    """
+    C9 = "C9"
+    """
+    C9 cyclic symmetry (9-fold)
+    """
+    C10 = "C10"
+    """
+    C10 cyclic symmetry (10-fold)
+    """
+    D2 = "D2"
+    """
+    D2 dihedral symmetry (2-fold)
+    """
+    D3 = "D3"
+    """
+    D3 dihedral symmetry (3-fold)
+    """
+    D4 = "D4"
+    """
+    D4 dihedral symmetry (4-fold)
+    """
+    D5 = "D5"
+    """
+    D5 dihedral symmetry (5-fold)
+    """
+    D6 = "D6"
+    """
+    D6 dihedral symmetry (6-fold)
+    """
+    D7 = "D7"
+    """
+    D7 dihedral symmetry (7-fold)
+    """
+    D8 = "D8"
+    """
+    D8 dihedral symmetry (8-fold)
+    """
+    D9 = "D9"
+    """
+    D9 dihedral symmetry (9-fold)
+    """
+    D10 = "D10"
+    """
+    D10 dihedral symmetry (10-fold)
+    """
+    T = "T"
+    """
+    Tetrahedral symmetry
+    """
+    O = "O"
+    """
+    Octahedral symmetry
+    """
+    I = "I"
+    """
+    Icosahedral symmetry
     """
 
 
@@ -1473,9 +1647,205 @@ class InstrumentStatusEnum(str, Enum):
     """
 
 
+class InstrumentCategoryEnum(str, Enum):
+    """
+    Categories of instruments based on their nature and location
+    """
+    SYNCHROTRON_BEAMLINE = "SYNCHROTRON_BEAMLINE"
+    """
+    Beamline at a synchrotron light source
+    """
+    NEUTRON_BEAMLINE = "NEUTRON_BEAMLINE"
+    """
+    Beamline at a neutron source
+    """
+    XFEL_BEAMLINE = "XFEL_BEAMLINE"
+    """
+    Beamline at a free electron laser (X-ray FEL)
+    """
+    ELECTRON_MICROSCOPE = "ELECTRON_MICROSCOPE"
+    """
+    Electron microscope (TEM, SEM, cryo-EM)
+    """
+    BENCHTOP_XRAY = "BENCHTOP_XRAY"
+    """
+    Benchtop X-ray diffractometer or other laboratory X-ray source
+    """
+    OPTICAL_MICROSCOPE = "OPTICAL_MICROSCOPE"
+    """
+    Optical or fluorescence microscope
+    """
+    SPECTROMETER = "SPECTROMETER"
+    """
+    Spectroscopy instrument (FTIR, Raman, mass spec, etc.)
+    """
+
+
+class FacilityTypeEnum(str, Enum):
+    """
+    Types of research facilities
+    """
+    SYNCHROTRON = "SYNCHROTRON"
+    """
+    Synchrotron light source facility
+    """
+    NEUTRON_SOURCE = "NEUTRON_SOURCE"
+    """
+    Neutron scattering facility (reactor or spallation source)
+    """
+    FREE_ELECTRON_LASER = "FREE_ELECTRON_LASER"
+    """
+    Free electron laser facility (XFEL)
+    """
+    CRYOEM_CENTER = "CRYOEM_CENTER"
+    """
+    Dedicated cryo-electron microscopy center
+    """
+
+
+class BeamlineEnum(str, Enum):
+    """
+    Specific beamline instances at DOE and other major structural biology facilities
+    """
+    SIBYLS_LEFT_PARENTHESISBL12FULL_STOP3FULL_STOP1RIGHT_PARENTHESIS = "ALS_SIBYLS"
+    """
+    Structurally Integrated Biology for Life Sciences - dual SAXS/WAXS and macromolecular crystallography beamline
+    """
+    ALS_BL5FULL_STOP0FULL_STOP1 = "ALS_BL501"
+    """
+    Protein crystallography beamline at the Advanced Light Source
+    """
+    ALS_BL5FULL_STOP0FULL_STOP2 = "ALS_BL502"
+    """
+    Protein crystallography beamline at the Advanced Light Source
+    """
+    ALS_BL8FULL_STOP2FULL_STOP1 = "ALS_BL821"
+    """
+    Protein crystallography beamline at the Advanced Light Source
+    """
+    ALS_BL8FULL_STOP2FULL_STOP2 = "ALS_BL822"
+    """
+    Protein crystallography beamline at the Advanced Light Source
+    """
+    ALS_BL8FULL_STOP3FULL_STOP1 = "ALS_BL831"
+    """
+    High-throughput macromolecular crystallography beamline
+    """
+    ALS_BL12FULL_STOP2FULL_STOP2 = "ALS_BL1222"
+    """
+    High-throughput macromolecular crystallography beamline
+    """
+    FMX_LEFT_PARENTHESIS17_ID_1RIGHT_PARENTHESIS = "NSLS2_FMX"
+    """
+    Frontier Microfocus Macromolecular Crystallography beamline for challenging small crystals
+    """
+    AMX_LEFT_PARENTHESIS17_ID_2RIGHT_PARENTHESIS = "NSLS2_AMX"
+    """
+    Automated Macromolecular Crystallography beamline for high-throughput structure determination
+    """
+    NYX_LEFT_PARENTHESIS19_IDRIGHT_PARENTHESIS = "NSLS2_NYX"
+    """
+    Newest crystallography beamline for rapid data collection
+    """
+    LiX_LEFT_PARENTHESIS16_IDRIGHT_PARENTHESIS = "NSLS2_LIX"
+    """
+    Life Science X-ray Scattering beamline for solution SAXS/WAXS
+    """
+    GMSOLIDUSCA_23_ID_B = "APS_GMCA_23IDB"
+    """
+    General Medical Sciences and Cancer Institutes Collaborative Access Team - microfocus beamline
+    """
+    GMSOLIDUSCA_23_ID_D = "APS_GMCA_23IDD"
+    """
+    General Medical Sciences and Cancer Institutes Collaborative Access Team - standard beamline
+    """
+    LS_CAT_LEFT_PARENTHESIS21_IDRIGHT_PARENTHESIS = "APS_LSCAT_21ID"
+    """
+    Life Sciences Collaborative Access Team beamline
+    """
+    NE_CAT_24_ID_C = "APS_NECAT_24IDC"
+    """
+    Northeastern Collaborative Access Team - microfocus beamline
+    """
+    NE_CAT_24_ID_E = "APS_NECAT_24IDE"
+    """
+    Northeastern Collaborative Access Team - standard beamline
+    """
+    SER_CAT_LEFT_PARENTHESIS22_IDRIGHT_PARENTHESIS = "APS_SERCAT_22ID"
+    """
+    Southeast Regional Collaborative Access Team - insertion device beamline
+    """
+    SER_CAT_LEFT_PARENTHESIS22_BMRIGHT_PARENTHESIS = "APS_SERCAT_22BM"
+    """
+    Southeast Regional Collaborative Access Team - bending magnet beamline
+    """
+    SBC_CAT_LEFT_PARENTHESIS19_IDRIGHT_PARENTHESIS = "APS_SBCCAT_19ID"
+    """
+    Structural Biology Center Collaborative Access Team beamline
+    """
+    BioCARS_LEFT_PARENTHESIS14_IDRIGHT_PARENTHESIS = "APS_BIOCARS_14ID"
+    """
+    Center for Advanced Radiation Sources - time-resolved crystallography
+    """
+    BioCAT_LEFT_PARENTHESIS18_IDRIGHT_PARENTHESIS = "APS_BIOCAT_18ID"
+    """
+    Biophysics Collaborative Access Team - fiber diffraction and SAXS
+    """
+    IMCA_CAT_LEFT_PARENTHESIS17_IDRIGHT_PARENTHESIS = "APS_IMCACAT_17ID"
+    """
+    Industrial Macromolecular Crystallography Association Collaborative Access Team
+    """
+    SSRL_BL9_2 = "SSRL_BL92"
+    """
+    Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource
+    """
+    SSRL_BL12_2 = "SSRL_BL122"
+    """
+    Solution scattering beamline for SAXS/WAXS at Stanford Synchrotron Radiation Lightsource
+    """
+    SSRL_BL14_1 = "SSRL_BL141"
+    """
+    Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource
+    """
+    MaNDi = "SNS_MANDI"
+    """
+    Macromolecular Neutron Diffractometer for neutron protein crystallography
+    """
+    IMAGINE = "HFIR_IMAGINE"
+    """
+    Image plate single crystal diffractometer for neutron protein crystallography
+    """
+    Bio_SANS = "SNS_BIOSANS"
+    """
+    Biological Small-Angle Neutron Scattering instrument
+    """
+    EQ_SANS = "SNS_EQSANS"
+    """
+    Extended Q-Range Small-Angle Neutron Scattering instrument
+    """
+
+
+class ImagingModeEnum(str, Enum):
+    """
+    Imaging modes for electron microscopy
+    """
+    EFTEM = "EFTEM"
+    """
+    Energy-filtered transmission electron microscopy
+    """
+    TEM = "TEM"
+    """
+    Transmission electron microscopy
+    """
+    STEM = "STEM"
+    """
+    Scanning transmission electron microscopy
+    """
+
+
 class DetectorTypeEnum(str, Enum):
     """
-    Types of detectors for cryo-EM and X-ray crystallography
+    DEPRECATED: Use DetectorTechnologyEnum instead. Legacy enum mixing technologies and brands.
     """
     direct_electron = "direct_electron"
     """
@@ -1512,6 +1882,66 @@ class DetectorTypeEnum(str, Enum):
     mar = "mar"
     """
     MAR CCD or imaging plate detector
+    """
+
+
+class DetectorTechnologyEnum(str, Enum):
+    """
+    Generic detector technologies for structural biology imaging
+    """
+    direct_electron_detector = "direct_electron_detector"
+    """
+    Direct electron detector for cryo-EM (e.g., Gatan K2/K3, ThermoFisher Falcon, DirectElectron DE-64)
+    """
+    ccd = "ccd"
+    """
+    Charge-coupled device camera
+    """
+    cmos = "cmos"
+    """
+    Complementary metal-oxide-semiconductor detector
+    """
+    hybrid_photon_counting = "hybrid_photon_counting"
+    """
+    Hybrid pixel photon counting detector for X-ray crystallography
+    """
+    scintillator_coupled = "scintillator_coupled"
+    """
+    Scintillator-coupled indirect detection
+    """
+    imaging_plate = "imaging_plate"
+    """
+    Imaging plate detector
+    """
+    film = "film"
+    """
+    Photographic film
+    """
+
+
+class DetectorModeEnum(str, Enum):
+    """
+    Operating modes for detectors during data collection
+    """
+    counting = "counting"
+    """
+    Electron/photon counting mode
+    """
+    integrating = "integrating"
+    """
+    Integrating mode (analog)
+    """
+    super_resolution = "super_resolution"
+    """
+    Super-resolution mode with oversampling
+    """
+    linear = "linear"
+    """
+    Linear response mode
+    """
+    correlated_double_sampling = "correlated_double_sampling"
+    """
+    Correlated double sampling mode
     """
 
 
@@ -1572,6 +2002,34 @@ class TechniqueEnum(str, Enum):
     mass_spectrometry = "mass_spectrometry"
     """
     Mass spectrometry
+    """
+    xas = "xas"
+    """
+    X-ray absorption spectroscopy
+    """
+    xanes = "xanes"
+    """
+    X-ray absorption near edge structure spectroscopy
+    """
+    exafs = "exafs"
+    """
+    Extended X-ray absorption fine structure spectroscopy
+    """
+    xmcd = "xmcd"
+    """
+    X-ray magnetic circular dichroism
+    """
+    neutron_crystallography = "neutron_crystallography"
+    """
+    Neutron macromolecular crystallography
+    """
+    fiber_diffraction = "fiber_diffraction"
+    """
+    Fiber diffraction for structural analysis of fibrous samples
+    """
+    time_resolved_crystallography = "time_resolved_crystallography"
+    """
+    Time-resolved macromolecular crystallography
     """
 
 
@@ -1649,6 +2107,18 @@ class WorkflowTypeEnum(str, Enum):
     """
     SAXS data analysis
     """
+    xas_normalization = "xas_normalization"
+    """
+    XAS data normalization and background subtraction
+    """
+    xanes_analysis = "xanes_analysis"
+    """
+    XANES spectral analysis and edge fitting
+    """
+    exafs_analysis = "exafs_analysis"
+    """
+    EXAFS data analysis and shell fitting
+    """
     em_2d_classification = "em_2d_classification"
     """
     EM 2D classification
@@ -1656,6 +2126,30 @@ class WorkflowTypeEnum(str, Enum):
     mass_spec_deconvolution = "mass_spec_deconvolution"
     """
     Mass spectrometry deconvolution
+    """
+    particle_extraction = "particle_extraction"
+    """
+    Particle extraction from micrographs
+    """
+    ab_initio = "ab_initio"
+    """
+    Ab initio 3D reconstruction
+    """
+    postprocessing = "postprocessing"
+    """
+    Map post-processing and sharpening
+    """
+    map_validation = "map_validation"
+    """
+    3D map validation
+    """
+    model_refinement = "model_refinement"
+    """
+    Atomic model refinement
+    """
+    model_validation = "model_validation"
+    """
+    Model validation and quality assessment
     """
 
 
@@ -1719,6 +2213,30 @@ class FileFormatEnum(str, Enum):
     """
     ZIP compressed archive
     """
+    mrcs = "mrcs"
+    """
+    MRC stack format for particle stacks
+    """
+    eer = "eer"
+    """
+    EER format for electron counting
+    """
+    cs = "cs"
+    """
+    CryoSPARC format
+    """
+    json = "json"
+    """
+    JSON data format
+    """
+    csv = "csv"
+    """
+    Comma-separated values format
+    """
+    ccp4 = "ccp4"
+    """
+    CCP4 map format
+    """
     gz = "gz"
     """
     Gzip compressed format
@@ -1764,6 +2282,38 @@ class DataTypeEnum(str, Enum):
     processed_data = "processed_data"
     """
     Processed data
+    """
+    movie = "movie"
+    """
+    Raw cryo-EM movie
+    """
+    motion_corrected = "motion_corrected"
+    """
+    Motion-corrected micrograph
+    """
+    ctf_estimation = "ctf_estimation"
+    """
+    CTF estimation results
+    """
+    particle_coordinates = "particle_coordinates"
+    """
+    Particle picking coordinates
+    """
+    class_averages = "class_averages"
+    """
+    2D or 3D class averages
+    """
+    fsc_curve = "fsc_curve"
+    """
+    Fourier Shell Correlation data
+    """
+    map_half = "map_half"
+    """
+    Half-map for gold-standard refinement
+    """
+    validation_report = "validation_report"
+    """
+    Validation report
     """
 
 
@@ -1975,6 +2525,230 @@ class ExperimentalMethodEnum(str, Enum):
     """
 
 
+class SampleRoleEnum(str, Enum):
+    """
+    Role of a sample in a study
+    """
+    target = "target"
+    """
+    Primary sample under investigation
+    """
+    control = "control"
+    """
+    Control sample for comparison
+    """
+    reference = "reference"
+    """
+    Reference standard or calibrant
+    """
+    blank = "blank"
+    """
+    Buffer blank or negative control
+    """
+
+
+class ExperimentSampleRoleEnum(str, Enum):
+    """
+    Role of a sample in an experiment
+    """
+    target = "target"
+    """
+    Primary target of measurement
+    """
+    buffer_blank = "buffer_blank"
+    """
+    Buffer-only measurement for subtraction
+    """
+    standard = "standard"
+    """
+    Calibration or reference standard
+    """
+    size_marker = "size_marker"
+    """
+    Molecular weight marker
+    """
+
+
+class InstrumentRoleEnum(str, Enum):
+    """
+    Role of an instrument in an experiment
+    """
+    primary = "primary"
+    """
+    Primary data collection instrument
+    """
+    detector = "detector"
+    """
+    Secondary detector or detection component
+    """
+    sample_handler = "sample_handler"
+    """
+    Automated sample handling or positioning
+    """
+
+
+class InputTypeEnum(str, Enum):
+    """
+    Type of input for a workflow
+    """
+    raw_data = "raw_data"
+    """
+    Raw experimental data
+    """
+    reference = "reference"
+    """
+    Reference data (e.g., PDB model, database)
+    """
+    parameters = "parameters"
+    """
+    Processing parameters file
+    """
+    mask = "mask"
+    """
+    Mask or selection file
+    """
+
+
+class OutputTypeEnum(str, Enum):
+    """
+    Types of outputs from computational workflows
+    """
+    map = "map"
+    """
+    Density map or reconstructed volume
+    """
+    model = "model"
+    """
+    Atomic model or coordinates
+    """
+    particles = "particles"
+    """
+    Particle stack or extracted particles
+    """
+    micrographs = "micrographs"
+    """
+    Motion-corrected micrographs
+    """
+    ctf_estimates = "ctf_estimates"
+    """
+    CTF estimation results
+    """
+    metadata = "metadata"
+    """
+    Metadata or parameter files
+    """
+    statistics = "statistics"
+    """
+    Processing statistics or quality metrics
+    """
+    processed_data = "processed_data"
+    """
+    Processed or derived data files
+    """
+    log = "log"
+    """
+    Processing log files
+    """
+
+
+
+class AttributeValue(ConfiguredBaseModel):
+    """
+    The value for any attribute of an entity. This object can hold both the un-normalized atomic value and the structured value.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'nmdc:AttributeValue',
+         'from_schema': 'https://w3id.org/lambda-ber-schema/types'})
+
+    attribute: Optional[Attribute] = Field(default=None, description="""The attribute being represented.""", json_schema_extra = { "linkml_meta": {'alias': 'attribute', 'domain_of': ['AttributeValue']} })
+    raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, suggested syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'alias': 'raw_value', 'domain_of': ['AttributeValue']} })
+
+
+class Attribute(ConfiguredBaseModel):
+    """
+    A domain, measurement, attribute, property, or any descriptor for additional properties to be added to an entity. Where available, please use OBO Foundry ontologies or other controlled vocabularies for attributes; the label should be the term name from the ontology and the id should be the fully-qualified CURIE.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/types'})
+
+    id: Optional[str] = Field(default=None, description="""A CURIE for the attribute, should one exist. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the id should be the term ID from the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing'], 'recommended': True} })
+    label: str = Field(default=..., description="""Text string to describe the attribute. Where available, please use OBO Foundry ontologies or other controlled vocabularies for labelling attributes; the label should be the term name from the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'label',
+         'aliases': ['name', 'title'],
+         'domain_of': ['Attribute', 'OntologyTerm']} })
+
+
+class QuantityValue(AttributeValue):
+    """
+    A simple quantity value, representing a measurement with a numeric value and unit. This allows data providers to specify measurements in their preferred unit while enabling standardized interpretation. For example, a pixel size could be specified as 1.5 micrometers or 15 Angstroms, with the unit clearly specified.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:QuantityValue',
+         'from_schema': 'https://w3id.org/lambda-ber-schema/types',
+         'mappings': ['schema:QuantityValue'],
+         'slot_usage': {'numeric_value': {'description': 'The numerical value of the '
+                                                         'quantity',
+                                          'name': 'numeric_value',
+                                          'required': True},
+                        'raw_value': {'description': 'Unnormalized atomic string '
+                                                     'representation, suggested syntax '
+                                                     '{number} {unit}',
+                                      'examples': [{'value': '1.5 micrometers'},
+                                                   {'value': '50 Angstroms'}],
+                                      'name': 'raw_value'},
+                        'unit': {'description': 'The unit of measurement (e.g., '
+                                                '"Angstroms", "micrometers", '
+                                                '"kilodaltons"). Should match the UCUM '
+                                                'standard notation or Unit Ontology.',
+                                 'name': 'unit',
+                                 'required': True}}})
+
+    maximum_numeric_value: Optional[float] = Field(default=None, description="""The maximum value part, expressed as a number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'maximum_numeric_value',
+         'domain_of': ['QuantityValue'],
+         'is_a': 'numeric_value',
+         'mappings': ['nmdc:maximum_numeric_value']} })
+    minimum_numeric_value: Optional[float] = Field(default=None, description="""The minimum value part, expressed as a number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'minimum_numeric_value',
+         'domain_of': ['QuantityValue'],
+         'is_a': 'numeric_value',
+         'mappings': ['nmdc:minimum_numeric_value']} })
+    numeric_value: float = Field(default=..., description="""The numerical value of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'numeric_value',
+         'domain_of': ['QuantityValue'],
+         'mappings': ['nmdc:numeric_value', 'qud:quantityValue', 'schema:value']} })
+    unit: str = Field(default=..., description="""The unit of measurement (e.g., \"Angstroms\", \"micrometers\", \"kilodaltons\"). Should match the UCUM standard notation or Unit Ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'unit',
+         'aliases': ['scale'],
+         'domain_of': ['QuantityValue', 'BiophysicalProperty'],
+         'mappings': ['nmdc:unit', 'qud:unit', 'schema:unitCode', 'UO:0000000']} })
+    unit_cv_id: Optional[str] = Field(default=None, description="""The unit of the quantity, expressed as a CURIE from the Unit Ontology (e.g., UO:0000016 for micrometer).""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cv_id', 'domain_of': ['QuantityValue']} })
+    attribute: Optional[Attribute] = Field(default=None, description="""The attribute being represented.""", json_schema_extra = { "linkml_meta": {'alias': 'attribute', 'domain_of': ['AttributeValue']} })
+    raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, suggested syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'alias': 'raw_value',
+         'domain_of': ['AttributeValue'],
+         'examples': [{'value': '1.5 micrometers'}, {'value': '50 Angstroms'}]} })
+
+
+class TextValue(AttributeValue):
+    """
+    A value described using a text string, optionally with a controlled vocabulary ID.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:TextValue',
+         'from_schema': 'https://w3id.org/lambda-ber-schema/types'})
+
+    value: str = Field(default=..., description="""The text value""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['TextValue', 'DateTimeValue', 'BiophysicalProperty']} })
+    value_cv_id: Optional[str] = Field(default=None, description="""For values in a controlled vocabulary, the CV ID for the value.""", json_schema_extra = { "linkml_meta": {'alias': 'value_cv_id', 'domain_of': ['TextValue']} })
+    attribute: Optional[Attribute] = Field(default=None, description="""The attribute being represented.""", json_schema_extra = { "linkml_meta": {'alias': 'attribute', 'domain_of': ['AttributeValue']} })
+    raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, suggested syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'alias': 'raw_value', 'domain_of': ['AttributeValue']} })
+
+
+class DateTimeValue(AttributeValue):
+    """
+    A date or date and time value.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:DateTimeValue',
+         'from_schema': 'https://w3id.org/lambda-ber-schema/types'})
+
+    value: str = Field(default=..., description="""The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['TextValue', 'DateTimeValue', 'BiophysicalProperty'],
+         'examples': [{'value': '2025-11-09'}, {'value': '2025-09-16T22:48:54Z'}]} })
+    attribute: Optional[Attribute] = Field(default=None, description="""The attribute being represented.""", json_schema_extra = { "linkml_meta": {'alias': 'attribute', 'domain_of': ['AttributeValue']} })
+    raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, suggested syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'alias': 'raw_value', 'domain_of': ['AttributeValue']} })
+
 
 class NamedThing(ConfiguredBaseModel):
     """
@@ -1982,9 +2756,9 @@ class NamedThing(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class ProteinAnnotation(NamedThing):
@@ -1998,15 +2772,15 @@ class ProteinAnnotation(NamedThing):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -2047,9 +2821,22 @@ class ProteinAnnotation(NamedThing):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2069,10 +2856,10 @@ class FunctionalSite(ProteinAnnotation):
 
     site_type: FunctionalSiteTypeEnum = Field(default=..., description="""Type of functional site""", json_schema_extra = { "linkml_meta": {'alias': 'site_type', 'domain_of': ['FunctionalSite']} })
     site_name: Optional[str] = Field(default=None, description="""Common name for this site""", json_schema_extra = { "linkml_meta": {'alias': 'site_name', 'domain_of': ['FunctionalSite']} })
-    residues: Optional[list[str]] = Field(default=None, description="""List of residues forming the functional site""", json_schema_extra = { "linkml_meta": {'alias': 'residues', 'domain_of': ['FunctionalSite']} })
+    residues: Optional[list[str]] = Field(default=None, description="""List of residues forming the functional site. Each should be specified as a string (e.g., \"45\", \"120A\").""", json_schema_extra = { "linkml_meta": {'alias': 'residues', 'domain_of': ['FunctionalSite']} })
     ligand_interactions: Optional[list[LigandInteraction]] = Field(default=None, description="""Ligands that interact with this site""", json_schema_extra = { "linkml_meta": {'alias': 'ligand_interactions',
          'domain_of': ['FunctionalSite', 'AggregatedProteinView', 'Sample']} })
-    conservation_score: Optional[float] = Field(default=None, description="""Evolutionary conservation score""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'conservation_score',
+    conservation_score: Optional[float] = Field(default=None, description="""Evolutionary conservation score (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'conservation_score',
          'domain_of': ['FunctionalSite', 'EvolutionaryConservation']} })
     functional_importance: Optional[str] = Field(default=None, description="""Description of functional importance""", json_schema_extra = { "linkml_meta": {'alias': 'functional_importance', 'domain_of': ['FunctionalSite']} })
     go_terms: Optional[list[str]] = Field(default=None, description="""Associated Gene Ontology terms""", json_schema_extra = { "linkml_meta": {'alias': 'go_terms', 'domain_of': ['FunctionalSite']} })
@@ -2082,15 +2869,15 @@ class FunctionalSite(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('ec_number')
     def pattern_ec_number(cls, v):
@@ -2144,9 +2931,22 @@ class FunctionalSite(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2166,9 +2966,9 @@ class StructuralFeature(ProteinAnnotation):
 
     feature_type: StructuralFeatureTypeEnum = Field(default=..., description="""Type of structural feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_type', 'domain_of': ['StructuralFeature']} })
     secondary_structure: Optional[SecondaryStructureEnum] = Field(default=None, description="""Secondary structure assignment""", json_schema_extra = { "linkml_meta": {'alias': 'secondary_structure', 'domain_of': ['StructuralFeature']} })
-    solvent_accessibility: Optional[float] = Field(default=None, description="""Relative solvent accessible surface area""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'solvent_accessibility', 'domain_of': ['StructuralFeature']} })
+    solvent_accessibility: Optional[float] = Field(default=None, description="""Relative solvent accessible surface area (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'solvent_accessibility', 'domain_of': ['StructuralFeature']} })
     backbone_flexibility: Optional[float] = Field(default=None, description="""B-factor or flexibility measure""", json_schema_extra = { "linkml_meta": {'alias': 'backbone_flexibility', 'domain_of': ['StructuralFeature']} })
-    disorder_probability: Optional[float] = Field(default=None, description="""Probability of disorder (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'disorder_probability', 'domain_of': ['StructuralFeature']} })
+    disorder_probability: Optional[float] = Field(default=None, description="""Probability of disorder (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'disorder_probability', 'domain_of': ['StructuralFeature']} })
     conformational_state: Optional[ConformationalStateEnum] = Field(default=None, description="""Conformational state descriptor""", json_schema_extra = { "linkml_meta": {'alias': 'conformational_state', 'domain_of': ['StructuralFeature']} })
     structural_motif: Optional[str] = Field(default=None, description="""Known structural motif""", json_schema_extra = { "linkml_meta": {'alias': 'structural_motif', 'domain_of': ['StructuralFeature']} })
     domain_assignment: Optional[str] = Field(default=None, description="""Domain database assignment (CATH, SCOP, Pfam)""", json_schema_extra = { "linkml_meta": {'alias': 'domain_assignment', 'domain_of': ['StructuralFeature']} })
@@ -2178,15 +2978,15 @@ class StructuralFeature(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -2227,9 +3027,22 @@ class StructuralFeature(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2267,15 +3080,15 @@ class ProteinProteinInteraction(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -2316,9 +3129,22 @@ class ProteinProteinInteraction(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2347,21 +3173,21 @@ class MutationEffect(ProteinAnnotation):
     disease_association: Optional[str] = Field(default=None, description="""Associated disease or phenotype""", json_schema_extra = { "linkml_meta": {'alias': 'disease_association', 'domain_of': ['MutationEffect']} })
     omim_id: Optional[str] = Field(default=None, description="""OMIM database identifier""", json_schema_extra = { "linkml_meta": {'alias': 'omim_id', 'domain_of': ['MutationEffect']} })
     clinical_significance: Optional[ClinicalSignificanceEnum] = Field(default=None, description="""Clinical significance""", json_schema_extra = { "linkml_meta": {'alias': 'clinical_significance', 'domain_of': ['MutationEffect']} })
-    allele_frequency: Optional[float] = Field(default=None, description="""Population allele frequency""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'allele_frequency', 'domain_of': ['MutationEffect']} })
+    allele_frequency: Optional[float] = Field(default=None, description="""Population allele frequency (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'allele_frequency', 'domain_of': ['MutationEffect']} })
     protein_id: str = Field(default=..., description="""UniProt accession number""", json_schema_extra = { "linkml_meta": {'alias': 'protein_id',
          'domain_of': ['ProteinAnnotation', 'ConformationalEnsemble']} })
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('mutation')
     def pattern_mutation(cls, v):
@@ -2428,9 +3254,22 @@ class MutationEffect(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2458,9 +3297,9 @@ class ConformationalEnsemble(NamedThing):
     transition_pathways: Optional[str] = Field(default=None, description="""Description of transition pathways between states""", json_schema_extra = { "linkml_meta": {'alias': 'transition_pathways', 'domain_of': ['ConformationalEnsemble']} })
     energy_landscape: Optional[str] = Field(default=None, description="""Description of the energy landscape""", json_schema_extra = { "linkml_meta": {'alias': 'energy_landscape', 'domain_of': ['ConformationalEnsemble']} })
     principal_motions: Optional[list[str]] = Field(default=None, description="""Description of principal motions""", json_schema_extra = { "linkml_meta": {'alias': 'principal_motions', 'domain_of': ['ConformationalEnsemble']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class PostTranslationalModification(ProteinAnnotation):
@@ -2484,15 +3323,15 @@ class PostTranslationalModification(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -2533,9 +3372,22 @@ class PostTranslationalModification(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2553,7 +3405,7 @@ class EvolutionaryConservation(ProteinAnnotation):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/functional_annotation'})
 
-    conservation_score: Optional[float] = Field(default=None, description="""Overall conservation score""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'conservation_score',
+    conservation_score: Optional[float] = Field(default=None, description="""Overall conservation score (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'conservation_score',
          'domain_of': ['FunctionalSite', 'EvolutionaryConservation']} })
     conserved_residues: Optional[list[str]] = Field(default=None, description="""Highly conserved residues""", json_schema_extra = { "linkml_meta": {'alias': 'conserved_residues', 'domain_of': ['EvolutionaryConservation']} })
     variable_residues: Optional[list[str]] = Field(default=None, description="""Highly variable residues""", json_schema_extra = { "linkml_meta": {'alias': 'variable_residues', 'domain_of': ['EvolutionaryConservation']} })
@@ -2566,15 +3418,15 @@ class EvolutionaryConservation(ProteinAnnotation):
     pdb_entry: Optional[str] = Field(default=None, description="""PDB identifier""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entry', 'domain_of': ['ProteinAnnotation']} })
     chain_id: Optional[str] = Field(default=None, description="""Chain identifier in the PDB structure""", json_schema_extra = { "linkml_meta": {'alias': 'chain_id', 'domain_of': ['ProteinAnnotation']} })
     residue_range: Optional[str] = Field(default=None, description="""Range of residues (e.g., '1-100', '25,27,30-35')""", json_schema_extra = { "linkml_meta": {'alias': 'residue_range', 'domain_of': ['ProteinAnnotation']} })
-    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
+    confidence_score: Optional[float] = Field(default=None, description="""Confidence score for the annotation (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'confidence_score', 'domain_of': ['ProteinAnnotation']} })
     evidence_type: Optional[EvidenceTypeEnum] = Field(default=None, description="""Type of evidence supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_type', 'domain_of': ['ProteinAnnotation']} })
     evidence_code: Optional[str] = Field(default=None, description="""Evidence and Conclusion Ontology (ECO) code""", json_schema_extra = { "linkml_meta": {'alias': 'evidence_code', 'domain_of': ['ProteinAnnotation']} })
     source_database: Optional[AnnotationSourceEnum] = Field(default=None, description="""Source database or resource that provided this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'source_database', 'domain_of': ['ProteinAnnotation']} })
     annotation_method: Optional[str] = Field(default=None, description="""Computational or experimental method used""", json_schema_extra = { "linkml_meta": {'alias': 'annotation_method', 'domain_of': ['ProteinAnnotation']} })
-    publication_ids: Optional[list[str]] = Field(default=None, description="""PubMed IDs supporting this annotation""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    publication_ids: Optional[list[str]] = Field(default=None, description="""IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.""", json_schema_extra = { "linkml_meta": {'alias': 'publication_ids', 'domain_of': ['ProteinAnnotation']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
     @field_validator('protein_id')
     def pattern_protein_id(cls, v):
@@ -2615,9 +3467,22 @@ class EvolutionaryConservation(ProteinAnnotation):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('residue_range')
+    def pattern_residue_range(cls, v):
+        pattern=re.compile(r"^[0-9,\-]+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid residue_range format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid residue_range format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('publication_ids')
     def pattern_publication_ids(cls, v):
-        pattern=re.compile(r"^PMID:[0-9]+$")
+        pattern=re.compile(r"^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -2658,9 +3523,28 @@ class AggregatedProteinView(NamedThing):
     evolutionary_conservation: Optional[EvolutionaryConservation] = Field(default=None, description="""Conservation analysis""", json_schema_extra = { "linkml_meta": {'alias': 'evolutionary_conservation',
          'domain_of': ['AggregatedProteinView', 'Sample']} })
     cross_references: Optional[list[DatabaseCrossReference]] = Field(default=None, description="""Database cross-references""", json_schema_extra = { "linkml_meta": {'alias': 'cross_references', 'domain_of': ['AggregatedProteinView']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class MeasurementConditions(NamedThing):
+    """
+    Conditions under which biophysical measurements were made
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/functional_annotation'})
+
+    buffer_composition: Optional[BufferComposition] = Field(default=None, description="""Composition of the buffer used""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_composition',
+         'domain_of': ['MeasurementConditions', 'Sample']} })
+    ph: Optional[QuantityValue] = Field(default=None, description="""pH value of the solution during measurement (range: 0-14), typically expressed in pH units. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['MeasurementConditions', 'BufferComposition']} })
+    ionic_strength: Optional[QuantityValue] = Field(default=None, description="""Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ionic_strength', 'domain_of': ['MeasurementConditions']} })
+    temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during measurement, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'domain_of': ['MeasurementConditions',
+                       'StorageConditions',
+                       'ExperimentalConditions']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class AttributeGroup(ConfiguredBaseModel):
@@ -2688,7 +3572,7 @@ class LigandInteraction(AttributeGroup):
     binding_site_residues: Optional[list[str]] = Field(default=None, description="""Residues involved in ligand binding""", json_schema_extra = { "linkml_meta": {'alias': 'binding_site_residues', 'domain_of': ['LigandInteraction']} })
     is_cofactor: Optional[bool] = Field(default=None, description="""Whether the ligand is a cofactor""", json_schema_extra = { "linkml_meta": {'alias': 'is_cofactor', 'domain_of': ['LigandInteraction']} })
     is_drug_like: Optional[bool] = Field(default=None, description="""Whether the ligand has drug-like properties""", json_schema_extra = { "linkml_meta": {'alias': 'is_drug_like', 'domain_of': ['LigandInteraction']} })
-    druggability_score: Optional[float] = Field(default=None, description="""Druggability score of the binding site""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'druggability_score', 'domain_of': ['LigandInteraction']} })
+    druggability_score: Optional[float] = Field(default=None, description="""Druggability score of the binding site (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'druggability_score', 'domain_of': ['LigandInteraction']} })
     interaction_distance: Optional[float] = Field(default=None, description="""Distance criteria for interaction (Angstroms)""", json_schema_extra = { "linkml_meta": {'alias': 'interaction_distance',
          'domain_of': ['LigandInteraction'],
          'unit': {'ucum_code': 'Angstrom'}} })
@@ -2702,19 +3586,11 @@ class BiophysicalProperty(AttributeGroup):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/functional_annotation'})
 
     property_type: BiophysicalPropertyEnum = Field(default=..., description="""Type of biophysical property""", json_schema_extra = { "linkml_meta": {'alias': 'property_type', 'domain_of': ['BiophysicalProperty']} })
-    value: float = Field(default=..., description="""Numerical value of the property""", json_schema_extra = { "linkml_meta": {'alias': 'value', 'domain_of': ['BiophysicalProperty']} })
-    unit: str = Field(default=..., description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'alias': 'unit', 'domain_of': ['BiophysicalProperty']} })
+    value: float = Field(default=..., description="""Numerical value of the property""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['TextValue', 'DateTimeValue', 'BiophysicalProperty']} })
+    unit: str = Field(default=..., description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'alias': 'unit', 'domain_of': ['QuantityValue', 'BiophysicalProperty']} })
     error: Optional[float] = Field(default=None, description="""Experimental error or uncertainty""", json_schema_extra = { "linkml_meta": {'alias': 'error', 'domain_of': ['BiophysicalProperty']} })
-    measurement_conditions: Optional[str] = Field(default=None, description="""Conditions under which measurement was made""", json_schema_extra = { "linkml_meta": {'alias': 'measurement_conditions', 'domain_of': ['BiophysicalProperty']} })
-    temperature: Optional[float] = Field(default=None, description="""Temperature in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
-         'domain_of': ['BiophysicalProperty',
-                       'StorageConditions',
-                       'ExperimentalConditions'],
-         'unit': {'ucum_code': 'K'}} })
-    ph: Optional[float] = Field(default=None, description="""pH value""", ge=0, le=14, json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['BiophysicalProperty', 'BufferComposition']} })
-    ionic_strength: Optional[float] = Field(default=None, description="""Ionic strength in molar""", json_schema_extra = { "linkml_meta": {'alias': 'ionic_strength',
-         'domain_of': ['BiophysicalProperty'],
-         'unit': {'ucum_code': 'mol/L'}} })
+    measurement_conditions: Optional[list[MeasurementConditions]] = Field(default=None, description="""Conditions under which measurement was made. If multiple sets of conditions were used, this will represent that the same values were obtained under different conditions. If values differ under different conditions, separate BiophysicalProperty instances should be created.""", json_schema_extra = { "linkml_meta": {'alias': 'measurement_conditions', 'domain_of': ['BiophysicalProperty']} })
     experimental_method: Optional[BiophysicalMethodEnum] = Field(default=None, description="""Method used for measurement""", json_schema_extra = { "linkml_meta": {'alias': 'experimental_method',
          'domain_of': ['BiophysicalProperty', 'ExperimentRun']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -2730,7 +3606,7 @@ class ConformationalState(AttributeGroup):
     state_name: Optional[str] = Field(default=None, description="""Descriptive name (e.g., 'open', 'closed')""", json_schema_extra = { "linkml_meta": {'alias': 'state_name', 'domain_of': ['ConformationalState']} })
     pdb_entries: Optional[list[str]] = Field(default=None, description="""PDB entries representing this state""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_entries',
          'domain_of': ['ConformationalState', 'AggregatedProteinView']} })
-    population: Optional[float] = Field(default=None, description="""Relative population of this state""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['ConformationalState']} })
+    population: Optional[float] = Field(default=None, description="""Relative population of this state (range: 0-1)""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['ConformationalState']} })
     free_energy: Optional[float] = Field(default=None, description="""Relative free energy (kcal/mol)""", json_schema_extra = { "linkml_meta": {'alias': 'free_energy',
          'domain_of': ['ConformationalState'],
          'unit': {'ucum_code': 'kcal/mol'}} })
@@ -2756,35 +3632,43 @@ class DatabaseCrossReference(AttributeGroup):
 
 class Dataset(NamedThing):
     """
-    A collection of studies
+    Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/', 'tree_root': True})
 
-    keywords: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset']} })
-    instruments: Optional[list[Instrument]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
-    studies: Optional[list[Study]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the dataset for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
+    studies: Optional[list[Study]] = Field(default=None, description="""All studies in this dataset""", json_schema_extra = { "linkml_meta": {'alias': 'studies', 'domain_of': ['Dataset']} })
+    instruments: Optional[list[Instrument]] = Field(default=None, description="""All instruments used across studies""", json_schema_extra = { "linkml_meta": {'alias': 'instruments', 'domain_of': ['Dataset']} })
+    protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""All protein constructs""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Dataset']} })
+    samples: Optional[list[Sample]] = Field(default=None, description="""All samples across all studies""", json_schema_extra = { "linkml_meta": {'alias': 'samples', 'domain_of': ['Dataset']} })
+    sample_preparations: Optional[list[SamplePreparation]] = Field(default=None, description="""All sample preparations""", json_schema_extra = { "linkml_meta": {'alias': 'sample_preparations', 'domain_of': ['Dataset']} })
+    experiment_runs: Optional[list[ExperimentRun]] = Field(default=None, description="""All experiment runs (data collection sessions)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_runs', 'domain_of': ['Dataset']} })
+    workflow_runs: Optional[list[WorkflowRun]] = Field(default=None, description="""All workflow runs (computational processing)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_runs', 'domain_of': ['Dataset']} })
+    data_files: Optional[list[DataFile]] = Field(default=None, description="""All data files""", json_schema_extra = { "linkml_meta": {'alias': 'data_files', 'domain_of': ['Dataset']} })
+    images: Optional[list[Image]] = Field(default=None, description="""All images""", json_schema_extra = { "linkml_meta": {'alias': 'images', 'domain_of': ['Dataset']} })
+    study_sample_associations: Optional[list[StudySampleAssociation]] = Field(default=None, description="""Links between studies and samples (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'study_sample_associations', 'domain_of': ['Dataset']} })
+    study_experiment_associations: Optional[list[StudyExperimentAssociation]] = Field(default=None, description="""Links between studies and experiments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'study_experiment_associations', 'domain_of': ['Dataset']} })
+    study_workflow_associations: Optional[list[StudyWorkflowAssociation]] = Field(default=None, description="""Links between studies and workflows (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'study_workflow_associations', 'domain_of': ['Dataset']} })
+    experiment_sample_associations: Optional[list[ExperimentSampleAssociation]] = Field(default=None, description="""Links between experiments and samples (M:N with role)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_sample_associations', 'domain_of': ['Dataset']} })
+    experiment_instrument_associations: Optional[list[ExperimentInstrumentAssociation]] = Field(default=None, description="""Links between experiments and instruments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_instrument_associations', 'domain_of': ['Dataset']} })
+    workflow_experiment_associations: Optional[list[WorkflowExperimentAssociation]] = Field(default=None, description="""Links between workflows and source experiments (M:N)""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_experiment_associations', 'domain_of': ['Dataset']} })
+    workflow_input_associations: Optional[list[WorkflowInputAssociation]] = Field(default=None, description="""Links between workflows and input files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_input_associations', 'domain_of': ['Dataset']} })
+    workflow_output_associations: Optional[list[WorkflowOutputAssociation]] = Field(default=None, description="""Links between workflows and output files""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_output_associations', 'domain_of': ['Dataset']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Study(NamedThing):
     """
-    A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis
+    A logical grouping of related experiments investigating a research question. In the relational model, Study is lightweight - all relationships are via association tables.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    protein_constructs: Optional[list[ProteinConstruct]] = Field(default=None, description="""Protein constructs and cloning information""", json_schema_extra = { "linkml_meta": {'alias': 'protein_constructs', 'domain_of': ['Study']} })
-    samples: Optional[list[Sample]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'samples', 'domain_of': ['Study']} })
-    sample_preparations: Optional[list[SamplePreparation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_preparations', 'domain_of': ['Study']} })
-    instrument_runs: Optional[list[ExperimentRun]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'instrument_runs', 'domain_of': ['Study']} })
-    workflow_runs: Optional[list[WorkflowRun]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'workflow_runs', 'domain_of': ['Study']} })
-    data_files: Optional[list[DataFile]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'data_files', 'domain_of': ['Study']} })
-    images: Optional[list[Image]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'images', 'domain_of': ['Study']} })
-    aggregated_protein_views: Optional[list[AggregatedProteinView]] = Field(default=None, description="""Aggregated functional and structural annotations for proteins in this study""", json_schema_extra = { "linkml_meta": {'alias': 'aggregated_protein_views', 'domain_of': ['Study']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    keywords: Optional[list[str]] = Field(default=None, description="""Keywords or tags describing the study for search and categorization""", json_schema_extra = { "linkml_meta": {'alias': 'keywords', 'domain_of': ['Dataset', 'Study']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Sample(NamedThing):
@@ -2796,19 +3680,17 @@ class Sample(NamedThing):
     sample_code: str = Field(default=..., description="""Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_code', 'domain_of': ['Sample']} })
     sample_type: SampleTypeEnum = Field(default=..., description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type', 'domain_of': ['Sample']} })
     molecular_composition: Optional[MolecularComposition] = Field(default=None, description="""Description of molecular composition including sequences, modifications, ligands""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_composition', 'domain_of': ['Sample']} })
-    molecular_weight: Optional[float] = Field(default=None, description="""Molecular weight in kDa""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight',
-         'domain_of': ['Sample'],
-         'unit': {'ucum_code': 'kDa'}} })
-    concentration: Optional[float] = Field(default=None, description="""Sample concentration in mg/mL or µM""", json_schema_extra = { "linkml_meta": {'alias': 'concentration', 'domain_of': ['Sample']} })
-    concentration_unit: Optional[ConcentrationUnitEnum] = Field(default=None, description="""Unit of concentration measurement""", json_schema_extra = { "linkml_meta": {'alias': 'concentration_unit', 'domain_of': ['Sample']} })
-    buffer_composition: Optional[BufferComposition] = Field(default=None, description="""Buffer composition including pH, salts, additives""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_composition', 'domain_of': ['Sample']} })
+    molecular_weight: Optional[QuantityValue] = Field(default=None, description="""Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_weight', 'domain_of': ['Sample']} })
+    concentration: Optional[QuantityValue] = Field(default=None, description="""Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'concentration', 'domain_of': ['Sample']} })
+    buffer_composition: Optional[BufferComposition] = Field(default=None, description="""Buffer composition including pH, salts, additives""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_composition',
+         'domain_of': ['MeasurementConditions', 'Sample']} })
     preparation_method: Optional[str] = Field(default=None, description="""Method used to prepare the sample""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_method', 'domain_of': ['Sample']} })
     storage_conditions: Optional[StorageConditions] = Field(default=None, description="""Storage conditions for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'storage_conditions', 'domain_of': ['Sample']} })
     organism: Optional[str] = Field(default=None, description="""Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)""", json_schema_extra = { "linkml_meta": {'alias': 'organism', 'domain_of': ['AggregatedProteinView', 'Sample']} })
     anatomy: Optional[str] = Field(default=None, description="""Anatomical part or tissue (e.g., UBERON:0008945 for leaf)""", json_schema_extra = { "linkml_meta": {'alias': 'anatomy', 'domain_of': ['Sample']} })
     cell_type: Optional[str] = Field(default=None, description="""Cell type if applicable (e.g., CL:0000057 for fibroblast)""", json_schema_extra = { "linkml_meta": {'alias': 'cell_type', 'domain_of': ['Sample']} })
     parent_sample_id: Optional[str] = Field(default=None, description="""Reference to parent sample for derivation tracking""", json_schema_extra = { "linkml_meta": {'alias': 'parent_sample_id', 'domain_of': ['Sample']} })
-    purity_percentage: Optional[float] = Field(default=None, description="""Sample purity as percentage""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'alias': 'purity_percentage', 'domain_of': ['Sample']} })
+    purity_percentage: Optional[QuantityValue] = Field(default=None, description="""Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'purity_percentage', 'domain_of': ['Sample']} })
     quality_metrics: Optional[str] = Field(default=None, description="""Quality control metrics for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'quality_metrics', 'domain_of': ['Sample', 'ExperimentRun']} })
     functional_sites: Optional[list[FunctionalSite]] = Field(default=None, description="""Functional site annotations for proteins in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'functional_sites', 'domain_of': ['AggregatedProteinView', 'Sample']} })
     structural_features: Optional[list[StructuralFeature]] = Field(default=None, description="""Structural feature annotations""", json_schema_extra = { "linkml_meta": {'alias': 'structural_features',
@@ -2850,9 +3732,9 @@ class Sample(NamedThing):
          'comments': ['Maps to NSLS2 spreadsheet: Ligand'],
          'domain_of': ['Sample'],
          'slot_uri': 'nsls2:Ligand'} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class ProteinConstruct(NamedThing):
@@ -2866,7 +3748,7 @@ class ProteinConstruct(NamedThing):
          'domain_of': ['AggregatedProteinView', 'ProteinConstruct']} })
     gene_name: Optional[str] = Field(default=None, description="""Gene name""", json_schema_extra = { "linkml_meta": {'alias': 'gene_name', 'domain_of': ['ProteinConstruct']} })
     ncbi_taxid: Optional[str] = Field(default=None, description="""NCBI Taxonomy ID for source organism""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_taxid', 'domain_of': ['ProteinConstruct']} })
-    sequence_length_aa: Optional[int] = Field(default=None, description="""Length of the protein sequence in amino acids""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length_aa', 'domain_of': ['ProteinConstruct']} })
+    sequence_length_aa: Optional[QuantityValue] = Field(default=None, description="""Length of the protein sequence in amino acids""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_length_aa', 'domain_of': ['ProteinConstruct']} })
     construct_description: Optional[str] = Field(default=None, description="""Human-readable description of the construct""", json_schema_extra = { "linkml_meta": {'alias': 'construct_description', 'domain_of': ['ProteinConstruct']} })
     gene_synthesis_provider: Optional[str] = Field(default=None, description="""Company or facility that synthesized the gene""", json_schema_extra = { "linkml_meta": {'alias': 'gene_synthesis_provider', 'domain_of': ['ProteinConstruct']} })
     codon_optimization_organism: Optional[str] = Field(default=None, description="""Organism for which codons were optimized""", json_schema_extra = { "linkml_meta": {'alias': 'codon_optimization_organism', 'domain_of': ['ProteinConstruct']} })
@@ -2883,9 +3765,9 @@ class ProteinConstruct(NamedThing):
     sequence_file_path: Optional[str] = Field(default=None, description="""Path to sequence file""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_file_path', 'domain_of': ['ProteinConstruct']} })
     sequence_verified_by: Optional[str] = Field(default=None, description="""Method or person who verified the sequence""", json_schema_extra = { "linkml_meta": {'alias': 'sequence_verified_by', 'domain_of': ['ProteinConstruct']} })
     verification_notes: Optional[str] = Field(default=None, description="""Notes from sequence verification""", json_schema_extra = { "linkml_meta": {'alias': 'verification_notes', 'domain_of': ['ProteinConstruct']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class SamplePreparation(NamedThing):
@@ -2895,21 +3777,24 @@ class SamplePreparation(NamedThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
     preparation_type: PreparationTypeEnum = Field(default=..., description="""Type of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_type', 'domain_of': ['SamplePreparation']} })
-    sample_id: str = Field(default=..., description="""Reference to the sample being prepared""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
+    sample_id: str = Field(default=..., description="""Reference to the sample being prepared""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation']} })
     preparation_date: Optional[str] = Field(default=None, description="""Date of sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_date', 'domain_of': ['SamplePreparation']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
     protocol_description: Optional[str] = Field(default=None, description="""Detailed protocol description""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_description', 'domain_of': ['SamplePreparation']} })
     expression_system: Optional[ExpressionSystemEnum] = Field(default=None, description="""Expression system used for recombinant protein production""", json_schema_extra = { "linkml_meta": {'alias': 'expression_system', 'domain_of': ['Sample', 'SamplePreparation']} })
     host_strain_or_cell_line: Optional[str] = Field(default=None, description="""Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)""", json_schema_extra = { "linkml_meta": {'alias': 'host_strain_or_cell_line', 'domain_of': ['SamplePreparation']} })
-    culture_volume_l: Optional[float] = Field(default=None, description="""Culture volume in liters""", json_schema_extra = { "linkml_meta": {'alias': 'culture_volume_l', 'domain_of': ['SamplePreparation']} })
+    culture_volume_l: Optional[QuantityValue] = Field(default=None, description="""Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'culture_volume_l', 'domain_of': ['SamplePreparation']} })
     medium: Optional[str] = Field(default=None, description="""Growth medium used""", json_schema_extra = { "linkml_meta": {'alias': 'medium', 'domain_of': ['SamplePreparation']} })
     antibiotic_selection: Optional[str] = Field(default=None, description="""Antibiotic or selection agent used""", json_schema_extra = { "linkml_meta": {'alias': 'antibiotic_selection', 'domain_of': ['SamplePreparation']} })
-    growth_temperature_c: Optional[float] = Field(default=None, description="""Growth temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'growth_temperature_c', 'domain_of': ['SamplePreparation']} })
+    growth_temperature_c: Optional[QuantityValue] = Field(default=None, description="""Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'growth_temperature_c', 'domain_of': ['SamplePreparation']} })
     induction_agent: Optional[str] = Field(default=None, description="""Agent used to induce expression (e.g., IPTG, tetracycline)""", json_schema_extra = { "linkml_meta": {'alias': 'induction_agent', 'domain_of': ['SamplePreparation']} })
     inducer_concentration: Optional[str] = Field(default=None, description="""Concentration of induction agent""", json_schema_extra = { "linkml_meta": {'alias': 'inducer_concentration', 'domain_of': ['SamplePreparation']} })
-    induction_temperature_c: Optional[float] = Field(default=None, description="""Temperature during induction in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'induction_temperature_c', 'domain_of': ['SamplePreparation']} })
-    induction_time_h: Optional[float] = Field(default=None, description="""Duration of induction in hours""", json_schema_extra = { "linkml_meta": {'alias': 'induction_time_h', 'domain_of': ['SamplePreparation']} })
-    od600_at_induction: Optional[float] = Field(default=None, description="""Optical density at 600nm when induction was started""", json_schema_extra = { "linkml_meta": {'alias': 'od600_at_induction', 'domain_of': ['SamplePreparation']} })
+    induction_temperature_c: Optional[QuantityValue] = Field(default=None, description="""Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'induction_temperature_c', 'domain_of': ['SamplePreparation']} })
+    induction_time_h: Optional[QuantityValue] = Field(default=None, description="""Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'induction_time_h', 'domain_of': ['SamplePreparation']} })
+    od600_at_induction: Optional[QuantityValue] = Field(default=None, description="""Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'od600_at_induction', 'domain_of': ['SamplePreparation']} })
     harvest_timepoint: Optional[str] = Field(default=None, description="""Time point when cells were harvested""", json_schema_extra = { "linkml_meta": {'alias': 'harvest_timepoint', 'domain_of': ['SamplePreparation']} })
     lysis_method: Optional[str] = Field(default=None, description="""Method used for cell lysis""", json_schema_extra = { "linkml_meta": {'alias': 'lysis_method', 'domain_of': ['SamplePreparation']} })
     protease_inhibitors: Optional[str] = Field(default=None, description="""Protease inhibitors added""", json_schema_extra = { "linkml_meta": {'alias': 'protease_inhibitors', 'domain_of': ['SamplePreparation']} })
@@ -2922,8 +3807,8 @@ class SamplePreparation(NamedThing):
     tag_removal: Optional[bool] = Field(default=None, description="""Whether and how affinity tag was removed""", json_schema_extra = { "linkml_meta": {'alias': 'tag_removal', 'domain_of': ['SamplePreparation']} })
     protease: Optional[str] = Field(default=None, description="""Protease used for tag cleavage""", json_schema_extra = { "linkml_meta": {'alias': 'protease', 'domain_of': ['SamplePreparation']} })
     protease_ratio: Optional[str] = Field(default=None, description="""Ratio of protease to protein""", json_schema_extra = { "linkml_meta": {'alias': 'protease_ratio', 'domain_of': ['SamplePreparation']} })
-    cleavage_time_h: Optional[float] = Field(default=None, description="""Duration of protease cleavage in hours""", json_schema_extra = { "linkml_meta": {'alias': 'cleavage_time_h', 'domain_of': ['SamplePreparation']} })
-    cleavage_temperature_c: Optional[float] = Field(default=None, description="""Temperature during cleavage in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'cleavage_temperature_c', 'domain_of': ['SamplePreparation']} })
+    cleavage_time_h: Optional[QuantityValue] = Field(default=None, description="""Duration of protease cleavage in hours""", json_schema_extra = { "linkml_meta": {'alias': 'cleavage_time_h', 'domain_of': ['SamplePreparation']} })
+    cleavage_temperature_c: Optional[QuantityValue] = Field(default=None, description="""Temperature during cleavage in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'cleavage_temperature_c', 'domain_of': ['SamplePreparation']} })
     second_affinity_reverse: Optional[str] = Field(default=None, description="""Second affinity or reverse affinity step""", json_schema_extra = { "linkml_meta": {'alias': 'second_affinity_reverse', 'domain_of': ['SamplePreparation']} })
     iex_column: Optional[str] = Field(default=None, description="""Ion-exchange column used""", json_schema_extra = { "linkml_meta": {'alias': 'iex_column', 'domain_of': ['SamplePreparation']} })
     hic_column: Optional[str] = Field(default=None, description="""Hydrophobic interaction column used""", json_schema_extra = { "linkml_meta": {'alias': 'hic_column', 'domain_of': ['SamplePreparation']} })
@@ -2931,14 +3816,14 @@ class SamplePreparation(NamedThing):
     sec_buffer: Optional[str] = Field(default=None, description="""Buffer for size-exclusion chromatography""", json_schema_extra = { "linkml_meta": {'alias': 'sec_buffer', 'domain_of': ['SamplePreparation']} })
     concentration_method: Optional[str] = Field(default=None, description="""Method used to concentrate protein""", json_schema_extra = { "linkml_meta": {'alias': 'concentration_method', 'domain_of': ['SamplePreparation']} })
     final_buffer: Optional[str] = Field(default=None, description="""Final buffer composition after purification""", json_schema_extra = { "linkml_meta": {'alias': 'final_buffer', 'domain_of': ['SamplePreparation']} })
-    final_concentration_mg_per_ml: Optional[float] = Field(default=None, description="""Final protein concentration in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration_mg_per_ml', 'domain_of': ['SamplePreparation']} })
-    yield_mg: Optional[float] = Field(default=None, description="""Total yield in milligrams""", json_schema_extra = { "linkml_meta": {'alias': 'yield_mg', 'domain_of': ['SamplePreparation']} })
-    purity_by_sds_page_percent: Optional[float] = Field(default=None, description="""Purity percentage by SDS-PAGE""", json_schema_extra = { "linkml_meta": {'alias': 'purity_by_sds_page_percent', 'domain_of': ['SamplePreparation']} })
+    final_concentration_mg_per_ml: Optional[QuantityValue] = Field(default=None, description="""Final protein concentration in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration_mg_per_ml', 'domain_of': ['SamplePreparation']} })
+    yield_mg: Optional[QuantityValue] = Field(default=None, description="""Total yield in milligrams""", json_schema_extra = { "linkml_meta": {'alias': 'yield_mg', 'domain_of': ['SamplePreparation']} })
+    purity_by_sds_page_percent: Optional[QuantityValue] = Field(default=None, description="""Purity percentage by SDS-PAGE""", json_schema_extra = { "linkml_meta": {'alias': 'purity_by_sds_page_percent', 'domain_of': ['SamplePreparation']} })
     aggregation_assessment: Optional[str] = Field(default=None, description="""Assessment of protein aggregation state""", json_schema_extra = { "linkml_meta": {'alias': 'aggregation_assessment', 'domain_of': ['SamplePreparation']} })
     aliquoting: Optional[str] = Field(default=None, description="""How the protein was aliquoted for storage""", json_schema_extra = { "linkml_meta": {'alias': 'aliquoting', 'domain_of': ['SamplePreparation']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Instrument(NamedThing):
@@ -2948,13 +3833,45 @@ class Instrument(NamedThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class CryoEMInstrument(Instrument):
@@ -2963,27 +3880,84 @@ class CryoEMInstrument(Instrument):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    accelerating_voltage: Optional[int] = Field(default=None, description="""Accelerating voltage in kV""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage',
-         'any_of': [{'equals_number': 120},
-                    {'equals_number': 200},
-                    {'equals_number': 300}],
-         'domain_of': ['CryoEMInstrument']} })
+    accelerating_voltage: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage in kV""", json_schema_extra = { "linkml_meta": {'alias': 'accelerating_voltage', 'domain_of': ['CryoEMInstrument']} })
     cs_corrector: Optional[bool] = Field(default=None, description="""Spherical aberration corrector present""", json_schema_extra = { "linkml_meta": {'alias': 'cs_corrector', 'domain_of': ['CryoEMInstrument']} })
     phase_plate: Optional[bool] = Field(default=None, description="""Phase plate available""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate', 'domain_of': ['CryoEMInstrument']} })
-    detector_type: Optional[DetectorTypeEnum] = Field(default=None, description="""Type of detector""", json_schema_extra = { "linkml_meta": {'alias': 'detector_type',
+    detector_technology: Optional[DetectorTechnologyEnum] = Field(default=None, description="""Generic detector technology type""", json_schema_extra = { "linkml_meta": {'alias': 'detector_technology',
+         'comments': ['Use this for technology classification (e.g., '
+                      'direct_electron_detector, ccd)',
+                      'See detector_manufacturer and detector_model for specific '
+                      'equipment details'],
          'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage']} })
-    detector_dimensions: Optional[str] = Field(default=None, description="""Detector dimensions in pixels (e.g., 4096x4096)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_dimensions', 'domain_of': ['CryoEMInstrument']} })
-    pixel_size_min: Optional[float] = Field(default=None, description="""Minimum pixel size in Angstroms per pixel""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_min', 'domain_of': ['CryoEMInstrument']} })
-    pixel_size_max: Optional[float] = Field(default=None, description="""Maximum pixel size in Angstroms per pixel""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_max', 'domain_of': ['CryoEMInstrument']} })
-    autoloader_capacity: Optional[int] = Field(default=None, description="""Number of grids the autoloader can hold""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_capacity', 'domain_of': ['CryoEMInstrument']} })
+    detector_manufacturer: Optional[str] = Field(default=None, description="""Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_manufacturer',
+         'comments': ['Examples: Gatan, ThermoFisher Scientific, DirectElectron'],
+         'domain_of': ['CryoEMInstrument', 'XRayInstrument']} })
+    detector_model: Optional[str] = Field(default=None, description="""Detector model (e.g., K3, Falcon 4i, DE-64)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_model',
+         'comments': ['Examples: K3 BioQuantum, Falcon 4i, DE-64'],
+         'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage']} })
+    detector_mode: Optional[DetectorModeEnum] = Field(default=None, description="""Supported or default detector operating mode""", json_schema_extra = { "linkml_meta": {'alias': 'detector_mode',
+         'comments': ['Indicates operating mode capabilities (e.g., counting, '
+                      'super_resolution)'],
+         'domain_of': ['CryoEMInstrument', 'DataCollectionStrategy']} })
+    detector_position: Optional[str] = Field(default=None, description="""Physical position of detector in microscope (e.g., post-GIF, pre-column)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_position', 'domain_of': ['CryoEMInstrument']} })
+    detector_dimensions: Optional[str] = Field(default=None, description="""Detector dimensions in pixels (e.g., 4096x4096, 5760x4092)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_dimensions', 'domain_of': ['CryoEMInstrument']} })
+    pixel_size_physical_um: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size of the detector in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical_um', 'domain_of': ['CryoEMInstrument']} })
+    autoloader_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of grids the autoloader can hold""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_capacity', 'domain_of': ['CryoEMInstrument']} })
+    cs: Optional[QuantityValue] = Field(default=None, description="""Spherical aberration (Cs) in millimeters""", json_schema_extra = { "linkml_meta": {'alias': 'cs', 'domain_of': ['CryoEMInstrument']} })
+    c2_aperture: Optional[QuantityValue] = Field(default=None, description="""C2 aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'c2_aperture', 'domain_of': ['CryoEMInstrument']} })
+    objective_aperture: Optional[QuantityValue] = Field(default=None, description="""Objective aperture size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'objective_aperture', 'domain_of': ['CryoEMInstrument']} })
+    phase_plate_type: Optional[str] = Field(default=None, description="""Type of phase plate if present""", json_schema_extra = { "linkml_meta": {'alias': 'phase_plate_type', 'domain_of': ['CryoEMInstrument']} })
+    energy_filter_present: Optional[bool] = Field(default=None, description="""Whether energy filter is present""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_present', 'domain_of': ['CryoEMInstrument']} })
+    energy_filter_make: Optional[str] = Field(default=None, description="""Energy filter manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_make', 'domain_of': ['CryoEMInstrument']} })
+    energy_filter_model: Optional[str] = Field(default=None, description="""Energy filter model""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_model', 'domain_of': ['CryoEMInstrument']} })
+    energy_filter_slit_width: Optional[QuantityValue] = Field(default=None, description="""Energy filter slit width in eV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_filter_slit_width', 'domain_of': ['CryoEMInstrument']} })
+    pixel_size_physical: Optional[QuantityValue] = Field(default=None, description="""Physical pixel size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_physical', 'domain_of': ['CryoEMInstrument']} })
+    microscope_software: Optional[str] = Field(default=None, description="""Microscope control software (e.g., SerialEM, EPU, Leginon)""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software', 'domain_of': ['CryoEMInstrument']} })
+    microscope_software_version: Optional[str] = Field(default=None, description="""Software version""", json_schema_extra = { "linkml_meta": {'alias': 'microscope_software_version', 'domain_of': ['CryoEMInstrument']} })
+    spotsize: Optional[QuantityValue] = Field(default=None, description="""Electron beam spot size setting""", json_schema_extra = { "linkml_meta": {'alias': 'spotsize', 'domain_of': ['CryoEMInstrument']} })
+    gunlens: Optional[QuantityValue] = Field(default=None, description="""Gun lens setting""", json_schema_extra = { "linkml_meta": {'alias': 'gunlens', 'domain_of': ['CryoEMInstrument']} })
+    imaging_mode: Optional[ImagingModeEnum] = Field(default=None, description="""Imaging mode for electron microscopy""", json_schema_extra = { "linkml_meta": {'alias': 'imaging_mode', 'domain_of': ['CryoEMInstrument']} })
+    tem_beam_diameter: Optional[QuantityValue] = Field(default=None, description="""TEM beam diameter in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'tem_beam_diameter', 'domain_of': ['CryoEMInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class XRayInstrument(Instrument):
@@ -2992,30 +3966,72 @@ class XRayInstrument(Instrument):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    source_type: Optional[XRaySourceTypeEnum] = Field(default=None, description="""Type of X-ray source""", json_schema_extra = { "linkml_meta": {'alias': 'source_type', 'domain_of': ['XRayInstrument', 'XRFImage']} })
-    detector_type: Optional[DetectorTypeEnum] = Field(default=None, description="""Type of X-ray detector""", json_schema_extra = { "linkml_meta": {'alias': 'detector_type',
-         'comments': ['Maps to CBF: Detector', 'Maps to PDB: _diffrn_detector.type'],
+    source_type: Optional[XRaySourceTypeEnum] = Field(default=None, description="""Type of X-ray source""", json_schema_extra = { "linkml_meta": {'alias': 'source_type',
+         'domain_of': ['XRayInstrument', 'BeamlineInstrument', 'XRFImage']} })
+    detector_technology: Optional[DetectorTechnologyEnum] = Field(default=None, description="""Generic detector technology type""", json_schema_extra = { "linkml_meta": {'alias': 'detector_technology',
+         'comments': ['Use this for technology classification (e.g., '
+                      'hybrid_photon_counting, ccd)',
+                      'Maps to CBF: Detector (may contain model name)',
+                      'Maps to PDB: _diffrn_detector.type',
+                      'See detector_manufacturer and detector_model for specific '
+                      'equipment details'],
          'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage'],
          'slot_uri': 'nsls2:Detector'} })
-    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
-         'domain_of': ['XRayInstrument'],
-         'slot_uri': 'nsls2:Beamline'} })
-    energy_min: Optional[float] = Field(default=None, description="""Minimum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_min', 'domain_of': ['XRayInstrument']} })
-    energy_max: Optional[float] = Field(default=None, description="""Maximum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_max', 'domain_of': ['XRayInstrument']} })
-    beam_size_min: Optional[float] = Field(default=None, description="""Minimum beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_min', 'domain_of': ['XRayInstrument']} })
-    beam_size_max: Optional[float] = Field(default=None, description="""Maximum beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_max', 'domain_of': ['XRayInstrument']} })
-    flux_density: Optional[float] = Field(default=None, description="""Photon flux density in photons/s/mm²""", json_schema_extra = { "linkml_meta": {'alias': 'flux_density', 'domain_of': ['XRayInstrument']} })
+    detector_manufacturer: Optional[str] = Field(default=None, description="""Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_manufacturer',
+         'comments': ['Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research'],
+         'domain_of': ['CryoEMInstrument', 'XRayInstrument']} })
+    detector_model: Optional[str] = Field(default=None, description="""Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)""", json_schema_extra = { "linkml_meta": {'alias': 'detector_model',
+         'comments': ['Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, '
+                      'HyPix-6000HE'],
+         'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage']} })
+    energy_min: Optional[QuantityValue] = Field(default=None, description="""Minimum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_min', 'domain_of': ['XRayInstrument', 'BeamlineInstrument']} })
+    energy_max: Optional[QuantityValue] = Field(default=None, description="""Maximum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_max', 'domain_of': ['XRayInstrument', 'BeamlineInstrument']} })
+    beam_size_min: Optional[QuantityValue] = Field(default=None, description="""Minimum beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_min', 'domain_of': ['XRayInstrument']} })
+    beam_size_max: Optional[QuantityValue] = Field(default=None, description="""Maximum beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_max', 'domain_of': ['XRayInstrument']} })
+    flux_density: Optional[QuantityValue] = Field(default=None, description="""Photon flux density in photons/s/mm²""", json_schema_extra = { "linkml_meta": {'alias': 'flux_density', 'domain_of': ['XRayInstrument']} })
     monochromator_type: Optional[str] = Field(default=None, description="""Type of monochromator""", json_schema_extra = { "linkml_meta": {'alias': 'monochromator_type', 'domain_of': ['XRayInstrument']} })
     goniometer_type: Optional[str] = Field(default=None, description="""Type of goniometer""", json_schema_extra = { "linkml_meta": {'alias': 'goniometer_type', 'domain_of': ['XRayInstrument']} })
     crystal_cooling_capability: Optional[bool] = Field(default=None, description="""Crystal cooling system available""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_cooling_capability', 'domain_of': ['XRayInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class SAXSInstrument(Instrument):
@@ -3024,20 +4040,119 @@ class SAXSInstrument(Instrument):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    q_range_min: Optional[float] = Field(default=None, description="""Minimum q value in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_min', 'domain_of': ['SAXSInstrument']} })
-    q_range_max: Optional[float] = Field(default=None, description="""Maximum q value in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_max', 'domain_of': ['SAXSInstrument']} })
-    detector_distance_min: Optional[float] = Field(default=None, description="""Minimum detector distance in mm""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_min', 'domain_of': ['SAXSInstrument']} })
-    detector_distance_max: Optional[float] = Field(default=None, description="""Maximum detector distance in mm""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_max', 'domain_of': ['SAXSInstrument']} })
-    sample_changer_capacity: Optional[int] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity', 'domain_of': ['SAXSInstrument']} })
+    q_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum q value in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_min', 'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
+    q_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum q value in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_max', 'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
+    detector_distance_min: Optional[QuantityValue] = Field(default=None, description="""Minimum detector distance in mm""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_min', 'domain_of': ['SAXSInstrument']} })
+    detector_distance_max: Optional[QuantityValue] = Field(default=None, description="""Maximum detector distance in mm""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_max', 'domain_of': ['SAXSInstrument']} })
+    sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Number of samples in automatic sample changer""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
+         'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     temperature_control_range: Optional[str] = Field(default=None, description="""Temperature control range in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control_range', 'domain_of': ['SAXSInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
     manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
     model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
     installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
     current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class BeamlineInstrument(Instrument):
+    """
+    Multi-technique synchrotron beamline that supports multiple experimental methods
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Use for beamlines like SIBYLS that support both SAXS and '
+                      'crystallography',
+                      'For single-technique beamlines, use XRayInstrument or '
+                      'SAXSInstrument'],
+         'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    techniques_supported: list[TechniqueEnum] = Field(default=..., description="""Experimental techniques available at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'techniques_supported',
+         'comments': ['List all techniques this beamline supports',
+                      'Example: [saxs, xray_crystallography] for SIBYLS'],
+         'domain_of': ['BeamlineInstrument']} })
+    source_type: Optional[XRaySourceTypeEnum] = Field(default=None, description="""Type of X-ray source""", json_schema_extra = { "linkml_meta": {'alias': 'source_type',
+         'domain_of': ['XRayInstrument', 'BeamlineInstrument', 'XRFImage']} })
+    energy_min: Optional[QuantityValue] = Field(default=None, description="""Minimum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_min', 'domain_of': ['XRayInstrument', 'BeamlineInstrument']} })
+    energy_max: Optional[QuantityValue] = Field(default=None, description="""Maximum X-ray energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'energy_max', 'domain_of': ['XRayInstrument', 'BeamlineInstrument']} })
+    q_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum q value for SAXS in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_min', 'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
+    q_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum q value for SAXS in inverse Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'q_range_max', 'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
+    sample_changer_capacity: Optional[QuantityValue] = Field(default=None, description="""Automatic sample changer capacity""", json_schema_extra = { "linkml_meta": {'alias': 'sample_changer_capacity',
+         'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
+    mail_in_service: Optional[bool] = Field(default=None, description="""Whether mail-in sample service is available""", json_schema_extra = { "linkml_meta": {'alias': 'mail_in_service', 'domain_of': ['BeamlineInstrument']} })
+    website: Optional[str] = Field(default=None, description="""Beamline website URL""", json_schema_extra = { "linkml_meta": {'alias': 'website', 'domain_of': ['BeamlineInstrument']} })
+    instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
+    manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
+    model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
+    installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
+    current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class ExperimentRun(NamedThing):
@@ -3047,8 +4162,6 @@ class ExperimentRun(NamedThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
     experiment_code: str = Field(default=..., description="""Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_code', 'domain_of': ['ExperimentRun']} })
-    sample_id: str = Field(default=..., description="""Reference to the sample being analyzed""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
-    instrument_id: str = Field(default=..., description="""Reference to the instrument used""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_id', 'domain_of': ['ExperimentRun']} })
     experiment_date: Optional[str] = Field(default=None, description="""Date of the experiment""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_date', 'domain_of': ['ExperimentRun']} })
     operator_id: Optional[str] = Field(default=None, description="""Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)""", json_schema_extra = { "linkml_meta": {'alias': 'operator_id', 'domain_of': ['SamplePreparation', 'ExperimentRun']} })
     technique: TechniqueEnum = Field(default=..., description="""Technique used for data collection""", json_schema_extra = { "linkml_meta": {'alias': 'technique', 'domain_of': ['ExperimentRun']} })
@@ -3059,55 +4172,125 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[QualityMetrics] = Field(default=None, description="""Quality metrics for the experiment""", json_schema_extra = { "linkml_meta": {'alias': 'quality_metrics', 'domain_of': ['Sample', 'ExperimentRun']} })
     raw_data_location: Optional[str] = Field(default=None, description="""Location of raw data files""", json_schema_extra = { "linkml_meta": {'alias': 'raw_data_location', 'domain_of': ['ExperimentRun']} })
     processing_status: Optional[ProcessingStatusEnum] = Field(default=None, description="""Current processing status""", json_schema_extra = { "linkml_meta": {'alias': 'processing_status', 'domain_of': ['ExperimentRun']} })
-    wavelength: Optional[float] = Field(default=None, description="""X-ray wavelength in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'wavelength',
-         'comments': ['Maps to CBF: Wavelength',
-                      'Maps to PDB: _diffrn_radiation_wavelength.wavelength'],
+    magnification: Optional[QuantityValue] = Field(default=None, description="""Magnification used during data collection""", json_schema_extra = { "linkml_meta": {'alias': 'magnification', 'domain_of': ['ExperimentRun', 'OpticalImage']} })
+    calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size in Angstroms per pixel""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size', 'domain_of': ['ExperimentRun']} })
+    camera_binning: Optional[QuantityValue] = Field(default=None, description="""Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'camera_binning', 'domain_of': ['ExperimentRun']} })
+    exposure_time_per_frame: Optional[QuantityValue] = Field(default=None, description="""Exposure time per frame in milliseconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time_per_frame', 'domain_of': ['ExperimentRun']} })
+    frames_per_movie: Optional[QuantityValue] = Field(default=None, description="""Number of frames per movie""", json_schema_extra = { "linkml_meta": {'alias': 'frames_per_movie', 'domain_of': ['ExperimentRun']} })
+    total_exposure_time: Optional[QuantityValue] = Field(default=None, description="""Total exposure time in milliseconds""", json_schema_extra = { "linkml_meta": {'alias': 'total_exposure_time', 'domain_of': ['ExperimentRun']} })
+    total_dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose in e-/Angstrom^2""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose',
+         'domain_of': ['ExperimentRun', 'DataCollectionStrategy']} })
+    dose_rate: Optional[QuantityValue] = Field(default=None, description="""Dose rate in e-/pixel/s or e-/Angstrom^2/s""", json_schema_extra = { "linkml_meta": {'alias': 'dose_rate', 'domain_of': ['ExperimentRun']} })
+    defocus_target: Optional[QuantityValue] = Field(default=None, description="""Target defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_target', 'domain_of': ['ExperimentRun']} })
+    defocus_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus range in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_min', 'domain_of': ['ExperimentRun']} })
+    defocus_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum defocus range in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_max', 'domain_of': ['ExperimentRun']} })
+    defocus_range_increment: Optional[QuantityValue] = Field(default=None, description="""Defocus range increment in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_range_increment', 'domain_of': ['ExperimentRun']} })
+    astigmatism_target: Optional[QuantityValue] = Field(default=None, description="""Target astigmatism in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_target', 'domain_of': ['ExperimentRun']} })
+    coma: Optional[QuantityValue] = Field(default=None, description="""Coma aberration in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'coma', 'domain_of': ['ExperimentRun']} })
+    stage_tilt: Optional[QuantityValue] = Field(default=None, description="""Stage tilt angle in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'stage_tilt', 'domain_of': ['ExperimentRun']} })
+    autoloader_slot: Optional[str] = Field(default=None, description="""Autoloader slot identifier""", json_schema_extra = { "linkml_meta": {'alias': 'autoloader_slot', 'domain_of': ['ExperimentRun']} })
+    shots_per_hole: Optional[QuantityValue] = Field(default=None, description="""Number of shots taken per hole""", json_schema_extra = { "linkml_meta": {'alias': 'shots_per_hole', 'domain_of': ['ExperimentRun']} })
+    holes_per_group: Optional[QuantityValue] = Field(default=None, description="""Number of holes per group. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'holes_per_group', 'domain_of': ['ExperimentRun']} })
+    acquisition_software: Optional[str] = Field(default=None, description="""Acquisition software used (e.g., SerialEM, EPU, Leginon)""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_software', 'domain_of': ['ExperimentRun']} })
+    acquisition_software_version: Optional[str] = Field(default=None, description="""Version of acquisition software""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_software_version', 'domain_of': ['ExperimentRun']} })
+    wavelength: Optional[QuantityValue] = Field(default=None, description="""X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wavelength',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Wavelength'} })
-    oscillation_angle: Optional[float] = Field(default=None, description="""Oscillation angle per image in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'oscillation_angle',
-         'comments': ['Maps to CBF: Angle_increment',
-                      'Maps to PDB: _diffrn_scan.angle_increment'],
+         'exact_mappings': ['nsls2:Wavelength',
+                            'imgCIF:_diffrn_radiation_wavelength.wavelength',
+                            'mmCIF:_diffrn_radiation_wavelength.wavelength',
+                            'ispyb:DataCollection.wavelength']} })
+    oscillation_angle: Optional[QuantityValue] = Field(default=None, description="""Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'oscillation_angle',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Angle_increment'} })
-    start_angle: Optional[float] = Field(default=None, description="""Starting rotation angle in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'start_angle',
-         'comments': ['Maps to CBF: Start_angle'],
+         'exact_mappings': ['nsls2:Angle_increment',
+                            'imgCIF:_diffrn_scan_axis.angle_increment',
+                            'mmCIF:_diffrn_scan.angle_increment',
+                            'ispyb:DataCollection.axisRange']} })
+    start_angle: Optional[QuantityValue] = Field(default=None, description="""Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'start_angle',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Start_angle'} })
-    number_of_images: Optional[int] = Field(default=None, description="""Total number of diffraction images collected""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_images',
+         'exact_mappings': ['nsls2:Start_angle',
+                            'imgCIF:_diffrn_scan_axis.angle_start',
+                            'ispyb:DataCollection.axisStart']} })
+    number_of_images: Optional[QuantityValue] = Field(default=None, description="""Total number of diffraction images collected""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_images', 'domain_of': ['ExperimentRun']} })
+    beam_center_x: Optional[QuantityValue] = Field(default=None, description="""Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_x',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Number_of_images'} })
-    beam_center_x: Optional[float] = Field(default=None, description="""Beam center X coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_x',
-         'comments': ['Maps to CBF: Beam_xy (first value)',
-                      'Maps to PDB: _diffrn_detector.beam_center_x'],
+         'exact_mappings': ['nsls2:Beam_xy_x',
+                            'imgCIF:_diffrn_detector.beam_centre_x',
+                            'mmCIF:_diffrn_detector.beam_center_x',
+                            'ispyb:DataCollection.xBeam']} })
+    beam_center_y: Optional[QuantityValue] = Field(default=None, description="""Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_y',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Beam_xy_x'} })
-    beam_center_y: Optional[float] = Field(default=None, description="""Beam center Y coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_y',
-         'comments': ['Maps to CBF: Beam_xy (second value)',
-                      'Maps to PDB: _diffrn_detector.beam_center_y'],
+         'exact_mappings': ['nsls2:Beam_xy_y',
+                            'imgCIF:_diffrn_detector.beam_centre_y',
+                            'mmCIF:_diffrn_detector.beam_center_y',
+                            'ispyb:DataCollection.yBeam']} })
+    detector_distance: Optional[QuantityValue] = Field(default=None, description="""Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Beam_xy_y'} })
-    detector_distance: Optional[float] = Field(default=None, description="""Distance from sample to detector in millimeters""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance',
-         'comments': ['Maps to CBF: Detector_distance',
-                      'Maps to PDB: _diffrn_detector.distance'],
+         'exact_mappings': ['nsls2:Detector_distance',
+                            'imgCIF:_diffrn_measurement.sample_detector_distance',
+                            'mmCIF:_diffrn_detector.distance',
+                            'ispyb:DataCollection.detectorDistance']} })
+    pixel_size_x: Optional[QuantityValue] = Field(default=None, description="""Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_x',
+         'comments': ['imgCIF: _array_element_size.size[1]'],
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Detector_distance'} })
-    pixel_size_x: Optional[float] = Field(default=None, description="""Pixel size X dimension in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_x',
-         'comments': ['Maps to CBF: Pixel_size'],
+         'exact_mappings': ['nsls2:Pixel_size_x', 'imgCIF:_array_element_size.size']} })
+    pixel_size_y: Optional[QuantityValue] = Field(default=None, description="""Pixel size Y dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_y',
+         'comments': ['imgCIF: _array_element_size.size[2]'],
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Pixel_size_x'} })
-    pixel_size_y: Optional[float] = Field(default=None, description="""Pixel size Y dimension in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_y',
+         'exact_mappings': ['nsls2:Pixel_size_y', 'imgCIF:_array_element_size.size']} })
+    total_rotation: Optional[QuantityValue] = Field(default=None, description="""Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_rotation',
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Pixel_size_y'} })
-    total_rotation: Optional[float] = Field(default=None, description="""Total rotation range collected in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'total_rotation',
-         'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Total_rotation_deg'} })
+         'exact_mappings': ['nsls2:Total_rotation_deg',
+                            'imgCIF:_diffrn_scan_axis.angle_range']} })
     beamline: Optional[str] = Field(default=None, description="""Beamline identifier (e.g., FMX, AMX, 12.3.1)""", json_schema_extra = { "linkml_meta": {'alias': 'beamline',
-         'comments': ['Maps to PDB: _diffrn_source.beamline'],
          'domain_of': ['ExperimentRun'],
-         'slot_uri': 'nsls2:Beamline'} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+         'exact_mappings': ['nsls2:Beamline',
+                            'mmCIF:_diffrn_source.pdbx_synchrotron_beamline',
+                            'ispyb:BLSession.beamLineName']} })
+    transmission: Optional[QuantityValue] = Field(default=None, description="""X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'transmission',
+         'comments': ['Percentage of full beam intensity used'],
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.transmission']} })
+    flux: Optional[QuantityValue] = Field(default=None, description="""Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'flux',
+         'comments': ['Measured or calculated photon flux'],
+         'domain_of': ['ExperimentRun', 'XRFImage'],
+         'exact_mappings': ['ispyb:DataCollection.flux']} })
+    flux_end: Optional[QuantityValue] = Field(default=None, description="""Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'flux_end',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.flux_end']} })
+    slit_gap_horizontal: Optional[QuantityValue] = Field(default=None, description="""Horizontal slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'slit_gap_horizontal',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.slitGapHorizontal']} })
+    slit_gap_vertical: Optional[QuantityValue] = Field(default=None, description="""Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'slit_gap_vertical',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.slitGapVertical']} })
+    undulator_gap: Optional[QuantityValue] = Field(default=None, description="""Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices.""", json_schema_extra = { "linkml_meta": {'alias': 'undulator_gap',
+         'comments': ['Primary undulator gap for beamlines with insertion devices'],
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.undulatorGap1']} })
+    synchrotron_mode: Optional[str] = Field(default=None, description="""Synchrotron storage ring fill mode""", json_schema_extra = { "linkml_meta": {'alias': 'synchrotron_mode',
+         'comments': ["e.g., 'Top-up', 'Decay', 'Hybrid'"],
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.synchrotronMode']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time per image, typically specified in seconds (s). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions'],
+         'exact_mappings': ['ispyb:DataCollection.exposureTime']} })
+    start_time: Optional[str] = Field(default=None, description="""Data collection start timestamp""", json_schema_extra = { "linkml_meta": {'alias': 'start_time',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.startTime']} })
+    end_time: Optional[str] = Field(default=None, description="""Data collection end timestamp""", json_schema_extra = { "linkml_meta": {'alias': 'end_time',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.endTime']} })
+    resolution: Optional[QuantityValue] = Field(default=None, description="""Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution',
+         'domain_of': ['ExperimentRun', 'QualityMetrics'],
+         'exact_mappings': ['ispyb:DataCollection.resolution']} })
+    resolution_at_corner: Optional[QuantityValue] = Field(default=None, description="""Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_at_corner',
+         'domain_of': ['ExperimentRun'],
+         'exact_mappings': ['ispyb:DataCollection.resolutionAtCorner']} })
+    ispyb_data_collection_id: Optional[QuantityValue] = Field(default=None, description="""ISPyB DataCollection.dataCollectionId for traceability""", json_schema_extra = { "linkml_meta": {'alias': 'ispyb_data_collection_id', 'domain_of': ['ExperimentRun']} })
+    ispyb_session_id: Optional[QuantityValue] = Field(default=None, description="""ISPyB BLSession.sessionId""", json_schema_extra = { "linkml_meta": {'alias': 'ispyb_session_id', 'domain_of': ['ExperimentRun']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class WorkflowRun(NamedThing):
@@ -3118,8 +4301,7 @@ class WorkflowRun(NamedThing):
 
     workflow_code: str = Field(default=..., description="""Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_code', 'domain_of': ['WorkflowRun']} })
     workflow_type: WorkflowTypeEnum = Field(default=..., description="""Type of processing workflow""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_type', 'domain_of': ['WorkflowRun']} })
-    experiment_id: str = Field(default=..., description="""Reference to the source experiment""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_id', 'domain_of': ['WorkflowRun']} })
-    processing_level: Optional[int] = Field(default=None, description="""Processing level (0=raw, 1=corrected, 2=derived, 3=model)""", ge=0, le=4, json_schema_extra = { "linkml_meta": {'alias': 'processing_level', 'domain_of': ['WorkflowRun']} })
+    processing_level: Optional[QuantityValue] = Field(default=None, description="""Processing level (0=raw, 1=corrected, 2=derived, 3=model)""", json_schema_extra = { "linkml_meta": {'alias': 'processing_level', 'domain_of': ['WorkflowRun']} })
     software_name: str = Field(default=..., description="""Software used for processing""", json_schema_extra = { "linkml_meta": {'alias': 'software_name', 'domain_of': ['WorkflowRun']} })
     software_version: Optional[str] = Field(default=None, description="""Software version""", json_schema_extra = { "linkml_meta": {'alias': 'software_version', 'domain_of': ['WorkflowRun']} })
     additional_software: Optional[str] = Field(default=None, description="""Additional software used in pipeline""", json_schema_extra = { "linkml_meta": {'alias': 'additional_software', 'domain_of': ['WorkflowRun']} })
@@ -3135,111 +4317,99 @@ class WorkflowRun(NamedThing):
     ncs_used: Optional[bool] = Field(default=None, description="""Whether Non-Crystallographic Symmetry restraints were used""", json_schema_extra = { "linkml_meta": {'alias': 'ncs_used', 'domain_of': ['WorkflowRun']} })
     restraints_other: Optional[str] = Field(default=None, description="""Other restraints applied during refinement""", json_schema_extra = { "linkml_meta": {'alias': 'restraints_other', 'domain_of': ['WorkflowRun']} })
     ligands_cofactors: Optional[str] = Field(default=None, description="""Ligands or cofactors modeled in the structure""", json_schema_extra = { "linkml_meta": {'alias': 'ligands_cofactors', 'domain_of': ['WorkflowRun']} })
-    number_of_waters: Optional[int] = Field(default=None, description="""Number of water molecules modeled""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_waters', 'domain_of': ['WorkflowRun']} })
-    refinement_resolution_a: Optional[float] = Field(default=None, description="""Resolution cutoff used for refinement in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_resolution_a', 'domain_of': ['WorkflowRun']} })
+    number_of_waters: Optional[QuantityValue] = Field(default=None, description="""Number of water molecules modeled""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_waters', 'domain_of': ['WorkflowRun']} })
+    refinement_resolution_a: Optional[QuantityValue] = Field(default=None, description="""Resolution cutoff used for refinement in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_resolution_a', 'domain_of': ['WorkflowRun']} })
     deposited_to_pdb: Optional[bool] = Field(default=None, description="""Whether structure was deposited to PDB""", json_schema_extra = { "linkml_meta": {'alias': 'deposited_to_pdb', 'domain_of': ['WorkflowRun']} })
     pdb_id: Optional[str] = Field(default=None, description="""PDB accession code if deposited""", json_schema_extra = { "linkml_meta": {'alias': 'pdb_id', 'domain_of': ['WorkflowRun']} })
     validation_report_path: Optional[str] = Field(default=None, description="""Path to validation report""", json_schema_extra = { "linkml_meta": {'alias': 'validation_report_path', 'domain_of': ['WorkflowRun']} })
     space_group: Optional[str] = Field(default=None, description="""Crystallographic space group""", json_schema_extra = { "linkml_meta": {'alias': 'space_group',
-         'comments': ['Maps to PDB: _symmetry.space_group_name_h-m'],
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Space_Group'} })
-    unit_cell_a: Optional[float] = Field(default=None, description="""Unit cell parameter a in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_a',
-         'comments': ['Maps to PDB: _cell.length_a'],
+         'exact_mappings': ['nsls2:Space_Group',
+                            'mmCIF:_symmetry.space_group_name_H-M',
+                            'ispyb:AutoProcScaling.spaceGroup']} })
+    unit_cell_a: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter a, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_a',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_a'} })
-    unit_cell_b: Optional[float] = Field(default=None, description="""Unit cell parameter b in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_b',
-         'comments': ['Maps to PDB: _cell.length_b'],
+         'exact_mappings': ['nsls2:Unit_Cell_a', 'mmCIF:_cell.length_a']} })
+    unit_cell_b: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter b, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_b',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_b'} })
-    unit_cell_c: Optional[float] = Field(default=None, description="""Unit cell parameter c in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_c',
-         'comments': ['Maps to PDB: _cell.length_c'],
+         'exact_mappings': ['nsls2:Unit_Cell_b', 'mmCIF:_cell.length_b']} })
+    unit_cell_c: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter c, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_c',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_c'} })
-    unit_cell_alpha: Optional[float] = Field(default=None, description="""Unit cell angle alpha in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_alpha',
-         'comments': ['Maps to PDB: _cell.angle_alpha'],
+         'exact_mappings': ['nsls2:Unit_Cell_c', 'mmCIF:_cell.length_c']} })
+    unit_cell_alpha: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_alpha',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_alpha'} })
-    unit_cell_beta: Optional[float] = Field(default=None, description="""Unit cell angle beta in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_beta',
-         'comments': ['Maps to PDB: _cell.angle_beta'],
+         'exact_mappings': ['nsls2:Unit_Cell_alpha', 'mmCIF:_cell.angle_alpha']} })
+    unit_cell_beta: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_beta',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_beta'} })
-    unit_cell_gamma: Optional[float] = Field(default=None, description="""Unit cell angle gamma in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_gamma',
-         'comments': ['Maps to PDB: _cell.angle_gamma'],
+         'exact_mappings': ['nsls2:Unit_Cell_beta', 'mmCIF:_cell.angle_beta']} })
+    unit_cell_gamma: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_gamma',
          'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Unit_Cell_gamma'} })
-    resolution_high: Optional[float] = Field(default=None, description="""High resolution limit in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high',
-         'comments': ['Maps to PDB: _reflns.d_resolution_high'],
+         'exact_mappings': ['nsls2:Unit_Cell_gamma', 'mmCIF:_cell.angle_gamma']} })
+    resolution_high: Optional[QuantityValue] = Field(default=None, description="""High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Resolution_High_A'} })
-    resolution_low: Optional[float] = Field(default=None, description="""Low resolution limit in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low',
-         'comments': ['Maps to PDB: _reflns.d_resolution_low'],
+         'exact_mappings': ['nsls2:Resolution_High_A',
+                            'mmCIF:_reflns.d_resolution_high',
+                            'ispyb:AutoProcScalingStatistics.resolutionLimitHigh']} })
+    resolution_low: Optional[QuantityValue] = Field(default=None, description="""Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Resolution_Low_A'} })
-    rmerge: Optional[float] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rmerge',
-         'comments': ['Maps to PDB: _reflns.pdbx_Rmerge_I_obs'],
+         'exact_mappings': ['nsls2:Resolution_Low_A',
+                            'mmCIF:_reflns.d_resolution_low',
+                            'ispyb:AutoProcScalingStatistics.resolutionLimitLow']} })
+    rmerge: Optional[QuantityValue] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rmerge', 'domain_of': ['WorkflowRun']} })
+    rpim: Optional[QuantityValue] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rpim', 'domain_of': ['WorkflowRun']} })
+    cc_half: Optional[QuantityValue] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    completeness_percent: Optional[QuantityValue] = Field(default=None, description="""Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'completeness_percent',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Rmerge'} })
-    rpim: Optional[float] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'rpim',
-         'comments': ['Maps to PDB: _reflns.pdbx_Rpim_I_all'],
+         'exact_mappings': ['nsls2:Completeness',
+                            'mmCIF:_reflns.percent_possible_obs',
+                            'ispyb:AutoProcScalingStatistics.completeness']} })
+    i_over_sigma: Optional[QuantityValue] = Field(default=None, description="""Mean I/sigma(I) - signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'i_over_sigma', 'domain_of': ['WorkflowRun']} })
+    wilson_b_factor: Optional[QuantityValue] = Field(default=None, description="""Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wilson_b_factor',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Rpim'} })
-    cc_half: Optional[float] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half',
-         'comments': ['Maps to PDB: _reflns.pdbx_CC_half'],
-         'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:CC_half'} })
-    completeness_percent: Optional[float] = Field(default=None, description="""Data completeness percentage""", json_schema_extra = { "linkml_meta": {'alias': 'completeness_percent',
-         'comments': ['Maps to PDB: _reflns.percent_possible_obs'],
+         'exact_mappings': ['nsls2:Wilson_B', 'mmCIF:_reflns.B_iso_Wilson_estimate']} })
+    multiplicity: Optional[QuantityValue] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    anomalous_completeness: Optional[QuantityValue] = Field(default=None, description="""Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'anomalous_completeness',
+         'comments': ['Completeness of Bijvoet pairs'],
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Completeness'} })
-    i_over_sigma: Optional[float] = Field(default=None, description="""Mean I/sigma(I) - signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'i_over_sigma',
-         'comments': ['Maps to PDB: _reflns.pdbx_netI_over_sigmaI'],
+         'exact_mappings': ['ispyb:AutoProcScalingStatistics.anomalousCompleteness']} })
+    anomalous_multiplicity: Optional[QuantityValue] = Field(default=None, description="""Multiplicity of anomalous data""", json_schema_extra = { "linkml_meta": {'alias': 'anomalous_multiplicity', 'domain_of': ['WorkflowRun']} })
+    cc_anomalous: Optional[QuantityValue] = Field(default=None, description="""Anomalous correlation coefficient""", json_schema_extra = { "linkml_meta": {'alias': 'cc_anomalous', 'domain_of': ['WorkflowRun']} })
+    r_anomalous: Optional[QuantityValue] = Field(default=None, description="""Anomalous R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_anomalous', 'domain_of': ['WorkflowRun']} })
+    sig_anomalous: Optional[QuantityValue] = Field(default=None, description="""Mean anomalous difference signal""", json_schema_extra = { "linkml_meta": {'alias': 'sig_anomalous', 'domain_of': ['WorkflowRun']} })
+    n_total_observations: Optional[QuantityValue] = Field(default=None, description="""Total number of observations (before merging)""", json_schema_extra = { "linkml_meta": {'alias': 'n_total_observations', 'domain_of': ['WorkflowRun']} })
+    n_total_unique: Optional[QuantityValue] = Field(default=None, description="""Total number of unique reflections""", json_schema_extra = { "linkml_meta": {'alias': 'n_total_unique', 'domain_of': ['WorkflowRun']} })
+    ispyb_auto_proc_program_id: Optional[QuantityValue] = Field(default=None, description="""ISPyB AutoProcProgram.autoProcProgramId""", json_schema_extra = { "linkml_meta": {'alias': 'ispyb_auto_proc_program_id', 'domain_of': ['WorkflowRun']} })
+    ispyb_auto_proc_scaling_id: Optional[QuantityValue] = Field(default=None, description="""ISPyB AutoProcScaling.autoProcScalingId""", json_schema_extra = { "linkml_meta": {'alias': 'ispyb_auto_proc_scaling_id', 'domain_of': ['WorkflowRun']} })
+    rwork: Optional[QuantityValue] = Field(default=None, description="""Refinement R-factor (working set)""", json_schema_extra = { "linkml_meta": {'alias': 'rwork', 'domain_of': ['WorkflowRun']} })
+    rfree: Optional[QuantityValue] = Field(default=None, description="""R-free (test set)""", json_schema_extra = { "linkml_meta": {'alias': 'rfree', 'domain_of': ['WorkflowRun']} })
+    rmsd_bonds: Optional[QuantityValue] = Field(default=None, description="""RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rmsd_bonds',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:I_over_sigma'} })
-    wilson_b_factor: Optional[float] = Field(default=None, description="""Wilson B-factor in Angstroms squared""", json_schema_extra = { "linkml_meta": {'alias': 'wilson_b_factor',
-         'comments': ['Maps to PDB: _reflns.B_iso_Wilson_estimate'],
+         'exact_mappings': ['nsls2:RMSD_bonds', 'mmCIF:_refine.ls_d_res_high']} })
+    rmsd_angles: Optional[QuantityValue] = Field(default=None, description="""RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rmsd_angles',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Wilson_B'} })
-    multiplicity: Optional[float] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity',
-         'comments': ['Maps to PDB: _reflns.pdbx_redundancy'],
-         'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Multiplicity'} })
-    rwork: Optional[float] = Field(default=None, description="""Refinement R-factor (working set)""", json_schema_extra = { "linkml_meta": {'alias': 'rwork',
-         'comments': ['Maps to PDB: _refine.ls_R_factor_R_work'],
+         'exact_mappings': ['nsls2:RMSD_angles', 'mmCIF:_refine.ls_d_res_low']} })
+    ramachandran_favored: Optional[QuantityValue] = Field(default=None, description="""Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_favored',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Rwork'} })
-    rfree: Optional[float] = Field(default=None, description="""R-free (test set)""", json_schema_extra = { "linkml_meta": {'alias': 'rfree',
-         'comments': ['Maps to PDB: _refine.ls_R_factor_R_free'],
+         'exact_mappings': ['nsls2:Ramachandran_Favored',
+                            'mmCIF:_refine.pdbx_overall_ESU_R']} })
+    ramachandran_outliers: Optional[QuantityValue] = Field(default=None, description="""Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_outliers',
          'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Rfree'} })
-    rmsd_bonds: Optional[float] = Field(default=None, description="""RMSD from ideal bond lengths in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'rmsd_bonds',
-         'comments': ['Maps to PDB: _refine.ls_d_res_high'],
-         'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:RMSD_bonds'} })
-    rmsd_angles: Optional[float] = Field(default=None, description="""RMSD from ideal bond angles in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'rmsd_angles',
-         'comments': ['Maps to PDB: _refine.ls_d_res_low'],
-         'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:RMSD_angles'} })
-    ramachandran_favored: Optional[float] = Field(default=None, description="""Percentage of residues in favored Ramachandran regions""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_favored',
-         'comments': ['Maps to PDB: _refine.pdbx_overall_ESU_R'],
-         'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Ramachandran_Favored'} })
-    ramachandran_outliers: Optional[float] = Field(default=None, description="""Percentage of Ramachandran outliers""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_outliers',
-         'comments': ['Maps to PDB: _refine.pdbx_overall_ESU_R_Free'],
-         'domain_of': ['WorkflowRun'],
-         'slot_uri': 'nsls2:Ramachandran_Outliers'} })
-    clashscore: Optional[float] = Field(default=None, description="""MolProbity clashscore""", json_schema_extra = { "linkml_meta": {'alias': 'clashscore',
-         'comments': ['Maps to validation report metrics'],
-         'domain_of': ['WorkflowRun', 'QualityMetrics'],
-         'slot_uri': 'nsls2:Clashscore'} })
+         'exact_mappings': ['nsls2:Ramachandran_Outliers',
+                            'mmCIF:_refine.pdbx_overall_ESU_R_Free']} })
+    clashscore: Optional[QuantityValue] = Field(default=None, description="""MolProbity clashscore""", json_schema_extra = { "linkml_meta": {'alias': 'clashscore', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
     processing_notes: Optional[str] = Field(default=None, description="""Additional notes about processing""", json_schema_extra = { "linkml_meta": {'alias': 'processing_notes', 'domain_of': ['WorkflowRun']} })
     compute_resources: Optional[ComputeResources] = Field(default=None, description="""Computational resources used""", json_schema_extra = { "linkml_meta": {'alias': 'compute_resources', 'domain_of': ['WorkflowRun']} })
     started_at: Optional[str] = Field(default=None, description="""Workflow start time""", json_schema_extra = { "linkml_meta": {'alias': 'started_at', 'domain_of': ['WorkflowRun']} })
     completed_at: Optional[str] = Field(default=None, description="""Workflow completion time""", json_schema_extra = { "linkml_meta": {'alias': 'completed_at', 'domain_of': ['WorkflowRun']} })
+    motion_correction_params: Optional[MotionCorrectionParameters] = Field(default=None, description="""Motion correction specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'motion_correction_params', 'domain_of': ['WorkflowRun']} })
+    ctf_estimation_params: Optional[CTFEstimationParameters] = Field(default=None, description="""CTF estimation specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'ctf_estimation_params', 'domain_of': ['WorkflowRun']} })
+    particle_picking_params: Optional[ParticlePickingParameters] = Field(default=None, description="""Particle picking specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'particle_picking_params', 'domain_of': ['WorkflowRun']} })
+    refinement_params: Optional[RefinementParameters] = Field(default=None, description="""3D refinement specific parameters""", json_schema_extra = { "linkml_meta": {'alias': 'refinement_params', 'domain_of': ['WorkflowRun']} })
+    fsc_curve: Optional[FSCCurve] = Field(default=None, description="""Fourier Shell Correlation curve data""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_curve', 'domain_of': ['WorkflowRun']} })
     output_files: Optional[list[str]] = Field(default=None, description="""Output files generated""", json_schema_extra = { "linkml_meta": {'alias': 'output_files', 'domain_of': ['WorkflowRun']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class DataFile(NamedThing):
@@ -3251,13 +4421,16 @@ class DataFile(NamedThing):
     file_name: str = Field(default=..., description="""Name of the file""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     file_path: Optional[str] = Field(default=None, description="""Path to the file""", json_schema_extra = { "linkml_meta": {'alias': 'file_path', 'domain_of': ['DataFile']} })
     file_format: FileFormatEnum = Field(default=..., description="""File format""", json_schema_extra = { "linkml_meta": {'alias': 'file_format', 'domain_of': ['DataFile']} })
-    file_size_bytes: Optional[int] = Field(default=None, description="""File size in bytes""", json_schema_extra = { "linkml_meta": {'alias': 'file_size_bytes', 'domain_of': ['DataFile']} })
+    file_size_bytes: Optional[QuantityValue] = Field(default=None, description="""File size in bytes""", json_schema_extra = { "linkml_meta": {'alias': 'file_size_bytes', 'domain_of': ['DataFile']} })
     checksum: Optional[str] = Field(default=None, description="""SHA-256 checksum for data integrity""", json_schema_extra = { "linkml_meta": {'alias': 'checksum', 'domain_of': ['DataFile']} })
     creation_date: Optional[str] = Field(default=None, description="""File creation date""", json_schema_extra = { "linkml_meta": {'alias': 'creation_date', 'domain_of': ['DataFile']} })
     data_type: Optional[DataTypeEnum] = Field(default=None, description="""Type of data in the file""", json_schema_extra = { "linkml_meta": {'alias': 'data_type', 'domain_of': ['DataFile']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    storage_uri: Optional[str] = Field(default=None, description="""Storage URI (S3, Globus, etc.)""", json_schema_extra = { "linkml_meta": {'alias': 'storage_uri', 'domain_of': ['DataFile']} })
+    related_entity: Optional[str] = Field(default=None, description="""ID of the entity that owns this file""", json_schema_extra = { "linkml_meta": {'alias': 'related_entity', 'domain_of': ['DataFile']} })
+    file_role: Optional[str] = Field(default=None, description="""Role of the file (raw, intermediate, final, diagnostic, metadata)""", json_schema_extra = { "linkml_meta": {'alias': 'file_role', 'domain_of': ['DataFile']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Image(NamedThing):
@@ -3268,14 +4441,15 @@ class Image(NamedThing):
 
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Image2D(Image):
@@ -3284,18 +4458,19 @@ class Image2D(Image):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    defocus: Optional[float] = Field(default=None, description="""Defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
-    astigmatism: Optional[float] = Field(default=None, description="""Astigmatism value""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class Image3D(Image):
@@ -3304,19 +4479,83 @@ class Image3D(Image):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    dimensions_z: Optional[int] = Field(default=None, description="""Image depth in pixels/slices""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_z', 'domain_of': ['Image3D']} })
-    voxel_size: Optional[float] = Field(default=None, description="""Voxel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'voxel_size', 'domain_of': ['Image3D']} })
+    dimensions_z: Optional[QuantityValue] = Field(default=None, description="""Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_z', 'domain_of': ['Image3D']} })
+    voxel_size: Optional[QuantityValue] = Field(default=None, description="""Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'voxel_size', 'domain_of': ['Image3D']} })
     reconstruction_method: Optional[str] = Field(default=None, description="""Method used for 3D reconstruction""", json_schema_extra = { "linkml_meta": {'alias': 'reconstruction_method', 'domain_of': ['Image3D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class Movie(Image2D):
+    """
+    Raw cryo-EM movie with frame-by-frame metadata for motion correction
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    frames: Optional[QuantityValue] = Field(default=None, description="""Number of frames in the movie""", json_schema_extra = { "linkml_meta": {'alias': 'frames', 'domain_of': ['Movie']} })
+    super_resolution: Optional[bool] = Field(default=None, description="""Whether super-resolution mode was used""", json_schema_extra = { "linkml_meta": {'alias': 'super_resolution', 'domain_of': ['Movie']} })
+    pixel_size_unbinned: Optional[QuantityValue] = Field(default=None, description="""Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_unbinned', 'domain_of': ['Movie']} })
+    timestamp: Optional[str] = Field(default=None, description="""Acquisition timestamp""", json_schema_extra = { "linkml_meta": {'alias': 'timestamp', 'domain_of': ['Movie']} })
+    stage_position_x: Optional[QuantityValue] = Field(default=None, description="""Stage X position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'stage_position_x', 'domain_of': ['Movie']} })
+    stage_position_y: Optional[QuantityValue] = Field(default=None, description="""Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'stage_position_y', 'domain_of': ['Movie']} })
+    stage_position_z: Optional[QuantityValue] = Field(default=None, description="""Stage Z position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'stage_position_z', 'domain_of': ['Movie']} })
+    nominal_defocus: Optional[QuantityValue] = Field(default=None, description="""Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'nominal_defocus', 'domain_of': ['Movie']} })
+    dose_per_frame: Optional[QuantityValue] = Field(default=None, description="""Electron dose per frame in e-/Angstrom^2""", json_schema_extra = { "linkml_meta": {'alias': 'dose_per_frame', 'domain_of': ['Movie', 'DataCollectionStrategy']} })
+    beam_shift_x: Optional[QuantityValue] = Field(default=None, description="""Beam shift X in microradians""", json_schema_extra = { "linkml_meta": {'alias': 'beam_shift_x', 'domain_of': ['Movie']} })
+    beam_shift_y: Optional[QuantityValue] = Field(default=None, description="""Beam shift Y in microradians""", json_schema_extra = { "linkml_meta": {'alias': 'beam_shift_y', 'domain_of': ['Movie']} })
+    ice_thickness_estimate: Optional[QuantityValue] = Field(default=None, description="""Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ice_thickness_estimate', 'domain_of': ['Movie']} })
+    grid_square_id: Optional[str] = Field(default=None, description="""Grid square identifier""", json_schema_extra = { "linkml_meta": {'alias': 'grid_square_id', 'domain_of': ['Movie']} })
+    hole_id: Optional[str] = Field(default=None, description="""Hole identifier within grid square""", json_schema_extra = { "linkml_meta": {'alias': 'hole_id', 'domain_of': ['Movie']} })
+    acquisition_group: Optional[str] = Field(default=None, description="""Acquisition group identifier (e.g., template or area)""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_group', 'domain_of': ['Movie']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
+    acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class Micrograph(Image2D):
+    """
+    Motion-corrected micrograph derived from movie
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose in e-/Angstrom^2""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    origin_movie_id: Optional[str] = Field(default=None, description="""Reference to original movie file""", json_schema_extra = { "linkml_meta": {'alias': 'origin_movie_id', 'domain_of': ['Micrograph']} })
+    defocus_u: Optional[QuantityValue] = Field(default=None, description="""Defocus U, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_u', 'domain_of': ['Micrograph']} })
+    defocus_v: Optional[QuantityValue] = Field(default=None, description="""Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_v', 'domain_of': ['Micrograph']} })
+    astigmatism_angle: Optional[QuantityValue] = Field(default=None, description="""Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism_angle', 'domain_of': ['Micrograph']} })
+    resolution_fit_limit: Optional[QuantityValue] = Field(default=None, description="""Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_fit_limit', 'domain_of': ['Micrograph']} })
+    ctf_quality_score: Optional[QuantityValue] = Field(default=None, description="""CTF estimation quality score""", json_schema_extra = { "linkml_meta": {'alias': 'ctf_quality_score', 'domain_of': ['Micrograph']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
+    acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class FTIRImage(Image):
@@ -3325,23 +4564,24 @@ class FTIRImage(Image):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    wavenumber_min: Optional[float] = Field(default=None, description="""Minimum wavenumber in cm⁻¹""", json_schema_extra = { "linkml_meta": {'alias': 'wavenumber_min', 'domain_of': ['FTIRImage']} })
-    wavenumber_max: Optional[float] = Field(default=None, description="""Maximum wavenumber in cm⁻¹""", json_schema_extra = { "linkml_meta": {'alias': 'wavenumber_max', 'domain_of': ['FTIRImage']} })
-    spectral_resolution: Optional[float] = Field(default=None, description="""Spectral resolution in cm⁻¹""", json_schema_extra = { "linkml_meta": {'alias': 'spectral_resolution', 'domain_of': ['FTIRImage']} })
-    number_of_scans: Optional[int] = Field(default=None, description="""Number of scans averaged for the spectrum""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_scans', 'domain_of': ['FTIRImage']} })
+    wavenumber_min: Optional[QuantityValue] = Field(default=None, description="""Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wavenumber_min', 'domain_of': ['FTIRImage']} })
+    wavenumber_max: Optional[QuantityValue] = Field(default=None, description="""Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wavenumber_max', 'domain_of': ['FTIRImage']} })
+    spectral_resolution: Optional[QuantityValue] = Field(default=None, description="""Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'spectral_resolution', 'domain_of': ['FTIRImage']} })
+    number_of_scans: Optional[QuantityValue] = Field(default=None, description="""Number of scans averaged for the spectrum""", json_schema_extra = { "linkml_meta": {'alias': 'number_of_scans', 'domain_of': ['FTIRImage']} })
     apodization_function: Optional[str] = Field(default=None, description="""Mathematical function used for apodization""", json_schema_extra = { "linkml_meta": {'alias': 'apodization_function', 'domain_of': ['FTIRImage']} })
     molecular_signatures: Optional[list[str]] = Field(default=None, description="""Identified molecular signatures or peaks""", json_schema_extra = { "linkml_meta": {'alias': 'molecular_signatures', 'domain_of': ['FTIRImage']} })
     background_correction: Optional[str] = Field(default=None, description="""Method used for background correction""", json_schema_extra = { "linkml_meta": {'alias': 'background_correction', 'domain_of': ['FTIRImage']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class FluorescenceImage(Image2D):
@@ -3350,27 +4590,28 @@ class FluorescenceImage(Image2D):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    excitation_wavelength: Optional[float] = Field(default=None, description="""Excitation wavelength in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'excitation_wavelength', 'domain_of': ['FluorescenceImage']} })
-    emission_wavelength: Optional[float] = Field(default=None, description="""Emission wavelength in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'emission_wavelength', 'domain_of': ['FluorescenceImage']} })
+    excitation_wavelength: Optional[QuantityValue] = Field(default=None, description="""Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'excitation_wavelength', 'domain_of': ['FluorescenceImage']} })
+    emission_wavelength: Optional[QuantityValue] = Field(default=None, description="""Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'emission_wavelength', 'domain_of': ['FluorescenceImage']} })
     excitation_filter: Optional[str] = Field(default=None, description="""Specifications of the excitation filter""", json_schema_extra = { "linkml_meta": {'alias': 'excitation_filter', 'domain_of': ['FluorescenceImage']} })
     emission_filter: Optional[str] = Field(default=None, description="""Specifications of the emission filter""", json_schema_extra = { "linkml_meta": {'alias': 'emission_filter', 'domain_of': ['FluorescenceImage']} })
     fluorophore: Optional[str] = Field(default=None, description="""Name or type of fluorophore used""", json_schema_extra = { "linkml_meta": {'alias': 'fluorophore', 'domain_of': ['FluorescenceImage']} })
     channel_name: Optional[str] = Field(default=None, description="""Name of the fluorescence channel (e.g., DAPI, GFP, RFP)""", json_schema_extra = { "linkml_meta": {'alias': 'channel_name', 'domain_of': ['FluorescenceImage']} })
-    laser_power: Optional[float] = Field(default=None, description="""Laser power in milliwatts or percentage""", json_schema_extra = { "linkml_meta": {'alias': 'laser_power', 'domain_of': ['FluorescenceImage']} })
-    pinhole_size: Optional[float] = Field(default=None, description="""Pinhole size in Airy units for confocal microscopy""", json_schema_extra = { "linkml_meta": {'alias': 'pinhole_size', 'domain_of': ['FluorescenceImage']} })
-    quantum_yield: Optional[float] = Field(default=None, description="""Quantum yield of the fluorophore""", json_schema_extra = { "linkml_meta": {'alias': 'quantum_yield', 'domain_of': ['FluorescenceImage']} })
-    defocus: Optional[float] = Field(default=None, description="""Defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
-    astigmatism: Optional[float] = Field(default=None, description="""Astigmatism value""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    laser_power: Optional[QuantityValue] = Field(default=None, description="""Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'laser_power', 'domain_of': ['FluorescenceImage']} })
+    pinhole_size: Optional[QuantityValue] = Field(default=None, description="""Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pinhole_size', 'domain_of': ['FluorescenceImage']} })
+    quantum_yield: Optional[QuantityValue] = Field(default=None, description="""Quantum yield of the fluorophore""", json_schema_extra = { "linkml_meta": {'alias': 'quantum_yield', 'domain_of': ['FluorescenceImage']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class OpticalImage(Image2D):
@@ -3380,23 +4621,24 @@ class OpticalImage(Image2D):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
     illumination_type: Optional[IlluminationTypeEnum] = Field(default=None, description="""Type of illumination (brightfield, darkfield, phase contrast, DIC)""", json_schema_extra = { "linkml_meta": {'alias': 'illumination_type', 'domain_of': ['OpticalImage']} })
-    magnification: Optional[float] = Field(default=None, description="""Optical magnification factor""", json_schema_extra = { "linkml_meta": {'alias': 'magnification', 'domain_of': ['OpticalImage']} })
-    numerical_aperture: Optional[float] = Field(default=None, description="""Numerical aperture of the objective lens""", json_schema_extra = { "linkml_meta": {'alias': 'numerical_aperture', 'domain_of': ['OpticalImage']} })
+    magnification: Optional[QuantityValue] = Field(default=None, description="""Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'magnification', 'domain_of': ['ExperimentRun', 'OpticalImage']} })
+    numerical_aperture: Optional[QuantityValue] = Field(default=None, description="""Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'numerical_aperture', 'domain_of': ['OpticalImage']} })
     color_channels: Optional[list[str]] = Field(default=None, description="""Color channels present (e.g., RGB, grayscale)""", json_schema_extra = { "linkml_meta": {'alias': 'color_channels', 'domain_of': ['OpticalImage']} })
     white_balance: Optional[str] = Field(default=None, description="""White balance settings""", json_schema_extra = { "linkml_meta": {'alias': 'white_balance', 'domain_of': ['OpticalImage']} })
     contrast_method: Optional[str] = Field(default=None, description="""Contrast enhancement method used""", json_schema_extra = { "linkml_meta": {'alias': 'contrast_method', 'domain_of': ['OpticalImage']} })
-    defocus: Optional[float] = Field(default=None, description="""Defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
-    astigmatism: Optional[float] = Field(default=None, description="""Astigmatism value""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class XRFImage(Image2D):
@@ -3405,27 +4647,33 @@ class XRFImage(Image2D):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    beam_energy: Optional[float] = Field(default=None, description="""X-ray beam energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
-    beam_size: Optional[float] = Field(default=None, description="""X-ray beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size', 'domain_of': ['XRFImage']} })
-    dwell_time: Optional[float] = Field(default=None, description="""Dwell time per pixel in milliseconds""", json_schema_extra = { "linkml_meta": {'alias': 'dwell_time', 'domain_of': ['XRFImage']} })
+    beam_energy: Optional[QuantityValue] = Field(default=None, description="""X-ray beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
+    beam_size: Optional[QuantityValue] = Field(default=None, description="""X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size', 'domain_of': ['XRFImage']} })
+    dwell_time: Optional[QuantityValue] = Field(default=None, description="""Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dwell_time', 'domain_of': ['XRFImage']} })
     elements_measured: Optional[list[str]] = Field(default=None, description="""Elements detected and measured""", json_schema_extra = { "linkml_meta": {'alias': 'elements_measured', 'domain_of': ['XRFImage']} })
-    source_type: Optional[XRaySourceTypeEnum] = Field(default=None, description="""X-ray source type (synchrotron or lab-source)""", json_schema_extra = { "linkml_meta": {'alias': 'source_type', 'domain_of': ['XRayInstrument', 'XRFImage']} })
-    detector_type: Optional[str] = Field(default=None, description="""Type of X-ray detector used""", json_schema_extra = { "linkml_meta": {'alias': 'detector_type',
+    source_type: Optional[XRaySourceTypeEnum] = Field(default=None, description="""X-ray source type (synchrotron or lab-source)""", json_schema_extra = { "linkml_meta": {'alias': 'source_type',
+         'domain_of': ['XRayInstrument', 'BeamlineInstrument', 'XRFImage']} })
+    detector_technology: Optional[DetectorTechnologyEnum] = Field(default=None, description="""Type of X-ray detector technology used""", json_schema_extra = { "linkml_meta": {'alias': 'detector_technology',
+         'comments': ['For XRF, typically energy-dispersive or wavelength-dispersive '
+                      'detectors'],
          'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage']} })
-    flux: Optional[float] = Field(default=None, description="""Photon flux in photons/second""", json_schema_extra = { "linkml_meta": {'alias': 'flux', 'domain_of': ['XRFImage']} })
+    detector_model: Optional[str] = Field(default=None, description="""Specific detector model used for XRF measurement""", json_schema_extra = { "linkml_meta": {'alias': 'detector_model',
+         'domain_of': ['CryoEMInstrument', 'XRayInstrument', 'XRFImage']} })
+    flux: Optional[QuantityValue] = Field(default=None, description="""Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'flux', 'domain_of': ['ExperimentRun', 'XRFImage']} })
     calibration_standard: Optional[str] = Field(default=None, description="""Reference standard used for calibration""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_standard', 'domain_of': ['XRFImage']} })
-    defocus: Optional[float] = Field(default=None, description="""Defocus value in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
-    astigmatism: Optional[float] = Field(default=None, description="""Astigmatism value""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
+    defocus: Optional[QuantityValue] = Field(default=None, description="""Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus', 'domain_of': ['Image2D']} })
+    astigmatism: Optional[QuantityValue] = Field(default=None, description="""Astigmatism value, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'astigmatism', 'domain_of': ['Image2D']} })
     file_name: str = Field(default=..., description="""Image file name""", json_schema_extra = { "linkml_meta": {'alias': 'file_name', 'domain_of': ['DataFile', 'Image']} })
     acquisition_date: Optional[str] = Field(default=None, description="""Date image was acquired""", json_schema_extra = { "linkml_meta": {'alias': 'acquisition_date', 'domain_of': ['Image']} })
-    pixel_size: Optional[float] = Field(default=None, description="""Pixel size in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image']} })
-    dimensions_x: Optional[int] = Field(default=None, description="""Image width in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
-    dimensions_y: Optional[int] = Field(default=None, description="""Image height in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
-    dose: Optional[float] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    dimensions_x: Optional[QuantityValue] = Field(default=None, description="""Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_x', 'domain_of': ['Image']} })
+    dimensions_y: Optional[QuantityValue] = Field(default=None, description="""Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dimensions_y', 'domain_of': ['Image']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
+    dose: Optional[QuantityValue] = Field(default=None, description="""Electron dose in e-/Å²""", json_schema_extra = { "linkml_meta": {'alias': 'dose', 'domain_of': ['Image', 'Micrograph']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class ImageFeature(AttributeGroup):
@@ -3434,19 +4682,23 @@ class ImageFeature(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    terms: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'terms', 'domain_of': ['ImageFeature']} })
+    terms: Optional[list[OntologyTerm]] = Field(default=None, description="""Ontology terms describing features identified in the image""", json_schema_extra = { "linkml_meta": {'alias': 'terms', 'domain_of': ['ImageFeature', 'OntologyTerm']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class OntologyTerm(NamedThing):
+    """
+    A term from a controlled vocabulary or ontology
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    label: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'label', 'domain_of': ['OntologyTerm']} })
-    definition: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyTerm']} })
-    ontology: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ontology', 'domain_of': ['OntologyTerm']} })
-    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing']} })
-    title: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+    terms: Optional[list[OntologyTerm]] = Field(default=None, description="""Collection of ontology terms""", json_schema_extra = { "linkml_meta": {'alias': 'terms', 'domain_of': ['ImageFeature', 'OntologyTerm']} })
+    label: Optional[str] = Field(default=None, description="""The human-readable label or name of the ontology term""", json_schema_extra = { "linkml_meta": {'alias': 'label', 'domain_of': ['Attribute', 'OntologyTerm']} })
+    definition: Optional[str] = Field(default=None, description="""The formal definition or meaning of the ontology term""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyTerm']} })
+    ontology: Optional[str] = Field(default=None, description="""The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)""", json_schema_extra = { "linkml_meta": {'alias': 'ontology', 'domain_of': ['OntologyTerm']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
 class MolecularComposition(AttributeGroup):
@@ -3467,7 +4719,7 @@ class BufferComposition(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    ph: Optional[float] = Field(default=None, description="""pH of the buffer""", ge=0, le=14, json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['BiophysicalProperty', 'BufferComposition']} })
+    ph: Optional[QuantityValue] = Field(default=None, description="""pH of the buffer (range: 0-14)""", json_schema_extra = { "linkml_meta": {'alias': 'ph', 'domain_of': ['MeasurementConditions', 'BufferComposition']} })
     components: Optional[list[str]] = Field(default=None, description="""Buffer components and their concentrations""", json_schema_extra = { "linkml_meta": {'alias': 'components', 'domain_of': ['BufferComposition']} })
     additives: Optional[list[str]] = Field(default=None, description="""Additional additives in the buffer""", json_schema_extra = { "linkml_meta": {'alias': 'additives', 'domain_of': ['BufferComposition', 'XRayPreparation']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
@@ -3479,11 +4731,10 @@ class StorageConditions(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    temperature: Optional[float] = Field(default=None, description="""Storage temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
-         'domain_of': ['BiophysicalProperty',
+    temperature: Optional[QuantityValue] = Field(default=None, description="""Storage temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'domain_of': ['MeasurementConditions',
                        'StorageConditions',
                        'ExperimentalConditions']} })
-    temperature_unit: Optional[TemperatureUnitEnum] = Field(default=None, description="""Temperature unit""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_unit', 'domain_of': ['StorageConditions']} })
     duration: Optional[str] = Field(default=None, description="""Storage duration""", json_schema_extra = { "linkml_meta": {'alias': 'duration', 'domain_of': ['StorageConditions']} })
     atmosphere: Optional[str] = Field(default=None, description="""Storage atmosphere conditions""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
@@ -3507,12 +4758,25 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
 
     grid_type: Optional[GridTypeEnum] = Field(default=None, description="""Type of EM grid used""", json_schema_extra = { "linkml_meta": {'alias': 'grid_type', 'domain_of': ['CryoEMPreparation']} })
     support_film: Optional[str] = Field(default=None, description="""Support film type""", json_schema_extra = { "linkml_meta": {'alias': 'support_film', 'domain_of': ['CryoEMPreparation']} })
-    hole_size: Optional[float] = Field(default=None, description="""Hole size in micrometers""", ge=0.5, le=5.0, json_schema_extra = { "linkml_meta": {'alias': 'hole_size', 'domain_of': ['CryoEMPreparation']} })
+    hole_size: Optional[QuantityValue] = Field(default=None, description="""Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'hole_size', 'domain_of': ['CryoEMPreparation']} })
     vitrification_method: Optional[VitrificationMethodEnum] = Field(default=None, description="""Method used for vitrification""", json_schema_extra = { "linkml_meta": {'alias': 'vitrification_method', 'domain_of': ['CryoEMPreparation']} })
-    blot_time: Optional[float] = Field(default=None, description="""Blotting time in seconds""", ge=0.5, le=10.0, json_schema_extra = { "linkml_meta": {'alias': 'blot_time', 'domain_of': ['CryoEMPreparation']} })
-    blot_force: Optional[int] = Field(default=None, description="""Blotting force setting""", json_schema_extra = { "linkml_meta": {'alias': 'blot_force', 'domain_of': ['CryoEMPreparation']} })
-    humidity_percentage: Optional[float] = Field(default=None, description="""Chamber humidity during vitrification""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'alias': 'humidity_percentage', 'domain_of': ['CryoEMPreparation']} })
-    chamber_temperature: Optional[float] = Field(default=None, description="""Chamber temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'chamber_temperature', 'domain_of': ['CryoEMPreparation']} })
+    blot_time: Optional[QuantityValue] = Field(default=None, description="""Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'blot_time', 'domain_of': ['CryoEMPreparation']} })
+    blot_force: Optional[QuantityValue] = Field(default=None, description="""Blotting force setting""", json_schema_extra = { "linkml_meta": {'alias': 'blot_force', 'domain_of': ['CryoEMPreparation']} })
+    humidity_percentage: Optional[QuantityValue] = Field(default=None, description="""Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'humidity_percentage', 'domain_of': ['CryoEMPreparation']} })
+    chamber_temperature: Optional[QuantityValue] = Field(default=None, description="""Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'chamber_temperature', 'domain_of': ['CryoEMPreparation']} })
+    grid_material: Optional[GridMaterialEnum] = Field(default=None, description="""Grid material""", json_schema_extra = { "linkml_meta": {'alias': 'grid_material', 'domain_of': ['CryoEMPreparation']} })
+    glow_discharge_applied: Optional[bool] = Field(default=None, description="""Whether glow discharge treatment was applied""", json_schema_extra = { "linkml_meta": {'alias': 'glow_discharge_applied', 'domain_of': ['CryoEMPreparation']} })
+    glow_discharge_time: Optional[QuantityValue] = Field(default=None, description="""Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'glow_discharge_time', 'domain_of': ['CryoEMPreparation']} })
+    glow_discharge_current: Optional[QuantityValue] = Field(default=None, description="""Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'glow_discharge_current', 'domain_of': ['CryoEMPreparation']} })
+    glow_discharge_atmosphere: Optional[str] = Field(default=None, description="""Glow discharge atmosphere (air, amylamine)""", json_schema_extra = { "linkml_meta": {'alias': 'glow_discharge_atmosphere', 'domain_of': ['CryoEMPreparation']} })
+    glow_discharge_pressure: Optional[QuantityValue] = Field(default=None, description="""Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'glow_discharge_pressure', 'domain_of': ['CryoEMPreparation']} })
+    vitrification_instrument: Optional[str] = Field(default=None, description="""Vitrification instrument used (e.g., Vitrobot)""", json_schema_extra = { "linkml_meta": {'alias': 'vitrification_instrument', 'domain_of': ['CryoEMPreparation']} })
+    blot_number: Optional[QuantityValue] = Field(default=None, description="""Number of blots applied""", json_schema_extra = { "linkml_meta": {'alias': 'blot_number', 'domain_of': ['CryoEMPreparation']} })
+    wait_time: Optional[QuantityValue] = Field(default=None, description="""Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wait_time', 'domain_of': ['CryoEMPreparation']} })
+    blotter_height: Optional[QuantityValue] = Field(default=None, description="""Blotter height setting. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'blotter_height', 'domain_of': ['CryoEMPreparation']} })
+    blotter_setting: Optional[QuantityValue] = Field(default=None, description="""Blotter setting value. Data providers may include unit information in the QuantityValue if needed.""", json_schema_extra = { "linkml_meta": {'alias': 'blotter_setting', 'domain_of': ['CryoEMPreparation']} })
+    sample_applied_volume: Optional[QuantityValue] = Field(default=None, description="""Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_applied_volume', 'domain_of': ['CryoEMPreparation']} })
+    ethane_temperature: Optional[QuantityValue] = Field(default=None, description="""Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'ethane_temperature', 'domain_of': ['CryoEMPreparation']} })
     plasma_treatment: Optional[str] = Field(default=None, description="""Plasma treatment details""", json_schema_extra = { "linkml_meta": {'alias': 'plasma_treatment', 'domain_of': ['CryoEMPreparation']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
@@ -3531,14 +4795,11 @@ class CrystallizationConditions(AttributeGroup):
          'comments': ['Maps to NSLS2 spreadsheet: Conditions'],
          'domain_of': ['CrystallizationConditions', 'XRayPreparation'],
          'slot_uri': 'nsls2:Conditions'} })
-    drop_volume: Optional[float] = Field(default=None, description="""Total drop volume in nanoliters""", json_schema_extra = { "linkml_meta": {'alias': 'drop_volume',
+    drop_volume: Optional[QuantityValue] = Field(default=None, description="""Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'drop_volume',
          'comments': ['Maps to NSLS2 spreadsheet: Drop_Volume'],
          'domain_of': ['CrystallizationConditions'],
          'slot_uri': 'nsls2:Drop_Volume'} })
-    protein_concentration: Optional[float] = Field(default=None, description="""Protein concentration for crystallization in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'protein_concentration',
-         'comments': ['Maps to NSLS2 spreadsheet: Protein_Concentration'],
-         'domain_of': ['CrystallizationConditions'],
-         'slot_uri': 'nsls2:Protein_Concentration'} })
+    protein_concentration: Optional[QuantityValue] = Field(default=None, description="""Protein concentration for crystallization in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'protein_concentration', 'domain_of': ['CrystallizationConditions']} })
     crystal_size_um: Optional[str] = Field(default=None, description="""Crystal dimensions in micrometers (length x width x height)""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_size_um',
          'comments': ['Maps to NSLS2 spreadsheet: Crystal_Size'],
          'domain_of': ['CrystallizationConditions', 'XRayPreparation'],
@@ -3553,11 +4814,11 @@ class CrystallizationConditions(AttributeGroup):
          'slot_uri': 'nsls2:Crystal_ID'} })
     screen_name: Optional[str] = Field(default=None, description="""Name of crystallization screen used""", json_schema_extra = { "linkml_meta": {'alias': 'screen_name',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
-    temperature_c: Optional[float] = Field(default=None, description="""Crystallization temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_c',
+    temperature_c: Optional[QuantityValue] = Field(default=None, description="""Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_c',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     drop_ratio_protein_to_reservoir: Optional[str] = Field(default=None, description="""Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)""", json_schema_extra = { "linkml_meta": {'alias': 'drop_ratio_protein_to_reservoir',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
-    reservoir_volume_ul: Optional[float] = Field(default=None, description="""Reservoir volume in microliters""", json_schema_extra = { "linkml_meta": {'alias': 'reservoir_volume_ul',
+    reservoir_volume_ul: Optional[QuantityValue] = Field(default=None, description="""Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'reservoir_volume_ul',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     seeding_type: Optional[str] = Field(default=None, description="""Type of seeding used (micro, macro, streak)""", json_schema_extra = { "linkml_meta": {'alias': 'seeding_type',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
@@ -3572,7 +4833,7 @@ class XRayPreparation(TechniqueSpecificPreparation):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    protein_concentration_mg_per_ml: Optional[float] = Field(default=None, description="""Protein concentration for crystallization in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'protein_concentration_mg_per_ml', 'domain_of': ['XRayPreparation']} })
+    protein_concentration_mg_per_ml: Optional[QuantityValue] = Field(default=None, description="""Protein concentration for crystallization in mg/mL""", json_schema_extra = { "linkml_meta": {'alias': 'protein_concentration_mg_per_ml', 'domain_of': ['XRayPreparation']} })
     protein_buffer: Optional[str] = Field(default=None, description="""Buffer composition for protein solution""", json_schema_extra = { "linkml_meta": {'alias': 'protein_buffer', 'domain_of': ['XRayPreparation']} })
     additives: Optional[str] = Field(default=None, description="""Additives mixed with protein before crystallization""", json_schema_extra = { "linkml_meta": {'alias': 'additives', 'domain_of': ['BufferComposition', 'XRayPreparation']} })
     crystallization_method: Optional[CrystallizationMethodEnum] = Field(default=None, description="""Method used for crystallization""", json_schema_extra = { "linkml_meta": {'alias': 'crystallization_method', 'domain_of': ['XRayPreparation']} })
@@ -3580,12 +4841,12 @@ class XRayPreparation(TechniqueSpecificPreparation):
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     screen_name: Optional[str] = Field(default=None, description="""Name of crystallization screen used""", json_schema_extra = { "linkml_meta": {'alias': 'screen_name',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
-    temperature_c: Optional[float] = Field(default=None, description="""Crystallization temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_c',
+    temperature_c: Optional[QuantityValue] = Field(default=None, description="""Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_c',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     drop_ratio_protein_to_reservoir: Optional[str] = Field(default=None, description="""Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)""", json_schema_extra = { "linkml_meta": {'alias': 'drop_ratio_protein_to_reservoir',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
-    drop_volume_nl: Optional[float] = Field(default=None, description="""Total drop volume in nanoliters""", json_schema_extra = { "linkml_meta": {'alias': 'drop_volume_nl', 'domain_of': ['XRayPreparation']} })
-    reservoir_volume_ul: Optional[float] = Field(default=None, description="""Reservoir volume in microliters""", json_schema_extra = { "linkml_meta": {'alias': 'reservoir_volume_ul',
+    drop_volume_nl: Optional[QuantityValue] = Field(default=None, description="""Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'drop_volume_nl', 'domain_of': ['XRayPreparation']} })
+    reservoir_volume_ul: Optional[QuantityValue] = Field(default=None, description="""Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'reservoir_volume_ul',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     seeding_type: Optional[str] = Field(default=None, description="""Type of seeding used (micro, macro, streak)""", json_schema_extra = { "linkml_meta": {'alias': 'seeding_type',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
@@ -3597,7 +4858,7 @@ class XRayPreparation(TechniqueSpecificPreparation):
     crystal_size_um: Optional[str] = Field(default=None, description="""Crystal dimensions in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_size_um',
          'domain_of': ['CrystallizationConditions', 'XRayPreparation']} })
     cryoprotectant: Optional[str] = Field(default=None, description="""Cryoprotectant used""", json_schema_extra = { "linkml_meta": {'alias': 'cryoprotectant', 'domain_of': ['XRayPreparation']} })
-    cryoprotectant_concentration: Optional[float] = Field(default=None, description="""Cryoprotectant concentration percentage""", json_schema_extra = { "linkml_meta": {'alias': 'cryoprotectant_concentration', 'domain_of': ['XRayPreparation']} })
+    cryoprotectant_concentration: Optional[QuantityValue] = Field(default=None, description="""Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cryoprotectant_concentration', 'domain_of': ['XRayPreparation']} })
     soak_compound: Optional[str] = Field(default=None, description="""Compound used for soaking (ligand, heavy atom)""", json_schema_extra = { "linkml_meta": {'alias': 'soak_compound', 'domain_of': ['XRayPreparation']} })
     soak_conditions: Optional[str] = Field(default=None, description="""Conditions for crystal soaking""", json_schema_extra = { "linkml_meta": {'alias': 'soak_conditions', 'domain_of': ['XRayPreparation']} })
     mounting_method: Optional[str] = Field(default=None, description="""Crystal mounting method""", json_schema_extra = { "linkml_meta": {'alias': 'mounting_method',
@@ -3606,11 +4867,11 @@ class XRayPreparation(TechniqueSpecificPreparation):
          'slot_uri': 'nsls2:Mount_Type'} })
     flash_cooling_method: Optional[str] = Field(default=None, description="""Flash cooling protocol""", json_schema_extra = { "linkml_meta": {'alias': 'flash_cooling_method', 'domain_of': ['XRayPreparation']} })
     crystal_notes: Optional[str] = Field(default=None, description="""Additional notes about crystal quality and handling""", json_schema_extra = { "linkml_meta": {'alias': 'crystal_notes', 'domain_of': ['XRayPreparation']} })
-    loop_size: Optional[float] = Field(default=None, description="""Loop size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'loop_size',
+    loop_size: Optional[QuantityValue] = Field(default=None, description="""Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'loop_size',
          'comments': ['Maps to NSLS2 spreadsheet: Loop_Size'],
          'domain_of': ['XRayPreparation'],
          'slot_uri': 'nsls2:Loop_Size'} })
-    mounting_temperature: Optional[float] = Field(default=None, description="""Temperature during mounting in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'mounting_temperature',
+    mounting_temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'mounting_temperature',
          'comments': ['Maps to NSLS2 spreadsheet: Temperature'],
          'domain_of': ['XRayPreparation'],
          'slot_uri': 'nsls2:Temperature'} })
@@ -3623,10 +4884,10 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    concentration_series: Optional[list[float]] = Field(default=None, description="""Concentration values for series measurements""", json_schema_extra = { "linkml_meta": {'alias': 'concentration_series', 'domain_of': ['SAXSPreparation']} })
+    concentration_series: Optional[QuantityValue] = Field(default=None, description="""Concentration values for series measurements""", json_schema_extra = { "linkml_meta": {'alias': 'concentration_series', 'domain_of': ['SAXSPreparation']} })
     buffer_matching_protocol: Optional[str] = Field(default=None, description="""Protocol for buffer matching""", json_schema_extra = { "linkml_meta": {'alias': 'buffer_matching_protocol', 'domain_of': ['SAXSPreparation']} })
     sample_cell_type: Optional[str] = Field(default=None, description="""Type of sample cell used""", json_schema_extra = { "linkml_meta": {'alias': 'sample_cell_type', 'domain_of': ['SAXSPreparation']} })
-    cell_path_length: Optional[float] = Field(default=None, description="""Path length in mm""", json_schema_extra = { "linkml_meta": {'alias': 'cell_path_length', 'domain_of': ['SAXSPreparation']} })
+    cell_path_length: Optional[QuantityValue] = Field(default=None, description="""Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cell_path_length', 'domain_of': ['SAXSPreparation']} })
     temperature_control: Optional[str] = Field(default=None, description="""Temperature control settings""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_control', 'domain_of': ['SAXSPreparation']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
@@ -3637,16 +4898,17 @@ class ExperimentalConditions(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    temperature: Optional[float] = Field(default=None, description="""Temperature in Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
-         'domain_of': ['BiophysicalProperty',
+    temperature: Optional[QuantityValue] = Field(default=None, description="""Temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'domain_of': ['MeasurementConditions',
                        'StorageConditions',
                        'ExperimentalConditions']} })
-    humidity: Optional[float] = Field(default=None, description="""Humidity percentage""", json_schema_extra = { "linkml_meta": {'alias': 'humidity', 'domain_of': ['ExperimentalConditions']} })
-    pressure: Optional[float] = Field(default=None, description="""Pressure in kPa""", json_schema_extra = { "linkml_meta": {'alias': 'pressure', 'domain_of': ['ExperimentalConditions']} })
+    humidity: Optional[QuantityValue] = Field(default=None, description="""Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'humidity', 'domain_of': ['ExperimentalConditions']} })
+    pressure: Optional[QuantityValue] = Field(default=None, description="""Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pressure', 'domain_of': ['ExperimentalConditions']} })
     atmosphere: Optional[str] = Field(default=None, description="""Atmosphere composition""", json_schema_extra = { "linkml_meta": {'alias': 'atmosphere',
          'domain_of': ['StorageConditions', 'ExperimentalConditions']} })
-    beam_energy: Optional[float] = Field(default=None, description="""Beam energy in keV""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
-    exposure_time: Optional[float] = Field(default=None, description="""Exposure time in seconds""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time', 'domain_of': ['Image', 'ExperimentalConditions']} })
+    beam_energy: Optional[QuantityValue] = Field(default=None, description="""Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_energy', 'domain_of': ['XRFImage', 'ExperimentalConditions']} })
+    exposure_time: Optional[QuantityValue] = Field(default=None, description="""Exposure time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'exposure_time',
+         'domain_of': ['ExperimentRun', 'Image', 'ExperimentalConditions']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
@@ -3657,22 +4919,32 @@ class DataCollectionStrategy(AttributeGroup):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
     collection_mode: Optional[CollectionModeEnum] = Field(default=None, description="""Mode of data collection""", json_schema_extra = { "linkml_meta": {'alias': 'collection_mode', 'domain_of': ['DataCollectionStrategy']} })
-    total_frames: Optional[int] = Field(default=None, description="""Total number of frames/images""", json_schema_extra = { "linkml_meta": {'alias': 'total_frames', 'domain_of': ['DataCollectionStrategy']} })
-    frame_rate: Optional[float] = Field(default=None, description="""Frames per second""", json_schema_extra = { "linkml_meta": {'alias': 'frame_rate', 'domain_of': ['DataCollectionStrategy']} })
-    total_dose: Optional[float] = Field(default=None, description="""Total electron dose for cryo-EM""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose', 'domain_of': ['DataCollectionStrategy']} })
-    dose_per_frame: Optional[float] = Field(default=None, description="""Dose per frame""", json_schema_extra = { "linkml_meta": {'alias': 'dose_per_frame', 'domain_of': ['DataCollectionStrategy']} })
-    wavelength_a: Optional[float] = Field(default=None, description="""X-ray wavelength in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'wavelength_a', 'domain_of': ['DataCollectionStrategy']} })
-    detector: Optional[str] = Field(default=None, description="""Detector model/type""", json_schema_extra = { "linkml_meta": {'alias': 'detector', 'domain_of': ['DataCollectionStrategy']} })
-    detector_distance_mm: Optional[float] = Field(default=None, description="""Detector distance in millimeters""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_mm', 'domain_of': ['DataCollectionStrategy']} })
-    beam_center_x_px: Optional[int] = Field(default=None, description="""Beam center X coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_x_px', 'domain_of': ['DataCollectionStrategy']} })
-    beam_center_y_px: Optional[int] = Field(default=None, description="""Beam center Y coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_y_px', 'domain_of': ['DataCollectionStrategy']} })
-    beam_size_um: Optional[float] = Field(default=None, description="""Beam size in micrometers""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_um', 'domain_of': ['DataCollectionStrategy']} })
-    flux_photons_per_s: Optional[float] = Field(default=None, description="""Photon flux in photons per second""", json_schema_extra = { "linkml_meta": {'alias': 'flux_photons_per_s', 'domain_of': ['DataCollectionStrategy']} })
-    transmission_percent: Optional[float] = Field(default=None, description="""Beam transmission percentage""", json_schema_extra = { "linkml_meta": {'alias': 'transmission_percent', 'domain_of': ['DataCollectionStrategy']} })
+    total_frames: Optional[QuantityValue] = Field(default=None, description="""Total number of frames/images""", json_schema_extra = { "linkml_meta": {'alias': 'total_frames', 'domain_of': ['DataCollectionStrategy']} })
+    frame_rate: Optional[QuantityValue] = Field(default=None, description="""Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'frame_rate', 'domain_of': ['DataCollectionStrategy']} })
+    total_dose: Optional[QuantityValue] = Field(default=None, description="""Total electron dose for cryo-EM, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_dose',
+         'domain_of': ['ExperimentRun', 'DataCollectionStrategy']} })
+    dose_per_frame: Optional[QuantityValue] = Field(default=None, description="""Dose per frame, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'dose_per_frame', 'domain_of': ['Movie', 'DataCollectionStrategy']} })
+    wavelength_a: Optional[QuantityValue] = Field(default=None, description="""X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'wavelength_a', 'domain_of': ['DataCollectionStrategy']} })
+    detector_mode: Optional[DetectorModeEnum] = Field(default=None, description="""Detector operating mode used during this experiment""", json_schema_extra = { "linkml_meta": {'alias': 'detector_mode',
+         'comments': ['For cryo-EM: counting, integrating, or super_resolution',
+                      'Detector technology, manufacturer, and model are specified in '
+                      'the Instrument'],
+         'domain_of': ['CryoEMInstrument', 'DataCollectionStrategy']} })
+    pixel_size_calibrated: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size_calibrated',
+         'comments': ['For cryo-EM: depends on magnification (Å/pixel)',
+                      'For X-ray: typically mm/pixel or µm/pixel',
+                      'Physical pixel size is hardware spec stored in Instrument'],
+         'domain_of': ['DataCollectionStrategy']} })
+    detector_distance_mm: Optional[QuantityValue] = Field(default=None, description="""Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'detector_distance_mm', 'domain_of': ['DataCollectionStrategy']} })
+    beam_center_x_px: Optional[QuantityValue] = Field(default=None, description="""Beam center X coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_x_px', 'domain_of': ['DataCollectionStrategy']} })
+    beam_center_y_px: Optional[QuantityValue] = Field(default=None, description="""Beam center Y coordinate in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'beam_center_y_px', 'domain_of': ['DataCollectionStrategy']} })
+    beam_size_um: Optional[QuantityValue] = Field(default=None, description="""Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'beam_size_um', 'domain_of': ['DataCollectionStrategy']} })
+    flux_photons_per_s: Optional[QuantityValue] = Field(default=None, description="""Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'flux_photons_per_s', 'domain_of': ['DataCollectionStrategy']} })
+    transmission_percent: Optional[QuantityValue] = Field(default=None, description="""Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'transmission_percent', 'domain_of': ['DataCollectionStrategy']} })
     attenuator: Optional[str] = Field(default=None, description="""Attenuator setting used""", json_schema_extra = { "linkml_meta": {'alias': 'attenuator', 'domain_of': ['DataCollectionStrategy']} })
-    temperature_k: Optional[float] = Field(default=None, description="""Data collection temperature in Kelvin""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_k', 'domain_of': ['DataCollectionStrategy']} })
-    oscillation_per_image_deg: Optional[float] = Field(default=None, description="""Oscillation angle per image in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'oscillation_per_image_deg', 'domain_of': ['DataCollectionStrategy']} })
-    total_rotation_deg: Optional[float] = Field(default=None, description="""Total rotation range in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'total_rotation_deg', 'domain_of': ['DataCollectionStrategy']} })
+    temperature_k: Optional[QuantityValue] = Field(default=None, description="""Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature_k', 'domain_of': ['DataCollectionStrategy']} })
+    oscillation_per_image_deg: Optional[QuantityValue] = Field(default=None, description="""Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'oscillation_per_image_deg', 'domain_of': ['DataCollectionStrategy']} })
+    total_rotation_deg: Optional[QuantityValue] = Field(default=None, description="""Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'total_rotation_deg', 'domain_of': ['DataCollectionStrategy']} })
     strategy_notes: Optional[str] = Field(default=None, description="""Notes about data collection strategy""", json_schema_extra = { "linkml_meta": {'alias': 'strategy_notes', 'domain_of': ['DataCollectionStrategy']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
@@ -3683,39 +4955,39 @@ class QualityMetrics(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    resolution: Optional[float] = Field(default=None, description="""Resolution in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution', 'domain_of': ['QualityMetrics']} })
-    resolution_high_shell_a: Optional[float] = Field(default=None, description="""High resolution shell limit in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high_shell_a', 'domain_of': ['QualityMetrics']} })
-    resolution_low_a: Optional[float] = Field(default=None, description="""Low resolution limit in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low_a', 'domain_of': ['QualityMetrics']} })
-    completeness: Optional[float] = Field(default=None, description="""Data completeness percentage""", json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['QualityMetrics']} })
-    completeness_high_res_shell_percent: Optional[float] = Field(default=None, description="""Completeness in highest resolution shell""", json_schema_extra = { "linkml_meta": {'alias': 'completeness_high_res_shell_percent',
+    resolution: Optional[QuantityValue] = Field(default=None, description="""Resolution, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution', 'domain_of': ['ExperimentRun', 'QualityMetrics']} })
+    resolution_high_shell_a: Optional[QuantityValue] = Field(default=None, description="""High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_high_shell_a', 'domain_of': ['QualityMetrics']} })
+    resolution_low_a: Optional[QuantityValue] = Field(default=None, description="""Low resolution limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_low_a', 'domain_of': ['QualityMetrics']} })
+    completeness: Optional[QuantityValue] = Field(default=None, description="""Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['QualityMetrics']} })
+    completeness_high_res_shell_percent: Optional[QuantityValue] = Field(default=None, description="""Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'completeness_high_res_shell_percent',
          'domain_of': ['QualityMetrics']} })
-    signal_to_noise: Optional[float] = Field(default=None, description="""Signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'signal_to_noise', 'domain_of': ['QualityMetrics']} })
-    mean_i_over_sigma_i: Optional[float] = Field(default=None, description="""Mean I/sigma(I)""", json_schema_extra = { "linkml_meta": {'alias': 'mean_i_over_sigma_i', 'domain_of': ['QualityMetrics']} })
+    signal_to_noise: Optional[QuantityValue] = Field(default=None, description="""Signal to noise ratio""", json_schema_extra = { "linkml_meta": {'alias': 'signal_to_noise', 'domain_of': ['QualityMetrics']} })
+    mean_i_over_sigma_i: Optional[QuantityValue] = Field(default=None, description="""Mean I/sigma(I)""", json_schema_extra = { "linkml_meta": {'alias': 'mean_i_over_sigma_i', 'domain_of': ['QualityMetrics']} })
     space_group: Optional[str] = Field(default=None, description="""Crystallographic space group""", json_schema_extra = { "linkml_meta": {'alias': 'space_group', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_a: Optional[float] = Field(default=None, description="""Unit cell parameter a in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_a', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_b: Optional[float] = Field(default=None, description="""Unit cell parameter b in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_b', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_c: Optional[float] = Field(default=None, description="""Unit cell parameter c in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_c', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_alpha: Optional[float] = Field(default=None, description="""Unit cell angle alpha in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_alpha', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_beta: Optional[float] = Field(default=None, description="""Unit cell angle beta in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_beta', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    unit_cell_gamma: Optional[float] = Field(default=None, description="""Unit cell angle gamma in degrees""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_gamma', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    multiplicity: Optional[float] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    cc_half: Optional[float] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    r_merge: Optional[float] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_merge', 'domain_of': ['QualityMetrics']} })
-    r_pim: Optional[float] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_pim', 'domain_of': ['QualityMetrics']} })
-    wilson_b_factor_a2: Optional[float] = Field(default=None, description="""Wilson B-factor in Angstroms squared""", json_schema_extra = { "linkml_meta": {'alias': 'wilson_b_factor_a2', 'domain_of': ['QualityMetrics']} })
+    unit_cell_a: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_a', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    unit_cell_b: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_b', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    unit_cell_c: Optional[QuantityValue] = Field(default=None, description="""Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_c', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    unit_cell_alpha: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_alpha', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    unit_cell_beta: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_beta', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    unit_cell_gamma: Optional[QuantityValue] = Field(default=None, description="""Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'unit_cell_gamma', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    multiplicity: Optional[QuantityValue] = Field(default=None, description="""Data multiplicity (redundancy)""", json_schema_extra = { "linkml_meta": {'alias': 'multiplicity', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    cc_half: Optional[QuantityValue] = Field(default=None, description="""Half-set correlation coefficient CC(1/2)""", json_schema_extra = { "linkml_meta": {'alias': 'cc_half', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    r_merge: Optional[QuantityValue] = Field(default=None, description="""Rmerge - merge R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_merge', 'domain_of': ['QualityMetrics']} })
+    r_pim: Optional[QuantityValue] = Field(default=None, description="""Rpim - precision-indicating merging R-factor""", json_schema_extra = { "linkml_meta": {'alias': 'r_pim', 'domain_of': ['QualityMetrics']} })
+    wilson_b_factor_a2: Optional[QuantityValue] = Field(default=None, description="""Wilson B-factor in Angstroms squared""", json_schema_extra = { "linkml_meta": {'alias': 'wilson_b_factor_a2', 'domain_of': ['QualityMetrics']} })
     anomalous_used: Optional[bool] = Field(default=None, description="""Whether anomalous signal was used""", json_schema_extra = { "linkml_meta": {'alias': 'anomalous_used', 'domain_of': ['QualityMetrics']} })
-    anom_corr: Optional[float] = Field(default=None, description="""Anomalous correlation""", json_schema_extra = { "linkml_meta": {'alias': 'anom_corr', 'domain_of': ['QualityMetrics']} })
-    anom_sig_ano: Optional[float] = Field(default=None, description="""Anomalous signal strength""", json_schema_extra = { "linkml_meta": {'alias': 'anom_sig_ano', 'domain_of': ['QualityMetrics']} })
-    r_work: Optional[float] = Field(default=None, description="""Refinement R-factor (working set)""", json_schema_extra = { "linkml_meta": {'alias': 'r_work', 'domain_of': ['QualityMetrics']} })
-    r_free: Optional[float] = Field(default=None, description="""R-free (test set)""", json_schema_extra = { "linkml_meta": {'alias': 'r_free', 'domain_of': ['QualityMetrics']} })
-    ramachandran_favored_percent: Optional[float] = Field(default=None, description="""Percentage of residues in favored Ramachandran regions""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_favored_percent', 'domain_of': ['QualityMetrics']} })
-    ramachandran_outliers_percent: Optional[float] = Field(default=None, description="""Percentage of Ramachandran outliers""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_outliers_percent', 'domain_of': ['QualityMetrics']} })
-    clashscore: Optional[float] = Field(default=None, description="""MolProbity clashscore""", json_schema_extra = { "linkml_meta": {'alias': 'clashscore', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
-    molprobity_score: Optional[float] = Field(default=None, description="""Overall MolProbity score""", json_schema_extra = { "linkml_meta": {'alias': 'molprobity_score', 'domain_of': ['QualityMetrics']} })
-    average_b_factor_a2: Optional[float] = Field(default=None, description="""Average B-factor in Angstroms squared""", json_schema_extra = { "linkml_meta": {'alias': 'average_b_factor_a2', 'domain_of': ['QualityMetrics']} })
-    i_zero: Optional[float] = Field(default=None, description="""Forward scattering intensity I(0)""", json_schema_extra = { "linkml_meta": {'alias': 'i_zero', 'domain_of': ['QualityMetrics']} })
-    rg: Optional[float] = Field(default=None, description="""Radius of gyration in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'rg', 'domain_of': ['QualityMetrics']} })
-    r_factor: Optional[float] = Field(default=None, description="""R-factor for crystallography (deprecated, use r_work)""", json_schema_extra = { "linkml_meta": {'alias': 'r_factor', 'domain_of': ['QualityMetrics']} })
+    anom_corr: Optional[QuantityValue] = Field(default=None, description="""Anomalous correlation""", json_schema_extra = { "linkml_meta": {'alias': 'anom_corr', 'domain_of': ['QualityMetrics']} })
+    anom_sig_ano: Optional[QuantityValue] = Field(default=None, description="""Anomalous signal strength""", json_schema_extra = { "linkml_meta": {'alias': 'anom_sig_ano', 'domain_of': ['QualityMetrics']} })
+    r_work: Optional[QuantityValue] = Field(default=None, description="""Refinement R-factor (working set)""", json_schema_extra = { "linkml_meta": {'alias': 'r_work', 'domain_of': ['QualityMetrics']} })
+    r_free: Optional[QuantityValue] = Field(default=None, description="""R-free (test set)""", json_schema_extra = { "linkml_meta": {'alias': 'r_free', 'domain_of': ['QualityMetrics']} })
+    ramachandran_favored_percent: Optional[QuantityValue] = Field(default=None, description="""Percentage of residues in favored Ramachandran regions""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_favored_percent', 'domain_of': ['QualityMetrics']} })
+    ramachandran_outliers_percent: Optional[QuantityValue] = Field(default=None, description="""Percentage of Ramachandran outliers""", json_schema_extra = { "linkml_meta": {'alias': 'ramachandran_outliers_percent', 'domain_of': ['QualityMetrics']} })
+    clashscore: Optional[QuantityValue] = Field(default=None, description="""MolProbity clashscore""", json_schema_extra = { "linkml_meta": {'alias': 'clashscore', 'domain_of': ['WorkflowRun', 'QualityMetrics']} })
+    molprobity_score: Optional[QuantityValue] = Field(default=None, description="""Overall MolProbity score""", json_schema_extra = { "linkml_meta": {'alias': 'molprobity_score', 'domain_of': ['QualityMetrics']} })
+    average_b_factor_a2: Optional[QuantityValue] = Field(default=None, description="""Average B-factor in Angstroms squared""", json_schema_extra = { "linkml_meta": {'alias': 'average_b_factor_a2', 'domain_of': ['QualityMetrics']} })
+    i_zero: Optional[QuantityValue] = Field(default=None, description="""Forward scattering intensity I(0)""", json_schema_extra = { "linkml_meta": {'alias': 'i_zero', 'domain_of': ['QualityMetrics']} })
+    rg: Optional[QuantityValue] = Field(default=None, description="""Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'rg', 'domain_of': ['QualityMetrics']} })
+    r_factor: Optional[QuantityValue] = Field(default=None, description="""R-factor for crystallography (deprecated, use r_work)""", json_schema_extra = { "linkml_meta": {'alias': 'r_factor', 'domain_of': ['QualityMetrics']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
 
 
@@ -3725,15 +4997,249 @@ class ComputeResources(AttributeGroup):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
 
-    cpu_hours: Optional[float] = Field(default=None, description="""CPU hours used""", json_schema_extra = { "linkml_meta": {'alias': 'cpu_hours', 'domain_of': ['ComputeResources']} })
-    gpu_hours: Optional[float] = Field(default=None, description="""GPU hours used""", json_schema_extra = { "linkml_meta": {'alias': 'gpu_hours', 'domain_of': ['ComputeResources']} })
-    memory_gb: Optional[float] = Field(default=None, description="""Maximum memory used in GB""", json_schema_extra = { "linkml_meta": {'alias': 'memory_gb', 'domain_of': ['ComputeResources']} })
-    storage_gb: Optional[float] = Field(default=None, description="""Storage used in GB""", json_schema_extra = { "linkml_meta": {'alias': 'storage_gb', 'domain_of': ['ComputeResources']} })
+    cpu_hours: Optional[QuantityValue] = Field(default=None, description="""CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cpu_hours', 'domain_of': ['ComputeResources']} })
+    gpu_hours: Optional[QuantityValue] = Field(default=None, description="""GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'gpu_hours', 'domain_of': ['ComputeResources']} })
+    memory_gb: Optional[QuantityValue] = Field(default=None, description="""Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'memory_gb', 'domain_of': ['ComputeResources']} })
+    storage_gb: Optional[QuantityValue] = Field(default=None, description="""Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'storage_gb', 'domain_of': ['ComputeResources']} })
     description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class MotionCorrectionParameters(AttributeGroup):
+    """
+    Parameters specific to motion correction workflows
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    patch_size: Optional[QuantityValue] = Field(default=None, description="""Patch size for local motion correction""", json_schema_extra = { "linkml_meta": {'alias': 'patch_size', 'domain_of': ['MotionCorrectionParameters']} })
+    binning: Optional[QuantityValue] = Field(default=None, description="""Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'binning', 'domain_of': ['MotionCorrectionParameters']} })
+    dose_weighting: Optional[bool] = Field(default=None, description="""Whether dose weighting was applied""", json_schema_extra = { "linkml_meta": {'alias': 'dose_weighting', 'domain_of': ['MotionCorrectionParameters']} })
+    bfactor_dose_weighting: Optional[QuantityValue] = Field(default=None, description="""B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'bfactor_dose_weighting', 'domain_of': ['MotionCorrectionParameters']} })
+    anisotropic_correction: Optional[bool] = Field(default=None, description="""Whether anisotropic motion correction was applied""", json_schema_extra = { "linkml_meta": {'alias': 'anisotropic_correction', 'domain_of': ['MotionCorrectionParameters']} })
+    frame_grouping: Optional[QuantityValue] = Field(default=None, description="""Number of frames grouped together""", json_schema_extra = { "linkml_meta": {'alias': 'frame_grouping', 'domain_of': ['MotionCorrectionParameters']} })
+    output_binning: Optional[QuantityValue] = Field(default=None, description="""Output binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'output_binning', 'domain_of': ['MotionCorrectionParameters']} })
+    drift_total: Optional[QuantityValue] = Field(default=None, description="""Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'drift_total', 'domain_of': ['MotionCorrectionParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class CTFEstimationParameters(AttributeGroup):
+    """
+    Parameters specific to CTF estimation workflows
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    defocus_search_min: Optional[QuantityValue] = Field(default=None, description="""Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_search_min', 'domain_of': ['CTFEstimationParameters']} })
+    defocus_search_max: Optional[QuantityValue] = Field(default=None, description="""Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_search_max', 'domain_of': ['CTFEstimationParameters']} })
+    defocus_step: Optional[QuantityValue] = Field(default=None, description="""Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'defocus_step', 'domain_of': ['CTFEstimationParameters']} })
+    amplitude_contrast: Optional[QuantityValue] = Field(default=None, description="""Amplitude contrast value""", json_schema_extra = { "linkml_meta": {'alias': 'amplitude_contrast', 'domain_of': ['CTFEstimationParameters']} })
+    cs_used_in_estimation: Optional[QuantityValue] = Field(default=None, description="""Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'cs_used_in_estimation', 'domain_of': ['CTFEstimationParameters']} })
+    voltage_used_in_estimation: Optional[QuantityValue] = Field(default=None, description="""Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'voltage_used_in_estimation',
+         'domain_of': ['CTFEstimationParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class ParticlePickingParameters(AttributeGroup):
+    """
+    Parameters specific to particle picking workflows
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    picking_method: Optional[str] = Field(default=None, description="""Method used (manual, template_matching, deep_learning, LoG, Topaz, other)""", json_schema_extra = { "linkml_meta": {'alias': 'picking_method', 'domain_of': ['ParticlePickingParameters']} })
+    box_size: Optional[QuantityValue] = Field(default=None, description="""Particle box size in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'box_size',
+         'domain_of': ['ParticlePickingParameters', 'RefinementParameters']} })
+    threshold: Optional[QuantityValue] = Field(default=None, description="""Picking threshold""", json_schema_extra = { "linkml_meta": {'alias': 'threshold', 'domain_of': ['ParticlePickingParameters']} })
+    power_score: Optional[QuantityValue] = Field(default=None, description="""Power score threshold""", json_schema_extra = { "linkml_meta": {'alias': 'power_score', 'domain_of': ['ParticlePickingParameters']} })
+    ncc_score: Optional[QuantityValue] = Field(default=None, description="""Normalized cross-correlation score threshold""", json_schema_extra = { "linkml_meta": {'alias': 'ncc_score', 'domain_of': ['ParticlePickingParameters']} })
+    model_name: Optional[str] = Field(default=None, description="""Name or identifier of the deep learning model (e.g., 'resnet16', 'resnet8', 'cryolo_general'). Use this for standard pretrained models. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_name', 'domain_of': ['ParticlePickingParameters']} })
+    model_file_path: Optional[str] = Field(default=None, description="""Path to deep learning model file if using a local or custom trained model file. Use this instead of model_name when pointing to a specific file on disk. Either model_name or model_file_path should be provided when using deep learning methods.""", json_schema_extra = { "linkml_meta": {'alias': 'model_file_path', 'domain_of': ['ParticlePickingParameters']} })
+    model_source: Optional[str] = Field(default=None, description="""Source or software associated with the model (e.g., 'topaz', 'cryolo', 'warp', 'custom', 'pretrained'). Helps track model provenance and should be provided alongside model_name or model_file_path to document which software/framework the model is for.""", json_schema_extra = { "linkml_meta": {'alias': 'model_source', 'domain_of': ['ParticlePickingParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class RefinementParameters(AttributeGroup):
+    """
+    Parameters specific to 3D refinement workflows
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    symmetry: Optional[SymmetryEnum] = Field(default=None, description="""Symmetry applied (C1, Cn, Dn, T, O, I)""", json_schema_extra = { "linkml_meta": {'alias': 'symmetry', 'domain_of': ['RefinementParameters']} })
+    pixel_size: Optional[QuantityValue] = Field(default=None, description="""Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'pixel_size', 'domain_of': ['Image', 'RefinementParameters']} })
+    box_size: Optional[QuantityValue] = Field(default=None, description="""Box size in pixels""", json_schema_extra = { "linkml_meta": {'alias': 'box_size',
+         'domain_of': ['ParticlePickingParameters', 'RefinementParameters']} })
+    gold_standard: Optional[bool] = Field(default=None, description="""Whether gold-standard refinement was used""", json_schema_extra = { "linkml_meta": {'alias': 'gold_standard', 'domain_of': ['RefinementParameters']} })
+    split_strategy: Optional[str] = Field(default=None, description="""Strategy for data splitting""", json_schema_extra = { "linkml_meta": {'alias': 'split_strategy', 'domain_of': ['RefinementParameters']} })
+    resolution_0_143: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_143', 'domain_of': ['RefinementParameters']} })
+    resolution_0_5: Optional[QuantityValue] = Field(default=None, description="""Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_0_5', 'domain_of': ['RefinementParameters']} })
+    map_sharpening_bfactor: Optional[QuantityValue] = Field(default=None, description="""B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue.""", json_schema_extra = { "linkml_meta": {'alias': 'map_sharpening_bfactor', 'domain_of': ['RefinementParameters']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class FSCCurve(AttributeGroup):
+    """
+    Fourier Shell Correlation curve data.
+
+    The `resolution_angstrom` and `fsc_value` arrays must be of equal length, with each value at index i in `resolution_angstrom`
+    corresponding to the value at index i in `fsc_value`. Both arrays should not exceed 10,000 elements.
+
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    resolution_angstrom: Optional[QuantityValue] = Field(default=None, description="""Resolution values in Angstroms""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_angstrom', 'domain_of': ['FSCCurve']} })
+    fsc_value: Optional[QuantityValue] = Field(default=None, description="""FSC values corresponding to each resolution""", json_schema_extra = { "linkml_meta": {'alias': 'fsc_value', 'domain_of': ['FSCCurve']} })
+    description: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+
+class StudySampleAssociation(ConfiguredBaseModel):
+    """
+    M:N link between Study and Sample with role metadata
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
+         'domain_of': ['StudySampleAssociation',
+                       'StudyExperimentAssociation',
+                       'StudyWorkflowAssociation']} })
+    sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation']} })
+    role: Optional[SampleRoleEnum] = Field(default=None, description="""Role of sample in study (e.g., target, control, reference)""", json_schema_extra = { "linkml_meta": {'alias': 'role',
+         'domain_of': ['StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation']} })
+    date_added: Optional[date] = Field(default=None, description="""Date when sample was added to study""", json_schema_extra = { "linkml_meta": {'alias': 'date_added', 'domain_of': ['StudySampleAssociation']} })
+
+
+class StudyExperimentAssociation(ConfiguredBaseModel):
+    """
+    M:N link between Study and ExperimentRun
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
+         'domain_of': ['StudySampleAssociation',
+                       'StudyExperimentAssociation',
+                       'StudyWorkflowAssociation']} })
+    experiment_id: str = Field(default=..., description="""Reference to the experiment run""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_id',
+         'domain_of': ['StudyExperimentAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'WorkflowExperimentAssociation']} })
+
+
+class StudyWorkflowAssociation(ConfiguredBaseModel):
+    """
+    M:N link between Study and WorkflowRun
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    study_id: str = Field(default=..., description="""Reference to the study""", json_schema_extra = { "linkml_meta": {'alias': 'study_id',
+         'domain_of': ['StudySampleAssociation',
+                       'StudyExperimentAssociation',
+                       'StudyWorkflowAssociation']} })
+    workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
+         'domain_of': ['StudyWorkflowAssociation',
+                       'WorkflowExperimentAssociation',
+                       'WorkflowInputAssociation',
+                       'WorkflowOutputAssociation']} })
+
+
+class ExperimentSampleAssociation(ConfiguredBaseModel):
+    """
+    M:N link between ExperimentRun and Sample with role metadata
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    experiment_id: str = Field(default=..., description="""Reference to the experiment run""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_id',
+         'domain_of': ['StudyExperimentAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'WorkflowExperimentAssociation']} })
+    sample_id: str = Field(default=..., description="""Reference to the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
+         'domain_of': ['SamplePreparation',
+                       'StudySampleAssociation',
+                       'ExperimentSampleAssociation']} })
+    role: Optional[ExperimentSampleRoleEnum] = Field(default=None, description="""Role of sample in experiment""", json_schema_extra = { "linkml_meta": {'alias': 'role',
+         'domain_of': ['StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation']} })
+    preparation_id: Optional[str] = Field(default=None, description="""Specific preparation used for this sample in this experiment""", json_schema_extra = { "linkml_meta": {'alias': 'preparation_id', 'domain_of': ['ExperimentSampleAssociation']} })
+
+
+class ExperimentInstrumentAssociation(ConfiguredBaseModel):
+    """
+    M:N link between ExperimentRun and Instrument
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    experiment_id: str = Field(default=..., description="""Reference to the experiment run""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_id',
+         'domain_of': ['StudyExperimentAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'WorkflowExperimentAssociation']} })
+    instrument_id: str = Field(default=..., description="""Reference to the instrument""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_id', 'domain_of': ['ExperimentInstrumentAssociation']} })
+    role: Optional[InstrumentRoleEnum] = Field(default=None, description="""Role of instrument in experiment""", json_schema_extra = { "linkml_meta": {'alias': 'role',
+         'domain_of': ['StudySampleAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation']} })
+
+
+class WorkflowExperimentAssociation(ConfiguredBaseModel):
+    """
+    M:N link between WorkflowRun and source ExperimentRuns
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
+         'domain_of': ['StudyWorkflowAssociation',
+                       'WorkflowExperimentAssociation',
+                       'WorkflowInputAssociation',
+                       'WorkflowOutputAssociation']} })
+    experiment_id: str = Field(default=..., description="""Reference to the source experiment run""", json_schema_extra = { "linkml_meta": {'alias': 'experiment_id',
+         'domain_of': ['StudyExperimentAssociation',
+                       'ExperimentSampleAssociation',
+                       'ExperimentInstrumentAssociation',
+                       'WorkflowExperimentAssociation']} })
+
+
+class WorkflowInputAssociation(ConfiguredBaseModel):
+    """
+    Links input DataFiles to WorkflowRun
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
+         'domain_of': ['StudyWorkflowAssociation',
+                       'WorkflowExperimentAssociation',
+                       'WorkflowInputAssociation',
+                       'WorkflowOutputAssociation']} })
+    file_id: str = Field(default=..., description="""Reference to the input data file""", json_schema_extra = { "linkml_meta": {'alias': 'file_id',
+         'domain_of': ['WorkflowInputAssociation', 'WorkflowOutputAssociation']} })
+    input_type: Optional[InputTypeEnum] = Field(default=None, description="""Type of input for the workflow""", json_schema_extra = { "linkml_meta": {'alias': 'input_type', 'domain_of': ['WorkflowInputAssociation']} })
+
+
+class WorkflowOutputAssociation(ConfiguredBaseModel):
+    """
+    Links output DataFiles to WorkflowRun
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    workflow_id: str = Field(default=..., description="""Reference to the workflow run""", json_schema_extra = { "linkml_meta": {'alias': 'workflow_id',
+         'domain_of': ['StudyWorkflowAssociation',
+                       'WorkflowExperimentAssociation',
+                       'WorkflowInputAssociation',
+                       'WorkflowOutputAssociation']} })
+    file_id: str = Field(default=..., description="""Reference to the output data file""", json_schema_extra = { "linkml_meta": {'alias': 'file_id',
+         'domain_of': ['WorkflowInputAssociation', 'WorkflowOutputAssociation']} })
+    output_type: Optional[OutputTypeEnum] = Field(default=None, description="""Type of output from the workflow""", json_schema_extra = { "linkml_meta": {'alias': 'output_type', 'domain_of': ['WorkflowOutputAssociation']} })
 
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
+AttributeValue.model_rebuild()
+Attribute.model_rebuild()
+QuantityValue.model_rebuild()
+TextValue.model_rebuild()
+DateTimeValue.model_rebuild()
 NamedThing.model_rebuild()
 ProteinAnnotation.model_rebuild()
 FunctionalSite.model_rebuild()
@@ -3744,6 +5250,7 @@ ConformationalEnsemble.model_rebuild()
 PostTranslationalModification.model_rebuild()
 EvolutionaryConservation.model_rebuild()
 AggregatedProteinView.model_rebuild()
+MeasurementConditions.model_rebuild()
 AttributeGroup.model_rebuild()
 LigandInteraction.model_rebuild()
 BiophysicalProperty.model_rebuild()
@@ -3758,12 +5265,15 @@ Instrument.model_rebuild()
 CryoEMInstrument.model_rebuild()
 XRayInstrument.model_rebuild()
 SAXSInstrument.model_rebuild()
+BeamlineInstrument.model_rebuild()
 ExperimentRun.model_rebuild()
 WorkflowRun.model_rebuild()
 DataFile.model_rebuild()
 Image.model_rebuild()
 Image2D.model_rebuild()
 Image3D.model_rebuild()
+Movie.model_rebuild()
+Micrograph.model_rebuild()
 FTIRImage.model_rebuild()
 FluorescenceImage.model_rebuild()
 OpticalImage.model_rebuild()
@@ -3782,4 +5292,17 @@ ExperimentalConditions.model_rebuild()
 DataCollectionStrategy.model_rebuild()
 QualityMetrics.model_rebuild()
 ComputeResources.model_rebuild()
+MotionCorrectionParameters.model_rebuild()
+CTFEstimationParameters.model_rebuild()
+ParticlePickingParameters.model_rebuild()
+RefinementParameters.model_rebuild()
+FSCCurve.model_rebuild()
+StudySampleAssociation.model_rebuild()
+StudyExperimentAssociation.model_rebuild()
+StudyWorkflowAssociation.model_rebuild()
+ExperimentSampleAssociation.model_rebuild()
+ExperimentInstrumentAssociation.model_rebuild()
+WorkflowExperimentAssociation.model_rebuild()
+WorkflowInputAssociation.model_rebuild()
+WorkflowOutputAssociation.model_rebuild()
 

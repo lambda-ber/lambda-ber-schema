@@ -51,10 +51,10 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             lambdaber:study_id <https://simplescattering.com/study/glurs-oligomerization> ] ;
     lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id <https://simplescattering.com/study/glurs-oligomerization> ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ],
+            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ],
         [ a lambdaber:StudyWorkflowAssociation ;
             lambdaber:study_id <https://simplescattering.com/study/glurs-oligomerization> ;
-            lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ] ;
+            lambdaber:workflow_id <https://simplescattering.com/workflow/saxs-processing> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://simplescattering.com/experiment/glurs-sec-saxs> ;
             lambdaber:workflow_id <https://simplescattering.com/workflow/mals-processing> ],
