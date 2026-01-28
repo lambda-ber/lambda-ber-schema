@@ -5,8 +5,6 @@ import pytest
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
 from lambda_ber_schema.pydantic import (
     Dataset,
-    ExperimentRun,
-    Sample,
     SAXSInstrument,
     TechniqueEnum,
 )
@@ -73,6 +71,7 @@ class TestSimpleScatteringLoader:
         assert len(result.dataset.instruments) == 1
         instrument = result.dataset.instruments[0]
         assert isinstance(instrument, SAXSInstrument)
+        assert instrument.title is not None
         assert "SIBYLS" in instrument.title
         assert instrument.instrument_code == "ALS-SIBYLS-BL12.3.1"
 

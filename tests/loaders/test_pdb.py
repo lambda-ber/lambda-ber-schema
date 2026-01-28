@@ -5,10 +5,7 @@ import pytest
 from lambda_ber_schema.loaders.pdb import PDBLoader
 from lambda_ber_schema.pydantic import (
     Dataset,
-    ExperimentRun,
-    Sample,
     TechniqueEnum,
-    WorkflowRun,
     XRayInstrument,
 )
 
@@ -17,7 +14,8 @@ from lambda_ber_schema.pydantic import (
 def loader(mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities):
     """Create loader with mocked HTTP client."""
     loader = PDBLoader()
-    mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+    mocker.patch.object(loader, "_fetch_entry",
+                        return_value=pdb_1hho_entry_response)
     mocker.patch.object(
         loader, "_fetch_polymer_entities", return_value=pdb_1hho_polymer_entities
     )
