@@ -1,5 +1,7 @@
 """Tests for Simple Scattering loader."""
 
+import builtins
+
 import pytest
 
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
@@ -167,6 +169,26 @@ class TestSimpleScatteringLoader:
         assert first == ["abc123", "def456"]
         assert second == ["abc123", "def456"]
         assert get_mock.call_count == 1
+
+    def test_extract_values_handles_malformed_number(self, mocker):
+        """Test malformed numeric values add warnings instead of raising."""
+        loader = SimpleScatteringLoader()
+        metadata: dict[str, object] = {}
+        warnings: list[str] = []
+
+        real_float = builtins.float
+
+        def fake_float(value):
+            if value == "12.3":
+                raise ValueError("bad float")
+            return real_float(value)
+
+        mocker.patch("builtins.float", side_effect=fake_float)
+
+        loader._extract_values_from_text("wavelength: 12.3 A", metadata, warnings)
+
+        assert "wavelength_angstroms" not in metadata
+        assert any("wavelength" in warning for warning in warnings)
 
 
 @pytest.mark.integration

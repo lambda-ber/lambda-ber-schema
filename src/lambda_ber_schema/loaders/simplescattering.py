@@ -246,21 +246,31 @@ class SimpleScatteringLoader(BaseLoader):
         self, text: str, metadata: dict[str, Any], warnings: list[str]
     ) -> None:
         """Extract specific values from text using regex."""
+        def safe_float(value: str, label: str) -> float | None:
+            try:
+                return float(value)
+            except ValueError:
+                warnings.append(f"Could not parse {label} value: {value}")
+                return None
+
         # Wavelength
         wavelength_match = re.search(
             r"wavelength[:\s]+(\d+\.?\d*)\s*[ÅA]", text, re.IGNORECASE
         )
         if wavelength_match:
-            metadata["wavelength_angstroms"] = float(wavelength_match.group(1))
+            wavelength = safe_float(wavelength_match.group(1), "wavelength")
+            if wavelength is not None:
+                metadata["wavelength_angstroms"] = wavelength
 
         # Detector distance
         distance_match = re.search(
             r"(\d+(?:,\d+)?)\s*mm\s*(?:away|distance)", text, re.IGNORECASE
         )
         if distance_match:
-            metadata["detector_distance_mm"] = float(
-                distance_match.group(1).replace(",", "")
-            )
+            distance_raw = distance_match.group(1).replace(",", "")
+            distance = safe_float(distance_raw, "detector distance")
+            if distance is not None:
+                metadata["detector_distance_mm"] = distance
 
         # q-range
         q_match = re.search(
@@ -269,20 +279,28 @@ class SimpleScatteringLoader(BaseLoader):
             re.IGNORECASE,
         )
         if q_match:
-            metadata["q_min"] = float(q_match.group(1))
-            metadata["q_max"] = float(q_match.group(2))
+            q_min = safe_float(q_match.group(1), "q-range min")
+            q_max = safe_float(q_match.group(2), "q-range max")
+            if q_min is not None:
+                metadata["q_min"] = q_min
+            if q_max is not None:
+                metadata["q_max"] = q_max
 
         # Concentration
         conc_match = re.search(
             r"(\d+\.?\d*)\s*mg/mL", text, re.IGNORECASE
         )
         if conc_match:
-            metadata["concentration_mg_ml"] = float(conc_match.group(1))
+            concentration = safe_float(conc_match.group(1), "concentration")
+            if concentration is not None:
+                metadata["concentration_mg_ml"] = concentration
 
         # pH
         ph_match = re.search(r"pH\s*(\d+\.?\d*)", text, re.IGNORECASE)
         if ph_match:
-            metadata["ph"] = float(ph_match.group(1))
+            ph_value = safe_float(ph_match.group(1), "pH")
+            if ph_value is not None:
+                metadata["ph"] = ph_value
 
         # Buffer components
         buffer_match = re.search(
