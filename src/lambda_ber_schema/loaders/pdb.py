@@ -4,6 +4,7 @@ PDB (Protein Data Bank) loader.
 API Documentation: https://data.rcsb.org/
 """
 
+import json
 from typing import Any
 
 import requests
@@ -82,7 +83,8 @@ class PDBLoader(BaseLoader):
         warnings: list[str] = []
 
         # Fetch polymer entities for sample info
-        polymer_entities = self._fetch_polymer_entities(entry_id, entry_data, warnings)
+        polymer_entities = self._fetch_polymer_entities(
+            entry_id, entry_data, warnings)
 
         # Build the dataset
         dataset_id = self.make_id(entry_id)
@@ -111,7 +113,8 @@ class PDBLoader(BaseLoader):
         workflows = self._create_workflow_runs(entry_data, entry_id, warnings)
 
         # Create study
-        title = entry_data.get("struct", {}).get("title", f"PDB Entry {entry_id}")
+        title = entry_data.get("struct", {}).get(
+            "title", f"PDB Entry {entry_id}")
         study = Study(
             id=f"{dataset_id}/study",
             title=title,
@@ -122,10 +125,12 @@ class PDBLoader(BaseLoader):
             StudySampleAssociation(study_id=study.id, sample_id=s.id) for s in samples
         ]
         study_experiment_associations = [
-            StudyExperimentAssociation(study_id=study.id, experiment_id=experiment.id)
+            StudyExperimentAssociation(
+                study_id=study.id, experiment_id=experiment.id)
         ]
         experiment_sample_associations = [
-            ExperimentSampleAssociation(experiment_id=experiment.id, sample_id=s.id)
+            ExperimentSampleAssociation(
+                experiment_id=experiment.id, sample_id=s.id)
             for s in samples
         ]
         experiment_instrument_associations = [
@@ -161,7 +166,8 @@ class PDBLoader(BaseLoader):
             dataset=dataset,
             warnings=warnings,
             source_url=source_url,
-            raw_data={"entry": entry_data, "polymer_entities": polymer_entities},
+            raw_data={"entry": entry_data,
+                      "polymer_entities": polymer_entities},
         )
 
     def list_entries(
@@ -227,19 +233,27 @@ class PDBLoader(BaseLoader):
             },
         }
 
-        response = requests.post(
-            "https://search.rcsb.org/rcsbsearch/v2/query",
-            json=search_request,
-            timeout=30,
-        )
-        response.raise_for_status()
+        cache_key = f"pdb/search/{json.dumps(search_request, sort_keys=True)}"
+
+        def fetch() -> dict[str, Any]:
+            response = requests.post(
+                "https://search.rcsb.org/rcsbsearch/v2/query",
+                json=search_request,
+                timeout=30,
+            )
+            response.raise_for_status()
+            return {"status_code": response.status_code, "text": response.text}
+
+        result = self.cache.get_or_fetch(cache_key, fetch)
+        status_code = result.get("status_code")
+        text = result.get("text", "")
 
         # Handle 204 No Content (no results)
-        if response.status_code == 204 or not response.text:
+        if status_code == 204 or not text:
             return []
 
-        result = response.json()
-        return [hit["identifier"] for hit in result.get("result_set", [])]
+        payload = json.loads(text)
+        return [hit["identifier"] for hit in payload.get("result_set", [])]
 
     def _fetch_entry(self, entry_id: str) -> dict[str, Any]:
         """Fetch entry data from PDB API."""
@@ -297,7 +311,8 @@ class PDBLoader(BaseLoader):
 
         technique = technique_map.get(method)
         if not technique:
-            warnings.append(f"Unknown experimental method: {method}, defaulting to X-ray")
+            warnings.append(
+                f"Unknown experimental method: {method}, defaulting to X-ray")
             technique = TechniqueEnum.xray_crystallography
 
         return technique
@@ -307,12 +322,15 @@ class PDBLoader(BaseLoader):
     ) -> XRayInstrument:
         """Create XRayInstrument from PDB data."""
         # Extract diffraction source info if available
-        diffrn_source = entry_data.get("diffrn_source", [{}])[0] if entry_data.get("diffrn_source") else {}
-        diffrn_detector = entry_data.get("diffrn_detector", [{}])[0] if entry_data.get("diffrn_detector") else {}
+        diffrn_source = entry_data.get("diffrn_source", [{}])[
+            0] if entry_data.get("diffrn_source") else {}
+        diffrn_detector = entry_data.get("diffrn_detector", [{}])[
+            0] if entry_data.get("diffrn_detector") else {}
 
         source = diffrn_source.get("source", "Unknown")
         pdbx_synchrotron_site = diffrn_source.get("pdbx_synchrotron_site", "")
-        pdbx_synchrotron_beamline = diffrn_source.get("pdbx_synchrotron_beamline", "")
+        pdbx_synchrotron_beamline = diffrn_source.get(
+            "pdbx_synchrotron_beamline", "")
 
         if pdbx_synchrotron_site and pdbx_synchrotron_beamline:
             instrument_code = f"{pdbx_synchrotron_site}-{pdbx_synchrotron_beamline}"
@@ -346,7 +364,8 @@ class PDBLoader(BaseLoader):
             source_organisms = entity.get("rcsb_entity_source_organism", [])
 
             # Determine sample type
-            polymer_type = entity_poly.get("rcsb_entity_polymer_type", "").lower()
+            polymer_type = entity_poly.get(
+                "rcsb_entity_polymer_type", "").lower()
             if "protein" in polymer_type:
                 sample_type = SampleTypeEnum.protein
             elif "dna" in polymer_type or "rna" in polymer_type:
@@ -369,7 +388,8 @@ class PDBLoader(BaseLoader):
                 )
 
             # Get protein name
-            protein_name = entity.get("rcsb_polymer_entity", {}).get("pdbx_description")
+            protein_name = entity.get(
+                "rcsb_polymer_entity", {}).get("pdbx_description")
 
             samples.append(
                 Sample(
@@ -421,7 +441,8 @@ class PDBLoader(BaseLoader):
             )
 
         # Get wavelength
-        diffrn_source = entry_data.get("diffrn_source", [{}])[0] if entry_data.get("diffrn_source") else {}
+        diffrn_source = entry_data.get("diffrn_source", [{}])[
+            0] if entry_data.get("diffrn_source") else {}
         wavelength = None
         pdbx_wavelength = diffrn_source.get("pdbx_wavelength")
         if pdbx_wavelength:
@@ -453,26 +474,31 @@ class PDBLoader(BaseLoader):
         self, entry_data: dict[str, Any], warnings: list[str]
     ) -> QualityMetrics:
         """Create QualityMetrics from PDB refinement data."""
-        refine = entry_data.get("refine", [{}])[0] if entry_data.get("refine") else {}
+        refine = entry_data.get("refine", [{}])[
+            0] if entry_data.get("refine") else {}
         cell = entry_data.get("cell", {})
         symmetry = entry_data.get("symmetry", {})
         rcsb_info = entry_data.get("rcsb_entry_info", {})
-        vrpt_geom = entry_data.get("pdbx_vrpt_summary_geometry", [{}])[0] if entry_data.get("pdbx_vrpt_summary_geometry") else {}
+        vrpt_geom = entry_data.get("pdbx_vrpt_summary_geometry", [{}])[
+            0] if entry_data.get("pdbx_vrpt_summary_geometry") else {}
 
         # Resolution
         resolution_values = rcsb_info.get("resolution_combined", [])
         resolution = None
         if resolution_values:
-            resolution = QuantityValue(numeric_value=resolution_values[0], unit="Angstroms")
+            resolution = QuantityValue(
+                numeric_value=resolution_values[0], unit="Angstroms")
 
         # R-factors
         r_work = None
         if refine.get("ls_rfactor_rwork"):
-            r_work = QuantityValue(numeric_value=refine["ls_rfactor_rwork"], unit="dimensionless")
+            r_work = QuantityValue(
+                numeric_value=refine["ls_rfactor_rwork"], unit="dimensionless")
 
         r_free = None
         if refine.get("ls_rfactor_rfree"):
-            r_free = QuantityValue(numeric_value=refine["ls_rfactor_rfree"], unit="dimensionless")
+            r_free = QuantityValue(
+                numeric_value=refine["ls_rfactor_rfree"], unit="dimensionless")
 
         # Space group
         space_group = symmetry.get("space_group_name_hm")
@@ -480,32 +506,39 @@ class PDBLoader(BaseLoader):
         # Unit cell parameters
         unit_cell_a = None
         if cell.get("length_a"):
-            unit_cell_a = QuantityValue(numeric_value=cell["length_a"], unit="Angstroms")
+            unit_cell_a = QuantityValue(
+                numeric_value=cell["length_a"], unit="Angstroms")
 
         unit_cell_b = None
         if cell.get("length_b"):
-            unit_cell_b = QuantityValue(numeric_value=cell["length_b"], unit="Angstroms")
+            unit_cell_b = QuantityValue(
+                numeric_value=cell["length_b"], unit="Angstroms")
 
         unit_cell_c = None
         if cell.get("length_c"):
-            unit_cell_c = QuantityValue(numeric_value=cell["length_c"], unit="Angstroms")
+            unit_cell_c = QuantityValue(
+                numeric_value=cell["length_c"], unit="Angstroms")
 
         unit_cell_alpha = None
         if cell.get("angle_alpha"):
-            unit_cell_alpha = QuantityValue(numeric_value=cell["angle_alpha"], unit="degrees")
+            unit_cell_alpha = QuantityValue(
+                numeric_value=cell["angle_alpha"], unit="degrees")
 
         unit_cell_beta = None
         if cell.get("angle_beta"):
-            unit_cell_beta = QuantityValue(numeric_value=cell["angle_beta"], unit="degrees")
+            unit_cell_beta = QuantityValue(
+                numeric_value=cell["angle_beta"], unit="degrees")
 
         unit_cell_gamma = None
         if cell.get("angle_gamma"):
-            unit_cell_gamma = QuantityValue(numeric_value=cell["angle_gamma"], unit="degrees")
+            unit_cell_gamma = QuantityValue(
+                numeric_value=cell["angle_gamma"], unit="degrees")
 
         # Geometry validation
         clashscore = None
         if vrpt_geom.get("clashscore"):
-            clashscore = QuantityValue(numeric_value=vrpt_geom["clashscore"], unit="dimensionless")
+            clashscore = QuantityValue(
+                numeric_value=vrpt_geom["clashscore"], unit="dimensionless")
 
         ramachandran_outliers = None
         if vrpt_geom.get("percent_ramachandran_outliers"):

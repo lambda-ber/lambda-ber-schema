@@ -3,6 +3,7 @@
 import pytest
 
 from lambda_ber_schema.loaders.pdb import PDBLoader
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     Dataset,
     TechniqueEnum,
@@ -169,6 +170,27 @@ class TestPDBLoader:
         assert result.raw_data is not None
         assert "entry" in result.raw_data
         assert "polymer_entities" in result.raw_data
+
+    def test_list_entries_uses_cache(self, mocker, tmp_path):
+        """Test list_entries caches responses when enabled."""
+        response = mocker.Mock()
+        response.status_code = 200
+        response.text = '{"result_set":[{"identifier":"1ABC"},{"identifier":"2DEF"}]}'
+        response.raise_for_status = mocker.Mock()
+        post_mock = mocker.patch(
+            "lambda_ber_schema.loaders.pdb.requests.post",
+            return_value=response,
+        )
+
+        cache = ResponseCache(cache_dir=tmp_path, enabled=True)
+        loader = PDBLoader(cache=cache)
+
+        first = loader.list_entries(limit=2)
+        second = loader.list_entries(limit=2)
+
+        assert first == ["1ABC", "2DEF"]
+        assert second == ["1ABC", "2DEF"]
+        assert post_mock.call_count == 1
 
 
 @pytest.mark.integration
