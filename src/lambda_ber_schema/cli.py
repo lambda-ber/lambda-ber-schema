@@ -5,7 +5,6 @@ Provides ETL commands for loading data from external structural biology reposito
 """
 
 import json
-import sys
 from pathlib import Path
 from typing import Annotated
 
@@ -20,7 +19,8 @@ app = typer.Typer(
     no_args_is_help=True,
 )
 
-etl_app = typer.Typer(help="ETL commands for loading data from external sources")
+etl_app = typer.Typer(
+    help="ETL commands for loading data from external sources")
 app.add_typer(etl_app, name="etl")
 
 
@@ -39,11 +39,13 @@ def _serialize_dataset(dataset, format: str) -> str:
 def etl_sasbdb(
     entry: Annotated[
         str,
-        typer.Option("--entry", "-e", help="SASBDB entry code (e.g., SASDA52)"),
+        typer.Option("--entry", "-e",
+                     help="SASBDB entry code (e.g., SASDA52)"),
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -51,7 +53,8 @@ def etl_sasbdb(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -99,11 +102,13 @@ def etl_sasbdb(
 def etl_simplescattering(
     dataset: Annotated[
         str,
-        typer.Option("--dataset", "-d", help="Simple Scattering dataset code (e.g., xsbhevph)"),
+        typer.Option("--dataset", "-d",
+                     help="Simple Scattering dataset code (e.g., xsbhevph)"),
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -111,7 +116,8 @@ def etl_simplescattering(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -163,7 +169,8 @@ def etl_pdb(
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -171,7 +178,8 @@ def etl_pdb(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -223,15 +231,18 @@ def etl_list(
     ],
     molecular_type: Annotated[
         str | None,
-        typer.Option("--type", "-t", help="Molecular type filter (sasbdb only)"),
+        typer.Option("--type", "-t",
+                     help="Molecular type filter (sasbdb only)"),
     ] = None,
     method: Annotated[
         str | None,
-        typer.Option("--method", "-m", help="Experimental method filter (pdb only: X-RAY, EM, NMR)"),
+        typer.Option(
+            "--method", "-m", help="Experimental method filter (pdb only: X-RAY, EM, NMR)"),
     ] = None,
     limit: Annotated[
         int,
-        typer.Option("--limit", "-n", help="Maximum number of entries to list"),
+        typer.Option("--limit", "-n",
+                     help="Maximum number of entries to list"),
     ] = 20,
 ) -> None:
     """
@@ -251,7 +262,8 @@ def etl_list(
 
     if source_lower == "sasbdb":
         loader = SASBDBLoader()
-        entries = loader.list_entries(molecular_type=molecular_type, limit=limit)
+        entries = loader.list_entries(
+            molecular_type=molecular_type, limit=limit)
     elif source_lower == "simplescattering":
         loader = SimpleScatteringLoader()
         entries = loader.list_entries(limit=limit)
@@ -259,7 +271,8 @@ def etl_list(
         loader = PDBLoader()
         entries = loader.list_entries(experimental_method=method, limit=limit)
     else:
-        typer.echo(f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering", err=True)
+        typer.echo(
+            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering", err=True)
         raise typer.Exit(1)
 
     typer.echo(f"Found {len(entries)} entries:")
