@@ -22,7 +22,6 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
-    QualityMetrics,
     QuantityValue,
     Sample,
     SampleTypeEnum,
@@ -31,9 +30,6 @@ from lambda_ber_schema.pydantic import (
     StudyExperimentAssociation,
     StudySampleAssociation,
     TechniqueEnum,
-    WorkflowExperimentAssociation,
-    WorkflowRun,
-    WorkflowTypeEnum,
 )
 
 
@@ -99,7 +95,8 @@ class SimpleScatteringLoader(BaseLoader):
         sample = self._create_sample(metadata, dataset_code, warnings)
 
         # Create experiment run
-        experiment = self._create_experiment_run(metadata, dataset_code, warnings)
+        experiment = self._create_experiment_run(
+            metadata, dataset_code, warnings)
 
         # Create data files
         data_files = self._create_data_files(soup, dataset_code, warnings)
@@ -107,7 +104,8 @@ class SimpleScatteringLoader(BaseLoader):
         # Create lightweight study
         study = Study(
             id=f"{dataset_id}/study",
-            title=metadata.get("title", f"Simple Scattering Dataset {dataset_code}"),
+            title=metadata.get(
+                "title", f"Simple Scattering Dataset {dataset_code}"),
         )
 
         # Create association tables
@@ -115,7 +113,8 @@ class SimpleScatteringLoader(BaseLoader):
             StudySampleAssociation(study_id=study.id, sample_id=sample.id)
         ]
         study_experiment_associations = [
-            StudyExperimentAssociation(study_id=study.id, experiment_id=experiment.id)
+            StudyExperimentAssociation(
+                study_id=study.id, experiment_id=experiment.id)
         ]
         experiment_sample_associations = [
             ExperimentSampleAssociation(
@@ -131,7 +130,8 @@ class SimpleScatteringLoader(BaseLoader):
         # Create dataset
         dataset = Dataset(
             id=dataset_id,
-            title=metadata.get("title", f"Simple Scattering Dataset {dataset_code}"),
+            title=metadata.get(
+                "title", f"Simple Scattering Dataset {dataset_code}"),
             studies=[study],
             instruments=[instrument],
             samples=[sample],
@@ -333,7 +333,8 @@ class SimpleScatteringLoader(BaseLoader):
             "nucleic_acid": SampleTypeEnum.nucleic_acid,
             "complex": SampleTypeEnum.complex,
         }
-        sample_type = sample_type_map.get(sample_type_str, SampleTypeEnum.protein)
+        sample_type = sample_type_map.get(
+            sample_type_str, SampleTypeEnum.protein)
 
         # Create concentration QuantityValue
         concentration = None
