@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 from typing import Annotated
 
+import requests
 import typer
 import yaml
 
@@ -40,6 +41,32 @@ def _serialize_dataset(dataset, format: str) -> str:
     if normalized_format == "json":
         return json.dumps(data, indent=2)
     return yaml.dump(data, default_flow_style=False, sort_keys=False)
+
+
+def _load_with_error_handling(loader, identifier: str):
+    """Load a dataset with friendly error messages and exit codes."""
+    try:
+        return loader.load(identifier)
+    except requests.HTTPError as exc:
+        status = getattr(exc.response, "status_code", None)
+        status_msg = f" (HTTP {status})" if status is not None else ""
+        typer.echo(
+            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
+    except ValueError as exc:
+        typer.echo(
+            f"Error: {identifier} not found or invalid for {loader.source_name}",
+            err=True,
+        )
+        raise typer.Exit(2) from exc
+    except Exception as exc:
+        typer.echo(
+            f"Error: unexpected failure loading {identifier} from {loader.source_name}",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
 
 
 @etl_app.command("sasbdb")
@@ -88,7 +115,7 @@ def etl_sasbdb(
 
     # Load the entry
     typer.echo(f"Loading SASBDB entry: {entry}", err=True)
-    result = loader.load(entry)
+    result = _load_with_error_handling(loader, entry)
 
     # Report warnings
     if result.warnings:
@@ -151,7 +178,7 @@ def etl_simplescattering(
 
     # Load the dataset
     typer.echo(f"Loading Simple Scattering dataset: {dataset}", err=True)
-    result = loader.load(dataset)
+    result = _load_with_error_handling(loader, dataset)
 
     # Report warnings
     if result.warnings:
@@ -213,7 +240,7 @@ def etl_pdb(
 
     # Load the entry
     typer.echo(f"Loading PDB entry: {entry}", err=True)
-    result = loader.load(entry)
+    result = _load_with_error_handling(loader, entry)
 
     # Report warnings
     if result.warnings:
