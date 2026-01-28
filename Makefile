@@ -4,7 +4,7 @@ DOCDIR := ./docs
 ELEMENTSDIR := ./docs/elements
 PYDANTIC := src/lambda_ber_schema/pydantic.py
 
-all: gen-project gendoc test-examples
+all: gen-project gendoc test-examples gen-pydantic
 test: gen-project test-examples
 
 gen-project:
