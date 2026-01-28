@@ -1,7 +1,6 @@
 """Tests for CLI commands."""
 
 import json
-from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
@@ -64,7 +63,8 @@ class TestCLIIntegration:
         output_file = tmp_path / "output.yaml"
         result = runner.invoke(
             app,
-            ["etl", "sasbdb", "--entry", "SASDA52", "--output", str(output_file)],
+            ["etl", "sasbdb", "--entry", "SASDA52",
+                "--output", str(output_file)],
         )
         assert result.exit_code == 0
         assert output_file.exists()
