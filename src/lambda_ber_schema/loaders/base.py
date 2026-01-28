@@ -7,7 +7,8 @@ This module defines the abstract interface that all data source loaders must imp
 from abc import ABC, abstractmethod
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
 
 from lambda_ber_schema.pydantic import Dataset
 
