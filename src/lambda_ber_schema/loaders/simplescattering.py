@@ -161,12 +161,19 @@ class SimpleScatteringLoader(BaseLoader):
         Returns:
             List of dataset codes
         """
-        url = f"{self.base_url}/open_datasets"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
+        cache_key = "simplescattering/open_datasets"
+
+        def fetch() -> dict[str, Any]:
+            url = f"{self.base_url}/open_datasets"
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            return {"html": response.text}
+
+        result = self.cache.get_or_fetch(cache_key, fetch)
+        html = result["html"]
 
         # Parse HTML and extract dataset codes
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(html, "html.parser")
         codes = []
 
         for link in soup.find_all("a", href=True):

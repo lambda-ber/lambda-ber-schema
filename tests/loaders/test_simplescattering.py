@@ -3,6 +3,7 @@
 import pytest
 
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     Dataset,
     SAXSInstrument,
@@ -140,6 +141,32 @@ class TestSimpleScatteringLoader:
         assert result.raw_data is not None
         assert "html" in result.raw_data
         assert "metadata" in result.raw_data
+
+    def test_list_entries_uses_cache(self, mocker, tmp_path):
+        """Test list_entries caches responses when enabled."""
+        html = """
+        <html><body>
+            <a href="/open_dataset/abc123">Dataset</a>
+            <a href="/open_dataset/def456">Dataset</a>
+        </body></html>
+        """
+        response = mocker.Mock()
+        response.text = html
+        response.raise_for_status = mocker.Mock()
+        get_mock = mocker.patch(
+            "lambda_ber_schema.loaders.simplescattering.requests.get",
+            return_value=response,
+        )
+
+        cache = ResponseCache(cache_dir=tmp_path, enabled=True)
+        loader = SimpleScatteringLoader(cache=cache)
+
+        first = loader.list_entries()
+        second = loader.list_entries()
+
+        assert first == ["abc123", "def456"]
+        assert second == ["abc123", "def456"]
+        assert get_mock.call_count == 1
 
 
 @pytest.mark.integration
