@@ -3,6 +3,7 @@
 import pytest
 
 from lambda_ber_schema.loaders.sasbdb import SASBDBLoader
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     Dataset,
     SAXSInstrument,
@@ -159,6 +160,26 @@ class TestSASBDBLoader:
         # Experiment-Instrument association
         assert ds.experiment_instrument_associations is not None
         assert len(ds.experiment_instrument_associations) == 1
+
+    def test_list_entries_uses_cache(self, mocker, tmp_path):
+        """Test list_entries caches responses when enabled."""
+        response = mocker.Mock()
+        response.json.return_value = ["SASDA52", "SASDA53"]
+        response.raise_for_status = mocker.Mock()
+        get_mock = mocker.patch(
+            "lambda_ber_schema.loaders.sasbdb.requests.get",
+            return_value=response,
+        )
+
+        cache = ResponseCache(cache_dir=tmp_path, enabled=True)
+        loader = SASBDBLoader(cache=cache)
+
+        first = loader.list_entries(limit=2)
+        second = loader.list_entries(limit=2)
+
+        assert first == ["SASDA52", "SASDA53"]
+        assert second == ["SASDA52", "SASDA53"]
+        assert get_mock.call_count == 1
 
 
 @pytest.mark.integration

@@ -100,7 +100,8 @@ class SASBDBLoader(BaseLoader):
         # Create lightweight study (relational model)
         study = Study(
             id=f"{dataset_id}/study",
-            title=raw.get("project", {}).get("title", f"SASBDB Entry {entry_code}"),
+            title=raw.get("project", {}).get(
+                "title", f"SASBDB Entry {entry_code}"),
         )
 
         # Create association tables to link entities
@@ -108,7 +109,8 @@ class SASBDBLoader(BaseLoader):
             StudySampleAssociation(study_id=study.id, sample_id=sample.id)
         ]
         study_experiment_associations = [
-            StudyExperimentAssociation(study_id=study.id, experiment_id=experiment.id)
+            StudyExperimentAssociation(
+                study_id=study.id, experiment_id=experiment.id)
         ]
         experiment_sample_associations = [
             ExperimentSampleAssociation(
@@ -130,7 +132,8 @@ class SASBDBLoader(BaseLoader):
         # Create dataset with flat entity collections and associations
         dataset = Dataset(
             id=dataset_id,
-            title=raw.get("project", {}).get("title", f"SASBDB Entry {entry_code}"),
+            title=raw.get("project", {}).get(
+                "title", f"SASBDB Entry {entry_code}"),
             studies=[study],
             instruments=[instrument],
             samples=[sample],
@@ -179,9 +182,15 @@ class SASBDBLoader(BaseLoader):
         else:
             url = f"{self.base_url}/entry/codes/all.json"
 
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-        entries = response.json()
+        cache_key = f"sasbdb/entry_codes/{url}"
+
+        def fetch() -> dict[str, Any]:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            return {"entries": response.json()}
+
+        result = self.cache.get_or_fetch(cache_key, fetch)
+        entries = result["entries"]
 
         # API may return list of dicts with 'code' key or list of strings
         codes = []
@@ -268,7 +277,8 @@ class SASBDBLoader(BaseLoader):
                 )
             buffer_composition = BufferComposition(
                 ph=ph_value,
-                components=[buffer_data["name"]] if buffer_data.get("name") else None,
+                components=[buffer_data["name"]] if buffer_data.get(
+                    "name") else None,
             )
 
         # Get concentration as QuantityValue
@@ -348,7 +358,8 @@ class SASBDBLoader(BaseLoader):
         detector_distance = None
         if exp_data.get("sample_detector_distance"):
             detector_distance = QuantityValue(
-                numeric_value=exp_data["sample_detector_distance"] * 1000,  # m to mm
+                # m to mm
+                numeric_value=exp_data["sample_detector_distance"] * 1000,
                 unit="mm",
             )
 
