@@ -26,13 +26,20 @@ app.add_typer(etl_app, name="etl")
 
 def _serialize_dataset(dataset, format: str) -> str:
     """Serialize dataset to requested format."""
+    normalized_format = format.lower()
+    if normalized_format not in {"json", "yaml"}:
+        typer.echo(
+            f"Invalid format: {format}. Supported formats are: json, yaml",
+            err=True,
+        )
+        raise typer.Exit(1)
+
     # Convert Pydantic model to dict, excluding None values
     data = dataset.model_dump(exclude_none=True, mode="json")
 
-    if format == "json":
+    if normalized_format == "json":
         return json.dumps(data, indent=2)
-    else:  # yaml
-        return yaml.dump(data, default_flow_style=False, sort_keys=False)
+    return yaml.dump(data, default_flow_style=False, sort_keys=False)
 
 
 @etl_app.command("sasbdb")
