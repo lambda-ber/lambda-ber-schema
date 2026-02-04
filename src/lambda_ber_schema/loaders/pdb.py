@@ -11,6 +11,8 @@ import requests
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
+    DatabaseCrossReference,
+    DatabaseNameEnum,
     DataFile,
     Dataset,
     ExperimentInstrumentAssociation,
@@ -371,6 +373,21 @@ class PDBLoader(BaseLoader):
             # Get protein name
             protein_name = entity.get("rcsb_polymer_entity", {}).get("pdbx_description")
 
+            # Get UniProt IDs from container identifiers
+            container_ids = entity.get("rcsb_polymer_entity_container_identifiers", {})
+            uniprot_ids = container_ids.get("uniprot_ids", [])
+
+            # Create database cross-references for UniProt IDs
+            db_xrefs = []
+            for uniprot_id in uniprot_ids:
+                db_xrefs.append(
+                    DatabaseCrossReference(
+                        database_name=DatabaseNameEnum.uniprot,
+                        database_id=uniprot_id,
+                        database_url=f"https://www.uniprot.org/uniprotkb/{uniprot_id}",
+                    )
+                )
+
             samples.append(
                 Sample(
                     id=f"pdb:{entry_id}/sample/{i}",
@@ -380,6 +397,7 @@ class PDBLoader(BaseLoader):
                     protein_name=protein_name,
                     organism=organism,
                     molecular_weight=molecular_weight,
+                    database_cross_references=db_xrefs if db_xrefs else None,
                     description=(
                         f"Sequence length: {entity_poly.get('rcsb_sample_sequence_length')}"
                         if entity_poly.get("rcsb_sample_sequence_length")
