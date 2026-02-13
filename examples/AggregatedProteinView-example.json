@@ -300,12 +300,12 @@
             ]
           },
           "ph": {
-            "numeric_value": 7.0,
-            "unit": "pH units"
+            "unit": "pH units",
+            "numeric_value": 7.0
           },
           "temperature": {
-            "numeric_value": 293.15,
-            "unit": "degrees Celsius"
+            "unit": "degrees Celsius",
+            "numeric_value": 293.15
           }
         }
       ],
@@ -325,8 +325,8 @@
             ]
           },
           "ph": {
-            "numeric_value": 7.4,
-            "unit": "pH units"
+            "unit": "pH units",
+            "numeric_value": 7.4
           }
         }
       ],

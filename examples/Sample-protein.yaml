@@ -9,15 +9,15 @@ molecular_composition:
   modifications:
   - N-terminal His6 tag
 molecular_weight:
-  numeric_value: 25.6
   unit: kilodaltons
+  numeric_value: 25.6
 concentration:
-  numeric_value: 2.5
   unit: milligrams per milliliter
+  numeric_value: 2.5
 buffer_composition:
   ph:
-    numeric_value: 8.0
     unit: pH units
+    numeric_value: 8.0
   components:
   - 50 mM Tris-HCl
   - 150 mM NaCl
@@ -27,11 +27,11 @@ buffer_composition:
 preparation_method: E. coli expression followed by Ni-NTA and size exclusion chromatography
 storage_conditions:
   temperature:
-    numeric_value: -80.0
     unit: degrees Celsius
+    numeric_value: -80.0
   duration: 3 months
   atmosphere: Flash frozen in liquid nitrogen
 organism: NCBITaxon:9606
 purity_percentage:
-  numeric_value: 98.5
   unit: percent
+  numeric_value: 98.5

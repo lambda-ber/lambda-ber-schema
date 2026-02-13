@@ -118,8 +118,8 @@ classes:
       - unit_cv_id
     slot_usage:
       numeric_value:
-        description: The numerical value of the quantity
-        required: true
+        description: The numerical value of the quantity. May be null if the value is unknown or not measured.
+        required: false
       unit:
         description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
         required: true

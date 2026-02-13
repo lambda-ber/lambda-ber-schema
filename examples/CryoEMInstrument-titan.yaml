@@ -7,8 +7,8 @@ model: Titan Krios G4
 installation_date: '2023-03-15'
 current_status: operational
 accelerating_voltage:
-  numeric_value: 300.0
   unit: kilovolts
+  numeric_value: 300.0
 cs_corrector: true
 phase_plate: false
 detector_technology: direct_electron_detector
@@ -17,8 +17,8 @@ detector_model: K3 BioQuantum
 detector_mode: counting
 detector_dimensions: 5760x4092
 pixel_size_physical_um:
-  numeric_value: 5.0
   unit: micrometers
+  numeric_value: 5.0
 autoloader_capacity:
-  numeric_value: 12.0
   unit: grids
+  numeric_value: 12.0
