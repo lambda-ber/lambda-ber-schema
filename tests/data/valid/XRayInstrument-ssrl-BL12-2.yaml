@@ -1,0 +1,36 @@
+id: lambdaber:instrument_ssrl_bl12_2
+title: SSRL BL12-2
+description: Macromolecular crystallography beamline at Stanford Synchrotron Radiation
+  Lightsource with microbeam capabilities and in-vacuum mini-gap undulator source
+  optimized for MAD, SAD, and monochromatic data collection
+instrument_code: SSRL-BL12-2
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: SSRL
+facility_ror: https://ror.org/05gzmn429
+beamline_id: BL12-2
+manufacturer: SLAC National Accelerator Laboratory
+model: In-vacuum mini-gap undulator beamline
+installation_date: '2007-03-23'
+current_status: operational
+source_type: synchrotron
+energy_min:
+  numeric_value: 6.69
+  unit: kiloelectronvolts
+energy_max:
+  numeric_value: 17.0
+  unit: kiloelectronvolts
+beam_size_min:
+  numeric_value: 15.0
+  unit: micrometers
+beam_size_max:
+  numeric_value: 200.0
+  unit: micrometers
+flux_density:
+  numeric_value: 4000000000000.0
+  unit: photons per second
+monochromator_type: Si(111) double crystal, liquid nitrogen cooled
+goniometer_type: SSRL single-axis microdiffractometer
+crystal_cooling_capability: true
+detector_technology: hybrid_photon_counting
+detector_manufacturer: Dectris
+detector_model: EIGER 16M

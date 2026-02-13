@@ -1,0 +1,36 @@
+id: lambdaber:instrument_ssrl_bl14_1
+title: SSRL BL14-1
+description: Macromolecular crystallography beamline at Stanford Synchrotron Radiation
+  Lightsource with Huber kappa diffractometer and Stanford Automated Mounting System
+  (SAM) for MAD, SAD, and monochromatic data collection
+instrument_code: SSRL-BL14-1
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: SSRL
+facility_ror: https://ror.org/05gzmn429
+beamline_id: BL14-1
+manufacturer: SLAC National Accelerator Laboratory
+model: Bending magnet beamline
+installation_date: '2009-10-01'
+current_status: operational
+source_type: synchrotron
+energy_min:
+  numeric_value: 6.0
+  unit: kiloelectronvolts
+energy_max:
+  numeric_value: 13.0
+  unit: kiloelectronvolts
+beam_size_min:
+  numeric_value: 50.0
+  unit: micrometers
+beam_size_max:
+  numeric_value: 200.0
+  unit: micrometers
+flux_density:
+  numeric_value: 200000000000.0
+  unit: photons per second
+monochromator_type: Si(111) double crystal
+goniometer_type: Huber kappa diffractometer
+crystal_cooling_capability: true
+detector_technology: hybrid_photon_counting
+detector_manufacturer: Dectris
+detector_model: PILATUS 6M

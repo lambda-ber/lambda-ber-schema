@@ -1,0 +1,36 @@
+id: lambdaber:instrument_ssrl_bl12_1
+title: SSRL BL12-1
+description: Macromolecular crystallography beamline at Stanford Synchrotron Radiation
+  Lightsource operated by Scripps and Stanford PRT with full remote access capabilities
+  for MAD, SAD, and monochromatic data collection
+instrument_code: SSRL-BL12-1
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: SSRL
+facility_ror: https://ror.org/05gzmn429
+beamline_id: BL12-1
+manufacturer: SLAC National Accelerator Laboratory
+model: Insertion device beamline
+installation_date: '2020-01-01'
+current_status: operational
+source_type: synchrotron
+energy_min:
+  numeric_value: 6.0
+  unit: kiloelectronvolts
+energy_max:
+  numeric_value: 18.0
+  unit: kiloelectronvolts
+beam_size_min:
+  numeric_value: 5.0
+  unit: micrometers
+beam_size_max:
+  numeric_value: 100.0
+  unit: micrometers
+flux_density:
+  numeric_value: 10000000000000.0
+  unit: photons per second
+monochromator_type: Si(111) double crystal, liquid nitrogen cooled
+goniometer_type: Kirkpatrick-Baez focusing
+crystal_cooling_capability: true
+detector_technology: hybrid_photon_counting
+detector_manufacturer: Dectris
+detector_model: EIGER2X 16M
