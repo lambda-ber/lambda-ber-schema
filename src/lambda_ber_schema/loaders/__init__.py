@@ -14,6 +14,7 @@ Example:
 """
 
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
+from lambda_ber_schema.loaders.batch import BatchLoader, BatchProgress
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.loaders.pdb import PDBLoader
 from lambda_ber_schema.loaders.sasbdb import SASBDBLoader
@@ -21,6 +22,8 @@ from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
 
 __all__ = [
     "BaseLoader",
+    "BatchLoader",
+    "BatchProgress",
     "LoaderResult",
     "ResponseCache",
     "PDBLoader",

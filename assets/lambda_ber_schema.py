@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-20T13:12:01
+# Generation date: 2026-02-01T17:07:19
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -137,7 +137,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post161.dev0+d3b8060"
+version = "0.1.2.post32.dev0+2ad9ef5"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
