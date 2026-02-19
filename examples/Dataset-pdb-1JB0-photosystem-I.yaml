@@ -1,0 +1,298 @@
+id: pdb:1JB0
+title: 'Crystal Structure of Photosystem I: a Photosynthetic Reaction Center and Core
+  Antenna System from Cyanobacteria'
+studies:
+- id: pdb:1JB0/study
+  title: 'Crystal Structure of Photosystem I: a Photosynthetic Reaction Center and
+    Core Antenna System from Cyanobacteria'
+instruments:
+- id: pdb:instrument/ESRF-ID2
+  title: ESRF ID2
+  description: 'Detector: MARRESEARCH'
+  instrument_code: ESRF-ID2
+samples:
+- id: pdb:1JB0/sample/1
+  title: PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1
+  description: 'Sequence length: 755'
+  sample_code: PDB-1JB0-1
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 83.27
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A405
+    database_url: https://www.uniprot.org/uniprotkb/P0A405
+  protein_name: PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1
+- id: pdb:1JB0/sample/2
+  title: PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2
+  description: 'Sequence length: 740'
+  sample_code: PDB-1JB0-2
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 82.99
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A407
+    database_url: https://www.uniprot.org/uniprotkb/P0A407
+  protein_name: PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2
+- id: pdb:1JB0/sample/3
+  title: PHOTOSYSTEM I IRON-SULFUR CENTER
+  description: 'Sequence length: 80'
+  sample_code: PDB-1JB0-3
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 8.68
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A415
+    database_url: https://www.uniprot.org/uniprotkb/P0A415
+  protein_name: PHOTOSYSTEM I IRON-SULFUR CENTER
+- id: pdb:1JB0/sample/4
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II
+  description: 'Sequence length: 138'
+  sample_code: PDB-1JB0-4
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 15.26
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A420
+    database_url: https://www.uniprot.org/uniprotkb/P0A420
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II
+- id: pdb:1JB0/sample/5
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV
+  description: 'Sequence length: 75'
+  sample_code: PDB-1JB0-5
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 8.27
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A423
+    database_url: https://www.uniprot.org/uniprotkb/P0A423
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV
+- id: pdb:1JB0/sample/6
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III
+  description: 'Sequence length: 164'
+  sample_code: PDB-1JB0-6
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 17.72
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A401
+    database_url: https://www.uniprot.org/uniprotkb/P0A401
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III
+- id: pdb:1JB0/sample/7
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII
+  description: 'Sequence length: 38'
+  sample_code: PDB-1JB0-7
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 4.3
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A427
+    database_url: https://www.uniprot.org/uniprotkb/P0A427
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII
+- id: pdb:1JB0/sample/8
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX
+  description: 'Sequence length: 41'
+  sample_code: PDB-1JB0-8
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 4.77
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A429
+    database_url: https://www.uniprot.org/uniprotkb/P0A429
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX
+- id: pdb:1JB0/sample/9
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X
+  description: 'Sequence length: 83'
+  sample_code: PDB-1JB0-9
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 8.48
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A425
+    database_url: https://www.uniprot.org/uniprotkb/P0A425
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X
+- id: pdb:1JB0/sample/10
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI
+  description: 'Sequence length: 154'
+  sample_code: PDB-1JB0-10
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 16.16
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: Q8DGB4
+    database_url: https://www.uniprot.org/uniprotkb/Q8DGB4
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI
+- id: pdb:1JB0/sample/11
+  title: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII
+  description: 'Sequence length: 31'
+  sample_code: PDB-1JB0-11
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 3.43
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P0A403
+    database_url: https://www.uniprot.org/uniprotkb/P0A403
+  protein_name: PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII
+- id: pdb:1JB0/sample/12
+  title: PHOTOSYSTEM I SUBUNIT PSAX
+  description: 'Sequence length: 35'
+  sample_code: PDB-1JB0-12
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 3.85
+  organism: ncbitaxon:32046
+  database_cross_references:
+  - database_name: uniprot
+    database_id: Q8DKP6
+    database_url: https://www.uniprot.org/uniprotkb/Q8DKP6
+  protein_name: PHOTOSYSTEM I SUBUNIT PSAX
+experiment_runs:
+- id: pdb:1JB0/experiment
+  experiment_code: PDB-1JB0-EXP
+  technique: xray_crystallography
+  experiment_date: '2001-06-01'
+  quality_metrics:
+    resolution:
+      unit: Angstroms
+      numeric_value: 2.5
+    space_group: P 63
+    unit_cell_a:
+      unit: Angstroms
+      numeric_value: 281.0
+    unit_cell_b:
+      unit: Angstroms
+      numeric_value: 281.0
+    unit_cell_c:
+      unit: Angstroms
+      numeric_value: 165.2
+    unit_cell_alpha:
+      unit: degrees
+      numeric_value: 90.0
+    unit_cell_beta:
+      unit: degrees
+      numeric_value: 90.0
+    unit_cell_gamma:
+      unit: degrees
+      numeric_value: 120.0
+    r_work:
+      unit: dimensionless
+      numeric_value: 0.199
+    r_free:
+      unit: dimensionless
+      numeric_value: 0.217
+    ramachandran_outliers_percent:
+      unit: percent
+      numeric_value: 1.67
+    clashscore:
+      unit: dimensionless
+      numeric_value: 15.56
+workflow_runs:
+- id: pdb:1JB0/workflow/refinement
+  description: Refinement to 2.5 Å, R-work=0.199
+  workflow_code: PDB-1JB0-REFINE
+  workflow_type: refinement
+  software_name: CNS
+  software_version: '0.9'
+data_files:
+- id: pdb:1JB0/file/pdb
+  description: PDB format coordinates
+  file_name: 1jb0.pdb
+  file_format: pdb
+  file_path: https://files.rcsb.org/download/1JB0.pdb
+- id: pdb:1JB0/file/mmcif
+  description: mmCIF format coordinates
+  file_name: 1jb0.cif
+  file_format: mmcif
+  file_path: https://files.rcsb.org/download/1JB0.cif
+study_sample_associations:
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/1
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/2
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/3
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/4
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/5
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/6
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/7
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/8
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/9
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/10
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/11
+- study_id: pdb:1JB0/study
+  sample_id: pdb:1JB0/sample/12
+study_experiment_associations:
+- study_id: pdb:1JB0/study
+  experiment_id: pdb:1JB0/experiment
+experiment_sample_associations:
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/1
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/2
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/3
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/4
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/5
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/6
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/7
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/8
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/9
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/10
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/11
+- experiment_id: pdb:1JB0/experiment
+  sample_id: pdb:1JB0/sample/12
+experiment_instrument_associations:
+- experiment_id: pdb:1JB0/experiment
+  instrument_id: pdb:instrument/ESRF-ID2
+workflow_experiment_associations:
+- workflow_id: pdb:1JB0/workflow/refinement
+  experiment_id: pdb:1JB0/experiment

@@ -30,5 +30,7 @@
   },
   "mail_in_service": true,
   "website": "https://bl1231.als.lbl.gov/",
+  "daq_system": "bluesky",
+  "control_system": "epics",
   "@type": "BeamlineInstrument"
 }

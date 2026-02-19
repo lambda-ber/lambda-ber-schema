@@ -8,6 +8,7 @@ This loader parses HTML pages to extract dataset metadata.
 
 import re
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -16,6 +17,8 @@ from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     BufferComposition,
+    DatabaseCrossReference,
+    DatabaseNameEnum,
     DataFile,
     Dataset,
     ExperimentInstrumentAssociation,
@@ -88,11 +91,16 @@ class SimpleScatteringLoader(BaseLoader):
         # Extract metadata from page
         metadata = self._extract_metadata(soup, warnings)
 
+        # Extract database cross-references
+        cross_references = self._extract_cross_references(
+            soup, metadata, warnings)
+
         # Create instrument (SIBYLS beamline)
         instrument = self._create_instrument(metadata, warnings)
 
         # Create sample
-        sample = self._create_sample(metadata, dataset_code, warnings)
+        sample = self._create_sample(
+            metadata, dataset_code, cross_references, warnings)
 
         # Create experiment run
         experiment = self._create_experiment_run(
@@ -333,6 +341,86 @@ class SimpleScatteringLoader(BaseLoader):
         else:
             metadata["technique"] = "saxs"
 
+        # UniProt ID pattern (e.g., Q9XCL6, P12345)
+        uniprot_match = re.search(
+            r"\b([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b", text)
+        if uniprot_match:
+            metadata["uniprot_id"] = uniprot_match.group(1)
+
+        # NCBI Taxonomy ID
+        taxid_match = re.search(
+            r"(?:NCBI\s*)?(?:Taxonomy\s*)?(?:ID|TaxID)[:\s]*(\d+)", text, re.IGNORECASE)
+        if taxid_match:
+            metadata["ncbi_taxid"] = taxid_match.group(1)
+
+    def _extract_cross_references(
+        self, soup: BeautifulSoup, metadata: dict[str, Any], warnings: list[str]
+    ) -> list[DatabaseCrossReference]:
+        """Extract database cross-references from HTML."""
+        xrefs: list[DatabaseCrossReference] = []
+        seen_ids: set[tuple[str, str]] = set()
+
+        # Extract UniProt IDs from links
+        for link in soup.find_all("a", href=True):
+            href = link["href"]
+
+            # UniProt links
+            if "uniprot.org" in href:
+                parsed = urlparse(href)
+                path_parts = [part for part in parsed.path.split("/") if part]
+
+                if len(path_parts) >= 2 and path_parts[0].lower() in {"uniprot", "uniprotkb"}:
+                    uid = path_parts[-1].upper()
+                    if re.fullmatch(r"[A-Z0-9]+(?:-\d+)?", uid):
+                        key = ("uniprot", uid)
+                        if key not in seen_ids:
+                            seen_ids.add(key)
+                            xrefs.append(DatabaseCrossReference(
+                                database_name=DatabaseNameEnum.uniprot,
+                                database_id=uid,
+                                database_url=f"https://www.uniprot.org/uniprot/{uid}",
+                            ))
+
+            # PDB links
+            elif "rcsb.org" in href or "pdb.org" in href:
+                match = re.search(r"([0-9][A-Za-z0-9]{3})", href)
+                if match:
+                    pdb_id = match.group(1).upper()
+                    key = ("pdb", pdb_id)
+                    if key not in seen_ids:
+                        seen_ids.add(key)
+                        xrefs.append(DatabaseCrossReference(
+                            database_name=DatabaseNameEnum.pdb,
+                            database_id=pdb_id,
+                            database_url=f"https://www.rcsb.org/structure/{pdb_id}",
+                        ))
+
+        # Check metadata for IDs extracted from text/tables
+        if metadata.get("uniprot_id") and ("uniprot", metadata["uniprot_id"]) not in seen_ids:
+            xrefs.append(DatabaseCrossReference(
+                database_name=DatabaseNameEnum.uniprot,
+                database_id=metadata["uniprot_id"],
+                database_url=f"https://www.uniprot.org/uniprot/{metadata['uniprot_id']}",
+            ))
+
+        # Look for PDB IDs in data files (e.g., 8vc5.pdb)
+        for link in soup.find_all("a", href=True):
+            href = link["href"]
+            if href.endswith(".pdb"):
+                match = re.search(r"/([0-9][A-Za-z0-9]{3})\.pdb", href)
+                if match:
+                    pdb_id = match.group(1).upper()
+                    key = ("pdb", pdb_id)
+                    if key not in seen_ids:
+                        seen_ids.add(key)
+                        xrefs.append(DatabaseCrossReference(
+                            database_name=DatabaseNameEnum.pdb,
+                            database_id=pdb_id,
+                            database_url=f"https://www.rcsb.org/structure/{pdb_id}",
+                        ))
+
+        return xrefs
+
     def _create_instrument(
         self, metadata: dict[str, Any], warnings: list[str]
     ) -> SAXSInstrument:
@@ -348,7 +436,11 @@ class SimpleScatteringLoader(BaseLoader):
         )
 
     def _create_sample(
-        self, metadata: dict[str, Any], dataset_code: str, warnings: list[str]
+        self,
+        metadata: dict[str, Any],
+        dataset_code: str,
+        cross_references: list[DatabaseCrossReference],
+        warnings: list[str],
     ) -> Sample:
         """Create Sample from metadata."""
         # Determine sample type
@@ -393,6 +485,7 @@ class SimpleScatteringLoader(BaseLoader):
             description=metadata.get("description"),
             concentration=concentration,
             buffer_composition=buffer_composition,
+            database_cross_references=cross_references if cross_references else None,
         )
 
     def _create_experiment_run(

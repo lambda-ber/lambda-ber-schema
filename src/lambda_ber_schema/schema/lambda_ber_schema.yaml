@@ -1,6 +1,6 @@
 id: https://w3id.org/lambda-ber-schema/
 name: lambda-ber-schema
-version: "0.1.2.post61.dev0+06d3c31" # Managed by uv-dynamic-versioning
+version: "0.1.2.post32.dev0+2ad9ef5" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -128,6 +128,8 @@ prefixes:
   ispyb: https://ispyb.github.io/ISPyB/
   PaNET: http://purl.org/pan-science/PaNET/PaNET
   UO: http://purl.obolibrary.org/obo/UO_
+  simplescattering: https://www.simplescattering.com/open_dataset/
+  pdb: https://files.rcsb.org/download/
 
 imports:
   - linkml:types

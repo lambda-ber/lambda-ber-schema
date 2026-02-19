@@ -12,7 +12,15 @@ import requests
 import typer
 import yaml
 
-from lambda_ber_schema.loaders import PDBLoader, ResponseCache, SASBDBLoader, SimpleScatteringLoader
+import logging
+
+from lambda_ber_schema.loaders import (
+    BatchLoader,
+    PDBLoader,
+    ResponseCache,
+    SASBDBLoader,
+    SimpleScatteringLoader,
+)
 
 app = typer.Typer(
     name="lambda-ber-schema",
@@ -312,6 +320,208 @@ def etl_list(
     typer.echo(f"Found {len(entries)} entries:")
     for code in entries:
         typer.echo(f"  {code}")
+
+
+@etl_app.command("dump-pdb")
+def etl_dump_pdb(
+    output_dir: Annotated[
+        Path,
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
+    ],
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    method: Annotated[
+        str | None,
+        typer.Option("--method", "-m",
+                     help="Filter by method (X-RAY, EM, NMR)"),
+    ] = None,
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
+    ] = None,
+    rate: Annotated[
+        float,
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
+    ] = 2.0,
+    workers: Annotated[
+        int,
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
+    ] = 1,
+    retry_failed: Annotated[
+        bool,
+        typer.Option("--retry-failed", help="Retry previously failed entries"),
+    ] = False,
+) -> None:
+    """
+    Dump all PDB entries to a directory.
+
+    Creates one file per entry in the output directory. Supports resume -
+    if interrupted, run again to continue from where it left off.
+
+    Examples:
+
+        # Load all PDB entries (will take many hours)
+        lambda-ber-schema etl dump-pdb --output-dir ./pdb_dump
+
+        # Load only X-ray structures
+        lambda-ber-schema etl dump-pdb --output-dir ./pdb_xray --method X-RAY
+
+        # Load first 100 entries for testing
+        lambda-ber-schema etl dump-pdb --output-dir ./pdb_test --limit 100
+
+        # Resume after interruption
+        lambda-ber-schema etl dump-pdb --output-dir ./pdb_dump
+
+        # Retry failed entries
+        lambda-ber-schema etl dump-pdb --output-dir ./pdb_dump --retry-failed
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Setup logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(output_dir / "batch.log"),
+        ],
+    )
+
+    # Create loader
+    loader = PDBLoader()
+    batch = BatchLoader(
+        loader=loader,
+        output_dir=output_dir,
+        requests_per_second=rate,
+        max_workers=workers,
+    )
+
+    if retry_failed:
+        typer.echo("Retrying failed entries...", err=True)
+        result = batch.retry_failed(format=format)
+        typer.echo(f"Retry complete: {result}", err=True)
+    else:
+        # Build filters
+        filters = {}
+        if method:
+            filters["experimental_method"] = method
+
+        typer.echo(f"Starting PDB dump to {output_dir}...", err=True)
+        typer.echo(f"Rate limit: {rate} req/sec, Workers: {workers}", err=True)
+        if limit:
+            typer.echo(f"Limit: {limit} entries", err=True)
+        if method:
+            typer.echo(f"Filter: method={method}", err=True)
+
+        result = batch.load_all(format=format, limit=limit, **filters)
+        typer.echo(f"Complete: {result}", err=True)
+
+
+@etl_app.command("dump-sasbdb")
+def etl_dump_sasbdb(
+    output_dir: Annotated[
+        Path,
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
+    ],
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    molecular_type: Annotated[
+        str | None,
+        typer.Option(
+            "--type", "-t", help="Filter by molecular type (protein, rna, dna, heterocomplex)"),
+    ] = None,
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
+    ] = None,
+    rate: Annotated[
+        float,
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
+    ] = 2.0,
+    workers: Annotated[
+        int,
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
+    ] = 1,
+    retry_failed: Annotated[
+        bool,
+        typer.Option("--retry-failed", help="Retry previously failed entries"),
+    ] = False,
+) -> None:
+    """
+    Dump all SASBDB entries to a directory.
+
+    Creates one file per entry in the output directory. Supports resume -
+    if interrupted, run again to continue from where it left off.
+
+    Examples:
+
+        # Load all SASBDB entries (~2k entries, ~30 min)
+        lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_dump
+
+        # Load only protein entries
+        lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_protein --type protein
+
+        # Load first 50 entries for testing
+        lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_test --limit 50
+
+        # Resume after interruption
+        lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_dump
+
+        # Retry failed entries
+        lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_dump --retry-failed
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Setup logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(output_dir / "batch.log"),
+        ],
+    )
+
+    # Create loader
+    loader = SASBDBLoader()
+    batch = BatchLoader(
+        loader=loader,
+        output_dir=output_dir,
+        requests_per_second=rate,
+        max_workers=workers,
+    )
+
+    if retry_failed:
+        typer.echo("Retrying failed entries...", err=True)
+        result = batch.retry_failed(format=format)
+        typer.echo(f"Retry complete: {result}", err=True)
+    else:
+        # Build filters
+        filters = {}
+        if molecular_type:
+            filters["molecular_type"] = molecular_type
+
+        typer.echo(f"Starting SASBDB dump to {output_dir}...", err=True)
+        typer.echo(f"Rate limit: {rate} req/sec, Workers: {workers}", err=True)
+        if limit:
+            typer.echo(f"Limit: {limit} entries", err=True)
+        if molecular_type:
+            typer.echo(f"Filter: type={molecular_type}", err=True)
+
+        result = batch.load_all(format=format, limit=limit, **filters)
+        typer.echo(f"Complete: {result}", err=True)
 
 
 @app.command()

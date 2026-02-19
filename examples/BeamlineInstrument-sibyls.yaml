@@ -26,3 +26,5 @@ sample_changer_capacity:
   numeric_value: 96.0
 mail_in_service: true
 website: https://bl1231.als.lbl.gov/
+daq_system: bluesky
+control_system: epics
