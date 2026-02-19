@@ -3620,6 +3620,8 @@ enums:
   ProcessingStatusEnum:
     description: "Processing status"
     permissible_values:
+      collected:
+        description: "Data has been collected but not yet processed"
       raw:
         description: "Raw data"
       preprocessing:

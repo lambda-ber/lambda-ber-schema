@@ -35,17 +35,17 @@
         ]
       },
       "molecular_weight": {
-        "numeric_value": 80.0,
-        "unit": "kilodaltons"
+        "unit": "kilodaltons",
+        "numeric_value": 80.0
       },
       "concentration": {
-        "numeric_value": 10.0,
-        "unit": "milligrams per milliliter"
+        "unit": "milligrams per milliliter",
+        "numeric_value": 10.0
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 7.0,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 7.0
         },
         "components": [
           "TES/KOH"
@@ -53,8 +53,8 @@
       },
       "storage_conditions": {
         "temperature": {
-          "numeric_value": 277.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 277.0
         }
       }
     }
@@ -77,18 +77,18 @@
       "experiment_date": "1998-11-23",
       "experimental_conditions": {
         "temperature": {
-          "numeric_value": 100.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 100.0
         }
       },
       "quality_metrics": {
         "resolution": {
-          "numeric_value": 1.54,
-          "unit": "Angstroms"
+          "unit": "Angstroms",
+          "numeric_value": 1.54
         },
         "completeness": {
-          "numeric_value": 95.0,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 95.0
         }
       }
     }
@@ -125,8 +125,8 @@
       "file_name": "1ee2_diffraction_pattern.img",
       "acquisition_date": "1998-11-23",
       "pixel_size": {
-        "numeric_value": 0.15,
-        "unit": "Angstroms"
+        "unit": "Angstroms",
+        "numeric_value": 0.15
       }
     }
   ],

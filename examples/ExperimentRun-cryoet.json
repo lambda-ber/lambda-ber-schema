@@ -8,54 +8,54 @@
   "operator_id": "cryoet_specialist_003",
   "experimental_conditions": {
     "temperature": {
-      "numeric_value": -180.0,
-      "unit": "degrees Celsius"
+      "unit": "degrees Celsius",
+      "numeric_value": -180.0
     },
     "humidity": {
-      "numeric_value": 0.0,
-      "unit": "percent"
+      "unit": "percent",
+      "numeric_value": 0.0
     },
     "pressure": {
-      "numeric_value": 1e-06,
-      "unit": "kilopascals"
+      "unit": "kilopascals",
+      "numeric_value": 1e-06
     },
     "atmosphere": "High vacuum"
   },
   "data_collection_strategy": {
     "collection_mode": "continuous",
     "total_frames": {
-      "numeric_value": 61.0,
-      "unit": "frames"
+      "unit": "frames",
+      "numeric_value": 61.0
     },
     "frame_rate": {
-      "numeric_value": 0.5,
-      "unit": "frames per second"
+      "unit": "frames per second",
+      "numeric_value": 0.5
     },
     "total_dose": {
-      "numeric_value": 120.0,
-      "unit": "electrons per Angstrom squared"
+      "unit": "electrons per Angstrom squared",
+      "numeric_value": 120.0
     },
     "dose_per_frame": {
-      "numeric_value": 2.0,
-      "unit": "electrons per Angstrom squared"
+      "unit": "electrons per Angstrom squared",
+      "numeric_value": 2.0
     }
   },
   "quality_metrics": {
     "resolution": {
-      "numeric_value": 8.5,
-      "unit": "Angstroms"
+      "unit": "Angstroms",
+      "numeric_value": 8.5
     },
     "completeness": {
-      "numeric_value": 95.0,
-      "unit": "percent"
+      "unit": "percent",
+      "numeric_value": 95.0
     },
     "signal_to_noise": {
-      "numeric_value": 2.1,
-      "unit": "signal to noise ratio"
+      "unit": "signal to noise ratio",
+      "numeric_value": 2.1
     },
     "r_factor": {
-      "numeric_value": 0.0,
-      "unit": "R-factor"
+      "unit": "R-factor",
+      "numeric_value": 0.0
     }
   },
   "raw_data_location": "/data/berkeley/2024/cryoet/mitochondria/",

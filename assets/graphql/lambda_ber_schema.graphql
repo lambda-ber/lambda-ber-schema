@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post31.dev0+a94024b
+# version: 0.0.0.post3.dev0+a53f7f0
 enum AffinityUnitEnum
   {
     molar
@@ -61,6 +61,7 @@ enum BeamlineEnum
     ALS_BL821
     ALS_BL822
     ALS_BL831
+    ALS_BL832
     ALS_BL1222
     NSLS2_FMX
     NSLS2_AMX
@@ -528,6 +529,7 @@ enum PreparationTypeEnum
 
 enum ProcessingStatusEnum
   {
+    collected
     raw
     preprocessing
     processing
@@ -693,6 +695,7 @@ enum TechniqueEnum
     neutron_crystallography
     fiber_diffraction
     time_resolved_crystallography
+    xray_tomography
   }
 
 enum VitrificationMethodEnum
@@ -1618,7 +1621,7 @@ type QuantityValue
     attribute: Attribute
     maximumNumericValue: Float
     minimumNumericValue: Float
-    numericValue: Float!
+    numericValue: Float
     unit: String!
     unitCvId: Curie
     rawValue: String

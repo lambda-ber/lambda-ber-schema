@@ -6,16 +6,16 @@
   "operator_id": "Kathryn Burnett",
   "experimental_conditions": {
     "temperature": {
-      "numeric_value": 20.0,
-      "unit": "degrees Celsius"
+      "unit": "degrees Celsius",
+      "numeric_value": 20.0
     },
     "beam_energy": {
-      "numeric_value": 9.76,
-      "unit": "kiloelectronvolts"
+      "unit": "kiloelectronvolts",
+      "numeric_value": 9.76
     },
     "exposure_time": {
-      "numeric_value": 0.3,
-      "unit": "seconds"
+      "unit": "seconds",
+      "numeric_value": 0.3
     }
   },
   "data_collection_strategy": {
@@ -23,16 +23,16 @@
   },
   "quality_metrics": {
     "signal_to_noise": {
-      "numeric_value": 50.0,
-      "unit": "signal to noise ratio"
+      "unit": "signal to noise ratio",
+      "numeric_value": 50.0
     },
     "i_zero": {
-      "numeric_value": 0.045,
-      "unit": "scattering intensity"
+      "unit": "scattering intensity",
+      "numeric_value": 0.045
     },
     "rg": {
-      "numeric_value": 42.3,
-      "unit": "Angstroms"
+      "unit": "Angstroms",
+      "numeric_value": 42.3
     }
   },
   "raw_data_location": "SIBYLS-HT-SAXS-program",

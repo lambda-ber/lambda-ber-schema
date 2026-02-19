@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-23T11:38:37
+# Generation date: 2026-02-13T18:59:08
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -163,7 +163,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post31.dev0+a94024b"
+version = "0.0.0.post3.dev0+a53f7f0"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -3781,19 +3781,14 @@ class QuantityValue(AttributeValue):
     class_name: ClassVar[str] = "QuantityValue"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.QuantityValue
 
-    numeric_value: float = None
     unit: str = None
     maximum_numeric_value: Optional[float] = None
     minimum_numeric_value: Optional[float] = None
+    numeric_value: Optional[float] = None
     unit_cv_id: Optional[Union[str, Curie]] = None
     raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.numeric_value):
-            self.MissingRequiredField("numeric_value")
-        if not isinstance(self.numeric_value, float):
-            self.numeric_value = float(self.numeric_value)
-
         if self._is_empty(self.unit):
             self.MissingRequiredField("unit")
         if not isinstance(self.unit, str):
@@ -3804,6 +3799,9 @@ class QuantityValue(AttributeValue):
 
         if self.minimum_numeric_value is not None and not isinstance(self.minimum_numeric_value, float):
             self.minimum_numeric_value = float(self.minimum_numeric_value)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, float):
+            self.numeric_value = float(self.numeric_value)
 
         if self.unit_cv_id is not None and not isinstance(self.unit_cv_id, Curie):
             self.unit_cv_id = Curie(self.unit_cv_id)
@@ -5102,6 +5100,10 @@ class BeamlineEnum(EnumDefinitionImpl):
         text="ALS_BL831",
         title="ALS BL8.3.1",
         description="High-throughput macromolecular crystallography beamline")
+    ALS_BL832 = PermissibleValue(
+        text="ALS_BL832",
+        title="ALS BL8.3.2",
+        description="""Hard X-ray micro-tomography beamline for non-destructive 3D imaging. Provides high-resolution micro-CT capabilities for biological, geological, and materials samples. Supports absorption and phase contrast imaging modes.""")
     ALS_BL1222 = PermissibleValue(
         text="ALS_BL1222",
         title="ALS BL12.2.2",
@@ -5397,6 +5399,10 @@ class TechniqueEnum(EnumDefinitionImpl):
         text="time_resolved_crystallography",
         description="Time-resolved macromolecular crystallography",
         meaning=CHMO["0000156"])
+    xray_tomography = PermissibleValue(
+        text="xray_tomography",
+        description="X-ray computed tomography (micro-CT) for 3D imaging",
+        meaning=CHMO["0002743"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -5407,6 +5413,9 @@ class ProcessingStatusEnum(EnumDefinitionImpl):
     """
     Processing status
     """
+    collected = PermissibleValue(
+        text="collected",
+        description="Data has been collected but not yet processed")
     raw = PermissibleValue(
         text="raw",
         description="Raw data")
@@ -9016,7 +9025,7 @@ slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annota
                    model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
-                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=float, mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
 
 slots.QuantityValue_unit = Slot(uri=LAMBDABER.unit, name="QuantityValue_unit", curie=LAMBDABER.curie('unit'),
                    model_uri=LAMBDABER.QuantityValue_unit, domain=QuantityValue, range=str, mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
