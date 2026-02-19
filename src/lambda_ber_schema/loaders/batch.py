@@ -398,17 +398,16 @@ class BatchLoader:
                             f"{datetime.now().isoformat()} {entry_id}: {error}\n")
 
                 # Progress report every 100 entries
-                total_done = success_count + fail_count - \
-                    self.progress.completed_count() + len(pending)
-                if (i + 1) % 100 == 0:
+                total_done = success_count + fail_count
+                if total_done % 100 == 0:
                     elapsed = time.time() - start_time
-                    rate = (i + 1) / elapsed if elapsed > 0 else 0
-                    remaining = len(pending) - (i + 1)
+                    rate = total_done / elapsed if elapsed > 0 else 0
+                    remaining = len(all_entries) - total_done
                     eta = remaining / rate if rate > 0 else 0
                     logger.info(
                         "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
-                        i + 1,
-                        len(pending),
+                        total_done,
+                        len(all_entries),
                         rate,
                         eta / 60,
                     )
