@@ -8,6 +8,7 @@ This loader parses HTML pages to extract dataset metadata.
 
 import re
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -91,13 +92,15 @@ class SimpleScatteringLoader(BaseLoader):
         metadata = self._extract_metadata(soup, warnings)
 
         # Extract database cross-references
-        cross_references = self._extract_cross_references(soup, metadata, warnings)
+        cross_references = self._extract_cross_references(
+            soup, metadata, warnings)
 
         # Create instrument (SIBYLS beamline)
         instrument = self._create_instrument(metadata, warnings)
 
         # Create sample
-        sample = self._create_sample(metadata, dataset_code, cross_references, warnings)
+        sample = self._create_sample(
+            metadata, dataset_code, cross_references, warnings)
 
         # Create experiment run
         experiment = self._create_experiment_run(
@@ -339,12 +342,14 @@ class SimpleScatteringLoader(BaseLoader):
             metadata["technique"] = "saxs"
 
         # UniProt ID pattern (e.g., Q9XCL6, P12345)
-        uniprot_match = re.search(r"\b([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b", text)
+        uniprot_match = re.search(
+            r"\b([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b", text)
         if uniprot_match:
             metadata["uniprot_id"] = uniprot_match.group(1)
 
         # NCBI Taxonomy ID
-        taxid_match = re.search(r"(?:NCBI\s*)?(?:Taxonomy\s*)?(?:ID|TaxID)[:\s]*(\d+)", text, re.IGNORECASE)
+        taxid_match = re.search(
+            r"(?:NCBI\s*)?(?:Taxonomy\s*)?(?:ID|TaxID)[:\s]*(\d+)", text, re.IGNORECASE)
         if taxid_match:
             metadata["ncbi_taxid"] = taxid_match.group(1)
 
@@ -361,17 +366,20 @@ class SimpleScatteringLoader(BaseLoader):
 
             # UniProt links
             if "uniprot.org" in href:
-                match = re.search(r"uniprot\.org/(?:uniprot/)?([A-Z0-9]+)", href)
-                if match:
-                    uid = match.group(1)
-                    key = ("uniprot", uid)
-                    if key not in seen_ids:
-                        seen_ids.add(key)
-                        xrefs.append(DatabaseCrossReference(
-                            database_name=DatabaseNameEnum.uniprot,
-                            database_id=uid,
-                            database_url=f"https://www.uniprot.org/uniprot/{uid}",
-                        ))
+                parsed = urlparse(href)
+                path_parts = [part for part in parsed.path.split("/") if part]
+
+                if len(path_parts) >= 2 and path_parts[0].lower() in {"uniprot", "uniprotkb"}:
+                    uid = path_parts[-1].upper()
+                    if re.fullmatch(r"[A-Z0-9]+(?:-\d+)?", uid):
+                        key = ("uniprot", uid)
+                        if key not in seen_ids:
+                            seen_ids.add(key)
+                            xrefs.append(DatabaseCrossReference(
+                                database_name=DatabaseNameEnum.uniprot,
+                                database_id=uid,
+                                database_url=f"https://www.uniprot.org/uniprot/{uid}",
+                            ))
 
             # PDB links
             elif "rcsb.org" in href or "pdb.org" in href:
