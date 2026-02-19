@@ -10,7 +10,9 @@
 lambdaber:instrument_sibyls_1231 a lambdaber:BeamlineInstrument ;
     mmCIF:_diffrn_source.pdbx_synchrotron_beamline "12.3.1" ;
     dcterms:title "SIBYLS Beamline 12.3.1" ;
+    lambdaber:control_system "epics" ;
     lambdaber:current_status "operational" ;
+    lambdaber:daq_system "bluesky" ;
     lambdaber:description "SIBYLS (Structurally Integrated BiologY for Life Sciences) beamline at ALS for SAXS, X-ray crystallography, and fiber diffraction" ;
     lambdaber:facility_name ROR:02jbv0t02 ;
     lambdaber:facility_ror "https://ror.org/02jbv0t02"^^xsd:anyURI ;

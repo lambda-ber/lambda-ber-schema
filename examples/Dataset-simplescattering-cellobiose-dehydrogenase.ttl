@@ -1,0 +1,102 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix simplescattering: <https://www.simplescattering.com/open_dataset/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+simplescattering:xs33026i a lambdaber:Dataset ;
+    dcterms:title "Cellobiose Dehydrogenase (addition of divalent cations)" ;
+    lambdaber:data_files <https://www.simplescattering.com/open_dataset/xs33026i/file/dgmtcdh_65_50ca_dat>,
+        <https://www.simplescattering.com/open_dataset/xs33026i/file/dgmtcdh_65_dat>,
+        <https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_100ca_dat>,
+        <https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_50ca_dat>,
+        <https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_dat>,
+        <https://www.simplescattering.com/open_dataset/xs33026i/file/mtcdh_addition-of-divalent-cations_zip> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://www.simplescattering.com/open_dataset/xs33026i/experiment> ;
+            lambdaber:instrument_id <https://www.simplescattering.com/open_dataset/instrument/sibyls-bl12.3.1> ] ;
+    lambdaber:experiment_runs <https://www.simplescattering.com/open_dataset/xs33026i/experiment> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.simplescattering.com/open_dataset/xs33026i/experiment> ;
+            lambdaber:sample_id <https://www.simplescattering.com/open_dataset/xs33026i/sample> ] ;
+    lambdaber:instruments <https://www.simplescattering.com/open_dataset/instrument/sibyls-bl12.3.1> ;
+    lambdaber:samples <https://www.simplescattering.com/open_dataset/xs33026i/sample> ;
+    lambdaber:studies <https://www.simplescattering.com/open_dataset/xs33026i/study> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://www.simplescattering.com/open_dataset/xs33026i/experiment> ;
+            lambdaber:study_id <https://www.simplescattering.com/open_dataset/xs33026i/study> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.simplescattering.com/open_dataset/xs33026i/sample> ;
+            lambdaber:study_id <https://www.simplescattering.com/open_dataset/xs33026i/study> ] .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/dgmtcdh_65_50ca_dat> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "dgMtCDH_65_50Ca.dat" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1FIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01ccd426265e594b099c00bb586b93246bedb3e6/dgMtCDH_65_50Ca.dat?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/dgmtcdh_65_dat> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "dgMtCDH_65.dat" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--691cb31824877e69d2730d6e567e139725ccc45b/dgMtCDH_65.dat?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_100ca_dat> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "gMtCDH_65_100Ca.dat" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eefccf73c80cedf0c085b4d41c98c8568cbfe67e/gMtCDH_65_100Ca.dat?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_50ca_dat> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "gMtCDH_65_50Ca.dat" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7fb11d01621a21a31bc1cce62d3e5b7572d75c6/gMtCDH_65_50Ca.dat?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/gmtcdh_65_dat> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "gMtCDH_65.dat" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d9458e262e2cfe11a82da068ad08337c01ccf6ba/gMtCDH_65.dat?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/file/mtcdh_addition-of-divalent-cations_zip> a lambdaber:DataFile ;
+    lambdaber:description "Data file from Simple Scattering dataset xs33026i" ;
+    lambdaber:file_format "zip" ;
+    lambdaber:file_name "MtCDH_addition-of-divalent-cations.zip" ;
+    lambdaber:file_path "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBEIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b9e715f9c3e200bbf0920ecc018e79e77c1c5d3/MtCDH_addition-of-divalent-cations.zip?disposition=attachment" .
+
+<https://www.simplescattering.com/open_dataset/instrument/sibyls-bl12.3.1> a lambdaber:Instrument ;
+    dcterms:title "SIBYLS BL12.3.1" ;
+    lambdaber:description "SEC-SAXS beamline at Advanced Light Source, Berkeley Lab" ;
+    lambdaber:instrument_code "ALS-SIBYLS-BL12.3.1" ;
+    lambdaber:manufacturer "Lawrence Berkeley National Laboratory" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/sample> a lambdaber:Sample ;
+    dcterms:title "Cellobiose Dehydrogenase (addition of divalent cations)" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "50 mM HEPES" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "6.5"^^xsd:float ;
+                    lambdaber:unit "pH" ] ] ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "A9XK88" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprot/A9XK88"^^xsd:anyURI ] ;
+    lambdaber:description "The interdomain electron transfer between the catalytic flavodehydrogenase domain and the electron transferring cytochrome domain of cellobiose dehydrogenase plays an essential role in biocatalysis, biosensors, and biofuel cells as well as for its natural function as an auxiliary enzyme of lytic polysaccharide monooxygenase. We investigated the mobility of the cytochrome and dehydrogenase domain of cellobiose dehydrogenase (CDH), which are hypothesized to limit interdomain electron transfer in solution by small angle X-ray scattering (SAXS). CDH from Myriococcum thermophilum was used to study the CDH mobility in the presence of divalent cations. We showed that the presence of calcium ions decreases the mobility of the cytochrome domain." ;
+    lambdaber:sample_code "SS-XS33026I" ;
+    lambdaber:sample_type "protein" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/study> a lambdaber:Study ;
+    dcterms:title "Cellobiose Dehydrogenase (addition of divalent cations)" .
+
+<https://www.simplescattering.com/open_dataset/xs33026i/experiment> a lambdaber:ExperimentRun ;
+    lambdaber:beamline "SIBYLS BL12.3.1" ;
+    lambdaber:experiment_code "SS-XS33026I-EXP" ;
+    lambdaber:technique CHMO:0000204 ;
+    lambdaber:wavelength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.27"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+

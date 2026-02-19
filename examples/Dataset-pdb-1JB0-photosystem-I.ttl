@@ -1,0 +1,360 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
+@prefix pdb: <https://files.rcsb.org/download/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+pdb:1JB0 a lambdaber:Dataset ;
+    dcterms:title "Crystal Structure of Photosystem I: a Photosynthetic Reaction Center and Core Antenna System from Cyanobacteria" ;
+    lambdaber:data_files <https://files.rcsb.org/download/1JB0/file/mmcif>,
+        <https://files.rcsb.org/download/1JB0/file/pdb> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:instrument_id <https://files.rcsb.org/download/instrument/ESRF-ID2> ] ;
+    lambdaber:experiment_runs <https://files.rcsb.org/download/1JB0/experiment> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/2> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/8> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/6> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/3> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/12> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/10> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/4> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ] ;
+    lambdaber:instruments <https://files.rcsb.org/download/instrument/ESRF-ID2> ;
+    lambdaber:samples <https://files.rcsb.org/download/1JB0/sample/1>,
+        <https://files.rcsb.org/download/1JB0/sample/10>,
+        <https://files.rcsb.org/download/1JB0/sample/11>,
+        <https://files.rcsb.org/download/1JB0/sample/12>,
+        <https://files.rcsb.org/download/1JB0/sample/2>,
+        <https://files.rcsb.org/download/1JB0/sample/3>,
+        <https://files.rcsb.org/download/1JB0/sample/4>,
+        <https://files.rcsb.org/download/1JB0/sample/5>,
+        <https://files.rcsb.org/download/1JB0/sample/6>,
+        <https://files.rcsb.org/download/1JB0/sample/7>,
+        <https://files.rcsb.org/download/1JB0/sample/8>,
+        <https://files.rcsb.org/download/1JB0/sample/9> ;
+    lambdaber:studies <https://files.rcsb.org/download/1JB0/study> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/8> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/2> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/6> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/10> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/3> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/4> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/12> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:workflow_id <https://files.rcsb.org/download/1JB0/workflow/refinement> ] ;
+    lambdaber:workflow_runs <https://files.rcsb.org/download/1JB0/workflow/refinement> .
+
+<https://files.rcsb.org/download/1JB0/file/mmcif> a lambdaber:DataFile ;
+    lambdaber:description "mmCIF format coordinates" ;
+    lambdaber:file_format "mmcif" ;
+    lambdaber:file_name "1jb0.cif" ;
+    lambdaber:file_path "https://files.rcsb.org/download/1JB0.cif" .
+
+<https://files.rcsb.org/download/1JB0/file/pdb> a lambdaber:DataFile ;
+    lambdaber:description "PDB format coordinates" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "1jb0.pdb" ;
+    lambdaber:file_path "https://files.rcsb.org/download/1JB0.pdb" .
+
+<https://files.rcsb.org/download/1JB0/workflow/refinement> a lambdaber:WorkflowRun ;
+    lambdaber:description "Refinement to 2.5 Å, R-work=0.199" ;
+    lambdaber:software_name "CNS" ;
+    lambdaber:software_version "0.9" ;
+    lambdaber:workflow_code "PDB-1JB0-REFINE" ;
+    lambdaber:workflow_type "refinement" .
+
+<https://files.rcsb.org/download/instrument/ESRF-ID2> a lambdaber:Instrument ;
+    dcterms:title "ESRF ID2" ;
+    lambdaber:description "Detector: MARRESEARCH" ;
+    lambdaber:instrument_code "ESRF-ID2" .
+
+<https://files.rcsb.org/download/1JB0/sample/1> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1" ;
+    nsls2:Protein_Name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A1" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A405" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A405"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 755" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "83.27"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-1" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/10> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XI" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "Q8DGB4" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/Q8DGB4"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 154" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "16.16"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-10" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/11> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT XII" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A403" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A403"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 31" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.43"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-11" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/12> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM I SUBUNIT PSAX" ;
+    nsls2:Protein_Name "PHOTOSYSTEM I SUBUNIT PSAX" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "Q8DKP6" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/Q8DKP6"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 35" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3.85"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-12" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/2> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2" ;
+    nsls2:Protein_Name "PHOTOSYSTEM I P700 CHLOROPHYLL A APOPROTEIN A2" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A407" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A407"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 740" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "82.99"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-2" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/3> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM I IRON-SULFUR CENTER" ;
+    nsls2:Protein_Name "PHOTOSYSTEM I IRON-SULFUR CENTER" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A415" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A415"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 80" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.68"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-3" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/4> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT II" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A420" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A420"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 138" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "15.26"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-4" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/5> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IV" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A423" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A423"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 75" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.27"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-5" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/6> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT III" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A401" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A401"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 164" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "17.72"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-6" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/7> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT VIII" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A427" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A427"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 38" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4.3"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-7" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/8> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT IX" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A429" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A429"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 41" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4.77"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-8" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/sample/9> a lambdaber:Sample ;
+    dcterms:title "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X" ;
+    nsls2:Protein_Name "PHOTOSYSTEM 1 REACTION CENTRE SUBUNIT X" ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P0A425" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P0A425"^^xsd:anyURI ] ;
+    lambdaber:description "Sequence length: 83" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "8.48"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:organism NCBITaxon:32046 ;
+    lambdaber:sample_code "PDB-1JB0-9" ;
+    lambdaber:sample_type "protein" .
+
+<https://files.rcsb.org/download/1JB0/study> a lambdaber:Study ;
+    dcterms:title "Crystal Structure of Photosystem I: a Photosynthetic Reaction Center and Core Antenna System from Cyanobacteria" .
+
+<https://files.rcsb.org/download/1JB0/experiment> a lambdaber:ExperimentRun ;
+    lambdaber:experiment_code "PDB-1JB0-EXP" ;
+    lambdaber:experiment_date "2001-06-01" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:clashscore [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "15.56"^^xsd:float ;
+                    lambdaber:unit "dimensionless" ] ;
+            lambdaber:r_free [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.217"^^xsd:float ;
+                    lambdaber:unit "dimensionless" ] ;
+            lambdaber:r_work [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.199"^^xsd:float ;
+                    lambdaber:unit "dimensionless" ] ;
+            lambdaber:ramachandran_outliers_percent [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1.67"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.5"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:space_group "P 63" ;
+            lambdaber:unit_cell_a [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "281.0"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_alpha [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "90.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ;
+            lambdaber:unit_cell_b [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "281.0"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_beta [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "90.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ;
+            lambdaber:unit_cell_c [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "165.2"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:unit_cell_gamma [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "120.0"^^xsd:float ;
+                    lambdaber:unit "degrees" ] ] ;
+    lambdaber:technique CHMO:0000156 .
+
