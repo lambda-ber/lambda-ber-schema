@@ -326,7 +326,8 @@ def etl_list(
 def etl_dump_pdb(
     output_dir: Annotated[
         Path,
-        typer.Option("--output-dir", "-o", help="Directory to save output files"),
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
     ],
     format: Annotated[
         str,
@@ -334,19 +335,23 @@ def etl_dump_pdb(
     ] = "yaml",
     method: Annotated[
         str | None,
-        typer.Option("--method", "-m", help="Filter by method (X-RAY, EM, NMR)"),
+        typer.Option("--method", "-m",
+                     help="Filter by method (X-RAY, EM, NMR)"),
     ] = None,
     limit: Annotated[
         int | None,
-        typer.Option("--limit", "-n", help="Maximum entries to load (default: all)"),
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
     ] = None,
     rate: Annotated[
         float,
-        typer.Option("--rate", "-r", help="Requests per second (default: 2.0)"),
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
     ] = 2.0,
     workers: Annotated[
         int,
-        typer.Option("--workers", "-w", help="Concurrent workers (default: 1)"),
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
     ] = 1,
     retry_failed: Annotated[
         bool,
@@ -376,6 +381,8 @@ def etl_dump_pdb(
         # Retry failed entries
         lambda-ber-schema etl dump-pdb --output-dir ./pdb_dump --retry-failed
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     # Setup logging
     logging.basicConfig(
         level=logging.INFO,
@@ -420,7 +427,8 @@ def etl_dump_pdb(
 def etl_dump_sasbdb(
     output_dir: Annotated[
         Path,
-        typer.Option("--output-dir", "-o", help="Directory to save output files"),
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
     ],
     format: Annotated[
         str,
@@ -428,19 +436,23 @@ def etl_dump_sasbdb(
     ] = "yaml",
     molecular_type: Annotated[
         str | None,
-        typer.Option("--type", "-t", help="Filter by molecular type (protein, rna, dna, heterocomplex)"),
+        typer.Option(
+            "--type", "-t", help="Filter by molecular type (protein, rna, dna, heterocomplex)"),
     ] = None,
     limit: Annotated[
         int | None,
-        typer.Option("--limit", "-n", help="Maximum entries to load (default: all)"),
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
     ] = None,
     rate: Annotated[
         float,
-        typer.Option("--rate", "-r", help="Requests per second (default: 2.0)"),
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
     ] = 2.0,
     workers: Annotated[
         int,
-        typer.Option("--workers", "-w", help="Concurrent workers (default: 1)"),
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
     ] = 1,
     retry_failed: Annotated[
         bool,
@@ -470,6 +482,8 @@ def etl_dump_sasbdb(
         # Retry failed entries
         lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_dump --retry-failed
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     # Setup logging
     logging.basicConfig(
         level=logging.INFO,
