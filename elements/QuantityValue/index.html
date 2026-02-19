@@ -494,7 +494,7 @@
 </tr>
 <tr>
 <td><a href="../numeric_value/">numeric_value</a></td>
-<td>1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The numerical value of the quantity</td>
 <td>direct</td>
 </tr>
@@ -2453,8 +2453,9 @@ slots:
 slot_usage:
   numeric_value:
     name: numeric_value
-    description: The numerical value of the quantity
-    required: true
+    description: The numerical value of the quantity. May be null if the value is
+      unknown or not measured.
+    required: false
   unit:
     name: unit
     description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
@@ -2485,8 +2486,9 @@ is_a: AttributeValue
 slot_usage:
   numeric_value:
     name: numeric_value
-    description: The numerical value of the quantity
-    required: true
+    description: The numerical value of the quantity. May be null if the value is
+      unknown or not measured.
+    required: false
   unit:
     name: unit
     description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").
@@ -2530,7 +2532,8 @@ attributes:
     range: float
   numeric_value:
     name: numeric_value
-    description: The numerical value of the quantity
+    description: The numerical value of the quantity. May be null if the value is
+      unknown or not measured.
     from_schema: https://w3id.org/lambda-ber-schema/
     mappings:
     - nmdc:numeric_value
@@ -2542,7 +2545,7 @@ attributes:
     domain_of:
     - QuantityValue
     range: float
-    required: true
+    required: false
   unit:
     name: unit
     description: The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons").

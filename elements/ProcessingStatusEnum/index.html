@@ -924,6 +924,11 @@
 </thead>
 <tbody>
 <tr>
+<td>collected</td>
+<td>None</td>
+<td>Data has been collected but not yet processed</td>
+</tr>
+<tr>
 <td>raw</td>
 <td>None</td>
 <td>Raw data</td>
@@ -978,6 +983,9 @@ description: Processing status
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 permissible_values:
+  collected:
+    text: collected
+    description: Data has been collected but not yet processed
   raw:
     text: raw
     description: Raw data

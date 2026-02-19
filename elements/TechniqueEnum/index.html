@@ -998,6 +998,11 @@
 <td>CHMO:0000156</td>
 <td>Time-resolved macromolecular crystallography</td>
 </tr>
+<tr>
+<td>xray_tomography</td>
+<td>CHMO:0002743</td>
+<td>X-ray computed tomography (micro-CT) for 3D imaging</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1125,6 +1130,16 @@ permissible_values:
     comments:
     - Pump-probe crystallography for capturing structural dynamics
     - Requires fast X-ray pulses (synchrotron or XFEL)
+  xray_tomography:
+    text: xray_tomography
+    description: X-ray computed tomography (micro-CT) for 3D imaging
+    meaning: CHMO:0002743
+    comments:
+    - Non-destructive 3D imaging technique
+    - Includes micro-CT, nano-CT, and phase contrast tomography
+    - Used for cellular imaging, materials science, and paleontology
+    exact_mappings:
+    - PaNET:01154
 
 </code></pre>
 

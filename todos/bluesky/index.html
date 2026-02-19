@@ -1,0 +1,1584 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lambda-ber.github.io/lambda-ber-schema/todos/bluesky/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Bluesky Integration TODO - lambda-ber-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bluesky-integration-todo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="lambda-ber-schema" class="md-header__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lambda-ber-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bluesky Integration TODO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lambda-ber-schema" class="md-nav__button md-logo" aria-label="lambda-ber-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    lambda-ber-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lambda-ber/lambda-ber-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Background
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NEXUS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/mmcif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mmCIF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/empiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMPIAR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/emdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EMDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/dials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIALS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/sasdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SASDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/rembi-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REMBI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/lambda-ber-schema-data-lakehouse-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Lakehouse Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/ber-doe-facilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration with BER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/data-quality-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Challenges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/simplescattering-glurs-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Scattering GluRS Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Technical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/ome-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mapping to OME
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Slides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slides/technical-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Deep Dive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bluesky-document-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bluesky Document Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remaining-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remaining Tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remaining Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-schema-annotations-priority-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Schema Annotations (Priority: High)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bluesky-compatible-fields-priority-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Bluesky-Compatible Fields (Priority: High)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Bluesky-Compatible Fields (Priority: High)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#study-runstart-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study (RunStart Metadata)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimentrun-event-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExperimentRun (Event Data)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datafile-resourcedatum" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataFile (Resource/Datum)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-devicesignal-mapping-priority-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Device/Signal Mapping (Priority: Medium)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-stream-support-priority-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Stream Support (Priority: Medium)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-validation-examples-priority-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Validation Examples (Priority: Low)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-conversion-utilities-priority-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Conversion Utilities (Priority: Low)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-mapping-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity Mapping Reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#field-mapping-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Mapping Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Field Mapping Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runstart-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      RunStart → Study
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-experimentrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event → ExperimentRun
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-datafile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource → DataFile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-based-vs-run-based-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event-Based vs. Run-Based Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-flexibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Flexibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-data-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Data References
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facility-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facility Adoption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Facility Adoption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#als-beamlines-using-bluesky" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALS Beamlines Using Bluesky
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bluesky-integration-todo">Bluesky Integration TODO</h1>
+<h2 id="overview">Overview</h2>
+<p>Bluesky is an event-based data acquisition framework developed at NSLS-II (Brookhaven National Laboratory). It provides a Python-based system for orchestrating experiments, collecting data, and streaming metadata in real-time. Bluesky is increasingly adopted at major synchrotron facilities including ALS, APS, and international sites.</p>
+<p>The Bluesky ecosystem includes:
+- <strong>bluesky</strong> - Experiment orchestration and run engine
+- <strong>ophyd</strong> - Hardware abstraction layer for devices
+- <strong>databroker</strong> - Unified data access interface
+- <strong>tiled</strong> - Modern data serving with search capabilities
+- <strong>event-model</strong> - Core document schema for streaming data</p>
+<p>This document tracks integration work to enable interoperability between lambda-ber-schema and the Bluesky event-model.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://blueskyproject.io/">Bluesky Project</a></li>
+<li><a href="https://blueskyproject.io/event-model/">Event Model Documentation</a></li>
+<li><a href="https://github.com/bluesky/event-model">Event Model GitHub</a></li>
+<li><a href="https://github.com/bluesky/databroker">Databroker GitHub</a></li>
+<li><a href="https://github.com/bluesky/tiled">Tiled GitHub</a></li>
+<li><a href="https://doi.org/10.1080/08940886.2019.1608121">Bluesky Publication</a> - Synchrotron Radiation News, 2019</li>
+</ul>
+<h2 id="bluesky-document-model">Bluesky Document Model</h2>
+<p>Bluesky uses a streaming document model with these core document types:</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RunStart</strong></td>
+<td>Marks beginning of a run, contains metadata (plan name, user, sample info, etc.)</td>
+</tr>
+<tr>
+<td><strong>RunStop</strong></td>
+<td>Marks end of run, contains exit status and summary</td>
+</tr>
+<tr>
+<td><strong>EventDescriptor</strong></td>
+<td>Describes data keys and their properties for a stream</td>
+</tr>
+<tr>
+<td><strong>Event</strong></td>
+<td>Contains actual measurement data with timestamps</td>
+</tr>
+<tr>
+<td><strong>Resource</strong></td>
+<td>External file reference (HDF5, TIFF, etc.)</td>
+</tr>
+<tr>
+<td><strong>Datum</strong></td>
+<td>Pointer into a Resource for specific data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remaining-tasks">Remaining Tasks</h2>
+<h3 id="1-schema-annotations-priority-high">1. Schema Annotations (Priority: High)</h3>
+<p>Add <code>bluesky:</code> prefix and mappings to enable semantic interoperability.</p>
+<ul>
+<li>[ ] Add <code>bluesky</code> prefix to schema (<code>bluesky: https://blueskyproject.io/event-model/</code>)</li>
+<li>[ ] Add Bluesky mappings to Study fields (RunStart metadata)</li>
+<li>[ ] Add Bluesky mappings to ExperimentRun fields (Event data)</li>
+<li>[ ] Add Bluesky mappings to DataFile fields (Resource/Datum)</li>
+</ul>
+<h3 id="2-bluesky-compatible-fields-priority-high">2. Bluesky-Compatible Fields (Priority: High)</h3>
+<h4 id="study-runstart-metadata">Study (RunStart Metadata)</h4>
+<ul>
+<li>[ ] <code>bluesky_uid</code> - Unique identifier for the run (maps to RunStart.uid)</li>
+<li>[ ] <code>plan_name</code> - Name of the Bluesky plan executed</li>
+<li>[ ] <code>plan_type</code> - Type of scan (count, scan, grid_scan, etc.)</li>
+<li>[ ] <code>scan_id</code> - Human-readable sequential scan number</li>
+<li>[ ] <code>time_start</code> - Unix timestamp of run start</li>
+</ul>
+<h4 id="experimentrun-event-data">ExperimentRun (Event Data)</h4>
+<ul>
+<li>[ ] <code>bluesky_descriptor_uid</code> - Reference to EventDescriptor</li>
+<li>[ ] <code>seq_num</code> - Sequence number within the run</li>
+<li>[ ] <code>event_timestamp</code> - Timestamp of the event</li>
+</ul>
+<h4 id="datafile-resourcedatum">DataFile (Resource/Datum)</h4>
+<ul>
+<li>[ ] <code>bluesky_resource_uid</code> - Reference to Resource document</li>
+<li>[ ] <code>bluesky_datum_id</code> - Reference to specific Datum</li>
+<li>[ ] <code>resource_path</code> - Root path for external files</li>
+<li>[ ] <code>resource_spec</code> - Handler specification (e.g., 'AD_HDF5', 'NPY_SEQ')</li>
+</ul>
+<h3 id="3-devicesignal-mapping-priority-medium">3. Device/Signal Mapping (Priority: Medium)</h3>
+<p>Map ophyd device hierarchy to Instrument classes:</p>
+<ul>
+<li>[ ] Consider adding generic <code>device_name</code> and <code>signal_name</code> fields</li>
+<li>[ ] Map motor positions to experimental conditions</li>
+<li>[ ] Map detector configurations to instrument settings</li>
+<li>[ ] Support for area detector (AD) metadata</li>
+</ul>
+<h3 id="4-stream-support-priority-medium">4. Stream Support (Priority: Medium)</h3>
+<p>Bluesky supports multiple data streams per run (primary, baseline, monitors):</p>
+<ul>
+<li>[ ] Consider how to represent multiple streams in a Study</li>
+<li>[ ] Map baseline readings (pre/post scan snapshots)</li>
+<li>[ ] Support monitor streams (asynchronous readings)</li>
+</ul>
+<h3 id="5-validation-examples-priority-low">5. Validation Examples (Priority: Low)</h3>
+<ul>
+<li>[ ] Create example with full Bluesky field coverage</li>
+<li>[ ] Create example from real ALS Bluesky data (SIBYLS is a good candidate - existing examples in repo)</li>
+<li>[ ] Test conversion from databroker export</li>
+<li>[ ] Extend existing <code>SAXSInstrument-sibyls.yaml</code> and <code>BeamlineInstrument-sibyls.yaml</code> with Bluesky fields</li>
+</ul>
+<h3 id="6-conversion-utilities-priority-low">6. Conversion Utilities (Priority: Low)</h3>
+<ul>
+<li>[ ] Python utility: databroker → lambda-ber-schema YAML export</li>
+<li>[ ] Python utility: lambda-ber-schema → Bluesky documents (for replay)</li>
+<li>[ ] Integration with tiled for serving lambda-ber-schema data</li>
+</ul>
+<h2 id="entity-mapping-reference">Entity Mapping Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Bluesky Document</th>
+<th>lambda-ber-schema</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RunStart</td>
+<td>Study</td>
+<td>Run-level metadata, sample info</td>
+</tr>
+<tr>
+<td>RunStop</td>
+<td>Study</td>
+<td>Exit status, num_events summary</td>
+</tr>
+<tr>
+<td>EventDescriptor</td>
+<td>-</td>
+<td>Describes data stream schema</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>ExperimentRun</td>
+<td>Measurement data points</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>DataFile</td>
+<td>External file references</td>
+</tr>
+<tr>
+<td>Datum</td>
+<td>DataFile</td>
+<td>Specific data within Resource</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Sample</td>
+<td>Bluesky stores in RunStart metadata</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Instrument</td>
+<td>Bluesky stores in RunStart metadata</td>
+</tr>
+</tbody>
+</table>
+<h2 id="field-mapping-reference">Field Mapping Reference</h2>
+<h3 id="runstart-study">RunStart → Study</h3>
+<table>
+<thead>
+<tr>
+<th>Bluesky</th>
+<th>lambda-ber-schema</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uid</td>
+<td>bluesky_uid</td>
+<td>36-char UUID</td>
+</tr>
+<tr>
+<td>time</td>
+<td>-</td>
+<td>Unix timestamp</td>
+</tr>
+<tr>
+<td>plan_name</td>
+<td>plan_name</td>
+<td>e.g., "count", "scan"</td>
+</tr>
+<tr>
+<td>plan_type</td>
+<td>plan_type</td>
+<td>Plan category</td>
+</tr>
+<tr>
+<td>scan_id</td>
+<td>-</td>
+<td>Sequential integer</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>principal_investigator</td>
+<td>User who ran scan</td>
+</tr>
+<tr>
+<td>project</td>
+<td>project_code</td>
+<td>Project identifier</td>
+</tr>
+<tr>
+<td>sample</td>
+<td>samples[].sample_code</td>
+<td>Sample metadata dict</td>
+</tr>
+<tr>
+<td>detectors</td>
+<td>-</td>
+<td>List of detector names</td>
+</tr>
+<tr>
+<td>motors</td>
+<td>-</td>
+<td>List of motor names</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-experimentrun">Event → ExperimentRun</h3>
+<table>
+<thead>
+<tr>
+<th>Bluesky</th>
+<th>lambda-ber-schema</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>bluesky_descriptor_uid</td>
+<td>Reference to schema</td>
+</tr>
+<tr>
+<td>seq_num</td>
+<td>-</td>
+<td>Event sequence number</td>
+</tr>
+<tr>
+<td>time</td>
+<td>-</td>
+<td>Unix timestamp</td>
+</tr>
+<tr>
+<td>data</td>
+<td>-</td>
+<td>Dict of readings</td>
+</tr>
+<tr>
+<td>timestamps</td>
+<td>-</td>
+<td>Per-key timestamps</td>
+</tr>
+<tr>
+<td>filled</td>
+<td>-</td>
+<td>External data status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resource-datafile">Resource → DataFile</h3>
+<table>
+<thead>
+<tr>
+<th>Bluesky</th>
+<th>lambda-ber-schema</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uid</td>
+<td>bluesky_resource_uid</td>
+<td>Resource identifier</td>
+</tr>
+<tr>
+<td>spec</td>
+<td>resource_spec</td>
+<td>Handler name</td>
+</tr>
+<tr>
+<td>root</td>
+<td>-</td>
+<td>Root path</td>
+</tr>
+<tr>
+<td>resource_path</td>
+<td>file_path</td>
+<td>Relative path</td>
+</tr>
+<tr>
+<td>resource_kwargs</td>
+<td>-</td>
+<td>Handler arguments</td>
+</tr>
+</tbody>
+</table>
+<h2 id="integration-considerations">Integration Considerations</h2>
+<h3 id="event-based-vs-run-based-models">Event-Based vs. Run-Based Models</h3>
+<p>Bluesky's event model is inherently streaming/event-based, while lambda-ber-schema is more run-based. Consider:</p>
+<ol>
+<li><strong>Aggregation</strong>: Multiple Bluesky Events may map to a single ExperimentRun</li>
+<li><strong>Time series</strong>: Bluesky Events with timestamps could map to repeated measurements</li>
+<li><strong>Scan types</strong>: Different Bluesky plans (step scan, fly scan, count) may need different mappings</li>
+</ol>
+<h3 id="metadata-flexibility">Metadata Flexibility</h3>
+<p>Bluesky's RunStart accepts arbitrary user metadata. Consider:</p>
+<ol>
+<li><strong>Structured fields</strong>: Map common fields (sample, user, proposal) to schema slots</li>
+<li><strong>Extension mechanism</strong>: Handle facility-specific or beamline-specific metadata</li>
+<li><strong>Validation</strong>: Balance flexibility with schema validation</li>
+</ol>
+<h3 id="external-data-references">External Data References</h3>
+<p>Bluesky's Resource/Datum system handles large external files (HDF5, TIFF stacks):</p>
+<ol>
+<li><strong>File formats</strong>: Support common area detector formats (HDF5, TIFF, CBF)</li>
+<li><strong>Lazy loading</strong>: Maintain references without embedding data</li>
+<li><strong>Checksum</strong>: Consider adding checksums for data integrity</li>
+</ol>
+<h2 id="facility-adoption">Facility Adoption</h2>
+<p>Facilities using or adopting Bluesky:</p>
+<table>
+<thead>
+<tr>
+<th>Facility</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSLS-II</td>
+<td>Production</td>
+<td>Origin of Bluesky development</td>
+</tr>
+<tr>
+<td>ALS</td>
+<td>Production</td>
+<td>SIBYLS (12.3.1) and other beamlines</td>
+</tr>
+<tr>
+<td>APS</td>
+<td>Adopting</td>
+<td>APS-U upgrade includes Bluesky</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>Evaluating</td>
+<td>Pilot projects underway</td>
+</tr>
+<tr>
+<td>ESRF</td>
+<td>Evaluating</td>
+<td>Some beamlines testing</td>
+</tr>
+<tr>
+<td>MAX IV</td>
+<td>Adopting</td>
+<td>Production on some beamlines</td>
+</tr>
+</tbody>
+</table>
+<h3 id="als-beamlines-using-bluesky">ALS Beamlines Using Bluesky</h3>
+<table>
+<thead>
+<tr>
+<th>Beamline</th>
+<th>Techniques</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIBYLS (12.3.1)</td>
+<td>SAXS, SEC-SAXS, crystallography</td>
+<td>High-throughput with mail-in service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-work">Related Work</h2>
+<ul>
+<li><strong>ISPyB integration</strong> (<code>docs/todos/ispyb.md</code>): Complementary - ISPyB for MX LIMS, Bluesky for data acquisition</li>
+<li><strong>NeXus alignment</strong> (<code>docs/background/nexus.md</code>): Bluesky can write NeXus/HDF5 via suitcase-nexus</li>
+<li><strong>NSLS2 integration</strong> (<code>docs/ideas/nsls2-integration.md</code>): Overlaps - NSLS2 metadata could come from Bluesky</li>
+</ul>
+<h2 id="contact">Contact</h2>
+<p>For questions about Bluesky:
+- Bluesky project: bluesky@bnl.gov
+- NSLS-II Data Science: Dan Allan (dallan@bnl.gov)
+- Documentation: https://blueskyproject.io/</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ispyb-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISPyB Variants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sql-ddl-sources" class="md-nav__link">
     <span class="md-ellipsis">
       SQL DDL Sources
@@ -1103,10 +1112,39 @@
 <ul>
 <li><a href="https://github.com/DiamondLightSource/ispyb-database">ISPyB Database (Diamond)</a> - Main SQL DDL source</li>
 <li><a href="https://github.com/ispyb/ispyb-database-modeling">ISPyB Database Modeling</a> - Schema documentation</li>
+<li><a href="https://github.com/ispyb/py-ispyb">py-ispyb Python API</a></li>
 <li><a href="https://academic.oup.com/bioinformatics/article/27/22/3186/195018">ISPyB Publication</a></li>
 <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4453979/">SynchWeb Interface</a></li>
-<li><a href="https://ispyb.readthedocs.io/en/latest/">py-ispyb API</a> - Python API for ISPyB</li>
 </ul>
+<h2 id="ispyb-variants">ISPyB Variants</h2>
+<p>There are two main ISPyB implementations that have diverged over time:</p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Repository</th>
+<th>Used At</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Diamond ISPyB</strong></td>
+<td><code>DiamondLightSource/ispyb-database</code></td>
+<td>Diamond Light Source</td>
+<td>Original reference implementation</td>
+</tr>
+<tr>
+<td><strong>Community ISPyB</strong></td>
+<td><code>ispyb/ispyb-database-modeling</code></td>
+<td>ESRF, MAX IV, SOLEIL, ALBA</td>
+<td>Multi-facility collaboration, more active schema development</td>
+</tr>
+</tbody>
+</table>
+<p>The core schema (DataCollection, AutoProc*, BLSample, etc.) is shared, but extensions and APIs differ. The <code>py-ispyb</code> Python API primarily targets the community version.</p>
+<p>For lambda-ber-schema integration, the mappings should work with both variants since they target the common core schema elements.
+- <a href="https://ispyb.readthedocs.io/en/latest/">py-ispyb API</a> - Python API for ISPyB</p>
 <h2 id="sql-ddl-sources">SQL DDL Sources</h2>
 <p>The authoritative DDL is in <a href="https://github.com/DiamondLightSource/ispyb-database">DiamondLightSource/ispyb-database</a>:</p>
 <pre><code>schemas/ispyb/

@@ -511,6 +511,17 @@
 
 
 
+      ExperimentRun : daq_system
+
+
+
+
+
+        ExperimentRun --&gt; "0..1" DataAcquisitionSystemEnum : daq_system
+        click DataAcquisitionSystemEnum href "../DataAcquisitionSystemEnum/"
+
+
+
       ExperimentRun : data_collection_strategy
 
 
@@ -1030,6 +1041,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../daq_system/">daq_system</a></td>
+<td>0..1 <br/> <a href="../DataAcquisitionSystemEnum/">DataAcquisitionSystemEnum</a></td>
+<td>Data acquisition system used to collect this experiment</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../magnification/">magnification</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Magnification used during data collection</td>
@@ -1480,6 +1497,14 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used to collect this experiment
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
   magnification:
     name: magnification
     description: Magnification used during data collection
@@ -2108,6 +2133,16 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used to collect this experiment
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: daq_system
+    owner: ExperimentRun
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
   magnification:
     name: magnification
     description: Magnification used during data collection

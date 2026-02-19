@@ -954,6 +954,11 @@
 <td>High-throughput macromolecular crystallography beamline</td>
 </tr>
 <tr>
+<td>ALS_BL832</td>
+<td>None</td>
+<td>Hard X-ray micro-tomography beamline for non-destructive 3D imaging</td>
+</tr>
+<tr>
 <td>ALS_BL1222</td>
 <td>None</td>
 <td>High-throughput macromolecular crystallography beamline</td>
@@ -1223,6 +1228,31 @@ permissible_values:
     title: ALS BL8.3.1
     aliases:
     - BL8.3.1
+  ALS_BL832:
+    text: ALS_BL832
+    description: Hard X-ray micro-tomography beamline for non-destructive 3D imaging.
+      Provides high-resolution micro-CT capabilities for biological, geological, and
+      materials samples. Supports absorption and phase contrast imaging modes.
+    annotations:
+      facility:
+        tag: facility
+        value: FacilityEnum:ALS
+      beamline_id:
+        tag: beamline_id
+        value: 8.3.2
+      techniques:
+        tag: techniques
+        value: TechniqueEnum:xray_tomography
+      doe_beamline:
+        tag: doe_beamline
+        value: 'true'
+      website:
+        tag: website
+        value: https://microct.lbl.gov/
+    title: ALS BL8.3.2
+    aliases:
+    - BL8.3.2
+    - microCT
   ALS_BL1222:
     text: ALS_BL1222
     description: High-throughput macromolecular crystallography beamline

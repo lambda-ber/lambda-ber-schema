@@ -439,6 +439,17 @@
 
       BeamlineInstrument : beamline_id
 
+      BeamlineInstrument : control_system
+
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" ControlSystemEnum : control_system
+        click ControlSystemEnum href "../ControlSystemEnum/"
+
+
+
       BeamlineInstrument : current_status
 
 
@@ -447,6 +458,17 @@
 
         BeamlineInstrument --&gt; "0..1" InstrumentStatusEnum : current_status
         click InstrumentStatusEnum href "../InstrumentStatusEnum/"
+
+
+
+      BeamlineInstrument : daq_system
+
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" DataAcquisitionSystemEnum : daq_system
+        click DataAcquisitionSystemEnum href "../DataAcquisitionSystemEnum/"
 
 
 
@@ -503,6 +525,17 @@
 
 
       BeamlineInstrument : instrument_code
+
+      BeamlineInstrument : lims_system
+
+
+
+
+
+        BeamlineInstrument --&gt; "0..1" LIMSSystemEnum : lims_system
+        click LIMSSystemEnum href "../LIMSSystemEnum/"
+
+
 
       BeamlineInstrument : mail_in_service
 
@@ -644,6 +677,24 @@
 <td><a href="../website/">website</a></td>
 <td>0..1 <br/> <a href="../Uri/">Uri</a></td>
 <td>Beamline website URL</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lims_system/">lims_system</a></td>
+<td>0..1 <br/> <a href="../LIMSSystemEnum/">LIMSSystemEnum</a></td>
+<td>Laboratory Information Management System used at this beamline</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../daq_system/">daq_system</a></td>
+<td>0..1 <br/> <a href="../DataAcquisitionSystemEnum/">DataAcquisitionSystemEnum</a></td>
+<td>Data acquisition system used for experiment orchestration</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../control_system/">control_system</a></td>
+<td>0..1 <br/> <a href="../ControlSystemEnum/">ControlSystemEnum</a></td>
+<td>Low-level control system for device communication</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -845,6 +896,31 @@ attributes:
     domain_of:
     - BeamlineInstrument
     range: uri
+  lims_system:
+    name: lims_system
+    description: Laboratory Information Management System used at this beamline
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    range: LIMSSystemEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used for experiment orchestration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
+  control_system:
+    name: control_system
+    description: Low-level control system for device communication
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    range: ControlSystemEnum
 
 </code></pre>
 </details>
@@ -960,6 +1036,37 @@ attributes:
     domain_of:
     - BeamlineInstrument
     range: uri
+  lims_system:
+    name: lims_system
+    description: Laboratory Information Management System used at this beamline
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: lims_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    range: LIMSSystemEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used for experiment orchestration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: daq_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
+  control_system:
+    name: control_system
+    description: Low-level control system for device communication
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: control_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    range: ControlSystemEnum
   instrument_code:
     name: instrument_code
     description: Human-friendly facility or laboratory identifier for the instrument
