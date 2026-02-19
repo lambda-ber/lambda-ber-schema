@@ -3,6 +3,7 @@
 import json
 import threading
 import time
+from concurrent.futures import ThreadPoolExecutor as StdThreadPoolExecutor
 
 import pytest
 
@@ -123,6 +124,77 @@ class TestBatchLoader:
         assert (tmp_path / "errors.log").exists()
         assert "E3: RuntimeError: boom" in (
             tmp_path / "errors.log").read_text()
+
+    def test_load_all_concurrent_limits_in_flight_futures(self, mocker, tmp_path):
+        """Concurrent mode should keep in-flight futures bounded."""
+        entries = [f"E{i}" for i in range(40)]
+        loader = DummyLoader(entries=entries, delay_seconds=0.02)
+
+        class TrackingExecutor(StdThreadPoolExecutor):
+            instances: list["TrackingExecutor"] = []
+
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self._tracking_lock = threading.Lock()
+                self.in_flight = 0
+                self.max_in_flight = 0
+                TrackingExecutor.instances.append(self)
+
+            def submit(self, *args, **kwargs):
+                future = super().submit(*args, **kwargs)
+                with self._tracking_lock:
+                    self.in_flight += 1
+                    self.max_in_flight = max(
+                        self.max_in_flight, self.in_flight)
+
+                def _decrement(_future):
+                    with self._tracking_lock:
+                        self.in_flight -= 1
+
+                future.add_done_callback(_decrement)
+                return future
+
+        mocker.patch(
+            "lambda_ber_schema.loaders.batch.ThreadPoolExecutor", TrackingExecutor
+        )
+
+        batch = BatchLoader(
+            loader=loader,
+            output_dir=tmp_path,
+            requests_per_second=1000.0,
+            max_workers=2,
+        )
+        summary = batch.load_all(format="yaml")
+
+        assert summary["total_entries"] == 40
+        assert summary["successful"] == 40
+        assert summary["failed"] == 0
+        assert TrackingExecutor.instances
+        assert TrackingExecutor.instances[0].max_in_flight <= 4
+
+    def test_load_all_concurrent_rate_limits_submission(self, mocker, tmp_path):
+        """Concurrent mode should apply request-interval throttling on submit."""
+        sleep_calls: list[float] = []
+
+        def fake_sleep(seconds: float) -> None:
+            sleep_calls.append(seconds)
+
+        mocker.patch("lambda_ber_schema.loaders.batch.time.sleep",
+                     side_effect=fake_sleep)
+
+        loader = DummyLoader(entries=["A1", "B2", "C3"])
+        batch = BatchLoader(
+            loader=loader,
+            output_dir=tmp_path,
+            requests_per_second=0.5,  # 2 seconds per request
+            max_workers=2,
+        )
+        summary = batch.load_all(format="yaml")
+
+        assert summary["total_entries"] == 3
+        assert summary["successful"] == 3
+        assert summary["failed"] == 0
+        assert any(seconds > 0 for seconds in sleep_calls)
 
     def test_load_all_resume_skips_completed_from_progress(self, tmp_path):
         """Entries already in progress file should not be reloaded."""
