@@ -129,6 +129,7 @@ prefixes:
   PaNET: http://purl.org/pan-science/PaNET/PaNET
   UO: http://purl.obolibrary.org/obo/UO_
   simplescattering: https://www.simplescattering.com/open_dataset/
+  pdb: https://files.rcsb.org/download/
 
 imports:
   - linkml:types
