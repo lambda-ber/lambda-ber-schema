@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-13T18:59:08
+# Generation date: 2026-02-19T16:33:04
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -163,7 +163,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post3.dev0+a53f7f0"
+version = "0.1.2.post61.dev0+06d3c31"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -1306,6 +1306,9 @@ class BeamlineInstrument(Instrument):
     sample_changer_capacity: Optional[Union[dict, "QuantityValue"]] = None
     mail_in_service: Optional[Union[bool, Bool]] = None
     website: Optional[Union[str, URI]] = None
+    lims_system: Optional[Union[str, "LIMSSystemEnum"]] = None
+    daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
+    control_system: Optional[Union[str, "ControlSystemEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1343,6 +1346,15 @@ class BeamlineInstrument(Instrument):
         if self.website is not None and not isinstance(self.website, URI):
             self.website = URI(self.website)
 
+        if self.lims_system is not None and not isinstance(self.lims_system, LIMSSystemEnum):
+            self.lims_system = LIMSSystemEnum(self.lims_system)
+
+        if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
+            self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
+
+        if self.control_system is not None and not isinstance(self.control_system, ControlSystemEnum):
+            self.control_system = ControlSystemEnum(self.control_system)
+
         super().__post_init__(**kwargs)
 
 
@@ -1369,6 +1381,7 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
+    daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
     magnification: Optional[Union[dict, "QuantityValue"]] = None
     calibrated_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     camera_binning: Optional[Union[dict, "QuantityValue"]] = None
@@ -1454,6 +1467,9 @@ class ExperimentRun(NamedThing):
 
         if self.processing_status is not None and not isinstance(self.processing_status, ProcessingStatusEnum):
             self.processing_status = ProcessingStatusEnum(self.processing_status)
+
+        if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
+            self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
 
         if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
             self.magnification = QuantityValue(**as_dict(self.magnification))
@@ -5837,6 +5853,107 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
         description="Experimental methods for structure determination",
     )
 
+class LIMSSystemEnum(EnumDefinitionImpl):
+    """
+    Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples,
+    experiments, and data workflows. These systems track samples from shipment through data collection and processing.
+    """
+    ispyb = PermissibleValue(
+        text="ispyb",
+        title="ISPyB (Community)",
+        description="""Information System for Protein crystallography Beamlines - the community-maintained variant developed collaboratively by ESRF, MAX IV, SOLEIL, ALBA, and other facilities. Provides comprehensive tracking of samples, data collections, and processing results for macromolecular crystallography. The py-ispyb Python API targets this variant.""")
+    ispyb_diamond = PermissibleValue(
+        text="ispyb_diamond",
+        title="ISPyB (Diamond)",
+        description="""Diamond Light Source variant of ISPyB, the original reference implementation. Tightly integrated with Diamond's infrastructure and SynchWeb web interface. Shares core schema with community ISPyB but has diverged in extensions and APIs.""")
+    icat = PermissibleValue(
+        text="icat",
+        title="ICAT",
+        description="""ICAT is a metadata catalogue and data management system designed to support large facility experimental data. Used primarily at neutron and photon sources for cataloging experimental data with rich metadata and providing data access APIs.""")
+    mxlive = PermissibleValue(
+        text="mxlive",
+        title="MXLive",
+        description="""Web-based LIMS developed at the Canadian Light Source for macromolecular crystallography beamlines. Provides sample tracking, data collection scheduling, and integration with automated data processing pipelines.""")
+    mxcube = PermissibleValue(
+        text="mxcube",
+        title="MXCuBE",
+        description="""Macromolecular Crystallography Beamline Control Unit Environment - a unified beamline control and experiment management system. Originally developed at ESRF, now a collaborative project. MXCuBE3 is the modern web-based version.""")
+    user_office = PermissibleValue(
+        text="user_office",
+        title="User Office System",
+        description="""Generic facility user office or proposal management system for tracking beam time proposals, user access, and administrative metadata.""")
+
+    _defn = EnumDefinition(
+        name="LIMSSystemEnum",
+        description="""Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.""",
+    )
+
+class DataAcquisitionSystemEnum(EnumDefinitionImpl):
+    """
+    Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems
+    coordinate hardware, execute scan sequences, and stream data and metadata during experiments.
+    """
+    bluesky = PermissibleValue(
+        text="bluesky",
+        title="Bluesky",
+        description="""Event-based data acquisition framework developed at NSLS-II (Brookhaven National Laboratory). Uses a streaming document model with RunStart, Event, and RunStop documents. Built on Python with ophyd for hardware abstraction and databroker for data access. Increasingly adopted at ALS, APS, and international facilities.""")
+    spec = PermissibleValue(
+        text="spec",
+        title="SPEC",
+        description="""Legacy macro-based data acquisition system from Certified Scientific Software. Long-standing standard at synchrotron beamlines, using a command-line interface with macro scripting. Still in use at many facilities but being replaced by modern alternatives.""")
+    sardana = PermissibleValue(
+        text="sardana",
+        title="Sardana",
+        description="""Tango-based data acquisition and control system developed at ALBA. Provides a modular framework for beamline control with macro execution, scan management, and integration with Tango device servers.""")
+    gda = PermissibleValue(
+        text="gda",
+        title="GDA",
+        description="""Generic Data Acquisition - Java-based data acquisition framework developed at Diamond Light Source. Provides beamline control, scan execution, and integration with EPICS and other control systems.""")
+    mxcube = PermissibleValue(
+        text="mxcube",
+        title="MXCuBE (Data Collection)",
+        description="""MXCuBE used as data collection interface for macromolecular crystallography. Provides automated data collection strategies, sample centering, and integration with processing pipelines. See also mxcube in LIMSSystemEnum for sample management.""")
+    blu_ice = PermissibleValue(
+        text="blu_ice",
+        title="Blu-Ice",
+        description="""Data collection software developed at SSRL (Stanford Synchrotron Radiation Lightsource) for macromolecular crystallography. Provides graphical interface for sample positioning, data collection strategy, and beamline control.""")
+    jblue_ice = PermissibleValue(
+        text="jblue_ice",
+        title="JBluIce",
+        description="""Java-based variant of Blu-Ice deployed at GM/CA (General Medicine and Cancer Institutes Collaborative Access Team) and SER-CAT beamlines at APS.""")
+
+    _defn = EnumDefinition(
+        name="DataAcquisitionSystemEnum",
+        description="""Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.""",
+    )
+
+class ControlSystemEnum(EnumDefinitionImpl):
+    """
+    Low-level control systems and middleware frameworks for device communication and hardware abstraction at
+    experimental facilities. These provide the foundation layer that data acquisition systems build upon.
+    """
+    epics = PermissibleValue(
+        text="epics",
+        title="EPICS",
+        description="""Experimental Physics and Industrial Control System - open-source control system framework widely used at accelerators and large experimental facilities worldwide. Provides distributed control with Channel Access protocol, IOCs (Input/Output Controllers), and extensive tool ecosystem.""")
+    tango = PermissibleValue(
+        text="tango",
+        title="Tango Controls",
+        description="""Object-oriented distributed control system developed at ESRF. Provides device servers, a naming service, and tools for building control applications. Widely adopted at European synchrotrons and other facilities.""")
+    labview = PermissibleValue(
+        text="labview",
+        title="LabVIEW",
+        description="""Graphical programming environment from National Instruments for instrument control and data acquisition. Used at some laboratory and smaller-scale facilities for custom instrument integration.""")
+    opi = PermissibleValue(
+        text="opi",
+        title="OPI",
+        description="""Operator Interface - legacy control system used at ALS before EPICS adoption. Historical reference for older beamline configurations.""")
+
+    _defn = EnumDefinition(
+        name="ControlSystemEnum",
+        description="""Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.""",
+    )
+
 class SampleRoleEnum(EnumDefinitionImpl):
     """
     Role of a sample in a study
@@ -7474,6 +7591,15 @@ slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDABER.mail_in_service, 
 slots.beamlineInstrument__website = Slot(uri=LAMBDABER.website, name="beamlineInstrument__website", curie=LAMBDABER.curie('website'),
                    model_uri=LAMBDABER.beamlineInstrument__website, domain=None, range=Optional[Union[str, URI]])
 
+slots.beamlineInstrument__lims_system = Slot(uri=LAMBDABER.lims_system, name="beamlineInstrument__lims_system", curie=LAMBDABER.curie('lims_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__lims_system, domain=None, range=Optional[Union[str, "LIMSSystemEnum"]])
+
+slots.beamlineInstrument__daq_system = Slot(uri=LAMBDABER.daq_system, name="beamlineInstrument__daq_system", curie=LAMBDABER.curie('daq_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
+
+slots.beamlineInstrument__control_system = Slot(uri=LAMBDABER.control_system, name="beamlineInstrument__control_system", curie=LAMBDABER.curie('control_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__control_system, domain=None, range=Optional[Union[str, "ControlSystemEnum"]])
+
 slots.experimentRun__experiment_code = Slot(uri=LAMBDABER.experiment_code, name="experimentRun__experiment_code", curie=LAMBDABER.curie('experiment_code'),
                    model_uri=LAMBDABER.experimentRun__experiment_code, domain=None, range=str)
 
@@ -7503,6 +7629,9 @@ slots.experimentRun__raw_data_location = Slot(uri=LAMBDABER.raw_data_location, n
 
 slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, name="experimentRun__processing_status", curie=LAMBDABER.curie('processing_status'),
                    model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
+
+slots.experimentRun__daq_system = Slot(uri=LAMBDABER.daq_system, name="experimentRun__daq_system", curie=LAMBDABER.curie('daq_system'),
+                   model_uri=LAMBDABER.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
 slots.experimentRun__magnification = Slot(uri=LAMBDABER.magnification, name="experimentRun__magnification", curie=LAMBDABER.curie('magnification'),
                    model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])

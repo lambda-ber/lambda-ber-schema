@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.0.0.post3.dev0+a53f7f0
+// version: 0.1.2.post61.dev0+06d3c31
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -54,6 +54,9 @@ message BeamlineInstrument
   quantityValue sampleChangerCapacity = 0
   boolean mailInService = 0
   uri website = 0
+  lIMSSystemEnum limsSystem = 0
+  dataAcquisitionSystemEnum daqSystem = 0
+  controlSystemEnum controlSystem = 0
  }
 // Measured or calculated biophysical properties
 message BiophysicalProperty
@@ -347,6 +350,7 @@ message ExperimentRun
   qualityMetrics qualityMetrics = 0
   string rawDataLocation = 0
   processingStatusEnum processingStatus = 0
+  dataAcquisitionSystemEnum daqSystem = 0
   quantityValue magnification = 0
   quantityValue calibratedPixelSize = 0
   quantityValue cameraBinning = 0
