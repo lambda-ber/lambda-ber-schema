@@ -132,6 +132,10 @@ class BatchLoader:
         self.loader = loader
         self.output_dir = output_dir
         self.cache_dir = cache_dir or output_dir / ".cache"
+
+        if requests_per_second <= 0:
+            raise ValueError("requests_per_second must be greater than 0")
+
         self.requests_per_second = requests_per_second
         self.max_workers = max_workers
         self.request_interval = 1.0 / requests_per_second
