@@ -13,7 +13,7 @@ import json
 import logging
 import threading
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -148,11 +148,15 @@ class BatchLoader:
         self.progress = BatchProgress(self.output_dir / "progress.json")
 
         # Setup caching with extended TTL for batch operations (7 days)
-        if hasattr(self.loader, "cache"):
-            self.loader.cache = ResponseCache(
-                cache_dir=self.cache_dir,
-                enabled=True,
-                ttl=timedelta(days=7),
+        if hasattr(self.loader, "_cache"):
+            object.__setattr__(
+                self.loader,
+                "_cache",
+                ResponseCache(
+                    cache_dir=self.cache_dir,
+                    enabled=True,
+                    ttl=timedelta(days=7),
+                ),
             )
 
         # Error log
@@ -344,42 +348,70 @@ class BatchLoader:
 
         # Process entries
         if self.max_workers > 1:
-            # Concurrent loading
+            # Concurrent loading with bounded in-flight futures and rate-limited submission
             with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-                futures = {
-                    executor.submit(self._load_single, entry_id, format): entry_id
-                    for entry_id in pending
-                }
+                max_in_flight = max(self.max_workers * 2, 1)
+                pending_iter = iter(pending)
+                in_flight: dict[Any, str] = {}
+                next_submit_at = time.monotonic()
 
-                for future in as_completed(futures):
-                    entry_id, success, error = future.result()
+                def submit_one() -> bool:
+                    nonlocal next_submit_at
+                    try:
+                        entry_id = next(pending_iter)
+                    except StopIteration:
+                        return False
 
-                    if success:
-                        self.progress.mark_completed(entry_id)
-                        success_count += 1
-                    else:
-                        self.progress.mark_failed(
-                            entry_id, error or "Unknown error")
-                        fail_count += 1
-                        with open(self.error_log, "a") as f:
-                            f.write(
-                                f"{datetime.now().isoformat()} {entry_id}: {error}\n")
+                    sleep_for = next_submit_at - time.monotonic()
+                    if sleep_for > 0:
+                        time.sleep(sleep_for)
 
-                    # Progress report every 100 entries
-                    total_done = success_count + fail_count
-                    if total_done % 100 == 0:
-                        elapsed = time.time() - start_time
-                        rate = total_done / elapsed if elapsed > 0 else 0
-                        remaining = len(all_entries) - total_done
-                        eta = remaining / rate if rate > 0 else 0
-                        logger.info(
-                            "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
-                            total_done,
-                            len(all_entries),
-                            rate,
-                            eta / 60,
-                        )
-                        self.progress.save()
+                    future = executor.submit(
+                        self._load_single, entry_id, format)
+                    in_flight[future] = entry_id
+                    next_submit_at = time.monotonic() + self.request_interval
+                    return True
+
+                while len(in_flight) < max_in_flight and submit_one():
+                    pass
+
+                while in_flight:
+                    done, _ = wait(set(in_flight.keys()),
+                                   return_when=FIRST_COMPLETED)
+
+                    for future in done:
+                        in_flight.pop(future, None)
+                        entry_id, success, error = future.result()
+
+                        if success:
+                            self.progress.mark_completed(entry_id)
+                            success_count += 1
+                        else:
+                            self.progress.mark_failed(
+                                entry_id, error or "Unknown error")
+                            fail_count += 1
+                            with open(self.error_log, "a") as f:
+                                f.write(
+                                    f"{datetime.now().isoformat()} {entry_id}: {error}\n")
+
+                        # Progress report every 100 entries
+                        total_done = success_count + fail_count
+                        if total_done % 100 == 0:
+                            elapsed = time.time() - start_time
+                            rate = total_done / elapsed if elapsed > 0 else 0
+                            remaining = len(all_entries) - total_done
+                            eta = remaining / rate if rate > 0 else 0
+                            logger.info(
+                                "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
+                                total_done,
+                                len(all_entries),
+                                rate,
+                                eta / 60,
+                            )
+                            self.progress.save()
+
+                    while len(in_flight) < max_in_flight and submit_one():
+                        pass
 
         else:
             # Sequential loading with rate limiting
