@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post3.dev0+a53f7f0
+# version: 0.1.2.post61.dev0+06d3c31
 BASE <https://w3id.org/lambda-ber-schema/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -150,7 +150,23 @@ linkml:Sparqlpath xsd:string
           <q_range_max> @<QuantityValue> ? ;
           <sample_changer_capacity> @<QuantityValue> ? ;
           <mail_in_service> @linkml:Boolean ? ;
-          <website> @linkml:Uri ?
+          <website> @linkml:Uri ? ;
+          <lims_system> [ <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#ispyb>
+             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#ispyb_diamond>
+             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#icat> <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#mxlive>
+             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#mxcube>
+             <https://w3id.org/lambda-ber-schema/LIMSSystemEnum#user_office> ] ? ;
+          <daq_system> [ <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#bluesky>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#spec>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#sardana>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#gda>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#mxcube>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#blu_ice>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
+          <control_system> [ <https://w3id.org/lambda-ber-schema/ControlSystemEnum#epics>
+             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#tango>
+             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#labview>
+             <https://w3id.org/lambda-ber-schema/ControlSystemEnum#opi> ] ?
        ) ;
        rdf:type [ <BeamlineInstrument> ]
     )
@@ -590,6 +606,13 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#processing>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#completed>
              <https://w3id.org/lambda-ber-schema/ProcessingStatusEnum#failed> ] ? ;
+          <daq_system> [ <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#bluesky>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#spec>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#sardana>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#gda>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#mxcube>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#blu_ice>
+             <https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum#jblue_ice> ] ? ;
           <magnification> @<QuantityValue> ? ;
           <calibrated_pixel_size> @<QuantityValue> ? ;
           <camera_binning> @<QuantityValue> ? ;

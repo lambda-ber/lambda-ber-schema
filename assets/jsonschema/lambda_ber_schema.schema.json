@@ -306,9 +306,17 @@
                         "null"
                     ]
                 },
+                "control_system": {
+                    "$ref": "#/$defs/ControlSystemEnum",
+                    "description": "Low-level control system for device communication"
+                },
                 "current_status": {
                     "$ref": "#/$defs/InstrumentStatusEnum",
                     "description": "Current operational status"
+                },
+                "daq_system": {
+                    "$ref": "#/$defs/DataAcquisitionSystemEnum",
+                    "description": "Data acquisition system used for experiment orchestration"
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -369,6 +377,10 @@
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
+                },
+                "lims_system": {
+                    "$ref": "#/$defs/LIMSSystemEnum",
+                    "description": "Laboratory Information Management System used at this beamline"
                 },
                 "mail_in_service": {
                     "description": "Whether mail-in sample service is available",
@@ -954,6 +966,17 @@
                 "disordered"
             ],
             "title": "ConformationalStateEnum",
+            "type": "string"
+        },
+        "ControlSystemEnum": {
+            "description": "Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.",
+            "enum": [
+                "epics",
+                "tango",
+                "labview",
+                "opi"
+            ],
+            "title": "ControlSystemEnum",
             "type": "string"
         },
         "CryoEMInstrument": {
@@ -1600,6 +1623,20 @@
                 "free_interface_diffusion"
             ],
             "title": "CrystallizationMethodEnum",
+            "type": "string"
+        },
+        "DataAcquisitionSystemEnum": {
+            "description": "Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.",
+            "enum": [
+                "bluesky",
+                "spec",
+                "sardana",
+                "gda",
+                "mxcube",
+                "blu_ice",
+                "jblue_ice"
+            ],
+            "title": "DataAcquisitionSystemEnum",
             "type": "string"
         },
         "DataCollectionStrategy": {
@@ -2569,6 +2606,10 @@
                         }
                     ],
                     "description": "Coma aberration in nanometers"
+                },
+                "daq_system": {
+                    "$ref": "#/$defs/DataAcquisitionSystemEnum",
+                    "description": "Data acquisition system used to collect this experiment"
                 },
                 "data_collection_strategy": {
                     "anyOf": [
@@ -4417,6 +4458,19 @@
                 "disulfide"
             ],
             "title": "InteractionTypeEnum",
+            "type": "string"
+        },
+        "LIMSSystemEnum": {
+            "description": "Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.",
+            "enum": [
+                "ispyb",
+                "ispyb_diamond",
+                "icat",
+                "mxlive",
+                "mxcube",
+                "user_office"
+            ],
+            "title": "LIMSSystemEnum",
             "type": "string"
         },
         "LigandInteraction": {
@@ -9777,5 +9831,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.0.0.post3.dev0+a53f7f0"
+    "version": "0.1.2.post61.dev0+06d3c31"
 }

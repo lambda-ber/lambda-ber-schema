@@ -2,7 +2,7 @@
   "name": "lambda-ber-schema",
   "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and\n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "https://w3id.org/lambda-ber-schema/",
-  "version": "0.0.0.post3.dev0+a53f7f0",
+  "version": "0.1.2.post61.dev0+06d3c31",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -3276,6 +3276,305 @@
         {
           "text": "fiber_diffraction",
           "description": "Fiber diffraction"
+        }
+      ]
+    },
+    {
+      "name": "LIMSSystemEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/LIMSSystemEnum",
+      "description": "Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "ispyb",
+          "description": "Information System for Protein crystallography Beamlines - the community-maintained variant developed collaboratively by ESRF, MAX IV, SOLEIL, ALBA, and other facilities. Provides comprehensive tracking of samples, data collections, and processing results for macromolecular crystallography. The py-ispyb Python API targets this variant.",
+          "annotations": [
+            {
+              "tag": "github",
+              "value": "https://github.com/ispyb/ispyb-database-modeling"
+            },
+            {
+              "tag": "api_github",
+              "value": "https://github.com/ispyb/py-ispyb"
+            },
+            {
+              "tag": "publication",
+              "value": "https://doi.org/10.1093/bioinformatics/btr535"
+            },
+            {
+              "tag": "facilities",
+              "value": "ESRF, MAX IV, SOLEIL, ALBA"
+            }
+          ],
+          "title": "ISPyB (Community)"
+        },
+        {
+          "text": "ispyb_diamond",
+          "description": "Diamond Light Source variant of ISPyB, the original reference implementation. Tightly integrated with Diamond's infrastructure and SynchWeb web interface. Shares core schema with community ISPyB but has diverged in extensions and APIs.",
+          "annotations": [
+            {
+              "tag": "github",
+              "value": "https://github.com/DiamondLightSource/ispyb-database"
+            },
+            {
+              "tag": "synchweb_publication",
+              "value": "https://doi.org/10.1107/S1600577515005317"
+            },
+            {
+              "tag": "facilities",
+              "value": "Diamond Light Source"
+            }
+          ],
+          "title": "ISPyB (Diamond)"
+        },
+        {
+          "text": "icat",
+          "description": "ICAT is a metadata catalogue and data management system designed to support large facility experimental data. Used primarily at neutron and photon sources for cataloging experimental data with rich metadata and providing data access APIs.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://icatproject.org/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/icatproject"
+            },
+            {
+              "tag": "facilities",
+              "value": "ISIS, Diamond, ESRF, ILL, ORNL"
+            }
+          ],
+          "title": "ICAT"
+        },
+        {
+          "text": "mxlive",
+          "description": "Web-based LIMS developed at the Canadian Light Source for macromolecular crystallography beamlines. Provides sample tracking, data collection scheduling, and integration with automated data processing pipelines.",
+          "annotations": [
+            {
+              "tag": "facilities",
+              "value": "Canadian Light Source"
+            }
+          ],
+          "title": "MXLive"
+        },
+        {
+          "text": "mxcube",
+          "description": "Macromolecular Crystallography Beamline Control Unit Environment - a unified beamline control and experiment management system. Originally developed at ESRF, now a collaborative project. MXCuBE3 is the modern web-based version.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://mxcube.github.io/mxcube/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/mxcube"
+            },
+            {
+              "tag": "facilities",
+              "value": "ESRF, MAX IV, SOLEIL, ALBA, DESY, EMBL"
+            }
+          ],
+          "title": "MXCuBE"
+        },
+        {
+          "text": "user_office",
+          "description": "Generic facility user office or proposal management system for tracking beam time proposals, user access, and administrative metadata.",
+          "title": "User Office System"
+        }
+      ]
+    },
+    {
+      "name": "DataAcquisitionSystemEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/DataAcquisitionSystemEnum",
+      "description": "Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "bluesky",
+          "description": "Event-based data acquisition framework developed at NSLS-II (Brookhaven National Laboratory). Uses a streaming document model with RunStart, Event, and RunStop documents. Built on Python with ophyd for hardware abstraction and databroker for data access. Increasingly adopted at ALS, APS, and international facilities.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://blueskyproject.io/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/bluesky"
+            },
+            {
+              "tag": "event_model_github",
+              "value": "https://github.com/bluesky/event-model"
+            },
+            {
+              "tag": "databroker_github",
+              "value": "https://github.com/bluesky/databroker"
+            },
+            {
+              "tag": "publication",
+              "value": "https://doi.org/10.1080/08940886.2019.1608121"
+            },
+            {
+              "tag": "facilities",
+              "value": "NSLS-II, ALS (SIBYLS), APS, MAX IV"
+            }
+          ],
+          "title": "Bluesky"
+        },
+        {
+          "text": "spec",
+          "description": "Legacy macro-based data acquisition system from Certified Scientific Software. Long-standing standard at synchrotron beamlines, using a command-line interface with macro scripting. Still in use at many facilities but being replaced by modern alternatives.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://www.certif.com/content/spec/"
+            }
+          ],
+          "title": "SPEC"
+        },
+        {
+          "text": "sardana",
+          "description": "Tango-based data acquisition and control system developed at ALBA. Provides a modular framework for beamline control with macro execution, scan management, and integration with Tango device servers.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://sardana-controls.org/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/sardana-org/sardana"
+            },
+            {
+              "tag": "facilities",
+              "value": "ALBA, MAX IV, SOLEIL, DESY"
+            }
+          ],
+          "title": "Sardana"
+        },
+        {
+          "text": "gda",
+          "description": "Generic Data Acquisition - Java-based data acquisition framework developed at Diamond Light Source. Provides beamline control, scan execution, and integration with EPICS and other control systems.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://www.opengda.org/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/openGDA"
+            },
+            {
+              "tag": "facilities",
+              "value": "Diamond Light Source"
+            }
+          ],
+          "title": "GDA"
+        },
+        {
+          "text": "mxcube",
+          "description": "MXCuBE used as data collection interface for macromolecular crystallography. Provides automated data collection strategies, sample centering, and integration with processing pipelines. See also mxcube in LIMSSystemEnum for sample management.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://mxcube.github.io/mxcube/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/mxcube"
+            },
+            {
+              "tag": "facilities",
+              "value": "ESRF, MAX IV, SOLEIL, ALBA, DESY, EMBL"
+            }
+          ],
+          "title": "MXCuBE (Data Collection)"
+        },
+        {
+          "text": "blu_ice",
+          "description": "Data collection software developed at SSRL (Stanford Synchrotron Radiation Lightsource) for macromolecular crystallography. Provides graphical interface for sample positioning, data collection strategy, and beamline control.",
+          "annotations": [
+            {
+              "tag": "publication",
+              "value": "https://doi.org/10.1107/S0909049505012719"
+            },
+            {
+              "tag": "facilities",
+              "value": "SSRL"
+            }
+          ],
+          "title": "Blu-Ice"
+        },
+        {
+          "text": "jblue_ice",
+          "description": "Java-based variant of Blu-Ice deployed at GM/CA (General Medicine and Cancer Institutes Collaborative Access Team) and SER-CAT beamlines at APS.",
+          "annotations": [
+            {
+              "tag": "facilities",
+              "value": "APS (GM/CA, SER-CAT)"
+            }
+          ],
+          "title": "JBluIce"
+        }
+      ]
+    },
+    {
+      "name": "ControlSystemEnum",
+      "definition_uri": "https://w3id.org/lambda-ber-schema/ControlSystemEnum",
+      "description": "Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "permissible_values": [
+        {
+          "text": "epics",
+          "description": "Experimental Physics and Industrial Control System - open-source control system framework widely used at accelerators and large experimental facilities worldwide. Provides distributed control with Channel Access protocol, IOCs (Input/Output Controllers), and extensive tool ecosystem.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://epics-controls.org/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/epics-base"
+            },
+            {
+              "tag": "facilities",
+              "value": "Most US synchrotrons (ALS, APS, NSLS-II, SSRL), many international facilities"
+            }
+          ],
+          "title": "EPICS"
+        },
+        {
+          "text": "tango",
+          "description": "Object-oriented distributed control system developed at ESRF. Provides device servers, a naming service, and tools for building control applications. Widely adopted at European synchrotrons and other facilities.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://www.tango-controls.org/"
+            },
+            {
+              "tag": "github",
+              "value": "https://github.com/tango-controls"
+            },
+            {
+              "tag": "facilities",
+              "value": "ESRF, ALBA, MAX IV, SOLEIL, DESY, ELETTRA"
+            }
+          ],
+          "title": "Tango Controls"
+        },
+        {
+          "text": "labview",
+          "description": "Graphical programming environment from National Instruments for instrument control and data acquisition. Used at some laboratory and smaller-scale facilities for custom instrument integration.",
+          "annotations": [
+            {
+              "tag": "website",
+              "value": "https://www.ni.com/labview"
+            }
+          ],
+          "title": "LabVIEW"
+        },
+        {
+          "text": "opi",
+          "description": "Operator Interface - legacy control system used at ALS before EPICS adoption. Historical reference for older beamline configurations.",
+          "title": "OPI"
         }
       ]
     },
@@ -7230,6 +7529,45 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "beamlineInstrument__lims_system",
+      "description": "Laboratory Information Management System used at this beamline",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/lims_system",
+      "alias": "lims_system",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "LIMSSystemEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__daq_system",
+      "description": "Data acquisition system used for experiment orchestration",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/daq_system",
+      "alias": "daq_system",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "DataAcquisitionSystemEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "beamlineInstrument__control_system",
+      "description": "Low-level control system for device communication",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/control_system",
+      "alias": "control_system",
+      "owner": "BeamlineInstrument",
+      "domain_of": [
+        "BeamlineInstrument"
+      ],
+      "range": "ControlSystemEnum",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__experiment_code",
       "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
       "from_schema": "https://w3id.org/lambda-ber-schema/",
@@ -7362,6 +7700,19 @@
         "ExperimentRun"
       ],
       "range": "ProcessingStatusEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentRun__daq_system",
+      "description": "Data acquisition system used to collect this experiment",
+      "from_schema": "https://w3id.org/lambda-ber-schema/",
+      "slot_uri": "https://w3id.org/lambda-ber-schema/daq_system",
+      "alias": "daq_system",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "DataAcquisitionSystemEnum",
       "@type": "SlotDefinition"
     },
     {
@@ -16183,7 +16534,10 @@
         "beamlineInstrument__q_range_max",
         "beamlineInstrument__sample_changer_capacity",
         "beamlineInstrument__mail_in_service",
-        "beamlineInstrument__website"
+        "beamlineInstrument__website",
+        "beamlineInstrument__lims_system",
+        "beamlineInstrument__daq_system",
+        "beamlineInstrument__control_system"
       ],
       "slot_usage": {},
       "attributes": [
@@ -16251,6 +16605,24 @@
           "description": "Beamline website URL",
           "range": "uri",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "lims_system",
+          "description": "Laboratory Information Management System used at this beamline",
+          "range": "LIMSSystemEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "daq_system",
+          "description": "Data acquisition system used for experiment orchestration",
+          "range": "DataAcquisitionSystemEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "control_system",
+          "description": "Low-level control system for device communication",
+          "range": "ControlSystemEnum",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "https://w3id.org/lambda-ber-schema/BeamlineInstrument",
@@ -16276,6 +16648,7 @@
         "experimentRun__quality_metrics",
         "experimentRun__raw_data_location",
         "experimentRun__processing_status",
+        "experimentRun__daq_system",
         "experimentRun__magnification",
         "experimentRun__calibrated_pixel_size",
         "experimentRun__camera_binning",
@@ -16382,6 +16755,12 @@
           "name": "processing_status",
           "description": "Current processing status",
           "range": "ProcessingStatusEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "daq_system",
+          "description": "Data acquisition system used to collect this experiment",
+          "range": "DataAcquisitionSystemEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -21420,9 +21799,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-02-13T18:54:24",
-  "source_file_size": 158383,
-  "generation_date": "2026-02-13T18:59:02",
+  "source_file_date": "2026-02-19T16:32:55",
+  "source_file_size": 167717,
+  "generation_date": "2026-02-19T16:32:57",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

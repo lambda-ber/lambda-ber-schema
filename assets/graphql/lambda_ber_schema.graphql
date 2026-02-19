@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.0.0.post3.dev0+a53f7f0
+# version: 0.1.2.post61.dev0+06d3c31
 enum AffinityUnitEnum
   {
     molar
@@ -176,6 +176,14 @@ enum ConformationalStateEnum
     disordered
   }
 
+enum ControlSystemEnum
+  {
+    epics
+    tango
+    labview
+    opi
+  }
+
 enum CrystallizationMethodEnum
   {
     vapor_diffusion_hanging
@@ -185,6 +193,17 @@ enum CrystallizationMethodEnum
     lcp
     dialysis
     free_interface_diffusion
+  }
+
+enum DataAcquisitionSystemEnum
+  {
+    bluesky
+    spec
+    sardana
+    gda
+    mxcube
+    blu_ice
+    jblue_ice
   }
 
 enum DatabaseNameEnum
@@ -478,6 +497,16 @@ enum InteractionTypeEnum
     cation_pi
     metal_coordination
     disulfide
+  }
+
+enum LIMSSystemEnum
+  {
+    ispyb
+    ispyb_diamond
+    icat
+    mxlive
+    mxcube
+    user_office
   }
 
 enum MutationTypeEnum
@@ -805,6 +834,9 @@ type BeamlineInstrument
     sampleChangerCapacity: QuantityValue
     mailInService: Boolean
     website: Uri
+    limsSystem: LIMSSystemEnum
+    daqSystem: DataAcquisitionSystemEnum
+    controlSystem: ControlSystemEnum
   }
 
 type BiophysicalProperty
@@ -1098,6 +1130,7 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
+    daqSystem: DataAcquisitionSystemEnum
     magnification: QuantityValue
     calibratedPixelSize: QuantityValue
     cameraBinning: QuantityValue
