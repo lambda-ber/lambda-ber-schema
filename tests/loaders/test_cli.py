@@ -1,6 +1,7 @@
 """Tests for CLI commands."""
 
 import json
+import logging
 
 import pytest
 from typer.testing import CliRunner
@@ -51,6 +52,179 @@ class TestCLI:
         result = runner.invoke(app, ["etl", "pdb", "--help"])
         assert result.exit_code == 0
         assert "PDB entry ID" in result.output
+
+    def test_etl_dump_pdb_calls_load_all_with_filters(self, mocker, tmp_path):
+        """Test dump-pdb invokes BatchLoader.load_all with expected options."""
+        calls: dict[str, object] = {}
+
+        class FakeBatchLoader:
+            def __init__(self, loader, output_dir, requests_per_second, max_workers):
+                calls["loader"] = loader
+                calls["output_dir"] = output_dir
+                calls["requests_per_second"] = requests_per_second
+                calls["max_workers"] = max_workers
+
+            def load_all(self, format="yaml", limit=None, **filters):
+                calls["load_all"] = {
+                    "format": format,
+                    "limit": limit,
+                    "filters": filters,
+                }
+                return {"total_entries": 5, "successful": 5, "failed": 0}
+
+        class FakePDBLoader:
+            pass
+
+        def fake_file_handler(path):
+            assert path.parent.exists()
+            calls["batch_log_path"] = path
+            return logging.NullHandler()
+
+        mocker.patch("lambda_ber_schema.cli.PDBLoader", FakePDBLoader)
+        mocker.patch("lambda_ber_schema.cli.BatchLoader", FakeBatchLoader)
+        mocker.patch("lambda_ber_schema.cli.logging.FileHandler",
+                     side_effect=fake_file_handler)
+        mocker.patch("lambda_ber_schema.cli.logging.basicConfig")
+
+        output_dir = tmp_path / "new" / "pdb_dump"
+        result = runner.invoke(
+            app,
+            [
+                "etl",
+                "dump-pdb",
+                "--output-dir",
+                str(output_dir),
+                "--format",
+                "json",
+                "--method",
+                "EM",
+                "--limit",
+                "5",
+                "--rate",
+                "3.5",
+                "--workers",
+                "2",
+            ],
+        )
+
+        assert result.exit_code == 0
+        assert output_dir.exists()
+        assert calls["output_dir"] == output_dir
+        assert calls["requests_per_second"] == 3.5
+        assert calls["max_workers"] == 2
+        assert calls["batch_log_path"] == output_dir / "batch.log"
+        assert calls["load_all"] == {
+            "format": "json",
+            "limit": 5,
+            "filters": {"experimental_method": "EM"},
+        }
+
+    def test_etl_dump_pdb_retry_failed_path(self, mocker, tmp_path):
+        """Test dump-pdb --retry-failed invokes retry path, not load_all."""
+        calls: dict[str, object] = {}
+
+        class FakeBatchLoader:
+            def __init__(self, loader, output_dir, requests_per_second, max_workers):
+                calls["output_dir"] = output_dir
+
+            def retry_failed(self, format="yaml"):
+                calls["retry_failed"] = format
+                return {"retried": 2, "now_successful": 2, "still_failed": 0}
+
+            def load_all(self, format="yaml", limit=None, **filters):
+                calls["load_all_called"] = True
+                return {}
+
+        class FakePDBLoader:
+            pass
+
+        mocker.patch("lambda_ber_schema.cli.PDBLoader", FakePDBLoader)
+        mocker.patch("lambda_ber_schema.cli.BatchLoader", FakeBatchLoader)
+        mocker.patch("lambda_ber_schema.cli.logging.FileHandler",
+                     return_value=logging.NullHandler())
+        mocker.patch("lambda_ber_schema.cli.logging.basicConfig")
+
+        output_dir = tmp_path / "retry" / "pdb_dump"
+        result = runner.invoke(
+            app,
+            [
+                "etl",
+                "dump-pdb",
+                "--output-dir",
+                str(output_dir),
+                "--retry-failed",
+                "--format",
+                "json",
+            ],
+        )
+
+        assert result.exit_code == 0
+        assert calls["retry_failed"] == "json"
+        assert "load_all_called" not in calls
+
+    def test_etl_dump_sasbdb_calls_load_all_with_filters(self, mocker, tmp_path):
+        """Test dump-sasbdb invokes BatchLoader.load_all with expected options."""
+        calls: dict[str, object] = {}
+
+        class FakeBatchLoader:
+            def __init__(self, loader, output_dir, requests_per_second, max_workers):
+                calls["output_dir"] = output_dir
+                calls["requests_per_second"] = requests_per_second
+                calls["max_workers"] = max_workers
+
+            def load_all(self, format="yaml", limit=None, **filters):
+                calls["load_all"] = {
+                    "format": format,
+                    "limit": limit,
+                    "filters": filters,
+                }
+                return {"total_entries": 4, "successful": 4, "failed": 0}
+
+        class FakeSASBDBLoader:
+            pass
+
+        def fake_file_handler(path):
+            assert path.parent.exists()
+            calls["batch_log_path"] = path
+            return logging.NullHandler()
+
+        mocker.patch("lambda_ber_schema.cli.SASBDBLoader", FakeSASBDBLoader)
+        mocker.patch("lambda_ber_schema.cli.BatchLoader", FakeBatchLoader)
+        mocker.patch("lambda_ber_schema.cli.logging.FileHandler",
+                     side_effect=fake_file_handler)
+        mocker.patch("lambda_ber_schema.cli.logging.basicConfig")
+
+        output_dir = tmp_path / "new" / "sasbdb_dump"
+        result = runner.invoke(
+            app,
+            [
+                "etl",
+                "dump-sasbdb",
+                "--output-dir",
+                str(output_dir),
+                "--format",
+                "yaml",
+                "--type",
+                "protein",
+                "--limit",
+                "4",
+                "--rate",
+                "4.0",
+                "--workers",
+                "3",
+            ],
+        )
+
+        assert result.exit_code == 0
+        assert output_dir.exists()
+        assert calls["batch_log_path"] == output_dir / "batch.log"
+        assert calls["requests_per_second"] == 4.0
+        assert calls["max_workers"] == 3
+        assert calls["load_all"] == {
+            "format": "yaml",
+            "limit": 4,
+            "filters": {"molecular_type": "protein"},
+        }
 
 
 @pytest.mark.integration
