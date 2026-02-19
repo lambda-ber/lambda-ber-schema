@@ -1,2 +1,3 @@
-def main() -> None:
-    print("Hello from lambda-ber-schema!")
+from lambda_ber_schema.cli import main
+
+__all__ = ["main"]

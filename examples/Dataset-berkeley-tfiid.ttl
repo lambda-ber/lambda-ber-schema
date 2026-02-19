@@ -8,156 +8,46 @@
 
 lambdaber:dataset_berkeley_tfiid_2024 a lambdaber:Dataset ;
     dcterms:title "Human TFIID Transcription Complex Structural Analysis" ;
+    lambdaber:data_files lambdaber:file_map_001 ;
     lambdaber:description "Comprehensive structural characterization of human TFIID and transcription pre-initiation complex using cryo-EM at Berkeley Lab" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_tfiid_001 ;
+            lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:exp_tfiid_001 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:exp_tfiid_001 ;
+            lambdaber:preparation_id lambdaber:prep_tfiid_grid_001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_tfiid_001 ] ;
+    lambdaber:images lambdaber:img_mic_001 ;
     lambdaber:instruments lambdaber:instrument_titan_krios_001 ;
     lambdaber:keywords "Berkeley Lab",
         "TFIID",
         "cryo-EM",
         "gene regulation",
         "transcription" ;
-    lambdaber:studies lambdaber:study_tfiid_001 .
-
-lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
-    dcterms:title "TFIID complex data collection" ;
-    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
-            lambdaber:collection_mode "counting" ;
-            lambdaber:dose_per_frame [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1.2"^^xsd:float ;
-                    lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:frame_rate [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "40.0"^^xsd:float ;
-                    lambdaber:unit "frames per second" ] ;
-            lambdaber:total_dose [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "40.0"^^xsd:float ;
-                    lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:total_frames [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "8500.0"^^xsd:float ;
-                    lambdaber:unit "frames" ] ] ;
-    lambdaber:description "High-resolution cryo-EM data collection of TFIID" ;
-    lambdaber:experiment_code "EXP-TFIID-2024-001" ;
-    lambdaber:experiment_date "2024-03-20T10:00:00" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:atmosphere "High vacuum" ;
-            lambdaber:humidity [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "0.0"^^xsd:float ;
-                    lambdaber:unit "percent" ] ;
-            lambdaber:pressure [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1e-06"^^xsd:float ;
-                    lambdaber:unit "kilopascals" ] ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "-180.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
-    lambdaber:operator_id "nogales_lab_member_002" ;
-    lambdaber:processing_status "completed" ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:completeness [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "99.5"^^xsd:float ;
-                    lambdaber:unit "percent" ] ;
-            lambdaber:resolution [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "2.8"^^xsd:float ;
-                    lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "4.2"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
-    lambdaber:sample_id "lambdaber:sample_tfiid_001" ;
-    lambdaber:technique CHMO:0002413 .
-
-lambdaber:exp_tfiid_dna_002 a lambdaber:ExperimentRun ;
-    dcterms:title "TFIID-DNA complex data collection" ;
-    lambdaber:data_collection_strategy [ a lambdaber:DataCollectionStrategy ;
-            lambdaber:collection_mode "super_resolution" ;
-            lambdaber:dose_per_frame [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1.1"^^xsd:float ;
-                    lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:frame_rate [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "40.0"^^xsd:float ;
-                    lambdaber:unit "frames per second" ] ;
-            lambdaber:total_dose [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "42.0"^^xsd:float ;
-                    lambdaber:unit "electrons per Angstrom squared" ] ;
-            lambdaber:total_frames [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "12000.0"^^xsd:float ;
-                    lambdaber:unit "frames" ] ] ;
-    lambdaber:description "Cryo-EM data collection of TFIID bound to DNA" ;
-    lambdaber:experiment_code "EXP-TFIID-DNA-2024-002" ;
-    lambdaber:experiment_date "2024-03-21T14:00:00" ;
-    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
-            lambdaber:humidity [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "0.0"^^xsd:float ;
-                    lambdaber:unit "percent" ] ;
-            lambdaber:pressure [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1e-06"^^xsd:float ;
-                    lambdaber:unit "kilopascals" ] ;
-            lambdaber:temperature [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "-180.0"^^xsd:float ;
-                    lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id lambdaber:instrument_titan_krios_001 ;
-    lambdaber:operator_id "nogales_lab_member_002" ;
-    lambdaber:processing_status "completed" ;
-    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
-            lambdaber:completeness [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "98.0"^^xsd:float ;
-                    lambdaber:unit "percent" ] ;
-            lambdaber:resolution [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "3.1"^^xsd:float ;
-                    lambdaber:unit "Angstroms" ] ;
-            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "3.8"^^xsd:float ;
-                    lambdaber:unit "signal to noise ratio" ] ] ;
-    lambdaber:sample_id "lambdaber:sample_tfiid_dna_002" ;
-    lambdaber:technique CHMO:0002413 .
-
-lambdaber:file_map_001 a lambdaber:DataFile ;
-    dcterms:title "Final refined map TFIID" ;
-    lambdaber:checksum "b8c3d0a9f1e2b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9" ;
-    lambdaber:creation_date "2024-03-24T02:00:00" ;
-    lambdaber:data_type "volume" ;
-    lambdaber:description "Final 3D reconstruction of TFIID" ;
-    lambdaber:file_format "mrc" ;
-    lambdaber:file_name "TFIID_final_map.mrc" ;
-    lambdaber:file_path "/data/berkeley/2024/tfiid/maps/TFIID_final_map.mrc" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "536870912.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
-lambdaber:file_model_001 a lambdaber:DataFile ;
-    dcterms:title "Atomic model of TFIID" ;
-    lambdaber:creation_date "2024-03-25T10:00:00" ;
-    lambdaber:data_type "model" ;
-    lambdaber:description "Refined atomic model" ;
-    lambdaber:file_format "pdb" ;
-    lambdaber:file_name "TFIID_model.pdb" ;
-    lambdaber:file_path "/data/berkeley/2024/tfiid/models/TFIID_model.pdb" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "12582912.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
-lambdaber:file_particles_001 a lambdaber:DataFile ;
-    dcterms:title "Extracted particles TFIID" ;
-    lambdaber:creation_date "2024-03-21T11:00:00" ;
-    lambdaber:data_type "particles" ;
-    lambdaber:description "Particle stack after extraction" ;
-    lambdaber:file_format "star" ;
-    lambdaber:file_name "TFIID_particles.star" ;
-    lambdaber:file_path "/data/berkeley/2024/tfiid/particles/TFIID_particles.star" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "450000000000.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
-
-lambdaber:file_raw_movies_001 a lambdaber:DataFile ;
-    dcterms:title "Raw movie stack TFIID" ;
-    lambdaber:checksum "a7f2c9b8e5d4a1b3c6d9e8f7a4b5c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9" ;
-    lambdaber:creation_date "2024-03-20T16:00:00" ;
-    lambdaber:data_type "micrograph" ;
-    lambdaber:description "Raw cryo-EM movies" ;
-    lambdaber:file_format "mrc" ;
-    lambdaber:file_name "TFIID_movies.tar" ;
-    lambdaber:file_path "/data/berkeley/2024/tfiid/raw/TFIID_movies.tar" ;
-    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "5400000000000.0"^^xsd:float ;
-            lambdaber:unit "bytes" ] .
+    lambdaber:sample_preparations lambdaber:prep_tfiid_grid_001 ;
+    lambdaber:samples lambdaber:sample_tfiid_001 ;
+    lambdaber:studies lambdaber:study_tfiid_001 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_tfiid_001 ;
+            lambdaber:study_id lambdaber:study_tfiid_001 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sample_tfiid_001 ;
+            lambdaber:study_id lambdaber:study_tfiid_001 ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study_tfiid_001 ;
+            lambdaber:workflow_id lambdaber:workflow_motion_001 ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:exp_tfiid_001 ;
+            lambdaber:workflow_id lambdaber:workflow_motion_001 ] ;
+    lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
+            lambdaber:file_id lambdaber:file_map_001 ;
+            lambdaber:output_type "map" ;
+            lambdaber:workflow_id lambdaber:workflow_motion_001 ] ;
+    lambdaber:workflow_runs lambdaber:workflow_motion_001 .
 
 lambdaber:img_mic_001 a lambdaber:Image ;
     dcterms:title "Representative micrograph" ;
@@ -179,14 +69,27 @@ lambdaber:img_mic_001 a lambdaber:Image ;
             lambdaber:numeric_value "0.85"^^xsd:float ;
             lambdaber:unit "Angstroms" ] .
 
-lambdaber:prep_tfiid_dna_grid_002 a lambdaber:SamplePreparation ;
-    dcterms:title "TFIID-DNA complex grid preparation" ;
-    lambdaber:description "Cryo-EM grid preparation for TFIID-DNA complex" ;
-    lambdaber:operator_id "nogales_lab_member_001" ;
-    lambdaber:preparation_date "2024-03-16" ;
-    lambdaber:preparation_type "cryo_em" ;
-    lambdaber:protocol_description "3 µL of TFIID-DNA complex applied to Quantifoil grids with continuous carbon support, vitrified using Vitrobot Mark IV" ;
-    lambdaber:sample_id "lambdaber:sample_tfiid_dna_002" .
+lambdaber:file_map_001 a lambdaber:DataFile ;
+    dcterms:title "Final refined map TFIID" ;
+    lambdaber:checksum "b8c3d0a9f1e2b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9" ;
+    lambdaber:creation_date "2024-03-24T02:00:00" ;
+    lambdaber:data_type "volume" ;
+    lambdaber:description "Final 3D reconstruction of TFIID" ;
+    lambdaber:file_format "mrc" ;
+    lambdaber:file_name "TFIID_final_map.mrc" ;
+    lambdaber:file_path "/data/berkeley/2024/tfiid/maps/TFIID_final_map.mrc" ;
+    lambdaber:file_size_bytes [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "536870912.0"^^xsd:float ;
+            lambdaber:unit "bytes" ] .
+
+lambdaber:instrument_titan_krios_001 a lambdaber:Instrument ;
+    dcterms:title "Titan Krios G4" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
+    lambdaber:installation_date "2023-03-15" ;
+    lambdaber:instrument_code "TK-G4-001" ;
+    lambdaber:manufacturer "Thermo Fisher Scientific" ;
+    lambdaber:model "Titan Krios G4" .
 
 lambdaber:prep_tfiid_grid_001 a lambdaber:SamplePreparation ;
     dcterms:title "TFIID complex grid preparation" ;
@@ -196,192 +99,6 @@ lambdaber:prep_tfiid_grid_001 a lambdaber:SamplePreparation ;
     lambdaber:preparation_type "cryo_em" ;
     lambdaber:protocol_description "3 µL of TFIID complex at 0.8 mg/mL applied to glow-discharged Quantifoil R2/1 grids, blotted for 3s at 95% humidity and plunge frozen in liquid ethane" ;
     lambdaber:sample_id "lambdaber:sample_tfiid_001" .
-
-lambdaber:sample_tfiid_dna_002 a lambdaber:Sample ;
-    dcterms:title "TFIID-DNA promoter complex" ;
-    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
-            lambdaber:additives "1 mM DTT" ;
-            lambdaber:components "100 mM KCl",
-                "20 mM HEPES",
-                "5 mM MgCl2" ;
-            lambdaber:ph [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "7.9"^^xsd:float ;
-                    lambdaber:unit "pH units" ] ] ;
-    lambdaber:concentration [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "0.5"^^xsd:float ;
-            lambdaber:unit "milligrams per milliliter" ] ;
-    lambdaber:description "TFIID bound to super core promoter DNA" ;
-    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
-            lambdaber:ligands "TFIID complex" ;
-            lambdaber:modifications "5' fluorescent label" ;
-            lambdaber:sequences "GGCTATAAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCG" ] ;
-    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "1250.0"^^xsd:float ;
-            lambdaber:unit "kilodaltons" ] ;
-    lambdaber:organism NCBITaxon:9606 ;
-    lambdaber:parent_sample_id lambdaber:sample_tfiid_001 ;
-    lambdaber:purity_percentage [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "92.0"^^xsd:float ;
-            lambdaber:unit "percent" ] ;
-    lambdaber:sample_code "TFIID-DNA-2024-002" ;
-    lambdaber:sample_type "complex" .
-
-lambdaber:study_tfiid_001 a lambdaber:Study ;
-    dcterms:title "TFIID Conformational Dynamics Study" ;
-    lambdaber:data_files lambdaber:file_map_001,
-        lambdaber:file_model_001,
-        lambdaber:file_particles_001,
-        lambdaber:file_raw_movies_001 ;
-    lambdaber:description "Investigation of TFIID conformational states and DNA binding mechanisms" ;
-    lambdaber:images lambdaber:img_mic_001 ;
-    lambdaber:instrument_runs lambdaber:exp_tfiid_001,
-        lambdaber:exp_tfiid_dna_002 ;
-    lambdaber:sample_preparations lambdaber:prep_tfiid_dna_grid_002,
-        lambdaber:prep_tfiid_grid_001 ;
-    lambdaber:samples lambdaber:sample_tfiid_001,
-        lambdaber:sample_tfiid_dna_002 ;
-    lambdaber:workflow_runs lambdaber:workflow_2d_class_001,
-        lambdaber:workflow_3d_refine_001,
-        lambdaber:workflow_ctf_001,
-        lambdaber:workflow_motion_001,
-        lambdaber:workflow_picking_001 .
-
-lambdaber:workflow_2d_class_001 a lambdaber:WorkflowRun ;
-    dcterms:title "2D classification of TFIID particles" ;
-    lambdaber:completed_at "2024-03-22T11:00:00" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "24.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "48.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "256.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ;
-            lambdaber:storage_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "800.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:description "2D classification in RELION" ;
-    lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "2.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "--K 200 --iter 25 --tau2_fudge 2" ;
-    lambdaber:software_name "RELION" ;
-    lambdaber:software_version "4.0.1" ;
-    lambdaber:started_at "2024-03-21T11:00:00" ;
-    lambdaber:workflow_code "WF-2D-001" ;
-    lambdaber:workflow_type "classification_2d" .
-
-lambdaber:workflow_3d_refine_001 a lambdaber:WorkflowRun ;
-    dcterms:title "3D refinement of TFIID structure" ;
-    lambdaber:completed_at "2024-03-24T02:00:00" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "36.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "72.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "512.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ;
-            lambdaber:storage_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1200.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:description "High-resolution 3D refinement" ;
-    lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "3.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "Non-uniform refinement with C1 symmetry" ;
-    lambdaber:software_name "cryoSPARC" ;
-    lambdaber:software_version "4.4.0" ;
-    lambdaber:started_at "2024-03-22T14:00:00" ;
-    lambdaber:workflow_code "WF-3D-001" ;
-    lambdaber:workflow_type "refinement" .
-
-lambdaber:workflow_ctf_001 a lambdaber:WorkflowRun ;
-    dcterms:title "CTF estimation for TFIID" ;
-    lambdaber:completed_at "2024-03-20T21:15:00" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "4.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "16.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ;
-            lambdaber:storage_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "50.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:description "CTF estimation using CTFFIND4" ;
-    lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "1.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "Resolution 30 5" ;
-    lambdaber:software_name "CTFFIND4" ;
-    lambdaber:software_version "4.1.14" ;
-    lambdaber:started_at "2024-03-20T20:35:00" ;
-    lambdaber:workflow_code "WF-CTF-001" ;
-    lambdaber:workflow_type "ctf_estimation" .
-
-lambdaber:workflow_motion_001 a lambdaber:WorkflowRun ;
-    dcterms:title "Motion correction for TFIID dataset" ;
-    lambdaber:completed_at "2024-03-20T20:30:00" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "2.5"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "8.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "32.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ;
-            lambdaber:storage_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "450.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:description "Motion correction using MotionCor2" ;
-    lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "1.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "-Patch 5 5 -Gpu 0 -FmDose 1.2" ;
-    lambdaber:software_name "MotionCor2" ;
-    lambdaber:software_version "1.6.4" ;
-    lambdaber:started_at "2024-03-20T18:00:00" ;
-    lambdaber:workflow_code "WF-MC-001" ;
-    lambdaber:workflow_type "motion_correction" .
-
-lambdaber:workflow_picking_001 a lambdaber:WorkflowRun ;
-    dcterms:title "Particle picking for TFIID" ;
-    lambdaber:completed_at "2024-03-21T10:30:00" ;
-    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
-            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "1.5"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "3.0"^^xsd:float ;
-                    lambdaber:unit "hours" ] ;
-            lambdaber:memory_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "24.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ;
-            lambdaber:storage_gb [ a nmdc:QuantityValue ;
-                    lambdaber:numeric_value "120.0"^^xsd:float ;
-                    lambdaber:unit "gigabytes" ] ] ;
-    lambdaber:description "Automated particle picking using crYOLO" ;
-    lambdaber:experiment_id "lambdaber:exp_tfiid_001" ;
-    lambdaber:processing_level [ a nmdc:QuantityValue ;
-            lambdaber:numeric_value "2.0"^^xsd:float ;
-            lambdaber:unit "level" ] ;
-    lambdaber:processing_parameters "Model TFIID_trained threshold 0.3" ;
-    lambdaber:software_name "crYOLO" ;
-    lambdaber:software_version "1.9.0" ;
-    lambdaber:started_at "2024-03-21T09:00:00" ;
-    lambdaber:workflow_code "WF-PICK-001" ;
-    lambdaber:workflow_type "particle_picking" .
 
 lambdaber:sample_tfiid_001 a lambdaber:Sample ;
     dcterms:title "Human TFIID complex" ;
@@ -421,12 +138,67 @@ lambdaber:sample_tfiid_001 a lambdaber:Sample ;
                     lambdaber:numeric_value "-80.0"^^xsd:float ;
                     lambdaber:unit "degrees Celsius" ] ] .
 
-lambdaber:instrument_titan_krios_001 a lambdaber:Instrument ;
-    dcterms:title "Titan Krios G4" ;
-    lambdaber:current_status "operational" ;
-    lambdaber:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
-    lambdaber:installation_date "2023-03-15" ;
-    lambdaber:instrument_code "TK-G4-001" ;
-    lambdaber:manufacturer "Thermo Fisher Scientific" ;
-    lambdaber:model "Titan Krios G4" .
+lambdaber:study_tfiid_001 a lambdaber:Study ;
+    dcterms:title "TFIID Conformational Dynamics Study" ;
+    lambdaber:description "Investigation of TFIID conformational states and DNA binding mechanisms" ;
+    lambdaber:keywords "DNA binding",
+        "conformational dynamics" .
+
+lambdaber:workflow_motion_001 a lambdaber:WorkflowRun ;
+    dcterms:title "Motion correction for TFIID dataset" ;
+    lambdaber:completed_at "2024-03-20T20:30:00" ;
+    lambdaber:compute_resources [ a lambdaber:ComputeResources ;
+            lambdaber:cpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.5"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:gpu_hours [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "8.0"^^xsd:float ;
+                    lambdaber:unit "hours" ] ;
+            lambdaber:memory_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "32.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ;
+            lambdaber:storage_gb [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "450.0"^^xsd:float ;
+                    lambdaber:unit "gigabytes" ] ] ;
+    lambdaber:description "Motion correction using MotionCor2" ;
+    lambdaber:processing_level [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.0"^^xsd:float ;
+            lambdaber:unit "level" ] ;
+    lambdaber:processing_parameters "-Patch 5 5 -Gpu 0 -FmDose 1.2" ;
+    lambdaber:software_name "MotionCor2" ;
+    lambdaber:software_version "1.6.4" ;
+    lambdaber:started_at "2024-03-20T18:00:00" ;
+    lambdaber:workflow_code "WF-MC-001" ;
+    lambdaber:workflow_type "motion_correction" .
+
+lambdaber:exp_tfiid_001 a lambdaber:ExperimentRun ;
+    dcterms:title "TFIID complex data collection" ;
+    lambdaber:description "High-resolution cryo-EM data collection of TFIID" ;
+    lambdaber:experiment_code "EXP-TFIID-2024-001" ;
+    lambdaber:experiment_date "2024-03-20T10:00:00" ;
+    lambdaber:experimental_conditions [ a lambdaber:ExperimentalConditions ;
+            lambdaber:atmosphere "High vacuum" ;
+            lambdaber:humidity [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.0"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:pressure [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "1e-06"^^xsd:float ;
+                    lambdaber:unit "kilopascals" ] ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "-180.0"^^xsd:float ;
+                    lambdaber:unit "degrees Celsius" ] ] ;
+    lambdaber:operator_id "nogales_lab_member_002" ;
+    lambdaber:processing_status "completed" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:completeness [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "99.5"^^xsd:float ;
+                    lambdaber:unit "percent" ] ;
+            lambdaber:resolution [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.8"^^xsd:float ;
+                    lambdaber:unit "Angstroms" ] ;
+            lambdaber:signal_to_noise [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.2"^^xsd:float ;
+                    lambdaber:unit "signal to noise ratio" ] ] ;
+    lambdaber:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
+    lambdaber:technique CHMO:0002413 .
 

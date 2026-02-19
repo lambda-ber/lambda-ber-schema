@@ -2,48 +2,46 @@ id: lambdaber:exp_cryoet_mito_001
 title: Mitochondrial cryo-electron tomography
 description: Cryo-ET tilt series of isolated mitochondria
 experiment_code: EXP-CRYOET-MITO-2024-001
-sample_id: lambdaber:sample_mitochondria_001
-instrument_id: lambdaber:instrument_titan_krios_002
 technique: cryo_et
 experiment_date: '2024-05-01T11:00:00'
 operator_id: cryoet_specialist_003
 experimental_conditions:
   temperature:
-    numeric_value: -180.0
     unit: degrees Celsius
+    numeric_value: -180.0
   humidity:
-    numeric_value: 0.0
     unit: percent
+    numeric_value: 0.0
   pressure:
-    numeric_value: 1.0e-06
     unit: kilopascals
+    numeric_value: 1.0e-06
   atmosphere: High vacuum
 data_collection_strategy:
   collection_mode: continuous
   total_frames:
-    numeric_value: 61.0
     unit: frames
+    numeric_value: 61.0
   frame_rate:
-    numeric_value: 0.5
     unit: frames per second
+    numeric_value: 0.5
   total_dose:
+    unit: electrons per Angstrom squared
     numeric_value: 120.0
-    unit: electrons per Angstrom squared
   dose_per_frame:
-    numeric_value: 2.0
     unit: electrons per Angstrom squared
+    numeric_value: 2.0
 quality_metrics:
   resolution:
-    numeric_value: 8.5
     unit: Angstroms
+    numeric_value: 8.5
   completeness:
-    numeric_value: 95.0
     unit: percent
+    numeric_value: 95.0
   signal_to_noise:
-    numeric_value: 2.1
     unit: signal to noise ratio
+    numeric_value: 2.1
   r_factor:
-    numeric_value: 0.0
     unit: R-factor
+    numeric_value: 0.0
 raw_data_location: /data/berkeley/2024/cryoet/mitochondria/
 processing_status: processing

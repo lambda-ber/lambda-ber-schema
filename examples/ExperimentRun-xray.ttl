@@ -35,7 +35,6 @@ lambdaber:exp_xray_lysozyme_001 a lambdaber:ExperimentRun ;
             lambdaber:temperature [ a nmdc:QuantityValue ;
                     lambdaber:numeric_value "-173.0"^^xsd:float ;
                     lambdaber:unit "degrees Celsius" ] ] ;
-    lambdaber:instrument_id lambdaber:instrument_als_831 ;
     lambdaber:operator_id "als_user_042" ;
     lambdaber:processing_status "completed" ;
     lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
@@ -52,6 +51,5 @@ lambdaber:exp_xray_lysozyme_001 a lambdaber:ExperimentRun ;
                     lambdaber:numeric_value "15.2"^^xsd:float ;
                     lambdaber:unit "signal to noise ratio" ] ] ;
     lambdaber:raw_data_location "/data/als/2024/xray/lysozyme/" ;
-    lambdaber:sample_id "lambdaber:sample_lysozyme_001" ;
     lambdaber:technique CHMO:0000156 .
 

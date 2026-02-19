@@ -4,35 +4,29 @@
 @prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
 
 lambdaber:ds001 a lambdaber:Dataset ;
+    dcterms:title "Test Dataset" ;
+    lambdaber:description "Simple test dataset demonstrating relational schema structure" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:irr001 ;
+            lambdaber:instrument_id lambdaber:instrument_test_001 ;
+            lambdaber:role "primary" ] ;
+    lambdaber:experiment_runs lambdaber:irr001 ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:irr001 ;
+            lambdaber:preparation_id lambdaber:spr001 ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sam001 ] ;
     lambdaber:instruments lambdaber:instrument_test_001 ;
-    lambdaber:studies lambdaber:sty001 .
-
-lambdaber:irr001 a lambdaber:ExperimentRun ;
-    dcterms:title "Test Instrument Run" ;
-    lambdaber:description "Test Instrument Run Description" ;
-    lambdaber:experiment_code "EXP-TEST-001" ;
-    lambdaber:instrument_id lambdaber:instrument_test_001 ;
-    lambdaber:sample_id "lambdaber:sam001" ;
-    lambdaber:technique CHMO:0002413 .
-
-lambdaber:sam001 a lambdaber:Sample ;
-    dcterms:title "Test Sample" ;
-    lambdaber:description "Test Sample Description" ;
-    lambdaber:sample_code "TEST-001" ;
-    lambdaber:sample_type "protein" .
-
-lambdaber:spr001 a lambdaber:SamplePreparation ;
-    dcterms:title "Test Sample Preparation" ;
-    lambdaber:description "Test Sample Preparation Description" ;
-    lambdaber:preparation_type "cryo_em" ;
-    lambdaber:sample_id "lambdaber:sam001" .
-
-lambdaber:sty001 a lambdaber:Study ;
-    dcterms:title "Test Study" ;
-    lambdaber:description "Test Study Description" ;
-    lambdaber:instrument_runs lambdaber:irr001 ;
     lambdaber:sample_preparations lambdaber:spr001 ;
-    lambdaber:samples lambdaber:sam001 .
+    lambdaber:samples lambdaber:sam001 ;
+    lambdaber:studies lambdaber:sty001 ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:irr001 ;
+            lambdaber:study_id lambdaber:sty001 ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:role "target" ;
+            lambdaber:sample_id lambdaber:sam001 ;
+            lambdaber:study_id lambdaber:sty001 ] .
 
 lambdaber:instrument_test_001 a lambdaber:Instrument ;
     dcterms:title "Test Cryo-EM Instrument" ;
@@ -41,4 +35,28 @@ lambdaber:instrument_test_001 a lambdaber:Instrument ;
     lambdaber:instrument_code "TEST-EM-001" ;
     lambdaber:manufacturer "Test Manufacturer" ;
     lambdaber:model "Test Model" .
+
+lambdaber:spr001 a lambdaber:SamplePreparation ;
+    dcterms:title "Test Sample Preparation" ;
+    lambdaber:description "Test Sample Preparation Description" ;
+    lambdaber:preparation_type "cryo_em" ;
+    lambdaber:sample_id "lambdaber:sam001" .
+
+lambdaber:sam001 a lambdaber:Sample ;
+    dcterms:title "Test Sample" ;
+    lambdaber:description "Test Sample Description" ;
+    lambdaber:sample_code "TEST-001" ;
+    lambdaber:sample_type "protein" .
+
+lambdaber:sty001 a lambdaber:Study ;
+    dcterms:title "Test Study" ;
+    lambdaber:description "Test Study Description" ;
+    lambdaber:keywords "demo",
+        "test" .
+
+lambdaber:irr001 a lambdaber:ExperimentRun ;
+    dcterms:title "Test Instrument Run" ;
+    lambdaber:description "Test Instrument Run Description" ;
+    lambdaber:experiment_code "EXP-TEST-001" ;
+    lambdaber:technique CHMO:0002413 .
 

@@ -21,7 +21,6 @@ lambdaber:workflow_phasing_selmet_001 a lambdaber:WorkflowRun ;
                     lambdaber:numeric_value "100.0"^^xsd:float ;
                     lambdaber:unit "gigabytes" ] ] ;
     lambdaber:description "Single-wavelength anomalous dispersion phasing" ;
-    lambdaber:experiment_id "lambdaber:exp_xray_selmet_001" ;
     lambdaber:processing_level [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "2.0"^^xsd:float ;
             lambdaber:unit "level" ] ;

@@ -4,24 +4,24 @@ description: 3D reconstruction of human 80S ribosome at 2.9A resolution
 file_name: ribosome_80S_final_sharpened.mrc
 acquisition_date: '2024-04-28T14:30:00'
 pixel_size:
-  numeric_value: 1.06
   unit: Angstroms
+  numeric_value: 1.06
 dimensions_x:
-  numeric_value: 440.0
   unit: pixels
+  numeric_value: 440.0
 dimensions_y:
-  numeric_value: 440.0
   unit: pixels
+  numeric_value: 440.0
 exposure_time:
-  numeric_value: 0.0
   unit: seconds
-dose:
   numeric_value: 0.0
+dose:
   unit: electrons per Angstrom squared
+  numeric_value: 0.0
 dimensions_z:
-  numeric_value: 440.0
   unit: pixels
+  numeric_value: 440.0
 voxel_size:
-  numeric_value: 1.06
   unit: Angstroms
+  numeric_value: 1.06
 reconstruction_method: Non-uniform refinement in cryoSPARC with C1 symmetry

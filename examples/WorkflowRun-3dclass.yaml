@@ -3,25 +3,24 @@ title: 3D classification of ribosome particles
 description: 3D classification to resolve ribosome conformational states
 workflow_code: WF-3DCLASS-RIBO-001
 workflow_type: classification_3d
-experiment_id: lambdaber:exp_ribosome_001
 software_name: RELION
 processing_level:
-  numeric_value: 2.0
   unit: level
+  numeric_value: 2.0
 software_version: 4.0.1
 processing_parameters: --K 8 --iter 30 --tau2_fudge 4 --particle_diameter 300
 compute_resources:
   cpu_hours:
+    unit: hours
     numeric_value: 48.0
-    unit: hours
   gpu_hours:
-    numeric_value: 96.0
     unit: hours
+    numeric_value: 96.0
   memory_gb:
+    unit: gigabytes
     numeric_value: 512.0
-    unit: gigabytes
   storage_gb:
-    numeric_value: 2000.0
     unit: gigabytes
+    numeric_value: 2000.0
 started_at: '2024-04-20T08:00:00'
 completed_at: '2024-04-22T08:00:00'

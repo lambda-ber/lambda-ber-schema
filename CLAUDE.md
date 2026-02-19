@@ -15,9 +15,10 @@ lambda-ber-schema is a LinkML schema project for representing structural biologi
 ## Core Architecture
 
 ### Schema Structure
-The main schema definition is located at `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`. This LinkML schema defines:
-- **Dataset**: Root container with studies collection
-- **Study**: Contains samples, preparations, experiments, workflows, data files, and images
+The main schema definition is located at `src/lambda_ber_schema/schema/lambda_ber_schema.yaml`. This LinkML schema uses a **relational design** with flat entity collections and explicit association tables for M:N relationships.
+
+**Entity Tables** (flat collections in Dataset):
+- **Study**: Lightweight grouping for related experiments
 - **Sample**: Biological samples with molecular composition, buffer conditions, storage details
 - **SamplePreparation**: Technique-specific preparation protocols
 - **Instrument**: Equipment specifications for CryoEM, XRay, SAXS instruments
@@ -25,7 +26,13 @@ The main schema definition is located at `src/lambda_ber_schema/schema/lambda_be
 - **WorkflowRun**: Computational processing workflows
 - **DataFile**: File metadata with checksums
 - **Image/Image2D/Image3D**: Image acquisition data
-- **Supporting classes**: MolecularComposition, BufferComposition, StorageConditions, ExperimentalConditions, etc.
+
+**Association Tables** (M:N relationships):
+- **StudySampleAssociation**, **StudyExperimentAssociation**, **StudyWorkflowAssociation**
+- **ExperimentSampleAssociation**, **ExperimentInstrumentAssociation**
+- **WorkflowExperimentAssociation**, **WorkflowInputAssociation**, **WorkflowOutputAssociation**
+
+**Supporting classes**: MolecularComposition, BufferComposition, StorageConditions, ExperimentalConditions, etc.
 
 ### Generated Assets
 The `assets/` directory contains auto-generated outputs from the LinkML schema:
@@ -96,14 +103,15 @@ Each major class has minimal required fields to ensure data integrity:
 - **Sample**: `sample_code`, `sample_type`
 - **SamplePreparation**: `preparation_type`, `sample_id`
 - **Instrument**: `instrument_code`
-- **ExperimentRun**: `experiment_code`, `sample_id`, `instrument_id`, `technique`
-- **WorkflowRun**: `workflow_code`, `workflow_type`, `experiment_id`, `software_name`
+- **ExperimentRun**: `experiment_code`, `technique`
+- **WorkflowRun**: `workflow_code`, `workflow_type`, `software_name`
 - **DataFile**: `file_name`, `file_format`
 - **Image**: `file_name`
 
-### Inlining Strategy
-Collections in Study are inlined as lists for better JSON/YAML representation:
-- `samples`, `sample_preparations`, `instrument_runs`, `workflow_runs`, `data_files`, `images` all use `inlined: true` and `inlined_as_list: true`
+Note: Relationships (sample↔experiment, experiment↔instrument, etc.) are handled via association tables, not direct FK fields on entities.
+
+### Relational Design
+All entity collections live directly in Dataset as flat lists (`inlined_as_list: true`). M:N relationships are modeled via explicit association tables that can carry relationship metadata (e.g., sample's role in an experiment).
 
 ### Numeric Types
 Scientific notation in YAML (e.g., `2.0e12`) must be written as plain numbers (e.g., `2000000000000`) due to LinkML's JSON Schema generation.
@@ -118,16 +126,16 @@ The schema includes comprehensive enums for controlled vocabularies:
 
 ## Testing Examples
 
-The `tests/data/valid/` directory contains 17+ comprehensive examples covering all schema classes:
-- Full datasets with complete workflows (Dataset-berkeley-tfiid.yaml)
-- Multi-technique integrative studies (Study-integrative.yaml)
+The `tests/data/valid/` directory contains comprehensive examples covering all schema classes:
+- Full datasets with complete workflows (Dataset-berkeley-tfiid.yaml, Dataset-integrative.yaml)
 - Individual class examples for all major entities
 - Berkeley Lab / ALS beamline-specific examples
+- Examples demonstrating association tables for M:N relationships
 
 ## Common Pitfalls to Avoid
 
 1. **Don't use scientific notation** in YAML files - write out full numbers
 2. **Don't use strict datetime formats** - use strings for dates
-3. **Remember to inline collections** in Study objects
+3. **Use association tables** for M:N relationships (not direct FK fields on entities)
 4. **Include all required fields** even in minimal examples
 5. **Use proper enum values** from the defined permissible_values
