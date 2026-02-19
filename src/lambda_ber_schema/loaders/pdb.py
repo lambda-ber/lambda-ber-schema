@@ -89,6 +89,7 @@ class PDBLoader(BaseLoader):
         # Build the dataset
         dataset_id = self.make_id(entry_id)
         source_url = f"https://www.rcsb.org/structure/{entry_id}"
+        doi = f"https://doi.org/10.2210/pdb{entry_id.lower()}/pdb"
 
         # Determine experimental method
         technique = self._determine_technique(entry_data, warnings)
@@ -166,6 +167,7 @@ class PDBLoader(BaseLoader):
             dataset=dataset,
             warnings=warnings,
             source_url=source_url,
+            doi=doi,
             raw_data={"entry": entry_data,
                       "polymer_entities": polymer_entities},
         )
