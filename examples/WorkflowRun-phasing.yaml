@@ -5,22 +5,22 @@ workflow_code: WF-PHASE-SAD-001
 workflow_type: phasing
 software_name: PHENIX
 processing_level:
-  numeric_value: 2.0
   unit: level
+  numeric_value: 2.0
 software_version: '1.21'
 processing_parameters: autosol wavelength=0.9792 sites=12
 compute_resources:
   cpu_hours:
+    unit: hours
     numeric_value: 24.0
-    unit: hours
   gpu_hours:
-    numeric_value: 0.0
     unit: hours
+    numeric_value: 0.0
   memory_gb:
+    unit: gigabytes
     numeric_value: 32.0
-    unit: gigabytes
   storage_gb:
-    numeric_value: 100.0
     unit: gigabytes
+    numeric_value: 100.0
 started_at: '2024-05-02T10:00:00'
 completed_at: '2024-05-02T22:00:00'

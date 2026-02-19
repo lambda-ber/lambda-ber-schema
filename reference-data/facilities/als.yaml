@@ -12,10 +12,10 @@
 
 beamlines:
   # SIBYLS - Multi-technique structural biology beamline
-  - id: lambdaber:beamline_sibyls
-    title: "SIBYLS Beamline 12.3.1"
+  - id: lambdaber:beamline_als_1231
+    title: "ALS Beamline 12.3.1"
     description: "SIBYLS (Structurally Integrated BiologY for Life Sciences) is a multi-technique beamline supporting SAXS, X-ray crystallography, and fiber diffraction"
-    instrument_code: "ALS-12.3.1-SIBYLS"
+    instrument_code: "ALS-12.3.1"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: ALS
     facility_ror: "https://ror.org/02jbv0t02"
@@ -31,7 +31,7 @@ beamlines:
     website: "https://bl1231.als.lbl.gov/"
     current_status: operational
 
-  # ALS 8.3.1 - Macromolecular Crystallography
+  # ALS 8.3.1 - Macromolecular Crystallography - University of California
   - id: lambdaber:beamline_als_831
     title: "ALS Beamline 8.3.1"
     description: "Macromolecular crystallography beamline at ALS"
@@ -46,6 +46,17 @@ beamlines:
     current_status: operational
 
   # Berkeley Center for Structural Biology beamlines
+  - id: lambdaber:beamline_als_201
+    title: "ALS Beamline 2.0.1"
+    description: "Macromolecular Crystallography (GEMINI)"
+    instrument_code: "ALS-2.0.1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "2.0.1"
+    source_type: synchrotron
+    current_status: operational
+
   - id: lambdaber:beamline_als_501
     title: "ALS Beamline 5.0.1"
     description: "Berkeley Center for Structural Biology crystallography beamline"
@@ -65,5 +76,51 @@ beamlines:
     facility_name: ALS
     facility_ror: "https://ror.org/02jbv0t02"
     beamline_id: "5.0.2"
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_als_503
+    title: "ALS Beamline 5.0.3"
+    description: "Berkeley Center for Structural Biology crystallography beamline"
+    instrument_code: "ALS-5.0.3"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "5.0.3"
+    source_type: synchrotron
+    current_status: operational
+
+  # HHMI beamlines operated by BCSB
+  - id: lambdaber:beamline_als_821
+    title: "ALS Beamline 8.2.1"
+    description: "Berkeley Center for Structural Biology crystallography beamline"
+    instrument_code: "ALS-8.2.1"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "8.2.1"
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_als_822
+    title: "ALS Beamline 8.2.2"
+    description: "Berkeley Center for Structural Biology crystallography beamline"
+    instrument_code: "ALS-8.2.2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "8.2.2"
+    source_type: synchrotron
+    current_status: operational
+
+  # MBC run in collaboration with BCSB
+  - id: lambdaber:beamline_als_422
+    title: "ALS Beamline 4.2.2"
+    description: "Macromolecular Crystallography (MBC)"
+    instrument_code: "ALS-4.2.2"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: ALS
+    facility_ror: "https://ror.org/02jbv0t02"
+    beamline_id: "4.2.2"
     source_type: synchrotron
     current_status: operational

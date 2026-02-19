@@ -83,8 +83,8 @@
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 6.0,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 6.0
         },
         "components": [
           "50mM MES buffer",
@@ -97,8 +97,8 @@
       },
       "storage_conditions": {
         "temperature": {
-          "numeric_value": 4.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 4.0
         },
         "duration": "7 days",
         "atmosphere": "argon-purged"
@@ -120,8 +120,8 @@
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 5.0,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 5.0
         },
         "components": [
           "Universal buffer system",
@@ -130,8 +130,8 @@
       },
       "storage_conditions": {
         "temperature": {
-          "numeric_value": 4.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 4.0
         }
       }
     },
@@ -151,8 +151,8 @@
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 5.5,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 5.5
         },
         "components": [
           "50mM sodium acetate",
@@ -161,8 +161,8 @@
       },
       "storage_conditions": {
         "temperature": {
-          "numeric_value": 4.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 4.0
         }
       }
     },
@@ -182,8 +182,8 @@
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 6.0,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 6.0
         },
         "components": [
           "50mM MES buffer",
@@ -195,8 +195,8 @@
       },
       "storage_conditions": {
         "temperature": {
-          "numeric_value": 4.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 4.0
         }
       }
     }
@@ -278,8 +278,8 @@
       "workflow_type": "saxs_analysis",
       "software_name": "ATSAS",
       "processing_level": {
-        "numeric_value": 2.0,
-        "unit": "level"
+        "unit": "level",
+        "numeric_value": 2.0
       },
       "software_version": "3.2.1"
     },
@@ -291,8 +291,8 @@
       "workflow_type": "phasing",
       "software_name": "PHENIX",
       "processing_level": {
-        "numeric_value": 3.0,
-        "unit": "level"
+        "unit": "level",
+        "numeric_value": 3.0
       },
       "software_version": "1.20.1"
     },
@@ -304,8 +304,8 @@
       "workflow_type": "refinement",
       "software_name": "RELION",
       "processing_level": {
-        "numeric_value": 3.0,
-        "unit": "level"
+        "unit": "level",
+        "numeric_value": 3.0
       },
       "software_version": "4.0"
     },
@@ -317,8 +317,8 @@
       "workflow_type": "model_building",
       "software_name": "IMP",
       "processing_level": {
-        "numeric_value": 2.0,
-        "unit": "level"
+        "unit": "level",
+        "numeric_value": 2.0
       },
       "software_version": "2.18"
     }
@@ -332,8 +332,8 @@
       "file_format": "ascii",
       "file_path": "/data/saxs/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 2500000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 2500000.0
       },
       "data_type": "scattering"
     },
@@ -345,8 +345,8 @@
       "file_format": "ascii",
       "file_path": "/data/sans/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 1800000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 1800000.0
       },
       "data_type": "scattering"
     },
@@ -358,8 +358,8 @@
       "file_format": "mtz",
       "file_path": "/data/mx/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 45000000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 45000000.0
       },
       "data_type": "diffraction"
     },
@@ -371,8 +371,8 @@
       "file_format": "pdb",
       "file_path": "/data/mx/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 800000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 800000.0
       },
       "data_type": "model"
     },
@@ -384,8 +384,8 @@
       "file_format": "star",
       "file_path": "/data/cryoem/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 125000000000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 125000000000.0
       },
       "data_type": "particles"
     },
@@ -397,8 +397,8 @@
       "file_format": "mrc",
       "file_path": "/data/cryoem/2025/loosenin/",
       "file_size_bytes": {
-        "numeric_value": 512000000.0,
-        "unit": "bytes"
+        "unit": "bytes",
+        "numeric_value": 512000000.0
       },
       "data_type": "volume"
     }

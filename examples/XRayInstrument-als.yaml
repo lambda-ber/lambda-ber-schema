@@ -12,20 +12,20 @@ installation_date: '2000-06-01'
 current_status: operational
 source_type: synchrotron
 energy_min:
+  unit: kiloelectronvolts
   numeric_value: 6.0
-  unit: kiloelectronvolts
 energy_max:
-  numeric_value: 18.0
   unit: kiloelectronvolts
+  numeric_value: 18.0
 beam_size_min:
+  unit: micrometers
   numeric_value: 20.0
-  unit: micrometers
 beam_size_max:
-  numeric_value: 200.0
   unit: micrometers
+  numeric_value: 200.0
 flux_density:
-  numeric_value: 2000000000000.0
   unit: photons per second per square millimeter
+  numeric_value: 2000000000000.0
 monochromator_type: Si(111) double crystal
 goniometer_type: MD3 microdiffractometer
 crystal_cooling_capability: true

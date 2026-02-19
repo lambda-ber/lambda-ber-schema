@@ -57,17 +57,17 @@
         ]
       },
       "molecular_weight": {
-        "numeric_value": 206.0,
-        "unit": "kilodaltons"
+        "unit": "kilodaltons",
+        "numeric_value": 206.0
       },
       "concentration": {
-        "numeric_value": 5.0,
-        "unit": "milligrams per milliliter"
+        "unit": "milligrams per milliliter",
+        "numeric_value": 5.0
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 7.5,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 7.5
         },
         "components": [
           "10 mM Tris-HCl",
@@ -82,8 +82,8 @@
       "organism": "NCBITaxon:9606",
       "anatomy": "UBERON:0000922",
       "purity_percentage": {
-        "numeric_value": 99.0,
-        "unit": "percent"
+        "unit": "percent",
+        "numeric_value": 99.0
       }
     },
     {
@@ -104,17 +104,17 @@
         ]
       },
       "molecular_weight": {
-        "numeric_value": 168.5,
-        "unit": "kilodaltons"
+        "unit": "kilodaltons",
+        "numeric_value": 168.5
       },
       "concentration": {
-        "numeric_value": 2.0,
-        "unit": "milligrams per milliliter"
+        "unit": "milligrams per milliliter",
+        "numeric_value": 2.0
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 7.8,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 7.8
         },
         "components": [
           "25 mM HEPES",
@@ -129,8 +129,8 @@
       "preparation_method": "Sf9 insect cell expression with FLAG purification",
       "organism": "NCBITaxon:4932",
       "purity_percentage": {
-        "numeric_value": 95.0,
-        "unit": "percent"
+        "unit": "percent",
+        "numeric_value": 95.0
       }
     },
     {
@@ -147,17 +147,17 @@
         ]
       },
       "molecular_weight": {
-        "numeric_value": 374.5,
-        "unit": "kilodaltons"
+        "unit": "kilodaltons",
+        "numeric_value": 374.5
       },
       "concentration": {
-        "numeric_value": 0.5,
-        "unit": "milligrams per milliliter"
+        "unit": "milligrams per milliliter",
+        "numeric_value": 0.5
       },
       "buffer_composition": {
         "ph": {
-          "numeric_value": 7.5,
-          "unit": "pH units"
+          "unit": "pH units",
+          "numeric_value": 7.5
         },
         "components": [
           "20 mM HEPES",
@@ -173,8 +173,8 @@
       "preparation_method": "In vitro reconstitution by mixing CHD1 with nucleosome",
       "parent_sample_id": "lambdaber:sample_nucleosome_001",
       "purity_percentage": {
-        "numeric_value": 90.0,
-        "unit": "percent"
+        "unit": "percent",
+        "numeric_value": 90.0
       }
     }
   ],
@@ -221,49 +221,49 @@
       "operator_id": "cryoem_operator_001",
       "experimental_conditions": {
         "temperature": {
-          "numeric_value": -180.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": -180.0
         },
         "humidity": {
-          "numeric_value": 0.0,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 0.0
         },
         "pressure": {
-          "numeric_value": 1e-06,
-          "unit": "kilopascals"
+          "unit": "kilopascals",
+          "numeric_value": 1e-06
         }
       },
       "data_collection_strategy": {
         "collection_mode": "counting",
         "total_frames": {
-          "numeric_value": 5000.0,
-          "unit": "frames"
+          "unit": "frames",
+          "numeric_value": 5000.0
         },
         "frame_rate": {
-          "numeric_value": 40.0,
-          "unit": "frames per second"
+          "unit": "frames per second",
+          "numeric_value": 40.0
         },
         "total_dose": {
-          "numeric_value": 45.0,
-          "unit": "electrons per Angstrom squared"
+          "unit": "electrons per Angstrom squared",
+          "numeric_value": 45.0
         },
         "dose_per_frame": {
-          "numeric_value": 1.125,
-          "unit": "electrons per Angstrom squared"
+          "unit": "electrons per Angstrom squared",
+          "numeric_value": 1.125
         }
       },
       "quality_metrics": {
         "resolution": {
-          "numeric_value": 2.5,
-          "unit": "Angstroms"
+          "unit": "Angstroms",
+          "numeric_value": 2.5
         },
         "completeness": {
-          "numeric_value": 99.9,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 99.9
         },
         "signal_to_noise": {
-          "numeric_value": 5.2,
-          "unit": "signal to noise ratio"
+          "unit": "signal to noise ratio",
+          "numeric_value": 5.2
         }
       },
       "processing_status": "completed"
@@ -278,41 +278,41 @@
       "operator_id": "saxs_operator_001",
       "experimental_conditions": {
         "temperature": {
-          "numeric_value": 20.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": 20.0
         },
         "humidity": {
-          "numeric_value": 50.0,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 50.0
         },
         "pressure": {
-          "numeric_value": 101.325,
-          "unit": "kilopascals"
+          "unit": "kilopascals",
+          "numeric_value": 101.325
         }
       },
       "data_collection_strategy": {
         "collection_mode": "continuous",
         "total_frames": {
-          "numeric_value": 20.0,
-          "unit": "frames"
+          "unit": "frames",
+          "numeric_value": 20.0
         },
         "frame_rate": {
-          "numeric_value": 1.0,
-          "unit": "frames per second"
+          "unit": "frames per second",
+          "numeric_value": 1.0
         }
       },
       "quality_metrics": {
         "resolution": {
-          "numeric_value": 30.0,
-          "unit": "Angstroms"
+          "unit": "Angstroms",
+          "numeric_value": 30.0
         },
         "completeness": {
-          "numeric_value": 100.0,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 100.0
         },
         "signal_to_noise": {
-          "numeric_value": 45.0,
-          "unit": "signal to noise ratio"
+          "unit": "signal to noise ratio",
+          "numeric_value": 45.0
         }
       },
       "processing_status": "completed"
@@ -327,49 +327,49 @@
       "operator_id": "cryoem_operator_001",
       "experimental_conditions": {
         "temperature": {
-          "numeric_value": -180.0,
-          "unit": "degrees Celsius"
+          "unit": "degrees Celsius",
+          "numeric_value": -180.0
         },
         "humidity": {
-          "numeric_value": 0.0,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 0.0
         },
         "pressure": {
-          "numeric_value": 1e-06,
-          "unit": "kilopascals"
+          "unit": "kilopascals",
+          "numeric_value": 1e-06
         }
       },
       "data_collection_strategy": {
         "collection_mode": "super_resolution",
         "total_frames": {
-          "numeric_value": 10000.0,
-          "unit": "frames"
+          "unit": "frames",
+          "numeric_value": 10000.0
         },
         "frame_rate": {
-          "numeric_value": 40.0,
-          "unit": "frames per second"
+          "unit": "frames per second",
+          "numeric_value": 40.0
         },
         "total_dose": {
-          "numeric_value": 50.0,
-          "unit": "electrons per Angstrom squared"
+          "unit": "electrons per Angstrom squared",
+          "numeric_value": 50.0
         },
         "dose_per_frame": {
-          "numeric_value": 1.25,
-          "unit": "electrons per Angstrom squared"
+          "unit": "electrons per Angstrom squared",
+          "numeric_value": 1.25
         }
       },
       "quality_metrics": {
         "resolution": {
-          "numeric_value": 3.2,
-          "unit": "Angstroms"
+          "unit": "Angstroms",
+          "numeric_value": 3.2
         },
         "completeness": {
-          "numeric_value": 98.5,
-          "unit": "percent"
+          "unit": "percent",
+          "numeric_value": 98.5
         },
         "signal_to_noise": {
-          "numeric_value": 3.8,
-          "unit": "signal to noise ratio"
+          "unit": "signal to noise ratio",
+          "numeric_value": 3.8
         }
       },
       "processing_status": "processing"

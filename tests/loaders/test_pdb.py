@@ -43,6 +43,16 @@ class TestPDBLoader:
         result = loader.load("1HHO")
         assert "OXYHAEMOGLOBIN" in result.dataset.title
 
+    def test_loader_result_has_source_url(self, loader):
+        """Test LoaderResult includes the human-readable PDB structure URL."""
+        result = loader.load("1HHO")
+        assert result.source_url == "https://www.rcsb.org/structure/1HHO"
+
+    def test_loader_result_has_pdb_doi(self, loader):
+        """Test LoaderResult includes the standardized PDB DOI URL."""
+        result = loader.load("1HHO")
+        assert result.doi == "https://doi.org/10.2210/pdb1hho/pdb"
+
     def test_samples_created_from_polymer_entities(self, loader):
         """Test Sample objects are created from polymer entities."""
         result = loader.load("1HHO")
