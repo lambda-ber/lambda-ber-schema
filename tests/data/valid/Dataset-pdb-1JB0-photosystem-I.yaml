@@ -19,7 +19,7 @@ samples:
   molecular_weight:
     numeric_value: 83.27
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A405
@@ -33,7 +33,7 @@ samples:
   molecular_weight:
     numeric_value: 82.99
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A407
@@ -47,7 +47,7 @@ samples:
   molecular_weight:
     numeric_value: 8.68
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A415
@@ -61,7 +61,7 @@ samples:
   molecular_weight:
     numeric_value: 15.26
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A420
@@ -75,7 +75,7 @@ samples:
   molecular_weight:
     numeric_value: 8.27
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A423
@@ -89,7 +89,7 @@ samples:
   molecular_weight:
     numeric_value: 17.72
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A401
@@ -103,7 +103,7 @@ samples:
   molecular_weight:
     numeric_value: 4.3
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A427
@@ -117,7 +117,7 @@ samples:
   molecular_weight:
     numeric_value: 4.77
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A429
@@ -131,7 +131,7 @@ samples:
   molecular_weight:
     numeric_value: 8.48
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A425
@@ -145,7 +145,7 @@ samples:
   molecular_weight:
     numeric_value: 16.16
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: Q8DGB4
@@ -159,7 +159,7 @@ samples:
   molecular_weight:
     numeric_value: 3.43
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: P0A403
@@ -173,7 +173,7 @@ samples:
   molecular_weight:
     numeric_value: 3.85
     unit: kDa
-  organism: Synechococcus elongatus
+  organism: ncbitaxon:32046 # Synechococcus elongatus
   database_cross_references:
   - database_name: uniprot
     database_id: Q8DKP6
