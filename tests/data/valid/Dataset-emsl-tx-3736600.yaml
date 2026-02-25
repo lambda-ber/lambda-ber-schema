@@ -1,0 +1,74 @@
+id: emsl:transaction_3736600
+title: 'Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation
+  and inhibition - T-A-apo_5_021226_atlas'
+description: EMSL transaction 3736600 for sample 'T-A-apo_5_021226_atlas'
+keywords:
+- EMSL
+- pncc.short_sample_name
+studies:
+- id: emsl:project_160724
+  title: 'Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation
+    and inhibition'
+  description: "Human PARP enzymes are a diverse class of medically relevant proteins\
+    \ that regulate multiple aspects of biology. The major catalytic activity of PARP\
+    \ enzymes is the production of ADP-ribose modifications on biomolecules such as\
+    \ proteins, nucleic acids, and metabolites. Human PARP enzymes are diverse and\
+    \ regulate distinct and varied biological pathways, many of which are deregulated\
+    \ in common diseases. PARP enzymes that are implicated in deregulated biological\
+    \ pathways have offered an avenue for therapeutic intervention, with the \u201C\
+    druggable\u201D PARP active site targeted in several diseases, most notably cancer,\
+    \ inflammation, and neurodegenerative disorders. The proposed work will provide\
+    \ important knowledge regarding the structure and regulation of human PARP enzymes\
+    \ and associated partner proteins."
+  keywords:
+  - EMSL
+  - General Access
+instruments:
+- id: emsl:resource_34290
+  title: PNCC Krios 1 (34290)
+  description: EMSL/1095 | 24/7
+  instrument_code: EMSL-PNCC_Krios_1-34290
+  instrument_category: ELECTRON_MICROSCOPE
+  facility_name: EMSL
+  facility_ror: https://ror.org/05h992307
+  model: PNCC Krios 1
+  current_status: offline
+samples:
+- id: emsl:sample_T_A_apo_5_021226_atlas_3736600
+  title: T-A-apo_5_021226_atlas
+  description: 'Source key: pncc.short_sample_name'
+  sample_code: T-A-apo_5_021226_atlas
+  sample_type: protein
+experiment_runs:
+- id: emsl:transaction_3736600
+  experiment_code: EMSL-TX-3736600
+  experiment_date: '2026-02-15T08:51:33'
+  operator_id: '48279'
+  technique: cryo_em
+  raw_data_location: 160724/T-A-apo_5_021226_atlas/epu_session
+  processing_status: collected
+  acquisition_software: EPU
+data_files:
+- id: emsl:file_64894458
+  file_name: f25e429f1800b17dd780275af5b61b1c5e68e9c7.data.1.tar
+  file_path: 160724/T-A-apo_5_021226_atlas/epu_session/f25e429f1800b17dd780275af5b61b1c5e68e9c7.data.1.tar
+  file_format: tar
+  file_size_bytes:
+    numeric_value: 365936640.0
+    unit: bytes
+  creation_date: '2026-02-15T08:51:33'
+  data_type: raw_data
+  related_entity: emsl:transaction_3736600
+  file_role: raw
+study_sample_associations:
+- study_id: emsl:project_160724
+  sample_id: emsl:sample_T_A_apo_5_021226_atlas_3736600
+study_experiment_associations:
+- study_id: emsl:project_160724
+  experiment_id: emsl:transaction_3736600
+experiment_sample_associations:
+- experiment_id: emsl:transaction_3736600
+  sample_id: emsl:sample_T_A_apo_5_021226_atlas_3736600
+experiment_instrument_associations:
+- experiment_id: emsl:transaction_3736600
+  instrument_id: emsl:resource_34290
