@@ -2270,6 +2270,10 @@ class FileFormatEnum(str, Enum):
     """
     ZIP compressed archive
     """
+    tar = "tar"
+    """
+    TAR archive format
+    """
     mrcs = "mrcs"
     """
     MRC stack format for particle stacks
@@ -5454,4 +5458,3 @@ ExperimentInstrumentAssociation.model_rebuild()
 WorkflowExperimentAssociation.model_rebuild()
 WorkflowInputAssociation.model_rebuild()
 WorkflowOutputAssociation.model_rebuild()
-
