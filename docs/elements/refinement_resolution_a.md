@@ -31,7 +31,7 @@ Alias: refinement_resolution_a
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: refinement_resolution_a
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

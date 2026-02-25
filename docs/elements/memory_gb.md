@@ -3,7 +3,7 @@
 # Slot: memory_gb 
 
 
-_Maximum memory used in GB_
+_Maximum memory used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: memory_gb
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: memory_gb
 <details>
 ```yaml
 name: memory_gb
-description: Maximum memory used in GB
+description: Maximum memory used, typically specified in gigabytes (GB). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: memory_gb
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: frame_rate 
 
 
-_Frames per second_
+_Frame rate, typically specified in frames per second. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: frame_rate
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: frame_rate
 <details>
 ```yaml
 name: frame_rate
-description: Frames per second
+description: Frame rate, typically specified in frames per second. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: frame_rate
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -31,15 +31,10 @@ Alias: pixel_size_physical_um
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Hardware specification, independent of magnification
-* Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
 
 ## Identifier and Mapping Information
 
@@ -72,16 +67,14 @@ Alias: pixel_size_physical_um
 ```yaml
 name: pixel_size_physical_um
 description: Physical pixel size of the detector in micrometers
-comments:
-- Hardware specification, independent of magnification
-- Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pixel_size_physical_um
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -31,7 +31,7 @@ Alias: patch_size
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: patch_size
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

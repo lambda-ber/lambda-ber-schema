@@ -31,7 +31,7 @@ Alias: sequence_length_aa
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: sequence_length_aa
 owner: ProteinConstruct
 domain_of:
 - ProteinConstruct
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

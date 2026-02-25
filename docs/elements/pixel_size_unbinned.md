@@ -3,7 +3,7 @@
 # Slot: pixel_size_unbinned 
 
 
-_Unbinned pixel size in Angstroms per pixel_
+_Unbinned pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: pixel_size_unbinned
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: pixel_size_unbinned
 <details>
 ```yaml
 name: pixel_size_unbinned
-description: Unbinned pixel size in Angstroms per pixel
+description: Unbinned pixel size, typically specified in Angstroms per pixel. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pixel_size_unbinned
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

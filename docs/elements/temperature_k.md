@@ -3,7 +3,7 @@
 # Slot: temperature_k 
 
 
-_Data collection temperature in Kelvin_
+_Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: temperature_k
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: temperature_k
 <details>
 ```yaml
 name: temperature_k
-description: Data collection temperature in Kelvin
+description: Data collection temperature, typically specified in Kelvin. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: temperature_k
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

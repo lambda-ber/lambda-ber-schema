@@ -443,6 +443,7 @@ attributes:
     owner: EvolutionaryConservation
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

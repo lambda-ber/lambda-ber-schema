@@ -3,7 +3,7 @@
 # Slot: detector_distance 
 
 
-_Distance from sample to detector_
+_Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: detector_distance
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,9 @@ Alias: detector_distance
 <details>
 ```yaml
 name: detector_distance
-description: Distance from sample to detector
+description: Distance from sample to detector, typically specified in millimeters
+  (mm). Data providers may specify alternative units by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Detector_distance
@@ -79,9 +81,8 @@ alias: detector_distance
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: mm
+range: QuantityValue
+inlined: true
 
 ```
 </details>

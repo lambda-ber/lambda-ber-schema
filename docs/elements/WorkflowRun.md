@@ -26,17 +26,71 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : anomalous_completeness
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : anomalous_completeness
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : anomalous_multiplicity
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : anomalous_multiplicity
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : cc_anomalous
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : cc_anomalous
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : cc_half
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : cc_half
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : clashscore
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : clashscore
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : completed_at
         
       WorkflowRun : completeness_percent
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : completeness_percent
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : compute_resources
         
@@ -64,8 +118,6 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : description
         
-      WorkflowRun : experiment_id
-        
       WorkflowRun : fsc_curve
         
           
@@ -79,6 +131,15 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : i_over_sigma
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : i_over_sigma
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : id
         
       WorkflowRun : indexer_module
@@ -87,7 +148,25 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : ispyb_auto_proc_program_id
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : ispyb_auto_proc_program_id
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : ispyb_auto_proc_scaling_id
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : ispyb_auto_proc_scaling_id
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : ligands_cofactors
         
@@ -104,13 +183,49 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : multiplicity
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : multiplicity
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : n_total_observations
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : n_total_observations
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : n_total_unique
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : n_total_unique
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : ncs_used
         
       WorkflowRun : number_of_waters
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : number_of_waters
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : outlier_rejection_method
         
@@ -153,15 +268,51 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : processing_level
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : processing_level
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : processing_notes
         
       WorkflowRun : processing_parameters
         
       WorkflowRun : r_anomalous
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : r_anomalous
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : ramachandran_favored
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : ramachandran_favored
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : ramachandran_outliers
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : ramachandran_outliers
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : refinement_params
         
@@ -176,29 +327,119 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : refinement_resolution_a
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : refinement_resolution_a
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : resolution_high
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : resolution_high
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : resolution_low
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : resolution_low
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : restraints_other
         
       WorkflowRun : rfree
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rfree
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : rmerge
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rmerge
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : rmsd_angles
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rmsd_angles
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : rmsd_bonds
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rmsd_bonds
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : rpim
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rpim
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : rwork
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : rwork
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : scaler_module
         
       WorkflowRun : search_model_pdb_id
         
       WorkflowRun : sig_anomalous
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : sig_anomalous
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : software_name
         
@@ -214,19 +455,82 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
         
       WorkflowRun : unit_cell_a
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_a
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : unit_cell_alpha
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_alpha
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : unit_cell_b
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_b
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : unit_cell_beta
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_beta
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : unit_cell_c
         
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_c
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       WorkflowRun : unit_cell_gamma
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : unit_cell_gamma
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : validation_report_path
         
       WorkflowRun : wilson_b_factor
+        
+          
+    
+        
+        
+        WorkflowRun --> "0..1" QuantityValue : wilson_b_factor
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       WorkflowRun : workflow_code
         
@@ -260,8 +564,7 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 | ---  | --- | --- | --- |
 | [workflow_code](workflow_code.md) | 1 <br/> [String](String.md) | Human-friendly identifier for the computational workflow run (e | direct |
 | [workflow_type](workflow_type.md) | 1 <br/> [WorkflowTypeEnum](WorkflowTypeEnum.md) | Type of processing workflow | direct |
-| [experiment_id](experiment_id.md) | 1 <br/> [String](String.md) | Reference to the source experiment | direct |
-| [processing_level](processing_level.md) | 0..1 <br/> [Integer](Integer.md) | Processing level (0=raw, 1=corrected, 2=derived, 3=model) | direct |
+| [processing_level](processing_level.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Processing level (0=raw, 1=corrected, 2=derived, 3=model) | direct |
 | [software_name](software_name.md) | 1 <br/> [String](String.md) | Software used for processing | direct |
 | [software_version](software_version.md) | 0..1 <br/> [String](String.md) | Software version | direct |
 | [additional_software](additional_software.md) | 0..1 <br/> [String](String.md) | Additional software used in pipeline | direct |
@@ -277,43 +580,43 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 | [ncs_used](ncs_used.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether Non-Crystallographic Symmetry restraints were used | direct |
 | [restraints_other](restraints_other.md) | 0..1 <br/> [String](String.md) | Other restraints applied during refinement | direct |
 | [ligands_cofactors](ligands_cofactors.md) | 0..1 <br/> [String](String.md) | Ligands or cofactors modeled in the structure | direct |
-| [number_of_waters](number_of_waters.md) | 0..1 <br/> [Integer](Integer.md) | Number of water molecules modeled | direct |
-| [refinement_resolution_a](refinement_resolution_a.md) | 0..1 <br/> [Float](Float.md) | Resolution cutoff used for refinement in Angstroms | direct |
+| [number_of_waters](number_of_waters.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of water molecules modeled | direct |
+| [refinement_resolution_a](refinement_resolution_a.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Resolution cutoff used for refinement in Angstroms | direct |
 | [deposited_to_pdb](deposited_to_pdb.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether structure was deposited to PDB | direct |
 | [pdb_id](pdb_id.md) | 0..1 <br/> [String](String.md) | PDB accession code if deposited | direct |
 | [validation_report_path](validation_report_path.md) | 0..1 <br/> [String](String.md) | Path to validation report | direct |
 | [space_group](space_group.md) | 0..1 <br/> [String](String.md) | Crystallographic space group | direct |
-| [unit_cell_a](unit_cell_a.md) | 0..1 <br/> [Float](Float.md) | Unit cell parameter a | direct |
-| [unit_cell_b](unit_cell_b.md) | 0..1 <br/> [Float](Float.md) | Unit cell parameter b | direct |
-| [unit_cell_c](unit_cell_c.md) | 0..1 <br/> [Float](Float.md) | Unit cell parameter c | direct |
-| [unit_cell_alpha](unit_cell_alpha.md) | 0..1 <br/> [Float](Float.md) | Unit cell angle alpha | direct |
-| [unit_cell_beta](unit_cell_beta.md) | 0..1 <br/> [Float](Float.md) | Unit cell angle beta | direct |
-| [unit_cell_gamma](unit_cell_gamma.md) | 0..1 <br/> [Float](Float.md) | Unit cell angle gamma | direct |
-| [resolution_high](resolution_high.md) | 0..1 <br/> [Float](Float.md) | High resolution limit | direct |
-| [resolution_low](resolution_low.md) | 0..1 <br/> [Float](Float.md) | Low resolution limit | direct |
-| [rmerge](rmerge.md) | 0..1 <br/> [Float](Float.md) | Rmerge - merge R-factor | direct |
-| [rpim](rpim.md) | 0..1 <br/> [Float](Float.md) | Rpim - precision-indicating merging R-factor | direct |
-| [cc_half](cc_half.md) | 0..1 <br/> [Float](Float.md) | Half-set correlation coefficient CC(1/2) | direct |
-| [completeness_percent](completeness_percent.md) | 0..1 <br/> [Float](Float.md) | Data completeness percentage | direct |
-| [i_over_sigma](i_over_sigma.md) | 0..1 <br/> [Float](Float.md) | Mean I/sigma(I) - signal to noise ratio | direct |
-| [wilson_b_factor](wilson_b_factor.md) | 0..1 <br/> [Float](Float.md) | Wilson B-factor | direct |
-| [multiplicity](multiplicity.md) | 0..1 <br/> [Float](Float.md) | Data multiplicity (redundancy) | direct |
-| [anomalous_completeness](anomalous_completeness.md) | 0..1 <br/> [Float](Float.md) | Completeness of anomalous data as percentage | direct |
-| [anomalous_multiplicity](anomalous_multiplicity.md) | 0..1 <br/> [Float](Float.md) | Multiplicity of anomalous data | direct |
-| [cc_anomalous](cc_anomalous.md) | 0..1 <br/> [Float](Float.md) | Anomalous correlation coefficient | direct |
-| [r_anomalous](r_anomalous.md) | 0..1 <br/> [Float](Float.md) | Anomalous R-factor | direct |
-| [sig_anomalous](sig_anomalous.md) | 0..1 <br/> [Float](Float.md) | Mean anomalous difference signal | direct |
-| [n_total_observations](n_total_observations.md) | 0..1 <br/> [Integer](Integer.md) | Total number of observations (before merging) | direct |
-| [n_total_unique](n_total_unique.md) | 0..1 <br/> [Integer](Integer.md) | Total number of unique reflections | direct |
-| [ispyb_auto_proc_program_id](ispyb_auto_proc_program_id.md) | 0..1 <br/> [Integer](Integer.md) | ISPyB AutoProcProgram | direct |
-| [ispyb_auto_proc_scaling_id](ispyb_auto_proc_scaling_id.md) | 0..1 <br/> [Integer](Integer.md) | ISPyB AutoProcScaling | direct |
-| [rwork](rwork.md) | 0..1 <br/> [Float](Float.md) | Refinement R-factor (working set) | direct |
-| [rfree](rfree.md) | 0..1 <br/> [Float](Float.md) | R-free (test set) | direct |
-| [rmsd_bonds](rmsd_bonds.md) | 0..1 <br/> [Float](Float.md) | RMSD from ideal bond lengths | direct |
-| [rmsd_angles](rmsd_angles.md) | 0..1 <br/> [Float](Float.md) | RMSD from ideal bond angles | direct |
-| [ramachandran_favored](ramachandran_favored.md) | 0..1 <br/> [Float](Float.md) | Percentage of residues in favored Ramachandran regions | direct |
-| [ramachandran_outliers](ramachandran_outliers.md) | 0..1 <br/> [Float](Float.md) | Percentage of Ramachandran outliers | direct |
-| [clashscore](clashscore.md) | 0..1 <br/> [Float](Float.md) | MolProbity clashscore | direct |
+| [unit_cell_a](unit_cell_a.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell parameter a, typically specified in Angstroms (Å) | direct |
+| [unit_cell_b](unit_cell_b.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell parameter b, typically specified in Angstroms (Å) | direct |
+| [unit_cell_c](unit_cell_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell parameter c, typically specified in Angstroms (Å) | direct |
+| [unit_cell_alpha](unit_cell_alpha.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell angle alpha, typically specified in degrees | direct |
+| [unit_cell_beta](unit_cell_beta.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell angle beta, typically specified in degrees | direct |
+| [unit_cell_gamma](unit_cell_gamma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unit cell angle gamma, typically specified in degrees | direct |
+| [resolution_high](resolution_high.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | High resolution limit, typically specified in Angstroms (Å) | direct |
+| [resolution_low](resolution_low.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Low resolution limit, typically specified in Angstroms (Å) | direct |
+| [rmerge](rmerge.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Rmerge - merge R-factor | direct |
+| [rpim](rpim.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Rpim - precision-indicating merging R-factor | direct |
+| [cc_half](cc_half.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Half-set correlation coefficient CC(1/2) | direct |
+| [completeness_percent](completeness_percent.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Data completeness as a percentage (0-100) | direct |
+| [i_over_sigma](i_over_sigma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Mean I/sigma(I) - signal to noise ratio | direct |
+| [wilson_b_factor](wilson_b_factor.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Wilson B-factor, typically specified in Angstroms squared (Ų) | direct |
+| [multiplicity](multiplicity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Data multiplicity (redundancy) | direct |
+| [anomalous_completeness](anomalous_completeness.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Completeness of anomalous data as a percentage (0-100) | direct |
+| [anomalous_multiplicity](anomalous_multiplicity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Multiplicity of anomalous data | direct |
+| [cc_anomalous](cc_anomalous.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Anomalous correlation coefficient | direct |
+| [r_anomalous](r_anomalous.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Anomalous R-factor | direct |
+| [sig_anomalous](sig_anomalous.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Mean anomalous difference signal | direct |
+| [n_total_observations](n_total_observations.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total number of observations (before merging) | direct |
+| [n_total_unique](n_total_unique.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total number of unique reflections | direct |
+| [ispyb_auto_proc_program_id](ispyb_auto_proc_program_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | ISPyB AutoProcProgram | direct |
+| [ispyb_auto_proc_scaling_id](ispyb_auto_proc_scaling_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | ISPyB AutoProcScaling | direct |
+| [rwork](rwork.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Refinement R-factor (working set) | direct |
+| [rfree](rfree.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | R-free (test set) | direct |
+| [rmsd_bonds](rmsd_bonds.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | RMSD from ideal bond lengths, typically specified in Angstroms (Å) | direct |
+| [rmsd_angles](rmsd_angles.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | RMSD from ideal bond angles, typically specified in degrees | direct |
+| [ramachandran_favored](ramachandran_favored.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Percentage of residues in favored Ramachandran regions (0-100) | direct |
+| [ramachandran_outliers](ramachandran_outliers.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Percentage of Ramachandran outliers (0-100) | direct |
+| [clashscore](clashscore.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | MolProbity clashscore | direct |
 | [processing_notes](processing_notes.md) | 0..1 <br/> [String](String.md) | Additional notes about processing | direct |
 | [compute_resources](compute_resources.md) | 0..1 <br/> [ComputeResources](ComputeResources.md) | Computational resources used | direct |
 | [started_at](started_at.md) | 0..1 <br/> [String](String.md) | Workflow start time | direct |
@@ -336,7 +639,11 @@ URI: [lambdaber:WorkflowRun](https://w3id.org/lambda-ber-schema/WorkflowRun)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [workflow_runs](workflow_runs.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [Dataset](Dataset.md) | [workflow_runs](workflow_runs.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [WorkflowInputAssociation](WorkflowInputAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
+| [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | [workflow_id](workflow_id.md) | range | [WorkflowRun](WorkflowRun.md) |
 
 
 
@@ -403,15 +710,6 @@ attributes:
     - WorkflowRun
     range: WorkflowTypeEnum
     required: true
-  experiment_id:
-    name: experiment_id
-    description: Reference to the source experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - WorkflowRun
-    range: string
-    required: true
   processing_level:
     name: processing_level
     description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
@@ -419,9 +717,8 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
-    minimum_value: 0
-    maximum_value: 4
+    range: QuantityValue
+    inlined: true
   software_name:
     name: software_name
     description: Software used for processing
@@ -538,7 +835,8 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   refinement_resolution_a:
     name: refinement_resolution_a
     description: Resolution cutoff used for refinement in Angstroms
@@ -546,7 +844,8 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   deposited_to_pdb:
     name: deposited_to_pdb
     description: Whether structure was deposited to PDB
@@ -584,7 +883,8 @@ attributes:
     range: string
   unit_cell_a:
     name: unit_cell_a
-    description: Unit cell parameter a
+    description: Unit cell parameter a, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_a
@@ -593,12 +893,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_b:
     name: unit_cell_b
-    description: Unit cell parameter b
+    description: Unit cell parameter b, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_b
@@ -607,12 +907,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_c:
     name: unit_cell_c
-    description: Unit cell parameter c
+    description: Unit cell parameter c, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_c
@@ -621,12 +921,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_alpha:
     name: unit_cell_alpha
-    description: Unit cell angle alpha
+    description: Unit cell angle alpha, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_alpha
@@ -635,12 +935,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   unit_cell_beta:
     name: unit_cell_beta
-    description: Unit cell angle beta
+    description: Unit cell angle beta, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_beta
@@ -649,12 +949,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   unit_cell_gamma:
     name: unit_cell_gamma
-    description: Unit cell angle gamma
+    description: Unit cell angle gamma, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_gamma
@@ -663,12 +963,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   resolution_high:
     name: resolution_high
-    description: High resolution limit
+    description: High resolution limit, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Resolution_High_A
@@ -677,12 +977,12 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   resolution_low:
     name: resolution_low
-    description: Low resolution limit
+    description: Low resolution limit, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Resolution_Low_A
@@ -691,49 +991,40 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rmerge
-    - mmCIF:_reflns.pdbx_Rmerge_I_obs
-    - ispyb:AutoProcScalingStatistics.rMerge
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rpim
-    - mmCIF:_reflns.pdbx_Rpim_I_all
-    - ispyb:AutoProcScalingStatistics.rPim
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:CC_half
-    - mmCIF:_reflns.pdbx_CC_half
-    - ispyb:AutoProcScalingStatistics.ccHalf
     rank: 1000
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   completeness_percent:
     name: completeness_percent
-    description: Data completeness percentage
+    description: Data completeness as a percentage (0-100). Data providers may specify
+      as a decimal fraction or percentage by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Completeness
@@ -742,24 +1033,21 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:I_over_sigma
-    - mmCIF:_reflns.pdbx_netI_over_sigmaI
-    - ispyb:AutoProcScalingStatistics.meanIOverSigI
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   wilson_b_factor:
     name: wilson_b_factor
-    description: Wilson B-factor
+    description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Wilson_B
@@ -767,25 +1055,23 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao2
+    range: QuantityValue
+    inlined: true
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Multiplicity
-    - mmCIF:_reflns.pdbx_redundancy
-    - ispyb:AutoProcScalingStatistics.multiplicity
     rank: 1000
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   anomalous_completeness:
     name: anomalous_completeness
-    description: Completeness of anomalous data as percentage
+    description: Completeness of anomalous data as a percentage (0-100). Data providers
+      may specify as a decimal fraction or percentage by including the unit in the
+      QuantityValue.
     comments:
     - Completeness of Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -794,122 +1080,102 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   anomalous_multiplicity:
     name: anomalous_multiplicity
     description: Multiplicity of anomalous data
-    comments:
-    - Redundancy of Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.anomalousMultiplicity
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   cc_anomalous:
     name: cc_anomalous
     description: Anomalous correlation coefficient
-    comments:
-    - Correlation coefficient between Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.ccAno
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   r_anomalous:
     name: r_anomalous
     description: Anomalous R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.rAnom
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   sig_anomalous:
     name: sig_anomalous
     description: Mean anomalous difference signal
-    comments:
-    - Mean |F(+) - F(-)|/sigma
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.sigAno
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   n_total_observations:
     name: n_total_observations
     description: Total number of observations (before merging)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.nTotalObservations
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   n_total_unique:
     name: n_total_unique
     description: Total number of unique reflections
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.nTotalUniqueObservations
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_auto_proc_program_id:
     name: ispyb_auto_proc_program_id
     description: ISPyB AutoProcProgram.autoProcProgramId
-    comments:
-    - Links to ISPyB processing program record
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcProgram.autoProcProgramId
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_auto_proc_scaling_id:
     name: ispyb_auto_proc_scaling_id
     description: ISPyB AutoProcScaling.autoProcScalingId
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScaling.autoProcScalingId
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rwork
-    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rfree:
     name: rfree
     description: R-free (test set)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rfree
-    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rmsd_bonds:
     name: rmsd_bonds
-    description: RMSD from ideal bond lengths
+    description: RMSD from ideal bond lengths, typically specified in Angstroms (Å).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:RMSD_bonds
@@ -917,12 +1183,12 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   rmsd_angles:
     name: rmsd_angles
-    description: RMSD from ideal bond angles
+    description: RMSD from ideal bond angles, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:RMSD_angles
@@ -930,12 +1196,13 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   ramachandran_favored:
     name: ramachandran_favored
-    description: Percentage of residues in favored Ramachandran regions
+    description: Percentage of residues in favored Ramachandran regions (0-100). Data
+      providers may specify as a decimal fraction or percentage by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Ramachandran_Favored
@@ -943,12 +1210,12 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   ramachandran_outliers:
     name: ramachandran_outliers
-    description: Percentage of Ramachandran outliers
+    description: Percentage of Ramachandran outliers (0-100). Data providers may specify
+      as a decimal fraction or percentage by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Ramachandran_Outliers
@@ -956,20 +1223,18 @@ attributes:
     rank: 1000
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   clashscore:
     name: clashscore
     description: MolProbity clashscore
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Clashscore
     rank: 1000
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   processing_notes:
     name: processing_notes
     description: Additional notes about processing
@@ -1087,17 +1352,6 @@ attributes:
     - WorkflowRun
     range: WorkflowTypeEnum
     required: true
-  experiment_id:
-    name: experiment_id
-    description: Reference to the source experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: experiment_id
-    owner: WorkflowRun
-    domain_of:
-    - WorkflowRun
-    range: string
-    required: true
   processing_level:
     name: processing_level
     description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
@@ -1107,9 +1361,8 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
-    minimum_value: 0
-    maximum_value: 4
+    range: QuantityValue
+    inlined: true
   software_name:
     name: software_name
     description: Software used for processing
@@ -1270,7 +1523,8 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   refinement_resolution_a:
     name: refinement_resolution_a
     description: Resolution cutoff used for refinement in Angstroms
@@ -1280,7 +1534,8 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   deposited_to_pdb:
     name: deposited_to_pdb
     description: Whether structure was deposited to PDB
@@ -1328,7 +1583,8 @@ attributes:
     range: string
   unit_cell_a:
     name: unit_cell_a
-    description: Unit cell parameter a
+    description: Unit cell parameter a, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_a
@@ -1339,12 +1595,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_b:
     name: unit_cell_b
-    description: Unit cell parameter b
+    description: Unit cell parameter b, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_b
@@ -1355,12 +1611,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_c:
     name: unit_cell_c
-    description: Unit cell parameter c
+    description: Unit cell parameter c, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_c
@@ -1371,12 +1627,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   unit_cell_alpha:
     name: unit_cell_alpha
-    description: Unit cell angle alpha
+    description: Unit cell angle alpha, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_alpha
@@ -1387,12 +1643,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   unit_cell_beta:
     name: unit_cell_beta
-    description: Unit cell angle beta
+    description: Unit cell angle beta, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_beta
@@ -1403,12 +1659,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   unit_cell_gamma:
     name: unit_cell_gamma
-    description: Unit cell angle gamma
+    description: Unit cell angle gamma, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Unit_Cell_gamma
@@ -1419,12 +1675,12 @@ attributes:
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   resolution_high:
     name: resolution_high
-    description: High resolution limit
+    description: High resolution limit, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Resolution_High_A
@@ -1435,12 +1691,12 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   resolution_low:
     name: resolution_low
-    description: Low resolution limit
+    description: Low resolution limit, typically specified in Angstroms (Å). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Resolution_Low_A
@@ -1451,55 +1707,46 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   rmerge:
     name: rmerge
     description: Rmerge - merge R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rmerge
-    - mmCIF:_reflns.pdbx_Rmerge_I_obs
-    - ispyb:AutoProcScalingStatistics.rMerge
     rank: 1000
     alias: rmerge
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rpim:
     name: rpim
     description: Rpim - precision-indicating merging R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rpim
-    - mmCIF:_reflns.pdbx_Rpim_I_all
-    - ispyb:AutoProcScalingStatistics.rPim
     rank: 1000
     alias: rpim
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   cc_half:
     name: cc_half
     description: Half-set correlation coefficient CC(1/2)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:CC_half
-    - mmCIF:_reflns.pdbx_CC_half
-    - ispyb:AutoProcScalingStatistics.ccHalf
     rank: 1000
     alias: cc_half
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   completeness_percent:
     name: completeness_percent
-    description: Data completeness percentage
+    description: Data completeness as a percentage (0-100). Data providers may specify
+      as a decimal fraction or percentage by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Completeness
@@ -1510,26 +1757,23 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   i_over_sigma:
     name: i_over_sigma
     description: Mean I/sigma(I) - signal to noise ratio
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:I_over_sigma
-    - mmCIF:_reflns.pdbx_netI_over_sigmaI
-    - ispyb:AutoProcScalingStatistics.meanIOverSigI
     rank: 1000
     alias: i_over_sigma
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   wilson_b_factor:
     name: wilson_b_factor
-    description: Wilson B-factor
+    description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Wilson_B
@@ -1539,27 +1783,25 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao2
+    range: QuantityValue
+    inlined: true
   multiplicity:
     name: multiplicity
     description: Data multiplicity (redundancy)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Multiplicity
-    - mmCIF:_reflns.pdbx_redundancy
-    - ispyb:AutoProcScalingStatistics.multiplicity
     rank: 1000
     alias: multiplicity
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   anomalous_completeness:
     name: anomalous_completeness
-    description: Completeness of anomalous data as percentage
+    description: Completeness of anomalous data as a percentage (0-100). Data providers
+      may specify as a decimal fraction or percentage by including the unit in the
+      QuantityValue.
     comments:
     - Completeness of Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1570,142 +1812,122 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   anomalous_multiplicity:
     name: anomalous_multiplicity
     description: Multiplicity of anomalous data
-    comments:
-    - Redundancy of Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.anomalousMultiplicity
     rank: 1000
     alias: anomalous_multiplicity
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   cc_anomalous:
     name: cc_anomalous
     description: Anomalous correlation coefficient
-    comments:
-    - Correlation coefficient between Bijvoet pairs
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.ccAno
     rank: 1000
     alias: cc_anomalous
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   r_anomalous:
     name: r_anomalous
     description: Anomalous R-factor
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.rAnom
     rank: 1000
     alias: r_anomalous
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   sig_anomalous:
     name: sig_anomalous
     description: Mean anomalous difference signal
-    comments:
-    - Mean |F(+) - F(-)|/sigma
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.sigAno
     rank: 1000
     alias: sig_anomalous
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   n_total_observations:
     name: n_total_observations
     description: Total number of observations (before merging)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.nTotalObservations
     rank: 1000
     alias: n_total_observations
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   n_total_unique:
     name: n_total_unique
     description: Total number of unique reflections
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScalingStatistics.nTotalUniqueObservations
     rank: 1000
     alias: n_total_unique
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_auto_proc_program_id:
     name: ispyb_auto_proc_program_id
     description: ISPyB AutoProcProgram.autoProcProgramId
-    comments:
-    - Links to ISPyB processing program record
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcProgram.autoProcProgramId
     rank: 1000
     alias: ispyb_auto_proc_program_id
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_auto_proc_scaling_id:
     name: ispyb_auto_proc_scaling_id
     description: ISPyB AutoProcScaling.autoProcScalingId
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:AutoProcScaling.autoProcScalingId
     rank: 1000
     alias: ispyb_auto_proc_scaling_id
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   rwork:
     name: rwork
     description: Refinement R-factor (working set)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rwork
-    - mmCIF:_refine.ls_R_factor_R_work
     rank: 1000
     alias: rwork
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rfree:
     name: rfree
     description: R-free (test set)
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Rfree
-    - mmCIF:_refine.ls_R_factor_R_free
     rank: 1000
     alias: rfree
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
+    range: QuantityValue
+    inlined: true
   rmsd_bonds:
     name: rmsd_bonds
-    description: RMSD from ideal bond lengths
+    description: RMSD from ideal bond lengths, typically specified in Angstroms (Å).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:RMSD_bonds
@@ -1715,12 +1937,12 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   rmsd_angles:
     name: rmsd_angles
-    description: RMSD from ideal bond angles
+    description: RMSD from ideal bond angles, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:RMSD_angles
@@ -1730,12 +1952,13 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   ramachandran_favored:
     name: ramachandran_favored
-    description: Percentage of residues in favored Ramachandran regions
+    description: Percentage of residues in favored Ramachandran regions (0-100). Data
+      providers may specify as a decimal fraction or percentage by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Ramachandran_Favored
@@ -1745,12 +1968,12 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   ramachandran_outliers:
     name: ramachandran_outliers
-    description: Percentage of Ramachandran outliers
+    description: Percentage of Ramachandran outliers (0-100). Data providers may specify
+      as a decimal fraction or percentage by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Ramachandran_Outliers
@@ -1760,22 +1983,20 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
-    range: float
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   clashscore:
     name: clashscore
     description: MolProbity clashscore
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Clashscore
     rank: 1000
     alias: clashscore
     owner: WorkflowRun
     domain_of:
     - WorkflowRun
     - QualityMetrics
-    range: float
+    range: QuantityValue
+    inlined: true
   processing_notes:
     name: processing_notes
     description: Additional notes about processing
@@ -1889,6 +2110,7 @@ attributes:
     owner: WorkflowRun
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

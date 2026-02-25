@@ -3,7 +3,7 @@
 # Slot: wavenumber_max 
 
 
-_Maximum wavenumber in cm⁻¹_
+_Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: wavenumber_max
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: wavenumber_max
 <details>
 ```yaml
 name: wavenumber_max
-description: Maximum wavenumber in cm⁻¹
+description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: wavenumber_max
 owner: FTIRImage
 domain_of:
 - FTIRImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

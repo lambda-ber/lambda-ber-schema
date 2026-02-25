@@ -26,9 +26,36 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
         
       DataCollectionStrategy : beam_center_x_px
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : beam_center_x_px
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : beam_center_y_px
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : beam_center_y_px
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : beam_size_um
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : beam_size_um
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : collection_mode
         
@@ -45,6 +72,15 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
         
       DataCollectionStrategy : detector_distance_mm
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : detector_distance_mm
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : detector_mode
         
           
@@ -58,27 +94,126 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
         
       DataCollectionStrategy : dose_per_frame
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : dose_per_frame
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : flux_photons_per_s
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : flux_photons_per_s
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : frame_rate
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : frame_rate
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : oscillation_per_image_deg
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : oscillation_per_image_deg
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : pixel_size_calibrated
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : pixel_size_calibrated
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : strategy_notes
         
       DataCollectionStrategy : temperature_k
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : temperature_k
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : total_dose
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : total_dose
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : total_frames
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : total_frames
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : total_rotation_deg
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : total_rotation_deg
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       DataCollectionStrategy : transmission_percent
         
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : transmission_percent
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataCollectionStrategy : wavelength_a
+        
+          
+    
+        
+        
+        DataCollectionStrategy --> "0..1" QuantityValue : wavelength_a
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -98,23 +233,23 @@ URI: [lambdaber:DataCollectionStrategy](https://w3id.org/lambda-ber-schema/DataC
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [collection_mode](collection_mode.md) | 0..1 <br/> [CollectionModeEnum](CollectionModeEnum.md) | Mode of data collection | direct |
-| [total_frames](total_frames.md) | 0..1 <br/> [Integer](Integer.md) | Total number of frames/images | direct |
-| [frame_rate](frame_rate.md) | 0..1 <br/> [Float](Float.md) | Frames per second | direct |
-| [total_dose](total_dose.md) | 0..1 <br/> [Float](Float.md) | Total electron dose for cryo-EM | direct |
-| [dose_per_frame](dose_per_frame.md) | 0..1 <br/> [Float](Float.md) | Dose per frame | direct |
-| [wavelength_a](wavelength_a.md) | 0..1 <br/> [Float](Float.md) | X-ray wavelength in Angstroms | direct |
+| [total_frames](total_frames.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total number of frames/images | direct |
+| [frame_rate](frame_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Frame rate, typically specified in frames per second | direct |
+| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose for cryo-EM, typically specified in electrons per Angstro... | direct |
+| [dose_per_frame](dose_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose per frame, typically specified in electrons per Angstrom squared (e⁻/Å²) | direct |
+| [wavelength_a](wavelength_a.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray wavelength, typically specified in Angstroms | direct |
 | [detector_mode](detector_mode.md) | 0..1 <br/> [DetectorModeEnum](DetectorModeEnum.md) | Detector operating mode used during this experiment | direct |
-| [pixel_size_calibrated](pixel_size_calibrated.md) | 0..1 <br/> [Float](Float.md) | Calibrated pixel size for this experiment | direct |
-| [detector_distance_mm](detector_distance_mm.md) | 0..1 <br/> [Float](Float.md) | Detector distance in millimeters | direct |
-| [beam_center_x_px](beam_center_x_px.md) | 0..1 <br/> [Integer](Integer.md) | Beam center X coordinate in pixels | direct |
-| [beam_center_y_px](beam_center_y_px.md) | 0..1 <br/> [Integer](Integer.md) | Beam center Y coordinate in pixels | direct |
-| [beam_size_um](beam_size_um.md) | 0..1 <br/> [Float](Float.md) | Beam size in micrometers | direct |
-| [flux_photons_per_s](flux_photons_per_s.md) | 0..1 <br/> [Float](Float.md) | Photon flux in photons per second | direct |
-| [transmission_percent](transmission_percent.md) | 0..1 <br/> [Float](Float.md) | Beam transmission percentage | direct |
+| [pixel_size_calibrated](pixel_size_calibrated.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size for this experiment, typically specified in Angstroms (... | direct |
+| [detector_distance_mm](detector_distance_mm.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Detector distance, typically specified in millimeters | direct |
+| [beam_center_x_px](beam_center_x_px.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center X coordinate in pixels | direct |
+| [beam_center_y_px](beam_center_y_px.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center Y coordinate in pixels | direct |
+| [beam_size_um](beam_size_um.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam size, typically specified in micrometers | direct |
+| [flux_photons_per_s](flux_photons_per_s.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux, typically specified in photons per second | direct |
+| [transmission_percent](transmission_percent.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam transmission, typically specified as a percentage (0-100) | direct |
 | [attenuator](attenuator.md) | 0..1 <br/> [String](String.md) | Attenuator setting used | direct |
-| [temperature_k](temperature_k.md) | 0..1 <br/> [Float](Float.md) | Data collection temperature in Kelvin | direct |
-| [oscillation_per_image_deg](oscillation_per_image_deg.md) | 0..1 <br/> [Float](Float.md) | Oscillation angle per image in degrees | direct |
-| [total_rotation_deg](total_rotation_deg.md) | 0..1 <br/> [Float](Float.md) | Total rotation range in degrees | direct |
+| [temperature_k](temperature_k.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Data collection temperature, typically specified in Kelvin | direct |
+| [oscillation_per_image_deg](oscillation_per_image_deg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Oscillation angle per image, typically specified in degrees | direct |
+| [total_rotation_deg](total_rotation_deg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total rotation range, typically specified in degrees | direct |
 | [strategy_notes](strategy_notes.md) | 0..1 <br/> [String](String.md) | Notes about data collection strategy | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -189,39 +324,50 @@ attributes:
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   frame_rate:
     name: frame_rate
-    description: Frames per second
+    description: Frame rate, typically specified in frames per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose for cryo-EM
+    description: Total electron dose for cryo-EM, typically specified in electrons
+      per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by
+      including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - ExperimentRun
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_per_frame:
     name: dose_per_frame
-    description: Dose per frame
+    description: Dose per frame, typically specified in electrons per Angstrom squared
+      (e⁻/Å²). Data providers may specify alternative units by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - Movie
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   wavelength_a:
     name: wavelength_a
-    description: X-ray wavelength in Angstroms
+    description: X-ray wavelength, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_mode:
     name: detector_mode
     description: Detector operating mode used during this experiment
@@ -235,7 +381,9 @@ attributes:
     range: DetectorModeEnum
   pixel_size_calibrated:
     name: pixel_size_calibrated
-    description: Calibrated pixel size for this experiment
+    description: Calibrated pixel size for this experiment, typically specified in
+      Angstroms (Å) per pixel. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
     comments:
     - 'For cryo-EM: depends on magnification (Å/pixel)'
     - 'For X-ray: typically mm/pixel or µm/pixel'
@@ -244,17 +392,18 @@ attributes:
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
-    unit:
-      ucum_code: Ao/px
+    range: QuantityValue
+    inlined: true
   detector_distance_mm:
     name: detector_distance_mm
-    description: Detector distance in millimeters
+    description: Detector distance, typically specified in millimeters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_center_x_px:
     name: beam_center_x_px
     description: Beam center X coordinate in pixels
@@ -262,7 +411,8 @@ attributes:
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_center_y_px:
     name: beam_center_y_px
     description: Beam center Y coordinate in pixels
@@ -270,31 +420,38 @@ attributes:
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_size_um:
     name: beam_size_um
-    description: Beam size in micrometers
+    description: Beam size, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_photons_per_s:
     name: flux_photons_per_s
-    description: Photon flux in photons per second
+    description: Photon flux, typically specified in photons per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   transmission_percent:
     name: transmission_percent
-    description: Beam transmission percentage
+    description: Beam transmission, typically specified as a percentage (0-100). Data
+      providers may specify as decimal fraction by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   attenuator:
     name: attenuator
     description: Attenuator setting used
@@ -304,28 +461,34 @@ attributes:
     - DataCollectionStrategy
   temperature_k:
     name: temperature_k
-    description: Data collection temperature in Kelvin
+    description: Data collection temperature, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   oscillation_per_image_deg:
     name: oscillation_per_image_deg
-    description: Oscillation angle per image in degrees
+    description: Oscillation angle per image, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   total_rotation_deg:
     name: total_rotation_deg
-    description: Total rotation range in degrees
+    description: Total rotation range, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   strategy_notes:
     name: strategy_notes
     description: Notes about data collection strategy
@@ -365,47 +528,58 @@ attributes:
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   frame_rate:
     name: frame_rate
-    description: Frames per second
+    description: Frame rate, typically specified in frames per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: frame_rate
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   total_dose:
     name: total_dose
-    description: Total electron dose for cryo-EM
+    description: Total electron dose for cryo-EM, typically specified in electrons
+      per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by
+      including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: total_dose
     owner: DataCollectionStrategy
     domain_of:
     - ExperimentRun
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_per_frame:
     name: dose_per_frame
-    description: Dose per frame
+    description: Dose per frame, typically specified in electrons per Angstrom squared
+      (e⁻/Å²). Data providers may specify alternative units by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: dose_per_frame
     owner: DataCollectionStrategy
     domain_of:
     - Movie
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   wavelength_a:
     name: wavelength_a
-    description: X-ray wavelength in Angstroms
+    description: X-ray wavelength, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: wavelength_a
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_mode:
     name: detector_mode
     description: Detector operating mode used during this experiment
@@ -421,7 +595,9 @@ attributes:
     range: DetectorModeEnum
   pixel_size_calibrated:
     name: pixel_size_calibrated
-    description: Calibrated pixel size for this experiment
+    description: Calibrated pixel size for this experiment, typically specified in
+      Angstroms (Å) per pixel. Data providers may specify alternative units by including
+      the unit in the QuantityValue.
     comments:
     - 'For cryo-EM: depends on magnification (Å/pixel)'
     - 'For X-ray: typically mm/pixel or µm/pixel'
@@ -432,19 +608,20 @@ attributes:
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
-    unit:
-      ucum_code: Ao/px
+    range: QuantityValue
+    inlined: true
   detector_distance_mm:
     name: detector_distance_mm
-    description: Detector distance in millimeters
+    description: Detector distance, typically specified in millimeters. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: detector_distance_mm
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_center_x_px:
     name: beam_center_x_px
     description: Beam center X coordinate in pixels
@@ -454,7 +631,8 @@ attributes:
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_center_y_px:
     name: beam_center_y_px
     description: Beam center Y coordinate in pixels
@@ -464,37 +642,44 @@ attributes:
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_size_um:
     name: beam_size_um
-    description: Beam size in micrometers
+    description: Beam size, typically specified in micrometers. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: beam_size_um
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_photons_per_s:
     name: flux_photons_per_s
-    description: Photon flux in photons per second
+    description: Photon flux, typically specified in photons per second. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: flux_photons_per_s
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   transmission_percent:
     name: transmission_percent
-    description: Beam transmission percentage
+    description: Beam transmission, typically specified as a percentage (0-100). Data
+      providers may specify as decimal fraction by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: transmission_percent
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   attenuator:
     name: attenuator
     description: Attenuator setting used
@@ -507,34 +692,40 @@ attributes:
     range: string
   temperature_k:
     name: temperature_k
-    description: Data collection temperature in Kelvin
+    description: Data collection temperature, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: temperature_k
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   oscillation_per_image_deg:
     name: oscillation_per_image_deg
-    description: Oscillation angle per image in degrees
+    description: Oscillation angle per image, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: oscillation_per_image_deg
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   total_rotation_deg:
     name: total_rotation_deg
-    description: Total rotation range in degrees
+    description: Total rotation range, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: total_rotation_deg
     owner: DataCollectionStrategy
     domain_of:
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   strategy_notes:
     name: strategy_notes
     description: Notes about data collection strategy

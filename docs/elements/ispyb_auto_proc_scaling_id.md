@@ -31,7 +31,7 @@ Alias: ispyb_auto_proc_scaling_id
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: ispyb_auto_proc_scaling_id
 | ---  | ---  |
 | self | lambdaber:ispyb_auto_proc_scaling_id |
 | native | lambdaber:ispyb_auto_proc_scaling_id |
-| exact | ispyb:AutoProcScaling.autoProcScalingId |
 
 
 
@@ -69,14 +68,13 @@ Alias: ispyb_auto_proc_scaling_id
 name: ispyb_auto_proc_scaling_id
 description: ISPyB AutoProcScaling.autoProcScalingId
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScaling.autoProcScalingId
 rank: 1000
 alias: ispyb_auto_proc_scaling_id
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

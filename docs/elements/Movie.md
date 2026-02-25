@@ -28,27 +28,117 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
         
       Movie : astigmatism
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : astigmatism
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : beam_shift_x
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : beam_shift_x
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : beam_shift_y
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : beam_shift_y
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : defocus
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : defocus
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : description
         
       Movie : dimensions_x
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : dimensions_y
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : dose
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : dose_per_frame
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : dose_per_frame
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : exposure_time
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : file_name
         
       Movie : frames
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : frames
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : grid_square_id
         
@@ -56,19 +146,82 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
         
       Movie : ice_thickness_estimate
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : ice_thickness_estimate
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : id
         
       Movie : nominal_defocus
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : nominal_defocus
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : pixel_size
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : pixel_size_unbinned
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : pixel_size_unbinned
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : stage_position_x
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : stage_position_x
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : stage_position_y
         
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : stage_position_y
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Movie : stage_position_z
+        
+          
+    
+        
+        
+        Movie --> "0..1" QuantityValue : stage_position_z
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Movie : super_resolution
         
@@ -95,30 +248,30 @@ URI: [lambdaber:Movie](https://w3id.org/lambda-ber-schema/Movie)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [frames](frames.md) | 0..1 <br/> [Integer](Integer.md) | Number of frames in the movie | direct |
+| [frames](frames.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of frames in the movie | direct |
 | [super_resolution](super_resolution.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether super-resolution mode was used | direct |
-| [pixel_size_unbinned](pixel_size_unbinned.md) | 0..1 <br/> [Float](Float.md) | Unbinned pixel size in Angstroms per pixel | direct |
+| [pixel_size_unbinned](pixel_size_unbinned.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Unbinned pixel size, typically specified in Angstroms per pixel | direct |
 | [timestamp](timestamp.md) | 0..1 <br/> [String](String.md) | Acquisition timestamp | direct |
-| [stage_position_x](stage_position_x.md) | 0..1 <br/> [Float](Float.md) | Stage X position in micrometers | direct |
-| [stage_position_y](stage_position_y.md) | 0..1 <br/> [Float](Float.md) | Stage Y position in micrometers | direct |
-| [stage_position_z](stage_position_z.md) | 0..1 <br/> [Float](Float.md) | Stage Z position in micrometers | direct |
-| [nominal_defocus](nominal_defocus.md) | 0..1 <br/> [Float](Float.md) | Nominal defocus value in micrometers | direct |
-| [dose_per_frame](dose_per_frame.md) | 0..1 <br/> [Float](Float.md) | Electron dose per frame in e-/Angstrom^2 | direct |
-| [beam_shift_x](beam_shift_x.md) | 0..1 <br/> [Float](Float.md) | Beam shift X in microradians | direct |
-| [beam_shift_y](beam_shift_y.md) | 0..1 <br/> [Float](Float.md) | Beam shift Y in microradians | direct |
-| [ice_thickness_estimate](ice_thickness_estimate.md) | 0..1 <br/> [Float](Float.md) | Estimated ice thickness in nanometers | direct |
+| [stage_position_x](stage_position_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Stage X position, typically specified in micrometers | direct |
+| [stage_position_y](stage_position_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Stage Y position, typically specified in micrometers | direct |
+| [stage_position_z](stage_position_z.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Stage Z position, typically specified in micrometers | direct |
+| [nominal_defocus](nominal_defocus.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Nominal defocus value, typically specified in micrometers | direct |
+| [dose_per_frame](dose_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose per frame in e-/Angstrom^2 | direct |
+| [beam_shift_x](beam_shift_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam shift X in microradians | direct |
+| [beam_shift_y](beam_shift_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam shift Y in microradians | direct |
+| [ice_thickness_estimate](ice_thickness_estimate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Estimated ice thickness, typically specified in nanometers | direct |
 | [grid_square_id](grid_square_id.md) | 0..1 <br/> [String](String.md) | Grid square identifier | direct |
 | [hole_id](hole_id.md) | 0..1 <br/> [String](String.md) | Hole identifier within grid square | direct |
 | [acquisition_group](acquisition_group.md) | 0..1 <br/> [String](String.md) | Acquisition group identifier (e | direct |
-| [defocus](defocus.md) | 0..1 <br/> [Float](Float.md) | Defocus value in micrometers | [Image2D](Image2D.md) |
-| [astigmatism](astigmatism.md) | 0..1 <br/> [Float](Float.md) | Astigmatism value in Angstroms | [Image2D](Image2D.md) |
+| [defocus](defocus.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus value, typically specified in micrometers | [Image2D](Image2D.md) |
+| [astigmatism](astigmatism.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Astigmatism value, typically specified in Angstroms | [Image2D](Image2D.md) |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
-| [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
-| [dimensions_x](dimensions_x.md) | 0..1 <br/> [Integer](Integer.md) | Image width in pixels | [Image](Image.md) |
-| [dimensions_y](dimensions_y.md) | 0..1 <br/> [Integer](Integer.md) | Image height in pixels | [Image](Image.md) |
-| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | [Image](Image.md) |
-| [dose](dose.md) | 0..1 <br/> [Float](Float.md) | Electron dose in e-/Å² | [Image](Image.md) |
+| [pixel_size](pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size, typically specified in Angstroms | [Image](Image.md) |
+| [dimensions_x](dimensions_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image width, typically specified in pixels | [Image](Image.md) |
+| [dimensions_y](dimensions_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image height, typically specified in pixels | [Image](Image.md) |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time, typically specified in seconds | [Image](Image.md) |
+| [dose](dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose in e-/Å² | [Image](Image.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -179,7 +332,8 @@ attributes:
     rank: 1000
     domain_of:
     - Movie
-    range: integer
+    range: QuantityValue
+    inlined: true
   super_resolution:
     name: super_resolution
     description: Whether super-resolution mode was used
@@ -190,12 +344,14 @@ attributes:
     range: boolean
   pixel_size_unbinned:
     name: pixel_size_unbinned
-    description: Unbinned pixel size in Angstroms per pixel
+    description: Unbinned pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   timestamp:
     name: timestamp
     description: Acquisition timestamp
@@ -206,36 +362,44 @@ attributes:
     range: string
   stage_position_x:
     name: stage_position_x
-    description: Stage X position in micrometers
+    description: Stage X position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_position_y:
     name: stage_position_y
-    description: Stage Y position in micrometers
+    description: Stage Y position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_position_z:
     name: stage_position_z
-    description: Stage Z position in micrometers
+    description: Stage Z position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   nominal_defocus:
     name: nominal_defocus
-    description: Nominal defocus value in micrometers
+    description: Nominal defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_per_frame:
     name: dose_per_frame
     description: Electron dose per frame in e-/Angstrom^2
@@ -244,7 +408,8 @@ attributes:
     domain_of:
     - Movie
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_shift_x:
     name: beam_shift_x
     description: Beam shift X in microradians
@@ -252,7 +417,8 @@ attributes:
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_shift_y:
     name: beam_shift_y
     description: Beam shift Y in microradians
@@ -260,15 +426,18 @@ attributes:
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   ice_thickness_estimate:
     name: ice_thickness_estimate
-    description: Estimated ice thickness in nanometers
+    description: Estimated ice thickness, typically specified in nanometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   grid_square_id:
     name: grid_square_id
     description: Grid square identifier
@@ -315,7 +484,8 @@ attributes:
     owner: Movie
     domain_of:
     - Movie
-    range: integer
+    range: QuantityValue
+    inlined: true
   super_resolution:
     name: super_resolution
     description: Whether super-resolution mode was used
@@ -328,14 +498,16 @@ attributes:
     range: boolean
   pixel_size_unbinned:
     name: pixel_size_unbinned
-    description: Unbinned pixel size in Angstroms per pixel
+    description: Unbinned pixel size, typically specified in Angstroms per pixel.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size_unbinned
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   timestamp:
     name: timestamp
     description: Acquisition timestamp
@@ -348,44 +520,52 @@ attributes:
     range: string
   stage_position_x:
     name: stage_position_x
-    description: Stage X position in micrometers
+    description: Stage X position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: stage_position_x
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_position_y:
     name: stage_position_y
-    description: Stage Y position in micrometers
+    description: Stage Y position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: stage_position_y
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_position_z:
     name: stage_position_z
-    description: Stage Z position in micrometers
+    description: Stage Z position, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: stage_position_z
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   nominal_defocus:
     name: nominal_defocus
-    description: Nominal defocus value in micrometers
+    description: Nominal defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: nominal_defocus
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_per_frame:
     name: dose_per_frame
     description: Electron dose per frame in e-/Angstrom^2
@@ -396,7 +576,8 @@ attributes:
     domain_of:
     - Movie
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_shift_x:
     name: beam_shift_x
     description: Beam shift X in microradians
@@ -406,7 +587,8 @@ attributes:
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_shift_y:
     name: beam_shift_y
     description: Beam shift Y in microradians
@@ -416,17 +598,20 @@ attributes:
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   ice_thickness_estimate:
     name: ice_thickness_estimate
-    description: Estimated ice thickness in nanometers
+    description: Estimated ice thickness, typically specified in nanometers. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: ice_thickness_estimate
     owner: Movie
     domain_of:
     - Movie
-    range: float
+    range: QuantityValue
+    inlined: true
   grid_square_id:
     name: grid_square_id
     description: Grid square identifier
@@ -459,24 +644,28 @@ attributes:
     range: string
   defocus:
     name: defocus
-    description: Defocus value in micrometers
+    description: Defocus value, typically specified in micrometers. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: defocus
     owner: Movie
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism:
     name: astigmatism
-    description: Astigmatism value in Angstroms
+    description: Astigmatism value, typically specified in Angstroms. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: astigmatism
     owner: Movie
     domain_of:
     - Image2D
-    range: float
+    range: QuantityValue
+    inlined: true
   file_name:
     name: file_name
     description: Image file name
@@ -500,7 +689,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -508,30 +698,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: Movie
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: Movie
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: Movie
@@ -539,7 +735,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -550,7 +747,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -563,6 +761,7 @@ attributes:
     owner: Movie
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

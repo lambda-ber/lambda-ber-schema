@@ -22,37 +22,37 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/2> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/8> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/6> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/3> ],
-        [ a lambdaber:ExperimentSampleAssociation ;
-            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/12> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/10> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ],
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/6> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/12> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/4> ],
         [ a lambdaber:ExperimentSampleAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ] ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ],
+        [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/3> ] ;
     lambdaber:instruments <https://files.rcsb.org/download/instrument/ESRF-ID2> ;
     lambdaber:samples <https://files.rcsb.org/download/1JB0/sample/1>,
         <https://files.rcsb.org/download/1JB0/sample/10>,
@@ -71,40 +71,40 @@ pdb:1JB0 a lambdaber:Dataset ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ] ;
     lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/8> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/2> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/4> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/1> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/6> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/9> ;
-            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
-        [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/10> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/3> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
-            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/4> ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/10> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/5> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/11> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/7> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
         [ a lambdaber:StudySampleAssociation ;
             lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/12> ;
+            lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ],
+        [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://files.rcsb.org/download/1JB0/sample/8> ;
             lambdaber:study_id <https://files.rcsb.org/download/1JB0/study> ] ;
     lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
             lambdaber:experiment_id <https://files.rcsb.org/download/1JB0/experiment> ;

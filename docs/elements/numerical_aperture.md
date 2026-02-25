@@ -3,7 +3,7 @@
 # Slot: numerical_aperture 
 
 
-_Numerical aperture of the objective lens_
+_Numerical aperture of the objective lens. Data providers may include unit information in the QuantityValue if needed._
 
 
 
@@ -31,7 +31,7 @@ Alias: numerical_aperture
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: numerical_aperture
 <details>
 ```yaml
 name: numerical_aperture
-description: Numerical aperture of the objective lens
+description: Numerical aperture of the objective lens. Data providers may include
+  unit information in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: numerical_aperture
 owner: OpticalImage
 domain_of:
 - OpticalImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

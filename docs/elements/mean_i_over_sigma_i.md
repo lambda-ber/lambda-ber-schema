@@ -31,7 +31,7 @@ Alias: mean_i_over_sigma_i
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: mean_i_over_sigma_i
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

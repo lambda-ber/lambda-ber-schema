@@ -31,7 +31,7 @@ Alias: protein_concentration_mg_per_ml
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: protein_concentration_mg_per_ml
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

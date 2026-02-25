@@ -31,7 +31,7 @@ Alias: rpim
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: rpim
 | ---  | ---  |
 | self | lambdaber:rpim |
 | native | lambdaber:rpim |
-| exact | nsls2:Rpim, mmCIF:_reflns.pdbx_Rpim_I_all, ispyb:AutoProcScalingStatistics.rPim |
 
 
 
@@ -69,16 +68,13 @@ Alias: rpim
 name: rpim
 description: Rpim - precision-indicating merging R-factor
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Rpim
-- mmCIF:_reflns.pdbx_Rpim_I_all
-- ispyb:AutoProcScalingStatistics.rPim
 rank: 1000
 alias: rpim
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

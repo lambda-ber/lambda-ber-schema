@@ -388,6 +388,7 @@ attributes:
     owner: ProteinAnnotation
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

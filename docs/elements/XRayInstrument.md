@@ -24,7 +24,25 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
       
       XRayInstrument : beam_size_max
         
+          
+    
+        
+        
+        XRayInstrument --> "0..1" QuantityValue : beam_size_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       XRayInstrument : beam_size_min
+        
+          
+    
+        
+        
+        XRayInstrument --> "0..1" QuantityValue : beam_size_min
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       XRayInstrument : beamline_id
         
@@ -60,7 +78,25 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
         
       XRayInstrument : energy_max
         
+          
+    
+        
+        
+        XRayInstrument --> "0..1" QuantityValue : energy_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       XRayInstrument : energy_min
+        
+          
+    
+        
+        
+        XRayInstrument --> "0..1" QuantityValue : energy_min
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       XRayInstrument : facility_name
         
@@ -76,6 +112,15 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
       XRayInstrument : facility_ror
         
       XRayInstrument : flux_density
+        
+          
+    
+        
+        
+        XRayInstrument --> "0..1" QuantityValue : flux_density
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       XRayInstrument : goniometer_type
         
@@ -137,11 +182,11 @@ URI: [lambdaber:XRayInstrument](https://w3id.org/lambda-ber-schema/XRayInstrumen
 | [detector_technology](detector_technology.md) | 0..1 <br/> [DetectorTechnologyEnum](DetectorTechnologyEnum.md) | Generic detector technology type | direct |
 | [detector_manufacturer](detector_manufacturer.md) | 0..1 <br/> [String](String.md) | Detector manufacturer (e | direct |
 | [detector_model](detector_model.md) | 0..1 <br/> [String](String.md) | Detector model (e | direct |
-| [energy_min](energy_min.md) | 0..1 <br/> [Float](Float.md) | Minimum X-ray energy in keV | direct |
-| [energy_max](energy_max.md) | 0..1 <br/> [Float](Float.md) | Maximum X-ray energy in keV | direct |
-| [beam_size_min](beam_size_min.md) | 0..1 <br/> [Float](Float.md) | Minimum beam size in micrometers | direct |
-| [beam_size_max](beam_size_max.md) | 0..1 <br/> [Float](Float.md) | Maximum beam size in micrometers | direct |
-| [flux_density](flux_density.md) | 0..1 <br/> [Float](Float.md) | Photon flux density in photons/s/mm² | direct |
+| [energy_min](energy_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum X-ray energy in keV | direct |
+| [energy_max](energy_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum X-ray energy in keV | direct |
+| [beam_size_min](beam_size_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum beam size in micrometers | direct |
+| [beam_size_max](beam_size_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum beam size in micrometers | direct |
+| [flux_density](flux_density.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux density in photons/s/mm² | direct |
 | [monochromator_type](monochromator_type.md) | 0..1 <br/> [String](String.md) | Type of monochromator | direct |
 | [goniometer_type](goniometer_type.md) | 0..1 <br/> [String](String.md) | Type of goniometer | direct |
 | [crystal_cooling_capability](crystal_cooling_capability.md) | 0..1 <br/> [Boolean](Boolean.md) | Crystal cooling system available | direct |
@@ -261,7 +306,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -270,7 +316,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
@@ -278,7 +325,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
@@ -286,7 +334,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
@@ -294,7 +343,8 @@ attributes:
     rank: 1000
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
@@ -394,7 +444,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -405,7 +456,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_min:
     name: beam_size_min
     description: Minimum beam size in micrometers
@@ -415,7 +467,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   beam_size_max:
     name: beam_size_max
     description: Maximum beam size in micrometers
@@ -425,7 +478,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   flux_density:
     name: flux_density
     description: Photon flux density in photons/s/mm²
@@ -435,7 +489,8 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - XRayInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   monochromator_type:
     name: monochromator_type
     description: Type of monochromator
@@ -585,6 +640,7 @@ attributes:
     owner: XRayInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

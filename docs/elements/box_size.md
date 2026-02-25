@@ -17,8 +17,8 @@ Alias: box_size
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ParticlePickingParameters](ParticlePickingParameters.md) | Parameters specific to particle picking workflows |  no  |
 | [RefinementParameters](RefinementParameters.md) | Parameters specific to 3D refinement workflows |  no  |
+| [ParticlePickingParameters](ParticlePickingParameters.md) | Parameters specific to particle picking workflows |  no  |
 
 
 

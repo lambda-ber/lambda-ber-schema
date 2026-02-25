@@ -3,7 +3,7 @@
 # Slot: voltage_used_in_estimation 
 
 
-_Accelerating voltage value used during CTF estimation (in kV); may differ from instrument specification_
+_Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: voltage_used_in_estimation
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,15 +66,17 @@ Alias: voltage_used_in_estimation
 <details>
 ```yaml
 name: voltage_used_in_estimation
-description: Accelerating voltage value used during CTF estimation (in kV); may differ
-  from instrument specification
+description: Accelerating voltage value used during CTF estimation, typically specified
+  in kilovolts (kV); may differ from instrument specification. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: voltage_used_in_estimation
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

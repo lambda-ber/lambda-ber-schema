@@ -3,7 +3,7 @@
 # Slot: excitation_wavelength 
 
 
-_Excitation wavelength in nanometers_
+_Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: excitation_wavelength
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: excitation_wavelength
 <details>
 ```yaml
 name: excitation_wavelength
-description: Excitation wavelength in nanometers
+description: Excitation wavelength, typically specified in nanometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: excitation_wavelength
 owner: FluorescenceImage
 domain_of:
 - FluorescenceImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

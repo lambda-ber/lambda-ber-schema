@@ -3,7 +3,7 @@
 # Slot: pixel_size_calibrated 
 
 
-_Calibrated pixel size for this experiment_
+_Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: pixel_size_calibrated
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -72,7 +72,9 @@ Alias: pixel_size_calibrated
 <details>
 ```yaml
 name: pixel_size_calibrated
-description: Calibrated pixel size for this experiment
+description: Calibrated pixel size for this experiment, typically specified in Angstroms
+  (Å) per pixel. Data providers may specify alternative units by including the unit
+  in the QuantityValue.
 comments:
 - 'For cryo-EM: depends on magnification (Å/pixel)'
 - 'For X-ray: typically mm/pixel or µm/pixel'
@@ -83,9 +85,8 @@ alias: pixel_size_calibrated
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
-unit:
-  ucum_code: Ao/px
+range: QuantityValue
+inlined: true
 
 ```
 </details>

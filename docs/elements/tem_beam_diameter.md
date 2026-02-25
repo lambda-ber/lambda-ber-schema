@@ -31,7 +31,7 @@ Alias: tem_beam_diameter
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: tem_beam_diameter
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

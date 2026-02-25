@@ -3,7 +3,7 @@
 # Slot: loop_size 
 
 
-_Loop size in micrometers_
+_Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: loop_size
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,7 +70,8 @@ Alias: loop_size
 <details>
 ```yaml
 name: loop_size
-description: Loop size in micrometers
+description: Loop size, typically specified in micrometers. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 comments:
 - 'Maps to NSLS2 spreadsheet: Loop_Size'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -80,7 +81,8 @@ alias: loop_size
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -31,7 +31,7 @@ Alias: file_size_bytes
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: file_size_bytes
 owner: DataFile
 domain_of:
 - DataFile
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

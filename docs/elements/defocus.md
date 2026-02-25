@@ -3,7 +3,7 @@
 # Slot: defocus 
 
 
-_Defocus value in micrometers_
+_Defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -22,12 +22,12 @@ Alias: defocus
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  yes  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
 | [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 
 
 
@@ -36,7 +36,7 @@ Alias: defocus
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -71,14 +71,16 @@ Alias: defocus
 <details>
 ```yaml
 name: defocus
-description: Defocus value in micrometers
+description: Defocus value, typically specified in micrometers. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: defocus
 owner: Image2D
 domain_of:
 - Image2D
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

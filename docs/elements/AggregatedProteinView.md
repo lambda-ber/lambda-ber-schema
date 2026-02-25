@@ -188,13 +188,6 @@ URI: [lambdaber:AggregatedProteinView](https://w3id.org/lambda-ber-schema/Aggreg
 
 
 
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [Study](Study.md) | [aggregated_protein_views](aggregated_protein_views.md) | range | [AggregatedProteinView](AggregatedProteinView.md) |
-
-
 
 
 
@@ -591,6 +584,7 @@ attributes:
     owner: AggregatedProteinView
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

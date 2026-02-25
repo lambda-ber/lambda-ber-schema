@@ -3,7 +3,7 @@
 # Slot: completeness 
 
 
-_Data completeness percentage_
+_Data completeness, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: completeness
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: completeness
 <details>
 ```yaml
 name: completeness
-description: Data completeness percentage
+description: Data completeness, typically specified as a percentage (0-100). Data
+  providers may specify as decimal fraction by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: completeness
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

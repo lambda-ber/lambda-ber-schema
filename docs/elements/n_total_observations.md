@@ -31,7 +31,7 @@ Alias: n_total_observations
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: n_total_observations
 | ---  | ---  |
 | self | lambdaber:n_total_observations |
 | native | lambdaber:n_total_observations |
-| exact | ispyb:AutoProcScalingStatistics.nTotalObservations |
 
 
 
@@ -69,14 +68,13 @@ Alias: n_total_observations
 name: n_total_observations
 description: Total number of observations (before merging)
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.nTotalObservations
 rank: 1000
 alias: n_total_observations
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

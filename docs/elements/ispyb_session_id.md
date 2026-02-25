@@ -31,7 +31,7 @@ Alias: ispyb_session_id
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: ispyb_session_id
 | ---  | ---  |
 | self | lambdaber:ispyb_session_id |
 | native | lambdaber:ispyb_session_id |
-| exact | ispyb:BLSession.sessionId |
 
 
 
@@ -69,14 +68,13 @@ Alias: ispyb_session_id
 name: ispyb_session_id
 description: ISPyB BLSession.sessionId
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:BLSession.sessionId
 rank: 1000
 alias: ispyb_session_id
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

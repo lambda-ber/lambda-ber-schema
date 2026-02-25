@@ -34,11 +34,38 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
         
       SamplePreparation : cleavage_temperature_c
         
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : cleavage_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SamplePreparation : cleavage_time_h
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : cleavage_time_h
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SamplePreparation : concentration_method
         
       SamplePreparation : culture_volume_l
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : culture_volume_l
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SamplePreparation : description
         
@@ -59,7 +86,25 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
         
       SamplePreparation : final_concentration_mg_per_ml
         
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : final_concentration_mg_per_ml
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SamplePreparation : growth_temperature_c
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : growth_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SamplePreparation : harvest_timepoint
         
@@ -77,7 +122,25 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
         
       SamplePreparation : induction_temperature_c
         
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : induction_temperature_c
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SamplePreparation : induction_time_h
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : induction_time_h
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SamplePreparation : lysis_buffer
         
@@ -86,6 +149,15 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
       SamplePreparation : medium
         
       SamplePreparation : od600_at_induction
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : od600_at_induction
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SamplePreparation : operator_id
         
@@ -123,6 +195,15 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
         
       SamplePreparation : purity_by_sds_page_percent
         
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : purity_by_sds_page_percent
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SamplePreparation : sample_id
         
       SamplePreparation : sec_buffer
@@ -138,6 +219,15 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
       SamplePreparation : wash_buffer
         
       SamplePreparation : yield_mg
+        
+          
+    
+        
+        
+        SamplePreparation --> "0..1" QuantityValue : yield_mg
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -163,15 +253,15 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 | [protocol_description](protocol_description.md) | 0..1 <br/> [String](String.md) | Detailed protocol description | direct |
 | [expression_system](expression_system.md) | 0..1 <br/> [ExpressionSystemEnum](ExpressionSystemEnum.md) | Expression system used for recombinant protein production | direct |
 | [host_strain_or_cell_line](host_strain_or_cell_line.md) | 0..1 <br/> [String](String.md) | Specific strain or cell line used (e | direct |
-| [culture_volume_l](culture_volume_l.md) | 0..1 <br/> [Float](Float.md) | Culture volume in liters | direct |
+| [culture_volume_l](culture_volume_l.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Culture volume, typically specified in liters (L) | direct |
 | [medium](medium.md) | 0..1 <br/> [String](String.md) | Growth medium used | direct |
 | [antibiotic_selection](antibiotic_selection.md) | 0..1 <br/> [String](String.md) | Antibiotic or selection agent used | direct |
-| [growth_temperature_c](growth_temperature_c.md) | 0..1 <br/> [Float](Float.md) | Growth temperature in Celsius | direct |
+| [growth_temperature_c](growth_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Growth temperature, typically specified in degrees Celsius | direct |
 | [induction_agent](induction_agent.md) | 0..1 <br/> [String](String.md) | Agent used to induce expression (e | direct |
 | [inducer_concentration](inducer_concentration.md) | 0..1 <br/> [String](String.md) | Concentration of induction agent | direct |
-| [induction_temperature_c](induction_temperature_c.md) | 0..1 <br/> [Float](Float.md) | Temperature during induction in Celsius | direct |
-| [induction_time_h](induction_time_h.md) | 0..1 <br/> [Float](Float.md) | Duration of induction in hours | direct |
-| [od600_at_induction](od600_at_induction.md) | 0..1 <br/> [Float](Float.md) | Optical density at 600nm when induction was started | direct |
+| [induction_temperature_c](induction_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Temperature during induction, typically specified in degrees Celsius | direct |
+| [induction_time_h](induction_time_h.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Duration of induction, typically specified in hours | direct |
+| [od600_at_induction](od600_at_induction.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Optical density at 600nm when induction was started | direct |
 | [harvest_timepoint](harvest_timepoint.md) | 0..1 <br/> [String](String.md) | Time point when cells were harvested | direct |
 | [lysis_method](lysis_method.md) | 0..1 <br/> [String](String.md) | Method used for cell lysis | direct |
 | [protease_inhibitors](protease_inhibitors.md) | 0..1 <br/> [String](String.md) | Protease inhibitors added | direct |
@@ -184,8 +274,8 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 | [tag_removal](tag_removal.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether and how affinity tag was removed | direct |
 | [protease](protease.md) | 0..1 <br/> [String](String.md) | Protease used for tag cleavage | direct |
 | [protease_ratio](protease_ratio.md) | 0..1 <br/> [String](String.md) | Ratio of protease to protein | direct |
-| [cleavage_time_h](cleavage_time_h.md) | 0..1 <br/> [Float](Float.md) | Duration of protease cleavage in hours | direct |
-| [cleavage_temperature_c](cleavage_temperature_c.md) | 0..1 <br/> [Float](Float.md) | Temperature during cleavage in Celsius | direct |
+| [cleavage_time_h](cleavage_time_h.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Duration of protease cleavage in hours | direct |
+| [cleavage_temperature_c](cleavage_temperature_c.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Temperature during cleavage in Celsius | direct |
 | [second_affinity_reverse](second_affinity_reverse.md) | 0..1 <br/> [String](String.md) | Second affinity or reverse affinity step | direct |
 | [iex_column](iex_column.md) | 0..1 <br/> [String](String.md) | Ion-exchange column used | direct |
 | [hic_column](hic_column.md) | 0..1 <br/> [String](String.md) | Hydrophobic interaction column used | direct |
@@ -193,9 +283,9 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 | [sec_buffer](sec_buffer.md) | 0..1 <br/> [String](String.md) | Buffer for size-exclusion chromatography | direct |
 | [concentration_method](concentration_method.md) | 0..1 <br/> [String](String.md) | Method used to concentrate protein | direct |
 | [final_buffer](final_buffer.md) | 0..1 <br/> [String](String.md) | Final buffer composition after purification | direct |
-| [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | 0..1 <br/> [Float](Float.md) | Final protein concentration in mg/mL | direct |
-| [yield_mg](yield_mg.md) | 0..1 <br/> [Float](Float.md) | Total yield in milligrams | direct |
-| [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | 0..1 <br/> [Float](Float.md) | Purity percentage by SDS-PAGE | direct |
+| [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Final protein concentration in mg/mL | direct |
+| [yield_mg](yield_mg.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total yield in milligrams | direct |
+| [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Purity percentage by SDS-PAGE | direct |
 | [aggregation_assessment](aggregation_assessment.md) | 0..1 <br/> [String](String.md) | Assessment of protein aggregation state | direct |
 | [aliquoting](aliquoting.md) | 0..1 <br/> [String](String.md) | How the protein was aliquoted for storage | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
@@ -210,7 +300,8 @@ URI: [lambdaber:SamplePreparation](https://w3id.org/lambda-ber-schema/SamplePrep
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [sample_preparations](sample_preparations.md) | range | [SamplePreparation](SamplePreparation.md) |
+| [Dataset](Dataset.md) | [sample_preparations](sample_preparations.md) | range | [SamplePreparation](SamplePreparation.md) |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [preparation_id](preparation_id.md) | range | [SamplePreparation](SamplePreparation.md) |
 
 
 
@@ -274,7 +365,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    - ExperimentRun
+    - StudySampleAssociation
+    - ExperimentSampleAssociation
     range: string
     required: true
   preparation_date:
@@ -318,14 +410,14 @@ attributes:
     - SamplePreparation
   culture_volume_l:
     name: culture_volume_l
-    description: Culture volume in liters
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: L
+    range: QuantityValue
+    inlined: true
   medium:
     name: medium
     description: Growth medium used
@@ -342,14 +434,15 @@ attributes:
     - SamplePreparation
   growth_temperature_c:
     name: growth_temperature_c
-    description: Growth temperature in Celsius
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: Cel
+    range: QuantityValue
+    inlined: true
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -366,28 +459,35 @@ attributes:
     - SamplePreparation
   induction_temperature_c:
     name: induction_temperature_c
-    description: Temperature during induction in Celsius
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   induction_time_h:
     name: induction_time_h
-    description: Duration of induction in hours
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   od600_at_induction:
     name: od600_at_induction
-    description: Optical density at 600nm when induction was started
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
@@ -482,7 +582,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
@@ -490,7 +591,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
@@ -547,7 +649,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
@@ -555,7 +658,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
@@ -563,7 +667,8 @@ attributes:
     rank: 1000
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
@@ -611,7 +716,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    - ExperimentRun
+    - StudySampleAssociation
+    - ExperimentSampleAssociation
     range: string
     required: true
   preparation_date:
@@ -668,16 +774,16 @@ attributes:
     range: string
   culture_volume_l:
     name: culture_volume_l
-    description: Culture volume in liters
+    description: Culture volume, typically specified in liters (L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: culture_volume_l
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: L
+    range: QuantityValue
+    inlined: true
   medium:
     name: medium
     description: Growth medium used
@@ -700,16 +806,17 @@ attributes:
     range: string
   growth_temperature_c:
     name: growth_temperature_c
-    description: Growth temperature in Celsius
+    description: Growth temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units (e.g., Kelvin) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: growth_temperature_c
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
-    unit:
-      ucum_code: Cel
+    range: QuantityValue
+    inlined: true
   induction_agent:
     name: induction_agent
     description: Agent used to induce expression (e.g., IPTG, tetracycline)
@@ -732,34 +839,41 @@ attributes:
     range: string
   induction_temperature_c:
     name: induction_temperature_c
-    description: Temperature during induction in Celsius
+    description: Temperature during induction, typically specified in degrees Celsius.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: induction_temperature_c
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   induction_time_h:
     name: induction_time_h
-    description: Duration of induction in hours
+    description: Duration of induction, typically specified in hours. Data providers
+      may specify alternative units (e.g., minutes, seconds) by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: induction_time_h
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   od600_at_induction:
     name: od600_at_induction
-    description: Optical density at 600nm when induction was started
+    description: Optical density at 600nm when induction was started. Data providers
+      may include unit information in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: od600_at_induction
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   harvest_timepoint:
     name: harvest_timepoint
     description: Time point when cells were harvested
@@ -890,7 +1004,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   cleavage_temperature_c:
     name: cleavage_temperature_c
     description: Temperature during cleavage in Celsius
@@ -900,7 +1015,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   second_affinity_reverse:
     name: second_affinity_reverse
     description: Second affinity or reverse affinity step
@@ -980,7 +1096,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   yield_mg:
     name: yield_mg
     description: Total yield in milligrams
@@ -990,7 +1107,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   purity_by_sds_page_percent:
     name: purity_by_sds_page_percent
     description: Purity percentage by SDS-PAGE
@@ -1000,7 +1118,8 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - SamplePreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   aggregation_assessment:
     name: aggregation_assessment
     description: Assessment of protein aggregation state
@@ -1033,6 +1152,7 @@ attributes:
     owner: SamplePreparation
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

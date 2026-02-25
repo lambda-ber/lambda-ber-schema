@@ -3,7 +3,7 @@
 # Slot: drift_total 
 
 
-_Total drift in Angstroms_
+_Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: drift_total
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: drift_total
 <details>
 ```yaml
 name: drift_total
-description: Total drift in Angstroms
+description: Total drift, typically specified in Angstroms. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: drift_total
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

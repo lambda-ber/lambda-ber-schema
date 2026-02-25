@@ -3,7 +3,7 @@
 # Slot: ethane_temperature 
 
 
-_Ethane temperature in Celsius_
+_Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: ethane_temperature
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: ethane_temperature
 <details>
 ```yaml
 name: ethane_temperature
-description: Ethane temperature in Celsius
+description: Ethane temperature, typically specified in degrees Celsius. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ethane_temperature
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

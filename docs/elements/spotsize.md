@@ -31,7 +31,7 @@ Alias: spotsize
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: spotsize
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

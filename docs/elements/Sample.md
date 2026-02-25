@@ -68,14 +68,12 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         
       Sample : concentration
         
-      Sample : concentration_unit
-        
           
     
         
         
-        Sample --> "0..1" ConcentrationUnitEnum : concentration_unit
-        click ConcentrationUnitEnum href "../ConcentrationUnitEnum/"
+        Sample --> "0..1" QuantityValue : concentration
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -157,6 +155,15 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         
       Sample : molecular_weight
         
+          
+    
+        
+        
+        Sample --> "0..1" QuantityValue : molecular_weight
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Sample : mutation_effects
         
           
@@ -220,6 +227,15 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
         
       Sample : purity_percentage
         
+          
+    
+        
+        
+        Sample --> "0..1" QuantityValue : purity_percentage
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Sample : quality_metrics
         
       Sample : sample_code
@@ -281,9 +297,8 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [sample_code](sample_code.md) | 1 <br/> [String](String.md) | Human-friendly laboratory identifier or facility code for the sample (e | direct |
 | [sample_type](sample_type.md) | 1 <br/> [SampleTypeEnum](SampleTypeEnum.md) | Type of biological sample | direct |
 | [molecular_composition](molecular_composition.md) | 0..1 <br/> [MolecularComposition](MolecularComposition.md) | Description of molecular composition including sequences, modifications, liga... | direct |
-| [molecular_weight](molecular_weight.md) | 0..1 <br/> [Float](Float.md) | Molecular weight in kDa | direct |
-| [concentration](concentration.md) | 0..1 <br/> [Float](Float.md) | Sample concentration in mg/mL or µM | direct |
-| [concentration_unit](concentration_unit.md) | 0..1 <br/> [ConcentrationUnitEnum](ConcentrationUnitEnum.md) | Unit of concentration measurement | direct |
+| [molecular_weight](molecular_weight.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Molecular weight, typically specified in kilodaltons (kDa) | direct |
+| [concentration](concentration.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Sample concentration, typically specified in mg/mL or µM | direct |
 | [buffer_composition](buffer_composition.md) | 0..1 <br/> [BufferComposition](BufferComposition.md) | Buffer composition including pH, salts, additives | direct |
 | [preparation_method](preparation_method.md) | 0..1 <br/> [String](String.md) | Method used to prepare the sample | direct |
 | [storage_conditions](storage_conditions.md) | 0..1 <br/> [StorageConditions](StorageConditions.md) | Storage conditions for the sample | direct |
@@ -291,7 +306,7 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 | [anatomy](anatomy.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Anatomical part or tissue (e | direct |
 | [cell_type](cell_type.md) | 0..1 <br/> [OntologyTerm](OntologyTerm.md) | Cell type if applicable (e | direct |
 | [parent_sample_id](parent_sample_id.md) | 0..1 <br/> [Sample](Sample.md) | Reference to parent sample for derivation tracking | direct |
-| [purity_percentage](purity_percentage.md) | 0..1 <br/> [Float](Float.md) | Sample purity as percentage (range: 0-100) | direct |
+| [purity_percentage](purity_percentage.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Sample purity, typically specified as a percentage (range: 0-100) | direct |
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [String](String.md) | Quality control metrics for the sample | direct |
 | [functional_sites](functional_sites.md) | * <br/> [FunctionalSite](FunctionalSite.md) | Functional site annotations for proteins in the sample | direct |
 | [structural_features](structural_features.md) | * <br/> [StructuralFeature](StructuralFeature.md) | Structural feature annotations | direct |
@@ -321,8 +336,10 @@ URI: [lambdaber:Sample](https://w3id.org/lambda-ber-schema/Sample)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [samples](samples.md) | range | [Sample](Sample.md) |
+| [Dataset](Dataset.md) | [samples](samples.md) | range | [Sample](Sample.md) |
 | [Sample](Sample.md) | [parent_sample_id](parent_sample_id.md) | range | [Sample](Sample.md) |
+| [StudySampleAssociation](StudySampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [sample_id](sample_id.md) | range | [Sample](Sample.md) |
 
 
 
@@ -400,30 +417,26 @@ attributes:
     range: MolecularComposition
   molecular_weight:
     name: molecular_weight
-    description: Molecular weight in kDa
+    description: Molecular weight, typically specified in kilodaltons (kDa). Data
+      providers may specify alternative units (e.g., Daltons, g/mol) by including
+      the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Sample
-    range: float
-    unit:
-      ucum_code: kDa
+    range: QuantityValue
+    inlined: true
   concentration:
     name: concentration
-    description: Sample concentration in mg/mL or µM
+    description: Sample concentration, typically specified in mg/mL or µM. Data providers
+      may specify alternative units (e.g., molar, g/L) by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Sample
-    range: float
-  concentration_unit:
-    name: concentration_unit
-    description: Unit of concentration measurement
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - Sample
-    range: ConcentrationUnitEnum
+    range: QuantityValue
+    inlined: true
   buffer_composition:
     name: buffer_composition
     description: Buffer composition including pH, salts, additives
@@ -484,14 +497,15 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: 'Sample purity as percentage (range: 0-100)'
+    description: 'Sample purity, typically specified as a percentage (range: 0-100).
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Sample
-    range: float
-    minimum_value: 0
-    maximum_value: 100
+    range: QuantityValue
+    inlined: true
   quality_metrics:
     name: quality_metrics
     description: Quality control metrics for the sample
@@ -733,36 +747,30 @@ attributes:
     range: MolecularComposition
   molecular_weight:
     name: molecular_weight
-    description: Molecular weight in kDa
+    description: Molecular weight, typically specified in kilodaltons (kDa). Data
+      providers may specify alternative units (e.g., Daltons, g/mol) by including
+      the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: molecular_weight
     owner: Sample
     domain_of:
     - Sample
-    range: float
-    unit:
-      ucum_code: kDa
+    range: QuantityValue
+    inlined: true
   concentration:
     name: concentration
-    description: Sample concentration in mg/mL or µM
+    description: Sample concentration, typically specified in mg/mL or µM. Data providers
+      may specify alternative units (e.g., molar, g/L) by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: concentration
     owner: Sample
     domain_of:
     - Sample
-    range: float
-  concentration_unit:
-    name: concentration_unit
-    description: Unit of concentration measurement
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: concentration_unit
-    owner: Sample
-    domain_of:
-    - Sample
-    range: ConcentrationUnitEnum
+    range: QuantityValue
+    inlined: true
   buffer_composition:
     name: buffer_composition
     description: Buffer composition including pH, salts, additives
@@ -838,16 +846,17 @@ attributes:
     range: Sample
   purity_percentage:
     name: purity_percentage
-    description: 'Sample purity as percentage (range: 0-100)'
+    description: 'Sample purity, typically specified as a percentage (range: 0-100).
+      Data providers may specify as decimal fraction by including the unit in the
+      QuantityValue.'
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: purity_percentage
     owner: Sample
     domain_of:
     - Sample
-    range: float
-    minimum_value: 0
-    maximum_value: 100
+    range: QuantityValue
+    inlined: true
   quality_metrics:
     name: quality_metrics
     description: Quality control metrics for the sample
@@ -1086,6 +1095,7 @@ attributes:
     owner: Sample
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

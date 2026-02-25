@@ -3,7 +3,7 @@
 # Slot: spectral_resolution 
 
 
-_Spectral resolution in cm⁻¹_
+_Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: spectral_resolution
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: spectral_resolution
 <details>
 ```yaml
 name: spectral_resolution
-description: Spectral resolution in cm⁻¹
+description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: spectral_resolution
 owner: FTIRImage
 domain_of:
 - FTIRImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

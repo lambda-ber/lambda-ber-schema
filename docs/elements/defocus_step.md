@@ -3,7 +3,7 @@
 # Slot: defocus_step 
 
 
-_Defocus search step in micrometers_
+_Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: defocus_step
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: defocus_step
 <details>
 ```yaml
 name: defocus_step
-description: Defocus search step in micrometers
+description: Defocus search step, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: defocus_step
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

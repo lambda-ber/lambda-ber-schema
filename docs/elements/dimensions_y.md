@@ -3,7 +3,7 @@
 # Slot: dimensions_y 
 
 
-_Image height in pixels_
+_Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -22,15 +22,15 @@ Alias: dimensions_y
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
-| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
-| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
 
 
 
@@ -39,7 +39,7 @@ Alias: dimensions_y
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -74,14 +74,16 @@ Alias: dimensions_y
 <details>
 ```yaml
 name: dimensions_y
-description: Image height in pixels
+description: Image height, typically specified in pixels. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: dimensions_y
 owner: Image
 domain_of:
 - Image
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: chamber_temperature 
 
 
-_Chamber temperature in Celsius_
+_Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: chamber_temperature
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: chamber_temperature
 <details>
 ```yaml
 name: chamber_temperature
-description: Chamber temperature in Celsius
+description: Chamber temperature, typically specified in degrees Celsius. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: chamber_temperature
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

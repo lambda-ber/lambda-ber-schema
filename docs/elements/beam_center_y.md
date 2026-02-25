@@ -3,7 +3,7 @@
 # Slot: beam_center_y 
 
 
-_Beam center Y coordinate_
+_Beam center Y coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: beam_center_y
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: beam_center_y
 <details>
 ```yaml
 name: beam_center_y
-description: Beam center Y coordinate
+description: Beam center Y coordinate, typically specified in pixels ([px]). Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Beam_xy_y
@@ -79,9 +80,8 @@ alias: beam_center_y
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: '[px]'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -9,7 +9,7 @@ _Protein concentration for crystallization in mg/mL_
 
 
 
-URI: [nsls2:Protein_Concentration](https://github.com/NSLS2/BER-LAMBDA/Protein_Concentration)
+URI: [lambdaber:protein_concentration](https://w3id.org/lambda-ber-schema/protein_concentration)
 Alias: protein_concentration
 
 <!-- no inheritance hierarchy -->
@@ -31,14 +31,10 @@ Alias: protein_concentration
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Maps to NSLS2 spreadsheet: Protein_Concentration
 
 ## Identifier and Mapping Information
 
@@ -59,7 +55,7 @@ Alias: protein_concentration
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | nsls2:Protein_Concentration |
+| self | lambdaber:protein_concentration |
 | native | lambdaber:protein_concentration |
 
 
@@ -71,16 +67,14 @@ Alias: protein_concentration
 ```yaml
 name: protein_concentration
 description: Protein concentration for crystallization in mg/mL
-comments:
-- 'Maps to NSLS2 spreadsheet: Protein_Concentration'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
-slot_uri: nsls2:Protein_Concentration
 alias: protein_concentration
 owner: CrystallizationConditions
 domain_of:
 - CrystallizationConditions
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

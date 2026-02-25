@@ -3,7 +3,7 @@
 # Slot: instrument_id 
 
 
-_Reference to the instrument used_
+_Reference to the instrument_
 
 
 
@@ -22,7 +22,7 @@ Alias: instrument_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: instrument_id
 <details>
 ```yaml
 name: instrument_id
-description: Reference to the instrument used
+description: Reference to the instrument
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: instrument_id
-owner: ExperimentRun
+owner: ExperimentInstrumentAssociation
 domain_of:
-- ExperimentRun
+- ExperimentInstrumentAssociation
 range: Instrument
 required: true
 

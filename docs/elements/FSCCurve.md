@@ -34,7 +34,25 @@ URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
         
       FSCCurve : fsc_value
         
+          
+    
+        
+        
+        FSCCurve --> "0..1" QuantityValue : fsc_value
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FSCCurve : resolution_angstrom
+        
+          
+    
+        
+        
+        FSCCurve --> "0..1" QuantityValue : resolution_angstrom
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -53,8 +71,8 @@ URI: [lambdaber:FSCCurve](https://w3id.org/lambda-ber-schema/FSCCurve)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [resolution_angstrom](resolution_angstrom.md) | * <br/> [Float](Float.md) | Resolution values in Angstroms | direct |
-| [fsc_value](fsc_value.md) | * <br/> [Float](Float.md) | FSC values corresponding to each resolution | direct |
+| [resolution_angstrom](resolution_angstrom.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Resolution values in Angstroms | direct |
+| [fsc_value](fsc_value.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | FSC values corresponding to each resolution | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
 
@@ -129,9 +147,8 @@ attributes:
     rank: 1000
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
@@ -139,9 +156,8 @@ attributes:
     rank: 1000
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -173,9 +189,8 @@ attributes:
     owner: FSCCurve
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   fsc_value:
     name: fsc_value
     description: FSC values corresponding to each resolution
@@ -185,9 +200,8 @@ attributes:
     owner: FSCCurve
     domain_of:
     - FSCCurve
-    range: float
-    multivalued: true
-    maximum_cardinality: 10000
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

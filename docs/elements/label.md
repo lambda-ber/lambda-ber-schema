@@ -3,11 +3,6 @@
 # Slot: label 
 
 
-_The human-readable label or name of the ontology term_
-
-
-
-
 
 URI: [lambdaber:label](https://w3id.org/lambda-ber-schema/label)
 Alias: label
@@ -23,6 +18,7 @@ Alias: label
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
+| [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |  no  |
 
 
 
@@ -43,13 +39,6 @@ Alias: label
 
 
 
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
-
-
-
 
 ## Mappings
 
@@ -66,13 +55,10 @@ Alias: label
 <details>
 ```yaml
 name: label
-description: The human-readable label or name of the ontology term
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: label
-owner: OntologyTerm
 domain_of:
 - OntologyTerm
+- Attribute
 range: string
 
 ```

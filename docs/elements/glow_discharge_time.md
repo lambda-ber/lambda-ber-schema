@@ -3,7 +3,7 @@
 # Slot: glow_discharge_time 
 
 
-_Glow discharge time in seconds_
+_Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: glow_discharge_time
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: glow_discharge_time
 <details>
 ```yaml
 name: glow_discharge_time
-description: Glow discharge time in seconds
+description: Glow discharge time, typically specified in seconds. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: glow_discharge_time
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

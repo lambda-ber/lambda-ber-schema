@@ -73,28 +73,27 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '\n'
                     '## Schema Organization\n'
                     '\n'
-                    'The schema follows a hierarchical structure that mirrors how '
-                    'structural biology research is organized:\n'
+                    'The schema follows a **relational design** with flat entity '
+                    'collections and explicit association\n'
+                    'tables for many-to-many relationships. This maps cleanly to '
+                    'SQL databases while supporting\n'
+                    'flexible data reuse across studies.\n'
                     '\n'
                     'The top-level entity is a [Dataset](Dataset.md), which serves '
                     'as a container for related research.\n'
                     'A dataset might represent all data from a specific grant, '
                     'collaboration, or publication.\n'
                     '\n'
-                    'Each dataset contains one or more [Studies](Study.md), which '
-                    'are focused investigations of specific\n'
-                    'biological questions. For example, a study might investigate '
-                    '"Heat stress response in Arabidopsis"\n'
-                    'or "Structure of the human ribosome under different '
-                    'conditions."\n'
+                    '### Entity Tables\n'
                     '\n'
-                    "Within each study, you'll find:\n"
+                    'All entities are stored in flat collections at the Dataset '
+                    'level:\n'
                     '\n'
-                    '### Biological Materials\n'
+                    '**Biological Materials**\n'
                     '- [Samples](Sample.md): The biological specimens being '
-                    'studied (proteins, nucleic acids, complexes, \n'
+                    'studied (proteins, nucleic acids, complexes,\n'
                     '  cells, tissues). Each sample includes detailed molecular '
-                    'composition, buffer conditions, and \n'
+                    'composition, buffer conditions, and\n'
                     '  storage information. For example, a purified protein with '
                     'its sequence, concentration, and buffer pH.\n'
                     '\n'
@@ -105,23 +104,22 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '  X-ray studies, or staining protocols for fluorescence '
                     'microscopy.\n'
                     '\n'
-                    '### Data Collection\n'
+                    '**Data Collection**\n'
                     '- [Instruments](Instrument.md): The equipment used, from '
-                    'Titan Krios microscopes to synchrotron \n'
+                    'Titan Krios microscopes to synchrotron\n'
                     '  beamlines. Each instrument type '
-                    '([CryoEMInstrument](CryoEMInstrument.md), \n'
+                    '([CryoEMInstrument](CryoEMInstrument.md),\n'
                     '  [XRayInstrument](XRayInstrument.md), '
                     '[SAXSInstrument](SAXSInstrument.md)) has specific parameters\n'
                     '  like accelerating voltage, detector type, or beam energy.\n'
                     '\n'
                     '- [Experiment Runs](ExperimentRun.md): Individual data '
-                    'collection sessions that link samples to \n'
-                    '  instruments. An experiment run captures when, how, and '
-                    'under what conditions data was collected,\n'
-                    '  including quality metrics like resolution and '
-                    'completeness.\n'
+                    'collection sessions. An experiment run\n'
+                    '  captures when, how, and under what conditions data was '
+                    'collected, including quality metrics\n'
+                    '  like resolution and completeness.\n'
                     '\n'
-                    '### Data Processing\n'
+                    '**Data Processing**\n'
                     '- [Workflow Runs](WorkflowRun.md): Computational processing '
                     'steps applied to raw data. This includes\n'
                     '  motion correction for cryo-EM movies, 3D reconstruction, '
@@ -129,7 +127,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '  for crystallography. Each workflow tracks the software '
                     'used, parameters, and computational resources.\n'
                     '\n'
-                    '### Data Products\n'
+                    '**Data Products**\n'
                     '- [Data Files](DataFile.md): Any files generated or used, '
                     'from raw data to final models. Each file\n'
                     '  is tracked with checksums for data integrity and typed '
@@ -146,6 +144,45 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '  - [OpticalImage](OpticalImage.md): Brightfield/phase '
                     'contrast microscopy\n'
                     '  - [XRFImage](XRFImage.md): Elemental distribution maps\n'
+                    '\n'
+                    '**Logical Groupings**\n'
+                    '- [Studies](Study.md): Lightweight groupings representing '
+                    'focused investigations of specific\n'
+                    '  biological questions. For example, a study might '
+                    'investigate "Heat stress response in Arabidopsis"\n'
+                    '  or "Structure of the human ribosome under different '
+                    'conditions."\n'
+                    '\n'
+                    '### Association Tables\n'
+                    '\n'
+                    'Many-to-many relationships are represented via explicit '
+                    'association tables, which can carry\n'
+                    'relationship metadata (e.g., the role of a sample in an '
+                    'experiment):\n'
+                    '\n'
+                    '- **StudySampleAssociation**: Links samples to studies (with '
+                    'role: target, control, reference)\n'
+                    '- **StudyExperimentAssociation**: Links experiments to '
+                    'studies\n'
+                    '- **StudyWorkflowAssociation**: Links workflows to studies\n'
+                    '- **ExperimentSampleAssociation**: Links samples to '
+                    'experiments (with role and preparation used)\n'
+                    '- **ExperimentInstrumentAssociation**: Links instruments to '
+                    'experiments (with role: primary, detector)\n'
+                    '- **WorkflowExperimentAssociation**: Links source experiments '
+                    'to workflows\n'
+                    '- **WorkflowInputAssociation**: Links input files to '
+                    'workflows\n'
+                    '- **WorkflowOutputAssociation**: Links output files to '
+                    'workflows\n'
+                    '\n'
+                    'This relational design enables:\n'
+                    '- **Sample reuse**: The same sample can be used in multiple '
+                    'studies and experiments\n'
+                    '- **Multi-instrument experiments**: An experiment can use '
+                    'multiple instruments with different roles\n'
+                    '- **Integrative workflows**: A workflow can combine data from '
+                    'multiple experiments\n'
                     '\n'
                     '## Example Usage\n'
                     '\n'
@@ -170,6 +207,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                     '\n'
                     '## Key Features\n'
                     '\n'
+                    '- **Relational design**: Flat entity tables with explicit '
+                    'association tables for M:N relationships\n'
+                    '- **SQL-friendly**: Maps directly to normalized database '
+                    'tables\n'
                     '- **Technique-agnostic core**: The same schema handles data '
                     'from any structural biology method\n'
                     '- **Rich metadata**: Comprehensive tracking from sample to '
@@ -215,10 +256,14 @@ linkml_meta = LinkMLMeta({'default_prefix': 'lambdaber',
                            'prefix_reference': 'https://w3id.org/nmdc/'},
                   'nsls2': {'prefix_prefix': 'nsls2',
                             'prefix_reference': 'https://github.com/NSLS2/BER-LAMBDA/'},
+                  'pdb': {'prefix_prefix': 'pdb',
+                          'prefix_reference': 'https://files.rcsb.org/download/'},
                   'prov': {'prefix_prefix': 'prov',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
+                  'simplescattering': {'prefix_prefix': 'simplescattering',
+                                       'prefix_reference': 'https://www.simplescattering.com/open_dataset/'},
                   'sio': {'prefix_prefix': 'sio',
                           'prefix_reference': 'http://semanticscience.org/resource/'},
                   'skos': {'prefix_prefix': 'skos',
@@ -1731,6 +1776,10 @@ class BeamlineEnum(str, Enum):
     """
     High-throughput macromolecular crystallography beamline
     """
+    ALS_BL8FULL_STOP3FULL_STOP2 = "ALS_BL832"
+    """
+    Hard X-ray micro-tomography beamline for non-destructive 3D imaging. Provides high-resolution micro-CT capabilities for biological, geological, and materials samples. Supports absorption and phase contrast imaging modes.
+    """
     ALS_BL12FULL_STOP2FULL_STOP2 = "ALS_BL1222"
     """
     High-throughput macromolecular crystallography beamline
@@ -2031,11 +2080,19 @@ class TechniqueEnum(str, Enum):
     """
     Time-resolved macromolecular crystallography
     """
+    xray_tomography = "xray_tomography"
+    """
+    X-ray computed tomography (micro-CT) for 3D imaging
+    """
 
 
 class ProcessingStatusEnum(str, Enum):
     """
     Processing status
+    """
+    collected = "collected"
+    """
+    Data has been collected but not yet processed
     """
     raw = "raw"
     """
@@ -2525,6 +2582,92 @@ class ExperimentalMethodEnum(str, Enum):
     """
 
 
+class LIMSSystemEnum(str, Enum):
+    """
+    Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.
+    """
+    ISPyB_LEFT_PARENTHESISCommunityRIGHT_PARENTHESIS = "ispyb"
+    """
+    Information System for Protein crystallography Beamlines - the community-maintained variant developed collaboratively by ESRF, MAX IV, SOLEIL, ALBA, and other facilities. Provides comprehensive tracking of samples, data collections, and processing results for macromolecular crystallography. The py-ispyb Python API targets this variant.
+    """
+    ISPyB_LEFT_PARENTHESISDiamondRIGHT_PARENTHESIS = "ispyb_diamond"
+    """
+    Diamond Light Source variant of ISPyB, the original reference implementation. Tightly integrated with Diamond's infrastructure and SynchWeb web interface. Shares core schema with community ISPyB but has diverged in extensions and APIs.
+    """
+    ICAT = "icat"
+    """
+    ICAT is a metadata catalogue and data management system designed to support large facility experimental data. Used primarily at neutron and photon sources for cataloging experimental data with rich metadata and providing data access APIs.
+    """
+    MXLive = "mxlive"
+    """
+    Web-based LIMS developed at the Canadian Light Source for macromolecular crystallography beamlines. Provides sample tracking, data collection scheduling, and integration with automated data processing pipelines.
+    """
+    MXCuBE_LEFT_PARENTHESISLIMSRIGHT_PARENTHESIS = "mxcube_lims"
+    """
+    Macromolecular Crystallography Beamline Control Unit Environment - a unified beamline control and experiment management system. Originally developed at ESRF, now a collaborative project. MXCuBE3 is the modern web-based version.
+    """
+    User_Office_System = "user_office"
+    """
+    Generic facility user office or proposal management system for tracking beam time proposals, user access, and administrative metadata.
+    """
+
+
+class DataAcquisitionSystemEnum(str, Enum):
+    """
+    Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.
+    """
+    Bluesky = "bluesky"
+    """
+    Event-based data acquisition framework developed at NSLS-II (Brookhaven National Laboratory). Uses a streaming document model with RunStart, Event, and RunStop documents. Built on Python with ophyd for hardware abstraction and databroker for data access. Increasingly adopted at ALS, APS, and international facilities.
+    """
+    SPEC = "spec"
+    """
+    Legacy macro-based data acquisition system from Certified Scientific Software. Long-standing standard at synchrotron beamlines, using a command-line interface with macro scripting. Still in use at many facilities but being replaced by modern alternatives.
+    """
+    Sardana = "sardana"
+    """
+    Tango-based data acquisition and control system developed at ALBA. Provides a modular framework for beamline control with macro execution, scan management, and integration with Tango device servers.
+    """
+    GDA = "gda"
+    """
+    Generic Data Acquisition - Java-based data acquisition framework developed at Diamond Light Source. Provides beamline control, scan execution, and integration with EPICS and other control systems.
+    """
+    MXCuBE_LEFT_PARENTHESISData_CollectionRIGHT_PARENTHESIS = "mxcube_daq"
+    """
+    MXCuBE used as data collection interface for macromolecular crystallography. Provides automated data collection strategies, sample centering, and integration with processing pipelines. See also mxcube_lims in LIMSSystemEnum for sample management.
+    """
+    Blu_Ice = "blu_ice"
+    """
+    Data collection software developed at SSRL (Stanford Synchrotron Radiation Lightsource) for macromolecular crystallography. Provides graphical interface for sample positioning, data collection strategy, and beamline control.
+    """
+    JBluIce = "jblue_ice"
+    """
+    Java-based variant of Blu-Ice deployed at GM/CA (General Medicine and Cancer Institutes Collaborative Access Team) and SER-CAT beamlines at APS.
+    """
+
+
+class ControlSystemEnum(str, Enum):
+    """
+    Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.
+    """
+    EPICS = "epics"
+    """
+    Experimental Physics and Industrial Control System - open-source control system framework widely used at accelerators and large experimental facilities worldwide. Provides distributed control with Channel Access protocol, IOCs (Input/Output Controllers), and extensive tool ecosystem.
+    """
+    Tango_Controls = "tango"
+    """
+    Object-oriented distributed control system developed at ESRF. Provides device servers, a naming service, and tools for building control applications. Widely adopted at European synchrotrons and other facilities.
+    """
+    LabVIEW = "labview"
+    """
+    Graphical programming environment from National Instruments for instrument control and data acquisition. Used at some laboratory and smaller-scale facilities for custom instrument integration.
+    """
+    OPI = "opi"
+    """
+    Operator Interface - legacy control system used at ALS before EPICS adoption. Historical reference for older beamline configurations.
+    """
+
+
 class SampleRoleEnum(str, Enum):
     """
     Role of a sample in a study
@@ -2684,9 +2827,11 @@ class QuantityValue(AttributeValue):
          'from_schema': 'https://w3id.org/lambda-ber-schema/types',
          'mappings': ['schema:QuantityValue'],
          'slot_usage': {'numeric_value': {'description': 'The numerical value of the '
-                                                         'quantity',
+                                                         'quantity. May be null if the '
+                                                         'value is unknown or not '
+                                                         'measured.',
                                           'name': 'numeric_value',
-                                          'required': True},
+                                          'required': False},
                         'raw_value': {'description': 'Unnormalized atomic string '
                                                      'representation, suggested syntax '
                                                      '{number} {unit}',
@@ -2708,7 +2853,7 @@ class QuantityValue(AttributeValue):
          'domain_of': ['QuantityValue'],
          'is_a': 'numeric_value',
          'mappings': ['nmdc:minimum_numeric_value']} })
-    numeric_value: float = Field(default=..., description="""The numerical value of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'numeric_value',
+    numeric_value: Optional[float] = Field(default=None, description="""The numerical value of the quantity. May be null if the value is unknown or not measured.""", json_schema_extra = { "linkml_meta": {'alias': 'numeric_value',
          'domain_of': ['QuantityValue'],
          'mappings': ['nmdc:numeric_value', 'qud:quantityValue', 'schema:value']} })
     unit: str = Field(default=..., description="""The unit of measurement (e.g., \"Angstroms\", \"micrometers\", \"kilodaltons\"). Should match the UCUM standard notation or Unit Ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'unit',
@@ -4113,6 +4258,9 @@ class BeamlineInstrument(Instrument):
          'domain_of': ['SAXSInstrument', 'BeamlineInstrument']} })
     mail_in_service: Optional[bool] = Field(default=None, description="""Whether mail-in sample service is available""", json_schema_extra = { "linkml_meta": {'alias': 'mail_in_service', 'domain_of': ['BeamlineInstrument']} })
     website: Optional[str] = Field(default=None, description="""Beamline website URL""", json_schema_extra = { "linkml_meta": {'alias': 'website', 'domain_of': ['BeamlineInstrument']} })
+    lims_system: Optional[LIMSSystemEnum] = Field(default=None, description="""Laboratory Information Management System used at this beamline""", json_schema_extra = { "linkml_meta": {'alias': 'lims_system', 'domain_of': ['BeamlineInstrument']} })
+    daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used for experiment orchestration""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
+    control_system: Optional[ControlSystemEnum] = Field(default=None, description="""Low-level control system for device communication""", json_schema_extra = { "linkml_meta": {'alias': 'control_system', 'domain_of': ['BeamlineInstrument']} })
     instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
     instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
          'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
@@ -4172,6 +4320,7 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[QualityMetrics] = Field(default=None, description="""Quality metrics for the experiment""", json_schema_extra = { "linkml_meta": {'alias': 'quality_metrics', 'domain_of': ['Sample', 'ExperimentRun']} })
     raw_data_location: Optional[str] = Field(default=None, description="""Location of raw data files""", json_schema_extra = { "linkml_meta": {'alias': 'raw_data_location', 'domain_of': ['ExperimentRun']} })
     processing_status: Optional[ProcessingStatusEnum] = Field(default=None, description="""Current processing status""", json_schema_extra = { "linkml_meta": {'alias': 'processing_status', 'domain_of': ['ExperimentRun']} })
+    daq_system: Optional[DataAcquisitionSystemEnum] = Field(default=None, description="""Data acquisition system used to collect this experiment""", json_schema_extra = { "linkml_meta": {'alias': 'daq_system', 'domain_of': ['BeamlineInstrument', 'ExperimentRun']} })
     magnification: Optional[QuantityValue] = Field(default=None, description="""Magnification used during data collection""", json_schema_extra = { "linkml_meta": {'alias': 'magnification', 'domain_of': ['ExperimentRun', 'OpticalImage']} })
     calibrated_pixel_size: Optional[QuantityValue] = Field(default=None, description="""Calibrated pixel size in Angstroms per pixel""", json_schema_extra = { "linkml_meta": {'alias': 'calibrated_pixel_size', 'domain_of': ['ExperimentRun']} })
     camera_binning: Optional[QuantityValue] = Field(default=None, description="""Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3).""", json_schema_extra = { "linkml_meta": {'alias': 'camera_binning', 'domain_of': ['ExperimentRun']} })

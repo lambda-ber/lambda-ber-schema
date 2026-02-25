@@ -31,7 +31,7 @@ Alias: accelerating_voltage
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,11 +73,8 @@ alias: accelerating_voltage
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: integer
-any_of:
-- equals_number: 120
-- equals_number: 200
-- equals_number: 300
+range: QuantityValue
+inlined: true
 
 ```
 </details>

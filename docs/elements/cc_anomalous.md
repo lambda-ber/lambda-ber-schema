@@ -31,14 +31,10 @@ Alias: cc_anomalous
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Correlation coefficient between Bijvoet pairs
 
 ## Identifier and Mapping Information
 
@@ -61,7 +57,6 @@ Alias: cc_anomalous
 | ---  | ---  |
 | self | lambdaber:cc_anomalous |
 | native | lambdaber:cc_anomalous |
-| exact | ispyb:AutoProcScalingStatistics.ccAno |
 
 
 
@@ -72,17 +67,14 @@ Alias: cc_anomalous
 ```yaml
 name: cc_anomalous
 description: Anomalous correlation coefficient
-comments:
-- Correlation coefficient between Bijvoet pairs
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.ccAno
 rank: 1000
 alias: cc_anomalous
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

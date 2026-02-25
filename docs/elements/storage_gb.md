@@ -3,7 +3,7 @@
 # Slot: storage_gb 
 
 
-_Storage used in GB_
+_Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: storage_gb
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: storage_gb
 <details>
 ```yaml
 name: storage_gb
-description: Storage used in GB
+description: Storage used, typically specified in gigabytes (GB). Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: storage_gb
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

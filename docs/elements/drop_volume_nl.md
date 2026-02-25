@@ -3,7 +3,7 @@
 # Slot: drop_volume_nl 
 
 
-_Total drop volume in nanoliters_
+_Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: drop_volume_nl
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: drop_volume_nl
 <details>
 ```yaml
 name: drop_volume_nl
-description: Total drop volume in nanoliters
+description: Total drop volume, typically specified in nanoliters. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: drop_volume_nl
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

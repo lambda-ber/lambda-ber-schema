@@ -3,7 +3,7 @@
 # Slot: undulator_gap 
 
 
-_Undulator gap setting in millimeters_
+_Undulator gap setting, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue. Primary undulator gap for beamlines with insertion devices._
 
 
 
@@ -31,7 +31,7 @@ Alias: undulator_gap
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -71,7 +71,9 @@ Alias: undulator_gap
 <details>
 ```yaml
 name: undulator_gap
-description: Undulator gap setting in millimeters
+description: Undulator gap setting, typically specified in millimeters (mm). Data
+  providers may specify alternative units by including the unit in the QuantityValue.
+  Primary undulator gap for beamlines with insertion devices.
 comments:
 - Primary undulator gap for beamlines with insertion devices
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -82,9 +84,8 @@ alias: undulator_gap
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: mm
+range: QuantityValue
+inlined: true
 
 ```
 </details>

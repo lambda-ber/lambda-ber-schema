@@ -3,7 +3,7 @@
 # Slot: laser_power 
 
 
-_Laser power in milliwatts or percentage_
+_Laser power, typically specified in milliwatts. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: laser_power
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: laser_power
 <details>
 ```yaml
 name: laser_power
-description: Laser power in milliwatts or percentage
+description: Laser power, typically specified in milliwatts. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: laser_power
 owner: FluorescenceImage
 domain_of:
 - FluorescenceImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

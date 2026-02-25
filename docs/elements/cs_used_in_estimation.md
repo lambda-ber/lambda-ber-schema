@@ -3,7 +3,7 @@
 # Slot: cs_used_in_estimation 
 
 
-_Spherical aberration (Cs) value used during CTF estimation (in millimeters); may differ from instrument specification_
+_Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: cs_used_in_estimation
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,15 +66,17 @@ Alias: cs_used_in_estimation
 <details>
 ```yaml
 name: cs_used_in_estimation
-description: Spherical aberration (Cs) value used during CTF estimation (in millimeters);
-  may differ from instrument specification
+description: Spherical aberration (Cs) value used during CTF estimation, typically
+  specified in millimeters; may differ from instrument specification. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: cs_used_in_estimation
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>
