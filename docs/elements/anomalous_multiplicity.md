@@ -31,14 +31,10 @@ Alias: anomalous_multiplicity
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Redundancy of Bijvoet pairs
 
 ## Identifier and Mapping Information
 
@@ -61,7 +57,6 @@ Alias: anomalous_multiplicity
 | ---  | ---  |
 | self | lambdaber:anomalous_multiplicity |
 | native | lambdaber:anomalous_multiplicity |
-| exact | ispyb:AutoProcScalingStatistics.anomalousMultiplicity |
 
 
 
@@ -72,17 +67,14 @@ Alias: anomalous_multiplicity
 ```yaml
 name: anomalous_multiplicity
 description: Multiplicity of anomalous data
-comments:
-- Redundancy of Bijvoet pairs
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.anomalousMultiplicity
 rank: 1000
 alias: anomalous_multiplicity
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

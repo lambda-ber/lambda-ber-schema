@@ -3,7 +3,7 @@
 # Slot: ice_thickness_estimate 
 
 
-_Estimated ice thickness in nanometers_
+_Estimated ice thickness, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: ice_thickness_estimate
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: ice_thickness_estimate
 <details>
 ```yaml
 name: ice_thickness_estimate
-description: Estimated ice thickness in nanometers
+description: Estimated ice thickness, typically specified in nanometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ice_thickness_estimate
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

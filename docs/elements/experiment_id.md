@@ -3,11 +3,6 @@
 # Slot: experiment_id 
 
 
-_Reference to the source experiment_
-
-
-
-
 
 URI: [lambdaber:experiment_id](https://w3id.org/lambda-ber-schema/experiment_id)
 Alias: experiment_id
@@ -22,7 +17,10 @@ Alias: experiment_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
+| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | M:N link between WorkflowRun and source ExperimentRuns |  no  |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
+| [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |  no  |
+| [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |  no  |
 
 
 
@@ -33,8 +31,6 @@ Alias: experiment_id
 
 * Range: [String](String.md)
 
-* Required: True
-
 
 
 
@@ -42,13 +38,6 @@ Alias: experiment_id
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -68,15 +57,13 @@ Alias: experiment_id
 <details>
 ```yaml
 name: experiment_id
-description: Reference to the source experiment
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: experiment_id
-owner: WorkflowRun
 domain_of:
-- WorkflowRun
+- StudyExperimentAssociation
+- ExperimentSampleAssociation
+- ExperimentInstrumentAssociation
+- WorkflowExperimentAssociation
 range: string
-required: true
 
 ```
 </details>

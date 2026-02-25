@@ -3,7 +3,7 @@
 # Slot: cpu_hours 
 
 
-_CPU hours used_
+_CPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: cpu_hours
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: cpu_hours
 <details>
 ```yaml
 name: cpu_hours
-description: CPU hours used
+description: CPU hours used, measured in hours. Data providers may specify alternative
+  time units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: cpu_hours
 owner: ComputeResources
 domain_of:
 - ComputeResources
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

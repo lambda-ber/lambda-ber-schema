@@ -3,7 +3,7 @@
 # Slot: oscillation_angle 
 
 
-_Oscillation angle per image_
+_Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: oscillation_angle
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: oscillation_angle
 <details>
 ```yaml
 name: oscillation_angle
-description: Oscillation angle per image
+description: Oscillation angle per image, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Angle_increment
@@ -79,9 +80,8 @@ alias: oscillation_angle
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 ```
 </details>

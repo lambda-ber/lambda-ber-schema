@@ -3,7 +3,7 @@
 # Slot: bfactor_dose_weighting 
 
 
-_B-factor for dose weighting_
+_B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: bfactor_dose_weighting
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: bfactor_dose_weighting
 <details>
 ```yaml
 name: bfactor_dose_weighting
-description: B-factor for dose weighting
+description: B-factor for dose weighting, typically specified in Angstroms squared.
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: bfactor_dose_weighting
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

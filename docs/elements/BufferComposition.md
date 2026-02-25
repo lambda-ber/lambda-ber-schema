@@ -30,6 +30,15 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
         
       BufferComposition : ph
         
+          
+    
+        
+        
+        BufferComposition --> "0..1" QuantityValue : ph
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       
 ```
 
@@ -47,7 +56,7 @@ URI: [lambdaber:BufferComposition](https://w3id.org/lambda-ber-schema/BufferComp
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH of the buffer (range: 0-14) | direct |
+| [ph](ph.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | pH of the buffer (range: 0-14) | direct |
 | [components](components.md) | * <br/> [String](String.md) | Buffer components and their concentrations | direct |
 | [additives](additives.md) | * <br/> [String](String.md) | Additional additives in the buffer | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
@@ -117,9 +126,8 @@ attributes:
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   components:
     name: components
     description: Buffer components and their concentrations
@@ -162,9 +170,8 @@ attributes:
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   components:
     name: components
     description: Buffer components and their concentrations

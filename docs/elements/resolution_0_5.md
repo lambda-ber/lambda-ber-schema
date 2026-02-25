@@ -3,7 +3,7 @@
 # Slot: resolution_0_5 
 
 
-_Resolution at FSC=0.5 in Angstroms_
+_Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_0_5
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: resolution_0_5
 <details>
 ```yaml
 name: resolution_0_5
-description: Resolution at FSC=0.5 in Angstroms
+description: Resolution at FSC=0.5, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: resolution_0_5
 owner: RefinementParameters
 domain_of:
 - RefinementParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: completeness_high_res_shell_percent 
 
 
-_Completeness in highest resolution shell_
+_Completeness in highest resolution shell, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: completeness_high_res_shell_percent
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,17 @@ Alias: completeness_high_res_shell_percent
 <details>
 ```yaml
 name: completeness_high_res_shell_percent
-description: Completeness in highest resolution shell
+description: Completeness in highest resolution shell, typically specified as a percentage
+  (0-100). Data providers may specify as decimal fraction by including the unit in
+  the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: completeness_high_res_shell_percent
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

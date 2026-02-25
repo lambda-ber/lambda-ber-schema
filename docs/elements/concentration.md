@@ -3,7 +3,7 @@
 # Slot: concentration 
 
 
-_Sample concentration in mg/mL or µM_
+_Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: concentration
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: concentration
 <details>
 ```yaml
 name: concentration
-description: Sample concentration in mg/mL or µM
+description: Sample concentration, typically specified in mg/mL or µM. Data providers
+  may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: concentration
 owner: Sample
 domain_of:
 - Sample
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

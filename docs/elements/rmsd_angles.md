@@ -3,7 +3,7 @@
 # Slot: rmsd_angles 
 
 
-_RMSD from ideal bond angles_
+_RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: rmsd_angles
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: rmsd_angles
 <details>
 ```yaml
 name: rmsd_angles
-description: RMSD from ideal bond angles
+description: RMSD from ideal bond angles, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:RMSD_angles
@@ -77,9 +78,8 @@ alias: rmsd_angles
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: pixel_size_x 
 
 
-_Pixel size X dimension_
+_Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: pixel_size_x
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -71,7 +71,9 @@ Alias: pixel_size_x
 <details>
 ```yaml
 name: pixel_size_x
-description: Pixel size X dimension
+description: Pixel size X dimension, typically specified in micrometers (µm). Data
+  providers may specify alternative units (e.g., Angstroms) by including the unit
+  in the QuantityValue.
 comments:
 - 'imgCIF: _array_element_size.size[1]'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -83,9 +85,8 @@ alias: pixel_size_x
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: um
+range: QuantityValue
+inlined: true
 
 ```
 </details>

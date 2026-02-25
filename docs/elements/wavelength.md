@@ -3,7 +3,7 @@
 # Slot: wavelength 
 
 
-_X-ray wavelength_
+_X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: wavelength
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: wavelength
 <details>
 ```yaml
 name: wavelength
-description: X-ray wavelength
+description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Wavelength
@@ -79,9 +80,8 @@ alias: wavelength
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 ```
 </details>

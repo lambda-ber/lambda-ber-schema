@@ -52,6 +52,15 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
         
       ProteinConstruct : sequence_length_aa
         
+          
+    
+        
+        
+        ProteinConstruct --> "0..1" QuantityValue : sequence_length_aa
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ProteinConstruct : sequence_verified_by
         
       ProteinConstruct : signal_peptide
@@ -91,7 +100,7 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
 | [uniprot_id](uniprot_id.md) | 0..1 <br/> [String](String.md) | UniProt accession for the target protein | direct |
 | [gene_name](gene_name.md) | 0..1 <br/> [String](String.md) | Gene name | direct |
 | [ncbi_taxid](ncbi_taxid.md) | 0..1 <br/> [String](String.md) | NCBI Taxonomy ID for source organism | direct |
-| [sequence_length_aa](sequence_length_aa.md) | 0..1 <br/> [Integer](Integer.md) | Length of the protein sequence in amino acids | direct |
+| [sequence_length_aa](sequence_length_aa.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Length of the protein sequence in amino acids | direct |
 | [construct_description](construct_description.md) | 0..1 <br/> [String](String.md) | Human-readable description of the construct | direct |
 | [gene_synthesis_provider](gene_synthesis_provider.md) | 0..1 <br/> [String](String.md) | Company or facility that synthesized the gene | direct |
 | [codon_optimization_organism](codon_optimization_organism.md) | 0..1 <br/> [String](String.md) | Organism for which codons were optimized | direct |
@@ -120,7 +129,7 @@ URI: [lambdaber:ProteinConstruct](https://w3id.org/lambda-ber-schema/ProteinCons
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [protein_constructs](protein_constructs.md) | range | [ProteinConstruct](ProteinConstruct.md) |
+| [Dataset](Dataset.md) | [protein_constructs](protein_constructs.md) | range | [ProteinConstruct](ProteinConstruct.md) |
 
 
 
@@ -206,7 +215,8 @@ attributes:
     rank: 1000
     domain_of:
     - ProteinConstruct
-    range: integer
+    range: QuantityValue
+    inlined: true
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
@@ -384,7 +394,8 @@ attributes:
     owner: ProteinConstruct
     domain_of:
     - ProteinConstruct
-    range: integer
+    range: QuantityValue
+    inlined: true
   construct_description:
     name: construct_description
     description: Human-readable description of the construct
@@ -557,6 +568,7 @@ attributes:
     owner: ProteinConstruct
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

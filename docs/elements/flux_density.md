@@ -31,7 +31,7 @@ Alias: flux_density
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: flux_density
 owner: XRayInstrument
 domain_of:
 - XRayInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

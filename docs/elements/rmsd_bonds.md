@@ -3,7 +3,7 @@
 # Slot: rmsd_bonds 
 
 
-_RMSD from ideal bond lengths_
+_RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: rmsd_bonds
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: rmsd_bonds
 <details>
 ```yaml
 name: rmsd_bonds
-description: RMSD from ideal bond lengths
+description: RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:RMSD_bonds
@@ -77,9 +78,8 @@ alias: rmsd_bonds
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: anomalous_completeness 
 
 
-_Completeness of anomalous data as percentage_
+_Completeness of anomalous data as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: anomalous_completeness
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -71,7 +71,8 @@ Alias: anomalous_completeness
 <details>
 ```yaml
 name: anomalous_completeness
-description: Completeness of anomalous data as percentage
+description: Completeness of anomalous data as a percentage (0-100). Data providers
+  may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Completeness of Bijvoet pairs
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -82,9 +83,8 @@ alias: anomalous_completeness
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

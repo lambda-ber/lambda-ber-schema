@@ -296,6 +296,7 @@ attributes:
     owner: ConformationalEnsemble
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

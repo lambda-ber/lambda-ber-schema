@@ -3,7 +3,7 @@
 # Slot: workflow_runs 
 
 
-_Computational workflow executions for data processing in this study_
+_All workflow runs (computational processing)_
 
 
 
@@ -22,7 +22,7 @@ Alias: workflow_runs
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: workflow_runs
 <details>
 ```yaml
 name: workflow_runs
-description: Computational workflow executions for data processing in this study
+description: All workflow runs (computational processing)
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: workflow_runs
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: WorkflowRun
 multivalued: true
 inlined: true

@@ -31,7 +31,7 @@ Alias: number_of_images
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: number_of_images
 | ---  | ---  |
 | self | lambdaber:number_of_images |
 | native | lambdaber:number_of_images |
-| exact | nsls2:Number_of_images, imgCIF:_diffrn_scan.frames, ispyb:DataCollection.numberOfImages |
 
 
 
@@ -69,16 +68,13 @@ Alias: number_of_images
 name: number_of_images
 description: Total number of diffraction images collected
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Number_of_images
-- imgCIF:_diffrn_scan.frames
-- ispyb:DataCollection.numberOfImages
 rank: 1000
 alias: number_of_images
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

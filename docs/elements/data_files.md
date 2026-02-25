@@ -3,7 +3,7 @@
 # Slot: data_files 
 
 
-_Data files generated or used in this study_
+_All data files_
 
 
 
@@ -22,7 +22,7 @@ Alias: data_files
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: data_files
 <details>
 ```yaml
 name: data_files
-description: Data files generated or used in this study
+description: All data files
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: data_files
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: DataFile
 multivalued: true
 inlined: true

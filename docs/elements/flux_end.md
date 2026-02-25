@@ -3,7 +3,7 @@
 # Slot: flux_end 
 
 
-_Photon flux at end of data collection in photons/second_
+_Photon flux at end of data collection, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: flux_end
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,9 @@ Alias: flux_end
 <details>
 ```yaml
 name: flux_end
-description: Photon flux at end of data collection in photons/second
+description: Photon flux at end of data collection, typically specified in photons
+  per second. Data providers may specify alternative units by including the unit in
+  the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - ispyb:DataCollection.flux_end
@@ -76,9 +78,8 @@ alias: flux_end
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: '{photons}/s'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

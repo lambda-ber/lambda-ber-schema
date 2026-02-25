@@ -31,9 +31,7 @@ Alias: concentration_series
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Multivalued: True
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -75,8 +73,8 @@ alias: concentration_series
 owner: SAXSPreparation
 domain_of:
 - SAXSPreparation
-range: float
-multivalued: true
+range: QuantityValue
+inlined: true
 
 ```
 </details>

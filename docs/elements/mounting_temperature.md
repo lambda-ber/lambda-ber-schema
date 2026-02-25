@@ -3,7 +3,7 @@
 # Slot: mounting_temperature 
 
 
-_Temperature during mounting in Kelvin_
+_Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: mounting_temperature
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,7 +70,8 @@ Alias: mounting_temperature
 <details>
 ```yaml
 name: mounting_temperature
-description: Temperature during mounting in Kelvin
+description: Temperature during mounting, typically specified in Kelvin. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 comments:
 - 'Maps to NSLS2 spreadsheet: Temperature'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -80,7 +81,8 @@ alias: mounting_temperature
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

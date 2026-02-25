@@ -31,7 +31,7 @@ Alias: ctf_quality_score
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: ctf_quality_score
 owner: Micrograph
 domain_of:
 - Micrograph
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

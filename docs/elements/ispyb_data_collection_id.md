@@ -31,14 +31,10 @@ Alias: ispyb_data_collection_id
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Use to link back to ISPyB records
 
 ## Identifier and Mapping Information
 
@@ -61,7 +57,6 @@ Alias: ispyb_data_collection_id
 | ---  | ---  |
 | self | lambdaber:ispyb_data_collection_id |
 | native | lambdaber:ispyb_data_collection_id |
-| exact | ispyb:DataCollection.dataCollectionId |
 
 
 
@@ -72,17 +67,14 @@ Alias: ispyb_data_collection_id
 ```yaml
 name: ispyb_data_collection_id
 description: ISPyB DataCollection.dataCollectionId for traceability
-comments:
-- Use to link back to ISPyB records
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:DataCollection.dataCollectionId
 rank: 1000
 alias: ispyb_data_collection_id
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

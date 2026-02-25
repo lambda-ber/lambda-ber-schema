@@ -3938,8 +3938,8 @@ enums:
           and integration with automated data processing pipelines.
         annotations:
           facilities: "Canadian Light Source"
-      mxcube:
-        title: MXCuBE
+      mxcube_lims:
+        title: MXCuBE (LIMS)
         description: >-
           Macromolecular Crystallography Beamline Control Unit Environment - a unified
           beamline control and experiment management system. Originally developed at ESRF,
@@ -4003,12 +4003,13 @@ enums:
           website: https://www.opengda.org/
           github: https://github.com/openGDA
           facilities: "Diamond Light Source"
-      mxcube:
+      mxcube_daq:
         title: MXCuBE (Data Collection)
         description: >-
           MXCuBE used as data collection interface for macromolecular crystallography.
           Provides automated data collection strategies, sample centering, and integration
-          with processing pipelines. See also mxcube in LIMSSystemEnum for sample management.
+          with processing pipelines. See also mxcube_lims in LIMSSystemEnum for sample
+          management.
         annotations:
           website: https://mxcube.github.io/mxcube/
           github: https://github.com/mxcube

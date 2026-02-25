@@ -3,7 +3,7 @@
 # Slot: stage_position_y 
 
 
-_Stage Y position in micrometers_
+_Stage Y position, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: stage_position_y
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: stage_position_y
 <details>
 ```yaml
 name: stage_position_y
-description: Stage Y position in micrometers
+description: Stage Y position, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: stage_position_y
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

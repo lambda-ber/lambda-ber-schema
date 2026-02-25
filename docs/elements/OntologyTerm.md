@@ -148,6 +148,7 @@ attributes:
     rank: 1000
     domain_of:
     - OntologyTerm
+    - Attribute
     range: string
   definition:
     name: definition
@@ -201,6 +202,7 @@ attributes:
     owner: OntologyTerm
     domain_of:
     - OntologyTerm
+    - Attribute
     range: string
   definition:
     name: definition
@@ -235,6 +237,7 @@ attributes:
     owner: OntologyTerm
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

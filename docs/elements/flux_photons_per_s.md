@@ -3,7 +3,7 @@
 # Slot: flux_photons_per_s 
 
 
-_Photon flux in photons per second_
+_Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: flux_photons_per_s
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: flux_photons_per_s
 <details>
 ```yaml
 name: flux_photons_per_s
-description: Photon flux in photons per second
+description: Photon flux, typically specified in photons per second. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: flux_photons_per_s
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

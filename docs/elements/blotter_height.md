@@ -3,7 +3,7 @@
 # Slot: blotter_height 
 
 
-_Blotter height setting_
+_Blotter height setting. Data providers may include unit information in the QuantityValue if needed._
 
 
 
@@ -31,7 +31,7 @@ Alias: blotter_height
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: blotter_height
 <details>
 ```yaml
 name: blotter_height
-description: Blotter height setting
+description: Blotter height setting. Data providers may include unit information in
+  the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blotter_height
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

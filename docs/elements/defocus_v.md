@@ -3,7 +3,7 @@
 # Slot: defocus_v 
 
 
-_Defocus V in micrometers_
+_Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: defocus_v
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: defocus_v
 <details>
 ```yaml
 name: defocus_v
-description: Defocus V in micrometers
+description: Defocus V, typically specified in micrometers. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: defocus_v
 owner: Micrograph
 domain_of:
 - Micrograph
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

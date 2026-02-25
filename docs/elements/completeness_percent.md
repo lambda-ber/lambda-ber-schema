@@ -3,7 +3,7 @@
 # Slot: completeness_percent 
 
 
-_Data completeness percentage_
+_Data completeness as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: completeness_percent
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: completeness_percent
 <details>
 ```yaml
 name: completeness_percent
-description: Data completeness percentage
+description: Data completeness as a percentage (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Completeness
@@ -78,9 +79,8 @@ alias: completeness_percent
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

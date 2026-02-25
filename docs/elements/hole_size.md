@@ -3,7 +3,7 @@
 # Slot: hole_size 
 
 
-_Hole size in micrometers (range: 0.5-5.0)_
+_Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,11 +31,7 @@ Alias: hole_size
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 5
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,16 +66,16 @@ Alias: hole_size
 <details>
 ```yaml
 name: hole_size
-description: 'Hole size in micrometers (range: 0.5-5.0)'
+description: 'Hole size, typically specified in micrometers (range: 0.5-5.0). Data
+  providers may specify alternative units by including the unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: hole_size
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
-minimum_value: 0.5
-maximum_value: 5.0
+range: QuantityValue
+inlined: true
 
 ```
 </details>

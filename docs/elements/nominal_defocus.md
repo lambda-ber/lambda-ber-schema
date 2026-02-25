@@ -3,7 +3,7 @@
 # Slot: nominal_defocus 
 
 
-_Nominal defocus value in micrometers_
+_Nominal defocus value, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: nominal_defocus
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: nominal_defocus
 <details>
 ```yaml
 name: nominal_defocus
-description: Nominal defocus value in micrometers
+description: Nominal defocus value, typically specified in micrometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: nominal_defocus
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

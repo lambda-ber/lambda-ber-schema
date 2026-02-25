@@ -31,7 +31,7 @@ Alias: frame_grouping
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: frame_grouping
 owner: MotionCorrectionParameters
 domain_of:
 - MotionCorrectionParameters
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -7,42 +7,42 @@ spectroscopic imaging.
 
 ## Schema Organization
 
-The schema follows a hierarchical structure that mirrors how structural biology research is organized:
+The schema follows a **relational design** with flat entity collections and explicit association
+tables for many-to-many relationships. This maps cleanly to SQL databases while supporting
+flexible data reuse across studies.
 
 The top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.
 A dataset might represent all data from a specific grant, collaboration, or publication.
 
-Each dataset contains one or more [Studies](Study.md), which are focused investigations of specific
-biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
-or "Structure of the human ribosome under different conditions."
+### Entity Tables
 
-Within each study, you'll find:
+All entities are stored in flat collections at the Dataset level:
 
-### Biological Materials
-- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes, 
-  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and 
+**Biological Materials**
+- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
+  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
   storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
 
 - [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.
   This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
   X-ray studies, or staining protocols for fluorescence microscopy.
 
-### Data Collection
-- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron 
-  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md), 
+**Data Collection**
+- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
+  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
   [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
   like accelerating voltage, detector type, or beam energy.
 
-- [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to 
-  instruments. An experiment run captures when, how, and under what conditions data was collected,
-  including quality metrics like resolution and completeness.
+- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
+  captures when, how, and under what conditions data was collected, including quality metrics
+  like resolution and completeness.
 
-### Data Processing
+**Data Processing**
 - [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes
   motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
   for crystallography. Each workflow tracks the software used, parameters, and computational resources.
 
-### Data Products
+**Data Products**
 - [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file
   is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).
 
@@ -53,6 +53,30 @@ Within each study, you'll find:
   - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components
   - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy
   - [XRFImage](XRFImage.md): Elemental distribution maps
+
+**Logical Groupings**
+- [Studies](Study.md): Lightweight groupings representing focused investigations of specific
+  biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+  or "Structure of the human ribosome under different conditions."
+
+### Association Tables
+
+Many-to-many relationships are represented via explicit association tables, which can carry
+relationship metadata (e.g., the role of a sample in an experiment):
+
+- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)
+- **StudyExperimentAssociation**: Links experiments to studies
+- **StudyWorkflowAssociation**: Links workflows to studies
+- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
+- **WorkflowExperimentAssociation**: Links source experiments to workflows
+- **WorkflowInputAssociation**: Links input files to workflows
+- **WorkflowOutputAssociation**: Links output files to workflows
+
+This relational design enables:
+- **Sample reuse**: The same sample can be used in multiple studies and experiments
+- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
+- **Integrative workflows**: A workflow can combine data from multiple experiments
 
 ## Example Usage
 
@@ -72,6 +96,8 @@ A multimodal plant imaging study might combine:
 
 ## Key Features
 
+- **Relational design**: Flat entity tables with explicit association tables for M:N relationships
+- **SQL-friendly**: Maps directly to normalized database tables
 - **Technique-agnostic core**: The same schema handles data from any structural biology method
 - **Rich metadata**: Comprehensive tracking from sample to structure
 - **Workflow provenance**: Complete computational reproducibility
@@ -89,6 +115,8 @@ Name: lambda-ber-schema
 
 | Class | Description |
 | --- | --- |
+| [Any](Any.md) |  |
+| [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |
 | [AttributeGroup](AttributeGroup.md) | A grouping of related data attributes that form a logical unit |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BufferComposition](BufferComposition.md) | Buffer composition for sample storage |
@@ -112,11 +140,17 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CryoEMPreparation](CryoEMPreparation.md) | Cryo-EM specific sample preparation |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SAXSPreparation](SAXSPreparation.md) | SAXS/WAXS specific preparation |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[XRayPreparation](XRayPreparation.md) | X-ray crystallography specific preparation |
+| [AttributeValue](AttributeValue.md) | The value for any attribute of an entity |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[DateTimeValue](DateTimeValue.md) | A date or date and time value |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[QuantityValue](QuantityValue.md) | A simple quantity value, representing a measurement with a numeric value and ... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |
+| [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | M:N link between ExperimentRun and Instrument |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |
 | [NamedThing](NamedThing.md) | A named thing |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ConformationalEnsemble](ConformationalEnsemble.md) | Ensemble of conformational states for a protein |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[DataFile](DataFile.md) | A data file generated or used in the study |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dataset](Dataset.md) | A collection of studies |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dataset](Dataset.md) | Root container holding flat entity collections and association tables |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ExperimentRun](ExperimentRun.md) | An experimental data collection session |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Image](Image.md) | An image file from structural biology experiments |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |
@@ -144,8 +178,14 @@ Name: lambda-ber-schema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Sample](Sample.md) | A biological sample used in structural biology experiments |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Study](Study.md) | A logical grouping of related experiments investigating a research question |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |
+| [StudyExperimentAssociation](StudyExperimentAssociation.md) | M:N link between Study and ExperimentRun |
+| [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |
+| [StudyWorkflowAssociation](StudyWorkflowAssociation.md) | M:N link between Study and WorkflowRun |
+| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | M:N link between WorkflowRun and source ExperimentRuns |
+| [WorkflowInputAssociation](WorkflowInputAssociation.md) | Links input DataFiles to WorkflowRun |
+| [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | Links output DataFiles to WorkflowRun |
 
 
 
@@ -162,7 +202,6 @@ Name: lambda-ber-schema
 | [additives](additives.md) | Additional additives in the buffer |
 | [affinity_column](affinity_column.md) | Affinity column specifications |
 | [affinity_type](affinity_type.md) | Type of affinity chromatography |
-| [aggregated_protein_views](aggregated_protein_views.md) | Aggregated functional and structural annotations for proteins in this study |
 | [aggregation_assessment](aggregation_assessment.md) | Assessment of protein aggregation state |
 | [alignment_depth](alignment_depth.md) | Number of sequences in alignment |
 | [aliquoting](aliquoting.md) | How the protein was aliquoted for storage |
@@ -173,35 +212,36 @@ Name: lambda-ber-schema
 | [annotation_method](annotation_method.md) | Computational or experimental method used |
 | [anom_corr](anom_corr.md) | Anomalous correlation |
 | [anom_sig_ano](anom_sig_ano.md) | Anomalous signal strength |
-| [anomalous_completeness](anomalous_completeness.md) | Completeness of anomalous data as percentage |
+| [anomalous_completeness](anomalous_completeness.md) | Completeness of anomalous data as a percentage (0-100) |
 | [anomalous_multiplicity](anomalous_multiplicity.md) | Multiplicity of anomalous data |
 | [anomalous_used](anomalous_used.md) | Whether anomalous signal was used |
 | [antibiotic_selection](antibiotic_selection.md) | Antibiotic or selection agent used |
 | [apodization_function](apodization_function.md) | Mathematical function used for apodization |
-| [astigmatism](astigmatism.md) | Astigmatism value in Angstroms |
-| [astigmatism_angle](astigmatism_angle.md) | Astigmatism angle in degrees |
+| [astigmatism](astigmatism.md) | Astigmatism value, typically specified in Angstroms |
+| [astigmatism_angle](astigmatism_angle.md) | Astigmatism angle, typically specified in degrees |
 | [astigmatism_target](astigmatism_target.md) | Target astigmatism in Angstroms |
 | [atmosphere](atmosphere.md) | Storage atmosphere conditions |
 | [attenuator](attenuator.md) | Attenuator setting used |
+| [attribute](attribute.md) | The attribute being represented |
 | [autoloader_capacity](autoloader_capacity.md) | Number of grids the autoloader can hold |
 | [autoloader_slot](autoloader_slot.md) | Autoloader slot identifier |
 | [average_b_factor_a2](average_b_factor_a2.md) | Average B-factor in Angstroms squared |
 | [backbone_flexibility](backbone_flexibility.md) | B-factor or flexibility measure |
 | [background_correction](background_correction.md) | Method used for background correction |
-| [beam_center_x](beam_center_x.md) | Beam center X coordinate |
+| [beam_center_x](beam_center_x.md) | Beam center X coordinate, typically specified in pixels ([px]) |
 | [beam_center_x_px](beam_center_x_px.md) | Beam center X coordinate in pixels |
-| [beam_center_y](beam_center_y.md) | Beam center Y coordinate |
+| [beam_center_y](beam_center_y.md) | Beam center Y coordinate, typically specified in pixels ([px]) |
 | [beam_center_y_px](beam_center_y_px.md) | Beam center Y coordinate in pixels |
-| [beam_energy](beam_energy.md) | X-ray beam energy in keV |
+| [beam_energy](beam_energy.md) | X-ray beam energy, typically specified in kiloelectronvolts (keV) |
 | [beam_shift_x](beam_shift_x.md) | Beam shift X in microradians |
 | [beam_shift_y](beam_shift_y.md) | Beam shift Y in microradians |
-| [beam_size](beam_size.md) | X-ray beam size in micrometers |
+| [beam_size](beam_size.md) | X-ray beam size, typically specified in micrometers |
 | [beam_size_max](beam_size_max.md) | Maximum beam size in micrometers |
 | [beam_size_min](beam_size_min.md) | Minimum beam size in micrometers |
-| [beam_size_um](beam_size_um.md) | Beam size in micrometers |
+| [beam_size_um](beam_size_um.md) | Beam size, typically specified in micrometers |
 | [beamline](beamline.md) | Beamline identifier (e |
 | [beamline_id](beamline_id.md) | Beamline identifier at synchrotron/neutron facility |
-| [bfactor_dose_weighting](bfactor_dose_weighting.md) | B-factor for dose weighting |
+| [bfactor_dose_weighting](bfactor_dose_weighting.md) | B-factor for dose weighting, typically specified in Angstroms squared |
 | [binding_affinity](binding_affinity.md) | Binding affinity value |
 | [binding_affinity_type](binding_affinity_type.md) | Type of binding measurement (Kd, Ki, IC50) |
 | [binding_affinity_unit](binding_affinity_unit.md) | Unit of binding affinity |
@@ -212,7 +252,7 @@ Name: lambda-ber-schema
 | [biophysical_properties](biophysical_properties.md) | Measured or predicted biophysical properties |
 | [blot_force](blot_force.md) | Blotting force setting |
 | [blot_number](blot_number.md) | Number of blots applied |
-| [blot_time](blot_time.md) | Blotting time in seconds (range: 0 |
+| [blot_time](blot_time.md) | Blotting time, typically specified in seconds (range: 0 |
 | [blotter_height](blotter_height.md) | Blotter height setting |
 | [blotter_setting](blotter_setting.md) | Blotter setting value |
 | [box_size](box_size.md) | Particle box size in pixels |
@@ -224,10 +264,10 @@ Name: lambda-ber-schema
 | [camera_binning](camera_binning.md) | Camera binning factor |
 | [cc_anomalous](cc_anomalous.md) | Anomalous correlation coefficient |
 | [cc_half](cc_half.md) | Half-set correlation coefficient CC(1/2) |
-| [cell_path_length](cell_path_length.md) | Path length in mm |
+| [cell_path_length](cell_path_length.md) | Path length, typically specified in millimeters (mm) |
 | [cell_type](cell_type.md) | Cell type if applicable (e |
 | [chain_id](chain_id.md) | Chain identifier in the PDB structure |
-| [chamber_temperature](chamber_temperature.md) | Chamber temperature in Celsius |
+| [chamber_temperature](chamber_temperature.md) | Chamber temperature, typically specified in degrees Celsius |
 | [channel_name](channel_name.md) | Name of the fluorescence channel (e |
 | [characteristic_features](characteristic_features.md) | Key features of this conformation |
 | [checksum](checksum.md) | SHA-256 checksum for data integrity |
@@ -244,16 +284,15 @@ Name: lambda-ber-schema
 | [color_channels](color_channels.md) | Color channels present (e |
 | [coma](coma.md) | Coma aberration in nanometers |
 | [completed_at](completed_at.md) | Workflow completion time |
-| [completeness](completeness.md) | Data completeness percentage |
-| [completeness_high_res_shell_percent](completeness_high_res_shell_percent.md) | Completeness in highest resolution shell |
-| [completeness_percent](completeness_percent.md) | Data completeness percentage |
+| [completeness](completeness.md) | Data completeness, typically specified as a percentage (0-100) |
+| [completeness_high_res_shell_percent](completeness_high_res_shell_percent.md) | Completeness in highest resolution shell, typically specified as a percentage... |
+| [completeness_percent](completeness_percent.md) | Data completeness as a percentage (0-100) |
 | [complex_stability](complex_stability.md) | Stability assessment of the complex |
 | [components](components.md) | Buffer components and their concentrations |
 | [compute_resources](compute_resources.md) | Computational resources used |
-| [concentration](concentration.md) | Sample concentration in mg/mL or µM |
+| [concentration](concentration.md) | Sample concentration, typically specified in mg/mL or µM |
 | [concentration_method](concentration_method.md) | Method used to concentrate protein |
 | [concentration_series](concentration_series.md) | Concentration values for series measurements |
-| [concentration_unit](concentration_unit.md) | Unit of concentration measurement |
 | [confidence_score](confidence_score.md) | Confidence score for the annotation (range: 0-1) |
 | [conformational_ensemble](conformational_ensemble.md) | Conformational states and dynamics |
 | [conformational_state](conformational_state.md) | Conformational state descriptor |
@@ -265,12 +304,13 @@ Name: lambda-ber-schema
 | [construct_description](construct_description.md) | Human-readable description of the construct |
 | [construct_id](construct_id.md) | Unique identifier for this construct |
 | [contrast_method](contrast_method.md) | Contrast enhancement method used |
-| [cpu_hours](cpu_hours.md) | CPU hours used |
+| [control_system](control_system.md) | Low-level control system for device communication |
+| [cpu_hours](cpu_hours.md) | CPU hours used, measured in hours |
 | [creation_date](creation_date.md) | File creation date |
 | [cross_references](cross_references.md) | Database cross-references |
 | [cryo_protectant](cryo_protectant.md) | Cryoprotectant used for crystal cooling |
 | [cryoprotectant](cryoprotectant.md) | Cryoprotectant used |
-| [cryoprotectant_concentration](cryoprotectant_concentration.md) | Cryoprotectant concentration percentage |
+| [cryoprotectant_concentration](cryoprotectant_concentration.md) | Cryoprotectant concentration, typically specified as a percentage |
 | [crystal_cooling_capability](crystal_cooling_capability.md) | Crystal cooling system available |
 | [crystal_id](crystal_id.md) | Identifier for the specific crystal used |
 | [crystal_notes](crystal_notes.md) | Additional notes about crystal quality and handling |
@@ -279,45 +319,47 @@ Name: lambda-ber-schema
 | [crystallization_method](crystallization_method.md) | Method used for crystallization |
 | [cs](cs.md) | Spherical aberration (Cs) in millimeters |
 | [cs_corrector](cs_corrector.md) | Spherical aberration corrector present |
-| [cs_used_in_estimation](cs_used_in_estimation.md) | Spherical aberration (Cs) value used during CTF estimation (in millimeters); ... |
+| [cs_used_in_estimation](cs_used_in_estimation.md) | Spherical aberration (Cs) value used during CTF estimation, typically specifi... |
 | [ctf_estimation_params](ctf_estimation_params.md) | CTF estimation specific parameters |
 | [ctf_quality_score](ctf_quality_score.md) | CTF estimation quality score |
-| [culture_volume_l](culture_volume_l.md) | Culture volume in liters |
+| [culture_volume_l](culture_volume_l.md) | Culture volume, typically specified in liters (L) |
 | [current_status](current_status.md) | Current operational status |
+| [daq_system](daq_system.md) | Data acquisition system used for experiment orchestration |
 | [data_collection_strategy](data_collection_strategy.md) | Strategy for data collection |
-| [data_files](data_files.md) | Data files generated or used in this study |
+| [data_files](data_files.md) | All data files |
 | [data_type](data_type.md) | Type of data in the file |
 | [database_cross_references](database_cross_references.md) | Cross-references to external databases |
 | [database_id](database_id.md) | Identifier in the external database |
 | [database_name](database_name.md) | Name of the external database |
 | [database_url](database_url.md) | URL to the database entry |
+| [date_added](date_added.md) | Date when sample was added to study |
 | [definition](definition.md) | The formal definition or meaning of the ontology term |
-| [defocus](defocus.md) | Defocus value in micrometers |
+| [defocus](defocus.md) | Defocus value, typically specified in micrometers |
 | [defocus_range_increment](defocus_range_increment.md) | Defocus range increment in micrometers |
 | [defocus_range_max](defocus_range_max.md) | Maximum defocus range in micrometers |
 | [defocus_range_min](defocus_range_min.md) | Minimum defocus range in micrometers |
-| [defocus_search_max](defocus_search_max.md) | Maximum defocus search range in micrometers |
-| [defocus_search_min](defocus_search_min.md) | Minimum defocus search range in micrometers |
-| [defocus_step](defocus_step.md) | Defocus search step in micrometers |
+| [defocus_search_max](defocus_search_max.md) | Maximum defocus search range, typically specified in micrometers |
+| [defocus_search_min](defocus_search_min.md) | Minimum defocus search range, typically specified in micrometers |
+| [defocus_step](defocus_step.md) | Defocus search step, typically specified in micrometers |
 | [defocus_target](defocus_target.md) | Target defocus value in micrometers |
-| [defocus_u](defocus_u.md) | Defocus U in micrometers |
-| [defocus_v](defocus_v.md) | Defocus V in micrometers |
+| [defocus_u](defocus_u.md) | Defocus U, typically specified in micrometers |
+| [defocus_v](defocus_v.md) | Defocus V, typically specified in micrometers |
 | [delta_delta_g](delta_delta_g.md) | Change in folding free energy (kcal/mol) |
 | [deposited_to_pdb](deposited_to_pdb.md) | Whether structure was deposited to PDB |
 | [description](description.md) | A detailed textual description of this entity |
 | [detector_dimensions](detector_dimensions.md) | Detector dimensions in pixels (e |
-| [detector_distance](detector_distance.md) | Distance from sample to detector |
+| [detector_distance](detector_distance.md) | Distance from sample to detector, typically specified in millimeters (mm) |
 | [detector_distance_max](detector_distance_max.md) | Maximum detector distance in mm |
 | [detector_distance_min](detector_distance_min.md) | Minimum detector distance in mm |
-| [detector_distance_mm](detector_distance_mm.md) | Detector distance in millimeters |
+| [detector_distance_mm](detector_distance_mm.md) | Detector distance, typically specified in millimeters |
 | [detector_manufacturer](detector_manufacturer.md) | Detector manufacturer (e |
 | [detector_mode](detector_mode.md) | Supported or default detector operating mode |
 | [detector_model](detector_model.md) | Detector model (e |
 | [detector_position](detector_position.md) | Physical position of detector in microscope (e |
 | [detector_technology](detector_technology.md) | Generic detector technology type |
-| [dimensions_x](dimensions_x.md) | Image width in pixels |
-| [dimensions_y](dimensions_y.md) | Image height in pixels |
-| [dimensions_z](dimensions_z.md) | Image depth in pixels/slices |
+| [dimensions_x](dimensions_x.md) | Image width, typically specified in pixels |
+| [dimensions_y](dimensions_y.md) | Image height, typically specified in pixels |
+| [dimensions_z](dimensions_z.md) | Image depth, typically specified in pixels or slices |
 | [disease_association](disease_association.md) | Associated disease or phenotype |
 | [disorder_probability](disorder_probability.md) | Probability of disorder (range: 0-1) |
 | [dissociation_constant](dissociation_constant.md) | Experimental Kd if available |
@@ -327,20 +369,20 @@ Name: lambda-ber-schema
 | [dose_per_frame](dose_per_frame.md) | Electron dose per frame in e-/Angstrom^2 |
 | [dose_rate](dose_rate.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s |
 | [dose_weighting](dose_weighting.md) | Whether dose weighting was applied |
-| [drift_total](drift_total.md) | Total drift in Angstroms |
+| [drift_total](drift_total.md) | Total drift, typically specified in Angstroms |
 | [drop_ratio_protein_to_reservoir](drop_ratio_protein_to_reservoir.md) | Ratio of protein to reservoir solution in drop (e |
-| [drop_volume](drop_volume.md) | Total drop volume in nanoliters |
-| [drop_volume_nl](drop_volume_nl.md) | Total drop volume in nanoliters |
+| [drop_volume](drop_volume.md) | Total drop volume, typically specified in nanoliters |
+| [drop_volume_nl](drop_volume_nl.md) | Total drop volume, typically specified in nanoliters |
 | [druggability_score](druggability_score.md) | Druggability score of the binding site (range: 0-1) |
 | [duration](duration.md) | Storage duration |
-| [dwell_time](dwell_time.md) | Dwell time per pixel in milliseconds |
+| [dwell_time](dwell_time.md) | Dwell time per pixel, typically specified in milliseconds |
 | [ec_number](ec_number.md) | Enzyme Commission number for catalytic sites |
 | [effect_on_function](effect_on_function.md) | Effect on protein function |
 | [effect_on_stability](effect_on_stability.md) | Effect on protein stability |
 | [elements_measured](elements_measured.md) | Elements detected and measured |
 | [elution_buffer](elution_buffer.md) | Buffer composition for elution |
 | [emission_filter](emission_filter.md) | Specifications of the emission filter |
-| [emission_wavelength](emission_wavelength.md) | Emission wavelength in nanometers |
+| [emission_wavelength](emission_wavelength.md) | Emission wavelength, typically specified in nanometers |
 | [end_time](end_time.md) | Data collection end timestamp |
 | [energy_filter_make](energy_filter_make.md) | Energy filter manufacturer |
 | [energy_filter_model](energy_filter_model.md) | Energy filter model |
@@ -351,24 +393,28 @@ Name: lambda-ber-schema
 | [energy_min](energy_min.md) | Minimum X-ray energy in keV |
 | [enzyme](enzyme.md) | Enzyme responsible for modification |
 | [error](error.md) | Experimental error or uncertainty |
-| [ethane_temperature](ethane_temperature.md) | Ethane temperature in Celsius |
+| [ethane_temperature](ethane_temperature.md) | Ethane temperature, typically specified in degrees Celsius |
 | [evidence_code](evidence_code.md) | Evidence and Conclusion Ontology (ECO) code |
 | [evidence_type](evidence_type.md) | Type of evidence supporting this annotation |
 | [evolutionary_conservation](evolutionary_conservation.md) | Evolutionary conservation data |
 | [excitation_filter](excitation_filter.md) | Specifications of the excitation filter |
-| [excitation_wavelength](excitation_wavelength.md) | Excitation wavelength in nanometers |
+| [excitation_wavelength](excitation_wavelength.md) | Excitation wavelength, typically specified in nanometers |
 | [experiment_code](experiment_code.md) | Human-friendly laboratory or facility identifier for the experiment (e |
 | [experiment_date](experiment_date.md) | Date of the experiment |
-| [experiment_id](experiment_id.md) | Reference to the source experiment |
+| [experiment_id](experiment_id.md) | Reference to the experiment run |
+| [experiment_instrument_associations](experiment_instrument_associations.md) | Links between experiments and instruments (M:N) |
+| [experiment_runs](experiment_runs.md) | All experiment runs (data collection sessions) |
+| [experiment_sample_associations](experiment_sample_associations.md) | Links between experiments and samples (M:N with role) |
 | [experimental_conditions](experimental_conditions.md) | Environmental and experimental conditions |
 | [experimental_method](experimental_method.md) | Specific experimental method for structure determination (particularly for di... |
-| [exposure_time](exposure_time.md) | Exposure time per image in seconds |
+| [exposure_time](exposure_time.md) | Exposure time per image, typically specified in seconds (s) |
 | [exposure_time_per_frame](exposure_time_per_frame.md) | Exposure time per frame in milliseconds |
 | [expression_system](expression_system.md) | Expression system used |
 | [facility_name](facility_name.md) | Name of the research facility where the instrument is located |
 | [facility_ror](facility_ror.md) | Research Organization Registry (ROR) identifier for the facility |
 | [feature_type](feature_type.md) | Type of structural feature |
 | [file_format](file_format.md) | File format |
+| [file_id](file_id.md) | Reference to the input data file |
 | [file_name](file_name.md) | Name of the file |
 | [file_path](file_path.md) | Path to the file |
 | [file_role](file_role.md) | Role of the file (raw, intermediate, final, diagnostic, metadata) |
@@ -377,12 +423,12 @@ Name: lambda-ber-schema
 | [final_concentration_mg_per_ml](final_concentration_mg_per_ml.md) | Final protein concentration in mg/mL |
 | [flash_cooling_method](flash_cooling_method.md) | Flash cooling protocol |
 | [fluorophore](fluorophore.md) | Name or type of fluorophore used |
-| [flux](flux.md) | Photon flux at sample position in photons/second |
+| [flux](flux.md) | Photon flux at sample position, typically specified in photons per second |
 | [flux_density](flux_density.md) | Photon flux density in photons/s/mm² |
-| [flux_end](flux_end.md) | Photon flux at end of data collection in photons/second |
-| [flux_photons_per_s](flux_photons_per_s.md) | Photon flux in photons per second |
+| [flux_end](flux_end.md) | Photon flux at end of data collection, typically specified in photons per sec... |
+| [flux_photons_per_s](flux_photons_per_s.md) | Photon flux, typically specified in photons per second |
 | [frame_grouping](frame_grouping.md) | Number of frames grouped together |
-| [frame_rate](frame_rate.md) | Frames per second |
+| [frame_rate](frame_rate.md) | Frame rate, typically specified in frames per second |
 | [frames](frames.md) | Number of frames in the movie |
 | [frames_per_movie](frames_per_movie.md) | Number of frames per movie |
 | [free_energy](free_energy.md) | Relative free energy (kcal/mol) |
@@ -396,54 +442,54 @@ Name: lambda-ber-schema
 | [gene_synthesis_provider](gene_synthesis_provider.md) | Company or facility that synthesized the gene |
 | [glow_discharge_applied](glow_discharge_applied.md) | Whether glow discharge treatment was applied |
 | [glow_discharge_atmosphere](glow_discharge_atmosphere.md) | Glow discharge atmosphere (air, amylamine) |
-| [glow_discharge_current](glow_discharge_current.md) | Glow discharge current in milliamperes |
-| [glow_discharge_pressure](glow_discharge_pressure.md) | Glow discharge pressure in millibar |
-| [glow_discharge_time](glow_discharge_time.md) | Glow discharge time in seconds |
+| [glow_discharge_current](glow_discharge_current.md) | Glow discharge current, typically specified in milliamperes |
+| [glow_discharge_pressure](glow_discharge_pressure.md) | Glow discharge pressure, typically specified in millibars |
+| [glow_discharge_time](glow_discharge_time.md) | Glow discharge time, typically specified in seconds |
 | [go_terms](go_terms.md) | Associated Gene Ontology terms |
 | [gold_standard](gold_standard.md) | Whether gold-standard refinement was used |
 | [goniometer_type](goniometer_type.md) | Type of goniometer |
-| [gpu_hours](gpu_hours.md) | GPU hours used |
+| [gpu_hours](gpu_hours.md) | GPU hours used, measured in hours |
 | [grid_material](grid_material.md) | Grid material |
 | [grid_square_id](grid_square_id.md) | Grid square identifier |
 | [grid_type](grid_type.md) | Type of EM grid used |
-| [growth_temperature_c](growth_temperature_c.md) | Growth temperature in Celsius |
+| [growth_temperature_c](growth_temperature_c.md) | Growth temperature, typically specified in degrees Celsius |
 | [gunlens](gunlens.md) | Gun lens setting |
 | [harvest_timepoint](harvest_timepoint.md) | Time point when cells were harvested |
 | [hic_column](hic_column.md) | Hydrophobic interaction column used |
 | [hole_id](hole_id.md) | Hole identifier within grid square |
-| [hole_size](hole_size.md) | Hole size in micrometers (range: 0 |
+| [hole_size](hole_size.md) | Hole size, typically specified in micrometers (range: 0 |
 | [holes_per_group](holes_per_group.md) | Number of holes per group |
 | [host_strain_or_cell_line](host_strain_or_cell_line.md) | Specific strain or cell line used (e |
-| [humidity](humidity.md) | Humidity percentage |
-| [humidity_percentage](humidity_percentage.md) | Chamber humidity during vitrification (range: 0-100) |
+| [humidity](humidity.md) | Humidity, typically specified as a percentage (0-100) |
+| [humidity_percentage](humidity_percentage.md) | Chamber humidity during vitrification (range: 0-100), typically specified as ... |
 | [i_over_sigma](i_over_sigma.md) | Mean I/sigma(I) - signal to noise ratio |
 | [i_zero](i_zero.md) | Forward scattering intensity I(0) |
-| [ice_thickness_estimate](ice_thickness_estimate.md) | Estimated ice thickness in nanometers |
+| [ice_thickness_estimate](ice_thickness_estimate.md) | Estimated ice thickness, typically specified in nanometers |
 | [id](id.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... |
 | [iex_column](iex_column.md) | Ion-exchange column used |
 | [illumination_type](illumination_type.md) | Type of illumination (brightfield, darkfield, phase contrast, DIC) |
-| [images](images.md) | Images acquired or generated in this study |
+| [images](images.md) | All images |
 | [imaging_mode](imaging_mode.md) | Imaging mode for electron microscopy |
 | [indexer_module](indexer_module.md) | Indexing module used (e |
 | [inducer_concentration](inducer_concentration.md) | Concentration of induction agent |
 | [induction_agent](induction_agent.md) | Agent used to induce expression (e |
-| [induction_temperature_c](induction_temperature_c.md) | Temperature during induction in Celsius |
-| [induction_time_h](induction_time_h.md) | Duration of induction in hours |
+| [induction_temperature_c](induction_temperature_c.md) | Temperature during induction, typically specified in degrees Celsius |
+| [induction_time_h](induction_time_h.md) | Duration of induction, typically specified in hours |
 | [initial_hit_condition](initial_hit_condition.md) | Description of initial crystallization hit condition |
+| [input_type](input_type.md) | Type of input for the workflow |
 | [insert_boundaries](insert_boundaries.md) | Start and end positions of insert in vector |
 | [installation_date](installation_date.md) | Date of instrument installation |
 | [instrument_category](instrument_category.md) | Category distinguishing beamlines from laboratory equipment |
 | [instrument_code](instrument_code.md) | Human-friendly facility or laboratory identifier for the instrument (e |
-| [instrument_id](instrument_id.md) | Reference to the instrument used |
-| [instrument_runs](instrument_runs.md) | Experimental data collection runs performed in this study |
-| [instruments](instruments.md) | Instruments used across all studies in this dataset |
+| [instrument_id](instrument_id.md) | Reference to the instrument |
+| [instruments](instruments.md) | All instruments used across studies |
 | [integrator_module](integrator_module.md) | Integration module used |
 | [interaction_distance](interaction_distance.md) | Distance criteria for interaction (Angstroms) |
 | [interaction_evidence](interaction_evidence.md) | Evidence for this interaction |
 | [interaction_type](interaction_type.md) | Type of interaction |
 | [interface_area](interface_area.md) | Buried surface area at interface (Ų) |
 | [interface_residues](interface_residues.md) | Residues at the interaction interface |
-| [ionic_strength](ionic_strength.md) | Ionic strength in molar of material in solution |
+| [ionic_strength](ionic_strength.md) | Ionic strength, typically specified in molar (mol/L) |
 | [is_cofactor](is_cofactor.md) | Whether the ligand is a cofactor |
 | [is_drug_like](is_drug_like.md) | Whether the ligand has drug-like properties |
 | [ispyb_auto_proc_program_id](ispyb_auto_proc_program_id.md) | ISPyB AutoProcProgram |
@@ -452,7 +498,7 @@ Name: lambda-ber-schema
 | [ispyb_session_id](ispyb_session_id.md) | ISPyB BLSession |
 | [keywords](keywords.md) | Keywords or tags describing the dataset for search and categorization |
 | [label](label.md) | The human-readable label or name of the ontology term |
-| [laser_power](laser_power.md) | Laser power in milliwatts or percentage |
+| [laser_power](laser_power.md) | Laser power, typically specified in milliwatts |
 | [last_updated](last_updated.md) | Date of last update |
 | [ligand](ligand.md) | Ligand or small molecule bound to sample |
 | [ligand_id](ligand_id.md) | Ligand identifier (ChEMBL, ChEBI, PubChem) |
@@ -461,35 +507,40 @@ Name: lambda-ber-schema
 | [ligand_smiles](ligand_smiles.md) | SMILES representation of the ligand |
 | [ligands](ligands.md) | Bound ligands or cofactors |
 | [ligands_cofactors](ligands_cofactors.md) | Ligands or cofactors modeled in the structure |
-| [loop_size](loop_size.md) | Loop size in micrometers |
+| [lims_system](lims_system.md) | Laboratory Information Management System used at this beamline |
+| [loop_size](loop_size.md) | Loop size, typically specified in micrometers |
 | [lysis_buffer](lysis_buffer.md) | Buffer composition for lysis |
 | [lysis_method](lysis_method.md) | Method used for cell lysis |
 | [magnification](magnification.md) | Magnification used during data collection |
 | [mail_in_service](mail_in_service.md) | Whether mail-in sample service is available |
 | [manufacturer](manufacturer.md) | Instrument manufacturer |
-| [map_sharpening_bfactor](map_sharpening_bfactor.md) | B-factor used for map sharpening in Angstroms^2 |
+| [map_sharpening_bfactor](map_sharpening_bfactor.md) | B-factor used for map sharpening, typically specified in Angstroms squared (Å... |
 | [mass_shift](mass_shift.md) | Mass change due to modification (Da) |
+| [maximum_numeric_value](maximum_numeric_value.md) | The maximum value part, expressed as a number, of the quantity value when the... |
 | [mean_i_over_sigma_i](mean_i_over_sigma_i.md) | Mean I/sigma(I) |
 | [measurement_conditions](measurement_conditions.md) | Conditions under which measurement was made |
 | [medium](medium.md) | Growth medium used |
-| [memory_gb](memory_gb.md) | Maximum memory used in GB |
+| [memory_gb](memory_gb.md) | Maximum memory used, typically specified in gigabytes (GB) |
 | [method](method.md) | Crystallization method used |
 | [microscope_software](microscope_software.md) | Microscope control software (e |
 | [microscope_software_version](microscope_software_version.md) | Software version |
+| [minimum_numeric_value](minimum_numeric_value.md) | The minimum value part, expressed as a number, of the quantity value when the... |
 | [model](model.md) | Instrument model |
-| [model_file](model_file.md) | Path to deep learning model file if used |
+| [model_file_path](model_file_path.md) | Path to deep learning model file if using a local or custom trained model fil... |
+| [model_name](model_name.md) | Name or identifier of the deep learning model (e |
+| [model_source](model_source.md) | Source or software associated with the model (e |
 | [modification_group](modification_group.md) | Chemical group added (e |
 | [modification_type](modification_type.md) | Type of PTM |
 | [modifications](modifications.md) | Post-translational modifications or chemical modifications |
 | [modified_residue](modified_residue.md) | Residue that is modified |
 | [molecular_composition](molecular_composition.md) | Description of molecular composition including sequences, modifications, liga... |
 | [molecular_signatures](molecular_signatures.md) | Identified molecular signatures or peaks |
-| [molecular_weight](molecular_weight.md) | Molecular weight in kDa |
+| [molecular_weight](molecular_weight.md) | Molecular weight, typically specified in kilodaltons (kDa) |
 | [molprobity_score](molprobity_score.md) | Overall MolProbity score |
 | [monochromator_type](monochromator_type.md) | Type of monochromator |
 | [motion_correction_params](motion_correction_params.md) | Motion correction specific parameters |
 | [mounting_method](mounting_method.md) | Crystal mounting method |
-| [mounting_temperature](mounting_temperature.md) | Temperature during mounting in Kelvin |
+| [mounting_temperature](mounting_temperature.md) | Temperature during mounting, typically specified in Kelvin |
 | [multiplicity](multiplicity.md) | Data multiplicity (redundancy) |
 | [mutation](mutation.md) | Mutation in standard notation (e |
 | [mutation_effects](mutation_effects.md) | Effects of mutations present in the sample |
@@ -500,10 +551,11 @@ Name: lambda-ber-schema
 | [ncbi_taxid](ncbi_taxid.md) | NCBI Taxonomy ID for source organism |
 | [ncc_score](ncc_score.md) | Normalized cross-correlation score threshold |
 | [ncs_used](ncs_used.md) | Whether Non-Crystallographic Symmetry restraints were used |
-| [nominal_defocus](nominal_defocus.md) | Nominal defocus value in micrometers |
+| [nominal_defocus](nominal_defocus.md) | Nominal defocus value, typically specified in micrometers |
 | [number_of_images](number_of_images.md) | Total number of diffraction images collected |
 | [number_of_scans](number_of_scans.md) | Number of scans averaged for the spectrum |
 | [number_of_waters](number_of_waters.md) | Number of water molecules modeled |
+| [numeric_value](numeric_value.md) | The numerical part of a quantity value, expressed as a number |
 | [numerical_aperture](numerical_aperture.md) | Numerical aperture of the objective lens |
 | [objective_aperture](objective_aperture.md) | Objective aperture size in micrometers |
 | [od600_at_induction](od600_at_induction.md) | Optical density at 600nm when induction was started |
@@ -515,11 +567,12 @@ Name: lambda-ber-schema
 | [organism](organism.md) | Source organism for the sample (e |
 | [organism_id](organism_id.md) | NCBI taxonomy ID |
 | [origin_movie_id](origin_movie_id.md) | Reference to original movie file |
-| [oscillation_angle](oscillation_angle.md) | Oscillation angle per image |
-| [oscillation_per_image_deg](oscillation_per_image_deg.md) | Oscillation angle per image in degrees |
+| [oscillation_angle](oscillation_angle.md) | Oscillation angle per image, typically specified in degrees |
+| [oscillation_per_image_deg](oscillation_per_image_deg.md) | Oscillation angle per image, typically specified in degrees |
 | [outlier_rejection_method](outlier_rejection_method.md) | Method for rejecting outlier reflections |
 | [output_binning](output_binning.md) | Output binning factor |
 | [output_files](output_files.md) | Output files generated |
+| [output_type](output_type.md) | Type of output from the workflow |
 | [parameters_file_path](parameters_file_path.md) | Path to parameters file or text of key parameters |
 | [parent_sample_id](parent_sample_id.md) | Reference to parent sample for derivation tracking |
 | [particle_picking_params](particle_picking_params.md) | Particle picking specific parameters |
@@ -535,21 +588,22 @@ Name: lambda-ber-schema
 | [phase_plate_type](phase_plate_type.md) | Type of phase plate if present |
 | [phasing_method](phasing_method.md) | Phasing method used for X-ray crystallography structure determination |
 | [picking_method](picking_method.md) | Method used (manual, template_matching, deep_learning, LoG, Topaz, other) |
-| [pinhole_size](pinhole_size.md) | Pinhole size in Airy units for confocal microscopy |
-| [pixel_size](pixel_size.md) | Pixel size in Angstroms |
-| [pixel_size_calibrated](pixel_size_calibrated.md) | Calibrated pixel size for this experiment |
+| [pinhole_size](pinhole_size.md) | Pinhole size, typically specified in Airy units for confocal microscopy |
+| [pixel_size](pixel_size.md) | Pixel size, typically specified in Angstroms |
+| [pixel_size_calibrated](pixel_size_calibrated.md) | Calibrated pixel size for this experiment, typically specified in Angstroms (... |
 | [pixel_size_physical](pixel_size_physical.md) | Physical pixel size in micrometers |
 | [pixel_size_physical_um](pixel_size_physical_um.md) | Physical pixel size of the detector in micrometers |
-| [pixel_size_unbinned](pixel_size_unbinned.md) | Unbinned pixel size in Angstroms per pixel |
-| [pixel_size_x](pixel_size_x.md) | Pixel size X dimension |
-| [pixel_size_y](pixel_size_y.md) | Pixel size Y dimension |
+| [pixel_size_unbinned](pixel_size_unbinned.md) | Unbinned pixel size, typically specified in Angstroms per pixel |
+| [pixel_size_x](pixel_size_x.md) | Pixel size X dimension, typically specified in micrometers (µm) |
+| [pixel_size_y](pixel_size_y.md) | Pixel size Y dimension, typically specified in micrometers (µm) |
 | [plasma_treatment](plasma_treatment.md) | Plasma treatment details |
 | [population](population.md) | Relative population of this state (range: 0-1) |
 | [power_score](power_score.md) | Power score threshold |
 | [preparation_date](preparation_date.md) | Date of sample preparation |
+| [preparation_id](preparation_id.md) | Specific preparation used for this sample in this experiment |
 | [preparation_method](preparation_method.md) | Method used to prepare the sample |
 | [preparation_type](preparation_type.md) | Type of sample preparation |
-| [pressure](pressure.md) | Pressure in kPa |
+| [pressure](pressure.md) | Pressure, typically specified in kilopascals (kPa) |
 | [principal_motions](principal_motions.md) | Description of principal motions |
 | [processing_level](processing_level.md) | Processing level (0=raw, 1=corrected, 2=derived, 3=model) |
 | [processing_notes](processing_notes.md) | Additional notes about processing |
@@ -563,7 +617,7 @@ Name: lambda-ber-schema
 | [protein_buffer](protein_buffer.md) | Buffer composition for protein solution |
 | [protein_concentration](protein_concentration.md) | Protein concentration for crystallization in mg/mL |
 | [protein_concentration_mg_per_ml](protein_concentration_mg_per_ml.md) | Protein concentration for crystallization in mg/mL |
-| [protein_constructs](protein_constructs.md) | Protein constructs and cloning information |
+| [protein_constructs](protein_constructs.md) | All protein constructs |
 | [protein_id](protein_id.md) | UniProt accession number |
 | [protein_interactions](protein_interactions.md) | Protein-protein interaction annotations |
 | [protein_name](protein_name.md) | Name of the protein |
@@ -573,7 +627,7 @@ Name: lambda-ber-schema
 | [publication_ids](publication_ids.md) | IDs of one or more publications supporting this annotation |
 | [purification_steps](purification_steps.md) | Ordered list of purification steps performed |
 | [purity_by_sds_page_percent](purity_by_sds_page_percent.md) | Purity percentage by SDS-PAGE |
-| [purity_percentage](purity_percentage.md) | Sample purity as percentage (range: 0-100) |
+| [purity_percentage](purity_percentage.md) | Sample purity, typically specified as a percentage (range: 0-100) |
 | [q_range_max](q_range_max.md) | Maximum q value in inverse Angstroms |
 | [q_range_min](q_range_min.md) | Minimum q value in inverse Angstroms |
 | [quality_metrics](quality_metrics.md) | Quality control metrics for the sample |
@@ -584,48 +638,50 @@ Name: lambda-ber-schema
 | [r_merge](r_merge.md) | Rmerge - merge R-factor |
 | [r_pim](r_pim.md) | Rpim - precision-indicating merging R-factor |
 | [r_work](r_work.md) | Refinement R-factor (working set) |
-| [ramachandran_favored](ramachandran_favored.md) | Percentage of residues in favored Ramachandran regions |
+| [ramachandran_favored](ramachandran_favored.md) | Percentage of residues in favored Ramachandran regions (0-100) |
 | [ramachandran_favored_percent](ramachandran_favored_percent.md) | Percentage of residues in favored Ramachandran regions |
-| [ramachandran_outliers](ramachandran_outliers.md) | Percentage of Ramachandran outliers |
+| [ramachandran_outliers](ramachandran_outliers.md) | Percentage of Ramachandran outliers (0-100) |
 | [ramachandran_outliers_percent](ramachandran_outliers_percent.md) | Percentage of Ramachandran outliers |
 | [raw_data_location](raw_data_location.md) | Location of raw data files |
+| [raw_value](raw_value.md) | The value that was specified in raw form, i |
 | [reconstruction_method](reconstruction_method.md) | Method used for 3D reconstruction |
 | [refinement_params](refinement_params.md) | 3D refinement specific parameters |
 | [refinement_resolution_a](refinement_resolution_a.md) | Resolution cutoff used for refinement in Angstroms |
 | [regulatory_role](regulatory_role.md) | Role in regulation |
 | [related_entity](related_entity.md) | ID of the entity that owns this file |
 | [removal_enzyme](removal_enzyme.md) | Enzyme that removes modification |
-| [reservoir_volume_ul](reservoir_volume_ul.md) | Reservoir volume in microliters |
+| [reservoir_volume_ul](reservoir_volume_ul.md) | Reservoir volume, typically specified in microliters |
 | [residue_range](residue_range.md) | Range of residues (e |
 | [residues](residues.md) | List of residues forming the functional site |
-| [resolution](resolution.md) | Resolution at edge of detector in Angstroms |
+| [resolution](resolution.md) | Resolution at edge of detector, typically specified in Angstroms (Å) |
 | [resolution_0_143](resolution_0_143.md) | Resolution at FSC=0 |
 | [resolution_0_5](resolution_0_5.md) | Resolution at FSC=0 |
 | [resolution_angstrom](resolution_angstrom.md) | Resolution values in Angstroms |
-| [resolution_at_corner](resolution_at_corner.md) | Resolution at corner of detector in Angstroms |
-| [resolution_fit_limit](resolution_fit_limit.md) | Resolution fit limit in Angstroms |
-| [resolution_high](resolution_high.md) | High resolution limit |
-| [resolution_high_shell_a](resolution_high_shell_a.md) | High resolution shell limit in Angstroms |
-| [resolution_low](resolution_low.md) | Low resolution limit |
-| [resolution_low_a](resolution_low_a.md) | Low resolution limit in Angstroms |
+| [resolution_at_corner](resolution_at_corner.md) | Resolution at corner of detector, typically specified in Angstroms (Å) |
+| [resolution_fit_limit](resolution_fit_limit.md) | Resolution fit limit, typically specified in Angstroms |
+| [resolution_high](resolution_high.md) | High resolution limit, typically specified in Angstroms (Å) |
+| [resolution_high_shell_a](resolution_high_shell_a.md) | High resolution shell limit, typically specified in Angstroms |
+| [resolution_low](resolution_low.md) | Low resolution limit, typically specified in Angstroms (Å) |
+| [resolution_low_a](resolution_low_a.md) | Low resolution limit, typically specified in Angstroms |
 | [restraints_other](restraints_other.md) | Other restraints applied during refinement |
 | [rfree](rfree.md) | R-free (test set) |
-| [rg](rg.md) | Radius of gyration in Angstroms |
+| [rg](rg.md) | Radius of gyration, typically specified in Angstroms |
 | [rmerge](rmerge.md) | Rmerge - merge R-factor |
-| [rmsd_angles](rmsd_angles.md) | RMSD from ideal bond angles |
-| [rmsd_bonds](rmsd_bonds.md) | RMSD from ideal bond lengths |
+| [rmsd_angles](rmsd_angles.md) | RMSD from ideal bond angles, typically specified in degrees |
+| [rmsd_bonds](rmsd_bonds.md) | RMSD from ideal bond lengths, typically specified in Angstroms (Å) |
 | [rmsd_from_reference](rmsd_from_reference.md) | RMSD from reference structure |
 | [rmsd_threshold](rmsd_threshold.md) | RMSD threshold for clustering (Angstroms) |
+| [role](role.md) | Role of sample in study (e |
 | [rpim](rpim.md) | Rpim - precision-indicating merging R-factor |
 | [rwork](rwork.md) | Refinement R-factor (working set) |
-| [sample_applied_volume](sample_applied_volume.md) | Volume of sample applied in microliters |
+| [sample_applied_volume](sample_applied_volume.md) | Volume of sample applied, typically specified in microliters |
 | [sample_cell_type](sample_cell_type.md) | Type of sample cell used |
 | [sample_changer_capacity](sample_changer_capacity.md) | Number of samples in automatic sample changer |
 | [sample_code](sample_code.md) | Human-friendly laboratory identifier or facility code for the sample (e |
 | [sample_id](sample_id.md) | Reference to the sample being prepared |
-| [sample_preparations](sample_preparations.md) | Sample preparation procedures performed in this study |
+| [sample_preparations](sample_preparations.md) | All sample preparations |
 | [sample_type](sample_type.md) | Type of biological sample |
-| [samples](samples.md) | Experimental samples used in this study, including biological samples  |
+| [samples](samples.md) | All samples across all studies |
 | [scaler_module](scaler_module.md) | Scaling module used (e |
 | [screen_name](screen_name.md) | Name of crystallization screen used |
 | [search_model_pdb_id](search_model_pdb_id.md) | PDB ID of search model for molecular replacement |
@@ -646,8 +702,8 @@ Name: lambda-ber-schema
 | [signal_to_noise](signal_to_noise.md) | Signal to noise ratio |
 | [site_name](site_name.md) | Common name for this site |
 | [site_type](site_type.md) | Type of functional site |
-| [slit_gap_horizontal](slit_gap_horizontal.md) | Horizontal slit gap aperture in micrometers |
-| [slit_gap_vertical](slit_gap_vertical.md) | Vertical slit gap aperture in micrometers |
+| [slit_gap_horizontal](slit_gap_horizontal.md) | Horizontal slit gap aperture, typically specified in micrometers (µm) |
+| [slit_gap_vertical](slit_gap_vertical.md) | Vertical slit gap aperture, typically specified in micrometers (µm) |
 | [soak_compound](soak_compound.md) | Compound used for soaking (ligand, heavy atom) |
 | [soak_conditions](soak_conditions.md) | Conditions for crystal soaking |
 | [software_name](software_name.md) | Software used for processing |
@@ -656,25 +712,29 @@ Name: lambda-ber-schema
 | [source_database](source_database.md) | Source database or resource that provided this annotation |
 | [source_type](source_type.md) | Type of X-ray source |
 | [space_group](space_group.md) | Crystallographic space group |
-| [spectral_resolution](spectral_resolution.md) | Spectral resolution in cm⁻¹ |
+| [spectral_resolution](spectral_resolution.md) | Spectral resolution, typically specified in inverse centimeters (cm⁻¹) |
 | [split_strategy](split_strategy.md) | Strategy for data splitting |
 | [spotsize](spotsize.md) | Electron beam spot size setting |
-| [stage_position_x](stage_position_x.md) | Stage X position in micrometers |
-| [stage_position_y](stage_position_y.md) | Stage Y position in micrometers |
-| [stage_position_z](stage_position_z.md) | Stage Z position in micrometers |
+| [stage_position_x](stage_position_x.md) | Stage X position, typically specified in micrometers |
+| [stage_position_y](stage_position_y.md) | Stage Y position, typically specified in micrometers |
+| [stage_position_z](stage_position_z.md) | Stage Z position, typically specified in micrometers |
 | [stage_tilt](stage_tilt.md) | Stage tilt angle in degrees |
-| [start_angle](start_angle.md) | Starting rotation angle |
+| [start_angle](start_angle.md) | Starting rotation angle, typically specified in degrees |
 | [start_time](start_time.md) | Data collection start timestamp |
 | [started_at](started_at.md) | Workflow start time |
 | [state_id](state_id.md) | Identifier for this state |
 | [state_name](state_name.md) | Descriptive name (e |
 | [storage_conditions](storage_conditions.md) | Storage conditions for the sample |
-| [storage_gb](storage_gb.md) | Storage used in GB |
+| [storage_gb](storage_gb.md) | Storage used, typically specified in gigabytes (GB) |
 | [storage_uri](storage_uri.md) | Storage URI (S3, Globus, etc |
 | [strategy_notes](strategy_notes.md) | Notes about data collection strategy |
 | [structural_features](structural_features.md) | Structural feature annotations |
 | [structural_motif](structural_motif.md) | Known structural motif |
-| [studies](studies.md) | Individual research studies contained in this dataset |
+| [studies](studies.md) | All studies in this dataset |
+| [study_experiment_associations](study_experiment_associations.md) | Links between studies and experiments (M:N) |
+| [study_id](study_id.md) | Reference to the study |
+| [study_sample_associations](study_sample_associations.md) | Links between studies and samples (M:N) |
+| [study_workflow_associations](study_workflow_associations.md) | Links between studies and workflows (M:N) |
 | [super_resolution](super_resolution.md) | Whether super-resolution mode was used |
 | [support_film](support_film.md) | Support film type |
 | [symmetry](symmetry.md) | Symmetry applied (C1, Cn, Dn, T, O, I) |
@@ -687,12 +747,11 @@ Name: lambda-ber-schema
 | [technique](technique.md) | Technique used for data collection |
 | [techniques_supported](techniques_supported.md) | Experimental techniques available at this beamline |
 | [tem_beam_diameter](tem_beam_diameter.md) | TEM beam diameter in micrometers |
-| [temperature](temperature.md) | Storage temperature in Celsius |
-| [temperature_c](temperature_c.md) | Crystallization temperature in Celsius |
+| [temperature](temperature.md) | Storage temperature, typically specified in degrees Celsius |
+| [temperature_c](temperature_c.md) | Crystallization temperature, typically specified in degrees Celsius |
 | [temperature_control](temperature_control.md) | Temperature control settings |
 | [temperature_control_range](temperature_control_range.md) | Temperature control range in Celsius |
-| [temperature_k](temperature_k.md) | Data collection temperature in Kelvin |
-| [temperature_unit](temperature_unit.md) | Temperature unit |
+| [temperature_k](temperature_k.md) | Data collection temperature, typically specified in Kelvin |
 | [terms](terms.md) | Ontology terms describing features identified in the image |
 | [threshold](threshold.md) | Picking threshold |
 | [timestamp](timestamp.md) | Acquisition timestamp |
@@ -701,42 +760,48 @@ Name: lambda-ber-schema
 | [total_dose](total_dose.md) | Total electron dose in e-/Angstrom^2 |
 | [total_exposure_time](total_exposure_time.md) | Total exposure time in milliseconds |
 | [total_frames](total_frames.md) | Total number of frames/images |
-| [total_rotation](total_rotation.md) | Total rotation range collected |
-| [total_rotation_deg](total_rotation_deg.md) | Total rotation range in degrees |
+| [total_rotation](total_rotation.md) | Total rotation range collected, typically specified in degrees |
+| [total_rotation_deg](total_rotation_deg.md) | Total rotation range, typically specified in degrees |
 | [transition_pathways](transition_pathways.md) | Description of transition pathways between states |
-| [transmission](transmission.md) | X-ray beam transmission as percentage (0-100) |
-| [transmission_percent](transmission_percent.md) | Beam transmission percentage |
-| [undulator_gap](undulator_gap.md) | Undulator gap setting in millimeters |
+| [transmission](transmission.md) | X-ray beam transmission as a percentage (0-100) |
+| [transmission_percent](transmission_percent.md) | Beam transmission, typically specified as a percentage (0-100) |
+| [undulator_gap](undulator_gap.md) | Undulator gap setting, typically specified in millimeters (mm) |
 | [uniprot_id](uniprot_id.md) | UniProt accession for the target protein |
-| [unit](unit.md) | Unit of measurement |
-| [unit_cell_a](unit_cell_a.md) | Unit cell parameter a |
-| [unit_cell_alpha](unit_cell_alpha.md) | Unit cell angle alpha |
-| [unit_cell_b](unit_cell_b.md) | Unit cell parameter b |
-| [unit_cell_beta](unit_cell_beta.md) | Unit cell angle beta |
-| [unit_cell_c](unit_cell_c.md) | Unit cell parameter c |
-| [unit_cell_gamma](unit_cell_gamma.md) | Unit cell angle gamma |
+| [unit](unit.md) | The unit of measurement |
+| [unit_cell_a](unit_cell_a.md) | Unit cell parameter a, typically specified in Angstroms (Å) |
+| [unit_cell_alpha](unit_cell_alpha.md) | Unit cell angle alpha, typically specified in degrees |
+| [unit_cell_b](unit_cell_b.md) | Unit cell parameter b, typically specified in Angstroms (Å) |
+| [unit_cell_beta](unit_cell_beta.md) | Unit cell angle beta, typically specified in degrees |
+| [unit_cell_c](unit_cell_c.md) | Unit cell parameter c, typically specified in Angstroms (Å) |
+| [unit_cell_gamma](unit_cell_gamma.md) | Unit cell angle gamma, typically specified in degrees |
+| [unit_cv_id](unit_cv_id.md) | The unit of the quantity, expressed as a CURIE from the Unit Ontology (e |
 | [validation_report_path](validation_report_path.md) | Path to validation report |
-| [value](value.md) | Numerical value of the property |
+| [value](value.md) | The value, as a text string |
+| [value_cv_id](value_cv_id.md) | For values that are in a controlled vocabulary (CV), this attribute should ca... |
 | [variable_residues](variable_residues.md) | Highly variable residues |
 | [vector_backbone](vector_backbone.md) | Base plasmid backbone used |
 | [vector_name](vector_name.md) | Complete vector name |
 | [verification_notes](verification_notes.md) | Notes from sequence verification |
 | [vitrification_instrument](vitrification_instrument.md) | Vitrification instrument used (e |
 | [vitrification_method](vitrification_method.md) | Method used for vitrification |
-| [voltage_used_in_estimation](voltage_used_in_estimation.md) | Accelerating voltage value used during CTF estimation (in kV); may differ fro... |
-| [voxel_size](voxel_size.md) | Voxel size in Angstroms |
-| [wait_time](wait_time.md) | Wait time before blotting in seconds |
+| [voltage_used_in_estimation](voltage_used_in_estimation.md) | Accelerating voltage value used during CTF estimation, typically specified in... |
+| [voxel_size](voxel_size.md) | Voxel size, typically specified in Angstroms |
+| [wait_time](wait_time.md) | Wait time before blotting, typically specified in seconds |
 | [wash_buffer](wash_buffer.md) | Buffer composition for washing |
-| [wavelength](wavelength.md) | X-ray wavelength |
-| [wavelength_a](wavelength_a.md) | X-ray wavelength in Angstroms |
-| [wavenumber_max](wavenumber_max.md) | Maximum wavenumber in cm⁻¹ |
-| [wavenumber_min](wavenumber_min.md) | Minimum wavenumber in cm⁻¹ |
+| [wavelength](wavelength.md) | X-ray wavelength, typically specified in Angstroms (Å) |
+| [wavelength_a](wavelength_a.md) | X-ray wavelength, typically specified in Angstroms |
+| [wavenumber_max](wavenumber_max.md) | Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
+| [wavenumber_min](wavenumber_min.md) | Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹) |
 | [website](website.md) | Beamline website URL |
 | [white_balance](white_balance.md) | White balance settings |
-| [wilson_b_factor](wilson_b_factor.md) | Wilson B-factor |
+| [wilson_b_factor](wilson_b_factor.md) | Wilson B-factor, typically specified in Angstroms squared (Ų) |
 | [wilson_b_factor_a2](wilson_b_factor_a2.md) | Wilson B-factor in Angstroms squared |
 | [workflow_code](workflow_code.md) | Human-friendly identifier for the computational workflow run (e |
-| [workflow_runs](workflow_runs.md) | Computational workflow executions for data processing in this study |
+| [workflow_experiment_associations](workflow_experiment_associations.md) | Links between workflows and source experiments (M:N) |
+| [workflow_id](workflow_id.md) | Reference to the workflow run |
+| [workflow_input_associations](workflow_input_associations.md) | Links between workflows and input files |
+| [workflow_output_associations](workflow_output_associations.md) | Links between workflows and output files |
+| [workflow_runs](workflow_runs.md) | All workflow runs (computational processing) |
 | [workflow_type](workflow_type.md) | Type of processing workflow |
 | [yield_mg](yield_mg.md) | Total yield in milligrams |
 
@@ -747,15 +812,17 @@ Name: lambda-ber-schema
 | --- | --- |
 | [AffinityUnitEnum](AffinityUnitEnum.md) | Units for affinity measurements |
 | [AnnotationSourceEnum](AnnotationSourceEnum.md) | Sources of functional annotations |
+| [BeamlineEnum](BeamlineEnum.md) | Specific beamline instances at DOE and other major structural biology facilit... |
 | [BindingAffinityTypeEnum](BindingAffinityTypeEnum.md) | Types of binding affinity measurements |
 | [BiophysicalMethodEnum](BiophysicalMethodEnum.md) | Methods for biophysical measurements |
 | [BiophysicalPropertyEnum](BiophysicalPropertyEnum.md) | Types of biophysical properties |
 | [ClinicalSignificanceEnum](ClinicalSignificanceEnum.md) | Clinical significance of variants |
 | [CollectionModeEnum](CollectionModeEnum.md) | Data collection modes |
 | [ComplexStabilityEnum](ComplexStabilityEnum.md) | Stability of protein complexes |
-| [ConcentrationUnitEnum](ConcentrationUnitEnum.md) | Units for concentration measurement |
 | [ConformationalStateEnum](ConformationalStateEnum.md) | Conformational states |
+| [ControlSystemEnum](ControlSystemEnum.md) | Low-level control systems and middleware frameworks for device communication ... |
 | [CrystallizationMethodEnum](CrystallizationMethodEnum.md) | Methods for protein crystallization |
+| [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition (DAQ) systems for orchestrating experimental data collection... |
 | [DatabaseNameEnum](DatabaseNameEnum.md) | External database names |
 | [DataTypeEnum](DataTypeEnum.md) | Types of data |
 | [DetectorModeEnum](DetectorModeEnum.md) | Operating modes for detectors during data collection |
@@ -763,6 +830,7 @@ Name: lambda-ber-schema
 | [DetectorTypeEnum](DetectorTypeEnum.md) | DEPRECATED: Use DetectorTechnologyEnum instead |
 | [EvidenceTypeEnum](EvidenceTypeEnum.md) | Types of evidence |
 | [ExperimentalMethodEnum](ExperimentalMethodEnum.md) | Experimental methods for structure determination |
+| [ExperimentSampleRoleEnum](ExperimentSampleRoleEnum.md) | Role of a sample in an experiment |
 | [ExpressionSystemEnum](ExpressionSystemEnum.md) | Expression systems for recombinant protein production |
 | [FacilityEnum](FacilityEnum.md) | Major synchrotron and structural biology research facilities worldwide |
 | [FacilityTypeEnum](FacilityTypeEnum.md) | Types of research facilities |
@@ -773,23 +841,27 @@ Name: lambda-ber-schema
 | [GridTypeEnum](GridTypeEnum.md) | Types of EM grids |
 | [IlluminationTypeEnum](IlluminationTypeEnum.md) | Types of illumination for optical microscopy |
 | [ImagingModeEnum](ImagingModeEnum.md) | Imaging modes for electron microscopy |
+| [InputTypeEnum](InputTypeEnum.md) | Type of input for a workflow |
 | [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Categories of instruments based on their nature and location |
+| [InstrumentRoleEnum](InstrumentRoleEnum.md) | Role of an instrument in an experiment |
 | [InstrumentStatusEnum](InstrumentStatusEnum.md) | Operational status of instruments |
 | [InteractionEvidenceEnum](InteractionEvidenceEnum.md) | Evidence for interactions |
 | [InteractionTypeEnum](InteractionTypeEnum.md) | Types of molecular interactions |
+| [LIMSSystemEnum](LIMSSystemEnum.md) | Laboratory Information Management Systems (LIMS) used at structural biology f... |
 | [MutationTypeEnum](MutationTypeEnum.md) | Types of mutations |
+| [OutputTypeEnum](OutputTypeEnum.md) | Types of outputs from computational workflows |
 | [PhasingMethodEnum](PhasingMethodEnum.md) | Methods for phase determination in X-ray crystallography |
 | [PreparationTypeEnum](PreparationTypeEnum.md) | Types of sample preparation |
 | [ProcessingStatusEnum](ProcessingStatusEnum.md) | Processing status |
 | [PTMTypeEnum](PTMTypeEnum.md) | Types of post-translational modifications |
 | [PurificationStepEnum](PurificationStepEnum.md) | Protein purification steps and methods |
+| [SampleRoleEnum](SampleRoleEnum.md) | Role of a sample in a study |
 | [SampleTypeEnum](SampleTypeEnum.md) | Types of biological samples |
 | [SecondaryStructureEnum](SecondaryStructureEnum.md) | Secondary structure types |
 | [StabilityEffectEnum](StabilityEffectEnum.md) | Effect on protein stability |
 | [StructuralFeatureTypeEnum](StructuralFeatureTypeEnum.md) | Types of structural features |
 | [SymmetryEnum](SymmetryEnum.md) | Crystallographic and non-crystallographic symmetry groups for cryo-EM |
 | [TechniqueEnum](TechniqueEnum.md) | Structural biology techniques |
-| [TemperatureUnitEnum](TemperatureUnitEnum.md) | Units for temperature measurement |
 | [VitrificationMethodEnum](VitrificationMethodEnum.md) | Methods for vitrification |
 | [WorkflowTypeEnum](WorkflowTypeEnum.md) | Types of processing workflows |
 | [XRaySourceTypeEnum](XRaySourceTypeEnum.md) | Types of X-ray sources |
@@ -805,6 +877,7 @@ Name: lambda-ber-schema
 | [DateOrDatetime](DateOrDatetime.md) | Either a date or a datetime |
 | [Datetime](Datetime.md) | The combination of a date and time |
 | [Decimal](Decimal.md) | A real number with arbitrary precision that conforms to the xsd:decimal speci... |
+| [DecimalDegree](DecimalDegree.md) | A decimal degree expresses latitude or longitude as decimal fractions |
 | [Double](Double.md) | A real number that conforms to the xsd:double specification |
 | [Float](Float.md) | A real number that conforms to the xsd:float specification |
 | [Integer](Integer.md) | An integer |

@@ -3,7 +3,7 @@
 # Slot: oscillation_per_image_deg 
 
 
-_Oscillation angle per image in degrees_
+_Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: oscillation_per_image_deg
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: oscillation_per_image_deg
 <details>
 ```yaml
 name: oscillation_per_image_deg
-description: Oscillation angle per image in degrees
+description: Oscillation angle per image, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: oscillation_per_image_deg
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

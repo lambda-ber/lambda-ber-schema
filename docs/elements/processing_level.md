@@ -31,11 +31,7 @@ Alias: processing_level
 
 ## Properties
 
-* Range: [Integer](Integer.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 4
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -77,9 +73,8 @@ alias: processing_level
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
-minimum_value: 0
-maximum_value: 4
+range: QuantityValue
+inlined: true
 
 ```
 </details>

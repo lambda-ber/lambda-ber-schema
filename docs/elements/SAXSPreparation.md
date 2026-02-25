@@ -26,7 +26,25 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
         
       SAXSPreparation : cell_path_length
         
+          
+    
+        
+        
+        SAXSPreparation --> "0..1" QuantityValue : cell_path_length
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SAXSPreparation : concentration_series
+        
+          
+    
+        
+        
+        SAXSPreparation --> "0..1" QuantityValue : concentration_series
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SAXSPreparation : description
         
@@ -52,10 +70,10 @@ URI: [lambdaber:SAXSPreparation](https://w3id.org/lambda-ber-schema/SAXSPreparat
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [concentration_series](concentration_series.md) | * <br/> [Float](Float.md) | Concentration values for series measurements | direct |
+| [concentration_series](concentration_series.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Concentration values for series measurements | direct |
 | [buffer_matching_protocol](buffer_matching_protocol.md) | 0..1 <br/> [String](String.md) | Protocol for buffer matching | direct |
 | [sample_cell_type](sample_cell_type.md) | 0..1 <br/> [String](String.md) | Type of sample cell used | direct |
-| [cell_path_length](cell_path_length.md) | 0..1 <br/> [Float](Float.md) | Path length in mm | direct |
+| [cell_path_length](cell_path_length.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Path length, typically specified in millimeters (mm) | direct |
 | [temperature_control](temperature_control.md) | 0..1 <br/> [String](String.md) | Temperature control settings | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
@@ -115,8 +133,8 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSPreparation
-    range: float
-    multivalued: true
+    range: QuantityValue
+    inlined: true
   buffer_matching_protocol:
     name: buffer_matching_protocol
     description: Protocol for buffer matching
@@ -133,12 +151,14 @@ attributes:
     - SAXSPreparation
   cell_path_length:
     name: cell_path_length
-    description: Path length in mm
+    description: Path length, typically specified in millimeters (mm). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - SAXSPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   temperature_control:
     name: temperature_control
     description: Temperature control settings
@@ -168,8 +188,8 @@ attributes:
     owner: SAXSPreparation
     domain_of:
     - SAXSPreparation
-    range: float
-    multivalued: true
+    range: QuantityValue
+    inlined: true
   buffer_matching_protocol:
     name: buffer_matching_protocol
     description: Protocol for buffer matching
@@ -192,14 +212,16 @@ attributes:
     range: string
   cell_path_length:
     name: cell_path_length
-    description: Path length in mm
+    description: Path length, typically specified in millimeters (mm). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: cell_path_length
     owner: SAXSPreparation
     domain_of:
     - SAXSPreparation
-    range: float
+    range: QuantityValue
+    inlined: true
   temperature_control:
     name: temperature_control
     description: Temperature control settings

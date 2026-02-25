@@ -31,7 +31,7 @@ Alias: r_anomalous
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: r_anomalous
 | ---  | ---  |
 | self | lambdaber:r_anomalous |
 | native | lambdaber:r_anomalous |
-| exact | ispyb:AutoProcScalingStatistics.rAnom |
 
 
 
@@ -69,14 +68,13 @@ Alias: r_anomalous
 name: r_anomalous
 description: Anomalous R-factor
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.rAnom
 rank: 1000
 alias: r_anomalous
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

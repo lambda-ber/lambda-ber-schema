@@ -10,10 +10,11 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
     dcterms:title "Aggregated structural and functional data for human p53" ;
     lambdaber:description "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases" ;
     ns1:biophysical_properties [ a ns1:BiophysicalProperty ;
-            ns1:measurement_conditions lambdaber:p53-meas-cond-003 ;
-            ns1:property_type "aggregation_propensity" ;
-            ns1:unit "probability" ;
-            ns1:value "0.68"^^xsd:float ],
+            ns1:experimental_method "differential_scanning_calorimetry" ;
+            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
+            ns1:property_type "stability" ;
+            ns1:unit "kcal/mol" ;
+            ns1:value "42.5"^^xsd:float ],
         [ a ns1:BiophysicalProperty ;
             ns1:error "1.2"^^xsd:float ;
             ns1:experimental_method "circular_dichroism" ;
@@ -22,11 +23,10 @@ lambdaber:protein-p53-view a ns1:AggregatedProteinView ;
             ns1:unit "K" ;
             ns1:value "315.8"^^xsd:float ],
         [ a ns1:BiophysicalProperty ;
-            ns1:experimental_method "differential_scanning_calorimetry" ;
-            ns1:measurement_conditions lambdaber:p53-meas-cond-001 ;
-            ns1:property_type "stability" ;
-            ns1:unit "kcal/mol" ;
-            ns1:value "42.5"^^xsd:float ] ;
+            ns1:measurement_conditions lambdaber:p53-meas-cond-003 ;
+            ns1:property_type "aggregation_propensity" ;
+            ns1:unit "probability" ;
+            ns1:value "0.68"^^xsd:float ] ;
     ns1:conformational_ensemble lambdaber:p53-confens-001 ;
     ns1:cross_references [ a ns1:DatabaseCrossReference ;
             ns1:database_id "191170" ;

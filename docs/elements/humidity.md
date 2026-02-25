@@ -3,7 +3,7 @@
 # Slot: humidity 
 
 
-_Humidity percentage_
+_Humidity, typically specified as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: humidity
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: humidity
 <details>
 ```yaml
 name: humidity
-description: Humidity percentage
+description: Humidity, typically specified as a percentage (0-100). Data providers
+  may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: humidity
 owner: ExperimentalConditions
 domain_of:
 - ExperimentalConditions
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -158,8 +158,9 @@ attributes:
     name: value
     description: Numerical value of the property
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     domain_of:
+    - TextValue
+    - DateTimeValue
     - BiophysicalProperty
     range: float
     required: true
@@ -167,8 +168,8 @@ attributes:
     name: unit
     description: Unit of measurement
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     domain_of:
+    - QuantityValue
     - BiophysicalProperty
     required: true
   error:
@@ -229,10 +230,11 @@ attributes:
     name: value
     description: Numerical value of the property
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     alias: value
     owner: BiophysicalProperty
     domain_of:
+    - TextValue
+    - DateTimeValue
     - BiophysicalProperty
     range: float
     required: true
@@ -240,10 +242,10 @@ attributes:
     name: unit
     description: Unit of measurement
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
-    rank: 1000
     alias: unit
     owner: BiophysicalProperty
     domain_of:
+    - QuantityValue
     - BiophysicalProperty
     range: string
     required: true

@@ -3,7 +3,7 @@
 # Slot: culture_volume_l 
 
 
-_Culture volume in liters_
+_Culture volume, typically specified in liters (L). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: culture_volume_l
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,16 +66,16 @@ Alias: culture_volume_l
 <details>
 ```yaml
 name: culture_volume_l
-description: Culture volume in liters
+description: Culture volume, typically specified in liters (L). Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: culture_volume_l
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
-unit:
-  ucum_code: L
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: growth_temperature_c 
 
 
-_Growth temperature in Celsius_
+_Growth temperature, typically specified in degrees Celsius. Data providers may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: growth_temperature_c
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,16 +66,16 @@ Alias: growth_temperature_c
 <details>
 ```yaml
 name: growth_temperature_c
-description: Growth temperature in Celsius
+description: Growth temperature, typically specified in degrees Celsius. Data providers
+  may specify alternative units (e.g., Kelvin) by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: growth_temperature_c
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
-unit:
-  ucum_code: Cel
+range: QuantityValue
+inlined: true
 
 ```
 </details>
