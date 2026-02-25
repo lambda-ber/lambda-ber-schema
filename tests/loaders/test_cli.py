@@ -33,6 +33,7 @@ class TestCLI:
         assert "sasbdb" in result.output
         assert "simplescattering" in result.output
         assert "pdb" in result.output
+        assert "emsl" in result.output
         assert "list" in result.output
 
     def test_etl_sasbdb_help(self):
@@ -52,6 +53,12 @@ class TestCLI:
         result = runner.invoke(app, ["etl", "pdb", "--help"])
         assert result.exit_code == 0
         assert "PDB entry ID" in result.output
+
+    def test_etl_emsl_help(self):
+        """Test EMSL ETL command help."""
+        result = runner.invoke(app, ["etl", "emsl", "--help"])
+        assert result.exit_code == 0
+        assert "--sample" in result.output
 
     def test_etl_dump_pdb_calls_load_all_with_filters(self, mocker, tmp_path):
         """Test dump-pdb invokes BatchLoader.load_all with expected options."""
@@ -225,6 +232,107 @@ class TestCLI:
             "limit": 4,
             "filters": {"molecular_type": "protein"},
         }
+
+    def test_etl_emsl_calls_loader_with_expected_args(self, mocker, tmp_path):
+        """Test EMSL ETL command routes options into EMSLLoader.load_by_sample."""
+        calls: dict[str, object] = {}
+
+        class FakeLoader:
+            def __init__(self, cache):
+                calls["cache"] = cache
+
+            def load_by_sample(
+                self,
+                sample_name,
+                transaction_id=None,
+                search_mode="like",
+                key_filter=None,
+                exact_match=False,
+                similarity_threshold=None,
+                limit=20,
+            ):
+                calls["load_by_sample"] = {
+                    "sample_name": sample_name,
+                    "transaction_id": transaction_id,
+                    "search_mode": search_mode,
+                    "key_filter": key_filter,
+                    "exact_match": exact_match,
+                    "similarity_threshold": similarity_threshold,
+                    "limit": limit,
+                }
+
+                class _Result:
+                    warnings = []
+
+                    class _Dataset:
+                        @staticmethod
+                        def model_dump(exclude_none=True, mode="json"):
+                            return {"id": "emsl:transaction_3736677"}
+
+                    dataset = _Dataset()
+
+                return _Result()
+
+        mocker.patch("lambda_ber_schema.cli.EMSLLoader", FakeLoader)
+
+        output_file = tmp_path / "emsl.yaml"
+        result = runner.invoke(
+            app,
+            [
+                "etl",
+                "emsl",
+                "--sample",
+                "apo",
+                "--transaction-id",
+                "3736677",
+                "--search-mode",
+                "like",
+                "--key-filter",
+                "pncc",
+                "--exact-match",
+                "--limit",
+                "10",
+                "--output",
+                str(output_file),
+            ],
+        )
+
+        assert result.exit_code == 0
+        assert output_file.exists()
+        assert calls["load_by_sample"] == {
+            "sample_name": "apo",
+            "transaction_id": 3736677,
+            "search_mode": "like",
+            "key_filter": "pncc",
+            "exact_match": True,
+            "similarity_threshold": None,
+            "limit": 10,
+        }
+
+    def test_etl_list_emsl_requires_sample(self):
+        """EMSL listing should require --sample."""
+        result = runner.invoke(app, ["etl", "list", "emsl"])
+        assert result.exit_code == 1
+        assert "--sample is required" in result.output
+
+    def test_etl_list_emsl_routes_sample_filter(self, mocker):
+        """Test etl list emsl calls loader.list_entries(sample_name=...)."""
+        calls: dict[str, object] = {}
+
+        class FakeLoader:
+            def list_entries(self, sample_name=None, limit=None):
+                calls["list_entries"] = {"sample_name": sample_name, "limit": limit}
+                return ["3736677", "3736600"]
+
+        mocker.patch("lambda_ber_schema.cli.EMSLLoader", FakeLoader)
+
+        result = runner.invoke(
+            app,
+            ["etl", "list", "emsl", "--sample", "apo", "--limit", "2"],
+        )
+        assert result.exit_code == 0
+        assert "Found 2 entries" in result.output
+        assert calls["list_entries"] == {"sample_name": "apo", "limit": 2}
 
 
 @pytest.mark.integration
