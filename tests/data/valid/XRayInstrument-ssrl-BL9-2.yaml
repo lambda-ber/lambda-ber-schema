@@ -33,4 +33,4 @@ goniometer_type: SSRL single-axis microdiffractometer
 crystal_cooling_capability: true
 detector_technology: hybrid_photon_counting
 detector_manufacturer: Dectris
-detector_model: EIGER2 16M
+detector_model: EIGER2X 16M
