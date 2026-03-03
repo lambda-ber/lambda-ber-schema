@@ -120,6 +120,46 @@ class TestEMSLLoader:
         assert result is not None
         assert isinstance(result.dataset, Dataset)
 
+    def test_load_by_sample_selects_most_recent_even_if_unsorted(self, mocker):
+        """Default selection should sort by created timestamp before picking latest."""
+        unsorted_search = {
+            "transactions": [
+                {
+                    "transaction_id": 3736600,
+                    "sample_key": "pncc.short_sample_name",
+                    "sample_value": "older_tx",
+                    "submitter_id": 1,
+                    "instrument_id": 10,
+                    "project_id": "160724",
+                    "created": "2026-02-15T08:51:33",
+                    "similarity_score": None,
+                },
+                {
+                    "transaction_id": 3736677,
+                    "sample_key": "pncc.short_sample_name",
+                    "sample_value": "newer_tx",
+                    "submitter_id": 1,
+                    "instrument_id": 10,
+                    "project_id": "160724",
+                    "created": "2026-02-15T15:46:44",
+                    "similarity_score": None,
+                },
+            ]
+        }
+        project = {"id": "160724", "title": "Project"}
+        resource = {"id": 10, "name": "PNCC Krios 1", "active": True}
+        files = [{"file_id": 1, "size": 100, "name": "data.1.tar", "path": "160724/newer_tx"}]
+
+        loader = EMSLLoader()
+        mocker.patch.object(loader, "_search_transactions", return_value=unsorted_search)
+        mocker.patch.object(loader, "_fetch_project", return_value=project)
+        mocker.patch.object(loader, "_fetch_resource", return_value=resource)
+        mocker.patch.object(loader, "_fetch_transaction_files", return_value=files)
+
+        result = loader.load("apo")
+        assert result.dataset.id == "emsl:transaction_3736677"
+        assert any("using most recent transaction 3736677" in w for w in result.warnings)
+
     def test_dataset_has_expected_id_and_title(self, loader):
         """Dataset should use transaction-based identifier and project-derived title."""
         result = loader.load("apo")

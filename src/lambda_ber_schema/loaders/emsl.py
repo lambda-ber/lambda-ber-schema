@@ -8,6 +8,7 @@ API Documentation:
 
 import json
 import re
+from datetime import datetime
 from typing import Any
 from urllib.parse import quote
 
@@ -123,11 +124,14 @@ class EMSLLoader(BaseLoader):
         if not transactions:
             raise ValueError(f"No EMSL transactions found for sample query: {sample_name}")
 
+        # Enforce deterministic newest-first ordering independent of API order.
+        sorted_transactions = self._sort_transactions(transactions)
+
         selected: dict[str, Any] | None = None
         if transaction_id is not None:
             tx_id = str(transaction_id)
             selected = next(
-                (tx for tx in transactions if str(tx.get("transaction_id")) == tx_id),
+                (tx for tx in sorted_transactions if str(tx.get("transaction_id")) == tx_id),
                 None,
             )
             if selected is None:
@@ -135,8 +139,8 @@ class EMSLLoader(BaseLoader):
                     f"Transaction {transaction_id} was not found in sample search results"
                 )
         else:
-            selected = transactions[0]
-            if len(transactions) > 1:
+            selected = sorted_transactions[0]
+            if len(sorted_transactions) > 1:
                 warnings.append(
                     f"Multiple transactions matched '{sample_name}'; "
                     f"using most recent transaction {selected.get('transaction_id')}"
@@ -230,6 +234,37 @@ class EMSLLoader(BaseLoader):
             entries.append(tx_text)
 
         return entries
+
+    def _sort_transactions(self, transactions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Sort transactions by most recent creation time, then by transaction ID."""
+
+        def parse_created(value: Any) -> datetime:
+            if not value:
+                return datetime.min
+            text = str(value).strip()
+            if not text:
+                return datetime.min
+            # EMSL timestamps may be naive ISO or UTC "Z"-suffixed.
+            normalized = text.replace("Z", "+00:00")
+            try:
+                return datetime.fromisoformat(normalized)
+            except ValueError:
+                return datetime.min
+
+        def parse_tx_id(value: Any) -> int:
+            try:
+                return int(str(value))
+            except (TypeError, ValueError):
+                return -1
+
+        return sorted(
+            transactions,
+            key=lambda tx: (
+                parse_created(tx.get("created")),
+                parse_tx_id(tx.get("transaction_id")),
+            ),
+            reverse=True,
+        )
 
     def _search_transactions(
         self,
