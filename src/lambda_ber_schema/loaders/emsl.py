@@ -10,7 +10,6 @@ import json
 import re
 from datetime import datetime
 from typing import Any
-from urllib.parse import quote
 
 import requests
 
@@ -147,7 +146,7 @@ class EMSLLoader(BaseLoader):
                 )
 
         result = self._build_dataset_from_transaction(selected, warnings)
-        result.source_url = f"{self.base_url}/datasets/by_sample/{quote(sample_name)}"
+        result.source_url = f"{self.base_url}/datasets/by_sample_name"
         if result.raw_data is None:
             result.raw_data = {}
         result.raw_data["sample_search"] = search

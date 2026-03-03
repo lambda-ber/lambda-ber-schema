@@ -166,6 +166,11 @@ class TestEMSLLoader:
         assert result.dataset.id == "emsl:transaction_3736677"
         assert "PARP" in result.dataset.title
 
+    def test_load_by_sample_source_url_matches_endpoint(self, loader):
+        """Sample-load provenance should match the by_sample_name endpoint."""
+        result = loader.load("apo")
+        assert result.source_url == "https://api.emsl.pnnl.gov/external/datasets/by_sample_name"
+
     def test_experiment_has_cryo_em_technique(self, loader):
         """Technique should be inferred from PNCC/Krios context."""
         result = loader.load("apo")
