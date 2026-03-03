@@ -20,8 +20,8 @@
 beamlines:
   # Macromolecular Crystallography Beamlines
   - id: lambdaber:beamline_ssrl_bl12_2
-    title: "SSRL Beamline 12-2"
-    description: "Undulator beamline optimized for microcrystallography with intense microbeam"
+    title: "SSRL BL12-2"
+    description: "Macromolecular crystallography beamline with microbeam capabilities and in-vacuum mini-gap undulator source optimized for MAD, SAD, and monochromatic data collection"
     instrument_code: "SSRL-BL12-2"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: SSRL
@@ -30,11 +30,13 @@ beamlines:
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
+    energy_min: 6.69
+    energy_max: 17.0
     current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl12_1
-    title: "SSRL Beamline 12-1"
-    description: "New undulator beamline with ultra-small microbeam capability"
+    title: "SSRL BL12-1"
+    description: "Macromolecular crystallography beamline operated by Scripps and Stanford PRT with full remote access capabilities for MAD, SAD, and monochromatic data collection"
     instrument_code: "SSRL-BL12-1"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: SSRL
@@ -43,11 +45,13 @@ beamlines:
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
-    current_status: commissioning
+    energy_min: 6.0
+    energy_max: 18.0
+    current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl9_2
-    title: "SSRL Beamline 9-2"
-    description: "Macromolecular crystallography beamline optimized for MAD experiments"
+    title: "SSRL BL9-2"
+    description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource optimized for MAD, SAD, and monochromatic data collection with Stanford Automated Mounting System (SAM) and remote access capabilities"
     instrument_code: "SSRL-BL9-2"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: SSRL
@@ -56,6 +60,8 @@ beamlines:
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
+    energy_min: 6.0
+    energy_max: 14.0
     current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl9_1
@@ -72,8 +78,8 @@ beamlines:
     current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl14_1
-    title: "SSRL Beamline 14-1"
-    description: "Macromolecular crystallography beamline for MAD experiments"
+    title: "SSRL BL14-1"
+    description: "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with Huber kappa diffractometer and Stanford Automated Mounting System (SAM) for MAD, SAD, and monochromatic data collection"
     instrument_code: "SSRL-BL14-1"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: SSRL
@@ -82,6 +88,8 @@ beamlines:
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
+    energy_min: 6.0
+    energy_max: 13.0
     current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl7_1
@@ -98,8 +106,8 @@ beamlines:
     current_status: operational
 
   - id: lambdaber:beamline_ssrl_bl11_1
-    title: "SSRL Beamline 11-1"
-    description: "MX side station, MAD capable"
+    title: "SSRL BL11-1"
+    description: "MX side station, MAD capable (decommissioned)"
     instrument_code: "SSRL-BL11-1"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: SSRL
@@ -108,7 +116,7 @@ beamlines:
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
-    current_status: operational
+    current_status: offline
 
   # SAXS/WAXS Beamline
   - id: lambdaber:beamline_ssrl_bl4_2
