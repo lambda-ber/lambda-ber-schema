@@ -148,17 +148,21 @@ class TestEMSLLoader:
         }
         project = {"id": "160724", "title": "Project"}
         resource = {"id": 10, "name": "PNCC Krios 1", "active": True}
-        files = [{"file_id": 1, "size": 100, "name": "data.1.tar", "path": "160724/newer_tx"}]
+        files = [{"file_id": 1, "size": 100,
+                  "name": "data.1.tar", "path": "160724/newer_tx"}]
 
         loader = EMSLLoader()
-        mocker.patch.object(loader, "_search_transactions", return_value=unsorted_search)
+        mocker.patch.object(loader, "_search_transactions",
+                            return_value=unsorted_search)
         mocker.patch.object(loader, "_fetch_project", return_value=project)
         mocker.patch.object(loader, "_fetch_resource", return_value=resource)
-        mocker.patch.object(loader, "_fetch_transaction_files", return_value=files)
+        mocker.patch.object(
+            loader, "_fetch_transaction_files", return_value=files)
 
         result = loader.load("apo")
         assert result.dataset.id == "emsl:transaction_3736677"
-        assert any("using most recent transaction 3736677" in w for w in result.warnings)
+        assert any(
+            "using most recent transaction 3736677" in w for w in result.warnings)
 
     def test_dataset_has_expected_id_and_title(self, loader):
         """Dataset should use transaction-based identifier and project-derived title."""
@@ -231,14 +235,16 @@ class TestEMSLLoader:
             "_fetch_transaction_files",
             return_value=emsl_transaction_files,
         )
-        mocker.patch.object(loader, "_fetch_project", return_value=emsl_project)
+        mocker.patch.object(loader, "_fetch_project",
+                            return_value=emsl_project)
 
         result = loader.load("tx:3736677")
         assert result.dataset.id == "emsl:transaction_3736677"
         assert result.source_url == (
             "https://api.emsl.pnnl.gov/external/datasets/transaction_info/3736677"
         )
-        assert any("Transaction loaded without sample-search context" in w for w in result.warnings)
+        assert any(
+            "Transaction loaded without sample-search context" in w for w in result.warnings)
 
     def test_load_bare_transaction_id_path_works(self, mocker, emsl_project, emsl_transaction_files):
         """Bare numeric identifier should route to transaction_info pathway."""
@@ -248,14 +254,16 @@ class TestEMSLLoader:
             "_fetch_transaction_files",
             return_value=emsl_transaction_files,
         )
-        mocker.patch.object(loader, "_fetch_project", return_value=emsl_project)
+        mocker.patch.object(loader, "_fetch_project",
+                            return_value=emsl_project)
 
         result = loader.load("3736677")
         assert result.dataset.id == "emsl:transaction_3736677"
         assert result.source_url == (
             "https://api.emsl.pnnl.gov/external/datasets/transaction_info/3736677"
         )
-        assert any("Transaction loaded without sample-search context" in w for w in result.warnings)
+        assert any(
+            "Transaction loaded without sample-search context" in w for w in result.warnings)
 
     def test_list_entries_by_sample(self, loader):
         """list_entries should return transaction IDs."""

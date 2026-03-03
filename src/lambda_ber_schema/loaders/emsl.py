@@ -83,7 +83,8 @@ class EMSLLoader(BaseLoader):
         if normalized.startswith("tx:"):
             tx = normalized.removeprefix("tx:").strip()
             if not tx.isdigit():
-                raise ValueError(f"Invalid transaction identifier: {identifier}")
+                raise ValueError(
+                    f"Invalid transaction identifier: {identifier}")
             return self.load_transaction(int(tx))
 
         if normalized.isdigit():
@@ -121,7 +122,8 @@ class EMSLLoader(BaseLoader):
 
         transactions = search.get("transactions") or []
         if not transactions:
-            raise ValueError(f"No EMSL transactions found for sample query: {sample_name}")
+            raise ValueError(
+                f"No EMSL transactions found for sample query: {sample_name}")
 
         # Enforce deterministic newest-first ordering independent of API order.
         sorted_transactions = self._sort_transactions(transactions)
@@ -130,7 +132,8 @@ class EMSLLoader(BaseLoader):
         if transaction_id is not None:
             tx_id = str(transaction_id)
             selected = next(
-                (tx for tx in sorted_transactions if str(tx.get("transaction_id")) == tx_id),
+                (tx for tx in sorted_transactions if str(
+                    tx.get("transaction_id")) == tx_id),
                 None,
             )
             if selected is None:
@@ -168,7 +171,8 @@ class EMSLLoader(BaseLoader):
         first_path = str(files[0].get("path") or "")
         path_parts = first_path.split("/") if first_path else []
         project_id = path_parts[0] if path_parts else None
-        sample_value = path_parts[1] if len(path_parts) > 1 else f"transaction-{transaction_id}"
+        sample_value = path_parts[1] if len(
+            path_parts) > 1 else f"transaction-{transaction_id}"
 
         synthetic_transaction: dict[str, Any] = {
             "transaction_id": transaction_id,
@@ -379,7 +383,8 @@ class EMSLLoader(BaseLoader):
         )
         instrument_id = transaction.get("instrument_id")
         sample_key = str(transaction.get("sample_key") or "sample_key")
-        sample_value = str(transaction.get("sample_value") or f"transaction-{tx_id}")
+        sample_value = str(transaction.get("sample_value")
+                           or f"transaction-{tx_id}")
         created = transaction.get("created")
         submitter_id = transaction.get("submitter_id")
 
@@ -388,7 +393,8 @@ class EMSLLoader(BaseLoader):
             try:
                 project = self._fetch_project(project_id)
             except requests.HTTPError:
-                warnings.append(f"Could not resolve project metadata for project_id={project_id}")
+                warnings.append(
+                    f"Could not resolve project metadata for project_id={project_id}")
 
         resource: dict[str, Any] | None = None
         if instrument_id is not None:
@@ -399,13 +405,15 @@ class EMSLLoader(BaseLoader):
                     f"Could not resolve instrument metadata for instrument_id={instrument_id}"
                 )
             if resource is None:
-                warnings.append(f"No public resource metadata for instrument_id={instrument_id}")
+                warnings.append(
+                    f"No public resource metadata for instrument_id={instrument_id}")
 
         files = transaction_files
         if files is None:
             files = self._fetch_transaction_files(tx_id)
         if not files:
-            warnings.append(f"No file metadata returned for transaction {tx_id}")
+            warnings.append(
+                f"No file metadata returned for transaction {tx_id}")
 
         project_title = (
             str(project.get("title"))
@@ -422,7 +430,8 @@ class EMSLLoader(BaseLoader):
             id=study_id,
             title=project_title,
             description=project.get("abstract") if project else None,
-            keywords=[k for k in ["EMSL", project.get("project_type") if project else None] if k],
+            keywords=[k for k in ["EMSL", project.get(
+                "project_type") if project else None] if k],
         )
 
         sample = Sample(
@@ -433,12 +442,14 @@ class EMSLLoader(BaseLoader):
             description=f"Source key: {sample_key}",
         )
 
-        technique = self._infer_technique(sample_key, sample_value, resource, files)
+        technique = self._infer_technique(
+            sample_key, sample_value, resource, files)
         experiment = ExperimentRun(
             id=experiment_id,
             experiment_code=f"EMSL-TX-{tx_id}",
             experiment_date=created,
-            operator_id=str(submitter_id) if submitter_id is not None else None,
+            operator_id=str(
+                submitter_id) if submitter_id is not None else None,
             technique=technique,
             raw_data_location=(files[0].get("path") if files else None),
             processing_status=ProcessingStatusEnum.collected,
@@ -446,10 +457,12 @@ class EMSLLoader(BaseLoader):
         )
 
         instruments: list[Instrument] = []
-        experiment_instrument_associations: list[ExperimentInstrumentAssociation] = []
+        experiment_instrument_associations: list[ExperimentInstrumentAssociation] = [
+        ]
         if resource:
             resource_id = resource.get("id", instrument_id)
-            resource_name = str(resource.get("name") or f"Resource {resource_id}")
+            resource_name = str(resource.get(
+                "name") or f"Resource {resource_id}")
             instrument = Instrument(
                 id=f"emsl:resource_{resource_id}",
                 instrument_code=f"EMSL-{self._slugify(resource_name)}-{resource_id}",
@@ -457,7 +470,8 @@ class EMSLLoader(BaseLoader):
                 description=self._build_resource_description(resource),
                 facility_name=FacilityEnum.Environmental_Molecular_Sciences_Laboratory,
                 facility_ror="https://ror.org/05h992307",
-                instrument_category=self._infer_instrument_category(resource_name),
+                instrument_category=self._infer_instrument_category(
+                    resource_name),
                 model=resource_name,
                 current_status=(
                     InstrumentStatusEnum.operational
@@ -494,7 +508,8 @@ class EMSLLoader(BaseLoader):
                 StudySampleAssociation(study_id=study.id, sample_id=sample.id)
             ],
             study_experiment_associations=[
-                StudyExperimentAssociation(study_id=study.id, experiment_id=experiment.id)
+                StudyExperimentAssociation(
+                    study_id=study.id, experiment_id=experiment.id)
             ],
             experiment_sample_associations=[
                 ExperimentSampleAssociation(
@@ -505,7 +520,8 @@ class EMSLLoader(BaseLoader):
             experiment_instrument_associations=experiment_instrument_associations,
         )
 
-        doi = self._normalize_doi(project.get("award_doi") if project else None)
+        doi = self._normalize_doi(project.get(
+            "award_doi") if project else None)
         return LoaderResult(
             dataset=dataset,
             warnings=warnings,
@@ -537,12 +553,14 @@ class EMSLLoader(BaseLoader):
 
             name = item.get("name")
             if not name:
-                warnings.append("Skipped file with missing name in transaction_info payload")
+                warnings.append(
+                    "Skipped file with missing name in transaction_info payload")
                 continue
 
             file_format = self._infer_file_format(name)
             if file_format is None:
-                warnings.append(f"Skipped file with unsupported format: {name}")
+                warnings.append(
+                    f"Skipped file with unsupported format: {name}")
                 continue
 
             path = item.get("path")
@@ -629,7 +647,8 @@ class EMSLLoader(BaseLoader):
             )
 
         file_text = " ".join(str(file.get("path") or "") for file in files)
-        text = " ".join([sample_key, sample_value, resource_name, file_text]).lower()
+        text = " ".join([sample_key, sample_value,
+                        resource_name, file_text]).lower()
 
         mass_spec_patterns = (
             r"\borbitrap\b",
