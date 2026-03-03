@@ -1,0 +1,35 @@
+id: lambdaber:beamline_aps_19bm
+title: APS Beamline 19-BM (SBC)
+description: Structural Biology Center bending magnet beamline for macromolecular
+  crystallography
+instrument_code: SBC 19-BM
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: APS
+facility_ror: https://ror.org/04qxsr837
+beamline_id: 19-BM
+manufacturer: Argonne National Laboratory
+model: APS Beamline 19-BM
+installation_date: '2000-01-01'
+current_status: offline
+source_type: synchrotron
+detector_technology: ccd
+detector_manufacturer: ADSC
+detector_model: 315r
+energy_min:
+  unit: kiloelectronvolts
+  numeric_value: 6.0
+energy_max:
+  unit: kiloelectronvolts
+  numeric_value: 18.5
+beam_size_min:
+  unit: micrometers
+  numeric_value: 20.0
+beam_size_max:
+  unit: micrometers
+  numeric_value: 50.0
+flux_density:
+  unit: photons per second per square millimeter
+  numeric_value: 100000000000.0
+monochromator_type: Si(111) double crystal
+goniometer_type: SBC 19-BM
+crystal_cooling_capability: true
