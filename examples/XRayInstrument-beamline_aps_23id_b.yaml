@@ -1,34 +1,34 @@
 id: lambdaber:beamline_aps_23id_b
-beam_size_max:
-  unit: micrometers
-  numeric_value: 5.0
-beam_size_min:
-  unit: micrometers
-  numeric_value: 5.0
-beamline_id: 23-ID-B
-crystal_cooling_capability: true
-current_status: operational
+title: APS Beamline 23-ID-B (GM/CA)
 description: GM/CA canted-undulator beamline for macromolecular crystallography
+instrument_code: APS-23-ID-B
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: APS
+facility_ror: https://ror.org/04qxsr837
+beamline_id: 23-ID-B
+manufacturer: Argonne National Laboratory
+model: APS Beamline 23-ID-B
+installation_date: '2025-10-01'
+current_status: operational
+source_type: synchrotron
+detector_technology: hybrid_photon_counting
 detector_manufacturer: Dectris
 detector_model: ''
-detector_technology: hybrid_photon_counting
-energy_max:
-  unit: kiloelectronvolts
-  numeric_value: 20.0
 energy_min:
   unit: kiloelectronvolts
   numeric_value: 6.0
-facility_name: APS
-facility_ror: https://ror.org/04qxsr837
+energy_max:
+  unit: kiloelectronvolts
+  numeric_value: 20.0
+beam_size_min:
+  unit: micrometers
+  numeric_value: 5.0
+beam_size_max:
+  unit: micrometers
+  numeric_value: 5.0
 flux_density:
   unit: photons per second per square millimeter
   numeric_value: 38000000000000.0
-goniometer_type: 23-ID-B
-installation_date: '2025-10-01'
-instrument_category: SYNCHROTRON_BEAMLINE
-instrument_code: APS-23-ID-B
-manufacturer: Argonne National Laboratory
-model: APS Beamline 23-ID-B
 monochromator_type: DCM Si(111)
-source_type: synchrotron
-title: APS Beamline 23-ID-B (GM/CA)
+goniometer_type: 23-ID-B
+crystal_cooling_capability: true
