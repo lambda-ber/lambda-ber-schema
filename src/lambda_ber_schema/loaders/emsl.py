@@ -74,6 +74,7 @@ class EMSLLoader(BaseLoader):
             identifier: Either:
               - sample query (e.g., "apo")
               - transaction identifier prefixed with "tx:" (e.g., "tx:3736677")
+              - bare transaction identifier (e.g., "3736677")
         """
         normalized = identifier.strip()
         if not normalized:
@@ -84,6 +85,9 @@ class EMSLLoader(BaseLoader):
             if not tx.isdigit():
                 raise ValueError(f"Invalid transaction identifier: {identifier}")
             return self.load_transaction(int(tx))
+
+        if normalized.isdigit():
+            return self.load_transaction(int(normalized))
 
         return self.load_by_sample(sample_name=normalized)
 
