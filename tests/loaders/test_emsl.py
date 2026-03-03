@@ -135,6 +135,28 @@ class TestEMSLLoader:
         assert exp.operator_id == "48279"
         assert exp.acquisition_software == "EPU"
 
+    def test_infer_technique_avoids_ms_substring_false_positive(self):
+        """Plain words containing 'ms' should not trigger mass spectrometry."""
+        loader = EMSLLoader()
+        technique = loader._infer_technique(
+            sample_key="example.key",
+            sample_value="emsl_sample",
+            resource=None,
+            files=[],
+        )
+        assert technique == TechniqueEnum.cryo_em
+
+    def test_infer_technique_detects_lc_ms(self):
+        """Canonical LC-MS text should map to mass spectrometry."""
+        loader = EMSLLoader()
+        technique = loader._infer_technique(
+            sample_key="example.key",
+            sample_value="lc-ms profiling run",
+            resource=None,
+            files=[],
+        )
+        assert technique == TechniqueEnum.mass_spectrometry
+
     def test_instrument_and_associations_created(self, loader):
         """Instrument should be resolved and linked to experiment."""
         result = loader.load("apo")

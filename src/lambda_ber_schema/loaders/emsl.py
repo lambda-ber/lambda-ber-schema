@@ -597,7 +597,17 @@ class EMSLLoader(BaseLoader):
         file_text = " ".join(str(file.get("path") or "") for file in files)
         text = " ".join([sample_key, sample_value, resource_name, file_text]).lower()
 
-        if any(token in text for token in ("orbitrap", "lumos", "mass spect", "lc-ms", "ms")):
+        mass_spec_patterns = (
+            r"\borbitrap\b",
+            r"\blumos\b",
+            r"\bmass(?:\s|-)?spec(?:trometry)?\b",
+            r"\blc[-\s]?ms\b",
+            r"\bgc[-\s]?ms\b",
+            r"\bms/?ms\b",
+            r"\bms2\b",
+            r"\bms\b",
+        )
+        if any(re.search(pattern, text) for pattern in mass_spec_patterns):
             return TechniqueEnum.mass_spectrometry
         if "sans" in text:
             return TechniqueEnum.sans
