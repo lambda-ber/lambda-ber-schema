@@ -1,0 +1,45 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:instrument_ssrl_bl12_2 a lambdaber:XRayInstrument ;
+    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "BL12-2" ;
+    dcterms:title "SSRL BL12-2" ;
+    nsls2:Detector "hybrid_photon_counting" ;
+    lambdaber:beam_size_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "200.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:beam_size_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "15.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:crystal_cooling_capability true ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "Macromolecular crystallography beamline at Stanford Synchrotron Radiation Lightsource with microbeam capabilities and in-vacuum mini-gap undulator source optimized for MAD, SAD, and monochromatic data collection" ;
+    lambdaber:detector_manufacturer "Dectris" ;
+    lambdaber:detector_model "EIGER2X 16" ;
+    lambdaber:energy_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "17.0"^^xsd:float ;
+            lambdaber:unit "kiloelectronvolts" ] ;
+    lambdaber:energy_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "6.69"^^xsd:float ;
+            lambdaber:unit "kiloelectronvolts" ] ;
+    lambdaber:facility_name ROR:05gzmn429 ;
+    lambdaber:facility_ror "https://ror.org/05gzmn429"^^xsd:anyURI ;
+    lambdaber:flux_density [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "4000000000000.0"^^xsd:float ;
+            lambdaber:unit "photons per second" ] ;
+    lambdaber:goniometer_type "SSRL single-axis microdiffractometer" ;
+    lambdaber:installation_date "2007-03-23" ;
+    lambdaber:instrument_category CHMO:0001084 ;
+    lambdaber:instrument_code "SSRL-BL12-2" ;
+    lambdaber:manufacturer "SLAC National Accelerator Laboratory" ;
+    lambdaber:model "In-vacuum mini-gap undulator beamline" ;
+    lambdaber:monochromator_type "Si(111) double crystal, liquid nitrogen cooled" ;
+    lambdaber:source_type "synchrotron" .
+
