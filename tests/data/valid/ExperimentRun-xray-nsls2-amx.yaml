@@ -19,30 +19,26 @@ experimental_conditions:
     numeric_value: null
     unit: kilopascals
   atmosphere: null
-
-data_collection_strategy:
-  collection_mode: oscillation
-  detector: Eiger9
-  detector_distance:
-    numeric_value: 300.0
-    unit: millimeters
-  energy:
+  beam_energy:
     numeric_value: 13480.6
     unit: eV
-  wavelength:
-    numeric_value: 0.919723
-    unit: Angstroms
   exposure_time:
     numeric_value: 0.01
     unit: seconds
-  oscillation_width:
+
+data_collection_strategy:
+  collection_mode: oscillation
+  detector_distance_mm:
+    numeric_value: 300.0
+    unit: millimeters
+  wavelength_a:
+    numeric_value: 0.919723
+    unit: Angstroms
+  oscillation_per_image_deg:
     numeric_value: 0.1
     unit: degrees
-  sweep_start:
-    numeric_value: 0.01
-    unit: degrees
-  sweep_end:
-    numeric_value: 1.01
+  total_rotation_deg:
+    numeric_value: 1.0
     unit: degrees
   total_frames:
     numeric_value: 11
@@ -50,18 +46,25 @@ data_collection_strategy:
   frame_rate:
     numeric_value: 100
     unit: frames per second
-  attenuation:
-    numeric_value: 0.1
-    unit: fraction
-  beam_center_pixels:
-    xbeam: 1569.0
-    ybeam: 1542.02
+  transmission_percent:
+    numeric_value: 10.0
+    unit: percent
+  beam_center_x_px:
+    numeric_value: 1569.0
+    unit: pixels
+  beam_center_y_px:
+    numeric_value: 1542.02
+    unit: pixels
   total_dose:
     numeric_value: null
     unit: electrons per Angstrom squared
   dose_per_frame:
     numeric_value: null
     unit: electrons per Angstrom squared
+  strategy_notes: >
+    Detector model from source metadata: Eiger9. Sweep start/end from source
+    metadata: 0.01 to 1.01 degrees. Original attenuation reported as fraction
+    0.1 (mapped here to transmission_percent=10.0).
 
 quality_metrics:
   resolution:
