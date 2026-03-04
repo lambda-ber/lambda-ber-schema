@@ -8,7 +8,7 @@ API Documentation:
 
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 import requests
@@ -243,16 +243,19 @@ class EMSLLoader(BaseLoader):
 
         def parse_created(value: Any) -> datetime:
             if not value:
-                return datetime.min
+                return datetime.min.replace(tzinfo=timezone.utc)
             text = str(value).strip()
             if not text:
-                return datetime.min
+                return datetime.min.replace(tzinfo=timezone.utc)
             # EMSL timestamps may be naive ISO or UTC "Z"-suffixed.
             normalized = text.replace("Z", "+00:00")
             try:
-                return datetime.fromisoformat(normalized)
+                parsed = datetime.fromisoformat(normalized)
+                if parsed.tzinfo is None:
+                    return parsed.replace(tzinfo=timezone.utc)
+                return parsed.astimezone(timezone.utc)
             except ValueError:
-                return datetime.min
+                return datetime.min.replace(tzinfo=timezone.utc)
 
         def parse_tx_id(value: Any) -> int:
             try:

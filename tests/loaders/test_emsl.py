@@ -164,6 +164,18 @@ class TestEMSLLoader:
         assert any(
             "using most recent transaction 3736677" in w for w in result.warnings)
 
+    def test_sort_transactions_handles_mixed_naive_and_aware_timestamps(self):
+        """Sorting should work when created timestamps mix naive and timezone-aware values."""
+        loader = EMSLLoader()
+        transactions = [
+            {"transaction_id": 1, "created": "2026-02-15T15:46:44"},
+            {"transaction_id": 2, "created": "2026-02-15T15:46:45Z"},
+            {"transaction_id": 3, "created": "2026-02-15T15:46:46+00:00"},
+        ]
+
+        sorted_transactions = loader._sort_transactions(transactions)
+        assert [tx["transaction_id"] for tx in sorted_transactions] == [3, 2, 1]
+
     def test_dataset_has_expected_id_and_title(self, loader):
         """Dataset should use transaction-based identifier and project-derived title."""
         result = loader.load("apo")
