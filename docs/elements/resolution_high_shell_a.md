@@ -3,7 +3,7 @@
 # Slot: resolution_high_shell_a 
 
 
-_High resolution shell limit in Angstroms_
+_High resolution shell limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_high_shell_a
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: resolution_high_shell_a
 <details>
 ```yaml
 name: resolution_high_shell_a
-description: High resolution shell limit in Angstroms
+description: High resolution shell limit, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: resolution_high_shell_a
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

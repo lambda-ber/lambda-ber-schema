@@ -24,13 +24,49 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
       
       CryoEMInstrument : accelerating_voltage
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : accelerating_voltage
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : autoloader_capacity
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : autoloader_capacity
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       CryoEMInstrument : beamline_id
         
       CryoEMInstrument : c2_aperture
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : c2_aperture
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : cs
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : cs
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       CryoEMInstrument : cs_corrector
         
@@ -85,6 +121,15 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
         
       CryoEMInstrument : energy_filter_slit_width
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : energy_filter_slit_width
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : facility_name
         
           
@@ -99,6 +144,15 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
       CryoEMInstrument : facility_ror
         
       CryoEMInstrument : gunlens
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : gunlens
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       CryoEMInstrument : id
         
@@ -138,17 +192,62 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
         
       CryoEMInstrument : objective_aperture
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : objective_aperture
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : phase_plate
         
       CryoEMInstrument : phase_plate_type
         
       CryoEMInstrument : pixel_size_physical
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : pixel_size_physical
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : pixel_size_physical_um
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : pixel_size_physical_um
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       CryoEMInstrument : spotsize
         
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : spotsize
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       CryoEMInstrument : tem_beam_diameter
+        
+          
+    
+        
+        
+        CryoEMInstrument --> "0..1" QuantityValue : tem_beam_diameter
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       CryoEMInstrument : title
         
@@ -170,7 +269,7 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [accelerating_voltage](accelerating_voltage.md) | 0..1 <br/> [Integer](Integer.md) | Accelerating voltage in kV | direct |
+| [accelerating_voltage](accelerating_voltage.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Accelerating voltage in kV | direct |
 | [cs_corrector](cs_corrector.md) | 0..1 <br/> [Boolean](Boolean.md) | Spherical aberration corrector present | direct |
 | [phase_plate](phase_plate.md) | 0..1 <br/> [Boolean](Boolean.md) | Phase plate available | direct |
 | [detector_technology](detector_technology.md) | 0..1 <br/> [DetectorTechnologyEnum](DetectorTechnologyEnum.md) | Generic detector technology type | direct |
@@ -179,23 +278,23 @@ URI: [lambdaber:CryoEMInstrument](https://w3id.org/lambda-ber-schema/CryoEMInstr
 | [detector_mode](detector_mode.md) | 0..1 <br/> [DetectorModeEnum](DetectorModeEnum.md) | Supported or default detector operating mode | direct |
 | [detector_position](detector_position.md) | 0..1 <br/> [String](String.md) | Physical position of detector in microscope (e | direct |
 | [detector_dimensions](detector_dimensions.md) | 0..1 <br/> [String](String.md) | Detector dimensions in pixels (e | direct |
-| [pixel_size_physical_um](pixel_size_physical_um.md) | 0..1 <br/> [Float](Float.md) | Physical pixel size of the detector in micrometers | direct |
-| [autoloader_capacity](autoloader_capacity.md) | 0..1 <br/> [Integer](Integer.md) | Number of grids the autoloader can hold | direct |
-| [cs](cs.md) | 0..1 <br/> [Float](Float.md) | Spherical aberration (Cs) in millimeters | direct |
-| [c2_aperture](c2_aperture.md) | 0..1 <br/> [Float](Float.md) | C2 aperture size in micrometers | direct |
-| [objective_aperture](objective_aperture.md) | 0..1 <br/> [Float](Float.md) | Objective aperture size in micrometers | direct |
+| [pixel_size_physical_um](pixel_size_physical_um.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Physical pixel size of the detector in micrometers | direct |
+| [autoloader_capacity](autoloader_capacity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of grids the autoloader can hold | direct |
+| [cs](cs.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Spherical aberration (Cs) in millimeters | direct |
+| [c2_aperture](c2_aperture.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | C2 aperture size in micrometers | direct |
+| [objective_aperture](objective_aperture.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Objective aperture size in micrometers | direct |
 | [phase_plate_type](phase_plate_type.md) | 0..1 <br/> [String](String.md) | Type of phase plate if present | direct |
 | [energy_filter_present](energy_filter_present.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether energy filter is present | direct |
 | [energy_filter_make](energy_filter_make.md) | 0..1 <br/> [String](String.md) | Energy filter manufacturer | direct |
 | [energy_filter_model](energy_filter_model.md) | 0..1 <br/> [String](String.md) | Energy filter model | direct |
-| [energy_filter_slit_width](energy_filter_slit_width.md) | 0..1 <br/> [Float](Float.md) | Energy filter slit width in eV | direct |
-| [pixel_size_physical](pixel_size_physical.md) | 0..1 <br/> [Float](Float.md) | Physical pixel size in micrometers | direct |
+| [energy_filter_slit_width](energy_filter_slit_width.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Energy filter slit width in eV | direct |
+| [pixel_size_physical](pixel_size_physical.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Physical pixel size in micrometers | direct |
 | [microscope_software](microscope_software.md) | 0..1 <br/> [String](String.md) | Microscope control software (e | direct |
 | [microscope_software_version](microscope_software_version.md) | 0..1 <br/> [String](String.md) | Software version | direct |
-| [spotsize](spotsize.md) | 0..1 <br/> [Integer](Integer.md) | Electron beam spot size setting | direct |
-| [gunlens](gunlens.md) | 0..1 <br/> [Integer](Integer.md) | Gun lens setting | direct |
+| [spotsize](spotsize.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron beam spot size setting | direct |
+| [gunlens](gunlens.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Gun lens setting | direct |
 | [imaging_mode](imaging_mode.md) | 0..1 <br/> [ImagingModeEnum](ImagingModeEnum.md) | Imaging mode for electron microscopy | direct |
-| [tem_beam_diameter](tem_beam_diameter.md) | 0..1 <br/> [Float](Float.md) | TEM beam diameter in micrometers | direct |
+| [tem_beam_diameter](tem_beam_diameter.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | TEM beam diameter in micrometers | direct |
 | [instrument_code](instrument_code.md) | 1 <br/> [String](String.md) | Human-friendly facility or laboratory identifier for the instrument (e | [Instrument](Instrument.md) |
 | [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
 | [facility_name](facility_name.md) | 0..1 <br/> [FacilityEnum](FacilityEnum.md) | Name of the research facility where the instrument is located | [Instrument](Instrument.md) |
@@ -265,11 +364,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: integer
-    any_of:
-    - equals_number: 120
-    - equals_number: 200
-    - equals_number: 300
+    range: QuantityValue
+    inlined: true
   cs_corrector:
     name: cs_corrector
     description: Spherical aberration corrector present
@@ -352,14 +448,12 @@ attributes:
   pixel_size_physical_um:
     name: pixel_size_physical_um
     description: Physical pixel size of the detector in micrometers
-    comments:
-    - Hardware specification, independent of magnification
-    - Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   autoloader_capacity:
     name: autoloader_capacity
     description: Number of grids the autoloader can hold
@@ -367,7 +461,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   cs:
     name: cs
     description: Spherical aberration (Cs) in millimeters
@@ -375,7 +470,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   c2_aperture:
     name: c2_aperture
     description: C2 aperture size in micrometers
@@ -383,7 +479,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   objective_aperture:
     name: objective_aperture
     description: Objective aperture size in micrometers
@@ -391,7 +488,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   phase_plate_type:
     name: phase_plate_type
     description: Type of phase plate if present
@@ -431,7 +529,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   pixel_size_physical:
     name: pixel_size_physical
     description: Physical pixel size in micrometers
@@ -439,7 +538,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   microscope_software:
     name: microscope_software
     description: Microscope control software (e.g., SerialEM, EPU, Leginon)
@@ -463,7 +563,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   gunlens:
     name: gunlens
     description: Gun lens setting
@@ -471,7 +572,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   imaging_mode:
     name: imaging_mode
     description: Imaging mode for electron microscopy
@@ -487,7 +589,8 @@ attributes:
     rank: 1000
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -510,11 +613,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: integer
-    any_of:
-    - equals_number: 120
-    - equals_number: 200
-    - equals_number: 300
+    range: QuantityValue
+    inlined: true
   cs_corrector:
     name: cs_corrector
     description: Spherical aberration corrector present
@@ -613,16 +713,14 @@ attributes:
   pixel_size_physical_um:
     name: pixel_size_physical_um
     description: Physical pixel size of the detector in micrometers
-    comments:
-    - Hardware specification, independent of magnification
-    - Calibrated pixel size (Å/pixel) depends on magnification and is stored in ExperimentRun
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size_physical_um
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   autoloader_capacity:
     name: autoloader_capacity
     description: Number of grids the autoloader can hold
@@ -632,7 +730,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   cs:
     name: cs
     description: Spherical aberration (Cs) in millimeters
@@ -642,7 +741,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   c2_aperture:
     name: c2_aperture
     description: C2 aperture size in micrometers
@@ -652,7 +752,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   objective_aperture:
     name: objective_aperture
     description: Objective aperture size in micrometers
@@ -662,7 +763,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   phase_plate_type:
     name: phase_plate_type
     description: Type of phase plate if present
@@ -712,7 +814,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   pixel_size_physical:
     name: pixel_size_physical
     description: Physical pixel size in micrometers
@@ -722,7 +825,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   microscope_software:
     name: microscope_software
     description: Microscope control software (e.g., SerialEM, EPU, Leginon)
@@ -752,7 +856,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   gunlens:
     name: gunlens
     description: Gun lens setting
@@ -762,7 +867,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   imaging_mode:
     name: imaging_mode
     description: Imaging mode for electron microscopy
@@ -782,7 +888,8 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - CryoEMInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   instrument_code:
     name: instrument_code
     description: Human-friendly facility or laboratory identifier for the instrument
@@ -902,6 +1009,7 @@ attributes:
     owner: CryoEMInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

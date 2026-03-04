@@ -31,7 +31,7 @@ Alias: c2_aperture
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: c2_aperture
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

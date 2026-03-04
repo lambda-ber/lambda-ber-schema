@@ -69,8 +69,8 @@ samples:
     - calcium ions
   buffer_composition:
     ph:
-      numeric_value: 6.0
       unit: pH units
+      numeric_value: 6.0
     components:
     - 50mM MES buffer
     - 150mM NaCl
@@ -79,8 +79,8 @@ samples:
     - 1mM DTT
   storage_conditions:
     temperature:
-      numeric_value: 4.0
       unit: degrees Celsius
+      numeric_value: 4.0
     duration: 7 days
     atmosphere: argon-purged
 - id: lambdaber:sample-LOOS-002
@@ -96,15 +96,15 @@ samples:
     - N-glycosylation
   buffer_composition:
     ph:
-      numeric_value: 5.0
       unit: pH units
+      numeric_value: 5.0
     components:
     - Universal buffer system
     - 100mM NaCl
   storage_conditions:
     temperature:
-      numeric_value: 4.0
       unit: degrees Celsius
+      numeric_value: 4.0
 - id: lambdaber:sample-LOOS-003
   title: TrLOOL1 from Trichoderma reesei
   description: Loosenin homolog from Trichoderma reesei for comparative studies
@@ -117,15 +117,15 @@ samples:
     - calcium ions
   buffer_composition:
     ph:
-      numeric_value: 5.5
       unit: pH units
+      numeric_value: 5.5
     components:
     - 50mM sodium acetate
     - 200mM NaCl
   storage_conditions:
     temperature:
-      numeric_value: 4.0
       unit: degrees Celsius
+      numeric_value: 4.0
 - id: lambdaber:sample-LOOS-004
   title: PcaLOOL12-cellulose complex
   description: PcaLOOL12 protein in complex with microcrystalline cellulose
@@ -138,8 +138,8 @@ samples:
     - microcrystalline cellulose (Avicel PH-101)
   buffer_composition:
     ph:
-      numeric_value: 6.0
       unit: pH units
+      numeric_value: 6.0
     components:
     - 50mM MES buffer
     - 150mM NaCl
@@ -147,8 +147,8 @@ samples:
     - 10mg/mL Avicel cellulose
   storage_conditions:
     temperature:
-      numeric_value: 4.0
       unit: degrees Celsius
+      numeric_value: 4.0
 sample_preparations:
 - id: lambdaber:prep-saxs-001
   title: SAXS sample preparation
@@ -207,8 +207,8 @@ workflow_runs:
   workflow_type: saxs_analysis
   software_name: ATSAS
   processing_level:
-    numeric_value: 2.0
     unit: level
+    numeric_value: 2.0
   software_version: 3.2.1
 - id: lambdaber:wf-mx-001
   title: Crystal structure determination
@@ -217,8 +217,8 @@ workflow_runs:
   workflow_type: phasing
   software_name: PHENIX
   processing_level:
-    numeric_value: 3.0
     unit: level
+    numeric_value: 3.0
   software_version: 1.20.1
 - id: lambdaber:wf-cryoem-001
   title: Single particle reconstruction
@@ -227,8 +227,8 @@ workflow_runs:
   workflow_type: refinement
   software_name: RELION
   processing_level:
-    numeric_value: 3.0
     unit: level
+    numeric_value: 3.0
   software_version: '4.0'
 - id: lambdaber:wf-integrative-001
   title: Integrative modeling
@@ -237,8 +237,8 @@ workflow_runs:
   workflow_type: model_building
   software_name: IMP
   processing_level:
-    numeric_value: 2.0
     unit: level
+    numeric_value: 2.0
   software_version: '2.18'
 data_files:
 - id: lambdaber:df-saxs-001
@@ -248,8 +248,8 @@ data_files:
   file_format: ascii
   file_path: /data/saxs/2025/loosenin/
   file_size_bytes:
-    numeric_value: 2500000.0
     unit: bytes
+    numeric_value: 2500000.0
   data_type: scattering
 - id: lambdaber:df-sans-001
   title: SANS complex data
@@ -258,8 +258,8 @@ data_files:
   file_format: ascii
   file_path: /data/sans/2025/loosenin/
   file_size_bytes:
-    numeric_value: 1800000.0
     unit: bytes
+    numeric_value: 1800000.0
   data_type: scattering
 - id: lambdaber:df-mx-001
   title: X-ray diffraction data
@@ -268,8 +268,8 @@ data_files:
   file_format: mtz
   file_path: /data/mx/2025/loosenin/
   file_size_bytes:
-    numeric_value: 45000000.0
     unit: bytes
+    numeric_value: 45000000.0
   data_type: diffraction
 - id: lambdaber:df-pdb-001
   title: Refined crystal structure
@@ -278,8 +278,8 @@ data_files:
   file_format: pdb
   file_path: /data/mx/2025/loosenin/
   file_size_bytes:
-    numeric_value: 800000.0
     unit: bytes
+    numeric_value: 800000.0
   data_type: model
 - id: lambdaber:df-cryoem-001
   title: CryoEM particle stack
@@ -288,8 +288,8 @@ data_files:
   file_format: star
   file_path: /data/cryoem/2025/loosenin/
   file_size_bytes:
-    numeric_value: 125000000000.0
     unit: bytes
+    numeric_value: 125000000000.0
   data_type: particles
 - id: lambdaber:df-map-001
   title: CryoEM density map
@@ -298,8 +298,8 @@ data_files:
   file_format: mrc
   file_path: /data/cryoem/2025/loosenin/
   file_size_bytes:
-    numeric_value: 512000000.0
     unit: bytes
+    numeric_value: 512000000.0
   data_type: volume
 images:
 - id: lambdaber:img-saxs-001

@@ -3,7 +3,7 @@
 # Slot: resolution_at_corner 
 
 
-_Resolution at corner of detector in Angstroms_
+_Resolution at corner of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_at_corner
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: resolution_at_corner
 <details>
 ```yaml
 name: resolution_at_corner
-description: Resolution at corner of detector in Angstroms
+description: Resolution at corner of detector, typically specified in Angstroms (Å).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - ispyb:DataCollection.resolutionAtCorner
@@ -76,9 +77,8 @@ alias: resolution_at_corner
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 ```
 </details>

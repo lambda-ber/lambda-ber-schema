@@ -3,7 +3,7 @@
 # Slot: beam_size_um 
 
 
-_Beam size in micrometers_
+_Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: beam_size_um
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: beam_size_um
 <details>
 ```yaml
 name: beam_size_um
-description: Beam size in micrometers
+description: Beam size, typically specified in micrometers. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: beam_size_um
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

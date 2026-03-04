@@ -1,4 +1,4 @@
-# lambda-ber-schema
+# lambda-ber-schema-schema
 
 lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
 from atomic-resolution structures to tissue-level organization. It supports diverse experimental 

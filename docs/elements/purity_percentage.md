@@ -3,7 +3,7 @@
 # Slot: purity_percentage 
 
 
-_Sample purity as percentage (range: 0-100)_
+_Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue._
 
 
 
@@ -31,11 +31,7 @@ Alias: purity_percentage
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 100
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,16 +66,16 @@ Alias: purity_percentage
 <details>
 ```yaml
 name: purity_percentage
-description: 'Sample purity as percentage (range: 0-100)'
+description: 'Sample purity, typically specified as a percentage (range: 0-100). Data
+  providers may specify as decimal fraction by including the unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: purity_percentage
 owner: Sample
 domain_of:
 - Sample
-range: float
-minimum_value: 0
-maximum_value: 100
+range: QuantityValue
+inlined: true
 
 ```
 </details>

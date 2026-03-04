@@ -3,7 +3,7 @@
 # Slot: slit_gap_vertical 
 
 
-_Vertical slit gap aperture in micrometers_
+_Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: slit_gap_vertical
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: slit_gap_vertical
 <details>
 ```yaml
 name: slit_gap_vertical
-description: Vertical slit gap aperture in micrometers
+description: Vertical slit gap aperture, typically specified in micrometers (µm).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - ispyb:DataCollection.slitGapVertical
@@ -76,9 +77,8 @@ alias: slit_gap_vertical
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: um
+range: QuantityValue
+inlined: true
 
 ```
 </details>

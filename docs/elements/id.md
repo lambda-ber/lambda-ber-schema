@@ -3,11 +3,6 @@
 # Slot: id 
 
 
-_Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration._
-
-
-
-
 
 URI: [lambdaber:id](https://w3id.org/lambda-ber-schema/id)
 Alias: id
@@ -22,40 +17,41 @@ Alias: id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
-| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
-| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
-| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
-| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
-| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
-| [Image](Image.md) | An image file from structural biology experiments |  no  |
-| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
-| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
-| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
-| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
-| [ConformationalEnsemble](ConformationalEnsemble.md) | Ensemble of conformational states for a protein |  no  |
-| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
-| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
-| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
-| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
-| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
-| [Dataset](Dataset.md) | A collection of studies |  no  |
-| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
-| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
-| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
-| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
-| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
-| [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
-| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
+| [Attribute](Attribute.md) | A domain, measurement, attribute, property, or any descriptor for additional ... |  no  |
 | [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
-| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [ProteinAnnotation](ProteinAnnotation.md) | Base class for all protein-related functional and structural annotations |  no  |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
-| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
-| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
 | [NamedThing](NamedThing.md) | A named thing |  no  |
+| [XRayInstrument](XRayInstrument.md) | X-ray diffractometer or synchrotron beamline specifications |  no  |
+| [WorkflowRun](WorkflowRun.md) | A computational processing workflow execution |  no  |
+| [Micrograph](Micrograph.md) | Motion-corrected micrograph derived from movie |  no  |
+| [OntologyTerm](OntologyTerm.md) | A term from a controlled vocabulary or ontology |  no  |
+| [Image](Image.md) | An image file from structural biology experiments |  no  |
+| [EvolutionaryConservation](EvolutionaryConservation.md) | Evolutionary conservation information |  no  |
+| [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
+| [Image3D](Image3D.md) | A 3D volume or tomogram |  no  |
+| [FTIRImage](FTIRImage.md) | Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp... |  no  |
+| [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [Sample](Sample.md) | A biological sample used in structural biology experiments |  no  |
+| [AggregatedProteinView](AggregatedProteinView.md) | Aggregated view of all structural and functional data for a protein |  no  |
+| [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [MutationEffect](MutationEffect.md) | Effects of mutations and variants on protein structure and function |  no  |
+| [StructuralFeature](StructuralFeature.md) | Structural features and properties of protein regions |  no  |
+| [PostTranslationalModification](PostTranslationalModification.md) | Post-translational modifications observed or predicted |  no  |
+| [ProteinConstruct](ProteinConstruct.md) | Detailed information about a protein construct including cloning and sequence... |  no  |
+| [Movie](Movie.md) | Raw cryo-EM movie with frame-by-frame metadata for motion correction |  no  |
+| [BeamlineInstrument](BeamlineInstrument.md) | Multi-technique synchrotron beamline that supports multiple experimental meth... |  no  |
+| [Instrument](Instrument.md) | An instrument used to collect data |  no  |
+| [DataFile](DataFile.md) | A data file generated or used in the study |  no  |
+| [ConformationalEnsemble](ConformationalEnsemble.md) | Ensemble of conformational states for a protein |  no  |
+| [Study](Study.md) | A logical grouping of related experiments investigating a research question |  no  |
+| [SAXSInstrument](SAXSInstrument.md) | SAXS/WAXS instrument specifications |  no  |
+| [CryoEMInstrument](CryoEMInstrument.md) | Cryo-EM microscope specifications |  no  |
+| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [ProteinProteinInteraction](ProteinProteinInteraction.md) | Protein-protein interactions and interfaces |  no  |
+| [FunctionalSite](FunctionalSite.md) | Functional sites including catalytic, binding, and regulatory sites |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -64,9 +60,7 @@ Alias: id
 
 ## Properties
 
-* Range: [Uriorcurie](Uriorcurie.md)
-
-* Required: True
+* Range: [String](String.md)
 
 
 
@@ -75,13 +69,6 @@ Alias: id
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -101,17 +88,11 @@ Alias: id
 <details>
 ```yaml
 name: id
-description: Globally unique identifier as an IRI or CURIE for machine processing
-  and external references. Used for linking data across systems and semantic web integration.
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
-identifier: true
 alias: id
-owner: NamedThing
 domain_of:
 - NamedThing
-range: uriorcurie
-required: true
+- Attribute
+range: string
 
 ```
 </details>

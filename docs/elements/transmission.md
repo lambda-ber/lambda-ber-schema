@@ -3,7 +3,7 @@
 # Slot: transmission 
 
 
-_X-ray beam transmission as percentage (0-100)_
+_X-ray beam transmission as a percentage (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,11 +31,7 @@ Alias: transmission
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 100
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -75,7 +71,8 @@ Alias: transmission
 <details>
 ```yaml
 name: transmission
-description: X-ray beam transmission as percentage (0-100)
+description: X-ray beam transmission as a percentage (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 comments:
 - Percentage of full beam intensity used
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -86,11 +83,8 @@ alias: transmission
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-minimum_value: 0
-maximum_value: 100
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: wavenumber_min 
 
 
-_Minimum wavenumber in cm⁻¹_
+_Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: wavenumber_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: wavenumber_min
 <details>
 ```yaml
 name: wavenumber_min
-description: Minimum wavenumber in cm⁻¹
+description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: wavenumber_min
 owner: FTIRImage
 domain_of:
 - FTIRImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

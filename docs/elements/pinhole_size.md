@@ -3,7 +3,7 @@
 # Slot: pinhole_size 
 
 
-_Pinhole size in Airy units for confocal microscopy_
+_Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: pinhole_size
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: pinhole_size
 <details>
 ```yaml
 name: pinhole_size
-description: Pinhole size in Airy units for confocal microscopy
+description: Pinhole size, typically specified in Airy units for confocal microscopy.
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pinhole_size
 owner: FluorescenceImage
 domain_of:
 - FluorescenceImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

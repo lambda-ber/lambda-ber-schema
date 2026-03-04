@@ -3,7 +3,7 @@
 # Slot: molecular_weight 
 
 
-_Molecular weight in kDa_
+_Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: molecular_weight
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,16 +66,17 @@ Alias: molecular_weight
 <details>
 ```yaml
 name: molecular_weight
-description: Molecular weight in kDa
+description: Molecular weight, typically specified in kilodaltons (kDa). Data providers
+  may specify alternative units (e.g., Daltons, g/mol) by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: molecular_weight
 owner: Sample
 domain_of:
 - Sample
-range: float
-unit:
-  ucum_code: kDa
+range: QuantityValue
+inlined: true
 
 ```
 </details>

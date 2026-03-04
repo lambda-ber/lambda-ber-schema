@@ -3,7 +3,7 @@
 # Slot: astigmatism_angle 
 
 
-_Astigmatism angle in degrees_
+_Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: astigmatism_angle
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: astigmatism_angle
 <details>
 ```yaml
 name: astigmatism_angle
-description: Astigmatism angle in degrees
+description: Astigmatism angle, typically specified in degrees. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: astigmatism_angle
 owner: Micrograph
 domain_of:
 - Micrograph
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

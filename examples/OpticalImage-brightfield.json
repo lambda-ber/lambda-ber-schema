@@ -5,41 +5,41 @@
   "file_name": "tissue_section_h&e_10x.tif",
   "acquisition_date": "2024-05-18T11:45:00",
   "pixel_size": {
-    "numeric_value": 0.65,
-    "unit": "Angstroms"
+    "unit": "Angstroms",
+    "numeric_value": 0.65
   },
   "dimensions_x": {
-    "numeric_value": 4096.0,
-    "unit": "pixels"
+    "unit": "pixels",
+    "numeric_value": 4096.0
   },
   "dimensions_y": {
-    "numeric_value": 3072.0,
-    "unit": "pixels"
+    "unit": "pixels",
+    "numeric_value": 3072.0
   },
   "exposure_time": {
-    "numeric_value": 0.05,
-    "unit": "seconds"
+    "unit": "seconds",
+    "numeric_value": 0.05
   },
   "dose": {
-    "numeric_value": 0.0,
-    "unit": "electrons per Angstrom squared"
+    "unit": "electrons per Angstrom squared",
+    "numeric_value": 0.0
   },
   "defocus": {
-    "numeric_value": 0.0,
-    "unit": "micrometers"
+    "unit": "micrometers",
+    "numeric_value": 0.0
   },
   "astigmatism": {
-    "numeric_value": 0.0,
-    "unit": "Angstroms"
+    "unit": "Angstroms",
+    "numeric_value": 0.0
   },
   "illumination_type": "brightfield",
   "magnification": {
-    "numeric_value": 10.0,
-    "unit": "times"
+    "unit": "times",
+    "numeric_value": 10.0
   },
   "numerical_aperture": {
-    "numeric_value": 0.25,
-    "unit": "dimensionless"
+    "unit": "dimensionless",
+    "numeric_value": 0.25
   },
   "color_channels": [
     "Red",

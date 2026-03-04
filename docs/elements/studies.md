@@ -3,7 +3,7 @@
 # Slot: studies 
 
 
-_Individual research studies contained in this dataset_
+_All studies in this dataset_
 
 
 
@@ -22,7 +22,7 @@ Alias: studies
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Dataset](Dataset.md) | A collection of studies |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,7 +68,7 @@ Alias: studies
 <details>
 ```yaml
 name: studies
-description: Individual research studies contained in this dataset
+description: All studies in this dataset
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: studies

@@ -37,17 +37,62 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
         
       Image : dimensions_x
         
+          
+    
+        
+        
+        Image --> "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image : dimensions_y
+        
+          
+    
+        
+        
+        Image --> "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Image : dose
         
+          
+    
+        
+        
+        Image --> "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image : exposure_time
+        
+          
+    
+        
+        
+        Image --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Image : file_name
         
       Image : id
         
       Image : pixel_size
+        
+          
+    
+        
+        
+        Image --> "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Image : title
         
@@ -73,11 +118,11 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 | ---  | --- | --- | --- |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | direct |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | direct |
-| [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | direct |
-| [dimensions_x](dimensions_x.md) | 0..1 <br/> [Integer](Integer.md) | Image width in pixels | direct |
-| [dimensions_y](dimensions_y.md) | 0..1 <br/> [Integer](Integer.md) | Image height in pixels | direct |
-| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | direct |
-| [dose](dose.md) | 0..1 <br/> [Float](Float.md) | Electron dose in e-/Å² | direct |
+| [pixel_size](pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size, typically specified in Angstroms | direct |
+| [dimensions_x](dimensions_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image width, typically specified in pixels | direct |
+| [dimensions_y](dimensions_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image height, typically specified in pixels | direct |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time, typically specified in seconds | direct |
+| [dose](dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose in e-/Å² | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -90,7 +135,7 @@ URI: [lambdaber:Image](https://w3id.org/lambda-ber-schema/Image)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [images](images.md) | range | [Image](Image.md) |
+| [Dataset](Dataset.md) | [images](images.md) | range | [Image](Image.md) |
 
 
 
@@ -156,38 +201,46 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -196,7 +249,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -233,7 +287,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -241,30 +296,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: Image
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: Image
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: Image
@@ -272,7 +333,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -283,7 +345,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -296,6 +359,7 @@ attributes:
     owner: Image
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

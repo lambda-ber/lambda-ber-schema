@@ -3,7 +3,7 @@
 # Slot: pressure 
 
 
-_Pressure in kPa_
+_Pressure, typically specified in kilopascals (kPa). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: pressure
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: pressure
 <details>
 ```yaml
 name: pressure
-description: Pressure in kPa
+description: Pressure, typically specified in kilopascals (kPa). Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: pressure
 owner: ExperimentalConditions
 domain_of:
 - ExperimentalConditions
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

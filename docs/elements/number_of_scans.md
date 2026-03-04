@@ -31,7 +31,7 @@ Alias: number_of_scans
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: number_of_scans
 owner: FTIRImage
 domain_of:
 - FTIRImage
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

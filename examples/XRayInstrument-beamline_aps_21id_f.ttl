@@ -1,0 +1,45 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:beamline_aps_21id_f a lambdaber:XRayInstrument ;
+    mmCIF:_diffrn_source.pdbx_synchrotron_beamline "21-ID-F" ;
+    dcterms:title "APS Beamline 21-ID-F (LS-CAT)" ;
+    nsls2:Detector "hybrid_photon_counting" ;
+    lambdaber:beam_size_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "50.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:beam_size_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "50.0"^^xsd:float ;
+            lambdaber:unit "micrometers" ] ;
+    lambdaber:crystal_cooling_capability true ;
+    lambdaber:current_status "operational" ;
+    lambdaber:description "LS-CAT beamline for macromolecular crystallography" ;
+    lambdaber:detector_manufacturer "Dectris" ;
+    lambdaber:detector_model "EIGER 9M" ;
+    lambdaber:energy_max [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "12.7"^^xsd:float ;
+            lambdaber:unit "kiloelectronvolts" ] ;
+    lambdaber:energy_min [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "12.7"^^xsd:float ;
+            lambdaber:unit "kiloelectronvolts" ] ;
+    lambdaber:facility_name ROR:05gvnxz63 ;
+    lambdaber:facility_ror "https://ror.org/04qxsr837"^^xsd:anyURI ;
+    lambdaber:flux_density [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1000000000000.0"^^xsd:float ;
+            lambdaber:unit "photons per second per square millimeter" ] ;
+    lambdaber:goniometer_type "21-ID-F" ;
+    lambdaber:installation_date "2010-01-01" ;
+    lambdaber:instrument_category CHMO:0001084 ;
+    lambdaber:instrument_code "APS-21-ID-F" ;
+    lambdaber:manufacturer "Argonne National Laboratory" ;
+    lambdaber:model "APS Beamline 21-ID-F (LS-CAT)" ;
+    lambdaber:monochromator_type "Si(111) double crystal" ;
+    lambdaber:source_type "synchrotron" .
+

@@ -31,7 +31,7 @@ Alias: total_frames
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: total_frames
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

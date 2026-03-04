@@ -31,14 +31,10 @@ Alias: ispyb_auto_proc_program_id
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Links to ISPyB processing program record
 
 ## Identifier and Mapping Information
 
@@ -61,7 +57,6 @@ Alias: ispyb_auto_proc_program_id
 | ---  | ---  |
 | self | lambdaber:ispyb_auto_proc_program_id |
 | native | lambdaber:ispyb_auto_proc_program_id |
-| exact | ispyb:AutoProcProgram.autoProcProgramId |
 
 
 
@@ -72,17 +67,14 @@ Alias: ispyb_auto_proc_program_id
 ```yaml
 name: ispyb_auto_proc_program_id
 description: ISPyB AutoProcProgram.autoProcProgramId
-comments:
-- Links to ISPyB processing program record
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcProgram.autoProcProgramId
 rank: 1000
 alias: ispyb_auto_proc_program_id
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: resolution_low 
 
 
-_Low resolution limit_
+_Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_low
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: resolution_low
 <details>
 ```yaml
 name: resolution_low
-description: Low resolution limit
+description: Low resolution limit, typically specified in Angstroms (Å). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Resolution_Low_A
@@ -78,9 +79,8 @@ alias: resolution_low
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 ```
 </details>

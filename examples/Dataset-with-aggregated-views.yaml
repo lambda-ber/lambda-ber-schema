@@ -23,11 +23,11 @@ samples:
   molecular_composition:
     description: Human p53 N-terminal domain with MDM2
   molecular_weight:
-    numeric_value: 45.5
     unit: kilodaltons
+    numeric_value: 45.5
   concentration:
-    numeric_value: 8.0
     unit: milligrams per milliliter
+    numeric_value: 8.0
   functional_sites:
   - id: lambdaber:func-site-001
     protein_id: P04637
@@ -61,11 +61,11 @@ experiment_runs:
   technique: cryo_em
   quality_metrics:
     resolution:
-      numeric_value: 3.2
       unit: Angstroms
+      numeric_value: 3.2
     completeness:
-      numeric_value: 99.5
       unit: percent
+      numeric_value: 99.5
 workflow_runs:
 - id: lambdaber:wf-run-001
   title: 3D reconstruction of p53-MDM2 complex

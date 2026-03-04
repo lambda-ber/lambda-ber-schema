@@ -267,6 +267,7 @@
                 "ALS_BL821",
                 "ALS_BL822",
                 "ALS_BL831",
+                "ALS_BL832",
                 "ALS_BL1222",
                 "NSLS2_FMX",
                 "NSLS2_AMX",
@@ -305,9 +306,17 @@
                         "null"
                     ]
                 },
+                "control_system": {
+                    "$ref": "#/$defs/ControlSystemEnum",
+                    "description": "Low-level control system for device communication"
+                },
                 "current_status": {
                     "$ref": "#/$defs/InstrumentStatusEnum",
                     "description": "Current operational status"
+                },
+                "daq_system": {
+                    "$ref": "#/$defs/DataAcquisitionSystemEnum",
+                    "description": "Data acquisition system used for experiment orchestration"
                 },
                 "description": {
                     "description": "A detailed textual description of this entity",
@@ -368,6 +377,10 @@
                 "instrument_code": {
                     "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
+                },
+                "lims_system": {
+                    "$ref": "#/$defs/LIMSSystemEnum",
+                    "description": "Laboratory Information Management System used at this beamline"
                 },
                 "mail_in_service": {
                     "description": "Whether mail-in sample service is available",
@@ -953,6 +966,17 @@
                 "disordered"
             ],
             "title": "ConformationalStateEnum",
+            "type": "string"
+        },
+        "ControlSystemEnum": {
+            "description": "Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.",
+            "enum": [
+                "epics",
+                "tango",
+                "labview",
+                "opi"
+            ],
+            "title": "ControlSystemEnum",
             "type": "string"
         },
         "CryoEMInstrument": {
@@ -1599,6 +1623,20 @@
                 "free_interface_diffusion"
             ],
             "title": "CrystallizationMethodEnum",
+            "type": "string"
+        },
+        "DataAcquisitionSystemEnum": {
+            "description": "Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.",
+            "enum": [
+                "bluesky",
+                "spec",
+                "sardana",
+                "gda",
+                "mxcube_daq",
+                "blu_ice",
+                "jblue_ice"
+            ],
+            "title": "DataAcquisitionSystemEnum",
             "type": "string"
         },
         "DataCollectionStrategy": {
@@ -2568,6 +2606,10 @@
                         }
                     ],
                     "description": "Coma aberration in nanometers"
+                },
+                "daq_system": {
+                    "$ref": "#/$defs/DataAcquisitionSystemEnum",
+                    "description": "Data acquisition system used to collect this experiment"
                 },
                 "data_collection_strategy": {
                     "anyOf": [
@@ -4418,6 +4460,19 @@
             "title": "InteractionTypeEnum",
             "type": "string"
         },
+        "LIMSSystemEnum": {
+            "description": "Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.",
+            "enum": [
+                "ispyb",
+                "ispyb_diamond",
+                "icat",
+                "mxlive",
+                "mxcube_lims",
+                "user_office"
+            ],
+            "title": "LIMSSystemEnum",
+            "type": "string"
+        },
         "LigandInteraction": {
             "additionalProperties": false,
             "description": "Small molecule/ligand interactions with proteins",
@@ -5896,6 +5951,7 @@
         "ProcessingStatusEnum": {
             "description": "Processing status",
             "enum": [
+                "collected",
                 "raw",
                 "preprocessing",
                 "processing",
@@ -6767,8 +6823,11 @@
                     ]
                 },
                 "numeric_value": {
-                    "description": "The numerical value of the quantity",
-                    "type": "number"
+                    "description": "The numerical value of the quantity. May be null if the value is unknown or not measured.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "raw_value": {
                     "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
@@ -6790,7 +6849,6 @@
                 }
             },
             "required": [
-                "numeric_value",
                 "unit"
             ],
             "title": "QuantityValue",
@@ -8168,7 +8226,8 @@
                 "xmcd",
                 "neutron_crystallography",
                 "fiber_diffraction",
-                "time_resolved_crystallography"
+                "time_resolved_crystallography",
+                "xray_tomography"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -9772,5 +9831,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post31.dev0+a94024b"
+    "version": "0.1.2.post32.dev0+2ad9ef5"
 }

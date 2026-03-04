@@ -3,7 +3,7 @@
 # Slot: wilson_b_factor 
 
 
-_Wilson B-factor_
+_Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: wilson_b_factor
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: wilson_b_factor
 <details>
 ```yaml
 name: wilson_b_factor
-description: Wilson B-factor
+description: Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Wilson_B
@@ -77,9 +78,8 @@ alias: wilson_b_factor
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: Ao2
+range: QuantityValue
+inlined: true
 
 ```
 </details>

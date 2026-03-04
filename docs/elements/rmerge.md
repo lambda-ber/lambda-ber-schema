@@ -31,7 +31,7 @@ Alias: rmerge
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: rmerge
 | ---  | ---  |
 | self | lambdaber:rmerge |
 | native | lambdaber:rmerge |
-| exact | nsls2:Rmerge, mmCIF:_reflns.pdbx_Rmerge_I_obs, ispyb:AutoProcScalingStatistics.rMerge |
 
 
 
@@ -69,16 +68,13 @@ Alias: rmerge
 name: rmerge
 description: Rmerge - merge R-factor
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Rmerge
-- mmCIF:_reflns.pdbx_Rmerge_I_obs
-- ispyb:AutoProcScalingStatistics.rMerge
 rank: 1000
 alias: rmerge
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

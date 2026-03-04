@@ -17,8 +17,9 @@ Alias: sample_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentRun](ExperimentRun.md) | An experimental data collection session |  no  |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | M:N link between ExperimentRun and Sample with role metadata |  no  |
 | [SamplePreparation](SamplePreparation.md) | A process that prepares a sample for imaging |  no  |
+| [StudySampleAssociation](StudySampleAssociation.md) | M:N link between Study and Sample with role metadata |  no  |
 
 
 
@@ -58,7 +59,8 @@ name: sample_id
 alias: sample_id
 domain_of:
 - SamplePreparation
-- ExperimentRun
+- StudySampleAssociation
+- ExperimentSampleAssociation
 range: string
 
 ```

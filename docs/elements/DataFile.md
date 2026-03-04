@@ -58,6 +58,15 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
         
       DataFile : file_size_bytes
         
+          
+    
+        
+        
+        DataFile --> "0..1" QuantityValue : file_size_bytes
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       DataFile : id
         
       DataFile : related_entity
@@ -86,7 +95,7 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Name of the file | direct |
 | [file_path](file_path.md) | 0..1 <br/> [String](String.md) | Path to the file | direct |
 | [file_format](file_format.md) | 1 <br/> [FileFormatEnum](FileFormatEnum.md) | File format | direct |
-| [file_size_bytes](file_size_bytes.md) | 0..1 <br/> [Integer](Integer.md) | File size in bytes | direct |
+| [file_size_bytes](file_size_bytes.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | File size in bytes | direct |
 | [checksum](checksum.md) | 0..1 <br/> [String](String.md) | SHA-256 checksum for data integrity | direct |
 | [creation_date](creation_date.md) | 0..1 <br/> [String](String.md) | File creation date | direct |
 | [data_type](data_type.md) | 0..1 <br/> [DataTypeEnum](DataTypeEnum.md) | Type of data in the file | direct |
@@ -105,8 +114,10 @@ URI: [lambdaber:DataFile](https://w3id.org/lambda-ber-schema/DataFile)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [data_files](data_files.md) | range | [DataFile](DataFile.md) |
+| [Dataset](Dataset.md) | [data_files](data_files.md) | range | [DataFile](DataFile.md) |
 | [WorkflowRun](WorkflowRun.md) | [output_files](output_files.md) | range | [DataFile](DataFile.md) |
+| [WorkflowInputAssociation](WorkflowInputAssociation.md) | [file_id](file_id.md) | range | [DataFile](DataFile.md) |
+| [WorkflowOutputAssociation](WorkflowOutputAssociation.md) | [file_id](file_id.md) | range | [DataFile](DataFile.md) |
 
 
 
@@ -186,7 +197,8 @@ attributes:
     rank: 1000
     domain_of:
     - DataFile
-    range: integer
+    range: QuantityValue
+    inlined: true
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
@@ -289,7 +301,8 @@ attributes:
     owner: DataFile
     domain_of:
     - DataFile
-    range: integer
+    range: QuantityValue
+    inlined: true
   checksum:
     name: checksum
     description: SHA-256 checksum for data integrity
@@ -362,6 +375,7 @@ attributes:
     owner: DataFile
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

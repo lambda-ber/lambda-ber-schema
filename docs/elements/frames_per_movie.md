@@ -31,7 +31,7 @@ Alias: frames_per_movie
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: frames_per_movie
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

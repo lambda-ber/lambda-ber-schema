@@ -31,7 +31,7 @@ Alias: rwork
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: rwork
 | ---  | ---  |
 | self | lambdaber:rwork |
 | native | lambdaber:rwork |
-| exact | nsls2:Rwork, mmCIF:_refine.ls_R_factor_R_work |
 
 
 
@@ -69,15 +68,13 @@ Alias: rwork
 name: rwork
 description: Refinement R-factor (working set)
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Rwork
-- mmCIF:_refine.ls_R_factor_R_work
 rank: 1000
 alias: rwork
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -108,3 +108,4 @@ gh-invite-the-dragon:
 
 import "project.justfile"
 import "sync.justfile"
+import "etl.justfile"

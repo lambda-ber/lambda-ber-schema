@@ -21,6 +21,14 @@ URI: [lambdaber:TechniqueEnum](https://w3id.org/lambda-ber-schema/TechniqueEnum)
 | cryo_et | CHMO:0002413 | Cryo-electron tomography |
 | electron_microscopy | CHMO:0000068 | General electron microscopy |
 | mass_spectrometry | CHMO:0000470 | Mass spectrometry |
+| xas | CHMO:0000298 | X-ray absorption spectroscopy |
+| xanes | CHMO:0000305 | X-ray absorption near edge structure spectroscopy |
+| exafs | CHMO:0000300 | Extended X-ray absorption fine structure spectroscopy |
+| xmcd | None | X-ray magnetic circular dichroism |
+| neutron_crystallography | CHMO:0000182 | Neutron macromolecular crystallography |
+| fiber_diffraction | CHMO:0000156 | Fiber diffraction for structural analysis of fibrous samples |
+| time_resolved_crystallography | CHMO:0000156 | Time-resolved macromolecular crystallography |
+| xray_tomography | CHMO:0002743 | X-ray computed tomography (micro-CT) for 3D imaging |
 
 
 
@@ -104,6 +112,67 @@ permissible_values:
     text: mass_spectrometry
     description: Mass spectrometry
     meaning: CHMO:0000470
+  xas:
+    text: xas
+    description: X-ray absorption spectroscopy
+    meaning: CHMO:0000298
+    exact_mappings:
+    - PaNET:01196
+  xanes:
+    text: xanes
+    description: X-ray absorption near edge structure spectroscopy
+    meaning: CHMO:0000305
+    comments:
+    - Also known as NEXAFS (near-edge X-ray absorption fine structure)
+    - Used for electronic structure, oxidation state, coordination geometry
+    exact_mappings:
+    - PaNET:01199
+  exafs:
+    text: exafs
+    description: Extended X-ray absorption fine structure spectroscopy
+    meaning: CHMO:0000300
+    comments:
+    - Used for local atomic structure around specific elements
+    - Commonly used for metalloprotein active site characterization
+    exact_mappings:
+    - PaNET:01198
+  xmcd:
+    text: xmcd
+    description: X-ray magnetic circular dichroism
+    comments:
+    - Element-specific magnetometry technique
+    exact_mappings:
+    - PaNET:01137
+  neutron_crystallography:
+    text: neutron_crystallography
+    description: Neutron macromolecular crystallography
+    meaning: CHMO:0000182
+    comments:
+    - Also known as neutron protein crystallography or neutron macromolecular diffraction
+    - Used for hydrogen/deuterium visualization in protein structures
+  fiber_diffraction:
+    text: fiber_diffraction
+    description: Fiber diffraction for structural analysis of fibrous samples
+    meaning: CHMO:0000156
+    comments:
+    - Used for studying filamentous proteins, DNA fibers, muscle fibers
+  time_resolved_crystallography:
+    text: time_resolved_crystallography
+    description: Time-resolved macromolecular crystallography
+    meaning: CHMO:0000156
+    comments:
+    - Pump-probe crystallography for capturing structural dynamics
+    - Requires fast X-ray pulses (synchrotron or XFEL)
+  xray_tomography:
+    text: xray_tomography
+    description: X-ray computed tomography (micro-CT) for 3D imaging
+    meaning: CHMO:0002743
+    comments:
+    - Non-destructive 3D imaging technique
+    - Includes micro-CT, nano-CT, and phase contrast tomography
+    - Used for cellular imaging, materials science, and paleontology
+    exact_mappings:
+    - PaNET:01154
 
 ```
 </details>

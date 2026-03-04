@@ -31,7 +31,7 @@ Alias: i_over_sigma
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: i_over_sigma
 | ---  | ---  |
 | self | lambdaber:i_over_sigma |
 | native | lambdaber:i_over_sigma |
-| exact | nsls2:I_over_sigma, mmCIF:_reflns.pdbx_netI_over_sigmaI, ispyb:AutoProcScalingStatistics.meanIOverSigI |
 
 
 
@@ -69,16 +68,13 @@ Alias: i_over_sigma
 name: i_over_sigma
 description: Mean I/sigma(I) - signal to noise ratio
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:I_over_sigma
-- mmCIF:_reflns.pdbx_netI_over_sigmaI
-- ispyb:AutoProcScalingStatistics.meanIOverSigI
 rank: 1000
 alias: i_over_sigma
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

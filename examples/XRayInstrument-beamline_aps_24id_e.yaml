@@ -1,0 +1,34 @@
+id: lambdaber:beamline_aps_24id_e
+title: APS Beamline 24-ID-E (NE-CAT)
+description: NE-CAT beamline for macromolecular crystallography
+instrument_code: APS-24-ID-E
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: APS
+facility_ror: https://ror.org/04qxsr837
+beamline_id: 24-ID-E
+manufacturer: Argonne National Laboratory
+model: APS Beamline 24-ID-E (NE-CAT)
+installation_date: '2010-01-01'
+current_status: operational
+source_type: synchrotron
+detector_technology: hybrid_photon_counting
+detector_manufacturer: Dectris
+detector_model: ''
+energy_min:
+  unit: kiloelectronvolts
+  numeric_value: 12.66
+energy_max:
+  unit: kiloelectronvolts
+  numeric_value: 12.66
+beam_size_min:
+  unit: micrometers
+  numeric_value: 10.0
+beam_size_max:
+  unit: micrometers
+  numeric_value: 10.0
+flux_density:
+  unit: photons per second per square millimeter
+  numeric_value: 1000000000000.0
+monochromator_type: Si(111) double crystal
+goniometer_type: 24-ID-E
+crystal_cooling_capability: true

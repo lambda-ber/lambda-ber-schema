@@ -16,13 +16,15 @@ techniques_supported:
 - xray_crystallography
 source_type: synchrotron
 q_range_min:
+  unit: inverse Angstroms
   numeric_value: 0.01
-  unit: inverse Angstroms
 q_range_max:
-  numeric_value: 0.6
   unit: inverse Angstroms
+  numeric_value: 0.6
 sample_changer_capacity:
-  numeric_value: 96.0
   unit: samples
+  numeric_value: 96.0
 mail_in_service: true
 website: https://bl1231.als.lbl.gov/
+daq_system: bluesky
+control_system: epics

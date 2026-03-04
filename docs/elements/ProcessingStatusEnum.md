@@ -13,6 +13,7 @@ URI: [lambdaber:ProcessingStatusEnum](https://w3id.org/lambda-ber-schema/Process
 
 | Value | Meaning | Description |
 | --- | --- | --- |
+| collected | None | Data has been collected but not yet processed |
 | raw | None | Raw data |
 | preprocessing | None | Being preprocessed |
 | processing | None | Being processed |
@@ -58,6 +59,9 @@ description: Processing status
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 permissible_values:
+  collected:
+    text: collected
+    description: Data has been collected but not yet processed
   raw:
     text: raw
     description: Raw data

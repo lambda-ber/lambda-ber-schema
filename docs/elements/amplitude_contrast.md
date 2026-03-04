@@ -31,7 +31,7 @@ Alias: amplitude_contrast
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: amplitude_contrast
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

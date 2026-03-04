@@ -30,14 +30,12 @@ URI: [lambdaber:StorageConditions](https://w3id.org/lambda-ber-schema/StorageCon
         
       StorageConditions : temperature
         
-      StorageConditions : temperature_unit
-        
           
     
         
         
-        StorageConditions --> "0..1" TemperatureUnitEnum : temperature_unit
-        click TemperatureUnitEnum href "../TemperatureUnitEnum/"
+        StorageConditions --> "0..1" QuantityValue : temperature
+        click QuantityValue href "../QuantityValue/"
     
 
         
@@ -58,8 +56,7 @@ URI: [lambdaber:StorageConditions](https://w3id.org/lambda-ber-schema/StorageCon
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [temperature](temperature.md) | 0..1 <br/> [Float](Float.md) | Storage temperature in Celsius | direct |
-| [temperature_unit](temperature_unit.md) | 0..1 <br/> [TemperatureUnitEnum](TemperatureUnitEnum.md) | Temperature unit | direct |
+| [temperature](temperature.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Storage temperature, typically specified in degrees Celsius | direct |
 | [duration](duration.md) | 0..1 <br/> [String](String.md) | Storage duration | direct |
 | [atmosphere](atmosphere.md) | 0..1 <br/> [String](String.md) | Storage atmosphere conditions | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
@@ -122,22 +119,16 @@ is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
-    description: Storage temperature in Celsius
+    description: Storage temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
-  temperature_unit:
-    name: temperature_unit
-    description: Temperature unit
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - StorageConditions
-    range: TemperatureUnitEnum
+    range: QuantityValue
+    inlined: true
   duration:
     name: duration
     description: Storage duration
@@ -170,7 +161,8 @@ is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
-    description: Storage temperature in Celsius
+    description: Storage temperature, typically specified in degrees Celsius. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: temperature
@@ -179,17 +171,8 @@ attributes:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
-  temperature_unit:
-    name: temperature_unit
-    description: Temperature unit
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: temperature_unit
-    owner: StorageConditions
-    domain_of:
-    - StorageConditions
-    range: TemperatureUnitEnum
+    range: QuantityValue
+    inlined: true
   duration:
     name: duration
     description: Storage duration

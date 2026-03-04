@@ -3,7 +3,7 @@
 # Slot: transmission_percent 
 
 
-_Beam transmission percentage_
+_Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: transmission_percent
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: transmission_percent
 <details>
 ```yaml
 name: transmission_percent
-description: Beam transmission percentage
+description: Beam transmission, typically specified as a percentage (0-100). Data
+  providers may specify as decimal fraction by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: transmission_percent
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

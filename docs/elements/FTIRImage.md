@@ -32,11 +32,47 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
         
       FTIRImage : dimensions_x
         
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FTIRImage : dimensions_y
+        
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       FTIRImage : dose
         
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FTIRImage : exposure_time
+        
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       FTIRImage : file_name
         
@@ -46,15 +82,60 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
         
       FTIRImage : number_of_scans
         
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : number_of_scans
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FTIRImage : pixel_size
         
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FTIRImage : spectral_resolution
+        
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : spectral_resolution
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       FTIRImage : title
         
       FTIRImage : wavenumber_max
         
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : wavenumber_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       FTIRImage : wavenumber_min
+        
+          
+    
+        
+        
+        FTIRImage --> "0..1" QuantityValue : wavenumber_min
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -74,20 +155,20 @@ URI: [lambdaber:FTIRImage](https://w3id.org/lambda-ber-schema/FTIRImage)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [wavenumber_min](wavenumber_min.md) | 0..1 <br/> [Float](Float.md) | Minimum wavenumber in cm⁻¹ | direct |
-| [wavenumber_max](wavenumber_max.md) | 0..1 <br/> [Float](Float.md) | Maximum wavenumber in cm⁻¹ | direct |
-| [spectral_resolution](spectral_resolution.md) | 0..1 <br/> [Float](Float.md) | Spectral resolution in cm⁻¹ | direct |
-| [number_of_scans](number_of_scans.md) | 0..1 <br/> [Integer](Integer.md) | Number of scans averaged for the spectrum | direct |
+| [wavenumber_min](wavenumber_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹) | direct |
+| [wavenumber_max](wavenumber_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹) | direct |
+| [spectral_resolution](spectral_resolution.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Spectral resolution, typically specified in inverse centimeters (cm⁻¹) | direct |
+| [number_of_scans](number_of_scans.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of scans averaged for the spectrum | direct |
 | [apodization_function](apodization_function.md) | 0..1 <br/> [String](String.md) | Mathematical function used for apodization | direct |
 | [molecular_signatures](molecular_signatures.md) | * <br/> [String](String.md) | Identified molecular signatures or peaks | direct |
 | [background_correction](background_correction.md) | 0..1 <br/> [String](String.md) | Method used for background correction | direct |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
-| [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
-| [dimensions_x](dimensions_x.md) | 0..1 <br/> [Integer](Integer.md) | Image width in pixels | [Image](Image.md) |
-| [dimensions_y](dimensions_y.md) | 0..1 <br/> [Integer](Integer.md) | Image height in pixels | [Image](Image.md) |
-| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | [Image](Image.md) |
-| [dose](dose.md) | 0..1 <br/> [Float](Float.md) | Electron dose in e-/Å² | [Image](Image.md) |
+| [pixel_size](pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size, typically specified in Angstroms | [Image](Image.md) |
+| [dimensions_x](dimensions_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image width, typically specified in pixels | [Image](Image.md) |
+| [dimensions_y](dimensions_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image height, typically specified in pixels | [Image](Image.md) |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time, typically specified in seconds | [Image](Image.md) |
+| [dose](dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose in e-/Å² | [Image](Image.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -144,28 +225,34 @@ is_a: Image
 attributes:
   wavenumber_min:
     name: wavenumber_min
-    description: Minimum wavenumber in cm⁻¹
+    description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   wavenumber_max:
     name: wavenumber_max
-    description: Maximum wavenumber in cm⁻¹
+    description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   spectral_resolution:
     name: spectral_resolution
-    description: Spectral resolution in cm⁻¹
+    description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   number_of_scans:
     name: number_of_scans
     description: Number of scans averaged for the spectrum
@@ -173,7 +260,8 @@ attributes:
     rank: 1000
     domain_of:
     - FTIRImage
-    range: integer
+    range: QuantityValue
+    inlined: true
   apodization_function:
     name: apodization_function
     description: Mathematical function used for apodization
@@ -215,34 +303,40 @@ is_a: Image
 attributes:
   wavenumber_min:
     name: wavenumber_min
-    description: Minimum wavenumber in cm⁻¹
+    description: Minimum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: wavenumber_min
     owner: FTIRImage
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   wavenumber_max:
     name: wavenumber_max
-    description: Maximum wavenumber in cm⁻¹
+    description: Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: wavenumber_max
     owner: FTIRImage
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   spectral_resolution:
     name: spectral_resolution
-    description: Spectral resolution in cm⁻¹
+    description: Spectral resolution, typically specified in inverse centimeters (cm⁻¹).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: spectral_resolution
     owner: FTIRImage
     domain_of:
     - FTIRImage
-    range: float
+    range: QuantityValue
+    inlined: true
   number_of_scans:
     name: number_of_scans
     description: Number of scans averaged for the spectrum
@@ -252,7 +346,8 @@ attributes:
     owner: FTIRImage
     domain_of:
     - FTIRImage
-    range: integer
+    range: QuantityValue
+    inlined: true
   apodization_function:
     name: apodization_function
     description: Mathematical function used for apodization
@@ -307,7 +402,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -315,30 +411,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: FTIRImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: FTIRImage
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: FTIRImage
@@ -346,7 +448,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -357,7 +460,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -370,6 +474,7 @@ attributes:
     owner: FTIRImage
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

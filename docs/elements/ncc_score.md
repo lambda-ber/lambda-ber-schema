@@ -31,7 +31,7 @@ Alias: ncc_score
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: ncc_score
 owner: ParticlePickingParameters
 domain_of:
 - ParticlePickingParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

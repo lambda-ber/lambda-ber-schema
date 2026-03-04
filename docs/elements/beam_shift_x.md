@@ -31,7 +31,7 @@ Alias: beam_shift_x
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: beam_shift_x
 owner: Movie
 domain_of:
 - Movie
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

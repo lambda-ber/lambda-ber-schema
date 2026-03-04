@@ -3,7 +3,7 @@
 # Slot: emission_wavelength 
 
 
-_Emission wavelength in nanometers_
+_Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: emission_wavelength
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: emission_wavelength
 <details>
 ```yaml
 name: emission_wavelength
-description: Emission wavelength in nanometers
+description: Emission wavelength, typically specified in nanometers. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: emission_wavelength
 owner: FluorescenceImage
 domain_of:
 - FluorescenceImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

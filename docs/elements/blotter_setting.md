@@ -3,7 +3,7 @@
 # Slot: blotter_setting 
 
 
-_Blotter setting value_
+_Blotter setting value. Data providers may include unit information in the QuantityValue if needed._
 
 
 
@@ -31,7 +31,7 @@ Alias: blotter_setting
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: blotter_setting
 <details>
 ```yaml
 name: blotter_setting
-description: Blotter setting value
+description: Blotter setting value. Data providers may include unit information in
+  the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blotter_setting
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

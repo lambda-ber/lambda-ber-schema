@@ -3,7 +3,7 @@
 # Slot: cell_path_length 
 
 
-_Path length in mm_
+_Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: cell_path_length
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: cell_path_length
 <details>
 ```yaml
 name: cell_path_length
-description: Path length in mm
+description: Path length, typically specified in millimeters (mm). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: cell_path_length
 owner: SAXSPreparation
 domain_of:
 - SAXSPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

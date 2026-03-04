@@ -228,8 +228,8 @@ class SASBDBLoader(BaseLoader):
         beamline = instrument_data.get("beamline_name", "")
         instrument_code = f"{name}-{beamline}".strip("-") if beamline else name
 
-        # Extract detector info
-        detector = instrument_data.get("detector", {})
+        # Extract detector info (detector may be None for SANS entries)
+        detector = instrument_data.get("detector") or {}
         detector_name = detector.get("name")
         detector_resolution = detector.get("resolution")
 
@@ -287,7 +287,7 @@ class SASBDBLoader(BaseLoader):
         if exp_data.get("concentration_max"):
             concentration = QuantityValue(
                 numeric_value=exp_data["concentration_max"],
-                unit=exp_data.get("concentration_unit", "mg/mL"),
+                unit=exp_data.get("concentration_unit") or "mg/mL",
             )
 
         # Get molecular weight as QuantityValue

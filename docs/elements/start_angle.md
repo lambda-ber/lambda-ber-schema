@@ -3,7 +3,7 @@
 # Slot: start_angle 
 
 
-_Starting rotation angle_
+_Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: start_angle
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: start_angle
 <details>
 ```yaml
 name: start_angle
-description: Starting rotation angle
+description: Starting rotation angle, typically specified in degrees. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Start_angle
@@ -78,9 +79,8 @@ alias: start_angle
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 ```
 </details>

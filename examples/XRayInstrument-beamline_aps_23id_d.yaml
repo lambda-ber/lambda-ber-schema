@@ -1,0 +1,34 @@
+id: lambdaber:beamline_aps_23id_d
+title: APS Beamline 23-ID-D (GM/CA)
+description: GM/CA canted-undulator beamline with EIGER2 XE 16M CdTe detector
+instrument_code: APS-23-ID-D
+instrument_category: SYNCHROTRON_BEAMLINE
+facility_name: APS
+facility_ror: https://ror.org/04qxsr837
+beamline_id: 23-ID-D
+manufacturer: Argonne National Laboratory
+model: APS Beamline 23-ID-D
+installation_date: '2010-01-01'
+current_status: commissioning
+source_type: synchrotron
+detector_technology: hybrid_photon_counting
+detector_manufacturer: Dectris
+detector_model: EIGER2 XE 16M CdTe detector
+energy_min:
+  unit: kiloelectronvolts
+  numeric_value: 6.0
+energy_max:
+  unit: kiloelectronvolts
+  numeric_value: 35.0
+beam_size_min:
+  unit: micrometers
+  numeric_value: 5.0
+beam_size_max:
+  unit: micrometers
+  numeric_value: 5.0
+flux_density:
+  unit: photons per second per square millimeter
+  numeric_value: 55000000000000.0
+monochromator_type: Si(111) double crystal
+goniometer_type: 23-ID-D
+crystal_cooling_capability: true

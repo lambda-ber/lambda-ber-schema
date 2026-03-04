@@ -31,7 +31,7 @@ Alias: energy_filter_slit_width
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: energy_filter_slit_width
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

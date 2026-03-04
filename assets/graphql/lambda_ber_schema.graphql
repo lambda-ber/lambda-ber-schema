@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post31.dev0+a94024b
+# version: 0.1.2.post32.dev0+2ad9ef5
 enum AffinityUnitEnum
   {
     molar
@@ -61,6 +61,7 @@ enum BeamlineEnum
     ALS_BL821
     ALS_BL822
     ALS_BL831
+    ALS_BL832
     ALS_BL1222
     NSLS2_FMX
     NSLS2_AMX
@@ -175,6 +176,14 @@ enum ConformationalStateEnum
     disordered
   }
 
+enum ControlSystemEnum
+  {
+    epics
+    tango
+    labview
+    opi
+  }
+
 enum CrystallizationMethodEnum
   {
     vapor_diffusion_hanging
@@ -184,6 +193,17 @@ enum CrystallizationMethodEnum
     lcp
     dialysis
     free_interface_diffusion
+  }
+
+enum DataAcquisitionSystemEnum
+  {
+    bluesky
+    spec
+    sardana
+    gda
+    mxcube_daq
+    blu_ice
+    jblue_ice
   }
 
 enum DatabaseNameEnum
@@ -479,6 +499,16 @@ enum InteractionTypeEnum
     disulfide
   }
 
+enum LIMSSystemEnum
+  {
+    ispyb
+    ispyb_diamond
+    icat
+    mxlive
+    mxcube_lims
+    user_office
+  }
+
 enum MutationTypeEnum
   {
     missense
@@ -528,6 +558,7 @@ enum PreparationTypeEnum
 
 enum ProcessingStatusEnum
   {
+    collected
     raw
     preprocessing
     processing
@@ -693,6 +724,7 @@ enum TechniqueEnum
     neutron_crystallography
     fiber_diffraction
     time_resolved_crystallography
+    xray_tomography
   }
 
 enum VitrificationMethodEnum
@@ -802,6 +834,9 @@ type BeamlineInstrument
     sampleChangerCapacity: QuantityValue
     mailInService: Boolean
     website: Uri
+    limsSystem: LIMSSystemEnum
+    daqSystem: DataAcquisitionSystemEnum
+    controlSystem: ControlSystemEnum
   }
 
 type BiophysicalProperty
@@ -1095,6 +1130,7 @@ type ExperimentRun
     qualityMetrics: QualityMetrics
     rawDataLocation: String
     processingStatus: ProcessingStatusEnum
+    daqSystem: DataAcquisitionSystemEnum
     magnification: QuantityValue
     calibratedPixelSize: QuantityValue
     cameraBinning: QuantityValue
@@ -1618,7 +1654,7 @@ type QuantityValue
     attribute: Attribute
     maximumNumericValue: Float
     minimumNumericValue: Float
-    numericValue: Float!
+    numericValue: Float
     unit: String!
     unitCvId: Curie
     rawValue: String

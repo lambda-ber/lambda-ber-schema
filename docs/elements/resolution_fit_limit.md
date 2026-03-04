@@ -3,7 +3,7 @@
 # Slot: resolution_fit_limit 
 
 
-_Resolution fit limit in Angstroms_
+_Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_fit_limit
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: resolution_fit_limit
 <details>
 ```yaml
 name: resolution_fit_limit
-description: Resolution fit limit in Angstroms
+description: Resolution fit limit, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: resolution_fit_limit
 owner: Micrograph
 domain_of:
 - Micrograph
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>
