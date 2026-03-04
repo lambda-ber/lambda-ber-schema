@@ -1,0 +1,587 @@
+source:
+  name: EMSL API
+  base_url: https://api.emsl.pnnl.gov/external/
+retrieved_at_utc: '2026-02-25T23:01:36.832146+00:00'
+query:
+  sample_name: apo
+  search_mode: like
+  key_filter: pncc
+  limit: 12
+sample_search:
+  total_count: 571
+  transactions:
+  - transaction_id: 3736677
+    sample_key: pncc.short_sample_name
+    sample_value: T-A-apo_5_021226_data
+    submitter_id: 48279
+    instrument_id: 34290
+    project_id: '160724'
+    created: '2026-02-15T15:46:44'
+    similarity_score: null
+  - transaction_id: 3736600
+    sample_key: pncc.short_sample_name
+    sample_value: T-A-apo_5_021226_atlas
+    submitter_id: 48279
+    instrument_id: 34290
+    project_id: '160724'
+    created: '2026-02-15T08:51:33'
+    similarity_score: null
+  - transaction_id: 3736315
+    sample_key: pncc.short_sample_name
+    sample_value: Yo1-apo
+    submitter_id: 48279
+    instrument_id: 34251
+    project_id: '160707'
+    created: '2026-02-14T12:46:03'
+    similarity_score: null
+  - transaction_id: 3736218
+    sample_key: pncc.short_sample_name
+    sample_value: T-A-apo_5
+    submitter_id: 48279
+    instrument_id: 34290
+    project_id: '160724'
+    created: '2026-02-14T09:10:29'
+    similarity_score: null
+  - transaction_id: 3735285
+    sample_key: pncc.short_sample_name
+    sample_value: Yo1-apo
+    submitter_id: 48279
+    instrument_id: 34251
+    project_id: '160707'
+    created: '2026-02-13T15:52:27'
+    similarity_score: null
+  - transaction_id: 3727177
+    sample_key: pncc.short_sample_name
+    sample_value: 4xApoA1Fab2-1_20251230_atlas
+    submitter_id: 48279
+    instrument_id: 34292
+    project_id: '160646'
+    created: '2026-02-03T18:13:36'
+    similarity_score: null
+  - transaction_id: 3707015
+    sample_key: pncc.session_id
+    sample_value: T-A-apo_5
+    submitter_id: 48279
+    instrument_id: 34251
+    project_id: '160724'
+    created: '2026-01-09T11:10:44'
+    similarity_score: null
+  - transaction_id: 3704289
+    sample_key: pncc.short_sample_name
+    sample_value: 4xApoA1-Fab2_20251230_data
+    submitter_id: 48279
+    instrument_id: 34292
+    project_id: '160646'
+    created: '2026-01-02T07:55:59'
+    similarity_score: null
+  - transaction_id: 3701398
+    sample_key: pncc.short_sample_name
+    sample_value: Apo-KDM2B-102925-A2
+    submitter_id: 48279
+    instrument_id: 34252
+    project_id: '160570'
+    created: '2025-12-27T17:36:47'
+    similarity_score: null
+  - transaction_id: 3701016
+    sample_key: pncc.short_sample_name
+    sample_value: Apo-KDM2B-102925-B3
+    submitter_id: 48279
+    instrument_id: 34252
+    project_id: '160570'
+    created: '2025-12-26T23:59:59'
+    similarity_score: null
+  - transaction_id: 3700359
+    sample_key: pncc.short_sample_name
+    sample_value: Apo_g2b_data_121025
+    submitter_id: 48279
+    instrument_id: 135003
+    project_id: '160549'
+    created: '2025-12-25T04:57:42'
+    similarity_score: null
+  - transaction_id: 3699697
+    sample_key: pncc.short_sample_name
+    sample_value: Apo-Atlases_121025
+    submitter_id: 48279
+    instrument_id: 135003
+    project_id: '160549'
+    created: '2025-12-24T11:47:20'
+    similarity_score: null
+  search_mode: like
+  limit: 12
+  offset: 0
+datasets:
+- dataset_id: emsl:transaction_3736677
+  source_url: https://api.emsl.pnnl.gov/external/datasets/by_sample/apo
+  doi: null
+  warnings: []
+  raw:
+    transaction:
+      transaction_id: 3736677
+      sample_key: pncc.short_sample_name
+      sample_value: T-A-apo_5_021226_data
+      submitter_id: 48279
+      instrument_id: 34290
+      project_id: '160724'
+      created: '2026-02-15T15:46:44'
+      similarity_score: null
+    project:
+      abstract: "Human PARP enzymes are a diverse class of medically relevant proteins\
+        \ that regulate multiple aspects of biology. The major catalytic activity\
+        \ of PARP enzymes is the production of ADP-ribose modifications on biomolecules\
+        \ such as proteins, nucleic acids, and metabolites. Human PARP enzymes are\
+        \ diverse and regulate distinct and varied biological pathways, many of which\
+        \ are deregulated in common diseases. PARP enzymes that are implicated in\
+        \ deregulated biological pathways have offered an avenue for therapeutic intervention,\
+        \ with the \u201Cdruggable\u201D PARP active site targeted in several diseases,\
+        \ most notably cancer, inflammation, and neurodegenerative disorders. The\
+        \ proposed work will provide important knowledge regarding the structure and\
+        \ regulation of human PARP enzymes and associated partner proteins."
+      started_date: '2025-08-29'
+      closed_date: null
+      current_status: started
+      project_members:
+      - project_role: principal_investigator
+        orcid: 0000-0002-2714-4317
+        institution: "Universit\xE9 de Montreal"
+        first_name: John
+        last_name: Pascal
+      - project_role: active_member
+        orcid: null
+        institution: "Universit\xE9 de Montreal"
+        first_name: Marcelo
+        last_name: Muniz Correa
+      - project_role: active_member
+        orcid: 0000-0003-1405-925x
+        institution: "Universit\xE9 de Montreal"
+        first_name: Sacha
+        last_name: Sverzhinsky
+      project_type: General Access
+      title: 'Single particle cryo-EM analysis of human PARP enzymes: mechanisms of
+        regulation and inhibition'
+      active: true
+      accepted: true
+      award_doi: null
+      id: '160724'
+      uuid: 43fd68fd-2f06-5288-96f0-613ec567c29d
+      uri: /external/projects/160724
+    resource:
+      id: 34290
+      name: PNCC Krios 1
+      active: false
+      location: EMSL/1095
+      display_name: PNCC Krios 1 (34290)
+      available_hours: 24/7
+      url: /resources/34290
+    files:
+    - file_id: 64895567
+      size: 146741698560
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.1.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895568
+      size: 155176284160
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.10.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895569
+      size: 155056148480
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.11.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895570
+      size: 147156224000
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.12.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895571
+      size: 148740689920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.13.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895572
+      size: 149748316160
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.14.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895573
+      size: 150555361280
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.15.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895574
+      size: 150845624320
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.16.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895575
+      size: 150984325120
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.17.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895576
+      size: 151177533440
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.18.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895577
+      size: 136003614720
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.19.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895578
+      size: 148818964480
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.2.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895579
+      size: 140634613760
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.20.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895580
+      size: 141941248000
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.21.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895581
+      size: 142439987200
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.22.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895582
+      size: 143014635520
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.23.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895583
+      size: 144682004480
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.24.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895584
+      size: 138154280960
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.25.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895585
+      size: 144583168000
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.26.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895586
+      size: 145921187840
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.27.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895587
+      size: 146532126720
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.28.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895588
+      size: 148300912640
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.29.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895589
+      size: 149564928000
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.3.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895590
+      size: 148391761920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.30.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895591
+      size: 134078371840
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.31.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895592
+      size: 137417052160
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.32.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895593
+      size: 139259801600
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.33.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895594
+      size: 141191567360
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.34.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895595
+      size: 142410291200
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.35.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895596
+      size: 137741905920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.36.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895597
+      size: 138478561280
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.37.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895598
+      size: 139353815040
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.38.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895599
+      size: 137919057920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.39.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895600
+      size: 150326261760
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.4.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895601
+      size: 139881041920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.40.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895602
+      size: 135387504640
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.41.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895603
+      size: 141631836160
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.42.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895604
+      size: 141861836800
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.43.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895605
+      size: 143120271360
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.44.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895606
+      size: 144105410560
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.45.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895607
+      size: 145824081920
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.46.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895608
+      size: 139625738240
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.47.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895609
+      size: 144310323200
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.48.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895610
+      size: 146257213440
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.49.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895611
+      size: 150977945600
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.5.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895612
+      size: 147302492160
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.50.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895613
+      size: 148951777280
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.51.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895614
+      size: 144009134080
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.52.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895615
+      size: 151833866240
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.53.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895616
+      size: 7499038720
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.54.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895617
+      size: 146226288640
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.6.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895618
+      size: 154242959360
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.7.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895619
+      size: 154221363200
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.8.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+    - file_id: 64895620
+      size: 154490071040
+      name: 87ffc243efcf23cc97850c900d93d62a25087827.data.9.tar
+      path: 160724/T-A-apo_5_021226_data/epu_session
+      transaction_id: 3736677
+- dataset_id: emsl:transaction_3736600
+  source_url: https://api.emsl.pnnl.gov/external/datasets/by_sample/apo
+  doi: null
+  warnings: []
+  raw:
+    transaction:
+      transaction_id: 3736600
+      sample_key: pncc.short_sample_name
+      sample_value: T-A-apo_5_021226_atlas
+      submitter_id: 48279
+      instrument_id: 34290
+      project_id: '160724'
+      created: '2026-02-15T08:51:33'
+      similarity_score: null
+    project:
+      abstract: "Human PARP enzymes are a diverse class of medically relevant proteins\
+        \ that regulate multiple aspects of biology. The major catalytic activity\
+        \ of PARP enzymes is the production of ADP-ribose modifications on biomolecules\
+        \ such as proteins, nucleic acids, and metabolites. Human PARP enzymes are\
+        \ diverse and regulate distinct and varied biological pathways, many of which\
+        \ are deregulated in common diseases. PARP enzymes that are implicated in\
+        \ deregulated biological pathways have offered an avenue for therapeutic intervention,\
+        \ with the \u201Cdruggable\u201D PARP active site targeted in several diseases,\
+        \ most notably cancer, inflammation, and neurodegenerative disorders. The\
+        \ proposed work will provide important knowledge regarding the structure and\
+        \ regulation of human PARP enzymes and associated partner proteins."
+      started_date: '2025-08-29'
+      closed_date: null
+      current_status: started
+      project_members:
+      - project_role: principal_investigator
+        orcid: 0000-0002-2714-4317
+        institution: "Universit\xE9 de Montreal"
+        first_name: John
+        last_name: Pascal
+      - project_role: active_member
+        orcid: null
+        institution: "Universit\xE9 de Montreal"
+        first_name: Marcelo
+        last_name: Muniz Correa
+      - project_role: active_member
+        orcid: 0000-0003-1405-925x
+        institution: "Universit\xE9 de Montreal"
+        first_name: Sacha
+        last_name: Sverzhinsky
+      project_type: General Access
+      title: 'Single particle cryo-EM analysis of human PARP enzymes: mechanisms of
+        regulation and inhibition'
+      active: true
+      accepted: true
+      award_doi: null
+      id: '160724'
+      uuid: 43fd68fd-2f06-5288-96f0-613ec567c29d
+      uri: /external/projects/160724
+    resource:
+      id: 34290
+      name: PNCC Krios 1
+      active: false
+      location: EMSL/1095
+      display_name: PNCC Krios 1 (34290)
+      available_hours: 24/7
+      url: /resources/34290
+    files:
+    - file_id: 64894458
+      size: 365936640
+      name: f25e429f1800b17dd780275af5b61b1c5e68e9c7.data.1.tar
+      path: 160724/T-A-apo_5_021226_atlas/epu_session
+      transaction_id: 3736600
+- dataset_id: emsl:transaction_3736315
+  source_url: https://api.emsl.pnnl.gov/external/datasets/by_sample/apo
+  doi: null
+  warnings: []
+  raw:
+    transaction:
+      transaction_id: 3736315
+      sample_key: pncc.short_sample_name
+      sample_value: Yo1-apo
+      submitter_id: 48279
+      instrument_id: 34251
+      project_id: '160707'
+      created: '2026-02-14T12:46:03'
+      similarity_score: null
+    project:
+      abstract: Fungal diseases claim over 1.5 million lives annually and affect more
+        than a billion people worldwide, presenting a significant challenge due to
+        increasing drug resistance. A primary mechanism underlying this resistance
+        is drug efflux, mediated by the overexpression of ATP-binding cassette and
+        major facilitator superfamily transporters. In this proposal, we aim to determine
+        the structures of drug transporters in Candida species, human fungal pathogens,
+        to gain molecular insights into substrate recognition and the various steps
+        of the transport cycle. We have successfully expressed and purified the transporters
+        of interest. Following optimization, we obtained high-resolution cryo-EM structures
+        in the apo state for two of these transporters. Through this proposal, we
+        seek support to collect cryo-EM data to resolve the structures of these transporters
+        in complex with various substrates and antifungal drugs, and in different
+        functional states throughout the transport cycle.
+      started_date: '2025-06-24'
+      closed_date: null
+      current_status: started
+      project_members:
+      - project_role: principal_investigator
+        orcid: 0000-0002-6319-8048
+        institution: Oregon Health and Sciences University
+        first_name: Nitesh
+        last_name: Khandelwal
+      - project_role: active_member
+        orcid: 0000-0003-1206-483x
+        institution: Oregon Health and Sciences University
+        first_name: Devin
+        last_name: Seka
+      - project_role: active_member
+        orcid: null
+        institution: Oregon Health and Sciences University
+        first_name: PARAS
+        last_name: KUMAR
+      project_type: General Access
+      title: Understanding the multi-drug resistance mechanisms in fungal pathogen
+      active: true
+      accepted: true
+      award_doi: null
+      id: '160707'
+      uuid: 657a79b3-a1a4-586d-b77a-9bf3f4ee17ce
+      uri: /external/projects/160707
+    resource:
+      id: 34251
+      name: PNCC Arctica
+      active: false
+      location: EMSL/1095
+      display_name: PNCC Arctica Cryo-EM (34251)
+      available_hours: 24/7
+      url: /resources/34251
+    files:
+    - file_id: 64890312
+      size: 289454080
+      name: 96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.1.tar
+      path: 160707/Yo1-apo/data
+      transaction_id: 3736315
+    - file_id: 64890313
+      size: 125858058240
+      name: 96e1d0c67d8c3b48d87d6bad8863cd89f809454e.data.2.tar
+      path: 160707/Yo1-apo/data
+      transaction_id: 3736315

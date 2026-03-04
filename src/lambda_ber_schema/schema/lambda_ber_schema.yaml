@@ -130,6 +130,7 @@ prefixes:
   UO: http://purl.obolibrary.org/obo/UO_
   simplescattering: https://www.simplescattering.com/open_dataset/
   pdb: https://files.rcsb.org/download/
+  emsl: https://api.emsl.pnnl.gov/external/
 
 imports:
   - linkml:types
@@ -3728,6 +3729,8 @@ enums:
         description: "Thermo Fisher RAW format"
       zip:
         description: "ZIP compressed archive"
+      tar:
+        description: "TAR archive format"
       mrcs:
         description: "MRC stack format for particle stacks"
       eer:
