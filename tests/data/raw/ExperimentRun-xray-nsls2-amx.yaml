@@ -1,0 +1,81 @@
+id: a0d36563-c8d5-4731-8213-5bbd9546dc37
+title: Lysozyme crystal X-ray diffraction (AMX, NSLS-II)
+description: >
+  Standard Zebra plan data collection for lysozyme at NSLS-II AMX (proposal 317839,
+  visit mx317839-1). Directory: /nsls2/data/amx/proposals/commissioning/pass-317839/317839-20250909-startup/mx317839-1/Lyso_manual_01_011/6/JJ_test_01_12
+experiment_code: "NSLS2-AMX-317839-mx317839-1-run6"
+experiment_date: "2025-09-09T08:59:56.658171"
+operator_id: dkreitler
+technique: xray_crystallography
+
+experimental_conditions:
+  temperature:
+    numeric_value: null
+    unit: degrees Celsius
+  humidity:
+    numeric_value: null
+    unit: percent
+  pressure:
+    numeric_value: null
+    unit: kilopascals
+  atmosphere: null
+
+data_collection_strategy:
+  collection_mode: oscillation
+  detector: Eiger9
+  detector_distance:
+    numeric_value: 300.0
+    unit: millimeters
+  energy:
+    numeric_value: 13480.6
+    unit: eV
+  wavelength:
+    numeric_value: 0.919723
+    unit: Angstroms
+  exposure_time:
+    numeric_value: 0.01
+    unit: seconds
+  oscillation_width:
+    numeric_value: 0.1
+    unit: degrees
+  sweep_start:
+    numeric_value: 0.01
+    unit: degrees
+  sweep_end:
+    numeric_value: 1.01
+    unit: degrees
+  total_frames:
+    numeric_value: 11
+    unit: frames
+  frame_rate:
+    numeric_value: 100
+    unit: frames per second
+  attenuation:
+    numeric_value: 0.1
+    unit: fraction
+  beam_center_pixels:
+    xbeam: 1569.0
+    ybeam: 1542.02
+  total_dose:
+    numeric_value: null
+    unit: electrons per Angstrom squared
+  dose_per_frame:
+    numeric_value: null
+    unit: electrons per Angstrom squared
+
+quality_metrics:
+  resolution:
+    numeric_value: 2.51
+    unit: Angstroms
+  completeness:
+    numeric_value: null
+    unit: percent
+  signal_to_noise:
+    numeric_value: null
+    unit: signal to noise ratio
+  r_factor:
+    numeric_value: null
+    unit: R-factor
+
+raw_data_location: /nsls2/data/amx/proposals/commissioning/pass-317839/317839-20250909-startup/mx317839-1/Lyso_manual_01_011/6/JJ_test_01_12
+processing_status: collected
