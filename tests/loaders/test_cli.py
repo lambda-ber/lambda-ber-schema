@@ -321,7 +321,8 @@ class TestCLI:
 
         class FakeLoader:
             def list_entries(self, sample_name=None, limit=None):
-                calls["list_entries"] = {"sample_name": sample_name, "limit": limit}
+                calls["list_entries"] = {
+                    "sample_name": sample_name, "limit": limit}
                 return ["3736677", "3736600"]
 
         mocker.patch("lambda_ber_schema.cli.EMSLLoader", FakeLoader)
@@ -434,3 +435,37 @@ class TestCLIIntegration:
         result = runner.invoke(app, ["etl", "list", "pdb", "--limit", "3"])
         assert result.exit_code == 0
         assert "Found 3 entries" in result.output
+
+    def test_etl_list_emsl(self):
+        """Test listing EMSL transaction IDs by sample."""
+        result = runner.invoke(
+            app, ["etl", "list", "emsl", "--sample", "apo", "--limit", "2"]
+        )
+        assert result.exit_code == 0
+        assert "Found " in result.output
+        # Should emit at least one numeric transaction ID line.
+        lines = [line.strip() for line in result.output.splitlines()]
+        assert any(line.isdigit() for line in lines)
+
+    def test_etl_emsl(self, tmp_path):
+        """Test EMSL ETL command writes a dataset for a real sample query."""
+        output_file = tmp_path / "emsl-output.yaml"
+        result = runner.invoke(
+            app,
+            [
+                "etl",
+                "emsl",
+                "--sample",
+                "apo",
+                "--limit",
+                "1",
+                "--output",
+                str(output_file),
+            ],
+        )
+        assert result.exit_code == 0
+        assert output_file.exists()
+
+        content = output_file.read_text()
+        assert "emsl:transaction_" in content
+        assert "experiment_runs:" in content

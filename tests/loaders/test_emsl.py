@@ -174,7 +174,8 @@ class TestEMSLLoader:
         ]
 
         sorted_transactions = loader._sort_transactions(transactions)
-        assert [tx["transaction_id"] for tx in sorted_transactions] == [3, 2, 1]
+        assert [tx["transaction_id"]
+                for tx in sorted_transactions] == [3, 2, 1]
 
     def test_dataset_has_expected_id_and_title(self, loader):
         """Dataset should use transaction-based identifier and project-derived title."""
@@ -307,3 +308,33 @@ class TestEMSLLoader:
         assert first == ["3736677", "3736600"]
         assert second == ["3736677", "3736600"]
         assert post_mock.call_count == 1
+
+
+@pytest.mark.integration
+@pytest.mark.slow
+class TestEMSLLoaderIntegration:
+    """Integration tests that hit the real EMSL API."""
+
+    def test_list_entries(self):
+        """Test listing EMSL transaction IDs by sample query."""
+        loader = EMSLLoader()
+        entries = loader.list_entries(sample_name="apo", limit=3)
+
+        assert len(entries) >= 1
+        assert all(entry.isdigit() for entry in entries)
+
+    def test_load_transaction_from_listed_entry(self):
+        """Test loading a real EMSL transaction via tx:<id>."""
+        loader = EMSLLoader()
+        entries = loader.list_entries(sample_name="apo", limit=1)
+        assert len(entries) == 1
+
+        tx_id = entries[0]
+        result = loader.load(f"tx:{tx_id}")
+
+        assert result.dataset is not None
+        assert result.dataset.id == f"emsl:transaction_{tx_id}"
+        assert result.source_url == (
+            f"https://api.emsl.pnnl.gov/external/datasets/transaction_info/{tx_id}"
+        )
+        assert len(result.dataset.experiment_runs) == 1
