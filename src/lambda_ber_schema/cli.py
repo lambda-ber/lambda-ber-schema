@@ -462,7 +462,28 @@ def etl_list(
             )
             raise typer.Exit(1)
         loader = EMSLLoader()
-        entries = loader.list_entries(sample_name=sample, limit=limit)
+        try:
+            entries = loader.list_entries(sample_name=sample, limit=limit)
+        except requests.HTTPError as exc:
+            status = getattr(exc.response, "status_code", None)
+            status_msg = f" (HTTP {status})" if status is not None else ""
+            typer.echo(
+                f"Error: failed to fetch EMSL entries for sample '{sample}'{status_msg}",
+                err=True,
+            )
+            raise typer.Exit(1) from exc
+        except ValueError as exc:
+            typer.echo(
+                f"Error: {exc}",
+                err=True,
+            )
+            raise typer.Exit(2) from exc
+        except Exception as exc:
+            typer.echo(
+                f"Error: unexpected failure listing EMSL entries for sample '{sample}'",
+                err=True,
+            )
+            raise typer.Exit(1) from exc
     else:
         typer.echo(
             f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl", err=True)

@@ -240,6 +240,27 @@ class TestEMSLLoader:
         assert files[0].file_format == FileFormatEnum.tar
         assert files[1].file_format == FileFormatEnum.ascii
 
+    def test_search_transactions_surfaces_upstream_rejection_support_id(self, mocker):
+        """HTML rejection pages should raise a precise error with EMSL support ID."""
+        response = mocker.Mock()
+        response.raise_for_status.return_value = None
+        response.json.side_effect = ValueError("not json")
+        response.text = (
+            "<html><body>The requested URL was rejected. "
+            "Please consult with your administrator.<br><br>"
+            "Your support ID is: 6432431924108964175"
+            "</body></html>"
+        )
+        response.headers = {"content-type": "text/html; charset=utf-8"}
+        mocker.patch(
+            "lambda_ber_schema.loaders.emsl.requests.post",
+            return_value=response,
+        )
+
+        loader = EMSLLoader()
+        with pytest.raises(ValueError, match="support ID: 6432431924108964175"):
+            loader._search_transactions(sample_name="apo")
+
     def test_load_transaction_path_works(self, mocker, emsl_project, emsl_transaction_files):
         """tx:<id> should use transaction_info pathway."""
         loader = EMSLLoader()
@@ -318,7 +339,12 @@ class TestEMSLLoaderIntegration:
     def test_list_entries(self):
         """Test listing EMSL transaction IDs by sample query."""
         loader = EMSLLoader()
-        entries = loader.list_entries(sample_name="apo", limit=3)
+        try:
+            entries = loader.list_entries(sample_name="apo", limit=3)
+        except ValueError as exc:
+            if "rejected by the upstream service" in str(exc):
+                pytest.skip(str(exc))
+            raise
 
         assert len(entries) >= 1
         assert all(entry.isdigit() for entry in entries)
@@ -326,11 +352,21 @@ class TestEMSLLoaderIntegration:
     def test_load_transaction_from_listed_entry(self):
         """Test loading a real EMSL transaction via tx:<id>."""
         loader = EMSLLoader()
-        entries = loader.list_entries(sample_name="apo", limit=1)
+        try:
+            entries = loader.list_entries(sample_name="apo", limit=1)
+        except ValueError as exc:
+            if "rejected by the upstream service" in str(exc):
+                pytest.skip(str(exc))
+            raise
         assert len(entries) == 1
 
         tx_id = entries[0]
-        result = loader.load(f"tx:{tx_id}")
+        try:
+            result = loader.load(f"tx:{tx_id}")
+        except ValueError as exc:
+            if "rejected by the upstream service" in str(exc):
+                pytest.skip(str(exc))
+            raise
 
         assert result.dataset is not None
         assert result.dataset.id == f"emsl:transaction_{tx_id}"
