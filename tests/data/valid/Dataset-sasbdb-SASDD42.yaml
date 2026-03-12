@@ -14,6 +14,7 @@ instruments:
 samples:
 - id: sasbdb:SASDD42/sample
   title: Synechocystis fluorescence recovery protein SynFRP.8-109
+  description: 'Organism: Synechocystis sp. PCC 6803'
   sample_code: SASBDB-SASDD42
   sample_type: protein
   molecular_weight:
@@ -28,7 +29,6 @@ samples:
       unit: pH
     components:
     - 20 mM Tris-HCl, 150 mM NaCl, 0.1 mM EDTA, 2 mM dithiothreitol, 3 % v/v glycerol
-  organism: Synechocystis sp. PCC 6803
   database_cross_references:
   - database_name: uniprot
     database_id: P74103

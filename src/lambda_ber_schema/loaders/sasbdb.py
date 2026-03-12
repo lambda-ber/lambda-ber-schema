@@ -303,13 +303,16 @@ class SASBDBLoader(BaseLoader):
             ]
 
         # Create sample
+        # Note: organism requires a CURIE (e.g. NCBITaxon:1148) per schema,
+        # but SASBDB only provides organism names; store as description instead
+        organism_name = molecule.get("organism")
         return Sample(
             id=f"sasbdb:{entry_code}/sample",
             sample_code=f"SASBDB-{entry_code}",
             sample_type=sample_type,
             title=sample_data.get("name"),
             protein_name=molecule.get("long_name"),
-            organism=molecule.get("organism"),
+            description=f"Organism: {organism_name}" if organism_name else None,
             molecular_weight=molecular_weight,
             concentration=concentration,
             buffer_composition=buffer_composition,

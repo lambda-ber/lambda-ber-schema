@@ -356,10 +356,14 @@ class PDBLoader(BaseLoader):
             else:
                 sample_type = SampleTypeEnum.complex
 
-            # Get organism
+            # Get organism as NCBITaxon CURIE (schema requires OntologyTerm)
             organism = None
+            organism_name = None
             if source_organisms:
-                organism = source_organisms[0].get("scientific_name")
+                organism_name = source_organisms[0].get("scientific_name")
+                taxid = source_organisms[0].get("ncbi_taxonomy_id")
+                if taxid:
+                    organism = f"NCBITaxon:{taxid}"
 
             # Get molecular weight from entity (API returns in kDa)
             mw = entity.get("rcsb_polymer_entity", {}).get("formula_weight")
@@ -388,6 +392,14 @@ class PDBLoader(BaseLoader):
                     )
                 )
 
+            # Build description parts
+            desc_parts = []
+            if organism_name:
+                desc_parts.append(f"Organism: {organism_name}")
+            seq_len = entity_poly.get("rcsb_sample_sequence_length")
+            if seq_len:
+                desc_parts.append(f"Sequence length: {seq_len}")
+
             samples.append(
                 Sample(
                     id=f"pdb:{entry_id}/sample/{i}",
@@ -398,11 +410,7 @@ class PDBLoader(BaseLoader):
                     organism=organism,
                     molecular_weight=molecular_weight,
                     database_cross_references=db_xrefs if db_xrefs else None,
-                    description=(
-                        f"Sequence length: {entity_poly.get('rcsb_sample_sequence_length')}"
-                        if entity_poly.get("rcsb_sample_sequence_length")
-                        else None
-                    ),
+                    description="; ".join(desc_parts) if desc_parts else None,
                 )
             )
 
