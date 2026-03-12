@@ -272,6 +272,40 @@ class EMSLLoader(BaseLoader):
             reverse=True,
         )
 
+    def _parse_json_response(
+        self,
+        response: requests.Response,
+        operation: str,
+    ) -> Any:
+        """Parse an EMSL JSON response and surface upstream HTML rejections clearly."""
+        try:
+            return response.json()
+        except ValueError as exc:
+            body = response.text or ""
+            support_id = self._extract_rejection_support_id(body)
+            if support_id is not None:
+                raise ValueError(
+                    f"EMSL {operation} was rejected by the upstream service "
+                    f"(support ID: {support_id})"
+                ) from exc
+
+            content_type = response.headers.get("content-type") or "unknown"
+            snippet = re.sub(r"\s+", " ", body).strip()[:200]
+            detail = f" content-type={content_type}"
+            if snippet:
+                detail += f" body={snippet!r}"
+            raise ValueError(
+                f"EMSL {operation} returned a non-JSON response.{detail}"
+            ) from exc
+
+    @staticmethod
+    def _extract_rejection_support_id(body: str) -> str | None:
+        """Extract the support ID from EMSL's HTML rejection page."""
+        match = re.search(r"support ID is:\s*([0-9]+)", body, flags=re.IGNORECASE)
+        if match:
+            return match.group(1)
+        return None
+
     def _search_transactions(
         self,
         sample_name: str,
@@ -304,12 +338,11 @@ class EMSLLoader(BaseLoader):
                 timeout=30,
             )
             response.raise_for_status()
-            try:
-                return {"payload": response.json()}
-            except ValueError as exc:
-                raise ValueError(
-                    "EMSL API returned non-JSON response for sample search"
-                ) from exc
+            return {
+                "payload": self._parse_json_response(
+                    response, "sample search"
+                )
+            }
 
         cached = self.cache.get_or_fetch(cache_key, fetch)
         return cached["payload"]
@@ -324,7 +357,7 @@ class EMSLLoader(BaseLoader):
                 timeout=30,
             )
             response.raise_for_status()
-            return {"payload": response.json()}
+            return {"payload": self._parse_json_response(response, "project lookup")}
 
         return self.cache.get_or_fetch(cache_key, fetch)["payload"]
 
@@ -338,7 +371,7 @@ class EMSLLoader(BaseLoader):
                 timeout=30,
             )
             response.raise_for_status()
-            payload = response.json()
+            payload = self._parse_json_response(response, "resource lookup")
             return {"payload": payload}
 
         payload = self.cache.get_or_fetch(cache_key, fetch)["payload"]
@@ -359,7 +392,11 @@ class EMSLLoader(BaseLoader):
                 timeout=60,
             )
             response.raise_for_status()
-            return {"payload": response.json()}
+            return {
+                "payload": self._parse_json_response(
+                    response, "transaction file lookup"
+                )
+            }
 
         payload = self.cache.get_or_fetch(cache_key, fetch)["payload"]
         files = payload.get(tx_id)

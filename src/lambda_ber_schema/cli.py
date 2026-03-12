@@ -54,25 +54,47 @@ def _serialize_dataset(dataset, format: str) -> str:
 
 def _load_with_error_handling(loader, identifier: str):
     """Load a dataset with friendly error messages and exit codes."""
+    return _run_with_error_handling(
+        lambda: loader.load(identifier),
+        http_error_message=lambda status_msg: (
+            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}"
+        ),
+        value_error_message=lambda _exc: (
+            f"Error: {identifier} not found or invalid for {loader.source_name}"
+        ),
+        unexpected_error_message=lambda _exc: (
+            f"Error: unexpected failure loading {identifier} from {loader.source_name}"
+        ),
+    )
+
+
+def _run_with_error_handling(
+    action,
+    *,
+    http_error_message,
+    value_error_message,
+    unexpected_error_message,
+):
+    """Run an action with consistent CLI error handling and exit codes."""
     try:
-        return loader.load(identifier)
+        return action()
     except requests.HTTPError as exc:
         status = getattr(exc.response, "status_code", None)
         status_msg = f" (HTTP {status})" if status is not None else ""
         typer.echo(
-            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}",
+            http_error_message(status_msg),
             err=True,
         )
         raise typer.Exit(1) from exc
     except ValueError as exc:
         typer.echo(
-            f"Error: {identifier} not found or invalid for {loader.source_name}",
+            value_error_message(exc),
             err=True,
         )
         raise typer.Exit(2) from exc
     except Exception as exc:
         typer.echo(
-            f"Error: unexpected failure loading {identifier} from {loader.source_name}",
+            unexpected_error_message(exc),
             err=True,
         )
         raise typer.Exit(1) from exc
@@ -357,8 +379,8 @@ def etl_emsl(
     loader = EMSLLoader(cache=response_cache)
 
     typer.echo(f"Loading EMSL sample query: {sample}", err=True)
-    try:
-        result = loader.load_by_sample(
+    result = _run_with_error_handling(
+        lambda: loader.load_by_sample(
             sample_name=sample,
             transaction_id=transaction_id,
             search_mode=search_mode,
@@ -366,27 +388,15 @@ def etl_emsl(
             exact_match=exact_match,
             similarity_threshold=similarity_threshold,
             limit=limit,
-        )
-    except requests.HTTPError as exc:
-        status = getattr(exc.response, "status_code", None)
-        status_msg = f" (HTTP {status})" if status is not None else ""
-        typer.echo(
-            f"Error: failed to fetch EMSL data for sample '{sample}'{status_msg}",
-            err=True,
-        )
-        raise typer.Exit(1) from exc
-    except ValueError as exc:
-        typer.echo(
-            f"Error: {exc}",
-            err=True,
-        )
-        raise typer.Exit(2) from exc
-    except Exception as exc:
-        typer.echo(
-            f"Error: unexpected failure loading EMSL sample '{sample}'",
-            err=True,
-        )
-        raise typer.Exit(1) from exc
+        ),
+        http_error_message=lambda status_msg: (
+            f"Error: failed to fetch EMSL data for sample '{sample}'{status_msg}"
+        ),
+        value_error_message=lambda exc: f"Error: {exc}",
+        unexpected_error_message=lambda _exc: (
+            f"Error: unexpected failure loading EMSL sample '{sample}'"
+        ),
+    )
 
     if result.warnings:
         for warning in result.warnings:
@@ -405,7 +415,8 @@ def etl_emsl(
 def etl_list(
     source: Annotated[
         str,
-        typer.Argument(help="Data source: pdb, sasbdb, simplescattering, emsl"),
+        typer.Argument(
+            help="Data source: pdb, sasbdb, simplescattering, emsl"),
     ],
     molecular_type: Annotated[
         str | None,
@@ -462,7 +473,16 @@ def etl_list(
             )
             raise typer.Exit(1)
         loader = EMSLLoader()
-        entries = loader.list_entries(sample_name=sample, limit=limit)
+        entries = _run_with_error_handling(
+            lambda: loader.list_entries(sample_name=sample, limit=limit),
+            http_error_message=lambda status_msg: (
+                f"Error: failed to fetch EMSL entries for sample '{sample}'{status_msg}"
+            ),
+            value_error_message=lambda exc: f"Error: {exc}",
+            unexpected_error_message=lambda _exc: (
+                f"Error: unexpected failure listing EMSL entries for sample '{sample}'"
+            ),
+        )
     else:
         typer.echo(
             f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl", err=True)

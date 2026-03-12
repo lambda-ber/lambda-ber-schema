@@ -441,6 +441,10 @@ class TestCLIIntegration:
         result = runner.invoke(
             app, ["etl", "list", "emsl", "--sample", "apo", "--limit", "2"]
         )
+        output = result.output or ""
+        exception_text = str(result.exception) if result.exception else ""
+        if "rejected by the upstream service" in output or "rejected by the upstream service" in exception_text:
+            pytest.skip(result.output.strip())
         assert result.exit_code == 0
         assert "Found " in result.output
         # Should emit at least one numeric transaction ID line.
@@ -463,6 +467,10 @@ class TestCLIIntegration:
                 str(output_file),
             ],
         )
+        output = result.output or ""
+        exception_text = str(result.exception) if result.exception else ""
+        if "rejected by the upstream service" in output or "rejected by the upstream service" in exception_text:
+            pytest.skip(result.output.strip() or exception_text)
         assert result.exit_code == 0
         assert output_file.exists()
 
