@@ -385,6 +385,9 @@ classes:
         slot_uri: nsls2:Ligand
         comments:
           - "Maps to NSLS2 spreadsheet: Ligand"
+      oligomeric_state:
+        description: "Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)"
+        range: string
 
   ProteinConstruct:
     is_a: NamedThing
