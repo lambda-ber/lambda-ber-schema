@@ -242,13 +242,14 @@ class TestEMSLLoader:
 
     def test_search_transactions_surfaces_upstream_rejection_support_id(self, mocker):
         """HTML rejection pages should raise a precise error with EMSL support ID."""
+        support_id = "6432431924108964175"
         response = mocker.Mock()
         response.raise_for_status.return_value = None
         response.json.side_effect = ValueError("not json")
         response.text = (
             "<html><body>The requested URL was rejected. "
             "Please consult with your administrator.<br><br>"
-            "Your support ID is: 6432431924108964175"
+            f"Your support ID is: {support_id}"
             "</body></html>"
         )
         response.headers = {"content-type": "text/html; charset=utf-8"}
@@ -258,7 +259,7 @@ class TestEMSLLoader:
         )
 
         loader = EMSLLoader()
-        with pytest.raises(ValueError, match="support ID: 6432431924108964175"):
+        with pytest.raises(ValueError, match=rf"support ID: {support_id}"):
             loader._search_transactions(sample_name="apo")
 
     def test_load_transaction_path_works(self, mocker, emsl_project, emsl_transaction_files):
