@@ -23,12 +23,12 @@ beamlines:
     instrument_code: "APS-19-ID"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "19-ID"
     techniques_supported:
       - xray_crystallography
     source_type: synchrotron
-    current_status: operational
+    current_status: offline
 
   - id: lambdaber:beamline_aps_19bm
     title: "APS Beamline 19-BM (SBC)"
@@ -36,7 +36,7 @@ beamlines:
     instrument_code: "APS-19-BM"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "19-BM"
     techniques_supported:
       - xray_crystallography
@@ -50,7 +50,7 @@ beamlines:
     instrument_code: "APS-23-ID-B"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "23-ID-B"
     techniques_supported:
       - xray_crystallography
@@ -64,7 +64,7 @@ beamlines:
     instrument_code: "APS-23-ID-D"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "23-ID-D"
     techniques_supported:
       - xray_crystallography
@@ -79,7 +79,7 @@ beamlines:
     instrument_code: "APS-24-ID-C"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "24-ID-C"
     techniques_supported:
       - xray_crystallography
@@ -92,7 +92,7 @@ beamlines:
     instrument_code: "APS-24-ID-E"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "24-ID-E"
     techniques_supported:
       - xray_crystallography
@@ -106,7 +106,7 @@ beamlines:
     instrument_code: "APS-22-ID"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "22-ID"
     techniques_supported:
       - xray_crystallography
@@ -119,7 +119,7 @@ beamlines:
     instrument_code: "APS-22-BM"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "22-BM"
     techniques_supported:
       - xray_crystallography
@@ -133,7 +133,7 @@ beamlines:
     instrument_code: "APS-17-ID"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "17-ID"
     techniques_supported:
       - xray_crystallography
@@ -147,10 +147,52 @@ beamlines:
     instrument_code: "APS-18-ID"
     instrument_category: SYNCHROTRON_BEAMLINE
     facility_name: APS
-    facility_ror: "https://ror.org/05gvnxz63"
+    facility_ror: "https://ror.org/04qxsr837"
     beamline_id: "18-ID"
     techniques_supported:
       - saxs
       - fiber_diffraction
     source_type: synchrotron
     current_status: operational
+
+  # LS-CAT - Sector 21 (Life Sciences Collaborative Access Team)
+  - id: lambdaber:beamline_aps_21id_f
+    title: "APS Beamline 21-ID-F (LS-CAT)"
+    description: "Life Sciences Collaborative Access Team beamline for macromolecular crystallography"
+    instrument_code: "APS-21-ID-F"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/04qxsr837"
+    beamline_id: "21-ID-F"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: operational
+
+  - id: lambdaber:beamline_aps_21id_g
+    title: "APS Beamline 21-ID-G (LS-CAT)"
+    description: "Life Sciences Collaborative Access Team beamline for macromolecular crystallography"
+    instrument_code: "APS-21-ID-G"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/04qxsr837"
+    beamline_id: "21-ID-G"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: commissioning
+
+  - id: lambdaber:beamline_aps_21id_d
+    title: "APS Beamline 21-ID-D (LS-CAT)"
+    description: "Life Sciences Collaborative Access Team beamline for macromolecular crystallography"
+    instrument_code: "APS-21-ID-D"
+    instrument_category: SYNCHROTRON_BEAMLINE
+    facility_name: APS
+    facility_ror: "https://ror.org/04qxsr837"
+    beamline_id: "21-ID-D"
+    techniques_supported:
+      - xray_crystallography
+    source_type: synchrotron
+    current_status: commissioning
+
+

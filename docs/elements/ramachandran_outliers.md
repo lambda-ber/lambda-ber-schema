@@ -3,7 +3,7 @@
 # Slot: ramachandran_outliers 
 
 
-_Percentage of Ramachandran outliers_
+_Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: ramachandran_outliers
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: ramachandran_outliers
 <details>
 ```yaml
 name: ramachandran_outliers
-description: Percentage of Ramachandran outliers
+description: Percentage of Ramachandran outliers (0-100). Data providers may specify
+  as a decimal fraction or percentage by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Ramachandran_Outliers
@@ -77,9 +78,8 @@ alias: ramachandran_outliers
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

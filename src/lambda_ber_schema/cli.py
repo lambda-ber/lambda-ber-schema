@@ -5,10 +5,10 @@ Provides ETL commands for loading data from external structural biology reposito
 """
 
 import json
-import sys
 from pathlib import Path
 from typing import Annotated
 
+import requests
 import typer
 import yaml
 
@@ -16,6 +16,7 @@ import logging
 
 from lambda_ber_schema.loaders import (
     BatchLoader,
+    EMSLLoader,
     PDBLoader,
     ResponseCache,
     SASBDBLoader,
@@ -28,30 +29,66 @@ app = typer.Typer(
     no_args_is_help=True,
 )
 
-etl_app = typer.Typer(help="ETL commands for loading data from external sources")
+etl_app = typer.Typer(
+    help="ETL commands for loading data from external sources")
 app.add_typer(etl_app, name="etl")
 
 
 def _serialize_dataset(dataset, format: str) -> str:
     """Serialize dataset to requested format."""
+    normalized_format = format.lower()
+    if normalized_format not in {"json", "yaml"}:
+        typer.echo(
+            f"Invalid format: {format}. Supported formats are: json, yaml",
+            err=True,
+        )
+        raise typer.Exit(1)
+
     # Convert Pydantic model to dict, excluding None values
     data = dataset.model_dump(exclude_none=True, mode="json")
 
-    if format == "json":
+    if normalized_format == "json":
         return json.dumps(data, indent=2)
-    else:  # yaml
-        return yaml.dump(data, default_flow_style=False, sort_keys=False)
+    return yaml.dump(data, default_flow_style=False, sort_keys=False)
+
+
+def _load_with_error_handling(loader, identifier: str):
+    """Load a dataset with friendly error messages and exit codes."""
+    try:
+        return loader.load(identifier)
+    except requests.HTTPError as exc:
+        status = getattr(exc.response, "status_code", None)
+        status_msg = f" (HTTP {status})" if status is not None else ""
+        typer.echo(
+            f"Error: failed to fetch {identifier} from {loader.source_name}{status_msg}",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
+    except ValueError as exc:
+        typer.echo(
+            f"Error: {identifier} not found or invalid for {loader.source_name}",
+            err=True,
+        )
+        raise typer.Exit(2) from exc
+    except Exception as exc:
+        typer.echo(
+            f"Error: unexpected failure loading {identifier} from {loader.source_name}",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
 
 
 @etl_app.command("sasbdb")
 def etl_sasbdb(
     entry: Annotated[
         str,
-        typer.Option("--entry", "-e", help="SASBDB entry code (e.g., SASDA52)"),
+        typer.Option("--entry", "-e",
+                     help="SASBDB entry code (e.g., SASDA52)"),
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -59,7 +96,8 @@ def etl_sasbdb(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -86,7 +124,7 @@ def etl_sasbdb(
 
     # Load the entry
     typer.echo(f"Loading SASBDB entry: {entry}", err=True)
-    result = loader.load(entry)
+    result = _load_with_error_handling(loader, entry)
 
     # Report warnings
     if result.warnings:
@@ -107,11 +145,13 @@ def etl_sasbdb(
 def etl_simplescattering(
     dataset: Annotated[
         str,
-        typer.Option("--dataset", "-d", help="Simple Scattering dataset code (e.g., xsbhevph)"),
+        typer.Option("--dataset", "-d",
+                     help="Simple Scattering dataset code (e.g., xsbhevph)"),
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -119,7 +159,8 @@ def etl_simplescattering(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -146,7 +187,7 @@ def etl_simplescattering(
 
     # Load the dataset
     typer.echo(f"Loading Simple Scattering dataset: {dataset}", err=True)
-    result = loader.load(dataset)
+    result = _load_with_error_handling(loader, dataset)
 
     # Report warnings
     if result.warnings:
@@ -171,7 +212,8 @@ def etl_pdb(
     ],
     output: Annotated[
         Path | None,
-        typer.Option("--output", "-o", help="Output file path (stdout if not specified)"),
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
     ] = None,
     format: Annotated[
         str,
@@ -179,7 +221,8 @@ def etl_pdb(
     ] = "yaml",
     cache: Annotated[
         bool,
-        typer.Option("--cache/--no-cache", help="Enable/disable response caching"),
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
     ] = False,
     cache_dir: Annotated[
         Path | None,
@@ -206,7 +249,7 @@ def etl_pdb(
 
     # Load the entry
     typer.echo(f"Loading PDB entry: {entry}", err=True)
-    result = loader.load(entry)
+    result = _load_with_error_handling(loader, entry)
 
     # Report warnings
     if result.warnings:
@@ -223,23 +266,165 @@ def etl_pdb(
         typer.echo(output_str)
 
 
+@etl_app.command("emsl")
+def etl_emsl(
+    sample: Annotated[
+        str,
+        typer.Option(
+            "--sample",
+            "-s",
+            help="Sample query text for EMSL transaction search (e.g., apo)",
+        ),
+    ],
+    output: Annotated[
+        Path | None,
+        typer.Option("--output", "-o",
+                     help="Output file path (stdout if not specified)"),
+    ] = None,
+    format: Annotated[
+        str,
+        typer.Option("--format", "-f", help="Output format: yaml or json"),
+    ] = "yaml",
+    cache: Annotated[
+        bool,
+        typer.Option("--cache/--no-cache",
+                     help="Enable/disable response caching"),
+    ] = False,
+    cache_dir: Annotated[
+        Path | None,
+        typer.Option("--cache-dir", help="Cache directory (default: .cache)"),
+    ] = None,
+    transaction_id: Annotated[
+        int | None,
+        typer.Option(
+            "--transaction-id",
+            "-t",
+            help="Optional transaction ID to select from search results",
+        ),
+    ] = None,
+    search_mode: Annotated[
+        str,
+        typer.Option(
+            "--search-mode",
+            help="Search mode: like, regex, or fuzzy",
+        ),
+    ] = "like",
+    key_filter: Annotated[
+        str | None,
+        typer.Option(
+            "--key-filter",
+            help="Optional sample-key filter (e.g., pncc, short_sample_name)",
+        ),
+    ] = "pncc",
+    exact_match: Annotated[
+        bool,
+        typer.Option(
+            "--exact-match/--partial-match",
+            help="Require exact sample match",
+        ),
+    ] = False,
+    similarity_threshold: Annotated[
+        float | None,
+        typer.Option(
+            "--similarity-threshold",
+            help="Fuzzy matching threshold (0.0-1.0, fuzzy mode only)",
+        ),
+    ] = None,
+    limit: Annotated[
+        int,
+        typer.Option(
+            "--limit",
+            "-n",
+            help="Maximum transactions to consider in sample search",
+        ),
+    ] = 20,
+) -> None:
+    """
+    Load data from the EMSL public API using sample-search transactions.
+
+    Examples:
+
+        lambda-ber-schema etl emsl --sample apo
+
+        lambda-ber-schema etl emsl --sample apo --transaction-id 3736677
+
+        lambda-ber-schema etl emsl --sample apo --format json --cache
+    """
+    response_cache = ResponseCache(
+        cache_dir=cache_dir or Path(".cache"),
+        enabled=cache,
+    )
+    loader = EMSLLoader(cache=response_cache)
+
+    typer.echo(f"Loading EMSL sample query: {sample}", err=True)
+    try:
+        result = loader.load_by_sample(
+            sample_name=sample,
+            transaction_id=transaction_id,
+            search_mode=search_mode,
+            key_filter=key_filter,
+            exact_match=exact_match,
+            similarity_threshold=similarity_threshold,
+            limit=limit,
+        )
+    except requests.HTTPError as exc:
+        status = getattr(exc.response, "status_code", None)
+        status_msg = f" (HTTP {status})" if status is not None else ""
+        typer.echo(
+            f"Error: failed to fetch EMSL data for sample '{sample}'{status_msg}",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
+    except ValueError as exc:
+        typer.echo(
+            f"Error: {exc}",
+            err=True,
+        )
+        raise typer.Exit(2) from exc
+    except Exception as exc:
+        typer.echo(
+            f"Error: unexpected failure loading EMSL sample '{sample}'",
+            err=True,
+        )
+        raise typer.Exit(1) from exc
+
+    if result.warnings:
+        for warning in result.warnings:
+            typer.echo(f"Warning: {warning}", err=True)
+
+    output_str = _serialize_dataset(result.dataset, format)
+
+    if output:
+        output.write_text(output_str)
+        typer.echo(f"Wrote output to: {output}", err=True)
+    else:
+        typer.echo(output_str)
+
+
 @etl_app.command("list")
 def etl_list(
     source: Annotated[
         str,
-        typer.Argument(help="Data source: pdb, sasbdb, simplescattering"),
+        typer.Argument(help="Data source: pdb, sasbdb, simplescattering, emsl"),
     ],
     molecular_type: Annotated[
         str | None,
-        typer.Option("--type", "-t", help="Molecular type filter (sasbdb only)"),
+        typer.Option("--type", "-t",
+                     help="Molecular type filter (sasbdb only)"),
     ] = None,
     method: Annotated[
         str | None,
-        typer.Option("--method", "-m", help="Experimental method filter (pdb only: X-RAY, EM, NMR)"),
+        typer.Option(
+            "--method", "-m", help="Experimental method filter (pdb only: X-RAY, EM, NMR)"),
+    ] = None,
+    sample: Annotated[
+        str | None,
+        typer.Option("--sample", "-s", help="Sample query (emsl only)"),
     ] = None,
     limit: Annotated[
         int,
-        typer.Option("--limit", "-n", help="Maximum number of entries to list"),
+        typer.Option("--limit", "-n",
+                     help="Maximum number of entries to list"),
     ] = 20,
 ) -> None:
     """
@@ -254,20 +439,33 @@ def etl_list(
         lambda-ber-schema etl list simplescattering --limit 5
 
         lambda-ber-schema etl list pdb --method X-RAY --limit 10
+
+        lambda-ber-schema etl list emsl --sample apo --limit 10
     """
     source_lower = source.lower()
 
     if source_lower == "sasbdb":
         loader = SASBDBLoader()
-        entries = loader.list_entries(molecular_type=molecular_type, limit=limit)
+        entries = loader.list_entries(
+            molecular_type=molecular_type, limit=limit)
     elif source_lower == "simplescattering":
         loader = SimpleScatteringLoader()
         entries = loader.list_entries(limit=limit)
     elif source_lower == "pdb":
         loader = PDBLoader()
         entries = loader.list_entries(experimental_method=method, limit=limit)
+    elif source_lower == "emsl":
+        if not sample:
+            typer.echo(
+                "Error: --sample is required when listing EMSL entries",
+                err=True,
+            )
+            raise typer.Exit(1)
+        loader = EMSLLoader()
+        entries = loader.list_entries(sample_name=sample, limit=limit)
     else:
-        typer.echo(f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering", err=True)
+        typer.echo(
+            f"Unknown source: {source}. Available: pdb, sasbdb, simplescattering, emsl", err=True)
         raise typer.Exit(1)
 
     typer.echo(f"Found {len(entries)} entries:")
@@ -279,7 +477,8 @@ def etl_list(
 def etl_dump_pdb(
     output_dir: Annotated[
         Path,
-        typer.Option("--output-dir", "-o", help="Directory to save output files"),
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
     ],
     format: Annotated[
         str,
@@ -287,19 +486,23 @@ def etl_dump_pdb(
     ] = "yaml",
     method: Annotated[
         str | None,
-        typer.Option("--method", "-m", help="Filter by method (X-RAY, EM, NMR)"),
+        typer.Option("--method", "-m",
+                     help="Filter by method (X-RAY, EM, NMR)"),
     ] = None,
     limit: Annotated[
         int | None,
-        typer.Option("--limit", "-n", help="Maximum entries to load (default: all)"),
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
     ] = None,
     rate: Annotated[
         float,
-        typer.Option("--rate", "-r", help="Requests per second (default: 2.0)"),
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
     ] = 2.0,
     workers: Annotated[
         int,
-        typer.Option("--workers", "-w", help="Concurrent workers (default: 1)"),
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
     ] = 1,
     retry_failed: Annotated[
         bool,
@@ -329,6 +532,8 @@ def etl_dump_pdb(
         # Retry failed entries
         lambda-ber-schema etl dump-pdb --output-dir ./pdb_dump --retry-failed
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     # Setup logging
     logging.basicConfig(
         level=logging.INFO,
@@ -373,7 +578,8 @@ def etl_dump_pdb(
 def etl_dump_sasbdb(
     output_dir: Annotated[
         Path,
-        typer.Option("--output-dir", "-o", help="Directory to save output files"),
+        typer.Option("--output-dir", "-o",
+                     help="Directory to save output files"),
     ],
     format: Annotated[
         str,
@@ -381,19 +587,23 @@ def etl_dump_sasbdb(
     ] = "yaml",
     molecular_type: Annotated[
         str | None,
-        typer.Option("--type", "-t", help="Filter by molecular type (protein, rna, dna, heterocomplex)"),
+        typer.Option(
+            "--type", "-t", help="Filter by molecular type (protein, rna, dna, heterocomplex)"),
     ] = None,
     limit: Annotated[
         int | None,
-        typer.Option("--limit", "-n", help="Maximum entries to load (default: all)"),
+        typer.Option("--limit", "-n",
+                     help="Maximum entries to load (default: all)"),
     ] = None,
     rate: Annotated[
         float,
-        typer.Option("--rate", "-r", help="Requests per second (default: 2.0)"),
+        typer.Option("--rate", "-r",
+                     help="Requests per second (default: 2.0)"),
     ] = 2.0,
     workers: Annotated[
         int,
-        typer.Option("--workers", "-w", help="Concurrent workers (default: 1)"),
+        typer.Option("--workers", "-w",
+                     help="Concurrent workers (default: 1)"),
     ] = 1,
     retry_failed: Annotated[
         bool,
@@ -423,6 +633,8 @@ def etl_dump_sasbdb(
         # Retry failed entries
         lambda-ber-schema etl dump-sasbdb --output-dir ./sasbdb_dump --retry-failed
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     # Setup logging
     logging.basicConfig(
         level=logging.INFO,

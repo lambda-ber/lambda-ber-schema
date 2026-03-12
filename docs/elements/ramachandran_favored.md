@@ -3,7 +3,7 @@
 # Slot: ramachandran_favored 
 
 
-_Percentage of residues in favored Ramachandran regions_
+_Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: ramachandran_favored
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,9 @@ Alias: ramachandran_favored
 <details>
 ```yaml
 name: ramachandran_favored
-description: Percentage of residues in favored Ramachandran regions
+description: Percentage of residues in favored Ramachandran regions (0-100). Data
+  providers may specify as a decimal fraction or percentage by including the unit
+  in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Ramachandran_Favored
@@ -77,9 +79,8 @@ alias: ramachandran_favored
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: '%'
+range: QuantityValue
+inlined: true
 
 ```
 </details>

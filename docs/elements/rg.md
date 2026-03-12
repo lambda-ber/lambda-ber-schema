@@ -3,7 +3,7 @@
 # Slot: rg 
 
 
-_Radius of gyration in Angstroms_
+_Radius of gyration, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: rg
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: rg
 <details>
 ```yaml
 name: rg
-description: Radius of gyration in Angstroms
+description: Radius of gyration, typically specified in Angstroms. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: rg
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

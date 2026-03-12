@@ -3,7 +3,7 @@
 # Slot: induction_temperature_c 
 
 
-_Temperature during induction in Celsius_
+_Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: induction_temperature_c
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: induction_temperature_c
 <details>
 ```yaml
 name: induction_temperature_c
-description: Temperature during induction in Celsius
+description: Temperature during induction, typically specified in degrees Celsius.
+  Data providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: induction_temperature_c
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

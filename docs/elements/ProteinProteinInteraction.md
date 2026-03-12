@@ -531,6 +531,7 @@ attributes:
     owner: ProteinProteinInteraction
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

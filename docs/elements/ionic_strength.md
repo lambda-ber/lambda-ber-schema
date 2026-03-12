@@ -3,7 +3,7 @@
 # Slot: ionic_strength 
 
 
-_Ionic strength in molar of material in solution_
+_Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: ionic_strength
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,16 +66,16 @@ Alias: ionic_strength
 <details>
 ```yaml
 name: ionic_strength
-description: Ionic strength in molar of material in solution
+description: Ionic strength, typically specified in molar (mol/L). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: ionic_strength
 owner: MeasurementConditions
 domain_of:
 - MeasurementConditions
-range: float
-unit:
-  ucum_code: mol/L
+range: QuantityValue
+inlined: true
 
 ```
 </details>

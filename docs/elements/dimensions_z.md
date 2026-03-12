@@ -3,7 +3,7 @@
 # Slot: dimensions_z 
 
 
-_Image depth in pixels/slices_
+_Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: dimensions_z
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: dimensions_z
 <details>
 ```yaml
 name: dimensions_z
-description: Image depth in pixels/slices
+description: Image depth, typically specified in pixels or slices. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: dimensions_z
 owner: Image3D
 domain_of:
 - Image3D
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: images 
 
 
-_Images acquired or generated in this study_
+_All images_
 
 
 
@@ -22,7 +22,7 @@ Alias: images
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: images
 <details>
 ```yaml
 name: images
-description: Images acquired or generated in this study
+description: All images
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: images
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: Image
 multivalued: true
 inlined: true

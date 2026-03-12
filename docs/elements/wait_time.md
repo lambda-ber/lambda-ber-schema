@@ -3,7 +3,7 @@
 # Slot: wait_time 
 
 
-_Wait time before blotting in seconds_
+_Wait time before blotting, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: wait_time
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: wait_time
 <details>
 ```yaml
 name: wait_time
-description: Wait time before blotting in seconds
+description: Wait time before blotting, typically specified in seconds. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: wait_time
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

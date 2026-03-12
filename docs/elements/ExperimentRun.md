@@ -28,19 +28,84 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : astigmatism_target
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : astigmatism_target
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : autoloader_slot
         
       ExperimentRun : beam_center_x
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : beam_center_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : beam_center_y
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : beam_center_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : beamline
         
       ExperimentRun : calibrated_pixel_size
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : calibrated_pixel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : camera_binning
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : camera_binning
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : coma
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : coma
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : daq_system
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" DataAcquisitionSystemEnum : daq_system
+        click DataAcquisitionSystemEnum href "../DataAcquisitionSystemEnum/"
+    
+
         
       ExperimentRun : data_collection_strategy
         
@@ -55,17 +120,71 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : defocus_range_increment
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : defocus_range_increment
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : defocus_range_max
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : defocus_range_max
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : defocus_range_min
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : defocus_range_min
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : defocus_target
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : defocus_target
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : description
         
       ExperimentRun : detector_distance
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : detector_distance
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : dose_rate
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : dose_rate
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : end_time
         
@@ -97,44 +216,150 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : exposure_time
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : exposure_time_per_frame
-        
-      ExperimentRun : flux
-        
-      ExperimentRun : flux_end
-        
-      ExperimentRun : frames_per_movie
-        
-      ExperimentRun : holes_per_group
-        
-      ExperimentRun : id
-        
-      ExperimentRun : instrument_id
         
           
     
         
         
-        ExperimentRun --> "1" Instrument : instrument_id
-        click Instrument href "../Instrument/"
+        ExperimentRun --> "0..1" QuantityValue : exposure_time_per_frame
+        click QuantityValue href "../QuantityValue/"
     
 
         
+      ExperimentRun : flux
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : flux
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : flux_end
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : flux_end
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : frames_per_movie
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : frames_per_movie
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : holes_per_group
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : holes_per_group
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
+      ExperimentRun : id
+        
       ExperimentRun : ispyb_data_collection_id
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : ispyb_data_collection_id
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : ispyb_session_id
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : ispyb_session_id
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : magnification
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : magnification
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : number_of_images
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : number_of_images
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : operator_id
         
       ExperimentRun : oscillation_angle
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : oscillation_angle
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : pixel_size_x
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : pixel_size_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : pixel_size_y
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : pixel_size_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : processing_status
         
@@ -162,19 +387,80 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : resolution
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : resolution
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : resolution_at_corner
         
-      ExperimentRun : sample_id
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : resolution_at_corner
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : shots_per_hole
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : shots_per_hole
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : slit_gap_horizontal
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : slit_gap_horizontal
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : slit_gap_vertical
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : slit_gap_vertical
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : stage_tilt
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : stage_tilt
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : start_angle
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : start_angle
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : start_time
         
@@ -195,15 +481,69 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
         
       ExperimentRun : total_dose
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : total_dose
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : total_exposure_time
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : total_exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : total_rotation
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : total_rotation
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : transmission
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : transmission
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       ExperimentRun : undulator_gap
         
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : undulator_gap
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       ExperimentRun : wavelength
+        
+          
+    
+        
+        
+        ExperimentRun --> "0..1" QuantityValue : wavelength
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -223,8 +563,6 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [experiment_code](experiment_code.md) | 1 <br/> [String](String.md) | Human-friendly laboratory or facility identifier for the experiment (e | direct |
-| [sample_id](sample_id.md) | 1 <br/> [String](String.md) | Reference to the sample being analyzed | direct |
-| [instrument_id](instrument_id.md) | 1 <br/> [Instrument](Instrument.md) | Reference to the instrument used | direct |
 | [experiment_date](experiment_date.md) | 0..1 <br/> [String](String.md) | Date of the experiment | direct |
 | [operator_id](operator_id.md) | 0..1 <br/> [String](String.md) | Identifier or name of the person who performed the experiment data collection... | direct |
 | [technique](technique.md) | 1 <br/> [TechniqueEnum](TechniqueEnum.md) | Technique used for data collection | direct |
@@ -234,51 +572,52 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 | [quality_metrics](quality_metrics.md) | 0..1 <br/> [QualityMetrics](QualityMetrics.md) | Quality metrics for the experiment | direct |
 | [raw_data_location](raw_data_location.md) | 0..1 <br/> [String](String.md) | Location of raw data files | direct |
 | [processing_status](processing_status.md) | 0..1 <br/> [ProcessingStatusEnum](ProcessingStatusEnum.md) | Current processing status | direct |
-| [magnification](magnification.md) | 0..1 <br/> [Integer](Integer.md) | Magnification used during data collection | direct |
-| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [Float](Float.md) | Calibrated pixel size in Angstroms per pixel | direct |
-| [camera_binning](camera_binning.md) | 0..1 <br/> [Float](Float.md) | Camera binning factor | direct |
-| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [Float](Float.md) | Exposure time per frame in milliseconds | direct |
-| [frames_per_movie](frames_per_movie.md) | 0..1 <br/> [Integer](Integer.md) | Number of frames per movie | direct |
-| [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [Float](Float.md) | Total exposure time in milliseconds | direct |
-| [total_dose](total_dose.md) | 0..1 <br/> [Float](Float.md) | Total electron dose in e-/Angstrom^2 | direct |
-| [dose_rate](dose_rate.md) | 0..1 <br/> [Float](Float.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s | direct |
-| [defocus_target](defocus_target.md) | 0..1 <br/> [Float](Float.md) | Target defocus value in micrometers | direct |
-| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [Float](Float.md) | Minimum defocus range in micrometers | direct |
-| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [Float](Float.md) | Maximum defocus range in micrometers | direct |
-| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [Float](Float.md) | Defocus range increment in micrometers | direct |
-| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [Float](Float.md) | Target astigmatism in Angstroms | direct |
-| [coma](coma.md) | 0..1 <br/> [Float](Float.md) | Coma aberration in nanometers | direct |
-| [stage_tilt](stage_tilt.md) | 0..1 <br/> [Float](Float.md) | Stage tilt angle in degrees | direct |
+| [daq_system](daq_system.md) | 0..1 <br/> [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition system used to collect this experiment | direct |
+| [magnification](magnification.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Magnification used during data collection | direct |
+| [calibrated_pixel_size](calibrated_pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Calibrated pixel size in Angstroms per pixel | direct |
+| [camera_binning](camera_binning.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Camera binning factor | direct |
+| [exposure_time_per_frame](exposure_time_per_frame.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per frame in milliseconds | direct |
+| [frames_per_movie](frames_per_movie.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of frames per movie | direct |
+| [total_exposure_time](total_exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total exposure time in milliseconds | direct |
+| [total_dose](total_dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total electron dose in e-/Angstrom^2 | direct |
+| [dose_rate](dose_rate.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Dose rate in e-/pixel/s or e-/Angstrom^2/s | direct |
+| [defocus_target](defocus_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target defocus value in micrometers | direct |
+| [defocus_range_min](defocus_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum defocus range in micrometers | direct |
+| [defocus_range_max](defocus_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum defocus range in micrometers | direct |
+| [defocus_range_increment](defocus_range_increment.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Defocus range increment in micrometers | direct |
+| [astigmatism_target](astigmatism_target.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Target astigmatism in Angstroms | direct |
+| [coma](coma.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Coma aberration in nanometers | direct |
+| [stage_tilt](stage_tilt.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Stage tilt angle in degrees | direct |
 | [autoloader_slot](autoloader_slot.md) | 0..1 <br/> [String](String.md) | Autoloader slot identifier | direct |
-| [shots_per_hole](shots_per_hole.md) | 0..1 <br/> [Integer](Integer.md) | Number of shots taken per hole | direct |
-| [holes_per_group](holes_per_group.md) | 0..1 <br/> [Integer](Integer.md) | Number of holes per group | direct |
+| [shots_per_hole](shots_per_hole.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of shots taken per hole | direct |
+| [holes_per_group](holes_per_group.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of holes per group | direct |
 | [acquisition_software](acquisition_software.md) | 0..1 <br/> [String](String.md) | Acquisition software used (e | direct |
 | [acquisition_software_version](acquisition_software_version.md) | 0..1 <br/> [String](String.md) | Version of acquisition software | direct |
-| [wavelength](wavelength.md) | 0..1 <br/> [Float](Float.md) | X-ray wavelength | direct |
-| [oscillation_angle](oscillation_angle.md) | 0..1 <br/> [Float](Float.md) | Oscillation angle per image | direct |
-| [start_angle](start_angle.md) | 0..1 <br/> [Float](Float.md) | Starting rotation angle | direct |
-| [number_of_images](number_of_images.md) | 0..1 <br/> [Integer](Integer.md) | Total number of diffraction images collected | direct |
-| [beam_center_x](beam_center_x.md) | 0..1 <br/> [Float](Float.md) | Beam center X coordinate | direct |
-| [beam_center_y](beam_center_y.md) | 0..1 <br/> [Float](Float.md) | Beam center Y coordinate | direct |
-| [detector_distance](detector_distance.md) | 0..1 <br/> [Float](Float.md) | Distance from sample to detector | direct |
-| [pixel_size_x](pixel_size_x.md) | 0..1 <br/> [Float](Float.md) | Pixel size X dimension | direct |
-| [pixel_size_y](pixel_size_y.md) | 0..1 <br/> [Float](Float.md) | Pixel size Y dimension | direct |
-| [total_rotation](total_rotation.md) | 0..1 <br/> [Float](Float.md) | Total rotation range collected | direct |
+| [wavelength](wavelength.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray wavelength, typically specified in Angstroms (Å) | direct |
+| [oscillation_angle](oscillation_angle.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Oscillation angle per image, typically specified in degrees | direct |
+| [start_angle](start_angle.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Starting rotation angle, typically specified in degrees | direct |
+| [number_of_images](number_of_images.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total number of diffraction images collected | direct |
+| [beam_center_x](beam_center_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center X coordinate, typically specified in pixels ([px]) | direct |
+| [beam_center_y](beam_center_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Beam center Y coordinate, typically specified in pixels ([px]) | direct |
+| [detector_distance](detector_distance.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Distance from sample to detector, typically specified in millimeters (mm) | direct |
+| [pixel_size_x](pixel_size_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size X dimension, typically specified in micrometers (µm) | direct |
+| [pixel_size_y](pixel_size_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size Y dimension, typically specified in micrometers (µm) | direct |
+| [total_rotation](total_rotation.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total rotation range collected, typically specified in degrees | direct |
 | [beamline](beamline.md) | 0..1 <br/> [String](String.md) | Beamline identifier (e | direct |
-| [transmission](transmission.md) | 0..1 <br/> [Float](Float.md) | X-ray beam transmission as percentage (0-100) | direct |
-| [flux](flux.md) | 0..1 <br/> [Float](Float.md) | Photon flux at sample position in photons/second | direct |
-| [flux_end](flux_end.md) | 0..1 <br/> [Float](Float.md) | Photon flux at end of data collection in photons/second | direct |
-| [slit_gap_horizontal](slit_gap_horizontal.md) | 0..1 <br/> [Float](Float.md) | Horizontal slit gap aperture in micrometers | direct |
-| [slit_gap_vertical](slit_gap_vertical.md) | 0..1 <br/> [Float](Float.md) | Vertical slit gap aperture in micrometers | direct |
-| [undulator_gap](undulator_gap.md) | 0..1 <br/> [Float](Float.md) | Undulator gap setting in millimeters | direct |
+| [transmission](transmission.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | X-ray beam transmission as a percentage (0-100) | direct |
+| [flux](flux.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux at sample position, typically specified in photons per second | direct |
+| [flux_end](flux_end.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Photon flux at end of data collection, typically specified in photons per sec... | direct |
+| [slit_gap_horizontal](slit_gap_horizontal.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Horizontal slit gap aperture, typically specified in micrometers (µm) | direct |
+| [slit_gap_vertical](slit_gap_vertical.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Vertical slit gap aperture, typically specified in micrometers (µm) | direct |
+| [undulator_gap](undulator_gap.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Undulator gap setting, typically specified in millimeters (mm) | direct |
 | [synchrotron_mode](synchrotron_mode.md) | 0..1 <br/> [String](String.md) | Synchrotron storage ring fill mode | direct |
-| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time per image in seconds | direct |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time per image, typically specified in seconds (s) | direct |
 | [start_time](start_time.md) | 0..1 <br/> [String](String.md) | Data collection start timestamp | direct |
 | [end_time](end_time.md) | 0..1 <br/> [String](String.md) | Data collection end timestamp | direct |
-| [resolution](resolution.md) | 0..1 <br/> [Float](Float.md) | Resolution at edge of detector in Angstroms | direct |
-| [resolution_at_corner](resolution_at_corner.md) | 0..1 <br/> [Float](Float.md) | Resolution at corner of detector in Angstroms | direct |
-| [ispyb_data_collection_id](ispyb_data_collection_id.md) | 0..1 <br/> [Integer](Integer.md) | ISPyB DataCollection | direct |
-| [ispyb_session_id](ispyb_session_id.md) | 0..1 <br/> [Integer](Integer.md) | ISPyB BLSession | direct |
+| [resolution](resolution.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Resolution at edge of detector, typically specified in Angstroms (Å) | direct |
+| [resolution_at_corner](resolution_at_corner.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Resolution at corner of detector, typically specified in Angstroms (Å) | direct |
+| [ispyb_data_collection_id](ispyb_data_collection_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | ISPyB DataCollection | direct |
+| [ispyb_session_id](ispyb_session_id.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | ISPyB BLSession | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -291,7 +630,11 @@ URI: [lambdaber:ExperimentRun](https://w3id.org/lambda-ber-schema/ExperimentRun)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Study](Study.md) | [instrument_runs](instrument_runs.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [Dataset](Dataset.md) | [experiment_runs](experiment_runs.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [StudyExperimentAssociation](StudyExperimentAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [ExperimentSampleAssociation](ExperimentSampleAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
+| [WorkflowExperimentAssociation](WorkflowExperimentAssociation.md) | [experiment_id](experiment_id.md) | range | [ExperimentRun](ExperimentRun.md) |
 
 
 
@@ -348,24 +691,6 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    required: true
-  sample_id:
-    name: sample_id
-    description: Reference to the sample being analyzed
-    from_schema: https://w3id.org/lambda-ber-schema/
-    domain_of:
-    - SamplePreparation
-    - ExperimentRun
-    range: string
-    required: true
-  instrument_id:
-    name: instrument_id
-    description: Reference to the instrument used
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    domain_of:
-    - ExperimentRun
-    range: Instrument
     required: true
   experiment_date:
     name: experiment_date
@@ -442,6 +767,14 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used to collect this experiment
+    from_schema: https://w3id.org/lambda-ber-schema/
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
   magnification:
     name: magnification
     description: Magnification used during data collection
@@ -450,7 +783,8 @@ attributes:
     domain_of:
     - ExperimentRun
     - OpticalImage
-    range: integer
+    range: QuantityValue
+    inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
     description: Calibrated pixel size in Angstroms per pixel
@@ -458,7 +792,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   camera_binning:
     name: camera_binning
     description: Camera binning factor. This must be a positive float value (e.g.,
@@ -467,8 +802,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds
@@ -476,7 +811,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   frames_per_movie:
     name: frames_per_movie
     description: Number of frames per movie
@@ -484,7 +820,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   total_exposure_time:
     name: total_exposure_time
     description: Total exposure time in milliseconds
@@ -492,7 +829,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   total_dose:
     name: total_dose
     description: Total electron dose in e-/Angstrom^2
@@ -501,7 +839,8 @@ attributes:
     domain_of:
     - ExperimentRun
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_rate:
     name: dose_rate
     description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
@@ -509,7 +848,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_target:
     name: defocus_target
     description: Target defocus value in micrometers
@@ -517,7 +857,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_min:
     name: defocus_range_min
     description: Minimum defocus range in micrometers
@@ -525,7 +866,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_max:
     name: defocus_range_max
     description: Maximum defocus range in micrometers
@@ -533,7 +875,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_increment:
     name: defocus_range_increment
     description: Defocus range increment in micrometers
@@ -541,7 +884,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism_target:
     name: astigmatism_target
     description: Target astigmatism in Angstroms
@@ -549,7 +893,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   coma:
     name: coma
     description: Coma aberration in nanometers
@@ -557,7 +902,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_tilt:
     name: stage_tilt
     description: Stage tilt angle in degrees
@@ -565,7 +911,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   autoloader_slot:
     name: autoloader_slot
     description: Autoloader slot identifier
@@ -581,15 +928,18 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   holes_per_group:
     name: holes_per_group
-    description: Number of holes per group
+    description: Number of holes per group. Data providers may include unit information
+      in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   acquisition_software:
     name: acquisition_software
     description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
@@ -608,7 +958,8 @@ attributes:
     range: string
   wavelength:
     name: wavelength
-    description: X-ray wavelength
+    description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Wavelength
@@ -618,12 +969,12 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   oscillation_angle:
     name: oscillation_angle
-    description: Oscillation angle per image
+    description: Oscillation angle per image, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Angle_increment
@@ -633,12 +984,12 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   start_angle:
     name: start_angle
-    description: Starting rotation angle
+    description: Starting rotation angle, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Start_angle
@@ -647,24 +998,21 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Number_of_images
-    - imgCIF:_diffrn_scan.frames
-    - ispyb:DataCollection.numberOfImages
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_center_x:
     name: beam_center_x
-    description: Beam center X coordinate
+    description: Beam center X coordinate, typically specified in pixels ([px]). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Beam_xy_x
@@ -674,12 +1022,12 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '[px]'
+    range: QuantityValue
+    inlined: true
   beam_center_y:
     name: beam_center_y
-    description: Beam center Y coordinate
+    description: Beam center Y coordinate, typically specified in pixels ([px]). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Beam_xy_y
@@ -689,12 +1037,13 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '[px]'
+    range: QuantityValue
+    inlined: true
   detector_distance:
     name: detector_distance
-    description: Distance from sample to detector
+    description: Distance from sample to detector, typically specified in millimeters
+      (mm). Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Detector_distance
@@ -704,12 +1053,13 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: mm
+    range: QuantityValue
+    inlined: true
   pixel_size_x:
     name: pixel_size_x
-    description: Pixel size X dimension
+    description: Pixel size X dimension, typically specified in micrometers (µm).
+      Data providers may specify alternative units (e.g., Angstroms) by including
+      the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[1]'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -719,12 +1069,13 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   pixel_size_y:
     name: pixel_size_y
-    description: Pixel size Y dimension
+    description: Pixel size Y dimension, typically specified in micrometers (µm).
+      Data providers may specify alternative units (e.g., Angstroms) by including
+      the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[2]'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -734,12 +1085,12 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   total_rotation:
     name: total_rotation
-    description: Total rotation range collected
+    description: Total rotation range collected, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Total_rotation_deg
@@ -747,9 +1098,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
@@ -764,7 +1114,8 @@ attributes:
     range: string
   transmission:
     name: transmission
-    description: X-ray beam transmission as percentage (0-100)
+    description: X-ray beam transmission as a percentage (0-100). Data providers may
+      specify as a decimal fraction or percentage by including the unit in the QuantityValue.
     comments:
     - Percentage of full beam intensity used
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -773,14 +1124,13 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    minimum_value: 0
-    maximum_value: 100
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   flux:
     name: flux
-    description: Photon flux at sample position in photons/second
+    description: Photon flux at sample position, typically specified in photons per
+      second. Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     comments:
     - Measured or calculated photon flux
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -790,48 +1140,51 @@ attributes:
     domain_of:
     - ExperimentRun
     - XRFImage
-    range: float
-    unit:
-      ucum_code: '{photons}/s'
+    range: QuantityValue
+    inlined: true
   flux_end:
     name: flux_end
-    description: Photon flux at end of data collection in photons/second
+    description: Photon flux at end of data collection, typically specified in photons
+      per second. Data providers may specify alternative units by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.flux_end
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '{photons}/s'
+    range: QuantityValue
+    inlined: true
   slit_gap_horizontal:
     name: slit_gap_horizontal
-    description: Horizontal slit gap aperture in micrometers
+    description: Horizontal slit gap aperture, typically specified in micrometers
+      (µm). Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.slitGapHorizontal
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   slit_gap_vertical:
     name: slit_gap_vertical
-    description: Vertical slit gap aperture in micrometers
+    description: Vertical slit gap aperture, typically specified in micrometers (µm).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.slitGapVertical
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   undulator_gap:
     name: undulator_gap
-    description: Undulator gap setting in millimeters
+    description: Undulator gap setting, typically specified in millimeters (mm). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+      Primary undulator gap for beamlines with insertion devices.
     comments:
     - Primary undulator gap for beamlines with insertion devices
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -840,9 +1193,8 @@ attributes:
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: mm
+    range: QuantityValue
+    inlined: true
   synchrotron_mode:
     name: synchrotron_mode
     description: Synchrotron storage ring fill mode
@@ -857,7 +1209,8 @@ attributes:
     range: string
   exposure_time:
     name: exposure_time
-    description: Exposure time per image in seconds
+    description: Exposure time per image, typically specified in seconds (s). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.exposureTime
@@ -866,9 +1219,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
-    unit:
-      ucum_code: s
+    range: QuantityValue
+    inlined: true
   start_time:
     name: start_time
     description: Data collection start timestamp
@@ -891,7 +1243,9 @@ attributes:
     range: string
   resolution:
     name: resolution
-    description: Resolution at edge of detector in Angstroms
+    description: Resolution at edge of detector, typically specified in Angstroms
+      (Å). Data providers may specify alternative units by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.resolution
@@ -899,43 +1253,39 @@ attributes:
     domain_of:
     - ExperimentRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   resolution_at_corner:
     name: resolution_at_corner
-    description: Resolution at corner of detector in Angstroms
+    description: Resolution at corner of detector, typically specified in Angstroms
+      (Å). Data providers may specify alternative units by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.resolutionAtCorner
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   ispyb_data_collection_id:
     name: ispyb_data_collection_id
     description: ISPyB DataCollection.dataCollectionId for traceability
-    comments:
-    - Use to link back to ISPyB records
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:DataCollection.dataCollectionId
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_session_id:
     name: ispyb_session_id
     description: ISPyB BLSession.sessionId
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:BLSession.sessionId
     rank: 1000
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -961,28 +1311,6 @@ attributes:
     domain_of:
     - ExperimentRun
     range: string
-    required: true
-  sample_id:
-    name: sample_id
-    description: Reference to the sample being analyzed
-    from_schema: https://w3id.org/lambda-ber-schema/
-    alias: sample_id
-    owner: ExperimentRun
-    domain_of:
-    - SamplePreparation
-    - ExperimentRun
-    range: string
-    required: true
-  instrument_id:
-    name: instrument_id
-    description: Reference to the instrument used
-    from_schema: https://w3id.org/lambda-ber-schema/
-    rank: 1000
-    alias: instrument_id
-    owner: ExperimentRun
-    domain_of:
-    - ExperimentRun
-    range: Instrument
     required: true
   experiment_date:
     name: experiment_date
@@ -1078,6 +1406,16 @@ attributes:
     domain_of:
     - ExperimentRun
     range: ProcessingStatusEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used to collect this experiment
+    from_schema: https://w3id.org/lambda-ber-schema/
+    alias: daq_system
+    owner: ExperimentRun
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
   magnification:
     name: magnification
     description: Magnification used during data collection
@@ -1088,7 +1426,8 @@ attributes:
     domain_of:
     - ExperimentRun
     - OpticalImage
-    range: integer
+    range: QuantityValue
+    inlined: true
   calibrated_pixel_size:
     name: calibrated_pixel_size
     description: Calibrated pixel size in Angstroms per pixel
@@ -1098,7 +1437,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   camera_binning:
     name: camera_binning
     description: Camera binning factor. This must be a positive float value (e.g.,
@@ -1109,8 +1449,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   exposure_time_per_frame:
     name: exposure_time_per_frame
     description: Exposure time per frame in milliseconds
@@ -1120,7 +1460,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   frames_per_movie:
     name: frames_per_movie
     description: Number of frames per movie
@@ -1130,7 +1471,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   total_exposure_time:
     name: total_exposure_time
     description: Total exposure time in milliseconds
@@ -1140,7 +1482,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   total_dose:
     name: total_dose
     description: Total electron dose in e-/Angstrom^2
@@ -1151,7 +1494,8 @@ attributes:
     domain_of:
     - ExperimentRun
     - DataCollectionStrategy
-    range: float
+    range: QuantityValue
+    inlined: true
   dose_rate:
     name: dose_rate
     description: Dose rate in e-/pixel/s or e-/Angstrom^2/s
@@ -1161,7 +1505,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_target:
     name: defocus_target
     description: Target defocus value in micrometers
@@ -1171,7 +1516,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_min:
     name: defocus_range_min
     description: Minimum defocus range in micrometers
@@ -1181,7 +1527,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_max:
     name: defocus_range_max
     description: Maximum defocus range in micrometers
@@ -1191,7 +1538,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   defocus_range_increment:
     name: defocus_range_increment
     description: Defocus range increment in micrometers
@@ -1201,7 +1549,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   astigmatism_target:
     name: astigmatism_target
     description: Target astigmatism in Angstroms
@@ -1211,7 +1560,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   coma:
     name: coma
     description: Coma aberration in nanometers
@@ -1221,7 +1571,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   stage_tilt:
     name: stage_tilt
     description: Stage tilt angle in degrees
@@ -1231,7 +1582,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
+    range: QuantityValue
+    inlined: true
   autoloader_slot:
     name: autoloader_slot
     description: Autoloader slot identifier
@@ -1251,17 +1603,20 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   holes_per_group:
     name: holes_per_group
-    description: Number of holes per group
+    description: Number of holes per group. Data providers may include unit information
+      in the QuantityValue if needed.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: holes_per_group
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   acquisition_software:
     name: acquisition_software
     description: Acquisition software used (e.g., SerialEM, EPU, Leginon)
@@ -1284,7 +1639,8 @@ attributes:
     range: string
   wavelength:
     name: wavelength
-    description: X-ray wavelength
+    description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Wavelength
@@ -1296,12 +1652,12 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   oscillation_angle:
     name: oscillation_angle
-    description: Oscillation angle per image
+    description: Oscillation angle per image, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Angle_increment
@@ -1313,12 +1669,12 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   start_angle:
     name: start_angle
-    description: Starting rotation angle
+    description: Starting rotation angle, typically specified in degrees. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Start_angle
@@ -1329,26 +1685,23 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   number_of_images:
     name: number_of_images
     description: Total number of diffraction images collected
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - nsls2:Number_of_images
-    - imgCIF:_diffrn_scan.frames
-    - ispyb:DataCollection.numberOfImages
     rank: 1000
     alias: number_of_images
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   beam_center_x:
     name: beam_center_x
-    description: Beam center X coordinate
+    description: Beam center X coordinate, typically specified in pixels ([px]). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Beam_xy_x
@@ -1360,12 +1713,12 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '[px]'
+    range: QuantityValue
+    inlined: true
   beam_center_y:
     name: beam_center_y
-    description: Beam center Y coordinate
+    description: Beam center Y coordinate, typically specified in pixels ([px]). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Beam_xy_y
@@ -1377,12 +1730,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '[px]'
+    range: QuantityValue
+    inlined: true
   detector_distance:
     name: detector_distance
-    description: Distance from sample to detector
+    description: Distance from sample to detector, typically specified in millimeters
+      (mm). Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Detector_distance
@@ -1394,12 +1748,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: mm
+    range: QuantityValue
+    inlined: true
   pixel_size_x:
     name: pixel_size_x
-    description: Pixel size X dimension
+    description: Pixel size X dimension, typically specified in micrometers (µm).
+      Data providers may specify alternative units (e.g., Angstroms) by including
+      the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[1]'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1411,12 +1766,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   pixel_size_y:
     name: pixel_size_y
-    description: Pixel size Y dimension
+    description: Pixel size Y dimension, typically specified in micrometers (µm).
+      Data providers may specify alternative units (e.g., Angstroms) by including
+      the unit in the QuantityValue.
     comments:
     - 'imgCIF: _array_element_size.size[2]'
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1428,12 +1784,12 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   total_rotation:
     name: total_rotation
-    description: Total rotation range collected
+    description: Total rotation range collected, typically specified in degrees. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - nsls2:Total_rotation_deg
@@ -1443,9 +1799,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: deg
+    range: QuantityValue
+    inlined: true
   beamline:
     name: beamline
     description: Beamline identifier (e.g., FMX, AMX, 12.3.1)
@@ -1462,7 +1817,8 @@ attributes:
     range: string
   transmission:
     name: transmission
-    description: X-ray beam transmission as percentage (0-100)
+    description: X-ray beam transmission as a percentage (0-100). Data providers may
+      specify as a decimal fraction or percentage by including the unit in the QuantityValue.
     comments:
     - Percentage of full beam intensity used
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1473,14 +1829,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    minimum_value: 0
-    maximum_value: 100
-    unit:
-      ucum_code: '%'
+    range: QuantityValue
+    inlined: true
   flux:
     name: flux
-    description: Photon flux at sample position in photons/second
+    description: Photon flux at sample position, typically specified in photons per
+      second. Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     comments:
     - Measured or calculated photon flux
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1492,12 +1847,13 @@ attributes:
     domain_of:
     - ExperimentRun
     - XRFImage
-    range: float
-    unit:
-      ucum_code: '{photons}/s'
+    range: QuantityValue
+    inlined: true
   flux_end:
     name: flux_end
-    description: Photon flux at end of data collection in photons/second
+    description: Photon flux at end of data collection, typically specified in photons
+      per second. Data providers may specify alternative units by including the unit
+      in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.flux_end
@@ -1506,12 +1862,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: '{photons}/s'
+    range: QuantityValue
+    inlined: true
   slit_gap_horizontal:
     name: slit_gap_horizontal
-    description: Horizontal slit gap aperture in micrometers
+    description: Horizontal slit gap aperture, typically specified in micrometers
+      (µm). Data providers may specify alternative units by including the unit in
+      the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.slitGapHorizontal
@@ -1520,12 +1877,12 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   slit_gap_vertical:
     name: slit_gap_vertical
-    description: Vertical slit gap aperture in micrometers
+    description: Vertical slit gap aperture, typically specified in micrometers (µm).
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.slitGapVertical
@@ -1534,12 +1891,13 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: um
+    range: QuantityValue
+    inlined: true
   undulator_gap:
     name: undulator_gap
-    description: Undulator gap setting in millimeters
+    description: Undulator gap setting, typically specified in millimeters (mm). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
+      Primary undulator gap for beamlines with insertion devices.
     comments:
     - Primary undulator gap for beamlines with insertion devices
     from_schema: https://w3id.org/lambda-ber-schema/
@@ -1550,9 +1908,8 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: mm
+    range: QuantityValue
+    inlined: true
   synchrotron_mode:
     name: synchrotron_mode
     description: Synchrotron storage ring fill mode
@@ -1569,7 +1926,8 @@ attributes:
     range: string
   exposure_time:
     name: exposure_time
-    description: Exposure time per image in seconds
+    description: Exposure time per image, typically specified in seconds (s). Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.exposureTime
@@ -1580,9 +1938,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
-    unit:
-      ucum_code: s
+    range: QuantityValue
+    inlined: true
   start_time:
     name: start_time
     description: Data collection start timestamp
@@ -1609,7 +1966,9 @@ attributes:
     range: string
   resolution:
     name: resolution
-    description: Resolution at edge of detector in Angstroms
+    description: Resolution at edge of detector, typically specified in Angstroms
+      (Å). Data providers may specify alternative units by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.resolution
@@ -1619,12 +1978,13 @@ attributes:
     domain_of:
     - ExperimentRun
     - QualityMetrics
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   resolution_at_corner:
     name: resolution_at_corner
-    description: Resolution at corner of detector in Angstroms
+    description: Resolution at corner of detector, typically specified in Angstroms
+      (Å). Data providers may specify alternative units by including the unit in the
+      QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     exact_mappings:
     - ispyb:DataCollection.resolutionAtCorner
@@ -1633,35 +1993,30 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: float
-    unit:
-      ucum_code: Ao
+    range: QuantityValue
+    inlined: true
   ispyb_data_collection_id:
     name: ispyb_data_collection_id
     description: ISPyB DataCollection.dataCollectionId for traceability
-    comments:
-    - Use to link back to ISPyB records
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:DataCollection.dataCollectionId
     rank: 1000
     alias: ispyb_data_collection_id
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   ispyb_session_id:
     name: ispyb_session_id
     description: ISPyB BLSession.sessionId
     from_schema: https://w3id.org/lambda-ber-schema/
-    exact_mappings:
-    - ispyb:BLSession.sessionId
     rank: 1000
     alias: ispyb_session_id
     owner: ExperimentRun
     domain_of:
     - ExperimentRun
-    range: integer
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -1674,6 +2029,7 @@ attributes:
     owner: ExperimentRun
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

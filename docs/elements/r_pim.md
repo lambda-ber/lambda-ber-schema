@@ -31,7 +31,7 @@ Alias: r_pim
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: r_pim
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: od600_at_induction 
 
 
-_Optical density at 600nm when induction was started_
+_Optical density at 600nm when induction was started. Data providers may include unit information in the QuantityValue if needed._
 
 
 
@@ -31,7 +31,7 @@ Alias: od600_at_induction
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: od600_at_induction
 <details>
 ```yaml
 name: od600_at_induction
-description: Optical density at 600nm when induction was started
+description: Optical density at 600nm when induction was started. Data providers may
+  include unit information in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: od600_at_induction
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

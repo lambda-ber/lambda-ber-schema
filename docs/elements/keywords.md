@@ -3,11 +3,6 @@
 # Slot: keywords 
 
 
-_Keywords or tags describing the dataset for search and categorization_
-
-
-
-
 
 URI: [lambdaber:keywords](https://w3id.org/lambda-ber-schema/keywords)
 Alias: keywords
@@ -22,7 +17,8 @@ Alias: keywords
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Dataset](Dataset.md) | A collection of studies |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
+| [Study](Study.md) | A logical grouping of related experiments investigating a research question |  no  |
 
 
 
@@ -33,8 +29,6 @@ Alias: keywords
 
 * Range: [String](String.md)
 
-* Multivalued: True
-
 
 
 
@@ -42,13 +36,6 @@ Alias: keywords
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lambda-ber-schema/
 
 
 
@@ -68,15 +55,11 @@ Alias: keywords
 <details>
 ```yaml
 name: keywords
-description: Keywords or tags describing the dataset for search and categorization
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: keywords
-owner: Dataset
 domain_of:
 - Dataset
+- Study
 range: string
-multivalued: true
 
 ```
 </details>

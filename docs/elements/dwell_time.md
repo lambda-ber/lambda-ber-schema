@@ -3,7 +3,7 @@
 # Slot: dwell_time 
 
 
-_Dwell time per pixel in milliseconds_
+_Dwell time per pixel, typically specified in milliseconds. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: dwell_time
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: dwell_time
 <details>
 ```yaml
 name: dwell_time
-description: Dwell time per pixel in milliseconds
+description: Dwell time per pixel, typically specified in milliseconds. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: dwell_time
 owner: XRFImage
 domain_of:
 - XRFImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

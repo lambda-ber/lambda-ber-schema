@@ -31,7 +31,7 @@ Alias: number_of_waters
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: number_of_waters
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

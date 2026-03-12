@@ -3,7 +3,7 @@
 # Slot: induction_time_h 
 
 
-_Duration of induction in hours_
+_Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: induction_time_h
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,17 @@ Alias: induction_time_h
 <details>
 ```yaml
 name: induction_time_h
-description: Duration of induction in hours
+description: Duration of induction, typically specified in hours. Data providers may
+  specify alternative units (e.g., minutes, seconds) by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: induction_time_h
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

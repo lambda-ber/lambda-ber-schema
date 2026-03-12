@@ -31,7 +31,7 @@ Alias: rfree
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -57,7 +57,6 @@ Alias: rfree
 | ---  | ---  |
 | self | lambdaber:rfree |
 | native | lambdaber:rfree |
-| exact | nsls2:Rfree, mmCIF:_refine.ls_R_factor_R_free |
 
 
 
@@ -69,15 +68,13 @@ Alias: rfree
 name: rfree
 description: R-free (test set)
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Rfree
-- mmCIF:_refine.ls_R_factor_R_free
 rank: 1000
 alias: rfree
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

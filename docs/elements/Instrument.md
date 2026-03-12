@@ -127,7 +127,7 @@ URI: [lambdaber:Instrument](https://w3id.org/lambda-ber-schema/Instrument)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Dataset](Dataset.md) | [instruments](instruments.md) | range | [Instrument](Instrument.md) |
-| [ExperimentRun](ExperimentRun.md) | [instrument_id](instrument_id.md) | range | [Instrument](Instrument.md) |
+| [ExperimentInstrumentAssociation](ExperimentInstrumentAssociation.md) | [instrument_id](instrument_id.md) | range | [Instrument](Instrument.md) |
 
 
 
@@ -393,6 +393,7 @@ attributes:
     owner: Instrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

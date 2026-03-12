@@ -3,7 +3,7 @@
 # Slot: defocus_search_min 
 
 
-_Minimum defocus search range in micrometers_
+_Minimum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: defocus_search_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: defocus_search_min
 <details>
 ```yaml
 name: defocus_search_min
-description: Minimum defocus search range in micrometers
+description: Minimum defocus search range, typically specified in micrometers. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: defocus_search_min
 owner: CTFEstimationParameters
 domain_of:
 - CTFEstimationParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

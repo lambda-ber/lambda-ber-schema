@@ -28,13 +28,58 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
         
       Image3D : dimensions_x
         
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : dimensions_x
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image3D : dimensions_y
+        
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : dimensions_y
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Image3D : dimensions_z
         
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : dimensions_z
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image3D : dose
         
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : dose
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image3D : exposure_time
+        
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : exposure_time
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       Image3D : file_name
         
@@ -42,11 +87,29 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
         
       Image3D : pixel_size
         
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : pixel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       Image3D : reconstruction_method
         
       Image3D : title
         
       Image3D : voxel_size
+        
+          
+    
+        
+        
+        Image3D --> "0..1" QuantityValue : voxel_size
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -66,16 +129,16 @@ URI: [lambdaber:Image3D](https://w3id.org/lambda-ber-schema/Image3D)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [dimensions_z](dimensions_z.md) | 0..1 <br/> [Integer](Integer.md) | Image depth in pixels/slices | direct |
-| [voxel_size](voxel_size.md) | 0..1 <br/> [Float](Float.md) | Voxel size in Angstroms | direct |
+| [dimensions_z](dimensions_z.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image depth, typically specified in pixels or slices | direct |
+| [voxel_size](voxel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Voxel size, typically specified in Angstroms | direct |
 | [reconstruction_method](reconstruction_method.md) | 0..1 <br/> [String](String.md) | Method used for 3D reconstruction | direct |
 | [file_name](file_name.md) | 1 <br/> [String](String.md) | Image file name | [Image](Image.md) |
 | [acquisition_date](acquisition_date.md) | 0..1 <br/> [String](String.md) | Date image was acquired | [Image](Image.md) |
-| [pixel_size](pixel_size.md) | 0..1 <br/> [Float](Float.md) | Pixel size in Angstroms | [Image](Image.md) |
-| [dimensions_x](dimensions_x.md) | 0..1 <br/> [Integer](Integer.md) | Image width in pixels | [Image](Image.md) |
-| [dimensions_y](dimensions_y.md) | 0..1 <br/> [Integer](Integer.md) | Image height in pixels | [Image](Image.md) |
-| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | [Image](Image.md) |
-| [dose](dose.md) | 0..1 <br/> [Float](Float.md) | Electron dose in e-/Å² | [Image](Image.md) |
+| [pixel_size](pixel_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Pixel size, typically specified in Angstroms | [Image](Image.md) |
+| [dimensions_x](dimensions_x.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image width, typically specified in pixels | [Image](Image.md) |
+| [dimensions_y](dimensions_y.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Image height, typically specified in pixels | [Image](Image.md) |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Exposure time, typically specified in seconds | [Image](Image.md) |
+| [dose](dose.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Electron dose in e-/Å² | [Image](Image.md) |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -131,20 +194,24 @@ is_a: Image
 attributes:
   dimensions_z:
     name: dimensions_z
-    description: Image depth in pixels/slices
+    description: Image depth, typically specified in pixels or slices. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image3D
-    range: integer
+    range: QuantityValue
+    inlined: true
   voxel_size:
     name: voxel_size
-    description: Voxel size in Angstroms
+    description: Voxel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - Image3D
-    range: float
+    range: QuantityValue
+    inlined: true
   reconstruction_method:
     name: reconstruction_method
     description: Method used for 3D reconstruction
@@ -167,24 +234,28 @@ is_a: Image
 attributes:
   dimensions_z:
     name: dimensions_z
-    description: Image depth in pixels/slices
+    description: Image depth, typically specified in pixels or slices. Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_z
     owner: Image3D
     domain_of:
     - Image3D
-    range: integer
+    range: QuantityValue
+    inlined: true
   voxel_size:
     name: voxel_size
-    description: Voxel size in Angstroms
+    description: Voxel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: voxel_size
     owner: Image3D
     domain_of:
     - Image3D
-    range: float
+    range: QuantityValue
+    inlined: true
   reconstruction_method:
     name: reconstruction_method
     description: Method used for 3D reconstruction
@@ -218,7 +289,8 @@ attributes:
     range: string
   pixel_size:
     name: pixel_size
-    description: Pixel size in Angstroms
+    description: Pixel size, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: pixel_size
@@ -226,30 +298,36 @@ attributes:
     domain_of:
     - Image
     - RefinementParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   dimensions_x:
     name: dimensions_x
-    description: Image width in pixels
+    description: Image width, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_x
     owner: Image3D
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   dimensions_y:
     name: dimensions_y
-    description: Image height in pixels
+    description: Image height, typically specified in pixels. Data providers may specify
+      alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: dimensions_y
     owner: Image3D
     domain_of:
     - Image
-    range: integer
+    range: QuantityValue
+    inlined: true
   exposure_time:
     name: exposure_time
-    description: Exposure time in seconds
+    description: Exposure time, typically specified in seconds. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     alias: exposure_time
     owner: Image3D
@@ -257,7 +335,8 @@ attributes:
     - ExperimentRun
     - Image
     - ExperimentalConditions
-    range: float
+    range: QuantityValue
+    inlined: true
   dose:
     name: dose
     description: Electron dose in e-/Å²
@@ -268,7 +347,8 @@ attributes:
     domain_of:
     - Image
     - Micrograph
-    range: float
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -281,6 +361,7 @@ attributes:
     owner: Image3D
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

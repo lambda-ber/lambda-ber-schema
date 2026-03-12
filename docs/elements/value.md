@@ -3,7 +3,7 @@
 # Slot: value 
 
 
-_Numerical value of the property_
+_The value, as a text string._
 
 
 
@@ -22,6 +22,8 @@ Alias: value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [TextValue](TextValue.md) | A value described using a text string, optionally with a controlled vocabular... |  no  |
+| [DateTimeValue](DateTimeValue.md) | A date or date and time value |  no  |
 | [BiophysicalProperty](BiophysicalProperty.md) | Measured or calculated biophysical properties |  no  |
 
 
@@ -31,9 +33,7 @@ Alias: value
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Required: True
+* Range: [String](String.md)
 
 
 
@@ -68,15 +68,15 @@ Alias: value
 <details>
 ```yaml
 name: value
-description: Numerical value of the property
+description: The value, as a text string.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: value
-owner: BiophysicalProperty
 domain_of:
+- TextValue
+- DateTimeValue
 - BiophysicalProperty
-range: float
-required: true
+range: string
 
 ```
 </details>

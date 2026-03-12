@@ -31,7 +31,7 @@ Alias: beam_size_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: beam_size_min
 owner: XRayInstrument
 domain_of:
 - XRayInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -3,7 +3,7 @@
 # Slot: detector_distance_mm 
 
 
-_Detector distance in millimeters_
+_Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: detector_distance_mm
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: detector_distance_mm
 <details>
 ```yaml
 name: detector_distance_mm
-description: Detector distance in millimeters
+description: Detector distance, typically specified in millimeters. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: detector_distance_mm
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

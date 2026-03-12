@@ -3,12 +3,10 @@
 import pytest
 
 from lambda_ber_schema.loaders.pdb import PDBLoader
+from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     Dataset,
-    ExperimentRun,
-    Sample,
     TechniqueEnum,
-    WorkflowRun,
     XRayInstrument,
 )
 
@@ -17,7 +15,8 @@ from lambda_ber_schema.pydantic import (
 def loader(mocker, pdb_1hho_entry_response, pdb_1hho_polymer_entities):
     """Create loader with mocked HTTP client."""
     loader = PDBLoader()
-    mocker.patch.object(loader, "_fetch_entry", return_value=pdb_1hho_entry_response)
+    mocker.patch.object(loader, "_fetch_entry",
+                        return_value=pdb_1hho_entry_response)
     mocker.patch.object(
         loader, "_fetch_polymer_entities", return_value=pdb_1hho_polymer_entities
     )
@@ -43,6 +42,16 @@ class TestPDBLoader:
         """Test dataset title is extracted from struct."""
         result = loader.load("1HHO")
         assert "OXYHAEMOGLOBIN" in result.dataset.title
+
+    def test_loader_result_has_source_url(self, loader):
+        """Test LoaderResult includes the human-readable PDB structure URL."""
+        result = loader.load("1HHO")
+        assert result.source_url == "https://www.rcsb.org/structure/1HHO"
+
+    def test_loader_result_has_pdb_doi(self, loader):
+        """Test LoaderResult includes the standardized PDB DOI URL."""
+        result = loader.load("1HHO")
+        assert result.doi == "https://doi.org/10.2210/pdb1hho/pdb"
 
     def test_samples_created_from_polymer_entities(self, loader):
         """Test Sample objects are created from polymer entities."""
@@ -171,6 +180,27 @@ class TestPDBLoader:
         assert result.raw_data is not None
         assert "entry" in result.raw_data
         assert "polymer_entities" in result.raw_data
+
+    def test_list_entries_uses_cache(self, mocker, tmp_path):
+        """Test list_entries caches responses when enabled."""
+        response = mocker.Mock()
+        response.status_code = 200
+        response.text = '{"result_set":[{"identifier":"1ABC"},{"identifier":"2DEF"}]}'
+        response.raise_for_status = mocker.Mock()
+        post_mock = mocker.patch(
+            "lambda_ber_schema.loaders.pdb.requests.post",
+            return_value=response,
+        )
+
+        cache = ResponseCache(cache_dir=tmp_path, enabled=True)
+        loader = PDBLoader(cache=cache)
+
+        first = loader.list_entries(limit=2)
+        second = loader.list_entries(limit=2)
+
+        assert first == ["1ABC", "2DEF"]
+        assert second == ["1ABC", "2DEF"]
+        assert post_mock.call_count == 1
 
 
 @pytest.mark.integration

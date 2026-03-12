@@ -3,7 +3,7 @@
 # Slot: glow_discharge_pressure 
 
 
-_Glow discharge pressure in millibar_
+_Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: glow_discharge_pressure
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: glow_discharge_pressure
 <details>
 ```yaml
 name: glow_discharge_pressure
-description: Glow discharge pressure in millibar
+description: Glow discharge pressure, typically specified in millibars. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: glow_discharge_pressure
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

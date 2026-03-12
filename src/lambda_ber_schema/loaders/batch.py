@@ -11,8 +11,9 @@ Provides robust batch loading with:
 
 import json
 import logging
+import threading
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -37,39 +38,59 @@ class BatchProgress:
         self.completed: set[str] = set()
         self.failed: dict[str, str] = {}  # entry_id -> error message
         self.started_at: str | None = None
+        self._lock = threading.RLock()
         self.load()
 
     def load(self) -> None:
         """Load progress from file."""
         if self.progress_file.exists():
             data = json.loads(self.progress_file.read_text())
-            self.completed = set(data.get("completed", []))
-            self.failed = data.get("failed", {})
-            self.started_at = data.get("started_at")
+            with self._lock:
+                self.completed = set(data.get("completed", []))
+                self.failed = data.get("failed", {})
+                self.started_at = data.get("started_at")
 
     def save(self) -> None:
         """Save progress to file."""
+        with self._lock:
+            completed = list(self.completed)
+            failed = dict(self.failed)
+            started_at = self.started_at
+
         data = {
-            "completed": list(self.completed),
-            "failed": self.failed,
-            "started_at": self.started_at,
+            "completed": completed,
+            "failed": failed,
+            "started_at": started_at,
             "updated_at": datetime.now().isoformat(),
         }
         self.progress_file.write_text(json.dumps(data, indent=2))
 
     def mark_completed(self, entry_id: str) -> None:
         """Mark entry as completed."""
-        self.completed.add(entry_id)
-        # Remove from failed if it was there
-        self.failed.pop(entry_id, None)
+        with self._lock:
+            self.completed.add(entry_id)
+            # Remove from failed if it was there
+            self.failed.pop(entry_id, None)
 
     def mark_failed(self, entry_id: str, error: str) -> None:
         """Mark entry as failed with error message."""
-        self.failed[entry_id] = error
+        with self._lock:
+            self.failed[entry_id] = error
 
     def is_done(self, entry_id: str) -> bool:
         """Check if entry is already completed."""
-        return entry_id in self.completed
+        with self._lock:
+            return entry_id in self.completed
+
+    def completed_count(self) -> int:
+        """Get number of completed entries."""
+        with self._lock:
+            return len(self.completed)
+
+    def failed_entry_ids(self) -> list[str]:
+        """Get failed entry IDs snapshot."""
+        with self._lock:
+            return list(self.failed.keys())
 
 
 class BatchLoader:
@@ -111,6 +132,10 @@ class BatchLoader:
         self.loader = loader
         self.output_dir = output_dir
         self.cache_dir = cache_dir or output_dir / ".cache"
+
+        if requests_per_second <= 0:
+            raise ValueError("requests_per_second must be greater than 0")
+
         self.requests_per_second = requests_per_second
         self.max_workers = max_workers
         self.request_interval = 1.0 / requests_per_second
@@ -123,11 +148,15 @@ class BatchLoader:
         self.progress = BatchProgress(self.output_dir / "progress.json")
 
         # Setup caching with extended TTL for batch operations (7 days)
-        if hasattr(self.loader, "cache"):
-            self.loader.cache = ResponseCache(
-                cache_dir=self.cache_dir,
-                enabled=True,
-                ttl=timedelta(days=7),
+        if hasattr(self.loader, "_cache"):
+            object.__setattr__(
+                self.loader,
+                "_cache",
+                ResponseCache(
+                    cache_dir=self.cache_dir,
+                    enabled=True,
+                    ttl=timedelta(days=7),
+                ),
             )
 
         # Error log
@@ -177,7 +206,8 @@ class BatchLoader:
                 "request_options": {
                     "paginate": {"start": start, "rows": batch_size},
                     "sort": [
-                        {"sort_by": "rcsb_accession_info.deposit_date", "direction": "desc"}
+                        {"sort_by": "rcsb_accession_info.deposit_date",
+                            "direction": "desc"}
                     ],
                 },
             }
@@ -214,11 +244,13 @@ class BatchLoader:
                 break
 
             result = response.json()
-            entries = [hit["identifier"] for hit in result.get("result_set", [])]
+            entries = [hit["identifier"]
+                       for hit in result.get("result_set", [])]
             all_entries.extend(entries)
 
             total_count = result.get("total_count", 0)
-            logger.info("  Fetched %d/%d entries...", len(all_entries), total_count)
+            logger.info("  Fetched %d/%d entries...",
+                        len(all_entries), total_count)
 
             # Stop if we've hit the limit or reached the end
             if limit and len(all_entries) >= limit:
@@ -310,46 +342,76 @@ class BatchLoader:
         )
 
         # Statistics
-        success_count = len(self.progress.completed)
+        success_count = self.progress.completed_count()
         fail_count = 0
         start_time = time.time()
 
         # Process entries
         if self.max_workers > 1:
-            # Concurrent loading
+            # Concurrent loading with bounded in-flight futures and rate-limited submission
             with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-                futures = {
-                    executor.submit(self._load_single, entry_id, format): entry_id
-                    for entry_id in pending
-                }
+                max_in_flight = max(self.max_workers * 2, 1)
+                pending_iter = iter(pending)
+                in_flight: dict[Any, str] = {}
+                next_submit_at = time.monotonic()
 
-                for future in as_completed(futures):
-                    entry_id, success, error = future.result()
+                def submit_one() -> bool:
+                    nonlocal next_submit_at
+                    try:
+                        entry_id = next(pending_iter)
+                    except StopIteration:
+                        return False
 
-                    if success:
-                        self.progress.mark_completed(entry_id)
-                        success_count += 1
-                    else:
-                        self.progress.mark_failed(entry_id, error or "Unknown error")
-                        fail_count += 1
-                        with open(self.error_log, "a") as f:
-                            f.write(f"{datetime.now().isoformat()} {entry_id}: {error}\n")
+                    sleep_for = next_submit_at - time.monotonic()
+                    if sleep_for > 0:
+                        time.sleep(sleep_for)
 
-                    # Progress report every 100 entries
-                    total_done = success_count + fail_count
-                    if total_done % 100 == 0:
-                        elapsed = time.time() - start_time
-                        rate = total_done / elapsed if elapsed > 0 else 0
-                        remaining = len(all_entries) - total_done
-                        eta = remaining / rate if rate > 0 else 0
-                        logger.info(
-                            "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
-                            total_done,
-                            len(all_entries),
-                            rate,
-                            eta / 60,
-                        )
-                        self.progress.save()
+                    future = executor.submit(
+                        self._load_single, entry_id, format)
+                    in_flight[future] = entry_id
+                    next_submit_at = time.monotonic() + self.request_interval
+                    return True
+
+                while len(in_flight) < max_in_flight and submit_one():
+                    pass
+
+                while in_flight:
+                    done, _ = wait(set(in_flight.keys()),
+                                   return_when=FIRST_COMPLETED)
+
+                    for future in done:
+                        in_flight.pop(future, None)
+                        entry_id, success, error = future.result()
+
+                        if success:
+                            self.progress.mark_completed(entry_id)
+                            success_count += 1
+                        else:
+                            self.progress.mark_failed(
+                                entry_id, error or "Unknown error")
+                            fail_count += 1
+                            with open(self.error_log, "a") as f:
+                                f.write(
+                                    f"{datetime.now().isoformat()} {entry_id}: {error}\n")
+
+                        # Progress report every 100 entries
+                        total_done = success_count + fail_count
+                        if total_done % 100 == 0:
+                            elapsed = time.time() - start_time
+                            rate = total_done / elapsed if elapsed > 0 else 0
+                            remaining = len(all_entries) - total_done
+                            eta = remaining / rate if rate > 0 else 0
+                            logger.info(
+                                "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
+                                total_done,
+                                len(all_entries),
+                                rate,
+                                eta / 60,
+                            )
+                            self.progress.save()
+
+                    while len(in_flight) < max_in_flight and submit_one():
+                        pass
 
         else:
             # Sequential loading with rate limiting
@@ -360,22 +422,24 @@ class BatchLoader:
                     self.progress.mark_completed(entry_id)
                     success_count += 1
                 else:
-                    self.progress.mark_failed(entry_id, error or "Unknown error")
+                    self.progress.mark_failed(
+                        entry_id, error or "Unknown error")
                     fail_count += 1
                     with open(self.error_log, "a") as f:
-                        f.write(f"{datetime.now().isoformat()} {entry_id}: {error}\n")
+                        f.write(
+                            f"{datetime.now().isoformat()} {entry_id}: {error}\n")
 
                 # Progress report every 100 entries
-                total_done = success_count + fail_count - len(self.progress.completed) + len(pending)
-                if (i + 1) % 100 == 0:
+                total_done = success_count + fail_count
+                if total_done % 100 == 0:
                     elapsed = time.time() - start_time
-                    rate = (i + 1) / elapsed if elapsed > 0 else 0
-                    remaining = len(pending) - (i + 1)
+                    rate = total_done / elapsed if elapsed > 0 else 0
+                    remaining = len(all_entries) - total_done
                     eta = remaining / rate if rate > 0 else 0
                     logger.info(
                         "Progress: %d/%d (%.1f/sec, ETA: %.0f min)",
-                        i + 1,
-                        len(pending),
+                        total_done,
+                        len(all_entries),
                         rate,
                         eta / 60,
                     )
@@ -406,7 +470,7 @@ class BatchLoader:
         Returns:
             Summary dict with statistics
         """
-        failed_entries = list(self.progress.failed.keys())
+        failed_entries = self.progress.failed_entry_ids()
         logger.info("Retrying %d failed entries", len(failed_entries))
 
         success_count = 0

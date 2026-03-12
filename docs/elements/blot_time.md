@@ -3,7 +3,7 @@
 # Slot: blot_time 
 
 
-_Blotting time in seconds (range: 0.5-10.0)_
+_Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,11 +31,7 @@ Alias: blot_time
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
-
-* Maximum Value: 10
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,16 +66,16 @@ Alias: blot_time
 <details>
 ```yaml
 name: blot_time
-description: 'Blotting time in seconds (range: 0.5-10.0)'
+description: 'Blotting time, typically specified in seconds (range: 0.5-10.0). Data
+  providers may specify alternative units by including the unit in the QuantityValue.'
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: blot_time
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
-minimum_value: 0.5
-maximum_value: 10.0
+range: QuantityValue
+inlined: true
 
 ```
 </details>

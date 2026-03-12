@@ -31,7 +31,7 @@ Alias: molprobity_score
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: molprobity_score
 owner: QualityMetrics
 domain_of:
 - QualityMetrics
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

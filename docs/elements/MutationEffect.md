@@ -547,6 +547,7 @@ attributes:
     owner: MutationEffect
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

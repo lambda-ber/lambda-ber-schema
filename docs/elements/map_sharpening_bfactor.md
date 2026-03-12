@@ -3,7 +3,7 @@
 # Slot: map_sharpening_bfactor 
 
 
-_B-factor used for map sharpening in Angstroms^2_
+_B-factor used for map sharpening, typically specified in Angstroms squared (Å²). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: map_sharpening_bfactor
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,17 @@ Alias: map_sharpening_bfactor
 <details>
 ```yaml
 name: map_sharpening_bfactor
-description: B-factor used for map sharpening in Angstroms^2
+description: B-factor used for map sharpening, typically specified in Angstroms squared
+  (Å²). Data providers may specify alternative units by including the unit in the
+  QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: map_sharpening_bfactor
 owner: RefinementParameters
 domain_of:
 - RefinementParameters
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

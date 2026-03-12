@@ -39,7 +39,25 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
         
       SAXSInstrument : detector_distance_max
         
+          
+    
+        
+        
+        SAXSInstrument --> "0..1" QuantityValue : detector_distance_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SAXSInstrument : detector_distance_min
+        
+          
+    
+        
+        
+        SAXSInstrument --> "0..1" QuantityValue : detector_distance_min
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SAXSInstrument : facility_name
         
@@ -77,9 +95,36 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
         
       SAXSInstrument : q_range_max
         
+          
+    
+        
+        
+        SAXSInstrument --> "0..1" QuantityValue : q_range_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SAXSInstrument : q_range_min
         
+          
+    
+        
+        
+        SAXSInstrument --> "0..1" QuantityValue : q_range_min
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       SAXSInstrument : sample_changer_capacity
+        
+          
+    
+        
+        
+        SAXSInstrument --> "0..1" QuantityValue : sample_changer_capacity
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       SAXSInstrument : temperature_control_range
         
@@ -103,11 +148,11 @@ URI: [lambdaber:SAXSInstrument](https://w3id.org/lambda-ber-schema/SAXSInstrumen
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [q_range_min](q_range_min.md) | 0..1 <br/> [Float](Float.md) | Minimum q value in inverse Angstroms | direct |
-| [q_range_max](q_range_max.md) | 0..1 <br/> [Float](Float.md) | Maximum q value in inverse Angstroms | direct |
-| [detector_distance_min](detector_distance_min.md) | 0..1 <br/> [Float](Float.md) | Minimum detector distance in mm | direct |
-| [detector_distance_max](detector_distance_max.md) | 0..1 <br/> [Float](Float.md) | Maximum detector distance in mm | direct |
-| [sample_changer_capacity](sample_changer_capacity.md) | 0..1 <br/> [Integer](Integer.md) | Number of samples in automatic sample changer | direct |
+| [q_range_min](q_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum q value in inverse Angstroms | direct |
+| [q_range_max](q_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum q value in inverse Angstroms | direct |
+| [detector_distance_min](detector_distance_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum detector distance in mm | direct |
+| [detector_distance_max](detector_distance_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum detector distance in mm | direct |
+| [sample_changer_capacity](sample_changer_capacity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of samples in automatic sample changer | direct |
 | [temperature_control_range](temperature_control_range.md) | 0..1 <br/> [String](String.md) | Temperature control range in Celsius | direct |
 | [instrument_code](instrument_code.md) | 1 <br/> [String](String.md) | Human-friendly facility or laboratory identifier for the instrument (e | [Instrument](Instrument.md) |
 | [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
@@ -179,7 +224,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
@@ -188,7 +234,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
@@ -196,7 +243,8 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
@@ -204,7 +252,8 @@ attributes:
     rank: 1000
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
@@ -213,7 +262,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
@@ -244,7 +294,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value in inverse Angstroms
@@ -255,7 +306,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_min:
     name: detector_distance_min
     description: Minimum detector distance in mm
@@ -265,7 +317,8 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   detector_distance_max:
     name: detector_distance_max
     description: Maximum detector distance in mm
@@ -275,7 +328,8 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - SAXSInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Number of samples in automatic sample changer
@@ -286,7 +340,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   temperature_control_range:
     name: temperature_control_range
     description: Temperature control range in Celsius
@@ -416,6 +471,7 @@ attributes:
     owner: SAXSInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

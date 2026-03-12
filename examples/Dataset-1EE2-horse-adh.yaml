@@ -27,21 +27,21 @@ samples:
     - Cholic Acid
     - 2x Zinc Ion
   molecular_weight:
-    numeric_value: 80.0
     unit: kilodaltons
+    numeric_value: 80.0
   concentration:
-    numeric_value: 10.0
     unit: milligrams per milliliter
+    numeric_value: 10.0
   buffer_composition:
     ph:
-      numeric_value: 7.0
       unit: pH units
+      numeric_value: 7.0
     components:
     - TES/KOH
   storage_conditions:
     temperature:
-      numeric_value: 277.0
       unit: degrees Celsius
+      numeric_value: 277.0
 sample_preparations:
 - id: lambdaber:prep_1EE2_001
   description: Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K,
@@ -57,15 +57,15 @@ experiment_runs:
   experiment_date: '1998-11-23'
   experimental_conditions:
     temperature:
-      numeric_value: 100.0
       unit: degrees Celsius
+      numeric_value: 100.0
   quality_metrics:
     resolution:
-      numeric_value: 1.54
       unit: Angstroms
+      numeric_value: 1.54
     completeness:
-      numeric_value: 95.0
       unit: percent
+      numeric_value: 95.0
 workflow_runs:
 - id: lambdaber:wf_1EE2_refinement_001
   title: Structure Refinement
@@ -89,8 +89,8 @@ images:
   file_name: 1ee2_diffraction_pattern.img
   acquisition_date: '1998-11-23'
   pixel_size:
-    numeric_value: 0.15
     unit: Angstroms
+    numeric_value: 0.15
 study_sample_associations:
 - study_id: lambdaber:study_1EE2_horse_adh
   sample_id: lambdaber:sample_1EE2_001

@@ -39,9 +39,36 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
         
       MeasurementConditions : ionic_strength
         
+          
+    
+        
+        
+        MeasurementConditions --> "0..1" QuantityValue : ionic_strength
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       MeasurementConditions : ph
         
+          
+    
+        
+        
+        MeasurementConditions --> "0..1" QuantityValue : ph
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       MeasurementConditions : temperature
+        
+          
+    
+        
+        
+        MeasurementConditions --> "0..1" QuantityValue : temperature
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       MeasurementConditions : title
         
@@ -63,9 +90,9 @@ URI: [lambdaber:MeasurementConditions](https://w3id.org/lambda-ber-schema/Measur
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [buffer_composition](buffer_composition.md) | 0..1 <br/> [BufferComposition](BufferComposition.md) | Composition of the buffer used | direct |
-| [ph](ph.md) | 0..1 <br/> [Float](Float.md) | pH value of the solution during measurement (range: 0-14) | direct |
-| [ionic_strength](ionic_strength.md) | 0..1 <br/> [Float](Float.md) | Ionic strength in molar of material in solution | direct |
-| [temperature](temperature.md) | 0..1 <br/> [Float](Float.md) | Temperature in Kelvin during measurement | direct |
+| [ph](ph.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | pH value of the solution during measurement (range: 0-14), typically expresse... | direct |
+| [ionic_strength](ionic_strength.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Ionic strength, typically specified in molar (mol/L) | direct |
+| [temperature](temperature.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Temperature during measurement, typically specified in Kelvin | direct |
 | [id](id.md) | 1 <br/> [Uriorcurie](Uriorcurie.md) | Globally unique identifier as an IRI or CURIE for machine processing and exte... | [NamedThing](NamedThing.md) |
 | [title](title.md) | 0..1 <br/> [String](String.md) | A human-readable name or title for this entity | [NamedThing](NamedThing.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A detailed textual description of this entity | [NamedThing](NamedThing.md) |
@@ -136,35 +163,36 @@ attributes:
     range: BufferComposition
   ph:
     name: ph
-    description: 'pH value of the solution during measurement (range: 0-14)'
+    description: 'pH value of the solution during measurement (range: 0-14), typically
+      expressed in pH units. Data providers may specify alternative units by including
+      the unit in the QuantityValue.'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   ionic_strength:
     name: ionic_strength
-    description: Ionic strength in molar of material in solution
+    description: Ionic strength, typically specified in molar (mol/L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     domain_of:
     - MeasurementConditions
-    range: float
-    unit:
-      ucum_code: mol/L
+    range: QuantityValue
+    inlined: true
   temperature:
     name: temperature
-    description: Temperature in Kelvin during measurement
+    description: Temperature during measurement, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     domain_of:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
-    unit:
-      ucum_code: K
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -190,31 +218,33 @@ attributes:
     range: BufferComposition
   ph:
     name: ph
-    description: 'pH value of the solution during measurement (range: 0-14)'
+    description: 'pH value of the solution during measurement (range: 0-14), typically
+      expressed in pH units. Data providers may specify alternative units by including
+      the unit in the QuantityValue.'
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     alias: ph
     owner: MeasurementConditions
     domain_of:
     - BufferComposition
     - MeasurementConditions
-    range: float
-    minimum_value: 0
-    maximum_value: 14
+    range: QuantityValue
+    inlined: true
   ionic_strength:
     name: ionic_strength
-    description: Ionic strength in molar of material in solution
+    description: Ionic strength, typically specified in molar (mol/L). Data providers
+      may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     rank: 1000
     alias: ionic_strength
     owner: MeasurementConditions
     domain_of:
     - MeasurementConditions
-    range: float
-    unit:
-      ucum_code: mol/L
+    range: QuantityValue
+    inlined: true
   temperature:
     name: temperature
-    description: Temperature in Kelvin during measurement
+    description: Temperature during measurement, typically specified in Kelvin. Data
+      providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
     alias: temperature
     owner: MeasurementConditions
@@ -222,9 +252,8 @@ attributes:
     - StorageConditions
     - ExperimentalConditions
     - MeasurementConditions
-    range: float
-    unit:
-      ucum_code: K
+    range: QuantityValue
+    inlined: true
   id:
     name: id
     description: Globally unique identifier as an IRI or CURIE for machine processing
@@ -237,6 +266,7 @@ attributes:
     owner: MeasurementConditions
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

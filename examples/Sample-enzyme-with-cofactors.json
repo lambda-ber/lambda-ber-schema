@@ -11,12 +11,12 @@
     ]
   },
   "molecular_weight": {
-    "numeric_value": 217.5,
-    "unit": "kilodaltons"
+    "unit": "kilodaltons",
+    "numeric_value": 217.5
   },
   "concentration": {
-    "numeric_value": 5.0,
-    "unit": "milligrams per milliliter"
+    "unit": "milligrams per milliliter",
+    "numeric_value": 5.0
   },
   "functional_sites": [
     {
@@ -96,16 +96,16 @@
             ]
           },
           "ph": {
-            "numeric_value": 7.5,
-            "unit": "pH units"
+            "unit": "pH units",
+            "numeric_value": 7.5
           },
           "ionic_strength": {
-            "numeric_value": 0.1,
-            "unit": "molar"
+            "unit": "molar",
+            "numeric_value": 0.1
           },
           "temperature": {
-            "numeric_value": 298.15,
-            "unit": "degrees Celsius"
+            "unit": "degrees Celsius",
+            "numeric_value": 298.15
           }
         }
       ],

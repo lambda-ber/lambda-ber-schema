@@ -31,7 +31,7 @@ Alias: final_concentration_mg_per_ml
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: final_concentration_mg_per_ml
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

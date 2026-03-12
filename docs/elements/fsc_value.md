@@ -31,9 +31,7 @@ Alias: fsc_value
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Multivalued: True
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -75,9 +73,8 @@ alias: fsc_value
 owner: FSCCurve
 domain_of:
 - FSCCurve
-range: float
-multivalued: true
-maximum_cardinality: 10000
+range: QuantityValue
+inlined: true
 
 ```
 </details>

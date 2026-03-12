@@ -31,7 +31,7 @@ Alias: quantum_yield
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: quantum_yield
 owner: FluorescenceImage
 domain_of:
 - FluorescenceImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

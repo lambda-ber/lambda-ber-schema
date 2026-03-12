@@ -4,6 +4,7 @@ ETL loaders for importing data from external structural biology repositories.
 Available loaders:
 - SASBDBLoader: Small Angle Scattering Biological Data Bank
 - SimpleScatteringLoader: Simple Scattering (SEC-SAXS from SIBYLS)
+- EMSLLoader: EMSL public API transactions and metadata
 
 Example:
     >>> from lambda_ber_schema.loaders import SASBDBLoader
@@ -16,6 +17,7 @@ Example:
 from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.batch import BatchLoader, BatchProgress
 from lambda_ber_schema.loaders.cache import ResponseCache
+from lambda_ber_schema.loaders.emsl import EMSLLoader
 from lambda_ber_schema.loaders.pdb import PDBLoader
 from lambda_ber_schema.loaders.sasbdb import SASBDBLoader
 from lambda_ber_schema.loaders.simplescattering import SimpleScatteringLoader
@@ -26,6 +28,7 @@ __all__ = [
     "BatchProgress",
     "LoaderResult",
     "ResponseCache",
+    "EMSLLoader",
     "PDBLoader",
     "SASBDBLoader",
     "SimpleScatteringLoader",

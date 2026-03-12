@@ -39,15 +39,15 @@ samples:
     sequences:
     - Uniprot:Q9XCL6
   molecular_weight:
-    numeric_value: 54.8
     unit: kilodaltons
+    numeric_value: 54.8
   concentration:
-    numeric_value: 5.0
     unit: milligrams per milliliter
+    numeric_value: 5.0
   buffer_composition:
     ph:
-      numeric_value: 7.5
       unit: pH units
+      numeric_value: 7.5
     components:
     - 20 mM Tris-HCl
     - 150 mM NaCl
@@ -89,35 +89,35 @@ experiment_runs:
   operator_id: S. Tsutakawa
   experimental_conditions:
     temperature:
-      numeric_value: 20.0
       unit: degrees Celsius
+      numeric_value: 20.0
     beam_energy:
-      numeric_value: 11.0
       unit: kiloelectronvolts
+      numeric_value: 11.0
     exposure_time:
-      numeric_value: 1.0
       unit: seconds
+      numeric_value: 1.0
   data_collection_strategy:
     collection_mode: sec_saxs
     total_frames:
-      numeric_value: 660.0
       unit: frames
+      numeric_value: 660.0
     frame_rate:
-      numeric_value: 1.0
       unit: frames per second
+      numeric_value: 1.0
   quality_metrics:
     resolution:
+      unit: Angstroms
       numeric_value: 25.0
-      unit: Angstroms
     signal_to_noise:
-      numeric_value: 50.0
       unit: signal to noise ratio
+      numeric_value: 50.0
     i_zero:
-      numeric_value: 45.0
       unit: scattering intensity
+      numeric_value: 45.0
     rg:
-      numeric_value: 32.5
       unit: Angstroms
+      numeric_value: 32.5
   raw_data_location: SIBYLS data archive
   processing_status: completed
 workflow_runs:
@@ -126,8 +126,8 @@ workflow_runs:
   workflow_type: saxs_analysis
   software_name: SAXS FrameSlice
   processing_level:
-    numeric_value: 2.0
     unit: level
+    numeric_value: 2.0
   software_version: '2023'
   processing_parameters: 'q_range=0.0109-0.4729;
 
@@ -142,11 +142,11 @@ workflow_runs:
     '
   compute_resources:
     cpu_hours:
-      numeric_value: 1.0
       unit: hours
+      numeric_value: 1.0
     memory_gb:
-      numeric_value: 16.0
       unit: gigabytes
+      numeric_value: 16.0
   started_at: '2023-10-24T12:00:00Z'
   completed_at: '2023-10-24T14:00:00Z'
 - id: https://simplescattering.com/workflow/mals-processing
@@ -154,8 +154,8 @@ workflow_runs:
   workflow_type: saxs_analysis
   software_name: MALS Analysis Software
   processing_level:
-    numeric_value: 2.0
     unit: level
+    numeric_value: 2.0
   software_version: '2023'
   processing_parameters: 'molecular_weight_determination=enabled;
 
@@ -168,8 +168,8 @@ data_files:
   file_name: GluRS_1_00001.dat
   file_format: ascii
   file_size_bytes:
-    numeric_value: 35739.0
     unit: bytes
+    numeric_value: 35739.0
   creation_date: '2023-10-20'
   data_type: scattering
 - id: https://simplescattering.com/file/glurs-averaged
@@ -177,8 +177,8 @@ data_files:
   file_name: A_S_GluRS_1_5.dat
   file_format: ascii
   file_size_bytes:
-    numeric_value: 107834.0
     unit: bytes
+    numeric_value: 107834.0
   creation_date: '2023-10-24'
   data_type: processed_data
 - id: https://simplescattering.com/file/glurs-structure
@@ -186,8 +186,8 @@ data_files:
   file_name: 8vc5.pdb
   file_format: pdb
   file_size_bytes:
-    numeric_value: 1310256.0
     unit: bytes
+    numeric_value: 1310256.0
   creation_date: '2023-12-13'
   data_type: model
 - id: https://simplescattering.com/file/glurs-complete
@@ -195,8 +195,8 @@ data_files:
   file_name: GluRS_Results.zip
   file_format: zip
   file_size_bytes:
-    numeric_value: 10840982.0
     unit: bytes
+    numeric_value: 10840982.0
   creation_date: '2023-10-24'
   data_type: raw_data
 images:
@@ -204,20 +204,20 @@ images:
   description: SEC elution profile with SAXS intensity
   file_name: GluRS_SEC_chromatogram.png
   dimensions_x:
+    unit: pixels
     numeric_value: 1200.0
-    unit: pixels
   dimensions_y:
-    numeric_value: 800.0
     unit: pixels
+    numeric_value: 800.0
 - id: https://simplescattering.com/img/guinier-plot
   description: Guinier analysis for Rg determination
   file_name: GluRS_Guinier_plot.png
   dimensions_x:
+    unit: pixels
     numeric_value: 800.0
-    unit: pixels
   dimensions_y:
-    numeric_value: 600.0
     unit: pixels
+    numeric_value: 600.0
 study_sample_associations:
 - study_id: https://simplescattering.com/study/glurs-oligomerization
   sample_id: https://simplescattering.com/sample/glurs-pa

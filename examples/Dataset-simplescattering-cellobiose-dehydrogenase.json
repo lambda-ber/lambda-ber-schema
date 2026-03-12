@@ -1,0 +1,125 @@
+{
+  "id": "simplescattering:xs33026i",
+  "title": "Cellobiose Dehydrogenase (addition of divalent cations)",
+  "studies": [
+    {
+      "id": "simplescattering:xs33026i/study",
+      "title": "Cellobiose Dehydrogenase (addition of divalent cations)"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "simplescattering:instrument/sibyls-bl12.3.1",
+      "title": "SIBYLS BL12.3.1",
+      "description": "SEC-SAXS beamline at Advanced Light Source, Berkeley Lab",
+      "instrument_code": "ALS-SIBYLS-BL12.3.1",
+      "manufacturer": "Lawrence Berkeley National Laboratory"
+    }
+  ],
+  "samples": [
+    {
+      "id": "simplescattering:xs33026i/sample",
+      "title": "Cellobiose Dehydrogenase (addition of divalent cations)",
+      "description": "The interdomain electron transfer between the catalytic flavodehydrogenase domain and the electron transferring cytochrome domain of cellobiose dehydrogenase plays an essential role in biocatalysis, biosensors, and biofuel cells as well as for its natural function as an auxiliary enzyme of lytic polysaccharide monooxygenase. We investigated the mobility of the cytochrome and dehydrogenase domain of cellobiose dehydrogenase (CDH), which are hypothesized to limit interdomain electron transfer in solution by small angle X-ray scattering (SAXS). CDH from Myriococcum thermophilum was used to study the CDH mobility in the presence of divalent cations. We showed that the presence of calcium ions decreases the mobility of the cytochrome domain.",
+      "sample_code": "SS-XS33026I",
+      "sample_type": "protein",
+      "buffer_composition": {
+        "ph": {
+          "unit": "pH",
+          "numeric_value": 6.5
+        },
+        "components": [
+          "50 mM HEPES"
+        ]
+      },
+      "database_cross_references": [
+        {
+          "database_name": "uniprot",
+          "database_id": "A9XK88",
+          "database_url": "https://www.uniprot.org/uniprot/A9XK88"
+        }
+      ]
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "simplescattering:xs33026i/experiment",
+      "experiment_code": "SS-XS33026I-EXP",
+      "technique": "saxs",
+      "wavelength": {
+        "unit": "Angstroms",
+        "numeric_value": 1.27
+      },
+      "beamline": "SIBYLS BL12.3.1"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "simplescattering:xs33026i/file/mtcdh_addition-of-divalent-cations_zip",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "MtCDH_addition-of-divalent-cations.zip",
+      "file_format": "zip",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBEIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b9e715f9c3e200bbf0920ecc018e79e77c1c5d3/MtCDH_addition-of-divalent-cations.zip?disposition=attachment"
+    },
+    {
+      "id": "simplescattering:xs33026i/file/dgmtcdh_65_50ca_dat",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "dgMtCDH_65_50Ca.dat",
+      "file_format": "ascii",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1FIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01ccd426265e594b099c00bb586b93246bedb3e6/dgMtCDH_65_50Ca.dat?disposition=attachment"
+    },
+    {
+      "id": "simplescattering:xs33026i/file/dgmtcdh_65_dat",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "dgMtCDH_65.dat",
+      "file_format": "ascii",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--691cb31824877e69d2730d6e567e139725ccc45b/dgMtCDH_65.dat?disposition=attachment"
+    },
+    {
+      "id": "simplescattering:xs33026i/file/gmtcdh_65_50ca_dat",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "gMtCDH_65_50Ca.dat",
+      "file_format": "ascii",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7fb11d01621a21a31bc1cce62d3e5b7572d75c6/gMtCDH_65_50Ca.dat?disposition=attachment"
+    },
+    {
+      "id": "simplescattering:xs33026i/file/gmtcdh_65_100ca_dat",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "gMtCDH_65_100Ca.dat",
+      "file_format": "ascii",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eefccf73c80cedf0c085b4d41c98c8568cbfe67e/gMtCDH_65_100Ca.dat?disposition=attachment"
+    },
+    {
+      "id": "simplescattering:xs33026i/file/gmtcdh_65_dat",
+      "description": "Data file from Simple Scattering dataset xs33026i",
+      "file_name": "gMtCDH_65.dat",
+      "file_format": "ascii",
+      "file_path": "https://www.simplescattering.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d9458e262e2cfe11a82da068ad08337c01ccf6ba/gMtCDH_65.dat?disposition=attachment"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "simplescattering:xs33026i/study",
+      "sample_id": "simplescattering:xs33026i/sample"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "simplescattering:xs33026i/study",
+      "experiment_id": "simplescattering:xs33026i/experiment"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "simplescattering:xs33026i/experiment",
+      "sample_id": "simplescattering:xs33026i/sample"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "simplescattering:xs33026i/experiment",
+      "instrument_id": "simplescattering:instrument/sibyls-bl12.3.1"
+    }
+  ],
+  "@type": "Dataset"
+}

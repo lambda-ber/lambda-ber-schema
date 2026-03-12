@@ -3,7 +3,7 @@
 # Slot: holes_per_group 
 
 
-_Number of holes per group_
+_Number of holes per group. Data providers may include unit information in the QuantityValue if needed._
 
 
 
@@ -31,7 +31,7 @@ Alias: holes_per_group
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: holes_per_group
 <details>
 ```yaml
 name: holes_per_group
-description: Number of holes per group
+description: Number of holes per group. Data providers may include unit information
+  in the QuantityValue if needed.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: holes_per_group
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

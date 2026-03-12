@@ -31,9 +31,7 @@ Alias: camera_binning
 
 ## Properties
 
-* Range: [Float](Float.md)
-
-* Minimum Value: 0
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -76,8 +74,8 @@ alias: camera_binning
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-minimum_value: 0.01
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -8,6 +8,7 @@ This loader parses HTML pages to extract dataset metadata.
 
 import re
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -24,7 +25,6 @@ from lambda_ber_schema.pydantic import (
     ExperimentRun,
     ExperimentSampleAssociation,
     FileFormatEnum,
-    QualityMetrics,
     QuantityValue,
     Sample,
     SampleTypeEnum,
@@ -33,9 +33,6 @@ from lambda_ber_schema.pydantic import (
     StudyExperimentAssociation,
     StudySampleAssociation,
     TechniqueEnum,
-    WorkflowExperimentAssociation,
-    WorkflowRun,
-    WorkflowTypeEnum,
 )
 
 
@@ -95,16 +92,19 @@ class SimpleScatteringLoader(BaseLoader):
         metadata = self._extract_metadata(soup, warnings)
 
         # Extract database cross-references
-        cross_references = self._extract_cross_references(soup, metadata, warnings)
+        cross_references = self._extract_cross_references(
+            soup, metadata, warnings)
 
         # Create instrument (SIBYLS beamline)
         instrument = self._create_instrument(metadata, warnings)
 
         # Create sample
-        sample = self._create_sample(metadata, dataset_code, cross_references, warnings)
+        sample = self._create_sample(
+            metadata, dataset_code, cross_references, warnings)
 
         # Create experiment run
-        experiment = self._create_experiment_run(metadata, dataset_code, warnings)
+        experiment = self._create_experiment_run(
+            metadata, dataset_code, warnings)
 
         # Create data files
         data_files = self._create_data_files(soup, dataset_code, warnings)
@@ -112,7 +112,8 @@ class SimpleScatteringLoader(BaseLoader):
         # Create lightweight study
         study = Study(
             id=f"{dataset_id}/study",
-            title=metadata.get("title", f"Simple Scattering Dataset {dataset_code}"),
+            title=metadata.get(
+                "title", f"Simple Scattering Dataset {dataset_code}"),
         )
 
         # Create association tables
@@ -120,7 +121,8 @@ class SimpleScatteringLoader(BaseLoader):
             StudySampleAssociation(study_id=study.id, sample_id=sample.id)
         ]
         study_experiment_associations = [
-            StudyExperimentAssociation(study_id=study.id, experiment_id=experiment.id)
+            StudyExperimentAssociation(
+                study_id=study.id, experiment_id=experiment.id)
         ]
         experiment_sample_associations = [
             ExperimentSampleAssociation(
@@ -136,7 +138,8 @@ class SimpleScatteringLoader(BaseLoader):
         # Create dataset
         dataset = Dataset(
             id=dataset_id,
-            title=metadata.get("title", f"Simple Scattering Dataset {dataset_code}"),
+            title=metadata.get(
+                "title", f"Simple Scattering Dataset {dataset_code}"),
             studies=[study],
             instruments=[instrument],
             samples=[sample],
@@ -166,12 +169,19 @@ class SimpleScatteringLoader(BaseLoader):
         Returns:
             List of dataset codes
         """
-        url = f"{self.base_url}/open_datasets"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
+        cache_key = "simplescattering/open_datasets"
+
+        def fetch() -> dict[str, Any]:
+            url = f"{self.base_url}/open_datasets"
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            return {"html": response.text}
+
+        result = self.cache.get_or_fetch(cache_key, fetch)
+        html = result["html"]
 
         # Parse HTML and extract dataset codes
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(html, "html.parser")
         codes = []
 
         for link in soup.find_all("a", href=True):
@@ -244,21 +254,31 @@ class SimpleScatteringLoader(BaseLoader):
         self, text: str, metadata: dict[str, Any], warnings: list[str]
     ) -> None:
         """Extract specific values from text using regex."""
+        def safe_float(value: str, label: str) -> float | None:
+            try:
+                return float(value)
+            except ValueError:
+                warnings.append(f"Could not parse {label} value: {value}")
+                return None
+
         # Wavelength
         wavelength_match = re.search(
             r"wavelength[:\s]+(\d+\.?\d*)\s*[ÅA]", text, re.IGNORECASE
         )
         if wavelength_match:
-            metadata["wavelength_angstroms"] = float(wavelength_match.group(1))
+            wavelength = safe_float(wavelength_match.group(1), "wavelength")
+            if wavelength is not None:
+                metadata["wavelength_angstroms"] = wavelength
 
         # Detector distance
         distance_match = re.search(
             r"(\d+(?:,\d+)?)\s*mm\s*(?:away|distance)", text, re.IGNORECASE
         )
         if distance_match:
-            metadata["detector_distance_mm"] = float(
-                distance_match.group(1).replace(",", "")
-            )
+            distance_raw = distance_match.group(1).replace(",", "")
+            distance = safe_float(distance_raw, "detector distance")
+            if distance is not None:
+                metadata["detector_distance_mm"] = distance
 
         # q-range
         q_match = re.search(
@@ -267,20 +287,28 @@ class SimpleScatteringLoader(BaseLoader):
             re.IGNORECASE,
         )
         if q_match:
-            metadata["q_min"] = float(q_match.group(1))
-            metadata["q_max"] = float(q_match.group(2))
+            q_min = safe_float(q_match.group(1), "q-range min")
+            q_max = safe_float(q_match.group(2), "q-range max")
+            if q_min is not None:
+                metadata["q_min"] = q_min
+            if q_max is not None:
+                metadata["q_max"] = q_max
 
         # Concentration
         conc_match = re.search(
             r"(\d+\.?\d*)\s*mg/mL", text, re.IGNORECASE
         )
         if conc_match:
-            metadata["concentration_mg_ml"] = float(conc_match.group(1))
+            concentration = safe_float(conc_match.group(1), "concentration")
+            if concentration is not None:
+                metadata["concentration_mg_ml"] = concentration
 
         # pH
         ph_match = re.search(r"pH\s*(\d+\.?\d*)", text, re.IGNORECASE)
         if ph_match:
-            metadata["ph"] = float(ph_match.group(1))
+            ph_value = safe_float(ph_match.group(1), "pH")
+            if ph_value is not None:
+                metadata["ph"] = ph_value
 
         # Buffer components
         buffer_match = re.search(
@@ -314,12 +342,14 @@ class SimpleScatteringLoader(BaseLoader):
             metadata["technique"] = "saxs"
 
         # UniProt ID pattern (e.g., Q9XCL6, P12345)
-        uniprot_match = re.search(r"\b([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b", text)
+        uniprot_match = re.search(
+            r"\b([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b", text)
         if uniprot_match:
             metadata["uniprot_id"] = uniprot_match.group(1)
 
         # NCBI Taxonomy ID
-        taxid_match = re.search(r"(?:NCBI\s*)?(?:Taxonomy\s*)?(?:ID|TaxID)[:\s]*(\d+)", text, re.IGNORECASE)
+        taxid_match = re.search(
+            r"(?:NCBI\s*)?(?:Taxonomy\s*)?(?:ID|TaxID)[:\s]*(\d+)", text, re.IGNORECASE)
         if taxid_match:
             metadata["ncbi_taxid"] = taxid_match.group(1)
 
@@ -336,17 +366,20 @@ class SimpleScatteringLoader(BaseLoader):
 
             # UniProt links
             if "uniprot.org" in href:
-                match = re.search(r"uniprot\.org/(?:uniprot/)?([A-Z0-9]+)", href)
-                if match:
-                    uid = match.group(1)
-                    key = ("uniprot", uid)
-                    if key not in seen_ids:
-                        seen_ids.add(key)
-                        xrefs.append(DatabaseCrossReference(
-                            database_name=DatabaseNameEnum.uniprot,
-                            database_id=uid,
-                            database_url=f"https://www.uniprot.org/uniprot/{uid}",
-                        ))
+                parsed = urlparse(href)
+                path_parts = [part for part in parsed.path.split("/") if part]
+
+                if len(path_parts) >= 2 and path_parts[0].lower() in {"uniprot", "uniprotkb"}:
+                    uid = path_parts[-1].upper()
+                    if re.fullmatch(r"[A-Z0-9]+(?:-\d+)?", uid):
+                        key = ("uniprot", uid)
+                        if key not in seen_ids:
+                            seen_ids.add(key)
+                            xrefs.append(DatabaseCrossReference(
+                                database_name=DatabaseNameEnum.uniprot,
+                                database_id=uid,
+                                database_url=f"https://www.uniprot.org/uniprot/{uid}",
+                            ))
 
             # PDB links
             elif "rcsb.org" in href or "pdb.org" in href:
@@ -417,7 +450,8 @@ class SimpleScatteringLoader(BaseLoader):
             "nucleic_acid": SampleTypeEnum.nucleic_acid,
             "complex": SampleTypeEnum.complex,
         }
-        sample_type = sample_type_map.get(sample_type_str, SampleTypeEnum.protein)
+        sample_type = sample_type_map.get(
+            sample_type_str, SampleTypeEnum.protein)
 
         # Create concentration QuantityValue
         concentration = None

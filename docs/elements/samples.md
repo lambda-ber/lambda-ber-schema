@@ -3,7 +3,7 @@
 # Slot: samples 
 
 
-_Experimental samples used in this study, including biological samples _
+_All samples across all studies_
 
 
 
@@ -22,7 +22,7 @@ Alias: samples
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: samples
 <details>
 ```yaml
 name: samples
-description: 'Experimental samples used in this study, including biological samples '
+description: All samples across all studies
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: samples
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: Sample
 multivalued: true
 inlined: true

@@ -3,7 +3,7 @@
 # Slot: cryoprotectant_concentration 
 
 
-_Cryoprotectant concentration percentage_
+_Cryoprotectant concentration, typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: cryoprotectant_concentration
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: cryoprotectant_concentration
 <details>
 ```yaml
 name: cryoprotectant_concentration
-description: Cryoprotectant concentration percentage
+description: Cryoprotectant concentration, typically specified as a percentage. Data
+  providers may specify as decimal fraction by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: cryoprotectant_concentration
 owner: XRayPreparation
 domain_of:
 - XRayPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -5,56 +5,56 @@
   "file_name": "hsp70_gfp_z042.tif",
   "acquisition_date": "2024-05-22T09:15:00",
   "pixel_size": {
-    "numeric_value": 0.065,
-    "unit": "Angstroms"
+    "unit": "Angstroms",
+    "numeric_value": 0.065
   },
   "dimensions_x": {
-    "numeric_value": 2048.0,
-    "unit": "pixels"
+    "unit": "pixels",
+    "numeric_value": 2048.0
   },
   "dimensions_y": {
-    "numeric_value": 2048.0,
-    "unit": "pixels"
+    "unit": "pixels",
+    "numeric_value": 2048.0
   },
   "exposure_time": {
-    "numeric_value": 0.2,
-    "unit": "seconds"
+    "unit": "seconds",
+    "numeric_value": 0.2
   },
   "dose": {
-    "numeric_value": 0.0,
-    "unit": "electrons per Angstrom squared"
+    "unit": "electrons per Angstrom squared",
+    "numeric_value": 0.0
   },
   "defocus": {
-    "numeric_value": 0.0,
-    "unit": "micrometers"
+    "unit": "micrometers",
+    "numeric_value": 0.0
   },
   "astigmatism": {
-    "numeric_value": 0.0,
-    "unit": "Angstroms"
+    "unit": "Angstroms",
+    "numeric_value": 0.0
   },
   "excitation_wavelength": {
-    "numeric_value": 488.0,
-    "unit": "nanometers"
+    "unit": "nanometers",
+    "numeric_value": 488.0
   },
   "emission_wavelength": {
-    "numeric_value": 509.0,
-    "unit": "nanometers"
+    "unit": "nanometers",
+    "numeric_value": 509.0
   },
   "excitation_filter": "488/10 nm bandpass",
   "emission_filter": "525/50 nm bandpass",
   "fluorophore": "Enhanced GFP (EGFP)",
   "channel_name": "GFP",
   "laser_power": {
-    "numeric_value": 2.5,
-    "unit": "milliwatts"
+    "unit": "milliwatts",
+    "numeric_value": 2.5
   },
   "pinhole_size": {
-    "numeric_value": 1.0,
-    "unit": "Airy units"
+    "unit": "Airy units",
+    "numeric_value": 1.0
   },
   "quantum_yield": {
-    "numeric_value": 0.6,
-    "unit": "quantum yield"
+    "unit": "quantum yield",
+    "numeric_value": 0.6
   },
   "@type": "FluorescenceImage"
 }

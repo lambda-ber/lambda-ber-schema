@@ -17,9 +17,9 @@ Alias: temperature
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 | [MeasurementConditions](MeasurementConditions.md) | Conditions under which biophysical measurements were made |  no  |
 | [StorageConditions](StorageConditions.md) | Storage conditions for samples |  no  |
-| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 
 
 

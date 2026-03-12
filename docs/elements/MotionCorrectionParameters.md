@@ -26,7 +26,25 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
         
       MotionCorrectionParameters : bfactor_dose_weighting
         
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : bfactor_dose_weighting
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       MotionCorrectionParameters : binning
+        
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : binning
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       MotionCorrectionParameters : description
         
@@ -34,11 +52,47 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
         
       MotionCorrectionParameters : drift_total
         
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : drift_total
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       MotionCorrectionParameters : frame_grouping
+        
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : frame_grouping
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       MotionCorrectionParameters : output_binning
         
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : output_binning
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       MotionCorrectionParameters : patch_size
+        
+          
+    
+        
+        
+        MotionCorrectionParameters --> "0..1" QuantityValue : patch_size
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       
 ```
@@ -57,14 +111,14 @@ URI: [lambdaber:MotionCorrectionParameters](https://w3id.org/lambda-ber-schema/M
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [patch_size](patch_size.md) | 0..1 <br/> [Integer](Integer.md) | Patch size for local motion correction | direct |
-| [binning](binning.md) | 0..1 <br/> [Float](Float.md) | Binning factor applied during motion correction | direct |
+| [patch_size](patch_size.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Patch size for local motion correction | direct |
+| [binning](binning.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Binning factor applied during motion correction | direct |
 | [dose_weighting](dose_weighting.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether dose weighting was applied | direct |
-| [bfactor_dose_weighting](bfactor_dose_weighting.md) | 0..1 <br/> [Float](Float.md) | B-factor for dose weighting | direct |
+| [bfactor_dose_weighting](bfactor_dose_weighting.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | B-factor for dose weighting, typically specified in Angstroms squared | direct |
 | [anisotropic_correction](anisotropic_correction.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether anisotropic motion correction was applied | direct |
-| [frame_grouping](frame_grouping.md) | 0..1 <br/> [Integer](Integer.md) | Number of frames grouped together | direct |
-| [output_binning](output_binning.md) | 0..1 <br/> [Float](Float.md) | Output binning factor | direct |
-| [drift_total](drift_total.md) | 0..1 <br/> [Float](Float.md) | Total drift in Angstroms | direct |
+| [frame_grouping](frame_grouping.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Number of frames grouped together | direct |
+| [output_binning](output_binning.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Output binning factor | direct |
+| [drift_total](drift_total.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Total drift, typically specified in Angstroms | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | [AttributeGroup](AttributeGroup.md) |
 
 
@@ -130,7 +184,8 @@ attributes:
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: integer
+    range: QuantityValue
+    inlined: true
   binning:
     name: binning
     description: Binning factor applied during motion correction. This must be a positive
@@ -139,8 +194,8 @@ attributes:
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   dose_weighting:
     name: dose_weighting
     description: Whether dose weighting was applied
@@ -151,12 +206,14 @@ attributes:
     range: boolean
   bfactor_dose_weighting:
     name: bfactor_dose_weighting
-    description: B-factor for dose weighting
+    description: B-factor for dose weighting, typically specified in Angstroms squared.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   anisotropic_correction:
     name: anisotropic_correction
     description: Whether anisotropic motion correction was applied
@@ -172,7 +229,8 @@ attributes:
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: integer
+    range: QuantityValue
+    inlined: true
   output_binning:
     name: output_binning
     description: Output binning factor. This must be a positive float value (e.g.,
@@ -181,16 +239,18 @@ attributes:
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   drift_total:
     name: drift_total
-    description: Total drift in Angstroms
+    description: Total drift, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     domain_of:
     - MotionCorrectionParameters
-    range: float
+    range: QuantityValue
+    inlined: true
 
 ```
 </details>
@@ -213,7 +273,8 @@ attributes:
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: integer
+    range: QuantityValue
+    inlined: true
   binning:
     name: binning
     description: Binning factor applied during motion correction. This must be a positive
@@ -224,8 +285,8 @@ attributes:
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   dose_weighting:
     name: dose_weighting
     description: Whether dose weighting was applied
@@ -238,14 +299,16 @@ attributes:
     range: boolean
   bfactor_dose_weighting:
     name: bfactor_dose_weighting
-    description: B-factor for dose weighting
+    description: B-factor for dose weighting, typically specified in Angstroms squared.
+      Data providers may specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: bfactor_dose_weighting
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   anisotropic_correction:
     name: anisotropic_correction
     description: Whether anisotropic motion correction was applied
@@ -265,7 +328,8 @@ attributes:
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: integer
+    range: QuantityValue
+    inlined: true
   output_binning:
     name: output_binning
     description: Output binning factor. This must be a positive float value (e.g.,
@@ -276,18 +340,20 @@ attributes:
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: float
-    minimum_value: 0.01
+    range: QuantityValue
+    inlined: true
   drift_total:
     name: drift_total
-    description: Total drift in Angstroms
+    description: Total drift, typically specified in Angstroms. Data providers may
+      specify alternative units by including the unit in the QuantityValue.
     from_schema: https://w3id.org/lambda-ber-schema/
     rank: 1000
     alias: drift_total
     owner: MotionCorrectionParameters
     domain_of:
     - MotionCorrectionParameters
-    range: float
+    range: QuantityValue
+    inlined: true
   description:
     name: description
     from_schema: https://w3id.org/lambda-ber-schema/

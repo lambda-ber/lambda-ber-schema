@@ -152,6 +152,7 @@ attributes:
     identifier: true
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:
@@ -196,6 +197,7 @@ attributes:
     owner: NamedThing
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
   title:
     name: title

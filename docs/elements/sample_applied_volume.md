@@ -3,7 +3,7 @@
 # Slot: sample_applied_volume 
 
 
-_Volume of sample applied in microliters_
+_Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: sample_applied_volume
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: sample_applied_volume
 <details>
 ```yaml
 name: sample_applied_volume
-description: Volume of sample applied in microliters
+description: Volume of sample applied, typically specified in microliters. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: sample_applied_volume
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

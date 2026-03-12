@@ -31,7 +31,7 @@ Alias: yield_mg
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: yield_mg
 owner: SamplePreparation
 domain_of:
 - SamplePreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

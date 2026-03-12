@@ -31,7 +31,7 @@ Alias: pixel_size_physical
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: pixel_size_physical
 owner: CryoEMInstrument
 domain_of:
 - CryoEMInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

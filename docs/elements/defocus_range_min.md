@@ -31,7 +31,7 @@ Alias: defocus_range_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: defocus_range_min
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

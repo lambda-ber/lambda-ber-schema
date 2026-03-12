@@ -3,7 +3,7 @@
 # Slot: beam_size 
 
 
-_X-ray beam size in micrometers_
+_X-ray beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: beam_size
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: beam_size
 <details>
 ```yaml
 name: beam_size
-description: X-ray beam size in micrometers
+description: X-ray beam size, typically specified in micrometers. Data providers may
+  specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: beam_size
 owner: XRFImage
 domain_of:
 - XRFImage
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

@@ -148,6 +148,20 @@ sasbdb-cache-info:
     @find {{sasbdb_dump_dir}}/.cache -type f 2>/dev/null | wc -l | xargs echo "Files:" || true
 
 # ============================================================================
+# EMSL (Environmental Molecular Sciences Laboratory) Ingestion
+# ============================================================================
+
+# Load EMSL data by sample query (e.g., just emsl-load apo)
+[group('etl')]
+emsl-load sample:
+    uv run lambda-ber-schema etl emsl --sample {{sample}}
+
+# List EMSL transaction IDs for a sample query
+[group('etl')]
+emsl-list sample:
+    uv run lambda-ber-schema etl list emsl --sample {{sample}} --limit 20
+
+# ============================================================================
 # SASBDB Clean Targets - SAFE BY DEFAULT (preserves cache)
 # ============================================================================
 

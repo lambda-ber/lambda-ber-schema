@@ -3,7 +3,7 @@
 # Slot: instruments 
 
 
-_Instruments used across all studies in this dataset_
+_All instruments used across studies_
 
 
 
@@ -22,7 +22,7 @@ Alias: instruments
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Dataset](Dataset.md) | A collection of studies |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,7 +68,7 @@ Alias: instruments
 <details>
 ```yaml
 name: instruments
-description: Instruments used across all studies in this dataset
+description: All instruments used across studies
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: instruments

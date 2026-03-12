@@ -3,7 +3,7 @@
 # Slot: resolution_high 
 
 
-_High resolution limit_
+_High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: resolution_high
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: resolution_high
 <details>
 ```yaml
 name: resolution_high
-description: High resolution limit
+description: High resolution limit, typically specified in Angstroms (Å). Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Resolution_High_A
@@ -78,9 +79,8 @@ alias: resolution_high
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
-unit:
-  ucum_code: Ao
+range: QuantityValue
+inlined: true
 
 ```
 </details>

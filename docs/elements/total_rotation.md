@@ -3,7 +3,7 @@
 # Slot: total_rotation 
 
 
-_Total rotation range collected_
+_Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: total_rotation
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -67,7 +67,8 @@ Alias: total_rotation
 <details>
 ```yaml
 name: total_rotation
-description: Total rotation range collected
+description: Total rotation range collected, typically specified in degrees. Data
+  providers may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 exact_mappings:
 - nsls2:Total_rotation_deg
@@ -77,9 +78,8 @@ alias: total_rotation
 owner: ExperimentRun
 domain_of:
 - ExperimentRun
-range: float
-unit:
-  ucum_code: deg
+range: QuantityValue
+inlined: true
 
 ```
 </details>

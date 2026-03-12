@@ -15,17 +15,17 @@
     ]
   },
   "molecular_weight": {
-    "numeric_value": 182.5,
-    "unit": "kilodaltons"
+    "unit": "kilodaltons",
+    "numeric_value": 182.5
   },
   "concentration": {
-    "numeric_value": 2.5,
-    "unit": "milligrams per milliliter"
+    "unit": "milligrams per milliliter",
+    "numeric_value": 2.5
   },
   "buffer_composition": {
     "ph": {
-      "numeric_value": 8.0,
-      "unit": "pH units"
+      "unit": "pH units",
+      "numeric_value": 8.0
     },
     "components": [
       "25 mM Tris",
@@ -34,8 +34,8 @@
   },
   "storage_conditions": {
     "temperature": {
-      "numeric_value": 4.0,
-      "unit": "degrees Celsius"
+      "unit": "degrees Celsius",
+      "numeric_value": 4.0
     },
     "duration": "< 1 week before measurement"
   },

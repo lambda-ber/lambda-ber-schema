@@ -24,6 +24,17 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
       
       BeamlineInstrument : beamline_id
         
+      BeamlineInstrument : control_system
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" ControlSystemEnum : control_system
+        click ControlSystemEnum href "../ControlSystemEnum/"
+    
+
+        
       BeamlineInstrument : current_status
         
           
@@ -35,11 +46,40 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
     
 
         
+      BeamlineInstrument : daq_system
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" DataAcquisitionSystemEnum : daq_system
+        click DataAcquisitionSystemEnum href "../DataAcquisitionSystemEnum/"
+    
+
+        
       BeamlineInstrument : description
         
       BeamlineInstrument : energy_max
         
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" QuantityValue : energy_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       BeamlineInstrument : energy_min
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" QuantityValue : energy_min
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       BeamlineInstrument : facility_name
         
@@ -71,6 +111,17 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
         
       BeamlineInstrument : instrument_code
         
+      BeamlineInstrument : lims_system
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" LIMSSystemEnum : lims_system
+        click LIMSSystemEnum href "../LIMSSystemEnum/"
+    
+
+        
       BeamlineInstrument : mail_in_service
         
       BeamlineInstrument : manufacturer
@@ -79,9 +130,36 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
         
       BeamlineInstrument : q_range_max
         
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" QuantityValue : q_range_max
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       BeamlineInstrument : q_range_min
         
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" QuantityValue : q_range_min
+        click QuantityValue href "../QuantityValue/"
+    
+
+        
       BeamlineInstrument : sample_changer_capacity
+        
+          
+    
+        
+        
+        BeamlineInstrument --> "0..1" QuantityValue : sample_changer_capacity
+        click QuantityValue href "../QuantityValue/"
+    
+
         
       BeamlineInstrument : source_type
         
@@ -129,13 +207,16 @@ URI: [lambdaber:BeamlineInstrument](https://w3id.org/lambda-ber-schema/BeamlineI
 | ---  | --- | --- | --- |
 | [techniques_supported](techniques_supported.md) | 1..* <br/> [TechniqueEnum](TechniqueEnum.md) | Experimental techniques available at this beamline | direct |
 | [source_type](source_type.md) | 0..1 <br/> [XRaySourceTypeEnum](XRaySourceTypeEnum.md) | Type of X-ray source | direct |
-| [energy_min](energy_min.md) | 0..1 <br/> [Float](Float.md) | Minimum X-ray energy in keV | direct |
-| [energy_max](energy_max.md) | 0..1 <br/> [Float](Float.md) | Maximum X-ray energy in keV | direct |
-| [q_range_min](q_range_min.md) | 0..1 <br/> [Float](Float.md) | Minimum q value for SAXS in inverse Angstroms | direct |
-| [q_range_max](q_range_max.md) | 0..1 <br/> [Float](Float.md) | Maximum q value for SAXS in inverse Angstroms | direct |
-| [sample_changer_capacity](sample_changer_capacity.md) | 0..1 <br/> [Integer](Integer.md) | Automatic sample changer capacity | direct |
+| [energy_min](energy_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum X-ray energy in keV | direct |
+| [energy_max](energy_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum X-ray energy in keV | direct |
+| [q_range_min](q_range_min.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Minimum q value for SAXS in inverse Angstroms | direct |
+| [q_range_max](q_range_max.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Maximum q value for SAXS in inverse Angstroms | direct |
+| [sample_changer_capacity](sample_changer_capacity.md) | 0..1 <br/> [QuantityValue](QuantityValue.md) | Automatic sample changer capacity | direct |
 | [mail_in_service](mail_in_service.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether mail-in sample service is available | direct |
 | [website](website.md) | 0..1 <br/> [Uri](Uri.md) | Beamline website URL | direct |
+| [lims_system](lims_system.md) | 0..1 <br/> [LIMSSystemEnum](LIMSSystemEnum.md) | Laboratory Information Management System used at this beamline | direct |
+| [daq_system](daq_system.md) | 0..1 <br/> [DataAcquisitionSystemEnum](DataAcquisitionSystemEnum.md) | Data acquisition system used for experiment orchestration | direct |
+| [control_system](control_system.md) | 0..1 <br/> [ControlSystemEnum](ControlSystemEnum.md) | Low-level control system for device communication | direct |
 | [instrument_code](instrument_code.md) | 1 <br/> [String](String.md) | Human-friendly facility or laboratory identifier for the instrument (e | [Instrument](Instrument.md) |
 | [instrument_category](instrument_category.md) | 0..1 <br/> [InstrumentCategoryEnum](InstrumentCategoryEnum.md) | Category distinguishing beamlines from laboratory equipment | [Instrument](Instrument.md) |
 | [facility_name](facility_name.md) | 0..1 <br/> [FacilityEnum](FacilityEnum.md) | Name of the research facility where the instrument is located | [Instrument](Instrument.md) |
@@ -236,7 +317,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -244,7 +326,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
@@ -252,7 +335,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
@@ -260,7 +344,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
@@ -268,7 +353,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
@@ -285,6 +371,31 @@ attributes:
     domain_of:
     - BeamlineInstrument
     range: uri
+  lims_system:
+    name: lims_system
+    description: Laboratory Information Management System used at this beamline
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    range: LIMSSystemEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used for experiment orchestration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
+  control_system:
+    name: control_system
+    description: Low-level control system for device communication
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    domain_of:
+    - BeamlineInstrument
+    range: ControlSystemEnum
 
 ```
 </details>
@@ -337,7 +448,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   energy_max:
     name: energy_max
     description: Maximum X-ray energy in keV
@@ -347,7 +459,8 @@ attributes:
     domain_of:
     - XRayInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_min:
     name: q_range_min
     description: Minimum q value for SAXS in inverse Angstroms
@@ -357,7 +470,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   q_range_max:
     name: q_range_max
     description: Maximum q value for SAXS in inverse Angstroms
@@ -367,7 +481,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: float
+    range: QuantityValue
+    inlined: true
   sample_changer_capacity:
     name: sample_changer_capacity
     description: Automatic sample changer capacity
@@ -377,7 +492,8 @@ attributes:
     domain_of:
     - SAXSInstrument
     - BeamlineInstrument
-    range: integer
+    range: QuantityValue
+    inlined: true
   mail_in_service:
     name: mail_in_service
     description: Whether mail-in sample service is available
@@ -398,6 +514,37 @@ attributes:
     domain_of:
     - BeamlineInstrument
     range: uri
+  lims_system:
+    name: lims_system
+    description: Laboratory Information Management System used at this beamline
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: lims_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    range: LIMSSystemEnum
+  daq_system:
+    name: daq_system
+    description: Data acquisition system used for experiment orchestration
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: daq_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    - ExperimentRun
+    range: DataAcquisitionSystemEnum
+  control_system:
+    name: control_system
+    description: Low-level control system for device communication
+    from_schema: https://w3id.org/lambda-ber-schema/
+    rank: 1000
+    alias: control_system
+    owner: BeamlineInstrument
+    domain_of:
+    - BeamlineInstrument
+    range: ControlSystemEnum
   instrument_code:
     name: instrument_code
     description: Human-friendly facility or laboratory identifier for the instrument
@@ -517,6 +664,7 @@ attributes:
     owner: BeamlineInstrument
     domain_of:
     - NamedThing
+    - Attribute
     range: uriorcurie
     required: true
   title:

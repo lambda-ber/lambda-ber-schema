@@ -7,7 +7,8 @@ This module defines the abstract interface that all data source loaders must imp
 from abc import ABC, abstractmethod
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
 
 from lambda_ber_schema.pydantic import Dataset
 
@@ -20,13 +21,15 @@ class LoaderResult(BaseModel):
         dataset: The populated Dataset object
         warnings: List of non-fatal issues encountered during loading
         source_url: URL of the source data (for provenance)
+        doi: DOI URL for the source entry, when available
         raw_data: Original API response (optional, for debugging)
 
     Example:
         >>> result = LoaderResult(
         ...     dataset=Dataset(id="test:123"),
         ...     warnings=["Missing molecular weight"],
-        ...     source_url="https://example.org/entry/123"
+        ...     source_url="https://example.org/entry/123",
+        ...     doi="https://doi.org/10.1000/example"
         ... )
         >>> len(result.warnings)
         1
@@ -35,6 +38,7 @@ class LoaderResult(BaseModel):
     dataset: Dataset
     warnings: list[str] = Field(default_factory=list)
     source_url: str | None = None
+    doi: str | None = None
     raw_data: dict[str, Any] | None = None
 
 

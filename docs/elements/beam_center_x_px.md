@@ -31,7 +31,7 @@ Alias: beam_center_x_px
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: beam_center_x_px
 owner: DataCollectionStrategy
 domain_of:
 - DataCollectionStrategy
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

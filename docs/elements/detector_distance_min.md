@@ -31,7 +31,7 @@ Alias: detector_distance_min
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: detector_distance_min
 owner: SAXSInstrument
 domain_of:
 - SAXSInstrument
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

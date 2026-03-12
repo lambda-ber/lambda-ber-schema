@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-01T17:07:19
+# Generation date: 2026-02-25T17:18:38
 # Schema: lambda-ber-schema
 #
 # id: https://w3id.org/lambda-ber-schema/
@@ -10,18 +10,18 @@
 #
 #   ## Schema Organization
 #
-#   The schema follows a hierarchical structure that mirrors how structural biology research is organized:
+#   The schema follows a **relational design** with flat entity collections and explicit association
+#   tables for many-to-many relationships. This maps cleanly to SQL databases while supporting
+#   flexible data reuse across studies.
 #
 #   The top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.
 #   A dataset might represent all data from a specific grant, collaboration, or publication.
 #
-#   Each dataset contains one or more [Studies](Study.md), which are focused investigations of specific
-#   biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
-#   or "Structure of the human ribosome under different conditions."
+#   ### Entity Tables
 #
-#   Within each study, you'll find:
+#   All entities are stored in flat collections at the Dataset level:
 #
-#   ### Biological Materials
+#   **Biological Materials**
 #   - [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,
 #     cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and
 #     storage information. For example, a purified protein with its sequence, concentration, and buffer pH.
@@ -30,22 +30,22 @@
 #     This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for
 #     X-ray studies, or staining protocols for fluorescence microscopy.
 #
-#   ### Data Collection
+#   **Data Collection**
 #   - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
 #     beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
 #     [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
 #     like accelerating voltage, detector type, or beam energy.
 #
-#   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions that link samples to
-#     instruments. An experiment run captures when, how, and under what conditions data was collected,
-#     including quality metrics like resolution and completeness.
+#   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
+#     captures when, how, and under what conditions data was collected, including quality metrics
+#     like resolution and completeness.
 #
-#   ### Data Processing
+#   **Data Processing**
 #   - [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes
 #     motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination
 #     for crystallography. Each workflow tracks the software used, parameters, and computational resources.
 #
-#   ### Data Products
+#   **Data Products**
 #   - [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file
 #     is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).
 #
@@ -56,6 +56,30 @@
 #     - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components
 #     - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy
 #     - [XRFImage](XRFImage.md): Elemental distribution maps
+#
+#   **Logical Groupings**
+#   - [Studies](Study.md): Lightweight groupings representing focused investigations of specific
+#     biological questions. For example, a study might investigate "Heat stress response in Arabidopsis"
+#     or "Structure of the human ribosome under different conditions."
+#
+#   ### Association Tables
+#
+#   Many-to-many relationships are represented via explicit association tables, which can carry
+#   relationship metadata (e.g., the role of a sample in an experiment):
+#
+#   - **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)
+#   - **StudyExperimentAssociation**: Links experiments to studies
+#   - **StudyWorkflowAssociation**: Links workflows to studies
+#   - **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)
+#   - **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)
+#   - **WorkflowExperimentAssociation**: Links source experiments to workflows
+#   - **WorkflowInputAssociation**: Links input files to workflows
+#   - **WorkflowOutputAssociation**: Links output files to workflows
+#
+#   This relational design enables:
+#   - **Sample reuse**: The same sample can be used in multiple studies and experiments
+#   - **Multi-instrument experiments**: An experiment can use multiple instruments with different roles
+#   - **Integrative workflows**: A workflow can combine data from multiple experiments
 #
 #   ## Example Usage
 #
@@ -75,6 +99,8 @@
 #
 #   ## Key Features
 #
+#   - **Relational design**: Flat entity tables with explicit association tables for M:N relationships
+#   - **SQL-friendly**: Maps directly to normalized database tables
 #   - **Technique-agnostic core**: The same schema handles data from any structural biology method
 #   - **Rich metadata**: Comprehensive tracking from sample to structure
 #   - **Workflow provenance**: Complete computational reproducibility
@@ -156,10 +182,12 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
+PDB = CurieNamespace('pdb', 'https://files.rcsb.org/download/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'https://schema.org/')
+SIMPLESCATTERING = CurieNamespace('simplescattering', 'https://www.simplescattering.com/open_dataset/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
@@ -1280,6 +1308,9 @@ class BeamlineInstrument(Instrument):
     sample_changer_capacity: Optional[Union[dict, "QuantityValue"]] = None
     mail_in_service: Optional[Union[bool, Bool]] = None
     website: Optional[Union[str, URI]] = None
+    lims_system: Optional[Union[str, "LIMSSystemEnum"]] = None
+    daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
+    control_system: Optional[Union[str, "ControlSystemEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1317,6 +1348,15 @@ class BeamlineInstrument(Instrument):
         if self.website is not None and not isinstance(self.website, URI):
             self.website = URI(self.website)
 
+        if self.lims_system is not None and not isinstance(self.lims_system, LIMSSystemEnum):
+            self.lims_system = LIMSSystemEnum(self.lims_system)
+
+        if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
+            self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
+
+        if self.control_system is not None and not isinstance(self.control_system, ControlSystemEnum):
+            self.control_system = ControlSystemEnum(self.control_system)
+
         super().__post_init__(**kwargs)
 
 
@@ -1343,6 +1383,7 @@ class ExperimentRun(NamedThing):
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
     raw_data_location: Optional[str] = None
     processing_status: Optional[Union[str, "ProcessingStatusEnum"]] = None
+    daq_system: Optional[Union[str, "DataAcquisitionSystemEnum"]] = None
     magnification: Optional[Union[dict, "QuantityValue"]] = None
     calibrated_pixel_size: Optional[Union[dict, "QuantityValue"]] = None
     camera_binning: Optional[Union[dict, "QuantityValue"]] = None
@@ -1428,6 +1469,9 @@ class ExperimentRun(NamedThing):
 
         if self.processing_status is not None and not isinstance(self.processing_status, ProcessingStatusEnum):
             self.processing_status = ProcessingStatusEnum(self.processing_status)
+
+        if self.daq_system is not None and not isinstance(self.daq_system, DataAcquisitionSystemEnum):
+            self.daq_system = DataAcquisitionSystemEnum(self.daq_system)
 
         if self.magnification is not None and not isinstance(self.magnification, QuantityValue):
             self.magnification = QuantityValue(**as_dict(self.magnification))
@@ -3755,19 +3799,14 @@ class QuantityValue(AttributeValue):
     class_name: ClassVar[str] = "QuantityValue"
     class_model_uri: ClassVar[URIRef] = LAMBDABER.QuantityValue
 
-    numeric_value: float = None
     unit: str = None
     maximum_numeric_value: Optional[float] = None
     minimum_numeric_value: Optional[float] = None
+    numeric_value: Optional[float] = None
     unit_cv_id: Optional[Union[str, Curie]] = None
     raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.numeric_value):
-            self.MissingRequiredField("numeric_value")
-        if not isinstance(self.numeric_value, float):
-            self.numeric_value = float(self.numeric_value)
-
         if self._is_empty(self.unit):
             self.MissingRequiredField("unit")
         if not isinstance(self.unit, str):
@@ -3778,6 +3817,9 @@ class QuantityValue(AttributeValue):
 
         if self.minimum_numeric_value is not None and not isinstance(self.minimum_numeric_value, float):
             self.minimum_numeric_value = float(self.minimum_numeric_value)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, float):
+            self.numeric_value = float(self.numeric_value)
 
         if self.unit_cv_id is not None and not isinstance(self.unit_cv_id, Curie):
             self.unit_cv_id = Curie(self.unit_cv_id)
@@ -5076,6 +5118,10 @@ class BeamlineEnum(EnumDefinitionImpl):
         text="ALS_BL831",
         title="ALS BL8.3.1",
         description="High-throughput macromolecular crystallography beamline")
+    ALS_BL832 = PermissibleValue(
+        text="ALS_BL832",
+        title="ALS BL8.3.2",
+        description="""Hard X-ray micro-tomography beamline for non-destructive 3D imaging. Provides high-resolution micro-CT capabilities for biological, geological, and materials samples. Supports absorption and phase contrast imaging modes.""")
     ALS_BL1222 = PermissibleValue(
         text="ALS_BL1222",
         title="ALS BL12.2.2",
@@ -5371,6 +5417,10 @@ class TechniqueEnum(EnumDefinitionImpl):
         text="time_resolved_crystallography",
         description="Time-resolved macromolecular crystallography",
         meaning=CHMO["0000156"])
+    xray_tomography = PermissibleValue(
+        text="xray_tomography",
+        description="X-ray computed tomography (micro-CT) for 3D imaging",
+        meaning=CHMO["0002743"])
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -5381,6 +5431,9 @@ class ProcessingStatusEnum(EnumDefinitionImpl):
     """
     Processing status
     """
+    collected = PermissibleValue(
+        text="collected",
+        description="Data has been collected but not yet processed")
     raw = PermissibleValue(
         text="raw",
         description="Raw data")
@@ -5800,6 +5853,107 @@ class ExperimentalMethodEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="ExperimentalMethodEnum",
         description="Experimental methods for structure determination",
+    )
+
+class LIMSSystemEnum(EnumDefinitionImpl):
+    """
+    Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples,
+    experiments, and data workflows. These systems track samples from shipment through data collection and processing.
+    """
+    ispyb = PermissibleValue(
+        text="ispyb",
+        title="ISPyB (Community)",
+        description="""Information System for Protein crystallography Beamlines - the community-maintained variant developed collaboratively by ESRF, MAX IV, SOLEIL, ALBA, and other facilities. Provides comprehensive tracking of samples, data collections, and processing results for macromolecular crystallography. The py-ispyb Python API targets this variant.""")
+    ispyb_diamond = PermissibleValue(
+        text="ispyb_diamond",
+        title="ISPyB (Diamond)",
+        description="""Diamond Light Source variant of ISPyB, the original reference implementation. Tightly integrated with Diamond's infrastructure and SynchWeb web interface. Shares core schema with community ISPyB but has diverged in extensions and APIs.""")
+    icat = PermissibleValue(
+        text="icat",
+        title="ICAT",
+        description="""ICAT is a metadata catalogue and data management system designed to support large facility experimental data. Used primarily at neutron and photon sources for cataloging experimental data with rich metadata and providing data access APIs.""")
+    mxlive = PermissibleValue(
+        text="mxlive",
+        title="MXLive",
+        description="""Web-based LIMS developed at the Canadian Light Source for macromolecular crystallography beamlines. Provides sample tracking, data collection scheduling, and integration with automated data processing pipelines.""")
+    mxcube_lims = PermissibleValue(
+        text="mxcube_lims",
+        title="MXCuBE (LIMS)",
+        description="""Macromolecular Crystallography Beamline Control Unit Environment - a unified beamline control and experiment management system. Originally developed at ESRF, now a collaborative project. MXCuBE3 is the modern web-based version.""")
+    user_office = PermissibleValue(
+        text="user_office",
+        title="User Office System",
+        description="""Generic facility user office or proposal management system for tracking beam time proposals, user access, and administrative metadata.""")
+
+    _defn = EnumDefinition(
+        name="LIMSSystemEnum",
+        description="""Laboratory Information Management Systems (LIMS) used at structural biology facilities to manage samples, experiments, and data workflows. These systems track samples from shipment through data collection and processing.""",
+    )
+
+class DataAcquisitionSystemEnum(EnumDefinitionImpl):
+    """
+    Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems
+    coordinate hardware, execute scan sequences, and stream data and metadata during experiments.
+    """
+    bluesky = PermissibleValue(
+        text="bluesky",
+        title="Bluesky",
+        description="""Event-based data acquisition framework developed at NSLS-II (Brookhaven National Laboratory). Uses a streaming document model with RunStart, Event, and RunStop documents. Built on Python with ophyd for hardware abstraction and databroker for data access. Increasingly adopted at ALS, APS, and international facilities.""")
+    spec = PermissibleValue(
+        text="spec",
+        title="SPEC",
+        description="""Legacy macro-based data acquisition system from Certified Scientific Software. Long-standing standard at synchrotron beamlines, using a command-line interface with macro scripting. Still in use at many facilities but being replaced by modern alternatives.""")
+    sardana = PermissibleValue(
+        text="sardana",
+        title="Sardana",
+        description="""Tango-based data acquisition and control system developed at ALBA. Provides a modular framework for beamline control with macro execution, scan management, and integration with Tango device servers.""")
+    gda = PermissibleValue(
+        text="gda",
+        title="GDA",
+        description="""Generic Data Acquisition - Java-based data acquisition framework developed at Diamond Light Source. Provides beamline control, scan execution, and integration with EPICS and other control systems.""")
+    mxcube_daq = PermissibleValue(
+        text="mxcube_daq",
+        title="MXCuBE (Data Collection)",
+        description="""MXCuBE used as data collection interface for macromolecular crystallography. Provides automated data collection strategies, sample centering, and integration with processing pipelines. See also mxcube_lims in LIMSSystemEnum for sample management.""")
+    blu_ice = PermissibleValue(
+        text="blu_ice",
+        title="Blu-Ice",
+        description="""Data collection software developed at SSRL (Stanford Synchrotron Radiation Lightsource) for macromolecular crystallography. Provides graphical interface for sample positioning, data collection strategy, and beamline control.""")
+    jblue_ice = PermissibleValue(
+        text="jblue_ice",
+        title="JBluIce",
+        description="""Java-based variant of Blu-Ice deployed at GM/CA (General Medicine and Cancer Institutes Collaborative Access Team) and SER-CAT beamlines at APS.""")
+
+    _defn = EnumDefinition(
+        name="DataAcquisitionSystemEnum",
+        description="""Data acquisition (DAQ) systems for orchestrating experimental data collection at facilities. These systems coordinate hardware, execute scan sequences, and stream data and metadata during experiments.""",
+    )
+
+class ControlSystemEnum(EnumDefinitionImpl):
+    """
+    Low-level control systems and middleware frameworks for device communication and hardware abstraction at
+    experimental facilities. These provide the foundation layer that data acquisition systems build upon.
+    """
+    epics = PermissibleValue(
+        text="epics",
+        title="EPICS",
+        description="""Experimental Physics and Industrial Control System - open-source control system framework widely used at accelerators and large experimental facilities worldwide. Provides distributed control with Channel Access protocol, IOCs (Input/Output Controllers), and extensive tool ecosystem.""")
+    tango = PermissibleValue(
+        text="tango",
+        title="Tango Controls",
+        description="""Object-oriented distributed control system developed at ESRF. Provides device servers, a naming service, and tools for building control applications. Widely adopted at European synchrotrons and other facilities.""")
+    labview = PermissibleValue(
+        text="labview",
+        title="LabVIEW",
+        description="""Graphical programming environment from National Instruments for instrument control and data acquisition. Used at some laboratory and smaller-scale facilities for custom instrument integration.""")
+    opi = PermissibleValue(
+        text="opi",
+        title="OPI",
+        description="""Operator Interface - legacy control system used at ALS before EPICS adoption. Historical reference for older beamline configurations.""")
+
+    _defn = EnumDefinition(
+        name="ControlSystemEnum",
+        description="""Low-level control systems and middleware frameworks for device communication and hardware abstraction at experimental facilities. These provide the foundation layer that data acquisition systems build upon.""",
     )
 
 class SampleRoleEnum(EnumDefinitionImpl):
@@ -7439,6 +7593,15 @@ slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDABER.mail_in_service, 
 slots.beamlineInstrument__website = Slot(uri=LAMBDABER.website, name="beamlineInstrument__website", curie=LAMBDABER.curie('website'),
                    model_uri=LAMBDABER.beamlineInstrument__website, domain=None, range=Optional[Union[str, URI]])
 
+slots.beamlineInstrument__lims_system = Slot(uri=LAMBDABER.lims_system, name="beamlineInstrument__lims_system", curie=LAMBDABER.curie('lims_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__lims_system, domain=None, range=Optional[Union[str, "LIMSSystemEnum"]])
+
+slots.beamlineInstrument__daq_system = Slot(uri=LAMBDABER.daq_system, name="beamlineInstrument__daq_system", curie=LAMBDABER.curie('daq_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
+
+slots.beamlineInstrument__control_system = Slot(uri=LAMBDABER.control_system, name="beamlineInstrument__control_system", curie=LAMBDABER.curie('control_system'),
+                   model_uri=LAMBDABER.beamlineInstrument__control_system, domain=None, range=Optional[Union[str, "ControlSystemEnum"]])
+
 slots.experimentRun__experiment_code = Slot(uri=LAMBDABER.experiment_code, name="experimentRun__experiment_code", curie=LAMBDABER.curie('experiment_code'),
                    model_uri=LAMBDABER.experimentRun__experiment_code, domain=None, range=str)
 
@@ -7468,6 +7631,9 @@ slots.experimentRun__raw_data_location = Slot(uri=LAMBDABER.raw_data_location, n
 
 slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, name="experimentRun__processing_status", curie=LAMBDABER.curie('processing_status'),
                    model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
+
+slots.experimentRun__daq_system = Slot(uri=LAMBDABER.daq_system, name="experimentRun__daq_system", curie=LAMBDABER.curie('daq_system'),
+                   model_uri=LAMBDABER.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
 slots.experimentRun__magnification = Slot(uri=LAMBDABER.magnification, name="experimentRun__magnification", curie=LAMBDABER.curie('magnification'),
                    model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8990,7 +9156,7 @@ slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annota
                    model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
-                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=float, mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
 
 slots.QuantityValue_unit = Slot(uri=LAMBDABER.unit, name="QuantityValue_unit", curie=LAMBDABER.curie('unit'),
                    model_uri=LAMBDABER.QuantityValue_unit, domain=QuantityValue, range=str, mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])

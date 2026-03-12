@@ -3,7 +3,7 @@
 # Slot: sample_preparations 
 
 
-_Sample preparation procedures performed in this study_
+_All sample preparations_
 
 
 
@@ -22,7 +22,7 @@ Alias: sample_preparations
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Study](Study.md) | A focused research investigation that groups related samples, experiments, an... |  no  |
+| [Dataset](Dataset.md) | Root container holding flat entity collections and association tables |  no  |
 
 
 
@@ -68,13 +68,13 @@ Alias: sample_preparations
 <details>
 ```yaml
 name: sample_preparations
-description: Sample preparation procedures performed in this study
+description: All sample preparations
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: sample_preparations
-owner: Study
+owner: Dataset
 domain_of:
-- Study
+- Dataset
 range: SamplePreparation
 multivalued: true
 inlined: true

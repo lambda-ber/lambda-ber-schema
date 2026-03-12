@@ -31,7 +31,7 @@ Alias: frames
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: frames
 owner: Movie
 domain_of:
 - Movie
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>

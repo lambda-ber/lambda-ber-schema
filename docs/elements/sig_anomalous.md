@@ -31,14 +31,10 @@ Alias: sig_anomalous
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
-
-## Comments
-
-* Mean |F(+) - F(-)|/sigma
 
 ## Identifier and Mapping Information
 
@@ -61,7 +57,6 @@ Alias: sig_anomalous
 | ---  | ---  |
 | self | lambdaber:sig_anomalous |
 | native | lambdaber:sig_anomalous |
-| exact | ispyb:AutoProcScalingStatistics.sigAno |
 
 
 
@@ -72,17 +67,14 @@ Alias: sig_anomalous
 ```yaml
 name: sig_anomalous
 description: Mean anomalous difference signal
-comments:
-- Mean |F(+) - F(-)|/sigma
 from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- ispyb:AutoProcScalingStatistics.sigAno
 rank: 1000
 alias: sig_anomalous
 owner: WorkflowRun
 domain_of:
 - WorkflowRun
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

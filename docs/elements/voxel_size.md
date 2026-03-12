@@ -3,7 +3,7 @@
 # Slot: voxel_size 
 
 
-_Voxel size in Angstroms_
+_Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: voxel_size
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: voxel_size
 <details>
 ```yaml
 name: voxel_size
-description: Voxel size in Angstroms
+description: Voxel size, typically specified in Angstroms. Data providers may specify
+  alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: voxel_size
 owner: Image3D
 domain_of:
 - Image3D
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

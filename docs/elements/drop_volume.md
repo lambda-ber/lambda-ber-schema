@@ -3,7 +3,7 @@
 # Slot: drop_volume 
 
 
-_Total drop volume in nanoliters_
+_Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: drop_volume
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -70,7 +70,8 @@ Alias: drop_volume
 <details>
 ```yaml
 name: drop_volume
-description: Total drop volume in nanoliters
+description: Total drop volume, typically specified in nanoliters. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 comments:
 - 'Maps to NSLS2 spreadsheet: Drop_Volume'
 from_schema: https://w3id.org/lambda-ber-schema/
@@ -80,7 +81,8 @@ alias: drop_volume
 owner: CrystallizationConditions
 domain_of:
 - CrystallizationConditions
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

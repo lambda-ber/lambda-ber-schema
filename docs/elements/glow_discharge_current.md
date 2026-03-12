@@ -3,7 +3,7 @@
 # Slot: glow_discharge_current 
 
 
-_Glow discharge current in milliamperes_
+_Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue._
 
 
 
@@ -31,7 +31,7 @@ Alias: glow_discharge_current
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -66,14 +66,16 @@ Alias: glow_discharge_current
 <details>
 ```yaml
 name: glow_discharge_current
-description: Glow discharge current in milliamperes
+description: Glow discharge current, typically specified in milliamperes. Data providers
+  may specify alternative units by including the unit in the QuantityValue.
 from_schema: https://w3id.org/lambda-ber-schema/
 rank: 1000
 alias: glow_discharge_current
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: float
+range: QuantityValue
+inlined: true
 
 ```
 </details>

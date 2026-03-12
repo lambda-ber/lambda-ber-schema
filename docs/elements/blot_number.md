@@ -31,7 +31,7 @@ Alias: blot_number
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [QuantityValue](QuantityValue.md)
 
 
 
@@ -73,7 +73,8 @@ alias: blot_number
 owner: CryoEMPreparation
 domain_of:
 - CryoEMPreparation
-range: integer
+range: QuantityValue
+inlined: true
 
 ```
 </details>
