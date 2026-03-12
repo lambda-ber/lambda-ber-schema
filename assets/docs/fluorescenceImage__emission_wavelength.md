@@ -3,7 +3,7 @@
 
 Emission wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fluorescenceImage__emission_wavelength](https://w3id.org/lambda-ber-schema/fluorescenceImage__emission_wavelength)
+URI: [lambda:fluorescenceImage__emission_wavelength](http://w3id.org/lambda/fluorescenceImage__emission_wavelength)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Patch size for local motion correction
 
-URI: [lambdaber:motionCorrectionParameters__patch_size](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__patch_size)
+URI: [lambda:motionCorrectionParameters__patch_size](http://w3id.org/lambda/motionCorrectionParameters__patch_size)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Whether structure was deposited to PDB
 
-URI: [lambdaber:workflowRun__deposited_to_pdb](https://w3id.org/lambda-ber-schema/workflowRun__deposited_to_pdb)
+URI: [lambda:workflowRun__deposited_to_pdb](http://w3id.org/lambda/workflowRun__deposited_to_pdb)
 
 
 ## Domain and Range

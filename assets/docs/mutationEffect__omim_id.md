@@ -3,7 +3,7 @@
 
 OMIM database identifier
 
-URI: [lambdaber:mutationEffect__omim_id](https://w3id.org/lambda-ber-schema/mutationEffect__omim_id)
+URI: [lambda:mutationEffect__omim_id](http://w3id.org/lambda/mutationEffect__omim_id)
 
 
 ## Domain and Range

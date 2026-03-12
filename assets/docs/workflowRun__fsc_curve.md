@@ -3,7 +3,7 @@
 
 Fourier Shell Correlation curve data
 
-URI: [lambdaber:workflowRun__fsc_curve](https://w3id.org/lambda-ber-schema/workflowRun__fsc_curve)
+URI: [lambda:workflowRun__fsc_curve](http://w3id.org/lambda/workflowRun__fsc_curve)
 
 
 ## Domain and Range

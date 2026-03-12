@@ -3,7 +3,7 @@
 
 Temperature during induction, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:samplePreparation__induction_temperature_c](https://w3id.org/lambda-ber-schema/samplePreparation__induction_temperature_c)
+URI: [lambda:samplePreparation__induction_temperature_c](http://w3id.org/lambda/samplePreparation__induction_temperature_c)
 
 
 ## Domain and Range

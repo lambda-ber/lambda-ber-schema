@@ -3,7 +3,7 @@
 
 Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:refinementParameters__resolution_0_5](https://w3id.org/lambda-ber-schema/refinementParameters__resolution_0_5)
+URI: [lambda:refinementParameters__resolution_0_5](http://w3id.org/lambda/refinementParameters__resolution_0_5)
 
 
 ## Domain and Range

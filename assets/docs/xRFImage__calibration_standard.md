@@ -3,7 +3,7 @@
 
 Reference standard used for calibration
 
-URI: [lambdaber:xRFImage__calibration_standard](https://w3id.org/lambda-ber-schema/xRFImage__calibration_standard)
+URI: [lambda:xRFImage__calibration_standard](http://w3id.org/lambda/xRFImage__calibration_standard)
 
 
 ## Domain and Range

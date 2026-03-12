@@ -3,7 +3,7 @@
 
 Image height, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:image__dimensions_y](https://w3id.org/lambda-ber-schema/image__dimensions_y)
+URI: [lambda:image__dimensions_y](http://w3id.org/lambda/image__dimensions_y)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Vertical slit gap aperture, typically specified in micrometers (µm). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__slit_gap_vertical](https://w3id.org/lambda-ber-schema/experimentRun__slit_gap_vertical)
+URI: [lambda:experimentRun__slit_gap_vertical](http://w3id.org/lambda/experimentRun__slit_gap_vertical)
 
 
 ## Domain and Range

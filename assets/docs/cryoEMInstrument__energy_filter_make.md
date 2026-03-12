@@ -3,7 +3,7 @@
 
 Energy filter manufacturer
 
-URI: [lambdaber:cryoEMInstrument__energy_filter_make](https://w3id.org/lambda-ber-schema/cryoEMInstrument__energy_filter_make)
+URI: [lambda:cryoEMInstrument__energy_filter_make](http://w3id.org/lambda/cryoEMInstrument__energy_filter_make)
 
 
 ## Domain and Range

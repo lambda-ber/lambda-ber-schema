@@ -3,7 +3,7 @@
 
 Duration of protease cleavage in hours
 
-URI: [lambdaber:samplePreparation__cleavage_time_h](https://w3id.org/lambda-ber-schema/samplePreparation__cleavage_time_h)
+URI: [lambda:samplePreparation__cleavage_time_h](http://w3id.org/lambda/samplePreparation__cleavage_time_h)
 
 
 ## Domain and Range

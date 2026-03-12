@@ -3,7 +3,7 @@
 
 Ontology terms describing features identified in the image
 
-URI: [lambdaber:imageFeature__terms](https://w3id.org/lambda-ber-schema/imageFeature__terms)
+URI: [lambda:imageFeature__terms](http://w3id.org/lambda/imageFeature__terms)
 
 
 ## Domain and Range

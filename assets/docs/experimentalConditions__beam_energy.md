@@ -3,7 +3,7 @@
 
 Beam energy, typically specified in kiloelectronvolts (keV). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentalConditions__beam_energy](https://w3id.org/lambda-ber-schema/experimentalConditions__beam_energy)
+URI: [lambda:experimentalConditions__beam_energy](http://w3id.org/lambda/experimentalConditions__beam_energy)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Acquisition group identifier (e.g., template or area)
 
-URI: [lambdaber:movie__acquisition_group](https://w3id.org/lambda-ber-schema/movie__acquisition_group)
+URI: [lambda:movie__acquisition_group](http://w3id.org/lambda/movie__acquisition_group)
 
 
 ## Domain and Range

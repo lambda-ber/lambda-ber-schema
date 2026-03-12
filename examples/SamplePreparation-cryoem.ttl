@@ -1,6 +1,6 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 
 lambdaber:sample_prep_001 a lambdaber:SamplePreparation ;
     dcterms:title "Cryo-EM grid preparation for HIV-1 capsid" ;

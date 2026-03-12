@@ -3,7 +3,7 @@
 
 Phasing method used for X-ray crystallography structure determination
 
-URI: [lambdaber:workflowRun__phasing_method](https://w3id.org/lambda-ber-schema/workflowRun__phasing_method)
+URI: [lambda:workflowRun__phasing_method](http://w3id.org/lambda/workflowRun__phasing_method)
 
 
 ## Domain and Range

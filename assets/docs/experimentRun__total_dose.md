@@ -3,7 +3,7 @@
 
 Total electron dose in e-/Angstrom^2
 
-URI: [lambdaber:experimentRun__total_dose](https://w3id.org/lambda-ber-schema/experimentRun__total_dose)
+URI: [lambda:experimentRun__total_dose](http://w3id.org/lambda/experimentRun__total_dose)
 
 
 ## Domain and Range

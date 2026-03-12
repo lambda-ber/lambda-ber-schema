@@ -3,7 +3,7 @@
 
 Electron dose per frame in e-/Angstrom^2
 
-URI: [lambdaber:movie__dose_per_frame](https://w3id.org/lambda-ber-schema/movie__dose_per_frame)
+URI: [lambda:movie__dose_per_frame](http://w3id.org/lambda/movie__dose_per_frame)
 
 
 ## Domain and Range

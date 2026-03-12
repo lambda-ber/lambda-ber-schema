@@ -3,7 +3,7 @@
 
 Ligand identifier (ChEMBL, ChEBI, PubChem)
 
-URI: [lambdaber:ligandInteraction__ligand_id](https://w3id.org/lambda-ber-schema/ligandInteraction__ligand_id)
+URI: [lambda:ligandInteraction__ligand_id](http://w3id.org/lambda/ligandInteraction__ligand_id)
 
 
 ## Domain and Range

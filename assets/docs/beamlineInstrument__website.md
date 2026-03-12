@@ -3,7 +3,7 @@
 
 Beamline website URL
 
-URI: [lambdaber:beamlineInstrument__website](https://w3id.org/lambda-ber-schema/beamlineInstrument__website)
+URI: [lambda:beamlineInstrument__website](http://w3id.org/lambda/beamlineInstrument__website)
 
 
 ## Domain and Range

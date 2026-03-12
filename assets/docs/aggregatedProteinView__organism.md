@@ -3,7 +3,7 @@
 
 Source organism
 
-URI: [lambdaber:aggregatedProteinView__organism](https://w3id.org/lambda-ber-schema/aggregatedProteinView__organism)
+URI: [lambda:aggregatedProteinView__organism](http://w3id.org/lambda/aggregatedProteinView__organism)
 
 
 ## Domain and Range

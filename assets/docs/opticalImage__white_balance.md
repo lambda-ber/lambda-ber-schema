@@ -3,7 +3,7 @@
 
 White balance settings
 
-URI: [lambdaber:opticalImage__white_balance](https://w3id.org/lambda-ber-schema/opticalImage__white_balance)
+URI: [lambda:opticalImage__white_balance](http://w3id.org/lambda/opticalImage__white_balance)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Whether glow discharge treatment was applied
 
-URI: [lambdaber:cryoEMPreparation__glow_discharge_applied](https://w3id.org/lambda-ber-schema/cryoEMPreparation__glow_discharge_applied)
+URI: [lambda:cryoEMPreparation__glow_discharge_applied](http://w3id.org/lambda/cryoEMPreparation__glow_discharge_applied)
 
 
 ## Domain and Range

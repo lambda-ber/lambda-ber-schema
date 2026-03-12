@@ -3,7 +3,7 @@
 
 Start and end positions of insert in vector
 
-URI: [lambdaber:proteinConstruct__insert_boundaries](https://w3id.org/lambda-ber-schema/proteinConstruct__insert_boundaries)
+URI: [lambda:proteinConstruct__insert_boundaries](http://w3id.org/lambda/proteinConstruct__insert_boundaries)
 
 
 ## Domain and Range

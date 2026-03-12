@@ -3,7 +3,7 @@
 
 Quality metrics for the experiment
 
-URI: [lambdaber:experimentRun__quality_metrics](https://w3id.org/lambda-ber-schema/experimentRun__quality_metrics)
+URI: [lambda:experimentRun__quality_metrics](http://w3id.org/lambda/experimentRun__quality_metrics)
 
 
 ## Domain and Range

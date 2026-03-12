@@ -3,7 +3,7 @@
 
 Identifier for this state
 
-URI: [lambdaber:conformationalState__state_id](https://w3id.org/lambda-ber-schema/conformationalState__state_id)
+URI: [lambda:conformationalState__state_id](http://w3id.org/lambda/conformationalState__state_id)
 
 
 ## Domain and Range

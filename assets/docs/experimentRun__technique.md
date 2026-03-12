@@ -3,7 +3,7 @@
 
 Technique used for data collection
 
-URI: [lambdaber:experimentRun__technique](https://w3id.org/lambda-ber-schema/experimentRun__technique)
+URI: [lambda:experimentRun__technique](http://w3id.org/lambda/experimentRun__technique)
 
 
 ## Domain and Range

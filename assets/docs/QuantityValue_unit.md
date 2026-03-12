@@ -3,7 +3,7 @@
 
 The unit of measurement (e.g., "Angstroms", "micrometers", "kilodaltons"). Should match the UCUM standard notation or Unit Ontology.
 
-URI: [lambdaber:QuantityValue_unit](https://w3id.org/lambda-ber-schema/QuantityValue_unit)
+URI: [lambda:QuantityValue_unit](http://w3id.org/lambda/QuantityValue_unit)
 
 
 ## Domain and Range

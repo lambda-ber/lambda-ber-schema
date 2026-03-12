@@ -3,7 +3,7 @@
 
 Identified molecular signatures or peaks
 
-URI: [lambdaber:fTIRImage__molecular_signatures](https://w3id.org/lambda-ber-schema/fTIRImage__molecular_signatures)
+URI: [lambda:fTIRImage__molecular_signatures](http://w3id.org/lambda/fTIRImage__molecular_signatures)
 
 
 ## Domain and Range

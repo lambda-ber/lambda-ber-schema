@@ -3,7 +3,7 @@
 
 Binning factor applied during motion correction. This must be a positive float value (e.g., 1, 1.5, 2, 3).
 
-URI: [lambdaber:motionCorrectionParameters__binning](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__binning)
+URI: [lambda:motionCorrectionParameters__binning](http://w3id.org/lambda/motionCorrectionParameters__binning)
 
 
 ## Domain and Range

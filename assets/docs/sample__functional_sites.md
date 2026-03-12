@@ -3,7 +3,7 @@
 
 Functional site annotations for proteins in the sample
 
-URI: [lambdaber:sample__functional_sites](https://w3id.org/lambda-ber-schema/sample__functional_sites)
+URI: [lambda:sample__functional_sites](http://w3id.org/lambda/sample__functional_sites)
 
 
 ## Domain and Range

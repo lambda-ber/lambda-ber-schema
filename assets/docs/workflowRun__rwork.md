@@ -3,7 +3,7 @@
 
 Refinement R-factor (working set)
 
-URI: [lambdaber:workflowRun__rwork](https://w3id.org/lambda-ber-schema/workflowRun__rwork)
+URI: [lambda:workflowRun__rwork](http://w3id.org/lambda/workflowRun__rwork)
 
 
 ## Domain and Range

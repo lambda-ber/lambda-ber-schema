@@ -3,7 +3,7 @@
 
 Rpim - precision-indicating merging R-factor
 
-URI: [lambdaber:qualityMetrics__r_pim](https://w3id.org/lambda-ber-schema/qualityMetrics__r_pim)
+URI: [lambda:qualityMetrics__r_pim](http://w3id.org/lambda/qualityMetrics__r_pim)
 
 
 ## Domain and Range

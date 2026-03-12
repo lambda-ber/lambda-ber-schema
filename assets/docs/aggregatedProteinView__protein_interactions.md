@@ -3,7 +3,7 @@
 
 All protein-protein interactions
 
-URI: [lambdaber:aggregatedProteinView__protein_interactions](https://w3id.org/lambda-ber-schema/aggregatedProteinView__protein_interactions)
+URI: [lambda:aggregatedProteinView__protein_interactions](http://w3id.org/lambda/aggregatedProteinView__protein_interactions)
 
 
 ## Domain and Range

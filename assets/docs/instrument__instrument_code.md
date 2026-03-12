@@ -3,7 +3,7 @@
 
 Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 
-URI: [lambdaber:instrument__instrument_code](https://w3id.org/lambda-ber-schema/instrument__instrument_code)
+URI: [lambda:instrument__instrument_code](http://w3id.org/lambda/instrument__instrument_code)
 
 
 ## Domain and Range

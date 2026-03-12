@@ -3,7 +3,7 @@
 
 Energy filter slit width in eV
 
-URI: [lambdaber:cryoEMInstrument__energy_filter_slit_width](https://w3id.org/lambda-ber-schema/cryoEMInstrument__energy_filter_slit_width)
+URI: [lambda:cryoEMInstrument__energy_filter_slit_width](http://w3id.org/lambda/cryoEMInstrument__energy_filter_slit_width)
 
 
 ## Domain and Range

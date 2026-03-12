@@ -3,7 +3,7 @@
 
 Astigmatism angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:micrograph__astigmatism_angle](https://w3id.org/lambda-ber-schema/micrograph__astigmatism_angle)
+URI: [lambda:micrograph__astigmatism_angle](http://w3id.org/lambda/micrograph__astigmatism_angle)
 
 
 ## Domain and Range

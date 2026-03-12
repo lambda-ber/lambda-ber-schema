@@ -3,7 +3,7 @@
 
 Path to validation report
 
-URI: [lambdaber:workflowRun__validation_report_path](https://w3id.org/lambda-ber-schema/workflowRun__validation_report_path)
+URI: [lambda:workflowRun__validation_report_path](http://w3id.org/lambda/workflowRun__validation_report_path)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Distance criteria for interaction (Angstroms)
 
-URI: [lambdaber:ligandInteraction__interaction_distance](https://w3id.org/lambda-ber-schema/ligandInteraction__interaction_distance)
+URI: [lambda:ligandInteraction__interaction_distance](http://w3id.org/lambda/ligandInteraction__interaction_distance)
 
 
 ## Domain and Range

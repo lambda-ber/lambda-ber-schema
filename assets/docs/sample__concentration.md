@@ -3,7 +3,7 @@
 
 Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue.
 
-URI: [lambdaber:sample__concentration](https://w3id.org/lambda-ber-schema/sample__concentration)
+URI: [lambda:sample__concentration](http://w3id.org/lambda/sample__concentration)
 
 
 ## Domain and Range

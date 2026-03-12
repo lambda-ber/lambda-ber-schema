@@ -3,7 +3,7 @@
 
 RMSD from reference structure
 
-URI: [lambdaber:conformationalState__rmsd_from_reference](https://w3id.org/lambda-ber-schema/conformationalState__rmsd_from_reference)
+URI: [lambda:conformationalState__rmsd_from_reference](http://w3id.org/lambda/conformationalState__rmsd_from_reference)
 
 
 ## Domain and Range

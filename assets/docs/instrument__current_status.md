@@ -3,7 +3,7 @@
 
 Current operational status
 
-URI: [lambdaber:instrument__current_status](https://w3id.org/lambda-ber-schema/instrument__current_status)
+URI: [lambda:instrument__current_status](http://w3id.org/lambda/instrument__current_status)
 
 
 ## Domain and Range

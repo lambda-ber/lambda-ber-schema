@@ -3,7 +3,7 @@
 
 Rmerge - merge R-factor
 
-URI: [lambdaber:workflowRun__rmerge](https://w3id.org/lambda-ber-schema/workflowRun__rmerge)
+URI: [lambda:workflowRun__rmerge](http://w3id.org/lambda/workflowRun__rmerge)
 
 
 ## Domain and Range

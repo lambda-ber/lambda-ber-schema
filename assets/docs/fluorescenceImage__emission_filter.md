@@ -3,7 +3,7 @@
 
 Specifications of the emission filter
 
-URI: [lambdaber:fluorescenceImage__emission_filter](https://w3id.org/lambda-ber-schema/fluorescenceImage__emission_filter)
+URI: [lambda:fluorescenceImage__emission_filter](http://w3id.org/lambda/fluorescenceImage__emission_filter)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 The ontology or controlled vocabulary this term comes from (e.g., GO, SO, UBERON)
 
-URI: [lambdaber:ontologyTerm__ontology](https://w3id.org/lambda-ber-schema/ontologyTerm__ontology)
+URI: [lambda:ontologyTerm__ontology](http://w3id.org/lambda/ontologyTerm__ontology)
 
 
 ## Domain and Range

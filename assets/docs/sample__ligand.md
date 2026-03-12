@@ -3,7 +3,7 @@
 
 Ligand or small molecule bound to sample
 
-URI: [lambdaber:sample__ligand](https://w3id.org/lambda-ber-schema/sample__ligand)
+URI: [lambda:sample__ligand](http://w3id.org/lambda/sample__ligand)
 
 
 ## Domain and Range

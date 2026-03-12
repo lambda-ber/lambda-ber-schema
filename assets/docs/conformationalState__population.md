@@ -3,7 +3,7 @@
 
 Relative population of this state (range: 0-1)
 
-URI: [lambdaber:conformationalState__population](https://w3id.org/lambda-ber-schema/conformationalState__population)
+URI: [lambda:conformationalState__population](http://w3id.org/lambda/conformationalState__population)
 
 
 ## Domain and Range

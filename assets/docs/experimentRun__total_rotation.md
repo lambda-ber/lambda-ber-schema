@@ -3,7 +3,7 @@
 
 Total rotation range collected, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__total_rotation](https://w3id.org/lambda-ber-schema/experimentRun__total_rotation)
+URI: [lambda:experimentRun__total_rotation](http://w3id.org/lambda/experimentRun__total_rotation)
 
 
 ## Domain and Range

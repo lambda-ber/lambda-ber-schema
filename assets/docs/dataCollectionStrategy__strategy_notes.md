@@ -3,7 +3,7 @@
 
 Notes about data collection strategy
 
-URI: [lambdaber:dataCollectionStrategy__strategy_notes](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__strategy_notes)
+URI: [lambda:dataCollectionStrategy__strategy_notes](http://w3id.org/lambda/dataCollectionStrategy__strategy_notes)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Clinical significance
 
-URI: [lambdaber:mutationEffect__clinical_significance](https://w3id.org/lambda-ber-schema/mutationEffect__clinical_significance)
+URI: [lambda:mutationEffect__clinical_significance](http://w3id.org/lambda/mutationEffect__clinical_significance)
 
 
 ## Domain and Range

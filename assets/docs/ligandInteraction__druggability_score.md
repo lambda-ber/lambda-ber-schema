@@ -3,7 +3,7 @@
 
 Druggability score of the binding site (range: 0-1)
 
-URI: [lambdaber:ligandInteraction__druggability_score](https://w3id.org/lambda-ber-schema/ligandInteraction__druggability_score)
+URI: [lambda:ligandInteraction__druggability_score](http://w3id.org/lambda/ligandInteraction__druggability_score)
 
 
 ## Domain and Range

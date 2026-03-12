@@ -3,7 +3,7 @@
 
 ISPyB AutoProcProgram.autoProcProgramId
 
-URI: [lambdaber:workflowRun__ispyb_auto_proc_program_id](https://w3id.org/lambda-ber-schema/workflowRun__ispyb_auto_proc_program_id)
+URI: [lambda:workflowRun__ispyb_auto_proc_program_id](http://w3id.org/lambda/workflowRun__ispyb_auto_proc_program_id)
 
 
 ## Domain and Range

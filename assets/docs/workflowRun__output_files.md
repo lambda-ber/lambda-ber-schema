@@ -3,7 +3,7 @@
 
 Output files generated
 
-URI: [lambdaber:workflowRun__output_files](https://w3id.org/lambda-ber-schema/workflowRun__output_files)
+URI: [lambda:workflowRun__output_files](http://w3id.org/lambda/workflowRun__output_files)
 
 
 ## Domain and Range

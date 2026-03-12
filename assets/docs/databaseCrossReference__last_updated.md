@@ -3,7 +3,7 @@
 
 Date of last update
 
-URI: [lambdaber:databaseCrossReference__last_updated](https://w3id.org/lambda-ber-schema/databaseCrossReference__last_updated)
+URI: [lambda:databaseCrossReference__last_updated](http://w3id.org/lambda/databaseCrossReference__last_updated)
 
 
 ## Domain and Range

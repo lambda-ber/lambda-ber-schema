@@ -3,7 +3,7 @@
 
 Resolution at edge of detector, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__resolution](https://w3id.org/lambda-ber-schema/experimentRun__resolution)
+URI: [lambda:experimentRun__resolution](http://w3id.org/lambda/experimentRun__resolution)
 
 
 ## Domain and Range

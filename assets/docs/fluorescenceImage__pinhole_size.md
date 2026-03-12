@@ -3,7 +3,7 @@
 
 Pinhole size, typically specified in Airy units for confocal microscopy. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fluorescenceImage__pinhole_size](https://w3id.org/lambda-ber-schema/fluorescenceImage__pinhole_size)
+URI: [lambda:fluorescenceImage__pinhole_size](http://w3id.org/lambda/fluorescenceImage__pinhole_size)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Cross-references to external databases
 
-URI: [lambdaber:sample__database_cross_references](https://w3id.org/lambda-ber-schema/sample__database_cross_references)
+URI: [lambda:sample__database_cross_references](http://w3id.org/lambda/sample__database_cross_references)
 
 
 ## Domain and Range

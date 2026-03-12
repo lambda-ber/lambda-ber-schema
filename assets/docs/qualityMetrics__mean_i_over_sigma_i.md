@@ -3,7 +3,7 @@
 
 Mean I/sigma(I)
 
-URI: [lambdaber:qualityMetrics__mean_i_over_sigma_i](https://w3id.org/lambda-ber-schema/qualityMetrics__mean_i_over_sigma_i)
+URI: [lambda:qualityMetrics__mean_i_over_sigma_i](http://w3id.org/lambda/qualityMetrics__mean_i_over_sigma_i)
 
 
 ## Domain and Range

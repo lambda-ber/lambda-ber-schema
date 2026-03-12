@@ -3,7 +3,7 @@
 
 Type of goniometer
 
-URI: [lambdaber:xRayInstrument__goniometer_type](https://w3id.org/lambda-ber-schema/xRayInstrument__goniometer_type)
+URI: [lambda:xRayInstrument__goniometer_type](http://w3id.org/lambda/xRayInstrument__goniometer_type)
 
 
 ## Domain and Range

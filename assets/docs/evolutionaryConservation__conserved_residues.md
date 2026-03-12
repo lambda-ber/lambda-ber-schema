@@ -3,7 +3,7 @@
 
 Highly conserved residues
 
-URI: [lambdaber:evolutionaryConservation__conserved_residues](https://w3id.org/lambda-ber-schema/evolutionaryConservation__conserved_residues)
+URI: [lambda:evolutionaryConservation__conserved_residues](http://w3id.org/lambda/evolutionaryConservation__conserved_residues)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Anomalous correlation
 
-URI: [lambdaber:qualityMetrics__anom_corr](https://w3id.org/lambda-ber-schema/qualityMetrics__anom_corr)
+URI: [lambda:qualityMetrics__anom_corr](http://w3id.org/lambda/qualityMetrics__anom_corr)
 
 
 ## Domain and Range

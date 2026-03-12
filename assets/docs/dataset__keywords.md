@@ -3,7 +3,7 @@
 
 Keywords or tags describing the dataset for search and categorization
 
-URI: [lambdaber:dataset__keywords](https://w3id.org/lambda-ber-schema/dataset__keywords)
+URI: [lambda:dataset__keywords](http://w3id.org/lambda/dataset__keywords)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Whether Non-Crystallographic Symmetry restraints were used
 
-URI: [lambdaber:workflowRun__ncs_used](https://w3id.org/lambda-ber-schema/workflowRun__ncs_used)
+URI: [lambda:workflowRun__ncs_used](http://w3id.org/lambda/workflowRun__ncs_used)
 
 
 ## Domain and Range

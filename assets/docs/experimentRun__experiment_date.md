@@ -3,7 +3,7 @@
 
 Date of the experiment
 
-URI: [lambdaber:experimentRun__experiment_date](https://w3id.org/lambda-ber-schema/experimentRun__experiment_date)
+URI: [lambda:experimentRun__experiment_date](http://w3id.org/lambda/experimentRun__experiment_date)
 
 
 ## Domain and Range

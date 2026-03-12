@@ -3,7 +3,7 @@
 
 Protein concentration for crystallization in mg/mL
 
-URI: [lambdaber:xRayPreparation__protein_concentration_mg_per_ml](https://w3id.org/lambda-ber-schema/xRayPreparation__protein_concentration_mg_per_ml)
+URI: [lambda:xRayPreparation__protein_concentration_mg_per_ml](http://w3id.org/lambda/xRayPreparation__protein_concentration_mg_per_ml)
 
 
 ## Domain and Range

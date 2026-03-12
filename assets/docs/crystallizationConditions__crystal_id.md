@@ -3,7 +3,7 @@
 
 Identifier for the specific crystal used
 
-URI: [lambdaber:crystallizationConditions__crystal_id](https://w3id.org/lambda-ber-schema/crystallizationConditions__crystal_id)
+URI: [lambda:crystallizationConditions__crystal_id](http://w3id.org/lambda/crystallizationConditions__crystal_id)
 
 
 ## Domain and Range

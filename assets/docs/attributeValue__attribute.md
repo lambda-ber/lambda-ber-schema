@@ -3,7 +3,7 @@
 
 The attribute being represented.
 
-URI: [lambdaber:attributeValue__attribute](https://w3id.org/lambda-ber-schema/attributeValue__attribute)
+URI: [lambda:attributeValue__attribute](http://w3id.org/lambda/attributeValue__attribute)
 
 
 ## Domain and Range

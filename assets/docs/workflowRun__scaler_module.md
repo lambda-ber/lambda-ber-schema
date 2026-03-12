@@ -3,7 +3,7 @@
 
 Scaling module used (e.g., AIMLESS, SCALA)
 
-URI: [lambdaber:workflowRun__scaler_module](https://w3id.org/lambda-ber-schema/workflowRun__scaler_module)
+URI: [lambda:workflowRun__scaler_module](http://w3id.org/lambda/workflowRun__scaler_module)
 
 
 ## Domain and Range

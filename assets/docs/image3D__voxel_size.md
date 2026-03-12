@@ -3,7 +3,7 @@
 
 Voxel size, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:image3D__voxel_size](https://w3id.org/lambda-ber-schema/image3D__voxel_size)
+URI: [lambda:image3D__voxel_size](http://w3id.org/lambda/image3D__voxel_size)
 
 
 ## Domain and Range

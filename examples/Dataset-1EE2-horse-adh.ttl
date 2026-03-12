@@ -1,7 +1,7 @@
 @base <http://example.org/> .
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -36,10 +36,10 @@ lambdaber:dataset_1EE2_horse_adh a lambdaber:Dataset ;
             lambdaber:experiment_id lambdaber:exp_1EE2_xray_001 ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
     lambdaber:workflow_output_associations [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file_1EE2_coords ;
+            lambdaber:file_id lambdaber:file_1EE2_sf ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ],
         [ a lambdaber:WorkflowOutputAssociation ;
-            lambdaber:file_id lambdaber:file_1EE2_sf ;
+            lambdaber:file_id lambdaber:file_1EE2_coords ;
             lambdaber:workflow_id lambdaber:wf_1EE2_refinement_001 ] ;
     lambdaber:workflow_runs lambdaber:wf_1EE2_refinement_001 .
 

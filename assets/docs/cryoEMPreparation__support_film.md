@@ -3,7 +3,7 @@
 
 Support film type
 
-URI: [lambdaber:cryoEMPreparation__support_film](https://w3id.org/lambda-ber-schema/cryoEMPreparation__support_film)
+URI: [lambda:cryoEMPreparation__support_film](http://w3id.org/lambda/cryoEMPreparation__support_film)
 
 
 ## Domain and Range

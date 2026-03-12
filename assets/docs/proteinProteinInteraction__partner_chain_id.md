@@ -3,7 +3,7 @@
 
 Chain ID of interacting partner
 
-URI: [lambdaber:proteinProteinInteraction__partner_chain_id](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__partner_chain_id)
+URI: [lambda:proteinProteinInteraction__partner_chain_id](http://w3id.org/lambda/proteinProteinInteraction__partner_chain_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Name of crystallization screen used
 
-URI: [lambdaber:xRayPreparation__screen_name](https://w3id.org/lambda-ber-schema/xRayPreparation__screen_name)
+URI: [lambda:xRayPreparation__screen_name](http://w3id.org/lambda/xRayPreparation__screen_name)
 
 
 ## Domain and Range

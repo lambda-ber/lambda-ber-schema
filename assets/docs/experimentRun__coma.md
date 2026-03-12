@@ -3,7 +3,7 @@
 
 Coma aberration in nanometers
 
-URI: [lambdaber:experimentRun__coma](https://w3id.org/lambda-ber-schema/experimentRun__coma)
+URI: [lambda:experimentRun__coma](http://w3id.org/lambda/experimentRun__coma)
 
 
 ## Domain and Range

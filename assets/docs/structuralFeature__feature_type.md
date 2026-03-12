@@ -3,7 +3,7 @@
 
 Type of structural feature
 
-URI: [lambdaber:structuralFeature__feature_type](https://w3id.org/lambda-ber-schema/structuralFeature__feature_type)
+URI: [lambda:structuralFeature__feature_type](http://w3id.org/lambda/structuralFeature__feature_type)
 
 
 ## Domain and Range

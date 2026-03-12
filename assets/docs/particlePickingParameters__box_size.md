@@ -3,7 +3,7 @@
 
 Particle box size in pixels
 
-URI: [lambdaber:particlePickingParameters__box_size](https://w3id.org/lambda-ber-schema/particlePickingParameters__box_size)
+URI: [lambda:particlePickingParameters__box_size](http://w3id.org/lambda/particlePickingParameters__box_size)
 
 
 ## Domain and Range

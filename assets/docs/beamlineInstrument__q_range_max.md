@@ -3,7 +3,7 @@
 
 Maximum q value for SAXS in inverse Angstroms
 
-URI: [lambdaber:beamlineInstrument__q_range_max](https://w3id.org/lambda-ber-schema/beamlineInstrument__q_range_max)
+URI: [lambda:beamlineInstrument__q_range_max](http://w3id.org/lambda/beamlineInstrument__q_range_max)
 
 
 ## Domain and Range

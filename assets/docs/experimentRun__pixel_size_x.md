@@ -3,7 +3,7 @@
 
 Pixel size X dimension, typically specified in micrometers (µm). Data providers may specify alternative units (e.g., Angstroms) by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__pixel_size_x](https://w3id.org/lambda-ber-schema/experimentRun__pixel_size_x)
+URI: [lambda:experimentRun__pixel_size_x](http://w3id.org/lambda/experimentRun__pixel_size_x)
 
 
 ## Domain and Range

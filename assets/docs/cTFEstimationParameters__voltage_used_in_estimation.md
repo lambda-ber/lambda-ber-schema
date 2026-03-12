@@ -3,7 +3,7 @@
 
 Accelerating voltage value used during CTF estimation, typically specified in kilovolts (kV); may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cTFEstimationParameters__voltage_used_in_estimation](https://w3id.org/lambda-ber-schema/cTFEstimationParameters__voltage_used_in_estimation)
+URI: [lambda:cTFEstimationParameters__voltage_used_in_estimation](http://w3id.org/lambda/cTFEstimationParameters__voltage_used_in_estimation)
 
 
 ## Domain and Range

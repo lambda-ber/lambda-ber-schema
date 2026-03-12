@@ -3,7 +3,7 @@
 
 All functional site annotations
 
-URI: [lambdaber:aggregatedProteinView__functional_sites](https://w3id.org/lambda-ber-schema/aggregatedProteinView__functional_sites)
+URI: [lambda:aggregatedProteinView__functional_sites](http://w3id.org/lambda/aggregatedProteinView__functional_sites)
 
 
 ## Domain and Range

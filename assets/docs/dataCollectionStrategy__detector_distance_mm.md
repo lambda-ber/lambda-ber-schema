@@ -3,7 +3,7 @@
 
 Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__detector_distance_mm](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__detector_distance_mm)
+URI: [lambda:dataCollectionStrategy__detector_distance_mm](http://w3id.org/lambda/dataCollectionStrategy__detector_distance_mm)
 
 
 ## Domain and Range

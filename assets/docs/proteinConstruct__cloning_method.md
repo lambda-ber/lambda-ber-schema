@@ -3,7 +3,7 @@
 
 Method used for cloning (e.g., restriction digest, Gibson, InFusion)
 
-URI: [lambdaber:proteinConstruct__cloning_method](https://w3id.org/lambda-ber-schema/proteinConstruct__cloning_method)
+URI: [lambda:proteinConstruct__cloning_method](http://w3id.org/lambda/proteinConstruct__cloning_method)
 
 
 ## Domain and Range

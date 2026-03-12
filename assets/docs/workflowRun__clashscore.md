@@ -3,7 +3,7 @@
 
 MolProbity clashscore
 
-URI: [lambdaber:workflowRun__clashscore](https://w3id.org/lambda-ber-schema/workflowRun__clashscore)
+URI: [lambda:workflowRun__clashscore](http://w3id.org/lambda/workflowRun__clashscore)
 
 
 ## Domain and Range

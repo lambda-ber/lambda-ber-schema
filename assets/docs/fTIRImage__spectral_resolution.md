@@ -3,7 +3,7 @@
 
 Spectral resolution, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fTIRImage__spectral_resolution](https://w3id.org/lambda-ber-schema/fTIRImage__spectral_resolution)
+URI: [lambda:fTIRImage__spectral_resolution](http://w3id.org/lambda/fTIRImage__spectral_resolution)
 
 
 ## Domain and Range

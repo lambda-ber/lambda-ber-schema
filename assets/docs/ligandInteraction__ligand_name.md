@@ -3,7 +3,7 @@
 
 Common name of the ligand
 
-URI: [lambdaber:ligandInteraction__ligand_name](https://w3id.org/lambda-ber-schema/ligandInteraction__ligand_name)
+URI: [lambda:ligandInteraction__ligand_name](http://w3id.org/lambda/ligandInteraction__ligand_name)
 
 
 ## Domain and Range

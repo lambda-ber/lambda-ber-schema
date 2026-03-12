@@ -3,7 +3,7 @@
 
 Hydrophobic interaction column used
 
-URI: [lambdaber:samplePreparation__hic_column](https://w3id.org/lambda-ber-schema/samplePreparation__hic_column)
+URI: [lambda:samplePreparation__hic_column](http://w3id.org/lambda/samplePreparation__hic_column)
 
 
 ## Domain and Range

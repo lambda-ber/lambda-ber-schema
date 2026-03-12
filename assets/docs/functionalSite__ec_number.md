@@ -3,7 +3,7 @@
 
 Enzyme Commission number for catalytic sites
 
-URI: [lambdaber:functionalSite__ec_number](https://w3id.org/lambda-ber-schema/functionalSite__ec_number)
+URI: [lambda:functionalSite__ec_number](http://w3id.org/lambda/functionalSite__ec_number)
 
 
 ## Domain and Range

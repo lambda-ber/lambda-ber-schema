@@ -3,7 +3,7 @@
 
 File creation date
 
-URI: [lambdaber:dataFile__creation_date](https://w3id.org/lambda-ber-schema/dataFile__creation_date)
+URI: [lambda:dataFile__creation_date](http://w3id.org/lambda/dataFile__creation_date)
 
 
 ## Domain and Range

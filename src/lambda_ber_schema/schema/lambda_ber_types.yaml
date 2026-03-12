@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
 
-id: https://w3id.org/lambda-ber-schema/types
+id: http://w3id.org/lambda/types
 name: lambda_ber_types
 title: Types for the lambda-ber-schema
 description: Standardized value types for the lambda-ber-schema, including QuantityValue for representing measurements with units
@@ -9,10 +9,11 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   schema: https://schema.org/
-  lambdaber: https://w3id.org/lambda-ber-schema/
+  lambda: http://w3id.org/lambda/
+  lambdaber: http://w3id.org/lambda/
 imports:
   - linkml:types
-default_prefix: lambdaber
+default_prefix: lambda
 default_range: string
 
 slots:

@@ -3,7 +3,7 @@
 
 Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__detector_distance](https://w3id.org/lambda-ber-schema/experimentRun__detector_distance)
+URI: [lambda:experimentRun__detector_distance](http://w3id.org/lambda/experimentRun__detector_distance)
 
 
 ## Domain and Range

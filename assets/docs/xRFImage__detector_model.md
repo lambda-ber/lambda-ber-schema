@@ -3,7 +3,7 @@
 
 Specific detector model used for XRF measurement
 
-URI: [lambdaber:xRFImage__detector_model](https://w3id.org/lambda-ber-schema/xRFImage__detector_model)
+URI: [lambda:xRFImage__detector_model](http://w3id.org/lambda/xRFImage__detector_model)
 
 
 ## Domain and Range

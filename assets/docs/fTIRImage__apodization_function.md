@@ -3,7 +3,7 @@
 
 Mathematical function used for apodization
 
-URI: [lambdaber:fTIRImage__apodization_function](https://w3id.org/lambda-ber-schema/fTIRImage__apodization_function)
+URI: [lambda:fTIRImage__apodization_function](http://w3id.org/lambda/fTIRImage__apodization_function)
 
 
 ## Domain and Range

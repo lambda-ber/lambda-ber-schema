@@ -3,7 +3,7 @@
 
 Storage URI (S3, Globus, etc.)
 
-URI: [lambdaber:dataFile__storage_uri](https://w3id.org/lambda-ber-schema/dataFile__storage_uri)
+URI: [lambda:dataFile__storage_uri](http://w3id.org/lambda/dataFile__storage_uri)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Parameters used in processing
 
-URI: [lambdaber:workflowRun__processing_parameters](https://w3id.org/lambda-ber-schema/workflowRun__processing_parameters)
+URI: [lambda:workflowRun__processing_parameters](http://w3id.org/lambda/workflowRun__processing_parameters)
 
 
 ## Domain and Range

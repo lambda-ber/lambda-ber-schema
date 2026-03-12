@@ -3,7 +3,7 @@
 
 Composition of the buffer used
 
-URI: [lambdaber:measurementConditions__buffer_composition](https://w3id.org/lambda-ber-schema/measurementConditions__buffer_composition)
+URI: [lambda:measurementConditions__buffer_composition](http://w3id.org/lambda/measurementConditions__buffer_composition)
 
 
 ## Domain and Range

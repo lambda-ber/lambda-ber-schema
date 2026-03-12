@@ -3,7 +3,7 @@
 
 Detailed crystallization conditions
 
-URI: [lambdaber:xRayPreparation__crystallization_conditions](https://w3id.org/lambda-ber-schema/xRayPreparation__crystallization_conditions)
+URI: [lambda:xRayPreparation__crystallization_conditions](http://w3id.org/lambda/xRayPreparation__crystallization_conditions)
 
 
 ## Domain and Range

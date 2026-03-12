@@ -3,7 +3,7 @@
 
 Confidence score for the annotation (range: 0-1)
 
-URI: [lambdaber:proteinAnnotation__confidence_score](https://w3id.org/lambda-ber-schema/proteinAnnotation__confidence_score)
+URI: [lambda:proteinAnnotation__confidence_score](http://w3id.org/lambda/proteinAnnotation__confidence_score)
 
 
 ## Domain and Range

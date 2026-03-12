@@ -3,7 +3,7 @@
 
 Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__ramachandran_favored](https://w3id.org/lambda-ber-schema/workflowRun__ramachandran_favored)
+URI: [lambda:workflowRun__ramachandran_favored](http://w3id.org/lambda/workflowRun__ramachandran_favored)
 
 
 ## Domain and Range

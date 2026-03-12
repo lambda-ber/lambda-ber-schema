@@ -3,7 +3,7 @@
 
 Number of frames per movie
 
-URI: [lambdaber:experimentRun__frames_per_movie](https://w3id.org/lambda-ber-schema/experimentRun__frames_per_movie)
+URI: [lambda:experimentRun__frames_per_movie](http://w3id.org/lambda/experimentRun__frames_per_movie)
 
 
 ## Domain and Range

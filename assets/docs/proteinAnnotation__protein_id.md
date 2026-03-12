@@ -3,7 +3,7 @@
 
 UniProt accession number
 
-URI: [lambdaber:proteinAnnotation__protein_id](https://w3id.org/lambda-ber-schema/proteinAnnotation__protein_id)
+URI: [lambda:proteinAnnotation__protein_id](http://w3id.org/lambda/proteinAnnotation__protein_id)
 
 
 ## Domain and Range

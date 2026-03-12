@@ -3,7 +3,7 @@
 
 Type of biophysical property
 
-URI: [lambdaber:biophysicalProperty__property_type](https://w3id.org/lambda-ber-schema/biophysicalProperty__property_type)
+URI: [lambda:biophysicalProperty__property_type](http://w3id.org/lambda/biophysicalProperty__property_type)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Promoter used for expression
 
-URI: [lambdaber:proteinConstruct__promoter](https://w3id.org/lambda-ber-schema/proteinConstruct__promoter)
+URI: [lambda:proteinConstruct__promoter](http://w3id.org/lambda/proteinConstruct__promoter)
 
 
 ## Domain and Range

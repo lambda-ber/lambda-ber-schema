@@ -3,7 +3,7 @@
 
 Amino acid or nucleotide sequences
 
-URI: [lambdaber:molecularComposition__sequences](https://w3id.org/lambda-ber-schema/molecularComposition__sequences)
+URI: [lambda:molecularComposition__sequences](http://w3id.org/lambda/molecularComposition__sequences)
 
 
 ## Domain and Range

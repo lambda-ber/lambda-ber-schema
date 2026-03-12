@@ -3,7 +3,7 @@
 
 Assessment of protein aggregation state
 
-URI: [lambdaber:samplePreparation__aggregation_assessment](https://w3id.org/lambda-ber-schema/samplePreparation__aggregation_assessment)
+URI: [lambda:samplePreparation__aggregation_assessment](http://w3id.org/lambda/samplePreparation__aggregation_assessment)
 
 
 ## Domain and Range

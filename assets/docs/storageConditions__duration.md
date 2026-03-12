@@ -3,7 +3,7 @@
 
 Storage duration
 
-URI: [lambdaber:storageConditions__duration](https://w3id.org/lambda-ber-schema/storageConditions__duration)
+URI: [lambda:storageConditions__duration](http://w3id.org/lambda/storageConditions__duration)
 
 
 ## Domain and Range

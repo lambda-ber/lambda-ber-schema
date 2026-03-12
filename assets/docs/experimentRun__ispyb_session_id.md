@@ -3,7 +3,7 @@
 
 ISPyB BLSession.sessionId
 
-URI: [lambdaber:experimentRun__ispyb_session_id](https://w3id.org/lambda-ber-schema/experimentRun__ispyb_session_id)
+URI: [lambda:experimentRun__ispyb_session_id](http://w3id.org/lambda/experimentRun__ispyb_session_id)
 
 
 ## Domain and Range

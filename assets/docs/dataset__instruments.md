@@ -1,9 +1,9 @@
 
 # Slot: instruments
 
-Instruments used across all studies in this dataset
+All instruments used across studies
 
-URI: [lambdaber:dataset__instruments](https://w3id.org/lambda-ber-schema/dataset__instruments)
+URI: [lambda:dataset__instruments](http://w3id.org/lambda/dataset__instruments)
 
 
 ## Domain and Range

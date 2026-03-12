@@ -3,7 +3,7 @@
 
 UniProt accession
 
-URI: [lambdaber:conformationalEnsemble__protein_id](https://w3id.org/lambda-ber-schema/conformationalEnsemble__protein_id)
+URI: [lambda:conformationalEnsemble__protein_id](http://w3id.org/lambda/conformationalEnsemble__protein_id)
 
 
 ## Domain and Range

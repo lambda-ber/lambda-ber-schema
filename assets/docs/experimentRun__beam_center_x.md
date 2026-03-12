@@ -3,7 +3,7 @@
 
 Beam center X coordinate, typically specified in pixels ([px]). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__beam_center_x](https://w3id.org/lambda-ber-schema/experimentRun__beam_center_x)
+URI: [lambda:experimentRun__beam_center_x](http://w3id.org/lambda/experimentRun__beam_center_x)
 
 
 ## Domain and Range

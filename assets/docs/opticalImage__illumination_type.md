@@ -3,7 +3,7 @@
 
 Type of illumination (brightfield, darkfield, phase contrast, DIC)
 
-URI: [lambdaber:opticalImage__illumination_type](https://w3id.org/lambda-ber-schema/opticalImage__illumination_type)
+URI: [lambda:opticalImage__illumination_type](http://w3id.org/lambda/opticalImage__illumination_type)
 
 
 ## Domain and Range

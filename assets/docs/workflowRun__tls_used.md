@@ -3,7 +3,7 @@
 
 Whether TLS (Translation/Libration/Screw) refinement was used
 
-URI: [lambdaber:workflowRun__tls_used](https://w3id.org/lambda-ber-schema/workflowRun__tls_used)
+URI: [lambda:workflowRun__tls_used](http://w3id.org/lambda/workflowRun__tls_used)
 
 
 ## Domain and Range

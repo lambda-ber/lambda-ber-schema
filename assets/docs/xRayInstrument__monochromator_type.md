@@ -3,7 +3,7 @@
 
 Type of monochromator
 
-URI: [lambdaber:xRayInstrument__monochromator_type](https://w3id.org/lambda-ber-schema/xRayInstrument__monochromator_type)
+URI: [lambda:xRayInstrument__monochromator_type](http://w3id.org/lambda/xRayInstrument__monochromator_type)
 
 
 ## Domain and Range

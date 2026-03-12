@@ -3,7 +3,7 @@
 
 Organism for which codons were optimized
 
-URI: [lambdaber:proteinConstruct__codon_optimization_organism](https://w3id.org/lambda-ber-schema/proteinConstruct__codon_optimization_organism)
+URI: [lambda:proteinConstruct__codon_optimization_organism](http://w3id.org/lambda/proteinConstruct__codon_optimization_organism)
 
 
 ## Domain and Range

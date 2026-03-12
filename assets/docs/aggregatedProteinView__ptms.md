@@ -3,7 +3,7 @@
 
 All post-translational modifications
 
-URI: [lambdaber:aggregatedProteinView__ptms](https://w3id.org/lambda-ber-schema/aggregatedProteinView__ptms)
+URI: [lambda:aggregatedProteinView__ptms](http://w3id.org/lambda/aggregatedProteinView__ptms)
 
 
 ## Domain and Range

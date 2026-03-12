@@ -3,7 +3,7 @@
 
 Path length, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:sAXSPreparation__cell_path_length](https://w3id.org/lambda-ber-schema/sAXSPreparation__cell_path_length)
+URI: [lambda:sAXSPreparation__cell_path_length](http://w3id.org/lambda/sAXSPreparation__cell_path_length)
 
 
 ## Domain and Range

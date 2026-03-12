@@ -3,7 +3,7 @@
 
 Bound ligands or cofactors
 
-URI: [lambdaber:molecularComposition__ligands](https://w3id.org/lambda-ber-schema/molecularComposition__ligands)
+URI: [lambda:molecularComposition__ligands](http://w3id.org/lambda/molecularComposition__ligands)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Rmerge - merge R-factor
 
-URI: [lambdaber:qualityMetrics__r_merge](https://w3id.org/lambda-ber-schema/qualityMetrics__r_merge)
+URI: [lambda:qualityMetrics__r_merge](http://w3id.org/lambda/qualityMetrics__r_merge)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Maximum defocus search range, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cTFEstimationParameters__defocus_search_max](https://w3id.org/lambda-ber-schema/cTFEstimationParameters__defocus_search_max)
+URI: [lambda:cTFEstimationParameters__defocus_search_max](http://w3id.org/lambda/cTFEstimationParameters__defocus_search_max)
 
 
 ## Domain and Range

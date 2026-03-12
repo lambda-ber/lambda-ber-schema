@@ -3,7 +3,7 @@
 
 Crystal dimensions in micrometers (length x width x height)
 
-URI: [lambdaber:crystallizationConditions__crystal_size_um](https://w3id.org/lambda-ber-schema/crystallizationConditions__crystal_size_um)
+URI: [lambda:crystallizationConditions__crystal_size_um](http://w3id.org/lambda/crystallizationConditions__crystal_size_um)
 
 
 ## Domain and Range

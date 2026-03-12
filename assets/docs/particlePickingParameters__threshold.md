@@ -3,7 +3,7 @@
 
 Picking threshold
 
-URI: [lambdaber:particlePickingParameters__threshold](https://w3id.org/lambda-ber-schema/particlePickingParameters__threshold)
+URI: [lambda:particlePickingParameters__threshold](http://w3id.org/lambda/particlePickingParameters__threshold)
 
 
 ## Domain and Range

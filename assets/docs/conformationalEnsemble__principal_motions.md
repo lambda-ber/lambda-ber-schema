@@ -3,7 +3,7 @@
 
 Description of principal motions
 
-URI: [lambdaber:conformationalEnsemble__principal_motions](https://w3id.org/lambda-ber-schema/conformationalEnsemble__principal_motions)
+URI: [lambda:conformationalEnsemble__principal_motions](http://w3id.org/lambda/conformationalEnsemble__principal_motions)
 
 
 ## Domain and Range

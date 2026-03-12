@@ -3,7 +3,7 @@
 
 Type of functional site
 
-URI: [lambdaber:functionalSite__site_type](https://w3id.org/lambda-ber-schema/functionalSite__site_type)
+URI: [lambda:functionalSite__site_type](http://w3id.org/lambda/functionalSite__site_type)
 
 
 ## Domain and Range

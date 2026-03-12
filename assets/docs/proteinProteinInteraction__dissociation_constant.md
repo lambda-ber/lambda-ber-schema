@@ -3,7 +3,7 @@
 
 Experimental Kd if available
 
-URI: [lambdaber:proteinProteinInteraction__dissociation_constant](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__dissociation_constant)
+URI: [lambda:proteinProteinInteraction__dissociation_constant](http://w3id.org/lambda/proteinProteinInteraction__dissociation_constant)
 
 
 ## Domain and Range

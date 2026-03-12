@@ -3,7 +3,7 @@
 
 Method used for cell lysis
 
-URI: [lambdaber:samplePreparation__lysis_method](https://w3id.org/lambda-ber-schema/samplePreparation__lysis_method)
+URI: [lambda:samplePreparation__lysis_method](http://w3id.org/lambda/samplePreparation__lysis_method)
 
 
 ## Domain and Range

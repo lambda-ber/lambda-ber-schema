@@ -3,7 +3,7 @@
 
 NCBI taxonomy ID
 
-URI: [lambdaber:aggregatedProteinView__organism_id](https://w3id.org/lambda-ber-schema/aggregatedProteinView__organism_id)
+URI: [lambda:aggregatedProteinView__organism_id](http://w3id.org/lambda/aggregatedProteinView__organism_id)
 
 
 ## Domain and Range

@@ -1,8 +1,8 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-25T17:18:38
+# Generation date: 2026-03-12T06:54:38
 # Schema: lambda-ber-schema
 #
-# id: https://w3id.org/lambda-ber-schema/
+# id: http://w3id.org/lambda/
 # description: lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data,
 #   from atomic-resolution structures to tissue-level organization. It supports diverse experimental
 #   techniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and
@@ -175,24 +175,27 @@ ROR = CurieNamespace('ROR', 'https://ror.org/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
+EMSL = CurieNamespace('emsl', 'https://api.emsl.pnnl.gov/external/')
 IMGCIF = CurieNamespace('imgCIF', 'https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#')
 ISPYB = CurieNamespace('ispyb', 'https://ispyb.github.io/ISPyB/')
-LAMBDABER = CurieNamespace('lambdaber', 'https://w3id.org/lambda-ber-schema/')
+LAMBDA = CurieNamespace('lambda', 'http://w3id.org/lambda/')
+LAMBDABER = CurieNamespace('lambdaber', 'http://w3id.org/lambda/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MMCIF = CurieNamespace('mmCIF', 'http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NSLS2 = CurieNamespace('nsls2', 'https://github.com/NSLS2/BER-LAMBDA/')
-PDB = CurieNamespace('pdb', 'https://files.rcsb.org/download/')
+PDB = CurieNamespace('pdb', 'https://www.rcsb.org/structure/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
+SASBDB = CurieNamespace('sasbdb', 'https://www.sasbdb.org/data/')
 SCHEMA = CurieNamespace('schema', 'https://schema.org/')
 SIMPLESCATTERING = CurieNamespace('simplescattering', 'https://www.simplescattering.com/open_dataset/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = LAMBDABER
+DEFAULT_ = LAMBDA
 
 
 # Types
@@ -201,7 +204,7 @@ class DecimalDegree(float):
     type_class_uri = XSD["decimal"]
     type_class_curie = "xsd:decimal"
     type_name = "decimal degree"
-    type_model_uri = LAMBDABER.DecimalDegree
+    type_model_uri = LAMBDA.DecimalDegree
 
 
 class SmilesString(String):
@@ -209,7 +212,7 @@ class SmilesString(String):
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "smiles_string"
-    type_model_uri = LAMBDABER.SmilesString
+    type_model_uri = LAMBDA.SmilesString
 
 
 # Class references
@@ -356,10 +359,10 @@ class NamedThing(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["NamedThing"]
-    class_class_curie: ClassVar[str] = "lambdaber:NamedThing"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["NamedThing"]
+    class_class_curie: ClassVar[str] = "lambda:NamedThing"
     class_name: ClassVar[str] = "NamedThing"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.NamedThing
+    class_model_uri: ClassVar[URIRef] = LAMBDA.NamedThing
 
     id: Union[str, NamedThingId] = None
     title: Optional[str] = None
@@ -387,10 +390,10 @@ class AttributeGroup(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["AttributeGroup"]
-    class_class_curie: ClassVar[str] = "lambdaber:AttributeGroup"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["AttributeGroup"]
+    class_class_curie: ClassVar[str] = "lambda:AttributeGroup"
     class_name: ClassVar[str] = "AttributeGroup"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.AttributeGroup
+    class_model_uri: ClassVar[URIRef] = LAMBDA.AttributeGroup
 
     description: Optional[str] = None
 
@@ -409,10 +412,10 @@ class Dataset(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Dataset"]
-    class_class_curie: ClassVar[str] = "lambdaber:Dataset"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Dataset"]
+    class_class_curie: ClassVar[str] = "lambda:Dataset"
     class_name: ClassVar[str] = "Dataset"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Dataset
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Dataset
 
     id: Union[str, DatasetId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -505,10 +508,10 @@ class Study(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Study"]
-    class_class_curie: ClassVar[str] = "lambdaber:Study"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Study"]
+    class_class_curie: ClassVar[str] = "lambda:Study"
     class_name: ClassVar[str] = "Study"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Study
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Study
 
     id: Union[str, StudyId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -533,10 +536,10 @@ class Sample(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Sample"]
-    class_class_curie: ClassVar[str] = "lambdaber:Sample"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Sample"]
+    class_class_curie: ClassVar[str] = "lambda:Sample"
     class_name: ClassVar[str] = "Sample"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Sample
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Sample
 
     id: Union[str, SampleId] = None
     sample_code: str = None
@@ -569,6 +572,7 @@ class Sample(NamedThing):
     mutations: Optional[str] = None
     expression_system: Optional[str] = None
     ligand: Optional[str] = None
+    oligomeric_state: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -668,6 +672,9 @@ class Sample(NamedThing):
         if self.ligand is not None and not isinstance(self.ligand, str):
             self.ligand = str(self.ligand)
 
+        if self.oligomeric_state is not None and not isinstance(self.oligomeric_state, str):
+            self.oligomeric_state = str(self.oligomeric_state)
+
         super().__post_init__(**kwargs)
 
 
@@ -678,10 +685,10 @@ class ProteinConstruct(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ProteinConstruct"]
-    class_class_curie: ClassVar[str] = "lambdaber:ProteinConstruct"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ProteinConstruct"]
+    class_class_curie: ClassVar[str] = "lambda:ProteinConstruct"
     class_name: ClassVar[str] = "ProteinConstruct"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinConstruct
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ProteinConstruct
 
     id: Union[str, ProteinConstructId] = None
     construct_id: str = None
@@ -787,10 +794,10 @@ class SamplePreparation(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["SamplePreparation"]
-    class_class_curie: ClassVar[str] = "lambdaber:SamplePreparation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SamplePreparation"]
+    class_class_curie: ClassVar[str] = "lambda:SamplePreparation"
     class_name: ClassVar[str] = "SamplePreparation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.SamplePreparation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SamplePreparation
 
     id: Union[str, SamplePreparationId] = None
     preparation_type: Union[str, "PreparationTypeEnum"] = None
@@ -983,10 +990,10 @@ class Instrument(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Instrument"]
-    class_class_curie: ClassVar[str] = "lambdaber:Instrument"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Instrument"]
+    class_class_curie: ClassVar[str] = "lambda:Instrument"
     class_name: ClassVar[str] = "Instrument"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Instrument
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Instrument
 
     id: Union[str, InstrumentId] = None
     instrument_code: str = None
@@ -1044,10 +1051,10 @@ class CryoEMInstrument(Instrument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["CryoEMInstrument"]
-    class_class_curie: ClassVar[str] = "lambdaber:CryoEMInstrument"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["CryoEMInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:CryoEMInstrument"
     class_name: ClassVar[str] = "CryoEMInstrument"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.CryoEMInstrument
+    class_model_uri: ClassVar[URIRef] = LAMBDA.CryoEMInstrument
 
     id: Union[str, CryoEMInstrumentId] = None
     instrument_code: str = None
@@ -1172,10 +1179,10 @@ class XRayInstrument(Instrument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["XRayInstrument"]
-    class_class_curie: ClassVar[str] = "lambdaber:XRayInstrument"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["XRayInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:XRayInstrument"
     class_name: ClassVar[str] = "XRayInstrument"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.XRayInstrument
+    class_model_uri: ClassVar[URIRef] = LAMBDA.XRayInstrument
 
     id: Union[str, XRayInstrumentId] = None
     instrument_code: str = None
@@ -1244,10 +1251,10 @@ class SAXSInstrument(Instrument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["SAXSInstrument"]
-    class_class_curie: ClassVar[str] = "lambdaber:SAXSInstrument"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SAXSInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:SAXSInstrument"
     class_name: ClassVar[str] = "SAXSInstrument"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.SAXSInstrument
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SAXSInstrument
 
     id: Union[str, SAXSInstrumentId] = None
     instrument_code: str = None
@@ -1292,10 +1299,10 @@ class BeamlineInstrument(Instrument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["BeamlineInstrument"]
-    class_class_curie: ClassVar[str] = "lambdaber:BeamlineInstrument"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["BeamlineInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:BeamlineInstrument"
     class_name: ClassVar[str] = "BeamlineInstrument"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.BeamlineInstrument
+    class_model_uri: ClassVar[URIRef] = LAMBDA.BeamlineInstrument
 
     id: Union[str, BeamlineInstrumentId] = None
     instrument_code: str = None
@@ -1367,10 +1374,10 @@ class ExperimentRun(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentRun"]
-    class_class_curie: ClassVar[str] = "lambdaber:ExperimentRun"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ExperimentRun"]
+    class_class_curie: ClassVar[str] = "lambda:ExperimentRun"
     class_name: ClassVar[str] = "ExperimentRun"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentRun
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ExperimentRun
 
     id: Union[str, ExperimentRunId] = None
     experiment_code: str = None
@@ -1618,10 +1625,10 @@ class WorkflowRun(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowRun"]
-    class_class_curie: ClassVar[str] = "lambdaber:WorkflowRun"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["WorkflowRun"]
+    class_class_curie: ClassVar[str] = "lambda:WorkflowRun"
     class_name: ClassVar[str] = "WorkflowRun"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowRun
+    class_model_uri: ClassVar[URIRef] = LAMBDA.WorkflowRun
 
     id: Union[str, WorkflowRunId] = None
     workflow_code: str = None
@@ -1908,10 +1915,10 @@ class DataFile(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["DataFile"]
-    class_class_curie: ClassVar[str] = "lambdaber:DataFile"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["DataFile"]
+    class_class_curie: ClassVar[str] = "lambda:DataFile"
     class_name: ClassVar[str] = "DataFile"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.DataFile
+    class_model_uri: ClassVar[URIRef] = LAMBDA.DataFile
 
     id: Union[str, DataFileId] = None
     file_name: str = None
@@ -1975,10 +1982,10 @@ class Image(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Image"]
-    class_class_curie: ClassVar[str] = "lambdaber:Image"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Image"]
+    class_class_curie: ClassVar[str] = "lambda:Image"
     class_name: ClassVar[str] = "Image"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Image
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Image
 
     id: Union[str, ImageId] = None
     file_name: str = None
@@ -2028,10 +2035,10 @@ class Image2D(Image):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Image2D"]
-    class_class_curie: ClassVar[str] = "lambdaber:Image2D"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Image2D"]
+    class_class_curie: ClassVar[str] = "lambda:Image2D"
     class_name: ClassVar[str] = "Image2D"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Image2D
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Image2D
 
     id: Union[str, Image2DId] = None
     file_name: str = None
@@ -2060,10 +2067,10 @@ class Image3D(Image):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Image3D"]
-    class_class_curie: ClassVar[str] = "lambdaber:Image3D"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Image3D"]
+    class_class_curie: ClassVar[str] = "lambda:Image3D"
     class_name: ClassVar[str] = "Image3D"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Image3D
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Image3D
 
     id: Union[str, Image3DId] = None
     file_name: str = None
@@ -2096,10 +2103,10 @@ class Movie(Image2D):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Movie"]
-    class_class_curie: ClassVar[str] = "lambdaber:Movie"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Movie"]
+    class_class_curie: ClassVar[str] = "lambda:Movie"
     class_name: ClassVar[str] = "Movie"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Movie
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Movie
 
     id: Union[str, MovieId] = None
     file_name: str = None
@@ -2180,10 +2187,10 @@ class Micrograph(Image2D):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Micrograph"]
-    class_class_curie: ClassVar[str] = "lambdaber:Micrograph"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Micrograph"]
+    class_class_curie: ClassVar[str] = "lambda:Micrograph"
     class_name: ClassVar[str] = "Micrograph"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Micrograph
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Micrograph
 
     id: Union[str, MicrographId] = None
     file_name: str = None
@@ -2233,10 +2240,10 @@ class FTIRImage(Image):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["FTIRImage"]
-    class_class_curie: ClassVar[str] = "lambdaber:FTIRImage"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["FTIRImage"]
+    class_class_curie: ClassVar[str] = "lambda:FTIRImage"
     class_name: ClassVar[str] = "FTIRImage"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.FTIRImage
+    class_model_uri: ClassVar[URIRef] = LAMBDA.FTIRImage
 
     id: Union[str, FTIRImageId] = None
     file_name: str = None
@@ -2286,10 +2293,10 @@ class FluorescenceImage(Image2D):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["FluorescenceImage"]
-    class_class_curie: ClassVar[str] = "lambdaber:FluorescenceImage"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["FluorescenceImage"]
+    class_class_curie: ClassVar[str] = "lambda:FluorescenceImage"
     class_name: ClassVar[str] = "FluorescenceImage"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.FluorescenceImage
+    class_model_uri: ClassVar[URIRef] = LAMBDA.FluorescenceImage
 
     id: Union[str, FluorescenceImageId] = None
     file_name: str = None
@@ -2346,10 +2353,10 @@ class OpticalImage(Image2D):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["OpticalImage"]
-    class_class_curie: ClassVar[str] = "lambdaber:OpticalImage"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["OpticalImage"]
+    class_class_curie: ClassVar[str] = "lambda:OpticalImage"
     class_name: ClassVar[str] = "OpticalImage"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.OpticalImage
+    class_model_uri: ClassVar[URIRef] = LAMBDA.OpticalImage
 
     id: Union[str, OpticalImageId] = None
     file_name: str = None
@@ -2395,10 +2402,10 @@ class XRFImage(Image2D):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["XRFImage"]
-    class_class_curie: ClassVar[str] = "lambdaber:XRFImage"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["XRFImage"]
+    class_class_curie: ClassVar[str] = "lambda:XRFImage"
     class_name: ClassVar[str] = "XRFImage"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.XRFImage
+    class_model_uri: ClassVar[URIRef] = LAMBDA.XRFImage
 
     id: Union[str, XRFImageId] = None
     file_name: str = None
@@ -2456,10 +2463,10 @@ class ImageFeature(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ImageFeature"]
-    class_class_curie: ClassVar[str] = "lambdaber:ImageFeature"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ImageFeature"]
+    class_class_curie: ClassVar[str] = "lambda:ImageFeature"
     class_name: ClassVar[str] = "ImageFeature"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ImageFeature
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ImageFeature
 
     terms: Optional[Union[dict[Union[str, OntologyTermId], Union[dict, "OntologyTerm"]], list[Union[dict, "OntologyTerm"]]]] = empty_dict()
 
@@ -2476,10 +2483,10 @@ class OntologyTerm(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["OntologyTerm"]
-    class_class_curie: ClassVar[str] = "lambdaber:OntologyTerm"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["OntologyTerm"]
+    class_class_curie: ClassVar[str] = "lambda:OntologyTerm"
     class_name: ClassVar[str] = "OntologyTerm"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.OntologyTerm
+    class_model_uri: ClassVar[URIRef] = LAMBDA.OntologyTerm
 
     id: Union[str, OntologyTermId] = None
     terms: Optional[Union[dict[Union[str, OntologyTermId], Union[dict, "OntologyTerm"]], list[Union[dict, "OntologyTerm"]]]] = empty_dict()
@@ -2514,10 +2521,10 @@ class MolecularComposition(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["MolecularComposition"]
-    class_class_curie: ClassVar[str] = "lambdaber:MolecularComposition"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["MolecularComposition"]
+    class_class_curie: ClassVar[str] = "lambda:MolecularComposition"
     class_name: ClassVar[str] = "MolecularComposition"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.MolecularComposition
+    class_model_uri: ClassVar[URIRef] = LAMBDA.MolecularComposition
 
     sequences: Optional[Union[str, list[str]]] = empty_list()
     modifications: Optional[Union[str, list[str]]] = empty_list()
@@ -2546,10 +2553,10 @@ class BufferComposition(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["BufferComposition"]
-    class_class_curie: ClassVar[str] = "lambdaber:BufferComposition"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["BufferComposition"]
+    class_class_curie: ClassVar[str] = "lambda:BufferComposition"
     class_name: ClassVar[str] = "BufferComposition"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.BufferComposition
+    class_model_uri: ClassVar[URIRef] = LAMBDA.BufferComposition
 
     ph: Optional[Union[dict, "QuantityValue"]] = None
     components: Optional[Union[str, list[str]]] = empty_list()
@@ -2577,10 +2584,10 @@ class StorageConditions(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["StorageConditions"]
-    class_class_curie: ClassVar[str] = "lambdaber:StorageConditions"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StorageConditions"]
+    class_class_curie: ClassVar[str] = "lambda:StorageConditions"
     class_name: ClassVar[str] = "StorageConditions"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.StorageConditions
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StorageConditions
 
     temperature: Optional[Union[dict, "QuantityValue"]] = None
     duration: Optional[str] = None
@@ -2605,10 +2612,10 @@ class TechniqueSpecificPreparation(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["TechniqueSpecificPreparation"]
-    class_class_curie: ClassVar[str] = "lambdaber:TechniqueSpecificPreparation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["TechniqueSpecificPreparation"]
+    class_class_curie: ClassVar[str] = "lambda:TechniqueSpecificPreparation"
     class_name: ClassVar[str] = "TechniqueSpecificPreparation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.TechniqueSpecificPreparation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.TechniqueSpecificPreparation
 
 
 @dataclass(repr=False)
@@ -2618,10 +2625,10 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["CryoEMPreparation"]
-    class_class_curie: ClassVar[str] = "lambdaber:CryoEMPreparation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["CryoEMPreparation"]
+    class_class_curie: ClassVar[str] = "lambda:CryoEMPreparation"
     class_name: ClassVar[str] = "CryoEMPreparation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.CryoEMPreparation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.CryoEMPreparation
 
     grid_type: Optional[Union[str, "GridTypeEnum"]] = None
     support_film: Optional[str] = None
@@ -2723,10 +2730,10 @@ class CrystallizationConditions(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["CrystallizationConditions"]
-    class_class_curie: ClassVar[str] = "lambdaber:CrystallizationConditions"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["CrystallizationConditions"]
+    class_class_curie: ClassVar[str] = "lambda:CrystallizationConditions"
     class_name: ClassVar[str] = "CrystallizationConditions"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.CrystallizationConditions
+    class_model_uri: ClassVar[URIRef] = LAMBDA.CrystallizationConditions
 
     method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
     crystallization_conditions: Optional[str] = None
@@ -2792,10 +2799,10 @@ class XRayPreparation(TechniqueSpecificPreparation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["XRayPreparation"]
-    class_class_curie: ClassVar[str] = "lambdaber:XRayPreparation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["XRayPreparation"]
+    class_class_curie: ClassVar[str] = "lambda:XRayPreparation"
     class_name: ClassVar[str] = "XRayPreparation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.XRayPreparation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.XRayPreparation
 
     protein_concentration_mg_per_ml: Optional[Union[dict, "QuantityValue"]] = None
     protein_buffer: Optional[str] = None
@@ -2909,10 +2916,10 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["SAXSPreparation"]
-    class_class_curie: ClassVar[str] = "lambdaber:SAXSPreparation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SAXSPreparation"]
+    class_class_curie: ClassVar[str] = "lambda:SAXSPreparation"
     class_name: ClassVar[str] = "SAXSPreparation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.SAXSPreparation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SAXSPreparation
 
     concentration_series: Optional[Union[dict, "QuantityValue"]] = None
     buffer_matching_protocol: Optional[str] = None
@@ -2946,10 +2953,10 @@ class ExperimentalConditions(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentalConditions"]
-    class_class_curie: ClassVar[str] = "lambdaber:ExperimentalConditions"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ExperimentalConditions"]
+    class_class_curie: ClassVar[str] = "lambda:ExperimentalConditions"
     class_name: ClassVar[str] = "ExperimentalConditions"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentalConditions
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ExperimentalConditions
 
     temperature: Optional[Union[dict, "QuantityValue"]] = None
     humidity: Optional[Union[dict, "QuantityValue"]] = None
@@ -2987,10 +2994,10 @@ class DataCollectionStrategy(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["DataCollectionStrategy"]
-    class_class_curie: ClassVar[str] = "lambdaber:DataCollectionStrategy"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["DataCollectionStrategy"]
+    class_class_curie: ClassVar[str] = "lambda:DataCollectionStrategy"
     class_name: ClassVar[str] = "DataCollectionStrategy"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.DataCollectionStrategy
+    class_model_uri: ClassVar[URIRef] = LAMBDA.DataCollectionStrategy
 
     collection_mode: Optional[Union[str, "CollectionModeEnum"]] = None
     total_frames: Optional[Union[dict, "QuantityValue"]] = None
@@ -3080,10 +3087,10 @@ class QualityMetrics(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["QualityMetrics"]
-    class_class_curie: ClassVar[str] = "lambdaber:QualityMetrics"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["QualityMetrics"]
+    class_class_curie: ClassVar[str] = "lambda:QualityMetrics"
     class_name: ClassVar[str] = "QualityMetrics"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.QualityMetrics
+    class_model_uri: ClassVar[URIRef] = LAMBDA.QualityMetrics
 
     resolution: Optional[Union[dict, "QuantityValue"]] = None
     resolution_high_shell_a: Optional[Union[dict, "QuantityValue"]] = None
@@ -3225,10 +3232,10 @@ class ComputeResources(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ComputeResources"]
-    class_class_curie: ClassVar[str] = "lambdaber:ComputeResources"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ComputeResources"]
+    class_class_curie: ClassVar[str] = "lambda:ComputeResources"
     class_name: ClassVar[str] = "ComputeResources"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ComputeResources
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ComputeResources
 
     cpu_hours: Optional[Union[dict, "QuantityValue"]] = None
     gpu_hours: Optional[Union[dict, "QuantityValue"]] = None
@@ -3258,10 +3265,10 @@ class MotionCorrectionParameters(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["MotionCorrectionParameters"]
-    class_class_curie: ClassVar[str] = "lambdaber:MotionCorrectionParameters"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["MotionCorrectionParameters"]
+    class_class_curie: ClassVar[str] = "lambda:MotionCorrectionParameters"
     class_name: ClassVar[str] = "MotionCorrectionParameters"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.MotionCorrectionParameters
+    class_model_uri: ClassVar[URIRef] = LAMBDA.MotionCorrectionParameters
 
     patch_size: Optional[Union[dict, "QuantityValue"]] = None
     binning: Optional[Union[dict, "QuantityValue"]] = None
@@ -3307,10 +3314,10 @@ class CTFEstimationParameters(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["CTFEstimationParameters"]
-    class_class_curie: ClassVar[str] = "lambdaber:CTFEstimationParameters"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["CTFEstimationParameters"]
+    class_class_curie: ClassVar[str] = "lambda:CTFEstimationParameters"
     class_name: ClassVar[str] = "CTFEstimationParameters"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.CTFEstimationParameters
+    class_model_uri: ClassVar[URIRef] = LAMBDA.CTFEstimationParameters
 
     defocus_search_min: Optional[Union[dict, "QuantityValue"]] = None
     defocus_search_max: Optional[Union[dict, "QuantityValue"]] = None
@@ -3348,10 +3355,10 @@ class ParticlePickingParameters(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ParticlePickingParameters"]
-    class_class_curie: ClassVar[str] = "lambdaber:ParticlePickingParameters"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ParticlePickingParameters"]
+    class_class_curie: ClassVar[str] = "lambda:ParticlePickingParameters"
     class_name: ClassVar[str] = "ParticlePickingParameters"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ParticlePickingParameters
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ParticlePickingParameters
 
     picking_method: Optional[str] = None
     box_size: Optional[Union[dict, "QuantityValue"]] = None
@@ -3397,10 +3404,10 @@ class RefinementParameters(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["RefinementParameters"]
-    class_class_curie: ClassVar[str] = "lambdaber:RefinementParameters"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["RefinementParameters"]
+    class_class_curie: ClassVar[str] = "lambda:RefinementParameters"
     class_name: ClassVar[str] = "RefinementParameters"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.RefinementParameters
+    class_model_uri: ClassVar[URIRef] = LAMBDA.RefinementParameters
 
     symmetry: Optional[Union[str, "SymmetryEnum"]] = None
     pixel_size: Optional[Union[dict, "QuantityValue"]] = None
@@ -3450,10 +3457,10 @@ class FSCCurve(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["FSCCurve"]
-    class_class_curie: ClassVar[str] = "lambdaber:FSCCurve"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["FSCCurve"]
+    class_class_curie: ClassVar[str] = "lambda:FSCCurve"
     class_name: ClassVar[str] = "FSCCurve"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.FSCCurve
+    class_model_uri: ClassVar[URIRef] = LAMBDA.FSCCurve
 
     resolution_angstrom: Optional[Union[dict, "QuantityValue"]] = None
     fsc_value: Optional[Union[dict, "QuantityValue"]] = None
@@ -3475,10 +3482,10 @@ class StudySampleAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudySampleAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:StudySampleAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudySampleAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudySampleAssociation"
     class_name: ClassVar[str] = "StudySampleAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudySampleAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudySampleAssociation
 
     study_id: Union[str, StudyId] = None
     sample_id: Union[str, SampleId] = None
@@ -3512,10 +3519,10 @@ class StudyExperimentAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudyExperimentAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:StudyExperimentAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudyExperimentAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudyExperimentAssociation"
     class_name: ClassVar[str] = "StudyExperimentAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudyExperimentAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudyExperimentAssociation
 
     study_id: Union[str, StudyId] = None
     experiment_id: Union[str, ExperimentRunId] = None
@@ -3541,10 +3548,10 @@ class StudyWorkflowAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["StudyWorkflowAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:StudyWorkflowAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["StudyWorkflowAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:StudyWorkflowAssociation"
     class_name: ClassVar[str] = "StudyWorkflowAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.StudyWorkflowAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StudyWorkflowAssociation
 
     study_id: Union[str, StudyId] = None
     workflow_id: Union[str, WorkflowRunId] = None
@@ -3570,10 +3577,10 @@ class ExperimentSampleAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentSampleAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:ExperimentSampleAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ExperimentSampleAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:ExperimentSampleAssociation"
     class_name: ClassVar[str] = "ExperimentSampleAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentSampleAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ExperimentSampleAssociation
 
     experiment_id: Union[str, ExperimentRunId] = None
     sample_id: Union[str, SampleId] = None
@@ -3607,10 +3614,10 @@ class ExperimentInstrumentAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["ExperimentInstrumentAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:ExperimentInstrumentAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["ExperimentInstrumentAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:ExperimentInstrumentAssociation"
     class_name: ClassVar[str] = "ExperimentInstrumentAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ExperimentInstrumentAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ExperimentInstrumentAssociation
 
     experiment_id: Union[str, ExperimentRunId] = None
     instrument_id: Union[str, InstrumentId] = None
@@ -3640,10 +3647,10 @@ class WorkflowExperimentAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowExperimentAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:WorkflowExperimentAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["WorkflowExperimentAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:WorkflowExperimentAssociation"
     class_name: ClassVar[str] = "WorkflowExperimentAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowExperimentAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.WorkflowExperimentAssociation
 
     workflow_id: Union[str, WorkflowRunId] = None
     experiment_id: Union[str, ExperimentRunId] = None
@@ -3669,10 +3676,10 @@ class WorkflowInputAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowInputAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:WorkflowInputAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["WorkflowInputAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:WorkflowInputAssociation"
     class_name: ClassVar[str] = "WorkflowInputAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowInputAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.WorkflowInputAssociation
 
     workflow_id: Union[str, WorkflowRunId] = None
     file_id: Union[str, DataFileId] = None
@@ -3702,10 +3709,10 @@ class WorkflowOutputAssociation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["WorkflowOutputAssociation"]
-    class_class_curie: ClassVar[str] = "lambdaber:WorkflowOutputAssociation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["WorkflowOutputAssociation"]
+    class_class_curie: ClassVar[str] = "lambda:WorkflowOutputAssociation"
     class_name: ClassVar[str] = "WorkflowOutputAssociation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.WorkflowOutputAssociation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.WorkflowOutputAssociation
 
     workflow_id: Union[str, WorkflowRunId] = None
     file_id: Union[str, DataFileId] = None
@@ -3741,7 +3748,7 @@ class AttributeValue(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = NMDC["AttributeValue"]
     class_class_curie: ClassVar[str] = "nmdc:AttributeValue"
     class_name: ClassVar[str] = "AttributeValue"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.AttributeValue
+    class_model_uri: ClassVar[URIRef] = LAMBDA.AttributeValue
 
     attribute: Optional[Union[dict, "Attribute"]] = None
     raw_value: Optional[str] = None
@@ -3765,10 +3772,10 @@ class Attribute(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["Attribute"]
-    class_class_curie: ClassVar[str] = "lambdaber:Attribute"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["Attribute"]
+    class_class_curie: ClassVar[str] = "lambda:Attribute"
     class_name: ClassVar[str] = "Attribute"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.Attribute
+    class_model_uri: ClassVar[URIRef] = LAMBDA.Attribute
 
     label: str = None
     id: Optional[str] = None
@@ -3797,7 +3804,7 @@ class QuantityValue(AttributeValue):
     class_class_uri: ClassVar[URIRef] = NMDC["QuantityValue"]
     class_class_curie: ClassVar[str] = "nmdc:QuantityValue"
     class_name: ClassVar[str] = "QuantityValue"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.QuantityValue
+    class_model_uri: ClassVar[URIRef] = LAMBDA.QuantityValue
 
     unit: str = None
     maximum_numeric_value: Optional[float] = None
@@ -3840,7 +3847,7 @@ class TextValue(AttributeValue):
     class_class_uri: ClassVar[URIRef] = NMDC["TextValue"]
     class_class_curie: ClassVar[str] = "nmdc:TextValue"
     class_name: ClassVar[str] = "TextValue"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.TextValue
+    class_model_uri: ClassVar[URIRef] = LAMBDA.TextValue
 
     value: str = None
     value_cv_id: Optional[Union[str, Curie]] = None
@@ -3867,7 +3874,7 @@ class DateTimeValue(AttributeValue):
     class_class_uri: ClassVar[URIRef] = NMDC["DateTimeValue"]
     class_class_curie: ClassVar[str] = "nmdc:DateTimeValue"
     class_name: ClassVar[str] = "DateTimeValue"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.DateTimeValue
+    class_model_uri: ClassVar[URIRef] = LAMBDA.DateTimeValue
 
     value: str = None
 
@@ -3887,10 +3894,10 @@ class ProteinAnnotation(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinAnnotation"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinAnnotation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/ProteinAnnotation"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/ProteinAnnotation"
     class_name: ClassVar[str] = "ProteinAnnotation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinAnnotation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ProteinAnnotation
 
     id: Union[str, ProteinAnnotationId] = None
     protein_id: str = None
@@ -3953,10 +3960,10 @@ class FunctionalSite(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/FunctionalSite"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/FunctionalSite"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/FunctionalSite"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/FunctionalSite"
     class_name: ClassVar[str] = "FunctionalSite"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.FunctionalSite
+    class_model_uri: ClassVar[URIRef] = LAMBDA.FunctionalSite
 
     id: Union[str, FunctionalSiteId] = None
     protein_id: str = None
@@ -4014,10 +4021,10 @@ class StructuralFeature(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/StructuralFeature"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/StructuralFeature"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/StructuralFeature"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/StructuralFeature"
     class_name: ClassVar[str] = "StructuralFeature"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.StructuralFeature
+    class_model_uri: ClassVar[URIRef] = LAMBDA.StructuralFeature
 
     id: Union[str, StructuralFeatureId] = None
     protein_id: str = None
@@ -4076,10 +4083,10 @@ class LigandInteraction(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/LigandInteraction"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/LigandInteraction"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/LigandInteraction"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/LigandInteraction"
     class_name: ClassVar[str] = "LigandInteraction"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.LigandInteraction
+    class_model_uri: ClassVar[URIRef] = LAMBDA.LigandInteraction
 
     ligand_id: Union[str, URIorCURIE] = None
     ligand_name: str = None
@@ -4146,10 +4153,10 @@ class ProteinProteinInteraction(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ProteinProteinInteraction"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ProteinProteinInteraction"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/ProteinProteinInteraction"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/ProteinProteinInteraction"
     class_name: ClassVar[str] = "ProteinProteinInteraction"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ProteinProteinInteraction
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ProteinProteinInteraction
 
     id: Union[str, ProteinProteinInteractionId] = None
     protein_id: str = None
@@ -4215,10 +4222,10 @@ class MutationEffect(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/MutationEffect"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/MutationEffect"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/MutationEffect"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/MutationEffect"
     class_name: ClassVar[str] = "MutationEffect"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.MutationEffect
+    class_model_uri: ClassVar[URIRef] = LAMBDA.MutationEffect
 
     id: Union[str, MutationEffectId] = None
     protein_id: str = None
@@ -4281,10 +4288,10 @@ class BiophysicalProperty(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/BiophysicalProperty"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/BiophysicalProperty"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/BiophysicalProperty"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/BiophysicalProperty"
     class_name: ClassVar[str] = "BiophysicalProperty"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.BiophysicalProperty
+    class_model_uri: ClassVar[URIRef] = LAMBDA.BiophysicalProperty
 
     property_type: Union[str, "BiophysicalPropertyEnum"] = None
     value: float = None
@@ -4327,10 +4334,10 @@ class ConformationalEnsemble(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalEnsemble"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalEnsemble"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/ConformationalEnsemble"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/ConformationalEnsemble"
     class_name: ClassVar[str] = "ConformationalEnsemble"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalEnsemble
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ConformationalEnsemble
 
     id: Union[str, ConformationalEnsembleId] = None
     protein_id: str = None
@@ -4382,10 +4389,10 @@ class ConformationalState(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/ConformationalState"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/ConformationalState"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/ConformationalState"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/ConformationalState"
     class_name: ClassVar[str] = "ConformationalState"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.ConformationalState
+    class_model_uri: ClassVar[URIRef] = LAMBDA.ConformationalState
 
     state_id: str = None
     state_name: Optional[str] = None
@@ -4431,10 +4438,10 @@ class PostTranslationalModification(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/PostTranslationalModification"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/PostTranslationalModification"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/PostTranslationalModification"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/PostTranslationalModification"
     class_name: ClassVar[str] = "PostTranslationalModification"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.PostTranslationalModification
+    class_model_uri: ClassVar[URIRef] = LAMBDA.PostTranslationalModification
 
     id: Union[str, PostTranslationalModificationId] = None
     protein_id: str = None
@@ -4491,10 +4498,10 @@ class DatabaseCrossReference(AttributeGroup):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/DatabaseCrossReference"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/DatabaseCrossReference"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/DatabaseCrossReference"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/DatabaseCrossReference"
     class_name: ClassVar[str] = "DatabaseCrossReference"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.DatabaseCrossReference
+    class_model_uri: ClassVar[URIRef] = LAMBDA.DatabaseCrossReference
 
     database_name: Union[str, "DatabaseNameEnum"] = None
     database_id: str = None
@@ -4528,10 +4535,10 @@ class EvolutionaryConservation(ProteinAnnotation):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/EvolutionaryConservation"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/EvolutionaryConservation"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/EvolutionaryConservation"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/EvolutionaryConservation"
     class_name: ClassVar[str] = "EvolutionaryConservation"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.EvolutionaryConservation
+    class_model_uri: ClassVar[URIRef] = LAMBDA.EvolutionaryConservation
 
     id: Union[str, EvolutionaryConservationId] = None
     protein_id: str = None
@@ -4583,10 +4590,10 @@ class AggregatedProteinView(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/AggregatedProteinView"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/AggregatedProteinView"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/AggregatedProteinView"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/AggregatedProteinView"
     class_name: ClassVar[str] = "AggregatedProteinView"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.AggregatedProteinView
+    class_model_uri: ClassVar[URIRef] = LAMBDA.AggregatedProteinView
 
     id: Union[str, AggregatedProteinViewId] = None
     uniprot_id: str = None
@@ -4669,10 +4676,10 @@ class MeasurementConditions(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LAMBDABER["functional_annotation/MeasurementConditions"]
-    class_class_curie: ClassVar[str] = "lambdaber:functional_annotation/MeasurementConditions"
+    class_class_uri: ClassVar[URIRef] = LAMBDA["functional_annotation/MeasurementConditions"]
+    class_class_curie: ClassVar[str] = "lambda:functional_annotation/MeasurementConditions"
     class_name: ClassVar[str] = "MeasurementConditions"
-    class_model_uri: ClassVar[URIRef] = LAMBDABER.MeasurementConditions
+    class_model_uri: ClassVar[URIRef] = LAMBDA.MeasurementConditions
 
     id: Union[str, MeasurementConditionsId] = None
     buffer_composition: Optional[Union[dict, BufferComposition]] = None
@@ -5577,6 +5584,9 @@ class FileFormatEnum(EnumDefinitionImpl):
     zip = PermissibleValue(
         text="zip",
         description="ZIP compressed archive")
+    tar = PermissibleValue(
+        text="tar",
+        description="TAR archive format")
     mrcs = PermissibleValue(
         text="mrcs",
         description="MRC stack format for particle stacks")
@@ -7031,2135 +7041,2138 @@ class DatabaseNameEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.attribute = Slot(uri=LAMBDABER.attribute, name="attribute", curie=LAMBDABER.curie('attribute'),
-                   model_uri=LAMBDABER.attribute, domain=None, range=Union[dict, Attribute])
+slots.attribute = Slot(uri=LAMBDA.attribute, name="attribute", curie=LAMBDA.curie('attribute'),
+                   model_uri=LAMBDA.attribute, domain=None, range=Union[dict, Attribute])
 
-slots.numeric_value = Slot(uri=LAMBDABER.numeric_value, name="numeric_value", curie=LAMBDABER.curie('numeric_value'),
-                   model_uri=LAMBDABER.numeric_value, domain=None, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+slots.numeric_value = Slot(uri=LAMBDA.numeric_value, name="numeric_value", curie=LAMBDA.curie('numeric_value'),
+                   model_uri=LAMBDA.numeric_value, domain=None, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
 
-slots.minimum_numeric_value = Slot(uri=LAMBDABER.minimum_numeric_value, name="minimum_numeric_value", curie=LAMBDABER.curie('minimum_numeric_value'),
-                   model_uri=LAMBDABER.minimum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["minimum_numeric_value"]])
+slots.minimum_numeric_value = Slot(uri=LAMBDA.minimum_numeric_value, name="minimum_numeric_value", curie=LAMBDA.curie('minimum_numeric_value'),
+                   model_uri=LAMBDA.minimum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["minimum_numeric_value"]])
 
-slots.maximum_numeric_value = Slot(uri=LAMBDABER.maximum_numeric_value, name="maximum_numeric_value", curie=LAMBDABER.curie('maximum_numeric_value'),
-                   model_uri=LAMBDABER.maximum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["maximum_numeric_value"]])
+slots.maximum_numeric_value = Slot(uri=LAMBDA.maximum_numeric_value, name="maximum_numeric_value", curie=LAMBDA.curie('maximum_numeric_value'),
+                   model_uri=LAMBDA.maximum_numeric_value, domain=None, range=Optional[float], mappings = [NMDC["maximum_numeric_value"]])
 
-slots.raw_value = Slot(uri=LAMBDABER.raw_value, name="raw_value", curie=LAMBDABER.curie('raw_value'),
-                   model_uri=LAMBDABER.raw_value, domain=None, range=Optional[str], mappings = [NMDC["raw_value"]])
+slots.raw_value = Slot(uri=LAMBDA.raw_value, name="raw_value", curie=LAMBDA.curie('raw_value'),
+                   model_uri=LAMBDA.raw_value, domain=None, range=Optional[str], mappings = [NMDC["raw_value"]])
 
-slots.unit = Slot(uri=LAMBDABER.unit, name="unit", curie=LAMBDABER.curie('unit'),
-                   model_uri=LAMBDABER.unit, domain=None, range=Optional[str], mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
+slots.unit = Slot(uri=LAMBDA.unit, name="unit", curie=LAMBDA.curie('unit'),
+                   model_uri=LAMBDA.unit, domain=None, range=Optional[str], mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
 
-slots.unit_cv_id = Slot(uri=LAMBDABER.unit_cv_id, name="unit_cv_id", curie=LAMBDABER.curie('unit_cv_id'),
-                   model_uri=LAMBDABER.unit_cv_id, domain=None, range=Optional[Union[str, Curie]])
+slots.unit_cv_id = Slot(uri=LAMBDA.unit_cv_id, name="unit_cv_id", curie=LAMBDA.curie('unit_cv_id'),
+                   model_uri=LAMBDA.unit_cv_id, domain=None, range=Optional[Union[str, Curie]])
 
-slots.value = Slot(uri=LAMBDABER.value, name="value", curie=LAMBDABER.curie('value'),
-                   model_uri=LAMBDABER.value, domain=None, range=Optional[str])
+slots.value = Slot(uri=LAMBDA.value, name="value", curie=LAMBDA.curie('value'),
+                   model_uri=LAMBDA.value, domain=None, range=Optional[str])
 
-slots.value_cv_id = Slot(uri=LAMBDABER.value_cv_id, name="value_cv_id", curie=LAMBDABER.curie('value_cv_id'),
-                   model_uri=LAMBDABER.value_cv_id, domain=None, range=Optional[Union[str, Curie]])
+slots.value_cv_id = Slot(uri=LAMBDA.value_cv_id, name="value_cv_id", curie=LAMBDA.curie('value_cv_id'),
+                   model_uri=LAMBDA.value_cv_id, domain=None, range=Optional[Union[str, Curie]])
 
-slots.namedThing__id = Slot(uri=LAMBDABER.id, name="namedThing__id", curie=LAMBDABER.curie('id'),
-                   model_uri=LAMBDABER.namedThing__id, domain=None, range=URIRef)
+slots.namedThing__id = Slot(uri=LAMBDA.id, name="namedThing__id", curie=LAMBDA.curie('id'),
+                   model_uri=LAMBDA.namedThing__id, domain=None, range=URIRef)
 
 slots.namedThing__title = Slot(uri=DCTERMS.title, name="namedThing__title", curie=DCTERMS.curie('title'),
-                   model_uri=LAMBDABER.namedThing__title, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.namedThing__title, domain=None, range=Optional[str])
 
-slots.namedThing__description = Slot(uri=LAMBDABER.description, name="namedThing__description", curie=LAMBDABER.curie('description'),
-                   model_uri=LAMBDABER.namedThing__description, domain=None, range=Optional[str])
+slots.namedThing__description = Slot(uri=LAMBDA.description, name="namedThing__description", curie=LAMBDA.curie('description'),
+                   model_uri=LAMBDA.namedThing__description, domain=None, range=Optional[str])
 
-slots.attributeGroup__description = Slot(uri=LAMBDABER.description, name="attributeGroup__description", curie=LAMBDABER.curie('description'),
-                   model_uri=LAMBDABER.attributeGroup__description, domain=None, range=Optional[str])
+slots.attributeGroup__description = Slot(uri=LAMBDA.description, name="attributeGroup__description", curie=LAMBDA.curie('description'),
+                   model_uri=LAMBDA.attributeGroup__description, domain=None, range=Optional[str])
 
-slots.dataset__keywords = Slot(uri=LAMBDABER.keywords, name="dataset__keywords", curie=LAMBDABER.curie('keywords'),
-                   model_uri=LAMBDABER.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
+slots.dataset__keywords = Slot(uri=LAMBDA.keywords, name="dataset__keywords", curie=LAMBDA.curie('keywords'),
+                   model_uri=LAMBDA.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.dataset__studies = Slot(uri=LAMBDABER.studies, name="dataset__studies", curie=LAMBDABER.curie('studies'),
-                   model_uri=LAMBDABER.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
+slots.dataset__studies = Slot(uri=LAMBDA.studies, name="dataset__studies", curie=LAMBDA.curie('studies'),
+                   model_uri=LAMBDA.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
-slots.dataset__instruments = Slot(uri=LAMBDABER.instruments, name="dataset__instruments", curie=LAMBDABER.curie('instruments'),
-                   model_uri=LAMBDABER.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
+slots.dataset__instruments = Slot(uri=LAMBDA.instruments, name="dataset__instruments", curie=LAMBDA.curie('instruments'),
+                   model_uri=LAMBDA.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
-slots.dataset__protein_constructs = Slot(uri=LAMBDABER.protein_constructs, name="dataset__protein_constructs", curie=LAMBDABER.curie('protein_constructs'),
-                   model_uri=LAMBDABER.dataset__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
+slots.dataset__protein_constructs = Slot(uri=LAMBDA.protein_constructs, name="dataset__protein_constructs", curie=LAMBDA.curie('protein_constructs'),
+                   model_uri=LAMBDA.dataset__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
 
-slots.dataset__samples = Slot(uri=LAMBDABER.samples, name="dataset__samples", curie=LAMBDABER.curie('samples'),
-                   model_uri=LAMBDABER.dataset__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
+slots.dataset__samples = Slot(uri=LAMBDA.samples, name="dataset__samples", curie=LAMBDA.curie('samples'),
+                   model_uri=LAMBDA.dataset__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
 
-slots.dataset__sample_preparations = Slot(uri=LAMBDABER.sample_preparations, name="dataset__sample_preparations", curie=LAMBDABER.curie('sample_preparations'),
-                   model_uri=LAMBDABER.dataset__sample_preparations, domain=None, range=Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, SamplePreparation]], list[Union[dict, SamplePreparation]]]])
+slots.dataset__sample_preparations = Slot(uri=LAMBDA.sample_preparations, name="dataset__sample_preparations", curie=LAMBDA.curie('sample_preparations'),
+                   model_uri=LAMBDA.dataset__sample_preparations, domain=None, range=Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, SamplePreparation]], list[Union[dict, SamplePreparation]]]])
 
-slots.dataset__experiment_runs = Slot(uri=LAMBDABER.experiment_runs, name="dataset__experiment_runs", curie=LAMBDABER.curie('experiment_runs'),
-                   model_uri=LAMBDABER.dataset__experiment_runs, domain=None, range=Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, ExperimentRun]], list[Union[dict, ExperimentRun]]]])
+slots.dataset__experiment_runs = Slot(uri=LAMBDA.experiment_runs, name="dataset__experiment_runs", curie=LAMBDA.curie('experiment_runs'),
+                   model_uri=LAMBDA.dataset__experiment_runs, domain=None, range=Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, ExperimentRun]], list[Union[dict, ExperimentRun]]]])
 
-slots.dataset__workflow_runs = Slot(uri=LAMBDABER.workflow_runs, name="dataset__workflow_runs", curie=LAMBDABER.curie('workflow_runs'),
-                   model_uri=LAMBDABER.dataset__workflow_runs, domain=None, range=Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, WorkflowRun]], list[Union[dict, WorkflowRun]]]])
+slots.dataset__workflow_runs = Slot(uri=LAMBDA.workflow_runs, name="dataset__workflow_runs", curie=LAMBDA.curie('workflow_runs'),
+                   model_uri=LAMBDA.dataset__workflow_runs, domain=None, range=Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, WorkflowRun]], list[Union[dict, WorkflowRun]]]])
 
-slots.dataset__data_files = Slot(uri=LAMBDABER.data_files, name="dataset__data_files", curie=LAMBDABER.curie('data_files'),
-                   model_uri=LAMBDABER.dataset__data_files, domain=None, range=Optional[Union[dict[Union[str, DataFileId], Union[dict, DataFile]], list[Union[dict, DataFile]]]])
+slots.dataset__data_files = Slot(uri=LAMBDA.data_files, name="dataset__data_files", curie=LAMBDA.curie('data_files'),
+                   model_uri=LAMBDA.dataset__data_files, domain=None, range=Optional[Union[dict[Union[str, DataFileId], Union[dict, DataFile]], list[Union[dict, DataFile]]]])
 
-slots.dataset__images = Slot(uri=LAMBDABER.images, name="dataset__images", curie=LAMBDABER.curie('images'),
-                   model_uri=LAMBDABER.dataset__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
+slots.dataset__images = Slot(uri=LAMBDA.images, name="dataset__images", curie=LAMBDA.curie('images'),
+                   model_uri=LAMBDA.dataset__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
 
-slots.dataset__study_sample_associations = Slot(uri=LAMBDABER.study_sample_associations, name="dataset__study_sample_associations", curie=LAMBDABER.curie('study_sample_associations'),
-                   model_uri=LAMBDABER.dataset__study_sample_associations, domain=None, range=Optional[Union[Union[dict, StudySampleAssociation], list[Union[dict, StudySampleAssociation]]]])
+slots.dataset__study_sample_associations = Slot(uri=LAMBDA.study_sample_associations, name="dataset__study_sample_associations", curie=LAMBDA.curie('study_sample_associations'),
+                   model_uri=LAMBDA.dataset__study_sample_associations, domain=None, range=Optional[Union[Union[dict, StudySampleAssociation], list[Union[dict, StudySampleAssociation]]]])
 
-slots.dataset__study_experiment_associations = Slot(uri=LAMBDABER.study_experiment_associations, name="dataset__study_experiment_associations", curie=LAMBDABER.curie('study_experiment_associations'),
-                   model_uri=LAMBDABER.dataset__study_experiment_associations, domain=None, range=Optional[Union[Union[dict, StudyExperimentAssociation], list[Union[dict, StudyExperimentAssociation]]]])
+slots.dataset__study_experiment_associations = Slot(uri=LAMBDA.study_experiment_associations, name="dataset__study_experiment_associations", curie=LAMBDA.curie('study_experiment_associations'),
+                   model_uri=LAMBDA.dataset__study_experiment_associations, domain=None, range=Optional[Union[Union[dict, StudyExperimentAssociation], list[Union[dict, StudyExperimentAssociation]]]])
 
-slots.dataset__study_workflow_associations = Slot(uri=LAMBDABER.study_workflow_associations, name="dataset__study_workflow_associations", curie=LAMBDABER.curie('study_workflow_associations'),
-                   model_uri=LAMBDABER.dataset__study_workflow_associations, domain=None, range=Optional[Union[Union[dict, StudyWorkflowAssociation], list[Union[dict, StudyWorkflowAssociation]]]])
+slots.dataset__study_workflow_associations = Slot(uri=LAMBDA.study_workflow_associations, name="dataset__study_workflow_associations", curie=LAMBDA.curie('study_workflow_associations'),
+                   model_uri=LAMBDA.dataset__study_workflow_associations, domain=None, range=Optional[Union[Union[dict, StudyWorkflowAssociation], list[Union[dict, StudyWorkflowAssociation]]]])
 
-slots.dataset__experiment_sample_associations = Slot(uri=LAMBDABER.experiment_sample_associations, name="dataset__experiment_sample_associations", curie=LAMBDABER.curie('experiment_sample_associations'),
-                   model_uri=LAMBDABER.dataset__experiment_sample_associations, domain=None, range=Optional[Union[Union[dict, ExperimentSampleAssociation], list[Union[dict, ExperimentSampleAssociation]]]])
+slots.dataset__experiment_sample_associations = Slot(uri=LAMBDA.experiment_sample_associations, name="dataset__experiment_sample_associations", curie=LAMBDA.curie('experiment_sample_associations'),
+                   model_uri=LAMBDA.dataset__experiment_sample_associations, domain=None, range=Optional[Union[Union[dict, ExperimentSampleAssociation], list[Union[dict, ExperimentSampleAssociation]]]])
 
-slots.dataset__experiment_instrument_associations = Slot(uri=LAMBDABER.experiment_instrument_associations, name="dataset__experiment_instrument_associations", curie=LAMBDABER.curie('experiment_instrument_associations'),
-                   model_uri=LAMBDABER.dataset__experiment_instrument_associations, domain=None, range=Optional[Union[Union[dict, ExperimentInstrumentAssociation], list[Union[dict, ExperimentInstrumentAssociation]]]])
+slots.dataset__experiment_instrument_associations = Slot(uri=LAMBDA.experiment_instrument_associations, name="dataset__experiment_instrument_associations", curie=LAMBDA.curie('experiment_instrument_associations'),
+                   model_uri=LAMBDA.dataset__experiment_instrument_associations, domain=None, range=Optional[Union[Union[dict, ExperimentInstrumentAssociation], list[Union[dict, ExperimentInstrumentAssociation]]]])
 
-slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDABER.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDABER.curie('workflow_experiment_associations'),
-                   model_uri=LAMBDABER.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
+slots.dataset__workflow_experiment_associations = Slot(uri=LAMBDA.workflow_experiment_associations, name="dataset__workflow_experiment_associations", curie=LAMBDA.curie('workflow_experiment_associations'),
+                   model_uri=LAMBDA.dataset__workflow_experiment_associations, domain=None, range=Optional[Union[Union[dict, WorkflowExperimentAssociation], list[Union[dict, WorkflowExperimentAssociation]]]])
 
-slots.dataset__workflow_input_associations = Slot(uri=LAMBDABER.workflow_input_associations, name="dataset__workflow_input_associations", curie=LAMBDABER.curie('workflow_input_associations'),
-                   model_uri=LAMBDABER.dataset__workflow_input_associations, domain=None, range=Optional[Union[Union[dict, WorkflowInputAssociation], list[Union[dict, WorkflowInputAssociation]]]])
+slots.dataset__workflow_input_associations = Slot(uri=LAMBDA.workflow_input_associations, name="dataset__workflow_input_associations", curie=LAMBDA.curie('workflow_input_associations'),
+                   model_uri=LAMBDA.dataset__workflow_input_associations, domain=None, range=Optional[Union[Union[dict, WorkflowInputAssociation], list[Union[dict, WorkflowInputAssociation]]]])
 
-slots.dataset__workflow_output_associations = Slot(uri=LAMBDABER.workflow_output_associations, name="dataset__workflow_output_associations", curie=LAMBDABER.curie('workflow_output_associations'),
-                   model_uri=LAMBDABER.dataset__workflow_output_associations, domain=None, range=Optional[Union[Union[dict, WorkflowOutputAssociation], list[Union[dict, WorkflowOutputAssociation]]]])
+slots.dataset__workflow_output_associations = Slot(uri=LAMBDA.workflow_output_associations, name="dataset__workflow_output_associations", curie=LAMBDA.curie('workflow_output_associations'),
+                   model_uri=LAMBDA.dataset__workflow_output_associations, domain=None, range=Optional[Union[Union[dict, WorkflowOutputAssociation], list[Union[dict, WorkflowOutputAssociation]]]])
 
-slots.study__keywords = Slot(uri=LAMBDABER.keywords, name="study__keywords", curie=LAMBDABER.curie('keywords'),
-                   model_uri=LAMBDABER.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
+slots.study__keywords = Slot(uri=LAMBDA.keywords, name="study__keywords", curie=LAMBDA.curie('keywords'),
+                   model_uri=LAMBDA.study__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.sample__sample_code = Slot(uri=LAMBDABER.sample_code, name="sample__sample_code", curie=LAMBDABER.curie('sample_code'),
-                   model_uri=LAMBDABER.sample__sample_code, domain=None, range=str)
+slots.sample__sample_code = Slot(uri=LAMBDA.sample_code, name="sample__sample_code", curie=LAMBDA.curie('sample_code'),
+                   model_uri=LAMBDA.sample__sample_code, domain=None, range=str)
 
-slots.sample__sample_type = Slot(uri=LAMBDABER.sample_type, name="sample__sample_type", curie=LAMBDABER.curie('sample_type'),
-                   model_uri=LAMBDABER.sample__sample_type, domain=None, range=Union[str, "SampleTypeEnum"])
+slots.sample__sample_type = Slot(uri=LAMBDA.sample_type, name="sample__sample_type", curie=LAMBDA.curie('sample_type'),
+                   model_uri=LAMBDA.sample__sample_type, domain=None, range=Union[str, "SampleTypeEnum"])
 
-slots.sample__molecular_composition = Slot(uri=LAMBDABER.molecular_composition, name="sample__molecular_composition", curie=LAMBDABER.curie('molecular_composition'),
-                   model_uri=LAMBDABER.sample__molecular_composition, domain=None, range=Optional[Union[dict, MolecularComposition]])
+slots.sample__molecular_composition = Slot(uri=LAMBDA.molecular_composition, name="sample__molecular_composition", curie=LAMBDA.curie('molecular_composition'),
+                   model_uri=LAMBDA.sample__molecular_composition, domain=None, range=Optional[Union[dict, MolecularComposition]])
 
-slots.sample__molecular_weight = Slot(uri=LAMBDABER.molecular_weight, name="sample__molecular_weight", curie=LAMBDABER.curie('molecular_weight'),
-                   model_uri=LAMBDABER.sample__molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sample__molecular_weight = Slot(uri=LAMBDA.molecular_weight, name="sample__molecular_weight", curie=LAMBDA.curie('molecular_weight'),
+                   model_uri=LAMBDA.sample__molecular_weight, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sample__concentration = Slot(uri=LAMBDABER.concentration, name="sample__concentration", curie=LAMBDABER.curie('concentration'),
-                   model_uri=LAMBDABER.sample__concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sample__concentration = Slot(uri=LAMBDA.concentration, name="sample__concentration", curie=LAMBDA.curie('concentration'),
+                   model_uri=LAMBDA.sample__concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sample__buffer_composition = Slot(uri=LAMBDABER.buffer_composition, name="sample__buffer_composition", curie=LAMBDABER.curie('buffer_composition'),
-                   model_uri=LAMBDABER.sample__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
+slots.sample__buffer_composition = Slot(uri=LAMBDA.buffer_composition, name="sample__buffer_composition", curie=LAMBDA.curie('buffer_composition'),
+                   model_uri=LAMBDA.sample__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
 
-slots.sample__preparation_method = Slot(uri=LAMBDABER.preparation_method, name="sample__preparation_method", curie=LAMBDABER.curie('preparation_method'),
-                   model_uri=LAMBDABER.sample__preparation_method, domain=None, range=Optional[str])
+slots.sample__preparation_method = Slot(uri=LAMBDA.preparation_method, name="sample__preparation_method", curie=LAMBDA.curie('preparation_method'),
+                   model_uri=LAMBDA.sample__preparation_method, domain=None, range=Optional[str])
 
-slots.sample__storage_conditions = Slot(uri=LAMBDABER.storage_conditions, name="sample__storage_conditions", curie=LAMBDABER.curie('storage_conditions'),
-                   model_uri=LAMBDABER.sample__storage_conditions, domain=None, range=Optional[Union[dict, StorageConditions]])
+slots.sample__storage_conditions = Slot(uri=LAMBDA.storage_conditions, name="sample__storage_conditions", curie=LAMBDA.curie('storage_conditions'),
+                   model_uri=LAMBDA.sample__storage_conditions, domain=None, range=Optional[Union[dict, StorageConditions]])
 
-slots.sample__organism = Slot(uri=LAMBDABER.organism, name="sample__organism", curie=LAMBDABER.curie('organism'),
-                   model_uri=LAMBDABER.sample__organism, domain=None, range=Optional[Union[str, OntologyTermId]])
+slots.sample__organism = Slot(uri=LAMBDA.organism, name="sample__organism", curie=LAMBDA.curie('organism'),
+                   model_uri=LAMBDA.sample__organism, domain=None, range=Optional[Union[str, OntologyTermId]])
 
-slots.sample__anatomy = Slot(uri=LAMBDABER.anatomy, name="sample__anatomy", curie=LAMBDABER.curie('anatomy'),
-                   model_uri=LAMBDABER.sample__anatomy, domain=None, range=Optional[Union[str, OntologyTermId]])
+slots.sample__anatomy = Slot(uri=LAMBDA.anatomy, name="sample__anatomy", curie=LAMBDA.curie('anatomy'),
+                   model_uri=LAMBDA.sample__anatomy, domain=None, range=Optional[Union[str, OntologyTermId]])
 
-slots.sample__cell_type = Slot(uri=LAMBDABER.cell_type, name="sample__cell_type", curie=LAMBDABER.curie('cell_type'),
-                   model_uri=LAMBDABER.sample__cell_type, domain=None, range=Optional[Union[str, OntologyTermId]])
+slots.sample__cell_type = Slot(uri=LAMBDA.cell_type, name="sample__cell_type", curie=LAMBDA.curie('cell_type'),
+                   model_uri=LAMBDA.sample__cell_type, domain=None, range=Optional[Union[str, OntologyTermId]])
 
-slots.sample__parent_sample_id = Slot(uri=LAMBDABER.parent_sample_id, name="sample__parent_sample_id", curie=LAMBDABER.curie('parent_sample_id'),
-                   model_uri=LAMBDABER.sample__parent_sample_id, domain=None, range=Optional[Union[str, SampleId]])
+slots.sample__parent_sample_id = Slot(uri=LAMBDA.parent_sample_id, name="sample__parent_sample_id", curie=LAMBDA.curie('parent_sample_id'),
+                   model_uri=LAMBDA.sample__parent_sample_id, domain=None, range=Optional[Union[str, SampleId]])
 
-slots.sample__purity_percentage = Slot(uri=LAMBDABER.purity_percentage, name="sample__purity_percentage", curie=LAMBDABER.curie('purity_percentage'),
-                   model_uri=LAMBDABER.sample__purity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sample__purity_percentage = Slot(uri=LAMBDA.purity_percentage, name="sample__purity_percentage", curie=LAMBDA.curie('purity_percentage'),
+                   model_uri=LAMBDA.sample__purity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sample__quality_metrics = Slot(uri=LAMBDABER.quality_metrics, name="sample__quality_metrics", curie=LAMBDABER.curie('quality_metrics'),
-                   model_uri=LAMBDABER.sample__quality_metrics, domain=None, range=Optional[str])
+slots.sample__quality_metrics = Slot(uri=LAMBDA.quality_metrics, name="sample__quality_metrics", curie=LAMBDA.curie('quality_metrics'),
+                   model_uri=LAMBDA.sample__quality_metrics, domain=None, range=Optional[str])
 
-slots.sample__functional_sites = Slot(uri=LAMBDABER.functional_sites, name="sample__functional_sites", curie=LAMBDABER.curie('functional_sites'),
-                   model_uri=LAMBDABER.sample__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+slots.sample__functional_sites = Slot(uri=LAMBDA.functional_sites, name="sample__functional_sites", curie=LAMBDA.curie('functional_sites'),
+                   model_uri=LAMBDA.sample__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
 
-slots.sample__structural_features = Slot(uri=LAMBDABER.structural_features, name="sample__structural_features", curie=LAMBDABER.curie('structural_features'),
-                   model_uri=LAMBDABER.sample__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+slots.sample__structural_features = Slot(uri=LAMBDA.structural_features, name="sample__structural_features", curie=LAMBDA.curie('structural_features'),
+                   model_uri=LAMBDA.sample__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
 
-slots.sample__protein_interactions = Slot(uri=LAMBDABER.protein_interactions, name="sample__protein_interactions", curie=LAMBDABER.curie('protein_interactions'),
-                   model_uri=LAMBDABER.sample__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+slots.sample__protein_interactions = Slot(uri=LAMBDA.protein_interactions, name="sample__protein_interactions", curie=LAMBDA.curie('protein_interactions'),
+                   model_uri=LAMBDA.sample__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
 
-slots.sample__ligand_interactions = Slot(uri=LAMBDABER.ligand_interactions, name="sample__ligand_interactions", curie=LAMBDABER.curie('ligand_interactions'),
-                   model_uri=LAMBDABER.sample__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+slots.sample__ligand_interactions = Slot(uri=LAMBDA.ligand_interactions, name="sample__ligand_interactions", curie=LAMBDA.curie('ligand_interactions'),
+                   model_uri=LAMBDA.sample__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
 
-slots.sample__mutation_effects = Slot(uri=LAMBDABER.mutation_effects, name="sample__mutation_effects", curie=LAMBDABER.curie('mutation_effects'),
-                   model_uri=LAMBDABER.sample__mutation_effects, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+slots.sample__mutation_effects = Slot(uri=LAMBDA.mutation_effects, name="sample__mutation_effects", curie=LAMBDA.curie('mutation_effects'),
+                   model_uri=LAMBDA.sample__mutation_effects, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
 
-slots.sample__ptm_annotations = Slot(uri=LAMBDABER.ptm_annotations, name="sample__ptm_annotations", curie=LAMBDABER.curie('ptm_annotations'),
-                   model_uri=LAMBDABER.sample__ptm_annotations, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+slots.sample__ptm_annotations = Slot(uri=LAMBDA.ptm_annotations, name="sample__ptm_annotations", curie=LAMBDA.curie('ptm_annotations'),
+                   model_uri=LAMBDA.sample__ptm_annotations, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
 
-slots.sample__biophysical_properties = Slot(uri=LAMBDABER.biophysical_properties, name="sample__biophysical_properties", curie=LAMBDABER.curie('biophysical_properties'),
-                   model_uri=LAMBDABER.sample__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+slots.sample__biophysical_properties = Slot(uri=LAMBDA.biophysical_properties, name="sample__biophysical_properties", curie=LAMBDA.curie('biophysical_properties'),
+                   model_uri=LAMBDA.sample__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
 
-slots.sample__evolutionary_conservation = Slot(uri=LAMBDABER.evolutionary_conservation, name="sample__evolutionary_conservation", curie=LAMBDABER.curie('evolutionary_conservation'),
-                   model_uri=LAMBDABER.sample__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+slots.sample__evolutionary_conservation = Slot(uri=LAMBDA.evolutionary_conservation, name="sample__evolutionary_conservation", curie=LAMBDA.curie('evolutionary_conservation'),
+                   model_uri=LAMBDA.sample__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
 
-slots.sample__conformational_ensemble = Slot(uri=LAMBDABER.conformational_ensemble, name="sample__conformational_ensemble", curie=LAMBDABER.curie('conformational_ensemble'),
-                   model_uri=LAMBDABER.sample__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+slots.sample__conformational_ensemble = Slot(uri=LAMBDA.conformational_ensemble, name="sample__conformational_ensemble", curie=LAMBDA.curie('conformational_ensemble'),
+                   model_uri=LAMBDA.sample__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
 
-slots.sample__database_cross_references = Slot(uri=LAMBDABER.database_cross_references, name="sample__database_cross_references", curie=LAMBDABER.curie('database_cross_references'),
-                   model_uri=LAMBDABER.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+slots.sample__database_cross_references = Slot(uri=LAMBDA.database_cross_references, name="sample__database_cross_references", curie=LAMBDA.curie('database_cross_references'),
+                   model_uri=LAMBDA.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
 slots.sample__protein_name = Slot(uri=NSLS2.Protein_Name, name="sample__protein_name", curie=NSLS2.curie('Protein_Name'),
-                   model_uri=LAMBDABER.sample__protein_name, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__protein_name, domain=None, range=Optional[str])
 
 slots.sample__construct = Slot(uri=NSLS2.Construct, name="sample__construct", curie=NSLS2.curie('Construct'),
-                   model_uri=LAMBDABER.sample__construct, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__construct, domain=None, range=Optional[str])
 
 slots.sample__tag = Slot(uri=NSLS2.Tag, name="sample__tag", curie=NSLS2.curie('Tag'),
-                   model_uri=LAMBDABER.sample__tag, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__tag, domain=None, range=Optional[str])
 
 slots.sample__mutations = Slot(uri=NSLS2.Mutations, name="sample__mutations", curie=NSLS2.curie('Mutations'),
-                   model_uri=LAMBDABER.sample__mutations, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__mutations, domain=None, range=Optional[str])
 
 slots.sample__expression_system = Slot(uri=NSLS2.Expression_System, name="sample__expression_system", curie=NSLS2.curie('Expression_System'),
-                   model_uri=LAMBDABER.sample__expression_system, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__expression_system, domain=None, range=Optional[str])
 
 slots.sample__ligand = Slot(uri=NSLS2.Ligand, name="sample__ligand", curie=NSLS2.curie('Ligand'),
-                   model_uri=LAMBDABER.sample__ligand, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.sample__ligand, domain=None, range=Optional[str])
 
-slots.proteinConstruct__construct_id = Slot(uri=LAMBDABER.construct_id, name="proteinConstruct__construct_id", curie=LAMBDABER.curie('construct_id'),
-                   model_uri=LAMBDABER.proteinConstruct__construct_id, domain=None, range=str)
+slots.sample__oligomeric_state = Slot(uri=LAMBDA.oligomeric_state, name="sample__oligomeric_state", curie=LAMBDA.curie('oligomeric_state'),
+                   model_uri=LAMBDA.sample__oligomeric_state, domain=None, range=Optional[str])
 
-slots.proteinConstruct__uniprot_id = Slot(uri=LAMBDABER.uniprot_id, name="proteinConstruct__uniprot_id", curie=LAMBDABER.curie('uniprot_id'),
-                   model_uri=LAMBDABER.proteinConstruct__uniprot_id, domain=None, range=Optional[str])
+slots.proteinConstruct__construct_id = Slot(uri=LAMBDA.construct_id, name="proteinConstruct__construct_id", curie=LAMBDA.curie('construct_id'),
+                   model_uri=LAMBDA.proteinConstruct__construct_id, domain=None, range=str)
 
-slots.proteinConstruct__gene_name = Slot(uri=LAMBDABER.gene_name, name="proteinConstruct__gene_name", curie=LAMBDABER.curie('gene_name'),
-                   model_uri=LAMBDABER.proteinConstruct__gene_name, domain=None, range=Optional[str])
+slots.proteinConstruct__uniprot_id = Slot(uri=LAMBDA.uniprot_id, name="proteinConstruct__uniprot_id", curie=LAMBDA.curie('uniprot_id'),
+                   model_uri=LAMBDA.proteinConstruct__uniprot_id, domain=None, range=Optional[str])
 
-slots.proteinConstruct__ncbi_taxid = Slot(uri=LAMBDABER.ncbi_taxid, name="proteinConstruct__ncbi_taxid", curie=LAMBDABER.curie('ncbi_taxid'),
-                   model_uri=LAMBDABER.proteinConstruct__ncbi_taxid, domain=None, range=Optional[str])
+slots.proteinConstruct__gene_name = Slot(uri=LAMBDA.gene_name, name="proteinConstruct__gene_name", curie=LAMBDA.curie('gene_name'),
+                   model_uri=LAMBDA.proteinConstruct__gene_name, domain=None, range=Optional[str])
 
-slots.proteinConstruct__sequence_length_aa = Slot(uri=LAMBDABER.sequence_length_aa, name="proteinConstruct__sequence_length_aa", curie=LAMBDABER.curie('sequence_length_aa'),
-                   model_uri=LAMBDABER.proteinConstruct__sequence_length_aa, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.proteinConstruct__ncbi_taxid = Slot(uri=LAMBDA.ncbi_taxid, name="proteinConstruct__ncbi_taxid", curie=LAMBDA.curie('ncbi_taxid'),
+                   model_uri=LAMBDA.proteinConstruct__ncbi_taxid, domain=None, range=Optional[str])
 
-slots.proteinConstruct__construct_description = Slot(uri=LAMBDABER.construct_description, name="proteinConstruct__construct_description", curie=LAMBDABER.curie('construct_description'),
-                   model_uri=LAMBDABER.proteinConstruct__construct_description, domain=None, range=Optional[str])
+slots.proteinConstruct__sequence_length_aa = Slot(uri=LAMBDA.sequence_length_aa, name="proteinConstruct__sequence_length_aa", curie=LAMBDA.curie('sequence_length_aa'),
+                   model_uri=LAMBDA.proteinConstruct__sequence_length_aa, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.proteinConstruct__gene_synthesis_provider = Slot(uri=LAMBDABER.gene_synthesis_provider, name="proteinConstruct__gene_synthesis_provider", curie=LAMBDABER.curie('gene_synthesis_provider'),
-                   model_uri=LAMBDABER.proteinConstruct__gene_synthesis_provider, domain=None, range=Optional[str])
+slots.proteinConstruct__construct_description = Slot(uri=LAMBDA.construct_description, name="proteinConstruct__construct_description", curie=LAMBDA.curie('construct_description'),
+                   model_uri=LAMBDA.proteinConstruct__construct_description, domain=None, range=Optional[str])
 
-slots.proteinConstruct__codon_optimization_organism = Slot(uri=LAMBDABER.codon_optimization_organism, name="proteinConstruct__codon_optimization_organism", curie=LAMBDABER.curie('codon_optimization_organism'),
-                   model_uri=LAMBDABER.proteinConstruct__codon_optimization_organism, domain=None, range=Optional[str])
+slots.proteinConstruct__gene_synthesis_provider = Slot(uri=LAMBDA.gene_synthesis_provider, name="proteinConstruct__gene_synthesis_provider", curie=LAMBDA.curie('gene_synthesis_provider'),
+                   model_uri=LAMBDA.proteinConstruct__gene_synthesis_provider, domain=None, range=Optional[str])
 
-slots.proteinConstruct__vector_backbone = Slot(uri=LAMBDABER.vector_backbone, name="proteinConstruct__vector_backbone", curie=LAMBDABER.curie('vector_backbone'),
-                   model_uri=LAMBDABER.proteinConstruct__vector_backbone, domain=None, range=Optional[str])
+slots.proteinConstruct__codon_optimization_organism = Slot(uri=LAMBDA.codon_optimization_organism, name="proteinConstruct__codon_optimization_organism", curie=LAMBDA.curie('codon_optimization_organism'),
+                   model_uri=LAMBDA.proteinConstruct__codon_optimization_organism, domain=None, range=Optional[str])
 
-slots.proteinConstruct__vector_name = Slot(uri=LAMBDABER.vector_name, name="proteinConstruct__vector_name", curie=LAMBDABER.curie('vector_name'),
-                   model_uri=LAMBDABER.proteinConstruct__vector_name, domain=None, range=Optional[str])
+slots.proteinConstruct__vector_backbone = Slot(uri=LAMBDA.vector_backbone, name="proteinConstruct__vector_backbone", curie=LAMBDA.curie('vector_backbone'),
+                   model_uri=LAMBDA.proteinConstruct__vector_backbone, domain=None, range=Optional[str])
 
-slots.proteinConstruct__promoter = Slot(uri=LAMBDABER.promoter, name="proteinConstruct__promoter", curie=LAMBDABER.curie('promoter'),
-                   model_uri=LAMBDABER.proteinConstruct__promoter, domain=None, range=Optional[str])
+slots.proteinConstruct__vector_name = Slot(uri=LAMBDA.vector_name, name="proteinConstruct__vector_name", curie=LAMBDA.curie('vector_name'),
+                   model_uri=LAMBDA.proteinConstruct__vector_name, domain=None, range=Optional[str])
 
-slots.proteinConstruct__tag_nterm = Slot(uri=LAMBDABER.tag_nterm, name="proteinConstruct__tag_nterm", curie=LAMBDABER.curie('tag_nterm'),
-                   model_uri=LAMBDABER.proteinConstruct__tag_nterm, domain=None, range=Optional[str])
+slots.proteinConstruct__promoter = Slot(uri=LAMBDA.promoter, name="proteinConstruct__promoter", curie=LAMBDA.curie('promoter'),
+                   model_uri=LAMBDA.proteinConstruct__promoter, domain=None, range=Optional[str])
 
-slots.proteinConstruct__tag_cterm = Slot(uri=LAMBDABER.tag_cterm, name="proteinConstruct__tag_cterm", curie=LAMBDABER.curie('tag_cterm'),
-                   model_uri=LAMBDABER.proteinConstruct__tag_cterm, domain=None, range=Optional[str])
+slots.proteinConstruct__tag_nterm = Slot(uri=LAMBDA.tag_nterm, name="proteinConstruct__tag_nterm", curie=LAMBDA.curie('tag_nterm'),
+                   model_uri=LAMBDA.proteinConstruct__tag_nterm, domain=None, range=Optional[str])
 
-slots.proteinConstruct__cleavage_site = Slot(uri=LAMBDABER.cleavage_site, name="proteinConstruct__cleavage_site", curie=LAMBDABER.curie('cleavage_site'),
-                   model_uri=LAMBDABER.proteinConstruct__cleavage_site, domain=None, range=Optional[str])
+slots.proteinConstruct__tag_cterm = Slot(uri=LAMBDA.tag_cterm, name="proteinConstruct__tag_cterm", curie=LAMBDA.curie('tag_cterm'),
+                   model_uri=LAMBDA.proteinConstruct__tag_cterm, domain=None, range=Optional[str])
 
-slots.proteinConstruct__signal_peptide = Slot(uri=LAMBDABER.signal_peptide, name="proteinConstruct__signal_peptide", curie=LAMBDABER.curie('signal_peptide'),
-                   model_uri=LAMBDABER.proteinConstruct__signal_peptide, domain=None, range=Optional[str])
+slots.proteinConstruct__cleavage_site = Slot(uri=LAMBDA.cleavage_site, name="proteinConstruct__cleavage_site", curie=LAMBDA.curie('cleavage_site'),
+                   model_uri=LAMBDA.proteinConstruct__cleavage_site, domain=None, range=Optional[str])
 
-slots.proteinConstruct__selectable_marker = Slot(uri=LAMBDABER.selectable_marker, name="proteinConstruct__selectable_marker", curie=LAMBDABER.curie('selectable_marker'),
-                   model_uri=LAMBDABER.proteinConstruct__selectable_marker, domain=None, range=Optional[str])
+slots.proteinConstruct__signal_peptide = Slot(uri=LAMBDA.signal_peptide, name="proteinConstruct__signal_peptide", curie=LAMBDA.curie('signal_peptide'),
+                   model_uri=LAMBDA.proteinConstruct__signal_peptide, domain=None, range=Optional[str])
 
-slots.proteinConstruct__cloning_method = Slot(uri=LAMBDABER.cloning_method, name="proteinConstruct__cloning_method", curie=LAMBDABER.curie('cloning_method'),
-                   model_uri=LAMBDABER.proteinConstruct__cloning_method, domain=None, range=Optional[str])
+slots.proteinConstruct__selectable_marker = Slot(uri=LAMBDA.selectable_marker, name="proteinConstruct__selectable_marker", curie=LAMBDA.curie('selectable_marker'),
+                   model_uri=LAMBDA.proteinConstruct__selectable_marker, domain=None, range=Optional[str])
 
-slots.proteinConstruct__insert_boundaries = Slot(uri=LAMBDABER.insert_boundaries, name="proteinConstruct__insert_boundaries", curie=LAMBDABER.curie('insert_boundaries'),
-                   model_uri=LAMBDABER.proteinConstruct__insert_boundaries, domain=None, range=Optional[str])
+slots.proteinConstruct__cloning_method = Slot(uri=LAMBDA.cloning_method, name="proteinConstruct__cloning_method", curie=LAMBDA.curie('cloning_method'),
+                   model_uri=LAMBDA.proteinConstruct__cloning_method, domain=None, range=Optional[str])
 
-slots.proteinConstruct__sequence_file_path = Slot(uri=LAMBDABER.sequence_file_path, name="proteinConstruct__sequence_file_path", curie=LAMBDABER.curie('sequence_file_path'),
-                   model_uri=LAMBDABER.proteinConstruct__sequence_file_path, domain=None, range=Optional[str])
+slots.proteinConstruct__insert_boundaries = Slot(uri=LAMBDA.insert_boundaries, name="proteinConstruct__insert_boundaries", curie=LAMBDA.curie('insert_boundaries'),
+                   model_uri=LAMBDA.proteinConstruct__insert_boundaries, domain=None, range=Optional[str])
 
-slots.proteinConstruct__sequence_verified_by = Slot(uri=LAMBDABER.sequence_verified_by, name="proteinConstruct__sequence_verified_by", curie=LAMBDABER.curie('sequence_verified_by'),
-                   model_uri=LAMBDABER.proteinConstruct__sequence_verified_by, domain=None, range=Optional[str])
+slots.proteinConstruct__sequence_file_path = Slot(uri=LAMBDA.sequence_file_path, name="proteinConstruct__sequence_file_path", curie=LAMBDA.curie('sequence_file_path'),
+                   model_uri=LAMBDA.proteinConstruct__sequence_file_path, domain=None, range=Optional[str])
 
-slots.proteinConstruct__verification_notes = Slot(uri=LAMBDABER.verification_notes, name="proteinConstruct__verification_notes", curie=LAMBDABER.curie('verification_notes'),
-                   model_uri=LAMBDABER.proteinConstruct__verification_notes, domain=None, range=Optional[str])
+slots.proteinConstruct__sequence_verified_by = Slot(uri=LAMBDA.sequence_verified_by, name="proteinConstruct__sequence_verified_by", curie=LAMBDA.curie('sequence_verified_by'),
+                   model_uri=LAMBDA.proteinConstruct__sequence_verified_by, domain=None, range=Optional[str])
 
-slots.samplePreparation__preparation_type = Slot(uri=LAMBDABER.preparation_type, name="samplePreparation__preparation_type", curie=LAMBDABER.curie('preparation_type'),
-                   model_uri=LAMBDABER.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
+slots.proteinConstruct__verification_notes = Slot(uri=LAMBDA.verification_notes, name="proteinConstruct__verification_notes", curie=LAMBDA.curie('verification_notes'),
+                   model_uri=LAMBDA.proteinConstruct__verification_notes, domain=None, range=Optional[str])
 
-slots.samplePreparation__sample_id = Slot(uri=LAMBDABER.sample_id, name="samplePreparation__sample_id", curie=LAMBDABER.curie('sample_id'),
-                   model_uri=LAMBDABER.samplePreparation__sample_id, domain=None, range=str)
+slots.samplePreparation__preparation_type = Slot(uri=LAMBDA.preparation_type, name="samplePreparation__preparation_type", curie=LAMBDA.curie('preparation_type'),
+                   model_uri=LAMBDA.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
 
-slots.samplePreparation__preparation_date = Slot(uri=LAMBDABER.preparation_date, name="samplePreparation__preparation_date", curie=LAMBDABER.curie('preparation_date'),
-                   model_uri=LAMBDABER.samplePreparation__preparation_date, domain=None, range=Optional[str])
+slots.samplePreparation__sample_id = Slot(uri=LAMBDA.sample_id, name="samplePreparation__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.samplePreparation__sample_id, domain=None, range=str)
 
-slots.samplePreparation__operator_id = Slot(uri=LAMBDABER.operator_id, name="samplePreparation__operator_id", curie=LAMBDABER.curie('operator_id'),
-                   model_uri=LAMBDABER.samplePreparation__operator_id, domain=None, range=Optional[str])
+slots.samplePreparation__preparation_date = Slot(uri=LAMBDA.preparation_date, name="samplePreparation__preparation_date", curie=LAMBDA.curie('preparation_date'),
+                   model_uri=LAMBDA.samplePreparation__preparation_date, domain=None, range=Optional[str])
 
-slots.samplePreparation__protocol_description = Slot(uri=LAMBDABER.protocol_description, name="samplePreparation__protocol_description", curie=LAMBDABER.curie('protocol_description'),
-                   model_uri=LAMBDABER.samplePreparation__protocol_description, domain=None, range=Optional[str])
+slots.samplePreparation__operator_id = Slot(uri=LAMBDA.operator_id, name="samplePreparation__operator_id", curie=LAMBDA.curie('operator_id'),
+                   model_uri=LAMBDA.samplePreparation__operator_id, domain=None, range=Optional[str])
 
-slots.samplePreparation__expression_system = Slot(uri=LAMBDABER.expression_system, name="samplePreparation__expression_system", curie=LAMBDABER.curie('expression_system'),
-                   model_uri=LAMBDABER.samplePreparation__expression_system, domain=None, range=Optional[Union[str, "ExpressionSystemEnum"]])
+slots.samplePreparation__protocol_description = Slot(uri=LAMBDA.protocol_description, name="samplePreparation__protocol_description", curie=LAMBDA.curie('protocol_description'),
+                   model_uri=LAMBDA.samplePreparation__protocol_description, domain=None, range=Optional[str])
 
-slots.samplePreparation__host_strain_or_cell_line = Slot(uri=LAMBDABER.host_strain_or_cell_line, name="samplePreparation__host_strain_or_cell_line", curie=LAMBDABER.curie('host_strain_or_cell_line'),
-                   model_uri=LAMBDABER.samplePreparation__host_strain_or_cell_line, domain=None, range=Optional[str])
+slots.samplePreparation__expression_system = Slot(uri=LAMBDA.expression_system, name="samplePreparation__expression_system", curie=LAMBDA.curie('expression_system'),
+                   model_uri=LAMBDA.samplePreparation__expression_system, domain=None, range=Optional[Union[str, "ExpressionSystemEnum"]])
 
-slots.samplePreparation__culture_volume_l = Slot(uri=LAMBDABER.culture_volume_l, name="samplePreparation__culture_volume_l", curie=LAMBDABER.curie('culture_volume_l'),
-                   model_uri=LAMBDABER.samplePreparation__culture_volume_l, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__host_strain_or_cell_line = Slot(uri=LAMBDA.host_strain_or_cell_line, name="samplePreparation__host_strain_or_cell_line", curie=LAMBDA.curie('host_strain_or_cell_line'),
+                   model_uri=LAMBDA.samplePreparation__host_strain_or_cell_line, domain=None, range=Optional[str])
 
-slots.samplePreparation__medium = Slot(uri=LAMBDABER.medium, name="samplePreparation__medium", curie=LAMBDABER.curie('medium'),
-                   model_uri=LAMBDABER.samplePreparation__medium, domain=None, range=Optional[str])
+slots.samplePreparation__culture_volume_l = Slot(uri=LAMBDA.culture_volume_l, name="samplePreparation__culture_volume_l", curie=LAMBDA.curie('culture_volume_l'),
+                   model_uri=LAMBDA.samplePreparation__culture_volume_l, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__antibiotic_selection = Slot(uri=LAMBDABER.antibiotic_selection, name="samplePreparation__antibiotic_selection", curie=LAMBDABER.curie('antibiotic_selection'),
-                   model_uri=LAMBDABER.samplePreparation__antibiotic_selection, domain=None, range=Optional[str])
+slots.samplePreparation__medium = Slot(uri=LAMBDA.medium, name="samplePreparation__medium", curie=LAMBDA.curie('medium'),
+                   model_uri=LAMBDA.samplePreparation__medium, domain=None, range=Optional[str])
 
-slots.samplePreparation__growth_temperature_c = Slot(uri=LAMBDABER.growth_temperature_c, name="samplePreparation__growth_temperature_c", curie=LAMBDABER.curie('growth_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__growth_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__antibiotic_selection = Slot(uri=LAMBDA.antibiotic_selection, name="samplePreparation__antibiotic_selection", curie=LAMBDA.curie('antibiotic_selection'),
+                   model_uri=LAMBDA.samplePreparation__antibiotic_selection, domain=None, range=Optional[str])
 
-slots.samplePreparation__induction_agent = Slot(uri=LAMBDABER.induction_agent, name="samplePreparation__induction_agent", curie=LAMBDABER.curie('induction_agent'),
-                   model_uri=LAMBDABER.samplePreparation__induction_agent, domain=None, range=Optional[str])
+slots.samplePreparation__growth_temperature_c = Slot(uri=LAMBDA.growth_temperature_c, name="samplePreparation__growth_temperature_c", curie=LAMBDA.curie('growth_temperature_c'),
+                   model_uri=LAMBDA.samplePreparation__growth_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__inducer_concentration = Slot(uri=LAMBDABER.inducer_concentration, name="samplePreparation__inducer_concentration", curie=LAMBDABER.curie('inducer_concentration'),
-                   model_uri=LAMBDABER.samplePreparation__inducer_concentration, domain=None, range=Optional[str])
+slots.samplePreparation__induction_agent = Slot(uri=LAMBDA.induction_agent, name="samplePreparation__induction_agent", curie=LAMBDA.curie('induction_agent'),
+                   model_uri=LAMBDA.samplePreparation__induction_agent, domain=None, range=Optional[str])
 
-slots.samplePreparation__induction_temperature_c = Slot(uri=LAMBDABER.induction_temperature_c, name="samplePreparation__induction_temperature_c", curie=LAMBDABER.curie('induction_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__induction_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__inducer_concentration = Slot(uri=LAMBDA.inducer_concentration, name="samplePreparation__inducer_concentration", curie=LAMBDA.curie('inducer_concentration'),
+                   model_uri=LAMBDA.samplePreparation__inducer_concentration, domain=None, range=Optional[str])
 
-slots.samplePreparation__induction_time_h = Slot(uri=LAMBDABER.induction_time_h, name="samplePreparation__induction_time_h", curie=LAMBDABER.curie('induction_time_h'),
-                   model_uri=LAMBDABER.samplePreparation__induction_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__induction_temperature_c = Slot(uri=LAMBDA.induction_temperature_c, name="samplePreparation__induction_temperature_c", curie=LAMBDA.curie('induction_temperature_c'),
+                   model_uri=LAMBDA.samplePreparation__induction_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__od600_at_induction = Slot(uri=LAMBDABER.od600_at_induction, name="samplePreparation__od600_at_induction", curie=LAMBDABER.curie('od600_at_induction'),
-                   model_uri=LAMBDABER.samplePreparation__od600_at_induction, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__induction_time_h = Slot(uri=LAMBDA.induction_time_h, name="samplePreparation__induction_time_h", curie=LAMBDA.curie('induction_time_h'),
+                   model_uri=LAMBDA.samplePreparation__induction_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__harvest_timepoint = Slot(uri=LAMBDABER.harvest_timepoint, name="samplePreparation__harvest_timepoint", curie=LAMBDABER.curie('harvest_timepoint'),
-                   model_uri=LAMBDABER.samplePreparation__harvest_timepoint, domain=None, range=Optional[str])
+slots.samplePreparation__od600_at_induction = Slot(uri=LAMBDA.od600_at_induction, name="samplePreparation__od600_at_induction", curie=LAMBDA.curie('od600_at_induction'),
+                   model_uri=LAMBDA.samplePreparation__od600_at_induction, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__lysis_method = Slot(uri=LAMBDABER.lysis_method, name="samplePreparation__lysis_method", curie=LAMBDABER.curie('lysis_method'),
-                   model_uri=LAMBDABER.samplePreparation__lysis_method, domain=None, range=Optional[str])
+slots.samplePreparation__harvest_timepoint = Slot(uri=LAMBDA.harvest_timepoint, name="samplePreparation__harvest_timepoint", curie=LAMBDA.curie('harvest_timepoint'),
+                   model_uri=LAMBDA.samplePreparation__harvest_timepoint, domain=None, range=Optional[str])
 
-slots.samplePreparation__protease_inhibitors = Slot(uri=LAMBDABER.protease_inhibitors, name="samplePreparation__protease_inhibitors", curie=LAMBDABER.curie('protease_inhibitors'),
-                   model_uri=LAMBDABER.samplePreparation__protease_inhibitors, domain=None, range=Optional[str])
+slots.samplePreparation__lysis_method = Slot(uri=LAMBDA.lysis_method, name="samplePreparation__lysis_method", curie=LAMBDA.curie('lysis_method'),
+                   model_uri=LAMBDA.samplePreparation__lysis_method, domain=None, range=Optional[str])
 
-slots.samplePreparation__purification_steps = Slot(uri=LAMBDABER.purification_steps, name="samplePreparation__purification_steps", curie=LAMBDABER.curie('purification_steps'),
-                   model_uri=LAMBDABER.samplePreparation__purification_steps, domain=None, range=Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]])
+slots.samplePreparation__protease_inhibitors = Slot(uri=LAMBDA.protease_inhibitors, name="samplePreparation__protease_inhibitors", curie=LAMBDA.curie('protease_inhibitors'),
+                   model_uri=LAMBDA.samplePreparation__protease_inhibitors, domain=None, range=Optional[str])
 
-slots.samplePreparation__affinity_type = Slot(uri=LAMBDABER.affinity_type, name="samplePreparation__affinity_type", curie=LAMBDABER.curie('affinity_type'),
-                   model_uri=LAMBDABER.samplePreparation__affinity_type, domain=None, range=Optional[str])
+slots.samplePreparation__purification_steps = Slot(uri=LAMBDA.purification_steps, name="samplePreparation__purification_steps", curie=LAMBDA.curie('purification_steps'),
+                   model_uri=LAMBDA.samplePreparation__purification_steps, domain=None, range=Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]])
 
-slots.samplePreparation__affinity_column = Slot(uri=LAMBDABER.affinity_column, name="samplePreparation__affinity_column", curie=LAMBDABER.curie('affinity_column'),
-                   model_uri=LAMBDABER.samplePreparation__affinity_column, domain=None, range=Optional[str])
+slots.samplePreparation__affinity_type = Slot(uri=LAMBDA.affinity_type, name="samplePreparation__affinity_type", curie=LAMBDA.curie('affinity_type'),
+                   model_uri=LAMBDA.samplePreparation__affinity_type, domain=None, range=Optional[str])
 
-slots.samplePreparation__lysis_buffer = Slot(uri=LAMBDABER.lysis_buffer, name="samplePreparation__lysis_buffer", curie=LAMBDABER.curie('lysis_buffer'),
-                   model_uri=LAMBDABER.samplePreparation__lysis_buffer, domain=None, range=Optional[str])
+slots.samplePreparation__affinity_column = Slot(uri=LAMBDA.affinity_column, name="samplePreparation__affinity_column", curie=LAMBDA.curie('affinity_column'),
+                   model_uri=LAMBDA.samplePreparation__affinity_column, domain=None, range=Optional[str])
 
-slots.samplePreparation__wash_buffer = Slot(uri=LAMBDABER.wash_buffer, name="samplePreparation__wash_buffer", curie=LAMBDABER.curie('wash_buffer'),
-                   model_uri=LAMBDABER.samplePreparation__wash_buffer, domain=None, range=Optional[str])
+slots.samplePreparation__lysis_buffer = Slot(uri=LAMBDA.lysis_buffer, name="samplePreparation__lysis_buffer", curie=LAMBDA.curie('lysis_buffer'),
+                   model_uri=LAMBDA.samplePreparation__lysis_buffer, domain=None, range=Optional[str])
 
-slots.samplePreparation__elution_buffer = Slot(uri=LAMBDABER.elution_buffer, name="samplePreparation__elution_buffer", curie=LAMBDABER.curie('elution_buffer'),
-                   model_uri=LAMBDABER.samplePreparation__elution_buffer, domain=None, range=Optional[str])
+slots.samplePreparation__wash_buffer = Slot(uri=LAMBDA.wash_buffer, name="samplePreparation__wash_buffer", curie=LAMBDA.curie('wash_buffer'),
+                   model_uri=LAMBDA.samplePreparation__wash_buffer, domain=None, range=Optional[str])
 
-slots.samplePreparation__tag_removal = Slot(uri=LAMBDABER.tag_removal, name="samplePreparation__tag_removal", curie=LAMBDABER.curie('tag_removal'),
-                   model_uri=LAMBDABER.samplePreparation__tag_removal, domain=None, range=Optional[Union[bool, Bool]])
+slots.samplePreparation__elution_buffer = Slot(uri=LAMBDA.elution_buffer, name="samplePreparation__elution_buffer", curie=LAMBDA.curie('elution_buffer'),
+                   model_uri=LAMBDA.samplePreparation__elution_buffer, domain=None, range=Optional[str])
 
-slots.samplePreparation__protease = Slot(uri=LAMBDABER.protease, name="samplePreparation__protease", curie=LAMBDABER.curie('protease'),
-                   model_uri=LAMBDABER.samplePreparation__protease, domain=None, range=Optional[str])
+slots.samplePreparation__tag_removal = Slot(uri=LAMBDA.tag_removal, name="samplePreparation__tag_removal", curie=LAMBDA.curie('tag_removal'),
+                   model_uri=LAMBDA.samplePreparation__tag_removal, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.samplePreparation__protease_ratio = Slot(uri=LAMBDABER.protease_ratio, name="samplePreparation__protease_ratio", curie=LAMBDABER.curie('protease_ratio'),
-                   model_uri=LAMBDABER.samplePreparation__protease_ratio, domain=None, range=Optional[str])
+slots.samplePreparation__protease = Slot(uri=LAMBDA.protease, name="samplePreparation__protease", curie=LAMBDA.curie('protease'),
+                   model_uri=LAMBDA.samplePreparation__protease, domain=None, range=Optional[str])
 
-slots.samplePreparation__cleavage_time_h = Slot(uri=LAMBDABER.cleavage_time_h, name="samplePreparation__cleavage_time_h", curie=LAMBDABER.curie('cleavage_time_h'),
-                   model_uri=LAMBDABER.samplePreparation__cleavage_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__protease_ratio = Slot(uri=LAMBDA.protease_ratio, name="samplePreparation__protease_ratio", curie=LAMBDA.curie('protease_ratio'),
+                   model_uri=LAMBDA.samplePreparation__protease_ratio, domain=None, range=Optional[str])
 
-slots.samplePreparation__cleavage_temperature_c = Slot(uri=LAMBDABER.cleavage_temperature_c, name="samplePreparation__cleavage_temperature_c", curie=LAMBDABER.curie('cleavage_temperature_c'),
-                   model_uri=LAMBDABER.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__cleavage_time_h = Slot(uri=LAMBDA.cleavage_time_h, name="samplePreparation__cleavage_time_h", curie=LAMBDA.curie('cleavage_time_h'),
+                   model_uri=LAMBDA.samplePreparation__cleavage_time_h, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__second_affinity_reverse = Slot(uri=LAMBDABER.second_affinity_reverse, name="samplePreparation__second_affinity_reverse", curie=LAMBDABER.curie('second_affinity_reverse'),
-                   model_uri=LAMBDABER.samplePreparation__second_affinity_reverse, domain=None, range=Optional[str])
+slots.samplePreparation__cleavage_temperature_c = Slot(uri=LAMBDA.cleavage_temperature_c, name="samplePreparation__cleavage_temperature_c", curie=LAMBDA.curie('cleavage_temperature_c'),
+                   model_uri=LAMBDA.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__iex_column = Slot(uri=LAMBDABER.iex_column, name="samplePreparation__iex_column", curie=LAMBDABER.curie('iex_column'),
-                   model_uri=LAMBDABER.samplePreparation__iex_column, domain=None, range=Optional[str])
+slots.samplePreparation__second_affinity_reverse = Slot(uri=LAMBDA.second_affinity_reverse, name="samplePreparation__second_affinity_reverse", curie=LAMBDA.curie('second_affinity_reverse'),
+                   model_uri=LAMBDA.samplePreparation__second_affinity_reverse, domain=None, range=Optional[str])
 
-slots.samplePreparation__hic_column = Slot(uri=LAMBDABER.hic_column, name="samplePreparation__hic_column", curie=LAMBDABER.curie('hic_column'),
-                   model_uri=LAMBDABER.samplePreparation__hic_column, domain=None, range=Optional[str])
+slots.samplePreparation__iex_column = Slot(uri=LAMBDA.iex_column, name="samplePreparation__iex_column", curie=LAMBDA.curie('iex_column'),
+                   model_uri=LAMBDA.samplePreparation__iex_column, domain=None, range=Optional[str])
 
-slots.samplePreparation__sec_column = Slot(uri=LAMBDABER.sec_column, name="samplePreparation__sec_column", curie=LAMBDABER.curie('sec_column'),
-                   model_uri=LAMBDABER.samplePreparation__sec_column, domain=None, range=Optional[str])
+slots.samplePreparation__hic_column = Slot(uri=LAMBDA.hic_column, name="samplePreparation__hic_column", curie=LAMBDA.curie('hic_column'),
+                   model_uri=LAMBDA.samplePreparation__hic_column, domain=None, range=Optional[str])
 
-slots.samplePreparation__sec_buffer = Slot(uri=LAMBDABER.sec_buffer, name="samplePreparation__sec_buffer", curie=LAMBDABER.curie('sec_buffer'),
-                   model_uri=LAMBDABER.samplePreparation__sec_buffer, domain=None, range=Optional[str])
+slots.samplePreparation__sec_column = Slot(uri=LAMBDA.sec_column, name="samplePreparation__sec_column", curie=LAMBDA.curie('sec_column'),
+                   model_uri=LAMBDA.samplePreparation__sec_column, domain=None, range=Optional[str])
 
-slots.samplePreparation__concentration_method = Slot(uri=LAMBDABER.concentration_method, name="samplePreparation__concentration_method", curie=LAMBDABER.curie('concentration_method'),
-                   model_uri=LAMBDABER.samplePreparation__concentration_method, domain=None, range=Optional[str])
+slots.samplePreparation__sec_buffer = Slot(uri=LAMBDA.sec_buffer, name="samplePreparation__sec_buffer", curie=LAMBDA.curie('sec_buffer'),
+                   model_uri=LAMBDA.samplePreparation__sec_buffer, domain=None, range=Optional[str])
 
-slots.samplePreparation__final_buffer = Slot(uri=LAMBDABER.final_buffer, name="samplePreparation__final_buffer", curie=LAMBDABER.curie('final_buffer'),
-                   model_uri=LAMBDABER.samplePreparation__final_buffer, domain=None, range=Optional[str])
+slots.samplePreparation__concentration_method = Slot(uri=LAMBDA.concentration_method, name="samplePreparation__concentration_method", curie=LAMBDA.curie('concentration_method'),
+                   model_uri=LAMBDA.samplePreparation__concentration_method, domain=None, range=Optional[str])
 
-slots.samplePreparation__final_concentration_mg_per_ml = Slot(uri=LAMBDABER.final_concentration_mg_per_ml, name="samplePreparation__final_concentration_mg_per_ml", curie=LAMBDABER.curie('final_concentration_mg_per_ml'),
-                   model_uri=LAMBDABER.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__final_buffer = Slot(uri=LAMBDA.final_buffer, name="samplePreparation__final_buffer", curie=LAMBDA.curie('final_buffer'),
+                   model_uri=LAMBDA.samplePreparation__final_buffer, domain=None, range=Optional[str])
 
-slots.samplePreparation__yield_mg = Slot(uri=LAMBDABER.yield_mg, name="samplePreparation__yield_mg", curie=LAMBDABER.curie('yield_mg'),
-                   model_uri=LAMBDABER.samplePreparation__yield_mg, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__final_concentration_mg_per_ml = Slot(uri=LAMBDA.final_concentration_mg_per_ml, name="samplePreparation__final_concentration_mg_per_ml", curie=LAMBDA.curie('final_concentration_mg_per_ml'),
+                   model_uri=LAMBDA.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__purity_by_sds_page_percent = Slot(uri=LAMBDABER.purity_by_sds_page_percent, name="samplePreparation__purity_by_sds_page_percent", curie=LAMBDABER.curie('purity_by_sds_page_percent'),
-                   model_uri=LAMBDABER.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.samplePreparation__yield_mg = Slot(uri=LAMBDA.yield_mg, name="samplePreparation__yield_mg", curie=LAMBDA.curie('yield_mg'),
+                   model_uri=LAMBDA.samplePreparation__yield_mg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__aggregation_assessment = Slot(uri=LAMBDABER.aggregation_assessment, name="samplePreparation__aggregation_assessment", curie=LAMBDABER.curie('aggregation_assessment'),
-                   model_uri=LAMBDABER.samplePreparation__aggregation_assessment, domain=None, range=Optional[str])
+slots.samplePreparation__purity_by_sds_page_percent = Slot(uri=LAMBDA.purity_by_sds_page_percent, name="samplePreparation__purity_by_sds_page_percent", curie=LAMBDA.curie('purity_by_sds_page_percent'),
+                   model_uri=LAMBDA.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.samplePreparation__aliquoting = Slot(uri=LAMBDABER.aliquoting, name="samplePreparation__aliquoting", curie=LAMBDABER.curie('aliquoting'),
-                   model_uri=LAMBDABER.samplePreparation__aliquoting, domain=None, range=Optional[str])
+slots.samplePreparation__aggregation_assessment = Slot(uri=LAMBDA.aggregation_assessment, name="samplePreparation__aggregation_assessment", curie=LAMBDA.curie('aggregation_assessment'),
+                   model_uri=LAMBDA.samplePreparation__aggregation_assessment, domain=None, range=Optional[str])
 
-slots.instrument__instrument_code = Slot(uri=LAMBDABER.instrument_code, name="instrument__instrument_code", curie=LAMBDABER.curie('instrument_code'),
-                   model_uri=LAMBDABER.instrument__instrument_code, domain=None, range=str)
+slots.samplePreparation__aliquoting = Slot(uri=LAMBDA.aliquoting, name="samplePreparation__aliquoting", curie=LAMBDA.curie('aliquoting'),
+                   model_uri=LAMBDA.samplePreparation__aliquoting, domain=None, range=Optional[str])
 
-slots.instrument__instrument_category = Slot(uri=LAMBDABER.instrument_category, name="instrument__instrument_category", curie=LAMBDABER.curie('instrument_category'),
-                   model_uri=LAMBDABER.instrument__instrument_category, domain=None, range=Optional[Union[str, "InstrumentCategoryEnum"]])
+slots.instrument__instrument_code = Slot(uri=LAMBDA.instrument_code, name="instrument__instrument_code", curie=LAMBDA.curie('instrument_code'),
+                   model_uri=LAMBDA.instrument__instrument_code, domain=None, range=str)
 
-slots.instrument__facility_name = Slot(uri=LAMBDABER.facility_name, name="instrument__facility_name", curie=LAMBDABER.curie('facility_name'),
-                   model_uri=LAMBDABER.instrument__facility_name, domain=None, range=Optional[Union[str, "FacilityEnum"]])
+slots.instrument__instrument_category = Slot(uri=LAMBDA.instrument_category, name="instrument__instrument_category", curie=LAMBDA.curie('instrument_category'),
+                   model_uri=LAMBDA.instrument__instrument_category, domain=None, range=Optional[Union[str, "InstrumentCategoryEnum"]])
 
-slots.instrument__facility_ror = Slot(uri=LAMBDABER.facility_ror, name="instrument__facility_ror", curie=LAMBDABER.curie('facility_ror'),
-                   model_uri=LAMBDABER.instrument__facility_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
+slots.instrument__facility_name = Slot(uri=LAMBDA.facility_name, name="instrument__facility_name", curie=LAMBDA.curie('facility_name'),
+                   model_uri=LAMBDA.instrument__facility_name, domain=None, range=Optional[Union[str, "FacilityEnum"]])
+
+slots.instrument__facility_ror = Slot(uri=LAMBDA.facility_ror, name="instrument__facility_ror", curie=LAMBDA.curie('facility_ror'),
+                   model_uri=LAMBDA.instrument__facility_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^https://ror\.org/\w+$'))
 
 slots.instrument__beamline_id = Slot(uri=MMCIF['_diffrn_source.pdbx_synchrotron_beamline'], name="instrument__beamline_id", curie=MMCIF.curie('_diffrn_source.pdbx_synchrotron_beamline'),
-                   model_uri=LAMBDABER.instrument__beamline_id, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.instrument__beamline_id, domain=None, range=Optional[str])
 
-slots.instrument__manufacturer = Slot(uri=LAMBDABER.manufacturer, name="instrument__manufacturer", curie=LAMBDABER.curie('manufacturer'),
-                   model_uri=LAMBDABER.instrument__manufacturer, domain=None, range=Optional[str])
+slots.instrument__manufacturer = Slot(uri=LAMBDA.manufacturer, name="instrument__manufacturer", curie=LAMBDA.curie('manufacturer'),
+                   model_uri=LAMBDA.instrument__manufacturer, domain=None, range=Optional[str])
 
-slots.instrument__model = Slot(uri=LAMBDABER.model, name="instrument__model", curie=LAMBDABER.curie('model'),
-                   model_uri=LAMBDABER.instrument__model, domain=None, range=Optional[str])
+slots.instrument__model = Slot(uri=LAMBDA.model, name="instrument__model", curie=LAMBDA.curie('model'),
+                   model_uri=LAMBDA.instrument__model, domain=None, range=Optional[str])
 
-slots.instrument__installation_date = Slot(uri=LAMBDABER.installation_date, name="instrument__installation_date", curie=LAMBDABER.curie('installation_date'),
-                   model_uri=LAMBDABER.instrument__installation_date, domain=None, range=Optional[str])
+slots.instrument__installation_date = Slot(uri=LAMBDA.installation_date, name="instrument__installation_date", curie=LAMBDA.curie('installation_date'),
+                   model_uri=LAMBDA.instrument__installation_date, domain=None, range=Optional[str])
 
-slots.instrument__current_status = Slot(uri=LAMBDABER.current_status, name="instrument__current_status", curie=LAMBDABER.curie('current_status'),
-                   model_uri=LAMBDABER.instrument__current_status, domain=None, range=Optional[Union[str, "InstrumentStatusEnum"]])
+slots.instrument__current_status = Slot(uri=LAMBDA.current_status, name="instrument__current_status", curie=LAMBDA.curie('current_status'),
+                   model_uri=LAMBDA.instrument__current_status, domain=None, range=Optional[Union[str, "InstrumentStatusEnum"]])
 
-slots.cryoEMInstrument__accelerating_voltage = Slot(uri=LAMBDABER.accelerating_voltage, name="cryoEMInstrument__accelerating_voltage", curie=LAMBDABER.curie('accelerating_voltage'),
-                   model_uri=LAMBDABER.cryoEMInstrument__accelerating_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__accelerating_voltage = Slot(uri=LAMBDA.accelerating_voltage, name="cryoEMInstrument__accelerating_voltage", curie=LAMBDA.curie('accelerating_voltage'),
+                   model_uri=LAMBDA.cryoEMInstrument__accelerating_voltage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__cs_corrector = Slot(uri=LAMBDABER.cs_corrector, name="cryoEMInstrument__cs_corrector", curie=LAMBDABER.curie('cs_corrector'),
-                   model_uri=LAMBDABER.cryoEMInstrument__cs_corrector, domain=None, range=Optional[Union[bool, Bool]])
+slots.cryoEMInstrument__cs_corrector = Slot(uri=LAMBDA.cs_corrector, name="cryoEMInstrument__cs_corrector", curie=LAMBDA.curie('cs_corrector'),
+                   model_uri=LAMBDA.cryoEMInstrument__cs_corrector, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.cryoEMInstrument__phase_plate = Slot(uri=LAMBDABER.phase_plate, name="cryoEMInstrument__phase_plate", curie=LAMBDABER.curie('phase_plate'),
-                   model_uri=LAMBDABER.cryoEMInstrument__phase_plate, domain=None, range=Optional[Union[bool, Bool]])
+slots.cryoEMInstrument__phase_plate = Slot(uri=LAMBDA.phase_plate, name="cryoEMInstrument__phase_plate", curie=LAMBDA.curie('phase_plate'),
+                   model_uri=LAMBDA.cryoEMInstrument__phase_plate, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.cryoEMInstrument__detector_technology = Slot(uri=LAMBDABER.detector_technology, name="cryoEMInstrument__detector_technology", curie=LAMBDABER.curie('detector_technology'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+slots.cryoEMInstrument__detector_technology = Slot(uri=LAMBDA.detector_technology, name="cryoEMInstrument__detector_technology", curie=LAMBDA.curie('detector_technology'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
 
-slots.cryoEMInstrument__detector_manufacturer = Slot(uri=LAMBDABER.detector_manufacturer, name="cryoEMInstrument__detector_manufacturer", curie=LAMBDABER.curie('detector_manufacturer'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_manufacturer, domain=None, range=Optional[str])
+slots.cryoEMInstrument__detector_manufacturer = Slot(uri=LAMBDA.detector_manufacturer, name="cryoEMInstrument__detector_manufacturer", curie=LAMBDA.curie('detector_manufacturer'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_manufacturer, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="cryoEMInstrument__detector_model", curie=LAMBDABER.curie('detector_model'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_model, domain=None, range=Optional[str])
+slots.cryoEMInstrument__detector_model = Slot(uri=LAMBDA.detector_model, name="cryoEMInstrument__detector_model", curie=LAMBDA.curie('detector_model'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_model, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="cryoEMInstrument__detector_mode", curie=LAMBDABER.curie('detector_mode'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
+slots.cryoEMInstrument__detector_mode = Slot(uri=LAMBDA.detector_mode, name="cryoEMInstrument__detector_mode", curie=LAMBDA.curie('detector_mode'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
 
-slots.cryoEMInstrument__detector_position = Slot(uri=LAMBDABER.detector_position, name="cryoEMInstrument__detector_position", curie=LAMBDABER.curie('detector_position'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_position, domain=None, range=Optional[str])
+slots.cryoEMInstrument__detector_position = Slot(uri=LAMBDA.detector_position, name="cryoEMInstrument__detector_position", curie=LAMBDA.curie('detector_position'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_position, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__detector_dimensions = Slot(uri=LAMBDABER.detector_dimensions, name="cryoEMInstrument__detector_dimensions", curie=LAMBDABER.curie('detector_dimensions'),
-                   model_uri=LAMBDABER.cryoEMInstrument__detector_dimensions, domain=None, range=Optional[str])
+slots.cryoEMInstrument__detector_dimensions = Slot(uri=LAMBDA.detector_dimensions, name="cryoEMInstrument__detector_dimensions", curie=LAMBDA.curie('detector_dimensions'),
+                   model_uri=LAMBDA.cryoEMInstrument__detector_dimensions, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__pixel_size_physical_um = Slot(uri=LAMBDABER.pixel_size_physical_um, name="cryoEMInstrument__pixel_size_physical_um", curie=LAMBDABER.curie('pixel_size_physical_um'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical_um, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__pixel_size_physical_um = Slot(uri=LAMBDA.pixel_size_physical_um, name="cryoEMInstrument__pixel_size_physical_um", curie=LAMBDA.curie('pixel_size_physical_um'),
+                   model_uri=LAMBDA.cryoEMInstrument__pixel_size_physical_um, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDABER.autoloader_capacity, name="cryoEMInstrument__autoloader_capacity", curie=LAMBDABER.curie('autoloader_capacity'),
-                   model_uri=LAMBDABER.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__autoloader_capacity = Slot(uri=LAMBDA.autoloader_capacity, name="cryoEMInstrument__autoloader_capacity", curie=LAMBDA.curie('autoloader_capacity'),
+                   model_uri=LAMBDA.cryoEMInstrument__autoloader_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__cs = Slot(uri=LAMBDABER.cs, name="cryoEMInstrument__cs", curie=LAMBDABER.curie('cs'),
-                   model_uri=LAMBDABER.cryoEMInstrument__cs, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__cs = Slot(uri=LAMBDA.cs, name="cryoEMInstrument__cs", curie=LAMBDA.curie('cs'),
+                   model_uri=LAMBDA.cryoEMInstrument__cs, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__c2_aperture = Slot(uri=LAMBDABER.c2_aperture, name="cryoEMInstrument__c2_aperture", curie=LAMBDABER.curie('c2_aperture'),
-                   model_uri=LAMBDABER.cryoEMInstrument__c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__c2_aperture = Slot(uri=LAMBDA.c2_aperture, name="cryoEMInstrument__c2_aperture", curie=LAMBDA.curie('c2_aperture'),
+                   model_uri=LAMBDA.cryoEMInstrument__c2_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__objective_aperture = Slot(uri=LAMBDABER.objective_aperture, name="cryoEMInstrument__objective_aperture", curie=LAMBDABER.curie('objective_aperture'),
-                   model_uri=LAMBDABER.cryoEMInstrument__objective_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__objective_aperture = Slot(uri=LAMBDA.objective_aperture, name="cryoEMInstrument__objective_aperture", curie=LAMBDA.curie('objective_aperture'),
+                   model_uri=LAMBDA.cryoEMInstrument__objective_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__phase_plate_type = Slot(uri=LAMBDABER.phase_plate_type, name="cryoEMInstrument__phase_plate_type", curie=LAMBDABER.curie('phase_plate_type'),
-                   model_uri=LAMBDABER.cryoEMInstrument__phase_plate_type, domain=None, range=Optional[str])
+slots.cryoEMInstrument__phase_plate_type = Slot(uri=LAMBDA.phase_plate_type, name="cryoEMInstrument__phase_plate_type", curie=LAMBDA.curie('phase_plate_type'),
+                   model_uri=LAMBDA.cryoEMInstrument__phase_plate_type, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__energy_filter_present = Slot(uri=LAMBDABER.energy_filter_present, name="cryoEMInstrument__energy_filter_present", curie=LAMBDABER.curie('energy_filter_present'),
-                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_present, domain=None, range=Optional[Union[bool, Bool]])
+slots.cryoEMInstrument__energy_filter_present = Slot(uri=LAMBDA.energy_filter_present, name="cryoEMInstrument__energy_filter_present", curie=LAMBDA.curie('energy_filter_present'),
+                   model_uri=LAMBDA.cryoEMInstrument__energy_filter_present, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.cryoEMInstrument__energy_filter_make = Slot(uri=LAMBDABER.energy_filter_make, name="cryoEMInstrument__energy_filter_make", curie=LAMBDABER.curie('energy_filter_make'),
-                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_make, domain=None, range=Optional[str])
+slots.cryoEMInstrument__energy_filter_make = Slot(uri=LAMBDA.energy_filter_make, name="cryoEMInstrument__energy_filter_make", curie=LAMBDA.curie('energy_filter_make'),
+                   model_uri=LAMBDA.cryoEMInstrument__energy_filter_make, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__energy_filter_model = Slot(uri=LAMBDABER.energy_filter_model, name="cryoEMInstrument__energy_filter_model", curie=LAMBDABER.curie('energy_filter_model'),
-                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_model, domain=None, range=Optional[str])
+slots.cryoEMInstrument__energy_filter_model = Slot(uri=LAMBDA.energy_filter_model, name="cryoEMInstrument__energy_filter_model", curie=LAMBDA.curie('energy_filter_model'),
+                   model_uri=LAMBDA.cryoEMInstrument__energy_filter_model, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__energy_filter_slit_width = Slot(uri=LAMBDABER.energy_filter_slit_width, name="cryoEMInstrument__energy_filter_slit_width", curie=LAMBDABER.curie('energy_filter_slit_width'),
-                   model_uri=LAMBDABER.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__energy_filter_slit_width = Slot(uri=LAMBDA.energy_filter_slit_width, name="cryoEMInstrument__energy_filter_slit_width", curie=LAMBDA.curie('energy_filter_slit_width'),
+                   model_uri=LAMBDA.cryoEMInstrument__energy_filter_slit_width, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__pixel_size_physical = Slot(uri=LAMBDABER.pixel_size_physical, name="cryoEMInstrument__pixel_size_physical", curie=LAMBDABER.curie('pixel_size_physical'),
-                   model_uri=LAMBDABER.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__pixel_size_physical = Slot(uri=LAMBDA.pixel_size_physical, name="cryoEMInstrument__pixel_size_physical", curie=LAMBDA.curie('pixel_size_physical'),
+                   model_uri=LAMBDA.cryoEMInstrument__pixel_size_physical, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__microscope_software = Slot(uri=LAMBDABER.microscope_software, name="cryoEMInstrument__microscope_software", curie=LAMBDABER.curie('microscope_software'),
-                   model_uri=LAMBDABER.cryoEMInstrument__microscope_software, domain=None, range=Optional[str])
+slots.cryoEMInstrument__microscope_software = Slot(uri=LAMBDA.microscope_software, name="cryoEMInstrument__microscope_software", curie=LAMBDA.curie('microscope_software'),
+                   model_uri=LAMBDA.cryoEMInstrument__microscope_software, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__microscope_software_version = Slot(uri=LAMBDABER.microscope_software_version, name="cryoEMInstrument__microscope_software_version", curie=LAMBDABER.curie('microscope_software_version'),
-                   model_uri=LAMBDABER.cryoEMInstrument__microscope_software_version, domain=None, range=Optional[str])
+slots.cryoEMInstrument__microscope_software_version = Slot(uri=LAMBDA.microscope_software_version, name="cryoEMInstrument__microscope_software_version", curie=LAMBDA.curie('microscope_software_version'),
+                   model_uri=LAMBDA.cryoEMInstrument__microscope_software_version, domain=None, range=Optional[str])
 
-slots.cryoEMInstrument__spotsize = Slot(uri=LAMBDABER.spotsize, name="cryoEMInstrument__spotsize", curie=LAMBDABER.curie('spotsize'),
-                   model_uri=LAMBDABER.cryoEMInstrument__spotsize, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__spotsize = Slot(uri=LAMBDA.spotsize, name="cryoEMInstrument__spotsize", curie=LAMBDA.curie('spotsize'),
+                   model_uri=LAMBDA.cryoEMInstrument__spotsize, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDABER.gunlens, name="cryoEMInstrument__gunlens", curie=LAMBDABER.curie('gunlens'),
-                   model_uri=LAMBDABER.cryoEMInstrument__gunlens, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__gunlens = Slot(uri=LAMBDA.gunlens, name="cryoEMInstrument__gunlens", curie=LAMBDA.curie('gunlens'),
+                   model_uri=LAMBDA.cryoEMInstrument__gunlens, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDABER.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDABER.curie('imaging_mode'),
-                   model_uri=LAMBDABER.cryoEMInstrument__imaging_mode, domain=None, range=Optional[Union[str, "ImagingModeEnum"]])
+slots.cryoEMInstrument__imaging_mode = Slot(uri=LAMBDA.imaging_mode, name="cryoEMInstrument__imaging_mode", curie=LAMBDA.curie('imaging_mode'),
+                   model_uri=LAMBDA.cryoEMInstrument__imaging_mode, domain=None, range=Optional[Union[str, "ImagingModeEnum"]])
 
-slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDABER.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDABER.curie('tem_beam_diameter'),
-                   model_uri=LAMBDABER.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDA.tem_beam_diameter, name="cryoEMInstrument__tem_beam_diameter", curie=LAMBDA.curie('tem_beam_diameter'),
+                   model_uri=LAMBDA.cryoEMInstrument__tem_beam_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="xRayInstrument__source_type", curie=LAMBDABER.curie('source_type'),
-                   model_uri=LAMBDABER.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
+slots.xRayInstrument__source_type = Slot(uri=LAMBDA.source_type, name="xRayInstrument__source_type", curie=LAMBDA.curie('source_type'),
+                   model_uri=LAMBDA.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
 slots.xRayInstrument__detector_technology = Slot(uri=NSLS2.Detector, name="xRayInstrument__detector_technology", curie=NSLS2.curie('Detector'),
-                   model_uri=LAMBDABER.xRayInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+                   model_uri=LAMBDA.xRayInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
 
-slots.xRayInstrument__detector_manufacturer = Slot(uri=LAMBDABER.detector_manufacturer, name="xRayInstrument__detector_manufacturer", curie=LAMBDABER.curie('detector_manufacturer'),
-                   model_uri=LAMBDABER.xRayInstrument__detector_manufacturer, domain=None, range=Optional[str])
+slots.xRayInstrument__detector_manufacturer = Slot(uri=LAMBDA.detector_manufacturer, name="xRayInstrument__detector_manufacturer", curie=LAMBDA.curie('detector_manufacturer'),
+                   model_uri=LAMBDA.xRayInstrument__detector_manufacturer, domain=None, range=Optional[str])
 
-slots.xRayInstrument__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRayInstrument__detector_model", curie=LAMBDABER.curie('detector_model'),
-                   model_uri=LAMBDABER.xRayInstrument__detector_model, domain=None, range=Optional[str])
+slots.xRayInstrument__detector_model = Slot(uri=LAMBDA.detector_model, name="xRayInstrument__detector_model", curie=LAMBDA.curie('detector_model'),
+                   model_uri=LAMBDA.xRayInstrument__detector_model, domain=None, range=Optional[str])
 
-slots.xRayInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="xRayInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
-                   model_uri=LAMBDABER.xRayInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayInstrument__energy_min = Slot(uri=LAMBDA.energy_min, name="xRayInstrument__energy_min", curie=LAMBDA.curie('energy_min'),
+                   model_uri=LAMBDA.xRayInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__energy_max = Slot(uri=LAMBDABER.energy_max, name="xRayInstrument__energy_max", curie=LAMBDABER.curie('energy_max'),
-                   model_uri=LAMBDABER.xRayInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayInstrument__energy_max = Slot(uri=LAMBDA.energy_max, name="xRayInstrument__energy_max", curie=LAMBDA.curie('energy_max'),
+                   model_uri=LAMBDA.xRayInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__beam_size_min = Slot(uri=LAMBDABER.beam_size_min, name="xRayInstrument__beam_size_min", curie=LAMBDABER.curie('beam_size_min'),
-                   model_uri=LAMBDABER.xRayInstrument__beam_size_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayInstrument__beam_size_min = Slot(uri=LAMBDA.beam_size_min, name="xRayInstrument__beam_size_min", curie=LAMBDA.curie('beam_size_min'),
+                   model_uri=LAMBDA.xRayInstrument__beam_size_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__beam_size_max = Slot(uri=LAMBDABER.beam_size_max, name="xRayInstrument__beam_size_max", curie=LAMBDABER.curie('beam_size_max'),
-                   model_uri=LAMBDABER.xRayInstrument__beam_size_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayInstrument__beam_size_max = Slot(uri=LAMBDA.beam_size_max, name="xRayInstrument__beam_size_max", curie=LAMBDA.curie('beam_size_max'),
+                   model_uri=LAMBDA.xRayInstrument__beam_size_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__flux_density = Slot(uri=LAMBDABER.flux_density, name="xRayInstrument__flux_density", curie=LAMBDABER.curie('flux_density'),
-                   model_uri=LAMBDABER.xRayInstrument__flux_density, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayInstrument__flux_density = Slot(uri=LAMBDA.flux_density, name="xRayInstrument__flux_density", curie=LAMBDA.curie('flux_density'),
+                   model_uri=LAMBDA.xRayInstrument__flux_density, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayInstrument__monochromator_type = Slot(uri=LAMBDABER.monochromator_type, name="xRayInstrument__monochromator_type", curie=LAMBDABER.curie('monochromator_type'),
-                   model_uri=LAMBDABER.xRayInstrument__monochromator_type, domain=None, range=Optional[str])
+slots.xRayInstrument__monochromator_type = Slot(uri=LAMBDA.monochromator_type, name="xRayInstrument__monochromator_type", curie=LAMBDA.curie('monochromator_type'),
+                   model_uri=LAMBDA.xRayInstrument__monochromator_type, domain=None, range=Optional[str])
 
-slots.xRayInstrument__goniometer_type = Slot(uri=LAMBDABER.goniometer_type, name="xRayInstrument__goniometer_type", curie=LAMBDABER.curie('goniometer_type'),
-                   model_uri=LAMBDABER.xRayInstrument__goniometer_type, domain=None, range=Optional[str])
+slots.xRayInstrument__goniometer_type = Slot(uri=LAMBDA.goniometer_type, name="xRayInstrument__goniometer_type", curie=LAMBDA.curie('goniometer_type'),
+                   model_uri=LAMBDA.xRayInstrument__goniometer_type, domain=None, range=Optional[str])
 
-slots.xRayInstrument__crystal_cooling_capability = Slot(uri=LAMBDABER.crystal_cooling_capability, name="xRayInstrument__crystal_cooling_capability", curie=LAMBDABER.curie('crystal_cooling_capability'),
-                   model_uri=LAMBDABER.xRayInstrument__crystal_cooling_capability, domain=None, range=Optional[Union[bool, Bool]])
+slots.xRayInstrument__crystal_cooling_capability = Slot(uri=LAMBDA.crystal_cooling_capability, name="xRayInstrument__crystal_cooling_capability", curie=LAMBDA.curie('crystal_cooling_capability'),
+                   model_uri=LAMBDA.xRayInstrument__crystal_cooling_capability, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.sAXSInstrument__q_range_min = Slot(uri=LAMBDABER.q_range_min, name="sAXSInstrument__q_range_min", curie=LAMBDABER.curie('q_range_min'),
-                   model_uri=LAMBDABER.sAXSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSInstrument__q_range_min = Slot(uri=LAMBDA.q_range_min, name="sAXSInstrument__q_range_min", curie=LAMBDA.curie('q_range_min'),
+                   model_uri=LAMBDA.sAXSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSInstrument__q_range_max = Slot(uri=LAMBDABER.q_range_max, name="sAXSInstrument__q_range_max", curie=LAMBDABER.curie('q_range_max'),
-                   model_uri=LAMBDABER.sAXSInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSInstrument__q_range_max = Slot(uri=LAMBDA.q_range_max, name="sAXSInstrument__q_range_max", curie=LAMBDA.curie('q_range_max'),
+                   model_uri=LAMBDA.sAXSInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSInstrument__detector_distance_min = Slot(uri=LAMBDABER.detector_distance_min, name="sAXSInstrument__detector_distance_min", curie=LAMBDABER.curie('detector_distance_min'),
-                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSInstrument__detector_distance_min = Slot(uri=LAMBDA.detector_distance_min, name="sAXSInstrument__detector_distance_min", curie=LAMBDA.curie('detector_distance_min'),
+                   model_uri=LAMBDA.sAXSInstrument__detector_distance_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSInstrument__detector_distance_max = Slot(uri=LAMBDABER.detector_distance_max, name="sAXSInstrument__detector_distance_max", curie=LAMBDABER.curie('detector_distance_max'),
-                   model_uri=LAMBDABER.sAXSInstrument__detector_distance_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSInstrument__detector_distance_max = Slot(uri=LAMBDA.detector_distance_max, name="sAXSInstrument__detector_distance_max", curie=LAMBDA.curie('detector_distance_max'),
+                   model_uri=LAMBDA.sAXSInstrument__detector_distance_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_changer_capacity, name="sAXSInstrument__sample_changer_capacity", curie=LAMBDABER.curie('sample_changer_capacity'),
-                   model_uri=LAMBDABER.sAXSInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSInstrument__sample_changer_capacity = Slot(uri=LAMBDA.sample_changer_capacity, name="sAXSInstrument__sample_changer_capacity", curie=LAMBDA.curie('sample_changer_capacity'),
+                   model_uri=LAMBDA.sAXSInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSInstrument__temperature_control_range = Slot(uri=LAMBDABER.temperature_control_range, name="sAXSInstrument__temperature_control_range", curie=LAMBDABER.curie('temperature_control_range'),
-                   model_uri=LAMBDABER.sAXSInstrument__temperature_control_range, domain=None, range=Optional[str])
+slots.sAXSInstrument__temperature_control_range = Slot(uri=LAMBDA.temperature_control_range, name="sAXSInstrument__temperature_control_range", curie=LAMBDA.curie('temperature_control_range'),
+                   model_uri=LAMBDA.sAXSInstrument__temperature_control_range, domain=None, range=Optional[str])
 
-slots.beamlineInstrument__techniques_supported = Slot(uri=LAMBDABER.techniques_supported, name="beamlineInstrument__techniques_supported", curie=LAMBDABER.curie('techniques_supported'),
-                   model_uri=LAMBDABER.beamlineInstrument__techniques_supported, domain=None, range=Union[Union[str, "TechniqueEnum"], list[Union[str, "TechniqueEnum"]]])
+slots.beamlineInstrument__techniques_supported = Slot(uri=LAMBDA.techniques_supported, name="beamlineInstrument__techniques_supported", curie=LAMBDA.curie('techniques_supported'),
+                   model_uri=LAMBDA.beamlineInstrument__techniques_supported, domain=None, range=Union[Union[str, "TechniqueEnum"], list[Union[str, "TechniqueEnum"]]])
 
-slots.beamlineInstrument__source_type = Slot(uri=LAMBDABER.source_type, name="beamlineInstrument__source_type", curie=LAMBDABER.curie('source_type'),
-                   model_uri=LAMBDABER.beamlineInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
+slots.beamlineInstrument__source_type = Slot(uri=LAMBDA.source_type, name="beamlineInstrument__source_type", curie=LAMBDA.curie('source_type'),
+                   model_uri=LAMBDA.beamlineInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
-slots.beamlineInstrument__energy_min = Slot(uri=LAMBDABER.energy_min, name="beamlineInstrument__energy_min", curie=LAMBDABER.curie('energy_min'),
-                   model_uri=LAMBDABER.beamlineInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.beamlineInstrument__energy_min = Slot(uri=LAMBDA.energy_min, name="beamlineInstrument__energy_min", curie=LAMBDA.curie('energy_min'),
+                   model_uri=LAMBDA.beamlineInstrument__energy_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.beamlineInstrument__energy_max = Slot(uri=LAMBDABER.energy_max, name="beamlineInstrument__energy_max", curie=LAMBDABER.curie('energy_max'),
-                   model_uri=LAMBDABER.beamlineInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.beamlineInstrument__energy_max = Slot(uri=LAMBDA.energy_max, name="beamlineInstrument__energy_max", curie=LAMBDA.curie('energy_max'),
+                   model_uri=LAMBDA.beamlineInstrument__energy_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.beamlineInstrument__q_range_min = Slot(uri=LAMBDABER.q_range_min, name="beamlineInstrument__q_range_min", curie=LAMBDABER.curie('q_range_min'),
-                   model_uri=LAMBDABER.beamlineInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.beamlineInstrument__q_range_min = Slot(uri=LAMBDA.q_range_min, name="beamlineInstrument__q_range_min", curie=LAMBDA.curie('q_range_min'),
+                   model_uri=LAMBDA.beamlineInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.beamlineInstrument__q_range_max = Slot(uri=LAMBDABER.q_range_max, name="beamlineInstrument__q_range_max", curie=LAMBDABER.curie('q_range_max'),
-                   model_uri=LAMBDABER.beamlineInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.beamlineInstrument__q_range_max = Slot(uri=LAMBDA.q_range_max, name="beamlineInstrument__q_range_max", curie=LAMBDA.curie('q_range_max'),
+                   model_uri=LAMBDA.beamlineInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.beamlineInstrument__sample_changer_capacity = Slot(uri=LAMBDABER.sample_changer_capacity, name="beamlineInstrument__sample_changer_capacity", curie=LAMBDABER.curie('sample_changer_capacity'),
-                   model_uri=LAMBDABER.beamlineInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.beamlineInstrument__sample_changer_capacity = Slot(uri=LAMBDA.sample_changer_capacity, name="beamlineInstrument__sample_changer_capacity", curie=LAMBDA.curie('sample_changer_capacity'),
+                   model_uri=LAMBDA.beamlineInstrument__sample_changer_capacity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDABER.mail_in_service, name="beamlineInstrument__mail_in_service", curie=LAMBDABER.curie('mail_in_service'),
-                   model_uri=LAMBDABER.beamlineInstrument__mail_in_service, domain=None, range=Optional[Union[bool, Bool]])
+slots.beamlineInstrument__mail_in_service = Slot(uri=LAMBDA.mail_in_service, name="beamlineInstrument__mail_in_service", curie=LAMBDA.curie('mail_in_service'),
+                   model_uri=LAMBDA.beamlineInstrument__mail_in_service, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.beamlineInstrument__website = Slot(uri=LAMBDABER.website, name="beamlineInstrument__website", curie=LAMBDABER.curie('website'),
-                   model_uri=LAMBDABER.beamlineInstrument__website, domain=None, range=Optional[Union[str, URI]])
+slots.beamlineInstrument__website = Slot(uri=LAMBDA.website, name="beamlineInstrument__website", curie=LAMBDA.curie('website'),
+                   model_uri=LAMBDA.beamlineInstrument__website, domain=None, range=Optional[Union[str, URI]])
 
-slots.beamlineInstrument__lims_system = Slot(uri=LAMBDABER.lims_system, name="beamlineInstrument__lims_system", curie=LAMBDABER.curie('lims_system'),
-                   model_uri=LAMBDABER.beamlineInstrument__lims_system, domain=None, range=Optional[Union[str, "LIMSSystemEnum"]])
+slots.beamlineInstrument__lims_system = Slot(uri=LAMBDA.lims_system, name="beamlineInstrument__lims_system", curie=LAMBDA.curie('lims_system'),
+                   model_uri=LAMBDA.beamlineInstrument__lims_system, domain=None, range=Optional[Union[str, "LIMSSystemEnum"]])
 
-slots.beamlineInstrument__daq_system = Slot(uri=LAMBDABER.daq_system, name="beamlineInstrument__daq_system", curie=LAMBDABER.curie('daq_system'),
-                   model_uri=LAMBDABER.beamlineInstrument__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
+slots.beamlineInstrument__daq_system = Slot(uri=LAMBDA.daq_system, name="beamlineInstrument__daq_system", curie=LAMBDA.curie('daq_system'),
+                   model_uri=LAMBDA.beamlineInstrument__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
-slots.beamlineInstrument__control_system = Slot(uri=LAMBDABER.control_system, name="beamlineInstrument__control_system", curie=LAMBDABER.curie('control_system'),
-                   model_uri=LAMBDABER.beamlineInstrument__control_system, domain=None, range=Optional[Union[str, "ControlSystemEnum"]])
+slots.beamlineInstrument__control_system = Slot(uri=LAMBDA.control_system, name="beamlineInstrument__control_system", curie=LAMBDA.curie('control_system'),
+                   model_uri=LAMBDA.beamlineInstrument__control_system, domain=None, range=Optional[Union[str, "ControlSystemEnum"]])
 
-slots.experimentRun__experiment_code = Slot(uri=LAMBDABER.experiment_code, name="experimentRun__experiment_code", curie=LAMBDABER.curie('experiment_code'),
-                   model_uri=LAMBDABER.experimentRun__experiment_code, domain=None, range=str)
+slots.experimentRun__experiment_code = Slot(uri=LAMBDA.experiment_code, name="experimentRun__experiment_code", curie=LAMBDA.curie('experiment_code'),
+                   model_uri=LAMBDA.experimentRun__experiment_code, domain=None, range=str)
 
-slots.experimentRun__experiment_date = Slot(uri=LAMBDABER.experiment_date, name="experimentRun__experiment_date", curie=LAMBDABER.curie('experiment_date'),
-                   model_uri=LAMBDABER.experimentRun__experiment_date, domain=None, range=Optional[str])
+slots.experimentRun__experiment_date = Slot(uri=LAMBDA.experiment_date, name="experimentRun__experiment_date", curie=LAMBDA.curie('experiment_date'),
+                   model_uri=LAMBDA.experimentRun__experiment_date, domain=None, range=Optional[str])
 
-slots.experimentRun__operator_id = Slot(uri=LAMBDABER.operator_id, name="experimentRun__operator_id", curie=LAMBDABER.curie('operator_id'),
-                   model_uri=LAMBDABER.experimentRun__operator_id, domain=None, range=Optional[str])
+slots.experimentRun__operator_id = Slot(uri=LAMBDA.operator_id, name="experimentRun__operator_id", curie=LAMBDA.curie('operator_id'),
+                   model_uri=LAMBDA.experimentRun__operator_id, domain=None, range=Optional[str])
 
-slots.experimentRun__technique = Slot(uri=LAMBDABER.technique, name="experimentRun__technique", curie=LAMBDABER.curie('technique'),
-                   model_uri=LAMBDABER.experimentRun__technique, domain=None, range=Union[str, "TechniqueEnum"])
+slots.experimentRun__technique = Slot(uri=LAMBDA.technique, name="experimentRun__technique", curie=LAMBDA.curie('technique'),
+                   model_uri=LAMBDA.experimentRun__technique, domain=None, range=Union[str, "TechniqueEnum"])
 
-slots.experimentRun__experimental_method = Slot(uri=LAMBDABER.experimental_method, name="experimentRun__experimental_method", curie=LAMBDABER.curie('experimental_method'),
-                   model_uri=LAMBDABER.experimentRun__experimental_method, domain=None, range=Optional[Union[str, "ExperimentalMethodEnum"]])
+slots.experimentRun__experimental_method = Slot(uri=LAMBDA.experimental_method, name="experimentRun__experimental_method", curie=LAMBDA.curie('experimental_method'),
+                   model_uri=LAMBDA.experimentRun__experimental_method, domain=None, range=Optional[Union[str, "ExperimentalMethodEnum"]])
 
-slots.experimentRun__experimental_conditions = Slot(uri=LAMBDABER.experimental_conditions, name="experimentRun__experimental_conditions", curie=LAMBDABER.curie('experimental_conditions'),
-                   model_uri=LAMBDABER.experimentRun__experimental_conditions, domain=None, range=Optional[Union[dict, ExperimentalConditions]])
+slots.experimentRun__experimental_conditions = Slot(uri=LAMBDA.experimental_conditions, name="experimentRun__experimental_conditions", curie=LAMBDA.curie('experimental_conditions'),
+                   model_uri=LAMBDA.experimentRun__experimental_conditions, domain=None, range=Optional[Union[dict, ExperimentalConditions]])
 
-slots.experimentRun__data_collection_strategy = Slot(uri=LAMBDABER.data_collection_strategy, name="experimentRun__data_collection_strategy", curie=LAMBDABER.curie('data_collection_strategy'),
-                   model_uri=LAMBDABER.experimentRun__data_collection_strategy, domain=None, range=Optional[Union[dict, DataCollectionStrategy]])
+slots.experimentRun__data_collection_strategy = Slot(uri=LAMBDA.data_collection_strategy, name="experimentRun__data_collection_strategy", curie=LAMBDA.curie('data_collection_strategy'),
+                   model_uri=LAMBDA.experimentRun__data_collection_strategy, domain=None, range=Optional[Union[dict, DataCollectionStrategy]])
 
-slots.experimentRun__quality_metrics = Slot(uri=LAMBDABER.quality_metrics, name="experimentRun__quality_metrics", curie=LAMBDABER.curie('quality_metrics'),
-                   model_uri=LAMBDABER.experimentRun__quality_metrics, domain=None, range=Optional[Union[dict, QualityMetrics]])
+slots.experimentRun__quality_metrics = Slot(uri=LAMBDA.quality_metrics, name="experimentRun__quality_metrics", curie=LAMBDA.curie('quality_metrics'),
+                   model_uri=LAMBDA.experimentRun__quality_metrics, domain=None, range=Optional[Union[dict, QualityMetrics]])
 
-slots.experimentRun__raw_data_location = Slot(uri=LAMBDABER.raw_data_location, name="experimentRun__raw_data_location", curie=LAMBDABER.curie('raw_data_location'),
-                   model_uri=LAMBDABER.experimentRun__raw_data_location, domain=None, range=Optional[str])
+slots.experimentRun__raw_data_location = Slot(uri=LAMBDA.raw_data_location, name="experimentRun__raw_data_location", curie=LAMBDA.curie('raw_data_location'),
+                   model_uri=LAMBDA.experimentRun__raw_data_location, domain=None, range=Optional[str])
 
-slots.experimentRun__processing_status = Slot(uri=LAMBDABER.processing_status, name="experimentRun__processing_status", curie=LAMBDABER.curie('processing_status'),
-                   model_uri=LAMBDABER.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
+slots.experimentRun__processing_status = Slot(uri=LAMBDA.processing_status, name="experimentRun__processing_status", curie=LAMBDA.curie('processing_status'),
+                   model_uri=LAMBDA.experimentRun__processing_status, domain=None, range=Optional[Union[str, "ProcessingStatusEnum"]])
 
-slots.experimentRun__daq_system = Slot(uri=LAMBDABER.daq_system, name="experimentRun__daq_system", curie=LAMBDABER.curie('daq_system'),
-                   model_uri=LAMBDABER.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
+slots.experimentRun__daq_system = Slot(uri=LAMBDA.daq_system, name="experimentRun__daq_system", curie=LAMBDA.curie('daq_system'),
+                   model_uri=LAMBDA.experimentRun__daq_system, domain=None, range=Optional[Union[str, "DataAcquisitionSystemEnum"]])
 
-slots.experimentRun__magnification = Slot(uri=LAMBDABER.magnification, name="experimentRun__magnification", curie=LAMBDABER.curie('magnification'),
-                   model_uri=LAMBDABER.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__magnification = Slot(uri=LAMBDA.magnification, name="experimentRun__magnification", curie=LAMBDA.curie('magnification'),
+                   model_uri=LAMBDA.experimentRun__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDABER.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDABER.curie('calibrated_pixel_size'),
-                   model_uri=LAMBDABER.experimentRun__calibrated_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__calibrated_pixel_size = Slot(uri=LAMBDA.calibrated_pixel_size, name="experimentRun__calibrated_pixel_size", curie=LAMBDA.curie('calibrated_pixel_size'),
+                   model_uri=LAMBDA.experimentRun__calibrated_pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__camera_binning = Slot(uri=LAMBDABER.camera_binning, name="experimentRun__camera_binning", curie=LAMBDABER.curie('camera_binning'),
-                   model_uri=LAMBDABER.experimentRun__camera_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__camera_binning = Slot(uri=LAMBDA.camera_binning, name="experimentRun__camera_binning", curie=LAMBDA.curie('camera_binning'),
+                   model_uri=LAMBDA.experimentRun__camera_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__exposure_time_per_frame = Slot(uri=LAMBDABER.exposure_time_per_frame, name="experimentRun__exposure_time_per_frame", curie=LAMBDABER.curie('exposure_time_per_frame'),
-                   model_uri=LAMBDABER.experimentRun__exposure_time_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__exposure_time_per_frame = Slot(uri=LAMBDA.exposure_time_per_frame, name="experimentRun__exposure_time_per_frame", curie=LAMBDA.curie('exposure_time_per_frame'),
+                   model_uri=LAMBDA.experimentRun__exposure_time_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__frames_per_movie = Slot(uri=LAMBDABER.frames_per_movie, name="experimentRun__frames_per_movie", curie=LAMBDABER.curie('frames_per_movie'),
-                   model_uri=LAMBDABER.experimentRun__frames_per_movie, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__frames_per_movie = Slot(uri=LAMBDA.frames_per_movie, name="experimentRun__frames_per_movie", curie=LAMBDA.curie('frames_per_movie'),
+                   model_uri=LAMBDA.experimentRun__frames_per_movie, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__total_exposure_time = Slot(uri=LAMBDABER.total_exposure_time, name="experimentRun__total_exposure_time", curie=LAMBDABER.curie('total_exposure_time'),
-                   model_uri=LAMBDABER.experimentRun__total_exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__total_exposure_time = Slot(uri=LAMBDA.total_exposure_time, name="experimentRun__total_exposure_time", curie=LAMBDA.curie('total_exposure_time'),
+                   model_uri=LAMBDA.experimentRun__total_exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__total_dose = Slot(uri=LAMBDABER.total_dose, name="experimentRun__total_dose", curie=LAMBDABER.curie('total_dose'),
-                   model_uri=LAMBDABER.experimentRun__total_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__total_dose = Slot(uri=LAMBDA.total_dose, name="experimentRun__total_dose", curie=LAMBDA.curie('total_dose'),
+                   model_uri=LAMBDA.experimentRun__total_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__dose_rate = Slot(uri=LAMBDABER.dose_rate, name="experimentRun__dose_rate", curie=LAMBDABER.curie('dose_rate'),
-                   model_uri=LAMBDABER.experimentRun__dose_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__dose_rate = Slot(uri=LAMBDA.dose_rate, name="experimentRun__dose_rate", curie=LAMBDA.curie('dose_rate'),
+                   model_uri=LAMBDA.experimentRun__dose_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__defocus_target = Slot(uri=LAMBDABER.defocus_target, name="experimentRun__defocus_target", curie=LAMBDABER.curie('defocus_target'),
-                   model_uri=LAMBDABER.experimentRun__defocus_target, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__defocus_target = Slot(uri=LAMBDA.defocus_target, name="experimentRun__defocus_target", curie=LAMBDA.curie('defocus_target'),
+                   model_uri=LAMBDA.experimentRun__defocus_target, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__defocus_range_min = Slot(uri=LAMBDABER.defocus_range_min, name="experimentRun__defocus_range_min", curie=LAMBDABER.curie('defocus_range_min'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__defocus_range_min = Slot(uri=LAMBDA.defocus_range_min, name="experimentRun__defocus_range_min", curie=LAMBDA.curie('defocus_range_min'),
+                   model_uri=LAMBDA.experimentRun__defocus_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__defocus_range_max = Slot(uri=LAMBDABER.defocus_range_max, name="experimentRun__defocus_range_max", curie=LAMBDABER.curie('defocus_range_max'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__defocus_range_max = Slot(uri=LAMBDA.defocus_range_max, name="experimentRun__defocus_range_max", curie=LAMBDA.curie('defocus_range_max'),
+                   model_uri=LAMBDA.experimentRun__defocus_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__defocus_range_increment = Slot(uri=LAMBDABER.defocus_range_increment, name="experimentRun__defocus_range_increment", curie=LAMBDABER.curie('defocus_range_increment'),
-                   model_uri=LAMBDABER.experimentRun__defocus_range_increment, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__defocus_range_increment = Slot(uri=LAMBDA.defocus_range_increment, name="experimentRun__defocus_range_increment", curie=LAMBDA.curie('defocus_range_increment'),
+                   model_uri=LAMBDA.experimentRun__defocus_range_increment, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__astigmatism_target = Slot(uri=LAMBDABER.astigmatism_target, name="experimentRun__astigmatism_target", curie=LAMBDABER.curie('astigmatism_target'),
-                   model_uri=LAMBDABER.experimentRun__astigmatism_target, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__astigmatism_target = Slot(uri=LAMBDA.astigmatism_target, name="experimentRun__astigmatism_target", curie=LAMBDA.curie('astigmatism_target'),
+                   model_uri=LAMBDA.experimentRun__astigmatism_target, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__coma = Slot(uri=LAMBDABER.coma, name="experimentRun__coma", curie=LAMBDABER.curie('coma'),
-                   model_uri=LAMBDABER.experimentRun__coma, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__coma = Slot(uri=LAMBDA.coma, name="experimentRun__coma", curie=LAMBDA.curie('coma'),
+                   model_uri=LAMBDA.experimentRun__coma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__stage_tilt = Slot(uri=LAMBDABER.stage_tilt, name="experimentRun__stage_tilt", curie=LAMBDABER.curie('stage_tilt'),
-                   model_uri=LAMBDABER.experimentRun__stage_tilt, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__stage_tilt = Slot(uri=LAMBDA.stage_tilt, name="experimentRun__stage_tilt", curie=LAMBDA.curie('stage_tilt'),
+                   model_uri=LAMBDA.experimentRun__stage_tilt, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__autoloader_slot = Slot(uri=LAMBDABER.autoloader_slot, name="experimentRun__autoloader_slot", curie=LAMBDABER.curie('autoloader_slot'),
-                   model_uri=LAMBDABER.experimentRun__autoloader_slot, domain=None, range=Optional[str])
+slots.experimentRun__autoloader_slot = Slot(uri=LAMBDA.autoloader_slot, name="experimentRun__autoloader_slot", curie=LAMBDA.curie('autoloader_slot'),
+                   model_uri=LAMBDA.experimentRun__autoloader_slot, domain=None, range=Optional[str])
 
-slots.experimentRun__shots_per_hole = Slot(uri=LAMBDABER.shots_per_hole, name="experimentRun__shots_per_hole", curie=LAMBDABER.curie('shots_per_hole'),
-                   model_uri=LAMBDABER.experimentRun__shots_per_hole, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__shots_per_hole = Slot(uri=LAMBDA.shots_per_hole, name="experimentRun__shots_per_hole", curie=LAMBDA.curie('shots_per_hole'),
+                   model_uri=LAMBDA.experimentRun__shots_per_hole, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__holes_per_group = Slot(uri=LAMBDABER.holes_per_group, name="experimentRun__holes_per_group", curie=LAMBDABER.curie('holes_per_group'),
-                   model_uri=LAMBDABER.experimentRun__holes_per_group, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__holes_per_group = Slot(uri=LAMBDA.holes_per_group, name="experimentRun__holes_per_group", curie=LAMBDA.curie('holes_per_group'),
+                   model_uri=LAMBDA.experimentRun__holes_per_group, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__acquisition_software = Slot(uri=LAMBDABER.acquisition_software, name="experimentRun__acquisition_software", curie=LAMBDABER.curie('acquisition_software'),
-                   model_uri=LAMBDABER.experimentRun__acquisition_software, domain=None, range=Optional[str])
+slots.experimentRun__acquisition_software = Slot(uri=LAMBDA.acquisition_software, name="experimentRun__acquisition_software", curie=LAMBDA.curie('acquisition_software'),
+                   model_uri=LAMBDA.experimentRun__acquisition_software, domain=None, range=Optional[str])
 
-slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDABER.acquisition_software_version, name="experimentRun__acquisition_software_version", curie=LAMBDABER.curie('acquisition_software_version'),
-                   model_uri=LAMBDABER.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
+slots.experimentRun__acquisition_software_version = Slot(uri=LAMBDA.acquisition_software_version, name="experimentRun__acquisition_software_version", curie=LAMBDA.curie('acquisition_software_version'),
+                   model_uri=LAMBDA.experimentRun__acquisition_software_version, domain=None, range=Optional[str])
 
-slots.experimentRun__wavelength = Slot(uri=LAMBDABER.wavelength, name="experimentRun__wavelength", curie=LAMBDABER.curie('wavelength'),
-                   model_uri=LAMBDABER.experimentRun__wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__wavelength = Slot(uri=LAMBDA.wavelength, name="experimentRun__wavelength", curie=LAMBDA.curie('wavelength'),
+                   model_uri=LAMBDA.experimentRun__wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__oscillation_angle = Slot(uri=LAMBDABER.oscillation_angle, name="experimentRun__oscillation_angle", curie=LAMBDABER.curie('oscillation_angle'),
-                   model_uri=LAMBDABER.experimentRun__oscillation_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__oscillation_angle = Slot(uri=LAMBDA.oscillation_angle, name="experimentRun__oscillation_angle", curie=LAMBDA.curie('oscillation_angle'),
+                   model_uri=LAMBDA.experimentRun__oscillation_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__start_angle = Slot(uri=LAMBDABER.start_angle, name="experimentRun__start_angle", curie=LAMBDABER.curie('start_angle'),
-                   model_uri=LAMBDABER.experimentRun__start_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__start_angle = Slot(uri=LAMBDA.start_angle, name="experimentRun__start_angle", curie=LAMBDA.curie('start_angle'),
+                   model_uri=LAMBDA.experimentRun__start_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__number_of_images = Slot(uri=LAMBDABER.number_of_images, name="experimentRun__number_of_images", curie=LAMBDABER.curie('number_of_images'),
-                   model_uri=LAMBDABER.experimentRun__number_of_images, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__number_of_images = Slot(uri=LAMBDA.number_of_images, name="experimentRun__number_of_images", curie=LAMBDA.curie('number_of_images'),
+                   model_uri=LAMBDA.experimentRun__number_of_images, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__beam_center_x = Slot(uri=LAMBDABER.beam_center_x, name="experimentRun__beam_center_x", curie=LAMBDABER.curie('beam_center_x'),
-                   model_uri=LAMBDABER.experimentRun__beam_center_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__beam_center_x = Slot(uri=LAMBDA.beam_center_x, name="experimentRun__beam_center_x", curie=LAMBDA.curie('beam_center_x'),
+                   model_uri=LAMBDA.experimentRun__beam_center_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__beam_center_y = Slot(uri=LAMBDABER.beam_center_y, name="experimentRun__beam_center_y", curie=LAMBDABER.curie('beam_center_y'),
-                   model_uri=LAMBDABER.experimentRun__beam_center_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__beam_center_y = Slot(uri=LAMBDA.beam_center_y, name="experimentRun__beam_center_y", curie=LAMBDA.curie('beam_center_y'),
+                   model_uri=LAMBDA.experimentRun__beam_center_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__detector_distance = Slot(uri=LAMBDABER.detector_distance, name="experimentRun__detector_distance", curie=LAMBDABER.curie('detector_distance'),
-                   model_uri=LAMBDABER.experimentRun__detector_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__detector_distance = Slot(uri=LAMBDA.detector_distance, name="experimentRun__detector_distance", curie=LAMBDA.curie('detector_distance'),
+                   model_uri=LAMBDA.experimentRun__detector_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__pixel_size_x = Slot(uri=LAMBDABER.pixel_size_x, name="experimentRun__pixel_size_x", curie=LAMBDABER.curie('pixel_size_x'),
-                   model_uri=LAMBDABER.experimentRun__pixel_size_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__pixel_size_x = Slot(uri=LAMBDA.pixel_size_x, name="experimentRun__pixel_size_x", curie=LAMBDA.curie('pixel_size_x'),
+                   model_uri=LAMBDA.experimentRun__pixel_size_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__pixel_size_y = Slot(uri=LAMBDABER.pixel_size_y, name="experimentRun__pixel_size_y", curie=LAMBDABER.curie('pixel_size_y'),
-                   model_uri=LAMBDABER.experimentRun__pixel_size_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__pixel_size_y = Slot(uri=LAMBDA.pixel_size_y, name="experimentRun__pixel_size_y", curie=LAMBDA.curie('pixel_size_y'),
+                   model_uri=LAMBDA.experimentRun__pixel_size_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__total_rotation = Slot(uri=LAMBDABER.total_rotation, name="experimentRun__total_rotation", curie=LAMBDABER.curie('total_rotation'),
-                   model_uri=LAMBDABER.experimentRun__total_rotation, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__total_rotation = Slot(uri=LAMBDA.total_rotation, name="experimentRun__total_rotation", curie=LAMBDA.curie('total_rotation'),
+                   model_uri=LAMBDA.experimentRun__total_rotation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__beamline = Slot(uri=LAMBDABER.beamline, name="experimentRun__beamline", curie=LAMBDABER.curie('beamline'),
-                   model_uri=LAMBDABER.experimentRun__beamline, domain=None, range=Optional[str])
+slots.experimentRun__beamline = Slot(uri=LAMBDA.beamline, name="experimentRun__beamline", curie=LAMBDA.curie('beamline'),
+                   model_uri=LAMBDA.experimentRun__beamline, domain=None, range=Optional[str])
 
-slots.experimentRun__transmission = Slot(uri=LAMBDABER.transmission, name="experimentRun__transmission", curie=LAMBDABER.curie('transmission'),
-                   model_uri=LAMBDABER.experimentRun__transmission, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__transmission = Slot(uri=LAMBDA.transmission, name="experimentRun__transmission", curie=LAMBDA.curie('transmission'),
+                   model_uri=LAMBDA.experimentRun__transmission, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__flux = Slot(uri=LAMBDABER.flux, name="experimentRun__flux", curie=LAMBDABER.curie('flux'),
-                   model_uri=LAMBDABER.experimentRun__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__flux = Slot(uri=LAMBDA.flux, name="experimentRun__flux", curie=LAMBDA.curie('flux'),
+                   model_uri=LAMBDA.experimentRun__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__flux_end = Slot(uri=LAMBDABER.flux_end, name="experimentRun__flux_end", curie=LAMBDABER.curie('flux_end'),
-                   model_uri=LAMBDABER.experimentRun__flux_end, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__flux_end = Slot(uri=LAMBDA.flux_end, name="experimentRun__flux_end", curie=LAMBDA.curie('flux_end'),
+                   model_uri=LAMBDA.experimentRun__flux_end, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__slit_gap_horizontal = Slot(uri=LAMBDABER.slit_gap_horizontal, name="experimentRun__slit_gap_horizontal", curie=LAMBDABER.curie('slit_gap_horizontal'),
-                   model_uri=LAMBDABER.experimentRun__slit_gap_horizontal, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__slit_gap_horizontal = Slot(uri=LAMBDA.slit_gap_horizontal, name="experimentRun__slit_gap_horizontal", curie=LAMBDA.curie('slit_gap_horizontal'),
+                   model_uri=LAMBDA.experimentRun__slit_gap_horizontal, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__slit_gap_vertical = Slot(uri=LAMBDABER.slit_gap_vertical, name="experimentRun__slit_gap_vertical", curie=LAMBDABER.curie('slit_gap_vertical'),
-                   model_uri=LAMBDABER.experimentRun__slit_gap_vertical, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__slit_gap_vertical = Slot(uri=LAMBDA.slit_gap_vertical, name="experimentRun__slit_gap_vertical", curie=LAMBDA.curie('slit_gap_vertical'),
+                   model_uri=LAMBDA.experimentRun__slit_gap_vertical, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__undulator_gap = Slot(uri=LAMBDABER.undulator_gap, name="experimentRun__undulator_gap", curie=LAMBDABER.curie('undulator_gap'),
-                   model_uri=LAMBDABER.experimentRun__undulator_gap, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__undulator_gap = Slot(uri=LAMBDA.undulator_gap, name="experimentRun__undulator_gap", curie=LAMBDA.curie('undulator_gap'),
+                   model_uri=LAMBDA.experimentRun__undulator_gap, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__synchrotron_mode = Slot(uri=LAMBDABER.synchrotron_mode, name="experimentRun__synchrotron_mode", curie=LAMBDABER.curie('synchrotron_mode'),
-                   model_uri=LAMBDABER.experimentRun__synchrotron_mode, domain=None, range=Optional[str])
+slots.experimentRun__synchrotron_mode = Slot(uri=LAMBDA.synchrotron_mode, name="experimentRun__synchrotron_mode", curie=LAMBDA.curie('synchrotron_mode'),
+                   model_uri=LAMBDA.experimentRun__synchrotron_mode, domain=None, range=Optional[str])
 
-slots.experimentRun__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentRun__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.experimentRun__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__exposure_time = Slot(uri=LAMBDA.exposure_time, name="experimentRun__exposure_time", curie=LAMBDA.curie('exposure_time'),
+                   model_uri=LAMBDA.experimentRun__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__start_time = Slot(uri=LAMBDABER.start_time, name="experimentRun__start_time", curie=LAMBDABER.curie('start_time'),
-                   model_uri=LAMBDABER.experimentRun__start_time, domain=None, range=Optional[str])
+slots.experimentRun__start_time = Slot(uri=LAMBDA.start_time, name="experimentRun__start_time", curie=LAMBDA.curie('start_time'),
+                   model_uri=LAMBDA.experimentRun__start_time, domain=None, range=Optional[str])
 
-slots.experimentRun__end_time = Slot(uri=LAMBDABER.end_time, name="experimentRun__end_time", curie=LAMBDABER.curie('end_time'),
-                   model_uri=LAMBDABER.experimentRun__end_time, domain=None, range=Optional[str])
+slots.experimentRun__end_time = Slot(uri=LAMBDA.end_time, name="experimentRun__end_time", curie=LAMBDA.curie('end_time'),
+                   model_uri=LAMBDA.experimentRun__end_time, domain=None, range=Optional[str])
 
-slots.experimentRun__resolution = Slot(uri=LAMBDABER.resolution, name="experimentRun__resolution", curie=LAMBDABER.curie('resolution'),
-                   model_uri=LAMBDABER.experimentRun__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__resolution = Slot(uri=LAMBDA.resolution, name="experimentRun__resolution", curie=LAMBDA.curie('resolution'),
+                   model_uri=LAMBDA.experimentRun__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__resolution_at_corner = Slot(uri=LAMBDABER.resolution_at_corner, name="experimentRun__resolution_at_corner", curie=LAMBDABER.curie('resolution_at_corner'),
-                   model_uri=LAMBDABER.experimentRun__resolution_at_corner, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__resolution_at_corner = Slot(uri=LAMBDA.resolution_at_corner, name="experimentRun__resolution_at_corner", curie=LAMBDA.curie('resolution_at_corner'),
+                   model_uri=LAMBDA.experimentRun__resolution_at_corner, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__ispyb_data_collection_id = Slot(uri=LAMBDABER.ispyb_data_collection_id, name="experimentRun__ispyb_data_collection_id", curie=LAMBDABER.curie('ispyb_data_collection_id'),
-                   model_uri=LAMBDABER.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__ispyb_data_collection_id = Slot(uri=LAMBDA.ispyb_data_collection_id, name="experimentRun__ispyb_data_collection_id", curie=LAMBDA.curie('ispyb_data_collection_id'),
+                   model_uri=LAMBDA.experimentRun__ispyb_data_collection_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentRun__ispyb_session_id = Slot(uri=LAMBDABER.ispyb_session_id, name="experimentRun__ispyb_session_id", curie=LAMBDABER.curie('ispyb_session_id'),
-                   model_uri=LAMBDABER.experimentRun__ispyb_session_id, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentRun__ispyb_session_id = Slot(uri=LAMBDA.ispyb_session_id, name="experimentRun__ispyb_session_id", curie=LAMBDA.curie('ispyb_session_id'),
+                   model_uri=LAMBDA.experimentRun__ispyb_session_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__workflow_code = Slot(uri=LAMBDABER.workflow_code, name="workflowRun__workflow_code", curie=LAMBDABER.curie('workflow_code'),
-                   model_uri=LAMBDABER.workflowRun__workflow_code, domain=None, range=str)
+slots.workflowRun__workflow_code = Slot(uri=LAMBDA.workflow_code, name="workflowRun__workflow_code", curie=LAMBDA.curie('workflow_code'),
+                   model_uri=LAMBDA.workflowRun__workflow_code, domain=None, range=str)
 
-slots.workflowRun__workflow_type = Slot(uri=LAMBDABER.workflow_type, name="workflowRun__workflow_type", curie=LAMBDABER.curie('workflow_type'),
-                   model_uri=LAMBDABER.workflowRun__workflow_type, domain=None, range=Union[str, "WorkflowTypeEnum"])
+slots.workflowRun__workflow_type = Slot(uri=LAMBDA.workflow_type, name="workflowRun__workflow_type", curie=LAMBDA.curie('workflow_type'),
+                   model_uri=LAMBDA.workflowRun__workflow_type, domain=None, range=Union[str, "WorkflowTypeEnum"])
 
-slots.workflowRun__processing_level = Slot(uri=LAMBDABER.processing_level, name="workflowRun__processing_level", curie=LAMBDABER.curie('processing_level'),
-                   model_uri=LAMBDABER.workflowRun__processing_level, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__processing_level = Slot(uri=LAMBDA.processing_level, name="workflowRun__processing_level", curie=LAMBDA.curie('processing_level'),
+                   model_uri=LAMBDA.workflowRun__processing_level, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__software_name = Slot(uri=LAMBDABER.software_name, name="workflowRun__software_name", curie=LAMBDABER.curie('software_name'),
-                   model_uri=LAMBDABER.workflowRun__software_name, domain=None, range=str)
+slots.workflowRun__software_name = Slot(uri=LAMBDA.software_name, name="workflowRun__software_name", curie=LAMBDA.curie('software_name'),
+                   model_uri=LAMBDA.workflowRun__software_name, domain=None, range=str)
 
-slots.workflowRun__software_version = Slot(uri=LAMBDABER.software_version, name="workflowRun__software_version", curie=LAMBDABER.curie('software_version'),
-                   model_uri=LAMBDABER.workflowRun__software_version, domain=None, range=Optional[str])
+slots.workflowRun__software_version = Slot(uri=LAMBDA.software_version, name="workflowRun__software_version", curie=LAMBDA.curie('software_version'),
+                   model_uri=LAMBDA.workflowRun__software_version, domain=None, range=Optional[str])
 
-slots.workflowRun__additional_software = Slot(uri=LAMBDABER.additional_software, name="workflowRun__additional_software", curie=LAMBDABER.curie('additional_software'),
-                   model_uri=LAMBDABER.workflowRun__additional_software, domain=None, range=Optional[str])
+slots.workflowRun__additional_software = Slot(uri=LAMBDA.additional_software, name="workflowRun__additional_software", curie=LAMBDA.curie('additional_software'),
+                   model_uri=LAMBDA.workflowRun__additional_software, domain=None, range=Optional[str])
 
-slots.workflowRun__processing_parameters = Slot(uri=LAMBDABER.processing_parameters, name="workflowRun__processing_parameters", curie=LAMBDABER.curie('processing_parameters'),
-                   model_uri=LAMBDABER.workflowRun__processing_parameters, domain=None, range=Optional[str])
+slots.workflowRun__processing_parameters = Slot(uri=LAMBDA.processing_parameters, name="workflowRun__processing_parameters", curie=LAMBDA.curie('processing_parameters'),
+                   model_uri=LAMBDA.workflowRun__processing_parameters, domain=None, range=Optional[str])
 
-slots.workflowRun__parameters_file_path = Slot(uri=LAMBDABER.parameters_file_path, name="workflowRun__parameters_file_path", curie=LAMBDABER.curie('parameters_file_path'),
-                   model_uri=LAMBDABER.workflowRun__parameters_file_path, domain=None, range=Optional[str])
+slots.workflowRun__parameters_file_path = Slot(uri=LAMBDA.parameters_file_path, name="workflowRun__parameters_file_path", curie=LAMBDA.curie('parameters_file_path'),
+                   model_uri=LAMBDA.workflowRun__parameters_file_path, domain=None, range=Optional[str])
 
-slots.workflowRun__indexer_module = Slot(uri=LAMBDABER.indexer_module, name="workflowRun__indexer_module", curie=LAMBDABER.curie('indexer_module'),
-                   model_uri=LAMBDABER.workflowRun__indexer_module, domain=None, range=Optional[str])
+slots.workflowRun__indexer_module = Slot(uri=LAMBDA.indexer_module, name="workflowRun__indexer_module", curie=LAMBDA.curie('indexer_module'),
+                   model_uri=LAMBDA.workflowRun__indexer_module, domain=None, range=Optional[str])
 
-slots.workflowRun__integrator_module = Slot(uri=LAMBDABER.integrator_module, name="workflowRun__integrator_module", curie=LAMBDABER.curie('integrator_module'),
-                   model_uri=LAMBDABER.workflowRun__integrator_module, domain=None, range=Optional[str])
+slots.workflowRun__integrator_module = Slot(uri=LAMBDA.integrator_module, name="workflowRun__integrator_module", curie=LAMBDA.curie('integrator_module'),
+                   model_uri=LAMBDA.workflowRun__integrator_module, domain=None, range=Optional[str])
 
-slots.workflowRun__scaler_module = Slot(uri=LAMBDABER.scaler_module, name="workflowRun__scaler_module", curie=LAMBDABER.curie('scaler_module'),
-                   model_uri=LAMBDABER.workflowRun__scaler_module, domain=None, range=Optional[str])
+slots.workflowRun__scaler_module = Slot(uri=LAMBDA.scaler_module, name="workflowRun__scaler_module", curie=LAMBDA.curie('scaler_module'),
+                   model_uri=LAMBDA.workflowRun__scaler_module, domain=None, range=Optional[str])
 
-slots.workflowRun__outlier_rejection_method = Slot(uri=LAMBDABER.outlier_rejection_method, name="workflowRun__outlier_rejection_method", curie=LAMBDABER.curie('outlier_rejection_method'),
-                   model_uri=LAMBDABER.workflowRun__outlier_rejection_method, domain=None, range=Optional[str])
+slots.workflowRun__outlier_rejection_method = Slot(uri=LAMBDA.outlier_rejection_method, name="workflowRun__outlier_rejection_method", curie=LAMBDA.curie('outlier_rejection_method'),
+                   model_uri=LAMBDA.workflowRun__outlier_rejection_method, domain=None, range=Optional[str])
 
-slots.workflowRun__phasing_method = Slot(uri=LAMBDABER.phasing_method, name="workflowRun__phasing_method", curie=LAMBDABER.curie('phasing_method'),
-                   model_uri=LAMBDABER.workflowRun__phasing_method, domain=None, range=Optional[Union[str, "PhasingMethodEnum"]])
+slots.workflowRun__phasing_method = Slot(uri=LAMBDA.phasing_method, name="workflowRun__phasing_method", curie=LAMBDA.curie('phasing_method'),
+                   model_uri=LAMBDA.workflowRun__phasing_method, domain=None, range=Optional[Union[str, "PhasingMethodEnum"]])
 
-slots.workflowRun__search_model_pdb_id = Slot(uri=LAMBDABER.search_model_pdb_id, name="workflowRun__search_model_pdb_id", curie=LAMBDABER.curie('search_model_pdb_id'),
-                   model_uri=LAMBDABER.workflowRun__search_model_pdb_id, domain=None, range=Optional[str])
+slots.workflowRun__search_model_pdb_id = Slot(uri=LAMBDA.search_model_pdb_id, name="workflowRun__search_model_pdb_id", curie=LAMBDA.curie('search_model_pdb_id'),
+                   model_uri=LAMBDA.workflowRun__search_model_pdb_id, domain=None, range=Optional[str])
 
-slots.workflowRun__tls_used = Slot(uri=LAMBDABER.tls_used, name="workflowRun__tls_used", curie=LAMBDABER.curie('tls_used'),
-                   model_uri=LAMBDABER.workflowRun__tls_used, domain=None, range=Optional[Union[bool, Bool]])
+slots.workflowRun__tls_used = Slot(uri=LAMBDA.tls_used, name="workflowRun__tls_used", curie=LAMBDA.curie('tls_used'),
+                   model_uri=LAMBDA.workflowRun__tls_used, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.workflowRun__ncs_used = Slot(uri=LAMBDABER.ncs_used, name="workflowRun__ncs_used", curie=LAMBDABER.curie('ncs_used'),
-                   model_uri=LAMBDABER.workflowRun__ncs_used, domain=None, range=Optional[Union[bool, Bool]])
+slots.workflowRun__ncs_used = Slot(uri=LAMBDA.ncs_used, name="workflowRun__ncs_used", curie=LAMBDA.curie('ncs_used'),
+                   model_uri=LAMBDA.workflowRun__ncs_used, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.workflowRun__restraints_other = Slot(uri=LAMBDABER.restraints_other, name="workflowRun__restraints_other", curie=LAMBDABER.curie('restraints_other'),
-                   model_uri=LAMBDABER.workflowRun__restraints_other, domain=None, range=Optional[str])
+slots.workflowRun__restraints_other = Slot(uri=LAMBDA.restraints_other, name="workflowRun__restraints_other", curie=LAMBDA.curie('restraints_other'),
+                   model_uri=LAMBDA.workflowRun__restraints_other, domain=None, range=Optional[str])
 
-slots.workflowRun__ligands_cofactors = Slot(uri=LAMBDABER.ligands_cofactors, name="workflowRun__ligands_cofactors", curie=LAMBDABER.curie('ligands_cofactors'),
-                   model_uri=LAMBDABER.workflowRun__ligands_cofactors, domain=None, range=Optional[str])
+slots.workflowRun__ligands_cofactors = Slot(uri=LAMBDA.ligands_cofactors, name="workflowRun__ligands_cofactors", curie=LAMBDA.curie('ligands_cofactors'),
+                   model_uri=LAMBDA.workflowRun__ligands_cofactors, domain=None, range=Optional[str])
 
-slots.workflowRun__number_of_waters = Slot(uri=LAMBDABER.number_of_waters, name="workflowRun__number_of_waters", curie=LAMBDABER.curie('number_of_waters'),
-                   model_uri=LAMBDABER.workflowRun__number_of_waters, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__number_of_waters = Slot(uri=LAMBDA.number_of_waters, name="workflowRun__number_of_waters", curie=LAMBDA.curie('number_of_waters'),
+                   model_uri=LAMBDA.workflowRun__number_of_waters, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__refinement_resolution_a = Slot(uri=LAMBDABER.refinement_resolution_a, name="workflowRun__refinement_resolution_a", curie=LAMBDABER.curie('refinement_resolution_a'),
-                   model_uri=LAMBDABER.workflowRun__refinement_resolution_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__refinement_resolution_a = Slot(uri=LAMBDA.refinement_resolution_a, name="workflowRun__refinement_resolution_a", curie=LAMBDA.curie('refinement_resolution_a'),
+                   model_uri=LAMBDA.workflowRun__refinement_resolution_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__deposited_to_pdb = Slot(uri=LAMBDABER.deposited_to_pdb, name="workflowRun__deposited_to_pdb", curie=LAMBDABER.curie('deposited_to_pdb'),
-                   model_uri=LAMBDABER.workflowRun__deposited_to_pdb, domain=None, range=Optional[Union[bool, Bool]])
+slots.workflowRun__deposited_to_pdb = Slot(uri=LAMBDA.deposited_to_pdb, name="workflowRun__deposited_to_pdb", curie=LAMBDA.curie('deposited_to_pdb'),
+                   model_uri=LAMBDA.workflowRun__deposited_to_pdb, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.workflowRun__pdb_id = Slot(uri=LAMBDABER.pdb_id, name="workflowRun__pdb_id", curie=LAMBDABER.curie('pdb_id'),
-                   model_uri=LAMBDABER.workflowRun__pdb_id, domain=None, range=Optional[str])
+slots.workflowRun__pdb_id = Slot(uri=LAMBDA.pdb_id, name="workflowRun__pdb_id", curie=LAMBDA.curie('pdb_id'),
+                   model_uri=LAMBDA.workflowRun__pdb_id, domain=None, range=Optional[str])
 
-slots.workflowRun__validation_report_path = Slot(uri=LAMBDABER.validation_report_path, name="workflowRun__validation_report_path", curie=LAMBDABER.curie('validation_report_path'),
-                   model_uri=LAMBDABER.workflowRun__validation_report_path, domain=None, range=Optional[str])
+slots.workflowRun__validation_report_path = Slot(uri=LAMBDA.validation_report_path, name="workflowRun__validation_report_path", curie=LAMBDA.curie('validation_report_path'),
+                   model_uri=LAMBDA.workflowRun__validation_report_path, domain=None, range=Optional[str])
 
-slots.workflowRun__space_group = Slot(uri=LAMBDABER.space_group, name="workflowRun__space_group", curie=LAMBDABER.curie('space_group'),
-                   model_uri=LAMBDABER.workflowRun__space_group, domain=None, range=Optional[str])
+slots.workflowRun__space_group = Slot(uri=LAMBDA.space_group, name="workflowRun__space_group", curie=LAMBDA.curie('space_group'),
+                   model_uri=LAMBDA.workflowRun__space_group, domain=None, range=Optional[str])
 
-slots.workflowRun__unit_cell_a = Slot(uri=LAMBDABER.unit_cell_a, name="workflowRun__unit_cell_a", curie=LAMBDABER.curie('unit_cell_a'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_a = Slot(uri=LAMBDA.unit_cell_a, name="workflowRun__unit_cell_a", curie=LAMBDA.curie('unit_cell_a'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__unit_cell_b = Slot(uri=LAMBDABER.unit_cell_b, name="workflowRun__unit_cell_b", curie=LAMBDABER.curie('unit_cell_b'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_b, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_b = Slot(uri=LAMBDA.unit_cell_b, name="workflowRun__unit_cell_b", curie=LAMBDA.curie('unit_cell_b'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_b, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__unit_cell_c = Slot(uri=LAMBDABER.unit_cell_c, name="workflowRun__unit_cell_c", curie=LAMBDABER.curie('unit_cell_c'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_c = Slot(uri=LAMBDA.unit_cell_c, name="workflowRun__unit_cell_c", curie=LAMBDA.curie('unit_cell_c'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__unit_cell_alpha = Slot(uri=LAMBDABER.unit_cell_alpha, name="workflowRun__unit_cell_alpha", curie=LAMBDABER.curie('unit_cell_alpha'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_alpha, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_alpha = Slot(uri=LAMBDA.unit_cell_alpha, name="workflowRun__unit_cell_alpha", curie=LAMBDA.curie('unit_cell_alpha'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_alpha, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__unit_cell_beta = Slot(uri=LAMBDABER.unit_cell_beta, name="workflowRun__unit_cell_beta", curie=LAMBDABER.curie('unit_cell_beta'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_beta, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_beta = Slot(uri=LAMBDA.unit_cell_beta, name="workflowRun__unit_cell_beta", curie=LAMBDA.curie('unit_cell_beta'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_beta, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name="workflowRun__unit_cell_gamma", curie=LAMBDABER.curie('unit_cell_gamma'),
-                   model_uri=LAMBDABER.workflowRun__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__unit_cell_gamma = Slot(uri=LAMBDA.unit_cell_gamma, name="workflowRun__unit_cell_gamma", curie=LAMBDA.curie('unit_cell_gamma'),
+                   model_uri=LAMBDA.workflowRun__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__resolution_high = Slot(uri=LAMBDABER.resolution_high, name="workflowRun__resolution_high", curie=LAMBDABER.curie('resolution_high'),
-                   model_uri=LAMBDABER.workflowRun__resolution_high, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__resolution_high = Slot(uri=LAMBDA.resolution_high, name="workflowRun__resolution_high", curie=LAMBDA.curie('resolution_high'),
+                   model_uri=LAMBDA.workflowRun__resolution_high, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__resolution_low = Slot(uri=LAMBDABER.resolution_low, name="workflowRun__resolution_low", curie=LAMBDABER.curie('resolution_low'),
-                   model_uri=LAMBDABER.workflowRun__resolution_low, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__resolution_low = Slot(uri=LAMBDA.resolution_low, name="workflowRun__resolution_low", curie=LAMBDA.curie('resolution_low'),
+                   model_uri=LAMBDA.workflowRun__resolution_low, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rmerge = Slot(uri=LAMBDABER.rmerge, name="workflowRun__rmerge", curie=LAMBDABER.curie('rmerge'),
-                   model_uri=LAMBDABER.workflowRun__rmerge, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rmerge = Slot(uri=LAMBDA.rmerge, name="workflowRun__rmerge", curie=LAMBDA.curie('rmerge'),
+                   model_uri=LAMBDA.workflowRun__rmerge, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rpim = Slot(uri=LAMBDABER.rpim, name="workflowRun__rpim", curie=LAMBDABER.curie('rpim'),
-                   model_uri=LAMBDABER.workflowRun__rpim, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rpim = Slot(uri=LAMBDA.rpim, name="workflowRun__rpim", curie=LAMBDA.curie('rpim'),
+                   model_uri=LAMBDA.workflowRun__rpim, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__cc_half = Slot(uri=LAMBDABER.cc_half, name="workflowRun__cc_half", curie=LAMBDABER.curie('cc_half'),
-                   model_uri=LAMBDABER.workflowRun__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__cc_half = Slot(uri=LAMBDA.cc_half, name="workflowRun__cc_half", curie=LAMBDA.curie('cc_half'),
+                   model_uri=LAMBDA.workflowRun__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__completeness_percent = Slot(uri=LAMBDABER.completeness_percent, name="workflowRun__completeness_percent", curie=LAMBDABER.curie('completeness_percent'),
-                   model_uri=LAMBDABER.workflowRun__completeness_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__completeness_percent = Slot(uri=LAMBDA.completeness_percent, name="workflowRun__completeness_percent", curie=LAMBDA.curie('completeness_percent'),
+                   model_uri=LAMBDA.workflowRun__completeness_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__i_over_sigma = Slot(uri=LAMBDABER.i_over_sigma, name="workflowRun__i_over_sigma", curie=LAMBDABER.curie('i_over_sigma'),
-                   model_uri=LAMBDABER.workflowRun__i_over_sigma, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__i_over_sigma = Slot(uri=LAMBDA.i_over_sigma, name="workflowRun__i_over_sigma", curie=LAMBDA.curie('i_over_sigma'),
+                   model_uri=LAMBDA.workflowRun__i_over_sigma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDABER.wilson_b_factor, name="workflowRun__wilson_b_factor", curie=LAMBDABER.curie('wilson_b_factor'),
-                   model_uri=LAMBDABER.workflowRun__wilson_b_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__wilson_b_factor = Slot(uri=LAMBDA.wilson_b_factor, name="workflowRun__wilson_b_factor", curie=LAMBDA.curie('wilson_b_factor'),
+                   model_uri=LAMBDA.workflowRun__wilson_b_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="workflowRun__multiplicity", curie=LAMBDABER.curie('multiplicity'),
-                   model_uri=LAMBDABER.workflowRun__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__multiplicity = Slot(uri=LAMBDA.multiplicity, name="workflowRun__multiplicity", curie=LAMBDA.curie('multiplicity'),
+                   model_uri=LAMBDA.workflowRun__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__anomalous_completeness = Slot(uri=LAMBDABER.anomalous_completeness, name="workflowRun__anomalous_completeness", curie=LAMBDABER.curie('anomalous_completeness'),
-                   model_uri=LAMBDABER.workflowRun__anomalous_completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__anomalous_completeness = Slot(uri=LAMBDA.anomalous_completeness, name="workflowRun__anomalous_completeness", curie=LAMBDA.curie('anomalous_completeness'),
+                   model_uri=LAMBDA.workflowRun__anomalous_completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__anomalous_multiplicity = Slot(uri=LAMBDABER.anomalous_multiplicity, name="workflowRun__anomalous_multiplicity", curie=LAMBDABER.curie('anomalous_multiplicity'),
-                   model_uri=LAMBDABER.workflowRun__anomalous_multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__anomalous_multiplicity = Slot(uri=LAMBDA.anomalous_multiplicity, name="workflowRun__anomalous_multiplicity", curie=LAMBDA.curie('anomalous_multiplicity'),
+                   model_uri=LAMBDA.workflowRun__anomalous_multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__cc_anomalous = Slot(uri=LAMBDABER.cc_anomalous, name="workflowRun__cc_anomalous", curie=LAMBDABER.curie('cc_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__cc_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__cc_anomalous = Slot(uri=LAMBDA.cc_anomalous, name="workflowRun__cc_anomalous", curie=LAMBDA.curie('cc_anomalous'),
+                   model_uri=LAMBDA.workflowRun__cc_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__r_anomalous = Slot(uri=LAMBDABER.r_anomalous, name="workflowRun__r_anomalous", curie=LAMBDABER.curie('r_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__r_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__r_anomalous = Slot(uri=LAMBDA.r_anomalous, name="workflowRun__r_anomalous", curie=LAMBDA.curie('r_anomalous'),
+                   model_uri=LAMBDA.workflowRun__r_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__sig_anomalous = Slot(uri=LAMBDABER.sig_anomalous, name="workflowRun__sig_anomalous", curie=LAMBDABER.curie('sig_anomalous'),
-                   model_uri=LAMBDABER.workflowRun__sig_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__sig_anomalous = Slot(uri=LAMBDA.sig_anomalous, name="workflowRun__sig_anomalous", curie=LAMBDA.curie('sig_anomalous'),
+                   model_uri=LAMBDA.workflowRun__sig_anomalous, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__n_total_observations = Slot(uri=LAMBDABER.n_total_observations, name="workflowRun__n_total_observations", curie=LAMBDABER.curie('n_total_observations'),
-                   model_uri=LAMBDABER.workflowRun__n_total_observations, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__n_total_observations = Slot(uri=LAMBDA.n_total_observations, name="workflowRun__n_total_observations", curie=LAMBDA.curie('n_total_observations'),
+                   model_uri=LAMBDA.workflowRun__n_total_observations, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__n_total_unique = Slot(uri=LAMBDABER.n_total_unique, name="workflowRun__n_total_unique", curie=LAMBDABER.curie('n_total_unique'),
-                   model_uri=LAMBDABER.workflowRun__n_total_unique, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__n_total_unique = Slot(uri=LAMBDA.n_total_unique, name="workflowRun__n_total_unique", curie=LAMBDA.curie('n_total_unique'),
+                   model_uri=LAMBDA.workflowRun__n_total_unique, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__ispyb_auto_proc_program_id = Slot(uri=LAMBDABER.ispyb_auto_proc_program_id, name="workflowRun__ispyb_auto_proc_program_id", curie=LAMBDABER.curie('ispyb_auto_proc_program_id'),
-                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_program_id, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__ispyb_auto_proc_program_id = Slot(uri=LAMBDA.ispyb_auto_proc_program_id, name="workflowRun__ispyb_auto_proc_program_id", curie=LAMBDA.curie('ispyb_auto_proc_program_id'),
+                   model_uri=LAMBDA.workflowRun__ispyb_auto_proc_program_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__ispyb_auto_proc_scaling_id = Slot(uri=LAMBDABER.ispyb_auto_proc_scaling_id, name="workflowRun__ispyb_auto_proc_scaling_id", curie=LAMBDABER.curie('ispyb_auto_proc_scaling_id'),
-                   model_uri=LAMBDABER.workflowRun__ispyb_auto_proc_scaling_id, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__ispyb_auto_proc_scaling_id = Slot(uri=LAMBDA.ispyb_auto_proc_scaling_id, name="workflowRun__ispyb_auto_proc_scaling_id", curie=LAMBDA.curie('ispyb_auto_proc_scaling_id'),
+                   model_uri=LAMBDA.workflowRun__ispyb_auto_proc_scaling_id, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rwork = Slot(uri=LAMBDABER.rwork, name="workflowRun__rwork", curie=LAMBDABER.curie('rwork'),
-                   model_uri=LAMBDABER.workflowRun__rwork, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rwork = Slot(uri=LAMBDA.rwork, name="workflowRun__rwork", curie=LAMBDA.curie('rwork'),
+                   model_uri=LAMBDA.workflowRun__rwork, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rfree = Slot(uri=LAMBDABER.rfree, name="workflowRun__rfree", curie=LAMBDABER.curie('rfree'),
-                   model_uri=LAMBDABER.workflowRun__rfree, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rfree = Slot(uri=LAMBDA.rfree, name="workflowRun__rfree", curie=LAMBDA.curie('rfree'),
+                   model_uri=LAMBDA.workflowRun__rfree, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rmsd_bonds = Slot(uri=LAMBDABER.rmsd_bonds, name="workflowRun__rmsd_bonds", curie=LAMBDABER.curie('rmsd_bonds'),
-                   model_uri=LAMBDABER.workflowRun__rmsd_bonds, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rmsd_bonds = Slot(uri=LAMBDA.rmsd_bonds, name="workflowRun__rmsd_bonds", curie=LAMBDA.curie('rmsd_bonds'),
+                   model_uri=LAMBDA.workflowRun__rmsd_bonds, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__rmsd_angles = Slot(uri=LAMBDABER.rmsd_angles, name="workflowRun__rmsd_angles", curie=LAMBDABER.curie('rmsd_angles'),
-                   model_uri=LAMBDABER.workflowRun__rmsd_angles, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__rmsd_angles = Slot(uri=LAMBDA.rmsd_angles, name="workflowRun__rmsd_angles", curie=LAMBDA.curie('rmsd_angles'),
+                   model_uri=LAMBDA.workflowRun__rmsd_angles, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__ramachandran_favored = Slot(uri=LAMBDABER.ramachandran_favored, name="workflowRun__ramachandran_favored", curie=LAMBDABER.curie('ramachandran_favored'),
-                   model_uri=LAMBDABER.workflowRun__ramachandran_favored, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__ramachandran_favored = Slot(uri=LAMBDA.ramachandran_favored, name="workflowRun__ramachandran_favored", curie=LAMBDA.curie('ramachandran_favored'),
+                   model_uri=LAMBDA.workflowRun__ramachandran_favored, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__ramachandran_outliers = Slot(uri=LAMBDABER.ramachandran_outliers, name="workflowRun__ramachandran_outliers", curie=LAMBDABER.curie('ramachandran_outliers'),
-                   model_uri=LAMBDABER.workflowRun__ramachandran_outliers, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__ramachandran_outliers = Slot(uri=LAMBDA.ramachandran_outliers, name="workflowRun__ramachandran_outliers", curie=LAMBDA.curie('ramachandran_outliers'),
+                   model_uri=LAMBDA.workflowRun__ramachandran_outliers, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__clashscore = Slot(uri=LAMBDABER.clashscore, name="workflowRun__clashscore", curie=LAMBDABER.curie('clashscore'),
-                   model_uri=LAMBDABER.workflowRun__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.workflowRun__clashscore = Slot(uri=LAMBDA.clashscore, name="workflowRun__clashscore", curie=LAMBDA.curie('clashscore'),
+                   model_uri=LAMBDA.workflowRun__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.workflowRun__processing_notes = Slot(uri=LAMBDABER.processing_notes, name="workflowRun__processing_notes", curie=LAMBDABER.curie('processing_notes'),
-                   model_uri=LAMBDABER.workflowRun__processing_notes, domain=None, range=Optional[str])
+slots.workflowRun__processing_notes = Slot(uri=LAMBDA.processing_notes, name="workflowRun__processing_notes", curie=LAMBDA.curie('processing_notes'),
+                   model_uri=LAMBDA.workflowRun__processing_notes, domain=None, range=Optional[str])
 
-slots.workflowRun__compute_resources = Slot(uri=LAMBDABER.compute_resources, name="workflowRun__compute_resources", curie=LAMBDABER.curie('compute_resources'),
-                   model_uri=LAMBDABER.workflowRun__compute_resources, domain=None, range=Optional[Union[dict, ComputeResources]])
+slots.workflowRun__compute_resources = Slot(uri=LAMBDA.compute_resources, name="workflowRun__compute_resources", curie=LAMBDA.curie('compute_resources'),
+                   model_uri=LAMBDA.workflowRun__compute_resources, domain=None, range=Optional[Union[dict, ComputeResources]])
 
-slots.workflowRun__started_at = Slot(uri=LAMBDABER.started_at, name="workflowRun__started_at", curie=LAMBDABER.curie('started_at'),
-                   model_uri=LAMBDABER.workflowRun__started_at, domain=None, range=Optional[str])
+slots.workflowRun__started_at = Slot(uri=LAMBDA.started_at, name="workflowRun__started_at", curie=LAMBDA.curie('started_at'),
+                   model_uri=LAMBDA.workflowRun__started_at, domain=None, range=Optional[str])
 
-slots.workflowRun__completed_at = Slot(uri=LAMBDABER.completed_at, name="workflowRun__completed_at", curie=LAMBDABER.curie('completed_at'),
-                   model_uri=LAMBDABER.workflowRun__completed_at, domain=None, range=Optional[str])
+slots.workflowRun__completed_at = Slot(uri=LAMBDA.completed_at, name="workflowRun__completed_at", curie=LAMBDA.curie('completed_at'),
+                   model_uri=LAMBDA.workflowRun__completed_at, domain=None, range=Optional[str])
 
-slots.workflowRun__motion_correction_params = Slot(uri=LAMBDABER.motion_correction_params, name="workflowRun__motion_correction_params", curie=LAMBDABER.curie('motion_correction_params'),
-                   model_uri=LAMBDABER.workflowRun__motion_correction_params, domain=None, range=Optional[Union[dict, MotionCorrectionParameters]])
+slots.workflowRun__motion_correction_params = Slot(uri=LAMBDA.motion_correction_params, name="workflowRun__motion_correction_params", curie=LAMBDA.curie('motion_correction_params'),
+                   model_uri=LAMBDA.workflowRun__motion_correction_params, domain=None, range=Optional[Union[dict, MotionCorrectionParameters]])
 
-slots.workflowRun__ctf_estimation_params = Slot(uri=LAMBDABER.ctf_estimation_params, name="workflowRun__ctf_estimation_params", curie=LAMBDABER.curie('ctf_estimation_params'),
-                   model_uri=LAMBDABER.workflowRun__ctf_estimation_params, domain=None, range=Optional[Union[dict, CTFEstimationParameters]])
+slots.workflowRun__ctf_estimation_params = Slot(uri=LAMBDA.ctf_estimation_params, name="workflowRun__ctf_estimation_params", curie=LAMBDA.curie('ctf_estimation_params'),
+                   model_uri=LAMBDA.workflowRun__ctf_estimation_params, domain=None, range=Optional[Union[dict, CTFEstimationParameters]])
 
-slots.workflowRun__particle_picking_params = Slot(uri=LAMBDABER.particle_picking_params, name="workflowRun__particle_picking_params", curie=LAMBDABER.curie('particle_picking_params'),
-                   model_uri=LAMBDABER.workflowRun__particle_picking_params, domain=None, range=Optional[Union[dict, ParticlePickingParameters]])
+slots.workflowRun__particle_picking_params = Slot(uri=LAMBDA.particle_picking_params, name="workflowRun__particle_picking_params", curie=LAMBDA.curie('particle_picking_params'),
+                   model_uri=LAMBDA.workflowRun__particle_picking_params, domain=None, range=Optional[Union[dict, ParticlePickingParameters]])
 
-slots.workflowRun__refinement_params = Slot(uri=LAMBDABER.refinement_params, name="workflowRun__refinement_params", curie=LAMBDABER.curie('refinement_params'),
-                   model_uri=LAMBDABER.workflowRun__refinement_params, domain=None, range=Optional[Union[dict, RefinementParameters]])
+slots.workflowRun__refinement_params = Slot(uri=LAMBDA.refinement_params, name="workflowRun__refinement_params", curie=LAMBDA.curie('refinement_params'),
+                   model_uri=LAMBDA.workflowRun__refinement_params, domain=None, range=Optional[Union[dict, RefinementParameters]])
 
-slots.workflowRun__fsc_curve = Slot(uri=LAMBDABER.fsc_curve, name="workflowRun__fsc_curve", curie=LAMBDABER.curie('fsc_curve'),
-                   model_uri=LAMBDABER.workflowRun__fsc_curve, domain=None, range=Optional[Union[dict, FSCCurve]])
+slots.workflowRun__fsc_curve = Slot(uri=LAMBDA.fsc_curve, name="workflowRun__fsc_curve", curie=LAMBDA.curie('fsc_curve'),
+                   model_uri=LAMBDA.workflowRun__fsc_curve, domain=None, range=Optional[Union[dict, FSCCurve]])
 
-slots.workflowRun__output_files = Slot(uri=LAMBDABER.output_files, name="workflowRun__output_files", curie=LAMBDABER.curie('output_files'),
-                   model_uri=LAMBDABER.workflowRun__output_files, domain=None, range=Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]])
+slots.workflowRun__output_files = Slot(uri=LAMBDA.output_files, name="workflowRun__output_files", curie=LAMBDA.curie('output_files'),
+                   model_uri=LAMBDA.workflowRun__output_files, domain=None, range=Optional[Union[Union[str, DataFileId], list[Union[str, DataFileId]]]])
 
-slots.dataFile__file_name = Slot(uri=LAMBDABER.file_name, name="dataFile__file_name", curie=LAMBDABER.curie('file_name'),
-                   model_uri=LAMBDABER.dataFile__file_name, domain=None, range=str)
+slots.dataFile__file_name = Slot(uri=LAMBDA.file_name, name="dataFile__file_name", curie=LAMBDA.curie('file_name'),
+                   model_uri=LAMBDA.dataFile__file_name, domain=None, range=str)
 
-slots.dataFile__file_path = Slot(uri=LAMBDABER.file_path, name="dataFile__file_path", curie=LAMBDABER.curie('file_path'),
-                   model_uri=LAMBDABER.dataFile__file_path, domain=None, range=Optional[str])
+slots.dataFile__file_path = Slot(uri=LAMBDA.file_path, name="dataFile__file_path", curie=LAMBDA.curie('file_path'),
+                   model_uri=LAMBDA.dataFile__file_path, domain=None, range=Optional[str])
 
-slots.dataFile__file_format = Slot(uri=LAMBDABER.file_format, name="dataFile__file_format", curie=LAMBDABER.curie('file_format'),
-                   model_uri=LAMBDABER.dataFile__file_format, domain=None, range=Union[str, "FileFormatEnum"])
+slots.dataFile__file_format = Slot(uri=LAMBDA.file_format, name="dataFile__file_format", curie=LAMBDA.curie('file_format'),
+                   model_uri=LAMBDA.dataFile__file_format, domain=None, range=Union[str, "FileFormatEnum"])
 
-slots.dataFile__file_size_bytes = Slot(uri=LAMBDABER.file_size_bytes, name="dataFile__file_size_bytes", curie=LAMBDABER.curie('file_size_bytes'),
-                   model_uri=LAMBDABER.dataFile__file_size_bytes, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataFile__file_size_bytes = Slot(uri=LAMBDA.file_size_bytes, name="dataFile__file_size_bytes", curie=LAMBDA.curie('file_size_bytes'),
+                   model_uri=LAMBDA.dataFile__file_size_bytes, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataFile__checksum = Slot(uri=LAMBDABER.checksum, name="dataFile__checksum", curie=LAMBDABER.curie('checksum'),
-                   model_uri=LAMBDABER.dataFile__checksum, domain=None, range=Optional[str])
+slots.dataFile__checksum = Slot(uri=LAMBDA.checksum, name="dataFile__checksum", curie=LAMBDA.curie('checksum'),
+                   model_uri=LAMBDA.dataFile__checksum, domain=None, range=Optional[str])
 
-slots.dataFile__creation_date = Slot(uri=LAMBDABER.creation_date, name="dataFile__creation_date", curie=LAMBDABER.curie('creation_date'),
-                   model_uri=LAMBDABER.dataFile__creation_date, domain=None, range=Optional[str])
+slots.dataFile__creation_date = Slot(uri=LAMBDA.creation_date, name="dataFile__creation_date", curie=LAMBDA.curie('creation_date'),
+                   model_uri=LAMBDA.dataFile__creation_date, domain=None, range=Optional[str])
 
-slots.dataFile__data_type = Slot(uri=LAMBDABER.data_type, name="dataFile__data_type", curie=LAMBDABER.curie('data_type'),
-                   model_uri=LAMBDABER.dataFile__data_type, domain=None, range=Optional[Union[str, "DataTypeEnum"]])
+slots.dataFile__data_type = Slot(uri=LAMBDA.data_type, name="dataFile__data_type", curie=LAMBDA.curie('data_type'),
+                   model_uri=LAMBDA.dataFile__data_type, domain=None, range=Optional[Union[str, "DataTypeEnum"]])
 
-slots.dataFile__storage_uri = Slot(uri=LAMBDABER.storage_uri, name="dataFile__storage_uri", curie=LAMBDABER.curie('storage_uri'),
-                   model_uri=LAMBDABER.dataFile__storage_uri, domain=None, range=Optional[str])
+slots.dataFile__storage_uri = Slot(uri=LAMBDA.storage_uri, name="dataFile__storage_uri", curie=LAMBDA.curie('storage_uri'),
+                   model_uri=LAMBDA.dataFile__storage_uri, domain=None, range=Optional[str])
 
-slots.dataFile__related_entity = Slot(uri=LAMBDABER.related_entity, name="dataFile__related_entity", curie=LAMBDABER.curie('related_entity'),
-                   model_uri=LAMBDABER.dataFile__related_entity, domain=None, range=Optional[str])
+slots.dataFile__related_entity = Slot(uri=LAMBDA.related_entity, name="dataFile__related_entity", curie=LAMBDA.curie('related_entity'),
+                   model_uri=LAMBDA.dataFile__related_entity, domain=None, range=Optional[str])
 
-slots.dataFile__file_role = Slot(uri=LAMBDABER.file_role, name="dataFile__file_role", curie=LAMBDABER.curie('file_role'),
-                   model_uri=LAMBDABER.dataFile__file_role, domain=None, range=Optional[str])
+slots.dataFile__file_role = Slot(uri=LAMBDA.file_role, name="dataFile__file_role", curie=LAMBDA.curie('file_role'),
+                   model_uri=LAMBDA.dataFile__file_role, domain=None, range=Optional[str])
 
-slots.image__file_name = Slot(uri=LAMBDABER.file_name, name="image__file_name", curie=LAMBDABER.curie('file_name'),
-                   model_uri=LAMBDABER.image__file_name, domain=None, range=str)
+slots.image__file_name = Slot(uri=LAMBDA.file_name, name="image__file_name", curie=LAMBDA.curie('file_name'),
+                   model_uri=LAMBDA.image__file_name, domain=None, range=str)
 
-slots.image__acquisition_date = Slot(uri=LAMBDABER.acquisition_date, name="image__acquisition_date", curie=LAMBDABER.curie('acquisition_date'),
-                   model_uri=LAMBDABER.image__acquisition_date, domain=None, range=Optional[str])
+slots.image__acquisition_date = Slot(uri=LAMBDA.acquisition_date, name="image__acquisition_date", curie=LAMBDA.curie('acquisition_date'),
+                   model_uri=LAMBDA.image__acquisition_date, domain=None, range=Optional[str])
 
-slots.image__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="image__pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.image__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image__pixel_size = Slot(uri=LAMBDA.pixel_size, name="image__pixel_size", curie=LAMBDA.curie('pixel_size'),
+                   model_uri=LAMBDA.image__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image__dimensions_x = Slot(uri=LAMBDABER.dimensions_x, name="image__dimensions_x", curie=LAMBDABER.curie('dimensions_x'),
-                   model_uri=LAMBDABER.image__dimensions_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image__dimensions_x = Slot(uri=LAMBDA.dimensions_x, name="image__dimensions_x", curie=LAMBDA.curie('dimensions_x'),
+                   model_uri=LAMBDA.image__dimensions_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image__dimensions_y = Slot(uri=LAMBDABER.dimensions_y, name="image__dimensions_y", curie=LAMBDABER.curie('dimensions_y'),
-                   model_uri=LAMBDABER.image__dimensions_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image__dimensions_y = Slot(uri=LAMBDA.dimensions_y, name="image__dimensions_y", curie=LAMBDA.curie('dimensions_y'),
+                   model_uri=LAMBDA.image__dimensions_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="image__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.image__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image__exposure_time = Slot(uri=LAMBDA.exposure_time, name="image__exposure_time", curie=LAMBDA.curie('exposure_time'),
+                   model_uri=LAMBDA.image__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image__dose = Slot(uri=LAMBDABER.dose, name="image__dose", curie=LAMBDABER.curie('dose'),
-                   model_uri=LAMBDABER.image__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image__dose = Slot(uri=LAMBDA.dose, name="image__dose", curie=LAMBDA.curie('dose'),
+                   model_uri=LAMBDA.image__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image2D__defocus = Slot(uri=LAMBDABER.defocus, name="image2D__defocus", curie=LAMBDABER.curie('defocus'),
-                   model_uri=LAMBDABER.image2D__defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image2D__defocus = Slot(uri=LAMBDA.defocus, name="image2D__defocus", curie=LAMBDA.curie('defocus'),
+                   model_uri=LAMBDA.image2D__defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image2D__astigmatism = Slot(uri=LAMBDABER.astigmatism, name="image2D__astigmatism", curie=LAMBDABER.curie('astigmatism'),
-                   model_uri=LAMBDABER.image2D__astigmatism, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image2D__astigmatism = Slot(uri=LAMBDA.astigmatism, name="image2D__astigmatism", curie=LAMBDA.curie('astigmatism'),
+                   model_uri=LAMBDA.image2D__astigmatism, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image3D__dimensions_z = Slot(uri=LAMBDABER.dimensions_z, name="image3D__dimensions_z", curie=LAMBDABER.curie('dimensions_z'),
-                   model_uri=LAMBDABER.image3D__dimensions_z, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image3D__dimensions_z = Slot(uri=LAMBDA.dimensions_z, name="image3D__dimensions_z", curie=LAMBDA.curie('dimensions_z'),
+                   model_uri=LAMBDA.image3D__dimensions_z, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image3D__voxel_size = Slot(uri=LAMBDABER.voxel_size, name="image3D__voxel_size", curie=LAMBDABER.curie('voxel_size'),
-                   model_uri=LAMBDABER.image3D__voxel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.image3D__voxel_size = Slot(uri=LAMBDA.voxel_size, name="image3D__voxel_size", curie=LAMBDA.curie('voxel_size'),
+                   model_uri=LAMBDA.image3D__voxel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.image3D__reconstruction_method = Slot(uri=LAMBDABER.reconstruction_method, name="image3D__reconstruction_method", curie=LAMBDABER.curie('reconstruction_method'),
-                   model_uri=LAMBDABER.image3D__reconstruction_method, domain=None, range=Optional[str])
+slots.image3D__reconstruction_method = Slot(uri=LAMBDA.reconstruction_method, name="image3D__reconstruction_method", curie=LAMBDA.curie('reconstruction_method'),
+                   model_uri=LAMBDA.image3D__reconstruction_method, domain=None, range=Optional[str])
 
-slots.movie__frames = Slot(uri=LAMBDABER.frames, name="movie__frames", curie=LAMBDABER.curie('frames'),
-                   model_uri=LAMBDABER.movie__frames, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__frames = Slot(uri=LAMBDA.frames, name="movie__frames", curie=LAMBDA.curie('frames'),
+                   model_uri=LAMBDA.movie__frames, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__super_resolution = Slot(uri=LAMBDABER.super_resolution, name="movie__super_resolution", curie=LAMBDABER.curie('super_resolution'),
-                   model_uri=LAMBDABER.movie__super_resolution, domain=None, range=Optional[Union[bool, Bool]])
+slots.movie__super_resolution = Slot(uri=LAMBDA.super_resolution, name="movie__super_resolution", curie=LAMBDA.curie('super_resolution'),
+                   model_uri=LAMBDA.movie__super_resolution, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.movie__pixel_size_unbinned = Slot(uri=LAMBDABER.pixel_size_unbinned, name="movie__pixel_size_unbinned", curie=LAMBDABER.curie('pixel_size_unbinned'),
-                   model_uri=LAMBDABER.movie__pixel_size_unbinned, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__pixel_size_unbinned = Slot(uri=LAMBDA.pixel_size_unbinned, name="movie__pixel_size_unbinned", curie=LAMBDA.curie('pixel_size_unbinned'),
+                   model_uri=LAMBDA.movie__pixel_size_unbinned, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__timestamp = Slot(uri=LAMBDABER.timestamp, name="movie__timestamp", curie=LAMBDABER.curie('timestamp'),
-                   model_uri=LAMBDABER.movie__timestamp, domain=None, range=Optional[str])
+slots.movie__timestamp = Slot(uri=LAMBDA.timestamp, name="movie__timestamp", curie=LAMBDA.curie('timestamp'),
+                   model_uri=LAMBDA.movie__timestamp, domain=None, range=Optional[str])
 
-slots.movie__stage_position_x = Slot(uri=LAMBDABER.stage_position_x, name="movie__stage_position_x", curie=LAMBDABER.curie('stage_position_x'),
-                   model_uri=LAMBDABER.movie__stage_position_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__stage_position_x = Slot(uri=LAMBDA.stage_position_x, name="movie__stage_position_x", curie=LAMBDA.curie('stage_position_x'),
+                   model_uri=LAMBDA.movie__stage_position_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__stage_position_y = Slot(uri=LAMBDABER.stage_position_y, name="movie__stage_position_y", curie=LAMBDABER.curie('stage_position_y'),
-                   model_uri=LAMBDABER.movie__stage_position_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__stage_position_y = Slot(uri=LAMBDA.stage_position_y, name="movie__stage_position_y", curie=LAMBDA.curie('stage_position_y'),
+                   model_uri=LAMBDA.movie__stage_position_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__stage_position_z = Slot(uri=LAMBDABER.stage_position_z, name="movie__stage_position_z", curie=LAMBDABER.curie('stage_position_z'),
-                   model_uri=LAMBDABER.movie__stage_position_z, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__stage_position_z = Slot(uri=LAMBDA.stage_position_z, name="movie__stage_position_z", curie=LAMBDA.curie('stage_position_z'),
+                   model_uri=LAMBDA.movie__stage_position_z, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__nominal_defocus = Slot(uri=LAMBDABER.nominal_defocus, name="movie__nominal_defocus", curie=LAMBDABER.curie('nominal_defocus'),
-                   model_uri=LAMBDABER.movie__nominal_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__nominal_defocus = Slot(uri=LAMBDA.nominal_defocus, name="movie__nominal_defocus", curie=LAMBDA.curie('nominal_defocus'),
+                   model_uri=LAMBDA.movie__nominal_defocus, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="movie__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
-                   model_uri=LAMBDABER.movie__dose_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__dose_per_frame = Slot(uri=LAMBDA.dose_per_frame, name="movie__dose_per_frame", curie=LAMBDA.curie('dose_per_frame'),
+                   model_uri=LAMBDA.movie__dose_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__beam_shift_x = Slot(uri=LAMBDABER.beam_shift_x, name="movie__beam_shift_x", curie=LAMBDABER.curie('beam_shift_x'),
-                   model_uri=LAMBDABER.movie__beam_shift_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__beam_shift_x = Slot(uri=LAMBDA.beam_shift_x, name="movie__beam_shift_x", curie=LAMBDA.curie('beam_shift_x'),
+                   model_uri=LAMBDA.movie__beam_shift_x, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__beam_shift_y = Slot(uri=LAMBDABER.beam_shift_y, name="movie__beam_shift_y", curie=LAMBDABER.curie('beam_shift_y'),
-                   model_uri=LAMBDABER.movie__beam_shift_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__beam_shift_y = Slot(uri=LAMBDA.beam_shift_y, name="movie__beam_shift_y", curie=LAMBDA.curie('beam_shift_y'),
+                   model_uri=LAMBDA.movie__beam_shift_y, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__ice_thickness_estimate = Slot(uri=LAMBDABER.ice_thickness_estimate, name="movie__ice_thickness_estimate", curie=LAMBDABER.curie('ice_thickness_estimate'),
-                   model_uri=LAMBDABER.movie__ice_thickness_estimate, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.movie__ice_thickness_estimate = Slot(uri=LAMBDA.ice_thickness_estimate, name="movie__ice_thickness_estimate", curie=LAMBDA.curie('ice_thickness_estimate'),
+                   model_uri=LAMBDA.movie__ice_thickness_estimate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.movie__grid_square_id = Slot(uri=LAMBDABER.grid_square_id, name="movie__grid_square_id", curie=LAMBDABER.curie('grid_square_id'),
-                   model_uri=LAMBDABER.movie__grid_square_id, domain=None, range=Optional[str])
+slots.movie__grid_square_id = Slot(uri=LAMBDA.grid_square_id, name="movie__grid_square_id", curie=LAMBDA.curie('grid_square_id'),
+                   model_uri=LAMBDA.movie__grid_square_id, domain=None, range=Optional[str])
 
-slots.movie__hole_id = Slot(uri=LAMBDABER.hole_id, name="movie__hole_id", curie=LAMBDABER.curie('hole_id'),
-                   model_uri=LAMBDABER.movie__hole_id, domain=None, range=Optional[str])
+slots.movie__hole_id = Slot(uri=LAMBDA.hole_id, name="movie__hole_id", curie=LAMBDA.curie('hole_id'),
+                   model_uri=LAMBDA.movie__hole_id, domain=None, range=Optional[str])
 
-slots.movie__acquisition_group = Slot(uri=LAMBDABER.acquisition_group, name="movie__acquisition_group", curie=LAMBDABER.curie('acquisition_group'),
-                   model_uri=LAMBDABER.movie__acquisition_group, domain=None, range=Optional[str])
+slots.movie__acquisition_group = Slot(uri=LAMBDA.acquisition_group, name="movie__acquisition_group", curie=LAMBDA.curie('acquisition_group'),
+                   model_uri=LAMBDA.movie__acquisition_group, domain=None, range=Optional[str])
 
-slots.micrograph__dose = Slot(uri=LAMBDABER.dose, name="micrograph__dose", curie=LAMBDABER.curie('dose'),
-                   model_uri=LAMBDABER.micrograph__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__dose = Slot(uri=LAMBDA.dose, name="micrograph__dose", curie=LAMBDA.curie('dose'),
+                   model_uri=LAMBDA.micrograph__dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.micrograph__origin_movie_id = Slot(uri=LAMBDABER.origin_movie_id, name="micrograph__origin_movie_id", curie=LAMBDABER.curie('origin_movie_id'),
-                   model_uri=LAMBDABER.micrograph__origin_movie_id, domain=None, range=Optional[str])
+slots.micrograph__origin_movie_id = Slot(uri=LAMBDA.origin_movie_id, name="micrograph__origin_movie_id", curie=LAMBDA.curie('origin_movie_id'),
+                   model_uri=LAMBDA.micrograph__origin_movie_id, domain=None, range=Optional[str])
 
-slots.micrograph__defocus_u = Slot(uri=LAMBDABER.defocus_u, name="micrograph__defocus_u", curie=LAMBDABER.curie('defocus_u'),
-                   model_uri=LAMBDABER.micrograph__defocus_u, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__defocus_u = Slot(uri=LAMBDA.defocus_u, name="micrograph__defocus_u", curie=LAMBDA.curie('defocus_u'),
+                   model_uri=LAMBDA.micrograph__defocus_u, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.micrograph__defocus_v = Slot(uri=LAMBDABER.defocus_v, name="micrograph__defocus_v", curie=LAMBDABER.curie('defocus_v'),
-                   model_uri=LAMBDABER.micrograph__defocus_v, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__defocus_v = Slot(uri=LAMBDA.defocus_v, name="micrograph__defocus_v", curie=LAMBDA.curie('defocus_v'),
+                   model_uri=LAMBDA.micrograph__defocus_v, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.micrograph__astigmatism_angle = Slot(uri=LAMBDABER.astigmatism_angle, name="micrograph__astigmatism_angle", curie=LAMBDABER.curie('astigmatism_angle'),
-                   model_uri=LAMBDABER.micrograph__astigmatism_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__astigmatism_angle = Slot(uri=LAMBDA.astigmatism_angle, name="micrograph__astigmatism_angle", curie=LAMBDA.curie('astigmatism_angle'),
+                   model_uri=LAMBDA.micrograph__astigmatism_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDABER.resolution_fit_limit, name="micrograph__resolution_fit_limit", curie=LAMBDABER.curie('resolution_fit_limit'),
-                   model_uri=LAMBDABER.micrograph__resolution_fit_limit, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__resolution_fit_limit = Slot(uri=LAMBDA.resolution_fit_limit, name="micrograph__resolution_fit_limit", curie=LAMBDA.curie('resolution_fit_limit'),
+                   model_uri=LAMBDA.micrograph__resolution_fit_limit, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.micrograph__ctf_quality_score = Slot(uri=LAMBDABER.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDABER.curie('ctf_quality_score'),
-                   model_uri=LAMBDABER.micrograph__ctf_quality_score, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.micrograph__ctf_quality_score = Slot(uri=LAMBDA.ctf_quality_score, name="micrograph__ctf_quality_score", curie=LAMBDA.curie('ctf_quality_score'),
+                   model_uri=LAMBDA.micrograph__ctf_quality_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDABER.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDABER.curie('wavenumber_min'),
-                   model_uri=LAMBDABER.fTIRImage__wavenumber_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fTIRImage__wavenumber_min = Slot(uri=LAMBDA.wavenumber_min, name="fTIRImage__wavenumber_min", curie=LAMBDA.curie('wavenumber_min'),
+                   model_uri=LAMBDA.fTIRImage__wavenumber_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fTIRImage__wavenumber_max = Slot(uri=LAMBDABER.wavenumber_max, name="fTIRImage__wavenumber_max", curie=LAMBDABER.curie('wavenumber_max'),
-                   model_uri=LAMBDABER.fTIRImage__wavenumber_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fTIRImage__wavenumber_max = Slot(uri=LAMBDA.wavenumber_max, name="fTIRImage__wavenumber_max", curie=LAMBDA.curie('wavenumber_max'),
+                   model_uri=LAMBDA.fTIRImage__wavenumber_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fTIRImage__spectral_resolution = Slot(uri=LAMBDABER.spectral_resolution, name="fTIRImage__spectral_resolution", curie=LAMBDABER.curie('spectral_resolution'),
-                   model_uri=LAMBDABER.fTIRImage__spectral_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fTIRImage__spectral_resolution = Slot(uri=LAMBDA.spectral_resolution, name="fTIRImage__spectral_resolution", curie=LAMBDA.curie('spectral_resolution'),
+                   model_uri=LAMBDA.fTIRImage__spectral_resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fTIRImage__number_of_scans = Slot(uri=LAMBDABER.number_of_scans, name="fTIRImage__number_of_scans", curie=LAMBDABER.curie('number_of_scans'),
-                   model_uri=LAMBDABER.fTIRImage__number_of_scans, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fTIRImage__number_of_scans = Slot(uri=LAMBDA.number_of_scans, name="fTIRImage__number_of_scans", curie=LAMBDA.curie('number_of_scans'),
+                   model_uri=LAMBDA.fTIRImage__number_of_scans, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fTIRImage__apodization_function = Slot(uri=LAMBDABER.apodization_function, name="fTIRImage__apodization_function", curie=LAMBDABER.curie('apodization_function'),
-                   model_uri=LAMBDABER.fTIRImage__apodization_function, domain=None, range=Optional[str])
+slots.fTIRImage__apodization_function = Slot(uri=LAMBDA.apodization_function, name="fTIRImage__apodization_function", curie=LAMBDA.curie('apodization_function'),
+                   model_uri=LAMBDA.fTIRImage__apodization_function, domain=None, range=Optional[str])
 
-slots.fTIRImage__molecular_signatures = Slot(uri=LAMBDABER.molecular_signatures, name="fTIRImage__molecular_signatures", curie=LAMBDABER.curie('molecular_signatures'),
-                   model_uri=LAMBDABER.fTIRImage__molecular_signatures, domain=None, range=Optional[Union[str, list[str]]])
+slots.fTIRImage__molecular_signatures = Slot(uri=LAMBDA.molecular_signatures, name="fTIRImage__molecular_signatures", curie=LAMBDA.curie('molecular_signatures'),
+                   model_uri=LAMBDA.fTIRImage__molecular_signatures, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.fTIRImage__background_correction = Slot(uri=LAMBDABER.background_correction, name="fTIRImage__background_correction", curie=LAMBDABER.curie('background_correction'),
-                   model_uri=LAMBDABER.fTIRImage__background_correction, domain=None, range=Optional[str])
+slots.fTIRImage__background_correction = Slot(uri=LAMBDA.background_correction, name="fTIRImage__background_correction", curie=LAMBDA.curie('background_correction'),
+                   model_uri=LAMBDA.fTIRImage__background_correction, domain=None, range=Optional[str])
 
-slots.fluorescenceImage__excitation_wavelength = Slot(uri=LAMBDABER.excitation_wavelength, name="fluorescenceImage__excitation_wavelength", curie=LAMBDABER.curie('excitation_wavelength'),
-                   model_uri=LAMBDABER.fluorescenceImage__excitation_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fluorescenceImage__excitation_wavelength = Slot(uri=LAMBDA.excitation_wavelength, name="fluorescenceImage__excitation_wavelength", curie=LAMBDA.curie('excitation_wavelength'),
+                   model_uri=LAMBDA.fluorescenceImage__excitation_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fluorescenceImage__emission_wavelength = Slot(uri=LAMBDABER.emission_wavelength, name="fluorescenceImage__emission_wavelength", curie=LAMBDABER.curie('emission_wavelength'),
-                   model_uri=LAMBDABER.fluorescenceImage__emission_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fluorescenceImage__emission_wavelength = Slot(uri=LAMBDA.emission_wavelength, name="fluorescenceImage__emission_wavelength", curie=LAMBDA.curie('emission_wavelength'),
+                   model_uri=LAMBDA.fluorescenceImage__emission_wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fluorescenceImage__excitation_filter = Slot(uri=LAMBDABER.excitation_filter, name="fluorescenceImage__excitation_filter", curie=LAMBDABER.curie('excitation_filter'),
-                   model_uri=LAMBDABER.fluorescenceImage__excitation_filter, domain=None, range=Optional[str])
+slots.fluorescenceImage__excitation_filter = Slot(uri=LAMBDA.excitation_filter, name="fluorescenceImage__excitation_filter", curie=LAMBDA.curie('excitation_filter'),
+                   model_uri=LAMBDA.fluorescenceImage__excitation_filter, domain=None, range=Optional[str])
 
-slots.fluorescenceImage__emission_filter = Slot(uri=LAMBDABER.emission_filter, name="fluorescenceImage__emission_filter", curie=LAMBDABER.curie('emission_filter'),
-                   model_uri=LAMBDABER.fluorescenceImage__emission_filter, domain=None, range=Optional[str])
+slots.fluorescenceImage__emission_filter = Slot(uri=LAMBDA.emission_filter, name="fluorescenceImage__emission_filter", curie=LAMBDA.curie('emission_filter'),
+                   model_uri=LAMBDA.fluorescenceImage__emission_filter, domain=None, range=Optional[str])
 
-slots.fluorescenceImage__fluorophore = Slot(uri=LAMBDABER.fluorophore, name="fluorescenceImage__fluorophore", curie=LAMBDABER.curie('fluorophore'),
-                   model_uri=LAMBDABER.fluorescenceImage__fluorophore, domain=None, range=Optional[str])
+slots.fluorescenceImage__fluorophore = Slot(uri=LAMBDA.fluorophore, name="fluorescenceImage__fluorophore", curie=LAMBDA.curie('fluorophore'),
+                   model_uri=LAMBDA.fluorescenceImage__fluorophore, domain=None, range=Optional[str])
 
-slots.fluorescenceImage__channel_name = Slot(uri=LAMBDABER.channel_name, name="fluorescenceImage__channel_name", curie=LAMBDABER.curie('channel_name'),
-                   model_uri=LAMBDABER.fluorescenceImage__channel_name, domain=None, range=Optional[str])
+slots.fluorescenceImage__channel_name = Slot(uri=LAMBDA.channel_name, name="fluorescenceImage__channel_name", curie=LAMBDA.curie('channel_name'),
+                   model_uri=LAMBDA.fluorescenceImage__channel_name, domain=None, range=Optional[str])
 
-slots.fluorescenceImage__laser_power = Slot(uri=LAMBDABER.laser_power, name="fluorescenceImage__laser_power", curie=LAMBDABER.curie('laser_power'),
-                   model_uri=LAMBDABER.fluorescenceImage__laser_power, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fluorescenceImage__laser_power = Slot(uri=LAMBDA.laser_power, name="fluorescenceImage__laser_power", curie=LAMBDA.curie('laser_power'),
+                   model_uri=LAMBDA.fluorescenceImage__laser_power, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fluorescenceImage__pinhole_size = Slot(uri=LAMBDABER.pinhole_size, name="fluorescenceImage__pinhole_size", curie=LAMBDABER.curie('pinhole_size'),
-                   model_uri=LAMBDABER.fluorescenceImage__pinhole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fluorescenceImage__pinhole_size = Slot(uri=LAMBDA.pinhole_size, name="fluorescenceImage__pinhole_size", curie=LAMBDA.curie('pinhole_size'),
+                   model_uri=LAMBDA.fluorescenceImage__pinhole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fluorescenceImage__quantum_yield = Slot(uri=LAMBDABER.quantum_yield, name="fluorescenceImage__quantum_yield", curie=LAMBDABER.curie('quantum_yield'),
-                   model_uri=LAMBDABER.fluorescenceImage__quantum_yield, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fluorescenceImage__quantum_yield = Slot(uri=LAMBDA.quantum_yield, name="fluorescenceImage__quantum_yield", curie=LAMBDA.curie('quantum_yield'),
+                   model_uri=LAMBDA.fluorescenceImage__quantum_yield, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.opticalImage__illumination_type = Slot(uri=LAMBDABER.illumination_type, name="opticalImage__illumination_type", curie=LAMBDABER.curie('illumination_type'),
-                   model_uri=LAMBDABER.opticalImage__illumination_type, domain=None, range=Optional[Union[str, "IlluminationTypeEnum"]])
+slots.opticalImage__illumination_type = Slot(uri=LAMBDA.illumination_type, name="opticalImage__illumination_type", curie=LAMBDA.curie('illumination_type'),
+                   model_uri=LAMBDA.opticalImage__illumination_type, domain=None, range=Optional[Union[str, "IlluminationTypeEnum"]])
 
-slots.opticalImage__magnification = Slot(uri=LAMBDABER.magnification, name="opticalImage__magnification", curie=LAMBDABER.curie('magnification'),
-                   model_uri=LAMBDABER.opticalImage__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.opticalImage__magnification = Slot(uri=LAMBDA.magnification, name="opticalImage__magnification", curie=LAMBDA.curie('magnification'),
+                   model_uri=LAMBDA.opticalImage__magnification, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.opticalImage__numerical_aperture = Slot(uri=LAMBDABER.numerical_aperture, name="opticalImage__numerical_aperture", curie=LAMBDABER.curie('numerical_aperture'),
-                   model_uri=LAMBDABER.opticalImage__numerical_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.opticalImage__numerical_aperture = Slot(uri=LAMBDA.numerical_aperture, name="opticalImage__numerical_aperture", curie=LAMBDA.curie('numerical_aperture'),
+                   model_uri=LAMBDA.opticalImage__numerical_aperture, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.opticalImage__color_channels = Slot(uri=LAMBDABER.color_channels, name="opticalImage__color_channels", curie=LAMBDABER.curie('color_channels'),
-                   model_uri=LAMBDABER.opticalImage__color_channels, domain=None, range=Optional[Union[str, list[str]]])
+slots.opticalImage__color_channels = Slot(uri=LAMBDA.color_channels, name="opticalImage__color_channels", curie=LAMBDA.curie('color_channels'),
+                   model_uri=LAMBDA.opticalImage__color_channels, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.opticalImage__white_balance = Slot(uri=LAMBDABER.white_balance, name="opticalImage__white_balance", curie=LAMBDABER.curie('white_balance'),
-                   model_uri=LAMBDABER.opticalImage__white_balance, domain=None, range=Optional[str])
+slots.opticalImage__white_balance = Slot(uri=LAMBDA.white_balance, name="opticalImage__white_balance", curie=LAMBDA.curie('white_balance'),
+                   model_uri=LAMBDA.opticalImage__white_balance, domain=None, range=Optional[str])
 
-slots.opticalImage__contrast_method = Slot(uri=LAMBDABER.contrast_method, name="opticalImage__contrast_method", curie=LAMBDABER.curie('contrast_method'),
-                   model_uri=LAMBDABER.opticalImage__contrast_method, domain=None, range=Optional[str])
+slots.opticalImage__contrast_method = Slot(uri=LAMBDA.contrast_method, name="opticalImage__contrast_method", curie=LAMBDA.curie('contrast_method'),
+                   model_uri=LAMBDA.opticalImage__contrast_method, domain=None, range=Optional[str])
 
-slots.xRFImage__beam_energy = Slot(uri=LAMBDABER.beam_energy, name="xRFImage__beam_energy", curie=LAMBDABER.curie('beam_energy'),
-                   model_uri=LAMBDABER.xRFImage__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRFImage__beam_energy = Slot(uri=LAMBDA.beam_energy, name="xRFImage__beam_energy", curie=LAMBDA.curie('beam_energy'),
+                   model_uri=LAMBDA.xRFImage__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRFImage__beam_size = Slot(uri=LAMBDABER.beam_size, name="xRFImage__beam_size", curie=LAMBDABER.curie('beam_size'),
-                   model_uri=LAMBDABER.xRFImage__beam_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRFImage__beam_size = Slot(uri=LAMBDA.beam_size, name="xRFImage__beam_size", curie=LAMBDA.curie('beam_size'),
+                   model_uri=LAMBDA.xRFImage__beam_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRFImage__dwell_time = Slot(uri=LAMBDABER.dwell_time, name="xRFImage__dwell_time", curie=LAMBDABER.curie('dwell_time'),
-                   model_uri=LAMBDABER.xRFImage__dwell_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRFImage__dwell_time = Slot(uri=LAMBDA.dwell_time, name="xRFImage__dwell_time", curie=LAMBDA.curie('dwell_time'),
+                   model_uri=LAMBDA.xRFImage__dwell_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRFImage__elements_measured = Slot(uri=LAMBDABER.elements_measured, name="xRFImage__elements_measured", curie=LAMBDABER.curie('elements_measured'),
-                   model_uri=LAMBDABER.xRFImage__elements_measured, domain=None, range=Optional[Union[str, list[str]]])
+slots.xRFImage__elements_measured = Slot(uri=LAMBDA.elements_measured, name="xRFImage__elements_measured", curie=LAMBDA.curie('elements_measured'),
+                   model_uri=LAMBDA.xRFImage__elements_measured, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.xRFImage__source_type = Slot(uri=LAMBDABER.source_type, name="xRFImage__source_type", curie=LAMBDABER.curie('source_type'),
-                   model_uri=LAMBDABER.xRFImage__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
+slots.xRFImage__source_type = Slot(uri=LAMBDA.source_type, name="xRFImage__source_type", curie=LAMBDA.curie('source_type'),
+                   model_uri=LAMBDA.xRFImage__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
-slots.xRFImage__detector_technology = Slot(uri=LAMBDABER.detector_technology, name="xRFImage__detector_technology", curie=LAMBDABER.curie('detector_technology'),
-                   model_uri=LAMBDABER.xRFImage__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
+slots.xRFImage__detector_technology = Slot(uri=LAMBDA.detector_technology, name="xRFImage__detector_technology", curie=LAMBDA.curie('detector_technology'),
+                   model_uri=LAMBDA.xRFImage__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
 
-slots.xRFImage__detector_model = Slot(uri=LAMBDABER.detector_model, name="xRFImage__detector_model", curie=LAMBDABER.curie('detector_model'),
-                   model_uri=LAMBDABER.xRFImage__detector_model, domain=None, range=Optional[str])
+slots.xRFImage__detector_model = Slot(uri=LAMBDA.detector_model, name="xRFImage__detector_model", curie=LAMBDA.curie('detector_model'),
+                   model_uri=LAMBDA.xRFImage__detector_model, domain=None, range=Optional[str])
 
-slots.xRFImage__flux = Slot(uri=LAMBDABER.flux, name="xRFImage__flux", curie=LAMBDABER.curie('flux'),
-                   model_uri=LAMBDABER.xRFImage__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRFImage__flux = Slot(uri=LAMBDA.flux, name="xRFImage__flux", curie=LAMBDA.curie('flux'),
+                   model_uri=LAMBDA.xRFImage__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRFImage__calibration_standard = Slot(uri=LAMBDABER.calibration_standard, name="xRFImage__calibration_standard", curie=LAMBDABER.curie('calibration_standard'),
-                   model_uri=LAMBDABER.xRFImage__calibration_standard, domain=None, range=Optional[str])
+slots.xRFImage__calibration_standard = Slot(uri=LAMBDA.calibration_standard, name="xRFImage__calibration_standard", curie=LAMBDA.curie('calibration_standard'),
+                   model_uri=LAMBDA.xRFImage__calibration_standard, domain=None, range=Optional[str])
 
-slots.imageFeature__terms = Slot(uri=LAMBDABER.terms, name="imageFeature__terms", curie=LAMBDABER.curie('terms'),
-                   model_uri=LAMBDABER.imageFeature__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
+slots.imageFeature__terms = Slot(uri=LAMBDA.terms, name="imageFeature__terms", curie=LAMBDA.curie('terms'),
+                   model_uri=LAMBDA.imageFeature__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
 
-slots.ontologyTerm__terms = Slot(uri=LAMBDABER.terms, name="ontologyTerm__terms", curie=LAMBDABER.curie('terms'),
-                   model_uri=LAMBDABER.ontologyTerm__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
+slots.ontologyTerm__terms = Slot(uri=LAMBDA.terms, name="ontologyTerm__terms", curie=LAMBDA.curie('terms'),
+                   model_uri=LAMBDA.ontologyTerm__terms, domain=None, range=Optional[Union[dict[Union[str, OntologyTermId], Union[dict, OntologyTerm]], list[Union[dict, OntologyTerm]]]])
 
-slots.ontologyTerm__label = Slot(uri=LAMBDABER.label, name="ontologyTerm__label", curie=LAMBDABER.curie('label'),
-                   model_uri=LAMBDABER.ontologyTerm__label, domain=None, range=Optional[str])
+slots.ontologyTerm__label = Slot(uri=LAMBDA.label, name="ontologyTerm__label", curie=LAMBDA.curie('label'),
+                   model_uri=LAMBDA.ontologyTerm__label, domain=None, range=Optional[str])
 
-slots.ontologyTerm__definition = Slot(uri=LAMBDABER.definition, name="ontologyTerm__definition", curie=LAMBDABER.curie('definition'),
-                   model_uri=LAMBDABER.ontologyTerm__definition, domain=None, range=Optional[str])
+slots.ontologyTerm__definition = Slot(uri=LAMBDA.definition, name="ontologyTerm__definition", curie=LAMBDA.curie('definition'),
+                   model_uri=LAMBDA.ontologyTerm__definition, domain=None, range=Optional[str])
 
-slots.ontologyTerm__ontology = Slot(uri=LAMBDABER.ontology, name="ontologyTerm__ontology", curie=LAMBDABER.curie('ontology'),
-                   model_uri=LAMBDABER.ontologyTerm__ontology, domain=None, range=Optional[str])
+slots.ontologyTerm__ontology = Slot(uri=LAMBDA.ontology, name="ontologyTerm__ontology", curie=LAMBDA.curie('ontology'),
+                   model_uri=LAMBDA.ontologyTerm__ontology, domain=None, range=Optional[str])
 
-slots.molecularComposition__sequences = Slot(uri=LAMBDABER.sequences, name="molecularComposition__sequences", curie=LAMBDABER.curie('sequences'),
-                   model_uri=LAMBDABER.molecularComposition__sequences, domain=None, range=Optional[Union[str, list[str]]])
+slots.molecularComposition__sequences = Slot(uri=LAMBDA.sequences, name="molecularComposition__sequences", curie=LAMBDA.curie('sequences'),
+                   model_uri=LAMBDA.molecularComposition__sequences, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.molecularComposition__modifications = Slot(uri=LAMBDABER.modifications, name="molecularComposition__modifications", curie=LAMBDABER.curie('modifications'),
-                   model_uri=LAMBDABER.molecularComposition__modifications, domain=None, range=Optional[Union[str, list[str]]])
+slots.molecularComposition__modifications = Slot(uri=LAMBDA.modifications, name="molecularComposition__modifications", curie=LAMBDA.curie('modifications'),
+                   model_uri=LAMBDA.molecularComposition__modifications, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.molecularComposition__ligands = Slot(uri=LAMBDABER.ligands, name="molecularComposition__ligands", curie=LAMBDABER.curie('ligands'),
-                   model_uri=LAMBDABER.molecularComposition__ligands, domain=None, range=Optional[Union[str, list[str]]])
+slots.molecularComposition__ligands = Slot(uri=LAMBDA.ligands, name="molecularComposition__ligands", curie=LAMBDA.curie('ligands'),
+                   model_uri=LAMBDA.molecularComposition__ligands, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.bufferComposition__ph = Slot(uri=LAMBDABER.ph, name="bufferComposition__ph", curie=LAMBDABER.curie('ph'),
-                   model_uri=LAMBDABER.bufferComposition__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.bufferComposition__ph = Slot(uri=LAMBDA.ph, name="bufferComposition__ph", curie=LAMBDA.curie('ph'),
+                   model_uri=LAMBDA.bufferComposition__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.bufferComposition__components = Slot(uri=LAMBDABER.components, name="bufferComposition__components", curie=LAMBDABER.curie('components'),
-                   model_uri=LAMBDABER.bufferComposition__components, domain=None, range=Optional[Union[str, list[str]]])
+slots.bufferComposition__components = Slot(uri=LAMBDA.components, name="bufferComposition__components", curie=LAMBDA.curie('components'),
+                   model_uri=LAMBDA.bufferComposition__components, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.bufferComposition__additives = Slot(uri=LAMBDABER.additives, name="bufferComposition__additives", curie=LAMBDABER.curie('additives'),
-                   model_uri=LAMBDABER.bufferComposition__additives, domain=None, range=Optional[Union[str, list[str]]])
+slots.bufferComposition__additives = Slot(uri=LAMBDA.additives, name="bufferComposition__additives", curie=LAMBDA.curie('additives'),
+                   model_uri=LAMBDA.bufferComposition__additives, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.storageConditions__temperature = Slot(uri=LAMBDABER.temperature, name="storageConditions__temperature", curie=LAMBDABER.curie('temperature'),
-                   model_uri=LAMBDABER.storageConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.storageConditions__temperature = Slot(uri=LAMBDA.temperature, name="storageConditions__temperature", curie=LAMBDA.curie('temperature'),
+                   model_uri=LAMBDA.storageConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.storageConditions__duration = Slot(uri=LAMBDABER.duration, name="storageConditions__duration", curie=LAMBDABER.curie('duration'),
-                   model_uri=LAMBDABER.storageConditions__duration, domain=None, range=Optional[str])
+slots.storageConditions__duration = Slot(uri=LAMBDA.duration, name="storageConditions__duration", curie=LAMBDA.curie('duration'),
+                   model_uri=LAMBDA.storageConditions__duration, domain=None, range=Optional[str])
 
-slots.storageConditions__atmosphere = Slot(uri=LAMBDABER.atmosphere, name="storageConditions__atmosphere", curie=LAMBDABER.curie('atmosphere'),
-                   model_uri=LAMBDABER.storageConditions__atmosphere, domain=None, range=Optional[str])
+slots.storageConditions__atmosphere = Slot(uri=LAMBDA.atmosphere, name="storageConditions__atmosphere", curie=LAMBDA.curie('atmosphere'),
+                   model_uri=LAMBDA.storageConditions__atmosphere, domain=None, range=Optional[str])
 
-slots.cryoEMPreparation__grid_type = Slot(uri=LAMBDABER.grid_type, name="cryoEMPreparation__grid_type", curie=LAMBDABER.curie('grid_type'),
-                   model_uri=LAMBDABER.cryoEMPreparation__grid_type, domain=None, range=Optional[Union[str, "GridTypeEnum"]])
+slots.cryoEMPreparation__grid_type = Slot(uri=LAMBDA.grid_type, name="cryoEMPreparation__grid_type", curie=LAMBDA.curie('grid_type'),
+                   model_uri=LAMBDA.cryoEMPreparation__grid_type, domain=None, range=Optional[Union[str, "GridTypeEnum"]])
 
-slots.cryoEMPreparation__support_film = Slot(uri=LAMBDABER.support_film, name="cryoEMPreparation__support_film", curie=LAMBDABER.curie('support_film'),
-                   model_uri=LAMBDABER.cryoEMPreparation__support_film, domain=None, range=Optional[str])
+slots.cryoEMPreparation__support_film = Slot(uri=LAMBDA.support_film, name="cryoEMPreparation__support_film", curie=LAMBDA.curie('support_film'),
+                   model_uri=LAMBDA.cryoEMPreparation__support_film, domain=None, range=Optional[str])
 
-slots.cryoEMPreparation__hole_size = Slot(uri=LAMBDABER.hole_size, name="cryoEMPreparation__hole_size", curie=LAMBDABER.curie('hole_size'),
-                   model_uri=LAMBDABER.cryoEMPreparation__hole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__hole_size = Slot(uri=LAMBDA.hole_size, name="cryoEMPreparation__hole_size", curie=LAMBDA.curie('hole_size'),
+                   model_uri=LAMBDA.cryoEMPreparation__hole_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__vitrification_method = Slot(uri=LAMBDABER.vitrification_method, name="cryoEMPreparation__vitrification_method", curie=LAMBDABER.curie('vitrification_method'),
-                   model_uri=LAMBDABER.cryoEMPreparation__vitrification_method, domain=None, range=Optional[Union[str, "VitrificationMethodEnum"]])
+slots.cryoEMPreparation__vitrification_method = Slot(uri=LAMBDA.vitrification_method, name="cryoEMPreparation__vitrification_method", curie=LAMBDA.curie('vitrification_method'),
+                   model_uri=LAMBDA.cryoEMPreparation__vitrification_method, domain=None, range=Optional[Union[str, "VitrificationMethodEnum"]])
 
-slots.cryoEMPreparation__blot_time = Slot(uri=LAMBDABER.blot_time, name="cryoEMPreparation__blot_time", curie=LAMBDABER.curie('blot_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__blot_time = Slot(uri=LAMBDA.blot_time, name="cryoEMPreparation__blot_time", curie=LAMBDA.curie('blot_time'),
+                   model_uri=LAMBDA.cryoEMPreparation__blot_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__blot_force = Slot(uri=LAMBDABER.blot_force, name="cryoEMPreparation__blot_force", curie=LAMBDABER.curie('blot_force'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_force, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__blot_force = Slot(uri=LAMBDA.blot_force, name="cryoEMPreparation__blot_force", curie=LAMBDA.curie('blot_force'),
+                   model_uri=LAMBDA.cryoEMPreparation__blot_force, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__humidity_percentage = Slot(uri=LAMBDABER.humidity_percentage, name="cryoEMPreparation__humidity_percentage", curie=LAMBDABER.curie('humidity_percentage'),
-                   model_uri=LAMBDABER.cryoEMPreparation__humidity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__humidity_percentage = Slot(uri=LAMBDA.humidity_percentage, name="cryoEMPreparation__humidity_percentage", curie=LAMBDA.curie('humidity_percentage'),
+                   model_uri=LAMBDA.cryoEMPreparation__humidity_percentage, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDABER.chamber_temperature, name="cryoEMPreparation__chamber_temperature", curie=LAMBDABER.curie('chamber_temperature'),
-                   model_uri=LAMBDABER.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__chamber_temperature = Slot(uri=LAMBDA.chamber_temperature, name="cryoEMPreparation__chamber_temperature", curie=LAMBDA.curie('chamber_temperature'),
+                   model_uri=LAMBDA.cryoEMPreparation__chamber_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__grid_material = Slot(uri=LAMBDABER.grid_material, name="cryoEMPreparation__grid_material", curie=LAMBDABER.curie('grid_material'),
-                   model_uri=LAMBDABER.cryoEMPreparation__grid_material, domain=None, range=Optional[Union[str, "GridMaterialEnum"]])
+slots.cryoEMPreparation__grid_material = Slot(uri=LAMBDA.grid_material, name="cryoEMPreparation__grid_material", curie=LAMBDA.curie('grid_material'),
+                   model_uri=LAMBDA.cryoEMPreparation__grid_material, domain=None, range=Optional[Union[str, "GridMaterialEnum"]])
 
-slots.cryoEMPreparation__glow_discharge_applied = Slot(uri=LAMBDABER.glow_discharge_applied, name="cryoEMPreparation__glow_discharge_applied", curie=LAMBDABER.curie('glow_discharge_applied'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_applied, domain=None, range=Optional[Union[bool, Bool]])
+slots.cryoEMPreparation__glow_discharge_applied = Slot(uri=LAMBDA.glow_discharge_applied, name="cryoEMPreparation__glow_discharge_applied", curie=LAMBDA.curie('glow_discharge_applied'),
+                   model_uri=LAMBDA.cryoEMPreparation__glow_discharge_applied, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.cryoEMPreparation__glow_discharge_time = Slot(uri=LAMBDABER.glow_discharge_time, name="cryoEMPreparation__glow_discharge_time", curie=LAMBDABER.curie('glow_discharge_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__glow_discharge_time = Slot(uri=LAMBDA.glow_discharge_time, name="cryoEMPreparation__glow_discharge_time", curie=LAMBDA.curie('glow_discharge_time'),
+                   model_uri=LAMBDA.cryoEMPreparation__glow_discharge_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__glow_discharge_current = Slot(uri=LAMBDABER.glow_discharge_current, name="cryoEMPreparation__glow_discharge_current", curie=LAMBDABER.curie('glow_discharge_current'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_current, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__glow_discharge_current = Slot(uri=LAMBDA.glow_discharge_current, name="cryoEMPreparation__glow_discharge_current", curie=LAMBDA.curie('glow_discharge_current'),
+                   model_uri=LAMBDA.cryoEMPreparation__glow_discharge_current, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__glow_discharge_atmosphere = Slot(uri=LAMBDABER.glow_discharge_atmosphere, name="cryoEMPreparation__glow_discharge_atmosphere", curie=LAMBDABER.curie('glow_discharge_atmosphere'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_atmosphere, domain=None, range=Optional[str])
+slots.cryoEMPreparation__glow_discharge_atmosphere = Slot(uri=LAMBDA.glow_discharge_atmosphere, name="cryoEMPreparation__glow_discharge_atmosphere", curie=LAMBDA.curie('glow_discharge_atmosphere'),
+                   model_uri=LAMBDA.cryoEMPreparation__glow_discharge_atmosphere, domain=None, range=Optional[str])
 
-slots.cryoEMPreparation__glow_discharge_pressure = Slot(uri=LAMBDABER.glow_discharge_pressure, name="cryoEMPreparation__glow_discharge_pressure", curie=LAMBDABER.curie('glow_discharge_pressure'),
-                   model_uri=LAMBDABER.cryoEMPreparation__glow_discharge_pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__glow_discharge_pressure = Slot(uri=LAMBDA.glow_discharge_pressure, name="cryoEMPreparation__glow_discharge_pressure", curie=LAMBDA.curie('glow_discharge_pressure'),
+                   model_uri=LAMBDA.cryoEMPreparation__glow_discharge_pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__vitrification_instrument = Slot(uri=LAMBDABER.vitrification_instrument, name="cryoEMPreparation__vitrification_instrument", curie=LAMBDABER.curie('vitrification_instrument'),
-                   model_uri=LAMBDABER.cryoEMPreparation__vitrification_instrument, domain=None, range=Optional[str])
+slots.cryoEMPreparation__vitrification_instrument = Slot(uri=LAMBDA.vitrification_instrument, name="cryoEMPreparation__vitrification_instrument", curie=LAMBDA.curie('vitrification_instrument'),
+                   model_uri=LAMBDA.cryoEMPreparation__vitrification_instrument, domain=None, range=Optional[str])
 
-slots.cryoEMPreparation__blot_number = Slot(uri=LAMBDABER.blot_number, name="cryoEMPreparation__blot_number", curie=LAMBDABER.curie('blot_number'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blot_number, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__blot_number = Slot(uri=LAMBDA.blot_number, name="cryoEMPreparation__blot_number", curie=LAMBDA.curie('blot_number'),
+                   model_uri=LAMBDA.cryoEMPreparation__blot_number, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__wait_time = Slot(uri=LAMBDABER.wait_time, name="cryoEMPreparation__wait_time", curie=LAMBDABER.curie('wait_time'),
-                   model_uri=LAMBDABER.cryoEMPreparation__wait_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__wait_time = Slot(uri=LAMBDA.wait_time, name="cryoEMPreparation__wait_time", curie=LAMBDA.curie('wait_time'),
+                   model_uri=LAMBDA.cryoEMPreparation__wait_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__blotter_height = Slot(uri=LAMBDABER.blotter_height, name="cryoEMPreparation__blotter_height", curie=LAMBDABER.curie('blotter_height'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blotter_height, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__blotter_height = Slot(uri=LAMBDA.blotter_height, name="cryoEMPreparation__blotter_height", curie=LAMBDA.curie('blotter_height'),
+                   model_uri=LAMBDA.cryoEMPreparation__blotter_height, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__blotter_setting = Slot(uri=LAMBDABER.blotter_setting, name="cryoEMPreparation__blotter_setting", curie=LAMBDABER.curie('blotter_setting'),
-                   model_uri=LAMBDABER.cryoEMPreparation__blotter_setting, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__blotter_setting = Slot(uri=LAMBDA.blotter_setting, name="cryoEMPreparation__blotter_setting", curie=LAMBDA.curie('blotter_setting'),
+                   model_uri=LAMBDA.cryoEMPreparation__blotter_setting, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__sample_applied_volume = Slot(uri=LAMBDABER.sample_applied_volume, name="cryoEMPreparation__sample_applied_volume", curie=LAMBDABER.curie('sample_applied_volume'),
-                   model_uri=LAMBDABER.cryoEMPreparation__sample_applied_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__sample_applied_volume = Slot(uri=LAMBDA.sample_applied_volume, name="cryoEMPreparation__sample_applied_volume", curie=LAMBDA.curie('sample_applied_volume'),
+                   model_uri=LAMBDA.cryoEMPreparation__sample_applied_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDABER.ethane_temperature, name="cryoEMPreparation__ethane_temperature", curie=LAMBDABER.curie('ethane_temperature'),
-                   model_uri=LAMBDABER.cryoEMPreparation__ethane_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDA.ethane_temperature, name="cryoEMPreparation__ethane_temperature", curie=LAMBDA.curie('ethane_temperature'),
+                   model_uri=LAMBDA.cryoEMPreparation__ethane_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDABER.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDABER.curie('plasma_treatment'),
-                   model_uri=LAMBDABER.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
+slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDA.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDA.curie('plasma_treatment'),
+                   model_uri=LAMBDA.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__method = Slot(uri=NSLS2.Method, name="crystallizationConditions__method", curie=NSLS2.curie('Method'),
-                   model_uri=LAMBDABER.crystallizationConditions__method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+                   model_uri=LAMBDA.crystallizationConditions__method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
 
 slots.crystallizationConditions__crystallization_conditions = Slot(uri=NSLS2.Conditions, name="crystallizationConditions__crystallization_conditions", curie=NSLS2.curie('Conditions'),
-                   model_uri=LAMBDABER.crystallizationConditions__crystallization_conditions, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.crystallizationConditions__crystallization_conditions, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__drop_volume = Slot(uri=NSLS2.Drop_Volume, name="crystallizationConditions__drop_volume", curie=NSLS2.curie('Drop_Volume'),
-                   model_uri=LAMBDABER.crystallizationConditions__drop_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=LAMBDA.crystallizationConditions__drop_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.crystallizationConditions__protein_concentration = Slot(uri=LAMBDABER.protein_concentration, name="crystallizationConditions__protein_concentration", curie=LAMBDABER.curie('protein_concentration'),
-                   model_uri=LAMBDABER.crystallizationConditions__protein_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.crystallizationConditions__protein_concentration = Slot(uri=LAMBDA.protein_concentration, name="crystallizationConditions__protein_concentration", curie=LAMBDA.curie('protein_concentration'),
+                   model_uri=LAMBDA.crystallizationConditions__protein_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__crystal_size_um = Slot(uri=NSLS2.Crystal_Size, name="crystallizationConditions__crystal_size_um", curie=NSLS2.curie('Crystal_Size'),
-                   model_uri=LAMBDABER.crystallizationConditions__crystal_size_um, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.crystallizationConditions__crystal_size_um, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__cryo_protectant = Slot(uri=NSLS2.Cryo_Protectant, name="crystallizationConditions__cryo_protectant", curie=NSLS2.curie('Cryo_Protectant'),
-                   model_uri=LAMBDABER.crystallizationConditions__cryo_protectant, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.crystallizationConditions__cryo_protectant, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__crystal_id = Slot(uri=NSLS2.Crystal_ID, name="crystallizationConditions__crystal_id", curie=NSLS2.curie('Crystal_ID'),
-                   model_uri=LAMBDABER.crystallizationConditions__crystal_id, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.crystallizationConditions__crystal_id, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__screen_name = Slot(uri=LAMBDABER.screen_name, name="crystallizationConditions__screen_name", curie=LAMBDABER.curie('screen_name'),
-                   model_uri=LAMBDABER.crystallizationConditions__screen_name, domain=None, range=Optional[str])
+slots.crystallizationConditions__screen_name = Slot(uri=LAMBDA.screen_name, name="crystallizationConditions__screen_name", curie=LAMBDA.curie('screen_name'),
+                   model_uri=LAMBDA.crystallizationConditions__screen_name, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="crystallizationConditions__temperature_c", curie=LAMBDABER.curie('temperature_c'),
-                   model_uri=LAMBDABER.crystallizationConditions__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.crystallizationConditions__temperature_c = Slot(uri=LAMBDA.temperature_c, name="crystallizationConditions__temperature_c", curie=LAMBDA.curie('temperature_c'),
+                   model_uri=LAMBDA.crystallizationConditions__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.crystallizationConditions__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="crystallizationConditions__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
-                   model_uri=LAMBDABER.crystallizationConditions__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
+slots.crystallizationConditions__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDA.drop_ratio_protein_to_reservoir, name="crystallizationConditions__drop_ratio_protein_to_reservoir", curie=LAMBDA.curie('drop_ratio_protein_to_reservoir'),
+                   model_uri=LAMBDA.crystallizationConditions__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="crystallizationConditions__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
-                   model_uri=LAMBDABER.crystallizationConditions__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.crystallizationConditions__reservoir_volume_ul = Slot(uri=LAMBDA.reservoir_volume_ul, name="crystallizationConditions__reservoir_volume_ul", curie=LAMBDA.curie('reservoir_volume_ul'),
+                   model_uri=LAMBDA.crystallizationConditions__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.crystallizationConditions__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="crystallizationConditions__seeding_type", curie=LAMBDABER.curie('seeding_type'),
-                   model_uri=LAMBDABER.crystallizationConditions__seeding_type, domain=None, range=Optional[str])
+slots.crystallizationConditions__seeding_type = Slot(uri=LAMBDA.seeding_type, name="crystallizationConditions__seeding_type", curie=LAMBDA.curie('seeding_type'),
+                   model_uri=LAMBDA.crystallizationConditions__seeding_type, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__seed_stock_dilution = Slot(uri=LAMBDABER.seed_stock_dilution, name="crystallizationConditions__seed_stock_dilution", curie=LAMBDABER.curie('seed_stock_dilution'),
-                   model_uri=LAMBDABER.crystallizationConditions__seed_stock_dilution, domain=None, range=Optional[str])
+slots.crystallizationConditions__seed_stock_dilution = Slot(uri=LAMBDA.seed_stock_dilution, name="crystallizationConditions__seed_stock_dilution", curie=LAMBDA.curie('seed_stock_dilution'),
+                   model_uri=LAMBDA.crystallizationConditions__seed_stock_dilution, domain=None, range=Optional[str])
 
-slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=LAMBDABER.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=LAMBDABER.curie('protein_concentration_mg_per_ml'),
-                   model_uri=LAMBDABER.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=LAMBDA.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=LAMBDA.curie('protein_concentration_mg_per_ml'),
+                   model_uri=LAMBDA.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__protein_buffer = Slot(uri=LAMBDABER.protein_buffer, name="xRayPreparation__protein_buffer", curie=LAMBDABER.curie('protein_buffer'),
-                   model_uri=LAMBDABER.xRayPreparation__protein_buffer, domain=None, range=Optional[str])
+slots.xRayPreparation__protein_buffer = Slot(uri=LAMBDA.protein_buffer, name="xRayPreparation__protein_buffer", curie=LAMBDA.curie('protein_buffer'),
+                   model_uri=LAMBDA.xRayPreparation__protein_buffer, domain=None, range=Optional[str])
 
-slots.xRayPreparation__additives = Slot(uri=LAMBDABER.additives, name="xRayPreparation__additives", curie=LAMBDABER.curie('additives'),
-                   model_uri=LAMBDABER.xRayPreparation__additives, domain=None, range=Optional[str])
+slots.xRayPreparation__additives = Slot(uri=LAMBDA.additives, name="xRayPreparation__additives", curie=LAMBDA.curie('additives'),
+                   model_uri=LAMBDA.xRayPreparation__additives, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystallization_method = Slot(uri=LAMBDABER.crystallization_method, name="xRayPreparation__crystallization_method", curie=LAMBDABER.curie('crystallization_method'),
-                   model_uri=LAMBDABER.xRayPreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+slots.xRayPreparation__crystallization_method = Slot(uri=LAMBDA.crystallization_method, name="xRayPreparation__crystallization_method", curie=LAMBDA.curie('crystallization_method'),
+                   model_uri=LAMBDA.xRayPreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
 
-slots.xRayPreparation__crystallization_conditions = Slot(uri=LAMBDABER.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=LAMBDABER.curie('crystallization_conditions'),
-                   model_uri=LAMBDABER.xRayPreparation__crystallization_conditions, domain=None, range=Optional[Union[dict, CrystallizationConditions]])
+slots.xRayPreparation__crystallization_conditions = Slot(uri=LAMBDA.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=LAMBDA.curie('crystallization_conditions'),
+                   model_uri=LAMBDA.xRayPreparation__crystallization_conditions, domain=None, range=Optional[Union[dict, CrystallizationConditions]])
 
-slots.xRayPreparation__screen_name = Slot(uri=LAMBDABER.screen_name, name="xRayPreparation__screen_name", curie=LAMBDABER.curie('screen_name'),
-                   model_uri=LAMBDABER.xRayPreparation__screen_name, domain=None, range=Optional[str])
+slots.xRayPreparation__screen_name = Slot(uri=LAMBDA.screen_name, name="xRayPreparation__screen_name", curie=LAMBDA.curie('screen_name'),
+                   model_uri=LAMBDA.xRayPreparation__screen_name, domain=None, range=Optional[str])
 
-slots.xRayPreparation__temperature_c = Slot(uri=LAMBDABER.temperature_c, name="xRayPreparation__temperature_c", curie=LAMBDABER.curie('temperature_c'),
-                   model_uri=LAMBDABER.xRayPreparation__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayPreparation__temperature_c = Slot(uri=LAMBDA.temperature_c, name="xRayPreparation__temperature_c", curie=LAMBDA.curie('temperature_c'),
+                   model_uri=LAMBDA.xRayPreparation__temperature_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDABER.drop_ratio_protein_to_reservoir, name="xRayPreparation__drop_ratio_protein_to_reservoir", curie=LAMBDABER.curie('drop_ratio_protein_to_reservoir'),
-                   model_uri=LAMBDABER.xRayPreparation__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
+slots.xRayPreparation__drop_ratio_protein_to_reservoir = Slot(uri=LAMBDA.drop_ratio_protein_to_reservoir, name="xRayPreparation__drop_ratio_protein_to_reservoir", curie=LAMBDA.curie('drop_ratio_protein_to_reservoir'),
+                   model_uri=LAMBDA.xRayPreparation__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
 
-slots.xRayPreparation__drop_volume_nl = Slot(uri=LAMBDABER.drop_volume_nl, name="xRayPreparation__drop_volume_nl", curie=LAMBDABER.curie('drop_volume_nl'),
-                   model_uri=LAMBDABER.xRayPreparation__drop_volume_nl, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayPreparation__drop_volume_nl = Slot(uri=LAMBDA.drop_volume_nl, name="xRayPreparation__drop_volume_nl", curie=LAMBDA.curie('drop_volume_nl'),
+                   model_uri=LAMBDA.xRayPreparation__drop_volume_nl, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__reservoir_volume_ul = Slot(uri=LAMBDABER.reservoir_volume_ul, name="xRayPreparation__reservoir_volume_ul", curie=LAMBDABER.curie('reservoir_volume_ul'),
-                   model_uri=LAMBDABER.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayPreparation__reservoir_volume_ul = Slot(uri=LAMBDA.reservoir_volume_ul, name="xRayPreparation__reservoir_volume_ul", curie=LAMBDA.curie('reservoir_volume_ul'),
+                   model_uri=LAMBDA.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__seeding_type = Slot(uri=LAMBDABER.seeding_type, name="xRayPreparation__seeding_type", curie=LAMBDABER.curie('seeding_type'),
-                   model_uri=LAMBDABER.xRayPreparation__seeding_type, domain=None, range=Optional[str])
+slots.xRayPreparation__seeding_type = Slot(uri=LAMBDA.seeding_type, name="xRayPreparation__seeding_type", curie=LAMBDA.curie('seeding_type'),
+                   model_uri=LAMBDA.xRayPreparation__seeding_type, domain=None, range=Optional[str])
 
-slots.xRayPreparation__seed_stock_dilution = Slot(uri=LAMBDABER.seed_stock_dilution, name="xRayPreparation__seed_stock_dilution", curie=LAMBDABER.curie('seed_stock_dilution'),
-                   model_uri=LAMBDABER.xRayPreparation__seed_stock_dilution, domain=None, range=Optional[str])
+slots.xRayPreparation__seed_stock_dilution = Slot(uri=LAMBDA.seed_stock_dilution, name="xRayPreparation__seed_stock_dilution", curie=LAMBDA.curie('seed_stock_dilution'),
+                   model_uri=LAMBDA.xRayPreparation__seed_stock_dilution, domain=None, range=Optional[str])
 
-slots.xRayPreparation__initial_hit_condition = Slot(uri=LAMBDABER.initial_hit_condition, name="xRayPreparation__initial_hit_condition", curie=LAMBDABER.curie('initial_hit_condition'),
-                   model_uri=LAMBDABER.xRayPreparation__initial_hit_condition, domain=None, range=Optional[str])
+slots.xRayPreparation__initial_hit_condition = Slot(uri=LAMBDA.initial_hit_condition, name="xRayPreparation__initial_hit_condition", curie=LAMBDA.curie('initial_hit_condition'),
+                   model_uri=LAMBDA.xRayPreparation__initial_hit_condition, domain=None, range=Optional[str])
 
-slots.xRayPreparation__optimization_strategy = Slot(uri=LAMBDABER.optimization_strategy, name="xRayPreparation__optimization_strategy", curie=LAMBDABER.curie('optimization_strategy'),
-                   model_uri=LAMBDABER.xRayPreparation__optimization_strategy, domain=None, range=Optional[str])
+slots.xRayPreparation__optimization_strategy = Slot(uri=LAMBDA.optimization_strategy, name="xRayPreparation__optimization_strategy", curie=LAMBDA.curie('optimization_strategy'),
+                   model_uri=LAMBDA.xRayPreparation__optimization_strategy, domain=None, range=Optional[str])
 
-slots.xRayPreparation__optimized_condition = Slot(uri=LAMBDABER.optimized_condition, name="xRayPreparation__optimized_condition", curie=LAMBDABER.curie('optimized_condition'),
-                   model_uri=LAMBDABER.xRayPreparation__optimized_condition, domain=None, range=Optional[str])
+slots.xRayPreparation__optimized_condition = Slot(uri=LAMBDA.optimized_condition, name="xRayPreparation__optimized_condition", curie=LAMBDA.curie('optimized_condition'),
+                   model_uri=LAMBDA.xRayPreparation__optimized_condition, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystal_size_um = Slot(uri=LAMBDABER.crystal_size_um, name="xRayPreparation__crystal_size_um", curie=LAMBDABER.curie('crystal_size_um'),
-                   model_uri=LAMBDABER.xRayPreparation__crystal_size_um, domain=None, range=Optional[str])
+slots.xRayPreparation__crystal_size_um = Slot(uri=LAMBDA.crystal_size_um, name="xRayPreparation__crystal_size_um", curie=LAMBDA.curie('crystal_size_um'),
+                   model_uri=LAMBDA.xRayPreparation__crystal_size_um, domain=None, range=Optional[str])
 
-slots.xRayPreparation__cryoprotectant = Slot(uri=LAMBDABER.cryoprotectant, name="xRayPreparation__cryoprotectant", curie=LAMBDABER.curie('cryoprotectant'),
-                   model_uri=LAMBDABER.xRayPreparation__cryoprotectant, domain=None, range=Optional[str])
+slots.xRayPreparation__cryoprotectant = Slot(uri=LAMBDA.cryoprotectant, name="xRayPreparation__cryoprotectant", curie=LAMBDA.curie('cryoprotectant'),
+                   model_uri=LAMBDA.xRayPreparation__cryoprotectant, domain=None, range=Optional[str])
 
-slots.xRayPreparation__cryoprotectant_concentration = Slot(uri=LAMBDABER.cryoprotectant_concentration, name="xRayPreparation__cryoprotectant_concentration", curie=LAMBDABER.curie('cryoprotectant_concentration'),
-                   model_uri=LAMBDABER.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.xRayPreparation__cryoprotectant_concentration = Slot(uri=LAMBDA.cryoprotectant_concentration, name="xRayPreparation__cryoprotectant_concentration", curie=LAMBDA.curie('cryoprotectant_concentration'),
+                   model_uri=LAMBDA.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__soak_compound = Slot(uri=LAMBDABER.soak_compound, name="xRayPreparation__soak_compound", curie=LAMBDABER.curie('soak_compound'),
-                   model_uri=LAMBDABER.xRayPreparation__soak_compound, domain=None, range=Optional[str])
+slots.xRayPreparation__soak_compound = Slot(uri=LAMBDA.soak_compound, name="xRayPreparation__soak_compound", curie=LAMBDA.curie('soak_compound'),
+                   model_uri=LAMBDA.xRayPreparation__soak_compound, domain=None, range=Optional[str])
 
-slots.xRayPreparation__soak_conditions = Slot(uri=LAMBDABER.soak_conditions, name="xRayPreparation__soak_conditions", curie=LAMBDABER.curie('soak_conditions'),
-                   model_uri=LAMBDABER.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
+slots.xRayPreparation__soak_conditions = Slot(uri=LAMBDA.soak_conditions, name="xRayPreparation__soak_conditions", curie=LAMBDA.curie('soak_conditions'),
+                   model_uri=LAMBDA.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
 
 slots.xRayPreparation__mounting_method = Slot(uri=NSLS2.Mount_Type, name="xRayPreparation__mounting_method", curie=NSLS2.curie('Mount_Type'),
-                   model_uri=LAMBDABER.xRayPreparation__mounting_method, domain=None, range=Optional[str])
+                   model_uri=LAMBDA.xRayPreparation__mounting_method, domain=None, range=Optional[str])
 
-slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDABER.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=LAMBDABER.curie('flash_cooling_method'),
-                   model_uri=LAMBDABER.xRayPreparation__flash_cooling_method, domain=None, range=Optional[str])
+slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDA.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=LAMBDA.curie('flash_cooling_method'),
+                   model_uri=LAMBDA.xRayPreparation__flash_cooling_method, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDABER.crystal_notes, name="xRayPreparation__crystal_notes", curie=LAMBDABER.curie('crystal_notes'),
-                   model_uri=LAMBDABER.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
+slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDA.crystal_notes, name="xRayPreparation__crystal_notes", curie=LAMBDA.curie('crystal_notes'),
+                   model_uri=LAMBDA.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
 
 slots.xRayPreparation__loop_size = Slot(uri=NSLS2.Loop_Size, name="xRayPreparation__loop_size", curie=NSLS2.curie('Loop_Size'),
-                   model_uri=LAMBDABER.xRayPreparation__loop_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=LAMBDA.xRayPreparation__loop_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.xRayPreparation__mounting_temperature = Slot(uri=NSLS2.Temperature, name="xRayPreparation__mounting_temperature", curie=NSLS2.curie('Temperature'),
-                   model_uri=LAMBDABER.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=LAMBDA.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDABER.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDABER.curie('concentration_series'),
-                   model_uri=LAMBDABER.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDA.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDA.curie('concentration_series'),
+                   model_uri=LAMBDA.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSPreparation__buffer_matching_protocol = Slot(uri=LAMBDABER.buffer_matching_protocol, name="sAXSPreparation__buffer_matching_protocol", curie=LAMBDABER.curie('buffer_matching_protocol'),
-                   model_uri=LAMBDABER.sAXSPreparation__buffer_matching_protocol, domain=None, range=Optional[str])
+slots.sAXSPreparation__buffer_matching_protocol = Slot(uri=LAMBDA.buffer_matching_protocol, name="sAXSPreparation__buffer_matching_protocol", curie=LAMBDA.curie('buffer_matching_protocol'),
+                   model_uri=LAMBDA.sAXSPreparation__buffer_matching_protocol, domain=None, range=Optional[str])
 
-slots.sAXSPreparation__sample_cell_type = Slot(uri=LAMBDABER.sample_cell_type, name="sAXSPreparation__sample_cell_type", curie=LAMBDABER.curie('sample_cell_type'),
-                   model_uri=LAMBDABER.sAXSPreparation__sample_cell_type, domain=None, range=Optional[str])
+slots.sAXSPreparation__sample_cell_type = Slot(uri=LAMBDA.sample_cell_type, name="sAXSPreparation__sample_cell_type", curie=LAMBDA.curie('sample_cell_type'),
+                   model_uri=LAMBDA.sAXSPreparation__sample_cell_type, domain=None, range=Optional[str])
 
-slots.sAXSPreparation__cell_path_length = Slot(uri=LAMBDABER.cell_path_length, name="sAXSPreparation__cell_path_length", curie=LAMBDABER.curie('cell_path_length'),
-                   model_uri=LAMBDABER.sAXSPreparation__cell_path_length, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.sAXSPreparation__cell_path_length = Slot(uri=LAMBDA.cell_path_length, name="sAXSPreparation__cell_path_length", curie=LAMBDA.curie('cell_path_length'),
+                   model_uri=LAMBDA.sAXSPreparation__cell_path_length, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sAXSPreparation__temperature_control = Slot(uri=LAMBDABER.temperature_control, name="sAXSPreparation__temperature_control", curie=LAMBDABER.curie('temperature_control'),
-                   model_uri=LAMBDABER.sAXSPreparation__temperature_control, domain=None, range=Optional[str])
+slots.sAXSPreparation__temperature_control = Slot(uri=LAMBDA.temperature_control, name="sAXSPreparation__temperature_control", curie=LAMBDA.curie('temperature_control'),
+                   model_uri=LAMBDA.sAXSPreparation__temperature_control, domain=None, range=Optional[str])
 
-slots.experimentalConditions__temperature = Slot(uri=LAMBDABER.temperature, name="experimentalConditions__temperature", curie=LAMBDABER.curie('temperature'),
-                   model_uri=LAMBDABER.experimentalConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentalConditions__temperature = Slot(uri=LAMBDA.temperature, name="experimentalConditions__temperature", curie=LAMBDA.curie('temperature'),
+                   model_uri=LAMBDA.experimentalConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentalConditions__humidity = Slot(uri=LAMBDABER.humidity, name="experimentalConditions__humidity", curie=LAMBDABER.curie('humidity'),
-                   model_uri=LAMBDABER.experimentalConditions__humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentalConditions__humidity = Slot(uri=LAMBDA.humidity, name="experimentalConditions__humidity", curie=LAMBDA.curie('humidity'),
+                   model_uri=LAMBDA.experimentalConditions__humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentalConditions__pressure = Slot(uri=LAMBDABER.pressure, name="experimentalConditions__pressure", curie=LAMBDABER.curie('pressure'),
-                   model_uri=LAMBDABER.experimentalConditions__pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentalConditions__pressure = Slot(uri=LAMBDA.pressure, name="experimentalConditions__pressure", curie=LAMBDA.curie('pressure'),
+                   model_uri=LAMBDA.experimentalConditions__pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentalConditions__atmosphere = Slot(uri=LAMBDABER.atmosphere, name="experimentalConditions__atmosphere", curie=LAMBDABER.curie('atmosphere'),
-                   model_uri=LAMBDABER.experimentalConditions__atmosphere, domain=None, range=Optional[str])
+slots.experimentalConditions__atmosphere = Slot(uri=LAMBDA.atmosphere, name="experimentalConditions__atmosphere", curie=LAMBDA.curie('atmosphere'),
+                   model_uri=LAMBDA.experimentalConditions__atmosphere, domain=None, range=Optional[str])
 
-slots.experimentalConditions__beam_energy = Slot(uri=LAMBDABER.beam_energy, name="experimentalConditions__beam_energy", curie=LAMBDABER.curie('beam_energy'),
-                   model_uri=LAMBDABER.experimentalConditions__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentalConditions__beam_energy = Slot(uri=LAMBDA.beam_energy, name="experimentalConditions__beam_energy", curie=LAMBDA.curie('beam_energy'),
+                   model_uri=LAMBDA.experimentalConditions__beam_energy, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.experimentalConditions__exposure_time = Slot(uri=LAMBDABER.exposure_time, name="experimentalConditions__exposure_time", curie=LAMBDABER.curie('exposure_time'),
-                   model_uri=LAMBDABER.experimentalConditions__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.experimentalConditions__exposure_time = Slot(uri=LAMBDA.exposure_time, name="experimentalConditions__exposure_time", curie=LAMBDA.curie('exposure_time'),
+                   model_uri=LAMBDA.experimentalConditions__exposure_time, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__collection_mode = Slot(uri=LAMBDABER.collection_mode, name="dataCollectionStrategy__collection_mode", curie=LAMBDABER.curie('collection_mode'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__collection_mode, domain=None, range=Optional[Union[str, "CollectionModeEnum"]])
+slots.dataCollectionStrategy__collection_mode = Slot(uri=LAMBDA.collection_mode, name="dataCollectionStrategy__collection_mode", curie=LAMBDA.curie('collection_mode'),
+                   model_uri=LAMBDA.dataCollectionStrategy__collection_mode, domain=None, range=Optional[Union[str, "CollectionModeEnum"]])
 
-slots.dataCollectionStrategy__total_frames = Slot(uri=LAMBDABER.total_frames, name="dataCollectionStrategy__total_frames", curie=LAMBDABER.curie('total_frames'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__total_frames, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__total_frames = Slot(uri=LAMBDA.total_frames, name="dataCollectionStrategy__total_frames", curie=LAMBDA.curie('total_frames'),
+                   model_uri=LAMBDA.dataCollectionStrategy__total_frames, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__frame_rate = Slot(uri=LAMBDABER.frame_rate, name="dataCollectionStrategy__frame_rate", curie=LAMBDABER.curie('frame_rate'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__frame_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__frame_rate = Slot(uri=LAMBDA.frame_rate, name="dataCollectionStrategy__frame_rate", curie=LAMBDA.curie('frame_rate'),
+                   model_uri=LAMBDA.dataCollectionStrategy__frame_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__total_dose = Slot(uri=LAMBDABER.total_dose, name="dataCollectionStrategy__total_dose", curie=LAMBDABER.curie('total_dose'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__total_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__total_dose = Slot(uri=LAMBDA.total_dose, name="dataCollectionStrategy__total_dose", curie=LAMBDA.curie('total_dose'),
+                   model_uri=LAMBDA.dataCollectionStrategy__total_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__dose_per_frame = Slot(uri=LAMBDABER.dose_per_frame, name="dataCollectionStrategy__dose_per_frame", curie=LAMBDABER.curie('dose_per_frame'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__dose_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__dose_per_frame = Slot(uri=LAMBDA.dose_per_frame, name="dataCollectionStrategy__dose_per_frame", curie=LAMBDA.curie('dose_per_frame'),
+                   model_uri=LAMBDA.dataCollectionStrategy__dose_per_frame, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__wavelength_a = Slot(uri=LAMBDABER.wavelength_a, name="dataCollectionStrategy__wavelength_a", curie=LAMBDABER.curie('wavelength_a'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__wavelength_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__wavelength_a = Slot(uri=LAMBDA.wavelength_a, name="dataCollectionStrategy__wavelength_a", curie=LAMBDA.curie('wavelength_a'),
+                   model_uri=LAMBDA.dataCollectionStrategy__wavelength_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__detector_mode = Slot(uri=LAMBDABER.detector_mode, name="dataCollectionStrategy__detector_mode", curie=LAMBDABER.curie('detector_mode'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
+slots.dataCollectionStrategy__detector_mode = Slot(uri=LAMBDA.detector_mode, name="dataCollectionStrategy__detector_mode", curie=LAMBDA.curie('detector_mode'),
+                   model_uri=LAMBDA.dataCollectionStrategy__detector_mode, domain=None, range=Optional[Union[str, "DetectorModeEnum"]])
 
-slots.dataCollectionStrategy__pixel_size_calibrated = Slot(uri=LAMBDABER.pixel_size_calibrated, name="dataCollectionStrategy__pixel_size_calibrated", curie=LAMBDABER.curie('pixel_size_calibrated'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__pixel_size_calibrated, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__pixel_size_calibrated = Slot(uri=LAMBDA.pixel_size_calibrated, name="dataCollectionStrategy__pixel_size_calibrated", curie=LAMBDA.curie('pixel_size_calibrated'),
+                   model_uri=LAMBDA.dataCollectionStrategy__pixel_size_calibrated, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDABER.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=LAMBDABER.curie('detector_distance_mm'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=LAMBDA.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=LAMBDA.curie('detector_distance_mm'),
+                   model_uri=LAMBDA.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=LAMBDABER.beam_center_x_px, name="dataCollectionStrategy__beam_center_x_px", curie=LAMBDABER.curie('beam_center_x_px'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=LAMBDA.beam_center_x_px, name="dataCollectionStrategy__beam_center_x_px", curie=LAMBDA.curie('beam_center_x_px'),
+                   model_uri=LAMBDA.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=LAMBDABER.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=LAMBDABER.curie('beam_center_y_px'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=LAMBDA.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=LAMBDA.curie('beam_center_y_px'),
+                   model_uri=LAMBDA.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__beam_size_um = Slot(uri=LAMBDABER.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=LAMBDABER.curie('beam_size_um'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__beam_size_um = Slot(uri=LAMBDA.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=LAMBDA.curie('beam_size_um'),
+                   model_uri=LAMBDA.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__flux_photons_per_s = Slot(uri=LAMBDABER.flux_photons_per_s, name="dataCollectionStrategy__flux_photons_per_s", curie=LAMBDABER.curie('flux_photons_per_s'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__flux_photons_per_s, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__flux_photons_per_s = Slot(uri=LAMBDA.flux_photons_per_s, name="dataCollectionStrategy__flux_photons_per_s", curie=LAMBDA.curie('flux_photons_per_s'),
+                   model_uri=LAMBDA.dataCollectionStrategy__flux_photons_per_s, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__transmission_percent = Slot(uri=LAMBDABER.transmission_percent, name="dataCollectionStrategy__transmission_percent", curie=LAMBDABER.curie('transmission_percent'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__transmission_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__transmission_percent = Slot(uri=LAMBDA.transmission_percent, name="dataCollectionStrategy__transmission_percent", curie=LAMBDA.curie('transmission_percent'),
+                   model_uri=LAMBDA.dataCollectionStrategy__transmission_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__attenuator = Slot(uri=LAMBDABER.attenuator, name="dataCollectionStrategy__attenuator", curie=LAMBDABER.curie('attenuator'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__attenuator, domain=None, range=Optional[str])
+slots.dataCollectionStrategy__attenuator = Slot(uri=LAMBDA.attenuator, name="dataCollectionStrategy__attenuator", curie=LAMBDA.curie('attenuator'),
+                   model_uri=LAMBDA.dataCollectionStrategy__attenuator, domain=None, range=Optional[str])
 
-slots.dataCollectionStrategy__temperature_k = Slot(uri=LAMBDABER.temperature_k, name="dataCollectionStrategy__temperature_k", curie=LAMBDABER.curie('temperature_k'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__temperature_k, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__temperature_k = Slot(uri=LAMBDA.temperature_k, name="dataCollectionStrategy__temperature_k", curie=LAMBDA.curie('temperature_k'),
+                   model_uri=LAMBDA.dataCollectionStrategy__temperature_k, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__oscillation_per_image_deg = Slot(uri=LAMBDABER.oscillation_per_image_deg, name="dataCollectionStrategy__oscillation_per_image_deg", curie=LAMBDABER.curie('oscillation_per_image_deg'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__oscillation_per_image_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__oscillation_per_image_deg = Slot(uri=LAMBDA.oscillation_per_image_deg, name="dataCollectionStrategy__oscillation_per_image_deg", curie=LAMBDA.curie('oscillation_per_image_deg'),
+                   model_uri=LAMBDA.dataCollectionStrategy__oscillation_per_image_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__total_rotation_deg = Slot(uri=LAMBDABER.total_rotation_deg, name="dataCollectionStrategy__total_rotation_deg", curie=LAMBDABER.curie('total_rotation_deg'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__total_rotation_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.dataCollectionStrategy__total_rotation_deg = Slot(uri=LAMBDA.total_rotation_deg, name="dataCollectionStrategy__total_rotation_deg", curie=LAMBDA.curie('total_rotation_deg'),
+                   model_uri=LAMBDA.dataCollectionStrategy__total_rotation_deg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.dataCollectionStrategy__strategy_notes = Slot(uri=LAMBDABER.strategy_notes, name="dataCollectionStrategy__strategy_notes", curie=LAMBDABER.curie('strategy_notes'),
-                   model_uri=LAMBDABER.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
+slots.dataCollectionStrategy__strategy_notes = Slot(uri=LAMBDA.strategy_notes, name="dataCollectionStrategy__strategy_notes", curie=LAMBDA.curie('strategy_notes'),
+                   model_uri=LAMBDA.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
 
-slots.qualityMetrics__resolution = Slot(uri=LAMBDABER.resolution, name="qualityMetrics__resolution", curie=LAMBDABER.curie('resolution'),
-                   model_uri=LAMBDABER.qualityMetrics__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__resolution = Slot(uri=LAMBDA.resolution, name="qualityMetrics__resolution", curie=LAMBDA.curie('resolution'),
+                   model_uri=LAMBDA.qualityMetrics__resolution, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__resolution_high_shell_a = Slot(uri=LAMBDABER.resolution_high_shell_a, name="qualityMetrics__resolution_high_shell_a", curie=LAMBDABER.curie('resolution_high_shell_a'),
-                   model_uri=LAMBDABER.qualityMetrics__resolution_high_shell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__resolution_high_shell_a = Slot(uri=LAMBDA.resolution_high_shell_a, name="qualityMetrics__resolution_high_shell_a", curie=LAMBDA.curie('resolution_high_shell_a'),
+                   model_uri=LAMBDA.qualityMetrics__resolution_high_shell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__resolution_low_a = Slot(uri=LAMBDABER.resolution_low_a, name="qualityMetrics__resolution_low_a", curie=LAMBDABER.curie('resolution_low_a'),
-                   model_uri=LAMBDABER.qualityMetrics__resolution_low_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__resolution_low_a = Slot(uri=LAMBDA.resolution_low_a, name="qualityMetrics__resolution_low_a", curie=LAMBDA.curie('resolution_low_a'),
+                   model_uri=LAMBDA.qualityMetrics__resolution_low_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__completeness = Slot(uri=LAMBDABER.completeness, name="qualityMetrics__completeness", curie=LAMBDABER.curie('completeness'),
-                   model_uri=LAMBDABER.qualityMetrics__completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__completeness = Slot(uri=LAMBDA.completeness, name="qualityMetrics__completeness", curie=LAMBDA.curie('completeness'),
+                   model_uri=LAMBDA.qualityMetrics__completeness, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__completeness_high_res_shell_percent = Slot(uri=LAMBDABER.completeness_high_res_shell_percent, name="qualityMetrics__completeness_high_res_shell_percent", curie=LAMBDABER.curie('completeness_high_res_shell_percent'),
-                   model_uri=LAMBDABER.qualityMetrics__completeness_high_res_shell_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__completeness_high_res_shell_percent = Slot(uri=LAMBDA.completeness_high_res_shell_percent, name="qualityMetrics__completeness_high_res_shell_percent", curie=LAMBDA.curie('completeness_high_res_shell_percent'),
+                   model_uri=LAMBDA.qualityMetrics__completeness_high_res_shell_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__signal_to_noise = Slot(uri=LAMBDABER.signal_to_noise, name="qualityMetrics__signal_to_noise", curie=LAMBDABER.curie('signal_to_noise'),
-                   model_uri=LAMBDABER.qualityMetrics__signal_to_noise, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__signal_to_noise = Slot(uri=LAMBDA.signal_to_noise, name="qualityMetrics__signal_to_noise", curie=LAMBDA.curie('signal_to_noise'),
+                   model_uri=LAMBDA.qualityMetrics__signal_to_noise, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__mean_i_over_sigma_i = Slot(uri=LAMBDABER.mean_i_over_sigma_i, name="qualityMetrics__mean_i_over_sigma_i", curie=LAMBDABER.curie('mean_i_over_sigma_i'),
-                   model_uri=LAMBDABER.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__mean_i_over_sigma_i = Slot(uri=LAMBDA.mean_i_over_sigma_i, name="qualityMetrics__mean_i_over_sigma_i", curie=LAMBDA.curie('mean_i_over_sigma_i'),
+                   model_uri=LAMBDA.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__space_group = Slot(uri=LAMBDABER.space_group, name="qualityMetrics__space_group", curie=LAMBDABER.curie('space_group'),
-                   model_uri=LAMBDABER.qualityMetrics__space_group, domain=None, range=Optional[str])
+slots.qualityMetrics__space_group = Slot(uri=LAMBDA.space_group, name="qualityMetrics__space_group", curie=LAMBDA.curie('space_group'),
+                   model_uri=LAMBDA.qualityMetrics__space_group, domain=None, range=Optional[str])
 
-slots.qualityMetrics__unit_cell_a = Slot(uri=LAMBDABER.unit_cell_a, name="qualityMetrics__unit_cell_a", curie=LAMBDABER.curie('unit_cell_a'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_a = Slot(uri=LAMBDA.unit_cell_a, name="qualityMetrics__unit_cell_a", curie=LAMBDA.curie('unit_cell_a'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_a, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__unit_cell_b = Slot(uri=LAMBDABER.unit_cell_b, name="qualityMetrics__unit_cell_b", curie=LAMBDABER.curie('unit_cell_b'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_b, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_b = Slot(uri=LAMBDA.unit_cell_b, name="qualityMetrics__unit_cell_b", curie=LAMBDA.curie('unit_cell_b'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_b, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__unit_cell_c = Slot(uri=LAMBDABER.unit_cell_c, name="qualityMetrics__unit_cell_c", curie=LAMBDABER.curie('unit_cell_c'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_c, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_c = Slot(uri=LAMBDA.unit_cell_c, name="qualityMetrics__unit_cell_c", curie=LAMBDA.curie('unit_cell_c'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_c, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__unit_cell_alpha = Slot(uri=LAMBDABER.unit_cell_alpha, name="qualityMetrics__unit_cell_alpha", curie=LAMBDABER.curie('unit_cell_alpha'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_alpha, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_alpha = Slot(uri=LAMBDA.unit_cell_alpha, name="qualityMetrics__unit_cell_alpha", curie=LAMBDA.curie('unit_cell_alpha'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_alpha, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__unit_cell_beta = Slot(uri=LAMBDABER.unit_cell_beta, name="qualityMetrics__unit_cell_beta", curie=LAMBDABER.curie('unit_cell_beta'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_beta, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_beta = Slot(uri=LAMBDA.unit_cell_beta, name="qualityMetrics__unit_cell_beta", curie=LAMBDA.curie('unit_cell_beta'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_beta, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__unit_cell_gamma = Slot(uri=LAMBDABER.unit_cell_gamma, name="qualityMetrics__unit_cell_gamma", curie=LAMBDABER.curie('unit_cell_gamma'),
-                   model_uri=LAMBDABER.qualityMetrics__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__unit_cell_gamma = Slot(uri=LAMBDA.unit_cell_gamma, name="qualityMetrics__unit_cell_gamma", curie=LAMBDA.curie('unit_cell_gamma'),
+                   model_uri=LAMBDA.qualityMetrics__unit_cell_gamma, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__multiplicity = Slot(uri=LAMBDABER.multiplicity, name="qualityMetrics__multiplicity", curie=LAMBDABER.curie('multiplicity'),
-                   model_uri=LAMBDABER.qualityMetrics__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__multiplicity = Slot(uri=LAMBDA.multiplicity, name="qualityMetrics__multiplicity", curie=LAMBDA.curie('multiplicity'),
+                   model_uri=LAMBDA.qualityMetrics__multiplicity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__cc_half = Slot(uri=LAMBDABER.cc_half, name="qualityMetrics__cc_half", curie=LAMBDABER.curie('cc_half'),
-                   model_uri=LAMBDABER.qualityMetrics__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__cc_half = Slot(uri=LAMBDA.cc_half, name="qualityMetrics__cc_half", curie=LAMBDA.curie('cc_half'),
+                   model_uri=LAMBDA.qualityMetrics__cc_half, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__r_merge = Slot(uri=LAMBDABER.r_merge, name="qualityMetrics__r_merge", curie=LAMBDABER.curie('r_merge'),
-                   model_uri=LAMBDABER.qualityMetrics__r_merge, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__r_merge = Slot(uri=LAMBDA.r_merge, name="qualityMetrics__r_merge", curie=LAMBDA.curie('r_merge'),
+                   model_uri=LAMBDA.qualityMetrics__r_merge, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__r_pim = Slot(uri=LAMBDABER.r_pim, name="qualityMetrics__r_pim", curie=LAMBDABER.curie('r_pim'),
-                   model_uri=LAMBDABER.qualityMetrics__r_pim, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__r_pim = Slot(uri=LAMBDA.r_pim, name="qualityMetrics__r_pim", curie=LAMBDA.curie('r_pim'),
+                   model_uri=LAMBDA.qualityMetrics__r_pim, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__wilson_b_factor_a2 = Slot(uri=LAMBDABER.wilson_b_factor_a2, name="qualityMetrics__wilson_b_factor_a2", curie=LAMBDABER.curie('wilson_b_factor_a2'),
-                   model_uri=LAMBDABER.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__wilson_b_factor_a2 = Slot(uri=LAMBDA.wilson_b_factor_a2, name="qualityMetrics__wilson_b_factor_a2", curie=LAMBDA.curie('wilson_b_factor_a2'),
+                   model_uri=LAMBDA.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__anomalous_used = Slot(uri=LAMBDABER.anomalous_used, name="qualityMetrics__anomalous_used", curie=LAMBDABER.curie('anomalous_used'),
-                   model_uri=LAMBDABER.qualityMetrics__anomalous_used, domain=None, range=Optional[Union[bool, Bool]])
+slots.qualityMetrics__anomalous_used = Slot(uri=LAMBDA.anomalous_used, name="qualityMetrics__anomalous_used", curie=LAMBDA.curie('anomalous_used'),
+                   model_uri=LAMBDA.qualityMetrics__anomalous_used, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.qualityMetrics__anom_corr = Slot(uri=LAMBDABER.anom_corr, name="qualityMetrics__anom_corr", curie=LAMBDABER.curie('anom_corr'),
-                   model_uri=LAMBDABER.qualityMetrics__anom_corr, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__anom_corr = Slot(uri=LAMBDA.anom_corr, name="qualityMetrics__anom_corr", curie=LAMBDA.curie('anom_corr'),
+                   model_uri=LAMBDA.qualityMetrics__anom_corr, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__anom_sig_ano = Slot(uri=LAMBDABER.anom_sig_ano, name="qualityMetrics__anom_sig_ano", curie=LAMBDABER.curie('anom_sig_ano'),
-                   model_uri=LAMBDABER.qualityMetrics__anom_sig_ano, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__anom_sig_ano = Slot(uri=LAMBDA.anom_sig_ano, name="qualityMetrics__anom_sig_ano", curie=LAMBDA.curie('anom_sig_ano'),
+                   model_uri=LAMBDA.qualityMetrics__anom_sig_ano, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__r_work = Slot(uri=LAMBDABER.r_work, name="qualityMetrics__r_work", curie=LAMBDABER.curie('r_work'),
-                   model_uri=LAMBDABER.qualityMetrics__r_work, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__r_work = Slot(uri=LAMBDA.r_work, name="qualityMetrics__r_work", curie=LAMBDA.curie('r_work'),
+                   model_uri=LAMBDA.qualityMetrics__r_work, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__r_free = Slot(uri=LAMBDABER.r_free, name="qualityMetrics__r_free", curie=LAMBDABER.curie('r_free'),
-                   model_uri=LAMBDABER.qualityMetrics__r_free, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__r_free = Slot(uri=LAMBDA.r_free, name="qualityMetrics__r_free", curie=LAMBDA.curie('r_free'),
+                   model_uri=LAMBDA.qualityMetrics__r_free, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__ramachandran_favored_percent = Slot(uri=LAMBDABER.ramachandran_favored_percent, name="qualityMetrics__ramachandran_favored_percent", curie=LAMBDABER.curie('ramachandran_favored_percent'),
-                   model_uri=LAMBDABER.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__ramachandran_favored_percent = Slot(uri=LAMBDA.ramachandran_favored_percent, name="qualityMetrics__ramachandran_favored_percent", curie=LAMBDA.curie('ramachandran_favored_percent'),
+                   model_uri=LAMBDA.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__ramachandran_outliers_percent = Slot(uri=LAMBDABER.ramachandran_outliers_percent, name="qualityMetrics__ramachandran_outliers_percent", curie=LAMBDABER.curie('ramachandran_outliers_percent'),
-                   model_uri=LAMBDABER.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__ramachandran_outliers_percent = Slot(uri=LAMBDA.ramachandran_outliers_percent, name="qualityMetrics__ramachandran_outliers_percent", curie=LAMBDA.curie('ramachandran_outliers_percent'),
+                   model_uri=LAMBDA.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__clashscore = Slot(uri=LAMBDABER.clashscore, name="qualityMetrics__clashscore", curie=LAMBDABER.curie('clashscore'),
-                   model_uri=LAMBDABER.qualityMetrics__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__clashscore = Slot(uri=LAMBDA.clashscore, name="qualityMetrics__clashscore", curie=LAMBDA.curie('clashscore'),
+                   model_uri=LAMBDA.qualityMetrics__clashscore, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__molprobity_score = Slot(uri=LAMBDABER.molprobity_score, name="qualityMetrics__molprobity_score", curie=LAMBDABER.curie('molprobity_score'),
-                   model_uri=LAMBDABER.qualityMetrics__molprobity_score, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__molprobity_score = Slot(uri=LAMBDA.molprobity_score, name="qualityMetrics__molprobity_score", curie=LAMBDA.curie('molprobity_score'),
+                   model_uri=LAMBDA.qualityMetrics__molprobity_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__average_b_factor_a2 = Slot(uri=LAMBDABER.average_b_factor_a2, name="qualityMetrics__average_b_factor_a2", curie=LAMBDABER.curie('average_b_factor_a2'),
-                   model_uri=LAMBDABER.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__average_b_factor_a2 = Slot(uri=LAMBDA.average_b_factor_a2, name="qualityMetrics__average_b_factor_a2", curie=LAMBDA.curie('average_b_factor_a2'),
+                   model_uri=LAMBDA.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__i_zero = Slot(uri=LAMBDABER.i_zero, name="qualityMetrics__i_zero", curie=LAMBDABER.curie('i_zero'),
-                   model_uri=LAMBDABER.qualityMetrics__i_zero, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__i_zero = Slot(uri=LAMBDA.i_zero, name="qualityMetrics__i_zero", curie=LAMBDA.curie('i_zero'),
+                   model_uri=LAMBDA.qualityMetrics__i_zero, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__rg = Slot(uri=LAMBDABER.rg, name="qualityMetrics__rg", curie=LAMBDABER.curie('rg'),
-                   model_uri=LAMBDABER.qualityMetrics__rg, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__rg = Slot(uri=LAMBDA.rg, name="qualityMetrics__rg", curie=LAMBDA.curie('rg'),
+                   model_uri=LAMBDA.qualityMetrics__rg, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.qualityMetrics__r_factor = Slot(uri=LAMBDABER.r_factor, name="qualityMetrics__r_factor", curie=LAMBDABER.curie('r_factor'),
-                   model_uri=LAMBDABER.qualityMetrics__r_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.qualityMetrics__r_factor = Slot(uri=LAMBDA.r_factor, name="qualityMetrics__r_factor", curie=LAMBDA.curie('r_factor'),
+                   model_uri=LAMBDA.qualityMetrics__r_factor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.computeResources__cpu_hours = Slot(uri=LAMBDABER.cpu_hours, name="computeResources__cpu_hours", curie=LAMBDABER.curie('cpu_hours'),
-                   model_uri=LAMBDABER.computeResources__cpu_hours, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.computeResources__cpu_hours = Slot(uri=LAMBDA.cpu_hours, name="computeResources__cpu_hours", curie=LAMBDA.curie('cpu_hours'),
+                   model_uri=LAMBDA.computeResources__cpu_hours, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.computeResources__gpu_hours = Slot(uri=LAMBDABER.gpu_hours, name="computeResources__gpu_hours", curie=LAMBDABER.curie('gpu_hours'),
-                   model_uri=LAMBDABER.computeResources__gpu_hours, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.computeResources__gpu_hours = Slot(uri=LAMBDA.gpu_hours, name="computeResources__gpu_hours", curie=LAMBDA.curie('gpu_hours'),
+                   model_uri=LAMBDA.computeResources__gpu_hours, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.computeResources__memory_gb = Slot(uri=LAMBDABER.memory_gb, name="computeResources__memory_gb", curie=LAMBDABER.curie('memory_gb'),
-                   model_uri=LAMBDABER.computeResources__memory_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.computeResources__memory_gb = Slot(uri=LAMBDA.memory_gb, name="computeResources__memory_gb", curie=LAMBDA.curie('memory_gb'),
+                   model_uri=LAMBDA.computeResources__memory_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.computeResources__storage_gb = Slot(uri=LAMBDABER.storage_gb, name="computeResources__storage_gb", curie=LAMBDABER.curie('storage_gb'),
-                   model_uri=LAMBDABER.computeResources__storage_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.computeResources__storage_gb = Slot(uri=LAMBDA.storage_gb, name="computeResources__storage_gb", curie=LAMBDA.curie('storage_gb'),
+                   model_uri=LAMBDA.computeResources__storage_gb, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDABER.patch_size, name="motionCorrectionParameters__patch_size", curie=LAMBDABER.curie('patch_size'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__patch_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__patch_size = Slot(uri=LAMBDA.patch_size, name="motionCorrectionParameters__patch_size", curie=LAMBDA.curie('patch_size'),
+                   model_uri=LAMBDA.motionCorrectionParameters__patch_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__binning = Slot(uri=LAMBDABER.binning, name="motionCorrectionParameters__binning", curie=LAMBDABER.curie('binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__binning, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__binning = Slot(uri=LAMBDA.binning, name="motionCorrectionParameters__binning", curie=LAMBDA.curie('binning'),
+                   model_uri=LAMBDA.motionCorrectionParameters__binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__dose_weighting = Slot(uri=LAMBDABER.dose_weighting, name="motionCorrectionParameters__dose_weighting", curie=LAMBDABER.curie('dose_weighting'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__dose_weighting, domain=None, range=Optional[Union[bool, Bool]])
+slots.motionCorrectionParameters__dose_weighting = Slot(uri=LAMBDA.dose_weighting, name="motionCorrectionParameters__dose_weighting", curie=LAMBDA.curie('dose_weighting'),
+                   model_uri=LAMBDA.motionCorrectionParameters__dose_weighting, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.motionCorrectionParameters__bfactor_dose_weighting = Slot(uri=LAMBDABER.bfactor_dose_weighting, name="motionCorrectionParameters__bfactor_dose_weighting", curie=LAMBDABER.curie('bfactor_dose_weighting'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__bfactor_dose_weighting, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__bfactor_dose_weighting = Slot(uri=LAMBDA.bfactor_dose_weighting, name="motionCorrectionParameters__bfactor_dose_weighting", curie=LAMBDA.curie('bfactor_dose_weighting'),
+                   model_uri=LAMBDA.motionCorrectionParameters__bfactor_dose_weighting, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__anisotropic_correction = Slot(uri=LAMBDABER.anisotropic_correction, name="motionCorrectionParameters__anisotropic_correction", curie=LAMBDABER.curie('anisotropic_correction'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__anisotropic_correction, domain=None, range=Optional[Union[bool, Bool]])
+slots.motionCorrectionParameters__anisotropic_correction = Slot(uri=LAMBDA.anisotropic_correction, name="motionCorrectionParameters__anisotropic_correction", curie=LAMBDA.curie('anisotropic_correction'),
+                   model_uri=LAMBDA.motionCorrectionParameters__anisotropic_correction, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.motionCorrectionParameters__frame_grouping = Slot(uri=LAMBDABER.frame_grouping, name="motionCorrectionParameters__frame_grouping", curie=LAMBDABER.curie('frame_grouping'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__frame_grouping = Slot(uri=LAMBDA.frame_grouping, name="motionCorrectionParameters__frame_grouping", curie=LAMBDA.curie('frame_grouping'),
+                   model_uri=LAMBDA.motionCorrectionParameters__frame_grouping, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__output_binning = Slot(uri=LAMBDABER.output_binning, name="motionCorrectionParameters__output_binning", curie=LAMBDABER.curie('output_binning'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__output_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__output_binning = Slot(uri=LAMBDA.output_binning, name="motionCorrectionParameters__output_binning", curie=LAMBDA.curie('output_binning'),
+                   model_uri=LAMBDA.motionCorrectionParameters__output_binning, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDABER.drift_total, name="motionCorrectionParameters__drift_total", curie=LAMBDABER.curie('drift_total'),
-                   model_uri=LAMBDABER.motionCorrectionParameters__drift_total, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.motionCorrectionParameters__drift_total = Slot(uri=LAMBDA.drift_total, name="motionCorrectionParameters__drift_total", curie=LAMBDA.curie('drift_total'),
+                   model_uri=LAMBDA.motionCorrectionParameters__drift_total, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__defocus_search_min = Slot(uri=LAMBDABER.defocus_search_min, name="cTFEstimationParameters__defocus_search_min", curie=LAMBDABER.curie('defocus_search_min'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__defocus_search_min = Slot(uri=LAMBDA.defocus_search_min, name="cTFEstimationParameters__defocus_search_min", curie=LAMBDA.curie('defocus_search_min'),
+                   model_uri=LAMBDA.cTFEstimationParameters__defocus_search_min, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__defocus_search_max = Slot(uri=LAMBDABER.defocus_search_max, name="cTFEstimationParameters__defocus_search_max", curie=LAMBDABER.curie('defocus_search_max'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_search_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__defocus_search_max = Slot(uri=LAMBDA.defocus_search_max, name="cTFEstimationParameters__defocus_search_max", curie=LAMBDA.curie('defocus_search_max'),
+                   model_uri=LAMBDA.cTFEstimationParameters__defocus_search_max, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__defocus_step = Slot(uri=LAMBDABER.defocus_step, name="cTFEstimationParameters__defocus_step", curie=LAMBDABER.curie('defocus_step'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__defocus_step, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__defocus_step = Slot(uri=LAMBDA.defocus_step, name="cTFEstimationParameters__defocus_step", curie=LAMBDA.curie('defocus_step'),
+                   model_uri=LAMBDA.cTFEstimationParameters__defocus_step, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__amplitude_contrast = Slot(uri=LAMBDABER.amplitude_contrast, name="cTFEstimationParameters__amplitude_contrast", curie=LAMBDABER.curie('amplitude_contrast'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__amplitude_contrast = Slot(uri=LAMBDA.amplitude_contrast, name="cTFEstimationParameters__amplitude_contrast", curie=LAMBDA.curie('amplitude_contrast'),
+                   model_uri=LAMBDA.cTFEstimationParameters__amplitude_contrast, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__cs_used_in_estimation = Slot(uri=LAMBDABER.cs_used_in_estimation, name="cTFEstimationParameters__cs_used_in_estimation", curie=LAMBDABER.curie('cs_used_in_estimation'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__cs_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__cs_used_in_estimation = Slot(uri=LAMBDA.cs_used_in_estimation, name="cTFEstimationParameters__cs_used_in_estimation", curie=LAMBDA.curie('cs_used_in_estimation'),
+                   model_uri=LAMBDA.cTFEstimationParameters__cs_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.cTFEstimationParameters__voltage_used_in_estimation = Slot(uri=LAMBDABER.voltage_used_in_estimation, name="cTFEstimationParameters__voltage_used_in_estimation", curie=LAMBDABER.curie('voltage_used_in_estimation'),
-                   model_uri=LAMBDABER.cTFEstimationParameters__voltage_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.cTFEstimationParameters__voltage_used_in_estimation = Slot(uri=LAMBDA.voltage_used_in_estimation, name="cTFEstimationParameters__voltage_used_in_estimation", curie=LAMBDA.curie('voltage_used_in_estimation'),
+                   model_uri=LAMBDA.cTFEstimationParameters__voltage_used_in_estimation, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.particlePickingParameters__picking_method = Slot(uri=LAMBDABER.picking_method, name="particlePickingParameters__picking_method", curie=LAMBDABER.curie('picking_method'),
-                   model_uri=LAMBDABER.particlePickingParameters__picking_method, domain=None, range=Optional[str])
+slots.particlePickingParameters__picking_method = Slot(uri=LAMBDA.picking_method, name="particlePickingParameters__picking_method", curie=LAMBDA.curie('picking_method'),
+                   model_uri=LAMBDA.particlePickingParameters__picking_method, domain=None, range=Optional[str])
 
-slots.particlePickingParameters__box_size = Slot(uri=LAMBDABER.box_size, name="particlePickingParameters__box_size", curie=LAMBDABER.curie('box_size'),
-                   model_uri=LAMBDABER.particlePickingParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.particlePickingParameters__box_size = Slot(uri=LAMBDA.box_size, name="particlePickingParameters__box_size", curie=LAMBDA.curie('box_size'),
+                   model_uri=LAMBDA.particlePickingParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.particlePickingParameters__threshold = Slot(uri=LAMBDABER.threshold, name="particlePickingParameters__threshold", curie=LAMBDABER.curie('threshold'),
-                   model_uri=LAMBDABER.particlePickingParameters__threshold, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.particlePickingParameters__threshold = Slot(uri=LAMBDA.threshold, name="particlePickingParameters__threshold", curie=LAMBDA.curie('threshold'),
+                   model_uri=LAMBDA.particlePickingParameters__threshold, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.particlePickingParameters__power_score = Slot(uri=LAMBDABER.power_score, name="particlePickingParameters__power_score", curie=LAMBDABER.curie('power_score'),
-                   model_uri=LAMBDABER.particlePickingParameters__power_score, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.particlePickingParameters__power_score = Slot(uri=LAMBDA.power_score, name="particlePickingParameters__power_score", curie=LAMBDA.curie('power_score'),
+                   model_uri=LAMBDA.particlePickingParameters__power_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.particlePickingParameters__ncc_score = Slot(uri=LAMBDABER.ncc_score, name="particlePickingParameters__ncc_score", curie=LAMBDABER.curie('ncc_score'),
-                   model_uri=LAMBDABER.particlePickingParameters__ncc_score, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.particlePickingParameters__ncc_score = Slot(uri=LAMBDA.ncc_score, name="particlePickingParameters__ncc_score", curie=LAMBDA.curie('ncc_score'),
+                   model_uri=LAMBDA.particlePickingParameters__ncc_score, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.particlePickingParameters__model_name = Slot(uri=LAMBDABER.model_name, name="particlePickingParameters__model_name", curie=LAMBDABER.curie('model_name'),
-                   model_uri=LAMBDABER.particlePickingParameters__model_name, domain=None, range=Optional[str])
+slots.particlePickingParameters__model_name = Slot(uri=LAMBDA.model_name, name="particlePickingParameters__model_name", curie=LAMBDA.curie('model_name'),
+                   model_uri=LAMBDA.particlePickingParameters__model_name, domain=None, range=Optional[str])
 
-slots.particlePickingParameters__model_file_path = Slot(uri=LAMBDABER.model_file_path, name="particlePickingParameters__model_file_path", curie=LAMBDABER.curie('model_file_path'),
-                   model_uri=LAMBDABER.particlePickingParameters__model_file_path, domain=None, range=Optional[str])
+slots.particlePickingParameters__model_file_path = Slot(uri=LAMBDA.model_file_path, name="particlePickingParameters__model_file_path", curie=LAMBDA.curie('model_file_path'),
+                   model_uri=LAMBDA.particlePickingParameters__model_file_path, domain=None, range=Optional[str])
 
-slots.particlePickingParameters__model_source = Slot(uri=LAMBDABER.model_source, name="particlePickingParameters__model_source", curie=LAMBDABER.curie('model_source'),
-                   model_uri=LAMBDABER.particlePickingParameters__model_source, domain=None, range=Optional[str])
+slots.particlePickingParameters__model_source = Slot(uri=LAMBDA.model_source, name="particlePickingParameters__model_source", curie=LAMBDA.curie('model_source'),
+                   model_uri=LAMBDA.particlePickingParameters__model_source, domain=None, range=Optional[str])
 
-slots.refinementParameters__symmetry = Slot(uri=LAMBDABER.symmetry, name="refinementParameters__symmetry", curie=LAMBDABER.curie('symmetry'),
-                   model_uri=LAMBDABER.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])
+slots.refinementParameters__symmetry = Slot(uri=LAMBDA.symmetry, name="refinementParameters__symmetry", curie=LAMBDA.curie('symmetry'),
+                   model_uri=LAMBDA.refinementParameters__symmetry, domain=None, range=Optional[Union[str, "SymmetryEnum"]])
 
-slots.refinementParameters__pixel_size = Slot(uri=LAMBDABER.pixel_size, name="refinementParameters__pixel_size", curie=LAMBDABER.curie('pixel_size'),
-                   model_uri=LAMBDABER.refinementParameters__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.refinementParameters__pixel_size = Slot(uri=LAMBDA.pixel_size, name="refinementParameters__pixel_size", curie=LAMBDA.curie('pixel_size'),
+                   model_uri=LAMBDA.refinementParameters__pixel_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.refinementParameters__box_size = Slot(uri=LAMBDABER.box_size, name="refinementParameters__box_size", curie=LAMBDABER.curie('box_size'),
-                   model_uri=LAMBDABER.refinementParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.refinementParameters__box_size = Slot(uri=LAMBDA.box_size, name="refinementParameters__box_size", curie=LAMBDA.curie('box_size'),
+                   model_uri=LAMBDA.refinementParameters__box_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.refinementParameters__gold_standard = Slot(uri=LAMBDABER.gold_standard, name="refinementParameters__gold_standard", curie=LAMBDABER.curie('gold_standard'),
-                   model_uri=LAMBDABER.refinementParameters__gold_standard, domain=None, range=Optional[Union[bool, Bool]])
+slots.refinementParameters__gold_standard = Slot(uri=LAMBDA.gold_standard, name="refinementParameters__gold_standard", curie=LAMBDA.curie('gold_standard'),
+                   model_uri=LAMBDA.refinementParameters__gold_standard, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.refinementParameters__split_strategy = Slot(uri=LAMBDABER.split_strategy, name="refinementParameters__split_strategy", curie=LAMBDABER.curie('split_strategy'),
-                   model_uri=LAMBDABER.refinementParameters__split_strategy, domain=None, range=Optional[str])
+slots.refinementParameters__split_strategy = Slot(uri=LAMBDA.split_strategy, name="refinementParameters__split_strategy", curie=LAMBDA.curie('split_strategy'),
+                   model_uri=LAMBDA.refinementParameters__split_strategy, domain=None, range=Optional[str])
 
-slots.refinementParameters__resolution_0_143 = Slot(uri=LAMBDABER.resolution_0_143, name="refinementParameters__resolution_0_143", curie=LAMBDABER.curie('resolution_0_143'),
-                   model_uri=LAMBDABER.refinementParameters__resolution_0_143, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.refinementParameters__resolution_0_143 = Slot(uri=LAMBDA.resolution_0_143, name="refinementParameters__resolution_0_143", curie=LAMBDA.curie('resolution_0_143'),
+                   model_uri=LAMBDA.refinementParameters__resolution_0_143, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDABER.resolution_0_5, name="refinementParameters__resolution_0_5", curie=LAMBDABER.curie('resolution_0_5'),
-                   model_uri=LAMBDABER.refinementParameters__resolution_0_5, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.refinementParameters__resolution_0_5 = Slot(uri=LAMBDA.resolution_0_5, name="refinementParameters__resolution_0_5", curie=LAMBDA.curie('resolution_0_5'),
+                   model_uri=LAMBDA.refinementParameters__resolution_0_5, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDABER.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDABER.curie('map_sharpening_bfactor'),
-                   model_uri=LAMBDABER.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.refinementParameters__map_sharpening_bfactor = Slot(uri=LAMBDA.map_sharpening_bfactor, name="refinementParameters__map_sharpening_bfactor", curie=LAMBDA.curie('map_sharpening_bfactor'),
+                   model_uri=LAMBDA.refinementParameters__map_sharpening_bfactor, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDABER.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDABER.curie('resolution_angstrom'),
-                   model_uri=LAMBDABER.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fSCCurve__resolution_angstrom = Slot(uri=LAMBDA.resolution_angstrom, name="fSCCurve__resolution_angstrom", curie=LAMBDA.curie('resolution_angstrom'),
+                   model_uri=LAMBDA.fSCCurve__resolution_angstrom, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.fSCCurve__fsc_value = Slot(uri=LAMBDABER.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDABER.curie('fsc_value'),
-                   model_uri=LAMBDABER.fSCCurve__fsc_value, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.fSCCurve__fsc_value = Slot(uri=LAMBDA.fsc_value, name="fSCCurve__fsc_value", curie=LAMBDA.curie('fsc_value'),
+                   model_uri=LAMBDA.fSCCurve__fsc_value, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.studySampleAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studySampleAssociation__study_id", curie=LAMBDABER.curie('study_id'),
-                   model_uri=LAMBDABER.studySampleAssociation__study_id, domain=None, range=Union[str, StudyId])
+slots.studySampleAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studySampleAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studySampleAssociation__study_id, domain=None, range=Union[str, StudyId])
 
-slots.studySampleAssociation__sample_id = Slot(uri=LAMBDABER.sample_id, name="studySampleAssociation__sample_id", curie=LAMBDABER.curie('sample_id'),
-                   model_uri=LAMBDABER.studySampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
+slots.studySampleAssociation__sample_id = Slot(uri=LAMBDA.sample_id, name="studySampleAssociation__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.studySampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
 
-slots.studySampleAssociation__role = Slot(uri=LAMBDABER.role, name="studySampleAssociation__role", curie=LAMBDABER.curie('role'),
-                   model_uri=LAMBDABER.studySampleAssociation__role, domain=None, range=Optional[Union[str, "SampleRoleEnum"]])
+slots.studySampleAssociation__role = Slot(uri=LAMBDA.role, name="studySampleAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.studySampleAssociation__role, domain=None, range=Optional[Union[str, "SampleRoleEnum"]])
 
-slots.studySampleAssociation__date_added = Slot(uri=LAMBDABER.date_added, name="studySampleAssociation__date_added", curie=LAMBDABER.curie('date_added'),
-                   model_uri=LAMBDABER.studySampleAssociation__date_added, domain=None, range=Optional[Union[str, XSDDate]])
+slots.studySampleAssociation__date_added = Slot(uri=LAMBDA.date_added, name="studySampleAssociation__date_added", curie=LAMBDA.curie('date_added'),
+                   model_uri=LAMBDA.studySampleAssociation__date_added, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.studyExperimentAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studyExperimentAssociation__study_id", curie=LAMBDABER.curie('study_id'),
-                   model_uri=LAMBDABER.studyExperimentAssociation__study_id, domain=None, range=Union[str, StudyId])
+slots.studyExperimentAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyExperimentAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studyExperimentAssociation__study_id, domain=None, range=Union[str, StudyId])
 
-slots.studyExperimentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="studyExperimentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
-                   model_uri=LAMBDABER.studyExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+slots.studyExperimentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="studyExperimentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
+                   model_uri=LAMBDA.studyExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
 
-slots.studyWorkflowAssociation__study_id = Slot(uri=LAMBDABER.study_id, name="studyWorkflowAssociation__study_id", curie=LAMBDABER.curie('study_id'),
-                   model_uri=LAMBDABER.studyWorkflowAssociation__study_id, domain=None, range=Union[str, StudyId])
+slots.studyWorkflowAssociation__study_id = Slot(uri=LAMBDA.study_id, name="studyWorkflowAssociation__study_id", curie=LAMBDA.curie('study_id'),
+                   model_uri=LAMBDA.studyWorkflowAssociation__study_id, domain=None, range=Union[str, StudyId])
 
-slots.studyWorkflowAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="studyWorkflowAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
-                   model_uri=LAMBDABER.studyWorkflowAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+slots.studyWorkflowAssociation__workflow_id = Slot(uri=LAMBDA.workflow_id, name="studyWorkflowAssociation__workflow_id", curie=LAMBDA.curie('workflow_id'),
+                   model_uri=LAMBDA.studyWorkflowAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
 
-slots.experimentSampleAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="experimentSampleAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
-                   model_uri=LAMBDABER.experimentSampleAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+slots.experimentSampleAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentSampleAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
+                   model_uri=LAMBDA.experimentSampleAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
 
-slots.experimentSampleAssociation__sample_id = Slot(uri=LAMBDABER.sample_id, name="experimentSampleAssociation__sample_id", curie=LAMBDABER.curie('sample_id'),
-                   model_uri=LAMBDABER.experimentSampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
+slots.experimentSampleAssociation__sample_id = Slot(uri=LAMBDA.sample_id, name="experimentSampleAssociation__sample_id", curie=LAMBDA.curie('sample_id'),
+                   model_uri=LAMBDA.experimentSampleAssociation__sample_id, domain=None, range=Union[str, SampleId])
 
-slots.experimentSampleAssociation__role = Slot(uri=LAMBDABER.role, name="experimentSampleAssociation__role", curie=LAMBDABER.curie('role'),
-                   model_uri=LAMBDABER.experimentSampleAssociation__role, domain=None, range=Optional[Union[str, "ExperimentSampleRoleEnum"]])
+slots.experimentSampleAssociation__role = Slot(uri=LAMBDA.role, name="experimentSampleAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.experimentSampleAssociation__role, domain=None, range=Optional[Union[str, "ExperimentSampleRoleEnum"]])
 
-slots.experimentSampleAssociation__preparation_id = Slot(uri=LAMBDABER.preparation_id, name="experimentSampleAssociation__preparation_id", curie=LAMBDABER.curie('preparation_id'),
-                   model_uri=LAMBDABER.experimentSampleAssociation__preparation_id, domain=None, range=Optional[Union[str, SamplePreparationId]])
+slots.experimentSampleAssociation__preparation_id = Slot(uri=LAMBDA.preparation_id, name="experimentSampleAssociation__preparation_id", curie=LAMBDA.curie('preparation_id'),
+                   model_uri=LAMBDA.experimentSampleAssociation__preparation_id, domain=None, range=Optional[Union[str, SamplePreparationId]])
 
-slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
-                   model_uri=LAMBDABER.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+slots.experimentInstrumentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="experimentInstrumentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
+                   model_uri=LAMBDA.experimentInstrumentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
 
-slots.experimentInstrumentAssociation__instrument_id = Slot(uri=LAMBDABER.instrument_id, name="experimentInstrumentAssociation__instrument_id", curie=LAMBDABER.curie('instrument_id'),
-                   model_uri=LAMBDABER.experimentInstrumentAssociation__instrument_id, domain=None, range=Union[str, InstrumentId])
+slots.experimentInstrumentAssociation__instrument_id = Slot(uri=LAMBDA.instrument_id, name="experimentInstrumentAssociation__instrument_id", curie=LAMBDA.curie('instrument_id'),
+                   model_uri=LAMBDA.experimentInstrumentAssociation__instrument_id, domain=None, range=Union[str, InstrumentId])
 
-slots.experimentInstrumentAssociation__role = Slot(uri=LAMBDABER.role, name="experimentInstrumentAssociation__role", curie=LAMBDABER.curie('role'),
-                   model_uri=LAMBDABER.experimentInstrumentAssociation__role, domain=None, range=Optional[Union[str, "InstrumentRoleEnum"]])
+slots.experimentInstrumentAssociation__role = Slot(uri=LAMBDA.role, name="experimentInstrumentAssociation__role", curie=LAMBDA.curie('role'),
+                   model_uri=LAMBDA.experimentInstrumentAssociation__role, domain=None, range=Optional[Union[str, "InstrumentRoleEnum"]])
 
-slots.workflowExperimentAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowExperimentAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
-                   model_uri=LAMBDABER.workflowExperimentAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+slots.workflowExperimentAssociation__workflow_id = Slot(uri=LAMBDA.workflow_id, name="workflowExperimentAssociation__workflow_id", curie=LAMBDA.curie('workflow_id'),
+                   model_uri=LAMBDA.workflowExperimentAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
 
-slots.workflowExperimentAssociation__experiment_id = Slot(uri=LAMBDABER.experiment_id, name="workflowExperimentAssociation__experiment_id", curie=LAMBDABER.curie('experiment_id'),
-                   model_uri=LAMBDABER.workflowExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
+slots.workflowExperimentAssociation__experiment_id = Slot(uri=LAMBDA.experiment_id, name="workflowExperimentAssociation__experiment_id", curie=LAMBDA.curie('experiment_id'),
+                   model_uri=LAMBDA.workflowExperimentAssociation__experiment_id, domain=None, range=Union[str, ExperimentRunId])
 
-slots.workflowInputAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowInputAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
-                   model_uri=LAMBDABER.workflowInputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+slots.workflowInputAssociation__workflow_id = Slot(uri=LAMBDA.workflow_id, name="workflowInputAssociation__workflow_id", curie=LAMBDA.curie('workflow_id'),
+                   model_uri=LAMBDA.workflowInputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
 
-slots.workflowInputAssociation__file_id = Slot(uri=LAMBDABER.file_id, name="workflowInputAssociation__file_id", curie=LAMBDABER.curie('file_id'),
-                   model_uri=LAMBDABER.workflowInputAssociation__file_id, domain=None, range=Union[str, DataFileId])
+slots.workflowInputAssociation__file_id = Slot(uri=LAMBDA.file_id, name="workflowInputAssociation__file_id", curie=LAMBDA.curie('file_id'),
+                   model_uri=LAMBDA.workflowInputAssociation__file_id, domain=None, range=Union[str, DataFileId])
 
-slots.workflowInputAssociation__input_type = Slot(uri=LAMBDABER.input_type, name="workflowInputAssociation__input_type", curie=LAMBDABER.curie('input_type'),
-                   model_uri=LAMBDABER.workflowInputAssociation__input_type, domain=None, range=Optional[Union[str, "InputTypeEnum"]])
+slots.workflowInputAssociation__input_type = Slot(uri=LAMBDA.input_type, name="workflowInputAssociation__input_type", curie=LAMBDA.curie('input_type'),
+                   model_uri=LAMBDA.workflowInputAssociation__input_type, domain=None, range=Optional[Union[str, "InputTypeEnum"]])
 
-slots.workflowOutputAssociation__workflow_id = Slot(uri=LAMBDABER.workflow_id, name="workflowOutputAssociation__workflow_id", curie=LAMBDABER.curie('workflow_id'),
-                   model_uri=LAMBDABER.workflowOutputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
+slots.workflowOutputAssociation__workflow_id = Slot(uri=LAMBDA.workflow_id, name="workflowOutputAssociation__workflow_id", curie=LAMBDA.curie('workflow_id'),
+                   model_uri=LAMBDA.workflowOutputAssociation__workflow_id, domain=None, range=Union[str, WorkflowRunId])
 
-slots.workflowOutputAssociation__file_id = Slot(uri=LAMBDABER.file_id, name="workflowOutputAssociation__file_id", curie=LAMBDABER.curie('file_id'),
-                   model_uri=LAMBDABER.workflowOutputAssociation__file_id, domain=None, range=Union[str, DataFileId])
+slots.workflowOutputAssociation__file_id = Slot(uri=LAMBDA.file_id, name="workflowOutputAssociation__file_id", curie=LAMBDA.curie('file_id'),
+                   model_uri=LAMBDA.workflowOutputAssociation__file_id, domain=None, range=Union[str, DataFileId])
 
-slots.workflowOutputAssociation__output_type = Slot(uri=LAMBDABER.output_type, name="workflowOutputAssociation__output_type", curie=LAMBDABER.curie('output_type'),
-                   model_uri=LAMBDABER.workflowOutputAssociation__output_type, domain=None, range=Optional[Union[str, "OutputTypeEnum"]])
+slots.workflowOutputAssociation__output_type = Slot(uri=LAMBDA.output_type, name="workflowOutputAssociation__output_type", curie=LAMBDA.curie('output_type'),
+                   model_uri=LAMBDA.workflowOutputAssociation__output_type, domain=None, range=Optional[Union[str, "OutputTypeEnum"]])
 
-slots.attributeValue__attribute = Slot(uri=LAMBDABER.attribute, name="attributeValue__attribute", curie=LAMBDABER.curie('attribute'),
-                   model_uri=LAMBDABER.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])
+slots.attributeValue__attribute = Slot(uri=LAMBDA.attribute, name="attributeValue__attribute", curie=LAMBDA.curie('attribute'),
+                   model_uri=LAMBDA.attributeValue__attribute, domain=None, range=Optional[Union[dict, Attribute]])
 
-slots.attributeValue__raw_value = Slot(uri=LAMBDABER.raw_value, name="attributeValue__raw_value", curie=LAMBDABER.curie('raw_value'),
-                   model_uri=LAMBDABER.attributeValue__raw_value, domain=None, range=Optional[str])
+slots.attributeValue__raw_value = Slot(uri=LAMBDA.raw_value, name="attributeValue__raw_value", curie=LAMBDA.curie('raw_value'),
+                   model_uri=LAMBDA.attributeValue__raw_value, domain=None, range=Optional[str])
 
-slots.attribute__id = Slot(uri=LAMBDABER.id, name="attribute__id", curie=LAMBDABER.curie('id'),
-                   model_uri=LAMBDABER.attribute__id, domain=None, range=Optional[str])
+slots.attribute__id = Slot(uri=LAMBDA.id, name="attribute__id", curie=LAMBDA.curie('id'),
+                   model_uri=LAMBDA.attribute__id, domain=None, range=Optional[str])
 
-slots.attribute__label = Slot(uri=LAMBDABER.label, name="attribute__label", curie=LAMBDABER.curie('label'),
-                   model_uri=LAMBDABER.attribute__label, domain=None, range=str)
+slots.attribute__label = Slot(uri=LAMBDA.label, name="attribute__label", curie=LAMBDA.curie('label'),
+                   model_uri=LAMBDA.attribute__label, domain=None, range=str)
 
-slots.textValue__value = Slot(uri=LAMBDABER.value, name="textValue__value", curie=LAMBDABER.curie('value'),
-                   model_uri=LAMBDABER.textValue__value, domain=None, range=str)
+slots.textValue__value = Slot(uri=LAMBDA.value, name="textValue__value", curie=LAMBDA.curie('value'),
+                   model_uri=LAMBDA.textValue__value, domain=None, range=str)
 
-slots.textValue__value_cv_id = Slot(uri=LAMBDABER.value_cv_id, name="textValue__value_cv_id", curie=LAMBDABER.curie('value_cv_id'),
-                   model_uri=LAMBDABER.textValue__value_cv_id, domain=None, range=Optional[Union[str, Curie]])
+slots.textValue__value_cv_id = Slot(uri=LAMBDA.value_cv_id, name="textValue__value_cv_id", curie=LAMBDA.curie('value_cv_id'),
+                   model_uri=LAMBDA.textValue__value_cv_id, domain=None, range=Optional[Union[str, Curie]])
 
-slots.dateTimeValue__value = Slot(uri=LAMBDABER.value, name="dateTimeValue__value", curie=LAMBDABER.curie('value'),
-                   model_uri=LAMBDABER.dateTimeValue__value, domain=None, range=str)
+slots.dateTimeValue__value = Slot(uri=LAMBDA.value, name="dateTimeValue__value", curie=LAMBDA.curie('value'),
+                   model_uri=LAMBDA.dateTimeValue__value, domain=None, range=str)
 
-slots.proteinAnnotation__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
-                   model_uri=LAMBDABER.proteinAnnotation__protein_id, domain=None, range=str,
+slots.proteinAnnotation__protein_id = Slot(uri=LAMBDA['functional_annotation/protein_id'], name="proteinAnnotation__protein_id", curie=LAMBDA.curie('functional_annotation/protein_id'),
+                   model_uri=LAMBDA.proteinAnnotation__protein_id, domain=None, range=str,
                    pattern=re.compile(r'^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$'))
 
-slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDABER['functional_annotation/pdb_entry'], name="proteinAnnotation__pdb_entry", curie=LAMBDABER.curie('functional_annotation/pdb_entry'),
-                   model_uri=LAMBDABER.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
+slots.proteinAnnotation__pdb_entry = Slot(uri=LAMBDA['functional_annotation/pdb_entry'], name="proteinAnnotation__pdb_entry", curie=LAMBDA.curie('functional_annotation/pdb_entry'),
+                   model_uri=LAMBDA.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9][A-Za-z0-9]{3}$'))
 
-slots.proteinAnnotation__chain_id = Slot(uri=LAMBDABER['functional_annotation/chain_id'], name="proteinAnnotation__chain_id", curie=LAMBDABER.curie('functional_annotation/chain_id'),
-                   model_uri=LAMBDABER.proteinAnnotation__chain_id, domain=None, range=Optional[str],
+slots.proteinAnnotation__chain_id = Slot(uri=LAMBDA['functional_annotation/chain_id'], name="proteinAnnotation__chain_id", curie=LAMBDA.curie('functional_annotation/chain_id'),
+                   model_uri=LAMBDA.proteinAnnotation__chain_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-Za-z0-9]+$'))
 
-slots.proteinAnnotation__residue_range = Slot(uri=LAMBDABER['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDABER.curie('functional_annotation/residue_range'),
-                   model_uri=LAMBDABER.proteinAnnotation__residue_range, domain=None, range=Optional[str],
+slots.proteinAnnotation__residue_range = Slot(uri=LAMBDA['functional_annotation/residue_range'], name="proteinAnnotation__residue_range", curie=LAMBDA.curie('functional_annotation/residue_range'),
+                   model_uri=LAMBDA.proteinAnnotation__residue_range, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9,\-]+$'))
 
-slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDABER['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDABER.curie('functional_annotation/confidence_score'),
-                   model_uri=LAMBDABER.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
+slots.proteinAnnotation__confidence_score = Slot(uri=LAMBDA['functional_annotation/confidence_score'], name="proteinAnnotation__confidence_score", curie=LAMBDA.curie('functional_annotation/confidence_score'),
+                   model_uri=LAMBDA.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
 
-slots.proteinAnnotation__evidence_type = Slot(uri=LAMBDABER['functional_annotation/evidence_type'], name="proteinAnnotation__evidence_type", curie=LAMBDABER.curie('functional_annotation/evidence_type'),
-                   model_uri=LAMBDABER.proteinAnnotation__evidence_type, domain=None, range=Optional[Union[str, "EvidenceTypeEnum"]])
+slots.proteinAnnotation__evidence_type = Slot(uri=LAMBDA['functional_annotation/evidence_type'], name="proteinAnnotation__evidence_type", curie=LAMBDA.curie('functional_annotation/evidence_type'),
+                   model_uri=LAMBDA.proteinAnnotation__evidence_type, domain=None, range=Optional[Union[str, "EvidenceTypeEnum"]])
 
-slots.proteinAnnotation__evidence_code = Slot(uri=LAMBDABER['functional_annotation/evidence_code'], name="proteinAnnotation__evidence_code", curie=LAMBDABER.curie('functional_annotation/evidence_code'),
-                   model_uri=LAMBDABER.proteinAnnotation__evidence_code, domain=None, range=Optional[Union[str, URIorCURIE]])
+slots.proteinAnnotation__evidence_code = Slot(uri=LAMBDA['functional_annotation/evidence_code'], name="proteinAnnotation__evidence_code", curie=LAMBDA.curie('functional_annotation/evidence_code'),
+                   model_uri=LAMBDA.proteinAnnotation__evidence_code, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.proteinAnnotation__source_database = Slot(uri=LAMBDABER['functional_annotation/source_database'], name="proteinAnnotation__source_database", curie=LAMBDABER.curie('functional_annotation/source_database'),
-                   model_uri=LAMBDABER.proteinAnnotation__source_database, domain=None, range=Optional[Union[str, "AnnotationSourceEnum"]])
+slots.proteinAnnotation__source_database = Slot(uri=LAMBDA['functional_annotation/source_database'], name="proteinAnnotation__source_database", curie=LAMBDA.curie('functional_annotation/source_database'),
+                   model_uri=LAMBDA.proteinAnnotation__source_database, domain=None, range=Optional[Union[str, "AnnotationSourceEnum"]])
 
-slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDABER['functional_annotation/annotation_method'], name="proteinAnnotation__annotation_method", curie=LAMBDABER.curie('functional_annotation/annotation_method'),
-                   model_uri=LAMBDABER.proteinAnnotation__annotation_method, domain=None, range=Optional[str])
+slots.proteinAnnotation__annotation_method = Slot(uri=LAMBDA['functional_annotation/annotation_method'], name="proteinAnnotation__annotation_method", curie=LAMBDA.curie('functional_annotation/annotation_method'),
+                   model_uri=LAMBDA.proteinAnnotation__annotation_method, domain=None, range=Optional[str])
 
-slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDABER['functional_annotation/publication_ids'], name="proteinAnnotation__publication_ids", curie=LAMBDABER.curie('functional_annotation/publication_ids'),
-                   model_uri=LAMBDABER.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
+slots.proteinAnnotation__publication_ids = Slot(uri=LAMBDA['functional_annotation/publication_ids'], name="proteinAnnotation__publication_ids", curie=LAMBDA.curie('functional_annotation/publication_ids'),
+                   model_uri=LAMBDA.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^(PMID:[0-9]+|DOI:10\.[0-9]{4,}/[-._;()/:A-Za-z0-9]+)$'))
 
-slots.functionalSite__site_type = Slot(uri=LAMBDABER['functional_annotation/site_type'], name="functionalSite__site_type", curie=LAMBDABER.curie('functional_annotation/site_type'),
-                   model_uri=LAMBDABER.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
+slots.functionalSite__site_type = Slot(uri=LAMBDA['functional_annotation/site_type'], name="functionalSite__site_type", curie=LAMBDA.curie('functional_annotation/site_type'),
+                   model_uri=LAMBDA.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
 
-slots.functionalSite__site_name = Slot(uri=LAMBDABER['functional_annotation/site_name'], name="functionalSite__site_name", curie=LAMBDABER.curie('functional_annotation/site_name'),
-                   model_uri=LAMBDABER.functionalSite__site_name, domain=None, range=Optional[str])
+slots.functionalSite__site_name = Slot(uri=LAMBDA['functional_annotation/site_name'], name="functionalSite__site_name", curie=LAMBDA.curie('functional_annotation/site_name'),
+                   model_uri=LAMBDA.functionalSite__site_name, domain=None, range=Optional[str])
 
-slots.functionalSite__residues = Slot(uri=LAMBDABER['functional_annotation/residues'], name="functionalSite__residues", curie=LAMBDABER.curie('functional_annotation/residues'),
-                   model_uri=LAMBDABER.functionalSite__residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.functionalSite__residues = Slot(uri=LAMBDA['functional_annotation/residues'], name="functionalSite__residues", curie=LAMBDA.curie('functional_annotation/residues'),
+                   model_uri=LAMBDA.functionalSite__residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.functionalSite__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="functionalSite__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
-                   model_uri=LAMBDABER.functionalSite__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+slots.functionalSite__ligand_interactions = Slot(uri=LAMBDA['functional_annotation/ligand_interactions'], name="functionalSite__ligand_interactions", curie=LAMBDA.curie('functional_annotation/ligand_interactions'),
+                   model_uri=LAMBDA.functionalSite__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
 
-slots.functionalSite__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="functionalSite__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
-                   model_uri=LAMBDABER.functionalSite__conservation_score, domain=None, range=Optional[float])
+slots.functionalSite__conservation_score = Slot(uri=LAMBDA['functional_annotation/conservation_score'], name="functionalSite__conservation_score", curie=LAMBDA.curie('functional_annotation/conservation_score'),
+                   model_uri=LAMBDA.functionalSite__conservation_score, domain=None, range=Optional[float])
 
-slots.functionalSite__functional_importance = Slot(uri=LAMBDABER['functional_annotation/functional_importance'], name="functionalSite__functional_importance", curie=LAMBDABER.curie('functional_annotation/functional_importance'),
-                   model_uri=LAMBDABER.functionalSite__functional_importance, domain=None, range=Optional[str])
+slots.functionalSite__functional_importance = Slot(uri=LAMBDA['functional_annotation/functional_importance'], name="functionalSite__functional_importance", curie=LAMBDA.curie('functional_annotation/functional_importance'),
+                   model_uri=LAMBDA.functionalSite__functional_importance, domain=None, range=Optional[str])
 
-slots.functionalSite__go_terms = Slot(uri=LAMBDABER['functional_annotation/go_terms'], name="functionalSite__go_terms", curie=LAMBDABER.curie('functional_annotation/go_terms'),
-                   model_uri=LAMBDABER.functionalSite__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+slots.functionalSite__go_terms = Slot(uri=LAMBDA['functional_annotation/go_terms'], name="functionalSite__go_terms", curie=LAMBDA.curie('functional_annotation/go_terms'),
+                   model_uri=LAMBDA.functionalSite__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
-slots.functionalSite__ec_number = Slot(uri=LAMBDABER['functional_annotation/ec_number'], name="functionalSite__ec_number", curie=LAMBDABER.curie('functional_annotation/ec_number'),
-                   model_uri=LAMBDABER.functionalSite__ec_number, domain=None, range=Optional[str],
+slots.functionalSite__ec_number = Slot(uri=LAMBDA['functional_annotation/ec_number'], name="functionalSite__ec_number", curie=LAMBDA.curie('functional_annotation/ec_number'),
+                   model_uri=LAMBDA.functionalSite__ec_number, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'))
 
-slots.structuralFeature__feature_type = Slot(uri=LAMBDABER['functional_annotation/feature_type'], name="structuralFeature__feature_type", curie=LAMBDABER.curie('functional_annotation/feature_type'),
-                   model_uri=LAMBDABER.structuralFeature__feature_type, domain=None, range=Union[str, "StructuralFeatureTypeEnum"])
+slots.structuralFeature__feature_type = Slot(uri=LAMBDA['functional_annotation/feature_type'], name="structuralFeature__feature_type", curie=LAMBDA.curie('functional_annotation/feature_type'),
+                   model_uri=LAMBDA.structuralFeature__feature_type, domain=None, range=Union[str, "StructuralFeatureTypeEnum"])
 
-slots.structuralFeature__secondary_structure = Slot(uri=LAMBDABER['functional_annotation/secondary_structure'], name="structuralFeature__secondary_structure", curie=LAMBDABER.curie('functional_annotation/secondary_structure'),
-                   model_uri=LAMBDABER.structuralFeature__secondary_structure, domain=None, range=Optional[Union[str, "SecondaryStructureEnum"]])
+slots.structuralFeature__secondary_structure = Slot(uri=LAMBDA['functional_annotation/secondary_structure'], name="structuralFeature__secondary_structure", curie=LAMBDA.curie('functional_annotation/secondary_structure'),
+                   model_uri=LAMBDA.structuralFeature__secondary_structure, domain=None, range=Optional[Union[str, "SecondaryStructureEnum"]])
 
-slots.structuralFeature__solvent_accessibility = Slot(uri=LAMBDABER['functional_annotation/solvent_accessibility'], name="structuralFeature__solvent_accessibility", curie=LAMBDABER.curie('functional_annotation/solvent_accessibility'),
-                   model_uri=LAMBDABER.structuralFeature__solvent_accessibility, domain=None, range=Optional[float])
+slots.structuralFeature__solvent_accessibility = Slot(uri=LAMBDA['functional_annotation/solvent_accessibility'], name="structuralFeature__solvent_accessibility", curie=LAMBDA.curie('functional_annotation/solvent_accessibility'),
+                   model_uri=LAMBDA.structuralFeature__solvent_accessibility, domain=None, range=Optional[float])
 
-slots.structuralFeature__backbone_flexibility = Slot(uri=LAMBDABER['functional_annotation/backbone_flexibility'], name="structuralFeature__backbone_flexibility", curie=LAMBDABER.curie('functional_annotation/backbone_flexibility'),
-                   model_uri=LAMBDABER.structuralFeature__backbone_flexibility, domain=None, range=Optional[float])
+slots.structuralFeature__backbone_flexibility = Slot(uri=LAMBDA['functional_annotation/backbone_flexibility'], name="structuralFeature__backbone_flexibility", curie=LAMBDA.curie('functional_annotation/backbone_flexibility'),
+                   model_uri=LAMBDA.structuralFeature__backbone_flexibility, domain=None, range=Optional[float])
 
-slots.structuralFeature__disorder_probability = Slot(uri=LAMBDABER['functional_annotation/disorder_probability'], name="structuralFeature__disorder_probability", curie=LAMBDABER.curie('functional_annotation/disorder_probability'),
-                   model_uri=LAMBDABER.structuralFeature__disorder_probability, domain=None, range=Optional[float])
+slots.structuralFeature__disorder_probability = Slot(uri=LAMBDA['functional_annotation/disorder_probability'], name="structuralFeature__disorder_probability", curie=LAMBDA.curie('functional_annotation/disorder_probability'),
+                   model_uri=LAMBDA.structuralFeature__disorder_probability, domain=None, range=Optional[float])
 
-slots.structuralFeature__conformational_state = Slot(uri=LAMBDABER['functional_annotation/conformational_state'], name="structuralFeature__conformational_state", curie=LAMBDABER.curie('functional_annotation/conformational_state'),
-                   model_uri=LAMBDABER.structuralFeature__conformational_state, domain=None, range=Optional[Union[str, "ConformationalStateEnum"]])
+slots.structuralFeature__conformational_state = Slot(uri=LAMBDA['functional_annotation/conformational_state'], name="structuralFeature__conformational_state", curie=LAMBDA.curie('functional_annotation/conformational_state'),
+                   model_uri=LAMBDA.structuralFeature__conformational_state, domain=None, range=Optional[Union[str, "ConformationalStateEnum"]])
 
-slots.structuralFeature__structural_motif = Slot(uri=LAMBDABER['functional_annotation/structural_motif'], name="structuralFeature__structural_motif", curie=LAMBDABER.curie('functional_annotation/structural_motif'),
-                   model_uri=LAMBDABER.structuralFeature__structural_motif, domain=None, range=Optional[str])
+slots.structuralFeature__structural_motif = Slot(uri=LAMBDA['functional_annotation/structural_motif'], name="structuralFeature__structural_motif", curie=LAMBDA.curie('functional_annotation/structural_motif'),
+                   model_uri=LAMBDA.structuralFeature__structural_motif, domain=None, range=Optional[str])
 
-slots.structuralFeature__domain_assignment = Slot(uri=LAMBDABER['functional_annotation/domain_assignment'], name="structuralFeature__domain_assignment", curie=LAMBDABER.curie('functional_annotation/domain_assignment'),
-                   model_uri=LAMBDABER.structuralFeature__domain_assignment, domain=None, range=Optional[str])
+slots.structuralFeature__domain_assignment = Slot(uri=LAMBDA['functional_annotation/domain_assignment'], name="structuralFeature__domain_assignment", curie=LAMBDA.curie('functional_annotation/domain_assignment'),
+                   model_uri=LAMBDA.structuralFeature__domain_assignment, domain=None, range=Optional[str])
 
-slots.structuralFeature__domain_id = Slot(uri=LAMBDABER['functional_annotation/domain_id'], name="structuralFeature__domain_id", curie=LAMBDABER.curie('functional_annotation/domain_id'),
-                   model_uri=LAMBDABER.structuralFeature__domain_id, domain=None, range=Optional[str])
+slots.structuralFeature__domain_id = Slot(uri=LAMBDA['functional_annotation/domain_id'], name="structuralFeature__domain_id", curie=LAMBDA.curie('functional_annotation/domain_id'),
+                   model_uri=LAMBDA.structuralFeature__domain_id, domain=None, range=Optional[str])
 
-slots.ligandInteraction__ligand_id = Slot(uri=LAMBDABER['functional_annotation/ligand_id'], name="ligandInteraction__ligand_id", curie=LAMBDABER.curie('functional_annotation/ligand_id'),
-                   model_uri=LAMBDABER.ligandInteraction__ligand_id, domain=None, range=Union[str, URIorCURIE])
+slots.ligandInteraction__ligand_id = Slot(uri=LAMBDA['functional_annotation/ligand_id'], name="ligandInteraction__ligand_id", curie=LAMBDA.curie('functional_annotation/ligand_id'),
+                   model_uri=LAMBDA.ligandInteraction__ligand_id, domain=None, range=Union[str, URIorCURIE])
 
-slots.ligandInteraction__ligand_name = Slot(uri=LAMBDABER['functional_annotation/ligand_name'], name="ligandInteraction__ligand_name", curie=LAMBDABER.curie('functional_annotation/ligand_name'),
-                   model_uri=LAMBDABER.ligandInteraction__ligand_name, domain=None, range=str)
+slots.ligandInteraction__ligand_name = Slot(uri=LAMBDA['functional_annotation/ligand_name'], name="ligandInteraction__ligand_name", curie=LAMBDA.curie('functional_annotation/ligand_name'),
+                   model_uri=LAMBDA.ligandInteraction__ligand_name, domain=None, range=str)
 
-slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDABER['functional_annotation/ligand_smiles'], name="ligandInteraction__ligand_smiles", curie=LAMBDABER.curie('functional_annotation/ligand_smiles'),
-                   model_uri=LAMBDABER.ligandInteraction__ligand_smiles, domain=None, range=Optional[Union[str, SmilesString]])
+slots.ligandInteraction__ligand_smiles = Slot(uri=LAMBDA['functional_annotation/ligand_smiles'], name="ligandInteraction__ligand_smiles", curie=LAMBDA.curie('functional_annotation/ligand_smiles'),
+                   model_uri=LAMBDA.ligandInteraction__ligand_smiles, domain=None, range=Optional[Union[str, SmilesString]])
 
-slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDABER['functional_annotation/binding_affinity'], name="ligandInteraction__binding_affinity", curie=LAMBDABER.curie('functional_annotation/binding_affinity'),
-                   model_uri=LAMBDABER.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
+slots.ligandInteraction__binding_affinity = Slot(uri=LAMBDA['functional_annotation/binding_affinity'], name="ligandInteraction__binding_affinity", curie=LAMBDA.curie('functional_annotation/binding_affinity'),
+                   model_uri=LAMBDA.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
 
-slots.ligandInteraction__binding_affinity_type = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_type'], name="ligandInteraction__binding_affinity_type", curie=LAMBDABER.curie('functional_annotation/binding_affinity_type'),
-                   model_uri=LAMBDABER.ligandInteraction__binding_affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
+slots.ligandInteraction__binding_affinity_type = Slot(uri=LAMBDA['functional_annotation/binding_affinity_type'], name="ligandInteraction__binding_affinity_type", curie=LAMBDA.curie('functional_annotation/binding_affinity_type'),
+                   model_uri=LAMBDA.ligandInteraction__binding_affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
 
-slots.ligandInteraction__binding_affinity_unit = Slot(uri=LAMBDABER['functional_annotation/binding_affinity_unit'], name="ligandInteraction__binding_affinity_unit", curie=LAMBDABER.curie('functional_annotation/binding_affinity_unit'),
-                   model_uri=LAMBDABER.ligandInteraction__binding_affinity_unit, domain=None, range=Optional[Union[str, "AffinityUnitEnum"]])
+slots.ligandInteraction__binding_affinity_unit = Slot(uri=LAMBDA['functional_annotation/binding_affinity_unit'], name="ligandInteraction__binding_affinity_unit", curie=LAMBDA.curie('functional_annotation/binding_affinity_unit'),
+                   model_uri=LAMBDA.ligandInteraction__binding_affinity_unit, domain=None, range=Optional[Union[str, "AffinityUnitEnum"]])
 
-slots.ligandInteraction__interaction_type = Slot(uri=LAMBDABER['functional_annotation/interaction_type'], name="ligandInteraction__interaction_type", curie=LAMBDABER.curie('functional_annotation/interaction_type'),
-                   model_uri=LAMBDABER.ligandInteraction__interaction_type, domain=None, range=Optional[Union[str, "InteractionTypeEnum"]])
+slots.ligandInteraction__interaction_type = Slot(uri=LAMBDA['functional_annotation/interaction_type'], name="ligandInteraction__interaction_type", curie=LAMBDA.curie('functional_annotation/interaction_type'),
+                   model_uri=LAMBDA.ligandInteraction__interaction_type, domain=None, range=Optional[Union[str, "InteractionTypeEnum"]])
 
-slots.ligandInteraction__binding_site_residues = Slot(uri=LAMBDABER['functional_annotation/binding_site_residues'], name="ligandInteraction__binding_site_residues", curie=LAMBDABER.curie('functional_annotation/binding_site_residues'),
-                   model_uri=LAMBDABER.ligandInteraction__binding_site_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.ligandInteraction__binding_site_residues = Slot(uri=LAMBDA['functional_annotation/binding_site_residues'], name="ligandInteraction__binding_site_residues", curie=LAMBDA.curie('functional_annotation/binding_site_residues'),
+                   model_uri=LAMBDA.ligandInteraction__binding_site_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ligandInteraction__is_cofactor = Slot(uri=LAMBDABER['functional_annotation/is_cofactor'], name="ligandInteraction__is_cofactor", curie=LAMBDABER.curie('functional_annotation/is_cofactor'),
-                   model_uri=LAMBDABER.ligandInteraction__is_cofactor, domain=None, range=Optional[Union[bool, Bool]])
+slots.ligandInteraction__is_cofactor = Slot(uri=LAMBDA['functional_annotation/is_cofactor'], name="ligandInteraction__is_cofactor", curie=LAMBDA.curie('functional_annotation/is_cofactor'),
+                   model_uri=LAMBDA.ligandInteraction__is_cofactor, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ligandInteraction__is_drug_like = Slot(uri=LAMBDABER['functional_annotation/is_drug_like'], name="ligandInteraction__is_drug_like", curie=LAMBDABER.curie('functional_annotation/is_drug_like'),
-                   model_uri=LAMBDABER.ligandInteraction__is_drug_like, domain=None, range=Optional[Union[bool, Bool]])
+slots.ligandInteraction__is_drug_like = Slot(uri=LAMBDA['functional_annotation/is_drug_like'], name="ligandInteraction__is_drug_like", curie=LAMBDA.curie('functional_annotation/is_drug_like'),
+                   model_uri=LAMBDA.ligandInteraction__is_drug_like, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ligandInteraction__druggability_score = Slot(uri=LAMBDABER['functional_annotation/druggability_score'], name="ligandInteraction__druggability_score", curie=LAMBDABER.curie('functional_annotation/druggability_score'),
-                   model_uri=LAMBDABER.ligandInteraction__druggability_score, domain=None, range=Optional[float])
+slots.ligandInteraction__druggability_score = Slot(uri=LAMBDA['functional_annotation/druggability_score'], name="ligandInteraction__druggability_score", curie=LAMBDA.curie('functional_annotation/druggability_score'),
+                   model_uri=LAMBDA.ligandInteraction__druggability_score, domain=None, range=Optional[float])
 
-slots.ligandInteraction__interaction_distance = Slot(uri=LAMBDABER['functional_annotation/interaction_distance'], name="ligandInteraction__interaction_distance", curie=LAMBDABER.curie('functional_annotation/interaction_distance'),
-                   model_uri=LAMBDABER.ligandInteraction__interaction_distance, domain=None, range=Optional[float])
+slots.ligandInteraction__interaction_distance = Slot(uri=LAMBDA['functional_annotation/interaction_distance'], name="ligandInteraction__interaction_distance", curie=LAMBDA.curie('functional_annotation/interaction_distance'),
+                   model_uri=LAMBDA.ligandInteraction__interaction_distance, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__partner_protein_id = Slot(uri=LAMBDABER['functional_annotation/partner_protein_id'], name="proteinProteinInteraction__partner_protein_id", curie=LAMBDABER.curie('functional_annotation/partner_protein_id'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__partner_protein_id, domain=None, range=str)
+slots.proteinProteinInteraction__partner_protein_id = Slot(uri=LAMBDA['functional_annotation/partner_protein_id'], name="proteinProteinInteraction__partner_protein_id", curie=LAMBDA.curie('functional_annotation/partner_protein_id'),
+                   model_uri=LAMBDA.proteinProteinInteraction__partner_protein_id, domain=None, range=str)
 
-slots.proteinProteinInteraction__partner_chain_id = Slot(uri=LAMBDABER['functional_annotation/partner_chain_id'], name="proteinProteinInteraction__partner_chain_id", curie=LAMBDABER.curie('functional_annotation/partner_chain_id'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__partner_chain_id, domain=None, range=Optional[str])
+slots.proteinProteinInteraction__partner_chain_id = Slot(uri=LAMBDA['functional_annotation/partner_chain_id'], name="proteinProteinInteraction__partner_chain_id", curie=LAMBDA.curie('functional_annotation/partner_chain_id'),
+                   model_uri=LAMBDA.proteinProteinInteraction__partner_chain_id, domain=None, range=Optional[str])
 
-slots.proteinProteinInteraction__interface_residues = Slot(uri=LAMBDABER['functional_annotation/interface_residues'], name="proteinProteinInteraction__interface_residues", curie=LAMBDABER.curie('functional_annotation/interface_residues'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.proteinProteinInteraction__interface_residues = Slot(uri=LAMBDA['functional_annotation/interface_residues'], name="proteinProteinInteraction__interface_residues", curie=LAMBDA.curie('functional_annotation/interface_residues'),
+                   model_uri=LAMBDA.proteinProteinInteraction__interface_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=LAMBDABER['functional_annotation/partner_interface_residues'], name="proteinProteinInteraction__partner_interface_residues", curie=LAMBDABER.curie('functional_annotation/partner_interface_residues'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__partner_interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=LAMBDA['functional_annotation/partner_interface_residues'], name="proteinProteinInteraction__partner_interface_residues", curie=LAMBDA.curie('functional_annotation/partner_interface_residues'),
+                   model_uri=LAMBDA.proteinProteinInteraction__partner_interface_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.proteinProteinInteraction__interface_area = Slot(uri=LAMBDABER['functional_annotation/interface_area'], name="proteinProteinInteraction__interface_area", curie=LAMBDABER.curie('functional_annotation/interface_area'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__interface_area, domain=None, range=Optional[float])
+slots.proteinProteinInteraction__interface_area = Slot(uri=LAMBDA['functional_annotation/interface_area'], name="proteinProteinInteraction__interface_area", curie=LAMBDA.curie('functional_annotation/interface_area'),
+                   model_uri=LAMBDA.proteinProteinInteraction__interface_area, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__binding_energy = Slot(uri=LAMBDABER['functional_annotation/binding_energy'], name="proteinProteinInteraction__binding_energy", curie=LAMBDABER.curie('functional_annotation/binding_energy'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__binding_energy, domain=None, range=Optional[float])
+slots.proteinProteinInteraction__binding_energy = Slot(uri=LAMBDA['functional_annotation/binding_energy'], name="proteinProteinInteraction__binding_energy", curie=LAMBDA.curie('functional_annotation/binding_energy'),
+                   model_uri=LAMBDA.proteinProteinInteraction__binding_energy, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__dissociation_constant = Slot(uri=LAMBDABER['functional_annotation/dissociation_constant'], name="proteinProteinInteraction__dissociation_constant", curie=LAMBDABER.curie('functional_annotation/dissociation_constant'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__dissociation_constant, domain=None, range=Optional[float])
+slots.proteinProteinInteraction__dissociation_constant = Slot(uri=LAMBDA['functional_annotation/dissociation_constant'], name="proteinProteinInteraction__dissociation_constant", curie=LAMBDA.curie('functional_annotation/dissociation_constant'),
+                   model_uri=LAMBDA.proteinProteinInteraction__dissociation_constant, domain=None, range=Optional[float])
 
-slots.proteinProteinInteraction__complex_stability = Slot(uri=LAMBDABER['functional_annotation/complex_stability'], name="proteinProteinInteraction__complex_stability", curie=LAMBDABER.curie('functional_annotation/complex_stability'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__complex_stability, domain=None, range=Optional[Union[str, "ComplexStabilityEnum"]])
+slots.proteinProteinInteraction__complex_stability = Slot(uri=LAMBDA['functional_annotation/complex_stability'], name="proteinProteinInteraction__complex_stability", curie=LAMBDA.curie('functional_annotation/complex_stability'),
+                   model_uri=LAMBDA.proteinProteinInteraction__complex_stability, domain=None, range=Optional[Union[str, "ComplexStabilityEnum"]])
 
-slots.proteinProteinInteraction__biological_assembly = Slot(uri=LAMBDABER['functional_annotation/biological_assembly'], name="proteinProteinInteraction__biological_assembly", curie=LAMBDABER.curie('functional_annotation/biological_assembly'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__biological_assembly, domain=None, range=Optional[Union[bool, Bool]])
+slots.proteinProteinInteraction__biological_assembly = Slot(uri=LAMBDA['functional_annotation/biological_assembly'], name="proteinProteinInteraction__biological_assembly", curie=LAMBDA.curie('functional_annotation/biological_assembly'),
+                   model_uri=LAMBDA.proteinProteinInteraction__biological_assembly, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.proteinProteinInteraction__interaction_evidence = Slot(uri=LAMBDABER['functional_annotation/interaction_evidence'], name="proteinProteinInteraction__interaction_evidence", curie=LAMBDABER.curie('functional_annotation/interaction_evidence'),
-                   model_uri=LAMBDABER.proteinProteinInteraction__interaction_evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
+slots.proteinProteinInteraction__interaction_evidence = Slot(uri=LAMBDA['functional_annotation/interaction_evidence'], name="proteinProteinInteraction__interaction_evidence", curie=LAMBDA.curie('functional_annotation/interaction_evidence'),
+                   model_uri=LAMBDA.proteinProteinInteraction__interaction_evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
 
-slots.mutationEffect__mutation = Slot(uri=LAMBDABER['functional_annotation/mutation'], name="mutationEffect__mutation", curie=LAMBDABER.curie('functional_annotation/mutation'),
-                   model_uri=LAMBDABER.mutationEffect__mutation, domain=None, range=str,
+slots.mutationEffect__mutation = Slot(uri=LAMBDA['functional_annotation/mutation'], name="mutationEffect__mutation", curie=LAMBDA.curie('functional_annotation/mutation'),
+                   model_uri=LAMBDA.mutationEffect__mutation, domain=None, range=str,
                    pattern=re.compile(r'^[A-Z][0-9]+[A-Z]$'))
 
-slots.mutationEffect__mutation_type = Slot(uri=LAMBDABER['functional_annotation/mutation_type'], name="mutationEffect__mutation_type", curie=LAMBDABER.curie('functional_annotation/mutation_type'),
-                   model_uri=LAMBDABER.mutationEffect__mutation_type, domain=None, range=Optional[Union[str, "MutationTypeEnum"]])
+slots.mutationEffect__mutation_type = Slot(uri=LAMBDA['functional_annotation/mutation_type'], name="mutationEffect__mutation_type", curie=LAMBDA.curie('functional_annotation/mutation_type'),
+                   model_uri=LAMBDA.mutationEffect__mutation_type, domain=None, range=Optional[Union[str, "MutationTypeEnum"]])
 
-slots.mutationEffect__effect_on_stability = Slot(uri=LAMBDABER['functional_annotation/effect_on_stability'], name="mutationEffect__effect_on_stability", curie=LAMBDABER.curie('functional_annotation/effect_on_stability'),
-                   model_uri=LAMBDABER.mutationEffect__effect_on_stability, domain=None, range=Optional[Union[str, "StabilityEffectEnum"]])
+slots.mutationEffect__effect_on_stability = Slot(uri=LAMBDA['functional_annotation/effect_on_stability'], name="mutationEffect__effect_on_stability", curie=LAMBDA.curie('functional_annotation/effect_on_stability'),
+                   model_uri=LAMBDA.mutationEffect__effect_on_stability, domain=None, range=Optional[Union[str, "StabilityEffectEnum"]])
 
-slots.mutationEffect__delta_delta_g = Slot(uri=LAMBDABER['functional_annotation/delta_delta_g'], name="mutationEffect__delta_delta_g", curie=LAMBDABER.curie('functional_annotation/delta_delta_g'),
-                   model_uri=LAMBDABER.mutationEffect__delta_delta_g, domain=None, range=Optional[float])
+slots.mutationEffect__delta_delta_g = Slot(uri=LAMBDA['functional_annotation/delta_delta_g'], name="mutationEffect__delta_delta_g", curie=LAMBDA.curie('functional_annotation/delta_delta_g'),
+                   model_uri=LAMBDA.mutationEffect__delta_delta_g, domain=None, range=Optional[float])
 
-slots.mutationEffect__effect_on_function = Slot(uri=LAMBDABER['functional_annotation/effect_on_function'], name="mutationEffect__effect_on_function", curie=LAMBDABER.curie('functional_annotation/effect_on_function'),
-                   model_uri=LAMBDABER.mutationEffect__effect_on_function, domain=None, range=Optional[Union[str, "FunctionalEffectEnum"]])
+slots.mutationEffect__effect_on_function = Slot(uri=LAMBDA['functional_annotation/effect_on_function'], name="mutationEffect__effect_on_function", curie=LAMBDA.curie('functional_annotation/effect_on_function'),
+                   model_uri=LAMBDA.mutationEffect__effect_on_function, domain=None, range=Optional[Union[str, "FunctionalEffectEnum"]])
 
-slots.mutationEffect__functional_impact_description = Slot(uri=LAMBDABER['functional_annotation/functional_impact_description'], name="mutationEffect__functional_impact_description", curie=LAMBDABER.curie('functional_annotation/functional_impact_description'),
-                   model_uri=LAMBDABER.mutationEffect__functional_impact_description, domain=None, range=Optional[str])
+slots.mutationEffect__functional_impact_description = Slot(uri=LAMBDA['functional_annotation/functional_impact_description'], name="mutationEffect__functional_impact_description", curie=LAMBDA.curie('functional_annotation/functional_impact_description'),
+                   model_uri=LAMBDA.mutationEffect__functional_impact_description, domain=None, range=Optional[str])
 
-slots.mutationEffect__disease_association = Slot(uri=LAMBDABER['functional_annotation/disease_association'], name="mutationEffect__disease_association", curie=LAMBDABER.curie('functional_annotation/disease_association'),
-                   model_uri=LAMBDABER.mutationEffect__disease_association, domain=None, range=Optional[str])
+slots.mutationEffect__disease_association = Slot(uri=LAMBDA['functional_annotation/disease_association'], name="mutationEffect__disease_association", curie=LAMBDA.curie('functional_annotation/disease_association'),
+                   model_uri=LAMBDA.mutationEffect__disease_association, domain=None, range=Optional[str])
 
-slots.mutationEffect__omim_id = Slot(uri=LAMBDABER['functional_annotation/omim_id'], name="mutationEffect__omim_id", curie=LAMBDABER.curie('functional_annotation/omim_id'),
-                   model_uri=LAMBDABER.mutationEffect__omim_id, domain=None, range=Optional[str],
+slots.mutationEffect__omim_id = Slot(uri=LAMBDA['functional_annotation/omim_id'], name="mutationEffect__omim_id", curie=LAMBDA.curie('functional_annotation/omim_id'),
+                   model_uri=LAMBDA.mutationEffect__omim_id, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[0-9]{6}$'))
 
-slots.mutationEffect__clinical_significance = Slot(uri=LAMBDABER['functional_annotation/clinical_significance'], name="mutationEffect__clinical_significance", curie=LAMBDABER.curie('functional_annotation/clinical_significance'),
-                   model_uri=LAMBDABER.mutationEffect__clinical_significance, domain=None, range=Optional[Union[str, "ClinicalSignificanceEnum"]])
+slots.mutationEffect__clinical_significance = Slot(uri=LAMBDA['functional_annotation/clinical_significance'], name="mutationEffect__clinical_significance", curie=LAMBDA.curie('functional_annotation/clinical_significance'),
+                   model_uri=LAMBDA.mutationEffect__clinical_significance, domain=None, range=Optional[Union[str, "ClinicalSignificanceEnum"]])
 
-slots.mutationEffect__allele_frequency = Slot(uri=LAMBDABER['functional_annotation/allele_frequency'], name="mutationEffect__allele_frequency", curie=LAMBDABER.curie('functional_annotation/allele_frequency'),
-                   model_uri=LAMBDABER.mutationEffect__allele_frequency, domain=None, range=Optional[float])
+slots.mutationEffect__allele_frequency = Slot(uri=LAMBDA['functional_annotation/allele_frequency'], name="mutationEffect__allele_frequency", curie=LAMBDA.curie('functional_annotation/allele_frequency'),
+                   model_uri=LAMBDA.mutationEffect__allele_frequency, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__property_type = Slot(uri=LAMBDABER['functional_annotation/property_type'], name="biophysicalProperty__property_type", curie=LAMBDABER.curie('functional_annotation/property_type'),
-                   model_uri=LAMBDABER.biophysicalProperty__property_type, domain=None, range=Union[str, "BiophysicalPropertyEnum"])
+slots.biophysicalProperty__property_type = Slot(uri=LAMBDA['functional_annotation/property_type'], name="biophysicalProperty__property_type", curie=LAMBDA.curie('functional_annotation/property_type'),
+                   model_uri=LAMBDA.biophysicalProperty__property_type, domain=None, range=Union[str, "BiophysicalPropertyEnum"])
 
-slots.biophysicalProperty__value = Slot(uri=LAMBDABER['functional_annotation/value'], name="biophysicalProperty__value", curie=LAMBDABER.curie('functional_annotation/value'),
-                   model_uri=LAMBDABER.biophysicalProperty__value, domain=None, range=float)
+slots.biophysicalProperty__value = Slot(uri=LAMBDA['functional_annotation/value'], name="biophysicalProperty__value", curie=LAMBDA.curie('functional_annotation/value'),
+                   model_uri=LAMBDA.biophysicalProperty__value, domain=None, range=float)
 
-slots.biophysicalProperty__unit = Slot(uri=LAMBDABER['functional_annotation/unit'], name="biophysicalProperty__unit", curie=LAMBDABER.curie('functional_annotation/unit'),
-                   model_uri=LAMBDABER.biophysicalProperty__unit, domain=None, range=str)
+slots.biophysicalProperty__unit = Slot(uri=LAMBDA['functional_annotation/unit'], name="biophysicalProperty__unit", curie=LAMBDA.curie('functional_annotation/unit'),
+                   model_uri=LAMBDA.biophysicalProperty__unit, domain=None, range=str)
 
-slots.biophysicalProperty__error = Slot(uri=LAMBDABER['functional_annotation/error'], name="biophysicalProperty__error", curie=LAMBDABER.curie('functional_annotation/error'),
-                   model_uri=LAMBDABER.biophysicalProperty__error, domain=None, range=Optional[float])
+slots.biophysicalProperty__error = Slot(uri=LAMBDA['functional_annotation/error'], name="biophysicalProperty__error", curie=LAMBDA.curie('functional_annotation/error'),
+                   model_uri=LAMBDA.biophysicalProperty__error, domain=None, range=Optional[float])
 
-slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDABER['functional_annotation/measurement_conditions'], name="biophysicalProperty__measurement_conditions", curie=LAMBDABER.curie('functional_annotation/measurement_conditions'),
-                   model_uri=LAMBDABER.biophysicalProperty__measurement_conditions, domain=None, range=Optional[Union[dict[Union[str, MeasurementConditionsId], Union[dict, MeasurementConditions]], list[Union[dict, MeasurementConditions]]]])
+slots.biophysicalProperty__measurement_conditions = Slot(uri=LAMBDA['functional_annotation/measurement_conditions'], name="biophysicalProperty__measurement_conditions", curie=LAMBDA.curie('functional_annotation/measurement_conditions'),
+                   model_uri=LAMBDA.biophysicalProperty__measurement_conditions, domain=None, range=Optional[Union[dict[Union[str, MeasurementConditionsId], Union[dict, MeasurementConditions]], list[Union[dict, MeasurementConditions]]]])
 
-slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDABER['functional_annotation/experimental_method'], name="biophysicalProperty__experimental_method", curie=LAMBDABER.curie('functional_annotation/experimental_method'),
-                   model_uri=LAMBDABER.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
+slots.biophysicalProperty__experimental_method = Slot(uri=LAMBDA['functional_annotation/experimental_method'], name="biophysicalProperty__experimental_method", curie=LAMBDA.curie('functional_annotation/experimental_method'),
+                   model_uri=LAMBDA.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
 
-slots.conformationalEnsemble__protein_id = Slot(uri=LAMBDABER['functional_annotation/protein_id'], name="conformationalEnsemble__protein_id", curie=LAMBDABER.curie('functional_annotation/protein_id'),
-                   model_uri=LAMBDABER.conformationalEnsemble__protein_id, domain=None, range=str)
+slots.conformationalEnsemble__protein_id = Slot(uri=LAMBDA['functional_annotation/protein_id'], name="conformationalEnsemble__protein_id", curie=LAMBDA.curie('functional_annotation/protein_id'),
+                   model_uri=LAMBDA.conformationalEnsemble__protein_id, domain=None, range=str)
 
-slots.conformationalEnsemble__conformational_states = Slot(uri=LAMBDABER['functional_annotation/conformational_states'], name="conformationalEnsemble__conformational_states", curie=LAMBDABER.curie('functional_annotation/conformational_states'),
-                   model_uri=LAMBDABER.conformationalEnsemble__conformational_states, domain=None, range=Optional[Union[Union[dict, ConformationalState], list[Union[dict, ConformationalState]]]])
+slots.conformationalEnsemble__conformational_states = Slot(uri=LAMBDA['functional_annotation/conformational_states'], name="conformationalEnsemble__conformational_states", curie=LAMBDA.curie('functional_annotation/conformational_states'),
+                   model_uri=LAMBDA.conformationalEnsemble__conformational_states, domain=None, range=Optional[Union[Union[dict, ConformationalState], list[Union[dict, ConformationalState]]]])
 
-slots.conformationalEnsemble__clustering_method = Slot(uri=LAMBDABER['functional_annotation/clustering_method'], name="conformationalEnsemble__clustering_method", curie=LAMBDABER.curie('functional_annotation/clustering_method'),
-                   model_uri=LAMBDABER.conformationalEnsemble__clustering_method, domain=None, range=Optional[str])
+slots.conformationalEnsemble__clustering_method = Slot(uri=LAMBDA['functional_annotation/clustering_method'], name="conformationalEnsemble__clustering_method", curie=LAMBDA.curie('functional_annotation/clustering_method'),
+                   model_uri=LAMBDA.conformationalEnsemble__clustering_method, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__rmsd_threshold = Slot(uri=LAMBDABER['functional_annotation/rmsd_threshold'], name="conformationalEnsemble__rmsd_threshold", curie=LAMBDABER.curie('functional_annotation/rmsd_threshold'),
-                   model_uri=LAMBDABER.conformationalEnsemble__rmsd_threshold, domain=None, range=Optional[float])
+slots.conformationalEnsemble__rmsd_threshold = Slot(uri=LAMBDA['functional_annotation/rmsd_threshold'], name="conformationalEnsemble__rmsd_threshold", curie=LAMBDA.curie('functional_annotation/rmsd_threshold'),
+                   model_uri=LAMBDA.conformationalEnsemble__rmsd_threshold, domain=None, range=Optional[float])
 
-slots.conformationalEnsemble__transition_pathways = Slot(uri=LAMBDABER['functional_annotation/transition_pathways'], name="conformationalEnsemble__transition_pathways", curie=LAMBDABER.curie('functional_annotation/transition_pathways'),
-                   model_uri=LAMBDABER.conformationalEnsemble__transition_pathways, domain=None, range=Optional[str])
+slots.conformationalEnsemble__transition_pathways = Slot(uri=LAMBDA['functional_annotation/transition_pathways'], name="conformationalEnsemble__transition_pathways", curie=LAMBDA.curie('functional_annotation/transition_pathways'),
+                   model_uri=LAMBDA.conformationalEnsemble__transition_pathways, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__energy_landscape = Slot(uri=LAMBDABER['functional_annotation/energy_landscape'], name="conformationalEnsemble__energy_landscape", curie=LAMBDABER.curie('functional_annotation/energy_landscape'),
-                   model_uri=LAMBDABER.conformationalEnsemble__energy_landscape, domain=None, range=Optional[str])
+slots.conformationalEnsemble__energy_landscape = Slot(uri=LAMBDA['functional_annotation/energy_landscape'], name="conformationalEnsemble__energy_landscape", curie=LAMBDA.curie('functional_annotation/energy_landscape'),
+                   model_uri=LAMBDA.conformationalEnsemble__energy_landscape, domain=None, range=Optional[str])
 
-slots.conformationalEnsemble__principal_motions = Slot(uri=LAMBDABER['functional_annotation/principal_motions'], name="conformationalEnsemble__principal_motions", curie=LAMBDABER.curie('functional_annotation/principal_motions'),
-                   model_uri=LAMBDABER.conformationalEnsemble__principal_motions, domain=None, range=Optional[Union[str, list[str]]])
+slots.conformationalEnsemble__principal_motions = Slot(uri=LAMBDA['functional_annotation/principal_motions'], name="conformationalEnsemble__principal_motions", curie=LAMBDA.curie('functional_annotation/principal_motions'),
+                   model_uri=LAMBDA.conformationalEnsemble__principal_motions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.conformationalState__state_id = Slot(uri=LAMBDABER['functional_annotation/state_id'], name="conformationalState__state_id", curie=LAMBDABER.curie('functional_annotation/state_id'),
-                   model_uri=LAMBDABER.conformationalState__state_id, domain=None, range=str)
+slots.conformationalState__state_id = Slot(uri=LAMBDA['functional_annotation/state_id'], name="conformationalState__state_id", curie=LAMBDA.curie('functional_annotation/state_id'),
+                   model_uri=LAMBDA.conformationalState__state_id, domain=None, range=str)
 
-slots.conformationalState__state_name = Slot(uri=LAMBDABER['functional_annotation/state_name'], name="conformationalState__state_name", curie=LAMBDABER.curie('functional_annotation/state_name'),
-                   model_uri=LAMBDABER.conformationalState__state_name, domain=None, range=Optional[str])
+slots.conformationalState__state_name = Slot(uri=LAMBDA['functional_annotation/state_name'], name="conformationalState__state_name", curie=LAMBDA.curie('functional_annotation/state_name'),
+                   model_uri=LAMBDA.conformationalState__state_name, domain=None, range=Optional[str])
 
-slots.conformationalState__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="conformationalState__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
-                   model_uri=LAMBDABER.conformationalState__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+slots.conformationalState__pdb_entries = Slot(uri=LAMBDA['functional_annotation/pdb_entries'], name="conformationalState__pdb_entries", curie=LAMBDA.curie('functional_annotation/pdb_entries'),
+                   model_uri=LAMBDA.conformationalState__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.conformationalState__population = Slot(uri=LAMBDABER['functional_annotation/population'], name="conformationalState__population", curie=LAMBDABER.curie('functional_annotation/population'),
-                   model_uri=LAMBDABER.conformationalState__population, domain=None, range=Optional[float])
+slots.conformationalState__population = Slot(uri=LAMBDA['functional_annotation/population'], name="conformationalState__population", curie=LAMBDA.curie('functional_annotation/population'),
+                   model_uri=LAMBDA.conformationalState__population, domain=None, range=Optional[float])
 
-slots.conformationalState__free_energy = Slot(uri=LAMBDABER['functional_annotation/free_energy'], name="conformationalState__free_energy", curie=LAMBDABER.curie('functional_annotation/free_energy'),
-                   model_uri=LAMBDABER.conformationalState__free_energy, domain=None, range=Optional[float])
+slots.conformationalState__free_energy = Slot(uri=LAMBDA['functional_annotation/free_energy'], name="conformationalState__free_energy", curie=LAMBDA.curie('functional_annotation/free_energy'),
+                   model_uri=LAMBDA.conformationalState__free_energy, domain=None, range=Optional[float])
 
-slots.conformationalState__rmsd_from_reference = Slot(uri=LAMBDABER['functional_annotation/rmsd_from_reference'], name="conformationalState__rmsd_from_reference", curie=LAMBDABER.curie('functional_annotation/rmsd_from_reference'),
-                   model_uri=LAMBDABER.conformationalState__rmsd_from_reference, domain=None, range=Optional[float])
+slots.conformationalState__rmsd_from_reference = Slot(uri=LAMBDA['functional_annotation/rmsd_from_reference'], name="conformationalState__rmsd_from_reference", curie=LAMBDA.curie('functional_annotation/rmsd_from_reference'),
+                   model_uri=LAMBDA.conformationalState__rmsd_from_reference, domain=None, range=Optional[float])
 
-slots.conformationalState__characteristic_features = Slot(uri=LAMBDABER['functional_annotation/characteristic_features'], name="conformationalState__characteristic_features", curie=LAMBDABER.curie('functional_annotation/characteristic_features'),
-                   model_uri=LAMBDABER.conformationalState__characteristic_features, domain=None, range=Optional[Union[str, list[str]]])
+slots.conformationalState__characteristic_features = Slot(uri=LAMBDA['functional_annotation/characteristic_features'], name="conformationalState__characteristic_features", curie=LAMBDA.curie('functional_annotation/characteristic_features'),
+                   model_uri=LAMBDA.conformationalState__characteristic_features, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.postTranslationalModification__modification_type = Slot(uri=LAMBDABER['functional_annotation/modification_type'], name="postTranslationalModification__modification_type", curie=LAMBDABER.curie('functional_annotation/modification_type'),
-                   model_uri=LAMBDABER.postTranslationalModification__modification_type, domain=None, range=Union[str, "PTMTypeEnum"])
+slots.postTranslationalModification__modification_type = Slot(uri=LAMBDA['functional_annotation/modification_type'], name="postTranslationalModification__modification_type", curie=LAMBDA.curie('functional_annotation/modification_type'),
+                   model_uri=LAMBDA.postTranslationalModification__modification_type, domain=None, range=Union[str, "PTMTypeEnum"])
 
-slots.postTranslationalModification__modified_residue = Slot(uri=LAMBDABER['functional_annotation/modified_residue'], name="postTranslationalModification__modified_residue", curie=LAMBDABER.curie('functional_annotation/modified_residue'),
-                   model_uri=LAMBDABER.postTranslationalModification__modified_residue, domain=None, range=str)
+slots.postTranslationalModification__modified_residue = Slot(uri=LAMBDA['functional_annotation/modified_residue'], name="postTranslationalModification__modified_residue", curie=LAMBDA.curie('functional_annotation/modified_residue'),
+                   model_uri=LAMBDA.postTranslationalModification__modified_residue, domain=None, range=str)
 
-slots.postTranslationalModification__modification_group = Slot(uri=LAMBDABER['functional_annotation/modification_group'], name="postTranslationalModification__modification_group", curie=LAMBDABER.curie('functional_annotation/modification_group'),
-                   model_uri=LAMBDABER.postTranslationalModification__modification_group, domain=None, range=Optional[str])
+slots.postTranslationalModification__modification_group = Slot(uri=LAMBDA['functional_annotation/modification_group'], name="postTranslationalModification__modification_group", curie=LAMBDA.curie('functional_annotation/modification_group'),
+                   model_uri=LAMBDA.postTranslationalModification__modification_group, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__mass_shift = Slot(uri=LAMBDABER['functional_annotation/mass_shift'], name="postTranslationalModification__mass_shift", curie=LAMBDABER.curie('functional_annotation/mass_shift'),
-                   model_uri=LAMBDABER.postTranslationalModification__mass_shift, domain=None, range=Optional[float])
+slots.postTranslationalModification__mass_shift = Slot(uri=LAMBDA['functional_annotation/mass_shift'], name="postTranslationalModification__mass_shift", curie=LAMBDA.curie('functional_annotation/mass_shift'),
+                   model_uri=LAMBDA.postTranslationalModification__mass_shift, domain=None, range=Optional[float])
 
-slots.postTranslationalModification__functional_effect = Slot(uri=LAMBDABER['functional_annotation/functional_effect'], name="postTranslationalModification__functional_effect", curie=LAMBDABER.curie('functional_annotation/functional_effect'),
-                   model_uri=LAMBDABER.postTranslationalModification__functional_effect, domain=None, range=Optional[str])
+slots.postTranslationalModification__functional_effect = Slot(uri=LAMBDA['functional_annotation/functional_effect'], name="postTranslationalModification__functional_effect", curie=LAMBDA.curie('functional_annotation/functional_effect'),
+                   model_uri=LAMBDA.postTranslationalModification__functional_effect, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__regulatory_role = Slot(uri=LAMBDABER['functional_annotation/regulatory_role'], name="postTranslationalModification__regulatory_role", curie=LAMBDABER.curie('functional_annotation/regulatory_role'),
-                   model_uri=LAMBDABER.postTranslationalModification__regulatory_role, domain=None, range=Optional[str])
+slots.postTranslationalModification__regulatory_role = Slot(uri=LAMBDA['functional_annotation/regulatory_role'], name="postTranslationalModification__regulatory_role", curie=LAMBDA.curie('functional_annotation/regulatory_role'),
+                   model_uri=LAMBDA.postTranslationalModification__regulatory_role, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__enzyme = Slot(uri=LAMBDABER['functional_annotation/enzyme'], name="postTranslationalModification__enzyme", curie=LAMBDABER.curie('functional_annotation/enzyme'),
-                   model_uri=LAMBDABER.postTranslationalModification__enzyme, domain=None, range=Optional[str])
+slots.postTranslationalModification__enzyme = Slot(uri=LAMBDA['functional_annotation/enzyme'], name="postTranslationalModification__enzyme", curie=LAMBDA.curie('functional_annotation/enzyme'),
+                   model_uri=LAMBDA.postTranslationalModification__enzyme, domain=None, range=Optional[str])
 
-slots.postTranslationalModification__removal_enzyme = Slot(uri=LAMBDABER['functional_annotation/removal_enzyme'], name="postTranslationalModification__removal_enzyme", curie=LAMBDABER.curie('functional_annotation/removal_enzyme'),
-                   model_uri=LAMBDABER.postTranslationalModification__removal_enzyme, domain=None, range=Optional[str])
+slots.postTranslationalModification__removal_enzyme = Slot(uri=LAMBDA['functional_annotation/removal_enzyme'], name="postTranslationalModification__removal_enzyme", curie=LAMBDA.curie('functional_annotation/removal_enzyme'),
+                   model_uri=LAMBDA.postTranslationalModification__removal_enzyme, domain=None, range=Optional[str])
 
-slots.databaseCrossReference__database_name = Slot(uri=LAMBDABER['functional_annotation/database_name'], name="databaseCrossReference__database_name", curie=LAMBDABER.curie('functional_annotation/database_name'),
-                   model_uri=LAMBDABER.databaseCrossReference__database_name, domain=None, range=Union[str, "DatabaseNameEnum"])
+slots.databaseCrossReference__database_name = Slot(uri=LAMBDA['functional_annotation/database_name'], name="databaseCrossReference__database_name", curie=LAMBDA.curie('functional_annotation/database_name'),
+                   model_uri=LAMBDA.databaseCrossReference__database_name, domain=None, range=Union[str, "DatabaseNameEnum"])
 
-slots.databaseCrossReference__database_id = Slot(uri=LAMBDABER['functional_annotation/database_id'], name="databaseCrossReference__database_id", curie=LAMBDABER.curie('functional_annotation/database_id'),
-                   model_uri=LAMBDABER.databaseCrossReference__database_id, domain=None, range=str)
+slots.databaseCrossReference__database_id = Slot(uri=LAMBDA['functional_annotation/database_id'], name="databaseCrossReference__database_id", curie=LAMBDA.curie('functional_annotation/database_id'),
+                   model_uri=LAMBDA.databaseCrossReference__database_id, domain=None, range=str)
 
-slots.databaseCrossReference__database_url = Slot(uri=LAMBDABER['functional_annotation/database_url'], name="databaseCrossReference__database_url", curie=LAMBDABER.curie('functional_annotation/database_url'),
-                   model_uri=LAMBDABER.databaseCrossReference__database_url, domain=None, range=Optional[Union[str, URI]])
+slots.databaseCrossReference__database_url = Slot(uri=LAMBDA['functional_annotation/database_url'], name="databaseCrossReference__database_url", curie=LAMBDA.curie('functional_annotation/database_url'),
+                   model_uri=LAMBDA.databaseCrossReference__database_url, domain=None, range=Optional[Union[str, URI]])
 
-slots.databaseCrossReference__last_updated = Slot(uri=LAMBDABER['functional_annotation/last_updated'], name="databaseCrossReference__last_updated", curie=LAMBDABER.curie('functional_annotation/last_updated'),
-                   model_uri=LAMBDABER.databaseCrossReference__last_updated, domain=None, range=Optional[str])
+slots.databaseCrossReference__last_updated = Slot(uri=LAMBDA['functional_annotation/last_updated'], name="databaseCrossReference__last_updated", curie=LAMBDA.curie('functional_annotation/last_updated'),
+                   model_uri=LAMBDA.databaseCrossReference__last_updated, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__conservation_score = Slot(uri=LAMBDABER['functional_annotation/conservation_score'], name="evolutionaryConservation__conservation_score", curie=LAMBDABER.curie('functional_annotation/conservation_score'),
-                   model_uri=LAMBDABER.evolutionaryConservation__conservation_score, domain=None, range=Optional[float])
+slots.evolutionaryConservation__conservation_score = Slot(uri=LAMBDA['functional_annotation/conservation_score'], name="evolutionaryConservation__conservation_score", curie=LAMBDA.curie('functional_annotation/conservation_score'),
+                   model_uri=LAMBDA.evolutionaryConservation__conservation_score, domain=None, range=Optional[float])
 
-slots.evolutionaryConservation__conserved_residues = Slot(uri=LAMBDABER['functional_annotation/conserved_residues'], name="evolutionaryConservation__conserved_residues", curie=LAMBDABER.curie('functional_annotation/conserved_residues'),
-                   model_uri=LAMBDABER.evolutionaryConservation__conserved_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.evolutionaryConservation__conserved_residues = Slot(uri=LAMBDA['functional_annotation/conserved_residues'], name="evolutionaryConservation__conserved_residues", curie=LAMBDA.curie('functional_annotation/conserved_residues'),
+                   model_uri=LAMBDA.evolutionaryConservation__conserved_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.evolutionaryConservation__variable_residues = Slot(uri=LAMBDABER['functional_annotation/variable_residues'], name="evolutionaryConservation__variable_residues", curie=LAMBDABER.curie('functional_annotation/variable_residues'),
-                   model_uri=LAMBDABER.evolutionaryConservation__variable_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.evolutionaryConservation__variable_residues = Slot(uri=LAMBDA['functional_annotation/variable_residues'], name="evolutionaryConservation__variable_residues", curie=LAMBDA.curie('functional_annotation/variable_residues'),
+                   model_uri=LAMBDA.evolutionaryConservation__variable_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.evolutionaryConservation__conservation_method = Slot(uri=LAMBDABER['functional_annotation/conservation_method'], name="evolutionaryConservation__conservation_method", curie=LAMBDABER.curie('functional_annotation/conservation_method'),
-                   model_uri=LAMBDABER.evolutionaryConservation__conservation_method, domain=None, range=Optional[str])
+slots.evolutionaryConservation__conservation_method = Slot(uri=LAMBDA['functional_annotation/conservation_method'], name="evolutionaryConservation__conservation_method", curie=LAMBDA.curie('functional_annotation/conservation_method'),
+                   model_uri=LAMBDA.evolutionaryConservation__conservation_method, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__alignment_depth = Slot(uri=LAMBDABER['functional_annotation/alignment_depth'], name="evolutionaryConservation__alignment_depth", curie=LAMBDABER.curie('functional_annotation/alignment_depth'),
-                   model_uri=LAMBDABER.evolutionaryConservation__alignment_depth, domain=None, range=Optional[int])
+slots.evolutionaryConservation__alignment_depth = Slot(uri=LAMBDA['functional_annotation/alignment_depth'], name="evolutionaryConservation__alignment_depth", curie=LAMBDA.curie('functional_annotation/alignment_depth'),
+                   model_uri=LAMBDA.evolutionaryConservation__alignment_depth, domain=None, range=Optional[int])
 
-slots.evolutionaryConservation__taxonomic_range = Slot(uri=LAMBDABER['functional_annotation/taxonomic_range'], name="evolutionaryConservation__taxonomic_range", curie=LAMBDABER.curie('functional_annotation/taxonomic_range'),
-                   model_uri=LAMBDABER.evolutionaryConservation__taxonomic_range, domain=None, range=Optional[str])
+slots.evolutionaryConservation__taxonomic_range = Slot(uri=LAMBDA['functional_annotation/taxonomic_range'], name="evolutionaryConservation__taxonomic_range", curie=LAMBDA.curie('functional_annotation/taxonomic_range'),
+                   model_uri=LAMBDA.evolutionaryConservation__taxonomic_range, domain=None, range=Optional[str])
 
-slots.evolutionaryConservation__coevolved_residues = Slot(uri=LAMBDABER['functional_annotation/coevolved_residues'], name="evolutionaryConservation__coevolved_residues", curie=LAMBDABER.curie('functional_annotation/coevolved_residues'),
-                   model_uri=LAMBDABER.evolutionaryConservation__coevolved_residues, domain=None, range=Optional[Union[str, list[str]]])
+slots.evolutionaryConservation__coevolved_residues = Slot(uri=LAMBDA['functional_annotation/coevolved_residues'], name="evolutionaryConservation__coevolved_residues", curie=LAMBDA.curie('functional_annotation/coevolved_residues'),
+                   model_uri=LAMBDA.evolutionaryConservation__coevolved_residues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.aggregatedProteinView__uniprot_id = Slot(uri=LAMBDABER['functional_annotation/uniprot_id'], name="aggregatedProteinView__uniprot_id", curie=LAMBDABER.curie('functional_annotation/uniprot_id'),
-                   model_uri=LAMBDABER.aggregatedProteinView__uniprot_id, domain=None, range=str)
+slots.aggregatedProteinView__uniprot_id = Slot(uri=LAMBDA['functional_annotation/uniprot_id'], name="aggregatedProteinView__uniprot_id", curie=LAMBDA.curie('functional_annotation/uniprot_id'),
+                   model_uri=LAMBDA.aggregatedProteinView__uniprot_id, domain=None, range=str)
 
-slots.aggregatedProteinView__protein_name = Slot(uri=LAMBDABER['functional_annotation/protein_name'], name="aggregatedProteinView__protein_name", curie=LAMBDABER.curie('functional_annotation/protein_name'),
-                   model_uri=LAMBDABER.aggregatedProteinView__protein_name, domain=None, range=str)
+slots.aggregatedProteinView__protein_name = Slot(uri=LAMBDA['functional_annotation/protein_name'], name="aggregatedProteinView__protein_name", curie=LAMBDA.curie('functional_annotation/protein_name'),
+                   model_uri=LAMBDA.aggregatedProteinView__protein_name, domain=None, range=str)
 
-slots.aggregatedProteinView__organism = Slot(uri=LAMBDABER['functional_annotation/organism'], name="aggregatedProteinView__organism", curie=LAMBDABER.curie('functional_annotation/organism'),
-                   model_uri=LAMBDABER.aggregatedProteinView__organism, domain=None, range=Optional[str])
+slots.aggregatedProteinView__organism = Slot(uri=LAMBDA['functional_annotation/organism'], name="aggregatedProteinView__organism", curie=LAMBDA.curie('functional_annotation/organism'),
+                   model_uri=LAMBDA.aggregatedProteinView__organism, domain=None, range=Optional[str])
 
-slots.aggregatedProteinView__organism_id = Slot(uri=LAMBDABER['functional_annotation/organism_id'], name="aggregatedProteinView__organism_id", curie=LAMBDABER.curie('functional_annotation/organism_id'),
-                   model_uri=LAMBDABER.aggregatedProteinView__organism_id, domain=None, range=Optional[int])
+slots.aggregatedProteinView__organism_id = Slot(uri=LAMBDA['functional_annotation/organism_id'], name="aggregatedProteinView__organism_id", curie=LAMBDA.curie('functional_annotation/organism_id'),
+                   model_uri=LAMBDA.aggregatedProteinView__organism_id, domain=None, range=Optional[int])
 
-slots.aggregatedProteinView__pdb_entries = Slot(uri=LAMBDABER['functional_annotation/pdb_entries'], name="aggregatedProteinView__pdb_entries", curie=LAMBDABER.curie('functional_annotation/pdb_entries'),
-                   model_uri=LAMBDABER.aggregatedProteinView__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+slots.aggregatedProteinView__pdb_entries = Slot(uri=LAMBDA['functional_annotation/pdb_entries'], name="aggregatedProteinView__pdb_entries", curie=LAMBDA.curie('functional_annotation/pdb_entries'),
+                   model_uri=LAMBDA.aggregatedProteinView__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.aggregatedProteinView__functional_sites = Slot(uri=LAMBDABER['functional_annotation/functional_sites'], name="aggregatedProteinView__functional_sites", curie=LAMBDABER.curie('functional_annotation/functional_sites'),
-                   model_uri=LAMBDABER.aggregatedProteinView__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+slots.aggregatedProteinView__functional_sites = Slot(uri=LAMBDA['functional_annotation/functional_sites'], name="aggregatedProteinView__functional_sites", curie=LAMBDA.curie('functional_annotation/functional_sites'),
+                   model_uri=LAMBDA.aggregatedProteinView__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
 
-slots.aggregatedProteinView__structural_features = Slot(uri=LAMBDABER['functional_annotation/structural_features'], name="aggregatedProteinView__structural_features", curie=LAMBDABER.curie('functional_annotation/structural_features'),
-                   model_uri=LAMBDABER.aggregatedProteinView__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+slots.aggregatedProteinView__structural_features = Slot(uri=LAMBDA['functional_annotation/structural_features'], name="aggregatedProteinView__structural_features", curie=LAMBDA.curie('functional_annotation/structural_features'),
+                   model_uri=LAMBDA.aggregatedProteinView__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
 
-slots.aggregatedProteinView__protein_interactions = Slot(uri=LAMBDABER['functional_annotation/protein_interactions'], name="aggregatedProteinView__protein_interactions", curie=LAMBDABER.curie('functional_annotation/protein_interactions'),
-                   model_uri=LAMBDABER.aggregatedProteinView__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+slots.aggregatedProteinView__protein_interactions = Slot(uri=LAMBDA['functional_annotation/protein_interactions'], name="aggregatedProteinView__protein_interactions", curie=LAMBDA.curie('functional_annotation/protein_interactions'),
+                   model_uri=LAMBDA.aggregatedProteinView__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
 
-slots.aggregatedProteinView__ligand_interactions = Slot(uri=LAMBDABER['functional_annotation/ligand_interactions'], name="aggregatedProteinView__ligand_interactions", curie=LAMBDABER.curie('functional_annotation/ligand_interactions'),
-                   model_uri=LAMBDABER.aggregatedProteinView__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+slots.aggregatedProteinView__ligand_interactions = Slot(uri=LAMBDA['functional_annotation/ligand_interactions'], name="aggregatedProteinView__ligand_interactions", curie=LAMBDA.curie('functional_annotation/ligand_interactions'),
+                   model_uri=LAMBDA.aggregatedProteinView__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
 
-slots.aggregatedProteinView__mutations = Slot(uri=LAMBDABER['functional_annotation/mutations'], name="aggregatedProteinView__mutations", curie=LAMBDABER.curie('functional_annotation/mutations'),
-                   model_uri=LAMBDABER.aggregatedProteinView__mutations, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+slots.aggregatedProteinView__mutations = Slot(uri=LAMBDA['functional_annotation/mutations'], name="aggregatedProteinView__mutations", curie=LAMBDA.curie('functional_annotation/mutations'),
+                   model_uri=LAMBDA.aggregatedProteinView__mutations, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
 
-slots.aggregatedProteinView__ptms = Slot(uri=LAMBDABER['functional_annotation/ptms'], name="aggregatedProteinView__ptms", curie=LAMBDABER.curie('functional_annotation/ptms'),
-                   model_uri=LAMBDABER.aggregatedProteinView__ptms, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+slots.aggregatedProteinView__ptms = Slot(uri=LAMBDA['functional_annotation/ptms'], name="aggregatedProteinView__ptms", curie=LAMBDA.curie('functional_annotation/ptms'),
+                   model_uri=LAMBDA.aggregatedProteinView__ptms, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
 
-slots.aggregatedProteinView__biophysical_properties = Slot(uri=LAMBDABER['functional_annotation/biophysical_properties'], name="aggregatedProteinView__biophysical_properties", curie=LAMBDABER.curie('functional_annotation/biophysical_properties'),
-                   model_uri=LAMBDABER.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+slots.aggregatedProteinView__biophysical_properties = Slot(uri=LAMBDA['functional_annotation/biophysical_properties'], name="aggregatedProteinView__biophysical_properties", curie=LAMBDA.curie('functional_annotation/biophysical_properties'),
+                   model_uri=LAMBDA.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
 
-slots.aggregatedProteinView__conformational_ensemble = Slot(uri=LAMBDABER['functional_annotation/conformational_ensemble'], name="aggregatedProteinView__conformational_ensemble", curie=LAMBDABER.curie('functional_annotation/conformational_ensemble'),
-                   model_uri=LAMBDABER.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+slots.aggregatedProteinView__conformational_ensemble = Slot(uri=LAMBDA['functional_annotation/conformational_ensemble'], name="aggregatedProteinView__conformational_ensemble", curie=LAMBDA.curie('functional_annotation/conformational_ensemble'),
+                   model_uri=LAMBDA.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
 
-slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDABER['functional_annotation/evolutionary_conservation'], name="aggregatedProteinView__evolutionary_conservation", curie=LAMBDABER.curie('functional_annotation/evolutionary_conservation'),
-                   model_uri=LAMBDABER.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=LAMBDA['functional_annotation/evolutionary_conservation'], name="aggregatedProteinView__evolutionary_conservation", curie=LAMBDA.curie('functional_annotation/evolutionary_conservation'),
+                   model_uri=LAMBDA.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
 
-slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDABER['functional_annotation/cross_references'], name="aggregatedProteinView__cross_references", curie=LAMBDABER.curie('functional_annotation/cross_references'),
-                   model_uri=LAMBDABER.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+slots.aggregatedProteinView__cross_references = Slot(uri=LAMBDA['functional_annotation/cross_references'], name="aggregatedProteinView__cross_references", curie=LAMBDA.curie('functional_annotation/cross_references'),
+                   model_uri=LAMBDA.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
-slots.measurementConditions__buffer_composition = Slot(uri=LAMBDABER['functional_annotation/buffer_composition'], name="measurementConditions__buffer_composition", curie=LAMBDABER.curie('functional_annotation/buffer_composition'),
-                   model_uri=LAMBDABER.measurementConditions__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
+slots.measurementConditions__buffer_composition = Slot(uri=LAMBDA['functional_annotation/buffer_composition'], name="measurementConditions__buffer_composition", curie=LAMBDA.curie('functional_annotation/buffer_composition'),
+                   model_uri=LAMBDA.measurementConditions__buffer_composition, domain=None, range=Optional[Union[dict, BufferComposition]])
 
-slots.measurementConditions__ph = Slot(uri=LAMBDABER['functional_annotation/ph'], name="measurementConditions__ph", curie=LAMBDABER.curie('functional_annotation/ph'),
-                   model_uri=LAMBDABER.measurementConditions__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.measurementConditions__ph = Slot(uri=LAMBDA['functional_annotation/ph'], name="measurementConditions__ph", curie=LAMBDA.curie('functional_annotation/ph'),
+                   model_uri=LAMBDA.measurementConditions__ph, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.measurementConditions__ionic_strength = Slot(uri=LAMBDABER['functional_annotation/ionic_strength'], name="measurementConditions__ionic_strength", curie=LAMBDABER.curie('functional_annotation/ionic_strength'),
-                   model_uri=LAMBDABER.measurementConditions__ionic_strength, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.measurementConditions__ionic_strength = Slot(uri=LAMBDA['functional_annotation/ionic_strength'], name="measurementConditions__ionic_strength", curie=LAMBDA.curie('functional_annotation/ionic_strength'),
+                   model_uri=LAMBDA.measurementConditions__ionic_strength, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.measurementConditions__temperature = Slot(uri=LAMBDABER['functional_annotation/temperature'], name="measurementConditions__temperature", curie=LAMBDABER.curie('functional_annotation/temperature'),
-                   model_uri=LAMBDABER.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.measurementConditions__temperature = Slot(uri=LAMBDA['functional_annotation/temperature'], name="measurementConditions__temperature", curie=LAMBDA.curie('functional_annotation/temperature'),
+                   model_uri=LAMBDA.measurementConditions__temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.QuantityValue_numeric_value = Slot(uri=LAMBDABER.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDABER.curie('numeric_value'),
-                   model_uri=LAMBDABER.QuantityValue_numeric_value, domain=QuantityValue, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
+slots.QuantityValue_numeric_value = Slot(uri=LAMBDA.numeric_value, name="QuantityValue_numeric_value", curie=LAMBDA.curie('numeric_value'),
+                   model_uri=LAMBDA.QuantityValue_numeric_value, domain=QuantityValue, range=Optional[float], mappings = [NMDC["numeric_value"], QUD["quantityValue"], SCHEMA["value"]])
 
-slots.QuantityValue_unit = Slot(uri=LAMBDABER.unit, name="QuantityValue_unit", curie=LAMBDABER.curie('unit'),
-                   model_uri=LAMBDABER.QuantityValue_unit, domain=QuantityValue, range=str, mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
+slots.QuantityValue_unit = Slot(uri=LAMBDA.unit, name="QuantityValue_unit", curie=LAMBDA.curie('unit'),
+                   model_uri=LAMBDA.QuantityValue_unit, domain=QuantityValue, range=str, mappings = [NMDC["unit"], QUD["unit"], SCHEMA["unitCode"], UO["0000000"]])
 
-slots.QuantityValue_raw_value = Slot(uri=LAMBDABER.raw_value, name="QuantityValue_raw_value", curie=LAMBDABER.curie('raw_value'),
-                   model_uri=LAMBDABER.QuantityValue_raw_value, domain=QuantityValue, range=Optional[str], mappings = [NMDC["raw_value"]])
+slots.QuantityValue_raw_value = Slot(uri=LAMBDA.raw_value, name="QuantityValue_raw_value", curie=LAMBDA.curie('raw_value'),
+                   model_uri=LAMBDA.QuantityValue_raw_value, domain=QuantityValue, range=Optional[str], mappings = [NMDC["raw_value"]])

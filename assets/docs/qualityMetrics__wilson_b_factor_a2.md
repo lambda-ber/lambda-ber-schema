@@ -3,7 +3,7 @@
 
 Wilson B-factor in Angstroms squared
 
-URI: [lambdaber:qualityMetrics__wilson_b_factor_a2](https://w3id.org/lambda-ber-schema/qualityMetrics__wilson_b_factor_a2)
+URI: [lambda:qualityMetrics__wilson_b_factor_a2](http://w3id.org/lambda/qualityMetrics__wilson_b_factor_a2)
 
 
 ## Domain and Range

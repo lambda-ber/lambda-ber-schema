@@ -3,7 +3,7 @@
 
 Method used for measurement
 
-URI: [lambdaber:biophysicalProperty__experimental_method](https://w3id.org/lambda-ber-schema/biophysicalProperty__experimental_method)
+URI: [lambda:biophysicalProperty__experimental_method](http://w3id.org/lambda/biophysicalProperty__experimental_method)
 
 
 ## Domain and Range

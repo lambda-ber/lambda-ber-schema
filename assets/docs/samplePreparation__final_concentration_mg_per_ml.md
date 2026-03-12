@@ -3,7 +3,7 @@
 
 Final protein concentration in mg/mL
 
-URI: [lambdaber:samplePreparation__final_concentration_mg_per_ml](https://w3id.org/lambda-ber-schema/samplePreparation__final_concentration_mg_per_ml)
+URI: [lambda:samplePreparation__final_concentration_mg_per_ml](http://w3id.org/lambda/samplePreparation__final_concentration_mg_per_ml)
 
 
 ## Domain and Range

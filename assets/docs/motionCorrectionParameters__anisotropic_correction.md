@@ -3,7 +3,7 @@
 
 Whether anisotropic motion correction was applied
 
-URI: [lambdaber:motionCorrectionParameters__anisotropic_correction](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__anisotropic_correction)
+URI: [lambda:motionCorrectionParameters__anisotropic_correction](http://w3id.org/lambda/motionCorrectionParameters__anisotropic_correction)
 
 
 ## Domain and Range

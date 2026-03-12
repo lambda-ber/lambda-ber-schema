@@ -3,7 +3,7 @@
 
 Anomalous correlation coefficient
 
-URI: [lambdaber:workflowRun__cc_anomalous](https://w3id.org/lambda-ber-schema/workflowRun__cc_anomalous)
+URI: [lambda:workflowRun__cc_anomalous](http://w3id.org/lambda/workflowRun__cc_anomalous)
 
 
 ## Domain and Range

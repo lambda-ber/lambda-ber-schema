@@ -3,7 +3,7 @@
 
 Minimum X-ray energy in keV
 
-URI: [lambdaber:xRayInstrument__energy_min](https://w3id.org/lambda-ber-schema/xRayInstrument__energy_min)
+URI: [lambda:xRayInstrument__energy_min](http://w3id.org/lambda/xRayInstrument__energy_min)
 
 
 ## Domain and Range

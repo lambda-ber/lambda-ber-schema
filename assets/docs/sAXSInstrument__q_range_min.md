@@ -3,7 +3,7 @@
 
 Minimum q value in inverse Angstroms
 
-URI: [lambdaber:sAXSInstrument__q_range_min](https://w3id.org/lambda-ber-schema/sAXSInstrument__q_range_min)
+URI: [lambda:sAXSInstrument__q_range_min](http://w3id.org/lambda/sAXSInstrument__q_range_min)
 
 
 ## Domain and Range

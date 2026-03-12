@@ -3,7 +3,7 @@
 
 Blotter height setting. Data providers may include unit information in the QuantityValue if needed.
 
-URI: [lambdaber:cryoEMPreparation__blotter_height](https://w3id.org/lambda-ber-schema/cryoEMPreparation__blotter_height)
+URI: [lambda:cryoEMPreparation__blotter_height](http://w3id.org/lambda/cryoEMPreparation__blotter_height)
 
 
 ## Domain and Range

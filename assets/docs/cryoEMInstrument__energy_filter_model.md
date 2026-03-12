@@ -3,7 +3,7 @@
 
 Energy filter model
 
-URI: [lambdaber:cryoEMInstrument__energy_filter_model](https://w3id.org/lambda-ber-schema/cryoEMInstrument__energy_filter_model)
+URI: [lambda:cryoEMInstrument__energy_filter_model](http://w3id.org/lambda/cryoEMInstrument__energy_filter_model)
 
 
 ## Domain and Range

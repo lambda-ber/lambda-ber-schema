@@ -3,7 +3,7 @@
 
 Spherical aberration (Cs) value used during CTF estimation, typically specified in millimeters; may differ from instrument specification. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cTFEstimationParameters__cs_used_in_estimation](https://w3id.org/lambda-ber-schema/cTFEstimationParameters__cs_used_in_estimation)
+URI: [lambda:cTFEstimationParameters__cs_used_in_estimation](http://w3id.org/lambda/cTFEstimationParameters__cs_used_in_estimation)
 
 
 ## Domain and Range

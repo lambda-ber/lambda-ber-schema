@@ -3,7 +3,7 @@
 
 Ratio of protease to protein
 
-URI: [lambdaber:samplePreparation__protease_ratio](https://w3id.org/lambda-ber-schema/samplePreparation__protease_ratio)
+URI: [lambda:samplePreparation__protease_ratio](http://w3id.org/lambda/samplePreparation__protease_ratio)
 
 
 ## Domain and Range

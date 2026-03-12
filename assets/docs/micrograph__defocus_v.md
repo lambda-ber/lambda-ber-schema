@@ -3,7 +3,7 @@
 
 Defocus V, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:micrograph__defocus_v](https://w3id.org/lambda-ber-schema/micrograph__defocus_v)
+URI: [lambda:micrograph__defocus_v](http://w3id.org/lambda/micrograph__defocus_v)
 
 
 ## Domain and Range

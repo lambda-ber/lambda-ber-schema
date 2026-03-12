@@ -3,7 +3,7 @@
 
 Conformational ensemble data
 
-URI: [lambdaber:aggregatedProteinView__conformational_ensemble](https://w3id.org/lambda-ber-schema/aggregatedProteinView__conformational_ensemble)
+URI: [lambda:aggregatedProteinView__conformational_ensemble](http://w3id.org/lambda/aggregatedProteinView__conformational_ensemble)
 
 
 ## Domain and Range

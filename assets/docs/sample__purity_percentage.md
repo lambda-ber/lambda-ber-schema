@@ -3,7 +3,7 @@
 
 Sample purity, typically specified as a percentage (range: 0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.
 
-URI: [lambdaber:sample__purity_percentage](https://w3id.org/lambda-ber-schema/sample__purity_percentage)
+URI: [lambda:sample__purity_percentage](http://w3id.org/lambda/sample__purity_percentage)
 
 
 ## Domain and Range

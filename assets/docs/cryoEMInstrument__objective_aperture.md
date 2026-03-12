@@ -3,7 +3,7 @@
 
 Objective aperture size in micrometers
 
-URI: [lambdaber:cryoEMInstrument__objective_aperture](https://w3id.org/lambda-ber-schema/cryoEMInstrument__objective_aperture)
+URI: [lambda:cryoEMInstrument__objective_aperture](http://w3id.org/lambda/cryoEMInstrument__objective_aperture)
 
 
 ## Domain and Range

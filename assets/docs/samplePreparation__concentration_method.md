@@ -3,7 +3,7 @@
 
 Method used to concentrate protein
 
-URI: [lambdaber:samplePreparation__concentration_method](https://w3id.org/lambda-ber-schema/samplePreparation__concentration_method)
+URI: [lambda:samplePreparation__concentration_method](http://w3id.org/lambda/samplePreparation__concentration_method)
 
 
 ## Domain and Range

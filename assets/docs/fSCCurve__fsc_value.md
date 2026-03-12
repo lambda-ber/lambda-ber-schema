@@ -3,7 +3,7 @@
 
 FSC values corresponding to each resolution
 
-URI: [lambdaber:fSCCurve__fsc_value](https://w3id.org/lambda-ber-schema/fSCCurve__fsc_value)
+URI: [lambda:fSCCurve__fsc_value](http://w3id.org/lambda/fSCCurve__fsc_value)
 
 
 ## Domain and Range

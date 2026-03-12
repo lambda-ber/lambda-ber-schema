@@ -3,7 +3,7 @@
 
 ISPyB DataCollection.dataCollectionId for traceability
 
-URI: [lambdaber:experimentRun__ispyb_data_collection_id](https://w3id.org/lambda-ber-schema/experimentRun__ispyb_data_collection_id)
+URI: [lambda:experimentRun__ispyb_data_collection_id](http://w3id.org/lambda/experimentRun__ispyb_data_collection_id)
 
 
 ## Domain and Range

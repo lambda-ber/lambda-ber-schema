@@ -3,7 +3,7 @@
 
 N-terminal tag (e.g., His6, MBP, GST)
 
-URI: [lambdaber:proteinConstruct__tag_nterm](https://w3id.org/lambda-ber-schema/proteinConstruct__tag_nterm)
+URI: [lambda:proteinConstruct__tag_nterm](http://w3id.org/lambda/proteinConstruct__tag_nterm)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Type of binding measurement (Kd, Ki, IC50)
 
-URI: [lambdaber:ligandInteraction__binding_affinity_type](https://w3id.org/lambda-ber-schema/ligandInteraction__binding_affinity_type)
+URI: [lambda:ligandInteraction__binding_affinity_type](http://w3id.org/lambda/ligandInteraction__binding_affinity_type)
 
 
 ## Domain and Range

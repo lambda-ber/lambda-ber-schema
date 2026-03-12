@@ -3,7 +3,7 @@
 
 X-ray source type (synchrotron or lab-source)
 
-URI: [lambdaber:xRFImage__source_type](https://w3id.org/lambda-ber-schema/xRFImage__source_type)
+URI: [lambda:xRFImage__source_type](http://w3id.org/lambda/xRFImage__source_type)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Whether dose weighting was applied
 
-URI: [lambdaber:motionCorrectionParameters__dose_weighting](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__dose_weighting)
+URI: [lambda:motionCorrectionParameters__dose_weighting](http://w3id.org/lambda/motionCorrectionParameters__dose_weighting)
 
 
 ## Domain and Range

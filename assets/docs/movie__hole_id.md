@@ -3,7 +3,7 @@
 
 Hole identifier within grid square
 
-URI: [lambdaber:movie__hole_id](https://w3id.org/lambda-ber-schema/movie__hole_id)
+URI: [lambda:movie__hole_id](http://w3id.org/lambda/movie__hole_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Descriptive name (e.g., 'open', 'closed')
 
-URI: [lambdaber:conformationalState__state_name](https://w3id.org/lambda-ber-schema/conformationalState__state_name)
+URI: [lambda:conformationalState__state_name](http://w3id.org/lambda/conformationalState__state_name)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Type of sample preparation
 
-URI: [lambdaber:samplePreparation__preparation_type](https://w3id.org/lambda-ber-schema/samplePreparation__preparation_type)
+URI: [lambda:samplePreparation__preparation_type](http://w3id.org/lambda/samplePreparation__preparation_type)
 
 
 ## Domain and Range

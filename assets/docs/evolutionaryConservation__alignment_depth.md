@@ -3,7 +3,7 @@
 
 Number of sequences in alignment
 
-URI: [lambdaber:evolutionaryConservation__alignment_depth](https://w3id.org/lambda-ber-schema/evolutionaryConservation__alignment_depth)
+URI: [lambda:evolutionaryConservation__alignment_depth](http://w3id.org/lambda/evolutionaryConservation__alignment_depth)
 
 
 ## Domain and Range

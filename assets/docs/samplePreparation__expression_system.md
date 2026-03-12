@@ -3,7 +3,7 @@
 
 Expression system used for recombinant protein production
 
-URI: [lambdaber:samplePreparation__expression_system](https://w3id.org/lambda-ber-schema/samplePreparation__expression_system)
+URI: [lambda:samplePreparation__expression_system](http://w3id.org/lambda/samplePreparation__expression_system)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Environmental and experimental conditions
 
-URI: [lambdaber:experimentRun__experimental_conditions](https://w3id.org/lambda-ber-schema/experimentRun__experimental_conditions)
+URI: [lambda:experimentRun__experimental_conditions](http://w3id.org/lambda/experimentRun__experimental_conditions)
 
 
 ## Domain and Range

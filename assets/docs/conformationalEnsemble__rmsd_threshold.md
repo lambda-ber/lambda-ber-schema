@@ -3,7 +3,7 @@
 
 RMSD threshold for clustering (Angstroms)
 
-URI: [lambdaber:conformationalEnsemble__rmsd_threshold](https://w3id.org/lambda-ber-schema/conformationalEnsemble__rmsd_threshold)
+URI: [lambda:conformationalEnsemble__rmsd_threshold](http://w3id.org/lambda/conformationalEnsemble__rmsd_threshold)
 
 
 ## Domain and Range

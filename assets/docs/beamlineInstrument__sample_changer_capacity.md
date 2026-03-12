@@ -3,7 +3,7 @@
 
 Automatic sample changer capacity
 
-URI: [lambdaber:beamlineInstrument__sample_changer_capacity](https://w3id.org/lambda-ber-schema/beamlineInstrument__sample_changer_capacity)
+URI: [lambda:beamlineInstrument__sample_changer_capacity](http://w3id.org/lambda/beamlineInstrument__sample_changer_capacity)
 
 
 ## Domain and Range

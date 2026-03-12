@@ -3,7 +3,7 @@
 
 GPU hours used, measured in hours. Data providers may specify alternative time units by including the unit in the QuantityValue.
 
-URI: [lambdaber:computeResources__gpu_hours](https://w3id.org/lambda-ber-schema/computeResources__gpu_hours)
+URI: [lambda:computeResources__gpu_hours](http://w3id.org/lambda/computeResources__gpu_hours)
 
 
 ## Domain and Range

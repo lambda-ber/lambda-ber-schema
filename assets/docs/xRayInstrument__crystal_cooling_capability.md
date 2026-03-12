@@ -3,7 +3,7 @@
 
 Crystal cooling system available
 
-URI: [lambdaber:xRayInstrument__crystal_cooling_capability](https://w3id.org/lambda-ber-schema/xRayInstrument__crystal_cooling_capability)
+URI: [lambda:xRayInstrument__crystal_cooling_capability](http://w3id.org/lambda/xRayInstrument__crystal_cooling_capability)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Additional software used in pipeline
 
-URI: [lambdaber:workflowRun__additional_software](https://w3id.org/lambda-ber-schema/workflowRun__additional_software)
+URI: [lambda:workflowRun__additional_software](http://w3id.org/lambda/workflowRun__additional_software)
 
 
 ## Domain and Range

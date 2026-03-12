@@ -3,7 +3,7 @@
 
 Accelerating voltage in kV
 
-URI: [lambdaber:cryoEMInstrument__accelerating_voltage](https://w3id.org/lambda-ber-schema/cryoEMInstrument__accelerating_voltage)
+URI: [lambda:cryoEMInstrument__accelerating_voltage](http://w3id.org/lambda/cryoEMInstrument__accelerating_voltage)
 
 
 ## Domain and Range

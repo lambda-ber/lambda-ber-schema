@@ -3,7 +3,7 @@
 
 Specifications of the excitation filter
 
-URI: [lambdaber:fluorescenceImage__excitation_filter](https://w3id.org/lambda-ber-schema/fluorescenceImage__excitation_filter)
+URI: [lambda:fluorescenceImage__excitation_filter](http://w3id.org/lambda/fluorescenceImage__excitation_filter)
 
 
 ## Domain and Range

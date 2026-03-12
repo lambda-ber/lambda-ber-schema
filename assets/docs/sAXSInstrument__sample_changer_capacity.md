@@ -3,7 +3,7 @@
 
 Number of samples in automatic sample changer
 
-URI: [lambdaber:sAXSInstrument__sample_changer_capacity](https://w3id.org/lambda-ber-schema/sAXSInstrument__sample_changer_capacity)
+URI: [lambda:sAXSInstrument__sample_changer_capacity](http://w3id.org/lambda/sAXSInstrument__sample_changer_capacity)
 
 
 ## Domain and Range

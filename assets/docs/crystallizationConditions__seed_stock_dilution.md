@@ -3,7 +3,7 @@
 
 Dilution factor for seed stock
 
-URI: [lambdaber:crystallizationConditions__seed_stock_dilution](https://w3id.org/lambda-ber-schema/crystallizationConditions__seed_stock_dilution)
+URI: [lambda:crystallizationConditions__seed_stock_dilution](http://w3id.org/lambda/crystallizationConditions__seed_stock_dilution)
 
 
 ## Domain and Range

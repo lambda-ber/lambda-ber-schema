@@ -3,7 +3,7 @@
 
 Reservoir volume, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:crystallizationConditions__reservoir_volume_ul](https://w3id.org/lambda-ber-schema/crystallizationConditions__reservoir_volume_ul)
+URI: [lambda:crystallizationConditions__reservoir_volume_ul](http://w3id.org/lambda/crystallizationConditions__reservoir_volume_ul)
 
 
 ## Domain and Range

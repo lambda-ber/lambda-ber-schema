@@ -3,7 +3,7 @@
 
 Dose per frame, typically specified in electrons per Angstrom squared (e⁻/Å²). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__dose_per_frame](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__dose_per_frame)
+URI: [lambda:dataCollectionStrategy__dose_per_frame](http://w3id.org/lambda/dataCollectionStrategy__dose_per_frame)
 
 
 ## Domain and Range

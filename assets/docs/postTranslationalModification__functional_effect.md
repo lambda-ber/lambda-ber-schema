@@ -3,7 +3,7 @@
 
 Known functional effect of this PTM
 
-URI: [lambdaber:postTranslationalModification__functional_effect](https://w3id.org/lambda-ber-schema/postTranslationalModification__functional_effect)
+URI: [lambda:postTranslationalModification__functional_effect](http://w3id.org/lambda/postTranslationalModification__functional_effect)
 
 
 ## Domain and Range

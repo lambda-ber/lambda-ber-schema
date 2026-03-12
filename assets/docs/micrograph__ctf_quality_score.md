@@ -3,7 +3,7 @@
 
 CTF estimation quality score
 
-URI: [lambdaber:micrograph__ctf_quality_score](https://w3id.org/lambda-ber-schema/micrograph__ctf_quality_score)
+URI: [lambda:micrograph__ctf_quality_score](http://w3id.org/lambda/micrograph__ctf_quality_score)
 
 
 ## Domain and Range

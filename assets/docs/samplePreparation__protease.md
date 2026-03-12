@@ -3,7 +3,7 @@
 
 Protease used for tag cleavage
 
-URI: [lambdaber:samplePreparation__protease](https://w3id.org/lambda-ber-schema/samplePreparation__protease)
+URI: [lambda:samplePreparation__protease](http://w3id.org/lambda/samplePreparation__protease)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Mode of data collection
 
-URI: [lambdaber:dataCollectionStrategy__collection_mode](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__collection_mode)
+URI: [lambda:dataCollectionStrategy__collection_mode](http://w3id.org/lambda/dataCollectionStrategy__collection_mode)
 
 
 ## Domain and Range

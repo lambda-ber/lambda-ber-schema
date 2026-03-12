@@ -3,7 +3,7 @@
 
 Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
 
-URI: [lambdaber:workflowRun__workflow_code](https://w3id.org/lambda-ber-schema/workflowRun__workflow_code)
+URI: [lambda:workflowRun__workflow_code](http://w3id.org/lambda/workflowRun__workflow_code)
 
 
 ## Domain and Range

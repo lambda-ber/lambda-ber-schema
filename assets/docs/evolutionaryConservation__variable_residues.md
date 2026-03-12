@@ -3,7 +3,7 @@
 
 Highly variable residues
 
-URI: [lambdaber:evolutionaryConservation__variable_residues](https://w3id.org/lambda-ber-schema/evolutionaryConservation__variable_residues)
+URI: [lambda:evolutionaryConservation__variable_residues](http://w3id.org/lambda/evolutionaryConservation__variable_residues)
 
 
 ## Domain and Range

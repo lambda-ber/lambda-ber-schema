@@ -3,7 +3,7 @@
 
 Concentration values for series measurements
 
-URI: [lambdaber:sAXSPreparation__concentration_series](https://w3id.org/lambda-ber-schema/sAXSPreparation__concentration_series)
+URI: [lambda:sAXSPreparation__concentration_series](http://w3id.org/lambda/sAXSPreparation__concentration_series)
 
 
 ## Domain and Range

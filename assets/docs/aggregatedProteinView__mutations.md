@@ -3,7 +3,7 @@
 
 All mutation annotations
 
-URI: [lambdaber:aggregatedProteinView__mutations](https://w3id.org/lambda-ber-schema/aggregatedProteinView__mutations)
+URI: [lambda:aggregatedProteinView__mutations](http://w3id.org/lambda/aggregatedProteinView__mutations)
 
 
 ## Domain and Range

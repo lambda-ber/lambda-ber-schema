@@ -3,7 +3,7 @@
 
 Storage conditions for the sample
 
-URI: [lambdaber:sample__storage_conditions](https://w3id.org/lambda-ber-schema/sample__storage_conditions)
+URI: [lambda:sample__storage_conditions](http://w3id.org/lambda/sample__storage_conditions)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Crystallographic space group
 
-URI: [lambdaber:qualityMetrics__space_group](https://w3id.org/lambda-ber-schema/qualityMetrics__space_group)
+URI: [lambda:qualityMetrics__space_group](http://w3id.org/lambda/qualityMetrics__space_group)
 
 
 ## Domain and Range

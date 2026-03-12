@@ -3,7 +3,7 @@
 
 pH of the buffer (range: 0-14)
 
-URI: [lambdaber:bufferComposition__ph](https://w3id.org/lambda-ber-schema/bufferComposition__ph)
+URI: [lambda:bufferComposition__ph](http://w3id.org/lambda/bufferComposition__ph)
 
 
 ## Domain and Range

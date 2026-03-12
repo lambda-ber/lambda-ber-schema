@@ -3,7 +3,7 @@
 
 Type of phase plate if present
 
-URI: [lambdaber:cryoEMInstrument__phase_plate_type](https://w3id.org/lambda-ber-schema/cryoEMInstrument__phase_plate_type)
+URI: [lambda:cryoEMInstrument__phase_plate_type](http://w3id.org/lambda/cryoEMInstrument__phase_plate_type)
 
 
 ## Domain and Range

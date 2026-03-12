@@ -3,7 +3,7 @@
 
 Rpim - precision-indicating merging R-factor
 
-URI: [lambdaber:workflowRun__rpim](https://w3id.org/lambda-ber-schema/workflowRun__rpim)
+URI: [lambda:workflowRun__rpim](http://w3id.org/lambda/workflowRun__rpim)
 
 
 ## Domain and Range

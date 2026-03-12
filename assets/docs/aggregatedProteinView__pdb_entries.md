@@ -3,7 +3,7 @@
 
 All PDB entries for this protein
 
-URI: [lambdaber:aggregatedProteinView__pdb_entries](https://w3id.org/lambda-ber-schema/aggregatedProteinView__pdb_entries)
+URI: [lambda:aggregatedProteinView__pdb_entries](http://w3id.org/lambda/aggregatedProteinView__pdb_entries)
 
 
 ## Domain and Range

@@ -128,12 +128,10 @@ prefixes:
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   pdb: https://www.rcsb.org/structure/
   sasbdb: https://www.sasbdb.org/data/
-  simplescattering: https://simplescattering.com/
+  simplescattering: https://www.simplescattering.com/open_dataset/
   ispyb: https://ispyb.github.io/ISPyB/
   PaNET: http://purl.org/pan-science/PaNET/PaNET
   UO: http://purl.obolibrary.org/obo/UO_
-  simplescattering: https://www.simplescattering.com/open_dataset/
-  pdb: https://files.rcsb.org/download/
   emsl: https://api.emsl.pnnl.gov/external/
 
 imports:

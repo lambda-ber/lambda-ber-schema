@@ -3,7 +3,7 @@
 
 Minimum q value for SAXS in inverse Angstroms
 
-URI: [lambdaber:beamlineInstrument__q_range_min](https://w3id.org/lambda-ber-schema/beamlineInstrument__q_range_min)
+URI: [lambda:beamlineInstrument__q_range_min](http://w3id.org/lambda/beamlineInstrument__q_range_min)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Resolution fit limit, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:micrograph__resolution_fit_limit](https://w3id.org/lambda-ber-schema/micrograph__resolution_fit_limit)
+URI: [lambda:micrograph__resolution_fit_limit](http://w3id.org/lambda/micrograph__resolution_fit_limit)
 
 
 ## Domain and Range

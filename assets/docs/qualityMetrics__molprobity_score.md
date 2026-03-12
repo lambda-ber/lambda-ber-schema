@@ -3,7 +3,7 @@
 
 Overall MolProbity score
 
-URI: [lambdaber:qualityMetrics__molprobity_score](https://w3id.org/lambda-ber-schema/qualityMetrics__molprobity_score)
+URI: [lambda:qualityMetrics__molprobity_score](http://w3id.org/lambda/qualityMetrics__molprobity_score)
 
 
 ## Domain and Range

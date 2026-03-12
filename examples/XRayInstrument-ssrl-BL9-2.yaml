@@ -17,20 +17,20 @@ detector_technology: hybrid_photon_counting
 detector_manufacturer: Dectris
 detector_model: EIGER2X 16M
 energy_min:
+  unit: kiloelectronvolts
   numeric_value: 6.0
-  unit: kiloelectronvolts
 energy_max:
-  numeric_value: 14.0
   unit: kiloelectronvolts
+  numeric_value: 14.0
 beam_size_min:
+  unit: micrometers
   numeric_value: 60.0
-  unit: micrometers
 beam_size_max:
-  numeric_value: 200.0
   unit: micrometers
+  numeric_value: 200.0
 flux_density:
-  numeric_value: 700000000000.0
   unit: photons per second
+  numeric_value: 700000000000.0
 monochromator_type: Si(111) double crystal, liquid nitrogen cooled
 goniometer_type: SSRL single-axis microdiffractometer
 crystal_cooling_capability: true

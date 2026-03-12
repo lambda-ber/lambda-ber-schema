@@ -3,7 +3,7 @@
 
 Path to the file
 
-URI: [lambdaber:dataFile__file_path](https://w3id.org/lambda-ber-schema/dataFile__file_path)
+URI: [lambda:dataFile__file_path](http://w3id.org/lambda/dataFile__file_path)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Ordered list of purification steps performed
 
-URI: [lambdaber:samplePreparation__purification_steps](https://w3id.org/lambda-ber-schema/samplePreparation__purification_steps)
+URI: [lambda:samplePreparation__purification_steps](http://w3id.org/lambda/samplePreparation__purification_steps)
 
 
 ## Domain and Range

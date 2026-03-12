@@ -3,7 +3,7 @@
 
 Mutation in standard notation (e.g., 'A123V')
 
-URI: [lambdaber:mutationEffect__mutation](https://w3id.org/lambda-ber-schema/mutationEffect__mutation)
+URI: [lambda:mutationEffect__mutation](http://w3id.org/lambda/mutationEffect__mutation)
 
 
 ## Domain and Range

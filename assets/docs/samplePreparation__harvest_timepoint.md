@@ -3,7 +3,7 @@
 
 Time point when cells were harvested
 
-URI: [lambdaber:samplePreparation__harvest_timepoint](https://w3id.org/lambda-ber-schema/samplePreparation__harvest_timepoint)
+URI: [lambda:samplePreparation__harvest_timepoint](http://w3id.org/lambda/samplePreparation__harvest_timepoint)
 
 
 ## Domain and Range

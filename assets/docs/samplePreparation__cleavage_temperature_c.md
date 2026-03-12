@@ -3,7 +3,7 @@
 
 Temperature during cleavage in Celsius
 
-URI: [lambdaber:samplePreparation__cleavage_temperature_c](https://w3id.org/lambda-ber-schema/samplePreparation__cleavage_temperature_c)
+URI: [lambda:samplePreparation__cleavage_temperature_c](http://w3id.org/lambda/samplePreparation__cleavage_temperature_c)
 
 
 ## Domain and Range

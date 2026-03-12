@@ -3,7 +3,7 @@
 
 Beam shift X in microradians
 
-URI: [lambdaber:movie__beam_shift_x](https://w3id.org/lambda-ber-schema/movie__beam_shift_x)
+URI: [lambda:movie__beam_shift_x](http://w3id.org/lambda/movie__beam_shift_x)
 
 
 ## Domain and Range

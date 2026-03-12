@@ -3,7 +3,7 @@
 
 Whether and how affinity tag was removed
 
-URI: [lambdaber:samplePreparation__tag_removal](https://w3id.org/lambda-ber-schema/samplePreparation__tag_removal)
+URI: [lambda:samplePreparation__tag_removal](http://w3id.org/lambda/samplePreparation__tag_removal)
 
 
 ## Domain and Range

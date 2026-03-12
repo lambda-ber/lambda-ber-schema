@@ -3,7 +3,7 @@
 
 Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__pixel_size_calibrated](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__pixel_size_calibrated)
+URI: [lambda:dataCollectionStrategy__pixel_size_calibrated](http://w3id.org/lambda/dataCollectionStrategy__pixel_size_calibrated)
 
 
 ## Domain and Range

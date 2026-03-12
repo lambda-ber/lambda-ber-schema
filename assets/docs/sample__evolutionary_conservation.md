@@ -3,7 +3,7 @@
 
 Evolutionary conservation data
 
-URI: [lambdaber:sample__evolutionary_conservation](https://w3id.org/lambda-ber-schema/sample__evolutionary_conservation)
+URI: [lambda:sample__evolutionary_conservation](http://w3id.org/lambda/sample__evolutionary_conservation)
 
 
 ## Domain and Range

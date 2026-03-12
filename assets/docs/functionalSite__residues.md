@@ -3,7 +3,7 @@
 
 List of residues forming the functional site. Each should be specified as a string (e.g., "45", "120A").
 
-URI: [lambdaber:functionalSite__residues](https://w3id.org/lambda-ber-schema/functionalSite__residues)
+URI: [lambda:functionalSite__residues](http://w3id.org/lambda/functionalSite__residues)
 
 
 ## Domain and Range
