@@ -4,7 +4,7 @@ DOCDIR := ./docs
 ELEMENTSDIR := ./docs/elements
 PYDANTIC := src/lambda_ber_schema/pydantic.py
 
-all: gen-project gendoc test-examples gen-pydantic
+all: gen-project gendoc test-examples gen-pydantic gen-sssom
 test: gen-project test-examples
 
 gen-project:
@@ -22,6 +22,12 @@ test-examples:
 gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
 	$(RUN) gen-doc -d $(ELEMENTSDIR) $(SCHEMA)
+
+gen-sssom: assets/sssom/lambda_ber_schema.sssom.tsv
+
+assets/sssom/lambda_ber_schema.sssom.tsv: $(SCHEMA)
+	mkdir -p assets/sssom
+	$(RUN) gen-sssom $(SCHEMA) -o $@
 
 serve:
 	$(RUN) mkdocs serve
