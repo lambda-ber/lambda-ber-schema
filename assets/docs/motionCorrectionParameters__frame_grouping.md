@@ -3,7 +3,7 @@
 
 Number of frames grouped together
 
-URI: [lambdaber:motionCorrectionParameters__frame_grouping](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__frame_grouping)
+URI: [lambda:motionCorrectionParameters__frame_grouping](http://w3id.org/lambda/motionCorrectionParameters__frame_grouping)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Minimum beam size in micrometers
 
-URI: [lambdaber:xRayInstrument__beam_size_min](https://w3id.org/lambda-ber-schema/xRayInstrument__beam_size_min)
+URI: [lambda:xRayInstrument__beam_size_min](http://w3id.org/lambda/xRayInstrument__beam_size_min)
 
 
 ## Domain and Range

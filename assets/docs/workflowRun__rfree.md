@@ -3,7 +3,7 @@
 
 R-free (test set)
 
-URI: [lambdaber:workflowRun__rfree](https://w3id.org/lambda-ber-schema/workflowRun__rfree)
+URI: [lambda:workflowRun__rfree](http://w3id.org/lambda/workflowRun__rfree)
 
 
 ## Domain and Range

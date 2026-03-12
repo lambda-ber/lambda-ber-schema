@@ -3,7 +3,7 @@
 
 Associated Gene Ontology terms
 
-URI: [lambdaber:functionalSite__go_terms](https://w3id.org/lambda-ber-schema/functionalSite__go_terms)
+URI: [lambda:functionalSite__go_terms](http://w3id.org/lambda/functionalSite__go_terms)
 
 
 ## Domain and Range

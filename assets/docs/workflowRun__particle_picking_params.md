@@ -3,7 +3,7 @@
 
 Particle picking specific parameters
 
-URI: [lambdaber:workflowRun__particle_picking_params](https://w3id.org/lambda-ber-schema/workflowRun__particle_picking_params)
+URI: [lambda:workflowRun__particle_picking_params](http://w3id.org/lambda/workflowRun__particle_picking_params)
 
 
 ## Domain and Range

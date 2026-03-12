@@ -3,7 +3,7 @@
 
 Whether the ligand is a cofactor
 
-URI: [lambdaber:ligandInteraction__is_cofactor](https://w3id.org/lambda-ber-schema/ligandInteraction__is_cofactor)
+URI: [lambda:ligandInteraction__is_cofactor](http://w3id.org/lambda/ligandInteraction__is_cofactor)
 
 
 ## Domain and Range

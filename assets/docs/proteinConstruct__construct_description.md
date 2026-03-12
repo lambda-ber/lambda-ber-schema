@@ -3,7 +3,7 @@
 
 Human-readable description of the construct
 
-URI: [lambdaber:proteinConstruct__construct_description](https://w3id.org/lambda-ber-schema/proteinConstruct__construct_description)
+URI: [lambda:proteinConstruct__construct_description](http://w3id.org/lambda/proteinConstruct__construct_description)
 
 
 ## Domain and Range

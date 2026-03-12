@@ -3,7 +3,7 @@
 
 Number of scans averaged for the spectrum
 
-URI: [lambdaber:fTIRImage__number_of_scans](https://w3id.org/lambda-ber-schema/fTIRImage__number_of_scans)
+URI: [lambda:fTIRImage__number_of_scans](http://w3id.org/lambda/fTIRImage__number_of_scans)
 
 
 ## Domain and Range

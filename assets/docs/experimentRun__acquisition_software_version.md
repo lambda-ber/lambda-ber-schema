@@ -3,7 +3,7 @@
 
 Version of acquisition software
 
-URI: [lambdaber:experimentRun__acquisition_software_version](https://w3id.org/lambda-ber-schema/experimentRun__acquisition_software_version)
+URI: [lambda:experimentRun__acquisition_software_version](http://w3id.org/lambda/experimentRun__acquisition_software_version)
 
 
 ## Domain and Range

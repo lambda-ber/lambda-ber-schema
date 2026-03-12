@@ -3,7 +3,7 @@
 
 Method used for crystallization
 
-URI: [lambdaber:xRayPreparation__crystallization_method](https://w3id.org/lambda-ber-schema/xRayPreparation__crystallization_method)
+URI: [lambda:xRayPreparation__crystallization_method](http://w3id.org/lambda/xRayPreparation__crystallization_method)
 
 
 ## Domain and Range

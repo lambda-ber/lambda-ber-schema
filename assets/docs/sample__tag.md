@@ -3,7 +3,7 @@
 
 Affinity tag (e.g., His6, GST, MBP)
 
-URI: [lambdaber:sample__tag](https://w3id.org/lambda-ber-schema/sample__tag)
+URI: [lambda:sample__tag](http://w3id.org/lambda/sample__tag)
 
 
 ## Domain and Range

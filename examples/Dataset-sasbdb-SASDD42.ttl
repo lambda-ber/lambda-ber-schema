@@ -1,0 +1,156 @@
+@base <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
+@prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
+@prefix sasbdb: <https://www.sasbdb.org/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sasbdb:SASDD42 a lambdaber:Dataset ;
+    dcterms:title "Functional interaction of low-homology FRPs from different cyanobacteria with Synechocystis OCP." ;
+    lambdaber:data_files <https://www.sasbdb.org/data/SASDD42/file/fit1>,
+        <https://www.sasbdb.org/data/SASDD42/file/fit1_model1>,
+        <https://www.sasbdb.org/data/SASDD42/file/fit2>,
+        <https://www.sasbdb.org/data/SASDD42/file/fit2_model1>,
+        <https://www.sasbdb.org/data/SASDD42/file/intensities>,
+        <https://www.sasbdb.org/data/SASDD42/file/pddf>,
+        <https://www.sasbdb.org/data/SASDD42/file/sascif> ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:instrument_id <https://www.sasbdb.org/data/instrument/PETRA_III-EMBL_P12> ] ;
+    lambdaber:experiment_runs <https://www.sasbdb.org/data/SASDD42/experiment> ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDD42/sample> ] ;
+    lambdaber:instruments <https://www.sasbdb.org/data/instrument/PETRA_III-EMBL_P12> ;
+    lambdaber:samples <https://www.sasbdb.org/data/SASDD42/sample> ;
+    lambdaber:studies <https://www.sasbdb.org/data/SASDD42/study> ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:study_id <https://www.sasbdb.org/data/SASDD42/study> ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id <https://www.sasbdb.org/data/SASDD42/sample> ;
+            lambdaber:study_id <https://www.sasbdb.org/data/SASDD42/study> ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/pddf> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> ],
+        [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id <https://www.sasbdb.org/data/SASDD42/experiment> ;
+            lambdaber:workflow_id <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1> ] ;
+    lambdaber:workflow_runs <https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1>,
+        <https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1>,
+        <https://www.sasbdb.org/data/SASDD42/workflow/pddf> .
+
+<https://www.sasbdb.org/data/SASDD42/file/fit1> a lambdaber:DataFile ;
+    lambdaber:description "Fit 1 data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDD42_fit1.fit" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/fitting_files/SASDD42_fit1.fir" .
+
+<https://www.sasbdb.org/data/SASDD42/file/fit1_model1> a lambdaber:DataFile ;
+    lambdaber:description "Model 1 from fit 1" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "SASDD42_fit1_model1.pdb" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/pdb_file/SASDD42_fit1_model1.pdb" .
+
+<https://www.sasbdb.org/data/SASDD42/file/fit2> a lambdaber:DataFile ;
+    lambdaber:description "Fit 2 data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDD42_fit2.fit" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/fitting_files/SASDD42_fit2.fit" .
+
+<https://www.sasbdb.org/data/SASDD42/file/fit2_model1> a lambdaber:DataFile ;
+    lambdaber:description "Model 1 from fit 2" ;
+    lambdaber:file_format "pdb" ;
+    lambdaber:file_name "SASDD42_fit2_model1.pdb" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/pdb_file/SASDD42_fit2_model1.pdb" .
+
+<https://www.sasbdb.org/data/SASDD42/file/intensities> a lambdaber:DataFile ;
+    lambdaber:description "Scattering intensity data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDD42.dat" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/intensities_files/SASDD42.dat" .
+
+<https://www.sasbdb.org/data/SASDD42/file/pddf> a lambdaber:DataFile ;
+    lambdaber:description "Pair distance distribution function (PDDF)" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDD42.out" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/p_of_R_files/SASDD42.out" .
+
+<https://www.sasbdb.org/data/SASDD42/file/sascif> a lambdaber:DataFile ;
+    lambdaber:description "sasCIF format data" ;
+    lambdaber:file_format "ascii" ;
+    lambdaber:file_name "SASDD42.sascif" ;
+    lambdaber:file_path "https://www.sasbdb.org/media/sascif/sascif_files/SASDD42.sascif" .
+
+<https://www.sasbdb.org/data/SASDD42/workflow/fit1_model1> a lambdaber:WorkflowRun ;
+    lambdaber:description "Dummy model fit. Chi-square: 1.15" ;
+    lambdaber:software_name "GASBOR" ;
+    lambdaber:workflow_code "SASBDB-SASDD42-FIT1-M1" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/SASDD42/workflow/fit2_model1> a lambdaber:WorkflowRun ;
+    lambdaber:description "Atomic model fit. Chi-square: 1.387" ;
+    lambdaber:software_name "SASREF" ;
+    lambdaber:workflow_code "SASBDB-SASDD42-FIT2-M1" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/SASDD42/workflow/pddf> a lambdaber:WorkflowRun ;
+    lambdaber:description "PDDF analysis. Rg=2.909, Dmax=10.5, I0=0.01667" ;
+    lambdaber:software_name "ATSAS GNOM" ;
+    lambdaber:software_version "5.0" ;
+    lambdaber:workflow_code "SASBDB-SASDD42-PDDF" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+<https://www.sasbdb.org/data/instrument/PETRA_III-EMBL_P12> a lambdaber:Instrument ;
+    dcterms:title "PETRA III EMBL P12" ;
+    lambdaber:description "Detector: Pilatus 2M (resolution: None mm)" ;
+    lambdaber:instrument_code "PETRA-III-EMBL-P12" ;
+    lambdaber:manufacturer "DESY; Hamburg" .
+
+<https://www.sasbdb.org/data/SASDD42/sample> a lambdaber:Sample ;
+    dcterms:title "Synechocystis fluorescence recovery protein SynFRP.8-109" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:components "20 mM Tris-HCl, 150 mM NaCl, 0.1 mM EDTA, 2 mM dithiothreitol, 3 % v/v glycerol" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.6"^^xsd:float ;
+                    lambdaber:unit "pH" ] ] ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "5.0"^^xsd:float ;
+            lambdaber:unit "mg/mL" ] ;
+    lambdaber:database_cross_references [ a ns1:DatabaseCrossReference ;
+            ns1:database_id "P74103" ;
+            ns1:database_name "uniprot" ;
+            ns1:database_url "https://www.uniprot.org/uniprotkb/P74103"^^xsd:anyURI ] ;
+    lambdaber:description "Organism: Synechocystis sp. PCC 6803" ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "23.25"^^xsd:float ;
+            lambdaber:unit "kDa" ] ;
+    lambdaber:oligomeric_state "dimer" ;
+    lambdaber:sample_code "SASBDB-SASDD42" ;
+    lambdaber:sample_type "protein" ;
+    nsls2:Protein_Name "Fluorescence recovery protein" .
+
+<https://www.sasbdb.org/data/SASDD42/study> a lambdaber:Study ;
+    dcterms:title "Functional interaction of low-homology FRPs from different cyanobacteria with Synechocystis OCP." .
+
+<https://www.sasbdb.org/data/SASDD42/experiment> a lambdaber:ExperimentRun ;
+    lambdaber:experiment_code "SASBDB-SASDD42-EXP" ;
+    lambdaber:experiment_date "2017-09-01" ;
+    lambdaber:quality_metrics [ a lambdaber:QualityMetrics ;
+            lambdaber:i_zero [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "0.01643"^^xsd:float ;
+                    lambdaber:unit "arbitrary" ] ;
+            lambdaber:rg [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "2.76"^^xsd:float ;
+                    lambdaber:unit "nm" ] ] ;
+    lambdaber:technique CHMO:0000204 ;
+    lambdaber:wavelength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "1.24"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+

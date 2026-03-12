@@ -3,7 +3,7 @@
 
 Exposure time per frame in milliseconds
 
-URI: [lambdaber:experimentRun__exposure_time_per_frame](https://w3id.org/lambda-ber-schema/experimentRun__exposure_time_per_frame)
+URI: [lambda:experimentRun__exposure_time_per_frame](http://w3id.org/lambda/experimentRun__exposure_time_per_frame)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Database cross-references
 
-URI: [lambdaber:aggregatedProteinView__cross_references](https://w3id.org/lambda-ber-schema/aggregatedProteinView__cross_references)
+URI: [lambda:aggregatedProteinView__cross_references](http://w3id.org/lambda/aggregatedProteinView__cross_references)
 
 
 ## Domain and Range

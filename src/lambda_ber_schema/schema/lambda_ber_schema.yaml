@@ -1,4 +1,4 @@
-id: https://w3id.org/lambda-ber-schema/
+id: http://w3id.org/lambda/
 name: lambda-ber-schema
 version: "0.1.2.post32.dev0+2ad9ef5" # Managed by uv-dynamic-versioning
 description: |
@@ -107,7 +107,8 @@ description: |
   - **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies
 
 prefixes:
-  lambdaber: https://w3id.org/lambda-ber-schema/
+  lambda: http://w3id.org/lambda/
+  lambdaber: http://w3id.org/lambda/
   linkml: https://w3id.org/linkml/
   dcterms: http://purl.org/dc/terms/
   skos: http://www.w3.org/2004/02/skos/core#
@@ -125,11 +126,12 @@ prefixes:
   ROR: https://ror.org/
   wikidata: http://www.wikidata.org/entity/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
+  pdb: https://www.rcsb.org/structure/
+  sasbdb: https://www.sasbdb.org/data/
+  simplescattering: https://www.simplescattering.com/open_dataset/
   ispyb: https://ispyb.github.io/ISPyB/
   PaNET: http://purl.org/pan-science/PaNET/PaNET
   UO: http://purl.obolibrary.org/obo/UO_
-  simplescattering: https://www.simplescattering.com/open_dataset/
-  pdb: https://files.rcsb.org/download/
   emsl: https://api.emsl.pnnl.gov/external/
 
 imports:
@@ -138,7 +140,7 @@ imports:
   - functional_annotation
 
 default_range: string
-default_prefix: lambdaber
+default_prefix: lambda
 
 types:
 
@@ -414,6 +416,9 @@ classes:
         slot_uri: nsls2:Ligand
         comments:
           - "Maps to NSLS2 spreadsheet: Ligand"
+      oligomeric_state:
+        description: "Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)"
+        range: string
 
   ProteinConstruct:
     is_a: NamedThing

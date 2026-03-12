@@ -1,0 +1,124 @@
+id: sasbdb:SASDD42
+title: Functional interaction of low-homology FRPs from different cyanobacteria with
+  Synechocystis OCP.
+studies:
+- id: sasbdb:SASDD42/study
+  title: Functional interaction of low-homology FRPs from different cyanobacteria
+    with Synechocystis OCP.
+instruments:
+- id: sasbdb:instrument/PETRA_III-EMBL_P12
+  title: PETRA III EMBL P12
+  description: 'Detector: Pilatus 2M (resolution: None mm)'
+  instrument_code: PETRA-III-EMBL-P12
+  manufacturer: DESY; Hamburg
+samples:
+- id: sasbdb:SASDD42/sample
+  title: Synechocystis fluorescence recovery protein SynFRP.8-109
+  description: 'Organism: Synechocystis sp. PCC 6803'
+  sample_code: SASBDB-SASDD42
+  sample_type: protein
+  molecular_weight:
+    unit: kDa
+    numeric_value: 23.25
+  concentration:
+    unit: mg/mL
+    numeric_value: 5.0
+  buffer_composition:
+    ph:
+      unit: pH
+      numeric_value: 7.6
+    components:
+    - 20 mM Tris-HCl, 150 mM NaCl, 0.1 mM EDTA, 2 mM dithiothreitol, 3 % v/v glycerol
+  database_cross_references:
+  - database_name: uniprot
+    database_id: P74103
+    database_url: https://www.uniprot.org/uniprotkb/P74103
+  protein_name: Fluorescence recovery protein
+  oligomeric_state: dimer
+experiment_runs:
+- id: sasbdb:SASDD42/experiment
+  experiment_code: SASBDB-SASDD42-EXP
+  technique: saxs
+  experiment_date: '2017-09-01'
+  quality_metrics:
+    i_zero:
+      unit: arbitrary
+      numeric_value: 0.01643
+    rg:
+      unit: nm
+      numeric_value: 2.76
+  wavelength:
+    unit: Angstroms
+    numeric_value: 1.24
+workflow_runs:
+- id: sasbdb:SASDD42/workflow/pddf
+  description: PDDF analysis. Rg=2.909, Dmax=10.5, I0=0.01667
+  workflow_code: SASBDB-SASDD42-PDDF
+  workflow_type: saxs_analysis
+  software_name: ATSAS GNOM
+  software_version: '5.0'
+- id: sasbdb:SASDD42/workflow/fit1_model1
+  description: 'Dummy model fit. Chi-square: 1.15'
+  workflow_code: SASBDB-SASDD42-FIT1-M1
+  workflow_type: saxs_analysis
+  software_name: GASBOR
+- id: sasbdb:SASDD42/workflow/fit2_model1
+  description: 'Atomic model fit. Chi-square: 1.387'
+  workflow_code: SASBDB-SASDD42-FIT2-M1
+  workflow_type: saxs_analysis
+  software_name: SASREF
+data_files:
+- id: sasbdb:SASDD42/file/intensities
+  description: Scattering intensity data
+  file_name: SASDD42.dat
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/intensities_files/SASDD42.dat
+- id: sasbdb:SASDD42/file/pddf
+  description: Pair distance distribution function (PDDF)
+  file_name: SASDD42.out
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/p_of_R_files/SASDD42.out
+- id: sasbdb:SASDD42/file/sascif
+  description: sasCIF format data
+  file_name: SASDD42.sascif
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/sascif/sascif_files/SASDD42.sascif
+- id: sasbdb:SASDD42/file/fit1
+  description: Fit 1 data
+  file_name: SASDD42_fit1.fit
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDD42_fit1.fir
+- id: sasbdb:SASDD42/file/fit1_model1
+  description: Model 1 from fit 1
+  file_name: SASDD42_fit1_model1.pdb
+  file_format: pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDD42_fit1_model1.pdb
+- id: sasbdb:SASDD42/file/fit2
+  description: Fit 2 data
+  file_name: SASDD42_fit2.fit
+  file_format: ascii
+  file_path: https://www.sasbdb.org/media/fitting_files/SASDD42_fit2.fit
+- id: sasbdb:SASDD42/file/fit2_model1
+  description: Model 1 from fit 2
+  file_name: SASDD42_fit2_model1.pdb
+  file_format: pdb
+  file_path: https://www.sasbdb.org/media/pdb_file/SASDD42_fit2_model1.pdb
+study_sample_associations:
+- study_id: sasbdb:SASDD42/study
+  sample_id: sasbdb:SASDD42/sample
+study_experiment_associations:
+- study_id: sasbdb:SASDD42/study
+  experiment_id: sasbdb:SASDD42/experiment
+experiment_sample_associations:
+- experiment_id: sasbdb:SASDD42/experiment
+  sample_id: sasbdb:SASDD42/sample
+experiment_instrument_associations:
+- experiment_id: sasbdb:SASDD42/experiment
+  instrument_id: sasbdb:instrument/PETRA_III-EMBL_P12
+workflow_experiment_associations:
+- workflow_id: sasbdb:SASDD42/workflow/pddf
+  experiment_id: sasbdb:SASDD42/experiment
+- workflow_id: sasbdb:SASDD42/workflow/fit1_model1
+  experiment_id: sasbdb:SASDD42/experiment
+- workflow_id: sasbdb:SASDD42/workflow/fit2_model1
+  experiment_id: sasbdb:SASDD42/experiment

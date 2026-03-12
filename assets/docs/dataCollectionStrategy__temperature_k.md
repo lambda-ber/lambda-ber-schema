@@ -3,7 +3,7 @@
 
 Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:dataCollectionStrategy__temperature_k](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__temperature_k)
+URI: [lambda:dataCollectionStrategy__temperature_k](http://w3id.org/lambda/dataCollectionStrategy__temperature_k)
 
 
 ## Domain and Range

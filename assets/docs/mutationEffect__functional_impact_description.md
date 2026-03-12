@@ -3,7 +3,7 @@
 
 Description of functional impact
 
-URI: [lambdaber:mutationEffect__functional_impact_description](https://w3id.org/lambda-ber-schema/mutationEffect__functional_impact_description)
+URI: [lambda:mutationEffect__functional_impact_description](http://w3id.org/lambda/mutationEffect__functional_impact_description)
 
 
 ## Domain and Range

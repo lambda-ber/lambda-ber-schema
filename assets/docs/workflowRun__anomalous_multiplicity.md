@@ -3,7 +3,7 @@
 
 Multiplicity of anomalous data
 
-URI: [lambdaber:workflowRun__anomalous_multiplicity](https://w3id.org/lambda-ber-schema/workflowRun__anomalous_multiplicity)
+URI: [lambda:workflowRun__anomalous_multiplicity](http://w3id.org/lambda/workflowRun__anomalous_multiplicity)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Photon flux density in photons/s/mm²
 
-URI: [lambdaber:xRayInstrument__flux_density](https://w3id.org/lambda-ber-schema/xRayInstrument__flux_density)
+URI: [lambda:xRayInstrument__flux_density](http://w3id.org/lambda/xRayInstrument__flux_density)
 
 
 ## Domain and Range

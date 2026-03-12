@@ -3,7 +3,7 @@
 
 Acquisition timestamp
 
-URI: [lambdaber:movie__timestamp](https://w3id.org/lambda-ber-schema/movie__timestamp)
+URI: [lambda:movie__timestamp](http://w3id.org/lambda/movie__timestamp)
 
 
 ## Domain and Range

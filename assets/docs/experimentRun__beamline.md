@@ -3,7 +3,7 @@
 
 Beamline identifier (e.g., FMX, AMX, 12.3.1)
 
-URI: [lambdaber:experimentRun__beamline](https://w3id.org/lambda-ber-schema/experimentRun__beamline)
+URI: [lambda:experimentRun__beamline](http://w3id.org/lambda/experimentRun__beamline)
 
 
 ## Domain and Range

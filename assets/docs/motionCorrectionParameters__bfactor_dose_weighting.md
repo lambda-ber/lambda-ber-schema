@@ -3,7 +3,7 @@
 
 B-factor for dose weighting, typically specified in Angstroms squared. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:motionCorrectionParameters__bfactor_dose_weighting](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__bfactor_dose_weighting)
+URI: [lambda:motionCorrectionParameters__bfactor_dose_weighting](http://w3id.org/lambda/motionCorrectionParameters__bfactor_dose_weighting)
 
 
 ## Domain and Range

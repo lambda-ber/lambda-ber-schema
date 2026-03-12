@@ -3,7 +3,7 @@
 
 Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:crystallizationConditions__temperature_c](https://w3id.org/lambda-ber-schema/crystallizationConditions__temperature_c)
+URI: [lambda:crystallizationConditions__temperature_c](http://w3id.org/lambda/crystallizationConditions__temperature_c)
 
 
 ## Domain and Range

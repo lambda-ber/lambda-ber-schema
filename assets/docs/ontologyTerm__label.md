@@ -3,7 +3,7 @@
 
 The human-readable label or name of the ontology term
 
-URI: [lambdaber:ontologyTerm__label](https://w3id.org/lambda-ber-schema/ontologyTerm__label)
+URI: [lambda:ontologyTerm__label](http://w3id.org/lambda/ontologyTerm__label)
 
 
 ## Domain and Range

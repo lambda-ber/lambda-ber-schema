@@ -3,7 +3,7 @@
 
 Buffer for size-exclusion chromatography
 
-URI: [lambdaber:samplePreparation__sec_buffer](https://w3id.org/lambda-ber-schema/samplePreparation__sec_buffer)
+URI: [lambda:samplePreparation__sec_buffer](http://w3id.org/lambda/samplePreparation__sec_buffer)
 
 
 ## Domain and Range

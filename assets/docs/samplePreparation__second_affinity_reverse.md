@@ -3,7 +3,7 @@
 
 Second affinity or reverse affinity step
 
-URI: [lambdaber:samplePreparation__second_affinity_reverse](https://w3id.org/lambda-ber-schema/samplePreparation__second_affinity_reverse)
+URI: [lambda:samplePreparation__second_affinity_reverse](http://w3id.org/lambda/samplePreparation__second_affinity_reverse)
 
 
 ## Domain and Range

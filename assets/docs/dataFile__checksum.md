@@ -3,7 +3,7 @@
 
 SHA-256 checksum for data integrity
 
-URI: [lambdaber:dataFile__checksum](https://w3id.org/lambda-ber-schema/dataFile__checksum)
+URI: [lambda:dataFile__checksum](http://w3id.org/lambda/dataFile__checksum)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Strategy used to optimize crystals
 
-URI: [lambdaber:xRayPreparation__optimization_strategy](https://w3id.org/lambda-ber-schema/xRayPreparation__optimization_strategy)
+URI: [lambda:xRayPreparation__optimization_strategy](http://w3id.org/lambda/xRayPreparation__optimization_strategy)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Target astigmatism in Angstroms
 
-URI: [lambdaber:experimentRun__astigmatism_target](https://w3id.org/lambda-ber-schema/experimentRun__astigmatism_target)
+URI: [lambda:experimentRun__astigmatism_target](http://w3id.org/lambda/experimentRun__astigmatism_target)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Experimental techniques available at this beamline
 
-URI: [lambdaber:beamlineInstrument__techniques_supported](https://w3id.org/lambda-ber-schema/beamlineInstrument__techniques_supported)
+URI: [lambda:beamlineInstrument__techniques_supported](http://w3id.org/lambda/beamlineInstrument__techniques_supported)
 
 
 ## Domain and Range

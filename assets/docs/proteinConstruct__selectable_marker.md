@@ -3,7 +3,7 @@
 
 Antibiotic resistance or other selectable marker
 
-URI: [lambdaber:proteinConstruct__selectable_marker](https://w3id.org/lambda-ber-schema/proteinConstruct__selectable_marker)
+URI: [lambda:proteinConstruct__selectable_marker](http://w3id.org/lambda/proteinConstruct__selectable_marker)
 
 
 ## Domain and Range

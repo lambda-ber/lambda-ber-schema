@@ -3,7 +3,7 @@
 
 Image file name
 
-URI: [lambdaber:image__file_name](https://w3id.org/lambda-ber-schema/image__file_name)
+URI: [lambda:image__file_name](http://w3id.org/lambda/image__file_name)
 
 
 ## Domain and Range

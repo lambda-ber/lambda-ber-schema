@@ -3,7 +3,7 @@
 
 Residues involved in ligand binding
 
-URI: [lambdaber:ligandInteraction__binding_site_residues](https://w3id.org/lambda-ber-schema/ligandInteraction__binding_site_residues)
+URI: [lambda:ligandInteraction__binding_site_residues](http://w3id.org/lambda/ligandInteraction__binding_site_residues)
 
 
 ## Domain and Range

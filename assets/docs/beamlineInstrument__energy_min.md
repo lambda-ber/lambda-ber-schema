@@ -3,7 +3,7 @@
 
 Minimum X-ray energy in keV
 
-URI: [lambdaber:beamlineInstrument__energy_min](https://w3id.org/lambda-ber-schema/beamlineInstrument__energy_min)
+URI: [lambda:beamlineInstrument__energy_min](http://w3id.org/lambda/beamlineInstrument__energy_min)
 
 
 ## Domain and Range

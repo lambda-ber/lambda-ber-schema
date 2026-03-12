@@ -3,7 +3,7 @@
 
 Data collection end timestamp
 
-URI: [lambdaber:experimentRun__end_time](https://w3id.org/lambda-ber-schema/experimentRun__end_time)
+URI: [lambda:experimentRun__end_time](http://w3id.org/lambda/experimentRun__end_time)
 
 
 ## Domain and Range

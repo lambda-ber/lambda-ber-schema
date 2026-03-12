@@ -3,7 +3,7 @@
 
 Method used for background correction
 
-URI: [lambdaber:fTIRImage__background_correction](https://w3id.org/lambda-ber-schema/fTIRImage__background_correction)
+URI: [lambda:fTIRImage__background_correction](http://w3id.org/lambda/fTIRImage__background_correction)
 
 
 ## Domain and Range

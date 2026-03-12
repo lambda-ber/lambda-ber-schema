@@ -3,7 +3,7 @@
 
 Buffer composition for elution
 
-URI: [lambdaber:samplePreparation__elution_buffer](https://w3id.org/lambda-ber-schema/samplePreparation__elution_buffer)
+URI: [lambda:samplePreparation__elution_buffer](http://w3id.org/lambda/samplePreparation__elution_buffer)
 
 
 ## Domain and Range

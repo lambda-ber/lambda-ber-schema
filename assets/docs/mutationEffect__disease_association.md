@@ -3,7 +3,7 @@
 
 Associated disease or phenotype
 
-URI: [lambdaber:mutationEffect__disease_association](https://w3id.org/lambda-ber-schema/mutationEffect__disease_association)
+URI: [lambda:mutationEffect__disease_association](http://w3id.org/lambda/mutationEffect__disease_association)
 
 
 ## Domain and Range

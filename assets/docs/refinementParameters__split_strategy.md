@@ -3,7 +3,7 @@
 
 Strategy for data splitting
 
-URI: [lambdaber:refinementParameters__split_strategy](https://w3id.org/lambda-ber-schema/refinementParameters__split_strategy)
+URI: [lambda:refinementParameters__split_strategy](http://w3id.org/lambda/refinementParameters__split_strategy)
 
 
 ## Domain and Range

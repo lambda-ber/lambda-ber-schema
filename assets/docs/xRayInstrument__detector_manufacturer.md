@@ -3,7 +3,7 @@
 
 Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)
 
-URI: [lambdaber:xRayInstrument__detector_manufacturer](https://w3id.org/lambda-ber-schema/xRayInstrument__detector_manufacturer)
+URI: [lambda:xRayInstrument__detector_manufacturer](http://w3id.org/lambda/xRayInstrument__detector_manufacturer)
 
 
 ## Domain and Range

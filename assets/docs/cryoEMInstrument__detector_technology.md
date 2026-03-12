@@ -3,7 +3,7 @@
 
 Generic detector technology type
 
-URI: [lambdaber:cryoEMInstrument__detector_technology](https://w3id.org/lambda-ber-schema/cryoEMInstrument__detector_technology)
+URI: [lambda:cryoEMInstrument__detector_technology](http://w3id.org/lambda/cryoEMInstrument__detector_technology)
 
 
 ## Domain and Range

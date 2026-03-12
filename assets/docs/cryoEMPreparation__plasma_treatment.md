@@ -3,7 +3,7 @@
 
 Plasma treatment details
 
-URI: [lambdaber:cryoEMPreparation__plasma_treatment](https://w3id.org/lambda-ber-schema/cryoEMPreparation__plasma_treatment)
+URI: [lambda:cryoEMPreparation__plasma_treatment](http://w3id.org/lambda/cryoEMPreparation__plasma_treatment)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Total drift, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:motionCorrectionParameters__drift_total](https://w3id.org/lambda-ber-schema/motionCorrectionParameters__drift_total)
+URI: [lambda:motionCorrectionParameters__drift_total](http://w3id.org/lambda/motionCorrectionParameters__drift_total)
 
 
 ## Domain and Range

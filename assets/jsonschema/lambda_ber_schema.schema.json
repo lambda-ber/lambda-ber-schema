@@ -3471,6 +3471,7 @@
                 "ascii",
                 "thermo_raw",
                 "zip",
+                "tar",
                 "mrcs",
                 "eer",
                 "cs",
@@ -7315,6 +7316,13 @@
                         "null"
                     ]
                 },
+                "oligomeric_state": {
+                    "description": "Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "organism": {
                     "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
                     "type": [
@@ -9621,7 +9629,7 @@
             "type": "string"
         }
     },
-    "$id": "https://w3id.org/lambda-ber-schema/",
+    "$id": "http://w3id.org/lambda/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "Root container holding flat entity collections and association tables. Follows relational database design patterns for structural biology data.",

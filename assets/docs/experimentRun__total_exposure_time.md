@@ -3,7 +3,7 @@
 
 Total exposure time in milliseconds
 
-URI: [lambdaber:experimentRun__total_exposure_time](https://w3id.org/lambda-ber-schema/experimentRun__total_exposure_time)
+URI: [lambda:experimentRun__total_exposure_time](http://w3id.org/lambda/experimentRun__total_exposure_time)
 
 
 ## Domain and Range

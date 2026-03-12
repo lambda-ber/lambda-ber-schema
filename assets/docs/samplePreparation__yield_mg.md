@@ -3,7 +3,7 @@
 
 Total yield in milligrams
 
-URI: [lambdaber:samplePreparation__yield_mg](https://w3id.org/lambda-ber-schema/samplePreparation__yield_mg)
+URI: [lambda:samplePreparation__yield_mg](http://w3id.org/lambda/samplePreparation__yield_mg)
 
 
 ## Domain and Range

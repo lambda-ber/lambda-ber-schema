@@ -3,7 +3,7 @@
 
 Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__oscillation_angle](https://w3id.org/lambda-ber-schema/experimentRun__oscillation_angle)
+URI: [lambda:experimentRun__oscillation_angle](http://w3id.org/lambda/experimentRun__oscillation_angle)
 
 
 ## Domain and Range

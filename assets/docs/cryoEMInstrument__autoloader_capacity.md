@@ -3,7 +3,7 @@
 
 Number of grids the autoloader can hold
 
-URI: [lambdaber:cryoEMInstrument__autoloader_capacity](https://w3id.org/lambda-ber-schema/cryoEMInstrument__autoloader_capacity)
+URI: [lambda:cryoEMInstrument__autoloader_capacity](http://w3id.org/lambda/cryoEMInstrument__autoloader_capacity)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Maximum detector distance in mm
 
-URI: [lambdaber:sAXSInstrument__detector_distance_max](https://w3id.org/lambda-ber-schema/sAXSInstrument__detector_distance_max)
+URI: [lambda:sAXSInstrument__detector_distance_max](http://w3id.org/lambda/sAXSInstrument__detector_distance_max)
 
 
 ## Domain and Range

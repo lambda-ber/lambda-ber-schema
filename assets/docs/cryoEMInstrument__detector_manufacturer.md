@@ -3,7 +3,7 @@
 
 Detector manufacturer (e.g., Gatan, ThermoFisher, DirectElectron)
 
-URI: [lambdaber:cryoEMInstrument__detector_manufacturer](https://w3id.org/lambda-ber-schema/cryoEMInstrument__detector_manufacturer)
+URI: [lambda:cryoEMInstrument__detector_manufacturer](http://w3id.org/lambda/cryoEMInstrument__detector_manufacturer)
 
 
 ## Domain and Range

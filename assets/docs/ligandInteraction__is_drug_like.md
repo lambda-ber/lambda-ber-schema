@@ -3,7 +3,7 @@
 
 Whether the ligand has drug-like properties
 
-URI: [lambdaber:ligandInteraction__is_drug_like](https://w3id.org/lambda-ber-schema/ligandInteraction__is_drug_like)
+URI: [lambda:ligandInteraction__is_drug_like](http://w3id.org/lambda/ligandInteraction__is_drug_like)
 
 
 ## Domain and Range

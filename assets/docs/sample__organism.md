@@ -3,7 +3,7 @@
 
 Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)
 
-URI: [lambdaber:sample__organism](https://w3id.org/lambda-ber-schema/sample__organism)
+URI: [lambda:sample__organism](http://w3id.org/lambda/sample__organism)
 
 
 ## Domain and Range

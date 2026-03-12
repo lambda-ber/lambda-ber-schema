@@ -3,7 +3,7 @@
 
 Path to sequence file
 
-URI: [lambdaber:proteinConstruct__sequence_file_path](https://w3id.org/lambda-ber-schema/proteinConstruct__sequence_file_path)
+URI: [lambda:proteinConstruct__sequence_file_path](http://w3id.org/lambda/proteinConstruct__sequence_file_path)
 
 
 ## Domain and Range

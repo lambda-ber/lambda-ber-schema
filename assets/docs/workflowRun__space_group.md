@@ -3,7 +3,7 @@
 
 Crystallographic space group
 
-URI: [lambdaber:workflowRun__space_group](https://w3id.org/lambda-ber-schema/workflowRun__space_group)
+URI: [lambda:workflowRun__space_group](http://w3id.org/lambda/workflowRun__space_group)
 
 
 ## Domain and Range

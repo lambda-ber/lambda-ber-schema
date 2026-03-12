@@ -3,7 +3,7 @@
 
 Image depth, typically specified in pixels or slices. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:image3D__dimensions_z](https://w3id.org/lambda-ber-schema/image3D__dimensions_z)
+URI: [lambda:image3D__dimensions_z](http://w3id.org/lambda/image3D__dimensions_z)
 
 
 ## Domain and Range

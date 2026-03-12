@@ -3,7 +3,7 @@
 
 IDs of one or more publications supporting this annotation. Use PubMed IDs in the format 'PMID:XXXXXXX' or DOIs with 'DOI:' prefix.
 
-URI: [lambdaber:proteinAnnotation__publication_ids](https://w3id.org/lambda-ber-schema/proteinAnnotation__publication_ids)
+URI: [lambda:proteinAnnotation__publication_ids](http://w3id.org/lambda/proteinAnnotation__publication_ids)
 
 
 ## Domain and Range

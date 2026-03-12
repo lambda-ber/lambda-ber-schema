@@ -3,7 +3,7 @@
 
 Method used for conformational clustering
 
-URI: [lambdaber:conformationalEnsemble__clustering_method](https://w3id.org/lambda-ber-schema/conformationalEnsemble__clustering_method)
+URI: [lambda:conformationalEnsemble__clustering_method](http://w3id.org/lambda/conformationalEnsemble__clustering_method)
 
 
 ## Domain and Range

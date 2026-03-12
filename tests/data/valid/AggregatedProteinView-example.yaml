@@ -4,7 +4,7 @@ protein_name: Cellular tumor antigen p53
 title: Aggregated structural and functional data for human p53
 description: Complete functional annotation profile for p53 tumor suppressor aggregated
   from multiple PDB structures and annotation databases
-organism: Homo sapiens
+organism: NCBITaxon:9606
 organism_id: 9606
 pdb_entries:
 - 1TUP

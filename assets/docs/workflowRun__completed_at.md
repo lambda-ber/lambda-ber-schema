@@ -3,7 +3,7 @@
 
 Workflow completion time
 
-URI: [lambdaber:workflowRun__completed_at](https://w3id.org/lambda-ber-schema/workflowRun__completed_at)
+URI: [lambda:workflowRun__completed_at](http://w3id.org/lambda/workflowRun__completed_at)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Low resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__resolution_low](https://w3id.org/lambda-ber-schema/workflowRun__resolution_low)
+URI: [lambda:workflowRun__resolution_low](http://w3id.org/lambda/workflowRun__resolution_low)
 
 
 ## Domain and Range

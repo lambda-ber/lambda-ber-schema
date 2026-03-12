@@ -3,7 +3,7 @@
 
 Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 
-URI: [lambdaber:sample__sample_code](https://w3id.org/lambda-ber-schema/sample__sample_code)
+URI: [lambda:sample__sample_code](http://w3id.org/lambda/sample__sample_code)
 
 
 ## Domain and Range

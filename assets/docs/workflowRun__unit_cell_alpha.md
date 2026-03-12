@@ -3,7 +3,7 @@
 
 Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__unit_cell_alpha](https://w3id.org/lambda-ber-schema/workflowRun__unit_cell_alpha)
+URI: [lambda:workflowRun__unit_cell_alpha](http://w3id.org/lambda/workflowRun__unit_cell_alpha)
 
 
 ## Domain and Range

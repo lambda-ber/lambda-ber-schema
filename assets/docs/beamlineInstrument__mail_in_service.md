@@ -3,7 +3,7 @@
 
 Whether mail-in sample service is available
 
-URI: [lambdaber:beamlineInstrument__mail_in_service](https://w3id.org/lambda-ber-schema/beamlineInstrument__mail_in_service)
+URI: [lambda:beamlineInstrument__mail_in_service](http://w3id.org/lambda/beamlineInstrument__mail_in_service)
 
 
 ## Domain and Range

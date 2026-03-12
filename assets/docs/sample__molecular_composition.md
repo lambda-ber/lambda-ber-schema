@@ -3,7 +3,7 @@
 
 Description of molecular composition including sequences, modifications, ligands
 
-URI: [lambdaber:sample__molecular_composition](https://w3id.org/lambda-ber-schema/sample__molecular_composition)
+URI: [lambda:sample__molecular_composition](http://w3id.org/lambda/sample__molecular_composition)
 
 
 ## Domain and Range

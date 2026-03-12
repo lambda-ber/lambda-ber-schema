@@ -3,7 +3,7 @@
 
 Domain identifier from domain database
 
-URI: [lambdaber:structuralFeature__domain_id](https://w3id.org/lambda-ber-schema/structuralFeature__domain_id)
+URI: [lambda:structuralFeature__domain_id](http://w3id.org/lambda/structuralFeature__domain_id)
 
 
 ## Domain and Range

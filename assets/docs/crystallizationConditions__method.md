@@ -3,7 +3,7 @@
 
 Crystallization method used
 
-URI: [lambdaber:crystallizationConditions__method](https://w3id.org/lambda-ber-schema/crystallizationConditions__method)
+URI: [lambda:crystallizationConditions__method](http://w3id.org/lambda/crystallizationConditions__method)
 
 
 ## Domain and Range

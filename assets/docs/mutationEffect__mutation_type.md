@@ -3,7 +3,7 @@
 
 Type of mutation
 
-URI: [lambdaber:mutationEffect__mutation_type](https://w3id.org/lambda-ber-schema/mutationEffect__mutation_type)
+URI: [lambda:mutationEffect__mutation_type](http://w3id.org/lambda/mutationEffect__mutation_type)
 
 
 ## Domain and Range

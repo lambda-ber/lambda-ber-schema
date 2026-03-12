@@ -3,7 +3,7 @@
 
 All biophysical properties
 
-URI: [lambdaber:aggregatedProteinView__biophysical_properties](https://w3id.org/lambda-ber-schema/aggregatedProteinView__biophysical_properties)
+URI: [lambda:aggregatedProteinView__biophysical_properties](http://w3id.org/lambda/aggregatedProteinView__biophysical_properties)
 
 
 ## Domain and Range

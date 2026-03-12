@@ -3,7 +3,7 @@
 
 Beam shift Y in microradians
 
-URI: [lambdaber:movie__beam_shift_y](https://w3id.org/lambda-ber-schema/movie__beam_shift_y)
+URI: [lambda:movie__beam_shift_y](http://w3id.org/lambda/movie__beam_shift_y)
 
 
 ## Domain and Range

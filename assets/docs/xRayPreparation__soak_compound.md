@@ -3,7 +3,7 @@
 
 Compound used for soaking (ligand, heavy atom)
 
-URI: [lambdaber:xRayPreparation__soak_compound](https://w3id.org/lambda-ber-schema/xRayPreparation__soak_compound)
+URI: [lambda:xRayPreparation__soak_compound](http://w3id.org/lambda/xRayPreparation__soak_compound)
 
 
 ## Domain and Range

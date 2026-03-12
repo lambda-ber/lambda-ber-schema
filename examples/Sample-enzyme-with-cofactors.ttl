@@ -1,8 +1,8 @@
 @base <http://example.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
-@prefix ns1: <https://w3id.org/lambda-ber-schema/functional_annotation/> .
+@prefix ns1: <http://w3id.org/lambda/functional_annotation/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lambdaber:sample-aldh-cofactor a lambdaber:Sample ;

@@ -3,7 +3,7 @@
 
 Maximum wavenumber, typically specified in inverse centimeters (cm⁻¹). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fTIRImage__wavenumber_max](https://w3id.org/lambda-ber-schema/fTIRImage__wavenumber_max)
+URI: [lambda:fTIRImage__wavenumber_max](http://w3id.org/lambda/fTIRImage__wavenumber_max)
 
 
 ## Domain and Range

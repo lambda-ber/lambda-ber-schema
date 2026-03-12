@@ -1,7 +1,7 @@
 @base <http://example.org/> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 

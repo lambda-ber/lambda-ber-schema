@@ -3,7 +3,7 @@
 
 Total number of frames/images
 
-URI: [lambdaber:dataCollectionStrategy__total_frames](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__total_frames)
+URI: [lambda:dataCollectionStrategy__total_frames](http://w3id.org/lambda/dataCollectionStrategy__total_frames)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 A decimal degree expresses latitude or longitude as decimal fractions.
 
-URI: [lambdaber:DecimalDegree](https://w3id.org/lambda-ber-schema/DecimalDegree)
+URI: [lambda:DecimalDegree](http://w3id.org/lambda/DecimalDegree)
 
 |  |  |  |
 | --- | --- | --- |

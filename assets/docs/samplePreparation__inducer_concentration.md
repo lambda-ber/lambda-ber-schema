@@ -3,7 +3,7 @@
 
 Concentration of induction agent
 
-URI: [lambdaber:samplePreparation__inducer_concentration](https://w3id.org/lambda-ber-schema/samplePreparation__inducer_concentration)
+URI: [lambda:samplePreparation__inducer_concentration](http://w3id.org/lambda/samplePreparation__inducer_concentration)
 
 
 ## Domain and Range

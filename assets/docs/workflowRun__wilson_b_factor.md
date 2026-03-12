@@ -3,7 +3,7 @@
 
 Wilson B-factor, typically specified in Angstroms squared (Ų). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__wilson_b_factor](https://w3id.org/lambda-ber-schema/workflowRun__wilson_b_factor)
+URI: [lambda:workflowRun__wilson_b_factor](http://w3id.org/lambda/workflowRun__wilson_b_factor)
 
 
 ## Domain and Range

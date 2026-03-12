@@ -3,7 +3,7 @@
 
 Calculated binding energy (kcal/mol)
 
-URI: [lambdaber:proteinProteinInteraction__binding_energy](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__binding_energy)
+URI: [lambda:proteinProteinInteraction__binding_energy](http://w3id.org/lambda/proteinProteinInteraction__binding_energy)
 
 
 ## Domain and Range

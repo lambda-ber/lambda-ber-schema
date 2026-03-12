@@ -3,7 +3,7 @@
 
 Individual conformational states
 
-URI: [lambdaber:conformationalEnsemble__conformational_states](https://w3id.org/lambda-ber-schema/conformationalEnsemble__conformational_states)
+URI: [lambda:conformationalEnsemble__conformational_states](http://w3id.org/lambda/conformationalEnsemble__conformational_states)
 
 
 ## Domain and Range

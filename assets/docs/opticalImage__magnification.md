@@ -3,7 +3,7 @@
 
 Optical magnification factor. Data providers may specify the unit (e.g., times, X) in the QuantityValue.
 
-URI: [lambdaber:opticalImage__magnification](https://w3id.org/lambda-ber-schema/opticalImage__magnification)
+URI: [lambda:opticalImage__magnification](http://w3id.org/lambda/opticalImage__magnification)
 
 
 ## Domain and Range

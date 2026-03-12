@@ -3,7 +3,7 @@
 
 Image width, typically specified in pixels. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:image__dimensions_x](https://w3id.org/lambda-ber-schema/image__dimensions_x)
+URI: [lambda:image__dimensions_x](http://w3id.org/lambda/image__dimensions_x)
 
 
 ## Domain and Range

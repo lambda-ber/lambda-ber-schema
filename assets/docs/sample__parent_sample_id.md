@@ -3,7 +3,7 @@
 
 Reference to parent sample for derivation tracking
 
-URI: [lambdaber:sample__parent_sample_id](https://w3id.org/lambda-ber-schema/sample__parent_sample_id)
+URI: [lambda:sample__parent_sample_id](http://w3id.org/lambda/sample__parent_sample_id)
 
 
 ## Domain and Range

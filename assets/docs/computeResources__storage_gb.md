@@ -3,7 +3,7 @@
 
 Storage used, typically specified in gigabytes (GB). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:computeResources__storage_gb](https://w3id.org/lambda-ber-schema/computeResources__storage_gb)
+URI: [lambda:computeResources__storage_gb](http://w3id.org/lambda/computeResources__storage_gb)
 
 
 ## Domain and Range

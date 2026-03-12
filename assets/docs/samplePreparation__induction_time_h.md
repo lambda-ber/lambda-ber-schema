@@ -3,7 +3,7 @@
 
 Duration of induction, typically specified in hours. Data providers may specify alternative units (e.g., minutes, seconds) by including the unit in the QuantityValue.
 
-URI: [lambdaber:samplePreparation__induction_time_h](https://w3id.org/lambda-ber-schema/samplePreparation__induction_time_h)
+URI: [lambda:samplePreparation__induction_time_h](http://w3id.org/lambda/samplePreparation__induction_time_h)
 
 
 ## Domain and Range

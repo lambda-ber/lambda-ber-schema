@@ -3,7 +3,7 @@
 
 Additional notes about processing
 
-URI: [lambdaber:workflowRun__processing_notes](https://w3id.org/lambda-ber-schema/workflowRun__processing_notes)
+URI: [lambda:workflowRun__processing_notes](http://w3id.org/lambda/workflowRun__processing_notes)
 
 
 ## Domain and Range

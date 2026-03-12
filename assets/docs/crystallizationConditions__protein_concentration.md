@@ -3,7 +3,7 @@
 
 Protein concentration for crystallization in mg/mL
 
-URI: [lambdaber:crystallizationConditions__protein_concentration](https://w3id.org/lambda-ber-schema/crystallizationConditions__protein_concentration)
+URI: [lambda:crystallizationConditions__protein_concentration](http://w3id.org/lambda/crystallizationConditions__protein_concentration)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Blotting force setting
 
-URI: [lambdaber:cryoEMPreparation__blot_force](https://w3id.org/lambda-ber-schema/cryoEMPreparation__blot_force)
+URI: [lambda:cryoEMPreparation__blot_force](http://w3id.org/lambda/cryoEMPreparation__blot_force)
 
 
 ## Domain and Range

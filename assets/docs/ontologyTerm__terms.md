@@ -3,7 +3,7 @@
 
 Collection of ontology terms
 
-URI: [lambdaber:ontologyTerm__terms](https://w3id.org/lambda-ber-schema/ontologyTerm__terms)
+URI: [lambda:ontologyTerm__terms](http://w3id.org/lambda/ontologyTerm__terms)
 
 
 ## Domain and Range

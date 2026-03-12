@@ -3,7 +3,7 @@
 
 The formal definition or meaning of the ontology term
 
-URI: [lambdaber:ontologyTerm__definition](https://w3id.org/lambda-ber-schema/ontologyTerm__definition)
+URI: [lambda:ontologyTerm__definition](http://w3id.org/lambda/ontologyTerm__definition)
 
 
 ## Domain and Range

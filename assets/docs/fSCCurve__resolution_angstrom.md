@@ -3,7 +3,7 @@
 
 Resolution values in Angstroms
 
-URI: [lambdaber:fSCCurve__resolution_angstrom](https://w3id.org/lambda-ber-schema/fSCCurve__resolution_angstrom)
+URI: [lambda:fSCCurve__resolution_angstrom](http://w3id.org/lambda/fSCCurve__resolution_angstrom)
 
 
 ## Domain and Range

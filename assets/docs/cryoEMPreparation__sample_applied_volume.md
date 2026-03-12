@@ -3,7 +3,7 @@
 
 Volume of sample applied, typically specified in microliters. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cryoEMPreparation__sample_applied_volume](https://w3id.org/lambda-ber-schema/cryoEMPreparation__sample_applied_volume)
+URI: [lambda:cryoEMPreparation__sample_applied_volume](http://w3id.org/lambda/cryoEMPreparation__sample_applied_volume)
 
 
 ## Domain and Range

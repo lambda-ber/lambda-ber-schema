@@ -3,7 +3,7 @@
 
 3D refinement specific parameters
 
-URI: [lambdaber:workflowRun__refinement_params](https://w3id.org/lambda-ber-schema/workflowRun__refinement_params)
+URI: [lambda:workflowRun__refinement_params](http://w3id.org/lambda/workflowRun__refinement_params)
 
 
 ## Domain and Range

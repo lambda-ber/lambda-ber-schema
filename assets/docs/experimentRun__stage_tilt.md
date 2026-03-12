@@ -3,7 +3,7 @@
 
 Stage tilt angle in degrees
 
-URI: [lambdaber:experimentRun__stage_tilt](https://w3id.org/lambda-ber-schema/experimentRun__stage_tilt)
+URI: [lambda:experimentRun__stage_tilt](http://w3id.org/lambda/experimentRun__stage_tilt)
 
 
 ## Domain and Range

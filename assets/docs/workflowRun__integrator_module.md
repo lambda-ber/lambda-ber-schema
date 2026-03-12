@@ -3,7 +3,7 @@
 
 Integration module used
 
-URI: [lambdaber:workflowRun__integrator_module](https://w3id.org/lambda-ber-schema/workflowRun__integrator_module)
+URI: [lambda:workflowRun__integrator_module](http://w3id.org/lambda/workflowRun__integrator_module)
 
 
 ## Domain and Range

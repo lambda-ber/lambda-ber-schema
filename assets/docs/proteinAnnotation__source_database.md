@@ -3,7 +3,7 @@
 
 Source database or resource that provided this annotation
 
-URI: [lambdaber:proteinAnnotation__source_database](https://w3id.org/lambda-ber-schema/proteinAnnotation__source_database)
+URI: [lambda:proteinAnnotation__source_database](http://w3id.org/lambda/proteinAnnotation__source_database)
 
 
 ## Domain and Range

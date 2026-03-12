@@ -3,7 +3,7 @@
 
 Type of X-ray detector technology used
 
-URI: [lambdaber:xRFImage__detector_technology](https://w3id.org/lambda-ber-schema/xRFImage__detector_technology)
+URI: [lambda:xRFImage__detector_technology](http://w3id.org/lambda/xRFImage__detector_technology)
 
 
 ## Domain and Range

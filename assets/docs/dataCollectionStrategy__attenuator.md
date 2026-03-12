@@ -3,7 +3,7 @@
 
 Attenuator setting used
 
-URI: [lambdaber:dataCollectionStrategy__attenuator](https://w3id.org/lambda-ber-schema/dataCollectionStrategy__attenuator)
+URI: [lambda:dataCollectionStrategy__attenuator](http://w3id.org/lambda/dataCollectionStrategy__attenuator)
 
 
 ## Domain and Range

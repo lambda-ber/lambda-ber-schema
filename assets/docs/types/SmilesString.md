@@ -3,7 +3,7 @@
 
 A SMILES representation of a chemical structure
 
-URI: [lambdaber:functional_annotation/SmilesString](https://w3id.org/lambda-ber-schema/functional_annotation/SmilesString)
+URI: [lambda:functional_annotation/SmilesString](http://w3id.org/lambda/functional_annotation/SmilesString)
 
 |  |  |  |
 | --- | --- | --- |

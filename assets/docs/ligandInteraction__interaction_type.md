@@ -3,7 +3,7 @@
 
 Type of interaction
 
-URI: [lambdaber:ligandInteraction__interaction_type](https://w3id.org/lambda-ber-schema/ligandInteraction__interaction_type)
+URI: [lambda:ligandInteraction__interaction_type](http://w3id.org/lambda/ligandInteraction__interaction_type)
 
 
 ## Domain and Range

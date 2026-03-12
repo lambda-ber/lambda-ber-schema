@@ -3,7 +3,7 @@
 
 Complete description of crystallization conditions including precipitant, pH, salts
 
-URI: [lambdaber:crystallizationConditions__crystallization_conditions](https://w3id.org/lambda-ber-schema/crystallizationConditions__crystallization_conditions)
+URI: [lambda:crystallizationConditions__crystallization_conditions](http://w3id.org/lambda/crystallizationConditions__crystallization_conditions)
 
 
 ## Domain and Range

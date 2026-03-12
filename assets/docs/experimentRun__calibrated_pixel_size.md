@@ -3,7 +3,7 @@
 
 Calibrated pixel size in Angstroms per pixel
 
-URI: [lambdaber:experimentRun__calibrated_pixel_size](https://w3id.org/lambda-ber-schema/experimentRun__calibrated_pixel_size)
+URI: [lambda:experimentRun__calibrated_pixel_size](http://w3id.org/lambda/experimentRun__calibrated_pixel_size)
 
 
 ## Domain and Range

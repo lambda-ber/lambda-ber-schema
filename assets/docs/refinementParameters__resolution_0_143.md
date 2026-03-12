@@ -3,7 +3,7 @@
 
 Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:refinementParameters__resolution_0_143](https://w3id.org/lambda-ber-schema/refinementParameters__resolution_0_143)
+URI: [lambda:refinementParameters__resolution_0_143](http://w3id.org/lambda/refinementParameters__resolution_0_143)
 
 
 ## Domain and Range

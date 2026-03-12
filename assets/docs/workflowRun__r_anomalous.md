@@ -3,7 +3,7 @@
 
 Anomalous R-factor
 
-URI: [lambdaber:workflowRun__r_anomalous](https://w3id.org/lambda-ber-schema/workflowRun__r_anomalous)
+URI: [lambda:workflowRun__r_anomalous](http://w3id.org/lambda/workflowRun__r_anomalous)
 
 
 ## Domain and Range

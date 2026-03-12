@@ -3,7 +3,7 @@
 
 Software version
 
-URI: [lambdaber:cryoEMInstrument__microscope_software_version](https://w3id.org/lambda-ber-schema/cryoEMInstrument__microscope_software_version)
+URI: [lambda:cryoEMInstrument__microscope_software_version](http://w3id.org/lambda/cryoEMInstrument__microscope_software_version)
 
 
 ## Domain and Range

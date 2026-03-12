@@ -3,7 +3,7 @@
 
 Specific experimental method for structure determination (particularly for diffraction techniques)
 
-URI: [lambdaber:experimentRun__experimental_method](https://w3id.org/lambda-ber-schema/experimentRun__experimental_method)
+URI: [lambda:experimentRun__experimental_method](http://w3id.org/lambda/experimentRun__experimental_method)
 
 
 ## Domain and Range

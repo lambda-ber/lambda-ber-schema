@@ -3,7 +3,7 @@
 
 Role of the file (raw, intermediate, final, diagnostic, metadata)
 
-URI: [lambdaber:dataFile__file_role](https://w3id.org/lambda-ber-schema/dataFile__file_role)
+URI: [lambda:dataFile__file_role](http://w3id.org/lambda/dataFile__file_role)
 
 
 ## Domain and Range

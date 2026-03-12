@@ -3,7 +3,7 @@
 
 Binding affinity value
 
-URI: [lambdaber:ligandInteraction__binding_affinity](https://w3id.org/lambda-ber-schema/ligandInteraction__binding_affinity)
+URI: [lambda:ligandInteraction__binding_affinity](http://w3id.org/lambda/ligandInteraction__binding_affinity)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Name or type of fluorophore used
 
-URI: [lambdaber:fluorescenceImage__fluorophore](https://w3id.org/lambda-ber-schema/fluorescenceImage__fluorophore)
+URI: [lambda:fluorescenceImage__fluorophore](http://w3id.org/lambda/fluorescenceImage__fluorophore)
 
 
 ## Domain and Range

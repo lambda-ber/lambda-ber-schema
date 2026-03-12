@@ -3,7 +3,7 @@
 
 The text value
 
-URI: [lambdaber:textValue__value](https://w3id.org/lambda-ber-schema/textValue__value)
+URI: [lambda:textValue__value](http://w3id.org/lambda/textValue__value)
 
 
 ## Domain and Range

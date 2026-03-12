@@ -3,7 +3,7 @@
 
 Probability of disorder (range: 0-1)
 
-URI: [lambdaber:structuralFeature__disorder_probability](https://w3id.org/lambda-ber-schema/structuralFeature__disorder_probability)
+URI: [lambda:structuralFeature__disorder_probability](http://w3id.org/lambda/structuralFeature__disorder_probability)
 
 
 ## Domain and Range

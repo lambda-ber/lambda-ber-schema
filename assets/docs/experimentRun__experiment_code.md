@@ -3,7 +3,7 @@
 
 Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
 
-URI: [lambdaber:experimentRun__experiment_code](https://w3id.org/lambda-ber-schema/experimentRun__experiment_code)
+URI: [lambda:experimentRun__experiment_code](http://w3id.org/lambda/experimentRun__experiment_code)
 
 
 ## Domain and Range

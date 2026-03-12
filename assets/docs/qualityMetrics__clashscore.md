@@ -3,7 +3,7 @@
 
 MolProbity clashscore
 
-URI: [lambdaber:qualityMetrics__clashscore](https://w3id.org/lambda-ber-schema/qualityMetrics__clashscore)
+URI: [lambda:qualityMetrics__clashscore](http://w3id.org/lambda/qualityMetrics__clashscore)
 
 
 ## Domain and Range

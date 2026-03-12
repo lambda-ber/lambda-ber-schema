@@ -3,7 +3,7 @@
 
 Mean I/sigma(I) - signal to noise ratio
 
-URI: [lambdaber:workflowRun__i_over_sigma](https://w3id.org/lambda-ber-schema/workflowRun__i_over_sigma)
+URI: [lambda:workflowRun__i_over_sigma](http://w3id.org/lambda/workflowRun__i_over_sigma)
 
 
 ## Domain and Range

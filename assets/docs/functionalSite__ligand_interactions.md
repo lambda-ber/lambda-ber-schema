@@ -3,7 +3,7 @@
 
 Ligands that interact with this site
 
-URI: [lambdaber:functionalSite__ligand_interactions](https://w3id.org/lambda-ber-schema/functionalSite__ligand_interactions)
+URI: [lambda:functionalSite__ligand_interactions](http://w3id.org/lambda/functionalSite__ligand_interactions)
 
 
 ## Domain and Range

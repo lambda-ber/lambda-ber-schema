@@ -3,7 +3,7 @@
 
 UniProt accession for the target protein
 
-URI: [lambdaber:proteinConstruct__uniprot_id](https://w3id.org/lambda-ber-schema/proteinConstruct__uniprot_id)
+URI: [lambda:proteinConstruct__uniprot_id](http://w3id.org/lambda/proteinConstruct__uniprot_id)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Synchrotron storage ring fill mode
 
-URI: [lambdaber:experimentRun__synchrotron_mode](https://w3id.org/lambda-ber-schema/experimentRun__synchrotron_mode)
+URI: [lambda:experimentRun__synchrotron_mode](http://w3id.org/lambda/experimentRun__synchrotron_mode)
 
 
 ## Domain and Range

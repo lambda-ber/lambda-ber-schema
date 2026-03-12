@@ -3,7 +3,7 @@
 
 Physical pixel size of the detector in micrometers
 
-URI: [lambdaber:cryoEMInstrument__pixel_size_physical_um](https://w3id.org/lambda-ber-schema/cryoEMInstrument__pixel_size_physical_um)
+URI: [lambda:cryoEMInstrument__pixel_size_physical_um](http://w3id.org/lambda/cryoEMInstrument__pixel_size_physical_um)
 
 
 ## Domain and Range

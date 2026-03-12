@@ -3,7 +3,7 @@
 
 Magnification used during data collection
 
-URI: [lambdaber:experimentRun__magnification](https://w3id.org/lambda-ber-schema/experimentRun__magnification)
+URI: [lambda:experimentRun__magnification](http://w3id.org/lambda/experimentRun__magnification)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Protein-protein interaction annotations
 
-URI: [lambdaber:sample__protein_interactions](https://w3id.org/lambda-ber-schema/sample__protein_interactions)
+URI: [lambda:sample__protein_interactions](http://w3id.org/lambda/sample__protein_interactions)
 
 
 ## Domain and Range

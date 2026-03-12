@@ -2,7 +2,7 @@
 @prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
 @prefix ROR: <https://ror.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix lambdaber: <https://w3id.org/lambda-ber-schema/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
 @prefix mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix nsls2: <https://github.com/NSLS2/BER-LAMBDA/> .
@@ -11,7 +11,6 @@
 lambdaber:beamline_aps_21id_g a lambdaber:XRayInstrument ;
     mmCIF:_diffrn_source.pdbx_synchrotron_beamline "21-ID-G" ;
     dcterms:title "APS Beamline 21-ID-G (LS-CAT)" ;
-    nsls2:Detector "hybrid_photon_counting" ;
     lambdaber:beam_size_max [ a nmdc:QuantityValue ;
             lambdaber:numeric_value "50.0"^^xsd:float ;
             lambdaber:unit "micrometers" ] ;
@@ -41,5 +40,6 @@ lambdaber:beamline_aps_21id_g a lambdaber:XRayInstrument ;
     lambdaber:manufacturer "Argonne National Laboratory" ;
     lambdaber:model "APS Beamline 21-ID-G (LS-CAT)" ;
     lambdaber:monochromator_type "Si(111) double crystal" ;
-    lambdaber:source_type "synchrotron" .
+    lambdaber:source_type "synchrotron" ;
+    nsls2:Detector "hybrid_photon_counting" .
 

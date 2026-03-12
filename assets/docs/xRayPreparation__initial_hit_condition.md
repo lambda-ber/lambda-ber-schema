@@ -3,7 +3,7 @@
 
 Description of initial crystallization hit condition
 
-URI: [lambdaber:xRayPreparation__initial_hit_condition](https://w3id.org/lambda-ber-schema/xRayPreparation__initial_hit_condition)
+URI: [lambda:xRayPreparation__initial_hit_condition](http://w3id.org/lambda/xRayPreparation__initial_hit_condition)
 
 
 ## Domain and Range

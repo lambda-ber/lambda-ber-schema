@@ -3,7 +3,7 @@
 
 Microscope control software (e.g., SerialEM, EPU, Leginon)
 
-URI: [lambdaber:cryoEMInstrument__microscope_software](https://w3id.org/lambda-ber-schema/cryoEMInstrument__microscope_software)
+URI: [lambda:cryoEMInstrument__microscope_software](http://w3id.org/lambda/cryoEMInstrument__microscope_software)
 
 
 ## Domain and Range

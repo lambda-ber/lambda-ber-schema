@@ -3,7 +3,7 @@
 
 Effect on protein stability
 
-URI: [lambdaber:mutationEffect__effect_on_stability](https://w3id.org/lambda-ber-schema/mutationEffect__effect_on_stability)
+URI: [lambda:mutationEffect__effect_on_stability](http://w3id.org/lambda/mutationEffect__effect_on_stability)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Spherical aberration corrector present
 
-URI: [lambdaber:cryoEMInstrument__cs_corrector](https://w3id.org/lambda-ber-schema/cryoEMInstrument__cs_corrector)
+URI: [lambda:cryoEMInstrument__cs_corrector](http://w3id.org/lambda/cryoEMInstrument__cs_corrector)
 
 
 ## Domain and Range

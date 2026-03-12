@@ -3,7 +3,7 @@
 
 Evidence for this interaction
 
-URI: [lambdaber:proteinProteinInteraction__interaction_evidence](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__interaction_evidence)
+URI: [lambda:proteinProteinInteraction__interaction_evidence](http://w3id.org/lambda/proteinProteinInteraction__interaction_evidence)
 
 
 ## Domain and Range

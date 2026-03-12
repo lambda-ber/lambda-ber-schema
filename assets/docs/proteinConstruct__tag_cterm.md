@@ -3,7 +3,7 @@
 
 C-terminal tag
 
-URI: [lambdaber:proteinConstruct__tag_cterm](https://w3id.org/lambda-ber-schema/proteinConstruct__tag_cterm)
+URI: [lambda:proteinConstruct__tag_cterm](http://w3id.org/lambda/proteinConstruct__tag_cterm)
 
 
 ## Domain and Range

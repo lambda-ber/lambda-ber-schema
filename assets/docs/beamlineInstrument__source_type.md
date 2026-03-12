@@ -3,7 +3,7 @@
 
 Type of X-ray source
 
-URI: [lambdaber:beamlineInstrument__source_type](https://w3id.org/lambda-ber-schema/beamlineInstrument__source_type)
+URI: [lambda:beamlineInstrument__source_type](http://w3id.org/lambda/beamlineInstrument__source_type)
 
 
 ## Domain and Range

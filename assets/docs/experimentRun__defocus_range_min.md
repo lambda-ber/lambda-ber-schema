@@ -3,7 +3,7 @@
 
 Minimum defocus range in micrometers
 
-URI: [lambdaber:experimentRun__defocus_range_min](https://w3id.org/lambda-ber-schema/experimentRun__defocus_range_min)
+URI: [lambda:experimentRun__defocus_range_min](http://w3id.org/lambda/experimentRun__defocus_range_min)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__unit_cell_beta](https://w3id.org/lambda-ber-schema/workflowRun__unit_cell_beta)
+URI: [lambda:workflowRun__unit_cell_beta](http://w3id.org/lambda/workflowRun__unit_cell_beta)
 
 
 ## Domain and Range

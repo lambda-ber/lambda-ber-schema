@@ -3,7 +3,7 @@
 
 Method used for vitrification
 
-URI: [lambdaber:cryoEMPreparation__vitrification_method](https://w3id.org/lambda-ber-schema/cryoEMPreparation__vitrification_method)
+URI: [lambda:cryoEMPreparation__vitrification_method](http://w3id.org/lambda/cryoEMPreparation__vitrification_method)
 
 
 ## Domain and Range

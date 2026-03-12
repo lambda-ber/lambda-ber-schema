@@ -3,7 +3,7 @@
 
 R-free (test set)
 
-URI: [lambdaber:qualityMetrics__r_free](https://w3id.org/lambda-ber-schema/qualityMetrics__r_free)
+URI: [lambda:qualityMetrics__r_free](http://w3id.org/lambda/qualityMetrics__r_free)
 
 
 ## Domain and Range

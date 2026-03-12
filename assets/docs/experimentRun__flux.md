@@ -3,7 +3,7 @@
 
 Photon flux at sample position, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__flux](https://w3id.org/lambda-ber-schema/experimentRun__flux)
+URI: [lambda:experimentRun__flux](http://w3id.org/lambda/experimentRun__flux)
 
 
 ## Domain and Range

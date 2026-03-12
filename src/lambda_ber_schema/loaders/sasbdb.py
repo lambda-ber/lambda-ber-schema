@@ -12,6 +12,8 @@ from lambda_ber_schema.loaders.base import BaseLoader, LoaderResult
 from lambda_ber_schema.loaders.cache import ResponseCache
 from lambda_ber_schema.pydantic import (
     BufferComposition,
+    DatabaseCrossReference,
+    DatabaseNameEnum,
     DataFile,
     Dataset,
     ExperimentInstrumentAssociation,
@@ -298,23 +300,34 @@ class SASBDBLoader(BaseLoader):
                 unit="kDa",
             )
 
+        # Build database cross-references for UniProt
+        db_xrefs = None
+        uniprot_code = molecule.get("uniprot_code")
+        if uniprot_code:
+            db_xrefs = [
+                DatabaseCrossReference(
+                    database_name=DatabaseNameEnum.uniprot,
+                    database_id=uniprot_code,
+                    database_url=f"https://www.uniprot.org/uniprotkb/{uniprot_code}",
+                )
+            ]
+
         # Create sample
+        # Note: organism requires a CURIE (e.g. NCBITaxon:1148) per schema,
+        # but SASBDB only provides organism names; store as description instead
+        organism_name = molecule.get("organism")
         return Sample(
             id=f"sasbdb:{entry_code}/sample",
             sample_code=f"SASBDB-{entry_code}",
             sample_type=sample_type,
             title=sample_data.get("name"),
             protein_name=molecule.get("long_name"),
-            organism=molecule.get("organism"),
+            description=f"Organism: {organism_name}" if organism_name else None,
             molecular_weight=molecular_weight,
             concentration=concentration,
             buffer_composition=buffer_composition,
-            description=(
-                f"UniProt: {molecule.get('uniprot_code')}, "
-                f"Oligomerization: {molecule.get('oligomerization')}"
-                if molecule.get("uniprot_code")
-                else None
-            ),
+            database_cross_references=db_xrefs,
+            oligomeric_state=molecule.get("oligomerization"),
         )
 
     def _create_experiment_run(

@@ -3,7 +3,7 @@
 
 ISPyB AutoProcScaling.autoProcScalingId
 
-URI: [lambdaber:workflowRun__ispyb_auto_proc_scaling_id](https://w3id.org/lambda-ber-schema/workflowRun__ispyb_auto_proc_scaling_id)
+URI: [lambda:workflowRun__ispyb_auto_proc_scaling_id](http://w3id.org/lambda/workflowRun__ispyb_auto_proc_scaling_id)
 
 
 ## Domain and Range

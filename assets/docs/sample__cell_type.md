@@ -3,7 +3,7 @@
 
 Cell type if applicable (e.g., CL:0000057 for fibroblast)
 
-URI: [lambdaber:sample__cell_type](https://w3id.org/lambda-ber-schema/sample__cell_type)
+URI: [lambda:sample__cell_type](http://w3id.org/lambda/sample__cell_type)
 
 
 ## Domain and Range

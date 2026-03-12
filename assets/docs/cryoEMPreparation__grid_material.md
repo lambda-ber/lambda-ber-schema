@@ -3,7 +3,7 @@
 
 Grid material
 
-URI: [lambdaber:cryoEMPreparation__grid_material](https://w3id.org/lambda-ber-schema/cryoEMPreparation__grid_material)
+URI: [lambda:cryoEMPreparation__grid_material](http://w3id.org/lambda/cryoEMPreparation__grid_material)
 
 
 ## Domain and Range

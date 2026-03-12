@@ -3,7 +3,7 @@
 
 Indexing module used (e.g., MOSFLM, XDS)
 
-URI: [lambdaber:workflowRun__indexer_module](https://w3id.org/lambda-ber-schema/workflowRun__indexer_module)
+URI: [lambda:workflowRun__indexer_module](http://w3id.org/lambda/workflowRun__indexer_module)
 
 
 ## Domain and Range

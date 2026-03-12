@@ -3,7 +3,7 @@
 
 Excitation wavelength, typically specified in nanometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:fluorescenceImage__excitation_wavelength](https://w3id.org/lambda-ber-schema/fluorescenceImage__excitation_wavelength)
+URI: [lambda:fluorescenceImage__excitation_wavelength](http://w3id.org/lambda/fluorescenceImage__excitation_wavelength)
 
 
 ## Domain and Range

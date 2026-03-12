@@ -3,7 +3,7 @@
 
 Symmetry applied (C1, Cn, Dn, T, O, I)
 
-URI: [lambdaber:refinementParameters__symmetry](https://w3id.org/lambda-ber-schema/refinementParameters__symmetry)
+URI: [lambda:refinementParameters__symmetry](http://w3id.org/lambda/refinementParameters__symmetry)
 
 
 ## Domain and Range

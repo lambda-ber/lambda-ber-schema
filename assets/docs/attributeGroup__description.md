@@ -3,7 +3,7 @@
 
 
 
-URI: [lambdaber:attributeGroup__description](https://w3id.org/lambda-ber-schema/attributeGroup__description)
+URI: [lambda:attributeGroup__description](http://w3id.org/lambda/attributeGroup__description)
 
 
 ## Domain and Range

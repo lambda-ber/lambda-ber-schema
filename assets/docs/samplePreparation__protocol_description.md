@@ -3,7 +3,7 @@
 
 Detailed protocol description
 
-URI: [lambdaber:samplePreparation__protocol_description](https://w3id.org/lambda-ber-schema/samplePreparation__protocol_description)
+URI: [lambda:samplePreparation__protocol_description](http://w3id.org/lambda/samplePreparation__protocol_description)
 
 
 ## Domain and Range

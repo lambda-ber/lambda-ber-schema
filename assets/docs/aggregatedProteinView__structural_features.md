@@ -3,7 +3,7 @@
 
 All structural feature annotations
 
-URI: [lambdaber:aggregatedProteinView__structural_features](https://w3id.org/lambda-ber-schema/aggregatedProteinView__structural_features)
+URI: [lambda:aggregatedProteinView__structural_features](http://w3id.org/lambda/aggregatedProteinView__structural_features)
 
 
 ## Domain and Range

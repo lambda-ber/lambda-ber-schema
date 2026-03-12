@@ -3,7 +3,7 @@
 
 Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:qualityMetrics__unit_cell_gamma](https://w3id.org/lambda-ber-schema/qualityMetrics__unit_cell_gamma)
+URI: [lambda:qualityMetrics__unit_cell_gamma](http://w3id.org/lambda/qualityMetrics__unit_cell_gamma)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Method used (manual, template_matching, deep_learning, LoG, Topaz, other)
 
-URI: [lambdaber:particlePickingParameters__picking_method](https://w3id.org/lambda-ber-schema/particlePickingParameters__picking_method)
+URI: [lambda:particlePickingParameters__picking_method](http://w3id.org/lambda/particlePickingParameters__picking_method)
 
 
 ## Domain and Range

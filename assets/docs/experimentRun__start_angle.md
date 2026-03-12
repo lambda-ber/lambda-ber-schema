@@ -3,7 +3,7 @@
 
 Starting rotation angle, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:experimentRun__start_angle](https://w3id.org/lambda-ber-schema/experimentRun__start_angle)
+URI: [lambda:experimentRun__start_angle](http://w3id.org/lambda/experimentRun__start_angle)
 
 
 ## Domain and Range

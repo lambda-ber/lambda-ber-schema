@@ -3,7 +3,7 @@
 
 Ionic strength, typically specified in molar (mol/L). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:measurementConditions__ionic_strength](https://w3id.org/lambda-ber-schema/measurementConditions__ionic_strength)
+URI: [lambda:measurementConditions__ionic_strength](http://w3id.org/lambda/measurementConditions__ionic_strength)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Defocus search step, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:cTFEstimationParameters__defocus_step](https://w3id.org/lambda-ber-schema/cTFEstimationParameters__defocus_step)
+URI: [lambda:cTFEstimationParameters__defocus_step](http://w3id.org/lambda/cTFEstimationParameters__defocus_step)
 
 
 ## Domain and Range

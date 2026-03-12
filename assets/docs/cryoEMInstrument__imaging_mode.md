@@ -3,7 +3,7 @@
 
 Imaging mode for electron microscopy
 
-URI: [lambdaber:cryoEMInstrument__imaging_mode](https://w3id.org/lambda-ber-schema/cryoEMInstrument__imaging_mode)
+URI: [lambda:cryoEMInstrument__imaging_mode](http://w3id.org/lambda/cryoEMInstrument__imaging_mode)
 
 
 ## Domain and Range

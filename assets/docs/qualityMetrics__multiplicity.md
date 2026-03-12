@@ -3,7 +3,7 @@
 
 Data multiplicity (redundancy)
 
-URI: [lambdaber:qualityMetrics__multiplicity](https://w3id.org/lambda-ber-schema/qualityMetrics__multiplicity)
+URI: [lambda:qualityMetrics__multiplicity](http://w3id.org/lambda/qualityMetrics__multiplicity)
 
 
 ## Domain and Range

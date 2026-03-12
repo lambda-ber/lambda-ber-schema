@@ -1,14 +1,14 @@
 
 # Slot: numeric_value
 
-The numerical value of the quantity
+The numerical value of the quantity. May be null if the value is unknown or not measured.
 
-URI: [lambdaber:QuantityValue_numeric_value](https://w3id.org/lambda-ber-schema/QuantityValue_numeric_value)
+URI: [lambda:QuantityValue_numeric_value](http://w3id.org/lambda/QuantityValue_numeric_value)
 
 
 ## Domain and Range
 
-[QuantityValue](QuantityValue.md) &#8594;  <sub>1..1</sub> [Float](types/Float.md)
+[QuantityValue](QuantityValue.md) &#8594;  <sub>0..1</sub> [Float](types/Float.md)
 
 ## Parents
 

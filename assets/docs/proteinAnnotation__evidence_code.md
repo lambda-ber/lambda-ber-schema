@@ -3,7 +3,7 @@
 
 Evidence and Conclusion Ontology (ECO) code
 
-URI: [lambdaber:proteinAnnotation__evidence_code](https://w3id.org/lambda-ber-schema/proteinAnnotation__evidence_code)
+URI: [lambda:proteinAnnotation__evidence_code](http://w3id.org/lambda/proteinAnnotation__evidence_code)
 
 
 ## Domain and Range

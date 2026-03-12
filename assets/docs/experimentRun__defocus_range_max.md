@@ -3,7 +3,7 @@
 
 Maximum defocus range in micrometers
 
-URI: [lambdaber:experimentRun__defocus_range_max](https://w3id.org/lambda-ber-schema/experimentRun__defocus_range_max)
+URI: [lambda:experimentRun__defocus_range_max](http://w3id.org/lambda/experimentRun__defocus_range_max)
 
 
 ## Domain and Range

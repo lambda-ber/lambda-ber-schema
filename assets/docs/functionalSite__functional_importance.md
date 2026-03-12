@@ -3,7 +3,7 @@
 
 Description of functional importance
 
-URI: [lambdaber:functionalSite__functional_importance](https://w3id.org/lambda-ber-schema/functionalSite__functional_importance)
+URI: [lambda:functionalSite__functional_importance](http://w3id.org/lambda/functionalSite__functional_importance)
 
 
 ## Domain and Range

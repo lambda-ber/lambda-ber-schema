@@ -3,7 +3,7 @@
 
 Protease inhibitors added
 
-URI: [lambdaber:samplePreparation__protease_inhibitors](https://w3id.org/lambda-ber-schema/samplePreparation__protease_inhibitors)
+URI: [lambda:samplePreparation__protease_inhibitors](http://w3id.org/lambda/samplePreparation__protease_inhibitors)
 
 
 ## Domain and Range

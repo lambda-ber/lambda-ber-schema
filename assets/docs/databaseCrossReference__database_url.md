@@ -3,7 +3,7 @@
 
 URL to the database entry
 
-URI: [lambdaber:databaseCrossReference__database_url](https://w3id.org/lambda-ber-schema/databaseCrossReference__database_url)
+URI: [lambda:databaseCrossReference__database_url](http://w3id.org/lambda/databaseCrossReference__database_url)
 
 
 ## Domain and Range

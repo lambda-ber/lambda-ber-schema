@@ -3,7 +3,7 @@
 
 Relative free energy (kcal/mol)
 
-URI: [lambdaber:conformationalState__free_energy](https://w3id.org/lambda-ber-schema/conformationalState__free_energy)
+URI: [lambda:conformationalState__free_energy](http://w3id.org/lambda/conformationalState__free_energy)
 
 
 ## Domain and Range

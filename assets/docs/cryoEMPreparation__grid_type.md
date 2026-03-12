@@ -3,7 +3,7 @@
 
 Type of EM grid used
 
-URI: [lambdaber:cryoEMPreparation__grid_type](https://w3id.org/lambda-ber-schema/cryoEMPreparation__grid_type)
+URI: [lambda:cryoEMPreparation__grid_type](http://w3id.org/lambda/cryoEMPreparation__grid_type)
 
 
 ## Domain and Range

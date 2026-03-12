@@ -3,7 +3,7 @@
 
 Instrument model
 
-URI: [lambdaber:instrument__model](https://w3id.org/lambda-ber-schema/instrument__model)
+URI: [lambda:instrument__model](http://w3id.org/lambda/instrument__model)
 
 
 ## Domain and Range

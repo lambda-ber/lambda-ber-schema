@@ -3,7 +3,7 @@
 
 Blotter setting value. Data providers may include unit information in the QuantityValue if needed.
 
-URI: [lambdaber:cryoEMPreparation__blotter_setting](https://w3id.org/lambda-ber-schema/cryoEMPreparation__blotter_setting)
+URI: [lambda:cryoEMPreparation__blotter_setting](http://w3id.org/lambda/cryoEMPreparation__blotter_setting)
 
 
 ## Domain and Range

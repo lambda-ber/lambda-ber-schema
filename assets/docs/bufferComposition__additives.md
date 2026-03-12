@@ -3,7 +3,7 @@
 
 Additional additives in the buffer
 
-URI: [lambdaber:bufferComposition__additives](https://w3id.org/lambda-ber-schema/bufferComposition__additives)
+URI: [lambda:bufferComposition__additives](http://w3id.org/lambda/bufferComposition__additives)
 
 
 ## Domain and Range

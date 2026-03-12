@@ -3,7 +3,7 @@
 
 Signal peptide sequence if present
 
-URI: [lambdaber:proteinConstruct__signal_peptide](https://w3id.org/lambda-ber-schema/proteinConstruct__signal_peptide)
+URI: [lambda:proteinConstruct__signal_peptide](http://w3id.org/lambda/proteinConstruct__signal_peptide)
 
 
 ## Domain and Range

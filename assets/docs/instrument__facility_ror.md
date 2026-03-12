@@ -3,7 +3,7 @@
 
 Research Organization Registry (ROR) identifier for the facility
 
-URI: [lambdaber:instrument__facility_ror](https://w3id.org/lambda-ber-schema/instrument__facility_ror)
+URI: [lambda:instrument__facility_ror](http://w3id.org/lambda/instrument__facility_ror)
 
 
 ## Domain and Range

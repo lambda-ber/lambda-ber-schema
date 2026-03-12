@@ -3,7 +3,7 @@
 
 Grid square identifier
 
-URI: [lambdaber:movie__grid_square_id](https://w3id.org/lambda-ber-schema/movie__grid_square_id)
+URI: [lambda:movie__grid_square_id](http://w3id.org/lambda/movie__grid_square_id)
 
 
 ## Domain and Range

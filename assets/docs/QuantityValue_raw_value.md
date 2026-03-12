@@ -3,7 +3,7 @@
 
 Unnormalized atomic string representation, suggested syntax {number} {unit}
 
-URI: [lambdaber:QuantityValue_raw_value](https://w3id.org/lambda-ber-schema/QuantityValue_raw_value)
+URI: [lambda:QuantityValue_raw_value](http://w3id.org/lambda/QuantityValue_raw_value)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Glow discharge atmosphere (air, amylamine)
 
-URI: [lambdaber:cryoEMPreparation__glow_discharge_atmosphere](https://w3id.org/lambda-ber-schema/cryoEMPreparation__glow_discharge_atmosphere)
+URI: [lambda:cryoEMPreparation__glow_discharge_atmosphere](http://w3id.org/lambda/cryoEMPreparation__glow_discharge_atmosphere)
 
 
 ## Domain and Range

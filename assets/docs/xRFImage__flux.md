@@ -3,7 +3,7 @@
 
 Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:xRFImage__flux](https://w3id.org/lambda-ber-schema/xRFImage__flux)
+URI: [lambda:xRFImage__flux](http://w3id.org/lambda/xRFImage__flux)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Number of holes per group. Data providers may include unit information in the QuantityValue if needed.
 
-URI: [lambdaber:experimentRun__holes_per_group](https://w3id.org/lambda-ber-schema/experimentRun__holes_per_group)
+URI: [lambda:experimentRun__holes_per_group](http://w3id.org/lambda/experimentRun__holes_per_group)
 
 
 ## Domain and Range

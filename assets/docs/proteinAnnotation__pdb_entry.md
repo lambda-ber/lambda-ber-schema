@@ -3,7 +3,7 @@
 
 PDB identifier
 
-URI: [lambdaber:proteinAnnotation__pdb_entry](https://w3id.org/lambda-ber-schema/proteinAnnotation__pdb_entry)
+URI: [lambda:proteinAnnotation__pdb_entry](http://w3id.org/lambda/proteinAnnotation__pdb_entry)
 
 
 ## Domain and Range

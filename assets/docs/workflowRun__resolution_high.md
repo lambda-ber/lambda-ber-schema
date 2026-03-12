@@ -3,7 +3,7 @@
 
 High resolution limit, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:workflowRun__resolution_high](https://w3id.org/lambda-ber-schema/workflowRun__resolution_high)
+URI: [lambda:workflowRun__resolution_high](http://w3id.org/lambda/workflowRun__resolution_high)
 
 
 ## Domain and Range

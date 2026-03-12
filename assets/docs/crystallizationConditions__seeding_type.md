@@ -3,7 +3,7 @@
 
 Type of seeding used (micro, macro, streak)
 
-URI: [lambdaber:crystallizationConditions__seeding_type](https://w3id.org/lambda-ber-schema/crystallizationConditions__seeding_type)
+URI: [lambda:crystallizationConditions__seeding_type](http://w3id.org/lambda/crystallizationConditions__seeding_type)
 
 
 ## Domain and Range

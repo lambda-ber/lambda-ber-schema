@@ -3,7 +3,7 @@
 
 Affinity column specifications
 
-URI: [lambdaber:samplePreparation__affinity_column](https://w3id.org/lambda-ber-schema/samplePreparation__affinity_column)
+URI: [lambda:samplePreparation__affinity_column](http://w3id.org/lambda/samplePreparation__affinity_column)
 
 
 ## Domain and Range

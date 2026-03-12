@@ -3,7 +3,7 @@
 
 Date image was acquired
 
-URI: [lambdaber:image__acquisition_date](https://w3id.org/lambda-ber-schema/image__acquisition_date)
+URI: [lambda:image__acquisition_date](http://w3id.org/lambda/image__acquisition_date)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:qualityMetrics__unit_cell_b](https://w3id.org/lambda-ber-schema/qualityMetrics__unit_cell_b)
+URI: [lambda:qualityMetrics__unit_cell_b](http://w3id.org/lambda/qualityMetrics__unit_cell_b)
 
 
 ## Domain and Range

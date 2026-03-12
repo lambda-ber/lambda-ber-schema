@@ -3,7 +3,7 @@
 
 Chemical group added (e.g., 'phosphate', 'methyl')
 
-URI: [lambdaber:postTranslationalModification__modification_group](https://w3id.org/lambda-ber-schema/postTranslationalModification__modification_group)
+URI: [lambda:postTranslationalModification__modification_group](http://w3id.org/lambda/postTranslationalModification__modification_group)
 
 
 ## Domain and Range

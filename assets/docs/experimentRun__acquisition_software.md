@@ -3,7 +3,7 @@
 
 Acquisition software used (e.g., SerialEM, EPU, Leginon)
 
-URI: [lambdaber:experimentRun__acquisition_software](https://w3id.org/lambda-ber-schema/experimentRun__acquisition_software)
+URI: [lambda:experimentRun__acquisition_software](http://w3id.org/lambda/experimentRun__acquisition_software)
 
 
 ## Domain and Range

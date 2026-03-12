@@ -4,7 +4,7 @@ description: Complete functional annotation profile for p53 tumor suppressor agg
   from multiple PDB structures and annotation databases
 uniprot_id: P04637
 protein_name: Cellular tumor antigen p53
-organism: Homo sapiens
+organism: NCBITaxon:9606
 organism_id: 9606
 pdb_entries:
 - 1TUP

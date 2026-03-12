@@ -3,7 +3,7 @@
 
 Final buffer composition after purification
 
-URI: [lambdaber:samplePreparation__final_buffer](https://w3id.org/lambda-ber-schema/samplePreparation__final_buffer)
+URI: [lambda:samplePreparation__final_buffer](http://w3id.org/lambda/samplePreparation__final_buffer)
 
 
 ## Domain and Range

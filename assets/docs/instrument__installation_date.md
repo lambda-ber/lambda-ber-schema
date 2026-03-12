@@ -3,7 +3,7 @@
 
 Date of instrument installation
 
-URI: [lambdaber:instrument__installation_date](https://w3id.org/lambda-ber-schema/instrument__installation_date)
+URI: [lambda:instrument__installation_date](http://w3id.org/lambda/instrument__installation_date)
 
 
 ## Domain and Range

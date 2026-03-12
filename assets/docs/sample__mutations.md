@@ -3,7 +3,7 @@
 
 Mutations present in the sample
 
-URI: [lambdaber:sample__mutations](https://w3id.org/lambda-ber-schema/sample__mutations)
+URI: [lambda:sample__mutations](http://w3id.org/lambda/sample__mutations)
 
 
 ## Domain and Range

@@ -3,7 +3,7 @@
 
 Whether this represents a biological assembly
 
-URI: [lambdaber:proteinProteinInteraction__biological_assembly](https://w3id.org/lambda-ber-schema/proteinProteinInteraction__biological_assembly)
+URI: [lambda:proteinProteinInteraction__biological_assembly](http://w3id.org/lambda/proteinProteinInteraction__biological_assembly)
 
 
 ## Domain and Range

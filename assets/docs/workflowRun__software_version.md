@@ -3,7 +3,7 @@
 
 Software version
 
-URI: [lambdaber:workflowRun__software_version](https://w3id.org/lambda-ber-schema/workflowRun__software_version)
+URI: [lambda:workflowRun__software_version](http://w3id.org/lambda/workflowRun__software_version)
 
 
 ## Domain and Range

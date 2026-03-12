@@ -3,7 +3,7 @@
 
 Total number of diffraction images collected
 
-URI: [lambdaber:experimentRun__number_of_images](https://w3id.org/lambda-ber-schema/experimentRun__number_of_images)
+URI: [lambda:experimentRun__number_of_images](http://w3id.org/lambda/experimentRun__number_of_images)
 
 
 ## Domain and Range

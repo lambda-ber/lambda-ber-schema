@@ -3,7 +3,7 @@
 
 Crystal mounting method
 
-URI: [lambdaber:xRayPreparation__mounting_method](https://w3id.org/lambda-ber-schema/xRayPreparation__mounting_method)
+URI: [lambda:xRayPreparation__mounting_method](http://w3id.org/lambda/xRayPreparation__mounting_method)
 
 
 ## Domain and Range

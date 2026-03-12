@@ -3,7 +3,7 @@
 
 Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue.
 
-URI: [lambdaber:refinementParameters__pixel_size](https://w3id.org/lambda-ber-schema/refinementParameters__pixel_size)
+URI: [lambda:refinementParameters__pixel_size](http://w3id.org/lambda/refinementParameters__pixel_size)
 
 
 ## Domain and Range

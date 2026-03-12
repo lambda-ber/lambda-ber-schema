@@ -925,6 +925,7 @@ message Sample
   string mutations = 0
   string expressionSystem = 0
   string ligand = 0
+  string oligomericState = 0
  }
 // A process that prepares a sample for imaging
 message SamplePreparation
