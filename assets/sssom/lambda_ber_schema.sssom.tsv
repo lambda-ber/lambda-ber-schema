@@ -1,0 +1,267 @@
+#license: https://creativecommons.org/publicdomain/zero/1.0/
+#mapping_set_id: http://w3id.org/lambda/
+#mapping_tool: https://w3id.org/linkml/
+#creator_id: linkml_user
+#mapping_date: 2026-03-12
+#curie_map: 
+# lambda: http://w3id.org/lambda/
+# lambdaber: http://w3id.org/lambda/
+# linkml: https://w3id.org/linkml/
+# dcterms: http://purl.org/dc/terms/
+# skos: http://www.w3.org/2004/02/skos/core#
+# rdfs: http://www.w3.org/2000/01/rdf-schema#
+# prov: http://www.w3.org/ns/prov#
+# sio: http://semanticscience.org/resource/
+# nmdc: https://w3id.org/nmdc/
+# NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+# UBERON: http://purl.obolibrary.org/obo/UBERON_
+# CL: http://purl.obolibrary.org/obo/CL_
+# GO: http://purl.obolibrary.org/obo/GO_
+# nsls2: https://github.com/NSLS2/BER-LAMBDA/
+# imgCIF: https://github.com/dials/cbflib/blob/main/doc/cif_img_1.8.6.dic#
+# mmCIF: http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/
+# ROR: https://ror.org/
+# wikidata: http://www.wikidata.org/entity/
+# CHMO: http://purl.obolibrary.org/obo/CHMO_
+# pdb: https://www.rcsb.org/structure/
+# sasbdb: https://www.sasbdb.org/data/
+# simplescattering: https://www.simplescattering.com/open_dataset/
+# ispyb: https://ispyb.github.io/ISPyB/
+# PaNET: http://purl.org/pan-science/PaNET/PaNET
+# UO: http://purl.obolibrary.org/obo/UO_
+# emsl: https://api.emsl.pnnl.gov/external/
+subject_id	subject_label	predicate_id	predicate_modifier	object_id	object_label	match_type	subject_source	object_source	mapping_tool	confidence	subject_match_field	object_match_field	subject_category	object_category	match_string	comment
+lambda:ExperimentalMethodEnum#x_ray_diffraction	x_ray_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						ExperimentalMethodEnum			
+lambda:FacilityEnum#NSLS_II	NSLS_II	skos:exactMatch		ROR:01q47ea17		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#ALS	ALS	skos:exactMatch		ROR:02jbv0t02		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#SSRL	SSRL	skos:exactMatch		ROR:05gzmn429		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#ESRF	ESRF	skos:exactMatch		ROR:02550n020		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#DIAMOND	DIAMOND	skos:exactMatch		ROR:05etxs293		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#PHOTON_FACTORY	PHOTON_FACTORY	skos:exactMatch		ROR:01g5y5k24		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#APS	APS	skos:exactMatch		ROR:05gvnxz63		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#SPRING8	SPRING8	skos:exactMatch		ROR:01xjv7358		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#PETRA_III	PETRA_III	skos:exactMatch		ROR:01js2sh04		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#SOLEIL	SOLEIL	skos:exactMatch		ROR:01ydb3330		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#AUSTRALIAN_SYNCHROTRON	AUSTRALIAN_SYNCHROTRON	skos:exactMatch		ROR:03vk18a84		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#EMSL	EMSL	skos:exactMatch		ROR:05h992307		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#SNS	SNS	skos:exactMatch		ROR:01qz5mb56		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:FacilityEnum#HFIR	HFIR	skos:exactMatch		ROR:01qz5mb56		skos:exactMatch	http://w3id.org/lambda/						FacilityEnum			
+lambda:InstrumentCategoryEnum#SYNCHROTRON_BEAMLINE	SYNCHROTRON_BEAMLINE	skos:exactMatch		CHMO:0001084		skos:exactMatch	http://w3id.org/lambda/						InstrumentCategoryEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#acetylation	acetylation	skos:exactMatch		GO:0006473		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#acylation	acylation	skos:exactMatch		GO:0043543		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#alkylation	alkylation	skos:exactMatch		GO:0008213		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#arginylation	arginylation	skos:exactMatch		GO:0016598		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#carbamoylation	carbamoylation	skos:exactMatch		GO:0046944		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#carboxylation	carboxylation	skos:exactMatch		GO:0018214		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#deacylation	deacylation	skos:exactMatch		GO:0035601		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#dealkylation	dealkylation	skos:exactMatch		GO:0008214		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#deamination	deamination	skos:exactMatch		GO:0018277		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#deglutathionylation	deglutathionylation	skos:exactMatch		GO:0080058		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#deglycation	deglycation	skos:exactMatch		GO:0036525		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#deglycosylation	deglycosylation	skos:exactMatch		GO:0006517		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#dephosphorylation	dephosphorylation	skos:exactMatch		GO:0006470		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#flavinylation	flavinylation	skos:exactMatch		GO:0017013		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#glutathionylation	glutathionylation	skos:exactMatch		GO:0010731		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#hydroxylation	hydroxylation	skos:exactMatch		GO:0018126		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#lipidation	lipidation	skos:exactMatch		GO:0006497		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#methylation	methylation	skos:exactMatch		GO:0006479		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#myristoylation	myristoylation	skos:exactMatch		GO:0018377		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#nitrosylation	nitrosylation	skos:exactMatch		GO:0017014		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#oxidation	oxidation	skos:exactMatch		GO:0018158		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#palmitoylation	palmitoylation	skos:exactMatch		GO:0018345		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#peptidyl_amino_acid_modification	peptidyl_amino_acid_modification	skos:exactMatch		GO:0018193		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#phosphorylation	phosphorylation	skos:exactMatch		GO:0006468		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#post_translational_protein_modification	post_translational_protein_modification	skos:exactMatch		GO:0043687		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#prenylation	prenylation	skos:exactMatch		GO:0018342		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#proteolysis	proteolysis	skos:exactMatch		GO:0006508		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#sulfation	sulfation	skos:exactMatch		GO:0006477		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#sulfhydration	sulfhydration	skos:exactMatch		GO:0044524		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#sumoylation	sumoylation	skos:exactMatch		GO:0016925		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+http://w3id.org/lambda/functional_annotation/:PTMTypeEnum#ubiquitination	ubiquitination	skos:exactMatch		GO:0016567		skos:exactMatch	http://w3id.org/lambda/functional_annotation						PTMTypeEnum			
+lambda:TechniqueEnum#cryo_em	cryo_em	skos:exactMatch		CHMO:0002413		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#xray_crystallography	xray_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#saxs	saxs	skos:exactMatch		CHMO:0000204		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#waxs	waxs	skos:exactMatch		CHMO:0000207		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#sans	sans	skos:exactMatch		CHMO:0000184		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#cryo_et	cryo_et	skos:exactMatch		CHMO:0002413		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#electron_microscopy	electron_microscopy	skos:exactMatch		CHMO:0000068		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#mass_spectrometry	mass_spectrometry	skos:exactMatch		CHMO:0000470		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#xas	xas	skos:exactMatch		CHMO:0000298		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#xanes	xanes	skos:exactMatch		CHMO:0000305		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#exafs	exafs	skos:exactMatch		CHMO:0000300		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#neutron_crystallography	neutron_crystallography	skos:exactMatch		CHMO:0000182		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#fiber_diffraction	fiber_diffraction	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#time_resolved_crystallography	time_resolved_crystallography	skos:exactMatch		CHMO:0000156		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:TechniqueEnum#xray_tomography	xray_tomography	skos:exactMatch		CHMO:0002743		skos:exactMatch	http://w3id.org/lambda/						TechniqueEnum			
+lambda:accelerating_voltage	cryoEMInstrument__accelerating_voltage	skos:exactMatch		mmCIF:_em_imaging.accelerating_voltage		skos:exactMatch	http://w3id.org/lambda/									
+lambda:c2_aperture	cryoEMInstrument__c2_aperture	skos:exactMatch		mmCIF:_em_imaging.c2_aperture_diameter		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cs	cryoEMInstrument__cs	skos:exactMatch		mmCIF:_em_imaging.nominal_cs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cs_corrector	cryoEMInstrument__cs_corrector	skos:exactMatch		mmCIF:_em_imaging.alignment_procedure		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_mode	cryoEMInstrument__detector_mode	skos:exactMatch		mmCIF:_em_image_recording.detector_mode		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_model	cryoEMInstrument__detector_model	skos:exactMatch		mmCIF:_em_image_recording.film_or_detector_model		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_technology	cryoEMInstrument__detector_technology	skos:exactMatch		mmCIF:_em_image_recording.film_or_detector_model		skos:exactMatch	http://w3id.org/lambda/									
+lambda:energy_filter_slit_width	cryoEMInstrument__energy_filter_slit_width	skos:exactMatch		mmCIF:_em_imaging.energy_filter_slit_width		skos:exactMatch	http://w3id.org/lambda/									
+lambda:imaging_mode	cryoEMInstrument__imaging_mode	skos:exactMatch		mmCIF:_em_imaging.mode		skos:exactMatch	http://w3id.org/lambda/									
+lambda:spotsize	cryoEMInstrument__spotsize	skos:exactMatch		mmCIF:_em_imaging.detector_spot_size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:blot_time	cryoEMPreparation__blot_time	skos:exactMatch		mmCIF:_em_vitrification.time_resolved_state		skos:exactMatch	http://w3id.org/lambda/									
+lambda:chamber_temperature	cryoEMPreparation__chamber_temperature	skos:exactMatch		mmCIF:_em_vitrification.chamber_temperature		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ethane_temperature	cryoEMPreparation__ethane_temperature	skos:exactMatch		mmCIF:_em_vitrification.cryogen_name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:glow_discharge_applied	cryoEMPreparation__glow_discharge_applied	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:glow_discharge_atmosphere	cryoEMPreparation__glow_discharge_atmosphere	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_atmosphere		skos:exactMatch	http://w3id.org/lambda/									
+lambda:glow_discharge_pressure	cryoEMPreparation__glow_discharge_pressure	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_pressure		skos:exactMatch	http://w3id.org/lambda/									
+lambda:glow_discharge_time	cryoEMPreparation__glow_discharge_time	skos:exactMatch		mmCIF:_em_sample_support.pretreatment_time		skos:exactMatch	http://w3id.org/lambda/									
+lambda:grid_material	cryoEMPreparation__grid_material	skos:exactMatch		mmCIF:_em_sample_support.grid_material		skos:exactMatch	http://w3id.org/lambda/									
+lambda:grid_type	cryoEMPreparation__grid_type	skos:exactMatch		mmCIF:_em_sample_support.grid_type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:humidity_percentage	cryoEMPreparation__humidity_percentage	skos:exactMatch		mmCIF:_em_vitrification.chamber_humidity		skos:exactMatch	http://w3id.org/lambda/									
+lambda:support_film	cryoEMPreparation__support_film	skos:exactMatch		mmCIF:_em_sample_support.grid_support_film		skos:exactMatch	http://w3id.org/lambda/									
+lambda:vitrification_instrument	cryoEMPreparation__vitrification_instrument	skos:exactMatch		mmCIF:_em_vitrification.instrument		skos:exactMatch	http://w3id.org/lambda/									
+lambda:vitrification_method	cryoEMPreparation__vitrification_method	skos:exactMatch		mmCIF:_em_vitrification.method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cryo_protectant	crystallizationConditions__cryo_protectant	skos:exactMatch		nsls2:Cryo_Protectant		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystal_id	crystallizationConditions__crystal_id	skos:exactMatch		nsls2:Crystal_ID		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystal_size_um	crystallizationConditions__crystal_size_um	skos:exactMatch		nsls2:Crystal_Size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystallization_conditions	crystallizationConditions__crystallization_conditions	skos:exactMatch		nsls2:Conditions		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystallization_conditions	crystallizationConditions__crystallization_conditions	skos:exactMatch		mmCIF:_exptl_crystal_grow.pdbx_details		skos:exactMatch	http://w3id.org/lambda/									
+lambda:drop_volume	crystallizationConditions__drop_volume	skos:exactMatch		nsls2:Drop_Volume		skos:exactMatch	http://w3id.org/lambda/									
+lambda:method	crystallizationConditions__method	skos:exactMatch		nsls2:Method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:method	crystallizationConditions__method	skos:exactMatch		mmCIF:_exptl_crystal_grow.method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_x_px	dataCollectionStrategy__beam_center_x_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_y_px	dataCollectionStrategy__beam_center_y_px	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_distance_mm	dataCollectionStrategy__detector_distance_mm	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:flux_photons_per_s	dataCollectionStrategy__flux_photons_per_s	skos:exactMatch		mmCIF:_diffrn_source.pdbx_flux		skos:exactMatch	http://w3id.org/lambda/									
+lambda:oscillation_per_image_deg	dataCollectionStrategy__oscillation_per_image_deg	skos:exactMatch		mmCIF:_diffrn_scan.angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pixel_size_calibrated	dataCollectionStrategy__pixel_size_calibrated	skos:exactMatch		mmCIF:_em_image_recording.calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:temperature_k	dataCollectionStrategy__temperature_k	skos:exactMatch		mmCIF:_diffrn.ambient_temp		skos:exactMatch	http://w3id.org/lambda/									
+lambda:total_rotation_deg	dataCollectionStrategy__total_rotation_deg	skos:exactMatch		mmCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wavelength_a	dataCollectionStrategy__wavelength_a	skos:exactMatch		mmCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		nsls2:Beam_xy_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_x	experimentRun__beam_center_x	skos:exactMatch		ispyb:DataCollection.xBeam		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		nsls2:Beam_xy_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		imgCIF:_diffrn_detector.beam_centre_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		mmCIF:_diffrn_detector.beam_center_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beam_center_y	experimentRun__beam_center_y	skos:exactMatch		ispyb:DataCollection.yBeam		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline	experimentRun__beamline	skos:exactMatch		nsls2:Beamline		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline	experimentRun__beamline	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline	experimentRun__beamline	skos:exactMatch		ispyb:BLSession.beamLineName		skos:exactMatch	http://w3id.org/lambda/									
+lambda:calibrated_pixel_size	experimentRun__calibrated_pixel_size	skos:exactMatch		mmCIF:_em_image_recording.calibrated_pixel_size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:defocus_range_max	experimentRun__defocus_range_max	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_max		skos:exactMatch	http://w3id.org/lambda/									
+lambda:defocus_range_min	experimentRun__defocus_range_min	skos:exactMatch		mmCIF:_em_imaging.nominal_defocus_min		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		nsls2:Detector_distance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		imgCIF:_diffrn_measurement.sample_detector_distance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		mmCIF:_diffrn_detector.distance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_distance	experimentRun__detector_distance	skos:exactMatch		ispyb:DataCollection.detectorDistance		skos:exactMatch	http://w3id.org/lambda/									
+lambda:end_time	experimentRun__end_time	skos:exactMatch		ispyb:DataCollection.endTime		skos:exactMatch	http://w3id.org/lambda/									
+lambda:exposure_time	experimentRun__exposure_time	skos:exactMatch		ispyb:DataCollection.exposureTime		skos:exactMatch	http://w3id.org/lambda/									
+lambda:exposure_time_per_frame	experimentRun__exposure_time_per_frame	skos:exactMatch		mmCIF:_em_image_recording.average_exposure_time		skos:exactMatch	http://w3id.org/lambda/									
+lambda:flux	experimentRun__flux	skos:exactMatch		ispyb:DataCollection.flux		skos:exactMatch	http://w3id.org/lambda/									
+lambda:flux_end	experimentRun__flux_end	skos:exactMatch		ispyb:DataCollection.flux_end		skos:exactMatch	http://w3id.org/lambda/									
+lambda:frames_per_movie	experimentRun__frames_per_movie	skos:exactMatch		mmCIF:_em_image_recording.num_frames_per_image		skos:exactMatch	http://w3id.org/lambda/									
+lambda:magnification	experimentRun__magnification	skos:exactMatch		mmCIF:_em_imaging.nominal_magnification		skos:exactMatch	http://w3id.org/lambda/									
+lambda:oscillation_angle	experimentRun__oscillation_angle	skos:exactMatch		nsls2:Angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:oscillation_angle	experimentRun__oscillation_angle	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:oscillation_angle	experimentRun__oscillation_angle	skos:exactMatch		mmCIF:_diffrn_scan.angle_increment		skos:exactMatch	http://w3id.org/lambda/									
+lambda:oscillation_angle	experimentRun__oscillation_angle	skos:exactMatch		ispyb:DataCollection.axisRange		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pixel_size_x	experimentRun__pixel_size_x	skos:exactMatch		nsls2:Pixel_size_x		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pixel_size_x	experimentRun__pixel_size_x	skos:exactMatch		imgCIF:_array_element_size.size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pixel_size_y	experimentRun__pixel_size_y	skos:exactMatch		nsls2:Pixel_size_y		skos:exactMatch	http://w3id.org/lambda/									
+lambda:pixel_size_y	experimentRun__pixel_size_y	skos:exactMatch		imgCIF:_array_element_size.size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution	experimentRun__resolution	skos:exactMatch		ispyb:DataCollection.resolution		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_at_corner	experimentRun__resolution_at_corner	skos:exactMatch		ispyb:DataCollection.resolutionAtCorner		skos:exactMatch	http://w3id.org/lambda/									
+lambda:slit_gap_horizontal	experimentRun__slit_gap_horizontal	skos:exactMatch		ispyb:DataCollection.slitGapHorizontal		skos:exactMatch	http://w3id.org/lambda/									
+lambda:slit_gap_vertical	experimentRun__slit_gap_vertical	skos:exactMatch		ispyb:DataCollection.slitGapVertical		skos:exactMatch	http://w3id.org/lambda/									
+lambda:start_angle	experimentRun__start_angle	skos:exactMatch		nsls2:Start_angle		skos:exactMatch	http://w3id.org/lambda/									
+lambda:start_angle	experimentRun__start_angle	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_start		skos:exactMatch	http://w3id.org/lambda/									
+lambda:start_angle	experimentRun__start_angle	skos:exactMatch		ispyb:DataCollection.axisStart		skos:exactMatch	http://w3id.org/lambda/									
+lambda:start_time	experimentRun__start_time	skos:exactMatch		ispyb:DataCollection.startTime		skos:exactMatch	http://w3id.org/lambda/									
+lambda:synchrotron_mode	experimentRun__synchrotron_mode	skos:exactMatch		ispyb:DataCollection.synchrotronMode		skos:exactMatch	http://w3id.org/lambda/									
+lambda:total_dose	experimentRun__total_dose	skos:exactMatch		mmCIF:_em_image_recording.avg_electron_dose_per_image		skos:exactMatch	http://w3id.org/lambda/									
+lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		nsls2:Total_rotation_deg		skos:exactMatch	http://w3id.org/lambda/									
+lambda:total_rotation	experimentRun__total_rotation	skos:exactMatch		imgCIF:_diffrn_scan_axis.angle_range		skos:exactMatch	http://w3id.org/lambda/									
+lambda:transmission	experimentRun__transmission	skos:exactMatch		ispyb:DataCollection.transmission		skos:exactMatch	http://w3id.org/lambda/									
+lambda:undulator_gap	experimentRun__undulator_gap	skos:exactMatch		ispyb:DataCollection.undulatorGap1		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wavelength	experimentRun__wavelength	skos:exactMatch		nsls2:Wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wavelength	experimentRun__wavelength	skos:exactMatch		imgCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wavelength	experimentRun__wavelength	skos:exactMatch		mmCIF:_diffrn_radiation_wavelength.wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wavelength	experimentRun__wavelength	skos:exactMatch		ispyb:DataCollection.wavelength		skos:exactMatch	http://w3id.org/lambda/									
+lambda:beamline_id	instrument__beamline_id	skos:exactMatch		mmCIF:_diffrn_source.pdbx_synchrotron_beamline		skos:exactMatch	http://w3id.org/lambda/									
+lambda:anom_corr	qualityMetrics__anom_corr	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half_anomalous		skos:exactMatch	http://w3id.org/lambda/									
+lambda:average_b_factor_a2	qualityMetrics__average_b_factor_a2	skos:exactMatch		mmCIF:_refine.B_iso_mean		skos:exactMatch	http://w3id.org/lambda/									
+lambda:cc_half	qualityMetrics__cc_half	skos:exactMatch		mmCIF:_reflns.pdbx_CC_half		skos:exactMatch	http://w3id.org/lambda/									
+lambda:clashscore	qualityMetrics__clashscore	skos:exactMatch		mmCIF:_pdbx_struct_quality.clashscore		skos:exactMatch	http://w3id.org/lambda/									
+lambda:multiplicity	qualityMetrics__multiplicity	skos:exactMatch		mmCIF:_reflns.pdbx_redundancy		skos:exactMatch	http://w3id.org/lambda/									
+lambda:r_free	qualityMetrics__r_free	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_free		skos:exactMatch	http://w3id.org/lambda/									
+lambda:r_merge	qualityMetrics__r_merge	skos:exactMatch		mmCIF:_reflns.pdbx_Rmerge_I_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:r_pim	qualityMetrics__r_pim	skos:exactMatch		mmCIF:_reflns.pdbx_Rpim_I_all		skos:exactMatch	http://w3id.org/lambda/									
+lambda:r_work	qualityMetrics__r_work	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_work		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_favored_percent	qualityMetrics__ramachandran_favored_percent	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_favored		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_outliers_percent	qualityMetrics__ramachandran_outliers_percent	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_outliers		skos:exactMatch	http://w3id.org/lambda/									
+lambda:space_group	qualityMetrics__space_group	skos:exactMatch		mmCIF:_symmetry.space_group_name_H-M		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_a	qualityMetrics__unit_cell_a	skos:exactMatch		mmCIF:_cell.length_a		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_alpha	qualityMetrics__unit_cell_alpha	skos:exactMatch		mmCIF:_cell.angle_alpha		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_b	qualityMetrics__unit_cell_b	skos:exactMatch		mmCIF:_cell.length_b		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_beta	qualityMetrics__unit_cell_beta	skos:exactMatch		mmCIF:_cell.angle_beta		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_c	qualityMetrics__unit_cell_c	skos:exactMatch		mmCIF:_cell.length_c		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_gamma	qualityMetrics__unit_cell_gamma	skos:exactMatch		mmCIF:_cell.angle_gamma		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wilson_b_factor_a2	qualityMetrics__wilson_b_factor_a2	skos:exactMatch		mmCIF:_reflns.B_iso_Wilson_estimate		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_0_143	refinementParameters__resolution_0_143	skos:exactMatch		mmCIF:_em_3d_reconstruction.resolution		skos:exactMatch	http://w3id.org/lambda/									
+lambda:symmetry	refinementParameters__symmetry	skos:exactMatch		mmCIF:_em_3d_reconstruction.symmetry_type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:construct	sample__construct	skos:exactMatch		nsls2:Construct		skos:exactMatch	http://w3id.org/lambda/									
+lambda:expression_system	sample__expression_system	skos:exactMatch		nsls2:Expression_System		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ligand	sample__ligand	skos:exactMatch		nsls2:Ligand		skos:exactMatch	http://w3id.org/lambda/									
+lambda:molecular_weight	sample__molecular_weight	skos:exactMatch		mmCIF:_entity.formula_weight		skos:exactMatch	http://w3id.org/lambda/									
+lambda:mutations	sample__mutations	skos:exactMatch		nsls2:Mutations		skos:exactMatch	http://w3id.org/lambda/									
+lambda:protein_name	sample__protein_name	skos:exactMatch		nsls2:Protein_Name		skos:exactMatch	http://w3id.org/lambda/									
+lambda:tag	sample__tag	skos:exactMatch		nsls2:Tag		skos:exactMatch	http://w3id.org/lambda/									
+lambda:anomalous_completeness	workflowRun__anomalous_completeness	skos:exactMatch		ispyb:AutoProcScalingStatistics.anomalousCompleteness		skos:exactMatch	http://w3id.org/lambda/									
+lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		nsls2:Completeness		skos:exactMatch	http://w3id.org/lambda/									
+lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		mmCIF:_reflns.percent_possible_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:completeness_percent	workflowRun__completeness_percent	skos:exactMatch		ispyb:AutoProcScalingStatistics.completeness		skos:exactMatch	http://w3id.org/lambda/									
+lambda:n_total_observations	workflowRun__n_total_observations	skos:exactMatch		mmCIF:_reflns.number_all		skos:exactMatch	http://w3id.org/lambda/									
+lambda:n_total_unique	workflowRun__n_total_unique	skos:exactMatch		mmCIF:_reflns.number_obs		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_favored	workflowRun__ramachandran_favored	skos:exactMatch		nsls2:Ramachandran_Favored		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_favored	workflowRun__ramachandran_favored	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_favored		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_outliers	workflowRun__ramachandran_outliers	skos:exactMatch		nsls2:Ramachandran_Outliers		skos:exactMatch	http://w3id.org/lambda/									
+lambda:ramachandran_outliers	workflowRun__ramachandran_outliers	skos:exactMatch		mmCIF:_pdbx_struct_quality.ramachandran_outliers		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_high	workflowRun__resolution_high	skos:exactMatch		nsls2:Resolution_High_A		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_high	workflowRun__resolution_high	skos:exactMatch		mmCIF:_reflns.d_resolution_high		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_high	workflowRun__resolution_high	skos:exactMatch		ispyb:AutoProcScalingStatistics.resolutionLimitHigh		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_low	workflowRun__resolution_low	skos:exactMatch		nsls2:Resolution_Low_A		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_low	workflowRun__resolution_low	skos:exactMatch		mmCIF:_reflns.d_resolution_low		skos:exactMatch	http://w3id.org/lambda/									
+lambda:resolution_low	workflowRun__resolution_low	skos:exactMatch		ispyb:AutoProcScalingStatistics.resolutionLimitLow		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rfree	workflowRun__rfree	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_free		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rmsd_angles	workflowRun__rmsd_angles	skos:exactMatch		nsls2:RMSD_angles		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rmsd_angles	workflowRun__rmsd_angles	skos:exactMatch		mmCIF:_refine.pdbx_ls_sigma_I		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rmsd_bonds	workflowRun__rmsd_bonds	skos:exactMatch		nsls2:RMSD_bonds		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rmsd_bonds	workflowRun__rmsd_bonds	skos:exactMatch		mmCIF:_refine.pdbx_ls_sigma_F		skos:exactMatch	http://w3id.org/lambda/									
+lambda:rwork	workflowRun__rwork	skos:exactMatch		mmCIF:_refine.ls_R_factor_R_work		skos:exactMatch	http://w3id.org/lambda/									
+lambda:space_group	workflowRun__space_group	skos:exactMatch		nsls2:Space_Group		skos:exactMatch	http://w3id.org/lambda/									
+lambda:space_group	workflowRun__space_group	skos:exactMatch		mmCIF:_symmetry.space_group_name_H-M		skos:exactMatch	http://w3id.org/lambda/									
+lambda:space_group	workflowRun__space_group	skos:exactMatch		ispyb:AutoProcScaling.spaceGroup		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_a	workflowRun__unit_cell_a	skos:exactMatch		nsls2:Unit_Cell_a		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_a	workflowRun__unit_cell_a	skos:exactMatch		mmCIF:_cell.length_a		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_alpha	workflowRun__unit_cell_alpha	skos:exactMatch		nsls2:Unit_Cell_alpha		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_alpha	workflowRun__unit_cell_alpha	skos:exactMatch		mmCIF:_cell.angle_alpha		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_b	workflowRun__unit_cell_b	skos:exactMatch		nsls2:Unit_Cell_b		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_b	workflowRun__unit_cell_b	skos:exactMatch		mmCIF:_cell.length_b		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_beta	workflowRun__unit_cell_beta	skos:exactMatch		nsls2:Unit_Cell_beta		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_beta	workflowRun__unit_cell_beta	skos:exactMatch		mmCIF:_cell.angle_beta		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_c	workflowRun__unit_cell_c	skos:exactMatch		nsls2:Unit_Cell_c		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_c	workflowRun__unit_cell_c	skos:exactMatch		mmCIF:_cell.length_c		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_gamma	workflowRun__unit_cell_gamma	skos:exactMatch		nsls2:Unit_Cell_gamma		skos:exactMatch	http://w3id.org/lambda/									
+lambda:unit_cell_gamma	workflowRun__unit_cell_gamma	skos:exactMatch		mmCIF:_cell.angle_gamma		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wilson_b_factor	workflowRun__wilson_b_factor	skos:exactMatch		nsls2:Wilson_B		skos:exactMatch	http://w3id.org/lambda/									
+lambda:wilson_b_factor	workflowRun__wilson_b_factor	skos:exactMatch		mmCIF:_reflns.B_iso_Wilson_estimate		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_manufacturer	xRayInstrument__detector_manufacturer	skos:exactMatch		mmCIF:_diffrn_detector.detector		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_model	xRayInstrument__detector_model	skos:exactMatch		mmCIF:_diffrn_detector.pdbx_detector_model		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_technology	xRayInstrument__detector_technology	skos:exactMatch		nsls2:Detector		skos:exactMatch	http://w3id.org/lambda/									
+lambda:detector_technology	xRayInstrument__detector_technology	skos:exactMatch		mmCIF:_diffrn_detector.type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:flux_density	xRayInstrument__flux_density	skos:exactMatch		mmCIF:_diffrn_source.pdbx_flux		skos:exactMatch	http://w3id.org/lambda/									
+lambda:goniometer_type	xRayInstrument__goniometer_type	skos:exactMatch		mmCIF:_diffrn_measurement.device		skos:exactMatch	http://w3id.org/lambda/									
+lambda:monochromator_type	xRayInstrument__monochromator_type	skos:exactMatch		mmCIF:_diffrn_source.monochromator		skos:exactMatch	http://w3id.org/lambda/									
+lambda:source_type	xRayInstrument__source_type	skos:exactMatch		mmCIF:_diffrn_source.source		skos:exactMatch	http://w3id.org/lambda/									
+lambda:crystallization_method	xRayPreparation__crystallization_method	skos:exactMatch		mmCIF:_exptl_crystal_grow.method		skos:exactMatch	http://w3id.org/lambda/									
+lambda:loop_size	xRayPreparation__loop_size	skos:exactMatch		nsls2:Loop_Size		skos:exactMatch	http://w3id.org/lambda/									
+lambda:mounting_method	xRayPreparation__mounting_method	skos:exactMatch		nsls2:Mount_Type		skos:exactMatch	http://w3id.org/lambda/									
+lambda:mounting_temperature	xRayPreparation__mounting_temperature	skos:exactMatch		nsls2:Temperature		skos:exactMatch	http://w3id.org/lambda/									
+lambda:temperature_c	xRayPreparation__temperature_c	skos:exactMatch		mmCIF:_exptl_crystal_grow.temp		skos:exactMatch	http://w3id.org/lambda/									

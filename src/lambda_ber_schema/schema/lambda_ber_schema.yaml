@@ -1,6 +1,6 @@
 id: http://w3id.org/lambda/
 name: lambda-ber-schema
-version: "0.1.2.post32.dev0+2ad9ef5" # Managed by uv-dynamic-versioning
+version: "0.1.2.post123.dev0+b316f8a" # Managed by uv-dynamic-versioning
 description: |
   lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, 
   from atomic-resolution structures to tissue-level organization. It supports diverse experimental 
@@ -300,6 +300,8 @@ classes:
         description: "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_entity.formula_weight
       concentration:
         description: "Sample concentration, typically specified in mg/mL or µM. Data providers may specify alternative units (e.g., molar, g/L) by including the unit in the QuantityValue."
         range: QuantityValue
@@ -383,39 +385,33 @@ classes:
       protein_name:
         description: "Name of the protein"
         range: string
-        slot_uri: nsls2:Protein_Name
-        comments:
-          - "Maps to NSLS2 spreadsheet: Protein_Name"
+        exact_mappings:
+          - nsls2:Protein_Name
       construct:
         description: "Construct description (e.g., domain boundaries, truncations)"
         range: string
-        slot_uri: nsls2:Construct
-        comments:
-          - "Maps to NSLS2 spreadsheet: Construct"
+        exact_mappings:
+          - nsls2:Construct
       tag:
         description: "Affinity tag (e.g., His6, GST, MBP)"
         range: string
-        slot_uri: nsls2:Tag
-        comments:
-          - "Maps to NSLS2 spreadsheet: Tag"
+        exact_mappings:
+          - nsls2:Tag
       mutations:
         description: "Mutations present in the sample"
         range: string
-        slot_uri: nsls2:Mutations
-        comments:
-          - "Maps to NSLS2 spreadsheet: Mutations"
+        exact_mappings:
+          - nsls2:Mutations
       expression_system:
         description: "Expression system used"
         range: string
-        slot_uri: nsls2:Expression_System
-        comments:
-          - "Maps to NSLS2 spreadsheet: Expression_System"
+        exact_mappings:
+          - nsls2:Expression_System
       ligand:
         description: "Ligand or small molecule bound to sample"
         range: string
-        slot_uri: nsls2:Ligand
-        comments:
-          - "Maps to NSLS2 spreadsheet: Ligand"
+        exact_mappings:
+          - nsls2:Ligand
       oligomeric_state:
         description: "Oligomeric state of the sample (e.g., monomer, dimer, tetramer, hexamer)"
         range: string
@@ -619,7 +615,8 @@ classes:
       beamline_id:
         description: "Beamline identifier at synchrotron/neutron facility"
         range: string
-        slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
+        exact_mappings:
+          - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
         comments:
           - "Use facility-specific naming convention"
           - "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
@@ -642,15 +639,21 @@ classes:
         description: "Accelerating voltage in kV"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.accelerating_voltage
       cs_corrector:
         description: "Spherical aberration corrector present"
         range: boolean
+        exact_mappings:
+          - mmCIF:_em_imaging.alignment_procedure
       phase_plate:
         description: "Phase plate available"
         range: boolean
       detector_technology:
         description: "Generic detector technology type"
         range: DetectorTechnologyEnum
+        exact_mappings:
+          - mmCIF:_em_image_recording.film_or_detector_model
         comments:
           - "Use this for technology classification (e.g., direct_electron_detector, ccd)"
           - "See detector_manufacturer and detector_model for specific equipment details"
@@ -662,11 +665,15 @@ classes:
       detector_model:
         description: "Detector model (e.g., K3, Falcon 4i, DE-64)"
         range: string
+        exact_mappings:
+          - mmCIF:_em_image_recording.film_or_detector_model
         comments:
           - "Examples: K3 BioQuantum, Falcon 4i, DE-64"
       detector_mode:
         description: "Supported or default detector operating mode"
         range: DetectorModeEnum
+        exact_mappings:
+          - mmCIF:_em_image_recording.detector_mode
         comments:
           - "Indicates operating mode capabilities (e.g., counting, super_resolution)"
       detector_position:
@@ -687,10 +694,14 @@ classes:
         description: "Spherical aberration (Cs) in millimeters"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.nominal_cs
       c2_aperture:
         description: "C2 aperture size in micrometers"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.c2_aperture_diameter
       objective_aperture:
         description: "Objective aperture size in micrometers"
         range: QuantityValue
@@ -711,6 +722,8 @@ classes:
         description: "Energy filter slit width in eV"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.energy_filter_slit_width
       pixel_size_physical:
         description: "Physical pixel size in micrometers"
         range: QuantityValue
@@ -725,6 +738,8 @@ classes:
         description: "Electron beam spot size setting"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.detector_spot_size
       gunlens:
         description: "Gun lens setting"
         range: QuantityValue
@@ -732,6 +747,8 @@ classes:
       imaging_mode:
         description: "Imaging mode for electron microscopy"
         range: ImagingModeEnum
+        exact_mappings:
+          - mmCIF:_em_imaging.mode
       tem_beam_diameter:
         description: "TEM beam diameter in micrometers"
         range: QuantityValue
@@ -744,23 +761,29 @@ classes:
       source_type:
         description: "Type of X-ray source"
         range: XRaySourceTypeEnum
+        exact_mappings:
+          - mmCIF:_diffrn_source.source
       detector_technology:
         description: "Generic detector technology type"
         range: DetectorTechnologyEnum
-        slot_uri: nsls2:Detector
+        exact_mappings:
+          - nsls2:Detector
+          - mmCIF:_diffrn_detector.type
         comments:
           - "Use this for technology classification (e.g., hybrid_photon_counting, ccd)"
-          - "Maps to CBF: Detector (may contain model name)"
-          - "Maps to PDB: _diffrn_detector.type"
           - "See detector_manufacturer and detector_model for specific equipment details"
       detector_manufacturer:
         description: "Detector manufacturer (e.g., Dectris, Bruker, Rigaku, Rayonix)"
         range: string
+        exact_mappings:
+          - mmCIF:_diffrn_detector.detector
         comments:
           - "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
       detector_model:
         description: "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)"
         range: string
+        exact_mappings:
+          - mmCIF:_diffrn_detector.pdbx_detector_model
         comments:
           - "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
       energy_min:
@@ -783,10 +806,16 @@ classes:
         description: "Photon flux density in photons/s/mm²"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_source.pdbx_flux
       monochromator_type:
         description: "Type of monochromator"
+        exact_mappings:
+          - mmCIF:_diffrn_source.monochromator
       goniometer_type:
         description: "Type of goniometer"
+        exact_mappings:
+          - mmCIF:_diffrn_measurement.device
       crystal_cooling_capability:
         description: "Crystal cooling system available"
         range: boolean
@@ -915,10 +944,14 @@ classes:
         description: "Magnification used during data collection"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.nominal_magnification
       calibrated_pixel_size:
         description: "Calibrated pixel size in Angstroms per pixel"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_image_recording.calibrated_pixel_size
       camera_binning:
         description: "Camera binning factor. This must be a positive float value (e.g., 1, 1.5, 2, 3)."
         range: QuantityValue
@@ -927,10 +960,14 @@ classes:
         description: "Exposure time per frame in milliseconds"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_image_recording.average_exposure_time
       frames_per_movie:
         description: "Number of frames per movie"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_image_recording.num_frames_per_image
       total_exposure_time:
         description: "Total exposure time in milliseconds"
         range: QuantityValue
@@ -939,6 +976,8 @@ classes:
         description: "Total electron dose in e-/Angstrom^2"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_image_recording.avg_electron_dose_per_image
       dose_rate:
         description: "Dose rate in e-/pixel/s or e-/Angstrom^2/s"
         range: QuantityValue
@@ -951,10 +990,14 @@ classes:
         description: "Minimum defocus range in micrometers"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.nominal_defocus_min
       defocus_range_max:
         description: "Maximum defocus range in micrometers"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_imaging.nominal_defocus_max
       defocus_range_increment:
         description: "Defocus range increment in micrometers"
         range: QuantityValue
@@ -1363,10 +1406,14 @@ classes:
         description: "Total number of observations (before merging)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.number_all
       n_total_unique:
         description: "Total number of unique reflections"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.number_obs
       # ISPyB cross-reference IDs for workflow
       ispyb_auto_proc_program_id:
         description: "ISPyB AutoProcProgram.autoProcProgramId"
@@ -1381,38 +1428,42 @@ classes:
         description: "Refinement R-factor (working set)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_refine.ls_R_factor_R_work
       rfree:
         description: "R-free (test set)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_refine.ls_R_factor_R_free
       rmsd_bonds:
         description: "RMSD from ideal bond lengths, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - "nsls2:RMSD_bonds"
-          - "mmCIF:_refine.ls_d_res_high"
+          - "mmCIF:_refine.pdbx_ls_sigma_F"
       rmsd_angles:
         description: "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - "nsls2:RMSD_angles"
-          - "mmCIF:_refine.ls_d_res_low"
+          - "mmCIF:_refine.pdbx_ls_sigma_I"
       ramachandran_favored:
         description: "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - "nsls2:Ramachandran_Favored"
-          - "mmCIF:_refine.pdbx_overall_ESU_R"
+          - "mmCIF:_pdbx_struct_quality.ramachandran_favored"
       ramachandran_outliers:
         description: "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
         exact_mappings:
           - "nsls2:Ramachandran_Outliers"
-          - "mmCIF:_refine.pdbx_overall_ESU_R_Free"
+          - "mmCIF:_pdbx_struct_quality.ramachandran_outliers"
       clashscore:
         description: "MolProbity clashscore"
         range: QuantityValue
@@ -1861,9 +1912,13 @@ classes:
       grid_type:
         description: "Type of EM grid used"
         range: GridTypeEnum
+        exact_mappings:
+          - mmCIF:_em_sample_support.grid_type
       support_film:
         description: "Support film type"
         range: string
+        exact_mappings:
+          - mmCIF:_em_sample_support.grid_support_film
       hole_size:
         description: "Hole size, typically specified in micrometers (range: 0.5-5.0). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1871,10 +1926,14 @@ classes:
       vitrification_method:
         description: "Method used for vitrification"
         range: VitrificationMethodEnum
+        exact_mappings:
+          - mmCIF:_em_vitrification.method
       blot_time:
         description: "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_vitrification.time_resolved_state
       blot_force:
         description: "Blotting force setting"
         range: QuantityValue
@@ -1883,21 +1942,31 @@ classes:
         description: "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_vitrification.chamber_humidity
       chamber_temperature:
         description: "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_vitrification.chamber_temperature
       # Additional detailed vitrification parameters from PNNL schema
       grid_material:
         description: "Grid material"
         range: GridMaterialEnum
+        exact_mappings:
+          - mmCIF:_em_sample_support.grid_material
       glow_discharge_applied:
         description: "Whether glow discharge treatment was applied"
         range: boolean
+        exact_mappings:
+          - mmCIF:_em_sample_support.pretreatment_type
       glow_discharge_time:
         description: "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_sample_support.pretreatment_time
       glow_discharge_current:
         description: "Glow discharge current, typically specified in milliamperes. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -1905,13 +1974,19 @@ classes:
       glow_discharge_atmosphere:
         description: "Glow discharge atmosphere (air, amylamine)"
         range: string
+        exact_mappings:
+          - mmCIF:_em_sample_support.pretreatment_atmosphere
       glow_discharge_pressure:
         description: "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_sample_support.pretreatment_pressure
       vitrification_instrument:
         description: "Vitrification instrument used (e.g., Vitrobot)"
         range: string
+        exact_mappings:
+          - mmCIF:_em_vitrification.instrument
       blot_number:
         description: "Number of blots applied"
         range: QuantityValue
@@ -1936,6 +2011,8 @@ classes:
         description: "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_vitrification.cryogen_name
       plasma_treatment:
         description: "Plasma treatment details"
 
@@ -1946,22 +2023,21 @@ classes:
       method:
         description: "Crystallization method used"
         range: CrystallizationMethodEnum
-        slot_uri: nsls2:Method
-        comments:
-          - "Maps to NSLS2 spreadsheet: Method"
+        exact_mappings:
+          - nsls2:Method
+          - mmCIF:_exptl_crystal_grow.method
       crystallization_conditions:
         description: "Complete description of crystallization conditions including precipitant, pH, salts"
         range: string
-        slot_uri: nsls2:Conditions
-        comments:
-          - "Maps to NSLS2 spreadsheet: Conditions"
+        exact_mappings:
+          - nsls2:Conditions
+          - mmCIF:_exptl_crystal_grow.pdbx_details
       drop_volume:
         description: "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        slot_uri: nsls2:Drop_Volume
-        comments:
-          - "Maps to NSLS2 spreadsheet: Drop_Volume"
+        exact_mappings:
+          - nsls2:Drop_Volume
       protein_concentration:
         description: "Protein concentration for crystallization in mg/mL"
         range: QuantityValue
@@ -1969,21 +2045,18 @@ classes:
       crystal_size_um:
         description: "Crystal dimensions in micrometers (length x width x height)"
         range: string
-        slot_uri: nsls2:Crystal_Size
-        comments:
-          - "Maps to NSLS2 spreadsheet: Crystal_Size"
+        exact_mappings:
+          - nsls2:Crystal_Size
       cryo_protectant:
         description: "Cryoprotectant used for crystal cooling"
         range: string
-        slot_uri: nsls2:Cryo_Protectant
-        comments:
-          - "Maps to NSLS2 spreadsheet: Cryo_Protectant"
+        exact_mappings:
+          - nsls2:Cryo_Protectant
       crystal_id:
         description: "Identifier for the specific crystal used"
         range: string
-        slot_uri: nsls2:Crystal_ID
-        comments:
-          - "Maps to NSLS2 spreadsheet: Crystal_ID"
+        exact_mappings:
+          - nsls2:Crystal_ID
       screen_name:
         description: "Name of crystallization screen used"
       temperature_c:
@@ -2018,6 +2091,8 @@ classes:
       crystallization_method:
         description: "Method used for crystallization"
         range: CrystallizationMethodEnum
+        exact_mappings:
+          - mmCIF:_exptl_crystal_grow.method
       crystallization_conditions:
         description: "Detailed crystallization conditions"
         range: CrystallizationConditions
@@ -2027,6 +2102,8 @@ classes:
         description: "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_exptl_crystal_grow.temp
       drop_ratio_protein_to_reservoir:
         description: "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)"
       drop_volume_nl:
@@ -2064,9 +2141,8 @@ classes:
         description: "Conditions for crystal soaking"
       mounting_method:
         description: "Crystal mounting method"
-        slot_uri: nsls2:Mount_Type
-        comments:
-          - "Maps to NSLS2 spreadsheet: Mount_Type"
+        exact_mappings:
+          - nsls2:Mount_Type
       flash_cooling_method:
         description: "Flash cooling protocol"
       crystal_notes:
@@ -2076,16 +2152,14 @@ classes:
         description: "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        slot_uri: nsls2:Loop_Size
-        comments:
-          - "Maps to NSLS2 spreadsheet: Loop_Size"
+        exact_mappings:
+          - nsls2:Loop_Size
       mounting_temperature:
         description: "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
-        slot_uri: nsls2:Temperature
-        comments:
-          - "Maps to NSLS2 spreadsheet: Temperature"
+        exact_mappings:
+          - nsls2:Temperature
 
   SAXSPreparation:
     is_a: TechniqueSpecificPreparation
@@ -2161,6 +2235,8 @@ classes:
         description: "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_radiation_wavelength.wavelength
       detector_mode:
         description: "Detector operating mode used during this experiment"
         range: DetectorModeEnum
@@ -2171,6 +2247,8 @@ classes:
         description: "Calibrated pixel size for this experiment, typically specified in Angstroms (Å) per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_image_recording.calibrated_pixel_size
         comments:
           - "For cryo-EM: depends on magnification (Å/pixel)"
           - "For X-ray: typically mm/pixel or µm/pixel"
@@ -2179,14 +2257,20 @@ classes:
         description: "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_detector.distance
       beam_center_x_px:
         description: "Beam center X coordinate in pixels"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_detector.beam_center_x
       beam_center_y_px:
         description: "Beam center Y coordinate in pixels"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_detector.beam_center_y
       beam_size_um:
         description: "Beam size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2195,6 +2279,8 @@ classes:
         description: "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_source.pdbx_flux
       transmission_percent:
         description: "Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2205,14 +2291,20 @@ classes:
         description: "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn.ambient_temp
       oscillation_per_image_deg:
         description: "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_scan.angle_increment
       total_rotation_deg:
         description: "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_diffrn_scan_axis.angle_range
       strategy_notes:
         description: "Notes about data collection strategy"
 
@@ -2252,50 +2344,74 @@ classes:
       # Crystallographic processing metrics
       space_group:
         description: "Crystallographic space group"
+        exact_mappings:
+          - mmCIF:_symmetry.space_group_name_H-M
       unit_cell_a:
         description: "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.length_a
       unit_cell_b:
         description: "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.length_b
       unit_cell_c:
         description: "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.length_c
       unit_cell_alpha:
         description: "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.angle_alpha
       unit_cell_beta:
         description: "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.angle_beta
       unit_cell_gamma:
         description: "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_cell.angle_gamma
       multiplicity:
         description: "Data multiplicity (redundancy)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.pdbx_redundancy
       cc_half:
         description: "Half-set correlation coefficient CC(1/2)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.pdbx_CC_half
       r_merge:
         description: "Rmerge - merge R-factor"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.pdbx_Rmerge_I_obs
       r_pim:
         description: "Rpim - precision-indicating merging R-factor"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.pdbx_Rpim_I_all
       wilson_b_factor_a2:
         description: "Wilson B-factor in Angstroms squared"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.B_iso_Wilson_estimate
       anomalous_used:
         description: "Whether anomalous signal was used"
         range: boolean
@@ -2303,6 +2419,8 @@ classes:
         description: "Anomalous correlation"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_reflns.pdbx_CC_half_anomalous
       anom_sig_ano:
         description: "Anomalous signal strength"
         range: QuantityValue
@@ -2312,22 +2430,32 @@ classes:
         description: "Refinement R-factor (working set)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_refine.ls_R_factor_R_work
       r_free:
         description: "R-free (test set)"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_refine.ls_R_factor_R_free
       ramachandran_favored_percent:
         description: "Percentage of residues in favored Ramachandran regions"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_pdbx_struct_quality.ramachandran_favored
       ramachandran_outliers_percent:
         description: "Percentage of Ramachandran outliers"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_pdbx_struct_quality.ramachandran_outliers
       clashscore:
         description: "MolProbity clashscore"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_pdbx_struct_quality.clashscore
       molprobity_score:
         description: "Overall MolProbity score"
         range: QuantityValue
@@ -2336,6 +2464,8 @@ classes:
         description: "Average B-factor in Angstroms squared"
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_refine.B_iso_mean
       # SAXS metrics
       i_zero:
         description: "Forward scattering intensity I(0)"
@@ -2477,6 +2607,8 @@ classes:
       symmetry:
         description: "Symmetry applied (C1, Cn, Dn, T, O, I)"
         range: SymmetryEnum
+        exact_mappings:
+          - mmCIF:_em_3d_reconstruction.symmetry_type
       pixel_size:
         description: "Pixel size, typically specified in Angstroms per pixel. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
@@ -2495,6 +2627,8 @@ classes:
         description: "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
         inlined: true
+        exact_mappings:
+          - mmCIF:_em_3d_reconstruction.resolution
       resolution_0_5:
         description: "Resolution at FSC=0.5, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue."
         range: QuantityValue
