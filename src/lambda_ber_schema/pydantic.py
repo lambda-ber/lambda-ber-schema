@@ -1864,7 +1864,7 @@ class BeamlineEnum(str, Enum):
     """
     Image plate single crystal diffractometer for neutron protein crystallography
     """
-    Bio_SANS = "SNS_BIOSANS"
+    Bio_SANS = "HFIR_BIOSANS"
     """
     Biological Small-Angle Neutron Scattering instrument
     """
@@ -2584,6 +2584,15 @@ class ExperimentalMethodEnum(str, Enum):
     """
     Fiber diffraction
     """
+    neutron_scattering = "neutron_scattering"
+    """
+    Neutron Scattering (SANS)
+    """
+    x_ray_scattering = "x_ray_scattering"
+    """
+    X-ray Scattering (SAXS/WAXS)
+    """
+
 
 
 class LIMSSystemEnum(str, Enum):
@@ -4184,6 +4193,115 @@ class XRayInstrument(Instrument):
         return v
 
 
+# helper models for SANS instruments copied/adapted from ORNL_SCHEMA/DataCollection.py
+
+class SANSDetector(ConfiguredBaseModel):
+    """
+    Description of a detector used in a SANS instrument
+    """
+    detector_name: Optional[str] = Field(default=None, description="""User‑assigned detector name""", json_schema_extra={"linkml_meta":{'alias':'detector_name','domain_of':['SANSDetector']}})
+    detector_type: Optional[str] = Field(default=None, description="""Type of detector""", json_schema_extra={"linkml_meta":{'alias':'detector_type','domain_of':['SANSDetector']}})
+    detector_description: Optional[str] = Field(default=None, description="""Free‑text description of the detector""", json_schema_extra={"linkml_meta":{'alias':'detector_description','domain_of':['SANSDetector']}})
+    pixel_size_x: Optional[QuantityValue] = Field(default=None, description="""Pixel size in x‑direction""", json_schema_extra={"linkml_meta":{'alias':'pixel_size_x','domain_of':['SANSDetector']}})
+    pixel_size_y: Optional[QuantityValue] = Field(default=None, description="""Pixel size in y‑direction""", json_schema_extra={"linkml_meta":{'alias':'pixel_size_y','domain_of':['SANSDetector']}})
+    sample_detector_distance: Optional[QuantityValue] = Field(default=None, description="""Distance from sample to detector""", json_schema_extra={"linkml_meta":{'alias':'sample_detector_distance','domain_of':['SANSDetector']}})
+    rotation_angle: Optional[QuantityValue] = Field(default=None, description="""Rotation angle of the detector""", json_schema_extra={"linkml_meta":{'alias':'rotation_angle','domain_of':['SANSDetector']}})
+    beam_trap_type: Optional[str] = Field(default=None, description="""Type of beam trap (if any)""", json_schema_extra={"linkml_meta":{'alias':'beam_trap_type','domain_of':['SANSDetector']}})
+    beam_trap_position_x: Optional[QuantityValue] = Field(default=None, description="""X coordinate of beam trap""", json_schema_extra={"linkml_meta":{'alias':'beam_trap_position_x','domain_of':['SANSDetector']}})
+    beam_trap_position_y: Optional[QuantityValue] = Field(default=None, description="""Y coordinate of beam trap""", json_schema_extra={"linkml_meta":{'alias':'beam_trap_position_y','domain_of':['SANSDetector']}})
+
+
+class SANSSource(ConfiguredBaseModel):
+    """
+    Beam source parameters for a SANS instrument
+    """
+    source_type: Optional[str] = Field(default=None, description="""Type of source""", json_schema_extra={"linkml_meta":{'alias':'source_type','domain_of':['SANSSource']}})
+    source_description: Optional[str] = Field(default=None, description="""Free‑text description of the source""", json_schema_extra={"linkml_meta":{'alias':'source_description','domain_of':['SANSSource']}})
+    wavelength: Optional[QuantityValue] = Field(default=None, description="""Neutron wavelength""", json_schema_extra={"linkml_meta":{'alias':'wavelength','domain_of':['SANSSource']}})
+    wavelength_spread: Optional[QuantityValue] = Field(default=None, description="""Wavelength spread""", json_schema_extra={"linkml_meta":{'alias':'wavelength_spread','domain_of':['SANSSource']}})
+    wavelength_selection_method: Optional[str] = Field(default=None, description="""Method used to select wavelength""", json_schema_extra={"linkml_meta":{'alias':'wavelength_selection_method','domain_of':['SANSSource']}})
+    energy: Optional[QuantityValue] = Field(default=None, description="""Beam energy""", json_schema_extra={"linkml_meta":{'alias':'energy','domain_of':['SANSSource']}})
+    flux: Optional[QuantityValue] = Field(default=None, description="""Beam flux""", json_schema_extra={"linkml_meta":{'alias':'flux','domain_of':['SANSSource']}})
+
+
+class SANSConfiguration(ConfiguredBaseModel):
+    """
+    Experimental configuration for a SANS instrument
+    """
+    q_min: Optional[QuantityValue] = Field(default=None, description="""Minimum q value""", json_schema_extra={"linkml_meta":{'alias':'q_min','domain_of':['SANSConfiguration']}})
+    q_max: Optional[QuantityValue] = Field(default=None, description="""Maximum q value""", json_schema_extra={"linkml_meta":{'alias':'q_max','domain_of':['SANSConfiguration']}})
+    number_of_guides: Optional[int] = Field(default=None, description="""Number of neutron guides""", json_schema_extra={"linkml_meta":{'alias':'number_of_guides','domain_of':['SANSConfiguration']}})
+    attenuator: Optional[str] = Field(default=None, description="""Attenuator setting""", json_schema_extra={"linkml_meta":{'alias':'attenuator','domain_of':['SANSConfiguration']}})
+    source_aperature_diameter: Optional[QuantityValue] = Field(default=None, description="""Source aperture diameter""", json_schema_extra={"linkml_meta":{'alias':'source_aperature_diameter','domain_of':['SANSConfiguration']}})
+    sample_aperature_diameter: Optional[QuantityValue] = Field(default=None, description="""Sample aperture diameter""", json_schema_extra={"linkml_meta":{'alias':'sample_aperature_diameter','domain_of':['SANSConfiguration']}})
+    siwindow_to_main_distance: Optional[QuantityValue] = Field(default=None, description="""Silicon window to main instrument distance""", json_schema_extra={"linkml_meta":{'alias':'siwindow_to_main_distance','domain_of':['SANSConfiguration']}})
+    sample_ap_to_si_distance: Optional[QuantityValue] = Field(default=None, description="""Sample aperture to silicon window distance""", json_schema_extra={"linkml_meta":{'alias':'sample_ap_to_si_distance','domain_of':['SANSConfiguration']}})
+    sample_ap_to_main_distance: Optional[QuantityValue] = Field(default=None, description="""Sample aperture to main instrument distance""", json_schema_extra={"linkml_meta":{'alias':'sample_ap_to_main_distance','domain_of':['SANSConfiguration']}})
+    sample_ap_to_sample_distance: Optional[QuantityValue] = Field(default=None, description="""Sample aperture to sample distance""", json_schema_extra={"linkml_meta":{'alias':'sample_ap_to_sample_distance','domain_of':['SANSConfiguration']}})
+    source_ap_to_siwindow_distance: Optional[QuantityValue] = Field(default=None, description="""Source aperture to silicon window distance""", json_schema_extra={"linkml_meta":{'alias':'source_ap_to_siwindow_distance','domain_of':['SANSConfiguration']}})
+    source_ap_to_sample_ap_distance: Optional[QuantityValue] = Field(default=None, description="""Source aperture to sample aperture distance""", json_schema_extra={"linkml_meta":{'alias':'source_ap_to_sample_ap_distance','domain_of':['SANSConfiguration']}})
+
+
+class SANSInstrument(Instrument):
+    """
+    Small-angle neutron scattering (SANS) instrument specifications
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lambda-ber-schema/'})
+
+    # technique is implied by the class name; if desired use TechniqueEnum.sans
+    technique: Optional[TechniqueEnum] = Field(default=TechniqueEnum.sans, description="""Primary technique (should always be sans for this class)""", json_schema_extra={"linkml_meta":{'alias':'technique','domain_of':['SANSInstrument']}})
+
+    q_range_min: Optional[QuantityValue] = Field(default=None, description="""Minimum q value in inverse Angstroms""", json_schema_extra={"linkml_meta":{'alias':'q_range_min','domain_of':['SANSInstrument','BeamlineInstrument']}})
+    q_range_max: Optional[QuantityValue] = Field(default=None, description="""Maximum q value in inverse Angstroms""", json_schema_extra={"linkml_meta":{'alias':'q_range_max','domain_of':['SANSInstrument','BeamlineInstrument']}})
+
+    detectors: Optional[list[SANSDetector]] = Field(default=None, description="""List of detectors associated with the instrument""", json_schema_extra={"linkml_meta":{'alias':'detectors','domain_of':['SANSInstrument']}})
+    source: Optional[SANSSource] = Field(default=None, description="""Source parameters for the instrument""", json_schema_extra={"linkml_meta":{'alias':'source','domain_of':['SANSInstrument']}})
+    configuration: Optional[SANSConfiguration] = Field(default=None, description="""Optical/mechanical configuration details""", json_schema_extra={"linkml_meta":{'alias':'configuration','domain_of':['SANSInstrument']}})
+    environment: Optional[str] = Field(default=None, description="""Textual description of environmental conditions""", json_schema_extra={"linkml_meta":{'alias':'environment','domain_of':['SANSInstrument']}})
+
+    # repeat base instrument fields to carry over LinkML metadata as done in other subclasses
+    instrument_code: str = Field(default=..., description="""Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_code', 'domain_of': ['Instrument']} })
+    instrument_category: Optional[InstrumentCategoryEnum] = Field(default=None, description="""Category distinguishing beamlines from laboratory equipment""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_category',
+         'comments': ['Use SYNCHROTRON_BEAMLINE for synchrotron beamlines',
+                      'Use ELECTRON_MICROSCOPE for cryo-EM instruments'],
+         'domain_of': ['Instrument']} })
+    facility_name: Optional[FacilityEnum] = Field(default=None, description="""Name of the research facility where the instrument is located""", json_schema_extra = { "linkml_meta": {'alias': 'facility_name',
+         'comments': ['Select from the standardized list of major synchrotron '
+                      'facilities',
+                      'Leave empty for laboratory-based instruments'],
+         'domain_of': ['Instrument']} })
+    facility_ror: Optional[str] = Field(default=None, description="""Research Organization Registry (ROR) identifier for the facility""", json_schema_extra = { "linkml_meta": {'alias': 'facility_ror',
+         'comments': ['Persistent identifier for the facility organization',
+                      'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National '
+                      'Laboratory)'],
+         'domain_of': ['Instrument']} })
+    beamline_id: Optional[str] = Field(default=None, description="""Beamline identifier at synchrotron/neutron facility""", json_schema_extra = { "linkml_meta": {'alias': 'beamline_id',
+         'comments': ['Use facility-specific naming convention',
+                      "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"],
+         'domain_of': ['Instrument'],
+         'slot_uri': 'mmCIF:_diffrn_source.pdbx_synchrotron_beamline'} })
+    manufacturer: Optional[str] = Field(default=None, description="""Instrument manufacturer""", json_schema_extra = { "linkml_meta": {'alias': 'manufacturer', 'domain_of': ['Instrument']} })
+    model: Optional[str] = Field(default=None, description="""Instrument model""", json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
+    installation_date: Optional[str] = Field(default=None, description="""Date of instrument installation""", json_schema_extra = { "linkml_meta": {'alias': 'installation_date', 'domain_of': ['Instrument']} })
+    current_status: Optional[InstrumentStatusEnum] = Field(default=None, description="""Current operational status""", json_schema_extra = { "linkml_meta": {'alias': 'current_status', 'domain_of': ['Instrument']} })
+    id: str = Field(default=..., description="""Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Attribute', 'NamedThing']} })
+    title: Optional[str] = Field(default=None, description="""A human-readable name or title for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['NamedThing'], 'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""A detailed textual description of this entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['NamedThing', 'AttributeGroup']} })
+
+    @field_validator('facility_ror')
+    def pattern_facility_ror(cls, v):
+        pattern=re.compile(r"^https://ror\.org/\w+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid facility_ror format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid facility_ror format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
 class SAXSInstrument(Instrument):
     """
     SAXS/WAXS instrument specifications
@@ -5447,6 +5565,10 @@ DataCollectionStrategy.model_rebuild()
 QualityMetrics.model_rebuild()
 ComputeResources.model_rebuild()
 MotionCorrectionParameters.model_rebuild()
+SANSDetector.model_rebuild()
+SANSSource.model_rebuild()
+SANSConfiguration.model_rebuild()
+SANSInstrument.model_rebuild()
 CTFEstimationParameters.model_rebuild()
 ParticlePickingParameters.model_rebuild()
 RefinementParameters.model_rebuild()

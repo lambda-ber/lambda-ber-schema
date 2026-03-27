@@ -1,0 +1,273 @@
+{
+  "id": "lambdaber:dataset/xylanase_temp_series_2026",
+  "title": "Xylanase Temperature Series",
+  "description": "Bio-SANS measurements of xylanase in 100% D2O + 150 mM NaCl with drtSANS reduction",
+  "studies": [
+    {
+      "id": "lambdaber:study/xylanase_temp_series_2026",
+      "title": "Xylanase Temperature Series",
+      "description": "Bio-SANS measurements of xylanase in 100% D2O + 150 mM NaCl with drtSANS reduction"
+    }
+  ],
+  "samples": [
+    {
+      "id": "lambdaber:sample/xylanase_d2o_nacl_multitemp",
+      "sample_code": "xylanase_d2o_nacl_multitemp",
+      "sample_type": "protein",
+      "title": "Xylanase in 100% D2O with 150 mM NaCl",
+      "description": "Xylanase protein prepared in fully deuterated solvent with NaCl and measured at three temperatures on Bio-SANS",
+      "cell_type": "quartz_cuvette",
+      "preparation_method": "Xylanase prepared in 100% D2O solvent with NaCl at 150 mM",
+      "molecular_composition": {
+        "sequences": [
+          "AADVDKFLGNIYSPSQVENFEYYWNCVTPENAGKWGSVEGTRDQMNWSSLDAAYALARDNGFCFNFHVLLWGAQQPAWISELSPEEQLEEIQEWFQAVAERYSFTASPFDVVQVVNEPLHQPPDGQEGRANYIEALGGAGETGWDWVITAFELARQIFPEGTRLMINDYGILSSLETAQQYLELIQLLKERNLIDVIGVQGHAFSTRSGAPIQEVLDLLATTGLPIQVTEMDIDGNPNQSPFVTREQSEQNQLRDMQRIFPTVWYHPAVEGVTFWGWRPGLWRNDYEAYLVYSNGAERPAMVWLREFMEAYRESYLSANEPEGTLPEELSVVSWPNPSRGQVRFRYALPFEAEVRLQVFDVLGREVMTLASGRHRAGVYEVAFDGRHLPSGLYLYRLEANGRVRSGRLVLMR"
+        ],
+        "modifications": [
+          "deuteration: {\"deuterated_carbon_source\": null, \"deuterated_growth_medium\": 85.0, \"level\": 0.85, \"method_description\": \"Protein deuterated through preparation in 85% D2O growth media\"}"
+        ],
+        "ligands": [
+          "Sodium Chloride"
+        ],
+        "description": "100% D2O with 150 mM NaCl"
+      },
+      "molecular_weight": {
+        "numeric_value": 46982.0,
+        "unit": "Da",
+        "raw_value": "46982.0 Da",
+        "attribute": {
+          "label": "molecular weight"
+        }
+      },
+      "concentration": {
+        "numeric_value": 10.0,
+        "unit": "mg/mL",
+        "raw_value": "10.0 mg/mL",
+        "attribute": {
+          "label": "concentration"
+        }
+      },
+      "buffer_composition": {
+        "ph": {
+          "numeric_value": 7.0,
+          "unit": "pH",
+          "raw_value": "7.0 pH",
+          "attribute": {
+            "label": "pH"
+          }
+        },
+        "additives": [
+          "NaCl 150.0 mM"
+        ],
+        "description": "100% D2O with 150 mM NaCl"
+      },
+      "storage_conditions": {
+        "temperature": {
+          "numeric_value": 4.0,
+          "unit": "Celsius",
+          "raw_value": "4.0 Celsius",
+          "attribute": {
+            "label": "storage temperature"
+          }
+        },
+        "description": "Mapped from ORNL sample_storage_temperature"
+      }
+    }
+  ],
+  "instruments": [
+    {
+      "id": "lambdaber:instrument/https-neutrons-ornl-gov-biosans",
+      "instrument_code": "HFIR-CG3",
+      "instrument_category": "NEUTRON_BEAMLINE",
+      "facility_name": "HFIR",
+      "facility_ror": "https://ror.org/02xn1ny06",
+      "beamline_id": "CG-3",
+      "manufacturer": "Oak Ridge National Laboratory",
+      "model": "Bio-SANS",
+      "installation_date": "2007-05-01",
+      "current_status": "operational",
+      "title": "Biological Small Angle Neutron Scattering (Bio-SANS) Instrument at HFIR"
+    }
+  ],
+  "experiment_runs": [
+    {
+      "id": "lambdaber:experiment/260101",
+      "experiment_code": "HFIR-CG3-260101",
+      "experiment_date": "2026-02-10T10:00:00",
+      "technique": "sans",
+      "raw_data_location": "/data/IPTS-26000/CG3/260101.nxs.hdf5",
+      "wavelength": {
+        "numeric_value": 6.023,
+        "unit": "Angstrom",
+        "raw_value": "6.023 Angstrom",
+        "attribute": {
+          "label": "wavelength"
+        }
+      },
+      "exposure_time": {
+        "numeric_value": 3600.0,
+        "unit": "s",
+        "raw_value": "3600.0 s",
+        "attribute": {
+          "label": "exposure time"
+        }
+      },
+      "beamline": "CG-3",
+      "description": "Mapped from ORNL experiment run 260101"
+    },
+    {
+      "id": "lambdaber:experiment/260111",
+      "experiment_code": "HFIR-CG3-260111",
+      "experiment_date": "2026-02-10T13:00:00",
+      "technique": "sans",
+      "raw_data_location": "/data/IPTS-26000/CG3/260111.nxs.hdf5",
+      "wavelength": {
+        "numeric_value": 6.023,
+        "unit": "Angstrom",
+        "raw_value": "6.023 Angstrom",
+        "attribute": {
+          "label": "wavelength"
+        }
+      },
+      "exposure_time": {
+        "numeric_value": 3600.0,
+        "unit": "s",
+        "raw_value": "3600.0 s",
+        "attribute": {
+          "label": "exposure time"
+        }
+      },
+      "beamline": "CG-3",
+      "description": "Mapped from ORNL experiment run 260111"
+    },
+    {
+      "id": "lambdaber:experiment/260121",
+      "experiment_code": "HFIR-CG3-260121",
+      "experiment_date": "2026-02-10T16:00:00",
+      "technique": "sans",
+      "raw_data_location": "/data/IPTS-26000/CG3/260121.nxs.hdf5",
+      "wavelength": {
+        "numeric_value": 6.023,
+        "unit": "Angstrom",
+        "raw_value": "6.023 Angstrom",
+        "attribute": {
+          "label": "wavelength"
+        }
+      },
+      "exposure_time": {
+        "numeric_value": 3600.0,
+        "unit": "s",
+        "raw_value": "3600.0 s",
+        "attribute": {
+          "label": "exposure time"
+        }
+      },
+      "beamline": "CG-3",
+      "description": "Mapped from ORNL experiment run 260121"
+    }
+  ],
+  "workflow_runs": [
+    {
+      "id": "lambdaber:workflow/drtsans/260101",
+      "workflow_code": "drtsans-260101",
+      "workflow_type": "saxs_analysis",
+      "software_name": "drtSANS",
+      "software_version": "2026-02-10T12:00:00",
+      "processing_parameters": "{\"background\": {\"run_number\": \"260103\", \"transmission\": {\"run_number\": \"260104\", \"value\": 0.92}}, \"beam_center\": {\"run_number\": \"260106\"}, \"code\": \"https://github.com/neutrons/drtsans\", \"configuration\": {\"absolute_scale_method\": \"standard\", \"normalization\": \"Monitor\", \"output_dir\": \"/output/IPTS-26000/\", \"q_max\": 0.5, \"q_min\": 0.003, \"standard_absolute_scale\": 2.17e-10, \"use_error_weighting\": false, \"use_solid_angle_correction\": true, \"use_time_slice\": false, \"wavelength\": 6.0, \"wavelength_spread\": 0.1}, \"data_directories\": \"/data/IPTS-26000/CG3/\", \"documentation\": \"https://drtsans.readthedocs.io/latest/\", \"elastic_reference\": null, \"elastic_reference_bkgd\": null, \"empty_transmission\": {\"run_number\": \"260105\", \"value\": 1.0}, \"instrument_name\": \"Bio-SANS\", \"ipts_number\": \"IPTS-26000\", \"output_file_name\": \"xylanase_298K_reduced\", \"sample\": {\"load_options\": {}, \"run_number\": \"260101\", \"thickness\": 1.0, \"transmission\": {\"error_tolerance\": 0.01, \"run_number\": \"260102\", \"value\": 0.86}}, \"schema_stamp\": \"2026-02-10T12:00:00\"}",
+      "description": "drtSANS reduction for run 260101"
+    },
+    {
+      "id": "lambdaber:workflow/drtsans/260111",
+      "workflow_code": "drtsans-260111",
+      "workflow_type": "saxs_analysis",
+      "software_name": "drtSANS",
+      "software_version": "2026-02-10T15:00:00",
+      "processing_parameters": "{\"background\": {\"run_number\": \"260113\", \"transmission\": {\"run_number\": \"260114\", \"value\": 0.91}}, \"beam_center\": {\"run_number\": \"260116\"}, \"code\": \"https://github.com/neutrons/drtsans\", \"configuration\": {\"absolute_scale_method\": \"standard\", \"normalization\": \"Monitor\", \"output_dir\": \"/output/IPTS-26000/\", \"q_max\": 0.5, \"q_min\": 0.003, \"standard_absolute_scale\": 2.17e-10, \"use_error_weighting\": false, \"use_solid_angle_correction\": true, \"use_time_slice\": false, \"wavelength\": 6.0, \"wavelength_spread\": 0.1}, \"data_directories\": \"/data/IPTS-26000/CG3/\", \"documentation\": \"https://drtsans.readthedocs.io/latest/\", \"elastic_reference\": null, \"elastic_reference_bkgd\": null, \"empty_transmission\": {\"run_number\": \"260115\", \"value\": 1.0}, \"instrument_name\": \"Bio-SANS\", \"ipts_number\": \"IPTS-26000\", \"output_file_name\": \"xylanase_315K_reduced\", \"sample\": {\"load_options\": {}, \"run_number\": \"260111\", \"thickness\": 1.0, \"transmission\": {\"error_tolerance\": 0.01, \"run_number\": \"260112\", \"value\": 0.84}}, \"schema_stamp\": \"2026-02-10T15:00:00\"}",
+      "description": "drtSANS reduction for run 260111"
+    },
+    {
+      "id": "lambdaber:workflow/drtsans/260121",
+      "workflow_code": "drtsans-260121",
+      "workflow_type": "saxs_analysis",
+      "software_name": "drtSANS",
+      "software_version": "2026-02-10T18:00:00",
+      "processing_parameters": "{\"background\": {\"run_number\": \"260123\", \"transmission\": {\"run_number\": \"260124\", \"value\": 0.9}}, \"beam_center\": {\"run_number\": \"260126\"}, \"code\": \"https://github.com/neutrons/drtsans\", \"configuration\": {\"absolute_scale_method\": \"standard\", \"normalization\": \"Monitor\", \"output_dir\": \"/output/IPTS-26000/\", \"q_max\": 0.5, \"q_min\": 0.003, \"standard_absolute_scale\": 2.17e-10, \"use_error_weighting\": false, \"use_solid_angle_correction\": true, \"use_time_slice\": false, \"wavelength\": 6.0, \"wavelength_spread\": 0.1}, \"data_directories\": \"/data/IPTS-26000/CG3/\", \"documentation\": \"https://drtsans.readthedocs.io/latest/\", \"elastic_reference\": null, \"elastic_reference_bkgd\": null, \"empty_transmission\": {\"run_number\": \"260125\", \"value\": 1.0}, \"instrument_name\": \"Bio-SANS\", \"ipts_number\": \"IPTS-26000\", \"output_file_name\": \"xylanase_330K_reduced\", \"sample\": {\"load_options\": {}, \"run_number\": \"260121\", \"thickness\": 1.0, \"transmission\": {\"error_tolerance\": 0.01, \"run_number\": \"260122\", \"value\": 0.82}}, \"schema_stamp\": \"2026-02-10T18:00:00\"}",
+      "description": "drtSANS reduction for run 260121"
+    }
+  ],
+  "study_sample_associations": [
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "sample_id": "lambdaber:sample/xylanase_d2o_nacl_multitemp"
+    }
+  ],
+  "study_experiment_associations": [
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "experiment_id": "lambdaber:experiment/260101"
+    },
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "experiment_id": "lambdaber:experiment/260111"
+    },
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "experiment_id": "lambdaber:experiment/260121"
+    }
+  ],
+  "study_workflow_associations": [
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "workflow_id": "lambdaber:workflow/drtsans/260101"
+    },
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "workflow_id": "lambdaber:workflow/drtsans/260111"
+    },
+    {
+      "study_id": "lambdaber:study/xylanase_temp_series_2026",
+      "workflow_id": "lambdaber:workflow/drtsans/260121"
+    }
+  ],
+  "experiment_sample_associations": [
+    {
+      "experiment_id": "lambdaber:experiment/260101",
+      "sample_id": "lambdaber:sample/xylanase_d2o_nacl_multitemp"
+    },
+    {
+      "experiment_id": "lambdaber:experiment/260111",
+      "sample_id": "lambdaber:sample/xylanase_d2o_nacl_multitemp"
+    },
+    {
+      "experiment_id": "lambdaber:experiment/260121",
+      "sample_id": "lambdaber:sample/xylanase_d2o_nacl_multitemp"
+    }
+  ],
+  "experiment_instrument_associations": [
+    {
+      "experiment_id": "lambdaber:experiment/260101",
+      "instrument_id": "lambdaber:instrument/https-neutrons-ornl-gov-biosans"
+    },
+    {
+      "experiment_id": "lambdaber:experiment/260111",
+      "instrument_id": "lambdaber:instrument/https-neutrons-ornl-gov-biosans"
+    },
+    {
+      "experiment_id": "lambdaber:experiment/260121",
+      "instrument_id": "lambdaber:instrument/https-neutrons-ornl-gov-biosans"
+    }
+  ],
+  "workflow_experiment_associations": [
+    {
+      "workflow_id": "lambdaber:workflow/drtsans/260101",
+      "experiment_id": "lambdaber:experiment/260101"
+    },
+    {
+      "workflow_id": "lambdaber:workflow/drtsans/260111",
+      "experiment_id": "lambdaber:experiment/260111"
+    },
+    {
+      "workflow_id": "lambdaber:workflow/drtsans/260121",
+      "experiment_id": "lambdaber:experiment/260121"
+    }
+  ]
+}
