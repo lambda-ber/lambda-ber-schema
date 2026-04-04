@@ -1,0 +1,1441 @@
+{
+    "swagger": "2.0",
+    "basePath": "/external",
+    "paths": {
+        "/datasets/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_dataset_limit_api",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/by_sample/{sample_name}": {
+            "parameters": [
+                {
+                    "description": "Sample name to search for",
+                    "name": "sample_name",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Sample%20Name%20Search%20Result"
+                        }
+                    }
+                },
+                "summary": "Quick search for datasets by sample name (GET with query params)",
+                "description": "All parameters are optional query parameters.\nResults limited to 100 for public API.",
+                "operationId": "get_datasets_by_sample_name_simple",
+                "parameters": [
+                    {
+                        "description": "Search algorithm: \"like\" (fast), \"regex\" (moderate), \"fuzzy\" (slow)",
+                        "name": "search_mode",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Filter by key pattern (e.g., \"krios\", \"pncc\")",
+                        "name": "key_filter",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Exact match (true/false, default: false)",
+                        "name": "exact_match",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Case-sensitive (true/false, default: false)",
+                        "name": "case_sensitive",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Fuzzy mode: min similarity 0.0-1.0 (default: 0.6)",
+                        "name": "similarity_threshold",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Max results, capped at 100 (default: 20)",
+                        "name": "limit",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Pagination offset (default: 0)",
+                        "name": "offset",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/by_sample_name": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Sample%20Name%20Search%20Result"
+                        }
+                    }
+                },
+                "summary": "Search for datasets by sample name with advanced options",
+                "description": "Search modes with performance characteristics:\n\n**LIKE (default, fastest ~2-3s):** SQL pattern matching\n**Regex (moderate ~3-5s):** Full regex support  \n**Fuzzy (optimized ~2-4s):** Typo-tolerant, returns similarity scores\n\nFuzzy mode uses optimized two-phase algorithm for fast performance.\n\n**Example LIKE search:**\n```json\n{\"sample_name\": \"test\", \"search_mode\": \"like\", \"limit\": 20}\n```\n\n**Example Regex search (starts with \"test\"):**\n```json\n{\"sample_name\": \"^test\", \"search_mode\": \"regex\", \"limit\": 20}\n```\n\n**Example Fuzzy search (typo-tolerant):**\n```json\n{\"sample_name\": \"sampel123\", \"search_mode\": \"fuzzy\", \"similarity_threshold\": 0.6}\n```\n\nNote: Results limited to max 100 for public API.",
+                "operationId": "post_datasets_by_sample_name",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Sample%20Name%20Search%20Input"
+                        }
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/download/{download_uuid}": {
+            "parameters": [
+                {
+                    "name": "download_uuid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Retrieve a pre-existing Download Cart",
+                        "schema": {
+                            "$ref": "#/definitions/Cart%20Info"
+                        }
+                    }
+                },
+                "operationId": "get_cart_operations",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "datasets"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Cart%20Basic%20Status"
+                        }
+                    },
+                    "204": {
+                        "description": "Deletes a pre-existing Download Cart",
+                        "schema": {
+                            "$ref": "#/definitions/Cart%20Basic%20Status"
+                        }
+                    }
+                },
+                "operationId": "delete_cart_operations",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/info/{download_uuid}": {
+            "parameters": [
+                {
+                    "name": "download_uuid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Cart%20Details%20Entry"
+                        }
+                    }
+                },
+                "operationId": "get_get_cart_info",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/limit/{limit}": {
+            "parameters": [
+                {
+                    "name": "limit",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_dataset_limit_api",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/limit/{limit}/offset/{offset}": {
+            "parameters": [
+                {
+                    "name": "limit",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "offset",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_dataset_limit_api",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/request/{transaction_id}": {
+            "parameters": [
+                {
+                    "name": "transaction_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "201": {
+                        "description": "Create a new Download Cart",
+                        "schema": {
+                            "$ref": "#/definitions/Cart%20Info"
+                        }
+                    }
+                },
+                "operationId": "get_cart_from_transaction",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/transaction_info/{transaction_id}": {
+            "parameters": [
+                {
+                    "name": "transaction_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_transaction_info",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/datasets/{dataset_id}": {
+            "parameters": [
+                {
+                    "name": "dataset_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_dataset_by_id",
+                "tags": [
+                    "datasets"
+                ]
+            }
+        },
+        "/monet/analysis_activity/{study}/{sample_set}/{analysis}": {
+            "parameters": [
+                {
+                    "name": "study",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "sample_set",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "analysis",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get analysis metadata for a sample set",
+                "operationId": "get_analysis_activity",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/ber/geofence": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get samples within a geographical boundary",
+                "operationId": "get_ber_geofence",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/changelog/{version}": {
+            "parameters": [
+                {
+                    "name": "version",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Retrieve changelogs for a version number",
+                "operationId": "get_changelog",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/elastic/metadata": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get metadata from Elasticsearch",
+                "operationId": "get_elastic_metadata",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/elastic/{analysis}": {
+            "parameters": [
+                {
+                    "name": "analysis",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get analysis metadata from Elasticsearch",
+                "operationId": "get_elastic_analysis",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/processed_data/{study}/{sample_set}/{analysis}": {
+            "parameters": [
+                {
+                    "name": "study",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "sample_set",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "analysis",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get processed data for a sample set",
+                "operationId": "get_processed_data",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/sample": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Retrieve paginated list of sample metadata",
+                "operationId": "get_sample_list",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/sample/cores": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get all cores",
+                "operationId": "get_cores",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/study": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get all Study entries",
+                "operationId": "get_all_studies",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/monet/study/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Get a Study by ID (uuid or project id)",
+                "operationId": "get_single_study",
+                "tags": [
+                    "monet"
+                ]
+            }
+        },
+        "/projects/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of projects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Projects"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_projects_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/projects/active": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of projects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Projects"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_projects_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/projects/all": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of projects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Projects"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_projects_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/projects/data/{project_identifier}": {
+            "parameters": [
+                {
+                    "description": "Page of results to return (defaults to 1)",
+                    "name": "page",
+                    "type": "string",
+                    "in": "query"
+                },
+                {
+                    "description": "Number of results per page defaults to 50)",
+                    "name": "items_per_page",
+                    "type": "string",
+                    "in": "query"
+                },
+                {
+                    "name": "project_identifier",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get datasets for a single project entry",
+                        "schema": {
+                            "$ref": "#/definitions/Project%20Datasets%20Model"
+                        }
+                    }
+                },
+                "operationId": "get_project_data_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/projects/search/{search_term}": {
+            "parameters": [
+                {
+                    "name": "search_term",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "search for projects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Projects"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_project_search_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/projects/{project_identifier}": {
+            "parameters": [
+                {
+                    "name": "project_identifier",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get a single project entry",
+                        "schema": {
+                            "$ref": "#/definitions/Project_Details"
+                        }
+                    }
+                },
+                "operationId": "get_project_details_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "projects"
+                ]
+            }
+        },
+        "/resources/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of resources",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resources"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_resources_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/resources/active": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of resources",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resources"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_resources_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/resources/all": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the full list of resources",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resources"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_resources_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/resources/grouping": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resource_Grouping"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_resource_grouping",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/resources/search/{search_term}": {
+            "parameters": [
+                {
+                    "name": "search_term",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Search for a resource",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resources"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_resource_search_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/resources/{resource_id}": {
+            "parameters": [
+                {
+                    "name": "resource_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get a specific resource by id",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resources"
+                            }
+                        }
+                    }
+                },
+                "operationId": "get_user_details_api",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "resources"
+                ]
+            }
+        },
+        "/search/projects": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "No Results Found"
+                    },
+                    "400": {
+                        "description": "Validation Error or No Search Terms"
+                    }
+                },
+                "operationId": "get_project_term_search__api",
+                "parameters": [
+                    {
+                        "description": "Project ID value",
+                        "name": "project_id",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "String contained in Project title",
+                        "name": "title",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "String contained in Project abstract",
+                        "name": "abstract",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "'y' to return only active projects",
+                        "name": "is_active",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "String contained in project type",
+                        "name": "proj_type",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Retrieve only projects starting after the specified date",
+                        "name": "started",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Retrieve only projects ending before the specified date",
+                        "name": "ended",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Page of results to return (defaults to 1)",
+                        "name": "page",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Number of Datasets per page (defaults to 50)",
+                        "name": "items_per_page",
+                        "type": "string",
+                        "in": "query"
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "search"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "External API",
+        "version": "1.0",
+        "description": "Slimmed down endpoint for external exposure"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "projects"
+        },
+        {
+            "name": "resources"
+        },
+        {
+            "name": "datasets"
+        },
+        {
+            "name": "search"
+        },
+        {
+            "name": "monet",
+            "description": "MONet Data Portal operations"
+        }
+    ],
+    "definitions": {
+        "Projects": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Projects_Abbreviated"
+                },
+                {
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "project_type": {
+                            "type": "string"
+                        },
+                        "active": {
+                            "type": "boolean"
+                        },
+                        "accepted": {
+                            "type": "boolean"
+                        },
+                        "award_doi": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Projects_Abbreviated": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Project_Details": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Projects"
+                },
+                {
+                    "properties": {
+                        "abstract": {
+                            "type": "string"
+                        },
+                        "started_date": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "closed_date": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "current_status": {
+                            "type": "string"
+                        },
+                        "project_members": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Project_Member"
+                            }
+                        },
+                        "project_type": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Project_Member": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Base_User"
+                },
+                {
+                    "properties": {
+                        "project_role": {
+                            "type": "string"
+                        },
+                        "orcid": {
+                            "type": "string"
+                        },
+                        "institution": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Base_User": {
+            "properties": {
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Project Datasets Model": {
+            "properties": {
+                "project": {
+                    "type": "object"
+                },
+                "datasets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Dataset Display Model"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "Dataset Display Model": {
+            "properties": {
+                "upload_identifier": {
+                    "type": "integer"
+                },
+                "resource": {
+                    "type": "object"
+                },
+                "date_created": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "is_released": {
+                    "type": "boolean"
+                },
+                "total_file_count": {
+                    "type": "integer"
+                },
+                "total_file_size": {
+                    "type": "integer"
+                },
+                "friendly_file_size": {
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Resources": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "available_hours": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Resource_Grouping": {
+            "properties": {
+                "resource_uuid": {
+                    "type": "string"
+                },
+                "resource_id": {
+                    "type": "string"
+                },
+                "resource_name": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Cart Info": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Cart Basic Status"
+                },
+                {
+                    "properties": {
+                        "display_status": {
+                            "type": "string"
+                        },
+                        "retrieval_url": {
+                            "type": "string"
+                        },
+                        "status_url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Cart Basic Status": {
+            "properties": {
+                "download_uuid": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status_code": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Cart Details Entry": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Cart Info"
+                },
+                {
+                    "properties": {
+                        "cart_name": {
+                            "type": "string"
+                        },
+                        "cart_description": {
+                            "type": "string"
+                        },
+                        "size": {
+                            "type": "integer"
+                        },
+                        "file_count": {
+                            "type": "integer"
+                        },
+                        "transaction_id": {
+                            "type": "integer"
+                        },
+                        "resource_uuid": {
+                            "type": "string"
+                        },
+                        "project_uuid": {
+                            "type": "string"
+                        },
+                        "download_attempts_count": {
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Sample Name Search Input": {
+            "required": [
+                "sample_name"
+            ],
+            "properties": {
+                "sample_name": {
+                    "type": "string",
+                    "description": "Sample name to search for. Supports wildcards in 'like' mode, regex patterns in 'regex' mode, or fuzzy matching in 'fuzzy' mode.",
+                    "example": "test-sample"
+                },
+                "key_filter": {
+                    "type": "string",
+                    "description": "Filter to specific key pattern (e.g., 'krios', 'pncc', 'short_sample_name'). If omitted, searches all keys containing 'sample'.",
+                    "example": "short_sample_name"
+                },
+                "exact_match": {
+                    "type": "boolean",
+                    "description": "If true, requires exact match of sample_name. If false, allows partial matches. Overrides search_mode when true.",
+                    "default": false,
+                    "example": false
+                },
+                "search_mode": {
+                    "type": "string",
+                    "description": "Search algorithm to use:\n            - 'like' (default, fastest ~2-3s): SQL LIKE pattern matching. Use % as wildcard.\n            - 'regex' (moderate ~3-5s): PostgreSQL regex matching. Supports ^, $, .*, [0-9], etc.\n            - 'fuzzy' (optimized ~2-4s): Similarity-based matching, tolerates typos. Returns similarity_score for each result. Uses two-phase optimization.",
+                    "default": "like",
+                    "example": "like",
+                    "enum": [
+                        "like",
+                        "regex",
+                        "fuzzy"
+                    ]
+                },
+                "similarity_threshold": {
+                    "type": "number",
+                    "description": "For fuzzy mode only: Minimum similarity score (0.0-1.0). Higher values = stricter matching. Recommended: 0.3 (loose) to 0.7 (strict).",
+                    "default": 0.6,
+                    "example": 0.6
+                },
+                "case_sensitive": {
+                    "type": "boolean",
+                    "description": "If true, search is case-sensitive. If false (default), search is case-insensitive. Applies to all search modes.",
+                    "default": false,
+                    "example": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of results to return (max: 100). Default: 20.",
+                    "default": 20,
+                    "example": 20
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Number of results to skip for pagination. Default: 0.",
+                    "default": 0,
+                    "example": 0
+                }
+            },
+            "type": "object"
+        },
+        "Sample Name Search Result": {
+            "properties": {
+                "total_count": {
+                    "type": "integer",
+                    "description": "Total number of matching transactions"
+                },
+                "transactions": {
+                    "type": "array",
+                    "description": "List of matching transactions",
+                    "items": {
+                        "$ref": "#/definitions/Sample Transaction"
+                    }
+                },
+                "search_mode": {
+                    "type": "string",
+                    "description": "The search mode used: 'like', 'regex', or 'fuzzy'"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum results returned"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Number of results skipped"
+                }
+            },
+            "type": "object"
+        },
+        "Sample Transaction": {
+            "properties": {
+                "transaction_id": {
+                    "type": "integer",
+                    "description": "Pacifica transaction/upload ID"
+                },
+                "sample_key": {
+                    "type": "string",
+                    "description": "The metadata key (e.g., 'krios.short_sample_name')"
+                },
+                "sample_value": {
+                    "type": "string",
+                    "description": "The sample name value"
+                },
+                "submitter_id": {
+                    "type": "integer",
+                    "description": "User ID who submitted the upload"
+                },
+                "instrument_id": {
+                    "type": "integer",
+                    "description": "Instrument/resource ID"
+                },
+                "project_id": {
+                    "type": "string",
+                    "description": "Project identifier"
+                },
+                "created": {
+                    "type": "string",
+                    "description": "Transaction creation timestamp (ISO 8601)"
+                },
+                "similarity_score": {
+                    "type": "number",
+                    "description": "Similarity score (0.0-1.0). Only present when search_mode='fuzzy'. Higher = better match."
+                }
+            },
+            "type": "object"
+        }
+    },
+    "responses": {
+        "ParseError": {
+            "description": "When a mask can't be parsed"
+        },
+        "MaskError": {
+            "description": "When any error occurs on mask"
+        }
+    }
+}

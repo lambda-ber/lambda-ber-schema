@@ -1,0 +1,621 @@
+# EMSL Science Central Public API — CryoEM Metadata Field Inventory
+#
+# Base URL: https://api.emsl.pnnl.gov/external
+# Swagger:  https://api.emsl.pnnl.gov/external/swagger.json
+# Scope:    CryoEM transactions at PNCC (Pacific Northwest Cryo-EM Center)
+# Prepared: 2026-04-03
+#
+# Status values for loader_status:
+#   captured   – field is fetched and mapped to the lambda-ber schema
+#   ignored    – field is fetched but deliberately not mapped
+#   not_used   – field exists in API but no fetch/call is made
+#
+# Schema target uses dotted class.field notation.
+
+endpoints:
+
+  # ─────────────────────────────────────────────────────────────────
+  # 1. POST /datasets/by_sample_name
+  #    Search transactions by sample name.
+  #    Returns wrapper + list of Sample Transaction objects.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: POST /datasets/by_sample_name
+    description: >
+      Primary search entry point. Given a sample name string, returns a list
+      of matching Pacifica transaction records. Each transaction represents a
+      single data-collection session on one instrument under one project.
+    cryo_em_relevance: primary
+    currently_called: true
+
+    request_fields:
+      - name: sample_name
+        type: string
+        required: true
+        example: "apo"
+        notes: "SQL LIKE wildcard (%) supported in 'like' mode; regex in 'regex' mode"
+      - name: search_mode
+        type: string
+        enum: [like, regex, fuzzy]
+        default: like
+        notes: "fuzzy returns similarity_score; like ~2-3s, regex ~3-5s, fuzzy ~2-4s"
+      - name: key_filter
+        type: string
+        example: "pncc"
+        notes: >
+          Filters which metadata key is searched. 'pncc' targets cryo-EM keys
+          (e.g., pncc.short_sample_name, pncc.session_id). Omit to search all
+          keys containing 'sample'. Default in loader: 'pncc'.
+      - name: exact_match
+        type: boolean
+        default: false
+      - name: case_sensitive
+        type: boolean
+        default: false
+      - name: similarity_threshold
+        type: number
+        default: 0.6
+        notes: "Only applies to fuzzy mode. Range 0.0–1.0."
+      - name: limit
+        type: integer
+        default: 20
+        max: 100
+      - name: offset
+        type: integer
+        default: 0
+        notes: "Pagination offset"
+
+    response_wrapper_fields:
+      - name: total_count
+        type: integer
+        example: 571
+        loader_status: ignored
+        notes: "Total matching transactions across all pages; not captured in schema"
+      - name: search_mode
+        type: string
+        example: like
+        loader_status: ignored
+      - name: limit
+        type: integer
+        loader_status: ignored
+      - name: offset
+        type: integer
+        loader_status: ignored
+
+    response_transaction_fields:
+      - name: transaction_id
+        type: integer
+        example: 3736677
+        loader_status: captured
+        schema_target: ExperimentRun.id  # minted as emsl:transaction_{tx_id}
+        notes: "Primary identifier; also used as Dataset.id and Experiment.id"
+
+      - name: sample_key
+        type: string
+        example: "pncc.short_sample_name"
+        loader_status: captured
+        schema_target: Sample.description
+        notes: >
+          Metadata key from the Pacifica instrument metadata store. Known CryoEM keys:
+            pncc.short_sample_name – primary sample label set by user at data collection
+            pncc.session_id        – EPU session identifier (may duplicate sample name)
+          Stored in Sample.description as "Source key: {sample_key}". Not mapped to
+          a dedicated schema field.
+
+      - name: sample_value
+        type: string
+        example: "T-A-apo_5_021226_data"
+        loader_status: captured
+        schema_target: Sample.sample_code, Sample.title
+        notes: >
+          The actual sample name string. Naming conventions observed at PNCC:
+            {protein}_{date}_data   – raw data collection session
+            {protein}_{date}_atlas  – atlas/grid-map session
+            {protein}_{date}        – generic session
+
+      - name: submitter_id
+        type: integer
+        example: 48279
+        loader_status: captured
+        schema_target: ExperimentRun.operator_id
+        notes: >
+          EMSL internal user ID of the person who submitted the upload. Not a public
+          ORCID; no lookup endpoint is available in the public API.
+
+      - name: instrument_id
+        type: integer
+        example: 34290
+        loader_status: captured
+        schema_target: Instrument.id  # via _fetch_resource(); minted as emsl:resource_{id}
+        notes: >
+          Triggers a GET /resources/{id} call to enrich instrument metadata.
+          Missing when loading via load_transaction() pathway.
+
+      - name: project_id
+        type: string
+        example: "160724"
+        loader_status: captured
+        schema_target: Study.id  # minted as emsl:project_{project_id}
+        notes: "Triggers a GET /projects/{id} call to enrich study metadata."
+
+      - name: created
+        type: string
+        format: ISO 8601 datetime (naive, no timezone)
+        example: "2026-02-15T15:46:44"
+        loader_status: captured
+        schema_target: ExperimentRun.experiment_date, DataFile.creation_date
+        notes: >
+          Time the transaction was created in Science Central (i.e., upload
+          timestamp, not necessarily the microscope collection start time).
+          Treated as UTC by the loader.
+
+      - name: similarity_score
+        type: number
+        example: null
+        loader_status: ignored
+        notes: "Only populated in fuzzy search mode. Not mapped to schema."
+
+  # ─────────────────────────────────────────────────────────────────
+  # 2. GET /projects/{project_identifier}
+  #    Full project record including PI roster.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /projects/{project_identifier}
+    description: >
+      Full details for a single EMSL project (allocation). Project ID is a
+      short integer string (e.g., "160724"). Also accessible by UUID.
+    cryo_em_relevance: primary
+    currently_called: true
+
+    response_fields:
+      - name: id
+        type: string
+        example: "160724"
+        loader_status: ignored
+        notes: "Short project identifier; already known from transaction"
+
+      - name: uuid
+        type: string
+        example: "43fd68fd-2f06-5288-96f0-613ec567c29d"
+        loader_status: ignored
+        notes: "Long-form UUID; could be used as more stable identifier"
+
+      - name: uri
+        type: string
+        example: "/external/projects/160724"
+        loader_status: ignored
+        notes: "Relative URI within the API"
+
+      - name: title
+        type: string
+        example: "Single particle cryo-EM analysis of human PARP enzymes: mechanisms of regulation and inhibition"
+        loader_status: captured
+        schema_target: Study.title
+
+      - name: abstract
+        type: string
+        example: "Human PARP enzymes are a diverse class of medically relevant proteins..."
+        loader_status: captured
+        schema_target: Study.description
+
+      - name: project_type
+        type: string
+        example: "General Access"
+        loader_status: captured
+        schema_target: Study.keywords[]
+        notes: "Added to keywords list alongside 'EMSL'"
+
+      - name: active
+        type: boolean
+        example: true
+        loader_status: ignored
+        notes: "Project active status; not mapped to schema"
+
+      - name: accepted
+        type: boolean
+        example: true
+        loader_status: ignored
+        notes: "Whether allocation was accepted; not mapped to schema"
+
+      - name: award_doi
+        type: string
+        example: null
+        loader_status: captured
+        schema_target: LoaderResult.doi
+        notes: "Normalized to https://doi.org/{doi} if not already a URL"
+
+      - name: started_date
+        type: string
+        format: date (YYYY-MM-DD)
+        example: "2025-08-29"
+        loader_status: not_captured
+        schema_target: Study.start_date  # field exists in schema as string
+        notes: "Available in response but NOT currently mapped. Should populate Study.start_date."
+
+      - name: closed_date
+        type: string
+        format: date (YYYY-MM-DD)
+        example: null
+        loader_status: not_captured
+        schema_target: Study.end_date
+        notes: "Available in response but NOT currently mapped."
+
+      - name: current_status
+        type: string
+        example: "started"
+        loader_status: not_captured
+        notes: "Project allocation status (started/closed/etc). Not currently mapped."
+
+      - name: "project_members[].project_role"
+        type: string
+        example: "principal_investigator"
+        loader_status: not_captured
+        notes: >
+          Known values: principal_investigator, active_member, collaborator.
+          Not mapped; could populate Study.principal_investigator or contributors.
+
+      - name: "project_members[].orcid"
+        type: string
+        example: "0000-0002-2714-4317"
+        loader_status: not_captured
+        schema_target: Study.principal_investigator  # or a contributor list
+        notes: "ORCID identifier for the PI / member. Available but not captured."
+
+      - name: "project_members[].institution"
+        type: string
+        example: "Université de Montreal"
+        loader_status: not_captured
+        notes: "PI/member institution. Available but not captured."
+
+      - name: "project_members[].first_name"
+        type: string
+        example: "John"
+        loader_status: not_captured
+
+      - name: "project_members[].last_name"
+        type: string
+        example: "Pascal"
+        loader_status: not_captured
+
+  # ─────────────────────────────────────────────────────────────────
+  # 3. GET /resources/{resource_id}
+  #    Instrument/resource details.
+  #    Returns a list with one item (unusual but observed).
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /resources/{resource_id}
+    description: >
+      Returns metadata for a specific EMSL instrument/resource. The response is
+      a JSON array containing a single object (not a bare object).
+    cryo_em_relevance: primary
+    currently_called: true
+
+    response_fields:
+      - name: id
+        type: integer
+        example: 34290
+        loader_status: captured
+        schema_target: Instrument.id  # minted as emsl:resource_{id}
+
+      - name: name
+        type: string
+        example: "PNCC Krios 1"
+        loader_status: captured
+        schema_target: Instrument.model
+        notes: "Short instrument name. Used for technique and category inference."
+
+      - name: display_name
+        type: string
+        example: "PNCC Krios 1 (34290)"
+        loader_status: captured
+        schema_target: Instrument.title
+
+      - name: active
+        type: boolean
+        example: false
+        loader_status: captured
+        schema_target: Instrument.current_status
+        notes: >
+          Maps true → operational, false → offline. KNOWN ISSUE: the API returns
+          active=false for all observed resources even when instruments are in use.
+          This is likely a Science Central data quality issue, not a decommission.
+
+      - name: location
+        type: string
+        example: "EMSL/1095"
+        loader_status: captured
+        schema_target: Instrument.description  # concatenated with available_hours
+        notes: "Building/room location within EMSL campus"
+
+      - name: available_hours
+        type: string
+        example: "24/7"
+        loader_status: captured
+        schema_target: Instrument.description  # concatenated with location
+
+      - name: url
+        type: string
+        example: "/resources/34290"
+        loader_status: not_captured
+        notes: >
+          Relative URL path for this resource in the API. Not currently
+          mapped to Instrument. Could be used to build a full resource URL.
+
+    observed_cryo_em_resources:
+      - resource_id: 34290
+        name: "PNCC Krios 1"
+        notes: "Titan Krios at PNCC; EPU acquisition"
+      - resource_id: 34251
+        name: "PNCC Arctica"
+        notes: "Talos Arctica at PNCC"
+      - resource_id: 34252
+        name: "PNCC Krios 2 (inferred)"
+        notes: "Observed in sample search; not confirmed"
+      - resource_id: 34292
+        name: "PNCC Krios 3 or Arctica 2 (inferred)"
+        notes: "Observed in sample search; not confirmed"
+      - resource_id: 135003
+        name: "Unknown (inferred)"
+        notes: "Observed in sample search; instrument type unknown"
+
+  # ─────────────────────────────────────────────────────────────────
+  # 4. GET /datasets/transaction_info/{transaction_id}
+  #    File listing for a transaction.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /datasets/transaction_info/{transaction_id}
+    description: >
+      Returns the list of files uploaded in a transaction. Response is keyed by
+      transaction_id: { "{tx_id}": [{file}, ...] }. Files are typically large
+      multi-part .tar archives of raw cryo-EM frames.
+    cryo_em_relevance: primary
+    currently_called: true
+
+    response_fields:
+      - name: file_id
+        type: integer
+        example: 64895567
+        loader_status: captured
+        schema_target: DataFile.id  # minted as emsl:file_{file_id}
+
+      - name: name
+        type: string
+        example: "87ffc243efcf23cc97850c900d93d62a25087827.data.1.tar"
+        loader_status: captured
+        schema_target: DataFile.file_name
+        notes: >
+          File naming pattern for cryo-EM data:
+            {sha1_hash}.data.{n}.tar      – split tar archive of raw movie frames
+            *atlas*                        – FluiDic/EPU atlas session files
+            *.xml, *.mrc, *.tiff          – EPU session metadata / micrographs
+          Hash prefix is the SHA1 of the original EPU session folder.
+
+      - name: path
+        type: string
+        example: "160724/T-A-apo_5_021226_data/epu_session"
+        loader_status: captured
+        schema_target: DataFile.file_path, ExperimentRun.raw_data_location
+        notes: >
+          Three-part relative path: {project_id}/{sample_name}/{subdir}
+          Known subdirectory names and their meaning:
+            epu_session   → EPU software; raw frame collection
+            serialem      → SerialEM software
+            leginon       → Leginon software
+            atlas         → Grid atlas / montage session
+            processed     → downstream processing outputs
+          Used by loader to infer acquisition_software.
+
+      - name: size
+        type: integer
+        example: 146741698560
+        loader_status: captured
+        schema_target: DataFile.file_size_bytes  # as QuantityValue(numeric_value, unit="bytes")
+        notes: "Size in bytes. Typical PNCC tar part: 130–160 GB per file."
+
+      - name: transaction_id
+        type: integer
+        example: 3736677
+        loader_status: ignored
+        notes: "Redundant with the key used to look up the transaction"
+
+  # ─────────────────────────────────────────────────────────────────
+  # 5. GET /projects/data/{project_identifier}   [NOT CURRENTLY USED]
+  #    All transactions for a project with release status.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /projects/data/{project_identifier}
+    description: >
+      Returns a project record plus all of its datasets (transactions) with
+      file count/size summaries and a public-release flag. Supports pagination.
+      NOT currently called by the loader.
+    cryo_em_relevance: high
+    currently_called: false
+
+    response_fields:
+      - name: project
+        type: object
+        notes: "Same structure as /projects/{id} but abbreviated (no members)"
+
+      - name: "datasets[].upload_identifier"
+        type: integer
+        example: 3736677
+        loader_status: not_used
+        notes: "Same as transaction_id. Could enumerate all transactions in a project."
+
+      - name: "datasets[].resource"
+        type: object
+        loader_status: not_used
+        notes: "Inline resource object (same as /resources/{id} response)"
+
+      - name: "datasets[].date_created"
+        type: string
+        format: date (YYYY-MM-DD)
+        loader_status: not_used
+        notes: "Date part of the transaction creation timestamp"
+
+      - name: "datasets[].is_released"
+        type: boolean
+        loader_status: not_used
+        notes: >
+          Whether this transaction's data is publicly released. Important for
+          dataset visibility/embargo tracking. NOT currently captured in schema.
+
+      - name: "datasets[].total_file_count"
+        type: integer
+        loader_status: not_used
+        notes: "File count without calling transaction_info. Useful for quick summaries."
+
+      - name: "datasets[].total_file_size"
+        type: integer
+        loader_status: not_used
+        notes: "Total bytes across all files in the transaction."
+
+      - name: "datasets[].friendly_file_size"
+        type: object
+        loader_status: not_used
+        notes: "Human-readable size object (e.g., {value: 136.8, unit: 'GB'})"
+
+  # ─────────────────────────────────────────────────────────────────
+  # 6. GET /resources/grouping   [NOT CURRENTLY USED]
+  #    Maps resource IDs to named instrument groups.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /resources/grouping
+    description: >
+      Returns a list mapping each resource to a named group. Useful for
+      classifying instruments (e.g., all PNCC Krios instruments in one group).
+      NOT currently called.
+    cryo_em_relevance: medium
+    currently_called: false
+
+    response_fields:
+      - name: resource_uuid
+        type: string
+        loader_status: not_used
+      - name: resource_id
+        type: string
+        loader_status: not_used
+      - name: resource_name
+        type: string
+        loader_status: not_used
+        notes: "Human-readable name; could replace regex-based technique inference"
+      - name: group
+        type: string
+        loader_status: not_used
+        notes: "Named group (e.g., 'PNCC', 'EMSL Cryo-ET'). Could improve instrument_category inference."
+
+  # ─────────────────────────────────────────────────────────────────
+  # 7. GET /datasets/request/{transaction_id}   [NOT CURRENTLY USED]
+  #    Create a download cart for a transaction.
+  # ─────────────────────────────────────────────────────────────────
+  - endpoint: GET /datasets/request/{transaction_id}
+    description: >
+      Creates a download cart for a transaction and returns a retrieval URL.
+      This is the actual data download mechanism. NOT currently implemented.
+    cryo_em_relevance: high (for data access)
+    currently_called: false
+
+    response_fields:
+      - name: download_uuid
+        type: string
+        loader_status: not_used
+        notes: "UUID to poll /datasets/download/{uuid} for status"
+      - name: status
+        type: string
+        loader_status: not_used
+      - name: success
+        type: boolean
+        loader_status: not_used
+      - name: message
+        type: string
+        loader_status: not_used
+      - name: display_status
+        type: string
+        loader_status: not_used
+      - name: retrieval_url
+        type: string
+        loader_status: not_used
+        notes: "Globus or direct download URL for the data"
+      - name: status_url
+        type: string
+        loader_status: not_used
+        notes: "URL to poll for async cart-preparation progress"
+
+# ─────────────────────────────────────────────────────────────────
+# SUMMARY: Fields Available but NOT Captured
+# ─────────────────────────────────────────────────────────────────
+gaps:
+  high_priority:
+    - field: "project.started_date / closed_date"
+      endpoint: GET /projects/{id}
+      notes: "Project allocation dates. Map to Study.start_date / Study.end_date."
+
+    - field: "project_members[].orcid + .project_role + .institution"
+      endpoint: GET /projects/{id}
+      notes: >
+        PI and team ORCID IDs, roles, and institutions. PI could populate
+        Study.principal_investigator. Requires schema field addition or use of
+        Study.keywords / description as fallback.
+
+    - field: "datasets[].is_released"
+      endpoint: GET /projects/data/{project_id}
+      notes: >
+        Public-release flag per transaction. No corresponding schema field exists.
+        Important for open-data tracking.
+
+  medium_priority:
+    - field: "resource.url"
+      endpoint: GET /resources/{id}
+      notes: "Instrument URL (e.g., /resources/34290). Map to Instrument.website."
+
+    - field: "resource.active (data quality fix)"
+      endpoint: GET /resources/{id}
+      notes: >
+        Currently maps active=false → InstrumentStatusEnum.offline for all
+        observed resources. Should cross-reference with reference-data/facilities/emsl.yaml
+        rather than trusting the API active flag.
+
+    - field: "datasets[].total_file_count / total_file_size"
+      endpoint: GET /projects/data/{project_id}
+      notes: "Could populate Dataset summary fields without listing all files."
+
+    - field: "resource grouping"
+      endpoint: GET /resources/grouping
+      notes: "Could replace regex-based instrument category inference."
+
+  out_of_scope_for_cryo_em:
+    - endpoint: /monet/*
+      notes: "MONet environmental/soil sample data portal. Not relevant for cryo-EM."
+    - field: "similarity_score"
+      endpoint: POST /datasets/by_sample_name
+      notes: "Only meaningful for fuzzy search UX; no schema representation needed."
+    - field: transaction.submitter_id
+      notes: "Internal EMSL user ID; no public lookup available."
+
+# ─────────────────────────────────────────────────────────────────
+# OBSERVED SAMPLE KEY PATTERNS (cryo-EM)
+# ─────────────────────────────────────────────────────────────────
+observed_sample_keys:
+  - key: pncc.short_sample_name
+    example: "T-A-apo_5_021226_data"
+    notes: "Primary cryo-EM sample label; set by user in EPU/Science Central at session start"
+  - key: pncc.session_id
+    example: "T-A-apo_5"
+    notes: "EPU session ID; may be a substring of short_sample_name; can duplicate across transactions"
+
+# ─────────────────────────────────────────────────────────────────
+# OBSERVED FILE PATH PATTERNS (cryo-EM)
+# ─────────────────────────────────────────────────────────────────
+observed_file_patterns:
+  path_structure: "{project_id}/{sample_name}/{subdir}/{filename}"
+  subdirectory_meanings:
+    epu_session:   "Raw EPU data collection (multi-part .tar archives of movie frames)"
+    serialem:      "SerialEM acquisition session"
+    leginon:       "Leginon acquisition session"
+    atlas:         "Grid atlas / montage collection (smaller files, .mrc montages)"
+    processed:     "Downstream processing output (not raw data)"
+  filename_patterns:
+    - pattern: "{sha1}.data.{n}.tar"
+      notes: "Multi-part split tar of EPU raw movie frames; each part ~130-160 GB"
+    - pattern: "*.mrc"
+      notes: "MRC-format micrographs or montages"
+    - pattern: "*.tiff / *.tif"
+      notes: "TIFF movie frames"
+    - pattern: "*.xml"
+      notes: "EPU session metadata / acquisition parameter XML files"
+    - pattern: "notes.txt"
+      notes: "Session notes; typically small"
