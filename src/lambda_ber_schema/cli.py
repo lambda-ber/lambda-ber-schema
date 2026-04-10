@@ -360,6 +360,34 @@ def etl_emsl(
             help="Maximum transactions to consider in sample search",
         ),
     ] = 20,
+    extract_epu: Annotated[
+        bool,
+        typer.Option(
+            "--extract-epu/--no-extract-epu",
+            help=(
+                "Extract EPU session metadata from the transaction tar archive. "
+                "Requires EMSL_JWT env var (JWT bearer token). "
+                "When set, acquisition parameters (magnification, dose, pixel size, etc.) "
+                "are added to the ExperimentRun in the output."
+            ),
+        ),
+    ] = False,
+    token: Annotated[
+        str | None,
+        typer.Option(
+            "--token",
+            help="EMSL JWT bearer token (overrides EMSL_JWT env var)",
+            envvar="EMSL_JWT",
+            show_default=False,
+        ),
+    ] = None,
+    epu_timeout: Annotated[
+        float,
+        typer.Option(
+            "--epu-timeout",
+            help="Seconds to wait for the EMSL download cart to become ready before giving up.",
+        ),
+    ] = 1800.0,
 ) -> None:
     """
     Load data from the EMSL public API using sample-search transactions.
@@ -370,13 +398,23 @@ def etl_emsl(
 
         lambda-ber-schema etl emsl --sample apo --transaction-id 3736677
 
+        lambda-ber-schema etl emsl --sample apo --extract-epu --format json
+
         lambda-ber-schema etl emsl --sample apo --format json --cache
     """
     response_cache = ResponseCache(
         cache_dir=cache_dir or Path(".cache"),
         enabled=cache,
     )
-    loader = EMSLLoader(cache=response_cache)
+    jwt = token if extract_epu else None
+    loader = EMSLLoader(cache=response_cache, jwt_token=jwt, epu_timeout=epu_timeout)
+
+    if extract_epu and not jwt:
+        typer.echo(
+            "Warning: --extract-epu requested but no JWT token found. "
+            "Set EMSL_JWT or use --token. EPU metadata will be skipped.",
+            err=True,
+        )
 
     typer.echo(f"Loading EMSL sample query: {sample}", err=True)
     result = _run_with_error_handling(
