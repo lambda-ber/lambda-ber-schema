@@ -32,8 +32,9 @@ description: |
   **Data Collection**
   - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
     beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
-    [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
-    like accelerating voltage, detector type, or beam energy.
+    [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),
+    [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,
+    detector type, or beam energy.
 
   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
     captures when, how, and under what conditions data was collected, including quality metrics
@@ -785,6 +786,159 @@ classes:
         description: "Crystal cooling system available"
         range: boolean
 
+  SANSDetector:
+    is_a: AttributeGroup
+    description: "Description of a detector used in a SANS instrument"
+    attributes:
+      detector_name:
+        description: "User-assigned detector name"
+        range: string
+      detector_type:
+        description: "Type of detector"
+        range: string
+      detector_description:
+        description: "Free-text description of the detector"
+        range: string
+      pixel_size_x:
+        description: "Pixel size in x-direction"
+        range: QuantityValue
+        inlined: true
+      pixel_size_y:
+        description: "Pixel size in y-direction"
+        range: QuantityValue
+        inlined: true
+      sample_detector_distance:
+        description: "Distance from sample to detector"
+        range: QuantityValue
+        inlined: true
+      rotation_angle:
+        description: "Rotation angle of the detector"
+        range: QuantityValue
+        inlined: true
+      beam_trap_type:
+        description: "Type of beam trap (if any)"
+        range: string
+      beam_trap_position_x:
+        description: "X coordinate of beam trap"
+        range: QuantityValue
+        inlined: true
+      beam_trap_position_y:
+        description: "Y coordinate of beam trap"
+        range: QuantityValue
+        inlined: true
+
+  SANSSource:
+    is_a: AttributeGroup
+    description: "Beam source parameters for a SANS instrument"
+    attributes:
+      source_type:
+        description: "Type of source"
+        range: string
+      source_description:
+        description: "Free-text description of the source"
+        range: string
+      wavelength:
+        description: "Neutron wavelength"
+        range: QuantityValue
+        inlined: true
+      wavelength_spread:
+        description: "Wavelength spread"
+        range: QuantityValue
+        inlined: true
+      wavelength_selection_method:
+        description: "Method used to select wavelength"
+        range: string
+      energy:
+        description: "Beam energy"
+        range: QuantityValue
+        inlined: true
+      flux:
+        description: "Beam flux"
+        range: QuantityValue
+        inlined: true
+
+  SANSConfiguration:
+    is_a: AttributeGroup
+    description: "Experimental configuration for a SANS instrument"
+    attributes:
+      q_min:
+        description: "Minimum q value"
+        range: QuantityValue
+        inlined: true
+      q_max:
+        description: "Maximum q value"
+        range: QuantityValue
+        inlined: true
+      number_of_guides:
+        description: "Number of neutron guides"
+        range: integer
+      attenuator:
+        description: "Attenuator setting"
+        range: string
+      source_aperature_diameter:
+        description: "Source aperture diameter"
+        range: QuantityValue
+        inlined: true
+      sample_aperature_diameter:
+        description: "Sample aperture diameter"
+        range: QuantityValue
+        inlined: true
+      siwindow_to_main_distance:
+        description: "Silicon window to main instrument distance"
+        range: QuantityValue
+        inlined: true
+      sample_ap_to_si_distance:
+        description: "Sample aperture to silicon window distance"
+        range: QuantityValue
+        inlined: true
+      sample_ap_to_main_distance:
+        description: "Sample aperture to main instrument distance"
+        range: QuantityValue
+        inlined: true
+      sample_ap_to_sample_distance:
+        description: "Sample aperture to sample distance"
+        range: QuantityValue
+        inlined: true
+      source_ap_to_siwindow_distance:
+        description: "Source aperture to silicon window distance"
+        range: QuantityValue
+        inlined: true
+      source_ap_to_sample_ap_distance:
+        description: "Source aperture to sample aperture distance"
+        range: QuantityValue
+        inlined: true
+
+  SANSInstrument:
+    is_a: Instrument
+    description: "Small-angle neutron scattering (SANS) instrument specifications"
+    attributes:
+      technique:
+        description: "Primary technique (should always be sans for this class)"
+        range: TechniqueEnum
+        ifabsent: string(sans)
+      q_range_min:
+        description: "Minimum q value in inverse Angstroms"
+        range: QuantityValue
+        inlined: true
+      q_range_max:
+        description: "Maximum q value in inverse Angstroms"
+        range: QuantityValue
+        inlined: true
+      detectors:
+        description: "List of detectors associated with the instrument"
+        range: SANSDetector
+        multivalued: true
+        inlined_as_list: true
+      source:
+        description: "Source parameters for the instrument"
+        range: SANSSource
+      configuration:
+        description: "Optical/mechanical configuration details"
+        range: SANSConfiguration
+      environment:
+        description: "Textual description of environmental conditions"
+        range: string
+
   SAXSInstrument:
     is_a: Instrument
     description: "SAXS/WAXS instrument specifications"
@@ -817,7 +971,7 @@ classes:
     description: "Multi-technique synchrotron beamline that supports multiple experimental methods"
     comments:
       - "Use for beamlines like SIBYLS that support both SAXS and crystallography"
-      - "For single-technique beamlines, use XRayInstrument or SAXSInstrument"
+      - "For single-technique beamlines, use XRayInstrument, SANSInstrument, or SAXSInstrument"
     attributes:
       techniques_supported:
         description: "Experimental techniques available at this beamline"
