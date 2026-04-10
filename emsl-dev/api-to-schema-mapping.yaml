@@ -149,101 +149,65 @@ captured:
 
 # ─────────────────────────────────────────────────────────────────────────────
 # B. API → SCHEMA: Field Exists in Schema, NOT Captured by Loader
-#    (Loader gaps — code changes needed, no schema changes)
+#    (Loader gaps — code changes only, no schema changes needed)
+#
+# NOTE: Items where the schema field does NOT exist are in section C (schema_gaps).
 # ─────────────────────────────────────────────────────────────────────────────
 loader_gaps:
 
-  - api_source: "project.started_date"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: >
-      Study has no start_date field. The NamedThing base has only id/title/description.
-      See schema_gaps below — this needs a schema addition too.
-
-  - api_source: "project.closed_date"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: "Same as above — no end_date on Study"
-
-  - api_source: "project.current_status"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: "No project_status or is_active field on Study"
-
-  - api_source: "project.award_doi"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: >
-      DOI is currently stored on LoaderResult.doi, not on Study. There is no
-      Study.award_doi or Study.doi field. A Study-level DOI field would be useful
-      for projects with formal funding DOIs.
-
-  - api_source: "project.uuid"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: >
-      The project UUID is a more stable identifier than the short integer ID,
-      but there is no alternate_id or external_id field on Study to store it.
-
-  - api_source: "project_members[].orcid"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-    notes: >
-      No contributor/PI fields on Study. NamedThing has no creator/contributor slots.
-      This is a schema gap shared with other loaders.
-
-  - api_source: "project_members[].project_role"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-
-  - api_source: "project_members[].institution"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-
-  - api_source: "project_members[].first_name + last_name"
-    schema_class: Study
-    schema_field: "???"
-    schema_field_exists: false
-
   - api_source: "resource.url"
-    schema_class: Instrument
-    schema_field: "???"
-    schema_field_exists: false
+    schema_class: BeamlineInstrument
+    schema_field: website
+    schema_field_exists: true
     notes: >
-      The base Instrument class has no website/url field. BeamlineInstrument has a
-      website: uri field, but CryoEMInstrument and the base Instrument do not.
-      The loader creates a base Instrument (not CryoEMInstrument), so website is
-      unavailable even if added to the subclass.
-
-  - api_source: "datasets[].is_released  (from GET /projects/data/{id})"
-    schema_class: Dataset
-    schema_field: "???"
-    schema_field_exists: false
-    notes: >
-      No embargo or release_status field exists anywhere in the schema.
-      This endpoint is also not called by the loader.
+      `website: uri` exists on BeamlineInstrument but NOT on the base Instrument
+      class or CryoEMInstrument. The loader creates a base Instrument (not
+      CryoEMInstrument), so the field is doubly unreachable. Fix requires:
+        1. Promote `website` to base Instrument class in schema (schema change), OR
+        2. Add `website` to CryoEMInstrument AND switch loader to create CryoEMInstrument.
+      API provides a relative path (e.g., '/resources/34290') that would need
+      resolving to a full URL before storing.
 
   - api_source: "datasets[].upload_identifier  (from GET /projects/data/{id})"
     schema_class: ExperimentRun
     schema_field: experiment_code
     schema_field_exists: true
     notes: >
-      This endpoint is not called. If it were, upload_identifier (= transaction_id)
-      would map to experiment_code/id, same as the current search pathway.
+      This endpoint is not called by the loader. If it were, upload_identifier
+      (= transaction_id) would map to experiment_code/id, same as the current
+      search pathway. Low priority since the current path already captures this.
 
-  - api_source: "transaction.similarity_score"
-    schema_class: "(none needed)"
-    schema_field: "(none)"
-    schema_field_exists: false
-    notes: "Search relevance score, not a dataset metadata field. Intentionally not mapped."
+  - api_source: "files[].path (subdir inference)"
+    schema_class: ExperimentRun
+    schema_field: daq_system
+    schema_field_exists: true
+    notes: >
+      ExperimentRun.daq_system (DataAcquisitionSystemEnum) exists in schema but
+      is never populated by the loader. The acquisition_software inference already
+      identifies EPU/SerialEM/Leginon from the file path — the same logic could
+      set daq_system (e.g., epu_session → DAQ_EPU). One-line loader fix.
+
+  - api_source: "file.name (SHA1 prefix)"
+    schema_class: DataFile
+    schema_field: checksum
+    schema_field_exists: true
+    notes: >
+      DataFile.checksum exists in schema (described as SHA-256). The SHA1 prefix
+      embedded in PNCC tar filenames (e.g., '87ffc243...data.1.tar') is the hash
+      of the EPU session folder, not a per-file checksum. Cannot be used as-is.
+      Individual file checksums are not exposed by the API. Loader gap: field
+      can't be populated until EMSL provides per-file checksums.
+
+  - api_source: "GET /datasets/request/{tx_id} → Cart.retrieval_url"
+    schema_class: DataFile
+    schema_field: storage_uri
+    schema_field_exists: true
+    notes: >
+      DataFile.storage_uri exists in schema (range: string, for S3/Globus URIs).
+      The download cart endpoint returns a retrieval URL that could populate this
+      field. The loader does call the cart endpoint (for EPU extraction) but does
+      not store the retrieval URL on DataFile. Would require JWT and cart creation
+      per transaction.
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -334,6 +298,24 @@ schema_gaps:
     priority: low
     notes: "Total dataset size in bytes, available without fetching all file metadata."
 
+  - api_source: "EPU XML StartDateTime (inside .tar archive)"
+    suggested_class: ExperimentRun
+    suggested_field: start_time
+    field_type: string (datetime)
+    priority: medium
+    notes: >
+      ExperimentRun has experiment_date (string, currently set to upload time) but
+      no dedicated start_time or end_time fields. EPU XML contains a StartDateTime
+      element with the true microscope session start. Needs a new field on
+      ExperimentRun and a parser update.
+
+  - api_source: "EPU XML EndDateTime (inside .tar archive)"
+    suggested_class: ExperimentRun
+    suggested_field: end_time
+    field_type: string (datetime)
+    priority: low
+    notes: "EPU XML may contain an EndDateTime. Needs new schema field and parser update."
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # D. Schema Fields with NO API Source (API limitation)
@@ -395,79 +377,110 @@ schema_fields_without_api_source:
     notes: "Currently captured in ExperimentRun.acquisition_software, not on Instrument."
 
   # --- ExperimentRun (session-level acquisition params — in EPU XML inside .tar) ---
+  # Fields marked epu_extracted are already populated by the loader when --extract-epu
+  # is passed and the download cart stages successfully.
+  # Fields marked not_in_api/epu_not_extracted are genuine remaining gaps.
+
   - schema_class: ExperimentRun
     schema_field: magnification
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML inside .tar archive — XPaths: .//Magnification, .//NominalMagnification"
 
   - schema_class: ExperimentRun
     schema_field: calibrated_pixel_size
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//PixelSize (meters, converted to Å/pixel)"
 
   - schema_class: ExperimentRun
     schema_field: total_dose
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//TotalExposureDose or computed from DosePerFrame × frames"
 
   - schema_class: ExperimentRun
     schema_field: dose_rate
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//DoseRate"
 
   - schema_class: ExperimentRun
     schema_field: exposure_time_per_frame
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//ExposureTime (seconds, converted to ms)"
 
   - schema_class: ExperimentRun
     schema_field: frames_per_movie
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//NumberOffractions, .//FramesPerExposure"
+
+  - schema_class: ExperimentRun
+    schema_field: defocus_target
+    api_availability: not_in_api
+    epu_extracted: true
+    potential_source: "EPU XML — .//TargetDefocus (meters, converted to µm)"
 
   - schema_class: ExperimentRun
     schema_field: defocus_range_min
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//MinDefocus (meters, converted to µm)"
 
   - schema_class: ExperimentRun
     schema_field: defocus_range_max
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//MaxDefocus (meters, converted to µm)"
 
   - schema_class: ExperimentRun
     schema_field: shots_per_hole
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//ShotsPerHole"
 
   - schema_class: ExperimentRun
     schema_field: camera_binning
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//Binning, .//CameraBinning"
 
   - schema_class: ExperimentRun
-    schema_field: start_time
-    api_availability: partial
-    potential_source: "transaction.created is upload time, not session start"
-    notes: >
-      transaction.created is when Science Central received the upload, not when the
-      microscope session started. True start_time is in EPU XML.
-
-  - schema_class: ExperimentRun
-    schema_field: end_time
+    schema_field: holes_per_group
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//HolesPerGroup"
 
   - schema_class: ExperimentRun
-    schema_field: daq_system
-    api_availability: partial
-    potential_source: "Inferred from file path (epu_session → EPU DAQ)"
-    notes: "DataAcquisitionSystemEnum field on ExperimentRun is never populated by loader."
+    schema_field: stage_tilt
+    api_availability: not_in_api
+    epu_extracted: true
+    potential_source: "EPU XML — .//StageTilt (degrees)"
 
   - schema_class: ExperimentRun
     schema_field: acquisition_software_version
     api_availability: not_in_api
-    potential_source: "EPU XML inside .tar archive"
+    epu_extracted: true
+    potential_source: "EPU XML — .//Version, .//SoftwareVersion, .//ApplicationVersion"
+
+  - schema_class: ExperimentRun
+    schema_field: start_time
+    api_availability: partial
+    epu_extracted: false
+    potential_source: "EPU XML contains session StartDateTime; not yet parsed by loader"
+    notes: >
+      transaction.created is upload time (Science Central), not microscope session start.
+      EPU XML has a StartDateTime element but the parser does not extract it yet.
+      schema gap: ExperimentRun has experiment_date (string) but no dedicated start_time field.
+
+  - schema_class: ExperimentRun
+    schema_field: end_time
+    api_availability: not_in_api
+    epu_extracted: false
+    potential_source: "EPU XML may contain EndDateTime; not parsed by loader"
+    notes: "Schema gap: no end_time field on ExperimentRun. Needs schema addition and parser update."
 
   # --- Sample (biological metadata — not in Science Central) ---
   - schema_class: Sample
@@ -498,23 +511,8 @@ schema_fields_without_api_source:
       PNCC sample names often encode protein name (e.g., 'T-A-apo' suggests
       protein 'T-A' in apo state) but this is free-text convention, not structured.
 
-  # --- DataFile ---
-  - schema_class: DataFile
-    schema_field: checksum
-    api_availability: partial
-    potential_source: "SHA1 hash is embedded in filename (e.g., 87ffc243...data.1.tar)"
-    notes: >
-      The SHA1 prefix in PNCC tar filenames is the hash of the EPU session folder,
-      not the individual tar file. Not suitable as a DataFile.checksum (which expects
-      SHA-256 per schema description). Individual file checksums not exposed.
-
-  - schema_class: DataFile
-    schema_field: storage_uri
-    api_availability: not_in_api
-    potential_source: "GET /datasets/request/{tx_id} → Cart.retrieval_url (Globus URL)"
-    notes: >
-      The download cart endpoint would provide a Globus retrieval URL that could
-      populate storage_uri, but this endpoint is not currently called.
+  # NOTE: DataFile.checksum and DataFile.storage_uri were previously listed here
+  # but both fields EXIST in the schema — they belong in section B (loader_gaps).
 
   # --- SamplePreparation (cryo grid prep —  not in Science Central) ---
   - schema_class: SamplePreparation
@@ -534,30 +532,63 @@ schema_fields_without_api_source:
 summary:
   total_api_fields_identified: 30
   captured_by_loader: 18
-  loader_gaps_schema_exists: 3          # resource.url (partially), upload_identifier, is_released
-  loader_gaps_schema_missing: 9         # started_date, closed_date, status, award_doi on Study,
-                                        # uuid, project_members (orcid/role/institution/name)
-  schema_gaps_requiring_new_fields: 9   # See schema_gaps section above
 
-  schema_fields_with_no_api_source: 26  # Require EPU XML extraction or reference data lookup
+  # B: schema field exists, loader doesn't populate it (no schema change needed)
+  loader_gaps_schema_exists: 5
+    # resource.url → BeamlineInstrument.website (needs class promotion too)
+    # datasets[].upload_identifier → ExperimentRun.experiment_code (low priority)
+    # files[].path → ExperimentRun.daq_system (one-line fix)
+    # file.name (SHA1) → DataFile.checksum (field exists; SHA1 wrong hash type)
+    # Cart.retrieval_url → DataFile.storage_uri (field exists; JWT + cart needed)
+
+  # C: API field has no matching schema field anywhere (schema change required)
+  schema_gaps_requiring_new_fields: 11
+    # Study.start_date (from project.started_date)
+    # Study.end_date (from project.closed_date)
+    # Study.project_status (from project.current_status)
+    # Study.award_doi (from project.award_doi)
+    # Study.alternate_identifiers (from project.uuid)
+    # Study.contributors (from project_members[]: orcid, role, institution, name)
+    # Dataset.is_released (from datasets[].is_released)
+    # Dataset.file_count (from datasets[].total_file_count)
+    # Dataset.total_size_bytes (from datasets[].total_file_size)
+    # ExperimentRun.start_time (in EPU XML StartDateTime; experiment_date is upload time)
+    # ExperimentRun.end_time (in EPU XML EndDateTime)
+    # NOTE: resource.url → Instrument.website also requires schema change (class promotion)
+    #       but is listed in B because the field exists on BeamlineInstrument
+
+  # D: schema fields with no public API source
+  schema_fields_with_no_api_source: 24  # Require EPU XML extraction or reference data
+    # Of these, 14 are already extracted by the loader (--extract-epu flag):
+    #   magnification, calibrated_pixel_size, camera_binning, exposure_time_per_frame,
+    #   frames_per_movie, total_dose, dose_rate, defocus_target, defocus_range_min,
+    #   defocus_range_max, shots_per_hole, holes_per_group, stage_tilt,
+    #   acquisition_software_version
+    # Remaining 10 still require work:
+    #   CryoEMInstrument fields (8): accelerating_voltage, detector_technology,
+    #     detector_manufacturer, detector_model, energy_filter_present, cs,
+    #     phase_plate, autoloader_capacity — all in reference-data/facilities/emsl.yaml
+    #   Sample (5): organism, molecular_weight, concentration, buffer_composition, protein_name
+    #   SamplePreparation: all fields
+    # NOTE: DataFile.checksum and DataFile.storage_uri moved to section B (schema fields exist)
 
   highest_priority_schema_changes:
     - "Study.contributors (list of Contributor with orcid, role, institution)"
     - "Study.award_doi"
     - "Dataset.is_released (or release_status)"
-    - "Instrument.website promoted to base Instrument class"
+    - "Instrument.website promoted from BeamlineInstrument to base Instrument class"
     - "Study.start_date / Study.end_date"
 
   loader_improvements_no_schema_change_needed:
-    - "Populate Study.start_date / end_date once schema fields added"
-    - "Create CryoEMInstrument instead of base Instrument (enables spec fields)"
-    - "Populate Instrument.website from resource.url (needs schema fix first)"
-    - "Call GET /projects/data/{id} to get is_released per transaction"
-    - "Populate ExperimentRun.daq_system from file path inference"
+    - "Populate ExperimentRun.daq_system from file path inference (one-line fix)"
+    - "Create CryoEMInstrument instead of base Instrument (enables all spec fields)"
+    - "Merge reference-data/facilities/emsl.yaml for CryoEMInstrument spec fields"
+    - "Populate Instrument.website from resource.url (requires schema promotion first)"
+    - "Call GET /projects/data/{id} to get is_released per transaction (requires schema addition)"
 
   blocked_on_api_limitations:
-    - "All session-level cryo-EM params (magnification, dose, defocus, pixel_size)"
-    - "SamplePreparation (grid prep / vitrification parameters)"
-    - "True experiment start/end time"
-    - "Per-file checksums"
-    - "Biological sample metadata (organism, MW, buffer)"
+    - "Session-level cryo-EM params: available via EPU XML (--extract-epu), blocked only on tape staging"
+    - "SamplePreparation (grid prep / vitrification parameters) — not in API or EPU XML"
+    - "True session start_time / end_time — EPU XML has StartDateTime but needs schema field + parser update"
+    - "Per-file checksums — SHA1 in filename is folder hash, not file checksum"
+    - "Biological sample metadata (organism, MW, buffer) — researcher-provided only"
