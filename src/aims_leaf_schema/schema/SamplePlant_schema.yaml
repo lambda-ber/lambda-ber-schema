@@ -1,0 +1,698 @@
+# plant_sample_metadata_schema.yaml
+id: https://w3id.org/lambda-ber-aims-plant/
+name: SamplePlant_schema
+description: "Comprehensive schema for characterizing plant biological samples with experimental and environmental metadata"
+  
+classes:
+
+
+  PlantSample:
+    is_a: Sample
+    description: "Plant sample info for AIMS-LEAF"
+    attributes:
+    
+      biological_replicate_sample_group_name:
+        range: string
+        required: false
+        description: "Samples that are biological replicates should have the same group name"
+        comments: 
+          - "sbicolor_3d_root"
+    
+      combined_tissue_description:
+        range: string
+        required: false
+        description: "The number and relationship between the tissues if multiple tissue samples were combined into a single container"
+        comments: 
+          - "6 lateral root tips from each of two plants"
+    
+      experimental_time_point_number:
+        range: integer
+        required: false
+        description: "Integer number representing the sequential numbering of time points, applicable to samples that are part of time course experiments"
+
+        
+      experimental_time_point_description:
+        range: string
+        required: false
+        description: "Description of the time point sampled, applicable to samples that are part of time course experiments"
+        comments: 
+          - "3 days post germination"
+
+#taxonomy
+
+      genus:
+        range: string
+        required: true
+        
+      species:
+        range: string
+        required: true        
+            
+      strain_variety_cultivar:
+        range: string
+        required: false
+        description: "Name or ID of the cultivar, variety, strain, or other similar designation of the primary organism being sampled"
+        comments: 
+          - "RTx430"
+            
+      isolate:
+        range: string
+        required: false
+        description: "Isolate or mutant name"
+        comments: 
+          - "Sb_Mut1"
+            
+      germplasm_collection_id:
+        range: string
+        required: false
+        description: "Culture collection name and ID from which the original plant germplasm was sourced"
+        comments: 
+          - "ABRC CS22561"
+            
+      ncbi_taxonomy_id:
+        range: integer
+        required: false
+        description: "Unique identifier from the NCBI taxonomy database"
+        comments:
+          - 4558
+            
+      ancestral_data:
+        range: string
+        required: false
+        description: "Information about either pedigree or other description of ancestral information"
+        comments: 
+          - "Hybrid of A x B lines"
+
+# Genetic Information
+
+      genetic_modification:
+        range: string
+        required: false
+        description: "Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means"
+        comments: 
+          - "mlo-11 allele"
+    
+      estimated_genome_size_mb:
+        range: QuantityValue
+        inlined: true
+        description: "Estimated genome size of the primary species being sampled, between 1-100000"
+        comments: 
+          - "730 Mb"
+        
+      gc_content_percent:
+        range: QuantityValue
+        inlined: true
+        description: "Estimated GC content of the genome of the primary species being sampled, numeric only"
+        comments: 
+          - "45 %"
+        
+      ploidy:
+        range: PloidyTypeEnum
+        required: false
+        description: "The ploidy level of the genome. For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology"
+        comments: 
+          - "diploid"
+
+          
+      reference_genome:
+        range: string
+        required: false
+        description: "Reference genome and annotation to be used for analysis"
+        comments: 
+          - "Phytozome Sorghum bicolor RTx430 v2.1"
+
+# Sample Collection
+
+      collection_date_time:
+        range: string
+        required: true
+        description: "The time of sampling, either as an instance (single point in time) or interval. All valid ISO8601 formats are acceptable"
+        comments: 
+          - "2025-08-10T14:00:00-07:00"
+        
+      sample_size:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "The total amount or size (volume (ml), mass (g) or area (m2)) of sample collected. Separate the number and unit by a single space"
+        comments: 
+          - "0.45 g"
+        
+      tissue:
+        range: string
+        required: true
+        description: "Detailed description of the organ or type of tissue sampled"
+        comments: 
+          - "5 mm lateral root tips"
+        
+      tissue_plant_ontology_term:
+        range: string
+        required: false
+        description: "Plant ontology term corresponding to plant structure sampled; see https://planteome.org. May include multiple terms separated by semicolons"
+        comments: 
+          - "seedling cotyledon (PO:0025471); seedling hypocotyl (PO:0025291)"
+    
+      # Geographic Location
+      region_locality:
+        range: string
+        required: false
+        description: "The geographical origin of the sample as defined by the country or sea name followed by specific region name"
+        comments: 
+          - "USA: California, Berkeley"
+        
+      latitude:
+        range: float
+        required: false
+        description: "The geographical origin of the sample as defined by latitude. The value should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system"
+        comments: 
+          - 37.877184
+        
+      longitude:
+        range: float
+        required: false
+        description: "The geographical origin of the sample as defined by longitude. The value should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system"
+        comments: 
+          - -122.250841
+        
+      depth_meters:
+        range: QuantityValue 
+        inlined: true
+        required: false
+        description: "The vertical distance (in meters) below local surface"
+        comments: 
+          - "0.1 m"
+        
+      elevation_meters:
+        range: QuantityValue 
+        inlined: true
+        required: false
+        description: "Elevation (in meters) of the sampling site as measured by the vertical distance from mean sea level"
+        comments: 
+          - "120 m"
+        
+      temperature:
+        range: QuantityValue 
+        inlined: true
+        description: "Temperature (in degrees Celsius) of the sample at time of sampling"
+        comments: 
+          - "22 C"
+    
+    # Environmental Context
+      broad_scale_environmental_context:
+        range: string
+        required: false
+        description: "The major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain"
+        comments: 
+          - "rangeland biome [ENVO:01000247]"
+        pattern: ".*\\[ENVO:\\d+\\]$"
+        
+      local_environmental_context:
+        range: string
+        required: false
+        description: "The entity or entities which are in the sample or specimen's local vicinity and which you believe have significant causal influences on your sample or specimen"
+        comments: 
+          - "hillside [ENVO:01000333]"
+        pattern: ".*\\[ENVO:\\d+\\]$"
+        
+      environmental_medium:
+        range: string
+        required: false
+        description: "The environmental material(s) immediately surrounding the sample or specimen at the time of sampling"
+        comments: 
+          - "bluegrass field soil [ENVO:00005789]"
+        pattern: ".*\\[ENVO:\\d+\\]$"
+    
+    # Growth Conditions
+      growth_facility:
+        range: GrowthFacilityEnum
+        required: true
+        description: "Type of facility where the sampled plant was grown"
+        comments: 
+          - "greenhouse"
+          
+      growth_medium:
+        range: string
+        required: true
+        description: "General specification of the media for growing the plants or tissue cultured samples"
+        comments: 
+          - "soil"
+          
+      growth_medium_composition:
+        range: string
+        required: false
+        description: "Detailed description of the makeup of the plant growth medium"
+        comments: 
+          - "2:1:1 mix of coco coir, sand, and vermiculite"
+          
+      plant_age:
+        range: string
+        required: false
+        description: "The age of the plant from which the tissue was sampled"
+        comments: 
+          - "3 days post germination"
+          
+      developmental_stage:
+        range: string
+        required: true
+        description: "The developmental stage of the plant from which the tissue was sampled"
+        comments: 
+          - "seedling"
+      
+      arabadopsis_phenotype_stage:
+        range: ArabadopsisStageEnum
+        required: false
+        description: "Stage that takes into account effect of genotype & environment effects. Requires in depth knowledge about features of model organism doi: 10.1105/TPC.010011"
+        comments:
+          - "Stage 1.04"
+      
+      # Environmental Regimens and Treatments
+      air_temperature_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving an exposure to varying temperatures"
+        comments: 
+          - "22°C 12h day / 18°C 12h night"
+          
+      antibiotic_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving antibiotic administration"
+        comments: 
+          - "kanamycin 50 ug/mL added to agar plates for the full duration of growth"
+          
+      biotic_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of biotic factors, such as bacteria, viruses, or fungi"
+        comments: 
+          - "Agrobacterium tumefaciens GV3101 infiltration"
+          
+      inoculation_method:
+        range: string
+        required: false
+        description: "Method and material used for inoculation or infiltration with a biotic agent"
+        comments: 
+          - "syringe infiltration with GV3101 (OD600=0.5) carrying pCAMBIA1300-35S::GFP"
+          
+      time_post_inoculation:
+        range: string
+        required: false
+        description: "The time between inoculation with the biotic agent and sample collection, specified as days:hours:minutes"
+        comments: 
+          - "2:12:00"
+          
+      chemical_administration:
+        range: string
+        required: false
+        description: "List of chemical compounds administered to the host or site where sampling occurred, and when"
+        comments: 
+          - "50 mM KNO3 fertilizer, weekly"
+          
+      chemical_mutagen:
+        range: string
+        required: false
+        description: "Treatment involving use of mutagens"
+        comments: 
+          - "seeds soaked in EMS, 0.1%, 6h exposure before planting"
+          
+      fertilizer_administration:
+        range: string
+        required: false
+        description: "Detailed description of fertilizer application"
+        comments: 
+          - "0.5x Hoagland's solution, weekly"
+          
+      insecticide_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of insecticides"
+        comments: 
+          - "imidacloprid, 0.5 mg/L, soil drench at time of planting"
+          
+      fungicide_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of fungicides"
+        comments: 
+          - "azoxystrobin, 100 ppm, foliar spray once at weeks 2, 3, and 4"
+          
+      gaseous_environment:
+        range: string
+        required: false
+        description: "Use of conditions with differing gaseous environments"
+        comments: 
+          - "elevated CO2, 600 ppm, continuous"
+          
+      growth_hormone_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of growth hormones"
+        comments: 
+          - "IAA 1 µM for 24h at 6 days old, followed by transfer to control condition without hormone for 48h before sampling"
+          
+      herbicide_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of herbicides"
+        comments: 
+          - "glyphosate 10 µM, foliar spray, once at 2 weeks"
+          
+      humidity_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving an exposure to varying degree of humidity"
+        comments: 
+          - "65% RH, constant"
+          
+      radiation_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving exposure of plant or a plant part to a particular radiation regimen"
+        comments: 
+          - "UV-B 1.5 W/m2, 2h/day, for 5 days starting at day 7"
+          
+      light_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving an exposure to light, including intensity, timing, and quality"
+        comments: 
+          - "150 µmol m-2 s-1, 16h light / 8h dark"
+          
+      last_light_transition_type:
+        range: string
+        required: false
+        description: "The most recent light transition before sampling"
+        comments: 
+          - "lights on"
+          - eg, lights_on, lights_off, sunrise, sunset
+         
+      time_after_last_light_transition:
+        range: string
+        required: false
+        description: "The time between sampling and the most recent light transition, specified as hours:minutes"
+        comments: 
+          - "2:00"
+        
+      salt_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving use of salts as supplement to liquid and soil growth media"
+        comments: 
+          - "NaCl 100 mM added to hydroponic medium at day 3, followed by transfer to fresh hydroponic medium without elevated NaCl for 3 days before sampling"
+          
+      rainfall_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving an exposure to a given amount of rainfall"
+        comments: 
+          - "30cm of rainfall during growing season"
+          
+      watering_regimen:
+        range: string
+        required: false
+        description: "Information about treatment involving an exposure to watering frequencies"
+        comments: 
+          - "100 ml per pot every 3 days"
+          
+      other_treatment_regimen:
+        range: string
+        required: false
+        description: "Use this field to provide information about treatments that are not captured accurately by any of the other available treatment categories"
+      
+      # Perturbations and Stresses
+      perturbation:
+        range: string
+        required: false
+        description: "Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen"
+        comments: 
+          - "drought stress beginning at 8 weeks for a period of 4 weeks"
+          
+      mechanical_damage:
+        range: string
+        required: false
+        description: "Information about any mechanical damage exerted on the plant"
+        comments: 
+          - "root wounding, 24h before sampling"
+        
+      observed_host_symbionts:
+        range: string
+        required: false
+        description: "The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host."
+        comments: 
+          - "arbuscular mycorrhizal fungi"        
+    
+      plant_sex:
+        range: string
+        required: false
+        description: "Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecious, hermaphrodite"
+        comments: 
+          - "hermaphrodite"   
+          
+      sample_disease_staus:
+        range: string
+        required: false
+        description: "List of diseases with which the subject has been diagnosed at the time of sample collection; can include multiple diagnoses; e.g. Late wilt (Cephalosporium maydis)"
+        comments: 
+          - "infection with Pseudomonas syringae pv. tomato DC3000"   
+          
+      sample_disease_stage:
+        range: string
+        required: false
+        description: "Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen"
+        comments: 
+          - "infection"   
+          
+    
+          
+                              
+  PlantSamplePreparation:
+    is_a: SamplePreparation
+    description: "A process that prepares a plant sample for analysis"
+    attributes:
+      # these are from the SamplePreparation type
+      # preparation_type:
+      #   description: "Type of sample preparation"
+      #   range: PreparationTypeEnum
+      #   required: true
+      # sample_id:
+      #   description: "Reference to the sample being prepared"
+      #   range: string
+      #   required: true
+      # preparation_date:
+      #   description: "Date of sample preparation"
+      #   range: date
+      # operator_id:
+      #   description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
+      #   range: string
+      # protocol_description:
+      #   description: "Detailed protocol description, or reference"
+      #   range: string          
+          
+      sample_material_processing:
+        range: string
+        required: false
+        description: "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
+        comments: 
+          - "roots were removed from pots rinsed with tap water before flash freezing with liquid nitrogen"
+          
+      sample_storage_temperature:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "Temperature at which sample was stored (in degrees Celsius)"
+        comments: 
+          - "-80 C"
+          
+      sample_preservation_method:
+        range: SamplePreservationEnum
+        required: false
+        description: "The method employed for preserving or fixing the tissue. Use Fresh if the sample was harvested immdiately before processing. Select from the following options: [Formaldehyde, N2 Freeze, FFPE, Fresh]"
+        comments: 
+          - "N2 freeze"  
+
+                    
+      harvest_to_preservation_time:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "The time between sampling and sample preservation, minutes"
+        comments: 
+          - "15 minutes"
+         
+      embedding_material:
+        range: string
+        required: false
+        description: "Material used to stabilize for sectioning, e.g. OCT, parafin wax "
+        comments: 
+          - "OCT"                            
+         
+      plane_of_section:
+        range: string
+        required: false
+        description: "plane of section: cross section / transverse section, longitudinal section, radial longitudinal section, tangental longitudinal section"
+        comments: 
+          - "cross section"                            
+          
+      section_thickness:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "Thickness of sample section"
+        comments: 
+          - "50 microns"          
+          
+      support_type:
+        range: string
+        required: true
+        description: "type of support for sample sections (quartz, lexan, thermonox, Ge, MgF2....)"
+        comments:
+          - "quartz"
+          
+      support_thickness:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "Thickness of support layer"
+        comments: 
+          - "1 mm"            
+     
+      adhesive:
+        range: string
+        required: false
+        description: "Adhesive type (glue for sections if used, tape adhesives, gel"
+        comments:
+          - "superglue"
+
+      top_layer:
+        range: string
+        required: false
+        description: "type of film for top layer, if present (mylar, polyproylene, none....)"
+        comments:
+          - "mylar"
+
+
+      top_layer_thickness:
+        range: QuantityValue
+        inlined: true
+        required: false
+        description: "Thickness of top layer"
+        comments: 
+          - "5 microns"       
+     
+enums:        
+
+  PloidyTypeEnum:
+    description: "The ploidy level of the genome"
+    permissible_values:
+      haploid:
+      diploid:
+      triploid:
+      tetraploid:
+      pentaploid:
+      hexaploid:
+      octoploid:
+      allopolyploid:
+      autopolyploid:
+      aneuploid:
+
+  SamplePreservationEnum:
+    description: "The method employed for preserving or fixing the tissue. Use Fresh if the sample was harvested immdiately before processing. Select from the following options: [Formaldehyde, N2 Freeze, FFPE, Fresh]"
+    permissible_values: 
+      N2_freeze: 
+        description: "Plunge freezing in liquid nitrogen"
+      Formaldehyde:
+        description: "Formeldehyde fixation"
+      FFPE:
+        description: "FFPE"
+      Fresh:
+        description: "Fresh harvest"
+      Other:
+        description: "Other, leave details in comment"  
+
+  GrowthFacilityEnum:
+    description: "Type of facility where the sampled plant was grown (e.g. growth chamber, greenhouse, irrigated field, wild)"
+    permissible_values: 
+      growth_chamber:
+      greenhouse:
+      irrigated_field:
+      wild:
+      laboratory:
+      field:
+      other:
+      
+  ArabadopsisStageEnum:
+    description: "Stage that takes into account effect of genotype & environment effects. Requires in depth knowledge about features of model organism doi: 10.1105/TPC.010011"
+    permissible_values:
+      Stage_0:
+        description: "principal growth stage - seed germination"
+      Stage_0.10:
+        description: "seed imbibition"
+      Stage_0.50:
+        description: "radicle emergence"
+      Stage_0.70:
+        description: "hypocotyl and cotyledon emergence"
+      Stage_1:
+        description: "principal growth stage - leaf development"
+      Stage_1.02:
+        description: "2 rosette leaves > 1mm in length"      
+      Stage_1.03:
+        description: "3 rosette leaves > 1mm in length"      
+      Stage_1.04:
+        description: "4 rosette leaves > 1mm in length"      
+      Stage_1.05:
+        description: "5 rosette leaves > 1mm in length"      
+      Stage_1.06:
+        description: "6 rosette leaves > 1mm in length"      
+      Stage_1.07:
+        description: "7 rosette leaves > 1mm in length"      
+      Stage_1.08:
+        description: "8 rosette leaves > 1mm in length"      
+      Stage_1.09:
+        description: "9 rosette leaves > 1mm in length"      
+      Stage_1.10:
+        description: "10 rosette leaves > 1mm in length"      
+      Stage_1.11:
+        description: "11 rosette leaves > 1mm in length"      
+      Stage_1.12:
+        description: "12 rosette leaves > 1mm in length"      
+      Stage_1.13:
+        description: "13 rosette leaves > 1mm in length"      
+      Stage_1.14:
+        description: "14 rosette leaves > 1mm in length"      
+      Stage_3:
+        description: "principal growth stage - rosette growth"    
+      Stage_3.20:
+        description: "rosette is 20% of final size"       
+      Stage_3.50:
+        description: "rosette is 50% of final size"       
+      Stage_3.70:
+        description: "rosette is 70% of final size"       
+      Stage_3.90:
+        description: "rosette is 90% of final size"       
+      Stage_5:
+        description: "principal growth stage - inflorescence emergence"  
+      Stage_5.10:
+        description: "first flower buds visible"      
+      Stage_6:
+        description: "principal growth stage - flower production"      
+      Stage_6.00:
+        description: "first flower open"      
+      Stage_6.10:
+        description: "10% of flowers to be produced have opened"      
+      Stage_6.30:
+        description: "30% of flowers to be produced have opened"       
+      Stage_6.50:
+        description: "50% of flowers to be produced have opened"       
+      Stage_6.90:
+        description: "flowering complete"      
+      Stage_8:
+        description: "principal growth stage - silique ripening"      
+      Stage_8.00:
+        description: "first silique shattered"       
+      Stage_9:
+        description: "principal growth stage - senescence"      
+      Stage_9.70:
+        description: "senesence complete; ready for seed harvest"       
+    
+    
+    
