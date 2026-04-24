@@ -921,7 +921,7 @@
 
 <h1 id="slot-imaging_mode">Slot: imaging_mode</h1>
 <p><em>Imaging mode for electron microscopy</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/imaging_mode">lambdaber:imaging_mode</a>
+<p>URI: <a href="http://w3id.org/lambda/imaging_mode">lambda:imaging_mode</a>
 Alias: imaging_mode</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: imaging_mode</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: imaging_mode</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:imaging_mode</td>
+<td>lambda:imaging_mode</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:imaging_mode</td>
+<td>lambda:imaging_mode</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_imaging.mode</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: imaging_mode</p>
 
 <pre><code class="language-yaml">name: imaging_mode
 description: Imaging mode for electron microscopy
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.mode
 rank: 1000
 alias: imaging_mode
 owner: CryoEMInstrument

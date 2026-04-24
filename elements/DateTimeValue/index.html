@@ -488,7 +488,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -505,7 +505,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:DateTimeValue</td>
+<td>lambda:DateTimeValue</td>
 </tr>
 </tbody>
 </table>
@@ -515,7 +515,7 @@
 <details>
 <pre><code class="language-yaml">name: DateTimeValue
 description: A date or date and time value.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeValue
 attributes:
   value:
@@ -526,7 +526,7 @@ attributes:
     examples:
     - value: '2025-11-09'
     - value: '2025-09-16T22:48:54Z'
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     domain_of:
     - TextValue
     - DateTimeValue
@@ -541,7 +541,7 @@ class_uri: nmdc:DateTimeValue
 <details>
 <pre><code class="language-yaml">name: DateTimeValue
 description: A date or date and time value.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeValue
 attributes:
   value:
@@ -552,7 +552,7 @@ attributes:
     examples:
     - value: '2025-11-09'
     - value: '2025-09-16T22:48:54Z'
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: value
     owner: DateTimeValue
     domain_of:
@@ -564,7 +564,7 @@ attributes:
   attribute:
     name: attribute
     description: The attribute being represented.
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: attribute
     owner: DateTimeValue
     domain_of:
@@ -574,7 +574,7 @@ attributes:
     name: raw_value
     description: Unnormalized atomic string representation, suggested syntax {number}
       {unit}
-    from_schema: https://w3id.org/lambda-ber-schema/types
+    from_schema: http://w3id.org/lambda/types
     alias: raw_value
     owner: DateTimeValue
     domain_of:

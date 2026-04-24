@@ -921,7 +921,7 @@
 
 <h1 id="slot-confidence_score">Slot: confidence_score</h1>
 <p><em>Confidence score for the annotation (range: 0-1)</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/confidence_score">lambdaber:confidence_score</a>
+<p>URI: <a href="http://w3id.org/lambda/confidence_score">lambda:confidence_score</a>
 Alias: confidence_score</p>
 <!-- no inheritance hierarchy -->
 
@@ -936,13 +936,8 @@ Alias: confidence_score</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MutationEffect/">MutationEffect</a></td>
-<td>Effects of mutations and variants on protein structure and function</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
-<td>Evolutionary conservation information</td>
+<td><a href="../FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
 <td>no</td>
 </tr>
 <tr>
@@ -951,18 +946,23 @@ Alias: confidence_score</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
-<td>Base class for all protein-related functional and structural annotations</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
 <td>Protein-protein interactions and interfaces</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FunctionalSite/">FunctionalSite</a></td>
-<td>Functional sites including catalytic, binding, and regulatory sites</td>
+<td><a href="../MutationEffect/">MutationEffect</a></td>
+<td>Effects of mutations and variants on protein structure and function</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
+<td>Base class for all protein-related functional and structural annotations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
+<td>Evolutionary conservation information</td>
 <td>no</td>
 </tr>
 <tr>
@@ -987,7 +987,7 @@ Alias: confidence_score</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -1000,11 +1000,11 @@ Alias: confidence_score</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:confidence_score</td>
+<td>lambda:confidence_score</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:confidence_score</td>
+<td>lambda:confidence_score</td>
 </tr>
 </tbody>
 </table>
@@ -1013,7 +1013,7 @@ Alias: confidence_score</p>
 
 <pre><code class="language-yaml">name: confidence_score
 description: 'Confidence score for the annotation (range: 0-1)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: confidence_score
 owner: ProteinAnnotation

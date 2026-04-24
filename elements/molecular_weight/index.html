@@ -921,7 +921,7 @@
 
 <h1 id="slot-molecular_weight">Slot: molecular_weight</h1>
 <p><em>Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/molecular_weight">lambdaber:molecular_weight</a>
+<p>URI: <a href="http://w3id.org/lambda/molecular_weight">lambda:molecular_weight</a>
 Alias: molecular_weight</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: molecular_weight</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: molecular_weight</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:molecular_weight</td>
+<td>lambda:molecular_weight</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:molecular_weight</td>
+<td>lambda:molecular_weight</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_entity.formula_weight</td>
 </tr>
 </tbody>
 </table>
@@ -977,7 +981,9 @@ Alias: molecular_weight</p>
 description: Molecular weight, typically specified in kilodaltons (kDa). Data providers
   may specify alternative units (e.g., Daltons, g/mol) by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_entity.formula_weight
 rank: 1000
 alias: molecular_weight
 owner: Sample

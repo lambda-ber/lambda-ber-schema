@@ -921,7 +921,7 @@
 
 <h1 id="slot-vitrification_method">Slot: vitrification_method</h1>
 <p><em>Method used for vitrification</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/vitrification_method">lambdaber:vitrification_method</a>
+<p>URI: <a href="http://w3id.org/lambda/vitrification_method">lambda:vitrification_method</a>
 Alias: vitrification_method</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: vitrification_method</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: vitrification_method</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:vitrification_method</td>
+<td>lambda:vitrification_method</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:vitrification_method</td>
+<td>lambda:vitrification_method</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_vitrification.method</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: vitrification_method</p>
 
 <pre><code class="language-yaml">name: vitrification_method
 description: Method used for vitrification
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.method
 rank: 1000
 alias: vitrification_method
 owner: CryoEMPreparation

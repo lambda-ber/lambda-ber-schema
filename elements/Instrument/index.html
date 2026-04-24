@@ -430,7 +430,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-instrument">Class: Instrument</h1>
 <p><em>An instrument used to collect data</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/Instrument">lambdaber:Instrument</a></p>
+<p>URI: <a href="http://w3id.org/lambda/Instrument">lambda:Instrument</a></p>
 <div class="mermaid"> classDiagram
     class Instrument
     click Instrument href "../Instrument/"
@@ -442,6 +442,8 @@
         click CryoEMInstrument href "../CryoEMInstrument/"
       Instrument &lt;|-- XRayInstrument
         click XRayInstrument href "../XRayInstrument/"
+      Instrument &lt;|-- SANSInstrument
+        click SANSInstrument href "../SANSInstrument/"
       Instrument &lt;|-- SAXSInstrument
         click SAXSInstrument href "../SAXSInstrument/"
       Instrument &lt;|-- BeamlineInstrument
@@ -507,6 +509,7 @@
 <li><strong>Instrument</strong><ul>
 <li><a href="../CryoEMInstrument/">CryoEMInstrument</a></li>
 <li><a href="../XRayInstrument/">XRayInstrument</a></li>
+<li><a href="../SANSInstrument/">SANSInstrument</a></li>
 <li><a href="../SAXSInstrument/">SAXSInstrument</a></li>
 <li><a href="../BeamlineInstrument/">BeamlineInstrument</a></li>
 </ul>
@@ -627,7 +630,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -640,11 +643,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:Instrument</td>
+<td>lambda:Instrument</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:Instrument</td>
+<td>lambda:Instrument</td>
 </tr>
 </tbody>
 </table>
@@ -654,7 +657,7 @@
 <details>
 <pre><code class="language-yaml">name: Instrument
 description: An instrument used to collect data
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   instrument_code:
@@ -662,7 +665,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -673,7 +676,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -684,7 +687,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -695,7 +698,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -707,30 +710,31 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     domain_of:
     - Instrument
     range: string
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -738,7 +742,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - Instrument
@@ -750,7 +754,7 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Instrument
 description: An instrument used to collect data
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   instrument_code:
@@ -758,7 +762,7 @@ attributes:
     description: Human-friendly facility or laboratory identifier for the instrument
       (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local
       reference and equipment tracking.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_code
     owner: Instrument
@@ -772,7 +776,7 @@ attributes:
     comments:
     - Use SYNCHROTRON_BEAMLINE for synchrotron beamlines
     - Use ELECTRON_MICROSCOPE for cryo-EM instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: instrument_category
     owner: Instrument
@@ -785,7 +789,7 @@ attributes:
     comments:
     - Select from the standardized list of major synchrotron facilities
     - Leave empty for laboratory-based instruments
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_name
     owner: Instrument
@@ -798,7 +802,7 @@ attributes:
     comments:
     - Persistent identifier for the facility organization
     - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: facility_ror
     owner: Instrument
@@ -812,9 +816,10 @@ attributes:
     comments:
     - Use facility-specific naming convention
     - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
+    exact_mappings:
+    - mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     rank: 1000
-    slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
     alias: beamline_id
     owner: Instrument
     domain_of:
@@ -823,7 +828,7 @@ attributes:
   manufacturer:
     name: manufacturer
     description: Instrument manufacturer
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: manufacturer
     owner: Instrument
@@ -833,7 +838,7 @@ attributes:
   model:
     name: model
     description: Instrument model
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: model
     owner: Instrument
@@ -843,7 +848,7 @@ attributes:
   installation_date:
     name: installation_date
     description: Date of instrument installation
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: installation_date
     owner: Instrument
@@ -853,7 +858,7 @@ attributes:
   current_status:
     name: current_status
     description: Current operational status
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: current_status
     owner: Instrument
@@ -865,7 +870,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -878,7 +883,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -889,7 +894,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: Instrument

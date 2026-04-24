@@ -921,7 +921,7 @@
 
 <h1 id="slot-glow_discharge_applied">Slot: glow_discharge_applied</h1>
 <p><em>Whether glow discharge treatment was applied</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/glow_discharge_applied">lambdaber:glow_discharge_applied</a>
+<p>URI: <a href="http://w3id.org/lambda/glow_discharge_applied">lambda:glow_discharge_applied</a>
 Alias: glow_discharge_applied</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: glow_discharge_applied</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: glow_discharge_applied</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:glow_discharge_applied</td>
+<td>lambda:glow_discharge_applied</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:glow_discharge_applied</td>
+<td>lambda:glow_discharge_applied</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_sample_support.pretreatment_type</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: glow_discharge_applied</p>
 
 <pre><code class="language-yaml">name: glow_discharge_applied
 description: Whether glow discharge treatment was applied
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.pretreatment_type
 rank: 1000
 alias: glow_discharge_applied
 owner: CryoEMPreparation

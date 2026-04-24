@@ -921,7 +921,7 @@
 
 <h1 id="slot-c2_aperture">Slot: c2_aperture</h1>
 <p><em>C2 aperture size in micrometers</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/c2_aperture">lambdaber:c2_aperture</a>
+<p>URI: <a href="http://w3id.org/lambda/c2_aperture">lambda:c2_aperture</a>
 Alias: c2_aperture</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: c2_aperture</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: c2_aperture</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:c2_aperture</td>
+<td>lambda:c2_aperture</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:c2_aperture</td>
+<td>lambda:c2_aperture</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_imaging.c2_aperture_diameter</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: c2_aperture</p>
 
 <pre><code class="language-yaml">name: c2_aperture
 description: C2 aperture size in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.c2_aperture_diameter
 rank: 1000
 alias: c2_aperture
 owner: CryoEMInstrument

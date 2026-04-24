@@ -423,7 +423,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-studyworkflowassociation">Class: StudyWorkflowAssociation</h1>
 <p><em>M:N link between Study and WorkflowRun</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/StudyWorkflowAssociation">lambdaber:StudyWorkflowAssociation</a></p>
+<p>URI: <a href="http://w3id.org/lambda/StudyWorkflowAssociation">lambda:StudyWorkflowAssociation</a></p>
 <div class="mermaid"> classDiagram
     class StudyWorkflowAssociation
     click StudyWorkflowAssociation href "../StudyWorkflowAssociation/"
@@ -499,7 +499,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -512,11 +512,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:StudyWorkflowAssociation</td>
+<td>lambda:StudyWorkflowAssociation</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:StudyWorkflowAssociation</td>
+<td>lambda:StudyWorkflowAssociation</td>
 </tr>
 </tbody>
 </table>
@@ -526,12 +526,12 @@
 <details>
 <pre><code class="language-yaml">name: StudyWorkflowAssociation
 description: M:N link between Study and WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - StudyExperimentAssociation
@@ -541,7 +541,7 @@ attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StudyWorkflowAssociation
@@ -557,12 +557,12 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: StudyWorkflowAssociation
 description: M:N link between Study and WorkflowRun
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   study_id:
     name: study_id
     description: Reference to the study
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: study_id
     owner: StudyWorkflowAssociation
     domain_of:
@@ -574,7 +574,7 @@ attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: workflow_id
     owner: StudyWorkflowAssociation

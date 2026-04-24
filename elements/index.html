@@ -1122,8 +1122,9 @@ A dataset might represent all data from a specific grant, collaboration, or publ
 <p><strong>Data Collection</strong>
 - <a href="Instrument/">Instruments</a>: The equipment used, from Titan Krios microscopes to synchrotron
   beamlines. Each instrument type (<a href="CryoEMInstrument/">CryoEMInstrument</a>,
-  <a href="XRayInstrument/">XRayInstrument</a>, <a href="SAXSInstrument/">SAXSInstrument</a>) has specific parameters
-  like accelerating voltage, detector type, or beam energy.</p>
+  <a href="XRayInstrument/">XRayInstrument</a>, <a href="SANSInstrument/">SANSInstrument</a>,
+  <a href="SAXSInstrument/">SAXSInstrument</a>) has specific parameters like accelerating voltage,
+  detector type, or beam energy.</p>
 <ul>
 <li><a href="ExperimentRun/">Experiment Runs</a>: Individual data collection sessions. An experiment run
   captures when, how, and under what conditions data was collected, including quality metrics
@@ -1189,7 +1190,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <li><strong>Multimodal support</strong>: Seamlessly integrate data across scales and techniques</li>
 <li><strong>Standards-compliant</strong>: Follows FAIR principles and integrates with existing ontologies</li>
 </ul>
-<p>URI: https://w3id.org/lambda-ber-schema/</p>
+<p>URI: http://w3id.org/lambda/</p>
 <p>Name: lambda-ber-schema</p>
 <h2 id="classes">Classes</h2>
 <table>
@@ -1211,6 +1212,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="AttributeGroup/">AttributeGroup</a></td>
 <td>A grouping of related data attributes that form a logical unit</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BeamCenterPixels/">BeamCenterPixels</a></td>
+<td>Combined beam center coordinates in detector pixel units</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiophysicalProperty/">BiophysicalProperty</a></td>
@@ -1279,6 +1284,18 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RefinementParameters/">RefinementParameters</a></td>
 <td>Parameters specific to 3D refinement workflows</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SANSConfiguration/">SANSConfiguration</a></td>
+<td>Experimental configuration for a SANS instrument</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SANSDetector/">SANSDetector</a></td>
+<td>Description of a detector used in a SANS instrument</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SANSSource/">SANSSource</a></td>
+<td>Beam source parameters for a SANS instrument</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StorageConditions/">StorageConditions</a></td>
@@ -1395,6 +1412,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CryoEMInstrument/">CryoEMInstrument</a></td>
 <td>Cryo-EM microscope specifications</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SAXSInstrument/">SAXSInstrument</a></td>
@@ -1609,7 +1630,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="attenuator/">attenuator</a></td>
-<td>Attenuator setting used</td>
+<td>Attenuator setting</td>
 </tr>
 <tr>
 <td><a href="attribute/">attribute</a></td>
@@ -1634,6 +1655,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="background_correction/">background_correction</a></td>
 <td>Method used for background correction</td>
+</tr>
+<tr>
+<td><a href="beam_center_pixels/">beam_center_pixels</a></td>
+<td>Combined beam center pixel coordinates as reported by systems such as NSLS-II...</td>
 </tr>
 <tr>
 <td><a href="beam_center_x/">beam_center_x</a></td>
@@ -1678,6 +1703,18 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="beam_size_um/">beam_size_um</a></td>
 <td>Beam size, typically specified in micrometers</td>
+</tr>
+<tr>
+<td><a href="beam_trap_position_x/">beam_trap_position_x</a></td>
+<td>X coordinate of beam trap</td>
+</tr>
+<tr>
+<td><a href="beam_trap_position_y/">beam_trap_position_y</a></td>
+<td>Y coordinate of beam trap</td>
+</tr>
+<tr>
+<td><a href="beam_trap_type/">beam_trap_type</a></td>
+<td>Type of beam trap (if any)</td>
 </tr>
 <tr>
 <td><a href="beamline/">beamline</a></td>
@@ -1900,6 +1937,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Confidence score for the annotation (range: 0-1)</td>
 </tr>
 <tr>
+<td><a href="configuration/">configuration</a></td>
+<td>Optical/mechanical configuration details</td>
+</tr>
+<tr>
 <td><a href="conformational_ensemble/">conformational_ensemble</a></td>
 <td>Conformational states and dynamics</td>
 </tr>
@@ -2112,6 +2153,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>A detailed textual description of this entity</td>
 </tr>
 <tr>
+<td><a href="detector/">detector</a></td>
+<td>Run-specific detector identifier or detector component used for data collecti...</td>
+</tr>
+<tr>
+<td><a href="detector_description/">detector_description</a></td>
+<td>Free-text description of the detector</td>
+</tr>
+<tr>
 <td><a href="detector_dimensions/">detector_dimensions</a></td>
 <td>Detector dimensions in pixels (e</td>
 </tr>
@@ -2144,12 +2193,24 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Detector model (e</td>
 </tr>
 <tr>
+<td><a href="detector_name/">detector_name</a></td>
+<td>User-assigned detector name</td>
+</tr>
+<tr>
 <td><a href="detector_position/">detector_position</a></td>
 <td>Physical position of detector in microscope (e</td>
 </tr>
 <tr>
 <td><a href="detector_technology/">detector_technology</a></td>
 <td>Generic detector technology type</td>
+</tr>
+<tr>
+<td><a href="detector_type/">detector_type</a></td>
+<td>Type of detector</td>
+</tr>
+<tr>
+<td><a href="detectors/">detectors</a></td>
+<td>List of detectors associated with the instrument</td>
 </tr>
 <tr>
 <td><a href="dimensions_x/">dimensions_x</a></td>
@@ -2260,6 +2321,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Data collection end timestamp</td>
 </tr>
 <tr>
+<td><a href="energy/">energy</a></td>
+<td>Beam energy</td>
+</tr>
+<tr>
 <td><a href="energy_filter_make/">energy_filter_make</a></td>
 <td>Energy filter manufacturer</td>
 </tr>
@@ -2286,6 +2351,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="energy_min/">energy_min</a></td>
 <td>Minimum X-ray energy in keV</td>
+</tr>
+<tr>
+<td><a href="environment/">environment</a></td>
+<td>Textual description of environmental conditions</td>
 </tr>
 <tr>
 <td><a href="enzyme/">enzyme</a></td>
@@ -2417,7 +2486,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="flux/">flux</a></td>
-<td>Photon flux at sample position, typically specified in photons per second</td>
+<td>Beam flux</td>
 </tr>
 <tr>
 <td><a href="flux_density/">flux_density</a></td>
@@ -2932,6 +3001,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Nominal defocus value, typically specified in micrometers</td>
 </tr>
 <tr>
+<td><a href="number_of_guides/">number_of_guides</a></td>
+<td>Number of neutron guides</td>
+</tr>
+<tr>
 <td><a href="number_of_images/">number_of_images</a></td>
 <td>Total number of diffraction images collected</td>
 </tr>
@@ -2958,6 +3031,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="od600_at_induction/">od600_at_induction</a></td>
 <td>Optical density at 600nm when induction was started</td>
+</tr>
+<tr>
+<td><a href="oligomeric_state/">oligomeric_state</a></td>
+<td>Oligomeric state of the sample (e</td>
 </tr>
 <tr>
 <td><a href="omim_id/">omim_id</a></td>
@@ -3101,11 +3178,11 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="pixel_size_x/">pixel_size_x</a></td>
-<td>Pixel size X dimension, typically specified in micrometers (µm)</td>
+<td>Pixel size in x-direction</td>
 </tr>
 <tr>
 <td><a href="pixel_size_y/">pixel_size_y</a></td>
-<td>Pixel size Y dimension, typically specified in micrometers (µm)</td>
+<td>Pixel size in y-direction</td>
 </tr>
 <tr>
 <td><a href="plasma_treatment/">plasma_treatment</a></td>
@@ -3234,6 +3311,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="purity_percentage/">purity_percentage</a></td>
 <td>Sample purity, typically specified as a percentage (range: 0-100)</td>
+</tr>
+<tr>
+<td><a href="q_max/">q_max</a></td>
+<td>Maximum q value</td>
+</tr>
+<tr>
+<td><a href="q_min/">q_min</a></td>
+<td>Minimum q value</td>
 </tr>
 <tr>
 <td><a href="q_range_max/">q_range_max</a></td>
@@ -3412,12 +3497,32 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Role of sample in study (e</td>
 </tr>
 <tr>
+<td><a href="rotation_angle/">rotation_angle</a></td>
+<td>Rotation angle of the detector</td>
+</tr>
+<tr>
 <td><a href="rpim/">rpim</a></td>
 <td>Rpim - precision-indicating merging R-factor</td>
 </tr>
 <tr>
 <td><a href="rwork/">rwork</a></td>
 <td>Refinement R-factor (working set)</td>
+</tr>
+<tr>
+<td><a href="sample_ap_to_main_distance/">sample_ap_to_main_distance</a></td>
+<td>Sample aperture to main instrument distance</td>
+</tr>
+<tr>
+<td><a href="sample_ap_to_sample_distance/">sample_ap_to_sample_distance</a></td>
+<td>Sample aperture to sample distance</td>
+</tr>
+<tr>
+<td><a href="sample_ap_to_si_distance/">sample_ap_to_si_distance</a></td>
+<td>Sample aperture to silicon window distance</td>
+</tr>
+<tr>
+<td><a href="sample_aperature_diameter/">sample_aperature_diameter</a></td>
+<td>Sample aperture diameter</td>
 </tr>
 <tr>
 <td><a href="sample_applied_volume/">sample_applied_volume</a></td>
@@ -3434,6 +3539,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="sample_code/">sample_code</a></td>
 <td>Human-friendly laboratory identifier or facility code for the sample (e</td>
+</tr>
+<tr>
+<td><a href="sample_detector_distance/">sample_detector_distance</a></td>
+<td>Distance from sample to detector</td>
 </tr>
 <tr>
 <td><a href="sample_id/">sample_id</a></td>
@@ -3532,6 +3641,10 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Type of functional site</td>
 </tr>
 <tr>
+<td><a href="siwindow_to_main_distance/">siwindow_to_main_distance</a></td>
+<td>Silicon window to main instrument distance</td>
+</tr>
+<tr>
 <td><a href="slit_gap_horizontal/">slit_gap_horizontal</a></td>
 <td>Horizontal slit gap aperture, typically specified in micrometers (µm)</td>
 </tr>
@@ -3560,8 +3673,28 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Relative solvent accessible surface area (range: 0-1)</td>
 </tr>
 <tr>
+<td><a href="source/">source</a></td>
+<td>Source parameters for the instrument</td>
+</tr>
+<tr>
+<td><a href="source_ap_to_sample_ap_distance/">source_ap_to_sample_ap_distance</a></td>
+<td>Source aperture to sample aperture distance</td>
+</tr>
+<tr>
+<td><a href="source_ap_to_siwindow_distance/">source_ap_to_siwindow_distance</a></td>
+<td>Source aperture to silicon window distance</td>
+</tr>
+<tr>
+<td><a href="source_aperature_diameter/">source_aperature_diameter</a></td>
+<td>Source aperture diameter</td>
+</tr>
+<tr>
 <td><a href="source_database/">source_database</a></td>
 <td>Source database or resource that provided this annotation</td>
+</tr>
+<tr>
+<td><a href="source_description/">source_description</a></td>
+<td>Free-text description of the source</td>
 </tr>
 <tr>
 <td><a href="source_type/">source_type</a></td>
@@ -3672,6 +3805,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <td>Support film type</td>
 </tr>
 <tr>
+<td><a href="sweep_end/">sweep_end</a></td>
+<td>Ending angle of an X-ray oscillation sweep, typically specified in degrees</td>
+</tr>
+<tr>
+<td><a href="sweep_start/">sweep_start</a></td>
+<td>Starting angle of an X-ray oscillation sweep, typically specified in degrees</td>
+</tr>
+<tr>
 <td><a href="symmetry/">symmetry</a></td>
 <td>Symmetry applied (C1, Cn, Dn, T, O, I)</td>
 </tr>
@@ -3701,7 +3842,7 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="technique/">technique</a></td>
-<td>Technique used for data collection</td>
+<td>Primary technique (should always be sans for this class)</td>
 </tr>
 <tr>
 <td><a href="techniques_supported/">techniques_supported</a></td>
@@ -3877,11 +4018,19 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 </tr>
 <tr>
 <td><a href="wavelength/">wavelength</a></td>
-<td>X-ray wavelength, typically specified in Angstroms (Å)</td>
+<td>Neutron wavelength</td>
 </tr>
 <tr>
 <td><a href="wavelength_a/">wavelength_a</a></td>
 <td>X-ray wavelength, typically specified in Angstroms</td>
+</tr>
+<tr>
+<td><a href="wavelength_selection_method/">wavelength_selection_method</a></td>
+<td>Method used to select wavelength</td>
+</tr>
+<tr>
+<td><a href="wavelength_spread/">wavelength_spread</a></td>
+<td>Wavelength spread</td>
 </tr>
 <tr>
 <td><a href="wavenumber_max/">wavenumber_max</a></td>
@@ -3934,6 +4083,14 @@ relationship metadata (e.g., the role of a sample in an experiment):</p>
 <tr>
 <td><a href="workflow_type/">workflow_type</a></td>
 <td>Type of processing workflow</td>
+</tr>
+<tr>
+<td><a href="xbeam/">xbeam</a></td>
+<td>Beam center X coordinate in pixels</td>
+</tr>
+<tr>
+<td><a href="ybeam/">ybeam</a></td>
+<td>Beam center Y coordinate in pixels</td>
 </tr>
 <tr>
 <td><a href="yield_mg/">yield_mg</a></td>

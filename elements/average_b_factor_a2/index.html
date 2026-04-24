@@ -921,7 +921,7 @@
 
 <h1 id="slot-average_b_factor_a2">Slot: average_b_factor_a2</h1>
 <p><em>Average B-factor in Angstroms squared</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/average_b_factor_a2">lambdaber:average_b_factor_a2</a>
+<p>URI: <a href="http://w3id.org/lambda/average_b_factor_a2">lambda:average_b_factor_a2</a>
 Alias: average_b_factor_a2</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: average_b_factor_a2</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: average_b_factor_a2</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:average_b_factor_a2</td>
+<td>lambda:average_b_factor_a2</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:average_b_factor_a2</td>
+<td>lambda:average_b_factor_a2</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_refine.B_iso_mean</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: average_b_factor_a2</p>
 
 <pre><code class="language-yaml">name: average_b_factor_a2
 description: Average B-factor in Angstroms squared
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_refine.B_iso_mean
 rank: 1000
 alias: average_b_factor_a2
 owner: QualityMetrics

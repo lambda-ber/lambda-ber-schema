@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -930,7 +921,7 @@
 
 <h1 id="slot-crystal_id">Slot: crystal_id</h1>
 <p><em>Identifier for the specific crystal used</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Crystal_ID">nsls2:Crystal_ID</a>
+<p>URI: <a href="http://w3id.org/lambda/crystal_id">lambda:crystal_id</a>
 Alias: crystal_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -955,14 +946,10 @@ Alias: crystal_id</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to NSLS2 spreadsheet: Crystal_ID</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -975,11 +962,15 @@ Alias: crystal_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Crystal_ID</td>
+<td>lambda:crystal_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:crystal_id</td>
+<td>lambda:crystal_id</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Crystal_ID</td>
 </tr>
 </tbody>
 </table>
@@ -988,11 +979,10 @@ Alias: crystal_id</p>
 
 <pre><code class="language-yaml">name: crystal_id
 description: Identifier for the specific crystal used
-comments:
-- 'Maps to NSLS2 spreadsheet: Crystal_ID'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Crystal_ID
 rank: 1000
-slot_uri: nsls2:Crystal_ID
 alias: crystal_id
 owner: CrystallizationConditions
 domain_of:

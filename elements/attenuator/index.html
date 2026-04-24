@@ -865,21 +865,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -920,8 +905,7 @@
 
 
 <h1 id="slot-attenuator">Slot: attenuator</h1>
-<p><em>Attenuator setting used</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/attenuator">lambdaber:attenuator</a>
+<p>URI: <a href="http://w3id.org/lambda/attenuator">lambda:attenuator</a>
 Alias: attenuator</p>
 <!-- no inheritance hierarchy -->
 
@@ -940,6 +924,11 @@ Alias: attenuator</p>
 <td>Strategy for data collection</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SANSConfiguration/">SANSConfiguration</a></td>
+<td>Experimental configuration for a SANS instrument</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -947,10 +936,6 @@ Alias: attenuator</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -962,11 +947,11 @@ Alias: attenuator</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:attenuator</td>
+<td>lambda:attenuator</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:attenuator</td>
+<td>lambda:attenuator</td>
 </tr>
 </tbody>
 </table>
@@ -974,12 +959,9 @@ Alias: attenuator</p>
 <details>
 
 <pre><code class="language-yaml">name: attenuator
-description: Attenuator setting used
-from_schema: https://w3id.org/lambda-ber-schema/
-rank: 1000
 alias: attenuator
-owner: DataCollectionStrategy
 domain_of:
+- SANSConfiguration
 - DataCollectionStrategy
 range: string
 

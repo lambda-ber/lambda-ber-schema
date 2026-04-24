@@ -905,7 +905,7 @@
 
 
 <h1 id="slot-source_type">Slot: source_type</h1>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/source_type">lambdaber:source_type</a>
+<p>URI: <a href="http://w3id.org/lambda/source_type">lambda:source_type</a>
 Alias: source_type</p>
 <!-- no inheritance hierarchy -->
 
@@ -919,6 +919,11 @@ Alias: source_type</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../SANSSource/">SANSSource</a></td>
+<td>Beam source parameters for a SANS instrument</td>
+<td>no</td>
+</tr>
 <tr>
 <td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
 <td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
@@ -952,11 +957,11 @@ Alias: source_type</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:source_type</td>
+<td>lambda:source_type</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:source_type</td>
+<td>lambda:source_type</td>
 </tr>
 </tbody>
 </table>
@@ -967,6 +972,7 @@ Alias: source_type</p>
 alias: source_type
 domain_of:
 - XRayInstrument
+- SANSSource
 - BeamlineInstrument
 - XRFImage
 range: string

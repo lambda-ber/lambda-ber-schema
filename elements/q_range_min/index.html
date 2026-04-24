@@ -905,7 +905,7 @@
 
 
 <h1 id="slot-q_range_min">Slot: q_range_min</h1>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/q_range_min">lambdaber:q_range_min</a>
+<p>URI: <a href="http://w3id.org/lambda/q_range_min">lambda:q_range_min</a>
 Alias: q_range_min</p>
 <!-- no inheritance hierarchy -->
 
@@ -922,6 +922,11 @@ Alias: q_range_min</p>
 <tr>
 <td><a href="../SAXSInstrument/">SAXSInstrument</a></td>
 <td>SAXS/WAXS instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
 <td>no</td>
 </tr>
 <tr>
@@ -947,11 +952,11 @@ Alias: q_range_min</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:q_range_min</td>
+<td>lambda:q_range_min</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:q_range_min</td>
+<td>lambda:q_range_min</td>
 </tr>
 </tbody>
 </table>
@@ -961,6 +966,7 @@ Alias: q_range_min</p>
 <pre><code class="language-yaml">name: q_range_min
 alias: q_range_min
 domain_of:
+- SANSInstrument
 - SAXSInstrument
 - BeamlineInstrument
 range: string

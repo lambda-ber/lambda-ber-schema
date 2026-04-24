@@ -430,7 +430,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-conformationalensemble">Class: ConformationalEnsemble</h1>
 <p><em>Ensemble of conformational states for a protein</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/ConformationalEnsemble">lambdaber:ConformationalEnsemble</a></p>
+<p>URI: <a href="http://w3id.org/lambda/ConformationalEnsemble">lambda:ConformationalEnsemble</a></p>
 <div class="mermaid"> classDiagram
     class ConformationalEnsemble
     click ConformationalEnsemble href "../ConformationalEnsemble/"
@@ -576,7 +576,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -589,11 +589,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:ConformationalEnsemble</td>
+<td>lambda:ConformationalEnsemble</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:ConformationalEnsemble</td>
+<td>lambda:ConformationalEnsemble</td>
 </tr>
 </tbody>
 </table>
@@ -603,13 +603,13 @@
 <details>
 <pre><code class="language-yaml">name: ConformationalEnsemble
 description: Ensemble of conformational states for a protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
     description: UniProt accession
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - ProteinAnnotation
     - ConformationalEnsemble
@@ -617,7 +617,7 @@ attributes:
   conformational_states:
     name: conformational_states
     description: Individual conformational states
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
@@ -628,14 +628,14 @@ attributes:
   clustering_method:
     name: clustering_method
     description: Method used for conformational clustering
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
   rmsd_threshold:
     name: rmsd_threshold
     description: RMSD threshold for clustering (Angstroms)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
@@ -645,21 +645,21 @@ attributes:
   transition_pathways:
     name: transition_pathways
     description: Description of transition pathways between states
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
   energy_landscape:
     name: energy_landscape
     description: Description of the energy landscape
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
   principal_motions:
     name: principal_motions
     description: Description of principal motions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - ConformationalEnsemble
@@ -671,13 +671,13 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: ConformationalEnsemble
 description: Ensemble of conformational states for a protein
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: NamedThing
 attributes:
   protein_id:
     name: protein_id
     description: UniProt accession
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: protein_id
     owner: ConformationalEnsemble
     domain_of:
@@ -688,7 +688,7 @@ attributes:
   conformational_states:
     name: conformational_states
     description: Individual conformational states
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: conformational_states
     owner: ConformationalEnsemble
@@ -701,7 +701,7 @@ attributes:
   clustering_method:
     name: clustering_method
     description: Method used for conformational clustering
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: clustering_method
     owner: ConformationalEnsemble
@@ -711,7 +711,7 @@ attributes:
   rmsd_threshold:
     name: rmsd_threshold
     description: RMSD threshold for clustering (Angstroms)
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: rmsd_threshold
     owner: ConformationalEnsemble
@@ -723,7 +723,7 @@ attributes:
   transition_pathways:
     name: transition_pathways
     description: Description of transition pathways between states
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: transition_pathways
     owner: ConformationalEnsemble
@@ -733,7 +733,7 @@ attributes:
   energy_landscape:
     name: energy_landscape
     description: Description of the energy landscape
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: energy_landscape
     owner: ConformationalEnsemble
@@ -743,7 +743,7 @@ attributes:
   principal_motions:
     name: principal_motions
     description: Description of principal motions
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: principal_motions
     owner: ConformationalEnsemble
@@ -756,7 +756,7 @@ attributes:
     description: Globally unique identifier as an IRI or CURIE for machine processing
       and external references. Used for linking data across systems and semantic web
       integration.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     identifier: true
     alias: id
@@ -769,7 +769,7 @@ attributes:
   title:
     name: title
     description: A human-readable name or title for this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -780,7 +780,7 @@ attributes:
   description:
     name: description
     description: A detailed textual description of this entity
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: description
     owner: ConformationalEnsemble

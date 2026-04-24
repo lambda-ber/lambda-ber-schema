@@ -905,7 +905,7 @@
 
 
 <h1 id="slot-q_range_max">Slot: q_range_max</h1>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/q_range_max">lambdaber:q_range_max</a>
+<p>URI: <a href="http://w3id.org/lambda/q_range_max">lambda:q_range_max</a>
 Alias: q_range_max</p>
 <!-- no inheritance hierarchy -->
 
@@ -922,6 +922,11 @@ Alias: q_range_max</p>
 <tr>
 <td><a href="../SAXSInstrument/">SAXSInstrument</a></td>
 <td>SAXS/WAXS instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
 <td>no</td>
 </tr>
 <tr>
@@ -947,11 +952,11 @@ Alias: q_range_max</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:q_range_max</td>
+<td>lambda:q_range_max</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:q_range_max</td>
+<td>lambda:q_range_max</td>
 </tr>
 </tbody>
 </table>
@@ -961,6 +966,7 @@ Alias: q_range_max</p>
 <pre><code class="language-yaml">name: q_range_max
 alias: q_range_max
 domain_of:
+- SANSInstrument
 - SAXSInstrument
 - BeamlineInstrument
 range: string

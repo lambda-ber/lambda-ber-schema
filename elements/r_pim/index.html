@@ -921,7 +921,7 @@
 
 <h1 id="slot-r_pim">Slot: r_pim</h1>
 <p><em>Rpim - precision-indicating merging R-factor</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/r_pim">lambdaber:r_pim</a>
+<p>URI: <a href="http://w3id.org/lambda/r_pim">lambda:r_pim</a>
 Alias: r_pim</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: r_pim</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: r_pim</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:r_pim</td>
+<td>lambda:r_pim</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:r_pim</td>
+<td>lambda:r_pim</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_reflns.pdbx_Rpim_I_all</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: r_pim</p>
 
 <pre><code class="language-yaml">name: r_pim
 description: Rpim - precision-indicating merging R-factor
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.pdbx_Rpim_I_all
 rank: 1000
 alias: r_pim
 owner: QualityMetrics

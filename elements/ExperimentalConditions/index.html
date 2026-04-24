@@ -430,7 +430,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-experimentalconditions">Class: ExperimentalConditions</h1>
 <p><em>Environmental and experimental conditions</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/ExperimentalConditions">lambdaber:ExperimentalConditions</a></p>
+<p>URI: <a href="http://w3id.org/lambda/ExperimentalConditions">lambda:ExperimentalConditions</a></p>
 <div class="mermaid"> classDiagram
     class ExperimentalConditions
     click ExperimentalConditions href "../ExperimentalConditions/"
@@ -582,7 +582,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -595,11 +595,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:ExperimentalConditions</td>
+<td>lambda:ExperimentalConditions</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:ExperimentalConditions</td>
+<td>lambda:ExperimentalConditions</td>
 </tr>
 </tbody>
 </table>
@@ -609,14 +609,14 @@
 <details>
 <pre><code class="language-yaml">name: ExperimentalConditions
 description: Environmental and experimental conditions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
     description: Temperature, typically specified in degrees Celsius. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StorageConditions
     - ExperimentalConditions
@@ -628,7 +628,7 @@ attributes:
     description: Humidity, typically specified as a percentage (0-100). Data providers
       may specify as a decimal fraction or percentage by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentalConditions
@@ -638,7 +638,7 @@ attributes:
     name: pressure
     description: Pressure, typically specified in kilopascals (kPa). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentalConditions
@@ -647,7 +647,7 @@ attributes:
   atmosphere:
     name: atmosphere
     description: Atmosphere composition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StorageConditions
     - ExperimentalConditions
@@ -655,7 +655,7 @@ attributes:
     name: beam_energy
     description: Beam energy, typically specified in kiloelectronvolts (keV). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - XRFImage
     - ExperimentalConditions
@@ -665,11 +665,12 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
 
@@ -679,14 +680,14 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: ExperimentalConditions
 description: Environmental and experimental conditions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
     description: Temperature, typically specified in degrees Celsius. Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: temperature
     owner: ExperimentalConditions
     domain_of:
@@ -700,7 +701,7 @@ attributes:
     description: Humidity, typically specified as a percentage (0-100). Data providers
       may specify as a decimal fraction or percentage by including the unit in the
       QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: humidity
     owner: ExperimentalConditions
@@ -712,7 +713,7 @@ attributes:
     name: pressure
     description: Pressure, typically specified in kilopascals (kPa). Data providers
       may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: pressure
     owner: ExperimentalConditions
@@ -723,7 +724,7 @@ attributes:
   atmosphere:
     name: atmosphere
     description: Atmosphere composition
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: atmosphere
     owner: ExperimentalConditions
     domain_of:
@@ -734,7 +735,7 @@ attributes:
     name: beam_energy
     description: Beam energy, typically specified in kiloelectronvolts (keV). Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: beam_energy
     owner: ExperimentalConditions
     domain_of:
@@ -746,18 +747,19 @@ attributes:
     name: exposure_time
     description: Exposure time, typically specified in seconds. Data providers may
       specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: exposure_time
     owner: ExperimentalConditions
     domain_of:
     - ExperimentRun
     - Image
     - ExperimentalConditions
+    - DataCollectionStrategy
     range: QuantityValue
     inlined: true
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: ExperimentalConditions
     domain_of:

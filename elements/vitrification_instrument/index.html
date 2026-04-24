@@ -921,7 +921,7 @@
 
 <h1 id="slot-vitrification_instrument">Slot: vitrification_instrument</h1>
 <p><em>Vitrification instrument used (e.g., Vitrobot)</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/vitrification_instrument">lambdaber:vitrification_instrument</a>
+<p>URI: <a href="http://w3id.org/lambda/vitrification_instrument">lambda:vitrification_instrument</a>
 Alias: vitrification_instrument</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: vitrification_instrument</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: vitrification_instrument</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:vitrification_instrument</td>
+<td>lambda:vitrification_instrument</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:vitrification_instrument</td>
+<td>lambda:vitrification_instrument</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_vitrification.instrument</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: vitrification_instrument</p>
 
 <pre><code class="language-yaml">name: vitrification_instrument
 description: Vitrification instrument used (e.g., Vitrobot)
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.instrument
 rank: 1000
 alias: vitrification_instrument
 owner: CryoEMPreparation

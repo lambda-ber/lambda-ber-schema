@@ -921,7 +921,7 @@
 
 <h1 id="slot-ethane_temperature">Slot: ethane_temperature</h1>
 <p><em>Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/ethane_temperature">lambdaber:ethane_temperature</a>
+<p>URI: <a href="http://w3id.org/lambda/ethane_temperature">lambda:ethane_temperature</a>
 Alias: ethane_temperature</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: ethane_temperature</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: ethane_temperature</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:ethane_temperature</td>
+<td>lambda:ethane_temperature</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:ethane_temperature</td>
+<td>lambda:ethane_temperature</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_vitrification.cryogen_name</td>
 </tr>
 </tbody>
 </table>
@@ -976,7 +980,9 @@ Alias: ethane_temperature</p>
 <pre><code class="language-yaml">name: ethane_temperature
 description: Ethane temperature, typically specified in degrees Celsius. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_vitrification.cryogen_name
 rank: 1000
 alias: ethane_temperature
 owner: CryoEMPreparation

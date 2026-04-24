@@ -921,7 +921,7 @@
 
 <h1 id="slot-defocus_range_max">Slot: defocus_range_max</h1>
 <p><em>Maximum defocus range in micrometers</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/defocus_range_max">lambdaber:defocus_range_max</a>
+<p>URI: <a href="http://w3id.org/lambda/defocus_range_max">lambda:defocus_range_max</a>
 Alias: defocus_range_max</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: defocus_range_max</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: defocus_range_max</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:defocus_range_max</td>
+<td>lambda:defocus_range_max</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:defocus_range_max</td>
+<td>lambda:defocus_range_max</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_imaging.nominal_defocus_max</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: defocus_range_max</p>
 
 <pre><code class="language-yaml">name: defocus_range_max
 description: Maximum defocus range in micrometers
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.nominal_defocus_max
 rank: 1000
 alias: defocus_range_max
 owner: ExperimentRun

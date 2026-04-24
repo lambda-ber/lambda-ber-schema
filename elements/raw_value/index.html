@@ -921,7 +921,7 @@
 
 <h1 id="slot-raw_value">Slot: raw_value</h1>
 <p><em>The value that was specified in raw form, i.e. a string. E.g. "2 Angstroms" or "2-4 micrometers"</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/raw_value">lambdaber:raw_value</a>
+<p>URI: <a href="http://w3id.org/lambda/raw_value">lambda:raw_value</a>
 Alias: raw_value</p>
 <!-- no inheritance hierarchy -->
 
@@ -941,6 +941,11 @@ Alias: raw_value</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any attribute of an entity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity value, representing a measurement with a numeric value and ...</td>
 <td>yes</td>
@@ -948,11 +953,6 @@ Alias: raw_value</p>
 <tr>
 <td><a href="../DateTimeValue/">DateTimeValue</a></td>
 <td>A date or date and time value</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any attribute of an entity</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -964,7 +964,7 @@ Alias: raw_value</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -977,11 +977,11 @@ Alias: raw_value</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:raw_value</td>
+<td>lambda:raw_value</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:raw_value</td>
+<td>lambda:raw_value</td>
 </tr>
 <tr>
 <td>undefined</td>
@@ -995,7 +995,7 @@ Alias: raw_value</p>
 <pre><code class="language-yaml">name: raw_value
 description: The value that was specified in raw form, i.e. a string. E.g. &quot;2 Angstroms&quot;
   or &quot;2-4 micrometers&quot;
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 mappings:
 - nmdc:raw_value
 rank: 1000

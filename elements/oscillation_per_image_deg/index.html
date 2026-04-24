@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -921,7 +930,7 @@
 
 <h1 id="slot-oscillation_per_image_deg">Slot: oscillation_per_image_deg</h1>
 <p><em>Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/oscillation_per_image_deg">lambdaber:oscillation_per_image_deg</a>
+<p>URI: <a href="http://w3id.org/lambda/oscillation_per_image_deg">lambda:oscillation_per_image_deg</a>
 Alias: oscillation_per_image_deg</p>
 <!-- no inheritance hierarchy -->
 
@@ -946,10 +955,14 @@ Alias: oscillation_per_image_deg</p>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>oscillation_width</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +975,15 @@ Alias: oscillation_per_image_deg</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:oscillation_per_image_deg</td>
+<td>lambda:oscillation_per_image_deg</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:oscillation_per_image_deg</td>
+<td>lambda:oscillation_per_image_deg</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_diffrn_scan.angle_increment</td>
 </tr>
 </tbody>
 </table>
@@ -976,7 +993,11 @@ Alias: oscillation_per_image_deg</p>
 <pre><code class="language-yaml">name: oscillation_per_image_deg
 description: Oscillation angle per image, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- oscillation_width
+exact_mappings:
+- mmCIF:_diffrn_scan.angle_increment
 rank: 1000
 alias: oscillation_per_image_deg
 owner: DataCollectionStrategy

@@ -921,7 +921,7 @@
 
 <h1 id="slot-rmsd_angles">Slot: rmsd_angles</h1>
 <p><em>RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/rmsd_angles">lambdaber:rmsd_angles</a>
+<p>URI: <a href="http://w3id.org/lambda/rmsd_angles">lambda:rmsd_angles</a>
 Alias: rmsd_angles</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: rmsd_angles</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,15 +962,15 @@ Alias: rmsd_angles</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:rmsd_angles</td>
+<td>lambda:rmsd_angles</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:rmsd_angles</td>
+<td>lambda:rmsd_angles</td>
 </tr>
 <tr>
 <td>exact</td>
-<td>nsls2:RMSD_angles, mmCIF:_refine.ls_d_res_low</td>
+<td>nsls2:RMSD_angles, mmCIF:_refine.pdbx_ls_sigma_I</td>
 </tr>
 </tbody>
 </table>
@@ -980,10 +980,10 @@ Alias: rmsd_angles</p>
 <pre><code class="language-yaml">name: rmsd_angles
 description: RMSD from ideal bond angles, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 exact_mappings:
 - nsls2:RMSD_angles
-- mmCIF:_refine.ls_d_res_low
+- mmCIF:_refine.pdbx_ls_sigma_I
 rank: 1000
 alias: rmsd_angles
 owner: WorkflowRun

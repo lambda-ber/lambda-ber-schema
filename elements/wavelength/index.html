@@ -865,21 +865,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -920,8 +905,7 @@
 
 
 <h1 id="slot-wavelength">Slot: wavelength</h1>
-<p><em>X-ray wavelength, typically specified in Angstroms (Å). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/wavelength">lambdaber:wavelength</a>
+<p>URI: <a href="http://w3id.org/lambda/wavelength">lambda:wavelength</a>
 Alias: wavelength</p>
 <!-- no inheritance hierarchy -->
 
@@ -936,6 +920,11 @@ Alias: wavelength</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../SANSSource/">SANSSource</a></td>
+<td>Beam source parameters for a SANS instrument</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ExperimentRun/">ExperimentRun</a></td>
 <td>An experimental data collection session</td>
 <td>no</td>
@@ -944,13 +933,9 @@ Alias: wavelength</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -962,15 +947,11 @@ Alias: wavelength</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:wavelength</td>
+<td>lambda:wavelength</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:wavelength</td>
-</tr>
-<tr>
-<td>exact</td>
-<td>nsls2:Wavelength, imgCIF:_diffrn_radiation_wavelength.wavelength, mmCIF:_diffrn_radiation_wavelength.wavelength, ispyb:DataCollection.wavelength</td>
+<td>lambda:wavelength</td>
 </tr>
 </tbody>
 </table>
@@ -978,21 +959,11 @@ Alias: wavelength</p>
 <details>
 
 <pre><code class="language-yaml">name: wavelength
-description: X-ray wavelength, typically specified in Angstroms (Å). Data providers
-  may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
-exact_mappings:
-- nsls2:Wavelength
-- imgCIF:_diffrn_radiation_wavelength.wavelength
-- mmCIF:_diffrn_radiation_wavelength.wavelength
-- ispyb:DataCollection.wavelength
-rank: 1000
 alias: wavelength
-owner: ExperimentRun
 domain_of:
+- SANSSource
 - ExperimentRun
-range: QuantityValue
-inlined: true
+range: string
 
 </code></pre>
 

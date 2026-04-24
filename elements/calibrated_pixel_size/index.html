@@ -921,7 +921,7 @@
 
 <h1 id="slot-calibrated_pixel_size">Slot: calibrated_pixel_size</h1>
 <p><em>Calibrated pixel size in Angstroms per pixel</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/calibrated_pixel_size">lambdaber:calibrated_pixel_size</a>
+<p>URI: <a href="http://w3id.org/lambda/calibrated_pixel_size">lambda:calibrated_pixel_size</a>
 Alias: calibrated_pixel_size</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: calibrated_pixel_size</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: calibrated_pixel_size</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:calibrated_pixel_size</td>
+<td>lambda:calibrated_pixel_size</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:calibrated_pixel_size</td>
+<td>lambda:calibrated_pixel_size</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_image_recording.calibrated_pixel_size</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: calibrated_pixel_size</p>
 
 <pre><code class="language-yaml">name: calibrated_pixel_size
 description: Calibrated pixel size in Angstroms per pixel
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.calibrated_pixel_size
 rank: 1000
 alias: calibrated_pixel_size
 owner: ExperimentRun

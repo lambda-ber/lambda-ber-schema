@@ -930,7 +930,7 @@
 
 <h1 id="slot-facility_ror">Slot: facility_ror</h1>
 <p><em>Research Organization Registry (ROR) identifier for the facility</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/facility_ror">lambdaber:facility_ror</a>
+<p>URI: <a href="http://w3id.org/lambda/facility_ror">lambda:facility_ror</a>
 Alias: facility_ror</p>
 <!-- no inheritance hierarchy -->
 
@@ -945,16 +945,6 @@ Alias: facility_ror</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
-<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Instrument/">Instrument</a></td>
-<td>An instrument used to collect data</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
 <td>Cryo-EM microscope specifications</td>
 <td>no</td>
@@ -965,8 +955,23 @@ Alias: facility_ror</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayInstrument/">XRayInstrument</a></td>
 <td>X-ray diffractometer or synchrotron beamline specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
+<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An instrument used to collect data</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -988,7 +993,7 @@ Alias: facility_ror</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -1001,11 +1006,11 @@ Alias: facility_ror</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:facility_ror</td>
+<td>lambda:facility_ror</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:facility_ror</td>
+<td>lambda:facility_ror</td>
 </tr>
 </tbody>
 </table>
@@ -1017,7 +1022,7 @@ description: Research Organization Registry (ROR) identifier for the facility
 comments:
 - Persistent identifier for the facility organization
 - 'Example: https://ror.org/02jbv0t02 (Lawrence Berkeley National Laboratory)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: facility_ror
 owner: Instrument

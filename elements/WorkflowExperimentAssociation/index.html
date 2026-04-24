@@ -423,7 +423,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-workflowexperimentassociation">Class: WorkflowExperimentAssociation</h1>
 <p><em>M:N link between WorkflowRun and source ExperimentRuns</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/WorkflowExperimentAssociation">lambdaber:WorkflowExperimentAssociation</a></p>
+<p>URI: <a href="http://w3id.org/lambda/WorkflowExperimentAssociation">lambda:WorkflowExperimentAssociation</a></p>
 <div class="mermaid"> classDiagram
     class WorkflowExperimentAssociation
     click WorkflowExperimentAssociation href "../WorkflowExperimentAssociation/"
@@ -499,7 +499,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -512,11 +512,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:WorkflowExperimentAssociation</td>
+<td>lambda:WorkflowExperimentAssociation</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:WorkflowExperimentAssociation</td>
+<td>lambda:WorkflowExperimentAssociation</td>
 </tr>
 </tbody>
 </table>
@@ -526,12 +526,12 @@
 <details>
 <pre><code class="language-yaml">name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyWorkflowAssociation
     - WorkflowExperimentAssociation
@@ -542,7 +542,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the source experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyExperimentAssociation
     - ExperimentSampleAssociation
@@ -557,12 +557,12 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: WorkflowExperimentAssociation
 description: M:N link between WorkflowRun and source ExperimentRuns
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   workflow_id:
     name: workflow_id
     description: Reference to the workflow run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: workflow_id
     owner: WorkflowExperimentAssociation
     domain_of:
@@ -575,7 +575,7 @@ attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the source experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: experiment_id
     owner: WorkflowExperimentAssociation
     domain_of:

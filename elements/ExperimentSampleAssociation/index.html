@@ -423,7 +423,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-experimentsampleassociation">Class: ExperimentSampleAssociation</h1>
 <p><em>M:N link between ExperimentRun and Sample with role metadata</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/ExperimentSampleAssociation">lambdaber:ExperimentSampleAssociation</a></p>
+<p>URI: <a href="http://w3id.org/lambda/ExperimentSampleAssociation">lambda:ExperimentSampleAssociation</a></p>
 <div class="mermaid"> classDiagram
     class ExperimentSampleAssociation
     click ExperimentSampleAssociation href "../ExperimentSampleAssociation/"
@@ -533,7 +533,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -546,11 +546,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:ExperimentSampleAssociation</td>
+<td>lambda:ExperimentSampleAssociation</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:ExperimentSampleAssociation</td>
+<td>lambda:ExperimentSampleAssociation</td>
 </tr>
 </tbody>
 </table>
@@ -560,12 +560,12 @@
 <details>
 <pre><code class="language-yaml">name: ExperimentSampleAssociation
 description: M:N link between ExperimentRun and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudyExperimentAssociation
     - ExperimentSampleAssociation
@@ -576,7 +576,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - SamplePreparation
     - StudySampleAssociation
@@ -586,7 +586,7 @@ attributes:
   role:
     name: role
     description: Role of sample in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - StudySampleAssociation
     - ExperimentSampleAssociation
@@ -595,7 +595,7 @@ attributes:
   preparation_id:
     name: preparation_id
     description: Specific preparation used for this sample in this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - ExperimentSampleAssociation
@@ -607,12 +607,12 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: ExperimentSampleAssociation
 description: M:N link between ExperimentRun and Sample with role metadata
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 attributes:
   experiment_id:
     name: experiment_id
     description: Reference to the experiment run
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: experiment_id
     owner: ExperimentSampleAssociation
     domain_of:
@@ -625,7 +625,7 @@ attributes:
   sample_id:
     name: sample_id
     description: Reference to the sample
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: sample_id
     owner: ExperimentSampleAssociation
     domain_of:
@@ -637,7 +637,7 @@ attributes:
   role:
     name: role
     description: Role of sample in experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: role
     owner: ExperimentSampleAssociation
     domain_of:
@@ -648,7 +648,7 @@ attributes:
   preparation_id:
     name: preparation_id
     description: Specific preparation used for this sample in this experiment
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: preparation_id
     owner: ExperimentSampleAssociation

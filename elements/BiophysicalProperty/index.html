@@ -430,7 +430,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-biophysicalproperty">Class: BiophysicalProperty</h1>
 <p><em>Measured or calculated biophysical properties</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/BiophysicalProperty">lambdaber:BiophysicalProperty</a></p>
+<p>URI: <a href="http://w3id.org/lambda/BiophysicalProperty">lambda:BiophysicalProperty</a></p>
 <div class="mermaid"> classDiagram
     class BiophysicalProperty
     click BiophysicalProperty href "../BiophysicalProperty/"
@@ -570,7 +570,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -583,11 +583,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:BiophysicalProperty</td>
+<td>lambda:BiophysicalProperty</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:BiophysicalProperty</td>
+<td>lambda:BiophysicalProperty</td>
 </tr>
 </tbody>
 </table>
@@ -597,13 +597,13 @@
 <details>
 <pre><code class="language-yaml">name: BiophysicalProperty
 description: Measured or calculated biophysical properties
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   property_type:
     name: property_type
     description: Type of biophysical property
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - BiophysicalProperty
@@ -612,7 +612,7 @@ attributes:
   value:
     name: value
     description: Numerical value of the property
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - TextValue
     - DateTimeValue
@@ -622,7 +622,7 @@ attributes:
   unit:
     name: unit
     description: Unit of measurement
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - QuantityValue
     - BiophysicalProperty
@@ -630,7 +630,7 @@ attributes:
   error:
     name: error
     description: Experimental error or uncertainty
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - BiophysicalProperty
@@ -641,7 +641,7 @@ attributes:
       conditions were used, this will represent that the same values were obtained
       under different conditions. If values differ under different conditions, separate
       BiophysicalProperty instances should be created.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     domain_of:
     - BiophysicalProperty
@@ -652,7 +652,7 @@ attributes:
   experimental_method:
     name: experimental_method
     description: Method used for measurement
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     domain_of:
     - ExperimentRun
     - BiophysicalProperty
@@ -664,13 +664,13 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: BiophysicalProperty
 description: Measured or calculated biophysical properties
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   property_type:
     name: property_type
     description: Type of biophysical property
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: property_type
     owner: BiophysicalProperty
@@ -681,7 +681,7 @@ attributes:
   value:
     name: value
     description: Numerical value of the property
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: value
     owner: BiophysicalProperty
     domain_of:
@@ -693,7 +693,7 @@ attributes:
   unit:
     name: unit
     description: Unit of measurement
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: unit
     owner: BiophysicalProperty
     domain_of:
@@ -704,7 +704,7 @@ attributes:
   error:
     name: error
     description: Experimental error or uncertainty
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: error
     owner: BiophysicalProperty
@@ -717,7 +717,7 @@ attributes:
       conditions were used, this will represent that the same values were obtained
       under different conditions. If values differ under different conditions, separate
       BiophysicalProperty instances should be created.
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     rank: 1000
     alias: measurement_conditions
     owner: BiophysicalProperty
@@ -730,7 +730,7 @@ attributes:
   experimental_method:
     name: experimental_method
     description: Method used for measurement
-    from_schema: https://w3id.org/lambda-ber-schema/functional_annotation
+    from_schema: http://w3id.org/lambda/functional_annotation
     alias: experimental_method
     owner: BiophysicalProperty
     domain_of:
@@ -739,7 +739,7 @@ attributes:
     range: BiophysicalMethodEnum
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: BiophysicalProperty
     domain_of:

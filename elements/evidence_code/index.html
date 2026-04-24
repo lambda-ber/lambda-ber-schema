@@ -921,7 +921,7 @@
 
 <h1 id="slot-evidence_code">Slot: evidence_code</h1>
 <p><em>Evidence and Conclusion Ontology (ECO) code</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/evidence_code">lambdaber:evidence_code</a>
+<p>URI: <a href="http://w3id.org/lambda/evidence_code">lambda:evidence_code</a>
 Alias: evidence_code</p>
 <!-- no inheritance hierarchy -->
 
@@ -936,13 +936,8 @@ Alias: evidence_code</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MutationEffect/">MutationEffect</a></td>
-<td>Effects of mutations and variants on protein structure and function</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
-<td>Evolutionary conservation information</td>
+<td><a href="../FunctionalSite/">FunctionalSite</a></td>
+<td>Functional sites including catalytic, binding, and regulatory sites</td>
 <td>no</td>
 </tr>
 <tr>
@@ -951,18 +946,23 @@ Alias: evidence_code</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
-<td>Base class for all protein-related functional and structural annotations</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ProteinProteinInteraction/">ProteinProteinInteraction</a></td>
 <td>Protein-protein interactions and interfaces</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FunctionalSite/">FunctionalSite</a></td>
-<td>Functional sites including catalytic, binding, and regulatory sites</td>
+<td><a href="../MutationEffect/">MutationEffect</a></td>
+<td>Effects of mutations and variants on protein structure and function</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinAnnotation/">ProteinAnnotation</a></td>
+<td>Base class for all protein-related functional and structural annotations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvolutionaryConservation/">EvolutionaryConservation</a></td>
+<td>Evolutionary conservation information</td>
 <td>no</td>
 </tr>
 <tr>
@@ -979,7 +979,7 @@ Alias: evidence_code</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -992,11 +992,11 @@ Alias: evidence_code</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:evidence_code</td>
+<td>lambda:evidence_code</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:evidence_code</td>
+<td>lambda:evidence_code</td>
 </tr>
 </tbody>
 </table>
@@ -1005,7 +1005,7 @@ Alias: evidence_code</p>
 
 <pre><code class="language-yaml">name: evidence_code
 description: Evidence and Conclusion Ontology (ECO) code
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: evidence_code
 owner: ProteinAnnotation

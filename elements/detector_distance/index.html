@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -921,7 +930,7 @@
 
 <h1 id="slot-detector_distance">Slot: detector_distance</h1>
 <p><em>Distance from sample to detector, typically specified in millimeters (mm). Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/detector_distance">lambdaber:detector_distance</a>
+<p>URI: <a href="http://w3id.org/lambda/detector_distance">lambda:detector_distance</a>
 Alias: detector_distance</p>
 <!-- no inheritance hierarchy -->
 
@@ -946,10 +955,14 @@ Alias: detector_distance</p>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>detector_distance_mm</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +975,11 @@ Alias: detector_distance</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:detector_distance</td>
+<td>lambda:detector_distance</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:detector_distance</td>
+<td>lambda:detector_distance</td>
 </tr>
 <tr>
 <td>exact</td>
@@ -981,7 +994,9 @@ Alias: detector_distance</p>
 description: Distance from sample to detector, typically specified in millimeters
   (mm). Data providers may specify alternative units by including the unit in the
   QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- detector_distance_mm
 exact_mappings:
 - nsls2:Detector_distance
 - imgCIF:_diffrn_measurement.sample_detector_distance

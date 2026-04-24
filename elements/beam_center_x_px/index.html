@@ -921,7 +921,7 @@
 
 <h1 id="slot-beam_center_x_px">Slot: beam_center_x_px</h1>
 <p><em>Beam center X coordinate in pixels</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/beam_center_x_px">lambdaber:beam_center_x_px</a>
+<p>URI: <a href="http://w3id.org/lambda/beam_center_x_px">lambda:beam_center_x_px</a>
 Alias: beam_center_x_px</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: beam_center_x_px</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: beam_center_x_px</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:beam_center_x_px</td>
+<td>lambda:beam_center_x_px</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:beam_center_x_px</td>
+<td>lambda:beam_center_x_px</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_diffrn_detector.beam_center_x</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: beam_center_x_px</p>
 
 <pre><code class="language-yaml">name: beam_center_x_px
 description: Beam center X coordinate in pixels
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_detector.beam_center_x
 rank: 1000
 alias: beam_center_x_px
 owner: DataCollectionStrategy

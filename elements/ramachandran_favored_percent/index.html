@@ -921,7 +921,7 @@
 
 <h1 id="slot-ramachandran_favored_percent">Slot: ramachandran_favored_percent</h1>
 <p><em>Percentage of residues in favored Ramachandran regions</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/ramachandran_favored_percent">lambdaber:ramachandran_favored_percent</a>
+<p>URI: <a href="http://w3id.org/lambda/ramachandran_favored_percent">lambda:ramachandran_favored_percent</a>
 Alias: ramachandran_favored_percent</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: ramachandran_favored_percent</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: ramachandran_favored_percent</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:ramachandran_favored_percent</td>
+<td>lambda:ramachandran_favored_percent</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:ramachandran_favored_percent</td>
+<td>lambda:ramachandran_favored_percent</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_pdbx_struct_quality.ramachandran_favored</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: ramachandran_favored_percent</p>
 
 <pre><code class="language-yaml">name: ramachandran_favored_percent
 description: Percentage of residues in favored Ramachandran regions
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_pdbx_struct_quality.ramachandran_favored
 rank: 1000
 alias: ramachandran_favored_percent
 owner: QualityMetrics

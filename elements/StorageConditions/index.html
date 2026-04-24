@@ -430,7 +430,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-storageconditions">Class: StorageConditions</h1>
 <p><em>Storage conditions for samples</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/StorageConditions">lambdaber:StorageConditions</a></p>
+<p>URI: <a href="http://w3id.org/lambda/StorageConditions">lambda:StorageConditions</a></p>
 <div class="mermaid"> classDiagram
     class StorageConditions
     click StorageConditions href "../StorageConditions/"
@@ -522,7 +522,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -535,11 +535,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:StorageConditions</td>
+<td>lambda:StorageConditions</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:StorageConditions</td>
+<td>lambda:StorageConditions</td>
 </tr>
 </tbody>
 </table>
@@ -549,14 +549,14 @@
 <details>
 <pre><code class="language-yaml">name: StorageConditions
 description: Storage conditions for samples
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
     description: Storage temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StorageConditions
@@ -567,7 +567,7 @@ attributes:
   duration:
     name: duration
     description: Storage duration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StorageConditions
@@ -575,7 +575,7 @@ attributes:
   atmosphere:
     name: atmosphere
     description: Storage atmosphere conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     domain_of:
     - StorageConditions
@@ -588,14 +588,14 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: StorageConditions
 description: Storage conditions for samples
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 is_a: AttributeGroup
 attributes:
   temperature:
     name: temperature
     description: Storage temperature, typically specified in degrees Celsius. Data
       providers may specify alternative units by including the unit in the QuantityValue.
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: temperature
     owner: StorageConditions
@@ -608,7 +608,7 @@ attributes:
   duration:
     name: duration
     description: Storage duration
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: duration
     owner: StorageConditions
@@ -618,7 +618,7 @@ attributes:
   atmosphere:
     name: atmosphere
     description: Storage atmosphere conditions
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     rank: 1000
     alias: atmosphere
     owner: StorageConditions
@@ -628,7 +628,7 @@ attributes:
     range: string
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: StorageConditions
     domain_of:

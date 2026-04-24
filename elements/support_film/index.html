@@ -921,7 +921,7 @@
 
 <h1 id="slot-support_film">Slot: support_film</h1>
 <p><em>Support film type</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/support_film">lambdaber:support_film</a>
+<p>URI: <a href="http://w3id.org/lambda/support_film">lambda:support_film</a>
 Alias: support_film</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: support_film</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: support_film</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:support_film</td>
+<td>lambda:support_film</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:support_film</td>
+<td>lambda:support_film</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_sample_support.grid_support_film</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: support_film</p>
 
 <pre><code class="language-yaml">name: support_film
 description: Support film type
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.grid_support_film
 rank: 1000
 alias: support_film
 owner: CryoEMPreparation

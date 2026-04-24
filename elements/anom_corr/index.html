@@ -921,7 +921,7 @@
 
 <h1 id="slot-anom_corr">Slot: anom_corr</h1>
 <p><em>Anomalous correlation</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/anom_corr">lambdaber:anom_corr</a>
+<p>URI: <a href="http://w3id.org/lambda/anom_corr">lambda:anom_corr</a>
 Alias: anom_corr</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: anom_corr</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: anom_corr</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:anom_corr</td>
+<td>lambda:anom_corr</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:anom_corr</td>
+<td>lambda:anom_corr</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_reflns.pdbx_CC_half_anomalous</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: anom_corr</p>
 
 <pre><code class="language-yaml">name: anom_corr
 description: Anomalous correlation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_reflns.pdbx_CC_half_anomalous
 rank: 1000
 alias: anom_corr
 owner: QualityMetrics

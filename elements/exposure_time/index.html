@@ -905,7 +905,7 @@
 
 
 <h1 id="slot-exposure_time">Slot: exposure_time</h1>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/exposure_time">lambdaber:exposure_time</a>
+<p>URI: <a href="http://w3id.org/lambda/exposure_time">lambda:exposure_time</a>
 Alias: exposure_time</p>
 <!-- no inheritance hierarchy -->
 
@@ -920,13 +920,23 @@ Alias: exposure_time</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentalConditions/">ExperimentalConditions</a></td>
-<td>Environmental and experimental conditions</td>
+<td><a href="../Micrograph/">Micrograph</a></td>
+<td>Motion-corrected micrograph derived from movie</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Movie/">Movie</a></td>
-<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
+<td><a href="../Image3D/">Image3D</a></td>
+<td>A 3D volume or tomogram</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FTIRImage/">FTIRImage</a></td>
+<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentalConditions/">ExperimentalConditions</a></td>
+<td>Environmental and experimental conditions</td>
 <td>no</td>
 </tr>
 <tr>
@@ -935,18 +945,28 @@ Alias: exposure_time</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OpticalImage/">OpticalImage</a></td>
-<td>Visible light optical microscopy or photography image</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ExperimentRun/">ExperimentRun</a></td>
 <td>An experimental data collection session</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Image3D/">Image3D</a></td>
-<td>A 3D volume or tomogram</td>
+<td><a href="../DataCollectionStrategy/">DataCollectionStrategy</a></td>
+<td>Strategy for data collection</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OpticalImage/">OpticalImage</a></td>
+<td>Visible light optical microscopy or photography image</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../XRFImage/">XRFImage</a></td>
+<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Movie/">Movie</a></td>
+<td>Raw cryo-EM movie with frame-by-frame metadata for motion correction</td>
 <td>no</td>
 </tr>
 <tr>
@@ -957,21 +977,6 @@ Alias: exposure_time</p>
 <tr>
 <td><a href="../FluorescenceImage/">FluorescenceImage</a></td>
 <td>Fluorescence microscopy image capturing specific molecular targets through fl...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FTIRImage/">FTIRImage</a></td>
-<td>Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular comp...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Micrograph/">Micrograph</a></td>
-<td>Motion-corrected micrograph derived from movie</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../XRFImage/">XRFImage</a></td>
-<td>X-ray fluorescence (XRF) image showing elemental distribution</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -992,11 +997,11 @@ Alias: exposure_time</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:exposure_time</td>
+<td>lambda:exposure_time</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:exposure_time</td>
+<td>lambda:exposure_time</td>
 </tr>
 </tbody>
 </table>
@@ -1009,6 +1014,7 @@ domain_of:
 - ExperimentRun
 - Image
 - ExperimentalConditions
+- DataCollectionStrategy
 range: string
 
 </code></pre>

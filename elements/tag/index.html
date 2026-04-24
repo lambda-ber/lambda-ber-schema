@@ -859,15 +859,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -930,7 +921,7 @@
 
 <h1 id="slot-tag">Slot: tag</h1>
 <p><em>Affinity tag (e.g., His6, GST, MBP)</em></p>
-<p>URI: <a href="https://github.com/NSLS2/BER-LAMBDA/Tag">nsls2:Tag</a>
+<p>URI: <a href="http://w3id.org/lambda/tag">lambda:tag</a>
 Alias: tag</p>
 <!-- no inheritance hierarchy -->
 
@@ -955,14 +946,10 @@ Alias: tag</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Maps to NSLS2 spreadsheet: Tag</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -975,11 +962,15 @@ Alias: tag</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>nsls2:Tag</td>
+<td>lambda:tag</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:tag</td>
+<td>lambda:tag</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nsls2:Tag</td>
 </tr>
 </tbody>
 </table>
@@ -988,11 +979,10 @@ Alias: tag</p>
 
 <pre><code class="language-yaml">name: tag
 description: Affinity tag (e.g., His6, GST, MBP)
-comments:
-- 'Maps to NSLS2 spreadsheet: Tag'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- nsls2:Tag
 rank: 1000
-slot_uri: nsls2:Tag
 alias: tag
 owner: Sample
 domain_of:

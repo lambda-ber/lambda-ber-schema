@@ -426,10 +426,16 @@
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/AttributeGroup">lambdaber:AttributeGroup</a></p>
+<p>URI: <a href="http://w3id.org/lambda/AttributeGroup">lambda:AttributeGroup</a></p>
 <div class="mermaid"> classDiagram
     class AttributeGroup
     click AttributeGroup href "../AttributeGroup/"
+      AttributeGroup &lt;|-- SANSDetector
+        click SANSDetector href "../SANSDetector/"
+      AttributeGroup &lt;|-- SANSSource
+        click SANSSource href "../SANSSource/"
+      AttributeGroup &lt;|-- SANSConfiguration
+        click SANSConfiguration href "../SANSConfiguration/"
       AttributeGroup &lt;|-- ImageFeature
         click ImageFeature href "../ImageFeature/"
       AttributeGroup &lt;|-- MolecularComposition
@@ -446,6 +452,8 @@
         click ExperimentalConditions href "../ExperimentalConditions/"
       AttributeGroup &lt;|-- DataCollectionStrategy
         click DataCollectionStrategy href "../DataCollectionStrategy/"
+      AttributeGroup &lt;|-- BeamCenterPixels
+        click BeamCenterPixels href "../BeamCenterPixels/"
       AttributeGroup &lt;|-- QualityMetrics
         click QualityMetrics href "../QualityMetrics/"
       AttributeGroup &lt;|-- ComputeResources
@@ -476,6 +484,9 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>AttributeGroup</strong><ul>
+<li><a href="../SANSDetector/">SANSDetector</a></li>
+<li><a href="../SANSSource/">SANSSource</a></li>
+<li><a href="../SANSConfiguration/">SANSConfiguration</a></li>
 <li><a href="../ImageFeature/">ImageFeature</a></li>
 <li><a href="../MolecularComposition/">MolecularComposition</a></li>
 <li><a href="../BufferComposition/">BufferComposition</a></li>
@@ -484,6 +495,7 @@
 <li><a href="../CrystallizationConditions/">CrystallizationConditions</a></li>
 <li><a href="../ExperimentalConditions/">ExperimentalConditions</a></li>
 <li><a href="../DataCollectionStrategy/">DataCollectionStrategy</a></li>
+<li><a href="../BeamCenterPixels/">BeamCenterPixels</a></li>
 <li><a href="../QualityMetrics/">QualityMetrics</a></li>
 <li><a href="../ComputeResources/">ComputeResources</a></li>
 <li><a href="../MotionCorrectionParameters/">MotionCorrectionParameters</a></li>
@@ -520,7 +532,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -533,11 +545,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:AttributeGroup</td>
+<td>lambda:AttributeGroup</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:AttributeGroup</td>
+<td>lambda:AttributeGroup</td>
 </tr>
 </tbody>
 </table>
@@ -547,12 +559,12 @@
 <details>
 <pre><code class="language-yaml">name: AttributeGroup
 description: A grouping of related data attributes that form a logical unit
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     domain_of:
     - NamedThing
     - AttributeGroup
@@ -564,12 +576,12 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: AttributeGroup
 description: A grouping of related data attributes that form a logical unit
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 abstract: true
 attributes:
   description:
     name: description
-    from_schema: https://w3id.org/lambda-ber-schema/
+    from_schema: http://w3id.org/lambda/
     alias: description
     owner: AttributeGroup
     domain_of:

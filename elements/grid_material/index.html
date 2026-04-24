@@ -921,7 +921,7 @@
 
 <h1 id="slot-grid_material">Slot: grid_material</h1>
 <p><em>Grid material</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/grid_material">lambdaber:grid_material</a>
+<p>URI: <a href="http://w3id.org/lambda/grid_material">lambda:grid_material</a>
 Alias: grid_material</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: grid_material</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: grid_material</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:grid_material</td>
+<td>lambda:grid_material</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:grid_material</td>
+<td>lambda:grid_material</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_sample_support.grid_material</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: grid_material</p>
 
 <pre><code class="language-yaml">name: grid_material
 description: Grid material
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_sample_support.grid_material
 rank: 1000
 alias: grid_material
 owner: CryoEMPreparation

@@ -921,7 +921,7 @@
 
 <h1 id="slot-frames_per_movie">Slot: frames_per_movie</h1>
 <p><em>Number of frames per movie</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/frames_per_movie">lambdaber:frames_per_movie</a>
+<p>URI: <a href="http://w3id.org/lambda/frames_per_movie">lambda:frames_per_movie</a>
 Alias: frames_per_movie</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: frames_per_movie</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: frames_per_movie</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:frames_per_movie</td>
+<td>lambda:frames_per_movie</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:frames_per_movie</td>
+<td>lambda:frames_per_movie</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_image_recording.num_frames_per_image</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: frames_per_movie</p>
 
 <pre><code class="language-yaml">name: frames_per_movie
 description: Number of frames per movie
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.num_frames_per_image
 rank: 1000
 alias: frames_per_movie
 owner: ExperimentRun

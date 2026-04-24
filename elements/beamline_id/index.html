@@ -930,7 +930,7 @@
 
 <h1 id="slot-beamline_id">Slot: beamline_id</h1>
 <p><em>Beamline identifier at synchrotron/neutron facility</em></p>
-<p>URI: <a href="http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline">mmCIF:_diffrn_source.pdbx_synchrotron_beamline</a>
+<p>URI: <a href="http://w3id.org/lambda/beamline_id">lambda:beamline_id</a>
 Alias: beamline_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -945,16 +945,6 @@ Alias: beamline_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
-<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Instrument/">Instrument</a></td>
-<td>An instrument used to collect data</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
 <td>Cryo-EM microscope specifications</td>
 <td>no</td>
@@ -965,8 +955,23 @@ Alias: beamline_id</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayInstrument/">XRayInstrument</a></td>
 <td>X-ray diffractometer or synchrotron beamline specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
+<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An instrument used to collect data</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -983,7 +988,7 @@ Alias: beamline_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -996,11 +1001,15 @@ Alias: beamline_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>mmCIF:_diffrn_source.pdbx_synchrotron_beamline</td>
+<td>lambda:beamline_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:beamline_id</td>
+<td>lambda:beamline_id</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_diffrn_source.pdbx_synchrotron_beamline</td>
 </tr>
 </tbody>
 </table>
@@ -1012,9 +1021,10 @@ description: Beamline identifier at synchrotron/neutron facility
 comments:
 - Use facility-specific naming convention
 - 'Examples: ''12.3.1'' (ALS), ''17-ID-1'' (NSLS-II), ''I04'' (Diamond)'
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 rank: 1000
-slot_uri: mmCIF:_diffrn_source.pdbx_synchrotron_beamline
 alias: beamline_id
 owner: Instrument
 domain_of:

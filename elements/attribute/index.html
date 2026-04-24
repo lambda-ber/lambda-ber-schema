@@ -921,7 +921,7 @@
 
 <h1 id="slot-attribute">Slot: attribute</h1>
 <p><em>The attribute being represented.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/attribute">lambdaber:attribute</a>
+<p>URI: <a href="http://w3id.org/lambda/attribute">lambda:attribute</a>
 Alias: attribute</p>
 <!-- no inheritance hierarchy -->
 
@@ -941,6 +941,11 @@ Alias: attribute</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any attribute of an entity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity value, representing a measurement with a numeric value and ...</td>
 <td>no</td>
@@ -948,11 +953,6 @@ Alias: attribute</p>
 <tr>
 <td><a href="../DateTimeValue/">DateTimeValue</a></td>
 <td>A date or date and time value</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any attribute of an entity</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -969,7 +969,7 @@ Alias: attribute</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -982,11 +982,11 @@ Alias: attribute</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:attribute</td>
+<td>lambda:attribute</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:attribute</td>
+<td>lambda:attribute</td>
 </tr>
 </tbody>
 </table>
@@ -995,7 +995,7 @@ Alias: attribute</p>
 
 <pre><code class="language-yaml">name: attribute
 description: The attribute being represented.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: attribute
 domain_of:

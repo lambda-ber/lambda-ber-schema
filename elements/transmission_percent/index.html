@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -921,7 +930,7 @@
 
 <h1 id="slot-transmission_percent">Slot: transmission_percent</h1>
 <p><em>Beam transmission, typically specified as a percentage (0-100). Data providers may specify as decimal fraction by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/transmission_percent">lambdaber:transmission_percent</a>
+<p>URI: <a href="http://w3id.org/lambda/transmission_percent">lambda:transmission_percent</a>
 Alias: transmission_percent</p>
 <!-- no inheritance hierarchy -->
 
@@ -946,10 +955,14 @@ Alias: transmission_percent</p>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>attenuation</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +975,11 @@ Alias: transmission_percent</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:transmission_percent</td>
+<td>lambda:transmission_percent</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:transmission_percent</td>
+<td>lambda:transmission_percent</td>
 </tr>
 </tbody>
 </table>
@@ -976,7 +989,9 @@ Alias: transmission_percent</p>
 <pre><code class="language-yaml">name: transmission_percent
 description: Beam transmission, typically specified as a percentage (0-100). Data
   providers may specify as decimal fraction by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- attenuation
 rank: 1000
 alias: transmission_percent
 owner: DataCollectionStrategy

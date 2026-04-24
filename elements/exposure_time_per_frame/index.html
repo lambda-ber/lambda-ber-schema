@@ -921,7 +921,7 @@
 
 <h1 id="slot-exposure_time_per_frame">Slot: exposure_time_per_frame</h1>
 <p><em>Exposure time per frame in milliseconds</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/exposure_time_per_frame">lambdaber:exposure_time_per_frame</a>
+<p>URI: <a href="http://w3id.org/lambda/exposure_time_per_frame">lambda:exposure_time_per_frame</a>
 Alias: exposure_time_per_frame</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: exposure_time_per_frame</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: exposure_time_per_frame</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:exposure_time_per_frame</td>
+<td>lambda:exposure_time_per_frame</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:exposure_time_per_frame</td>
+<td>lambda:exposure_time_per_frame</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_image_recording.average_exposure_time</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: exposure_time_per_frame</p>
 
 <pre><code class="language-yaml">name: exposure_time_per_frame
 description: Exposure time per frame in milliseconds
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_image_recording.average_exposure_time
 rank: 1000
 alias: exposure_time_per_frame
 owner: ExperimentRun

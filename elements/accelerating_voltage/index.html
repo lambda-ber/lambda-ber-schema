@@ -921,7 +921,7 @@
 
 <h1 id="slot-accelerating_voltage">Slot: accelerating_voltage</h1>
 <p><em>Accelerating voltage in kV</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/accelerating_voltage">lambdaber:accelerating_voltage</a>
+<p>URI: <a href="http://w3id.org/lambda/accelerating_voltage">lambda:accelerating_voltage</a>
 Alias: accelerating_voltage</p>
 <!-- no inheritance hierarchy -->
 
@@ -949,7 +949,7 @@ Alias: accelerating_voltage</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +962,15 @@ Alias: accelerating_voltage</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:accelerating_voltage</td>
+<td>lambda:accelerating_voltage</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:accelerating_voltage</td>
+<td>lambda:accelerating_voltage</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>mmCIF:_em_imaging.accelerating_voltage</td>
 </tr>
 </tbody>
 </table>
@@ -975,7 +979,9 @@ Alias: accelerating_voltage</p>
 
 <pre><code class="language-yaml">name: accelerating_voltage
 description: Accelerating voltage in kV
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+exact_mappings:
+- mmCIF:_em_imaging.accelerating_voltage
 rank: 1000
 alias: accelerating_voltage
 owner: CryoEMInstrument

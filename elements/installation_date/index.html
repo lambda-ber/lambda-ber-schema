@@ -921,7 +921,7 @@
 
 <h1 id="slot-installation_date">Slot: installation_date</h1>
 <p><em>Date of instrument installation</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/installation_date">lambdaber:installation_date</a>
+<p>URI: <a href="http://w3id.org/lambda/installation_date">lambda:installation_date</a>
 Alias: installation_date</p>
 <!-- no inheritance hierarchy -->
 
@@ -936,16 +936,6 @@ Alias: installation_date</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
-<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Instrument/">Instrument</a></td>
-<td>An instrument used to collect data</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../CryoEMInstrument/">CryoEMInstrument</a></td>
 <td>Cryo-EM microscope specifications</td>
 <td>no</td>
@@ -956,8 +946,23 @@ Alias: installation_date</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../SANSInstrument/">SANSInstrument</a></td>
+<td>Small-angle neutron scattering (SANS) instrument specifications</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../XRayInstrument/">XRayInstrument</a></td>
 <td>X-ray diffractometer or synchrotron beamline specifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BeamlineInstrument/">BeamlineInstrument</a></td>
+<td>Multi-technique synchrotron beamline that supports multiple experimental meth...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An instrument used to collect data</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -969,7 +974,7 @@ Alias: installation_date</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -982,11 +987,11 @@ Alias: installation_date</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:installation_date</td>
+<td>lambda:installation_date</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:installation_date</td>
+<td>lambda:installation_date</td>
 </tr>
 </tbody>
 </table>
@@ -995,7 +1000,7 @@ Alias: installation_date</p>
 
 <pre><code class="language-yaml">name: installation_date
 description: Date of instrument installation
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
 rank: 1000
 alias: installation_date
 owner: Instrument

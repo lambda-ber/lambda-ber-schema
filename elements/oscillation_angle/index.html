@@ -859,6 +859,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -921,7 +930,7 @@
 
 <h1 id="slot-oscillation_angle">Slot: oscillation_angle</h1>
 <p><em>Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.</em></p>
-<p>URI: <a href="https://w3id.org/lambda-ber-schema/oscillation_angle">lambdaber:oscillation_angle</a>
+<p>URI: <a href="http://w3id.org/lambda/oscillation_angle">lambda:oscillation_angle</a>
 Alias: oscillation_angle</p>
 <!-- no inheritance hierarchy -->
 
@@ -946,10 +955,15 @@ Alias: oscillation_angle</p>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>oscillation_width</li>
+<li>oscillation_per_image_deg</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lambda-ber-schema/</li>
+<li>from schema: http://w3id.org/lambda/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -962,11 +976,11 @@ Alias: oscillation_angle</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>lambdaber:oscillation_angle</td>
+<td>lambda:oscillation_angle</td>
 </tr>
 <tr>
 <td>native</td>
-<td>lambdaber:oscillation_angle</td>
+<td>lambda:oscillation_angle</td>
 </tr>
 <tr>
 <td>exact</td>
@@ -980,7 +994,10 @@ Alias: oscillation_angle</p>
 <pre><code class="language-yaml">name: oscillation_angle
 description: Oscillation angle per image, typically specified in degrees. Data providers
   may specify alternative units by including the unit in the QuantityValue.
-from_schema: https://w3id.org/lambda-ber-schema/
+from_schema: http://w3id.org/lambda/
+aliases:
+- oscillation_width
+- oscillation_per_image_deg
 exact_mappings:
 - nsls2:Angle_increment
 - imgCIF:_diffrn_scan_axis.angle_increment
