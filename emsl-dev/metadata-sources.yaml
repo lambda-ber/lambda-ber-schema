@@ -1,0 +1,514 @@
+# EMSL CryoEM Metadata Sources: Acquisition, Instrument, and Sample
+#
+# For an end-to-end pipeline the public Science Central API is only
+# the entry point. This document catalogues every known or potential
+# data source for the three categories of metadata the API does not expose,
+# with assessment of feasibility for each.
+#
+# Data flow at EMSL (from activity2-presentations-summary.md):
+#   Sample → Vitrification → Krios → KriosGPU → TAHOMA → Science Central
+#                                                       → AURORA (archive)
+#                                                       → BER Lakehouse
+#
+# Prepared: 2026-04-03
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. ACQUISITION / SESSION METADATA
+#    Fields: magnification, calibrated_pixel_size, total_dose, dose_rate,
+#            exposure_time_per_frame, frames_per_movie, defocus_range,
+#            shots_per_hole, holes_per_group, camera_binning, astigmatism_target,
+#            coma, stage_tilt, start_time, end_time, acquisition_software_version
+# ─────────────────────────────────────────────────────────────────────────────
+acquisition_metadata_sources:
+
+  # ── AUTHENTICATION NOTE ──────────────────────────────────────────────────
+  # All four endpoints currently used by the loader work WITHOUT authentication:
+  #   POST /datasets/by_sample_name   → public
+  #   GET  /projects/{id}             → public
+  #   GET  /resources/{id}            → public
+  #   GET  /datasets/transaction_info/{tx_id} → public
+  #
+  # Downloading actual data files requires a JWT bearer token. The token is
+  # obtained via the EMSL client (not yet automated). This blocks Phase 2
+  # (tar extraction) until a token strategy is decided:
+  #
+  #   Option A — Manual injection: user generates token via EMSL client,
+  #              passes it as env var (EMSL_JWT) or config entry. Loader reads
+  #              it and adds "Authorization: Bearer {token}" header only for
+  #              download-cart calls. Token has a finite lifetime.
+  #
+  #   Option B — Config-file token: token stored in ~/.emsl_token or a local
+  #              config file (not committed). Loader reads on demand.
+  #
+  #   Option C — Token refresh automation (deferred): automate client credential
+  #              flow when the team is ready to productionize.
+  #
+  # Implication: Phase 1 items (reference-data merge, CryoEMInstrument upgrade,
+  # resources/grouping call) are completely unblocked — no JWT needed.
+  # Phase 2 (EPU XML extraction) is blocked until one of the above options is
+  # chosen. Phase 2 can still be designed and tested with a manually provided token.
+  # ─────────────────────────────────────────────────────────────────────────
+
+  - source: EPU Session XML Files
+    location_in_pipeline: "Inside .tar archives on Science Central (path: .../epu_session/*.xml)"
+    format: "XML (EPU session format)"
+    auth_required: true
+    auth_note: "JWT bearer token required for GET /datasets/request/{tx_id} and file download"
+    access_method: >
+      Download .tar archives via Science Central download-cart API
+      (GET /datasets/request/{tx_id} → retrieval_url, requires JWT),
+      extract specific XML files without downloading entire dataset.
+    available_fields:
+      - magnification
+      - calibrated_pixel_size (Å/pixel)
+      - camera_binning
+      - exposure_time_per_frame (ms)
+      - frames_per_movie
+      - total_dose (e-/Å²)
+      - dose_rate (e-/pixel/s)
+      - defocus_target, defocus_range_min, defocus_range_max
+      - astigmatism_target
+      - shots_per_hole
+      - holes_per_group
+      - stage_tilt
+      - acquisition_software_version
+      - session.date (true collection start, not upload time)
+    feasibility: high
+    notes: >
+      EPU writes a session-level .dm or .xml file that contains all acquisition
+      parameters set by the operator before collection starts. These are inside
+      the tar archives but are small metadata files. A targeted extraction
+      (list tar → find *Session*.xml → extract just that file) avoids downloading
+      100s of GB per transaction. The EMSL draft schema (sources/emsl-cryoem-krios.md)
+      confirms these fields are "already part of EMSL's automated metadata capture
+      in YAML format" (green-highlighted fields). EPU also writes per-hole .xml
+      files with per-image defocus and beam shift — more granular than session-level.
+    implementation_sketch: >
+      1. Call GET /datasets/request/{tx_id} to create download cart.
+      2. Use Globus or direct HTTP to fetch only the EPU session .xml or _session.yaml.
+      3. Parse XML/YAML → populate ExperimentRun acquisition fields.
+      4. Optionally parse per-hole XMLs for Image2D/Movie-level metadata.
+    contacts: "August George, James Evans (PNNL) — have confirmed automated YAML capture"
+
+  - source: EPU Session Summary YAML
+    location_in_pipeline: "KriosGPU → TAHOMA; separate from raw .tar"
+    format: YAML
+    access_method: >
+      EMSL generates a session summary YAML at the end of each EPU collection.
+      According to the activity2 slides, this is part of the 'data archival metadata'
+      category. It is unclear if this YAML is included in the Science Central
+      transaction or archived separately in AURORA. Requires verification with
+      James Evans / August George at PNNL.
+    available_fields:
+      - All session-level acquisition parameters (same as EPU XML)
+      - Possibly summary statistics (total movies collected, estimated dose)
+    feasibility: medium
+    notes: >
+      If this YAML file is present inside the .tar or as a separate transaction
+      file, it may be easier to parse than raw EPU XML. Needs confirmation that
+      it is part of the Science Central transaction payload.
+
+  - source: SerialEM .mdoc Files
+    location_in_pipeline: "Inside .tar archives (path: .../serialem/*.mdoc)"
+    format: "MDOC (plain text key=value)"
+    access_method: "Same Globus/cart download approach as EPU XML"
+    available_fields:
+      - magnification
+      - pixel_size
+      - exposure_time
+      - total_dose
+      - defocus
+      - stage_tilt (critical for tomography)
+      - tilt_series metadata
+      - timestamp per image
+    feasibility: high
+    notes: >
+      When acquisition_software is SerialEM (inferred from 'serialem' subdir in
+      path), .mdoc files are the metadata source. Well-documented format. Libraries
+      exist in Python (e.g., mdocfile, seriaEM-mdoc-parser).
+    scope: "Relevant for tomography (#3 priority) and some SPA sessions"
+
+  - source: Leginon Database / .xml
+    location_in_pipeline: "Inside .tar archives (path: .../leginon/)"
+    format: XML / SQLite
+    access_method: "Tar extraction"
+    available_fields:
+      - acquisition parameters
+      - session metadata
+    feasibility: low
+    notes: >
+      Leginon is used at some facilities but not confirmed at PNCC. Lower priority
+      than EPU/SerialEM for EMSL cryo-EM.
+
+  - source: EMSL AURORA Archive (internal)
+    location_in_pipeline: "AURORA raw & processed data archive (internal PNNL system)"
+    format: Unknown (likely HDF5 or YAML)
+    access_method: "Not publicly accessible; requires PNNL internal access or collaboration"
+    available_fields:
+      - All of the above plus processed data outputs
+    feasibility: low (requires internal partnership)
+    notes: >
+      AURORA is EMSL's internal archival system downstream of Science Central.
+      Not exposed via the public API. Would require a direct integration agreement
+      with PNNL. Long-term option for richer metadata access.
+
+  - source: KriosGPU Server (local processing)
+    location_in_pipeline: "On-microscope GPU server; runs pre-processing (patch motion, CTF)"
+    format: "STAR files, log files"
+    access_method: "Not publicly accessible"
+    available_fields:
+      - Per-micrograph CTF estimates (defocus_u, defocus_v, astigmatism)
+      - Motion correction statistics (drift_total)
+    feasibility: low
+    notes: >
+      KriosGPU output may eventually flow into Science Central or AURORA but is
+      not currently accessible via the public API.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. INSTRUMENT METADATA
+#    Fields: accelerating_voltage, cs, detector_model, detector_manufacturer,
+#            detector_mode, detector_technology, energy_filter_present,
+#            energy_filter_model, energy_filter_slit_width, phase_plate,
+#            autoloader_capacity, pixel_size_physical, microscope_software,
+#            imaging_mode, c2_aperture, cs_corrector
+# ─────────────────────────────────────────────────────────────────────────────
+instrument_metadata_sources:
+
+  - source: reference-data/facilities/emsl.yaml (in-repo)
+    location_in_pipeline: "Static file in lambda-ber-schema repository"
+    format: YAML (lambda-ber schema format)
+    access_method: "Load at ETL time; look up by resource_id or resource name"
+    available_fields:
+      - accelerating_voltage (300 kV for Krios)
+      - detector_technology (direct_electron_detector)
+      - detector_manufacturer (Gatan)
+      - detector_model (K3 BioQuantum)
+      - detector_mode (counting)
+      - energy_filter_present (true)
+      - energy_filter_make (Gatan)
+      - energy_filter_model (BioQuantum)
+      - autoloader_capacity (12)
+      - phase_plate (true)
+      - cs_corrector (false)
+      - manufacturer, model, installation_date, current_status
+    feasibility: high (immediately available)
+    notes: >
+      This file already exists and has correct data for the Krios G3i and Aquilos 2.
+      The loader currently IGNORES it entirely. Reconciliation logic is needed to
+      match Science Central resource_id (e.g., 34290) to the static record
+      (lambdaber:instrument_emsl_krios_g3i) by name pattern matching (e.g.,
+      'Krios' in resource.name → use Krios reference record for spec fields).
+      The loader should:
+        1. Create a CryoEMInstrument (not base Instrument)
+        2. Look up the matching reference record by name/type
+        3. Merge spec fields from reference record with dynamic fields from API
+           (id, title, display_name, location, active, available_hours)
+    current_status: >
+      KNOWN BUG: resource.active=false for all observed live instruments.
+      The reference data has current_status=operational. The static record
+      should override the API's active flag for status.
+
+  - source: Science Central /resources/all or /resources/active
+    location_in_pipeline: "GET /resources/all  (not currently called)"
+    format: JSON (Resources schema)
+    access_method: "Simple GET, no auth required"
+    available_fields:
+      - id, name, display_name, location, active, available_hours, url
+      - (same as /resources/{id} but full list in one call)
+    feasibility: high
+    notes: >
+      Calling /resources/all once at startup and caching the result would let the
+      loader resolve all instrument names and IDs without per-transaction calls.
+      More importantly, /resources/grouping returns a group field that could
+      classify instruments (e.g., PNCC Krios group) without name-regex heuristics.
+
+  - source: Science Central /resources/grouping
+    location_in_pipeline: "GET /resources/grouping  (not currently called)"
+    format: JSON
+    access_method: "Simple GET, no auth required"
+    available_fields:
+      - resource_id, resource_uuid, resource_name, group
+    feasibility: high
+    notes: >
+      The group field would let us map resource IDs to instrument families
+      (e.g., 'PNCC Krios' group → CryoEMInstrument with 300kV) without
+      fragile regex over resource names. Should replace or supplement the
+      current _infer_instrument_category regex.
+
+  - source: EMSL Website / BER Structural Biology Portal
+    location_in_pipeline: "Static web pages; scraped or curated manually"
+    access_method: "Manual curation → update reference-data/facilities/emsl.yaml"
+    available_fields:
+      - Full instrument specifications for all EMSL cryo-EM instruments
+      - Instrument upgrades (e.g., new detector model after K3)
+    feasibility: high (manual curation)
+    notes: >
+      The BER Structural Biology portal (berstructuralbioportal.org) lists EMSL
+      instrument specs. Reference data should be updated when instruments are
+      upgraded or new instruments added (e.g., Arctica, Aquilos, potential new
+      instruments). This is the ground-truth source for static specs.
+    url: "https://www.berstructuralbioportal.org/cryogenic-transmission-electron-microscopy-at-emsl/"
+
+  - source: EMDB / EMPIAR instrument records (for deposited datasets only)
+    location_in_pipeline: "External repository; available after publication"
+    format: "mmCIF / XML"
+    access_method: "EMDB REST API or EMPIAR file download"
+    available_fields:
+      - All mmCIF _em_imaging fields (voltage, Cs, magnification, mode)
+      - Detector specs
+    feasibility: medium (only for deposited/published datasets)
+    notes: >
+      For transactions that have been deposited to EMDB/PDB, the mmCIF file
+      contains complete instrument specs. This is a retroactive enrichment
+      path — useful for populating historical records but not real-time ingestion.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. USER-PROVIDED / SAMPLE METADATA
+#    Fields (biological): organism, molecular_weight, concentration,
+#            buffer_composition, protein_name, construct, expression_system,
+#            mutations, oligomeric_state, ligand
+#    Fields (grid prep): grid.support, grid.material, glow_discharge params,
+#            vitrification.method, blot_time, blot_force, humidity, temperature
+# ─────────────────────────────────────────────────────────────────────────────
+sample_metadata_sources:
+
+  - source: EMSL User Proposal / Project Application
+    location_in_pipeline: "Submitted before experiment; stored in EMSL project management system"
+    format: "Structured form (web portal) or PDF"
+    access_method: >
+      Not in public API. Accessible only via:
+        a) EMSL staff export (requires collaboration with James Evans / user contact)
+        b) A future Science Central API extension (would require PNNL dev work)
+    available_fields:
+      - Sample name, organism, protein description
+      - Experimental objectives
+      - PI/team information (overlaps with project_members[] already in API)
+    feasibility: low (not in public API)
+    notes: >
+      The most complete source of biological context, but locked in the internal
+      user proposal system. Not feasible for automated pipeline without PNNL
+      internal access.
+
+  - source: Science Central Project Metadata (partial)
+    location_in_pipeline: "GET /projects/{id} — already called by loader"
+    format: JSON
+    access_method: "Already called; captures title, abstract, members"
+    available_fields:
+      - project.title (encodes protein/research context in free text)
+      - project.abstract (biological description)
+      - project_members[].orcid (PI identity)
+    feasibility: high (already available)
+    notes: >
+      The project abstract often describes the biological system (organism, protein
+      family, disease context) in prose. NLP extraction could supplement structured
+      fields. This is currently underused — description is captured but not parsed.
+
+  - source: Session Summary YAML / Notes File
+    location_in_pipeline: >
+      Inside transaction .tar, typically a notes.txt or session_summary.yaml file.
+      Observed: notes.txt alongside .data.*.tar files in epu_session/ directory.
+    format: "Plain text or YAML"
+    access_method: "Tar extraction (same approach as EPU XML)"
+    available_fields:
+      - Free-text operator notes (variable)
+      - Sometimes: protein name, buffer, concentration, grid type
+      - EPU session YAML may contain: sample description, preparation notes
+    feasibility: medium
+    notes: >
+      Quality and completeness depends entirely on operator discipline. Some
+      sessions have rich notes, others have none. The notes.txt observed in
+      transaction 3736677 is an example — content unknown without downloading.
+      This is the "yellow highlighted" category in the EMSL draft schema
+      (manually captured, available in session files).
+
+  - source: EMSL-Provided Metadata Template (proposed)
+    location_in_pipeline: "User fills out before/after session; submitted to Science Central"
+    format: "YAML or structured form"
+    access_method: "Could be a separate Science Central endpoint or uploaded as a metadata file"
+    available_fields:
+      - All biological sample fields (organism, MW, buffer, concentration, construct)
+      - Grid preparation fields (grid type, vitrification params)
+    feasibility: medium-high (requires PNNL process change)
+    notes: >
+      The EMSL draft schema document (sources/emsl-cryoem-krios.md) was written
+      specifically to define what should be captured. James Evans and Trevor Moser
+      at PNNL are the contacts for implementing a structured metadata submission
+      workflow. This is the most complete long-term solution:
+        1. EMSL creates a structured submission form or YAML template
+        2. User fills it out per session
+        3. Template is uploaded as a metadata file alongside the .tar
+        4. Our loader parses it directly
+      This aligns with the EMPIAR/EMDB deposition requirements EMSL already tracks.
+
+  - source: EMPIAR / EMDB (post-deposition)
+    location_in_pipeline: "External repository; available after publication"
+    format: "JSON (EMPIAR API), mmCIF (EMDB)"
+    access_method: "Public REST APIs"
+    available_fields:
+      - Organism, taxid
+      - Sample description, MW
+      - Buffer composition (sometimes)
+      - Grid type, vitrification method
+      - All mmCIF biological assembly info
+    feasibility: medium (published datasets only)
+    notes: >
+      EMPIAR records contain sample and acquisition metadata for deposited raw data.
+      EMDB entries have full biological and instrument metadata. For datasets that
+      have been deposited, these are authoritative and complete. Cross-linking a
+      Science Central transaction to its EMPIAR/EMDB entry (via EMDB ID in notes
+      or project abstract) would close the majority of schema gaps retroactively.
+      The PDBLoader already demonstrates this pattern.
+
+  - source: UniProt / PDB (for protein target enrichment)
+    location_in_pipeline: "External knowledge base; cross-referenced by protein name or ID"
+    format: "JSON (UniProt REST API)"
+    access_method: "Public REST API"
+    available_fields:
+      - organism, taxid, molecular_weight
+      - sequence, sequence_length
+      - protein family, function, disease associations
+      - Structural features, PTMs
+    feasibility: medium
+    notes: >
+      The project abstract and sample_value often encode the protein name
+      (e.g., 'PARP enzymes', 'Yo1'). NLP parsing → UniProt text search → ID
+      resolution could populate Sample.organism, Sample.molecular_weight,
+      Sample.protein_name, and even functional annotation fields.
+      This is the approach used by PDBLoader (which fetches from RCSB by PDB ID).
+
+  - source: Operator-Provided YAML Sidecar (future)
+    location_in_pipeline: "Uploaded alongside data collection session"
+    format: "YAML following lambda-ber-schema Sample / SamplePreparation classes"
+    access_method: >
+      Operator uploads a small YAML conforming to the schema before/after session.
+      Science Central stores it as a regular transaction file (alongside .tar).
+      Our loader detects and parses it.
+    available_fields: "All Sample and SamplePreparation fields"
+    feasibility: medium (requires operator adoption)
+    notes: >
+      Lightest-weight approach: no new Science Central features needed. Operator
+      uploads a YAML that uses our schema directly. The loader looks for a file
+      matching '*metadata*.yaml' or 'lambda-ber-*.yaml' in the transaction files
+      and parses it if present. This is how the existing data.yaml in the repo root works.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RECOMMENDED IMPLEMENTATION PHASES
+# ─────────────────────────────────────────────────────────────────────────────
+implementation_roadmap:
+
+  phase_1_immediate:
+    description: "No new API calls, no external dependencies — use what we already have"
+    items:
+      - action: "Upgrade loader to create CryoEMInstrument instead of base Instrument"
+        benefit: "Enables all CryoEMInstrument spec fields to be populated"
+        source: reference-data/facilities/emsl.yaml
+        effort: low
+
+      - action: "Merge reference-data/facilities/emsl.yaml into loader by name matching"
+        benefit: "Populates accelerating_voltage, detector_model, energy_filter, Cs, etc."
+        source: reference-data/facilities/emsl.yaml
+        effort: low
+        notes: "Match 'Krios' in resource.name → emsl_krios_g3i reference record"
+
+      - action: "Fix current_status: override active=false with reference record status"
+        benefit: "Instruments show as operational instead of offline"
+        source: reference-data/facilities/emsl.yaml
+        effort: trivial
+
+      - action: "Add /resources/grouping call for instrument classification"
+        benefit: "Replaces fragile regex inference for instrument_category"
+        source: Science Central API
+        effort: low
+
+      - action: "Populate ExperimentRun.daq_system from file path inference"
+        benefit: "epu_session → EPU DAQ; already inferrable"
+        source: transaction file paths
+        effort: trivial
+
+  phase_2_tar_extraction:
+    description: "Extract EPU XML / session YAML from inside .tar without full download"
+    blocked_by: "JWT authentication — requires EMSL bearer token for download-cart API"
+    unblock_options:
+      - "Option A: EMSL_JWT env var, user generates token via EMSL client before running loader"
+      - "Option B: Token stored in local config file (e.g., ~/.emsl_token), read on demand"
+      - "Option C: Automate token refresh (deferred — not yet needed)"
+    items:
+      - action: "Add optional JWT support to EMSLLoader: read EMSL_JWT env var, attach as Authorization header only for download-cart calls"
+        benefit: "Enables Phase 2 when token is provided; silently skips tar extraction when not"
+        effort: trivial
+        notes: "No impact on existing public-API calls — auth header only added for /datasets/request/ and file download URLs"
+
+      - action: "Implement targeted .tar file extraction via Globus or HTTP range request"
+        benefit: "Unlocks: magnification, pixel_size, dose, defocus_range, binning, shots_per_hole"
+        source: "EPU XML / session YAML inside .tar"
+        effort: medium
+        notes: >
+          Key technique: use 'tar -t' (list) to find metadata files, then extract
+          only those. EPU puts EpuSession.dm / GridSquare.dm / FoilHole.xml
+          at the start of the archive. HTTP range requests against the Globus
+          retrieval_url might allow partial extraction without full download.
+          Needs testing with actual EMSL .tar files.
+
+      - action: "Parse EPU session XML into ExperimentRun fields"
+        benefit: "Fully populates ExperimentRun acquisition metadata"
+        source: "EPU XML"
+        effort: medium
+        notes: "Python libraries: lxml, xml.etree. Well-documented EPU XML format."
+
+      - action: "Parse notes.txt / session_summary YAML"
+        benefit: "Captures operator-entered sample context"
+        source: "Session notes file"
+        effort: low (once tar extraction is in place)
+
+  phase_3_schema_additions:
+    description: "Schema changes to capture data that has no home yet"
+    items:
+      - action: "Add Study.contributors (orcid, role, institution)"
+        benefit: "Captures PI ORCID and institution from project_members[]"
+        effort: medium (schema + loader change)
+
+      - action: "Add Study.award_doi, Study.start_date, Study.end_date"
+        benefit: "Captures project funding and temporal metadata"
+        effort: low (schema + loader change)
+
+      - action: "Add Dataset.is_released"
+        benefit: "Tracks embargo/public release status"
+        effort: low (schema + loader change)
+        requires_new_api_call: "GET /projects/data/{project_id}"
+
+      - action: "Promote Instrument.website to base Instrument class"
+        benefit: "Captures resource.url from API"
+        effort: trivial (schema change only)
+
+  phase_4_user_metadata:
+    description: "Structured sample and grid prep metadata — requires PNNL collaboration"
+    items:
+      - action: "Define lambda-ber YAML metadata template for sample/grid prep"
+        benefit: "Operators can submit structured metadata alongside data"
+        effort: medium (template design + documentation)
+        contacts: "James Evans, Trevor Moser (PNNL)"
+
+      - action: "Add NLP extraction of organism/protein from project.abstract"
+        benefit: "Partially populates Sample.organism, protein_name from free text"
+        effort: high
+        notes: "Use UniProt text API or simple regex for known protein families"
+
+      - action: "Add EMPIAR cross-link enrichment for deposited datasets"
+        benefit: "Retroactively fills all biological metadata from EMPIAR records"
+        effort: medium
+        notes: "Detect EMPIAR ID in project abstract (regex for 'EMPIAR-XXXXX')"
+
+  phase_5_internal_access:
+    description: "Requires PNNL internal system access — partnership decision"
+    items:
+      - action: "Direct AURORA archive access or Science Central internal API"
+        benefit: "Full metadata without tar extraction"
+        effort: high
+        contacts: "James Evans, August George (PNNL)"
+
+      - action: "Science Central metadata submission form integration"
+        benefit: "Structured biological/grid-prep metadata at submission time"
+        effort: high (requires PNNL platform development)

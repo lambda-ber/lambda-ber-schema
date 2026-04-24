@@ -6,10 +6,15 @@ API Documentation:
   - https://api.emsl.pnnl.gov/external/swagger.json
 """
 
+import io
 import json
+import os
 import re
+import tarfile
+import time
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Generator
 
 import requests
 
@@ -56,15 +61,31 @@ class EMSLLoader(BaseLoader):
     source_name = "emsl"
     base_url = "https://api.emsl.pnnl.gov/external"
 
+    # Metadata file patterns to extract from EPU tar archives.
+    # Ordered by preference: session-level XML first, then notes.
+    _EPU_METADATA_PATTERNS = (
+        re.compile(r"EpuSession\.dm$", re.IGNORECASE),
+        re.compile(r".*[Ss]ession.*\.dm$"),
+        re.compile(r".*[Ss]ession.*\.xml$"),
+        re.compile(r"notes?\.txt$", re.IGNORECASE),
+        re.compile(r".*[Ss]ession.*[Ss]ummary.*\.yaml$", re.IGNORECASE),
+    )
+
     def __init__(
         self,
         cache: ResponseCache | None = None,
         default_key_filter: str | None = "pncc",
         max_files: int = 200,
+        jwt_token: str | None = None,
+        epu_timeout: float = 1800.0,
     ):
         self.cache = cache or ResponseCache(enabled=False)
         self.default_key_filter = default_key_filter
         self.max_files = max_files
+        # JWT bearer token for authenticated endpoints (download cart, file download).
+        # Falls back to the EMSL_JWT environment variable when not provided explicitly.
+        self._jwt_token: str | None = jwt_token or os.environ.get("EMSL_JWT")
+        self._epu_timeout: float = epu_timeout
 
     def load(self, identifier: str) -> LoaderResult:
         """
@@ -238,6 +259,284 @@ class EMSLLoader(BaseLoader):
 
         return entries
 
+    # ── EPU XML Parsing ───────────────────────────────────────────────────────
+
+    @staticmethod
+    def _text(root: ET.Element, *xpaths: str) -> str | None:
+        """Return stripped text of the first matching XPath, or None."""
+        for xpath in xpaths:
+            el = root.find(xpath)
+            if el is not None and el.text:
+                return el.text.strip()
+        return None
+
+    @staticmethod
+    def _float(root: ET.Element, *xpaths: str) -> float | None:
+        """Return float value of the first matching XPath, or None."""
+        for xpath in xpaths:
+            el = root.find(xpath)
+            if el is not None and el.text:
+                try:
+                    return float(el.text.strip())
+                except ValueError:
+                    pass
+        return None
+
+    def _parse_epu_session_xml(self, content: bytes) -> dict[str, Any]:
+        """
+        Parse an EPU session file (EpuSession.dm or Session*.xml) and return
+        a dict of acquisition parameters keyed by ExperimentRun field names.
+
+        EPU XML schema varies across versions; this parser tries multiple known
+        XPaths per field and falls back gracefully. All returned values are raw
+        Python types (float, str, int) — QuantityValue wrapping is done by
+        the caller.
+
+        Returns an empty dict if the file cannot be parsed as valid XML.
+        """
+        try:
+            root = ET.fromstring(content)
+        except ET.ParseError:
+            return {}
+
+        # Strip all namespace prefixes for XPath simplicity.
+        for el in root.iter():
+            if "}" in el.tag:
+                el.tag = el.tag.split("}", 1)[1]
+
+        result: dict[str, Any] = {}
+
+        # Software version — several possible locations across EPU versions.
+        version = self._text(
+            root,
+            ".//Version",
+            ".//SoftwareVersion",
+            ".//ApplicationVersion",
+            ".//version",
+        )
+        if version:
+            result["acquisition_software_version"] = version
+
+        # Magnification
+        mag = self._float(
+            root,
+            ".//Magnification",
+            ".//NominalMagnification",
+            ".//magnification",
+            ".//Optics/Magnification",
+        )
+        if mag:
+            result["magnification"] = {"numeric_value": mag, "unit": "x"}
+
+        # Calibrated pixel size — EPU stores in meters, convert to Å.
+        for xpath in (".//PixelSize", ".//pixelSize", ".//CalibratedPixelSize"):
+            el = root.find(xpath)
+            if el is not None and el.text:
+                try:
+                    px_m = float(el.text.strip())
+                    # Values > 1e-6 are already in µm or Å (old EPU); < 1e-6 are meters.
+                    if px_m < 1e-6:
+                        px_angstrom = px_m * 1e10
+                    elif px_m < 1e-3:
+                        px_angstrom = px_m * 1e4  # µm → Å
+                    else:
+                        px_angstrom = px_m  # already Å-range
+                    result["calibrated_pixel_size"] = {
+                        "numeric_value": round(px_angstrom, 4),
+                        "unit": "Å/pixel",
+                    }
+                    break
+                except ValueError:
+                    pass
+
+        # Camera binning
+        binning = self._float(
+            root,
+            ".//Binning",
+            ".//CameraBinning",
+            ".//binning",
+            ".//CameraPreset/Binning",
+        )
+        if binning is not None:
+            result["camera_binning"] = {"numeric_value": binning, "unit": ""}
+
+        # Exposure time per frame — may be in seconds, convert to ms.
+        for xpath in (
+            ".//ExposureTime",
+            ".//FrameExposureTime",
+            ".//exposureTime",
+            ".//CameraPreset/ExposureTime",
+        ):
+            el = root.find(xpath)
+            if el is not None and el.text:
+                try:
+                    t = float(el.text.strip())
+                    # Values < 10 are likely seconds; > 10 are likely ms.
+                    t_ms = t * 1000 if t < 10 else t
+                    result["exposure_time_per_frame"] = {
+                        "numeric_value": round(t_ms, 3),
+                        "unit": "ms",
+                    }
+                    break
+                except ValueError:
+                    pass
+
+        # Frames per movie
+        frames = self._float(
+            root,
+            ".//NumberOffractions",
+            ".//FramesPerExposure",
+            ".//FrameMultiplier",
+            ".//framesPerExposure",
+            ".//Acquisition/FramesPerShot",
+            ".//CameraPreset/NumberOffractions",
+        )
+        if frames is not None:
+            result["frames_per_movie"] = {"numeric_value": int(frames), "unit": ""}
+
+        # Total dose (e-/Å²)
+        dose = self._float(
+            root,
+            ".//TotalExposureDose",
+            ".//TotalDose",
+            ".//DosePerFrame",
+            ".//totalDose",
+        )
+        if dose:
+            # If dose looks like per-frame dose (< 5), multiply by frames to get total.
+            if dose < 5 and "frames_per_movie" in result:
+                dose_total = dose * result["frames_per_movie"]["numeric_value"]
+                result["total_dose"] = {"numeric_value": round(dose_total, 2), "unit": "e-/Å²"}
+                result["dose_per_frame"] = {"numeric_value": round(dose, 4), "unit": "e-/Å²/frame"}
+            else:
+                result["total_dose"] = {"numeric_value": round(dose, 2), "unit": "e-/Å²"}
+
+        # Dose rate
+        dose_rate = self._float(root, ".//DoseRate", ".//doseRate")
+        if dose_rate:
+            result["dose_rate"] = {"numeric_value": dose_rate, "unit": "e-/pixel/s"}
+
+        # Defocus target / range
+        defocus_target = self._float(
+            root,
+            ".//TargetDefocus",
+            ".//DefocusTarget",
+            ".//defocusTarget",
+            ".//Presets/AutoFocus/Defocus",
+        )
+        if defocus_target is not None:
+            # EPU stores in meters; convert to µm.
+            if abs(defocus_target) < 0.1:
+                defocus_target = defocus_target * 1e6
+            result["defocus_target"] = {
+                "numeric_value": round(defocus_target, 3),
+                "unit": "µm",
+            }
+
+        defocus_min = self._float(root, ".//MinDefocus", ".//DefocusMin", ".//minDefocus")
+        defocus_max = self._float(root, ".//MaxDefocus", ".//DefocusMax", ".//maxDefocus")
+        if defocus_min is not None:
+            if abs(defocus_min) < 0.1:
+                defocus_min = defocus_min * 1e6
+            result["defocus_range_min"] = {"numeric_value": round(defocus_min, 3), "unit": "µm"}
+        if defocus_max is not None:
+            if abs(defocus_max) < 0.1:
+                defocus_max = defocus_max * 1e6
+            result["defocus_range_max"] = {"numeric_value": round(defocus_max, 3), "unit": "µm"}
+
+        # Shots per hole
+        shots = self._float(
+            root,
+            ".//ShotsPerHole",
+            ".//shotsPerHole",
+            ".//NumberOfShotsPerHole",
+            ".//Acquisition/ShotsPerHole",
+        )
+        if shots is not None:
+            result["shots_per_hole"] = {"numeric_value": int(shots), "unit": ""}
+
+        # Holes per group
+        holes = self._float(
+            root,
+            ".//HolesPerGroup",
+            ".//holesPerGroup",
+            ".//NumberOfHoles",
+        )
+        if holes is not None:
+            result["holes_per_group"] = {"numeric_value": int(holes), "unit": ""}
+
+        # Stage tilt
+        tilt = self._float(root, ".//StageTilt", ".//stageTilt", ".//TiltAngle")
+        if tilt is not None:
+            result["stage_tilt"] = {"numeric_value": round(tilt, 2), "unit": "degrees"}
+
+        return result
+
+    # ── Public Enhanced Load ──────────────────────────────────────────────────
+
+    def extract_session_metadata(self, transaction_id: int | str) -> dict[str, Any] | None:
+        """
+        Fetch and parse EPU session metadata from a transaction's tar archive.
+
+        Requires a JWT token (EMSL_JWT env var or jwt_token= constructor arg).
+        Returns a dict of acquisition parameter fields keyed by ExperimentRun
+        field names, or None when the token is absent or no metadata file is found.
+
+        Emits a warning to stderr when JWT is not configured so callers can
+        treat the absence gracefully.
+
+        Example::
+
+            loader = EMSLLoader()  # reads EMSL_JWT from environment
+            params = loader.extract_session_metadata(3736677)
+            if params:
+                print(params["magnification"])
+        """
+        if not self._jwt_token:
+            import sys
+            print(
+                "Warning: EMSL_JWT not set — skipping EPU session metadata extraction. "
+                "Set the EMSL_JWT environment variable to enable.",
+                file=sys.stderr,
+            )
+            return None
+
+        tx_id = str(transaction_id)
+        try:
+            retrieval_url = self._get_retrieval_url(tx_id)
+        except (requests.HTTPError, RuntimeError, TimeoutError) as exc:
+            import sys
+            print(f"Warning: could not create download cart for tx {tx_id}: {exc}", file=sys.stderr)
+            return None
+
+        found: dict[str, Any] = {}
+        notes_content: str | None = None
+
+        for name, content in self._stream_tar_members(retrieval_url):
+            lower = name.lower()
+            if lower.endswith((".dm", ".xml")):
+                parsed = self._parse_epu_session_xml(content)
+                if parsed:
+                    found.update(parsed)
+                    found["_source_file"] = name
+                    break  # session XML found, stop streaming
+            elif lower.endswith((".yaml", ".yml")):
+                # Try YAML session summary — parse as key/value dict.
+                try:
+                    import yaml  # type: ignore[import]
+                    data = yaml.safe_load(content.decode("utf-8", errors="replace"))
+                    if isinstance(data, dict):
+                        found.update({"_yaml_source": name, "_yaml_raw": data})
+                except Exception:
+                    pass
+            elif "notes" in lower:
+                notes_content = content.decode("utf-8", errors="replace").strip()
+
+        if notes_content:
+            found["_notes"] = notes_content
+
+        return found if found else None
+
     def _sort_transactions(self, transactions: list[dict[str, Any]]) -> list[dict[str, Any]]:
         """Sort transactions by most recent creation time, then by transaction ID."""
 
@@ -271,6 +570,200 @@ class EMSLLoader(BaseLoader):
             ),
             reverse=True,
         )
+
+    # ── Authentication ────────────────────────────────────────────────────────
+
+    def _get_auth_headers(self) -> dict[str, str]:
+        """Return Authorization header dict if a JWT token is available."""
+        if self._jwt_token:
+            return {"Authorization": f"Bearer {self._jwt_token}"}
+        return {}
+
+    # ── Download Cart ─────────────────────────────────────────────────────────
+
+    def _create_download_cart(self, transaction_id: int | str) -> dict[str, Any]:
+        """
+        Create a download cart for a transaction.
+
+        Calls GET /datasets/request/{transaction_id} with JWT auth and returns
+        the Cart Info response containing download_uuid and retrieval_url.
+
+        Raises:
+            RuntimeError: If no JWT token is configured.
+            requests.HTTPError: On non-2xx response.
+        """
+        if not self._jwt_token:
+            raise RuntimeError(
+                "Downloading data from EMSL requires a JWT bearer token. "
+                "Set the EMSL_JWT environment variable or pass jwt_token= to EMSLLoader."
+            )
+        tx_id = str(transaction_id)
+        response = requests.get(
+            f"{self.base_url}/datasets/request/{tx_id}",
+            headers=self._get_auth_headers(),
+            timeout=30,
+        )
+        response.raise_for_status()
+        return self._parse_json_response(response, "download cart creation")
+
+    def _poll_download_cart(
+        self,
+        download_uuid: str,
+        poll_interval: float = 5.0,
+        timeout: float = 300.0,
+    ) -> dict[str, Any]:
+        """
+        Poll GET /datasets/download/{download_uuid} until the cart is ready.
+
+        Returns the final Cart Info dict (with retrieval_url populated).
+
+        Raises:
+            TimeoutError: If cart preparation exceeds timeout seconds.
+            requests.HTTPError: On non-2xx response.
+        """
+        import sys
+        deadline = time.monotonic() + timeout
+        while True:
+            response = requests.get(
+                f"{self.base_url}/datasets/download/{download_uuid}",
+                headers=self._get_auth_headers(),
+                timeout=30,
+            )
+            response.raise_for_status()
+            cart = self._parse_json_response(response, "download cart poll")
+            status = str(cart.get("status") or "").lower()
+            display = cart.get("display_status") or status
+            print(f"  cart {download_uuid}: {display} (status={status!r})", file=sys.stderr)
+            # Consider the cart ready when:
+            #   - status matches a known "done" keyword, OR
+            #   - success=True and retrieval_url is present (covers "File Retrieval" etc.)
+            retrieval_url = cart.get("retrieval_url")
+            if status in ("ready", "complete", "completed"):
+                return cart
+            if cart.get("success") is True and retrieval_url:
+                return cart
+            if status in ("error", "failed", "cancelled"):
+                raise RuntimeError(
+                    f"EMSL download cart {download_uuid} entered error state: {status}. "
+                    f"message={cart.get('message')}"
+                )
+            if time.monotonic() > deadline:
+                raise TimeoutError(
+                    f"EMSL download cart {download_uuid} not ready after {timeout}s "
+                    f"(last status: {status!r})"
+                )
+            time.sleep(poll_interval)
+
+    def _resolve_url(self, url: str) -> str:
+        """Resolve a potentially relative API URL to an absolute HTTPS URL."""
+        if url.startswith("http://") or url.startswith("https://"):
+            return url
+        # Relative paths like /external/datasets/download/... — prepend the host.
+        host = "https://api.emsl.pnnl.gov"
+        return host + url if url.startswith("/") else f"{host}/{url}"
+
+    def _extract_cart_uuid(self, cart: dict[str, Any]) -> str | None:
+        """Extract the cart UUID from a cart response, handling field name variants."""
+        return (
+            cart.get("download_uuid")
+            or cart.get("cart_uuid")
+            or cart.get("uuid")
+        )
+
+    def _get_retrieval_url(self, transaction_id: int | str) -> str:
+        """
+        Create a download cart and wait for it to be ready, returning the retrieval URL.
+        """
+        cart = self._create_download_cart(transaction_id)
+        cart_uuid = self._extract_cart_uuid(cart)
+        retrieval_url: str | None = cart.get("retrieval_url")
+
+        # If the cart already has a retrieval_url and appears ready, return immediately.
+        status = str(cart.get("status") or "").lower()
+        if retrieval_url and status in ("ready", "complete", "completed"):
+            return self._resolve_url(retrieval_url)
+
+        # Otherwise poll until ready.
+        if not cart_uuid:
+            raise RuntimeError(
+                f"EMSL download cart response missing download_uuid/cart_uuid: {cart}"
+            )
+        ready_cart = self._poll_download_cart(cart_uuid, timeout=self._epu_timeout)
+        retrieval_url = ready_cart.get("retrieval_url")
+        if not retrieval_url:
+            raise RuntimeError(
+                f"EMSL download cart {cart_uuid} is ready but has no retrieval_url"
+            )
+        return self._resolve_url(retrieval_url)
+
+    # ── Streaming Tar Extraction ──────────────────────────────────────────────
+
+    def _stream_tar_members(
+        self,
+        url: str,
+        chunk_size: int = 1024 * 1024,
+    ) -> Generator[tuple[str, bytes], None, None]:
+        """
+        Stream a remote .tar file and yield (member_name, content) for each
+        member whose name matches one of _EPU_METADATA_PATTERNS.
+
+        Uses sequential tarfile streaming (mode='r|') so only the first
+        matching members need to be downloaded — the stream is closed early
+        once all pattern groups are satisfied.
+
+        Args:
+            url: HTTPS URL to stream the tar file from.
+            chunk_size: Read chunk size in bytes.
+
+        Yields:
+            Tuples of (tar_member_name, raw_bytes).
+        """
+        with requests.get(
+            url,
+            headers=self._get_auth_headers(),
+            stream=True,
+            timeout=60,
+        ) as response:
+            response.raise_for_status()
+
+            class _StreamingFileObj(io.RawIOBase):
+                """Wrap a requests streaming response as a file-like object."""
+                def __init__(self, resp: requests.Response) -> None:
+                    self._iter = resp.iter_content(chunk_size=chunk_size)
+                    self._buf = b""
+
+                def readinto(self, b: bytearray) -> int:
+                    while len(self._buf) < len(b):
+                        try:
+                            self._buf += next(self._iter)
+                        except StopIteration:
+                            break
+                    n = min(len(b), len(self._buf))
+                    b[:n] = self._buf[:n]
+                    self._buf = self._buf[n:]
+                    return n
+
+                def readable(self) -> bool:
+                    return True
+
+            fileobj = io.BufferedReader(_StreamingFileObj(response))
+            satisfied: set[int] = set()
+
+            with tarfile.open(fileobj=fileobj, mode="r|*") as tf:
+                for member in tf:
+                    name = member.name
+                    for idx, pattern in enumerate(self._EPU_METADATA_PATTERNS):
+                        if idx in satisfied:
+                            continue
+                        if pattern.search(name):
+                            fobj = tf.extractfile(member)
+                            if fobj is not None:
+                                yield name, fobj.read()
+                                satisfied.add(idx)
+                            break
+                    # Stop streaming once we have found one match per pattern group.
+                    if len(satisfied) >= len(self._EPU_METADATA_PATTERNS):
+                        break
 
     def _parse_json_response(
         self,
@@ -484,6 +977,13 @@ class EMSLLoader(BaseLoader):
 
         technique = self._infer_technique(
             sample_key, sample_value, resource, files)
+
+        # Optional: enrich with EPU session metadata from tar archive (requires JWT).
+        epu = self._build_epu_quantity_values(
+            self.extract_session_metadata(tx_id)
+            if self._jwt_token else None
+        )
+
         experiment = ExperimentRun(
             id=experiment_id,
             experiment_code=f"EMSL-TX-{tx_id}",
@@ -494,6 +994,20 @@ class EMSLLoader(BaseLoader):
             raw_data_location=(files[0].get("path") if files else None),
             processing_status=ProcessingStatusEnum.collected,
             acquisition_software=self._infer_acquisition_software(files),
+            acquisition_software_version=epu.get("acquisition_software_version"),
+            magnification=epu.get("magnification"),
+            calibrated_pixel_size=epu.get("calibrated_pixel_size"),
+            camera_binning=epu.get("camera_binning"),
+            exposure_time_per_frame=epu.get("exposure_time_per_frame"),
+            frames_per_movie=epu.get("frames_per_movie"),
+            total_dose=epu.get("total_dose"),
+            dose_rate=epu.get("dose_rate"),
+            defocus_target=epu.get("defocus_target"),
+            defocus_range_min=epu.get("defocus_range_min"),
+            defocus_range_max=epu.get("defocus_range_max"),
+            shots_per_hole=epu.get("shots_per_hole"),
+            holes_per_group=epu.get("holes_per_group"),
+            stage_tilt=epu.get("stage_tilt"),
         )
 
         instruments: list[Instrument] = []
@@ -744,6 +1258,36 @@ class EMSLLoader(BaseLoader):
         ]
         kept = [part for part in parts if part]
         return " | ".join(kept) if kept else None
+
+    def _build_epu_quantity_values(
+        self,
+        epu: dict[str, Any] | None,
+    ) -> dict[str, Any]:
+        """
+        Convert raw EPU metadata dict (from _parse_epu_session_xml) into a dict
+        of QuantityValue objects and plain strings suitable for ExperimentRun fields.
+
+        Fields with raw dict form {"numeric_value": ..., "unit": ...} are wrapped
+        in QuantityValue. String fields (e.g., acquisition_software_version) are
+        passed through as-is. Unknown/private keys (prefixed with _) are dropped.
+        """
+        if not epu:
+            return {}
+        result: dict[str, Any] = {}
+        for key, val in epu.items():
+            if key.startswith("_"):
+                continue
+            if isinstance(val, dict) and "numeric_value" in val:
+                try:
+                    result[key] = QuantityValue(
+                        numeric_value=val["numeric_value"],
+                        unit=val.get("unit") or "",
+                    )
+                except Exception:
+                    pass
+            elif isinstance(val, str):
+                result[key] = val
+        return result
 
     def _normalize_doi(self, value: Any) -> str | None:
         """Normalize award DOI values into a DOI URL."""
