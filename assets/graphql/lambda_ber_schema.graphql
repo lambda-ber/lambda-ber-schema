@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post32.dev0+2ad9ef5
+# version: 0.1.2.post123.dev0+b316f8a
 enum AffinityUnitEnum
   {
     molar
@@ -1759,6 +1759,73 @@ type SamplePreparation
     purityBySdsPagePercent: QuantityValue
     aggregationAssessment: String
     aliquoting: String
+  }
+
+type SANSConfiguration
+  {
+    description: String
+    qMin: QuantityValue
+    qMax: QuantityValue
+    numberOfGuides: Integer
+    attenuator: String
+    sourceAperatureDiameter: QuantityValue
+    sampleAperatureDiameter: QuantityValue
+    siwindowToMainDistance: QuantityValue
+    sampleApToSiDistance: QuantityValue
+    sampleApToMainDistance: QuantityValue
+    sampleApToSampleDistance: QuantityValue
+    sourceApToSiwindowDistance: QuantityValue
+    sourceApToSampleApDistance: QuantityValue
+  }
+
+type SANSDetector
+  {
+    description: String
+    detectorName: String
+    detectorType: String
+    detectorDescription: String
+    pixelSizeX: QuantityValue
+    pixelSizeY: QuantityValue
+    sampleDetectorDistance: QuantityValue
+    rotationAngle: QuantityValue
+    beamTrapType: String
+    beamTrapPositionX: QuantityValue
+    beamTrapPositionY: QuantityValue
+  }
+
+type SANSInstrument
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    instrumentCode: String!
+    instrumentCategory: InstrumentCategoryEnum
+    facilityName: FacilityEnum
+    facilityRor: Uriorcurie
+    beamlineId: String
+    manufacturer: String
+    model: String
+    installationDate: String
+    currentStatus: InstrumentStatusEnum
+    technique: TechniqueEnum
+    qRangeMin: QuantityValue
+    qRangeMax: QuantityValue
+    detectors: [SANSDetector]
+    source: SANSSource
+    configuration: SANSConfiguration
+    environment: String
+  }
+
+type SANSSource
+  {
+    description: String
+    sourceType: String
+    sourceDescription: String
+    wavelength: QuantityValue
+    wavelengthSpread: QuantityValue
+    wavelengthSelectionMethod: String
+    energy: QuantityValue
+    flux: QuantityValue
   }
 
 type SAXSInstrument

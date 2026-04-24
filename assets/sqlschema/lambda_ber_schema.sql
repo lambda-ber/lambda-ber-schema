@@ -192,6 +192,64 @@
 --     * Slot: beam_size_min_id Description: Minimum beam size in micrometers
 --     * Slot: beam_size_max_id Description: Maximum beam size in micrometers
 --     * Slot: flux_density_id Description: Photon flux density in photons/s/mm²
+-- # Class: SANSDetector Description: Description of a detector used in a SANS instrument
+--     * Slot: id
+--     * Slot: detector_name Description: User-assigned detector name
+--     * Slot: detector_type Description: Type of detector
+--     * Slot: detector_description Description: Free-text description of the detector
+--     * Slot: beam_trap_type Description: Type of beam trap (if any)
+--     * Slot: description
+--     * Slot: SANSInstrument_id Description: Autocreated FK slot
+--     * Slot: pixel_size_x_id Description: Pixel size in x-direction
+--     * Slot: pixel_size_y_id Description: Pixel size in y-direction
+--     * Slot: sample_detector_distance_id Description: Distance from sample to detector
+--     * Slot: rotation_angle_id Description: Rotation angle of the detector
+--     * Slot: beam_trap_position_x_id Description: X coordinate of beam trap
+--     * Slot: beam_trap_position_y_id Description: Y coordinate of beam trap
+-- # Class: SANSSource Description: Beam source parameters for a SANS instrument
+--     * Slot: id
+--     * Slot: source_type Description: Type of source
+--     * Slot: source_description Description: Free-text description of the source
+--     * Slot: wavelength_selection_method Description: Method used to select wavelength
+--     * Slot: description
+--     * Slot: wavelength_id Description: Neutron wavelength
+--     * Slot: wavelength_spread_id Description: Wavelength spread
+--     * Slot: energy_id Description: Beam energy
+--     * Slot: flux_id Description: Beam flux
+-- # Class: SANSConfiguration Description: Experimental configuration for a SANS instrument
+--     * Slot: id
+--     * Slot: number_of_guides Description: Number of neutron guides
+--     * Slot: attenuator Description: Attenuator setting
+--     * Slot: description
+--     * Slot: q_min_id Description: Minimum q value
+--     * Slot: q_max_id Description: Maximum q value
+--     * Slot: source_aperature_diameter_id Description: Source aperture diameter
+--     * Slot: sample_aperature_diameter_id Description: Sample aperture diameter
+--     * Slot: siwindow_to_main_distance_id Description: Silicon window to main instrument distance
+--     * Slot: sample_ap_to_si_distance_id Description: Sample aperture to silicon window distance
+--     * Slot: sample_ap_to_main_distance_id Description: Sample aperture to main instrument distance
+--     * Slot: sample_ap_to_sample_distance_id Description: Sample aperture to sample distance
+--     * Slot: source_ap_to_siwindow_distance_id Description: Source aperture to silicon window distance
+--     * Slot: source_ap_to_sample_ap_distance_id Description: Source aperture to sample aperture distance
+-- # Class: SANSInstrument Description: Small-angle neutron scattering (SANS) instrument specifications
+--     * Slot: technique Description: Primary technique (should always be sans for this class)
+--     * Slot: environment Description: Textual description of environmental conditions
+--     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
+--     * Slot: instrument_category Description: Category distinguishing beamlines from laboratory equipment
+--     * Slot: facility_name Description: Name of the research facility where the instrument is located
+--     * Slot: facility_ror Description: Research Organization Registry (ROR) identifier for the facility
+--     * Slot: beamline_id Description: Beamline identifier at synchrotron/neutron facility
+--     * Slot: manufacturer Description: Instrument manufacturer
+--     * Slot: model Description: Instrument model
+--     * Slot: installation_date Description: Date of instrument installation
+--     * Slot: current_status Description: Current operational status
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
+--     * Slot: title Description: A human-readable name or title for this entity
+--     * Slot: description Description: A detailed textual description of this entity
+--     * Slot: q_range_min_id Description: Minimum q value in inverse Angstroms
+--     * Slot: q_range_max_id Description: Maximum q value in inverse Angstroms
+--     * Slot: source_id Description: Source parameters for the instrument
+--     * Slot: configuration_id Description: Optical/mechanical configuration details
 -- # Class: SAXSInstrument Description: SAXS/WAXS instrument specifications
 --     * Slot: temperature_control_range Description: Temperature control range in Celsius
 --     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
@@ -1361,7 +1419,7 @@ CREATE TABLE "MolecularComposition_sequences" (
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
@@ -1391,19 +1449,19 @@ CREATE TABLE "EvolutionaryConservation_conserved_residues" (
 	conserved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", conserved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_conserved_residues" ON "EvolutionaryConservation_conserved_residues" (conserved_residues);CREATE INDEX "ix_EvolutionaryConservation_conserved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_conserved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_variable_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	variable_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", variable_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_variable_residues" ON "EvolutionaryConservation_variable_residues" (variable_residues);CREATE INDEX "ix_EvolutionaryConservation_variable_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_variable_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_coevolved_residues" (
 	"EvolutionaryConservation_id" TEXT,
 	coevolved_residues TEXT,
 	PRIMARY KEY ("EvolutionaryConservation_id", coevolved_residues),
 	FOREIGN KEY("EvolutionaryConservation_id") REFERENCES "EvolutionaryConservation" (id)
-);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);
+);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_coevolved_residues" ON "EvolutionaryConservation_coevolved_residues" (coevolved_residues);CREATE INDEX "ix_EvolutionaryConservation_coevolved_residues_EvolutionaryConservation_id" ON "EvolutionaryConservation_coevolved_residues" ("EvolutionaryConservation_id");
 CREATE TABLE "EvolutionaryConservation_publication_ids" (
 	"EvolutionaryConservation_id" TEXT,
 	publication_ids TEXT,
@@ -1583,6 +1641,49 @@ CREATE TABLE "XRayInstrument" (
 	FOREIGN KEY(beam_size_max_id) REFERENCES "QuantityValue" (id),
 	FOREIGN KEY(flux_density_id) REFERENCES "QuantityValue" (id)
 );CREATE INDEX "ix_XRayInstrument_id" ON "XRayInstrument" (id);
+CREATE TABLE "SANSSource" (
+	id INTEGER NOT NULL,
+	source_type TEXT,
+	source_description TEXT,
+	wavelength_selection_method TEXT,
+	description TEXT,
+	wavelength_id INTEGER,
+	wavelength_spread_id INTEGER,
+	energy_id INTEGER,
+	flux_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(wavelength_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(wavelength_spread_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(energy_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(flux_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SANSSource_id" ON "SANSSource" (id);
+CREATE TABLE "SANSConfiguration" (
+	id INTEGER NOT NULL,
+	number_of_guides INTEGER,
+	attenuator TEXT,
+	description TEXT,
+	q_min_id INTEGER,
+	q_max_id INTEGER,
+	source_aperature_diameter_id INTEGER,
+	sample_aperature_diameter_id INTEGER,
+	siwindow_to_main_distance_id INTEGER,
+	sample_ap_to_si_distance_id INTEGER,
+	sample_ap_to_main_distance_id INTEGER,
+	sample_ap_to_sample_distance_id INTEGER,
+	source_ap_to_siwindow_distance_id INTEGER,
+	source_ap_to_sample_ap_distance_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(q_min_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(q_max_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(source_aperature_diameter_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_aperature_diameter_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(siwindow_to_main_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_ap_to_si_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_ap_to_main_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_ap_to_sample_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(source_ap_to_siwindow_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(source_ap_to_sample_ap_distance_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SANSConfiguration_id" ON "SANSConfiguration" (id);
 CREATE TABLE "SAXSInstrument" (
 	temperature_control_range TEXT,
 	instrument_code TEXT NOT NULL,
@@ -2254,13 +2355,13 @@ CREATE TABLE "ConformationalState_characteristic_features" (
 	characteristic_features TEXT,
 	PRIMARY KEY ("ConformationalState_id", characteristic_features),
 	FOREIGN KEY("ConformationalState_id") REFERENCES "ConformationalState" (id)
-);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);
+);CREATE INDEX "ix_ConformationalState_characteristic_features_characteristic_features" ON "ConformationalState_characteristic_features" (characteristic_features);CREATE INDEX "ix_ConformationalState_characteristic_features_ConformationalState_id" ON "ConformationalState_characteristic_features" ("ConformationalState_id");
 CREATE TABLE "AggregatedProteinView_pdb_entries" (
 	"AggregatedProteinView_id" TEXT,
 	pdb_entries TEXT,
 	PRIMARY KEY ("AggregatedProteinView_id", pdb_entries),
 	FOREIGN KEY("AggregatedProteinView_id") REFERENCES "AggregatedProteinView" (id)
-);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);
+);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_pdb_entries" ON "AggregatedProteinView_pdb_entries" (pdb_entries);CREATE INDEX "ix_AggregatedProteinView_pdb_entries_AggregatedProteinView_id" ON "AggregatedProteinView_pdb_entries" ("AggregatedProteinView_id");
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -2304,6 +2405,31 @@ CREATE TABLE "Sample" (
 	FOREIGN KEY(evolutionary_conservation_id) REFERENCES "EvolutionaryConservation" (id),
 	FOREIGN KEY(conformational_ensemble_id) REFERENCES "ConformationalEnsemble" (id)
 );CREATE INDEX "ix_Sample_id" ON "Sample" (id);
+CREATE TABLE "SANSInstrument" (
+	technique VARCHAR(29),
+	environment TEXT,
+	instrument_code TEXT NOT NULL,
+	instrument_category VARCHAR(20),
+	facility_name VARCHAR(22),
+	facility_ror TEXT,
+	beamline_id TEXT,
+	manufacturer TEXT,
+	model TEXT,
+	installation_date TEXT,
+	current_status VARCHAR(13),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	q_range_min_id INTEGER,
+	q_range_max_id INTEGER,
+	source_id INTEGER,
+	configuration_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY(q_range_min_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(q_range_max_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(source_id) REFERENCES "SANSSource" (id),
+	FOREIGN KEY(configuration_id) REFERENCES "SANSConfiguration" (id)
+);CREATE INDEX "ix_SANSInstrument_id" ON "SANSInstrument" (id);
 CREATE TABLE "ExperimentRun" (
 	experiment_code TEXT NOT NULL,
 	experiment_date TEXT,
@@ -2564,7 +2690,7 @@ CREATE TABLE "SamplePreparation_purification_steps" (
 	purification_steps VARCHAR(23),
 	PRIMARY KEY ("SamplePreparation_id", purification_steps),
 	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
-);CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");
+);CREATE INDEX "ix_SamplePreparation_purification_steps_SamplePreparation_id" ON "SamplePreparation_purification_steps" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_purification_steps_purification_steps" ON "SamplePreparation_purification_steps" (purification_steps);
 CREATE TABLE "BeamlineInstrument_techniques_supported" (
 	"BeamlineInstrument_id" TEXT,
 	techniques_supported VARCHAR(29) NOT NULL,
@@ -2594,13 +2720,36 @@ CREATE TABLE "BufferComposition_components" (
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
+);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
+);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
+CREATE TABLE "SANSDetector" (
+	id INTEGER NOT NULL,
+	detector_name TEXT,
+	detector_type TEXT,
+	detector_description TEXT,
+	beam_trap_type TEXT,
+	description TEXT,
+	"SANSInstrument_id" TEXT,
+	pixel_size_x_id INTEGER,
+	pixel_size_y_id INTEGER,
+	sample_detector_distance_id INTEGER,
+	rotation_angle_id INTEGER,
+	beam_trap_position_x_id INTEGER,
+	beam_trap_position_y_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY("SANSInstrument_id") REFERENCES "SANSInstrument" (id),
+	FOREIGN KEY(pixel_size_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(pixel_size_y_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(sample_detector_distance_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(rotation_angle_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(beam_trap_position_x_id) REFERENCES "QuantityValue" (id),
+	FOREIGN KEY(beam_trap_position_y_id) REFERENCES "QuantityValue" (id)
+);CREATE INDEX "ix_SANSDetector_id" ON "SANSDetector" (id);
 CREATE TABLE "StudySampleAssociation" (
 	id INTEGER NOT NULL,
 	study_id TEXT NOT NULL,
@@ -2912,13 +3061,13 @@ CREATE TABLE "FunctionalSite_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("FunctionalSite_id", publication_ids),
 	FOREIGN KEY("FunctionalSite_id") REFERENCES "FunctionalSite" (id)
-);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);
+);CREATE INDEX "ix_FunctionalSite_publication_ids_publication_ids" ON "FunctionalSite_publication_ids" (publication_ids);CREATE INDEX "ix_FunctionalSite_publication_ids_FunctionalSite_id" ON "FunctionalSite_publication_ids" ("FunctionalSite_id");
 CREATE TABLE "StructuralFeature_publication_ids" (
 	"StructuralFeature_id" TEXT,
 	publication_ids TEXT,
 	PRIMARY KEY ("StructuralFeature_id", publication_ids),
 	FOREIGN KEY("StructuralFeature_id") REFERENCES "StructuralFeature" (id)
-);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);
+);CREATE INDEX "ix_StructuralFeature_publication_ids_publication_ids" ON "StructuralFeature_publication_ids" (publication_ids);CREATE INDEX "ix_StructuralFeature_publication_ids_StructuralFeature_id" ON "StructuralFeature_publication_ids" ("StructuralFeature_id");
 CREATE TABLE "ProteinProteinInteraction_interface_residues" (
 	"ProteinProteinInteraction_id" TEXT,
 	interface_residues TEXT,
@@ -2930,7 +3079,7 @@ CREATE TABLE "ProteinProteinInteraction_partner_interface_residues" (
 	partner_interface_residues TEXT,
 	PRIMARY KEY ("ProteinProteinInteraction_id", partner_interface_residues),
 	FOREIGN KEY("ProteinProteinInteraction_id") REFERENCES "ProteinProteinInteraction" (id)
-);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");
+);CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_ProteinProteinInteraction_id" ON "ProteinProteinInteraction_partner_interface_residues" ("ProteinProteinInteraction_id");CREATE INDEX "ix_ProteinProteinInteraction_partner_interface_residues_partner_interface_residues" ON "ProteinProteinInteraction_partner_interface_residues" (partner_interface_residues);
 CREATE TABLE "ProteinProteinInteraction_interaction_evidence" (
 	"ProteinProteinInteraction_id" TEXT,
 	interaction_evidence VARCHAR(14),
@@ -2948,7 +3097,7 @@ CREATE TABLE "MutationEffect_publication_ids" (
 	publication_ids TEXT,
 	PRIMARY KEY ("MutationEffect_id", publication_ids),
 	FOREIGN KEY("MutationEffect_id") REFERENCES "MutationEffect" (id)
-);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);
+);CREATE INDEX "ix_MutationEffect_publication_ids_publication_ids" ON "MutationEffect_publication_ids" (publication_ids);CREATE INDEX "ix_MutationEffect_publication_ids_MutationEffect_id" ON "MutationEffect_publication_ids" ("MutationEffect_id");
 CREATE TABLE "PostTranslationalModification_publication_ids" (
 	"PostTranslationalModification_id" TEXT,
 	publication_ids TEXT,
@@ -2960,4 +3109,4 @@ CREATE TABLE "LigandInteraction_binding_site_residues" (
 	binding_site_residues TEXT,
 	PRIMARY KEY ("LigandInteraction_id", binding_site_residues),
 	FOREIGN KEY("LigandInteraction_id") REFERENCES "LigandInteraction" (id)
-);CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");
+);CREATE INDEX "ix_LigandInteraction_binding_site_residues_LigandInteraction_id" ON "LigandInteraction_binding_site_residues" ("LigandInteraction_id");CREATE INDEX "ix_LigandInteraction_binding_site_residues_binding_site_residues" ON "LigandInteraction_binding_site_residues" (binding_site_residues);

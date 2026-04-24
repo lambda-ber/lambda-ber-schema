@@ -1,8 +1,8 @@
 {
   "name": "lambda-ber-schema",
-  "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and\n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters\n  like accelerating voltage, detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
+  "description": "lambda-ber-schema is a comprehensive schema for representing multimodal structural biology imaging data, \nfrom atomic-resolution structures to tissue-level organization. It supports diverse experimental \ntechniques including cryo-EM, X-ray crystallography, SAXS/SANS, fluorescence microscopy, and \nspectroscopic imaging.\n\n## Schema Organization\n\nThe schema follows a **relational design** with flat entity collections and explicit association\ntables for many-to-many relationships. This maps cleanly to SQL databases while supporting\nflexible data reuse across studies.\n\nThe top-level entity is a [Dataset](Dataset.md), which serves as a container for related research.\nA dataset might represent all data from a specific grant, collaboration, or publication.\n\n### Entity Tables\n\nAll entities are stored in flat collections at the Dataset level:\n\n**Biological Materials**\n- [Samples](Sample.md): The biological specimens being studied (proteins, nucleic acids, complexes,\n  cells, tissues). Each sample includes detailed molecular composition, buffer conditions, and\n  storage information. For example, a purified protein with its sequence, concentration, and buffer pH.\n\n- [Sample Preparations](SamplePreparation.md): How samples were prepared for specific techniques.\n  This includes cryo-EM grid preparation (vitrification parameters), crystallization conditions for\n  X-ray studies, or staining protocols for fluorescence microscopy.\n\n**Data Collection**\n- [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron\n  beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),\n  [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),\n  [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,\n  detector type, or beam energy.\n\n- [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run\n  captures when, how, and under what conditions data was collected, including quality metrics\n  like resolution and completeness.\n\n**Data Processing**\n- [Workflow Runs](WorkflowRun.md): Computational processing steps applied to raw data. This includes\n  motion correction for cryo-EM movies, 3D reconstruction, model building, or phase determination\n  for crystallography. Each workflow tracks the software used, parameters, and computational resources.\n\n**Data Products**\n- [Data Files](DataFile.md): Any files generated or used, from raw data to final models. Each file\n  is tracked with checksums for data integrity and typed (micrograph, particles, volume, model).\n\n- [Images](Image.md): Specialized classes for different imaging modalities:\n  - [Image2D](Image2D.md): Micrographs, diffraction patterns\n  - [Image3D](Image3D.md): 3D reconstructions, tomograms\n  - [FTIRImage](FTIRImage.md): Molecular composition maps from infrared spectroscopy\n  - [FluorescenceImage](FluorescenceImage.md): Fluorophore-labeled cellular components\n  - [OpticalImage](OpticalImage.md): Brightfield/phase contrast microscopy\n  - [XRFImage](XRFImage.md): Elemental distribution maps\n\n**Logical Groupings**\n- [Studies](Study.md): Lightweight groupings representing focused investigations of specific\n  biological questions. For example, a study might investigate \"Heat stress response in Arabidopsis\"\n  or \"Structure of the human ribosome under different conditions.\"\n\n### Association Tables\n\nMany-to-many relationships are represented via explicit association tables, which can carry\nrelationship metadata (e.g., the role of a sample in an experiment):\n\n- **StudySampleAssociation**: Links samples to studies (with role: target, control, reference)\n- **StudyExperimentAssociation**: Links experiments to studies\n- **StudyWorkflowAssociation**: Links workflows to studies\n- **ExperimentSampleAssociation**: Links samples to experiments (with role and preparation used)\n- **ExperimentInstrumentAssociation**: Links instruments to experiments (with role: primary, detector)\n- **WorkflowExperimentAssociation**: Links source experiments to workflows\n- **WorkflowInputAssociation**: Links input files to workflows\n- **WorkflowOutputAssociation**: Links output files to workflows\n\nThis relational design enables:\n- **Sample reuse**: The same sample can be used in multiple studies and experiments\n- **Multi-instrument experiments**: An experiment can use multiple instruments with different roles\n- **Integrative workflows**: A workflow can combine data from multiple experiments\n\n## Example Usage\n\nA typical cryo-EM study of a protein complex would include:\n1. Sample records for the purified complex with molecular weight and buffer composition\n2. Grid preparation details with vitrification parameters\n3. Microscope specifications and data collection parameters\n4. Processing workflows from motion correction through 3D refinement\n5. Final reconstructed volumes and fitted atomic models\n\nA multimodal plant imaging study might combine:\n1. Whole plant optical imaging for morphology\n2. XRF imaging to map nutrient distribution\n3. FTIR spectroscopy to identify stress-related molecular changes\n4. Fluorescence microscopy to track specific protein responses\n5. Cryo-EM of isolated organelles for ultrastructural details\n\n## Key Features\n\n- **Relational design**: Flat entity tables with explicit association tables for M:N relationships\n- **SQL-friendly**: Maps directly to normalized database tables\n- **Technique-agnostic core**: The same schema handles data from any structural biology method\n- **Rich metadata**: Comprehensive tracking from sample to structure\n- **Workflow provenance**: Complete computational reproducibility\n- **Multimodal support**: Seamlessly integrate data across scales and techniques\n- **Standards-compliant**: Follows FAIR principles and integrates with existing ontologies\n",
   "id": "http://w3id.org/lambda/",
-  "version": "0.1.2.post32.dev0+2ad9ef5",
+  "version": "0.1.2.post123.dev0+b316f8a",
   "imports": [
     "linkml:types",
     "lambda_ber_types",
@@ -5417,6 +5417,9 @@
       "name": "sample__molecular_weight",
       "description": "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_entity.formula_weight"
+      ],
       "slot_uri": "http://w3id.org/lambda/molecular_weight",
       "alias": "molecular_weight",
       "owner": "Sample",
@@ -5720,14 +5723,11 @@
     {
       "name": "sample__protein_name",
       "description": "Name of the protein",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Protein_Name"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Protein_Name"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Protein_Name",
+      "slot_uri": "http://w3id.org/lambda/protein_name",
       "alias": "protein_name",
       "owner": "Sample",
       "domain_of": [
@@ -5739,14 +5739,11 @@
     {
       "name": "sample__construct",
       "description": "Construct description (e.g., domain boundaries, truncations)",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Construct"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Construct"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Construct",
+      "slot_uri": "http://w3id.org/lambda/construct",
       "alias": "construct",
       "owner": "Sample",
       "domain_of": [
@@ -5758,14 +5755,11 @@
     {
       "name": "sample__tag",
       "description": "Affinity tag (e.g., His6, GST, MBP)",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Tag"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Tag"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Tag",
+      "slot_uri": "http://w3id.org/lambda/tag",
       "alias": "tag",
       "owner": "Sample",
       "domain_of": [
@@ -5777,14 +5771,11 @@
     {
       "name": "sample__mutations",
       "description": "Mutations present in the sample",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Mutations"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Mutations"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Mutations",
+      "slot_uri": "http://w3id.org/lambda/mutations",
       "alias": "mutations",
       "owner": "Sample",
       "domain_of": [
@@ -5796,14 +5787,11 @@
     {
       "name": "sample__expression_system",
       "description": "Expression system used",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Expression_System"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Expression_System"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Expression_System",
+      "slot_uri": "http://w3id.org/lambda/expression_system",
       "alias": "expression_system",
       "owner": "Sample",
       "domain_of": [
@@ -5815,14 +5803,11 @@
     {
       "name": "sample__ligand",
       "description": "Ligand or small molecule bound to sample",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Ligand"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ligand"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Ligand",
+      "slot_uri": "http://w3id.org/lambda/ligand",
       "alias": "ligand",
       "owner": "Sample",
       "domain_of": [
@@ -6752,10 +6737,10 @@
         "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
       ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline"
       ],
-      "slot_uri": "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_synchrotron_beamline",
+      "slot_uri": "http://w3id.org/lambda/beamline_id",
       "alias": "beamline_id",
       "owner": "Instrument",
       "domain_of": [
@@ -6820,6 +6805,9 @@
       "name": "cryoEMInstrument__accelerating_voltage",
       "description": "Accelerating voltage in kV",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.accelerating_voltage"
+      ],
       "slot_uri": "http://w3id.org/lambda/accelerating_voltage",
       "alias": "accelerating_voltage",
       "owner": "CryoEMInstrument",
@@ -6834,6 +6822,9 @@
       "name": "cryoEMInstrument__cs_corrector",
       "description": "Spherical aberration corrector present",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.alignment_procedure"
+      ],
       "slot_uri": "http://w3id.org/lambda/cs_corrector",
       "alias": "cs_corrector",
       "owner": "CryoEMInstrument",
@@ -6864,6 +6855,9 @@
         "See detector_manufacturer and detector_model for specific equipment details"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.film_or_detector_model"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_technology",
       "alias": "detector_technology",
       "owner": "CryoEMInstrument",
@@ -6896,6 +6890,9 @@
         "Examples: K3 BioQuantum, Falcon 4i, DE-64"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.film_or_detector_model"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_model",
       "alias": "detector_model",
       "owner": "CryoEMInstrument",
@@ -6912,6 +6909,9 @@
         "Indicates operating mode capabilities (e.g., counting, super_resolution)"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.detector_mode"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_mode",
       "alias": "detector_mode",
       "owner": "CryoEMInstrument",
@@ -6979,6 +6979,9 @@
       "name": "cryoEMInstrument__cs",
       "description": "Spherical aberration (Cs) in millimeters",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_cs"
+      ],
       "slot_uri": "http://w3id.org/lambda/cs",
       "alias": "cs",
       "owner": "CryoEMInstrument",
@@ -6993,6 +6996,9 @@
       "name": "cryoEMInstrument__c2_aperture",
       "description": "C2 aperture size in micrometers",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.c2_aperture_diameter"
+      ],
       "slot_uri": "http://w3id.org/lambda/c2_aperture",
       "alias": "c2_aperture",
       "owner": "CryoEMInstrument",
@@ -7073,6 +7079,9 @@
       "name": "cryoEMInstrument__energy_filter_slit_width",
       "description": "Energy filter slit width in eV",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.energy_filter_slit_width"
+      ],
       "slot_uri": "http://w3id.org/lambda/energy_filter_slit_width",
       "alias": "energy_filter_slit_width",
       "owner": "CryoEMInstrument",
@@ -7127,6 +7136,9 @@
       "name": "cryoEMInstrument__spotsize",
       "description": "Electron beam spot size setting",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.detector_spot_size"
+      ],
       "slot_uri": "http://w3id.org/lambda/spotsize",
       "alias": "spotsize",
       "owner": "CryoEMInstrument",
@@ -7155,6 +7167,9 @@
       "name": "cryoEMInstrument__imaging_mode",
       "description": "Imaging mode for electron microscopy",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.mode"
+      ],
       "slot_uri": "http://w3id.org/lambda/imaging_mode",
       "alias": "imaging_mode",
       "owner": "CryoEMInstrument",
@@ -7182,6 +7197,9 @@
       "name": "xRayInstrument__source_type",
       "description": "Type of X-ray source",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.source"
+      ],
       "slot_uri": "http://w3id.org/lambda/source_type",
       "alias": "source_type",
       "owner": "XRayInstrument",
@@ -7196,15 +7214,14 @@
       "description": "Generic detector technology type",
       "comments": [
         "Use this for technology classification (e.g., hybrid_photon_counting, ccd)",
-        "Maps to CBF: Detector (may contain model name)",
-        "Maps to PDB: _diffrn_detector.type",
         "See detector_manufacturer and detector_model for specific equipment details"
       ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Detector"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Detector",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.type"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Detector",
+      "slot_uri": "http://w3id.org/lambda/detector_technology",
       "alias": "detector_technology",
       "owner": "XRayInstrument",
       "domain_of": [
@@ -7220,6 +7237,9 @@
         "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.detector"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_manufacturer",
       "alias": "detector_manufacturer",
       "owner": "XRayInstrument",
@@ -7236,6 +7256,9 @@
         "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.pdbx_detector_model"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_model",
       "alias": "detector_model",
       "owner": "XRayInstrument",
@@ -7305,6 +7328,9 @@
       "name": "xRayInstrument__flux_density",
       "description": "Photon flux density in photons/s/mm\u00b2",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_flux"
+      ],
       "slot_uri": "http://w3id.org/lambda/flux_density",
       "alias": "flux_density",
       "owner": "XRayInstrument",
@@ -7319,6 +7345,9 @@
       "name": "xRayInstrument__monochromator_type",
       "description": "Type of monochromator",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.monochromator"
+      ],
       "slot_uri": "http://w3id.org/lambda/monochromator_type",
       "alias": "monochromator_type",
       "owner": "XRayInstrument",
@@ -7332,6 +7361,9 @@
       "name": "xRayInstrument__goniometer_type",
       "description": "Type of goniometer",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_measurement.device"
+      ],
       "slot_uri": "http://w3id.org/lambda/goniometer_type",
       "alias": "goniometer_type",
       "owner": "XRayInstrument",
@@ -7352,6 +7384,502 @@
         "XRayInstrument"
       ],
       "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__detector_name",
+      "description": "User-assigned detector name",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/detector_name",
+      "alias": "detector_name",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__detector_type",
+      "description": "Type of detector",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/detector_type",
+      "alias": "detector_type",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__detector_description",
+      "description": "Free-text description of the detector",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/detector_description",
+      "alias": "detector_description",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__pixel_size_x",
+      "description": "Pixel size in x-direction",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/pixel_size_x",
+      "alias": "pixel_size_x",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__pixel_size_y",
+      "description": "Pixel size in y-direction",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/pixel_size_y",
+      "alias": "pixel_size_y",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__sample_detector_distance",
+      "description": "Distance from sample to detector",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_detector_distance",
+      "alias": "sample_detector_distance",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__rotation_angle",
+      "description": "Rotation angle of the detector",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/rotation_angle",
+      "alias": "rotation_angle",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__beam_trap_type",
+      "description": "Type of beam trap (if any)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_trap_type",
+      "alias": "beam_trap_type",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__beam_trap_position_x",
+      "description": "X coordinate of beam trap",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_trap_position_x",
+      "alias": "beam_trap_position_x",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSDetector__beam_trap_position_y",
+      "description": "Y coordinate of beam trap",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/beam_trap_position_y",
+      "alias": "beam_trap_position_y",
+      "owner": "SANSDetector",
+      "domain_of": [
+        "SANSDetector"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__source_type",
+      "description": "Type of source",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source_type",
+      "alias": "source_type",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__source_description",
+      "description": "Free-text description of the source",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source_description",
+      "alias": "source_description",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__wavelength",
+      "description": "Neutron wavelength",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/wavelength",
+      "alias": "wavelength",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__wavelength_spread",
+      "description": "Wavelength spread",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/wavelength_spread",
+      "alias": "wavelength_spread",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__wavelength_selection_method",
+      "description": "Method used to select wavelength",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/wavelength_selection_method",
+      "alias": "wavelength_selection_method",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__energy",
+      "description": "Beam energy",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/energy",
+      "alias": "energy",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSSource__flux",
+      "description": "Beam flux",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/flux",
+      "alias": "flux",
+      "owner": "SANSSource",
+      "domain_of": [
+        "SANSSource"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__q_min",
+      "description": "Minimum q value",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/q_min",
+      "alias": "q_min",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__q_max",
+      "description": "Maximum q value",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/q_max",
+      "alias": "q_max",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__number_of_guides",
+      "description": "Number of neutron guides",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/number_of_guides",
+      "alias": "number_of_guides",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__attenuator",
+      "description": "Attenuator setting",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/attenuator",
+      "alias": "attenuator",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__source_aperature_diameter",
+      "description": "Source aperture diameter",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source_aperature_diameter",
+      "alias": "source_aperature_diameter",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__sample_aperature_diameter",
+      "description": "Sample aperture diameter",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_aperature_diameter",
+      "alias": "sample_aperature_diameter",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__siwindow_to_main_distance",
+      "description": "Silicon window to main instrument distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/siwindow_to_main_distance",
+      "alias": "siwindow_to_main_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__sample_ap_to_si_distance",
+      "description": "Sample aperture to silicon window distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_ap_to_si_distance",
+      "alias": "sample_ap_to_si_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__sample_ap_to_main_distance",
+      "description": "Sample aperture to main instrument distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_ap_to_main_distance",
+      "alias": "sample_ap_to_main_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__sample_ap_to_sample_distance",
+      "description": "Sample aperture to sample distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/sample_ap_to_sample_distance",
+      "alias": "sample_ap_to_sample_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__source_ap_to_siwindow_distance",
+      "description": "Source aperture to silicon window distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source_ap_to_siwindow_distance",
+      "alias": "source_ap_to_siwindow_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSConfiguration__source_ap_to_sample_ap_distance",
+      "description": "Source aperture to sample aperture distance",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source_ap_to_sample_ap_distance",
+      "alias": "source_ap_to_sample_ap_distance",
+      "owner": "SANSConfiguration",
+      "domain_of": [
+        "SANSConfiguration"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__technique",
+      "description": "Primary technique (should always be sans for this class)",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/technique",
+      "ifabsent": "string(sans)",
+      "alias": "technique",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "TechniqueEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__q_range_min",
+      "description": "Minimum q value in inverse Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/q_range_min",
+      "alias": "q_range_min",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__q_range_max",
+      "description": "Maximum q value in inverse Angstroms",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/q_range_max",
+      "alias": "q_range_max",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "QuantityValue",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__detectors",
+      "description": "List of detectors associated with the instrument",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/detectors",
+      "alias": "detectors",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "SANSDetector",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__source",
+      "description": "Source parameters for the instrument",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/source",
+      "alias": "source",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "SANSSource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__configuration",
+      "description": "Optical/mechanical configuration details",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/configuration",
+      "alias": "configuration",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "SANSConfiguration",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sANSInstrument__environment",
+      "description": "Textual description of environmental conditions",
+      "from_schema": "http://w3id.org/lambda/",
+      "slot_uri": "http://w3id.org/lambda/environment",
+      "alias": "environment",
+      "owner": "SANSInstrument",
+      "domain_of": [
+        "SANSInstrument"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -7756,6 +8284,9 @@
       "name": "experimentRun__magnification",
       "description": "Magnification used during data collection",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_magnification"
+      ],
       "slot_uri": "http://w3id.org/lambda/magnification",
       "alias": "magnification",
       "owner": "ExperimentRun",
@@ -7770,6 +8301,9 @@
       "name": "experimentRun__calibrated_pixel_size",
       "description": "Calibrated pixel size in Angstroms per pixel",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.calibrated_pixel_size"
+      ],
       "slot_uri": "http://w3id.org/lambda/calibrated_pixel_size",
       "alias": "calibrated_pixel_size",
       "owner": "ExperimentRun",
@@ -7798,6 +8332,9 @@
       "name": "experimentRun__exposure_time_per_frame",
       "description": "Exposure time per frame in milliseconds",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.average_exposure_time"
+      ],
       "slot_uri": "http://w3id.org/lambda/exposure_time_per_frame",
       "alias": "exposure_time_per_frame",
       "owner": "ExperimentRun",
@@ -7812,6 +8349,9 @@
       "name": "experimentRun__frames_per_movie",
       "description": "Number of frames per movie",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.num_frames_per_image"
+      ],
       "slot_uri": "http://w3id.org/lambda/frames_per_movie",
       "alias": "frames_per_movie",
       "owner": "ExperimentRun",
@@ -7840,6 +8380,9 @@
       "name": "experimentRun__total_dose",
       "description": "Total electron dose in e-/Angstrom^2",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.avg_electron_dose_per_image"
+      ],
       "slot_uri": "http://w3id.org/lambda/total_dose",
       "alias": "total_dose",
       "owner": "ExperimentRun",
@@ -7882,6 +8425,9 @@
       "name": "experimentRun__defocus_range_min",
       "description": "Minimum defocus range in micrometers",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_min"
+      ],
       "slot_uri": "http://w3id.org/lambda/defocus_range_min",
       "alias": "defocus_range_min",
       "owner": "ExperimentRun",
@@ -7896,6 +8442,9 @@
       "name": "experimentRun__defocus_range_max",
       "description": "Maximum defocus range in micrometers",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_imaging.nominal_defocus_max"
+      ],
       "slot_uri": "http://w3id.org/lambda/defocus_range_max",
       "alias": "defocus_range_max",
       "owner": "ExperimentRun",
@@ -9137,6 +9686,9 @@
       "name": "workflowRun__n_total_observations",
       "description": "Total number of observations (before merging)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.number_all"
+      ],
       "slot_uri": "http://w3id.org/lambda/n_total_observations",
       "alias": "n_total_observations",
       "owner": "WorkflowRun",
@@ -9151,6 +9703,9 @@
       "name": "workflowRun__n_total_unique",
       "description": "Total number of unique reflections",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.number_obs"
+      ],
       "slot_uri": "http://w3id.org/lambda/n_total_unique",
       "alias": "n_total_unique",
       "owner": "WorkflowRun",
@@ -9193,6 +9748,9 @@
       "name": "workflowRun__rwork",
       "description": "Refinement R-factor (working set)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_work"
+      ],
       "slot_uri": "http://w3id.org/lambda/rwork",
       "alias": "rwork",
       "owner": "WorkflowRun",
@@ -9207,6 +9765,9 @@
       "name": "workflowRun__rfree",
       "description": "R-free (test set)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_free"
+      ],
       "slot_uri": "http://w3id.org/lambda/rfree",
       "alias": "rfree",
       "owner": "WorkflowRun",
@@ -9223,7 +9784,7 @@
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/RMSD_bonds",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_d_res_high"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_ls_sigma_F"
       ],
       "slot_uri": "http://w3id.org/lambda/rmsd_bonds",
       "alias": "rmsd_bonds",
@@ -9241,7 +9802,7 @@
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/RMSD_angles",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_d_res_low"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_ls_sigma_I"
       ],
       "slot_uri": "http://w3id.org/lambda/rmsd_angles",
       "alias": "rmsd_angles",
@@ -9259,7 +9820,7 @@
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Favored",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_overall_ESU_R"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_quality.ramachandran_favored"
       ],
       "slot_uri": "http://w3id.org/lambda/ramachandran_favored",
       "alias": "ramachandran_favored",
@@ -9277,7 +9838,7 @@
       "from_schema": "http://w3id.org/lambda/",
       "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Ramachandran_Outliers",
-        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.pdbx_overall_ESU_R_Free"
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_quality.ramachandran_outliers"
       ],
       "slot_uri": "http://w3id.org/lambda/ramachandran_outliers",
       "alias": "ramachandran_outliers",
@@ -10664,6 +11225,9 @@
       "name": "cryoEMPreparation__grid_type",
       "description": "Type of EM grid used",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.grid_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/grid_type",
       "alias": "grid_type",
       "owner": "CryoEMPreparation",
@@ -10677,6 +11241,9 @@
       "name": "cryoEMPreparation__support_film",
       "description": "Support film type",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.grid_support_film"
+      ],
       "slot_uri": "http://w3id.org/lambda/support_film",
       "alias": "support_film",
       "owner": "CryoEMPreparation",
@@ -10704,6 +11271,9 @@
       "name": "cryoEMPreparation__vitrification_method",
       "description": "Method used for vitrification",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.method"
+      ],
       "slot_uri": "http://w3id.org/lambda/vitrification_method",
       "alias": "vitrification_method",
       "owner": "CryoEMPreparation",
@@ -10717,6 +11287,9 @@
       "name": "cryoEMPreparation__blot_time",
       "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.time_resolved_state"
+      ],
       "slot_uri": "http://w3id.org/lambda/blot_time",
       "alias": "blot_time",
       "owner": "CryoEMPreparation",
@@ -10745,6 +11318,9 @@
       "name": "cryoEMPreparation__humidity_percentage",
       "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.chamber_humidity"
+      ],
       "slot_uri": "http://w3id.org/lambda/humidity_percentage",
       "alias": "humidity_percentage",
       "owner": "CryoEMPreparation",
@@ -10759,6 +11335,9 @@
       "name": "cryoEMPreparation__chamber_temperature",
       "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.chamber_temperature"
+      ],
       "slot_uri": "http://w3id.org/lambda/chamber_temperature",
       "alias": "chamber_temperature",
       "owner": "CryoEMPreparation",
@@ -10773,6 +11352,9 @@
       "name": "cryoEMPreparation__grid_material",
       "description": "Grid material",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.grid_material"
+      ],
       "slot_uri": "http://w3id.org/lambda/grid_material",
       "alias": "grid_material",
       "owner": "CryoEMPreparation",
@@ -10786,6 +11368,9 @@
       "name": "cryoEMPreparation__glow_discharge_applied",
       "description": "Whether glow discharge treatment was applied",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.pretreatment_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/glow_discharge_applied",
       "alias": "glow_discharge_applied",
       "owner": "CryoEMPreparation",
@@ -10799,6 +11384,9 @@
       "name": "cryoEMPreparation__glow_discharge_time",
       "description": "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.pretreatment_time"
+      ],
       "slot_uri": "http://w3id.org/lambda/glow_discharge_time",
       "alias": "glow_discharge_time",
       "owner": "CryoEMPreparation",
@@ -10827,6 +11415,9 @@
       "name": "cryoEMPreparation__glow_discharge_atmosphere",
       "description": "Glow discharge atmosphere (air, amylamine)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.pretreatment_atmosphere"
+      ],
       "slot_uri": "http://w3id.org/lambda/glow_discharge_atmosphere",
       "alias": "glow_discharge_atmosphere",
       "owner": "CryoEMPreparation",
@@ -10840,6 +11431,9 @@
       "name": "cryoEMPreparation__glow_discharge_pressure",
       "description": "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_sample_support.pretreatment_pressure"
+      ],
       "slot_uri": "http://w3id.org/lambda/glow_discharge_pressure",
       "alias": "glow_discharge_pressure",
       "owner": "CryoEMPreparation",
@@ -10854,6 +11448,9 @@
       "name": "cryoEMPreparation__vitrification_instrument",
       "description": "Vitrification instrument used (e.g., Vitrobot)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.instrument"
+      ],
       "slot_uri": "http://w3id.org/lambda/vitrification_instrument",
       "alias": "vitrification_instrument",
       "owner": "CryoEMPreparation",
@@ -10937,6 +11534,9 @@
       "name": "cryoEMPreparation__ethane_temperature",
       "description": "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_vitrification.cryogen_name"
+      ],
       "slot_uri": "http://w3id.org/lambda/ethane_temperature",
       "alias": "ethane_temperature",
       "owner": "CryoEMPreparation",
@@ -10963,14 +11563,12 @@
     {
       "name": "crystallizationConditions__method",
       "description": "Crystallization method used",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Method"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Method"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Method",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal_grow.method"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Method",
+      "slot_uri": "http://w3id.org/lambda/method",
       "alias": "method",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -10982,14 +11580,12 @@
     {
       "name": "crystallizationConditions__crystallization_conditions",
       "description": "Complete description of crystallization conditions including precipitant, pH, salts",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Conditions"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
-        "https://github.com/NSLS2/BER-LAMBDA/Conditions"
+      "exact_mappings": [
+        "https://github.com/NSLS2/BER-LAMBDA/Conditions",
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal_grow.pdbx_details"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Conditions",
+      "slot_uri": "http://w3id.org/lambda/crystallization_conditions",
       "alias": "crystallization_conditions",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -11001,14 +11597,11 @@
     {
       "name": "crystallizationConditions__drop_volume",
       "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Drop_Volume"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Drop_Volume"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Drop_Volume",
+      "slot_uri": "http://w3id.org/lambda/drop_volume",
       "alias": "drop_volume",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -11035,14 +11628,11 @@
     {
       "name": "crystallizationConditions__crystal_size_um",
       "description": "Crystal dimensions in micrometers (length x width x height)",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Crystal_Size"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Crystal_Size"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Crystal_Size",
+      "slot_uri": "http://w3id.org/lambda/crystal_size_um",
       "alias": "crystal_size_um",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -11054,14 +11644,11 @@
     {
       "name": "crystallizationConditions__cryo_protectant",
       "description": "Cryoprotectant used for crystal cooling",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Cryo_Protectant"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Cryo_Protectant"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Cryo_Protectant",
+      "slot_uri": "http://w3id.org/lambda/cryo_protectant",
       "alias": "cryo_protectant",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -11073,14 +11660,11 @@
     {
       "name": "crystallizationConditions__crystal_id",
       "description": "Identifier for the specific crystal used",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Crystal_ID"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Crystal_ID"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Crystal_ID",
+      "slot_uri": "http://w3id.org/lambda/crystal_id",
       "alias": "crystal_id",
       "owner": "CrystallizationConditions",
       "domain_of": [
@@ -11213,6 +11797,9 @@
       "name": "xRayPreparation__crystallization_method",
       "description": "Method used for crystallization",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal_grow.method"
+      ],
       "slot_uri": "http://w3id.org/lambda/crystallization_method",
       "alias": "crystallization_method",
       "owner": "XRayPreparation",
@@ -11253,6 +11840,9 @@
       "name": "xRayPreparation__temperature_c",
       "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_exptl_crystal_grow.temp"
+      ],
       "slot_uri": "http://w3id.org/lambda/temperature_c",
       "alias": "temperature_c",
       "owner": "XRayPreparation",
@@ -11438,14 +12028,11 @@
     {
       "name": "xRayPreparation__mounting_method",
       "description": "Crystal mounting method",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Mount_Type"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Mount_Type"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Mount_Type",
+      "slot_uri": "http://w3id.org/lambda/mounting_method",
       "alias": "mounting_method",
       "owner": "XRayPreparation",
       "domain_of": [
@@ -11483,14 +12070,11 @@
     {
       "name": "xRayPreparation__loop_size",
       "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Loop_Size"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Loop_Size"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Loop_Size",
+      "slot_uri": "http://w3id.org/lambda/loop_size",
       "alias": "loop_size",
       "owner": "XRayPreparation",
       "domain_of": [
@@ -11503,14 +12087,11 @@
     {
       "name": "xRayPreparation__mounting_temperature",
       "description": "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
-      "comments": [
-        "Maps to NSLS2 spreadsheet: Temperature"
-      ],
       "from_schema": "http://w3id.org/lambda/",
-      "mappings": [
+      "exact_mappings": [
         "https://github.com/NSLS2/BER-LAMBDA/Temperature"
       ],
-      "slot_uri": "https://github.com/NSLS2/BER-LAMBDA/Temperature",
+      "slot_uri": "http://w3id.org/lambda/mounting_temperature",
       "alias": "mounting_temperature",
       "owner": "XRayPreparation",
       "domain_of": [
@@ -11743,6 +12324,9 @@
       "name": "dataCollectionStrategy__wavelength_a",
       "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_radiation_wavelength.wavelength"
+      ],
       "slot_uri": "http://w3id.org/lambda/wavelength_a",
       "alias": "wavelength_a",
       "owner": "DataCollectionStrategy",
@@ -11779,6 +12363,9 @@
         "Physical pixel size is hardware spec stored in Instrument"
       ],
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_image_recording.calibrated_pixel_size"
+      ],
       "slot_uri": "http://w3id.org/lambda/pixel_size_calibrated",
       "alias": "pixel_size_calibrated",
       "owner": "DataCollectionStrategy",
@@ -11793,6 +12380,9 @@
       "name": "dataCollectionStrategy__detector_distance_mm",
       "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.distance"
+      ],
       "slot_uri": "http://w3id.org/lambda/detector_distance_mm",
       "alias": "detector_distance_mm",
       "owner": "DataCollectionStrategy",
@@ -11807,6 +12397,9 @@
       "name": "dataCollectionStrategy__beam_center_x_px",
       "description": "Beam center X coordinate in pixels",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_x"
+      ],
       "slot_uri": "http://w3id.org/lambda/beam_center_x_px",
       "alias": "beam_center_x_px",
       "owner": "DataCollectionStrategy",
@@ -11821,6 +12414,9 @@
       "name": "dataCollectionStrategy__beam_center_y_px",
       "description": "Beam center Y coordinate in pixels",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_detector.beam_center_y"
+      ],
       "slot_uri": "http://w3id.org/lambda/beam_center_y_px",
       "alias": "beam_center_y_px",
       "owner": "DataCollectionStrategy",
@@ -11849,6 +12445,9 @@
       "name": "dataCollectionStrategy__flux_photons_per_s",
       "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_source.pdbx_flux"
+      ],
       "slot_uri": "http://w3id.org/lambda/flux_photons_per_s",
       "alias": "flux_photons_per_s",
       "owner": "DataCollectionStrategy",
@@ -11890,6 +12489,9 @@
       "name": "dataCollectionStrategy__temperature_k",
       "description": "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn.ambient_temp"
+      ],
       "slot_uri": "http://w3id.org/lambda/temperature_k",
       "alias": "temperature_k",
       "owner": "DataCollectionStrategy",
@@ -11904,6 +12506,9 @@
       "name": "dataCollectionStrategy__oscillation_per_image_deg",
       "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan.angle_increment"
+      ],
       "slot_uri": "http://w3id.org/lambda/oscillation_per_image_deg",
       "alias": "oscillation_per_image_deg",
       "owner": "DataCollectionStrategy",
@@ -11918,6 +12523,9 @@
       "name": "dataCollectionStrategy__total_rotation_deg",
       "description": "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_diffrn_scan_axis.angle_range"
+      ],
       "slot_uri": "http://w3id.org/lambda/total_rotation_deg",
       "alias": "total_rotation_deg",
       "owner": "DataCollectionStrategy",
@@ -12043,6 +12651,9 @@
       "name": "qualityMetrics__space_group",
       "description": "Crystallographic space group",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_symmetry.space_group_name_H-M"
+      ],
       "slot_uri": "http://w3id.org/lambda/space_group",
       "alias": "space_group",
       "owner": "QualityMetrics",
@@ -12056,6 +12667,9 @@
       "name": "qualityMetrics__unit_cell_a",
       "description": "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_a"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_a",
       "alias": "unit_cell_a",
       "owner": "QualityMetrics",
@@ -12070,6 +12684,9 @@
       "name": "qualityMetrics__unit_cell_b",
       "description": "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_b"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_b",
       "alias": "unit_cell_b",
       "owner": "QualityMetrics",
@@ -12084,6 +12701,9 @@
       "name": "qualityMetrics__unit_cell_c",
       "description": "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.length_c"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_c",
       "alias": "unit_cell_c",
       "owner": "QualityMetrics",
@@ -12098,6 +12718,9 @@
       "name": "qualityMetrics__unit_cell_alpha",
       "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_alpha"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_alpha",
       "alias": "unit_cell_alpha",
       "owner": "QualityMetrics",
@@ -12112,6 +12735,9 @@
       "name": "qualityMetrics__unit_cell_beta",
       "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_beta"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_beta",
       "alias": "unit_cell_beta",
       "owner": "QualityMetrics",
@@ -12126,6 +12752,9 @@
       "name": "qualityMetrics__unit_cell_gamma",
       "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_cell.angle_gamma"
+      ],
       "slot_uri": "http://w3id.org/lambda/unit_cell_gamma",
       "alias": "unit_cell_gamma",
       "owner": "QualityMetrics",
@@ -12140,6 +12769,9 @@
       "name": "qualityMetrics__multiplicity",
       "description": "Data multiplicity (redundancy)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_redundancy"
+      ],
       "slot_uri": "http://w3id.org/lambda/multiplicity",
       "alias": "multiplicity",
       "owner": "QualityMetrics",
@@ -12154,6 +12786,9 @@
       "name": "qualityMetrics__cc_half",
       "description": "Half-set correlation coefficient CC(1/2)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half"
+      ],
       "slot_uri": "http://w3id.org/lambda/cc_half",
       "alias": "cc_half",
       "owner": "QualityMetrics",
@@ -12168,6 +12803,9 @@
       "name": "qualityMetrics__r_merge",
       "description": "Rmerge - merge R-factor",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rmerge_I_obs"
+      ],
       "slot_uri": "http://w3id.org/lambda/r_merge",
       "alias": "r_merge",
       "owner": "QualityMetrics",
@@ -12182,6 +12820,9 @@
       "name": "qualityMetrics__r_pim",
       "description": "Rpim - precision-indicating merging R-factor",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_Rpim_I_all"
+      ],
       "slot_uri": "http://w3id.org/lambda/r_pim",
       "alias": "r_pim",
       "owner": "QualityMetrics",
@@ -12196,6 +12837,9 @@
       "name": "qualityMetrics__wilson_b_factor_a2",
       "description": "Wilson B-factor in Angstroms squared",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.B_iso_Wilson_estimate"
+      ],
       "slot_uri": "http://w3id.org/lambda/wilson_b_factor_a2",
       "alias": "wilson_b_factor_a2",
       "owner": "QualityMetrics",
@@ -12223,6 +12867,9 @@
       "name": "qualityMetrics__anom_corr",
       "description": "Anomalous correlation",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_reflns.pdbx_CC_half_anomalous"
+      ],
       "slot_uri": "http://w3id.org/lambda/anom_corr",
       "alias": "anom_corr",
       "owner": "QualityMetrics",
@@ -12251,6 +12898,9 @@
       "name": "qualityMetrics__r_work",
       "description": "Refinement R-factor (working set)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_work"
+      ],
       "slot_uri": "http://w3id.org/lambda/r_work",
       "alias": "r_work",
       "owner": "QualityMetrics",
@@ -12265,6 +12915,9 @@
       "name": "qualityMetrics__r_free",
       "description": "R-free (test set)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.ls_R_factor_R_free"
+      ],
       "slot_uri": "http://w3id.org/lambda/r_free",
       "alias": "r_free",
       "owner": "QualityMetrics",
@@ -12279,6 +12932,9 @@
       "name": "qualityMetrics__ramachandran_favored_percent",
       "description": "Percentage of residues in favored Ramachandran regions",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_quality.ramachandran_favored"
+      ],
       "slot_uri": "http://w3id.org/lambda/ramachandran_favored_percent",
       "alias": "ramachandran_favored_percent",
       "owner": "QualityMetrics",
@@ -12293,6 +12949,9 @@
       "name": "qualityMetrics__ramachandran_outliers_percent",
       "description": "Percentage of Ramachandran outliers",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_quality.ramachandran_outliers"
+      ],
       "slot_uri": "http://w3id.org/lambda/ramachandran_outliers_percent",
       "alias": "ramachandran_outliers_percent",
       "owner": "QualityMetrics",
@@ -12307,6 +12966,9 @@
       "name": "qualityMetrics__clashscore",
       "description": "MolProbity clashscore",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_quality.clashscore"
+      ],
       "slot_uri": "http://w3id.org/lambda/clashscore",
       "alias": "clashscore",
       "owner": "QualityMetrics",
@@ -12335,6 +12997,9 @@
       "name": "qualityMetrics__average_b_factor_a2",
       "description": "Average B-factor in Angstroms squared",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_refine.B_iso_mean"
+      ],
       "slot_uri": "http://w3id.org/lambda/average_b_factor_a2",
       "alias": "average_b_factor_a2",
       "owner": "QualityMetrics",
@@ -12749,6 +13414,9 @@
       "name": "refinementParameters__symmetry",
       "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_3d_reconstruction.symmetry_type"
+      ],
       "slot_uri": "http://w3id.org/lambda/symmetry",
       "alias": "symmetry",
       "owner": "RefinementParameters",
@@ -12816,6 +13484,9 @@
       "name": "refinementParameters__resolution_0_143",
       "description": "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
       "from_schema": "http://w3id.org/lambda/",
+      "exact_mappings": [
+        "http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_em_3d_reconstruction.resolution"
+      ],
       "slot_uri": "http://w3id.org/lambda/resolution_0_143",
       "alias": "resolution_0_143",
       "owner": "RefinementParameters",
@@ -15365,6 +16036,9 @@
         {
           "name": "molecular_weight",
           "description": "Molecular weight, typically specified in kilodaltons (kDa). Data providers may specify alternative units (e.g., Daltons, g/mol) by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_entity.formula_weight"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -15510,60 +16184,54 @@
         {
           "name": "protein_name",
           "description": "Name of the protein",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Protein_Name"
+          "exact_mappings": [
+            "nsls2:Protein_Name"
           ],
-          "slot_uri": "nsls2:Protein_Name",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "construct",
           "description": "Construct description (e.g., domain boundaries, truncations)",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Construct"
+          "exact_mappings": [
+            "nsls2:Construct"
           ],
-          "slot_uri": "nsls2:Construct",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "tag",
           "description": "Affinity tag (e.g., His6, GST, MBP)",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Tag"
+          "exact_mappings": [
+            "nsls2:Tag"
           ],
-          "slot_uri": "nsls2:Tag",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "mutations",
           "description": "Mutations present in the sample",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Mutations"
+          "exact_mappings": [
+            "nsls2:Mutations"
           ],
-          "slot_uri": "nsls2:Mutations",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "expression_system",
           "description": "Expression system used",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Expression_System"
+          "exact_mappings": [
+            "nsls2:Expression_System"
           ],
-          "slot_uri": "nsls2:Expression_System",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "ligand",
           "description": "Ligand or small molecule bound to sample",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Ligand"
+          "exact_mappings": [
+            "nsls2:Ligand"
           ],
-          "slot_uri": "nsls2:Ligand",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -16087,7 +16755,9 @@
             "Use facility-specific naming convention",
             "Examples: '12.3.1' (ALS), '17-ID-1' (NSLS-II), 'I04' (Diamond)"
           ],
-          "slot_uri": "mmCIF:_diffrn_source.pdbx_synchrotron_beamline",
+          "exact_mappings": [
+            "mmCIF:_diffrn_source.pdbx_synchrotron_beamline"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -16168,6 +16838,9 @@
         {
           "name": "accelerating_voltage",
           "description": "Accelerating voltage in kV",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.accelerating_voltage"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16175,6 +16848,9 @@
         {
           "name": "cs_corrector",
           "description": "Spherical aberration corrector present",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.alignment_procedure"
+          ],
           "range": "boolean",
           "@type": "SlotDefinition"
         },
@@ -16190,6 +16866,9 @@
           "comments": [
             "Use this for technology classification (e.g., direct_electron_detector, ccd)",
             "See detector_manufacturer and detector_model for specific equipment details"
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.film_or_detector_model"
           ],
           "range": "DetectorTechnologyEnum",
           "@type": "SlotDefinition"
@@ -16209,6 +16888,9 @@
           "comments": [
             "Examples: K3 BioQuantum, Falcon 4i, DE-64"
           ],
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.film_or_detector_model"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -16217,6 +16899,9 @@
           "description": "Supported or default detector operating mode",
           "comments": [
             "Indicates operating mode capabilities (e.g., counting, super_resolution)"
+          ],
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.detector_mode"
           ],
           "range": "DetectorModeEnum",
           "@type": "SlotDefinition"
@@ -16250,6 +16935,9 @@
         {
           "name": "cs",
           "description": "Spherical aberration (Cs) in millimeters",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_cs"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16257,6 +16945,9 @@
         {
           "name": "c2_aperture",
           "description": "C2 aperture size in micrometers",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.c2_aperture_diameter"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16295,6 +16986,9 @@
         {
           "name": "energy_filter_slit_width",
           "description": "Energy filter slit width in eV",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.energy_filter_slit_width"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16321,6 +17015,9 @@
         {
           "name": "spotsize",
           "description": "Electron beam spot size setting",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.detector_spot_size"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16335,6 +17032,9 @@
         {
           "name": "imaging_mode",
           "description": "Imaging mode for electron microscopy",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.mode"
+          ],
           "range": "ImagingModeEnum",
           "@type": "SlotDefinition"
         },
@@ -16386,6 +17086,9 @@
         {
           "name": "source_type",
           "description": "Type of X-ray source",
+          "exact_mappings": [
+            "mmCIF:_diffrn_source.source"
+          ],
           "range": "XRaySourceTypeEnum",
           "@type": "SlotDefinition"
         },
@@ -16394,11 +17097,12 @@
           "description": "Generic detector technology type",
           "comments": [
             "Use this for technology classification (e.g., hybrid_photon_counting, ccd)",
-            "Maps to CBF: Detector (may contain model name)",
-            "Maps to PDB: _diffrn_detector.type",
             "See detector_manufacturer and detector_model for specific equipment details"
           ],
-          "slot_uri": "nsls2:Detector",
+          "exact_mappings": [
+            "nsls2:Detector",
+            "mmCIF:_diffrn_detector.type"
+          ],
           "range": "DetectorTechnologyEnum",
           "@type": "SlotDefinition"
         },
@@ -16408,6 +17112,9 @@
           "comments": [
             "Examples: Dectris, Bruker, Rigaku, Rayonix, ADSC, MAR Research"
           ],
+          "exact_mappings": [
+            "mmCIF:_diffrn_detector.detector"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -16416,6 +17123,9 @@
           "description": "Detector model (e.g., EIGER2 X 16M, PILATUS3 X 6M, PHOTON III)",
           "comments": [
             "Examples: EIGER2 X 16M, PILATUS3 X 6M, PHOTON III, HyPix-6000HE"
+          ],
+          "exact_mappings": [
+            "mmCIF:_diffrn_detector.pdbx_detector_model"
           ],
           "range": "string",
           "@type": "SlotDefinition"
@@ -16451,6 +17161,9 @@
         {
           "name": "flux_density",
           "description": "Photon flux density in photons/s/mm\u00b2",
+          "exact_mappings": [
+            "mmCIF:_diffrn_source.pdbx_flux"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16458,11 +17171,17 @@
         {
           "name": "monochromator_type",
           "description": "Type of monochromator",
+          "exact_mappings": [
+            "mmCIF:_diffrn_source.monochromator"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "goniometer_type",
           "description": "Type of goniometer",
+          "exact_mappings": [
+            "mmCIF:_diffrn_measurement.device"
+          ],
           "@type": "SlotDefinition"
         },
         {
@@ -16473,6 +17192,354 @@
         }
       ],
       "class_uri": "http://w3id.org/lambda/XRayInstrument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SANSDetector",
+      "definition_uri": "http://w3id.org/lambda/SANSDetector",
+      "description": "Description of a detector used in a SANS instrument",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "sANSDetector__detector_name",
+        "sANSDetector__detector_type",
+        "sANSDetector__detector_description",
+        "sANSDetector__pixel_size_x",
+        "sANSDetector__pixel_size_y",
+        "sANSDetector__sample_detector_distance",
+        "sANSDetector__rotation_angle",
+        "sANSDetector__beam_trap_type",
+        "sANSDetector__beam_trap_position_x",
+        "sANSDetector__beam_trap_position_y"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "detector_name",
+          "description": "User-assigned detector name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_type",
+          "description": "Type of detector",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_description",
+          "description": "Free-text description of the detector",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_x",
+          "description": "Pixel size in x-direction",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pixel_size_y",
+          "description": "Pixel size in y-direction",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_detector_distance",
+          "description": "Distance from sample to detector",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rotation_angle",
+          "description": "Rotation angle of the detector",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_trap_type",
+          "description": "Type of beam trap (if any)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_trap_position_x",
+          "description": "X coordinate of beam trap",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_trap_position_y",
+          "description": "Y coordinate of beam trap",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SANSDetector",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SANSSource",
+      "definition_uri": "http://w3id.org/lambda/SANSSource",
+      "description": "Beam source parameters for a SANS instrument",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "sANSSource__source_type",
+        "sANSSource__source_description",
+        "sANSSource__wavelength",
+        "sANSSource__wavelength_spread",
+        "sANSSource__wavelength_selection_method",
+        "sANSSource__energy",
+        "sANSSource__flux"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "source_type",
+          "description": "Type of source",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_description",
+          "description": "Free-text description of the source",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavelength",
+          "description": "Neutron wavelength",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavelength_spread",
+          "description": "Wavelength spread",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavelength_selection_method",
+          "description": "Method used to select wavelength",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "energy",
+          "description": "Beam energy",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux",
+          "description": "Beam flux",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SANSSource",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SANSConfiguration",
+      "definition_uri": "http://w3id.org/lambda/SANSConfiguration",
+      "description": "Experimental configuration for a SANS instrument",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "AttributeGroup",
+      "slots": [
+        "attributeGroup__description",
+        "sANSConfiguration__q_min",
+        "sANSConfiguration__q_max",
+        "sANSConfiguration__number_of_guides",
+        "sANSConfiguration__attenuator",
+        "sANSConfiguration__source_aperature_diameter",
+        "sANSConfiguration__sample_aperature_diameter",
+        "sANSConfiguration__siwindow_to_main_distance",
+        "sANSConfiguration__sample_ap_to_si_distance",
+        "sANSConfiguration__sample_ap_to_main_distance",
+        "sANSConfiguration__sample_ap_to_sample_distance",
+        "sANSConfiguration__source_ap_to_siwindow_distance",
+        "sANSConfiguration__source_ap_to_sample_ap_distance"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "q_min",
+          "description": "Minimum q value",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_max",
+          "description": "Maximum q value",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_guides",
+          "description": "Number of neutron guides",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "attenuator",
+          "description": "Attenuator setting",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_aperature_diameter",
+          "description": "Source aperture diameter",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_aperature_diameter",
+          "description": "Sample aperture diameter",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "siwindow_to_main_distance",
+          "description": "Silicon window to main instrument distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_ap_to_si_distance",
+          "description": "Sample aperture to silicon window distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_ap_to_main_distance",
+          "description": "Sample aperture to main instrument distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_ap_to_sample_distance",
+          "description": "Sample aperture to sample distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_ap_to_siwindow_distance",
+          "description": "Source aperture to silicon window distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source_ap_to_sample_ap_distance",
+          "description": "Source aperture to sample aperture distance",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SANSConfiguration",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SANSInstrument",
+      "definition_uri": "http://w3id.org/lambda/SANSInstrument",
+      "description": "Small-angle neutron scattering (SANS) instrument specifications",
+      "from_schema": "http://w3id.org/lambda/",
+      "is_a": "Instrument",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "instrument__instrument_code",
+        "instrument__instrument_category",
+        "instrument__facility_name",
+        "instrument__facility_ror",
+        "instrument__beamline_id",
+        "instrument__manufacturer",
+        "instrument__model",
+        "instrument__installation_date",
+        "instrument__current_status",
+        "sANSInstrument__technique",
+        "sANSInstrument__q_range_min",
+        "sANSInstrument__q_range_max",
+        "sANSInstrument__detectors",
+        "sANSInstrument__source",
+        "sANSInstrument__configuration",
+        "sANSInstrument__environment"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "technique",
+          "description": "Primary technique (should always be sans for this class)",
+          "ifabsent": "string(sans)",
+          "range": "TechniqueEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_range_min",
+          "description": "Minimum q value in inverse Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "q_range_max",
+          "description": "Maximum q value in inverse Angstroms",
+          "range": "QuantityValue",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detectors",
+          "description": "List of detectors associated with the instrument",
+          "range": "SANSDetector",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source",
+          "description": "Source parameters for the instrument",
+          "range": "SANSSource",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "configuration",
+          "description": "Optical/mechanical configuration details",
+          "range": "SANSConfiguration",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "environment",
+          "description": "Textual description of environmental conditions",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://w3id.org/lambda/SANSInstrument",
       "@type": "ClassDefinition"
     },
     {
@@ -16553,7 +17620,7 @@
       "description": "Multi-technique synchrotron beamline that supports multiple experimental methods",
       "comments": [
         "Use for beamlines like SIBYLS that support both SAXS and crystallography",
-        "For single-technique beamlines, use XRayInstrument or SAXSInstrument"
+        "For single-technique beamlines, use XRayInstrument, SANSInstrument, or SAXSInstrument"
       ],
       "from_schema": "http://w3id.org/lambda/",
       "is_a": "Instrument",
@@ -16810,6 +17877,9 @@
         {
           "name": "magnification",
           "description": "Magnification used during data collection",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_magnification"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16817,6 +17887,9 @@
         {
           "name": "calibrated_pixel_size",
           "description": "Calibrated pixel size in Angstroms per pixel",
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.calibrated_pixel_size"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16831,6 +17904,9 @@
         {
           "name": "exposure_time_per_frame",
           "description": "Exposure time per frame in milliseconds",
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.average_exposure_time"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16838,6 +17914,9 @@
         {
           "name": "frames_per_movie",
           "description": "Number of frames per movie",
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.num_frames_per_image"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16852,6 +17931,9 @@
         {
           "name": "total_dose",
           "description": "Total electron dose in e-/Angstrom^2",
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.avg_electron_dose_per_image"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16873,6 +17955,9 @@
         {
           "name": "defocus_range_min",
           "description": "Minimum defocus range in micrometers",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_defocus_min"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -16880,6 +17965,9 @@
         {
           "name": "defocus_range_max",
           "description": "Maximum defocus range in micrometers",
+          "exact_mappings": [
+            "mmCIF:_em_imaging.nominal_defocus_max"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -17635,6 +18723,9 @@
         {
           "name": "n_total_observations",
           "description": "Total number of observations (before merging)",
+          "exact_mappings": [
+            "mmCIF:_reflns.number_all"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -17642,6 +18733,9 @@
         {
           "name": "n_total_unique",
           "description": "Total number of unique reflections",
+          "exact_mappings": [
+            "mmCIF:_reflns.number_obs"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -17663,6 +18757,9 @@
         {
           "name": "rwork",
           "description": "Refinement R-factor (working set)",
+          "exact_mappings": [
+            "mmCIF:_refine.ls_R_factor_R_work"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -17670,6 +18767,9 @@
         {
           "name": "rfree",
           "description": "R-free (test set)",
+          "exact_mappings": [
+            "mmCIF:_refine.ls_R_factor_R_free"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -17679,7 +18779,7 @@
           "description": "RMSD from ideal bond lengths, typically specified in Angstroms (\u00c5). Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:RMSD_bonds",
-            "mmCIF:_refine.ls_d_res_high"
+            "mmCIF:_refine.pdbx_ls_sigma_F"
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -17690,7 +18790,7 @@
           "description": "RMSD from ideal bond angles, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:RMSD_angles",
-            "mmCIF:_refine.ls_d_res_low"
+            "mmCIF:_refine.pdbx_ls_sigma_I"
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -17701,7 +18801,7 @@
           "description": "Percentage of residues in favored Ramachandran regions (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Ramachandran_Favored",
-            "mmCIF:_refine.pdbx_overall_ESU_R"
+            "mmCIF:_pdbx_struct_quality.ramachandran_favored"
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -17712,7 +18812,7 @@
           "description": "Percentage of Ramachandran outliers (0-100). Data providers may specify as a decimal fraction or percentage by including the unit in the QuantityValue.",
           "exact_mappings": [
             "nsls2:Ramachandran_Outliers",
-            "mmCIF:_refine.pdbx_overall_ESU_R_Free"
+            "mmCIF:_pdbx_struct_quality.ramachandran_outliers"
           ],
           "range": "QuantityValue",
           "inlined": true,
@@ -18830,12 +19930,18 @@
         {
           "name": "grid_type",
           "description": "Type of EM grid used",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.grid_type"
+          ],
           "range": "GridTypeEnum",
           "@type": "SlotDefinition"
         },
         {
           "name": "support_film",
           "description": "Support film type",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.grid_support_film"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -18849,12 +19955,18 @@
         {
           "name": "vitrification_method",
           "description": "Method used for vitrification",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.method"
+          ],
           "range": "VitrificationMethodEnum",
           "@type": "SlotDefinition"
         },
         {
           "name": "blot_time",
           "description": "Blotting time, typically specified in seconds (range: 0.5-10.0). Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.time_resolved_state"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18869,6 +19981,9 @@
         {
           "name": "humidity_percentage",
           "description": "Chamber humidity during vitrification (range: 0-100), typically specified as a percentage. Data providers may specify as decimal fraction by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.chamber_humidity"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18876,6 +19991,9 @@
         {
           "name": "chamber_temperature",
           "description": "Chamber temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.chamber_temperature"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18883,18 +20001,27 @@
         {
           "name": "grid_material",
           "description": "Grid material",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.grid_material"
+          ],
           "range": "GridMaterialEnum",
           "@type": "SlotDefinition"
         },
         {
           "name": "glow_discharge_applied",
           "description": "Whether glow discharge treatment was applied",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.pretreatment_type"
+          ],
           "range": "boolean",
           "@type": "SlotDefinition"
         },
         {
           "name": "glow_discharge_time",
           "description": "Glow discharge time, typically specified in seconds. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.pretreatment_time"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18909,12 +20036,18 @@
         {
           "name": "glow_discharge_atmosphere",
           "description": "Glow discharge atmosphere (air, amylamine)",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.pretreatment_atmosphere"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "glow_discharge_pressure",
           "description": "Glow discharge pressure, typically specified in millibars. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_sample_support.pretreatment_pressure"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -18922,6 +20055,9 @@
         {
           "name": "vitrification_instrument",
           "description": "Vitrification instrument used (e.g., Vitrobot)",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.instrument"
+          ],
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -18963,6 +20099,9 @@
         {
           "name": "ethane_temperature",
           "description": "Ethane temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_vitrification.cryogen_name"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19003,30 +20142,29 @@
         {
           "name": "method",
           "description": "Crystallization method used",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Method"
+          "exact_mappings": [
+            "nsls2:Method",
+            "mmCIF:_exptl_crystal_grow.method"
           ],
-          "slot_uri": "nsls2:Method",
           "range": "CrystallizationMethodEnum",
           "@type": "SlotDefinition"
         },
         {
           "name": "crystallization_conditions",
           "description": "Complete description of crystallization conditions including precipitant, pH, salts",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Conditions"
+          "exact_mappings": [
+            "nsls2:Conditions",
+            "mmCIF:_exptl_crystal_grow.pdbx_details"
           ],
-          "slot_uri": "nsls2:Conditions",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "drop_volume",
           "description": "Total drop volume, typically specified in nanoliters. Data providers may specify alternative units by including the unit in the QuantityValue.",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Drop_Volume"
+          "exact_mappings": [
+            "nsls2:Drop_Volume"
           ],
-          "slot_uri": "nsls2:Drop_Volume",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19041,30 +20179,27 @@
         {
           "name": "crystal_size_um",
           "description": "Crystal dimensions in micrometers (length x width x height)",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Crystal_Size"
+          "exact_mappings": [
+            "nsls2:Crystal_Size"
           ],
-          "slot_uri": "nsls2:Crystal_Size",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "cryo_protectant",
           "description": "Cryoprotectant used for crystal cooling",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Cryo_Protectant"
+          "exact_mappings": [
+            "nsls2:Cryo_Protectant"
           ],
-          "slot_uri": "nsls2:Cryo_Protectant",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "crystal_id",
           "description": "Identifier for the specific crystal used",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Crystal_ID"
+          "exact_mappings": [
+            "nsls2:Crystal_ID"
           ],
-          "slot_uri": "nsls2:Crystal_ID",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -19162,6 +20297,9 @@
         {
           "name": "crystallization_method",
           "description": "Method used for crystallization",
+          "exact_mappings": [
+            "mmCIF:_exptl_crystal_grow.method"
+          ],
           "range": "CrystallizationMethodEnum",
           "@type": "SlotDefinition"
         },
@@ -19179,6 +20317,9 @@
         {
           "name": "temperature_c",
           "description": "Crystallization temperature, typically specified in degrees Celsius. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_exptl_crystal_grow.temp"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19258,10 +20399,9 @@
         {
           "name": "mounting_method",
           "description": "Crystal mounting method",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Mount_Type"
+          "exact_mappings": [
+            "nsls2:Mount_Type"
           ],
-          "slot_uri": "nsls2:Mount_Type",
           "@type": "SlotDefinition"
         },
         {
@@ -19277,10 +20417,9 @@
         {
           "name": "loop_size",
           "description": "Loop size, typically specified in micrometers. Data providers may specify alternative units by including the unit in the QuantityValue.",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Loop_Size"
+          "exact_mappings": [
+            "nsls2:Loop_Size"
           ],
-          "slot_uri": "nsls2:Loop_Size",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19288,10 +20427,9 @@
         {
           "name": "mounting_temperature",
           "description": "Temperature during mounting, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
-          "comments": [
-            "Maps to NSLS2 spreadsheet: Temperature"
+          "exact_mappings": [
+            "nsls2:Temperature"
           ],
-          "slot_uri": "nsls2:Temperature",
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19477,6 +20615,9 @@
         {
           "name": "wavelength_a",
           "description": "X-ray wavelength, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_radiation_wavelength.wavelength"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19499,6 +20640,9 @@
             "For X-ray: typically mm/pixel or \u00b5m/pixel",
             "Physical pixel size is hardware spec stored in Instrument"
           ],
+          "exact_mappings": [
+            "mmCIF:_em_image_recording.calibrated_pixel_size"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19506,6 +20650,9 @@
         {
           "name": "detector_distance_mm",
           "description": "Detector distance, typically specified in millimeters. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_detector.distance"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19513,6 +20660,9 @@
         {
           "name": "beam_center_x_px",
           "description": "Beam center X coordinate in pixels",
+          "exact_mappings": [
+            "mmCIF:_diffrn_detector.beam_center_x"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19520,6 +20670,9 @@
         {
           "name": "beam_center_y_px",
           "description": "Beam center Y coordinate in pixels",
+          "exact_mappings": [
+            "mmCIF:_diffrn_detector.beam_center_y"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19534,6 +20687,9 @@
         {
           "name": "flux_photons_per_s",
           "description": "Photon flux, typically specified in photons per second. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_source.pdbx_flux"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19553,6 +20709,9 @@
         {
           "name": "temperature_k",
           "description": "Data collection temperature, typically specified in Kelvin. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn.ambient_temp"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19560,6 +20719,9 @@
         {
           "name": "oscillation_per_image_deg",
           "description": "Oscillation angle per image, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_scan.angle_increment"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19567,6 +20729,9 @@
         {
           "name": "total_rotation_deg",
           "description": "Total rotation range, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_diffrn_scan_axis.angle_range"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19675,11 +20840,17 @@
         {
           "name": "space_group",
           "description": "Crystallographic space group",
+          "exact_mappings": [
+            "mmCIF:_symmetry.space_group_name_H-M"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "unit_cell_a",
           "description": "Unit cell parameter a, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.length_a"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19687,6 +20858,9 @@
         {
           "name": "unit_cell_b",
           "description": "Unit cell parameter b, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.length_b"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19694,6 +20868,9 @@
         {
           "name": "unit_cell_c",
           "description": "Unit cell parameter c, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.length_c"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19701,6 +20878,9 @@
         {
           "name": "unit_cell_alpha",
           "description": "Unit cell angle alpha, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.angle_alpha"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19708,6 +20888,9 @@
         {
           "name": "unit_cell_beta",
           "description": "Unit cell angle beta, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.angle_beta"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19715,6 +20898,9 @@
         {
           "name": "unit_cell_gamma",
           "description": "Unit cell angle gamma, typically specified in degrees. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_cell.angle_gamma"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19722,6 +20908,9 @@
         {
           "name": "multiplicity",
           "description": "Data multiplicity (redundancy)",
+          "exact_mappings": [
+            "mmCIF:_reflns.pdbx_redundancy"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19729,6 +20918,9 @@
         {
           "name": "cc_half",
           "description": "Half-set correlation coefficient CC(1/2)",
+          "exact_mappings": [
+            "mmCIF:_reflns.pdbx_CC_half"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19736,6 +20928,9 @@
         {
           "name": "r_merge",
           "description": "Rmerge - merge R-factor",
+          "exact_mappings": [
+            "mmCIF:_reflns.pdbx_Rmerge_I_obs"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19743,6 +20938,9 @@
         {
           "name": "r_pim",
           "description": "Rpim - precision-indicating merging R-factor",
+          "exact_mappings": [
+            "mmCIF:_reflns.pdbx_Rpim_I_all"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19750,6 +20948,9 @@
         {
           "name": "wilson_b_factor_a2",
           "description": "Wilson B-factor in Angstroms squared",
+          "exact_mappings": [
+            "mmCIF:_reflns.B_iso_Wilson_estimate"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19763,6 +20964,9 @@
         {
           "name": "anom_corr",
           "description": "Anomalous correlation",
+          "exact_mappings": [
+            "mmCIF:_reflns.pdbx_CC_half_anomalous"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19777,6 +20981,9 @@
         {
           "name": "r_work",
           "description": "Refinement R-factor (working set)",
+          "exact_mappings": [
+            "mmCIF:_refine.ls_R_factor_R_work"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19784,6 +20991,9 @@
         {
           "name": "r_free",
           "description": "R-free (test set)",
+          "exact_mappings": [
+            "mmCIF:_refine.ls_R_factor_R_free"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19791,6 +21001,9 @@
         {
           "name": "ramachandran_favored_percent",
           "description": "Percentage of residues in favored Ramachandran regions",
+          "exact_mappings": [
+            "mmCIF:_pdbx_struct_quality.ramachandran_favored"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19798,6 +21011,9 @@
         {
           "name": "ramachandran_outliers_percent",
           "description": "Percentage of Ramachandran outliers",
+          "exact_mappings": [
+            "mmCIF:_pdbx_struct_quality.ramachandran_outliers"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19805,6 +21021,9 @@
         {
           "name": "clashscore",
           "description": "MolProbity clashscore",
+          "exact_mappings": [
+            "mmCIF:_pdbx_struct_quality.clashscore"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -19819,6 +21038,9 @@
         {
           "name": "average_b_factor_a2",
           "description": "Average B-factor in Angstroms squared",
+          "exact_mappings": [
+            "mmCIF:_refine.B_iso_mean"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -20132,6 +21354,9 @@
         {
           "name": "symmetry",
           "description": "Symmetry applied (C1, Cn, Dn, T, O, I)",
+          "exact_mappings": [
+            "mmCIF:_em_3d_reconstruction.symmetry_type"
+          ],
           "range": "SymmetryEnum",
           "@type": "SlotDefinition"
         },
@@ -20164,6 +21389,9 @@
         {
           "name": "resolution_0_143",
           "description": "Resolution at FSC=0.143, typically specified in Angstroms. Data providers may specify alternative units by including the unit in the QuantityValue.",
+          "exact_mappings": [
+            "mmCIF:_em_3d_reconstruction.resolution"
+          ],
           "range": "QuantityValue",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -21843,9 +23071,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "lambda_ber_schema.yaml",
-  "source_file_date": "2026-03-12T06:54:22",
-  "source_file_size": 168139,
-  "generation_date": "2026-03-12T06:54:33",
+  "source_file_date": "2026-04-24T13:43:13",
+  "source_file_size": 177640,
+  "generation_date": "2026-04-24T14:02:29",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/lambda_ber_schema.context.jsonld",

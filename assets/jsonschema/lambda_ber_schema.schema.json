@@ -6942,6 +6942,478 @@
             "title": "RefinementParameters",
             "type": "object"
         },
+        "SANSConfiguration": {
+            "additionalProperties": false,
+            "description": "Experimental configuration for a SANS instrument",
+            "properties": {
+                "attenuator": {
+                    "description": "Attenuator setting",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "number_of_guides": {
+                    "description": "Number of neutron guides",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "q_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum q value"
+                },
+                "q_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum q value"
+                },
+                "sample_ap_to_main_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample aperture to main instrument distance"
+                },
+                "sample_ap_to_sample_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample aperture to sample distance"
+                },
+                "sample_ap_to_si_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample aperture to silicon window distance"
+                },
+                "sample_aperature_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Sample aperture diameter"
+                },
+                "siwindow_to_main_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Silicon window to main instrument distance"
+                },
+                "source_ap_to_sample_ap_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source aperture to sample aperture distance"
+                },
+                "source_ap_to_siwindow_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source aperture to silicon window distance"
+                },
+                "source_aperature_diameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source aperture diameter"
+                }
+            },
+            "title": "SANSConfiguration",
+            "type": "object"
+        },
+        "SANSDetector": {
+            "additionalProperties": false,
+            "description": "Description of a detector used in a SANS instrument",
+            "properties": {
+                "beam_trap_position_x": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "X coordinate of beam trap"
+                },
+                "beam_trap_position_y": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Y coordinate of beam trap"
+                },
+                "beam_trap_type": {
+                    "description": "Type of beam trap (if any)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_description": {
+                    "description": "Free-text description of the detector",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_name": {
+                    "description": "User-assigned detector name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detector_type": {
+                    "description": "Type of detector",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pixel_size_x": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size in x-direction"
+                },
+                "pixel_size_y": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Pixel size in y-direction"
+                },
+                "rotation_angle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Rotation angle of the detector"
+                },
+                "sample_detector_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Distance from sample to detector"
+                }
+            },
+            "title": "SANSDetector",
+            "type": "object"
+        },
+        "SANSInstrument": {
+            "additionalProperties": false,
+            "description": "Small-angle neutron scattering (SANS) instrument specifications",
+            "properties": {
+                "beamline_id": {
+                    "description": "Beamline identifier at synchrotron/neutron facility",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "configuration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SANSConfiguration"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Optical/mechanical configuration details"
+                },
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "description": "A detailed textual description of this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "detectors": {
+                    "description": "List of detectors associated with the instrument",
+                    "items": {
+                        "$ref": "#/$defs/SANSDetector"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "environment": {
+                    "description": "Textual description of environmental conditions",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_name": {
+                    "$ref": "#/$defs/FacilityEnum",
+                    "description": "Name of the research facility where the instrument is located"
+                },
+                "facility_ror": {
+                    "description": "Research Organization Registry (ROR) identifier for the facility",
+                    "pattern": "^https://ror\\.org/\\w+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_category": {
+                    "$ref": "#/$defs/InstrumentCategoryEnum",
+                    "description": "Category distinguishing beamlines from laboratory equipment"
+                },
+                "instrument_code": {
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "q_range_max": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Maximum q value in inverse Angstroms"
+                },
+                "q_range_min": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimum q value in inverse Angstroms"
+                },
+                "source": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SANSSource"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source parameters for the instrument"
+                },
+                "technique": {
+                    "$ref": "#/$defs/TechniqueEnum",
+                    "description": "Primary technique (should always be sans for this class)"
+                },
+                "title": {
+                    "description": "A human-readable name or title for this entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "SANSInstrument",
+            "type": "object"
+        },
+        "SANSSource": {
+            "additionalProperties": false,
+            "description": "Beam source parameters for a SANS instrument",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam energy"
+                },
+                "flux": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Beam flux"
+                },
+                "source_description": {
+                    "description": "Free-text description of the source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_type": {
+                    "description": "Type of source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wavelength": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Neutron wavelength"
+                },
+                "wavelength_selection_method": {
+                    "description": "Method used to select wavelength",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wavelength_spread": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Wavelength spread"
+                }
+            },
+            "title": "SANSSource",
+            "type": "object"
+        },
         "SAXSInstrument": {
             "additionalProperties": false,
             "description": "SAXS/WAXS instrument specifications",
@@ -9839,5 +10311,5 @@
     ],
     "title": "lambda-ber-schema",
     "type": "object",
-    "version": "0.1.2.post32.dev0+2ad9ef5"
+    "version": "0.1.2.post123.dev0+b316f8a"
 }
