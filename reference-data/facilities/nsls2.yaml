@@ -9,6 +9,15 @@
 #
 # This file contains reference instrument definitions for NSLS-II beamlines.
 # These can be used as templates or imported into datasets.
+#
+# It currently includes:
+#   - Center for BioMolecular Structure (CBMS) synchrotron beamlines (LiX, XFP, AMX, FMX, NYX)
+#   - Laboratory for BioMolecular Structure (LBMS) cryo-electron microscopy instruments
+#
+# Sources:
+#   - https://www.bnl.gov/nsls2/programs/structural-biology.php
+#   - https://www.bnl.gov/cryo-em/instrumentation.php
+#   - https://www.berstructuralbioportal.org/nsls-ii/
 
 beamlines:
   # FMX - Frontier Microfocusing Macromolecular Crystallography
@@ -179,3 +188,74 @@ beamlines:
     notes:
       - "Routine simultaneous SAXS/WAXS solution scattering; supports multiple sample configurations (static, fixed cell, SEC-MALS)"
       - "Uses automated liquid handling and robotics for high-throughput operation"
+
+# LBMS Cryo-EM instruments
+# Note: LBMS is a Brookhaven National Laboratory life science imaging center (cryo-EM), listed as a BER resource at NSLS-II.
+
+instruments:
+  # 'Empire' High-end Electron Microscope
+  - id: lambdaber:instrument_lbms_empire_krios_g3i
+    title: "LBMS 'Empire' Krios G3i Cryo-TEM"
+    description: "Thermo Scientific Krios G3i Cryo Transmission Electron Microscope (300 kV) with Gatan K3 direct electron detector and BioQuantum energy filter, supporting single particle analysis (SPA) and cryo-electron tomography (Cryo-ET)."
+    instrument_code: "LBMS-EMPIRE-KRIOS-G3I"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    manufacturer: "Thermo Fisher Scientific"
+    model: "Krios G3i"
+    current_status: operational
+    accelerating_voltage: 300,000
+    detector_technology: direct_electron_detector
+    detector_manufacturer: "Gatan"
+    detector_model: "K3 BioQuantum"
+    energy_filter_present: true
+    energy_filter_make: "Gatan"
+    energy_filter_model: "BioQuantum"
+
+  # 'Powell' Screening Electron Microscope
+  - id: lambdaber:instrument_lbms_powell_talos_l120c
+    title: "LBMS 'Powell' Talos L120C TEM"
+    description: "Thermo Scientific Talos L120C TEM transmission electron microscope for negative stain and cryo sample screening for single particle analysis and tomography."
+    instrument_code: "LBMS-POWELL-TALOS-L120C"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    manufacturer: "Thermo Fisher Scientific"
+    model: "Talos L120C"
+    current_status: operational
+    accelerating_voltage: 120
+
+    notes:
+      - "Operation voltage: 20-120 kV"
+      - "Camera: Ceta 16M CMOS"
+
+  # 'Stonewall' Screening Electron Microscope
+  - id: lambdaber:instrument_lbms_stonewall_jeol_jem_2100f
+    title: "LBMS 'Stonewall' JEOL JEM-2100F TEM"
+    description: "JEOL JEM-2100F 200 kV transmission electron microscope (FEG) for single particle analysis and tomography sample screening (negative stain and vitrified samples)."
+    instrument_code: "LBMS-STONEWALL-JEOL-JEM2100F"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    manufacturer: "JEOL"
+    model: "JEM-2100F"
+    current_status: operational
+    accelerating_voltage: 200
+
+    notes:
+      - "Operation voltage: 80-200 kV"
+      - "Camera: Gatan US4000 (4K x 4K) CCD"
+
+  # Aquilos 2 Cryo-Focused Ion Beam (cryo-FIB)
+  - id: lambdaber:instrument_lbms_aquilos_2
+    title: "LBMS Aquilos 2 Cryo-FIB"
+    description: "Aquilos 2 cryo-focused ion beam instrument used to prepare cryo-lamellae (typically <300 nm thick) for cryo-electron tomography (cryo-ET)."
+    instrument_code: "LBMS-AQUILOS-2"
+    instrument_category: ELECTRON_MICROSCOPE
+    facility_name: NSLS_II
+    facility_ror: "https://ror.org/01q47ea17"
+    model: "Aquilos 2"
+    current_status: operational
+
+    notes:
+      - "Includes a fully rotatable cryo-stage (<-170C) and integrated correlative workflows"
