@@ -1,0 +1,116 @@
+id: lambdaber:instrument_biosans_hfir_cg3
+title: Biological Small Angle Neutron Scattering (Bio-SANS) Instrument at HFIR
+description: Bio-SANS small-angle neutron scattering instrument at HFIR beamline CG-3
+instrument_code: HFIR-CG3
+instrument_category: NEUTRON_BEAMLINE
+facility_name: HFIR
+facility_ror: https://ror.org/02xn1ny06
+beamline_id: CG-3
+manufacturer: Oak Ridge National Laboratory
+model: Bio-SANS
+installation_date: '2007-05-01'
+current_status: operational
+technique: sans
+q_range_min:
+  numeric_value: 0.0009
+  unit: inverse Angstroms
+q_range_max:
+  numeric_value: 1.0
+  unit: inverse Angstroms
+detectors:
+- detector_name: main_detector
+  detector_type: He3 Linear Position Sensitive Detector
+  detector_description: Main detector array for small-angle scattering
+  pixel_size_x:
+    numeric_value: 5.5
+    unit: millimeters
+  pixel_size_y:
+    numeric_value: 4.3
+    unit: millimeters
+  sample_detector_distance:
+    numeric_value: 7.0
+    unit: meters
+  rotation_angle:
+    numeric_value: 0.0
+    unit: degrees
+  beam_trap_type: y76semi
+  beam_trap_position_x:
+    numeric_value: 84.0
+    unit: millimeters
+  beam_trap_position_y:
+    numeric_value: 557.0
+    unit: millimeters
+- detector_name: midrange_detector
+  detector_type: Curved He3 Linear Position Sensitive Detector
+  detector_description: Midrange detector for the intermediate q-range between the main and wing detectors
+  pixel_size_x:
+    numeric_value: 5.5
+    unit: millimeters
+  pixel_size_y:
+    numeric_value: 4.3
+    unit: millimeters
+  sample_detector_distance:
+    numeric_value: 3966.2
+    unit: millimeters
+  rotation_angle:
+    numeric_value: -2.7
+    unit: degrees
+- detector_name: wing_detector
+  detector_type: Curved He3 Linear Position Sensitive Detector
+  detector_description: West wing detector for capturing the high q-range
+  pixel_size_x:
+    numeric_value: 5.5
+    unit: millimeters
+  pixel_size_y:
+    numeric_value: 4.3
+    unit: millimeters
+  sample_detector_distance:
+    numeric_value: 1129.538
+    unit: millimeters
+  rotation_angle:
+    numeric_value: 7.25
+    unit: degrees
+source:
+  source_type: neutron_reactor
+  source_description: Cold neutron source with velocity selector
+  wavelength:
+    numeric_value: 6.023
+    unit: Angstroms
+  wavelength_spread:
+    numeric_value: 0.13
+    unit: delta-lambda/lambda
+  wavelength_selection_method: monochromator
+  energy:
+    numeric_value: 0.0227
+    unit: electronvolts
+  flux:
+    numeric_value: 2000000
+    unit: neutrons per square centimeter per second
+configuration:
+  q_min:
+    numeric_value: 0.006
+    unit: inverse Angstroms
+  q_max:
+    numeric_value: 1.0
+    unit: inverse Angstroms
+  number_of_guides: 4
+  attenuator: none
+  source_aperature_diameter:
+    numeric_value: 40
+    unit: millimeters
+  sample_aperature_diameter:
+    numeric_value: 10
+    unit: millimeters
+  siwindow_to_main_distance:
+    numeric_value: 6941
+    unit: millimeters
+  sample_ap_to_si_distance:
+    numeric_value: 82
+    unit: millimeters
+  sample_ap_to_sample_distance:
+    numeric_value: 23
+    unit: millimeters
+  source_ap_to_sample_ap_distance:
+    numeric_value: 9709.6
+    unit: millimeters
+environment: UR5e Robot Sample Changer; sample temperature 298 K; pressure 1 atm

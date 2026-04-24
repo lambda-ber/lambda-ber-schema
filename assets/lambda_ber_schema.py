@@ -1,5 +1,5 @@
 # Auto generated from lambda_ber_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-12T06:54:38
+# Generation date: 2026-04-24T14:02:37
 # Schema: lambda-ber-schema
 #
 # id: http://w3id.org/lambda/
@@ -33,8 +33,9 @@
 #   **Data Collection**
 #   - [Instruments](Instrument.md): The equipment used, from Titan Krios microscopes to synchrotron
 #     beamlines. Each instrument type ([CryoEMInstrument](CryoEMInstrument.md),
-#     [XRayInstrument](XRayInstrument.md), [SAXSInstrument](SAXSInstrument.md)) has specific parameters
-#     like accelerating voltage, detector type, or beam energy.
+#     [XRayInstrument](XRayInstrument.md), [SANSInstrument](SANSInstrument.md),
+#     [SAXSInstrument](SAXSInstrument.md)) has specific parameters like accelerating voltage,
+#     detector type, or beam energy.
 #
 #   - [Experiment Runs](ExperimentRun.md): Individual data collection sessions. An experiment run
 #     captures when, how, and under what conditions data was collected, including quality metrics
@@ -163,7 +164,7 @@ from linkml_runtime.linkml_model.types import Boolean, Curie, Date, Float, Integ
 from linkml_runtime.utils.metamodelcore import Bool, Curie, URI, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.1.2.post32.dev0+2ad9ef5"
+version = "0.1.2.post123.dev0+b316f8a"
 
 # Namespaces
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
@@ -249,6 +250,10 @@ class CryoEMInstrumentId(InstrumentId):
 
 
 class XRayInstrumentId(InstrumentId):
+    pass
+
+
+class SANSInstrumentId(InstrumentId):
     pass
 
 
@@ -1240,6 +1245,226 @@ class XRayInstrument(Instrument):
 
         if self.crystal_cooling_capability is not None and not isinstance(self.crystal_cooling_capability, Bool):
             self.crystal_cooling_capability = Bool(self.crystal_cooling_capability)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SANSDetector(AttributeGroup):
+    """
+    Description of a detector used in a SANS instrument
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SANSDetector"]
+    class_class_curie: ClassVar[str] = "lambda:SANSDetector"
+    class_name: ClassVar[str] = "SANSDetector"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SANSDetector
+
+    detector_name: Optional[str] = None
+    detector_type: Optional[str] = None
+    detector_description: Optional[str] = None
+    pixel_size_x: Optional[Union[dict, "QuantityValue"]] = None
+    pixel_size_y: Optional[Union[dict, "QuantityValue"]] = None
+    sample_detector_distance: Optional[Union[dict, "QuantityValue"]] = None
+    rotation_angle: Optional[Union[dict, "QuantityValue"]] = None
+    beam_trap_type: Optional[str] = None
+    beam_trap_position_x: Optional[Union[dict, "QuantityValue"]] = None
+    beam_trap_position_y: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.detector_name is not None and not isinstance(self.detector_name, str):
+            self.detector_name = str(self.detector_name)
+
+        if self.detector_type is not None and not isinstance(self.detector_type, str):
+            self.detector_type = str(self.detector_type)
+
+        if self.detector_description is not None and not isinstance(self.detector_description, str):
+            self.detector_description = str(self.detector_description)
+
+        if self.pixel_size_x is not None and not isinstance(self.pixel_size_x, QuantityValue):
+            self.pixel_size_x = QuantityValue(**as_dict(self.pixel_size_x))
+
+        if self.pixel_size_y is not None and not isinstance(self.pixel_size_y, QuantityValue):
+            self.pixel_size_y = QuantityValue(**as_dict(self.pixel_size_y))
+
+        if self.sample_detector_distance is not None and not isinstance(self.sample_detector_distance, QuantityValue):
+            self.sample_detector_distance = QuantityValue(**as_dict(self.sample_detector_distance))
+
+        if self.rotation_angle is not None and not isinstance(self.rotation_angle, QuantityValue):
+            self.rotation_angle = QuantityValue(**as_dict(self.rotation_angle))
+
+        if self.beam_trap_type is not None and not isinstance(self.beam_trap_type, str):
+            self.beam_trap_type = str(self.beam_trap_type)
+
+        if self.beam_trap_position_x is not None and not isinstance(self.beam_trap_position_x, QuantityValue):
+            self.beam_trap_position_x = QuantityValue(**as_dict(self.beam_trap_position_x))
+
+        if self.beam_trap_position_y is not None and not isinstance(self.beam_trap_position_y, QuantityValue):
+            self.beam_trap_position_y = QuantityValue(**as_dict(self.beam_trap_position_y))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SANSSource(AttributeGroup):
+    """
+    Beam source parameters for a SANS instrument
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SANSSource"]
+    class_class_curie: ClassVar[str] = "lambda:SANSSource"
+    class_name: ClassVar[str] = "SANSSource"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SANSSource
+
+    source_type: Optional[str] = None
+    source_description: Optional[str] = None
+    wavelength: Optional[Union[dict, "QuantityValue"]] = None
+    wavelength_spread: Optional[Union[dict, "QuantityValue"]] = None
+    wavelength_selection_method: Optional[str] = None
+    energy: Optional[Union[dict, "QuantityValue"]] = None
+    flux: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.source_type is not None and not isinstance(self.source_type, str):
+            self.source_type = str(self.source_type)
+
+        if self.source_description is not None and not isinstance(self.source_description, str):
+            self.source_description = str(self.source_description)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, QuantityValue):
+            self.wavelength = QuantityValue(**as_dict(self.wavelength))
+
+        if self.wavelength_spread is not None and not isinstance(self.wavelength_spread, QuantityValue):
+            self.wavelength_spread = QuantityValue(**as_dict(self.wavelength_spread))
+
+        if self.wavelength_selection_method is not None and not isinstance(self.wavelength_selection_method, str):
+            self.wavelength_selection_method = str(self.wavelength_selection_method)
+
+        if self.energy is not None and not isinstance(self.energy, QuantityValue):
+            self.energy = QuantityValue(**as_dict(self.energy))
+
+        if self.flux is not None and not isinstance(self.flux, QuantityValue):
+            self.flux = QuantityValue(**as_dict(self.flux))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SANSConfiguration(AttributeGroup):
+    """
+    Experimental configuration for a SANS instrument
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SANSConfiguration"]
+    class_class_curie: ClassVar[str] = "lambda:SANSConfiguration"
+    class_name: ClassVar[str] = "SANSConfiguration"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SANSConfiguration
+
+    q_min: Optional[Union[dict, "QuantityValue"]] = None
+    q_max: Optional[Union[dict, "QuantityValue"]] = None
+    number_of_guides: Optional[int] = None
+    attenuator: Optional[str] = None
+    source_aperature_diameter: Optional[Union[dict, "QuantityValue"]] = None
+    sample_aperature_diameter: Optional[Union[dict, "QuantityValue"]] = None
+    siwindow_to_main_distance: Optional[Union[dict, "QuantityValue"]] = None
+    sample_ap_to_si_distance: Optional[Union[dict, "QuantityValue"]] = None
+    sample_ap_to_main_distance: Optional[Union[dict, "QuantityValue"]] = None
+    sample_ap_to_sample_distance: Optional[Union[dict, "QuantityValue"]] = None
+    source_ap_to_siwindow_distance: Optional[Union[dict, "QuantityValue"]] = None
+    source_ap_to_sample_ap_distance: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.q_min is not None and not isinstance(self.q_min, QuantityValue):
+            self.q_min = QuantityValue(**as_dict(self.q_min))
+
+        if self.q_max is not None and not isinstance(self.q_max, QuantityValue):
+            self.q_max = QuantityValue(**as_dict(self.q_max))
+
+        if self.number_of_guides is not None and not isinstance(self.number_of_guides, int):
+            self.number_of_guides = int(self.number_of_guides)
+
+        if self.attenuator is not None and not isinstance(self.attenuator, str):
+            self.attenuator = str(self.attenuator)
+
+        if self.source_aperature_diameter is not None and not isinstance(self.source_aperature_diameter, QuantityValue):
+            self.source_aperature_diameter = QuantityValue(**as_dict(self.source_aperature_diameter))
+
+        if self.sample_aperature_diameter is not None and not isinstance(self.sample_aperature_diameter, QuantityValue):
+            self.sample_aperature_diameter = QuantityValue(**as_dict(self.sample_aperature_diameter))
+
+        if self.siwindow_to_main_distance is not None and not isinstance(self.siwindow_to_main_distance, QuantityValue):
+            self.siwindow_to_main_distance = QuantityValue(**as_dict(self.siwindow_to_main_distance))
+
+        if self.sample_ap_to_si_distance is not None and not isinstance(self.sample_ap_to_si_distance, QuantityValue):
+            self.sample_ap_to_si_distance = QuantityValue(**as_dict(self.sample_ap_to_si_distance))
+
+        if self.sample_ap_to_main_distance is not None and not isinstance(self.sample_ap_to_main_distance, QuantityValue):
+            self.sample_ap_to_main_distance = QuantityValue(**as_dict(self.sample_ap_to_main_distance))
+
+        if self.sample_ap_to_sample_distance is not None and not isinstance(self.sample_ap_to_sample_distance, QuantityValue):
+            self.sample_ap_to_sample_distance = QuantityValue(**as_dict(self.sample_ap_to_sample_distance))
+
+        if self.source_ap_to_siwindow_distance is not None and not isinstance(self.source_ap_to_siwindow_distance, QuantityValue):
+            self.source_ap_to_siwindow_distance = QuantityValue(**as_dict(self.source_ap_to_siwindow_distance))
+
+        if self.source_ap_to_sample_ap_distance is not None and not isinstance(self.source_ap_to_sample_ap_distance, QuantityValue):
+            self.source_ap_to_sample_ap_distance = QuantityValue(**as_dict(self.source_ap_to_sample_ap_distance))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SANSInstrument(Instrument):
+    """
+    Small-angle neutron scattering (SANS) instrument specifications
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LAMBDA["SANSInstrument"]
+    class_class_curie: ClassVar[str] = "lambda:SANSInstrument"
+    class_name: ClassVar[str] = "SANSInstrument"
+    class_model_uri: ClassVar[URIRef] = LAMBDA.SANSInstrument
+
+    id: Union[str, SANSInstrumentId] = None
+    instrument_code: str = None
+    technique: Optional[Union[str, "TechniqueEnum"]] = 'sans'
+    q_range_min: Optional[Union[dict, "QuantityValue"]] = None
+    q_range_max: Optional[Union[dict, "QuantityValue"]] = None
+    detectors: Optional[Union[Union[dict, SANSDetector], list[Union[dict, SANSDetector]]]] = empty_list()
+    source: Optional[Union[dict, SANSSource]] = None
+    configuration: Optional[Union[dict, SANSConfiguration]] = None
+    environment: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SANSInstrumentId):
+            self.id = SANSInstrumentId(self.id)
+
+        if self.technique is not None and not isinstance(self.technique, TechniqueEnum):
+            self.technique = getattr(TechniqueEnum, self.technique)
+
+        if self.q_range_min is not None and not isinstance(self.q_range_min, QuantityValue):
+            self.q_range_min = QuantityValue(**as_dict(self.q_range_min))
+
+        if self.q_range_max is not None and not isinstance(self.q_range_max, QuantityValue):
+            self.q_range_max = QuantityValue(**as_dict(self.q_range_max))
+
+        if not isinstance(self.detectors, list):
+            self.detectors = [self.detectors] if self.detectors is not None else []
+        self.detectors = [v if isinstance(v, SANSDetector) else SANSDetector(**as_dict(v)) for v in self.detectors]
+
+        if self.source is not None and not isinstance(self.source, SANSSource):
+            self.source = SANSSource(**as_dict(self.source))
+
+        if self.configuration is not None and not isinstance(self.configuration, SANSConfiguration):
+            self.configuration = SANSConfiguration(**as_dict(self.configuration))
+
+        if self.environment is not None and not isinstance(self.environment, str):
+            self.environment = str(self.environment)
 
         super().__post_init__(**kwargs)
 
@@ -7209,22 +7434,22 @@ slots.sample__conformational_ensemble = Slot(uri=LAMBDA.conformational_ensemble,
 slots.sample__database_cross_references = Slot(uri=LAMBDA.database_cross_references, name="sample__database_cross_references", curie=LAMBDA.curie('database_cross_references'),
                    model_uri=LAMBDA.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
 
-slots.sample__protein_name = Slot(uri=NSLS2.Protein_Name, name="sample__protein_name", curie=NSLS2.curie('Protein_Name'),
+slots.sample__protein_name = Slot(uri=LAMBDA.protein_name, name="sample__protein_name", curie=LAMBDA.curie('protein_name'),
                    model_uri=LAMBDA.sample__protein_name, domain=None, range=Optional[str])
 
-slots.sample__construct = Slot(uri=NSLS2.Construct, name="sample__construct", curie=NSLS2.curie('Construct'),
+slots.sample__construct = Slot(uri=LAMBDA.construct, name="sample__construct", curie=LAMBDA.curie('construct'),
                    model_uri=LAMBDA.sample__construct, domain=None, range=Optional[str])
 
-slots.sample__tag = Slot(uri=NSLS2.Tag, name="sample__tag", curie=NSLS2.curie('Tag'),
+slots.sample__tag = Slot(uri=LAMBDA.tag, name="sample__tag", curie=LAMBDA.curie('tag'),
                    model_uri=LAMBDA.sample__tag, domain=None, range=Optional[str])
 
-slots.sample__mutations = Slot(uri=NSLS2.Mutations, name="sample__mutations", curie=NSLS2.curie('Mutations'),
+slots.sample__mutations = Slot(uri=LAMBDA.mutations, name="sample__mutations", curie=LAMBDA.curie('mutations'),
                    model_uri=LAMBDA.sample__mutations, domain=None, range=Optional[str])
 
-slots.sample__expression_system = Slot(uri=NSLS2.Expression_System, name="sample__expression_system", curie=NSLS2.curie('Expression_System'),
+slots.sample__expression_system = Slot(uri=LAMBDA.expression_system, name="sample__expression_system", curie=LAMBDA.curie('expression_system'),
                    model_uri=LAMBDA.sample__expression_system, domain=None, range=Optional[str])
 
-slots.sample__ligand = Slot(uri=NSLS2.Ligand, name="sample__ligand", curie=NSLS2.curie('Ligand'),
+slots.sample__ligand = Slot(uri=LAMBDA.ligand, name="sample__ligand", curie=LAMBDA.curie('ligand'),
                    model_uri=LAMBDA.sample__ligand, domain=None, range=Optional[str])
 
 slots.sample__oligomeric_state = Slot(uri=LAMBDA.oligomeric_state, name="sample__oligomeric_state", curie=LAMBDA.curie('oligomeric_state'),
@@ -7432,7 +7657,7 @@ slots.instrument__facility_ror = Slot(uri=LAMBDA.facility_ror, name="instrument_
                    model_uri=LAMBDA.instrument__facility_ror, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^https://ror\.org/\w+$'))
 
-slots.instrument__beamline_id = Slot(uri=MMCIF['_diffrn_source.pdbx_synchrotron_beamline'], name="instrument__beamline_id", curie=MMCIF.curie('_diffrn_source.pdbx_synchrotron_beamline'),
+slots.instrument__beamline_id = Slot(uri=LAMBDA.beamline_id, name="instrument__beamline_id", curie=LAMBDA.curie('beamline_id'),
                    model_uri=LAMBDA.instrument__beamline_id, domain=None, range=Optional[str])
 
 slots.instrument__manufacturer = Slot(uri=LAMBDA.manufacturer, name="instrument__manufacturer", curie=LAMBDA.curie('manufacturer'),
@@ -7528,7 +7753,7 @@ slots.cryoEMInstrument__tem_beam_diameter = Slot(uri=LAMBDA.tem_beam_diameter, n
 slots.xRayInstrument__source_type = Slot(uri=LAMBDA.source_type, name="xRayInstrument__source_type", curie=LAMBDA.curie('source_type'),
                    model_uri=LAMBDA.xRayInstrument__source_type, domain=None, range=Optional[Union[str, "XRaySourceTypeEnum"]])
 
-slots.xRayInstrument__detector_technology = Slot(uri=NSLS2.Detector, name="xRayInstrument__detector_technology", curie=NSLS2.curie('Detector'),
+slots.xRayInstrument__detector_technology = Slot(uri=LAMBDA.detector_technology, name="xRayInstrument__detector_technology", curie=LAMBDA.curie('detector_technology'),
                    model_uri=LAMBDA.xRayInstrument__detector_technology, domain=None, range=Optional[Union[str, "DetectorTechnologyEnum"]])
 
 slots.xRayInstrument__detector_manufacturer = Slot(uri=LAMBDA.detector_manufacturer, name="xRayInstrument__detector_manufacturer", curie=LAMBDA.curie('detector_manufacturer'),
@@ -7560,6 +7785,114 @@ slots.xRayInstrument__goniometer_type = Slot(uri=LAMBDA.goniometer_type, name="x
 
 slots.xRayInstrument__crystal_cooling_capability = Slot(uri=LAMBDA.crystal_cooling_capability, name="xRayInstrument__crystal_cooling_capability", curie=LAMBDA.curie('crystal_cooling_capability'),
                    model_uri=LAMBDA.xRayInstrument__crystal_cooling_capability, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.sANSDetector__detector_name = Slot(uri=LAMBDA.detector_name, name="sANSDetector__detector_name", curie=LAMBDA.curie('detector_name'),
+                   model_uri=LAMBDA.sANSDetector__detector_name, domain=None, range=Optional[str])
+
+slots.sANSDetector__detector_type = Slot(uri=LAMBDA.detector_type, name="sANSDetector__detector_type", curie=LAMBDA.curie('detector_type'),
+                   model_uri=LAMBDA.sANSDetector__detector_type, domain=None, range=Optional[str])
+
+slots.sANSDetector__detector_description = Slot(uri=LAMBDA.detector_description, name="sANSDetector__detector_description", curie=LAMBDA.curie('detector_description'),
+                   model_uri=LAMBDA.sANSDetector__detector_description, domain=None, range=Optional[str])
+
+slots.sANSDetector__pixel_size_x = Slot(uri=LAMBDA.pixel_size_x, name="sANSDetector__pixel_size_x", curie=LAMBDA.curie('pixel_size_x'),
+                   model_uri=LAMBDA.sANSDetector__pixel_size_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSDetector__pixel_size_y = Slot(uri=LAMBDA.pixel_size_y, name="sANSDetector__pixel_size_y", curie=LAMBDA.curie('pixel_size_y'),
+                   model_uri=LAMBDA.sANSDetector__pixel_size_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSDetector__sample_detector_distance = Slot(uri=LAMBDA.sample_detector_distance, name="sANSDetector__sample_detector_distance", curie=LAMBDA.curie('sample_detector_distance'),
+                   model_uri=LAMBDA.sANSDetector__sample_detector_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSDetector__rotation_angle = Slot(uri=LAMBDA.rotation_angle, name="sANSDetector__rotation_angle", curie=LAMBDA.curie('rotation_angle'),
+                   model_uri=LAMBDA.sANSDetector__rotation_angle, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSDetector__beam_trap_type = Slot(uri=LAMBDA.beam_trap_type, name="sANSDetector__beam_trap_type", curie=LAMBDA.curie('beam_trap_type'),
+                   model_uri=LAMBDA.sANSDetector__beam_trap_type, domain=None, range=Optional[str])
+
+slots.sANSDetector__beam_trap_position_x = Slot(uri=LAMBDA.beam_trap_position_x, name="sANSDetector__beam_trap_position_x", curie=LAMBDA.curie('beam_trap_position_x'),
+                   model_uri=LAMBDA.sANSDetector__beam_trap_position_x, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSDetector__beam_trap_position_y = Slot(uri=LAMBDA.beam_trap_position_y, name="sANSDetector__beam_trap_position_y", curie=LAMBDA.curie('beam_trap_position_y'),
+                   model_uri=LAMBDA.sANSDetector__beam_trap_position_y, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSSource__source_type = Slot(uri=LAMBDA.source_type, name="sANSSource__source_type", curie=LAMBDA.curie('source_type'),
+                   model_uri=LAMBDA.sANSSource__source_type, domain=None, range=Optional[str])
+
+slots.sANSSource__source_description = Slot(uri=LAMBDA.source_description, name="sANSSource__source_description", curie=LAMBDA.curie('source_description'),
+                   model_uri=LAMBDA.sANSSource__source_description, domain=None, range=Optional[str])
+
+slots.sANSSource__wavelength = Slot(uri=LAMBDA.wavelength, name="sANSSource__wavelength", curie=LAMBDA.curie('wavelength'),
+                   model_uri=LAMBDA.sANSSource__wavelength, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSSource__wavelength_spread = Slot(uri=LAMBDA.wavelength_spread, name="sANSSource__wavelength_spread", curie=LAMBDA.curie('wavelength_spread'),
+                   model_uri=LAMBDA.sANSSource__wavelength_spread, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSSource__wavelength_selection_method = Slot(uri=LAMBDA.wavelength_selection_method, name="sANSSource__wavelength_selection_method", curie=LAMBDA.curie('wavelength_selection_method'),
+                   model_uri=LAMBDA.sANSSource__wavelength_selection_method, domain=None, range=Optional[str])
+
+slots.sANSSource__energy = Slot(uri=LAMBDA.energy, name="sANSSource__energy", curie=LAMBDA.curie('energy'),
+                   model_uri=LAMBDA.sANSSource__energy, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSSource__flux = Slot(uri=LAMBDA.flux, name="sANSSource__flux", curie=LAMBDA.curie('flux'),
+                   model_uri=LAMBDA.sANSSource__flux, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__q_min = Slot(uri=LAMBDA.q_min, name="sANSConfiguration__q_min", curie=LAMBDA.curie('q_min'),
+                   model_uri=LAMBDA.sANSConfiguration__q_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__q_max = Slot(uri=LAMBDA.q_max, name="sANSConfiguration__q_max", curie=LAMBDA.curie('q_max'),
+                   model_uri=LAMBDA.sANSConfiguration__q_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__number_of_guides = Slot(uri=LAMBDA.number_of_guides, name="sANSConfiguration__number_of_guides", curie=LAMBDA.curie('number_of_guides'),
+                   model_uri=LAMBDA.sANSConfiguration__number_of_guides, domain=None, range=Optional[int])
+
+slots.sANSConfiguration__attenuator = Slot(uri=LAMBDA.attenuator, name="sANSConfiguration__attenuator", curie=LAMBDA.curie('attenuator'),
+                   model_uri=LAMBDA.sANSConfiguration__attenuator, domain=None, range=Optional[str])
+
+slots.sANSConfiguration__source_aperature_diameter = Slot(uri=LAMBDA.source_aperature_diameter, name="sANSConfiguration__source_aperature_diameter", curie=LAMBDA.curie('source_aperature_diameter'),
+                   model_uri=LAMBDA.sANSConfiguration__source_aperature_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__sample_aperature_diameter = Slot(uri=LAMBDA.sample_aperature_diameter, name="sANSConfiguration__sample_aperature_diameter", curie=LAMBDA.curie('sample_aperature_diameter'),
+                   model_uri=LAMBDA.sANSConfiguration__sample_aperature_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__siwindow_to_main_distance = Slot(uri=LAMBDA.siwindow_to_main_distance, name="sANSConfiguration__siwindow_to_main_distance", curie=LAMBDA.curie('siwindow_to_main_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__siwindow_to_main_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__sample_ap_to_si_distance = Slot(uri=LAMBDA.sample_ap_to_si_distance, name="sANSConfiguration__sample_ap_to_si_distance", curie=LAMBDA.curie('sample_ap_to_si_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__sample_ap_to_si_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__sample_ap_to_main_distance = Slot(uri=LAMBDA.sample_ap_to_main_distance, name="sANSConfiguration__sample_ap_to_main_distance", curie=LAMBDA.curie('sample_ap_to_main_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__sample_ap_to_main_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__sample_ap_to_sample_distance = Slot(uri=LAMBDA.sample_ap_to_sample_distance, name="sANSConfiguration__sample_ap_to_sample_distance", curie=LAMBDA.curie('sample_ap_to_sample_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__sample_ap_to_sample_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__source_ap_to_siwindow_distance = Slot(uri=LAMBDA.source_ap_to_siwindow_distance, name="sANSConfiguration__source_ap_to_siwindow_distance", curie=LAMBDA.curie('source_ap_to_siwindow_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__source_ap_to_siwindow_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSConfiguration__source_ap_to_sample_ap_distance = Slot(uri=LAMBDA.source_ap_to_sample_ap_distance, name="sANSConfiguration__source_ap_to_sample_ap_distance", curie=LAMBDA.curie('source_ap_to_sample_ap_distance'),
+                   model_uri=LAMBDA.sANSConfiguration__source_ap_to_sample_ap_distance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSInstrument__technique = Slot(uri=LAMBDA.technique, name="sANSInstrument__technique", curie=LAMBDA.curie('technique'),
+                   model_uri=LAMBDA.sANSInstrument__technique, domain=None, range=Optional[Union[str, "TechniqueEnum"]])
+
+slots.sANSInstrument__q_range_min = Slot(uri=LAMBDA.q_range_min, name="sANSInstrument__q_range_min", curie=LAMBDA.curie('q_range_min'),
+                   model_uri=LAMBDA.sANSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSInstrument__q_range_max = Slot(uri=LAMBDA.q_range_max, name="sANSInstrument__q_range_max", curie=LAMBDA.curie('q_range_max'),
+                   model_uri=LAMBDA.sANSInstrument__q_range_max, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sANSInstrument__detectors = Slot(uri=LAMBDA.detectors, name="sANSInstrument__detectors", curie=LAMBDA.curie('detectors'),
+                   model_uri=LAMBDA.sANSInstrument__detectors, domain=None, range=Optional[Union[Union[dict, SANSDetector], list[Union[dict, SANSDetector]]]])
+
+slots.sANSInstrument__source = Slot(uri=LAMBDA.source, name="sANSInstrument__source", curie=LAMBDA.curie('source'),
+                   model_uri=LAMBDA.sANSInstrument__source, domain=None, range=Optional[Union[dict, SANSSource]])
+
+slots.sANSInstrument__configuration = Slot(uri=LAMBDA.configuration, name="sANSInstrument__configuration", curie=LAMBDA.curie('configuration'),
+                   model_uri=LAMBDA.sANSInstrument__configuration, domain=None, range=Optional[Union[dict, SANSConfiguration]])
+
+slots.sANSInstrument__environment = Slot(uri=LAMBDA.environment, name="sANSInstrument__environment", curie=LAMBDA.curie('environment'),
+                   model_uri=LAMBDA.sANSInstrument__environment, domain=None, range=Optional[str])
 
 slots.sAXSInstrument__q_range_min = Slot(uri=LAMBDA.q_range_min, name="sAXSInstrument__q_range_min", curie=LAMBDA.curie('q_range_min'),
                    model_uri=LAMBDA.sAXSInstrument__q_range_min, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -8311,25 +8644,25 @@ slots.cryoEMPreparation__ethane_temperature = Slot(uri=LAMBDA.ethane_temperature
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=LAMBDA.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=LAMBDA.curie('plasma_treatment'),
                    model_uri=LAMBDA.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__method = Slot(uri=NSLS2.Method, name="crystallizationConditions__method", curie=NSLS2.curie('Method'),
+slots.crystallizationConditions__method = Slot(uri=LAMBDA.method, name="crystallizationConditions__method", curie=LAMBDA.curie('method'),
                    model_uri=LAMBDA.crystallizationConditions__method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
 
-slots.crystallizationConditions__crystallization_conditions = Slot(uri=NSLS2.Conditions, name="crystallizationConditions__crystallization_conditions", curie=NSLS2.curie('Conditions'),
+slots.crystallizationConditions__crystallization_conditions = Slot(uri=LAMBDA.crystallization_conditions, name="crystallizationConditions__crystallization_conditions", curie=LAMBDA.curie('crystallization_conditions'),
                    model_uri=LAMBDA.crystallizationConditions__crystallization_conditions, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__drop_volume = Slot(uri=NSLS2.Drop_Volume, name="crystallizationConditions__drop_volume", curie=NSLS2.curie('Drop_Volume'),
+slots.crystallizationConditions__drop_volume = Slot(uri=LAMBDA.drop_volume, name="crystallizationConditions__drop_volume", curie=LAMBDA.curie('drop_volume'),
                    model_uri=LAMBDA.crystallizationConditions__drop_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.crystallizationConditions__protein_concentration = Slot(uri=LAMBDA.protein_concentration, name="crystallizationConditions__protein_concentration", curie=LAMBDA.curie('protein_concentration'),
                    model_uri=LAMBDA.crystallizationConditions__protein_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.crystallizationConditions__crystal_size_um = Slot(uri=NSLS2.Crystal_Size, name="crystallizationConditions__crystal_size_um", curie=NSLS2.curie('Crystal_Size'),
+slots.crystallizationConditions__crystal_size_um = Slot(uri=LAMBDA.crystal_size_um, name="crystallizationConditions__crystal_size_um", curie=LAMBDA.curie('crystal_size_um'),
                    model_uri=LAMBDA.crystallizationConditions__crystal_size_um, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__cryo_protectant = Slot(uri=NSLS2.Cryo_Protectant, name="crystallizationConditions__cryo_protectant", curie=NSLS2.curie('Cryo_Protectant'),
+slots.crystallizationConditions__cryo_protectant = Slot(uri=LAMBDA.cryo_protectant, name="crystallizationConditions__cryo_protectant", curie=LAMBDA.curie('cryo_protectant'),
                    model_uri=LAMBDA.crystallizationConditions__cryo_protectant, domain=None, range=Optional[str])
 
-slots.crystallizationConditions__crystal_id = Slot(uri=NSLS2.Crystal_ID, name="crystallizationConditions__crystal_id", curie=NSLS2.curie('Crystal_ID'),
+slots.crystallizationConditions__crystal_id = Slot(uri=LAMBDA.crystal_id, name="crystallizationConditions__crystal_id", curie=LAMBDA.curie('crystal_id'),
                    model_uri=LAMBDA.crystallizationConditions__crystal_id, domain=None, range=Optional[str])
 
 slots.crystallizationConditions__screen_name = Slot(uri=LAMBDA.screen_name, name="crystallizationConditions__screen_name", curie=LAMBDA.curie('screen_name'),
@@ -8410,7 +8743,7 @@ slots.xRayPreparation__soak_compound = Slot(uri=LAMBDA.soak_compound, name="xRay
 slots.xRayPreparation__soak_conditions = Slot(uri=LAMBDA.soak_conditions, name="xRayPreparation__soak_conditions", curie=LAMBDA.curie('soak_conditions'),
                    model_uri=LAMBDA.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
 
-slots.xRayPreparation__mounting_method = Slot(uri=NSLS2.Mount_Type, name="xRayPreparation__mounting_method", curie=NSLS2.curie('Mount_Type'),
+slots.xRayPreparation__mounting_method = Slot(uri=LAMBDA.mounting_method, name="xRayPreparation__mounting_method", curie=LAMBDA.curie('mounting_method'),
                    model_uri=LAMBDA.xRayPreparation__mounting_method, domain=None, range=Optional[str])
 
 slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDA.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=LAMBDA.curie('flash_cooling_method'),
@@ -8419,10 +8752,10 @@ slots.xRayPreparation__flash_cooling_method = Slot(uri=LAMBDA.flash_cooling_meth
 slots.xRayPreparation__crystal_notes = Slot(uri=LAMBDA.crystal_notes, name="xRayPreparation__crystal_notes", curie=LAMBDA.curie('crystal_notes'),
                    model_uri=LAMBDA.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
 
-slots.xRayPreparation__loop_size = Slot(uri=NSLS2.Loop_Size, name="xRayPreparation__loop_size", curie=NSLS2.curie('Loop_Size'),
+slots.xRayPreparation__loop_size = Slot(uri=LAMBDA.loop_size, name="xRayPreparation__loop_size", curie=LAMBDA.curie('loop_size'),
                    model_uri=LAMBDA.xRayPreparation__loop_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.xRayPreparation__mounting_temperature = Slot(uri=NSLS2.Temperature, name="xRayPreparation__mounting_temperature", curie=NSLS2.curie('Temperature'),
+slots.xRayPreparation__mounting_temperature = Slot(uri=LAMBDA.mounting_temperature, name="xRayPreparation__mounting_temperature", curie=LAMBDA.curie('mounting_temperature'),
                    model_uri=LAMBDA.xRayPreparation__mounting_temperature, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=LAMBDA.concentration_series, name="sAXSPreparation__concentration_series", curie=LAMBDA.curie('concentration_series'),

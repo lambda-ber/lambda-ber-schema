@@ -1,13 +1,11 @@
 # metamodel_version: 1.7.0
-# version: 0.1.2.post32.dev0+2ad9ef5
+# version: 0.1.2.post123.dev0+b316f8a
 BASE <http://w3id.org/lambda/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX nmdc: <https://w3id.org/nmdc/>
-PREFIX nsls2: <https://github.com/NSLS2/BER-LAMBDA/>
-PREFIX mmCIF: <http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/>
 PREFIX ROR: <https://ror.org/>
 
 
@@ -106,8 +104,8 @@ linkml:Sparqlpath xsd:string
     @<DataCollectionStrategy> OR @<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> OR
     @<ExperimentalConditions> OR @<FSCCurve> OR @<ImageFeature> OR
     @<http://w3id.org/lambda/functional_annotation/LigandInteraction> OR @<MolecularComposition> OR @<MotionCorrectionParameters>
-    OR @<ParticlePickingParameters> OR @<QualityMetrics> OR @<RefinementParameters> OR @<StorageConditions> OR
-    @<TechniqueSpecificPreparation>
+    OR @<ParticlePickingParameters> OR @<QualityMetrics> OR @<RefinementParameters> OR @<SANSConfiguration> OR @<SANSDetector> OR
+    @<SANSSource> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
 )
 
 <AttributeGroup_struct> {
@@ -337,17 +335,17 @@ linkml:Sparqlpath xsd:string
 <CrystallizationConditions> CLOSED {
     (  $<CrystallizationConditions_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          nsls2:Method [ <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_hanging>
+          <method> [ <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_hanging>
              <http://w3id.org/lambda/CrystallizationMethodEnum#vapor_diffusion_sitting>
              <http://w3id.org/lambda/CrystallizationMethodEnum#batch> <http://w3id.org/lambda/CrystallizationMethodEnum#microbatch>
              <http://w3id.org/lambda/CrystallizationMethodEnum#lcp> <http://w3id.org/lambda/CrystallizationMethodEnum#dialysis>
              <http://w3id.org/lambda/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
-          nsls2:Conditions @linkml:String ? ;
-          nsls2:Drop_Volume @<QuantityValue> ? ;
+          <crystallization_conditions> @linkml:String ? ;
+          <drop_volume> @<QuantityValue> ? ;
           <protein_concentration> @<QuantityValue> ? ;
-          nsls2:Crystal_Size @linkml:String ? ;
-          nsls2:Cryo_Protectant @linkml:String ? ;
-          nsls2:Crystal_ID @linkml:String ? ;
+          <crystal_size_um> @linkml:String ? ;
+          <cryo_protectant> @linkml:String ? ;
+          <crystal_id> @linkml:String ? ;
           <screen_name> @linkml:String ? ;
           <temperature_c> @<QuantityValue> ? ;
           <drop_ratio_protein_to_reservoir> @linkml:String ? ;
@@ -787,7 +785,7 @@ linkml:Sparqlpath xsd:string
              <facility_name> [ ROR:01q47ea17 ROR:02jbv0t02 ROR:05gzmn429 ROR:02550n020 ROR:05etxs293 ROR:01g5y5k24 ROR:05gvnxz63
                 ROR:01xjv7358 ROR:01js2sh04 ROR:01ydb3330 ROR:03vk18a84 ROR:05h992307 ROR:01qz5mb56 ROR:01qz5mb56 ] ? ;
              <facility_ror> @linkml:Uriorcurie ? ;
-             mmCIF:_diffrn_source.pdbx_synchrotron_beamline @linkml:String ? ;
+             <beamline_id> @linkml:String ? ;
              <manufacturer> @linkml:String ? ;
              <model> @linkml:String ? ;
              <installation_date> @linkml:String ? ;
@@ -797,7 +795,7 @@ linkml:Sparqlpath xsd:string
           ) ;
           rdf:type [ <Instrument> ]
        )
-    } OR @<BeamlineInstrument> OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
+    } OR @<BeamlineInstrument> OR @<CryoEMInstrument> OR @<SANSInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
 )
 
 <http://w3id.org/lambda/functional_annotation/LigandInteraction> CLOSED {
@@ -1300,12 +1298,12 @@ linkml:Sparqlpath xsd:string
           <evolutionary_conservation> @<http://w3id.org/lambda/functional_annotation/EvolutionaryConservation> ? ;
           <conformational_ensemble> @<http://w3id.org/lambda/functional_annotation/ConformationalEnsemble> ? ;
           <database_cross_references> @<http://w3id.org/lambda/functional_annotation/DatabaseCrossReference> * ;
-          nsls2:Protein_Name @linkml:String ? ;
-          nsls2:Construct @linkml:String ? ;
-          nsls2:Tag @linkml:String ? ;
-          nsls2:Mutations @linkml:String ? ;
-          nsls2:Expression_System @linkml:String ? ;
-          nsls2:Ligand @linkml:String ? ;
+          <protein_name> @linkml:String ? ;
+          <construct> @linkml:String ? ;
+          <tag> @linkml:String ? ;
+          <mutations> @linkml:String ? ;
+          <expression_system> @linkml:String ? ;
+          <ligand> @linkml:String ? ;
           <oligomeric_state> @linkml:String ?
        ) ;
        rdf:type [ <Sample> ]
@@ -1372,6 +1370,81 @@ linkml:Sparqlpath xsd:string
           <aliquoting> @linkml:String ?
        ) ;
        rdf:type [ <SamplePreparation> ]
+    )
+}
+
+<SANSConfiguration> CLOSED {
+    (  $<SANSConfiguration_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <q_min> @<QuantityValue> ? ;
+          <q_max> @<QuantityValue> ? ;
+          <number_of_guides> @linkml:Integer ? ;
+          <attenuator> @linkml:String ? ;
+          <source_aperature_diameter> @<QuantityValue> ? ;
+          <sample_aperature_diameter> @<QuantityValue> ? ;
+          <siwindow_to_main_distance> @<QuantityValue> ? ;
+          <sample_ap_to_si_distance> @<QuantityValue> ? ;
+          <sample_ap_to_main_distance> @<QuantityValue> ? ;
+          <sample_ap_to_sample_distance> @<QuantityValue> ? ;
+          <source_ap_to_siwindow_distance> @<QuantityValue> ? ;
+          <source_ap_to_sample_ap_distance> @<QuantityValue> ?
+       ) ;
+       rdf:type [ <SANSConfiguration> ] ?
+    )
+}
+
+<SANSDetector> CLOSED {
+    (  $<SANSDetector_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <detector_name> @linkml:String ? ;
+          <detector_type> @linkml:String ? ;
+          <detector_description> @linkml:String ? ;
+          <pixel_size_x> @<QuantityValue> ? ;
+          <pixel_size_y> @<QuantityValue> ? ;
+          <sample_detector_distance> @<QuantityValue> ? ;
+          <rotation_angle> @<QuantityValue> ? ;
+          <beam_trap_type> @linkml:String ? ;
+          <beam_trap_position_x> @<QuantityValue> ? ;
+          <beam_trap_position_y> @<QuantityValue> ?
+       ) ;
+       rdf:type [ <SANSDetector> ] ?
+    )
+}
+
+<SANSInstrument> CLOSED {
+    (  $<SANSInstrument_tes> (  &<Instrument_tes> ;
+          rdf:type [ <Instrument> ] ? ;
+          <technique> [ <http://purl.obolibrary.org/obo/CHMO_0002413> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000204> <http://purl.obolibrary.org/obo/CHMO_0000207>
+             <http://purl.obolibrary.org/obo/CHMO_0000184> <http://purl.obolibrary.org/obo/CHMO_0002413>
+             <http://purl.obolibrary.org/obo/CHMO_0000068> <http://purl.obolibrary.org/obo/CHMO_0000470>
+             <http://purl.obolibrary.org/obo/CHMO_0000298> <http://purl.obolibrary.org/obo/CHMO_0000305>
+             <http://purl.obolibrary.org/obo/CHMO_0000300> <http://w3id.org/lambda/TechniqueEnum#xmcd>
+             <http://purl.obolibrary.org/obo/CHMO_0000182> <http://purl.obolibrary.org/obo/CHMO_0000156>
+             <http://purl.obolibrary.org/obo/CHMO_0000156> <http://purl.obolibrary.org/obo/CHMO_0002743> ] ? ;
+          <q_range_min> @<QuantityValue> ? ;
+          <q_range_max> @<QuantityValue> ? ;
+          <detectors> @<SANSDetector> * ;
+          <source> @<SANSSource> ? ;
+          <configuration> @<SANSConfiguration> ? ;
+          <environment> @linkml:String ?
+       ) ;
+       rdf:type [ <SANSInstrument> ]
+    )
+}
+
+<SANSSource> CLOSED {
+    (  $<SANSSource_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <source_type> @linkml:String ? ;
+          <source_description> @linkml:String ? ;
+          <wavelength> @<QuantityValue> ? ;
+          <wavelength_spread> @<QuantityValue> ? ;
+          <wavelength_selection_method> @linkml:String ? ;
+          <energy> @<QuantityValue> ? ;
+          <flux> @<QuantityValue> ?
+       ) ;
+       rdf:type [ <SANSSource> ] ?
     )
 }
 
@@ -1657,7 +1730,7 @@ linkml:Sparqlpath xsd:string
           <source_type> [ <http://w3id.org/lambda/XRaySourceTypeEnum#synchrotron>
              <http://w3id.org/lambda/XRaySourceTypeEnum#rotating_anode> <http://w3id.org/lambda/XRaySourceTypeEnum#microfocus>
              <http://w3id.org/lambda/XRaySourceTypeEnum#metal_jet> ] ? ;
-          nsls2:Detector [ <http://w3id.org/lambda/DetectorTechnologyEnum#direct_electron_detector>
+          <detector_technology> [ <http://w3id.org/lambda/DetectorTechnologyEnum#direct_electron_detector>
              <http://w3id.org/lambda/DetectorTechnologyEnum#ccd> <http://w3id.org/lambda/DetectorTechnologyEnum#cmos>
              <http://w3id.org/lambda/DetectorTechnologyEnum#hybrid_photon_counting>
              <http://w3id.org/lambda/DetectorTechnologyEnum#scintillator_coupled>
@@ -1705,11 +1778,11 @@ linkml:Sparqlpath xsd:string
           <cryoprotectant_concentration> @<QuantityValue> ? ;
           <soak_compound> @linkml:String ? ;
           <soak_conditions> @linkml:String ? ;
-          nsls2:Mount_Type @linkml:String ? ;
+          <mounting_method> @linkml:String ? ;
           <flash_cooling_method> @linkml:String ? ;
           <crystal_notes> @linkml:String ? ;
-          nsls2:Loop_Size @<QuantityValue> ? ;
-          nsls2:Temperature @<QuantityValue> ?
+          <loop_size> @<QuantityValue> ? ;
+          <mounting_temperature> @<QuantityValue> ?
        ) ;
        rdf:type [ <XRayPreparation> ] ?
     )

@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// version: 0.1.2.post32.dev0+2ad9ef5
+// version: 0.1.2.post123.dev0+b316f8a
 // Aggregated view of all structural and functional data for a protein
 message AggregatedProteinView
  {
@@ -975,6 +975,73 @@ message SamplePreparation
   quantityValue purityBySdsPagePercent = 0
   string aggregationAssessment = 0
   string aliquoting = 0
+ }
+// Experimental configuration for a SANS instrument
+message SANSConfiguration
+ {
+  string description = 0
+  quantityValue qMin = 0
+  quantityValue qMax = 0
+  integer numberOfGuides = 0
+  string attenuator = 0
+  quantityValue sourceAperatureDiameter = 0
+  quantityValue sampleAperatureDiameter = 0
+  quantityValue siwindowToMainDistance = 0
+  quantityValue sampleApToSiDistance = 0
+  quantityValue sampleApToMainDistance = 0
+  quantityValue sampleApToSampleDistance = 0
+  quantityValue sourceApToSiwindowDistance = 0
+  quantityValue sourceApToSampleApDistance = 0
+ }
+// Description of a detector used in a SANS instrument
+message SANSDetector
+ {
+  string description = 0
+  string detectorName = 0
+  string detectorType = 0
+  string detectorDescription = 0
+  quantityValue pixelSizeX = 0
+  quantityValue pixelSizeY = 0
+  quantityValue sampleDetectorDistance = 0
+  quantityValue rotationAngle = 0
+  string beamTrapType = 0
+  quantityValue beamTrapPositionX = 0
+  quantityValue beamTrapPositionY = 0
+ }
+// Small-angle neutron scattering (SANS) instrument specifications
+message SANSInstrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  instrumentCategoryEnum instrumentCategory = 0
+  facilityEnum facilityName = 0
+  uriorcurie facilityRor = 0
+  string beamlineId = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
+  techniqueEnum technique = 0
+  quantityValue qRangeMin = 0
+  quantityValue qRangeMax = 0
+ repeated  sANSDetector detectors = 0
+  sANSSource source = 0
+  sANSConfiguration configuration = 0
+  string environment = 0
+ }
+// Beam source parameters for a SANS instrument
+message SANSSource
+ {
+  string description = 0
+  string sourceType = 0
+  string sourceDescription = 0
+  quantityValue wavelength = 0
+  quantityValue wavelengthSpread = 0
+  string wavelengthSelectionMethod = 0
+  quantityValue energy = 0
+  quantityValue flux = 0
  }
 // SAXS/WAXS instrument specifications
 message SAXSInstrument

@@ -1,0 +1,65 @@
+id: lambdaber:dataset_biosans_7m6a
+title: Bio-SANS Instrument Metadata for HFIR CG-3
+description: Dataset-shaped Bio-SANS example using the Dataset instruments collection
+keywords:
+- Bio-SANS
+- SANS
+- HFIR
+studies:
+- id: lambdaber:study_biosans_7m6a
+  title: Bio-SANS instrument metadata example
+  description: Reference study record for Bio-SANS instrument metadata validation
+instruments:
+- id: lambdaber:instrument_biosans_hfir_cg3
+  title: Biological Small Angle Neutron Scattering (Bio-SANS) Instrument at HFIR
+  description: Bio-SANS small-angle neutron scattering instrument at HFIR beamline
+    CG-3
+  instrument_code: HFIR-CG3
+  instrument_category: NEUTRON_BEAMLINE
+  facility_name: HFIR
+  facility_ror: https://ror.org/02xn1ny06
+  beamline_id: CG-3
+  manufacturer: Oak Ridge National Laboratory
+  model: Bio-SANS
+  installation_date: '2007-05-01'
+  current_status: operational
+samples:
+- id: lambdaber:sample_biosans_7m6a
+  title: Bio-SANS protein solution sample
+  description: Representative protein solution sample for Bio-SANS scattering
+  sample_code: BIOSANS-7M6A-SAMPLE
+  sample_type: protein
+  concentration:
+    unit: mg/mL
+    numeric_value: 5.0
+  buffer_composition:
+    ph:
+      unit: pH
+      numeric_value: 7.0
+    components:
+    - 20 mM HEPES
+    - 150 mM NaCl
+experiment_runs:
+- id: lambdaber:experiment_biosans_7m6a
+  title: Bio-SANS CG-3 example run
+  experiment_code: HFIR-CG3-7M6A
+  technique: sans
+  experiment_date: '2026-02-10'
+  wavelength:
+    unit: Angstroms
+    numeric_value: 6.023
+  exposure_time:
+    unit: seconds
+    numeric_value: 3600.0
+study_sample_associations:
+- study_id: lambdaber:study_biosans_7m6a
+  sample_id: lambdaber:sample_biosans_7m6a
+study_experiment_associations:
+- study_id: lambdaber:study_biosans_7m6a
+  experiment_id: lambdaber:experiment_biosans_7m6a
+experiment_sample_associations:
+- experiment_id: lambdaber:experiment_biosans_7m6a
+  sample_id: lambdaber:sample_biosans_7m6a
+experiment_instrument_associations:
+- experiment_id: lambdaber:experiment_biosans_7m6a
+  instrument_id: lambdaber:instrument_biosans_hfir_cg3

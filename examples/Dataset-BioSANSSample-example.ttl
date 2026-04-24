@@ -1,0 +1,105 @@
+@base <http://example.org/> .
+@prefix @base: <http://example.org/> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ROR: <https://ror.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lambdaber: <http://w3id.org/lambda/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lambdaber:dataset_biosans_sample_xylanase a lambdaber:Dataset ;
+    dcterms:title "Bio-SANS Xylanase Sample Example" ;
+    lambdaber:description "Valid Bio-SANS sample dataset derived from the schema template fields" ;
+    lambdaber:experiment_instrument_associations [ a lambdaber:ExperimentInstrumentAssociation ;
+            lambdaber:experiment_id lambdaber:experiment_biosans_sample_xylanase ;
+            lambdaber:instrument_id lambdaber:instrument_biosans_hfir_cg3 ] ;
+    lambdaber:experiment_runs lambdaber:experiment_biosans_sample_xylanase ;
+    lambdaber:experiment_sample_associations [ a lambdaber:ExperimentSampleAssociation ;
+            lambdaber:experiment_id lambdaber:experiment_biosans_sample_xylanase ;
+            lambdaber:sample_id lambdaber:sample_xylanase_d2o_nacl ] ;
+    lambdaber:instruments lambdaber:instrument_biosans_hfir_cg3 ;
+    lambdaber:keywords "Bio-SANS",
+        "D2O",
+        "xylanase" ;
+    lambdaber:samples lambdaber:sample_xylanase_d2o_nacl ;
+    lambdaber:studies lambdaber:study_biosans_sample_xylanase ;
+    lambdaber:study_experiment_associations [ a lambdaber:StudyExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:experiment_biosans_sample_xylanase ;
+            lambdaber:study_id lambdaber:study_biosans_sample_xylanase ] ;
+    lambdaber:study_sample_associations [ a lambdaber:StudySampleAssociation ;
+            lambdaber:sample_id lambdaber:sample_xylanase_d2o_nacl ;
+            lambdaber:study_id lambdaber:study_biosans_sample_xylanase ] ;
+    lambdaber:study_workflow_associations [ a lambdaber:StudyWorkflowAssociation ;
+            lambdaber:study_id lambdaber:study_biosans_sample_xylanase ;
+            lambdaber:workflow_id lambdaber:workflow_biosans_sample_xylanase ] ;
+    lambdaber:workflow_experiment_associations [ a lambdaber:WorkflowExperimentAssociation ;
+            lambdaber:experiment_id lambdaber:experiment_biosans_sample_xylanase ;
+            lambdaber:workflow_id lambdaber:workflow_biosans_sample_xylanase ] ;
+    lambdaber:workflow_runs lambdaber:workflow_biosans_sample_xylanase .
+
+lambdaber:instrument_biosans_hfir_cg3 a lambdaber:Instrument ;
+    dcterms:title "Biological Small Angle Neutron Scattering (Bio-SANS) Instrument at HFIR" ;
+    lambdaber:beamline_id "CG-3" ;
+    lambdaber:current_status "operational" ;
+    lambdaber:facility_name ROR:01qz5mb56 ;
+    lambdaber:facility_ror "https://ror.org/02xn1ny06"^^xsd:anyURI ;
+    lambdaber:installation_date "2007-05-01" ;
+    lambdaber:instrument_category "NEUTRON_BEAMLINE" ;
+    lambdaber:instrument_code "HFIR-CG3" ;
+    lambdaber:manufacturer "Oak Ridge National Laboratory" ;
+    lambdaber:model "Bio-SANS" .
+
+lambdaber:sample_xylanase_d2o_nacl a lambdaber:Sample ;
+    dcterms:title "Xylanase in D2O with NaCl" ;
+    lambdaber:buffer_composition [ a lambdaber:BufferComposition ;
+            lambdaber:additives "NaCl 150 mM" ;
+            lambdaber:description "100% D2O with 150 mM NaCl" ;
+            lambdaber:ph [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "7.0"^^xsd:float ;
+                    lambdaber:unit "pH" ] ] ;
+    lambdaber:cell_type <quartz_cuvette> ;
+    lambdaber:concentration [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "10.0"^^xsd:float ;
+            lambdaber:unit "mg/mL" ] ;
+    lambdaber:description "Xylanase protein in fully deuterated solvent with 150 mM NaCl" ;
+    lambdaber:molecular_composition [ a lambdaber:MolecularComposition ;
+            lambdaber:description "Xylanase in D2O buffer with NaCl" ;
+            lambdaber:ligands "Sodium chloride" ;
+            lambdaber:sequences "AADVDKFLGNIYSPSQVENFEYYWNCVTPENAGKWGSVEGTRDQMNWSSLDAAYALARDNGFCFNFHVLLWGAQQPAWISELSPEEQLEEIQEWFQAVAERYSFTASPFDVVQVVNEPLHQPPDGQEGRANYIEALGGAGETGWDWVITAFELARQIFPEGTRLMINDYGILSSLETAQQYLELIQLLKERNLIDVIGVQGHAFSTRSGAPIQEVLDLLATTGLPIQVTEMDIDGNPNQSPFVTREQSEQNQLRDMQRIFPTVWYHPAVEGVTFWGWRPGLWRNDYEAYLVYSNGAERPAMVWLREFMEAYRESYLSANEPEGTLPEELSVVSWPNPSRGQVRFRYALPFEAEVRLQVFDVLGREVMTLASGRHRAGVYEVAFDGRHLPSGLYLYRLEANGRVRSGRLVLMR" ] ;
+    lambdaber:molecular_weight [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "46982.0"^^xsd:float ;
+            lambdaber:unit "Da" ] ;
+    lambdaber:preparation_method "Xylanase prepared in 100% D2O solvent with 150 mM NaCl" ;
+    lambdaber:sample_code "XYLANASE-D2O-NACL" ;
+    lambdaber:sample_type "protein" ;
+    lambdaber:storage_conditions [ a lambdaber:StorageConditions ;
+            lambdaber:description "Stored at 4 degrees Celsius before measurement" ;
+            lambdaber:temperature [ a nmdc:QuantityValue ;
+                    lambdaber:numeric_value "4.0"^^xsd:float ;
+                    lambdaber:unit "Celsius" ] ] .
+
+lambdaber:workflow_biosans_sample_xylanase a lambdaber:WorkflowRun ;
+    dcterms:title "drtSANS reduction for xylanase" ;
+    lambdaber:processing_parameters "{\"instrument_name\": \"Bio-SANS\", \"ipts_number\": \"IPTS-26000\", \"sample\": {\"run_number\": \"260101\", \"thickness\": 1.0}, \"configuration\": {\"q_min\": 0.003, \"q_max\": 0.5, \"wavelength\": 6.0}}" ;
+    lambdaber:software_name "drtSANS" ;
+    lambdaber:software_version "2026-02-10" ;
+    lambdaber:workflow_code "drtsans-260101" ;
+    lambdaber:workflow_type "saxs_analysis" .
+
+lambdaber:study_biosans_sample_xylanase a lambdaber:Study ;
+    dcterms:title "Xylanase Bio-SANS sample preparation" ;
+    lambdaber:description "Xylanase protein solution prepared in deuterated solvent for Bio-SANS" .
+
+lambdaber:experiment_biosans_sample_xylanase a lambdaber:ExperimentRun ;
+    dcterms:title "Xylanase Bio-SANS measurement" ;
+    lambdaber:experiment_code "HFIR-CG3-260101" ;
+    lambdaber:experiment_date "2026-02-10T10:00:00" ;
+    lambdaber:exposure_time [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "3600.0"^^xsd:float ;
+            lambdaber:unit "seconds" ] ;
+    lambdaber:raw_data_location "/data/IPTS-26000/CG3/260101.nxs.hdf5" ;
+    lambdaber:technique CHMO:0000184 ;
+    lambdaber:wavelength [ a nmdc:QuantityValue ;
+            lambdaber:numeric_value "6.023"^^xsd:float ;
+            lambdaber:unit "Angstroms" ] .
+
